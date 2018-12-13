@@ -4,10 +4,9 @@ description: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo přip
 keywords: relevantní data, vyhodnocení dat, připravit se na data, data kritéria, data připravená
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: d502062c-da70-4b21-9054-0bfd9902612e
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 3408130e97b6b38de58300244f884257c179230c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2a9101ed510c617df81f422aea92ca1ef2b28cd8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092876"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261224"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datová věda pro začátečníky řady
@@ -39,12 +38,12 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 *Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
 
 * Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: Jsou vaše data připravená pro vědecké zpracování dat?
-* Video 3: [položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
-* Video 5: [kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 2: Jsou data připravená pro vědecké zkoumání?
+* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
+* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
+* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
 
-## <a name="transcript-is-your-data-ready-for-data-science"></a>Přepis: Jsou vaše data připravená pro vědecké zpracování dat?
+## <a name="transcript-is-your-data-ready-for-data-science"></a>Přepisu: Jsou data připravená pro vědecké zkoumání?
 Vítá vás "Jsou vaše data připravená pro vědecké zpracování dat?" druhý videa v této sérii *datová věda pro začátečníky*.  
 
 Před odpovědi, které chcete, aby vám může poskytnout pro datové vědy, musíte jí suroviny některé vysoce kvalitní pro práci s. Stejně jako provedení pizza, tím lepší složek, které můžete začít s tím lepší konečného produktu. 

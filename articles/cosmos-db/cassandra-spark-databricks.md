@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: e1d8f41c55ffd453507804b005d10620665b512c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f1588cac61d0cef821dc15019683f67c2962f049
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222015"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255376"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Přístup k datům Azure Cosmos DB Cassandra API z Azure Databricks
 
@@ -44,7 +44,7 @@ Tento článek podrobně popisuje postupy workwith Azure Cosmos DB Cassandra API
   spark.cassandra.auth.password YOUR_COSMOSDB_KEY
   ```
 
-## <a name="add-the-required-dependencies"></a>Přidejte požadované závislosti
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
 * **Konektor Cassandra Spark:** – Pokud chcete integrovat Azure Cosmos DB Cassandra API s využitím rozhraní Cassandra konektoru je třeba připojit k Azure Databricks pro cluster Spark. Připojení ke clusteru:
 
@@ -54,7 +54,7 @@ Tento článek podrobně popisuje postupy workwith Azure Cosmos DB Cassandra API
 
 ## <a name="sample-notebooks"></a>Ukázkové poznámkové bloky
 
-Seznam Azure Databricks [ukázkové poznámkové bloky](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) jsou k dispozici v úložišti Github si můžete stáhnout. Tyto ukázky zahrnují postup připojení k Azure Cosmos DB Cassandra API z aplikace Spark a provádění různých operací CRUD u data. Můžete také [import všech poznámkových bloků](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) do vaší Databricks clusteru pracovního prostoru a spustíme ji. 
+Seznam Azure Databricks [ukázkové poznámkové bloky](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) jsou k dispozici v úložišti GitHub si můžete stáhnout. Tyto ukázky zahrnují postup připojení k Azure Cosmos DB Cassandra API z aplikace Spark a provádění různých operací CRUD u data. Můžete také [import všech poznámkových bloků](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) do vaší Databricks clusteru pracovního prostoru a spustíme ji. 
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Přístup k rozhraní Cassandra API služby Azure Cosmos DB z aplikací Spark Scala
 
@@ -67,4 +67,4 @@ Níže jsou uvedeny odkazy vám pomůžou začít vytvářet aplikace Spark Scal
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme s [vytvoření účtu rozhraní Cassandra API, databáze a tabulky](create-cassandra-api-account-java.md) s použitím aplikace v Javě.
+Začněte [vytvořením účtu rozhraní API Cassandra, databáze a tabulky](create-cassandra-api-account-java.md) pomocí aplikace v Javě.

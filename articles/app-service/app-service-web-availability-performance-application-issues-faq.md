@@ -1,5 +1,5 @@
 ---
-title: Výkon aplikace nejčastější dotazy pro Azure web apps | Dokumentace Microsoftu
+title: Výkon aplikace nejčastější dotazy – Azure App Service | Dokumentace Microsoftu
 description: Získejte odpovědi na nejčastější dotazy týkající se dostupnosti, výkonu a problémů v aplikacích ve funkci Web Apps služby Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 62039d379861e9981eb1bf556a78e85fc64e2478
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748115"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255189"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastějších dotazech týkajících se výkonu aplikace pro Web Apps v Azure
 
@@ -83,7 +84,7 @@ Tuto chybu může způsobovat tří podmínek:
 * Webové aplikace se zastavil na portálu.
 * Webové aplikace dosáhl maximální kvóty prostředků, které mohou vztahovat na využít bezplatné nebo sdílený plán škálování služeb.
 
-Pokud chcete zobrazit, co je příčinou chyby a řešení tohoto problému postupujte podle kroků v [webové aplikace: "Chyba 403 – tato webová aplikace je zastavena"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
+Pokud chcete zobrazit, co je příčinou chyby a řešení tohoto problému postupujte podle kroků v [Web Apps: "Chyba 403 – tato webová aplikace je zastavena"](https://blogs.msdn.microsoft.com/waws/2016/01/05/azure-web-apps-error-403-this-web-app-is-stopped/).
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>Kde můžou dozvědět více o kvóty a omezení pro různé plány služby App Service?
 

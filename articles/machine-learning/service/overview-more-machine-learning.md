@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: a778a371e28b0406d43aa07bbc0c0c039654f7b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073767"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274105"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 
@@ -41,8 +41,7 @@ Microsoft nabízí širokou škálu produktů pro sestavování, nasazování a 
 
 Pomocí služby Azure Machine Learning můžete trénovat, nasazovat a spravovat modely strojového učení s použitím Pythonu a rozhraní CLI ve velkém měřítku.
 
->[!Note]
-> Azure Machine Learning si můžete vyzkoušet zdarma. Nevyžaduje se platební karta ani předplatné Azure. Začněte hned teď. https://azure.microsoft.com/free/
+Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 ## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 

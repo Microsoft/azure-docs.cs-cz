@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Moderování obsahu pro Facebook – Azure Content Moderator'
+title: 'Kurz: Moderování obsahu Facebooku - Azure Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Moderování stránek Facebook pomocí Content Moderatoru.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: ead8c1d445bf32ecaaf236b4e73c2a583c755049
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 048f2f40714fd7675c073337825d75443e58039b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223934"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255427"
 ---
-# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Kurz: Moderování obsahu pro Facebook pomocí Azure Content Moderatoru
+# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Kurz: Moderování obsahu Facebooku s Content Moderator
 
 V tomto kurzu zjistíme, jak pomocí Content Moderatoru založeného na strojovém učení moderovat příspěvky a komentáře na Facebooku.
 
@@ -61,7 +61,7 @@ Azure Functions je možné vytvářet po přihlášení k [portálu pro správu 
 4. Definujte následující [nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings):
 
 > [!NOTE]
-> **Cm: Region** by měl být název oblasti (bez mezer).
+> **Cm: Oblast** by měl být název oblasti (bez mezer).
 > Například **západníevropa**, ne Západní Evropa, **usastředozápad**, ne USA – středozápad, a tak dále.
 >
 
@@ -79,7 +79,7 @@ Azure Functions je možné vytvářet po přihlášení k [portálu pro správu 
 5. Vytvořte novou funkci **HttpTrigger-CSharp** s názvem **FBListener**. Tato funkce přijímá události z Facebooku. Vytvořte tuto funkci pomocí následujících kroků:
 
     1. Nechte stránku [Vytvoření funkcí Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) otevřenou pro referenci.
-    2. Novou funkci vytvoříte kliknutím na tlačítko **+** přidat.
+    2. Novou funkci vytvoříte kliknutím na tlačítko přidání **+**.
     3. Namísto integrovaných šablon zvolte možnost **Začít na vlastní funkci**.
     4. Klikněte na dlaždici **HttpTrigger-CSharp**.
     5. Zadejte název **FBListener**. Pole **Úroveň autorizace** by mělo být nastavené na možnost **Funkce**.
@@ -151,16 +151,16 @@ Toto řešení odešle všechny obrázky a texty zveřejněné na vaší Faceboo
 
 ## <a name="license"></a>Licence
 
-Všechny ukázky a sady SDK Cognitive Services Microsoftu mají licenci MIT. Další podrobnosti najdete v [licenci](https://microsoft.mit-license.org/).
+Všechny sady SDK služeb Microsoft Cognitive Services a ukázky jsou licencovány licencí MIT. Další podrobnosti najdete v [LICENCI](https://microsoft.mit-license.org/).
 
 ## <a name="developer-code-of-conduct"></a>Pravidla chování vývojáře
 
-Vývojáři, kteří používají Cognitive Services, včetně této klientské knihovny a ukázky, by měly postupovat podle pravidel chování vývojářů pro Microsoft Cognitive Services, která se nacházejí na adrese http://go.microsoft.com/fwlink/?LinkId=698895.
+Vývojáři, kteří používají Cognitive Services, včetně této klientské knihovny a ukázky, by měli postupovat podle pravidel chování vývojářů pro Microsoft Cognitive Services, která se nacházejí na adrese http://go.microsoft.com/fwlink/?LinkId=698895.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 1. [Podívejte se na ukázku (video)](https://channel9.msdn.com/Events/Build/2017/T6033) tohoto řešení z Microsoft Build 2017.
-1. [Facebooková ukázka na Githubu](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
+1. [Facebook ukázka na Githubu](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
 1. https://docs.microsoft.com/azure/azure-functions/functions-create-github-webhook-triggered-function
 2. http://ukimiawz.github.io/facebook/2015/08/12/webhook-facebook-subscriptions/
 3. http://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token

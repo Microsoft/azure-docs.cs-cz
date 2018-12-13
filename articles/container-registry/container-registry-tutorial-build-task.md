@@ -1,21 +1,21 @@
 ---
-title: Kurz – Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks
-description: V tomto kurzu zjistíte, jak nakonfigurovat úlohu sestavení tak, aby při potvrzení zdrojového kódu do úložiště Git automaticky aktivovala sestavení image kontejneru v cloudu.
+title: Kurz – automatizace sestavování imagí kontejneru – úlohy registru kontejneru Azure
+description: V tomto kurzu se dozvíte, jak nakonfigurovat úlohu Azure Container Registry automaticky aktivovat sestavování imagí kontejneru v cloudu, když jste se zavázali zdrojový kód do úložiště Git.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 27dbee3b292a9139ce53ef7b09a4cceba56082e4
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 2d3f4ca269e204a84a10d60aa953dc2f49195c7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857223"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254662"
 ---
-# <a name="tutorial-automate-container-image-builds-with-azure-container-registry-tasks"></a>Kurz: Automatizace sestavení imagí kontejnerů pomocí Azure Container Registry Tasks
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Kurz: Pokud jste se zavázali zdrojový kód. automatizace sestavování imagí kontejneru v cloudu
 
 Kromě [rychlé úlohy](container-registry-tutorial-quick-task.md) podporuje ACR Tasks automatizované sestavení image kontejneru Dockeru pomocí *úlohy sestavení*. V tomto kurzu použijete Azure CLI k vytvoření úlohy, která automaticky aktivuje sestavení image v cloudu, když potvrdíte zdrojový kód do úložiště Git.
 
@@ -41,7 +41,7 @@ Tento kurz předpokládá, že jste už dokončili kroky v [předchozím kurzu](
 
 ### <a name="container-registry"></a>Registr kontejneru
 
-Abyste mohli dokončit tento kurz, musíte mít ve svém předplatném registr kontejneru Azure. Pokud potřebujete registr, podívejte se na [předchozí kurz](container-registry-tutorial-quick-task.md) nebo článek [Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
+Abyste mohli dokončit tento kurz, musíte mít ve svém předplatném registr kontejneru Azure. Pokud potřebujete registr, najdete v článku [předchozí kurz o službě](container-registry-tutorial-quick-task.md), nebo [rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
 ## <a name="overview-of-acr-tasks"></a>Přehled služby ACR Tasks
 
@@ -312,7 +312,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak pomocí úlohy automaticky aktivovat sestavení image kontejneru v Azure při potvrzení zdrojového kódu do úložiště Git. Přejděte k dalšímu kurzu, ve kterém se naučíte vytvářet úlohy, které aktivují sestavení při aktualizaci základní image kontejneru.
 

@@ -1,7 +1,7 @@
 ---
 title: Přidat ukázkové promluvy
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Informace o přidání projevů v aplikacích Language Understanding (LUIS).
+description: Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Představuje Language Understanding (LUIS), že je potřeba přidat příklad projevy záměru.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: ada1d7e922bdd47cfc9fe8139ad83adfa45ed073
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 33c941f84952faca1961bb65687b4098b837a2fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085511"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139161"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Přidání entity do příklad projevy 
 
@@ -90,7 +90,7 @@ Jméno zaměstnance, Jan Macek, je využitím předem připravených [personName
 
 1. Zadejte název složený entity v rozevíracím seznamu.
 
-    ![Snímek obrazovky zadání názvu entity](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
+    ![Snímek obrazovky zadejte název složený entity v rozevíracím seznamu](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Při zabalení entity správně, je zelenou čáru pod celou frázi.
 
@@ -118,7 +118,7 @@ V utterance `Move John Smith from Seattle to Cairo`, Seattle, je původní umís
 
 1. Aplikace word v utterance byla označena hierarchické nadřazená entita. Musíte přiřadit slovo podřízené entity. Na stránce s podrobnostmi záměru vrátit utterance. Vybrat slovo, pak v rozevíracím seznamu vyberte název entity, které jste vytvořili a postupujte podle nabídce napravo a zvolte správné podřízené entity.
 
-    ![Stránce s podrobnostmi o snímek obrazovky záměrů, s entitou ToLocation zvýrazněnou](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
+    ![Stránce s podrobnostmi o snímek obrazovky s příkazy, které je potřeba přiřadit slovo podřízené entity](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Podřízené entity názvy musí být jedinečný ve všech entit v jediné aplikaci. Dva různé hierarchické entity nemůže obsahovat podřízené entity se stejným názvem. 
@@ -135,7 +135,7 @@ Vyberte slova, která jsou podtrženy červeně utterance.
 
 Zobrazí pole entity **stav Entity** se červený vykřičník Pokud dojde k neshodě předpovědi. Chcete-li zobrazit stav Entity s informacemi o rozdílech mezi s popiskem a prediktivní entity, vyberte **stav Entity** vyberte položku na pravé straně.
 
-![Snímek obrazovky Entity stav predikcí nesrovnalosti](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Snímek obrazovky s výběrem správné položky k opravě předpovědi nesrovnalosti](./media/luis-how-to-add-example-utterances/entity-status.png)
 
 Může se zobrazit řádku červeně na některý z následujících časech:
 

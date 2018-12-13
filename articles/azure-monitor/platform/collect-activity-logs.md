@@ -10,17 +10,15 @@ ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: cb246ad927669ac9b8a3981134142ad9be27c6ae
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889527"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184937"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
 
@@ -55,7 +53,7 @@ Na rozdíl od většiny jiných řešení Log Analytics data nejsou shromažďov
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
-| [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
 | [Skupiny pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
 | [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Řešení neshromažďuje informace ze služby Azure storage. |
 
@@ -100,5 +98,5 @@ Data protokolu aktivit se zobrazí jenom *po* konfiguraci vašich protokolů akt
 
 ## <a name="next-steps"></a>Další postup
 
-- Vytvoření [výstraha](../../monitoring-and-diagnostics/alert-metric.md) když se stane konkrétní aktivitu.
+- Vytvoření [výstraha](../../azure-monitor/platform/alerts-metric.md) když se stane konkrétní aktivitu.
 - Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných informací z protokolů aktivit.

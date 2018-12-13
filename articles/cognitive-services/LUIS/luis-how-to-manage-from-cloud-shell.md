@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3264a94c26339bc99a82ebd6770a3cae7d8ab3fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086767"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133467"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Data o využití pro službu LUIS ze služby Azure Cloud Shell
 Na webu Azure portal umožňuje pomocí rutin prostředí PowerShell pro práci s prostředky služby LUIS. 
@@ -35,7 +35,7 @@ Při použití portálu Azure cloud shell, jste vždy na nejnovější verzi pro
 
 Použití **spustit Cloud Shell** tlačítko otevřete Cloud Shell nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). Vyberte jako prostředí Power Shell. Pokud nemáte účet Azure Storage, je potřeba ho vytvořit. 
 
-<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
+<a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" alt="Start powershell" /></a>
 
 ## <a name="luis-endpoint-usage-information"></a>Informace o použití koncového bodu služby LUIS
 
@@ -43,7 +43,7 @@ Rutiny Powershellu 6.x `Get-AzureRmCognitiveServicesAccountUsage`, poskytuje inf
 
 Syntaxe příkazu je:
 
-```
+```powershell
 Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -Name my-luis-service-name
 ```
 
@@ -51,7 +51,7 @@ V následujícím příkladu je název skupiny prostředků `luis-westus-rg` a n
 
 Rutina vrátí informace o použití 16 používané 30denního období se období do 7. června 10 000 koncových bodů přístupů:
 
-```
+```powershell
 CurrentValue  : 16
 Name          : LUIS.Calls
 Limit         : 10000

@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: defe1a109381c7ee44c6fc5e5db4c6f6ecc5ac6f
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706836"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322137"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Použití Azure Key Vault pomocí webové aplikace Azure v .NET
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
 Služba Azure Key Vault pomáhá chránit tajné kódy jako jsou klíče rozhraní API a databázové připojovací řetězce. To vám poskytne přístup k aplikacím, služby a materiály k seriálu IT.
 
@@ -56,7 +56,7 @@ Než budete pokračovat, přečtěte si [základní koncepty služby Key Vault](
 
 Azure Key Vault bezpečně ukládá přihlašovací údaje, a proto nejsou ve vašem kódu. Však musíte pro ověření do služby Azure Key Vault k načtení klíče. K ověření do služby Key Vault, budete potřebovat přihlašovací údaje. Je classic dilema bootstrap. Identita spravované služby (MSI) řeší tento problém tím, že poskytuje _bootstrap identity_ , která zjednodušuje proces.
 
-Při povolení MSI pro službu Azure (Příklad: virtuální počítače, služby App Service nebo funkce), Azure vytvoří [instanční objekt služby](key-vault-whatis.md#basic-concepts). MSI se k tomu pro instanci služby v Azure Active Directory (Azure AD) a vkládá přihlašovací údaje pro instanční objekt do této instance.
+Při povolení MSI pro služby Azure (třeba: Virtuální počítače, služby App Service nebo funkce), Azure vytvoří [instanční objekt služby](key-vault-whatis.md#basic-concepts). MSI se k tomu pro instanci služby v Azure Active Directory (Azure AD) a vkládá přihlašovací údaje pro instanční objekt do této instance.
 
 ![MSI diagram](media/MSI.png)
 
@@ -88,9 +88,9 @@ Tato skupina prostředků v celém tomto kurzu použijete.
 
 Vytvoření služby key vault ve vaší skupině prostředků, zadejte následující informace:
 
-* Název trezoru klíčů: řetězec dlouhý 3 až 24 znaků, které mohou obsahovat pouze číslice, písmena a pomlčky (Příklad: 0-9, a – z, A-Z - a)
+* Název trezoru klíčů: řetězec dlouhý 3 až 24 znaků, které mohou obsahovat pouze číslice, písmena a pomlčky (například: 0 – 9, a – z, A-Z - a)
 * Název skupiny prostředků
-* Umístění: **USA – západ**
+* Umístění: **Západní USA**
 
 Zadejte následující příkaz v rozhraní příkazového řádku Azure:
 
@@ -132,7 +132,7 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
    - [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)
 3. Naimportujte následující kód do souboru About.cshtml.cs:
 
-   ```
+   ```csharp
     using Microsoft.Azure.KeyVault;
     using Microsoft.Azure.KeyVault.Models;
     using Microsoft.Azure.Services.AppAuthentication;
@@ -140,7 +140,7 @@ Použít tento [kurzu](../app-service/app-service-web-get-started-dotnet.md) k v
 
 4. Váš kód ve třídě AboutModel by takto:
 
-   ```
+   ```csharp
     public class AboutModel : PageModel
     {
         public string Message { get; set; }
@@ -220,7 +220,7 @@ Služba Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovac
 
 1. Poznamenejte si, `PrincipalId` po publikování aplikace do Azure. Výstup tohoto příkazu v kroku 1 by měla být v následujícím formátu:
 
-   ```
+   ```json
    {
      "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
      "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",

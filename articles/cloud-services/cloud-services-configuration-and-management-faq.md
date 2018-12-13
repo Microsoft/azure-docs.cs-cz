@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: fe096efba5419b283981f27e16c3e30a791412da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979195"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322666"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správa problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správy problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
 Tento článek obsahuje nejčastější dotazy o konfiguraci a správě problémů pro [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Můžete také najdete [cloudové služby virtuálních počítačů velikosti stránky](cloud-services-sizes-specs.md) pro informace o velikosti.
 
@@ -53,7 +53,7 @@ Tento článek obsahuje nejčastější dotazy o konfiguraci a správě problém
 **Oprávnění**
 
 - [Můžete vzdálené plochy interní techniky Microsoftu do instance cloudové služby bez oprávnění?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
-- [Můžu nelze vzdálené plochy k virtuálnímu počítači cloudové služby s použitím souboru RDP. Mohu načíst následující chyba: došlo k chybě ověřování (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
+- [Můžu nelze vzdálené plochy k virtuálnímu počítači cloudové služby s použitím souboru RDP. Můžu získat následující chybě: Došlo k chybě ověřování (kód: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
 **Škálování**
 
@@ -170,7 +170,7 @@ Můžete zadat časový limit v souboru definice (csdef) služby následujícím
     </Endpoints>
   </WorkerRole>
 ```
-V tématu [New: konfigurovatelné nečinnosti časový limit pro Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Další informace.
+Zobrazit [nové: Konfigurovatelné nečinnosti časový limit pro Azure Load Balancer](https://azure.microsoft.com/blog/new-configurable-idle-timeout-for-azure-load-balancer/) Další informace.
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Jak přiřadit statickou IP adresu do svojí cloudové služby?
 Pokud chcete nastavit statickou IP adresu, je potřeba vytvořit vyhrazenou IP adresu. Tato vyhrazená IP adresa může být přidružené k nové cloudové službě nebo k existujícímu nasazení. Najdete v následujících dokumentech podrobnosti:
@@ -199,7 +199,7 @@ Windows 10 a Windows serveru 2016 jsou dostupné podpora HTTP/2 na straně klien
 Další informace naleznete v tématu:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
-- [Video: HTTP/2 ve Windows 10: prohlížeče, aplikace a webového serveru](https://channel9.msdn.com/Events/Build/2015/3-88)
+- [Video: HTTP/2 ve Windows 10: Prohlížeč, aplikace a webového serveru](https://channel9.msdn.com/Events/Build/2015/3-88)
          
 
 Tyto kroky může prostřednictvím úkolu po spuštění, automatizované, tak, aby pokaždé, když se vytvoří novou instanci PaaS, můžete provést změny výše v systémovém registru. Další informace najdete v tématu [jak nakonfigurovat a spustit úlohy po spuštění pro Cloudovou službu](cloud-services-startup-tasks.md).
@@ -224,7 +224,7 @@ Zobrazit [pochopit různé role v Azure](../role-based-access-control/rbac-and-d
 ### <a name="can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission"></a>Můžete vzdálené plochy interní techniky Microsoftu do instance cloudové služby bez oprávnění?
 Microsoft postupuje od vlastníka nebo jejich zmocněnce striktní proces, který nedovolí interní techniky vzdálené plochy do cloudové služby bez předchozího písemného povolení (e-mailu nebo jiné písemné komunikace).
 
-### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Můžu nelze vzdálené plochy k virtuálnímu počítači cloudové služby s použitím souboru RDP. Mohu načíst následující chyba: došlo k chybě ověřování (kód: 0x80004005)
+### <a name="i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005"></a>Můžu nelze vzdálené plochy k virtuálnímu počítači cloudové služby s použitím souboru RDP. Můžu získat následující chybě: Došlo k chybě ověřování (kód: 0x80004005)
 
 K této chybě může dojít, pokud používáte soubor protokolu RDP z počítače, který je připojený ke službě Azure Active Directory. Chcete-li vyřešit tento problém, postupujte podle těchto kroků:
 
@@ -244,7 +244,7 @@ Chcete-li tento problém vyřešit, můžete použít Application Insights. Podp
 
 Další informace o tom, jak využívat vlastní metriky pomocí Application Insights a nakonfigurovat automatické škálování na Cloud Services, najdete v článku [zahájení práce se automatické škálování díky vlastní metrika v Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
 
-Další informace o tom, jak integrovat Azure Diagnostics Application Insights pro služby Cloud Services, najdete v části [odeslat cloudové služby, virtuální počítač nebo Service Fabric diagnostická data do Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+Další informace o tom, jak integrovat Azure Diagnostics Application Insights pro služby Cloud Services, najdete v části [odeslat cloudové služby, virtuální počítač nebo Service Fabric diagnostická data do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 
 Další informace o povolení Application Insights pro služby Cloud Services najdete v tématu [Application Insights pro Azure Cloud Services](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)
 
@@ -303,7 +303,7 @@ Další informace o scénářích nasazení antimalwarových a jak ho povolit z 
 
 SNI v cloudových službách můžete povolit pomocí jedné z následujících metod:
 
-**Metoda 1: Použití prostředí PowerShell**
+**Metoda 1: Pomocí Powershellu**
 
 Vazba SNI lze nastavit pomocí rutiny Powershellu **New-WebBinding** v úloze po spuštění pro instanci role cloudové služby, jak je uvedeno níže:
     
@@ -318,7 +318,7 @@ Jak je popsáno [tady](https://technet.microsoft.com/library/ee790567.aspx), $ss
 |2 |Bez SNI vazby, který používá certifikát Store – střed|
 |3|Ukládání SNI vazby, který používá centrálního úložiště certifikátů |
  
-**Metoda 2: Použití kódu**
+**Metoda 2: Použít kód**
 
 SNI vazbu může také konfigurovat pomocí kódu ve spuštění role jak je popsáno v tomto [blogový příspěvek](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 

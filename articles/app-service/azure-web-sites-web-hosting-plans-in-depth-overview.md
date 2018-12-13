@@ -1,7 +1,7 @@
 ---
-title: Přehled služby Azure plán služby App Service | Microsoft Docs
-description: Zjistěte, jak plánů služby App Service pro pracovní Azure App Service a jak budou využívat vaše prostředí pro správu.
-keywords: služby App service, služby azure app service, měřítko, škálovatelná, škálovatelnost, plán služby app service, náklady na aplikaci služby
+title: Plánu služby App Service – přehled – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak plány služby App Service pro práci na službě Azure App Service a jaké jsou výhody prostředí pro správu.
+keywords: služby App service, služby azure app service, škálování, škálovatelné, škálovatelnost, plán služby app service, náklady služby app service
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,109 +15,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 268844eae8dc06937529e79d52515cad2f6da3f4
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.custom: seodec18
+ms.openlocfilehash: 9cab3a8d9fd85d19cc2cc11874085d41d2441a07
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862355"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253931"
 ---
-# <a name="azure-app-service-plan-overview"></a>Přehled služby Azure plán služby App Service
+# <a name="azure-app-service-plan-overview"></a>Přehled plánu služby Azure App Service
 
-Ve službě App Service spouští aplikace _plán služby App Service_. Plán služby App Service definuje sadu výpočetní prostředky pro spuštění webové aplikace. Tyto výpočetní prostředky jsou obdobou [ _serverové farmy_ ](https://wikipedia.org/wiki/Server_farm) v hostování konvenční webů. Jeden nebo více aplikací může být nakonfigurována pro spuštění na stejné výpočetní prostředky (nebo stejný plán služby App Service).
+Ve službě App Service se aplikace spouští v rámci _plánu služby App Service_. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Tyto výpočetní prostředky, které se podobá [ _serverovou farmu_ ](https://wikipedia.org/wiki/Server_farm) v konvenční webhosting. Jeden nebo více aplikace je možné nakonfigurovat pro spuštění ve stejné výpočetní prostředky (nebo v rámci stejného plánu služby App Service).
 
-Když vytvoříte plán služby App Service v určité oblasti (například západní Evropa), je pro tento plán v této oblasti vytvořit sadu výpočetní prostředky. Ať aplikace vložíte do tento plán služby App Service, spusťte na tyto výpočetní prostředky podle definice plán služby App Service. Definuje každý plán služby App Service:
+Když vytvoříte plán služby App Service v určité oblasti (například, západní Evropa), sada výpočetní prostředky se vytvoří pro tento plán v dané oblasti. Stačí vložit do tohoto plánu služby App Service, spusťte na tyto aplikace výpočetní prostředky podle vašeho plánu služby App Service. Každý plán služby App Service definuje:
 
-- Oblast (západní USA, Východ USA, atd.)
-- Počet instancí virtuálního počítače
-- Velikost instance virtuálních počítačů (malé, střední, velké)
-- Cenová úroveň (Free, sdílené, Basic, Standard, Premium, PremiumV2, izolovaná, spotřeba)
+- Oblast (USA – Západ, USA – východ, atd.)
+- Počet instancí virtuálních počítačů
+- Velikosti instancí virtuálních počítačů (malá, střední, velká)
+- Cenová úroveň (Free, Shared, Basic, Standard, Premium, PremiumV2, izolované, využití)
 
-_Cenová úroveň_ služby App Service určuje plán, jaké funkce služby App Service můžete získat a kolik platíte plánu. Existuje několik kategorií cenové úrovně:
+_Cenovou úroveň_ App Service plán Určuje, jaké funkce služby App Service můžete získat a kolik platíte za plán. Existuje několik kategorií cenové úrovně:
 
-- **Sdílené výpočetní**: **volné** a **sdílené**, dva základní úrovně, spustí na aplikaci na stejný virtuální počítač Azure jako ostatní aplikace služby App Service, včetně aplikace od ostatních zákazníků. Tyto úrovně přidělení procesoru kvóty pro každou aplikaci, která běží na sdílené prostředky a prostředky nelze škálovat.
-- **Vyhrazený výpočetní**: **základní**, **standardní**, **Premium**, a **PremiumV2** vrstev spouštět aplikace na vyhrazené Azure Virtuální počítače. Jenom aplikace ve stejném plán služby App Service sdílet stejnou výpočetní prostředky. Čím vyšší vrstvě, další instance virtuálních počítačů jsou dostupné pro Škálováním na více systémů.
-- **Izolované**: Tato úroveň běží vyhrazených virtuálních počítačích Azure na vyhrazených virtuálních sítí Azure, která poskytuje izolace sítě nad výpočetní izolace pro vaše aplikace. Poskytuje maximální možnosti škálování.
-- **Spotřeba**: Tato úroveň je k dispozici pouze [funkce aplikace](../azure-functions/functions-overview.md). Se škáluje funkce dynamicky v závislosti na zatížení. Další informace najdete v tématu [hostování na Azure Functions plány porovnání](../azure-functions/functions-scale.md).
+- **Sdílené výpočetní**: **Bezplatné** a **Shared**, dva základní úrovně, spustí aplikaci pro stejný virtuální počítač Azure jako ostatní aplikace služby App Service, včetně aplikací od ostatních zákazníků. Tyto úrovně přidělení procesoru kvóty pro každou aplikaci, která se spouští na sdílených prostředcích a prostředky nelze škálovat na více systémů.
+- **Vyhrazené výpočetní**: **Základní**, **standardní**, **Premium**, a **PremiumV2** úrovně spouštění aplikací ve vyhrazených virtuálních počítačích Azure. Jenom aplikace v rámci stejného plánu služby App Service sdílejí stejnou výpočetní prostředky. Čím vyšší úrovně, dalších instancí virtuálních počítačů jsou k dispozici pro horizontální navýšení kapacity.
+- **Izolované**: Tato úroveň běží na vyhrazených virtuálních sítí Azure, která poskytuje izolaci sítě nad rámec izolace výpočetní prostředky pro vaše aplikace vyhrazených virtuálních počítačích Azure. Poskytuje maximální možnostmi škálování.
+- **Spotřeba**: Tato úroveň je dostupná jenom pro [aplikace function](../azure-functions/functions-overview.md). Škáluje se funkce dynamicky v závislosti na úloze. Další informace najdete v tématu [porovnání plánů hostování služby Azure Functions](../azure-functions/functions-scale.md).
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Každá úroveň také poskytuje určitou podmnožinu funkcí služby App Service. Tyto funkce patří vlastní domény a certifikáty protokolu SSL, automatické škálování, nasazovací sloty, zálohování, integrace Traffic Manager a další. Čím vyšší vrstvě, jsou k dispozici další funkce. Funkce, které jsou podporovány v jednotlivých cenových úrovní najdete v tématu [podrobnosti plánu služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Každá úroveň také poskytuje určitou podmnožinu funkcí služby App Service. Tyto funkce patří vlastní domény a certifikáty SSL, automatické škálování, sloty nasazení, zálohování, integrace Traffic Manageru a informace. Čím vyšší úrovně, víc funkcí jsou k dispozici. Které funkce jsou podporovány v jednotlivých cenových úrovní najdete v tématu [podrobnosti plánu služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> Nové **PremiumV2** cenová úroveň nabízí [virtuální počítače Dv2-series](../virtual-machines/windows/sizes-general.md#dv2-series) s rychlejších procesorů, úložiště SSD a dvojité poměr paměti jádra ve srovnání s **standardní** vrstvy. **PremiumV2** také podporuje škálování na větší rozsah prostřednictvím počet vyšší instancí současně stále zajišťuje rozšířené možnosti v standardní plán nalezen. Všechny funkce, které jsou k dispozici v existující **Premium** jsou součástí vrstvy **PremiumV2**.
+> Nové **PremiumV2** cenová úroveň poskytuje [virtuální počítače řady Dv2-series](../virtual-machines/windows/sizes-general.md#dv2-series) s rychlejšími procesory, SSD úložištěm a double poměr paměti k jádrům ve srovnání s **standardní** vrstvy. **PremiumV2** také podporuje škálování ve větším měřítku prostřednictvím vyššího počtu instancí současně stále poskytuje veškeré pokročilé možnosti plánu Standard. Všechny funkce dostupné v existujícím **Premium** vrstvy jsou součástí **PremiumV2**.
 >
-> Podobně jako u jiných vyhrazené vrstev, tři velikosti virtuálních počítačů jsou k dispozici pro tuto vrstvu:
+> Podobně jako u jiných vyhrazené vrstev, tři velikosti virtuálních počítačů jsou k dispozici pro tuto úroveň:
 >
-> - Malá (jádrech procesoru, paměti 3.5 GiB) 
-> - Střední (dva jader procesoru, paměti 7 GiB) 
-> - Velké (čtyři jader procesoru, paměti 14 GiB)  
+> - Malý (jedno Procesorové jádro, 3,5 GB paměti) 
+> - Střední (dvě procesoru jádra, 7 GB paměti) 
+> - Velké (čtyři procesoru jádra, 14 GB paměti)  
 >
-> Pro **PremiumV2** informace o cenách najdete v části [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+> Pro **PremiumV2** informace o cenách najdete v článku [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Začněte s novým **PremiumV2** cenovou úroveň, najdete v části [konfigurace PremiumV2 úroveň služby App Service](app-service-configure-premium-tier.md).
+> Abyste mohli začít s novým **PremiumV2** cenovou úroveň, naleznete v tématu [úrovně PremiumV2 konfigurace pro službu App Service](app-service-configure-premium-tier.md).
 
-## <a name="how-does-my-app-run-and-scale"></a>Jak aplikace my spouštění a škálování?
+## <a name="how-does-my-app-run-and-scale"></a>Jak probíhá Moje aplikace spustit a škálovat?
 
-V **volné** a **sdílené** vrstvy, aplikace přijímá minut využití procesoru na instanci sdíleného virtuálního počítače a nelze škálovat. Na jiných úrovních aplikace běží a škáluje následujícím způsobem.
+V **Free** a **Shared** úrovně, aplikace obdrží CPU minut na sdílené instance virtuálního počítače a nelze škálovat na více systémů. V jiných vrstev aplikace běží a následujícím způsobem se škáluje.
 
-Když vytvoříte aplikaci v App Service, je uvést do plán služby App Service. Při spuštění aplikace běží na všechny instance virtuálních počítačů nakonfigurované v plánu služby App Service. Pokud se více aplikací jsou ve stejné plán služby App Service, všechny sdílejí stejné instance virtuálních počítačů. Pokud máte více nasazovací sloty pro aplikaci, všechny nasazovací sloty spustit také na stejné instance virtuálních počítačů. Pokud povolení diagnostických protokolů, zálohování nebo spuštění webové úlohy, také používají cyklů procesoru a paměti na těchto instancích virtuálních počítačů.
+Při vytváření aplikace ve službě App Service, přejde do plánu služby App Service. Při spuštění aplikace poběží v instancích virtuálních počítačů nakonfigurované v plánu služby App Service. Pokud více aplikacemi v rámci stejného plánu služby App Service, všichni sdílejí stejné instance virtuálních počítačů. Pokud máte několik nasazovacích slotů pro aplikaci pro všechny sloty nasazení spustit také na stejných instancích virtuálního počítače. Pokud se povolení diagnostických protokolů, zálohování nebo spustit WebJobs, používají cyklů procesoru a paměti na těchto instancí virtuálních počítačů.
 
-Tímto způsobem je plán služby App Service má jednotka škálování aplikace služby App Service. Pokud plán je nakonfigurována pro spuštění pět instancí virtuálních počítačů, spusťte na všech instancích pět všechny aplikace v plánu. Pokud plán je nakonfigurován pro automatické škálování, pak všechny aplikace v plánu jsou společně škálovat podle nastavení automatického škálování.
+Tímto způsobem plán služby App Service je jednotka škálování aplikací služby App Service. Pokud je plán konfigurován pro běh pěti instancemi virtuálních počítačů, všechny aplikace v plánu spustit na všech pět instancí. Pokud tento plán je nakonfigurovaná pro automatické škálování, všechny aplikace v plánu jsou společně škálovat podle nastavení automatického škálování.
 
 Informace o horizontálním navýšení kapacity aplikace naleznete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
 <a name="cost"></a>
 
-## <a name="how-much-does-my-app-service-plan-cost"></a>Kolik Moje plán služby App Service stojí?
+## <a name="how-much-does-my-app-service-plan-cost"></a>Kolik stojí Můj plán služby App Service?
 
-Tato část popisuje, jak se účtují aplikací App Service. Oblast, podrobné informace o cenách, najdete v části [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+Tato část popisuje, jak se účtují aplikací služby App Service. Oblast, podrobné informace o cenách najdete v části [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
 
-S výjimkou **volné** vrstvy, plán služby App Service představuje hodinové poplatků na výpočetní prostředky používá.
+S výjimkou **Free** vrstvy, plán služby App Service představuje hodinovou sazbu na výpočetní prostředky, které používá.
 
-- V **sdílené** vrstvy, každá aplikace obdrží kvótu procesoru minut, takže _každou aplikaci_ je účtovat každou hodinu kvóty pro procesor.
-- V vyhrazenou výpočetní vrstvy (**základní**, **standardní**, **Premium**, **PremiumV2**), plán služby App Service definuje počet virtuálních počítačů instance aplikace jsou škálovat, tak _každá instance virtuálních počítačů_ ve službě App Service má plán hodinové poplatků. Tyto instance virtuálního počítače budou účtovat na nich běží stejný bez ohledu na to jak velký počet aplikací. Abyste se vyhnuli neočekávané poplatky, najdete v části [vyčištění plán služby App Service](app-service-plan-manage.md#delete).
-- V **izolovaná** vrstvy, App Service Environment definuje počet izolované pracovních procesů, které spouští vaše aplikace a _každý pracovní_ je účtován každou hodinu. Kromě toho je hodinové základní poplatek pro spuštění služby App Service Environment sám sebe. 
-- (Pouze azure funkce) **Spotřeba** vrstvy dynamicky přiděluje instance virtuálních počítačů do aplikaci funkce zatížení služby a je dynamicky poplatky za sekundu z Azure. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+- V **Shared** vrstvy, každé aplikaci, která přijímá kvótu minut využití procesoru, proto _každé aplikaci, která_ se účtuje po hodinách pro kvótu využití procesoru.
+- Ve vyhrazené výpočetní úrovně (**základní**, **standardní**, **Premium**, **PremiumV2**), plán služby App Service definuje počet virtuálních počítačů instance aplikace se upraví tak, aby _jednotlivých instancí virtuálních počítačů_ ve službě App Service má plán hodinovou sazbu. Tyto instance virtuálních počítačů se účtují stejný bez ohledu na tom, kolik aplikace běží na nich. Chcete-li se vyhnout neočekávaným poplatkům, naleznete v tématu [vyčištění plán služby App Service](app-service-plan-manage.md#delete).
+- V **izolované** vrstvy, služba App Service Environment definuje počet izolované pracovní procesy, které běží vaše aplikace a _každému pracovnímu procesu_ se účtuje po hodinách. Kromě toho je základní hodinové sazby pro spouštění služby App Service Environment samotný. 
+- (Pouze azure Functions) **Spotřeby** úroveň dynamicky přiděluje instance virtuálních počítačů jsou úlohy funkce app service a účtuje se dynamicky za sekundu v Azure. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
-Nemáte získat účtovat poplatek za použití funkce služby App Service, které jsou k dispozici (Konfigurace vlastní domény, certifikátů SSL, nasazovací sloty, záloh atd.). Výjimky jsou:
+Není vám účtují poplatky pro používání funkce App Service, které jsou k dispozici (Konfigurace vlastní domény, certifikáty protokolu SSL, sloty nasazení, zálohování atd.). Výjimky jsou:
 
-- Aplikace služby domény – platí při nákupu v Azure a při obnovení se každý rok.
-- Certifikáty App Service – platí při nákupu v Azure a při obnovení se každý rok.
-- Na základě IP připojení SSL - zde je poplatek za hodinové pro každé připojení založená na protokolu IP, ale některé **standardní** úroveň, nebo vyšší poskytuje jedno připojení založená na IP zdarma. Na základě SNI připojení SSL jsou volné.
+- Domény služby App Service – platíte při nákupu v Azure a kdy ho obnovíte každý rok.
+- Certifikáty App Service – platíte při nákupu v Azure a kdy ho obnovíte každý rok.
+- Připojení SSL na základě IP adresy – tady je hodinovou sazbu pro každé připojení SSL na základě IP adresy, ale některé **standardní** vrstvy nebo vyšší poskytuje jedno připojení založené na protokolu IP SSL zdarma. Připojení SSL na základě SNI je zdarma.
 
 > [!NOTE]
-> Pokud integrujete se jiná služba Azure App Service, musíte vzít v úvahu poplatky z těchto jiných služeb. Například pokud používáte Azure Traffic Manager geograficky, škálovat aplikace Azure Traffic Manager také poplatky vám na základě vašeho využití. Odhad vaše náklady cross-services v Azure, najdete v tématu [cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/). 
+> Pokud integrujete s jinou službou Azure App Service, budete muset vzít v úvahu účtování poplatků za tyto služby. Například pokud používáte Azure Traffic Manager umožní škálování vaší aplikace geograficky, Azure Traffic Manager také poplatky za vás na základě využití. Pro odhad nákladů napříč služby v Azure, najdete v článku [cenová Kalkulačka](https://azure.microsoft.com/pricing/calculator/). 
 >
 >
 
-## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Co když aplikace potřebuje další možnosti nebo funkce?
+## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Co když Moje aplikace potřebuje další možnosti nebo funkce?
 
-Plán služby App Service můžete kdykoli škálovat nahoru a dolů. Je stejně jednoduché jako při změně cenové úrovně plánu. Můžete vybrat nižší cenovou úroveň na první a škálování později Pokud potřebujete další funkce služby App Service.
+Plán služby App Service je možné škálovat nahoru a dolů v každém okamžiku. Je stejně snadné jako změna cenové úrovně plánu. Můžete zvolit nižší cenovou úroveň na první a později navýšit Pokud potřebujete další funkce služby App Service.
 
-Například můžete spustit testování vaší webové aplikace v **volné** služby App Service plánování a nic platit. Pokud chcete přidat vaše [vlastní název DNS](app-service-web-tutorial-custom-domain.md) do webové aplikace právě škálovat plán až **sdílené** vrstvy. Když chcete přidat později [vlastní certifikát SSL](app-service-web-tutorial-custom-ssl.md), škálovat plán až **základní** vrstvy. Pokud chcete mít [přípravná prostředí](web-sites-staged-publishing.md), škálovat až **standardní** vrstvy. Pokud potřebujete více jader, pamětí nebo úložištěm, škálování na větší velikost virtuálního počítače ve stejné vrstvě.
+Například můžete spustit testování webové aplikace **Free** služby App Service plánování a nic neplatíte. Pokud chcete přidat vaše [vlastní název DNS](app-service-web-tutorial-custom-domain.md) do webové aplikace stačí škálování plánu až **Shared** vrstvy. Později, když chcete přidat [vlastního certifikátu SSL](app-service-web-tutorial-custom-ssl.md), škálování plánu až **základní** vrstvy. Pokud chcete mít [přípravná prostředí](web-sites-staged-publishing.md), škálovat až **standardní** vrstvy. Když budete potřebovat více jader, paměť nebo úložiště, vertikálně navýšit kapacitu na větší velikost virtuálního počítače v rámci stejné úrovně.
 
-Stejné funguje v opačném pořadí. Pokud si myslíte, že už potřebovat možnosti nebo funkce vyšší úroveň, je možné škálovat na nižší úroveň, která jste úsporu nákladů.
+Stejné funguje v opačném pořadí. Pokud máte pocit, že jste už budete potřebovat možnosti nebo funkce vyšší úrovně, můžete vertikálně snížit kapacitu na nižší úroveň, které vám ušetří peníze.
 
-Informace o vertikálním navýšení kapacity plán služby App Service najdete v tématu [škálování aplikace v Azure](web-sites-scale.md).
+Informace o vertikálním navýšení kapacity plánu služby App Service najdete v tématu [vertikální navýšení kapacity aplikace v Azure](web-sites-scale.md).
 
-Pokud je vaše aplikace ve stejném plán služby App Service s jinými aplikacemi, můžete zlepšit výkon aplikace tak, že izoluje výpočetní prostředky. Můžete provést přesunutím aplikace do samostatné plán služby App Service. Další informace najdete v tématu [přesuňte aplikace na jiný plán aplikační služby](app-service-plan-manage.md#move).
+Pokud je vaše aplikace v rámci stejného plánu služby App Service s jinými aplikacemi, můžete zlepšit výkon vaší aplikace tak, že izoluje výpočetní prostředky. Můžete to udělat příkazem přesunu aplikace do samostatného plánu služby App Service. Další informace najdete v tématu [přesun aplikace do jiného plánu služby App Service](app-service-plan-manage.md#move).
 
-## <a name="should-i-put-an-app-in-a-new-plan-or-an-existing-plan"></a>Mají vloženy aplikace v plánu nové nebo existující plán?
+## <a name="should-i-put-an-app-in-a-new-plan-or-an-existing-plan"></a>Mám umístit aplikace v plánu nové nebo existující plán?
 
-Vzhledem k tomu, že platíte za výpočetní prostředky plán služby App Service přiděluje (najdete v části [kolik nemá Moje náklady na plán služby App Service?](#cost)), může potenciálně ušetřit peníze umístěním více aplikací do jednoho plánu služby App Service. Můžete přidat do existujícího plánu aplikace, tak dlouho, dokud plán nemá dostatek prostředků pro zpracování zátěže. Ale mějte na paměti, že aplikace ve stejném plán služby App Service, že všechny sdílet stejný výpočetní prostředky. Chcete-li zjistit, že jestli nové aplikace má potřebné prostředky, je potřeba pochopit kapacitu existující plán služby App Service a očekávané zatížení pro novou aplikaci. Přetížení plán služby App Service může potenciálně způsobit výpadky v nových nebo stávajících aplikací.
+Protože platíte za výpočetní prostředky plánu služby App Service přiděluje (naleznete v tématu [jaká je Moje náklady na plán služby App Service?](#cost)), můžete potenciálně ušetřit peníze vložením více aplikací do jednoho plánu služby App Service. Můžete pokračovat, dokud plán nemá dostatek prostředků pro zpracování zátěže přidání aplikací do existující plán. Nicméně mějte na paměti, že aplikace v rámci stejného plánu služby App Service, že všechny sdílet stejný výpočetní prostředky. Pokud chcete zjistit, jestli tato nová aplikace má potřebné prostředky, musíte pochopit existující plán služby App Service a očekávané zatížení kapacitu pro nové aplikace. Přetížení plán služby App Service může potenciálně způsobit výpadek pro nové i stávající aplikace.
 
-Isolate vaší aplikace do nové služby App Service při plánování:
+Izolace při plánování vaší aplikace do nové služby App Service:
 
-- Tato aplikace je náročná.
-- Chcete škálovat aplikaci nezávisle z jiných aplikací existující plán.
-- Aplikace musí prostředků v jiné zeměpisné oblasti.
+- Aplikace je náročné.
+- Chcete škálovat aplikace odděleně od ostatních aplikací existující plán.
+- Aplikace musí prostředku v jiné geografické oblasti.
 
-Tímto způsobem můžete přidělit novou sadu prostředků pro vaši aplikaci a získáte větší kontrolu nad vaší aplikace.
+Tímto způsobem můžete přidělit novou sadu prostředků pro vaši aplikaci a získat větší kontrolu nad svými aplikacemi.
 
-## <a name="manage-an-app-service-plan"></a>Spravovat plán služby App Service
+## <a name="manage-an-app-service-plan"></a>Správa plánu služby App Service
 
 > [!div class="nextstepaction"]
-> [Spravovat plán služby App Service](app-service-plan-manage.md)
+> [Správa plánu služby App Service](app-service-plan-manage.md)

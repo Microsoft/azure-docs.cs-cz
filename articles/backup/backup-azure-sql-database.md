@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: f6271e8de6be0bcfab7ade4c9e90a69482e7905e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: d38fc727ed7e9e3c47d2fcb9af7894f8a2a7c7a7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878206"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262329"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -117,8 +117,8 @@ Pokud tyto podmínky existují ve vašem prostředí, i nadále [konfigurace zá
 
 Pro všechny operace musí virtuální počítač SQL připojení k veřejným IP adresám Azure. Operace virtuálního počítače SQL (jako je například zjišťování databází, nakonfigurujte zálohování, naplánovat zálohování, obnovit body obnovení a tak dále) selhání bez připojení k veřejné IP adresy. Použijte některou z následujících možností a poskytne jasný pro provoz zálohování:
 
-- Rozsahy adres Azure datacenter IP seznamu povolených IP adres: na seznam povolených rozsahů IP adres datacentra Azure použít [stránce služby Stažení softwaru pro podrobnosti o rozsahy IP adres a pokyny](https://www.microsoft.com/download/details.aspx?id=41653).
-- Nasazení HTTP proxy server pro směrování provozu: při zálohování databáze SQL na virtuálním počítači, rozšíření zálohování na virtuálním počítači odesílat příkazy pro správu Azure Backup a dat do služby Azure Storage pomocí rozhraní API protokolu HTTPS. Rozšíření zálohování také používá pro ověřování Azure Active Directory (Azure AD). Směrování provozu linka záložního telefonu pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření vaší jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
+- Seznam povolených adres Azure datacenter rozsahy IP adres: Na seznam povolených rozsahů IP adres datacentra Azure použít [stránce služby Stažení softwaru pro podrobnosti o rozsahy IP adres a pokyny](https://www.microsoft.com/download/details.aspx?id=41653).
+- Nasazení HTTP proxy server pro směrování provozu: Při zálohování databáze SQL na virtuálním počítači, rozšíření zálohování na virtuálním počítači pomocí rozhraní API HTTPS příkazy pro správu odesílat data do služby Azure Storage a Azure Backup. Rozšíření zálohování také používá pro ověřování Azure Active Directory (Azure AD). Směrování provozu linka záložního telefonu pro tyto tři služby prostřednictvím proxy serveru HTTP. Rozšíření vaší jedinou komponentou, která je nakonfigurovaná pro přístup k veřejnému Internetu.
 
 Kompromisy mezi možnostmi jsou možnosti správy, podrobnou kontrolu a náklady.
 
@@ -149,7 +149,7 @@ Ke konfiguraci oprávnění:
 
     ![Vyberte pro zálohování serveru SQL Server ve virtuálním počítači Azure](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cíl zálohování** nabídce se zobrazí dva kroky: **zjistit databáze ve virtuálních počítačích** a **konfigurace zálohování**. **Zjistit databáze ve virtuálních počítačích** kroku spustit vyhledávání pro virtuální počítače Azure.
+    **Cíl zálohování** nabídce se zobrazí dva kroky: **Zjistit databáze ve virtuálních počítačích** a **konfiguraci zálohování**. **Zjistit databáze ve virtuálních počítačích** kroku spustit vyhledávání pro virtuální počítače Azure.
 
     ![Projděte si dva kroky cíl zálohování](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -231,7 +231,7 @@ Azure Backup zjistí všechny databáze na instanci systému SQL Server. Podle p
 
     ![Vyberte pro zálohování serveru SQL Server ve virtuálním počítači Azure](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cíl zálohování** nabídce se zobrazí dva kroky: **zjistit databáze ve virtuálních počítačích** a **konfigurace zálohování**.
+    **Cíl zálohování** nabídce se zobrazí dva kroky: **Zjistit databáze ve virtuálních počítačích** a **konfiguraci zálohování**.
 
     ![Projděte si dva kroky cíl zálohování](./media/backup-azure-sql-database/backup-goal-menu-step-one.png)
 
@@ -279,7 +279,7 @@ Konfigurace ochrany pro SQL database:
 
     ![Vyberte pro zálohování serveru SQL Server ve virtuálním počítači Azure](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-    **Cíl zálohování** nabídce se zobrazí dva kroky: **zjistit databáze ve virtuálních počítačích** a **konfigurace zálohování**.
+    **Cíl zálohování** nabídce se zobrazí dva kroky: **Zjistit databáze ve virtuálních počítačích** a **konfiguraci zálohování**.
 
     Pokud jste dokončili kroky v tomto článku v pořadí, jste se seznámili nechráněné virtuální počítače a tento trezor je zaregistrován s virtuálním počítačem. Nyní jste připraveni nakonfigurovat ochranu pro databáze SQL.
 
@@ -345,9 +345,9 @@ Konfigurace ochrany pro SQL database:
 
 Zásady zálohování definují pořizování zálohování a jak dlouho se uchovávají. Pomocí Azure Backup můžete naplánovat tři typy zálohování pro SQL databáze:
 
-* Úplné zálohování: úplná záloha databáze vytvoří zálohu celé databáze. Úplné zálohování obsahuje všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů a dostatek protokoly a tato data obnovit. Maximálně můžete aktivovat jednu úplnou zálohu denně. Můžete provést úplné zálohování na denní nebo týdenní interval.
-* Rozdílové zálohování: rozdílové zálohy je založen na nejnovější, předchozí úplná záloha. Rozdílové zálohování zaznamená pouze data, která se změnila od úplného zálohování. Maximálně můžete aktivovat jeden rozdílové zálohy za den. Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
-* Zálohování protokolu transakcí: zálohu protokolu umožňuje obnovení bodu v čase až po konkrétní sekundy. Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
+* Úplné zálohování: Úplná záloha databáze vytvoří zálohu celé databáze. Úplné zálohování obsahuje všechna data v konkrétní databázi nebo sadu skupiny souborů nebo souborů a dostatek protokoly a tato data obnovit. Maximálně můžete aktivovat jednu úplnou zálohu denně. Můžete provést úplné zálohování na denní nebo týdenní interval.
+* Rozdílové zálohování: Rozdílové zálohy je založená na nejnovější, předchozí úplná záloha. Rozdílové zálohování zaznamená pouze data, která se změnila od úplného zálohování. Maximálně můžete aktivovat jeden rozdílové zálohy za den. Úplné zálohování a rozdílovou zálohu nelze konfigurovat ve stejný den.
+* Zálohy transakčního protokolu: Záloha protokolu umožňuje obnovení bodu v čase až po konkrétní sekundy. Maximálně můžete nakonfigurovat zálohy transakčního protokolu každých 15 minut.
 
 Zásady vytvořené v trezoru služby Recovery Services úrovně. Více trezorů můžete použít stejné zásady zálohování, ale musíte použít zásadu zálohování, která pro každý trezor. Při vytváření zásady zálohování denně úplné zálohování je výchozí hodnota. Rozdílové zálohování, ale pouze můžete přidat, pokud nakonfigurujete týdenních úplných záloh. Následující postup vysvětluje, jak vytvořit zásady zálohování pro instanci systému SQL Server ve virtuálním počítači Azure.
 
@@ -455,8 +455,8 @@ Můžete také vybrat konkrétní úplnou nebo rozdílovou zálohu k obnovení p
     ![Vyberte obnovit databázi](./media/backup-azure-sql-database/restore-db-button.png)
 
     Když **obnovení** otevře se nabídka, **obnovit konfiguraci** také otevře se nabídka. **Obnovit konfiguraci** nabídky je prvním krokem k obnovení konfigurace. Určete, kam mají být data obnovena pomocí této nabídky. Dostupné možnosti:
-    - **Alternativní umístění**: obnovení databáze do alternativního umístění a zachovat původní zdrojové databáze.
-    - **Přepsat databázi**: obnovení dat na stejnou instanci systému SQL Server jako původní zdroj. Účinek této možnosti je přepisovat původní databázi.
+    - **Alternativní umístění**: Obnovení databáze do alternativního umístění a zachovat původní zdrojové databáze.
+    - **Přepsat databázi**: Obnovení dat na stejnou instanci systému SQL Server jako původní zdroj. Účinek této možnosti je přepisovat původní databázi.
 
     > [!Important]
     > Pokud vybraná databáze patří do skupiny dostupnosti Always On, SQL Server nepovoluje databáze, kterou chcete přepsat. V takovém případě pouze **alternativního umístění** je povolená možnost.
@@ -798,19 +798,15 @@ Následující část obsahuje další informace o zálohování databáze SQL.
 ### <a name="can-i-throttle-the-speed-of-the-sql-server-backup-policy"></a>Je možné omezovat rychlost zásady zálohování serveru SQL Server?
 
 Ano. Můžete omezit rychlost, jakou zásadu zálohování, která spustí k minimalizaci vlivu na instanci systému SQL Server.
-
 Chcete-li změnit nastavení:
-
-1. Na instanci SQL serveru ve složce C:\Program Files\Azure úlohy Backup\bin otevřete **TaskThrottlerSettings.json** souboru.
-
-2. V souboru TaskThrottlerSettings.json změnit **DefaultBackupTasksThreshold** nastavení na nižší hodnotu (například 5).
+1. V instanci SQL serveru v *složky C:\Program Files\Azure úlohy Backup\bin*, vytvořte **ExtensionSettingsOverrides.json** souboru.
+2. V **ExtensionSettingsOverrides.json** změňte **DefaultBackupTasksThreshold** nastavení na nižší hodnotu (například 5) <br>
+  ` {"DefaultBackupTasksThreshold": 5}`
 
 3. Uložte provedené změny. Zavřete soubor.
-
-4. Na instanci serveru SQL Server otevřete **Správce úloh**. Restartujte **službu Koordinátor úloh Azure Backup**.
+4. Na instanci serveru SQL Server otevřete **Správce úloh**. Restartujte **AzureWLBackupCoordinatorSvc** služby.
 
 ### <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Ze sekundární repliky, spusťte úplné zálohování?
-
 Ne. Tato funkce není podporována.
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>Úspěšné úlohy zálohování vytvářejí výstrahy?

@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 3/26/2018
+ms.date: 03/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4cfb7067510ec06df3319035dee5e2195cb2f9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e49743de817bc1fe92afcbc80764771f6df66c56
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997535"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271262"
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Přizpůsobení image kontejneru pro modely Azure ML
 

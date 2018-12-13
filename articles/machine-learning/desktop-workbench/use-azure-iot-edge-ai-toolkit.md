@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 2/1/2018
+ms.date: 02/01/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 023674f05dda6c2da8edddb843277dd07a513162
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9c4d1be552005419ba2e9758a37e02f15fd20155
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244623"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268474"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Použití sady AI Toolkit pro Azure IoT Edge
 

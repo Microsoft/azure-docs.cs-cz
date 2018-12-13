@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ed57cb458cc1f71c5d6fd2475c54cc712257dd84
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5baa392d098b0b0e40986bc426c88785db025a29
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084868"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255281"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalace balíčků z v rámci poznámkového bloku
 
@@ -40,7 +40,7 @@ Pokud výstup příkazu znamená, že tento požadavek již není splněna, pak 
 
 ## <a name="r"></a>R
 
-Balíčky jazyka r můžete nainstalovat pomocí CRAN nebo Github pomocí `install.packages` funkce do buňky kódu:
+Balíčky jazyka r můžete nainstalovat pomocí CRAN nebo GitHub pomocí `install.packages` funkce do buňky kódu:
 
 ```r
 install.packages("package_name")
@@ -73,5 +73,5 @@ Paket.Package
 
 ## <a name="next-steps"></a>Další postup
 
-- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postupy: zobrazení prezentace](present-jupyter-notebooks-slideshow.md)
+- [Jak: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Jak: K dispozici prezentace](present-jupyter-notebooks-slideshow.md)

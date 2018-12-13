@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim88
-ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031080"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166587"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Pomocí metadat a rozhraní API GenerateAnswer
 
@@ -54,16 +54,16 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
 - **Adresa URL požadavku**: koncový bod Tvůrce https://{QnA} /knowledgebases/ {ID znalostní báze} / generateAnswer
 
 - **Parametry žádosti**: 
-    - **ID znalostní báze** (řetězec): GUID pro znalostní báze.
-    - **Koncový bod rozhraní QnAMaker** (řetězec): název hostitele koncového bodu nasazené ve vašem předplatném Azure.
+    - **ID znalostní báze** (řetězec): Identifikátor GUID pro znalostní báze.
+    - **Koncový bod rozhraní QnAMaker** (řetězec): Název hostitele koncového bodu nasazené ve vašem předplatném Azure.
 - **Hlavičky žádosti**
-    - **Content-Type** (řetězec): typ média textu odeslaného do rozhraní API.
-    - **Autorizace** (řetězec): klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+    - **Content-Type** (řetězec): Typ média textu odeslaného do rozhraní API.
+    - **Autorizace** (řetězec): Klíče vašeho koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
 - **Text žádosti**
-    - **dotaz** (řetězec): dotázán proti znalostní báze otázku uživatele.
-    - **horní** (volitelné, celé číslo): číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.
-    - **ID uživatele** (volitelný, řetězec): jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.
-    - **strictFilters** (volitelný, řetězec):-li zadána, informuje nástroj QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Další informace najdete níže.
+    - **dotaz** (řetězec): Otázku uživatele Chcete-li být dotázán proti znalostní báze.
+    - **horní** (volitelné, celé číslo): Číslo seřazený výsledků, které chcete zahrnout do výstupu. Výchozí hodnota je 1.
+    - **ID uživatele** (volitelný, řetězec): Jedinečné ID k identifikaci uživatele. Toto ID se zaznamená do protokolů chatu.
+    - **strictFilters** (volitelný, řetězec): Je-li zadána, říká QnA Maker vrátit pouze odpovědi, které mají zadanou metadat. Další informace najdete níže.
     ```json
     {
         "question": "qna maker and luis",
@@ -81,14 +81,14 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
 
 - **Odpověď 200** – úspěšné volání vrátí výsledek na otázku. Odpověď obsahuje následující pole:
     - **odpovědi** – seznam odpovědi na dotaz uživatele, seřazené v sestupném pořadí podle pořadí skóre.
-        - **skóre**: hodnocení 0 až 100.
-        - **dotazy**: na otázky, které zadal uživatel.
-        - **odpověď**: odpověď na dotaz.
-        - **Zdroj**: název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.
-        - **metadata**: metadata přidružená k odpovědi.
-            - Název: název metadat. (maximální délka řetězce: 100, povinné)
-            - hodnota: hodnota metadat. (maximální délka řetězce: 100, povinné)
-        - **ID**: jedinečné ID přiřazené k odpovědi.
+        - **skóre**: Hodnocení 0 až 100.
+        - **dotazy**: Dotazy poskytnutých uživatelem.
+        - **Odpověď**: Odpověď na dotaz.
+        - **Zdroj**: Název zdroje, ze kterého byla odpověď extrahovat nebo uložit znalostní báze knowledge base.
+        - **metadata**: Metadata přidružená k odpovědi.
+            - Jméno: Název metadat. (maximální délka řetězce: 100, povinné)
+            - Hodnota: Hodnota metadat. (maximální délka řetězce: 100, povinné)
+        - **ID**: Jedinečné ID přiřazené k odpovědi.
     ```json
     {
         "answers": [
@@ -167,6 +167,8 @@ Odpověď GenerateAnswer obsahuje odpovídající informace metadat sady odpoví
 Tyto informace slouží k zaznamenání kontextu předchozí konverzace pro použití v pozdější konverzace. 
 
 ## <a name="next-steps"></a>Další postup
+
+Stránka publikovat také obsahuje informace pro generování odpovědi pomocí [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) a [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
 > [Vytvoření znalostní báze](./create-knowledge-base.md)

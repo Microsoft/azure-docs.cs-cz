@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.author: snehaa
-ms.openlocfilehash: 2f04fe103d010a64a77b7d80730cf80007c3c126
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ebc4393341341b3b73165a166a650ae1a6f431ff
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256371"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257790"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -40,15 +40,20 @@ Azure Migrate je služba posouzení, která vám pomůže zjistit vaše místní
 
 Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deployment Planner je zotavení po havárii (DR) nástroj pro plánování.
 
-**Migraci z VMware do Azure**: Pokud máte v úmyslu migrace místních úloh do Azure, použijte Azure Migrate týkající se plánování migrace. Azure Migrate posuzuje místní úlohy a poskytuje pokyny, přehledy a mechanismy, které vám pomohou při migraci do Azure. Až budete připravení plán migrace zrealizovat, můžete počítače migrovat do Azure služeb, jako je Azure Site Recovery a Azure Database Migration Service.
+**Migraci z VMware do Azure**: Pokud máte v úmyslu migrace místních úloh do Azure, použijte pro plánování migrace Azure Migrate. Azure Migrate posuzuje místní úlohy a poskytuje pokyny, přehledy a mechanismy, které vám pomohou při migraci do Azure. Až budete připravení plán migrace zrealizovat, můžete počítače migrovat do Azure služeb, jako je Azure Site Recovery a Azure Database Migration Service.
 
 **Migrace z technologie Hyper-V do Azure**: Azure Migrate aktuálně podporuje pouze posouzení virtuálních počítačů VMware pro migraci do Azure. Podpora technologie Hyper-V je na plán služby pro Azure Migrate. Prozatím můžete použít Plánovač nasazení služby Site Recovery. Jakmile se ve službě Azure Migrate je povolena podpora technologie Hyper-V, můžete použít Azure Migrate týkající se plánování migrace úloh Hyper-V.
 
 **Zotavení po havárii z VMware/Hyper-V do Azure**: Pokud máte v úmyslu provést zotavení po havárii (DR) v Azure pomocí Azure Site Recovery (služba Site Recovery), použijte Plánovač nasazení služby Site Recovery pro plánování zotavení po Havárii. Plánovač nasazení služby Site Recovery nemá podrobné, specifické pro Azure Site Recovery hodnocení v místním prostředí. Poskytuje doporučení, která jsou vyžadované Site Recovery pro úspěšné operace zotavení po Havárii, jako je replikace, převzetí služeb při selhání virtuálních počítačů.  
 
-### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Které oblasti Azure jsou podporovány službou Azure Migrate?
+### <a name="which-azure-geographies-are-supported-by-azure-migrate"></a>Které geografické oblasti Azure jsou podporovány službou Azure Migrate?
 
-Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako umístění projektu migrace. I v případě, že projekty migrace můžete vytvořit jenom v západní USA – střed a východní USA, můžete přesto posoudit u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Umístění projektu slouží pouze k uložení zjištěná data.
+Azure Migrate aktuálně podporuje Spojených států a Azure Government jako zeměpisných oblastech projektu. I když migrace projektů můžete vytvořit pouze v těchto geografické oblasti, můžete přesto posoudit u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Zeměpisné oblasti projektu slouží pouze k uložení metadat zjištěných.
+
+**Zeměpisné oblasti** | **Umístění úložiště metadat**
+--- | ---
+Sjednotí stavy | Střed USA – západ nebo USA – východ
+Azure Government | USA (Gov) – Virginia
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 
@@ -137,9 +142,12 @@ Je možné vyhledat 1 500 virtuálních počítačů v jedné migrace projektu. 
 Azure Migrate aktuálně nepodporuje odhad nákladů pro [nabídky Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Alternativním řešením je zadat jako nabídky a ručně určení procento slevy (platí pro předplatné) v poli "Slevy" vlastnosti posouzení s průběžnými platbami.
 
   ![Sleva](./media/resources-faq/discount.png)
-  
+
 
 ## <a name="dependency-visualization"></a>Vizualizace závislostí
+
+> [!NOTE]
+> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 ### <a name="what-is-dependency-visualization"></a>Co je vizualizace závislostí?
 
@@ -151,7 +159,7 @@ Ne. Další informace o cenách služby Azure Migrate najdete [zde](https://azur
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>Je potřeba instalovat cokoli, co je pro vizualizace závislostí?
 
-Pokud chcete použít vizualizaci závislostí, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. 
+Pokud chcete použít vizualizaci závislostí, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit.
 
 - [Microsoft Monitoring agent(MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musí být nainstalovaný na každém počítači.
 - [Agenta závislostí](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musí být nainstalovaný na každém počítači.

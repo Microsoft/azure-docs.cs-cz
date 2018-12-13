@@ -1,21 +1,22 @@
 ---
 title: Nejčastější dotazy (FAQ) – rozhraní API webové vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Získejte odpovědi na běžné dotazy týkající se rozhraní API webové vyhledávání Bingu.
+description: Získejte odpovědi na běžné dotazy týkající se použití rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 2d43a73d93b24599b28af849ee9d1532441ef6bc
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.author: aahi
+ms.custom: seodec2018
+ms.openlocfilehash: 9098ddc780e6adefa8430fe601e3f4d06634972a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233547"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252979"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -65,4 +66,4 @@ Je vaše otázky týkající se chybějící funkce nebo funkce? Vezměte v úva
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
- [Přetečení zásobníku: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Přetečení zásobníku: Služby cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)

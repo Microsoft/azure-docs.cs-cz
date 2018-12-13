@@ -79,11 +79,11 @@ V této části vytvoříte virtuální síť a dva virtuální počítače pro 
     1. Zkontrolujte, že je vybraná virtuální síť *myVNet* a podsíť *myBackendSubnet*.
     2. V části **Veřejná IP adresa** v podokně **Vytvořit veřejnou IP adresu** vyberte **Standard** a pak vyberte **OK**.
     3. V části **Skupina zabezpečení sítě** vyberte **Upřesnit** a pak postupujte následovně:
-        1. Vyberte Skupina zabezpečení sítě (brána firewall) a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
+        1. Vyberte \*Skupina zabezpečení sítě (brána firewall) a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
         2. Na stránce **Vytvořit skupinu zabezpečení sítě** jako **Název** zadejte *myNetworkSecurityGroup* a pak vyberte **OK**.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
-7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myavailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě *myNetworkSecurityGroup*. 
+7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myavailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě \**myNetworkSecurityGroup*. 
 
 ### <a name="create-nsg-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
 

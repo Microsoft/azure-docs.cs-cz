@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634502"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322426"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace Samanage pro automatické zřizování uživatelů
 
@@ -76,7 +76,9 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste m�
 
 ### <a name="important-tips-for-assigning-users-to-samanage"></a>Důležité tipy pro přiřazování uživatelů k Samanage
 
-*   Dále je doporučeno jednoho uživatele Azure AD, je přiřazená Samanage otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
+*    Samanage rolí se automaticky a dynamicky vyplní na webu Azure Portal uživatelského rozhraní ještě dnes. Před přiřazením Samanage role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Samanage načíst nejnovější role ve vašem tenantovi Samanage.
+
+*    Dále je doporučeno jednoho uživatele Azure AD je přiřazená Samanage k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
 
 *   Při přiřazení uživatele k Samanage, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
 

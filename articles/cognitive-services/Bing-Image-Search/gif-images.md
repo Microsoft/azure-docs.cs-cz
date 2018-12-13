@@ -1,7 +1,7 @@
 ---
-title: Získání obrázků GIF – rozhraní API pro vyhledávání obrázků Bingu
+title: Hledání obrázků GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Jak používat rozhraní API Bingu pro vyhledávání obrázků zobrazíte další informace o imagích .gif.
+description: Pomocí rozhraní API pro vyhledávání obrázků Bingu pro vyhledávání obrázků GIF webu.
 services: cognitive-services
 author: MikeDodaro
 manager: cgronlun
@@ -10,16 +10,17 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
-ms.openlocfilehash: 82a096ccc1ead9bfb542663ae193539fc227c1fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.custom: seodec2018
+ms.openlocfilehash: 7536452d3ed0030b34e4f30deba56d6d8ae1957c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870243"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249307"
 ---
-# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>Hledání obrázků GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
+# <a name="search-for-gif-images"></a>Vyhledávání obrázků GIF 
 
-Rozhraní API Bingu pro vyhledávání obrázků můžete také prohledat napříč celým webovým nejrelevantnější obrázků GIF.  Vývojáři mohou integrovat poutavé GIF v různých scénářích konverzace. 
+Rozhraní API Bingu pro vyhledávání obrázků můžete také prohledat napříč celým webovým nejrelevantnější obrázků GIF.  Vývojáři mohou integrovat poutavé GIF v různých scénářích konverzace. 
 
 Následující adresa URL je dotaz pro Image animovaný obrázek GIF.
 ````
@@ -206,5 +207,5 @@ Kód získá následující výsledky jako objekty JSON:
 ```
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start C#](quickstarts/csharp.md)
+- [Rychlý start pro jazyk C#](quickstarts/csharp.md)
 - [Kurz pro vyhledávání obrázků jednostránková aplikace](tutorial-bing-image-search-single-page-app.md)

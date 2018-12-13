@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 74e963abe5d2798f72bce8212c9f761f8f3297d1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256931"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270004"
 ---
 # <a name="the-azure-sql-database-service"></a>Služba Azure SQL Database
 
@@ -60,7 +60,7 @@ S využitím SQL Database je každá databáze izolovaná od všech ostatních a
 
 SQL Database nabízí [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
-- Nákupní model založený na DTU nabízí pro zajištění podpory databázových úloh od zcela nenáročných až po velmi náročné kombinaci výpočetních, paměťových a vstupně-výstupních prostředků na třech úrovních služby: Basic, Standard a Premium. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
+- Nákupní model založený na DTU nabízí kombinaci výpočetních, paměťových a vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším: Basic, Standard a Premium. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 - Nákupní model založený na virtuálních jádrech umožňuje výběr počtu virtuálních jader, velikosti paměti a velikosti a rychlosti úložiště.
 
 Můžete sestavit svoji první aplikaci na malou izolovanou databází s nízkými náklady za měsíc v rámci úrovně služeb pro obecné účely a potom změnit úroveň služby ručně nebo prostřednictvím kódu programu kdykoli na vrstvu služby kritické obchodní podle potřeb vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
@@ -93,9 +93,9 @@ Jak ale můžeme srovnávat relativní výkon izolovaných databází a elastick
 
 Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sql-database-metrics-diag-logging.md) pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
-- **Azure Storage:** Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
-- **Centrum událostí Azure:** Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály.
-- **Azure Log Analytics:** Pro integrované řešení monitorování s možnostmi generování sestav, upozorňování a omezování rizik.
+- **Azure Storage**: Pro archivaci obrovských objemů telemetrických dat za nízkou cenu.
+- **Centrum událostí Azure**: Pro integraci telemetrických dat služby SQL Database s vlastními řešeními monitorování nebo aktivními kanály
+- **Azure Log Analytics**: Pro integrované řešení monitorování s generování sestav, upozorňování a snížení rizik souvisejících s možností.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -109,10 +109,10 @@ Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](https://azure.mi
 - **[Obnovení bodu v čase](sql-database-recovery-using-backups.md)**:
 
   SQL Database podporuje obnovení do libovolného bodu v čase v rámci doby uchování automatických záloh.
-- **[Aktivní geografická replikace](sql-database-geo-replication-overview.md)**:
+- **[Aktivní geografická replikace](sql-database-active-geo-replication.md)**:
 
   SQL Database umožňuje konfigurovat až čtyři čitelné sekundární databáze ve stejné nebo v globálně distribuovaných datových center Azure.  Pokud například máte aplikaci SaaS s databází katalogu s velkým počtem souběžných transakcí jen pro čtení, použijte geografickou replikaci a umožněte globální škálovaní operací čtení a odstraňte problémová místa v hlavní databázi způsobená úlohami čtení.
-- **[Skupiny převzetí služeb při selhání](sql-database-geo-replication-overview.md)**:
+- **[Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md)**:
 
   SQL Database umožňuje povolit vysokou dostupnost a vyrovnávání zatížení v globálním měřítku, včetně transparentní geografické replikace a převzetí služeb při selhání z velké sady databází a elastických fondů. Skupiny převzetí služeb při selhání a aktivní geografická replikace umožňují vytváření globálně distribuovaných aplikací SaaS s minimálními nároky na správu. Veškeré komplexní monitorování, směrování a orchestraci převzetí služeb při selhání zajišťuje služba SQL Database.
 - **[Zónově redundantní databáze](sql-database-high-availability.md)**:
@@ -135,8 +135,8 @@ V současné době se mnoho našich partnerů provozujících [víceklientské a
 
 Ve službě [SQL Database jsou dostupné](sql-database-automatic-tuning.md) dva aspekty automatické optimalizace:
 
-- **Automatická správa indexů:** Identifikuje indexy, které by se měly do databáze přidat nebo z ní naopak odebrat.
-- **Automatická oprava plánů:** Identifikuje problematické plány a řeší problémy s výkonem plánu SQL (již brzy, aktuálně k dispozici v SQL Serveru 2017).
+- **Automatická správa indexů**: Identifikuje indexy, které mají být přidány do databáze a indexy, které by se měly odebrat.
+- **Automatická oprava plánů**: Identifikuje problematické plány a řeší problémy s výkonem plánu SQL (již brzy, aktuálně k dispozici v SQL serveru 2017).
 
 ### <a name="adaptive-query-processing"></a>Adaptivní zpracování dotazů
 
@@ -197,11 +197,11 @@ SQL Database podporuje vytváření aplikací pomocí Pythonu, Javy, Node.js, PH
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Spolupráce s technickým týmem SQL Serveru
 
-- [DBA na webu Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Pokládání dotazů týkajících se správy databází
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Pokládání dotazů týkajících se vývoje
+- [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Ptejte se správy databáze
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Ptejte se vývoj
 - [Fóra na webu MSDN](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Pokládání technických dotazů
-- [Feedback](https://aka.ms/sqlfeedback): Hlášení chyb a žádosti o funkce
-- [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze o SQL Serveru
+- [Zpětná vazba](https://aka.ms/sqlfeedback): Ohlašování chyb a žádosti o funkce
+- [Reddit](https://www.reddit.com/r/SQLServer/): Diskuze o SQL serveru
 
 ## <a name="next-steps"></a>Další postup
 

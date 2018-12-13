@@ -1,23 +1,22 @@
 ---
-title: Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js
-description: Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB
-services: cosmos-db
+title: Připojení aplikace mongodb s podporou Node.js ke službě Azure Cosmos DB
+description: Tento rychlý start ukazuje, jak se připojit stávající aplikace MongoDB napsané v Node.js do služby Azure Cosmos DB.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc, devcenter, seodec2018
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/19/2017
-ms.openlocfilehash: 1a5d0c7c2e44d934658434b8ea0b048c238a9bef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: d9754cf66b05059c986c7ffbff94290e207f706a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097858"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141370"
 ---
-# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
+# <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrace stávající webové aplikace mongodb s podporou Node.js 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

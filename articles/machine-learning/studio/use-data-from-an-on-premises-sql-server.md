@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 059dd3d902409abfa80be2b7aac579a54de1868f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: dccea7c5d7967af2e81ab4728704a5a104a007b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090666"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269273"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-using-an-on-premises-sql-server-database"></a>Provádění analýz pomocí Azure Machine Learning pomocí k místní databázi SQL serveru
+# <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Provádět analýzy k místní databázi SQL serveru pomocí Azure Machine Learning Studio
 
 Často podniky, které fungují s místními daty by chtěli využívat škálování a flexibility cloudu k jejich počítači strojové učení. Ale nebudete chtít narušit jejich aktuální obchodní procesy a pracovní postupy díky přesunu jejich místní data do cloudu. Azure Machine Learning teď podporuje čtení dat z místní databáze systému SQL Server a pak trénování a vyhodnocování modelu s těmito daty. Už máte ručně zkopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho **Import dat** modulu v nástroji Azure Machine Learning Studio teď najdete přímo z místní databáze SQL serveru pro trénování a vyhodnocování úlohy.
 
@@ -36,7 +35,7 @@ Tento článek poskytuje přehled o tom, jak příchozího přenosu dat místní
 
 <!-- -->
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Instalace prostředí Integration Runtime Data Factory
 Pro přístup k místní databázi SQL serveru ve službě Azure Machine Learning, budete muset stáhnout a nainstalovat Data Factory IR, dřív označované jako brána pro správu dat. Při konfiguraci připojení v nástroji Machine Learning Studio, máte možnost stáhnout a nainstalovat ji pomocí Integration Runtime (IR) **stahování a brána dat registru** dialogového okna popsané níže.
@@ -126,7 +125,7 @@ Nyní jste připraveni používat vaše místní data.
 
 Můžete vytvořit a nastavit více bran v nástroji Studio za každý pracovní prostor. Například může mít bránu, kterou chcete připojit ke zdrojům dat testu během vývoje a jinou bránu pro zdroje dat produkčního prostředí. Azure Machine Learning poskytuje flexibilitu pro nastavení více bran v závislosti na vašem podnikovém prostředí. Momentálně nemůžete sdílet brány mezi pracovními prostory a jenom jedna brána lze nainstalovat v jednom počítači. Další informace najdete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md).
 
-### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Použití brány číst data z místních zdrojů dat
+### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Čtení dat z místních zdrojů dat pomocí brány
 Jakmile nastavíte bránu, můžete přidat **Import dat** modulů na experiment, který vstupů data z místní databáze SQL serveru.
 
 1. V nástroji Machine Learning Studio, vyberte **EXPERIMENTY** klikněte na tlačítko **+ nová** v levém dolním rohu a vyberte **prázdný Experiment** (nebo vyberte některou z několika vzorku experimentů k dispozici).

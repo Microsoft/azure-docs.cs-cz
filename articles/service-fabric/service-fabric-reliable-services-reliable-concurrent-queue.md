@@ -1,9 +1,9 @@
 ---
 title: ReliableConcurrentQueue v Azure Service Fabric
-description: ReliableConcurrentQueue je Vysoká propustnost fronty, který umožňuje paralelní enqueues a dequeues.
+description: ReliableConcurrentQueue je fronta vysokou propustnost, což umožňuje paralelní zařadí a dequeues.
 services: service-fabric
 documentationcenter: .net
-author: sangarg
+author: tylermsft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,49 +13,49 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: sangarg
-ms.openlocfilehash: e04123f7870921a2979564d0f6c68424d4d7711c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206573"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185031"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
-Spolehlivé souběžných fronty je frontu asynchronní, transakční a replikované které funkce vysoké souběžnosti pro zařazování a dequeue – operace. Je navržen pro poskytování vysoké prostupnosti a nízké latence podle uvolnit striktní řazení FIFO poskytované [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
+Spolehlivá souběžná fronta je asynchronní, transakční a replikované fronty které funkce vysoké souběžnost pro zařazení do fronty a operace odstranění z fronty. Je navržena pro zajištění vysoké propustnosti a nízké latence zmírněním striktní řazení FIFO poskytované [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
 
 ## <a name="apis"></a>Rozhraní API
 
-|Souběžné fronty                |Spolehlivá souběžná fronta                                         |
+|Souběžná fronta                |Spolehlivá souběžná fronta                                         |
 |--------------------------------|------------------------------------------------------------------|
-| void Enqueue(T item)           | Úloha EnqueueAsync (ITransaction tx, položka T)                       |
+| void Enqueue(T item)           | Úloha EnqueueAsync (ITransaction tx, T položky)                       |
 | BOOL TryDequeue (out výsledek T)  | Úloha < ConditionalValue < T >> TryDequeueAsync (ITransaction tx)  |
 | int Count()                    | dlouhé Count()                                                     |
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Porovnání s [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-Spolehlivé souběžných fronty je poskytován jako alternativu k [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx). By být používána v případech, kde není vyžadována, striktní řazení FIFO jako zaručující FIFO vyžaduje kompromis s souběžnosti.  [Spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) používá zámky vynutit FIFO řazení s maximálně jednu transakci povolen zařadit do fronty a maximálně jednu transakci dovoleno dequeue – najednou. Porovnání spolehlivé souběžných fronty zmírní řazení omezení a umožňuje jakýchkoli počet souběžných transakcí interleave jejich zařazování a dequeue – operace. Řazení typu Best effort je zadáno, ale relativní řazení ze dvou hodnot v spolehlivé souběžných frontě možné nikdy zaručit.
+Spolehlivá souběžná fronta se nabízí jako alternativu k [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx). By mělo být používáno v případech, kdy není potřeba, řazení přísné FIFO jako uzavřené FIFO vyžaduje se souběžností kompromis.  [Spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) používá zámky vynutit FIFO řazení s maximálně jednu transakci povolen zařadit do fronty a nejvýše jedna transakce může odstranění z fronty po jednom. Spolehlivá souběžná fronta ve srovnání s zmírňuje omezení řazení a umožňuje libovolný počet souběžných transakcí prokládání jejich zařazení do fronty a operace odstranění z fronty. Řazení Best effort je k dispozici, ale relativní řazení ze dvou hodnot v spolehlivá souběžná fronta může nikdy být zaručena.
 
-Poskytuje spolehlivé souběžných fronty vyšší propustnost a nižší latenci než [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) vždy, když jsou více souběžných transakcí provádění enqueues nebo dequeues.
+Spolehlivá souběžná fronta poskytuje vyšší propustnost a nižší latenci než [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) pokaždé, když existuje více souběžných transakcí provádění zařadí a/nebo dequeues.
 
-Ukázka případ použití je ReliableConcurrentQueue [fronta zpráv](https://en.wikipedia.org/wiki/Message_queue) scénář. V tomto scénáři jeden nebo více zpráv producenti vytvoření a přidání položek do fronty, a jeden nebo více zpráv příjemci načítat zprávy z fronty a jejich zpracování. Více producenti a spotřebitelé může nezávisle pracovat, aby bylo možné zpracovat fronty použití souběžných transakcí.
+Ukázky pro ReliableConcurrentQueue je případ použití [fronty zpráv](https://en.wikipedia.org/wiki/Message_queue) scénář. V tomto scénáři, jedním nebo více výrobci zprávu vytvořit a přidat položky do fronty, a jeden nebo více zpráv příjemci vytahují zprávy z fronty a jejich zpracování. Více producenti a spotřebitelé může pracovat nezávisle, aby bylo možné zpracovat fronty pomocí souběžných transakcí.
 
-## <a name="usage-guidelines"></a>Pokyny týkající se používání
-* Fronty očekává, že položky ve frontě mají doby uchování nízkou. To znamená položky by zůstat ve frontě delší dobu.
-* Fronty nezaručuje striktní FIFO řazení.
-* Fronta není přečíst vlastní zápisy. Pokud je položka zařazených do fronty v rámci transakce, nebude viditelná pro dequeuer v rámci stejné transakci.
-* Dequeues nejsou od sebe navzájem oddělené. Pokud položka *A* je vyjmutou v transakci *txnA*, i když *txnA* položky není potvrzena, *A* nebude viditelná pro souběžné transakce *txnB*.  Pokud *txnA* zruší, *A* bude zobrazovat *txnB* okamžitě.
-* *TryPeekAsync* chování může být implementováno pomocí *TryDequeueAsync* a pak ruší se transakce. Příklady najdete v části programování vzory.
-* Počet je netransakční. Umožňuje získat představu o počet elementů ve frontě, ale představuje bodu v čase a nelze spoléhat.
-* Nákladné zpracování na dequeued položky nebude prováděna při transakci je aktivní, aby se zabránilo dlouhotrvajících transakcí, které by mohly mít dopad na výkon systému.
+## <a name="usage-guidelines"></a>Pokyny k používání
+* Fronty očekává, že s nízkou uchovávají položek ve frontě. Položky by to znamená, zůstanou ve frontě po dlouhou dobu.
+* Fronty nezaručuje řazení přísné FIFO.
+* Fronty nenačítá vlastní zápisy. Pokud je určitá položka zařazených do fronty v rámci transakce, nebude viditelná pro dequeuer v rámci jedné transakce.
+* Dequeues nejsou vzájemně izolované. Pokud položka *A* vyjmutou v transakci *txnA*, i když *txnA* položka není potvrzena, *A* nebude viditelná pro souběžné transakce *txnB*.  Pokud *txnA* přeruší, *A* bude zobrazovat *txnB* okamžitě.
+* *TryPeekAsync* chování může být implementováno pomocí *TryDequeueAsync* a potom přerušením transakce. Příklad najdete v části vzory programování.
+* Počet je není transakční. Je možné, kde získáte představu o počet prvků ve frontě, ale představuje v daném okamžiku a nelze spoléhat.
+* Nákladné zpracování dequeued položek by neměla provést během transakce je aktivní, aby se zabránilo dlouhotrvajících transakcí, které by mohly mít dopad na výkon systému.
 
 ## <a name="code-snippets"></a>Fragmenty kódu
-Dejte nám se podívejte na několik fragmenty kódu a jejich očekávané výstupy. Zpracovávání výjimek v jazyce je ignorován v této části.
+Podívejme se na několik fragmentů kódu a jejich očekávané výstupy. Zpracování výjimek je ignorován v této části.
 
 ### <a name="enqueueasync"></a>EnqueueAsync
-Tady je několik fragmenty kódu pro použití EnqueueAsync následuje jejich očekávané výstupy.
+Tady je pár fragmenty kódu pro použití EnqueueAsync, za nímž následuje jejich očekávané výstupy.
 
-- *Případ 1: Zařazování úloh jeden*
+- *Případ 1: Jediné úlohy zařadit do fronty*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -67,14 +67,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úloha dokončena úspěšně a že v něm nebyly žádné souběžných transakcí úprava fronty. Uživatele můžete očekávat fronty tak, aby obsahovala položky ve všech následujících příkazů:
+Předpokládejme, že se úloha úspěšně dokončila a že v něm nebyly žádné souběžných transakcí úprava fronty. Uživatel můžete očekávat, že fronta bude obsahovat položky v některém z následujících pořadí:
 
 > 10, 20
 
 > 20, 10
 
 
-- *Případ 2: Zařazování úloh paralelní*
+- *Případ 2: Paralelní úlohy zařadit do fronty*
 
 ```
 // Parallel Task 1
@@ -96,14 +96,14 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úlohy byl úspěšně dokončen, že úkoly spustili paralelně a že neexistují žádné souběžných transakcí úprava fronty. Žádné odvození můžete provedeny o pořadí položek ve frontě. Pro tento fragment kódu může se zobrazit položky v některém ze 4! možné pořadí.  Fronty se pokusí uchovat položky v původní pořadí (zařazených do fronty), ale muset změnit jejich pořadí z důvodu souběžných operací nebo chyb.
+Předpokládejme, že úkoly se nedokončil úspěšně, že úkoly spustil paralelně a, že nebyly provedeny žádné jiné souběžné transakce úprava fronty. Informace o pořadí položek ve frontě nelze realizovat žádná odvození. Tento fragment kódu mohou být zobrazeny položky, v libovolné ze 4! pořadí, které je to možné.  Fronta se pokusí uchovat položky v původním pořadí (zařazených do fronty), ale mohou být nuceni přeuspořádaly z důvodu souběžných operací nebo chyby.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Tady je několik fragmenty kódu pro použití TryDequeueAsync následuje očekávané výstupy. Předpokládejme, že fronta je již naplněný následující položky ve frontě:
+Tady je pár fragmenty kódu pro použití TryDequeueAsync, za nímž následuje očekávané výstupy. Předpokládejme, že fronty již naplněný následujících položek ve frontě:
 > 10, 20, 30, 40, 50, 60
 
-- *Případ 1: Jeden dequeue – úloha*
+- *Případ 1: Jedním odstranění z fronty úloh*
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -116,9 +116,9 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úloha dokončena úspěšně a že v něm nebyly žádné souběžných transakcí úprava fronty. Vzhledem k tomu, že o pořadí položek ve frontě nelze realizovat žádná odvození, může být vyjmutou všechny tři položky v libovolném pořadí. Fronty se pokusí uchovat položky v původní pořadí (zařazených do fronty), ale muset změnit jejich pořadí z důvodu souběžných operací nebo chyb.  
+Předpokládejme, že se úloha úspěšně dokončila a že v něm nebyly žádné souběžných transakcí úprava fronty. Protože pořadí položek ve frontě nelze realizovat žádná odvození, všechny tři položky může být odstraněné z fronty, v libovolném pořadí. Fronta se pokusí uchovat položky v původním pořadí (zařazených do fronty), ale mohou být nuceni přeuspořádaly z důvodu souběžných operací nebo chyby.  
 
-- *Případ 2: Dequeue – paralelní úlohy*
+- *Případ 2: Paralelní odstranění z fronty úloh*
 
 ```
 // Parallel Task 1
@@ -142,13 +142,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Předpokládejme, že úlohy byl úspěšně dokončen, že úkoly spustili paralelně a že neexistují žádné souběžných transakcí úprava fronty. Vzhledem k tomu, že nelze realizovat žádná odvození o pořadí položek ve frontě, seznamy *dequeue1* a *dequeue2* bude každý obsahovat jakékoli dvě položky v libovolném pořadí.
+Předpokládejme, že úkoly se nedokončil úspěšně, že úkoly spustil paralelně a, že nebyly provedeny žádné jiné souběžné transakce úprava fronty. Protože nelze realizovat žádná odvození o pořadí položek ve frontě, seznamy *dequeue1* a *dequeue2* bude každý obsahovat jakékoli dvě položky, v libovolném pořadí.
 
-Stejná položka bude *není* se zobrazí v obou seznamy. Proto pokud má dequeue1 *10*, *30*, pak by měla mít dequeue2 *20*, *40*.
+Stejná položka bude *není* se objeví v obou seznamech. Proto pokud má dequeue1 *10*, *30*, pak byste měli dequeue2 *20*, *40*.
 
-- *Případ 3: Dequeue – při řazení s přerušení transakcí*
+- *Případ 3: Odstranění z fronty řazení s přerušení transakce*
 
-Ruší se transakce s během letu dequeues PUT, které položky zpět na záhlaví fronty. Pořadí, ve které položky se vrátit zpět na záhlaví fronty není zaručena. Dejte nám podívejte se na následující kód:
+Zrušená transakce s vydávaných za pochodu dequeues vloží položky zpět na hlavní fronty. Není zaručeno pořadí, ve které položky se vrátí zpět do hlavní fronty. Podívejme se na následující kód:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -160,21 +160,21 @@ using (var txn = this.StateManager.CreateTransaction())
     await txn.AbortAsync();
 }
 ```
-Předpokládejme, že položky byly vyjmutou v následujícím pořadí:
+Předpokládejme, že byly položky vyřazených z fronty v následujícím pořadí:
 > 10, 20
 
-Když jsme ji zrušit, by byl přidán položky zpět do head fronty v některém z následujících objednávky:
+Když jsme přerušení transakce, položky byly přidány zpět do hlavní fronty v některém z následujících pořadí:
 > 10, 20
 
 > 20, 10
 
-Totéž platí pro všechny případy, pokud transakce nebyla úspěšně *potvrzení*.
+Totéž platí pro všechny případy, ve kterém transakce nebyla úspěšně *potvrzeno*.
 
 ## <a name="programming-patterns"></a>Vzory programování
-V této části, dejte nám podívejte se na několik programování vzorů, které mohou být užitečné při použití ReliableConcurrentQueue.
+V této části, Podívejme se na několik programovacích vzorech, které mohou být užitečné při použití ReliableConcurrentQueue.
 
-### <a name="batch-dequeues"></a>Batch Dequeues
-A doporučená programovací vzor je pro úlohu příjemce dávku jeho dequeues místo jedné dequeue – najednou. Uživatel může vybrat k omezení zpoždění mezi každou dávku nebo velikost dávky. Následující fragment kódu ukazuje tento programovací model.  Všimněte si, že se v tomto příkladu, se provádí zpracování po, že je transakce potvrzena, nebo, pokud k chybě dochází při zpracování, nezpracované položky budou ztraceny bez zpracování.  Alternativně zpracování lze provést v rámci oboru transakce, ale to může mít negativní dopad na výkon a vyžaduje zpracování položek, které jsou již zpracována.
+### <a name="batch-dequeues"></a>Dequeues služby batch
+Doporučeným je programovací model pro spotřebitele úlohu služby batch jeho dequeues místo jedné odstranění z fronty po jednom. Uživatel můžete omezit zpoždění mezi každou dávku nebo velikost dávky. Následující fragment kódu ukazuje tento programovací model.  Všimněte si, že v tomto příkladu, dokončení zpracování se poté, co je transakce potvrzena, aby šlo chybu při zpracování dojde k nezpracované položky budou ztraceny bez nutnosti byla zpracována.  Alternativně zpracování to provést v rámci oboru transakce, ale to může mít negativní dopad na výkon a vyžaduje zpracování položek, které již zpracovány.
 
 ```
 int batchSize = 5;
@@ -219,8 +219,8 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>Zpracování oznámení na základě typu Best Effort
-Jiné zajímavé programovací vzor používá rozhraní API počet. Zde můžeme implementovat best effort oznámení na základě zpracování pro frontu. Fronty počet slouží k omezení dequeue úlohy nebo zařazování.  Všimněte si, že jako v předchozím příkladu vzhledem k tomu, že mimo transakci, proběhne zpracování nezpracovaných položky může dojít ke ztrátě Pokud dojde k chybě během zpracování.
+### <a name="best-effort-notification-based-processing"></a>Zpracování oznámení na Best Effort
+Další zajímavé programovací model používá rozhraní API Count. Tady můžeme implementovat best effort oznámení založené na zpracování fronty. Fronty počet slouží k omezení zařazení do fronty nebo odebrání z fronty úloh.  Všimněte si, že stejně jako v předchozím příkladu, protože mimo transakci, proběhne zpracování nezpracovaných položky byly pravděpodobně ztraceny případě chybu během zpracování.
 
 ```
 int threshold = 5;
@@ -267,10 +267,10 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Best Effort vyprazdňování
-Vyprazdňování fronty nemůže zaručit z důvodu souběžných povaha datovou strukturu.  Je možné, že i když žádné operace uživatele na fronty jsou během letu, konkrétní volání TryDequeueAsync nemusí vracet položku, která byla dříve zařazených do fronty a potvrzené.  Položka zařazených do fronty záruku, že *nakonec* budou zobrazeny na vyřazení z fronty, ale bez mechanismus komunikace out-of-band nezávislé příjemce nemůže vědět, že fronty dosáhl stabilní i když všechny generátory byla zastavena a nové zařazování, které jsou povolené operace. Operace vyprazdňování tedy best effort jak jsou implementované níže.
+### <a name="best-effort-drain"></a>Vyprazdňování Best Effort
+Z důvodu souběžných povaze datová struktura nemůže být zaručena vyprazdňování fronty.  Je možné, že i v případě, že jsou vydávaných za pochodu žádné operace uživatelů ve frontě, nesmí vracet konkrétní volání TryDequeueAsync, položka, která byla dřív zařazených do fronty a potvrzené.  Je zaručeno, položka byla zařazena do fronty *nakonec* uživatelům zviditelní odstranění z fronty, ale bez mechanismus komunikace out-of-band příjemci nezávislé nemůže vědět, že fronta dosáhla stabilního stavu i v případě všichni výrobci aby byla zastavena a nové zařazení do fronty, jsou povoleny operace. Operace vyprazdňování tedy best effort jak je implementován níže.
 
-Uživatel by měl zastavit všechny další producent a úlohy příjemce a počkat na jakékoli během letu transakce potvrzení nebo přerušení, před pokusem o vyprazdňování fronty.  Pokud uživatel nezná očekávaný počet položek ve frontě, můžete nastavit oznámení, která signalizuje, že máte byla vyjmutou všechny položky.
+Uživatel by měl zastavit všechny další producenta a úlohy příjemce a počkejte, jakékoli vydávaných za pochodu transakce na potvrzení nebo přerušení, než se pokusíte o vyprázdnění fronty.  Pokud uživatel zná, očekávaný počet položek ve frontě, můžete nastavit oznámení, která signalizuje, že všechny položky odstraněné.
 
 ```
 int numItemsDequeued;
@@ -307,7 +307,7 @@ do
 ```
 
 ### <a name="peek"></a>Prohlížet
-ReliableConcurrentQueue neposkytuje *TryPeekAsync* rozhraní api. Uživatelé dostanou prohlížení sémantického pomocí *TryDequeueAsync* a pak ruší se transakce. V tomto příkladu dequeues se zpracují pouze v případě, že je větší než hodnota položky *10*.
+ReliableConcurrentQueue neposkytuje *TryPeekAsync* rozhraní api. Uživatele můžete získat náhled sémantické pomocí *TryDequeueAsync* a potom přerušením transakce. V tomto příkladu dequeues jsou zpracována pouze v případě, že je větší než hodnota položky *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -336,12 +336,12 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-## <a name="must-read"></a>Musí pro čtení
-* [Spolehlivé služby rychlý Start](service-fabric-reliable-services-quick-start.md)
+## <a name="must-read"></a>Musí ke čtení
+* [Rychlý Start modelu Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Spolehlivé služby oznámení](service-fabric-reliable-services-notifications.md)
+* [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Spolehlivé služby zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
-* [Spolehlivé stavu Správce konfigurace](service-fabric-reliable-services-configuration.md)
+* [Konfigurace Reliable State Manager](service-fabric-reliable-services-configuration.md)
 * [Začínáme se službou Service Fabric webové rozhraní API služby](service-fabric-reliable-services-communication-webapi.md)
-* [Rozšířené použití spolehlivé služby programovací Model](service-fabric-reliable-services-advanced-usage.md)
+* [Rozšířené využití programovacího modelu Reliable Services](service-fabric-reliable-services-advanced-usage.md)
 * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

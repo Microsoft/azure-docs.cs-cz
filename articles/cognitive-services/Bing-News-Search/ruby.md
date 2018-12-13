@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Ruby'
+title: 'Rychlý start: Hledání zpráv pomocí Ruby - REST rozhraní API pro vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
+description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Ruby a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 714f28166b8d24a5b8a69fe4f76ba1737de56e1d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 02b603c0a7e1f84b2677511f73f96eee20a613d9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315082"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250225"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání zpráv s využitím Ruby
+# <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Ruby a rozhraní API REST vyhledávání zpráv Bingu
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá Ruby, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

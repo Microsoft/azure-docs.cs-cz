@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Ruby využívající databázi Postgres ve službě Azure App Service v Linuxu | Microsoft Docs
+title: Vytvoření webové aplikace Ruby s Postgres v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Naučte se v Azure zprovoznit aplikaci Ruby s připojením k databázi PostgreSQL v Azure.
 services: app-service\web
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 9b64cedb54ac0777c4402d39bad5a23df79e5cf7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961242"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271024"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Ruby využívající databázi Postgres ve službě Azure App Service v Linuxu
 

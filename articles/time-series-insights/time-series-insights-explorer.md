@@ -1,5 +1,5 @@
 ---
-title: Zkoumání dat pomocí Průzkumníka služby Azure Time Series Insights | Dokumentace Microsoftu
+title: Zkoumání dat Průzkumníka Azure Time Series Insights – zkoumat data pomocí Průzkumníka služby Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje, jak pomocí Průzkumníka služby Azure Time Series Insights ve webovém prohlížeči se krátce zobrazit globální přehled o velké objemy dat a ověření IoT prostředí.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: seodec18
+ms.openlocfilehash: 7508db8bd4b7f21308f2e7b0e92c44570dfc7b18
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364224"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273132"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník služby Azure Time Series Insights
 Tento článek popisuje různé funkce a možnosti dostupné v rámci webové aplikace Průzkumníka Time Series Insights. Pomocí Průzkumníka časové řady Insights ve webovém prohlížeči vytvořit vizualizacemi vašich dat.
@@ -55,21 +56,21 @@ Během několika minut připojit váš zdroj událostí do prostředí Time Seri
 
 5. V dalším kroku se zobrazí graf, který zobrazuje počet všech událostí během vybraný časový rozsah.  Zde máte několik ovládacích prvků:
 
-    **Podmínky, Editor Panel**: místo termín je, kde dotaz vašem prostředí.  Se nachází na levé straně obrazovky, umožňuje 
-      - **Míra**: Tento rozevírací seznam ukazuje všechny číselné sloupce (čísly typu Double)
-      - **Rozdělit podle**: Tento rozevírací seznam zobrazuje sloupce zařazené do kategorií (řetězec)
+    **Podmínky, Editor Panel**:  Místo termín je, kde dotaz vašem prostředí.  Se nachází na levé straně obrazovky, umožňuje 
+      - **Míra**:  Tento rozevírací seznam ukazuje všechny číselné sloupce (čísly typu Double)
+      - **Rozděleno podle**: Tento rozevírací seznam zobrazuje sloupce zařazené do kategorií (řetězec)
       - Můžete povolit schodovou interpolaci, zobrazí minimální a maximální a upravit osu y z ovládacích panelů vedle k měření.  Kromě toho můžete upravit, jestli se data zobrazená počet, průměr nebo součet data.
       - Můžete přidat až pět podmínky zobrazíte na stejnou osu x.  Použití **Rozbalovat podrobnosti kopírování** přidat další období nebo klikněte na tlačítko **přidat** tlačítko Přidat novou podmínku.
      
         ![Panel podmínek editoru](media/time-series-insights-explorer/explorer2.png)
 
-      - **Predikát**: Predikát umožňuje rychle filtrovat události pomocí sady operandy uvedených níže. Pokud spustíte hledání kliknutím vyberete /, predikátu se automaticky aktualizují na základě danému hledání.      Operand podporované typy patří:
+      - **Predikátu**:  Predikát umožňuje rychle vyfiltrovat události pomocí sady operandy uvedených níže. Pokud spustíte hledání kliknutím vyberete /, predikátu se automaticky aktualizují na základě danému hledání.      Operand podporované typy patří:
 
          |Operace  |Podporované typy  |Poznámky  |
          |---------|---------|---------|
          |<, >, <=, >=     |  Double, DateTime, časový interval       |         |
          |=, !=, <>     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |         |
-         |INDIE     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |  Všechny operandy musí být stejného typu nebo konstanta NULL.        |
+         |IN     | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL        |  Všechny operandy musí být stejného typu nebo konstanta NULL.        |
          |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a NULL nejsou povoleny.       |
 
       - **Příklady dotazů**
@@ -102,7 +103,7 @@ Během několika minut připojit váš zdroj událostí do prostředí Time Seri
 
    ![Heat mapa](media/time-series-insights-explorer/explorer6.png)
 
-12. **Události**: při výběru zkoumat události při výběru nebo pravým tlačítkem myši nad panel událostí je k dispozici.  Tady můžete zobrazit všechny nezpracovaných událostí a export událostí jako soubory JSON nebo CSV. Všimněte si, že Time Series Insights ukládá všechny nezpracovaná data.
+12. **Události**:  Pokud zvolíte zkoumat události při výběru nebo pravým tlačítkem myši nad panel událostí je k dispozici.  Tady můžete zobrazit všechny nezpracovaných událostí a export událostí jako soubory JSON nebo CSV. Všimněte si, že Time Series Insights ukládá všechny nezpracovaná data.
 
    ![Události](media/time-series-insights-explorer/explorer7.png)
 
@@ -110,7 +111,7 @@ Během několika minut připojit váš zdroj událostí do prostředí Time Seri
 
    - **Vzory**: Tato funkce proaktivně zobrazí nejvíce statisticky významná vzory ve vybrané datové oblasti. To vám přišla odpadne podívat se na tisíce událostí, abyste pochopili, jaké vzorce zaručujete nejvíce času i energie. Kromě toho Time Series Insights vám umožní přejít přímo do těchto statisticky významná vzory pokračovat provádění analýzy. Tato funkce je také užitečné pro následné vyšetřování historická data. 
 
-   - **Statistiky sloupce**: statistiky sloupce poskytují grafů a tabulek, které rozdělení dat každého sloupce vybrané datové řady za vybrané časové období.  
+   - **Statistiky sloupce**:  Statistiky sloupce poskytují grafů a tabulek, které rozdělení dat každého sloupce vybrané datové řady za vybrané časové období.  
  
       ![STATISTIKA](media/time-series-insights-explorer/explorer8.png) 
 

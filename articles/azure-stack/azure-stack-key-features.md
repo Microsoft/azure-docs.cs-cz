@@ -12,38 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959022"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185728"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Klíčových funkcích a konceptech v Azure stacku
 Pokud se službou Microsoft Azure Stack teprve začínáte, může být užitečné tyto podmínky a popis funkcí.
 
 ## <a name="personas"></a>Osoby
-Existují dva typy prvků uživatelů pro Microsoft Azure Stack, cloudu – operátor (poskytovatel) a tenanta (příjemce).
+Existují dva typy prvků uživatele pro Microsoft Azure Stack, operátor a uživatele.
 
-* A **operátor cloudu** můžete nakonfigurovat služby Azure Stack a správa nabídek, plánů, služeb, kvóty a ceny k poskytnutí prostředků pro své klienty.  Operátoři cloudů také spravovat kapacity a reakce na výstrahy.  
-* A **tenanta** (také označované jako uživatel) využívá služby, které nabízí správce cloudu. Tenantů můžete zřizovat, monitorovat a spravovat služby, které jsou odběru jste přihlášeni, jako jsou Web Apps, úložiště a virtuální počítače.
+* Azure Stack **operátor** Azure Stack můžete nakonfigurovat tak, že správa nabídek, plánů, služeb, kvóty a ceny k poskytnutí prostředků pro svého tenanta uživatele. Operátory také spravovat kapacity a reakce na výstrahy.  
+* Azure Stack **uživatele** (označované také jako tenant) využívá služby, které nabízí operátor. Uživatele můžete zřizovat, monitorovat a spravovat služby, které jsou odběru jste přihlášeni, jako jsou webové aplikace, úložiště a virtuální počítače.
 
 ## <a name="portal"></a>Portál
-Primární metody komunikace s Microsoft Azure Stack se portálu správce portálu user portal a Powershellu.
+Primární metody komunikace s Microsoft Azure Stack jsou portál pro správu, portál user portal a PowerShell.
 
-Na portálech Azure stacku každého využívají samostatných instancí služby Azure Resource Manageru.  Operátor cloudu pomocí portálu správce ke správě služby Azure Stack a provádět kroky, jako je vytvoření tenanta nabídek.  Portál user portal (také označované jako portál pro klienty) poskytuje samoobslužné prostředí pro používání cloudové prostředky, jako jsou virtuální počítače, účty storage a Web Apps. Další informace najdete v tématu [používání portálů správce a uživatele Azure stacku](azure-stack-manage-portals.md).
+Na portálech Azure stacku každého využívají samostatných instancí služby Azure Resource Manageru. Operátor používá na portálu pro správu ke správě služby Azure Stack a provádět kroky, jako je vytvoření tenanta nabídek. Portál user portal (také označované jako portál pro klienty) poskytuje samoobslužné prostředí pro používání cloudové prostředky, jako jsou virtuální počítače, účty storage a web apps. Další informace najdete v tématu [používání portálů správce a uživatele Azure stacku](azure-stack-manage-portals.md).
 
 ## <a name="identity"></a>Identita 
-Azure Stack používá jako zprostředkovatel identity Azure Active Directory (AAD) nebo Active Directory Federation Services (AD FS).  
+Azure Stack používá jako zprostředkovatel identity Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS).  
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Azure Active Directory je zprostředkovatel identity založené na cloudu, více tenantů od Microsoftu.  Většina hybridních scénářů používat jako úložiště identit Azure Active Directory.
+Azure AD je zprostředkovatel identity založené na cloudu, více tenantů od Microsoftu. Většina hybridních scénářů používat jako úložiště identit Azure AD.
 
-### <a name="active-directory-federation-services"></a>Služba AD FS (Active Directory Federation Services)
-Můžete používat Active Directory Federation Services (AD FS) pro odpojené nasazení služby Azure Stack.  Azure Stack, poskytovatelů prostředků a další aplikace fungovat stejně jako s Azure Active Directory téměř stejným způsobem se službou AD FS. Azure Stack zahrnuje svoji vlastní instanci služby AD FS a službou Active Directory a Active Directory Graph API. Azure Stack Development Kit podporuje následující scénáře služby AD FS:
+### <a name="active-directory-federation-services"></a>Active Directory Federation Services
+Můžete používat Active Directory Federation Services (AD FS) pro odpojené nasazení služby Azure Stack. Poskytovatele prostředků služby Azure Stack a další aplikace fungovat stejně jako s Azure AD téměř stejným způsobem se službou AD FS. Azure Stack zahrnuje svoji vlastní instanci služby Active Directory a Active Directory Graph API. Azure Stack Development Kit podporuje následující scénáře služby AD FS:
 
 - Přihlaste se k nasazení pomocí služby AD FS.
 - Vytvoření virtuálního počítače s tajnými kódy ve službě Key Vault
@@ -93,9 +93,9 @@ Pro správce je vytvořen výchozí předplatné poskytovatele. během nasazení
 Pomocí Azure Resource Manageru můžete pracovat s prostředky infrastruktury založené na šablonách, deklarativní modelu.   Poskytuje jednotné rozhraní, který vám pomůže nasadit a spravovat komponenty svého řešení. Úplné informace a pokyny najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Skupiny prostředků
-Skupiny prostředků je kolekce prostředků, služeb a aplikací – a každý prostředek má typ, jako jsou virtuální počítače, virtuální sítě, veřejné IP adresy, účty úložiště a websites. Každý prostředek musí být ve skupině prostředků a tak skupiny prostředků pomáhají logicky uspořádat prostředky, jako například úlohy nebo umístění.  Ve službě Microsoft Azure Stack jsou také spravovat prostředky, jako jsou plány a nabídky ve skupinách prostředků.
+Skupiny prostředků je kolekce prostředků, služeb a aplikací – a každý prostředek má typ, jako jsou virtuální počítače, virtuální sítě, veřejné IP adresy, účty úložiště a websites. Každý prostředek musí být ve skupině prostředků a tak skupiny prostředků pomáhají logicky uspořádat prostředky, jako například úlohy nebo umístění. Ve službě Azure Stack jsou také spravované prostředky, jako jsou plány a nabídky ve skupinách prostředků.
 
-Na rozdíl od [Azure](../azure-resource-manager/resource-group-move-resources.md), prostředky nelze přesouvat mezi skupinami prostředků. Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků v portálu pro správu služby Azure Stack *přesunout* šedě a není k dispozici je tlačítko. 
+Na rozdíl od [Azure](../azure-resource-manager/resource-group-move-resources.md), prostředky služby Azure Stack nelze přesouvat mezi skupinami prostředků. Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků na portálu pro správu služby Azure Stack *přesunout* šedě a není k dispozici je tlačítko. Kromě toho používání **změnit skupinu prostředků** nebo **změnit předplatné** také akce ze skupiny prostředků nebo vlastností položky skupiny prostředků nepodporuje. Všechny provedené pokusy o přesunutí se operace nezdaří.
  
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 S Azure Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která definuje nasazení a konfiguraci vaší aplikace. Tato šablona se označuje jako šablony Azure Resource Manageru a nabízí deklarativní způsob, jak definovat nasazení. Pomocí šablony můžete aplikaci opakovaně nasadit v průběhu životního cyklu a mít přitom jistotu, že se prostředky nasadí konzistentně.
@@ -103,7 +103,7 @@ S Azure Resource Manageru můžete vytvořit šablonu (ve formátu JSON), která
 ## <a name="resource-providers-rps"></a>Poskytovatelé prostředků (předávajících stran)
 Poskytovatelé prostředků jsou webové služby, které tvoří základ pro všechny založené na Azure IaaS a PaaS služby. Azure Resource Manageru závisí na jiné RPs a zajistit tak přístup ke službám.
 
-Existují čtyři základní RPs: sítě, úložiště, výpočetní prostředky a trezor klíčů. Každá z těchto RPs umožňuje konfigurovat a spravovat jeho příslušné prostředky. Správce služeb můžete také přidat nové vlastní prostředek zprostředkovatele.
+Existují čtyři základní RPs: Síť, úložiště, výpočetní prostředky a trezor klíčů. Každá z těchto RPs umožňuje konfigurovat a spravovat jeho příslušné prostředky. Správce služeb můžete také přidat nové vlastní prostředek zprostředkovatele.
 
 ### <a name="compute-rp"></a>COMPUTE RP
 Poskytovatele výpočetních prostředků (CRP) umožňuje klientům služby Azure Stack můžete vytvořit své vlastní virtuální počítače. CRP zahrnuje schopnost vytvářet virtuální počítače, stejně jako rozšíření virtuálního počítače. Do rozšíření služby Virtual Machines pomáhá poskytovat schopnosti IaaS pro virtuální počítače s Windows a Linux.  Jako příklad slouží ke zřízení virtuálního počítače s Linuxem a spouštění skriptů Bash během nasazování do konfigurace virtuálního počítače CRP.
@@ -150,7 +150,7 @@ Pro škálovací sady virtuálních počítačů se interně vytvoří skupinu d
 ## <a name="role-based-access-control-rbac"></a>Řízení přístupu (RBAC) na základě rolí
 Můžete použít RBAC pro udělení přístupu systému oprávněným uživatelům, skupinám a službám přiřazením role na předplatné, skupinu prostředků nebo úrovni jednotlivých prostředků. Každá role určuje požadovanou úroveň přístupu uživatele, skupiny nebo služby má prostředky Microsoft Azure Stack.
 
-Má tři základní role, které se vztahují ke všem typům prostředků Azure RBAC: vlastník, Přispěvatel a čtenář. Vlastník má úplný přístup ke všem prostředkům, včetně práva na delegovat přístup ostatním uživatelům. Přispěvatel můžete vytvořit a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup ostatním uživatelům. Čtečka lze zobrazit pouze existující prostředky Azure. Ostatní role RBAC v Azure umožňují správu konkrétních prostředků Azure. Pro instanci role Přispěvatel virtuálních počítačů umožňuje vytváření a správa virtuálních počítačů, ale neumožňuje správu virtuální síť nebo podsíť, která se připojí k virtuálnímu počítači.
+Azure RBAC má tři základní role, které platí pro všechny typy prostředků: Vlastník, Přispěvatel a čtenář. Vlastník má úplný přístup ke všem prostředkům, včetně práva na delegovat přístup ostatním uživatelům. Přispěvatel můžete vytvořit a spravovat všechny typy prostředků Azure, ale nemůže udělovat přístup ostatním uživatelům. Čtečka lze zobrazit pouze existující prostředky Azure. Ostatní role RBAC v Azure umožňují správu konkrétních prostředků Azure. Pro instanci role Přispěvatel virtuálních počítačů umožňuje vytváření a správa virtuálních počítačů, ale neumožňuje správu virtuální síť nebo podsíť, která se připojí k virtuálnímu počítači.
 
 ## <a name="usage-data"></a>Údaje o využití
 Microsoft Azure Stack shromažďuje a agreguje data o využití přes všechny poskytovatele prostředků a je odesílá do Azure pro zpracování službou Azure commerce. Využití dat shromážděných ve službě Azure Stack lze zobrazit pomocí rozhraní REST API. Je konzistentních s Azure rozhraní API pro klienty i poskytovatele a delegované poskytovatele rozhraní API k získání dat o používání napříč všemi předplatnými tenanta. Tato data je možné integrovat pomocí externího nástroje nebo služby pro účely fakturace nebo vrácení peněz. Jakmile se využití se zpracovalo Azure průmyslu, lze zobrazit ve fakturačním portálu Azure.

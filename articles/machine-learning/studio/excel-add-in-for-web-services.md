@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 2/1/2018
-ms.openlocfilehash: 7e84db390d3a193be5ac1755837e5f9333bebbc9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 02/01/2018
+ms.openlocfilehash: e836323ad452b86d89eee62936b574b2cc9d0337
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097195"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269483"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.
@@ -41,7 +41,7 @@ Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli 
    
     ![Předpověď oddílu][02]
 
-Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
+Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: Nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
 
 Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci závisí na, jestli jste publikovali webovou službu Classic Machine Learning webové služby Machine Learning nové.
 
@@ -69,7 +69,7 @@ Získání klíče rozhraní API pro webovou službu. Pokud provedete tuto akci 
 
 ## <a name="steps-to-add-a-new-web-service"></a>Postup přidání nové webové služby
 
-1. Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
+1. Nasazení webové služby nebo použijte existující webové služby. Další informace o nasazení webové služby najdete v tématu [návod krok 5: Nasazení služby Azure Machine Learning Web](walkthrough-5-publish-web-service.md).
 2. Klikněte na tlačítko **využívat**.
 3. Hledat **informace o základní spotřeby** oddílu. Zkopírujte a uložte **primární klíč** a **Request-Response** adresy URL.
 4. V aplikaci Excel přejděte na **webových služeb** části (Pokud jste v **Predict** klikněte na šipku zpět a přejděte na seznam webové služby).

@@ -1,7 +1,7 @@
 ---
-title: Jak lze procházet dostupné Image - API pro vyhledávání obrázků Bingu
+title: Procházení obrázků vrácené rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak stránkovat všechny Image, které můžou vrátit Bingu.
+description: Procházet různé stránky imagí vrácené rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: swhite-msft
 manager: cgonlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0db8c62bbb4da1a6fa1230b439c5074325bbe9c3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.custom: seodec2018
+ms.openlocfilehash: 69829066e543e5ab3badc4d1d3f77ff3c1d16ffd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739362"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259745"
 ---
-# <a name="paging-results"></a>Výsledky stránkování
+# <a name="page-through-the-images-results"></a>Stránkovat výsledky imagí
 
 Při volání rozhraní API pro vyhledávání obrázků Bingu vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Odhadované celkový počet dostupných výsledků získáte přístup k objektu odpovědi [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#totalestimatedmatches) pole.  
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Konfigurace Zendesk pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
+title: 'Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak konfigurovat Azure Active Directory a automaticky zřizovat a rušit zřízení uživatelských účtů do Zendesku.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d8d6df221a8c520cea5e6e938447ffd881e7374c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347932"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322768"
 ---
-# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace Zendesk pro automatické zřizování uživatelů
+# <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Kurz: Konfigurace platformy Zendesk pro automatické zřizování uživatelů
 
 Cílem tohoto kurzu je předvést postup provést v systému Zendesk a Azure Active Directory (Azure AD) ke konfiguraci Azure AD automaticky zřizovat a rušit zřízení uživatele a/nebo skupiny, které se Zendesku. 
 
@@ -77,6 +77,10 @@ Než nakonfigurujete a povolíte automatické zřizování uživatelů, byste m�
 
 ### <a name="important-tips-for-assigning-users-to-zendesk"></a>Důležité tipy pro přiřazování uživatelů k Zendesku.
 
+*    Role Zendesku se automaticky a dynamicky vyplní na webu Azure Portal uživatelského rozhraní ještě dnes. Před přiřazením Zendesku role pro uživatele, ujistěte se, že počáteční synchronizace je dokončena proti Zendesku načíst nejnovější role ve vašem tenantovi Zendesku.
+
+*    Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk k testování vašich počáteční automatické zřizování uživatelů konfigurace. Další uživatele a/nebo skupiny může být přiřazena vyšší Jakmile testy jsou úspěšné.
+  
 *   Dále je doporučeno jednoho uživatele Azure AD je přiřazena k službě Zendesk otestovat automatické konfigurace zřizování uživatelů. Další uživatele a/nebo skupiny může být přiřazen později.
 
 *   Při přiřazování uživatele do Zendesku, musíte vybrat libovolnou platnou roli specifické pro aplikaci (Pokud je k dispozici) v dialogovém okně přiřazení. Uživatelé s **výchozího přístupu k** role jsou vyloučené z zřizování.
@@ -111,7 +115,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
     *   V **tajný klíč tokenu** pole, vyplňte token tajného kódu, jak je popsáno v kroku 6.
 
     *   V **domény** pole, naplnění subdoménu tenanta Zendesku.
-    Příklad: pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
+    Příklad: Pro účet s adresou URL tenanta https://my-tenant.zendesk.com, bude vaše subdoménu **Moje tenanta**.
 
 6. **Tajný klíč tokenu** Zendesku. váš účet se nachází v **správce > rozhraní API > Nastavení**. 
 

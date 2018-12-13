@@ -1,6 +1,6 @@
 ---
-title: Podpora jazyka Java pro službu Azure App Service v Linuxu | Dokumentace Microsoftu
-description: Příručka pro vývojáře k nasazení aplikací v Javě pomocí služby Azure App Service v Linuxu.
+title: Příručka pro vývojáře Java pro službu App Service v Linuxu – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat aplikace v Javě spuštěné v Azure App Service v Linuxu.
 keywords: služby Azure app service, web Apps, linux, oss, java
 services: app-service
 author: rloutlaw
@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 12/10/2018
 ms.author: routlaw
-ms.openlocfilehash: cf3e5bf6752311881e1266d2fb49aa5b7108e68a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 75410b1338909f98a01b02c0ff86be9b81ab3faf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965560"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250908"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 

@@ -1,5 +1,5 @@
 ---
-title: Obnovení aplikace v Azure
+title: Obnovení aplikace – služba Azure App Service
 description: Zjistěte, jak obnovení aplikace ze zálohy.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 69e0e8282ee0b8503fe11a57b8ba6037247822dd
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.custom: seodec18
+ms.openlocfilehash: 603a6bab75c4a5da4425bcc57d2cc5ccda728636
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160497"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274115"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
 V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/app-service-web-overview.md) , který jste dříve zálohovali (viz [zálohování vaší aplikace v Azure](web-sites-backup.md)). Podle potřeby můžete obnovit aplikaci s připojenými databázemi do předchozího stavu nebo podle záloh původní aplikace vytvořit novou aplikaci. Azure App Service podporuje pro zálohování a obnovení následujících databází:
@@ -91,7 +92,7 @@ Můžete automatizovat správu záloh pomocí skriptů s využitím [rozhraní p
 Ukázky najdete v tématu:
 
 - [Ukázky Azure CLI](app-service-cli-samples.md)
-- [Ukázky Azure Powershellu](app-service-powershell-samples.md)
+- [Ukázky Azure PowerShellu](app-service-powershell-samples.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

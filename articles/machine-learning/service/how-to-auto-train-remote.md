@@ -1,7 +1,7 @@
 ---
-title: Nastavení cílových výpočetních prostředí vzdálené pro automatizované ML
+title: Automatizované cíle vzdálený výpočetní ML
 titleSuffix: Azure Machine Learning service
-description: Tento článek vysvětluje, jak vytvářet modely s využitím automatizovaných strojového učení na Data Science virtuální cílové výpočetní prostředí vzdáleného počítače (DSVM) pomocí služby Azure Machine Learning
+description: Naučte se sestavovat modely využití automatizovaných strojového učení na Data Science virtuální cílové výpočetní prostředí vzdáleného počítače (DSVM) pomocí služby Azure Machine Learning
 services: machine-learning
 author: nacharya1
 ms.author: nilesha
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8761b0671de38e7934df56847a5d0a7eafd3649
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097699"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256056"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 
@@ -41,7 +41,7 @@ ws = Workspace.from_config()
 
 Vytvoření datové VĚDY v pracovním prostoru (`ws`) Pokud ještě neexistuje. Pokud byla dříve vytvořena datové VĚDY, tento kód přeskočí v procesu vytváření a načte existující podrobnosti prostředku do `dsvm_compute` objektu.  
 
-**Časový odhad**: vytvoření virtuálního počítače trvá přibližně 5 minut.
+**Časový odhad**: Vytvoření virtuálního počítače trvá přibližně 5 minut.
 
 ```python
 from azureml.core.compute import DsvmCompute
@@ -250,12 +250,12 @@ Najít protokoly na datové VĚDY v rámci `/tmp/azureml_run/{iterationid}/azure
 
 Načítání modelu vysvětlení dat umožňuje zobrazit podrobné informace o modelech pro zvýšení transparentnosti do co běží na back endu. V tomto příkladu spustíte modelu vysvětlení pouze pro nejlepší přizpůsobení modelu. Při spuštění pro všechny modely v kanálu, způsobí spoustu času spuštění. Obsahuje informace o modelu vysvětlení:
 
-* shape_values: Vysvětlení informací generovaných tvar lib
+* shap_values: Vysvětlení informací generovaných okno lib
 * expected_values: Očekávaná hodnota použitý k nastavení X_train dat modelu.
-* overall_summary: hodnoty význam úroveň funkce modelu seřazeny v sestupném pořadí
-* overall: názvy funkcí seřazeny ve stejném pořadí jako overall_summary
-* per_class_summary: hodnoty význam úroveň funkce třídy seřazeny v sestupném pořadí. K dispozici jenom pro případ klasifikace
-* per_class: seřazeny ve stejném pořadí jako per_class_summary názvy funkcí. K dispozici jenom pro případ klasifikace
+* overall_summary: Hodnoty význam úroveň funkce modelu seřazeny v sestupném pořadí
+* overall: Názvy funkcí seřazeny ve stejném pořadí jako overall_summary
+* per_class_summary: Na úrovni funkce význam hodnoty třídy seřazeny v sestupném pořadí. K dispozici jenom pro případ klasifikace
+* per_class: Názvy funkcí seřazeny ve stejném pořadí jako per_class_summary. K dispozici jenom pro případ klasifikace
 
 Chcete-li vybrat nejlepší kanál ze své iterace použijte následující kód. `get_output` Metoda vrátí nejlepší spuštění a vybavené model pro poslední přizpůsobit vyvolání.
 
@@ -268,7 +268,7 @@ Import `retrieve_model_explanation` funkci a spustit na nejlepší model.
 ```python
 from azureml.train.automl.automlexplainer import retrieve_model_explanation
 
-shape_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
+shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
     retrieve_model_explanation(best_run)
 ```
 

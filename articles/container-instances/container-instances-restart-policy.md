@@ -1,18 +1,18 @@
 ---
-title: Spouštění kontejnerizovaných úloh ve službě Azure Container Instances pomocí zásady restartování
+title: Použití zásad kontejnerizované úlohy restartovat ve službě Azure Container Instances
 description: Zjistěte, jak spustit úlohy, které běží na dokončení, například v sestavení, testovací nebo úlohy vykreslování obrázků pomocí Azure Container Instances.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 12/10/2018
 ms.author: danlep
-ms.openlocfilehash: c9e3fadd5164ca0d770f36ba95c30db933efcd39
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: b254adb050aa9826170c0849c3811380db6d9b38
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853880"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321029"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spouštění kontejnerizovaných úloh pomocí zásady restartování
 
@@ -24,7 +24,7 @@ Příklady uvedené v tomto článku využívají Azure CLI. Musíte mít Azure 
 
 ## <a name="container-restart-policy"></a>Zásady restartování pro kontejner
 
-Při vytváření kontejneru ve službě Azure Container Instances můžete zadat jednu z tři nastavení zásad restartování.
+Když vytvoříte [skupinu kontejnerů](container-instances-container-groups.md) ve službě Azure Container Instances, můžete určit jednu z tři nastavení zásad restartovat.
 
 | Zásady restartování   | Popis |
 | ---------------- | :---------- |
@@ -93,6 +93,24 @@ Výstup:
 
 Tento příklad ukazuje výstup, který skript odeslán do STDOUT. Kontejnerizované úlohy, ale může být místo toho zapisují svůj výstup do trvalého úložiště pro pozdější načtení. Například [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
 
+## <a name="manually-stop-and-start-a-container-group"></a>Ručně zastavit a spustit skupinu kontejnerů
+
+Bez ohledu na nakonfigurované pro zásady restartování [skupinu kontejnerů](container-instances-container-groups.md), můžete chtít ručně zastavit nebo spustit skupinu kontejnerů.
+
+* **Zastavit** - spuštěnou skupinu kontejnerů můžete zastavit ručně kdykoli – například s použitím [az container stop] [ az-container-stop] příkazu. Pro některé úlohy kontejneru, můžete chtít zastavit skupiny kontejnerů za definované období a Šetřete na náklady. 
+
+  Zastavuje se skupinu kontejnerů se ukončí a recykluje kontejnerů ve skupině; stav kontejneru nezachová. 
+
+* **Spustit** – když skupinu kontejnerů se bylo zastaveno – buď protože kontejnery ukončena sami nebo k ručnímu zastavení skupině – můžete použít [API spustit kontejner](/rest/api/container-instances/containergroups/start) nebo webu Azure portal ohledně ručního spuštění kontejnerů Skupina. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
+
+  Počáteční skupiny kontejnerů začne nové nasazení se stejnou konfigurací kontejneru. Tuto akci můžete rychle znovu použít konfiguraci skupiny známé kontejneru, která funguje podle očekávání. Není nutné vytvořit novou skupinu kontejnerů ke spuštění stejná úloha.
+
+* **Restartujte** – je možné restartovat skupiny kontejnerů je spuštěný – například pomocí [az container restartování] [ az-container-restart] příkazu. Tato akce restartuje všechny kontejnery ve skupině kontejnerů. Pokud image kontejneru pro každý kontejner je aktualizován, je vyžádá novou bitovou kopii. 
+
+  Restartování skupiny kontejnerů je užitečné, pokud chcete k vyřešení problému nasazení. Například pokud omezení dočasný prostředek, který brání kontejnery v úspěšném spuštění, restartování skupiny můžou tyto potíže vyřešit.
+
+Po ruční spuštění nebo restartování skupiny kontejnerů, spuštění kontejneru skupiny podle nakonfigurované zásady restartování.
+
 ## <a name="configure-containers-at-runtime"></a>Konfigurace kontejnery za běhu
 
 Při vytváření instance kontejneru, můžete nastavit jeho **proměnné prostředí**, stejně jako zadejte vlastní **příkazového řádku** provést při spuštění kontejneru. Tato nastavení můžete použít ve svých úlohách služby batch k přípravě každý kontejner se konfigurace pro konkrétní úlohy.
@@ -103,9 +121,9 @@ Nastavení proměnných prostředí ve vašem kontejneru poskytnout dynamickou k
 
 Například můžete změnit chování skriptu v kontejneru příkladu tak, že zadáte následující proměnné prostředí při vytváření instance kontejneru:
 
-*NumWords*: počet slov odeslané do STDOUT.
+*NumWords*: Počet odeslaných do STDOUT slov.
 
-*MinLength*: minimální počet znaků v aplikaci word, které se mají spočítat. Větší číslo ignoruje běžná slova, jako je "z" a "the".
+*MinLength*: Minimální počet znaků v aplikaci word, které se mají spočítat. Větší číslo ignoruje běžná slova, jako je "z" a "the".
 
 ```azurecli-interactive
 az container create \
@@ -131,6 +149,8 @@ Výstup:
  ('ROSENCRANTZ', 69),
  ('GUILDENSTERN', 54)]
 ```
+
+
 
 ## <a name="command-line-override"></a>Přepsání příkazového řádku
 
@@ -174,5 +194,7 @@ Podrobnosti o tom, jak zachovat výstup kontejnery, na kterých běží až do u
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
+[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
+[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

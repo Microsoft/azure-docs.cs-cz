@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: b386cf72525c6ef6234d99255ca0eed5ade32066
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b48b60390887ea7356385954a81fa51ded2b1fb8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000484"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270667"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -101,7 +101,7 @@ Další informace o `BlobTrigger` atributu naleznete v tématu [aktivační udá
 
 ### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační událost objektů blob *function.json* souboru a [skript jazyka C# (.csx)](functions-reference-csharp.md) kód, který používá vazba. Tato funkce zapíše do protokolu při přidání nebo aktualizace v objektu blob `samples-workitems` kontejneru.
+Následující příklad ukazuje aktivační událost objektů blob vazby ve *function.json* souboru a [kódu Pythonu](functions-reference-python.md) , který používá vazba. Tato funkce zapíše do protokolu při přidání nebo aktualizace v objektu blob `samples-workitems` [kontejneru](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -320,7 +320,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. Výjimky jsou uvedeny v [využití](#trigger---usage) oddílu. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce. | 
 |**Cesta** | **BlobPath** |Kontejner pro monitorování.  Může být [vzor názvu objektu blob](#trigger---blob-name-patterns). | 
-|**připojení** | **připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účtu úložiště objektů Blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**připojení** |**připojení**| Název nastavení aplikace, která obsahuje [připojovací řetězec úložiště](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-azure-storage-account) určený pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek název tady. Například pokud nastavíte `connection` na "MyStorage", modul runtime služby Functions vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, modul runtime služby Functions používá výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účtu úložiště pouze objektů blob](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -420,7 +420,7 @@ Modul runtime služby Azure Functions se zajistí, že žádné funkce pro aktiv
 
 Azure Functions úložiště objektů blob příjmy v kontejneru nazvaném *azure – webjobs – hostitelé* v účtu úložiště Azure pro vaši aplikaci function app (definované v nastavení aplikace `AzureWebJobsStorage`). Potvrzení objektu blob obsahuje následující informace:
 
-* Aktivované – funkce ("*&lt;názvem aplikace function app >*. Funkce.  *&lt;název funkce >*", například:"MyFunctionApp.Functions.CopyBlob")
+* Aktivované – funkce ("*&lt;názvem aplikace function app >*. Funkce.  *&lt;název funkce >*", například: "MyFunctionApp.Functions.CopyBlob")
 * Název kontejneru
 * Typ objektu blob ("BlockBlob" nebo "PageBlob")
 * Název objektu blob

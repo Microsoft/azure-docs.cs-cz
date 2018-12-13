@@ -10,17 +10,15 @@ ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082659"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194228"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí Log Analytics gateway při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Bránu Log Analytics, která je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
@@ -89,8 +87,8 @@ V následující tabulce najdete podporovaný počet agentů komunikaci se serve
 
 |brána |Asi počet agentů podporována|  
 |--------|----------------------------------|  
-|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířky pásma sítě: 1 GB /| 600|  
-|-Procesor: Procesor Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 4 jádra<br> – Paměť: 8 GB<br> – Šířky pásma sítě: 1 GB /| 1000|  
+|-PROCESORU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 2 jádra<br> -Paměti: 4 GB<br> – Šířka pásma sítě: 1 Gb/s| 600|  
+|-PROCESORU: Intel XEON 2660 CPU E5 v3 \@ 2,6 GHz, 4 jádra<br> -Paměti: 8 GB<br> – Šířka pásma sítě: 1 Gb/s| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Stáhněte si bránu Log Analytics
 
@@ -136,7 +134,7 @@ Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížen
 1. Přihlaste do Windows serveru, který je členem clusteru programu NLB s účtem správce.  
 1. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na tlačítko **Správce vyrovnávání zatížení sítě**.
 1. Pro připojení k serveru služby Brána Log Analytics pomocí Microsoft Monitoring Agent nainstalován, klikněte pravým tlačítkem na IP adresu clusteru a potom klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru](./media/gateway/nlb02.png)<br> 
-1. Zadejte IP adresu serveru brány, kterou chcete připojit.<br><br> ![Sítě programu Správce vyrovnávání zatížení – přidání hostitele do clusteru: připojení](./media/gateway/nlb03.png) 
+1. Zadejte IP adresu serveru brány, kterou chcete připojit.<br><br> ![Zatížení vyrovnávání správce – přidat hostitele do clusteru: Připojení](./media/gateway/nlb03.png) 
     
 ## <a name="configure-log-analytics-agent-and-operations-manager-management-group"></a>Konfigurace agenta Log Analytics a skupinu pro správu Operations Manageru
 Následující část obsahuje pokyny ke konfiguraci přímo připojených agentů Log Analytics, skupiny pro správu Operations Manageru nebo Azure Automation Hybrid Runbook Worker ve službě Log Analytics gateway ke komunikaci s Azure Automation nebo protokolu Analytics.  
@@ -183,7 +181,7 @@ Pro rozsáhlá nebo složitá prostředí můžete chtít konkrétních serverů
 1. Otevřete konzolu nástroje Operations Manager a vyberte **Authoring** pracovního prostoru.  
 1. V pracovním prostoru vytváření obsahu, vyberte **pravidla** a klikněte na tlačítko **oboru** tlačítko na panelu nástrojů Operations Manager. Pokud toto tlačítko není k dispozici, zkontrolujte, že máte objektu, nikoli složku, v podokně monitorování vybrán. **Obor objektů sady Management Pack** dialogové okno zobrazí seznam běžných cílové třídy, skupiny nebo objekty. 
 1. Typ **služba Health Service** v **vyhledejte** pole a vyberte ho ze seznamu.  Klikněte na **OK**.  
-1. Vyhledejte pravidlo **pravidla nastavení proxy serveru služby Advisor** a v panelu nástrojů konzoly Operations console, klikněte na tlačítko **přepíše** a přejděte na **přepsat Rule\For konkrétní objekt třídy: Služba Health Service**  a vybrat konkrétní objekt ze seznamu.  Volitelně můžete vytvořit vlastní skupiny obsahující objekt služba stavu serverů, které chcete použít toto přepsání na a pak použít přepsání do této skupiny.
+1. Vyhledejte pravidlo **pravidla nastavení proxy serveru služby Advisor** a v panelu nástrojů konzoly Operations console, klikněte na tlačítko **přepíše** a přejděte na **přepsat Rule\For konkrétní objekt třídy: Služba Health Service** a vybrat konkrétní objekt ze seznamu.  Volitelně můžete vytvořit vlastní skupiny obsahující objekt služba stavu serverů, které chcete použít toto přepsání na a pak použít přepsání do této skupiny.
 1. V **potlačit vlastnosti** dialogové okno, kliknutím umístěte značku zaškrtnutí v **přepsat** vedle sloupce **WebProxyAddress** parametru.  V **hodnota přepsání** pole, zadejte adresu URL serveru brány Log Analytics zajistit začínat `http://` předponu.  
 
     >[!NOTE]

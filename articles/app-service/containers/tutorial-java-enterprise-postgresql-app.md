@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Java Enterprise ve službě Azure App Service v Linuxu | Dokumentace Microsoftu
+title: Vytvoření webové aplikace Java Enterprise na Linux – Azure App Service | Dokumentace Microsoftu
 description: Naučte se zprovoznit aplikaci Java Enterprise v Wildfly ve službě Azure App Service v Linuxu.
 author: JasonFreeberg
 manager: routlaw
@@ -10,14 +10,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
-ms.openlocfilehash: 40bee31b7880a323a48e92912ee323c43c3a97da
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.custom: seodec18
+ms.openlocfilehash: 2b8151117a9093cb58ffe6db45bc5ee1a9abd54b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634745"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259252"
 ---
-# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Sestavení webové aplikace v Azure platformě Java EE určený a Postgres
+# <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
 Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](http://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [služby App Service pro Linux](app-service-linux-intro.md).
 
@@ -32,8 +33,8 @@ V tomto kurzu se naučíte, jak:
 ## <a name="prerequisites"></a>Požadavky
 
 1. [Stažení a instalace Gitu](https://git-scm.com/)
-1. [Stáhněte a nainstalujte Maven 3](https://maven.apache.org/install.html)
-1. [Stáhnout a nainstalovat rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
+2. [Stáhněte a nainstalujte Maven 3](https://maven.apache.org/install.html)
+3. [Stáhnout a nainstalovat rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 ## <a name="clone-and-edit-the-sample-app"></a>Klonovat a upravit ukázkové aplikace
 
@@ -51,13 +52,38 @@ git clone https://github.com/Azure-Samples/wildfly-petstore-quickstart.git
 
 Aktualizujte Maven POM požadovaný název a skupinu prostředků služby App Service. Tyto hodnoty budou vloženy do modul plug-in Azure, která je dále dolů v _pom.xml_ souboru. Nemusíte předem vytvářet v plánu služby App Service nebo instanci. Modul plug-in Maven vytvoří skupinu prostředků a App Service, pokud ještě neexistuje.
 
+Posuňte se dolů k `<plugins>` část _pom.xml_ ke kontrole modul plug-in Azure. Část `<plugin>` konfiguraci _pom.xml_ pro azure – webapp-maven-plugin by měl obsahovat následující konfigurace:
+
+```xml
+      <!--*************************************************-->
+      <!-- Deploy to WildFly in App Service Linux           -->
+      <!--*************************************************-->
+ 
+      <plugin>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>azure-webapp-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <configuration>
+ 
+          <!-- Web App information -->
+          <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
+          <appServicePlanName>${WEBAPP_PLAN_NAME}</appServicePlanName>
+          <appName>${WEBAPP_NAME}</appName>
+          <region>${REGION}</region>
+ 
+          <!-- Java Runtime Stack for Web App on Linux-->
+          <linuxRuntime>wildfly 14-jre8</linuxRuntime>
+ 
+        </configuration>
+      </plugin>
+```
+
 Nahraďte zástupné symboly názvy požadovaných prostředků:
 ```xml
 <azure.plugin.appname>YOUR_APP_NAME</azure.plugin.appname>
 <azure.plugin.resourcegroup>YOUR_RESOURCE_GROUP</azure.plugin.resourcegroup>
 ```
 
-Posuňte se dolů k `<plugins>` část _pom.xml_ ke kontrole modul plug-in Azure.
 
 ## <a name="build-and-deploy-the-application"></a>Sestavení a nasazení aplikace
 
@@ -135,10 +161,10 @@ Dále musíme upravit konfiguraci naše Java transakcí API (JPA) tak, aby naše
 
 Před nasazením překonfigurovaná aplikace, musí aktualizujeme WildFly aplikačním serverem Postgres modul a jeho závislosti. Konfigurace serveru, potřebujeme čtyři soubory v `wildfly_config/` adresáře:
 
-- **postgresql 42.2.5.jar**: JAR tento soubor je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
-- **postgres module.xml**: tento XML souboru deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
+- **postgresql 42.2.5.jar**: Tento soubor JAR je ovladač JDBC pro Postgres. Další informace najdete v tématu [oficiální web](https://jdbc.postgresql.org/index.html).
+- **postgres module.xml**: Tento soubor XML deklaruje název modulu Postgres (org.postgres). Určuje také prostředky a závislosti, které jsou nezbytné pro modul, který se má použít.
 - **jboss_cli_commands.cl**: Tento soubor obsahuje konfiguračních příkazů, které budou spuštěny na JBoss rozhraní příkazového řádku. Příkazy přidejte modul Postgres WildFly aplikační server, zadejte přihlašovací údaje, deklarovat název JNDI, nastavit mezní hodnotu časového limitu, atd. Pokud nejste obeznámeni s JBoss CLI, přečtěte si článek [oficiální dokumentaci](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.0/html-single/management_cli_guide/#how_to_cli).
-- **startup_script.SH**: nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v `jboss_cli_commands.cli` JBoss rozhraní příkazového řádku.
+- **startup_script.SH**: Nakonec tento skript prostředí se spustí pokaždé, když je spuštěná instance vaší služby App Service. Skript provádí pouze jednu funkci: přesměrujete příkazy v `jboss_cli_commands.cli` JBoss rozhraní příkazového řádku.
 
 Důrazně doporučujeme čtení obsahu těchto souborů, zejména _jboss_cli_commands.cli_.
 

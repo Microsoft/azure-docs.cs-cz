@@ -1,21 +1,22 @@
 ---
-title: Odpovědi na vyhledávání – rozhraní API webové vyhledávání Bingu
+title: Typy struktury a odpověď odezvy API vyhledávání na webu Bingu
 titleSuffix: Azure Cognitive Services
-description: Další informace o typech odpovědí a odpovědí z rozhraní API webové vyhledávání Bingu.
+description: Informace o typech odpovědí a odpovědi, které používají rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
-ms.author: erhopf
-ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: aahi
+ms.custom: seodec2018
+ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123772"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250487"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
@@ -128,7 +129,7 @@ Následující je příkladem použití souvisejících dotazů v Bing.com.
 
 ## <a name="videos-answer"></a>Odpověď videa
 
-[Videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) odpověď obsahuje seznam videí, které Bing si mysleli, že byly relevantní pro dotaz. Každý [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) v seznamu obsahuje adresu URL videa, jeho trvání, rozměry a jeho formát kódování. Video objekt zahrnuje také adresa URL miniatury videa a na miniaturu dimenzí.
+[Videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos) odpověď obsahuje seznam videí, které Bing si mysleli, že byly relevantní pro dotaz. Každý [videa](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#video) v seznamu obsahuje adresu URL videa, jeho trvání, rozměry a jeho formát kódování. Objekt videa obsahuje také adresu URL miniatury videa a její rozměry.
 
 ```json
 {
@@ -166,13 +167,13 @@ V závislosti na uživatelských zařízeních by obvykle zobrazit pouze podmno�
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Uživatel najede myší na miniaturu můžete použít `motionThumbnailUrl` přehrávání verze videa s miniatura. Ujistěte se, že atribut na miniaturu pohybu, když ji zobrazíte.
+Uživatel najede myší na miniaturu můžete použít `motionThumbnailUrl` přehrávání verze videa s miniatura. Ujistěte se, že je při zobrazení přiřazená filmová miniatura.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Pokud uživatel klikne na miniaturu, jsou následující možnosti pro zobrazení videa:
+Pokud uživatel klikne na miniaturu, máte následující možnosti pro zobrazení videa:
 
 - Použití `hostPageUrl` pro zobrazení videa na webu hostitele (například YouTube)
 - Použití `webSearchUrl` pro zobrazení videa v prohlížeči video Bingu
@@ -182,7 +183,7 @@ Podrobnosti o odpovědi videa a videa, najdete v tématu [Video Search API](../b
 
 ## <a name="news-answer"></a>Zprávy odpovědi
 
-[Zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) odpověď obsahuje seznam články o novinkách, které Bing si mysleli, že byly relevantní pro dotaz. Každý [zpravodajskému článku](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) v seznamu obsahuje název, popis a adresu URL v článku na článek na webu hostitele. Pokud tento článek obsahuje bitovou kopii, obsahuje objekt miniaturu obrázku.
+[Zpráv](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news) odpověď obsahuje seznam články o novinkách, které Bing si mysleli, že byly relevantní pro dotaz. Každý [zpravodajský článek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle) v seznamu obsahuje název, popis a adresu URL článku na webu hostitele. Pokud článek obsahuje obrázek, zahrnuje objekt miniaturu obrázku.
 
 ```json
 {
@@ -205,7 +206,7 @@ Podrobnosti o odpovědi videa a videa, najdete v tématu [Video Search API](../b
 }, ...
 ```
 
-V závislosti na uživatelských zařízeních by zobrazit pouze podmnožinu články o novinkách s možností pro uživatele, chcete-li zobrazit zbývající článků. Použití `name` a `url` vytvoření hypertextového odkazu, který přijímá uživateli zpravodajskému článku na webu hostitele. Pokud tento článek obsahuje bitovou kopii, ujistěte se, kliknout, čímž image pomocí `url`. Nezapomeňte použít `provider` kterému budou připsány článku.
+V závislosti na uživatelských zařízeních by zobrazit pouze podmnožinu články o novinkách s možností pro uživatele, chcete-li zobrazit zbývající článků. Pomocí `name` a `url` vytvořte hypertextový odkaz, který uživatele přenese na zpravodajský článek na webu hostitele. Pokud tento článek obsahuje bitovou kopii, ujistěte se, kliknout, čímž image pomocí `url`. Nezapomeňte uvést zdroj článku pomocí `provider`.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -295,7 +296,7 @@ Matematický výraz může obsahovat následující symboly:
 |*|Násobení|
 |^|Napájení|
 |!|Faktoriál|
-|.|Decimal|
+|.|Desítkově|
 |()|Priorita seskupení|
 |[]|Funkce|
 

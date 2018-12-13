@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bcb448296313eedebb8f8389b320c5da5f1a80dd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ef86c9ee00fdd4673774640d33eec93e2ead876d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311784"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193089"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Předávací ověřování ochrana osobních údajů uživatelů a Azure Active Directory
 
@@ -72,7 +72,7 @@ Chcete-li zobrazit protokoly vztahujících se k agentovi předávací ověřov�
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>Odstraňte soubory protokolů trasování ověřování agenta
 
-Měli byste pravidelně zkontrolovat obsah **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\**  a odstraňte její obsah této složky každých 48 hodin. 
+Měli byste pravidelně zkontrolovat obsah <strong>%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\</ strong > a odstraňte její obsah této složky každých 48 hodin. 
 
 >[!IMPORTANT]
 >Pokud je spuštěna Služba agenta ověřování, není možné odstranit aktuální soubor protokolu ve složce. Zastavte službu než to zkusíte znovu. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste mít už nakonfigurovaný předávací ověřování pro [vysoké dostupnosti](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability).

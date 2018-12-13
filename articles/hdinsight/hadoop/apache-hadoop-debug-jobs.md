@@ -1,5 +1,5 @@
 ---
-title: 'Ladění Apache Hadoop v HDInsight: Zobrazit protokoly a interpretace chybových zpráv – Azure '
+title: 'Ladění Apache Hadoop: Zobrazit protokoly a interpretace chybových zpráv – Azure HDInsight'
 description: Další informace o chybové zprávy, které se může zobrazit při správě HDInsight pomocí Powershellu a kroky, které můžete provést při obnově.
 services: hdinsight
 ms.reviewer: jasonh
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c997b2644be3798629afce6d826c53b1d9492597
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d52a9411863962528eb0693f735ca0c4ee4c9991
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017010"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166502"
 ---
 # <a name="analyze-hadoop-logs"></a>Analýza protokolů Hadoop
 
@@ -133,38 +133,38 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ### <a id="AtLeastOneSqlMetastoreMustBeProvided"></a>AtLeastOneSqlMetastoreMustBeProvided
 * **Popis**: Chcete-li použít vlastní nastavení u metaúložiště Hive a Oozie zadejte podrobnosti databáze Azure SQL pro nejméně jednu součást.
-* **Zmírnění dopadů**: uživatel musí zadat platné metastore SQL Azure a opakujte žádost.  
+* **Zmírnění dopadů**: Uživatel musí zadat platné metastore SQL Azure a opakujte žádost.  
 
 ### <a id="AzureRegionNotSupported"></a>AzureRegionNotSupported
 * **Popis**: Nelze vytvořit cluster v oblasti *nameOfYourRegion*. Použijte platný oblasti HDInsight a opakujte žádost.
-* **Zmírnění dopadů**: Zákazník vytvořit oblasti clusteru, který je aktuálně podporuje: jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.  
+* **Zmírnění dopadů**: Zákazník měli vytvořit oblasti clusteru, který je aktuálně podporuje: Jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.  
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
-* **Popis**: server nemohl najít záznam požadovaný cluster.  
+* **Popis**: Server nemohl najít záznam požadovaný cluster.  
 * **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
-* **Popis**: název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
+* **Popis**: Název DNS clusteru *yourDnsName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
 * **Zmírnění dopadů**: Ujistěte se, zda používáte platný název DNS pro váš cluster, který začíná a končí alfanumerické znaky a žádné speciální obsahuje i jiné znaky než čárka "-" a pak zkuste operaci zopakovat.
 
 ### <a id="ClusterNameUnavailable"></a>ClusterNameUnavailable
-* **Popis**: název clusteru *yourClusterName* není k dispozici. Vyberte prosím jiný název.  
-* **Zmírnění dopadů**: uživatel by neměl zadejte název clusteru, který je jedinečný a existují a zkuste to znovu. Pokud uživatel je na portálu, rozhraní se upozorní je, pokud název clusteru je již používán během kroků vytvořit.
+* **Popis**: Název clusteru *yourClusterName* není k dispozici. Vyberte prosím jiný název.  
+* **Zmírnění dopadů**: Uživatel by neměl zadejte název clusteru, který je jedinečný a existují a zkuste to znovu. Pokud uživatel je na portálu, rozhraní se upozorní je, pokud název clusteru je již používán během kroků vytvořit.
 
 ### <a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid
-* **Popis**: heslo clusteru je neplatné. Heslo musí být minimálně 10 znaků a musí obsahovat alespoň jednu číslici, velké písmeno, malé písmeno a speciální znaky bez mezer a nesmí obsahovat uživatelské jméno jako jeho součástí.  
+* **Popis**: Heslo clusteru je neplatné. Heslo musí být minimálně 10 znaků a musí obsahovat alespoň jednu číslici, velké písmeno, malé písmeno a speciální znaky bez mezer a nesmí obsahovat uživatelské jméno jako jeho součástí.  
 * **Zmírnění dopadů**: Zadejte platný cluster heslo a zkuste operaci zopakovat.
 
 ### <a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid
-* **Popis**: uživatelské jméno clusteru je neplatné. Ujistěte se prosím, že uživatelské jméno nemůže obsahovat speciální znaky ani mezery.  
+* **Popis**: Uživatelské jméno clusteru je neplatné. Ujistěte se prosím, že uživatelské jméno nemůže obsahovat speciální znaky ani mezery.  
 * **Zmírnění dopadů**: Zadejte uživatelské jméno platným clusterem a zkuste operaci zopakovat.
 
 ### <a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord
-* **Popis**: název DNS clusteru *yourDnsClusterName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
+* **Popis**: Název DNS clusteru *yourDnsClusterName* je neplatný. Ujistěte se prosím název začíná a končí alfanumerický a může obsahovat pouze '-' speciální znak  
 * **Zmírnění dopadů**: Zadejte platné uživatelské jméno clusteru DNS a zkuste operaci zopakovat.
 
 ### <a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName
-* **Popis**: název kontejneru v identifikátoru URI *yourcontainerURI* a název DNS *yourDnsName* v žádosti subjekt musí být stejné.  
+* **Popis**: Název kontejneru v identifikátoru URI *yourcontainerURI* a název DNS *yourDnsName* v žádosti subjekt musí být stejné.  
 * **Zmírnění dopadů**: Ujistěte se, že název kontejneru a název DNS jsou stejné a zkuste operaci zopakovat.
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
@@ -172,71 +172,71 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 * **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
-* **Popis**: nepovedlo se odstranit nasazení clusteru  
+* **Popis**: Nepovedlo se odstranit nasazení clusteru  
 * **Zmírnění dopadů**: Zkuste operaci odstranění.
 
 ### <a id="DnsMappingNotFound"></a>DnsMappingNotFound
-* **Popis**: Chyba v konfiguraci služby. Požadované informace mapování DNS nebyl nalezen.  
-* **Zmírnění dopadů**: odstranění clusteru a vytvoření nového clusteru.
+* **Popis**: Konfigurace služby došlo k chybě. Požadované informace mapování DNS nebyl nalezen.  
+* **Zmírnění dopadů**: Odstranění clusteru a vytvoření nového clusteru.
 
 ### <a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest
 * **Popis**: Duplicitní pokus o vytvoření clusteru kontejneru. Existuje záznam pro *nameOfYourContainer* ale značek etag se neshodují.
 * **Zmírnění dopadů**: Zadejte jedinečný název kontejneru a zkuste operaci vytvoření.
 
 ### <a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService
-* **Popis**: hostovanou službu *nameOfYourHostedService* již obsahuje cluster. Hostovaná služba nemůže obsahovat více clusterů  
-* **Zmírnění dopadů**: hostování clusteru v jiné hostované služby.
+* **Popis**: Hostovaná služba *nameOfYourHostedService* již obsahuje cluster. Hostovaná služba nemůže obsahovat více clusterů  
+* **Zmírnění dopadů**: Hostování clusteru v jiné hostované služby.
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
-* **Popis**: server nemohl aktualizovat stav nasazení clusteru.  
+* **Popis**: Serveru se nepovedlo aktualizovat stav nasazení clusteru.  
 * **Zmírnění dopadů**: Zkuste operaci zopakovat. Pokud se to stane více než jednou, obraťte se na šablony stylů CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
-* **Popis**: clusteru *yourClusterName* byla odstraněna jako součást údržby. Znovu prosím vytvořte cluster.
-* **Zmírnění dopadů**: znovu vytvořte cluster.
+* **Popis**: Cluster *yourClusterName* byla odstraněna jako součást údržby. Znovu prosím vytvořte cluster.
+* **Zmírnění dopadů**: Znovu vytvořte cluster.
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
 * **Popis**: Konfigurace clusteru neplatný. Požadované konfigurace hlavního uzlu se nenašla v velikosti uzlů.
 * **Zmírnění dopadů**: Zkuste operaci zopakovat.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
-* **Popis**: nejde vytvořit hostovanou službu *nameOfYourHostedService*. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek zopakovat.
+* **Popis**: Nejde vytvořit hostovanou službu *nameOfYourHostedService*. Zkuste prosím žádost.  
+* **Zmírnění dopadů**: Zkuste požadavek.
 
 ### <a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment
-* **Popis**: hostovanou službu *nameOfYourHostedService* už má produkčního nasazení. Hostovaná služba nemůže obsahovat více nasazení v produkčním prostředí. Zkuste požadavek s jiný název clusteru.
-* **Zmírnění dopadů**: použijte jiný název clusteru a opakujte žádost.
+* **Popis**: Hostovaná služba *nameOfYourHostedService* už má produkčního nasazení. Hostovaná služba nemůže obsahovat více nasazení v produkčním prostředí. Zkuste požadavek s jiný název clusteru.
+* **Zmírnění dopadů**: Použijte jiný název clusteru a opakujte žádost.
 
 ### <a id="HostedServiceNotFound"></a>HostedServiceNotFound
-* **Popis**: hostovanou službu *nameOfYourHostedService* pro cluster se nenašel.  
+* **Popis**: Hostovaná služba *nameOfYourHostedService* pro cluster se nenašel.  
 * **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, odstraňte ho a pak to zkuste znovu.
 
 ### <a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment
-* **Popis**: hostovanou službu *nameOfYourHostedService* nemá žádné přidružené nasazení.  
+* **Popis**: Hostovaná služba *nameOfYourHostedService* nemá žádné přidružené nasazení.  
 * **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, odstraňte ho a pak to zkuste znovu.
 
 ### <a id="InsufficientResourcesCores"></a>InsufficientResourcesCores
-* **Popis**: The SubscriptionId *yourSubscriptionId* nemá vlevo jádra k vytvoření clusteru *yourClusterName*. Požadováno: *resourcesRequired*, k dispozici: *resourcesAvailable*.  
-* **Zmírnění dopadů**: uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
+* **Popis**: ID předplatného *yourSubscriptionId* nemá vlevo jádra k vytvoření clusteru *yourClusterName*. Požadováno: *resourcesRequired*, k dispozici: *resourcesAvailable*.  
+* **Zmírnění dopadů**: Uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
 
 ### <a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices
 * **Popis**: ID předplatného *yourSubscriptionId* nemá žádné kvóty pro novou hostovanou službu a vytvořte cluster *yourClusterName*.  
-* **Zmírnění dopadů**: uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
+* **Zmírnění dopadů**: Uvolnit tak prostředky v rámci vašeho předplatného, nebo zvyšte prostředky dostupné pro předplatné a zkuste to znovu vytvořte cluster.
 
 ### <a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest
-* **Popis**: na serveru došlo k vnitřní chybě. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek zopakovat.
+* **Popis**: Server zjistil interní chybu. Zkuste prosím žádost.  
+* **Zmírnění dopadů**: Zkuste požadavek.
 
 ### <a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation
-* **Popis**: umístění úložiště Azure *dataRegionName* není platné umístění. Ujistěte se, že oblast je správný a opakujte žádost.
+* **Popis**: Umístění úložiště Azure *dataRegionName* není platné umístění. Ujistěte se, že oblast je správný a opakujte žádost.
 * **Zmírnění dopadů**: Vyberte umístění úložiště, který podporuje HDInsight, zkontrolujte, jestli je váš cluster společně a zkuste operaci zopakovat.
 
 ### <a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode
-* **Popis**: velikost neplatný virtuálního počítače pro datové uzly. Pro všechny datové uzly se podporuje jenom velikost velký virtuální počítač.  
-* **Zmírnění dopadů**: určení velikosti podporované uzel pro datový uzel a zkuste operaci zopakovat.
+* **Popis**: Neplatná velikost virtuálního počítače pro datové uzly. Pro všechny datové uzly se podporuje jenom velikost velký virtuální počítač.  
+* **Zmírnění dopadů**: Zadat velikost uzlu podporované pro datový uzel a zkuste operaci zopakovat.
 
 ### <a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode
-* **Popis**: velikost neplatný virtuálního počítače pro hlavní uzel. Pro hlavní uzel je podporována pouze velikost "ExtraLarge virtuálního počítače".  
+* **Popis**: Neplatná velikost virtuálního počítače pro hlavní uzel. Pro hlavní uzel je podporována pouze velikost "ExtraLarge virtuálního počítače".  
 * **Zmírnění dopadů**: Zadejte velikost uzlu podporované pro hlavní uzel a opakujte operaci
 
 ### <a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion
@@ -244,11 +244,11 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 * **Zmírnění dopadů**: Pokud se cluster nachází v chybovém stavu, vyřaďte ho a pak to zkuste znovu.  
 
 ### <a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName
-* **Popis**: název kontejneru objektů blob v účtu externího úložiště *yourContainerName* je neplatný. Ujistěte se, že název začíná písmenem a obsahuje jenom malá písmena, číslice a pomlčky.  
+* **Popis**: Název kontejneru objektů blob v účtu externího úložiště *yourContainerName* je neplatný. Ujistěte se, že název začíná písmenem a obsahuje jenom malá písmena, číslice a pomlčky.  
 * **Zmírnění dopadů**: Zadejte název kontejneru objektů blob v účtu úložiště platný a zkuste operaci zopakovat.
 
 ### <a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey
-* **Popis**: konfigurace pro externí účet úložiště *yourStorageAccountName* musí mít tajného klíče podrobnosti o nastavení.  
+* **Popis**: Konfigurace pro externí účet úložiště *yourStorageAccountName* musí mít tajného klíče podrobnosti o nastavení.  
 * **Zmírnění dopadů**: Zadejte platný tajný klíč pro účet úložiště a zkuste operaci zopakovat.
 
 ### <a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat
@@ -260,35 +260,35 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 * **Zmírnění dopadů**: Upravte konfiguraci tak, že je zadán pouze jeden hlavní uzel.
 
 ### <a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest
-* **Popis**: operaci nelze dokončit v povoleném čase nebo maximální počet opakovaných pokusů možné. Zkuste prosím žádost.  
-* **Zmírnění dopadů**: Zkuste požadavek zopakovat.
+* **Popis**: Operaci nelze dokončit v povoleném čase nebo maximální počet opakovaných pokusů je to možné. Zkuste prosím žádost.  
+* **Zmírnění dopadů**: Zkuste požadavek.
 
 ### <a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty
 * **Popis**: Parametr *yourParameterName* nemůže být null ani prázdný.  
 * **Zmírnění dopadů**: Zadejte platnou hodnotu parametru.
 
 ### <a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure
-* **Popis**: jeden nebo více vstupů žádost o vytvoření clusteru není platná. Ujistěte se, že vstupní hodnoty jsou správné a opakujte žádost.  
+* **Popis**: Jeden nebo více vstupů žádost o vytvoření clusteru není platný. Ujistěte se, že vstupní hodnoty jsou správné a opakujte žádost.  
 * **Zmírnění dopadů**: Ujistěte se, že vstupní hodnoty jsou správné a opakujte žádost.
 
 ### <a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable
-* **Popis**: oblast funkce není k dispozici pro oblast *yourRegionName* a ID předplatného *yourSubscriptionId*.  
-* **Zmírnění dopadů**: Určete oblast, která podporuje clustery HDInsight. Jsou veřejně podporovaných oblastí: jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.
+* **Popis**: Oblast funkce není k dispozici pro oblast *yourRegionName* a ID předplatného *yourSubscriptionId*.  
+* **Zmírnění dopadů**: Zadejte oblast, která podporuje clustery HDInsight. Jsou veřejně podporovaných oblastí: Jihovýchodní Asie, západní Evropa, Severní Evropa, USA – východ nebo USA – západ.
 
 ### <a id="StorageAccountNotColocated"></a>StorageAccountNotColocated
-* **Popis**: účet úložiště *yourStorageAccountName* je v oblasti *currentRegionName*. By měla být stejná jako oblast clusteru *yourClusterRegionName*.  
-* **Zmírnění dopadů**: Zadejte účet úložiště ve stejné oblasti, ve které váš cluster nebo pokud máte už data v účtu úložiště, vytvořte nový cluster ve stejné oblasti jako existující účet úložiště. Pokud používáte na portálu, rozhraní upozorní je tento problém předem.
+* **Popis**: Účet úložiště *yourStorageAccountName* je v oblasti *currentRegionName*. By měla být stejná jako oblast clusteru *yourClusterRegionName*.  
+* **Zmírnění dopadů**: Buď zadejte účet úložiště ve stejné oblasti, ve které váš cluster, nebo pokud máte už data v účtu úložiště, vytvořte nový cluster ve stejné oblasti jako existující účet úložiště. Pokud používáte na portálu, rozhraní upozorní je tento problém předem.
 
 ### <a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive
-* **Popis**: zadané ID předplatného *yourSubscriptionId* není aktivní.  
-* **Zmírnění dopadů**: znovu aktivovat vaše předplatné nebo si nové předplatné platný.
+* **Popis**: Zadané ID předplatného *yourSubscriptionId* není aktivní.  
+* **Zmírnění dopadů**: Znovu aktivovat vaše předplatné nebo si nové předplatné platný.
 
 ### <a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound
 * **Popis**: ID předplatného *yourSubscriptionId* nebyl nalezen.  
 * **Zmírnění dopadů**: Zkontrolujte, že ID vašeho předplatného je platný a zkuste operaci zopakovat.
 
 ### <a id="UnableToResolveDNS"></a>UnableToResolveDNS
-* **Popis**: nejde přeložit DNS *yourDnsUrl*. Ujistěte se prosím, že je k dispozici plně kvalifikovanou adresu URL pro koncový bod objektu blob.  
+* **Popis**: Nejde přeložit DNS *yourDnsUrl*. Ujistěte se prosím, že je k dispozici plně kvalifikovanou adresu URL pro koncový bod objektu blob.  
 * **Zmírnění dopadů**: Zadejte adresu URL platný objekt blob. Adresa URL musí být plně platný, včetně počínaje *http://* a končící na *.com*.
 
 ### <a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource
@@ -296,15 +296,15 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 * **Zmírnění dopadů**: Zadejte adresu URL platný objekt blob. Adresa URL musí být plně platný, včetně počínaje *http://* a končící na *.com*.
 
 ### <a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable
-* **Popis**: verze funkce není k dispozici pro verzi *specifiedVersion* a ID předplatného *yourSubscriptionId*.  
-* **Zmírnění dopadů**: Zvolte verzi, která je k dispozici a zkuste operaci zopakovat.
+* **Popis**: Funkce verze není k dispozici pro verzi *specifiedVersion* a ID předplatného *yourSubscriptionId*.  
+* **Zmírnění dopadů**: Vyberte verzi, která je k dispozici a zkuste operaci zopakovat.
 
 ### <a id="VersionNotSupported"></a>VersionNotSupported
-* **Popis**: verze *specifiedVersion* není podporován.
+* **Popis**: Verze *specifiedVersion* není podporován.
 * **Zmírnění dopadů**: Vyberte verzi, která je podporována a zkuste operaci zopakovat.
 
 ### <a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion
-* **Popis**: verze *specifiedVersion* není k dispozici v oblasti Azure *specifiedRegion*.  
+* **Popis**: Verze *specifiedVersion* není k dispozici v oblasti Azure *specifiedRegion*.  
 * **Zmírnění dopadů**: Vyberte verzi, která je podporována v zadanou oblast a zkuste operaci zopakovat.
 
 ### <a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound

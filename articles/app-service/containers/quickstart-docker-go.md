@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace v Dockeru/Go ve službě Azure Web App for Containers
+title: Vytvoření aplikace v Dockeru/Go v Linuxu – služba Azure App Service
 description: Postup pro nasazení image Dockeru s aplikací v Go do služby Azure Web App for Containers.
 keywords: azure app service, web app, go, docker, kontejner
 services: app-service
@@ -11,13 +11,13 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 01/17/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: f1d58adcc017367a3de8ee6130a3333f86fb501c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 36a6b73a6e358104f22d64b00f436a219f29bbd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423241"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251874"
 ---
 # <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Nasazení webové aplikace v Dockeru/Go ve službě Web App for Containers
 
@@ -74,7 +74,7 @@ http://<app_name>.azurewebsites.net/hello
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Použití vlastní image Dockeru](tutorial-custom-docker-image.md)

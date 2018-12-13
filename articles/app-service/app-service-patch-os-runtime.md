@@ -1,5 +1,5 @@
 ---
-title: Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service | Dokumentace Microsoftu
+title: Operační systém a prostředí runtime opravy tempo - službě Azure App Service | Dokumentace Microsoftu
 description: Popisuje, jak aktualizovat službu Azure App Service aktualizace operačního systému a moduly runtime a jak můžete získat oznámení.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 9855becd7c047788ed310dff4317a5df87cc9b61
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.custom: seodec18
+ms.openlocfilehash: a0fdab06606a88fafa803a9a112c05452578cfeb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047624"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252860"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service
 
@@ -100,5 +101,5 @@ Následující tabulka ukazuje jak verzí systému Windows a modulu runtime jazy
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Centrum zabezpečení: zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
+[Centrum zabezpečení: Zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
 [64bitový ASP.NET Core ve službě Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

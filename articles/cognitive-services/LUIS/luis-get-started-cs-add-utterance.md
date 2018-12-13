@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 807e90216d8fff8453f7fa8596926483102fd258
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 23692bd6a0c708b2747a3cc211b8238d30dfe5db
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087809"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161742"
 ---
-# <a name="quickstart-change-model-using-c"></a>Rychlý start: Změna modelu pomocí C#
+# <a name="quickstart-change-model-using-c"></a>Rychlý start: Změnit model použitíC#
 
 [!INCLUDE [Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-change-model-intro-para.md)]
 
@@ -29,7 +29,7 @@ ms.locfileid: "53087809"
 * Nainstalovaný programovací jazyk C#
 * Balíčky NuGet [JsonFormatterPlus](https://www.nuget.org/packages/JsonFormatterPlus) a [CommandLine](https://www.nuget.org/packages/CommandLineParser/)
 
-[!INCLUDE [Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+[!INCLUDE [Code is available in LUIS-Samples GitHub repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
 ## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 

@@ -1,5 +1,5 @@
 ---
-title: Geograficky distribuované škálování v prostředí App Service Environments
+title: Geograficky distribuované škálování pomocí služby App Service Environment – Azure
 description: Zjistěte, jak horizontálně škálovat aplikace s využitím geografické distribuce pomocí Traffic Manageru a služby App Service Environment.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.openlocfilehash: bc85139dfa3589baf6505fac2269f8755dcaddc8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.custom: seodec18
+ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213244"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273863"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geograficky distribuované škálování v prostředí App Service Environments
 ## <a name="overview"></a>Přehled
@@ -42,18 +43,18 @@ Zbývající část tohoto tématu vás provede jednotlivými kroky nastavení d
 ## <a name="planning-the-topology"></a>Plánování topologie
 Před sestavením si nároky distribuované aplikace, umožňuje mít několik částí informace předem.
 
-* **Vlastní doména aplikace:** co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci?  Pro ukázkovou aplikaci vlastní název domény je *www.scalableasedemo.com*
-* **Doménu Traffic Manageru:** názvu domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru][AzureTrafficManagerProfile].  Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager.  Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*.  Díky tomu úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
-* **Strategie pro škálování app nároky:** bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti?  Více oblastech?  -Kombinovat oba přístupy poskytují?  Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu.  Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment.  Pomocí 15 + veřejných oblastech Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace.  Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
-* **Zásady vytváření názvů pro App Service Environment:** každý App Service Environment vyžaduje jedinečný název.  Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment.  Ukázkové aplikace byl použit jednoduché zásady vytváření názvů.  Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
-* **Zásady vytváření názvů pro aplikace:** od více instancí aplikace se nasadí, název je potřeba pro každou instanci nasazené aplikace.  Jeden malý známé, ale příliš pohodlné funkce App Service Environment je, že stejný název aplikace lze použít v rámci více App Service Environment.  Protože každá služba App Service Environment má příponu domény jedinečný, vývojáři můžete znovu použít přesně stejný název aplikace v každém prostředí.  Například vývojář může mít aplikace s názvem následujícím způsobem: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*atd.  Ukázkové aplikace i když každá instance aplikace má také jedinečný název.  Názvy instancí aplikace používá jsou *webfrontend1*, *webfrontend2*, a *webfrontend3*.
+* **Vlastní doména aplikace:**  Co je vlastní název domény, který zákazníci budou používat pro přístup k aplikaci?  Pro ukázkovou aplikaci vlastní název domény je *www.scalableasedemo.com*
+* **Doménu Traffic Manageru:**  Název domény je potřeba zvolit při vytváření [profilu Azure Traffic Manageru][AzureTrafficManagerProfile].  Tento název se zkombinuje s *trafficmanager.net* příponu je třeba zaregistrovat položku domény, který je spravovaný nástrojem Traffic Manager.  Ukázkové aplikace je název zvoleném *škálovatelné služby ase ukázka*.  Díky tomu úplný název domény, který je spravovaný nástrojem Traffic Manager je *škálovatelné služby ase demo.trafficmanager.net*.
+* **Strategie pro škálování app nároky:**  Bude nároky na aplikaci distribuovat napříč více App Service Environment v jedné oblasti?  Více oblastech?  -Kombinovat oba přístupy poskytují?  Rozhodnutí by podle očekávání, kde budou pocházet provozu zákazníka a také jak můžete škálovat zbývající aplikace podporu back-end infrastrukturu.  Například se 100 % bezstavové aplikace, aplikace je možné masivně škálovat pomocí kombinace více App Service Environment v jedné oblasti Azure, vynásobený nasazení ve víc oblastech Azure App Service Environment.  Pomocí 15 + veřejných oblastech Azure si můžete vybrat z zákazníků, kteří vytvářejí skutečně nároky na celém světě vysoce škálovatelné aplikace.  Pro ukázková aplikace používá pro účely tohoto článku byly vytvořeny tři App Service Environment v jedné oblasti Azure (střed USA – jih).
+* **Zásady vytváření názvů pro App Service Environment:**  Každá služba App Service Environment vyžaduje jedinečný název.  Nad rámec jednu nebo dvě služby App Service Environment je vhodné používat takové názvy vám pomůže identifikovat každou službu App Service Environment.  Ukázkové aplikace byl použit jednoduché zásady vytváření názvů.  Názvy tři App Service Environment jsou *fe1ase*, *fe2ase*, a *fe3ase*.
+* **Zásady vytváření názvů pro aplikace:**  Protože více instancí aplikace se nasadí, název je potřeba pro každou instanci nasazené aplikace.  Jeden malý známé, ale příliš pohodlné funkce App Service Environment je, že stejný název aplikace lze použít v rámci více App Service Environment.  Protože každá služba App Service Environment má příponu domény jedinečný, vývojáři můžete znovu použít přesně stejný název aplikace v každém prostředí.  Například vývojář může mít aplikace s názvem následujícím způsobem: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*atd.  Ukázkové aplikace i když každá instance aplikace má také jedinečný název.  Názvy instancí aplikace používá jsou *webfrontend1*, *webfrontend2*, a *webfrontend3*.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Nastavení profilu Traffic Manageru
 Jakmile více instancí aplikace jsou nasazené v několika prostředích App Service, instance jednotlivých aplikací lze registrovat pomocí Traffic Manageru.  Ukázkové aplikace Traffic Manager je potřeba profil pro *škálovatelné služby ase demo.trafficmanager.net* zákazníků, který může směrovat na některý z následujících případech nasazené aplikace:
 
-* **webfrontend1.fe1ase.p.azurewebsites.NET:** instance ukázkové aplikace nasazené na první služby App Service Environment.
-* **webfrontend2.fe2ase.p.azurewebsites.NET:** instance ukázkové aplikace nasazené na druhý App Service Environment.
-* **webfrontend3.fe3ase.p.azurewebsites.NET:** instance ukázkové aplikace nasazené na třetí App Service Environment.
+* **webfrontend1.fe1ase.p.azurewebsites.NET:**  Instance ukázkové aplikace nasazené na první služby App Service Environment.
+* **webfrontend2.fe2ase.p.azurewebsites.NET:**  Instance ukázkové aplikace nasazené na druhý App Service Environment.
+* **webfrontend3.fe3ase.p.azurewebsites.NET:**  Instance ukázkové aplikace nasazené na třetí App Service Environment.
 
 Nejjednodušší způsob, jak zaregistrovat více služby Azure App Service koncových bodů, všechny spuštěné v **stejné** oblast Azure, je pomocí Powershellu [podpora Azure Resource Manageru Traffic Manageru] [ ARMTrafficManager].  
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace ASP.NET se službou SQL Database v Azure | Microsoft Docs
+title: Vytvoření aplikace ASP.NET s využitím SQL Database – služba Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit aplikaci C# ASP.NET s databází SQL Serveru do Azure.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353812"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257773"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
@@ -408,7 +408,7 @@ Ve výchozím nastavení se na portálu zobrazí stránka **Přehled**. Tato str
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

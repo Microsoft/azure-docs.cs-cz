@@ -102,7 +102,7 @@ Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte něja
     
     * Pokud je vypočítaná hodnota *batchSize* větší než 24, nastavte hodnotu *batchSize* na 24.
     
-    * V případě hodnoty *numInsertionWorkers* použijte tuto rovnici: *numInsertionWorkers =  (zřízená propustnost × latence v sekundách) / (velikost dávky × počet RU spotřebovaných jedním zápisem)*.
+    * V případě hodnoty *numInsertionWorkers* použijte tuto rovnici: *numInsertionWorkers =  (zřízená propustnost * latence v sekundách) / (velikost dávky * počet RU spotřebovaných jedním zápisem)*.
         
     |Vlastnost|Hodnota|
     |--------|-----|

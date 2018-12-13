@@ -1,5 +1,5 @@
 ---
-title: Co je nového
+title: Co je nového ve verzi?
 titleSuffix: Azure Machine Learning service
 description: Přečtěte si o nejnovějších aktualizacích služby Azure Machine Learning.
 services: machine-learning
@@ -11,18 +11,18 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea9f8e07b627b7f3554e390063d61ef984f30dad
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105134"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185711"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
 
-## <a name="2018-12-04-general-availability"></a>2018-12-04: Obecná dostupnost
+## <a name="2018-12-04-general-availability"></a>2018-12-04: Všeobecná dostupnost
 
 Služba Azure Machine Learning je teď obecně dostupná.
 
@@ -235,9 +235,9 @@ Zobrazit [seznam známých problémů](resource-known-issues.md) Další informa
 
 ## <a name="2018-09-public-preview-refresh"></a>2018-09 (aktualizace verze public preview)
 
-A nové, zcela aktualizovat verzi služby Azure Machine Learning: Další informace o této verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
+Nové úplně aktualizovaná verze služby Azure Machine Learning: Další informace o této vydané verzi: https://azure.microsoft.com/blog/what-s-new-in-azure-machine-learning-service/
 
-## <a name="older-notes-sept-2017---jun-2018"></a>Starší poznámky: září 2017 – červen 2018
+## <a name="older-notes-sept-2017---jun-2018"></a>Starší poznámky: Září 2017 – červen 2018
 ### <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
 
 V této verzi služby Azure Machine Learning můžete:
@@ -452,7 +452,7 @@ Další informace o vytvoření cílových výpočetních prostředí najdete v 
 V této verzi jsme provedli jsme vylepšení týkající se zabezpečení, stability a udržovatelnosti v aplikaci workbench, rozhraní příkazového řádku a vrstva back endové služby. Děkujeme, že mnohokrát odesláním úsměvy a frowns. Mnoho níže aktualizace probíhají jako přímé výsledky váš názor. Novoroční předsevzetí!
 
 #### <a name="notable-new-features"></a>Důležité nové funkce
-- Služba Azure ML je teď dostupná ve dvou nových oblastech Azure: **západní Evropa** a **jihovýchodní Asie**. Připojí předchozí oblasti **USA – východ 2**, **střed USA – západ**, a **Austrálie – východ**, přináší celkový počet nasazené oblasti na pět.
+- Služba Azure ML je teď dostupná ve dvou nových oblastech Azure: **Západní Evropa** a **jihovýchodní Asie**. Připojí předchozí oblasti **USA – východ 2**, **střed USA – západ**, a **Austrálie – východ**, přináší celkový počet nasazené oblasti na pět.
 - Povolili jsme syntaxe kódu Python zvýraznění v aplikaci Workbench, aby bylo snazší číst a upravovat zdrojový kód Pythonu. 
 - Teď můžete spustit přímo ze souboru, nikoli z celého projektu oblíbeného prostředí IDE.  Otevření souboru v aplikaci Workbench a pak kliknutím na "Edit" spustí vaše integrované vývojové prostředí (aktuálně VS Code a PyCharm podporuje) k aktuálnímu souboru a projektu.  Můžete také kliknout na šipku vedle tlačítka Upravit upravte soubor v textovém editoru aplikace Workbench.  Soubory jsou jen pro čtení, dokud nekliknete na tlačítko Upravit, prevenci proti náhodným změnám.
 - Oblíbené knihovny zobrazování `matplotlib` verze 2.1.0 je nyní dodávána s prostředím aplikace Workbench.
@@ -542,7 +542,7 @@ Níže je seznam podrobné aktualizace v každé oblasti komponenty služby Azur
 - Jupyter nyní správně vypnutí serveru při přihlášení uživatele z aplikace.
 
 ##### <a name="azure-portal"></a>portál Azure
-- Účet experimentování a účet služby Správa modelů je nyní vytvořit ve dvou nových oblastech Azure: západní Evropa a jihovýchodní Asie.
+- Účet experimentování a účet služby Správa modelů je nyní vytvořit ve dvou nových oblastech Azure: Západní Evropa a jihovýchodní Asie.
 - Plán DevTest účtu správy modelů teď je k dispozici pouze pokud je první z nich má být vytvořen v rámci předplatného. 
 - Odkaz na nápovědu na webu Azure Portal se aktualizuje tak, aby odkazoval na stránku pro správnou dokumentaci.
 - Pole popisu je odebrat ze stránky podrobností image Dockeru, protože se nedá použít.

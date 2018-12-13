@@ -6,16 +6,19 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 3f90fbb4ae30f8cc7730385730c39321974a94c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c11d2f22fa08417107b0eecdd902b4521410b358
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850699"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252418"
 ---
 # <a name="group-machines-for-assessment"></a>Seskupit počítače pro posouzení
 
 Tento článek popisuje, jak vytvořit skupinu počítačů pro posouzení podle [Azure Migrate](migrate-overview.md). Azure Migrate posuzuje počítačů ve skupině ke kontrole, jestli jsou vhodné k migraci do Azure a poskytuje odhady velikostí a nákladů pro spuštění počítače v Azure. Pokud víte, počítače, které potřebujete migrovat společně, můžete ručně vytvořit skupinu ve službě Azure Migrate pomocí následující metody. Pokud si nejste jisti velmi o počítačích, které musí být seskupené pohromadě, můžete použít funkce vizualizace závislostí ve službě Azure Migrate k vytváření skupin. [Další informace](how-to-create-group-machine-dependencies.md)
+
+> [!NOTE]
+> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 ## <a name="create-a-group"></a>Vytvoření skupiny
 

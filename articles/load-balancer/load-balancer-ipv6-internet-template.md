@@ -1,5 +1,6 @@
 ---
-title: Nasazení přístupem k Internetu – nástroj pro vyrovnávání zatížení s protokolem IPv6 – šablona Azure | Dokumentace Microsoftu
+title: Nasazení přístupem k Internetu – nástroj pro vyrovnávání zatížení s protokolem IPv6 – šablony Azure
+titlesuffix: Azure Load Balancer
 description: Jak nasadit podpory protokolu IPv6 pro Azure Load Balancer a virtuálních počítačů s vyrovnáváním zatížení.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duáln�
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 14a28fb341692c309ff4f965628b38a767c56633
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 2374df3a457e0f4730dcaa6d69ea3f2e0fa6e9cc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740738"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163204"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Nasazení řešení ve nástroje pro vyrovnávání zatížení přístupem k Internetu s protokolem IPv6 pomocí šablony
 

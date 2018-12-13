@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 9ca8bb04748a1fd94c227627516be0e8ca83409d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 35438644842d5280bd789efa135805ba9943cb8b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882347"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183043"
 ---
 # <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>Do Log Analytics dotazovacímu jazyku SQL 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: b7c2c28ab049f0cce26f306736ec938955156ebb
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959269"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322580"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
 **[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI.
@@ -44,14 +44,14 @@ Můžete například použít funkci streamování pro diagnostické protokoly n
 Streamování diagnostických protokolů prostřednictvím kódu programu, prostřednictvím portálu, nebo pomocí můžete povolit [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). V obou případech můžete vytvořit nastavení diagnostiky ve kterém určíte, obor názvů služby Event Hubs a kategorie protokolů a metrik, které chcete odeslat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolů, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
 
 > [!WARNING]
-> Povolení a streamování diagnostických protokolů z výpočetních prostředků (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](azure-diagnostics-streaming-event-hubs.md).
+> Povolení a streamování diagnostických protokolů z výpočetních prostředků (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 Event Hubs, který obor názvů nemusí být ve stejném předplatném jako prostředek, které vysílá protokoly za předpokladu, uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC pro předplatná a obě předplatná jsou součástí stejného tenanta služby AAD.
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
+> *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 
@@ -191,7 +191,7 @@ Můžete zobrazit seznam všech poskytovatelů prostředků, které podporují s
 
 ## <a name="stream-data-from-compute-resources"></a>Datový Stream z výpočetních prostředků
 
-Také můžete Streamovat diagnostické protokoly z výpočetních prostředků pomocí agenta diagnostiky Windows Azure. [Najdete v článku](azure-diagnostics-streaming-event-hubs.md) jak k tomuto nastavení.
+Také můžete Streamovat diagnostické protokoly z výpočetních prostředků pomocí agenta diagnostiky Windows Azure. [Najdete v článku](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md) jak k tomuto nastavení.
 
 ## <a name="next-steps"></a>Další postup
 

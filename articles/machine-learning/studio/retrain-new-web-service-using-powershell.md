@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: d8deb3d9d2d425567094d44e638f1989a5e2d881
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0dc41b001ecca26239c0a9e8f69e2709d6927fcd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096991"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250569"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-powershell"></a>Přeučování nové služby založené na Resource Manageru pomocí Powershellu
+# <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>Přeučování nové webové služby využívajících Resource Manager Studio pomocí Powershellu
 Když jste přeučování nové webové služby, aktualizujte definice prediktivní webové služby tak, aby odkazovaly na nový trénovaný model.
 
 ## <a name="prerequisites"></a>Požadavky

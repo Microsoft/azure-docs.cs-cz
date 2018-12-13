@@ -7,34 +7,33 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/10/2018
 ms.author: juliako
-ms.openlocfilehash: 2261b8fa496beaf2a14c9b949047b6a5cbc6ea32
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: f29adb500401c9f5d6e177a0740ce54719c36a34
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292216"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253200"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
-Tento článek ukazuje, jak nahrát video na server pomocí Azure Video Indexeru. Rozhraní API Video Indexeru umožňuje dva způsoby nahrání na server: 
+Při nahrávání videí pomocí služby Video Indexer API, máte dvě možnosti pro odesílání: 
 
 * Nahrání videa na server z adresy URL (upřednostňovaná možnost)
 * Odešlete soubor videa jako bajtové pole v textu požadavku
 * Použijte existující prostředek služby Azure Media Services tím, že poskytuje [id assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporováno pouze placené účty).
 
-Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů.  
+Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů. <br/>Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
 
-Článek se také zabývá některými parametry, které můžete v API nastavit, abyste proces a výstup API změnili.
-
-> [!Note]
-> Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). <br/>V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
+Jakmile je Nahraná videa, Video Indexer, volitelně kóduje video (popsané v článku). Při vytváření účtu Video Indexeru můžete zvolit účet bezplatné zkušební verze (ve kterém získáte určitý počet minut indexování zdarma) nebo placenou variantu (ve které nejste omezení kvótou). V bezplatné zkušební verzi Video Indexer poskytuje až 600 minut bezplatného indexování pro uživatele webu a až 2400 minut bezplatného indexování pro uživatele rozhraní API. S placenou variantou vytvoříte účet Video Indexeru, který je [spojený s vaším předplatným Azure a účtem Azure Media Services](connect-to-azure.md). Platíte za indexované minuty a také poplatky související s účtem Media. 
 
 ## <a name="uploading-considerations"></a>Aspekty nahrávání videí na server
     
 - Při nahrávání videa na server podle zadané adresy URL (upřednostňovaná možnost) musí být koncový bod zabezpečený pomocí protokolu TLS 1.2 (nebo vyššího).
-- Možnost bajtového pole je omezená na 2 GB a vyprší po 30 min.
+- Velikost pro odeslání pomocí možnosti adresa URL je omezený na 10GB
+- Velikost pro odeslání s možností bajtové pole je omezená na 2GB 
+- Pole bajtů možnost vyprší po 30 min
 - Adresa URL zadaná v parametru `videoURL` musí být zakódovaná.
 
 > [!Tip]
@@ -91,7 +90,7 @@ Cena závisí na vybrané možnosti indexování.
 
 ### <a name="priority"></a>priorita
 
-Videa se indexují modulem Video Indexer podle jejich priority. Použití **priority** parametr k určení priority indexu. Platné jsou následující hodnoty: **nízká**, **normální** (výchozí), a **vysoké**.
+Videa se indexují modulem Video Indexer podle jejich priority. Použití **priority** parametr k určení priority indexu. Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí), a **vysoké**.
 
 **Priorita** parametr je podporován pouze pro placené účty.
 

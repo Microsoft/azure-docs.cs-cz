@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure App Service místní mezipaměti | Dokumentace Microsoftu
+title: Přehled o místní mezipaměti – Azure App Service | Dokumentace Microsoftu
 description: Tento článek popisuje, jak povolit, změna velikosti a zjistit stav funkce Azure App Service místní mezipaměti
 services: app-service
 documentationcenter: app-service
@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.custom: seodec18
+ms.openlocfilehash: 418f471d3b79f09e726f0dc2a5ca05ff5585cf1c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666110"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259167"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled služby Azure App Service místní mezipaměti
 
@@ -66,7 +67,7 @@ Pomocí kombinace nastavení vyhrazené aplikace nakonfigurujete místní mezipa
 
 Povolit místní mezipaměti na základě aplikace na web pomocí tohoto nastavení aplikace: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
 
-![Nastavení aplikace Azure portal: místní mezipaměti](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
+![Nastavení aplikace Azure portal: Místní mezipaměť](media/app-service-local-cache-overview/app-service-local-cache-configure-portal.png)
 
 ### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Konfigurovat místní mezipaměti pomocí Azure Resource Manageru
 <a name="Configure-Local-Cache-ARM"></a>

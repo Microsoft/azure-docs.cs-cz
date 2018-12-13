@@ -1,5 +1,5 @@
 ---
-title: Certifikáty a Azure App Service Environment
+title: Certifikáty a App Service Environment – Azure
 description: Popisují mnoho témat souvisejících s certifikáty ve službě ASE
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 3d417d560d8a88100f31def27c7db5f9b2493062
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: bcb0c806d916b9dff4461cad829a1d75e8df7cf6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167889"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271891"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Certifikáty a App Service Environment 
 
@@ -32,8 +33,8 @@ Pokud používáte externí služby ASE, se dosáhne své aplikace na [NázevApl
 
 Existují dvě možnosti pro konfiguraci certifikátů se vaše služba ASE s ILB.  Můžete nastavit výchozí certifikát se zástupným znakem pro ILB ASE nebo nastavit certifikáty pro jednotlivé webové aplikace ve službě ASE.  Bez ohledu na volbu, které provedete musí být správně nakonfigurované následující atributy certifikátu:
 
-- **Předmět:** tento atribut musí být nastaven *. [ your kořenové zdejsi korenova] pro certifikát se zástupným znakem služba ASE s ILB. Když vytváří se certifikát pro vaši aplikaci, měla by být [NázevAplikace]. [your zdejsi korenova]
-- **Alternativní název subjektu:** tento atribut musí obsahovat *. [ your zdejsi korenova] a *.scm. [your root zdejsi korenova] certifikátu služba ASE s ILB zástupný znak. Když vytváří se certifikát pro vaši aplikaci, měla by být [NázevAplikace]. [your zdejsi korenova] a [NázevAplikace] .scm. [your zdejsi korenova].
+- **Předmět:** Tento atribut musí být nastaven *. [your kořenové zdejsi korenova] pro certifikát se zástupným znakem služba ASE s ILB. Když vytváří se certifikát pro vaši aplikaci, měla by být [NázevAplikace]. [your zdejsi korenova]
+- **Alternativní název subjektu:** Tento atribut musí obsahovat *. [your zdejsi korenova] a *.scm. [your root zdejsi korenova] certifikátu služba ASE s ILB zástupný znak. Když vytváří se certifikát pro vaši aplikaci, měla by být [NázevAplikace]. [your zdejsi korenova] a [NázevAplikace] .scm. [your zdejsi korenova].
 
 Jako třetí typ variant můžete vytvořit certifikát služba ASE s ILB, který obsahuje všechny názvy jednotlivých aplikací v síti SAN namísto použití zástupných znaků odkaz certifikátu. Problém s touto metodou je, že budete muset předem znát názvy aplikací, které ukládáte ve službě ASE nebo musíte aktualizovat certifikát služba ASE s ILB.
 

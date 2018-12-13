@@ -1,6 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání obrázků pomocí Ruby – rozhraní API Bingu pro vyhledávání obrázků'
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Ruby odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
+title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a Ruby'
+titleSuffix: Azure Cognitive Services
+description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí Ruby a přijímat odpověďmi ve formátu JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -10,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: d5772b46c167b873ed4f5d60a110d31a5c8308a5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 4a5b0c6e67ce4d7a533ad35023261a3c02601a83
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315932"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257654"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Rychlý start: Odeslání vyhledávacích dotazů s využitím rozhraní REST API a Ruby
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Ruby
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Ruby odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 

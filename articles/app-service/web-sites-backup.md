@@ -1,5 +1,5 @@
 ---
-title: Zálohování aplikace v Azure
+title: Zálohování aplikace – Azure App Service
 description: Zjistěte, jak vytvářet zálohy aplikací ve službě Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8035a704a76d8f6287addff9c5503eb93f8e04fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 95fc4567248ca8201174494eee2da5922b7d0f0e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227837"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269222"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [služby Azure App Service](app-service-web-overview.md) umožňuje snadno vytvářet zálohy aplikací ručně, nebo podle plánu. Aplikaci můžete obnovit na snímek v předchozím stavu tak přepsání existující aplikace nebo při obnovování do jiné aplikace. 
@@ -75,7 +76,7 @@ Podporují se následující řešení databáze s funkcí zálohování:
 
 2. V **zálohování** stránce klikněte na **konfigurovat**
 ![klikněte na tlačítko Konfigurovat.](./media/web-sites-backup/ClickConfigure1.png)
-3. V **konfigurace zálohování** klikněte na **úložiště: Nenakonfigurováno** a nakonfigurujte účet úložiště.
+3. V **konfigurace zálohování** klikněte na **úložiště: Není nakonfigurováno** a nakonfigurujte účet úložiště.
    
     ![Výběr účtu úložiště][ChooseStorageAccount]
 4. Vyberte cílovou složku zálohy tak, že vyberete **účtu úložiště** a **kontejneru**. Účet úložiště musí patřit do stejného předplatného jako aplikace, které chcete zálohovat. Pokud chcete, můžete vytvořit nový účet úložiště nebo nový kontejner na příslušných stránkách. Jakmile budete hotovi, klikněte na tlačítko **vyberte**.

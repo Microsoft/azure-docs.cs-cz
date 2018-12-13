@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL API pro .NET, SDK & zdroje'
+title: 'Azure Cosmos DB: SQL API pro .NET, SDK a zdroje informací'
 description: Další informace o SQL API pro .NET a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi .NET SDK služby Azure Cosmos DB.
 author: rnagpal
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5af80a387a8b07992a82dac39c23082069419b60
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: c7f3b2fc0e5cc75bccbaf075dc2e2a2be8c7801d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865909"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255954"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -54,6 +54,16 @@ ms.locfileid: "52865909"
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
 * Podpora pro datové proudy. 
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* U přímé/TCP přenosu diagnostiky přidá TransportException, vnitřní výjimka typu sady SDK. Pokud je k dispozici v zprávy o výjimkách, vytiskne tento typ Další informace pro řešení problémů s připojením klienta.
+
+* Přidání nové konstruktor přetížení, která přebírá objekt HttpMessageHandler sada obslužných rutin HTTP pro odesílání požadavků HttpClient (například HttpClientHandler).
+
+* Oprava chyby, kde záhlaví s hodnotami null nebyly zajišťující správné zpracování.
+
+* Ověření mezipaměti vylepšené kolekce.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -106,7 +116,7 @@ ms.locfileid: "52865909"
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Oprava chyby, který je přístupů za určitých podmínek závodu, jehož výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: čtení relace není k dispozici pro token vstupní relace" chyby při použití úrovně konzistence relace.
+* Oprava chyby, který je přístupů za určitých podmínek závodu, jehož výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: Další relace není k dispozici pro token vstupní relace"chyby při použití úrovně konzistence relace.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
@@ -177,7 +187,7 @@ ms.locfileid: "52865909"
 * Opravy, aby sada SDK odolnější automatické převzetí služeb při selhání za určitých podmínek.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Opraven problém, který občas způsobí, že o výjimku WebException: vzdálený název nelze rozpoznat.
+* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název se nedá rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
@@ -222,7 +232,7 @@ ms.locfileid: "52865909"
 * Různé opravy chyb sady SDK.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Opravili jsme problém, který způsobil následující NotFoundException: čtení relace není k dispozici pro token vstupní relace. V některých případech došlo k této výjimce při dotazování na oblast čtení účtu geograficky distribuované.
+* Opravili jsme problém, který způsobil následující NotFoundException: Další relace není k dispozici pro token vstupní relace. V některých případech došlo k této výjimce při dotazování na oblast čtení účtu geograficky distribuované.
 * Zpřístupnit vlastnost ResponseStream ve třídě ResourceResponse, která umožňuje přímý přístup do podkladového datového proudu z odpovědi.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -230,7 +240,7 @@ ms.locfileid: "52865909"
 * Opravili jsme problém, který způsobil hlavičku poškozený oddíl klíče při použití vlastního objektu JsonSerializerSettings pro serializaci dat.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Opravili jsme problém, který způsobil dlouho běžící dotazy k selhání s chybou: ověřovací token, který není platný v aktuálním čase.
+* Opravili jsme problém, který způsobil dlouho běžící dotazy k selhání s chybou: Autorizační token není platný v aktuálním čase.
 * Opravili jsme problém, který odebrán původní SqlParameterCollection z křížové oddílu top/Order dotazy.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -265,7 +275,7 @@ ms.locfileid: "52865909"
 * Implementovat [dělené kolekce](partition-data.md) a [uživatelsky definovaným výkonem úrovně](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Opraveno]**  Vyvolá koncový bod dotazování služby Azure Cosmos DB: "System.Net.Http.HttpRequestException: Při kopírování obsahu do datového proudu došlo k chybě".
+* **[Opraveno]**  Vyvolá koncový bod dotazování služby Azure Cosmos DB: "System.Net.Http.HttpRequestException: Při kopírování obsahu do datového proudu došlo k chybě ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Rozšířené LINQ podpory, včetně nových operátorů pro stránkování, podmíněné výrazy a být v rozsahu porovnání.
@@ -340,6 +350,7 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |07 prosince 2018 |--- |
 | [2.1.3](#2.1.3) |15. října 2018 |--- |
 | [2.1.2](#2.1.2) |04. října 2018 |--- |
 | [2.1.1](#2.1.1) |27. září 2018 |--- |

@@ -1,5 +1,5 @@
 ---
-title: Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
+title: Povolení protokolování diagnostiky pro webové aplikace – Azure App Service
 description: Zjistěte, jak povolit diagnostické protokolování a přidat do svojí aplikace instrumentaci, jakož i jak získat přístup k informacím protokolovaným v Azure.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.custom: seodec18
+ms.openlocfilehash: 90f82dcdf60a3a7182f77b3fe028366e079bc2ec
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636954"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273795"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -63,6 +64,11 @@ Když povolíte **konzole application diagnostics**, také zvolte **úroveň**. 
 
 Pro **protokolování aplikací**, můžete zapnout možnost souboru systému dočasně pro účely ladění. Tato volba vypne automaticky za 12 hodin. Můžete také zapnout možnost úložiště objektů blob kontejner objektů blob, do kterého se zapisují protokoly.
 
+> [!NOTE]
+> Momentálně se podporuje jenom protokoly aplikací .NET je možné zapisovat na úložiště objektů blob. Java, PHP, Node.js, Python, aplikační protokoly se dají ukládat jenom v systému souborů (bez úpravy kódu pro zápis protokolů na externí úložiště).
+>
+>
+
 Pro **protokolování webového serveru**, můžete vybrat **úložiště** nebo **systém souborů**. Výběr **úložiště** vám umožní vybrat účet úložiště a kontejner objektů blob, který protokolů zapisován. 
 
 Pokud uchováváte v systému souborů protokolů, soubory můžete získat přístup pomocí protokolu FTP nebo stáhnout jako archiv Zip s použitím rozhraní příkazového řádku Azure.
@@ -85,7 +91,7 @@ Zatímco i umístění úložiště poskytují stejné základní informace o pr
 > Informace uložené v **úložiště objektů blob** lze přistupovat pouze pomocí klienta úložiště nebo aplikaci, která může pracovat přímo s těmito systémy úložišť. Například sadu Visual Studio 2013 obsahuje Průzkumníka služby Storage, který slouží k prozkoumání úložiště objektů blob a HDInsight můžete přístup k datům uloženým ve službě blob storage. Můžete také psát aplikace, která přistupuje k Azure Storage pomocí jednoho z [sady Azure SDK](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Postupy: stažení protokolů
+## <a name="download"></a> Jak: Stáhnout protokoly
 Diagnostické informace ukládají do systému souborů webové aplikace lze přistupovat přímo pomocí FTP. Taky ho můžete stáhnout jako archiv Zip pomocí Azure CLI.
 
 Struktura adresářů, které protokoly se ukládají v vypadá takto:
@@ -114,7 +120,7 @@ Tento příkaz uloží protokoly pro webovou aplikaci s názvem "webappname' do 
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Postupy: zobrazení protokolů ve službě Application Insights
+## <a name="how-to-view-logs-in-application-insights"></a>Postup: Zobrazit protokoly ve službě Application Insights
 Visual Studio Application Insights poskytuje nástroje pro filtrování a prohledávání protokolů a pro korelaci protokolů s žádostmi a jinými událostmi.
 
 1. Přidejte Application Insights SDK do projektu v sadě Visual Studio.
@@ -126,7 +132,7 @@ Visual Studio Application Insights poskytuje nástroje pro filtrování a prohle
 
 [Další informace o výkonu sledování pomocí Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
-## <a name="streamlogs"></a> Postupy: Stream protokolů
+## <a name="streamlogs"></a> Jak: Protokoly datových proudů
 Při vývoji aplikace, je často užitečné prohlédnout si informace o protokolování v téměř reálném čase. Informace o protokolování můžete Streamovat do svého vývojového prostředí pomocí Azure CLI.
 
 > [!NOTE]
@@ -157,7 +163,7 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– 
 >
 >
 
-## <a name="understandlogs"></a> Postupy: pochopení diagnostické protokoly
+## <a name="understandlogs"></a> Jak: Vysvětlení diagnostické protokoly
 ### <a name="application-diagnostics-logs"></a>Protokoly diagnostiky aplikací
 Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do služby file storage systému nebo objekt blob. 
 

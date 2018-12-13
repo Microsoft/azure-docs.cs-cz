@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 12/12/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 1ecdbdfb657d0372fea87c4260226f9de8ded9ce
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d1c95802889c80baf79eaf0a0af1e30d6bc3fdfd
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682499"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322273"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -38,7 +38,7 @@ Zobrazí se topologie celou aplikaci napříč několika úrovněmi souvisejíc�
 
 Toto prostředí začíná progresivní zjišťování komponent. Při prvním načtení mapy aplikace, se spouštějí sady dotazů ke zjištění součásti související se tuto komponentu. Tlačítko v levém horním se aktualizuje počet součástí v aplikaci při jejich zjištění. 
 
-Po kliknutí na tlačítko "Součásti mapy aktualizace", mapy aktualizují se všechny součásti zjištěny, dokud, které ukazují.
+Po kliknutí na tlačítko "Součásti mapy aktualizace", mapy aktualizují se všechny součásti zjištěny, dokud, které ukazují. Podle složitosti vaší aplikace může to trvat minutu načíst.
 
 Pokud jsou všechny komponenty rolí v rámci jednoho prostředku Application Insights, pak tento krok zjišťování se nevyžaduje. Počáteční načtení pro takové aplikace budou mít všechny jeho součásti.
 
@@ -60,7 +60,7 @@ Vyberte **vyšetřování chyb** ke spuštění v podokně selhání.
 
 ### <a name="investigate-performance"></a>Prověřit výkon
 
-Řešení potíží s vyberte problémy výkonu **vyšetřování výkonu**
+Chcete-li vyřešit problémy s výkonem, vyberte **vyšetřování výkonu**.
 
 ![Snímek obrazovky zkoumání výkonu tlačítko](media/app-insights-app-map/investigate-performance.png)
 
@@ -76,7 +76,7 @@ Vyberte **přejděte na podrobnosti** prozkoumat prostředí začátku do konce 
 
 ### <a name="view-in-analytics"></a>Zobrazit v Analytics
 
-Pro dotazování a klikněte na tlačítko Další vaší aplikace data prozkoumat **zobrazit v analytics**.
+Pro dotazování a prozkoumání dalších dat aplikací, klikněte na tlačítko **zobrazit v analytics**.
 
 ![Snímek obrazovky zobrazení v tlačítko analytics](media/app-insights-app-map/view-in-analytics.png)
 
@@ -84,21 +84,128 @@ Pro dotazování a klikněte na tlačítko Další vaší aplikace data prozkoum
 
 ### <a name="alerts"></a>Výstrahy
 
-Chcete-li zobrazit aktivní výstrahy a základní pravidla, které výstrahy se tak být tiggered, vyberte **výstrahy**.
+Chcete-li zobrazit aktivní výstrahy a základní pravidla, které způsobují upozornění aktivovat, vyberte **výstrahy**.
 
 ![Snímek obrazovky tlačítka pro výstrahy](media/app-insights-app-map/alerts.png)
 
 ![Snímek obrazovky s analytics prostředí](media/app-insights-app-map/alerts-view.png)
 
-## <a name="video"></a>Video
+## <a name="set-cloudrolename"></a>Sada cloud_RoleName
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+Mapa aplikace používá `cloud_RoleName` vlastnost k identifikaci komponenty na mapě. Sada SDK služby Application Insights automaticky přidá `cloud_RoleName` vlastnost telemetrická data, protože ho vygeneroval komponenty. Například sada SDK přidá název webového serveru nebo název služby role `cloud_RoleName` vlastnost. Existují však případy, kde můžete chtít potlačit výchozí hodnotu. Přepsat cloud_RoleName a změňte, co zobrazí na mapě aplikace:
 
-## <a name="feedback"></a>Váš názor
-Zadejte prosím zpětnou vazbu prostřednictvím možnosti portálu zpětnou vazbu.
+### <a name="net"></a>.NET
+
+```csharp
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.Extensibility;
+
+namespace CustomInitializer.Telemetry
+{
+    public class MyTelemetryInitializer : ITelemetryInitializer
+    {
+        public void Initialize(ITelemetry telemetry)
+        {
+            if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
+            {
+                //set custom role name here
+                telemetry.Context.Cloud.RoleName = "RoleName";
+            }
+        }
+    }
+}
+```
+
+**Načíst vaše inicializátor**
+
+In ApplicationInsights.config:
+
+```xml
+    <ApplicationInsights>
+      <TelemetryInitializers>
+        <!-- Fully qualified type name, assembly name: -->
+        <Add Type="CustomInitializer.Telemetry.MyTelemetryInitializer, CustomInitializer"/>
+        ...
+      </TelemetryInitializers>
+    </ApplicationInsights>
+```
+
+Je alternativní metoda pro vytvoření instance inicializátoru v kódu, například v souboru Global.aspx.cs:
+
+```csharp
+ using Microsoft.ApplicationInsights.Extensibility;
+ using CustomInitializer.Telemetry;
+
+    protected void Application_Start()
+    {
+        // ...
+        TelemetryConfiguration.Active.TelemetryInitializers.Add(new MyTelemetryInitializer());
+    }
+```
+
+### <a name="nodejs"></a>Node.js
+
+```javascript
+var appInsights = require("applicationinsights");
+appInsights.setup('INSTRUMENTATION_KEY').start();
+appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
+appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
+```
+
+### <a name="alternate-method-for-nodejs"></a>Alternativní metoda pro Node.js
+
+```javascript
+var appInsights = require("applicationinsights");
+appInsights.setup('INSTRUMENTATION_KEY').start();
+
+appInsights.defaultClient.addTelemetryProcessor(envelope => {
+    envelope.tags["ai.cloud.role"] = "your role name";
+    envelope.tags["ai.cloud.roleInstance"] = "your role instance"
+});
+```
+
+### <a name="java"></a>Java
+
+Pokud používáte Spring Boot s Application Insights Spring Boot starter, je pouze požadovaná změna nastavit váš vlastní název aplikace v souboru application.properties souboru.
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot starter bude automaticky přiřadit hodnotu zadanou pro vlastnost spring.application.name cloudRoleName.
+
+Další informace o korelaci Java a konfigurování cloudRoleName rezervovat aplikace bez SpringBoot [části](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) na korelace.
+
+### <a name="clientbrowser-side-javascript"></a>JavaScript a prohlížeči klientů
+
+```javascript
+appInsights.queue.push(() => {
+appInsights.context.addTelemetryInitializer((envelope) => {
+  envelope.tags["ai.cloud.role"] = "your role name";
+  envelope.tags["ai.cloud.roleInstance"] = "your role instance";
+});
+});
+```
+
+Další informace o tom, jak přepsat vlastnost cloud_RoleName inicializátory telemetrická data, najdete v části [přidat vlastnosti: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, proveďte následující kroky:
+
+1. Ujistěte se, že používáte oficiálně podporovaná sada SDK. Sady SDK nepodporuje/community nemusí podporovat korelace.
+
+    Projít tento [článku](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) seznam podporovaných sad SDK.
+
+2. Všechny součásti upgradujte na nejnovější verzi sady SDK.
+
+3. Pokud používáte Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
+
+4. Potvrďte [cloud_RoleName](app-insights-app-map.md#Set-cloud-RoleName) je správně nakonfigurovaný.
+
+## <a name="portal-feedback"></a>Portálu zpětné vazby
+Pokud chcete poskytnout zpětnou vazbu, použijte možnost portálu zpětnou vazbu.
 
 ![Obrázek MapLink 1](./media/app-insights-app-map/13.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* [Azure Portal](https://portal.azure.com)
+* [Principy korelace](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)

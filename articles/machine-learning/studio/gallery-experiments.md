@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
 ms.service: machine-learning
@@ -16,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 74791c3dce543ae9c0489a6c6124e4edba9204d2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 12fb45b00848e5e34760ccb0691998c1f72237b8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096957"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269280"
 ---
-# <a name="discover-experiments-in-azure-ai-gallery"></a>Zjistit experimenty v galerii Azure AI
+# <a name="discover-azure-machine-learning-studio-experiments-in-azure-ai-gallery"></a>Objevte Azure Machine Learning Studio experimenty v galerii Azure AI
 
 [Galerie Azure AI](http://gallery.cortanaintelligence.com) obsahuje řadu [experimenty](https://gallery.cortanaintelligence.com/experiments) , které byly vyvinuty v [Azure Machine Learning Studio](https://studio.azureml.net). Experimenty v rozsahu od rychlé testování konceptu experimenty, které ukazují na konkrétní počítač studijní techniku pro propracovaný řešení problémů složitých machine learning.
 
 > [!NOTE]
-> ***Experimentovat*** je plátna v nástroji Machine Learning Studio, který vám pomůže vytvořit tak model prediktivní analýzy. Vytvoření modelu po propojení dat s různými analytickým modulům. Zkuste jiné nápady, proveďte zkušební spuštění a nakonec svůj model nasadit jako webovou službu v Azure. Příklad toho, jak vytvořit základní experimentu najdete v části [kurz Machine learningu: vytvoření prvního experimentu v Azure Machine Learning Studio](create-experiment.md). Komplexnější návod, jak vytvořit řešení prediktivní analýzy, najdete v části [názorný postup: vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+> ***Experimentovat*** je plátna v nástroji Machine Learning Studio, který vám pomůže vytvořit tak model prediktivní analýzy. Vytvoření modelu po propojení dat s různými analytickým modulům. Zkuste jiné nápady, proveďte zkušební spuštění a nakonec svůj model nasadit jako webovou službu v Azure. Příklad toho, jak vytvořit základní experimentu najdete v části [kurz strojového učení: Vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](create-experiment.md). Komplexnější návod, jak vytvořit řešení prediktivní analýzy, najdete v části [názorný postup: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 >
 >
 
@@ -82,7 +81,7 @@ Při přihlášení do galerie, stane se členem komunity galerie. Jako člen ko
 3. Až budete připraveni publikovat experimentu v galerii, v seznamu akcí níže na plátno experimentu vyberte **publikovat do Galerie**.
 
     ![Vyberte možnost "publikovat do Galerie"](./media/gallery-experiments/publish-experiment-to-gallery.png)
-4. Na **Experiment popis** stránky, zadejte název a značky. Zkontrolujte popisný název a značky. Zvýraznit techniky, které jste použili nebo řešení skutečných problémů. Příklad experimentu popisný název je "binární klasifikace: Analýza mínění na Twitteru."
+4. Na **Experiment popis** stránky, zadejte název a značky. Zkontrolujte popisný název a značky. Zvýraznit techniky, které jste použili nebo řešení skutečných problémů. Příklad experimentu popisný název je "binární klasifikace: Analýza Sentimentu na twitteru."
 
     ![Zadejte název a značky pro publikování](./media/gallery-experiments/experiment-description.png)
 5. V **souhrnu** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
@@ -189,4 +188,4 @@ Po zadání značku, zadejte jinou značku, stiskněte klávesu Tabulátor.
 
 **[Přejít do Galerie](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+

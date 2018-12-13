@@ -4,7 +4,6 @@ description: Části obory v galerii Azure AI v sobě spojuje různým prostřed
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-manager: jhubbard
 editor: cgronlun
 ms.assetid: fd2ecf9a-ff76-4a0f-8d68-7f762249648c
 ms.service: machine-learning
@@ -14,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.custom: (previous ms.author=garye, author=garyericson)
+ms.custom: previous-ms.author=garye, previous-author=garyericson
 ms.author: amlstudiodocs
-ms.openlocfilehash: 760f47bf42be32201eea86748d69875b0bf04ce4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 4f9495027c7027f659f877930b6aabc72b361ae8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317394"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269324"
 ---
 # <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Vyhledání konkrétní obory můžete využít řešení v galerii Azure AI
 
@@ -49,5 +48,5 @@ Na této stránce můžete procházet všechny prostředky v galerii. Také mů�
 
 **[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

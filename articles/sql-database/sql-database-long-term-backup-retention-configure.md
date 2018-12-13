@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/24/2018
-ms.openlocfilehash: eab0c1339030ffeb14c4fe39a70178fdf5f13a22
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 33086be2c85e44b81a9f444a10a683e54f8612f7
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871094"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164445"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Správa dlouhodobého uchovávání záloh Azure SQL Database
 
@@ -173,7 +173,7 @@ $ltrBackup = $ltrBackups[0]
 Remove-AzureRmSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 > [!IMPORTANT]
-> Odstranění LTR zálohování je nevratná. Je můžete nastavit oznámení o každé odstranění ve službě Azure Monitor pomocí filtrování pro operaci "Odstraní dlouhodobého uchování zálohy". Protokol aktivit obsahuje informace o identitě a při provedení žádosti. Zobrazit [vytvoření upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md) podrobné pokyny.
+> Odstranění LTR zálohování je nevratná. Je můžete nastavit oznámení o každé odstranění ve službě Azure Monitor pomocí filtrování pro operaci "Odstraní dlouhodobého uchování zálohy". Protokol aktivit obsahuje informace o identitě a při provedení žádosti. Zobrazit [vytvoření upozornění protokolu aktivit](../azure-monitor/platform/alerts-activity-log.md) podrobné pokyny.
 >
 
 ### <a name="restore-from-ltr-backups"></a>Obnovení ze zálohy zleva doprava.

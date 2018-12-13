@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 57ad7d680d83e13d9aff1d55a52ab982c585df76
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080193"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271381"
 ---
-# <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LUIS
+# <a name="phrase-list-features-in-your-luis-app"></a>Seznam frázi je součástí aplikace LUIS
 
 Ve službě machine learning *funkce* rozlišovací vlastností nebo atribut data, která dodržuje vašeho systému. 
 
@@ -32,9 +32,17 @@ Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS 
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
 V aplikaci lidských zdrojů [kurz jednoduchou entitu](luis-quickstart-primary-and-secondary-data.md), tato aplikace používá **úlohy** frázi seznam typů úloh, jako je například programátora, roofer a bylo. Pokud popisek jednu z těchto hodnot jako entita se naučili počítač LUIS naučí rozeznat ostatní. 
 
-Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je frázi seznam hodnot, které jsou synonyma, a *-zaměnitelné* frázi seznam je určený pro hodnoty, které nejsou synonyma však stále potřebovat další signál v aplikaci. 
+Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je frázi seznam hodnot, které jsou synonyma, a *-zaměnitelné* frázi seznam je určený jako seznam konkrétních slovník vaší aplikace. Jak rostete seznamu fráze slovníku aplikací, můžete zjistit termíny, které se mají celou řadu forem (synonym). Rozdělte tyto do jiného seznamu frázi, která je zaměnitelné. 
+
+|Typ seznamu|Účel|
+|--|--|
+|Zaměňovat|Synonyma nebo slova, že při změně do jiného slova v seznamu, mají stejné záměr a extrakce entity.|
+|Non zaměnitelné|Slovník aplikace, specifické pro vaši aplikaci více, než obecně jiné slov v daném jazyce.|
+
+Fráze obsahuje nejen pomoc se sadou entity zjišťování, ale také záměru klasifikace tam, kde není zaměnitelné smysl, jako je přidání ze slovníku slova, která nejsou známy v anglickém jazyce.
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
+
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Fráze uvádí nápovědy identifikovat jednoduchých zaměnitelné entit
 Zaměňovat frázi seznamy jsou dobrým způsobem, jak optimalizovat výkon vaší aplikace LUIS. Pokud má vaše aplikace potíže při predikci projevy na správné záměr nebo rozpoznávání entit, zamyslete se, jestli projevy obsahovat neobvyklé slova ani slova, která může být nejednoznačný ve smyslu. Tato slova jsou vhodnými kandidáty zahrnout do seznamu frázi.
 
@@ -44,7 +52,7 @@ Seznam frázi není instrukce k LUIS provést odpovídající strict nebo vždy 
 Přidání seznamu frázi je alternativa k přidání další příklad projevy záměru. 
 
 ## <a name="an-interchangeable-phrase-list"></a>V seznamu zaměnitelné fráze
-Při vytváření seznamu slov nebo frází třídu nebo skupinu, pomocí seznamu zaměnitelné frázi. Příkladem je seznam měsíců jako "Od", "Února", "Března"; nebo "John", "Jan", "Frank", jako jsou názvy.  Tyto seznamy jsou zaměnitelné, utterance by popisek se stejným cílem nebo entity, pokud byly použity různé slova v seznamu frázi. Například pokud "Zobrazit kalendáře pro leden" má stejnou záměru jako "Zobrazit kalendáře pro dne" a pak slova by měla být v přehledu zaměnitelné. 
+Pokud seznam slov nebo frází vytvoří třídu nebo skupinu, pomocí seznamu zaměnitelné frázi. Příkladem je seznam měsíců jako "Od", "Února", "Března"; nebo "John", "Jan", "Frank", jako jsou názvy.  Tyto seznamy jsou zaměnitelné, utterance by popisek se stejným cílem nebo entity, pokud byly použity různé slova v seznamu frázi. Například pokud "Zobrazit kalendáře pro leden" má stejnou záměru jako "Zobrazit kalendáře pro dne" a pak slova by měla být v přehledu zaměnitelné. 
 
 ## <a name="a-non-interchangeable-phrase-list"></a>Seznam-zaměnitelné frází
 Použijte seznam bez zaměnitelné frázi-synonymní slova nebo fráze, které mohou být seskupeny ve vaší doméně. 

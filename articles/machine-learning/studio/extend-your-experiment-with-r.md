@@ -4,9 +4,8 @@ description: Jak rozšiřovat funkce Azure Machine Learning Studio pomocí jazyk
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: df6453f1cf6e8b372239d528067a7258d645518d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 74f08421de893a4fe8916a052f8a32134cd222a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311004"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272061"
 ---
-# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio: Rozšíření experimentů pomocí R 
+# <a name="azure-machine-learning-studio-extend-your-experiment-with-r"></a>Azure Machine Learning Studio: Rozšíření experimentu pomocí R 
 Funkce Azure Machine Learning Studio pomocí jazyka R můžete rozšířit pomocí [spustit skript jazyka R] [ execute-r-script] modulu.
 
 Tento modul přijímá více vstupních datových sad a vrací jednu datovou sadu jako výstup. Můžete zadat do skriptu jazyka R **skript jazyka R** parametr [spustit skript jazyka R] [ execute-r-script] modulu.
@@ -58,7 +57,7 @@ Můžete importovat balíčky, které nejsou nainstalovány pomocí následujíc
 
 kde `my_favorite_package.zip` soubor obsahuje vašeho balíčku.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 
 <!-- Module References -->

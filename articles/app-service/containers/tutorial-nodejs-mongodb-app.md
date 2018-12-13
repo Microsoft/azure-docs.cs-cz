@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Node.js využívající databázi MongoDB ve službě Azure App Service v Linuxu | Microsoft Docs
+title: Vytvoření aplikace v Node.js s MongoDB v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak ve službě Azure App Service v Linuxu zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: feaaf0df96a1742d071dec5f98b57a69ea85b1ac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 59173550c0cdff44931e0b686308b39e985dddcf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972316"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254951"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Node.js využívající databázi MongoDB ve službě Azure App Service v Linuxu
 
@@ -49,9 +49,9 @@ Naučíte se:
 Pro absolvování tohoto kurzu potřebujete:
 
 1. [Nainstalovat Git](https://git-scm.com/).
-1. [Nainstalovat Node.js v6.0 nebo novější a NPM](https://nodejs.org/)
-1. [Nainstalovat Gulp.js](https://gulpjs.com/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
-1. [Nainstalovat a spustit MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
+2. [Nainstalovat Node.js v6.0 nebo novější a NPM](https://nodejs.org/)
+3. [Nainstalovat Gulp.js](https://gulpjs.com/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
+4. [Nainstalovat a spustit MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/)
 
 ## <a name="test-local-mongodb"></a>Test místní databáze MongoDB
 

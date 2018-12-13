@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR | Dokumentace Microsoftu
+title: Nasazení kódu pomocí souboru ZIP nebo WAR - službě Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit aplikaci do služby Azure App Service pomocí souboru ZIP (nebo soubor WAR pro vývojáře v Javě).
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: b628ae0806febb3ffd4edaf71be45841aff38516
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.custom: seodec18
+ms.openlocfilehash: 437f1aa631e058ee62bb3c08d2ad654c3d0666f3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423024"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259082"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do služby Azure App Service pomocí souboru ZIP nebo WAR
 

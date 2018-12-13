@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro vytvoření webové aplikace v Javě ve službě Azure App Service v Linuxu
+title: Vytvoření webové aplikace v Javě v Linuxu – Azure App Service
 description: V tomto rychlém startu během několika minut nasadíte svou první aplikaci Hello World v jazyce Java ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 03/07/2018
+ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247551"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252605"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
 
@@ -106,10 +106,12 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili aplikaci v Javě zabalenou do webového archivu do služby App Service v Linuxu. Informace o propojení databází, nastavení protokolování a monitorování, konfiguraci zabezpečení a nastavení možností modulu runtime najdete v příručce pro vývojáře v Javě pro službu App Service v Linuxu.
+V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili aplikaci v Javě zabalenou do webového archivu do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App v Linuxu.
 
-> [!div class="nextstepaction"]
-> [Příručka pro vývojáře v Javě pro službu App Service v Linuxu](app-service-linux-java.md)
+- [Kurz: Nasazení aplikace v Javě podnikové aplikace s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
+- [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#connecting-to-data-sources)
+- [CI/CD pomocí Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)
+- [Nastavení nástroje pro monitorování výkonu aplikací](how-to-java-apm-monitoring.md)
 

@@ -2,8 +2,8 @@
 title: Nastavení správy modelů Azure Machine Learning a konfigurace | Dokumentace Microsoftu
 description: Tento dokument popisuje kroky a koncepty součástí nastavení a konfigurace správy modelů ve službě Azure Machine Learning.
 services: machine-learning
-author: raymondlaghaeian
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6660657141cc5aac532d121b61c7c8db6a24ccda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10f61e6276b1ce0a0237e3cf2e35a68edf4a0cf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968709"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257569"
 ---
 # <a name="model-management-setup"></a>Nastavení správy modelů
 
@@ -91,7 +91,7 @@ Pokud chcete začít, musíte nastavit prostředí pro nasazení. Nastavení pro
 
 Po dokončení instalace prostředí:
 - Zobrazí se výzva k přihlášení do Azure. Pro přihlášení, použijte webový prohlížeč a otevřete stránku https://aka.ms/devicelogin a zadání poskytnutého kódu k ověření.
-- Během procesu ověřování budete vyzváni k ověření pomocí účtu. Vyberte účet, který má platné předplatné Azure a dostatečná oprávnění k vytváření prostředků v účtu. důležité: - Po li přihlásit dokončení se zobrazí informace o vašem předplatném a zobrazí se výzva, jestli chcete pokračovat vybraný účet.
+- Během procesu ověřování budete vyzváni k ověření pomocí účtu. Důležité: Vyberte účet, který má platné předplatné Azure a dostatečná oprávnění k vytváření prostředků v účtu. - po li přihlásit dokončení se zobrazí informace o vašem předplatném a zobrazí se výzva, jestli chcete pokračovat s vybraný účet .
 
 ### <a name="environment-setup"></a>Nastavení prostředí
 K zahájení procesu instalace, budete muset zaregistrovat poskytovatele prostředí tak, že zadáte následující příkaz:
@@ -114,7 +114,7 @@ Příkaz místní prostředí instalační program vytvoří následující pros
 - Skupinu prostředků (Pokud není zadáno)
 - Účet úložiště
 - Služby Azure Container Registry (ACR)
-- Application Insights
+- Application insights
 
 Po úspěšném dokončení instalace, nastavte prostředí k použití pomocí následujícího příkazu:
 
@@ -136,7 +136,7 @@ Příkaz clusteru prostředí instalační program vytvoří následující pros
 - Účet úložiště
 - Služby Azure Container Registry (ACR)
 - Nasazení Kubernetes v clusteru Azure Container Service (ACS)
-- Application Insights
+- Application insights
 
 Rychle se vytvoří skupina prostředků, účet úložiště a služby ACR. Nasazení služby ACS může trvat až 20 minut. 
 

@@ -7,14 +7,15 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: 60248da2bbdac751845a40720f8967203c562b4a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.custom: seodec18
+ms.openlocfilehash: 48fd64908a5cb2488d58f3c078e0ccb17419352f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085733"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260239"
 ---
-# <a name="quickstart-send-container-registry-events-to-event-grid"></a>Rychlý start: Odeslání kontejneru událostí registru do služby Event Grid
+# <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý start: Odesílání událostí v privátním registru kontejneru do služby Event Grid
 
 Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí s využitím publikování-odběru modelu. V tomto rychlém startu použijete Azure CLI k vytvoření registru kontejnerů, přihlášení k odběru událostí registru a pak nasadit ukázkovou webovou aplikaci pro příjem událostí. Nakonec se aktivuje image kontejneru `push` a `delete` události a zobrazení datové části události v ukázkové aplikaci.
 

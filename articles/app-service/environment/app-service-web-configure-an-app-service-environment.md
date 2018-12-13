@@ -1,5 +1,5 @@
 ---
-title: Postup konfigurace služby App Service Environment v1
+title: Postup konfigurace služby App Service Environment v1 – Azure
 description: Konfigurace, Správa a monitorování služby App Service Environment v1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 60e086197b61d14394cad3d54a7efc4baede1f7b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 85353b68673ea91711e0c3d93e68bec662f406df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965816"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272129"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurace App Service Environment v1
 
@@ -31,7 +32,7 @@ ms.locfileid: "52965816"
 Na vysoké úrovni služby Azure App Service Environment se skládá z několika hlavní součásti:
 
 * Služba hostovaná výpočetní prostředky, které běží ve službě App Service Environment
-* Úložiště
+* Storage
 * Databáze
 * Classic(V1) nebo Azure Manager(V2) prostředku virtuální sítě (VNet) 
 * Podsítě ve službě App Service Environment hostované spuštěná v ní
@@ -44,14 +45,14 @@ Hostitelé ve fondech zdrojů (front-endy ani pracovní procesy) nejsou přímo 
 Můžete nastavit prostředků fondu množství a velikosti. Ve službě ASE máte čtyři možnosti velikosti, které jsou označeny jako P1 až P4. Podrobnosti o těchto velikostech a cenách najdete v tématu [ceny služeb App Service](https://azure.microsoft.com/pricing/details/app-service/).
 Změna počtu nebo velikosti je volána operace škálování.  Operace pouze jeden škálování může být v průběhu najednou.
 
-**Front-endů**: front-endů jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uloženy ve vaší službě ASE. Při spuštění úlohy ve front-endů.
+**Front-endů**: Front-endů jsou koncové body HTTP/HTTPS pro vaše aplikace, které jsou uloženy ve vaší službě ASE. Při spuštění úlohy ve front-endů.
 
 * Služba ASE začíná dvěma P2s, což je dostatečná pro vývojové a testovací úlohy a úlohy v produkčním prostředí nízké úrovně. Důrazně doporučujeme P3s pro střední náročné produkční úlohy.
 * Pro střední pro náročné produkční úlohy doporučujeme vám, že máte alespoň čtyři P3s zajistit nejsou dostatečná front-endů spuštěn, když dojde k plánované údržby. Aktivity plánované údržby přinese dolů jeden front-endu v čase. To snižuje celkovou dostupnou kapacitu front-endu během údržby nevyžadovala.
 * Front-endů může trvat až hodinu zřizování. 
 * Pro další ladění škálování, měli byste sledovat procento využití procesoru, paměti a aktivní požadavky metriky pro front-endový fond. Pokud procenta využití procesoru nebo paměti jsou vyšší než 70 procent při spuštění P3s, přidejte další front-endů. Pokud hodnota aktivních požadavků předběhli aktuální fázi navýšení kapacity na 15 000 na 20 000 požadavků za front-endu, měli byste také přidat další front-endů. Cílem je zajistit procenta využití procesoru a paměti níže 70 % a ukončit aktivní požadavky odstávkou navýšení kapacity na nižší než 15 000 požadavků za front, pokud používáte P3s.  
 
-**Pracovní procesy**: zaměstnanci jsou, kde skutečně běží. Při škálování vašich plánech služby App Service, která používá si pracovní procesy ve fondu přidružených pracovních procesů.
+**Pracovní procesy**: Zaměstnanci jsou, kde skutečně běží. Při škálování vašich plánech služby App Service, která používá si pracovní procesy ve fondu přidružených pracovních procesů.
 
 * Nelze přidat okamžitě pracovních procesů. Může trvat až hodinu zřizování.
 * Velikost výpočetních prostředků pro jakýkoli fond škálování bude trvat < 1 hodina za aktualizační doména. Existují 20 aktualizačních domén ve službě ASE. Pokud můžete škálovat výpočetní velikost fondu pracovních procesů s 10 instancí, může trvat až 10 hodin.
@@ -68,11 +69,11 @@ Pokud vaše aplikace potřebuje větší velikost výpočetních prostředků, n
 * Změnit přiřazení vaše plány služby App Service, které jsou hostiteli aplikace, které vyžadují větší velikost fondu nově nakonfigurovaný pracovního procesu. To je rychlé operace, která by měla trvat méně než minutu.  
 * Pokud nepotřebujete tyto nevyužité instance, vertikálně snížit kapacitu první fond pracovních procesů. Tato operace trvá několik minut na dokončení.
 
-**Automatické škálování**: jedním z nástrojů, které vám mohou pomoci při správě využití výpočetních prostředků provádí automatické škálování. Můžete použít automatické škálování pro front-endu nebo fondy pracovních procesů. Můžete provádění akcí, například zvýšení vaší instance libovolného typu fondu ráno a snížit večer. Nebo třeba přidat instance když počet pracovních procesů, které jsou k dispozici ve fondu pracovních procesů klesne pod určitou prahovou hodnotu.
+**Automatické škálování**: Jedním z nástrojů, které vám mohou pomoci při správě využití výpočetních prostředků provádí automatické škálování. Můžete použít automatické škálování pro front-endu nebo fondy pracovních procesů. Můžete provádění akcí, například zvýšení vaší instance libovolného typu fondu ráno a snížit večer. Nebo třeba přidat instance když počet pracovních procesů, které jsou k dispozici ve fondu pracovních procesů klesne pod určitou prahovou hodnotu.
 
 Pokud chcete nastavit pravidla automatického škálování kolem metriky fondu výpočetních prostředků a vzít v úvahu čas, který vyžaduje zřizování. Další podrobnosti o automatické škálování služby App Service Environment najdete v tématu [postup konfigurace automatického škálování ve službě App Service Environment][ASEAutoscale].
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 Každá služba ASE má nakonfigurovanou 500 GB úložiště. Zde se používá ve všech aplikacích v této službě ASE. Tento prostor úložiště je součástí služby ASE a aktuálně není možné přepnout na použití vašeho prostoru úložiště. Pokud provádíte úpravy směrování virtuální sítě nebo zabezpečení, budete muset přesto umožňuje přístup ke službě Azure Storage – nebo služby ASE nemůže fungovat.
 
 ### <a name="database"></a>Databáze
@@ -132,13 +133,13 @@ Všechny plány služby App Service ve službě ASE jsou vyhrazené plány služ
 ### <a name="settings"></a>Nastavení
 V okně služby ASE se **nastavení** oddíl, který obsahuje několik důležitých funkcí:
 
-**Nastavení** > **vlastnosti**: **nastavení** okno se automaticky otevře při opětovném připojení do okna vaší služby ASE. V horní části **vlastnosti**. Existuje několik položek tady, které jsou redundantní uvidíte v **Essentials**, ale je velmi užitečný, co je **virtuální IP adresu**, stejně jako **odchozí IP adresy**.
+**Nastavení** > **vlastnosti**: **Nastavení** okno se automaticky otevře při opětovném připojení do okna vaší služby ASE. V horní části **vlastnosti**. Existuje několik položek tady, které jsou redundantní uvidíte v **Essentials**, ale je velmi užitečný, co je **virtuální IP adresu**, stejně jako **odchozí IP adresy**.
 
 ![Okna nastavení a vlastnosti][4]
 
 **Nastavení** > **IP adresy**: Když vytvoříte aplikaci IP vrstvy SSL (Secure Sockets) ve vaší službě ASE, potřebujete adresu IP SSL. Pokud chcete získat, musí vaše služba ASE adresy IP SSL, které vlastní, které mohou být přiděleny. Po vytvoření prostředí ASE má jednu adresu IP SSL pro tento účel, ale můžete přidat další. Není zpoplatněny pro další SSL IP adresy, jak je znázorněno v [služby App Service – ceny][AppServicePricing] (v oddílu na připojení SSL). Další cena je cena IP SSL.
 
-**Nastavení** > **front-Endového fondu adres** / **fondy pracovních procesů**: každá z těchto oken fondu prostředků vám umožňuje zobrazit informace pouze na tento fond zdrojů v Přidání ovládacích prvků plně škálování tento fond zdrojů poskytovat.  
+**Nastavení** > **front-Endového fondu** / **fondy pracovních procesů**: Každá z těchto oken fondu prostředků vám umožňuje zobrazit informace pouze o tento fond zdrojů, kromě toho, že ovládací prvky plně škálování tento fond zdrojů.  
 
 Základní okna pro každý fond zdrojů obsahuje graf pomocí metrik pro tento fond zdrojů. Stejně jako u grafů v okně služby ASE můžete přejít do grafu a nastavit výstrahy podle potřeby. Nastavení upozornění v okně služby ASE pro konkrétní prostředek fondu udělá to stejné jako to z fondu zdrojů. Z fondu pracovních procesů **nastavení** okno, budete mít přístup ke všem aplikacím nebo plány služby App Service, které běží v tomto fondu pracovních procesů.
 

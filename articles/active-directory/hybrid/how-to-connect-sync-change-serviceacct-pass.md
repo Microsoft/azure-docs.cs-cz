@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizace Azure AD Connect: Změna účtu služby Azure AD Connect Sync | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect:  Změna účtu služby Azure AD Connect Sync | Dokumentace Microsoftu'
 description: Tento dokument téma popisuje šifrovací klíč a o tom, která může opustit po změně hesla.
 services: active-directory
 keywords: Účet služby Azure AD sync, heslo
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 331c536970445dacdb9afc9d3cfa5711b82bfbf0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a0cdaa54d0da58a02cbe9fcda36cbaff6b1fab4a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747248"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184895"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Změna hesla účtu služby synchronizace Azure AD Connect
 Pokud změníte heslo účtu služby Azure AD Connect sync, synchronizační služba nebude možné start správně opuštěných šifrovacího klíče a znovu inicializovat heslo účtu služby Azure AD Connect sync. 
@@ -38,13 +38,13 @@ Existují dvě věci, které je potřeba udělat, když změníte heslo účtu s
 Je třeba nejprve, chcete-li změnit heslo v rámci správce řízení služeb Windows.  Dokud tento problém nebude vyřešen uvidíte následující chyby:
 
 
-- Pokud se pokusíte spustit synchronizační službu ve správci řízení služeb Windows, se zobrazí chyba "**Windows nelze spustit službu Microsoft Azure AD Sync na místním počítači**". **Chyby 1069: Službě se nepodařilo spustit z důvodu selhání přihlášení.** "
-- V prohlížeči událostí pro Windows, protokolu událostí systému obsahuje chybu s **7038 ID události** a zpráva "**ADSync service nebylo možné se přihlásit jako se se současně nakonfigurovaným heslem kvůli následující chybě: uživatel jméno nebo heslo není správné.** "
+- Pokud se pokusíte spustit synchronizační službu ve správci řízení služeb Windows, se zobrazí chyba "**Windows nelze spustit službu Microsoft Azure AD Sync na místním počítači**". **Chyby 1069: Službu se nepodařilo spustit z důvodu selhání přihlášení.** "
+- V prohlížeči událostí pro Windows, protokolu událostí systému obsahuje chybu s **7038 ID události** a zpráva "**ADSync service nebylo možné se přihlásit jako se se současně nakonfigurovaným heslem kvůli následující chybě: Uživatelské jméno nebo heslo není správné.** "
 
 Za druhé za určitých podmínek, pokud se heslo aktualizuje, synchronizační služba už načíst šifrovací klíč pomocí rozhraní DPAPI. Bez šifrovací klíč synchronizační služba nemůže dešifrovat hesla, třeba synchronizovat z místní AD a Azure AD.
 Chyby se zobrazí jako například:
 
-- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "** Windows nelze spustit Microsoft Azure AD Sync na místním počítači. Další informace najdete v protokolu událostí systému. Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby \*\*-21451857952**\*\*."
+- V části správce řízení služeb Windows Pokud se pokusíte spustit synchronizační službu a nemůže získat šifrovací klíč, selže s chybou "<strong>Windows nelze spustit Microsoft Azure AD Sync na místním počítači. Další informace najdete v protokolu událostí systému. Pokud je to služba jiného subjektu než Microsoft, obraťte se na dodavatele služby a získáte kódu chyby specifické pro služby-21451857952</strong>. "
 - V prohlížeči událostí pro Windows, protokolu událostí aplikace obsahuje chybu s **6028 ID události** chybové zprávy a *"**šifrovacího klíče serveru nelze přistupovat.**"*
 
 Aby se tyto chyby nezobrazí, postupujte podle pokynů v [nastavuje Azure AD Connect Sync šifrovací klíč](#abandoning-the-azure-ad-connect-sync-encryption-key) při změně hesla.
@@ -121,6 +121,6 @@ Teď, když synchronizační služba má přístup k šifrování klíče a vše
 ## <a name="next-steps"></a>Další postup
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)

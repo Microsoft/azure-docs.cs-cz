@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: ''
-ms.openlocfilehash: 7227fd68f696e827a076005bcd116e222f23e9b0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: e910a953743e8b43f51add5a1e74b3d612b62ba8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882516"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190063"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -162,7 +161,7 @@ Pokud používáte řešení Service Map, můžete zobrazit položek oddělení 
 
 ![Log Analytics obrazovky](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Další informace: [Service Map](../../azure-monitor/insights/service-map.md)
+Další informace: [Mapa služeb](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Další informace
@@ -176,7 +175,7 @@ Tyto informace jsou uvedeny příklady dat shromažďovaných funkcí ITSMC:
 
 > V závislosti na typu pracovní položky importovat do Log Analytics, **ServiceDesk_CL** obsahuje následující pole:
 
-**Pracovní položka:** **incidenty**  
+**Pracovní položky:** **Incidenty**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Pole**
@@ -203,7 +202,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Počítač
 
 
-**Pracovní položka:** **žádosti o změnu**
+**Pracovní položky:** **Žádosti o změnu**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
@@ -255,7 +254,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Description_s|  Poznámky |
 | CreatedDate_t|  Otevřeno |
 | ClosedDate_t| Uzavřeno|
-| ResolvedDate_t|Vyřešené|
+| ResolvedDate_t|Vyřešeno|
 | Počítač  | Položky konfigurace |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Žádost o změnu výstupní data pro ServiceNow

@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: e905b90c405ad8adbc3084ce18fe765744cb8b5a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 645750ec40f0aba2ef58c096a72125fad2947719
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013746"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186255"
 ---
 # <a name="log-analytics-query-language-differences"></a>Protokolovat rozdíly jazyk dotazu Analytics
 

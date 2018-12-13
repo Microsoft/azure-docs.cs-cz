@@ -14,14 +14,14 @@ ms.date: 08/08/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8ebdb22ba5ca04a5c811b3b368055f5f4371c75f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 8c5d980f25e196add6885d250665eae7127456f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208879"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273115"
 ---
-# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Zásady pojmenování pro skupiny v Azure Active Directory
+# <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Rychlý start: Pojmenování zásady pro skupiny ve službě Azure Active Directory
 
 V tomto rychlém startu nastavíte ve svém tenantovi Azure Active Directory (Azure AD) zásady pojmenování pro skupiny Office 365 vytvořené uživatelem, které vám pomůžou řadit a prohledávat skupiny ve vašem tenantovi. Zásady pojmenování můžete použít například k následujícím účelům:
 
@@ -50,7 +50,7 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
 
 ## <a name="set-up-naming-policy"></a>Nastavení zásad pojmenování
 
-### <a name="step-1-sign-in-using-powershell-cmdlets"></a>Krok 1: Přihlášení pomocí rutin PowerShellu
+### <a name="step-1-sign-in-using-powershell-cmdlets"></a>Krok 1: Přihlaste se pomocí rutin prostředí PowerShell
 
 1. Otevřete aplikaci Windows PowerShell. Nepotřebujete zvýšená oprávnění.
 
@@ -64,7 +64,7 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
 
 3. Podle pokynů v tématu [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md) vytvořte nastavení skupiny pro tohoto tenanta.
 
-### <a name="step-2-view-the-current-settings"></a>Krok 2: Zobrazení aktuálního nastavení
+### <a name="step-2-view-the-current-settings"></a>Krok 2: Zobrazit aktuální nastavení
 
 1. Zobrazte aktuální nastavení zásad pojmenování.
   
@@ -78,9 +78,9 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
   $Setting.Values
   ````
   
-### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Krok 3: Nastavení zásad pojmenování a vlastních blokovaných slov
+### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>Krok 3: Nastavte zásady pojmenování a jakékoli vlastní blokované slova
 
-1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu.
+1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -102,25 +102,25 @@ A to je vše. Nastavili jste zásady pojmenování a přidali jste vlastní blok
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu.
+1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =""
   ````
   
-2. Nastavte vlastní blokovaná slova, která chcete zakázat. Následující příklad ukazuje, jak můžete přidat vlastní slova.
+2. Prázdný vlastní blokované slova.
   
   ````
   $Setting["CustomBlockedWordsList"]=""
   ````
   
-3. Uložte nastavení, aby nová zásada vstoupila v platnost, jak je znázorněno v následujícím příkladu.
+3. Uložte nastavení.
   
   ````
   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
   ````
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak pomocí rutin PowerShellu nastavit zásady pojmenování pro tenanta Azure AD.
 
