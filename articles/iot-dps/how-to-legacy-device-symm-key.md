@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9553d1dd5dd8d8ff11ea480618b471b9898985e3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 60321b2463a535c3f7a0c73e0922010bd12a3e82
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456554"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323231"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
 
@@ -35,7 +35,7 @@ Jedinečným registračním ID bude určena pro každé zařízení založené n
 
 Skupinu registrací, který používá [symetrického klíče ověření](concepts-symmetric-key-attestation.md) se vytvoří ve službě Device Provisioning Service. Skupiny registrací bude obsahovat skupinu hlavní klíč. Tento hlavní klíč se použije k vytvoření hodnoty hash jednotlivých jedinečným registračním ID, vytvoří jedinečný klíč pro každé zařízení. Které zařízení použije tento klíč odvozené zařízení s jedinečným registračním ID ověřit ve službě Device Provisioning Service a přiřadit do služby IoT hub.
 
-Zařízení kódu demonstruje tento článek bude postup podobný jako [rychlý start: zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md). Kód bude simulace zařízení pomocí ukázky z [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Simulované zařízení se ověřit identitu s skupinu registrací místo jednotlivou registraci, jak je ukázáno v tomto rychlém startu.
+Zařízení kódu demonstruje tento článek bude postup podobný jako [rychlý start: Zřízení simulovaného zařízení pomocí symetrických klíčů](quick-create-simulated-device-symm-key.md). Kód bude simulace zařízení pomocí ukázky z [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). Simulované zařízení se ověřit identitu s skupinu registrací místo jednotlivou registraci, jak je ukázáno v tomto rychlém startu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -90,7 +90,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 4. Spuštěním následujícího příkazu sestavte verzi sady SDK určenou pro platformu vašeho vývojového klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -98,7 +98,7 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -122,13 +122,13 @@ Sada SDK zahrnuje ukázkový kód pro simulované zařízení. Toto simulované 
 
     - **Název skupiny**: Zadejte **mylegacydevices**.
 
-    - **Typ ověření**: vyberte **symetrický klíč**.
+    - **Typ ověření**: Vyberte **symetrický klíč**.
 
-    - **Automaticky vygenerovat klíče**: Toto políčko zaškrtněte.
+    - **Automaticky vygenerovat klíče**: Zaškrtněte toto políčko.
 
-    - **Vyberte, jak chcete přiřadit zařízení k centrům**: vyberte **statickou konfiguraci** tak můžete přiřadit konkrétní rozbočovače.
+    - **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **statickou konfiguraci** tak můžete přiřadit konkrétní rozbočovače.
 
-    - **Vyberte centra IoT hub je možné přiřadit tato skupina**: vyberte jednu z vašich rozbočovače.
+    - **Vyberte centra IoT hub je možné přiřadit tato skupina**: Vyberte jednu z vašich rozbočovače.
 
     ![Přidat skupinu registrací pro ověření identity symetrického klíče](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 

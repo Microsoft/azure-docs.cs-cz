@@ -1,5 +1,5 @@
 ---
-title: Začínáme se sadou Azure WebJobs SDK
+title: Začínáme se sadou WebJobs SDK – Azure
 description: Úvod do sady SDK pro WebJobs pro zpracování na pozadí založený na událostech. Zjistěte, jak získat přístup k datům v Azure služby a služby třetích stran.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: b0f4ef5079ac689827cb49884fa1c6a51529ea83
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 95fd44d5865eb804cb91d7adc2cc17bb5f957b5c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140345"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275206"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -63,9 +63,9 @@ Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.
 
 1. V sadě Visual Studio, vyberte **soubor > Nový projekt**.
 
-1. Vyberte **klasická plocha Windows > aplikace konzoly (.NET Framework)**.
+2. Vyberte **klasická plocha Windows > aplikace konzoly (.NET Framework)**.
 
-1. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **OK**.
+3. Pojmenujte projekt *WebJobsSDKSample*a pak vyberte **OK**.
 
    ![Dialogové okno Nový projekt](./media/webjobs-sdk-get-started/new-project.png)
 

@@ -1,21 +1,21 @@
 ---
-title: Kurz služby Azure Container Registry – Nahrání aktualizované image do regionálních nasazení
-description: Nahrajte upravenou image Dockeru do vlastního geograficky replikovaného registru kontejneru Azure a změny se automaticky nasadí do webových aplikací běžících v několika oblastech. Třetí částí z třídílné série.
+title: Kurz – nabízených aktualizovat image kontejneru pro nasazení místní aplikace Azure
+description: Nahrání upravenou image Dockeru do geograficky replikované Azure container registry a potom se změny automaticky nasazenou do služby web apps spouštěná ve více oblastech. Třetí částí z třídílné série.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 96e46c84039b7c72d5419972c7a5a401eab64659
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: d9faa89d33dde7da35ad4490b78b9a1d023274ae
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855506"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256617"
 ---
-# <a name="tutorial-push-an-updated-image-to-regional-deployments"></a>Kurz: Nahrání aktualizované image do regionálních nasazení
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Kurz: Nahrání aktualizované image kontejneru do registru geograficky replikovaném kontejneru pro nasazení regionální webové aplikace
 
 Toto je třetí část z třídílné série kurzů. V [předchozím kurzu](container-registry-tutorial-deploy-app.md) se geografická replikace konfigurovala pro dvě různá nasazení regionální webové aplikace. V tomto kurzu nejprve aplikaci upravíte a potom sestavíte novou image kontejneru a nahrajete ji do geograficky replikovaného registru. Nakonec si zobrazíte změnu, která v obou instancích webové aplikace proběhla automaticky díky webhookům služby Azure Container Registry.
 
@@ -129,11 +129,11 @@ Ověřte si zobrazením v prohlížeči, že aktualizovaná image kontejneru byl
 
 Jediným příkazem `docker push` jste automaticky aktualizovali webovou aplikaci běžící v obou nasazeních regionální webové aplikace. A služba Azure Container Registry poskytla image kontejnerů z úložišť, která jsou umístěná nejblíže k jednotlivým nasazením.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste aktualizovali a nasadili novou verzi kontejneru webové aplikace do svého geograficky replikovaného registru. Webhooky ve službě Azure Container Registry zaslaly oznámení o aktualizaci službě Web App for Containers, která aktivovala načtení z nejbližší repliky registru.
 
-### <a name="acr-build-automated-image-build-and-patch"></a>ACR Build: Automatické sestavení a oprava image
+### <a name="acr-build-automated-image-build-and-patch"></a>Sestavení služby ACR: Automatizované bitové kopie sestavení a opravy
 
 Vedle geografické replikace je ACR Build další funkcí služby Azure Container Registry, která vám pomůže při optimalizaci kanálu nasazení kontejneru. Začněte přehledem ACR Build, abyste získali představu o možnostech této funkce:
 

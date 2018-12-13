@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search | Dokumentace Microsoftu
+title: Zabezpečení a dat o ochraně osobních údajů – Azure Search
 description: Azure Search je kompatibilní s další certifikace, SOC 2 a HIPAA. Filtruje připojení a šifrování, ověřování a identita přístup k datům prostřednictvím uživatele a skupiny identifikátory zabezpečení ve službě Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.custom: seodec2018
+ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092627"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311707"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
 
@@ -99,7 +100,7 @@ Uživatelský přístup k obsahu indexu se implementuje pomocí filtrů zabezpe�
 |[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumenty základní pracovní postup k implementaci řízení přístupu identity uživatele. Popisuje přidání identifikátory zabezpečení do indexu a vysvětluje, filtrování pole mají být odebrány výsledky zakázané obsahu. |
 |[Oříznutí zabezpečení na základě identit Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek dál navazuje na předchozí článek, konkrétně postup pro načítání identit z Azure Active Directory (AAD), jeden z [bezplatné služby](https://azure.microsoft.com/free/) v cloudové platformy Azure. |
 
-## <a name="table-permissioned-operations"></a>Tabulkou: Operace udělili oprávnění
+## <a name="table-permissioned-operations"></a>Tabulka: Udělili oprávnění operace
 
 Následující tabulka shrnuje operace povolené ve službě Azure Search a který klíč odemkne přístup určitou operaci.
 

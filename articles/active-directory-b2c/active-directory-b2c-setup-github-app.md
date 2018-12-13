@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 426df541def0aa8d4d8b6a81a7364b32ee7f11dd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f3eb5cd62d24ea7251829aed8abba38415835023
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074708"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162813"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem GitHub pomocí Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "53074708"
 > Tato funkce je ve verzi Preview.
 > 
 
-Pokud chcete použít účet Github jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, je potřeba vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Github, můžete získat na [ https://www.github.com/ ](https://www.github.com/).
+Pokud chcete použít účet GitHub jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, je potřeba vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet GitHub, můžete získat na [ https://www.github.com/ ](https://www.github.com/).
 
 ## <a name="create-a-github-oauth-application"></a>Vytvoření aplikace OAuth Githubu
 
@@ -43,4 +43,4 @@ Pokud chcete použít účet Github jako zprostředkovatele identity v Azure Act
 5. Zadejte **název**. Zadejte například *Githubu*.
 6. Vyberte **typ zprostředkovatele identit**vyberte **Githubu (Preview)** a klikněte na tlačítko **OK**.
 7. Vyberte **nastavit tohoto zprostředkovatele identity** a zadejte Id klienta, který jste si poznamenali dříve, jako **ID klienta** a zadejte tajný kód klienta, který jste si poznamenali jako **tajný kód klienta**aplikace účtu Githubu, který jste vytvořili dříve.
-8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci účtu Github.
+8. Klikněte na tlačítko **OK** a potom klikněte na tlačítko **vytvořit** uložte konfiguraci účtu GitHub.

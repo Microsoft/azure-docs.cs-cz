@@ -1,19 +1,20 @@
 ---
-title: Filtry zabezpečení pro oříznutí Azure Search výsledků s použitím identity služby Active Directory | Dokumentace Microsoftu
-description: Řízení přístupu u obsahu Azure Search pomocí filtrů zabezpečení a identity služby Active Directory.
-author: revitalbarletz
+title: Filtry zabezpečení, které mají být odebrány výsledky pomocí služby Active Directory identity – Azure Search
+description: Řízení přístupu u obsahu Azure Search pomocí filtrů zabezpečení a identit Azure Active Directory (AAD).
+author: brjohnstmsft
 manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
-ms.author: revitalb
-ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: 2d1ac36341ef47ac95317c583005b675f31f1265
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684627"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308817"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledky Azure Search pomocí identity služby Active Directory
 
@@ -97,7 +98,7 @@ User newUser = await graph.Users.Request().AddAsync(user);
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Do mezipaměti identifikátorů skupiny
+### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Identifikátory skupiny do mezipaměti
 Volitelně Pokud chcete snížit latenci sítě, můžete ukládat do mezipaměti přidružení skupiny uživatelů tak, aby při vydání požadavku hledání skupin se vrátí z mezipaměti, ukládání umožňujícím zpětnou transformaci na AAD. Můžete použít [rozhraní API služby Batch AAD](https://developer.microsoft.com/graph/docs/concepts/json_batching) posílat jednoho požadavku Http s více uživateli a sestavení mezipaměti.
 
 Microsoft Graph je určený pro zpracování k velkému počtu požadavků. Pokud dojde k příliš velkého počtu požadavků, Microsoft Graphu selže požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [Microsoft Graphu omezování](https://developer.microsoft.com/graph/docs/concepts/throttling).
@@ -136,7 +137,7 @@ Z bezpečnostních důvodů ořezávání jsou hodnoty ve svém oboru zabezpeče
 
 K filtrování vrácených ve výsledcích hledání na základě skupin uživatelů odesíláním žádosti dokumentů, najdete v následujících krocích.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Načtení identifikátory skupiny uživatele
+### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Načíst identifikátory skupiny uživatele
 
 Pokud uživatele skupiny již do mezipaměti neuložily, nebo vypršela platnost mezipaměti, [skupiny](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) žádosti
 ```csharp
@@ -164,7 +165,7 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Krok 2: Vytvořte žádost o vyhledávání
+### <a name="step-2-compose-the-search-request"></a>Krok 2: Vytvořit žádost o vyhledávání
 
 Za předpokladu, že máte členství skupin uživatele, může vydat požadavek hledání hodnotami, které příslušný filtr.
 

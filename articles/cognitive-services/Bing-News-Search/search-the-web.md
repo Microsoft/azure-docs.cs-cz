@@ -1,7 +1,7 @@
 ---
-title: Co je Vyhledávání zpráv Bingu?
+title: Co je rozhraní API pro vyhledávání zpráv Bingu?
 titlesuffix: Azure Cognitive Services
-description: Ukazuje, jak použít rozhraní API pro vyhledávání zpráv Bingu k vyhledávání zpráv na webu.
+description: Další informace o použití rozhraní API pro vyhledávání zpráv Bingu pro vyhledávání na webu pro aktuální titulky v několika kategoriích, včetně titulky a sledování trendů témata.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 17383d38b1401149003ad9d1794b3e69284f9033
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227854"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253082"
 ---
-# <a name="what-is-bing-news-search"></a>Co je Vyhledávání zpráv Bingu?
+# <a name="what-is-the-bing-news-search-api"></a>Co je rozhraní API pro vyhledávání zpráv Bingu?
 
 Rozhraní API pro vyhledávání zpráv Bingu nabízí prostředí podobné (ale ne totožné) jako [zprávy Bingu](https://www.bing.com/news). Rozhraní API pro vyhledávání zpráv Bingu umožňuje poslat dotaz do vyhledávání Bingu a získat seznam relevantních zpravodajských článků.
 
@@ -261,7 +262,7 @@ Pokud existují další články, které se zpravodajským článkem souvisejí,
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [vytvoření prvního požadavku](./quickstart.md).
 

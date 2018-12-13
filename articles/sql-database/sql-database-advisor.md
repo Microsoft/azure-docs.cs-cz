@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e1e6d22face70980370a5b6a19845fe0d39ed821
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863444"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271041"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
 

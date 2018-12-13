@@ -1,6 +1,6 @@
 ---
-title: Vytvoření indexu (.NET API – Azure Search) | Dokumentace Microsoftu
-description: Vytvořte index v kódu pomocí sady Azure Search .NET SDK.
+title: Vytvořte index v kódu s využitím rozhraní API pro .NET – Azure Search
+description: Zjistěte, jak vytvořit fulltextový index s možností vyhledávání pomocí .NET SDK služby Azure Search a C# ukázkový kód.
 author: brjohnstmsft
 manager: jlembicz
 tags: azure-portal
@@ -10,12 +10,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: a1c9340acdc2521b9b74f47b0e17d0e4d37aea77
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 6d111b1be310a345e23c440f1af9da4183efff43
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236563"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312591"
 ---
 # <a name="create-an-azure-search-index-using-the-net-sdk"></a>Vytvoření indexu Azure Search pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -185,6 +186,6 @@ serviceClient.Indexes.Delete("hotels");
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po vytvoření indexu Azure Search budete připravení [nahrát do indexu obsah](search-what-is-data-import.md), abyste mohli začít prohledávat data.
 

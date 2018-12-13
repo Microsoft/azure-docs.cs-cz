@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/16/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 84bdc560a135f8f1eb7d6c86fe4f3749135ff7e1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395069"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139040"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Použití ochrany DRM s dynamickým šifrováním a služby doručování licencí
 
@@ -40,7 +41,7 @@ Tento článek vychází z ukázky [šifrování pomocí ochrany DRM](https://gi
 
         Aplikace nastavuje v zásadě omezení typu tokenu JWT.
 
-* Vytvoření streamovacího lokátoru StreamingLocator s určeným názvem zásady streamování pro určitý prostředek. V tomto případě se použije předdefinovaná zásada. Nastaví u streamovacího lokátoru StreamingLocator dva klíče obsahu: AES-128 (obálka) a CENC (PlayReady a Widevine).  
+* Vytvoření streamovacího lokátoru StreamingLocator s určeným názvem zásady streamování pro určitý prostředek. V tomto případě se použije předdefinovaná zásada. Nastaví dva klíče obsahu na StreamingLocator: AES-128 (obálky) a šifrování CENC (PlayReady a Widevine).  
     
     Po vytvoření streamovacího lokátoru StreamingLocator dojde k publikování výstupního prostředku a k jeho zpřístupnění klientům pro účely přehrávání.
 
@@ -51,14 +52,14 @@ Tento článek vychází z ukázky [šifrování pomocí ochrany DRM](https://gi
 
     Můžete otevřít prohlížeč a zadáním výsledné adresy URL spustit ukázkovou stránku Azure Media Player, na které je už předem vyplněná adresa URL a token.  
 
-    ![ochrana pomocí drm](./media/protect-with-drm/playready_encrypted_url.png)
+    ![Ochrana s využitím DRM](./media/protect-with-drm/playready_encrypted_url.png)
 
 > [!NOTE]
 > Každý prostředek můžete zašifrovat i pomocí několika typů šifrování (AES-128, PlayReady, Widevine, FairPlay). V článku [Typy streamovacích protokolů a šifrování](content-protection-overview.md#streaming-protocols-and-encryption-types) se dozvíte, jaké kombinace dávají smysl.
 
 Ukázka popsaná v tomto článku vede k tomuto výsledku:
 
-![ochrana pomocí drm](./media/protect-with-drm/ams_player.png)
+![Video chráněný pomocí DRM AMS](./media/protect-with-drm/ams_player.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -116,7 +117,7 @@ V tomto kurzu vytvoříme vstup úlohy na základě souboru, který se ingestuje
 
 Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Následující ukázka kódu je příkladem toho, jak se ve službě dotazovat na stav [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Dotazování nepatří mezi doporučené postupy, jak sestavovat aplikace, protože může mít prodlevu. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid. Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
-**Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
+**Úlohy** obvykle prochází následujících stavů: **Naplánované**, **ve frontě**, **zpracování**, **dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#WaitForJobToFinish)]
 
@@ -174,6 +175,6 @@ Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podívejte se, jak zajistit [ochranu pomocí AES-128](protect-with-aes128.md).

@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 7474d76537111ebc9f34bb2632a899b7ceb4e50a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 1c90c85f667e18a80c4673a73867ee2d6b3b6294
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643135"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189893"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -180,7 +178,7 @@ Chcete-li načíst kód přímo z instalačního balíčku agenta, můžete pou�
 
 Po dokončení instalace agenta ověřením úspěšně připojen a generování sestav můžete provést dvěma způsoby.  
 
-Z počítače v **ovládací panely**, vyhledejte položku **agenta Microsoft Monitoring Agent**.  Vyberte ho a na **Azure Log Analytics** kartě agent by se zobrazit zpráva s oznámením: **agenta Microsoft Monitoring Agent úspěšně připojilo ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+Z počítače v **ovládací panely**, vyhledejte položku **agenta Microsoft Monitoring Agent**.  Vyberte ho a na **Azure Log Analytics** kartě agent by se zobrazit zpráva s oznámením: **Microsoft Monitoring Agent se úspěšně připojilo ke službě Microsoft Operations Management Suite.**<br><br> ![Stav připojení MMA k Log Analytics](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Můžete také provádět jednoduché protokolu Hledat na webu Azure Portal.  
 

@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 32fdafc01f90b687f6fb7bcd147710e0122338ad
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784771"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278164"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Pomocí upozornění můžete aktivovat runbooku Azure Automation
 
-Můžete použít [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) monitorovat základní metriky a protokoly pro většinu služby v Azure. Runbooky Azure Automation můžete volat pomocí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) nebo pomocí klasických upozornění pro automatizaci úloh na základě výstrah. Tento článek popisuje, jak ke konfiguraci a spuštění sady runbook pomocí výstrah.
+Můžete použít [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) monitorovat základní metriky a protokoly pro většinu služby v Azure. Runbooky Azure Automation můžete volat pomocí [skupiny akcí](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) nebo pomocí klasických upozornění pro automatizaci úloh na základě výstrah. Tento článek popisuje, jak ke konfiguraci a spuštění sady runbook pomocí výstrah.
 
 ## <a name="alert-types"></a>Typy výstrah
 
@@ -31,9 +31,9 @@ Pokud upozornění volá runbook, je vlastní volání požadavek HTTP POST webh
 
 |Výstrahy  |Popis|Datová část schématu  |
 |---------|---------|---------|
-|[Klasických upozornění na metriku](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Když jakékoliv úrovni platformy metriky splní určitou podmínku, pošle se oznámení. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90** za posledních 5 minut.| [Schéma tříd metriky upozornění datové části](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
-|[Upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Odešle oznámení, když žádné nové události v protokolu aktivit Azure odpovídá konkrétní podmínky. Například, když `Delete VM` probíhá operace **myProductionResourceGroup** nebo při vytvoření nové události služby Azure Service Health s **aktivní** stav se zobrazí.| [Schéma datové části upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)        |
-|[Téměř v reálném čase upozornění metriky](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Rychlejší než upozornění na metriku odešle oznámení, když jeden nebo více metriky na úrovni platformy splní zadané podmínky. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90**a hodnota pro **sítě v** je větší než **500 MB** dobu posledních 5 minut.| [Téměř v reálném čase upozornění metriky datové části schématu](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Klasických upozornění na metriku](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Když jakékoliv úrovni platformy metriky splní určitou podmínku, pošle se oznámení. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90** za posledních 5 minut.| [Schéma tříd metriky upozornění datové části](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
+|[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Odešle oznámení, když žádné nové události v protokolu aktivit Azure odpovídá konkrétní podmínky. Například, když `Delete VM` probíhá operace **myProductionResourceGroup** nebo při vytvoření nové události služby Azure Service Health s **aktivní** stav se zobrazí.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[Téměř v reálném čase upozornění metriky](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Rychlejší než upozornění na metriku odešle oznámení, když jeden nebo více metriky na úrovni platformy splní zadané podmínky. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90**a hodnota pro **sítě v** je větší než **500 MB** dobu posledních 5 minut.| [Téměř v reálném čase upozornění metriky datové části schématu](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Vzhledem k tomu, že data, která je poskytována každý typ výstrahy se liší, je jinak zpracovává každý typ výstrahy. V další části se dozvíte, jak vytvořit sadu runbook pro zpracování různých typech výstrah.
 
@@ -211,7 +211,7 @@ Chcete-li vytvořit akci oznámení do skupiny akcí:
    ![Přidat stránku skupiny akcí](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. Chcete-li vytvořit skupinu akcí, vyberte **OK**.
 
-Tato skupina akcí v můžete použít [upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) a [téměř v reálném čase dostávat](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) , který vytvoříte.
+Tato skupina akcí v můžete použít [upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) a [téměř v reálném čase dostávat](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) , který vytvoříte.
 
 ## <a name="classic-alert"></a>Upozornění Classic
 
@@ -230,5 +230,5 @@ Vytvoření klasického upozornění:
 
 * Další informace o spuštění runbooku Automation pomocí webhooku, najdete v části [spuštění runbooku z webhooku](automation-webhooks.md).
 * Podrobnosti o různých způsobech spouštění sady runbook najdete v tématu [spuštění sady runbook](automation-starting-a-runbook.md).
-* Další postup vytvoření upozornění protokolu aktivit najdete v tématu [vytvoření upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Zjistěte, jak vytvořit téměř v reálném čase výstrahy, najdete v článku [vytvořit pravidlo upozornění na webu Azure Portal](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json).
+* Další postup vytvoření upozornění protokolu aktivit najdete v tématu [vytvoření upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
+* Zjistěte, jak vytvořit téměř v reálném čase výstrahy, najdete v článku [vytvořit pravidlo upozornění na webu Azure Portal](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json).

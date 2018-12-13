@@ -1,12 +1,11 @@
 ---
-title: Vyhrazenou kapacitu pro úlohy služby batch provádění - Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Služba Azure Batch pro úlohy Machine Learning Studio | Dokumentace Microsoftu
 description: Přehled služby Azure Batch pro úlohy strojového učení. Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: seodec18
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.service: machine-learning
 ms.component: studio
@@ -15,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3a7adba53f271cd2f6bb2985d034821136d521b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 44b63a51049e663e55cc59a623837cf65cab9ccc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075410"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275189"
 ---
-# <a name="azure-batch-service-for-machine-learning-jobs"></a>Služba Azure Batch pro úlohy strojového učení
+# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio
 
 Machine Learning fondu služby Batch zpracování poskytuje spravované zákazníkem škálování pro spuštění služby Azure Machine Learning služby Batch. Klasické dávkové zpracování pro strojové učení probíhá v prostředí s více tenanty, která omezuje počet souběžných úloh, které můžete odeslat a úlohy se zařadí do fronty na základě first-in-first-out. Tento nejistoty znamená, že nelze předvídat přesně kdy se budou spouštět vaše úlohy.
 

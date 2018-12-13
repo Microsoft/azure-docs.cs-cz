@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 02412f2ac4ff6ce0394ad46e03ae4c89f924624f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b552918f6b415bcd55c7c27c80ff721df77ca99f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016397"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276073"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
-Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](monitoring-overview-alerts-classic.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](../azure-monitor/platform/alerts-classic.overview.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
 
 
 Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky. Další informace získáte [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md).
@@ -35,7 +35,7 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.ApiManagement/service     | Ano        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
 |Microsoft.Automation/automationAccounts     |     Ano   | [Účty služby Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
 |Microsoft.Batch/batchAccounts | neuvedeno| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
-|Microsoft.Cache/Redis     |    neuvedeno     |[Azure mezipaměti Redis](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Cache/Redis     |    neuvedeno     |[Azure Cache for Redis](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines     |    neuvedeno     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |[Škálovací sady virtuálních počítačů](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
@@ -48,7 +48,7 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.EventHub/namespaces     |  Ano      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/vaults| Ne | [trezory služby](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     neuvedeno    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
-|Microsoft.Network/applicationGateways     |    neuvedeno     | [Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/applicationGateways     |    neuvedeno     | [Brány Application Gateway](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/expressRouteCircuits | neuvedeno |  [Express Route okruhy](monitoring-supported-metrics.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/dnsZones | neuvedeno| [Zóny DNS](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
 |Microsoft.Network/loadBalancers (pouze pro standardní skladové položky)| Ano| [Nástroje pro vyrovnávání zatížení](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
@@ -69,7 +69,7 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 
 ## <a name="payload-schema"></a>Datová část schématu
 
-Operace POST obsahuje následující datovou část JSON a schéma pro všechny v novějších upozornění metrik, když je správně nakonfigurované [skupiny akcí](monitoring-action-groups.md) se používá:
+Operace POST obsahuje následující datovou část JSON a schéma pro všechny v novějších upozornění metrik, když je správně nakonfigurované [skupiny akcí](../azure-monitor/platform/action-groups.md) se používá:
 
 ```json
 {"schemaId":"AzureMonitorMetricAlert","data":
@@ -122,5 +122,5 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o novém [výstrahy prostředí](monitoring-overview-alerts.md).
-* Další informace o [upozornění protokolů ve službě Azure](monitor-alerts-unified-log.md).
+* Další informace o [upozornění protokolů ve službě Azure](../azure-monitor/platform/alerts-unified-log.md).
 * Další informace o [výstrah ve službě Azure](monitoring-overview-alerts.md).

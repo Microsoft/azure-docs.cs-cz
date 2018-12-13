@@ -1,5 +1,5 @@
 ---
-title: Doprovodné materiály k nasazování webových aplikací Azure pomocí šablon | Dokumentace Microsoftu
+title: Doprovodné materiály k nasazování aplikací pomocí šablon - službě Azure App Service | Dokumentace Microsoftu
 description: Doporučení pro vytváření šablon Azure Resource Manageru pro nasazování webových aplikací.
 services: app-service
 documentationcenter: app-service
@@ -11,12 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: c2f600d86965e1115d4be1370da8f7c8e1b67f05
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.custom: seodec18
+ms.openlocfilehash: 523574f49673ee961665136d90f04183e7c1a679
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927668"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277756"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manageru
 
@@ -87,7 +88,7 @@ Následující příklad ukazuje část šablony. Hodnota konfigurace řetězec 
 }
 ```
 
-Připraveno ke spuštění ukázky, která používá výše uvedený kód, naleznete v tématu [šablony: vytvoření jednoduché webové aplikace Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+Připraveno ke spuštění ukázky, která používá výše uvedený kód, naleznete v tématu [šablony: Vytvoření jednoduché webové aplikace Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Informace o chybách MSDeploy
 

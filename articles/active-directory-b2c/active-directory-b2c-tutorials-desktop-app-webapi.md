@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 1ce74afd8ee2266439a591730686b4f5277e1b03
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603189"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322001"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -125,7 +125,7 @@ Ukázka webového rozhraní API Node.js s využitím knihovny Passport.js umož�
 
 ### <a name="configure-the-web-api"></a>Konfigurace webového rozhraní API
 
-1. Otevřete soubor `index.html` v ukázce webového rozhraní API Node.js.
+1. Otevřete soubor `index.js` v ukázce webového rozhraní API Node.js.
 2. Nakonfigurujte ukázku s použitím informací o registraci tenanta Azure AD B2C. Změňte následující řádky kódu:
 
 ```nodejs
@@ -163,7 +163,7 @@ Desktopová aplikace odešle požadavek do webového rozhraní API a získá odp
 
 Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek vás provedl ochranou webového rozhraní API ASP.NET prostřednictvím registrace a definice oborů v Azure AD B2C. Další informace najdete v dostupných ukázkách kódu pro Azure AD B2C.
 

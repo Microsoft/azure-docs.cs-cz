@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení resource zamykání v Azure plány
+title: Vysvětlení uzamčení prostředků
 description: Další informace o možnosti uzamčení k ochraně prostředků při přiřazování podrobný plán.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4e71797837927fe5f5233bcf88d35fef98f504e9
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 0e272f7137967b545269a408b6e83552de532682
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139438"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309420"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení resource zamykání v Azure plány
 
@@ -21,9 +22,9 @@ Vytvoření konzistentního prostředí ve velkém měřítku je pouze skutečn�
 
 ## <a name="locking-modes-and-states"></a>Režimy zamykání a stavy
 
-Režim uzamčení se vztahuje na přiřazení podrobného plánu a má jenom dvě možnosti: **žádný** nebo **všechny prostředky**. Režim uzamčení se nakonfiguruje během přiřazení podrobného plánu a po přiřazení se úspěšně použila k předplatnému se nedá změnit.
+Režim uzamčení se vztahuje na přiřazení podrobného plánu a má jenom dvě možnosti: **Žádný** nebo **všechny prostředky**. Režim uzamčení se nakonfiguruje během přiřazení podrobného plánu a po přiřazení se úspěšně použila k předplatnému se nedá změnit.
 
-Prostředky vytvořené v přiřazení podrobného plánu artefakty mají tři stavy: **není uzamčen**, **jen pro čtení**, nebo **nelze upravit nebo odstranit**. Každý artefakt může být v **není uzamčen** stavu. Ale mají skupiny bez prostředků artefakty **jen pro čtení** a skupiny prostředků mají **nelze upravit nebo odstranit** stavy. Tento rozdíl je zásadní rozdíl v tom, jak se spravují tyto prostředky.
+Prostředky vytvořené v přiřazení podrobného plánu artefakty mají tři stavy: **Není uzamčen**, **jen pro čtení**, nebo **nelze upravit nebo odstranit**. Každý artefakt může být v **není uzamčen** stavu. Ale mají skupiny bez prostředků artefakty **jen pro čtení** a skupiny prostředků mají **nelze upravit nebo odstranit** stavy. Tento rozdíl je zásadní rozdíl v tom, jak se spravují tyto prostředky.
 
 **Jen pro čtení** stav je přesně tak, jak je definováno: prostředku nejde změnit žádným způsobem – žádné změny a nelze odstranit. **Nelze upravit nebo odstranit** nuancovanější vzhledem k povaze "kontejneru" skupiny prostředků. Objekt skupiny prostředků je jen pro čtení, ale je možné provádět změny bez uzamčení prostředků v rámci skupiny prostředků.
 

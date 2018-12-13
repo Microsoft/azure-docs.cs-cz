@@ -1,8 +1,8 @@
 ---
-title: Jak – zásady podmíněného přístupu konfigurovat Azure Active Directory pro pokusy o přístup z nedůvěryhodných sítích | Dokumentace Microsoftu
+title: Jak vyžadovat vícefaktorové ověřování (MFA) pro přístup z nedůvěryhodných sítích s podmíněným přístupem Azure Active Directory (Azure AD) | Dokumentace Microsoftu
 description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu v Azure Active Directory (Azure AD) k pro pokusy o přístup z nedůvěryhodných sítích.
 services: active-directory
-keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,37 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2018
+ms.date: 12/10/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5ddde65b2a68e71d86af6ce3dcd2847736cf5823
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c40db6c253899d7aab21d277e93b23dd0c6feb97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627181"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314002"
 ---
-# <a name="how-to-configure-conditional-access-policies-for-access-attempts-from-untrusted-networks"></a>Postupy: Konfigurace zásad podmíněného přístupu pro nedůvěryhodným sítím pokouší o přístup   
+# <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Postup: Vyžadovat vícefaktorové ověřování pro přístup z nedůvěryhodných sítích s podmíněným přístupem   
 
-Ve světě upřednostňujícím mobilní a cloud na prvním Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zařízení, aplikacím a službám odkudkoli. V důsledku toho vaše mohou uživatelé vašich cloudových aplikací nejen v síti vaší organizace, ale také z libovolného místa a nedůvěryhodné sítě Internet. S [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md), můžete určit, jak Autorizovaní uživatelé můžou přistupovat k vašim cloudovým aplikacím. Jeden běžné požadavky v tomto kontextu je potřeba zkontrolovat pokusů o přístup iniciovaná nedůvěryhodným sítím. Tento článek obsahuje informace, na kterých je nutné nakonfigurovat zásady podmíněného přístupu, která zpracovává tento požadavek. 
+Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k zařízení, aplikacím a službám z libovolného místa. Vaši uživatelé můžete přístup k vašim cloudovým aplikacím pouze z vaší podnikové síti, ale také z libovolného místa a nedůvěryhodné sítě Internet. Běžné osvědčeným postupem pro přístup z nedůvěryhodných sítích je vyžadovat vícefaktorové ověřování (MFA).
+
+Tento článek obsahuje informace, na kterých je nutné nakonfigurovat zásady podmíněného přístupu, která vyžaduje vícefaktorové ověřování pro přístup z nedůvěryhodných sítích. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že máte zkušenosti s: 
 
-- Základní koncepty podmíněný přístup Azure AD 
-- Konfigurace zásad podmíněného přístupu na webu Azure Portal
+- [Základní koncepty](overview.md) podmíněného přístupu Azure AD 
+- [Osvědčené postupy](best-practices.md) ke konfiguraci zásad podmíněného přístupu na webu Azure Portal
 
-Přečtěte si:
-
-- [Co je podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md) – přehled podmíněného přístupu 
-
-- [Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md) – Pokud chcete získat nějaké zkušenosti s konfigurací zásad podmíněného přístupu. 
 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Do hlavní větve rovnováhu mezi zabezpečením a produktivitu, může být dostačující pro budete potřebovat jenom uživatelů ověřit pomocí hesla. Když je proveden pokus o přístup z umístění nedůvěryhodné sítě, jsou však zvýšené riziko, že přihlášení nejsou prováděné oprávněným uživatelům. Jak tuto situaci řešit, můžete blokovat pokusy o přístup z nedůvěryhodných sítích. Alternativně můžete také vyžadovat vícefaktorové ověřování (MFA) a získat zpět další záruku, že byl proveden pokus o oprávněný vlastníkem účtu. 
+Do hlavní větve rovnováhu mezi zabezpečením a produktivitu, může být dostatečné pro vás pouze vyžadovat heslo pro přihlášení v síti vaší organizace. Ale pro přístup z umístění nedůvěryhodné sítě, je zvýšené riziko, že přihlášení nejsou prováděné oprávněným uživatelům. Jak tuto situaci řešit, vám umožní blokovat přístup z nedůvěryhodných sítích. Alternativně můžete také vyžadovat vícefaktorové ověřování (MFA) a získat zpět další záruku, že byl proveden pokus o oprávněný vlastníkem účtu. 
 
 Pomocí podmíněného přístupu Azure AD abyste mohli vyřešit tento požadavek se jedna zásada, která uděluje přístup: 
 
@@ -54,14 +51,14 @@ Pomocí podmíněného přístupu Azure AD abyste mohli vyřešit tento požadav
 
 - Vyžadování vícefaktorového ověřování 
 
-- Když je proveden pokus o přístup z: 
+- Když je přístup pochází: 
 
     - Umístění, která není důvěryhodná
 
 
-## <a name="considerations"></a>Požadavky
+## <a name="implementation"></a>Implementace
 
-Výzvy v tomto scénáři je převod *když je proveden pokus o přístup z umístění, která není důvěryhodná* do podmínka podmíněného přístupu. V zásadách podmíněného přístupu, můžete nakonfigurovat [podmínka umístění](location-condition.md) k řešení scénářů, které se vztahují k umístění v síti. Podmínka umístění vám umožní vybrat pojmenovaná umístění, které představují logické skupiny rozsahů adres IP, zemích a oblastech.  
+Výzvy v tomto scénáři je převod *přístup z umístění nedůvěryhodné síti* do podmínka podmíněného přístupu. V zásadách podmíněného přístupu, můžete nakonfigurovat [podmínka umístění](location-condition.md) k řešení scénářů, které se vztahují k umístění v síti. Podmínka umístění vám umožní vybrat pojmenovaná umístění, které jsou logickými seskupeními rozsahy adres IP, zemí a oblastí.  
 
 Obvykle vaše organizace vlastní jeden nebo více rozsahů adres, například 199.30.16.0 - 199.30.16.24.
 Můžete nakonfigurovat pojmenovaných umístění podle:
@@ -73,7 +70,7 @@ Můžete nakonfigurovat pojmenovaných umístění podle:
 
 Namísto pokusu o definovat, jaké jsou všechna místa, které nejsou důvěryhodné, můžete:
 
-- Zahrnout 
+- Zahrnout všechny umístění 
 
     ![Podmíněný přístup](./media/untrusted-networks/02.png)
 
@@ -83,9 +80,9 @@ Namísto pokusu o definovat, jaké jsou všechna místa, které nejsou důvěryh
 
 
 
-## <a name="implementation"></a>Implementace
+## <a name="policy-deployment"></a>Nasazení zásad
 
-S přístupem uvedených v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodných umístěních. Vždy byste měli testovat vaše zásady před zavedením do produkčního prostředí, abyste měli jistotu, že funguje podle očekávání. V ideálním případě byste měli počáteční testy s testovacím tenantem provést Pokud je to možné. Další informace najdete v tématu [by měl nasazení nových zásad](best-practices.md#how-should-you-deploy-a-new-policy). 
+S přístupem uvedených v tomto článku teď můžete nakonfigurovat zásady podmíněného přístupu pro nedůvěryhodných umístěních. Pokud chcete mít jistotu, že vaše zásady funguje podle očekávání, doporučené osvědčeným postupem je otestovat před zavedením do produkčního prostředí. V ideálním případě ověřte, zda vaše nová zásada funguje očekávaným způsobem pomocí testovacího tenanta. Další informace najdete v tématu [způsob nasazení nových zásad](best-practices.md#how-should-you-deploy-a-new-policy). 
 
 
 

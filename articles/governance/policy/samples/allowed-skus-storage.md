@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Povolené skladové položky účtů úložiště a virtuálních počítačů
+title: Ukázkový – povolené skladové položky pro účty úložiště a virtuální počítače
 description: Tato ukázková zásada vyžaduje, aby účty úložiště a virtuální počítače používaly schválené skladové položky.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: af660d594e302ecc6b7b0d6c8c3386674b3f973d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 801f8464dc3733a1eb0574455b52865d2f79e8d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982847"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313798"
 ---
 # <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Povolené skladové položky účtů úložišť a virtuálních počítačů
 
@@ -73,6 +72,6 @@ az policy assignment delete --name <assignmentName>
 az policy set-definition delete --name "skus-for-multiple-types"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

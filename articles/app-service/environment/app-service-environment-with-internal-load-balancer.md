@@ -1,5 +1,5 @@
 ---
-title: Vytváření a používání interního nástroje Load Balancer pomocí služby App Service Environment | Dokumentace Microsoftu
+title: Vytváření a používání interního nástroje load balancer s App Service environment – Azure | Dokumentace Microsoftu
 description: Vytváření a používání služby ASE s ILB
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: fe447a655f579441be667d7555aa83faf2b9385d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957006"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310466"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Službě interní služby Load Balancer pomocí služby App Service Environment
 

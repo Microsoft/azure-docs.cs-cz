@@ -1,5 +1,5 @@
 ---
-title: Rozhraní definice vlastních dovedností v kanálu kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+title: Definice rozhraní pro vlastní dovednosti v kanálu kognitivního vyhledávání – Azure Search
 description: Vlastní data extrakce rozhraní pro webové rozhraní api vlastních dovedností v kanálu kognitivního vyhledávání ve službě Azure Search.
 manager: pablocas
 author: luiscabrer
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: luisca
-ms.openlocfilehash: 2218a96702a02a32df18da9640ea9946d05acdb1
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.custom: seodec2018
+ms.openlocfilehash: 1df2a565b1c9e8bd2bea75ce78abc84608c89eea
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42056807"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314648"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Přidání vlastních dovedností do kanálu kognitivního vyhledávání
 

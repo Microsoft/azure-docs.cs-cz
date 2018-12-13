@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6f6de278e802b83623413b0bf70e556d083818c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074414"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140604"
 ---
-# <a name="application-dashboard"></a>Řídicí panel aplikací
+# <a name="model-and-usage-statistics-in-the-dashboard"></a>Statistika modelu a využití na řídicím panelu
 Řídicí panel aplikací umožňuje monitorovat aplikace jeden pohled. **Řídicí panel** zobrazí při otevření aplikace po kliknutí na název aplikace **Moje aplikace** stránce vyberte **řídicí panel** v horním panelu. 
 
 > [!CAUTION]
@@ -71,7 +71,7 @@ Počet přístupů spotřebované klíče koncového bodu aplikace. Další info
 
 Chcete-li řídit, jestli rozdělení je založena na označené projevy nebo koncový bod přístupů:
 
-1. Klikněte na tlačítko **další nastavení** ![tlačítko Další nastavení](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
+1. Klikněte na tlačítko **další nastavení** ![tlačítka Další nastavení do seznamu přístupu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
 
     ![Seznam rozdělení záměru](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
 2. Vyberte hodnotu ze seznamu a potom klikněte na šipku zpět ![Šipka vzad](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Chcete-li zobrazit v grafu.
@@ -83,7 +83,7 @@ Na řídicím panelu zobrazí rozpis entit na základě s popiskem projevy nebo 
 
 Chcete-li řídit, jestli rozdělení je založena na označené projevy nebo koncový bod přístupů:
 
-1. Klikněte na tlačítko **další nastavení** ![tlačítko Další nastavení](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
+1. Klikněte na tlačítko **další nastavení** ![tlačítko Další nastavení a získání seznamu](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) pro přístup k seznamu stejně jako na následujícím obrázku:
 
     ![Seznam rozdělení entit](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
 2. Vyberte hodnotu ze seznamu a potom klikněte na šipku zpět ![Šipka vzad](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Chcete-li zobrazit graf odpovídajícím způsobem.

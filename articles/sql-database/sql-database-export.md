@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: fecc694e5520444be06dab82191b6454fb4ee8f5
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2d881b9dbc20dbbf95491d023b859a20815091d3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354032"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311197"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
@@ -39,11 +39,11 @@ Když je potřeba vyexportovat databázi pro archivaci nebo pro přesun do jiné
   - Použití [clusterovaný index](https://msdn.microsoft.com/library/ms190457.aspx) s nenulovou hodnoty na všech velké tabulky. Bez Clusterované indexy export může selhat, pokud to trvá déle, než 6 až 12 hodin. Je to proto, že služba export musí dokončit prohledávání tabulky k pokusu o export celou tabulku. Dobrým způsobem, jak určit, pokud vaše tabulky jsou optimalizované pro export, je spustit **DBCC SHOW_STATISTICS** a ujistěte se, že *RANGE_HI_KEY* nemá hodnotu null a jeho hodnota má dobré distribuci. Podrobnosti najdete v tématu [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> U souborů Bacpac nejsou určeny k použít pro zálohování a obnovení operací. Azure SQL Database automaticky vytvoří zálohy pro každé uživatelské databázi. Podrobnosti najdete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md) a [záloh SQL Database](sql-database-automated-backups.md).  
+> U souborů Bacpac nejsou určeny k použít pro zálohování a obnovení operací. Azure SQL Database automaticky vytvoří zálohy pro každé uživatelské databázi. Podrobnosti najdete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md) a [záloh SQL Database](sql-database-automated-backups.md).
 
 ## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Exportovat do souboru BACPAC s použitím webu Azure portal
 
-Chcete-li exportovat databázi pomocí [webu Azure portal](https://portal.azure.com), otevřete stránku pro vaši databázi a klikněte na tlačítko **exportovat** na panelu nástrojů. Zadejte název souboru BACPAC, zadejte účet služby Azure storage a kontejner pro export a zadejte přihlašovací údaje pro připojení k databázi zdrojové.  
+Chcete-li exportovat databázi pomocí [webu Azure portal](https://portal.azure.com), otevřete stránku pro vaši databázi a klikněte na tlačítko **exportovat** na panelu nástrojů. Zadejte název souboru BACPAC, zadejte účet služby Azure storage a kontejner pro export a zadejte přihlašovací údaje pro připojení k databázi zdrojové.
 
 ![export databáze](./media/sql-database-export/database-export.png)
 
@@ -72,13 +72,13 @@ Nejnovější verze aplikace SQL Server Management Studio také poskytuje průvo
 
 Použití [New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) rutinu k odeslání žádosti o export databáze do služby Azure SQL Database. V závislosti na velikosti databáze operace exportu může trvat nějakou dobu.
 
- ```powershell
- $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
-   -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
-   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
- ```
+```powershell
+$exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
+  -DatabaseName $DatabaseName -StorageKeytype $StorageKeytype -StorageKey $StorageKey -StorageUri $BacpacUri `
+  -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
+```
 
-Chcete-li zkontrolovat stav žádosti o export, použijte [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Spuštěna ihned po žádosti obvykle vrátí **stav: Probíhá zpracování**. Když se zobrazí **stav: úspěšné** export byl dokončen.
+Chcete-li zkontrolovat stav žádosti o export, použijte [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Spuštěna ihned po žádosti obvykle vrátí **stavu: Probíhá zpracování**. Když se zobrazí **stavu: Úspěšné** export byl dokončen.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

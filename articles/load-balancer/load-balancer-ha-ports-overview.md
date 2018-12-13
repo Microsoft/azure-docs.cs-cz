@@ -11,24 +11,24 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/07/2018
+ms.date: 12/11/2018
 ms.author: kumud
-ms.openlocfilehash: e37b127b112768cd09989e1a4b5edf99ca101983
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f1d95534fb553c6a6d1be4d72a3251ad6a573f20
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141862"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317188"
 ---
 # <a name="high-availability-ports-overview"></a>Přehledu portů s vysokou dostupností
 
 Azure Load balanceru úrovně Standard vám pomůže – nástroj pro vyrovnávání zatížení na všech portech TCP a UDP toky současně při použití interního nástroje load balancer. 
 
-Pravidla portů vysoké dostupnosti (HA) je varianta pravidlo Vyrovnávání zatížení, nakonfigurovali na interní Load balanceru úrovně Standard. Použití nástroje pro vyrovnávání zatížení můžete zjednodušit tím, že jedno pravidlo Vyrovnávání zatížení poskytuje všechny protokoly TCP a UDP toky, které přicházejí na všech portech interní Load balanceru úrovně Standard. Vyrovnávání zatížení rozhodnutí je na tok. Tato akce je založena na následujících pět řazené kolekce členů připojení: zdrojové IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol.
+Pravidlo Vyrovnávání zatížení porty vysokou dostupností (HA) je varianta nakonfigurované na interní Load balanceru úrovně Standard pravidlo Vyrovnávání zatížení. Použití nástroje pro vyrovnávání zatížení můžete zjednodušit tím, že jedno pravidlo Vyrovnávání zatížení poskytuje všechny protokoly TCP a UDP toky, které přicházejí na všech portech interní Load balanceru úrovně Standard. Vyrovnávání zatížení rozhodnutí je na tok. Tato akce je založena na následujících pět řazené kolekce členů připojení: zdrojové IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol
 
-Funkce porty HA vám pomůžou s důležité scénáře, jako je vysoká dostupnost a škálování pro síťová virtuální zařízení (Nva) uvnitř virtuální sítě. Tato funkce může také pomoct při velký počet portů musí být s vyrovnáváním zatížení. 
+Pravidla Vyrovnávání zatížení porty HA vám pomůžou s důležité scénáře, jako je vysoká dostupnost a škálování pro síťová virtuální zařízení (Nva) uvnitř virtuální sítě. Tato funkce může také pomoct při velký počet portů musí být s vyrovnáváním zatížení. 
 
-Funkce porty HA se nakonfiguruje při nastavení portů front-endu a back endu **0** a protokol, který se **všechny**. Prostředek nástroje pro vyrovnávání zatížení interní pak vyrovnává všechny toky TCP a UDP, bez ohledu na číslo portu.
+Pravidla Vyrovnávání zatížení porty HA se nakonfiguruje při nastavení portů front-endu a back endu **0** a protokol, který se **všechny**. Prostředek nástroje pro vyrovnávání zatížení interní pak vyrovnává všechny toky TCP a UDP, bez ohledu na číslo portu
 
 ## <a name="why-use-ha-ports"></a>Proč používat porty s vysokou DOSTUPNOSTÍ?
 
@@ -44,8 +44,9 @@ Porty s vysokou DOSTUPNOSTÍ pro scénáře HA síťové virtuální zařízení
 - Zadejte *n*– aktivní a aktivní pasivní scénáře
 - Eliminuje nutnost komplexní řešení, jako je Apache ZooKeeper uzly pro monitorování zařízení
 
-V níže uvedeném diagramu nasazení střed a paprsek virtuální sítě. Paprsky vynuceného tunelování provoz do virtuální sítě centra a přes síťové virtuální zařízení, před opuštěním důvěryhodné místa. Síťová virtuální zařízení jsou připojeni interní Load balanceru úrovně Standard s konfigurací porty HA. Veškerý provoz můžete zpracovat a předávaných odpovídajícím způsobem.
+V níže uvedeném diagramu nasazení střed a paprsek virtuální sítě. Paprsky vynuceného tunelování provoz do virtuální sítě centra a přes síťové virtuální zařízení, před opuštěním důvěryhodné místa. Síťová virtuální zařízení jsou připojeni interní Load balanceru úrovně Standard s konfigurací porty HA. Veškerý provoz můžete zpracovat a předávaných odpovídajícím způsobem. Při konfiguraci, jak je vidět v následujícím diagramu, poskytuje porty s vysokou DOSTUPNOSTÍ zátěže pravidlo kromě symetrie toku pro příchozí a odchozí přenos.
 
+<a node="diagram"></a>
 ![Diagram střed a paprsek virtuální sítě se síťovými virtuálními zařízeními nasazené v režimu s vysokou DOSTUPNOSTÍ](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
@@ -99,7 +100,7 @@ Můžete nakonfigurovat *jeden* prostředků veřejného Load balanceru úrovně
 
 - Funkce porty HA není k dispozici pro protokol IPv6.
 
-- Tok symetrie pro scénáře síťové virtuální zařízení podporuje pouze jednu síťovou kartu. Zobrazit popis a diagram pro [síťových virtuálních zařízení](#nva). Nicméně pokud cíl NAT můžete pro váš scénář fungovat, můžete ji třeba použít zajistit, aby že interní služby load balancer odešle zpětný provoz do stejné síťové virtuální zařízení.
+- Tok symetrie (hlavně pro scénáře síťové virtuální zařízení) se podporuje s back-end instance a jednu síťovou kartu (a konfigurací jedné IP) pouze při použití, jak je znázorněno [diagram](#diagram) výše a pomocí porty s vysokou DOSTUPNOSTÍ zatížení, pravidel vyrovnávání. To není k dispozici ve všech scénářích. To znamená, že dva nebo více prostředků nástroje pro vyrovnávání zatížení a jejich odpovídajících pravidel nezávislé rozhodování a nejsou nikdy koordinované. Zobrazit popis a diagram pro [síťových virtuálních zařízení](#nva). Pokud používáte více síťových rozhraní nebo sandwiching síťové virtuální zařízení mezi veřejné a vnitřní nástroji pro vyrovnávání zatížení, symetrie flow není k dispozici.  Bude pravděpodobně možné vyřešit podle zdroje NAT'ing příchozí tok na IP adresu zařízení povolit odpovědi můžete přejít na stejné síťové virtuální zařízení.  Však důrazně doporučujeme použít jednu síťovou kartu a pomocí referenční architektura ukazuje [diagram](#diagram) výše.
 
 
 ## <a name="next-steps"></a>Další postup

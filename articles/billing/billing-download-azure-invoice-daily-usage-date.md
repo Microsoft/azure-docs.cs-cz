@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: cwatson
-ms.openlocfilehash: 80721fc82a54c62c982298cb8eabb999caaf1dfb
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: fe3cb2d15602407b54ff47763d409c2e77614f0a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583104"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311129"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
 
@@ -72,7 +72,7 @@ Pokud nechcete, aby se získat faktury e-mailem, klikněte na tlačítko **vyjá
 
 4. Denní využití můžete zobrazit také kliknutím fakturačního období. 
 
-Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md). Vám pomůžou mít náklady pod kontrolou [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
+Další informace o vaší faktuře najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md). Pomoci se správou nákladů, naleznete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
 ### <a name="noinvoice"></a> Proč nevidím faktury pro poslední fakturačního období?
 
@@ -116,13 +116,13 @@ Faktura se nemusí zobrazovat z několika důvodů:
 
 Pouze správce účtu může přístup k centru účtů Azure. Jiní správci fakturace, jako je například vlastníka, můžete získat pomocí informace o využití [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md).
 
-Další informace o denním využití najdete v tématu [Vysvětlení informací na faktuře za Microsoft Azure](billing-understand-your-bill.md). Vám pomůžou mít náklady pod kontrolou [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
+Další informace o denním využití najdete v tématu [Vysvětlení informací na faktuře za Microsoft Azure](billing-understand-your-bill.md). Pomoci se správou nákladů, naleznete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](billing-getting-started.md).
 
 ### <a name="download-usage-for-ea-customers"></a>Stáhnout využití pro zákazníky se smlouvou EA
 
 Zobrazovat a stahovat data o využití jako zákazník EA, musíte být správce podnikové sítě, nebo účtu vlastníka nebo správce oddělení s povolenou zásadou poplatky zobrazení.
 
-1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Hledat na **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)

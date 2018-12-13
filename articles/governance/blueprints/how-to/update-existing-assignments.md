@@ -1,5 +1,5 @@
 ---
-title: Aktualizace existujícího přiřazení podrobného plánu Azure
+title: Aktualizace existujícího přiřazení
 description: Další informace o mechanismus pro aktualizace existujícího přiřazení v Azure podrobné plány.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 2c9f660e54da50e32ce1d0dc43b0efeacd643c57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093781"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314820"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak aktualizovat existující přiřazení podrobného plánu
 
@@ -25,7 +26,7 @@ Pokud je podrobný plán přiřazen, je možné aktualizovat přiřazení. Exist
 
 ## <a name="updating-assignments"></a>Aktualizují se přiřazení
 
-1. Klikněte na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na stránce **Zásady** klikněte na **plány**.
+1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
 
 1. Vyberte **Přiřazené podrobné plány** ze stránky vlevo.
 

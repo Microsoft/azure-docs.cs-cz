@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání obrázků pomocí C# – rozhraní API Bingu pro vyhledávání obrázků'
+title: 'Rychlý start: Vyhledání imagí - API REST pro vyhledávání obrázků Bingu aC#'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a zobrazíte výsledek hledání z odpovědi JSON. Tato jednoduchá aplikace C# posílá dotaz HTTP pro vyhledání obrázku do rozhraní API a zobrazuje adresu URL prvního nalezeného obrázku.
+description: Používat tento rychlý start k odesílání žádostí o hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu C#a přijímat odpověďmi ve formátu JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 3819b476c5d3638f409b4195d6340920032d7b99
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67dd91d7555ebd1e72cea168fc8b841bf4ed9175
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307487"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249511"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>Rychlý start: Odesílání vyhledávacích dotazů pomocí rozhraní API Bingu pro vyhledávání obrázků a C#
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Rychlý start: Vyhledávání obrázků s využitím REST API pro vyhledávání Bingu obrázků aC#
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a zobrazíte výsledek hledání z odpovědi JSON. Tato jednoduchá aplikace C# posílá dotaz HTTP pro vyhledání obrázku do rozhraní API a zobrazuje adresu URL prvního nalezeného obrázku.
 

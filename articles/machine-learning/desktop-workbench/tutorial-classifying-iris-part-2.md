@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/15/2018
+ms.date: 03/15/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 2e4ede4a699eaac1e5f8c632901239fb04ebcd30
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997304"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276753"
 ---
-# <a name="tutorial-2-classify-iris---build-a-model"></a>Kurz 2: Klasifikace Iris – Sestavení modelu
+# <a name="tutorial-2-classify-iris---build-a-model"></a>Tutoriál 2: Klasifikace Iris – sestavení modelu
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -522,7 +522,7 @@ Tento skript můžete také spustit v clusteru HDInsight Spark. Seznamte se s [p
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V této druhé části třídílné série kurzů jste se naučili tyto postupy:
 > [!div class="checklist"]
 > * Otevírání skriptů a kontrola kódu v aplikaci Workbench

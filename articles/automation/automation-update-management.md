@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/04/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961616"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277501"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -145,7 +145,7 @@ Heartbeat
 
 Na počítači s Windows můžete zkontrolovat následující informace, chcete-li ověřit připojení agenta k Log Analytics:
 
-1. V Ovládacích panelech otevřete **agenta Microsoft Monitoring Agent**. Na **Azure Log Analytics** agenta na kartě se zobrazí následující zpráva: **agenta Microsoft Monitoring Agent se úspěšně připojila k Log Analytics**.
+1. V Ovládacích panelech otevřete **agenta Microsoft Monitoring Agent**. Na **Azure Log Analytics** agenta na kartě se zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojila k Log Analytics**.
 2. Otevřete protokol událostí Windows. Přejděte na **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ID události ze zdroje **konektoru služby**. Tyto události značí, že počítač je zaregistrovaná s pracovním prostorem Log Analytics a přijímá konfiguraci.
 
 Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit, zda je správně nakonfigurována brána firewall nebo proxy server, najdete v článku [konfiguraci sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
@@ -219,6 +219,21 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 | Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
 Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+### <a name="multi-tenant"></a>Nasazení aktualizací napříč tenanty
+
+Pokud máte počítače v jiném tenantovi Azure, vytváření sestav správy aktualizací, které potřebujete k opravě, budete muset použít následující alternativní řešení zobrazíte je naplánované. Můžete použít [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) rutiny s přepínačem `-ForUpdate` vytvoření plánu a použití [AzureRmAutomationSoftwareUpdateConfiguration nový](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) rutiny a předejte mu v druhém tenantovi pro počítače `-NonAzureComputer` parametru. Následující příklad ukazuje příklad o tom, jak to udělat:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
 
 ## <a name="view-missing-updates"></a>Zobrazit chybějící aktualizace
 
@@ -310,7 +325,7 @@ Doporučuje se použít adresy, které uvedete při definování výjimky. Pro I
 
 Kromě podrobností, které jsou k dispozici na webu Azure Portal můžete provést hledání v protokolech. Na stránce řešení vyberte **Log Analytics**. **Prohledávání protokolů** se otevře podokno.
 
-Můžete také zjistěte, jak přizpůsobit dotazy nebo je používat od různých klientů a víc návštěvou: [dokumentaci k rozhraní API hledání Log Analytics](
+Můžete se také dozvíte, jak upravit dotazy nebo je používat od různých klientů a víc návštěvou:  [Dokumentace ke službě hledání rozhraní API analýzy log](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Ukázkové dotazy

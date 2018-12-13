@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Připojení webové aplikace k účtu úl
 description: Ukázkový skript Azure CLI – Připojení webové aplikace k účtu úložiště
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5e1f2c11ffb177442947636ac48c342d0107354e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 917642fa7ee1941d1f4031606b64127ea7016aab
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960596"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190301"
 ---
-# <a name="connect-a-web-app-to-a-storage-account"></a>Připojení webové aplikace k účtu úložiště
+# <a name="connect-a-web-app-to-a-storage-account-using-cli"></a>Připojení webové aplikace do účtu úložiště pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří účet úložiště Azure a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojí účet úložiště s webovou aplikací.
 
@@ -53,7 +53,7 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, účtu úlož
 | [`az storage account show-connection-string`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | Získá připojovací řetězec pro účet úložiště. |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro webovou aplikaci Azure. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

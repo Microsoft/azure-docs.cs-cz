@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2f1035427815facf501c1349619a73e0f134eff
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e060a18f1117a9392f867f0bf42ddfa80f68048d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995596"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277484"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -87,16 +86,16 @@ Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následuj�
 > Budete muset použít řídicí znaky v dotazu, pokud obsahuje znaky, které může být interpretován jako JSON.  Například, pokud byl váš dotaz **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"**, by měl být zadaný v souboru řešení, které **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Výstrahy
-[Upozornění Azure Log](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol.  Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../../monitoring-and-diagnostics/monitoring-action-groups.md).  
+[Upozornění Azure Log](../../azure-monitor/platform/alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol.  Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../../azure-monitor/platform/action-groups.md).  
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal rozšířit do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal rozšířit do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Pravidla výstrah v rámci řešení pro správu se skládá z následujících tří různých prostředků.
 
 - **Uložené výsledky hledání.**  Definuje prohledávání protokolu, který se spouští.  Více pravidel upozornění můžete sdílet jeden uložené výsledky hledání.
 - **Plán.**  Definuje, jak často je spustit prohledávání protokolů.  Každé pravidlo výstrahy, má jeden a pouze jeden plán.
-- **Akce upozornění.**  Každé pravidlo výstrahy má jeden prostředek skupiny akcí nebo akce prostředek (starší verze) s typem **výstraha** , který definuje podrobnosti výstrahy, jako jsou kritéria pro vytvoření záznam o upozornění a závažnost výstrahy. [Skupina akcí](../../monitoring-and-diagnostics/monitoring-action-groups.md) prostředek může mít seznam nakonfigurovaných akcí má provést, když se aktivuje upozornění – například hlasový hovor, SMS, e-mailu, webhooku, nástroji ITSM, runbook služby automation, aplikace logiky, atd.
+- **Akce upozornění.**  Každé pravidlo výstrahy má jeden prostředek skupiny akcí nebo akce prostředek (starší verze) s typem **výstraha** , který definuje podrobnosti výstrahy, jako jsou kritéria pro vytvoření záznam o upozornění a závažnost výstrahy. [Skupina akcí](../../azure-monitor/platform/action-groups.md) prostředek může mít seznam nakonfigurovaných akcí má provést, když se aktivuje upozornění – například hlasový hovor, SMS, e-mailu, webhooku, nástroji ITSM, runbook služby automation, aplikace logiky, atd.
  
 Zdroj akce (starší verze) bude volitelně definovala odpověď e-mailu a sady runbook.
 - **Akce Webhooku (starší verze).**  Pokud pravidlo upozornění volá webhook, pak vyžaduje prostředek další akce s typem **Webhooku**.    
@@ -146,7 +145,7 @@ Plán může mít více akcí. Akce může definovat jeden nebo více procesy pr
 Akce lze definovat pomocí [skupiny akcí] prostředku nebo akce.
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 
 Existují dva typy akcí prostředek určený souborem **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, která definuje podrobnosti pravidlo upozornění a jaké akce se udělají, když se vytvoří výstraha. Akce prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -228,7 +227,7 @@ Tato část je nepovinná.  Zahrňte v této části, pokud chcete potlačit vý
 #### <a name="azure-action-group"></a>Skupiny akcí Azure
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 
 
-Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
@@ -242,7 +241,7 @@ Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu 
 Každý plán obsahuje jednu **výstrah** akce.  Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce.  Oznámení se odešle e-mail na jeden nebo více adres.  Nápravy spuštění sady runbook ve službě Azure Automation se pokusit k nápravě zjištěného problému.
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Tato část je nepovinná zahrnout, pokud chcete výstrahu odesílat poštu do jednoho nebo více příjemců.

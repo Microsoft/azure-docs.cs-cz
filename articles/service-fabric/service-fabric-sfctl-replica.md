@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 6c16cd95fce7d3f367f0ded73c3635d8cefea7a0
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 0000e5d8bfa7da6ebe1b6702649e56262c9d9cab
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493983"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277365"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Spravujte repliky, které patří do oddílů služby.
@@ -30,9 +30,9 @@ Spravujte repliky, které patří do oddílů služby.
 | --- | --- |
 | nasazení | Načte podrobnosti repliky, které jsou nasazené na uzlu Service Fabricu. |
 | nasazení seznamu | Získá seznam replikami nasazenými na uzlu Service Fabric. |
-| stav | Získá stav repliky stavové služby Service Fabric nebo instance bezstavové služby. |
+| zdravotnictví | Získá stav repliky stavové služby Service Fabric nebo instance bezstavové služby. |
 | informace | Získá informace o repliky oddílu Service Fabric. |
-| Seznam | Získá informace o replikách oddílu služby Service Fabric. |
+| list | Získá informace o replikách oddílu služby Service Fabric. |
 | odebrat | Odstraní repliku služby běží na uzlu. |
 | Stav sestavy | Odešle zprávu o stavu v replice Service Fabric. |
 | restart | Restartuje službu repliky trvalé služby spuštěné na uzlu. |
@@ -184,7 +184,7 @@ Toto rozhraní API simuluje selhání Service Fabric repliky odstranit repliku z
 ## <a name="sfctl-replica-report-health"></a>Stav sestavy repliky sfctl
 Odešle zprávu o stavu v replice Service Fabric.
 
-Sestavy stavu zadaná replika Service Fabric. Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric gateway repliky, který se předává k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zobrazit, zda byla použita sestava v health store, zkontrolujte, že sestava se zobrazí v části události.
+Sestavy stavu zadaná replika Service Fabric. Sestava může obsahovat informace o zdroji sestava stavu a na kterém je uvedena vlastnost. Sestava je odeslána do Service Fabric gateway repliky, který se předává k úložišti stavů. Sestava může být přijal brány, ale odmítnuté úložiště stavu po další ověření. Úložiště stavu může třeba odmítnout sestavy z důvodu neplatného parametru, jako jsou zastaralé pořadové číslo. Pokud chcete zobrazit, zda byla použita sestava v health store, spustit získat stav repliky a zkontrolujte, že sestava se zobrazí v části HealthEvents.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -194,14 +194,14 @@ Sestavy stavu zadaná replika Service Fabric. Sestava může obsahovat informace
 | – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
 | – id oddílu [povinné] | Identita oddílu. |
 | – id repliky [povinné] | Identita oddílu. |
-| – id zdroje [povinné] | Název zdroje, které identifikuje součásti klienta/sledovacího zařízení/systému, který se vygenerovat informace o stavu. |
+| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
 | – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak označující, zda mají být okamžitě odesílány sestavy. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
+| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --druh služby | Druh služby repliky (Bezstavová nebo stavová) pro které se hlásí stav. Možné hodnoty jsou následující\: "Bezstavové", "Stavová".  Výchozí\: Stateful. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole je použít formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

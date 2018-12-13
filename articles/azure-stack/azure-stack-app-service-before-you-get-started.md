@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: 4f669d44582c47cc6c7c090627f957288fee0f1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615870"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275665"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -152,6 +152,12 @@ Certifikát identity musí obsahovat subjektem, který odpovídá formátu.
 | Formát | Příklad: |
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
+
+
+### <a name="validate-certificates"></a>Ověřování certifikátů
+Před nasazením poskytovatele prostředků app service, měli byste [ověřit certifikáty, které se použije](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) s použitím nástroje prerequisite Checker připravenosti Azure Stack k dispozici [Galerie prostředí PowerShell](https://aka.ms/AzsReadinessChecker). Nástroj Azure Stack připravenosti kontrola ověří, že generované certifikáty PKI jsou vhodné pro nasazení služby app. 
+
+Jako osvědčený postup, při práci s některým z nezbytné [certifikáty Azure Stack PKI](azure-stack-pki-certs.md), měli byste naplánovat ponechat dostatek času k testování a v případě potřeby znovu vystavit certifikáty. 
 
 ## <a name="virtual-network"></a>Virtuální síť
 

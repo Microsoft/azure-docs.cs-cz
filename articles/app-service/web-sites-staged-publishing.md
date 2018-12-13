@@ -1,5 +1,5 @@
 ---
-title: Nastavení přípravných prostředí pro web apps ve službě Azure App Service | Dokumentace Microsoftu
+title: Nastavení přípravných prostředí pro web apps – Azure App Service | Dokumentace Microsoftu
 description: Naučte se používat fázované publikování webových aplikací ve službě Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 17bc8fe2e5ccd9888777e11f3ca98e6afefb56b7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970854"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277382"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -124,8 +125,8 @@ Při použití **prohození s náhledem** možnost (viz [prohození slotů nasaz
 - Udržuje kapacita cílového slotu beze změny, neovlivní existující úlohy na této pozici (například produkčního).
 - Použije konfigurační prvky kapacita cílového slotu na zdrojový slot, včetně specifické pro slot připojovací řetězce a nastavení aplikace.
 - Restartování pracovních procesů na zdrojový slot pomocí těchto výše uvedené konfigurační prvky.
-- Po dokončení prohození: přesune do kapacita cílového slotu předprodukční warmed nahoru zdrojový slot. Cílový slot se přesune na zdrojový slot jako ruční prohození.
-- Když zrušíte prohození: znovu použije konfigurace prvky zdrojový slot na zdrojový slot.
+- Po dokončení prohození: Přesune do kapacita cílového slotu předprodukční warmed nahoru zdrojový slot. Cílový slot se přesune na zdrojový slot jako ruční prohození.
+- Když zrušíte prohození: Znovu použije konfigurace prvky zdrojový slot na zdrojový slot.
 
 Ve verzi preview přesně, jak se aplikace chovat se kapacita cílového slotu konfigurací. Po dokončení ověření dokončit velikost odkládacího souboru v samostatný krok. Tento krok má další výhodu v tom, které zdrojový slot je už provozní teplotu s požadovanou konfigurací a není klientů docházet k žádné výpadky.  
 

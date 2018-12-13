@@ -4,598 +4,135 @@ description: Jak exportovat data z aplikace Azure IoT Central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/18/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 3231a956648b80d88059b7b0fc8f790e0e58be99
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: cba0bad2e81ffddedfc4ca04e82e17e4286b389b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962788"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312115"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 
 *Toto téma se vztahuje na správce.*
 
-Tento článek popisuje, jak používat souvislá datová funkce exportu v Azure IoT Central pravidelně export dat do účtu úložiště objektů Blob v Azure. Můžete to taky **měření**, **zařízení**, a **šablon** do souborů pomocí [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátu. Exportovaná data je možné pro studené cesty analytics jako trénování modelů ve službě Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
+Tento článek popisuje způsob použití souvislá datová funkce exportu v Azure IoT Central exportování dat na své vlastní **Azure Blob Storage**, **Azure Event Hubs**, a **Azure Service Bus** instancí. Můžete to taky **měření**, **zařízení**, a **šablon** do vlastní cíle pro cestu teplé a studené cesty analytics. Můžete exportovat data do úložiště objektů Blob a spustit dlouhodobé analýzy trendů v Microsoft Power BI nebo exportovat data do služby Event Hubs a služby Service Bus, transformovat a rozšířit vaše data v téměř v reálném čase pomocí Azure Logic Apps nebo Azure Functions.
 
 > [!Note]
 > Když zapnete nepřetržitý export dat, získáte jenom data dále v tomto okamžiku. V současné době nelze načíst data po dobu, kdy byla nepřetržitý export dat vypnout. Pokud chcete zachovat dalších historických dat, zapněte nepřetržitý export dat již v rané fázi.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Aplikace s průběžnými platbami.
-- Správce ve vaší aplikaci IoT Central, který obsahuje:
-    - účet Azure v rámci předplatného Azure IoT Central aplikace je v
-    - oprávnění k vytvoření úložiště účet nebo získat přístup k existující účet úložiště v rámci tohoto předplatného Azure
+- Musíte být správcem ve vaší aplikaci IoT Central
 
-## <a name="types-of-data-to-export"></a>Datové typy k exportu
+## <a name="export-to-blob-storage"></a>Exportovat do úložiště objektů Blob
 
-### <a name="measurements"></a>Měření
+Měření, zařízení a zařízení šablony data se vyexportují do vašeho účtu úložiště jednou za minutu, se každý soubor, který obsahuje batch změny od poslední exportovaný soubor. Exportovaná data se v [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátu.
 
-Měření, která zařízení odesílají, jsou exportovány do vašeho účtu úložiště jednou za minutu. Data obsahují všechny nové zprávy přijaté službou IoT Central ze všech zařízení během této doby. Exportované soubory AVRO používají stejný formát jako soubory zpráv exportované sadou [směrování zpráv služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů Blob.
+Další informace o [export do úložiště objektů Blob](howto-export-data-blob-storage.md).
 
-> [!NOTE]
-> Zařízení, které odesílají měření jsou reprezentovány v ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Porovnat všechny záznamy zpráv pomocí **connectionDeviceId** , který odpovídá **deviceId** záznamu zařízení.
+## <a name="export-to-event-hubs-and-service-bus"></a>Export do služby Event Hubs a služby Service Bus
 
-Následující příklad ukazuje záznam v dekódovaný soubor AVRO:
+Měření, zařízení a zařízení šablony data se exportují do centra událostí nebo fronty Service Bus nebo téma. Exportované měření dat přijde téměř v reálném čase a obsahuje celé zprávy zařízení odesílat IoT Central, ne jenom hodnoty měření sami. Exportovaná zařízení data dorazí v dávkách každou minutu a obsahuje změny vlastnosti a nastavení všech zařízení a zařízení exportované šablony obsahuje změny pro všechny šablony zařízení.
 
-```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
-}
-```
 
-### <a name="devices"></a>Zařízení
+Další informace o [export do služby Event Hubs a služby Service Bus](howto-export-data-event-hubs-service-bus.md).
 
-Pokud je první nepřetržitý export dat zapnuté, se exportují jednoho snímku se všemi zařízeními. Každé zařízení zahrnuje:
-- `id` zařízení v IoT Central
-- `name` zařízení
-- `deviceId` z [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
-- Informace o šabloně zařízení
-- Hodnoty vlastností
-- Nastavení hodnot
+## <a name="set-up-export-destination"></a>Nastavit cíl exportu
 
-Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
+Pokud nemáte existující sběrnice úložiště/událostí služby/Hubs exportovat do aplikace, postupujte podle těchto kroků:
 
-- Od poslední snímek přidána nová zařízení.
-- Zařízení s změněných vlastností a nastavení hodnoty od poslední snímek.
+### <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-> [!NOTE]
-> Zařízení odstranit, protože poslední snímek se nebudou exportovat. V současné době snímky nemají ukazatele pro odstraněné zařízení.
->
-> Šablonu zařízení, každé zařízení patří, je reprezentována ID zařízení šablony. Název šablony zařízení získáte exportujte šablonu snímky zařízení.
+1. Vytvoření [nový účet úložiště na webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Další informace v [dokumentace služby Azure Storage](https://aka.ms/blobdocscreatestorageaccount).
+2. Pro typ účtu, vyberte **Obecné** nebo **úložiště objektů Blob**.
+3. Zvolte předplatné. 
 
-Záznam v dekódovaný soubor AVRO může vypadat:
+    > [!Note] 
+    > Teď můžete exportovat data do jiných předplatných, které jsou **není stejný** jako pro aplikace s průběžnými platbami IoT Central. Připojíte se v tomto případě pomocí připojovacího řetězce.
 
-```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
-    },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
-    }
-}
-```
+4. Vytvoření kontejneru v účtu úložiště. Přejděte do účtu úložiště. V části **služby Blob Service**vyberte **procházet objekty BLOB**. Vyberte **+ kontejner** v horní části stránky vytvořte nový kontejner.
 
-### <a name="device-templates"></a>Šablony zařízení
+### <a name="create-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Pokud nepřetržitý export dat zapnutý, je exportován jeden snímek pomocí všech zařízení šablon. Každá šablona zařízení obsahuje:
-- `id` šablony zařízení
-- `name` šablony zařízení
-- `version` šablony zařízení
-- Měření datových typů a minimální/maximální hodnoty.
-- Vlastnost datové typy a výchozí hodnoty.
-- Nastavení datových typů a výchozí hodnoty.
+1. Vytvoření [nový obor názvů služby Event Hubs na portálu Azure portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Další informace v [dokumentace služby Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+2. Zvolte předplatné. 
 
-Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
+    > [!Note] 
+    > Teď můžete exportovat data do jiných předplatných, které jsou **není stejný** jako pro aplikace s průběžnými platbami IoT Central. Připojíte se v tomto případě pomocí připojovacího řetězce.
+3. Vytvoření centra událostí ve vašem oboru názvů služby Event Hubs. Přejděte do svého oboru názvů a vyberte **+ Centrum událostí** v horní části stránky pro vytvoření instance centra událostí.
 
-- Nové šablony zařízení přidat, protože poslední snímek.
-- Zařízení šablony s změněné měření, vlastností a nastavení definice od poslední snímek.
+### <a name="create-service-bus-namespace"></a>Vytvoření oboru názvů služby Service Bus
 
-> [!NOTE]
-> Šablony zařízení odstranit, protože poslední snímek se neexportují. V současné době snímky nemají ukazatele pro šablony odstraněné zařízení.
+1. Vytvoření [nový obor názvů služby Service Bus na webu Azure Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . Další informace v [dokumentace služby Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
+2. Zvolte předplatné. 
 
-Záznam v dekódovaný soubor AVRO může vypadat například takto:
+    > [!Note] 
+    > Teď můžete exportovat data do jiných předplatných, které jsou **není stejný** jako pro aplikace s průběžnými platbami IoT Central. Připojíte se v tomto případě pomocí připojovacího řetězce.
 
-```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
-    },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
-    }
-}
-```
+3. Přejděte do svého oboru názvů služby Service Bus a vyberte **+ fronta** nebo **+ téma** v horní části stránky k vytvoření fronty nebo tématu exportovat do.
 
 ## <a name="set-up-continuous-data-export"></a>Nastavit nepřetržitý export dat
 
-1. Pokud nemáte účet úložiště Azure [vytvořit nový účet úložiště](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) na webu Azure Portal. Vytvoření účtu úložiště **v předplatném Azure, který má aplikace IoT Central**.
-    - Pro typ účtu, vyberte **Obecné** nebo **úložiště objektů Blob**.
-    - Vyberte předplatné, které má vaše aplikace IoT Central. Pokud nevidíte předplatné, můžete potřebovat k přihlášení různých Azure účtu nebo abychom si vyžádali přístup k předplatnému.
-    - Zvolte existující skupinu prostředků nebo vytvořte novou. Další informace o [tom, jak vytvořit nový účet úložiště](https://aka.ms/blobdocscreatestorageaccount).
+Teď, když máte exportovat data do cílového úložiště/Event Hubs a služby Service Bus, nastavit nepřetržitý export dat pomocí těchto kroků. 
 
-2. Vytvoření kontejneru v účtu úložiště pro export dat IoT Central. Přejděte do účtu úložiště. V části **služby Blob Service**vyberte **procházet objekty BLOB**. Vyberte **kontejneru** vytvořit nový kontejner.
+1. Přihlaste se do vaší aplikace IoT Central.
 
-   ![Vytvoření kontejneru](media/howto-export-data/createcontainer.png)
+2. V nabídce vlevo klikněte na tlačítko **průběžný Export dat**.
 
-3. Přihlaste se do vaší aplikace IoT Central pomocí stejného účtu Azure.
+    > [!Note]
+    > Pokud nevidíte průběžný Export dat v nabídce vlevo, nejste správcem ve vaší aplikaci. Obraťte se na správce nastavit export dat.
 
-4. V části **správu**vyberte **Export dat**.
+    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_menu.PNG)
 
-5. V **účtu úložiště** rozevíracího seznamu vyberte svůj účet úložiště. V **kontejneru** rozevíracího seznamu vyberte kontejner. V části **Data pro export**, určete každý typ hledaných dat exportovat na základě nastavení typu na **na**.
+3. Klikněte na tlačítko **+ nová** tlačítko v pravém horním rohu. Vyberte jednu z **Azure Blob Storage**, **Azure Event Hubs**, nebo **Azure Service Bus** jako cíl pro export. 
 
-6. Nepřetržitý export dat zapnout, nastavte **export dat** k **na**. Vyberte **Uložit**.
+    > [!NOTE] 
+    > Maximální počet exportů na aplikaci je pět. 
 
-  ![Nepřetržitý export dat konfigurace](media/howto-export-data/continuousdataexport.PNG)
+    ![Vytvořit nový nepřetržitý export dat](media/howto-export-data/export_new.PNG)
 
-7. Po několika minutách se zobrazí vaše data ve vašem účtu úložiště. Přejděte do účtu úložiště. Vyberte **procházet objekty BLOB** > vašeho kontejneru. Uvidíte tři složky pro data exportu. Výchozí cesty k souborů AVRO s export dat jsou:
-    - Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Zařízení: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-    - Zařízení šablony: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+4. V rozevíracím seznamu vyberte vaše **úložiště účtu nebo Event Hubs oboru názvů nebo obor názvů sběrnice**. V seznamu, který je můžete také vybrat jako poslední možnost **zadejte připojovací řetězec**. 
 
-## <a name="read-exported-avro-files"></a>Čtení exportovaných souborů AVRO
+    > [!NOTE] 
+    > Zobrazí se pouze obory názvů úložiště účtů nebo Event Hubs obory názvů nebo služby Service Bus v **stejném předplatném jako aplikace IoT Central**. Pokud chcete exportovat do umístění mimo toto předplatné, zvolte **zadejte připojovací řetězec** a přejděte ke kroku 5.
 
-AVRO je binární formát, takže nelze číst soubory v jejich nezpracovaná stavu. Soubory můžete dekódovat do formátu JSON. Následující příklady ukazují, jak analyzovat měření, zařízení a zařízení šablony souborů AVRO. V příkladech odpovídají příklady je popsáno v předchozí části.
+    > [!NOTE] 
+    > 7 dnů, zkušební verze aplikace, jediný způsob, jak nakonfigurovat průběžné data exportovat je do připojovacího řetězce. Je to proto 7denní zkušební verze aplikace nemusí k přidruženému předplatnému Azure.
 
-### <a name="read-avro-files-by-using-python"></a>Čtení souborů AVRO s použitím jazyka Python
+    ![Vytvořit nový cde centra událostí](media/howto-export-data/export_create.PNG)
 
-#### <a name="install-pandas-and-the-pandavro-package"></a>Nainstalujte balíček pandavro a pandas
+5. (Volitelné) Pokud jste zvolili **zadejte připojovací řetězec**, můžete vložit připojovací řetězec se zobrazí nové pole. Chcete-li získat připojovací řetězec pro váš:
+    - Účet úložiště, přejděte na účet úložiště na webu Azure Portal.
+        - V části **nastavení**, klikněte na tlačítko **přístupové klíče**
+        - Zkopírujte připojovací řetězec key1 a key2 připojovací řetězec
+    - Event Hubs nebo Azure Service Bus, přejděte do oboru názvů na webu Azure Portal.
+        - V části **nastavení**, klikněte na tlačítko **sdílené zásady přístupu**
+        - Zvolte výchozí **RootManageSharedAccessKey** nebo vytvořte novou
+        - Zkopírujte primární nebo sekundární připojovací řetězec
+ 
+6. Z rozevíracího seznamu vyberte kontejner/událostí centra nebo fronty nebo tématu.
 
-```python
-pip install pandas
-pip install pandavro
-```
+7. V části **Data pro export**, určete každý typ hledaných dat exportovat na základě nastavení typu na **na**.
 
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor AVRO měření
+6. Nepřetržitý export dat zapnout, ujistěte se, že **export dat** je **na**. Vyberte **Uložit**.
 
-```python
-import json
-import pandavro as pdx
-import pandas as pd
+  ![Nepřetržitý export dat konfigurace](media/howto-export-data/export_list.PNG)
 
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    measurements = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The SystemProperties column contains a dictionary
-    # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(lambda x: x["connectionDeviceId"])
-
-    # The Body column is a series of UTF-8 bytes that is stringified
-    # and parsed as JSON. This example pulls the humidity property
-    # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
-
-    # Finally, print the new DataFrame with our device IDs and humidities.
-    print(transformed)
-
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Analyzovat soubor AVRO zařízení
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    devices = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The device ID is available in the id column.
-    transformed["device_id"] = devices["deviceId"]
-
-    # The template ID and version are present in a dictionary under
-    # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(lambda x: x["version"])
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor AVRO šablon zařízení
-
-```python
-import json
-import pandavro as pdx
-import pandas as pd
-
-def parse(filePath):
-    # Pandavro loads the AVRO file into a pandas DataFrame
-    # where each record is a single row.
-    templates = pdx.from_avro(filePath)
-
-    # This example creates a new DataFrame and loads a series
-    # for each column that's mapped into a column in our new DataFrame.
-    transformed = pd.DataFrame()
-
-    # The template and version are available in the id and version columns.
-    transformed["template_id"] = templates["id"]
-    transformed["template_version"] = templates["version"]
-
-    # The fanSpeed setting value is located in a nested dictionary
-    # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(lambda x: x["device"]["fanSpeed"])
-
-    # Finally, print the new DataFrame with our device and template
-    # information, along with the value of the fan speed.
-    print(transformed)
-```
-
-### <a name="read-avro-files-by-using-c"></a>Čtení AVRO soubory pomocí jazyka C#
-
-#### <a name="install-the-microsofthadoopavro-package"></a>Nainstalovat balíček Microsoft.Hadoop.Avro
-
-```csharp
-Install-Package Microsoft.Hadoop.Avro -Version 1.5.6
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor AVRO měření
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-using Newtonsoft.Json;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    var systemProperties = record.GetField<IDictionary<string, object>>("SystemProperties");
-                    var deviceId = systemProperties["connectionDeviceId"] as string;
-                    Console.WriteLine("Device ID: {0}", deviceId);
-
-                    using (var stream = new MemoryStream(record.GetField<byte[]>("Body")))
-                    {
-                        using (var streamReader = new StreamReader(stream, Encoding.UTF8))
-                        {
-                            var body = JsonSerializer.Create().Deserialize(streamReader, typeof(IDictionary<string, dynamic>)) as IDictionary<string, dynamic>;
-                            var humidity = body["humidity"];
-                            Console.WriteLine("Humidity: {0}", humidity);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Analyzovat soubor AVRO zařízení
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("deviceId");
-
-                    // The device template information is stored in a sub-record
-                    // under the deviceTemplate field.
-                    var deviceTemplateRecord = record.GetField<AvroRecord>("deviceTemplate");
-                    var templateId = deviceTemplateRecord.GetField<string>("id");
-                    var templateVersion = deviceTemplateRecord.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
-                        deviceId,
-                        templateId,
-                        templateVersion,
-                        fanSpeed
-                    );
-                }
-            }
-        }
-    }
-}
-
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor AVRO šablon zařízení
-
-```csharp
-using Microsoft.Hadoop.Avro;
-using Microsoft.Hadoop.Avro.Container;
-
-public static async Task Run(string filePath)
-{
-    using (var fileStream = File.OpenRead(filePath))
-    {
-        using (var reader = AvroContainer.CreateGenericReader(fileStream))
-        {
-            // For one AVRO container, where a container can contain multiple blocks,
-            // loop through each block in the container.
-            while (reader.MoveNext())
-            {
-                // Loop through the AVRO records in the block and extract the fields.
-                foreach (AvroRecord record in reader.Current.Objects)
-                {
-                    // Get the field value directly. You can also yield return
-                    // records and make the function IEnumerable<AvroRecord>.
-                    var id = record.GetField<string>("id");
-                    var version = record.GetField<string>("version");
-
-                    // The settings and properties are nested two levels deep.
-                    // The first level indicates settings or properties.
-                    // The second level indicates the type of setting or property.
-                    var settingsRecord = record.GetField<AvroRecord>("settings");
-                    var deviceSettingsRecord = settingsRecord.GetField<IDictionary<string, dynamic>>("device");
-                    var fanSpeed = deviceSettingsRecord["fanSpeed"];
-                    
-                    Console.WriteLine(
-                        "ID: {1}, Version: {2}, Fan Speed: {3}",
-                        id,
-                        version,
-                        fanSpeed
-                    );
-                }
-            }
-        }
-    }
-}
-```
-
-### <a name="read-avro-files-by-using-javascript"></a>Čtení souborů AVRO pomocí jazyka Javascript
-
-#### <a name="install-the-avsc-package"></a>Nainstalovat balíček avsc
-
-```javascript
-npm install avsc
-```
-
-#### <a name="parse-a-measurements-avro-file"></a>Analyzovat soubor AVRO měření
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device ID and humidity from each record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the system properties.
-        const deviceId = record.SystemProperties.connectionDeviceId;
-
-        // Convert the body from a buffer to a string and parse it.
-        const body = JSON.parse(record.Body.toString());
-
-        // Get the humidty property from the body.
-        const humidity = body.humidity;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`Device ID: ${deviceId}`);
-        console.log(`Humidity: ${humidity}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-devices-avro-file"></a>Analyzovat soubor AVRO zařízení
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the device ID from the deviceId property.
-        const deviceId = record.deviceId;
-
-        // Fetch the template ID and version from the deviceTemplate property.
-        const deviceTemplateId = record.deviceTemplate.id;
-        const deviceTemplateVersion = record.deviceTemplate.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device ID and humidity.
-        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
-
-#### <a name="parse-a-device-templates-avro-file"></a>Parsovat soubor AVRO šablon zařízení
-
-```javascript
-const avro = require('avsc');
-
-// Read the AVRO file. Parse the device and template identification
-// information and the fanSpeed setting for each device record.
-async function parse(filePath) {
-    const records = await load(filePath);
-    for (const record of records) {
-        // Fetch the template ID and version from the id and verison properties.
-        const templateId = record.id;
-        const templateVersion = record.version;
-
-        // Get the fanSpeed from the nested device settings property.
-        const fanSpeed = record.settings.device.fanSpeed;
-
-        // Log the retrieved device id and humidity.
-        console.log(`Template ID: ${templateId}, Template Version: ${templateVersion}, Fan Speed: ${fanSpeed}`);
-    }
-}
-
-function load(filePath) {
-    return new Promise((resolve, reject) => {
-        // The file decoder emits each record as a data event on a stream.
-        // Collect the records into an array and return them at the end.
-        const records = [];
-        avro.createFileDecoder(filePath)
-            .on('data', record => { records.push(record); })
-            .on('end', () => resolve(records))
-            .on('error', reject);
-    });
-}
-```
+7. Po několika minutách by se vaše data zobrazí v zvolený cíl.
 
 ## <a name="next-steps"></a>Další postup
 
 Teď, když víte, jak exportovat data, pokračujte k dalšímu kroku:
+
+> [!div class="nextstepaction"]
+> [Export dat do úložiště objektů Blob v Azure](howto-export-data-blob-storage.md)
+
+> [!div class="nextstepaction"]
+> [Export dat do služby Azure Event Hubs a Azure Service Bus](howto-export-data-event-hubs-service-bus.md)
 
 > [!div class="nextstepaction"]
 > [Tom, jak vizualizace dat v Power BI](howto-connect-powerbi.md)

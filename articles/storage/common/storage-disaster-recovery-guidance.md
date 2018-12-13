@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 39a938d45c8f15c21b44bb5b04b1429fb4733b5a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033919"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323264"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co dělat v případě výpadku služby Azure Storage
 V Microsoftu usilovně pracujeme na Ujistěte se, že naše služby byly vždycky dostupné. V některých případech vynutí nad rámec naší dopad ovládací prvek nám takovým způsobem, který způsobit neplánované výpadky v jedné nebo několika oblastech. Při zpracování těchto výjimečných výskytů, nabízíme následující obecné pokyny pro služby Azure Storage.
@@ -43,7 +43,7 @@ Pokud jste zvolili [geograficky redundantní úložiště jen pro čtení (RA-GR
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Co očekávat, pokud dojde k selhání úložiště
 Pokud jste zvolili [geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md) nebo [geograficky redundantní úložiště jen pro čtení (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (doporučeno), Azure Storage se zachovat data trvalý ve dvou oblastech (primární i sekundární). V obou oblastech služby Azure Storage uchovává neustále víc replik vašich dat.
 
-Když regionálního ovlivní primární oblast, jsme se nejdřív pokusí použít k obnovení služby v dané oblasti, která poskytuje optimální kombinaci RTO a RPO. Závislé na povaze po havárii a jeho dopady, v některých výjimečných případech jsme nemusí být schopni obnovit primární oblast. V tomto okamžiku provedeme geo-převzetí služeb při selhání. Replikace dat mezi oblastmi je asynchronní proces, který zahrnuje zpoždění, takže je možné, že změny, které nebyly dosud replikují do sekundární oblasti mohou být ztraceny.
+Když regionálního ovlivní primární oblast, jsme se nejdřív pokusí použít k obnovení služby v této oblasti k zajišťoval co nejlepší RTO a RPO. Závislé na povaze po havárii a jeho dopady, v některých výjimečných případech jsme nemusí být schopni obnovit primární oblast. V tomto okamžiku provedeme geo-převzetí služeb při selhání. Replikace dat mezi oblastmi je asynchronní proces, který zahrnuje zpoždění, takže je možné, že změny, které nebyly dosud replikují do sekundární oblasti mohou být ztraceny.
 
 Několik bodů týkající se možnosti úložiště geo-převzetí služeb při selhání:
 

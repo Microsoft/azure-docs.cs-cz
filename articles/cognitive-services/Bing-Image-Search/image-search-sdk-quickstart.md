@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Hledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu pro C#'
+title: 'Rychlý start: Hledání obrázků - SDK vyhledávání Bingu Image proC#'
 description: Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 4058527263e95a75ed3d5d15cd12972170aa28fd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 2d81c7b22e5d7cae0beb8a549d4e44f3a1ebc132
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096906"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261241"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-c"></a>Rychlý start: Hledání obrázků pomocí sady SDK Vyhledávání obrázků Bingu a C#
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-c"></a>Rychlý start: Pro Image s SDK vyhledávání obrázků Bingu pro vyhledáváníC#
 
 Pomocí tohoto rychlého startu můžete vytvořit své první vyhledávání obrázků pomocí sady SDK Vyhledávání obrázků Bingu, což je obálka pro rozhraní API a obsahuje stejné funkce. Tato jednoduchá aplikace C# posílá dotaz pro vyhledání obrázku, parsuje odpověď JSON a zobrazuje adresu URL prvního nalezeného obrázku.
 

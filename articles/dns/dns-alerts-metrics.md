@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: de29c24556522abeaff8d942edc027c7444c3ed3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbdacd6947c897d3b137b427c3e4c316869fa401
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965009"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193191"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metrik a výstrah
 Azure DNS je hostitelská služba určená pro domény DNS, která nabízí řešení názvů pomocí infrastruktury Microsoft Azure. Tento článek popisuje metrik a výstrah pro službu Azure DNS.
@@ -51,7 +51,7 @@ Velmi podrobné úrovni dimenze pro tyto metriky se zóna DNS.
 
 ![Počet sady záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
-*Obrázek: Metriky Azure DNS záznam nastavit počet*
+*Obrázek: Metriky Azure nastavit počet záznamů DNS*
 
 
 ### <a name="record-set-capacity-utilization"></a>Sada záznamů využití kapacity
@@ -59,10 +59,10 @@ Velmi podrobné úrovni dimenze pro tyto metriky se zóna DNS.
 
 ![Počet sady záznamů](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
-*Obrázek: Metriky Azure DNS záznam nastavit využití kapacity*
+*Obrázek: Metriky využití kapacity nastavte záznam DNS Azure*
 
 ## <a name="alerts-in-azure-dns"></a>Upozornění v Azure DNS
-Azure Monitor poskytuje možnost oznámení proti dostupné hodnoty metrik. Metriky DNS jsou k dispozici v nové prostředí konfigurace výstrah. Jak je popsáno v části [upozornění služby Azure Monitor dokumentaci](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), vyberte zónu DNS jako prostředek, zvolte typ metriky signálu a nakonfigurovat logika upozornění a další parametry, jako jsou například **období**a **frekvence**. Dále můžete definovat [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md) pro při výstrahy, je splněna podmínka, zajišťovaný výstraha bude doručena prostřednictvím vybrané akce. Další informace o konfiguraci výstrah pro monitorování Azure metrik najdete v části [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
+Azure Monitor poskytuje možnost oznámení proti dostupné hodnoty metrik. Metriky DNS jsou k dispozici v nové prostředí konfigurace výstrah. Jak je popsáno v části [upozornění služby Azure Monitor dokumentaci](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), vyberte zónu DNS jako prostředek, zvolte typ metriky signálu a nakonfigurovat logika upozornění a další parametry, jako jsou například **období**a **frekvence**. Dále můžete definovat [skupiny akcí](../azure-monitor/platform/action-groups.md) pro při výstrahy, je splněna podmínka, zajišťovaný výstraha bude doručena prostřednictvím vybrané akce. Další informace o konfiguraci výstrah pro monitorování Azure metrik najdete v části [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [Azure DNS](dns-overview.md).

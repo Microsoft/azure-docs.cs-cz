@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 87aa1c30bb567c6820e2d9ecacfc3f8cd2338339
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a1bb841c1218be0a418583af8ca95b2dff2f67d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137765"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309497"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 
@@ -43,7 +43,7 @@ Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Spo
 * kopírování dat z účtu služby Azure Blob Storage do služby Azure SQL Database.
 
 > [!NOTE]
-> Postup je znázorněno zde byly upraveny z podrobnější kurzu poskytované týmem ADF: [kopírování dat z místní databáze systému SQL Server do Azure Blob storage](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou k dispozici při je to vhodné.
+> Zde uvedených kroků byly upraveny z podrobnější kurzu poskytované týmem ADF: [Kopírování dat z místní databáze systému SQL Server do Azure Blob storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou k dispozici v případě potřeby.
 >
 >
 
@@ -71,7 +71,7 @@ Pokyny pro vytvoření nové datové továrny Azure a skupiny prostředků [webu
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace modulu Runtime integrace pro Azure Data Factory 
 Prostředí Integration Runtime je infrastruktura integrace spravovaných dat zákazníka službou Azure Data Factory používá k poskytování možnosti integrace dat napříč různými síťovými prostředími. Tento modul runtime byl dříve se označovaly jako "Brána správy dat". 
 
-Chcete-li nastavit, [postupujte podle instrutions pro vytvoření kanálu](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Chcete-li nastavit, [postupujte podle instrutions pro vytvoření kanálu](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Vytvoření propojené služby pro připojení k datovým prostředkům
 Propojená služba definuje informace potřebné pro připojení ke zdroji dat služby Azure Data Factory. Máme tři prostředky v tomto scénáři, které jsou v případě propojené služby:

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Python a PostgreSQL v Azure App Service | Microsoft Docs
+title: Vytvoření webové aplikace v Pythonu s PostgreSQL v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
@@ -11,13 +11,13 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
-ms.custom: mvc
-ms.openlocfilehash: 3963e2ffb521a4b4732814e9b2992f4e83af1835
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: dda5a0cda284effdb795d4fb1960ac5fb94799cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865620"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276379"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Vytvoření webové aplikace Python a PostgreSQL v Azure App Service
 

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093178"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134994"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
 Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 
@@ -96,7 +96,7 @@ Změnit některé postupy na různých záměr přiřazení, vyberte zaškrtáva
 
 2. **Odstranit vzory** se zobrazí dialogové okno potvrzení. Vyberte **Ok** na dokončení odstranění.
 
-    ![Snímek obrazovky s odstraněním několik vzory](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Snímek obrazovky s odstraněním několik pole pro potvrzení vzory](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>Vzor seznam můžete filtrovat podle entity
 
@@ -117,7 +117,7 @@ Po použití filtru záměru název se zobrazí pod panelu nástrojů.
 ## <a name="remove-entity-or-intent-filter"></a>Odebrat entitu nebo záměru filtru
 Pokud vzor seznam je filtrovaný, entity nebo záměru název se zobrazí pod panelem nástrojů. Chcete-li odebrat filtr, vyberte název.
 
-![Snímek obrazovky filtrované vzory entity](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Snímek obrazovky z entity odebrat filtr](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 Bude filtr odebrán a zobrazit všechny vzorky. 
 

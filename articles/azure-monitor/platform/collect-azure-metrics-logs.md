@@ -10,17 +10,15 @@ ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 33ceece70c920bcb8bfd49fcfc8ff544af592b6b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 49f515c4321b13652d64c2e6f5b8e44ed6a29bca
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088200"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188091"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -73,7 +71,7 @@ Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overvie
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik do Log Analytics přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Ale při exportu přes nastavení diagnostiky, které metrika je vyjádřena jako všechny příchozí zprávy ve všech zařadí do fronty událostí centra.
+> *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Ale při exportu přes nastavení diagnostiky, které metrika je vyjádřena jako všechny příchozí zprávy ve všech zařadí do fronty událostí centra.
 >
 >
 

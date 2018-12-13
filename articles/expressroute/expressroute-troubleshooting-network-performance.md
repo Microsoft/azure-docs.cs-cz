@@ -1,73 +1,67 @@
 ---
-title: Řešení potíží s výkonem virtuální síť Azure | Microsoft Docs
-description: Tato stránka obsahuje standardizované metody testování výkonu odkaz síť Azure.
+title: 'Řešení potíží s výkonem virtuální sítě: Azure | Dokumentace Microsoftu'
+description: Tato stránka poskytuje standardizované způsob testování výkonu propojení sítí Azure.
 services: expressroute
-documentationcenter: na
 author: tracsman
-manager: rossort
-editor: ''
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 12/20/2017
 ms.author: jonor
-ms.openlocfilehash: 56f011632a2aa3ef0632efd5ace472c0fc79a329
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: seodec18
+ms.openlocfilehash: 2572ff3711fb86cda88a86744192980a5b2d5361
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27318980"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277620"
 ---
-# <a name="troubleshooting-network-performance"></a>Řešení potíží s výkon sítě
+# <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
-Azure poskytuje stabilní a rychlými prvky pro připojení z vaší místní sítě do Azure. Metody jako VPN Site-to-Site a ExpressRoute jsou úspěšně používána zákazníky malé i velké ke spuštění své firmy v Azure. Ale co se stane, když výkonu nesplňuje očekávání nebo předchozí zkušenosti? Tento dokument může pomoct standardizovat způsob, jakým byste otestovat a standardních hodnot konkrétní prostředí.
+Azure poskytuje stabilní a rychlými prvky pro připojení z vaší místní sítě k Azure. Metody, jako jsou VPN typu Site-to-Site a ExpressRoute se úspěšně používají zákazníci malé i velké při provozu svých firem v Azure. Ale co se stane, když výkon nesplňuje vaše očekávání nebo předchozí zkušenosti? Tento dokument může pomoct standardizovat standardní hodnoty a způsob, jakým testujete konkrétní prostředí.
 
-Tento dokument ukazuje, jak můžete snadno a konzistentní otestovat latence sítě a šířku pásma mezi dvěma hostiteli. Tento dokument taky obsahuje některé Rady o způsobech podívejte se na síť Azure a pomůžou izolovat problém body. Skript prostředí PowerShell a nástroje, které jsou popsané vyžadují dva hostitele v síti (na libovolném konci odkazu testuje). Jeden hostitel musí být Windows Server nebo plocha, druhý může být buď Windows nebo Linux. 
+Tento dokument ukazuje, jak můžete snadno a konzistentně otestovat latence sítě a šířku pásma mezi dvěma hostiteli. Tento dokument obsahuje také některé Rady o způsobech síť Azure a pomáhají izolovat problém body. Skript prostředí PowerShell a nástroje popsané vyžadují dva hostitele v síti (na jednom konci odkazu testování). Jeden z hostitelů musí být Windows Server nebo Desktopu, druhý může být Windows nebo Linux. 
 
 >[!NOTE]
->Přístup k řešení potíží, nástroje a metody jsou osobní preference. Tento dokument popisuje přístup a nástroje, které často provést. Bude váš přístup pravděpodobně lišit, nic se různý přístup k řešení problémů. Ale pokud nemáte zavedených přístup, tento dokument můžete vám pomůžou začít na cestě k sestavení vlastní metody, nástroje a předvolby k řešení problémů se sítí.
+>Přístup k řešení potíží, nástroje a metody jsou osobní preference. Tento dokument popisuje přístup a nástroje, které obvykle trvat. Váš přístup se budou pravděpodobně lišit, není nic špatného různé přístupy k řešení problémů. Ale pokud nemáte zavedený přístup, tento dokument můžete začít pracovat na cestu k vytváření vlastních metod, nástrojů a předvolby pro řešení potíží s problémy se sítí.
 >
 >
 
 ## <a name="network-components"></a>Síťové součásti
-Před tápat do řešení potíží s probereme některé běžné podmínky a součásti. Tato diskuse zajistí, že jsme udělali o jednotlivých součástech v řetězu začátku do konce, která umožňuje připojení v Azure.
+Než si podrobně řešení potíží s probereme, probereme některé běžné pojmy a komponent. Tato diskuse se zajistí, že jsme udělali o jednotlivých součástech začátku do konce řetězce, který umožňuje připojení v Azure.
 [![1]][1]
 
-Na nejvyšší úrovni I popisují tři domény směrování hlavní sítě;
+Na nejvyšší úrovni můžu popisují tři hlavní síťové směrování domény;
 
-- síť Azure (modré cloud na pravé straně)
-- Internet nebo prostřednictvím sítě WAN (zelený cloud v centru)
+- sítě Azure (modré cloud na pravé straně)
+- Internet nebo síť WAN (zelená cloud v centru)
 - v podnikové síti (broskvoněmi cloud na levé straně)
 
-Vyhledávání v diagramu zprava doleva, probereme stručně jednotlivé komponenty:
- - **Virtuální počítač** – server může mít několik síťových adaptérů, zkontrolujte všechny statické trasy, výchozí trasy a nastavení operačního systému jsou odesílání a příjem přenosů způsob, jak si myslíte, že je. Každý virtuální počítač SKU má také, omezení šířky pásma. Pokud používáte menší SKU virtuálních počítačů, provozu je omezena šířka pásma, která je k dispozici na síťový adaptér. Obvykle je možné použít DS5v2 pro testování (a pak odstraňte po dokončení testování jak ušetřit peníze) zajistit odpovídající šířku pásma na virtuálním počítači.
- - **Síťový adaptér** -zajistěte znáte privátní IP adresa, která je přiřazena k na síťový adaptér.
- - **Síťový adaptér NSG** – existuje může být konkrétní skupiny Nsg na úrovni síťový adaptér, ujistěte se, je vhodné pro provoz se snažíte předat sada pravidel NSG. Například zajistěte porty 5201 iPerf, 3389 pro protokol RDP, nebo jsou otevřené povolit průchod přenosů testovací 22 pro SSH.
- - **VNet Subnet** -The síťový adaptér je přiřazen do konkrétní podsítě, ujistěte se, víte, které pravidla a jedna přidružené této podsíti.
- - **Podsíť NSG** – stejně jako síťovou kartu, skupiny Nsg lze použít na podsíť i. Ujistěte se, je vhodné pro provoz, který se snažíte předat sada pravidel NSG. (pro provoz příchozí síťový adaptér NSG se použije první podsíť a pak NSG síťový adaptér, a naopak pro provoz odchozí z virtuálního počítače síťový adaptér NSG platí nejprve pak NSG podsíť stává play).
- - **Podsíť UDR** -trasy definované uživatelem může směrovat přenosy na střední směrování (jako jsou brány firewall nebo služby Vyrovnávání zatížení). Ujistěte se, že znáte, pokud je UDR v místě pro provozu a pokud, kam putují a k čemu tento další segment použít k provozu. (například Brána firewall může předat některé provozy a odepření ostatní přenosy mezi stejné dvěma hostiteli).
- - **Podsíť brány / NSG / UDR** – stejně jako podsíť virtuálních počítačů, může mít podsíť brány skupiny Nsg a udr. Ujistěte se, že víte, pokud máte nějaké a jaký vliv mají provozu.
- - **Brána virtuální sítě (ExpressRoute)** -po partnerského vztahu (ExpressRoute) nebo VPN je povoleno, nejsou k dispozici mnoho nastavení, které můžou ovlivnit jak nebo, pokud provoz trasy. Pokud máte víc okruhů ExpressRoute nebo VPN tunely připojené ke stejné bráně virtuální sítě, měli vzít v potaz nastavení váhy připojení jako toto nastavení ovlivňuje připojení předvoleb a ovlivňuje cestu, kterou trvá provozu.
- - **Směrovat filtru** (není vidět) - filtr trasy jenom platí pro Microsoft Peering v ExpressRoute, ale je velmi důležité zkontrolovat, pokud nevidíte trasy očekáváte, že na Peering společnosti Microsoft. 
+Prohlížení diagramu zprava doleva, Pojďme se stručně jednotlivé komponenty:
+ - **Virtuální počítač** – server může mít více síťových adaptérů, zkontrolujte všechny statické trasy a výchozí trasy a nastavení operačního systému se odesílají a přijímají data tak, jak si myslíte, že je. Každý skladovou Položku virtuálního počítače má také omezení šířky pásma. Pokud používáte menší skladovou Položku virtuálního počítače, provoz je omezena šířka pásma dostupná na síťový adaptér. Používám obvykle DS5v2 testování (a následně odstranit až dokončíte testování ušetřit) zajistit odpovídající šířku pásma na virtuálním počítači.
+ - **Síťová karta** – zajistěte vědět, který je přiřazen k síťové KARTĚ dotyčný privátní IP.
+ - **Skupina zabezpečení sítě se síťovou kartu** – existuje může být konkrétní skupiny Nsg na úrovni síťové karty, ujistěte se, je vhodné pro provoz, který zkoušíte předat sadu pravidel skupiny zabezpečení sítě. Například zkontrolujte porty 5201 pro iPerf, port 3389 pro RDP nebo jsou otevřené pro povolení provozu testu předat 22 pro SSH.
+ - **Virtuální síť podsíť** – The síťová karta je přiřazená v konkrétní podsíti, ujistěte se, víte, které jedna a pravidla přidružená k této podsíti.
+ - **Skupina NSG podsítě** – stejně jako síťové karty, skupiny zabezpečení sítě je možné použít na podsíť i. Zkontrolujte sadu pravidel skupiny zabezpečení sítě je vhodné pro provoz, který se snažíte předat. (pro přenosy příchozích na síťový adaptér podsíť, ve které skupina NSG použije první pak síťové karty, skupiny zabezpečení sítě, a naopak provozu odchozího z virtuálního počítače platí nejprve síťové karty, skupiny zabezpečení sítě a skupina NSG podsítě vstupu do play).
+ - **Podsíť směrování definovaného uživatelem** -trasy definované uživatelem můžete směrovat provoz do střední směrování (jako jsou brány firewall nebo nástroj pro vyrovnávání zatížení). Ujistěte se, že budete vědět, jestli je trasu UDR v místě pro provoz a pokud tak kam putují a co udělá tuto další segment směrování do provozu. (například Brána firewall může předat část provozu a odepřít ostatní přenosy mezi dvěma hostitelskými počítači stejné).
+ - **Podsíť brány / NSG / UDR** – stejně jako podsíť virtuálních počítačů, podsíť brány můžou mít skupin zabezpečení sítě a trasy definované uživatelem. Ujistěte se, že budete vědět, pokud jsou nějaké a efekty, které mají v provozu.
+ - **Brány virtuální sítě (ExpressRoute)** – po povolení VPN nebo partnerského vztahu (ExpressRoute), nejsou k dispozici řadu nastavení, které můžou ovlivnit jak nebo, pokud přenos dat trasy. Pokud máte víc okruhů ExpressRoute nebo VPN tunely připojené ke stejné bráně virtuální sítě, měli vzít v potaz nastavení váhy připojení jako tato předvolba připojení ovlivňuje nastavení a má vliv cestu, která přijímá provoz.
+ - **Směrovat filtr** (není vidět) - filtr tras pouze platí pro Microsoft Peering v ExpressRoute, ale je velmi důležité zkontrolovat, pokud se nezobrazují trasy očekáváte, že na Microsoft Peering. 
 
-V tomto okamžiku jste v části propojení WAN. Tuto doménu směrování může být poskytovatele služeb, vaší podnikové sítě WAN nebo Internetu. Mnoho segmentů směrování, technologie a společností zabývajících se tyto odkazy může ztížit poněkud řešení. Často pracujete pravidla Azure a podnikových sítích nejprve před přechod do této kolekce společností a směrování.
+V tomto okamžiku jste na síť WAN část odkazu. Tuto doménu směrování může být váš poskytovatel služeb, vaší podnikové sítě WAN nebo z Internetu. Mnoho segmentů směrování, technologie a společnostem, které jsou součástí těchto odkazů může ztížit nich do jisté míry k řešení potíží. Často při práci na pravidla Azure a vaší podnikové sítě nejprve než si řekneme, do této kolekce společností a směrování.
 
-Na předchozím obrázku je zcela vlevo vaší podnikové síti. V závislosti na velikosti vaší společnosti lze tuto doménu směrování mezi jste a sítě WAN nebo více vrstev zařízení v síti kanceláře/enterprise několik síťových zařízení.
+Úplně nalevo na předchozím obrázku, je vaší podnikové síti. V závislosti na velikosti vaší společnosti lze tuto doménu směrování mezi vám a sítě WAN nebo více vrstev zařízením v síti campus/enterprise několik síťových zařízení.
 
-Vzhledem ke složitosti těchto tří různých vysoké úrovně síťové prostředí, je často optimální spustit na okrajích a pokuste se zobrazí, kde je dobrý výkon a kde snižuje. Tento přístup může pomoct identifikovat problém doménu směrování ze tří a potom se zaměřit vaše řešení potíží s na konkrétní prostředí.
+Vzhledem ke složitosti tyto tři různé základní síťové prostředí, je často optimální začínají na okraji a pokusí zobrazit, kde je dobrý výkon a kde snižuje. Tento přístup může pomoct identifikovat problém směrování domény ze tří a pak zaměřit se řešení potíží v daném konkrétním prostředí.
 
 ## <a name="tools"></a>Nástroje
-Většiny síťových problémů lze analyzovat a izolované pomocí základní nástroje, jako je ping a obejít trasu. Navíc není obvyklé, že budete muset přejít hloubky analýza paketů jako Wireshark. Pomoci při řešení, byla vyvinuta Toolkit připojení k Azure (AzureCT) se umístí některé z těchto nástrojů snadno balíčku. Pro testování výkonu, I chtěli použít iPerf a Pspingu. iPerf je nástroj pro běžně používané a spouští na většině operačních systémů. iPerf je vhodný pro testování základní přínos a je poměrně snadno použitelný. Pspingu je nástroj ping vyvinuté SysInternals. Pspingu je snadný způsob, jak provést příkazy ping ICMP a TCP do jednoho příkazu také snadno použitelný. Oba tyto nástroje jsou jednoduché a jsou "nainstalované" jednoduše tak, že kopírování souborů do adresáře na hostiteli.
+Většinu problémů se sítí mohou být analyzovány a izolované pomocí základní nástroje, jako je ping a traceroute. Je vzácné, že budete muset přejít hlouběji analýza paketů jako Wireshark. Kvůli odstraňování potíží, byla vyvinuta vložit některé z těchto nástrojů, snadno balíčku Azure připojení Toolkit (AzureCT). Pro testování výkonnosti, chci používat iPerf a PSPing. iPerf je nástroj často používaný a běží na většině operačních systémů. iPerf je vhodný pro základní funkční testy a poměrně snadno používá. PSPing je nástroj ping vypracovanou organizací cccppf SysInternals. PSPing je snadný způsob, jak provést příkazy ping protokolu ICMP a TCP v jednom příkazu také snadno používá. Oba tyto nástroje jsou jednoduché a jsou "nainstalováno" jednoduše tak, že kopírování souborů do adresáře na hostiteli.
 
-Do modulu PowerShell (AzureCT), můžete nainstalovat a používat jste zabalené všech těchto nástrojů a metody
+Do modulu prostředí PowerShell (AzureCT), který můžete nainstalovat a používat jste zabalené všechny tyto nástroje a metody
 
-### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - nástrojů Azure připojení
-Modul prostředí AzureCT PowerShell má dvě součásti [testování dostupnosti] [ Availability Doc] a [testování výkonu][Performance Doc]. Tento dokument je pouze nevadí testování výkonu, takže umožňuje zaměřit se na dva příkazy odkaz výkonu v tento modul prostředí PowerShell.
+### <a name="azurect---the-azure-connectivity-toolkit"></a>AzureCT - Azure připojení Toolkit
+Modul AzureCT PowerShell má dvě součásti [testování dostupnosti] [ Availability Doc] a [testování výkonu][Performance Doc]. Tento dokument je jenom obeznámeni s testováním výkonnosti, takže umožňuje zaměřit se na dva příkazy výkonu odkaz v tomto modulu prostředí PowerShell.
 
-Existují tři základní kroky, chcete-li použít tato sada nástrojů pro testování výkonu. 1) nainstalujte modul prostředí PowerShell, 2) nainstalujte nástroje iPerf podpůrné aplikace a Pspingu 3) spusťte test výkonu.
+Existují tři základní kroky, chcete-li použít tato sada nástrojů pro testování výkonu. (1) nainstalujte modul prostředí PowerShell, 2) nainstalovat podpůrné iPerf aplikací a PSPing 3) spusťte test výkonnosti.
 
 1. Instalace modulu prostředí PowerShell
 
@@ -76,141 +70,141 @@ Existují tři základní kroky, chcete-li použít tato sada nástrojů pro tes
     
     ```
 
-    Tento příkaz stáhne modul prostředí PowerShell a nainstaluje místně.
+    Tento příkaz stáhne modulu prostředí PowerShell a nainstaluje ho místně.
 
-2. Instalace podpůrných aplikací
+2. Instalace podporovaných aplikací
     ```powershell
     Install-LinkPerformance
     ```
-    Tento příkaz AzureCT instaluje iPerf a Pspingu v nový adresář "C:\ACTTools", se rovněž otevře porty brány Windows Firewall povolí protokol ICMP a portem 5201 provoz (iPerf).
+    Tento příkaz AzureCT nainstaluje iPerf a PSPing v novém adresáři "C:\ACTTools", také otevře porty brány Windows Firewall povolit protokol ICMP a portem 5201 provoz (iPerf).
 
-3. Spuštění testu výkonnosti
+3. Spustit test výkonnosti
 
-    U vzdáleného hostitele musíte nejprve nainstalovat a spustit iPerf v režimu serveru. Ujistěte se také ke vzdálenému hostiteli naslouchá na buď 3389 (RDP pro Windows) nebo 22 (SSH pro Linux) a umožňuje provoz na portu 5201 pro iPerf. Pokud je vzdálený hostitel windows, nainstalujte AzureCT a spustit příkaz Install-LinkPerformance nastavit iPerf a pravidla brány firewall potřebné ke spuštění nástroje iPerf v režimu serveru úspěšně. 
+    Nejprve na vzdáleném hostiteli musíte nainstalovat a spustit iPerf v režimu serveru. Ujistěte se také na vzdáleného hostitele naslouchá buď 3389 (RDP pro Windows) nebo 22 (SSH pro Linux) a povolení provozu na portu 5201 pro iPerf. Pokud na vzdáleného hostitele je systém windows, nainstalujte AzureCT a spuštěním příkazu Install-LinkPerformance nastavení iPerf a pravidla brány firewall, které jsou potřebné ke spuštění iPerf v režimu serveru úspěšně. 
     
-    Jakmile vzdálený počítač není připraven, otevřete prostředí PowerShell v místním počítači a spuštění testu:
+    Jakmile vzdálený počítač připravený, v místním počítači, otevřete PowerShell a spusťte test:
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 10
     ```
 
-    Tento příkaz spustí řadu souběžných zatížení a testy latence a získat tak představu kapacitu šířky pásma a latence odkaz na vaši síť.
+    Tento příkaz spustí řadu souběžných zatížení a testů latence pomoct s odhadem kapacitu šířky pásma a latencí síťové propojení.
 
-4. Zkontrolujte výstup testů
+4. Prohlédněte si výstup testů
 
-    Formát výstupu prostředí PowerShell vypadá podobně jako:
+    Vypadá podobně jako formát výstupu prostředí PowerShell:
 
     [![4]][4]
 
-    Podrobné výsledky všech iPerf a Pspingu testů jsou v jednotlivých textových souborů v adresáři nástroje AzureCT v "C:\ACTTools."
+    Podrobné výsledky všech iPerf a PSPing testy jsou v jednotlivých textových souborů v adresáři AzureCT nástroje na "C:\ACTTools."
 
 ## <a name="troubleshooting"></a>Řešení potíží
-Pokud není poskytnutí testu výkonnosti očekávané výsledky, nad tím, proč mělo progresivní Podrobný proces. Získá počet součásti v cestě, systematicky obecně poskytuje rychlejší cesta k řešení než přechod kolem a potenciálně zbytečnému provádění stejné testování vícekrát.
+Pokud test výkonnosti neposkytuje je očekávané výsledky, tím, proč musí být progresivní Podrobný proces. Zadaný počet součástí v cestě, nabízí systematický přístup obecně rychlejší cestu k řešení než přechod kolem a potenciálně zbytečně to stejné testování více než jednou.
 
 >[!NOTE]
->Tento scénář v tomto poli je problém výkonu, nejsou potíže s připojením. Postup by být jiné, pokud nebyla vůbec předávání provoz.
+>Scénář v tomto poli je problému s výkonem, není problém s připojením. Kroky by lišit, pokud nebyla vůbec předáváte provoz.
 >
 >
 
-Nejprve challenge předpokladů. Je možné logicky vaše očekávání? Například pokud máte na okruh ExpressRoute 1 GB/s a 100 ms latence nepřiměřený očekávat úplné 1 GB/s provozu vzhledem k vlastnostem výkonu TCP přes odkazy vysokou latencí. Najdete v článku [odkazuje na části](#references) pro další předpoklady na výkon.
+Nejprve vybízí předpokladů. Je přijatelné vaše očekávání? Například pokud už máte okruh ExpressRoute 1 GB/s a 100 ms, latence je odpor očekávat úplné 1 GB/s provozu zadané charakteristiky výkonu protokolu TCP přes odkazy s vysokou latencí. Zobrazit [odkazuje na část](#references) pro další předpoklady na výkon.
 
-V dalším kroku doporučujeme od okraje mezi domény směrování a pokuste se izolovat daný problém na jedné hlavní domény směrování; v podnikové síti, využití sítě WAN nebo síť Azure. Lidé často viny "černé pole" v cestě, při blaming černé políčko je snadné provést, může výrazně zdržet řešení hlavně v případě, že problém je skutečně v oblasti, máte možnost provést změny. Zajistěte, aby že se vaše kvůli opatrností před předáním na poskytovateli služeb nebo poskytovatele internetových služeb.
+Dále doporučujeme počínaje okraje mezi domény směrování a zkuste a izolovat daný problém na jeden hlavní domény směrování. v podnikové síti, sítě WAN nebo síť Azure. Lidé často viny "černé skříňky" v cestě, při blaming černé skříňky je jednoduché, může výrazně zdržet rozlišení zejména v případě, že problém je ve skutečnosti v oblasti, budete mít možnost provádět změny. Zajistěte, aby že se vypršení platnosti nejopatrněji před předáním váš poskytovatel služeb nebo poskytovatele internetových služeb.
 
-Jakmile jste zformulovali hlavní doménu směrování, který se zobrazí tak, aby obsahovala problém, měli byste vytvořit diagram oblasti nejistá. Buď na Tabule, Poznámkový blok nebo Visio jako diagram poskytuje konkrétní "boj map" Povolit metodický přístup k další isolate problém. Můžete naplánovat body testování a aktualizujte mapy, jak vymazat oblasti nebo dig hlubší v průběhu testování.
+Jakmile identifikujete hlavní doménu směrování, která se zobrazí tak, aby obsahovala problém, byste měli vytvořit diagram oblasti nejistá. Buď na tabuli, Poznámkový blok nebo jako diagram Visia obsahuje konkrétní "zocelenou mapy" Povolit metodický přístup k dalším izolovat problém. Můžete naplánovat testovací body a aktualizovat mapu, jak vymazat oblasti nebo podrobnější průběhu testování.
 
-Teď, když máte diagram, spusťte k rozdělení na segmenty sítě a problém zúžit. Zjistíte, kde funguje a kde nepodporuje. Zachovat přesunutí bodům testování izolovat dolů komponentu problematické.
+Teď, když máte diagramu rozdělit do segmentů sítě, a zúžit problém. Zjistěte, ve kterém funguje a kde nepodporuje. Přesouvat testovacích bodů izolovat dolů problematický komponenty.
 
-Také nezapomeňte se podívat na ostatní vrstvy OSI modelu. Je snadné se zaměřují na síť a vrstvy 1 – 3 (fyzické, datech a síťové vrstvy), ale problémů může být také nahoru v vrstvy 7 v aplikační vrstvě. Ponechte otevřete paměti a zkontrolujte předpoklady.
+Také nezapomeňte se podívat na jiných úrovních modelu OSI. Je snadné zaměřit se na síť a vrstvy 1-3 (fyzické, datech a síťové vrstvy) ale problémů může být také nahoru na vrstvě 7 v aplikační vrstvě. Ponechat otevřené paměti a ověření předpokladů.
 
-## <a name="advanced-expressroute-troubleshooting"></a>Pokročilé řešení problémů s ExpressRoute
-Pokud si nejste jistí, kde ve skutečnosti je hrany cloudu, izolace komponenty Azure může být složité. Pokud se používá služba ExpressRoute, je hranici sítě komponenty s názvem Microsoft Enterprise Edge (MSEE). **Při použití ExpressRoute**, MSEE je první bod kontaktu do sítě společnosti Microsoft a posledního směrování a sítě Microsoftu. Když vytvoříte objekt připojení mezi bránou virtuální sítě a okruh ExpressRoute, ve skutečnosti děláte připojení MSEE. Rozpozná MSEE, jako je první nebo poslední směrování (v závislosti na směru budete) je nezbytné k izolování problémy se sítí Azure buď prokázat, že problém je v Azure nebo další po proudu v síti WAN nebo podnikové síti. 
+## <a name="advanced-expressroute-troubleshooting"></a>Pokročilé řešení potíží s ExpressRoute
+Pokud si nejste jisti, kde ve skutečnosti je edge cloudu, izolace komponenty Azure může být složité. Když se používá služba ExpressRoute, je na hraničních zařízeních sítě komponenta s názvem Microsoft Enterprise Edge (MSEE). **Při použití ExpressRoute**, směrovači MSEE je první bod kontaktu do sítě společnosti Microsoft a poslední segment směrování opouští síť společnosti Microsoft. Když vytvoříte objekt připojení mezi bránou virtuální sítě a okruh ExpressRoute, ve skutečnosti děláte připojení směrovači MSEE. Uvědomili si směrovači MSEE jako první nebo poslední segment směrování (v závislosti na směru budete) je zásadní význam pro izolaci sítí Azure se nezdařilo buď prokázat, že problém je v Azure nebo další směru server-klient v síti WAN nebo podnikové síti. 
 
 [![2]][2]
 
 >[!NOTE]
-> Všimněte si, že MSEE není v cloudu Azure. ExpressRoute je ve skutečnosti na hranici sítě Microsoft ve skutečnosti není v Azure. Po připojení s ExpressRoute pro MSEE jste připojení k síti společnosti Microsoft, zde můžete přejít k některému z cloudové služby, jako je Office 365 (se Microsoft Peering) nebo Azure (s privátní nebo Microsoft Peering).
+> Všimněte si, že směrovači MSEE není v cloudu Azure. ExpressRoute je ve skutečnosti na hranici sítě Microsoftu, které nejsou ve skutečnosti v Azure. Jakmile budete připojeni pomocí připojení ExpressRoute, aby směrovači MSEE jste připojeni k síti společnosti Microsoft, odtud můžete přejít na libovolnou z cloudových služeb, jako je Office 365 (s Microsoft Peering) nebo Azure (s privátní a/nebo Microsoft Peering).
 >
 >
 
-Pokud dvě virtuální sítě (virtuální sítě A a b. v diagramu) jsou připojeny k **stejné** okruh ExpressRoute, můžete provést řadu testů izolovat daný problém v Azure (nebo prokázat, není v Azure)
+Pokud dvě virtuální sítě (virtuální sítě A a B v diagramu) jsou připojené k **stejné** okruh ExpressRoute, můžete provádět řadu testů, které budou izolovat daný problém v Azure (nebo prokázat, není v Azure)
  
 ### <a name="test-plan"></a>Testovací plán
-1. Spusťte test Get-LinkPerformance mezi VM1 a virtuálního počítače 2. Tento test poskytuje náhled do, pokud tento problém není místní, nebo není. Pokud tento test vytváří přijatelná latence a výsledky šířky pásma, můžete označit jako dobré místní sítě VNet.
-2. Za předpokladu, že místní virtuální síť provoz je vhodný, spusťte test Get-LinkPerformance mezi VM1 a VM3. Tento test vykonává připojení prostřednictvím sítě Microsoft dolů MSEE a zpět do Azure. Pokud tento test vytváří přijatelná latence a výsledky šířky pásma, můžete označit jako funkční síť Azure.
-3. Pokud je vyloučena Azure, můžete provést podobné sekvence testů ve vaší podnikové síti. Pokud, také testy dobře, je čas pracovat s poskytovateli služeb nebo poskytovatele internetových služeb k diagnostikování připojení WAN. Příklad: Spusťte tento test mezi dvě pobočky nebo mezi svého stolu a server datového centra. V závislosti na tom, co testujete, najít koncových bodů (servery, počítače, atd.), mohou vykonávat této cestě.
+1. Spusťte test Get-LinkPerformance až VM1, VM2. Tento test nabízí pohled na, pokud se jedná o místní nebo ne. Pokud tento test vytvoří přijatelnou latencí a šířkou pásma výsledky, můžete označit místní sítě k virtuální síti jako v pořádku.
+2. Za předpokladu, že místní virtuální sítě provoz je dobré, spuštění testu Get-LinkPerformance mezi VM1 a VM3. Tento test vykonává připojení prostřednictvím sítě Microsoft dolů směrovači MSEE a zpět do Azure. Pokud tento test vytvoří přijatelnou latencí a šířkou pásma výsledky, je síť Azure označit jako v pořádku.
+3. Pokud je vyloučena Azure, můžete provádět podobné pořadí testů v podnikové síti. Pokud také testy dobře, je čas pracovat s poskytovatele služeb nebo poskytovatele internetových služeb k diagnostice připojení WAN. Příklad: Spuštění tohoto testu mezi dvě pobočky nebo mezi vašeho helpdesku a server datového centra. V závislosti na tom, co testujete, najít koncových bodů (servery, počítače, atd.), který můžete také vyzkoušet tuto cestu.
 
 >[!IMPORTANT]
-> Je důležité, že pro každý test můžete označit čas spuštění testu a zaznamenejte výsledky ve společném umístění (I jako OneNote nebo v aplikaci Excel). Každého testu by měl mít identické výstupu, abyste mohli porovnat Výsledná data napříč testovací spouští a není nutné "mezery" v datech. Konzistence napříč více testů je hlavním důvodem, že je možné použít AzureCT pro řešení potíží. Magic není ve scénářích přesný zatížení spuštění, ale místo toho *magic* je skutečnost, že se zobrazila *konzistentní výstup testu a data* z každého testu. Záznam času a nutnosti pokaždé, když jeden konzistentní dat je obzvláště užitečné, pokud později zjistíte, že je výskyt občasný problém. Být péče se shromažďováním dat. předem a budete vyhnout hodin opětovném testování stejné scénáře (I naučili takto pevný mnoha lety).
+> Je důležité pro každý test označit čas spuštění testu a poznamenejte si výsledky ve společném umístění (chci Onenotu nebo v Excelu). Každého testovacího běhu by měl mít identické výstup vám umožní porovnat Výsledná data napříč testovací běhy a není nutné "děr" v datech. Konzistence napříč více testů je primární důvod, proč že můžu používat AzureCT pro řešení potíží. Kouzlo není ve scénářích přesné zátěžových mohu spustit, ale místo toho *magic* je skutečnost, že můžu získat *konzistentní výstup testu a data* z každého testu. Zaznamenání času a s konzistentní data pokaždé, když jeden je zvláště užitečné, pokud později zjistíte, že problém je sporadické. Být pečlivé se shromažďováním dat ještě před zahájením a budete vyhnout hodin opakované stejné scénáře (jsem zjistila tento přiznejme po mnoho let před).
 >
 >
 
 ## <a name="the-problem-is-isolated-now-what"></a>Problém je izolovaný, co teď?
-Čím můžete izolovat daný problém tím snazší je chcete opravit, ale často dostanete bodu, kde nelze přejít hlubší nebo další s vaše řešení potíží. Příklad: klikněte na odkaz mezi poskytovatele služeb díky směrování prostřednictvím Evropa, ale očekávaném umístění je všechny v Asii. Je tento bod by měl oslovení nápovědu. Kdo se požádat je závislá na doménu směrování, které izolované problém nebo ještě lepší, pokud budete moci zúžit dolů pro konkrétní součást.
+Čím může izolovat daný problém tím snazší se opravit, ale často kontaktovat bod, ve kterém nemůže přejít hlouběji nebo další při řešení vašich potíží. Příklad: odkaz napříč váš poskytovatel služeb trvá segmenty směrování přes Evropa, ale očekávaném umístění je všechny v Asii. Tento bod je při obraťte se nápovědu. Kdo požádáte je závislá na doménu směrování, který jste izolovali problém nebo ještě lepší, pokud je to možné, chcete-li zúžit na konkrétní součást.
 
-U problémů podnikové síti interní IT oddělení nebo poskytovatel služeb podpora síti (která může být výrobce hardwaru) můžou pomoci při konfiguraci zařízení nebo oprava hardwaru.
+Pro problémy v podnikové síti může být pomoct s zařízení konfigurace nebo hardware oprava interní IT oddělení nebo poskytovatel služeb podpoře vaší sítě (který může být výrobce hardwaru).
 
-Využití sítě WAN sdílení testování výsledky s poskytovateli služeb nebo poskytovatele internetových služeb může pomoct získat jejich spuštění a vyhnout, které se vztahuje některá stejné základů, které jste již testována. Však není možné offended Pokud chtějí ověřte výsledky sami. "Vztahu důvěryhodnosti, ale ověření" je dobré mottem při řešení potíží s na základě jiní lidé hlášené výsledků.
+Síť WAN sdílení výsledků testování se váš poskytovatel služeb nebo poskytovatele internetových služeb může pomoct je spuštěna a vyhnout se některé stejného základu, které jste otestovali již pokrývá. Ale není možné offended Pokud chtějí ověřit výsledky sami. "Vztahu důvěryhodnosti, ale ověřte" je dobré motto při řešení potíží v závislosti na výsledcích ohlášené jiných uživatelů.
 
-S Azure, až izolovat problém v množství podrobností budete mít, je čas ke kontrole [dokumentaci k síti Azure] [ Network Docs] a pak v případě potřeby stále [otevřete lístek podpory][Ticket Link].
+S Azure, jakmile izolovat problém v co nejvíce podrobností, budete mít, je čas ke kontrole [dokumentace ke službě Azure Network] [ Network Docs] a pak v případě potřeby pořád [otevřete lístek podpory][Ticket Link].
 
 ## <a name="references"></a>Odkazy
-### <a name="latencybandwidth-expectations"></a>Očekávání latenci nebo šířky pásma
+### <a name="latencybandwidth-expectations"></a>Očekávání latence nebo šířka pásma
 >[!TIP]
-> Zeměpisná latence (miles nebo kilometrech) mezi koncovými body, které testujete je zdaleka největší součást latence. Zatímco související se situací je latence zařízení (fyzické a virtuální součásti, počet segmentů směrování, atd.), geography ukázal jako největší součást celkového latence při plánování práce s připojení WAN. Je také důležité si uvědomit, že je vzdálenost vzdálenost fiber spustit není lineární nebo distance silniční mapu. Tato vzdálenost je velmi obtížné získat s žádné přesnost. V důsledku toho I obecně použití kalkulačky vzdálenost města na Internetu a vědět, že tato metoda je grossly nesprávné míry, ale stačí nastavit obecné očekávání.
+> Geografické latence (mil nebo kilometrů) mezi koncovými body, které testujete je zdaleka nejvyšší součástí latence. Je zahrnutých zařízení latence (fyzické a virtuální komponenty, počet segmentů směrování, atd.), Geografie ukázala jako největší součástí celkové latence při zpracování komplexnějších připojení WAN. Je také důležité si uvědomit, že vzdálenost vzdálenost fiber spuštění není lineární nebo podrobný popis vzdálenosti. Tato vzdálenost je mimořádně obtížné získat pomocí jakékoli přesnost. V důsledku toho jsem obecně použití city kalkulačky vzdálenost na Internetu a vědět, že tato metoda je grossly nepřesné míry, ale stačí nastavit obecné očekávání.
 >
 >
 
-Mám instalaci ExpressRoute v Praze, Washington v USA. V následující tabulce jsou uvedeny latence a šířky pásma zobrazilo testování do různých umístění Azure. I jste odhadované geografické vzdálenost mezi každou konci testu.
+Mám instalační program ExpressRoute v Seattlu ve Washingtonu v USA. V následující tabulce jsou uvedeny latenci a šířky pásma viděl jsem testování do různých umístění Azure. Můžu jste odhadnout geografické vzdálenosti mezi každý konec prvku testu.
 
 Nastavení testu:
- - Fyzický server se spuštěným systémem Windows Server 2016 s na 10 GB/s síťového adaptéru, připojený k okruhu ExpressRoute.
- - Okruh Premium ExpressRoute – 10 GB / v umístění identifikovaný pomocí soukromého partnerského vztahu povolena.
- - Azure VNet s bránu UltraPerformance v zadané oblasti.
- - Virtuální počítač DS5v2 systémem Windows Server 2016 virtuální sítě. Virtuální počítač byl nepřipojená k doméně připojen, vytvořené z výchozí obrázek Azure (žádné optimalizace nebo přizpůsobení) s AzureCT nainstalována.
- - Všechny testy se pomocí příkazu AzureCT Get-LinkPerformance 5 minut zátěžového testu pro každou z šesti testovací spouští. Příklad:
+ - Fyzický server s Windows serverem 2016 s a 10 GB/s síťové rozhraní, připojené k okruhu ExpressRoute.
+ - Okruh Premium ExpressRoute 10 v umístění označena privátní partnerské vztahy povolena.
+ - Virtuální síť Azure s bránou UltraPerformance v zadané oblasti.
+ - DS5v2 virtuálního počítače s Windows serverem 2016 ve virtuální síti. Virtuální počítač byl nedoménové připojený, vytvořené z výchozí imagí Azure (bez optimalizace nebo přizpůsobení) pomocí AzureCT nainstalované.
+ - Všechny testy se pomocí příkazu AzureCT Get-LinkPerformance 5 minut zátěžového testu pro každý z šesti testovacích běhů. Příklad:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
     ```
- - Tok dat pro každý test měl zátěž vyplývající z fyzického na místním serveru (iPerf klient v Praze) až do virtuálního počítače Azure (iPerf server v oblasti uvedené Azure).
- - Data ve sloupci "Latence" je z ne zátěžového testu (testu latence TCP bez iPerf spuštěná).
- - Data ve sloupci "Maximální šířky pásma" je z 16 testu zatížení toku TCP při velikosti okna 1 Mb.
+ - Tok dat pro každý test měl zátěž vyplývající z fyzického na místním serveru (iPerf klienta v Praze) až do virtuálního počítače Azure (iPerf server v uvedených oblast Azure).
+ - Sloupec data "Latence" je z ne zátěžový test (TCP test latenci bez iPerf spuštění).
+ - Sloupec data "Maximální šířka pásma" je z 16 testu zatížení tok TCP se velikost okna 1 Mb.
 
 [![3]][3]
 
-### <a name="latencybandwidth-results"></a>Výsledky latenci nebo šířky pásma
+### <a name="latencybandwidth-results"></a>Výsledky latence nebo šířka pásma
 >[!IMPORTANT]
-> Tato čísla jsou obecné pouze pro referenci. Vliv na mnoha faktorech latence a tyto hodnoty jsou obecně konzistentní v čase, podmínky v rámci Azure nebo poskytovatelé služeb sítě mohou odesílat provoz přes různé cesty kdykoli, proto může mít vliv latencí a šířkou pásma. Obecně platí důsledky tyto změny nebudete mít za následek významné rozdíly.
+> Tato čísla jsou obecné pouze pro referenci. Latence, ovlivňuje mnoho faktorů a tyto hodnoty jsou obecně konzistentní vzhledem k aplikacím v čase, podmínek v rámci Azure nebo v síti poskytovatele služeb mohou odesílat provoz prostřednictvím různých cest kdykoli, proto mohou být ovlivněny latencí a šířkou pásma. Efekty těchto změn není obecně platí, způsobit významné rozdíly.
 >
 >
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Umístění|Azure<br/>Oblast|Odhad<br/>Vzdálenost (km)|Latence|1 relace<br/>Šířka pásma|Maximum<br/>Šířka pásma|
-| Seattle | Západní USA 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu | 21
-| Seattle | Západní USA          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu | 20
-| Seattle | Střed USA       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu | 17
+|ExpressRoute<br/>Umístění|Azure<br/>Oblast|Odhad<br/>Distance (km)|Latence|1 relace<br/>Šířka pásma|Maximum<br/>Šířka pásma|
+| Seattle | USA – západ 2        |    191 km |   5 ms | 262.0 Mbit/s |  3.74 Gbits za sekundu | 21
+| Seattle | USA – západ          |  1,094 km |  18 ms |  82.3 Mbit/s |  3.70 Gbits za sekundu | 20
+| Seattle | USA – střed       |  2,357 km |  40 ms |  38.8 Mbit/s |  2.55 Gbits za sekundu | 17
 | Seattle | Střed USA – jih |  2,877 km |  51 ms |  30.6 Mbit/s |  2.49 Gbits za sekundu | 19
 | Seattle | Střed USA – sever |  2,792 km |  55 ms |  27.7 Mbit/s |  2.19 Gbits za sekundu | 18
 | Seattle | Východní USA 2        |  3,769 km |  73 ms |  21.3 Mbit/s |  1.79 Gbits za sekundu | 16
-| Seattle | Východ USA          |  3,699 km |  74 ms |  21.1 Mbit/s |  1.78 Gbits za sekundu | 15
+| Seattle | USA – východ          |  3,699 km |  74 ms |  21.1 Mbit/s |  1.78 Gbits za sekundu | 15
 | Seattle | Japonsko – východ       |  7,705 km | 106 ms |  14.6 Mbit/s |  1.22 Gbits za sekundu | 28
-| Seattle | Spojené království – jih         |  7,708 km | 146 ms |  10.6 Mbit/s |   896 Mbit/s | 24
+| Seattle | Velká Británie – jih         |  7,708 km | 146 ms |  10.6 Mbit/s |   896 Mbit/s | 24
 | Seattle | Západní Evropa      |  7,834 km | 153 ms |  10.2 Mbit/s |   761 Mbit/s | 23
 | Seattle | Austrálie – východ   | 12,484 km | 165 ms |   9.4 Mbit/s |   794 Mbit/s | 26
 | Seattle | Jihovýchodní Asie   | 12,989 km | 170 ms |   9.2 Mbit/s |   756 Mbit/s | 25
 | Seattle | Brazílie – jih *   | 10,930 km | 189 ms |   8.2 Mbit/s |   699 Mbit/s | 22
 | Seattle | Indie – jih      | 12,918 km | 202 ms |   7.7 Mbit/s |   634 Mbit/s | 27
 
-\*Latence Brazílie je dobrým příkladem, pokud lineární vzdálenost výrazně liší od fiber spustit vzdálenost. I očekáváte, že by v okolí z 160 ms latenci, ale je ve skutečnosti 189 ms. Tento rozdíl proti Moje očekávání může znamenat někde potíže se sítí, ale s největší pravděpodobností, spusťte fiber nepřekračuje Brazílie v přímce a má navíc 1000 km nebo tak cesta k získání Brazílie z Praha.
+\* Latence Brazílie je typický příklad, kde lineární vzdálenost výrazně liší od fiber spustit vzdálenost. Můžu očekáváte, že by měly být v okolí 160 ms latenci, ale je ve skutečnosti 189 ms. Tento rozdíl oproti Moje očekávání může znamenat někde potíže se sítí, ale pravděpodobně, aby běžela fiber nepřekračuje Brazílie v rovné čáry a dalších 1 000 km nebo, cesty k získání Brazílie ze Seattlu.
 
 ## <a name="next-steps"></a>Další postup
-1. Sadu nástrojů Azure připojení stáhnout z webu GitHub na [http://aka.ms/AzCT][ACT]
-2. Postupujte podle pokynů pro [odkaz testování výkonu][Performance Doc]
+1. Stáhnout z Githubu v Azure připojení Toolkit [http://aka.ms/AzCT][ACT]
+2. Postupujte podle pokynů pro [propojit testování výkonu][Performance Doc]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "azure síťových součástí"
 [2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "řešení potíží s ExpressRoute"
-[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "výkonu testovacího prostředí"
+[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "prostředí pro testování výkonu"
 [4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "výstup prostředí PowerShell"
 
 <!--Link References-->

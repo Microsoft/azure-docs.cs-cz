@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace do Azure App Service pomocí FTP/S | Dokumentace Microsoftu
+title: Nasazení pomocí FTP/S – Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak nasadit aplikaci do služby Azure App Service pomocí FTP a FTPS.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: f48dc4d91fd5fafda88f518c27c79e151e5b1ebe
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679388"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260068"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -46,8 +47,8 @@ Doporučuje se, že používáte **aplikace pověření** nasadit do vaší apli
 ## <a name="deploy-files-to-azure"></a>Nasazení souborů do Azure
 
 1. Ze svého klienta FTP (například [sady Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), nebo [WinSCP](https://winscp.net/index.php)), použijte informace o připojení, které jste shromáždili pro připojení k vaší aplikace.
-3. Zkopírujte své soubory a příslušnou adresářovou strukturu do [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/site/wwwroot/App_Data/úlohy/** adresář pro webové úlohy).
-4. Přejděte na adresu URL vaší aplikace k ověření, že aplikace běží správně. 
+2. Zkopírujte své soubory a příslušnou adresářovou strukturu do [ **/site/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) v Azure (nebo **/site/wwwroot/App_Data/úlohy/** adresář pro webové úlohy).
+3. Přejděte na adresu URL vaší aplikace k ověření, že aplikace běží správně. 
 
 > [!NOTE] 
 > Na rozdíl od [nasazení z Gitu](app-service-deploy-local-git.md), FTP nasazení nepodporuje následující automatizace nasazení: 

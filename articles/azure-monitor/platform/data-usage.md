@@ -10,17 +10,15 @@ ms.assetid: 74d0adcb-4dc2-425e-8b62-c65537cef270
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8a1ee511848cf854374323b356492f374988d5d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: af41e2af87afbbeb8629d07508d4e5244351a4df
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109638"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277338"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -174,7 +172,7 @@ Tato část popisuje postup vytvoření upozornění v těchto případech:
 - Objem dat překračuje zadanou velikost.
 - Očekává se, že objem dat překročí zadanou velikost.
 
-Upozornění Azure podporují [upozornění protokolu](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md) využívající vyhledávací dotazy. 
+Upozornění Azure podporují [upozornění protokolu](../../azure-monitor/platform/alerts-unified-log.md) využívající vyhledávací dotazy. 
 
 Následující dotaz vrátí výsledek, pokud se za posledních 24 hodin shromáždilo více než 100 GB dat:
 
@@ -186,7 +184,7 @@ Následující dotaz pomocí jednoduchého vzorce předvídá, jestli dojde k od
 
 Pokud chcete upozornit na jiný objem dat, změňte v dotazech hodnotu 100 na počet GB, na který chcete upozornit.
 
-Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../../monitoring-and-diagnostics/alert-metric.md).
+Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../../azure-monitor/platform/alerts-metric.md).
 
 Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24 hodin) nastavte:  
 
@@ -200,7 +198,7 @@ Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24
    - **Název** na *Větší objem dat než 100 GB během 24 hodin*.
    - **Závažnost** na *Upozornění*.
 
-Zadejte existující nebo vytvořte novou [Skupinu akcí](../../monitoring-and-diagnostics/monitoring-action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
+Zadejte existující nebo vytvořte novou [Skupinu akcí](../../azure-monitor/platform/action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hodin bude shromážděno více než 100 GB dat) nastavte:
 
@@ -214,13 +212,13 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
    - **Název** na *Očekávaný větší objem dat než 100 GB během 24 hodin*.
    - **Závažnost** na *Upozornění*.
 
-Zadejte existující nebo vytvořte novou [Skupinu akcí](../../monitoring-and-diagnostics/monitoring-action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
+Zadejte existující nebo vytvořte novou [Skupinu akcí](../../azure-monitor/platform/action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Pokud obdržíte upozornění, pomocí kroků v následující části můžete řešit potíže způsobující větší využití, než se čekalo.
 
 ## <a name="next-steps"></a>Další postup
 * V tématu [Prohledávání protokolů v Log Analytics](../log-query/log-query-overview.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
-* Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../../monitoring-and-diagnostics/alert-metric.md).
+* Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../../azure-monitor/platform/alerts-metric.md).
 * Použijte [cílení na řešení](../insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 * Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí zabezpečení, přečtěte si téma popisující [zásady filtrování v Azure Security Center](../../security-center/security-center-enable-data-collection.md).
 * Změňte [konfiguraci čítačů výkonu](data-sources-performance-counters.md).

@@ -13,17 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0b6fae59fbe0fa86cb16b176eb1df47e031d04f1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138785"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317182"
 ---
-<a id="preparemachines"></a>
-
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava vašeho nasazení clusteru Service Fabric Standalone
-Před vytvořením clusteru, proveďte následující kroky.
+
+<a id="preparemachines"></a>Před vytvořením clusteru, proveďte následující kroky.
 
 ## <a name="plan-your-cluster-infrastructure"></a>Plánování infrastruktury clusteru
 Chystáte se vytvořit cluster Service Fabric na počítačích "vlastníte", abyste se mohli rozhodnout, jaké druhy chyb, které má cluster k překonání. Například potřebujete samostatné řádky napájení nebo zadaný k těmto počítačům připojení k Internetu? Kromě toho zvážit fyzické zabezpečení těchto počítačů. Kde se počítače nacházejí a kdo potřebuje přístup k nim? Po těchto rozhodnutí, můžete namapovat na počítače logicky do různých domén selhání (viz dál). Plánování pro produkční clustery infrastruktury je složitější než pro testovací clustery.
@@ -109,8 +108,8 @@ Při konfiguraci Správce clusteru samostatného clusteru Service Fabric, prost�
 3. Žádná z počítače uzlu clusteru by měl být řadičem domény.
 4. Pokud je cluster k nasazení zabezpečeného clusteru, ověřte nezbytné požadavky jsou v umístění a správně nakonfigurované pro konfiguraci zabezpečení.
 5. Pokud cluster počítače nejsou přístupné z Internetu, nastavte v konfiguraci clusteru následující:
-   * Zakázat telemetrická data: v části *vlastnosti* nastavit *"enableTelemetry": false*
-   * Zakázat automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: v části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
+   * Zakážete telemetrická data: V části *vlastnosti* nastavit *"enableTelemetry": false*
+   * Zakážete automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: V části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
    * Případně, pokud přístup k síti internet, je omezený na uvedené prázdné domény, domény níže jsou požadovány pro automatický upgrade: go.microsoft.com download.microsoft.com
 
 6. Nastavit příslušné výjimky antivirové ochrany v Service Fabric:

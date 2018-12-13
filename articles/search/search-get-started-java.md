@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Search v Javě | Dokumentace Microsoftu
+title: Začínáme s Azure Search v Javě – Azure Search
 description: Jak vytvořit hostovanou cloudovou vyhledávací aplikaci v Azure pomocí programovacího jazyka Java.
 services: search
 author: jj09
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: d1ca905d415eb8ab49c449a69707c56d5c717081
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec2018
+ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419295"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316957"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -45,13 +46,13 @@ Program **SearchServlet.java** v této aplikaci sestaví a načte index pomocí 
 ## <a name="about-the-program-files"></a>O souborech programu
 Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 
-* Search.jsp: Poskytuje uživatelské rozhraní.
-* SearchServlet.java: Poskytuje metody (podobně jako řadič v MVC).
-* SearchServiceClient.java: Zpracovává požadavky HTTP.
-* SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody.
-* Document.java: Poskytuje datový model.
-* config.properties: Nastavuje adresu URL služby Search a klíč api-key.
-* Pom.XML: Závislost Maven
+* Search.jsp: Poskytuje uživatelské rozhraní
+* SearchServlet.java: Poskytuje metody (podobně jako řadič v MVC)
+* SearchServiceClient.java: Zpracovává požadavky HTTP
+* SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody
+* Document.Java: Poskytuje datový model.
+* config.Properties: Nastaví hledání služby adresy URL a klíč api-key
+* pom.XML: Závislost Maven
 
 <a id="sub-2"></a>
 
@@ -104,7 +105,7 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 7. Klikněte na **Dokončit**.
 8. Vyberte **Okno** > **Předvolby** > **Java** > **Nainstalovaná prostředí JRE** > **Přidat**.
 9. V okně **Přidat prostředí JRE**, vyberte **Standardní virtuální počítač**.
-10. Klikněte na **Další**.
+10. Klikněte na tlačítko **Další**.
 11. V definici prostředí JRE v kořenovém adresáři JRE klikněte na **Adresář**.
 12. Přejděte do adresáře **Program Files** > **Java** a vyberte sadu JDK, kterou jste dříve nainstalovali. Je důležité vybrat jako prostředí JRE sadu JDK.
 13. V okně Nainstalovaná prostředí JRE zvolte **JDK**. Vaše nastavení by mělo vypadat jako na následujícím snímku obrazovky.

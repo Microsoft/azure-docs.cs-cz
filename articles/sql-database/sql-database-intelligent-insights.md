@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e639bd40c877aded1439fe999fcf3f7114b9a727
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 573e0dd1bae584b12cfd3859fe63d7ca20bb7b52
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890666"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278130"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Inteligentní přehledy s využitím AI k monitorování a ladění výkonu databáze
 
@@ -84,7 +84,7 @@ Další informace o povolení protokolování Intelligent Insights a konfigurace
 Řešení Azure SQL Analytics poskytuje grafické uživatelské rozhraní, vytváření sestav a upozorňování na výkonu databáze, spolu s Intelligent Insights diagnostické protokoly data.
 
 > [!TIP]
-> Rychlé zahájení práce: nejjednodušší způsob, jak získat firmu s využitím inteligentních přehledů je použít společně s Azure SQL Analytics, která bude poskytovat grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidat řešení Azure SQL Analytics z webu marketplace, vytvořit pracovní prostor uvnitř tohoto řešení a potom pro každou databázi, kterého chcete povolit inteligentní přehledy na, nakonfigurujte vysílání datového proudu protokolu "SQLInsights" v okně nastavení diagnostiky nové databáze pracovní prostor služby Azure SQL Analytics.
+> Rychlé zahájení práce: Nejjednodušší způsob, jak získat firmu s využitím inteligentních přehledů je použít společně s Azure SQL Analytics, která bude poskytovat grafické uživatelské rozhraní pro problémy s výkonem databáze. Přidat řešení Azure SQL Analytics z webu marketplace, vytvořit pracovní prostor uvnitř tohoto řešení a potom pro každou databázi, kterého chcete povolit inteligentní přehledy na, nakonfigurujte vysílání datového proudu protokolu "SQLInsights" v okně nastavení diagnostiky nové databáze pracovní prostor služby Azure SQL Analytics.
 >
 
 Před požadavkem je mít Azure SQL Analytics přidat na řídicí panel portálu Azure z webu marketplace a chcete vytvořit pracovní prostor, přečtěte si téma [konfigurovat Azure SQL Analytics](../azure-monitor/insights/azure-sql.md#configuration)

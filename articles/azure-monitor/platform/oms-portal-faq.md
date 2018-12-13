@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 61e1a02c3f1c194432750dce8ddf8162a981771d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002471"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271466"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -109,7 +108,7 @@ Spravovat řešení v **řešení** nabídce pracovního prostoru.
 Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../insights/solutions.md#install-a-management-solution) z Azure Marketplace. [Odebrat řešení](../insights/solutions.md#remove-a-management-solution) ze seznamu nainstalovaná řešení.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak vytvořit a spravovat upozornění?
-Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../../monitoring-and-diagnostics/alert-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
+Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../../azure-monitor/platform/alerts-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../../azure-monitor/platform/alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak získám přístup do své řídicí panely?
 [Můj řídicí panel](dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../learn/tutorial-logs-dashboards.md) do řídicích panelů Azure.

@@ -230,7 +230,7 @@ Každé pole může mít jednu z následujících typů hodnot:
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>"0 5 *** *"</nobr>|na hh:05:00, kde je hh každou hodinu (jednou za hodinu)|
 |Všechny hodnoty (`*`)|<nobr>"0 * 5 ** *"</nobr>|na 5:mm: 00 každý den, kdy mm se každou minutu v hodině (60 za den)|
-|Rozsah (`-` operátor)|<nobr>"5-7 viz *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
+|Rozsah (`-` operátor)|<nobr>"5-7 viz * * * * *"</nobr>|na hh:mm:05 hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3 x minuty)|  
 |Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|na hh:mm:05 hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3 x minuty)|
 |Hodnota intervalu (`/` operátor)|<nobr>"0 * / 5 *** *"</nobr>|mít hh:05:00 hh:10:00 hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát větší hodiny)|
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Node.js a MongoDB v Azure | Microsoft Docs
+title: Sestavení aplikace v Node.js s MongoDB – služba Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak v Azure zprovoznit aplikaci Node.js s připojením k databázi Cosmos DB pomocí připojovacího řetězce MongoDB.
 services: app-service\web
 documentationcenter: nodejs
@@ -14,15 +14,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: a74360575f1dbaeb86886e0e04240eb97baa521a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 3666af764fa20a8343addedbddcdb12de0daf4a1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971687"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251500"
 ---
-# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js využívající MongoDB v Azure
+# <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js a MongoDB v Azure
 
 > [!NOTE]
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace Node.js a MongoDB v Azure v Linuxu](./containers/tutorial-nodejs-mongodb-app.md).
@@ -49,10 +49,10 @@ Naučíte se:
 Pro absolvování tohoto kurzu potřebujete:
 
 1. [Nainstalovat Git](https://git-scm.com/).
-1. [Nainstalovat Node.js a NPM](https://nodejs.org/).
-1. [Nainstalovat Bower](https://bower.io/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
-1. [Nainstalovat Gulp.js](https://gulpjs.com/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
-1. [Nainstalovat a spustit MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/) 
+2. [Nainstalovat Node.js a NPM](https://nodejs.org/).
+3. [Nainstalovat Bower](https://bower.io/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
+4. [Nainstalovat Gulp.js](https://gulpjs.com/) (požadavek pro [MEAN.js](https://meanjs.org/docs/0.5.x/#getting-started))
+5. [Nainstalovat a spustit MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/) 
 
 ## <a name="test-local-mongodb"></a>Test místní databáze MongoDB
 

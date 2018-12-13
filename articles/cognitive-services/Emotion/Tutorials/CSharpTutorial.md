@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozpoznávání emocí ve výrazech tváří na obrázku – rozhraní API pro rozpoznávání emocí, C#'
+title: 'Kurz: Na tváří v obrázku – rozhraní API pro rozpoznávání Emocí, rozpoznávání emocíC#'
 titlesuffix: Azure Cognitive Services
 description: Prozkoumejte základní aplikaci pro Windows umožňující rozpoznávání emocí ve výrazech tváří na obrázku.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: HT
+ms.openlocfilehash: da605ec4013fb11606f99f3d9a2dcfcfcab00d3b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237020"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163323"
 ---
-# <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Kurz: Rozpoznávání emocí ve výrazech tváří na obrázku
+# <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Kurz: Rozpoznávání emocí na tváří v obrázku.
 
 > [!IMPORTANT]
 > Rozhraní API pro rozpoznávání emocí se přestane používat 15. února 2019. Funkce rozpoznávání emocí je teď obecně dostupná v rámci [rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/). 
@@ -34,7 +34,7 @@ Před vytvořením příkladu musíte získat předplatné rozhraní API pro roz
 
 #### <a name="get-the-client-library-and-example"></a>Získání klientské knihovny a příkladu  
 Klientskou knihovnu rozhraní API pro rozpoznávání emocí můžete stáhnout prostřednictvím sady [SDK](https://www.github.com/microsoft/cognitive-emotion-windows). Stažený soubor ZIP je potřeba extrahovat do složky podle vašeho výběru, velká část uživatelů volí složku sady Visual Studio 2015.
-## <a name="Step1">Krok 1: Otevření příkladu</a>
+## <a name="Step1">Krok 1: Otevřete v příkladu</a>
 1.  Spusťte sadu Microsoft Visual Studio 2015, klikněte na **Soubor**, vyberte **Otevřít** a pak **Projekt nebo řešení**.
 2.  Přejděte do složky, kam jste uložili stažené soubory rozhraní API pro rozpoznávání emocí. Klikněte na **Emotion**, pak na **Windows** a nakonec na složku **Sample-WPF**.
 3.  Dvojím kliknutím otevřete soubor řešení sady Visual Studio 2015 (.sln) s názvem **EmotionAPI-WPF-Samples.sln**. Tím se řešení otevře v sadě Visual Studio.
@@ -50,21 +50,21 @@ Klientskou knihovnu rozhraní API pro rozpoznávání emocí můžete stáhnout 
 
 3.  Stiskněte Ctrl+Shift+B nebo klikněte na **Sestavení** na pásu karet a pak vyberte **Sestavit řešení**.
 
-## <a name="Step3">Krok 3: Spuštění příkladu</a>
+## <a name="Step3">Krok 3: Spustit příklad</a>
 1.  Po dokončení sestavení příklad spusťte stisknutím klávesy **F5** nebo kliknutím na **Spustit** na pásu karet.
 2.  Vyhledejte okno rozhraní API pro rozpoznávání emocí s **textovým polem** s textem „**Paste your subscription key here to start**“ (Začněte tím, že sem vložíte svůj klíč předplatného). Vložte do textového pole svůj klíč předplatného, jak je znázorněno na následujícím snímku obrazovky. Klíč předplatného můžete uložit na svém stolním nebo přenosném počítači, a to kliknutím na tlačítko Save Key (Uložit klíč). Pokud budete chtít odstranit klíč předplatného ze systému svého stolního nebo přenosného počítače, provedete to kliknutím na Delete Key (Odstranit klíč).
 
   ![Rozhraní funkcí Rozpoznávání emocí](../Images/EmotionKey.png)
 
 3.  V části **Select Scenario** (Výběr scénáře) klikněte na jeden ze dvou scénářů, který chcete použít (**Detect emotion using a stream** (Rozpoznávání emocí s použitím streamu) nebo **Detect emotion using a URL** (Rozpoznávání emocí s použitím adresy URL)), a pak postupujte podle pokynů na obrazovce. Microsoft přijme obrázky, které nahrajete, a může je použít k vylepšení rozhraní API pro rozpoznávání emocí a souvisejících služeb. Odesláním obrázku potvrzujete, že jste dodržovali naše [pravidla chování vývojářů](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
-4.  Pro použití s touto ukázkovou aplikací jsou k dispozici i ukázkové obrázky. Tyto obrázky najdete v [úložišti rozhraní API pro rozpoznávání tváře na GitHubu](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) ve složce **Data**. Mějte na paměti, že používání těchto obrázků je licencováno v rámci smlouvy o spravedlivém používání. To znamená, že je můžete použít k testování tohoto příkladu, ale nesmíte je znovu publikovat.
+4.  Pro použití s touto ukázkovou aplikací jsou k dispozici i ukázkové obrázky. Tyto Image můžete najít na [úložiště GitHub rozhraní API pro rozpoznávání tváře](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) pod **Data** složky. Mějte na paměti, že používání těchto obrázků je licencováno v rámci smlouvy o spravedlivém používání. To znamená, že je můžete použít k testování tohoto příkladu, ale nesmíte je znovu publikovat.
 
 ## <a name="Review">Kontrola a poznatky</a>
 Když teď máte spuštěnou aplikaci, můžeme se podívat, jak se tato ukázková aplikace integruje se službami Microsoft Cognitive Services. Usnadníte si tím další vývoj této aplikace nebo vlastní aplikace s využitím rozhraní API Microsoftu pro rozpoznávání emocí.
 
 Tato ukázková aplikace využívá klientskou knihovnu rozhraní API pro rozpoznávání emocí, což je tenká obálka klienta jazyka C# pro rozhraní API Microsoftu pro rozpoznávání emocí. Při vytváření ukázkové aplikace, jak je popsáno výše, jste klientskou knihovnu získali z balíčku NuGet. Zdrojový kód klientské knihovny si můžete prohlédnout ve složce [Client Library](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary) v umístění **Emotion** > **Windows** > **Client Library**. Tato složka je součástí staženého úložiště souborů, jak je uvedeno výše v části [Požadavky](#Prerequisites).
 
-Použití kódu klientské knihovny si můžete prohlédnout také v **Průzkumníku řešení**: V řešení **EmotionAPI-WPF_Samples** rozbalte složku **DetectEmotionUsingStreamPage.xaml** a vyhledejte soubor **DetectEmotionUsingStreamPage.xaml.cs**, který se používá pro přechod k místě uloženému souboru, nebo rozbalte složku **DetectEmotionUsingURLPage.xaml**, kde najdete soubor **DetectEmotionUsingURLPage.xaml.cs**, který se používá při nahrávání adresy URL obrázku. Dvojím kliknutím na soubory .xaml.cs je otevřete v nových oknech sady Visual Studio.
+Můžete také získat informace tom, jak používat klientskou knihovnu pro kód v **Průzkumníka řešení**: V části **EmotionAPI WPF_Samples**, rozbalte **DetectEmotionUsingStreamPage.xaml** najít **DetectEmotionUsingStreamPage.xaml.cs**, který se používá pro prohlížení místně uložených souborů, nebo rozbalte **DetectEmotionUsingURLPage.xaml** najít **DetectEmotionUsingURLPage.xaml.cs**, který se používá při nahrávání adresu URL obrázku. Dvojím kliknutím na soubory .xaml.cs je otevřete v nových oknech sady Visual Studio.
 
 V rámci kontroly, jak se klientská knihovna rozhraní API pro rozpoznávání emocí používá v naší ukázkové aplikaci, se podívejme na dva fragmenty kódu ze souborů **DetectEmotionUsingStreamPage.xaml.cs** a **DetectEmotionUsingURLPage.xaml.cs**. Oba soubory obsahují komentáře ke kódu „KEY SAMPLE CODE STARTS HERE“ (Začátek klíčového vzorového kódu) a „KEY SAMPLE CODE ENDS HERE“ (Konec klíčového vzorového kódu), které vám pomůžou vyhledat níže uvedené fragmenty kódu.
 

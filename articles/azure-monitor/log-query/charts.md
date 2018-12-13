@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 0f2a19c4e74db4fa0329587023995aa43b7b6a2a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882346"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186221"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Vytváření grafů a diagramů z dotazy Log Analytics
 

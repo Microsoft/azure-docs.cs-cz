@@ -1,5 +1,5 @@
 ---
-title: Sledování experimenty a vzdělávání metriky
+title: Sledování experimenty & školení metriky
 titleSuffix: Azure Machine Learning service
 description: Ve službě Azure Machine Learning můžete sledovat své experimenty a monitorovat metriky vylepšit proces vytváření modelu. Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7137d43805065a8f29aa8fcf5307dd5b8947b345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101343"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189468"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -330,7 +330,7 @@ Chybová matice se používá k popisu výkonu model klasifikace. Každý řáde
 
 Azure Machine Learning pro klasifikaci problémy automaticky poskytuje chybová matice pro každý model, který je sestaven. Pro každý chybovou matici automatizované ML zobrazí správně klasifikované popisky jako popisky zelené a nesprávně klasifikovaný jako červený. Velikost kruhu představuje počet vzorků v této přihrádky. Kromě toho frekvence počet každý předpokládané popisek a každému popisku true je součástí sousední pruhové grafy. 
 
-Příklad 1: Model klasifikace se špatná přesnost ![model klasifikace s nízký přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+Příklad 1: Model klasifikace s přesností špatné ![model klasifikace s nízký přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
 
 Příklad 2: Model klasifikace s vysokou přesností (ideální) ![model klasifikace s vysokou přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
 
@@ -341,7 +341,7 @@ Pomocí tohoto grafu lze porovnávat přesnosti a úplnosti křivky pro každý 
 
 Termín přesnosti představuje tuto možnost pro třídění k označení všech instancí správně. Odvolání představuje možnost pro třídění a vyhledat všechny instance konkrétní popisek. Přesnosti a úplnosti křivky znázorňuje vztah mezi tyto dva pojmy. V ideálním případě by modelu mají 100 % přesností a 100 % přesností.
 
-Příklad 1: Klasifikace model s nízkou přesnost a nízkou spojené s vracením ![model klasifikace s nízkou přesnost a nízkou odvolání](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+Příklad 1: Model klasifikace s nízkou přesnost a nízkou spojené s vracením ![model klasifikace s nízkou přesnost a nízkou odvolání](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
 
 Příklad 2: Model klasifikace s přibližně 100 % přesností a ~ 100 % odvolání (ideální) ![spojené s vracením a vysokou přesnost modelu klasifikace](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
 
@@ -349,9 +349,9 @@ Příklad 2: Model klasifikace s přibližně 100 % přesností a ~ 100 % odvol�
 
 Příjemce provozních charakteristik (nebo roc s více TŘÍDAMI) je vykreslení správně klasifikované popisků vs. nesprávně klasifikované popisky konkrétním modelu. Při trénování modelů na datové sady s vysokou posun, protože se nezobrazí falešně pozitivní popisky, může být méně informativní křivka roc s více TŘÍDAMI.
 
-Příklad 1: Klasifikace model s nízkou hodnotu true popisky a vysokou hodnotu false popisky ![klasifikační model s nízkou hodnotu true popisky a vysokou hodnotu false popisky](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+Příklad 1: Model klasifikace s nízkou hodnotu true popisky a vysokou hodnotu false popisky ![klasifikační model s nízkou hodnotu true popisky a vysokou hodnotu false popisky](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
 
-Příklad 2: Model klasifikace s vysokou hodnotu true popisky a nízkou hodnotu false popisky ![model klasifikace s vysokým true popisky a popisky s nízkou hodnotu false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+Příklad 2: Model klasifikace s vysokou popisky true a false popisky s nízkou ![model klasifikace s vysokým true popisky a popisky s nízkou hodnotu false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
 
 #### <a name="lift-curve"></a>Výtah křivky
 
@@ -369,9 +369,9 @@ Graf zvýšení nastavení vyhodnocuje výkon model klasifikace podle každá č
 
 Použijte graf kumulativní zisky si můžete vybrat klasifikace odříznutí pomocí procenta, který odpovídá požadované zisk z modelu. Tyto informace obsahuje jiný způsob řešení prohlížení výsledků v související tabulce.
 
-Příklad 1: Model klasifikace s minimální zisk ![model klasifikace s minimálními zisk](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+Příklad 1: Model klasifikace s minimálními zisk ![model klasifikace s minimálními zisk](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
 
-Příklad 2: Model klasifikace se významné zvýšení ![model klasifikace s významné zvýšení](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+Příklad 2: Model klasifikace s významné zvýšení ![model klasifikace s významné zvýšení](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
 
 #### <a name="calibration-plot"></a>Diagram kalibrací
 

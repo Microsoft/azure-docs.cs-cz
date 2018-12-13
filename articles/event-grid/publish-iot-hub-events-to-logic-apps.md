@@ -4,22 +4,22 @@ description: Pomocí služby směrování událostí služby Azure Event Grid vy
 services: iot-hub
 documentationcenter: ''
 author: kgremban
-manager: timlt
+manager: philmea
 editor: ''
 ms.service: iot-hub
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 12/07/2018
 ms.author: kgremban
-ms.openlocfilehash: 9683d2a7ebcf093f2fd56ea302c3de77b3bb1a86
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7c5030a80ead7e84526e01aa3a8a4a75ee2b276a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135011"
 ---
-# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Odesílání e-mailové oznámení o událostech služby Azure IoT Hub pomocí Logic Apps
+# <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Kurz: Posílání e-mailových oznámení o událostech Azure IoT Hub pomocí Logic Apps
 
 Azure Event Grid vám umožňuje reagovat na události ve službě IoT Hub aktivováním akcí v podnikových aplikacích ve směru server-klient.
 
@@ -37,19 +37,16 @@ Napřed vytvořte aplikaci logiky a přidejte trigger služby Event Grid, který
 
 ### <a name="create-a-logic-app-resource"></a>Vytvořte prostředek aplikace logiky
 
-1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Nový** > **Integrace** > **Aplikace logiky**.
+1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek** > **integrace** > **aplikace logiky**.
 
    ![Vytvoření aplikace logiky](./media/publish-iot-hub-events-to-logic-apps/select-logic-app.png)
 
 2. Pojmenujte svoji aplikaci logiky jedinečným názvem v rámci vašeho předplatného a potom vyberte stejné předplatné, skupinu prostředků a umístění, jako má vaše centrum IoT. 
-3. Až to budete mít, vyberte **Připnout na řídicí panel** a zvolte **Vytvořit**.
+3. Vyberte **Vytvořit**.
 
-   Právě jste vytvořili prostředek Azure pro vaši aplikaci logiky. Až Azure nasadí aplikaci logiky, v Návrháři pro Logic Apps se zobrazí šablony pro obvyklé scénáře, abyste mohli začít rychleji.
+4. Jakmile je prostředek vytvořený, přejděte do aplikace logiky. 
 
-   > [!NOTE] 
-   > Když vyberete **Připnout na řídicí panel**, aplikace logiky se automaticky otevře v návrháři pro Logic Apps. Nebo můžete aplikaci logiky najít a otevřít ručně.
-
-4. V návrháři aplikace logiky v části **Šablony** zvolte **Prázdná aplikace logiky**, abyste mohli sestavit zcela novou aplikaci logiky.
+5. Návrhář pro Logic Apps ukazuje šablon pro běžné vzory, můžete začít rychleji. V návrháři aplikace logiky v části **Šablony** zvolte **Prázdná aplikace logiky**, abyste mohli sestavit zcela novou aplikaci logiky.
 
 ### <a name="select-a-trigger"></a>Výběr triggeru
 
@@ -66,51 +63,51 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 
 4. Do textového pole vložte následující ukázkový kód JSON a potom vyberte **Hotovo**:
 
-```json
-[{
-  "id": "56afc886-767b-d359-d59e-0da7877166b2",
-  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
-  "subject": "devices/LogicAppTestDevice",
-  "eventType": "Microsoft.Devices.DeviceCreated",
-  "eventTime": "2018-01-02T19:17:44.4383997Z",
-  "data": {
-    "twin": {
-      "deviceId": "LogicAppTestDevice",
-      "etag": "AAAAAAAAAAE=",
-      "deviceEtag": "null",
-      "status": "enabled",
-      "statusUpdateTime": "0001-01-01T00:00:00",
-      "connectionState": "Disconnected",
-      "lastActivityTime": "0001-01-01T00:00:00",
-      "cloudToDeviceMessageCount": 0,
-      "authenticationType": "sas",
-      "x509Thumbprint": {
-        "primaryThumbprint": null,
-        "secondaryThumbprint": null
-      },
-      "version": 2,
-      "properties": {
-        "desired": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        },
-        "reported": {
-          "$metadata": {
-            "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
-          },
-          "$version": 1
-        }
-      }
-    },
-    "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice"
-  },
-  "dataVersion": "1",
-  "metadataVersion": "1"
-}]
-```
+   ```json
+   [{
+     "id": "56afc886-767b-d359-d59e-0da7877166b2",
+     "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>",
+     "subject": "devices/LogicAppTestDevice",
+     "eventType": "Microsoft.Devices.DeviceCreated",
+     "eventTime": "2018-01-02T19:17:44.4383997Z",
+     "data": {
+       "twin": {
+         "deviceId": "LogicAppTestDevice",
+         "etag": "AAAAAAAAAAE=",
+         "deviceEtag": "null",
+         "status": "enabled",
+         "statusUpdateTime": "0001-01-01T00:00:00",
+         "connectionState": "Disconnected",
+         "lastActivityTime": "0001-01-01T00:00:00",
+         "cloudToDeviceMessageCount": 0,
+         "authenticationType": "sas",
+         "x509Thumbprint": {
+           "primaryThumbprint": null,
+           "secondaryThumbprint": null
+         },
+         "version": 2,
+         "properties": {
+           "desired": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           },
+           "reported": {
+             "$metadata": {
+               "$lastUpdated": "2018-01-02T19:17:44.4383997Z"
+             },
+             "$version": 1
+           }
+         }
+       },
+       "hubName": "egtesthub1",
+       "deviceId": "LogicAppTestDevice"
+     },
+     "dataVersion": "1",
+     "metadataVersion": "1"
+   }]
+   ```
 
 5. Můžete se zobrazit automaticky otevírané okno s oznámením **Nezapomeňte do svého požadavku přidat hlavičku Content-Type nastavenou na application/json**. Tento návrh můžete v klidu ignorovat a přejít k další části. 
 
@@ -119,16 +116,20 @@ Trigger je konkrétní událost, která spustí aplikaci logiky. V tomto kurzu t
 Akce jsou všechny kroky, které se provádějí potom, co trigger spustí pracovní postup aplikace logiky. V tomto kurzu je akce poslání e-mailového oznámení z vašeho poskytovatele e-mailu. 
 
 1. Vyberte **Nový krok**. Tím se otevře okno **Vybrat akci**.
+
 2. Vyhledejte **E-mail**.
+
 3. Vyhledejte a vyberte konektor odpovídající vašemu poskytovateli e-mailu. Tento kurz používá **Outlook z Office 365**. Kroky pro jiné poskytovatele e-mailu jsou podobné. 
 
    ![Výběr konektoru poskytovatele e-mailu](./media/publish-iot-hub-events-to-logic-apps/o365-outlook.png)
 
 4. Vyberte akci **Odeslat e-mail**. 
+
 5. Pokud budete vyzváni, přihlaste se k e-mailovému účtu. 
+
 6. Vytvořte šablonu e-mailu. 
-   * **Komu**: Zadejte e-mailovou adresu, která bude dostávat e-maily s oznámeními. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
-   * **Předmět** a **Text**: Napište text e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí.  
+   * **K**: Zadejte e-mailovou adresu pro příjem oznámení e-mailů. V tomto kurzu použijte e-mailový účet, který máte dostupný pro testování. 
+   * **Předmět** a **tělo**: Zápis textu e-mailu. Vyberte vlastnosti JSON z nástroje pro výběr, aby se zahrnul dynamický obsah na základě dat událostí.  
 
    Vaše e-mailová šablona může vypadat podobně jako tento příklad:
 
@@ -161,22 +162,24 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
    ![Vytvoření nového odběru události](./media/publish-iot-hub-events-to-logic-apps/event-subscription.png)
 
 4. Vytvořte odběr události s následujícími hodnotami: 
-    * **Typ události:** Zrušte zaškrtnutí možnosti Přihlásit se k odběru všech typů událostí a v nabídce vyberte **Vytvoření zařízení**.
-    * **Podrobnosti o koncovém bodu:** Jako Typ koncového bodu vyberte **Webhook**, klikněte na vybraný koncový bod, vložte adresu URL, kterou jste zkopírovali ze své aplikace logiky, a potvrďte výběr.
+    * **Typ události**: Zrušte zaškrtnutí políčka přihlásit k odběru pro všechny typy událostí a vyberte **zařízení vytvořit** z nabídky.
+    * **Podrobnosti o koncovém bodu**: Vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
 
     ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-url.png)
 
-    * **Podrobnosti o odběru událostí:** Zadejte popisný název a vyberte **Schéma služby Event Grid**.
-
-  Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. V tomto kurzu ale využijme nepovinná pole a vyfiltrujme konkrétní zařízení: 
-
-  * **Předmět začíná na:** Zadejte `devices/Building1_` k filtrování událostí zařízení v budově 1.
-  * **Předmět končí na:** Zadejte `_Temperature` k filtrování událostí zařízení souvisejících s teplotou.
+    * **Podrobnosti o předplatném události**: Zadejte popisný název a vyberte **schématu Event Grid**
 
   Až to budete mít hotové, měl by formulář vypadat asi jako v následujícím příkladu: 
 
     ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
-    
+
+5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. V tomto kurzu ale použijeme volitelná pole k filtrování pro konkrétní zařízení. Vyberte **další funkce** v horní části formuláře. 
+
+6. Vytvořte následující filtry:
+
+  * **Předmět začíná**: Zadejte `devices/Building1_` Chcete-li filtrovat události zařízení v budově 1.
+  * **Předmět končí**: Zadejte `_Temperature` pro filtrování zařízení události související s teploty.
+
 5. Výběrem možnosti **Vytvořit** uložte odběr události.
 
 ## <a name="create-a-new-device"></a>Vytvoření nového zařízení

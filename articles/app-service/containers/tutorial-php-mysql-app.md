@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace PHP využívající databázi MySQL ve službě Azure App Service v Linuxu | Microsoft Docs
+title: Vytvoření webové aplikace v PHP s MySQL v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Naučte se v Azure zprovoznit aplikaci PHP s připojením k databázi MySQL v Azure.
 services: app-service\web
 author: cephalin
@@ -10,13 +10,13 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 2f69f3f8864fc196e9bdc4deec13580fd4b816ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: a8fc0b9dee8b496eabf7efded7ab83be0b958244
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967704"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274849"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace PHP využívající databázi MySQL ve službě Azure App Service v Linuxu
 
@@ -47,7 +47,7 @@ Pro absolvování tohoto kurzu potřebujete:
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat PHP 5.6.4 nebo novější](https://php.net/downloads.php)
 * [Nainstalovat Composer](https://getcomposer.org/doc/00-intro.md)
-* Povolit následující rozšíření PHP vyžadovaná aplikací Laravel: OpenSSL, PDO-MySQL, Mbstring, Tokenizer a XML
+* Povolte následující rozšíření PHP, které Laravel potřebuje: OpenSSL, PDO-MySQL, Mbstring, Tokenizátor, XML
 * [Nainstalovat a spustit MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 ## <a name="prepare-local-mysql"></a>Příprava místního MySQL
@@ -62,7 +62,7 @@ V okně terminálu se připojte k místnímu serveru MySQL. Toto okno terminálu
 mysql -u root -p
 ```
 
-Pokud se zobrazí výzva k zadání hesla, zadejte heslo k účtu `root`. Pokud si heslo ke kořenovému účtu nepamatujete, projděte si článek [MySQL: Resetování kořenového hesla](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Pokud se zobrazí výzva k zadání hesla, zadejte heslo k účtu `root`. Pokud si heslo ke kořenovému účtu nepamatujete, přečtěte si téma [MySQL: Postup resetování kořenového hesla](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
 Pokud se váš příkaz úspěšně provede, znamená to, že je váš server MySQL spuštěný. Pokud ne, provedením [kroků po instalaci MySQL](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html) zkontrolujte, jestli je místní server MySQL spuštěný.
 

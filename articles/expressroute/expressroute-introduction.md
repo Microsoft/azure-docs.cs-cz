@@ -1,5 +1,5 @@
 ---
-title: 'Přehled ExpressRoute: Rozšiřte svoji místní síť do Azure pomocí soukromého připojení | Dokumentace Microsoftu'
+title: 'Rozšíření místní sítě do Azure pomocí soukromého připojení – přehled ExpressRoute: Azure | Dokumentace Microsoftu'
 description: Technický přehled ExpressRoute vysvětluje, jak funguje připojení ExpressRoute a jak můžete svoji místní síť rozšířit do Azure pomocí soukromého připojení.
 services: expressroute
 author: mialdrid
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 10/18/2018
 ms.author: mialdrid
-ms.openlocfilehash: fb3e7ac449934fe9fa36b1683bda20ff3e07f0f4
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 56baabb95a7873b48a27943a58b8e26c56efb6b7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429401"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139550"
 ---
 # <a name="expressroute-overview"></a>Přehled ExpressRoute
-Microsoft Azure ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
+ExpressRoute umožňuje rozšířit vaše místní sítě do cloudu Microsoftu přes soukromé připojení zajišťované poskytovatelem připojení. Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 nebo Dynamics 365.
 
 Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění. Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného internetu. To dovoluje připojením ExpressRoute poskytovat větší spolehlivost, vyšší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes internet. Informace o připojení sítě k Microsoftu pomocí ExpressRoute najdete v tématu o [modelech připojení ExpressRoute](expressroute-connectivity-models.md).
 
-![](./media/expressroute-introduction/expressroute-connection-overview.png)
+![Přehled připojení ExpressRoute](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -77,7 +78,7 @@ ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke glo
 Ke klíčovým funkcím, které ExpressRoute Direct poskytuje, patří mimo jiné:
 
 * Masivní příjem dat do služeb jako Storage a Cosmos DB
-* Fyzická izolace pro odvětví, která jsou regulovaná a vyžadují vyhrazené a izolované připojení, například: bankovnictví, státní správa a maloobchodní prodej
+* Fyzické izolace pro obory, které upraví a vyžadují vyhrazená a izolované připojení, jako například: Bankovnictví, Government a maloobchodního prodeje
 * Podrobné řízení distribuce okruhů podle organizační jednotky
 
 Další informace najdete v článku o [ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973).
@@ -110,7 +111,7 @@ Můžete si vybrat fakturační model, který vám nejlépe vyhovuje. Zvolte si 
 ## <a name="faq"></a>Nejčastější dotazy
 Nejčastější dotazy týkající se ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Seznamte se s [modely připojení ExpressRoute](expressroute-connectivity-models.md).
 * Přečtěte si další informace o připojeních ExpressRoute a doménách směrování. Viz [Okruhy ExpressRoute a domény směrování](expressroute-circuit-peerings.md).
 * Vyhledejte poskytovatele služeb. Viz [Partneři ExpressRoute a umístění partnerského vztahu](expressroute-locations.md).

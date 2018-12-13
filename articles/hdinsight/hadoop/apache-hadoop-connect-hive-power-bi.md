@@ -1,5 +1,5 @@
 ---
-title: Vizualizovat velké objemy dat v Power BI v Azure HDInsight
+title: Vizualizace dat pomocí Power BI – Azure HDInsight s Apache Hive
 description: Zjistěte, jak použít Microsoft Power BI k vizualizaci dat Hive zpracovává Azure HDInsight.
 keywords: hdinsight hadoop, hive, interaktivní dotazy, interaktivní hive, LLAP, odbc
 services: hdinsight
@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 12/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6711a5595c6b7c6caaff97f4c1996817be1abce
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 86006e68ac06ce26eb58cc14d4d881f81981183c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634545"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164292"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive pomocí Microsoft Power BI v Azure HDInsight pomocí ovladače ODBC
 
-Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizace dat Apache Hive. 
+Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizace dat Apache Hive.
 
 >[!IMPORTANT]
 > Můžete využít ovladače Hive ODBC pro import prostřednictvím konektoru obecná rozhraní ODBC v Power BI Desktopu. Však není doporučeno pro BI úlohy uvedené jako neinteraktivní povaze modul dotazu Hive. [Konektor HDInsight Interactive Query](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepší možnosti pro jejich výkon.

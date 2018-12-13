@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 097b7efd7643e3b8450284d19e13a428dfd48ac2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138853"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316967"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nelze provést připojení RDP k virtuálnímu počítači, protože virtuální počítač se spustí v nouzovém režimu
 
 Tento článek popisuje, jak vyřešit problém, ve kterém nemůže připojit k Azure Windows Virtual Machines (VM), protože virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu.
 
 > [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -111,23 +111,24 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
     REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
 
     reg unload HKLM\BROKENSYSTEM
+    ```
 
-#### Configure the Windows to boot into normal mode
+#### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Konfigurace Windows pro spuštění v normálním režimu.
 
-1. Open an elevated command prompt session (**Run as administrator**).
-2. Check the boot configuration data. In the following commands, we assume that the drive letter that is assigned to the attached OS disk is F. Replace this drive letter with the appropriate value for your VM.
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**).
+2. Zkontrolujte konfigurační data spouštění. V následujících příkazech předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 
         bcdedit /store F:\boot\bcd /enum
-    Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".
+    Poznamenejte si název identifikátoru oddílu, který má **\windows** složky. Ve výchozím nastavení je název identifikátoru "Výchozí".
 
-    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
+    Pokud virtuální počítač je nakonfigurovaný pro spuštění v nouzovém režimu, zobrazí se další příznak v části **Windows spouštěcí zavaděč** část s názvem **bezpečného**. Pokud se nezobrazí **bezpečného** příznak, v tomto článku se nedá použít pro váš scénář.
 
-    ![The image about boot Identifier](./media/troubleshoot-rdp-safe-mode/boot-id.png)
+    ![Obrázek o spouštěcí identifikátor](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
-3. Remove the **safeboot** flag, so the VM will boot into normal mode:
+3. Odeberte **bezpečného** příznak, tak virtuální počítač se spustí v normálním režimu:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Check the boot configuration data to make sure that the **safeboot** flag is removed:
+4. Zkontrolujte, že konfigurační data spouštění **bezpečného** odebrán příznak:
 
         bcdedit /store F:\boot\bcd /enum
-5. [Detach the OS disk and recreate the VM](../windows/troubleshoot-recovery-disks-portal.md). Then check whether the issue is resolved.
+5. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Zkontrolujte, zda je problém vyřešen.

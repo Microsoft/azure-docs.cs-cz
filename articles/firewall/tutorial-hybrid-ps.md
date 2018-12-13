@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 467e8242ffeec435976f3f8fa5740908ea93d262
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316391"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260901"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -24,7 +24,7 @@ V tomto kurzu vytvoříte tři virtuální sítě:
 
 - **Připojení typu VNet-Hub** – brána firewall je v této virtuální síti.
 - **Virtuální sítě paprsků** -virtuální sítě paprsků představuje úlohy na Azure.
-- **Připojení typu VNet-Onprem** – místní síť představuje místní virtuální sítě. Ve skutečném nasazení může být připojená přes připojení VPN nebo ExpressRoute. Pro zjednodušení tento kurz používá připojení brány VPN a Azure umístěný virtuální síť se používá k reprezentování v místní síti.
+- **Připojení typu VNet-Onprem** – místní síť představuje místní virtuální sítě. Skutečné nasazení se dá připojit pomocí připojení VPN nebo trasy. Pro zjednodušení tento kurz používá připojení brány VPN a Azure umístěný virtuální síť se používá k reprezentování v místní síti.
 
 ![Brána firewall v hybridní síti](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -310,6 +310,9 @@ Dále vytvořte několik tras:
 - Trasa z podsítě brány rozbočovače do podsítě paprsku přes IP adresu brány firewall
 - Výchozí trasa z podsítě paprsku přes IP adresu brány firewall
 
+>[!NOTE]
+>Azure brány Firewall musí mít přímé připojení k Internetu. Pokud jste povolili vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset nakonfigurovat 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**a pak ji přiřaďte  **AzureFirewallSubnet**.
+
 ```azurepowershell
 #Create a route table
 $routeTableHubSpoke = New-AzureRmRouteTable `
@@ -482,4 +485,4 @@ Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete
 Dál můžete pokračovat monitorováním protokolů brány Azure Firewall.
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
+> [Kurz: Monitorujte protokoly brány Firewall na Azure](./tutorial-diagnostics.md)

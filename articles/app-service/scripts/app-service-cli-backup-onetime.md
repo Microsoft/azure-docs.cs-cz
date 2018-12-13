@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Zálohování webové aplikace | Microsof
 description: Ukázkový skript Azure CLI – Zálohování webové aplikace
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.service: app-service-web
@@ -12,16 +12,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 816cc1cbe13a43aaaf527fe74ab8a3eb5faab3a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu;cephalin
+ms.custom: seodec18
+ms.openlocfilehash: 195995d394404af11f277cba9d3de342347f8527
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946183"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183875"
 ---
-# <a name="back-up-a-web-app"></a>Zálohování webové aplikace
+# <a name="back-up-a-web-app-using-cli"></a>Zálohování webové aplikace pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
@@ -52,7 +52,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | Vytvoří zálohu webové aplikace. |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh webové aplikace. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

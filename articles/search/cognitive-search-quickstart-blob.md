@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření kanálu kognitivního hledání ve službě Azure Search pomocí portálu | Microsoft Docs'
+title: 'Rychlý start: kanál Kognitivního vyhledávání na webu Azure portal – Azure Search'
 description: Ukázka dovedností extrakce dat a zpracování přirozeného jazyka a obrázku na portálu Azure Portal s ukázkovými daty
 manager: cgronlun
 author: HeidiSteen
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: ef4a445539efa27ebd154980a4ea8b70b5aba082
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec2018
+ms.openlocfilehash: 0dc942b7e1779efab5b9fb2477b8358554bbb31d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956904"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310092"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
+# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního vyhledávání využitím dovedností a ukázkových dat
 
 Cognitive Search (Preview) přidává dovednosti extrakce dat, zpracování přirozeného jazyka (NLP) a zpracování obrazu do kanálu pro indexaci služby Azure Search, díky čemuž je možné v neprohledávatelném a nestrukturovaném obsahu snadněji vyhledávat. Informace vytvořené určitou dovedností, např. rozpoznáváním entit nebo analýzou obrazu, se přidají do indexu v Azure Search.
 
@@ -47,7 +48,9 @@ Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořen�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,7 +82,7 @@ Nejdříve se do služby Azure Search přihlaste.
   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
   ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
   > [!NOTE]
-  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Cenu této funkce oznámíme později.
+  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Bude moct provádět omezené obohacení bez přiřazení placené prostředku služeb Cognitive Services. Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
@@ -112,7 +115,7 @@ Kliknutím na tlačítko **OK** vytvořte zdroj dat.
 
 Jednou z výhod **Průvodce importem dat** je to, že může navíc vytvořit váš index. Při vytváření zdroje dat průvodce zároveň sestaví schéma indexu. Vytvoření indexu může trvat několik sekund.
 
-### <a name="step-2-add-cognitive-skills"></a>Krok 2: Přidání kognitivních dovedností
+### <a name="step-2-add-cognitive-skills"></a>Krok 2: Přidat kognitivní dovednosti
 
 Jako další krok přidáte do kanálu indexování kroky pro rozšiřování. Portál nabízí předdefinované kognitivní dovednosti pro analýzu obrazu a textu. Na portálu sada dovedností pracuje s jedním polem zdroje. To může vypadat jako malý cíl, ale pro objekty blob služby Azure pole `content` obsahuje většinu dokumentu objektu blob (např. wordový dokument nebo powerpointovou sadu karet). Z toho důvodu je toto pole ideální vstup, protože je v něm veškerý obsah objektu blob.
 
@@ -212,4 +215,4 @@ Pokud chcete experimentovat s indexováním a rozšiřováním, můžete znovu s
 Alternativně můžete znovu použít ukázková data a služby, které jste vytvořili, a v dalším kurzu se naučit dělat totéž programově. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Informace o rozhraních REST API kognitivního hledání](cognitive-search-tutorial-blob.md)
+> [Kurz: Přečtěte si, že že kognitivní vyhledávání rozhraní REST API](cognitive-search-tutorial-blob.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: b8d759c7b55608be780389991e6bb393f4f3fe9f
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 609389460ab18ba947130e64dbe7b599574816a5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981399"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53215927"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Zobrazovat virtuální počítače s naplánovanou údržbou na portálu
 
@@ -29,7 +29,7 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
 
 4. Vyberte a přidejte následující sloupce:
 
-   **Údržba**: Zobrazí stav údržby pro virtuální počítač. Toto jsou možné hodnoty:
+   **Údržba**: Zobrazuje stav údržby pro virtuální počítač. Toto jsou možné hodnoty:
       
       | Hodnota | Popis |
       |-------|-------------|
@@ -41,15 +41,15 @@ Můžete použít na webu Azure portal a vyhledejte virtuální počítače s na
       | - | Váš virtuální počítač není součástí vlny plánované údržby. |
       
 
-   **Údržba – samoobslužná služba okno**: ukazuje časový interval, spustíte můžete samoobslužné údržby na virtuálních počítačích.
+   **Údržba – samoobslužná služba okno**: Ukazuje časové okno spustíte můžete samoobslužné údržby na virtuálních počítačích.
    
-   **Údržba – naplánované okno**: Zobrazuje časový interval, když Azure, aby bylo možné dokončit údržbu zůstane váš virtuální počítač. 
+   **Údržba – naplánované okno**: Zobrazuje časové okno, když Azure, aby bylo možné dokončit údržbu zůstane váš virtuální počítač. 
 
 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [vytvoření upozornění protokolu aktivit pro oznámení služby](../articles/monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Můžete přidat další příjemce a kanály pro tuto komunikaci tak, že vytvoříte upozornění protokolu aktivit Azure. Další informace najdete v tématu [vytvoření upozornění protokolu aktivit pro oznámení služby](../articles/azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 Ujistěte se, že nastavíte **typ události** jako **plánované údržby** a **služby** jako **Virtual Machine Scale Sets** a/nebo **Virtuálních počítačů**
     

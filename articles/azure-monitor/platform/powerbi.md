@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 89be723b3f5791baf0a1fb161c92f590cc2677e0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e5053fe0a22dfa1c85438e8d293046343e09db52
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002478"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191797"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Import dat Azure Log Analytics do Power BI
 

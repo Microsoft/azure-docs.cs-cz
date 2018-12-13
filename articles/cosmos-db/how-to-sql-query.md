@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 86ad385488d9661abd52a2bd1a2d561956f0cbb3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4f2a8431e353246b1f7304e7bfe30d13a7b4af4b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082556"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139295"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Azure Cosmos DB podporuje dotazování položek pomocí SQL (Structured Query La
 
 * Azure Cosmos DB používá model programování v jazyce JavaScript jako základ pro dotazovací jazyk. Rozhraní SQL API je integrován do systému typů v jazyce JavaScript, vyhodnocení výrazu a volání funkce. Tato naopak poskytuje přirozený programovací model pro relační projekce, hierarchická navigace v rámci položky formátu JSON, spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu, kromě jiných funkcí.
 
-Tento článek vás provede Příklady dotazů SQL pomocí jednoduchého položek JSON. Další informace o syntaxi jazyka SQL služby Azure Cosmos DB najdete v tématu [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md) článku.
+Tento článek vás provede Příklady dotazů SQL pomocí jednoduchého položek JSON. Další informace o syntaxi jazyka SQL služby Azure Cosmos DB najdete v tématu [referenční příručka syntaxe SQL](sql-api-query-reference.md) článku.
 
 ## <a id="GettingStarted"></a>Začínáme s příkazy jazyka SQL
 
@@ -86,7 +86,7 @@ Tady je druhá položka s jeden malý rozdíl – `givenName` a `familyName` se 
 
 Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčových aspektů dotazovací jazyk SQL služby Azure Cosmos DB.
 
-**Query1**: například následující dotaz vrátí položky, jejichž pole id odpovídá `AndersenFamily`. Protože se jedná `SELECT *`výstup dotazu je úplná položka formátu JSON, další informace o syntaxi najdete v tématu [příkaz SELECT](sql-api-sql-query-reference.md#select-query):
+**Query1**: Například následující dotaz vrátí položky, jejichž pole id odpovídá `AndersenFamily`. Protože se jedná `SELECT *`výstup dotazu je úplná položka formátu JSON, další informace o syntaxi najdete v tématu [příkaz SELECT](sql-api-query-reference.md#select-query):
 
 ```sql
     SELECT *
@@ -116,7 +116,7 @@ Teď si vyzkoušíme několik dotazů na tato data pochopit některé z klíčov
     }]
 ```
 
-**Dotaz2:** nyní vezměte si situaci, kdy budeme potřebovat opakovaně formátovat výstup JSON v odlišném tvaru. Tento dotaz projekty nový objekt JSON s dvěma vybraná pole jméno a Město, když na adresu město má stejný název jako stav. V takovém případě odpovídá "NY, USA".
+**Dotaz2:** Nyní vezměte si situaci, kdy budeme potřebovat opakovaně formátovat výstup JSON v odlišném tvaru. Tento dotaz projekty nový objekt JSON s dvěma vybraná pole jméno a Město, když na adresu město má stejný název jako stav. V takovém případě odpovídá "NY, USA".
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -166,7 +166,7 @@ Několik aspektů dotazovací jazyk služby Cosmos DB provede příklady, které
 
 ## <a id="SelectClause"></a>Select – klauzule
 
-Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Pak je ve zdroji pro načtení podmnožiny JSON položek použitý filtr v klauzuli WHERE. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Další informace o syntaxi najdete v tématu [vyberte syntaxe](sql-api-sql-query-reference.md#bk_select_query).
+Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Pak je ve zdroji pro načtení podmnožiny JSON položek použitý filtr v klauzuli WHERE. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Další informace o syntaxi najdete v tématu [vyberte syntaxe](sql-api-query-reference.md#bk_select_query).
 
 Následující příklad ukazuje typické zpracování dotazu SELECT.
 
@@ -260,7 +260,7 @@ Podívejme se na roli `$1` tady. `SELECT` Klauzule potřebuje k vytvoření obje
 
 ## <a id="FromClause"></a>FROM – klauzule
 
-Z < from_specification > klauzule je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Další informace o syntaxi najdete v tématu [ze syntaxe](sql-api-sql-query-reference.md#bk_from_clause). Dotaz, jako jsou `SELECT * FROM Families` znamená, že celé řady kontejneru je zdroj nad tím, které chcete získat výčet. Speciální identifikátor KOŘENOVÉ slouží k reprezentaci kontejneru místo názvu kontejneru.
+Z < from_specification > klauzule je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Další informace o syntaxi najdete v tématu [ze syntaxe](sql-api-query-reference.md#bk_from_clause). Dotaz, jako jsou `SELECT * FROM Families` znamená, že celé řady kontejneru je zdroj nad tím, které chcete získat výčet. Speciální identifikátor KOŘENOVÉ slouží k reprezentaci kontejneru místo názvu kontejneru.
 Následující seznam obsahuje pravidla, která vynucují každý dotaz:
 
 * Kontejner může být například vytvořen alias, `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Tady `f` je ekvivalentem `Families`. `AS` optional – klíčové slovo na alias je identifikátor.  
@@ -313,7 +313,7 @@ Zdroj může být také omezené na menší podmnožinu. Například k vytvořen
     ]
 ```
 
-Při výše uvedeném příkladu používá pole jako zdroj, objekt může také sloužit jako zdroj, což je, jak je znázorněno v následujícím příkladu: k zařazení do výsledků dotazu se nepovažuje za jakékoli platnou hodnotu JSON (nedefinované), který najdete ve zdroji. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
+Při výše uvedeném příkladu používá pole jako zdroj, objekt může také sloužit jako zdroj, který je, jak je znázorněno v následujícím příkladu: Pro zařazení do výsledků dotazu se považuje za jakékoli platnou hodnotu JSON (nedefinované), který najdete ve zdroji. Pokud nemáte některé rodiny `address.state` hodnotu, jsou vyloučeny ve výsledku dotazu.
 
 **Dotaz**
 
@@ -333,7 +333,7 @@ Při výše uvedeném příkladu používá pole jako zdroj, objekt může také
 
 ## <a id="WhereClause"></a>Klauzule WHERE
 
-Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že-li být zahrnuty jako součást výsledku musí splňovat tyto podmínky, která JSON položky k dispozici zdroj. Všechny položky formátu JSON musí být vyhodnocen zadané podmínky na "true", která se má zohlednit výsledek. Klauzule WHERE index vrstvy používají k určení absolutní nejmenší podmnožinu zdrojové položky, které můžou být součástí výsledku. Další informace o syntaxi najdete v tématu [syntaxe WHERE](sql-api-sql-query-reference.md#bk_where_clause).
+Klauzule WHERE (**`WHERE <filter_condition>`**) je volitelný. Určuje, že-li být zahrnuty jako součást výsledku musí splňovat tyto podmínky, která JSON položky k dispozici zdroj. Všechny položky formátu JSON musí být vyhodnocen zadané podmínky na "true", která se má zohlednit výsledek. Klauzule WHERE index vrstvy používají k určení absolutní nejmenší podmnožinu zdrojové položky, které můžou být součástí výsledku. Další informace o syntaxi najdete v tématu [syntaxe WHERE](sql-api-query-reference.md#bk_where_clause).
 
 Následující dotaz požaduje položek, které obsahují vlastnost name, jehož hodnota je `AndersenFamily`. Jakoukoli jinou položku, která nemá vlastnost name, nebo pokud hodnota se neshoduje s `AndersenFamily` je vyloučený.
 
@@ -1627,7 +1627,7 @@ Následující obrázek ukazuje architekturu podporovat LINQ dotazů pomocí slu
 
 ### <a name="net-and-json-mapping"></a>.NET a mapování JSON
 
-Mapování mezi objekty .NET a položkami JSON je přirozeně – každé datové pole člena je mapována k objektu JSON, kde název pole je namapovaná na "klíče" součástí objektu a části "value" je rekurzivně namapované na část hodnoty objektu. Podívejte se na následující příklad: objekt rodině vytvořený je namapována na položky JSON, jak je znázorněno níže. A naopak je namapovat položky JSON zpět na objekt .NET.
+Mapování mezi objekty .NET a položkami JSON je přirozeně – každé datové pole člena je mapována k objektu JSON, kde název pole je namapovaná na "klíče" součástí objektu a části "value" je rekurzivně namapované na část hodnoty objektu. Vezměte v úvahu v následujícím příkladu: Řada objekt vytvořený je namapována na položky JSON, jak je znázorněno níže. A naopak je namapovat položky JSON zpět na objekt .NET.
 
 **Třída jazyka C#**
 
@@ -1735,19 +1735,19 @@ Nejprve pro systém typů, podporujeme všechny JSON primitivní typy – číse
 
 Tady je seznam podporovaných operátory LINQ v zprostředkovatele LINQ, který je součástí SQL SDK pro .NET.
 
-* **Vyberte**: projekce přeložit a vyberte SQL, včetně vytváření objektu.
-* **Kde**: filtry přeloží do SQL kde a podporovat překlad mezi & &, | a! pro operátory SQL
-* **Operátor SelectMany**: umožňuje uvolnění polí do klauzule SQL JOIN. Je možné řetězec/vnoření výrazy k filtrování prvky pole
-* **OrderBy a OrderByDescending**: se přeloží na klauzule ORDER BY ascending/descending
+* **Vyberte**: Projekce přeložit a vyberte SQL, včetně vytváření objektu.
+* **Kde**: Převést na SQL kde filtry a podporovat překlad mezi & &, || a! pro operátory SQL
+* **Operátor SelectMany**: Umožňuje uvolnění polí do klauzule SQL JOIN. Je možné řetězec/vnoření výrazy k filtrování prvky pole
+* **OrderBy a OrderByDescending**: Přeloží na klauzule ORDER BY ascending/descending
 * **Počet**, **součet**, **Min**, **maximální**, a **průměrné** operátory pro agregaci a jejich ekvivalenty asynchronní **CountAsync**, **SumAsync**, **MinAsync**, **MaxAsync**, a **AverageAsync**.
-* **Metoda CompareTo**: se přeloží na porovnání rozsahu. Běžně se používají pro řetězce, protože nejsou porovnatelné v rozhraní .NET
-* **Využijte**: překládá na začátek SQL pro omezení výsledků z dotazu
-* **Matematické funkce**: podporuje překlad z. NET pro funkce Abs, funkce Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní funkce integrované v SQL.
-* **Řetězec funkce**: podporuje překlad z. EndsWith Concat, obsahuje, od sítě, IndexOf, počet, ToLower, TrimStart, nahradit, zpětné, TrimEnd, StartsWith, podřetězec, ToUpper na ekvivalentní integrované funkce SQL.
-* **Array – funkce**: podporuje překlad z. NET pro funkce Concat, obsahuje a počet, který má ekvivalentní funkce integrované v SQL.
-* **Geoprostorové funkce rozšíření**: podporuje překlad z metody zástupných procedur vzdálenost v IsValid a IsValidDetailed na ekvivalentní funkce integrované v SQL.
-* **Uživatelem definované funkce rozšíření funkce**: podporuje překlad z zástupná metoda UserDefinedFunctionProvider.Invoke odpovídající uživatelem definované funkce.
-* **Různé**: podporuje překlad coalesce a podmíněných operátorů. Jsou dobře převeditelné obsahuje řetězec obsahuje, ARRAY_CONTAINS nebo v SQL v závislosti na kontextu.
+* **Metoda CompareTo**: Přeloží na porovnání rozsahu. Běžně se používají pro řetězce, protože nejsou porovnatelné v rozhraní .NET
+* **Využijte**: Přeloží do horní části SQL pro omezení výsledků z dotazu
+* **Matematické funkce**: Podporuje překlad z. NET pro funkce Abs, funkce Acos, Asin, Atan, Ceiling, Cos, Exp, Floor, protokolu, Log10, Pow, kruhové, přihlášení, Sin, Sqrt, Tan, Truncate na ekvivalentní funkce integrované v SQL.
+* **Řetězec funkce**: Podporuje překlad z. EndsWith Concat, obsahuje, od sítě, IndexOf, počet, ToLower, TrimStart, nahradit, zpětné, TrimEnd, StartsWith, podřetězec, ToUpper na ekvivalentní integrované funkce SQL.
+* **Array – funkce**: Podporuje překlad z. NET pro funkce Concat, obsahuje a počet, který má ekvivalentní funkce integrované v SQL.
+* **Rozšíření geoprostorové funkce**: Podporuje překlad z metody zástupných procedur vzdálenost v IsValid a IsValidDetailed na ekvivalentní funkce integrované v SQL.
+* **Uživatelem definované funkce rozšíření funkce**: Podporuje překlad z zástupná metoda UserDefinedFunctionProvider.Invoke odpovídající uživatelem definované funkce.
+* **Různé**: Podporuje překlad coalesce a podmíněných operátorů. Jsou dobře převeditelné obsahuje řetězec obsahuje, ARRAY_CONTAINS nebo v SQL v závislosti na kontextu.
 
 ### <a name="sql-query-operators"></a>Operátory dotazů SQL
 
@@ -2117,7 +2117,7 @@ Chcete-li spravovat zásady konzistence dat pro dotazy, použijte `x-ms-consiste
 
 Pokud nakonfigurované zásady indexování v kontejneru nepodporuje zadaný dotaz, server služby Azure Cosmos DB vrátí 400 "Chybný požadavek". Tato chybová zpráva se vrací pro dotazy na rozsah proti cesty, které jsou nakonfigurované pro vyhledávání hodnoty hash (rovnost) a explicitně vyloučené z indexování cesty. `x-ms-documentdb-query-enable-scan` Může být zadáno záhlaví umožňující dotazu má provést kontrola při indexu není k dispozici.
 
-Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Azure Cosmos DB](sql-api-sql-query-metrics.md).
+Můžete získat podrobné metriky spouštění dotazů nastavením `x-ms-documentdb-populatequerymetrics` záhlaví `True`. Další informace najdete v tématu [metriky dotaz SQL pro službu Azure Cosmos DB](sql-api-query-metrics.md).
 
 ### <a id="DotNetSdk"></a>SADY SDK JAZYKA C# (.NET)
 
@@ -2263,8 +2263,8 @@ Následující příklad ukazuje způsob použití queryDocuments v rozhraní AP
 9. Techniky hodnocení dotazování u velkých databází [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů.
-12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizího jazyka pro zpracování dat, SIGMOD 2008.
-13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): 1995.
+12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: Není tak cizího jazyka pro zpracování dat, SIGMOD 2008.
+13. G. Graefe. Cascades architektura pro optimalizaci dotazu. Eng. IEEE dat Bull., 18(3): roce 1995.
 
 [1]: ./media/how-to-sql-query/sql-query1.png
 [introduction]: introduction.md

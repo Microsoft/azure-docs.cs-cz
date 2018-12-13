@@ -1,5 +1,5 @@
 ---
-title: 'Regresní model kurz: Příprava dat'
+title: 'Regresní model kurzu: Příprava dat'
 titleSuffix: Azure Machine Learning service
 description: V první části tohoto kurzu dozvíte, jak pro přípravu dat v jazyce Python pro modelování regrese pomocí sady SDK služby Azure ML.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 14be60977ef0be3e88a0cb01356446b59ca374e2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d20ff1fabfb73c899153cf42bb6f2d7a8f233e21
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076436"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314682"
 ---
-# <a name="tutorial-part-1-prepare-data-for-regression-modeling"></a>Kurz (část 1): Příprava dat pro regresní modelování
+# <a name="tutorial-prepare-data-for-regression-modeling"></a>Kurz: Příprava dat pro regresní modelování
 
 V tomto kurzu se dozvíte, jak pro přípravu dat pomocí sady SDK pro Azure Machine Learning Data Prep modelování regrese. Proveďte různé transformace k filtrování a kombinovat dvěma různým sadám dat taxislužby NYC. Konečným cílem této sérii kurzů je odhadnout náklady na cesty taxíkem díky trénování modelu na data funkce včetně vyzvednutí hodinu, den v týdnu, počet cestujících a souřadnice. Tento kurz je první částí z dvou částí série.
 

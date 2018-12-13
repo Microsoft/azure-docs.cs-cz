@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 5714257fce53fafa148b8ae4d5a3addf3b872c6f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035471"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276243"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Integrované systémy pro nasazení Azure odpojené plánování rozhodnutí pro službu Azure Stack
 Poté, co jste se rozhodli [jak budou integrovat Azure Stack v hybridním cloudovém prostředí](azure-stack-connection-models.md), pak můžete dokončit vaše rozhodnutí o nasazení služby Azure Stack.
 
-Můžete nasadit a používat služby Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě. 
+Můžete nasadit a používat služby Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě. Protože víceklientskou architekturu vyžaduje použití Azure AD, se u odpojeného nasazení nepodporuje víceklientskou architekturu. 
 
 Tuto možnost zvolte, pokud jste:
 - Máte zabezpečení nebo jiná omezení, které vyžadují, abyste nasazení Azure Stack v prostředí, které není připojené k Internetu.
@@ -58,7 +58,7 @@ Telemetrická data|Není k dispozici – Telemetrická data pro Azure Stack jako
 
 ## <a name="learn-more"></a>Další informace
 - Informace o případy použití, nákup, partnery a dodavateli hardwaru OEM, najdete v článku [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stránce produktu.
-- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: Rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - Další informace o Microsoft Azure Stack balení a ceny [stáhnout PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Další postup

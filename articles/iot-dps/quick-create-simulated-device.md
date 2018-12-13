@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c2f5ff778b49ffb544c53b41cf515e820d646249
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 3ae454be8327c1f9ce605899e4b26105d44ab0f6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157849"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189298"
 ---
-# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení TPM s využitím sady Azure IoT C SDK
+# <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>Rychlý start: Zřízení simulovaného zařízení TPM pomocí sady Azure IoT C SDK
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
@@ -25,8 +25,8 @@ V tomto rychlém zprovoznění se dozvíte, jak vytvořit a spustit simulátor z
 Pokud neznáte proces automatického zřizování, projděte si [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat v tomto rychlém zprovoznění, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
-- [Jednotlivé registrace:](concepts-service.md#individual-enrollment) Slouží k registraci jednoho zařízení.
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Použít k registraci více související zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): Použitý k registraci jedno zařízení.
 
 V tomto článku si předvedeme jednotlivé registrace.
 
@@ -142,15 +142,15 @@ V této části sestavíte a spustíte příklad, který ze simulátoru TPM, kte
 
 3. V části **Přidat registraci** zadejte následující informace a klikněte na tlačítko **Uložit**.
 
-    - **Mechanismus:** Jako *mechanismus* pro ověření identity vyberte **TPM**.
-    - **Ověřovací klíč:** Zadejte *ověřovací klíč*, který jste pro zařízení TPM vytvořili spuštěním projektu *tpm_device_provision*.
-    - **ID registrace:** Zadejte *ID registrace*, které jste pro zařízení TPM vytvořili spuštěním projektu *tpm_device_provision*.
-    - **Zařízení IoT Edge:** Vyberte **Zakázat**.
-    - **ID zařízení centra IoT Hub:** Jako ID zařízení zadejte **test-docs-device**.
+    - **Mechanismus:** Jako *Mechanismus* ověření identity vyberte TPM.
+    - **Ověřovací klíč:** Zadejte *ověřovací klíč* generován pro vaše zařízení TPM spuštěním *tpm_device_provision* projektu.
+    - **ID registrace:** Zadejte *ID registrace* generován pro vaše zařízení TPM spuštěním *tpm_device_provision* projektu.
+    - **Zařízení IoT Edge:** Vyberte **zakázat**.
+    - **ID zařízení služby IoT Hub:** Zadejte **test-docs-device** zařízení poskytnout identifikátor.
 
-    ![Zadání informací o registraci zařízení na portálu](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+      ![Zadání informací o registraci zařízení na portálu](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
-    Po úspěšné registraci se *ID registrace* vašeho zařízení zobrazí v seznamu na kartě *Jednotlivé registrace*. 
+      Po úspěšné registraci se *ID registrace* vašeho zařízení zobrazí v seznamu na kartě *Jednotlivé registrace*. 
 
 
 <a id="firstbootsequence"></a>
@@ -228,7 +228,7 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 3. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. Otevřete okno **Správa registrací** pro vaši službu a potom klikněte na kartu **Jednotlivé registrace**. Vyberte *ID REGISTRACE* zařízení, které jste zaregistrovali v rámci tohoto rychlého startu, a klikněte na tlačítko **Odstranit** v horní části. 
 4. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého zprovoznění, a potom klikněte na tlačítko **Odstranit** v horní části.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V rámci tohoto rychlého startu jste na svém počítači vytvořili simulované zařízení TPM a pomocí služby IoT Hub Device Provisioning jste ho zřídili pro své centrum IoT. Pokud chcete zjistit, jak zaregistrovat zařízení TPM prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení TPM prostřednictvím kódu programu. 
 

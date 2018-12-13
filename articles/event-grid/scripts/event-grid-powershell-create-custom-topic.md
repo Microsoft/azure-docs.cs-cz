@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2948f1eabe93d092d905965429ff73eaa6c443cd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: 5d5b8dc21e40f38aee8f082e84a5a5bea1baf11c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425821"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276347"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Vytvoření vlastního tématu Event Gridu pomocí PowerShellu
 
@@ -37,7 +37,7 @@ Tento skript k vytvoření vlastního tématu používá následující příkaz
 |---|---|
 | [New-AzureRmEventGridTopic](https://docs.microsoft.com/powershell/module/azurerm.eventgrid/new-azurermeventgridtopic) | Vytvoří vlastní téma Event Gridu. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

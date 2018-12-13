@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 12/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 87f81c6b6568cd63eaf10840043511669d634062
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: b92790161ae9ad9b56400429677ab0fdd6d552e9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079312"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316229"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Vytvoření skupiny prostředků do šablon Azure Resource Manageru
 
@@ -24,7 +24,7 @@ Chcete-li vytvořit skupinu prostředků v šabloně Azure Resource Manageru, de
 
 Můžete také nasadit prostředky do této skupiny prostředků ve stejné šabloně.
 
-Tento článek používá Azure CLI a Powershellu k nasazení šablony.
+Tento článek používá Azure CLI a Powershellu k nasazení šablony. Na portálu nelze použít k nasazení šablony, protože rozhraní portálu nasadí do skupiny prostředků, ne předplatného Azure.
 
 ## <a name="create-empty-resource-group"></a>Vytvoření prázdné skupiny prostředků
 

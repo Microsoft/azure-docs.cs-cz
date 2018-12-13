@@ -4,10 +4,9 @@ description: Tento kurz Machine Learningu vás provede jednoduchým experimentem
 keywords: experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2017
-ms.openlocfilehash: 9564ddcff3dfd910877f40482bc3f5acb2d03d35
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b3d8aa709fefcf0eb8c16117f62cbe3bab8e319a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105389"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262414"
 ---
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Kurz: Vytvoření prvního experimentu datové vědy v nástroji Azure Machine Learning Studio
 
@@ -41,7 +40,7 @@ V tomto kurzu vás provedeme prvním použitím sady Studio a ukážeme vám, ja
 - [Základy služby Machine Learning s příklady algoritmů](basics-infographic-with-algorithm-examples.md) – Tato infografika je užitečná k tomu, abyste se blíže seznámili s různými algoritmy strojového učení, které jsou součástí sady Machine Learning Studio.
 - [Průvodce službou Machine Learning](https://gallery.cortanaintelligence.com/Tutorial/Machine-Learning-Guide-1) – Tato příručka zahrnuje podobné informace jako infografika uvedená výše, ale v interaktivním formátu.
 - [Stručný přehled algoritmů strojového učení](algorithm-cheat-sheet.md) a [Jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md) – Tento plakát ke stažení a doprovodný článek podrobně rozebírají algoritmy sady Studio.
-- [Machine Learning Studio: Nápověda k algoritmům a modulům](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Tato kompletní reference pro všechny moduly sady Studio obsahuje i algoritmy strojového učení.
+- [Ve službě Machine Learning Studio: Algoritmus a pomozte modulu](https://msdn.microsoft.com/library/azure/dn905974.aspx) – Toto je úplný odkaz pro všechny moduly ze studia, včetně algoritmů machine learningu
 
 
 
@@ -69,7 +68,7 @@ V tomto kurzu strojového učení vytvoříte experiment provedením pěti zákl
 - **Vytvoření modelu**
     - [Krok 1: Získání dat]
     - [Krok 2: Příprava dat]
-    - [Krok 3: Definice příznaků]
+    - [Krok 3: Definice funkcí]
 - **Trénování modelu**
     - [Krok 4: Volba a použití algoritmu učení]
 - **Stanovení skóre a otestování modelu**
@@ -77,7 +76,7 @@ V tomto kurzu strojového učení vytvoříte experiment provedením pěti zákl
 
 [Krok 1: Získání dat]: #step-1-get-data
 [Krok 2: Příprava dat]: #step-2-prepare-the-data
-[Krok 3: Definice příznaků]: #step-3-define-features
+[Krok 3: Definice funkcí]: #step-3-define-features
 [Krok 4: Volba a použití algoritmu učení]: #step-4-choose-and-apply-a-learning-algorithm
 [Krok 5: Předpověď cen nových automobilů]: #step-5-predict-new-automobile-prices
 
@@ -186,7 +185,7 @@ Jediné, co jsme do této chvíle v experimentu udělali, bylo vyčištění dat
 
 Nyní když jsou data vyčištěna, můžete určit, které příznaky použijeme v prediktivním modelu.
 
-## <a name="step-3-define-features"></a>Krok 3: Definice příznaků
+## <a name="step-3-define-features"></a>Krok 3: Definice funkcí
 
 Ve strojovém učení se jako *příznaky* označují jednotlivé měřitelné vlastnosti něčeho, co vás zajímá. V naší datové sadě každý řádek představuje jeden automobil a každý sloupec je příznak daného automobilu.
 
@@ -304,11 +303,11 @@ Zobrazte výstup modulu [Vyhodnocení modelu][evaluate-model] tak, že kliknete 
 
 Pro náš model se zobrazí následující statistiky:
 
-- **Střední absolutní chyba** (MAE): Průměr absolutních chyb (*chyba* je rozdíl mezi předpovězenou a skutečnou hodnotu)
-- **Odmocnina střední kvadratické chyby** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědí na základě testovací datové sady
-- **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-- **Relativní kvadratická chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot
-- **Koeficient spolehlivosti**: Znám také jako **hodnota spolehlivosti R**, tedy statistická metrika označující kvalitu přizpůsobení modelu datům
+- **Střední absolutní chyba** (MAE): Průměr absolutních chyb ( *chyba* je rozdíl mezi předpovězenou a skutečnou hodnotu).
+- **Střední kořenové spolehlivosti chyba** (RMSE): Druhá odmocnina průměru kvadratických chyb předpovědí na základě testovací datové.
+- **Relativní absolutní chyba**: Průměr absolutních chyb relativních k absolutnímu rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
+- **Relativní spolehlivosti chyba**: Průměr kvadratických chyb relativních ke kvadratickému rozdílu mezi skutečnými hodnotami a průměrem všech skutečných hodnot.
+- **Koeficient spolehlivosti**: Také **hodnota spolehlivosti R**, to tedy statistická metrika označující, jak dobře model odpovídá zpracovávaným datům.
 
 Pro každou statistiku chyb platí, že menší hodnota je lepší. Menší hodnota označuje, že předpověď přesněji odpovídá skutečným hodnotám. V případě **koeficientu spolehlivosti** platí, že čím bližší je jeho hodnota hodnotě jedna (1,0), tím lepší jsou předpovědi.
 

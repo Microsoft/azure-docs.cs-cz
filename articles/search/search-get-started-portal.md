@@ -1,5 +1,5 @@
 ---
-title: Kurz o indexování, dotazech a filtrování v Azure Search pomocí portálu | Microsoft Docs
+title: Kurz indexování, dotazům a filtrování na webu Azure portal – Azure Search
 description: V tomto kurzu vytvoříte v Azure Search index pomocí webu Azure Portal a předdefinovaných ukázkových dat. Prozkoumejte fulltextové vyhledávání, filtry, omezující vlastnosti, vyhledávání přibližných shod, geografické vyhledávání a další funkce.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: aac579da3aaf6ab1507bbc12d79a5b183a82d665
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: d8b95aaab99fc4f0aa5df21374d6ec023f869b7d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592751"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314019"
 ---
-# <a name="tutorial-use-built-in-tools-for-azure-search-indexing-and-queries"></a>Kurz: Indexování a dotazy v Azure Search pomocí integrovaných nástrojů
+# <a name="tutorial-use-built-in-portal-tools-for-azure-search-indexing-and-queries"></a>Kurz: Použít integrované nástroje portálu pro Azure Search indexování a dotazy
 
 K rychlému seznámení se s koncepty služby Azure Search a jejich vyzkoušení můžete použít integrované nástroje, které najdete na stránce služby Azure Search na webu Azure Portal. Tyto nástroje nemusí nabízet všechny funkce .NET a rozhraní REST API. Průvodci a editory však nabízejí úvod do služby Azure Search bez kódu a umožňují okamžitě psát zajímavé dotazy na ukázkovou datovou sadu.
 
@@ -55,7 +56,7 @@ Vyhledávací dotazy provádějí iterace [*indexu*](search-what-is-an-index.md)
 
 V tomto kurzu použijeme integrovanou ukázkovou datovou sadu, kterou je možné procházet pomocí [*indexeru*](search-indexer-overview.md) prostřednictvím průvodce pro **Import dat**. Indexer je prohledávací modul pro určitý zdroj, který dokáže číst metadata a obsah z podporovaných zdrojů dat Azure. Tyto indexery se zobrazují na portálu v průvodci pro **Import dat**. Později můžete indexery vytvářet a spravovat jako samostatné prostředky prostřednictvím kódu programu.
 
-### <a name="step-1-start-the-import-data-wizard"></a>Krok 1: Spuštění průvodce importem dat
+### <a name="step-1-start-the-import-data-wizard"></a>Krok 1: Spusťte Průvodce importem dat
 
 1. Spusťte průvodce kliknutím na **Import dat** na panelu příkazů na řídicím panelu služby Azure Search. Tento průvodce vám pomůže vytvořit a naplnit index vyhledávání.
 
@@ -242,7 +243,7 @@ Také jste zjistili, jak používat dlaždice na řídicím panelu portálu pro 
 
 Pokud jste v tomto kurzu použili službu Azure Search poprvé, odstraňte skupinu prostředků obsahující službu Azure Search. Pokud ne, vyhledejte název odpovídající skupiny prostředků v seznamu služeb a odstraňte ji.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete prozkoumat další funkce služby Azure Search s použitím programových nástrojů:
 

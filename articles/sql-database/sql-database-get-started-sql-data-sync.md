@@ -12,14 +12,14 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7ab1c0f918b5e5b9135e8d1b91f0f97a6c95d05e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9175ed0b4f362a40e1d29a20a8378854b5f4cc81
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685425"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310377"
 ---
-# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a místním SQL serverem
+# <a name="tutorial-set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním
 
 V tomto kurzu se dozvíte, jak nastavit synchronizaci dat SQL Azure tak, že vytvoříte hybridní skupině synchronizace, která obsahuje instance Azure SQL Database a SQL Server. Nová skupina synchronizace plně konfigurována a synchronizuje na nastaveného plánu.
 
@@ -199,7 +199,7 @@ Po vytvoření a nasazení v kroku 3, novým členům skupiny synchronizace **ko
 
 ### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Jak často můžete synchronizovat Data synchronizovat data
 
-Minimální frekvence je každých pět minut.
+Minimální doba trvání mezi aktivace synchronizace je pět minut.
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Synchronizaci dat SQL plně vytvoření a zřízení tabulky
 

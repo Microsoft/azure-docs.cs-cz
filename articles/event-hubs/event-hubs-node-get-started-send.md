@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 15ba584e882dd5a28b74094f949843ed653ad400
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c75d4404cb0892c3d90261af2fb4982ac84041c4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104063"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163782"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Odesílání událostí do služby Azure Event Hubs pomocí Node.js
 
@@ -36,7 +36,7 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
 Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
 
-Získání připojovacího řetězce pro obor názvů centra událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
+Získání připojovacího řetězce pro obor názvů centra událostí podle pokynů v článku: [Získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
 
 ## <a name="clone-the-sample-git-repository"></a>Naklonujte ukázkové úložiště Git
 Naklonujte ukázkové úložiště Git ze [Githubu](https://github.com/Azure/azure-event-hubs-node) na svém počítači. 

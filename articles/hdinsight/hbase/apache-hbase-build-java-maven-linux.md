@@ -1,20 +1,20 @@
 ---
-title: Klient HBase Javy – Azure HDInsight
+title: Vytvoření klienta HBase v Javě pomocí nástroje Apache Maven – Azure HDInsight
 description: Zjistěte, jak sestavit aplikaci Apache HBase založené na jazyce Java a pak ji nasadit do HBase v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: dbcb031b49c529bc2b2524cd0984bbef1945d485
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445647"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164054"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Apache HBase v Javě
 
@@ -56,8 +56,8 @@ Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvo�
 
     Tento příkaz vytvoří adresář se stejným názvem jako **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * **pom.xml**: The Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
-   * **src**: adresář obsahující **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
+   * **pom.xml**:  Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * **src**: Adresář, který obsahuje **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
 
 3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není použit v tomto příkladu.
 

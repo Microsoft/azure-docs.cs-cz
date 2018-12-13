@@ -1,5 +1,5 @@
 ---
-title: Kurz přidání automatického dokončování do vyhledávacího pole pomocí služby Azure Search | Microsoft Docs
+title: Kurz pro přidání automatické dokončování do vyhledávacího pole – Azure Search
 description: Příklady zlepšení prostředí pro koncové uživatele datově orientovaných aplikací pomocí rozhraní API služby Azure Search pro automatické dokončování a návrhy.
 manager: pablocas
 author: mrcarter8
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578170"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316178"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatického dokončování do vyhledávacího pole pomocí služby Azure Search
+# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatické dokončování vaší vyhledávací pole s použitím Azure Search
 
 V tomto kurzu zjistíte, jak pomocí [návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a [omezujících vlastností](search-faceted-navigation.md) v sadě [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) a rozhraní [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) vytvořit vyhledávací pole s bohatými funkcemi. *Návrhy* poskytují doporučení skutečných výsledků na základě toho, co uživatel zatím zadal. *Automatické dokončování* je [nová funkce Preview](search-api-preview.md) ve službě Azure Search, která pomocí termínů z indexu dokončuje zadávaný text uživatele. Porovnáme několik technik pro zvýšení produktivity uživatelů a rychle a snadno zjistíme, co hledají, díky tomu, že uživatelům přímo při psaní poskytneme bohaté funkce vyhledávání.
 
@@ -126,7 +127,7 @@ Teď, když jsme si prošli kód JavaScriptu pro ukázku, se podíváme na kód 
 
 1. Otevřete soubor HomeController.cs v adresáři Controllers. 
 
-1. První, čeho si můžete všimnout, je metoda InitSearch na začátku třídy.  Tato metoda vytvoří ověřeného klienta indexu HTTP pro službu Azure Search.  Další informace o tom, jak to funguje, najdete v následujícím kurzu [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+1. První, čeho si můžete všimnout, je metoda InitSearch na začátku třídy.  Tato metoda vytvoří ověřeného klienta indexu HTTP pro službu Azure Search.  Pokud chcete další informace o tom, jak to funguje, najdete v následujícím kurzu: [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 1. Přesuňte se k funkci Suggest.
 
@@ -209,7 +210,7 @@ Pokud tento kód porovnáte s předchozím příkladem, který volal kontroler H
 
 Tento kurz ukazuje základní kroky při vytváření vyhledávacího pole s podporou automatického dokončování a návrhů.  Viděli jste, jak můžete vytvořit aplikaci ASP.NET MVC a načítat návrhy pomocí sady SDK nebo rozhraní REST API služby Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Integrujte do svého vyhledávání návrhy a automatické dokončování.  Zamyslete se nad tím, jak můžete zvýšit produktivitu uživatelů tím, že jim při psaní poskytnete výkon služby Azure Search pomocí sady .NET SDK nebo přímo rozhraní REST API.
 

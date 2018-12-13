@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 56a36e61bb9938ceb7e3cdaf2676c24c037b1d16
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a5f1e728f7a13f763367abc3f380fb9fbdb67b5c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585670"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326455"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovaných a nespravovaných prémiové disky
 
@@ -85,9 +85,9 @@ Nastavit účet privátního úložiště pro diagnostiku virtuálních počíta
 
 Spravované disky podporuje tři klíčové výchozí role:
 
-* Vlastník: Může spravovat všechno včetně přístupu
-* Přispěvatel: Může spravovat všechno kromě přístupu
-* Čtenář: Může vše zobrazit, ale nemůže provádět změny
+* Vlastník: Můžou spravovat všechno včetně přístupu
+* Přispěvatel: Můžou spravovat všechno kromě přístupu
+* Čtenář: Všechno, co můžete zobrazit, ale nemůže provádět změny
 
 **Existuje způsob, můžu zkopírovat nebo exportovat spravovaného disku do účtu privátního úložiště?**
 
@@ -137,9 +137,9 @@ Ne, při vytvoření nového disku je úplné samostatnou kopii tohoto objektu b
 
 Za spravované disky nelze přejmenovat je. Může však přejmenovat nespravovaný disk, tak dlouho, dokud není aktuálně připojen k virtuální počítač nebo virtuální pevný disk.
 
-**Můžete použít GBT dělení na Disk s Azure?**
+**Můžete použít GPT dělení na Disk s Azure?**
 
-Dělení GBT lze použít pouze pro datové disky, nikoli disky s operačním systémem. Disky s operačním systémem, musíte použít styl oddílů MBR.
+Vytváření oddílů GPT lze použít pouze pro datové disky, nikoli disky s operačním systémem. Disky s operačním systémem, musíte použít styl oddílů MBR.
 
 ## <a name="standard-ssd-disks"></a>Standardní disky SSD
 
@@ -188,6 +188,10 @@ Ne, standardní disky SSD disky jsou dostupné jenom jako spravované disky.
 Ne, standardní disky SSD nemají jednu instanci SLA k virtuálním počítačům. Použití disků Premium SSD pro jednu instanci SLA k virtuálním počítačům.
 
 ## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
+
+** Je k dispozici žádný dopad migrace na spravované disky výkon?
+
+Migrace zahrnuje přesun Disk z jednoho umístění úložiště do druhého. To je orchestrované přes pozadí kopii dat, která může trvat několik hodin, obvykle méně než 24 hodin v závislosti na množství dat na discích. Během této doby může aplikace docházet vyšší než obvykle latence čtení a některé čtení můžete získat přesměrováno do původního umístění, může trvat déle. Během tohoto období není žádný vliv na latence zápisu.  
 
 **Jaké změny jsou nutné v již existující Azure Backup service před/po migraci konfigurace disků na Managed Disks?**
 
@@ -262,7 +266,7 @@ Ano
 
 Ne. Pokud exportujete virtuální pevný disk do zašifrovaném účtu úložiště ze šifrované, ale spravovaného disku nebo snímek a pak je šifrovaný. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Disky Premium: spravovaných a nespravovaných
+## <a name="premium-disks-managed-and-unmanaged"></a>Prémiové disky: Spravované a nespravované
 
 **Pokud virtuální počítač používá velikost series, podporující Premium SSD disků, jako je například DSv2, můžu připojit na úrovni premium i standard datové disky?** 
 
@@ -292,7 +296,7 @@ Místní disk SSD je dočasné úložiště, která je součástí virtuálního
 
 Neexistuje žádné nevýhodou použití operace TRIM na Azure disks na premium buď nebo disky standard.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: spravovaných a nespravovaných
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Nové velikosti disků: Spravované a nespravované
 
 **Co je největší velikost disku spravované podporováno pro operační systém a datové disky?**
 
@@ -312,10 +316,10 @@ Nemusíte upgradovat svoje stávající nástroje Azure k vytvoření, připojen
 
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Číslo verze 4.1.0: verzi z června 2017 nebo novější|
-|Azure CLI verze 1     | Číslo verze 0.10.13: uvolněte. května 2017 nebo novější|
-|Azure CLI verze 2     | Číslo verze 2.0.12: verzi z července 2017 nebo novější|
-|AzCopy           | Číslo verze 6.1.0: verzi z června 2017 nebo novější|
+|Azure PowerShell | Číslo verze 4.1.0: Verzi z června 2017 nebo novější|
+|Azure CLI verze 1     | Číslo verze 0.10.13: Verze. května 2017 nebo novější|
+|Azure CLI verze 2     | Číslo verze 2.0.12: Verzi z července 2017 nebo novější|
+|AzCopy           | Číslo verze 6.1.0: Verzi z června 2017 nebo novější|
 
 **Podporují se velikosti disků P4 a P6 pro nespravované disky a objekty BLOB stránky?**
 
@@ -339,7 +343,7 @@ Největší velikost disku podporované službou Azure Backup a Azure Site Recov
 
 **Co jsou doporučené virtuální počítač o velikosti pro velké disky o velikosti (> 4TiB) za SEKUNDU a šířky pásma na disku SSD na úrovni Standard a standardní HDD disky k dosažení optimalizovaná?**
 
-K dosažení propustnost disku SSD na úrovni Standard a standardní HDD velké disky o velikosti (> 4TB) nad rámec 60 MiB/s a 500 IOPS, by měl používat jednu z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-series, DSv2-series, řada Dsv3-Series, ESv3-Series, Fs-series Fsv2-series, M-series, GS-series, řada NCv2, řady NCv3-series nebo virtuální počítače řady Ls-Series.
+K dosažení propustnost disku SSD na úrovni Standard a standardní HDD velké disky o velikosti (> 4TB) nad rámec 60 MiB/s a 500 IOPS, by měl používat jednu z následujících velikostí virtuálních počítačů pro optimalizaci výkonu: B-series, DSv2-series, Dsv3-Series, ESv3-Series, Fsv2-series, Fs-series, M-series, GS-series, NCv2-series, řady NCv3-series, nebo virtuální počítače řady Ls-Series.
 
 **Které oblasti jsou spravovaný disk větší než 4 TB podporováno v?**
 

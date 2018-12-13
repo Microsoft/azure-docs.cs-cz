@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ca844c89b657bc3286f3472af3acbf937ef1e20f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891057"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315770"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů – Data o stavu HIPAA/HITRUST a AI
 
@@ -61,7 +61,7 @@ Základní architektura se skládá z následujících součástí:
 
 -   **[Kontrola stavu.](https://aka.ms/healthreviewpaper)** Toto řešení byl recenzován uživatelem Coalfire systems, Inc. Stav dodržování předpisů (HIPAA a HITRUST) kontrolu a pokyny pro implementaci poskytuje auditor\'s kontrolu řešení a důležité informace pro transformaci podrobného plánu nasazení připravené pro produkční prostředí.
 
-# <a name="architectural-diagram"></a>Diagram architektury
+## <a name="architectural-diagram"></a>Diagram architektury
 
 
 ![](images/ra2.png)
@@ -76,11 +76,11 @@ Podrobný plán definuje dvě role uživatelů správce (operátoři) a tři rol
 
 Správce serveru je zodpovědná za předplatné Azure zákazníka. Ovládací prvek celkové nasazení, ale nemají přístup k záznamy o pacientech.
 
--   Výchozí přiřazení rolí: [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+-   Výchozí přiřazení rolí: [Vlastník](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
 
--   Přiřazení vlastních rolí: není k dispozici
+-   Přiřazení vlastních rolí: neuvedeno
 
--   Obor: předplatné
+-   Rozsah: Předplatné
 
 ### <a name="database-analyst"></a>Analytické databáze
 
@@ -89,9 +89,9 @@ Nemají přístup k záznamy o pacientech.
 
 -   Integrovaná přiřazení rolí: [Přispěvatel databází SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-db-contributor), [Přispěvatel SQL serveru](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-server-contributor)
 
--   Přiřazení vlastních rolí: není k dispozici
+-   Přiřazení vlastních rolí: neuvedeno
 
--   Obor: Skupina prostředků
+-   Rozsah: ResourceGroup
 
  ### <a name="data-scientist"></a>Mezi odborníky přes data
 
@@ -100,16 +100,16 @@ Mezi odborníky přes data funguje nástroje Azure Machine Learning Studio. Mů�
 
 -   Integrovaná přiřazení rolí: [Přispěvatel účtů úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)
 
--   Přiřazení vlastních rolí: není k dispozici
+-   Přiřazení vlastních rolí: neuvedeno
 
--   Obor: Skupina prostředků
+-   Rozsah: ResourceGroup
 
 ### <a name="chief-medical-information-officer-cmio"></a>Chief Medical Information Officer (CMIO)
 
 
 CMIO přechází propast mezi informatikou/technologiemi a pracovníky v organizaci poskytující zdravotní péči. Jejich povinnosti obvykle patří využití analýz k určení, pokud se prostředky přidělují odpovídajícím způsobem v rámci organizace.
 
--   Integrovaná přiřazení rolí: žádné
+-   Integrovaná přiřazení rolí: Žádný
 
 ### <a name="care-line-manager"></a>Ředitel úseku péče
 
@@ -117,22 +117,22 @@ CMIO přechází propast mezi informatikou/technologiemi a pracovníky v organiz
 Ředitel úseku péče se přímo zabývá péče o pacienty.
 Jeho úkolem je monitorovat stav pacientů a také zajistit, aby byl k dispozici potřebný personál pro zajištění specifických požadavků péče o jednotlivé pacienty. Ředitel úseku péče zodpovídá za přidávání a aktualizaci záznamy o pacientech.
 
--   Integrovaná přiřazení rolí: žádné
+-   Integrovaná přiřazení rolí: Žádný
 
--   Přiřazení vlastních rolí: má oprávnění ke spuštění HealthcareDemo.ps1 udělat i přijetí pacienta a plnit.
+-   Přiřazení vlastních rolí: Má oprávnění ke spuštění HealthcareDemo.ps1 udělat i přijetí pacienta a plnit.
 
--   Obor: Skupina prostředků
+-   Rozsah: ResourceGroup
 
 ### <a name="auditor"></a>Auditor
 
 
 Auditor je vyhodnocen jako řešení pro dodržování předpisů. Jejich nemají žádný přímý přístup k síti.
 
--   Integrovaná přiřazení rolí: [čtečky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
+-   Integrovaná přiřazení rolí: [Čtenář](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)
 
--   Přiřazení vlastních rolí: není k dispozici
+-   Přiřazení vlastních rolí: neuvedeno
 
--   Obor: předplatné
+-   Rozsah: Předplatné
 
 ## <a name="example-use-case"></a>Případy použití příklad
 
@@ -179,12 +179,12 @@ Jako jednotlivec přímo zodpovědného za správu přijetí pacienta a propouš
 
 **Auditor – Han**
 
-*E-mailu: Han\_Auditor*
+*E-mailu: Hanu\_Auditor*
 
 Hanu je certifikované auditora, který má prostředí auditování pro ISO, SOC a HiTrust. Hanu byl přijat ke kontrole Contosoclinc vaší sítě. Hanu můžete zkontrolovat matice zákazníka odpovědnost řešení opatřeného zajistit, že podrobného plánu a LOS řešení můžete použít k ukládají, zpracovávají a zobrazení důvěrných osobních údajů.
 
 
-# <a name="design-configuration"></a>Konfigurace návrhu
+## <a name="design-configuration"></a>Konfigurace návrhu
 
 
 Tato část podrobně výchozí konfigurace a bezpečnostních opatření, které jsou součástí podrobného plánu uvedených na:
@@ -267,8 +267,8 @@ Kromě toho funkce azure Functions je navržená ke čtení a chránit určené 
 
 **2. Přijetí nové pacientů**
 
-Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientadmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázky** provede následující kanálu zpracování: ![](images/securetransact.png) 
- **1. Funkce Azure Functions** aktivuje a funkci žádosti o [nosný token](/rest/api/) ze služby Azure Active directory.
+Při použití ukázkový skript. . \\HealthcareDemo.ps1 s **BulkPatientadmission** přepínat, jak je uvedeno v **nasazení a spuštění ukázky** provede následující kanálu zpracování: ![](images/securetransact.png)
+**1. Funkce Azure Functions** aktivuje a funkci žádosti o [nosný token](/rest/api/) ze služby Azure Active directory.
 
 **2. Key Vault** požadovaná pro tajný klíč, který je přidružen k požadovaný token.
 

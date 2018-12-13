@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a56d595ca88541779f5213c6b0ec88fc87913b6a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239045"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310993"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -149,9 +149,7 @@ Výpočetní Platforma Azure je založena na počítači virtualizace – to zna
 
 Každý uzel má také jeden speciální kořenový virtuální počítač, který spouští hostitelským operačním systémem. Je důležité hranice izolace kořenový virtuální počítač od virtuálních počítačů hosta a virtuální počítače hosta od sebe, spravuje hypervisoru a kořenové operačního systému. Párování hypervisoru/root operační systém využívá Microsoftu desítky let zkušeností zabezpečení operačního systému a novější learning od společnosti Microsoft Hyper-V, k poskytování silnou izolaci virtuálních počítačů hosta.
 
-Platforma Azure používá virtualizované prostředí. Uživatelské instance se chovají jako samostatné virtuální počítače, které nemají přístup k fyzickému hostitelskému serveru a tato izolace se vynucuje s použitím úrovní oprávnění (kanál – 0/úroveň 3) fyzického procesoru.
-
-Úroveň 0 má nejvyšší oprávnění, úroveň 3 nejnižší. Hostovaný operační systém běží v úrovni 1 nižšími oprávněními a aplikace běží v nejnižším oprávněním 3 aktualizačního kanálu. Tato virtualizace fyzických prostředků vede k naprostému oddělení hostovaného operačního systému od hypervisoru. Důsledkem je další oddělení zabezpečení mezi těmito dvěma stranami.
+Platforma Azure používá virtualizované prostředí. Uživatelské instance se chovají jako samostatné virtuální počítače, které nemají přístup k fyzickému hostitelskému serveru.
 
 Azure hypervisor chová jako mikrojádro a předává všechny požadavky na hardware přístup z hostované virtuální počítače ke zpracování hostiteli prostřednictvím rozhraní sdílené paměti, nazývá sběrnice VMBus. Tento postup brání uživatelům v získání přímého přístupu k systému pro čtení, zápis a spouštění a snižuje riziko sdílení systémových prostředků.
 
@@ -187,9 +185,9 @@ Ve výchozím nastavení když je vytvořen virtuální počítač a potom agent
 
 Existují dvě kategorie pravidel, které jsou naprogramovány:
 
--   **Počítač pravidla konfigurace nebo infrastruktury:** ve výchozím nastavení je veškerá komunikace blokovaná. Existují výjimky, které umožňují virtuálnímu počítači odesílat a přijímat komunikaci DHCP a DNS. Virtuální počítače můžete také odesílat provoz do "veřejného" Internetu a odesílat provoz do jiné virtuální počítače v rámci stejné virtuální síti Azure a aktivace operačního systému serveru. Seznam povolených cílů odchozí komunikace virtuálních počítačů neobsahuje podsítě směrovačů Azure, správu Azure a dalších vlastností Microsoft.
+-   **Pravidla konfigurace nebo infrastrukturu počítače:** Ve výchozím nastavení je veškerá komunikace blokovaná. Existují výjimky, které umožňují virtuálnímu počítači odesílat a přijímat komunikaci DHCP a DNS. Virtuální počítače můžete také odesílat provoz do "veřejného" Internetu a odesílat provoz do jiné virtuální počítače v rámci stejné virtuální síti Azure a aktivace operačního systému serveru. Seznam povolených cílů odchozí komunikace virtuálních počítačů neobsahuje podsítě směrovačů Azure, správu Azure a dalších vlastností Microsoft.
 
--   **Konfigurační soubor rolí:** definuje příchozí seznamů řízení přístupu (ACL) na základě vašeho tenanta služby modelu.
+-   **Konfigurační soubor rolí:** Definuje příchozí seznamů řízení přístupu (ACL) na základě vašeho tenanta služby modelu.
 
 ### <a name="vlan-isolation"></a>Izolace sítě VLAN
 Existují tři virtuální místní sítě v každém clusteru:
@@ -256,7 +254,7 @@ Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.micro
 Řešení podporuje následující scénáře pro virtuální počítače IaaS, pokud je povolen v Microsoft Azure:
 -   Integrace se službou Azure Key Vault
 
--   Virtuální počítače úrovně Standard: A, D, DS, G, GS a tak dále, řadu virtuálních počítačů IaaS
+-   Úroveň Standard virtuálních počítačů: A, D, DS, G, GS a tak dále, řadu virtuálních počítačů IaaS
 
 -   Povolení šifrování na Windows a virtuálních počítačů IaaS s Linuxem
 
@@ -295,7 +293,7 @@ SQL Database je služba v cloudu Microsoftu poskytující relační databáze za
 
 [Microsoft SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-get-started) Database je služba relační databáze založené na cloudu založená na technologiích systému SQL Server. Poskytuje vysoce dostupné, škálovatelné a víceklientská databáze služba hostovaná společností Microsoft v cloudu.
 
-Z pohledu aplikace SQL Azure poskytuje následující hierarchie: Každá úroveň má jeden mnoho omezení úrovní níže.
+Perspektiva SQL Azure z aplikace poskytuje následující hierarchie: Každá úroveň má jeden mnoho omezení úrovní níže.
 
 ![Aplikační Model SQL Azure](./media/azure-isolation/azure-isolation-fig10.png)
 
@@ -344,7 +342,7 @@ Nasazení Azure má několik úrovní izolace sítě. Následující diagram zn�
 
 ![Izolace sítě](./media/azure-isolation/azure-isolation-fig13.png)
 
-**Izolace přenosů:** A [virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) je hranicí izolace provozu na platformě Azure. Virtuální počítače (VM) v jedné virtuální síti nemůže komunikovat přímo do virtuálních počítačů v jiné virtuální síti, i když obě virtuální sítě jsou vytvořeny tentýž zákazník. Izolace je důležité vlastnost, která zajišťuje virtuální počítače zákazníků a komunikace zůstávají privátní virtuální sítě.
+**Izolace provozu:** A [virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) je hranicí izolace provozu na platformě Azure. Virtuální počítače (VM) v jedné virtuální síti nemůže komunikovat přímo do virtuálních počítačů v jiné virtuální síti, i když obě virtuální sítě jsou vytvořeny tentýž zákazník. Izolace je důležité vlastnost, která zajišťuje virtuální počítače zákazníků a komunikace zůstávají privátní virtuální sítě.
 
 [Podsíť](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) nabízí další úroveň izolace ve virtuální síti na základě rozsahu IP. IP adresy ve virtuální síti, virtuální síť můžete rozdělit do několika podsítí organizačních a bezpečnostních důvodů. Virtuální počítače a instance rolí PaaS nasazené do podsítí (stejných nebo různých) v rámci jedné virtuální sítě můžou navzájem komunikovat bez jakékoli další konfigurace. Můžete taky nakonfigurovat [skupinu zabezpečení sítě (Nsg)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) povolit nebo zamítnout síťový provoz do instancí virtuálních počítačů na základě pravidel, které jsou nakonfigurované v seznamu řízení přístupu (ACL) skupiny zabezpečení sítě. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti.
 

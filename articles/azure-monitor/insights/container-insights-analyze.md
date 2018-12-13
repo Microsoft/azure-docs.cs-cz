@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 588dcabb35660c860f3d96dd03c82ed95a1d4d5b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 47d597188c761921817bf7e2155548157e0d2eb3
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087201"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185422"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Porozumět výkonu cluster AKS pomocí Azure monitoru pro kontejnery 
 Díky Azure monitoru pro kontejnery můžete použít grafy výkonu a stavu ke sledování těchto úloh své clustery Azure Kubernetes Service (AKS) za dvou hledisek, přímo z clusteru AKS nebo všechny AKS clusterů v rámci předplatného Azure Monitorování. Zobrazení služby Azure Container Instances (ACI) je také možné, při sledování konkrétní clusteru AKS.
@@ -94,10 +93,10 @@ Výchozí stránka se otevře po kliknutí na **Insights** je **clusteru**, a za
 
 Graf výkonu zobrazí čtyři metriky výkonu:
 
-- **Využití procesoru uzlu&nbsp;%**: agregovaná perspektivy využití výkonu procesoru pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
-- **Využití paměti v aplikaci node&nbsp;%**: agregovaná perspektivy využití paměti pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
-- **Počet uzlů**: počet uzlů a stav ze Kubernetes. Stavy uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci v modulu pro výběr nad grafem. 
-- **Počet podů aktivit**: počet podů a stav ze Kubernetes. Stavy podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo v kombinaci selektor nad grafem. 
+- **Využití procesoru uzlu&nbsp;%**: Agregované perspektivy využití výkonu procesoru pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- **Využití paměti v aplikaci node&nbsp;%**: Agregované perspektivy využití paměti pro celý cluster. Můžete filtrovat výsledky pro časový rozsah výběrem **Avg**, **Min**, **maximální**, **50**, **90. percentil**, a **95** v modulu pro výběr percentily nad grafem, buď samostatně nebo v kombinaci. 
+- **Počet uzlů**: Počet uzlů a stav ze Kubernetes. Stavy uzlů clusteru, který je reprezentován *všechny*, *připravené*, a *Nepřipraveno* a můžete filtrovat jednotlivě nebo kombinaci v modulu pro výběr nad grafem. 
+- **Počet podů aktivit**: Počet podů a stav ze Kubernetes. Stavy podů reprezentované *všechny*, *čekající*, *systémem*, a *neznámý* a můžete filtrovat jednotlivě nebo v kombinaci selektor nad grafem. 
 
 Když přejdete na **uzly**, **řadiče**, a **kontejnery** kartu, automaticky zobrazí na pravé straně stránky se podokno vlastností.  Zobrazuje vlastnosti položky vybrané, včetně popisků definujete uspořádat objekty Kubernetes. Klikněte na **>>** propojit v podokně view\hide podokna.  
 
@@ -275,4 +274,4 @@ Výstup protokoly kontejneru, který se předávají do Log Analytics jsou STDOU
 | **Vyberte možnosti spojnicový graf zobrazení**:<br> Výkonu<br> &#124;kde ObjectName == "K8SContainer" a hodnota CounterName == "memoryRssBytes" &#124; shrnout AvgUsedRssMemoryBytes = avg(CounterValue) podle bin (TimeGenerated, 30 min), InstanceName | Paměti kontejneru |
 
 ## <a name="alerting"></a>Zobrazení výstrah
-Azure Monitor pro kontejnery nezahrnuje předdefinovanou sadu výstrah, které můžete zkopírovat a upravit podle vašich podpůrné procesy a postupy. Do té doby, podívejte se na [vytvoření upozornění protokolu službou Azure Monitor](../../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json) a zjistěte, jak vytvořit vlastní sadu výstrah.  
+Azure Monitor pro kontejnery nezahrnuje předdefinovanou sadu výstrah, které můžete zkopírovat a upravit podle vašich podpůrné procesy a postupy. Do té doby, podívejte se na [vytvoření upozornění protokolu službou Azure Monitor](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json) a zjistěte, jak vytvořit vlastní sadu výstrah.  

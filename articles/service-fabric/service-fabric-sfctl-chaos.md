@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 697815aeca9b8a07e3cece877d610436b2b8ac83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669170"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278283"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Spuštění, zastavení a vytváření sestav o tento Chaos se dá testovat službu.
@@ -47,9 +47,9 @@ Pokud chcete získat další segment události chaosu, můžete zadat token Cont
 |Argument|Popis|
 | --- | --- |
 | --token pro pokračování | Parametr tokenu pokračování slouží k získání další sadu výsledků. Token pro pokračování se neprázdná hodnota je zahrnutý v odpovědi rozhraní API, když výsledky ze systému se nevejdou do odpověď o jedné. Když je tato hodnota předána na další volání rozhraní API, rozhraní API vrátí další sadu výsledků. Pokud neexistují žádné další výsledky, pak pokračovací token neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódování URL. |
-| --koncový. čas utc | Windows soubor času představující čas ukončení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) podrobnosti. |
+| --koncový. čas utc | Windows soubor času představující čas ukončení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
 | – maximální počet výsledků | Maximální počet výsledků, které má být vrácena jako součást stránkové dotazy. Tento parametr definuje horní mez počtu výsledky. Výsledky se vrátí, může být nižší než zadané maximální počet výsledků, pokud se nevejdou do zprávy podle omezení velikosti maximální počet zpráv definované v konfiguraci. Pokud tento parametr je nula, nebo není zadán, obsahuje stránkovaného dotazu tolik výsledky nejdříve, který se vejde v návratové zprávě. |
-| --spuštění. čas utc | Windows soubor času představující čas zahájení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc) podrobnosti. |
+| --spuštění. čas utc | Windows soubor času představující čas zahájení časový rozsah, pro kterou má vygenerovat sestava Chaos. Poraďte [DateTime.ToFileTimeUtc metoda](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) podrobnosti. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
@@ -104,7 +104,7 @@ Pokud chaosu už neběží v clusteru, začíná Chaos předaná v parametrech C
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 | --Čekací doba mezi chyb | Čekací doba (v sekundách) mezi po sobě jdoucích chyb v rámci jedné iterace.  Výchozí\: 20. <br><br> Tím je hodnota větší, čím nižší překrývání mezi chybami a jednodušší posloupnost stavu přechody, která procházejí clusteru. Doporučujeme začít s hodnotu mezi 1 a 5 a cvičení opatrní při přesouvání. |
 | --Čekací doba mezi iteracemi | Čas – oddělení (v sekundách) mezi dvě po sobě následujících iterací Chaos. Vyšší hodnota, tím nižší sazby vkládání selhání.  Výchozí\: 30. |
-| --upozornění jako chyby | Nastaví zásadu health zpracovávat upozornění jako chyby. |
+| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -136,6 +136,7 @@ Chaos zastaví spuštění nové chyby. Ke spuštění, dokud nedojde k jejich d
 | --vstupně - výstupní | Formát výstupu.  Povolené hodnoty\: json, jsonc, tabulky, tsv.  Výchozí\: json. |
 | – dotaz | Řetězec dotazu JMESPath. Zobrazit http\://jmespath.org/ pro další informace a příklady. |
 | -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
+
 
 ## <a name="next-steps"></a>Další postup
 - [Instalační program](service-fabric-cli.md) příkazového řádku Service Fabric.

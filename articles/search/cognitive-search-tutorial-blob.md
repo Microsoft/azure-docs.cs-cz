@@ -1,5 +1,5 @@
 ---
-title: Kurz zaměřený na volání rozhraní API pro kognitivní hledání v Azure Search | Microsoft Docs
+title: Kurz pro volání kognitivního vyhledávání rozhraní API – Azure Search
 description: Tento kurz vás krok za krokem provede ukázkovou extrakcí dat a zpracováním přirozeného jazyka a obrázků pomocí umělé inteligence v indexování Azure Search s cílem extrahovat a transformovat data.
 manager: pablocas
 author: luiscabrer
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 3350f182e236cc0828040f1ee1eb73cf54cf18a8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec2018
+ms.openlocfilehash: 4f5b0661f67dd63177309905079ee68716e9e721
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957363"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315736"
 ---
-# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Jak volat rozhraní API kognitivního hledání (Preview)
+# <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Zjistěte, jak volat kognitivních hledání rozhraní API (Preview)
 
 V tomto kurzu se naučíte, jak v Azure Search naprogramovat rozšiřování dat pomocí *kognitivních dovedností*. Kognitivní dovednosti jsou operace zpracování přirozeného jazyka (NLP) a analýzy obrazu, které extrahují text a textové reprezentace z obrázku, zjišťují jazyk, entity, klíčové fráze apod. Výsledkem je rozsáhlý doprovodný obsah v indexu Azure Search, který se vytvořil pomocí kanálu indexování kognitivního hledání. 
 
@@ -34,7 +35,9 @@ Výstup indexu v Azure Search, který se dá prohledávat fulltextově Index mů
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -65,14 +68,12 @@ Nejdříve se do služby Azure Search přihlaste.
   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
   ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
 
-  > [!NOTE]
-  > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Cenu této funkce oznámíme později.
-
+ 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
   ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
 
-1. Až se služba vytvoří, shromážděte následující informace: adresu **URL** ze stránky Přehled a **klíč rozhraní API** (ať už primární, nebo sekundární) ze stránky Klíče.
+1. Po vytvoření služby, shromážděte následující informace: **Adresa URL** na stránce Přehled a **klíč api-key** (primární nebo sekundární) ze stránky klíče.
 
   ![Informace o koncovém bodu a klíči na portálu](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "Informace o koncovém bodu a klíči na portálu")
 
@@ -130,7 +131,7 @@ Vzhledem k tomu, že je to váš první požadavek, podívejte se na portál Azu
 Pokud dostanete chybu 403 nebo 404, zkontrolujte vytvoření požadavku: v koncovém bodu by mělo být `api-version=2017-11-11-Preview`, v hlavičce za `Content-Type` by mělo být `api-key` a jeho hodnota musí být pro vyhledávací službu platná. Hlavičku budete moct znovu používat i v dalších krocích tohoto kurzu.
 
 > [!TIP]
-> V tuto chvíli, dříve než odvedete velké množství práce, je vhodné ověřit, že vyhledávací služba je spuštěná v jedné z podporovaných lokalit, které funkci nabízejí ve verzi Preview: USA (střed) – jih a Západní Evropa.
+> Teď než se pustíte do velké množství práce, je vhodná doba k ověření, že vyhledávací služba je spuštěná v jednom z podporovaných umístění poskytuje funkce ve verzi preview: Střední část jihu USA a západní Evropa.
 
 ## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Povolení jenom určité image platformy virtuálního počítače
+title: Ukázkový – Povolit jenom určité platformy image virtuálního počítače
 description: Tato ukázková zásada vyžaduje, aby virtuální počítače používaly konkrétní verzi UbuntuServeru.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 3038f9694fd6dce3350b3b060851f00324975ba3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 1e21834fb46fa43008220741384d7cb1f57f3dd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991772"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315090"
 ---
 # <a name="only-allow-a-certain-vm-platform-image"></a>Povolení jenom určité image platformy virtuálního počítače
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

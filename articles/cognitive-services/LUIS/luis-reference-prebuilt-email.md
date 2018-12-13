@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 07fe8a0d48d59da89ad76f1648b75332d23005a2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1cb12bdc362955da907fb5a5ed64c2a1a43fdc32
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074060"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140859"
 ---
-# <a name="email-entity"></a>Entita Email
+# <a name="email-prebuilt-entity-for-a-luis-app"></a>E-mailu předem připravených entit pro aplikace LUIS
 Extrakce e-mailu obsahuje celé e-mailovou adresu z utterance. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující e-mailu záměry aplikace. E-mailu entity se podporuje v `en-us` pouze jazykovou verzi. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Řešení pro předem připravených e-mailu

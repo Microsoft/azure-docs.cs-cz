@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 5df4ae93930002a00be4097e3eaa80ff77446a18
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 23e416c510c3a6fff7c282406beaec1acf42b2ef
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994625"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186867"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows a Linuxem zdroje dat výkonu do Log Analytics
 Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Log Analytics může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.

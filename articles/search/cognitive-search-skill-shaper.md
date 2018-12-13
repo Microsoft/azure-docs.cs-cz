@@ -1,5 +1,5 @@
 ---
-title: Dovednosti Shaper kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+title: Kognitivní vyhledávání dovedností Shaper – Azure Search
 description: Extrahování metadat a strukturovaných informací z nestrukturovaných dat a převeďte ji jako komplexní typ v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728993"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313823"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
 
@@ -26,9 +27,6 @@ Dovednosti Shaper umožňuje v podstatě vytvořit strukturu, definování názv
 Ve výchozím nastavení tato technika podporuje objekty, které jsou jednu úroveň. Pro složitější objektů můžete zřetězit několik kroků Shaper.
 
 V odpovědi výstupní název je vždy "výstupní". Interně kanálu můžete namapovat jiný název, jako je například "analyzedText" v následujících příkladech "výstupní", ale Shaper dovednosti, samotný vrátí hodnotu "výstupní" v odpovědi. To může být důležité Pokud ladíte bohatších možností dokumenty a Všimněte si názvů nesrovnalosti, nebo pokud při vývoji vlastních dovedností a jsou strukturování odpovědi, sami.
-
-> [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill

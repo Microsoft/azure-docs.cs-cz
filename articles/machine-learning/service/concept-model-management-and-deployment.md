@@ -1,5 +1,5 @@
 ---
-title: Správa a nasazování modelů
+title: Spravovat a registrovat, nasadit a monitorovat modelů ML
 titleSuffix: Azure Machine Learning service
 description: Další informace o použití služby Azure Machine Learning nasazovat, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí služby Azure Machine Learning, na místním počítači nebo z jiných zdrojů.
 services: machine-learning
@@ -7,22 +7,22 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: hjerez
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec0ab07d6bd35557e173641fbfbbc3621ad0ede2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 25f149ad4df43a7e5b443d6abd72be91072cb47f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097551"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250195"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 
 V tomto článku se dozvíte, jak pomocí služby Azure Machine Learning nasadit, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí Azure Machine Learning na místním počítači nebo z jiných zdrojů. 
 
-Následující diagram znázorňuje kompletního nasazení pracovního postupu: [ ![pracovní postup nasazení pro Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+Následující diagram znázorňuje kompletního nasazení pracovního postupu: [ ![Pracovní postup nasazení pro Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Pracovní postup nasazení zahrnuje následující kroky:
 1. **Zaregistrujte model** v registru hostované ve vašem pracovním prostoru služby Azure Machine Learning
@@ -35,14 +35,14 @@ Každý krok lze provést, samostatně nebo jako součást příkazu pro jedno n
 [ !["Služba azure Machine Learning průběžné integrace a nasazování (CI/CD) cyklu.](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 
-## <a name="step-1-register-model"></a>Krok 1: Zaregistrujte model
+## <a name="step-1-register-model"></a>Krok 1: Registrace modelu
 
 Model registru uchovává informace o všech modelů v pracovním prostoru služby Azure Machine Learning.
 Modely jsou identifikovány názvem a verzí. Pokaždé, když zaregistrujete model se stejným názvem jako existující registr zvýší verzi. Během registrace, který se dá použít při vyhledávání pro modely můžete zadat také další metadata značky.
 
 Nelze odstranit modely, které se používají v obrázku.
 
-## <a name="step-2-register-image"></a>Krok 2: Registrace image
+## <a name="step-2-register-image"></a>Krok 2: Zaregistrovat image
 
 Bitové kopie umožňují spolehlivé model nasazení, spolu s všechny součásti potřebné k použití modelu. Bitová kopie obsahuje následující položky:
 
@@ -75,7 +75,7 @@ Image můžete nasadit následující [cíle nasazení](how-to-deploy-and-where.
 
 Jak je vaše služba nasazená, odvozování požadavku je automaticky s vyrovnáváním zatížení a splňovat všechny špičky na vyžádání je škálování clusteru. [Telemetrická data o vaší služby se dají zachytit](how-to-enable-app-insights.md) ve službě Azure Application Insights přidružený k pracovního prostoru.
 
-## <a name="step-4-monitor-models-and-collect-data"></a>Krok 4: Monitorování modely a shromažďování dat
+## <a name="step-4-monitor-models-and-collect-data"></a>Krok 4: Modely monitorování a shromažďování dat
 
 Sada SDK pro zachycení protokolování a datový model je k dispozici, takže můžete monitorovat vstup, výstup a další relevantní data z vašeho modelu. Data se ukládají jako objekty blob v účtu úložiště Azure pro váš pracovní prostor.
 

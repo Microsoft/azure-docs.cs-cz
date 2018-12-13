@@ -1,6 +1,6 @@
 ---
-title: Dotazování indexu (.NET API – Azure Search) | Dokumentace Microsoftu
-description: Sestavení vyhledávacího dotazu ve službě Azure Search a použití parametrů hledání k filtrování a řazení výsledků vyhledávání.
+title: Dotazování indexu v kódu pomocí sady .NET SDK – Azure Search
+description: C#Příklad kódu pro vytváření vyhledávacího dotazu ve službě Azure Search. Přidání parametrů hledání k filtrování a řazení výsledků hledání.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/19/2017
-ms.openlocfilehash: 5b7f454fed6206ac57799d6f1e86152cd52dc9e9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 5c89902da5e773c60c8e2694159ddeed874ecab2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254413"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316994"
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>Dotazování indexu Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]

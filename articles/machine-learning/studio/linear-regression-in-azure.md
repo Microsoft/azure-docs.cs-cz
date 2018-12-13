@@ -5,9 +5,8 @@ metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c449e86e1ba33425212313103715b8fe48278496
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311054"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276669"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Použití lineární regrese v nástroji Azure Machine Learning Studio
 > *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning. 
@@ -31,7 +30,7 @@ ms.locfileid: "52311054"
 
 &nbsp; 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="goal"></a>Cíl
 Náš projekt spustit s dva cíle v úvahu: 
@@ -73,7 +72,7 @@ Zpočátku modelu Excelu jasně překonal model Machine Learning Studio:
 Když jsme spustili náš proces a výsledky používají vývojáři a odborníci přes data v týmu Machine Learning, poskytnou rychle několik užitečných tipů. 
 
 * Při použití [lineární regrese] [ linear-regression] modulu v nástroji Machine Learning Studio, jsou k dispozici dvě metody:
-  * Online klesání gradientu: Může být vhodnější pro problémy pracovat ve větším měřítku
+  * Online sestupu: Může být vhodnější pro problémy pracovat ve větším měřítku
   * Běžné čtverců: Toto je metoda, kterou většina lidí si můžete představit při jejich slyšet lineární regrese. Pro malé datové sady může být běžný čtverců více optimální volbou.
 * Vezměte v úvahu úprava parametr L2 Regularizace váha ke zlepšení výkonu. Je ve výchozím nastavení má 0,001, ale pro naše malá datová sada jsme ho nastavte na 0,005 ke zlepšení výkonu. 
 
@@ -86,7 +85,7 @@ Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výk
 | Student |Excel -> Data analýzy -> regrese |Lineární regrese. |Lineární regrese |
 | Možnosti learner |neuvedeno |Výchozí nastavení |běžné čtverců<br />L2 = 0,005 |
 | Datové sady |26 řádků, funkce 3, 1 popisek. Všechny číselné. |Stejné |Stejné |
-| Rozdělení: trénování |Excel trénuje nejprve 18 řádky, testovat na posledních 8 řádků. |Stejné |Stejné |
+| Rozdělení: Trénování |Excel trénuje nejprve 18 řádky, testovat na posledních 8 řádků. |Stejné |Stejné |
 | Rozdělení: Test |Excelovému vzorci regrese použitý pro řádky posledních 8 |Stejné |Stejné |
 | **Výkon** | | | |
 | Upravit čtverec R |0.96 |neuvedeno | |
@@ -145,7 +144,7 @@ Tady jsou některé prostředky pro dokážete pracovat regrese:
 
 * Regrese v aplikaci Excel. Pokud jste se pokusili nikdy Regrese v Excelu, v tomto kurzu umožňuje snadno: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
 * Prognózování regrese vs. Tyler Chessman napsal blogový článek s vysvětlením, jak časové řady Prognózování v aplikaci Excel, která obsahuje popis pro začátečníky dobré lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Lineární regrese běžné čtverců: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Běžné nejméně Squares lineární regrese: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

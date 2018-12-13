@@ -1,5 +1,5 @@
 ---
-title: Konfigurace clusteru služby HDInsight s balíčkem Enterprise Security Package pomocí služby Azure AD – DS
+title: Enterprise Security Package konfigurací pomocí Azure Active Directory Domain Services – Azure HDInsight
 description: Zjistěte, jak nastavit a konfigurovat cluster HDInsight Enterprise Security Package pomocí Azure Active Directory Domain Services.
 services: hdinsight
 ms.service: hdinsight
@@ -7,13 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
-ms.date: 10/9/2018
-ms.openlocfilehash: 8b92191b60f8eb7e3c63f465926b434e205ef1b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 10/09/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5e5b8320459561ac2dbbf72a812e29e837e08cd6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684735"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166655"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -97,11 +98,11 @@ Jakmile povolíte ESP, časté nesprávné konfigurace související s Azure AD 
 
 Při vytváření clusteru HDInsight s ESP, je nutné zadat následující parametry:
 
-- **Uživatel s rolí Správce clusteru**: Zvolte z synchronizace Azure AD – DS správce pro váš cluster. Tento účet domény musí být již synchronizované a k dispozici v Azure AD – DS.
+- **Uživatel s rolí Správce clusteru**: Vyberte správce pro váš cluster z synchronizace Azure AD – DS. Tento účet domény musí být již synchronizované a k dispozici v Azure AD – DS.
 
-- **Cluster skupiny pro řetězce klíčů**: skupiny zabezpečení, jejichž uživatele chcete synchronizovat a mít přístup ke clusteru by měly být dostupné v Azure AD – DS. Například HiveUsers skupiny. Další informace najdete v tématu [vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+- **Cluster skupiny pro řetězce klíčů**: Skupiny zabezpečení uživatelů chcete synchronizovat a mít přístup ke clusteru by měl být k dispozici v Azure AD – DS. Například HiveUsers skupiny. Další informace najdete v tématu [vytvoření skupiny a přidání členů v Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-- **LDAPS URL**: příklad je ldaps://contoso.com:636.
+- **LDAPS URL**: Příkladem je ldaps://contoso.com:636.
 
 Následující snímek obrazovky ukazuje úspěšná konfigurace na webu Azure Portal:
 

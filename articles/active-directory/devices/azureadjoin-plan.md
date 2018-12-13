@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3154d5401389d46eb1b9fad335aa18362c5f21f7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309358"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310364"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: Naplánování vaší implementace připojení k Azure AD
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postup: Plánování implementace připojení ke službě Azure AD
 
 
 Připojení k Azure AD umožňuje připojit přímo k Azure AD bez nutnosti připojení k místní službě Active Directory a zajistit přitom ochranu uživatelům zajistit produktivitu a zabezpečení zařízení. Připojení k Azure AD je připravené pro podniky ve velkém měřítku a s vymezeným oborem nasazení.   
@@ -91,9 +91,9 @@ Tyto scénáře nevyžadují konfigurace federačního serveru pro ověřování
 
 Federovaném prostředí by měl mít zprostředkovatele identity, která podporuje WS-Trust a WS-Fed protokoly:
 
-- **WS-Fed:** tento protokol je potřeba připojit zařízení k Azure AD.
+- **WS-Fed:** Tento protokol je potřeba připojit zařízení k Azure AD.
 
-- **WS-Trust:** tento protokol se vyžaduje pro přihlášení k zařízení připojené k doméně Azure AD. 
+- **WS-Trust:** Tento protokol se vyžaduje pro přihlášení k zařízení připojené k doméně Azure AD. 
 
 Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje připojení k Azure AD nativně. Od verze Windows 10 1809, vaši uživatelé můžete přihlásit k zařízení připojené k doméně Azure AD pomocí zprostředkovatele identity založené na SAML prostřednictvím [webové přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době webové přihlášení je pouze ve verzi preview funkce.
 
@@ -102,7 +102,7 @@ Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje př
 
 Čipové karty nebo ověřování pomocí certifikátu nelze použít k připojení zařízení k Azure AD. Čipové karty však lze použít pro přihlášení k zařízení připojených k Azure AD, pokud máte službu AD FS nakonfigurovaný.
 
-**Doporučení:** implementací Windows Hello pro firmy bez hesla, silné ověřování pro zařízení s Windows 10.
+**Doporučení:** Implementace Windows Hello pro firmy bez hesla, silné ověřování pro zařízení s Windows 10.
 
 
 ### <a name="user-configuration"></a>Konfigurace uživatele
@@ -127,7 +127,7 @@ Připojení k Azure AD:
 
 - Se nevztahuje na předchozích verzích Windows nebo jinými operačními systémy. Pokud máte zařízení s Windows 7/8.1, musíte upgradovat na Windows 10 k nasazení připojení k Azure AD.
  
-**Doporučení:** vždy použít nejnovější verzi Windows 10 využívat aktualizované funkce.
+**Doporučení:** Vždy používejte nejnovější verzi Windows 10 využívat aktualizované funkce.
 
 
 ### <a name="management-platform"></a>Platforma pro správu
@@ -155,7 +155,7 @@ Pokud vaše řešení MDM není k dispozici prostřednictvím Galerie aplikací 
 
 Prostřednictvím spolusprávy můžete spravovat některé aspekty svých zařízení, když zásady jsou poskytovány pomocí vaši platformu MDM SCCM. Microsoft Intune umožňuje společná správa s nástrojem SCCM. Další informace najdete v tématu [zařízení s Windows 10 pro spolusprávu](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Pokud používáte produktu MDM než Intune, zkontrolujte u svého poskytovatele MDM na příslušné spolusprávy scénáře.
 
-**Doporučení:** zvažte MDM jen pro zařízení připojená k správy pro službu Azure AD.
+**Doporučení:** Zvažte MDM jen pro zařízení připojená k správy pro službu Azure AD.
 
 
 
@@ -185,13 +185,13 @@ Pokud jsou vaše aplikace vlastní vytvořené a hostované místně, musíte je
 
 Pokud používáte službu AD FS, přečtěte si téma [ověřte a Správa jednotného přihlašování se službou AD FS](https://docs.microsoft.com/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Doporučení:** Zvažte hostování v cloudu (například Azure) a integrace s Azure AD pro vyšší výkon.
+**Doporučení:** Vezměte v úvahu hostování v cloudu (například Azure) a integrace s Azure AD pro vyšší výkon.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Spoléhání se na protokoly starší verze místních aplikací
 
 Uživatelé získat jednotné přihlašování z Azure AD připojených k zařízení, pokud má zařízení přístup k řadiči domény. 
 
-**Doporučení:** nasadit [proxy aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) zajistit zabezpečený přístup k těmto aplikacím.
+**Doporučení:** Nasazení [proxy aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) zajistit zabezpečený přístup k těmto aplikacím.
 
 
 ### <a name="on-premises-network-shares"></a>Místní síťové složky
@@ -209,11 +209,11 @@ Zatímco v cloudovém prostředí pouze nelze automaticky zjišťovat tiskárny,
 
 Podpora k zařízením Azure AD, které jsou připojené k nepodporují u místních aplikací spoléhá na počítači ověřování. 
 
-**Doporučení:** zvažte vyřazení těchto aplikací a přesunutí do svých moderních alternativy.
+**Doporučení:** Zvažte vyřazení těchto aplikací a přesunutí do svých moderních alternativy.
 
 ### <a name="remote-desktop-services"></a>Vzdálená plocha
 
-Připojení ke vzdálené ploše zařízení připojená k Azure AD vyžaduje na hostitelském počítači být buď připojené k Azure AD nebo hybridní připojená k Azure AD. Vzdálená plocha ze zařízení s odpojit nebo jiných Windows se nepodporuje. Další informace najdete v tématu [počítač připojený k připojení ke vzdálené službě Azure AD](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
+Připojení ke vzdálené ploše zařízení připojená k Azure AD vyžaduje na hostitelském počítači být buď připojené k Azure AD nebo hybridní připojená k Azure AD. Vzdálená plocha ze zařízení s odpojit nebo jiných Windows se nepodporuje. Další informace najdete v tématu [počítač připojený k připojení ke vzdálené službě Azure AD](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Popis možností zřizování
@@ -310,7 +310,7 @@ Vyberte **některé** nebo **všechny** založené na rozsah nasazení.
 
 Podle oboru, jednu z následujících se stane toto: 
 
-- **Uživatel je v oboru MDM**: Pokud máte předplatné Azure AD Premium, je automatické registrace MDM spolu s Azure AD join. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro vaše MDM. Pokud se registrace MDM se nezdaří v tomto scénáři, připojení ke službě Azure AD bude vrácena zpět.
+- **Uživatel je v oboru MDM**: Pokud máte předplatné Azure AD Premium, je automatické registrace MDM, spolu s Azure AD join. Všichni uživatelé s vymezeným oborem musí mít příslušnou licenci pro vaše MDM. Pokud se registrace MDM se nezdaří v tomto scénáři, připojení ke službě Azure AD bude vrácena zpět.
     
 - **Uživatel není v oboru MDM**: Pokud uživatelé nejsou v oboru MDM, bez jakékoli registrace MDM dokončení připojení ke službě Azure AD. Výsledkem nespravovaném zařízení.
 
@@ -340,7 +340,7 @@ MAM se nevztahují na připojení ke službě Azure AD.
 
 Pokud chcete povolit stav roamingu do služby Azure AD tak, aby uživatelé můžete synchronizovat svoje nastavení mezi zařízeními, přečtěte si téma [povolit Enterprise stav roamingu v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/enterprise-state-roaming-enable). 
 
-**Doporučení**: povolte toto nastavení i pro hybridních zařízení připojených k Azure AD.
+**Doporučení**: Povolte toto nastavení i pro hybridních zařízení připojených k Azure AD.
 
 
 ## <a name="configure-conditional-access"></a>Konfigurace podmíněného přístupu

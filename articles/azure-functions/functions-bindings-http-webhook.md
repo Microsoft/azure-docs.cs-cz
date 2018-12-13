@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3cdedd0c8ddf6d2c724351cf150499434e3886c9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: acd2d5a3448d805b8b3c741139fc5f9a79c40ed2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994707"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317436"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP aktivačními událostmi a vazbami
 
@@ -495,7 +495,7 @@ Pokud používáte aplikaci function app [ověřování pomocí služby App Serv
 
 Také můžete přečíst tyto informace z vytvoření vazby mezi daty. Tato možnost je pouze na modul runtime verze 2.x funkce k dispozici. Je také aktuálně k dispozici pouze pro jazyky .NET.
 
-Jazyků .NET, tyto informace jsou k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). Je k dispozici objektu ClaimsPrincipal v rámci kontextu požadavku, jak je znázorněno v následujícím příkladu:
+V jazycích .NET, tyto informace jsou k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). Je k dispozici objektu ClaimsPrincipal v rámci kontextu požadavku, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 using System.Net;
@@ -540,8 +540,8 @@ Funkce vám umožní používat klíče pro znesnadnit přístup vašich koncov�
 
 Existují dva typy klíčů:
 
-* **Klíče hostitele**: tyto klíče jsou sdíleny ve všech funkcí v rámci aplikace function app. Když se použije jako klíč rozhraní API, tyto rutiny umožňují přístup k žádné funkce v rámci aplikace function app.
-* **Funkční klávesy**: tyto klíče použít pouze na konkrétní funkce, za kterých jsou definovány. Když se použije jako klíč rozhraní API, tyto pouze umožnit přístup k této funkce.
+* **Klíče hostitele**: Tyto klíče jsou sdíleny ve všech funkcí v rámci aplikace function app. Když se použije jako klíč rozhraní API, tyto rutiny umožňují přístup k žádné funkce v rámci aplikace function app.
+* **Funkční klávesy**: Tyto klíče se vztahují jenom na konkrétní funkce, za kterých jsou definovány. Když se použije jako klíč rozhraní API, tyto pouze umožnit přístup k této funkce.
 
 Každý klíč je s názvem pro odkaz a na úrovni funkcí a hostitele je výchozí klíč (s názvem "Výchozí"). Funkční klávesy mají přednost před klíče hostitele. Když dva klíče jsou definovány se stejným názvem, je vždy použít funkční klávesy.
 

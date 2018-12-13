@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení pořadí nasazení v Azure podrobné plány
+title: Vysvětlení pořadí pořadí nasazení
 description: Další informace o životním cyklu, který prochází podrobný plán a podrobnosti o každé fázi.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fcfffe6094361c8b47b1cc7ce42cb79561261b15
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: seodec18
+ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620591"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308613"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Vysvětlení pořadí nasazení v Azure podrobné plány
 

@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 8fb2d9563623cdae98bd0d387a51f36478d2cbf8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 060b1e469a31c335f062ccd332157d13e64f9318
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882498"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183978"
 ---
 # <a name="useful-operators-in-log-analytics-queries"></a>Užitečné operátorů v dotazech Log Analytics
 

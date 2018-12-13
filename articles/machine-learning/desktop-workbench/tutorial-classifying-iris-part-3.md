@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/13/2018
+ms.date: 03/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 52757098436349d38538f4c2168a70e53ad58421
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946608"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270157"
 ---
-# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutoriál 3: Klasifikace Iris: Nasazení modelu
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -168,7 +168,7 @@ _Místní režim_ můžete použít pro vývoj a testování. K provedení násl
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-   Ve třetím řádku výstupu se zobrazí **"registrationState": "Registrace"**. Chvíli počkejte a pak příkaz **show** opakujte, dokud se ve výstupu nezobrazí **"registrationState": "Registrováno"**.
+   Na třetím řádku výstupu se zobrazí **"registrationState": "Registrace"**. Chvíli počkejte a opakujte **zobrazit** příkaz, dokud se ve výstupu nezobrazí **"registrationState": "Registrováno"**.
 
    >[!NOTE] 
    Pokud provádíte nasazení do clusteru ACS, musíte naprosto stejným způsobem zaregistrovat také poskytovatele prostředků **Microsoft.ContainerService**.
@@ -242,16 +242,16 @@ Teď můžete vytvořit webovou službu v reálném čase.
 
    * `-n`: Název aplikace, který musí obsahovat jenom malá písmena.
 
-   * `-r`: Modul runtime daného modelu. V tomto případ je to model Python. Platné moduly runtime jsou `python` a `spark-py`.
+   * `-r`: Runtime daného modelu. V tomto případ je to model Python. Platné moduly runtime jsou `python` a `spark-py`.
 
    * `--collect-model-data true`: Tento přepínač povoluje shromažďování dat.
 
-   * `-c`: Cesta k souboru závislostí systému Conda se zadanými dalšími balíčky.
+   * `-c`: Cesta k souboru závislostí systému conda, kde se zadanými dalšími balíčky.
 
    >[!IMPORTANT]
    >Název služby, který je zároveň názvem nové image Dockeru, musí obsahovat jenom malá písmena. Jinak dojde k chybě. 
 
-1. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení sestaví image Dockeru obsahující váš model, schéma a soubor vyhodnocení a odešle ji do registru kontejneru Azure: **\<název_ACR\>.azurecr.io/\<název_image\>:\<verze\>**. 
+1. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení vytvoří image Dockeru obsahující váš model, schéma a soubor vyhodnocení a předá je do služby Azure container registry: **\<Název_acr\>.azurecr.io/\<imagename\>:\<verze\>**. 
 
    Příkaz tuto image přetáhne do místního počítače a na základě této image spustí kontejner Dockeru. Pokud je vaše prostředí nakonfigurované v režimu clusteru, kontejner Dockeru se místo toho nasadí do clusteru Azure Cloud Services Kubernetes.
 
@@ -351,15 +351,15 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
 
 1. Tato data můžete využívat ve službě Azure Blob Storage. Existuje řada různých nástrojů, které používají software Microsoftu i open source nástroje, jako například:
 
-   * Machine Learning: Otevřete soubor CSV tím, že ho přidáte jako zdroj dat.
+   * Machine Learning: Otevřete soubor CSV tak, že přidáte soubor CSV jako zdroj dat.
 
    * Excel: Otevřete denní soubory CSV jako tabulku.
 
-   * [Power BI:](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) Vytvářejte grafy na základě dat získaných z dat ve formátu CSV v objektech blob.
+   * [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): Vytvářejte grafy na základě dat získaných z data ve formátu CSV v objektech BLOB.
 
-   * [Hive:](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started) Načtěte data ve formátu CSV do tabulky Hive a spouštějte dotazy SQL přímo na objektech blob.
+   * [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): Načtěte data ve formátu CSV do tabulky Hive a spouštějte dotazy SQL přímo na objektech BLOB.
 
-   * [Spark:](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview) Vytvořte datový rámec s velkou částí dat ve formátu CSV.
+   * [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Vytvořte datový rámec s velkou částí dat ve formátu CSV.
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
@@ -369,7 +369,7 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V této třetí části třídílné série kurzů jste se naučili, jak pomocí služby Machine Learning provádět tyto úlohy:
 > [!div class="checklist"]
 > * Vyhledání souboru modelu

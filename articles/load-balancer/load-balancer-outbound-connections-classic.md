@@ -1,22 +1,24 @@
 ---
-title: Odchozích připojení v Azure (Classic) | Dokumentace Microsoftu
+title: Odchozích připojení v Azure (klasické)
+titlesuffix: Azure Load Balancer
 description: Tento článek vysvětluje, jak Azure umožňuje cloudové služby pro komunikaci s veřejné internetové služby.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219660"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189995"
 ---
 # <a name="outbound-connections-classic"></a>Odchozí připojení (Classic)
 
@@ -62,7 +64,7 @@ Veřejné IP adresa přiřazená k virtuálnímu počítači je 1:1 vztahu (spí
 
 Pokud aplikace zahájí mnoho odchozích toků a dochází k vyčerpání portů SNAT, vezměte v úvahu přiřazení [ILPIP ke zmírnění SNAT omezení](#assignilpip). Kontrola [Správa SNAT vyčerpání](#snatexhaust) v celém rozsahu.
 
-### <a name="publiclbendpoint"></a>Scénář 2: Veřejného s vyrovnáváním zatížení koncového bodu
+### <a name="publiclbendpoint"></a>Scénář 2: Veřejný koncový bod s vyrovnáváním zatížení
 
 V tomto scénáři je spojené s veřejnou IP adresu prostřednictvím koncových bodů s vyrovnáváním zatížení virtuálního počítače nebo webová Role pracovního procesu. Virtuální počítač nemá přiřazenou veřejnou IP adresu. 
 
@@ -74,7 +76,7 @@ SNAT porty jsou předpřidělené, jak je popsáno v [SNAT principy a token PAT]
 
 Při [několik veřejných koncových s vyrovnáváním zatížení bodů](load-balancer-multivip.md) neexistuje, některý z těchto veřejné IP adresy [Release candidate odchozích toků](#multivipsnat), a jedna náhodně vybraná.  
 
-### <a name="defaultsnat"></a>Scénář 3: Žádná přidružená veřejná IP adresa
+### <a name="defaultsnat"></a>Scénář 3: Přidružená žádná veřejná IP adresa
 
 V tomto případě virtuální počítač nebo webová ROle pracovního procesu není součástí veřejný koncový bod s vyrovnáváním zatížení.  A v případě virtuálních počítačů, nemá ILPIP adresu přiřazenou. Když virtuální počítač vytvoří odchozí tok, přeloží Azure privátní zdrojové IP adresy odchozí tok veřejné Zdrojová IP adresa. Veřejnou IP adresu použít pro tento odchozí tok není Konfigurovatelný a nepočítá s limitem předplatného veřejný IP prostředek.  Platforma Azure automaticky přiřadí tuto adresu.
 

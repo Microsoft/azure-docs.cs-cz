@@ -1,12 +1,11 @@
 ---
-title: Nasazení pracovního prostoru s Azure Resource Manager – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Nasazení pracovní prostor Studio s Azure Resource Manager – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Postup nasazení pracovního prostoru pro Azure Machine Learning pomocí šablony Azure Resource Manageru
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
 ms.service: machine-learning
@@ -15,15 +14,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/05/2018
-ms.openlocfilehash: e3836e3c299b2dff1252c0bceaec5266fc54b2e8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 02/05/2018
+ms.openlocfilehash: ac9cecd07d600189f0fb08771b0992d49236aea9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074602"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268916"
 ---
-# <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru
+# <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Nasazení aplikace Azure Machine Learning Studio prostoru pomocí Azure Resource Manageru
 
 Pomocí Azure Resource Manageru šablony nasazení šetří čas vyznačuje mimořádně škálovatelný způsob, jak nasadit vzájemně propojených součástí ověřování a mechanismus opakování. Nastavení pracovních prostorů Azure Machine Learning, například musíte nejprve nakonfigurovat účet úložiště Azure a pak nasaďte váš pracovní prostor. Představte si to ručně pro stovky pracovní prostory. Jednodušší alternativu je použití šablony Azure Resource Manageru k nasazení pracovního prostoru služby Azure Machine Learning a všechny jeho závislosti. Tento článek vás provede krok za krokem tohoto procesu. Skvělý přehled Azure Resource Manageru najdete v tématu [přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md).
 

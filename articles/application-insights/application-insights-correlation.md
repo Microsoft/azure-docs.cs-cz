@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997482"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310330"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -31,7 +31,7 @@ Definuje Application Insights [datový model](application-insights-data-model.md
 
 Distribuované logické operace se obvykle skládá z sadu menších operací - žádostí zpracovaných rozhraním jednu součást. Tyto operace jsou definovány [telemetrie žádostí](application-insights-data-model-request-telemetry.md). Každý požadavek telemetrie má svůj vlastní `id` , který globálně jedinečným způsobem identifikuje. A veškerá telemetrie – trasování, výjimky, atd. s touto žádostí, nastavte `operation_parentId` hodnotě požadavku `id`.
 
-Všechny odchozí operace jako volání protokolu http na jinou komponentu reprezentována [telemetrických závislostí](application-insights-data-model-dependency-telemetry.md). Telemetrie závislostí také definuje vlastní `id` , který je globálně jedinečný. Telemetrie žádostí iniciovaných toto volání závislosti, používá ho jako `operation_parentId`.
+Každý odchozí operace (jako je například http volání pro jiné komponenty), je reprezentovaná [telemetrických závislostí](application-insights-data-model-dependency-telemetry.md). Telemetrie závislostí také definuje vlastní `id` , který je globálně jedinečný. Telemetrie žádostí iniciovaných toto volání závislosti, používá ho jako `operation_parentId`.
 
 Můžete vytvořit zobrazení pomocí distribuované logické operace `operation_Id`, `operation_parentId`, a `request.id` s `dependency.id`. Tato pole také definovat pořadí příčinnou souvislost volání telemetrická data.
 

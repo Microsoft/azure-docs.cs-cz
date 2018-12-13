@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051370"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309157"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 
@@ -35,7 +35,7 @@ Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric v Javě
 
-Pro aplikace v Javě [více rozhraní protokolování](http://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Protože `java.util.logging` je výchozí možnost, pomocí prostředí JRE, se také používá pro [příklady v githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Následující diskuse vysvětluje postup konfigurace `java.util.logging` rozhraní framework.
+Pro aplikace v Javě [více rozhraní protokolování](http://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Protože `java.util.logging` je výchozí možnost, pomocí prostředí JRE, se také používá pro [příklady v Githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuse vysvětluje postup konfigurace `java.util.logging` rozhraní framework.
 
 Pomocí java.util.logging můžete přesměrovat protokolů aplikace, paměti, výstupní datové proudy, soubory konzoly nebo sokety. Pro každou z těchto možností jsou obsaženy v rámci výchozích obslužných rutin. Můžete vytvořit `app.properties` souboru nakonfigurujte popisovač souboru pro vaši aplikaci do místního souboru přesměrovat všechny protokoly.
 
@@ -48,7 +48,7 @@ java.util.logging.FileHandler.level = ALL
 java.util.logging.FileHandler.formatter = java.util.logging.SimpleFormatter
 java.util.logging.FileHandler.limit = 1024000
 java.util.logging.FileHandler.count = 10
-java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
+java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
 Složka na které odkazují `app.properties` soubor musí existovat. Po `app.properties` se vytvoří soubor, budete muset také upravit váš skript vstupního bodu `entrypoint.sh` v `<applicationfolder>/<servicePkg>/Code/` složku, kterou chcete nastavit vlastnost `java.util.logging.config.file` k `app.propertes` souboru. Ji by měl vypadat jako následující fragment kódu:
@@ -64,7 +64,7 @@ Tuto konfiguraci výsledky v protokolech shromažďovaných otáčení způsobem
 
 Ve výchozím nastavení je-li explicitně nastavená žádná obslužná rutina, registrována obslužná rutina konzoly. V protokolu syslog v rámci /var/log/syslog jeden můžete zobrazit protokoly.
 
-Další informace najdete v tématu [příklady v githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Další informace najdete v tématu [příklady v Githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Ladění aplikace Service Fabric C#
@@ -83,8 +83,8 @@ Vlastní naslouchacího procesu událostí můžete použít k naslouchání ud�
 
 ```csharp
 
- public class ServiceEventSource : EventSource
- {
+public class ServiceEventSource : EventSource
+{
         public static ServiceEventSource Current = new ServiceEventSource();
 
         [NonEvent]
@@ -105,8 +105,8 @@ Vlastní naslouchacího procesu událostí můžete použít k naslouchání ud�
 
 
 ```csharp
-   internal class ServiceEventListener : EventListener
-   {
+internal class ServiceEventListener : EventListener
+{
 
         protected override void OnEventSourceCreated(EventSource eventSource)
         {
@@ -114,20 +114,20 @@ Vlastní naslouchacího procesu událostí můžete použít k naslouchání ud�
         }
         protected override void OnEventWritten(EventWrittenEventArgs eventData)
         {
-            using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))           
-        { 
-                 // report all event information               
-         Out.Write(" {0} ",  Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
-                if (eventData.Message != null)              
-            Out.WriteLine(eventData.Message, eventData.Payload.ToArray());              
-            else             
-        { 
-                    string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
-                    Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");             
+                using (StreamWriter Out = new StreamWriter( new FileStream("/tmp/MyServiceLog.txt", FileMode.Append)))
+                {
+                        // report all event information
+                        Out.Write(" {0} ", Write(eventData.Task.ToString(), eventData.EventName, eventData.EventId.ToString(), eventData.Level,""));
+                        if (eventData.Message != null)
+                                Out.WriteLine(eventData.Message, eventData.Payload.ToArray());
+                        else
+                        {
+                                string[] sargs = eventData.Payload != null ? eventData.Payload.Select(o => o.ToString()).ToArray() : null; 
+                                Out.WriteLine("({0}).", sargs != null ? string.Join(", ", sargs) : "");
+                        }
+                }
         }
-           }
-        }
-    }
+}
 ```
 
 

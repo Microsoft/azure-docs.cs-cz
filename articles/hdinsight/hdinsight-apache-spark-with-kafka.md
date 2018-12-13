@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 110357a7a84aa8cc6bd7dcb5bbef9ca02879a9cb
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494288"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165792"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Příklad (DStream) s Apache Kafka v HDInsight streamování Apache Sparku
 
@@ -59,15 +59,15 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 
     * **Umístění**: Vyberte umístění geograficky blízko vás.
 
-    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro Spark a clusterů Kafka. Například zadání **hdistreaming** vytvoří Spark cluster __spark hdistreaming__ a cluster Kafka s názvem **kafka hdistreaming**.
+    * **Základní název clusteru**: Tato hodnota se používá jako základní název pro clusterů Spark a Kafka. Například zadání **hdistreaming** vytvoří Spark cluster __spark hdistreaming__ a cluster Kafka s názvem **kafka hdistreaming**.
 
-    * **Uživatelské jméno přihlášení clusteru**: uživatelské jméno správce clusterů Spark a Kafka.
+    * **Uživatelské jméno přihlášení clusteru**: Uživatelské jméno správce clusterů Spark a Kafka.
 
-    * **Heslo přihlášení clusteru**: heslo správce pro clusterů Spark a Kafka.
+    * **Heslo přihlášení clusteru**: Heslo správce pro clusterů Spark a Kafka.
 
-    * **Uživatelské jméno SSH**: SSH uživatele k vytvoření clusterů Spark a Kafka.
+    * **Uživatelské jméno SSH**: Uživatele SSH k vytvoření clusterů Spark a Kafka.
 
-    * **Heslo SSH**: heslo pro uživatele SSH pro clusterů Spark a Kafka.
+    * **SSH heslo**: Heslo uživatele SSH pro clusterů Spark a Kafka.
 
 3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
 

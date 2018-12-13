@@ -1,5 +1,5 @@
 ---
-title: Vytvoření účtu rozhraní API Cassandra v Azure Cosmos DB, databáze a tabulky pomocí aplikace v Javě
+title: Vytvoření účtu rozhraní Cassandra API pomocí aplikace v Javě – Azure Cosmos DB
 description: Tento článek ukazuje, jak vytvořit účet rozhraní API Cassandra, přidat databázi (označované také jako prostor klíčů) a tabulku k tomuto účtu pomocí aplikace v Javě.
 author: kanshiG
 ms.author: govindk
@@ -8,15 +8,16 @@ services: cosmos-db
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: 57b255fc3875adfd411ee8508f238f0e10af85f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0bff57d91a777619b825dacef5988dda010c794b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089832"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138836"
 ---
-# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Kurz: Vytvoření účtu rozhraní API Cassandra služby Azure Cosmos DB, databáze a tabulky pomocí aplikace v Javě
+# <a name="tutorial-create-an-azure-cosmos-db-cassandra-api-account-by-using-a-java-application"></a>Kurz: Vytvoření účtu Azure Cosmos DB Cassandra API s použitím aplikace v Javě
 
 Tento kurz popisuje způsob použití aplikace v Javě k vytvoření účtu rozhraní API Cassandra ve službě Azure Cosmos DB, přidání databáze (označované také jako prostor klíčů) a přidání tabulky. Aplikace v Javě využívá [ovladač Javy](https://github.com/datastax/java-driver) k vytvoření uživatelské databáze, která obsahuje podrobnosti, jako je ID uživatele, uživatelské jméno, město uživatele.  
 

@@ -1,5 +1,5 @@
 ---
-title: Trénování modelů ML horizontálních oddílů pomocí třídy odhadu
+title: Trénování modelů ML s odhady
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak provést jeden uzel nebo pro distribuované trénování tradiční strojové učení a obsáhlý learning modely s využitím Azure Machine Learning services Estimator třídy
 ms.author: minxia
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e7157b9546d1f9ca40bab35d9e643c38051db04e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0ebb12df835cf1c32e02419989b21684e9884c18
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100748"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184351"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trénování modelů Azure Machine Learning
 
 Trénování modelů strojového učení, zejména hluboké neuronové sítě, je často náročné na čas a výpočetní úlohy. Po dokončení zápisu cvičný skript a běží na malou podmnožinu dat na místním počítači, bude pravděpodobně chcete vertikálně navýšit kapacitu úloh.
 
-Pro usnadnění vzdělávání, Azure Machine Learning Python SDK poskytuje vysokou úroveň abstrakce, estimator třídy, která umožňuje uživatelům snadné trénování svých modelů v ekosystému Azure. Můžete vytvořit a použít `Estimator` objekt odesílat žádný školení kód, který chcete spustit na vzdálený výpočetní, ať už jde o napříč clusteru GPU s jedním uzlem spuštění nebo distribuované trénování. Pro úlohy PyTorch a TensorFlow, Azure Machine Learning poskytuje také odpovídající vlastní `PyTorch` a `TensorFlow` odhady pro zjednodušení pomocí těchto rozhraní.
+Pro usnadnění vzdělávání, Azure Machine Learning Python SDK poskytuje vysokou úroveň abstrakce, estimator třídy, která umožňuje uživatelům snadné trénování svých modelů v ekosystému Azure. Můžete vytvořit a použít [ `Estimator` objekt](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) odesílat žádné školení kód, který chcete spustit na vzdálený výpočetní, ať už jde jedním uzlem spuštění nebo distribuované trénování napříč clusteru GPU s. Pro úlohy PyTorch a TensorFlow, Azure Machine Learning poskytuje také odpovídající vlastní `PyTorch` a `TensorFlow` odhady pro zjednodušení pomocí těchto rozhraní.
 
 ## <a name="train-with-an-estimator"></a>Trénování s odhadu
 

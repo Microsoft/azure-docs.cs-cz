@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin'
+title: 'Azure Cosmos DB: Vytvoření aplikace seznamu úkolů s využitím kódu Xamarin'
 description: Obsahuje ukázku kódu Xamarin, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
 services: cosmos-db
 author: codemillmatt
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: b26f8448f8f7c20d5b38df04b79b8cb42773f44c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f955e0386cd601212eb992870f02607538b537e2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105712"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252622"
 ---
-# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin
+# <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Vytvoření aplikace seznamu úkolů s využitím kódu Xamarin
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -64,7 +64,7 @@ Pokud používáte Mac, můžete si stáhnout **bezplatnou verzi** [Visual Studi
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci Xamarin SQL API z GitHubu, projdeme si její kód, získáme klíče rozhraní API a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu.
+Teď naklonujeme aplikaci Xamarin SQL API z Githubu, projděte si kód, získáme klíče rozhraní API a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu.
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 

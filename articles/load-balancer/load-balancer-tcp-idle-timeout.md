@@ -1,11 +1,11 @@
 ---
-title: Nakonfigurujte časový limit nečinnosti TCP nástroje pro vyrovnávání zatížení | Microsoft Docs
-description: Nakonfigurujte časový limit nečinnosti TCP nástroje pro vyrovnávání zatížení
+title: Konfigurace časového limitu nečinnosti TCP pro nástroj pro vyrovnávání zatížení v Azure
+titlesuffix: Azure Load Balancer
+description: Konfigurace časového limitu nečinnosti TCP pro nástroj pro vyrovnávání zatížení
 services: load-balancer
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: 4625c6a8-5725-47ce-81db-4fa3bd055891
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,38 +13,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24a7d2354693e362d7709b8817c438555caae0e3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855226"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256192"
 ---
-# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurace nastavení časového limitu nečinnosti TCP pro službu Vyrovnávání zatížení Azure
+# <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurace nastavení časového limitu nečinnosti TCP pro nástroj pro vyrovnávání zatížení Azure
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Ve výchozí konfiguraci Vyrovnávání zatížení Azure má časový limit nečinnosti nastavení 4 minut. Je-li určité době nečinnosti delší než hodnota časového limitu, neexistuje žádná záruka, který se spravuje relace TCP nebo HTTP mezi klientem a cloudové služby.
+Ve výchozí konfiguraci má nástroj pro vyrovnávání zatížení Azure nastavení časového limitu nečinnosti 4 minuty. Pokud určité době nečinnosti delší než hodnota časového limitu, neexistuje žádná záruka, že se udržuje relace TCP nebo HTTP mezi klientem a cloudové služby.
 
-Když se připojení uzavře, klientské aplikace může zobrazit následující chybová zpráva: "základní připojení bylo ukončeno: byl očekáván být zachováno připojení bylo ukončeno serverem."
+Když se připojení uzavře, klientské aplikace může zobrazit následující chybová zpráva: "Nadřízené připojení bylo uzavřeno: Připojení, které mělo být zachováno bylo ukončeno serverem."
 
-Běžnou praxí je použít udržování připojení TCP. Tento postup zachová připojení active delší dobu. Další informace najdete v tématu tyto [.NET příklady](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). S udržování připojení povolena, jsou pakety odesílány době nečinnosti na připojení. Tyto udržovací pakety zajistěte, aby hodnota časového limitu nečinnosti není přístupný a se zachová připojení na dlouhou dobu.
+Běžnou praxí je použití udržování připojení protokolu TCP. Tento postup udržuje připojení aktivní po delší dobu. Další informace najdete v těchto [.NET příklady](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). S keep-alive povolena, jsou pakety odesílány během období nečinnosti připojení. Tyto pakety keep-alive zajistěte, aby nikdy nebude dosaženo hodnoty časového limitu nečinnosti a který se zachová připojení dlouhou dobu.
 
-Toto nastavení funguje pro příchozí připojení pouze. Aby nedošlo ke ztrátě připojení, musíte nakonfigurovat interval menší než nastavení pro časový limit nečinnosti udržování připojení TCP nebo zvyšte hodnotu časového limitu nečinnosti. Pro podporu takových scénářů, přidali jsme podporu pro konfigurovat časový limit nečinnosti. Nyní ji můžete nastavit po dobu 4 až 30 minut.
+Toto nastavení funguje pro pouze příchozí připojení. Abyste se vyhnuli ztrátě připojení, musíte nakonfigurovat interval menší než nastavení časového limitu nečinnosti TCP keep-alive nebo zvyšte hodnotu časového limitu nečinnosti. Pro zajištění podpory těchto scénářů, přidali jsme podporu pro Konfigurovatelný časový limit nečinnosti. Teď ji můžete nastavit po dobu 4 až 30 minut.
 
-Udržování připojení TCP funguje dobře pro scénáře, kdy výdrž baterie není omezení. Není doporučeno pro mobilní aplikace. Používání udržování v mobilní aplikaci TCP můžou vyprázdnit baterie zařízení pouze rychlejší.
+Udržování připojení TCP funguje dobře pro scénáře, ve kterém výdrži baterie není omezení. Není doporučeno pro mobilní aplikace. Pomocí TCP keep-alive v mobilní aplikaci můžete vyprázdnit baterie zařízení pouze rychleji.
 
 ![Vypršení časového limitu TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Následující části popisují, jak změnit nastavení časového limitu nečinnosti v virtuální počítače a cloudové služby.
+Následující části popisují, jak změnit nastavení časového limitu nečinnosti ve virtuálních počítačích a cloudových služeb.
 
-## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Konfigurace časového limitu TCP pro vaše instance úrovni veřejné IP adresy na 15 minut
+## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Konfigurace časového limitu TCP pro veřejné IP na úrovni instance až 15 minut
 
 ```powershell
 Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 ```
 
-Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastaven, je výchozí hodnota časového limitu 4 minuty. Rozsah přijatelný časový limit je 4 až 30 minut.
+Parametr `IdleTimeoutInMinutes` je volitelný. Pokud není nastavená, je výchozí časový limit 4 minuty. Rozsah přijatelný časový limit je 4 až 30 minut.
 
 ## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Při vytváření koncový bod Azure na virtuálním počítači nastavit časový limit nečinnosti
 
@@ -74,19 +74,19 @@ Pokud chcete načíst konfiguraci časového limitu nečinnosti, použijte násl
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Nastavit časový limit TCP na sady koncových bodů s vyrovnáváním zatížení
+## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Nastavit vypršení časového limitu TCP pro sady koncových bodů s vyrovnáváním zatížení
 
-Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, vypršení časového limitu TCP musí být nastavena na sady koncových bodů s vyrovnáváním zatížení. Například:
+Pokud koncové body jsou součástí sady koncových bodů s vyrovnáváním zatížení, vypršení časového limitu TCP musí být nastavena na koncový bod s vyrovnáváním zatížení sadě. Příklad:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
 ```
 
-## <a name="change-timeout-settings-for-cloud-services"></a>Změna nastavení časového limitu pro cloudové služby
+## <a name="change-timeout-settings-for-cloud-services"></a>Změnit nastavení časového limitu pro cloudové služby
 
-Azure SDK můžete použít k aktualizaci cloudové služby. Vytváření nastavení koncového bodu pro cloudové služby v souboru .csdef. Aktualizace časového limitu TCP pro nasazení cloudové služby vyžaduje nasazení upgradu. Výjimkou je, pokud je časový limit TCP zadat jenom pro veřejnou IP adresu. Nastavení veřejné IP adresy jsou v souboru .cscfg a můžete je aktualizovat prostřednictvím aktualizací nasazení a upgrade.
+Sada Azure SDK můžete použít k aktualizaci svojí cloudové služby. Proveďte nastavení koncového bodu pro cloudové služby v souboru .csdef. Aktualizace časového limitu TCP pro nasazení cloudové služby vyžaduje upgrade nasazení. Výjimkou je, pokud je pouze pro veřejné IP adresy zadané vypršení časového limitu TCP. Nastavení veřejné IP adresy jsou v souboru .cscfg a můžete je aktualizovat prostřednictvím aktualizací nasazení a upgrade.
 
-Změny .csdef pro koncový bod nastavení jsou tyto:
+.Csdef změny nastavení koncového bodu jsou tyto:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -96,7 +96,7 @@ Změny .csdef pro koncový bod nastavení jsou tyto:
 </WorkerRole>
 ```
 
-Změny .cscfg pro nastavení limitu na veřejné IP adresy jsou tyto:
+Změny .cscfg pro nastavení časového limitu na veřejné IP adresy jsou tyto:
 
 ```xml
 <NetworkConfiguration>
@@ -111,9 +111,9 @@ Změny .cscfg pro nastavení limitu na veřejné IP adresy jsou tyto:
 </NetworkConfiguration>
 ```
 
-## <a name="rest-api-example"></a>Příklad REST API
+## <a name="rest-api-example"></a>Příklad rozhraní REST API
 
-Časový limit nečinnosti TCP můžete nakonfigurovat pomocí rozhraní API správy služby. Ujistěte se, že `x-ms-version` záhlaví je nastaven na verzi `2014-06-01` nebo novější. Aktualizujte konfiguraci zadané Vyrovnávání zatížení sítě vstupní koncové body na všechny virtuální počítače v nasazení.
+Vypršení časového limitu nečinnosti protokolu TCP můžete nakonfigurovat pomocí rozhraní API pro správu služby. Ujistěte se, že `x-ms-version` záhlaví je nastavené na verzi `2014-06-01` nebo novější. Aktualizuje konfiguraci serveru zadaný s vyrovnáváním zatížení vstupní koncové body na všechny virtuální počítače v nasazení.
 
 ### <a name="request"></a>Žádost
 
@@ -152,10 +152,10 @@ Změny .cscfg pro nastavení limitu na veřejné IP adresy jsou tyto:
 </LoadBalancedEndpointList>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-[Přehled nástroje pro vyrovnávání zatížení interní](load-balancer-internal-overview.md)
+[Interní služby load balancer – přehled](load-balancer-internal-overview.md)
 
-[Začněte konfiguraci Vyrovnávání zatížení internetového](load-balancer-get-started-internet-arm-ps.md)
+[Začínáme s konfigurací nástroje pro vyrovnávání zatížení přístupem k Internetu](load-balancer-get-started-internet-arm-ps.md)
 
 [Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení](load-balancer-distribution-mode.md)

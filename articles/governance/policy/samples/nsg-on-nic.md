@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – NSG x ve všech síťových rozhraních
+title: Ukázka - NSG x na každém síťovém rozhraní
 description: Tato ukázková zásada vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 9e853e293611d58ac936228fd02fcd0c0a6d8dda
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e24697620b61e942699f2748590c94f1063d3216
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948294"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313475"
 ---
 # <a name="nsg-x-on-every-nic"></a>NSG x ve všech síťových rozhraních
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

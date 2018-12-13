@@ -1,33 +1,31 @@
 ---
-title: Ukázky Azure PowerShellu | Microsoft Docs
+title: Ukázky Azure PowerShellu
+titlesuffix: Azure Load Balancer
 description: Ukázky Azure PowerShellu
 services: virtual-network
 documentationcenter: load-balancer
 author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2018
+ms.date: 12/10/2018
 ms.author: kumud
-ms.openlocfilehash: 7208c29a1f3fa6459599639e478ea24a2fd9e7ac
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cf4e0346a93961df14afe48ec767e383f92eab3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182469"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253710"
 ---
-# <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky pro nástroj pro vyrovnávání zatížení Azure PowerShell
+# <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky Azure Powershellu pro nástroj pro vyrovnávání zatížení
 
-Následující tabulka obsahuje odkazy na skripty, které jsou vytvořené pomocí Azure PowerShell.
+Následující tabulka obsahuje odkazy na skripty, které jsou vytvořené pomocí Azure Powershellu.
 
 | | |
 |-|-|
-| [Přenosy Vyrovnávání zatížení pro virtuální počítače pro vysokou dostupnost](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Vytvoří několik virtuálních počítačů v s vysokou dostupností a konfigurace skupinu s vyrovnáváním zatížení. |
-| [Více webů na virtuálních počítačích můžete vyrovnávat zatížení](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Vytvoří dva virtuální počítače s víc konfigurací IP adres, připojený k Azure skupiny dostupnosti, přístupný prostřednictvím Vyrovnávání zatížení Azure. |
+| [Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Vytvoří několik virtuálních počítačů v s vysokou dostupností a s vyrovnáváním zatížení konfigurace. |
+| [Vyvažovat zatížení u více webů na virtuálních počítačích](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Vytvoří dva virtuální počítače s několika konfigurací IP, připojený k skupině dostupnosti Azure, přístupné prostřednictvím služby Azure Load Balancer. |
 | | |

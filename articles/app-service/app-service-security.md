@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení v Azure App Service a Azure Functions | Dokumentace Microsoftu
+title: Přehled zabezpečení – Azure App Service | Dokumentace Microsoftu
 description: Další informace o App Service pomáhá jak zabezpečené aplikace a jak můžete dále uzamknout aplikace před hrozbami.
 keywords: služby Azure app service webovou aplikaci, mobilní aplikace, aplikace api, aplikace function app, zabezpečení, zabezpečení, zabezpečené, dodržování předpisů, předpisy, certifikátů, certifikáty, https, ftps, tls, vztah důvěryhodnosti, šifrování, šifrování, šifrované, omezení IP adres, ověřování, autorizace, ověřovacích, autho, msi, identita spravované služby, spravovanou identitu, tajné kódy, tajný klíč, opravy, opravy, opravy, verze, izolaci, izolace sítě, před útoky ddos, mitm
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 7c2297fa5f7ebaae1c54794ebbbd37e25d3931ca
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857495"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251466"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpečení v Azure App Service a Azure Functions
 

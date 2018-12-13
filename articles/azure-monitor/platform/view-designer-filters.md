@@ -10,17 +10,15 @@ ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: bcdf3d2a6a7e0e20525c0e90a1ffc30c80d0e867
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6a4ac2f26c01555ef54a4ee2248db7cd2818661e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642862"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189417"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry v zobrazení Log Analytics
 A **filtr** v [zobrazení Log Analytics](view-designer.md) umožňuje uživatelům k filtrování dat v zobrazení podle hodnoty určité vlastnosti beze změny samotného zobrazení.  Například můžete umožnit uživatelům zobrazení filtrovat zobrazení dat jenom z určitého počítače nebo sadu počítačů.  Na jedno zobrazení umožňuje uživatelům můžete filtrovat podle několika vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak pomocí filtru a přidejte ho do vlastního zobrazení.

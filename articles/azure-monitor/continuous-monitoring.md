@@ -9,16 +9,15 @@ documentationcenter: azure-monitor
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 368cef4ef86e29ea4fe55560e44644e332455b93
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 88a4c6dbe9311a054c6ed93df0005d32e6d21672
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962660"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271789"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -50,7 +49,7 @@ Aplikace jsou pouze stejně spolehlivá jako svoje základní infrastruktury. M�
 
 [Infrastruktura jako kód](/devops/learn/what-is-infrastructure-as-code) je správa infrastruktury v popisném modelu, jak týmy DevOps používají pro zdrojový kód pomocí stejné správy verzí. Přidá spolehlivosti a škálovatelnosti pro vaše prostředí a umožňuje vám to využívat podobné procesy, které používá ke správě vašich aplikací.
 
--  Použití [šablon Resource Manageru](../azure-monitor/platform/template-workspace-configuration.md) k povolení monitorování a konfigurace upozornění přes velkou sadu prostředků.
+-  Použití [šablon Resource Manageru](platform/template-workspace-configuration.md) k povolení monitorování a konfigurace upozornění přes velkou sadu prostředků.
 - Použití [Azure Policy](../governance/policy/overview.md) do u vašich prostředků vynucují různá pravidla. Tím se zajistí, že tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni. 
 
 
@@ -65,15 +64,15 @@ Průběžná integrace / průběžné nasazování umožňuje automaticky integr
 
 - Použití [kanály Azure](/azure/devops/pipelines) implementovat průběžné nasazování a automatizovat celý proces od potvrzení změn kódu do produkčního prostředí založené na vaše testy CI/CD.
 - Použití [brány kvality](/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
-- [Udržovat samostatné monitorování instance](../application-insights/app-insights-separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](../log-analytics/log-analytics-cross-workspace-search.md).
+- [Udržovat samostatné monitorování instance](../application-insights/app-insights-separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Vytváření užitečných výstrahy s akcemi
 Důležité aspekty monitorování je proaktivnímu upozorňování na správci všech aktuálních a předpokládaných problémů. 
 
-- Vytvoření [výstrah ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) na základě protokolů a metrik k identifikaci předvídatelné selhání stavy. Měli byste mít cíl provádění všech výstrah užitečné, což znamená, že představují skutečné kritického stavu a které se snaží snížit počet falešně pozitivních výsledků. Použití [dynamickými prahovými hodnotami](../monitoring-and-diagnostics/monitoring-alerts-dynamic-thresholds.md) automaticky vypočítat směrné plány na data metriky místo definování vlastní statické prahové hodnoty. 
-- Definování akcí pro oznámení používat nejúčinnějším způsobem oznámení vašim správcům. K dispozici [akcí pro oznámení](../monitoring-and-diagnostics/monitoring-action-groups.md#create-an-action-group-by-using-the-azure-portal) jsou SMS, e-mailů, nabízená oznámení nebo hlasových hovorů.
-- Použití rozšířené akce, které [připojení k nástroji ITSM](../log-analytics/log-analytics-itsmc-overview.md) nebo jiným systémům pro správu výstrah prostřednictvím [webhooky](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+- Vytvoření [výstrah ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) na základě protokolů a metrik k identifikaci předvídatelné selhání stavy. Měli byste mít cíl provádění všech výstrah užitečné, což znamená, že představují skutečné kritického stavu a které se snaží snížit počet falešně pozitivních výsledků. Použití [dynamickými prahovými hodnotami](platform/alerts-dynamic-thresholds.md) automaticky vypočítat směrné plány na data metriky místo definování vlastní statické prahové hodnoty. 
+- Definování akcí pro oznámení používat nejúčinnějším způsobem oznámení vašim správcům. K dispozici [akcí pro oznámení](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) jsou SMS, e-mailů, nabízená oznámení nebo hlasových hovorů.
+- Použití rozšířené akce, které [připojení k nástroji ITSM](platform/itsmc-overview.md) nebo jiným systémům pro správu výstrah prostřednictvím [webhooky](platform/activity-log-alerts-webhook.md).
 - Napravit situacích identifikovat ve výstrahách taky [runbooků Azure Automation](../automation/automation-webhooks.md) nebo [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , který můžete spustit z výstrahy pomocí webhooků. 
 - Použití [automatické škálování](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md) dynamicky zvýšit a snížit vaše výpočetní prostředky na základě shromážděných metrik.
 

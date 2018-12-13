@@ -1,5 +1,5 @@
 ---
-title: Co je Vyhledávání obrázků Bingu?
+title: Co je API pro vyhledávání obrázků Bingu?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vlastní aplikaci. Prostřednictvím odesílání vyhledávacích dotazů uživatelů pomocí rozhraní API můžete získat a zobrazit relevantní a vysoce kvalitní obrázky podobně jako v Obrázcích Bingu.
 services: cognitive-services
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
-ms.openlocfilehash: 5d5d69eea3a064679cbc5ddc41891a73e77e55ea
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: eb5f508916ef0944a61d556725ae1ba04123584b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295355"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258300"
 ---
-# <a name="what-is-bing-image-search"></a>Co je Vyhledávání obrázků Bingu?
+# <a name="what-is-the-bing-image-search-api"></a>Co je API pro vyhledávání obrázků Bingu?
 
 Rozhraní API Bingu pro vyhledávání obrázků umožňuje využívat kognitivní možnosti vyhledávání obrázků Bingu ve vlastní aplikaci. Prostřednictvím odesílání vyhledávacích dotazů uživatelů pomocí rozhraní API můžete získat a zobrazit relevantní a vysoce kvalitní obrázky podobně jako v [Obrázcích Bingu](https://www.bing.com/images).
 
@@ -45,7 +46,7 @@ Rozhraní API Bingu pro vyhledávání obrázků je webová služba RESTful a d�
 2. Odešlete do rozhraní API požadavek s platným [vyhledávacím dotazem](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
 3. Zpracujte odpověď rozhraní API parsováním vrácené zprávy JSON.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nejprve vyzkoušejte [interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) rozhraní API Bingu pro vyhledávání obrázků.
 Tato ukázka znázorňuje, jak můžete rychle přizpůsobit vyhledávací dotaz a procházet obrázky na webu.
@@ -57,7 +58,7 @@ Pokud chcete rychle začít s prvním požadavkem na rozhraní API, můžete si 
 * [Odesílání vyhledávacích dotazů do Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp) s využitím rozhraní REST API
 * [Vyžádání a filtrování](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) obrázků vrácených Bingem pomocí sady SDK
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * V části s referenčními informacemi k [rozhraní API Bingu pro vyhledávání obrázků verze 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) najdete definice a informace o koncových bodech, hlavičkách, odpovědích rozhraní API a parametrech dotazu, které můžete použít k odesílání požadavků na výsledky hledání obrázků.
 

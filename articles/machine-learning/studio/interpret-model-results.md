@@ -4,9 +4,8 @@ description: Jak vybrat optimální parametr nastavit pro objekt pomocí algorit
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: c06b05989270b4199e5d97ca399a1411b73a702b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9f8ff93efb74bca427cf74351af9d2442f9ab757
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310265"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276481"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
 Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Existují čtyři hlavní typy modelů v Azure Machine Learning strojového učení:
 

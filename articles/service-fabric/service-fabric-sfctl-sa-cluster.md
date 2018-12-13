@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d7f33bf0657ca2a6888387b7651706f9de537bb4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494352"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275478"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 Správa samostatné clustery Service Fabric.
@@ -63,18 +63,18 @@ Ověření upgradu parametrů zadaných konfigurací a spusťte upgrade konfigur
 
 |Argument|Popis|
 | --- | --- |
-| -clusteru config [povinné] | Konfigurace clusteru, která se použije ke clusteru. |
+| -clusteru config [povinné] | Konfigurace clusteru. |
 | – zásady stavu aplikace | JSON kódovaný slovník párů název typu aplikace a maximální procento před vyvoláním chyby není v pořádku. |
 | --delta poškozené uzly | Maximální povolené procento rozdílových rozkladu stavu během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
-| --stavu. Zkontrolujte opakování | Doba mezi pokusy o provedení stavu kontroluje, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H0M0S. |
-| --stabilní verze stavu zaškrtnutí | Doba, aplikace nebo clusteru musí zůstat v pořádku.  Výchozí\: PT0H0M0S. |
+| --stavu. Zkontrolujte opakování | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H0M0S. |
+| --stabilní verze stavu zaškrtnutí | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 | --health-check-wait | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: PT0H0M0S. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 | --poškozené aplikace | Maximální povolené procento žádostí, není v pořádku během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --poškozené uzly | Maximální povolené procento poškozené uzly během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
 | --upgrade-domain-delta-unhealthy-nodes | Maximální povolené procento snížení stavu rozdílové upgradovací domény během upgradu. Povolené hodnoty jsou hodnoty celé číslo od 0 do 100. |
-| --upgrade-domain-timeout | Časový limit domény upgradu.  Výchozí\: PT0H0M0S. |
-| --upgrade vypršení časového limitu | Časový limit upgradu.  Výchozí\: PT0H0M0S. |
+| --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: PT0H0M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -88,7 +88,12 @@ Ověření upgradu parametrů zadaných konfigurací a spusťte upgrade konfigur
 
 ### <a name="examples"></a>Příklady
 
-Spuštění clusteru konfigurace aktualizace sfctl sa-config upgradu clusteru – konfigurace clusteru <YOUR CLUSTER CONFIG> – zásady stavu "{" fabric: / systému ": {"ConsiderWarningAsError": true}}"
+Spustit aktualizaci konfigurace clusteru
+
+```
+sfctl sa-cluster config-upgrade --cluster-config <YOUR CLUSTER CONFIG> --application-health-
+policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
+```
 
 ## <a name="sfctl-sa-cluster-upgrade-status"></a>sfctl sa clusteru upgrade-status
 Získáte stav upgradu konfigurace clusteru samostatného clusteru Service Fabric.

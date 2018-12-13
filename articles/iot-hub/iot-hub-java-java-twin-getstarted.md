@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: b2adb2e69475b79324cad2d11a420cbefdf8b059
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: a938e5d872d2c1602f7ce898f0d14e3e04feb759
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514481"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312557"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčaty zařízení (Java)
 
@@ -228,7 +228,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.32</version>
+      <version>1.14.2</version>
     </dependency>
     ```
 
@@ -278,6 +278,17 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
 
     Tato ukázková aplikace používá při vytváření instance objektu **DeviceClient** proměnnou **protocol**. 
 
+1. Přidejte následující metodu do **aplikace** třídy tisknout informace o aktualizacích dvojčete:
+
+    ```java
+    protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
+        @Override
+        public void execute(IotHubStatusCode status, Object context) {
+          System.out.println("IoT Hub responded to device twin operation with status " + status.name());
+        }
+      }
+    ```
+
 9. Přidejte následující kód, který **hlavní** metodu:
     * Vytvoření klienta zařízení ke komunikaci s centrem IoT.
     * Vytvoření **zařízení** objekt pro uložení vlastnosti dvojčete zařízení.
@@ -310,7 +321,7 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     catch (Exception e) {
       System.out.println("On exception, shutting down \n" + " Cause: " + e.getCause() + " \n" + e.getMessage());
       dataCollector.clean();
-      client.close();
+      client.closeNow();
       System.out.println("Shutting down...");
     }
     ```
@@ -327,7 +338,13 @@ V této části vytvoříte konzolovou aplikaci Java, která nastaví hodnotu oh
     client.close();
     ```
 
-12. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
+1. Upravte podpis metody **Main** tak, aby zahrnoval následující výjimky:
+
+    ```java
+    public static void main(String[] args) throws URISyntaxException, IOException
+    ```
+
+1. Uložte a zavřete `simulated-device\src\main\java\com\mycompany\app\App.java` souboru.
 
 13. Sestavení **simulated-device** aplikace a opravíte jakékoli chyby. Na příkazovém řádku, přejděte `simulated-device` složky a spusťte následující příkaz:
 

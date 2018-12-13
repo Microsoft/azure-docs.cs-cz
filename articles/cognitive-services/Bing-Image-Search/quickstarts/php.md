@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání obrázků pomocí PHP – rozhraní API Bingu pro vyhledávání obrázků'
+title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a PHP'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
+description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí PHP a přijímat odpověďmi ve formátu JSON.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: b3143a34590e41d0222b4e4aa6eeda07ee407e45
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 239ceb7ad88dd711ce082ae70391dae09bfc5e1f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311853"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261122"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Odesílání vyhledávacích dotazů pomocí rozhraní API pro vyhledávání obrázků Bingu a PHP
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a PHP
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Jednoduchá aplikace v tomto článku odesílá vyhledávací dotaz a zobrazuje nezpracované výsledky.
 

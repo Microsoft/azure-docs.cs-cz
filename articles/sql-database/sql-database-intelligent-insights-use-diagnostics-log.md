@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: a0eac4344f1294ad2eddd4e05520c1f030a0c4d7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887691"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278215"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
 
@@ -100,9 +100,9 @@ Dopad (dopad), že vlastnost popisuje kolik zjištěném chování přispívají
 
 ### <a name="impacted-queries"></a>Ovlivněné dotazy
 
-V další části protokolu Intelligent Insights poskytuje informace o určité dotazy, které byly ovlivněny problémy zjištěné výkonu. Tyto informace jsou zveřejňovány jako pole objektů, které jsou součástí impact_s vlastnost. Vlastnost účinek se skládá z entity a metriky. Entity odkazují na speciální dotaz (typ: dotaz). Hodnota hash jedinečný dotazu je zveřejněn pod vlastnost value (hodnota). Kromě toho každý dotaz zveřejněn postupuje podle metrik a hodnotu, které označují problém zjištěné výkonu.
+V další části protokolu Intelligent Insights poskytuje informace o určité dotazy, které byly ovlivněny problémy zjištěné výkonu. Tyto informace jsou zveřejňovány jako pole objektů, které jsou součástí impact_s vlastnost. Vlastnost účinek se skládá z entity a metriky. Entity odkazují na speciální dotaz (typ: Dotaz). Hodnota hash jedinečný dotazu je zveřejněn pod vlastnost value (hodnota). Kromě toho každý dotaz zveřejněn postupuje podle metrik a hodnotu, které označují problém zjištěné výkonu.
 
-V následujícím příkladu protokolu, mají vyšší dobu provádění dotazu s hash 0x9102EXZ4 zjistilo (metrika: DurationIncreaseSeconds). Hodnota 110 sekund značí, že tento speciální dotaz trvalo déle 110 sekund provádění. Protože více dotazů můžete zjistit, tento oddíl obsahuje konkrétní protokol může obsahovat několik záznamů dotazu.
+V následujícím příkladu protokolu, mají vyšší dobu provádění dotazu s hash 0x9102EXZ4 zjistilo (metriky: DurationIncreaseSeconds). Hodnota 110 sekund značí, že tento speciální dotaz trvalo déle 110 sekund provádění. Protože více dotazů můžete zjistit, tento oddíl obsahuje konkrétní protokol může obsahovat několik záznamů dotazu.
 
 ```json
 "impact" : [{

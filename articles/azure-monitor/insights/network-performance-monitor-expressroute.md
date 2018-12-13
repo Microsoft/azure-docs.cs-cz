@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 85e39e47c5f532888911c00d3e526e51596f57bb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832815"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188771"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute Monitor
 

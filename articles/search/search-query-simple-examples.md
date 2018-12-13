@@ -1,5 +1,5 @@
 ---
-title: Příklady jednoduchých dotazů pro službu Azure Search | Dokumentace Microsoftu
+title: Příklady jednoduchých dotazů – Azure Search
 description: Příklady jednoduchých dotazů pro fulltextové vyhledávání, vyhledávání filtr, geografické vyhledávání, Fasetové vyhledávání a jiných řetězců dotazu používá k dotazování indexu Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 2d9e69a900f6665aa0ee3034cd6f9d7c394e8f0b
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.custom: seodec2018
+ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059403"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316263"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Příklady jednoduchá syntaxe dotazů pro tvorbu dotazů ve službě Azure Search
 
@@ -84,7 +85,7 @@ Odpověď pro tento dotaz by měl vypadat podobně jako na následujícím sním
 
 Možná jste si všimli skóre vyhledávání v odpovědi. Jednotné skóre 1 dojít, pokud neexistuje žádné pořadí buď protože vyhledávání nebylo fulltextové vyhledávání, nebo protože byla použita žádná kritéria. Pro hodnotu null vyhledávání se žádná kritéria vraťte řádků v pořadí. Pokud zahrnete skutečné kritéria, zobrazí se hledání, které skóre, které se změní na smysluplné hodnoty.
 
-## <a name="example-2-look-up-by-id"></a>Příklad 2: Vyhledání podle ID
+## <a name="example-2-look-up-by-id"></a>Příklad 2: Vyhledávání podle ID
 
 V tomto příkladu je o něco neobvyklé, ale při vyhodnocování chování vyhledávání, můžete chtít zkontrolovat celý obsah určitého dokumentu pochopit, proč byla zahrnuty nebo vyloučeny ze výsledky. Chcete-li vrátit jednoho dokumentu v celém rozsahu, použijte [operace vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) a zajistěte tak předání ID dokumentu.
 
@@ -100,7 +101,7 @@ Následující příklad je vyhledávací dotaz vrací na základě určitého d
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
  ```
 
-## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování
+## <a name="example-3-filter-queries"></a>Příklad 3: Filtrování dotazů
 
 [Syntaxe filtru](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) je výraz OData, který vám pomůže s **hledání** nebo samostatně. Filtr samostatné bez parametrů vyhledávání, je užitečná, pokud výraz filtru je možné k plnému určení dokumenty, které vás zajímají. Bez řetězce dotazu, neexistuje žádná lexikální nebo jazyková analýza bez výsledků (všechny hodnoty jsou 1) a žádné řazení. Všimněte si, že se že hledaný řetězec je prázdný.
 
@@ -202,7 +203,7 @@ Můžete také vyzkoušet to v nástroji Postman, pomocí GET:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
-## <a name="example-6-search-precision"></a>Příklad 6: Vyhledávání přesnosti
+## <a name="example-6-search-precision"></a>Příklad 6: Hledání přesnosti
 
 Termín dotazy jsou jedněch podmínkách, možná spousta z nich, které vyhodnocují nezávisle na sobě. Fráze dotazy jsou uzavřena v uvozovkách a vyhodnotí jako doslovný řetězec. Přesnost shody se řídí operátory a searchMode.
 
@@ -243,7 +244,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 ```
   ![režim hledání všech](media/search-query-simple-examples/searchmodeall.png)
 
-## <a name="example-8-structuring-results"></a>Příkladu 8: Strukturování výsledky
+## <a name="example-8-structuring-results"></a>Příklad 8: Strukturování výsledky
 
 Několik parametrů řídit, která pole jsou v hledání výsledků, počet dokumentů v každé dávky a pořadí řazení. V tomto příkladu resurfaces některé z předchozích příkladů omezení výsledků na konkrétní pole pomocí **$select** příkazu a kritéria hledání verbatim vrácení 82 shody 
 

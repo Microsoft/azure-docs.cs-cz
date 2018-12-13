@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b20197fc27c5c8833d8358943c494266da83fb7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: da11bb0669bf6bde2c65b2a7a0badaa1ae35abda
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109631"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189115"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Postup zobrazení kontejneru protokoly reálném čase pomocí Azure monitoru pro kontejnery (Preview)
 Tuto funkci, která je aktuálně ve verzi preview, poskytuje v reálném čase přehled o vaše protokoly kontejneru Azure Kubernetes Service (AKS) (stdout/stderr) bez nutnosti spuštění příkazů kubectl. Když vyberete tuto možnost, nové podokno se zobrazí pod tabulkou dat výkonu kontejnery na **kontejnery** zobrazení a zobrazuje živé protokolování vygenerované modulem kontejneru pro další pomoc při řešení problémů v reálném čase.  

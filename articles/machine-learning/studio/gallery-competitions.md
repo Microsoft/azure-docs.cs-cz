@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: ef74f411-bce4-4b02-aa34-902fc8d7b519
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: eddb66af507e3c803920751160e97b9520bb8067
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5d38205ca614fef2ea9c10e9ad2fb94bdf3481cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101972"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277784"
 ---
 # <a name="discover-competitions-in-the-azure-ai-gallery"></a>Vyhledat soutěže v galerii Azure AI
 
@@ -53,5 +52,5 @@ Pokud soutěž byla dokončena, zobrazí se seznam vítězů.
 
 **[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 67a236f592392744978b7d1d7f7e7d129515a9a0
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994639"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321797"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -42,7 +42,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 
 ## <a name="region-support"></a>Oblasti podpory
 
-Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru.
+Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru. Geografické clustery jsou definovány dodržujte při tom suverenita a data latence.
 
 **Geografické clusteru** | **Oblasti Azure**
 -- | --
@@ -52,11 +52,12 @@ Asie | Indie – Jih, střed Indie, jihovýchodní Asie, jihovýchodní Asie, Ja
 Austrálie   | Austrálie – východ, Austrálie – jihovýchod, Austrálie – střed, Austrálie – střed 2
 Azure Government    | Virginie USA (gov), US GOV Iowa, USA (gov) Arizona, US GOV Texas, US DOD – východ, US DOD – střed
 Německo | Německo – střed, Německo – severovýchod
-Čína | Čína – východ, Čína – sever
+Čína | Čína – východ, Čína – sever, Čína North2, Čína – východ 2
 
 >[!NOTE]
 >
-> Pro oblast Brazílie – Jih, můžete replikaci a převzetí služeb při selhání pro jeden z následujících: střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever.
+> Pro oblast Brazílie – jih můžete replikaci a převzetí služeb při selhání pro jeden z následujících akcí: Střed USA – Jih, střed USA – Západ, USA – východ, USA – východ 2, USA – Západ, USA – západ 2 a oblasti střed USA – sever.</br>
+> Je třeba poznamenat, Site Recovery je povolena pouze oblasti Brazílie – Jih, který se použije jako zdrojové oblasti, ze které se dají chránit virtuální počítače. Nelze použít jako cíl zotavení po Havárii oblasti pro všechny oblasti Azure, jako jsou střed USA – jih. Důvod je ten latence zjištěnými z důvodu geografické vzdálenosti doporučujeme vybrat oblasti žádné další Ameriky, než Brazílie – jih.  
 
 ## <a name="cache-storage"></a>Úložiště mezipaměti
 
@@ -126,7 +127,7 @@ Debian 8 | 9.17, 9.18 | 3.16.0-4-amd64 k 3.16.0-6-amd64 4.9.0-0.bpo.4-amd64 k 4.
 
 **Vydání verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.69-default |
+SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9,20 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.107-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default k 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.19 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.18 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.93-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default k 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default k 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.88-default</br></br> 4.4.21-69-default SP2 do 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default k 4.4.126-94.22-default |
@@ -135,7 +136,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k
 
 * Systémy souborů: ext3 ext4, ReiserFS (Suse Linux Enterprise Server pouze), XFS
 * Správce svazků: LVM2
-* Software s funkcí Multipath: Mapovač zařízení
+* Software s funkcí Multipath: Mapování zařízení
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replikované počítače – výpočetní nastavení
@@ -178,6 +179,7 @@ Datový disk - účet úložiště úrovně standard | Podporováno |
 Datový disk - účtu služby premium storage | Podporováno | Pokud virtuální počítač obsahuje disky, které jsou rozděleny mezi účty úložiště úrovně standard a premium, můžete vybrat jiný cílový účet úložiště pro každý z disků, zajistěte, že abyste měli stejnou konfiguraci úložiště v cílové oblasti.
 Spravovaný disk – standard | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |  
 Spravovaný disk – premium | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
+SSD úrovně Standard | Nepodporuje se |
 Redundance | Jsou podporovány LRS a GRS.<br/><br/> ZRS se nepodporuje.
 Úložiště Cool a hot | Nepodporuje se | Disky virtuálních počítačů se nepodporují studené a horké úložiště
 Prostory úložiště | Podporováno |         
@@ -199,6 +201,18 @@ Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | P
 >[!IMPORTANT]
 > Ujistěte se, že můžete sledovat virtuální počítač disk škálovatelnost a výkonnostní cíle pro [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) virtuálních počítačů, aby se zabránilo problémy s výkonem. Pokud budete postupovat podle výchozího nastavení, Site Recovery vytvoří požadované disky a účty úložiště v závislosti na konfiguraci zdroje. Je-li přizpůsobit a vybrat vlastní nastavení, ujistěte se, abyste postupovali podle disku škálovatelnost a výkonnostní cíle pro zdrojové virtuální počítače.
 
+## <a name="azure-site-recovery-limits-to-replicate-data-change-rates"></a>Frekvence změny omezení Azure Site Recovery k replikaci dat.
+Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení se zakládají na našich testováních, nemůžou však pokrýt všechny možné kombinace vstupně-výstupních operací aplikace. Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace. Můžeme také nezapomeňte přitom, že existují dvě omezení ke zvážení na disk, četnost změn dat a za virtuální počítač data churn.
+Například, když se podíváte na disk úrovně Premium P20 v níže uvedená tabulka, Site Recovery dokáže zpracovat změny 5 MB/s na disk s maximálně pěti těmito disky na virtuální počítač kvůli omezení 25 MB/s celková četnost změn na virtuální počítač.
+
+**Cíl ukládání replikace** | **Průměrná velikost vstupně-výstupních operací zdrojového disku** |**Průměrná četnost změn dat zdrojového disku** | **Celková denní četnost změn dat zdrojového disku**
+---|---|---|---
+Storage úrovně Standard | 8 kB | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 8 kB  | 2 MB/s | 168 GB na disk
+Disk úrovně Premium P10 nebo P15 | 16 kB | 4 MB/s |  336 GB na disk
+Disk úrovně Premium P10 nebo P15 | 32 kB nebo větší | 8 MB/s | 672 GB na disk
+Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB na disk
+Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |10 MB/s | 842 GB na disk
 ## <a name="replicated-machines---networking"></a>Replikované počítače - sítě
 **Konfigurace** | **Podpora** | **Podrobnosti**
 --- | --- | ---

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 9727a990548977e0b07710d879881669161c7a4c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015258"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259983"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Serializace dat v systému Apache Hadoop pomocí Microsoft Avro Library
 
@@ -53,7 +53,7 @@ Vyžadují splnění následujících předpokladů před instalací knihovny:
 * <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a> (6.0.4 nebo novější)
 
 > [!Note]
-> Microsoft Avro Library není nadále k dispozici jako balíček NuGet. Pokud chcete pomocí knihovny Avro klonování [úložiště Microsoft.Hadoop.Avro Github](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) a kompilaci kódu na vašem počítači.
+> Microsoft Avro Library není nadále k dispozici jako balíček NuGet. Pokud chcete pomocí knihovny Avro klonování [úložiště Microsoft.Hadoop.Avro GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/src/ServiceManagement/HDInsight/Microsoft.Hadoop.Avro) a kompilaci kódu na vašem počítači.
 
 ## <a name="compile-schemas-using-avro-library"></a>Kompilace schémat pomocí knihovny Avro
 Microsoft Avro Library obsahuje nástroj generování kódu, který umožňuje vytváření typů jazyka C# automaticky v závislosti na předem definované schéma JSON. Nástroj pro generování kódu není distribuován jako binárního spustitelného souboru, ale je možné snadno sestavovat pomocí následujícího postupu:
@@ -69,7 +69,7 @@ K otestování nástroj, můžete vygenerovat třídy jazyka C# z ukázkového s
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:
 
-To by měl k vytvoření dvou C# soubory v aktuálním adresáři: SensorData.cs a Location.cs.
+To by měl vytvořit dvě C# soubory v aktuálním adresáři: SensorData.cs a Location.cs.
 
 Informace o tom logiku, která používá nástroj pro generování kódu při převodu schématu JSON na typy jazyka C#, naleznete v souboru GenerationVerification.feature umístěn v C:\SDK\src\Microsoft.Hadoop.Avro.Tools\Doc.
 

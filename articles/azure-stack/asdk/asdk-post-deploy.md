@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e099240d3f8670032ff2d6c0fad295c5f14f6e70
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cfc191830ddadbbe3258fc1b61fcd4bcc45fdd8c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969358"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186748"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 
-Po [instalaci Azure Stack Development Kit (ASDK)](asdk-install.md), budete muset provést některé doporučené konfigurace po instalaci změny.
+Po [instalaci Azure Stack Development Kit (ASDK)](asdk-install.md), budete muset provést změny při přihlášení jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK některé doporučené konfigurace po instalaci. 
 
 ## <a name="install-azure-stack-powershell"></a>Instalace Azure Stack PowerShellu
 

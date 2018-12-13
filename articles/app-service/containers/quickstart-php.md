@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v PHP a její nasazení do služby App Service v Linuxu | Dokumentace Microsoftu
+title: Vytvoření webové aplikace v PHP v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Hello World v PHP ve službě App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 5fdf277eb8f99f2d52600140601b413b51bcdfd8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2c9586bb5abce66e4043e3df80b420174a582cbb
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885901"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257365"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Vytvoření webové aplikace v PHP ve službě App Service v Linuxu
 
@@ -166,7 +166,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [PHP s databází MySQL](tutorial-php-mysql-app.md)

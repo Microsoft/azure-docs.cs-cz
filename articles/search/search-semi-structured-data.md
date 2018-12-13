@@ -1,5 +1,5 @@
 ---
-title: Kurz pro prohledávání částečně strukturovaných dat z cloudového úložiště Azure ve službě Azure Search | Microsoft Docs
+title: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure – Azure Search v tomto kurzu
 description: V tomto kurzu se dozvíte, jak prohledávat částečně strukturovaná data objektů blob Azure pomocí služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
-ms.openlocfilehash: a7b006bd8469ddce1415ab6cb7c52c0171ae11cd
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 5608495ff2975cabefdb83e5794a7d92b318b5a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005073"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313815"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Kurz: Prohledávání částečně strukturovaných dat v cloudovém úložišti Azure
 
@@ -59,7 +60,7 @@ Ukázka obsahuje příklady souborů JSON, které byly původně textové soubor
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure](http://portal.azure.com).
+Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
 ## <a name="upload-the-sample-data"></a>Nahrání ukázkových dat
 
@@ -281,9 +282,9 @@ Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Algoritmy využívající AI je možné připojit ke kanálu indexování. Jako další krok pokračujte následujícím kurzem.
 

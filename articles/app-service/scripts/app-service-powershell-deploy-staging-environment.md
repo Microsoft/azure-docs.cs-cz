@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu do přípravného prostředí | Microsoft Docs
+title: Skript Azure Powershellu ukázkový – vytvoření aplikace a nasazení kódu do přípravného slotu | Dokumentace Microsoftu
 description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu do přípravného prostředí
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: afa2feaee4283f008f2c255de7b64e3085fbc6ef
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: 51c51c9e64c14afb13c59e82c02a38d608812c76
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324220"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313067"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Vytvoření webové aplikace a nasazení kódu do přípravného prostředí
 
@@ -54,7 +54,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upraví prostředek ve skupině prostředků. |
 | [Switch-AzureRmWebAppSlot](/powershell/module/azurerm.websites/switch-azurermwebappslot) | Přepne slot nasazení webové aplikace do produkčního prostředí. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a spuštění kanálů ML
+title: Vytvoření, spuštění a sledovat kanály ML
 titleSuffix: Azure Machine Learning service
 description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python.  Kanály se používají k vytváření a správě pracovních postupů této fáze spojit dohromady machine learning (ML) například přípravy dat, trénování modelu, model nasazení a odvozování.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8478b6760921f4641cd214b1ff19cae9757b6d7e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100535"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269035"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení, pomocí sady SDK Azure Machine Learning
 
@@ -26,10 +26,10 @@ Kanály, které vytvoříte jsou viditelná pro členy vaší služby Azure Mach
 
 Kanály pomocí cílových výpočetních prostředí vzdálené pro výpočetní výkon a úložný pomocných a konečného data související s příslušný kanál.  Kanály může číst a zapisovat data do a z podporované [služby Azure storage](https://docs.microsoft.com/azure/storage/) umístění.
 
+>[!Note]
+>Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 ## <a name="prerequisites"></a>Požadavky
-
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 * [Konfigurace vývojového prostředí](how-to-configure-environment.md) nainstalovat sadu SDK Azure Machine Learning.
 

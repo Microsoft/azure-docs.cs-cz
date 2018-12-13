@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dd030eeefd731ae176e1fe7907d941fff56a9db1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f2d6f956564f01c14edb213f0bc5ae709892c542
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080023"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163307"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrace nástroje QnA Maker a LUIS distribuovat znalostní báze
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Pomocí služby bot QnA Maker a LUIS distribuovat znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
 
 I když je jednoduché vytvářet více znalostních bází v nástroje QnA Maker, budete potřebovat nějaké logiky směrovat příchozí dotaz do odpovídající znalostní báze. Můžete to provést s využitím služby LUIS.

@@ -4,7 +4,7 @@ description: Ukázkový skript Azure CLI – Mapování vlastní domény na webo
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 5ac4a680-cc73-4578-bcd6-8668c08802c2
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 223678b39dbaeede255157b97ffca2c73f252a31
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 1b458a6869345acf3ceb1e236ce6c33fae457345
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976699"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188640"
 ---
-# <a name="map-a-custom-domain-to-a-web-app"></a>Mapování vlastní domény na webovou aplikaci
+# <a name="map-a-custom-domain-to-a-web-app-using-cli"></a>Mapování vlastní domény na webovou aplikaci pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`.
 
@@ -50,7 +50,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
 | [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Namapuje na webovou aplikaci vlastní doménu. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

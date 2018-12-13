@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: b559607f741c25f668100a33b9ba8e65f0acd40a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 328dd39c3ff82666c327bc5d1d106a019fb2247b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841284"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275818"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server
 
@@ -34,6 +34,8 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 
 | **Funkce SQL** | **Podporované v Azure SQL Database/logického serveru** | **Podporované v Azure SQL Database/spravované Instance** |
 | --- | --- | --- |
+| [Aktivní geografická replikace](sql-database-active-geo-replication.md) | Ano – pro obecné účely a pro důležité obchodní informace pouze úrovně služeb| Ne |
+| [Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) | Ano – pro obecné účely a pro důležité obchodní informace pouze úrovně služeb| Ano (preview)|
 | [Funkce Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [služby Key vault](sql-database-always-encrypted-azure-key-vault.md) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [služby Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Skupiny dostupnosti AlwaysOn](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) | [Vysoká dostupnost](sql-database-high-availability.md) je zahrnuta v každé databázi. Zotavení po havárii je podrobněji popsána [přehled kontinuity obchodních procesů ve službě Azure SQL Database](sql-database-business-continuity.md) |
 | [Připojení databáze](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Ne | Ne |
@@ -86,7 +88,6 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Fulltextové vyhledávání](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Moduly pro dělení na slova třetích stran nejsou podporovány. |Moduly pro dělení na slova třetích stran nejsou podporovány. |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivých funkcí | Ano – viz [uložené procedury, funkce, aktivační události rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) | Ano – pro obecné účely a pro důležité obchodní informace pouze úrovně služeb | Ne – obnovení COPY_ONLY naleznete v tématu úplné zálohy, které pravidelně – provádí [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) a [obnovení rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
-| [Geografická replikace](sql-database-geo-replication-overview.md) | Ano – pro obecné účely a pro důležité obchodní informace pouze úrovně služeb| Ano |
 | [Zpracování grafů](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
 | [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [jenom úrovně Premium a pro důležité obchodní informace](sql-database-in-memory.md) | Ano – [obchodní pouze kritické vrstvy](sql-database-managed-instance.md) |
 | [Podpora dat JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |

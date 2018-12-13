@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
+title: Řešení potíží s webovou aplikací pomocí sady Visual Studio – služby Azure App Service
 description: Informace o řešení potíží s webovou aplikaci Azure s použitím vzdálené ladění, trasování a protokolování nástroje, které jsou integrované do sady Visual Studio 2013.
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: eafb4e82a319a0fdbe954757158a09aba83e9be0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 689ff528f18a810c35031dd60a65470d4351b9a7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972282"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278521"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -71,7 +72,7 @@ Poskytuje přístup k podmnožinu funkcí správy webové aplikace a nastavení 
 
     V tomto kurzu budete používat protokolování a trasování rozevírací seznamy. Můžete také využít vzdálené ladění, ale budete používat jinou metodu, aby je.
 
-    Informace o polích nastavení aplikace a připojovacích řetězců v tomto okně najdete v tématu [Azure Web Apps: fungování řetězců aplikace a připojovacích řetězců](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
+    Informace o polích nastavení aplikace a připojovacích řetězců v tomto okně najdete v tématu [Azure Web Apps: Jak řetězců aplikace a připojení fungují řetězce](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/).
 
     Pokud chcete provést úlohu správy webové aplikace, které není možné provést toto okno, klikněte na tlačítko **otevření portálu pro správu** otevřete okno prohlížeče a webu Azure portal.
 
@@ -655,7 +656,7 @@ Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasov
   Starý, ale stále vhodným místem k zadání základní informace o subjektu.
 * [Naslouchací procesy trasování](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
   Informace o naslouchacích procesů trasování, ale nebude zmiňovat [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx).
-* [Návod: Integrování trasování System.Diagnostics trasování rozhraní ASP.NET](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Návod: Integrace ASP.NET trasování pomocí trasování System.Diagnostics](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
   Tento článek je také starý, ale zahrnuje některé další informace, které úvodní článek nepopisuje.
 * [Trasování v zobrazení syntaxe Razor rozhraní ASP.NET MVC](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Kromě trasování v zobrazení syntaxe Razor příspěvek také vysvětluje, jak vytvořit filtr chyba protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, podívejte se na příklad Global.asax v [kompletní příklad pro obslužné rutiny chyb](https://msdn.microsoft.com/library/bb397417.aspx) na webové stránce MSDN. V MVC nebo webového formuláře Pokud chcete protokolovat určité výjimky, ale nechat výchozí rozhraní zpracování se projeví, můžete zachytit a znovu vyvolat jako v následujícím příkladu:

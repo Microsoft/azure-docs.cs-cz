@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: d6e186f25cc69791d939d93d24a37cadb1113353
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f10a3c02e98db5777b5231aec04951a7ed1ad9ad
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105038"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310658"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 
@@ -132,6 +132,20 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
  -  [Zakažte šifrování u spuštěného virtuálního počítače s Linuxem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - Zakázáním šifrování je povolena pouze u svazků s daty pro virtuální počítače s Linuxem.  
 
+### <a name="encrypt-or-decrypt-vm-scale-sets"></a>Šifrování nebo dešifrování škálovací sady virtuálních počítačů
+
+- [Povolit šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
+
+- [Povolit šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
+
+ - [Nasadit počítače VM Scale Sets ze systému Linux s jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
+
+ - [Nasadit počítače VM Scale Sets z Windows pomocí jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
+
+- [Zakázat šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
+
+- [Zakázat šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
+
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Šifrování nebo dešifrování virtuálních počítačů pomocí aplikace Azure AD (předchozí verze) 
  
 - [Povolit šifrování disku v existující nebo spouštění virtuálních počítačů IaaS s Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm)
@@ -162,17 +176,7 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 
 - [Povolit šifrování disku ve spuštěném virtuálním počítači Windows pomocí kryptografický otisk certifikátu klienta Azure AD](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert)
     
-- [Povolit šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
 
-- [Povolit šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows)
-
- - [Nasadit počítače VM Scale Sets ze systému Linux s jumpbox a povoluje šifrování na VMSS v Linuxu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
-
- - [Nasadit počítače VM Scale Sets z Windows pomocí jumpbox a povoluje šifrování na Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)
-
-- [Zakázat šifrování disku ve škálovací sadě virtuálních počítačů spuštěné systému Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
-
-- [Zakázat šifrování disku ve škálovací sady virtuálních počítačů spuštěných Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)
 
 ## <a name="bkmk_preWin"></a> Příprava virtuálního pevného disku předem šifrované Windows
 Následující části jsou nezbytné pro přípravu předem šifrované virtuální pevný disk Windows pro nasazení jako šifrovaný virtuální pevný disk v Azure IaaS. Použijte informace k přípravě a spuštění virtuálního počítače čerstvé Windows (VHD) na Azure Site Recovery a Azure. Další informace o tom, jak připravit a nahrání virtuálního pevného disku najdete v tématu [nahrání generalizovaného virtuálního pevného disku a použít ho k vytvoření nové virtuální počítače v Azure](../virtual-machines/windows/upload-generalized-managed.md).

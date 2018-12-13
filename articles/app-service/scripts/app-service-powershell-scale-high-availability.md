@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností | Microsoft Docs
+title: Ukázkový skript Azure Powershellu – škálování aplikace po celém světě s využitím Traffic Manageru | Dokumentace Microsoftu
 description: Ukázkový skript Azure PowerShellu – Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
 services: app-service\web
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 92f830786f19190fc61479db42117c831bba007c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: f71b52d3e3eb7264fa3cf2d8a82c46ad6498c8a0
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39323873"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308222"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
 
@@ -53,7 +53,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
 | [New-AzureRMTrafficManagerEndpoint](/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerendpoint) | Vytvoří v profilu služby Traffic Manager koncový bod. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

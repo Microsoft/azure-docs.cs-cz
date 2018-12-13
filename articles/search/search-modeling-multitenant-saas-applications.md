@@ -2,19 +2,20 @@
 title: Modelování víceklientskou architekturu ve službě Azure Search | Dokumentace Microsoftu
 description: Další informace o běžných vzorech návrhu pro víceklientské aplikace SaaS při používání služby Azure Search.
 manager: jlembicz
-author: ashmaka
+author: LiamCavanagh
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/30/2018
-ms.author: ashmaka
-ms.openlocfilehash: b7befb46da8674e0bec7d3f73ad33a12529ffc3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: liamca
+ms.custom: seodec2018
+ms.openlocfilehash: 1da9756df4fa05b367665a5fe024528939f22578
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232371"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313033"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Modely návrhu pro víceklientské aplikace SaaS a Azure Search
 Víceklientské aplikace je ten, který poskytuje stejné funkce a služby do libovolného počtu klientů, kteří nemohou zobrazovat ani sdílet data žádným jiným tenantem. Tento dokument popisuje strategie izolace tenanta pro víceklientské aplikace integrované s Azure Search.
@@ -57,20 +58,20 @@ Služby S3 namítají, může mít mezi 1 a 200 indexy, které společně by moh
 ## <a name="considerations-for-multitenant-applications"></a>Důležité informace pro víceklientské aplikace
 Víceklientské aplikace, musí efektivní distribuci prostředků mezi různými klienty při zachování určité úrovně ochrany osobních údajů mezi různými tenanty. Při návrhu architektury pro takové aplikace existuje několik důležitých informací:
 
-* *Izolaci klientů:* vývojářům aplikací nutné podniknout potřebné kroky k zajištění, že se žádní tenanti Neautorizováno nebo nežádoucí přístup k datům z jiných tenantů. Nad rámec hlediska ochrany osobních údajů vyžadují strategie izolace tenanta efektivní správu sdílených prostředků a ochranu před "hlučným sousedům".
-* *Náklady na prostředek v cloudu:* jako s libovolnou aplikací, musí zůstat softwarová řešení náklady konkurenční jako součást víceklientské aplikace.
-* *Snadné operací:* při vývoji víceklientskou architekturu, dopad na operace a složité aplikace je důležitým aspektem. Azure Search má [99,9 % podle smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
-* *Globální stopu:* víceklientské aplikace může třeba efektivně obsluhovat klienty, které jsou distribuovány na celém světě.
-* *Škálovatelnost:* vývojářům aplikací je potřeba zvážit, jak jejich sloučení mezi údržbu dostatečně nízkou úroveň zvýšení složitosti aplikace a navrhování škálování s počtem klientů a velikosti dat klientů aplikace a úlohy.
+* *Izolaci klientů:* Vývojáři aplikací nutné podniknout potřebné kroky k zajištění, že se žádní tenanti Neautorizováno nebo nežádoucí přístup k datům z jiných tenantů. Nad rámec hlediska ochrany osobních údajů vyžadují strategie izolace tenanta efektivní správu sdílených prostředků a ochranu před "hlučným sousedům".
+* *Náklady na cloud prostředků:* Stejně jako u jakékoli jiné aplikace, musí zůstat softwarová řešení náklady konkurenční jako součást víceklientské aplikace.
+* *Snadné operací:* Při vývoji víceklientskou architekturu, dopad na operace a složité aplikace je důležitým aspektem. Azure Search má [99,9 % podle smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Globální stopu:* Víceklientské aplikace může třeba efektivně obsluhovat klienty, které jsou distribuovány na celém světě.
+* *Škálovatelnost:* Vývojáři aplikací je nutné vzít v úvahu, jak sjednotit mezi údržbu dostatečně nízkou úroveň zvýšení složitosti aplikace a navrhování škálování s počtem klientů a velikosti dat a úlohy klientů aplikace.
 
 Azure Search nabízí několik hranice, které můžete použít k izolaci úloh a dat klientů.
 
 ## <a name="modeling-multitenancy-with-azure-search"></a>Modelování víceklientské architektury s Azure Search
 V případě víceklientské scénář vývojář aplikace využívá jednu nebo víc služeb search a rozdělit mezi, indexy a/nebo služby svým klientům. Azure Search má několik běžných vzorech při modelování víceklientské scénář:
 
-1. *Index na tenanta:* každý tenant má vlastní index v rámci služby vyhledávání, který je sdílen s jinými tenanty.
-2. *Služby na tenanta:* každý tenant má vlastní vyhrazená služba Azure Search nabízí nejvyšší úroveň oddělení dat a úloh.
-3. *Kombinace obou:* větší úložiště, jsou aktivní více tenantů jsou přiřazené vyhrazené služby, zatímco menší tenanty přidělují jednotlivých indexů v rámci sdílené služby.
+1. *Index na tenanta:* Každý tenant má vlastní index v rámci služby vyhledávání, který je sdílen s jinými tenanty.
+2. *Služba na tenanta:* Každý tenant má vlastní vyhrazená služba Azure Search nabízí nejvyšší úroveň oddělení dat a úloh.
+3. *Kombinace obou:* Větší úložiště, jsou aktivní více tenantů jsou přiřazeny vyhrazené služby, zatímco menší tenanty přidělují jednotlivých indexů v rámci sdílené služby.
 
 ## <a name="1-index-per-tenant"></a>1. Index na tenanta
 ![Portrétu modelu index na tenanta](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)

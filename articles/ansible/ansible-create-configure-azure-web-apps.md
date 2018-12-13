@@ -1,5 +1,5 @@
 ---
-title: Vytváření webových aplikací Azure pomocí Ansible (Preview)
+title: Vytvoření webové aplikace Azure pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit webovou aplikaci s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, Web App, Java
@@ -7,16 +7,16 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2018
-ms.openlocfilehash: 48b4c201b2b96bd4662e8c90be7298a4f418af53
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.date: 12/08/2018
+ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426547"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261751"
 ---
-# <a name="create-azure-app-service-web-apps-by-using-ansible-preview"></a>Vytváření webových aplikací Azure App Service pomocí Ansible (Preview)
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (nebo jenom Web Apps) slouží k hostování webových aplikací, rozhraní REST API a mobilních back-endů. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
+# <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Vytvoření webové aplikace Azure App Service web apps pomocí Ansible
+[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
 
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak pomocí Ansible vytvořit webovou aplikaci s použitím modulu runtime Java. 
 
@@ -25,19 +25,20 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. Spuštěním příkazu `sudo pip install ansible[azure]==2.7.0rc2` můžete nainstalovat verzi Ansible 2.7 RC. Po vydání Ansible 2.7 už tady nebudete muset zadávat verzi, protože výchozí verze bude 2.7. 
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7.
 
 ## <a name="create-a-simple-app-service"></a>Vytvoření jednoduché služby App Service
 Tato část představuje ukázkový playbook Ansible, který definuje následující prostředky:
 - Skupina prostředků, do které se nasadí váš plán služby App Service a webová aplikace
 - Webová aplikace s modulem runtime kontejnerů Java 8 a Tomcat ve službě App Service v Linuxu
 
-```
+```yml
 - hosts: localhost
   connection: local
   vars:
-    resource_group: myfirstResourceGroup
+    resource_group: myResourceGroup
     webapp_name: myfirstWebApp
+    plan_name: myAppServicePlan
     location: eastus
   tasks:
     - name: Create a resource group
@@ -51,7 +52,7 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
         name: "{{ webapp_name }}"
         plan:
           resource_group: "{{ resource_group }}"
-          name: myappplan
+          name: "{{ plan_name }}"
           is_linux: true
           sku: S1
           number_of_workers: 1
@@ -71,17 +72,22 @@ ansible-playbook firstwebapp.yml
 
 Výstup spuštění playbooku Ansible ukazuje úspěšné vytvoření webové aplikace:
 
-```
+```Output
+PLAY [localhost] *************************************************
+
+TASK [Gathering Facts] *************************************************
+ok: [localhost]
+
 TASK [Create a resource group] *************************************************
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] ******************************
- [WARNING]: Azure API profile latest does not define an entry for
-WebSiteManagementClient
+TASK [Create App Service on Linux with Java Runtime] *************************************************
+ [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
+
 changed: [localhost]
 
-PLAY RECAP *********************************************************************
-localhost                  : ok=2    changed=2    unreachable=0    failed=0   
+PLAY RECAP *************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>Vytvoření služby App Service pomocí služby Traffic Manager
@@ -98,33 +104,33 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
 - Profil služby Traffic Manager
 - Koncový bod služby Traffic Manager s využitím vytvořeného webu
 
-```
+```yml
 - hosts: localhost
   connection: local
   vars:
+    resource_group_webapp: myResourceGroupWebapp
     resource_group: myResourceGroup
-    plan_resource_group: planResourceGroup
-    app_name: myLinuxWebApp
+    webapp_name: myLinuxWebApp
+    plan_name: myAppServicePlan
     location: eastus
-    linux_plan_name: myAppServicePlan
     traffic_manager_profile_name: myTrafficManagerProfile
     traffic_manager_endpoint_name: myTrafficManagerEndpoint
 
   tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
-        name: "{{ resource_group }}"
+        name: "{{ resource_group_webapp }}"
         location: "{{ location }}"
 
   - name: Create secondary resource group
     azure_rm_resourcegroup:
-        name: "{{ plan_resource_group }}"
+        name: "{{ resource_group }}"
         location: "{{ location }}"
 
   - name: Create App Service Plan
     azure_rm_appserviceplan:
-      resource_group: "{{ plan_resource_group }}"
-      name: "{{ linux_plan_name }}"
+      resource_group: "{{ resource_group }}"
+      name: "{{ plan_name }}"
       location: "{{ location }}"
       is_linux: true
       sku: S1
@@ -132,11 +138,11 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
 
   - name: Create App Service on Linux with Java Runtime
     azure_rm_webapp:
-        resource_group: "{{ resource_group }}"
-        name: "{{ app_name }}"
+        resource_group: "{{ resource_group_webapp }}"
+        name: "{{ webapp_name }}"
         plan:
-          resource_group: "{{ plan_resource_group }}"
-          name: "{{ linux_plan_name }}"
+          resource_group: "{{ resource_group }}"
+          name: "{{ plan_name }}"
           is_linux: true
           sku: S1
           number_of_workers: 1
@@ -151,13 +157,13 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
 
   - name: Get web app facts
     azure_rm_webapp_facts:
-      resource_group: "{{ resource_group }}"
-      name: "{{ app_name }}"
+      resource_group: "{{ resource_group_webapp }}"
+      name: "{{ webapp_name }}"
     register: webapp
     
   - name: Create Traffic Manager Profile
     azure_rm_trafficmanagerprofile:
-      resource_group: "{{ resource_group }}"
+      resource_group: "{{ resource_group_webapp }}"
       name: "{{ traffic_manager_profile_name }}"
       location: global
       routing_method: performance
@@ -171,13 +177,12 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
 
   - name: Add endpoint to traffic manager profile, using created web site
     azure_rm_trafficmanagerendpoint:
-      resource_group: "{{ resource_group }}"
+      resource_group: "{{ resource_group_webapp }}"
       profile_name: "{{ traffic_manager_profile_name }}"
       name: "{{ traffic_manager_endpoint_name }}"
       type: azure_endpoints
       location: "{{ location }}"
       target_resource_id: "{{ webapp.webapps[0].id }}"
-
 ```
 Uložte předchozí playbook jako **webapp.yml** nebo si [playbook stáhněte](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
@@ -187,7 +192,12 @@ ansible-playbook webapp.yml
 ```
 
 Výstup spuštění playbooku Ansible ukazuje úspěšné vytvoření plánu služby App Service, webové aplikace a profilu a koncového bodu služby Traffic Manager:
-```
+```Output
+PLAY [localhost] *************************************************
+
+TASK [Gathering Facts] *************************************************
+ok: [localhost]
+
 TASK [Create resource group] ****************************************************************************
 changed: [localhost]
 
@@ -220,6 +230,6 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
-> [Ansible v Azure](https://docs.microsoft.com/azure/ansible/)
+> [Škálování aplikací Azure App Service web apps pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)

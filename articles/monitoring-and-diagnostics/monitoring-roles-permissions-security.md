@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d160eb377c3d4d73105cdb61b5722a147d22ed37
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680493"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321167"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
 
 ## <a name="built-in-monitoring-roles"></a>Předdefinované role monitorování
-Azure Monitor předdefinované role jsou účelem je pomoci omezit přístup k prostředkům v rámci předplatného, ale osoby zodpovědné za monitorování infrastruktury pro získání a konfigurace dat potřebují. Platforma Azure Monitor poskytuje dvě role out-of-the-box: A monitorování Čtenář a Přispěvatel monitorování.
+Azure Monitor předdefinované role jsou účelem je pomoci omezit přístup k prostředkům v rámci předplatného, ale osoby zodpovědné za monitorování infrastruktury pro získání a konfigurace dat potřebují. Platforma Azure Monitor poskytuje dvě role out-of-the-box: Monitorování Čtenář a Přispěvatel monitorování.
 
 ### <a name="monitoring-reader"></a>Čtenář monitorování
 Lidem přiřadit role Čtenář monitorování můžete zobrazit všechna data monitorování v rámci předplatného, ale nelze upravit prostředek nebo upravit nastavení související s monitorování prostředků. Tato role je vhodný pro uživatele v organizaci, jako je například podpora nebo operace technici, kteří potřebují mít možnost:
 
 * Zobrazit řídicí panely monitorování na portálu a vytvořit svoje vlastní privátní monitorování řídicí panely.
 * Zobrazit upozornění pravidel definovaných v [Azure Alerts](monitoring-overview-alerts.md)
-* Dotaz pro používání metrik [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [rutin prostředí PowerShell](insights-powershell-samples.md), nebo [– multiplatformního rozhraní příkazového řádku](insights-cli-samples.md).
+* Dotaz pro používání metrik [REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931930.aspx), [rutin prostředí PowerShell](insights-powershell-samples.md), nebo [– multiplatformního rozhraní příkazového řádku](../azure-monitor/platform/cli-samples.md).
 * Dotaz protokolu aktivit pomocí portálu, rozhraní REST API služby Azure Monitor, rutin Powershellu nebo CLI pro různé platformy.
 * Zobrazení [nastavení diagnostiky](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) pro prostředek.
 * Zobrazení [profil protokolu](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile) pro odběr.

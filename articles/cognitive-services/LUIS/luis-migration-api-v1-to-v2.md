@@ -1,7 +1,7 @@
 ---
 title: V1 na v2 migrace rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak migrovat na nejnovější sadu rozhraní API.
+description: Koncový bod verze 1 a pro vytváření rozhraní API jsou zastaralé. Tento průvodce vám pochopit, jak migrovat na koncový bod verze 2 a rozhraní API pro vytváření.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 7514390593b4afca4793923089516f3393db0428
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105831"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138819"
 ---
-# <a name="api-v2-migration-guide"></a>Pokyny k migraci v2 rozhraní API
-Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) rozhraní API se přestanou používat. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Rozhraní API v1 na v2 Průvodce migrací pro aplikace LUIS
+Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) jsou zastaralé rozhraní API. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
 Služba LUIS je nový [oblastech](https://aka.ms/LUIS-regions) k rozhraním API LUIS k dispozici. Služba LUIS obsahuje jiný web pro oblasti skupiny. Aplikace musí být vytvořen ve stejné oblasti, které očekáváte, že k dotazování. Aplikace se nemigrují automaticky oblastech. Exportujte aplikace z jedné oblasti a importovat do jiného být k dispozici v nové oblasti.

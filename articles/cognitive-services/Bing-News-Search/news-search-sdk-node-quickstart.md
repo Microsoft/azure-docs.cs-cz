@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Sada SDK Bingu pro vyhledávání zpráv, Node'
+title: 'Rychlý start: Hledání zpráv - Bingu News Search SDK pro Node.js'
 titleSuffix: Azure Cognitive Services
-description: Nastavení konzolové aplikace sady SDK Bingu pro vyhledávání zpráv
+description: V tomto rychlém startu slouží k vyhledání zpráv pro Node.js pomocí sady SDK vyhledávání zpráv Bingu a zpracování odpovědi.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 075ce771b6fa92663f172734aabf57b089b294a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 0fa78474d6400f890626859c32915c8657f92d4e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316935"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249341"
 ---
-# <a name="quickstart-bing-news-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím jazyka Node
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Rychlý start: Provádění sadou SDK pro vyhledávání zpráv Bingu pro vyhledávání zpráv pro Node.js
 
 Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
 
@@ -51,10 +52,10 @@ client.newsOperations.search('Winter Olympics').then((result) => {
 
 ```
 Kód vytiskne položky `result.value` do konzoly bez analýzy textu. Případné výsledky podle kategorií budou zahrnovat tyto položky:
-- _type: 'NewsArticle'
-- _type: 'WebPage'
-- _type: 'VideoObject'
-- _type: 'ImageObject'
+- _typ: "NewsArticle.
+- _typ: "Webová stránka.
+- _typ: "VideoObject.
+- _typ: "ImageObject.
 
 <!-- Remove until we can replace with santized version
 ![News results](media/node-sdk-quickstart-results.png)

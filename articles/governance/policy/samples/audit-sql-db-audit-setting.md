@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Audit nastavení auditování na úrovni databáze SQL
+title: Ukázkový – nastavení auditu úrovně auditu databáze SQL
 description: Tato ukázková zásada provede audit nastavení auditování databáze SQL v případě, že tato nastavení nevyhovují zadaným kritériím.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 22755f2be4a335a8527fb4723aa329e3048b9f5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 24313c83809734367459937d2b02441896b6a5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970732"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315311"
 ---
 # <a name="audit-sql-db-level-audit-setting"></a>Audit nastavení auditování na úrovni databáze SQL
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

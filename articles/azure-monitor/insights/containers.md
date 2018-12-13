@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 49acb9a7945f380c354440823294c9afb43c7afc
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892242"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194024"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -54,7 +53,7 @@ Následující tabulka popisuje orchestraci Dockeru a operační systém sledov�
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Služba<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
-| Red Hat Open<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
+| Red Hat Open<br>SHIFT | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(samostatný) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux Server<br>(samostatný) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
@@ -100,7 +99,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 
 2. Nainstalovat a používat Docker pomocí agenta Log Analytics. Na základě vašeho operačního systému a orchestrátor Docker, můžete použít následující metody konfigurace agenta.
   - Pro samostatné hostitele:
-    - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md).  
+    - Na podporovaných operačních systémech Linux, instalace a spuštění Dockeru a pak nainstalujte a nakonfigurujte [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md).  
     - V systému CoreOS nelze spustit agenta Log Analytics pro Linux. Místo toho spustíte kontejnerizovaných verzi agenta Log Analytics pro Linux. Kontrola [hostitelé kontejneru s Linuxem včetně CoreOS](#for-all-linux-container-hosts-including-coreos) nebo [hostitelích kontejnerů Azure Government s Linuxem, včetně CoreOS](#for-all-azure-government-linux-container-hosts-including-coreos) při práci s kontejnery v cloudu Azure Government.
     - V systému Windows Server 2016 a Windows 10 nainstalujte klienta a modul Docker potom připojit agenta k shromažďování informací a jejich odesílání do Log Analytics. Kontrola [instalace a konfigurace hostitelů Windows kontejneru](#install-and-configure-windows-container-hosts) Pokud používáte prostředí Windows.
   - Orchestrace prostřednictvím Docker více hostitelů:
@@ -116,7 +115,7 @@ K instalaci a konfiguraci řešení můžete použít následující informace.
 Zkontrolujte [modul Docker na Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) Další informace o tom, jak nainstalovat a nakonfigurovat váš moduly Docker v počítačích se systémem Windows.
 
 > [!IMPORTANT]
-> Docker musí běžet **před** nainstalujete [agenta Log Analytics pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) v hostitelích kontejnerů. Pokud jste již nainstalovali agenta před instalací Dockeru, budete muset přeinstalovat agenta Log Analytics pro Linux. Další informace o Dockeru najdete v článku [Docker webu](https://www.docker.com).
+> Docker musí běžet **před** nainstalujete [agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) v hostitelích kontejnerů. Pokud jste již nainstalovali agenta před instalací Dockeru, budete muset přeinstalovat agenta Log Analytics pro Linux. Další informace o Dockeru najdete v článku [Docker webu](https://www.docker.com).
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelé kontejneru s Linuxem
@@ -145,7 +144,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **Přepínání z pomocí nainstalovaného agenta na jeden v kontejneru Linuxu**
 
-Pokud dříve použít přímo nainstalován agent a místo toho použít agenta spuštěného v kontejneru, je nutné nejprve odebrat agenta Log Analytics pro Linux. Zobrazit [odinstalace agenta Log Analytics pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) pochopit, jak úspěšně odinstalace agenta.  
+Pokud dříve použít přímo nainstalován agent a místo toho použít agenta spuštěného v kontejneru, je nutné nejprve odebrat agenta Log Analytics pro Linux. Zobrazit [odinstalace agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) pochopit, jak úspěšně odinstalace agenta.  
 
 #### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Konfigurace agenta Log Analytics pro Docker Swarm
 
@@ -189,8 +188,8 @@ Pro Docker Swarm Jakmile je vytvořen tajný klíč pro ID pracovního prostoru 
 #### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Konfigurace agenta Log Analytics pro Red Hat OpenShift
 Existují tři způsoby, jak přidat agenta Log Analytics do Red Hat OpenShift spustíte shromažďování dat pro monitorování kontejnerů.
 
-* [Instalace agenta Log Analytics pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) přímo na každém uzlu Openshiftu  
-* [Povolení rozšíření Log Analytics pro virtuální počítač](../../log-analytics/log-analytics-quick-collect-azurevm.md) na každém uzlu OpenShift v Azure  
+* [Instalace agenta Log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) přímo na každém uzlu Openshiftu  
+* [Povolení rozšíření Log Analytics pro virtuální počítač](../../azure-monitor/learn/quick-collect-azurevm.md) na každém uzlu OpenShift v Azure  
 * Instalace agenta Log Analytics jako OpenShift démon sadu  
 
 V této části probereme kroky potřebné k instalaci agenta Log Analytics jako démon OpenShift-set.  
@@ -523,9 +522,9 @@ Další informace o konfiguraci démona Dockeru, který se používá s kontejne
 
 #### <a name="install-windows-agents"></a>Instalace agentů Windows
 
-Pokud chcete povolit monitorování kontejnerů Windows a Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) v počítačích s Windows, které jsou hostitelé kontejneru. Pro počítače se systémem Windows ve vašem místním prostředí, najdete v článku [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/agent-windows.md). Pro virtuální počítače spuštěné v Azure a jejich připojení k Log Analytics pomocí [rozšíření virtuálního počítače](../../log-analytics/log-analytics-quick-collect-azurevm.md).
+Pokud chcete povolit monitorování kontejnerů Windows a Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) v počítačích s Windows, které jsou hostitelé kontejneru. Pro počítače se systémem Windows ve vašem místním prostředí, najdete v článku [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/agent-windows.md). Pro virtuální počítače spuštěné v Azure a jejich připojení k Log Analytics pomocí [rozšíření virtuálního počítače](../../azure-monitor/learn/quick-collect-azurevm.md).
 
-Můžete monitorovat kontejnery Windows se spuštěnou v Service Fabric. Nicméně pouze [virtuální počítače provozované v Azure](../../log-analytics/log-analytics-quick-collect-azurevm.md) a [počítače se systémem Windows ve vašem místním prostředí](../../azure-monitor/platform/agent-windows.md) jsou aktuálně podporovány pro Service Fabric.
+Můžete monitorovat kontejnery Windows se spuštěnou v Service Fabric. Nicméně pouze [virtuální počítače provozované v Azure](../../azure-monitor/learn/quick-collect-azurevm.md) a [počítače se systémem Windows ve vašem místním prostředí](../../azure-monitor/platform/agent-windows.md) jsou aktuálně podporovány pro Service Fabric.
 
 Můžete ověřit, jestli je správně nastavené řešení pro monitorování kontejnerů pro Windows. Chcete-li zkontrolovat, zda byla sada management pack správně ke stažení, vyhledejte *ContainerManagement.xxx*. Soubory musí být ve složce C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management aktualizace.
 
@@ -541,9 +540,9 @@ Na webu Azure Portal, přejděte *Galerie řešení* a přidejte **řešení pro
 
 Data jsou shromažďována každé 3 minuty, následující typy agenta.
 
-- [Agenta log Analytics pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md)
+- [Agenta log Analytics pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
 - [Agenta Windows](../../azure-monitor/platform/agent-windows.md)
-- [Rozšíření log Analytics virtuální počítače](../../log-analytics/log-analytics-quick-collect-azurevm.md)
+- [Rozšíření log Analytics virtuální počítače](../../azure-monitor/learn/quick-collect-azurevm.md)
 
 
 ### <a name="container-records"></a>Záznamy kontejneru

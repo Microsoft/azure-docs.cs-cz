@@ -11,13 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 63f9417a65fbe3141907dc7d7d64da06eec7e93f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882289"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187445"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Log Analytics pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená pomocí prohledávání protokolů v Log Analytics.
@@ -27,7 +26,7 @@ Například můžete použít Microsoft Flow k použití dat Log Analytics v e-m
 Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesílá výsledky prohledávání protokolu Log Analytics prostřednictvím e-mailu, jenom jeden příklad použití Log Analytics v Microsoft Flow. 
 
 
-## <a name="step-1-create-a-flow"></a>Krok 1: Vytvoření toku
+## <a name="step-1-create-a-flow"></a>Krok 1: Vytvořit tok
 1. Přihlaste se k [Microsoft Flow](https://flow.microsoft.com)a vyberte **Moje toky**.
 2. Klikněte na tlačítko **+ vytvořit z prázdné**.
 
@@ -57,7 +56,7 @@ Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesíl
 
 2. Vyberte **tabulku HTML** pro **typ grafu**.<br><br>![Log Analytics akce](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfigurace tok poslání e-mailu
+## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Nakonfigurujte tok poslání e-mailu
 
 1. Klikněte na tlačítko **nový krok**a potom klikněte na tlačítko **+ přidat akci**.
 2. Vyhledejte **Office 365 Outlook**.

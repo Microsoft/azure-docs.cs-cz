@@ -2,19 +2,19 @@
 title: Vykreslení scény v cloudu – Azure Batch
 description: Kurz – Vykreslení scény Autodesk 3ds Max s využitím Arnoldu, služby Batch Rendering a rozhraní příkazového řádku Azure
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 10/24/2018
-ms.author: danlep
+ms.date: 12/11/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9f9464874230538bf2976b47896dae8e67c9744f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: 0b9f6e440140edbec59d1bf837a0dfb16ab44d5f
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024388"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323418"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Kurz: Vykreslení scény pomocí služby Azure Batch 
 
@@ -124,7 +124,7 @@ Pomocí příkazu [az batch pool create](/cli/azure/batch/pool#az-batch-pool-cre
       "publisher": "batch",
       "offer": "rendering-windows2016",
       "sku": "rendering",
-      "version": "1.2.1"
+      "version": "1.3.1"
     },
     "nodeAgentSKUId": "batch.node.windows amd64"
   },
@@ -338,7 +338,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, účtu 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili tyto postupy:
 

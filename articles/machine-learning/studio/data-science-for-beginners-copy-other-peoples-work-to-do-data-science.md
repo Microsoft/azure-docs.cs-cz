@@ -1,13 +1,12 @@
 ---
 title: Zkopírujte ostatních vědy příkladů dat – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: 'Tajemství datové vědy: získání ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI.'
+description: 'Tajemství pro datové vědy: Získejte ostatním uživatelům práci za vás. Získání příkladů strojového učení v galerii Azure AI.'
 keywords: data science příklady, machine learning například clustering algoritmu clusteringu příklad algoritmus
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: ec2be823-c325-4ad8-b8b2-3e664f1a44b4
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
-ms.openlocfilehash: c033cc42fd9f57c18242c6e7a6b301238592c0fe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: acd0899396ac5a47dade5fac16e451b2029ec0c2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075009"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260374"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopírování práce jiných lidí pro vědecké zkoumání dat
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Datová věda pro začátečníky řady
@@ -43,12 +42,12 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 *Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
 
 * Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: [položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
+* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
+* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
+* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
 * Video 5: Kopírování práce jiných lidí pro vědecké zkoumání dat
 
-## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Přepis: Kopírování práce jiných lidí pro vědecké zkoumání dat
+## <a name="transcript-copy-other-peoples-work-to-do-data-science"></a>Přepisu: Kopírování práce jiných lidí pro vědecké zkoumání dat
 Vítá vás páté videa v této sérii "Datová věda pro začátečníky."
 
 Do tohoto objektu za zjistíte místo, kde můžete najít příklady, které můžete vypůjčit z jako výchozí bod pro vlastní práci. Pokud sledujete starší videa v této sérii, může se zobrazit maximálně využít toto video.

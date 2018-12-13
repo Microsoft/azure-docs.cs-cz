@@ -1,5 +1,6 @@
 ---
-title: Začínáme s Azure Machine Learning pro Visual Studio Code
+title: Použijte Visual Studio Code s
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak nainstalovat Azure Machine Learning pro Visual Studio Code a vytvoření jednoduchého experimentu v Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c5d7d3c10b9c8c191144e1e396d28fc53f813623
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012670"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269582"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
@@ -24,11 +25,13 @@ Pomocí rozšíření Azure Machine Learning v sadě Visual Studio code pomocí 
 
 ## <a name="prerequisite"></a>Požadavek
 
+
++ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+
 + Musí být nainstalované Visual Studio Code. VS Code je zdroj jednoduchý, ale výkonný editor kódu, který běží na vaší ploše. Obsahuje integrovanou podporu pro Python a další.  [Informace o instalaci VS Code](https://code.visualstudio.com/docs/setup/setup-overview).
 
 + [Nainstalujte Python 3.5 nebo vyšší](https://www.anaconda.com/download/).
 
-+ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="install-the-azure-machine-learning-for-vs-code-extension"></a>Instalace Azure Machine Learning pro rozšíření VS Code
 
@@ -40,7 +43,7 @@ Pro práci s Azure Machine Learning, musíme proměnit Python IDE VS Code. Prác
 
 1. Spusťte VS Code.
 
-1. V prohlížeči, navštivte: [Azure Machine Learning pro Visual Studio Code (Preview)](https://aka.ms/vscodetoolsforai) rozšíření
+1. V prohlížeči navštivte: [Azure Machine Learning pro Visual Studio Code (Preview)](https://aka.ms/vscodetoolsforai) rozšíření
 
 1. V této webové stránce klikněte na tlačítko **nainstalovat**. 
 

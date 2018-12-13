@@ -1,5 +1,5 @@
 ---
-title: 'Sady .NET SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+title: 'SADY .NET SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
 description: Použití Azure Data Lake Storage Gen1 .NET SDK k provádění operací systému souborů v Data Lake Storage Gen1, jako je vytváření složek atd.
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 71ddbc2363075b721bfbd418bd29e5154baba866
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391483"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163225"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
@@ -146,7 +146,7 @@ Následující fragment kódu vrátí vlastnosti přidružené k souboru nebo ad
     var directoryEntry = client.GetDirectoryEntry(fileName);
     PrintDirectoryEntry(directoryEntry);
 
-Definice metody `PrintDirectoryEntry` je k dispozici jako součást ukázky [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
+Definice `PrintDirectoryEntry` metoda je k dispozici jako součást vzorku [na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted). 
 
 ## <a name="rename-a-file"></a>Přejmenování souboru
 Následující fragment kódu přejmenuje existující soubor v účtu Data Lake Storage Gen1.
@@ -164,7 +164,7 @@ Následující fragment kódu vypíše obsah adresářů v účtu Data Lake Stor
         PrintDirectoryEntry(entry);
     }
 
-Definice metody `PrintDirectoryEntry` je k dispozici jako součást ukázky [na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted).
+Definice `PrintDirectoryEntry` metoda je k dispozici jako součást vzorku [na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted).
 
 ## <a name="delete-directories-recursively"></a>Rekurzivní odstranění adresářů
 Následující fragment kódu rekurzivně odstraní adresář a všechny jeho podadresáře.
@@ -174,8 +174,8 @@ Následující fragment kódu rekurzivně odstraní adresář a všechny jeho po
 
 ## <a name="samples"></a>Ukázky
 Tady je několik ukázek, jak používat sadu SDK pro Data Lake Storage Gen1 systému souborů.
-* [Základní ukázka na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
-* [Pokročilá ukázka na GitHubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
+* [Základní ukázka na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
+* [Pokročilá ukázka na Githubu](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)

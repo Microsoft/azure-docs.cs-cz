@@ -7,13 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 450eac3613df18997c5b0f9189555555da20cfcf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 1ea8fddf2b4e75abba38f011a271aada848a8cb5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585516"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192188"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení z modelu nasazení classic rozhraní API pro metriky a automatické škálování
 
@@ -76,9 +75,9 @@ Nebude existovat žádný přímý vliv na služby Azure nebo jejich úloh.
 
 Všechna volání do klasického rozhraní API uvedené dříve selže a vrátí chybové zprávy podobné následující dotazy:
 
-Pro automatické škálování: *toto rozhraní API je zastaralá. Správa nastavení automatického škálování pomocí webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku, šablon Resource Manageru nebo*.  
+Pro automatické škálování: *Toto rozhraní API je zastaralá. Správa nastavení automatického škálování pomocí webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku, šablon Resource Manageru nebo*.  
 
-Pro metriky: *toto rozhraní API je zastaralá. Použití webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku k dotazování pro metriky*.
+Pro metriky: *Toto rozhraní API je zastaralá. Použití webu Azure portal, sady SDK monitorování Azure, Powershellu, rozhraní příkazového řádku k dotazování pro metriky*.
 
 ## <a name="email-notifications"></a>E-mailová oznámení
 

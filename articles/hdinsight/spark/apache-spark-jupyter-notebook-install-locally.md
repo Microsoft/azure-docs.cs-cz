@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 3cd6ef1716d455c5ac755122b8696dbc43fdf459
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581863"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163374"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Na váš počítač nainstalovat Poznámkový blok Jupyter a připojte se k Apache Spark v HDInsight
 
@@ -36,9 +36,9 @@ Požadavky uvedené v tomto poli nejsou pro instalaci Jupyter. Jedná se o přip
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Na váš počítač nainstalovat aplikace Jupyter notebook
 
-Před instalací poznámkové bloky Jupyter, je nutné nainstalovat Python. Python a Jupyter je k dispozici jako součást [distribuce Anacondy](https://www.continuum.io/downloads). Při instalaci Anacondy nainstalujete distribuci jazyka Python. Po instalaci Anacondy přidáte instalace Jupyteru spuštěním příslušnými příkazy.
+Před instalací poznámkové bloky Jupyter, je nutné nainstalovat Python. Python a Jupyter je k dispozici jako součást [distribuce Anacondy](https://www.anaconda.com/download/). Při instalaci Anacondy nainstalujete distribuci jazyka Python. Po instalaci Anacondy přidáte instalace Jupyteru spuštěním příslušnými příkazy.
 
-1. Stáhněte si [instalační program Anaconda](https://www.continuum.io/downloads) pro platformu a spusťte instalační program. Při spuštění Průvodce instalací, ujistěte se, zda že jste vybrali možnost Přidat Anaconda do proměnné PATH.
+1. Stáhněte si [instalační program Anaconda](https://www.anaconda.com/download/) pro platformu a spusťte instalační program. Při spuštění Průvodce instalací, ujistěte se, zda že jste vybrali možnost Přidat Anaconda do proměnné PATH.
 1. Spusťte následující příkaz k instalaci aplikace Jupyter.
 
         conda install jupyter
@@ -141,9 +141,9 @@ Může existovat několik důvodů, proč můžete chtít nainstalovat do počí
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací

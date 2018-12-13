@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js ve službě Azure Web Apps
-description: Přečtěte si osvědčené postupy a řešení problémů s kroky pro aplikace v Node.js ve službě Azure Web Apps.
+title: Osvědčené postupy a řešení potíží pro Node.js – Azure App Service
+description: Přečtěte si osvědčené postupy a řešení problémů s kroky pro aplikace v Node.js ve službě Azure App Service.
 services: app-service\web
 documentationcenter: nodejs
 author: ranjithr
@@ -14,14 +14,15 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
-ms.openlocfilehash: 6918d216be11763a34d7738c616e917a2db01ade
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961408"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315719"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js ve službě Azure Web Apps
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
 V tomto článku se naučíte osvědčené postupy a kroky pro řešení potíží [aplikací node](app-service-web-get-started-nodejs.md) běžící na Azure Web Apps (s [modulu iisnode](https://github.com/azure/iisnode)).
 

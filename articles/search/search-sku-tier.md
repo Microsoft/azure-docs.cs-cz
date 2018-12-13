@@ -1,5 +1,5 @@
 ---
-title: Vyberte cenové úrovně nebo SKU pro službu Azure Search | Dokumentace Microsoftu
+title: Vyberte cenové úrovně nebo SKU pro službu Azure Search – Azure Search
 description: 'Služba Azure Search je možné zřídit za tyto skladové položky: Free, Basic a Standard, ve kterém Standard je k dispozici v různých konfigurace prostředků a kapacity úrovně.'
 services: search
 author: HeidiSteen
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.custom: seodec2018
+ms.openlocfilehash: 3c5e4d568e7118d50ce8779402526fca77ccdda7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785303"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315549"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -43,7 +44,7 @@ Ve službě Azure Search je nejdůležitější fakturační koncept pochopit *j
 
 SU je produkt *repliky* a *oddíly* používané službou: **`(R X P = SU)`**
 
-Každá služba začíná 1 SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky nebo replik pro 3 oddíly x 12 pár. 
+Každá služba začíná 1 SU (jednu repliku a jeden oddíl) jako minimální. Maximální počet pro libovolnou službu je 36 su, které můžete dosáhnout různými způsoby: 6 oddíly x 6 repliky, nebo replik pro 3 oddíly x 12 pár. 
 
 Je běžné použití nižší, než celkové kapacity. Například repliky 3, 3 oddíly služby, účtovat jako 9 su. 
 
@@ -119,7 +120,7 @@ Jedním z přístupů k odhadování kapacity je začít s **Free** vrstvy. Vzpo
 
 Předpokládáme, že byla ukázka zástupce a 10 % celý zdroj dat. a 30 MB indexu bude přibližně 300 MB Pokud všechny dokumenty se indexují. Ozbrojené s tímto číslem předběžné, může dvojnásobek velikosti s rozpočtem pro dvě indexy (vývoj a produkčním prostředí), a cena celkem 600 MB v požadavky na úložiště. To je snadno splněno **základní** vrstvy, takže byste začali existuje.
 
-### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Krok 2: Vývoj kontrast odhady pomocí fakturovatelné úrovni.
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Krok 2: Vývoj pomocí fakturovatelné úrovni kontrast odhady
 
 Zákazníci, kteří dávají přednost začínat vyhrazených prostředcích, které může pojmout větší vzorkování a časy zpracování a pak vytvářet realistické odhady množství index, velikost a svazků dotazu během vývoje. Zpočátku služba se zřizuje podle odhad nejlepší odhad a pak zrání vývojového projektu, týmy obvykle zjistit, zda existující službu nad nebo pod kapacity pro předpokládané produkční úlohy. 
 

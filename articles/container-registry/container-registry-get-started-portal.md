@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí webu Azure Portal
+title: Rychlý start – vytvoření privátního registru Dockeru v Azure – Azure portal
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí webu Azure Portal.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 1e039c465bf37e0ee5ca1db5837798680e27463d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 865c53fdda60f6a0384157ec68042b4b8b243a7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278663"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255359"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvoření registru kontejnerů pomocí webu Azure Portal
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Rychlý start: Vytvořit privátní registr pomocí webu Azure portal
 
 Registr kontejnerů Azure je privátním registrem Dockeru v Azure, kde můžete ukládat a spravovat privátní image kontejnerů Dockeru. V tomto rychlém startu pomocí webu Azure Portal vytvoříte registr kontejneru, nasdílíte do registru image kontejneru a nakonec nasadíte kontejner z registru do služby Azure Container Instances (ACI).
 
@@ -138,7 +138,7 @@ Pokud chcete vyčistit prostředky, přejděte na portálu do skupiny prostředk
 
 ![Odstranění skupiny prostředků na webu Azure Portal][qs-portal-08]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Container Registry a prostřednictvím služby Azure Container Instances jste spustili její instanci. Pokračujte ke kurzu služby Azure Container Instances, kde najdete podrobnější přehled ACI.
 

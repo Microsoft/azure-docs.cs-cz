@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ac91632656e83fc4262f28240525c8fb106b99ec
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 4400430e012dee7caceba62637db1bf626d02b61
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679117"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277332"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -43,7 +43,7 @@ Otevře se okno pravidla upozornění a potom použijte tlačítko Přidat.
 * Věnujte jednotky, ve kterých budete vyzváni k zadání prahovou hodnotu.
 * Pokud zaškrtnete políčko "E-mailu vlastníky...", oznámení odesílají e-mailem do každého, kdo má přístup k této skupině prostředků. Chcete-li rozbalit tuto skupinu lidí, přidejte je do [skupiny prostředků nebo předplatného](app-insights-resources-roles-access-control.md) (ne prostředků).
 * Pokud zadáte "Další e-mailů", oznámení se odešlou do těchto jednotlivců nebo skupin (Určuje, jestli je zaškrtnuté políčko "e-mailová vlastníky..."). 
-* Nastavte [webhooku adresu](../monitoring-and-diagnostics/insights-webhooks-alerts.md) Pokud nastavíte webovou aplikaci, která bude reagovat na výstrahy. Je volána při aktivaci upozornění a po jeho vyřešení. (Všimněte si, že v současné době parametry dotazu neprocházejí jako vlastnosti webhooku.)
+* Nastavte [webhooku adresu](../azure-monitor/platform/alerts-webhooks.md) Pokud nastavíte webovou aplikaci, která bude reagovat na výstrahy. Je volána při aktivaci upozornění a po jeho vyřešení. (Všimněte si, že v současné době parametry dotazu neprocházejí jako vlastnosti webhooku.)
 * Můžete zakázat nebo povolit upozornění: zobrazení tlačítek v horní části okna.
 
 *Nevidím tlačítko Přidat oznámení.* 
@@ -51,7 +51,7 @@ Otevře se okno pravidla upozornění a potom použijte tlačítko Přidat.
 * Používáte účet organizace? Výstrahy můžete nastavit, pokud jste vlastníkem nebo přispěvatelem přístup k tomuto prostředku aplikace. Podívejte se v okně řízení přístupu. [Další informace o řízení přístupu][roles].
 
 > [!NOTE]
-> V okně výstrahy uvidíte, že již existuje upozornění sady: [proaktivní Diagnostika](app-insights-proactive-failure-diagnostics.md). Automatické výstrahy monitoruje jednu konkrétní metriky, požadavek chybovost. Pokud budete chtít zakázat proaktivní výstrahu, není nutné nastavit vlastní oznámení na míru selhání požadavku. 
+> V okně výstrahy uvidíte, že již sadu výstrah: [Proaktivní Diagnostika](app-insights-proactive-failure-diagnostics.md). Automatické výstrahy monitoruje jednu konkrétní metriky, požadavek chybovost. Pokud budete chtít zakázat proaktivní výstrahu, není nutné nastavit vlastní oznámení na míru selhání požadavku. 
 > 
 > 
 
@@ -69,7 +69,7 @@ Historii změn stavu je v protokolu aktivit:
 ![V okně Přehled klikněte na nastavení, protokoly auditu](./media/app-insights-alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>Jak výstrahy fungují
-* Upozornění má tři stavy: "Neaktivoval", "Aktivní" a "Vyřešeno". Aktivovaná znamená, že podmínku, kterou jste zadali dřív platilo, pokud bylo naposled vyhodnoceno.
+* Upozornění má tři stavy: "Nikdy neaktivoval", "Aktivní" a "Vyřešeno". Aktivovaná znamená, že podmínku, kterou jste zadali dřív platilo, pokud bylo naposled vyhodnoceno.
 * Oznámení se vygeneruje, když se výstraha změní stav. (Pokud se vyskytl výstražný stav dřív platilo již při vytvoření výstrahy, můžete nemusí oznámení, dokud podmínka přestane false.)
 * Jednotlivým oznámením generuje e-mailu, pokud je zaškrtnuté políčko e-mailů, nebo zadaná e-mailové adresy. Můžete se také podívat na rozevírací seznam oznámení.
 * Výstraha se vyhodnocuje pokaždé, když dorazí metriky, ale není jinak.
@@ -93,7 +93,7 @@ Nezapomeňte, že [proaktivní míra Diagnostika chyb](app-insights-proactive-fa
 
 ## <a name="automation"></a>Automation
 * [Použití Powershellu k automatizaci nastavení výstrahy](app-insights-powershell-alerts.md)
-* [Automatizace reagování na výstrahy pomocí webhooků](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Automatizace reagování na výstrahy pomocí webhooků](../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Video
 

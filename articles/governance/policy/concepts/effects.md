@@ -1,5 +1,5 @@
 ---
-title: Principy Azure Policy efekty
+title: Vysvětlení fungování efekty
 description: Azure definice zásady mají různé účinky, které určují způsob správy a hlásí dodržování předpisů.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 2bed2f52f29d5c97ab576fae73498b60fb7ecc30
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0fcb30132a83502b8ca5f58364d78129109b8a9d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079796"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310840"
 ---
 # <a name="understand-policy-effects"></a>Vysvětlení efektu služby Policy
 
@@ -265,7 +265,7 @@ Během cyklu vyhodnocení definice zásad s účinností DeployIfNotExists, kter
 
 ### <a name="deployifnotexists-example"></a>Příklad DeployIfNotExists
 
-Příklad: Vyhodnotí databáze systému SQL Server k určení, zda je povoleno transparentDataEncryption. Pokud ne, pak je nasazení, aby je proveden.
+Příklad: Vyhodnotí jako databáze SQL serveru k určení, zda je povoleno transparentDataEncryption. Pokud ne, pak spuštění nasazení povolit.
 
 ```json
 "if": {

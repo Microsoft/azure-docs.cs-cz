@@ -9,17 +9,15 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: eccd81d50c93c2fdeb67e2536a0afa879c08a1b4
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 32a88d5446d1825b454f64fcca8548e1eb5ea434
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970267"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192613"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 

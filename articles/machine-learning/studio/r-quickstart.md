@@ -5,9 +5,8 @@ keywords: Rychlý start, jazyk r, programovací jazyk r, kurz programovacího ja
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ddd9c1fd8b51c6ae43878cf50ee16737511c82e9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317666"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278657"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Rychlý úvodní kurz pro programovací jazyk pro Azure Machine Learning Studio R
 
@@ -33,7 +32,7 @@ Tento rychlý úvodní kurz vám pomůže rychle spustit pomocí programovací j
 
 Microsoft Azure Machine Learning obsahuje mnoho modulů výkonném počítači pro manipulaci s učení a data. Výkonné jazyka R je popsán jako lingua franca obchodu analýzy. Využívá elastic manipulaci analytics a data ve službě Azure Machine Learning je možné rozšířit pomocí jazyka R. Tato kombinace poskytuje škálovatelnost a snadné nasazení služby Azure Machine Learning s flexibility a hloubkové analýzy R.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="forecasting-and-the-dataset"></a>Prognózování a datové sady
 Prognózování je metoda analytické široce proces a velmi užitečné. Běžné použití rozsahu od předpověď sales sezónní položek, určení optimální zásob se predikce makroekonomické proměnné. Prognózy se obvykle provádí s modely řady čas.
@@ -61,7 +60,7 @@ Použiji RStudio pro vývoj, testování a ladění kódu R v malém měřítku.
 ### <a name="the-execute-r-script-module"></a>Modul spustit skript jazyka R
 V nástroji Machine Learning Studio, jsou skripty jazyka R poběží [spustit skript jazyka R] [ execute-r-script] modulu. Příkladem [spustit skript jazyka R] [ execute-r-script] modulu v nástroji Machine Learning Studio je znázorněno na obrázku 1.
 
- ![Programovací jazyk R: spuštění skriptu R modulu vybraná v nástroji Machine Learning Studio][1]
+ ![Programovací jazyk R: Spustit skript jazyka R modulu vybraná v nástroji Machine Learning Studio][1]
 
 *Obrázek 1. Zobrazuje vybraný modul spustit skript jazyka R prostředí Machine Learning Studio.*
 
@@ -1211,7 +1210,7 @@ Spuštěním tohoto kódu vytvoří výstup znázorňuje obrázek 27 na výstupn
 
 Z těchto výsledků vidíme, že přidání sezónní faktory do modelu snižuje chyby RMS výrazně. Chyba služby RMS pro trénovací data je příliš logicky chvíli menší než prognózy.
 
-## <a id="appendixa"></a>Příloha A: Příručka k Rstudiu
+## <a id="appendixa"></a>PŘÍLOHA A: Příručka k Rstudiu
 RStudio poměrně dobře zdokumentovat, takže v tomto dodatku mi poskytne několik odkazů na klíčové části RStudio dokumentace vám pomůžou začít.
 
 1. Vytváření projektů
@@ -1228,7 +1227,7 @@ RStudio poměrně dobře zdokumentovat, takže v tomto dodatku mi poskytne něko
    
    Zarážky Poradce při potížích funkce jsou popsány v https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting.
 
-## <a id="appendixb"></a>Příloha B: Další čtení
+## <a id="appendixb"></a>PŘÍLOHA B: Další čtení
 V tomto kurzu programovacího jazyka R vysvětluje co je potřeba použít jazyka R s Azure Machine Learning Studio. Pokud nejste obeznámeni s jazykem R, jsou k dispozici na CRAN dvě úvodní informace:
 
 * R pro začátečníky podle Emmanuel Paradis je dobrým začátkem v http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf.  
@@ -1236,7 +1235,7 @@ V tomto kurzu programovacího jazyka R vysvětluje co je potřeba použít jazyk
 
 Existuje mnoho knih v R, které může pomoci vám začít. Tady je několik, které se mi najít užitečné:
 
-* Techniky programování v jazyce R: prohlídka z statistické softwaru návrh podle Norman Matloff je vynikající Úvod k programování v jazyce R.  
+* Techniky programování v jazyce R: Prohlídka z statistické softwaru návrh podle Norman Matloff je vynikající Úvod k programování v jazyce R.  
 * Kuchařka R podle Paul Teetor přináší problém a jeho řešení přístup k v R.  
 * R v opatření Robert Kabacoff je další užitečná úvodní knihy. Je užitečný prostředek na webu rychlé R doprovodné http://www.statmethods.net/.
 * Inferno R podle Burnse Patrick je překvapivě sloupku knihy, které se zabývají počet témat složité a složité, které mohou nastat při programování v jazyce R. Kniha je k dispozici zdarma na http://www.burns-stat.com/documents/books/the-r-inferno/.
@@ -1248,7 +1247,7 @@ Kniha úvodní časové řady s jazykem R Paul Cowpertwait a Andrew Metcalfe pos
 
 Některé skvělé internetové prostředky:
 
-* Datacampu: Datacampu vás naučí R v pohodlí vašeho prohlížeče s video poznatky a kódování cvičení. Existují interaktivní kurzy o nejnovější R techniky a balíčky. Využijte bezplatný kurz interaktivní R na https://www.datacamp.com/courses/introduction-to-r
+* Datacampu: R v pohodlí vašeho prohlížeče s video poznatky a kódování cvičení se dozvíte, jaké Datacampu. Existují interaktivní kurzy o nejnovější R techniky a balíčky. Využijte bezplatný kurz interaktivní R na https://www.datacamp.com/courses/introduction-to-r
 * Průvodce Začínáme pracovat s R z Programiz https://www.programiz.com/r-programming
 * Rychlý kurz jazyka R podle Kelly černé z Clarkson University http://www.cyclismo.org/tutorial/R/
 * Více než 60 R prostředky uvedené v http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Spouštění Azure Functions pomocí úloh Azure Stream Analytics | Microsoft Docs'
+title: 'Kurz: Spouštění Azure Functions pomocí úloh Azure Stream Analytics | Dokumentace Microsoftu'
 description: V tomto kurzu se naučíte nakonfigurovat Azure Functions jako výstupní jímku pro úlohy Stream Analytics.
 services: stream-analytics
 author: jasonwhowell
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: b4f234099cb39e524beb2d2e5a5d138355d5cb80
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6a89333f32fb4ccc8fc4d4710266157fca16fe02
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013696"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164156"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -207,6 +207,8 @@ V případě chyby při odesílání událostí do služby Azure Functions se St
 ## <a name="known-issues"></a>Známé problémy
 
 Když se na portálu Azure Portal provede pokus o resetování maximální velikosti dávky nebo maximálního počtu v dávce na prázdnou (výchozí) hodnotu, po uložení se tato hodnota změní zpět na dříve zadanou hodnotu. V tom případě zadejte výchozí hodnoty pro tato pole ručně.
+
+Použití [směrování protokolu Http](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp) ve službě Azure Functions se momentálně nepodporuje ve Stream Analytics.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

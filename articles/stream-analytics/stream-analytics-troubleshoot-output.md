@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 5124e06296962f1b673c77bfe318ff48d7fb11aa
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 92cb427149e6e6cbddfb96c6e4488017641e6482
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291319"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164904"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s Azure Stream Analytics výstupy
 

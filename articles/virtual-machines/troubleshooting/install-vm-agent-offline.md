@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3caa4f2dbe36f86c9b15a83303e90b16d06c56fd
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 14b108a836424e92a251f50b42ed93963038a333
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419397"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192052"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Nainstalujte agenta virtuálního počítače Azure v režimu offline 
 
@@ -44,7 +44,7 @@ Následujícím postupem nainstalujte agenta virtuálního počítače v režimu
 
 3.  Připojte se k Poradce při potížích se virtuální počítač. Otevřít **Správa počítače** > **nástroji Správa disků**. Potvrďte, že disk s operačním systémem je online a že písmena jednotek jsou přiřazeny k diskové oddíly.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Úprava disk s operačním systémem k instalaci agenta virtuálního počítače Azure
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Upravit disk s operačním systémem k instalaci agenta virtuálního počítače Azure
 
 1.  Poradce při potížích se virtuální počítač vytvořte připojení ke vzdálené ploše.
 
@@ -76,7 +76,7 @@ Následujícím postupem nainstalujte agenta virtuálního počítače v režimu
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\RdAgent
 
-        ![Export podklíče registru](./media/install-vm-agent-offline/backup-reg.png)
+          ![Export podklíče registru](./media/install-vm-agent-offline/backup-reg.png)
 
     2. Úpravy souborů registru. Do každého souboru, změňte hodnotu položky **systému** k **BROKENSYSTEM** (jak je znázorněno na následujících obrázcích) a soubor uložte. Mějte na paměti **ImagePath** aktuální agenta virtuálního počítače. Budeme muset zkopírovat odpovídající složky na připojeném disku s operačním systémem. 
 

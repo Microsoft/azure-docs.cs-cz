@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 77615705ade42a2afcc8e3a9f662b0551a2411fd
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582441"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184045"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Objednat zařízení události připojení ze služby Azure IoT Hub pomocí služby Azure Cosmos DB
 
@@ -200,11 +200,11 @@ V pracovního postupu aplikace logiky podmínek pomoci spustit konkrétní akce 
 
 2. Zadejte podmínku, jak je znázorněno níže na spustit pouze pro události zařízení připojené a odpojené zařízení:
 
-  * Zvolte hodnotu: **typ události**
-  * Změna "je rovno" **končí**
-  * Zvolte hodnotu: **nected**
+   * Zvolte hodnotu: **typ události**
+   * Změna "je rovno" **končí**
+   * Zvolte hodnotu: **nected**
 
-   ![Zadejte podmínku](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Zadejte podmínku](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
 3. Pokud je podmínka pravdivá, klikněte na **přidat akci**.
   
@@ -248,9 +248,9 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 4. Vytvořte odběr události s následujícími hodnotami: 
 
-   * **Typ události**: zrušte zaškrtnutí políčka přihlášení k odběru všech typů událostí a vyberte **zařízení připojeno** a **odpojení zařízení** z nabídky.
+   * **Typ události**: Zrušte zaškrtnutí políčka přihlásit k odběru pro všechny typy událostí a vyberte **zařízení připojeno** a **odpojení zařízení** z nabídky.
 
-   * **Podrobnosti o koncovém bodu:** Jako Typ koncového bodu vyberte **Webhook**, klikněte na vybraný koncový bod, vložte adresu URL, kterou jste zkopírovali ze své aplikace logiky, a potvrďte výběr.
+   * **Podrobnosti o koncovém bodu**: Vyberte typ koncového bodu jako **Webhook** a klikněte na Vybrat koncový bod a vložte adresu URL, kterou jste zkopírovali z aplikace logiky a potvrďte výběr.
 
        ![Výběr adresy URL koncového bodu](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Jak stránkování výsledků vyhledávání ve službě Azure Search | Dokumentace Microsoftu
+title: Stránkování položky na stránce výsledků hledání – Azure Search
 description: Stránkování ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 8953be2be77c14a82294e56ac60b8bc993ec6c2f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.custom: seodec2018
+ms.openlocfilehash: 5f36dbb72e2518f7e3a27ef3aadec85312d751c2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527065"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309304"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak v Azure Search stránkovat výsledky hledání
 Tento článek obsahuje pokyny, jak používat rozhraní REST API Azure Search Service pro implementaci standardní elementy na stránce výsledků hledání, jako je například celkového počtu, načtení dokumentu, řazení a navigaci.

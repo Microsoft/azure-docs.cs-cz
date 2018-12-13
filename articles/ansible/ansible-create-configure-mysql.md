@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible (Preview)
+title: Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Azure Database for MySQL.
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, mysql, database
@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 6fd08e21fe0573d48ae7752eb410845062932b5e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427892"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255937"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible (Preview)
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible"></a>Vytvoření a konfigurace serveru Azure Database for MySQL pomocí Ansible
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) je spravovaná služba, která slouží k provozu, správě a škálování vysoce dostupných databází MySQL v cloudu. Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. 
 
 V tomto rychlém startu se dozvíte, jak pomocí Ansible vytvořit server Azure Database for MySQL a nakonfigurovat jeho pravidlo brány firewall. Tyto úlohy můžete dokončit přibližně během pěti minut pomocí webu Azure Portal.
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak pomocí Ansible vytvořit server Azure 
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. Spuštěním příkazu `sudo pip install ansible[azure]==2.7.0rc2` můžete nainstalovat verzi Ansible 2.7 RC. Po vydání Ansible 2.7 už tady nebudete muset zadávat verzi, protože výchozí verze bude 2.7.
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
@@ -318,6 +318,6 @@ Uložte předchozí playbook jako **mysql_delete.yml**. Playbook spustíte pomoc
 ansible-playbook mysql_delete.yml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
 > [Ansible v Azure](https://docs.microsoft.com/azure/ansible/)

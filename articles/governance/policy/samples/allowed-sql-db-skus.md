@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Povolené skladové položky pro databáze SQL
+title: Ukázkový – povolené skladové položky SQL DB
 description: Tato ukázková zásada vyžaduje, aby databáze SQL používaly schválené skladové položky.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 3f2ed04555f46f80585c3a17612e3071bfec415d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f22ee99750f12d44ca61fac6a0e5db4bde9634a1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992775"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311350"
 ---
 # <a name="allowed-sql-db-skus"></a>Povolené skladové položky pro databáze SQL
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

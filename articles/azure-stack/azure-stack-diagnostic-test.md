@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 7f4e956601ee25549d0a0828c4c3dd0e8d6ff85b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f754242d0cf7ee30572b21a3f4daf6fd2c0f63ff
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840125"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275903"
 ---
 # <a name="validate-azure-stack-system-state"></a>Ověření stavu systému Azure Stack
 
@@ -45,7 +45,7 @@ Jak bylo uvedeno dříve, je spuštěn nástroj pro ověřování prostřednictv
    Test-AzureStack
    ```
 
-   Odkazovat [důležité informace o parametru](azure-stack-diagnostic-test.md#parameter-considerations) a [případu příklady použít](azure-stack-diagnostic-test.md#use-cases) oddíly pro další informace.
+   Odkazovat [důležité informace o parametru](azure-stack-diagnostic-test.md#parameter-considerations) a [případu příklady použít](azure-stack-diagnostic-test.md#use-case-examples) oddíly pro další informace.
 
 3. Pokud některé testy sestavy **selhání**, spusťte:
 
@@ -121,13 +121,13 @@ Následující scénáře cloudu jsou testovány pomocí nástroje ověření:
 
 - Tenanta, které je virtuální počítač nasazen jako součást jednoho testuje scénář cloudu. Můžete použít **DoNotDeployTenantVm** to zakázat. 
 
-- Budete muset zadat **ServiceAdminCredential** parametr pro spouštění testů scénář cloudu, jak je popsáno v [případu příklady použít](azure-stack-diagnostic-test.md#use-cases) oddílu.
+- Budete muset zadat **ServiceAdminCredential** parametr pro spouštění testů scénář cloudu, jak je popsáno v [případu příklady použít](azure-stack-diagnostic-test.md#use-case-examples) oddílu.
 
-- **BackupSharePath** a **BackupShareCredential** se používají při testování nastavení zálohování infrastruktury, jak je znázorněno [případu příklady použít](azure-stack-diagnostic-test.md#use-cases) oddílu.
+- **BackupSharePath** a **BackupShareCredential** se používají při testování nastavení zálohování infrastruktury, jak je znázorněno [případu příklady použít](azure-stack-diagnostic-test.md#use-case-examples) oddílu.
 
-- Nástroj ověřování také podporuje společné parametry prostředí PowerShell: podrobné nastavení, ladění, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable a OutVariable. Další informace najdete v tématu [o společných parametrech](http://go.microsoft.com/fwlink/?LinkID=113216).  
+- Nástroj ověřování také podporuje společné parametry prostředí PowerShell: Podrobné nastavení, ladění, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable a OutVariable. Další informace najdete v tématu [o společných parametrech](http://go.microsoft.com/fwlink/?LinkID=113216).  
 
-## <a name="use-case-examples"></a>Příklady případů použití 
+## <a name="use-case-examples"></a>Příklady případů použití
 
 ### <a name="run-validation-without-cloud-scenarios"></a>Spustit ověření bez cloudové scénáře
 

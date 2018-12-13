@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Audit transparentního šifrování dat pro službu SQL Database
+title: Ukázkový – Audit transparentní šifrování dat pro službu SQL Database
 description: Tato ukázková zásada provede audit, jestli databáze SQL nemá povolené transparentní šifrování dat.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 10/29/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: d7e8571c0b8301da953d84893ac48934a2392d55
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 36eb62dfa7ae45b70f5907241c66f2286f9ce760
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229999"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310619"
 ---
 # <a name="audit-sql-database-encryption"></a>Auditování šifrování databáze SQL
 
@@ -66,6 +65,6 @@ Pokud chcete odebrat přiřazení zásad, spusťte následující příkaz.
 az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

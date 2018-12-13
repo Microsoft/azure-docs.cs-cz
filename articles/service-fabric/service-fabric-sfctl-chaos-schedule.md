@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492236"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276447"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Získání a nastavení plánu chaos.
@@ -29,7 +29,7 @@ Získání a nastavení plánu chaos.
 |Příkaz|Popis|
 | --- | --- |
 | získat | Získáte plán Chaos definování, kdy a jak spustit Chaos. |
-| Nastavit | Nastavte plán Chaos používané Chaos. |
+| set | Nastavte plán používá Chaos. |
 
 ## <a name="sfctl-chaos-schedule-get"></a>získat plán sfctl chaosu
 Získáte plán Chaos definování, kdy a jak spustit Chaos.
@@ -53,9 +53,9 @@ Získá verzi Chaos plán používá a Chaos plán, který definuje, kdy a jak s
 | -verbose | Zvýšit úroveň podrobností protokolování. Pomocí parametru--ladění pro protokoly ladění úplné. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
-Nastavte plán Chaos používané Chaos.
+Nastavte plán používá Chaos.
 
-Nastavte plán Chaos aktuálně používá v Chaos. Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v zadané vstupní plán musí odpovídat verzi Chaos plán na serveru. Pokud poskytnutá verze neodpovídá verzi na serveru, nebude aktualizován v plánu Chaos. Pokud je poskytnutá verze odpovídá verzi na serveru, Chaos plán je aktualizovaný a verzi Chaos plán na serveru se zvýší nahoru o jednu a zabalí zpět na 0, po 2 147 483 647. Pokud Chaos běží, když je toto volání, volání se nezdaří.
+Chaos se automaticky naplánuje spuštění na základě plánu Chaos. Verze v zadané vstupní plán musí odpovídat verzi Chaos plán na serveru. Pokud poskytnutá verze neodpovídá verzi na serveru, nebude aktualizován v plánu Chaos. Pokud je poskytnutá verze odpovídá verzi na serveru, Chaos plán je aktualizovaný a verzi Chaos plán na serveru se zvýší nahoru o jednu a zabalí zpět na 0, po 2 147 483 647. Pokud Chaos běží, když je toto volání, volání se nezdaří.
 
 ### <a name="arguments"></a>Argumenty
 
@@ -143,6 +143,7 @@ Následující příkaz nastaví plán (za předpokladu, že aktuální plán m�
         ]
     }
     ]
+
 
 ## <a name="next-steps"></a>Další postup
 - [Nastavit](service-fabric-cli.md) Service Fabric CLI.

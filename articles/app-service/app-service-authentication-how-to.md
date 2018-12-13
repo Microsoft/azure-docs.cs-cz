@@ -1,5 +1,5 @@
 ---
-title: Rozšířené využití ověřování a autorizace ve službě Azure App Service | Dokumentace Microsoftu
+title: Rozšířené využití ověřování a autorizace – Azure App Service | Dokumentace Microsoftu
 description: Ukazuje, jak přizpůsobit ověřování a autorizace ve službě App Service a získat deklarace identity uživatelů a různé tokeny.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 67d08379d98873fa88ef20b5cc8c87163c067e3a
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685323"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310449"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
@@ -26,8 +27,8 @@ V tomto článku se dozvíte, jak přizpůsobit předdefinované [ověřování 
 
 Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 
-* [Kurz: Ověřování a autorizace uživatelů začátku do konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-* [Kurz: Ověřování a autorizace uživatelů začátku do konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)
+* [Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+* [Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)
 * [Konfigurace aplikace pro použití přihlášení Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Konfigurace aplikace pro použití přihlášení k Facebooku](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Konfigurace aplikace pro použití přihlášení ke Googlu](app-service-mobile-how-to-configure-google-authentication.md)
@@ -179,10 +180,10 @@ Z klientského kódu (například mobilní aplikace nebo jazyka JavaScript v pro
 
 Když vyprší platnost přístupového tokenu poskytovatele, musíte uživatele donutit k. Vypršení platnosti tokenu se můžete vyhnout tím, že `GET` volání `/.auth/refresh` koncový bod aplikace. Při volání služby App Service automaticky aktualizuje přístupové tokeny v úložišti tokenů pro ověřeného uživatele. Odeslání dalších žádostí o tokeny pomocí kódu vaší aplikace získáte aktualizovat tokeny. Ale token aby aktualizace fungovala, musí obsahovat úložiště tokenů [obnovovacích tokenů](https://auth0.com/learn/refresh-tokens/) pro vašeho poskytovatele. Způsob, jak získat tokeny obnovení jsou popsány od každého poskytovatele, ale v následujícím seznamu je uveden stručný přehled:
 
-- **Google**: připojení `access_type=offline` parametr řetězce do dotazu vaše `/.auth/login/google` volání rozhraní API. Pokud pomocí sady SDK služby Mobile Apps, můžete přidat parametr do jednoho z `LogicAsync` přetížení (naleznete v tématu [Google aktualizovat tokeny](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
-- **Facebook**: neposkytuje obnovovací tokeny. Dlouhodobé tokeny vyprší za 60 dní (naleznete v tématu [Facebook vypršení platnosti a rozšíření přístupové tokeny](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: přístupové tokeny nevyprší (naleznete v tématu [nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
-- **Microsoft Account**: při [nastavení ověřování účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), vyberte `wl.offline_access` oboru.
+- **Google**: Připojit `access_type=offline` parametr řetězce do dotazu vaše `/.auth/login/google` volání rozhraní API. Pokud pomocí sady SDK služby Mobile Apps, můžete přidat parametr do jednoho z `LogicAsync` přetížení (naleznete v tématu [Google aktualizovat tokeny](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
+- **Facebook**: Neposkytuje obnovovací tokeny. Dlouhodobé tokeny vyprší za 60 dní (naleznete v tématu [Facebook vypršení platnosti a rozšíření přístupové tokeny](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
+- **Twitter**: Přístupové tokeny nevyprší (viz [nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Účet Microsoft**: Když [nastavení ověřování účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky vyberte **r/w**.
     1. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 
@@ -242,5 +243,5 @@ Klikněte na tlačítko **upravit**upravit následující vlastnosti a pak klikn
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz: Ověřování a autorizace uživatelů začátku do konce (Windows)](app-service-web-tutorial-auth-aad.md)
-> [kurz: ověřování a autorizaci uživatelů začátku do konce (Linux)](containers/tutorial-auth-aad.md)
+> [Kurz: Ověřování a autorizaci uživatelů začátku do konce (Windows)](app-service-web-tutorial-auth-aad.md)
+> [kurzu: Ověřování a autorizaci uživatelů začátku do konce (Linux)](containers/tutorial-auth-aad.md)

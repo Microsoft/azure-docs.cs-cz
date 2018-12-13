@@ -5,7 +5,6 @@ services: machine-learning
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
@@ -13,18 +12,18 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: fc201b91ba3e2e7ba0f880445542333e58ed4a8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e6835afd66d054a79c422a35839d64ae89031de5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079819"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268253"
 ---
-# <a name="create-and-share-an-azure-machine-learning-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning
+# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Vytváření a sdílení pracovního prostoru služby Azure Machine Learning Studio
 
 Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ### <a name="to-create-a-workspace"></a>Vytvořit pracovní prostor
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
@@ -60,7 +59,7 @@ Po nasazení se pracovní prostor, lze jej otevřít v nástroji Machine Learnin
     ![Otevřít experimentů](./media/create-workspace/my-experiments.png)
 
 Informace o správě pracovního prostoru najdete v tématu [Správa pracovního prostoru Azure Machine Learning](manage-workspace.md).
-Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Machine Learning](troubleshooting-creating-ml-workspace.md).
+Pokud narazíte na problém s vytvořením pracovního prostoru, přečtěte si téma [Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Machine Learning](troubleshooting-creating-ml-workspace.md).
 
 
 ## <a name="sharing-an-azure-machine-learning-workspace"></a>Sdílení pracovního prostoru služby Azure Machine Learning

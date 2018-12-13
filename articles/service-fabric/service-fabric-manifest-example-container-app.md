@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6f538fa821e546d12c5a2bdb9585cc85871241fa
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 010fd442419f57f8b53705be8d3f49fdb84e28fd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094148"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262448"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Příklady manifestu služeb a vícekontejnerové aplikace
 Následují příklady manifesty aplikace a služby pro vícekontejnerovou aplikaci Service Fabric. Účelem těchto příkladech je zobrazit nastavení, které jsou k dispozici a jak je používat. Tyto aplikace a služby manifestů jsou založeny na [Windows serveru 2016 kontejneru ukázka](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) manifesty.
@@ -295,7 +295,7 @@ Určuje zásady pro aktivaci hostitelích kontejnerů. Další informace najdete
 Přihlašovací údaje k úložišti imagí kontejneru do o přijetí změn imagí z. Další informace najdete v tématu [RepositoryCredentials – Element](service-fabric-service-model-schema-elements.md#RepositoryCredentialsElementRepositoryCredentialsTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="portbinding-element"></a>PortBinding – Element
-Určuje, který prostředek se koncový bod pro vytvoření vazby vystavené port kontejneru. Další informace najdete v tématu [PortBinding – Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
+Určuje, který prostředek se koncový bod pro vytvoření vazby vystavené port kontejneru. Další informace najdete v tématu [PortBinding – Element](service-fabric-service-model-schema-elements.md#PortBindingElementPortBindingTypeComplexTypeDefinedInServicePackageContainerPolicyTypecomplexTypeDefinedInContainerHostPoliciesTypecomplexType)
 
 ### <a name="volume-element"></a>Element svazku
 Určuje svazku, který má být vázána ke kontejneru. Další informace najdete v tématu [svazek – Element](service-fabric-service-model-schema-elements.md#VolumeElementContainerVolumeTypeComplexTypeDefinedInContainerHostPoliciesTypecomplexType)
@@ -313,7 +313,7 @@ Image kontejneru, odpovídající číslo verze sestavení operačního systému
  Další informace najdete v tématu [EnvironmentOverrides – Element](service-fabric-service-model-schema-elements.md#EnvironmentOverridesElementEnvironmentOverridesTypeComplexTypeDefinedInServiceManifestImportelement)
 
 ### <a name="environmentvariable-element"></a>Objekt EnvironmentVariable – Element
-proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="certificateref-element"></a>CertificateRef – Element
 Určuje informace o x X509 certifikát, který má být vystavená pro kontejnerové prostředí. Certifikát musí být nainstalován v úložišti LocalMachine všech uzlů clusteru.
@@ -356,7 +356,7 @@ Spustitelný soubor určený vstupní bod se obvykle dlouhotrvající hostitele 
 Předání proměnných prostředí kontejneru nebo souboru exe.  Další informace najdete v tématu [EnvironmentVariables – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="environmentvariable-element"></a>Objekt EnvironmentVariable – Element
-proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>Složce ConfigPackage – Element
 Deklaruje do složky s názvem podle atribut Name, obsahující souboru Settings.xml. Tento soubor obsahuje oddíly pár definovaný uživatelem, klíč hodnota nastavení, které proces může číst zpět v době běhu. Během upgradu pokud pouze složce ConfigPackage verze se změnila, pak spuštěný proces se nerestartuje. Místo toho zpětné volání upozornění procesu tak, že je možné znovu zavést dynamicky se nezměnila konfigurační nastavení. Další informace najdete v tématu [složce ConfigPackage – Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)
@@ -403,7 +403,7 @@ Další informace najdete v tématu [ContainerHost – Element](service-fabric-s
 Předání proměnných prostředí kontejneru nebo souboru exe.  Další informace najdete v tématu [EnvironmentVariables – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
 
 ### <a name="environmentvariable-element"></a>Objekt EnvironmentVariable – Element
-proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexTypeDefinedInEnvironmentVariablesTypecomplexType)
+proměnné prostředí. Další informace najdete v tématu [EnvironmentVariable – Element](service-fabric-service-model-schema-elements.md#EnvironmentVariableElementEnvironmentVariableOverrideTypeComplexTypeDefinedInEnvironmentOverridesTypecomplexType)
 
 ### <a name="configpackage-element"></a>Složce ConfigPackage – Element
 Deklaruje do složky s názvem podle atribut Name, obsahující souboru Settings.xml. Tento soubor obsahuje oddíly pár definovaný uživatelem, klíč hodnota nastavení, které proces může číst zpět v době běhu. Během upgradu pokud pouze složce ConfigPackage verze se změnila, pak spuštěný proces se nerestartuje. Místo toho zpětné volání upozornění procesu tak, že je možné znovu zavést dynamicky se nezměnila konfigurační nastavení. Další informace najdete v tématu [složce ConfigPackage – Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

@@ -1,6 +1,6 @@
 ---
-title: Indexování zdroje dat rozhraní Azure Cosmos DB pro službu Azure Search | Dokumentace Microsoftu
-description: Tento článek ukazuje, jak vytvořit indexeru Azure Search se zdrojem dat Azure Cosmos DB.
+title: Indexovat zdroje dat Azure Cosmos DB – Azure Search
+description: Procházet zdroj dat služby Azure Cosmos DB a jejich ingestování v prohledávatelných fulltextového indexu ve službě Azure Search. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako jsou služby Azure Cosmos DB.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
-ms.openlocfilehash: 07768ee1590fa087a1eb1486cb59ab0f57d02b64
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec2018
+ms.openlocfilehash: 80759394ac920907c74f67cf9ee6dfcb52bfd9a8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747537"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311809"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojení služby Cosmos DB pomocí Azure Search pomocí indexerů
 
@@ -95,18 +96,18 @@ Chcete-li vytvořit zdroj dat, proveďte příspěvek:
 
 Text žádosti obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-* **název**: Vyberte libovolný název a reprezentaci vaší databáze.
-* **typ**: musí být `documentdb`.
+* **Název**: Vyberte libovolný název a reprezentaci vaší databáze.
+* **Typ**: Musí být `documentdb`.
 * **přihlašovací údaje**:
   
-  * **připojovací řetězec**: povinné. Zadejte informace o připojení k vaší databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` kolekce MongoDB pro přidání **ApiKind = MongoDb** na připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  * **připojovací řetězec**: Povinná hodnota. Zadejte informace o připojení k vaší databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` Kolekce MongoDB, přidejte **ApiKind = MongoDb** na připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
   Vyhněte se čísla portů v adresu url koncového bodu. Pokud je číslo portu, nepůjde Azure Search k indexování databáze Azure Cosmos DB.
 * **kontejner**:
   
-  * **název**: povinné. Zadejte id kolekce databáze, který se má indexovat.
-  * **dotaz**: volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat. Dotazy nejsou podporovány pro kolekce MongoDB. 
-* **dataChangeDetectionPolicy**: nedoporučuje. Zobrazit [indexování dokumentů změnit](#DataChangeDetectionPolicy) oddílu.
-* **dataDeletionDetectionPolicy**: Optional. Zobrazit [indexování dokumentů odstranit](#DataDeletionDetectionPolicy) oddílu.
+  * **Název**: Povinná hodnota. Zadejte id kolekce databáze, který se má indexovat.
+  * **dotaz**: Volitelné. Můžete zadat dotaz, který libovolný dokument JSON sloučit do ploché schéma, které Azure Search můžete indexovat. Dotazy nejsou podporovány pro kolekce MongoDB. 
+* **dataChangeDetectionPolicy**: Doporučené. Zobrazit [indexování dokumentů změnit](#DataChangeDetectionPolicy) oddílu.
+* **dataDeletionDetectionPolicy**: Volitelné. Zobrazit [indexování dokumentů odstranit](#DataDeletionDetectionPolicy) oddílu.
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Pomocí dotazů na obrazec indexovat data
 Můžete zadat dotaz SQL pro sloučení vnořené vlastnosti nebo pole, vlastnosti projektu JSON a filtrovat data, která mají být indexovány. 

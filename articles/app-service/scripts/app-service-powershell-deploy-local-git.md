@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu z místního úložiště Git | Microsoft Docs
+title: Skript Azure Powershellu ukázkový – vytvoření aplikace a nasazení z místního úložiště Git | Dokumentace Microsoftu
 description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace a nasazení kódu z místního úložiště Git
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: cdd691d156d182c3d85dcc731ddf1bc62204b072
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: 5a8976ce806554f9faae6376cdb938cecd5ced1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324150"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309326"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Vytvoření webové aplikace a nasazení kódu z místního úložiště Git
 
@@ -48,7 +48,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci s nezbytnou skupinou prostředků a skupinou služby App Service. Pokud aktuální adresář obsahuje úložiště Git, přidejte také vzdálené připojení `azure`. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

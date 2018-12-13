@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 8a6f0a69f0159a31d9fefcc54a104ebc1ed47ec4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f95d7851241dfd5b077c215e2df893c6ba8ef36c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100340"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139482"
 ---
 # <a name="create-entities-without-utterances"></a>Vytvoření entity bez projevy
 
@@ -157,13 +157,13 @@ Pro aplikaci lidských zdrojů může mít seznam všech oddělení spolu s jak�
 
 1. Pokud chcete více normalizované položek pro seznam, vyberte **doporučujeme** zobrazíte možnosti z [sémantické slovníku](luis-glossary.md#semantic-dictionary).
 
-    ![Snímek obrazovky přidání role zdroje do umístění entity](./media/add-entities/hr-list-2.png)
+    ![Snímek obrazovky s výběrem doporučujeme funkci zobrazíte možnosti](./media/add-entities/hr-list-2.png)
 
 
 1. Vyberte položku v seznamu doporučené a přidejte ho jako normalizované hodnoty, nebo vyberte **přidejte všechny** přidat všechny položky. 
     Hodnoty můžete importovat do existující entity seznamu pomocí následujícího formátu JSON:
 
-    ```
+    ```JSON
     [
         {
             "canonicalForm": "Blue",

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: ac62800e81cece61e9f51c496ace2868629a49a1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 911b8051530daca57fe26fb22c6dc1be845c6d6d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960239"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321422"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Spravovat přístupová práva k Azure Blob a fronty dat pomocí RBAC (Preview)
 
@@ -29,6 +29,7 @@ Azure Storage podporuje předdefinované i vlastní role RBAC. Azure Storage nab
 
 - [Přispěvatel dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
 - [Čtenář dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
+- [Vlastník dat úložiště objektů Blob (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
 - [Přispěvatel dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
 - [Čtenář dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
 
@@ -44,7 +45,7 @@ Přiřazení RBAC role pro Azure identity k udělení oprávnění pro kontejner
 
 |Rozsah|Vlastník dat objektů BLOB|Přispěvatel dat objektu BLOB|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
 |---|---|---|---|---|---|
-|Úroveň Subscrition|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
+|Úroveň předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
 |Úrovni skupiny prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny fronty ve skupině prostředků|Přístup pro čtení pro všechny fronty ve skupině prostředků|
 |Úroveň účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis do všech front v účtu úložiště|Přístup pro čtení pro všechny fronty v účtu úložiště|
 |Úroveň kontejneru či fronty|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadané fronty|Přístup pro čtení do zadané fronty|

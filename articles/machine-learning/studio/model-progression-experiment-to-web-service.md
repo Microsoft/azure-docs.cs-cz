@@ -4,9 +4,8 @@ description: Přehled o mechanismu jak experimentovat vaše postupuje model Azur
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 1254f41d4961956acc8f7abc7d5490fedbb8c5d0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5cfa11042d269353cf33f99d1238265ff9657853
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310095"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253863"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak model Machine Learning Studio postupuje od experimentu ke zprovozněné službě webové
 Azure Machine Learning Studio poskytuje interaktivní plátno, která umožňuje vyvíjet, spouštět, testovat a iterovat ***experimentovat*** představující model prediktivní analýzy. Existují nejrůznější moduly, které můžete:
@@ -95,7 +94,7 @@ To záleží na co je potřeba aktualizovat:
 
 Pokud nejsou Změna modelu, ale jsou stačí, když změníte způsob, jakým zpracovává data webové služby, můžete upravit prediktivní experiment a pak klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu. Webová služba je zastavena, se nasadí aktualizované prediktivní experiment a restartovat webovou službu.
 
-Tady je příklad: Předpokládejme, že prediktivní experiment vrátí celý řádek vstupní data s predikované výsledky. Můžete rozhodnout, který má webová služba právě vrátit výsledek. Proto můžete přidat **sloupce projektu** modulu v prediktivní experiment, bezprostředně před na výstupní port pro vyloučení sloupce mimo výsledek. Po kliknutí na **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu, webová služba se aktualizuje.
+Zde naleznete příklad: Předpokládejme, že prediktivní experiment vrátí celý řádek vstupní data s predikované výsledky. Můžete rozhodnout, který má webová služba právě vrátit výsledek. Proto můžete přidat **sloupce projektu** modulu v prediktivní experiment, bezprostředně před na výstupní port pro vyloučení sloupce mimo výsledek. Po kliknutí na **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba** znovu, webová služba se aktualizuje.
 
 **Chcete programovém přeučení modelů s novými daty**
 
@@ -119,6 +118,6 @@ Podrobné informace o procesu vývoje a experimentu najdete v následujících �
 
 Příklady celého procesu naleznete v tématu:
 
-* [Kurz strojového učení: vytvoření prvního experimentu v Azure Machine Learning Studio](create-experiment.md)
-* [Názorný postup: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+* [Kurz strojového učení: Vytvoření prvního experimentu v nástroji Azure Machine Learning Studio](create-experiment.md)
+* [Návod: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 

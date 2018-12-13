@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 12/11/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 816992fa05613bc8904cfaf4b34345a02c9b3ba2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e13f21971c7babaeaebc9714fe2a040229eebb2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728289"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278674"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -37,11 +37,23 @@ Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najd
 
 Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
+## <a name="12690"></a>1.2.69.0
+
+### <a name="release-status"></a>Stav verze
+12/11/2018: Všeobecně dostupné ke stažení
+
+### <a name="fixed-issues"></a>Oprava potíží
+Tato oprava hotfix sestavení umožňuje uživateli vybrat cílové doméně, v rámci zadané doménové struktury pro kontejner RegisteredDevices, když zapnete zpětný zápis zařízení.  V předchozích verzích, které obsahují nové funkce Možnosti zařízení (1.1.819.0 – 1.2.68.0), umístění kontejner RegisteredDevices omezovala na kořenu doménové struktury a neumožňuje podřízené domény.  Toto omezení pouze označované na nová nasazení samotný – místní upgrady byly ovlivněny.  
+
+Pokud žádné sestavení obsahující funkci aktualizované možnosti zařízení byla nasazena na nový server a zpětný zápis zařízení byla povolená, musíte ručně zadat umístění kontejneru, pokud nechcete, aby se v kořenu doménové struktury.  K tomuto účelu, budete muset zakázat zpětný zápis zařízení a znovu povolit, což vám umožní zadat umístění kontejneru na stránce "Doménová struktura pro zpětný zápis".
+
+
+
 ## <a name="12680"></a>1.2.68.0
 
 ### <a name="release-status"></a>Stav verze 
 
-11/30/2018: všeobecně dostupné ke stažení
+30/11/2018:  Všeobecně dostupné ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
@@ -53,7 +65,7 @@ Tato oprava hotfix sestavení opravy ke konfliktu, kde může dojít k chybě ov
 
 ### <a name="release-status"></a>Stav verze 
 
-19/11/2018: všeobecně dostupné ke stažení
+19/11/2018:  Všeobecně dostupné ke stažení
 
 ### <a name="fixed-issues"></a>Oprava potíží
 
@@ -103,7 +115,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 
 ### <a name="release-status"></a>Stav verze
 
-8 21 2018: vydala pro stahování a automatický upgrade. 
+8/21/2018: Všeobecně dostupné ke stažení a automatický upgrade. 
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -114,7 +126,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 - Po přepnutí přihlašování uživatele synchronizace hodnot Hash hesel nebo předávací ověřování v úloze "Změna uživatele přihlášení", je ve výchozím nastavení povolena na zaškrtávací políčko bezproblémové jednotné přihlašování.
 - Přidání podpory pro Windows Server Essentials 2019
 - Agent Azure AD Connect Health se aktualizoval na nejnovější verzi 3.1.7.0
-- Během upgradu Pokud instalační program zjistí změny výchozí pravidla pro synchronizaci, správce se zobrazí výzva s upozorněním před přepsáním upravené pravidla. To vám umožní uživateli provést opravné akce a pokračovat později. Staré chování: Pokud se všechny změněné out-of-box pravidlo pak ruční upgrade byl přepsání pravidla bez ztráty všechna upozornění pro uživatele a Plánovač synchronizace byla zakázána, aniž byste museli informovat uživatele. Nové chování: Uživateli zobrazí výzva s upozorněním před přepsáním upravené out-of-box synchronizační pravidla. Uživatel bude mít možnost se zastavit proces upgradu a pokračovat později po opravné akce.
+- Během upgradu Pokud instalační program zjistí změny výchozí pravidla pro synchronizaci, správce se zobrazí výzva s upozorněním před přepsáním upravené pravidla. To vám umožní uživateli provést opravné akce a pokračovat později. Staré chování: Pokud se všechny změněné out-of-box pravidlo pak ruční upgrade byl přepsání pravidla bez ztráty všechna upozornění pro uživatele a Plánovač synchronizace byla zakázána, aniž byste museli informovat uživatele. Nové chování: Uživateli se zobrazí výzva s upozorněním před přepsáním upravené out-of-box synchronizační pravidla. Uživatel bude mít možnost se zastavit proces upgradu a pokračovat později po opravné akce.
 - Poskytuje lepší zpracování problém dodržování předpisů podle standardu FIPS, poskytování chybovou zprávu pro generování hodnot hash MD5 v prostředí vyhovující standardu FIPS a odkaz na dokumentaci, která poskytuje pro tento problém vyřešit.
 - Aktualizace uživatelského rozhraní pro zvýšení federace úlohy v průvodci, které jsou teď v samostatné dílčí skupinu pro federaci. 
 - Všechny úkoly další federační jsou nyní seskupené pod jeden dílčí nabídky pro snadné použití.
@@ -142,7 +154,7 @@ Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurova
 
 ### <a name="release-status"></a>Stav verze
 
-5/14/2018: vydala pro automatický upgrade a stažení.
+5/14/2018: Vydáno pro automatický upgrade a stažení.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -153,8 +165,8 @@ Nové funkce a vylepšení
 - Konfigurace zpětného zápisu zařízení se teď spravuje výhradně v Azure AD Connect průvodce.
 - Řešení potíží s nový PowerShell modul volané ADSyncTools.psm1 se přidá, který slouží k řešení problémů s připojením SQL a různé další nástroje. Další informace o modulu ADSyncTools [tady](tshoot-connect-tshoot-sql-connectivity.md). 
 - Byla přidána nová dodatečnou úlohu "Nakonfigurovat možnosti zařízení". Úlohu můžete nakonfigurovat následující dvě operace: 
-    -   **Připojení k hybridní službě Azure AD**: Pokud má místní prostředí AD nároky na místo a chcete také výhody poskytované službou Azure Active Directory, můžete implementovat hybridních zařízení připojených k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
-    -   **Zpětný zápis zařízení**: zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
+    -   **Připojení k hybridní službě Azure AD**: Pokud se ve vašem prostředí využívá AD a také chcete využít možnosti, které poskytuje Azure Active Directory, můžete implementovat hybridní zařízení připojená k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
+    -   **Zpětný zápis zařízení**: Zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
 
    >[!NOTE] 
    > - Možnost povolit zpětný zápis zařízení z přizpůsobit možnosti synchronizace bude zapnutá. 
@@ -167,37 +179,37 @@ Nové funkce a vylepšení
 - Tato verze aktualizuje instalaci systému SQL Server Express k SQL serveru 2012 SP4, které mimo jiné, poskytuje opravy pro několik ohrožení zabezpečení.  Podrobnosti najdete na [tady](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) Další informace o SQL Server 2012 SP4.
 - Zpracování pravidla synchronizace: odchozí pravidla synchronizace spojení se žádná podmínka spojení by mělo být zrušit použité, pokud nadřazené pravidlo synchronizace není nadále vhodné
 - Několik oprav usnadnění se použily rozhraní Synchronization Service Manager a Editor pravidel synchronizace
-- Azure AD Connect průvodce: Chyba při vytváření účtu AD Connector. Pokud Azure AD Connect je v pracovní skupině
-- Azure AD Connect průvodce: Na Azure AD přihlašovací stránky zobrazí zaškrtávací políčko ověření vždycky, když je jakákoli Neshoda v AD domén a domén Azure AD ověřeno
+- Průvodce Azure AD Connect: Chyba při vytváření účtu AD Connector. Pokud Azure AD Connect je v pracovní skupině
+- Průvodce Azure AD Connect: Na stránce přihlášení Azure AD zobrazí zaškrtávací políčko ověření vždycky, když je jakákoli Neshoda v AD domén a domén Azure AD ověřeno
 - Automatický upgrade prostředí PowerShell opravit a nastavit stav automatické aktualizace v některých případech správně po k pokusu o automatický upgrade.
-- Azure AD Connect průvodce: Aktualizovat telemetrie k zachycení dříve chybějící informace
-- Azure AD Connect průvodce: Následující změny byly provedeny při použití **změnit přihlášení uživatele** úkolu, chcete-li přepnout ze služby AD FS na předávací ověřování:
+- Průvodce Azure AD Connect: Aktualizované telemetrie k zachycení dříve chybějící informace
+- Průvodce Azure AD Connect: Při použití byly provedeny následující změny **změnit přihlášení uživatele** úkolu, chcete-li přepnout ze služby AD FS na předávací ověřování:
     - Předávací ověřování Agent byl nainstalován na serveru služby Azure AD Connect a je povolena funkce předávací ověřování, než jsme převést domény ze Federovaná do služby managed.
     - Uživatelé jsou již převést z Federovaná do spravovaných. Jenom domény budou převedeny.
-- Azure AD Connect průvodce: AD FS s více domény Regex není správná po uživatele (UPN) ' speciální znak regulárního výrazu aktualizaci pro podporu speciální znaky
-- Azure AD Connect průvodce: Odeberte detekováno falešné "Atribut zdrojového ukotvení konfigurovat" zprávy, když žádné změny 
-- Azure AD Connect průvodce: Služba AD FS podporuje pro scénář duální federace
-- Azure AD Connect průvodce: Deklarace identity AD FS nejsou aktualizovány pro přidání domény při převodu spravované domény na federovanou
-- Azure AD Connect průvodce: Během zjišťování nainstalované balíčky, se nám najít zastaralé Dirsync nebo Azure AD Sync nebo Azure AD Connect souvisejících produktů. Nyní jsme se pokusí odinstalovat zastaralé produkty.
-- Azure AD Connect průvodce: Správné chybové zprávy mapování při selhání instalace průchozí ověřovacího agenta služby
-- Azure AD Connect průvodce: Odebrání kontejneru "Konfigurace" z filtrování podle organizačních jednotek domény stránky
+- Průvodce Azure AD Connect: AD FS s více domény Regex není správná, když má uživatel (UPN) ' speciální znak regulárního výrazu aktualizaci pro podporu speciální znaky
+- Průvodce Azure AD Connect: Odebrat detekováno falešné "Atribut zdrojového ukotvení konfigurovat" zprávy, když žádné změny 
+- Průvodce Azure AD Connect: Podpora pro scénář duální federační služby AD FS
+- Průvodce Azure AD Connect: AD FS deklarace identity se neaktualizují pro přidání domény při převodu spravované domény na federovanou
+- Průvodce Azure AD Connect: Během zjišťování nainstalované balíčky, se nám najít zastaralé Dirsync nebo Azure AD Sync nebo Azure AD Connect souvisejících produktů. Nyní jsme se pokusí odinstalovat zastaralé produkty.
+- Průvodce Azure AD Connect: Oprava mapování chybová zpráva při selhání instalace předávací ověřování agenta
+- Průvodce Azure AD Connect: Odebrané kontejneru "Konfigurace" z filtrování podle organizačních jednotek domény stránky
 - Instalace synchronizačního modulu: odeberte nepotřebné starší verze logiku, která někdy se nezdařilo z msi instalace synchronizačního modulu
-- Azure AD Connect průvodce: Oprava text nápovědy automaticky otevíraného okna na stránce volitelné funkce synchronizace hodnot Hash hesel
-- Synchronizovat modul runtime: oprava scénáři, kde objekt CS má importovaný delete a synchronizační pravidla se pokusí znovu zřídit objektu.
-- Synchronizovat modul runtime: nápovědu přidat odkaz na Online připojení Průvodce řešením potíží s do protokolu událostí chybě importu
-- Synchronizovat modul runtime: při vytváření výčtu konektory snížení využití paměti Plánovač synchronizace
-- Azure AD Connect průvodce: Vyřešit problém řeší vlastní účet synchronizační služby, který nemá žádná oprávnění pro čtení AD
-- Azure AD Connect průvodce: Zlepšení protokolování domény a organizační jednotky vybrané možnosti filtrování
-- Azure AD Connect průvodce: AD FS přidejte výchozí deklarací na vztah důvěryhodnosti federace vytvořit pro scénář MFA
-- Azure AD Connect průvodce: AD FS nasadit WAP: Přidání serveru pomocí nového certifikátu se nezdaří.
-- Azure AD Connect průvodce: DSSO výjimka při onPremCredentials nejsou inicializovány pro doménu 
+- Průvodce Azure AD Connect: Oprava text nápovědy automaticky otevíraného okna na stránce volitelné funkce synchronizace hodnot Hash hesel
+- Runtime modul synchronizace: Oprava scénáře, kdy má jako importované CS objekt odstranit a synchronizační pravidla se pokusí znovu zřídit objektu.
+- Runtime modul synchronizace: Přidat odkaz na nápovědu Online připojení Průvodce řešením potíží s do protokolu událostí chybě importu
+- Runtime modul synchronizace: Snížení využití paměti z Plánovač synchronizace při vytváření výčtu konektory
+- Průvodce Azure AD Connect: Opravte problém řeší vlastní účet synchronizační služby, který nemá žádná oprávnění pro čtení AD
+- Průvodce Azure AD Connect: Zlepšení protokolování domény a organizační jednotky vybrané možnosti filtrování
+- Průvodce Azure AD Connect: AD FS přidejte výchozí deklarací na vztah důvěryhodnosti federace vytvořit pro scénář MFA
+- Průvodce Azure AD Connect: Služba AD FS nasazování WAPU: Přidání serveru se nepodařilo použít nový certifikát
+- Průvodce Azure AD Connect: Výjimka DSSO při onPremCredentials nejsou inicializovány pro doménu 
 - Přednostně tok distinguishedName atribut AD z objektu aktivního uživatele.
 - Oprava kosmetické chyby byly prioritu první synchronizační pravidlo OOB byl nastaven na 99 místo 100
 
 
 
 ## <a name="117510"></a>1.1.751.0
-Stav 4/12/2018: uvolněna pouze ke stažení
+Stav 4/12/2018: Vydáno pouze ke stažení
 
 >[!NOTE]
 >Tato verze je oprava hotfix pro Azure AD Connect
@@ -212,12 +224,12 @@ Opraven problém, byly zjišťování automatické instance Azure pro čas od č
 Došlo k potížím s logikou opakování konfigurace, která by mělo za následek ArgumentException s oznámením "položka se stejným klíčem již byla přidána."  To by způsobila selhání všech operací opakování.
 
 ## <a name="117500"></a>1.1.750.0
-Stav 3 22 2018: vydala pro automatický upgrade a stažení.
+Stav 22 3. 2018: Vydáno pro automatický upgrade a stažení.
 >[!NOTE]
 >Po dokončení upgradu na tuto novou verzi se automaticky aktivuje úplné synchronizace a úplného importu pro konektor služby Azure AD a úplné synchronizace konektoru služby AD. Protože to může trvat nějakou dobu, v závislosti na velikosti vašeho prostředí Azure AD Connect, ujistěte se, že jste udělali potřebné kroky pro podporu tohoto nebo zdržovat upgradu, dokud jste nalezli pohodlný okamžiku Uděláte to tak.
 
 >[!NOTE]
->"Funkce AutoUpgrade byl nesprávně zakázaná pro některé klienty, kteří později než 1.1.524.0 nasazení sestavení. Aby se zajistilo, že je vaše instance služby Azure AD Connect pro AutoUpgrade i dál nárok, spusťte následující rutinu prostředí PowerShell: "Set ADSyncAutoUpgrade - AutoupGradeState povoleno"
+>"Funkce AutoUpgrade byl nesprávně zakázaná pro některé klienty, kteří později než 1.1.524.0 nasazení sestavení. Aby se zajistilo, že je vaše instance služby Azure AD Connect pro AutoUpgrade i dál nárok, spusťte následující rutinu Powershellu: "Povolené set ADSyncAutoUpgrade - AutoupGradeState"
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
@@ -356,7 +368,7 @@ Pokud chcete zobrazit, pokud toto ohrožení zabezpečení byla použita prolomi
 Další informace najdete v tématu [Microsoft Security Advisory 4056318](https://technet.microsoft.com/library/security/4056318)
 
 ## <a name="116490"></a>1.1.649.0
-Stav: Říjen 2017 27
+Stav: 27. října 2017
 
 >[!NOTE]
 >Toto sestavení není k dispozici zákazníkům prostřednictvím funkce Azure AD Connect automatický Upgrade.
@@ -367,7 +379,7 @@ Stav: Říjen 2017 27
 
 
 ## <a name="116470"></a>1.1.647.0
-Stav: Říjen 2017 19
+Stav: 19. října 2017
 
 > [!IMPORTANT]
 > Nastane problém s kompatibilitou mezi Azure AD Connect verze 1.1.647.0 a verze agenta Azure AD Connect Health (pro synchronizaci) 3.0.127.0. Tento problém brání agenta stavu z odesílání dat o stavu týkající se Azure AD Connect synchronizace služby (včetně chyb synchronizace objektů a dat historie spouštění) do služby Azure AD Health. Před nasazením služby Azure AD Connect ručně upgradovat na verzi 1.1.647.0, ověřte, že nainstalovaná aktuální verze agenta Azure AD Connect Health na vašem serveru Azure AD Connect. To lze provést tak, že přejdete do *ovládací panely → Přidat nebo odebrat programy* a vyhledejte aplikaci *Microsoft Agent Azure AD Connect Health pro synchronizaci*. Pokud je jeho verze 3.0.127.0, se doporučuje čekat na další verzi služby Azure AD Connect bude k dispozici před upgradem. Není-li verzi agenta služby Health 3.0.127.0, je v pořádku, pokračujte v manuální, místní upgrade. Všimněte si, že tento problém nemá vliv na swing upgrade nebo zákazníci, kteří jsou provedení nové instalace služby Azure AD Connect.
@@ -410,7 +422,7 @@ Stav: Říjen 2017 19
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
 >[!NOTE]
-> Poznámka: Synchronizační služby je rozhraní WMI, které vám umožní vyvíjet vlastní vlastní plánovač. Toto rozhraní je nyní zastaralá a bude odebrána z budoucí verze služby Azure AD Connect odeslaná po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace by měla použít [integrované plánovače (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
+> Poznámka: Synchronizační služba má rozhraní WMI, které vám umožní vyvíjet vlastní vlastní plánovač. Toto rozhraní je nyní zastaralá a bude odebrána z budoucí verze služby Azure AD Connect odeslaná po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace by měla použít [integrované plánovače (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
 #### <a name="fixed-issues"></a>Oprava potíží
 * Když průvodce Azure AD Connect vytvoří účet AD Connector vyžaduje k synchronizaci změn z místní služby Active Directory, nepřiřazuje správně účet potřebná oprávnění k čtení PublicFolder objektů. Tento problém se týká Expresní instalace a vlastní instalace. Tato změna opravuje problém.
@@ -429,7 +441,7 @@ Stav: Říjen 2017 19
 
 
 ## <a name="116140"></a>1.1.614.0
-Stav:. Září 2017 05
+Stav: 05. září 2017
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -479,7 +491,7 @@ Stav:. Září 2017 05
 
 
 ## <a name="115610"></a>1.1.561.0
-Stav:. Července 2017 23
+Stav: 23. července 2017
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -501,7 +513,7 @@ Stav:. Července 2017 23
 
 * Opravili jsme problém, kde [domény a filtrování podle organizačních jednotek obrazovky](how-to-connect-install-custom.md#domain-and-ou-filtering) v Azure AD Connect se zobrazuje průvodce *synchronizovat všechny domény a organizační jednotky* možnost jako vybrané, i když je povolené filtrování podle organizačních jednotek.
 
-*   Opravili jsme problém, který způsobil [obrazovku konfigurace oddílů adresářů](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) v Synchronization Service Manager pro vrácení chyby, pokud *aktualizovat* po kliknutí na tlačítko. Chybová zpráva *"došlo k chybě při aktualizaci domény: nelze přetypovat objekt typu"System.Collections.ArrayList' na typ ' Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* Při nové domény AD byl přidán do existující doménové struktury AD a pokoušíte se aktualizace služby Azure AD Connect pomocí tlačítka pro aktualizaci dojde k chybě.
+*   Opravili jsme problém, který způsobil [obrazovku konfigurace oddílů adresářů](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) v Synchronization Service Manager pro vrácení chyby, pokud *aktualizovat* po kliknutí na tlačítko. Chybová zpráva *"došlo k chybě při aktualizaci domény: Nelze přetypovat objekt typu "System.Collections.ArrayList' na typ ' Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* Při nové domény AD byl přidán do existující doménové struktury AD a pokoušíte se aktualizace služby Azure AD Connect pomocí tlačítka pro aktualizaci dojde k chybě.
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -516,10 +528,10 @@ Stav:. Července 2017 23
   * Povolili jste funkce zpětný zápis uživatelů.
   
   >[!NOTE]
-  >Rozšíření oboru funkce automatického upgradu má vliv na zákazníky s využitím Azure AD Connect sestavení 1.1.105.0 a po. Pokud nechcete, aby se váš server Azure AD Connect automaticky upgradovat, musíte spustit následující rutinu na serveru služby Azure AD Connect: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zákaz automatického upgradu, najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
+  >Rozšíření oboru funkce automatického upgradu má vliv na zákazníky s využitím Azure AD Connect sestavení 1.1.105.0 a po. Pokud nechcete, aby se váš server Azure AD Connect automaticky upgradovat, musíte spustit následující rutinu na serveru služby Azure AD Connect: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zákaz automatického upgradu, najdete v článku [Azure AD Connect: Automatický upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115580"></a>1.1.558.0
-Stav: Nebudou vydány. Změny v tomto sestavení jsou součástí verze 1.1.561.0.
+Stav: Nesmí být uvolněna. Změny v tomto sestavení jsou součástí verze 1.1.561.0.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -529,7 +541,7 @@ Stav: Nebudou vydány. Změny v tomto sestavení jsou součástí verze 1.1.561.
 
 * Opravili jsme problém, kde [domény a filtrování podle organizačních jednotek obrazovky](how-to-connect-install-custom.md#domain-and-ou-filtering) v Azure AD Connect se zobrazuje průvodce *synchronizovat všechny domény a organizační jednotky* možnost jako vybrané, i když je povolené filtrování podle organizačních jednotek.
 
-*   Opravili jsme problém, který způsobil [obrazovku konfigurace oddílů adresářů](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) v Synchronization Service Manager pro vrácení chyby, pokud *aktualizovat* po kliknutí na tlačítko. Chybová zpráva *"došlo k chybě při aktualizaci domény: nelze přetypovat objekt typu"System.Collections.ArrayList' na typ ' Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* Při nové domény AD byl přidán do existující doménové struktury AD a pokoušíte se aktualizace služby Azure AD Connect pomocí tlačítka pro aktualizaci dojde k chybě.
+*   Opravili jsme problém, který způsobil [obrazovku konfigurace oddílů adresářů](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) v Synchronization Service Manager pro vrácení chyby, pokud *aktualizovat* po kliknutí na tlačítko. Chybová zpráva *"došlo k chybě při aktualizaci domény: Nelze přetypovat objekt typu "System.Collections.ArrayList' na typ ' Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject."* Při nové domény AD byl přidán do existující doménové struktury AD a pokoušíte se aktualizace služby Azure AD Connect pomocí tlačítka pro aktualizaci dojde k chybě.
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
@@ -544,7 +556,7 @@ Stav: Nebudou vydány. Změny v tomto sestavení jsou součástí verze 1.1.561.
   * Povolili jste funkce zpětný zápis uživatelů.
   
   >[!NOTE]
-  >Rozšíření oboru funkce automatického upgradu má vliv na zákazníky s využitím Azure AD Connect sestavení 1.1.105.0 a po. Pokud nechcete, aby se váš server Azure AD Connect automaticky upgradovat, musíte spustit následující rutinu na serveru služby Azure AD Connect: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zákaz automatického upgradu, najdete v článku [Azure AD Connect: automatický upgrade](how-to-connect-install-automatic-upgrade.md).
+  >Rozšíření oboru funkce automatického upgradu má vliv na zákazníky s využitím Azure AD Connect sestavení 1.1.105.0 a po. Pokud nechcete, aby se váš server Azure AD Connect automaticky upgradovat, musíte spustit následující rutinu na serveru služby Azure AD Connect: `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled`. Další informace o povolení nebo zákaz automatického upgradu, najdete v článku [Azure AD Connect: Automatický upgrade](how-to-connect-install-automatic-upgrade.md).
 
 ## <a name="115570"></a>1.1.557.0
 Stav: Červenec 2017
@@ -558,7 +570,7 @@ Stav: Červenec 2017
 * Opravili jsme problém s ADSyncDomainJoinedComputerSync inicializovat rutinu, která způsobila ověřené domény nakonfigurované na existující objekt bodu připojení služby změnit i v případě, že je stále platná doména. Tento problém nastane, pokud váš tenant Azure AD má více než jeden ověřených domén, které lze použít ke konfiguraci spojovacího bodu služby.
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
-* Zpětný zápis hesla je teď dostupná ve verzi preview s Microsoft Azure Government cloud a Microsoft Cloud Germany. Další informace o podpoře služby Azure AD Connect pro instance různé služby, najdete v článku [Azure AD Connect: speciální aspekty pro instance](reference-connect-instances.md).
+* Zpětný zápis hesla je teď dostupná ve verzi preview s Microsoft Azure Government cloud a Microsoft Cloud Germany. Další informace o podpoře služby Azure AD Connect pro instance různé služby, najdete v článku [Azure AD Connect: Speciální aspekty pro instance](reference-connect-instances.md).
 
 * Rutina inicializace ADSyncDomainJoinedComputerSync teď má nový volitelný parametr s názvem AzureADDomain. Tento parametr umožňuje určit, které ověřené domény má být použit pro konfiguraci spojovacího bodu služby.
 
@@ -660,15 +672,15 @@ CBool(
 * Umožňuje zákazníkům vytvářet vlastní synchronizační pravidla, které jsou předávány sAMAccountName, domainNetBios a domainFQDN pro objekty skupiny, a také distinguishedName pro uživatelské objekty byly zavedeny následující změny schématu:
 
   * Schéma MV byly přidány následující atributy:
-    * Skupina: název účtu
+    * Skupina: Název účtu
     * Skupina: domainNetBios
     * Skupina: domainFQDN
     * Osoba: distinguishedName
 
   * Byly přidány následující atributy do schématu konektor služby Azure AD:
-    * Group: OnPremisesSamAccountName
+    * Skupina: OnPremisesSamAccountName
     * Skupina: NetBiosName
-    * Group: DnsDomainName
+    * Skupina: Název_domény_dns
     * Uživatel: OnPremisesDistinguishedName
 
 * Tento skript rutiny ADSyncDomainJoinedComputerSync teď má nový volitelný parametr s názvem AzureEnvironment. Tento parametr slouží k určení jakou oblast odpovídající tenanta Azure Active Directory je hostován v. Platné hodnoty jsou:
@@ -707,7 +719,7 @@ Vydáno: Květen 2017
 Synchronizace služby Azure AD Connect
 
 * Opravili jsme problém, který způsobí, že dojde k serveru Azure AD Connect i v případě zákazníků se vypne funkce pomocí rutiny Set-ADSyncAutoUpgrade automatický Upgrade. S touto opravou proces automatický Upgrade na serveru stále kontroluje pro upgrade pravidelně, ale na stažený instalační program respektuje konfiguraci automatického upgradu.
-* Při upgradu nástroje DirSync na místě Azure AD Connect vytvoří účet služby Azure AD konektoru služby Azure AD používané pro synchronizaci s Azure AD. Po vytvoření účtu služby Azure AD Connect ověří se pomocí účtu služby Azure AD. V některých případech ověřování selže kvůli přechodným problémům, které způsobí, že místní upgrade nástroje DirSync se nezdaří s chybou *"došlo k chybě provádění úlohy konfigurace AAD Sync: AADSTS50034: pro přihlášení do této aplikace, musí být účet Přidat k adresáři xxx.onmicrosoft.com."* Pokud chcete zlepšit odolnost upgrade nástroje DirSync, Azure AD Connect nyní zopakuje pokus o krok ověřování.
+* Při upgradu nástroje DirSync na místě Azure AD Connect vytvoří účet služby Azure AD konektoru služby Azure AD používané pro synchronizaci s Azure AD. Po vytvoření účtu služby Azure AD Connect ověří se pomocí účtu služby Azure AD. V některých případech ověřování selže kvůli přechodným problémům, které způsobí, že místní upgrade nástroje DirSync se nezdaří s chybou *"došlo k chybě provádění úlohy konfigurace AAD Sync: AADSTS50034: Pro přihlášení do této aplikace, musí tento účet být přidaný do adresáře xxx.onmicrosoft.com."* Pokud chcete zlepšit odolnost upgrade nástroje DirSync, Azure AD Connect nyní zopakuje pokus o krok ověřování.
 * Došlo k nějakému problému se sestavením 443, který způsobí, že místní upgrade nástroje DirSync na úspěšné, ale nevytvoří profily spuštění, které jsou vyžadované pro synchronizaci adresářů. Opravy logiky je zahrnuta v tomto sestavení služby Azure AD Connect. Po upgradu zákazníků na toto sestavení, Azure AD Connect rozpozná chybějící profily spuštění a vytvoří je.
 * Opravili jsme problém, který způsobí, že proces synchronizace hesel nemůže začínat 6900 ID události a chyby *"položka se stejným klíčem již byla přidána"*. K tomuto problému dochází, pokud aktualizujete OU filtrování konfigurace zahrnují AD konfigurační oddíl. Chcete-li vyřešit tento problém, proces synchronizace hesel teď synchronizuje změny hesel z pouze oddíly domény AD. Oddíly doméně jako je například oddílu konfigurace se přeskočí.
 * Při Expresní instalace služby Azure AD Connect vytvoří místní účet AD DS se používá konektorem AD ke komunikaci s místní služby AD. Dříve účet se vytvoří s PASSWD_NOTREQD příznak nastaven na atribut řízení uživatelských účtů a náhodné heslo je nastavena na účtu. Nyní Azure AD Connect explicitně odebere příznak PASSWD_NOTREQD po nastavení hesla pro účet.
@@ -716,7 +728,7 @@ Synchronizace služby Azure AD Connect
 * Konfigurace filtrování podle organizačních jednotek, můžete použít buď Průvodce Azure AD Connect nebo Synchronization Service Manager. Dříve Pokud použijete Průvodce Azure AD Connect ke konfiguraci filtrování podle organizačních jednotek, nové organizační jednotky, které vytvořili později jsou uvedené pro synchronizaci adresářů. Pokud nechcete, aby se nové organizační jednotky mají být zahrnuty, je nutné nakonfigurovat filtrování podle organizačních jednotek pomocí Synchronization Service Manager. Teď můžete dosáhnout stejné chování pomocí Průvodce Azure AD Connect.
 * Opravili jsme problém, který způsobí, že uložené procedury, které jsou vytvořené v rámci schématu instalaci správce místo v rámci schématu dbo vyžaduje Azure AD Connect.
 * Opravili jsme problém, který způsobí, že atribut TrackingId vrácené Azure AD, aby vynechat v AAD Connect protokol událostí serveru. Tento problém nastane, pokud Azure AD Connect přijme zprávu přesměrování z Azure AD a Azure AD Connect se nemůže připojit ke koncovému bodu k dispozici. TrackingId používá techniky podpory k při řešení potíží můžete provádět korelaci s protokoly na straně služby.
-* Když Azure AD Connect obdrží chyba LargeObject ze služby Azure AD, Azure AD Connect vygeneruje událost EventID 6941, zpráva *"zřízený objekt je příliš velký. Omezte počet hodnot atributů pro tento objekt."* Ve stejnou dobu, Azure AD Connect také vygeneruje událost zavádějící EventID 6900, zpráva *"Microsoft.Online.Coexistence.ProvisionRetryException: Nelze navázat komunikaci s Windows služby Azure Active Directory."* Pro zachování přehlednosti, Azure AD Connect již negeneruje druhé události, když je obdržena chyba LargeObject.
+* Když Azure AD Connect obdrží chyba LargeObject ze služby Azure AD, Azure AD Connect vygeneruje událost EventID 6941, zpráva *"zřízený objekt je příliš velký. Omezte počet hodnot atributů pro tento objekt."* Ve stejnou dobu, Azure AD Connect také vygeneruje událost zavádějící EventID 6900, zpráva *"Microsoft.Online.Coexistence.ProvisionRetryException: Nepovedlo se komunikovat se službou Windows Azure Active Directory."* Pro zachování přehlednosti, Azure AD Connect již negeneruje druhé události, když je obdržena chyba LargeObject.
 * Opravili jsme problém, který způsobí, že Synchronization Service Manager přestane reagovat při pokusu o aktualizaci konfigurace pro obecný konektor LDAP.
 
 **Nové funkce a vylepšení:**
@@ -729,12 +741,12 @@ Synchronizace služby Azure AD Connect
   * Přidání **preferredDataLocation** schéma úložiště Metaverse a schéma konektoru AAD. Zákazníci, kteří chtějí aktualizovat buď atributy ve službě Azure AD můžete implementovat vlastní synchronizační pravidla, Uděláte to tak. 
   * Přidání **userType** schéma úložiště Metaverse a schéma konektoru AAD. Zákazníci, kteří chtějí aktualizovat buď atributy ve službě Azure AD můžete implementovat vlastní synchronizační pravidla, Uděláte to tak.
 
-* Azure AD Connect teď automaticky povolí použití atributu ConsistencyGuid jako atribut zdrojového ukotvení pro místní AD objekty. Další, Azure AD Connect naplní ConsistencyGuid atributu s hodnotou atribut objectGuid, pokud je prázdný. Tato funkce se vztahuje na pouze nové nasazení. Pro další informace o této funkci najdete v části [Azure AD Connect: koncepty návrhu – použití ms-DS-ConsistencyGuid jako parametru sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
+* Azure AD Connect teď automaticky povolí použití atributu ConsistencyGuid jako atribut zdrojového ukotvení pro místní AD objekty. Další, Azure AD Connect naplní ConsistencyGuid atributu s hodnotou atribut objectGuid, pokud je prázdný. Tato funkce se vztahuje na pouze nové nasazení. Pro další informace o této funkci najdete v části [Azure AD Connect: Koncepty návrhu – použití ms-DS-ConsistencyGuid jako parametru sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
 * Nové řešení potíží s rutinu Invoke-ADSyncDiagnostics se přidala pro usnadnění diagnostiky synchronizaci hodnot Hash hesel v otázkách. Informace o použití rutiny najdete v článku [řešit synchronizaci hodnot hash hesel pomocí synchronizace Azure AD Connect](tshoot-connect-password-hash-synchronization.md).
 * Azure AD Connect, teď podporuje synchronizaci veřejné složky s povolenou poštou objekty z místní služby AD do služby Azure AD. Můžete povolit funkci pomocí Průvodce Azure AD Connect v rámci volitelných funkcí. Další informace o této funkci najdete v článku [Office 365 Directory na základě blokování serveru Edge podporu pro místní povolené veřejné složky pošty](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Azure AD Connect vyžaduje AD DS účet se má synchronizovat z místní služby AD. Dříve Pokud jste nainstalovali Azure AD Connect s použitím expresní režim, můžete poskytnout přihlašovací údaje podnikového správce účtu a služby Azure AD Connect bude vytvořit účet služby AD DS, vyžaduje. Pro vlastní instalaci a přidání doménových struktur do stávajícího nasazení, ale jsou vyžadovány a místo toho použijte účet služby AD DS. Teď máte také možnost poskytnout přihlašovací údaje podnikového správce účtu při vlastní instalaci a umožní vytvořit účet služby AD DS vyžaduje Azure AD Connect.
 * Azure AD Connect podporuje teď SQL AOA. Před instalací Azure AD Connect je nutné povolit SQL AOA. Během instalace Azure AD Connect zjistí, zda zadaná instance SQL je nebo není povolená pro SQL AOA. Pokud je povolené SQL AOA, Azure AD Connect další přijde na to, pokud SQL AOA je nakonfigurovaná pro používání replikace synchronní nebo asynchronní replikace. Při nastavování naslouchacího procesu skupiny dostupnosti, se doporučuje nastavit vlastnost RegisterAllProvidersIP na hodnotu 0. Toto doporučení je vzhledem k tomu, že Azure AD Connect v současnosti využívá nativní klient systému SQL pro připojení k SQL a nativní klient systému SQL nepodporuje používání vlastnosti MultiSubNetFailover.
-* Pokud používáte LocalDB jako databázi pro váš server Azure AD Connect a byl dosažen limit velikosti 10 GB, synchronizační služba už spustí. Dříve budete muset provést operaci ShrinkDatabase na LocalDB uvolnit dostatek místa v databázi pro synchronizační službu spustit. A Synchronization Service Manager můžete odstranit historii spuštění uvolnit více místa v databázi. Nyní vám pomůže rutiny Start-ADSyncPurgeRunHistory data historie vyprázdnění spustit z LocalDB na uvolněním místa v databázi. Kromě toho tato rutina podporuje offline režimu (zadáním parametru - offline) který se dá použít při synchronizační služba není spuštěná. Poznámka: Offline režimu jde použít jenom Pokud neběží synchronizační služba a použít databázi LocalDB.
+* Pokud používáte LocalDB jako databázi pro váš server Azure AD Connect a byl dosažen limit velikosti 10 GB, synchronizační služba už spustí. Dříve budete muset provést operaci ShrinkDatabase na LocalDB uvolnit dostatek místa v databázi pro synchronizační službu spustit. A Synchronization Service Manager můžete odstranit historii spuštění uvolnit více místa v databázi. Nyní vám pomůže rutiny Start-ADSyncPurgeRunHistory data historie vyprázdnění spustit z LocalDB na uvolněním místa v databázi. Kromě toho tato rutina podporuje offline režimu (zadáním parametru - offline) který se dá použít při synchronizační služba není spuštěná. Poznámka: Offline režimu lze použít pouze v případě synchronizační služba není spuštěna a je databáze používá LocalDB.
 * Ke snížení množství prostor úložiště vyžadovaný, Azure AD Connect nyní komprimuje podrobnosti o chybě synchronizace před jejich uložením do databáze LocalDB nebo SQL. Při upgradu ze starší verze služby Azure AD Connect na tuto verzi služby Azure AD Connect provede jednorázovou komprese existující podrobnosti o chybě synchronizace.
 * Dříve po aktualizaci konfiguraci filtrování organizačních jednotek, je nutné ručně spustit úplný import zajistit, že stávající objekty jsou správně zahrnutý/vyloučený z synchronizace adresářů. Nyní, Azure AD Connect automaticky aktivuje úplný import při příští synchronizaci cyklu. Další, úplný import platí jenom pro konektory AD aktualizací ovlivněny. Poznámka: Toto vylepšení se vztahuje na organizační jednotku filtrování aktualizací bylo vytvořeno s použitím Průvodce Azure AD Connect. To neplatí pro organizační jednotku filtrování aktualizací bylo vytvořeno s použitím Synchronization Service Manager.
 * Dříve filtrování podle skupin umožňuje uživatelům, skupinám, a kontaktujte pouze objekty. Nyní filtrování podle skupin také podporuje objekty počítače.
@@ -837,7 +849,7 @@ Resetování hesla
 * Spolehlivost vylepšené připojení ke službě Azure Service Bus.
 
 ## <a name="113800"></a>1.1.380.0
-Vydáno: Prosince 2016
+Vydáno: Prosinec 2016
 
 **Oprava potíží:**
 
@@ -847,7 +859,7 @@ Vydáno: Prosince 2016
 >Toto sestavení není k dispozici zákazníkům prostřednictvím funkce Azure AD Connect automatický Upgrade.
 
 ## <a name="113710"></a>1.1.371.0
-Vydáno: Prosince 2016
+Vydáno: Prosinec 2016
 
 **Známý problém:**
 
@@ -861,7 +873,7 @@ Vydáno: Prosince 2016
 >Toto sestavení není k dispozici zákazníkům prostřednictvím funkce Azure AD Connect automatický Upgrade.
 
 ## <a name="113700"></a>1.1.370.0
-Vydáno: Prosince 2016
+Vydáno: Prosinec 2016
 
 **Známé problémy:**
 
@@ -894,7 +906,7 @@ Vydáno: Listopad 2016
 * Přidání podpory pro používání SQL serveru 2016 jako vzdálenou databázi pro služby Azure AD Connect.
 
 ## <a name="112810"></a>1.1.281.0
-Vydáno: Srpen 2016
+Vydáno: . Srpna 2016
 
 **Opravené problémy:**
 
@@ -915,7 +927,7 @@ Vydáno: Srpen 2016
 * Při konfiguraci [rozšíření adresáře](how-to-connect-sync-feature-directory-extensions.md) v průvodce službou Azure AD Connect, můžete teď vybrat atribut Azure AD typu "Teletex řetězec".
 
 ## <a name="111890"></a>1.1.189.0
-Vydáno:. Června 2016
+Vydáno: . Června 2016
 
 **Oprava problémů a vylepšení:**
 
@@ -924,7 +936,7 @@ Vydáno:. Června 2016
 * Opravili jsme problém, kdy nelze přeložit název pro rozhraní NetBIOS na plně kvalifikovaný název domény v konektoru služby Active Directory.
 
 ## <a name="111800"></a>1.1.180.0
-Vydáno:. Května 2016
+Vydáno: Květen 2016
 
 **Nové funkce:**
 
@@ -940,7 +952,7 @@ Vydáno:. Května 2016
 * Zakázané synchronizační pravidlo už znovu povolí zahrnuté objekty a aktualizovat atributy na upgrade nebo adresáře schématu.
 
 ## <a name="111300"></a>1.1.130.0
-Vydáno:. Dubna 2016
+Vydáno: . Dubna 2016
 
 **Nové funkce:**
 
@@ -958,7 +970,7 @@ Vydáno: Březen 2016
 * Při upgradu na novější verzi a neexistují žádné změny v konfiguraci, nemá být naplánováno úplný import a synchronizace.
 
 ## <a name="111100"></a>1.1.110.0
-Vydáno: Únor 2016
+Vydáno: únor 2016
 
 **Opravené problémy:**
 
@@ -968,7 +980,7 @@ Vydáno: Únor 2016
 * Pokud jste nainstalovali dřívější verze služby Azure AD Connect se službou AD FS jako možnost přihlásit se a upgradu, nelze znovu spustit Průvodce instalací.
 
 ## <a name="111050"></a>1.1.105.0
-Vydáno: Únor 2016
+Vydáno: únor 2016
 
 **Nové funkce:**
 
@@ -1006,7 +1018,7 @@ Vydáno: Prosinec 2015
 * Aktualizace z předchozí verze služby Azure AD Connect se vzdáleným SQL serverem, zobrazí se chyba "Nelze získat přístup k ADSync SQL databáze".
 
 ## <a name="1091250"></a>1.0.9125.0
-Vydáno: Listopad 2015
+Vydáno: listopad 2015
 
 **Nové funkce:**
 

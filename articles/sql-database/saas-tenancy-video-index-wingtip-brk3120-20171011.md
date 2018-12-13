@@ -12,20 +12,20 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 05/14/2018
-ms.openlocfilehash: b472baf77cc8f253337aa0780321a6e7dd3fecac
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ec3f286791a3a2c7a3bebd84ba17a11571e389f8
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056677"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163969"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video se indexují a opatřeno poznámkou pro víceklientské aplikace SaaS využívající Azure SQL Database
 
 Tento článek se s poznámkami index do umístění čas 81 zápisu videa o SaaS tenantů modely nebo vzory. Tento článek vám umožňuje přeskočit zpět nebo vpřed na videu se mají jaká část vás zajímá. Video vysvětluje možnosti hlavních návrhu pro víceklientské databáze aplikace v Azure SQL Database. Video obsahuje ukázky, názorné postupy správy kódu a v některých případech více podrobností, než může být v naší dokumentaci písemné služby informované prostřednictvím prostředí.
 
 Video roste informace v dokumentaci napsané v: 
-- *Konceptuální:* [SaaS s více tenanty, databáze tenantů vzory][saas-concept-design-patterns-563e]
-- *Kurzy:* [aplikace SaaS aplikace Wingtip Tickets][saas-how-welcome-wingtip-app-679t]
+- *Koncepční:* [Vzory víceklientské SaaS databáze tenantů][saas-concept-design-patterns-563e]
+- *Kurzy:* [Aplikace SaaS aplikace Wingtip Tickets][saas-how-welcome-wingtip-app-679t]
 
 Videa a články popisují mnoho fáze vytváření aplikace s více tenanty v Azure SQL Database v cloudu. Speciální funkce služby Azure SQL Database usnadňují vývoj a implementovat víceklientské aplikace, které usnadňují správu a spolehlivě výkonnější.
 
@@ -63,8 +63,8 @@ Následující názvy jsou odkazy na jejich odpovídající s poznámkami v dal�
 - [17. Canonical hybridní víceklientskou aplikaci SaaS, 0:47:33](#anchor-image-wtip-min04733)
 - [18. Ukázkové aplikace Wingtip SaaS, 0:48:10](#anchor-image-wtip-min04810)
 - [19. Scénářům a vzorcům prozkoumali v kurzech, 0:49:10](#anchor-image-wtip-min04910)
-- [20. Ukázka výukových kurzů a úložišti Github, 0:50:18](#anchor-image-wtip-min05018)
-- [21. Úložiště Github se vzorovými Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
+- [20. Ukázka výukových kurzů a úložišti GitHub, 0:50:18](#anchor-image-wtip-min05018)
+- [21. Úložiště GitHub se vzorovými Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
 - [22. Prozkoumání vzorců, 0:56:20](#anchor-image-wtip-min05620)
 - [23. Zřizování tenantů a připojování, 0:57:44](#anchor-image-wtip-min05744)
 - [24. Zřizování tenantů a připojení aplikace, 0:58:58](#anchor-image-wtip-min05858)
@@ -94,11 +94,11 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 &nbsp; <a name="anchor-image-wtip-min00001"/>
 #### <a name="1-start-welcome-slide-00001"></a>1. *(Spustit)*  Úvodní snímek, 0:00:01
 
-*Učení z MYOB: vzory návrhu pro aplikace SaaS v Azure SQL Database – BRK3120*
+*Učení z MYOB: Vzory návrhu pro aplikace SaaS v Azure SQL Database – BRK3120*
 
 [![Úvodní snímek][image-wtip-min00003-brk3120-whole-welcome]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=1)
 
-- Title: Učit se z MYOB: vzory návrhu pro aplikace SaaS v Azure SQL Database
+- Název: Učení z MYOB: Vzory návrhu pro aplikace SaaS v Azure SQL Database
 - Bill.Gibson@microsoft.com
 - Hlavní programový manažer, Azure SQL Database
 - Relace Microsoft Ignite BRK3120, Orlando, USA USA, 11. října 2017
@@ -121,7 +121,7 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 &nbsp; <a name="anchor-image-wtip-min00505"/>
 #### <a name="4-multi-tenant-web-app-00500"></a>4. Víceklientské aplikaci, 0:05:00
-[![SaaS aplikace Wingtip: víceklientské webová aplikace][image-wtip-min00505-web-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=300)
+[![SaaS aplikace Wingtip: Víceklientské webová aplikace][image-wtip-min00505-web-app]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=300)
 
 
 &nbsp; <a name="anchor-image-wtip-min00555"/>
@@ -199,13 +199,13 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 
 &nbsp; <a name="anchor-image-wtip-min05018"/>
-#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20. Ukázka výukových kurzů a úložišti Github, 0:50:12
+#### <a name="20-demo-of-tutorials-and-github-repository-05012"></a>20. Ukázka výukových kurzů a úložišti GitHub, 0:50:12
 [![Ukázky, kurzy a úložišti na Githubu][image-wtip-min05018-demo-tutorials-github]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3012)
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Úložiště Github se vzorovými Microsoft/WingtipSaaS, 0:50:32
-[![Úložiště Github se vzorovými Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Úložiště GitHub se vzorovými Microsoft/WingtipSaaS, 0:50:32
+[![Úložiště GitHub se vzorovými Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp; <a name="anchor-image-wtip-min05620"/>
@@ -294,14 +294,14 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 - [Blogový příspěvek, 22. května 2017][resource-blog-saas-patterns-app-dev-sql-db-768h]
 
-- *Konceptuální:* [SaaS s více tenanty, databáze tenantů vzory][saas-concept-design-patterns-563e]
+- *Koncepční:* [Vzory víceklientské SaaS databáze tenantů][saas-concept-design-patterns-563e]
 
-- *Kurzy:* [aplikace SaaS aplikace Wingtip Tickets][saas-how-welcome-wingtip-app-679t]
+- *Kurzy:* [Aplikace SaaS aplikace Wingtip Tickets][saas-how-welcome-wingtip-app-679t]
 
-- Úložiště Github pro tenantů aplikací SaaS aplikace Wingtip Tickets charakteristikami:
-    - [Úložiště Github pro - samostatnou aplikační model][github-wingtip-standaloneapp].
-    - [Úložiště Github pro – model databáze na Tenanta][github-wingtip-dbpertenant].
-    - [Úložiště Github pro - DB Víceklientského modelu][github-wingtip-multitenantdb].
+- Úložiště GitHub pro tenantů aplikací SaaS aplikace Wingtip Tickets charakteristikami:
+    - [Úložiště GitHub pro - samostatnou aplikační model][github-wingtip-standaloneapp].
+    - [Úložiště GitHub pro – model databáze na Tenanta][github-wingtip-dbpertenant].
+    - [Úložiště GitHub pro - DB Víceklientského modelu][github-wingtip-multitenantdb].
 
 
 
@@ -322,7 +322,7 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 [image-wtip-min00417-agenda]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00417-agenda-app-management-models-patterns.png "Program."
 
-[image-wtip-min00505-web-app]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00505-wingtip-saas-app-mt-web.png "SaaS aplikace Wingtip: víceklientské webová aplikace"
+[image-wtip-min00505-web-app]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00505-wingtip-saas-app-mt-web.png "SaaS aplikace Wingtip: Víceklientské webová aplikace"
 
 [image-wtip-min00555-app-web-form]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min00555-app-form-contoso-concert-hall-night-opera.png "Formulář webové aplikace v akci"
 
@@ -356,7 +356,7 @@ Kliknutím na jakýkoli obrázek snímku obrazovky vás nasměruje na umístěn�
 
 [image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "Ukázka výukových kurzů a úložišti na Githubu"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Úložiště Github se vzorovými Microsoft/WingtipSaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Úložiště GitHub se vzorovými Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "Tyto vzory se dají zkoumat"
 

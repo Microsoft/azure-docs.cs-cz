@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: d66221dea768d75395300ab663c9466718a0140d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 83647dfb0965b8aac8ede5f2e9669ae3d7722c41
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966777"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184980"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -109,7 +109,7 @@ V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozo
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/define-alert-details.png)
 
-V části **skupiny akcí**vyberte **vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+V části **skupiny akcí**vyberte **vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
@@ -131,15 +131,15 @@ Pokud chcete pro virtuální počítač naplánovat nové nasazení aktualizací
 
 V části **Nové nasazení aktualizací** zadejte následující informace:
 
-* **Název:** Zadejte jedinečný název nasazení aktualizací.
+* **Název**: Zadejte jedinečný název pro nasazení aktualizace.
 
-* **Operační systém:** Vyberte cílový operační systém pro nasazení aktualizací.
+* **Operační systém**: Vyberte operační systém k cíli pro nasazení aktualizace.
 
-* **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
+* **Skupiny, které se aktualizace (preview)**: Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
 
-* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
+* **Počítače k aktualizaci**: Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
 
-* **Klasifikace aktualizací:** Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Pro účely tohoto kurzu nechte vybrané všechny typy.
+* **Klasifikace aktualizací**: Vyberte typy softwaru, který nasazení aktualizací zahrnutých v nasazení. Pro účely tohoto kurzu nechte vybrané všechny typy.
 
   Typy klasifikace jsou:
 
@@ -152,14 +152,14 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior)
 
-* **Nastavení plánu:** Otevře se podokno **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
+* **Nastavení plánu**: **Nastavení plánu** se otevře podokno. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 
    Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. V části **Opakování** vyberte **Jednou**. Ponechte výchozí hodnotu 1 den a vyberte **OK**. Tím se nastaví opakovaný plán.
 
-* **Předzálohovací a pozálohovací skripty**: Vyberte skripty, které se mají spustit před vaším nasazením a po něm. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
-* **Časové období údržby (minuty):** Ponechte výchozí hodnotu. Můžete nastavit časové okno, ve kterém má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
+* **Skripty před a po skripty**: Vyberte skripty spouštěné před a po nasazení. Další informace najdete v tématu týkajícím se [správy předzálohovacích a pozálohovacích skriptů](pre-post-scripts.md).
+* **Časové období údržby (minuty)**: Nechte zadanou výchozí hodnotu. Můžete nastavit časové okno, ve kterém má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
-* **Možnosti restartování:** Toto nastavení určuje, jak se má provádět restartování. Dostupné možnosti jsou:
+* **Možnosti restartování**: Toto nastavení určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:
   * Restartovat v případě potřeby (výchozí)
   * Vždy restartovat
   * Nikdy nerestartovat
@@ -186,9 +186,9 @@ V části **Výsledky aktualizací** je souhrn celkového počtu aktualizací a 
 
 Následující seznam ukazuje dostupné hodnoty:
 
-* **Nebyl proveden pokus:** Aktualizace se nenainstalovala, protože podle definovaného trvání časového období údržby nebylo k dispozici dostatek času.
-* **Úspěch:** Aktualizace byla úspěšná.
-* **Neúspěch:** Aktualizace se nezdařila.
+* **Nebyl proveden pokus**: Aktualizace se nenainstalovala, protože nebylo k dispozici dostatek času podle definovaného trvání okna údržby.
+* **Úspěšné**: Aktualizace byla úspěšná.
+* **Nepovedlo**: Aktualizace se nezdařila.
 
 Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které nasazení vytvořilo.
 

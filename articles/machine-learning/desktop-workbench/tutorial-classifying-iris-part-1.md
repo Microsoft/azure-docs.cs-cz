@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: dd10581888da64114debec40cba8564023033864
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990157"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278504"
 ---
-# <a name="tutorial-1-classify-iris---preparing-the-data"></a>Kurz 1: Klasifikace Iris – Příprava dat
+# <a name="tutorial-1-classify-iris---preparing-the-data"></a>Tutoriál 1: Klasifikace Iris – Příprava dat
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -45,11 +45,11 @@ K dokončení tohoto kurzu potřebujete:
 - Účet Experimentování ve službě Azure Machine Learning
 - Nainstalovanou aplikaci Azure Machine Learning Workbench
 
-Pokud tyto požadavky ještě nemáte, postupujte podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md) a nastavte své účty a nainstalujte aplikaci Azure Machine Learning Workbench. 
+Pokud tyto požadavky ještě nemáte, postupujte podle kroků v [rychlý start: Instalace a spuštění](quickstart-installation.md) článku nastavte své účty a nainstalujte aplikaci Azure Machine Learning Workbench. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Vytvoření nového projektu v aplikaci Workbench
 
-Pokud jste postupovali podle kroků v článku [Rychlý start: Instalace a spuštění](quickstart-installation.md), měli byste tento projekt už mít a můžete přeskočit k další části.
+Pokud jste postupovali podle kroků v [rychlý start: Instalace a spuštění](quickstart-installation.md) článku byste už měli mít tohoto projektu a můžete přeskočit k další části.
 
 1. Otevřete aplikaci Azure Machine Learning Workbench a v případě potřeby se přihlaste. 
    
@@ -152,7 +152,7 @@ Tento balíček pro přípravu dat je možné později předat do modulu runtime
    1. Kliknutím pravým tlačítkem ho vyberte. 
    1. Z rozevírací nabídky vyberte **Četnost hodnot**. 
 
-   Pod daty se otevře podokno **Kontroly**. Zobrazí se histogram se čtyřmi pruhy. Cílový sloupec obsahuje čtyři různé hodnoty: **Iris-virginica**, **Iris-versicolor**, **Iris-setosa** a hodnotu **(null)**.
+   Pod daty se otevře podokno **Kontroly**. Zobrazí se histogram se čtyřmi pruhy. Cílový sloupec obsahuje čtyři různé hodnoty: **Iris-virginica**, **Iris-versicolor**, **Iris-setosa**a **(null)** hodnotu.
 
    ![Výběr možnosti Četnost hodnot](media/tutorial-classifying-iris/value_count.png)
 
@@ -211,7 +211,7 @@ Tento balíček pro přípravu dat je možné později předat do modulu runtime
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste pomocí aplikace Azure Machine Learning Workbench provedli následující úlohy:
 > [!div class="checklist"]

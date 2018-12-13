@@ -9,14 +9,14 @@ ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 996964dd7fe52073b19db1b252e511f242b5f955
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075043"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163408"
 ---
-# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
+# <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Store dat na hraničních zařízeních s databází SQL serveru
 
 Pomocí Azure IoT Edge a SQL Serveru můžete ukládat a dotazovat data na hraničních zařízeních. Azure IoT Edge má schopnosti základní úložiště do mezipaměti zprávy, pokud zařízení přejde do režimu offline a potom je předejte, když se obnoví připojení. Můžete však chtít pokročilejší možnosti úložiště, jako je možnost dotazovat data místně. Díky začlenění místních databází můžou vaše zařízení IoT Edge provádět složitější výpočty, aniž by musela udržovat připojení ke službě IoT Hub. Například senzoru na počítači odesílá data do cloudu jednou za měsíc pro vytváření sestav a vylepšení modulu strojového učení. Ale pokud terénní technik pracuje na počítači, bude moct za posledních několik dnů dat ze snímačů místně.
 
@@ -87,7 +87,7 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
 2. Výběrem **View** (Zobrazit)  > **Command palette** (Paleta příkazů) otevřete paletu příkazů VS Code.
 
-3. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení: 
+3. Do palety příkazů zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Na paletě příkazů zadejte následující informace k vytvoření řešení: 
 
    | Pole | Hodnota |
    | ----- | ----- |
@@ -163,7 +163,7 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
                        {
                            //Execute the command and log the # rows affected.
                            var rows = await cmd.ExecuteNonQueryAsync();
-                           log.Info($"{rows} rows were updated");
+                           logger.LogInformation($"{rows} rows were updated");
                        }
                    }
 
@@ -324,7 +324,7 @@ Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, ne
 
 Moduly na zařízení můžete nastavit prostřednictvím služby IoT Hub, ale přistupovat ke službě IoT Hub a zařízením můžete také přes Visual Studio Code. V této části nastavíte přístup ke službě IoT Hub a pak pomocí VS Code nasadíte své řešení do zařízení IoT Edge. 
 
-1. Na paletě příkazů VS Code vyberte **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub).
+1. Paleta příkazů VS Code, vyberte **Azure IoT Hub: Vyberte službu IoT Hub**.
 
 2. Podle pokynů se přihlaste ke svému účtu Azure. 
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: a20ba54226e5cdcec242e29344110840615a0c95
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976855"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317521"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -41,7 +41,7 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 * [Základy služby Batch](../../batch/batch-technical-overview.md)
 * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
 
-Volitelně můžete další informace o službě Batch najdete v tématu [Batch documentatnion](https://docs.microsoft.com/en-us/azure/batch/).
+Volitelně můžete další informace o službě Batch najdete v tématu [Batch documentatnion](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Vytvoření spravované datové kanály, které přesun dat z místních i cloudových úložišť dat do centralizovaného úložiště dat můžete použít Data Factory. Příkladem je úložiště objektů Blob v Azure. Data Factory můžete zpracovat a transformovat data pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Můžete také naplánovat datové kanály ke spuštění naplánované způsobem (například každou hodinu, každý den a jednou týdně). Můžete monitorovat a spravovat kanály, abyste mohli rozpoznat potíže a provést akci zasáhnout.
@@ -51,7 +51,7 @@ Data Factory je cloudová služba pro integraci dat, která orchestruje a automa
 * [Úvod do služby Data Factory](data-factory-introduction.md)
 * [Vytvoření prvního kanálu dat](data-factory-build-your-first-pipeline.md)   
 
-Volitelně můžete další informace o službě Data Factory najdete v tématu [dokumentace ke službě Data Factory](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory).
+Volitelně můžete další informace o službě Data Factory najdete v tématu [dokumentace ke službě Data Factory](https://docs.microsoft.com/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory a Batch najednou
 Data Factory obsahuje zabudované aktivity. Například aktivita kopírování umožňuje kopírování a přesouvání dat ze zdrojového úložiště dat do cílového úložiště dat. Aktivita Hive se používá ke zpracování dat s využitím clusterů Hadoop (HDInsight) v Azure. Seznam aktivit transformace podporované, najdete v části [aktivity transformace dat](data-factory-data-transformation-activities.md).
@@ -155,7 +155,7 @@ Instalace sady Visual Studio 2012 nebo novějším k vytvoření vlastní aktivi
 ### <a name="create-the-custom-activity"></a>Vytvoření vlastní aktivity
 Vlastní aktivita objekt pro vytváření dat je srdcem toto ukázkové řešení. Ukázkové řešení Batch používá ke spuštění vlastní aktivity. Informace o tom, jak vyvinout vlastní aktivity a jejich použití v kanálech data factory najdete v tématu [použití vlastních aktivit v kanálech data factory](data-factory-use-custom-activities.md).
 
-Pokud chcete vytvořit vlastní aktivitu .NET, který vám pomůže v kanálech data factory, vytvoříte projekt knihovny tříd .NET vytvoříte třídou, která implementuje rozhraní IDotNetActivity. Toto rozhraní obsahuje pouze jednu metodu: spuštění. Následuje podpis metody:
+Pokud chcete vytvořit vlastní aktivitu .NET, který vám pomůže v kanálech data factory, vytvoříte projekt knihovny tříd .NET vytvoříte třídou, která implementuje rozhraní IDotNetActivity. Toto rozhraní obsahuje pouze jednu metodu: Spusťte. Následuje podpis metody:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -546,7 +546,7 @@ Následující návod poskytuje další podrobnosti.
 
    ![Stránka datová továrna](./media/data-factory-data-processing-using-batch/image6.png)
 
-#### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojené služby
+#### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
 Propojené služby propojují úložiště dat nebo výpočetní služby spojili s datovou továrnu. V tomto kroku propojíte se svou datovou továrnou účet úložiště a účet Batch.
 
 #### <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
@@ -595,7 +595,7 @@ V tomto kroku vytvoříte propojené služby pro účet Batch, který se použí
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte propojenou službu.
 
-#### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datové sady
+#### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datových sad
 V tomto kroku vytvoříte datové sady, které představují vstupní a výstupní data.
 
 #### <a name="create-the-input-dataset"></a>Vytvoření vstupní datové sady
@@ -805,7 +805,7 @@ V tomto kroku vytvoříte kanál s jednou aktivitou, vlastní aktivita, kterou j
 
 1. Vyberte **Nasadit** na panelu příkazů a nasaďte kanál.
 
-#### <a name="step-5-test-the-pipeline"></a>Krok 5: Testování kanálu
+#### <a name="step-5-test-the-pipeline"></a>Krok 5: Test kanálu
 V tomto kroku otestujte kanál přetažením soubory do vstupní složky. Začněte tím, že kanál ve Visual Basicu s jeden soubor pro každý vstupní složky.
 
 1. Na **služby Data factory** okna na webu Azure Portal, vyberte **Diagram**.
@@ -932,9 +932,9 @@ Můžete rozšířit této ukázce se dozvíte více o funkcích služby Data Fa
 
 1. Přidání následujících podsložek v `inputfolder`: 2015-11-16-05, 2015-11-16-06 201--11-16 07, 2011--11-16 08 a 2015--11-16 09. Vstupní soubory umístíte do těchto složek. Změňte koncový čas pro kanál z `2015-11-16T05:00:00Z` k `2015-11-16T10:00:00Z`. V **Diagram** dvakrát klikněte na **InputDataset** a ověřte, zda vstupní řezy jsou připravené. Dvakrát klikněte na panel **OutputDataset** zobrazíte stav výstupní řezy. Pokud jsou v **připravené** stavu, zkontrolujte výstupní složku pro výstupní soubory.
 
-1. Zvětšit nebo zmenšit **souběžnosti** nastavení, abyste pochopili, jak ovlivňuje výkon vašeho řešení, hlavně zpracování, který se nachází v Batch. Další informace o **souběžnosti** nastavení, najdete v článku "krok 4: vytvoření a spuštění kanálu s aktivitou vlastní."
+1. Zvětšit nebo zmenšit **souběžnosti** nastavení, abyste pochopili, jak ovlivňuje výkon vašeho řešení, hlavně zpracování, který se nachází v Batch. Další informace o **souběžnosti** nastavení, najdete v článku "krok 4: Vytvoření a spuštění kanálu s aktivitou vlastní."
 
-1. Vytvoření fondu s vyšší nebo nižší **maximální počet úloh na virtuální počítač**. Pokud chcete použít nový fond, který jste vytvořili, aktualizujte ve službě Batch propojené v řešení data factory. Další informace o **maximální počet úloh na virtuální počítač** nastavení, najdete v článku "krok 4: vytvoření a spuštění kanálu s aktivitou vlastní."
+1. Vytvoření fondu s vyšší nebo nižší **maximální počet úloh na virtuální počítač**. Pokud chcete použít nový fond, který jste vytvořili, aktualizujte ve službě Batch propojené v řešení data factory. Další informace o **maximální počet úloh na virtuální počítač** nastavení, najdete v článku "krok 4: Vytvoření a spuštění kanálu s aktivitou vlastní."
 
 1. Vytvoření fondu služby Batch pomocí **automatického škálování** funkce. Automatické škálování výpočetních uzlů ve fondu služby Batch je dynamické přizpůsobení výpočetní výkon, které používá vaše aplikace. 
 
@@ -962,7 +962,7 @@ Po zpracování dat můžete použít pomocí online nástrojů, jako je Power B
 * [Prozkoumejte datová sada v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
 * [Začínáme s Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Aktualizovat data v Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
-* [Azure a Power BI: základní přehled](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
+* [Azure a Power BI: Základní přehled](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Odkazy
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)

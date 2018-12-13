@@ -1,5 +1,5 @@
 ---
-title: Co je Apache Spark ve službě Azure HDInsight
+title: Co je Apache Spark – Azure HDInsight
 description: Tento článek představuje Spark ve službě HDInsight a různé scénáře, ve kterých můžete použít cluster Spark ve službě HDInsight.
 services: hdinsight
 author: hrasheed-msft
@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 05/07/2018
+ms.date: 12/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: afd40298679375ed5dffcd35cdf5c877277dab8c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 35c063435e5524b5be473f6a71d8aa64ed74513c
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498128"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166417"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Co je Apache Spark ve službě Azure HDInsight
 
-*Apache Spark* je architektura pro paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu analytických aplikací s velkým objemem dat. Apache Spark ve službě Azure HDInsight je implementace Apache Sparku v cloudu od Microsoftu. HDInsight usnadňuje vytvoření a konfiguraci clusteru Spark v Azure. Clustery Spark ve službě HDInsight jsou kompatibilní se službami Azure Storage a Azure Data Lake Store. Clustery HDInsight Spark proto můžete použít ke zpracování dat uložených v Azure. Součásti a informace o verzi najdete v tématu [komponenty a verze v Azure HDInsight Apache Hadoopu](../hdinsight-component-versioning.md).
+*Apache Spark* je architektura pro paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Apache Spark ve službě Azure HDInsight je implementace Apache Sparku v cloudu od Microsoftu. HDInsight usnadňuje vytvoření a konfiguraci clusteru Spark v Azure. Clustery Spark ve službě HDInsight jsou kompatibilní se službami Azure Storage a Azure Data Lake Store. Clustery HDInsight Spark proto můžete použít ke zpracování dat uložených v Azure. Součásti a informace o verzi najdete v tématu [komponenty a verze v Azure HDInsight Apache Hadoopu](../hdinsight-component-versioning.md).
 
 ![Spark: jednotné rozhraní](./media/apache-spark-overview/hdinsight-spark-overview.png)
-
 
 ## <a name="what-is-spark"></a>Co je Spark?
 
@@ -79,16 +78,16 @@ Clustery Spark v HDInsight podporují následující klíčové scénáře:
 
     Apache Spark v HDInsight ukládá data do úložiště Azure Storage nebo služby Azure Data Lake Store. Obchodní specialisté a osoby provádějící klíčová rozhodnutí analyzují a vytváří z těchto dat sestavy a používají Microsoft Power BI pro vytváření interaktivních sestav z analyzovaných dat. Analytici mohou začínat z nestrukturovaných / částečně strukturovaných dat v úložišti clusteru, definovat schéma pro data s využitím poznámkových bloků a následně vytvořit modely dat pomocí Microsoft Power BI. Clustery Spark ve službě HDInsight podporují také různé nástroje BI třetích stran, například Tableau, a usnadňují tak práci datovým analytikům, obchodním specialistům a osobám provádějícím klíčová rozhodnutí.
 
-    [Kurz: Vizualizace dat Sparku pomocí Power BI](apache-spark-use-bi-tools.md)
+    [Kurz: Vizualizace dat Spark pomocí Power BI](apache-spark-use-bi-tools.md)
 - Spark Machine Learning
 
     Systém Apache Spark je vybavený knihovnou [MLlib](http://spark.apache.org/mllib/) pro strojové učení, jejímž základem je Spark a kterou můžete používat z clusteru Spark v HDInsight. Cluster Spark ve službě HDInsight obsahuje také Anacondu, distribuci jazyka Python s různými balíčky pro strojové učení. Spojte tyto možnosti s integrovanou podporou pro poznámkové bloky Jupyter a Zeppelin a máte prostředí pro tvorbu aplikací strojového učení.
 
-    [Kurz: Předpověď teplot budov pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md) [Kurz:Předpověď výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)    
+    [Kurz: Předpovídání teplot budov pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md) [kurzu: Předpověď výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)    
 - Vysílání datových proudů a analýza dat v reálném čase ve Sparku
 
     Clustery Spark v HDInsight nabízí bohatou podporu pro vytváření řešení pro analýzu v reálném čase. Zatímco Spark již obsahuje konektory pro načítání dat z mnoha zdrojů, například soketů Kafka, Flume, Twitter, ZeroMQ nebo TCP, Spark v HDInsight přidává prvotřídní podporu pro příjem dat z Azure Event Hubs. Event Hubs je nejpoužívanější službou řazení front v Azure. Díky integrované podpoře služby Event Hubs představují clustery Spark ve službě HDInsight ideální platformu pro vytvoření kanálu k analýze dat v reálném čase.
-    
+
 ## <a name="where-do-i-start"></a>Kde mám začít?
 
 Další informace o Apache Spark v HDInsight můžete použít v následujících článcích:
@@ -104,4 +103,3 @@ Další informace o Apache Spark v HDInsight můžete použít v následujícíc
 V tomto článku jste získali základní přehled Apache Sparku ve službě Azure HDInsight. V dalším článku se dozvíte, jak vytvořit cluster HDInsight Spark a spustit několik dotazů Spark SQL:
 
 - [Vytvoření clusteru Apache Spark v HDInsight](./apache-spark-jupyter-spark-sql.md)
-

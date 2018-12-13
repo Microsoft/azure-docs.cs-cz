@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc03a5f43ef65ec8feaccb82fc3d31debbc6e7b9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523372"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275682"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště na webu Azure Portal
 
@@ -98,7 +98,7 @@ Můžete vytvářet výstrahy, které vás upozorní, pokud bylo dosaženo praho
 3. Zadejte **název** a **popis** pro nové pravidlo výstrah.
 4. Vyberte **metrika** pro který chcete přidat upozornění, oznámení **podmínku**a **prahová hodnota**. Prahová hodnota jednotku zadejte mění v závislosti na metriku, kterou jste zvolili. Například "počet" je typ jednotky pro *ContainerCount*, zatímco jednotky pro *PercentNetworkError* metrika je procento.
 5. Vyberte **období**. Metriky, které od nebo prahovou hodnotu překročit v období nebo aktivovat upozornění.
-6. (Volitelné) Konfigurace **e-mailu** a **Webhooku** oznámení. Další informace o webhooků najdete v tématu [konfigurace webhooku v upozornění Azure metriky](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Pokud nenakonfigurujete oznámení e-mailu nebo webhooku, upozornění se zobrazí pouze na webu Azure portal.
+6. (Volitelné) Konfigurace **e-mailu** a **Webhooku** oznámení. Další informace o webhooků najdete v tématu [konfigurace webhooku v upozornění Azure metriky](../../azure-monitor/platform/alerts-webhooks.md). Pokud nenakonfigurujete oznámení e-mailu nebo webhooku, upozornění se zobrazí pouze na webu Azure portal.
 
 !['Přidání pravidla výstrahy' okna na webu Azure Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 

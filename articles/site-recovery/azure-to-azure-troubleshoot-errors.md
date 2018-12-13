@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: a524c773b0f4f6d3dc14830d4c3200512f8b287c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 84462b98e1006cadf34adecf948efd39ad4f69d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140910"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313968"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -24,7 +24,7 @@ Předplatné musí být povolené k vytvoření virtuálních počítačů Azure
 
 **Kód chyby:** | **Možné příčiny** | **Doporučení**
 --- | --- | ---
-150097<br></br>**Zpráva**: nebylo možné povolit replikaci pro virtuální počítač VmName. | – K vytvoření virtuálních počítačů v cílové oblasti umístění možná není povoleno ID předplatného.</br></br>– ID předplatného může být vypnutá nebo nemá dostatečnou kvótu pro vytvoření určité velikosti virtuálních počítačů v cílové oblasti umístění.</br></br>-Vhodná Cílová velikost virtuálního počítače, který odpovídá zdroji počet síťové karty virtuálního počítače (2) nebyl nalezen pro ID předplatného v umístění cílové oblasti.| Kontakt [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) umožňující vytváření virtuálních počítačů pro velikosti virtuálních počítačů v cílové umístění pro vaše předplatné. Po jeho povolení, zkuste neúspěšnou operaci.
+150097<br></br>**Zpráva**: Pro virtuální počítač VmName nebylo možné povolit replikaci. | – K vytvoření virtuálních počítačů v cílové oblasti umístění možná není povoleno ID předplatného.</br></br>– ID předplatného může být vypnutá nebo nemá dostatečnou kvótu pro vytvoření určité velikosti virtuálních počítačů v cílové oblasti umístění.</br></br>-Vhodná Cílová velikost virtuálního počítače, který odpovídá zdroji počet síťové karty virtuálního počítače (2) nebyl nalezen pro ID předplatného v umístění cílové oblasti.| Kontakt [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) umožňující vytváření virtuálních počítačů pro velikosti virtuálních počítačů v cílové umístění pro vaše předplatné. Po jeho povolení, zkuste neúspěšnou operaci.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 Můžete kontaktovat [podporu fakturace Azure](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) povolit předplatné pro vytvoření virtuálních počítačů z požadovaných velikostí v cílovém umístění.
@@ -37,7 +37,7 @@ Pokud všechny nejnovějších důvěryhodných kořenových certifikátů nejso
 
 **Kód chyby:** | **Možná příčina** | **Recommendations** (Doporučení)
 --- | --- | ---
-151066<br></br>**Zpráva**: Site Recovery konfigurace se nezdařila. | Požadované důvěryhodné kořenové certifikáty se používají pro autorizaci a ověřování nejsou na počítači. | -Pro virtuální počítač s operačním systémem Windows Ujistěte se, že jsou důvěryhodných kořenových certifikátů na počítači. Informace najdete v tématu [konfigurovat Důvěryhodné kořeny a zakázané certifikáty](https://technet.microsoft.com/library/dn265983.aspx).<br></br>-Pro virtuální počítač s operačním systémem Linux postupujte podle pokynů pro důvěryhodné kořenové certifikáty publikovaných distributorem verze operačního systému Linux.
+151066<br></br>**Zpráva**: Nepovedlo se nakonfigurovat službu Site Recovery. | Požadované důvěryhodné kořenové certifikáty se používají pro autorizaci a ověřování nejsou na počítači. | -Pro virtuální počítač s operačním systémem Windows Ujistěte se, že jsou důvěryhodných kořenových certifikátů na počítači. Informace najdete v tématu [konfigurovat Důvěryhodné kořeny a zakázané certifikáty](https://technet.microsoft.com/library/dn265983.aspx).<br></br>-Pro virtuální počítač s operačním systémem Linux postupujte podle pokynů pro důvěryhodné kořenové certifikáty publikovaných distributorem verze operačního systému Linux.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 **Windows**
@@ -178,7 +178,7 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
   - Azure Site Recovery vyžaduje přístup k [rozsahy IP služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) v závislosti na oblasti. Ujistěte se, že požadované rozsahy ip adres jsou přístupné z virtuálního počítače.
     
 
-### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 4: Replikace A2A selhala při síťový provoz prochází skrz místní proxy server (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 4: Pokud síťový provoz prochází skrz místní proxy server (151072) se nezdařila replikace A2A
  - **Možná příčina** </br>
    - Nastavení vlastní proxy server jsou neplatné a agenta služby Mobility Azure Site Recovery bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
 
@@ -188,11 +188,12 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
    2.  Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
        - ``/usr/local/InMage/config/`` na ***Linux***
        - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
-   3.   ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI. </br>
+   3.   ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI.</br>
                    *proxy [Server]*</br>
                    *Adresa =http://1.2.3.4*</br>
                    *Port = 567*</br>
    4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
+ 
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
@@ -203,12 +204,12 @@ Nový disk připojen k virtuálnímu počítači musí být inicializován.
 
 **Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
 --- | --- | ---
-150039<br></br>**Zpráva**: Azure datovým diskem (DiskName) (DiskURI) s logickou jednotkou (LUN) (LUNValue) nebyl namapován na odpovídající disk ohlášený z virtuálního počítače, který má stejnou hodnotu LUN. | -Nový datový disk byl připojen k virtuálnímu počítači, ale nebyl inicializován.</br></br>-Datový disk ve virtuálním počítači nehlásí správně hodnotu logické jednotky, ve kterém byl připojen k virtuálnímu počítači.| Zajistěte, aby se inicializují datové disky a pak zkuste operaci zopakovat.</br></br>Pro Windows: [připojení a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Pro Linux: [inicializovat nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
+150039<br></br>**Zpráva**: Azure datovým diskem (DiskName) (DiskURI) s logickou jednotkou (LUN) (LUNValue) nebyl namapován na odpovídající disk ohlášený z virtuálního počítače, který má stejnou hodnotu LUN. | -Nový datový disk byl připojen k virtuálnímu počítači, ale nebyl inicializován.</br></br>-Datový disk ve virtuálním počítači nehlásí správně hodnotu logické jednotky, ve kterém byl připojen k virtuálnímu počítači.| Zajistěte, aby se inicializují datové disky a pak zkuste operaci zopakovat.</br></br>Ve Windows: [Připojení a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).</br></br>Pro Linux: [Inicializovat nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 Ujistěte se, že datové disky jsou inicializované a pak zkuste operaci zopakovat:
 
-- Pro Windows: [připojení a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
+- Ve Windows: [Připojení a inicializovat nový disk](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal).
 - Pro Linux: [přidat nový datový disk v systému Linux](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk).
 
 Pokud se problém nevyřeší, obraťte se na podporu.
@@ -216,13 +217,13 @@ Pokud se problém nevyřeší, obraťte se na podporu.
 
 ## <a name="unable-to-see-the-azure-vm-for-selection-in-enable-replication"></a>Virtuální počítač Azure pro výběr v "povolit replikaci" se nezobrazuje
 
- **1 příčina: Skupina prostředků a zdrojový virtuální počítač jsou v různém umístění** <br>
+ **1. příčina:  Skupinu prostředků a zdrojový virtuální počítač jsou v různém umístění** <br>
 Azure Site Recovery aktuálně přidělených, že zdrojová skupina prostředků oblasti a virtuální počítače by měl být ve stejném umístění. Pokud to není případ pak jste nemohli najít virtuální počítač v době ochrany.
 
 **2. příčina: Skupina prostředků není součástí vybrané předplatné** <br>
 Není možné najít skupinu prostředků v době provedení ochrany, pokud není součástí dané předplatné. Ujistěte se, že skupina prostředků patří do předplatného, který se používá.
 
- **3 příčina: Konfigurace zastaralé** <br>
+ **3. důvod: Zastaralou konfiguraci** <br>
 Pokud chcete povolit replikaci virtuálního počítače, to může být z důvodu stálou konfiguraci Site Recovery zůstat na virtuálním počítači Azure. Zastaralou konfiguraci by mohla zůstat na Virtuálním počítači Azure v následujících případech:
 
 - Povolení replikace pro virtuální počítač Azure s využitím Site Recovery a pak odstranit trezor Site Recovery bez explicitně zakázat replikaci na virtuálním počítači.
@@ -233,9 +234,9 @@ Pokud chcete povolit replikaci virtuálního počítače, to může být z důvo
 Můžete použít [odebrat zastaralé skript pro konfiguraci Azure Site Recovery](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) a odebrat zastaralou konfiguraci Site Recovery na virtuálním počítači Azure. Byste měli vidět tento virtuální počítač po odebrání zastaralou konfiguraci.
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>Nelze vybrat pro ochranu virtuálního počítače 
- **1 příčina: má virtuální počítač některé rozšíření nainstalované ve stavu selhání nebo nereaguje** <br>
+ **1. příčina:  Virtuální počítač má některá rozšíření nainstalované ve stavu selhání nebo nereaguje** <br>
  Přejděte na virtuální počítače > Nastavení > rozšíření a zkontrolujte, jestli nejsou žádná rozšíření ve stavu selhání. Odinstalovat selhalo rozšíření a zkuste ochranu virtuálního počítače.<br>
- **2. příčina: [Stav zřizování Virtuálního počítače není platná](#vms-provisioning-state-is-not-valid-error-code-150019)**
+ **2. příčina:  [Stav zřizování Virtuálního počítače není platná](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
 ## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>Stav zřizování Virtuálního počítače není platný (kód chyby: 150019)
 
@@ -254,12 +255,12 @@ Pokud chcete povolit replikaci na virtuálním počítači, by měla být stav z
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Nelze vybrat cílové virtuální sítě – výběr kartu Síť je zobrazena šedě.
 
-**1. příčina: Pokud váš virtuální počítač je připojen k síti, která je již namapována na cílovou síť.**
+**1. příčina: Pokud se váš virtuální počítač je připojený k síti, která je již namapována na cílovou síť.**
 - Pokud zdrojový virtuální počítač je součástí virtuální sítě a už je namapovaný jiného virtuálního počítače ze stejné virtuální síti pomocí sítě ve skupině cílových prostředků, pak podle výběru výchozí sítě rozevírací seznam se deaktivuje.
 
 ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-**2. příčina: Pokud jste dříve chráněných virtuálních počítačů pomocí Azure Site Recovery a zakázané replikace.**
+**2. příčina: Pokud dříve chráněný virtuální počítač pomocí Azure Site Recovery a replikace zakázán.**
  - Vypíná se replikace virtuálního počítače nedojde k odstranění mapování sítě. Musí být odstraněn z trezor služby recovery Services ve kterém byl virtuální počítač chráněn. </br>
  Přejděte na trezor služby recovery Services > infrastruktura Site Recovery > mapování sítě. </br>
  ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
@@ -271,7 +272,7 @@ Pokud chcete povolit replikaci na virtuálním počítači, by měla být stav z
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM +/ Chyba služby Stínová kopie svazku (kód chyby: 151025)
 **Kód chyby:** | **Možné příčiny** | **Recommendations** (Doporučení)
 --- | --- | ---
-151025<br></br>**Zpráva**: rozšíření služby Site recovery se nepodařilo nainstalovat | -Služba "aplikace modelu COM + systému" zakázána.</br></br>-Služba Stínová kopie svazku je zakázaná.| Nastavte služby "aplikace modelu COM + systému" a Stínová kopie svazku na automatický nebo ruční režim spouštění.
+151025<br></br>**Zpráva**: Rozšíření služby Site recovery se nepodařilo nainstalovat | -Služba "aplikace modelu COM + systému" zakázána.</br></br>-Služba Stínová kopie svazku je zakázaná.| Nastavte služby "aplikace modelu COM + systému" a Stínová kopie svazku na automatický nebo ruční režim spouštění.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 

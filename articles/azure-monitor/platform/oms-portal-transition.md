@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: a1189f621b3d4c8846b374cd8369c69daef2fa31
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6e85d19460d0b1c02ddd6666cf1e441e44e7a03d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002480"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276770"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -80,7 +79,7 @@ Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Post
 > [!NOTE]
 > Výstrahy teď plně rozšířit do portálu Azure pro veřejný cloud. Stávající pravidla upozornění můžete zobrazit na portálu OMS, ale může být pouze spravované na portálu Azure portal. Rozšíření upozornění na web Azure Portal pro Azure government cloud začne v října 2018.
 
-Byl [rozšíří do portálu Azure portal](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
+Byl [rozšíří do portálu Azure portal](../../azure-monitor/platform/alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
 Místo [řešení alert managementu](../../azure-monitor/platform/alert-management-solution.md), můžete použít [unified Azure Monitor výstrah rozhraní](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) vizualizovat a spravovat upozornění. Toto nové prostředí agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Můžete naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazit výstrahy napříč několika předplatnými při použití bohaté filtrů. Všechny tyto funkce jsou dostupné ve verzi preview od 4. června 2018. Správa výstrah řešení nebude k dispozici na webu Azure Portal. 
@@ -88,7 +87,7 @@ Místo [řešení alert managementu](../../azure-monitor/platform/alert-manageme
 Údaje shromážděné tímto řešením Správa výstrah (záznamů s typem upozornění) i nadále v Log Analytics, dokud je řešení nainstalováno pro pracovní prostor. Od srpna 2018 se datové proudy upozornění neupozorňovala sjednocené do pracovních prostorů se povolí, nahraďte tuto funkci. Některé změny schématu se očekává, že a oznámíme později.
 
 ## <a name="oms-mobile-app"></a>Mobilní aplikaci OMS
-Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní aplikaci OMS přístup k informacím o vašich IT infrastruktury, řídicí panely a uložené dotazy, můžete přistupovat na webu Azure portal přímo z prohlížeče v mobilním zařízení. Abyste mohli dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](../../monitoring-and-diagnostics/monitoring-action-groups.md) pro příjem oznámení ve formě SMS nebo hlasový hovor
+Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní aplikaci OMS přístup k informacím o vašich IT infrastruktury, řídicí panely a uložené dotazy, můžete přistupovat na webu Azure portal přímo z prohlížeče v mobilním zařízení. Abyste mohli dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](../../azure-monitor/platform/action-groups.md) pro příjem oznámení ve formě SMS nebo hlasový hovor
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector a řešení
 [Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) poskytuje způsob, jak přenést data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací.

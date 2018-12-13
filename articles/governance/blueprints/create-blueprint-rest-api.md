@@ -1,5 +1,5 @@
 ---
-title: Vytvoření podrobného plánu Azure Blueprint pomocí REST API
+title: Vytvořit podrobný plán pomocí rozhraní REST API
 description: Podrobné plány Azure Blueprint slouží k vytváření, definování a nasazení artefaktů.
 services: blueprints
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 11/07/2018
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: b600eeff0482944a8b9b18ad39c23ee6ea4700ce
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283542"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311418"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definování a přiřazení podrobného plánu Azure Blueprint pomocí REST API
 
@@ -408,7 +408,7 @@ K odebrání samotného podrobného plánu použijte následující operaci REST
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2017-11-11-preview
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [životním cyklu podrobného plánu](./concepts/lifecycle.md)
 - Principy použití [statických a dynamických parametrů](./concepts/parameters.md)

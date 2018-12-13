@@ -1,6 +1,6 @@
 ---
-title: Spuštění virtuálního počítače se zaseklo na Probíhá příprava Windows. Nevypínejte počítač. v Azure | Dokumentace Microsoftu
-description: Zavést kroky k odstranění tohoto problému, ve kterém virtuálním počítači se zasekne při spuštění na "Windows Příprava. Nevypínejte počítač".
+title: Po spuštění virtuálního počítače se zasekla na "Začínáme připravené pro Windows. Nevypínejte počítač"v Azure | Dokumentace Microsoftu
+description: Zavést kroky k odstranění tohoto problému, ve kterém se zasekne při spuštění virtuálního počítače na "Začínáme připravené pro Windows. Nevypínejte počítač.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 722bf7b42e500e3e6a46f48646ff1fd2edfb68f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: eb27b4e6c60f23a55a58cd2aae3cff927ffeaf03
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955732"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316093"
 ---
-# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Spuštění virtuálního počítače se zaseklo na Probíhá příprava Windows. Nevypínejte počítač. v Azure
+# <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>Po spuštění virtuálního počítače se zasekla na "Začínáme připravené pro Windows. Nevypínejte počítač"v Azure
 
-Tento článek pomůže vyřešit problém, když se zasekne vašeho virtuálního počítače (VM) na "Začínáme Windows připraveno. Nevypínejte počítač. fáze během spouštění.
+Tento článek pomůže vyřešit problém, když virtuální počítač (VM) se zasekla na "Začínáme Windows připraveno. Nevypínejte počítač"fáze, při spuštění.
 
 ## <a name="symptoms"></a>Příznaky
 
-Při použití **Diagnostika spouštění** získat snímek obrazovky virtuálního počítače, zjistíte, operační systém se nespustí plně. Kromě toho virtuální počítač zobrazení **"Příprava Windows. Nevypínejte počítač."** zpráva.
+Při použití **Diagnostika spouštění** získat snímek obrazovky virtuálního počítače, operační systém nespustí plně. Virtuální počítač zobrazí zprávu "Začínáme připravené pro Windows. Nevypínejte počítač.
 
-![Ukázková zpráva](./media/troubleshoot-vm-configure-update-boot/message1.png)
+![Ukázková zpráva pro Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
 ![Ukázková zpráva](./media/troubleshoot-vm-configure-update-boot/message2.png)
 
 ## <a name="cause"></a>Příčina
 
-Tomuto problému obvykle dochází, když server provádí konečné restartování po změny konfigurace. Změna konfigurace nelze inicializovat pomocí aktualizací Windows nebo změny v rámci role nebo funkce serveru. Pro Windows Update Pokud byl velký, velikost aktualizace operačního systému potřebovat více času na překonfigurovat změny.
+Tomuto problému obvykle dochází, když server provádí konečné restartování po změny konfigurace. Změna konfigurace může být inicializován, aktualizacemi Windows nebo změny v rámci role nebo funkce serveru. Pro Windows Update Pokud byl velký, velikost aktualizace operačního systému vyžaduje více času k překonfigurování změny.
 
 ## <a name="back-up-the-os-disk"></a>Zálohování disku s operačním systémem
 
-Než se pokusíte k vyřešení tohoto problému, proveďte zálohu disku s operačním systémem:
+Než se pokusíte k vyřešení tohoto problému, proveďte zálohu disku s operačním systémem.
 
 ### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Pro virtuální počítače pomocí šifrovaného disku musíte odemknout disky nejprve
 
-Ověřte, jestli je virtuální počítač šifrovaný virtuální počítač. Postupujte přitom takto:
+Postupujte podle těchto kroků k určení, zda je virtuální počítač šifrovaný virtuální počítač.
 
-1. Na portálu otevřete váš virtuální počítač a potom vyhledejte disky.
+1. Na portálu Azure portal otevřete váš virtuální počítač a potom vyhledejte disky.
 
-2. Zobrazí se vám sloupec volání "Šifrování", což vám dá vědět, jestli je povolené šifrování.
+2. Podívejte se na **šifrování** sloupec, který chcete zjistit, zda je povoleno šifrování.
 
-Pokud je Disk s operačním systémem zašifrovaný, odemkněte šifrovaného disku. Postupujte přitom takto:
+Pokud je disk s operačním systémem zašifrovaný, odemkněte šifrovaného disku. K odemknutí disku, postupujte podle těchto kroků.
 
 1. Vytvoření virtuálního počítače pro obnovení, který je umístěný ve stejné skupině prostředků, účet úložiště a umístění jako ovlivněných virtuálních počítačů.
 
-2. Na webu Azure portal odstraňte ovlivněných virtuálních počítačů a zachovat na disku.
+2. Na webu Azure Portal odstraňte ovlivněných virtuálních počítačů a zachovat na disku.
 
 3. Spusťte PowerShell jako správce.
 
@@ -72,7 +72,7 @@ Pokud je Disk s operačním systémem zašifrovaný, odemkněte šifrovaného di
     Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
     ```
 
-5. Jakmile budete mít název tajného kódu, spusťte následující příkazy v prostředí PowerShell:
+5. Jakmile budete mít název tajného kódu, spusťte následující příkazy v prostředí PowerShell.
 
     ```Powershell
     $secretName = 'SecretName'
@@ -80,10 +80,10 @@ Pokud je Disk s operačním systémem zašifrovaný, odemkněte šifrovaného di
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     ```
 
-6. Převést hodnotou kódovanou jako Base64 na bajty a zapisovat výstup do souboru. 
+6. Převeďte hodnotu s kódováním Base64 na bajty a zapisovat výstup do souboru. 
 
     > [!Note]
-    > Název souboru klíče BEK musí odpovídat původní možnost Odemknout klíče BEK GUID, pokud používáte zařízení USB. Kromě toho budete potřebovat k vytvoření složky na jednotce C s názvem "Klíče BEK" předtím, než takto bude fungovat.
+    > Pokud používáte zařízení USB možnost odemknout, název souboru klíče BEK musí odpovídat identifikátoru GUID původního klíče BEK. Vytvoření složky na jednotce C s názvem "Klíče BEK" před provedením těchto kroků.
     
     ```Powershell
     New-Item -ItemType directory -Path C:\BEK
@@ -92,22 +92,22 @@ Pokud je Disk s operačním systémem zašifrovaný, odemkněte šifrovaného di
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7. Po vytvoření souboru klíče BEK ve vašem počítači, zkopírujte soubor do máte uzamčené disk s operačním systémem připojené k virtuální počítač pro obnovení. Spusťte následující příkaz pomocí klíče BEK umístění souboru:
+7. Po vytvoření souboru klíče BEK ve vašem počítači, zkopírujte soubor do máte uzamčené disk s operačním systémem připojené k virtuální počítač pro obnovení. Spuštěním následujících příkazů pomocí klíče BEK umístění souboru.
 
     ```Powershell
     manage-bde -status F:
     manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
     ```
-    **Volitelné** v některých scénářích může být nutné také dešifrování disků pomocí tohoto příkazu.
+    **Volitelné**: V některých případech může být nutný k dešifrování disku pomocí tohoto příkazu.
    
     ```Powershell
     manage-bde -off F:
     ```
 
     > [!Note]
-    > Toto je vzhledem k tomu, že je disk k šifrování na písmenem F:.
+    > Předchozí příkaz předpokládá, že je na disk a šifrování na písmeno F.
 
-8. Pokud potřebujete shromažďovat protokoly, můžete přejít k cestě **písmeno jednotky: \Windows\System32\winevt\Logs**.
+8. Pokud potřebujete shromažďovat protokoly, přejděte k cestě **písmeno jednotky: \Windows\System32\winevt\Logs**.
 
 9. Odpojení disku před počítač pro obnovení.
 
@@ -121,17 +121,17 @@ Postupujte podle kroků v [os shromažďování výpisu stavu systému](troubles
 
 ## <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
-Jakmile shromáždíte soubor s výpisem paměti, obraťte se na [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) analýzu původní příčinu.
+Jakmile shromáždíte soubor s výpisem paměti, obraťte se na [podpory Microsoftu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) k analýze hlavní příčinu.
 
 
-## <a name="rebuild-the-vm-using-powershell"></a>Znovu sestavit virtuálního počítače pomocí Powershellu
+## <a name="rebuild-the-vm-by-using-powershell"></a>Opětovné vytvoření virtuálního počítače pomocí Powershellu
 
-Jakmile shromáždíte souboru výpisu paměti, v následujícím návodu k opětovnému sestavení virtuálního počítače.
+Jakmile shromáždíte souboru výpisu paměti, použijte následující postup znovu vytvořit virtuální počítač.
 
 **Pro nespravované disky**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -162,7 +162,7 @@ New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 **Za spravované disky**
 
 ```PowerShell
-# To login to Azure Resource Manager
+# To log in to Azure Resource Manager
 Login-AzureRmAccount
 
 # To view all subscriptions for your account
@@ -183,7 +183,7 @@ $avName = "AvailabilitySetName";
 $osDiskName = "OsDiskName";
 $DataDiskName = "DataDiskName"
 
-#This can be found by selecting the Managed Disks you wish you use in the Azure Portal if the format below doesn't match
+#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
 $osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 

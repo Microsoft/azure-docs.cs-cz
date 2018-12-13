@@ -1,6 +1,6 @@
 ---
-title: Kognitivní vyhledávání dovedností OCR (Azure Search) | Dokumentace Microsoftu
-description: Rozbalte text z obrázku soubory v rozšíření kanálu služby Azure Search.
+title: OCR kognitivního vyhledávání dovednosti – Azure Search
+description: Rozbalte text z souborů obrázků v rozšíření kanálu služby Azure Search pomocí optické rozpoznávání znaků (OCR).
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 97d594a232c3576d0a0163b2d6847f06328bcd7b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 097fd93955a4ca3fd96ae6452fa3b503b029ffc3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167507"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313220"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
@@ -29,7 +30,12 @@ ms.locfileid: "49167507"
 + . GIF
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
+>
+>  OCR dovedností se mapuje na následujících funkcí služeb cognitive services: Pokud je nastavena na "rukou psaný", textExtractionAlgorithm ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) slouží funkce.
+>  Pokud je nastavena na "Tisk", textExtractionAlgorithm ["OCR"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkce se používá pro jiné jazyky než angličtinu. Pro angličtinu nové ["Rozpoznat Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) slouží funkce pro tištěný text.
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
@@ -126,7 +132,7 @@ Parametry rozlišují malá a velká písmena.
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: Sloučení text extrahovaný z vložené obrázky s obsahem dokumentu.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: Slučování text extrahovaný z vložené obrázky s obsahem dokumentu.
 
 Běžným případem použití pro sloučení textu je možnost sloučit textovou reprezentaci řetězce obrázků (text ze OCR dovedností nebo popisek image) do pole obsahu dokumentu. 
 

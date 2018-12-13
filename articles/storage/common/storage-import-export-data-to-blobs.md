@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/11/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 023df222ee2e9ca6af1398dd70767938e61c90b7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824098"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309582"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -30,7 +30,7 @@ Než začnete vytvářet úlohy importu pro přenos dat do služby Azure Blob St
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems). 
 - Povolení nástroje BitLocker v systému Windows. Zobrazit [jak zapnout BitLocker](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-- [Stáhněte si WAImportExport verze 1](https://www.microsoft.com/en-us/download/details.aspx?id=42659) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
+- [Stáhněte si WAImportExport verze 1](https://aka.ms/waiev1) v systému Windows. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
 - Máte účet FedEx/DHL.  
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
     - Generovat sledovací číslo pro úlohu exportu.
@@ -79,7 +79,7 @@ Proveďte následující kroky pro přípravu disků.
     > [!IMPORTANT]
     > - Spolu s soubor deníku `<Journal file name>_DriveInfo_<Drive serial ID>.xml` souboru se také vytvoří ve stejné složce, ve kterém se nástroj nachází. Soubor XML se používá místo soubor deníku při vytvoření úlohy, pokud je příliš velký soubor deníku. 
 
-## <a name="step-2-create-an-import-job"></a>Krok 2: Vytvoření úlohy importu
+## <a name="step-2-create-an-import-job"></a>Krok 2: Vytvořit úlohu importu
 
 Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal.
 
@@ -129,12 +129,12 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
     ![Vytvoření úlohy importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>Krok 3: Odeslání jednotky 
+## <a name="step-3-ship-the-drives"></a>Krok 3: Dodávejte jednotky 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Aktualizace úlohy informace o sledování
+## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Informace o sledování aktualizace úlohy
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 

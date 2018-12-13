@@ -1,5 +1,5 @@
 ---
-title: Omezení služby Azure Search | Dokumentace Microsoftu
+title: Omezení služby pro vrstvy a skladové položky – Azure Search
 description: Limity pro plánování kapacity a maximálního počtu žádostí a odpovědí pro službu Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: 8abcc90bf72544e6226d6c8487d2951b60ea6d29
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 98902c7a27d769b59b20d4560b2cda21bfcff6c6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802145"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310208"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby Azure Search
 Maximální omezuje na úložiště, úlohy a množství indexů, dokumenty, a dalších objektů závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) na **Free**, **základní**, nebo **Standardní** cenové úrovně.

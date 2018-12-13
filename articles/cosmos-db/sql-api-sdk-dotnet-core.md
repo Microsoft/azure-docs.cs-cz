@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a prostředky'
+title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a zdroje informací'
 description: Další informace o SQL API pro .NET Core a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB .NET Core SDK.
 services: cosmos-db
 author: rnagpal
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd8fe040cb4d36bc98700816d6a7ebe711f13f5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4452484379b73b978cac7391bce5c71b0f6c32cd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093434"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257193"
 ---
-# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -57,6 +57,16 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 * Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
 * Podpora pro datové proudy. 
 * Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+
+* U přímé/TCP přenosu diagnostiky přidá TransportException, vnitřní výjimka typu sady SDK. Pokud je k dispozici v zprávy o výjimkách, vytiskne tento typ Další informace pro řešení problémů s připojením klienta.
+
+* Přidání nové konstruktor přetížení, která přebírá objekt HttpMessageHandler sada obslužných rutin HTTP pro odesílání požadavků HttpClient (například HttpClientHandler).
+
+* Oprava chyby, kde záhlaví s hodnotami null nebyly zajišťující správné zpracování.
+
+* Ověření mezipaměti vylepšené kolekce.
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
@@ -109,7 +119,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
-* Oprava chyby, který je přístupů za určitých podmínek závodu, jehož výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: čtení relace není k dispozici pro token vstupní relace" chyby při použití úrovně konzistence relace.
+* Oprava chyby, který je přístupů za určitých podmínek závodu, jehož výsledkem přerušované "Microsoft.Azure.Documents.NotFoundException: Další relace není k dispozici pro token vstupní relace"chyby při použití úrovně konzistence relace.
 
 ### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
@@ -182,7 +192,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name112112"></a><a name="1.1.2"/>1.1.2
 
-* Opraven problém, který občas způsobí, že o výjimku WebException: vzdálený název nelze rozpoznat.
+* Oprava problému, který občas způsobí, že o výjimku WebException: Vzdálený název se nedá rozpoznat.
 * Přidání podpory pro přímo tak, že přidáte nová přetížení ReadDocumentAsync rozhraní API pro čtení typu dokumentu.
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
@@ -206,8 +216,8 @@ Azure Cosmos DB .NET Core SDK umožňuje vytváření rychlých a multiplatformn
 Azure Cosmos DB .NET Core ve verzi Preview SDK umožňuje vytváření rychlých a multiplatformní [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace pro Windows, Mac a Linux.
 
 Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md) a podporuje následující:
-* Všechny [režimy připojení](performance-tips.md#networking): režim brány, s přímým přístupem TCP a HTTPs s přímým přístupem. 
-* Všechny [úrovně konzistence](consistency-levels.md): silný, relace, omezená Neaktuálnost a konečná.
+* Všechny [režimy připojení](performance-tips.md#networking): Režim brány, s přímým přístupem TCP a HTTPs s přímým přístupem. 
+* Všechny [úrovně konzistence](consistency-levels.md): Silný, relace, omezená Neaktuálnost a konečný výsledek.
 * [Dělené kolekce](partition-data.md). 
 * [Účty databáze ve více oblastech a geografická replikace](distribute-data-globally.md).
 
@@ -217,6 +227,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.2.0](#2.2.0) |07 prosince 2018 |--- |
 | [2.1.3](#2.1.3) |15. října 2018 |--- |
 | [2.1.2](#2.1.2) |04. října 2018 |--- |
 | [2.1.1](#2.1.1) |27. září 2018 |--- |

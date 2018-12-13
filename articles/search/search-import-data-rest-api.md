@@ -1,6 +1,6 @@
 ---
-title: Nahrání dat (REST API – Azure Search) | Dokumentace Microsoftu
-description: Zjistěte, jak odesílat data do indexu Azure Search pomocí REST API.
+title: Nahrání dat v kódu pomocí služby search REST API – Azure Search
+description: Zjistěte, jak nahrát data do prohledávatelný index Azure Search pomocí požadavků HTTP a rozhraní REST API textu v plném znění.
 author: brjohnstmsft
 manager: jlembicz
 ms.author: brjohnst
@@ -9,12 +9,13 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
-ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: b3044ec3fb21e77c5174ebd5a6b2dabd2282240f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187976"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312846"
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Odesílání dat do služby Azure Search pomocí REST API
 > [!div class="op_single_selector"]
@@ -172,5 +173,5 @@ Stavový kód `503` bude vrácen, pokud nedošlo k úspěšné indexaci položek
 
 Další informace o akcích dokumentu a úspěšných/neúspěšných odpovědích naleznete v tématu [Přidání, aktualizování nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents). Další informace o stavových kódech HTTP, které se mohou vrátit v případě selhání, naleznete v tématu [Stavové kódy HTTP (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po naplnění indexu Azure Search budete připraveni začít vydávat dotazy pro vyhledávání dokumentů.  Podrobnosti naleznete v tématu [Dotazování indexu Azure Search](search-query-overview.md).

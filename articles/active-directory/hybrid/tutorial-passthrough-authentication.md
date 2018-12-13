@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace jedné doménové struktury AD do Azure s využitím předávací ověřování (PTA) | Dokumentace Microsoftu'
+title: 'Kurz:  Integrace jedné doménové struktury AD do Azure s využitím předávací ověřování (PTA) | Dokumentace Microsoftu'
 description: Ukazuje, jak nastavit prostředí hybridní identity pomocí předávacího ověřování.
 services: active-directory
 author: billmath
@@ -10,14 +10,14 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df4a1ef30997bef6b83e66182404d0e2659a5d51
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 140161e88ee572d728a7f9c923c9528ea6755cc1
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422300"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165449"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz: Integrace jednu doménovou strukturu AD pomocí předávacího ověřování (PTA)
+# <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Kurz:  Integrace jedné doménové struktury AD s využitím předávacího ověřování (PTA)
 
 ![Vytvořit](media/tutorial-passthrough-authentication/diagram.png)
 
@@ -84,7 +84,7 @@ Pokud chcete dokončit vytváření virtuálního počítače, je potřeba dokon
 5. Klikněte na tlačítko **nainstalovat**.
 6. Zadejte klíč licence a klikněte na tlačítko **Další**.
 7. Zkontrolujte ** Přijímám licenční podmínky a klikněte na tlačítko **Další**.
-8. Vyberte **vlastní: instalovat pouze Windows (rozšířené)**
+8. Vyberte **vlastní:  Instalovat pouze Windows (rozšířené)**
 9. Klikněte na **Další**
 10. Po dokončení instalace restartujte virtuální počítač, přihlášení a spuštění aktualizací Windows k zajištění, že je virtuální počítač nejnovější.  Nainstalujte nejnovější aktualizace.
 
@@ -196,7 +196,7 @@ Když teď máme tenanta služby Azure AD, vytvoříme účet globálního sprá
 1.  V části **Spravovat** vyberte **Uživatele**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **všichni uživatelé** a pak vyberte **+ nový uživatel**.
-3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Jakmile budete hotovi, vyberte **vytvořit**.</br>
+3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Až to budete mít, vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Po dokončení, otevřete nový webový prohlížeč a přihlaste se do myapps.microsoft.com pomocí nového účtu globálního správce a dočasné heslo.
 5. Změňte heslo pro globálního správce a něco, co si budou pamatovat.
@@ -226,7 +226,7 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 ![PTA](media/tutorial-passthrough-authentication/pta1.png)</b>
 7. Na obrazovce připojení ke službě Azure AD, zadejte uživatelské jméno a heslo globálního správce, který jsme vytvořili výše a klikněte na tlačítko **Další**.
 2. Na obrazovce adresáře připojení, klikněte na tlačítko **přidat adresář**.  Potom vyberte **vytvořit nový účet AD** zadejte contoso\Administrator uživatelské jméno a heslo a klikněte na tlačítko **OK**.
-3. Klikněte na **Další**.
+3. Klikněte na tlačítko **Další**.
 4. Na obrazovce konfigurace přihlášení Azure AD, vyberte **pokračovat bez odpovídajícího všechny přípony UPN k ověřených domén** a klikněte na tlačítko **Další.**
 5. Na doménu a organizační jednotku filtrování obrazovka, klikněte na tlačítko **Další**.
 6. Na Jednoznačná identifikace uživatelů obrazovky, klikněte na tlačítko **Další**.

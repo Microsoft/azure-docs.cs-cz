@@ -1,5 +1,5 @@
 ---
-title: Monitorování aplikací ve službě Azure App Service | Dokumentace Microsoftu
+title: Monitorování aplikací - Azure App Service | Dokumentace Microsoftu
 description: Další informace o monitorování aplikací ve službě Azure App Service pomocí webu Azure portal.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 6334b4cc50bfa6dca709fdc9d65938f0fec3ad1c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 103b5c1d2bc70f187b6e65a9fa9d80a35ad8e0c1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956741"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321575"
 ---
-# <a name="how-to-monitor-apps-in-azure-app-service"></a>Postupy: sledování aplikací ve službě Azure App Service
+# <a name="how-to-monitor-apps-in-azure-app-service"></a>Postup: Sledování aplikací ve službě Azure App Service
 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování v [webu Azure portal](https://portal.azure.com).
 Na webu Azure portal umožňuje zkontrolovat **kvóty** a **metriky** pro aplikace, stejně jako plán služby App Service, nastavení **výstrahy** a dokonce i **škálování**  automaticky v závislosti na tyto metriky.
 
@@ -53,7 +54,7 @@ Pokud je aplikace hostovaná v **základní**, **standardní** nebo **Premium** 
 
 Pouze pro aplikace hostované na kvótu **základní**, **standardní**, a **Premium** plány je **systému souborů**.
 
-Další informace o konkrétní kvóty, limity a funkce dostupné na různých skladových položkách App Service najdete tady: [limity předplatného Azure](../azure-subscription-service-limits.md#app-service-limits)
+Další informace o konkrétní kvóty, limity a funkce dostupné na různých skladových položkách App Service najdete tady: [Omezení služeb v předplatném Azure](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Vynucení kvót
 Pokud překročí aplikace **procesoru (zkráceně)**, **procesoru (den)**, nebo **šířky pásma** kvóta pak aplikace je zastavena, dokud se kvóta resetuje. Během této doby všechny žádosti přicházející vést **HTTP 403**.
@@ -75,7 +76,7 @@ Pro **aplikace**, jsou dostupné metriky:
 * **Průměrná pracovní sada paměti**
   * Průměrná velikost paměti v MIB, které aplikace používá.
 * **Čas procesoru**
-  * Procento využití procesoru v řádu sekund používané aplikace. Další informace o tuto metriku, naleznete v tématu: [vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage)
+  * Procento využití procesoru v řádu sekund používané aplikace. Další informace o tuto metriku naleznete v tématu: [Vs procesoru procentuální hodnota času procesoru](#cpu-time-vs-cpu-percentage)
 * **Data v**
   * Množství příchozích šířky pásma využívané aplikace v MIB.
 * **Výstupní data**
@@ -144,15 +145,15 @@ Můžete zkontrolovat stav různých **kvóty** a **metriky** by to ovlivnilo ap
 **Kvóty** najdete v části Nastavení >**kvóty**. Uživatelského rozhraní vám umožní zkontrolovat: (1) název kvóty, (2) jeho interval resetování, (3) jeho aktuální limit a (4) aktuální hodnotu.
 
 ![][metrics]
-**Metriky** můžete přistupovat přímo na stránce prostředků. Můžete také upravit graf tak: (1) **klikněte na tlačítko** na ně a (2) vyberte **upravit graf**.
+**Metriky** můžete přistupovat přímo na stránce prostředků. Můžete také upravit graf podle: (1) **klikněte na tlačítko** na ně a (2) vyberte **upravit graf**.
 Odsud můžete změnit (3) **časový rozsah**, (4) **typ grafu**a (5) **metriky** k zobrazení.  
 
-Další informace o metrikách tady: [monitorujete metriky služeb](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Další informace o metrikách tady: [Monitorování metrik služeb](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Výstrahy a automatické škálování
 Metriky pro plán služby aplikace nebo služby App Service můžete využívat na výstrahy. Další informace o tom najdete v tématu [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-Aplikace služby App Service, které jsou hostované v basic, standard nebo premium služby App Service plány podpory **automatického škálování**. Automatické škálování umožňuje konfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí nabízí další zdroje informací, podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený. Další informace o automatickém škálování tady: [postupy škálování](../monitoring-and-diagnostics/insights-how-to-scale.md) a zde [osvědčené postupy pro automatické škálování Azure monitoru](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Aplikace služby App Service, které jsou hostované v basic, standard nebo premium služby App Service plány podpory **automatického škálování**. Automatické škálování umožňuje konfigurovat pravidla, která umožňuje monitorovat metriky plánu služby App Service. Pravidla můžete zvýšit nebo snížit počet instancí nabízí další zdroje informací, podle potřeby. Pravidla i vám může pomoct ušetřit peníze, když aplikace je nadměrně zřízený. Další informace o automatickém škálování tady: [Jak škálovat](../monitoring-and-diagnostics/insights-how-to-scale.md) a zde [osvědčené postupy pro automatické škálování Azure monitoru](../azure-monitor/platform/autoscale-best-practices.md)
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service](https://azure.microsoft.com/try/app-service/), kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.

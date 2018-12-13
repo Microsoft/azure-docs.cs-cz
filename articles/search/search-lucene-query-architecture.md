@@ -1,5 +1,5 @@
 ---
-title: Úplný text Architektura programového jádra (Lucene) vyhledávání ve službě Azure Search | Dokumentace Microsoftu
+title: Architektura programového jádra (Lucene) hledání textu v plném znění – Azure Search
 description: Vysvětlení konceptů Lucene dotaz zpracování a dokument načítání pro fulltextové vyhledávání v souvislosti s Azure Search.
 manager: jlembicz
 author: yahnoosh
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
-ms.openlocfilehash: 55d361e90dbc5fe48bc118088a6f859d096048ff
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.custom: seodec2018
+ms.openlocfilehash: 8ca9fe72e4bd5272a5303b3bacd8c0960504789d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036866"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315790"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Jak funguje fulltextové vyhledávání ve službě Azure Search
 
@@ -73,7 +74,7 @@ Pro tento požadavek vyhledávací web provede následující akce:
 Většina Tento článek se týká zpracování *vyhledávací dotaz*: `"Spacious, air-condition* +\"Ocean view\""`. Filtrování a řazení se pokyny neposkytují. Další informace najdete v tématu [referenční dokumentaci rozhraní API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
-## <a name="stage-1-query-parsing"></a>Fáze 1: Dotaz analýza kódu 
+## <a name="stage-1-query-parsing"></a>Fáze 1: Analýza dotazu 
 
 Jak je uvedeno, řetězec dotazu je první řádek požadavku: 
 
@@ -95,7 +96,7 @@ Poddotazy do analyzátor dotazů ke změně struktury *dotazu stromu* (vnitřní
 
  ![Logická hodnota dotazu searchmode any][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Podporované analyzátory: jednoduchý a úplné Lucene 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Podporované analyzátory: Jednoduché a úplné Lucene 
 
  Služba Azure Search poskytuje dva jazyků jiný dotaz, `simple` (výchozí) a `full`. Tím, že nastavíte `queryType` parametr při zpracování požadavku hledání, dáte analyzátor dotazů jazyk dotazu, který si zvolíte, aby věděl, jak interpretovat, operátorů a syntaxe. [Jednoduchý dotazovací jazyk](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) je intuitivní a robustní, bývá často interpretace vstupu uživatele jako-je bez zpracování na straně klienta. Podporuje operátorů dotazu zkušenosti z vyhledávací web. [Úplné Lucene dotazovací jazyk](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), který můžete získat tak, že nastavíte `queryType=full`, rozšiřuje jednoduchý dotazovací jazyk výchozí přidáním podpory pro další operátory a typy dotazů jako zástupný znak, přibližných shod, regulární výraz a dotazy v rámci pole. Například regulární výraz poslaná jednoduchá syntaxe dotazů je interpretován jako řetězec dotazu a není výraz. Příklad žádosti v tomto článku používá dotazovací jazyk úplné Lucene.
 
@@ -127,7 +128,7 @@ Upravený dotaz stromu pro tento dotaz by měl vypadat takto, kde odpovídajíc�
 > Výběr `searchMode=any` přes `searchMode=all` je nejlepší rozhodnutí byly přijaty spouštěním reprezentativní dotazů. Uživatelé, kteří můžou obsahovat operátory (běžné při hledání dokumentů ukládá) může být výsledky hledání intuitivnější Pokud `searchMode=all` informuje dotazu Logická konstrukce. Další informace o vztahu mezi `searchMode` a operátory, naleznete v tématu [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
-## <a name="stage-2-lexical-analysis"></a>Fáze 2: Provést lexikální analýzu 
+## <a name="stage-2-lexical-analysis"></a>Fáze 2: Lexikální analýzu 
 
 Lexikální analyzátory procesu *termín dotazy* a *frázi dotazy* po strukturovaného strom dotazů. Analyzátor přijímá textovými vstupy uvedené ve analyzátor, zpracovává text a potom odešle zpět tokenizovaného podmínky má být zahrnut do stromu dotazu. 
 
@@ -314,7 +315,7 @@ Při provádění dotazu jednotlivé dotazy provádějí proti prohledávatelná
 
 Na celém dotyčný dotazu jsou dokumenty, které odpovídají 1, 2, 3. 
 
-## <a name="stage-4-scoring"></a>Fáze 4: vyhodnocování  
+## <a name="stage-4-scoring"></a>Fáze 4: Vyhodnocování  
 
 Skóre relevance se přiřadí každému dokumentu v sadě výsledků vyhledávání. Funkce skóre relevance je na vyšší pořadí těchto dokumentů, které nejlépe odpovídají otázku uživatele vyjádřené pomocí vyhledávacího dotazu. Skóre se počítá podle statistické vlastnosti podmínek, které odpovídají. V jádru bodování vzorec je [TF/IDF (termín frekvence inverzní dokumentu frekvence)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). V dotazech obsahující vzácné a běžné podmínky TF/IDF podporuje výsledky obsahující výjimečných termín. Například v hypotetický index s všechny články Wikipedia z dokumentů odpovídající zadaným dotaz *ředitel*, dokumentů, které vyhovují na *ředitel* jsou považovány za relevantní více než dokumenty porovnávání *s*.
 

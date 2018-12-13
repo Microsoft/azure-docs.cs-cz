@@ -11,16 +11,16 @@ ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/7/2018
+ms.date: 03/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: a45b8e1dd2f59bf1399c92e3ff1a3c66ca8956ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 21ab3448f080e7f4874464dbb4befc0cbed63282
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956876"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276498"
 ---
-# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>Rychlý start: Instalace služby Azure Machine Learning a začátek práce s ní
+# <a name="quickstart-install-and-get-started-with-azure-machine-learning-service"></a>Rychlý start: Nainstalovat a začít se službou Azure Machine Learning
 
 [!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
@@ -207,13 +207,13 @@ Nápovědu k příkazům v rozhraní příkazového řádku služby Azure Machin
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Právě jste vytvořili potřebné účty služby Azure Machine Learning a nainstalovali jste aplikaci Azure Machine Learning Workbench. Také jste vytvořili projekt, spustili skript a prozkoumali historii spuštění tohoto skriptu.
 
 Podrobnější poznatky o tomto pracovním postupu, včetně postupu nasazení modelu Iris jako webové služby, najdete v kurzu *Klasifikace Iris* na pokračování. Tento kurz obsahuje podrobné postupy pro [přípravu dat](../desktop-workbench/tutorial-classifying-iris-part-1.md), [experimentování](../desktop-workbench/tutorial-classifying-iris-part-2.md) a [správu modelů](../desktop-workbench/tutorial-classifying-iris-part-3.md). 
 
 > [!div class="nextstepaction"]
-> [Kurz: Klasifikace Iris (Část 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
+> [Kurz: Klasifikace Iris (část 1)](../desktop-workbench/tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
 > Přestože jste vytvořili účet služby Správa modelů, vaše prostředí ještě není nastavené pro nasazování webových služeb. Zjistěte, jak nastavit [prostředí pro nasazení](../desktop-workbench/deployment-setup-configuration.md).

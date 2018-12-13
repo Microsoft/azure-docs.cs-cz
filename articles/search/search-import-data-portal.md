@@ -1,5 +1,5 @@
 ---
-title: Import dat do služby Azure Search na portálu | Dokumentace Microsoftu
+title: Import dat do indexu vyhledávání pomocí webu Azure portal – Azure Search
 description: Další informace o použití Průvodce importem dat na webu Azure Portal k procházení dat Azure z Cosmos DB, úložiště objektů Blob, table storage, SQL Database a SQL Server na virtuálních počítačích Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: dcdc0501d94191cf2c281a4f880ddab3db023fc0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec2018
+ms.openlocfilehash: ceca9b8e89a963cd9a9226be143d24ed5429747b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004935"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316468"
 ---
 # <a name="how-to-import-data-into-azure-search-index-using-the-azure-portal"></a>Import dat do indexu Azure Search pomocí webu Azure portal
 

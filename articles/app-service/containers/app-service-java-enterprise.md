@@ -1,5 +1,5 @@
 ---
-title: Podpora jazyka Java Enterprise pro Azure App Service v Linuxu | Dokumentace Microsoftu
+title: Podpora jazyka Java Enterprise na Linux – Azure App Service | Dokumentace Microsoftu
 description: Příručka pro vývojáře k nasazování aplikací Java Enterprise Wildfly pomocí služby Azure App Service v Linuxu.
 keywords: služby Azure app service, web Apps, linux, oss, java, wildfly, enterprise
 services: app-service
@@ -12,12 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: b632ef49f49768c86b7a7ce2efc601f036532a29
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: e473326e9f337bfb2fd1202bc3b76e468dd6015e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017582"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315073"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
 
@@ -81,7 +82,7 @@ Pokud chcete nakonfigurovat Wildfly pro připojení ke zdroji dat, opakujte stej
 2. Postupujte podle kroků obrysu v "Moduly a závislosti" k vytvoření a nahrání popisovač modul XML, skript rozhraní příkazového řádku JBoss, spouštěcí skript a závislost .jar JDBC.
 
 
-Další informace o konfiguraci Wildfly s [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7) , [MySQL](https://dev.mysql.com/doc/connector-j/5.1/connector-j-usagenotes-jboss.html), a [SQL Database](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) je k dispozici. Tyto přizpůsobené pokyny spolu s zobecněný přístup výše můžete použít k přidání definice zdrojů dat na server.
+Další informace o konfiguraci Wildfly s [PostgreSQL](https://developer.jboss.org/blogs/amartin-blog/2012/02/08/how-to-set-up-a-postgresql-jdbc-driver-on-jboss-7) , [MySQL](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#Using_other_Databases-Using_MySQL_as_the_Default_DataSource), a [SQL Database](https://docs.jboss.org/jbossas/docs/Installation_And_Getting_Started_Guide/5/html/Using_other_Databases.html#d0e3898) je k dispozici. Tyto přizpůsobené pokyny spolu s zobecněný přístup výše můžete použít k přidání definice zdrojů dat na server.
 
 ## <a name="messaging-providers"></a>Zprostředkovatelé zasílání zpráv
 

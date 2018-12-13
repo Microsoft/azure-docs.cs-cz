@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441455"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194194"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Nasazení SAP IDES EHP7 SP3 pro SAP ERP 6.0 v Azure
 Tento článek popisuje, jak nasadit systém SAP IDES provozu s využitím SQL serveru a operačního systému Windows v Azure prostřednictvím SAP Cloud Appliance Library (SAP CAL) 3.0. Snímky obrazovky zobrazit podrobný proces. Pokud chcete nasadit jiné řešení, postupujte podle stejných kroků.
@@ -29,7 +29,7 @@ Tento článek popisuje, jak nasadit systém SAP IDES provozu s využitím SQL s
 Pokud chcete začít se SAP CAL, přejděte na [SAP Cloud Appliance Library](https://cal.sap.com/) webu. SAP má také blogu o nové [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-Od 29. května 2017 můžete kromě modelu nasazení classic méně než upřednostňovaný model nasazení Azure Resource Manageru pro nasazení SAP CAL. Doporučujeme, abyste pomocí nového modelu nasazení Resource Manager a modelu nasazení classic ignorovat.
+> Od 29. května 2017 můžete kromě modelu nasazení classic méně než upřednostňovaný model nasazení Azure Resource Manageru pro nasazení SAP CAL. Doporučujeme, abyste pomocí nového modelu nasazení Resource Manager a modelu nasazení classic ignorovat.
 
 Pokud jste již vytvořili SAP CAL účtu, který se používá v případě klasického modelu *musíte vytvořit jiný účet SAP CAL*. Tento účet musí výhradně pomocí modelu Resource Manageru nasadit do Azure.
 
@@ -96,7 +96,7 @@ Před nasazením SAP IDES řešení založené na Windows a SQL Server, můžete
 ### <a name="deploy-a-solution"></a>Nasazení řešení
 1. Jakmile nastavíte účet SAP CAL, vyberte **řešení SAP IDES na Windows a SQL Server** řešení. Klikněte na tlačítko **vytvořit instanci**a zkontrolujte využití a podmínky podmínky. 
 
-1. Na **základní režim: vytvořit instanci** stránce, budete muset:
+1. Na **základním režimu: Vytvoření Instance** stránce, budete muset:
 
     a. Zadejte instanci **název**.
 
@@ -104,7 +104,7 @@ Před nasazením SAP IDES řešení založené na Windows a SQL Server, můžete
 
     c.  Zadejte hlavní **heslo** pro řešení, jak je znázorněno:
 
-    ![SAP CAL Basic režim: Vytvoření Instance](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
+    ![Režim SAP CAL Basic: Vytvořit instanci](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
 1. Klikněte na možnost **Vytvořit**. Zopakovat později v závislosti na velikosti a složitosti řešení (SAP CAL poskytuje odhad), stav se zobrazí jako aktivní a připravena k použití: 
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: fb616dc95cc7dd7dbb25f2deb832b517d0747ae4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 305ea27e787196f648fcb4c536f33b12c924c015
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315446"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164681"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Kurz: Spuštění paralelní simulace jazyka R ve službě Azure Batch 
 
@@ -45,7 +45,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)] 
 ## <a name="install-doazureparallel"></a>Instalace balíčku doAzureParallel
 
-V konzole RStudio nainstalujte [balíček doAzureParallel z GitHubu](http://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
+V konzole RStudio nainstalujte [balíček doazureparallel z Githubu](http://www.github.com/Azure/doAzureParallel). Následující příkazy stáhnou a nainstalují balíček a jeho závislosti v aktuální relaci jazyka R: 
 
 ```R
 # Install the devtools package  
@@ -256,7 +256,7 @@ Měli byste zjistit, že spuštění simulace ve fondu služby Batch vám oproti
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili tyto postupy:
 
 > [!div class="checklist"]

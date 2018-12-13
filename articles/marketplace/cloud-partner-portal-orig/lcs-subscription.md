@@ -14,15 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2d75a432e84c3490186da6f8342562fddcaa32e1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c0109839144775e9064db4f8396f19688fcc13e8
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809170"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308630"
 ---
-<a name="lcs-subscription"></a>Předplatné LCS
-================
+# <a name="lcs-subscription"></a>Předplatné LCS
 
 V tomto kurzu se dozvíte, jak vytvořit odběr. Toto předplatné vám poskytne testovacího tenanta Microsoft Online a Microsoft Dynamics Lifecycle Services projektu kde můžete nasadit prostředí. Bude také vytvořit další uživatele ve vašem tenantovi Microsoft Online a získání zkušeností s následujícími možnostmi správy služby. Tady jsou dovedností, které se dozvíte:
 
@@ -32,8 +31,7 @@ V tomto kurzu se dozvíte, jak vytvořit odběr. Toto předplatné vám poskytne
 - Přidání dalších uživatelů do Microsoft Azure Active Directory a klienta.
 - Zobrazování prostředků v předplatném e-mailu.
 
-<a name="key-terms"></a>Klíčové pojmy
-=========
+## <a name="key-terms"></a>Klíčové pojmy
 
 **Tenant Microsoft Online Services** -tenant je skupina Všechna předplatná a uživatelé ve vaší organizaci. Tenant se vytvoří ve stejnou dobu jako první předplatné ve službě Microsoft Online Services.
 

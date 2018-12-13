@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 6999f51482d38245373a8a7a5081a89f1790b669
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0338ffa13d1b141bb40deaf43fd04fe37bfaf5d2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956735"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252089"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -39,15 +39,15 @@ Virtuální sítě Azure mají protokoly toků NSG, které vám poskytnou inform
 
 ## <a name="key-components"></a>Klíčové komponenty
 
-- **Skupina zabezpečení sítě (NSG)**: obsahuje seznam pravidel zabezpečení, která povolují nebo odpírají síťový provoz prostředků připojených k virtuální síti Azure. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Zabezpečení skupiny (NSG) protokolů síťového toku**: umožňuje zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. NSG flow protokoly jsou napsané ve formátu json a zobrazení odchozí a příchozí toků na základě pravidel na že nic toku se vztahuje na pět řazené kolekce členů informace o toku (zdrojová a cílová IP adresa, zdrojový/cílový port a protokol) a pokud byl povolený přenos nebo zakázaná. Další informace o protokoly toků NSG najdete v tématu [protokolů toku NSG](network-watcher-nsg-flow-logging-overview.md).
+- **Skupina zabezpečení sítě (NSG)**: Obsahuje seznam pravidel zabezpečení, která povolují nebo odpírají síťový provoz prostředků připojených k virtuální síti Azure. Skupiny zabezpečení sítě můžou být přidružené k podsítím, jednotlivým virtuálním počítačům (klasický model) nebo jednotlivým síťovým rozhraním (síťovým kartám) připojeným k virtuálním počítačům (Resource Manager). Další informace najdete v tématu [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Zabezpečení skupiny (NSG) protokolů síťového toku**: Umožňuje zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. NSG flow protokoly jsou napsané ve formátu json a zobrazení odchozí a příchozí toků na základě pravidel na že nic toku se vztahuje na pět řazené kolekce členů informace o toku (zdrojová a cílová IP adresa, zdrojový/cílový port a protokol) a pokud byl povolený přenos nebo zakázaná. Další informace o protokoly toků NSG najdete v tématu [protokolů toku NSG](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics**: Služba Azure, která shromažďuje data monitorování a ukládá data v centrálním úložišti. Tato data můžou obsahovat události, údaje o výkonu nebo vlastní data poskytovaná prostřednictvím rozhraní API služby Azure. Po získání jsou data dostupná pro výstrahy, analýzu a export. Monitorování aplikací, jako je monitorování a provoz Analýza výkonu sítě se vytvářejí pomocí Log Analytics jako základ. Další informace najdete v tématu [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Pracovní prostor log analytics**: instance služby log analytics, které jsou uložena data vztahující se k účtu Azure. Další informace o pracovních prostorech log analytics najdete v tématu [vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher**: místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure. Můžete zapnout protokolů toku NSG a vypnout pomocí služby Network Watcher. Další informace najdete v tématu [Network Watcher](network-watcher-monitoring-overview.md).
+- **Pracovní prostor log analytics**: Instance služby log analytics, které jsou uložena data vztahující se k účtu Azure. Další informace o pracovních prostorech log analytics najdete v tématu [vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Network Watcher**: Místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v Azure. Můžete zapnout protokolů toku NSG a vypnout pomocí služby Network Watcher. Další informace najdete v tématu [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Jak funguje traffic analytics
 
-Analýza provozu prozkoumá nezpracovaných protokolů toku NSG a zachytí sníženou protokoly na základě agregace běžných toků mezi stejné zdrojové IP adresy, cílová IP adresa, cílový port a protokol. Například hostitel 1 (IP adresa:. 10.10.10.10) komunikaci s hostiteli 2 (IP adresa: 10.10.20.10), než 100krát po dobu 1 hodinu používání portu (například 80) a protokolu (třeba http). Snížení protokol má jednu položku, které hostitele 1 a 2 hostitele předávány 100krát po dobu 1 hodiny pomocí portu *80* a protokol *HTTP*, namísto nutnosti 100 položek. Snížení protokoly jsou navíc zeměpisné oblasti, zabezpečení a informace o topologii a pak uloženy v pracovním prostoru log analytics. Následující obrázek znázorňuje tok dat:
+Analýza provozu prozkoumá nezpracovaných protokolů toku NSG a zachytí sníženou protokoly na základě agregace běžných toků mezi stejné zdrojové IP adresy, cílová IP adresa, cílový port a protokol. Například hostitel 1 (IP adresa: . 10.10.10.10) komunikaci s hostiteli 2 (IP adresa: 10.10.20.10), než 100krát po dobu 1 hodinu používání portu (například 80) a protokolu (třeba http). Snížení protokol má jednu položku, které hostitele 1 a 2 hostitele předávány 100krát po dobu 1 hodiny pomocí portu *80* a protokol *HTTP*, namísto nutnosti 100 položek. Snížení protokoly jsou navíc zeměpisné oblasti, zabezpečení a informace o topologii a pak uloženy v pracovním prostoru log analytics. Následující obrázek znázorňuje tok dat:
 
 ![Tok dat pro zpracování protokolů toku NSG](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -291,9 +291,12 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
     ![Distribuce virtuální sítě připraveném řídicím panelu](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Virtuální síťové topologie ukazuje na horním pásu karet pro výběr parametrů, jako je virtuální sítě (přenos mezi virtuálními sítěmi virtuální síť připojení/aktivní nebo neaktivní), externí připojení, aktivní toky a škodlivé toky ve virtuální síti.
+- Můžete filtrovat podle předplatných, pracovní prostory, resouece skupiny a časový interval virtuální síťové topologie. Další filtry, které vám pomůžou pochopit tok jsou: Tok typ (mezi virtuálními sítěmi, IntraVNET atd.), směr toku (vstupní, výstupní), stav toku (povolené, Uzavřeno) virtuální sítě (cílové a připojeno), typ připojení (partnerského vztahu nebo brány - P2S a S2S) a skupiny zabezpečení sítě. Tyto filtry použijte a zaměřte se na virtuální sítě, které chcete prozkoumat podrobněji.
 - Virtuální síťové topologie znázorňuje distribuce provozu do virtuální sítě s ohledem na toků (povolené nebo blokované/příchozí/odchozí/Benign/škodlivé), aplikační protokol a skupin zabezpečení sítě, například:
 
     ![Virtuální síťové topologie, která ukazuje podrobnosti o distribuci a tok provozu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
+    
+    ![Virtuální síťové topologie, která ukazuje na nejvyšší úrovni a další filtry](./media/traffic-analytics/virtual-network-filters.png)
 
     ![Tok podrobnosti pro distribuci provozu virtuální sítě v prohledávání protokolu](./media/traffic-analytics/flow-details-for-virtual-network-traffic-distribution-in-log-search.png)
 

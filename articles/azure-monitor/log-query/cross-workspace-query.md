@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: c46d7df8acbfdc62ccb9acf64e1def0dcf139ed3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 1140e9d0a9df717b8e249d8dad895baec955b754
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882299"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192970"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 

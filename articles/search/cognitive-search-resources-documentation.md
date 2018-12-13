@@ -1,5 +1,5 @@
 ---
-title: Kognitivní vyhledávání dokumentační zdroje (Azure Search) | Dokumentace Microsoftu
+title: Kognitivní vyhledávání dokumentační zdroje – Azure Search
 description: S poznámkami seznam článků, kurzy, ukázky a blogový příspěvky související s kognitivní vyhledávání ve službě Azure Search.
 services: search
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: bad73d2bf8bdf4adee4ce6e40550e506a35a2083
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec2018
+ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165662"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314597"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentační zdroje pro úlohy kognitivního vyhledávání
 
@@ -25,7 +26,7 @@ Následující články jsou kompletní dokumentaci k kognitivního vyhledáván
 ## <a name="getting-started"></a>Začínáme
 + [Co je kognitivního vyhledávání?](cognitive-search-concept-intro.md)
 + [Rychlý start: Vyzkoušení kognitivního vyhledávání v portálu](cognitive-search-quickstart-blob.md)
-+ [Kurz: Přečtěte si kognitivního vyhledávání rozhraní API](cognitive-search-tutorial-blob.md)
++ [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)
 + [Příklad: vytvoření vlastní dovednosti](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Příručky s postupy

@@ -1,5 +1,5 @@
 ---
-title: Co je spolupráce B2B v Azure Active Directory? | Microsoft Docs
+title: Co je spolupráce B2B v Azure Active Directory? | Dokumenty Microsoft
 description: Spolupráce B2B v Azure Active Directory podporuje přístup uživatelů typu host, abyste mohli s externími partnery bezpečně sdílet prostředky a spolupracovat s nimi.
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 992abf97751695c10f28f355e1086a12530b9456
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982604"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165227"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -73,11 +73,11 @@ Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do
 
 Připojte externí partnery tak, jak to vyhovuje potřebám vaší organizace.
 - K přizpůsobení připojovacího prostředí můžete použít [rozhraní API s pozváním ke spolupráci B2B](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation), včetně vytvoření samoobslužných přihlašovacích portálů. 
-- K vytvoření samoobslužného portálu použijte ukázkový kód, který je [na Githubu](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
+- Použití ukázkového kódu, poskytujeme pro samoobslužný portál [na Githubu](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
 ![Registrační portál](media/what-is-b2b/sign-up-portal.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Pokyny k licencování spolupráce B2B v Azure AD](licensing-guidance.md)
 - [Přidání uživatelů typu host na portálu pro spolupráci B2B](add-users-administrator.md)

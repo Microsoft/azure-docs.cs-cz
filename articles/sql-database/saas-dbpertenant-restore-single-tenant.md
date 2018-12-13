@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 12/04/2018
+ms.openlocfilehash: 4059b0f979e7e6856905f1759129167d62d7b5f5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056739"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274424"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Obnovení jednoho tenanta u SaaS aplikace databází na tenanta
 
@@ -26,10 +26,8 @@ Model databáze na tenanta usnadňuje obnovení jednoho tenanta do předchozího
 V tomto kurzu se dozvíte, dva způsoby zotavení dat:
 
 > [!div class="checklist"]
-
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovení databáze na místě a nahraďte existující databázi.
-
 
 |||
 |:--|:--|
@@ -44,13 +42,13 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>Úvod do principu obnovení tenanta SaaS
 
-Existují dva jednoduché způsoby pro obnovení dat jednotlivých tenantů. Protože jsou od sebe navzájem izolované databáze tenantů, obnovení jednoho tenanta nemá žádný vliv na data žádným jiným tenantem společnosti. Funkce (PITR) bod v čase obnovení Azure SQL Database se používá v oba vzorky. PITR vždy vytvoří novou databázi.   
+Existují dva jednoduché způsoby pro obnovení dat jednotlivých tenantů. Protože jsou od sebe navzájem izolované databáze tenantů, obnovení jednoho tenanta nemá žádný vliv na data žádným jiným tenantem společnosti. Funkce (PITR) bod v čase obnovení Azure SQL Database se používá v oba vzorky. PITR vždy vytvoří novou databázi.
 
-* **Obnovit paralelně**: V první vzor je vytvořena nová databáze paralelní spolu s aktuální databáze tenanta. Tenant je pak udělen přístup jen pro čtení k obnovené databázi. Obnovená data můžete zkontrolovat a potenciálně použita přepsat aktuální hodnoty data. Záleží jen na návrháře aplikací určíte, jak klient přistupuje k obnovené databázi a jaké možnosti pro obnovení jsou k dispozici. Klientovi zkontrolujte svá data na dřívějšího bodu umožňuje jednoduše může být vše, co se v některých scénářích vyžaduje. 
+* **Obnovit paralelně**: V první vzor je vytvořena nová databáze paralelní spolu s aktuální databáze tenanta. Tenant je pak udělen přístup jen pro čtení k obnovené databázi. Obnovená data můžete zkontrolovat a potenciálně použita přepsat aktuální hodnoty data. Záleží jen na návrháře aplikací určíte, jak klient přistupuje k obnovené databázi a jaké možnosti pro obnovení jsou k dispozici. Klientovi zkontrolujte svá data na dřívějšího bodu umožňuje jednoduše může být vše, co se v některých scénářích vyžaduje.
 
-* **Obnovit na místě**: druhý vzor je užitečné, pokud byl při ztrátě nebo poškození dat, a klienta chce obnovit k dřívějšímu bodu. Tenant se používá offline při obnovení databáze. Odstraní původní databáze a přejmenování obnovené databáze. Řetězce zálohy je původní databáze zůstala přístupná po odstranění, takže můžete obnovit databázi k dřívějšímu bodu v čase, v případě potřeby.
+* **Obnovit na místě**: Druhý vzor je užitečné, pokud byl při ztrátě nebo poškození dat, a klienta chce obnovit k dřívějšímu bodu. Tenant se používá offline při obnovení databáze. Odstraní původní databáze a přejmenování obnovené databáze. Řetězce zálohy je původní databáze zůstala přístupná po odstranění, takže můžete obnovit databázi k dřívějšímu bodu v čase, v případě potřeby.
 
-Pokud databáze používá [geografickou replikaci](sql-database-geo-replication-overview.md) a obnovení paralelně, doporučujeme vám zkopírovat všechna požadovaná data z obnovené kopie do původní databáze. Pokud je původní databázi nahradit obnovenou databází, musíte znovu nakonfigurovat a provést opakovanou synchronizaci geografickou replikaci.
+Pokud databáze používá [aktivní geografickou replikaci](sql-database-active-geo-replication.md) a obnovení paralelně, doporučujeme vám zkopírovat všechna požadovaná data z obnovené kopie do původní databáze. Pokud je původní databázi nahradit obnovenou databází, musíte znovu nakonfigurovat a provést opakovanou synchronizaci geografickou replikaci.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace databáze na tenanta SaaS aplikace Wingtip Tickets
 
@@ -74,7 +72,6 @@ Abychom si předvedli tyto scénáře obnovení, nejprve "nechtěného" odstraň
 
    ![Zobrazí se poslední události](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
-
 ### <a name="accidentally-delete-the-last-event"></a>"Nechtěného" odstranit poslední události
 
 1. V prostředí PowerShell ISE otevřete... \\Learning Modules\\provozní kontinuitu a zotavení po havárii\\RestoreTenant\\*Demo-RestoreTenant.ps1*a nastavte následující hodnotu:
@@ -88,15 +85,13 @@ Abychom si předvedli tyto scénáře obnovení, nejprve "nechtěného" odstraň
    ```
 
 3. Otevře se stránka Contoso události. Posuňte se dolů a ověřte, že událost je pryč. Pokud události je stále v seznamu, vyberte **aktualizovat** a ověřte, že zmizí.
-
    ![Odebrat poslední události](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
-
 
 ## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Obnovení databáze tenanta paralelně s produkční databází
 
 V tomto cvičení obnoví databázi Contoso koncertní Hall do bodu v čase před odstraněním události. Tento scénář předpokládá, že chcete zkontrolovat odstraněná data v databázi paralelní.
 
- *Obnovení TenantInParallel.ps1* skript vytvoří paralelní tenanta databázi s názvem *ContosoConcertHall\_staré*, s položkou paralelní katalogu. Tento model obnovení je nejvhodnější pro obnovení z menších únikem. Také můžete použít tento model Pokud je potřeba zkontrolovat data auditování účely nebo dodržování předpisů. Je doporučený postup při použití [geografickou replikaci](sql-database-geo-replication-overview.md).
+ *Obnovení TenantInParallel.ps1* skript vytvoří paralelní tenanta databázi s názvem *ContosoConcertHall\_staré*, s položkou paralelní katalogu. Tento model obnovení je nejvhodnější pro obnovení z menších únikem. Také můžete použít tento model Pokud je potřeba zkontrolovat data auditování účely nebo dodržování předpisů. Je doporučený postup při použití [aktivní geografickou replikaci](sql-database-active-geo-replication.md).
 
 1. Dokončení [simulovat tenanta nechtěného odstranění dat](#simulate-a-tenant-accidentally-deleting-data) oddílu.
 2. V prostředí PowerShell ISE otevřete... \\Learning Modules\\provozní kontinuitu a zotavení po havárii\\RestoreTenant\\_Demo-RestoreTenant.ps1_.
@@ -115,7 +110,6 @@ Vystavení obnovené tenanta jako další tenant, s vlastní události aplikace,
 2. Stisknutím klávesy F5 spusťte skript.
 3. *ContosoConcertHall\_staré* položku je nyní odstranit z katalogu. Zavřete stránku události pro tohoto tenanta v prohlížeči.
 
-
 ## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Obnovení tenanta na místě a nahraďte existující databáze tenantů
 
 V tomto cvičení obnoví Contoso koncertní Hall tenanta do bodu před odstraněním události. *Obnovení TenantInPlace* obnoví databáze tenantů do nové databáze skriptu a odstraní původní. Tento model obnovení je nejvhodnější pro obnovení z závažné poškození a tenanta může být nutné přizpůsobit významné datové ztráty.
@@ -128,14 +122,13 @@ Skript obnoví databáze tenantů do bodu před odstraněním události. Nejprve
 
 Úspěšně jste obnovili databáze do bodu v čase před odstraněním události. Když **události** otevře se stránka, zkontrolujte, zda byla obnovena poslední události.
 
-Po obnovení databáze trvá jiného 10 až 15 minut, než se bude první úplná záloha je k dispozici pro obnovení z znovu. 
+Po obnovení databáze trvá jiného 10 až 15 minut, než se bude první úplná záloha je k dispozici pro obnovení z znovu.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-
 > * Obnovení databáze do paralelní databáze (vedle sebe).
 > * Obnovení databáze na místě.
 

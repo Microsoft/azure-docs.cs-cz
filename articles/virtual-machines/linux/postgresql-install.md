@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: zarhoads
-ms.openlocfilehash: dc7bb0eab9004b9c818a4a7cbbf6102f01b24f45
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e794c191737f14fb06351e345f70edb9f7cddb7c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465221"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322052"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je podobný Oracle a DB2 pokročilé open source databáze. Obsahuje připravené pro podnikové funkce, jako je řízení souběžnosti více verzí, plně odpovídající zásadám ACID dodržování předpisů a spolehlivé zpracování transakcí. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálky cizí dat Oracle, MySQL, MongoDB a mnoha dalších). Je velmi dobře rozšiřitelná s podporou více než 12 postupu jazycích, GIN a GiST indexů, podporu prostorových dat a více funkcí až pravděpodobnosti NoSQL pro JSON nebo aplikace pro systém hodnotou klíče.
@@ -76,7 +76,7 @@ Připojte se k Linuxový virtuální počítač vytvořený pomocí PuTTY. Pokud
 ## <a name="configure-postgresql"></a>Konfigurace PostgreSQL
 1. (Volitelné) Vytvořte symbolický odkaz ke zkrácení PostgreSQL odkaz tak, aby nezahrnovala číslo verze:
    
-        # ln -s /opt/pgsql9.3.5 /opt/pgsql
+        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
 2. Vytvořte adresář pro databázi:
    
         # mkdir -p /opt/pgsql_data
@@ -119,6 +119,7 @@ Připojte se k Linuxový virtuální počítač vytvořený pomocí PuTTY. Pokud
 7. Verze PostgreSQL, můžete také zkontrolovat:
    
         $ psql -V
+
 8. Inicializujte databázi:
    
         $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W

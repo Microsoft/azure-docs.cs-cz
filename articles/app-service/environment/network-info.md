@@ -1,5 +1,5 @@
 ---
-title: Důležité informace o sítích pomocí služby Azure App Service Environment
+title: Důležité informace o sítích s App Service Environment – Azure
 description: Vysvětluje síťový provoz služby ASE a jak nastavit skupiny zabezpečení sítě a trasy definované uživatelem s vaší služby ASE
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: b39ff01fec9fa51f6e208728b5c8f78c68654484
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964879"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271007"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -26,8 +27,8 @@ ms.locfileid: "52964879"
 
  Azure [služby App Service Environment] [ Intro] je nasazení služby Azure App Service do podsítě ve službě Azure virtual network (VNet). Existují dva typy nasazení pro App Service environment (ASE):
 
-- **Externí služby ASE**: poskytuje hostované služby ASE aplikace na IP adresu přístupné z Internetu. Další informace najdete v tématu [vytvoření externí služby ASE][MakeExternalASE].
-- **Služba ASE s ILB**: poskytuje hostované služby ASE aplikace na IP adresu uvnitř virtuální sítě. Vnitřní koncový bod je interní nástroj pro vyrovnávání zatížení (ILB), což je důvod, proč se používá označení službu ASE. Další informace najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
+- **Externí služby ASE**: Poskytuje hostované služby ASE aplikace na IP adresu přístupné z Internetu. Další informace najdete v tématu [vytvoření externí služby ASE][MakeExternalASE].
+- **SLUŽBA ASE S ILB**: Poskytuje služby ASE hostované aplikace na IP adresu uvnitř virtuální sítě. Vnitřní koncový bod je interní nástroj pro vyrovnávání zatížení (ILB), což je důvod, proč se používá označení službu ASE. Další informace najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
 
 Existují dvě verze služby App Service Environment: ASEv1 a ASEv2. Informace v ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. Verzi ASEv1 je možné nasadit v klasický nebo virtuální síť Resource Manageru. ASEv2 dá nasadit jenom do virtuální sítě Resource Manageru.
 
@@ -58,7 +59,7 @@ Toto je hodnota true, pokud jste na externí služby ASE nebo ASE s ILB. Pokud p
 
 ## <a name="ase-subnet-size"></a>Velikost podsítě služby ASE ##
 
-Po nasazení služby ASE se nedá změnit velikost podsítě používané k hostování služby ASE.  Služby ASE používá adresu pro každou roli infrastruktury stejně jako u každé instance plánu izolované služby App Service.  Kromě toho jsou 5 adres používané sítí Azure pro každou podsíť, která je vytvořena.  Služba ASE se žádné plány služby App Service vůbec používat 12 adres před vytvořením aplikace.  Pokud je prostředí ILB ASE pak použije 13 adresy předtím, než vytvoříte aplikaci v této službě ASE. Jak škálovat svoji službu ASE, infrastrukturu role jsou přidány každý násobky 15 až 20 instancí plánu služby App Service.
+Velikost podsítě, pomocí které se hostuje služba ASE, se po nasazení služby ASE nedá upravit.  Služby ASE používá adresu pro každou roli infrastruktury stejně jako u každé instance plánu izolované služby App Service.  Kromě toho jsou 5 adres používané sítí Azure pro každou podsíť, která je vytvořena.  Služba ASE se žádné plány služby App Service vůbec používat 12 adres před vytvořením aplikace.  Pokud je prostředí ILB ASE pak použije 13 adresy předtím, než vytvoříte aplikaci v této službě ASE. Jak škálovat svoji službu ASE, infrastrukturu role jsou přidány každý násobky 15 až 20 instancí plánu služby App Service.
 
    > [!NOTE]
    > V podsíti, ale služba ASE může být nic dalšího. Je potřeba zvolit adresní prostor, který umožňuje na budoucí růst. Toto nastavení později nejde změnit. Doporučujeme velikost `/24` s 256 adres.
@@ -74,9 +75,9 @@ Služba ASE příchozí přístup, který se závislosti:
 | Použití | Od | Akce |
 |-----|------|----|
 | Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
-|  Interní komunikace služby ASE | Podsíti služby ASE: všechny porty | Podsíti služby ASE: všechny porty
-|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: všechny porty
-|  Aplikace přiřazené IP adresy | Přiřazené adresy aplikace | Podsíti služby ASE: všechny porty
+|  Interní komunikace služby ASE | Podsíti služby ASE: Všechny porty | Podsíti služby ASE: Všechny porty
+|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: Všechny porty
+|  Aplikace přiřazené IP adresy | Přiřazené adresy aplikace | Podsíti služby ASE: Všechny porty
 
 Řízení příchozích přenosů poskytuje příkazy a ovládání služby ase kromě systému sledování. Zdrojové adresy pro tento provoz jsou uvedeny v [adresy služby ASE správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup ze všech IP adres na portech 454 a 455. Pokud zablokujete přístup z těchto adres, vaše služba ASE přestane není v pořádku a pak zablokuje.
 
@@ -136,10 +137,10 @@ Funkce a webových úloh závisí na web SCM. podporují se ale pro použití na
 
 Služba ASE má několik IP adres je potřeba vědět. Jsou to tyto:
 
-- **Veřejnou IP adresu příchozího**: použít pro aplikaci externí službě ase a provoz správy v externí službě ASE a službu ASE.
-- **Odchozí veřejnou IP adresu**: použít jako IP adresa "od" pro odchozí připojení ze služby ASE, které ponechejte virtuální sítě, které nejsou směrovány dolů sítě VPN.
+- **Veřejnou IP adresu příchozího**: Používá se pro aplikaci externí službě ase a provoz správy v externí službě ASE a službu ASE.
+- **Odchozí veřejnou IP adresu**: Použít jako IP adresa "od" pro odchozí připojení ze služby ASE, které ponechejte virtuální sítě, které nejsou směrovány dolů sítě VPN.
 - **Adresa ILB IP**: Pokud používáte službu ASE.
-- **Aplikace přiřazená SSL na základě IP adresy**: jedinou možnou externí služby ASE a když je nakonfigurovaný protokol SSL na základě IP adresy.
+- **Aplikace přiřazená SSL na základě IP adresy**: Provádět jen s externí služby ASE, a pokud je nakonfigurovaný protokol SSL na základě IP adresy.
 
 Tyto IP adresy jsou snadno viditelné v ASEv2 na webu Azure Portal v uživatelském rozhraní služby ASE. Pokud máte službu ASE, je uvedena IP adresa pro ILB.
 

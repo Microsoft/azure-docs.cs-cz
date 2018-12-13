@@ -1,7 +1,7 @@
 ---
-title: Vytvoření a použití cílových výpočetních prostředí pro trénování modelu
+title: Cílových výpočetních prostředí pro trénování modelu
 titleSuffix: Azure Machine Learning service
-description: Zjistěte, jak vybrat a nakonfigurovat prostředí školení (cílových výpočetních prostředí) použít k trénování modelů strojového učení. Služba Azure Machine Learning umožňuje snadno přepněte školení prostředí. Spusťte místně školení a pokud je potřeba škálovat na více systémů, přepněte do cílové výpočetní prostředí založené na cloudu.
+description: Konfigurace prostředí školení (cílových výpočetních prostředí) pro strojové učení cvičení modelu. Školení prostředí lze snadno přepínat. Spusťte místně školení a pokud je potřeba škálovat na více systémů, přepněte do cílové výpočetní prostředí založené na cloudu. Databricks
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -12,12 +12,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1a6533c1ec25eb8500f67cb98494463d7daf752b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c91cc8dabc1fcf4918e64c18e5d5975dc7720c30
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080091"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315981"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
@@ -27,11 +27,11 @@ Cílové výpočetní prostředí je prostředek, kde spustit trénovací skript
 
 Existují tři různé kategorie cílových výpočetních prostředí, které podporuje Azure Machine Learning:
 
-* __Místní__: místního počítače nebo virtuálního počítače založené na cloudu, který používáte jako prostředí dev/experimentování. 
+* __Místní__: Místního počítače nebo virtuálního počítače založené na cloudu, který používáte jako prostředí dev/experimentování. 
 
-* __Spravovat výpočetní__: Azure Machine Learning Compute je výpočetní prostředí nabídky, který je spravovaný službou Azure Machine Learning. Umožňuje snadno vytvořit jeden nebo více node výpočetní prostředky pro trénování, testování a odvozování služby batch.
+* __Spravovat výpočetní__: Azure Machine Learning Compute je výpočetní prostředí nabídka, která je spravované službou Azure Machine Learning. Umožňuje snadno vytvořit jeden nebo více node výpočetní prostředky pro trénování, testování a odvozování služby batch.
 
-* __Připojené výpočetní__: můžete také přinést výpočetní cloudu Azure a připojení k Azure Machine Learning. Přečtěte si další informace najdete níže na typy podporovaných výpočetních a způsob jejich použití.
+* __Připojené výpočetní__: Můžete také přinést výpočetní cloudu Azure a připojení k Azure Machine Learning. Přečtěte si další informace najdete níže na typy podporovaných výpočetních a způsob jejich použití.
 
 
 ## <a name="supported-compute-targets"></a>Cílových podporovaných výpočetních prostředí
@@ -43,7 +43,7 @@ Služba Azure Machine Learning nabízí různé podporu napříč různými cíl
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Vzdáleném virtuálním počítači](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
 |[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
@@ -169,8 +169,8 @@ Trvalé Azure Machine Learning Compute můžete použít opakovaně napříč v�
 
 Vytvořit prostředek služby Azure Machine Learning Compute trvalé, zadejte `vm_size` a `max_nodes` parametry. Azure Machine Learning potom použije inteligentních výchozích hodnot pro ostatní parametry.  Například výpočetní nastavení automatického škálování na 0 uzlů, pokud se nepoužívá a chcete-li vytvořit vyhrazených virtuálních počítačích ke spouštění úloh podle potřeby. 
 
-* **vm_size**: řadu virtuálních počítačů uzlů vytvořené pomocí Azure Machine Learning Compute.
-* **max_nodes**: maximální počet uzlů k automatickému škálování při spuštění úlohy v Azure Machine Learning Compute.
+* **vm_size**: Virtuální počítač řady uzlů vytvořené pomocí Azure Machine Learning Compute.
+* **max_nodes**: Maximální počet uzlů k automatickému škálování při spuštění úlohy v Azure Machine Learning Compute.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -198,12 +198,12 @@ Můžete také nakonfigurovat několik upřesňující vlastnosti při vytváře
 
 Kromě `vm_size` a `max_nodes`, můžete použít následující vlastnosti:
 
-* **min_nodes**: minimální uzly (výchozí hodnota 0 uzlů) snížit při spuštění úlohy v Azure Machine Learning Compute.
-* **vm_priority**: výběr mezi "vyhrazených" (výchozí) a "lowpriority" virtuální počítače při vytváření, Azure Machine Learning Compute. Virtuální počítače s nízkou prioritou použít nadbytečnou kapacitu Azure a jsou tedy levnější ale riziko, přičemž dojde ke zrušení spuštění.
-* **idle_seconds_before_scaledown**: Doba nečinnosti (výchozí 120 sekund) po dokončení běhu, než použití automatického škálování na min_nodes.
+* **min_nodes**: Minimální počet uzlů (výchozí hodnota 0 uzly) Chcete-li snížit při spuštění úlohy v Azure Machine Learning Compute.
+* **vm_priority**: Při vytváření, Azure Machine Learning Compute si vyberte mezi "vyhrazených" (výchozí) a "lowpriority" virtuální počítače. Virtuální počítače s nízkou prioritou použít nadbytečnou kapacitu Azure a jsou tedy levnější ale riziko, přičemž dojde ke zrušení spuštění.
+* **idle_seconds_before_scaledown**: Dobu nečinnosti (výchozí 120 sekund) po dokončení běhu, než použití automatického škálování na min_nodes.
 * **vnet_resourcegroup_name**: Skupina prostředků __existující__ virtuální sítě. Azure Machine Learning Compute se vytvoří v rámci této virtuální síti.
-* **vnet_name**: název virtuální sítě. Virtuální síť musí být ve stejné oblasti jako váš pracovní prostor Azure Machine Learning.
-* **subnet_name**: název podsítě v rámci virtuální sítě. Prostředky Azure Machine Learning Compute přiřadí IP adresy z tohoto rozsahu podsítě.
+* **vnet_name**: Název virtuální sítě. Virtuální síť musí být ve stejné oblasti jako váš pracovní prostor Azure Machine Learning.
+* **subnet_name**: Název podsítě v rámci virtuální sítě. Prostředky Azure Machine Learning Compute přiřadí IP adresy z tohoto rozsahu podsítě.
 
 > [!TIP]
 > Když vytvoříte prostředek trvalé Azure Machine Learning Compute máte také možnost aktualizovat jeho vlastnosti, jako je min_nodes nebo max_nodes. Jednoduše zavoláte `update()` funkce pro něj.
@@ -312,9 +312,9 @@ Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Můž
 
 Připojení Azure Databricks jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
 
-* __Název COMPUTE__: název, kterou chcete přiřadit na tento výpočetní prostředek.
-* __Název pracovního prostoru Databricks__: název pracovního prostoru Azure Databricks.
-* __Přístupový token__: přístupový token pro ověření do Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
+* __Název COMPUTE__: Název, který chcete přiřadit tento výpočetní prostředek.
+* __Název pracovního prostoru Databricks__: Název pracovního prostoru Azure Databricks.
+* __Přístupový token__: Přístupový token pro ověření do Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
 
 Následující kód ukazuje, jak se připojit jako cílové výpočetní prostředí Azure Databricks:
 
@@ -357,9 +357,9 @@ Azure Data Lake Analytics je platforma analýzy velkých objemů dat v cloudu Az
 
 Připojit Data Lake Analytics jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
 
-* __Název COMPUTE__: název, kterou chcete přiřadit na tento výpočetní prostředek.
+* __Název COMPUTE__: Název, který chcete přiřadit tento výpočetní prostředek.
 * __Skupina prostředků__: Skupina prostředků obsahující účet Data Lake Analytics.
-* __Název účtu__: název účtu Data Lake Analytics.
+* __Název účtu__: Název účtu Data Lake Analytics.
 
 Následující kód ukazuje, jak se připojit Data Lake Analytics jako cílové výpočetní prostředí:
 

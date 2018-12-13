@@ -13,13 +13,12 @@ ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.component: ''
-ms.openlocfilehash: dac89bae7fa12075deeb3842ad74979f8b237946
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c64c0837956c59cf7a810bb06ca63bc21c5158d1
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074653"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186425"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 

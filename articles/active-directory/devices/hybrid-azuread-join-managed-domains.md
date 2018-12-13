@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 292247ae2881bd60616728ad857fab58c8ed7fd5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887793"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309539"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridních připojení k Azure Active Directory pro spravované domény
 
 Zařízení se podobně jako uživatel stávají další identitou, kterou chcete chránit a pomocí které zároveň chcete nepřetržitě chránit své prostředky, ať jsou kdekoli. Můžete toho docílit tím, že pomocí některé z následujících metod přenesete identity vašich zařízení do Azure AD:
 
@@ -153,7 +153,7 @@ Pokud chcete registrovat zařízení s Windows nižší úrovně, je potřeba za
 
 
     
-Následující zásada musí být nastavená na hodnotu **Všichni**: **Uživatelé můžou registrovat svoje zařízení do Azure AD**.
+Tyto zásady musí být nastaveno na **všechny**: **Uživatelé můžou registrovat svoje zařízení s Azure AD**
 
 ![Registrace zařízení](media/hybrid-azuread-join-managed-domains/23.png)
 
@@ -172,7 +172,7 @@ Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnos
 
 ### <a name="configure-seamless-sso"></a>Konfigurace bezproblémového jednotného přihlašování
 
-K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
+K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
 
 
 ### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 

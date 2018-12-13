@@ -4,9 +4,8 @@ description: 'Syntaxe Net # neuronových sítí specifikačnímu jazyku, spolu s
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315303"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272231"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -29,7 +28,7 @@ NET # je jazyk vyvinutý microsoftem, který se používá k definování archit
 
 Architektura specifikace Net # můžete použít v těchto kontextech:
 
-+ Všechny moduly neuronových sítí v Microsoft Azure Machine Learning Studio: [Neuronové sítě Multiclass](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), a [regrese Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Všechny moduly neuronových sítí v Microsoft Azure Machine Learning Studio: [Víc tříd Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Two-Class Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), a [regrese Neuronové sítě](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + Funkce neuronových sítí v MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) a [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)jazyka R a [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) pro Python.
 
 
@@ -39,7 +38,7 @@ Tento článek popisuje základní koncepty a syntaxe, které potřebujete pro v
 + Syntaxi a klíčových slovech specifikace jazyka Net #
 + Příklady vlastních neuronových sítí vytvořené pomocí Net # 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="neural-network-basics"></a>Základy neuronové sítě
 
@@ -219,7 +218,7 @@ Existují dvě sady vlastností, které řídí odsazení, vlastnosti, které se
     
     Pokud pro dimenzi hodnotu False, jádrech jsou definovány, tak, aby počet uzlů na každé straně, které jsou ponechány navýšení kapacity je stejné (až rozdíl 1). Výchozí hodnota tohoto atributu je řazená kolekce členů se všemi součástmi rovná na hodnotu False.
 
-+ **UpperPad** a **LowerPad**: (volitelné) zadejte větší kontrolu nad velikost odsazení používat. **Důležité:** tyto atributy mohou být definované Pokud a pouze tehdy, pokud **odsazení** výše uvedené vlastnosti je ***není*** definované. Hodnoty by měl být celočíselný řazené kolekce členů s, které jsou Arita sady. Když jsou zadané tyto atributy, "fiktivní" uzly se přidají do horní a dolní konce každé dimenze vstupní vrstvy. Počet uzlů, které jsou přidány do horní a dolní zakončení v každém rozměru je určeno **LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí. 
++ **UpperPad** a **LowerPad**: (volitelné) zadejte větší kontrolu nad velikost odsazení používat. **Důležité:** Tyto atributy mohou být definované Pokud a pouze tehdy, pokud **odsazení** výše uvedené vlastnosti je ***není*** definované. Hodnoty by měl být celočíselný řazené kolekce členů s, které jsou Arita sady. Když jsou zadané tyto atributy, "fiktivní" uzly se přidají do horní a dolní konce každé dimenze vstupní vrstvy. Počet uzlů, které jsou přidány do horní a dolní zakončení v každém rozměru je určeno **LowerPad**[i] a **UpperPad**[i] v uvedeném pořadí. 
 
     Pokud chcete mít jistotu, že odpovídají jádrech pouze pro uzly "text real" a "fiktivní" uzlů, musí být splněny následující podmínky:
       - Jednotlivé komponenty **LowerPad** musí být striktně menší než `KernelShape[d]/2`. 
@@ -375,7 +374,7 @@ Krátký tvar můžete použít pouze v případě, že v jedné sadě obsahovat
 
 Tato část obsahuje příklady použití Net # k přidání skrytými vrstvami, definování způsobu, jakým komunikovat s jinými vrstvami skrytými vrstvami a vytvářet konvoluční sítě.
 
-### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definovat jednoduchý vlastní neuronové sítě: příkladu "Hello World"
+### <a name="define-a-simple-custom-neural-network-hello-world-example"></a>Definujte jednoduchý vlastní neuronové sítě: Příkladu "Hello World"
 
 Tento jednoduchý příklad ukazuje, jak vytvořit model neuronové sítě, která má jeden skryté vrstvě.
 

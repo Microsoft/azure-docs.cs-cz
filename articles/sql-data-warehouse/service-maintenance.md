@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/19/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 8b5b94c959ae9820cab338f3ee3317fb3ee166d6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1e8f94a0131ace6354d070e932e414a1897260e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286597"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166298"
 ---
 # <a name="planning-for-maintenance-on-your-azure-sql-data-warehouse"></a>Plánování údržby ve službě Azure SQL data warehouse
 
@@ -32,9 +32,9 @@ Zobrazí se oznámení před každé události plánované údržby. Události �
 
 ## <a name="setting-up-alerts"></a>Nastavení výstrah
 
-Doporučujeme používat [Azure Monitor](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) nastavit plánované údržby upozornění protokolů. Výstrahy můžete naplánovat může požadovaná Údržba, chcete-li minimalizovat dopad na vaši firmu. 
+Doporučujeme používat [Azure Monitor](../azure-monitor/platform/alerts-activity-log-service-notifications.md) nastavit plánované údržby upozornění protokolů. Výstrahy můžete naplánovat může požadovaná Údržba, chcete-li minimalizovat dopad na vaši firmu. 
 
-Nastavení oznámení, použijte tyto [protokolu upozornění pokyny](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+Nastavení oznámení, použijte tyto [protokolu upozornění pokyny](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
 
 ## <a name="next-steps"></a>Další postup
 Další informace o monitorování najdete v tématu [monitorování vaší úlohy](sql-data-warehouse-manage-monitor.md).

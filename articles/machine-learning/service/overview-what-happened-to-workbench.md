@@ -1,5 +1,5 @@
 ---
-title: Co se stalo s aplikací Azure Machine Learning Workbench?
+title: Co se stalo s aplikací Workbench?
 titleSuffix: Azure Machine Learning service
 description: Další informace o co se stalo se aplikace Workbench aplikace, co se změnilo ve službě Azure Machine Learning a co je časové osy podpory.
 services: machine-learning
@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2d97ee70c8456bb3b21a14b646756c8024eab018
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: c9559e07cc70cbd7adafd75c23b9e67d45bee48a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090121"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184301"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Co se děje do aplikace Workbench ve službě Azure Machine Learning?
 
@@ -113,5 +113,5 @@ Doménové balíčky pro [počítačové zpracování obrazu, analýzu textu a p
 Přečtěte si o [nejnovější architektuře služby Azure Machine Learning](concept-azure-machine-learning-architecture.md) a vyzkoušejte některý z našich rychlých startů nebo kurzů:
 
 * [Co je služba Azure Machine Learning?](overview-what-is-azure-ml.md)
-* [Rychlý start: Vytvoření pracovního prostoru v Pythonu](quickstart-get-started.md)
+* [Rychlý start: Vytvoření pracovního prostoru s využitím Pythonu](quickstart-get-started.md)
 * [Kurz: Trénování modelu](tutorial-train-models-with-aml.md)

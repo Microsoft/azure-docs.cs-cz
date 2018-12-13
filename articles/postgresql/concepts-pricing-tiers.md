@@ -9,16 +9,16 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 31ea45eba9d15240fc82828b8010ecd1fe0f82bd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: a57e481093bca12a1726a4cc16fa090aa158c1d8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890513"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320881"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL cenové úrovně
 
-Serveru Azure Database for PostgreSQL můžete vytvořit v jednom ze tří různých cenové úrovně: Basic, General Purpose a Memory Optimized. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru PostgreSQL. Server může mít jeden nebo více databází.
+Serveru Azure Database for PostgreSQL můžete vytvořit v jednom ze tří různých cenových úrovní: Basic, pro obecné účely a paměťově optimalizovaná. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru PostgreSQL. Server může mít jeden nebo více databází.
 
 |    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
@@ -43,6 +43,9 @@ Po vytvoření serveru, počet virtuálních jader generace hardwaru a cenové �
 ## <a name="compute-generations-and-vcores"></a>COMPUTE generace a virtuální jádra
 
 Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. V současné době můžete zvolit ze dvou generací compute Gen 4 a 5 Obecné. Gen 4 logické procesory jsou založeny na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorech. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech. 4. generace a generace 5 jsou k dispozici v následujících oblastech ("X" označuje k dispozici). 
+
+> [!IMPORTANT]
+> Od 12. prosince 2018, nebudou moct zřizovat výpočetní generace 4 servery v oblasti Brazílie – Jih, Kanada – střed, Kanada – východ, Asie – východ, USA – východ 2, střed Indie, Indie – Západ, Japonsko – Západ, střed USA – sever, USA – západ nové zákazníky. Výpočetní generace 4 servery budou migrovány na výpočetní generaci 5 od 1. února 2019 v těchto oblastech předtím vytvořili.
 
 | **Oblasti Azure** | **4. generace** | **Generace 5** |
 |:---|:----------:|:--------------------:|
@@ -80,7 +83,7 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | USA (Gov) – Arizona |  | X |
 | USA (Gov) – Texas |  | X |
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřizujete je objem úložné kapacity k dispozici pro vaši databázi Azure PostgreSQL server. Úložiště se používá pro soubory databáze, dočasných souborů, protokoly transakcí a PostgreSQL server protokoly. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro váš server.
 

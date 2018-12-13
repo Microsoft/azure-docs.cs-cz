@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 410e9df588ad4aba52d1d69349f5df67fa1826a3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 013b63d0eb2cc69893dcb4075c1ca26a31ef2474
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100935"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277977"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -24,6 +24,9 @@ Tento článek obsahuje podrobnosti pro integraci s Azure Multi-Factor Authentic
 Rozšíření serveru NPS (Network Policy Server) pro Azure umožňuje zákazníkům, kteří k zajištění ověření klienta RADIUS Remote Authentication telefonického uživatele Service () pomocí Azure je založené na cloudu [Multi-Factor Authentication (MFA)](multi-factor-authentication.md). Toto řešení zajišťuje dvoustupňové ověření pro přidání druhou vrstvu zabezpečení uživatelská přihlášení a transakce.
 
 Tento článek obsahuje podrobné pokyny pro integraci s Azure MFA NPS server infrastruktury pomocí rozšíření NPS pro Azure. To umožňuje zabezpečené ověřování pro uživatele pokoušející se přihlásit do služby Brána vzdálené plochy.
+
+> [!NOTE]
+> V tomto článku se nemá používat s MFA Server nasazení pouze Azure MFA (Cloud-based).
 
 Síťové zásady a přístup k službám (NPS) poskytuje organizacím možnost postupujte takto:
 
@@ -68,10 +71,10 @@ Tato část podrobně popisuje předpoklady nezbytné před integrace Azure MFA 
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Vzdálené služby plocha (RDS) infrastruktury
 
-Musíte mít funkční infrastrukturu služby Vzdálená plocha (RDS) na místě. Pokud ho nevidíte, pak můžete rychle vytvořit tuto infrastrukturu v Azure pomocí následující šablony rychlý start: [vytvoření kolekce relací vzdálené plochy nasazení](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
+Musíte mít funkční infrastrukturu služby Vzdálená plocha (RDS) na místě. Pokud ho nevidíte, pak můžete rychle vytvořit tuto infrastrukturu v Azure pomocí následující šablony rychlý start: [Vytvoření kolekce relací vzdálené plochy nasazení](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
 
 Pokud chcete ručně vytvořit místní infrastrukturu RDS rychle pro účely testování, postupujte podle kroků, které chcete nasadit některé. 
-**Další informace**: [nasazení vzdálené plochy s rychlý start Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) a [základní VP k nasazení infrastruktury](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
+**Další informace**: [Nasazení vzdálené plochy s využitím Azure rychlý start](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) a [základní VP k nasazení infrastruktury](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
 
 ### <a name="azure-mfa-license"></a>Licence Azure MFA
 
@@ -83,7 +86,7 @@ Rozšíření NPS server vyžaduje Windows Server 2008 R2 SP1 nebo novějším s
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Síťové zásady a přístup k službám (NPS)
 
-Službu role NPS poskytuje server protokolu RADIUS a klientské funkce, jakož i služba health service zásady přístupu k síti. Tato role musí nainstalovat na nejméně dva počítače ve vaší infrastruktuře: služby Brána vzdálené plochy a další členského serveru nebo řadiče domény. Ve výchozím nastavení role již existuje v počítač nakonfigurovaný jako Brána vzdálené plochy.  Také nainstalujte NPS role na alespoň na jiném počítači, jako jsou řadiče domény nebo členském serveru.
+Službu role NPS poskytuje server protokolu RADIUS a klientské funkce, jakož i služba health service zásady přístupu k síti. Tato role musí být nainstalovaný na nejméně dva počítače ve vaší infrastruktuře: Brána vzdálené plochy a jiného členského serveru nebo řadiče domény. Ve výchozím nastavení role již existuje v počítač nakonfigurovaný jako Brána vzdálené plochy.  Také nainstalujte NPS role na alespoň na jiném počítači, jako jsou řadiče domény nebo členském serveru.
 
 Informace o instalaci role Server NPS Windows Server 2012 nebo starší, podívejte se sem [nainstalovat Server zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Popis osvědčených postupů pro server NPS, včetně doporučení pro instalaci serveru NPS na řadiči domény, najdete v části [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
 

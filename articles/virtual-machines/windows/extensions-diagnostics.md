@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: db4208c8fef27d2e2085e63ba3a986456d0544bf
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: fe24307f7ed01c64217bcb1f9f7645a30bce7f44
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429112"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322819"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Rozšíření diagnostiky Azure pro virtuální počítače s Windows
 
@@ -37,7 +37,7 @@ Rozšíření Azure Diagnostics vyžaduje, aby cílový virtuální počítač j
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-[Rozšíření Azure Diagnostics schéma a hodnoty vlastností jsou popsány v tomto dokumentu.](../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md)
+[Rozšíření Azure Diagnostics schéma a hodnoty vlastností jsou popsány v tomto dokumentu.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
@@ -80,12 +80,12 @@ Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-[Najdete v článku](../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md) pro pokročilejší Průvodce odstraňováním potíží pro rozšíření Azure Diagnostics.
+[Najdete v článku](../../azure-monitor/platform/diagnostics-extension-troubleshooting.md) pro pokročilejší Průvodce odstraňováním potíží pro rozšíření Azure Diagnostics.
 
 ### <a name="support"></a>Podpora
 
 Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o rozšíření Azure Diagnostics](../../monitoring-and-diagnostics/azure-diagnostics.md)
-* [Projděte si rozšíření schématu a verze](../../monitoring-and-diagnostics/azure-diagnostics-schema.md)
+* [Další informace o rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md)
+* [Projděte si rozšíření schématu a verze](../../azure-monitor/platform/diagnostics-extension-schema.md)

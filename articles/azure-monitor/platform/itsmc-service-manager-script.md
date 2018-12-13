@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.component: ''
-ms.openlocfilehash: 8b589d57ee1fe7b9868f5fe6c04cb336eb4804f8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: d4a4bb4ad77b5cfa55ef33b313eff198972edb6a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882376"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186000"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatického skriptu
 
-Použijte následující skript k vytvoření webové aplikace pro vaši instanci portálu Service Manager. Další informace o připojení nástroje Service Manager je tady: [aplikace webového portálu Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Použijte následující skript k vytvoření webové aplikace pro vaši instanci portálu Service Manager. Další informace o připojení nástroje Service Manager je tady: [Aplikace webového portálu Service Manager](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
 Spusťte skript tím, že poskytuje následující požadované podrobnosti:
 

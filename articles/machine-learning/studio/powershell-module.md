@@ -5,9 +5,8 @@ keywords: experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=haining, author=hning86)
+ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: 3191ff845f72c87b85fdd414716ed9a00b022d06
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6539ec36c23feccfa52c8214784590106fa5a01e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312023"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257518"
 ---
 # <a name="powershell-module-for-azure-machine-learning-studio"></a>Modul PowerShell pro Azure Machine Learning Studio
 Modul PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje použití Windows Powershellu ke správě pracovní prostory, experimenty, datové sady, klasické webové služby a další.
@@ -54,7 +53,7 @@ Na jednoduchém příkladu si můžeme ukázat, jak se pomocí PowerShell spust�
         #Run the Experiment
         Start-AmlExperiment -ExperimentId $exp.ExperimentId 
 
-Podrobnější případ použití, najdete v článku o použití modulu Powershellu pro automatizaci často požadované úlohy: [vytvoření mnoha modelů Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](create-models-and-endpoints-with-powershell.md).
+Podrobnější případ použití najdete v článku o použití modulu Powershellu pro automatizaci často požadované úlohy: [Vytvoření mnoha modelů Machine Learning a webové koncové body služby z jednoho experimentu pomocí prostředí PowerShell](create-models-and-endpoints-with-powershell.md).
 
 ## <a name="how-do-i-get-started"></a>Jak mám začít?
 Pokud chcete začít s Machine Learning PowerShell, stáhněte si [vydaný balíček](https://github.com/hning86/azuremlps/releases) z GitHubu a postupujte podle [instalačních pokynů](https://github.com/hning86/azuremlps/blob/master/README.md). Pokyny vysvětlují, jak odblokovat DLL stažené/odblokujte a potom ho importujte do prostředí PowerShell. Většina rutin vyžaduje, abyste zadali ID pracovního prostoru, jeho autorizační token a oblast Azure, ve které se pracovní prostor nachází. Nejjednodušší způsob, jak zadat hodnoty je prostřednictvím výchozího souboru config.json. Podle pokynů také vysvětlují, jak nakonfigurovat tento soubor. 

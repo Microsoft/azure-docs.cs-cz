@@ -1,13 +1,11 @@
 ---
-title: Diagnostika Azure Load balancer úrovně Standard | Dokumentace Microsoftu
+title: Diagnostika Azure Load balancer úrovně Standard
+titlesuffix: Azure Load Balancer
 description: Použijte k dispozici metriky a informace o stavu diagnostiky pro Azure Load balancer úrovně Standard.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 258e093acd50946e95360416f89b2ceb96ee35d3
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77c3c595994092ff2ca68f3cefa5eb3c8a54bcd6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426464"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189043"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriky a stav diagnostiky pro Load balancer úrovně Standard
 
 Azure Load balancer úrovně Standard poskytuje Azure Load balancer úrovně Standard poskytuje následující možnosti diagnostiky prostředků:
-* **Vícedimenzionálních metrik**: poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro veřejné a vnitřní načtení konfigurace nástroje pro vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
+* **Vícedimenzionálních metrik**: Poskytuje nové multidimenzionální diagnostické možnosti prostřednictvím [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) pro veřejné a vnitřní načtení konfigurace nástroje pro vyrovnávání. Můžete monitorovat, spravovat a řešení potíží s prostředky nástroje pro vyrovnávání zatížení.
 
-* **Služba Resource health**: služby Load balancer úrovně stránky na webu Azure Portal a Resource Health stránky (v části monitorování) vystavit Resource Health část pro konfiguraci nástroje pro vyrovnávání zatížení veřejného Load balanceru úrovně Standard.
+* **Služba Resource health**: Na stránce nástroje pro vyrovnávání zatížení na webu Azure Portal a Resource Health stránky (v části monitorování) vystavit Resource Health část pro konfiguraci nástroje pro vyrovnávání zatížení veřejného Load balanceru úrovně Standard.
 
 Tento článek poskytuje stručný přehled těchto možností a nabízí způsoby, jak je používat pro Load balancer úrovně Standard.
 
@@ -59,7 +57,7 @@ Pokud chcete zobrazit metriky pro vaše prostředky nástroje pro vyrovnávání
 
 ![Ve verzi preview metriky pro Load balancer úrovně Standard](./media/load-balancer-standard-diagnostics/LBMetrics1.png)
 
-*Obrázek: DIP dostupnosti a stavu sondy stavu metriky Load balanceru úrovně Standard*
+*Obrázek: Vyhrazené IP adresy dostupnosti a stavu sondy stavu metriky Load balanceru úrovně Standard*
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Načíst vícedimenzionálních metrik přes rozhraní API prostřednictvím kódu programu
 
@@ -82,7 +80,7 @@ Získejte dostupnost virtuální IP adresy vašich prostředků Load balanceru �
 
 ![Zjišťování virtuálních IP adres](./media/load-balancer-standard-diagnostics/LBMetrics-VIPProbing.png)
 
-*Obrázek: VIP nástroje pro vyrovnávání zatížení podrobnosti o zjišťování*
+*Obrázek: Podrobnosti o zjišťování virtuální IP adresu nástroje pro vyrovnávání zatížení*
 
 Metrika je generován aktivní, integrované měření. Zjišťování služby v rámci oblasti mohou být provoz pro měření. Služba se aktivuje, jakmile vytvoříte nasazení s veřejnou front-endem a pokračuje až do odebrání front-endu. 
 
@@ -169,7 +167,7 @@ Může jít o krok dál a získat přehled o tom, jak zobrazení stavu základn�
 
 ![Diagnostika virtuálních IP adres](./media/load-balancer-standard-diagnostics/LBMetrics-DIPnVIPAvailability.png)
 
-*Obrázek: Kombinace metrik dostupnosti vyhrazené IP adresy a virtuální IP adresy*
+*Obrázek: Kombinování metriky dostupnosti vyhrazené IP adresy a virtuální IP adresy*
 
 V grafu se zobrazují následující informace:
 - Byla infrastruktury sám v pořádku, byla infrastruktury hostování virtuálních počítačů dostupné a více než jeden virtuální počítač byl umístěn v back-endu. Tyto informace je indikován modré trasování dostupnosti virtuálních IP adres, což je 100 % jeho obsahu. 
@@ -193,7 +191,7 @@ Chcete-li zobrazit stav svých prostředků veřejného Load balanceru úrovně 
 
    ![Stránka monitorování](./media/load-balancer-standard-diagnostics/LBHealth1.png)
 
-   *Obrázek: Odkaz stav služby na Azure monitoru*
+   *Obrázek: Stav služby odkaz na Azure monitoru*
 
 2. Vyberte **Resource Health**a ujistěte se, že **ID předplatného** a **typ prostředku = nástroje pro vyrovnávání zatížení** jsou vybrány.
 

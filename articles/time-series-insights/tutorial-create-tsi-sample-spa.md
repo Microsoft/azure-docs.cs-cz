@@ -1,5 +1,5 @@
 ---
-title: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
+title: Vytvoření jednostránkovou webovou aplikaci Azure Time Series Insights | Dokumentace Microsoftu
 description: Zjistěte, jak vytvořit jednostránkovou webovou aplikaci, která dotazuje a vykresluje data z prostředí TSI.
 author: ashannon7
 ms.service: time-series-insights
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: fccd509d4f16cee86d30feb0e838f1493cae4e0b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626751"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275835"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Kurz: Vytvoření jednostránkové webové aplikace Azure Time Series Insights
 
@@ -33,8 +34,8 @@ Budete si také muset nainstalovat sadu Visual Studio, pokud jste to ještě neu
 
 Jak už bylo zmíněno, ukázková aplikace TSI poskytuje základ návrhu a kódu použitých v tomto kurzu. Kód zahrnuje použití javascriptové klientské knihovny pro TSI. Klientská knihovna pro TSI zajišťuje abstrakci dvou hlavních kategorií rozhraní API:
 
-- **Obálkové metody pro volání dotazovacích rozhraní API pro TSI:** Rozhraní REST API umožňující dotazovat data TSI pomocí výrazů založených na JSON. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.server` knihovny.
-- **Metody pro vytváření a naplňování různých typů ovládacích prvků grafů:** Metody používané k vizualizaci dat TSI na webové stránce. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.ux` knihovny.
+- **Metody obálky volání API pro dotazy služby TSI**: Rozhraní REST API, která umožňuje zadat dotaz pro TSI data pomocí výrazů založenými na JSON. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.server` knihovny.
+- **Metody vytvoření a naplnění několik typů grafů ovládací prvky**: Metody, které se používají pro vizualizace dat služby TSI na webové stránce. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.ux` knihovny.
 
 V tomto kurzu se také budou používat data z prostředí TSI ukázkové aplikace. Podrobnosti o struktuře ukázkové aplikace TSI a jejím použití klientské knihovny pro TSI najdete v kurzu [Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights](tutorial-explore-js-client-lib.md).
 
@@ -91,7 +92,7 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
    > V závislosti na prohlížeči možná budete muset před uložením souboru opravit příponu souboru (na HTML nebo CSS).
 
    - **index.html:** HTML a JavaScript pro stránku – https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
-   - **sampleStyles.css:** Šablona stylů CSS – https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
+   - **sampleStyles.css:** Šablony stylů CSS: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
 1. Spusťte sadu Visual Studio a přihlaste se, abyste mohli vytvořit projekt webové aplikace. V nabídce **Soubor** vyberte **Otevřít** a možnost **Web**. V dialogovém okně **Otevřít web** vyberte pracovní adresář, do kterého jste uložili soubory HTML a CSS, a pak klikněte na **Otevřít**:
 
@@ -177,8 +178,8 @@ Před sestavením aplikace je potřeba ji zaregistrovat ve službě Azure AD. Re
 
 Kód chyby nebo chybová podmínka | Popis
 ---------------------| -----------
-*AADSTS50011: Pro aplikaci není zaregistrovaná žádná adresa pro odpovědi.* | V registraci ve službě Azure AD chybí vlastnosti Adresa URL odpovědi. Přejděte na stránku **Nastavení** / **Adresy URL odpovědí** pro vaši registraci aplikace ve službě Azure AD. Ověřte, že se zobrazuje **přihlašovací** adresa URL zadaná v kroku 3 v části [Registrace aplikace ve službě Azure AD](#register-the-application-with-azure-ad). 
-*AADSTS50011: Adresa URL zadaná v požadavku neodpovídá adresám URL nakonfigurovaným pro aplikaci: <Application ID GUID>.* | Hodnota `postLogoutRedirectUri` zadaná v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané ve vlastnosti **Nastavení** / **Adresy URL odpovědí** ve vaší registraci aplikace ve službě Azure AD. Nezapomeňte změnit také **cílovou adresu URL** tak, aby používala `https`, jako v kroku 5.e v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application).
+*AADSTS50011: Žádná odpověď adresa je zaregistrovaný pro aplikaci.* | V registraci ve službě Azure AD chybí vlastnosti Adresa URL odpovědi. Přejděte na stránku **Nastavení** / **Adresy URL odpovědí** pro vaši registraci aplikace ve službě Azure AD. Ověřte, že se zobrazuje **přihlašovací** adresa URL zadaná v kroku 3 v části [Registrace aplikace ve službě Azure AD](#register-the-application-with-azure-ad). 
+*AADSTS50011: Odpověď url zadanou v požadavku se neshoduje s odpovědních adres URL nakonfigurované pro aplikace: "<Application ID GUID>".* | Hodnota `postLogoutRedirectUri` zadaná v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application) musí odpovídat hodnotě zadané ve vlastnosti **Nastavení** / **Adresy URL odpovědí** ve vaší registraci aplikace ve službě Azure AD. Nezapomeňte změnit také **cílovou adresu URL** tak, aby používala `https`, jako v kroku 5.e v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application).
 Webová aplikace se načte, ale zobrazí se přihlašovací stránka bez stylů pouze s textem na bílém pozadím. | Ověřte správnost cest popsaných v kroku 4 v části [Sestavení a publikování webové aplikace](#build-and-publish-the-web-application). Pokud webová aplikace nemůže najít soubory .css, stránka nebude používat správné styly.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -190,7 +191,7 @@ V nabídce vlevo na webu Azure Portal:
 1. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu prostředků, kterou jste vytvořili pro prostředí TSI. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
 1. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu vytvořenou akcelerátorem řešení simulace zařízení. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

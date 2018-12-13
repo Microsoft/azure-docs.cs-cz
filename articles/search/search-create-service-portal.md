@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby Azure Search na portálu | Microsoft Docs
-description: Zřízení služby Azure Search na portálu.
+title: Vytvoření služby Azure Search na portálu – Azure Search
+description: Zřízení služby Azure Search na webu Azure Portal. Výběr skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713923"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315974"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
@@ -58,7 +59,7 @@ Skupina prostředků je kolekce společně používaných služeb a prostředků
 Protože se jedná o službu Azure, je Azure Search možné hostovat v datových centrech po celém světě. Mějte na paměti, že v různých zeměpisných oblastech se [ceny mohou lišit](https://azure.microsoft.com/pricing/details/search/).
 
 ## <a name="select-a-pricing-tier-sku"></a>Výběr cenové úrovně (SKU)
-[Služba Azure Search je aktuálně k dispozici v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
+[Služba Azure Search je v současné době nabízena v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
 
 Úroveň Standard se obvykle používá pro produkční úlohy, ale většina zákazníků se službou začíná na úrovni Free.
 
@@ -107,7 +108,7 @@ I když většina zákazníků používá jenom jednu službu, redundance služb
 
 Druhá služba není potřebná pro zajištění vysoké dostupnosti. Vysoká dostupnost pro dotazy se dosáhne, když použijete 2 nebo více replik v rámci stejné služby. Aktualizace replik jsou sekvenční, což znamená, že alespoň jedna replika je funkční při nasazení aktualizace služby. Další informace o době provozu najdete v tématu [Smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po zřízení služby Azure Search jste připraveni [definovat index](search-what-is-an-index.md), abyste mohli nahrát a prohledávat svá data. 
 
 > [!div class="nextstepaction"]

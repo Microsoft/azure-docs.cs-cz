@@ -1,9 +1,9 @@
 ---
-title: Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric | Microsoft Docs
-description: Service Fabric stavové služby poskytují spolehlivé kolekce, které vám umožní zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace.
+title: Úvod do spolehlivé kolekce v stavové služby Azure Service Fabric | Dokumentace Microsoftu
+description: Service Fabric stavové služby poskytují spolehlivé kolekce, které umožňují také napsat vysoce dostupných, škálovatelných a nízkou latenci cloudových aplikací.
 services: service-fabric
 documentationcenter: .net
-author: mcoskun
+author: tylermsft
 manager: timlt
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,57 +13,57 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
-ms.author: mcoskun
-ms.openlocfilehash: 2876d90c02995394104009d1b2d62d5b3ed6a8d9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: caca297afb9ed4e2d85f1068ad3c1122db60c1d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212921"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191984"
 ---
-# <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric
-Spolehlivé kolekce umožňují zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace, jako kdyby byly psaní aplikací jeden počítač. Třídy v **Microsoft.ServiceFabric.Data.Collections** obor názvů poskytují sadu kolekcí, které automaticky nastavit vašemu stavu jako vysoce dostupný. Vývojáři muset programu jen pro spolehlivé rozhraní API kolekce a nechat spolehlivé kolekce Správa stavu replikují a místní.
+# <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivé kolekce v stavové služby Azure Service Fabric
+Reliable Collections umožňují zapisovat vysoce dostupných, škálovatelných a nízkou latenci cloudových aplikací, jako by byly psaní aplikací jeden počítač. Třídy v **Microsoft.ServiceFabric.Data.Collections** obor názvů poskytují sadu kolekcí, které automaticky nastavit svůj stav jako vysoce dostupný. Vývojáři potřebují pro aplikaci pouze pro spolehlivé kolekce rozhraní API a umožnit Reliable Collections Správa stavu replikují a místní.
 
-Klíče rozdíl mezi spolehlivé kolekce a další technologie vysokou dostupnost (například Redis, služby Azure Table a fronty Azure service) je, že stav je uložen místně v instanci služby při také prováděné vysoce dostupný. To znamená, že:
+Klíčovým rozdílem mezi Reliable Collections a dalších technologií vysoké dostupnosti (jako jsou Redis, službu Azure Table service a Azure Queue service) je, že stav je uložený místně v instanci služby při také prováděné s vysokou dostupností. To znamená, že:
 
-* Všechny operace čtení jsou místní, výsledkem s nízkou latencí a vysokou propustností čte.
-* Všech zápisů zpoplatněná minimální počet IOs sítě, což vede k s nízkou latencí a vysokou propustností zapisuje.
+* Všechny operace čtení jsou místní, což má za následek s nízkou latencí a vysokou propustnost čtení.
+* Všechny operace zápisu se vám účtovat minimální počet síťových zařízení se systémy IOS, což vede k s nízkou latencí a vysokou propustnost zápisů.
 
 ![Obrázek vývoj kolekcí.](media/service-fabric-reliable-services-reliable-collections/ReliableCollectionsEvolution.png)
 
-Spolehlivé kolekce si lze představit jako přirozené vývoj **System.Collections** třídy: novou sadu kolekcí, které jsou určené pro cloudové a více počítači aplikace bez zvyšuje složitost pro vývojáře. Jako takový spolehlivé kolekce jsou:
+Spolehlivé kolekce si lze představit jako přirozeným vývojem **System.Collections** třídy: novou sadu kolekcí, které jsou navržené pro cloud a s více počítači aplikace bez zvýšení složitosti pro pro vývojáře. V důsledku toho spolehlivé kolekce jsou:
 
-* Replikované: Se pro zajištění vysoké dostupnosti replikují změny stavu.
-* Trvalé: Data přetrvají na disk pro odolnost proti výpadkům ve velkém rozsahu (například výpadku napájení datacenter).
-* Asynchronní: Rozhraní API jsou asynchronní zajistit, že nejsou při by docházelo k vstupně-výstupní operace zablokované vláken.
-* Transakční: Rozhraní API využívat abstrakce transakce, můžete snadno spravovat více spolehlivé kolekcí v rámci služby.
+* Replikované: Změny stavu se replikují pro zajištění vysoké dostupnosti.
+* Trvalý: Data se ukládají na disk pro odolnost proti výpadkům ve velkém měřítku (například k výpadku datového centra power).
+* Asynchronní: Rozhraní API jsou asynchronní Ujistěte se, že nejsou při vstupně-výstupních operací za něj zablokované podprocesy.
+* Transakční: Rozhraní API využívat abstrakce transakce, tak můžete snadno spravovat více spolehlivé kolekce v rámci služby.
 
-Spolehlivé kolekce poskytují silnou konzistenci zaručuje předinstalované usnadnění reasoning o stavu aplikace.
-Silnou konzistenci je dosaženo tím, že zajistí transakce, které potvrzení dokončit až poté, co je celá transakce byl zaprotokolován na většinu kvora repliky, včetně primární.
-K dosažení slabší konzistence, může aplikace vědomí zpět do klienta žadatele o před vrátí asynchronního potvrzování.
+Spolehlivé kolekce poskytují silnou konzistenci záruky mimo pole pro usnadnění uvažování o stavu aplikace.
+Silná konzistence se dosahuje tím, že zajišťuje transakci dokončit potvrzení až po celou transakci byli přihlášeni kvorum replik, včetně primární.
+Jak dosáhnout konzistence slabší, lze potvrdit aplikace zpět do klienta žadatele o dříve, než vrátí asynchronního potvrzování.
 
-Rozhraní API, spolehlivé kolekce jsou vývojem souběžných kolekcí rozhraní API (v nalezen **System.Collections.Concurrent** oboru názvů):
+Rozhraní API pro spolehlivé kolekce jsou výsledkem vývoje souběžné kolekce rozhraní API (v nalezen **System.Collections.Concurrent** oboru názvů):
 
-* Asynchronní: Vrátí úlohu, protože na rozdíl od souběžných kolekcí, jsou operace replikovat a trvalé.
-* Žádná výstupní parametry: používá `ConditionalValue<T>` vrátí bool a hodnotu místo výstupní parametry. `ConditionalValue<T>` je třeba `Nullable<T>` ale nevyžaduje T být struktury.
-* Transakce: Používá transakční objekt a umožňuje uživateli akce skupiny na více kolekcí spolehlivé v transakci.
+* Asynchronní: Vrátí úlohu, protože na rozdíl od souběžných kolekcí, operace replikuje a trvalé.
+* Žádné výstupní parametry: Používá `ConditionalValue<T>` vrátit hodnotu a hodnotu místo výstupní parametry. `ConditionalValue<T>` je třeba `Nullable<T>` ale nevyžaduje T být struktura.
+* Transakce: Objekt transaction využívá k zajištění uživatele do skupiny akcí v několika spolehlivé kolekce v transakci.
 
 V současné době **Microsoft.ServiceFabric.Data.Collections** obsahuje tři kolekce:
 
-* [Spolehlivé slovník](https://msdn.microsoft.com/library/azure/dn971511.aspx): představuje replikovaných transakcí a asynchronní kolekci dvojic klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč a hodnotu můžou být jakéhokoli typu.
-* [Spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx): představuje replikovaných transakcí a asynchronní striktní first-in použity fronty. Podobně jako **ConcurrentQueue**, hodnota může být jakéhokoli typu.
-* [Spolehlivé souběžných fronty](service-fabric-reliable-services-reliable-concurrent-queue.md): představuje replikovaných transakcí a asynchronní úsilí nejlepší řazení fronty pro vysoké propustnosti. Podobně jako **ConcurrentQueue**, hodnota může být jakéhokoli typu.
+* [Spolehlivého slovníku](https://msdn.microsoft.com/library/azure/dn971511.aspx): Představuje replikovaných transakcí a asynchronní kolekci dvojic klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč a hodnota může být libovolného typu.
+* [Spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx): Představuje replikovaných transakcí a asynchronní striktní first-in FIFO (FIFO) fronty. Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
+* [Spolehlivá souběžná fronta](service-fabric-reliable-services-reliable-concurrent-queue.md): Představuje replikovaných transakcí a asynchronní nezaručené řazení fronty pro vysokou propustnost. Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
 
 ## <a name="next-steps"></a>Další postup
-* [Spolehlivé kolekce pokyny a doporučení](service-fabric-reliable-services-reliable-collections-guidelines.md)
+* [Pokyny a doporučení Reliable Collection](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [Práce s Reliable Collections](service-fabric-work-with-reliable-collections.md)
-* [Transakce a zámky.](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+* [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
   * [Oznámení](service-fabric-reliable-services-notifications.md)
   * [Spolehlivá serializace kolekcí](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serializace a Upgrade](service-fabric-application-upgrade-data-serialization.md)
-  * [Configuration Manager spolehlivé stavu](service-fabric-reliable-services-configuration.md)
+  * [Konfigurace Reliable State Manager](service-fabric-reliable-services-configuration.md)
 * Ostatní
-  * [Spolehlivé služby rychlý start](service-fabric-reliable-services-quick-start.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Rychlý start Reliable Services](service-fabric-reliable-services-quick-start.md)
+  * [Referenční informace pro vývojáře pro Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

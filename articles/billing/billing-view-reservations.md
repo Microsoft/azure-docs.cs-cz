@@ -1,6 +1,6 @@
 ---
-title: Zobrazit Azure rezervace | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit rezervace Azure na webu Azure Portal.
+title: Zobrazit rezervace pro prostředky Azure | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazení Azure rezervací na webu Azure Portal.
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c7522076987aacacc6fde6a0c9d2fa867a3f14aa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584583"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314036"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazit Azure rezervace na webu Azure Portal
+# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Zobrazit rezervace pro Azure na webu Azure Portal
 
-V závislosti na typu předplatného a oprávnění existuje několik způsobů, jak zobrazit Azure rezervace.
+V závislosti na typu předplatného a oprávnění existuje několik způsobů, jak zobrazit rezervace pro prostředky Azure.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>Zobrazit rezervace jako vlastník nebo čtenáře
 
@@ -30,7 +30,7 @@ Ve výchozím nastavení, při nákupu rezervace, je správce účtu může zobr
  
 Chcete-li zobrazit rezervace jako vlastník nebo čtečka otisku prstů,
 
-1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Hledat na **rezervace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojen
 
 Chcete-li zobrazit transakce rezervace na webu Azure portal
 
-1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Hledat na **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -54,13 +54,13 @@ Chcete-li zobrazit transakce rezervace na webu Azure portal
 1. Chcete-li filtrovat výsledky, vyberte **Timespan**, **typ**, nebo **popis**.
 1. Vyberte **Použít**.
 
-    ![Snímek obrazovky zobrazující výsledky transakce rezervace](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
+    ![Snímek obrazovky zobrazující rezervace výsledky transakce](./media/billing-view-reservation/portal-billing-reservation-transaction-results.png)
 
 K získání dat pomocí rozhraní API, najdete v článku [poplatky za transakce získat rezervovaných instancí pro podnikové zákazníky](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rezervacích Azure, najdete v následujících článcích:
+Další informace o Azure rezervace, naleznete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předem služby Cosmos DB vyhrazené kapacity](../cosmos-db/cosmos-db-reserved-capacity.md)

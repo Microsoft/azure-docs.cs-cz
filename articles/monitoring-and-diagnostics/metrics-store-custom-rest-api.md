@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: ccfe108b895450e97df1639f6c47eb01823ce5f4
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 8afa6a29d7d97b1d961f8a8ea44a2b62896ec4da
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636760"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323059"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odeslat vlastní metriky pro prostředek Azure k úložišti Azure Monitor metriky pomocí rozhraní REST API
 
@@ -94,7 +94,7 @@ Pokud se zobrazí chybová zpráva se některé části procesu, vezměte v úva
 1. Nelze vydat metrik pro předplatné nebo skupinu prostředků jako váš prostředek Azure. 
 1. Metrika nelze umístit do úložiště, který je více než 20 minut. Metriky úložiště je optimalizovaný pro výstrahy a vytváření grafů v reálném čase. 
 2. Počet dimenzí názvů by měl odpovídat hodnotám a naopak. Zkontrolujte hodnoty. 
-2. Může být generování metrik pro oblast, která nepodporuje vlastní metriky. Zobrazit [podporované oblasti](metrics-custom-overview.md#supported-regions). 
+2. Může být generování metrik pro oblast, která nepodporuje vlastní metriky. Zobrazit [podporované oblasti](../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
@@ -118,4 +118,4 @@ Pokud se zobrazí chybová zpráva se některé části procesu, vezměte v úva
 
  
 ## <a name="next-steps"></a>Další postup
-- Další informace o [vlastní metriky](metrics-custom-overview.md).
+- Další informace o [vlastní metriky](../azure-monitor/platform/metrics-custom-overview.md).

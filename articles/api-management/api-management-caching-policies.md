@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 2511a608a74a04314b5fd56a55f4ae93ca0e2978
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 48b0085e52c1752c0b5ecc89ce229a5a82f74345
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017470"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310432"
 ---
 # <a name="api-management-caching-policies"></a>Zásady ukládání do mezipaměti služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -118,14 +118,14 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 | preference mezipaměti               | Zvolte mezi následující hodnoty atributu:<br />- `internal` Použití integrované mezipaměti API Management<br />- `external` Chcete-li použít externí mezipaměť, jak je popsáno v [účely externí mezipamětí Azure Redis ve službě Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external` jinak používat externí mezipamětí, pokud je nakonfigurovaná nebo vnitřní mezipaměti. | Ne       | `prefer-external` |
 | podřízený typ ukládání do mezipaměti        | Tento atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -žádný - podřízené ukládání do mezipaměti není povolený.<br />-soukromé - příjem dat soukromých ukládání do mezipaměti je povolen.<br />-public - privátní a sdílené podřízené ukládání do mezipaměti je povolen.                                                                                                          | Ne       | žádný              |
 | musí revalidate                | Pokud je povoleno ukládání do mezipaměti podřízené tento atribut Zapne nebo vypne `must-revalidate` – direktiva ovládacího prvku mezipaměti v odpovědi brány.                                                                                                                                                                                                                      | Ne       | true (pravda)              |
-| se liší podle developer              | Nastavte na `true` do mezipaměti odpovědi na klíč pro vývojáře.                                                                                                                                                                                                                                                                                                         | Ano      |                   |
-| se liší podle – pro vývojáře – skupiny       | Nastavte na `true` do mezipaměti odpovědi na roli uživatele.                                                                                                                                                                                                                                                                                                             | Ano      |                   |  
+| se liší podle developer              | Nastavte na `true` do mezipaměti odpovědi na [klíč předplatného](https://docs.microsoft.com/azure/api-management/api-management-subscriptions#what-is-subscriptions).                                                                                                                                                                                                                                                                                                         | Ano      |                   |
+| se liší podle – pro vývojáře – skupiny       | Nastavte na `true` do mezipaměti odpovědi na [skupinu uživatelů](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Ano      |                   |  
 
 ### <a name="usage"></a>Využití  
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** příchozí  
--   **Zásady obory:** rozhraní API, operace, produkt  
+-   **Obory zásad:** Rozhraní API, operace, produktu  
   
 ##  <a name="StoreToCache"></a> Store do mezipaměti  
  `cache-store` Zásady ukládání do mezipaměti odpovědi podle nastavení zadané mezipaměti. Tuto zásadu lze použít v případech, kde zůstává statický obsah odpovědi po určitou dobu. Ukládání odpovědí do mezipaměti snižuje šířku pásma a požadavky na zpracování uložených na back-endu webového serveru a snižuje latenci vnímají spotřebitelé rozhraní API.  
@@ -197,7 +197,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Části zásad:** odchozí    
--   **Zásady obory:** rozhraní API, operace, produkt  
+-   **Obory zásad:** Rozhraní API, operace, produktu  
   
 ##  <a name="GetFromCacheByKey"></a> Získat hodnotu z mezipaměti  
  Použití `cache-lookup-value` zásad provádět vyhledávání v mezipaměti podle klíče a vrátí hodnotu uloženou v mezipaměti. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad.  

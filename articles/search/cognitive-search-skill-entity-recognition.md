@@ -1,5 +1,5 @@
 ---
-title: Dovednosti kognitivního vyhledávání rozpoznávání entit (Azure Search) | Dokumentace Microsoftu
+title: Entita rozpoznávání kognitivního vyhledávání dovednosti – Azure Search
 description: Extrahujte různé typy entit z textu v kanálu služby Azure Search kognitivního vyhledávání.
 services: search
 manager: pablocas
@@ -10,19 +10,23 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 7599ab7eb7a6ff247548d988c57bdc6c501a5a6b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52449908"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311860"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Kognitivní dovednosti rozpoznávání entit
 
 **Rozpoznávání entit** dovednosti z textu extrahuje entit různých typů. 
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
+
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.EntityRecognitionSkill
@@ -51,7 +55,7 @@ Parametry jsou malá a velká písmena a jsou nepovinné.
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-**Poznámka:**: pro všechny jazyky jsou podporovány všechny kategorie entity.
+**POZNÁMKA:**: Pro všechny jazyky jsou podporovány všechny kategorie entity.
 Pouze _en_, _es_ podporují extrakce `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` typy.
 
 | Název výstupního     | Popis                   |
@@ -64,7 +68,7 @@ Pouze _en_, _es_ podporují extrakce `"Quantity"`, `"Datetime"`, `"URL"`, `"Emai
 | adresy URL | Pole řetězců, přičemž každý řetězec představuje adresu URL |
 | e-maily | Pole řetězců, přičemž každý řetězec představuje e-mailu |
 | namedEntities | Pole komplexní typy, které obsahují následující pole: <ul><li>category</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (nepoužitý teď. Bude nastavena na hodnotu-1)</li></ul> |
-| entity | Pole komplexní typy, které obsahuje podrobné informace o entitách extrahovat z textu u následujících polí <ul><li> Name (název skutečné entity. To představuje "normalizovaných" formuláře)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedia entity)</li><li>bingId</li><li>Typ (kategorie entity rozpoznán)</li><li>Podtyp (k dispozici pouze pro určité kategorie, to dává další zobrazení granual typu entity)</li><li> odpovídá (komplexní kolekci, která obsahuje)<ul><li>text (nezpracovaný text entity)</li><li>posun (umístění, kde se nachází)</li><li>Length (délka textu nezpracované entity)</li></ul></li></ul> |
+| entity | Pole komplexní typy, které obsahuje podrobné informace o entitách extrahovat z textu u následujících polí <ul><li> Name (název skutečné entity. To představuje "normalizovaných" formuláře)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedia entity)</li><li>bingId</li><li>Typ (kategorie entity rozpoznán)</li><li>Podtyp (k dispozici pouze pro určité kategorie, to dává s podrobnějším zobrazením typu entity)</li><li> odpovídá (komplexní kolekci, která obsahuje)<ul><li>text (nezpracovaný text entity)</li><li>posun (umístění, kde se nachází)</li><li>Length (délka textu nezpracované entity)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Ukázková definice
 

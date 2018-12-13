@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e5943dde86b96dc0f95df0620212daf9a972fccf
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: bc3ab808234ee0759abea0520ea0336489fc60d6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882295"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309599"
 documentType: LandingData
 title: Azure SQL Database – izolované databáze
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 12/01/2018
   ms.author: jovanpop-msft
 abstract:
-  description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonné, snadno k použití, spolehlivé a zabezpečené databázi, kterou můžete použít k vytvoření nové aplikace, weby a mikroslužby v programovacím jazyce podle vašeho výběru, aniž byste museli spravovat infrastrukturu. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
     image:
       alt: 
@@ -68,6 +68,17 @@ sections:
       html: <p>K zabezpečení vašich databází můžete využít ověřování Azure AD, virtuální sítě, brány firewall a připojení Always Encrypted. Integrované zabezpečení pomáhá odhalit hrozby a ohrožení zabezpečení.</p>
       image:
         src: media/index/i_security.svg
+- title: Nové a funkce ve verzi preview
+  items:
+  - type: paragraph
+    text: 'Můžeme se průběžně vylepšení SQL Database s novými funkcemi a rádi bychom znali váš názor týkající se následující nové funkce:'
+  - type: list
+    style: unordered
+    items:
+    - html: (Preview) <a href="sql-database-service-tier-hyperscale">Hyperškálovatelného</a> úroveň, která podporuje až 100 TB databází a replik pro čtení připravených více.
+    - html: (Preview) Nový SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">inteligentní dotaz zpracování</a> funkce, jako <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">proměnnou tabulky odložené kompilace</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">režimu služby batch v tabulkách rowstore</a>, a <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> Skalární UDF vkládání</a>.
+    - html: (Preview) Nové funkce jazyka Transact-SQL, jako například <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">APPROX_COUNT_DISTINCT agregace</a> a <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">HROMADNÉHO IMPORTU z úložiště objektů Blob Azure</a>.
+    - html: (Preview) Nový SQL Server. 2019 Online <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">sestavení</a> a znovu sestavte operace indexu COLUMNSTORE v clusteru.
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph

@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Java'
+title: 'Rychlý start: Provádět vyhledávání na webu s C# – rozhraní API REST webové vyhledávání Bingu'
 titlesuffix: Azure Cognitive Services
-description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv ve službě Microsoft Cognitive Services v Azure.
+description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Javy a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d8ab0e10e8332cf2305185849d6446d679210845
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 9933f1c54e6081ed3f1004712543610a7883736b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316833"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260952"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-java"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání zpráv s využitím Javy
+# <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Javy a rozhraní API REST vyhledávání zpráv Bingu
 
 Tento článek vám ukazuje, jak používat rozhraní API pro vyhledávání Bingu, což je součást Microsoft Cognitive Services v Azure. V tomto článku se sice používá Java, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

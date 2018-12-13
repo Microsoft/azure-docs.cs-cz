@@ -1,5 +1,5 @@
 ---
-title: Nastavení replikace clusteru HBase ve virtuálních sítích Azure
+title: Nastavení replikace clusteru HBase ve virtuálních sítích Azure – Azure HDInsight
 description: Zjistěte, jak nastavit HBase replikace z jedné verze HDInsight do jiné služby Vyrovnávání zatížení, vysokou dostupnost, migrace s nulovými výpadky a aktualizace a zotavení po havárii.
 services: hdinsight,virtual-network
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584175"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163823"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
@@ -263,10 +263,10 @@ Vytvoření [Apache HBase](http://hbase.apache.org/) clusteru v každém ze dvou
 - **Název skupiny prostředků**: použijte stejný název skupiny prostředků, při vytváření virtuální sítě.
 - **Typ clusteru**: HBase
 - **Verze**: HBase 1.1.2 (HDI 3.6)
-- **Umístění**: určit stejné umístění jako virtuální síť.  Ve výchozím nastavení, je ze sítě vnet1 *USA – západ*, a síť vnet2 je *USA – východ*.
-- **Úložiště**: vytvořit nový účet úložiště pro cluster.
-- **Virtuální síť** (z upřesňující nastavení na portálu): Vyberte vnet1, kterou jste vytvořili v posledním postupu.
-- **Podsíť**: je výchozím názvem používaným v šabloně **subnet1**.
+- **Umístění**: Použijte stejné umístění jako virtuální síť.  Ve výchozím nastavení, je ze sítě vnet1 *USA – západ*, a síť vnet2 je *USA – východ*.
+- **Úložiště**: Vytvořte nový účet úložiště pro cluster.
+- **Virtuální síť** (z upřesňující nastavení na portálu): Vyberte ze sítě vnet1, kterou jste vytvořili v posledním postupu.
+- **Podsíť**: Výchozím názvem používaným v šabloně je **subnet1**.
 
 K zajištění, že je prostředí správně nakonfigurováno, musí být poslat příkaz ping plně kvalifikovaný název domény hlavního uzlu v mezi dvěma clustery.
 
@@ -274,7 +274,7 @@ K zajištění, že je prostředí správně nakonfigurováno, musí být poslat
 
 Při replikaci clusteru, je nutné zadat tabulky, které chcete replikovat. V této části můžete načíst data do zdrojového clusteru. V další části povolíte replikaci mezi dvěma clustery.
 
-Chcete-li vytvořit **kontakty** tabulku a vložte některá data v tabulce, postupujte podle pokynů na adrese [kurz Apache HBase: začněte používat Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Chcete-li vytvořit **kontakty** tabulku a vložte některá data v tabulce, postupujte podle pokynů na adrese [kurz Apache HBase: Začněte používat Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -290,8 +290,8 @@ Následující kroky popisují, jak volat skript akce skriptu z webu Azure porta
 
   1. **Název**: Zadejte **povolit replikaci**.
   2. **Adresa URL skriptu bash**: Zadejte **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**.
-  3.  **Hlavní**: Ujistěte se tato možnost je vybrána. Zrušte jiné typy uzlů.
-  4. **Parametry**: následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
+  3.  **Hlavní**: Ujistěte se, že je vybrána tato možnost. Zrušte jiné typy uzlů.
+  4. **Parametry**: Následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     

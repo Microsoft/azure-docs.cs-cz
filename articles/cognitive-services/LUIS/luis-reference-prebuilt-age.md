@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 2965f9fcedba55536ef25469975679bffe27b4e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 88d2633a107f36c7c0eab8803a3b6ea10e067506
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102652"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166536"
 ---
-# <a name="age-entity"></a>Entita Age
+# <a name="age-prebuilt-entity-for-a-luis-app"></a>Stáří předem připravených entit pro aplikace LUIS
 Stáří předem připravených entit zachycuje hodnotu stáří jak číselně a co se týče dnů, týdnů, měsíců a roků. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující stáří na záměry aplikace. Stáří entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
 
 ## <a name="types-of-age"></a>Typy věku
-Spravuje se z věku [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) úložiště Github
+Spravuje se z věku [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) úložiště GitHub
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>Řešení pro stáří předem připravených entit
 Následující příklad ukazuje rozlišení **builtin.age** entity.

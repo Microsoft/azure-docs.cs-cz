@@ -1,6 +1,6 @@
 ---
-title: Jak používat Azure Search z aplikace .NET | Dokumentace Microsoftu
-description: Jak používat Azure Search z aplikace .NET
+title: Jak používat Azure Search z aplikace .NET – Azure Search
+description: Další informace o použití Azure Search v .NET aplikace pomocí C# a sady .NET SDK. Založený na kódu úkoly zahrnují služby indexování obsahu, připojení a dotazování indexu.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.custom: seodec2018
+ms.openlocfilehash: c2dd9d7c7567a7c57def093c4d611ab09c870d84
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525633"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310660"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Jak používat Azure Search z aplikace .NET
 Tento článek je návod, který vám pomůžou začít pracovat s [Azure Search .NET SDK](https://aka.ms/search-sdk). Sady .NET SDK můžete použít k implementaci bohaté vyhledávací funkce do vaší aplikace pomocí Azure Search.
@@ -28,7 +29,7 @@ Další balíčky NuGet v sadě Windows SDK jsou:
  
   - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikace .NET pomocí Azure Search a potřebujete jenom dotazování a aktualizaci dokumentů v indexů. Pokud je také potřeba vytvořit nebo aktualizovat indexů, map synonym, nebo další prostředky na úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
   - `Microsoft.Azure.Search.Service`: Tento balíček použijte, pokud vyvíjíte v rozhraní .NET pro správu indexů Azure Search, map synonym, indexery, zdroje dat nebo další prostředky na úrovni služby automation. Pokud potřebujete jenom k dokumentům dotazu nebo aktualizace v indexů, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce služby Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
-  - `Microsoft.Azure.Search.Common`: Vyžadované knihoven Azure Search pro .NET běžných typů. By neměl muset použít tento balíček přímo v aplikaci; Je určená jenom pro použití jako závislost.
+  - `Microsoft.Azure.Search.Common`: Běžné typy vyžadované knihoven Azure Search pro .NET. By neměl muset použít tento balíček přímo v aplikaci; Je určená jenom pro použití jako závislost.
 
 Definování různých klientských knihoven tříd jako `Index`, `Field`, a `Document`, stejně jako operace, jako jsou `Indexes.Create` a `Documents.Search` na `SearchServiceClient` a `SearchIndexClient` třídy. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
@@ -386,7 +387,7 @@ public partial class Hotel
 }
 ```
 
-Nejprve si všimněte, že každá veřejná vlastnost třídy `Hotel` odpovídá poli v definici indexu s jedním zásadním rozdílem: Název každého pole začíná malým písmenem („CamelCase“), zatímco název každé veřejné vlastnosti třídy `Hotel` začíná velkým písmenem („PascalCase“). To je běžný scénář v .NET aplikacích provádějících datové vazby, kde je cílové schéma mimo kontrolu vývojáře aplikace. Místo porušování směrnic pojmenování .NET psaním názvů vlastností ve stylu CamelCase můžete pomocí atributu `[SerializePropertyNamesAsCamelCase]` říct sadě SDK, aby mapovala názvy vlastností na CamelCase automaticky.
+Všimněte si, že prvním krokem je, že každá veřejná vlastnost třídy `Hotel` odpovídá poli v definici indexu, ale s jedním zásadním rozdílem: Název každého pole začíná malým písmenem ("camelCase"), zatímco název každé veřejné vlastnosti třídy `Hotel` začíná velké písmeno ("pascalcase"). To je běžný scénář v .NET aplikacích provádějících datové vazby, kde je cílové schéma mimo kontrolu vývojáře aplikace. Místo porušování směrnic pojmenování .NET psaním názvů vlastností ve stylu CamelCase můžete pomocí atributu `[SerializePropertyNamesAsCamelCase]` říct sadě SDK, aby mapovala názvy vlastností na CamelCase automaticky.
 
 > [!NOTE]
 > .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v tématu [vlastní serializace pomocí technologie JSON.NET](#JsonDotNet).
@@ -408,7 +409,7 @@ Tato možnost používat vaše vlastní třídy jako dokumenty funguje v obou sm
 
 Při navrhování vlastních tříd modelu pro mapování na index Azure Search doporučujeme deklarovat vlastnosti typů hodnot, jako jsou `bool` nebo `int`, s možnou hodnotou null (například `bool?` místo `bool`). Pokud použijete vlastnost se zakázanou hodnotou null, musíte **zajistit**, aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK, ani služba Azure Search vám s tím nepomůže.
 
-Nejedná se pouze o hypotetický problém: představte si situaci, kdy přidáte nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (protože všechny typy jsou ve službě Azure Search s možností null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
+Nejedná se pouze o hypotetický problém: Představte si situaci, kde můžete přidat nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (protože všechny typy jsou ve službě Azure Search s možností null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 

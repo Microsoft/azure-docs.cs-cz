@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace C# ASP.NET Framework v Azure | Microsoft Docs
+title: Vytvoření C# webové aplikace ASP.NET Framework - službě Azure App Service | Dokumentace Microsoftu
 description: Nasazením výchozí webové aplikace C# ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cce14d91509fe051beef87acdaeac9a92d998ef6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 5f32ed74086b26f91f3ab24cd619bb117d497012
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053774"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251262"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -166,7 +166,7 @@ Podívejte se na video s tímto rychlým startem v akci a potom sami proveďte p
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [ASP.NET s databází SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)

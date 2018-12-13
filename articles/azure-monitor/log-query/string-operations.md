@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: d8dec2b056107962e3e8abd4aa7073adb1ae898d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882485"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186238"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Práce s řetězci v dotazech Log Analytics
 
@@ -262,7 +261,7 @@ SecurityEvent
 Může mít následující výsledky:
 Aktivita                                        |nahradit
 ------------------------------------------------|----------------------------------------------------------
-4663 – byl k pokusu o přístup k objektu  |ID aktivity 4663: Byl proveden pokus o přístup k objektu.
+4663 – byl k pokusu o přístup k objektu  |ID aktivity 4663: Došlo pokusu o přístup k objektu.
 
 
 ## <a name="split"></a>split

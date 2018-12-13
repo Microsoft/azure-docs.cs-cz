@@ -8,18 +8,17 @@ manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 026bdd6a59dc84220e7e52707cee3c1971fba838
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 08206b9de4fca3b422c5b076d7e0c1c180f82fbd
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104305"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184079"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-containers-preview-agent"></a>Postup upgradu Azure Monitor pro agenta kontejnery (Preview)
 Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po vydání nové verze agenta, agent automaticky upgradovány na vaše spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS).  

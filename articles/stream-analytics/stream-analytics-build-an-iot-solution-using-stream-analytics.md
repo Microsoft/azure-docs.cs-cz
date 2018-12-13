@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 230318dc8e352a3adc970b13f20fa992954e3b15
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4817efcb5cfa5f8692f2b7e5c65d411bc0d21942
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091090"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317385"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -113,8 +113,8 @@ K dokončení tohoto řešení, budete potřebovat předplatné Microsoft Azure.
 
 Je potřeba, aby co nejlíp využít svůj kredit Azure lze provést, postupujte podle kroků v části "Vyčistit účtu Azure" na konci tohoto článku.
 
-## <a name="deploy-the-sample"></a>Nasazení ukázky 
-Existuje několik prostředků, které je možné snadno nasadit do skupiny prostředků spolu s několika kliknutími. Definice řešení je hostovaná v úložišti github na [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
+## <a name="deploy-the-sample"></a>Nasazení ukázky
+Existuje několik prostředků, které je možné snadno nasadit do skupiny prostředků spolu s několika kliknutími. Definice řešení je hostovaná v úložišti GitHub na [ https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp ](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp).
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Nasazení šablony TollApp na webu Azure Portal
 1. Nasazení TollApp prostředí do Azure, použijte tento odkaz [nasazení šablony Azure TollApp](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -123,11 +123,11 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
 
 3. Vyberte předplatné, ve kterém se účtují různé prostředky.
 
-4. Zadejte novou skupinu prostředků s jedinečným názvem, třeba `MyTollBooth`. 
+4. Zadejte novou skupinu prostředků s jedinečným názvem, třeba `MyTollBooth`.
 
 5. Vyberte umístění Azure.
 
-6. Zadejte **Interval** jako počet sekund. Tato hodnota se používá v ukázkové webové aplikaci, jak často chcete odesílat data do centra událostí. 
+6. Zadejte **Interval** jako počet sekund. Tato hodnota se používá v ukázkové webové aplikaci, jak často chcete odesílat data do centra událostí.
 
 7. **Zkontrolujte** souhlas s podmínkami a ujednáními.
 
@@ -149,7 +149,7 @@ Existuje několik prostředků, které je možné snadno nasadit do skupiny pros
    - Jedno Centrum událostí Azure
    - Dvě webové aplikace
 
-## <a name="examine-the-sample-tollapp-job"></a>Prozkoumat ukázkové úlohy TollApp 
+## <a name="examine-the-sample-tollapp-job"></a>Prozkoumat ukázkové úlohy TollApp
 1. Spouští se ze skupiny prostředků v předchozí části, vyberte streamování úlohy Stream Analytics začíná název **tollapp** (náhodných znaků jedinečný název obsahuje).
 
 2. Na **přehled** stránka úlohy, Všimněte si, že **dotazu** políčko, chcete-li zobrazit syntaxi dotazu.
@@ -195,7 +195,7 @@ Postupujte podle těchto kroků ke spuštění úlohy streamování:
 
 6. Vyberte každé id k revizi dokumentu JSON. Všimněte si, že každý tollid windowend čas a počet aut z tohoto okna.
 
-7. Po další tři minuty, další sadu čtyři dokumenty je k dispozici, jeden dokument za tollid. 
+7. Po další tři minuty, další sadu čtyři dokumenty je k dispozici, jeden dokument za tollid.
 
 
 ## <a name="report-total-time-for-each-car"></a>Celkový čas sestavy pro každé auto
@@ -229,9 +229,9 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 7. Na **spuštění úlohy** vyberte **nyní**.
 
 ### <a name="review-the-total-time-in-the-output"></a>Zkontrolujte celkový čas ve výstupu
-Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování. Přečtěte si nejnovější dokumenty JSON. 
+Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování. Přečtěte si nejnovější dokumenty JSON.
 
-Například tento dokument ukazuje automobilu příklad některých registrační, času entrytime a ukončení a pole DATEDIFF vypočtená doba trvání v minutách, zobrazuje dobu trvání z mýtných bran linka jako dvě minuty: 
+Například tento dokument ukazuje automobilu příklad některých registrační, času entrytime a ukončení a pole DATEDIFF vypočtená doba trvání v minutách, zobrazuje dobu trvání z mýtných bran linka jako dvě minuty:
 ```JSON
 {
     "tollid": 4,
@@ -249,7 +249,7 @@ Například tento dokument ukazuje automobilu příklad některých registračn�
 ```
 
 ## <a name="report-vehicles-with-expired-registration"></a>Sestava vozidla s vypršenou platností registrací
-Azure Stream Analytics můžete použít snímky statická referenční data spojovat s dočasné datové proudy. Abychom si předvedli tuto funkci, použijte následující ukázkový dotaz. Vstupní pole registrace je soubor json statických objektů blob, který obsahuje seznam vypršení platnosti licence značek. Díky připojení ke službě na desce licence, referenční data porovnání s každou vozidel procházející linka obě. 
+Azure Stream Analytics můžete použít snímky statická referenční data spojovat s dočasné datové proudy. Abychom si předvedli tuto funkci, použijte následující ukázkový dotaz. Vstupní pole registrace je soubor json statických objektů blob, který obsahuje seznam vypršení platnosti licence značek. Díky připojení ke službě na desce licence, referenční data porovnání s každou vozidel procházející linka obě.
 
 Pokud je komerční vozidla zaregistrován u linka společnosti, můžete předat prostřednictvím z mýtných bran linka bez zastavení pro kontrolu. Pomocí registrace vyhledávací tabulky Identifikujte všechny komerční vozidla, jejichž platnost vypršela registrace.
 
@@ -264,7 +264,7 @@ WHERE Registration.Expired = '1'
 
 1. Opakujte kroky v předchozí části, chcete-li aktualizovat TollApp syntaxe dotazu úlohy streamování.
 
-2. Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování. 
+2. Opakujte kroky v předchozí části zkontrolovat CosmosDB výstupních dat úlohy streamování.
 
 Příklad výstupu:
 ```json
@@ -289,26 +289,26 @@ Pro horizontální navýšení kapacity dotazu do oddílů, upravte syntaxi dota
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
-FROM EntryStream 
-TIMESTAMP BY EntryTime 
+FROM EntryStream
+TIMESTAMP BY EntryTime
 PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
 Vertikálně navýšit kapacitu na víc jednotek streamování datové proudy úlohy:
 
-1. **Zastavit** aktuální úlohu. 
+1. **Zastavit** aktuální úlohu.
 
 2. Aktualizace v syntaxi dotazu **< > dotazu** stránce a uložte změny.
 
 3. V části konfigurace na úlohu streamování, vyberte **škálování**.
-   
+
 4. Nastavte posuvník **jednotek streamování** posuvníku z 1 až 6. Jednotky streamování definovat množství výpočetní výkon, který může přijímat úlohy. Vyberte **Uložit**.
 
-5. **Spustit** úlohu streamování předvést další škálování. Azure Stream Analytics rozděluje práci mezi víc výpočetních prostředků a dosáhnout lepší propustnosti, rozdělení práce napříč prostředky pomocí sloupce určené v klauzuli PARTITION BY. 
+5. **Spustit** úlohu streamování předvést další škálování. Azure Stream Analytics rozděluje práci mezi víc výpočetních prostředků a dosáhnout lepší propustnosti, rozdělení práce napříč prostředky pomocí sloupce určené v klauzuli PARTITION BY.
 
 ## <a name="monitor-the-job"></a>Monitorování úlohy
-**Monitorování** oblasti obsahuje statistické údaje o běžící úlohu. První konfigurace je potřeba pro použití účtu úložiště ve stejné oblasti (název linka jako zbytek tohoto dokumentu).   
+**Monitorování** oblasti obsahuje statistické údaje o běžící úlohu. První konfigurace je potřeba pro použití účtu úložiště ve stejné oblasti (název linka jako zbytek tohoto dokumentu).
 
 ![Monitorování úloh v Azure Stream Analytics](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 

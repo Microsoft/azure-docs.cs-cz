@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 84bc151e8d7acf8d320b5883e8637c321762fb32
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090342"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251381"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webové služby Azure Machine Learning Studio, které používají moduly Import dat a Export dat
 
@@ -29,10 +28,10 @@ Při vytváření prediktivní experiment přidáte obvykle webové služby vstu
 
 Import dat a Export dat moduly, můžete číst z a zapisovat do různých dat, třeba na adresu URL webu prostřednictvím protokolu HTTP, dotaz Hive, Azure SQL database, Azure Table storage, Azure Blob storage, datového kanálu poskytnout nebo místní databázi SQL.
 
-Toto téma používá "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: pro dospělé datovou sadu" Ukázkový a předpokládá datová sada už je načtený do tabulky Azure SQL s názvem censusdata.
+Toto téma používá "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Ukázkové datové sady pro dospělé"a předpokládá do tabulky Azure SQL s názvem censusdata již byla načtena datové sady.
 
 ## <a name="create-the-training-experiment"></a>Vytvořit výukový experiment
-Když otevřete "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: dospělé datovou sadu" Ukázka používá ukázkovou datovou sadou pro dospělé binární klasifikace příjmů sčítání. A na plátno experimentu bude vypadat podobně jako na následujícím obrázku:
+Když otevřete "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Ukázkové datové sady pro dospělé"používá ukázkovou datovou sadou pro dospělé binární klasifikace příjmů sčítání. A na plátno experimentu bude vypadat podobně jako na následujícím obrázku:
 
 ![Počáteční konfigurace testu.](./media/web-services-that-use-import-export-modules/initial-look-of-experiment.png)
 
@@ -104,7 +103,7 @@ Nasadit jako webovou službu Classic a vytvořte aplikaci pro použít:
 2. Po dokončení spuštění, klikněte na tlačítko **nasadit webovou službu** a vyberte **nasazení webové služby [Classic]**.
 3. Na řídicím panelu webové služby vyhledejte klíč rozhraní API. Zkopírujte a uložte ho pro pozdější použití.
 4. V **výchozí koncový bod** tabulku, klikněte na tlačítko **Batch Execution** odkaz k otevření stránce nápovědy k API.
-5. V sadě Visual Studio, vytvořit C# konzolové aplikace: **nový** > **projektu** > **Visual C#**   >   **Klasická plocha Windows** > **aplikace konzoly (.NET Framework)**.
+5. V sadě Visual Studio, vytvořit C# konzolové aplikace: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)**.
 6. Na stránce nápovědy k API, vyhledejte **ukázkový kód** části v dolní části stránky.
 7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs a odeberte všechny odkazy na úložiště objektů blob.
 8. Aktualizujte hodnotu *apiKey* proměnné s klíčem rozhraní API předtím uložili.
@@ -133,7 +132,7 @@ Nasadit jako novou webovou službu a vytvořte aplikaci pro použít:
 3. Na stránce experimentu nasazení zadejte název pro webovou službu a vybrat cenový plán, pak klikněte na tlačítko **nasadit**.
 4. Na **rychlý Start** klikněte na **spotřebovat**.
 5. V **ukázkový kód** klikněte na tlačítko **Batch**.
-6. V sadě Visual Studio, vytvořit C# konzolové aplikace: **nový** > **projektu** > **Visual C#**   >   **Klasická plocha Windows** > **aplikace konzoly (.NET Framework)**.
+6. V sadě Visual Studio, vytvořit C# konzolové aplikace: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)**.
 7. Zkopírujte a vložte C# ukázkový kód do souboru Program.cs.
 8. Aktualizujte hodnotu *apiKey* proměnné s **primární klíč** umístěné v **informace o základní spotřeby** oddílu.
 9. Vyhledejte *scoreRequest* prohlášení a aktualizujte hodnoty parametrů webové služby, které jsou předány *Import dat* a *exportovat Data* moduly. V takovém případě použijte původní dotaz ale definovat nový název tabulky.

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 905970c3ab449f139710cf974111618f16da141a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 39a6ead041b1783a3effcb9659c59ea788cd2bf6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086636"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139499"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
 
@@ -38,11 +38,11 @@ Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS 
 
 4. Služba LUIS můžete navrhnout související hodnoty pro přidání do seznamu frázi. Klikněte na tlačítko **doporučujeme** zobrazíte skupinu navrhované hodnoty, které se týkají sémanticky added value(s). Získáte po kliknutí na navrhované hodnoty, nebo klikněte na tlačítko **přidat všechny** je přidat všechny.
 
-    ![Seznam frází navrhované hodnoty](./media/luis-add-features/related-values.png)
+    ![Navrhované hodnoty seznamu frázi – přidání všech](./media/luis-add-features/related-values.png)
 
 5. Klikněte na tlačítko **tyto hodnoty jsou zaměnitelné** Pokud jsou hodnoty seznamu přidal frázi alternativy, které můžete používat Zaměnitelně.
 
-    ![Seznam frází navrhované hodnoty](./media/luis-add-features/interchangeable.png)
+    ![Navrhované hodnoty seznamu frázi – políčko zaměnitelné ](./media/luis-add-features/interchangeable.png)
 
 6. Klikněte na **Uložit**. Přidání seznamu frázi "Cities" **frázi seznamy** stránky.
 

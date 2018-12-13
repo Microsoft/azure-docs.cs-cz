@@ -1,25 +1,25 @@
 ---
-title: Vytváření pracovních postupů pro zpracování e-mailů a příloh – Azure Logic Apps | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak pomocí Azure Logic Apps, Azure Storage a Azure Functions vytvářet automatizované pracovní postupy pro zpracování e-mailů a příloh
+title: Kurz – automatické zpracování e-mailů a příloh – Azure Logic Apps | Dokumentace Microsoftu
+description: Kurz – vytváření automatizovaných pracovních postupů, které zpracovávají e-mailů a příloh s Azure Logic Apps služby Azure Storage a Azure Functions
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.reviewer: klam, LADocs
-ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: cc3a2e96222e06324500e2203d870c06d0f3e8c0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231964"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140502"
 ---
-# <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Zpracování e-mailů a příloh pomocí Azure Logic Apps
+# <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>Kurz: Automatizovat zpracování e-mailů a jejich přílohy pomocí Azure Logic Apps
 
-Služba Azure Logic Apps pomáhá automatizovat pracovní postupy a integrovat data napříč službami Azure, službami Microsoftu a dalšími aplikacemi SaaS (software jako služba) a místními systémy. Tento kurz ukazuje postupy při vytváření [aplikace logiky](../logic-apps/logic-apps-overview.md), která bude zpracovávat příchozí e-maily včetně případných příloh. Hotová aplikace zpracuje obsah e-mailů, uloží ho do úložiště Azure a odešle lidem oznámení, aby si obsah prohlédli. 
+Služba Azure Logic Apps pomáhá automatizovat pracovní postupy a integrovat data napříč službami Azure, službami Microsoftu a dalšími aplikacemi SaaS (software jako služba) a místními systémy. Tento kurz ukazuje postupy při vytváření [aplikace logiky](../logic-apps/logic-apps-overview.md), která bude zpracovávat příchozí e-maily včetně případných příloh. Tato aplikace logiky analyzuje obsah e-mailu, uloží obsah do služby Azure storage a odešle oznámení k prohlížení tohoto obsahu. 
 
 V tomto kurzu se naučíte:
 
@@ -144,7 +144,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve | 
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
    | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve | 
-   | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace funkcí a je jiný, než účet úložiště pro přílohy e-mailů, který jste vytvořili předtím. | 
+   | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace function App a liší se od vašeho dříve vytvořený účet úložiště pro přílohy e-mailu. | 
    | **Application Insights** | Vypnuto | Zapne monitorování aplikací pomocí [Application Insights](../application-insights/app-insights-overview.md). Pro účely tohoto kurzu ale zvolte nastavení **Vypnuto**. | 
    |||| 
 
@@ -246,11 +246,11 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
 ## <a name="monitor-incoming-email"></a>Monitorování příchozích e-mailů
 
-1. V Návrháři zadejte do pole hledání filtr „při přijetí nového e-mailu“. Vyberte pro svého poskytovatele e-mailu tento trigger: **Při přijetí nového e-mailu – <*váš_poskytovatel_e-mailu*>**.
+1. V Návrháři zadejte do pole hledání filtr „při přijetí nového e-mailu“. Vyberte tento trigger pro vašeho poskytovatele e-mailu: **Při přijetí nového e-mailu – <*vašeho poskytovatele e-mailu*>**
 
    Příklad:
 
-   ![Výběr triggeru pro konkrétního poskytovatele e-mailu: „Při přijetí nového e-mailu“](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
+   ![Vyberte tento trigger pro poskytovatele e-mailu: "Když přijde nový e-mail"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
    * Pro pracovní nebo školní účty Azure vyberte Office 365 Outlook. 
    * Pro osobní účty Microsoft vyberte Outlook.com. 
@@ -274,7 +274,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
 
       | Nastavení | Hodnota | Popis | 
       | ------- | ----- | ----------- | 
-      | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. | 
+      | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere všechny e-mailů z vašeho účtu, kontroluje jenom nové zprávy a zpracovává jenom e-maily, které odpovídají filtru předmětu. | 
       | **Zahrnout přílohy** | Ano | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. | 
       | **Filtr předmětu** | ```Business Analyst 2 #423501``` | Text, který se má najít v předmětu e-mailu | 
       |  |  |  | 
@@ -313,7 +313,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
 
    2. V prostředním poli ponechte operátor **rovná se**.
 
-   3. Do pole vpravo zadejte **Pravda**. Tato hodnota se bude porovnávat s hodnotou vlastnosti **Má přílohu** v triggeru.
+   3. Do pole vpravo zadejte **true** jako hodnota určená k porovnání s **má přílohu** hodnota vlastnosti z triggeru.
 
       ![Vytvoření podmínky](./media/tutorial-process-email-attachments-workflow/finished-condition.png)
 
@@ -328,7 +328,7 @@ Teď přidejte podmínku, která vybere jenom e-maily s přílohami.
          "and": [ {
             "equals": [
                "@triggerBody()?['HasAttachment']",
-                 "True"
+                 "true"
             ]
          } ]
       },
@@ -377,15 +377,15 @@ Tento krok přidá do aplikace logiky funkci Azure, kterou jste předtím vytvo�
 
    ![Přidání akce ve větvi „Pokud je true“](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-2. V poli hledání vyhledejte „azure functions“ a vyberte tuto akci: **Zvolte funkci Azure – Azure Functions**.
+2. Do vyhledávacího pole vyhledejte "funkce azure" a vyberte tuto akci: **Zvolte funkci Azure – Azure Functions**
 
    ![Výběr akce v části „Zvolte funkci Azure“](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
-3. Vyberte aplikaci funkcí, kterou jste předtím vytvořili: **CleanTextFunctionApp**
+3. Vyberte svou aplikaci předtím vytvořili: **CleanTextFunctionApp**
 
    ![Výběr aplikace funkcí Azure](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function-app.png)
 
-4. Teď vyberte funkci: **RemoveHTMLFunction**
+4. Teď vyberte funkci: **Funkci RemoveHTMLFunction**
 
    ![Výběr funkce Azure](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
@@ -419,7 +419,7 @@ V dalším kroku přidejte akci, která vytvoří v kontejneru úložiště obje
 
 1. V bloku **Pokud je true** vaší funkce Azure zvolte **Přidat akci**. 
 
-2. V poli hledání nastavte filtr „Vytvořit objekt blob“ a vyberte tuto akci: **Vytvořit objekt blob – Azure Blob Storage**.
+2. Do vyhledávacího pole zadejte "Vytvoření objektu blob" jako filtr a vyberte tuto akci: **Vytvořit objekt blob – Azure Blob Storage**
 
    ![Přidání akce pro vytvoření objektu blob pro tělo e-mailu](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-email-body.png)
 
@@ -518,7 +518,7 @@ V dalším kroku přidejte akci, která uloží každou přílohu jako objekt bl
 
    ![Přidání akce do smyčky](./media/tutorial-process-email-attachments-workflow/for-each-add-action.png)
 
-2. V poli hledání nastavte filtr „Vytvořit objekt blob“ a vyberte tuto akci: **Vytvořit objekt blob – Azure Blob Storage**.
+2. Do vyhledávacího pole zadejte "Vytvoření objektu blob" jako filtr a potom vyberte tuto akci: **Vytvořit objekt blob – Azure Blob Storage**
 
    ![Přidání akce pro vytvoření objektu blob](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
@@ -572,7 +572,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
 ## <a name="send-email-notifications"></a>Odeslání e-mailových oznámení
 
-1. Ve větvi **Pokud je true** ve smyčce **Pro každou přílohu e-mailu** vyberte **Přidat akci**. 
+1. V **při hodnotě true** větvi **pro každou přílohu e-mailu** smyčku, zvolte **přidat akci**. 
 
    ![Přidání akce do smyčky „pro každý“](./media/tutorial-process-email-attachments-workflow/add-action-send-email.png)
 
@@ -672,7 +672,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili aplikaci logiky, která zpracovává a ukládá e-mailové přílohy díky integraci služeb Azure, mimo jiné služeb Azure Storage a Azure Functions. Teď doporučujeme blíže se seznámit s dalšími konektory, které se dají používat k vytváření aplikací logiky.
 

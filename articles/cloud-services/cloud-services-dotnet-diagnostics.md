@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: f9f26f14944986bc673a3b7529adb055ad16d058
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a22a3dabf1aa71e0d092c4145523da9b0121c8c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003057"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322205"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolíte diagnostiku Azure ve službě Azure Cloud Services
 Zobrazit [Přehled diagnostiky Azure](../azure-diagnostics.md) Další informace o Azure Diagnostics.
@@ -30,7 +30,7 @@ Tento návod popisuje, jak implementovat pracovní roli Azure, který vysílá t
 ### <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá máte předplatné Azure a sadou Azure SDK jsou pomocí sady Visual Studio. Pokud nemáte předplatné Azure, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Ujistěte se, že k [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
-### <a name="step-1-create-a-worker-role"></a>Krok 1: Vytvoření Role pracovního procesu
+### <a name="step-1-create-a-worker-role"></a>Krok 1: Umožňuje vytvořit roli pracovního procesu
 1. Spusťte **Visual Studio**.
 2. Vytvoření **cloudové služby Azure** projektu z **cloudu** šablonu, která cílí na rozhraní .NET Framework 4.5.  Pojmenujte projekt "WadExample" a klikněte na tlačítko Ok.
 3. Vyberte **Role pracovního procesu** a klikněte na tlačítko Ok. Projekt bude vytvořen.
@@ -39,7 +39,7 @@ Tento článek předpokládá máte předplatné Azure a sadou Azure SDK jsou po
 6. Sestavte řešení a ověřte, že máte žádné chyby.
 
 ### <a name="step-2-instrument-your-code"></a>Krok 2: Instrumentace kódu
-Nahraďte obsah WorkerRole.cs následujícím kódem. Třída SampleEventSourceWriter, zděděno z [EventSource – třída][EventSource Class], implementuje čtyři metody protokolování: **SendEnums**, **MessageMethod** , **SetOther** a **HighFreq**. První parametr **metodě WriteEvent** metoda definuje ID pro příslušné události. Implementuje metodu spustit nekonečnou smyčku, která volá všechny její metody protokolování implementované v **SampleEventSourceWriter** třídy každých 10 sekund.
+Nahraďte obsah WorkerRole.cs následujícím kódem. Třída SampleEventSourceWriter, zděděno z [EventSource – třída][EventSource Class], implementuje čtyři metody protokolování: **SendEnums**, **MessageMethod**, **SetOther** a **HighFreq**. První parametr **metodě WriteEvent** metoda definuje ID pro příslušné události. Implementuje metodu spustit nekonečnou smyčku, která volá všechny její metody protokolování implementované v **SampleEventSourceWriter** třídy každých 10 sekund.
 
 ```csharp
 using Microsoft.WindowsAzure.ServiceRuntime;
@@ -122,7 +122,7 @@ namespace WorkerRole1
 ```
 
 
-### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Nasazení své Role pracovního procesu
+### <a name="step-3-deploy-your-worker-role"></a>Krok 3: Nasaďte své Role pracovního procesu
 
 [!INCLUDE [cloud-services-wad-warning](../../includes/cloud-services-wad-warning.md)]
 
@@ -170,7 +170,7 @@ namespace WorkerRole1
 </PublicConfig>
 ```
 
-### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: Instalace Diagnostika na vaší roli pracovního procesu
+### <a name="step-5-install-diagnostics-on-your-worker-role"></a>Krok 5: Nainstalovat diagnostické nástroje na vaší roli pracovního procesu
 Rutiny Powershellu pro správu Diagnostika webové nebo pracovní role jsou: Set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension a Remove-AzureServiceDiagnosticsExtension.
 
 1. Otevřete prostředí Azure PowerShell.
@@ -197,7 +197,7 @@ Konfigurační soubor diagnostiky definuje hodnoty, které se používají k ini
 Pokud máte potíže, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-diagnostics-troubleshooting.md) nápovědu pro běžné problémy.
 
 ## <a name="next-steps"></a>Další kroky
-[Podívejte se do seznamu souvisejících virtuálních počítačů diagnostických článků Azure](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics) změnit data shromažďování, řešení problémů nebo Další informace o diagnostice obecně.
+[Podívejte se do seznamu souvisejících virtuálních počítačů diagnostických článků Azure](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) změnit data shromažďování, řešení problémů nebo Další informace o diagnostice obecně.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

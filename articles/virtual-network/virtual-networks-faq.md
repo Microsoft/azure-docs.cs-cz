@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 49f7e0b19f454e37e70774f3a675bd5094687114
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967074"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277518"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 
@@ -103,7 +103,7 @@ Ne. Virtuální síť je omezená na jednu oblast. Virtuální síť, ale span z
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Můžete připojit virtuální síť k jiné virtuální síti v Azure?
 Ano. Jednu virtuální síť můžete připojit k jiné virtuální síti pomocí:
-- **Partnerský vztah virtuální sítě**: Podrobnosti najdete v tématu [přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md)
+- **Partnerské vztahy virtuálních sítí**: Podrobnosti najdete v tématu [přehled partnerských vztahů virtuálních sítí](virtual-network-peering-overview.md)
 - **Služby Azure VPN Gateway**: Podrobnosti najdete v tématu [konfigurace připojení typu VNet-to-VNet](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Překlad názvů (DNS)
@@ -137,12 +137,12 @@ Ne. Nelze zadat vlastní přípona DNS pro vaše virtuální sítě.
 Ano. Všechna síťová rozhraní (NIC) připojených k virtuálnímu počítači nasazené prostřednictvím modelu nasazení Resource Manager musí být připojené k virtuální síti. Virtuální počítače nasazené pomocí modelu nasazení classic jde připojení k virtuální síti.
 
 ### <a name="what-are-the-different-types-of-ip-addresses-i-can-assign-to-vms"></a>Jaké jsou různé typy IP adres, které můžu můžete přiřadit k virtuálním počítačům?
-* **Privátní:** přiřazené k jednotlivým síťovým KARTÁM v rámci každého virtuálního počítače. Adresa se přiřadí používat buď statické nebo dynamické metody. Privátní IP adresy jsou přiřazené, z rozsahu, který jste zadali v nastavení podsítě vaší virtuální sítě. Prostředky nasazené prostřednictvím modelu nasazení classic přiřazených privátních IP adres, i když nejsou připojené k virtuální síti. Chování metody přidělení se liší v závislosti na tom, zda prostředek nasazené pomocí modelu nasazení classic nebo Resource Manager: 
+* **Privátní:** Přiřadit k jednotlivým síťovým KARTÁM v rámci každého virtuálního počítače. Adresa se přiřadí používat buď statické nebo dynamické metody. Privátní IP adresy jsou přiřazené, z rozsahu, který jste zadali v nastavení podsítě vaší virtuální sítě. Prostředky nasazené prostřednictvím modelu nasazení classic přiřazených privátních IP adres, i když nejsou připojené k virtuální síti. Chování metody přidělení se liší v závislosti na tom, zda prostředek nasazené pomocí modelu nasazení classic nebo Resource Manager: 
 
-  - **Resource Manager**: přiřazované pomocí metody dynamickou nebo statickou privátní IP adresa zůstane přiřazená k virtuálnímu počítači (Resource Manager) až do odstranění prostředku. Rozdíl je, že vyberete adresu přiřadíte při používání statické a vybere Azure při použití dynamické. 
-  - **Klasické**: privátní IP adresy přiřazené dynamické metody mohou změnit, pokud virtuální počítač (klasický) virtuální počítač se restartuje poté, co bylo ve stavu Zastaveno (přidělení zrušeno). Pokud je potřeba zajistit, že nikdy nemění privátní IP adresy pro prostředek nasazené prostřednictvím modelu nasazení classic, přiřadíte privátní IP adresu se statickou metodu.
+  - **Resource Manager**: Přiřazované pomocí metody dynamickou nebo statickou privátní IP adresa zůstane přiřazená k virtuálnímu počítači (Resource Manager) až do odstranění prostředku. Rozdíl je, že vyberete adresu přiřadíte při používání statické a vybere Azure při použití dynamické. 
+  - **Klasické**: Privátní IP adresy přiřazené dynamické metody mohou změnit, pokud virtuální počítač (klasický) virtuální počítač se restartuje poté, co bylo ve stavu Zastaveno (přidělení zrušeno). Pokud je potřeba zajistit, že nikdy nemění privátní IP adresy pro prostředek nasazené prostřednictvím modelu nasazení classic, přiřadíte privátní IP adresu se statickou metodu.
 
-* **Veřejná:** volitelně přiřazené k síťové adaptéry připojené k virtuálním počítačům, které jsou nasazené prostřednictvím modelu nasazení Azure Resource Manageru. Adresu je možné přiřadit pomocí metody statického nebo dynamického přidělení. Všechny virtuální počítače a Cloud Services instance rolí, které jsou nasazené prostřednictvím modelu nasazení classic existovat v rámci cloudové služby, které je přiřazeno *dynamické*, veřejné virtuální IP adresa (VIP). Veřejnou *statické* IP adresu, volá se [rezervovaná IP adresa](virtual-networks-reserved-public-ip.md), volitelně může být přiřazen jako virtuální IP adresu. Můžete přiřadit veřejné IP adresy pro jednotlivé virtuální počítače nebo cloudové služby instance rolí, které jsou nasazené prostřednictvím modelu nasazení classic. Tyto adresy jsou volány [veřejná IP adresa na úrovni Instance (ILPIP](virtual-networks-instance-level-public-ip.md) adres a můžou být dynamicky přiřazovány.
+* **Veřejná:** Volitelně můžete přiřadit k síťové adaptéry připojené k virtuálním počítačům, které jsou nasazené prostřednictvím modelu nasazení Azure Resource Manageru. Adresu je možné přiřadit pomocí metody statického nebo dynamického přidělení. Všechny virtuální počítače a Cloud Services instance rolí, které jsou nasazené prostřednictvím modelu nasazení classic existovat v rámci cloudové služby, které je přiřazeno *dynamické*, veřejné virtuální IP adresa (VIP). Veřejnou *statické* IP adresu, volá se [rezervovaná IP adresa](virtual-networks-reserved-public-ip.md), volitelně může být přiřazen jako virtuální IP adresu. Můžete přiřadit veřejné IP adresy pro jednotlivé virtuální počítače nebo cloudové služby instance rolí, které jsou nasazené prostřednictvím modelu nasazení classic. Tyto adresy jsou volány [veřejná IP adresa na úrovni Instance (ILPIP](virtual-networks-instance-level-public-ip.md) adres a můžou být dynamicky přiřazovány.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Lze rezervovat privátní IP adresu pro virtuální počítač, který můžu vytvořit později?
 Ne. Nelze rezervovat privátní IP adresu. Pokud se privátní IP adresa je k dispozici, je přiřazen k instanci virtuálního počítače nebo role Server DHCP. Virtuální počítač může nebo nemusí být ten, který má že přiřazenou privátní IP adresu. Privátní IP adresu již vytvořené virtuální počítač, můžete však změnit na libovolné dostupné privátní IP adresy.
@@ -326,7 +326,7 @@ Pokud chcete svázat služby Azure s několika podsítěmi v rámci virtuální 
 Pokud chcete prozkoumat nebo filtrovat provoz směřující z virtuální sítě do služby Azure, můžete nasadit síťové virtuální zařízení v rámci virtuální sítě. Koncové body služby lze následně použít na podsíť, kde síťové virtuální zařízení je prostředky nasazených služeb Azure pouze s touto podsítí prostřednictvím seznamů ACL virtuální sítě. Tento scénář může být také užitečný v případě, že chcete omezit přístup služby Azure z vaší virtuální sítě pouze ke konkrétním prostředkům Azure pomocí filtrování síťového virtuálního zařízení. Další informace najdete v popisu [výchozího přenosu dat se síťovými virtuálními zařízeními](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha#egress-with-layer-7-nvas.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co se stane při přístupu k účtu služby Azure, který má virtuální síť seznam řízení přístupu (ACL) povolená možnost mimo virtuální síť?
-Vrátí se chyba HTTP 404.
+Vrátí se chyba HTTP 403 nebo HTTP 404.
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Jsou podsítě virtuální sítě vytvářet v různých oblastech můžou přistupovat k účtu služby Azure v jiné oblasti? 
 Ano, pro většinu služeb Azure virtual networks vytvořené v různých oblastech můžou přístupu ke službám Azure v jiné oblasti prostřednictvím koncových bodů služby virtuální sítě. Například pokud účet služby Azure Cosmos DB je v USA – západ nebo USA – východ a virtuální sítě jsou v několika oblastech, můžete virtuální sítě k Azure Cosmos DB. Úložiště a SQL jsou výjimky a jsou ze své podstaty místní a virtuální sítě a služby Azure, musí být ve stejné oblasti.
@@ -366,7 +366,7 @@ Neexistuje žádné omezení celkového počtu koncových bodů služby virtuál
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Azure KeyVault|    128|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Centrum událostí Azure|   128|
 |Azure Service Bus| 128|

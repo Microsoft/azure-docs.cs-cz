@@ -1,5 +1,5 @@
 ---
-title: Zastaralé kognitivní dovednosti (Azure Search) | Dokumentace Microsoftu
+title: Zastaralé kognitivní dovednosti – Azure Search
 description: Tato stránka obsahuje seznam kognitivního vyhledávání dovednosti, které se považují za zastaralé a aplikace nebude podporována v blízké budoucnosti.
 services: search
 manager: pablocas
@@ -10,21 +10,22 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 6bd364ea9923b1c8cdd7c96fc29cb91dff88ec95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: 85f02acf05e89db3e22dd24ecd0e100a9ec4af6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52449907"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311724"
 ---
-#    <a name="deprecated-cognitive-seach-skills"></a>Nepoužívané Cognitive vyhledávací dovednosti
+#    <a name="deprecated-cognitive-search-skills"></a>Dovednosti nepoužívané Kognitivního vyhledávání
 
 Tento dokument popisuje kognitivní dovednosti, které se považují za zastaralé. Použijte následující pokyny pro obsah:
 
 * Název dovedností: Název dovednosti, které se nepoužívá, mapuje se na @odata.type atribut.
-* Poslední dostupná verze rozhraní api: poslední verze služby Azure search veřejné rozhraní API, prostřednictvím které dovednosti obsahující odpovídající zastaralé dovednosti je možné vytvořit/aktualizovat.
-* Konec podpory: poslední den po jejímž uplynutí je považován za odpovídající dovednosti není podporován. Dříve vytvořili dovednosti musí i nadále fungovat, ale uživatelé jsou doporučena pro opustit nepoužívané dovedností.
-* Doporučení: Migrace cesta vpřed pro podporované dovedností. Uživatelé by měli postupovat podle doporučení nadále využívat podporu.
+* Poslední dostupná verze rozhraní api: Poslední verze Azure vyhledejte veřejné rozhraní API, pomocí které dovednosti obsahující odpovídající dovednosti nepoužívané může být vytvořené nebo aktualizované.
+* Konec podpory: Poslední den po jejímž uplynutí je považován za odpovídající dovednosti není podporován. Dříve vytvořili dovednosti musí i nadále fungovat, ale uživatelé jsou doporučena pro opustit nepoužívané dovedností.
+* Doporučení: Cesty migrace vpřed na použití podporované dovedností. Uživatelé by měli postupovat podle doporučení nadále využívat podporu.
 
 ## <a name="microsoftskillstextnamedentityrecognitionskill"></a>Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
@@ -42,7 +43,7 @@ Použití [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-
 
 Migrace na [dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md), budete muset provést jeden nebo více z následujících změn do definice dovedností. Můžete aktualizovat definici dovednosti pomocí [aktualizovat rozhraní API dovednosti](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 
-_Poznámka:_: v současné době nepodporuje skóre spolehlivosti jako koncept. Bude podporovat v blízké budoucnosti. `minimumPrecision` Parametr existuje na `EntityRecognitionSkill` pro budoucí použití a zpětné kompatibility.
+_Poznámka:_: Skóre spolehlivosti jako koncept v současné době se nepodporuje. Bude podporovat v blízké budoucnosti. `minimumPrecision` Parametr existuje na `EntityRecognitionSkill` pro budoucí použití a zpětné kompatibility.
 
 1. *(Povinné)*  Změnit `@odata.type` z `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` k `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

@@ -1,10 +1,10 @@
 ---
-title: Ukázkový skript Azure CLI – škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností s | Dokumentace Microsoftu
+title: Ukázkový skript Azure CLI – škálování aplikace po celém světě s využitím Traffic Manageru | Dokumentace Microsoftu
 description: Ukázkový skript Azure CLI – škálování webové aplikace po celém světě s využitím architektury vysokou dostupnost
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: e4033a50-0e05-4505-8ce8-c876204b2acc
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 4403e0081df3120c889b93d642670895252ac47e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 61e47128369bbf7b76f0626241ba024afc0e65ab
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567963"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314614"
 ---
-# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
+# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Škálování webové aplikace po celém světě s vysokou dostupností architektury pomocí rozhraní příkazového řádku Azure
 
 Tento ukázkový skript vytvoří skupinu prostředků, dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body služby Traffic Manager. Na konci cvičení budete mít vysoce dostupnou architekturu zajišťující globální dostupnost vaší webové aplikace na základě nejnižší latence sítě.
 

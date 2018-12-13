@@ -4,10 +4,9 @@ description: Jak vytvořit jednoduchý regresní model k predikci cenu v datová
 keywords: Vytvoření modelu, jednoduchého modelu, predikcí cena, jednoduché regresní model
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
+author: garyericson
 ms.custom: seodec18
-ms.author: amlstudiodocs
-manager: hjerez
+ms.author: garye
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 155b853ef46c54fbb6e230573b860189bacc0d64
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e2c49b9da215c038cfa47689f11da22b2dffc2dc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092923"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253571"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Předpovídání odpovědi pomocí jednoduchého modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Video 4: Datová věda pro začátečníky řady
@@ -39,12 +38,12 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 *Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
 
 * Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: [položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
-* Video 4: Předpověď odpovědi pomocí jednoduchého modelu
-* Video 5: [kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
+* Video 3: [Položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
+* Video 4: Předpovídání odpovědi pomocí jednoduchého modelu
+* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
 
-## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Přepis: Předpověď odpovědi pomocí jednoduchého modelu
+## <a name="transcript-predict-an-answer-with-a-simple-model"></a>Přepisu: Předpovídání odpovědi pomocí jednoduchého modelu
 Vítá vás čtvrtý videa "datové vědě pro začátečníky" řady. Do tohoto objektu za jsme sestavíte jednoduchého modelu a vytvoří předpověď.
 
 A *modelu* je zjednodušený scénář o našich datech. Ukážeme vám co mám na mysli to.
@@ -66,7 +65,7 @@ Ve skutečnosti jsme vytvořili malý tady – sada dat tabulky. Všimněte si, 
 * A jak uvidíme, má **dostatek** dat pro potřeby odpovědí naše otázku
 
 ## <a name="ask-a-sharp-question"></a>Zeptejte se sharp
-Nyní jsme sharp způsobem budete představovat naše otázku: "kolik vás to bude stát koupit kosočtverce 1.35 ikonu kosočtverce?"
+Nyní jsme bude představovat naše otázku sharp způsobem: "Kolik vás to bude stát koupit kosočtverce 1.35 ikonu kosočtverce?"
 
 Náš seznam nemá kosočtverce 1.35 ikonu kosočtverce v ní, tak nám budete muset používat rest naše data odpověď na otázku.
 
@@ -97,18 +96,18 @@ Skutečnost, že všechny body nechcete procházet přesně řádku je v pořád
 Protože ale My se snažíme odpověď na otázku *kolik?* tento postup se nazývá *regrese*. A protože používáme rovné čáry, jde *lineární regrese*.
 
 ## <a name="use-the-model-to-find-the-answer"></a>Použití modelu odpovědi
-Teď máme modelu a požádáme ji naši Otázka: kolik stojí kosočtverce 1.35 ikonu kosočtverce?
+Teď máme modelu a jeho žádáme naše otázku: Kolik stojí kosočtverce 1.35 ikonu kosočtverce
 
-Odpověď naše otázku, jsme oka 1.35 carats a kreslení svislé čáry. Pokud překročí řádku modelu jsme eyeball vodorovná čára na ose dolar. Volání přímo na 10 000. Vida! To je odpověď: kosočtverce 1.35 ikonu kosočtverce stojí přibližně 10 000 USD.
+Odpověď naše otázku, jsme oka 1.35 carats a kreslení svislé čáry. Pokud překročí řádku modelu jsme eyeball vodorovná čára na ose dolar. Volání přímo na 10 000. Vida! Odpověď je: 1.35 ikonu kosočtverce kosočtverce náklady o 10 000 USD.
 
 ![Najít odpověď na modelu](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/find-the-answer.png)
 
 ## <a name="create-a-confidence-interval"></a>Vytvoření interval spolehlivosti
-Je přirozené zajímat, jak přesně je tato predikce. To je užitečné vědět, jestli kosočtverce 1.35 ikonu kosočtverce bude velmi blízko 10 000 USD, nebo mnohem vyšší nebo nižší. Chcete-li to zjistit, nakreslíme obálku kolem řádku regrese, který obsahuje většinu bodů. Tato obálky se nazývá naše *interval spolehlivosti*: jsme hodně jistotu, že ceny spadají do obálky, protože v posledních většina z nich mít. Dva více vodorovné čáry jsme můžete čerpat kde protíná řádku 1.35 ikonu kosočtverce horní a dolní část této obálky.
+Je přirozené zajímat, jak přesně je tato predikce. To je užitečné vědět, jestli kosočtverce 1.35 ikonu kosočtverce bude velmi blízko 10 000 USD, nebo mnohem vyšší nebo nižší. Chcete-li to zjistit, nakreslíme obálku kolem řádku regrese, který obsahuje většinu bodů. Tato obálky se nazývá naše *interval spolehlivosti*: Jsme hodně jistotu, že ceny spadají do obálky, protože v posledních většina z nich mít. Dva více vodorovné čáry jsme můžete čerpat kde protíná řádku 1.35 ikonu kosočtverce horní a dolní část této obálky.
 
 ![Interval spolehlivosti](./media/data-science-for-beginners-predict-an-answer-with-a-simple-model/confidence-interval.png)
 
-Teď budeme moct říct: něco o našich interval spolehlivosti: budeme moct říct s jistotou, že cena kosočtverce 1.35 ikonu kosočtverce je asi $ 10 000 – ale může být v rozsahu od 8 000 $ a může být až 12 000 $.
+Teď budeme moct říct: něco o našich interval spolehlivosti:  Bez obav budeme moct říct, že cena kosočtverce 1.35 ikonu kosočtverce je asi $ 10 000 – ale může být v rozsahu od 8 000 $ a může být až 12 000 $.
 
 ## <a name="were-done-with-no-math-or-computers"></a>Máme Hotovo, bez matematické nebo počítače
 Jsme to udělali jaké odborníci přes data získat placenou provedete a událo pouhým vykreslování:

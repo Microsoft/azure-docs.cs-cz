@@ -8,13 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 6eade4a09ee797469d0046715f57d2799b1cba8c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097824"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311827"
 ---
 # <a name="what-is-azure-policy"></a>Co je Azure Policy?
 
@@ -49,18 +48,18 @@ Postup vytváření a implementace zásady v Azure Policy začíná vytvořením
 
 Ve službě Azure Policy nabízíme několik integrovaných zásad, které jsou k dispozici ve výchozím nastavení. Příklad:
 
-- **Vyžadovat SQL Server 12.0**: ověří, že všechny servery SQL budou používat verzi 12.0. Jeho účinkem je zamítnutí všech serverů, které nesplňují tato kritéria.
+- **Vyžadovat SQL Server 12.0**: Ověřuje, že všechny servery SQL budou používat verzi 12.0. Jeho účinkem je zamítnutí všech serverů, které nesplňují tato kritéria.
 - **Povolené skladové položky účtu úložiště**: Určuje, zda je účet úložiště se nasazuje v sadě velikostí skladových položek. Jeho účinkem je zamítnutí všech účtů úložiště, které nedrží k sadě definovaných velikostí skladových položek.
 - **Povolený typ prostředku**: Definuje typy prostředků, které můžete nasadit. Jeho účinkem je zamítnutí všech prostředků, které nejsou součástí tomto definovaném seznamu.
-- **Povolená umístění**: omezuje dostupná umístění u nových prostředků. Účinkem je vynucení vašich požadavků na geografické dodržování předpisů.
+- **Povolená umístění**: Omezuje dostupná umístění u nových prostředků. Účinkem je vynucení vašich požadavků na geografické dodržování předpisů.
 - **Povolené skladové položky virtuálních počítačů**: Určuje sadu skladových položek, které můžete nasadit virtuální počítač.
-- **Použít značku a její výchozí hodnotu**: použije požadovanou značku a její výchozí hodnotu, pokud není zadaný v požadavku nasazení.
-- **Vynutit značku a její hodnotu**: vynucuje povinnou značku a její hodnotu na prostředek.
-- **Nepovolené typy prostředků**: zabraňuje seznam typů prostředků v nasazení.
+- **Použít značku a její výchozí hodnotu**: Použije požadovanou značku a její výchozí hodnotu, pokud není zadaný v požadavku nasazení.
+- **Vynutit značku a její hodnotu**: Vynucuje povinnou značku a její hodnotu na prostředek.
+- **Nepovolené typy prostředků**: Seznam typů prostředků brání v nasazení.
 
 Pokud chcete implementovat tyto definice zásad (předdefinované i vlastní definice), budete potřebovat pro jejich přiřazení. Jakékoli z těchto zásad můžete přiřadit prostřednictvím webu Azure Portal, PowerShellu nebo Azure CLI.
 
-Vyhodnocení zásad se stane se několik různých úkonů, jako je například přiřazení zásad nebo aktualizací zásad. Úplný seznam najdete v tématu [aktivačních událostí vyhodnocení zásad](./how-to/getting-compliance-data.md#evaluation-triggers).
+Vyhodnocení zásad se stane se několik různých úkonů, jako je například přiřazení zásad nebo aktualizací zásad. Úplný seznam najdete v tématu [aktivačních událostí vyhodnocení zásad](./how-to/get-compliance-data.md#evaluation-triggers).
 
 Další informace o strukturách definic zásad najdete v článku [Struktura definic zásad](./concepts/definition-structure.md).
 
@@ -111,7 +110,7 @@ Jako příklad může posloužit scénář, ve kterém máte definici iniciativy
 
 V tomto scénáři máte při definování parametrů iniciativy pro **initiativeC** tři možnosti:
 
-- Použít parametry definic zásad v rámci této iniciativy: V tomto příkladu se *allowedLocations* a *allowedSingleLocation* stanou parametry iniciativy pro **initiativeC**.
+- Použijte parametry definic zásad v rámci této iniciativy: V tomto příkladu *allowedLocations* a *allowedSingleLocation* stanou parametry iniciativy pro **initiativeC**.
 - Zadat hodnoty do parametrů definic zásad v rámci této definice iniciativy. V tomto příkladu můžete zadat seznam umístění do **parametru allowedLocations zásady policyA** a **parametru allowedSingleLocation zásady policyB**. Hodnoty můžete zadat také při přiřazování této iniciativy.
 - Zadat seznam možností *hodnot*, které se můžou použít při přiřazování této iniciativy. Když přiřadíte tuto iniciativu, zděděné parametry z definic zásad v rámci této iniciativy můžou mít pouze hodnoty z tohoto zadaného seznamu.
 

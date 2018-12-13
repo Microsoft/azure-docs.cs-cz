@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí šablony Resource Manageru '
+title: 'Rychlý start: Vytvořte clustery systému Apache Hadoop pomocí Resource Manageru a dotazování dat pomocí Apache Hive – Azure HDInsight'
 description: Naučte se vytvářet clustery HDInsight a dotazy na data pomocí Hive.
 keywords: začínáme používat hadoop, hadoop linux, hadoop rychlý start, hive začínáme, hive rychlý start
 services: hdinsight
@@ -7,15 +7,15 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017,mvc
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: 7068dd62b8c445950fdfd18197e3f01e730506a3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3f5c842a4e902fe6d4aa9f87cb82252a78d0a1c3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014799"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166372"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí šablony Resource Manageru
 
@@ -92,13 +92,13 @@ Pomocí nástrojů HDInsight Tools pro VSCode můžete odesílat interaktivní d
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Interactive** (HDInsight: interaktivní Hive) a odešlete tak dotaz. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Brzy potom se na nové kartě zobrazí výsledky dotazu.
+4. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Interaktivní Hive** odeslat dotaz. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Brzy potom se na nové kartě zobrazí výsledky dotazu.
 
    ![Výsledky interaktivního Hivu](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
 
-    - Panel **RESULTS** (VÝSLEDKY): Celý výsledek můžete uložit do souboru CSV, JSON nebo Excel nebo můžete vybrat jenom několik řádků.
+    - **VÝSLEDKY** panelu: Můžete uložit celý výsledek jako soubor CSV, JSON nebo Excel na místní cestu nebo stačí vybrat více řádků.
 
-    - Panel **MESSAGES** (ZPRÁVY): Když vyberete číslo řádku **Line**, přejdete na první řádek spuštěného skriptu.
+    - **ZPRÁVY** panelu: Když vyberete **řádku** číslo, přeskočí první řádek spuštěného skriptu.
 
 Spuštění interaktivního dotazu zabere mnohem kratší dobu než [spuštění dávkové úlohy Hive](#submit-hive-batch-scripts).
 
@@ -113,7 +113,7 @@ Spuštění interaktivního dotazu zabere mnohem kratší dobu než [spuštění
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Batch** (HDInsight: Dávka Hive) a odešlete tak úlohu Hive. 
+4. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Hive Batch** se odeslat úlohu Hive. 
 
 5. Vyberte cluster, do kterého ji chcete odeslat.  
 
@@ -251,7 +251,7 @@ V tomto článku jste zjistili, jak vytvořit cluster HDInsight se systémem Lin
 Pokud chcete začít pracovat s vlastními daty a potřebujete další informace o ukládání dat službou HDInsight nebo o tom, jak data do této služby nahrát, přečtěte si následující články:
 
 * Informace o tom, jak HDInsight používá Azure Storage, najdete v tématu [Používání Azure Storage s HDInsight](../hdinsight-hadoop-use-blob-storage.md).
-* Informace o tom, jak vytvořit HDInsight cluster s Data Lake Storage najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* Informace o tom, jak vytvořit HDInsight cluster s Data Lake Storage najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * Informace o tom, jak nahrát data do služby HDInsight, najdete v tématu [Nahrání dat do služby HDInsight](../hdinsight-upload-data.md).
 
 Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
@@ -275,5 +275,3 @@ Pokud potřebujete další informace o vytváření a správě clusteru HDInsigh
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

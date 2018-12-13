@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 65de18445f114f468dd42c5a7e7128dd2f63d44c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f742f6923b7d9f40a8752d77c7702e9b2ea2a4cf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959819"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185854"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>Monitorování sady runbook pomocí upozornění na metriku
 
@@ -51,7 +51,7 @@ Na webu Azure Portal přejděte na svůj účet Automation. V části **monitoro
 
 ### <a name="define-the-action-to-take"></a>Definovat akce má být provedena
 
-1. V části **3. Definujte skupinu akcí** klikněte na **+ Nová skupina akcí**. Skupiny akcí je skupina akcí, které můžete použít napříč více než jedna výstraha. Můžete zahrnout, ale nejsou omezené na e-mailová oznámení, sady runbook, webhooky a mnoho dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+1. V části **3. Definujte skupinu akcí** klikněte na **+ Nová skupina akcí**. Skupiny akcí je skupina akcí, které můžete použít napříč více než jedna výstraha. Můžete zahrnout, ale nejsou omezené na e-mailová oznámení, sady runbook, webhooky a mnoho dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../azure-monitor/platform/action-groups.md).
 
 1. Do pole **Název skupiny akcí** zadejte popisný a krátký název. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 

@@ -1,21 +1,21 @@
 ---
-title: Rychlý start – spuštění aplikace ve službě Azure Container Instances
-description: V tomto rychlém startu nasadíte pomocí prostředí Azure PowerShell kontejner Dockeru ve službě Azure Container Instances.
+title: Rychlý start – spuštění aplikace ve službě Azure Container Instances – PowerShell
+description: V tomto rychlém startu použijete Azure PowerShell k nasazení aplikace typu kontejner Dockeru do služby Azure Container Instances pomocí Azure Powershellu
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: b17cca7f0c00aba260b97b29345ff33156a50138
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854639"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183943"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rychlý start: Spuštění aplikace ve službě Azure Container Instances
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances pomocí Azure Powershellu
 
 Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container Instances. Nemusíte nasazovat virtuální počítače ani používat úplnou platformu orchestrace kontejnerů jako Kubernetes. V tomto rychlém startu pomocí webu Azure Portal vytvoříte kontejner s Windows v Azure a zpřístupníte jeho aplikaci s použitím plně kvalifikovaného názvu domény. Několik sekund po provedení příkazu k jednomu nasazení můžete přejít k běžící aplikaci:
 
@@ -91,7 +91,7 @@ Až s kontejnerem skončíte, odeberte ho pomocí rutiny [Remove-AzureRmContaine
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 

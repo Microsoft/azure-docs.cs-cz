@@ -1,5 +1,5 @@
 ---
-title: Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service | Dokumentace Microsoftu
+title: Nakonfigurujte přihlašovací údaje pro nasazení – Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak použít přihlašovací údaje pro nasazení služby Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/22/2018
 ms.author: cephalin
-ms.openlocfilehash: a04057023308087adbf449b8f91af6a473c11c1e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: 9f1d6714dd015af857c5e6156bc7254a944363c4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312091"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257178"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurujte přihlašovací údaje nasazení pro službu Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro [místní nasazení přes Git](app-service-deploy-local-git.md) a [nasazení FTP/S](app-service-deploy-ftp.md). Se nejedná stejná jako přihlašovacích údajů Azure Active Directory.

@@ -1,27 +1,20 @@
 ---
-title: Rychlý start k používání služby Azure SignalR | Microsoft Docs
+title: Rychlý Start se dozvíte, jak pomocí služby Azure SignalR
 description: Rychlý start popisující použití služby Azure SignalR k vytvoření chatovací místnosti s využitím aplikací ASP.NET Core MVC.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959474"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260612"
 ---
-# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s využitím služby SignalR
+# <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s služby SignalR
 
 
 Azure SignalR je služba Azure, která vývojářům pomáhá snadno vytvářet webové aplikace s funkcemi v reálném čase. Tato služba je založená na knihovně [SignalR pro ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction).
@@ -41,7 +34,7 @@ Kód pro tento kurz je k dispozici ke stažení v [úložišti GitHub AzureSigna
 ## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [.NET Core SDK](https://www.microsoft.com/net/download/windows).
-* Stáhněte nebo naklonujte úložiště GitHub [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples). 
+* Stáhněte nebo naklonujte [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) úložiště GitHub. 
 
 ## <a name="create-an-azure-signalr-resource"></a>Vytvořené prostředku služby Azure SignalR
 
@@ -133,7 +126,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
 Ve službě SignalR představuje centrum základní komponentu, která zveřejňuje sadu metod, které je možné volat z klienta. V této části nadefinujete třídu centra se dvěma metodami: 
 
-* `Broadcast`: Tato metoda rozešle zprávu do všech klientů.
+* `Broadcast`: Tato metoda vysílá zprávy na všechny klienty.
 * `Echo`: Tato metoda odešle zprávu zpět volajícímu.
 
 Obě metody používají rozhraní `Clients`, které poskytuje sada SDK služby SignalR pro ASP.NET Core. Toto rozhraní poskytuje přístup ke všem připojeným klientům a umožňuje nabízení obsahu do vašich klientů.
@@ -269,7 +262,7 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili nový prostředek služby Azure SignalR a společně s webovou aplikací ASP.NET Core jste ho použili k nabízení aktualizací obsahu v reálném čase do několika připojených klientů. Další informace o použití služby Azure SignalR najdete v následujícím kurzu, který demonstruje ověřování.
 

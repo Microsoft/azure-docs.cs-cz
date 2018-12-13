@@ -1,5 +1,5 @@
 ---
-title: Seznámení se službou App Service v Linuxu | Dokumentace Microsoftu
+title: Úvod do služby App Service v Linuxu – Azure | Dokumentace Microsoftu
 description: Seznamte se se službou Azure App Service v Linuxu.
 keywords: azure app service, linux, oss
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
-ms.custom: mvc
-ms.openlocfilehash: 3910e13900ec1774e5a1fe449b4f510a661f1f53
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.custom: seodec18
+ms.openlocfilehash: ac8d5ddb843227e5c5d8e7508c3ea46946f4850e
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165318"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257875"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 

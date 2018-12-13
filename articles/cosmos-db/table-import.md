@@ -1,19 +1,19 @@
 ---
-title: Import dat pro použití s rozhraním Table API služby Azure Cosmos DB
-description: Zjistěte, jak importovat data pro použití s rozhraním Table API služby Azure Cosmos DB.
-services: cosmos-db
+title: Migrace existujících dat na účet Table API ve službě Azure Cosmos DB
+description: Zjistěte, jak migrovat nebo importovat místní nebo Cloudová data do účtu Azure Table API ve službě Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.topic: tutorial
-ms.date: 11/28/2017
+ms.date: 12/07/2017
 ms.author: sngun
-ms.openlocfilehash: d277df3fa98564ebec92e548fa070e92cf76f200
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: b2256f16d284cb079231e271a7fc06c25c381c8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874035"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137680"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
@@ -28,9 +28,9 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kontejnery nebo sady kontejnerů nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
+* **Zvýšení propustnosti:** Doba trvání migrace dat závisí na množství propustnost, které můžete nastavit pro jednotlivé kontejner nebo sadu kontejnerů. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
-* **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny tabulky na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření tabulek Azure Cosmos DB zadat klíč oddílu.
+* **Vytvořte prostředky služby Azure Cosmos DB:** Než začnete migraci dat, předem vytvořte všechny tabulky z portálu Azure portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření tabulek Azure Cosmos DB zadat klíč oddílu.
 
 ## <a name="data-migration-tool"></a>Nástroj pro migraci dat
 
@@ -89,7 +89,7 @@ Při definování rozhraní Table API služby Azure Storage jako cíle migrace p
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Ukázkový příkaz: Zdrojem je Azure Table Storage
+### <a name="sample-command-source-is-azure-table-storage"></a>Ukázka příkazu: Azure Table storage je zdroj
 
 Tady je ukázka příkazového řádku znázorňující provedení importu ze služby Azure Table Storage do rozhraní Table API:
 
@@ -97,7 +97,7 @@ Tady je ukázka příkazového řádku znázorňující provedení importu ze sl
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázkový příkaz: Zdrojem je rozhraní Table API služby Azure Cosmos DB (Preview)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázka příkazu: Zdroj je Azure Cosmos DB Table API (preview)
 
 Tady je ukázka příkazového řádku pro import z rozhraní Table API Preview do obecně dostupného rozhraní Table API:
 

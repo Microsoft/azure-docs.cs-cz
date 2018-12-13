@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 4df7975d4d52e00cce7b57c6f207eb6cb9ea3be3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847894"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310507"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro vícevrstvou nasazení Citrix XenApp a XenDesktop
 
@@ -130,16 +130,16 @@ Obnovení plánování skupin společně virtuálních počítačů podobné po�
 
 1. Přidejte virtuální počítače součástí XenApp v plánu obnovení.
 2. Klikněte na možnost plány obnovení -> + plánu obnovení. Zadejte název intuitivní pro plán obnovení.
-3. U virtuálních počítačů VMware: Výběr zdroje jako procesový server VMware, cíl jako Microsoft Azure a modelu nasazení Resource Manager a klikněte na možnost vybrat položky.
-4. Pro virtuální počítače Hyper-V: Vyberte zdroj jako VMM server, jako Microsoft Azure a modelu nasazení Resource Manager jako cíl a klikněte na možnost vybrat položky a potom vyberte XenApp nasazení virtuálních počítačů.
+3. U virtuálních počítačů VMware: Vyberte zdroj jako procesový server VMware, cíl jako Microsoft Azure a modelu nasazení Resource Manager a klikněte na možnost vybrat položky.
+4. Pro virtuální počítače Hyper-V: Vyberte jako server VMM, cíl jako Microsoft Azure a modelu nasazení Resource Manager jako zdroj a klikněte na možnost vybrat položky a potom vyberte XenApp nasazení virtuálních počítačů.
 
 ### <a name="adding-virtual-machines-to-failover-groups"></a>Přidávání virtuálních počítačů do skupiny převzetí služeb při selhání
 
 Plány obnovení je možné přizpůsobit a přidejte skupiny převzetí služeb při selhání pro konkrétní spuštění pořadí, skripty a ručně prováděné akce. Tyto skupiny je potřeba přidat do plánu obnovení.
 
-1. Group1 převzetí služeb při selhání: DNS AD
-2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL serverem
-2. Převzetí služeb při selhání skupina3: VDA hlavního Image virtuálního počítače
+1. Group1 převzetí služeb při selhání: AD DNS
+2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL Serverem
+2. Skupina3 převzetí služeb při selhání: VDA hlavního Image virtuálního počítače
 3. Skupina převzetí služeb při selhání 4: Kontroler doručování a virtuální počítače z prodejních míst serveru
 
 
@@ -149,14 +149,15 @@ Skripty můžete spustit před nebo po konkrétní skupinu v plánu obnovení. R
 
 Plán vlastní obnovení bude vypadat jako následující:
 
-1. Group1 převzetí služeb při selhání: DNS AD
-2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL serverem
-3. Převzetí služeb při selhání skupina3: VDA hlavního Image virtuálního počítače
+1. Group1 převzetí služeb při selhání: AD DNS
+2. Skupina2 převzetí služeb při selhání: Virtuální počítače s SQL Serverem
+3. Skupina3 převzetí služeb při selhání: VDA hlavního Image virtuálního počítače
 
    >[!NOTE]     
    >Kroky 4, 6 a 7 obsahující ruční nebo skript akce se vztahují na pouze XenApp v místním > prostředí s MCS nebo systémy současné hodnoty katalogů.
 
-4. Ruční nebo skript akce skupiny 3: vypnutí hlavní VDA virtuální počítač hlavního VDA virtuálního počítače po převzetí služeb při selhání do Azure budou ve spuštěném stavu. K vytvoření nové relace s více Připojeními katalogy používající hostování Azure, je hlavním virtuálním počítači VDA musí být v zastaveném (de přidělené) stavu. Vypnutí virtuálního počítače z webu Azure portal.
+4. Ruční nebo skript akce skupiny 3: Vypnutí hlavní VDA virtuálního počítače.
+Virtuální počítač k VDA hlavní při převzetí služeb při selhání do Azure budou ve spuštěném stavu. K vytvoření nové relace s více Připojeními katalogy používající hostování Azure, je hlavním virtuálním počítači VDA musí být v zastaveném (de přidělené) stavu. Vypnutí virtuálního počítače z webu Azure portal.
 
 5. Skupina převzetí služeb při selhání 4: Kontroler doručování a virtuální počítače z prodejních míst serveru
 6. Skupina3 ruční nebo skript akce 1:

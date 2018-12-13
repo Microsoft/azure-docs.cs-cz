@@ -1,6 +1,6 @@
 ---
-title: Kurz k synonymům ve službě Azure Search v jazyce C# | Microsoft Docs
-description: V tomto kurzu přidáte funkci synonym do indexu ve službě Azure Search.
+title: Synonyma C# kurz – Azure Search
+description: V tomto C# kurzu, přečtěte si, jak přidat funkce synonym do indexu ve službě Azure Search. Mapa synonym je seznam ekvivalentní termíny. Pole s podporou synonymum rozbalte dotazy obsahovat uživatelem zadaný výraz a všech souvisejících synonym.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: 8340c4dc2a855911073905a3aea93e19fc7b520d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: b239fdc176951066699c557eaae5f7fe08a6c26f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990557"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309225"
 ---
-# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Kurz: Přidání synonym do služby Azure Search v jazyce C#
+# <a name="tutorial-add-synonyms-for-azure-search-in-c"></a>Kurz: Přidání synonym pro službu Azure Search vC#
 
 Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považované za sémantické ekvivalenty vstupního výrazu. Chcete třeba, aby položce auto odpovídaly i dokumenty obsahující termíny automobil a vozidlo. 
 
@@ -167,9 +168,9 @@ Přidání synonym úplně mění možnosti vyhledávání. Původním dotazům 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento kurz vám ukázal [rozhraní REST API pro synonyma](https://aka.ms/rgm6rq) v kódu jazyka C#, abyste mohli vytvářet a odesílat pravidla mapování a potom v dotazu volat mapu synonym. Další informace najdete v referenční dokumentaci [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) a [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/).
 

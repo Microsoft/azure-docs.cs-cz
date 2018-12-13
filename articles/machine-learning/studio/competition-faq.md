@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: mwinkle
 editor: cgronlun
 ms.assetid: 9bac5154-a56c-4e78-9d67-34368b9d1624
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: c423438e5c8088dba5b9d71e8e50a2e9de1371c6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fe4da412aa779e9861446f8dcbb8a807c282c7c6
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104927"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268899"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**
@@ -70,7 +69,7 @@ Platforma soutěže v současné době nepodporuje zapojení týmu. Každá polo
 
 Soutěže jsou zdarma součástí. Potřebujete, ale přístup k pracovnímu prostoru Azure Machine Learning se zúčastnit. Bezplatný pracovní prostor bez platební karty můžete vytvořit pomocí jednoduše přihlášení pomocí účtu Office 365 nebo platný účet Microsoft. Pokud už jste zákazníkem Azure nebo Cortana Intelligence Suite, můžete vytvořit a použít standardní pracovní prostor pod stejné předplatné Azure. Pokud chcete zakoupit předplatné Azure, přejděte [ceny za Azure](https://azure.microsoft.com/pricing) stránky. Všimněte si, že se při použití standardní pracovní prostor k vytvoření experimentů zpoplatněné standardními sazbami. Další informace najdete v tématu [informace o cenách Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 **Co jsou veřejné a privátní skóre?**
 

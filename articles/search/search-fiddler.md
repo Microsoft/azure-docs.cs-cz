@@ -1,5 +1,5 @@
 ---
-title: Zkoumání rozhraní REST API v nástroji Fiddler nebo Postman (Azure Search REST) | Microsoft Docs
+title: Zkoumání rozhraní REST API v aplikaci Fiddler nebo Postman webových služeb HTTP testovací nástroje – Azure Search
 description: Způsob použití nástroje Fiddler nebo Postman k vydávání požadavků HTTP a volání rozhraní REST API na službu Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: f73ec81686575efde70b7f90239299ec4deca00c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190181"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312972"
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Zkoumání rozhraní REST API služby Azure Search pomocí nástroje Fiddler nebo Postman
 
@@ -65,7 +66,7 @@ Hlavička žádosti se skládá ze dvou prvků – typu obsahu a klíče api-key
 
 ### <a name="fiddler"></a>Fiddler
 
-Zformulujte podobnou žádost jako na následujícím snímku obrazovky. Jako operaci zvolte **PUT**. Fiddler přidá `User-Agent=Fiddler`. Pod tím můžete na nové řádky vložit dvě další hlavičky žádosti. Pomocí přístupového klíče správce vaší služby zahrňte typ obsahu a klíč api-key pro vaši službu.
+Zformulujte podobnou žádost, která vypadá jako na následujícím snímku obrazovky. Jako operaci zvolte **PUT**. Fiddler přidá `User-Agent=Fiddler`. Pod tím můžete na nové řádky vložit dvě další hlavičky žádosti. Pomocí přístupového klíče správce vaší služby zahrňte typ obsahu a klíč api-key pro vaši službu.
 
 ![Hlavička žádosti Fiddleru][1]
 
@@ -74,7 +75,7 @@ Zformulujte podobnou žádost jako na následujícím snímku obrazovky. Jako op
 
 ### <a name="postman"></a>Postman
 
-Zformulujte podobnou žádost jako na následujícím snímku obrazovky. Jako operaci zvolte **PUT**. 
+Zformulujte podobnou žádost, která vypadá jako na následujícím snímku obrazovky. Jako operaci zvolte **PUT**. 
 
 ![Hlavička žádosti Postman][6]
 
@@ -110,13 +111,13 @@ Pokud se zobrazí kód HTTP 504, ověřte, jestli je v adrese URL určený proto
 
 ### <a name="fiddler"></a>Fiddler
 
-Zkopírujte definici indexu do textu žádosti podobně jako na následujícím snímku obrazovky a pak kliknutím na **Provést** vpravo nahoře odešlete dokončenou žádost.
+Zkopírujte definici indexu do textu žádosti podobně jako na následujícím snímku obrazovky a pak klikněte na **Execute** nahoře odešlete dokončenou žádost právo.
 
 ![Text žádosti Fiddleru][7]
 
 ### <a name="postman"></a>Postman
 
-Zkopírujte definici indexu do textu žádosti podobně jako na následujícím snímku obrazovky a pak kliknutím na **Odeslat** vpravo nahoře odešlete dokončenou žádost.
+Zkopírujte definici indexu do textu žádosti podobně jako na následujícím snímku obrazovky a pak klikněte na tlačítko **odeslat** nahoře odešlete dokončenou žádost právo.
 
 ![Text žádosti Postman][8]
 
@@ -217,7 +218,7 @@ Teď, když jsou index a dokumenty nahrané, můžete na ně vydávat dotazy. Da
 + Změňte koncový bod tak, aby zahrnoval parametry dotazu včetně vyhledávacích řetězců. Adresa URL dotazu může vypadat takto: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`.
 + Hlavičky žádosti ponechte tak, jak jsou.
 
-Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí počet dokumentů. Po kliknutí na **Odeslat** v nástroji Postman by žádost a odpověď měly vypadat jako na následujícím snímku obrazovky. Stavový kód by měl být 200.
+Tento dotaz vyhledá výraz „motel“ a ve výsledcích hledání vrátí počet dokumentů. Žádost a odpověď by měl vypadat podobně jako na následujícím snímku obrazovky pro nástroj Postman po kliknutí na **odeslat**. Stavový kód by měl být 200.
 
  ![Odpověď na dotaz v nástroji Postman][11]
 
@@ -249,7 +250,7 @@ Další informace o tomto rozhraní API najdete v tématu [Získání statistik 
 
 Ve Fiddleru klikněte na kartu **Kontroly**, klikněte na kartu **Hlavičky** a vyberte formát JSON. Měli byste vidět počet dokumentů a velikost úložiště (v KB).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Klienti REST jsou neocenitelní při zkoumání bez přípravy, ale teď, když víte, jak fungují rozhraní REST API, můžete pokračovat s kódem. Další kroky najdete na následujících odkazech:
 

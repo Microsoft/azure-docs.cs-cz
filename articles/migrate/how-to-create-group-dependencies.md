@@ -4,14 +4,14 @@ description: Popisuje, jak Upřesnit hodnocení využitím mapování závislost
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 3b75e8607c85f79bb64c57c2154115c41ebe8366
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835500"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255257"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -24,6 +24,9 @@ Tento článek popisuje, jak upřesnění skupiny s vizualizací závislostí v�
 
 ## <a name="prepare-for-dependency-visualization"></a>Příprava pro vizualizace závislostí
 Azure Migrate využívá řešení Service Map ve službě Log Analytics umožňuje vizualizace závislostí počítačů.
+
+> [!NOTE]
+> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 ### <a name="associate-a-log-analytics-workspace"></a>Přiřadit pracovní prostor Log Analytics
 Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log Analytics, novou nebo existující s projekt Azure Migrate. Můžete pouze vytvářet nebo připojit pracovní prostor v rámci stejného předplatného, ve kterém se vytvoří projekt migrace.
@@ -55,7 +58,7 @@ Instalace agenta na počítači s Windows:
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
 3. V **cílovou složku**, udržovat nebo změnit výchozí instalační složku > **Další**.
 4. V **možnosti instalace agenta**vyberte **Azure Log Analytics** > **Další**.
-5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
+5. Klikněte na tlačítko **přidat** přidáte nový pracovní prostor Log Analytics. Vložte ID pracovního prostoru a klíč, který jste zkopírovali z portálu. Klikněte na tlačítko **Další**.
 
 
 Instalace agenta na počítači s Linuxem:

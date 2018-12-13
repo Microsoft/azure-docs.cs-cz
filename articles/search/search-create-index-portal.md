@@ -1,5 +1,5 @@
 ---
-title: Vytvoření indexu Azure Search na portálu | Dokumentace Microsoftu
+title: Vytvoření indexu Azure Search na webu Azure portal – Azure Search
 description: Informace o vytvoření indexu pro službu Azure Search pomocí návrhářů integrované portálu indexu.
 manager: cgronlun
 author: heidisteen
@@ -9,12 +9,13 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: bb1ba5e860dab237b3f6e16205b5e4cbad45e6e3
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.custom: seodec2018
+ms.openlocfilehash: 4bba8b41418dadad1b241d60ab0b7aeee4c046d7
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990842"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316705"
 ---
 # <a name="how-to-create-an-azure-search-index-using-the-azure-portal"></a>Vytvoření indexu Azure Search pomocí webu Azure portal
 
@@ -95,7 +96,7 @@ Dokumentace k rozhraní API služby Azure Search obsahuje příklady kódu s jed
 
 Po vytvoření indexu Azure Search můžete přejít na další krok: [nahrání prohledávatelných dat do indexu](search-what-is-data-import.md).
 
-Další možnost je také podívat se blíže na indexy. Kromě kolekce Pole index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování (bodovací profily) a nastavení CORS. Portál poskytuje stránky se záložkami pro definování nejběžnějších elementů: polí, analyzátorů a modulů pro návrhy. K vytvoření nebo úpravě jiných elementů můžete použít rozhraní REST API nebo .NET SDK.
+Další možnost je také podívat se blíže na indexy. Kromě kolekce Pole index také určuje analyzátory, moduly pro návrhy, profily vyhodnocování (bodovací profily) a nastavení CORS. Portál poskytuje stránky se záložkami pro definování nejběžnějších elementů: Pole, analyzátory a moduly pro návrhy. K vytvoření nebo úpravě jiných elementů můžete použít rozhraní REST API nebo .NET SDK.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

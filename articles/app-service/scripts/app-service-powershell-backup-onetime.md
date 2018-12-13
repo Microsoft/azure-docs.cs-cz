@@ -3,8 +3,8 @@ title: Ukázkový skript Azure PowerShellu – Zálohování webové aplikace | 
 description: Ukázkový skript Azure PowerShellu – Zálohování webové aplikace
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: fc755f82-ca3e-4532-b251-690b699324d6
@@ -13,16 +13,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 1b10de7b102ea2e8e55d48fa9753dbe115e2016b
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 548d763767191e8a2929804ef92e62139d1ade85
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325910"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191440"
 ---
-# <a name="back-up-a-web-app"></a>Zálohování webové aplikace
+# <a name="back-up-a-web-app-using-powershell"></a>Zálohování webové aplikace pomocí Powershellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
@@ -55,7 +55,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzureRmWebAppBackup](/powershell/module/azurerm.websites/new-azurermwebappbackup) | Vytvoří zálohu webové aplikace. |
 | [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Získá seznam záloh webové aplikace. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

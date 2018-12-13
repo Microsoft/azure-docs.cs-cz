@@ -1,5 +1,5 @@
 ---
-title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Dokumentace Microsoftu
+title: Porovnání virtuálních počítačů služby App Service, Service Fabric a Cloud Services – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f04279b63ee5133b9900c475537798f6fa16bff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 2cf73607f0cb286f06a5aa043fd8b30816e6a80f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958699"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313611"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 
-Azure nabízí několik způsobů hostování webů: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] a [Cloud Services][Cloud Services]. Tento článek vám pomůže porozumět možnostem a učinit správnou volbu pro vaši webovou aplikaci.
+Azure nabízí několik způsobů hostování webů: [Azure App Service][Azure App Service], [virtuálních počítačů][Virtual Machines], [Service Fabric][Service Fabric], a [Cloudových služeb][Cloud Services]. Tento článek vám pomůže porozumět možnostem a učinit správnou volbu pro vaši webovou aplikaci.
 
 Azure App Service je nejlepší volbou pro většinu webových aplikací. Nasazování a správa jsou integrované přímo do platformy, weby se rychle škálují pro zvládnutí vysokého přenosového zatížení a integrované vyrovnávání zatížení a služba Traffic Manager zajišťují vysokou dostupnost. Do služby Azure App Service můžete snadno přesunout existující weby pomocí [online nástroje pro migraci][migrate-tool], můžete použít open source aplikaci z galerie webových aplikací nebo vytvořit nový web pomocí rozhraní a nástrojů podle vašeho výběru. Díky funkci [WebJobs][WebJobs] můžete do své webové aplikace App Service snadno přidat zpracování úloh na pozadí.
 

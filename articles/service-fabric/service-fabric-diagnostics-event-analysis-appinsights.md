@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 815b792f8584e984ff77c32265de65f9b633adb1
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291041"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322785"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Události analýzy a vizualizace s využitím Application Insights
 
@@ -54,7 +54,7 @@ Prozkoumat další možnosti portálu služby Application Insights, přejděte n
 >[!NOTE]
 >To platí pouze pro clustery s Windows v tuto chvíli.
 
-Existují dva základní způsoby odesílání dat z WAD do služby Azure Application Insights, který můžete vytvořit přidáním jímky Application Insights do konfigurace WAD, jak je uvedeno v [v tomto článku](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Existují dva základní způsoby odesílání dat z WAD do služby Azure Application Insights, který můžete vytvořit přidáním jímky Application Insights do konfigurace WAD, jak je uvedeno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 #### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Přidat Instrumentační klíč Application Insights při vytváření clusteru na webu Azure portal
 
@@ -88,7 +88,7 @@ V "WadCfg" šablony Resource Manageru přidejte "Sink" zahrnutím následující
 
 V obou předchozích fragmenty kódu byl použit název "applicationInsights" k popisu jímky. Toto není povinné a jako jímku název je součástí "jímky", můžete nastavit název na libovolný řetězec.
 
-V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. Application Insights. Protože většina trasování z platformy je úrovně "Informační", můžete také zvážit změnu konfigurace jímky pouze odeslat protokoly typu "Kritický" nebo "Chyba". To můžete udělat tak, že přidáte "Kanály" do jímky, jak je ukázáno v [v tomto článku](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+V současné době protokoly z clusteru zobrazí jako **trasy** v log vieweru. Application Insights. Protože většina trasování z platformy je úrovně "Informační", můžete také zvážit změnu konfigurace jímky pouze odeslat protokoly typu "Kritický" nebo "Chyba". To můžete udělat tak, že přidáte "Kanály" do jímky, jak je ukázáno v [v tomto článku](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 >[!NOTE]
 >Pokud používáte nesprávný klíč Application Insights na portálu nebo v šabloně Resource Manageru, budete muset ručně změnit klíč a aktualizaci clusteru a znovu ji nasadíte.

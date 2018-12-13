@@ -1,21 +1,22 @@
 ---
-title: Načíst metriky Azure Load Balancer pomocí rozhraní REST API | Dokumentace Microsoftu
+title: Načíst metriky pomocí rozhraní REST API
+titlesuffix: Azure Load Balancer
 description: Pomocí rozhraní Azure REST API pro shromažďování metrik stavu a využití pro nástroj pro vyrovnávání zatížení pro zadaný rozsah datum a čas.
 services: sql-database
 author: KumudD
 ms.reviewer: routlaw
 manager: jeconnoc
 ms.service: load-balancer
-ms.custom: REST
+ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 1fac461c3af4ea0a2e1f2257256969c47bc3d134
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 43de0de6fb81d50459ba5b027a8ae1718a89c9a3
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094457"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183858"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Získat metriky využití pro vyrovnávání zatížení pomocí rozhraní REST API
 
@@ -52,7 +53,7 @@ Vyžadují se následující hlavičky:
 | Časový interval | Časový interval dotazu. Jedná se o řetězec v následujícím formátu `startDateTime_ISO/endDateTime_ISO`. Tento nepovinný parametr je nastaven na vrátit data za jeden den v příkladu. |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Tělo požadavku
+### <a name="request-body"></a>Text požadavku
 
 Pro tuto operaci je potřeba není datová část požadavku.
 

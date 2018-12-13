@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 3c7a1dd9ba688c5cc9776dbfba0841c9a06065dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 6447061e79946abf8070daf29eeb57bad7b6fa55
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419686"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184963"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Java SDK pro zařízení pro službu a skupinových registrací pro službu IoT Hub Device Provisioning
 
@@ -49,20 +49,20 @@ Než budete pokračovat, nezapomeňte dokončit kroky v tématu [Nastavení slu�
             - Vyberte soubor **_RootCA.pem_**, který jste právě vytvořili.
             - Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 
-        ![Přidání certifikátu](./media/tutorial-group-enrollments/add-certificate.png)
+           ![Přidání certifikátu](./media/tutorial-group-enrollments/add-certificate.png)
 
         1. Vyberte nově vytvořený certifikát:
             - Klikněte na **Vygenerovat ověřovací kód**. Zkopírujte vygenerovaný kód.
             - Proveďte krok ověření. Zadejte nebo klikněte pravým tlačítkem a vložte _ověřovací kód_ do spuštěného okna PowerShellu.  Stiskněte **Enter**.
             - Na webu Azure Portal vyberte nově vytvořený soubor **_verifyCert4.pem_**. Klikněte na **Ověřit**.
 
-            ![Ověření certifikátu](./media/tutorial-group-enrollments/validate-certificate.png)
+              ![Ověření certifikátu](./media/tutorial-group-enrollments/validate-certificate.png)
 
     1. Nakonec proveďte kroky pro vytvoření certifikátů zařízení a vyčištění prostředků.
 
-    > [!NOTE]
-    > Při vytváření certifikátů zařízení se ujistěte, že v názvu zařízení používáte pouze malé alfanumerické znaky a pomlčky.
-    >
+       > [!NOTE]
+       > Při vytváření certifikátů zařízení se ujistěte, že v názvu zařízení používáte pouze malé alfanumerické znaky a pomlčky.
+       >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
@@ -212,7 +212,7 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste na svém počítači s Windows vytvořili simulované zařízení X.509 a pomocí služby Azure IoT Hub Device Provisioning a skupin registrací jste ho zřídili pro své centrum IoT. Další informace o vašem zařízení X.509 najdete v konceptech zařízení. 
 

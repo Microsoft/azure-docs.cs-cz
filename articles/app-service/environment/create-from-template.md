@@ -1,5 +1,5 @@
 ---
-title: Vytvoření služby Azure App Service environment pomocí šablony Resource Manageru
+title: Vytvoření služby App Service environment pomocí šablony Resource Manageru – Azure
 description: Vysvětluje, jak vytvořit prostředí, externí nebo ILB Azure App Service pomocí šablony Resource Manageru
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: bdd8ac47f709153b17e2dcf44ff9a2c568e650cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958743"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277467"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Vytvoření služby ASE s použitím šablony Azure Resource Manageru
 
@@ -49,7 +50,7 @@ K automatizaci vytvoření vaší služby ASE:
 
 Pokud chcete vytvořit službu ASE, použijte tyto šablony Resource Manageru [příklady][quickstartilbasecreate]. Jejich Postarejte se o případu použití. Většina parametrů v *azuredeploy.parameters.json* souboru jsou společné pro vytváření služeb ase s ILB a externí služby ase. V následujícím seznamu volá výstupní parametry zejména nebo které jsou jedinečné, když vytvoříte službu ASE:
 
-* *internalLoadBalancingMode*: ve většině případů sadu tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a daty ovládacího prvku/portů channel naslouchali službou FTP služby ase, bude vázán k ILB přidělené virtuální síti typu interní Adresa. Pokud je tato vlastnost nastavena na 2, pouze související se službou portů FTP (ovládací prvek a data kanály) jsou vázány na adresu ILB. Přenosy HTTP/HTTPS zůstávají ve veřejných virtuálních IP adres.
+* *internalLoadBalancingMode*: Ve většině případů nastavte tuto hodnotu na 3, což znamená, že přenosy HTTP/HTTPS na portech 80/443 a daty ovládacího prvku/portů channel naslouchali službou FTP služby ase, bude vázán na interní adresu ILB přidělené virtuální sítě. Pokud je tato vlastnost nastavena na 2, pouze související se službou portů FTP (ovládací prvek a data kanály) jsou vázány na adresu ILB. Přenosy HTTP/HTTPS zůstávají ve veřejných virtuálních IP adres.
 * *příponu DNS*: Tento parametr definuje výchozí kořenové domény, který je přiřazen do služby ASE. Ve veřejné variantu služby Azure App Service, výchozí kořenové domény pro všechny webové aplikace je *azurewebsites.net*. Protože prostředí ILB ASE je interní virtuální síti zákazníka, nemá smysl použít veřejné služby výchozí kořenovou doménu. Místo toho službu ASE by měl mít výchozí kořenové domény, který dává smysl pro použití v rámci interní virtuální síti vaší společnosti. Například společnost Contoso může použít výchozí kořenové domény *interní contoso.com* pro aplikace, které jsou určeny byly přeložitelný a přístupný pouze v rámci virtuální sítě společnosti Contoso. 
 * *ipSslAddressCount*: Tento parametr automaticky výchozí hodnotu na hodnotu 0 v *azuredeploy.json* protože služeb ase s ILB mít pouze jednu adresu ILB. Nejsou žádné explicitní adresy IP SSL pro službu ASE. Fond adres IP SSL pro službu ASE proto musí být nastavena na hodnotu nula. V opačném případě dojde k zřizování chybě. 
 
@@ -70,7 +71,7 @@ Certifikát SSL musí být přidruženy služby ASE jako "Výchozí" certifikát
 Získáte platný certifikát protokolu SSL pomocí interní certifikační autority, nákupu certifikát od externího vystavitele nebo pomocí certifikátu podepsaného svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
 * **Předmět**: Tento atribut musí být nastaven **.vase kořenové domain-here.com*.
-* **Alternativní název předmětu**: Tento atribut musí obsahovat **.vase kořenové domain-here.com* a **.vase-kořenové-domain-here.com*. Připojení SSL k webu SCM/kudu spojenému s každou aplikací používá adresu ve tvaru *your-app-name.scm.your-root-domain-here.com*.
+* **Alternativní název subjektu**: Tento atribut musí obsahovat **.vase kořenové domain-here.com* a **.vase-kořenové-domain-here.com*. Připojení SSL k webu SCM/kudu spojenému s každou aplikací používá adresu ve tvaru *your-app-name.scm.your-root-domain-here.com*.
 
 Pomocí platného certifikátu SSL v rukou jsou potřeba další dva přípravné kroky. Převeďte/uložte certifikát SSL jako soubor .pfx. Mějte na paměti, že soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 
@@ -103,12 +104,12 @@ Poté, co certifikát SSL je úspěšně vygenerována a převedeno na řetězec
 
 Parametry v *azuredeploy.parameters.json* souboru jsou uvedené tady:
 
-* *appServiceEnvironmentName*: název služba ASE s ILB, která se právě nastavuje.
-* *existingAseLocation*: textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad: "Střed USA – jih".
-* *pfxBlobString*: řetězec s kódováním based64 reprezentace souboru .pfx. Použijte fragment kódu je uvedeno výše a zkopírujte řetězec obsažený v "exportedcert.pfx.b64". Vložte ji jako hodnotu *pfxBlobString* atribut.
-* *heslo*: heslo používané k zabezpečení souboru .pfx.
-* *Miniatura certifikátu*: kryptografický otisk certifikátu. Pokud se načetlo tuto hodnotu z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu, jako je. Pokud zkopírujete hodnoty z dialogového okna certifikátu Windows, nezapomeňte odstranit nadbytečné mezery. *CertificateThumbprint* by měla vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
-* *název certifikátu*: použít popisný řetězec identifikátoru vlastní identity certifikát. Název se používá jako součást jedinečný identifikátor správce prostředků *Microsoft.Web/certificates* entity, který představuje certifikát SSL. Název *musí* končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE. Na webu Azure portal používá tato přípona jako indikátor, že tento certifikát slouží k zabezpečení služby ASE s ILB povolena.
+* *appServiceEnvironmentName*: Název služba ASE s ILB, která se právě nastavuje.
+* *existingAseLocation*: Textový řetězec obsahující oblast Azure, ve kterém byla nasazena služba ASE s ILB.  Příklad: "Střední část jihu USA".
+* *pfxBlobString*: Řetězec s kódováním based64 reprezentace souboru .pfx. Použijte fragment kódu je uvedeno výše a zkopírujte řetězec obsažený v "exportedcert.pfx.b64". Vložte ji jako hodnotu *pfxBlobString* atribut.
+* *Heslo*: Heslo používané k zabezpečení souboru .pfx.
+* *Miniatura certifikátu*: Kryptografický otisk certifikátu Pokud se načetlo tuto hodnotu z prostředí PowerShell (například *$certificate. Kryptografický otisk* z předchozích fragmentu kódu), můžete použít hodnotu, jako je. Pokud zkopírujete hodnoty z dialogového okna certifikátu Windows, nezapomeňte odstranit nadbytečné mezery. *CertificateThumbprint* by měla vypadat podobně jako AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* *název certifikátu*: Vlastní výběr identifikátor popisný řetězec použít na identitu certifikátu. Název se používá jako součást jedinečný identifikátor správce prostředků *Microsoft.Web/certificates* entity, který představuje certifikát SSL. Název *musí* končit následující příponu: \_yourASENameHere_InternalLoadBalancingASE. Na webu Azure portal používá tato přípona jako indikátor, že tento certifikát slouží k zabezpečení služby ASE s ILB povolena.
 
 Příklad zkrácený *azuredeploy.parameters.json* je znázorněna zde:
 
@@ -155,7 +156,7 @@ Po dokončení šablonu aplikace na služba ASE s ILB je možný přes protokol 
 Stejně jako aplikace, které běží na veřejné víceklientské služby, ale vývojáři můžete nakonfigurovat vlastní hostitele pro jednotlivé aplikace. Také mohou nakonfigurovat jedinečných vazeb certifikátů SNI SSL pro jednotlivé aplikace.
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
-Služba App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.
+App Service Environment má dvě verze: ASEv1 a ASEv2. Předchozí informace se týkaly verze ASEv2. V této části jsou uvedené rozdíly mezi verzemi ASEv1 a ASEv2.
 
 Ve verzi ASEv1 je spravovat všechny prostředky ručně. To se týká front-endů, pracovních procesů a IP adres používaných pro zabezpečení SSL na základě protokolu IP. Před horizontálním navýšení kapacity plánu služby App Service, musíte horizontální navýšení kapacity fondu pracovních procesů, které chcete hostovat ho.
 

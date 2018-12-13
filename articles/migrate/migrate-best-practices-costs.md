@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135555"
+ms.locfileid: "53163765"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
@@ -34,11 +34,11 @@ Osvědčené postupy v této části umožňují odhadnout náklady, provést ur
 
 
 
-## <a name="best-practice-estimate-monthly-workload-costs"></a>Osvědčený postup: odhadnout měsíční náklady na úlohy
+## <a name="best-practice-estimate-monthly-workload-costs"></a>Osvědčený postup: Odhadnout měsíční náklady na úlohy
  
 Pro předpověď svoje měsíční náklady pro přenášená zatížení jsou různé nástroje, které můžete použít.
 
-- **Cenovou kalkulačku Azure**: Vyberte produkty, které chcete odhadnout, například virtuální počítače a úložiště. Vstup náklady na cenové kalkulačky, sestavit odhad.
+- **Cenovou kalkulačku Azure**: Zvolíte produkty, které chcete odhadnout, například virtuální počítače a úložiště. Vstup náklady na cenové kalkulačky, sestavit odhad.
 
  ![Cenovou kalkulačku Azure](./media/migrate-best-practices-costs/pricing.png) *cenovou kalkulačku Azure*
 
@@ -47,7 +47,7 @@ Pro předpověď svoje měsíční náklady pro přenášená zatížení jsou r
  - Azure Migrate zjistí a vyhodnocuje vaše místní prostředí pro poskytnutí inventář.
  - Azure Migrate můžete namapovat a zobrazit závislosti mezi virtuálními počítači, abyste měli ucelený přehled.
  - Posouzení služby Azure Migrate obsahuje odhadované náklady.
-    - Náklady na výpočetní výkon: pomocí velikost virtuálního počítače Azure, doporučuje se, když vytvoříte posouzení, migrace Azure používá rozhraní API pro fakturaci pro výpočet odhadované měsíční náklady na virtuální počítač. Odhad bere v úvahu operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny. Agreguje náklady ve všech virtuálních počítačích v posouzení a vypočítá celkové měsíční náklady výpočetní prostředky.
+    - Náklady na výpočetní výkon: Pomocí velikost virtuálního počítače Azure, doporučuje se, když vytvoříte posouzení, Azure Migrate používá rozhraní API pro fakturaci pro výpočet odhadované měsíční náklady na virtuální počítač. Odhad bere v úvahu operační systém, program software assurance, rezervované instance, virtuálního počítače doby provozu, umístění a nastavení měny. Agreguje náklady ve všech virtuálních počítačích v posouzení a vypočítá celkové měsíční náklady výpočetní prostředky.
     - Náklady na úložiště: Azure Migrate vypočítá agregováním náklady na úložiště všechny virtuální počítače ve vyhodnocení celkové měsíční náklady na úložiště. Na základě agregace měsíční náklady pro všechny disky připojené k němu můžete vypočítat měsíční náklady na úložiště pro konkrétní počítač. 
 
     ![Azure Migrate](./media/migrate-best-practices-costs/assess.png) *posouzení služby Azure Migrate*
@@ -58,7 +58,7 @@ Pro předpověď svoje měsíční náklady pro přenášená zatížení jsou r
 - [Přečtěte si informace o](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation) vyhodnocení Azure Migrate.
 - [Další informace](https://docs.microsoft.com/azure/dms/dms-overview) o Database Migration Service (DMS).
 
-## <a name="best-practice-right-size-vms"></a>Osvědčený postup: nastavení správné velikosti virtuálních počítačů
+## <a name="best-practice-right-size-vms"></a>Osvědčený postup: Nastavení správné velikosti virtuálních počítačů
 
 Když nasadíte virtuální počítače Azure k podpoře úloh můžete řadu možností. Každý typ virtuálního počítače má konkrétní funkce a různé kombinace procesoru, paměti a disky. Virtuální počítače jsou seskupené následujícím způsobem.
 
@@ -80,7 +80,7 @@ Když nasadíte virtuální počítače Azure k podpoře úloh můžete řadu mo
 - [Plánování](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs) velikosti virtuálního počítače.
 - [Kontrola](https://docs.microsoft.com/azure/migrate/contoso-migration-assessment) posouzení ukázka pro fiktivní společnosti Contoso.
 
-## <a name="best-practice-select-the-right-storage"></a>Osvědčený postup: vyberte správné úložiště
+## <a name="best-practice-select-the-right-storage"></a>Osvědčený postup: Vyberte správné úložiště
 
 Ladění a udržování místního úložiště (sítě SAN nebo NAS) a sítě pro podporu, může být drahá a časově náročné. Data souborů (úložiště) je obvykle migrovat do cloudu a vyřešit provozní a správu obrovskému. Společnost Microsoft poskytuje několik možností pro přesun dat do Azure a budete muset učinit rozhodnutí o těchto možnostech. Vybrat správný typ úložiště pro data můžete uložit vaše organizace několik tisíc dolarů měsíčně. Několik důležitých informací:
 
@@ -96,7 +96,7 @@ Azure poskytuje různé typy dat úložiště.
 --- | --- |  ---
 **Objekty blob** | Optimalizovaná pro ukládání velkých objemů nestrukturovaných objektů, jako jsou textová nebo binární data<br/><br/> | Přístup k datům odkudkoli přes protokol HTTP/HTTPS. | Používá se pro scénáře datových proudů a náhodný přístup. Například k předávání obrázků a dokumentů přímo do prohlížeče, streamování Vida a zvuku a ukládání dat pro obnovení zálohování a po havárii.
 **Soubory** | Spravované sdílené složky přístupné přes protokol SMB 3.0 | Použít při migraci místních sdílených složek a k poskytování více/připojení k datům souborů.
-**Disky** | Založené na objekty BLOB stránky.<br/><br/> Typ (rychlost) disku: standardní (pevný disk nebo SSD) nebo Premium (SSD).<br/><br/>Správa na disku: nespravovaných (můžete spravovat nastavení disku a úložiště) nebo spravované (vyberte typ disku a Azure spravuje za vás disk). | Použijte disky úrovně Premium pro virtuální počítače. Použití spravovaných disků pro jednoduchá správa a škálování.
+**Disky** | Založené na objekty BLOB stránky.<br/><br/> Typ disku (rychlost): Standardní (pevný disk nebo SSD) nebo Premium (SSD).<br/><br/>Správa disků: Nespravované (můžete spravovat nastavení disku a úložiště) nebo spravované (vyberte typ disku a Azure spravuje za vás disk). | Použijte disky úrovně Premium pro virtuální počítače. Použití spravovaných disků pro jednoduchá správa a škálování.
 **fronty** | Store a načítání velkého počtu zpráv, které jsou přístupné prostřednictvím ověřených volání (HTTP nebo HTTPS) | Připojení aplikace součástí pomocí asynchronních zpráv zařazení do fronty.
 **Tabulky** | Store tabulky. | Nyní součástí rozhraní API tabulky Azure Cosmos DB.
 
@@ -129,7 +129,7 @@ Azure poskytuje různé typy účtů úložiště a úrovně výkonu.
 **Typ** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Místně redundantní úložiště (LRS)** | Chrání proti místní výpadek replikací v rámci jednoho úložiště jednotky doména samostatné selhání a aktualizační doména. Udržuje několik kopií vašich dat v jednom datacentru. Poskytuje alespoň 99,999999999 % (11 9\'s) odolnosti objektů v průběhu daného roku. | Zvažte, pokud aplikace ukládá data, která můžou být snadno znovu vytvořena.
-**Zónově redundantní úložiště (ZRS)** | Chrání znovu k výpadku datového centra pomocí replikace mezi clustery tři úložiště v jedné oblasti. Každý cluster úložiště je fyzicky oddělené a je umístěn ve své vlastní zónu dostupnosti. Poskytuje alespoň 99,9999999999 % (12 9\'s) odolnosti objektů v průběhu daného roku díky uchovávání několika kopií dat napříč více datových center nebo oblastech. | Zvažte, pokud potřebujete konzistenci, odolnost a vysokou dostupnost. Nemusí ochranu proti regionálního po několika zónami permenently vliv.
+**Zónově redundantní úložiště (ZRS)** | Chrání znovu k výpadku datového centra pomocí replikace mezi clustery tři úložiště v jedné oblasti. Každý cluster úložiště je fyzicky oddělené a je umístěn ve své vlastní zónu dostupnosti. Poskytuje alespoň 99,9999999999 % (12 9\'s) odolnosti objektů v průběhu daného roku díky uchovávání několika kopií dat napříč více datových center nebo oblastech. | Zvažte, pokud potřebujete konzistenci, odolnost a vysokou dostupnost. Nemusí ochranu proti regionálního při více zón se trvale vliv.
 **Geograficky redundantní úložiště (GRS)** | Replikuje data do sekundární oblasti vzdálené stovky mil od primární chrání před výpadku celé oblasti. Poskytuje alespoň 99,99999999999999 % (16 9\'s) odolnosti objektů v průběhu daného roku. | Data repliky není k dispozici, pokud Microsoft nezahájí převzetí služeb při selhání do sekundární oblasti. Pokud dojde k převzetí služeb při selhání, je k dispozici oprávnění ke čtení a zápisu.
 **Geograficky redundantní úložiště jen pro čtení (RA-GRS)** | Podobně jako u GRS. Poskytuje alespoň 99,99999999999999 % (16 9\'s) odolnosti objektů v průběhu daného roku | Poskytuje a 99,99 % dostupnosti čtení tím, že povolíte přístup pro čtení z druhé oblasti používané pro geograficky redundantní úložiště.
 
@@ -144,7 +144,7 @@ Azure poskytuje různé typy účtů úložiště a úrovně výkonu.
 
 
 
-## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Osvědčený postup: zvýhodněné hybridní využití Azure využití
+## <a name="best-practice-leverage-azure-hybrid-benefits"></a>Osvědčený postup: Využívat výhody Azure Hybrid
 
 Z důvodu let softwaru investice do systémů, jako jsou Windows Server a SQL Server Microsoft je jedinečné pozici nabízet zákazníkům hodnotu v cloudu pomocí podstatné slevy, které nutně neposkytuje jiných poskytovatelů cloudových služeb. 
 
@@ -157,7 +157,7 @@ Integrované portfolio typu místní nebo Azure produktu Microsoft generuje výh
 - [Kontrola](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) ceny pokyny pro virtuální počítače Azure s SQL serverem.
 
 
-## <a name="best-practice-use-reserved-vm-instances"></a>Osvědčený postup: použití rezervované instance virtuálních počítačů
+## <a name="best-practice-use-reserved-vm-instances"></a>Osvědčený postup: Použití rezervovaných instancí virtuálních počítačů
 
 Většina cloudových platformách jsou nastaveny jako s průběžnými platbami. Tento model představuje nevýhody, protože zatím nevíte nutně dynamické úlohy budou. Při zadávání vymazat záměry úloh můžete přispět k plánování infrastruktury.
 
@@ -177,7 +177,7 @@ Pomocí služby Azure Reserved VM instances, si Předplatíte jeden nebo tři ro
 - [Získejte doprovodné materiály k cenám](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance#bring-your-own-license-byol) pro virtuální počítače Azure s SQL serverem.
 
 
-## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Osvědčený postup: útrata v cloudu agregované napříč předplatnými
+## <a name="best-practice-aggregate-cloud-spend-across-subscriptions"></a>Osvědčený postup: Útrata v cloudu agregované napříč předplatnými
 
 Je nevyhnutelné, že nakonec budete mít více než jedno předplatné Azure. Například můžete potřebovat další předplatné k oddělení vývoje a provozu hranice, nebo můžete mít platformu, která vyžaduje samostatné předplatné pro každého klienta. Možnost agregovaných dat, vytváření sestav napříč všemi předplatnými do jedné platformy je důležité funkce.
 
@@ -197,7 +197,7 @@ Po úspěšné migraci úloh a pár týdnů, shromažďovat data o spotřebě bu
 
 Osvědčené postupy v této části zahrnují náklady na plánování rozpočtu a analýz, monitorování prostředků a provádění rozpočty skupiny prostředků a optimalizaci monitorování úložiště a virtuálních počítačů pomocí Azure Cost Management.
 
-## <a name="best-practice-use-azure-cost-management"></a>Osvědčený postup: použití Azure Cost Management
+## <a name="best-practice-use-azure-cost-management"></a>Osvědčený postup: Použití Azure Cost Management
 
 Společnost Microsoft poskytuje Azure Cost Management můžete sledovat výdaje, následujícím způsobem:
 
@@ -210,21 +210,21 @@ Společnost Microsoft poskytuje Azure Cost Management můžete sledovat výdaje,
 Ve službě Cost Management můžete:
 
 
-- **Vytvořit rozpočet**: vytvoření rozpočet pro finanční zodpovědnost.
-    - Můžete účet pro služby využívat nebo přihlášení k odběru pro konkrétní období (měsíčně, čtvrtletně, pořizují na rok) a ascope (předplatných nebo skupinách prostředků). Například můžete vytvořit rozpočtu předplatné Azure pro každý měsíc, čtvrtletí nebo roční období.
+- **Vytvořit rozpočet**: Vytvoření rozpočet pro finanční zodpovědnost.
+    - Můžete účet pro služby využívat nebo přihlášení k odběru pro konkrétní období (měsíčně, čtvrtletně, pořizují na rok) a oboru (předplatných nebo skupinách prostředků). Například můžete vytvořit rozpočtu předplatné Azure pro každý měsíc, čtvrtletí nebo roční období.
     - Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu na aktuální útratu je jedním z prvních kroků při analýze nákladů a výdajů.
     - E-mailová oznámení lze odesílat, když se dosáhne prahové hodnoty.
     - Náklady na správu dat můžete exportovat do úložiště Azure pro účely analýzy.
 
     ![Cost Management rozpočtu](./media/migrate-best-practices-costs/budget.png) *rozpočet Azure Cost Management*
 
-- **Proveďte analýzu nákladů**: získat analýzy nákladů můžete zkoumat a analyzovat organizační náklady, které vám pomohou pochopit, jak jsou náklady na operace a odhalovat trendy výdajů.
+- **Proveďte analýzu nákladů**: Získat analýzy nákladů můžete zkoumat a analyzovat organizační náklady, které vám pomohou pochopit, jak jsou náklady na operace a odhalovat trendy výdajů.
     - Analýza nákladů je k dispozici uživatelům EA.
     - Můžete zobrazit náklady na analýzu dat pro celou řadou oborů, třeba tak, že oddělení, účet, předplatné nebo skupinu prostředků.
     - Můžete získat analýzy nákladů, který ukazuje celkové náklady pro aktuální měsíc a celkové denní náklady. 
 
     ![Analýza správy nákladů](./media/migrate-best-practices-costs/analysis.png) *analýzy Azure Cost Management*
-- **Získejte doporučení**: doporučení Advisoru získat, které ukazují, jak můžete optimalizovat a zvýšení efektivity.
+- **Získejte doporučení**: Získejte doporučení Advisoru, které ukazují, jak můžete optimalizovat a zvýšení efektivity.
 
 
 **Víc se uč:**
@@ -235,9 +235,9 @@ Ve službě Cost Management můžete:
 - [Získejte kurz](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json) na optimalizaci nákladů od doporučení.
 - [Kontrola](https://docs.microsoft.com/rest/api/consumption/budgets) konektoru Azure Consumption API.
 
-## <a name="best-practice-monitor-resource-utilization"></a>Osvědčený postup: monitorování využití prostředků
+## <a name="best-practice-monitor-resource-utilization"></a>Osvědčený postup: Monitorování využití prostředků
 
-V Azure platíte za co použijete, když se spotřebovávají prostředky a neplatíte, když nejsou. Pro virtuální počítače fakturace dochází, když je přidělen virtuálnímu počítači a se vám neúčtují poplatky po zrušení přidělení virtuálního počítače. S myslete na to by měl monitorovat virtuální počítače v použití a ověřte nastavení velikosti virtuálního počítače.
+V Azure platíte za co použijete, když se spotřebovávají prostředky a není platíte, když nejsou. Pro virtuální počítače fakturace dochází, když je přidělen virtuálnímu počítači a se vám neúčtují poplatky po zrušení přidělení virtuálního počítače. S myslete na to by měl monitorovat virtuální počítače v použití a ověřte nastavení velikosti virtuálního počítače.
 
 - Průběžně vyhodnoťte úloh virtuálních počítačů k určení směrné plány.
 - Například pokud vaše úloha je použít silně od pondělí do pátku, 8: 00 do 18: 00, ale téměř použít mimo tyto hodiny, může snížit virtuálních počítačů mimo špičky. To může znamenat, změna velikosti virtuálního počítače nebo použijete virtuálního počítače škálovací sady do virtuálních počítačů automatického škálování směrem nahoru nebo dolů.
@@ -251,7 +251,7 @@ V Azure platíte za co použijete, když se spotřebovávají prostředky a nepl
 - [Další informace jak [optimalizovat náklady od doporučení](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), a [vám nenaúčtovaly neočekávané poplatky](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
 - [Další informace o](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) Toolkit (ARO) optimalizace prostředků Azure
 
-## <a name="best-practice-implement-resource-group-budgets"></a>Osvědčený postup: implementace rozpočty skupiny prostředků
+## <a name="best-practice-implement-resource-group-budgets"></a>Osvědčený postup: Implementace rozpočty skupiny prostředků
 
 Skupiny prostředků se často používají k reprezentaci hranice náklady. Společně se tento vzor využití pokračuje v týmu Azure pro vývoj nové a vylepšené způsoby, jak sledovat a analyzovat prostředky na různých úrovních, včetně možnosti vytvořit rozpočet na skupinu prostředků a prostředky.  
 
@@ -264,7 +264,7 @@ Skupiny prostředků se často používají k reprezentaci hranice náklady. Spo
 - [Postupujte podle kurzu](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json) můžete vytvářet a spravovat Azure rozpočtu.
 
 
-## <a name="best-practice-optimize-azure-monitor-retention"></a>Osvědčený postup: optimalizace uchovávání Azure Monitor
+## <a name="best-practice-optimize-azure-monitor-retention"></a>Osvědčený postup: Optimalizace uchovávání Azure Monitor
 
 Při přesunu prostředků do Azure a povolení protokolování diagnostiky pro ně se vygeneroval velké množství dat protokolu. Tato data protokolu se obvykle odešle na účet úložiště, který je namapovaný na pracovní prostor Log Analytics.
 
@@ -278,7 +278,7 @@ Při přesunu prostředků do Azure a povolení protokolování diagnostiky pro 
 
 - [Další informace o](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs) monitorování využití a odhadované náklady.
  
-## <a name="best-practice-optimize-storage"></a>Osvědčený postup: optimalizace úložiště
+## <a name="best-practice-optimize-storage"></a>Osvědčený postup: Optimalizace úložiště
 
 Pokud jste postupovali podle osvědčené postupy pro výběr úložiště před migrací, jsou pravděpodobně využívat některé výhody. Existují ale náklady pravděpodobně další úložiště, které můžete dál optimalizovat. V čase soubory a objekty BLOB jsou pak zastaralá. Data se možná nepoužívají už ale zákonných požadavků může znamenat, že je potřeba zachovat určitou dobu. V důsledku toho nemusí musíte uložit na vysoce výkonné úložiště, který jste použili pro původní migrace.
 
@@ -291,7 +291,7 @@ Identifikace a přesunutím zastaralá data do oblastí levnější úložiště
 - [Další informace](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) o úrovně přístupu.
 - [Získejte přehled](https://docs.microsoft.com/azure/azure-monitor/overview) storsimple, a [ceny za StorSimple](https://azure.microsoft.com/pricing/details/storsimple/).
 
-## <a name="best-practice-automate-vm-optimization"></a>Osvědčený postup: automatické optimalizace virtuálních počítačů
+## <a name="best-practice-automate-vm-optimization"></a>Osvědčený postup: Automatizace optimalizace virtuálních počítačů
 
 Konečným cílem spuštění virtuálního počítače v cloudu je pro maximalizaci procesoru, paměti a disku, který ji používá. Pokud zjišťování virtuálních počítačů, které nejsou optimalizovaná nebo máte časté období, kdy nejsou používány virtuálními počítači, je vhodné je vypnout, nebo snížit je pomocí škálovací sady virtuálních počítačů.
 
@@ -304,7 +304,7 @@ Můžete optimalizovat virtuální počítač s Azure Automation, škálovací s
 - [Zjistěte, jak](https://docs.microsoft.com/azure/automation/automation-solution-vm-management) spuštěním a zastavením virtuálních počítačů mimo špičku ve službě Azure Automation.
 - [Další informace získáte] [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-overview)a [sada nástrojů optimalizace prostředků Azure (ARO)](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/).
 
-## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Osvědčené postupy: používání Logic Apps a sady runbook s rozpočty rozhraní API
+## <a name="best-practices-use-logic-apps-and-runbooks-with-budgets-api"></a>Osvědčené postupy: Pomocí rozhraní API rozpočty Logic Apps a sady runbook
 
 Azure poskytuje rozhraní REST API, který má přístup k fakturačním údajům vašeho tenanta.
 
@@ -320,7 +320,7 @@ Azure poskytuje rozhraní REST API, který má přístup k fakturačním údajů
 - [Přehledné znázornění](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview) do využití Azure pomocí rozhraní API pro fakturaci.
 
 
-## <a name="best-practice-implement-serverless-technologies"></a>Osvědčený postup: provedení technologiích bez serverů
+## <a name="best-practice-implement-serverless-technologies"></a>Osvědčený postup: Implementace technologiích bez serverů
 
 Úlohy virtuálních počítačů se migrují často "tak jak jsou" výpadky. Často virtuálních počítačů může hostovat úlohy, které jsou k nim dochází přerušovaně, s ohledem na krátkou dobu pro spuštění, nebo můžete také mnoho hodin. Například virtuální počítače, na kterých běží naplánované úlohy, jako je například Windows úloh plánovače nebo skripty prostředí PowerShell. Pokud tyto úlohy nejsou spuštěné, jste však zajistit plynulý provoz virtuálního počítače a náklady na úložiště na disku.
 

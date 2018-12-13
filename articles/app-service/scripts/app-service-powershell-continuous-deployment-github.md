@@ -1,5 +1,5 @@
 ---
-title: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace s průběžným nasazováním z GitHubu | Microsoft Docs
+title: Skript Azure Powershellu ukázkový – vytvoření aplikace s průběžným nasazováním GitHub | Dokumentace Microsoftu
 description: Ukázkový skript Azure PowerShellu – Vytvoření webové aplikace s průběžným nasazováním z GitHubu
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 337106de2fc22b38e9377a90470ffa3a8cd1e0de
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.openlocfilehash: 72e3c85142e0f9f88a9e895dde93ff43de3dd69c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324523"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312829"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Vytvoření webové aplikace s průběžným nasazováním z GitHubu
 
@@ -55,7 +55,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Vytvoří webovou aplikaci. |
 | [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upraví prostředek ve skupině prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
