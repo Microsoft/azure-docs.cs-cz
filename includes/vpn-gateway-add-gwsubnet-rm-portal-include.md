@@ -5,21 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fa4d58cefa82e70c036d697957254531042b9c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: 29ec30840e550b87f83de67d52348b9723400e0f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196876"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111925"
 ---
-1. Na [portálu](http://portal.azure.com) přejděte na virtuální síť Resource Manageru, pro kterou chcete vytvořit bránu virtuální sítě.
-2. Na stránce vaší virtuální sítě v části **Nastavení** kliknutím na **Podsítě** rozbalte stránku Podsítě.
-3. Na stránce **Podsítě** kliknutím na **+Podsíť brány** otevřete stránku **Přidat podsíť**.
+1. V [webu Azure portal](http://portal.azure.com), vyberte virtuální síť Resource Manageru, pro kterou chcete vytvořit bránu virtuální sítě.
+
+2. V **nastavení** část stránce vaší virtuální sítě, vyberte **podsítě** rozšířit **podsítě** stránky.
+
+3. Na **podsítě** stránce **podsíť brány** otevřít **přidat podsíť** stránky.
 
   ![Přidání podsítě brány](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "Přidání podsítě brány")
-4. **Název** podsítě se automaticky vyplní hodnotou GatewaySubnet. To je požadovaná hodnota, aby služba Azure podsíť rozpoznala jako podsíť brány. Upravte automaticky vyplněné hodnoty v poli **Adresní prostor** tak, aby odpovídaly požadavkům vaší konfigurace, a pak kliknutím na **OK** v dolní části stránky vytvořte podsíť.
+
+4. **Název** pro vaši podsíť je automaticky autofilled s hodnotou *GatewaySubnet*. Tato hodnota je vyžadována pro Azure podsíť rozpoznala jako podsíť brány. Upravit autofilled **rozsah adres** hodnoty tak, aby odpovídaly požadavkům vaší konfigurace, vyberte **OK** vytvořte podsíť.
 
   ![Přidání podsítě](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "Přidání podsítě")

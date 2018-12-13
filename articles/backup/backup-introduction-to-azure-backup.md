@@ -2,20 +2,20 @@
 title: Co je Azure Backup?
 description: Použijte službu Azure Backup k zálohování a obnovování dat a úloh ze serverů a pracovních stanic s Windows, serverů System Center DPM a virtuálních počítačů Azure.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: zálohování a obnovení; recovery services; řešení zálohování
 ms.service: backup
 ms.topic: overview
 ms.date: 8/2/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
-ms.translationtype: HT
+ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480969"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878293"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -231,7 +231,7 @@ Následující koncepty vám mohou pomoct při rozhodování ohledně zálohová
 | Plánovaná doba obnovení (RTO) |Množství času potřebného k dokončení obnovení nebo zotavení. |Z důvodu vyššího RPO je množství dat, které musí řešení zálohování zpracovat, typicky mnohem vyšší, což vede k delším RTO. Například obnovení dat z pásků může trvat i dny v závislosti na tom, jak dlouho trvá přenos pásku z odlehlého umístění. |Řešení zotavení po havárii mají nižší RTO, protože k jejich synchronizaci se zdrojem dochází častěji. Je tedy třeba zpracovat méně změn. |
 | Uchovávání |Jak dlouho mají být data uložená |Pro scénáře, které vyžadují provozní obnovení (poškození dat, neúmyslné odstranění souborů, selhání operačního systému), se zálohovaná data obvykle uchovávají po dobu 30 dnů nebo méně.<br>Z hlediska dodržování předpisů může být nutné uchování dat po dobu několika měsíců nebo i let. V takovém případě jsou pro archivaci ideální zálohovaná data. |Zotavení po havárii vyžaduje pouze provozní data obnovení, která obvykle zabírají několik hodin nebo až den. Z důvodu zaznamenávání jemně odstupňovaných dat v řešeních zotavení po havárii nedoporučujeme používání dat zotavení po havárii pro dlouhodobé uchovávání.  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Podrobné pokyny pro ochranu dat na Windows Serveru nebo pro ochranu virtuálního počítače v Azure najdete v jednom z následujících kurzů:
 
 * [Zálohování souborů a složek](backup-try-azure-backup-in-10-mins.md)

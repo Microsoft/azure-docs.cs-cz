@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: acbba991e6dcce56fad7f27c45f85214cc8fc707
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3381939e296009b0fd58366f7fff410ea01d1206
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642302"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864022"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
@@ -34,7 +34,7 @@ Musíte mít aplikaci function app k hostování provádění žádné funkce. A
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Ve výchozím nastavení aplikace function app vytvořena používá verzi 2.x modulu runtime Azure Functions. Rozšíření Durable Functions funguje na obě verze 1.x a 2.x modulu runtime Azure Functions. Nicméně šablony jsou dostupné jenom při cílení na verzi 2.x modulu runtime.
+Ve výchozím nastavení používá aplikace function app vytvořena verze 2.x modulu runtime Azure Functions. Rozšíření Durable Functions funguje na obě verze 1.x a 2.x modulu runtime Azure Functions. Nicméně šablony jsou dostupné jenom při cílení na verzi 2.x modulu runtime.
 
 ## <a name="create-an-orchestrator-function"></a>Vytvoření funkce orchestrátoru
 

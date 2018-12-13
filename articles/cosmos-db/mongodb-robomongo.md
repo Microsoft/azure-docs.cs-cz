@@ -1,50 +1,48 @@
 ---
-title: Použít Robomongo pro Azure Cosmos DB | Microsoft Docs
-description: 'Další informace o použití Robomongo se Azure DB Cosmos: rozhraní API pro MongoDB účet'
+title: Použití Robomongo pro službu Azure Cosmos DB
+description: 'Další informace o použití Robomongo pomocí služby Azure Cosmos DB: rozhraní API pro účet MongoDB'
 keywords: robomongo
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: sngun
-ms.openlocfilehash: b6d64d7d7b30d4175fb8c8bf6c98127465427d4e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 78f0158c9a80a60717b81b4788531c7efd979111
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795018"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863801"
 ---
-# <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Pomocí Azure DB Cosmos Robomongo: rozhraní API pro MongoDB účet
-Pro připojení k databázi Azure Cosmos: rozhraní API pro MongoDB účtu pomocí Robomongo, musíte:
+# <a name="use-robomongo-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Použití Robomongo pomocí služby Azure Cosmos DB: rozhraní API pro účet MongoDB
+Pro připojení ke službě Azure Cosmos DB: rozhraní API pro účet MongoDB použití Robomongo, musíte:
 
 * Stáhněte a nainstalujte [Robomongo](https://robomongo.org/)
-* Mít vaše Azure DB Cosmos: rozhraní API pro MongoDB účet [připojovací řetězec](connect-mongodb-account.md) informace
+* Mají služby Azure Cosmos DB: rozhraní API pro účet MongoDB [připojovací řetězec](connect-mongodb-account.md) informace
 
-## <a name="connect-using-robomongo"></a>Připojte se pomocí Robomongo
-Přidání vaší Azure DB Cosmos: rozhraní API pro MongoDB účet pro připojení MongoDB Robomongo, proveďte následující kroky.
+## <a name="connect-using-robomongo"></a>Připojení s využitím Robomongo
+Přidání služby Azure Cosmos DB: rozhraní API pro účet MongoDB k připojení Robomongo MongoDB, proveďte následující kroky.
 
-1. Načíst vaše Azure DB Cosmos: rozhraní API pro účet informace o připojení MongoDB pomocí pokynů [zde](connect-mongodb-account.md).
+1. Načtení Azure Cosmos DB: rozhraní API pro účet informace o připojení MongoDB pomocí pokynů [tady](connect-mongodb-account.md).
 
-    ![Snímek obrazovky okna řetězec připojení](./media/mongodb-robomongo/connectionstringblade.png)
+    ![Snímek obrazovky okna připojovací řetězec](./media/mongodb-robomongo/connectionstringblade.png)
 2. Spustit *Robomongo.exe*
 
-3. Klikněte na tlačítko připojení v části **souboru** ke správě připojení. Potom klikněte na **vytvořit** v **MongoDB připojení** okno, které se otevře **nastavení připojení** okno.
+3. Klikněte na tlačítko připojení v rámci **souboru** ke správě vašeho připojení. Potom klikněte na **vytvořit** v **připojení MongoDB** okno, které se otevře **nastavení připojení** okna.
 
-4. V **nastavení připojení** okno, zvolte název. Najdete **hostitele** a **Port** z vašich informací připojení v kroku 1 a zadejte je do **adresu** a **Port**, v uvedeném pořadí.
+4. V **nastavení připojení** okna, vyberte název. Potom vyhledejte **hostitele** a **Port** z informací o připojení v kroku 1 a zadejte je do **adresu** a **Port**v uvedeném pořadí.
 
-    ![Snímek obrazovky Robomongo spravovat připojení](./media/mongodb-robomongo/manageconnections.png)
-5. Na **ověřování** , klikněte na **provést ověřování**. Potom zadejte vaše databáze (výchozí hodnota je *správce*), **uživatelské jméno** a **heslo**.
-Obě **uživatelské jméno** a **heslo** lze nalézt v informace o připojení v kroku 1.
+    ![Snímek obrazovky okna Správa připojení Robomongo](./media/mongodb-robomongo/manageconnections.png)
+5. Na **ověřování** klikněte na tlačítko **provádět ověřování**. Zadejte databázi (výchozí hodnota je *správce*), **uživatelské jméno** a **heslo**.
+Obě **uživatelské jméno** a **heslo** najdete informace o připojení v kroku 1.
 
     ![Snímek obrazovky s kartou ověřování Robomongo](./media/mongodb-robomongo/authentication.png)
-6. Na **SSL** zkontrolujte **protokol SSL použití**, změňte **metodu ověřování** k **certifikát podepsaný svým držitelem**.
+6. Na **SSL** kartě **protokolu SSL pomocí**, změňte **metodu ověřování** k **certifikát podepsaný svým držitelem**.
 
     ![Snímek obrazovky s kartou SSL Robomongo](./media/mongodb-robomongo/SSL.png)
-7. Nakonec klikněte na **Test** a ověřte, zda lze pro připojení, potom **Uložit**.
+7. Nakonec klikněte na tlačítko **testovací** k ověření, že se můžete připojit, pak **Uložit**.
 
 ## <a name="next-steps"></a>Další postup
-* Prozkoumejte Azure Cosmos DB: Rozhraní API pro MongoDB [ukázky](mongodb-samples.md).
+* Prozkoumejte službu Azure Cosmos DB: Rozhraní API pro MongoDB [ukázky](mongodb-samples.md).

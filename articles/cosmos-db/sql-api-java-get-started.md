@@ -1,22 +1,21 @@
 ---
-title: 'Kurz k NoSQL: Rozhraní SQL API pro Azure Cosmos DB Java SDK | Microsoft Docs'
+title: 'Kurz k NoSQL: rozhraní SQL API pro Azure Cosmos DB Java SDK'
 description: Kurz k NoSQL, v rámci kterého se vytvoří online databáze a aplikace konzoly Java pomocí rozhraní SQL API pro Azure Cosmos DB. Azure SQL je databáze NoSQL pro JSON.
 keywords: nosql tutorial, online database, java console application
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: d3354d7e2db7ff33776d5ecd40546b2a3593d702
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bab289fedbbceb2d5cb763bd0f55e455bb60a29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836419"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093013"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
 
@@ -57,7 +56,7 @@ Ujistěte se, že máte následující:
 
 * [Git](https://git-scm.com/downloads)
 * [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)
-* [Maven](http://maven.apache.org/download.cgi).
+* [Maven](https://maven.apache.org/download.cgi).
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 Vytvořme účet služby Azure Cosmos DB. Pokud už máte účet, který chcete použít, můžete přeskočit k části [Klonování projektu z GitHubu](#GitClone). Pokud používáte emulátor služby Azure Cosmos DB, nastavte emulátor pomocí postupu v tématu [Emulátor služby Azure Cosmos DB](local-emulator.md) a přeskočte k části [Klonování projektu z GitHubu](#GitClone).

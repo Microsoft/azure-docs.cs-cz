@@ -1,22 +1,20 @@
 ---
-title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní SQL API | Microsoft Docs
+title: Kurz globální distribuci Azure Cosmos DB pro rozhraní SQL API
 description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní SQL API.
 services: cosmos-db
 keywords: globální distribuce
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 8bef38aca9c14dbddb30b57871267490bc03e00f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049764"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863478"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -159,7 +157,7 @@ Pokud se po počáteční fázi zjišťování klienta oblast pro zápis změní
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující:
 

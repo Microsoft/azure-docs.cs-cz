@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 12/06/2018
 ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: 2e36f52568d349aeecd47f90bf9431f096cc4fdc
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 70641084d2213b50803800a64000611d139facec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059407"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075761"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Správa přístupu k prostředkům pomocí Azure Stack Role-Based řízení přístupu
 
@@ -91,9 +91,9 @@ Následující kroky popisují, jak nakonfigurovat oprávnění pro uživatele.
 1. Přihlaste se pomocí účtu, který má oprávnění vlastníka prostředku, který chcete spravovat.
 2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Zvolte název, který chcete nastavit oprávnění pro skupinu prostředků.
-4. V navigačním podokně skupiny prostředků zvolte **řízení přístupu (IAM)**. **Řízení přístupu** zobrazení obsahuje seznam položek, které mají přístup do skupiny prostředků. Můžete filtrovat výsledky a použít panel nabídek k přidání nebo odebrání oprávnění.
-5. Na **řízení přístupu** nabídky vyberte možnosti **+ přidat**.
-6. Na **přidat oprávnění**:
+4. V navigačním podokně skupiny prostředků zvolte **řízení přístupu (IAM)**. **Přiřazení rolí** zobrazení obsahuje seznam položek, které mají přístup do skupiny prostředků. Můžete filtrovat a seskupení výsledků.
+5. Na **řízení přístupu** nabídky vyberte možnosti **přidat přiřazení role**.
+6. Na **přidat přiřazení role** podokna:
 
    * Zvolte roli, kterou chcete přiřadit z **Role** rozevíracího seznamu.
    * Vyberte prostředek, kterou chcete přiřadit z **přiřadit přístup k** rozevíracího seznamu.

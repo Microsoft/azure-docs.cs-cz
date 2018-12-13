@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: 81513819fd60dc088c2ed4a781562684c84e803a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415470"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879298"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API k Speech Service
 
@@ -45,7 +45,7 @@ V tomto článku použijte k migraci aplikace z Microsoft Translator Speech API 
 | Informace o časování                                       | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                 |
 | ID korelace                                    | :heavy_check_mark:                                              | : heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
 | Modely řeči                              | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Speech Service nabízí modely řeči, které vám umožní přizpůsobit rozpoznávání řeči do slovníku vaší organizace jedinečný.                                                                                                                                           |
-| Vlastní překladové modely                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Přihlášení k odběru do rozhraní API pro překlad textu Microsoftu vám umožní použít [vlastní Translator](https://www.microsoft.com/translator/business/customization/) (aktuálně ve verzi preview) použít vlastní data pro přesnější překlady.                                                 |
+| Vlastní překladové modely                         | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Přihlášení k odběru do rozhraní API pro překlad textu Microsoftu vám umožní použít [vlastní Translator](https://www.microsoft.com/translator/business/customization/) moct používat vaše vlastní data pro přesnější překlady.                                                 |
 
 ## <a name="migration-strategies"></a>Strategie migrace
 

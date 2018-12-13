@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c45167255ec91030f07e550de223a7ebed93168
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0971122ee7b9cde0664ee661454a8b7824f4b7d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345755"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093895"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -404,7 +404,7 @@ Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a au
 
    1. `fileName` neobsahuje filtr zástupných znaků.
    2. `rowDelimiter` musí být **\n**.
-   3. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` není nastaven na hodnotu false.
+   3. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` ponechané jako výchozí nebo nastavený na hodnotu true.
    4. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
    5. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
    6. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.

@@ -3,7 +3,7 @@ title: Obnovit databázi Azure SQL ze zálohy | Dokumentace Microsoftu
 description: Další informace o obnovení bodu v čase, umožňující vrátit zpět Azure SQL Database k dřívějšímu bodu v čase (až po 35 dnů).
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: backup-restore
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: ba6493f77b622a814c970b07fc2a23e7ce1d3624
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: MT
+ms.openlocfilehash: 2d7b50eadc130900cbd69d579f5ebb2997ad46a0
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987558"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872934"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 

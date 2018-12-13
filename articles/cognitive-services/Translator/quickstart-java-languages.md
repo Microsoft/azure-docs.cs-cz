@@ -1,128 +1,175 @@
 ---
-title: 'Rychlý start: Získání podporovaných jazyků, Java – Translator Text API'
+title: 'QuickStart: Získejte seznam podporovaných jazyků Java – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API a Javy.
+description: V tomto rychlém startu můžete získat seznam jazyků podporovaných pro překlad, přepis a vyhledávací slovník pomocí rozhraní Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 88a5452259978c265b8f48184f9604d9f1b4c238
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 9a5985adb92799726951ad37c1dbd0b72c6c9709
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412479"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889000"
 ---
-# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-java"></a>Rychlý start: Získání podporovaných jazyků pomocí rozhraní REST API služby Translator Text (Java)
+# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Rychlý start: Použití rozhraní Translator Text API k získání seznamu podporovaných jazyků pomocí Javy
 
-V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
+V tomto rychlém startu můžete získat seznam jazyků podporovaných pro překlad, přepis a vyhledávací slovník pomocí rozhraní Translator Text API.
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+* [JDK 7 nebo novější](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Klíč předplatného Azure pro službu Translator Text
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt s Gradle
 
-## <a name="languages-request"></a>Žádost Languages
+Začněme vytvořením pracovní adresář pro tento projekt. Z příkazového řádku (nebo terminál) spusťte tento příkaz:
 
-Pomocí následujícího kódu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady pomocí metody [Languages](./reference/v3-0-languages.md).
+```console
+mkdir get-languages-sample
+cd get-languages-sample
+```
 
-1. Ve svém oblíbeném editoru kódu vytvořte nový projekt v Javě.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+V dalším kroku budete inicializovat projekt Gradle. Tento příkaz vytvoří soubory nezbytné sestavení pro Gradle, nejdůležitější ale je, `build.gradle.kts`, který se používá v době běhu k vytvoření a konfigurace aplikace. Spuštěním tohoto příkazu z pracovní adresář:
+
+```console
+gradle init --type basic
+```
+
+Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+
+## <a name="configure-the-build-file"></a>Konfigurace souboru sestavení
+
+Vyhledejte `build.gradle.kts` a otevřete jej pomocí vašeho oblíbeného integrovaného vývojového prostředí textového editoru nebo editoru. Zkopírujte tuto konfiguraci sestavení:
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "GetLanguages"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+Povšimněte si, že tato ukázka obsahuje závislosti na OkHttp pro požadavky HTTP a Gson ke zpracování a parsování formátu JSON. Pokud chcete získat další informace o konfiguracích sestavení, naleznete v tématu [vytváření nového sestavení Gradle](https://guides.gradle.org/creating-new-gradle-builds/).
+
+## <a name="create-a-java-file"></a>Vytvořte soubor Java
+
+Pojďme vytvořit složku pro ukázkovou aplikaci. Z pracovního adresáře spusťte:
+
+```console
+mkdir -p src/main/java
+```
+
+Dále v této složce vytvořte soubor s názvem `GetLanguages.java`.
+
+## <a name="import-required-libraries"></a>Importujte požadované knihovny
+
+Otevřít `GetLanguages.java` a přidat tyto příkazy import:
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+## <a name="define-variables"></a>Definování proměnných
 
-/* NOTE: To compile and run this code:
-1. Save this file as Languages.java.
-2. Run:
-    javac Languages.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar Languages
-*/
+Nejprve budete muset vytvořit veřejnou třídu pro váš projekt:
 
-public class Languages {
+```java
+public class GetLanguages {
+  // All project code goes here...
+}
+```
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+Přidejte tyto řádky do `GetLanguages` třídy:
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
+```
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/languages?api-version=3.0";
+## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 
-    static String output_path = "output.txt";
+Přidejte tento řádek, který `GetLanguages` třída pro vytvoření instance `OkHttpClient`:
 
-    public static String GetLanguages () throws Exception {
-        URL url = new URL (host + path);
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
+V dalším kroku Vytvořme požadavek GET.
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+```java
+// This function performs a GET request.
+public String Get() throws IOException {
+    Request request = new Request.Builder()
+            .url(url).get()
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro parsování odpovědi
 
-        return response.toString();
-    }
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od službu Translator Text.
 
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-    public static void WriteToFile (String data) throws Exception {
-        String json = prettify (data);
-        Writer outputStream = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output_path), "UTF-8"));
-        outputStream.write(json);
-        outputStream.close();
-    }
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-    public static void main(String[] args) {
-        try {
-            String response = GetLanguages ();
-            WriteToFile (response);
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+Posledním krokem je vytvořit žádost a získejte odpověď. Do projektu přidejte tyto řádky:
+
+```java
+public static void main(String[] args) {
+    try {
+        GetLanguages getLanguagesRequest = new GetLanguages();
+        String response = getLanguagesRequest.Get();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="languages-response"></a>Odpověď metody Languages
+## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
+
+Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do kořenového adresáře pracovního adresáře a spusťte:
+
+```console
+gradle build
+```
+
+## <a name="sample-response"></a>Ukázková odpověď
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
 
@@ -210,9 +257,17 @@ public class Languages {
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady v Javě na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+* [Překlad textu](quickstart-java-translate.md)
+* [Transliterace textu](quickstart-java-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-java-detect.md)
+* [Získání alternativních překladů](quickstart-java-dictionary.md)
+* [Určení délky věty ze vstupu](quickstart-java-sentences.md)

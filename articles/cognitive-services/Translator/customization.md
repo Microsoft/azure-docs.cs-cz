@@ -10,20 +10,20 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: bbfffe948080c87feaa8c9f0a46ef9afd90eae96
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229675"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877968"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
-Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Translator Text API (pouze verze 3).
+Microsoft Translatoru Custom je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Translator Text API (pouze verze 3).
 
-Funkci lze použít také k přizpůsobení překladu řeči při použití s [řeči Cognitive Services ve verzi preview](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
+Funkci lze použít také k přizpůsobení překladu řeči při použití s [Cognitive Services řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
-## <a name="custom-translator"></a>Vlastní Translator
+## <a name="custom-translator"></a>Custom Translator
 
 S vlastní překlady můžete vytvořit Neurální překladové systémy, které rozuměli technologiím použitým v obchodních a oboru. Systém přizpůsobených překladových pak integrovat do stávajících aplikací, pracovní postupy a websites.
 
@@ -48,7 +48,7 @@ Starší verze centra Microsoft Translator umožňuje překládat statistické s
 
 |   | **Centrum** | **Vlastní Translator**|
 |:-----|:----:|:----:|
-|Stav funkce vlastního nastavení   | Všeobecná dostupnost  | Preview |
+|Stav funkce vlastního nastavení   | Všeobecná dostupnost  | Všeobecná dostupnost |
 | Verze text API  | Pouze v2   | Pouze v3 |
 | Přizpůsobení SMT | Ano   | Ne |
 | Přizpůsobení NMT | Ne    | Ano |

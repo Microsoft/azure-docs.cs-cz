@@ -1,6 +1,7 @@
 ---
-title: Nasazení Průvodce odstraňováním potíží pro službu Azure Machine Learning
-description: Další problém obejdete tak, jak řešení a řešení potíží s běžnými chybami nasazení Dockeru se službou Azure Machine Learning.
+title: Průvodce řešením problémů s nasazením
+titleSuffix: Azure Machine Learning service
+description: Další problém obejdete tak, jak řešení a řešení potíží s běžnými chybami nasazení Dockeru s AKS a ACI pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,18 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: jmartens
-ms.date: 10/01/2018
-ms.openlocfilehash: a10b05e95fa719b80775191e48bd4117e3a785fd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6bd3bc86aa828ab28462de9d45f660889634cbd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321678"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100510"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Řešení potíží s nasazením služby Azure Machine Learning
+# <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Řešení potíží s nasazením služby AKS a ACI Azure Machine Learning
 
-V tomto článku se dozvíte, jak obejít nebo řešit běžné chyby nasazení Dockeru se službou Azure Machine Learning.
+V tomto článku se dozvíte, jak obejít nebo řešit běžné chyby nasazení Dockeru s Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí služby Azure Machine Learning.
 
 Při nasazení modelu ve službě Azure Machine Learning, systém provádí řadu úloh. Toto je komplexní posloupnost událostí a někdy vzniku. Úkoly nasazení jsou:
 
@@ -37,7 +39,7 @@ Při nasazení modelu ve službě Azure Machine Learning, systém provádí řad
 
 Další informace o tomto procesu v [Správa modelů ve službě](concept-model-management-and-deployment.md) úvod.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud narazíte na jakékoli potíže, je prvním krokem je rozdělit úlohu nasazení (viz předchozí) do jednotlivých kroků a izolovat daný problém. 
 
@@ -117,7 +119,7 @@ print(ws.webservices()['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Ladit místně image Dockeru
-Některé časy protokol Dockeru negeneruje dostatek informací o tom, co je špatně. Můžete přejděte o krok dál a stáhněte sestavenou image Dockeru, spusťte místní kontejner a ladit přímo v kontejneru živé interaktivní. Spuštění místního kontejneru, musíte mít místně spuštěný modul Docker, a je to mnohem jednodušší, pokud máte také [rozhraní příkazového řádku azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované.
+Některé časy protokol Dockeru negeneruje dostatek informací o tom, co je špatně. Můžete přejděte o krok dál a stáhněte sestavenou image Dockeru, spusťte místní kontejner a ladit přímo v kontejneru živé interaktivní. Spuštění místního kontejneru, musíte mít místně spuštěný modul Docker, a je to mnohem jednodušší, pokud máte také [rozhraní příkazového řádku azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalované.
 
 Nejprve je třeba zjistit umístění obrázku:
 
@@ -222,10 +224,6 @@ def run(input_data):
 ## <a name="next-steps"></a>Další postup
 
 Další informace o nasazení: 
-* [Postup nasazení do služby ACI](how-to-deploy-to-aci.md)
+* [Jak nasadit a kde](how-to-deploy-and-where.md)
 
-* [Postup nasazení do AKS](how-to-deploy-to-aks.md)
-
-* [Kurz, část 1: trénování modelu](tutorial-train-models-with-aml.md)
-
-* [Kurz, část 2: nasazení modelu](tutorial-deploy-models-with-aml.md)
+* [Kurz: Trénování a nasazení modelů](tutorial-train-models-with-aml.md)

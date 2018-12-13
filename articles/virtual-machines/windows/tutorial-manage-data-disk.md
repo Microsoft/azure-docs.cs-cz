@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c69a91ce360b5476541de29dc52ea89057aa726c
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 334fd01568b05cd16ff6f85725a799234fefda48
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037630"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871825"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Kurz: Správa disků v Azure pomocí Azure PowerShellu
 
@@ -144,10 +144,10 @@ Po připojení disku k virtuálnímu počítači je třeba nakonfigurovat opera�
 Vytvořte připojení RDP k virtuálnímu počítači. Otevřete PowerShell a spusťte tento skript.
 
 ```azurepowershell
-Get-Disk | Where partitionstyle -eq 'raw' | `
-Initialize-Disk -PartitionStyle MBR -PassThru | `
-New-Partition -AssignDriveLetter -UseMaximumSize | `
-Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
+Get-Disk | Where partitionstyle -eq 'raw' |
+    Initialize-Disk -PartitionStyle MBR -PassThru |
+    New-Partition -AssignDriveLetter -UseMaximumSize |
+    Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 ```
 
 ## <a name="verify-the-data-disk"></a>Ověření datového disku
@@ -171,7 +171,7 @@ VirtualHardDisk :
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s disky virtuálních počítačů, jako jsou:
 

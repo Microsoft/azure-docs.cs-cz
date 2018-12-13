@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27b41655d9a6c9000d9bc3cf98bf3246bb108104
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015547"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094929"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -215,6 +215,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
+* Trezor služby Recovery Services - vám musí být zaregistrované ve verzi private preview. Zobrazit [omezení Recovery Services](#recovery-services-limitations).
 * Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search
@@ -259,7 +260,6 @@ Následující seznam obsahuje obecný přehled služby Azure, které nelze pře
 * Microsoft Genomics
 * NetApp
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
-* Trezor služby Recovery Services - také není přesunout prostředky Compute, Network a Storage přidružených k trezoru služby Recovery Services naleznete v tématu [omezení Recovery Services](#recovery-services-limitations).
 * SAP HANA v Azure
 * Zabezpečení
 * Site Recovery
@@ -446,6 +446,8 @@ Operace může běžet několik minut.
 
 ## <a name="recovery-services-limitations"></a>Omezení Recovery Services
 
+Chcete-li přesunout trezor služby Recovery Services, musíte se zaregistrovat ve verzi private preview. Vyzkoušejte si to, zapisovat do AskAzureBackupTeam@microsoft.com.
+
 Přesunutí není povolená pro úložiště, sítě nebo výpočetní prostředky, použít ke konfiguraci zotavení po havárii pomocí Azure Site Recovery.
 
 Předpokládejme například, jste nastavili replikaci vašich místních počítačů do účtu úložiště (Storage1) a chcete chráněný počítač aktivován po převzetí služeb při selhání do Azure jako virtuální počítač (VM1) připojené k virtuální síti (Network1). Některé z těchto prostředků Azure - Storage1 VM1 a Network1 - nelze přesunout, mezi skupinami prostředků v rámci stejného předplatného nebo napříč předplatnými.
@@ -453,7 +455,10 @@ Předpokládejme například, jste nastavili replikaci vašich místních počí
 Přesunutí virtuálního počítače zaregistrované v **Azure backup** mezi skupinami prostředků:
  1. Dočasně zastavit zálohování a uchování zálohovaných dat
  2. Přesuňte virtuální počítač na cílovou skupinu prostředků
- 3. Znovu nastavit ochranu v rámci stejné/nový trezor, které uživatelé mohou obnovit z bodů obnovení k dispozici vytvořené před přesunutím.
+ 3. Znovu nastavit ochranu v rámci stejné/nový trezor
+
+Uživatelé mohou obnovit z bodů obnovení k dispozici vytvořené před přesunutím.
+
 Pokud se uživatel přesune zálohovaných virtuálních počítačů mezi předplatnými, kroky 1 a 2 zůstávají stejné. V kroku 3 uživatel musí pro ochranu virtuálního počítače v rámci nové úložiště k dispozici / vytvořený v cílovém předplatném. Trezor služby Recovery Services nepodporuje záloh mezi předplatnými.
 
 ## <a name="hdinsight-limitations"></a>Omezení HDInsight

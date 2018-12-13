@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 2: Předem připravené záměry a entity – použití předem připravených běžných promluv – extrakce běžných dat v LUIS'
+title: Předem připravené záměry a entity
 titleSuffix: Azure Cognitive Services
 description: Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422418"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074059"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>Kurz 2: Identifikace běžných záměrů a entit
 V tomto kurzu se upravíte aplikaci pro lidské zdroje. Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami, protože příslušná entita se rozpozná automaticky.
@@ -90,7 +91,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 2. Přejděte v adresním řádku prohlížeče na konec adresy URL a zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-    ```JSON
+    ```json
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {

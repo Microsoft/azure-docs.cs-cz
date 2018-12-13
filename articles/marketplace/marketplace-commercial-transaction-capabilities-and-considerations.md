@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 32198387be680fd01558e900e4c438cde2cdc5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b2f106edf69b57410fd1990d0888cf9d3a71be56
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266758"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880178"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace obchodní transakce možnosti a důležité faktory
 
@@ -177,8 +177,9 @@ Například, pokud zákazník koupí prostřednictvím platební karty:
 |Datum výpočtu výběr (každý měsíc na 15. dne) | 1. října 2018 |
 |Výběr data | 15. října 2018 |
 
-Pokud zákazník koupí pomocí smlouvy Enterprise:  
-|Popis    |    Datum  |
+Pokud zákazník koupí pomocí smlouvy Enterprise:
+
+| Popis |    Datum  |
 |----------|----------|
 |Pořadí období | 15 srpna 2018 – 30. srpna 2018 |
 |Výraz ukončení (čtvrtletí) | 30. září 2018 |

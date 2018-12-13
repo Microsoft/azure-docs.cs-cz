@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 07/16/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: e5801e9ed512a32d793f7b4b71be86174f656ab0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: HT
+ms.openlocfilehash: db6ac089f11477ecdb1568195855fae00d3eac61
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089974"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888354"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Rychlé zprovoznění: Vytvoření záznamu a zóny Azure DNS pomocí Azure PowerShellu
 
@@ -58,7 +58,6 @@ K výpisu záznamů DNS ve vaší zóně použijte:
 Get-AzureRmDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyResourceGroup
 ```
 
-
 ## <a name="update-name-servers"></a>Aktualizace názvových serverů
 
 Jakmile budete spokojeni se správným nastavením zóny a záznamů DNS, bude potřeba nakonfigurovat váš název domény tak, aby používal názvové servery DNS Azure. Tím umožníte ostatním uživatelům na internetu najít vaše záznamy DNS.
@@ -77,7 +76,7 @@ NumberOfRecordSets    : 3
 MaxNumberOfRecordSets : 5000
 ```
 
-Tyto názvové servery by měly být nakonfigurované u registrátora názvu domény (u kterého jste zakoupili název domény). Registrátor vám nabídne možnost nastavit názvové servery pro doménu. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
+Tyto názvové servery by měly být nakonfigurované u registrátora názvu domény (u kterého jste zakoupili název domény). Registrátor vám nabídne možnost nastavit názvové servery pro doménu. Další informace najdete v tématu [kurz: hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
@@ -87,7 +86,7 @@ Pokud už nejsou potřeba, můžete všechny prostředky vytvořené v rámci to
 Remove-AzureRMResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď když jste vytvořili svoji první zónu a záznam DNS pomocí Azure Powershellu, můžete vytvořit záznamy pro webovou aplikaci ve vlastní doméně.
 

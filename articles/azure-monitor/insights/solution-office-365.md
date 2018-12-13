@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848863"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889357"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -41,7 +41,7 @@ Je nutné provést následující před toto řešení je nainstalovaná a nakon
  
 
 ## <a name="management-packs"></a>Sady Management Pack
-Toto řešení není možné nainstalovat všechny sady management Pack v [připojené skupiny pro správu](../../log-analytics/log-analytics-om-agents.md).
+Toto řešení není možné nainstalovat všechny sady management Pack v [připojené skupiny pro správu](../../azure-monitor/platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Instalace a konfigurace
 Začněte přidáním [řešení Office 365 ke svému předplatnému](solutions.md#install-a-management-solution). Až ho přidáte, je nutné provést kroky konfigurace v této části pro získání přístupu k předplatnému Office 365.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: sethm
-ms.openlocfilehash: 2fa062621e551ce7182facc45ec84b39d4c2dad7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a770c88b294de24eb9e0f482681038e4d36b1d6f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078745"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874596"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení služby VPN gateway pro Azure Stack
 
@@ -185,7 +185,7 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 |Šifrování a hash algoritmy (šifrování)     | GCMAES256|
 |Šifrování a hash algoritmy (ověřování) | GCMAES256|
 |Životnost SA (čas)  | 27 000 sekund  |
-|Životnost SA (bajty) | 33,553,408     |
+|Životnost SA (kB) | 33,553,408     |
 |Metoda Perfect Forward Secrecy (PFS) |Žádný<sup>viz poznámka 1</sup> |
 |Detekce mrtvých partnerských zařízení | Podporováno|  
 

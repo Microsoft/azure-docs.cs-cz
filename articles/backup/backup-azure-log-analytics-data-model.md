@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f4ecc87a0a7a0c74b02b72164fe129daa6530ea2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635148"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877577"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
 Datový model Log Analytics můžete použijte k vytvoření sestav. S datovým modelem můžete vytvořit vlastní dotazy a řídicí panely nebo přizpůsobení zálohování Azure – uložená data, ale chcete.
@@ -30,7 +30,7 @@ Tato tabulka obsahuje podrobnosti o upozornění související pole.
 | AlertUniqueId_s |Text |Jedinečný identifikátor vygenerovaných výstrah |
 | AlertType_s |Text |Typ upozornění, například zálohování |
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
-| AlertOccurenceDateTime_s |Datum/čas |Datum a čas, kdy byla výstraha vytvořena |
+| AlertOccurrenceDateTime_s |Datum/čas |Datum a čas, kdy byla výstraha vytvořena |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritický |
 | EventName_s |Text |Název události Vždy AzureBackupCentralReport |
 | BackupItemUniqueId_s |Text |Jedinečný identifikátor zálohované položky přiřazené k výstraze |

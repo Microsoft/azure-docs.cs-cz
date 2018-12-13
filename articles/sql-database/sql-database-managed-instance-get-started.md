@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: 02a7a460799a098b6be10a52d6e1a1598b023454
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: d5be25abc634200e0c0afed6946b38fd163fb78e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839108"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890496"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -90,4 +90,4 @@ Jakmile úspěšně dokončíte nasazení, zkontrolujte vytvořené prostředky 
   - Rychlý start o připojení ke spravované instanci z virtuálního počítače Azure najdete v článku o [konfiguraci připojení virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md).
   - Rychlý start s návodem, jak se z místního klientského počítače připojit ke spravované instanci pomocí připojení typu point-to-site, najdete v článku o [konfiguraci připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
 - Pokud chcete obnovit stávající databázi SQL Serveru z místní do spravované instance, můžete k migraci použít [službu Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) a obnovit zálohu databáze nebo můžete k obnovení zálohy databáze použít [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md).
-- Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)
+- Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)

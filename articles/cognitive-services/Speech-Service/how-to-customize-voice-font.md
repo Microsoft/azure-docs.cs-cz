@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: panosper
-ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e2c176e35cbc75747230e429d0ddae9d420db8b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467714"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867576"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -87,7 +87,7 @@ Příklad:
 Systém vlastní hlasové normalizuje záznamy o studiu převedením text na malá písmena a odebrat nadbytečné interpunkce. Je důležité, že záznamy o studiu jsou 100 % přesných přepisů odpovídající zvukových nahrávek.
 
 > [!TIP]
-> Při vytváření produkčního převod textu na řeč hlasů, vyberte projevy (nebo skripty), zkuste do účtu zapsané ve fonetické pokrytí a efektivitu. Máte potíže při načítání výsledků požadujete? [Obraťte se na tým vlastní hlasové](mailto:tts@microsoft.com) najít najdete další informace o s námi na více instancí.
+> Při vytváření produkčního převod textu na řeč hlasů, vyberte projevy (nebo skripty), zkuste do účtu zapsané ve fonetické pokrytí a efektivitu. Máte potíže při načítání výsledků požadujete? [Obraťte se na tým vlastní hlasové](mailto:speechsupport@microsoft.com) najít najdete další informace o s námi na více instancí.
 
 ## <a name="upload-your-datasets"></a>Nahrání datových sad
 

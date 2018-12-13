@@ -3,7 +3,7 @@ title: Rozšířené události ve službě SQL Database | Dokumentace Microsoftu
 description: Popisuje rozšířených událostí (XEvents) ve službě Azure SQL Database a jak relací událostí se poněkud liší od událostí relací v systému Microsoft SQL Server.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 482faaea7089e095da13a2bae5f5937e20d50616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b51f4a4a4d00bcfaa1baf1c46ad7f6eb638ad2b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246748"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867864"
 ---
 # <a name="extended-events-in-sql-database"></a>Rozšířené události ve službě SQL Database
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]

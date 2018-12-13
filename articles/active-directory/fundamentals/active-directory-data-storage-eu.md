@@ -1,6 +1,6 @@
 ---
-title: Kde Azure AD uchovává data identit pro evropské zákazníky | Microsoft Docs
-description: Zjistěte, kde Microsoft Azure Active Directory uchovává data související s identitami pro své evropské zákazníky.
+title: Ukládání dat identity pro zákazníky, Evropského – Azure Active Directory | Dokumentace Microsoftu
+description: Přečtěte si o kde Azure Active Directory souvisejícím s identitou data ukládá po dobu jeho Evropského zákazníky.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,22 +10,22 @@ ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.custom: it-pro
-ms.openlocfilehash: d0015f40714b639d15245827ae0da3ca0f132df4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 371c7b2eb2f2e0e34dc80cf8fe6771620fa76765
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733393"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099932"
 ---
-# <a name="where-does-microsoft-azure-active-directory-azure-ad-store-identity-data-for-european-customers"></a>Kde Microsoft Azure Active Directory (Azure AD) uchovává data identit pro evropské zákazníky
-Azure AD pomáhá spravovat identity uživatelů a vytvářet zásady přístupu s využitím inteligentních funkcí, které pomáhají zabezpečit prostředky vaší organizace. Data identit se uchovávají v umístění na základě adresy vaší organizace, kterou jste uvedli při přihlášení k odběru služby. Například při přihlášení k odběru Office 365 nebo Azure. Konkrétní informace o tom, kde se uchovávají data vašich identit, najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
+# <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Ukládání dat identity Evropského zákazníků v Azure Active Directory
+Azure Active Directory (Azure AD) pomáhá spravovat identity uživatelů a vytvářet zásady přístupu využitím inteligentních funkcí, které pomáhají zabezpečit prostředky vaší organizace. Data identit se uchovávají v umístění na základě adresy vaší organizace, kterou jste uvedli při přihlášení k odběru služby. Například při přihlášení k odběru Office 365 nebo Azure. Konkrétní informace o tom, kde se uchovávají data vašich identit, najdete v části [Jaké je umístění vašich dat?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) v Centru zabezpečení Microsoftu.
 
 Přestože většina dat evropských identit souvisejících s Azure AD zůstává v evropských datacentrech, existuje pět atributů souvisejících s uživateli, které se obvykle uchovávají v datacentrech v USA. Tyto atributy jsou: GivenName (Jméno), Surname (Příjmení), userPrincipalName (Hlavní název uživatele), Domain (Doména) a PasswordHash (Hodnota hash hesla). Atribut PasswordHash může být výjimkou a nemusí se uchovávat v USA v případě, že někdo využívá metodu místního federovaného ověřování, která zastaví synchronizaci hodnoty PasswordHash s Azure AD. Kromě toho existují určitá provozní data pro konkrétní služby potřebná pro normální provoz Azure AD, která se uchovávají v USA a nezahrnují žádné osobní údaje.
 
 ## <a name="data-stored-outside-of-european-datacenters-for-european-customers"></a>Data pro evropské zákazníky uložená mimo evropská datacentra
 
-Většina dat evropských identit souvisejících s Azure AD pro organizace s evropskou adresou zůstává v evropských datacentrech. Mezi data Azure AD, která se neuchovávají v evropských datacentrech, patří:
+Většina dat evropských identit souvisejících s Azure AD pro organizace s evropskou adresou zůstává v evropských datacentrech. Azure AD data, která má uložená v evropských datových centrech a také replikují do datacentra v USA, zahrnují:
 
 - **Atributy související s identitou**
 

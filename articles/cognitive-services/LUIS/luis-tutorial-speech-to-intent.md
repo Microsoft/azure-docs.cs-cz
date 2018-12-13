@@ -1,21 +1,22 @@
 ---
-title: Použití sady C# SDK služby Speech se službou LUIS
+title: Umožňuje využít řeč C# SDK
 titleSuffix: Azure Cognitive Services
 description: Služba Speech umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček NuGet služby Speech, který je již zahrnutý jako odkaz.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c2581abc782558ca114cc3a5d4f6224d132bce5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 92db504ebfd0f8ad0bef9282bafd62fa9780d5e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139079"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099303"
 ---
 # <a name="integrate-speech-service"></a>Integrace služby Speech
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -65,7 +66,7 @@ V tomto článku se používá zvukové zařízení na vašem počítači. Tímt
 
 Sada SDK služby Speech je již zahrnutá jako odkaz. 
 
-[![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Snímek obrazovky sady Visual Studio 2017 se zobrazeným balíčkem NuGet Microsoft.CognitiveServices.Speech")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Snímek obrazovky sady Visual Studio 2017 zobrazování balíček Microsoft.CognitiveServices.Speech NuGet](./media/luis-tutorial-speech-to-intent/nuget-package.png "zobrazování balíček Microsoft.CognitiveServices.Speech NuGet snímek obrazovky sady Visual Studio 2017")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Úprava kódu jazyka C#
 Otevřete soubor `Program.cs` a změňte následující proměnné:
@@ -94,7 +95,7 @@ Pokud už ji nepotřebujete, odstraňte aplikaci LUIS pro lidské zdroje. Proved
 
 Až se vzorovým kódem skončíte, nezapomeňte odstranit adresář LUIS-Samples.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Integrace služby LUIS s chatbotem](luis-csharp-tutorial-build-bot-framework-sample.md)

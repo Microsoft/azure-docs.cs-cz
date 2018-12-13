@@ -1,22 +1,20 @@
 ---
-title: Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby | Microsoft Docs
+title: Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: ruby
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d1583001550f5f272f4070006a4a6ac3be000de6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: 7ddf9c3ef848537cb68dce043bb22680439e9cd5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798266"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877901"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí Ruby
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -58,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Získání těchto hodnot z klasického účtu úložiště nebo účtu úložiště Resource Manageru na webu Azure Portal:
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do účtu služby Storage, který chcete použít.
 3. V okně Nastavení na pravé straně klikněte na **Přístupové klíče**.
 4. V okně Přístupové klíče, které se zobrazí, uvidíte přístupový klíč 1 a přístupový klíč 2. Můžete použít libovolný z nich.
@@ -168,7 +166,7 @@ Pokud chcete odstranit tabulku, použijte metodu **delete_table()** a předejte 
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Středisko pro vývojáře Ruby](https://azure.microsoft.com/develop/ruby/)

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: f2e18f07748801e50db644588146e7867ba84095
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: 04f634406eacd05e772d2b672cdfb2af6fb42054
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081502"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874477"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření webové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte n
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Node.js][Node.js] verze 6.10 nebo novější.
-* [Generátor Express](https://www.expressjs.com/starter/generator.html) (Express můžete nainstalovat prostřednictvím příkazu `npm install express-generator -g`)
+* [Generátor Express](http://www.expressjs.com/starter/generator.html) (Express můžete nainstalovat prostřednictvím příkazu `npm install express-generator -g`)
 * Na místní pracovní stanici nainstalujte [Git][Git].
 
 ## <a name="_Toc395637761"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
@@ -60,7 +60,7 @@ Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte n
 [!INCLUDE [cosmos-db-keys](../../includes/cosmos-db-keys.md)]
 
 ## <a name="_Toc395783178"></a>Krok 2: Vytvoření nové aplikace Node.js
-Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí rozhraní [Express](https://expressjs.com/).
+Nyní se naučíme, jak vytvořit základní projekt Node.js Hello World pomocí rozhraní [Express](http://expressjs.com/).
 
 1. Otevřete svůj oblíbený terminál, jako je třeba příkazový řádek Node.js.
 
@@ -483,7 +483,7 @@ V tomto kurzu jste zjistili, jak vytvořit webovou aplikaci Node.js s využitím
 > [Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB](mobile-apps-with-xamarin.md)
 
 
-[Node.js]: https://nodejs.org/
-[Git]: https://git-scm.com/
+[Node.js]: http://nodejs.org/
+[Git]: http://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
 

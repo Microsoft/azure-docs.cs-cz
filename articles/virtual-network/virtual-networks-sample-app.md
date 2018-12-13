@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 7a0f1313f8b22aba0a153563bd804435c3ef53f2
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 1ccdb8254551d0009a71cc047b8399a539edb8e2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52159861"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866845"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Ukázková aplikace pro použití s zóny DMZ
 [Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
@@ -142,7 +142,7 @@ Tento skript Powershellu by měl spustit místně, zatímco RDP měl do IIS01.
     Restart-Service -Name W3SVC
 
     Write-Host
-    Write-Host "Web App Creation Successfull!" -ForegroundColor Green
+    Write-Host "Web App Creation Successful!" -ForegroundColor Green
     Write-Host
 ```
 
@@ -189,7 +189,7 @@ Tento skript Powershellu by měl spustit místně, zatímco RDP měl do AppVM01.
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Active Setup\Installed Components\{A509B1A7-37EF-4b3f-8CFC-4F3A74704073}" -Name "IsInstalled" -Value 0
 
     Write-Host
-    Write-Host "File Server Set up Successfull!" -ForegroundColor Green
+    Write-Host "File Server Set up Successful!" -ForegroundColor Green
     Write-Host
 ```
 

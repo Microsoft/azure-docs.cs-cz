@@ -10,7 +10,7 @@ ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 456ac392d74db0dc596c24a47d176e19d267bc85
 ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2018
 ms.locfileid: "53079513"

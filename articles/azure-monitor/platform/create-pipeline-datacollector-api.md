@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 453101b1f5368dba9aa9dbfc89f5b893d42a0542
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: MT
+ms.openlocfilehash: 280df7ff80e637539f85c5d7ddafbb564b8fe562
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684590"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879549"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
-[Rozhraní API kolekce dat Log Analytics](../../log-analytics/log-analytics-data-collector-api.md) umožňuje importovat všechny vlastní data do Log Analytics. Jediným požadavkem je, že data ve formátu JSON a rozdělení do 30 MB nebo méně segmenty. Toto je zcela flexibilní mechanismus, který může být připojeno do mnoha způsoby: z dat odesílaných přímo z vaší aplikace, odešle do jednorázové ad hoc. V tomto článku se popisují některé počáteční body pro běžné scénáře: potřeba nahrát data uložená v souborech na základě pravidelné a automatizované. Během kanálu uvedené tady nesmí být většina výkonné nebo jinak k optimalizaci, je určené k sloužit jako výchozí bod na vytváření procesních toků pro produkční vlastní.
+[Rozhraní API kolekce dat Log Analytics](../../azure-monitor/platform/data-collector-api.md) umožňuje importovat všechny vlastní data do Log Analytics. Jediným požadavkem je, že data ve formátu JSON a rozdělení do 30 MB nebo méně segmenty. Toto je zcela flexibilní mechanismus, který může být připojeno do mnoha způsoby: z dat odesílaných přímo z vaší aplikace, odešle do jednorázové ad hoc. V tomto článku se popisují některé počáteční body pro běžné scénáře: potřeba nahrát data uložená v souborech na základě pravidelné a automatizované. Během kanálu uvedené tady nesmí být většina výkonné nebo jinak k optimalizaci, je určené k sloužit jako výchozí bod na vytváření procesních toků pro produkční vlastní.
 
 ## <a name="example-problem"></a>Příklad problému
 Pro zbývající část tohoto článku prozkoumáme data o zobrazeních stránek ve službě Application Insights. V tomto scénáři hypotetické chceme korelovat zeměpisné údaje shromážděné ve výchozím nastavení Application Insights SDK na vlastní data obsahují počet obyvatel každé zemi na světě, s cílem identifikovat, kde jsme by měl být útraty na maximum marketingové dolarech. 
@@ -173,4 +173,4 @@ Tento článek zobrazí prototyp pracovní nedají použít logice true řešen�
 
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [rozhraní API kolekce dat](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.
+Další informace o [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.

@@ -1,5 +1,6 @@
 ---
-title: Exportovat nebo odstraňovat data pracovního prostoru - Azure Machine Learning | Dokumentace Microsoftu
+title: Exportovat nebo odstraňovat data pracovního prostoru
+titleSuffix: Azure Machine Learning service
 description: Ve službě Azure Machine Learning můžete exportovat nebo odstranění pracovního prostoru pomocí webu Azure portal, rozhraní příkazového řádku, sady SDK a ověřené rozhraní REST API. V tomto článku se dozvíte, jak.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
 ms.date: 09/24/2018
-ms.openlocfilehash: 20c75b55e9b02f30e90ad40ea11383b91ae0a247
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 0979c531c90b67cedce544ff2eb6f7aceeb84a44
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267291"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093773"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportovat nebo odstraňovat data pracovní prostor služby Machine Learning 
 

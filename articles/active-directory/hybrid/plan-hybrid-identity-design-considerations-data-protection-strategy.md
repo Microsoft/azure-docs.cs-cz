@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9f02c6779b3561f6eea57512ecb27dd2fd451d90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238144"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865042"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze budete definovat strategie ochrany dat pro vaše řešení hybridní identity plnění obchodních požadavků, který jste definovali v:
@@ -92,7 +92,7 @@ S využitím ověřování, autorizace a řízení přístupu určené k dispozi
 
 Centralizovaná správa a plně integraci s další adresáře
 
-Azure Active Directory poskytuje jednotné přihlašování do tisícovek aplikací SaaS a místních webových aplikací. Zobrazit [seznam kompatibility federace Azure Active Directory: poskytovatelů identit třetích stran, které lze použít k implementaci jednotného přihlašování](https://msdn.microsoft.com/library/azure/jj679342.aspx) článku najdete další podrobnosti o výrobců jednotné přihlašování, které testoval Microsoft. Tato funkce umožňuje organizaci implementovat celou řadu scénářů B2B současně si zachováte kontrolu správu identit a přístupů. Ale během B2B návrhu procesu, je důležité porozumět metodu ověřování, který používá partnera a ověřte, jestli tato metoda se nepodporuje v Azure. V současné době Azure AD podporuje následující metody:
+Azure Active Directory poskytuje jednotné přihlašování do tisícovek aplikací SaaS a místních webových aplikací. Zobrazit [seznam kompatibility federace Azure Active Directory: poskytovatelů identit třetích stran, které lze použít k implementaci jednotného přihlašování](how-to-connect-fed-compatibility.md) článku najdete další podrobnosti o výrobců jednotné přihlašování, které testoval Microsoft. Tato funkce umožňuje organizaci implementovat celou řadu scénářů B2B současně si zachováte kontrolu správu identit a přístupů. Ale během B2B návrhu procesu, je důležité porozumět metodu ověřování, který používá partnera a ověřte, jestli tato metoda se nepodporuje v Azure. V současné době Azure AD podporuje následující metody:
 
 * Security Assertion Markup Language (SAML)
 * OAuth

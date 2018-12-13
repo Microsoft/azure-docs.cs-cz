@@ -1,23 +1,23 @@
 ---
 title: Použití Cloudyn sestav v Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak pomocí různých sestav na portálu Cloudyn.
+description: Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn můžete efektivněji používat je.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: c3f1fec21ab2c71f75677e814a6e19e1e540dddb
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994736"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075863"
 ---
-# <a name="use-cloudyn-reports"></a>Použití sestav Cloudyn
+# <a name="reports-available-in-the-cloudyn-portal"></a>Sestavy jsou k dispozici na portálu Cloudyn
 
 Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn. Také popisuje, jak lze efektivně používat sestavy. Většina sestav jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Většinu akcí, které vám pomůžou v jedné sestavě, můžete provést také v jiných sestavách. Přehled o tom, jak používat sestavách Cloudyn, včetně postupu při přizpůsobení a uložit nebo k naplánování sestavy, naleznete v tématu [vysvětlení sestav nákladů](understanding-cost-reports.md).
 
@@ -59,7 +59,7 @@ _Přidělení nákladů_ sestavy jsou k dispozici po vytvoření modelu náklad�
 
 ## <a name="budget-information-in-reports"></a>Informace o rozpočtu v sestavách
 
-Mnoho sestavách Cloudyn zobrazit rozpočtu informace po jedné ruční vytvoření. Aby sestavy nebudou zobrazovat informace rozpočtu, dokud nevytvoříte rozpočtu. Další informace najdete v tématu [rozpočtu nastavení](#budget-settings).
+Mnoho sestavách Cloudyn zobrazit rozpočtu informace po jedné ruční vytvoření. Aby sestavy nebudou zobrazovat informace rozpočtu, dokud nevytvoříte rozpočtu. Další informace najdete v tématu [pomáhá při řízení rozpočtu nastavení](#budget-management-settings).
 
 ## <a name="reports-and-reporting-features"></a>Sestavy a funkce generování sestav
 

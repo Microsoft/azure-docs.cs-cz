@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 80ba42d7eab1726c7add6c4c9426b7dde3b55480
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1486e303e4e94ee6140bcd6ed4f52bc433b9aae6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445925"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100051"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Propojení s předplatným Azure s tenantem Azure AD B2C
 
@@ -25,7 +25,7 @@ ms.locfileid: "37445925"
 Účtují se poplatky za používání pro Azure AD B2C s předplatným Azure. Při vytvoření tenanta Azure AD B2C, musí správce klienta pro explicitní propojení tenanta Azure AD B2C s předplatným Azure. V tomto článku se dozvíte, jak.
 
 > [!NOTE]
-> Předplatné propojené s tenantem Azure AD B2C jde použít jenom pro fakturaci využití Azure AD B2C. Odběr nelze použít k přidání dalších služeb Azure nebo Office 365 licence *v rámci tenanta Azure AD B2C*.
+> Předplatné propojené s tenantem Azure AD B2C můžete použít pro fakturaci využití Azure AD B2C nebo další prostředky Azure, včetně dalších prostředků Azure AD B2C.  Nelze použít pro přidání další služby Azure na základě licence nebo licence Office 365 v rámci tenanta Azure AD B2C.
 
  Odkaz pro předplatné se dosahuje vytvořením Azure AD B2C "prostředek" v rámci cílového předplatného Azure. Azure AD B2C mnoho "resources" se dají vytvořit v rámci jednoho předplatného Azure společně s další prostředky Azure (pro příklad, virtuální počítače, úložiště dat, LogicApps). Zobrazí se všechny prostředky v rámci předplatného tak, že přejdete do tenanta služby Azure AD, který je předplatné přidruženo.
 

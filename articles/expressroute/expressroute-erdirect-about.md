@@ -1,5 +1,5 @@
 ---
-title: Informace o Azure ExpressRoute přímo | Dokumentace Microsoftu
+title: Informace o ExpressRoute přímo – Azure | Dokumentace Microsoftu
 description: Tato stránka obsahuje přehled služby ExpressRoute Direct (Preview)
 services: expressroute
 author: mialdrid
@@ -7,16 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: mialdrid
-ms.openlocfilehash: 3b46f24edf10fee7001b35ffdd9fa218aa438e19
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 2310f007697cf1acbdbc907d4562853a2717eb5d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959667"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097120"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informace o ExpressRoute Direct (Preview)
 
-ExpressRoute Direct poskytuje zákazníkům možnost připojit se přímo ke globální síti Microsoftu v místech partnerských uzlů strategicky rozmístěných po celém světě. Přímé ExpressRoute poskytuje připojení duální 100 GB/s, která podporuje připojení k aktivní/aktivní ve velkém měřítku.
+ExpressRoute Direct poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Přímé ExpressRoute poskytuje připojení duální 100 GB/s, která podporuje připojení k aktivní/aktivní ve velkém měřítku.
 
 Klíčové funkce, které poskytuje ExpressRoute Direct patří, ale nejsou omezené na:
 

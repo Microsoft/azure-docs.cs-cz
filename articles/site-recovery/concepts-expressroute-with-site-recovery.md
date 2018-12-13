@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 9841d564410931cdef7da45a1c4555f12e2ae008
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 60da5d4e80a7465d02926066298a5dc63afb1de7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833091"
+ms.locfileid: "52875174"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute pomocí Azure Site Recovery
 
@@ -28,17 +28,17 @@ Okruh ExpressRoute představuje logické propojení mezi vaši infrastrukturou v
 ## <a name="expressroute-routing-domains"></a>Domény směrování ExpressRoute
 
 Okruh ExpressRoute má přidruženo více doménách směrování:
--   [Soukromý partnerský vztah Azure](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) – výpočetní služby, a to virtuálních počítačích (IaaS), Azure a cloudové služby (PaaS), které jsou nasazené v rámci virtuální sítě můžete připojit přes privátní partnerský vztah domény. Privátní partnerský vztah domény se považuje za důvěryhodným rozšířením vaší základní sítě do Microsoft Azure.
--   [Veřejný partnerský vztah Azure](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) -služeb, jako je Azure Storage, SQL Database a Websites se nabízejí na veřejné IP adresy. Soukromě můžete připojit ke službám hostovaným na veřejných IP adresách, včetně virtuálních IP adres z vašich cloudových služeb prostřednictvím veřejného partnerského vztahu domény směrování. Veřejný partnerský vztah se už nepoužívá pro vytvoření nové a Microsoft Peering byste měli použít místo toho pro služby Azure PaaS.
--   [Partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoft-peering) – připojení k online službám Microsoftu (Office 365, Dynamics 365 a Azure PaaS služby), je prostřednictvím partnerského vztahu Microsoftu. Partnerský vztah Microsoftu je doporučené směrování domény pro připojení ke službám Azure PaaS.
+-   [Soukromý partnerský vztah Azure](../expressroute/expressroute-circuit-peerings.md#privatepeering) – výpočetní služby, a to virtuálních počítačích (IaaS), Azure a cloudové služby (PaaS), které jsou nasazené v rámci virtuální sítě můžete připojit přes privátní partnerský vztah domény. Privátní partnerský vztah domény se považuje za důvěryhodným rozšířením vaší základní sítě do Microsoft Azure.
+-   [Veřejný partnerský vztah Azure](../expressroute/expressroute-circuit-peerings.md#publicpeering) -služeb, jako je Azure Storage, SQL Database a Websites se nabízejí na veřejné IP adresy. Soukromě můžete připojit ke službám hostovaným na veřejných IP adresách, včetně virtuálních IP adres z vašich cloudových služeb prostřednictvím veřejného partnerského vztahu domény směrování. Veřejný partnerský vztah se už nepoužívá pro vytvoření nové a Microsoft Peering byste měli použít místo toho pro služby Azure PaaS.
+-   [Partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) – připojení k online službám Microsoftu (Office 365, Dynamics 365 a Azure PaaS služby), je prostřednictvím partnerského vztahu Microsoftu. Partnerský vztah Microsoftu je doporučené směrování domény pro připojení ke službám Azure PaaS.
 
-Další informace a porovnání domény směrování ExpressRoute [tady](../expressroute/expressroute-circuit-peerings.md#routing-domain-comparison).
+Další informace a porovnání domény směrování ExpressRoute [tady](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 
 ## <a name="on-premises-to-azure-replication-with-expressroute"></a>Místní replikace Azure pomocí ExpressRoute
 
 Azure Site Recovery nabízí zotavení po havárii a migraci do Azure pro místní [virtuálních počítačů Hyper-V](hyper-v-azure-architecture.md), [virtuálních počítačů VMware](vmware-azure-architecture.md), a [fyzických serverů](physical-azure-architecture.md). Data replikace pro všechny místní do scénáře služby Azure, se odesílají a ukládají v účtu služby Azure Storage. Během replikace neplatíte žádné poplatky za virtuální počítače. Při spuštění převzetí služeb při selhání do Azure Site Recovery automaticky vytvoří virtuální počítače Azure IaaS.
 
-Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Pro účely replikace Site Recovery ExpressRoute, můžete využít [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoft-peering). Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Po virtuálních počítačů nebo serverů převzetí služeb při selhání ke službě Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering). Replikace není podporována přes privátní partnerský vztah.
+Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Pro účely replikace Site Recovery ExpressRoute, můžete využít [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering). Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Po virtuálních počítačů nebo serverů převzetí služeb při selhání ke službě Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering). Replikace není podporována přes privátní partnerský vztah.
 
 Následující diagram je reprezentován kombinované scénáře: ![na místní – Azure pomocí ExpressRoute](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
 
@@ -46,7 +46,7 @@ Následující diagram je reprezentován kombinované scénáře: ![na místní 
 
 Azure Site Recovery nabízí zotavení po havárii [virtuálních počítačů Azure](azure-to-azure-architecture.md). V závislosti na tom, jestli vaše virtuální počítače Azure pomocí [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), replikace se odešlou na účet služby Azure Storage nebo repliky v cílové oblasti Azure se spravovanými disky. I když jsou veřejné koncové body replikace, provoz replikace pro replikaci virtuálních počítačů Azure, ve výchozím nastavení, neprocházejí přes Internet, bez ohledu na to, které oblasti Azure zdrojová virtuální síť existuje v. Můžete přepsat Azure výchozí systémovou trasu pro předponu adresy 0.0.0.0/0 s [vlastní trasy](../virtual-network/virtual-networks-udr-overview.md#custom-routes) a přesměrovat provoz virtuálního počítače místní síťové virtuální zařízení (NVA), ale tato konfigurace se nedoporučuje pro Site Recovery replikace. Pokud používáte vlastní trasy, měli byste [vytvořit koncový bod služby virtuální sítě](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) ve vaší virtuální sítě pro "Úložiště" tak, aby provoz replikace, nenechává hranice Azure.
 
-Pro zotavení po havárii virtuálního počítače Azure ve výchozím nastavení, ExpressRoute se nevyžaduje pro replikaci. Po virtuálním počítačům převzetí služeb při selhání do cílové oblasti Azure, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Pro zotavení po havárii virtuálního počítače Azure ve výchozím nastavení, ExpressRoute se nevyžaduje pro replikaci. Po virtuálním počítačům převzetí služeb při selhání do cílové oblasti Azure, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 Pokud už používáte ExpressRoute pro připojení z místního datacentra do virtuálních počítačů Azure na zdrojové oblasti, můžete naplánovat pro obnovujete připojení ExpressRoute v cílové oblasti převzetí služeb při selhání. Stejnému okruhu ExpressRoute můžete použít pro připojení k cílové oblasti novou virtuální síťové připojení nebo využití samostatné okruh ExpressRoute a připojení pro zotavení po havárii. Různé možné scénáře jsou popsané [tady](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute).
 
@@ -54,6 +54,6 @@ Můžete replikovat virtuální počítače Azure do libovolné oblasti Azure v 
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [okruhy ExpressRoute](../expressroute/expressroute-circuit-peerings.md).
-- Další informace o [domény směrování ExpressRoute](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains).
+- Další informace o [domény směrování ExpressRoute](../expressroute/expressroute-circuit-peerings.md#peeringcompare).
 - Další informace o [umístění ExpressRoute](../expressroute/expressroute-locations.md).
 - Další informace o zotavení po havárii [virtuálních počítačů Azure pomocí ExpressRoute ](azure-vm-disaster-recovery-with-expressroute.md).

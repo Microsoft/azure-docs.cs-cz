@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6a034f1d998a4d62493b4361fc63c83d4a9a15a5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 908e2c7f5ad8350880b1a85a68d8b3a5486041d5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975008"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099645"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Vytvořit pracovní prostor Log Analytics pomocí Azure Powershellu
 
@@ -32,8 +32,8 @@ Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z p
  
 U jiných zdrojů, jako jsou virtuální počítače Azure a Windows nebo virtuální počítače s Linuxem ve vašem prostředí naleznete v následujících tématech:
 
-* [Shromažďování dat z virtuálních počítačů Azure](../../log-analytics/log-analytics-quick-collect-azurevm.md)
-* [Shromažďování dat z počítače s Linuxem hybridní](../../log-analytics/log-analytics-quick-collect-linux-computer.md)
+* [Shromažďování dat z virtuálních počítačů Azure](../../azure-monitor/learn/quick-collect-azurevm.md)
+* [Shromažďování dat z počítače s Linuxem hybridní](../../azure-monitor/learn/quick-collect-linux-computer.md)
 * [Shromažďování dat z počítače Windows hybridní](quick-collect-windows-computer.md)
 
 Pokud ještě nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) předtím, než začnete.
@@ -129,5 +129,5 @@ Teď, když máte k dispozici pracovní prostor, konfigurace shromažďování d
 
 * Pokud chcete povolit shromažďování dat z prostředků Azure pomocí diagnostiky Azure nebo do úložiště Azure, najdete v článku [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](../../azure-monitor/platform/collect-azure-metrics-logs.md).  
 * Přidat [System Center Operations Manager jako zdroj dat](../../azure-monitor/platform/om-agents.md) shromažďovat data z agenty posílající sestavy skupině pro správu nástroje Operations Manager a uloží je v pracovním prostoru Log Analytics.  
-* Připojit [nástroje Configuration Manager](../../log-analytics/log-analytics-sccm.md) importovat počítače, které jsou členy kolekce v hierarchii.  
+* Připojit [nástroje Configuration Manager](../../azure-monitor/platform/collect-sccm.md) importovat počítače, které jsou členy kolekce v hierarchii.  
 * Zkontrolujte [řešení pro správu](../../azure-monitor/insights/solutions.md) k dispozici a jak přidat nebo odebrat některé řešení z pracovního prostoru.

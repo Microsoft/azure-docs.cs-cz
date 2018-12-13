@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: a6ccfa439b58d36ee44d5f8441c2058622965653
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dc301f218855139cfb3a5faa30109dd5a301eb07
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055431"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871196"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure Stack Development Kit (ASDK)
 Až se ujistíte, že hostitelského počítače development kit splňuje základní požadavky na instalaci ASDK, dalším krokem je ke stažení a extrahování balíčku pro nasazení ASDK zobrazíte Cloudbuilder.vhdx.
@@ -29,7 +29,7 @@ Až se ujistíte, že hostitelského počítače development kit splňuje zákla
 1. Před zahájením stahování, ujistěte se, že váš počítač splňuje následující požadavky:
 
   - Počítač musí mít alespoň 60 GB volného místa k dispozici na čtyřech samostatných, stejné logické pevné disky kromě na disk s operačním systémem.
-  - [Rozhraní .NET framework 4.6 (nebo novější)](https://aka.ms/r6mkiy) musí být nainstalována.
+  - [Rozhraní .NET framework 4.6 (nebo novější)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) musí být nainstalována.
 
 2. [Přejděte na stránku Začínáme](https://azure.microsoft.com/overview/azure-stack/try/?v=try) kde lze stáhnout Azure Stack Development Kit, zadejte své údaje a klikněte na **odeslat**.
 3. Stáhněte a spusťte [kontrola nasazení Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) skript požadovaných součástí. Tento skript samostatné prochází kontroly požadavků provádí nastavení pro Azure Stack Development Kit. Poskytuje způsob, jak potvrďte, že jsou splňuje požadavky na hardware a software, než si stáhnete balíček větší pro Azure Stack Development Kit.

@@ -2,19 +2,19 @@
 title: Zálohování souborů a složek pomocí agenta Azure Backup
 description: Použijte agenta Microsoft Azure Backup k zálohování Windows souborů a složek do Azure. Vytvořte trezor služby Recovery Services, nainstalujte agenta zálohování, definovat zásady zálohování a spusťte prvotní zálohování u souborů a složek.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: Trezor záloh; zálohování Windows serveru. zálohování systému windows.
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
-ms.author: markgal
-ms.openlocfilehash: 8107af53a78960d29f506c77f8ba9697c7a49d1c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: raynew
+ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252900"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874001"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/15/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f366413ae5f758601dfebc2a29ff848feb756083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9b72ca2a166e805d960eab47835f449e0f5b991e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960426"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889510"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>Kurz: Odebrání aplikace a prostředků
 
@@ -47,7 +47,7 @@ Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Otevřete [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) nebo si [nainstalujte Azure CLI a Service Fabric Mesh CLI místně](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* Otevřete [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) nebo si [nainstalujte Azure CLI a Service Fabric Mesh CLI místně](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="delete-the-resource-group-and-all-the-resources"></a>Odstranění skupiny prostředků a všech prostředků
 
@@ -81,7 +81,7 @@ Odstranění sítě:
 az mesh network delete --resource-group myResourceGroup --name todolistappNetwork
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

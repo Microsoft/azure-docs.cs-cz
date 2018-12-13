@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: d1476eac798190104e0fcabce0a0fa9537f76c20
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 58fffafe9658919a96d1aef2881424c0d324e688
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322035"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876473"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -106,7 +106,7 @@ Parametry předáváte v těle datové části požadavku. V sadě .NET SDK, Azu
 ```json
 {
   "sourceBlobContainer": "MySourceFolder",
-  "sinkBlobCountainer": "MySinkFolder"
+  "sinkBlobContainer": "MySinkFolder"
 }
 ```
 
@@ -196,7 +196,7 @@ Pokud chcete, aby aktivační událost plánovače aktivovala spuštění kanál
           "weekDays": [<<Monday-Sunday>>],
           "minutes": [<<0-60>>],
           "monthDays": [<<1-31>>],
-          "monthlyOccurences": [
+          "monthlyOccurrences": [
             {
               "day": <<Monday-Sunday>>,
               "occurrence": <<1-5>>
@@ -313,7 +313,7 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | **minutes** | Minuty v hodině, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **hours** | Hodiny dne, ve kterých se aktivační událost spouští. |– Celé číslo<br />– Pole celých čísel|
 | **weekDays** | Dny v týdnu, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při týdenní frekvenci.|<br />– Monday (Pondělí)<br />– Tuesday (Úterý)<br />– Wednesday (Středa)<br />– Thursday (Čtvrtek)<br />– Friday (Pátek)<br />– Saturday (Sobota)<br />– Sunday (Neděle)<br />– Pole hodnot dní (maximální velikost pole je 7)<br /><br />V hodnotách dní se nerozlišují malá a velká písmena|
-| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Pole objektů **monthlyOccurrence**: `{ "day": day,  "occurrence": occurence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
+| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Pole **monthlyOccurrence** objekty: `{ "day": day,  "occurrence": occurrence }`<br />– Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.<br />– Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.|
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. |– Libovolná hodnota <= −1 a >= −31<br />– Libovolná hodnota >= 1 a <= 31<br />– Pole hodnot|
 
 ## <a name="tumbling-window-trigger"></a>Aktivační událost pro přeskakující okno

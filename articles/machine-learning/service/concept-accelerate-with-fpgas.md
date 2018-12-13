@@ -1,5 +1,6 @@
 ---
-title: Co je FPGA a Project Brainwave? -Azure Machine Learning service
+title: Co je FPGA a Project Brainwave?
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak zrychlit modelů a s FPGA neuronových sítí v Azure. Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak služba Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 9/24/2018
-ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
-ms.translationtype: MT
+ms.date: 10/24/2018
+ms.custom: seodec18
+ms.openlocfilehash: b55d641f9a72fc2f757a7687b1b6214a98c92507
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238851"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093994"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Project Brainwave?
 
@@ -37,7 +39,7 @@ FPGA obsahovat pole programovatelný logiky bloků a hierarchii znovupoužiteln�
 
 [Project Brainwave](https://www.microsoft.com/research/project/project-brainwave/) je úsporné hardwarovou architekturou společnosti Microsoft, založené na zařízení společnosti Intel FPGA, že datových vědců a vývojářů, použijte k urychlení výpočtů v reálném čase AI.  Tato architektura povolené FPGA nabízí **výkonu**, **flexibilitu**, a **škálování** a je k dispozici v Azure.
 
-**FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování.** Dávkování znamená, že shromažďování velkých objemů dat a jí předáte do zpracovatele zlepšovat využití hardwaru. Dávkové zpracování může způsobit latence, protože je potřeba zpracovat víc dat, ale může se zvýšit propustnost. Project Brainwave implementace neuronových sítí zpracování jednotek nevyžadují dávkování; latence může být proto v mnoha případech nižší ve srovnání s konkrétním procesoru a GPU.
+**FPGA umožňují dosáhnout nízké latence pro požadavky v reálném čase odvozování.** Nejsou potřeba asynchronní požadavků (batch). Dávkové zpracování může způsobit latence, protože je potřeba zpracovat víc dat, ale může se zvýšit propustnost v některých kontextech. Project Brainwave implementace neuronových sítí zpracování jednotek nevyžadují dávkování; latence může být proto v mnoha případech nižší ve srovnání s konkrétním procesoru a GPU.
 
 ### <a name="reconfigurable-power"></a>Znovupoužitelných napájení
 **Můžete třeba překonfigurovat FPGA pro různé typy modelů strojového učení.** Díky této flexibilitě usnadňuje zrychlení aplikací založených na nejvíce optimální číselná přesnost a používá model paměti.
@@ -68,7 +70,7 @@ Následující scénáře použití FPGA na Project Brainwave architekturu:
 
 Tady je pracovní postup pro vytvoření služby rozpoznávání obrázků v Azure pomocí podporovaných dopředné featurizer pro nasazení na FPGA Azure:
 
-1. Použití sady SDK Azure Machine Learning pro Python k vytvoření definice služby, což je soubor s popisem kanálu grafy (vstup featurizer a třídění) podle TensorFlow. Příkaz nasazení bude automaticky komprimovat definice a grafy do souboru ZIP a nahrání souboru ZIP do úložiště objektů Blob v Azure.  Už je nasazená DNN na Project Brainwave ke spuštění na FPGA.
+1. Použití [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) k vytvoření definice služby, které je soubor s popisem kanálu grafy (vstup featurizer a třídění) podle TensorFlow. Příkaz nasazení bude automaticky komprimovat definice a grafy do souboru ZIP a nahrání souboru ZIP do úložiště objektů Blob v Azure.  Už je nasazená DNN na Project Brainwave ke spuštění na FPGA.
 
 1. Zaregistrujte model pomocí sady SDK se souborem ZIP v úložišti objektů Blob v Azure.
 

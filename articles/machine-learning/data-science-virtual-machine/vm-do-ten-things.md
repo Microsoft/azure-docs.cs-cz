@@ -1,11 +1,13 @@
 ---
-title: Deset věcí, které můžete provést na virtuální počítač pro datové vědy v Azure | Dokumentace Microsoftu
+title: Zkoumání a modelování se virtuální počítač pro datové vědy
+titleSuffix: Azure
 description: Na virtuální počítač pro datovou vědu provádějte různé pro zkoumání a modelování úloh.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
+ms.custom: seodec18
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: df9edfee9d8a6a0736a040924bac736cfcb3633c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250913"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075675"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -62,7 +64,7 @@ Pro Python můžete použít integrované vývojové prostředí jako je Visual 
 
 Tady je vypadá vlastní prostředí v sadě Visual Studio.
 
-![Instalační program PTVS](./media/vm-do-ten-things/PTVSSetup.png)
+![Snímek obrazovky sady Visual Studio s nástroji Python Tools for Visual Studio vybrali](./media/vm-do-ten-things/PTVSSetup.png)
 
 Zobrazit [dokumentace k PTVS](https://aka.ms/ptvsdocs) najdete další podrobnosti o tom, jak vytvořit prostředí Pythonu.
 
@@ -249,7 +251,7 @@ Pokud chcete stáhnout kód z úložiště GitHub, můžete použít ```git clon
 
 V sadě Visual Studio můžete provádět stejné operace klonování. Na následujícím snímku obrazovky ukazuje, jak získat přístup ke Gitu a Githubu nástroje v sadě Visual Studio.
 
-![Git v sadě Visual Studio](./media/vm-do-ten-things/VSGit.PNG)
+![Snímek obrazovky sady Visual Studio s pomocí Githubu připojení zobrazí](./media/vm-do-ten-things/VSGit.PNG)
 
 Můžete najít další informace o používání Git pracovat s úložišti GitHub z několika zdrojů, které jsou k dispozici na webu github.com. [Tahák](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) je užitečný odkaz.
 
@@ -261,12 +263,12 @@ Objektů blob v Azure je spolehlivé, úsporné cloudové úložiště pro data 
 
 * **Vytvoření účtu Azure Blob storage z [webu Azure portal](https://portal.azure.com).**
 
-![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Snímek obrazovky se procesu vytvoření účtu úložiště na webu Azure Portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Potvrďte, že předinstalované nástroje příkazového řádku AzCopy se nachází v umístění ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Adresář obsahující azcopy.exe už ve vaší proměnné prostředí PATH, abyste nemuseli zadávat cestu celý příkaz při spuštění tohoto nástroje. Další informace o nástroj AzCopy najdete [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md)
 * Spusťte nástroj Průzkumník služby Azure Storage. Můžete ho stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/). 
 
-![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
+![Snímek obrazovky Průzkumníka služby Azure Storage přístupu k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
 **Přesun dat z virtuálního počítače do objektů Blob v Azure: AzCopy**
 
@@ -276,7 +278,7 @@ Pro přesun dat mezi vaší místní soubory a úložiště objektů blob, můž
 
 Nahraďte **C:\myfolder** na cestu, kde je soubor uložen, **mystorageaccount** na název účtu úložiště objektů blob, **mycontainer** názvu kontejneru **klíč účtu úložiště** na přístupový klíč k úložišti objektů blob. Můžete najít přihlašovací údaje účtu úložiště v [webu Azure portal](https://portal.azure.com).
 
-![StorageAccountCredential_v2](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
+![Snímek obrazovky se klíče účtu úložiště a informací o kontejneru na webu Azure Portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 Spuštěním příkazu AzCopy v Powershellu nebo z příkazového řádku. Tady je použití příkazu AzCopy:
 
@@ -291,20 +293,20 @@ Spuštěním příkazu AzCopy v Powershellu nebo z příkazového řádku. Tady 
 
 Po spuštění příkazu AzCopy pro kopírování do objektu blob Azure, zobrazí se že váš soubor se zobrazí v Průzkumníku služby Azure Storage za chvíli.
 
-![AzCopy_run_finshed_Storage_Explorer_v3](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
+![Snímek obrazovky účtu úložiště, zobrazení nahraný soubor CSV](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
 **Přesun dat z virtuálního počítače do objektů Blob v Azure: Průzkumník služby Azure Storage**
 
 Můžete také nahrát data z místního souboru ve virtuálním počítači pomocí Průzkumníka služby Azure Storage:
 
-* Jak nahrát data do kontejneru, vyberte cílový kontejner a klikněte na tlačítko **nahrát** tlačítko.![ Nahrát v Průzkumníku služby Storage](./media/vm-do-ten-things/storage-accounts.png)
-* Klikněte na **...**  napravo od **soubory** , vyberte jeden nebo více souborů ze systému souborů a klikněte na **nahrát** zahajte nahrávání souborů.![ Nahrání souborů do objektu blob](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Jak nahrát data do kontejneru, vyberte cílový kontejner a klikněte na tlačítko **nahrát** tlačítko.![ Snímek obrazovky s tlačítkem pro uložení v Průzkumníku služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
+* Klikněte na **...**  napravo od **soubory** , vyberte jeden nebo více souborů ze systému souborů a klikněte na **nahrát** zahajte nahrávání souborů.![ Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 **Čtení dat z objektů Blob v Azure: modul čtečky Machine Learning**
 
 V Azure Machine Learning Studio, můžete použít **modulu Import dat** přečíst data z objektu blob služby.
 
-![AML_ReaderBlob_Module_v3](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
+![Snímek obrazovky modulu Import dat ve službě Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 **Čtení dat z objektů Blob v Azure: Python ODBC**
 
@@ -352,7 +354,7 @@ Potom zapojte přihlašovacích údajů k účtu Azure Blob a čtení dat z obje
 
 Data je určen pro čtení jako datový rámec:
 
-![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![Snímek obrazovky prvních 10 řádků dat.](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage je vysoce škálovatelné úložiště pro úlohy analýzy velkých objemů dat a kompatibilní s HDFS Hadoop Distributed File System (). Funguje s Hadoop, Spark a Azure Data Lake Analytics. V této části se dozvíte, jak můžete přesunout data do Azure Data Lake Store a spouštění analýz pomocí Azure Data Lake Analytics.
@@ -361,17 +363,17 @@ Azure Data Lake Storage je vysoce škálovatelné úložiště pro úlohy analý
 
 * Vytvořit váš Azure Data Lake Analytics v [webu Azure portal](https://portal.azure.com).
 
-![Azure_Data_Lake_Create_v2](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
+![Snímek obrazovky vytváření Data Lake Analytics z portálu Azure portal](./media/vm-do-ten-things/Azure_Data_Lake_Create_v2.png)
 
 * **Nástroje Azure Data Lake** v **sady Visual Studio** nalezený na to [odkaz](https://www.microsoft.com/download/details.aspx?id=49504) je již nainstalována na Visual Studio Community Edition, který je na virtuálním počítači. Po spuštění sady Visual Studio a protokolování ve vašem předplatném Azure, měli byste vidět váš účet Azure Data Analytics a úložiště na levém panelu sady Visual Studio.
 
-![Azure_Data_Lake_PlugIn_v2](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
+![Snímek obrazovky s Data Lake Tools v sadě Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
 **Přesun dat z virtuálního počítače do Data Lake: Průzkumník služby Azure Data Lake**
 
 Můžete použít **Průzkumníka služby Azure Data Lake** k odeslání dat z místních souborů ve vašem virtuálním počítači do úložiště Data Lake.
 
-![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+![Snímek obrazovky pomocí Data Lake Explorer k nahrání souborů](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
 Můžete také sestavovat datové kanály pro zprovoznění vašeho přesunu dat do nebo z aplikace pomocí Azure Data Lake [Azure Data Factory(ADF)](https://azure.microsoft.com/services/data-factory/). Projít tento [článku](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) vás provede kroky pro vytváření dat kanály.
 
@@ -379,11 +381,11 @@ Můžete také sestavovat datové kanály pro zprovoznění vašeho přesunu dat
 
 Pokud máte data uložená v úložišti objektů Blob v Azure, můžete přímo číst data z objektu blob Azure storage v dotazu U-SQL. Před sestavování dotazu U-SQL, ujistěte se, že svůj účet blob storage je propojený s vaší Azure Data Lake. Přejděte na **webu Azure portal**, najít řídicí panel Azure Data Lake Analytics, klikněte na tlačítko **přidat zdroj dat**, vyberte typ úložiště, **služby Azure Storage** a připojte ve vašem účtu úložiště Azure Název a klíč. Potom budete moct odkazují na data uložená v účtu úložiště.
 
-![Zadejte účet úložiště a klíč](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
+![Snímek obrazovky dialogového okna Přidat zdroj dat](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 V sadě Visual Studio můžete číst data z úložiště objektů blob, provádět některé manipulace s daty, návrh funkcí a výstupní Výsledná data do Azure Blob Storage nebo Azure Data Lake. Při odkazování na data ve službě blob storage, použijte **wasb: / /**; když odkazují na data ve službě Azure Data Lake, použijte **swbhdfs: / /**
 
-![Datový rámec](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
+![Snímek obrazovky s položkou WASB zvýrazněnou dotazu](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 V sadě Visual Studio můžete použít následující dotazy U-SQL:
 
@@ -429,7 +431,7 @@ V sadě Visual Studio můžete použít následující dotazy U-SQL:
 
 Po váš dotaz se odešle na server, zobrazí se diagram znázorňující stav vaší úlohy.
 
-![Diagram stavu úloh](./media/vm-do-ten-things/USQL_Job_Status.PNG)
+![Snímek obrazovky dialogového okna stavu úlohy](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
 **Dotazování dat ve službě Data Lake: U-SQL**
 
@@ -437,11 +439,11 @@ Po datové sady se ingestuje do Azure Data Lake, můžete použít [jazyk U-SQL]
 
 Po dotazu se odesílá na server, tripdata_summary. CSV mohou nacházet za chvíli **Průzkumníka služby Azure Data Lake**, může náhled dat kliknutím pravým tlačítkem myši soubor.
 
-![Soubor v Azure Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
+![Snímek obrazovky ze souboru csv v Data Lake Explorer](./media/vm-do-ten-things/USQL_create_summary.png)
 
 Chcete-li zobrazit informace o souboru:
 
-![Souhrn souborů](./media/vm-do-ten-things/USQL_tripdata_summary.png)
+![Snímek obrazovky souhrnné informace o souboru](./media/vm-do-ten-things/USQL_tripdata_summary.png)
 
 ### <a name="hdinsight-hadoop-clusters"></a>Clustery HDInsight Hadoop
 Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v cloudu. Snadno mohli pracovat s clustery Azure HDInsight z virtuálního počítače pro datové vědy.
@@ -450,7 +452,7 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v clo
 
 * Vytvoření účtu Azure Blob storage z [webu Azure portal](https://portal.azure.com). Tento účet úložiště se používá k ukládání dat pro clustery HDInsight.
 
-![Vytvoření účtu úložiště objektů Blob v Azure](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
+![Snímek obrazovky vytváření HDInsight z portálu Azure portal](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
 * Přizpůsobení clusterů systému Hadoop HDInsight Azure [webu Azure portal](../team-data-science-process/customize-hadoop-cluster.md)
   
@@ -460,7 +462,7 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v clo
 
 * Povolit **vzdáleného přístupu** k hlavnímu uzlu clusteru po jeho vytvoření. Pamatovat přihlašovací údaje vzdáleného přístupu, které zadáte tady, kdykoli budete potřebovat v následujícím postupu.
 
-![Povolit vzdálený přístup](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
+![Povolit vzdálený přístup ke clusteru HDInsight](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
 * Vytvoření pracovního prostoru Azure Machine Learning. Z tohoto pracovního prostoru Machine Learning se ukládají vaše experimenty strojového učení. Vyberte zvýrazněnou možností na portálu, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -638,7 +640,7 @@ Můžete také compute vzdálenost mezi výstupní umístění a dropoff umíst�
     results.head(5)
 
 
-![Sbírat míčky a dropoff tabulky](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
+![Horní řádky v tabulce sbírat míčky a dropoff](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
     results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
                        'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
@@ -782,7 +784,7 @@ Po chvíli uvidíte, že data byla načtena clustery Hadoop:
     pd.read_sql(queryString,connection)
 
 
-![Tabulka dat](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
+![Horní řádky z tabulky dat](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
 **Čtení dat z Hdinsight pomocí služby Machine Learning: modul čtečky**
 

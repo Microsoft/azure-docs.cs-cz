@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6ae014597a89c75e4426715227bbb19f1e98a438
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 7c6f5e199041af7d0ecd829ace2b56f5789f4955
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189285"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890445"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Windows v Azure
 
@@ -47,7 +47,7 @@ Vytvořte jednoduché plánované denní zálohování do trezoru služby Recove
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
-4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování**.
+4. V okně virtuálního počítače v **operace** klikněte na tlačítko **zálohování**. Otevře se okno **Povolit zálohování**.
 5. V části **Trezor služby Recovery Services** klikněte na **Vytvořit nový** a zadejte název nového trezoru. Nový trezor se vytvoří ve stejné skupině prostředků a stejném umístění jako virtuální počítač.
 6. Klikněte na **Zásady zálohování**. Pro účely tohoto příkladu ponechte výchozí hodnoty a klikněte na **OK**.
 7. V okně **Povolit zálohování** klikněte na **Povolit zálohování**. Tím se vytvoří denní zálohování na základě výchozího plánu.
@@ -90,7 +90,7 @@ V tomto příkladu ukážeme, jak obnovit soubor s obrázkem, který se použív
 18. Na svém místním počítači se vraťte na kartu prohlížeče s webem Azure Portal a v části **Krok 3: Odpojení disků po obnovení** klikněte na tlačítko **Odpojit disky**. Pokud tento krok zapomenete provést, připojení k přípojnému bodu se automaticky ukončí po 12 hodinách. Po těchto 12 hodinách musíte pro vytvoření nového přípojného bodu stáhnout nový skript.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

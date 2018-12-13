@@ -1,21 +1,19 @@
 ---
-title: Funkční podpora Azure Cosmos DB pro MongoDB | Microsoft Docs
+title: Funkce podpory Azure Cosmos DB pro MongoDB
 description: Poznejte funkční podporu, kterou rozhraní MongoDB API služby Azure Cosmos DB poskytuje pro MongoDB 3.4.
 services: cosmos-db
 author: alekseys
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: d9616f87e76231c3bb587c2018572b7526b471a5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 01e8af08ff5059867cc49cb9d55ae92f2ae21cdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050336"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879662"
 ---
 # <a name="mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
@@ -215,7 +213,7 @@ Jsou podporované následující operátory, doplněné o odpovídající přík
 }
 ```
 
-Operátor | Příklad |
+Operátor | Příklad: |
 --- | --- |
 $eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |  | -
 $gt | ``` { "Elevation": { $gt: 4000 } } ``` |  | -
@@ -270,7 +268,7 @@ V první části se použije index k omezení hledání na dokumenty, které za�
 
 ### <a name="geospatial-operators"></a>Geoprostorové operátory
 
-Operátor | Příklad 
+Operátor | Příklad: 
 --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ano
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ano
@@ -286,7 +284,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 ## <a name="additional-operators"></a>Další operátory
 
-Operátor | Příklad | Poznámky 
+Operátor | Příklad: | Poznámky 
 --- | --- | --- |
 $all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
 $elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
@@ -304,7 +302,7 @@ Podporují se následující metody:
 
 #### <a name="cursor-methods"></a>Metody kurzoru
 
-Metoda | Příklad | Poznámky 
+Metoda | Příklad: | Poznámky 
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klíče řazení se nevracejí
 
@@ -320,7 +318,7 @@ Azure Cosmos DB podporuje relativní hodnotu TTL (Time-To-Live) založenou na č
 
 ## <a name="user-and-role-management"></a>Správa uživatelů a rolí
 
-Azure Cosmos DB zatím nepodporuje uživatele a role. Azure Cosmos DB podporuje řízení přístupu na základě rolí (RBAC) a hesla/klíče pro čtení a zápis nebo jen pro čtení, které lze získat prostřednictvím portálu [Azure Portal](https://portal.azure.com) (stránka Připojovací řetězec).
+Azure Cosmos DB zatím nepodporuje uživatele a role. Azure Cosmos DB podporuje řízení přístupu na základě rolí (RBAC) a hesla/klíče pro čtení a zápis nebo jen pro čtení, které lze získat prostřednictvím [Azure Portalu](https://portal.azure.com) (stránka Připojovací řetězec).
 
 ## <a name="replication"></a>Replikace
 
@@ -334,7 +332,7 @@ Některá rozhraní MongoDB API podporují možnost zadat [Write Concern](https:
 
 Azure Cosmos DB podporuje automatický sharding na straně serveru. Azure Cosmos DB nepodporuje příkazy pro ruční sharding.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [používat Studio 3T](mongodb-mongochef.md) s rozhraním API pro databázi MongoDB.
 - Zjistěte, jak [používat Robo 3T](mongodb-robomongo.md) s rozhraním API pro databázi MongoDB.

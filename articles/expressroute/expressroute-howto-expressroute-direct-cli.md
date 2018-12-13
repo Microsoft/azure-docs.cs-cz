@@ -1,47 +1,50 @@
 ---
-title: Jak do konfigurace Azure ExpressRoute s přímým přístupem pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
-description: Tato stránka vám pomůže s konfigurací ExpressRoute přímo pomocí rozhraní příkazového řádku (Preview)
+title: Konfigurace ExpressRoute přímo – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Tento článek vám pomůže s konfigurací ExpressRoute přímo pomocí rozhraní příkazového řádku Azure (preview)
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 989e96aa00ae65d1206f961a10893e3331670553
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.custom: seodec18
+ms.openlocfilehash: 285b429f565f8a2c7f8c20756f076e631223b10f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958300"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076708"
 ---
-# <a name="how-to-configure-expressroute-direct-using-cli-preview"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku (Preview)
+# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Konfigurace ExpressRoute přímo pomocí rozhraní příkazového řádku Azure (preview)
 
-Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
+Azure ExpressRoute Direct můžete použít pro připojení přímo k globální síti Microsoftu na umístění partnerského vztahu strategicky distribuovaných po celém světě. Další informace najdete v tématu [informace o ExpressRoute přímé připojení](expressroute-erdirect-about.md).
 
 > [!IMPORTANT]
-> ExpressRoute s přímým přístupem je aktuálně ve verzi Preview.
+> Přímé ExpressRoute je aktuálně ve verzi preview.
 >
-> Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Přímá ExpressRoute ve verzi public preview se poskytuje bez smlouvu o úrovni služeb. ExpressRoute s přímým přístupem ve verzi Preview byste neměli používat pro produkční úlohy. Některé funkce nemusí být podporované, některé funkce můžou mít omezené možnosti a některé funkce nemusí být k dispozici ve všech umístěních Azure. Podrobnosti najdete v tématu [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Vytvoření prostředku
 
-1. Přihlaste se k Azure a vyberte předplatné. Prostředek přímo ExpressRoute a okruhy ExpressRoute musí být ve stejném předplatném.
+1. Přihlaste se k Azure a vyberte předplatné, které obsahuje ExpressRoute. Prostředek přímo ExpressRoute a okruhů ExpressRoute musí být ve stejném předplatném. V Azure CLI spusťte následující příkazy:
 
   ```azurecli
   az login
   ```
 
-  Zkontrolujte předplatná pro příslušný účet. 
+  Zkontrolujte předplatná pro tento účet: 
 
   ```azurecli
   az account list 
   ```
 
-  Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute.
+  Vyberte předplatné, pro kterou chcete vytvořit okruh ExpressRoute:
+
   ```azurecli
   az account set --subscription "<subscription ID>"
   ```
-2. Výpis všech umístění, kde se podporuje přímý ExpressRoute.
+
+2. Výpis všech umístění, kde se podporuje přímý ExpressRoute:
     
   ```azurecli
   az network express-route port location list
@@ -108,7 +111,7 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
    }
   ]
   ```
-3. Pokud výše uvedené umístění určila dostupnou šířku pásma
+3. Určení, zda jeden z míst uvedených v předchozím kroku dostupnou šířku pásma:
 
   ```azurecli
   az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -134,14 +137,14 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
   "type": "Microsoft.Network/expressRoutePortsLocations"
   }
   ```
-4. Vytvoření prostředku ExpressRoute přímo na základě umístění zvoleno výše
+4. Vytvoření prostředku ExpressRoute Direct, která je založena na umístění, které jste zvolili v předchozích krocích.
 
-  Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Vybrali QinQ každý okruh ExpressRoute se dynamicky přiřadí značku S a bude jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo.  
+  Přímé ExpressRoute podporuje QinQ a Dot1Q zapouzdření. Pokud vyberete QinQ, každý okruh ExpressRoute se dynamicky přiřadí značku S a je jedinečný v rámci prostředku ExpressRoute přímo. Každá značka C na okruh musí být jedinečný v okruhu, ale ne přes ExpressRoute přímo prostředku.  
 
-  Vybrali Dot1Q zapouzdření musíte spravovat jedinečnost C – značka (VLAN) přes celý zdroj přímo ExpressRoute.  
+  Pokud vyberete Dot1Q zapouzdření, musíte spravovat jedinečnost C – značka (VLAN) přes celý zdroj přímo ExpressRoute.  
 
   > [!IMPORTANT]
-  > Přímé ExpressRoute může být pouze jeden typ zapouzdření. Zapouzdření nelze změnit po vytvoření přímé ExpressRoute.
+  > Přímé ExpressRoute může být pouze jeden typ zapouzdření. Typ zapouzdření nelze změnit po vytvoření prostředku ExpressRoute přímo.
   > 
  
   ```azurecli
@@ -149,10 +152,10 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
   ```
 
   > [!NOTE]
-  > Atribut zapouzdření může být také nastaven na Dot1Q. 
+  > Můžete také nastavit **zapouzdření** atribut **Dot1Q**. 
   >
 
-  **Příklad výstupu:**
+  **Příklad výstupu**
 
   ```azurecli
   {
@@ -206,11 +209,11 @@ Přímé ExpressRoute poskytuje možnost připojení přímo do globální síti
   }  
   ```
 
-## <a name="state"></a>Změnit stav správce odkazů
+## <a name="state"></a>Změna AdminState pro odkazy
 
-Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každý křížové připojení správně opravený do směrovače pro primární a sekundární.
+Tento proces můžete provést test vrstvy 1. Ujistěte se, že každý křížové připojení správně nainstalované opravy do směrovače v primární a sekundární porty.
 
-1. Nastavit odkaz na povoleno. Opakujte tento krok nastavit každý odkaz na povoleno.
+1. Nastavte odkazy na **povoleno**. Opakováním tohoto kroku můžete nastavit každý odkaz na **povoleno**.
 
   Odkazy [0] je primární port a odkazy [1] je sekundární port.
 
@@ -220,7 +223,7 @@ Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každ�
   ```azurecli
   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
   ```
-  **Příklad výstupu:**
+  **Příklad výstupu**
 
   ```azurecli
   {
@@ -274,25 +277,25 @@ Tento proces by měla sloužit k provedení testu vrstvy 1, zajistit, aby každ�
   }
   ```
 
-  Použijte stejný postup s `AdminState = “Disabled”` Chcete-li snížit porty.
+  Stejný postup použijte k dolů porty pomocí `AdminState = “Disabled”`.
 
 ## <a name="circuit"></a>Vytvoření okruhu
 
-Ve výchozím nastavení můžete vytvořit v rámci předplatného, ve kterém je prostředek přímo ExpressRoute 10 okruhy. To jde navýšit o podporu. Které nesou odpovědnost za sledování zřízená a využité šířky pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku a využívaných šířky pásma fyzického využití základní fyzické rozhraní.
+Ve výchozím nastavení můžete vytvořit 10 okruhů v rámci předplatného, který obsahuje prostředek přímo ExpressRoute. Microsoft Support můžete zvýšit výchozí omezení. Zodpovídáte za sledování zřízené a využívaných šířku pásma. Přenosového pásma je součet šířky pásma všechny okruhy ExpressRoute přímo prostředku. Využívaných šířka pásma je fyzický využití základní fyzické rozhraní.
 
-Existují další okruh šířky pásma, které můžete využít na ExpressRoute přímo pouze do podpory scénářů uvedených výše. Jedná se o: 40Gbps a 100Gbps.
+Můžete použít další okruh šířek pásma na ExpressRoute přímo pouze za účelem podpory scénářů podle zde uvedeného. Šířky pásma se 40 GB/s a 100 GB/s.
 
-Je možné vytvářet okruhy úrovně Standard nebo premium. Standardní okruhy jsou zahrnutá v ceně, zatímco okruhy premium mají svou cenu na základě šířky pásma vybrané. Okruhy lze vytvořit pouze jako měřená, jako neomezená nepodporuje přímé ExpressRoute.
+Můžete vytvořit okruhy Standard nebo Premium. Ceny za službu jsou součástí standardní okruhy. Náklady na Premium okruhů je založen na šířku pásma, kterou jste vybrali. Okruhy můžete vytvořit jen měří. Neomezený počet okruhů ExpressRoute přímo nepodporuje.
 
-Vytvoření okruhu ExpressRoute přímo prostředku.
+Vytvoření okruhu ExpressRoute přímo prostředku:
 
   ```azurecli
   az network express-route create --express-route-port "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct" -n "Contoso-Direct-ckt" -g "Contoso-Direct-rg" --sku-family MeteredData --sku-tier Standard --bandwidth 100 Gbps
   ```
 
-  Zahrnout další šířek pásma: 40 GB/s, 5 GB/s a 10 GB/s
+  Další šířek pásma zahrnují 40 GB/s, 5 GB/s a 10 GB/s.
 
-  **Příklad výstupu:**
+  **Příklad výstupu**
 
   ```azurecli
   {

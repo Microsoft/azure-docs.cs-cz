@@ -1,5 +1,6 @@
 ---
-title: Načtení dat pomocí služby Azure Machine Learning Prep sady SDK pro Data – Python
+title: Zatížení a příprava dat pomocí sady SDK pro Data Prep Pythonu
+titleSuffix: Azure Machine Learning service
 description: Další informace o načítání dat pomocí sady SDK služby Azure Machine Learning Data Prep. Můžete načíst různé typy vstupních dat, určit typy souborů dat a parametry nebo použít funkci inteligentního čtení sady SDK automaticky rozpoznat typ souboru.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 11/20/2018
-ms.openlocfilehash: 208d6958b56dafbfacc45ecb05a71c14ac024ab4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0d7561c0dc89fb47f88ca6e54616736067262391
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309861"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095055"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 

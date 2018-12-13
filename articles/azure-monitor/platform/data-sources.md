@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5b673af317189da1876328c0cad0fa8f510aae4f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: cb38a8a4c6e92dae1ed4d505c810027fb93e4a3c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844047"
+ms.locfileid: "52871421"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -107,7 +107,7 @@ Kromě standardní úrovní aplikace budete muset další prostředky, které ma
 ![Kolekce vlastních dat](media/data-sources/custom-collection.png)
 
 ### <a name="data-collector-api"></a>Rozhraní API kolekce dat
-Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST pomocí [rozhraní API kolekce dat](../../log-analytics/log-analytics-data-collector-api.md). To umožňuje vytvářet vlastní scénáře monitorování a rozšiřování monitorování na prostředky, které Nezveřejňují telemetrická data prostřednictvím dalších zdrojů.
+Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST pomocí [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md). To umožňuje vytvářet vlastní scénáře monitorování a rozšiřování monitorování na prostředky, které Nezveřejňují telemetrická data prostřednictvím dalších zdrojů.
 
 ## <a name="next-steps"></a>Další postup
 

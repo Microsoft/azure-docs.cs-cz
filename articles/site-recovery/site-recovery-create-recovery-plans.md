@@ -1,17 +1,18 @@
 ---
 title: Vytvoření a přizpůsobení plánů obnovení pro zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Zjistěte, jak vytvářet a přizpůsobovat plány obnovení pro zotavení po havárii pomocí služby Azure Site Recovery.
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: aed37195f352719f3363992e4cee1e339e6e6056
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 85e649f3065d7f8d601541bbac6e93f4b2a0dc85
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835586"
+ms.locfileid: "52878622"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Vytvoření a přizpůsobení plánů obnovení
 
@@ -42,7 +43,7 @@ Tento článek popisuje, jak vytvořit a přizpůsobit plán obnovení v [Azure 
 
 ## <a name="add-a-group-to-a-plan"></a>Přidání skupiny do plánu
 
-Vytvořit další skupiny a přidat počítače do různých skupin tak, aby na základě skupiny PinY lze určit různá chování. Můžete například zadat, pokud počítače ve skupině by měly spustit po převzetí služeb při selhání, nebo zadat vlastní akce na skupinu.
+Vytvořit další skupiny a přidat počítače do různých skupin tak, aby lze určit různá chování na základě skupin podle skupiny. Můžete například zadat, pokud počítače ve skupině by měly spustit po převzetí služeb při selhání, nebo zadat vlastní akce na skupinu.
 
 1. V **plány obnovení**, klikněte pravým tlačítkem myši plán > **vlastní**. Ve výchozím nastavení po vytvoření plánu všechno, co jsou počítače, které jste přidali do něj nachází ve výchozím 1 skupině.
 2. Klikněte na tlačítko **+ skupina**. Ve výchozím nastavení je v pořadí, ve kterém se přidá číslované novou skupinu. Můžete mít až sedm skupiny.

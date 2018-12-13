@@ -3,7 +3,7 @@ title: Monitorování úložiště v paměti XTP | Dokumentace Microsoftu
 description: Použít odhadu a sledování XTP úložiště v paměti, kapacity; Opravte chyby kapacity 41823
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: genemi
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2a9c01eb2c237a7c79464b930c9258f791d8f3ce
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ac7b568d95b9a2c382b1c167965942f0733012c4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161620"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874919"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Úložiště OLTP v paměti monitorování
 Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizovaných tabulkách a proměnné tabulky se nachází v úložiště OLTP v paměti. Každá úroveň služby úrovně Premium a pro důležité obchodní informace má maximální velikost úložiště OLTP v paměti. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).

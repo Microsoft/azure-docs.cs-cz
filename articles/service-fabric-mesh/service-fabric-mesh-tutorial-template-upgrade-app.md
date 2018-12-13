@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82e0cd5bd6a15ff33f51b4e88f68c13080f595d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967961"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891125"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Kurz: Upgrade aplikace Service Fabric spuštěné ve službě Service Fabric Mesh
 
-Tento kurz je třetí částí série. Dozvíte se, jak upgradovat aplikaci Service Fabric, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), a to zvýšením množství přidělených prostředků CPU.  Jakmile budete hotovi, budete mít spuštěnou webovou front-end službu s větším množstvím prostředků CPU.
+Tento kurz je třetí částí série. Dozvíte se, jak upgradovat aplikaci Service Fabric, která se [předtím nasadila do služby Service Fabric Mesh](service-fabric-mesh-tutorial-template-deploy-app.md), a to zvýšením množství přidělených prostředků CPU.  Jakmile budete hotovi, budete mít webová front-end služba spuštěná s vyšší prostředků procesoru.
 
 Ve třetí části této série se naučíte:
 
@@ -47,7 +47,7 @@ Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* Otevřete [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) nebo si [nainstalujte Azure CLI a Service Fabric Mesh CLI místně](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* Otevřete [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md) nebo si [nainstalujte Azure CLI a Service Fabric Mesh CLI místně](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="upgrade-application-configurations"></a>Upgrade konfigurace aplikace
 
@@ -59,7 +59,7 @@ Tento kurz jako příklad používá ukázku Seznam úkolů, která se [nasadila
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *cpu*, kterou můžete použít k nastavení požadovaného množství prostředků CPU. Aplikace se může skládat z několika služeb, z nichž každá má jedinečné nastavení *cpu* a které se nasazují a spravují společně. Pokud chcete zvýšit množství prostředků CPU webové front-end služby, v šabloně nasazení nebo v souboru parametrů upravte hodnotu *cpu*.  Potom aplikaci upgradujte.
+V šabloně nasazení pro prostředek aplikace má každá služba vlastnost *cpu*, kterou můžete použít k nastavení požadovaného množství prostředků CPU. Aplikace se může skládat z několika služeb, z nichž každá má jedinečné nastavení *cpu* a které se nasazují a spravují společně. Pokud chcete zvýšit prostředků procesoru webovou front-end službu, upravte *cpue* hodnota v souboru šablony nebo parametrů nasazení.  Potom aplikaci upgradujte.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Úprava parametrů šablony nasazení
 
@@ -133,7 +133,7 @@ Spustí se tím upgrade aplikace se zajištěním provozu a během několika min
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3b766cfa339e6cbb568cf57383667d270153401f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: dd47976bca75569142f1912eee06c66061e92fa6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262416"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097661"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Zřízení propustnosti pro kontejner Azure Cosmos DB
 
@@ -28,6 +28,7 @@ Tento článek vysvětluje, jak zřídit propustnost pro kontejner (kolekci, gra
 
    * Vytvořte novou databázi nebo použijte existující.
    * Zadejte ID kolekce (případně tabulky nebo grafu).
+   * Zadejte hodnotu klíče oddílu, například `/userid`.
    * Zadejte propustnost, například 1 000 RU.
    * Vyberte **OK**.
 
@@ -77,7 +78,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V následujících článcích najdete informace o zřizování propustnosti ve službě Cosmos DB:
 

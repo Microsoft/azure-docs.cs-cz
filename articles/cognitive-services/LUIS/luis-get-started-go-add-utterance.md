@@ -1,7 +1,7 @@
 ---
-title: Rychlý start pro jazyk Go – změna modelu a trénování aplikace LUIS
-description: V tomto rychlém startu pro jazyk Go přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Změna, trénování app, Go
+description: V tomto rychlém startu pro jazyk Go přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
+titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 092771ed4ce2ebbe134ea5c39e23294555124c19
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e3fb6b2532f2dc99a48cc3c2eac9029367c52185
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013658"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100279"
 ---
 # <a name="quickstart-change-model-using-go"></a>Rychlý start: Změna modelu pomocí Go
 
@@ -69,7 +69,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 2. Aplikaci Go spusťte z příkazového řádku zadáním následujícího textu do příkazového řádku: 
 
-    ```CMD
+    ```console
     add-utterances -appID <your-app-id> -authoringKey <add-your-authoring-key> -version <your-version-id> -region westus -utteranceFile utterances.json
 
     ```
@@ -78,7 +78,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
     Tento příkazový řádek zobrazí výsledky:
 
-    ```CMD
+    ```console
     add example utterances requested
     [
         {

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: ab90b4431a0f8d3a4ee70869e053174f89f23dba
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: fdc45f6f1fbbb4580b71a46740fa51278b869ec0
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785211"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889306"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Omezení paměti a souběžnosti pro službu Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnosti přidělené pro různé úrovně výkonu a třídy prostředků ve službě Azure SQL Data Warehouse. Další informace a použít tyto možnosti pro váš plán úloh správy najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md). 
@@ -27,10 +27,14 @@ Maximální kapacita pro datový sklad na různé úrovně výkonu v následují
 
 ### <a name="gen2"></a>Gen2
 
-Gen2 poskytuje 2,5 × více paměti na dotazu než Gen1. Tuto paměť navíc pomáhá Gen2 jeho rychlý výkon.  Úrovně výkonu na Gen2 oblast z DW500c DW30000c. 
+Gen2 poskytuje 2,5 × více paměti na dotazu než Gen1. Tuto paměť navíc pomáhá Gen2 jeho rychlý výkon.  Úrovně výkonu na Gen2 oblast z DW100c DW30000c. 
 
 | Úroveň výkonu | Výpočetní uzly | Distribuce podle počtu výpočetních uzlů | Paměť na datový sklad (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW100c            | 1             | 60                             |    60                          |
+| DW200c            | 1             | 60                             |   120                          |
+| DW300c            | 1             | 60                             |   180                          |
+| DW400c            | 1             | 60                             |   240                          |
 | DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
@@ -76,6 +80,10 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 
 | Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
+| DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
+| DW300c        | 12                         |   12                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
+| DW400c        | 16                         |   16                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
@@ -92,7 +100,7 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 **Dynamický prostředek třídy**
 
 > [!NOTE]
-> Třída prostředků smallrc na Gen2 paměti dynamicky přidá zvyšuje úroveň služby a podporuje pouze maximální 32 souběžných dotazů na DW1000c a 20 a DW500c.  Jakmile je instance škálování nad rámec DW1500c slotů souběžnosti a paměť používanou smallrc se zvyšuje s rostoucím zvýšení úrovně služby. 
+> Třída prostředků smallrc na Gen2 paměti dynamicky přidá zvyšuje úroveň služby a podporuje pouze maximální 32 souběžných dotazů na DW1000c a 4 a DW100c.  Jakmile je instance škálování nad rámec DW1500c slotů souběžnosti a paměť používanou smallrc se zvyšuje s rostoucím zvýšení úrovně služby. 
 >
 >
 
@@ -100,6 +108,10 @@ Následující tabulka uvádí maximální počet souběžných dotazů a slotů
 
 | Úroveň služby | Maximální počet souběžných dotazů | Dostupné sloty souběžnosti | Sloty používané smallrc | Sloty používané mediumrc | Sloty používané largerc | Sloty používané xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
+| DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
+| DW300c        | 12                         |   12                        | 1                     |  1                     |  2                    |   8                    |
+| DW400c        | 16                         |   16                        | 1                     |  1                     |  3                    |  11                    |
 | DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |

@@ -1,21 +1,20 @@
 ---
-title: 'Azure Cosmos DB: SQL asynchronní Java API, SDK & zdroje | Dokumentace Microsoftu'
+title: 'Azure Cosmos DB: SQL asynchronní Java API, SDK & zdroje'
 description: Další informace o SQL asynchronní Java API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL asynchronní Java SDK.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: b5c393ada7ba0cfbce5e406046eb7285d5d07259
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849339"
+ms.locfileid: "52872887"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]

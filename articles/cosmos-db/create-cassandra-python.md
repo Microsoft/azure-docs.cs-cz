@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ffd134bd4e47f92264f8b299f8fd4bdb76f6c9f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f8a2b5711f4ee301d32a9d674bfa0ab1e47732f0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870312"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078391"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Pythonu a Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 Kromě toho je potřeba toto:
 * [Python](https://www.python.org/downloads/) verze v2.7.14
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Ovladač Python pro Apache Cassandra](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
@@ -138,7 +138,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
 
-1. Na portálu [Azure Portal](http://portal.azure.com/) vyberte **Připojovací řetězec**. 
+1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**. 
 
     Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-python/copy.png) na pravé straně obrazovky zkopírujte horní hodnotu KONTAKTNÍ BOD.
 
@@ -213,7 +213,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili vytvořit účet Azure Cosmos DB, vytvořit kontejner pomocí Průzkumníka dat a spustit aplikaci. Teď můžete do účtu Cosmos DB importovat další data. 
 

@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení ve službě Azure IoT Edge | Dokumentace Microsoftu
-description: Zabezpečení, ověřování a autorizace zařízení IoT Edge
+title: Architektury zabezpečení – Azure IoT Edge | Dokumentace Microsoftu
+description: Další informace o zabezpečení, ověřování a autorizace standardy, které byly použity k vývoji Azure IoT Edge a by měly být považovány za při návrhu řešení
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,14 +8,15 @@ ms.date: 10/05/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4292dc3abf775d48ee33cc7a48793d080156efb1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 1042f53147122a7370b464f6bfc892dcee70fe70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568933"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100136"
 ---
-# <a name="securing-azure-iot-edge"></a>Zabezpečení Azure IoT Edge
+# <a name="security-standards-for-azure-iot-edge"></a>Standardy zabezpečení Azure IoT Edge
 
 Zajištění inteligentních hraničních zařízení je potřeba udělit důvěru ve fungování kompletní řešení IoT. Azure IoT Edge je navržená pro zabezpečení, které je možné rozšířit do různých rizikových profilů, scénářích nasazení a nabízí stejnou úroveň ochrany, který očekáváte, že ze všech služeb Azure.
 

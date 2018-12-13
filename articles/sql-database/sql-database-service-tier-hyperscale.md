@@ -12,21 +12,26 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377978"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872879"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Velkokapacitní úrovni služeb (preview) pro až 100 TB
+
+Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
+- Obecné účely nebo Standard 
+- Kritické obchodní nebo Premium
+- Hyperškálování
 
 Úroveň mírou škálování služby ve službě Azure SQL Database je nejnovější úroveň služby v nákupní model založený na virtuálních jádrech. Tato úroveň služby je vysoce škálovatelné úložiště a výpočetní úroveň výkonu, který využívá Azure architekturu pro horizontální navýšení kapacity úložiště a výpočetní prostředky pro službu Azure SQL Database podstatně nad limity, které jsou k dispozici pro obecné účely a Business Úrovně důležitých služeb.
 
 > [!IMPORTANT]
 > Velkokapacitní úroveň služby je aktuálně ve verzi public preview a je k dispozici v omezené oblastech Azure. Oblast úplný seznam najdete v tématu [velkokapacitní služby dostupné oblasti úroveň](#available-regions). Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 > [!NOTE]
-> Podrobnosti o úrovních služeb pro obecné účely a pro důležité obchodní informace v nákupní model založený na virtuálních jádrech najdete v tématu [úrovně služeb pro obecné účely a pro důležité obchodní informace](sql-database-service-tiers-general-purpose-business-critical.md). Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
+> Podrobnosti o úrovních služeb pro obecné účely a pro důležité obchodní informace v nákupní model založený na virtuálních jádrech najdete v tématu [Obecné](sql-database-service-tier-general-purpose.md) a [pro důležité obchodní informace](sql-database-service-tier-business-critical.md) úrovně služeb. Porovnání nákupní model s založený na DTU nákupní model založený na virtuálních jádrech najdete v tématu [nákupu modely a prostředků Azure SQL Database](sql-database-service-tiers.md).
 > [!IMPORTANT]
 > Úroveň velkokapacitní služby je aktuálně ve verzi public preview. Nedoporučujeme s jakékoli produkčními úlohami v databázích Hyperškálovatelného ještě. Velkokapacitní databáze nelze aktualizovat na další úrovně služeb. Pro testovací účely doporučujeme vytvořit kopii aktuální databáze a aktualizovat kopii Hyperškálovatelného vrstvu služby.
 

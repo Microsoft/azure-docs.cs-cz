@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 686e878b25c79538f3d228398bcb665622c2c36b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: MT
+ms.openlocfilehash: a5177293b24ec400714d8f87be4198a76d59214a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721659"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878716"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -182,7 +182,7 @@ V výsledek testu dostupnosti můžete zobrazit podrobnosti o transakci napří�
 
 * Kontrolovat odpověď přijatou ze serveru.
 * Diagnostikujte selhání pomocí telemetrie na straně korelační serveru získané při zpracování test dostupnosti se nezdařilo.
-* Zaznamenat problém nebo pracovní položku do Gitu nebo VSTS kvůli sledování problému. Chyba bude obsahovat odkaz na tuto událost.
+* Protokolovat chyby nebo pracovní položky v Gitu nebo panely Azure kvůli sledování problému. Chyba bude obsahovat odkaz na tuto událost.
 * Otevřít výsledek webového testu v sadě Visual Studio.
 
 Přečtěte si další informace o Diagnostika transakcí kompletní prostředí [tady](app-insights-transaction-diagnostics.md).

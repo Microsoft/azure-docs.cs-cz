@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: fedb41f6538e0c65114c4a28c8aa43ffc7ef6d7f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: c2edb821eb8bd9a5da7a6cce81269e7d3f611722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957596"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869887"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co je Azure Virtual WAN?
 
@@ -29,7 +29,7 @@ Tento článek obsahuje rychlý přehled o síťovém propojení úloh v prostř
 
 ## <a name="s2s"></a>Propojení typu Site-to-Site
 
-K vytvoření připojení typu Site-to-Site pomocí služby Virtual WAN můžete buď využít služeb [partnera pro Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615), nebo vytvořit připojení ručně.
+K vytvoření připojení typu Site-to-Site pomocí služby Virtual WAN můžete buď využít služeb [partnera pro Virtual WAN](virtual-wan-locations-partners.md), nebo vytvořit připojení ručně.
 
 ### <a name="s2spartner"></a>Práce s partnerem Virtual WAN
 
@@ -46,11 +46,11 @@ Pokud nechcete využít preferovaného partnera, můžete propojení nakonfiguro
 
 Propojení typu Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení k virtuálnímu rozbočovači z individuálního klientského počítače. Připojení P2S se vytvoří jeho zahájením z klientského počítače. Toto řešení je užitečné pro osoby pracující na dálku, které se chtějí připojit ze vzdáleného umístění, například z domova nebo konference. Síť VPN P2S je také užitečným řešením nahrazujícím síť VPN S2S, pokud máte pouze několik klientů, kteří se potřebují připojit.
 
-Postup ručního vytvoření propojení typu Point-to-Site najdete v tématu o [vytvoření propojení typu Point-to-Site pomocí Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid).
+Postup ručního vytvoření propojení typu Point-to-Site najdete v tématu o [vytvoření propojení typu Point-to-Site pomocí Virtual WAN](virtual-wan-point-to-site-portal.md).
 
 ## <a name="er"></a>Propojení přes ExpressRoute (Preview)
 
-Postup ručního vytvoření propojení najdete v tématu o [vytvoření propojení ExpressRoute pomocí Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020148&clcid).
+Postup ručního vytvoření propojení najdete v tématu o [vytvoření propojení ExpressRoute pomocí Virtual WAN](virtual-wan-expressroute-portal.md).
 
 
 ## <a name="resources"></a>Prostředky pro Virtual WAN
@@ -74,6 +74,6 @@ Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následuj�
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Zobrazení [partnerů a míst pro Virtual WAN](https://aka.ms/virtualwan)
+Zobrazení [virtuální sítě WAN partneři a umístění](virtual-wan-locations-partners.md) stránky.

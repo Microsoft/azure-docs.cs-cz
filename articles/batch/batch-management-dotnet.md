@@ -16,12 +16,12 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65f8eb0752a181eda312515e557bb733c091e2e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fd511a8a9d17bf79f1237bbfe2dc2ddbc5ec1b2e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505377"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867422"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Správa účtů služby Batch a kvót pomocí klientské knihovny Batch Management pro rozhraní .NET
 
@@ -153,7 +153,7 @@ Knihovna Batch Management .NET je klient poskytovatele prostředků Azure a pou�
 
 ## <a name="sample-project-on-github"></a>Ukázkový projekt na Githubu
 
-K rozhraní Batch Management .NET můžete vidět v akci, podívejte se [AccountManagment] [ acct_mgmt_sample] ukázkového projektu na Githubu. Ukázková aplikace AccountManagment demonstruje následující operace:
+K rozhraní Batch Management .NET můžete vidět v akci, podívejte se [AccountManagement] [ acct_mgmt_sample] ukázkového projektu na Githubu. Ukázková aplikace AccountManagement demonstruje následující operace:
 
 1. Získání tokenu zabezpečení ze služby Azure AD s použitím [ADAL][aad_adal]. Pokud již není přihlášený uživatel, zobrazí se výzva k zadání přihlašovacích údajů Azure.
 2. S tokenem zabezpečení získaných ze služby Azure AD, vytvořte [SubscriptionClient] [ resman_subclient] dotazu seznam předplatných, které jsou přidružené k účtu Azure. Uživatel lze ze seznamu vyberte předplatné, pokud obsahuje více než jedno předplatné.

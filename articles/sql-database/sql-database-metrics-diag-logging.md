@@ -3,7 +3,7 @@ title: Azure SQL database metrik a protokolování diagnostiky | Dokumentace Mic
 description: Další informace o tom, jak nakonfigurovat databázi SQL Azure pro ukládání využití prostředků, připojení a statistiky provádění dotazu.
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: 19117803783047d8ddd9740c799b4cb81fd74c2c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425995"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890904"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 
@@ -291,7 +291,7 @@ Přečtěte si informace o tom, jak [povolení nastavení diagnostiky při vytv�
 
 Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databáze, elastické fondy a spravovaných instancí Azure SQL ve velkém měřítku a napříč několika předplatnými prostřednictvím podokně ze skla. Díky monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
-![Přehled služby Azure SQL Analytics](../log-analytics/media/log-analytics-azure-sql/azure-sql-sol-overview.png)
+![Přehled služby Azure SQL Analytics](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
 Metriky a diagnostické protokoly SQL Database můžete streamovali do služby Azure SQL Analytics s využitím integrovaného **odesílat do Log Analytics** možnost v okně nastavení diagnostiky na portálu. Log Analytics můžete povolit také pomocí nastavení diagnostiky prostřednictvím rutin Powershellu, rozhraní příkazového řádku Azure nebo REST API služby Azure Monitor.
 
@@ -327,7 +327,7 @@ V případě, že používáte elastických fondů nebo spravovaných instancí,
 
 ### <a name="use-the-sql-analytics-solution"></a>Použití řešení SQL Analytics
 
-SQL Analytics je hierarchická řídicí panel, který vám umožní přesunout prostřednictvím hierarchie prostředků SQL Database. Další informace o použití řešení SQL Analytics, najdete v článku [monitorování SQL Database s použitím řešení SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+SQL Analytics je hierarchická řídicí panel, který vám umožní přesunout prostřednictvím hierarchie prostředků SQL Database. Další informace o použití řešení SQL Analytics, najdete v článku [monitorování SQL Database s použitím řešení SQL Analytics](../azure-monitor/insights/azure-sql.md).
 
 ## <a name="stream-into-event-hubs"></a>Streamování do služby Event Hubs
 

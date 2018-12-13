@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: fb0a67a9b3b556a85a2b28989fe15dfeea1f0d72
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995430"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099578"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -27,11 +27,23 @@ Pokud budete muset použít nástroje pro práci s veškerý obsah, který nahra
 
 ## <a name="blob-storage-apis"></a>Úložiště objektů BLOB rozhraní API
 
-Zatím nejsou k dispozici pro účty Azure Data Lake Storage Gen 2 rozhraní API služby BLOB storage.
+Zatím nejsou k dispozici pro Azure Data Lake Storage Gen2 účty úložiště objektů BLOB rozhraní API.
 
 Tato rozhraní API je zakázané, aby zabránilo problémům s přístup zvyšuje ochranu před nechtěnými daty, které mohou nastat, protože zatím nejsou spolupracují se službou Azure Data Lake Gen2 API rozhraní API služby Blob Storage.
 
-Nespravované disky virtuálních počítačů (VM) závisí na těchto rozhraní API, takže pokud chcete povolit hierarchické obory názvů v účtu úložiště, vezměte v úvahu umístění nespravované disky virtuálních počítačů do účtu úložiště, který nemá povolené hierarchické obory názvů.
+Pokud jste použili tato rozhraní API k načtení dat, než byly zakázány, aby bylo produkční požadavek na přístup k datům, obraťte se Microsoft Support s následujícími informacemi:
+
+* ID předplatného (identifikátor GUID, nikoli název)
+
+* Názvy účtů úložišť
+
+* Zda se aktivně to týká v produkčním prostředí a pokud ano, pro které účty úložiště?
+
+* I když nejsou aktivně vliv v produkčním prostředí, dejte nám vědět, jestli tato data, které se mají zkopírovat do jiného účtu úložiště z nějakého důvodu potřebujete a pokud ano, proč?
+
+Za těchto okolností abychom mohli obnovit přístup k rozhraní API objektů Blob po omezenou dobu tak, aby tato data můžete zkopírovat do účtu úložiště, který nemá povolené hierarchické obory názvů.
+
+Nespravované disky virtuálních počítačů (VM) závisí na zakázaném rozhraní API úložiště objektů Blob, takže pokud chcete povolit hierarchické obory názvů v účtu úložiště, vezměte v úvahu umístění nespravované disky virtuálních počítačů do účtu úložiště, který nemá povolené hierarchické obory názvů.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 

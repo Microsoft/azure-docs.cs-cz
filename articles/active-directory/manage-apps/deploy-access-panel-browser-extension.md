@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a21a21f40e731e8bc1d20e01d3671c372df65d84
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622036"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877472"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny
 Tento kurz ukazuje, jak používat zásady skupiny k provedení vzdálené instalace rozšíření přístupový Panel pro aplikaci Internet Explorer v počítačích uživatelů. Toto rozšíření, je třeba Internet Explorer, kteří se muset přihlásit do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotného přihlašování](what-is-single-sign-on.md#password-based-sso).

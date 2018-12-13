@@ -2,18 +2,18 @@
 title: Nejčastější dotazy k zálohování Souborů Azure
 description: Tento článek obsahuje podrobnosti o ochraně sdílených složek Azure.
 services: backup
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: de91559d9c3626bdd07c2e497a8aa0b124f00b57
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
+ms.openlocfilehash: 9ef3525d7867d0ef01b6f17035039d4a4e6def93
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434832"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874539"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -100,7 +100,7 @@ Zálohování sdílených složek Azure nabízí možnost uchovávat denní zál
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co se stane, když u sdílené složky Azure změním zásady zálohování? <br/>
 Pokud se pro sdílené složky použije nová zásada, plán a uchovávání se budou řídit touto novou zásadou. Pokud se doba uchovávání prodlouží, existující body obnovení se označí k zachování pro novou zásadu. Pokud se doba uchovávání zkrátí, označí se k vyřazení v rámci další úlohy čištění a budou odstraněny.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Tyto informace se týkají pouze zálohování Souborů Azure. Další informace o dalších oblastech služby Azure Backup najdete v některém z těchto témat s nejčastějšími dotazy ke službě Backup:
 -  [Nejčastější dotazy k trezoru služby Recovery Services](backup-azure-backup-faq.md)
 -  [Nejčastější dotazy k zálohování virtuálních počítačů Azure](backup-azure-vm-backup-faq.md)

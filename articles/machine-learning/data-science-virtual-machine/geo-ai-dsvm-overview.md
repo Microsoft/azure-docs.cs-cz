@@ -1,11 +1,13 @@
 ---
-title: Úvod do geograficky umělé Intelligence Data vědecké účely virtuálního počítače – Azure | Microsoft Docs
-description: Popisují geograficky AI datové vědy virtuálních počítačů a její komponenty.
-keywords: přímý učení, AI, vědecké účely nástrojů data, data vědecké účely virtuálního počítače, geoprostorové analytics
+title: Virtuální počítač datové vědy přehled geografickou umělou inteligenci
+titleSuffix: Azure
+description: Virtuální počítač geografickou umělou inteligencí datové vědy poskytuje ArcGIS Pro pro práci s zeměpisné údaje. Také poskytuje tookits Python, R a datové vědy pro práci s machine learning a umělou inteligenci.
+keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,39 +17,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2fb49212b8480fa550558e14e890cbf7395406da
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0152056dcb8716a407e022d2b30c48e6b534b2a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407448"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074566"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Úvod k virtuálnímu počítači geograficky umělé Intelligence Data vědecké účely
+# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Úvod do virtuálního počítače geografickou umělou inteligencí datové vědy
 
-Azure **geograficky AI Data vědecké účely VM** (Geo-DSVM) poskytuje geoprostorové analytics možnosti z virtuálního počítače vědecké účely dat společnosti Microsoft. Konkrétně tento virtuální počítač rozšiřuje vědecké účely sadách AI a data v [datové vědy VM](overview.md) přidáním ESRI je předním databázovém [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) geografické informace o systému.
+Azure **virtuální počítač pro geograficky AI datové vědy** (Geo-DSVM) dodává geoprostorové analýzy z virtuálního počítače pro Microsoftu pro datové vědy. Konkrétně tento virtuální počítač rozšiřuje AI a data science sady nástrojů v [virtuální počítač pro datové vědy](overview.md) přidáním špičkové společnosti ESRI [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) geografické informace o systému.
 
-Virtuální počítač se systémem geograficky AI Data vědecké účely je nabídka vyplývají ze spolupráce mezi ESRI a Microsoft produktu. Výsledkem je výkonný prostředí, který poskytuje možnost:
+Virtuální počítač pro geograficky AI datové vědy je nabídka vyplývají spolupráce mezi Microsoft a ESRI produktu. Výsledkem je výkonné prostředí, která umožňuje:
 
-- Prozkoumejte data s nejoblíbenější AI a vědecké účely nástrojů data
-- použijte statistické analýzy dat pomocí zeměpisné nebo prostorových aspekty
-- cvičení modely pro prediktivní analýzy pomocí strojového učení a přímý učení algoritmy
-- vytvoření bohaté vizualizace
+- zkoumání dat s většinou oblíbených AI a nástrojů pro datové vědy
+- platí pro statistickou analýzu dat s zeměpisné nebo prostorový aspekty
+- trénování modelů pro prediktivní analýzy pomocí strojového učení a hloubkového učení se supervizí
+- vytváření bohatých funkcí vizualizace
 
-Je podporován na 2016 datové vědy virtuálního počítače s Windows. Python a R rozhraní, které se ArcGIS jsou také předem nakonfigurovaná na Geo-DSVM povolení programový přístup k analýze geoprostorové v rámci aplikace AI. Poznámkový blok Jupyter ukázky jsou také uvedeny pomohou začít pracovat s sestavení aplikací AI infused s geoprostorové intelligence.
+Podporuje se ve Windows 2016 virtuální počítač pro datové vědy. Python a r. rozhraní ArcGIS jsou také předem nakonfigurované na Geo-DSVM umožňuje programový přístup k geoprostorové analýzy v rámci vašich aplikací AI. Poznámkový blok Jupyter ukázky jsou k dispozici také na Nápověda Začínáme s vytvářením aplikace AI využívající inteligentní geoprostorové funkce.
 
 
-## <a name="why-geo-ai-data-science-vm"></a>Proč vědecké zpracování geograficky AI dat virtuálního počítače? 
+## <a name="why-geo-ai-data-science-vm"></a>Proč geograficky AI datové vědy virtuálního počítače? 
 
-Integrování informací Geografie a umístění s daty přináší výkonné nová dimenze k pochopení do světa stále instrumentovány se zařízeními IOT. Širokou škálu aplikace existuje v opravdu každého segmentu občanského společnosti, ať už obchodní, vládních, academic nebo pro neziskové aktivit. Geoprostorové analytics poskytuje robustní nástrojů pro shromažďování, správu a analýza dat geografické a na základě polohy a výkonné vizualizace, můžete povolit jedinečný přehledy význam taková data. 
+Informace o zeměpisné oblasti a oblasti, integrace s vašimi daty přináší výkonné nové dimenze pro pochopení světě stále instrumentována se zařízeními IOT. Široké škály aplikací existuje v téměř každém segmentu občanské společnosti, ať už obchodní, vládních, akademický nebo pro neziskové aktivit. Geoprostorové analýzy poskytuje robustní nástroje pro shromažďování, Správa a analýzy dat geografické a založená na poloze a výkonnou vizualizaci, můžete povolit jedinečný přehled o významu těchto údajů. 
 
-[Datové vědy virtuálního počítače (DSVM)](overview.md) od společnosti Microsoft je populární experimenty a modelování prostředí na platformě Azure, který poskytuje hostitel nástroje vědecké účely AI, Machine Learning a data. Tyto platformy a nástroje jsou všechny pohodlně předem nakonfigurovaný, můžete okamžitě produktivity. 
+[Dat virtuálního počítače VĚDY](overview.md) od Microsoftu je oblíbené služby experimentování ve službě a modelování prostředí v Azure, který poskytuje celou řadu nástrojů pro AI, Machine Learning a datové vědy. Tyto platformy a nástroje jsou všechny pohodlně nakonfigurovaná tak, aby vám pomohly okamžitě produktivitu práce. 
 
-Sloučením prediktivní možností virtuálního počítače vědecké účely dat s škálovatelnosti cloudu Azure a softwaru analytics geoprostorové z [ESRI](http://www.esri.com), datových vědců a prostorových geograficky analytici Teď máte produktivní platformu z informace, které chcete získat nové informace z jejich dat a identifikovat nové příležitosti. 
+Kombinací prediktivního možnosti virtuální počítač pro datové vědy se škálovatelností cloudu Azure a softwaru geoprostorové analýzy z [ESRI](http://www.esri.com), odborníci přes data a analytici geoprostorového teď mají produktivní platforma z které chcete získat nové informace ze svých dat a našly nové příležitosti. 
 
 
 ## <a name="next-steps"></a>Další postup
 
-Zřízení virtuálního počítače geograficky AI Data vědy a začít pomocí pokynů od v následujících tématech:
+Zřízení virtuálního počítače s geografickou AI datové vědy a začít používat s pokyny najdete v následujících tématech:
 
-* [Zřídit geografická AI vědecké zpracování dat virtuálních počítačů](provision-geo-ai-dsvm.md)
-* [Použití vědecké zpracování dat AI geograficky virtuálních počítačů](use-geo-ai-dsvm.md)
+* [Zřízení virtuálního počítače pro geograficky AI datové vědy](provision-geo-ai-dsvm.md)
+* [Použití v geograficky AI pro datové vědy virtuálního počítače](use-geo-ai-dsvm.md)

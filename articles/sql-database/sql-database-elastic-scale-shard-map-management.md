@@ -3,7 +3,7 @@ title: Horizontální navýšení kapacity Azure SQL database | Dokumentace Micr
 description: Jak používat ShardMapManager Klientská knihovna elastic database
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/16/2018
-ms.openlocfilehash: 71496a11deff5236161931d572e75d4a84b75c5f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 28387c1487c506173cba2eaaf3364dab36c7f70f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162062"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865848"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce mapování horizontálních oddílů
 Chcete-li snadné horizontální navýšení kapacity databáze na SQL Azure, použijte Správce mapování horizontálních oddílů. Správce mapování horizontálních oddílů je speciální databáze, která udržuje globální mapování informace o všech horizontálních oddílů (databáze) v nastavení horizontálními oddíly. Metadata umožňuje aplikaci připojovat ke správné databázi na základě hodnoty **klíč horizontálního dělení**. Kromě toho každý horizontální oddíl v sadě obsahuje mapování, které sledují místní horizontálně dělit data (označované jako **shardletů**). 
@@ -52,8 +52,8 @@ Elastické škálování podporuje následující typy jako klíče horizontáln
 | .NET | Java |
 | --- | --- |
 | integer |integer |
-| zem. šířka |zem. šířka |
-| identifikátor GUID |identifikátor UUID |
+| Long |Long |
+| identifikátor GUID |Uuid |
 | Byte  |Byte |
 | datetime | časové razítko |
 | Časový interval | doba trvání|

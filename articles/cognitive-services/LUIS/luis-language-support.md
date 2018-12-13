@@ -1,21 +1,22 @@
 ---
-title: Podpora jazyků – LUIS
+title: Podpora jazyků
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS má celou řadu funkcí v rámci služby. Ne všechny funkce jsou na stejné paritu jazyka. Ujistěte se, že funkce, které vás zajímají jsou podporované v jazykové verzi jazyka, který cílíte. Aplikace LUIS je specifické pro jazykovou verzi a nedá se změnit, jakmile je nastavena.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: a26fa1f64f1ef8ecef8140b1feab89fdd57875fe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 452700593d7145e828155c3bd999ad90e2437ba9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569195"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098997"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 

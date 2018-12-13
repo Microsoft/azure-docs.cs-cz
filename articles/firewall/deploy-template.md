@@ -6,43 +6,64 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: article
-ms.date: 7/11/2018
+ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: d32e6e29c287d140c28206743e36dc025b26158b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 86fdbbacf3e8064afe0aaaaebea1d6ef6c25f9d4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991330"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865820"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Brána Firewall služby Azure pomocí šablony nasazení
 
-Tato šablona vytvoří bránu firewall a testovací síťové prostředí. Síť má jednu virtuální síť se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*a *JumpboxSubnet*. Podsítě ServersSubnet a JumpboxSubnet mají každá jeden dvoujádrový Windows Server.
+[AzureFirewall vytvoření izolovaného prostoru nastavení šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) vytvoří testovací síťové prostředí s bránou firewall. Síť má jednu virtuální síť (VNet) se třemi podsítěmi: *AzureFirewallSubnet*, *ServersSubnet*, a *JumpboxSubnet*. *ServersSubnet* a *JumpboxSubnet* podsítě jednotlivých mít jednu, dvě jádra serveru systému Windows virtuální počítač.
 
-Brána firewall je v podsíti AzureFirewallSubnet a je nakonfigurovaná kolekcí pravidel aplikace s jediným pravidlem, které umožňuje přístup k www.microsoft.com.
+Brána firewall je ve *AzureFirewallSubnet* podsítě, a mají kolekci pravidel aplikace s jedním pravidlem, které umožňuje přístup k *www.microsoft.com*.
 
-Vytvoří se trasa definovaná uživatelem, která odkazuje síťový provoz z podsítě ServersSubnet přes bránu firewall, kde se používají její pravidla.
+Trasy definované uživatelem odkazuje síťového provozu z *ServersSubnet* podsítě přes bránu firewall, ve kterém jsou použita pravidla brány firewall.
+
+Další informace o bráně Firewall Azure najdete v tématu [nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-deploy-portal.md).
+
+## <a name="use-the-template-to-deploy-azure-firewall"></a>Šablona pro nasazení brány Firewall na Azure
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="template-location"></a>Umístění šablony.
+**Při instalaci a nasazení Brána Firewall služby Azure pomocí šablony:**
 
-Šablona se nachází na:
+1. Přístup k šabloně na [ https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox).
+   
+1. Přečtěte si zavedení a až budete připraveni k nasazení, vyberte **nasadit do Azure**.
+   
+1. V případě potřeby, přihlaste se k webu Azure portal. 
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox)
-
-Čtení zavedení a až budete připraveni k nasazení, klikněte na tlačítko **nasadit do Azure**.
+1. Na portálu na **vytvoření izolovaného prostoru nastavení AzureFirewall** stránky zadejte nebo vyberte následující hodnoty:
+   
+   - **Skupina prostředků**: vyberte **vytvořit nový**, zadejte název pro skupinu prostředků a vyberte **OK**. 
+   - **Název virtuální sítě**: Zadejte název nové sítě VNet. 
+   - **Uživatelské jméno správce**: Zadejte uživatelské jméno pro účet správce systému.
+   - **Heslo správce**: Zadejte heslo správce. 
+   
+1. Přečtěte si podmínky a ujednání a potom vyberte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře**.
+   
+1. Vyberte **Koupit**.
+   
+   Bude trvat několik minut, než vytvoříte prostředky. 
+   
+1. Materiály, které byly vytvořeny pomocí brány firewall. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejdřív seznámit se s informačními, které byly vytvořeny pomocí brány firewall a když už je nepotřebujete, můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) příkazu odeberte skupinu prostředků, brány firewall a všech souvisejících prostředků.
+Když už je budete potřebovat, můžete odebrat skupinu prostředků, brány firewall a všech souvisejících prostředků spuštěním [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) příkaz prostředí PowerShell. Chcete-li odebrat skupinu prostředků s názvem *MyResourceGroup*, spusťte: 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzureRmResourceGroup -Name MyResourceGroup
 ```
+Neodebírat skupinu prostředků a brány firewall, pokud budete chtít pokračovat ke kurzu monitorování brány firewall. 
+
 ## <a name="next-steps"></a>Další postup
 
 Dále můžete monitorovat protokoly brány Firewall Azure:
 
-- [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)
-
+> [!div class="nextstepaction"]
+> [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)

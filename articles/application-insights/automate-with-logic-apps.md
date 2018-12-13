@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 44e654202cdaebedab82f40f154c1483b7e979ae
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: df7d709b51c864c38b9603d2e8ed02d41217bcfc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725688"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879693"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace procesů Application Insights s využitím Logic Apps
 
@@ -131,7 +131,7 @@ Při spuštění aplikace logiky, příjemce, které jste zadali v seznamu e-mai
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o vytváření [analytických dotazů](../log-analytics/query-language/get-started-queries.md).
+- Další informace o vytváření [analytických dotazů](../azure-monitor/log-query/get-started-queries.md).
 - Další informace o [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps).
 
 

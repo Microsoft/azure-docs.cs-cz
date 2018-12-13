@@ -1,6 +1,6 @@
 ---
-title: Zaregistrujte nové zařízení Azure IoT Edge (VS Code) | Dokumentace Microsoftu
-description: Použití Visual Studio Code k vytvoření nového zařízení IoT Edge ve službě Azure IoT hub
+title: Zaregistrujte si nové zařízení z aplikace Visual Studio Code – Azure IoT Edge | Dokumentace Microsoftu
+description: Použití Visual Studio Code k vytvoření nového zařízení IoT Edge ve službě Azure IoT hub a načtení připojovacího řetězce
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf9603c65454f076a494789e784c9352fb7bef33
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: cc812cc7f628f533cbf342edee66e01ce703678f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578701"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099764"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>Zaregistrujte si nové zařízení Azure IoT Edge z Visual Studio Code
 
@@ -35,7 +36,7 @@ Rozšíření Azure IoT pro Visual Studio Code můžete použít k provádění 
 
 2. V dolní části Průzkumníku, rozbalte **zařízení Azure IoT Hub** oddílu. 
 
-   ![Rozbalte zařízení Azure IoT Hub](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
+   ![Rozbalte část zařízení Azure IoT Hub](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
 3. Klikněte na **...**  v **zařízení Azure IoT Hub** hlavičku oddílu. Pokud nevidíte tři tečky, klikněte na nebo najeďte myší na záhlaví. 
 
@@ -63,7 +64,7 @@ V okně výstupu se zobrazí výsledek příkazu. Vytisknout informace o zaříz
 
 Všechna zařízení, která se připojují ke službě IoT hub jsou uvedeny v **zařízení Azure IoT Hub** části Průzkumníku kódu sady Visual Studio. Zařízení IoT Edge se liší od jiných hraničních zařízení s jinou ikonu a fakt, že se rozšířit zobrazíte moduly nasazené do jednotlivých zařízení. 
 
-   ![Zobrazit zařízení v nástroji VS Code](./media/how-to-register-device-vscode/view-devices.png)
+   ![Zobrazit všechna zařízení IoT Edge ve službě IoT hub](./media/how-to-register-device-vscode/view-devices.png)
 
 ## <a name="retrieve-the-connection-string"></a>Načtení připojovacího řetězce
 

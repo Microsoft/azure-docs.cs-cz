@@ -1,21 +1,22 @@
 ---
-title: Směrování událostí služby Azure Blob Storage do vlastního webového koncového bodu | Microsoft Docs
-description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage.
+title: Odesílání událostí služby Azure Blob storage na web koncového bodu – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Pomocí služby Azure Event Grid se můžete přihlásit k odběru událostí služby Blob Storage. Události odesíláte na Webhooku. Zpracování událostí ve webové aplikaci.
 services: storage,event-grid
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 08/23/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 78ee6f198bf4e16e3b2b0deb8fdb0b68c0fe9b73
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2586b7f9c2a182ee065daab1d2a43eb5e0e2c99c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735079"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073716"
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Směrování událostí služby Blob Storage do vlastního webového koncového bodu pomocí Azure CLI
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Rychlý start: Směrování událostí úložiště na webový koncový bod pomocí rozhraní příkazového řádku Azure
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku se pomocí Azure CLI přihlásíte k odběru událostí služby Blob Storage a aktivujete událost, abyste viděli výsledek.
 
@@ -30,9 +31,9 @@ Po dokončení kroků popsaných v tomto článku uvidíte, že se data událost
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, pro účely tohoto článku musíte používat nejnovější verzi Azure CLI (2.0.24 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, tento článek vyžaduje, že používáte nejnovější verzi Azure CLI (2.0.24 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-Pokud nepoužíváte cloudové prostředí, musíte se nejdřív přihlásit pomocí `az login`.
+Pokud nepoužíváte Cloud Shell, musíte se nejprve přihlásit pomocí příkazu `az login`.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -156,7 +157,7 @@ Nahraďte `<resource_group_name>` názvem skupiny prostředků, kterou jste vytv
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte více o událostech služby Blob Storage a s čím vám služba Event Grid ještě může pomoct:
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 1d00dbe23fbd724893ba2b964fc54a3ea9066dcb
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 87baef8ddb5b5d8fc979ba5afb9f9b13cb4fc2ef
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251004"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876532"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Začínáme s využitím Azure DevTest Labs
 Jakmile se rozhodnete prozkoumejte DevTest Labs, existují dvě obecné cesty vpřed – testování konceptu vs horizontální nasazení. 
@@ -51,7 +51,7 @@ Vytváření a správa testovacích prostředí v podniku může vyžadovat zna�
 
 - Testeři otestovat rychlým zřízením prostředí Windows a Linuxem pomocí opakovaně použitelných šablon a artefaktů nejnovější verzi své aplikace.
 - Testerů můžete vertikálně navýšit kapacitu svých zátěžového testování zřízením několika testovacích agentů
-- Správce může připojit k VSTS, aby se povolily scénáře DevOps testovacího prostředí
+- Správce může připojit k Azure DevOps, aby se povolily scénáře DevOps testovacího prostředí
 - Správci můžou řídit náklady tím, že zajišťuje, že:
     - Testery nelze získat další virtuální počítače, než budou potřebovat
     - Virtuální počítače jsou vypnout kdy se nepoužívá

@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 6dff1b2fe40acdef1fde95444d70f0bcfc120a64
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.openlocfilehash: 60d19f6d598c6090e0dc00c61817a0f8aed35003
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230032"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889493"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
-Tato stránka poskytuje informace o Azure SQL Database a zjištěné problémy s výkonem Managed Instance [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Telemetrická data diagnostiky protokolu můžete Streamovat do [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní výstrahy DevOps a Možnosti vytváření sestav.
+Tato stránka poskytuje informace o Azure SQL Database a zjištěné problémy s výkonem Managed Instance [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Telemetrická data diagnostiky protokolu můžete Streamovat do [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní výstrahy DevOps a Možnosti vytváření sestav.
 
 > [!NOTE]
 > Rychlý výkon databáze SQL pomocí Intelligent Insights Průvodce odstraňováním potíží, najdete v článku [doporučené řešení potíží s tok](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.

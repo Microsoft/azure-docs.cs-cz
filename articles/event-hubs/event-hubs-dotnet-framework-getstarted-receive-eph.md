@@ -1,5 +1,5 @@
 ---
-title: Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework | Dokumentace Microsoftu
+title: Příjem událostí pomocí rozhraní .NET Framework – Azure Event Hubs | Dokumentace Microsoftu
 description: V tomto kurzu se naučíte přijímat události z Azure Event Hubs pomocí rozhraní .NET Framework.
 services: event-hubs
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c7b211202013050c826ef8a530a831b8f02673f6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8052b797707f7913fdd678f4dd51822754623104
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015088"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077247"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework
 

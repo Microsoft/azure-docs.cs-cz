@@ -1,21 +1,22 @@
 ---
-title: O sady SDK služby pro zpracování řeči
+title: O Speech Service SDK – hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Přehled sady SDK k dispozici pro službu rozpoznávání řeči.
+description: Speech Service Software Development Kit (SDK) poskytuje vaše aplikace nativní přístup k funkce Speech service, což usnadňuje vývoj softwaru. Tento článek obsahuje další podrobnosti o sadě SDK pro Windows, Linux a Android.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: b946428f7d3962b2ac4b34fe6524c2079327f1c9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.custom: seodec18
+ms.openlocfilehash: 820176d60968f6072be4ad19475016be8a3d8ea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218657"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096838"
 ---
 # <a name="about-the-speech-service-sdk"></a>O sady SDK služby pro zpracování řeči
 
@@ -33,7 +34,7 @@ Pro Windows Podporujeme následující jazyky:
 
 * C# jazyka C++ (UPW a .NET): lze odkazovat a využívat nejnovější verzi naší balíček NuGet sady SDK pro řeč. Balíček obsahuje 32bitové a 64bitové klientské knihovny a spravované knihovny (.NET). Sada SDK lze nainstalovat v sadě Visual Studio pomocí NuGet. Vyhledejte **Microsoft.CognitiveServices.Speech**.
 
-* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček, který podporuje pouze Windows x64. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0` jako závislost. 
+* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček, který podporuje pouze Windows x64. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0` jako závislost.
 
 ### <a name="linux"></a>Linux
 
@@ -53,7 +54,7 @@ sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2
   <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.1.0" />
   ```
 
-* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0` jako závislost. 
+* Java: Můžete odkazovat a využívat nejnovější verzi naší řeči SDK Maven balíček. V projektu Maven, přidejte `https://csspeechstorage.blob.core.windows.net/maven/` jako další úložiště a odkaz `com.microsoft.cognitiveservices.speech:client-sdk:1.1.0` jako závislost.
 
 * Jazyk C++: Stáhněte si sadu SDK jako [instalačního balíčku .tar](https://aka.ms/csspeech/linuxbinary) a rozbalte soubory v adresáři podle vašeho výběru. V následující tabulce jsou uvedeny strukturu složek sady SDK:
 

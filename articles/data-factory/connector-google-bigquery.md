@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ca12c7a3fe8a5ade8cf0e4ce00977bdcc9a300a6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8b0f5e2941878cf91a60c2dca5497e4e50b6ea01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007650"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077762"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí služby Azure Data Factory
 
@@ -124,7 +124,12 @@ Nastavte vlastnost "authenticationType" **ServiceAuthentication**a zadejte násl
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Google BigQuery.
 
-Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na **GoogleBigQueryObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na **GoogleBigQueryObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **GoogleBigQueryObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -136,7 +141,8 @@ Ke zkopírování dat z Google BigQuery, nastavte vlastnost typ datové sady na 
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -152,7 +158,7 @@ Ke zkopírování dat z Google BigQuery, nastavte typ zdroje v aktivitě kopíro
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **GoogleBigQuerySource**. | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

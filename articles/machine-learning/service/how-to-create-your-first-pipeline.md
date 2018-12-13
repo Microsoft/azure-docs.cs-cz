@@ -1,5 +1,6 @@
 ---
-title: Vytvoření a spuštění kanálů ML – služba Azure Machine Learning
+title: Vytvoření a spuštění kanálů ML
+titleSuffix: Azure Machine Learning service
 description: Vytvoření a spuštění služby machine learning kanálu s využitím Azure Machine Learning SDK pro Python.  Kanály se používají k vytváření a správě pracovních postupů této fáze spojit dohromady machine learning (ML) například přípravy dat, trénování modelu, model nasazení a odvozování.
 services: machine-learning
 ms.service: machine-learning
@@ -9,17 +10,17 @@ ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 0119e60a6493ed13b04b36fc5fccc7227503fe0a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 3038d8978ed3705e9e18be58080afd532b9d72d6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015048"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100535"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-using-azure-machine-learning-sdk"></a>Vytvoření a spuštění kanálu strojového učení, pomocí sady SDK Azure Machine Learning
 
-V tomto článku se dozvíte, jak vytvářet, publikovat, spouštět a sledovat [kanálu strojového učení](concept-ml-pipelines.md) pomocí [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).  Tyto kanály pomáhá vytvářet a spravovat pracovní postupy, které spojit dohromady fáze machine learning. Každá fáze kanálu, jako je například přípravy dat a trénování modelu může zahrnovat jeden nebo více kroků.
+V tomto článku se dozvíte, jak vytvářet, publikovat, spouštět a sledovat [kanálu strojového učení](concept-ml-pipelines.md) pomocí [Azure Machine Learning SDK](https://aka.ms/aml-sdk).  Tyto kanály pomáhá vytvářet a spravovat pracovní postupy, které spojit dohromady fáze machine learning. Každá fáze kanálu, jako je například přípravy dat a trénování modelu může zahrnovat jeden nebo více kroků.
 
 Kanály, které vytvoříte jsou viditelná pro členy vaší služby Azure Machine Learning [pracovní prostor](how-to-manage-workspace.md). 
 

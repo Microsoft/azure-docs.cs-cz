@@ -3,7 +3,7 @@ title: Distribuované transakce v cloudových databázích
 description: Přehled transakcí elastické databáze s využitím Azure SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 02cf72bf9fe06993ef859d1789983b7611c8472e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257465"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877180"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 Transakcí elastické databáze pro službu Azure SQL Database (databáze SQL) umožňují provozovat transakcí, které jsou rozmístěny v několika databází v SQL DB. U transakcí elastické databáze pro SQL DB jsou k dispozici pro aplikace .NET pomocí rozhraní ADO .NET a integrace s známé programování pomocí prostředí [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) třídy. Získat knihovny, naleznete v tématu [rozhraní .NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).

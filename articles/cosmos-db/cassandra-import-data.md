@@ -2,19 +2,20 @@
 title: 'Kurz: Migrace dat do účtu rozhraní Cassandra API ve službě Azure Cosmos DB'
 description: V tomto kurzu zjistěte, jak pomocí příkazu Kopírovat CQL a Spark ke zkopírování dat z Cassandry do účtu rozhraní Cassandra API ve službě Azure Cosmos DB.
 author: kanshiG
+ms.author: govindk
+ms.reviewer: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.author: govindk
 ms.topic: tutorial
 ms.date: 12/03/2018
-ms.reviewer: sngun
+ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: 604cab3bed73366ce28c8bb35b63df6379985cfb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ed86ce20a6230d487dfbd968a31507953400fab6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867456"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100436"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Kurz: Migrace dat do účtu rozhraní Cassandra API ve službě Azure Cosmos DB
 
@@ -72,12 +73,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Data můžete přesunout data z existujících úloh Cassandra do Azure Cosmos DB pomocí následujících možností:
 
-* [Pomocí příkazu cqlsh COPY](#using-cqlsh-copy-command)  
-* [Pomocí Sparku](#using-spark) 
+* [Pomocí příkazu cqlsh COPY](#migrate-data-using-cqlsh-copy-command)  
+* [Pomocí Sparku](#migrate-data-using-spark) 
 
 ## <a name="migrate-data-using-cqlsh-copy-command"></a>Migrace dat pomocí příkazu cqlsh COPY
 
-[CQL KOPÍROVACÍ příkazy](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) slouží ke kopírování místních dat do účtu rozhraní Cassandra API ve službě Azure Cosmos DB. Zkopírujte data provedením následujících kroků:
+[CQL KOPÍROVACÍ příkazy](https://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) slouží ke kopírování místních dat do účtu rozhraní Cassandra API ve službě Azure Cosmos DB. Zkopírujte data provedením následujících kroků:
 
 1. Získejte informace o připojovacím řetězci vašeho účtu rozhraní API Cassandra:
 
