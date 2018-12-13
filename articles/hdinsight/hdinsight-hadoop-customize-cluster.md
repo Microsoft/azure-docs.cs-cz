@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8923dcb4c35bbf90a6f68bd296bb9a862c5ff07d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aeb0dec07ef9c8fb124089c785929f4e5ce69ffe
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230797"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871420"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Přizpůsobení clusterů HDInsight se systémem Windows pomocí akce skriptu
 **Skript akce** můžete použít k vyvolání [vlastní skripty](hdinsight-hadoop-script-actions.md) během procesu vytváření clusteru pro instalaci dalšího softwaru v clusteru.
@@ -24,7 +24,7 @@ Informace v tomto článku je specifická pro clustery HDInsight se systémem Wi
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Clustery HDInsight je možné přizpůsobit v různých i další způsoby, například další účty úložiště Azure, včetně změny Hadoop konfiguračních souborů (core-site.xml, hive-site.xml, atd.), nebo přidávání sdílené knihovny (například Hive, Oozie) do společné umístění v clusteru. Tato přizpůsobení lze provést prostřednictvím Azure Powershellu, Azure HDInsight .NET SDK nebo na webu Azure portal. Další informace najdete v tématu [vytváření clusterů Hadoop v HDInsight][hdinsight-provision-cluster].
+Clustery HDInsight je možné přizpůsobit v různých způsobů, jako je například včetně další účty Azure Storage, změna [Apache Hadoop](https://hadoop.apache.org/) konfiguračních souborů (core-site.xml, hive-site.xml, atd.) nebo přidání sdílených knihovny (například [Apache Hive](https://hive.apache.org/), [Apache Oozie](https://oozie.apache.org/)) do společného umístění v clusteru. Tato přizpůsobení lze provést prostřednictvím Azure Powershellu, Azure HDInsight .NET SDK nebo na webu Azure portal. Další informace najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
@@ -48,16 +48,16 @@ HDInsight poskytuje několik skriptů v clusterech HDInsight nainstalovat násle
 
 | Název | Skript |
 | --- | --- |
-| **Nainstalovat Spark** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobrazit [instalace a použití Spark na HDInsight clusterů][hdinsight-install-spark]. |
+| **Instalace Apache Sparku** | `https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1`. Zobrazit [instalace a použití Apache Spark na HDInsight clusterů][hdinsight-install-spark]. |
 | **Nainstalovat jazyk R** | `https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1`. Zobrazit [instalace a použití R na clusterech HDInsight](r-server/r-server-hdinsight-manage.md#install-additional-r-packages-on-the-cluster). |
-| **Nainstalovat Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobrazit [instalace a použití Solru na HDInsight clusterů](hdinsight-hadoop-solr-install.md). |
-| **Nainstalovat Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobrazit [instalace a použití Giraphu na HDInsight clusterů](hdinsight-hadoop-giraph-install.md). |
-| **Přednačíst knihovny Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobrazit [knihovny přidat Hive v clusterech HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
+| **Instalace Apache Solr** | `https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1`. Zobrazit [instalace a použití Apache Solr na HDInsight clusterů](hdinsight-hadoop-solr-install.md). |
+| **Instalace Apache Giraph** | `https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1`. Zobrazit [instalace a použití Apache Giraph na HDInsight clusterů](hdinsight-hadoop-giraph-install.md). |
+| **Přednačíst knihovny Apache Hive** | `https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1`. Zobrazit [knihovny přidat Apache Hive v clusterech HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
 ## <a name="call-scripts-using-the-azure-portal"></a>Volání skriptů pomocí webu Azure portal
 **Na webu Azure Portal**
 
-1. Začněte s vytvářením clusteru, jak je popsáno v [vytváření clusterů Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+1. Začněte s vytvářením clusteru, jak je popsáno v [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 2. V části volitelná konfigurace pro **akcí skriptů** okno, klikněte na tlačítko **přidání akce skriptu** k zajištění podrobných informací o akce skriptu, jak je znázorněno níže:
 
     ![Přizpůsobení clusteru pomocí akce skriptu](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "přizpůsobení clusteru pomocí akce skriptu")
@@ -165,7 +165,7 @@ Pokud chcete nainstalovat další software, budete muset nahradit soubor skriptu
 Po zobrazení výzvy zadejte přihlašovací údaje pro cluster. Může trvat několik minut, než se cluster vytvoří.
 
 ## <a name="call-scripts-using-net-sdk"></a>Volání skriptů pomocí sady .NET SDK
-Následující příklad ukazuje, jak nainstalovat Windows založené na clusteru HDInsight Spark. Pokud chcete nainstalovat další software, je potřeba nahradit soubor skriptu v kódu.
+Následující příklad ukazuje, jak nainstalovat Apache Spark v clusteru HDInsight založené na Windows. Pokud chcete nainstalovat další software, je potřeba nahradit soubor skriptu v kódu.
 
 **Vytvoření clusteru HDInsight se Spark**
 
@@ -283,7 +283,7 @@ Služba Microsoft Azure HDInsight je flexibilní platforma, která vám umožní
 
 Existují dva druhy opensourcové komponenty, které jsou k dispozici ve službě HDInsight:
 
-* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například správce prostředků YARN, Hive dotazovacího jazyka (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight?](hdinsight-component-versioning.md) </a>.
+* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například Apache Hadoop YARN ResourceManager, jazyk dotazu Hive (HiveQL) a knihovně Apache Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight?](hdinsight-component-versioning.md) </a>.
 * **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít ve vašich úloh žádné součásti k dispozici v komunitě nebo vytvořené vámi.
 
 Integrované komponenty jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
@@ -305,11 +305,11 @@ Služba HDInsight poskytuje několik způsobů, jak používat vlastní komponen
 Zobrazit [vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script].
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Vytvoření clusterů Hadoop v HDInsight] [ hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
+* [Vytvořte clustery systému Apache Hadoop v HDInsight] [ hdinsight-provision-cluster] pokyny o tom, jak vytvořit HDInsight cluster s použitím jiné možnosti vlastního nastavení.
 * [Vývoj skriptových akcí skriptů pro HDInsight][hdinsight-write-script]
-* [Instalace a použití Sparku na clusterech HDInsight][hdinsight-install-spark]
-* [Instalace a použití Solru na clusterech HDInsight](hdinsight-hadoop-solr-install.md).
-* [Instalace a použití Giraphu na clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
+* [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]
+* [Instalace a použití Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install.md).
+* [Instalace a využít Apache Giraph u clusterů HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: d12de42be9cf5d1a48288aabf21b25546e5b4bbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 17d663873639cc36e9727881d990a3f32697c798
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833071"
+ms.locfileid: "52872148"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
@@ -238,5 +238,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Pokud jste ještě zápis dotazů v Log Analytics, přečtěte si [jak na stránce Log Analytics](../../log-analytics/query-language/get-started-analytics-portal.md) na webu Azure Portal psát dotazy Log Analytics.
-* Další informace o [zápis vyhledávací dotazy](../../log-analytics/query-language/search-queries.md).
+* Pokud jste ještě zápis dotazů v Log Analytics, přečtěte si [jak na stránce Log Analytics](../../azure-monitor/log-query/get-started-portal.md) na webu Azure Portal psát dotazy Log Analytics.
+* Další informace o [zápis vyhledávací dotazy](../../azure-monitor/log-query/search-queries.md).

@@ -1,5 +1,5 @@
 ---
-title: Pomocí Azure Machine Learning Services v poznámkových bloků Azure | Dokumentace Microsoftu
+title: Použití Azure Machine Learning Services v Azure poznámkové bloky
 description: Přehled ukázkové poznámkové bloky pro Azure Machine Learning Services, který vám pomůže s poznámkovými bloky Azure.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: fabd89f7591abafd68b318921fb7723f3eb7373d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1508ccc151aaafd7e0c0b46345c4dcb1a5b7b03c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855791"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083661"
 ---
 # <a name="use-azure-machine-learning-services-in-a-notebook"></a>Použití služby Azure Machine Learning v poznámkovém bloku
 
@@ -47,9 +47,9 @@ Vybavená předem nakonfigurovaným rozhraním prostředí potřebné pro práci
 
 Dokumentace ke službě Azure Machine Learning Services obsahuje celou řadu dalších prostředků, které vás provedou práce pomocí služby Machine Learning v rámci poznámkových bloků:
 
-- [Rychlý start: Použití Pythonu k seznámení s Azure Machine Learning](/azure/machine-learning/service/quickstart-create-workspace-with-python.md)
-- [Kurz #1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](/azure/machine-learning/service/tutorial-train-models-with-aml.md)
-- [#2. kurz: Nasazení modelu klasifikace image v Azure Container Instance (ACI)](/azure/machine-learning/service/tutorial-deploy-models-with-aml.md)
-- [Kurz: Vyškolíme model klasifikace pomocí automatizovaných strojové učení ve službě Azure Machine Learning](/azure/machine-learning/service/tutorial-auto-train-models.md)
+- [Rychlý start: Použití Pythonu k seznámení s Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [Kurz #1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [#2. kurz: Nasazení modelu klasifikace image v Azure Container Instance (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Kurz: Vyškolíme model klasifikace pomocí automatizovaných strojové učení ve službě Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
-Také naleznete v dokumentaci k [Azure Machine Learning SDK pro Python](/python/api/overview/azure/ml/intro.md?view=azure-ml-py).
+Také naleznete v dokumentaci k [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

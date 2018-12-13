@@ -1,5 +1,5 @@
 ---
-title: Co je skupina založená na licencování v Azure Active Directory? | Dokumenty Microsoft
+title: Co je založená na skupinu licensing – Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o licencování na základě skupin Azure Active Directory, včetně jeho fungování a osvědčené postupy.
 services: active-directory
 keywords: Licencování Azure AD
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 3f23b28c1b20155e50fddf17db90cd2a53c04855
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: MT
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c83eeb78f041b86032f1ebb28949cd035487b81e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209815"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086347"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 

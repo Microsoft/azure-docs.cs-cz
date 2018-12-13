@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcd8fe040cb4d36bc98700816d6a7ebe711f13f5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73876d950a34317365c9fceb865a3c473a75780a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093434"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874341"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -211,7 +211,7 @@ Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovějš�
 * [Dělené kolekce](partition-data.md). 
 * [Účty databáze ve více oblastech a geografická replikace](distribute-data-globally.md).
 
-Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
 

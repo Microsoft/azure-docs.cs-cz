@@ -2,19 +2,19 @@
 title: Běžné problémy pro řešení potíží v Azure Stream Analytics
 description: Tento článek popisuje některé běžné problémy v Azure Stream Analytics a kroky, chcete-li tyto problémy vyřešit.
 services: stream-analytics
-author: jasonwhowell
-manager: kfile
+author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/12/2018
-ms.openlocfilehash: 2fe180873f8f410d80b06d29d16881eb49f7fc2a
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978433"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090971"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Běžné problémy v Stream Analytics a postup řešení potíží
 
@@ -24,7 +24,7 @@ ms.locfileid: "50978433"
  
  Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Symbol upozornění se zobrazí na **vstupy** dlaždici vaší úlohy Stream Analytics (Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu):
 
-![Dlaždici vstupy](media/stream-analytics-malformed-events/inputs_tile.png)
+![Vstupy dlaždici na řídicím panelu Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Další informace zobrazíte povolte diagnostické protokoly, chcete-li zobrazit podrobnosti upozornění. Pro vstupní události nemají správný formát, protokoly spuštění obsahovat zprávu, která bude vypadat takto: "zpráva: nešlo deserializovat vstupní události z prostředku <blob URI> jako dokumenty json". 
 
@@ -34,7 +34,7 @@ Další informace zobrazíte povolte diagnostické protokoly, chcete-li zobrazit
 
 2. Vstupní podrobnosti o dlaždici se zobrazí sada upozornění s podrobnostmi o problému. Tady je ukázková zpráva upozornění, toto upozornění zobrazuje oddíl, posun a pořadová čísla níž se nachází poškozená data JSON. 
 
-   ![Upozornění s posunem](media/stream-analytics-malformed-events/warning_message_with_offset.png)
+   ![Vstupní zpráva upozornění s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
 3. Chcete-li získat data JSON, který má nesprávný formát, spusťte kód CheckMalformedEvents.cs. Je k dispozici v tomto příkladu [úložiště ukázek Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
 

@@ -8,19 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 926d1a35cb10d50ddeacbed5476e2dcf14d0999d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: dc6244b6e263d3fb963d40b2f0c626cdfa9ecff8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855902"
+ms.locfileid: "52873457"
 ---
 # <a name="data-modeling-in-azure-time-series-insights"></a>Modelování dat v Azure Time Series Insights
 
-Tento dokument popisuje, jak pracovat s **čas řady modely** následující služby Azure Time Series Insights (preview). Obsahuje podrobnosti o několik běžných scénářů data.
+Tento dokument popisuje, jak pracovat s **čas řady modely** následující služby Azure Time Series Insights (Preview). Obsahuje podrobnosti o několik běžných scénářů data.
 
-Čtení [Azure TSI (preview) Průzkumníka](./time-series-insights-update-explorer.md) článku se dozvíte další informace o procházení privátní verze Preview.
+Čtení [Průzkumníku TSI Azure (Preview)](./time-series-insights-update-explorer.md) článku se dozvíte další informace o navigaci aktualizace.
 
 ## <a name="types"></a>Typy
 
@@ -130,9 +130,11 @@ Tento dokument popisuje, jak pracovat s **čas řady modely** následující slu
 
 ## <a name="next-steps"></a>Další postup
 
-Čtení [čas řady modely](./time-series-insights-update-tsm.md) Další informace o **čas řady modely**.
+Přečtěte si informace o [modelování dat](./time-series-insights-update-tsm.md) Další informace o **čas řady modely**.
 
-Zobrazit Azure TSI (preview) Průzkumníka [článku](./time-series-insights-update-explorer.md) získat další informace o verzi preview.
+Zobrazit v Průzkumníku TSI Azure (Preview) [článku](./time-series-insights-update-explorer.md) získat další informace o verzi preview.
+
+Další informace o podporované tvary JSON najdete [podporované tvary JSON](./time-series-insights-send-events.md#json).
 
 <!-- Images -->
 [1]: media/v2-update-how-to-tsm/portal_one.png

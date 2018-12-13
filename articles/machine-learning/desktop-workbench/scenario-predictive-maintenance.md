@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c638ed9132612db7b82168d3a57057aba9b2d60
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996209"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870330"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Reálné scénáře prediktivní údržby
 
@@ -98,13 +98,13 @@ Příklad poznámkové bloky jsou uložené v adresáři kódu. Poznámkových b
 
 ## <a name="data-description"></a>Popis dat
 
-[Simulovaná data](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) se skládá z pěti souborů hodnot oddělených čárkami (CSV). Chcete-li získat podrobné popisy datových sad pomocí následujících odkazů.
+[Simulovaná data](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide) se skládá z následujících [pět oddělených čárkou (CSV) soubory hodnoty](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data):
 
-* [Počítače](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): funkce, které rozlišit každý počítač, jako je stáří a modelu.
-* [Chyba](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): V protokolu chyb obsahuje chyby pevné, které jsou vyvolány, když je počítač je stále v provozu. Tyto chyby nejsou považované za chyby, i když je možné prediktivní selhání budoucí události. Hodnoty datum a čas pro chyby jsou zaokrouhleny na nejbližší hodinu od telemetrická data se shromažďují hodinové sazby.
-* [Údržba](https://pdmmodelingguide.blob.core.windows.net/pdmdata/maint.csv): Protokol údržby obsahuje oba plánované a neplánované údržbě záznamy. Plánovaná údržba odpovídá pravidelných kontrol komponenty. Neplánované údržby mohou vyplývat z mechanickým selhání nebo jiné snížení výkonu. Hodnoty datum a čas údržby jsou zaokrouhleny na nejbližší hodinu od telemetrická data se shromažďují hodinové sazby.
-* [Telemetrie](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): telemetrická data se skládá z řady měření času z řadu senzorů v každém počítači. Data se protokolují podle průměrné hodnoty čidel za každou hodinu interval.
-* [Selhání](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): selhání odpovídají nahrazení součást v protokolu údržby. Každý záznam obsahuje ID počítače, typ součásti a nahrazení datum a čas. Tyto záznamy se používají k vytvoření strojového učení popisky, které model se pokouší předvídat.
+* [Počítače](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/machines.csv): funkce, které rozlišit každý počítač, jako je stáří a modelu.
+* [Chyby](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/errors.csv): V protokolu chyb obsahuje chyby pevné, které jsou vyvolány, když je počítač je stále v provozu. Tyto chyby nejsou považované za chyby, i když je možné prediktivní selhání budoucí události. Hodnoty datum a čas pro chyby jsou zaokrouhleny na nejbližší hodinu od telemetrická data se shromažďují hodinové sazby.
+* [Údržba](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/maint.csv): Protokol údržby obsahuje oba plánované a neplánované údržbě záznamy. Plánovaná údržba odpovídá pravidelných kontrol komponenty. Neplánované údržby mohou vyplývat z mechanickým selhání nebo jiné snížení výkonu. Hodnoty datum a čas údržby jsou zaokrouhleny na nejbližší hodinu od telemetrická data se shromažďují hodinové sazby.
+* [Telemetrie](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/telemetry.csv): telemetrická data se skládá z řady měření času z řadu senzorů v každém počítači. Data se protokolují podle průměrné hodnoty čidel za každou hodinu interval.
+* [Selhání](https://github.com/Microsoft/SQL-Server-R-Services-Samples/blob/master/PredictiveMaintanenceModelingGuide/Data/failures.csv): selhání odpovídají nahrazení součást v protokolu údržby. Každý záznam obsahuje ID počítače, typ součásti a nahrazení datum a čas. Tyto záznamy se používají k vytvoření strojového učení popisky, které model se pokouší předvídat.
 
 Stažení sady nezpracovaných dat z úložiště GitHub a vytvoření datové sady PySpark pro tuto analýzu najdete v tématu [Ingestování](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb) scénář Poznámkový blok Jupyter v složky s kódem.
 

@@ -1,6 +1,6 @@
 ---
-title: Pochopení runtime Azure IoT Edge | Dokumentace Microsoftu
-description: Další informace o modulu runtime Azure IoT Edge a jak umožňuje hraničních zařízení
+title: Zjistěte, jak modul runtime spravuje zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Zjistěte, jak modul runtime Azure IoT Edge spravuje moduly, zabezpečení, komunikace a vytváření sestav v zařízeních
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05c97d21e9acf1bb49418e3a7d0ccf1657f84435
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: 3495d157f1a681e80b6d113acced53d01751690f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685187"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077490"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -29,7 +30,7 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 * Usnadňuje komunikaci mezi moduly v příslušném hraničním zařízení IoT.
 * Usnadňuje komunikaci mezi příslušným hraničním zařízením IoT a cloudem.
 
-![Modul runtime IoT Edge. komunikuje přehledy a stav modulů pro službu IoT Hub](./media/iot-edge-runtime/Pipeline.png)
+![Modul runtime komunikuje přehledy a stav modulů pro službu IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
 Odpovědnosti modul runtime IoT Edge spadají do dvou kategorií: modul komunikaci a správu. Tyto dvě role provádí dvě komponenty, které tvoří modul runtime IoT Edge. Centrum IoT Edge je zodpovědná za komunikaci, zatímco agenta IoT Edge spravuje nasazení a monitorování modulů. 
 
@@ -49,7 +50,7 @@ Centrum Edge není s plnou verzí služby IoT Hub spuštěná místně. Existuje
 
 Používá ke snížení šířky pásma vašeho řešení IoT Edge a Centrum Edge optimalizuje tak počet skutečných připojení probíhají do cloudu. Centrum Edge přebírá logickou připojení od klientů, jako jsou moduly nebo zařízení typu list a kombinuje je pro jedno fyzické připojení ke cloudu. Podrobnosti tohoto procesu je transparentní pro zbytek tohoto řešení. Klienti myslíte, že budou mít svoje vlastní připojení ke cloudu i v případě, že všechny se odešlou přes stejné připojení. 
 
-![Centrum Edge funguje jako brána mezi několik fyzických zařízení a cloudu](./media/iot-edge-runtime/Gateway.png)
+![Centrum Edge se brána mezi fyzickým zařízením a centrem IoT](./media/iot-edge-runtime/Gateway.png)
 
 Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud dojde ke ztrátě připojení, Centrum Edge uloží zprávy nebo aktualizace dvojčete místně. Po připojení se obnoví, synchronizuje všechna data. Umístění použité pro tato dočasná mezipaměť se určuje podle vlastnosti tohoto dvojčete modulu Centrum Edge. Velikost mezipaměti není omezené a se zvýší, dokud zařízení má kapacitu úložiště. 
 
@@ -57,7 +58,7 @@ Centrum Edge můžete určit, jestli je připojený ke službě IoT Hub. Pokud d
 
 Centrum Edge usnadňuje komunikaci modulu do modulu. Pomocí Centrum Edge jako zprostředkovatel zpráv uchovává moduly nezávisle na sobě navzájem. Moduly stačí zadat vstupy, na kterých přijetí zprávy a výstupy, ke kterým se zápis zpráv. Pro vývojáře řešení pak spojí tyto vstupy a výstupy dohromady tak, aby moduly zpracovávat data v pořadí, které jsou specifické pro příslušné řešení. 
 
-![Centrum Edge usnadňuje komunikaci modulu modulu](./media/iot-edge-runtime/ModuleEndpoints.png)
+![Centrum Edge usnadňuje komunikaci modulu modulu](./media/iot-edge-runtime/module-endpoints.png)
 
 K odesílání dat do Centrum Edge, volá modul SendEventAsync metodu. První argument určuje, na které výstupu pro odeslání zprávy. Následujícím pseudokódu odešle zprávu na output1:
 
@@ -79,7 +80,7 @@ Další informace o třídě ModuleClient a jeho metody komunikace, najdete v re
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![Trasy mezi moduly](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
+![Trasy mezi moduly přejít přes Centrum Edge](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
 ## <a name="iot-edge-agent"></a>Agenta IoT Edge
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: v-jysur
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1d077fc8a853f145d271fa69d453ea2ea70ab696
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ff66b386a6293c11ad67ec90e165b927ad6669b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319474"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870550"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Zpráva k vydání verze pro Microsoft Azure Backup serveru
 Tento článek obsahuje známé problémy a řešení pro Microsoft Azure Backup Server (MABS) V3.

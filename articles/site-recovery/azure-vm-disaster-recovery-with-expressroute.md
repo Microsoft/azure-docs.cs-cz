@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84c6477a1c9bc61b339e66d91cb7c1fbc8e90ea0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836997"
+ms.locfileid: "52875395"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrace Azure ExpressRoute se zotavení po havárii pro virtuální počítače Azure
 
@@ -37,7 +37,7 @@ ExpressRoute umožňuje rozšířit místní sítě do cloudu Microsoft Azure p�
 Než začnete, ujistěte se, že rozumíte následující pojmy:
 
 - ExpressRoute [okruhy](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute [domény směrování](../expressroute/expressroute-circuit-peerings.md#expressroute-routing-domains)
+- ExpressRoute [domény směrování](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - ExpressRoute [umístění](../expressroute/expressroute-locations.md).
 - Virtuální počítač Azure [architektura replikace](azure-to-azure-architecture.md)
 - Jak [nastavení replikace](azure-to-azure-tutorial-enable-replication.md) pro virtuální počítače Azure.
@@ -136,7 +136,7 @@ V našem příkladu následující by měl nastat při povolení replikace pro v
 
 ## <a name="fail-over-azure-vms-when-using-expressroute"></a>Při použití ExpressRoute převzetí služeb při selhání virtuálních počítačů Azure
 
-Po převzetí služeb při selhání virtuálních počítačů Azure do cílové oblasti Azure pomocí Site Recovery, které můžete k nim přistupovat pomocí ExpressRoute [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Po převzetí služeb při selhání virtuálních počítačů Azure do cílové oblasti Azure pomocí Site Recovery, které můžete k nim přistupovat pomocí ExpressRoute [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 - Je potřeba připojení k cílové virtuální sítě s novým připojením ExpressRoute. Existující připojení ExpressRoute se automaticky převedena.
 - Způsob, ve kterém můžete nastavit připojení ExpressRoute k cílové síti, závisí na vaší topologie ExpressRoute.

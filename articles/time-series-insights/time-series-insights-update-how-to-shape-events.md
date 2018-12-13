@@ -8,22 +8,19 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: edc1dac05a8ab4281eee3ee0eb4c5e6b7571b404
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: 17528b148c04f48fa8222f64900bdf5c3b95ee25
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855785"
+ms.locfileid: "52873644"
 ---
-# <a name="shaping-events-with-azure-time-series-insights-preview"></a>Strukturování události s Azure Time Series Insights (preview)
+# <a name="shaping-events-with-azure-time-series-insights-preview"></a>Strukturování události s Azure Time Series Insights (Preview)
 
-Tento článek obsahuje pokyny pro úpravu JSON, pro maximalizaci efektivity jste už dotazů Azure Time Series Insights (preview).
+Tento článek obsahuje pokyny pro úpravu JSON pro maximalizaci efektivity vašich dotazů ve verzi preview služby Azure Time Series Insights (TSI).
 
 ## <a name="best-practices"></a>Osvědčené postupy
-
-> [!NOTE]
-> Omezení vlastnost 600 800 S1/s2 pro Azure TSI (preview) se nevztahují.
 
 Je důležité zvážit způsob odesílání událostí do Azure TSI. Konkrétně měli byste vždy:
 
@@ -32,7 +29,7 @@ Je důležité zvážit způsob odesílání událostí do Azure TSI. Konkrétn�
 
 Následující pokyny k pomáhá zajistit možné dotazy vracely co nejlepší:
 
-1. Neposílat zbytečné vlastnosti. TSI (preview) vám bude účtovat na vaše využití a je osvědčeným postupem je ukládat a zpracovávat data, která se bude dotazovat.
+1. Neposílat zbytečné vlastnosti. TSI (Preview) vám bude účtovat na vaše využití a je osvědčeným postupem je ukládat a zpracovávat data, která se bude dotazovat.
 1. Pomocí pole instancí pro statická data se odesílání statických dat přes síť. Pole instancí, součástí modelu časové řady fungují jako referenční data v obecně dostupné služby TSI. Další informace o pole instance, [čas řady modely](./time-series-insights-update-tsm.md).
 1. Sdílení vlastností dimenze mezi více událostí k odesílání dat přes síť efektivněji.
 1. Nepoužívejte vnoření hloubkové pole. TSI podporuje až dvě úrovně vnořená pole, které obsahují objekty. TSI pole ve zprávách, sloučí do více událostí pomocí dvojice vlastnost.
@@ -108,7 +105,7 @@ Time Series Instance (Poznámka: **ID řady času** je *deviceId*):
   },
 ```
 
-TSI připojené tabulky (po sloučení) v době dotazu. V tabulce bude obsahovat další sloupce, jako je například typ. Tento příklad ukazuje, jak můžete tvarovat telemetrická data:
+TSI připojené tabulky (po sloučení) v době dotazu. V tabulce bude obsahovat další sloupce, jako je například typ. Tento příklad ukazuje, jak můžete [tvar](./time-series-insights-send-events.md#json) vaše telemetrická data:
 
 | deviceId  | Typ | L1 | L2 | časové razítko | řada. Míra tok ft3/s | řada. Modul ropy tlak psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
@@ -130,3 +127,5 @@ Mějte na paměti následující v předchozím příkladu:
 ## <a name="next-steps"></a>Další postup
 
 Tyto pokyny převést do praxe, naleznete v tématu [syntaxe dotazů Azure TSI](./time-series-insights-query-data-csharp.md) získat další informace o syntaxi dotazu pro rozhraní REST API pro přístup k datům služby TSI.
+
+Další informace o podporované tvary JSON najdete [podporované tvary JSON](./time-series-insights-send-events.md#json).

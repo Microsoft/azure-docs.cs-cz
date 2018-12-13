@@ -14,12 +14,12 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: 657eefcd5b7793f2f181d074084a272e65943681
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17fb8a82709e7c0c7353b70f7731895889167a79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246442"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873950"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verzí API s využitím Pythonu ve službě Azure Stack
 
@@ -153,5 +153,5 @@ os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 
 - [Centrum Azure vývoje v Pythonu](https://azure.microsoft.com/develop/python/)
 - [Dokumentace ke službě Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
-- [Postup výuky pro Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- [Postup výuky pro Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
 - Pokud nemáte předplatné Microsoft Azure, můžete získat bezplatný zkušební účet [tady](https://go.microsoft.com/fwlink/?LinkId=330212).

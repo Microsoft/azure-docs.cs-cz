@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření a správa úlohy Stream Analytics pomocí webu Azure Portal | Microsoft Docs'
+title: 'Kurz: Vytvoření a správa úlohy Stream Analytics pomocí webu Azure portal'
 description: V tomto kurzu najdete ucelenou ukázku použití Azure Stream Analytics k analýze podvodných volání ve streamu telefonních hovorů.
 services: stream-analytics
 author: mamccrea
@@ -7,16 +7,16 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.workload: data-services
 ms.topic: tutorial
-ms.custom: mvc
-ms.date: 10/30/2018
-ms.openlocfilehash: f35585fc77f085f58b7be2d55e03919cc1e8b248
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.custom: seodec18
+ms.date: 12/07/2018
+ms.openlocfilehash: 83a558289739a2fc54d9602f6454550e7fb79302
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283780"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090553"
 ---
-# <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Vytvoření úlohy Stream Analytics k analýze dat telefonních hovorů a vizualizaci výsledků v řídicím panelu Power BI
+# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analýza dat telefonních hovorů pomocí Stream Analytics a vizualizaci výsledků na řídicím panelu Power BI
 
 V tomto kurzu se dozvíte, jak analyzovat data telefonních hovorů pomocí Azure Stream Analytics. Data telefonních hovorů generovaná klientskou aplikací obsahují některá podvodná volání, která se budou filtrovat pomocí úlohy Stream Analytics.
 
@@ -48,7 +48,7 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
 2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **Event Hubs**.  
 
-   ![Vytvoření centra událostí Azure](media/stream-analytics-manage-job/find-eh.png)
+   ![Vytvoření centra událostí Azure na portálu](media/stream-analytics-manage-job/find-event-hub-resource.png)
 3. Vyplňte podokno **Vytvoření oboru názvů** následujícími hodnotami:  
 
    |**Nastavení**  |**Navrhovaná hodnota** |**Popis**  |
@@ -60,12 +60,12 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
 
 4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit**.  
 
-   ![Vytvoření oboru názvů centra událostí](media/stream-analytics-manage-job/create-ehns.png)
+   ![Vytvořit obor názvů centra událostí na webu Azure portal](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
 5. Po dokončení nasazení oboru názvů přejděte do části **Všechny prostředky** a v seznamu prostředků Azure vyhledejte *myEventHubsNS*. Výběrem oboru názvů *myEventHubsNS* ho otevřete.  
 6. Pak vyberte **+ Centrum událostí** a jako **Název** zadejte *MyEventHub* nebo jiný název podle vašeho výběru. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit**. Potom počkejte na úspěšné dokončení nasazení.
 
-   ![Vytvoření centra událostí](media/stream-analytics-manage-job/create-eh.png)
+   ![Konfigurace centra událostí na webu Azure portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udělení přístupu k centru událostí a získání připojovacího řetězce
 
@@ -75,7 +75,7 @@ Předtím než aplikace může odesílat data do služby Azure Event Hubs, musí
 
 2. Pojmenujte zásadu **MyPolicy** a ujistěte se, že je zaškrtnutá možnost **Spravovat**. Potom vyberte **Vytvořit**.  
 
-   ![Vytvoření zásad sdíleného přístupu k centru událostí](media/stream-analytics-manage-job/create-ehpolicy.png)
+   ![Vytvoření zásad sdíleného přístupu k centru událostí](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
 3. Po vytvoření zásady ji výběrem otevřete a vyhledejte **Připojovací řetězec – primární klíč**. Vyberte modré tlačítko **kopírovat** vedle připojovacího řetězce.
 
@@ -104,7 +104,7 @@ Před spuštěním aplikace TelcoGenerator byste ji měli nakonfigurovat tak, ab
 4. Uložte soubor.  
 5. Dále otevřete příkazové okno a přejděte do složky, do které jste extrahovali aplikaci TelcoGenerator. Potom zadejte následující příkaz:
 
-   ```
+   ```cmd
    telcodatagen.exe 1000 0.2 2
    ```
 
@@ -145,7 +145,7 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
 
 4. Pro zbývající nastavení použijte výchozí možnosti, vyberte **Vytvořit** a počkejte na úspěšné nasazení.
 
-   ![Vytvoření úlohy](media/stream-analytics-manage-job/create-a-job.png)
+   ![Vytvoření úlohy Azure Stream Analytics](media/stream-analytics-manage-job/create-stream-analytics-job.png)
 
 ## <a name="configure-job-input"></a>Konfigurace vstupu úlohy
 
@@ -167,7 +167,7 @@ Dalším krokem je definování vstupního zdroje, ze kterého bude úloha čís
 
 4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Uložit**.
 
-   ![Konfigurace vstupu](media/stream-analytics-manage-job/configure-input.png)
+   ![Konfigurace vstupu Azure Stream Analytics](media/stream-analytics-manage-job/configure-stream-analytics-input.png)
 
 ## <a name="configure-job-output"></a>Konfigurace výstupu úlohy 
 
@@ -185,7 +185,7 @@ Posledním krokem je definování výstupní jímky pro úlohu, do které může
    |Název datové sady  |   ASAdataset  | 
    |Název tabulky |  ASATable  | 
 
-   ![Konfigurace výstupu](media/stream-analytics-manage-job/configure-output.png)  
+   ![Konfigurace výstupu Stream Analytics](media/stream-analytics-manage-job/configure-stream-analytics-output.png)  
 
 4. Když vyberete **Autorizovat**, otevře se místní okno s výzvou k zadání přihlašovacích údajů kvůli ověření vašeho účtu Power BI. Po úspěšné autorizaci uložte nastavení výběrem možnosti **Uložit**. 
 
@@ -218,7 +218,7 @@ V tomto příkladu podvodná volání provádí stejný uživatel v pětisekundo
 
 4. **Uložte** dotaz.  
 
-   ![Definice dotazu služby Stream Analytics](media/stream-analytics-manage-job/define-query.png)
+   ![Definování dotazu Stream Analytics na portálu](media/stream-analytics-manage-job/define-stream-analytics-query.png)
 
 ## <a name="test-your-query"></a>Otestování dotazu
 
@@ -232,11 +232,11 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
    Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, ukázková data se zahodí, a pokud budete chtít provést testování, budete muset vytvořit novou sadu ukázkových dat. Alternativně můžete použít soubor JSON s ukázkovými daty z [GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) a potom tento soubor JSON nahrát a použít jako ukázková data pro vstup *CallStream*.
 
-   ![Ukázková vstupní data](media/stream-analytics-manage-job/sample-input-data.png)
+   ![Vizuál o tom, jak ukázková vstupní data pro Stream Analytics](media/stream-analytics-manage-job/sample-input-data-asa.png)
 
 4. Vyberte **Test** a otestujte dotaz. Měly by se zobrazit následující výsledky:  
 
-   ![Výstup testu](media/stream-analytics-manage-job/test-output.png)
+   ![Navýšení kapacity put z testu dotazu Stream Analytics](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>Spuštění úlohy a vizualizace výstupu
 
@@ -250,7 +250,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 5. V horní části okna vyberte **Přidat dlaždici**. Potom vyberte **Vlastní streamovaná data** a **Další**. V části **Vaše datové sady** zvolte **ASAdataset**. V rozevírací nabídce **Typ vizualizace** vyberte **Karta** a do části **Pole** přidejte **fraudulentcalls**. Vyberte **Další**, zadejte název dlaždice a pak výběrem možnosti **Použít** dlaždici vytvořte.  
 
-   ![Vytvoření dlaždice](media/stream-analytics-manage-job/create-tiles.png)
+   ![Vytvoření dlaždice řídicího panelu Power BI](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
 6. Zopakujte krok 5 s následujícími možnostmi:
    * Jako typ vizualizace vyberte spojnicový graf.  
@@ -260,7 +260,7 @@ Dotaz z editoru dotazů můžete otestovat s použitím ukázkových dat. Otestu
 
 7. Po přidání obou dlaždic by váš řídicí panel měl vypadat jako v následujícím příkladu. Všimněte si, že pokud je spuštěná aplikace odesílající data do centra událostí a také aplikace Streaming Analytics, řídicí panel PowerBI se pravidelně aktualizuje po příchodu nových dat.  
 
-   ![Výsledky Power BI](media/stream-analytics-manage-job/power-bi-results.png)
+   ![Zobrazení výsledků na řídicím panelu Power BI](media/stream-analytics-manage-job/power-bi-results-dashboard.png)
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Vložení řídicího panelu PowerBI do webové aplikace
 
@@ -275,7 +275,7 @@ Jakmile aplikace běží v prohlížeči, postupujte podle těchto kroků a vlo�
 
 3. Nakonec vložte hodnotu **EmbedUrl** do odpovídajícího textového pole a vyberte **Vložit řídicí panel**. Nyní můžete vidět stejný řídicí panel vložený do webové aplikace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili jednoduchou úlohu Stream Analytics, analyzovali jste příchozí data a zobrazili výsledky na řídicím panelu Power BI. Další informace o úlohách Stream Analytics získáte v dalším kurzu:
 

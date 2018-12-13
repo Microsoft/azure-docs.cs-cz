@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: be3fb5ab58afd4287bd572842e19dd9e41e8b13b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: e0ea6a82b1dbd9b3fa4a273fae2b79cdc3629904
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839292"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890717"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -61,7 +61,7 @@ Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v 
 
 ### <a name="install-and-configure-agents"></a>Instalace a konfigurace agentů 
 
-Můžete nainstalovat agenty na základních procesů [počítače Windows se připojit ke službě Azure Log Analytics](../../log-analytics/log-analytics-om-agents.md) a [připojení Operations Manageru k Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Můžete nainstalovat agenty na základních procesů [počítače Windows se připojit ke službě Azure Log Analytics](../../azure-monitor/platform/om-agents.md) a [připojení Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Kam chcete nainstalovat agenty 
 

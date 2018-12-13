@@ -1,6 +1,6 @@
 ---
-title: Azure zásady správy rozhraní API-ukázka - odeslat žádost o kontextové informace ke službě back-end | Microsoft Docs
-description: Azure API management zásad ukázka - ukazuje, jak odeslat informace o kontextu požadavku službě back-end.
+title: Rozhraní API správy zásad ukázkový Azure – odeslat informace o kontextu požadavku do back-end službu | Dokumentace Microsoftu
+description: Azure API management zásady ukázkový – ukazuje, jak odesílat informace o kontextu požadavku do back-end službu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: d6cfd6e63dbc8a56179197b2942c52d15539ae74
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3369f3b3349e8daf9ff540b824c10bbd618a1147
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873423"
 ---
-# <a name="send-request-context-information-to-the-backend-service"></a>Poslat informace o kontextu požadavku službě back-end
+# <a name="send-request-context-information-to-the-backend-service"></a>Odeslat informace o kontextu požadavku službě back-endu
 
-Tento článek ukazuje Azure API management zásad ukázka, které ukazuje, jak odeslat informace o kontextu požadavku službě back-end. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v [sadu nebo upravit zásadu](../set-edit-policies.md). Další příklady najdete v sekci [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak odesílat informace o kontextu požadavku do back-end službu. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
@@ -32,7 +32,7 @@ Vložte kód do **příchozí** bloku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zásadách APIM:
+Další informace týkající se služby APIM zásad:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

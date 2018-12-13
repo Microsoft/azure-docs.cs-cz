@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 201bf1e5d3580902934f139b70ca5363e7cc5930
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72e0937e91a7287d240bbdb25996865f934d432d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523011"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876498"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Vyžádání bezpečného přenosu ve službě Azure Storage
 
 Možnost "Vyžadovat zabezpečený přenos" zvyšuje zabezpečení vašeho účtu úložiště tím, že pouze požadavky na účet ze zabezpečeného připojení. Například při volání rozhraní REST API pro přístup k účtu úložiště, musíte připojení pomocí protokolu HTTPS. "Vyžadovat zabezpečený přenos" odmítne požadavky, které používají protokol HTTP.
 
-Při použití služby soubory Azure jakékoli připojení, bez šifrování selže, pokud je povolena možnost "Vyžadovat zabezpečený přenos". To zahrnuje scénáře, které používají protokol SMB 2.1, bez šifrování protokolu SMB 3.0 a některé verze klient Linux SMB. 
+Při použití služby soubory Azure jakékoli připojení, bez šifrování selže, pokud je povolena možnost "Vyžadovat zabezpečený přenos". To zahrnuje scénáře, které používají protokol SMB 2.1, bez šifrování protokolu SMB 3.0 a některé verze klient Linux SMB. 
 
-Ve výchozím nastavení je zakázána možnost "Vyžadovat zabezpečený přenos".
+Ve výchozím nastavení je zakázaná možnost "Vyžadovat zabezpečený přenos" při vytváření účtu úložiště pomocí sady SDK. A je povolená ve výchozím nastavení při vytváření účtu úložiště na webu Azure Portal.
 
 > [!NOTE]
 > Vzhledem k tomu, že úložiště Azure nepodporuje adresy typu HTTPS pro vlastní názvy domén, není tato možnost použita, když používáte vlastní název domény. A klasických účtů úložiště se nepodporují.
