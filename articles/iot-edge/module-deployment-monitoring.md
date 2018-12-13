@@ -1,6 +1,6 @@
 ---
-title: Nasadit moduly pro Azure IoT Edge | Dokumentace Microsoftu
-description: Další informace o způsobu získání modulů nasazení do hraničních zařízení
+title: Automatické nasazení pro skupiny zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Automatické nasazení ve službě Azure IoT Edge použít ke správě skupiny zařízení, na základě sdílené značek
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584838"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100102"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
 

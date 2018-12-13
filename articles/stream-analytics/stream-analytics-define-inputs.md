@@ -4,17 +4,17 @@ description: Další informace o nastavení připojení dat ve službě Azure St
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 66e57d95125bd6404ec23302e4c336ab0b71ea78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248740"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099728"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako vstup do Stream Analytics
 
@@ -29,7 +29,7 @@ Tyto prostředky vstupní může existovat ve stejném předplatném Azure jako 
 Stream Analytics podporuje kompresi ve všech vstupních zdrojů dat datového proudu. Odkaz na aktuálně podporované typy jsou: None, GZip a komprese Deflate. Podpora pro kompresi není k dispozici pro referenční data. Pokud vstupní formát Avro data, která je komprimován, zpracuje se transparentně. Není nutné určit typ komprese se serializace Avro. 
 
 ## <a name="create-edit-or-test-inputs"></a>Vytvářet, upravovat nebo testovací vstupy
-Můžete použít [webu Azure portal](https://portal.azure.com) k [vytváření nové vstupů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) a umožňuje zobrazit nebo upravit existující vstupů na své úlohy streamování. Můžete také testovat vstupní připojení a [testování dotazů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z ukázková data. Při psaní dotazu, zobrazí se seznam vstup v klauzuli FROM. Můžete získat seznam dostupných vstupů ze **dotazu** stránky na portálu. Pokud chcete použít více vstupů, můžete si `JOIN` jejich nebo zápis více `SELECT` dotazy.
+Můžete použít [webu Azure portal](https://portal.azure.com) k [vytváření nové vstupů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) a umožňuje zobrazit nebo upravit existující vstupů na své úlohy streamování. Můžete také testovat vstupní připojení a [testování dotazů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z ukázková data. Při psaní dotazu, zobrazí se seznam vstup v klauzuli FROM. Můžete získat seznam dostupných vstupů ze **dotazu** stránky na portálu. Pokud chcete použít více vstupů, můžete si `JOIN` jejich nebo zápis více `SELECT` dotazy.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamování dat z Event Hubs

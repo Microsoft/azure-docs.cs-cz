@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b43ea6d6b754467cedecce2be883fab6fd9ba0e8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 424b54e2dfe73951839031a1cc35ecdd82d526bb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890190"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086100"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
@@ -115,9 +115,9 @@ Připojování počítačů v předplatném Azure nebo hybridního prostředí p
 
 |Zdroj | Metoda | Popis|
 |-------|-------------|-------------|
-|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [Ručně z portálu Azure portal](../../log-analytics/log-analytics-quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | Rozšíření na virtuální počítače Azure nainstaluje agenta Log Analytics a zapisuje do existujícího pracovního prostoru Azure Monitor.|
+|Virtuální počítač Azure| -Log Analytics virtuálního počítače rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí rozhraní příkazového řádku Azure nebo pomocí šablony Azure Resource Manageru<br>- [Ručně z portálu Azure portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json). | Rozšíření na virtuální počítače Azure nainstaluje agenta Log Analytics a zapisuje do existujícího pracovního prostoru Azure Monitor.|
 | Hybridní počítač s Windows|- [Ruční instalace](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Šablony Resource Manageru pomocí služby Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Nainstalujte Microsoft Monitoring agent z příkazového řádku nebo pomocí automatizovaného metody jako je Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), nebo pomocí šablony Azure Resource Manageru, pokud jste nasadili Microsoft Azure Stack ve vašem datovém centru.| 
-| Hybridní počítač s Linuxem| [Ruční instalace](../../log-analytics/log-analytics-quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
+| Hybridní počítač s Linuxem| [Ruční instalace](../../azure-monitor/learn/quick-collect-linux-computer.md)|Instalace agenta pro Linux volání skript obálky hostovaná na Githubu. | 
 | System Center Operations Manager|[Integrace Operations Manageru s Log Analytics](../../azure-monitor/platform/om-agents.md) | Konfigurace integrace mezi Operations Managerem a Log Analytics, aby předával data shromážděná z počítačů se systémy Linux a Windows odesílajících sestavy do skupiny pro správu.|  
 
 ## <a name="next-steps"></a>Další postup

@@ -1,21 +1,22 @@
 ---
-title: 'Kurz: Vytvoření, publikování a odpovědi ze znalostní báze na portálu služby QnA Maker'
+title: Vytvářet, publikovat, odpovědět v nástroje QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Tento kurz založený na portálu vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky ze znalostní báze.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 08f708f740b90f27af5443b46c5d03bef688bd45
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 71745ee73c71aba9c6c5cd5aea3972055fbec01d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087537"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze a následné zodpovězení otázky prostřednictvím portálu služby QnA Maker
 
@@ -96,7 +97,7 @@ V horní nabídce vyberte tlačítko **Publish** (Publikovat). Jakmile budete na
 
 Po publikování znalostní báze se zobrazí koncový bod.
 
-![Publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
+![Nastavení koncového bodu na stránce publikování](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
 ## <a name="use-curl-to-query-for-an-faq-answer"></a>Odeslání dotazu na odpověď na otázku z nejčastějších dotazů pomocí cURL
 
@@ -198,7 +199,7 @@ Na každou otázku, u které si služba QnA Maker není jistá odpovědí, se vr
     
     Služba QnA Maker vrátila skóre 0, což znamená nulovou jistotu, ale vrátila také výchozí odpověď. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o podporovaných formátech souborů najdete v tématu [Podporované zdroje dat](../Concepts/data-sources-supported.md). 
 
