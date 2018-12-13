@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 787d6549eb8413c9dcfc0c906167cc36d4cff6b0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135708"
+ms.locfileid: "53184538"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Vyřešit chyby registrace poskytovatele prostředků
 
@@ -47,9 +47,9 @@ Chybová zpráva by vám měl dát návrhy pro podporované umístění a verze 
 
 Tyto chyby se zobrazí na jednu ze tří důvodů:
 
-1. Pro vaše předplatné není zaregistrovaný poskytovatel prostředků
-1. Verze rozhraní API není podporována pro typ prostředku
-1. Umístění není podporována pro typ prostředku
+* Pro vaše předplatné není zaregistrovaný poskytovatel prostředků
+* Verze rozhraní API není podporována pro typ prostředku
+* Umístění není podporována pro typ prostředku
 
 ## <a name="solution-1---powershell"></a>Řešení 1 – PowerShell
 

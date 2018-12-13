@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4177320285f62397a2f512a5ecaf0dc333065545
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8454a22b02f28ece45ce04464f8f2658f745b53e
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011585"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163340"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

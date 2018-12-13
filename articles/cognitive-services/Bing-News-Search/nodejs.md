@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Node.js'
+title: 'Rychlý start: Hledání zpráv s využitím Node.js – rozhraní API REST vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
+description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Node.js a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: d0bb2d9b35c93d8730ca17fbf70e41df5deb1834
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 17307aaac531924b02c92ac37151d10bfbc48143
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316901"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252299"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Rychlý start pro rozhraní API pro vyhledávání zpráv v Node.js
+# <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Node.js a rozhraní API REST vyhledávání zpráv Bingu
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

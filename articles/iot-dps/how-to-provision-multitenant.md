@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457387"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320688"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientskou architekturu 
 
 Zásady přidělování definované zřizovací služba podporuje širokou škálu scénářů přidělení. Dvě běžné scénáře jsou:
 
-* **Informace o zeměpisné poloze / GeoLatency**: jak zařízení přesune mezi umístěními, zlepší se latence sítě tím, že zařízení pro službu IoT hub do jednotlivých umístění co nejblíže. V tomto scénáři skupiny centra IoT hub, které pracovat nad více oblastí, jsou vybrány pro registraci. **Nejnižší latenci** zásady přidělování je vybraná tato registrace. Tato zásada způsobí, že služby Device Provisioning k vyhodnocení zařízení latence a určit skříni služby IoT hub ze skupiny centra IoT hub. 
+* **Informace o zeměpisné poloze / GeoLatency**: Při přesunu zařízení mezi umístěními, zlepší se latence sítě tím, že zařízení pro službu IoT hub do jednotlivých umístění co nejblíže. V tomto scénáři skupiny centra IoT hub, které pracovat nad více oblastí, jsou vybrány pro registraci. **Nejnižší latenci** zásady přidělování je vybraná tato registrace. Tato zásada způsobí, že služby Device Provisioning k vyhodnocení zařízení latence a určit skříni služby IoT hub ze skupiny centra IoT hub. 
 
-* **Víceklientská architektura**: zařízení používaná v rámci řešení IoT může musí mít přiřazenu na konkrétní Centrum IoT nebo skupinu centra IoT hub. Řešení může vyžadovat všechna zařízení pro konkrétního klienta ke komunikaci s konkrétní skupinu centra IoT hub. V některých případech může tenanta vlastní centra IoT hub a vyžadovat, aby zařízení má být přiřazena k jejich centra IoT hub.
+* **Víceklientská architektura**: Zařízení používaná v rámci řešení IoT může potřeba přiřadit na konkrétní Centrum IoT nebo skupinu centra IoT hub. Řešení může vyžadovat všechna zařízení pro konkrétního klienta ke komunikaci s konkrétní skupinu centra IoT hub. V některých případech může tenanta vlastní centra IoT hub a vyžadovat, aby zařízení má být přiřazena k jejich centra IoT hub.
 
 Je běžné zkombinovat tyto dva scénáře. Například víceklientské řešení IoT obvykle, přiřadí se zařízení tenanta pomocí skupiny centra IoT hub, které jsou rozmístěny napříč oblastmi. Tato zařízení tenanta je přiřadit ke službě IoT hub v této skupině, která má nejnižší latenci na základě geografického umístění.
 
@@ -94,11 +94,11 @@ Pro zjednodušení tohoto článku používá [symetrického klíče ověření]
 
     **Název skupiny**: Zadejte **contoso-us zařízení**.
 
-    **Typ ověření**: vyberte **symetrický klíč**.
+    **Typ ověření**: Vyberte **symetrický klíč**.
 
-    **Automaticky generovat klíče**: Toto políčko mělo být již zaškrtnuté.
+    **Automaticky vygenerovat klíče**: Toto políčko mělo být již zaškrtnuté.
 
-    **Vyberte, jak chcete přiřadit zařízení k centrům**: vyberte **nejnižší latenci**.
+    **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **nejnižší latenci**.
 
     ![Přidat skupinu víceklientské registrace pro ověření identity symetrického klíče](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
@@ -107,7 +107,7 @@ Pro zjednodušení tohoto článku používá [symetrického klíče ověření]
 
     **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve které jste vytvořili místní centra IoT.
 
-    **Služby IoT hub**: vyberte jednu z místní centra, který jste vytvořili.
+    **Služby IoT hub**: Vyberte jednu z místní centra, který jste vytvořili.
 
     **Zásady přístupu**: Zvolte **iothubowner**.
 
@@ -132,9 +132,9 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
 
     **– název**: Zadejte jedinečný název pro váš **USA – východ** místní zařízení virtuálního počítače. 
 
-    **uživatelské jméno – správce**: použít vlastní uživatelské jméno správce.
+    **uživatelské jméno – správce**: Použijte vlastní uživatelské jméno správce.
 
-    **– Správce hesel**: použijte heslo správce.
+    **– Správce hesel**: Použijte heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -153,9 +153,9 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
 
     **– název**: Zadejte jedinečný název pro váš **USA – západ** místní zařízení virtuálního počítače. 
 
-    **uživatelské jméno – správce**: použít vlastní uživatelské jméno správce.
+    **uživatelské jméno – správce**: Použijte vlastní uživatelské jméno správce.
 
-    **– Správce hesel**: použijte heslo správce.
+    **– Správce hesel**: Použijte heslo správce.
 
     ```azurecli-interactive
     az vm create \
@@ -220,7 +220,7 @@ V této části se klonovat sady Azure IoT C SDK na každém virtuálním počí
 1. Pro oba virtuální počítače spusťte následující příkaz, který je založen na verzi sady SDK, které jsou specifické pro vaše klientská platforma pro vývoj. 
 
     ```bash
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:

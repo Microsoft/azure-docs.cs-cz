@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 013c425e911340a1b85c21ff6fc89819087e90a1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7ff69d3b79662cff1fc28b0b59777225d0cc439f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869156"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189026"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí webu Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -42,7 +42,7 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
 
     ![Vytváří se nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-basics.png "vytvoření nového clusteru na portálu Azure portal")
 
-    * Zadejte **Název clusteru**: Tento název musí být globálně jedinečný.
+    * Zadejte **název clusteru**: Tento název musí být globálně jedinečný.
 
     * Z **předplatné** rozevíracího seznamu, vyberte předplatné Azure, který se používá pro cluster.
 
@@ -57,30 +57,30 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
 
     * Zadejte **uživatelské jméno SSH** a pokud chcete mít SSH heslo stejné jako heslo správce, který jste zadali dříve, vyberte **použít stejné heslo jako pro přihlášení ke clusteru** zaškrtávací políčko. Pokud ne, zadejte buď **heslo** nebo **veřejný klíč**, který se použije k ověřování uživatele SSH. Doporučujeme používat veřejný klíč. Klikněte v dolní části na tlačítko **Vybrat** a uložte konfiguraci přihlašovacích údajů.
    
-    Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+        Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
     * V části **Skupina prostředků** určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující.
 
     * Zadejte datové centrum **umístění** ve kterém se cluster vytvoří.
 
-    * Klikněte na **Další**.
+    * Klikněte na tlačítko **Další**.
 
-4. V **zabezpečení a sítě**, clusteru můžete připojit k virtuální síti pomocí zadané rozevíracího seznamu. Vyberte virtuální síť Azure a podsíť, pokud chcete umístit clusteru do virtuální sítě. Informace o používání HDInsight s virtuální sítí, včetně požadavků na konkrétní konfiguraci virtuální sítě, naleznete v tématu [možnosti rozšíření HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Pokud chcete použít **Enterprise Security Package**, budete také postupovat podle pokynů tady: [konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
+4. V **zabezpečení a sítě**, clusteru můžete připojit k virtuální síti pomocí zadané rozevíracího seznamu. Vyberte virtuální síť Azure a podsíť, pokud chcete umístit clusteru do virtuální sítě. Informace o používání HDInsight s virtuální sítí, včetně požadavků na konkrétní konfiguraci virtuální sítě, naleznete v tématu [možnosti rozšíření HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md). Pokud chcete použít **Enterprise Security Package**, budete také postupovat podle pokynů tady: [Konfigurace clusteru HDInsight pomocí Azure Active Directory Domain Services s balíčkem Enterprise Security Package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
 5. Pro **úložiště**, zda má být Azure Storage (WASB) nebo Data Lake Storage jako výchozí úložiště. Podívejte se na tabulce pro další informace.
 
-    ![Vytváří se nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "vytvoření nového clusteru na portálu Azure portal")
+     ![Vytváří se nový cluster na webu Azure Portal](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "vytvoření nového clusteru na portálu Azure portal")
 
-    | Úložiště                                      | Popis |
-    |----------------------------------------------|-------------|
-    | **Azure Storage BLOB jako výchozí úložiště**   | <ul><li>Pro **typ primárního úložiště**vyberte **služby Azure Storage**. Potom pro **metodu výběru**, můžete zvolit **mé odběry** Pokud budete chtít zadat účet úložiště, který je součástí vašeho předplatného Azure a pak vyberte účet úložiště. V opačném případě klikněte na tlačítko **přístupový klíč** a zadejte informace o účtu úložiště, který chcete vybrat z mimo vašeho předplatného Azure.</li><li>Pro **výchozí kontejner**, můžete přejít pomocí výchozí název kontejneru navrhl na portálu nebo zadat vlastní.</li><li>Pokud používáte WASB jako výchozím úložištěm, (volitelně) kliknete na **další účty úložiště** k určení dalších účtů úložiště pro přidružení ke clusteru. Pro **klíčů k úložišti Azure**, klikněte na tlačítko **přidat klíč úložiště**, a potom zadáte účet úložiště z vašich předplatných Azure nebo z jiných předplatných (tím, že přístupový klíč účtu úložiště).</li><li>Pokud používáte WASB jako výchozím úložištěm, (volitelně) kliknete na **přístupu k Data Lake Store** určit úložiště Azure Data Lake jako další úložiště. Další informace najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
-    | **Azure Data Lake Storage jako výchozí úložiště** | Pro **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1** nebo **Azure Data Lake Storage Gen2 (Preview)** a pak se podívejte na článek [rychlý start : Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) pokyny. |
-    | **Externí metaúložiště**                      | Volitelně můžete zadat SQL databázi k uložení metadat Hive a Oozie přidružené ke clusteru. Pro **vybrat databázi SQL pro podregistr** vybrat databázi SQL a pak zadejte uživatelské jméno a heslo pro databázi. Tento postup opakujte pro Oozie metadata.<br><br>Některé aspekty při používání Azure SQL database u metaúložiště. <ul><li>Azure SQL database používá pro metastore musí umožňovat připojení k jiným službám Azure, včetně Azure HDInsight. Azure SQL database řídicí panel, na pravé straně klikněte na název serveru. Jedná se o server, na kterém běží SQL database instance. Po otevření zobrazení serveru, klikněte na tlačítko **konfigurovat**a potom **Azure Services**, klikněte na tlačítko **Ano**a potom klikněte na tlačítko **Uložit**.</li><li>Při vytvoření metastoru, nepoužívejte název databáze, které obsahuje pomlčky nebo pomlčky, protože to může způsobit selhání procesu vytváření clusteru.</li></ul> |
+     | Storage                                      | Popis |
+     |----------------------------------------------|-------------|
+     | **Azure Storage BLOB jako výchozí úložiště**   | <ul><li>Pro **typ primárního úložiště**vyberte **služby Azure Storage**. Potom pro **metodu výběru**, můžete zvolit **mé odběry** Pokud budete chtít zadat účet úložiště, který je součástí vašeho předplatného Azure a pak vyberte účet úložiště. V opačném případě klikněte na tlačítko **přístupový klíč** a zadejte informace o účtu úložiště, který chcete vybrat z mimo vašeho předplatného Azure.</li><li>Pro **výchozí kontejner**, můžete přejít pomocí výchozí název kontejneru navrhl na portálu nebo zadat vlastní.</li><li>Pokud používáte WASB jako výchozím úložištěm, (volitelně) kliknete na **další účty úložiště** k určení dalších účtů úložiště pro přidružení ke clusteru. Pro **klíčů k úložišti Azure**, klikněte na tlačítko **přidat klíč úložiště**, a potom zadáte účet úložiště z vašich předplatných Azure nebo z jiných předplatných (tím, že přístupový klíč účtu úložiště).</li><li>Pokud používáte WASB jako výchozím úložištěm, (volitelně) kliknete na **přístupu k Data Lake Store** určit úložiště Azure Data Lake jako další úložiště. Další informace najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+     | **Azure Data Lake Storage jako výchozí úložiště** | Pro **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen1** nebo **Azure Data Lake Storage Gen2 (Preview)** a pak se podívejte na článek [rychlý start : Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) pokyny. |
+     | **Externí metaúložiště**                      | Volitelně můžete zadat SQL databázi k uložení metadat Hive a Oozie přidružené ke clusteru. Pro **vybrat databázi SQL pro podregistr** vybrat databázi SQL a pak zadejte uživatelské jméno a heslo pro databázi. Tento postup opakujte pro Oozie metadata.<br><br>Některé aspekty při používání Azure SQL database u metaúložiště. <ul><li>Azure SQL database používá pro metastore musí umožňovat připojení k jiným službám Azure, včetně Azure HDInsight. Azure SQL database řídicí panel, na pravé straně klikněte na název serveru. Jedná se o server, na kterém běží SQL database instance. Po otevření zobrazení serveru, klikněte na tlačítko **konfigurovat**a potom **Azure Services**, klikněte na tlačítko **Ano**a potom klikněte na tlačítko **Uložit**.</li><li>Při vytvoření metastoru, nepoužívejte název databáze, které obsahuje pomlčky nebo pomlčky, protože to může způsobit selhání procesu vytváření clusteru.</li></ul> |
 
-    Klikněte na **Další**. 
+     Klikněte na tlačítko **Další**. 
 
-    > [!WARNING]
-    > Použití dalšího účtu úložiště v jiném umístění, než je cluster HDInsight, není podporováno.
+     > [!WARNING]
+     > Použití dalšího účtu úložiště v jiném umístění, než je cluster HDInsight, není podporováno.
 
 6. Případně můžete kliknout **aplikací** instalovat aplikace, které fungují s clustery HDInsight. Tyto aplikace mohou být vytvořeny společností Microsoft, nezávislými dodavateli softwaru (ISV) nebo vámi samotnými. Další informace najdete v tématu [aplikací HDInsight nainstalovat](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
@@ -99,11 +99,11 @@ Na webu Azure portal poskytuje většinu vlastností clusteru. Pomocí šablony 
    Klikněte na tlačítko **Další** uložte konfiguraci cen uzlů.
 
 8. V **akcí skriptů**, si můžete přizpůsobit clusteru a nainstalujte vlastní komponenty.  Tuto možnost použijte, pokud chcete použít vlastní skript, který vlastní cluster, při vytváření clusteru. Další informace o akcí skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
-Klikněte na **Další**.
+Klikněte na tlačítko **Další**.
 
 9. Pro **Souhrn**, zkontrolujte zadané informace, které jste zadali dříve a pak klikněte na tlačítko **vytvořit**.
 
-    ![Cenovými úrovněmi uzlů](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "zadejte počet uzlů clusteru")
+     ![Cenovými úrovněmi uzlů](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-summary.png "zadejte počet uzlů clusteru")
     
     > [!NOTE]
     > Pro vytvoření, obvykle přibližně 15 minut clusteru nějakou dobu trvá. Použít na dlaždici na úvodním panelu, nebo **oznámení** položku na levé straně stránky můžete zkontrolovat na během procesu zřizování.
@@ -117,9 +117,9 @@ Klikněte na **Další**.
     
     * **Přehled** karta obsahuje všechny základní informace o clusteru, jako je například název, patří do skupiny prostředků, umístění, operační systém, adresa URL pro řídicí panel clusteru atd.
     * **Řídicí panel** vás přesměruje na portál Ambari přidružené ke clusteru.
-    * **Secure Shell**: informace potřebné pro přístup ke clusteru pomocí SSH.
+    * **Secure Shell**: Informace potřebné pro přístup ke clusteru pomocí SSH.
     * **Škálování clusteru** umožňuje zvýšit počet pracovních uzlů, které jsou přidružené ke clusteru.
-    * **Odstranit**: Odstraní HDInsight cluster.
+      * **Odstranit**: Odstraní HDInsight cluster.
     
 
 ## <a name="customize-clusters"></a>Přizpůsobení clusterů
@@ -153,6 +153,6 @@ Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující 
 ### <a name="apache-spark-clusters"></a>Clustery Apache Spark
 * [Vytvoření samostatné aplikace pomocí Scala](spark/apache-spark-create-standalone-application.md)
 * [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md)
-* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](spark/apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
 

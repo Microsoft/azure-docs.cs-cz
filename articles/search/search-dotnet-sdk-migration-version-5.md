@@ -1,6 +1,6 @@
 ---
-title: Upgrade na Azure Search .NET SDK verze 5 | Dokumentace Microsoftu
-description: Upgrade na Azure Search .NET SDK verze 5
+title: Upgrade na Azure Search .NET SDK verze 5 – Azure Search
+description: Migrace ze starší verze kódu do Azure Search .NET SDK verze 5. Zjistěte, co je nového a jaké změny kódu jsou povinné.
 author: brjohnstmsft
 manager: jlembicz
 services: search
@@ -9,12 +9,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.custom: seodec2018
+ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091136"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316862"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Upgrade na Azure Search .NET SDK verze 5
 Pokud používáte verzi 4.0 ve verzi preview nebo starší aplikace [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace pro používání verze 5.
@@ -56,10 +57,10 @@ Po vyřešili jsme upozornění sestavení, můžete aplikaci výhod nových fun
 ## <a name="breaking-changes-in-version-5"></a>Rozbíjející změny v verze 5
 Většina podstatné rozbíjející změnu do verze 5 je, že `Microsoft.Azure.Search` sestavení a jeho obsah rozdělena do čtyř samostatné sestavení, které se nyní distribuují jako čtyři samostatné balíčky NuGet:
 
- - `Microsoft.Azure.Search`: Toto je meta balíček, který obsahuje všechny ostatní balíčky Azure Search jako závislosti. Pokud upgradujete ze starší verze sady SDK, jednoduše upgradu tohoto balíčku a nové sestavení by vám měly dostatečně chcete začít používat novou verzi.
+ - `Microsoft.Azure.Search`: Jde o meta balíček, který obsahuje všechny ostatní balíčky Azure Search jako závislosti. Pokud upgradujete ze starší verze sady SDK, jednoduše upgradu tohoto balíčku a nové sestavení by vám měly dostatečně chcete začít používat novou verzi.
  - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikace .NET pomocí Azure Search a potřebujete jenom dotazování a aktualizaci dokumentů v indexů. Pokud je také potřeba vytvořit nebo aktualizovat indexů, map synonym, nebo další prostředky na úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
  - `Microsoft.Azure.Search.Service`: Tento balíček použijte, pokud vyvíjíte v rozhraní .NET pro správu indexů Azure Search, map synonym, indexery, zdroje dat nebo další prostředky na úrovni služby automation. Pokud potřebujete jenom k dokumentům dotazu nebo aktualizace v indexů, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce služby Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
- - `Microsoft.Azure.Search.Common`: Vyžadované knihoven Azure Search pro .NET běžných typů. By neměl muset použít tento balíček přímo v aplikaci; Je určená jenom pro použití jako závislost.
+ - `Microsoft.Azure.Search.Common`: Běžné typy vyžadované knihoven Azure Search pro .NET. By neměl muset použít tento balíček přímo v aplikaci; Je určená jenom pro použití jako závislost.
  
 Tato změna je technicky zásadní, protože mnoho typů se přesunuly mezi sestaveními. To je důvod, proč znovu sestavit aplikaci je nutné před upgradem na verzi 5 sady SDK.
 

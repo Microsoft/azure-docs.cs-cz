@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1f772e1a3e5b3e121b968d358166e9018c80d573
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080670"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192684"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -175,7 +173,7 @@ Následující modul plug-in výstup, zrušte komentář u následující část
     |*.blob.core.windows.net | Port 443| Příchozí a odchozí |  
     |*.azure-automation.net | Port 443| Příchozí a odchozí | 
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Zobrazí Chyba 403 při pokusu o připojení
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Problém: Při pokusu o připojení se zobrazí Chyba 403
 
 ### <a name="probable-causes"></a>Možných příčin
 * Datum a čas není na serveru s Linuxem 
@@ -208,7 +206,7 @@ Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do 
     >Tento problém je vyřešen 1.1.0-28 verzi agenta a novější.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: Se nezobrazují v předaných zprávách Syslog 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Problém: Nevidíte v předaných zprávách Syslog 
 
 ### <a name="probable-causes"></a>Možných příčin
 * Konfigurace pro Linux server nepovoluje kolekce odeslané zařízení a/nebo jeho úrovně
@@ -222,7 +220,7 @@ Jde o známý problém, ke které dojde při prvním uložení dat s Linuxem do 
 * Simulace zprávy Syslog do Log Analytics pomocí `logger` příkaz
   * `logger -p local0.err "This is my test message"`
 
-## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Problém: Dostáváte Errno adresa už používá v souboru protokolu omsagent
+## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Problém: Příjem Errno adresa už používá v souboru protokolu omsagent
 Pokud se zobrazí `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` v omsagent.log.
 
 ### <a name="probable-causes"></a>Možných příčin
@@ -243,7 +241,7 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 3. Restartujte omsagent `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Restartujte službu syslog.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problém: Nemůžete odinstalovat omsagent pomocí možnosti mazání
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Problém: Nejde odinstalovat omsagent pomocí možnosti mazání
 
 ### <a name="probable-causes"></a>Možných příčin
 
@@ -254,7 +252,7 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 1. Odinstalace rozšíření Linux Diagnostic (LAD).
 2. Z počítače odeberte rozšíření Linux Diagnostic soubory, kdyby se nacházely v následujícím umístění: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` a `/var/opt/microsoft/omsagent/LAD/`.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problém: Nemůžete vidět data žádná data Nagios 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Problém: Data nelze zobrazit žádná data Nagios 
 
 ### <a name="probable-causes"></a>Možných příčin
 * Omsagent uživatel nemá oprávnění ke čtení ze souboru protokolu Nagios
@@ -295,7 +293,7 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 5. U některých systémů Azure distribuce démon server OMI omid nespustí po restartování virtuálního počítače. Výsledkem bude nezobrazila se auditování, sledování změn ve nebo UpdateManagement řešení související data. Alternativním řešením je omi serveru spustit ručně spuštěním `sudo /opt/omi/bin/service_control restart`.
 6. Po balíček OMI je ručně upgradovat na novější verzi, musí ručně restartovat agenta Log Analytics, aby fungovaly. Tento krok je nutný pro některé distribuce, kde OMI server se nespustí automaticky po dojde k upgradu. Spustit `sudo /opt/omi/bin/service_control restart` restartovat OMI.
 7. Pokud se zobrazí prostředků DSC *nebyla nalezena třída* při omsconfig.log spustit `sudo /opt/omi/bin/service_control restart`.
-8. V některých případech, když agenta Log Analytics pro Linux nemůže komunikovat s služby Log Analytics v agentovi zálohovaných dat. k úplné vyrovnávací paměť: 50 MB. Spuštěním následujícího příkazu byste měli restartovat agenta `/opt/microsoft/omsagent/bin/service_control restart`.
+8. V některých případech když agenta Log Analytics pro Linux nemůže komunikovat s služby Log Analytics v agentovi zálohovaných dat. k úplné vyrovnávací paměť: 50 MB. Spuštěním následujícího příkazu byste měli restartovat agenta `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Tento problém je vyřešen 1.1.0-28 verze agenta nebo novější
@@ -361,7 +359,7 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 
   2. Zkontrolujte, že `omsconfig` agent může komunikovat se službou Log Analytics spuštěním následujícího příkazu `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`. Tento příkaz vrátí konfiguraci, že daný agent přijímá ze služby, včetně nastavení Syslog, čítače výkonu systému Linux a vlastní protokoly. Pokud tento příkaz selže, spusťte následující příkaz `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Tento příkaz vynutí omsconfig agenta pro komunikaci služby Log Analytics a načíst nejnovější konfiguraci.
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problém: Se nezobrazují žádné vlastní data protokolu 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Problém: Nevidíte žádné vlastní data protokolu 
 
 ### <a name="probable-causes"></a>Možných příčin
 * Připojování ke službě Log Analytics se nezdařilo.
@@ -380,7 +378,7 @@ Tato chyba označuje, že rozšíření Linux Diagnostic (LAD) nainstalovaná so
 
 2. Zkontrolujte, že `omsconfig` agent může komunikovat se službou Log Analytics spuštěním následujícího příkazu `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  Tento příkaz vrátí konfiguraci, že daný agent přijímá ze služby, včetně nastavení Syslog, čítače výkonu systému Linux a vlastní protokoly. Pokud tento příkaz selže, spusťte následující příkaz `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Tento příkaz vynutí omsconfig agenta pro komunikaci služby Log Analytics a načíst nejnovější konfiguraci.
 
-**Na pozadí:** místo agenta Log Analytics pro Linux spuštěný jako uživatel - `root`, je spuštěn agent jako `omsagent` uživatele. Ve většině případů musí udělit explicitní oprávnění tohoto uživatele za určité soubory pro čtení. Udělení oprávnění ke `omsagent` uživatele, spusťte následující příkazy:
+**Na pozadí:** Místo agenta Log Analytics pro Linux spuštěný jako uživatel - `root`, je spuštěn agent jako `omsagent` uživatele. Ve většině případů musí udělit explicitní oprávnění tohoto uživatele za určité soubory pro čtení. Udělení oprávnění ke `omsagent` uživatele, spusťte následující příkazy:
 
 1. Přidat `omsagent` uživatele do konkrétní skupiny `sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Udělte univerzální oprávnění ke čtení pro požadovaný soubor `sudo chmod -R ugo+rx <FILE DIRECTORY>`
@@ -401,7 +399,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Můžete dál reonboard po použití `--purge` možnost
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta log Analytics na portálu Azure portal je označené stavu selhání: zřizování se nepovedlo
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Rozšíření agenta log Analytics na portálu Azure portal je označena chybovém stavu: Chyba zřizování
 
 ### <a name="probable-causes"></a>Možných příčin
 * Agenta log Analytics se odebral z operačního systému
@@ -415,7 +413,7 @@ Proveďte následující kroky, chcete-li opravit tento problém.
 * Počkejte pár minut a změní stav zřizování **Zřizování proběhlo úspěšně**.
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problém: Upgrade agenta Log Analytics na vyžádání
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Problém: Log Analytics agent upgrade na vyžádání
 
 ### <a name="probable-causes"></a>Možných příčin
 

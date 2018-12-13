@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: cgronlun
 editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: ebb5fed079d674a0a8a590f7a955a2fe878807fd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 11f4ad4ff1e8e2eab688596d393e63009f7e5624
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090451"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255478"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy textu v nástroji Azure Machine Learning Studio
 Azure Machine Learning můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
@@ -34,7 +33,7 @@ V experimentu analýzy textu které by obvykle:
 4. Stanovení skóre a ověření modelu
 5. Nasazení modelu do produkčního prostředí
 
-V tomto kurzu se dozvíte tyto kroky jako vás provedeme procesem model analýzy subjektivního hodnocení s použitím datovou sadu Amazon recenzí (najdete v tomto dokumentu výzkumu "biografie, Bollywood, Bum polí a Blenders: přizpůsobení domény pro klasifikaci subjektivního hodnocení" podle Blitzer Jan Označit Dredze a ostrov Fernando Pereira; Přidružení výpočetní lingvistiky (ACL), 2007.) Tato datová sada se skládá z revize skóre (1 – 2 nebo 4. – 5) a textu volného tvaru. Cílem je možnost předvídat skóre revizi: Nízká (1 - 2) nebo Vysoká (4 až 5).
+V tomto kurzu se dozvíte tyto kroky jako vás provedeme procesem model analýzy subjektivního hodnocení s použitím datovou sadu Amazon recenzí (najdete v tomto dokumentu výzkumu "biografie, Bollywood, Bum polí a Blenders: Domény přizpůsobení pro klasifikaci subjektivního hodnocení"podle Jan Blitzer označit Dredze a ostrov Fernando Pereira; Přidružení výpočetní lingvistiky (ACL), 2007.) Tato datová sada se skládá z revize skóre (1 – 2 nebo 4. – 5) a textu volného tvaru. Cílem je možnost předvídat skóre revizi: Nízká (1 - 2) nebo Vysoká (4 až 5).
 
 Můžete najít experimenty v galerii Azure AI popsané v tomto kurzu:
 
@@ -55,7 +54,7 @@ Co když chcete použít vlastní seznam stopword? Můžete ho předat jako voli
 
 Po dokončení předzpracování jsme rozdělit data do trénování a testování sad.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Extrahování vektory číselné funkce z předběžného zpracování textu
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Extrahovat vektory číselné funkce z předběžného zpracování textu
 Vytvoříte model pro textová data, budete muset obvykle převést číselné funkce vektory textu volného tvaru. V tomto příkladu používáme [extrahovat N-gramy funkce z textu](https://msdn.microsoft.com/library/azure/mt762916.aspx) modulu pro transformaci textových dat do těchto formátu. Tento modul přebírá sloupce prázdné znaky oddělený slov a vypočítá slovník slov nebo N-gramy slov, které se zobrazí ve vaší datové sadě. Pak určí, kolik času každé slovo nebo N-gramy, zobrazí se všechny záznamy a vytvoří funkci vektory od těch, které se počítá. V tomto kurzu nastavíme N-gramy velikost na 2, proto naši funkci vektory zahrnout jednotlivá slova a kombinací dvou nebo více následujících slov.
 
 ![Extrahovat N-gramy](./media/text-analytics-module-tutorial/extract-ngrams.png)
@@ -68,7 +67,7 @@ Navíc můžete použít výběr součástí vybrat pouze ty funkce, které jsou
 
 Jako alternativní způsob použití funkcí extrahovat N-gramy můžete použít funkce algoritmu hash modulu. Pamatujte ale, že [Hashování](https://msdn.microsoft.com/library/azure/dn906018.aspx) nemá žádné možnosti výběru sestavení v funkce nebo TF * na miskách vah: IDF.
 
-## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Trénovat klasifikační nebo regresní model
+## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Klasifikační nebo regresní model trénovat na základě modelu
 Nyní text transformaci na číselné sloupce. Datovou sadu stále obsahuje řetězec sloupce z předchozích fází, takže použijeme výběr sloupců v datové sadě je z nich vyloučit.
 
 Potom použijeme [Two-Class logistické regrese](https://msdn.microsoft.com/library/azure/dn905994.aspx) předpovědět Naším cílem: vysoká nebo Nízká revize skóre. V tuto chvíli problém text analytics transformaci do regulární klasifikace problému. Můžete použít nástroje, které jsou k dispozici ve službě Azure Machine Learning se model vylepšit. Například můžete experimentovat s jinou třídění a zjistěte, jak přesné výsledky poskytují, nebo použít hyperparameter ladění, aby se zlepšila přesnost.

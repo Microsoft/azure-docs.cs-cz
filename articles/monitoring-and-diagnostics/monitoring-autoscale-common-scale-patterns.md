@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: c7084a10aceafcdd1039893b810fcbd8b74b874b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7fa2cbc831c6bcb734b4a4596a3f75f81e8ee085
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967400"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317028"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>Přehled obecné vzory automatického škálování
 Tento článek popisuje některé běžné vzory škálování prostředku v Azure.
 
 Automatické škálování služby Azure Monitor se týká pouze [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service – Web Apps](https://azure.microsoft.com/services/app-service/web/), a [služby API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-# <a name="lets-get-started"></a>Umožňuje začít
+## <a name="lets-get-started"></a>Umožňuje začít
 
 Tento článek předpokládá, že máte zkušenosti s automatické škálování. Je možné [začněte tady škálovat prostředek][1]. Následují některé běžné vzory škálování.
 

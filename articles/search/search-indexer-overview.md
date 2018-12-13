@@ -1,5 +1,5 @@
 ---
-title: Indexery ve službě Azure Search | Dokumentace Microsoftu
+title: Indexery pro procházení zdroje dat během indexování – vyhledávání Azure
 description: Procházejte databázi SQL Azure, službu Azure Cosmos DB nebo úložiště Azure, extrahujte prohledávatelná data a naplňte jimi index služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: 2164e0b7cc973969e39f5708bb6509c1ed5f636a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: b763da25fb5a707e6a0c0cee1aabbe3eda03ee4c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641131"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312370"
 ---
 # <a name="indexers-in-azure-search"></a>Indexery ve službě Azure Search
 

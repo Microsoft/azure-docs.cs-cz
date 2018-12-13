@@ -1,21 +1,22 @@
 ---
-title: Použití Azure CLI k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
-description: Použijte Azure CLI k vytvoření přiřazení zásady Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
+title: Vytvoření zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
+description: Pomocí Azure CLI k vytvoření přiřazení Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
-ms.openlocfilehash: 343dee2e23567c2552fc5e7c0c0323227deb21de
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+manager: carmonm
+ms.custom: seodec18
+ms.openlocfilehash: 99e8b782f3f52ed89b5188de19d70cb276a0eb84
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078629"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315826"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure pomocí Azure CLI
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí Azure CLI
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.

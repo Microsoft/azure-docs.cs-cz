@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 225cb3d2f78f41bdb17763d13644c1d95bc62710
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c565ccf7ac04e2a3ba86e2fa256a05a9649d2de4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014697"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166145"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
@@ -90,7 +90,7 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
     * **Název**: Hive
     * **Příklad adresy URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Další třídy cestu**: pomocí tlačítka Přidat přidáte všechny dříve stáhli soubory jar
+    * **Extra třídy cesta**: Pomocí tlačítka Přidat přidáte všechny dříve stáhli soubory jar
     * **Název třídy**: org.apache.hive.jdbc.HiveDriver
 
    ![Přidat dialog ovladače](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
@@ -105,20 +105,20 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
     * **Název**: Hive s HDInsight
 
-    * **Ovladač**: pomocí rozevíracího seznamu můžete vybrat **Hive** ovladače
+    * **Ovladač**: Pomocí rozevíracího seznamu můžete vybrat **Hive** ovladače
 
     * **ADRESA URL**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
 
         Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
 
-    * **Uživatelské jméno**: název účtu přihlášení clusteru pro HDInsight cluster. Výchozí formát je `admin`.
+    * **Uživatelské jméno**: Název clusteru přihlášení účtu pro váš cluster HDInsight. Výchozí formát je `admin`.
 
-    * **Heslo**: heslo pro účet přihlášení clusteru.
+    * **Heslo**: Heslo pro účet přihlášení clusteru.
 
  ![Přidat alias dialog](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
     > [!IMPORTANT] 
-    > Použití **Test** tlačítko ověřit, že připojení funguje. Když **připojení k: Hive s HDInsight** se zobrazí dialogové okno, vyberte **připojit** k provedení testu. Pokud je test úspěšný, zobrazí se **úspěšné připojení** dialogového okna. Pokud dojde k chybě, přečtěte si téma [Poradce při potížích s](#troubleshooting).
+    > Použití **Test** tlačítko ověřit, že připojení funguje. Když **připojit: Hive s HDInsight** se zobrazí dialogové okno, vyberte **připojit** k provedení testu. Pokud je test úspěšný, zobrazí se **úspěšné připojení** dialogového okna. Pokud dojde k chybě, přečtěte si téma [Poradce při potížích s](#troubleshooting).
 
     Chcete-li uložit alias připojení, použijte **Ok** tlačítko v dolní části **přidat Alias** dialogového okna.
 
@@ -140,7 +140,7 @@ Příklad použití klientskou sadou Java k dotazu Hive v HDInsight je k dispozi
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Došlo k neočekávané chybě při pokusu o otevření připojení SQL
 
-**Příznaky**: při připojování ke clusteru HDInsight, který je verze 3.3 nebo novější, může se zobrazit chyba, ke které došlo k neočekávané chybě. Trasování zásobníku pro tuto chybu začíná s následujícími řádky:
+**Příznaky**: Při připojování ke clusteru HDInsight, který je verze 3.3 nebo novější, můžete obdržet chybu, že došlo k neočekávané chybě. Trasování zásobníku pro tuto chybu začíná s následujícími řádky:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V

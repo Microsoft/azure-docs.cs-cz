@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozhraní API Cassandra s využitím Node.js – Azure Cosmos DB'
+title: 'Rychlý start: Rozhraní Cassandra API s využitím Node.js – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí Node.js.
 services: cosmos-db
 author: SnehaGunda
@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: a0223547f7ccac9a1fd43776440319b436193d3a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e1015331af3b31fa34170db6c1729b8e38bcbd04
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088676"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251044"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Node.js a Azure Cosmos DB
 
@@ -46,7 +46,7 @@ Než budete moct vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci rozhraní Cassandra API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď naklonujeme aplikaci rozhraní Cassandra API z Githubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
 1. Otevřete příkazový řádek. Vytvořte novou složku s názvem `git-samples`. Pak zavřete příkazový řádek.
 

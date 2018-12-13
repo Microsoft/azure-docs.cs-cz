@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí Azure CLI
+title: Rychlý start – vytvoření privátního registru Dockeru v Azure – Azure CLI
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 services: container-registry
 author: dlepow
@@ -7,15 +7,15 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, H1Hack27Feb2017, mvc
+ms.openlocfilehash: e75a2d126680c71542aa04bae5a30ea7c376cea1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855234"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255920"
 ---
-# <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvořit privátní registr pomocí rozhraní příkazového řádku Azure
 
 Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí Azure CLI, nasdílení image kontejneru do registru a nakonec nasazení kontejneru z registru do služby Azure Container Instances (ACI).
 
@@ -184,7 +184,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, instanc
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Container Registry, nasdíleli jste image kontejneru do registru a prostřednictvím služby Azure Container Instances jste spustili její instanci. Pokračujte ke kurzu služby Azure Container Instances, kde najdete podrobnější přehled ACI.
 

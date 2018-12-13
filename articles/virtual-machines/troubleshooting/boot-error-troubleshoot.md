@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/21/2018
+ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b467618815f2bad8a6816425764fe60707c1db3d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351482"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308137"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Řešení potíží s chybami spuštění Azure Virtual Machines
 
@@ -29,6 +29,10 @@ Tento článek uvádí běžné chyby spuštění, které se mohou zobrazit při
 * [Chyby spuštění nástroje BitLocker](troubleshoot-bitlocker-boot-error.md) 
 * [Windows zobrazit "Kontrola systému souborů" při spuštění](troubleshoot-check-disk-boot-error.md)
 * [Modrá obrazovka chyby](troubleshoot-common-blue-screen-error.md)
+* [Po spuštění virtuálního počítače se zasekla na "získávání Windows připravené](troubleshoot-vm-boot-configure-update.md)
+* [Chyba "FAILED kritické služby" na modrá obrazovka](troubleshoot-critical-service-failed-boot-error.md)
+* [Restartovat problém smyčky](troubleshoot-reboot-loop.md)
+* [Po spuštění virtuálního počítače zasekl ve fázi aktualizace Windows](troubleshoot-stuck-updating-boot-error.md)
 
 ## <a name="next-steps"></a>Další postup
 

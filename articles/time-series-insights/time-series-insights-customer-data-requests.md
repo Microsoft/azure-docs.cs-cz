@@ -1,6 +1,6 @@
 ---
-title: Zákaznická data požadavky na funkce v Azure Time Series Insights
-description: Souhrn funkcí požadavek dat zákazníků.
+title: Podat žádost Azure zákaznická data služby Time Series Insights – zákaznická data o funkce v Azure Time Series Insights | Dokumentace Microsoftu
+description: Souhrn funkcí žádosti o data zákazníků Azure Time Series Insights.
 author: ashannon7
 ms.author: anshan
 manager: cshankar
@@ -8,12 +8,13 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
-ms.openlocfilehash: 4696cdaf96a73c54334f553a0affe459e3476946
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: c749a61fa26b13ffe67c5913d1a11b6c1f0e186b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629731"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276056"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 

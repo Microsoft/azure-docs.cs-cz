@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání pomocí jazyka C# – rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Provádět vyhledávání na webu s C# – rozhraní API REST webové vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu v jazyce C# a dostanete odpověď ve formátu JSON.
+description: Použít tento rychlý start k odesílání požadavků na používání rozhraní API REST webové vyhledávání Bingu C#a získejte odpověď ve formátu JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: d868bec1e19ddde556f3c387646c5d7aa898b7d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 844fe2f65b59caba41697db00e809e34e1fe1017
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313482"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258657"
 ---
-# <a name="quickstart-use-c-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka C# k volání rozhraní API Bingu pro vyhledávání na webu  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>Rychlý start: Hledat na webu pomocí REST API pro vyhledávání Bingu Web aC#
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu a dostanete odpověď ve formátu JSON.  
 
@@ -29,7 +30,7 @@ Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledáv
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * Windows: [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS: [Mono](http://www.mono-project.com/)  
+* Linux nebo macOS: [Mono](http://www.mono-project.com/)  
 * Klíč předplatného
 
 V tomto ukázkovém programu jsou použité jenom třídy .NET Core.

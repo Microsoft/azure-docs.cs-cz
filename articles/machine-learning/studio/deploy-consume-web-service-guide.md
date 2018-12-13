@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: a596fe572e31a330fa976470d31dc7d0de5b0398
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: ed57f80a210cdb9c7ff8e77da2269d8494892fcc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073733"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268423"
 ---
-# <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning: Nasazení a využití
+# <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio webové služby: Nasazení a využití
 Azure Machine Learning můžete použít k nasazení pracovních postupů machine learning a modely jako webové služby. Tyto webové služby můžete pak použita pro volání modely strojového učení z aplikací přes Internet vytvářející předpovědi v reálném čase nebo v dávkovém režimu. Protože jsou webové služby RESTful, můžete je volat z různé programovací jazyky a platformy, jako je .NET nebo Javě a z aplikace, jako je Excel.
 
 Následující části obsahují odkazy na návody, kód a dokumentaci, která vám pomůžou začít.
@@ -37,7 +36,7 @@ Následující odkazy obsahují obecné informace o tom, jak nasadit nové webov
 
 * Přehled o tom, jak nasadit novou webovou službu, která je založená na Azure Resource Manageru najdete v tématu [nasazení nové webové služby](publish-a-machine-learning-web-service.md).
 * Návod, jak nasadit webovou službu, naleznete v tématu [nasazení webové služby Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Úplný návod o tom, jak vytvořit a nasadit webovou službu, naleznete v tématu [návod krok 1: vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md).
+* Úplný návod o tom, jak vytvořit a nasadit webovou službu, naleznete v tématu [návod krok 1: Vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md).
 * Konkrétní příklady, které nasazení webové služby naleznete v tématu:
 
   * [Krok 5 průvodce: Nasazení webové služby Azure Machine Learning](walkthrough-5-publish-web-service.md)

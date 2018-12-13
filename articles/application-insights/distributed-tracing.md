@@ -10,16 +10,16 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: aa163d215f4b9c396585dbba63883a3d1beff457
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638371"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164258"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
-Nástupu moderních architektur mikroslužeb a cloud vyvolalo jednoduchého, samostatně nasaditelných služeb, které pomáhají snižovat náklady a současně zvýšit dostupnost a propustnost. Ale Přestože tyto pohybů plb typu jsme usnadnili individuálních služeb, a pochopit jako celek, tuším celkové systémy obtížnější odůvodnitelný a ladění.
+Nástupu moderních cloudových a [mikroslužeb](http://azure.com/microservices) architektury vyvolalo jednoduchého, samostatně nasaditelných služeb, které pomáhají snižovat náklady a současně zvýšit dostupnost a propustnost. Ale Přestože tyto pohybů plb typu jsme usnadnili individuálních služeb, a pochopit jako celek, tuším celkové systémy obtížnější odůvodnitelný a ladění.
 
 V monolitické architektury jste získali jsme použili až po ladění zásobníky volání. Zásobníky volání jsou vynikající nástroje pro zobrazení toku provádění (metoda volaná metoda B, který volá metodu C), spolu s detaily a parametry, které o každé z těchto volání. To je skvělé pro monolitické nebo služby spuštěné v jednom procesu, ale jak kdy budeme ladit je hranice procesu, nikoli pouze odkaz na místní zásobník volání? 
 

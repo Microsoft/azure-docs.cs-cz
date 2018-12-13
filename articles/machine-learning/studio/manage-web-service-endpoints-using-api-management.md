@@ -7,7 +7,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 05150ae1-5b6a-4d25-ac67-fb2f24a68e8d
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 76898d2b55d5187e12b91dbd6c9a85af6a274726
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8f82332b02d2e7bbf937a84de42714392e3fccd6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091709"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258181"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
@@ -224,7 +223,7 @@ Klikněte na tlačítko **Ano** publikovat experimentu.
 ![Ano k publikování](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Test webové služby
-Webové služby Azure ml se skládá z kanálu RSS (požadavku nebo odpovědi služby) a BES (služba batch execution) koncových bodů. RSS je pro synchronní zpracování. BES je pro provádění asynchronní úlohy. K otestování webové služby s vzorový zdroj Python níže, budete muset stáhnout a nainstalovat sadu Azure SDK pro Python (viz: [instalace Pythonu](../../python-how-to-install.md)).
+Webové služby Azure ml se skládá z kanálu RSS (požadavku nebo odpovědi služby) a BES (služba batch execution) koncových bodů. RSS je pro synchronní zpracování. BES je pro provádění asynchronní úlohy. K otestování webové služby s vzorový zdroj Python níže, budete muset stáhnout a nainstalovat sadu Azure SDK pro jazyk Python (naleznete v tématu: [Postup instalace Pythonu](../../python-how-to-install.md)).
 
 Budete také potřebovat **pracovní prostor**, **služby**, a **klíč rozhraní API** experimentu pro následující vzorový zdroj. Pracovní prostor a služby zjistíte kliknutím na možnost **žádostí a odpovědí** nebo **Batch Execution** pro experiment v řídicím panelu webové služby.
 

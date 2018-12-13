@@ -10,14 +10,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2018
+ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0d9af16e77f39859135fe18fc810d4fca6635e19
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: bc8726499f900602bf1dbfc58a7ea2574a483245
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425812"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273897"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Přihlášení k odběru událostí účtu úložiště objektů blob pomocí PowerShellu
 
@@ -25,7 +25,7 @@ Tento skript vytvoří odběr Event Gridu pro události účtu úložiště obje
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a>Ukázkový skript
+## <a name="sample-script---stable"></a>Ukázkový skript – stabilní
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-blob-storage/subscribe-to-blob-storage.ps1 "Subscribe to Blob storage")]
 
@@ -37,7 +37,7 @@ Tento skript k vytvoření odběru událostí používá následující příkaz
 |---|---|
 | [New-AzureRmEventGridSubscription](https://docs.microsoft.com/powershell/module/azurerm.eventgrid/new-azurermeventgridsubscription) | Vytvoří odběr Event Gridu. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací Azure](../overview.md).
 * Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/azure/get-started-azureps).

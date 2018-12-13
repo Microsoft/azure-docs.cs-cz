@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 63eb5f39d5ac8ba6c92a2b500766bc538959595c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245762"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274186"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrace na upozornění protokolu aktivit Azure výstrahy týkající se událostí správy
 
@@ -92,18 +92,18 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 Každé upozornění jsou oddělené oddělovačem na přerušovanou čáru a podrobnosti zahrnují ID prostředku výstrahy a příslušné pravidlo monitoruje.
 
-Tato funkce byla převedena do [upozornění protokolu aktivit Azure Monitor](monitoring-activity-log-alerts.md). Tyto nové výstrahy umožňují nastavit podmínku pro události protokolu aktivit a při vytvoření nové události odpovídá podmínce, dostanete oznámení. Také nabízí několik vylepšení z výstrahy na události správy:
-* Můžete znovu použít, vaše skupina příjemců oznámení ("akce") mezi výstrahami generovanými při použití [skupiny akcí](monitoring-action-groups.md), omezil složitost změny, kdo by měl zobrazit upozornění.
+Tato funkce byla převedena do [upozornění protokolu aktivit Azure Monitor](../azure-monitor/platform/activity-log-alerts.md). Tyto nové výstrahy umožňují nastavit podmínku pro události protokolu aktivit a při vytvoření nové události odpovídá podmínce, dostanete oznámení. Také nabízí několik vylepšení z výstrahy na události správy:
+* Můžete znovu použít, vaše skupina příjemců oznámení ("akce") mezi výstrahami generovanými při použití [skupiny akcí](../azure-monitor/platform/action-groups.md), omezil složitost změny, kdo by měl zobrazit upozornění.
 * Upozornění můžete dostávat přímo na váš telefon SMS pomocí skupin akcí.
-* Je možné [vytvoření upozornění protokolu aktivit se šablonami Resource Manageru](alert-activity-log.md).
+* Je možné [vytvoření upozornění protokolu aktivit se šablonami Resource Manageru](../azure-monitor/platform/alerts-activity-log.md).
 * Podmínky lze vytvořit s větší flexibilitou a složitosti a vyhovět vašim konkrétním potřebám.
 * Oznámení se dodávají rychleji.
  
 ## <a name="how-to-migrate"></a>Jak migrovat
  
 Chcete-li vytvořit novou aktivitu protokolu oznámení na, můžete buď:
-* Postupujte podle [naší příručce o tom, jak vytvořit upozornění na webu Azure Portal](monitoring-activity-log-alerts.md)
-* Zjistěte, jak [vytvořte výstrahu pomocí šablony Resource Manageru](alert-activity-log.md)
+* Postupujte podle [naší příručce o tom, jak vytvořit upozornění na webu Azure Portal](../azure-monitor/platform/activity-log-alerts.md)
+* Zjistěte, jak [vytvořte výstrahu pomocí šablony Resource Manageru](../azure-monitor/platform/alerts-activity-log.md)
  
 Výstrahy na události správy, které jste předtím vytvořili nebudou automaticky migrovat na upozornění protokolu aktivit. Budete muset použít předchozí skript prostředí PowerShell pro zobrazení seznamu výstrah událostí správy jste nakonfigurovali a ručně je znovu vytvořit jako upozornění protokolu aktivit. To je nutné provést před 1. října, po jejímž uplynutí výstrahy na události správy nebudou viditelné ve vašem předplatném Azure. Jiné typy upozornění v Azure, včetně upozornění metrik Azure monitoru, Application Insights výstrah a upozornění Log Analytics se tato změna nemá vliv. Pokud máte nějaké dotazy, publikuje do komentářů dole.
 
@@ -111,8 +111,8 @@ Výstrahy na události správy, které jste předtím vytvořili nebudou automat
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [protokolu aktivit](monitoring-overview-activity-logs.md)
-* Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](monitoring-activity-log-alerts.md)
-* Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](alert-activity-log.md)
-* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](monitoring-activity-log-alerts-webhook.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím webu Azure portal](../azure-monitor/platform/activity-log-alerts.md)
+* Konfigurace [upozornění protokolu aktivit prostřednictvím Resource Manageru](../azure-monitor/platform/alerts-activity-log.md)
+* Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)
 * Další informace o [oznámení služby](monitoring-service-notifications.md)
-* Další informace o [skupiny akcí](monitoring-action-groups.md)
+* Další informace o [skupiny akcí](../azure-monitor/platform/action-groups.md)

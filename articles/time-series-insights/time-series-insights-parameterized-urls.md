@@ -1,5 +1,5 @@
 ---
-title: Sdílení vlastních zobrazení Azure Time Series Insights pomocí parametrizovaných adres URL | Dokumentace Microsoftu
+title: Čas Series Insights adresy URL Azure – vlastní zobrazení sdílené složky Azure Time Series Insights pomocí parametrizovaných adres URL | Dokumentace Microsoftu
 description: Tento článek popisuje vývoj parametrizovaných adres URL ve službě Azure Time Series Insights za účelem snadného sdílení zobrazení zákazníka.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: dbd717d79230c5dc2fc823484376267e7b7b8ab1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 5b43ba4c3f88c678b160e8aec442fa92b4822a3d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628796"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274356"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Sdílení vlastního zobrazení pomocí parametrizovaných adres URL
 
@@ -70,7 +71,7 @@ Parametr `timeSeriesDefinitions=<collection of term objects>` určuje podmínky 
   - Název sloupce obsahujícího *míru*.
 - "predicate":"<string>"
   - Klauzule *kde* pro filtrování na straně serveru.
--  "useSum":"true"
+- "useSum":"true"
   - Volitelný parametr určující používání součtu pro vaši míru.  Pokud je jako míra vybraná hodnota Events, je standardně vybraný počet.  Pokud není vybrána hodnota Events, je standardně vybraný průměr.  
 
 Parametr 'multiChartStack=<true/false>' povoluje umístění grafu do zásobníku a parametr 'multiChartSameScale=<true/false>' umožňuje stejné měřítko osy Y v podmínkách volitelného parametru.  

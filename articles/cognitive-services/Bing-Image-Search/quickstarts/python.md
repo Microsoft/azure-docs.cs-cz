@@ -1,6 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání obrázků pomocí Pythonu – rozhraní API Bingu pro vyhledávání obrázků'
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Pythonu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
+title: 'Rychlý start: Hledání obrázků - API REST pro vyhledávání obrázků Bingu a Python'
+titleSuffix: Azure Cognitive Services
+description: Použít tento rychlý start k odesílání požadavků vyhledávání obrázků Bingu Image Search REST API pomocí Pythonu a přijímat odpověďmi ve formátu JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -9,14 +10,15 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: a51935300238235338ec30ec7061101745b0e0e5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: a93a044279cccd883de5f946bb236cad4b088ae2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314384"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261973"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Rychlý start: Odeslání vyhledávacích dotazů s využitím rozhraní REST API a Pythonu
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rychlý start: Hledání obrázků pomocí API REST pro vyhledávání obrázků Bingu a Pythonu
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání obrázků a dostanete odpověď ve formátu JSON. Tato jednoduchá aplikace Pythonu odesílá vyhledávací dotaz do rozhraní API a zobrazuje nezpracované výsledky.
 

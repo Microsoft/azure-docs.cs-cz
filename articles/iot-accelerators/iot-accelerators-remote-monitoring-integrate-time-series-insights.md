@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e6dcbf9d185b45c18261e47e9d575adf40812611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317480"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253812"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -212,7 +212,7 @@ Konfigurace prostředí, které `basic` nasazení aktualizované mikroslužeb.
 
 1. Přejděte do **nastavení** > **klíče** a vytvořte nový klíč pro vaši aplikaci. Ujistěte se, že jste hodnotu klíče zkopírovat do bezpečného umístění.
 
-1. O přijetí změn [nejnovější docker compose soubor yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) z úložiště Github pomocí nejnovější značky. 
+1. O přijetí změn [nejnovější docker compose soubor yaml](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) z úložiště GitHub pomocí nejnovější značky. 
 
 1. SSH k virtuálnímu počítači podle kroků uvedených v [postupy vytváření a používání klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 

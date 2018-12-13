@@ -4,14 +4,14 @@ description: Poskytuje základní informace o známých problémech ve službě 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9303f20d84547dee62e7012e0dca50f47ad54083
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4ebd6eb860a6b102d1a3b12642510c429c18baa7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839581"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259150"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -23,11 +23,11 @@ ms.locfileid: "52839581"
 
 Průběžná zjišťování zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+- Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
    ![Zastavit zjišťování](./media/troubleshooting-general/stop-discovery.png)
 
-- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+- Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Vytvoření projektu Migrace selhala s chybou *požadavky musí obsahovat hlavičky identity uživatele*
 
@@ -41,23 +41,31 @@ Pokud nemůžete exportovat sestavu posouzení je z portálu, zkuste použít n�
 
 1. Nainstalujte *armclient* ve vašem počítači (Pokud nemáte je již nainstalována):
 
-a. V okně příkazového řádku správce spusťte následující příkaz:  *@powershell - NoProfile - ExecutionPolicy obejít - příkaz "iex ((System.Net.WebClient New-Object). DownloadString('https://chocolatey.org/install.ps1')) "& & SET"PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"*
+  a. V okně příkazového řádku správce spusťte následující příkaz: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
 
-b.In oknem správce prostředí Windows PowerShell spusťte následující příkaz: *choco nainstalovat armclient*
+  b. V okně Správce Windows PowerShell spusťte následující příkaz: ```choco install armclient```
 
 2.  Získat adresu URL pro stažení sestavy posouzení pomocí Azure Migrate rozhraní REST API
 
-a.  V okně Správce Windows PowerShell, spusťte následující příkaz: *armclient přihlášení* tím se otevře Azure místní přihlášení potřebujete-li přihlásit k Azure.
+  a.    V okně Správce Windows PowerShell spusťte následující příkaz: ```armclient login```
 
-b.  Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
+  Tím se otevře Azure místní přihlášení potřebujete-li přihlásit k Azure.
 
-       *armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02*
+  b.    Ve stejném okně prostředí PowerShell spusťte následující příkaz můžete získat adresu URL ke stažení pro sestavu hodnocení (nahradit níže požádat o parametry identifikátoru URI příslušnými hodnotami ukázkové rozhraní API)
 
-Ukázka požadavku a výstup:
+       ```armclient POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
 
-PS C:\WINDOWS\system32 > armclient příspěvek https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2 018_12_16_21/downloadUrl? api-version = 2018-02-02 {" assessmentReportUrl":"https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r","expirationTime":" 2018-11-20T22:09:30.5681954 + 05:30 "
+       Ukázka požadavku a výstup:
+
+       ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
+esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
+018_12_16_21/downloadUrl?api-version=2018-02-02
+{
+  "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
+  "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
 3. Zkopírujte adresu URL z odpovědi a otevřít ji v prohlížeči si chcete stáhnout sestavu posouzení.
+
 4. Po stažení sestavy pomocí aplikace Excel přejděte do složky stažené a otevřete ho v aplikaci Excel k jeho zobrazení.
 
 ### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Ukazuje údaje o výkonu pro adaptéry disků a sítí, jako nuly
@@ -74,7 +82,7 @@ Můžete přejít na **Essentials** tématu **přehled** stránce projektu k ide
 
 ## <a name="collector-errors"></a>Chyby kolektoru
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení služby Azure Migrate Collector se nezdařilo s chybou: Zadaný soubor manifestu je neplatný: Neplatný OVF manifestu položka.
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Nasazení služby Azure Migrate Collector se nezdařilo s chybou: Zadaný soubor manifestu je neplatný: Neplatná položka manifestu OVF.
 
 1. Ověření, pokud je soubor Azure Migrate Collector OVA správně stáhnout tak, že zkontrolujete jeho hodnotu hash. Informace o tom, jak zkontrolovat hodnotu hash, najdete v tomto [článku](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Pokud hodnota hash neodpovídá, znovu stáhnout soubor OVA a pokusem o nasazení.
 2. Pokud se zase nepodaří a pokud nasazujete soubor OVF pomocí klienta VMware vSphere, zkuste ho nasadit pomocí webového klienta vSphere. Pokud stále nedaří, zkuste použít jiný webový prohlížeč.
@@ -112,7 +120,7 @@ Ujistěte se, že jste zkopírovat a vložit správné informace. Řešení pot�
 7. Ověřte, zda agent může připojit k projektu. Pokud ne, ověřte nastavení. Pokud může agent připojit, ale nemůže kolektoru, obraťte se na podporu.
 
 
-### <a name="error-802-date-and-time-synchronization-error"></a>Chyba 802: Datum a čas Chyba synchronizace
+### <a name="error-802-date-and-time-synchronization-error"></a>Chyba 802: Chyba synchronizace data a času
 
 Hodiny serveru může být mimo synchronizace s aktuálním časem o víc než pět minut. Změníte čas v kolekci virtuálních počítačů tak, aby odpovídaly aktuálního času, následujícím způsobem:
 
@@ -128,7 +136,7 @@ Azure Migrate collector PowerCLI stáhne a nainstaluje na zařízení. Chyba př
 2. Přejděte do adresáře C:\ProgramFiles\ProfilerService\VMWare\Scripts\
 3. Spusťte skript InstallPowerCLI.ps1
 
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Chyba interní chybě UnhandledException: System.IO.FileNotFoundException
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Došlo k chybě k interní chybě UnhandledException: System.IO.FileNotFoundException
 
 Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Postupujte podle níže uvedený postup k vyřešení daného problému:
 
@@ -138,7 +146,7 @@ Tomuto problému může dojít kvůli problému s instalací VMware PowerCLI. Po
 
 ### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
 
-Nejde se připojit k vCenter Serveru Servername.com:9443, protože došlo k chybě: Na https://Servername.com:9443/sdk neposlouchal žádný koncový bod, který by mohl tuto zprávu přijmout.
+Nelze se připojit k vCenter serveru "Servername.com:9443" kvůli chybě: Existuje neposlouchal žádný koncový bod v https://Servername.com:9443/sdk , který by mohl přijmout zprávu.
 
 Zaškrtněte, pokud budete používat nejnovější verzi zařízení kolektoru a pokud ne, upgradovat zařízení, abyste [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
 
@@ -150,6 +158,10 @@ Pokud problém pořád probíhá na nejnovější verzi, je možné, protože po
 4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
 
 ## <a name="dependency-visualization-issues"></a>Problémy s vizualizace závislostí
+
+### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Nejde najít funkce vizualizace závislostí pro projekty Azure Government.
+
+Azure Migrate závisí na řešení Service Map pro funkce vizualizace závislostí a Service Map je nyní k dispozici ve službě Azure Government, tato funkce není k dispozici ve službě Azure Government.
 
 ### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Nainstalovat Microsoft Monitoring Agent (MMA) a agenta závislostí na místních virtuálních počítačů, ale závislosti se teď zobrazují na portálu Azure Migrate.
 

@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/06/2018
+ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5ceb2d737083e2a218fc624c4e1a2f6d8fd0db1d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
-ms.translationtype: HT
+ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49312595"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323667"
 ---
-Můžete použít buď kořenový certifikát vygenerovaný pomocí podnikového řešení (doporučeno), nebo můžete vygenerovat certifikát podepsaný svým držitelem. Po vytvoření kořenového certifikátu vyexportujte data veřejného certifikátu (ne privátní klíč) jako soubor .cer X.509 v kódování Base-64 nahrajte data veřejného certifikátu do Azure.
+Použít buď kořenový certifikát vygenerovaný pomocí podnikového řešení (doporučeno) nebo vygenerovat certifikát podepsaný svým držitelem. Po vytvoření kořenového certifikátu exportujte data veřejného certifikátu (ne privátní klíč) jako soubor .cer X.509 s kódováním Base64. Nakonec odešlete data veřejného certifikátu na Azure server.
 
-* **Podnikový certifikát:** Pokud používáte podnikové řešení, můžete použít stávající řetěz certifikátů. Získejte soubor .cer pro kořenový certifikát, který chcete používat.
-* **Kořenový certifikát podepsaný svým držitelem:** Pokud nepoužíváte podnikové certifikační řešení, musíte vytvořit kořenový certifikát podepsaný svým držitelem. Je důležité, abyste postupovali podle pokynů v některém z níže uvedených článků věnujících se certifikátům Point-to-Site. Jinak certifikáty, které vytvoříte, nebudou kompatibilní s připojeními typu Point-to-Site a klienti při pokusu o připojení obdrží chybu připojení. Můžete použít Azure PowerShell, MakeCert nebo OpenSSL. Kompatibilní certifikát můžete vytvořit pomocí postupu v uvedených článcích:
+* **Podnikový certifikát:** Pokud používáte podnikové řešení, můžete použít stávající řetěz certifikátů. Získání souboru .cer pro kořenový certifikát, který chcete použít.
+* **Certifikát podepsaný svým držitelem:** Pokud nepoužíváte podnikové certifikační řešení, vytvořte certifikát podepsaný svým držitelem. Jinak certifikáty, které vytvoříte, nebudou kompatibilní s vaší připojení typu P2S a klienti budou při pokusu o připojení obdrží chybu připojení. Můžete použít Azure PowerShell, MakeCert nebo OpenSSL. Kroky v následující články popisují, jak vygenerovat certifikát podepsaný svým držitelem kořenové kompatibilní:
 
-  * [Pokyny pro Windows 10 PowerShell:](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) Tyto pokyny pro generování certifikátů vyžadují Windows 10 a PowerShell. Klientské certifikáty vygenerované pomocí kořenového certifikátu můžete nainstalovat na jakémkoli podporovaném klientu Point-to-Site.
-  * [Pokyny pro MakeCert:](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) Použijte MakeCert, pokud nemáte přístup k počítači s Windows 10, který byste mohli použít ke generování certifikátů. Nástroj MakeCert je zastaralý, ale stále ho můžete použít ke generování certifikátů. Klientské certifikáty vygenerované pomocí kořenového certifikátu můžete nainstalovat na jakémkoli podporovaném klientu Point-to-Site.
+  * [Pokyny pro Windows 10 PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md): Tyto pokyny vyžadují Windows 10 a PowerShell, čímž vygenerujete certifikáty. Klientské certifikáty vygenerované pomocí kořenového certifikátu můžete nainstalovat na jakémkoli podporovaném klientu Point-to-Site.
+  * [Pokyny pro MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Použijte MakeCert, pokud nemáte přístup k počítači s Windows 10 pro generování certifikátů. I když MakeCert je zastaralý, slouží stále ke generování certifikátů. Klientské certifikáty, které generují z kořenového certifikátu můžete nainstalovat na všech podporovaných klientů P2S.
   * [Pokyny pro Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)

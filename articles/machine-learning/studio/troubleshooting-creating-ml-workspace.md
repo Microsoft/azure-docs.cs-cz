@@ -4,9 +4,8 @@ description: Tato příručka poskytuje řešení pro některé často problémy
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
 ms.service: machine-learning
@@ -16,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 878b26b72263ddd640e1cfa936c1e4ade1af6d68
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312045"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275274"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Machine Learning Studio
+# <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Průvodce odstraňováním potíží: Vytvoření a připojení k pracovnímu prostoru Azure Machine Learning Studio
 Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="workspace-owner"></a>Vlastník pracovního prostoru
 Otevřete pracovní prostor v Machine Learning Studio, musíte být přihlášeni k Account Microsoft jste použili k vytvoření pracovního prostoru, nebo potřebujete přijmout pozvánku od vlastníka k pracovnímu prostoru. Na webu Azure Portal můžete spravovat pracovní prostor, který zahrnuje možnost konfigurovat přístup.

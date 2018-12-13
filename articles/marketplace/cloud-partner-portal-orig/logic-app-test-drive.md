@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d784941c43da13a2c1bd120599aa02fe14e5a5b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722968"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258198"
 ---
 <a name="logic-app-test-drive"></a>Jednotky Test aplikace logiky
 ====================
@@ -29,7 +29,7 @@ Tento článek je určený pro vydavatele, kteří mají jejich nabídek zveřej
 <a name="how-to-build-a-logic-app-test-drive"></a>Jak vytvořit jednotku Test aplikace logiky
 -----------------------------------
 
-Testovací jednotky dokumentaci pro logiku aplikace testů jednotek je aktuálně stále na githubu pro [operace](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) a [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)najdete zde přečíst více.
+Testovací jednotky dokumentaci pro logiku aplikace testů jednotek je aktuálně stále na Githubu pro [operace](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) a [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)najdete zde přečíst více.
 
 <a name="how-to-publish-a-test-drive"></a>Jak publikovat testovací verze
 ---------------------------
@@ -40,7 +40,7 @@ Teď, když máte vaše testovací verze vytvořené, tato část vás provede k
 
 Můžete určit, jestli chcete, aby Test s všechna požadovaná pole ve formuláři se zobrazí za vás o vyplnění je první a nejdůležitější pole. Když vyberete **Ne,** formuláře bude zakázáno a opětovné publikování pomocí testovací verze zakázán, vaše testovací verze se odebere z produkčního prostředí.
 
-*Poznámka:*: Pokud je Test jednotky aktivně používá uživatelů, tyto testovací verze bude pokračovat až do vypršení platnosti jejich relace.
+*Poznámka:*: Pokud neexistuje žádné testovací verze aktivně používá uživatelů, tyto testovací verze bude pokračovat ke spuštění, dokud nevyprší jejich relace.
 
 ### <a name="details"></a>Podrobnosti
 
@@ -74,7 +74,7 @@ Další části a vyplňte je můžete konfigurovat aplikaci logiky testovací j
 
 - **Maximální souběžných testovacími verzemi** - *[vyžaduje pole]* instance číslo jednotky testů, které už jsou nasazené a čeká se na přístup za vybrané oblasti. Zákazníci mají okamžitě přístup k tento Test jednotky a nemusíte čekat pro nasazení.
 
-    *Poznámka:* používáte webinář/třídy místo všechny studenty, aby si testovací jízdu číslo N, se doporučuje pro publikování s číslem N horké instancí a pak jednou třída je více než znovu publikovat zpět na vaše číslo normální výměně instancí.
+    *Poznámka:* Pokud používáte webinář/třídy místo všechny studenty, aby si testovací jízdu číslo N, se doporučuje pro publikování s číslem N horké instancí a pak jednou třída je více než znovu publikovat zpět na vaše číslo normální výměně instancí.
 
 - **Jednotka doba trvání testu (hodiny) -** *[vyžaduje pole]* dobu jak dlouho Test Drive zůstane aktivní, v \# hodin. Po skončení tohoto období se automaticky ukončí na testovací verzi.
 

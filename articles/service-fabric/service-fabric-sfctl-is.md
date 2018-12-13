@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 53e49099fd3486d51f021528c9354cf32f4952d2
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: abc1e835fa153fc5d061cca5a3eb009931240332
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492785"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276328"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Dotazování a posílání příkazů do služeb infrastruktury.
@@ -41,7 +41,7 @@ Pro clustery, které mají jednu nebo více instancí služby infrastruktury nak
 |Argument|Popis|
 | --- | --- |
 | – příkaz [povinné] | Text příkazu, který má být volána. Obsah příkazu je specifické pro infrastrukturu. |
-| – id služby | Identita služeb infrastruktury. <br><br> Toto je úplný název služeb infrastruktury bez "prostředky infrastruktury" schéma identifikátoru URI. Tento parametr se vyžaduje jenom pro cluster, který má více než jednu instanci služby infrastruktury, které jsou spuštěné. |
+| – id služby | Identita služeb infrastruktury. <br><br> Toto je úplný název služeb infrastruktury bez "fabric\:' schéma identifikátoru URI. Tento parametr se vyžaduje jenom pro cluster, který má více než jednu instanci služby infrastruktury, které jsou spuštěné. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty

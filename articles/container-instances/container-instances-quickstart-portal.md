@@ -1,21 +1,21 @@
 ---
-title: Rychlý start – spuštění aplikace ve službě Azure Container Instances
-description: V tomto rychlém startu nasadíte pomocí webu Azure Portal kontejner Dockeru ve službě Azure Container Instances.
+title: Rychlý start – spuštění aplikace ve službě Azure Container Instances – portál
+description: V tomto rychlém startu použijete Azure portal k nasazení aplikace typu kontejner Dockeru pro spuštění v izolovaného kontejneru ve službě Azure Container Instances
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857716"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190284"
 ---
-# <a name="quickstart-run-an-application-in-azure-container-instances"></a>Rychlý start: Spuštění aplikace ve službě Azure Container Instances
+# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Rychlý start: Spuštění aplikace typu kontejner ve službě Azure Container Instances na webu Azure Portal
 
 Spouštějte kontejnery Dockeru v Azure rychle a snadno pomocí Azure Container Instances. Nemusíte nasazovat virtuální počítače ani používat úplnou platformu orchestrace kontejnerů jako Kubernetes. V tomto rychlém startu vytvoříte pomocí webu Azure Portal kontejner v Azure a zpřístupníte jeho aplikaci s použitím plně kvalifikovaného názvu domény. Po konfiguraci několika nastavení a nasazení kontejneru můžete přejít na běžící aplikaci:
 
@@ -37,7 +37,7 @@ Do textových polí **Název kontejneru**, **Image kontejneru** a **Skupina pros
 
 * Název kontejneru: `mycontainer`
 * Image kontejneru: `microsoft/aci-helloworld`
-* Skupina prostředků: **Vytvořit novou** > `myResourceGroup`
+* Skupina zdrojů: **Vytvořit nový** > `myResourceGroup`
 
 ![Konfigurace základního nastavení pro novou instanci kontejneru na webu Azure Portal][aci-portal-03]
 
@@ -85,7 +85,7 @@ Jakmile se zobrazí potvrzovací dialogové okno, vyberte **Ano**.
 
 ![Potvrzení odstranění instance kontejneru na webu Azure Portal][aci-portal-10]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili instanci kontejneru Azure z image ve veřejném registru Docker Hub. Pokud chcete sestavit image kontejneru a nasadit ji z privátního registru kontejnerů Azure, pokračujte ke kurzu služby Azure Container Instances.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz klasifikace obrázků: trénování modelů'
+title: 'Kurz klasifikace obrázků: Trénování modelů'
 titleSuffix: Azure Machine Learning service
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning trénovat model klasifikace obrázků s využitím knihovny scikit-learn v poznámkovém bloku Python Jupyter. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc61465615e35c071466c7a1350c8e9794a7f78e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a2208e160d641d762b57668cdc635fe877677ff5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099102"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310109"
 ---
-# <a name="tutorial-part-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz (část 1): trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
+# <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
 V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Školení a pracovní postup nasazení budete používat pro službu Azure Machine Learning v poznámkovém bloku Jupyter pro Python.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
@@ -35,7 +35,7 @@ Naučte se:
 
 Postup pro výběr modelu a jeho nasazení se dozvíte v [druhé části tohoto kurzu](tutorial-deploy-models-with-aml.md) později. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
 > V tomto článku kódu byl testován s Azure Machine Learning SDK verze 1.0.2
@@ -384,15 +384,15 @@ První spuštění trvá **přibližně 10 minut**. Ale pro následná spouště
 
 Zde je uvedeno, co se děje, zatímco čekáte:
 
-- **Vytvoření image**: Vytvoří se image Dockeru odpovídající prostředí Pythonu specifikovaném estimátorem. Image se nahraje do pracovního prostoru. Vytvoření a nahrání image trvá **asi 5 minut**. 
+- **Obrázek vytvoření**: Vytvoření image Dockeru odpovídající prostředí Python určené odhadu. Image se nahraje do pracovního prostoru. Vytvoření a nahrání image trvá **asi 5 minut**. 
 
   Tato fáze nastane jednou pro každé prostředí Pythonu, protože kontejner je uložen v mezipaměti pro následná spouštění.  Při vytváření image se streamují protokoly do historie spuštění. Pomocí těchto protokolů můžete sledovat průběh vytváření image.
 
-- **Škálování**: Pokud vzdálený cluster vyžaduje k provedení spuštění více uzlů, než je aktuálně k dispozici, přidají se automaticky další uzly. Škálování obvykle trvá **asi 5 minut**.
+- **Škálování**: Pokud vzdálený cluster vyžaduje ke spuštění spustit, než je aktuálně k dispozici více uzlů, další uzly jsou přidány automaticky. Škálování obvykle trvá **asi 5 minut**.
 
-- **Spuštění**: V této fázi se do cílového výpočetního prostředí odešlou nezbytné skripty a soubory, následně jsou připojena/zkopírována úložiště dat a potom se spustí parametr entry_script. Když úloha běží, adresáře stdout a /logs se streamují do historie spuštění. Pomocí těchto protokolů můžete sledovat průběh spuštění.
+- **Spuštění**: V této fázi se nutných skriptů a souborů se odešlou do cílové výpočetní prostředí, pak úložišť dat jsou připojené nebo zkopírován a pak spustit entry_script. Když úloha běží, adresáře stdout a /logs se streamují do historie spuštění. Pomocí těchto protokolů můžete sledovat průběh spuštění.
 
-- **Následné zpracování**: Adresář /outputs spuštění se zkopíruje do historie spuštění ve vašem pracovním prostoru, abyste získali přístup k těmto výsledkům.
+- **Následné zpracování**: . / Výstupy se adresář spuštění kopíruje do historie spuštění ve vašem pracovním prostoru, se zobrazí tyto výsledky.
 
 
 Průběh spuštěné úlohy můžete kontrolovat několika různými způsoby. Tento kurz používá widget Jupyter a také metodu `wait_for_completion`. 

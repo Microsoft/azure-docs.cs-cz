@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 03e67508aab57a825c851f2cb3d361c0aea63f72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 566ab8d14ebce04a2cba208dd72efc3782d5ad41
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109698"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256294"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Jak spravovat Azure Monitor pro kontejnery agenta
 Azure Monitor pro kontejnery používá kontejnerizovaných verzi agenta Log Analytics pro Linux. Po počátečním nasazení jsou rutiny nebo volitelné kroky, možná bude nutné provést během životního cyklu. Tento článek uvádí, o tom, jak ručně agenta upgradovat a zakázat kolekci proměnných prostředí od konkrétního kontejneru. 
@@ -62,9 +62,9 @@ Stav by měl vypadat následovně, kde hodnota *omi* a *omsagent* by měl odpov�
     docker-cimprov 1.0.0.31
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Jak zakázat kolekci proměnných prostředí v kontejneru
-Azure Monitor pro kontejnery shromažďuje z kontejnery spuštěné v podu proměnné prostředí a zobrazí v podokně vlastností vybraného kontejneru v **kontejnery** zobrazení. Toto chování můžete ovládat zakázáním kolekce pro konkrétní kontejner buď během nasazování clusteru AKS nebo po nastavením proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici od verze agenta – ciprod11292018 a vyšší.  
+Azure Monitor pro kontejnery shromažďuje z kontejnery spuštěné v podu proměnné prostředí a zobrazí v podokně vlastností vybraného kontejneru v **kontejnery** zobrazení. Toto chování můžete ovládat zakázáním kolekce pro konkrétní kontejner buď během nasazování clusteru AKS, nebo za nastavením proměnné prostředí *AZMON_COLLECT_ENV*. Tato funkce je k dispozici od verze agenta – ciprod11292018 a vyšší.  
 
-Zakázání shromažďování systémových proměnných na nový nebo existující kontejner, nastavte proměnnou *AZMON_COLLECT_ENV* s hodnotou *False* konfigurační soubor yaml nasazení Kubernetes.   
+Zakázání shromažďování systémových proměnných na nový nebo existující kontejner, nastavte proměnnou **AZMON_COLLECT_ENV** s hodnotou **False** v konfiguračním souboru yaml nasazení Kubernetes.   
 
 ```  
 - name: AZMON_COLLECT_ENV  
@@ -73,7 +73,7 @@ Zakázání shromažďování systémových proměnných na nový nebo existují
 
 Spusťte následující příkaz na použití změny do kontejneru AKS: `kubectl apply -f  <path to yaml file>`.
 
-Pokud chcete ověřit, změna konfigurace trvalo vliv, vyberte kontejner ve službě **kontejnery** ve službě Azure Monitor pro kontejnery a na panelu Vlastnosti, rozbalte **proměnné prostředí**.  V části by se zobrazit pouze proměnné vytvořili - **AZMON_COLLECT_ENV = FALSE**. Pro všechny další kontejnery zveřejnit sekci proměnných prostředí všech proměnných prostředí zjistit.   
+Pokud chcete ověřit, změna konfigurace vstoupily v platnost, vyberte kontejner ve službě **kontejnery** ve službě Azure Monitor pro kontejnery a na panelu Vlastnosti, rozbalte **proměnné prostředí**.  V části by se zobrazit pouze proměnné vytvořili - **AZMON_COLLECT_ENV = FALSE**. Pro všechny další kontejnery zveřejnit sekci proměnných prostředí všech proměnných prostředí zjistit.   
 
 Opětovné povolení zjišťování proměnné prostředí, dříve použít stejný postup a změňte hodnotu z **False** k **True**a pak znovu spusťte `kubectl` příkaz k aktualizaci kontejneru.  
 

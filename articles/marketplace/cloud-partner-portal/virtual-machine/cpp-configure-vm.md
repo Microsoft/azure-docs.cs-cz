@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1db8c99b1bd3f9bbb768572ca1f5f7a4e1e0de4
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5ccfef8a6ad367e8fac100217713cd323341a535
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639632"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183467"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurace virtuálních počítačů hostovaných v Azure
 
@@ -28,14 +28,14 @@ Tento článek vysvětluje, jak upravit velikost, aktualizovat a generalizace vi
 
 ## <a name="sizing-the-vhds"></a>Změna velikosti virtuálních pevných disků
 
-<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Pokud jste vybrali některé virtuální počítače předem nakonfigurované s operačním systémem (a volitelně další služby), pak již mít vyberou standardní velikost virtuálního počítače Azure, jak je popsáno v [skladové položky virtuálních počítačů kartu](./cpp-skus-tab.md).  Toto je doporučený postup.  Ale operační systém při instalaci ručně, pak jste musí velikost primární virtuální pevný disk ve vaší imagi virtuálního počítače:
+<!--TD: Check if the following assertion is true. I didn't understand the original content. --> Pokud jste vybrali některé virtuální počítače předem nakonfigurované s operačním systémem (a volitelně další služby), pak již mít vyberou standardní velikost virtuálního počítače Azure, jak je popsáno v [skladové položky virtuálních počítačů kartu](./cpp-skus-tab.md).  Spuštění řešení s předem nakonfigurované operačním systémem je doporučený postup.  Ale operační systém při instalaci ručně, pak jste musí velikost primární virtuální pevný disk ve vaší imagi virtuálního počítače:
 
 - Pro Windows, operačního systému virtuálního pevného disku by měl být vytvořen jako 127-128 GB virtuální pevný disk pevného formátu. 
 - Pro Linux, tento virtuální pevný disk by měl být vytvořen jako 30 – 50 GB virtuální pevný disk pevného formátu.
 
 Pokud je fyzická velikost menší než 127-128 GB, měl by být virtuální pevný disk zhuštěný. Základní Image Windows a SQL Server k dispozici tyto požadavky už splňují, takže neměňte formát ani velikost získaného virtuálního pevného disku. 
 
-Datové disky můžou být velké až 1 TB. Při rozhodování o velikosti disku, nezapomeňte, že zákazníci nemůžou měnit velikost virtuálních pevných disků v imagi v době nasazování. Datový disk virtuální pevné disky musí být vytvořené jako pevného formátu virtuálních pevných disků. Měly by být zhuštěné. Datové disky může zpočátku být prázdný nebo obsahovat data.
+Datové disky můžou být velké až 1 TB. Při rozhodování na jejich velikost, mějte na paměti, že zákazníci nemůžou měnit velikost virtuálních pevných disků v imagi v době nasazování. Datový disk virtuální pevné disky musí být vytvořené jako pevného formátu virtuálních pevných disků. Měly by být zhuštěné. Datové disky může zpočátku být prázdný nebo obsahovat data.
 
 
 ## <a name="install-the-most-current-updates"></a>Nainstalujte nejnovější aktualizace
@@ -49,7 +49,7 @@ Pro distribuce Linuxu aktualizace se běžně stahují a instalují přes nástr
 
 ## <a name="perform-additional-security-checks"></a>Provedení dalších kontrol zabezpečení
 
-Je vhodné ponechat vysokou úroveň zabezpečení pro vaše řešení imagí v Tržišti Azure Marketplace.  V následujícím článku obsahuje kontrolní seznam konfigurace zabezpečení a postupy, které vám pomohou v tomto cíli: [doporučení zabezpečení pro Image Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Některé z těchto doporučení jsou specifická pro Image založené na Linuxu, ale většina platí pro všechny image virtuálního počítače. 
+Je vhodné ponechat vysokou úroveň zabezpečení pro vaše řešení imagí v Tržišti Azure Marketplace.  V následujícím článku obsahuje kontrolní seznam konfigurace zabezpečení a postupy, které vám pomohou v tomto cíli: [Doporučení zabezpečení pro Image Azure Marketplace](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images).  Některé z těchto doporučení jsou specifická pro Image založené na Linuxu, ale většina platí pro všechny image virtuálního počítače. 
 
 
 ## <a name="perform-custom-configuration-and-scheduled-tasks"></a>Vlastní konfigurace a naplánovaných úloh
@@ -95,8 +95,8 @@ Následující dvoustupňový proces generalizace virtuálního počítače s Li
 
 Vytvoření kopie virtuálního počítače je často užitečné pro zálohování, testování, přizpůsobené převzetí služeb při selhání nebo Vyrovnávání zatížení, nabízí různé konfigurace řešení, a tak dále. Informace o tom, jak duplikovat a stáhnout primárního virtuálního pevného disku, aby nespravované klonování najdete tady:
 
-- Virtuální počítač s Linuxem: [stáhnout VHD s Linuxem z Azure](../../../virtual-machines/linux/download-vhd.md)
-- Virtuální počítač Windows: [stáhnout Windows virtuálního pevného disku z Azure](../../../virtual-machines/windows/download-vhd.md)
+- Virtuální počítač s Linuxem: [Stáhněte si VHD s Linuxem z Azure](../../../virtual-machines/linux/download-vhd.md)
+- Virtuální počítač Windows: [Stáhněte si Windows virtuálního pevného disku z Azure](../../../virtual-machines/windows/download-vhd.md)
 
 
 ## <a name="next-steps"></a>Další postup

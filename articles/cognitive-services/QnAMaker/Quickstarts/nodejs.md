@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 8867fd92bc816097bbff9e081a7cb37e1eb80050
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 2f57a5ddfdf18214e927a8a903fda54872900375
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093365"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166468"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak používat rozhraní REST API nástroje QnA Maker s využitím Node.js 
 <a name="HOLTop"></a>
@@ -38,7 +38,7 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 - [Získání aktuální sady změn slov](#GetAlterations)
 - [Nahrazení aktuální sady změn slov](#PutAlterations)
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 

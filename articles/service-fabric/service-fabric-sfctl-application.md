@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 40ec204f105b32c8b7d9e2dda6f6f3c3023b2d44
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495454"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278538"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
@@ -33,9 +33,9 @@ Vytvářet, odstraňovat a spravovat aplikace a typy aplikací.
 | nasazení | Získá informace o aplikaci nasazenou na uzlu Service Fabric. |
 | Stav nasazení | Získá informace o stavu aplikace nasazené na uzlu Service Fabric. |
 | nasazení seznamu | Získá seznam aplikací, které jsou nasazené na uzlu Service Fabric. |
-| stav | Získá stav aplikace service fabric. |
+| zdravotnictví | Získá stav aplikace service fabric. |
 | informace | Získá informace o aplikaci Service Fabric. |
-| Seznam | Získá seznam aplikací vytvořených v clusteru Service Fabric, které se shodují se zadanými filtry. |
+| list | Získá seznam aplikací vytvořených v clusteru Service Fabric, které se shodují se zadanými filtry. |
 | načítání | Získá načíst informace o aplikaci Service Fabric. |
 | Manifest | Získá manifest popisující typ aplikace. |
 | Zřizování | Předpisy nebo registrech typ aplikace Service Fabric s pomocí balíčku .sfpkg v externím úložišti nebo pomocí balíčku aplikace do úložiště imagí clusteru. |
@@ -332,13 +332,13 @@ Sestavy stavu zadané aplikace Service Fabric. Sestava může obsahovat informac
 | – id aplikace [povinné] | Identitu aplikace. <br><br> Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "prostředků infrastruktury\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
 | – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
 | – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
-| – id zdroje [povinné] | Název zdroje, které identifikuje součásti klienta/sledovacího zařízení/systému, který se vygenerovat informace o stavu. |
+| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
 | – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak označující, zda mají být okamžitě odesílány sestavy. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
+| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole je použít formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -434,23 +434,23 @@ Parametry upgradu aplikace zadaný ověří a začne se upgradovat aplikace, pok
 
 |Argument|Popis|
 | --- | --- |
-| – id aplikace [povinné] | Identitu aplikace. <br><br> Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "prostředků infrastruktury\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
-| – verze aplikace [povinné] | Cílová verze aplikace. |
+| – id aplikace [povinné] | Identitu aplikace. <br><br> Toto je obvykle celé jméno aplikace bez "fabric\:" schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název aplikace "fabric\:/myapp/app1", bude identita aplikace "myapp\~app1" v 6.0 + a "myapp/app1" v předchozích verzích. |
+| – verze aplikace [povinné] | V cílové verzi typu aplikace (tuto možnost najdete v manifestu aplikace) pro upgrade aplikace. |
 | --parametry [povinné] | Seznam JSON kódovaný parametr aplikace funkci přepsání hodnot a použijí při upgradu aplikace. |
 | --default-service-health-policy | JSON kódovaný specifikace zásad stavu, ve výchozím nastavení používá k vyhodnocení stavu daného typu služby. |
 | --selhání akce | Akce, který se má provést při upgradu na monitorované pomocí monitorování zjistí monitorování porušení zásad nebo stavu zásad. |
 | --force restartování | Vynuceně restartování procesů během upgradu, i když nedošlo ke změně verze kódu. |
-| – Stav –--časový limit opakování kontroly | Množství času opakovat hodnocení stavu, pokud aplikace nebo clusteru není v pořádku před selhání akce je provedena. Měří v milisekundách.  Výchozí\: PT0H10M0S. |
-| --stavu zaškrtnutí stabilní trvání | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně. Měří v milisekundách.  Výchozí\: PT0H2M0S. |
-| – stav –--Čekání na kontrolu | Množství času po dokončení upgradu domény před použitím zásad stavu. Měří v milisekundách.  Výchozí\: 0. |
+| – Stav –--časový limit opakování kontroly | Dlouhá doba mezi pokusy o provádění kontroly stavu, pokud aplikace nebo clusteru není v pořádku.  Výchozí\: PT0H10M0S. |
+| --stavu zaškrtnutí stabilní trvání | Množství času, aplikace nebo clusteru musí zůstane v dobrém stavu před provedením upgradu k další upgradovací doméně.  Výchozí\: PT0H2M0S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| – stav –--Čekání na kontrolu | Doba čekání po dokončení upgradu domény před zahájením stavu kontroluje procesu.  Výchozí\: 0. |
 | --max-unhealthy-apps | Maximální povolené procento poškozené nasazené aplikace. Vyjádřené číslem v rozmezí 0 až 100. |
 | --režimu | Režim, který slouží k monitorování stavu během upgradu se zajištěním provozu.  Výchozí\: UnmonitoredAuto. |
 | --repliky sady kontrola-časový limit | Maximální množství času blokování zpracování logických sítí a zabránit ztrátě dostupnosti, když dochází k neočekávaným problémům. Měří v sekundách. |
 | --service-health-policy | JSON kódovaný mapování zásad stavu typ služby za název typu služby. Mapa je prázdný jako výchozí. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction. Měří v milisekundách.  Výchozí\: P10675199DT02H48M05.4775807S. |
-| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction. Měří v milisekundách.  Výchozí\: P10675199DT02H48M05.4775807S. |
-| --upozornění jako chyby | Upozornění vyhodnocení stavu se stejným závažností považovat za chyby. |
+| --upgrade-domain-timeout | Množství času každé domény upgradu musí dokončit před provedením FailureAction.  Výchozí\: P10675199DT02H48M05.4775807S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --upgrade vypršení časového limitu | Množství času celkové upgrade musí dokončit před provedením FailureAction.  Výchozí\: P10675199DT02H48M05.4775807S. <br><br> Nejprve je interpretován jako řetězec představující dobu trvání ISO 8601. Pokud se to nepodaří, je interpretován jako číslo představující počet milisekund. |
+| --upozornění jako chyby | Určuje, zda jsou upozornění zpracována stejným závažností jako chyby. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 

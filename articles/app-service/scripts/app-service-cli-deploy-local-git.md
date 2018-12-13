@@ -1,10 +1,10 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení kódu z místního úložiště Git | Microsoft Docs
+title: Skript Azure CLI ukázkový – vytvoření aplikace a nasazení kódu z místního úložiště Git | Dokumentace Microsoftu
 description: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení kódu z místního úložiště Git
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 6a49fc60ad4dc2df57e1f371dcc78a6fadef8853
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 6689aeff0506b94b104c747d3787fa07f8d49c24
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972568"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315277"
 ---
-# <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Vytvoření webové aplikace a nasazení kódu z místního úložiště Git
+# <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Vytvoření webové aplikace a nasazení kódu z místního úložiště Git pomocí příkazového řádku Azure
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak nasadí kód vaší webové aplikace z místního úložiště Git.
 
@@ -52,7 +52,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) | Nastaví pro službu App Service přihlašovací údaje pro nasazení na úrovni účtu. |
 | [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) | Vytvoří konfiguraci správy zdrojového kódu pro místní úložiště Git. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

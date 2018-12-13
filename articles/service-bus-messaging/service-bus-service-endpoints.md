@@ -1,35 +1,53 @@
 ---
 title: Koncové body služeb virtuální sítě a pravidel pro Azure Service Bus | Dokumentace Microsoftu
 description: Přidáte koncový bod služby Microsoft.ServiceBus k virtuální síti.
-services: event-hubs
+services: service-bus
 documentationcenter: ''
 author: clemensv
 manager: timlt
-ms.service: event-hubs
+ms.service: service-bus
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: clemensv
-ms.openlocfilehash: 05930dfce64378d792213ccaefa3d15057bd5dfd
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3e1bdcc9340cc6cf997bebcdf1567bf676521ea5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404993"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276124"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Koncové body služeb virtuální sítě pomocí Azure Service Bus
 
-Integrace služby Service Bus pomocí [koncové body služeb virtuální sítě (VNet)] [ vnet-sep] umožňuje zabezpečený přístup k možnosti zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázány na virtuální sítě , síťová cesta provoz se zabezpečují na obou koncích. 
+Integrace služby Service Bus pomocí [koncové body služeb virtuální sítě (VNet)] [ vnet-sep] umožňuje zabezpečený přístup k možnosti zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázány na virtuální sítě , síťová cesta provoz se zabezpečují na obou koncích.
 
 Po nakonfigurování navázat na koncový bod služby podsítě virtuální sítě alespoň jeden příslušných obor názvů služby Service Bus už přijme přenos z libovolného místa, ale oprávnění virtuálních sítí. Z pohledu virtuální sítě vazba oboru názvů služby Service Bus na koncový bod služby nakonfiguruje izolované sítě tunelové propojení z podsítě virtuální sítě ke službě zasílání zpráv.
 
 Výsledkem je privátní a izolované relaci mezi úlohami, které jsou vázány na podsíť a odpovídající oboru názvů Service Bus, přestože pozorovatelných síťovou adresu na zasílání zpráv služby koncového bodu, který v rozsahu veřejných IP.
 
+>[!WARNING]
+> Implementace integrace virtuální sítě můžete zabránit komunikaci se Service Bus dalšími službami Azure.
+>
+> Důvěryhodné Microsoft services nejsou podporovány, pokud virtuální sítě jsou implementovány a budou brzy dostupné.
+>
+> Běžné scénáře služby Azure, které nefungují s virtuálními sítěmi (Všimněte si, že je seznam **není** vyčerpávající)-
+> - Azure Monitor
+> - Azure Stream Analytics
+> - Integrace s Azure Event Grid
+> - Směruje Azure IoT Hub
+> - Azure IoT Device Explorer
+> - Průzkumník dat Azure
+>
+> Níže Microsoft services musí být ve virtuální síti
+> - Azure Web Apps
+> - Azure Functions
+
+> [!IMPORTANT]
+> Virtuální sítě jsou podporovány pouze v [úroveň Premium](service-bus-premium-messaging.md) obory názvů služby Service Bus.
+
 ## <a name="enable-service-endpoints-with-service-bus"></a>Povolení koncových bodů služby pomocí služby Service Bus
 
-Virtuální sítě jsou podporovány pouze v [úroveň Premium](service-bus-premium-messaging.md) obory názvů služby Service Bus. 
-
-Což je důležité při používání koncových bodů služby virtuální sítě pomocí služby Service Bus je, že by neměla být povolena těchto koncových bodů v aplikacích, které kombinovat názvů služby Service Bus úrovně Standard a Premium. Protože standardní úroveň nepodporuje virtuální sítě, je omezen na obory názvů úrovně Premium pouze koncový bod. Virtuální síť bude blokovat provoz na obor názvů Standard. 
+Což je důležité při používání koncových bodů služby virtuální sítě pomocí služby Service Bus je, že by neměla být povolena těchto koncových bodů v aplikacích, které kombinovat názvů služby Service Bus úrovně Standard a Premium. Protože standardní úroveň nepodporuje virtuální sítě, je omezen na obory názvů úrovně Premium pouze koncový bod. Virtuální síť bude blokovat provoz na obor názvů Standard.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé zabezpečení scénáře povolené ve integrace virtuální sítě 
 
@@ -45,7 +63,7 @@ To znamená, že zabezpečení citlivých Cloudová řešení nejen získat př�
 
 Vazba oboru názvů služby Service Bus k virtuální síti je dvoustupňový proces. Je nejprve potřeba vytvořit **koncový bod služby virtuální sítě** na podsíti virtuální sítě a povolit ho pro "Microsoft.ServiceBus", jako je vysvětleno v [přehled koncových bodů služby] [ vnet-sep]. Po přidání koncového bodu služby svážete oboru názvů služby Service Bus přes *pravidlo virtuální sítě*.
 
-Pravidlo virtuální sítě je pojmenovaný přidružení oboru názvů služby Service Bus k podsíti virtuální sítě. Přestože existuje pravidlo, všechny úlohy, které jsou vázány na podsíť je udělen přístup k oboru názvů služby Service Bus. Service Bus samotné nikdy vytvoří odchozí připojení, není potřeba získat přístup a je proto nikdy udělen přístup k vaší podsítě tím, že toto pravidlo.
+Pravidlo virtuální sítě je přidružené k oboru názvů služby Service Bus podsíti virtuální sítě. Přestože existuje pravidlo, všechny úlohy, které jsou vázány na podsíť je udělen přístup k oboru názvů služby Service Bus. Service Bus samotné nikdy vytvoří odchozí připojení, není potřeba získat přístup a je proto nikdy udělen přístup k vaší podsítě tím, že toto pravidlo.
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Vytvoření pravidla virtuální sítě pomocí šablon Azure Resource Manageru
 
@@ -53,47 +71,121 @@ Následující šablony Resource Manageru umožňuje do existujícího oboru ná
 
 Parametry šablony:
 
-* **namespaceName**: obor názvů služby Service Bus.
-* **vnetRuleName**: název pravidla virtuální sítě má být vytvořen.
-* **virtualNetworkingSubnetId**: plně kvalifikovanou cestu Resource Manageru pro podsíť virtuální sítě, například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **namespaceName**: Obor názvů služby Service Bus.
+* **virtualNetworkingSubnetId**: Plně kvalifikovaná cesta Resource Manageru pro virtuální síť podsíť; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+
+> [!NOTE]
+> Nejsou žádná pravidla odepřít je to možné, šablony Azure Resource Manageru je nastavena na výchozí akce **"Povolit"** který nepodporuje omezení připojení.
+> Při vytváření pravidla virtuální sítě a brány firewall, musíte Změníme ***"defaultAction"***
+> 
+> od
+> ```json
+> "defaultAction": "Allow"
+> ```
+> na
+> ```json
+> "defaultAction": "Deny"
+> ```
+>
 
 Šablona:
 
 ```json
-{  
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{     
-          "namespaceName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the namespace"
-             }
-          },
-          "vnetRuleName":{  
-             "type":"string",
-             "metadata":{  
-                "description":"Name of the Authorization rule"
-             }
-          },
-          "virtualNetworkSubnetId":{  
-             "type":"string",
-             "metadata":{  
-                "description":"subnet Azure Resource Manager ID"
-             }
-          }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "servicebusNamespaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Service Bus namespace"
+        }
       },
+      "virtualNetworkName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Virtual Network Rule"
+        }
+      },
+      "subnetName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the Virtual Network Sub Net"
+        }
+      },
+      "location": {
+        "type": "string",
+        "metadata": {
+          "description": "Location for Namespace"
+        }
+      }
+    },
+    "variables": {
+      "namespaceNetworkRuleSetName": "[concat(parameters('servicebusNamespaceName'), concat('/', 'default'))]",
+      "subNetId": "[resourceId('Microsoft.Network/virtualNetworks/subnets/', parameters('virtualNetworkName'), parameters('subnetName'))]"
+    },
     "resources": [
-        {
-            "apiVersion": "2018-01-01-preview",
-            "name": "[concat(parameters('namespaceName'), '/', parameters('vnetRuleName'))]",
-            "type":"Microsoft.ServiceBus/namespaces/VirtualNetworkRules",           
-            "properties": {             
-                "virtualNetworkSubnetId": "[parameters('virtualNetworkSubnetId')]"  
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[parameters('servicebusNamespaceName')]",
+        "type": "Microsoft.ServiceBus/namespaces",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "properties": { }
+      },
+      {
+        "apiVersion": "2017-09-01",
+        "name": "[parameters('virtualNetworkName')]",
+        "location": "[parameters('location')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "10.0.0.0/23"
+            ]
+          },
+          "subnets": [
+            {
+              "name": "[parameters('subnetName')]",
+              "properties": {
+                "addressPrefix": "10.0.0.0/23",
+                "serviceEndpoints": [
+                  {
+                    "service": "Microsoft.ServiceBus"
+                  }
+                ]
+              }
             }
-        } 
-    ]
-}
+          ]
+        }
+      },
+      {
+        "apiVersion": "2018-01-01-preview",
+        "name": "[variables('namespaceNetworkRuleSetName')]",
+        "type": "Microsoft.ServiceBus/namespaces/networkruleset",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceBus/namespaces/', parameters('servicebusNamespaceName'))]"
+        ],
+        "properties": {
+          "virtualNetworkRules": 
+          [
+            {
+              "subnet": {
+                "id": "[variables('subNetId')]"
+              },
+              "ignoreMissingVnetServiceEndpoint": false
+            }
+          ],
+          "ipRules":[<YOUR EXISTING IP RULES>],
+          "defaultAction": "Deny"
+        }
+      }
+    ],
+    "outputs": { }
+  }
 ```
 
 Pokud chcete nasadit šablonu, postupujte podle pokynů pro [Azure Resource Manageru][lnk-deploy].

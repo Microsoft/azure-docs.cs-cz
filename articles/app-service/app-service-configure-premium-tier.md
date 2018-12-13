@@ -1,5 +1,5 @@
 ---
-title: Konfigurace úrovně PremiumV2 pro službu Azure App Service | Dokumentace Microsoftu
+title: Konfigurace úrovně PremiumV2 - službě Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak díky škálování na cenovou úroveň PremiumV2 lepší výkon pro webové, mobilní a API aplikace ve službě Azure App Service.
 keywords: app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258895"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace úrovně PremiumV2 pro službu Azure App Service
 

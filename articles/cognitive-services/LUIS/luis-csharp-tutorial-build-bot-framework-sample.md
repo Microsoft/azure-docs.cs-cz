@@ -1,5 +1,5 @@
 ---
-title: Robot sC#
+title: Bot - C# – v3
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 919d48d73a552596c78c3be18e7628ee7700f7e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b4b074de483d4a1ccd4c934a9fa7254e0f656a1b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080210"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133942"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -37,11 +37,11 @@ Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Langu
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit nový prostředek** v nabídce vlevo nahoře.
 
-    ![Vytvořit nový prostředek](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
+    ![Vytvořit nový prostředek na webu Azure portal](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
 2. Do vyhledávacího pole vyhledejte **Web App Bot**. 
 
-    ![Vytvořit nový prostředek](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
+    ![Vyberte web app bot jako typ prostředku](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
 3. V okně s Web App Bot, klikněte na tlačítko **vytvořit**.
 

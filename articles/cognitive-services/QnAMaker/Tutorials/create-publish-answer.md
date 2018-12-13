@@ -11,14 +11,14 @@ ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 5ed5564692e65a36ed5178e21a2e7b56a718ffcc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: dd5bc95be3959e7af5911d8a765791718680581a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091988"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162932"
 ---
-# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Vytvoření znalostní báze a následné zodpovězení otázky pomocí jazyka C#
+# <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Pomocí C#, vytvořte základní znalosti pak odpověď na otázku
 
 Tento kurz vás provede programovým vytvořením a publikováním znalostní báze a následným zodpovězením otázky zákazníka s využitím znalostní báze. 
 
@@ -44,7 +44,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 * Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete získat klíč, vyberte na řídicím panelu **Klíče** v části **Správa prostředků**. 
 
 > [!NOTE] 
-> Kompletní soubor(y) řešení jsou k dispozici v [**Azure-Samples/cognitive-services-qnamaker-csharp** úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
+> Soubory tak získají kompletní řešení jsou k dispozici na [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="create-a-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 

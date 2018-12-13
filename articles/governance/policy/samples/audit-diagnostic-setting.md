@@ -1,0 +1,78 @@
+---
+title: Ukázkový – Audit diagnostické nastavení
+description: Tato ukázková zásada audituje, jestli pro zadané typy prostředků nejsou povolená nastavení diagnostiky.
+services: azure-policy
+author: DCtheGeek
+manager: carmonm
+ms.service: azure-policy
+ms.topic: sample
+ms.date: 09/18/2018
+ms.author: dacoulte
+ms.openlocfilehash: 283db04ba0edc988e9156d6b6681c9d8024127ce
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53318504"
+---
+# <a name="audit-diagnostic-setting"></a>Auditování nastavení diagnostiky
+
+Tyto integrované zásady auditují, jestli pro zadané typy prostředků nejsou povolená nastavení diagnostiky. Zadáte pole typů prostředků, u kterých se zkontroluje, jestli jsou povolená nastavení diagnostiky.
+
+[!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sample-template"></a>Ukázková šablona
+
+[!code-json[main](../../../../policy-templates/samples/Monitoring/audit-diagnostic-setting/azurepolicy.json "Audit diagnostic setting")]
+
+K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli). K získání integrovaných zásad použijte ID `7f89b1eb-583c-429a-8828-af049802c1d9`.
+
+## <a name="parameters"></a>Parametry
+
+Předejte hodnotu parametru v následujícím formátu:
+
+```json
+{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}
+```
+
+## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
+
+Při přiřazování zásad vyberte z dostupných integrovaných definic **Auditování nastavení diagnostiky**.
+
+## <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
+
+[!INCLUDE [sample-powershell-install](../../../../includes/sample-powershell-install-no-ssh.md)]
+
+```azurepowershell-interactive
+$definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/7f89b1eb-583c-429a-8828-af049802c1d9
+
+New-AzureRmPolicyAssignment -name "Audit diagnostics" -PolicyDefinition $definition -PolicyParameter '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}' -Scope <scope>
+```
+
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
+
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
+
+```azurepowershell-interactive
+Remove-AzureRmPolicyAssignment -Name "Audit diagnostics" -Scope <scope>
+```
+
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
+
+[!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
+
+```azurecli-interactive
+az policy assignment create --scope <scope> --name "Audit diagnostics" --policy 7f89b1eb-583c-429a-8828-af049802c1d9 --params '{"listOfResourceTypes":{"value":["Microsoft.Cache/Redis","Microsoft.Compute/virtualmachines"]}}'
+```
+
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
+
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
+
+```azurecli-interactive
+az policy assignment delete --name "Audit diagnostics" --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>Další postup
+
+- Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

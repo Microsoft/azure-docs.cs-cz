@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: da6cc943c310b627626b3d2081ffa88ef3185013
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcfb3a52793ba0daca980564d5d2248629b5caf4
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727830"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323008"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
 Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat své vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud je aplikace spuštěna v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu. Grafy označují prostředky dostupné pro vaše živé aplikace a může pomoct identifikovat nevyváženého zatížení mezi instancemi serveru.
@@ -26,7 +26,7 @@ Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.co
 
 ![Čítače výkonu v Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
 
-(Čítače výkonu nejsou k dispozici pro Azure Web Apps. Ale můžete [odesílání Azure Diagnostics do Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).)
+(Čítače výkonu nejsou k dispozici pro Azure Web Apps. Ale můžete [odesílání Azure Diagnostics do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).)
 
 ## <a name="view-counters"></a>Zobrazení čítačů
 Ukazuje blade servery výchozí sadu čítačů výkonu. 

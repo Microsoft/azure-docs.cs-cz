@@ -1,5 +1,5 @@
 ---
-title: Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
+title: Konfigurace vzájemného ověřování TLS – Azure App Service
 description: Zjistěte, jak nakonfigurovat webovou aplikaci pomocí ověření klientského certifikátu na protokol TLS.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: 894a77be05de131ab122f18c62d209e9829357f9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.custom: seodec18
+ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056204"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252877"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
 ## <a name="overview"></a>Přehled
@@ -51,7 +52,7 @@ Ujistěte se, že chcete změnit hodnotu "umístění" na všude, kde se nacház
 
 Můžete také použít https://resources.azure.com k převrácení `clientCertEnabled` vlastnost `true`.
 
-> **Poznámka:** ARMClient při spuštění z prostředí Powershell, budete muset escape \@ symbolu pro soubor JSON s zpět značek ".
+> **Poznámka:** Pokud ARMClient z prostředí Powershell, budete muset řídicí \@ symbolu pro soubor JSON s zpět značek ".
 > 
 > 
 

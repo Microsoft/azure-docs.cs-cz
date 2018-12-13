@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 1512098c29c8916a0486ed66b438654ba29f0601
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/12/2018
+ms.openlocfilehash: 7af15e2e2ca6698f9d8ba1629f13804ce6457b8d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968224"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315634"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -70,6 +70,8 @@ Nasazení spravované Instance aktuálně podporuje jenom pro následující typ
 - [Smlouva Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/)
 - [Poskytovatele cloudových služeb (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)
+- [Vývoj/testování s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0023p/)
 
 > [!NOTE]
 > Toto omezení je dočasný. Nové typy předplatného se povolí v budoucnu.
@@ -78,8 +80,8 @@ Nasazení spravované Instance aktuálně podporuje jenom pro následující typ
 
 Typy podporované předplatného může obsahovat omezený počet prostředků v jedné oblasti. Managed Instance má dvě výchozí omezení každou oblast Azure, v závislosti na typu typ předplatného:
 
-- **Limitu podsítí**: maximální počet podsítí, ve které jsou spravované instance nasazené v jedné oblasti.
-- **Omezení počtu instancí**: maximální počet instancí, které je možné nasadit v jedné oblasti.
+- **Limitu podsítí**: Maximální počet podsítí, ve které jsou spravované instance nasazené v jedné oblasti.
+- **Omezení počtu instancí**: Maximální počet instancí, které mohou být nasazeny v jedné oblasti.
 
 V následující tabulce jsou uvedeny výchozí místní omezení pro podporované předplatná:
 
@@ -87,6 +89,8 @@ V následující tabulce jsou uvedeny výchozí místní omezení pro podporovan
 | :---| :--- | :--- |:--- |:--- |
 |Průběžné platby|1 *|4 *|4 *|1 *|
 |CSP |1 *|4 *|4 *|1 *|
+|Vývoj/testování s průběžnými platbami|1 *|4 *|4 *|1 *|
+|Enterprise pro vývoj/testování|1 *|4 *|4 *|1 *|
 |EA|3 **|12 **|12 **|3 **|
 
 \* 1 BC nebo 4 GP instance v jedné podsíti můžete nasadit buď tak, aby celkový počet jednotek"instance" v podsíti nikdy nepřesáhne 4.
@@ -132,7 +136,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
 
      ![Problém typ kvóty](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. Klikněte na **Další**.
+3. Klikněte na tlačítko **Další**.
 4. Na kartě problém pro novou žádost o podporu:
    - Pro **závažnost**, vyberte úroveň závažnosti problému.
    - Pro **podrobnosti**, poskytují další informace o svém problému, včetně chybových zpráv.
@@ -146,7 +150,7 @@ Chcete-li zahájit proces získávání vyšší kvóty:
      > - Požadovaný počet instancí na úroveň služby v existující podsítě po kvótu zvýšit (je-li žádné existující podsítě potřeba rozšířit
      > - Požadované číslo nové podsítě a celkový počet instancí na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
 
-5. Klikněte na **Další**.
+5. Klikněte na tlačítko **Další**.
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 

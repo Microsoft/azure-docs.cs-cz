@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace .NET Core využívající databázi SQL ve službě Azure App Service v Linuxu | Dokumentace Microsoftu
+title: Sestavení .NET Core aplikace s databází SQL v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Naučte se zprovoznit aplikaci .NET Core ve službě Azure App Service v Linuxu s připojením k databázi SQL.
 services: app-service\web
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: ddea4621277303dd6c153205b683b4eea0151db0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: cb81699671bd2a0e86838d043ad0a4442eb79a6c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432258"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254237"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace .NET Core využívající databázi SQL ve službě Azure App Service v Linuxu
 
@@ -330,7 +330,7 @@ Najděte prvek `<td>`, který obsahuje pomocné rutiny značky `asp-action`. Př
 
 ```csharp
 <td>
-    @Html.DisplayFor(modelItem => item.CreatedDate)
+    @Html.DisplayFor(modelItem => item.Done)
 </td>
 ```
 
@@ -375,7 +375,7 @@ Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tat
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučili jste se:
 

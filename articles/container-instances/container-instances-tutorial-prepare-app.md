@@ -1,21 +1,21 @@
 ---
-title: Kurz služby Azure Container Instances – Příprava aplikace
-description: Kurz služby Azure Container Instances, část 1 ze 3 – Příprava aplikace na nasazení do služby Azure Container Instances
+title: Kurz – Příprava image kontejneru pro Azure Container Instances
+description: Kurz služby Azure Container Instances část 1 ze 3 – Příprava aplikace v imagi kontejneru pro nasazení do služby Azure Container Instances
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: dfe494eba64f546616e4e6cc9898f9d63d81eaa2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 029b4f2d0f0f88f56ca1f3e282d8c80e76f4d5c7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854775"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186408"
 ---
-# <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření kontejneru pro nasazení do služby Azure Container Instances
+# <a name="tutorial-create-a-container-image-for-deployment-to-azure-container-instances"></a>Kurz: Vytvoření image kontejneru pro nasazení do služby Azure Container Instances
 
 Azure Container Instances umožňuje nasazení kontejnerů Dockeru na infrastrukturu Azure bez zřizování virtuálních počítačů nebo využívání služby vyšší úrovně. V tomto kurzu zabalíte malou webovou aplikaci Node.js do image kontejneru, kterou bude možné spustit pomocí služby Azure Container Instances.
 
@@ -28,7 +28,7 @@ V tomto článku, který je první částí série, se naučíte:
 
 V druhé a třetím kurzu nahrajete svou image do služby Azure Container Registry a potom ji nasadíte do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -120,7 +120,7 @@ Teď ve svém prohlížeči přejděte na adresu http://localhost:8080 a ověřt
 
 ![Místní spuštění aplikace v prohlížeči][aci-tutorial-app-local]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili image kontejneru, kterou je možné nasadit do služby Azure Container Instances a ověřit, že běží místně. Zatím jste provedli následující:
 

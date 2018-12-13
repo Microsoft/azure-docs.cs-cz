@@ -1,5 +1,6 @@
 ---
-title: Co je služba Azure Machine Learning?
+title: O produktu
+titleSuffix: Azure Machine Learning service
 description: Přehled služby Azure Machine Learning – představuje řešení integrované, koncové až do konce datové vědy pro profesionální datové vědce, které k vývoji, experimentování a nasazování pokročilých analytických aplikací na úrovni cloudu.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c3c0697af739c151f9aa7cbaed65283a365be7a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f0860982da6a06a3529539768179f9bc28a0695a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077218"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272979"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -48,7 +49,7 @@ A pomocí rozšířeného [služby machine learning kanály](concept-ml-pipeline
 ## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Co můžu se službou Azure Machine Learning dělat?
 
 Služba Azure Machine Learning můžete automaticky – train model a ladit ji za vás.
-Příklad najdete v článku s [kurzem pro automatické trénování modelu klasifikace pomocí automatizovaného strojového učení Azure](tutorial-auto-train-models.md).
+Příklad najdete v tématu [kurzu: Automaticky vyškolíme model klasifikace pomocí Azure Machine Learning automatizované](tutorial-auto-train-models.md).
 
 Pomocí Azure Machine Learning <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> pro Python, spolu s open sourcové balíčky Python, můžete vytvářet a trénování s velmi přesnými strojového učení a hloubkového učení modelů sami v pracovním prostoru služby Azure Machine Learning.
 Na výběr máte celou řadu komponent strojového učení dostupných v Open Source balíčcích Pythonu, například:
@@ -78,7 +79,10 @@ Službu Machine Learning použijte, pokud pracujete v prostředí Python, chcete
 > Modely vytvořené v Azure Machine Learning Studiu nelze nasadit ani spravovat službou Azure Machine Learning.
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze
-Pokud nejste předplatitel, můžete si [zdarma otevřít účet Azure](https://aka.ms/amlfree). Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerpání si můžete účet ponechat a používat [bezplatné služby Azure](https://azure.microsoft.com/free/). Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby. Alternativně můžete [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), což vám dává kredity každý měsíc, můžete použít pro placené služby Azure.
+
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+
+Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerpání si můžete účet ponechat a používat [bezplatné služby Azure](https://azure.microsoft.com/free/). Nikdy vám nebudeme účtovat žádné poplatky, pokud si sami nezměníte nastavení a nezačnete používat placené služby. Alternativně můžete [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F), což vám dává kredity každý měsíc, můžete použít pro placené služby Azure.
 
 ## <a name="next-steps"></a>Další postup
 

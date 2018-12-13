@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: a4b8d930a2176c16bb9d1cbcd3b67e6f919575ed
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124976"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162218"
 ---
-# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
+# <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace Jenkinse prostředí umožňující CI/CD pro aplikace v Javě v Service Fabric
 
-Tento kurz je pátou částí série. Ukazuje použití Jenkinse k nasazování upgradů do aplikace. V tomto kurzu se pomocí modulu plug-in Jenkinse pro Service Fabric v kombinaci s úložištěm GitHub hostujícím hlasovací aplikaci nasadí tato aplikace do clusteru.
+Tento kurz je pátou částí série. Ukazuje použití Jenkinse k nasazování upgradů do aplikace. V tomto kurzu se modul plug-in Jenkinse pro Service Fabric se používá v kombinaci s úložištěm GitHub hostujícím hlasovací aplikaci k nasazení aplikace do clusteru.
 
 V páté části této série se naučíte:
 > [!div class="checklist"]
@@ -84,7 +84,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Vytvoření a konfigurace úlohy Jenkinse
 
-1. Nejprve vytvořte úložiště, které můžete použít k hostování projektu Voting na GitHubu, pokud žádné nemáte. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
+1. Nejprve Pokud nemáte úložiště, které můžete použít k hostování projektu Voting na Githubu, vytvořte. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
 
 1. Na řídicím panelu Jenkinse na adrese ``http://<HOST-IP>:8080`` vytvořte **novou položku**.
 
@@ -181,7 +181,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     </CodePackage>
     ```
 
-1. Úlohu Jenkinse, která provádí upgrade aplikace, inicializujete nasdílením nových změn do vašeho úložiště GitHub.
+1. Inicializace úlohy Jenkinse, který provádí upgrade aplikace, nasdílením nových změn do vašeho úložiště GitHub.
 
 1. V Service Fabric Exploreru klikněte na rozevírací seznam **Aplikace**. Pokud chcete zobrazit stav upgradu, klikněte na kartu **Probíhající upgrady**.
 
@@ -191,7 +191,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
     ![Místně spuštěná hlasovací aplikace](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

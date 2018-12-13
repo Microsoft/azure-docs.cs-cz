@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970416"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193072"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
+# <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: Podrobné technické informace
 
 Tento článek obsahuje podrobné technické informace do fungování funkce Azure Active Directory bezproblémové jednotné přihlašování (bezproblémové jednotné přihlašování).
 
@@ -58,8 +58,8 @@ Tok přihlášení ve webovém prohlížeči vypadá takto:
 2. Pokud ještě není přihlášení uživatele, uživatel je přesměrován na přihlašovací stránku Azure AD.
 3. Uživatel zadá své uživatelské jméno na přihlašovací stránce služby Azure AD.
 
-  >[!NOTE]
-  >Pro [některých aplikací](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), jsou kroky 2 a 3 přeskočeny.
+   >[!NOTE]
+   >Pro [některých aplikací](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso), jsou kroky 2 a 3 přeskočeny.
 
 4. Pomocí jazyka JavaScript na pozadí, Azure AD vyzve prohlížeče prostřednictvím 401 neoprávněný odpověď, zadejte lístek protokolu Kerberos.
 5. Prohlížeč, pak vyžádá lístek ze služby Active Directory pro `AZUREADSSOACC` účtu počítače (který představuje Azure AD).

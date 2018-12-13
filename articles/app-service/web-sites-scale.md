@@ -1,5 +1,5 @@
 ---
-title: Vertikální navýšení kapacity aplikace v Azure | Dokumentace Microsoftu
+title: Vertikálně navýšit kapacitu funkce a kapacity - službě Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak pro vertikální navýšení kapacity aplikace v Azure App Service a přidávání kapacity a funkcí.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: e612fc6ce737fba1552c4eacbab133783c9994dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 2fb1f5ad0c3b46623550cbcc1204761b57f6093b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971228"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251045"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Vertikální navýšení kapacity aplikace v Azure
 
@@ -30,7 +31,7 @@ ms.locfileid: "52971228"
 Tento článek ukazuje, jak škálovat aplikaci ve službě Azure App Service. Existují dva pracovní postupy pro škálování, škálování nahoru a horizontální navýšení kapacity a tento článek vysvětluje vertikálního navýšení pracovního postupu.
 
 * [Vertikálně navýšit kapacitu](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Získejte další procesoru, paměti, místa na disku a další funkce, jako je vyhrazené virtuální počítače (VM), vlastních domén a certifikáty, přípravné sloty, automatické škálování a další. Vertikálně navýšit kapacitu změnou cenové úrovně plánu služby App Service, které vaše aplikace patří.
-* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): zvyšte počet instancí virtuálních počítačů, na kterých běží vaše aplikace.
+* [Horizontální navýšení kapacity](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Zvýšíte počet instancí virtuálních počítačů, na kterých běží vaše aplikace.
   Můžete horizontálně navýšit až 20 instancí, v závislosti na cenovou úroveň. [App Service Environment](environment/intro.md) v **izolované** další úrovně zvyšuje počet vašich horizontální navýšení kapacity až na 100 instancí. Další informace o horizontální navýšení kapacity najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/insights-how-to-scale.md). Existuje zjistíte, jak pomocí automatického škálování, což je škálování počtu instancí automaticky na základě předdefinovaných pravidel a plány.
 
 Nastavení škálování trvat jen několik sekund pro použití a ovlivňují všechny aplikace ve vaší [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
@@ -98,7 +99,7 @@ Tabulka obsahující limity, kvóty a omezení a podporovaných funkcích v jedn
   
     [Virtuální počítač a velikost cloudových služeb pro Microsoft Azure][vmsizes]
   
-* Informace o službě Azure App Service osvědčených postupů, včetně vytváření škálovatelné a odolné architektury, najdete v části [osvědčené postupy: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
+* Informace o službě Azure App Service najdete v části osvědčených postupů, včetně vytváření škálovatelné a odolné architektury, [osvědčených postupů: Azure App Service Web Apps](https://azure.microsoft.com/blog/best-practices-windows-azure-websites-waws/).
 * Videa o škálování aplikací služby App Service naleznete v následujících zdrojích:
   
   * [Kdy škálovat weby Azure – s Stefan Schackow](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)

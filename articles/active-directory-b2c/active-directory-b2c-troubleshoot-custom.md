@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e4b33552c4b070164b55a84f1d8586422aced2f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c733c148994b06e6d7cd13ee98e1a8157f26010a
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446669"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163171"
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Shromažďování protokolů
 
@@ -29,9 +29,9 @@ Tento článek popisuje kroky pro shromažďování protokolů z Azure AD B2C, t
 
 Azure AD B2C podporuje funkce pro odesílání dat do služby Application Insights.  Application Insights umožňuje diagnostikovat výjimky a vizualizovat problémy s výkonem aplikací.
 
-### <a name="setup-application-insights"></a>Nastavení Application Insights
+### <a name="setup-application-insights"></a>Nainstalovat Application Insights
 
-1. Přejděte na [portál Azure](https://portal.azure.com). Ujistěte se, že máte v tenantovi vašeho předplatného Azure (ne vašeho tenanta Azure AD B2C).
+1. Přejděte na [Azure Portal](https://portal.azure.com). Ujistěte se, že máte v tenantovi vašeho předplatného Azure (ne vašeho tenanta Azure AD B2C).
 1. Klikněte na tlačítko **+ nová** v navigační nabídce vlevo.
 1. Vyhledejte a vyberte **Application Insights**, pak klikněte na tlačítko **vytvořit**.
 1. Vyplňte formulář a klikněte na tlačítko **vytvořit**. Vyberte **Obecné** pro **typ aplikace**.
@@ -108,7 +108,7 @@ Verze prohlížeče, který načítá události z Application Insights je umíst
 >[!NOTE]
 >V současné době jsou navrženy protokoly podrobné aktivit je zde popsáno, **pouze** na podporu při vývoji vlastních zásad. Nepoužívejte režimu pro vývoj v produkčním prostředí.  Protokoly shromažďovat všechny deklarace identity posílané do a z zprostředkovatelé identity během vývoje.  Je-li použít v produkčním prostředí, vývojář zodpovědnost za identifikovatelné osobní údaje (soukromě údaje) shromážděné v protokolu App Insights, které vlastní.  Tyto podrobné protokoly jsou shromážděna, pouze když zásady se přikládá **VÝVOJOVÝ režim**.
 
-[Úložiště Github pro nepodporované vlastní zásady ukázky a související nástroje](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
+[Úložiště GitHub pro nepodporované vlastní zásady ukázky a související nástroje](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies)
 
 
 

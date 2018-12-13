@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Python'
+title: 'Rychlý start: Hledání zpráv s využitím Pythonu – rozhraní API REST vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
+description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí Pythonu a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 8ce8353df9a6f8354c56d9c9115645c0b7f2136a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308813"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251653"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-python"></a>Rychlý start pro rozhraní API pro vyhledávání zpráv v Pythonu
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí Pythonu a rozhraní API REST vyhledávání zpráv Bingu
+
 Tento návod představuje jednoduchý příklad volání rozhraní API Bingu pro vyhledávání zpráv a následného zpracování výsledného objektu JSON. Další informace najdete v [dokumentaci k vyhledávání zpráv Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
 
 Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https://mybinder.org) tak, že kliknete na odznáček pro spuštění Binderu: 

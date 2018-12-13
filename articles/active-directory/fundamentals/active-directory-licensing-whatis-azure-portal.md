@@ -13,12 +13,12 @@ ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c83eeb78f041b86032f1ebb28949cd035487b81e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086347"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189859"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
@@ -26,8 +26,17 @@ Placené cloudové služby Microsoftu, jako jsou Office 365, Enterprise Mobility
 
 Až doposud bylo možné licence přiřazovat jenom na úrovni jednotlivých uživatelů, což mohlo správu ve velkém měřítku ztěžovat. Pokud chtěl správce například při změnách v organizaci (třeba při nástupu nebo odchodu uživatelů v organizaci nebo oddělení) přidat nebo odebrat uživatelské licence, musel často psát složitý powershellový skript. Tento skript prováděl jednotlivá volání cloudové služby.
 
-Aby se tyto problémy odstranily, umožňuje teď Azure AD licencování na základě skupin. Jednu nebo více licencí produktů je možné přiřadit skupině. Azure AD zajišťuje, že se tyto licence přiřadí všem členům dané skupiny. Všem novým členům, kteří se ke skupině připojí, se přiřadí příslušné licence. Když členové skupinu opustí, tyto licence se odeberou. Tím se eliminuje potřeba, aby automatizace správy licencí přes PowerShell odrážela změny jednotlivých uživatelů ve struktuře organizace a oddělení.
+Aby se tyto problémy odstranily, umožňuje teď Azure AD licencování na základě skupin. Jednu nebo více licencí produktů je možné přiřadit skupině. Azure AD zajišťuje, že se tyto licence přiřadí všem členům dané skupiny. Všem novým členům, kteří se ke skupině připojí, se přiřadí příslušné licence. Když členové skupinu opustí, tyto licence se odeberou. Licencování správy eliminuje potřebu pro automatizaci správy licencí přes PowerShell tak, aby odrážely změny v organizaci a oddělení strukturu pro jednotlivé uživatele zvlášť.
 
+## <a name="licensing-requirements"></a>Licenční požadavky
+Je nutné mít jednu z těchto licencí použití skupinové licence:
+
+- Placené nebo zkušební předplatné Azure AD Basic
+
+- Placené nebo zkušební edice Office 365 Enterprise E3 nebo Office 365 a3 a vyšší
+
+### <a name="required-number-of-licenses"></a>Požadovaný počet licencí
+Pro všechny skupiny přiřadit licenci musí také mít licenci pro každého člena jedinečný. Když nemáte k dispozici k přiřazení každého člena skupiny licencí, musí mít alespoň dostatek licencí, které mají zahrnout všichni členové. Pro příkladu Pokud máte 1 000 jedinečných členů, kteří jsou součástí skupin licencí ve vašem tenantovi, musíte mít aspoň 1 000 licencí pro splnění licenční smlouvu.
 
 ## <a name="features"></a>Funkce
 
@@ -35,9 +44,9 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 - Licence lze přiřazovat jakékoli skupině zabezpečení v Azure AD. Skupiny zabezpečení se synchronizují z místních, pomocí služby Azure AD Connect. Skupiny zabezpečení můžete vytvářet také přímo v Azure AD (označují se také jako výhradně cloudové skupiny) nebo automaticky prostřednictvím funkce dynamické skupiny Azure AD.
 
-- Pokud je licence produktu přiřazená skupině, může správce jeden nebo více plánů služby v daném produktu zakázat. Obvykle se tak postupuje v případě, že organizace ještě není k používání služby zahrnuté v daném produktu připravená. Správce může například jednomu oddělení přiřadit Office 365, ale dočasně zakázat službu Yammer.
+- Pokud je licence produktu přiřazená skupině, může správce jeden nebo více plánů služby v daném produktu zakázat. Toto přiřazení se obvykle provádí při organizace ještě není připravená k používání služby, zahrnuté v produktu. Správce může například jednomu oddělení přiřadit Office 365, ale dočasně zakázat službu Yammer.
 
-- Všechny cloudové služby Microsoftu, které vyžadují licencování na úrovni uživatele, jsou podporované. Zahrnuje to všechny produkty Office 365, Enterprise Mobility + Security a Dynamics 365.
+- Všechny cloudové služby Microsoftu, které vyžadují licencování na úrovni uživatele, jsou podporované. Tato podpora zahrnuje všechny produkty, Enterprise Mobility + Security a Dynamics 365 v Office 365.
 
 - Licencování na základě skupin je momentálně dostupné jenom prostřednictvím webu [Azure Portal](https://portal.azure.com). Pokud používáte ke správě uživatelů a skupin primárně jiné portály pro správu, například portál Office 365, můžete v tom dále pokračovat. Ke správě licencí na úrovni skupin byste však měli používat Azure Portal.
 
@@ -47,11 +56,9 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 - V některých případech nelze licence uživateli přiřadit. Může se například stát, že v tenantovi není dostatek dostupných licencí nebo že ve stejnou dobu byly přiřazeny konfliktní služby. Správci mají přístup k informacím o uživatelích, u kterých služba Azure AD nemohla provést úplné zpracování licencí skupiny. Na základě těchto informací pak můžou provádět nápravné akce.
 
-- Placené nebo zkušební předplatné pro Azure AD Basic nebo placené nebo zkušební verze Office 365 Enterprise E3, Office 365 A3 a vyšší edice muset v tenantovi pomocí správy na základě skupin licencí. Tato funkce vyžaduje licenci pro každý jedinečný uživatel, který je členem skupiny, které jsou přiřazené licence. Není nutné k přiřazení licencí uživatelům pro ně být členy skupin, které jsou přiřazené licence, ale minimální počet licencí musí mít v tenantovi k pokrytí všech těchto uživatelů. Například pokud máte celkem 1 000 jedinečných uživatelů ve všech skupinách licence přiřazené ve vašem tenantovi, je třeba alespoň 1000 licencí splnit stanovené požadavky licence.
-
 ## <a name="your-feedback-is-welcome"></a>Vítáme vaše připomínky a názory.
 
-Pokud máte požadavky k připomínkám nebo funkcím, napište nám je prosím na [fórum pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
+Pokud máte zpětnou vazbu nebo požadavky na funkce, sdílet je s námi pomocí [fórum služby Azure AD admin](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
 ## <a name="next-steps"></a>Další postup
 

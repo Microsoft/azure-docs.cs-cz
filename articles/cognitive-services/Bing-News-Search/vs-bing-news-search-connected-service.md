@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: rozhraní API Bingu pro vyhledávání zpráv, C#'
+title: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
 titleSuffix: Azure Cognitive Services
 description: Připojte se k rozhraní API Bingu pro vyhledávání zpráv z webové aplikace ASP.NET Core.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: f1f5c590216975ce6b0813da6d9d98279d591454
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 6d08250c060184ceb49e5ab263e229ddaa08b6ec
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804340"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257756"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-by-using-connected-services-in-visual-studio"></a>Kurz: Připojení k rozhraní API Bingu pro vyhledávání zpráv pomocí připojených služeb v sadě Visual Studio
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Kurz: Připojení k Bingu pro vyhledávání zpráv rozhraní API pomocí připojené služby v sadě Visual Studio aC#
 
 S využitím rozhraní API Bingu pro vyhledávání zpráv můžete aplikacím a službám umožnit využívat výkon vyhledávacího webu, který je bez reklam a omezený na web. Rozhraní API Bingu pro vyhledávání zpráv je jednou z vyhledávacích služeb dostupných v rámci služeb Cognitive Services.
 
@@ -266,6 +266,6 @@ Pokud už skupinu prostředků nepotřebujete, můžete ji odstranit. Tím se od
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **Zadejte název skupiny prostředků** zadejte název skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o rozhraní API Bingu pro vyhledávání zpráv najdete v tématu [Co je Vyhledávání zpráv Bingu?](index.yml).

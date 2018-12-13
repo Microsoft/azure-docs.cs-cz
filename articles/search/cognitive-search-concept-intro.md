@@ -1,6 +1,6 @@
 ---
-title: Kognitivní vyhledávání pro extrakci dat, zpracování přirozeného jazyka AI ve službě Azure Search | Dokumentace Microsoftu
-description: Extrakce obsahu, přirozeného jazyka (NLP) zpracování a vytvořte prohledávatelného obsahu ve službě Azure Search indexování s využitím kognitivních dovedností a algoritmy AI pro zpracování obrázků
+title: Kognitivní vyhledávání pro extrakci dat, zpracování přirozeného jazyka AI – Azure Search
+description: Extrakce obsahu, přirozeného jazyka (NLP) zpracování a vytvořte prohledávatelného obsahu ve službě Azure Search indexování s využitím kognitivních dovedností a algoritmy AI pro zpracování obrázků.
 manager: cgronlun
 author: HeidiSteen
 services: search
@@ -9,14 +9,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 5d7f275be1f04658f9901aba9faca83375a9bbf5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec2018
+ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956189"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315600"
 ---
-# <a name="what-is-cognitive-search"></a>Co je kognitivního vyhledávání?
+# <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
 Kognitivní vyhledávání vytvoří prohledávatelná informace z jiných prohledávatelný obsah připojením algoritmy AI na kanál indexování. O integraci AI je prostřednictvím *kognitivní dovednosti*, rozšíření cestě zdroje dokumentů do indexu vyhledávání. 
 
@@ -26,12 +27,14 @@ Kognitivní vyhledávání vytvoří prohledávatelná informace z jiných prohl
 
 ![Kognitivní vyhledávání kanálu diagram](./media/cognitive-search-intro/cogsearch-architecture.png "přehled kanálu Kognitivního vyhledávání")
 
-Kognitivní dovednosti v Azure Search jsou založeny na stejné algoritmy umělé používaných pro rozhraní API služeb Cognitive Services: [s názvem Entity rozhraní API pro rozpoznávání](cognitive-search-skill-named-entity-recognition.md), [klíč frázi extrakce API](cognitive-search-skill-keyphrases.md), a [OCR API](cognitive-search-skill-ocr.md) jsou jenom pár. 
+Kognitivní dovednosti v Azure Search je založena na stejné algoritmy umělé používaných pro rozhraní API služeb Cognitive Services: [Rozhraní API pro rozpoznávání entit s názvem](cognitive-search-skill-named-entity-recognition.md), [klíč frázi extrakce API](cognitive-search-skill-keyphrases.md), a [OCR API](cognitive-search-skill-ocr.md) jsou jenom pár. 
 
 Přirozený jazyk a zpracování obrázků se použije během fáze příjem dat s výsledky se stávají součástí kompozice dokumentu v prohledávatelný index ve službě Azure Search. Data Source jako Azure datové sady a poté vloženo přes kanál indexování pomocí podle toho, co [integrované znalosti](cognitive-search-predefined-skills.md) potřebujete. Tato architektura je rozšiřitelný, takže pokud předdefinované dovednosti nestačí, můžete vytvořit a připojit [vlastních dovedností](cognitive-search-create-custom-skill-example.md) integrovat vlastní zpracování. Příklady může být vlastní entitu modulu nebo dokumentu třídění, cílení na konkrétní domény, jako jsou finance, vědecké publikace nebo lékařství.
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivního vyhledávání
 
@@ -45,7 +48,7 @@ Na začátku profilace, budete mít ukládání nestrukturovaných textových ne
 
 ![Fáze analýzy dokumentu](./media/cognitive-search-intro/document-cracking-phase-blowup.png "hádání dokumentu")
 
- Podporované zdroje patří Azure blob storage, Azure table storage, Azure SQL Database a Azure Cosmos DB. Textový obsah může být extrahována z následujících typů souborů: souborů PDF, Wordu, PowerPointu a souborů CSV. Úplný seznam najdete v tématu [podporované formáty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
+ Podporované zdroje patří Azure blob storage, Azure table storage, Azure SQL Database a Azure Cosmos DB. Textový obsah může být extrahována z následujících typů souborů: Soubory PDF, Wordu, PowerPointu a souborů CSV. Úplný seznam najdete v tématu [podporované formáty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
 ### <a name="cognitive-skills-and-enrichment-phase"></a>Kognitivní dovednosti a rozšiřování fáze
 
@@ -88,7 +91,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 
 ## <a name="where-do-i-start"></a>Kde mám začít?
 
-**Krok 1: Vytvoření vyhledávací službě v oblasti poskytuje rozhraní API** 
+**Krok 1: Vytvořte službu vyhledávání v oblasti poskytuje rozhraní API** 
 
 + Západní střed USA
 + Střed USA – jih
@@ -110,7 +113,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 + [Kurzu práce (požadavků HTTP)](cognitive-search-tutorial-blob.md)
 + [Příklad vlastních dovedností (C#)](cognitive-search-create-custom-skill-example.md)
 
-**Krok 3: Kontrola rozhraní API (REST jenom)**
+**Krok 3: Projděte si rozhraní API (REST jenom)**
 
 V současné době jsou k dispozici pouze rozhraní REST API. Použití `api-version=2017-11-11-Preview` u všech požadavků. Použijte následující rozhraní API k vytvoření řešení kognitivního vyhledávání. Pouze dvě rozhraní API se přidá nebo rozšířené pro kognitivního vyhledávání. Další rozhraní API mají stejnou syntaxi jako všeobecně dostupné verze.
 
@@ -121,7 +124,7 @@ V současné době jsou k dispozici pouze rozhraní REST API. Použití `api-ver
 | [Vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma vyjádření indexu Azure Search. Mapování polí v indexu pole ve zdrojových datech nebo pole vyrobenými během fáze rozšíření (například pole pro názvy organizací vytvořené rozpoznávání entit). |
 | [Vytvoření indexeru (rozhraní api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zdroj definice součástí použitých při indexování: včetně zdroje dat, dovedností, přidružení pole ze zdroje a struktury pracovních dat na cílový index a index, samotného. Spuštění indexeru je aktivační událost pro příjem dat a rozšíření. Výstup je ve vyhledávacím korpusu služby na základě schématu indexu, naplní se zdrojovými daty, rozšiřují prostřednictvím dovednosti.  |
 
-**Kontrolní seznam: Obvyklý pracovní postup**
+**Kontrolní seznam: Typický pracovní postup**
 
 1. Dílčí Azure zdroje dat do reprezentativní vzorek. Indexování trvá určitou dobu tedy začít s datovou sadou malé, reprezentativní a pak ho přírůstkové sestavování zrání vašeho řešení.
 
@@ -147,4 +150,4 @@ Další informace o konkrétní dotazy nebo problémy, najdete v části [tipy p
 
 + [Dokumentace ke kognitivnímu vyhledávání](cognitive-search-resources-documentation.md)
 + [Rychlý start: Vyzkoušení kognitivního vyhledávání v portálu návodu](cognitive-search-quickstart-blob.md)
-+ [Kurz: Přečtěte si kognitivního vyhledávání rozhraní API](cognitive-search-tutorial-blob.md)
++ [Kurz: Další rozhraní API pro kognitivní vyhledávání](cognitive-search-tutorial-blob.md)

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první webové Java aplikace ve službě Azure
+title: Vytvoření webové aplikace v Javě – Azure App Service
 description: Nasazením základní Java aplikace se naučíte, jak spouštět webové aplikace ve službě App Service.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4b812cfa2c551e9d2f365f74bebee96626f4dd94
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968304"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253151"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
@@ -121,9 +121,9 @@ V dialogovém okně **Create App Service** (Vytvoření služby App Service):
 * Vyberte předplatné služby Azure.
 * Na kartě **App service plan** (Plán služby App Service):
 
-  * **Create new** (Vytvořit nový): Ponechejte výchozí hodnotu, kterou je název plánu služby App Service.
-  * **Location** (Umístění): Vyberte **West Europe** (Západní Evropa) nebo umístění ve vaší blízkosti.
-  * **Pricing tier** (Cenová úroveň): Vyberte možnost Free. Informace o funkcích najdete na stránce [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+  * **Vytvořit nový**: Ponechte výchozí, což je název plánu služby App Service.
+  * **Umístění**: Vyberte **západní Evropa** nebo si lokalitu poblíž.
+  * **Cenová úroveň**: Vyberte možnost free. Informace o funkcích najdete na stránce [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
    ![Dialogové okno Create App Service (Vytvoření služby App Service)](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 

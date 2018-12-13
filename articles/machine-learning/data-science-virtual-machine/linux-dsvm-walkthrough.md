@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 0c929bb569fb96dfdaa53f47036cc8f16251ad1c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fafa680f877060f1e7d96c60f52e3033eeb38553
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105236"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190631"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -318,19 +318,19 @@ Anaconda distribuce v datové VĚDY se dodává s poznámkového bloku Jupyter, 
 
 > [!NOTE]
 > Použití Správce balíčků Pythonu (prostřednictvím `pip` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
-```python
+  ```python
    import sys
    ! {sys.executable} -m pip install numpy -y
-```
+  ```
 >
 >
 
 > [!NOTE]
 > Použití Instalační služby systému Conda (prostřednictvím `conda` příkaz) z poznámkového bloku Jupyter v jádru aktuální příkaz lze použít v buňky kódu, například:
-```python
+  ```python
    import sys
    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-```
+  ```
 >
 >
 
@@ -346,7 +346,7 @@ Několik ukázkové poznámkové bloky jsou již nainstalovány ve virtuálním 
 >
 
 ## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) grafického nástroje R pro dolování dat (R analytické nástroje pro další snadno) je. Obsahuje intuitivní rozhraní, které umožňuje snadno načíst, prozkoumat a transformace dat a sestavení a vyhodnocení modelů.  Tento článek [Rattle: A Data Mining grafického uživatelského rozhraní pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje jeho funkcí.
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) grafického nástroje R pro dolování dat (R analytické nástroje pro další snadno) je. Obsahuje intuitivní rozhraní, které umožňuje snadno načíst, prozkoumat a transformace dat a sestavení a vyhodnocení modelů.  Tento článek [Rattle: Data Mining grafickým uživatelským rozhraním pro R](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) poskytuje návod, který ukazuje jeho funkcí.
 
 Instalace a spuštění Rattle pomocí následujících příkazů:
 

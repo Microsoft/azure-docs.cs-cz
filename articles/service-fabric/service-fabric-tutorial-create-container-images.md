@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: f2e8ce7dc6102471f95f6332d9cb01a6cb4f4f54
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947529"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313781"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
 
@@ -206,9 +206,9 @@ azure-vote-front
 
 Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azure Container Registry. Tato image bude nasazena ze služby ACR do clusteru Service Fabric v následných kurzech.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu byla z Githubu přijata aplikace a image kontejneru byly vytvořeny a nahrány do registru. Dokončili jste následující kroky:
+V tomto kurzu byla z Githubu přijata aplikace a imagí kontejneru byly vytvořeny a nahrány do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu

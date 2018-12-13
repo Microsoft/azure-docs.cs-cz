@@ -10,25 +10,23 @@ ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2aa2f4e55d375f6ed7960af8bbe327d45b5ea025
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871757"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192242"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), řadu vlastních zobrazení můžete vytvořit na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
-* [Dlaždice odkaz](view-designer-tiles.md): obsahuje referenční příručka k nastavení všech dlaždic dostupných do vlastních zobrazení.
-* [Referenční informace k části vizualizace](view-designer-parts.md): obsahuje referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
+* [Dlaždice odkaz](view-designer-tiles.md): Poskytuje referenční příručka k nastavení všech dlaždic dostupných do vlastních zobrazení.
+* [Referenční informace k části vizualizace](view-designer-parts.md): Poskytuje referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 
 
 ## <a name="concepts"></a>Koncepty
@@ -72,8 +70,8 @@ Můžete vytvořit nové zobrazení v Návrháři zobrazení tak, že vyberete *
 Návrhář zobrazení použít k vytvoření nového zobrazení nebo upravovat stávající. 
 
 Návrhář zobrazení má tři podokna: 
-* **Návrh**: obsahuje vlastní zobrazení, které jste vytvoření nebo úpravy. 
-* **Ovládací prvky**: obsahuje dlaždice a části, které přidáte **návrhu** podokně. 
+* **Návrh**: Obsahuje vlastní zobrazení, které jste vytvoření nebo úpravy. 
+* **Ovládací prvky**: Obsahuje dlaždice a části, které přidáte **návrhu** podokně. 
 * **Vlastnosti**: Zobrazí vlastnosti dlaždice nebo vybraných částí.
 
 ![Návrhář zobrazení](media/view-designer/view-designer-screenshot.png)

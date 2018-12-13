@@ -1,6 +1,6 @@
 ---
-title: Filtry jazyka ve službě Azure Search | Dokumentace Microsoftu
-description: Filtrovat kritéria zabezpečení identity uživatele, jazyka, geografického umístění nebo číselné hodnoty ke snížení výsledky hledání na dotazy ve službě Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
+title: Filtry jazyka pro vícejazyčné obsah v indexu vyhledávání – Azure Search
+description: Kritéria pro podporu více jazyk hledání oboru provádění dotazu na pole specifické pro jazyk filtru.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,12 +9,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 2bacffe64fed3e2ee0cc2eb983776b4ab7086e51
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec2018
+ms.openlocfilehash: aae081232d3633d3f7d8094979764606bf99430d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466577"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311180"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrovat podle jazyka ve službě Azure Search 
 

@@ -1,13 +1,11 @@
 ---
-title: Načíst obnovení protokolu TCP nástroje pro vyrovnávání na nečinnosti | Dokumentace Microsoftu
+title: Obnovení protokolu TCP nástroje pro vyrovnávání zatížení při nečinnosti v Azure
+titlesuffix: Azure Load Balancer
 description: Nástroj pro vyrovnávání zatížení s obousměrný TCP RVNÍ paketů na časový limit nečinnosti
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
+ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 3cc4db387c33388d5692fa25ac26f2b6399cd185
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879829"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257283"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
 

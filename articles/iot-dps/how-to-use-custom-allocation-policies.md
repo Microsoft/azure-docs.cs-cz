@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f2c9194b07774443a70eef8e879d895efeb338e9
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 9d75195656581021253b5787a8bfd46639cc1754
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458186"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323128"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -27,8 +27,8 @@ Například možná jste chcete prozkoumat certifikát, který zařízení použ
 
 Tento článek ukazuje vlastní přidělení zásad, pomocí funkce Azure napsané v jazyce C#. Dvě nové služby IoT hub se vytvářejí představující *divizi společnosti Contoso opékače* a *divizi společnosti Contoso Heat čerpadel*. Zařízení vyžadující zřizování, musí mít ID registrace s jedním z následujících přípon přijetí pro zřizování:
 
-- **-contoso-tstrsd 007**: opékače divizi společnosti Contoso
-- **-contoso-hpsd 088**: Contoso Heat čerpadla dělení
+- **-contoso-tstrsd 007**: Opékače divizi společnosti Contoso
+- **-contoso-hpsd 088**: Heat čerpadel divizi společnosti Contoso
 
 Zařízení se zřídí na základě jedné z těchto požadovaných přípon na ID registrace. Tato zařízení budou simulované pomocí ukázkou zřizování součástí [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
@@ -98,11 +98,11 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
 
     **Název skupiny**: Zadejte **contoso-custom přidělené – zařízení**.
 
-    **Typ ověření**: vyberte **symetrický klíč**.
+    **Typ ověření**: Vyberte **symetrický klíč**.
 
-    **Automaticky generovat klíče**: Toto políčko mělo být již zaškrtnuté.
+    **Automaticky vygenerovat klíče**: Toto políčko mělo být již zaškrtnuté.
 
-    **Vyberte, jak chcete přiřadit zařízení k centrům**: vyberte **vlastní (pomocí funkce Azure)**.
+    **Vyberte, jak chcete přiřadit zařízení k centrům**: Vyberte **vlastní (pomocí funkce Azure Functions)**.
 
     ![Přidat vlastní přidělení skupinu registrací pro ověření identity symetrického klíče](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -113,7 +113,7 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
 
     **Předplatné**: Pokud máte více předplatných, vyberte předplatné, ve které jste vytvořili oddělení centra IoT hub.
 
-    **Služby IoT hub**: vyberte jednu z oddělení rozbočovače, který jste vytvořili.
+    **Služby IoT hub**: Vyberte jednu z oddělení rozbočovače, který jste vytvořili.
 
     **Zásady přístupu**: Zvolte **iothubowner**.
 
@@ -131,9 +131,9 @@ V této části vytvoříte novou skupinu registrace, který používá vlastní
 
     **Název aplikace**: Zadejte název jedinečné funkce aplikace. **Contoso – funkce – aplikace –. 1098** se zobrazí jako příklad.
 
-    **Skupina prostředků**: vyberte **použít existující** a **contoso-us-resource-group** zachovat všechny prostředky vytvořené v tomto článku společně.
+    **Skupina prostředků**: Vyberte **použít existující** a **contoso-us-resource-group** zachovat všechny prostředky vytvořené v tomto článku společně.
 
-    **Application Insights**: pro účely tohoto cvičení můžete vypnout to.
+    **Application Insights**: Pro účely tohoto cvičení můžete vypnout to.
 
     ![Vytvoření aplikace funkcí](./media/how-to-use-custom-allocation-policies/function-app-create.png)
 
@@ -390,7 +390,7 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
 4. Spuštěním následujícího příkazu sestavte verzi sady SDK určenou pro platformu vašeho vývojového klienta. V adresáři `cmake` se vygeneruje řešení Visual Studia pro simulované zařízení. 
 
     ```cmd
-    cmake -Dhsm_type_symm_key:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
     Pokud `cmake` nenajde váš kompilátor C++, můžou se při spuštění výše uvedeného příkazu zobrazit chyby sestavení. Pokud k tomu dojde, zkuste tento příkaz spustit v [příkazovém řádku sady Visual Studio](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
@@ -398,7 +398,7 @@ Tato část se orientované na pracovní stanici se systémem Windows. Příklad
     Po úspěšném sestavení by posledních pár řádků výstupu mělo vypadat přibližně takto:
 
     ```cmd/sh
-    $ cmake -Dhsm_type_symm_key:BOOL=ON ..
+    $ cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     -- Building for: Visual Studio 15 2017
     -- Selecting Windows SDK version 10.0.16299.0 to target Windows 10.0.17134.
     -- The C compiler identification is MSVC 19.12.25835.0
@@ -526,12 +526,12 @@ V následující tabulce jsou uvedeny očekávané scénáře a výsledky kódy 
 
 | Scénář | Výsledek registrace ze služby zřizování | Zřizování výsledky sady SDK |
 | -------- | --------------------------------------------- | ------------------------ |
-| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Stav způsobit: přiřazeno  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
-| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Stav způsobit: se nezdařilo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | Sada SDK vrátí PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
-| Webhook vrátí 401 Neautorizováno | Stav způsobit: se nezdařilo<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
-| Jednotlivé registrace byl vytvořen za účelem zakázání zařízení | Stav způsobit: zakázáno | Sada SDK vrátí PROV_DEVICE_RESULT_DISABLED |
-| Webhook vrátí kód chyby: > = 429 | Orchestrace distribučních bodů se bude opakovat několikrát. Zásady opakování je aktuálně:<br><br>&nbsp;&nbsp;-Počet opakování: 10<br>&nbsp;&nbsp;-Počátečního intervalu: 1s<br>&nbsp;&nbsp;-Zvýšíte: 9s | Sada SDK bude chybu ignorovat a odeslat další get stavová zpráva v zadaném čase |
-| Každý jiný stavový kód vrátí se webhook. | Stav způsobit: se nezdařilo<br><br>Kód chyby: CustomAllocationFailed (400207) | Sada SDK vrátí PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
+| Webhook vrátí 200 OK iotHubHostName nastavena na platný název hostitele centra IoT | Výsledný stav: Přiřazené  | Sada SDK vrátí PROV_DEVICE_RESULT_OK společně s informacemi centra |
+| Webhook se vrátí k dispozici v odpovědi 200 OK v "iotHubHostName", ale nastavit na prázdný řetězec nebo hodnotu null | Výsledný stav: Selhalo<br><br> Kód chyby: CustomAllocationIotHubNotSpecified (400208) | Sada SDK vrátí PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
+| Webhook vrátí 401 Neautorizováno | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationUnauthorizedAccess (400209) | Sada SDK vrátí PROV_DEVICE_RESULT_UNAUTHORIZED |
+| Jednotlivé registrace byl vytvořen za účelem zakázání zařízení | Výsledný stav: Zakázáno | Sada SDK vrátí PROV_DEVICE_RESULT_DISABLED |
+| Webhook vrátí kód chyby: > = 429 | Orchestrace distribučních bodů se bude opakovat několikrát. Zásady opakování je aktuálně:<br><br>&nbsp;&nbsp;-Počet opakování: 10<br>&nbsp;&nbsp;-Počátečního intervalu: 1s<br>&nbsp;&nbsp;-Inkrementace: 9s | Sada SDK bude chybu ignorovat a odeslat další get stavová zpráva v zadaném čase |
+| Každý jiný stavový kód vrátí se webhook. | Výsledný stav: Selhalo<br><br>Kód chyby: CustomAllocationFailed (400207) | Sada SDK vrátí PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

@@ -6,18 +6,18 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cf0cc5290f0757723ee067ee8ea84e8d6e7ba845
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376863"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323401"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack školení a certifikace
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Následující možnosti školení a certifikace jsou k dispozici vám pomůžou získat informace o službě Azure Stack a ukazují vaše znalosti Azure Stack.
 
@@ -29,7 +29,7 @@ Následující možnosti školení a certifikace jsou k dispozici vám pomůžou
 
 ## <a name="certification"></a>Certifikace
 
-Certifikáty Azure Stack je v současnosti ve vývoji. Sledujte nejnovější aktualizace.
+*Konfigurace a provozování hybridního cloudu s využitím certifikace Microsoft Azure Stack*, [zkoušku 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## <a name="next-steps"></a>Další postup
 

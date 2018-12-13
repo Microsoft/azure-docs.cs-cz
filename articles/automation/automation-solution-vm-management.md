@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 086bddb34017d41e3e7efe86531e3c849ccd80ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5f5c86a90325c9a6dcd521a97cb899b88b55198d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679932"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194262"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
-Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím Azure Log Analytics a posílání e-mailů volitelné [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
+Spuštění/zastavení virtuálních počítačů mimo špičku řešení spustí a zastaví virtuální počítače Azure na uživatelské plány, poskytuje přehledy prostřednictvím Azure Log Analytics a posílání e-mailů volitelné [skupiny akcí](../azure-monitor/platform/action-groups.md). Azure Resource Manager a klasické virtuální počítače podporuje pro většinu scénářů.
 
 Toto řešení poskytuje možnost automatizace decentralizované s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na jejich virtuální počítač. S tímto řešením můžete:
 
@@ -79,7 +79,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    - Zadejte **cílové názvy ResourceGroup**. Tyto hodnoty jsou názvy skupin prostředků obsahujících virtuální počítače, které být spravovány tímto řešením. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku, pokud jsou cílem virtuální počítače ve všech skupinách prostředků v rámci předplatného. Tato hodnota bude uložena v **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** proměnné.
    - Zadejte **seznamu vyloučení virtuálních počítačů (řetězec)**. Tato hodnota je název jednoho nebo více virtuálních počítačů z cílová skupina prostředků. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku. Tato hodnota bude uložena v **External_ExcludeVMNames** proměnné.
    - Vyberte **plán**. Tato hodnota je o opakované datum a čas spouštění a zastavování virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je nakonfigurovaný plán po dobu 30 minut od této chvíle. Vybrat jinou oblast, není k dispozici. Konfigurace plánu na konkrétní časové pásmo po dokončení konfigurace řešení, najdete v článku [Úprava plánů spouštění a vypínání](#modify-the-startup-and-shutdown-schedules).
-   - Pro příjem **e-mailová oznámení** ze skupiny akcí, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** , ale později rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md) , který je vytvořen s platnou e-mailové adresy oddělené čárkou. Je také potřeba povolit následující pravidla upozornění:
+   - Pro příjem **e-mailová oznámení** ze skupiny akcí, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** , ale později rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat [skupiny akcí](../azure-monitor/platform/action-groups.md) , který je vytvořen s platnou e-mailové adresy oddělené čárkou. Je také potřeba povolit následující pravidla upozornění:
 
      - AutoStop_VM_Child
      - Scheduled_StartStop_Parent
@@ -101,7 +101,7 @@ Tento scénář je výchozí konfigurace, při prvním nasazení řešení. Nap�
 > [!NOTE]
 > Časové pásmo je aktuálního časového pásma, pokud nakonfigurujete plán parametru času. Ale je ukládat ve formátu UTC ve službě Azure Automation. Není potřeba dělat žádné převodu časového pásma, protože tento problém řeší během nasazení.
 
-Můžete určit, které virtuální počítače jsou v oboru konfigurací následující proměnné: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**, a **External_ ExcludeVMNames**.
+Vy řídíte, což jsou virtuální počítače v oboru konfigurací následující proměnné: **External_Start_ResourceGroupNames**, **External_Stop_ResourceGroupNames**, a **External_ExcludeVMNames**.
 
 Můžete povolit cílení na reagovat na předplatné a skupinu prostředků nebo cílení na konkrétní seznam virtuálních počítačů, ale ne obojí.
 
@@ -120,7 +120,7 @@ Můžete povolit cílení na reagovat na předplatné a skupinu prostředků neb
 > [!NOTE]
 > Hodnota pro **názvy cílové skupiny prostředků** se ukládá jako hodnota pro obě **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames**. Pro další podrobností můžete upravit každé z těchto proměnných pro cílení různých skupin prostředků. Pro akci spuštění, použijte **External_Start_ResourceGroupNames**a pro akci zastavit, použijte **External_Stop_ResourceGroupNames**. Virtuální počítače jsou automaticky přidány do spuštění a zastavení plány.
 
-### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>Scénář 2: Spuštění/zastavení virtuálních počítačů v pořadí pomocí značek
+### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>Scénář 2: Spouštění/zastavování virtuálních počítačů v pořadí pomocí značek
 
 V prostředí, které obsahuje dvě nebo více součástí na podporu úlohách distribuovaných mezi několika virtuálních počítačích podpora pořadí, ve kterém jsou spuštěny a zastavení součásti v pořadí je důležité. Tento scénář lze provádět pomocí následujících kroků:
 
@@ -139,7 +139,7 @@ V prostředí, které obsahuje dvě nebo více součástí na podporu úlohách 
 1. Tento scénář nerespektuje **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupnames** proměnné. V tomto scénáři je potřeba vytvořit vlastní plán Automation. Podrobnosti najdete v tématu [plánování runbooku ve službě Azure Automation](../automation/automation-schedules.md).
 1. Zobrazit náhled akce a proveďte potřebné změny před implementací proti produkčních virtuálních počítačů. Když budete připraveni, je nutné ručně provést monitorování a diagnostics/monitorování – akce – groupsrunbook s parametrem nastaveným na **False**, nebo nechat plán Automation **Sequenced StartVM** a **Sequenced StopVM** spouštět automaticky podle předepsaného plánu.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scénář 3: Spuštění/zastavení automaticky na základě využití procesoru
+### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Scénář 3: Spuštění/zastavení automaticky v závislosti na využití procesoru
 
 Toto řešení může pomoct spravovat náklady na provozování virtuálních počítačů ve vašem předplatném, virtuální počítače Azure, které nejsou používány během období mimo špičku, například po hodinách, a automaticky tyto služby vypnout Pokud je využití procesoru významu méně než x %.
 
@@ -185,13 +185,13 @@ Zahrnout všechny nadřazené sady runbook _WhatIf_ parametru. Pokud je nastaven
 |Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se, nezávisle na nadřízeném runbooku. Tato sada runbook vytvoří výstrahy na základě jednotlivých zdrojích pro scénář AutoStop.|
-|AutoStop_CreateAlert_Parent | Seznamů VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla upozornění na virtuálních počítačích v cílových skupinách předplatné nebo prostředek. <br> Seznamů VMList: Čárkou oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
+|AutoStop_CreateAlert_Parent | Seznamů VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla upozornění na virtuálních počítačích v cílových skupinách předplatné nebo prostředek. <br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
 |AutoStop_Disable | žádný | Zakáže upozornění AutoStop a výchozí plán.|
 |AutoStop_StopVM_Child | WebHookData | Volá se, nezávisle na nadřízeném runbooku. Pravidla upozornění voláním tohoto runbooku se zastavit virtuální počítač.|
 |Bootstrap_Main | žádný | Jednou použít ke konfiguraci bootstrap konfigurací, jako jsou třeba webhookURI, které nejsou obvykle přístupné z Azure Resource Manageru. Tato sada runbook je automaticky odebere po úspěšném nasazení.|
 |ScheduledStartStop_Child | VMName <br> Akce: Spuštění nebo zastavení <br> ResourceGroupName | Volá se, nezávisle na nadřízeném runbooku. Provede akci spuštění nebo zastavení pro plánované stop.|
-|ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>Seznamů VMList <br> WhatIf: True nebo False | Toto nastavení ovlivňuje všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provádět pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuální počítače prostřednictvím aktualizace **External_ExcludeVMNames** proměnné.<br> Seznamů VMList: Čárkou oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> _WhatIf_ ověří logiky sad runbook bez spuštění.|
-|SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>Seznamů VMList| Vytvoření značky s názvem **sequencestart** a **sequencestop** na každý virtuální počítač, pro které chcete do sekvenční aktivity spuštění/zastavení. Tyto názvy tagů rozlišují malá a velká písmena. Hodnota značky musí být kladné celé číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> Seznamů VMList: Čárkou oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_. <br> _WhatIf_ ověří logiky sad runbook bez spuštění. <br> **Poznámka:**: virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames a External_ExcludeVMNames ve službě Azure Automation proměnné. Musí mít odpovídající značky pro akce se projeví.|
+|ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>Seznamů VMList <br> WhatIf: True nebo False | Toto nastavení ovlivňuje všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provádět pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuální počítače prostřednictvím aktualizace **External_ExcludeVMNames** proměnné.<br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_.<br> _WhatIf_ ověří logiky sad runbook bez spuštění.|
+|SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>Seznamů VMList| Vytvoření značky s názvem **sequencestart** a **sequencestop** na každý virtuální počítač, pro které chcete do sekvenční aktivity spuštění/zastavení. Tyto názvy tagů rozlišují malá a velká písmena. Hodnota značky musí být kladné celé číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> Seznamů VMList: Čárkami oddělený seznam virtuálních počítačů. Například _vm1, vm2 vm3_. <br> _WhatIf_ ověří logiky sad runbook bez spuštění. <br> **Poznámka:**: Virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames External_Stop_ResourceGroupNames a External_ExcludeVMNames ve službě Azure Automation proměnné. Musí mít odpovídající značky pro akce se projeví.|
 
 ### <a name="variables"></a>Proměnné
 
@@ -309,7 +309,7 @@ Na **StartStop_VM_Notification** klikněte na **upravit podrobnosti** pod **podr
 
 ![Stránka řešení Update Management Automation](media/automation-solution-vm-management/change-email.png)
 
-Případně můžete přidat další akce související se skupiny akcí, další informace o skupinách akcí naleznete v tématu [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md)
+Případně můžete přidat další akce související se skupiny akcí, další informace o skupinách akcí naleznete v tématu [skupiny akcí](../azure-monitor/platform/action-groups.md)
 
 Následuje ukázkový e-mail, který se odešle, když virtuální počítače vypne řešení.
 

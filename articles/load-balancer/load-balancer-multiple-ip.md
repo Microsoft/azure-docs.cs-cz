@@ -1,5 +1,6 @@
 ---
-title: Rozložení zátěže pro více konfigurací IP v Azure | Dokumentace Microsoftu
+title: Vyrovnávání zatížení na více konfigurací IP v Azure
+titlesuffix: Azure Load Balancer
 description: Vyrovnávání zatížení napříč primární a sekundární konfigurací IP.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: se0dec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0f092c471a7908eabe481adc8c722993818840b8
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: e6aff89fe45220e1642a91e6a2d31a9da422fdea
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219507"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163527"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Vyrovnávání zatížení na více konfigurací protokolu IP pomocí webu Azure portal
 
@@ -56,7 +58,7 @@ Další informace o vytváření virtuálních počítačů s několika síťov�
 
 Proveďte následující kroky k dosažení scénář popsaný v tomto článku.
 
-### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Konfigurace sekundární síťová rozhraní
+### <a name="step-1-configure-the-secondary-nics"></a>Krok 1: Konfigurovat sekundární síťová rozhraní
 
 Pro každý virtuální počítač ve virtuální síti přidáte konfiguraci IP adresy pro sekundární síťové rozhraní:  
 
@@ -166,7 +168,7 @@ Konfigurace sondy stavu pro nástroj pro vyrovnávání zatížení:
 
 4. Zadejte název sondy stavu (například **HTTP**). Vyberte **OK**.
 
-### <a name="step-6-configure-load-balancing-rules"></a>Krok 6: Konfigurace pravidel Vyrovnávání zatížení
+### <a name="step-6-configure-load-balancing-rules"></a>Krok 6: Konfigurace pravidel vyrovnávání zatížení
 
 Pro každý web (contoso.com a fabrikam.com) konfigurace pravidel Vyrovnávání zatížení:
     
@@ -186,7 +188,7 @@ Pro každý web (contoso.com a fabrikam.com) konfigurace pravidel Vyrovnávání
 
 Po nakonfigurování pravidla jsou zobrazeny v rámci vašeho nástroje pro vyrovnávání zatížení **pravidla Vyrovnávání zatížení** nastavení.
 
-### <a name="step-7-configure-dns-records"></a>Krok 7: Konfigurace záznamů DNS
+### <a name="step-7-configure-dns-records"></a>Krok 7: Nakonfigurovat záznamy DNS
 
 V posledním kroku nakonfigurujte svoje záznamy prostředků DNS tak, aby odkazoval na příslušných front-endové IP adresy pro nástroj pro vyrovnávání zatížení. Můžete hostovat svoje domény v Azure DNS. Další informace o použití Azure DNS s nástrojem pro vyrovnávání zatížení najdete v tématu [pomocí Azure DNS s ostatními službami Azure](../dns/dns-for-azure-services.md).
 

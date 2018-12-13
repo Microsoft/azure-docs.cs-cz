@@ -1,7 +1,7 @@
 ---
 title: Jednoduché entity, seznam frází
 titleSuffix: Azure Cognitive Services
-description: Extrahování strojově naučených dat z promluvy
+description: V tomto kurzu se extrakce dat zjištěné počítače pracovní úlohy pro název z utterance pomocí jednoduchého entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a783491ca04f19964cc66f1faef5e2fdba142e24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: e8a1575527f906fab130e08cda715f6c8e904275
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094436"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166264"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Kurz 7: Extrahování názvů pomocí jednoduché entity a seznamu frází
+# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Kurz 7: Extrahovat názvy s jednoduchý seznam entit a frází
 
 V tomto kurzu extrahujete strojově naučená data názvu pracovní pozice z promluvy pomocí **jednoduché** entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
 
@@ -284,7 +284,7 @@ Protože názvem může být cokoli, predikuje služba LUIS entity přesněji, p
 
 ## <a name="to-boost-signal-add-phrase-list"></a>Zesílení signálu přidáním seznamu frází
 
-Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště LUIS-Samples na Githubu. V seznamu je více než tisíc slov a frází označujících pracovní pozice. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
+Otevřít [úlohy. frázi list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště Githubu ukázky LUIS. V seznamu je více než tisíc slov a frází označujících pracovní pozice. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
 
 1. V části **Build** (Sestavit) aplikace LUIS vyberte možnost **Phrase lists** (Seznamy frází) v nabídce **Improve app performance** (Zvýšení výkonu aplikací).
 

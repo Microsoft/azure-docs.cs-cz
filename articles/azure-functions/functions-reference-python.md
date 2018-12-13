@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 078a8995dc6f8ce9792f1d18661407f7c6d90029
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 619db07204b88609314d0d3d06709eaa93cb7a43
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855775"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188024"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -330,7 +330,37 @@ Pod pokličkou, základní nástroje použít docker ke spuštění [mcr.microso
 > Pokud budete nadále dochází k problémům, dejte nám prosím vědět o [otevřete problém](https://github.com/Azure/azure-functions-core-tools/issues/new) a včetně popisu problému. 
 
 
-Chcete-li nasadit aplikaci Function App Pythonu do Azure, můžete použít [Travis CI pro vlastní skripty](https://docs.travis-ci.com/user/deployment/script/) s úložišti GitHub. Tady je příklad `.travis.yaml` skript pro proces sestavení a publikování.
+Sestavit závislosti a publikovat pomocí průběžné integrace (CI) a průběžné doručování (CD) systému, můžete použít [kanálu Azure](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=vsts) nebo [Travis CI pro vlastní skripty](https://docs.travis-ci.com/user/deployment/script/). 
+
+Tady je příklad `azure-pipelines.yml` skript pro proces sestavení a publikování.
+```yml
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+
+- script: |
+    set -e
+    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
+    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+    sudo apt-get install -y apt-transport-https
+    echo "install Azure CLI..."
+    sudo apt-get update && sudo apt-get install -y azure-cli
+    npm i -g azure-functions-core-tools --unsafe-perm true
+    echo "installing dotnet core"
+    curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 2.0
+- script: |
+    set -e
+    az login --service-principal --username "$(APP_ID)" --password "$(PASSWORD)" --tenant "$(TENANT_ID)" 
+    func settings add FUNCTIONS_WORKER_RUNTIME python
+    func extensions install
+    func azure functionapp publish $(APP_NAME) --build-native-deps
+```
+
+Tady je příklad `.travis.yaml` skript pro proces sestavení a publikování.
 
 ```yml
 sudo: required

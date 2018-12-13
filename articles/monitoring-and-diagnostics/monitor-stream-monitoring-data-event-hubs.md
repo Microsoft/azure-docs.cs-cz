@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 4c6765e54dc881c35e344f111e82721be0852052
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3bf2135e7d4cb0e34d6e38e8673d5d69f262979c
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823754"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322393"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -21,17 +21,17 @@ Platforma Azure Monitor poskytuje jeden kanál pro získání přístupu ke vše
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
-## <a name="what-data-can-i-send-into-an-event-hub"></a>Jaká data můžete odesílat do centra událostí? 
+## <a name="what-data-can-i-send-into-an-event-hub"></a>Jaká data můžete odesílat do centra událostí?
 
 V rámci prostředí Azure existuje několik "vrstvy" dat monitorování a způsob přístupu k datům z každé vrstvy se mírně liší. Obvykle tyto vrstvy lze popsat jako:
 
-- **Monitorování dat aplikací:** Data o výkonu a funkce kódu sami napsali a běží v Azure. Příklady monitorování dat aplikací: trasování výkonu a protokoly aplikací a telemetrii uživatelů. Monitorování dat aplikace se shromažďují v jednom z následujících způsobů:
+- **Monitorování data aplikací:** Data o výkonu a funkce kódu sami napsali a běží v Azure. Příklady monitorování dat aplikací: trasování výkonu a protokoly aplikací a telemetrii uživatelů. Monitorování dat aplikace se shromažďují v jednom z následujících způsobů:
   - Upravením kódu pomocí sady SDK [Application Insights SDK](../application-insights/app-insights-overview.md).
-  - Spuštěním agenta monitorování, která naslouchá novou aplikaci protokoly na počítači provozování vaší aplikace, jako [Windows agenta diagnostiky Azure](./azure-diagnostics.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
-- **Data monitorování hostovaného operačního systému:** Data o operačním systému, na kterém je aplikace spuštěna. Příklady data monitorování hostovaného operačního systému by události systému Windows nebo protokolu syslog v Linuxu. Pokud chcete shromažďovat data tohoto typu, je potřeba nainstalovat agenta, jako [Windows agenta diagnostiky Azure](./azure-diagnostics.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
+  - Spuštěním agenta monitorování, která naslouchá novou aplikaci protokoly na počítači provozování vaší aplikace, jako [Windows agenta diagnostiky Azure](./../azure-monitor/platform/diagnostics-extension-overview.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
+- **Data monitorování hostovaného operačního systému:** Data o operačním systému, na kterém je aplikace spuštěna. Příklady data monitorování hostovaného operačního systému by události systému Windows nebo protokolu syslog v Linuxu. Pokud chcete shromažďovat data tohoto typu, je potřeba nainstalovat agenta, jako [Windows agenta diagnostiky Azure](./../azure-monitor/platform/diagnostics-extension-overview.md) nebo [agenta diagnostiky Azure Linux](../virtual-machines/extensions/diagnostics-linux.md).
 - **Data monitorování prostředků Azure:** Data o provozu prostředku Azure. Pro některé typy prostředků Azure, jako jsou virtuální počítače je hostovaný operační systém a aplikace pro monitorování v rámci této služby Azure. Za další prostředky Azure, jako jsou skupiny zabezpečení sítě zdroje dat monitorování je na nejvyšší úrovni nejsou k dispozici data (protože neexistuje žádný hostovaný operační systém nebo aplikace běžící v těchto prostředků). Tato data lze shromažďovat pomocí [nastavení diagnostiky prostředků](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
 - **Předplatné Azure, monitorování dat:** Data o provozu a správy předplatného Azure, jakož i informace o stavu a provoz Azure samotný. [Protokolu aktivit](./monitoring-overview-activity-logs.md) obsahuje většinu předplatné sledování dat, jako jsou incidenty health service a Azure Resource Manageru audity. Můžete shromažďovat tato data pomocí profilu protokolu.
-- **Data monitorování klienta Azure:** Data o provozu Azure služby na úrovni tenanta, jako je Azure Active Directory. Auditování Azure Active Directory a přihlášení jsou příklady dat monitorování klientů. Tato data se můžou shromažďovat diagnostické nastavení tenanta.
+- **Data monitorování klienta Azure:** Data o provozu služeb Azure úrovni klienta, jako je Azure Active Directory. Auditování Azure Active Directory a přihlášení jsou příklady dat monitorování klientů. Tato data se můžou shromažďovat diagnostické nastavení tenanta.
 
 Data ze všech úrovních lze odesílat do centra událostí, kde lze načíst do nástroje partnera. Tento oddíl popisuje, jak nakonfigurovat data z každé vrstvy Streamovat do centra událostí. Kroky předpokládají, že už máte prostředky na dané úrovni, která se má monitorovat.
 
@@ -91,7 +91,7 @@ Je potřeba nainstalovat agenta k odeslání dat monitorování operačního sys
 
 ### <a name="windows-data"></a>Windows data
 
-[Agenta diagnostiky Azure Windows](./azure-diagnostics.md) je možné odesílat data monitorování z počítače s Windows do centra událostí. To lze proveďte přidáním centra událostí jako jímka v části privateConfig WAD konfiguračního souboru. [Najdete v tomto článku se dozvíte informace o přidávání jímky centra událostí pro Windows Azure diagnostiky agenta](./azure-diagnostics-streaming-event-hubs.md).
+[Agenta diagnostiky Azure Windows](./../azure-monitor/platform/diagnostics-extension-overview.md) je možné odesílat data monitorování z počítače s Windows do centra událostí. To lze proveďte přidáním centra událostí jako jímka v části privateConfig WAD konfiguračního souboru. [Najdete v tomto článku se dozvíte informace o přidávání jímky centra událostí pro Windows Azure diagnostiky agenta](./../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
 > [!NOTE]
 > Nejde nastavit vysílání datového proudu data monitorování hostovaného operačního systému do centra událostí na portálu. Místo toho musíte ručně upravit konfigurační soubor.
@@ -114,10 +114,10 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor umož
     2. Pokud doplněk nemůžete nainstalovat ve vaší instanci Splunk (např.) Pokud používáte proxy server nebo v cloudu Splunk spuštěna), můžete tyto události do protokolu událostí Splunk HTTP pomocí přeposílat [tuto funkci, která se spustí pomocí nové zprávy do centra událostí](https://github.com/Microsoft/AzureFunctionforSplunkVS).
 * **SumoLogic** – pokyny pro nastavení SumoLogic využívají data z centra událostí jsou [tady k dispozici](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)
 * **ArcSight** – inteligentní konektor ArcSight Azure Event Hubs je k dispozici jako součást [kolekce inteligentních konektor ArcSight tady](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852).
-* **Syslog server** – Pokud chcete data Azure Monitor Streamovat přímo na syslog server, si můžete prohlédnout [úložiště github](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+* **Syslog server** – Pokud chcete data Azure Monitor Streamovat přímo na syslog server, si můžete prohlédnout [úložiště GitHub](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Další kroky
 * [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)
 * [Přečtěte si přehled protokolu aktivit Azure](monitoring-overview-activity-logs.md)
-* [Nastavte si výstrahy na základě události protokolu aktivit](monitor-alerts-unified-log-webhook.md)
+* [Nastavte si výstrahy na základě události protokolu aktivit](../azure-monitor/platform/alerts-log-webhook.md)
 

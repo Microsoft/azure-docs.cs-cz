@@ -12,12 +12,12 @@ author: tedway
 ms.date: 05/07/2018
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87826ad00d52f4d5a2167d4beaec882af096c3ac
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 44c0818d7ddb418e34e6e124ddc0b27460bb24a0
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103333"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262074"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning hardwarovou akceleraci balíčku
 
@@ -34,7 +34,8 @@ Balíček Azure Machine Learning hardwarovou akceleraci je Python pip instalovat
 
 ## <a name="prerequisites"></a>Požadavky
 
-1. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
+>[!Note]
+>Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 1. Účet správy modelů Azure Machine Learning. Další informace o vytvoření účtu najdete v tématu [Quickstart pro Azure Machine Learning a Workbench instalace](../desktop-workbench/quickstart-installation.md) dokumentu. 
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 07d6b07a583b8a8ce8b490333a87ff659f495e45
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: be379061f738ccee298c9a5aac88d3a95613f214
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866983"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193225"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvořit cluster Apache Hadoop s bezpečným přenosem účty úložiště v Azure HDInsight
 
@@ -23,7 +23,7 @@ Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secu
 ## <a name="prerequisites"></a>Požadavky
 Než začnete tento kurz, musíte mít:
 
-* **Předplatné Azure**: pro vytvoření bezplatného zkušebního účet na jeden měsíc otevřete web [azure.microsoft.com/free](https://azure.microsoft.com/free).
+* **Předplatné Azure**: Chcete-li vytvořit Bezplatný zkušební účet jeden měsíc, přejděte na [azure.microsoft.com/free](https://azure.microsoft.com/free).
 * **Účet služby Azure Storage s povoleným zabezpečeným přenosem**. Pokyny najdete v tématech popisujících [vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md) a funkci [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md).
 * **Kontejner objektů blob v účtu úložiště**. 
 
@@ -45,7 +45,7 @@ V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí [šablo
     - Použijte krátký název účtu úložiště.
     - Účet úložiště i kontejner objektů blob je potřeba vytvořit předem. 
 
-    Pokyny najdete v tématu popisujícím [vytvoření clusteru](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
+      Pokyny najdete v tématu popisujícím [vytvoření clusteru](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). 
 
 Pokud k zadání vlastních konfiguračních souborů použijete akci skriptu, musíte v následujících nastaveních použít wasbs:
 

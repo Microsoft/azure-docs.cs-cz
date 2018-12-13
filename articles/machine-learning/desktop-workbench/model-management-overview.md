@@ -2,20 +2,20 @@
 title: Koncepční přehled správy modelů Azure Machine Learning | Dokumentace Microsoftu
 description: Tento dokument popisuje koncepty správy modelů pro Azure Machine Learning.
 services: machine-learning
-author: hjerezmsft
-ms.author: hjerez
+author: chris-lauren
+ms.author: clauren
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: d3f7e206e7f4aa61a8ec1272ff2670d81bb7a33e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b89e80051ec53649a3da8fadcf412c58c177525c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974676"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260204"
 ---
 # <a name="azure-machine-learning-model-management"></a>Správa modelů ve službě Azure Machine Learning
 

@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Ruční škálování webové aplikace po
 description: Ukázkový skript Azure CLI – Ruční škálování webové aplikace pomocí Azure CLI
 services: appservice
 documentationcenter: appservice
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: da269c2a096ad317703329bf6ad847dbaf9016e9
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988576"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188639"
 ---
-# <a name="scale-a-web-app-manually"></a>Ruční škálování webové aplikace
+# <a name="scale-a-web-app-manually-using-azure-cli"></a>Škálování webové aplikace ručně pomocí rozhraní příkazového řádku Azure
 
 Tento ukázkový skript vytvoří skupinu prostředků, plán služby App Service a webovou aplikaci. Pak škáluje plán služby App Service z jedné instance na několik instancí.
 
@@ -50,7 +50,7 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace a všech souvi
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
 | [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-update) | Aktualizuje vlastnosti plánu služby App Service. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

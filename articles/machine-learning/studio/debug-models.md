@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 629dc45e-ac1e-4b7d-b120-08813dc448be
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: 79dcfaeaebeea9792fcc25b180163f28324b39ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 0464dec9e747e57e4b95a691aeb5a0992cf8d9cc
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094454"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268882"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Ladění modelu ve službě Azure Machine Learning Studio
 
@@ -30,7 +29,7 @@ Tento článek vysvětluje potenciální důvody, proč některý z následujíc
 * [Train Model] [ train-model] modulu dojde k chybě 
 * [Score Model] [ score-model] modulu produkuje nesprávné výsledky 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="train-model-module-produces-an-error"></a>Modul trénování modelu dojde k chybě
 

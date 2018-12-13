@@ -10,17 +10,15 @@ ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: ''
-ms.openlocfilehash: 6a9bc347af471a2ab84cefc25bcd7f48f1d5908d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846041"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186204"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -97,11 +95,11 @@ V **testovací uzly** zobrazení, můžete sledovat připojení k síti z jednot
 
 Zjistit, zda nízký výkon aplikace je z důvodu sítě nebo problém na straně aplikace zprostředkovatele pozorováním korelace mezi latence sítě a doba odezvy aplikace. 
 
-* **Problém s aplikací:** prudký nárůst doby odezvy, ale konzistence v sítích s latencí naznačuje, že síť správně funguje a problémem může být kvůli problému na konci aplikace. 
+* **Problém s aplikací:** Prudký nárůst doby odezvy, ale konzistence v sítích s latencí naznačuje, že síť správně funguje a problémem může být kvůli problému na konci aplikace. 
 
     ![Problém s aplikací monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
-* **Síťové potíže:** prudký nárůst společně s odpovídající zásobníku v sítích s latencí doby odezvy naznačuje, že z důvodu zvýšení latence sítě může být zvýšení doby odezvy. 
+* **Potíže se sítí:** Prudký nárůst společně s odpovídající zásobníku v sítích s latencí doby odezvy naznačuje, že z důvodu zvýšení latence sítě může být zvýšení doby odezvy. 
 
     ![Potíže se sítí monitorování připojení služby](media/network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 

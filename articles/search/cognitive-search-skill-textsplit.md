@@ -1,5 +1,5 @@
 ---
-title: Text rozdělit dovednosti kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+title: Text rozdělit kognitivního vyhledávání dovednosti – Azure Search
 description: Rozdělte text do bloků dat nebo stránek textu na základě délky v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
@@ -10,19 +10,17 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: seodec2018
+ms.openlocfilehash: 376a5a2214c5f1d77439923d6a11aaad5e011e73
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730762"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313849"
 ---
 #   <a name="text-split-cognitive-skill"></a>Text rozdělit kognitivních dovedností
 
 **Rozdělení textu** dovednosti rozdělí text na bloky textu. Můžete určit, zda chcete provést přerušení textu do věty nebo do stránky určité délky. Tato dovednosti je obzvláště užitečné, pokud existují maximální text požadavky na délku ve směru server-klient další dovednosti. 
-
-> [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -34,7 +32,7 @@ Parametry rozlišují malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | textSplitMode      | "Výraz stránky" nebo "věty" | 
-| maximumPageLength | Pokud textSplitMode nastavená na výraz "stránky", to se vztahuje na délku maximální stránky naměřenou podle `String.Length`. Minimální hodnota je 100. | 
+| maximumPageLength | Pokud textSplitMode nastavená na výraz "stránky", to se vztahuje na délku maximální stránky naměřenou podle `String.Length`. Minimální hodnota je 100.  Pokud textSplitMode nastavená na výraz "stránky", se pokusí algoritmus rozdělit do bloků dat, které jsou maximálně "maximumPageLenth" velikost textu. V takovém případě provede algoritmus je nejlepší k rozdělení věty na hranici věty tak velikost bloku dat může být o něco menší než "maximumPageLength". | 
 | defaultLanguageCode   | (volitelné) Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (en). Vezměte v úvahu několik věcí:<ul><li>Pokud předáte formátu languagecode countrycode, se používá jenom část languagecode formátu.</li><li>Pokud jazyk není v předchozím seznamu, přestane fungovat dovednosti rozdělit na znak hranice.</li><li>Poskytuje kód jazyka je vhodné vyhnout cutting slova na polovinu jiný než mezera jazyků, jako jsou čínštiny, japonštiny a korejštiny.</li></ul>  |
 
 

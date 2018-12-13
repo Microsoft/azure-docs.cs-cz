@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: d03324b82d056fc33114f1daa8961158c0a739f6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d94f70771cf3ee364dbb3e4c4256cd2248ce3828
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837643"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164768"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použití konceptu s Azure Kubernetes Service (AKS)
 

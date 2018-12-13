@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: cb936d3da99debafc594a5e317b7955050f71965
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 57cc1d25f38c1aec7495a3ea542a7b467829dc41
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892164"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184708"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analytických dat pro metriky ve všech prostředcích Azure Web App
 

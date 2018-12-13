@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1ea99c045d5f1bfaacaefab04322b2d4f1123c84
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097569"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183502"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics
 
@@ -77,20 +76,20 @@ Následující kroky popisují, jak nakonfigurovat limit Správa objemu dat, kte
 5. Denní limit je **OFF** ve výchozím nastavení – klikněte na tlačítko **ON** ji povolit, a pak nastavit limit objemu dat v GB za den.<br><br> ![Konfigurace omezení dat log Analytics](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>Pošle upozornění, když byl dosažen limit
-Zatímco Představujeme vizuální upozornění na webu Azure Portal, pokud je dodržena prahová hodnota pro omezení vašich dat, toto chování není nutně zarovnat spravujete provozní problémy, které vyžadují okamžitou pozornost.  Pokud chcete dostávat oznámení výstrah, můžete vytvořit nové pravidlo výstrah ve službě Azure Monitor.  Další informace najdete v tématu [vytvoření, zobrazení a Správa výstrah](../../monitoring-and-diagnostics/alert-metric.md).      
+Zatímco Představujeme vizuální upozornění na webu Azure Portal, pokud je dodržena prahová hodnota pro omezení vašich dat, toto chování není nutně zarovnat spravujete provozní problémy, které vyžadují okamžitou pozornost.  Pokud chcete dostávat oznámení výstrah, můžete vytvořit nové pravidlo výstrah ve službě Azure Monitor.  Další informace najdete v tématu [vytvoření, zobrazení a Správa výstrah](../../azure-monitor/platform/alerts-metric.md).      
 
 Abyste mohli začít, zde jsou doporučené nastavení pro upozornění:
 
 * Cíl: Vyberte prostředek Log Analytics
 * Kritéria: 
-   * Název signálu: vlastní prohledávání protokolů
-   * Vyhledávací dotaz: operace | má-li podrobnosti "nadměrnou.
-   * Na základě: počet výsledků
+   * Název signálu: Vlastní protokol hledání
+   * Vyhledávací dotaz: Operace | má-li podrobnosti "nadměrnou.
+   * Na základě: Počet výsledků
    * Podmínka: Větší než
    * Prahová hodnota: 0
    * Období: 5 (minuty)
    * Frekvence: 5 (minuty)
-* Název pravidla upozornění: dosáhlo se denního datového limitu
+* Název pravidla upozornění: Dosáhlo se denního datového limitu
 * Závažnost: Upozornění (záv. 1)
 
 Po upozornění je definován a dosáhnete limitu, výstraha se aktivuje a provádí definované ve skupině Akce odpovědi. Dokáže upozorňovat tým prostřednictvím e-mailu a textovými zprávami nebo Automatizujte akce pomocí webhooků, runbooků služby Automation nebo [integraci s externím řešení ITSM](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
@@ -103,10 +102,10 @@ Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uc
 5. V podokně s pomocí posuvníku zvyšte nebo snižte počet dní a potom klikněte na tlačítko **OK**.  Pokud používáte *bezplatné* úroveň, nebudete moci upravit dobu uchovávání dat a budete muset upgradovat na placenou úroveň cílem kontrolovat, toto nastavení.<br><br> ![Změna nastavení uchovávání dat pracovního prostoru](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
-**Dotaz**: jak řešit Pokud Log Analytics je už shromažďování dat? 
-**Odpověď**: Pokud se na bezplatné cenové úrovně a odeslali více než 500 MB dat za den, shromažďování dat zastaví zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  
+**Dotaz**: Jak řešit Pokud Log Analytics je už shromažďování dat? 
+**Odpověď**:  Pokud se na bezplatné cenové úrovně a odeslali více než 500 MB dat za den, zastaví shromažďování dat pro zbytek dne. Dosažení denního limitu je běžným důvodem Log Analytics se zastaví shromažďování dat, nebo se zdá být chybějící data.  
 Log Analytics, vytváří událost typu operace při shromažďování dat spustí a zastaví.  
-Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: operace | kde OperationCategory == Stav shromažďování dat   
+Spuštěním následujícího dotazu ve službě search zkontrolujte, jestli jsou dosažení denního limitu a chybějící data: Operace | kde OperationCategory == Stav shromažďování dat   
 Když se zastaví shromažďování dat, je upozornění stav OperationStatus. Při shromažďování dat začne, stav OperationStatus je proběhlo úspěšně.  
 Následující tabulka popisuje důvody, které zastaví shromažďování dat a navrhovanou akci pokračování shromažďování dat:  
 
@@ -120,8 +119,8 @@ Následující tabulka popisuje důvody, které zastaví shromažďování dat a
 
 Log Analytics používá čas UTC. Doba obnovení se liší mezi pracovními prostory, aby se zabránilo limitní pracovní prostory začínají ingestovat data ve stejnou dobu. Pokud pracovní prostor dosáhne denní limit, zpracování bude pokračovat po resetování času definované v **denní limit se nastaví na**.<br><br> ![Log Analytics omezit časové pásmo UTC](media/manage-cost-storage/data-volume-mgmt-limit-utc.png)
 
-**Dotaz**: jak si nastavím upozorňování při zastavení shromažďování dat? 
-**Odpověď**: použijte postup popsaný v *vytvořit denním datovém limitu* upozornění, která vás upozorní, když se zastaví shromažďování dat a postupujte podle kroků, pomocí kroků popsaných v přidání akcí k pravidlům upozornění konfigurace e-mailu, webhooku nebo runbooku Akce pro pravidlo upozornění. 
+**Dotaz**: Jak si nastavím upozorňování při zastavení shromažďování dat? 
+**Odpověď**: Pomocí kroků popsaných v *vytvořit denním datovém limitu* upozornění, která vás upozorní, když se zastaví shromažďování dat a postupujte podle kroků, pomocí kroků popsaných v přidání akcí k pravidlům upozornění nakonfigurujte pravidlo upozornění akci e-mailu, webhooku nebo runbooku . 
 
 ## <a name="next-steps"></a>Další postup  
 

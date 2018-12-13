@@ -1,6 +1,6 @@
 ---
-title: Průběžné nasazování z registru kontejnerů Dockeru pomocí služby Web App for Containers – Azure | Dokumentace Microsoftu
-description: Jak nastavit průběžné nasazování z registru kontejnerů Dockeru ve službě Web App for Containers.
+title: Průběžné nasazování se službou Web App for Containers – Azure App Service | Dokumentace Microsoftu
+description: Jak nastavit průběžné nasazování ve službě Web App for Containers.
 keywords: služby Azure app service, od linuxu, docker, acr, oss
 services: app-service
 documentationcenter: ''
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2018
-ms.author: msangapu;yili
-ms.openlocfilehash: b26366edddc223b842cc5d38473bda42422f1840
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: yili
+ms.custom: seodec18
+ms.openlocfilehash: 4acadc4c08ef50e7d52303689c38c43f81187669
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298524"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315521"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování se službou Web App for Containers
 

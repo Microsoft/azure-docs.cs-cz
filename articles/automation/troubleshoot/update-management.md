@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy s Update managementem
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f52767058ef69d29465f1274109b6d3ffe58296c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092623"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275642"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -45,6 +45,35 @@ Tato chyba může být způsobeno z následujících důvodů:
 1. Navštíví, [plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) Další informace o tom, které adresy a porty je potřeba povolit správu aktualizací pro práci.
 2. Pokud pomocí nejprve image něm Klonovaná image nástroj sysprep a instalace agenta MMA po jejich výskytu.
 
+### <a name="multi-tenant"></a>Scénář: Obdržíte chybu propojenému předplatnému při vytváření nasazení aktualizací pro počítače v jiném tenantovi Azure.
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o vytvoření nasazení aktualizací pro počítače v jiném tenantovi Azure, zobrazí se následující chyba:
+
+```
+The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě dochází, když vytvoříte nasazení aktualizace, která má virtuální počítače Azure v jiném tenantovi zahrnuté v nasazení aktualizací.
+
+#### <a name="resolution"></a>Řešení
+
+Budete muset použít k získání je naplánováno následující alternativní řešení. Můžete použít [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule?view=azurermps-6.13.0) rutiny s přepínačem `-ForUpdate` vytvoření plánu a použití [AzureRmAutomationSoftwareUpdateConfiguration nový](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration?view=azurermps-6.13.0
+) rutiny a předejte mu v druhém tenantovi pro počítače `-NonAzureComputer` parametru. Následující příklad ukazuje příklad o tom, jak to udělat:
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+```
+
 ## <a name="windows"></a>Windows
 
 Pokud dojde k potížím při pokusu o připojení řešení na virtuálním počítači, zkontrolujte **nástroje Operations Manager** protokolu událostí v rámci **protokoly aplikací a služeb** na místním počítači pro události se ID události **4502** a zprávou události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**.
@@ -69,7 +98,7 @@ Na počítači už je připojený k jinému pracovnímu prostoru pro správu akt
 
 Proveďte vyčištění starých artefaktů na počítači pomocí [odstraněním hybridních runbooků](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group) a zkuste to znovu.
 
-### <a name="machine-unable-to-communicate"></a>Scénář: Počítač není schopen komunikovat se službou
+### <a name="machine-unable-to-communicate"></a>Scénář: Počítač je schopen komunikovat se službou
 
 #### <a name="issue"></a>Problém
 
@@ -113,7 +142,7 @@ Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svý
 
 Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
 
-### <a name="nologs"></a>Scénář: Správa aktualizací dat se nezobrazuje v Log Analytics pro počítač
+### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v Log Analytics pro počítač
 
 #### <a name="issue"></a>Problém
 
@@ -169,7 +198,7 @@ Vytvořte kopii v následujícím souboru protokolu a uchovat pro účely odstra
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
-### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scénář: Hromadná postupná aktualizace spustí, ale dojde k chybám
+### <a name="scenario-update-run-starts-but-encounters-errors"></a>Scénář: Spustí hromadnou postupnou aktualizaci, ale dojde k chybám
 
 #### <a name="issue"></a>Problém
 
@@ -181,7 +210,7 @@ Možných příčin může být:
 
 * Správce balíčků není v pořádku
 * Konkrétní balíčky může být v rozporu s opravami cloudové
-* Z jiných důvodů
+* Jiné důvody
 
 #### <a name="resolution"></a>Řešení
 

@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: c391df27b8ee0d5ceadcd388fffcafe0f756ec40
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: aecfecda08a6008b931738802bb89054f9d3963c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866164"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274106"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
-Azure SQL Database je implementace nejnovější stabilní verze databázového stroje SQL Server nakonfigurovaný a optimalizované pro Azure cloudové prostředí, které poskytuje [vysoké dostupnosti](sql-database-high-availability.md) a odolnost proti chybám, které by mohly ovlivnit vaši obchodních procesů. **Kontinuita podnikových procesů** ve službě Azure SQL Database odkazuje na mechanismy, zásady a postupy, které umožňují obchodní pokračovat i v případě přerušení, zejména pro její výpočetní infrastrukturu. Ve většině případů Azure SQL Database bude zpracovávat rušivé události, které může dojít v cloudovém prostředí a udržovat vaše obchodní procesy spuštění. Existují však některé rušivé události, které nemohou být zpracovány SQL Database jako:
+**Kontinuita podnikových procesů** ve službě Azure SQL Database odkazuje na mechanismy, zásady a postupy, které vaší firmě umožní pokračovat i v případě přerušení, zejména pro její výpočetní infrastruktury. Ve většině případů Azure SQL Database bude zpracovávat rušivé události, které může dojít v cloudovém prostředí a udržovat vaše aplikace a obchodní procesy spuštění. Existují však některé rušivé události, které nemohou být zpracovány SQL Database jako:
 
 - Uživatel omylem odstranit nebo aktualizovat řádek v tabulce.
 - Útočník úspěšně odstranit data nebo odstranit databázi.
@@ -48,7 +48,8 @@ Potom se dozvíte další mechanismy, které můžete použít k zotavení z ni�
 - [Integrované automatické zálohování](sql-database-automated-backups.md) a [obnovení k časovému okamžiku](sql-database-recovery-using-backups.md#point-in-time-restore) umožňuje obnovit kompletní databáze do určitého bodu v čase za posledních 35 dnů.
 - Je možné [obnovení odstraněné databáze](sql-database-recovery-using-backups.md#deleted-database-restore) do bodu, ve kterém byl odstraněn, pokud **logický server, nebyla Odstraněná**.
 - [Dlouhodobé uchovávání záloh](sql-database-long-term-retention.md) umožňuje držet krok zálohy na 10 let.
-- [Automatické převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) umožňuje aplikaci automaticky obnovení v případě výpadku datového centra škálování.
+- [Aktivní geografická replikace](sql-database-active-geo-replication.md) vám umožní vytvořit čitelné repliky a ruční převzetí služeb při selhání pro všechny repliky v případě upgrade na data center výpadku nebo aplikace.
+- [Automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umožňuje aplikaci automaticky obnovení v případě výpadku datového centra.
 
 Každá má jiné vlastnosti ohledně odhadovaného času obnovení (ERT) a potenciální ztráty dat posledních transakcí. Jakmile tyto možnosti pochopíte, můžete si mezi nimi vybírat a ve většině scénářů je spolu kombinovat a používat pro různé scénáře. Při vývoji plánu provozní kontinuity musíte pochopit maximální přijatelnou dobu, než úplného obnovení aplikace po ničivé události. Čas potřebný pro aplikaci, aby se úplně zotavily se označuje jako plánovaná doba obnovení (RTO). Také musíte pochopit maximální období posledních aktualizací dat (časový interval) aplikace může tolerovat možnost, ztráty při obnovení po ničivé události. Časové období aktualizací, které si může dovolit přijít o se označuje jako cíl bodu obnovení (RPO).
 
@@ -75,8 +76,7 @@ Automatizované zálohování použijte a [obnovení k určitému bodu v čase](
 - Pracuje s nízkou mírou změn dat (málo transakcí za hodinu) a ztráta změn provedených během až jedné hodiny je přijatelnou ztrátou dat.
 - Je citlivá na změny nákladů.
 
-Pokud potřebujete rychlejší obnovení, použijte [skupiny převzetí služeb při selhání](sql-database-geo-replication-overview.md#auto-failover-group-capabilities
-) (věnujeme se jí). Pokud potřebujete mít možnost obnovit data z období staršího než 35 dní, použijte [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+Pokud potřebujete rychlejší obnovení, použijte [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md). Pokud potřebujete mít možnost obnovit data z období staršího než 35 dní, použijte [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region"></a>Obnovení databáze do jiné oblasti
 
@@ -84,14 +84,14 @@ Přestože je taková situace výjimečná, i u datového centra Azure může do
 
 - Jednou z možností je počkat, až výpadek skončí a databáze se vrátí do režimu online. Tento postup funguje pro aplikace, které si mohou dovolit mít databázi v režimu offline. Například vývojový projekt nebo bezplatná zkušební verze, na které nemusíte neustále pracovat. Pokud datové centrum má k výpadku, můžete není známo, jak dlouho může trvat výpadek, proto tato možnost funguje jenom v případě nepotřebujete databázi nějakou dobu.
 - Další možností je k obnovení databáze na libovolném serveru v libovolné oblasti Azure pomocí [geograficky redundantních záloh databáze](sql-database-recovery-using-backups.md#geo-restore) (geografické obnovení). Geografické obnovení pomocí geograficky redundantní zálohy jako zdroj a slouží k obnovení databáze, i když je nejsou dostupné kvůli výpadku databáze nebo datového centra.
-- Nakonec můžete rychle obnovení po výpadku Pokud jste nakonfigurovali [-automatické převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md#auto-failover-group-capabilities) vaší databáze nebo databáze. Můžete přizpůsobit zásady převzetí služeb při selhání použít automatický nebo ruční převzetí služeb při selhání. Během převzetí služeb při selhání, samotný trvá jenom několik sekund, služba bude trvat nejméně 1 hodinu jej aktivovat. To je nezbytné k zajištění, že převzetí služeb při selhání je podloženo škálování výpadek. Navíc převzetí služeb při selhání může dojít ke ztrátě malé vzhledem k povaze asynchronní replikace. Zobrazit tabulku uvedenou výše v tomto článku najdete podrobnosti-automatické převzetí služeb při selhání RTO a RPO.
+- Nakonec můžete rychle obnovení po výpadku Pokud jste nakonfigurovali buď geografické repliky pomocí [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md) vaší databáze nebo databáze. Podle svého výběru: z těchto technologií můžete použít ruční nebo automatické převzetí služeb při selhání. Během převzetí služeb při selhání, samotný trvá jenom několik sekund, služba bude trvat nejméně 1 hodinu jej aktivovat. To je nezbytné k zajištění, že převzetí služeb při selhání je podloženo škálování výpadek. Navíc převzetí služeb při selhání může dojít ke ztrátě malé vzhledem k povaze asynchronní replikace. Zobrazit tabulku uvedenou výše v tomto článku najdete podrobnosti-automatické převzetí služeb při selhání RTO a RPO.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
 > [!IMPORTANT]
 > Pokud chcete použít aktivní geografickou replikaci a skupiny – automatické převzetí služeb při selhání, musí být vlastníkem předplatného nebo mít oprávnění správce v systému SQL Server. Můžete nakonfigurovat a převzetí služeb při selhání pomocí Azure portal, Powershellu nebo rozhraní REST API použití oprávnění pro předplatné Azure nebo pomocí příkazů jazyka Transact-SQL s oprávněními systému SQL Server.
 
-Použití skupin active auto-převzetí služeb při selhání, pokud vaše aplikace splňuje některá z těchto kritérií:
+Použití skupin – automatické převzetí služeb při selhání, pokud vaše aplikace splňuje některá z těchto kritérií:
 
 - Je zvlášť důležitá.
 - Má smlouvy o úrovni služeb (SLA), který neumožňuje nejméně 12 hodin výpadku.

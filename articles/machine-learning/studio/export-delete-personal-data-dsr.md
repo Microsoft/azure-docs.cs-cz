@@ -3,22 +3,21 @@ title: Exportovat a odstraňovat data z Machine Learning Studio – Azure | Doku
 description: V rámci produktu data uložená pomocí Azure Machine Learning Studio je k dispozici pro exportu a odstranění na webu Azure portal a také prostřednictvím ověřeného rozhraní REST API. Telemetrická data, je přístupný prostřednictvím portálu Azure o ochraně osobních údajů. V tomto článku se dozvíte, jak.
 services: machine-learning
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: cgronlun
 ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 04b26dc9ad9f4b7a4feb03039d92854385d75465
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e69883022937ccb4ad0f83f144afef0b5b1e0e56
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262362"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276252"
 ---
-# <a name="export-and-delete-in-product-user-data-from-machine-learning-studio"></a>Exportovat a odstranit data uživatelů v rámci produktu z Machine Learning Studio
+# <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportovat a odstranit data v rámci produktu uživatelů z Azure Machine Learning Studio
 
 Můžete odstranit nebo exportu v rámci produktu data uložená pomocí Azure Machine Learning Studio pomocí webu Azure portal, rozhraní Studio, PowerShell a ověřil rozhraní REST API. Tento článek vysvětluje, jak. 
 
@@ -34,7 +33,7 @@ Uživatelská data se skládá z informací o uživatelích oprávnění pro př
 
 Existují dva druhy údajů uživatele ve službě Machine Learning Studio:
 - **Data osobní účet:** ID účtu a e-mailové adresy přidružené k účtu.
-- **Zákaznická data:** dat odeslaných k analýze.
+- **Zákaznická data:** Data, která jste nahráli k analýze.
 
 ## <a name="studio-account-types-and-how-data-is-stored"></a>Typy účtů Studio a způsob uložení dat
 
@@ -65,8 +64,8 @@ Uživatelé, mohou odstranit prostředky v pracovním prostoru tak, že je vyber
 ### <a name="delete-an-entire-workspace"></a>Odstranit celý pracovní prostor
 
 Uživatelé mohou také odstranit jejich celý pracovní prostor:
-- Placené pracovního prostoru: odstranit prostřednictvím webu Azure portal.
-- Bezplatný pracovní prostor: použijte tlačítko Odstranit v **nastavení** podokně.
+- Placené pracovního prostoru: Odstraňte prostřednictvím webu Azure portal.
+- Bezplatný pracovní prostor: Použijte tlačítko Odstranit v **nastavení** podokně.
 
 ![Odstranit bezplatný pracovní prostor v Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  

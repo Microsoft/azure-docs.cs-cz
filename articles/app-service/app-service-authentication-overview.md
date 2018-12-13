@@ -1,5 +1,5 @@
 ---
-title: Ověřování a autorizace ve službě Azure App Service | Dokumentace Microsoftu
+title: Ověřování a autorizace - službě Azure App Service | Dokumentace Microsoftu
 description: Reference konceptu postupu a přehled o ověřování / autorizace funkcí pro službu Azure App Service
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 27726f261b2d9c88f1544a6e66ea352fbb98d253
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: seodec18
+ms.openlocfilehash: add470aec1b19a8862a17d4a5a84bc221b8582b4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685663"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250871"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -91,8 +92,8 @@ Když povolíte ověřování a autorizace s jedním z těchto zprostředkovatel
 
 Tok ověřování je stejný pro všechny poskytovatele, ale se liší v závislosti na tom, jestli chcete se přihlásit pomocí poskytovatele sady SDK:
 
-- Bez poskytovatele sady SDK: aplikace deleguje federovaného přihlašování ve službě App Service. Obvykle se jedná o tomu u prohlížečových aplikací, které můžete předložit uživateli poskytovatele přihlašovací stránku. Do kódu serveru spravuje proces přihlašování, takže se také nazývá _směrované na server tok_ nebo _server tok_. Tento případ platí pro webové aplikace. Platí také pro nativní aplikace, které uživatele v pomocí Mobile Apps klientské sady SDK, protože sada SDK se otevře webové zobrazení pro uživatele přihlašují pomocí ověřování služby App Service. 
-- U poskytovatele sady SDK: aplikace přihlásí uživatele ve zprostředkovateli ručně a poté ho předá ověřovací token do služby App Service pro ověření. Obvykle se jedná o případ s aplikacemi bez prohlížeče, které nelze prezentovat poskytovatele přihlašovací stránku pro uživatele. Kód aplikace spravuje proces přihlašování, takže se také nazývá _přesměruje klienta tok_ nebo _tok klienta_. Tento případ platí pro rozhraní REST API [Azure Functions](../azure-functions/functions-overview.md)a prohlížeči klientů JavaScript, jakož i webové aplikace, které vyžadují větší flexibilitu v procesu přihlášení. Platí také pro nativní mobilní aplikace, které uživatele pomocí poskytovatele sady SDK.
+- Bez poskytovatele sady SDK: Použití delegátů federovaného přihlašování ve službě App Service. Obvykle se jedná o tomu u prohlížečových aplikací, které můžete předložit uživateli poskytovatele přihlašovací stránku. Do kódu serveru spravuje proces přihlašování, takže se také nazývá _směrované na server tok_ nebo _server tok_. Tento případ platí pro webové aplikace. Platí také pro nativní aplikace, které uživatele v pomocí Mobile Apps klientské sady SDK, protože sada SDK se otevře webové zobrazení pro uživatele přihlašují pomocí ověřování služby App Service. 
+- U poskytovatele sady SDK: Aplikace přihlásí uživatele ve zprostředkovateli ručně a poté odešle ověřovací token do služby App Service pro ověření. Obvykle se jedná o případ s aplikacemi bez prohlížeče, které nelze prezentovat poskytovatele přihlašovací stránku pro uživatele. Kód aplikace spravuje proces přihlašování, takže se také nazývá _přesměruje klienta tok_ nebo _tok klienta_. Tento případ platí pro rozhraní REST API [Azure Functions](../azure-functions/functions-overview.md)a prohlížeči klientů JavaScript, jakož i webové aplikace, které vyžadují větší flexibilitu v procesu přihlášení. Platí také pro nativní mobilní aplikace, které uživatele pomocí poskytovatele sady SDK.
 
 > [!NOTE]
 > Volání z aplikace pro důvěryhodného prohlížeče ve službě App Service volá jiné rozhraní REST API ve službě App Service nebo [Azure Functions](../azure-functions/functions-overview.md) je možné ověřit pomocí toku směrované na server. Další informace najdete v tématu [přizpůsobit ověřování a autorizace ve službě App Service](app-service-authentication-how-to.md).
@@ -139,8 +140,8 @@ Tato možnost poskytuje větší flexibilitu při zpracování anonymních poža
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Kurz: Ověřování a autorizace uživatelů začátku do konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
-[Kurz: Ověřování a autorizace uživatelů začátku do konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
+[Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)  
 [Přizpůsobení ověřování a autorizace ve službě App Service](app-service-authentication-how-to.md)
 
 Průvodce postupy specifickým pro zprostředkovatele:
@@ -150,7 +151,7 @@ Průvodce postupy specifickým pro zprostředkovatele:
 * [Jak nakonfigurovat aplikaci pro použití přihlášení k Google][Google]
 * [Konfigurace aplikace pro použití Microsoft Account login][MSA]
 * [Jak nakonfigurovat aplikaci pro použití přihlášení k Twitteru][Twitter]
-* [Postupy: použití vlastní ověřování pro vaši aplikaci][custom-auth]
+* [Jak: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
 [AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
 [Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md

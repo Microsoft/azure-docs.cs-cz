@@ -1,5 +1,5 @@
 ---
-title: Použití sady Azure WebJobs SDK
+title: Použití sady SDK pro WebJobs – Azure
 description: Další informace o tom, jak psát kód pro sadu WebJobs SDK. Vytvoření založený na událostech pozadí úlohy zpracování, které přístup k datům v Azure služby a služby třetích stran.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: d2a0e14ec4708539c7fd8640c8dd3dacef10f508
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6df707f0315603d30446a17bf941d5ab6028dde4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961888"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270463"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0890ce0342024229b99d92a2eddba5b49cc59595
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1410d61fed2dc98f5fa657541c3863e09b803166
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633933"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321779"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Clustery škálování Azure Service Fabric
 Cluster Service Fabric je síťově propojená sada virtuálních nebo fyzických počítačů, do které se nasazují a spravují mikroslužby. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou potenciálně obsahovat tisících uzlech. Po vytvoření clusteru Service Fabric, je možné škálovat cluster vodorovně (změnit počet uzlů), nebo svisle (změnit prostředky uzly).  Je možné škálovat cluster v okamžiku, i když spouštění úloh v clusteru.  Škálování clusteru, vaše aplikace automaticky škálovat směrem také.
@@ -29,7 +29,7 @@ Proč škálování clusteru? Požadavky na aplikace v průběhu času měnit.  
 ## <a name="scaling-in-and-out-or-horizontal-scaling"></a>Dovnitř a ven vertikální nebo horizontální škálování
 Změní z počtu uzlů v clusteru.  Jakmile nových uzlů připojit ke clusteru, [Cluster Resource Manageru](service-fabric-cluster-resource-manager-introduction.md) přesune služby k nim, což snižuje zátěž existujících uzlů.  Pokud prostředky clusteru nejsou využívány efektivně, může snížit počet uzlů.  Nechat uzly clusteru, služby přestali ty uzly a zvyšuje na zbývajících uzlech zátěž.  Snížení počtu uzlů v clusteru běžícího v Azure dají ušetřit peníze, protože platíte za počet virtuálních počítačů, které není úloha v těchto virtuálních počítačů a použití.  
 
-- Výhody: Neomezeně Škálované, teoreticky.  Pokud vaše aplikace je určená pro škálovatelnost, můžete povolit neomezené růstu přidáním více uzlů.  Nástrojů v prostředí cloudu umožňuje snadno přidávat a odebírat uzly, tak snadno upravit kapacitu a platíte jenom za prostředky, které používáte.  
+- Výhody: Nekonečné škálování teoreticky.  Pokud vaše aplikace je určená pro škálovatelnost, můžete povolit neomezené růstu přidáním více uzlů.  Nástrojů v prostředí cloudu umožňuje snadno přidávat a odebírat uzly, tak snadno upravit kapacitu a platíte jenom za prostředky, které používáte.  
 - Nevýhody: Aplikace musí být [určená pro škálovatelnost](service-fabric-concepts-scalability.md).  Aplikačních databází a trvalost můžou vyžadovat další architektury práce jako správné škálování.  [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md) v Service Fabric stavové služby, ale to značně zjednodušují škálování dat aplikací.
 
 Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). U každého typu uzlu pak možné horizontálně snížit nebo navýšení kapacity nezávisle na sobě mají různé sady otevřených portů a může mít různé metriky kapacity. 
@@ -50,7 +50,7 @@ V mnoha případech [škálování clusteru ručně nebo pomocí pravidel automa
 - Ruční škálování vyžaduje, abyste pro přihlášení a explicitní žádost o operace škálování. Pokud operace škálování často nebo po dobu nepředvídatelné, tento přístup nemusí být dobrým řešením.
 - Pokud pravidel automatického škálování odebrání instance škálovací sady virtuálních počítačů, jejich neodebírejte automaticky znalosti o tomto uzlu z přidružených clusteru Service Fabric, pokud typ uzlu neobsahuje úroveň odolnosti stříbrné nebo zlaté úrovně. Vzhledem k tomu, že pravidla automatického škálování pracovat ve velkém měřítku, nastavte úroveň (spíše než na úrovni Service Fabric), pravidel automatického škálování můžete odebrat uzly Service Fabricu bez jejich řádné vypnutí. Odebrání tohoto článku neslušní uzel ponechá "skryté" stav uzlu Service Fabric po operacích škálování na méně instancí. Osoba (nebo služby), třeba tak, aby pravidelně stav odebraném uzlu v clusteru Service Fabric.
 - Typ uzlu s úrovní odolnosti Gold a Silver automaticky vyčistí odebrané uzly, takže je potřeba žádné další čištění.
-- I když jsou [mnoha metrik](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md) podporovaná pravidel automatického škálování, je stále omezenou sadu. Pokud váš scénář vyžaduje škálování na základě některé metriky nejsou zahrnuta v dané sadě, pravidel automatického škálování, nemusí být vhodný.
+- I když jsou [mnoha metrik](../azure-monitor/platform/autoscale-common-metrics.md) podporovaná pravidel automatického škálování, je stále omezenou sadu. Pokud váš scénář vyžaduje škálování na základě některé metriky nejsou zahrnuta v dané sadě, pravidel automatického škálování, nemusí být vhodný.
 
 Jak by měl postupovat, Service Fabric škálování závisí na vaší situaci. Pokud škálování je běžné, možnost přidávat a odebírat uzly ručně je pravděpodobně dostatečná. Pro složitější scénáře nabízejí výkonné alternativy pravidel automatického škálování a sady SDK vystavení nezávislého škálování prostřednictvím kódu programu.
 
@@ -66,8 +66,8 @@ Podle těchto omezení, možná budete chtít [implementovat více přizpůsoben
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>Vertikální navýšení nebo snížení kapacity nebo vertikální škálování 
 Změní prostředky (procesor, paměť nebo úložiště) z uzlů v clusteru.
-- Výhody: Softwaru a architekturu aplikace zůstala stejná.
-- Nevýhody: Konečné škálování, protože neexistuje omezení můžete zvýšit množství prostředky v jednotlivých uzlech. Výpadky, protože budete muset provést fyzických nebo virtuálních počítačů do režimu offline za účelem přidání nebo odebrání prostředků.
+- Výhody: Architektura softwaru a aplikace zůstala stejná.
+- Nevýhody: Konečná škálování, protože neexistuje omezení můžete zvýšit množství prostředky v jednotlivých uzlech. Výpadky, protože budete muset provést fyzických nebo virtuálních počítačů do režimu offline za účelem přidání nebo odebrání prostředků.
 
 Škálovací sady virtuálních počítačů jsou výpočetním prostředkem Azure, můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definován v clusteru Azure je [nastavit jako samostatné škálovací sada](service-fabric-cluster-nodetypes.md). Každý typ uzlu je pak spravovat samostatně.  Typ uzlu škálování směrem nahoru nebo dolů postup zahrnuje změnu SKU instance virtuálních počítačů ve škálovací sadě. 
 

@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: bwren
-ms.comopnent: ''
-ms.openlocfilehash: 38f21a3d8f2bf1adcd224480223a37113b347e18
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 42509f98126ebb489fe17c58e6d58b37d7451cf0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838493"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189067"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Ukládání do protokolů IIS ve službě Log Analytics
 Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které můžete shromážděná službou Log Analytics.  

@@ -8,16 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 61a4e3700e88efba1ea9cea876b19e2f7ed4168b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: b76bea6207cd6ac5d2ed570cf54dde7c52d5ff97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137066"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309616"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
 Akcelerátor řešení prediktivní údržby je uceleným řešením pro podnikový scénář, které se pokouší předvídat bod, ve kterém pravděpodobně nastane chyba. Tento akcelerátor řešení můžete aktivně využívat pro různé činnosti, jako je třeba optimalizace údržby. Řešení kombinuje klíčové služby akcelerátory řešení Azure IoT, jako je například IoT Hub a [Azure Machine Learning] [ lnk-machine-learning] pracovního prostoru. Tento pracovní prostor obsahuje model založený na veřejné ukázkové sadě dat, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Řešení nabízí úplnou implementaci daného obchodního scénáře IoT jako výchozího bodu pro plánování a implementaci řešení, které vyhovuje vašim konkrétním obchodním požadavkům.
+
+Akcelerátor řešení prediktivní údržby [kód je k dispozici na Githubu](https://github.com/Azure/azure-iot-predictive-maintenance).
 
 ## <a name="logical-architecture"></a>Logická architektura
 
@@ -43,7 +45,7 @@ Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovn
 
 ## <a name="simulated-devices"></a>Simulovaná zařízení
 
-Simulovaná zařízení v akcelerátoru řešení je leteckého motoru. Řešení obsahuje dva motory, které jsou součástí jednoho letadla. Každý motor vysílá čtyři typy telemetrických dat: ze snímačů Sensor 9, Sensor 11, Sensor 14 a Sensor 15, které poskytují data potřebná k tomu, aby mohl model Machine Learning vypočítat zbývající dobu životnosti pro tento motor. Každé simulované zařízení posílá do služby IoT Hub následující telemetrické zprávy:
+Simulovaná zařízení v akcelerátoru řešení je leteckého motoru. Řešení obsahuje dva motory, které jsou součástí jednoho letadla. Každý motor vysílá čtyři typy telemetrických dat: Senzor 9, Sensor 11, Sensor 14 a Sensor 15, které poskytují data potřebná k tomu model Machine Learning pro výpočet zbývající doby životnosti motoru. Každé simulované zařízení posílá do služby IoT Hub následující telemetrické zprávy:
 
 *Počet cyklů*. Cyklus je dokončený let trvající 2 až 10 hodin. Během letu se telemetrická data zaznamenávají každou půlhodinu.
 
@@ -60,7 +62,7 @@ Služba IoT Hub zajišťuje potvrzení příkazu zařízení.
 
 ## <a name="azure-stream-analytics-job"></a>Úlohy služby Azure Stream Analytics
 
-**Úloha: Telemetrie** funguje v příchozím datovém proudu telemetrických dat ze zařízení pomocí dvou příkazů:
+**Úlohy: Telemetrie** pracuje příchozí stream telemetrie zařízení pomocí dvou příkazů:
 
 * První vybere veškerá telemetrická data ze zařízení a odešle je do úložiště objektů blob. Odtud se data vizualizují ve webové aplikaci.
 * Druhý vypočítá průměrné hodnoty snímačů v rámci dvouminutového posuvného okna a odešle je prostřednictvím centra událostí do **procesoru událostí**.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0b52fc32b2895fdcd994bad5bfc73dbf938add2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53102074"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309242"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Práce s datovými soubory v projektech poznámkového bloku v Azure
 
@@ -46,13 +46,13 @@ Soubory můžete zahrnout do projektu z řídicího panelu Projekt, nebo v rámc
 
     ![Nahrát z adresy URL automaticky otevíraného okna](media/quickstarts/upload-from-url-popup.png)
 
-    - **Z počítače**: přetáhněte soubory do automaticky otevíraného okna nebo vyberte **vybrat soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, z libovolného typu a formátu, protože je na kódu v poznámkovém bloku otevřete soubor a analyzovat svá data.
+    - **Z počítače**: Přetáhněte soubory do automaticky otevíraného okna nebo vyberte **vybrat soubory**, vyhledejte a vyberte datové soubory, které chcete importovat. Můžete vyřadit nebo zvolit libovolný počet souborů, z libovolného typu a formátu, protože je na kódu v poznámkovém bloku otevřete soubor a analyzovat svá data.
 
     ![Nahrát z počítače automaticky otevíraného okna](media/quickstarts/upload-from-computer-popup.png)
 
 1. Po importu, soubory se zobrazí na řídicím panelu Projekt a je přístupná v rámci poznámkového bloku kódu pomocí relativní cesty ke složce obsahující.
 
-### <a name="import-files-from-the-data-menu-in-a-notebook"></a>Import souborů z dat nabídky v poznámkovém bloku
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Import souborů z nabídky soubor v poznámkovém bloku
 
 1. V rámci spuštěné Poznámkový blok, vyberte **souboru** > **nahrát** příkaz:
 
@@ -62,7 +62,7 @@ Soubory můžete zahrnout do projektu z řídicího panelu Projekt, nebo v rámc
 
 1. V **stav nahrávání** automaticky otevírané okno, které se zobrazí, vyberte **cílovou složku** z rozevíracího seznamu:
 
-    - Relace složky (*~/* ): nahrání souborů do aktuální relace Poznámkový blok, ale nevytváří soubory v projektu. Složka relace je partnerské zařízení do složky projektu, ale nebude zachována po ukončení relace. Pro přístup k souborům relace v kódu, předpona názvy souborů s relativní cestou *... /*.
+    - Relace složky (*~/* ): Nahrání souborů do aktuální relace Poznámkový blok, ale nevytváří soubory v projektu. Složka relace je partnerské zařízení do složky projektu, ale nebude zachována po ukončení relace. Pro přístup k souborům relace v kódu, předpona názvy souborů s relativní cestou *... /*.
 
         Pomocí složky relace je užitečné pro experimentování ve službě a nebudou zbytečně zabírat projektu se soubory může nebo nemusí potřebovat dlouhodobě se vyhnete. Mohou také nahrávat soubory do složky relace, která mají stejné názvy souborů v projektu, aniž by vznikly konflikty a bez nutnosti přejmenujte soubory. Například Řekněme, že máme jednu verzi *data.csv* v projektu již, ale chcete experimentovat s jinou verzi *data.csv*. Tím, že nahrajete soubor do složky relace, můžete spustit Poznámkový blok, který používá data v nahraného souboru (na ni následně odkazuje v kódu pomocí *... /data.csv*) namísto data v souboru projektu.
 

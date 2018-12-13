@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: d9a0342332c2483b859e916b50fd05c9cb1e3395
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 521a9dd49abee8fdeaa42b1ea8c13b9a648f1875
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986759"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187359"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurace metody směrování s více hodnotami v Traffic Manageru
 
@@ -39,6 +39,7 @@ Vytvořte profil služby Traffic Manager, která přesměruje uživatelský prov
 
 1. V levém horním rohu obrazovky vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager** > **Vytvořit**.
 2. V **vytvořit profil Traffic Manageru**, zadejte nebo vyberte následující informace, přijměte výchozí hodnoty pro zbývající nastavení a pak vyberte **vytvořit**:
+    
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
@@ -46,7 +47,7 @@ Vytvořte profil služby Traffic Manager, která přesměruje uživatelský prov
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte *myResourceGroupTM1*. |
     | Umístění                | Toto nastavení se týká umístění skupiny prostředků a nemá žádný vliv na profil Traffic Manageru, který se nasadí globálně.                              |
-    |
+    
   
     ![Vytvoření profilu Traffic Manageru](./media/traffic-manager-multivalue-routing-method/create-traffic-manager-profile.png)
 

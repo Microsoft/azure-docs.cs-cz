@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps | Dokumentace Microsoftu
+title: Řešení potíží s domény a certifikáty SSL – Azure App Service | Dokumentace Microsoftu
 description: Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 5c5bdb8fad60a2e4196c2c9f74764e27cec5ba62
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 726bc78532cfe621eb3f3787aa05a7a54571a8c3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970769"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251602"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps
 
@@ -74,26 +75,26 @@ Tento problém může vzniknout z některého z následujících důvodů:
 
 - Plán služby App Service je Free nebo Shared. Tyto cenové úrovně nepodporují SSL. 
 
-    **Řešení**: upgradovat plán služby App Service pro webové aplikace na úroveň Standard.
+    **Řešení**: Upgradujte plán služby App Service pro webové aplikace na úroveň Standard.
 
 - Předplatné nemá uvedenou platnou platební kartu.
 
-    **Řešení**: přidejte do svého předplatného uvedenou platnou platební kartu. 
+    **Řešení**: Ke svému předplatnému přidáte uvedenou platnou platební kartu. 
 
 - Nabídky předplatného nepodporuje si koupíte certifikát App Service, jako je například Microsoft Student.  
 
-    **Řešení**: upgradujte své předplatné. 
+    **Řešení**: Upgradujte svoje předplatné. 
 
 - Odběr byl dosažen limit nákupy, které jsou povoleny v rámci předplatného.
 
-    **Řešení**: certifikátům služby App Service mají omezení na 10 nákupy certifikát pro typy předplatného s průběžnými platbami a EA. Limit pro ostatní typy předplatného je 3. Limit zvýšit, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certifikát App Service byla označena jako podvod. Přijal se následující chybová zpráva: "váš certifikát se označil jako potenciálně podvodný. Požadavek je právě probíhá kontrola. Pokud certifikát není autentický během 24 hodin, kontaktujte prosím podporu Azure. "
+    **Řešení**: Certifikáty služby App Service mají omezení na 10 nákupy certifikát pro typy předplatného s průběžnými platbami a EA. Limit pro ostatní typy předplatného je 3. Limit zvýšit, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Certifikát App Service byla označena jako podvod. Dostanete se následující chybová zpráva: "Váš certifikát se označil jako potenciálně podvodný. Požadavek je právě probíhá kontrola. Pokud certifikát není autentický během 24 hodin, kontaktujte prosím podporu Azure. "
 
     **Řešení**: Pokud tento certifikát je označen jako podvodů a nevyřeší po 24 hodinách, postupujte podle těchto kroků:
 
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Přejděte na **služby App Service Certificate**a vyberte certifikát.
-    3. Vyberte **konfigurace certifikátu** > **krok 2: ověření** > **ověření domény**. Tento krok odešle oznámení e-mailu certifikátů Azure poskytovatelem a vyřešit problém.
+    3. Vyberte **konfigurace certifikátu** > **krok 2: Ověřte** > **ověření domény**. Tento krok odešle oznámení e-mailu certifikátů Azure poskytovatelem a vyřešit problém.
 
 ## <a name="domain-problems"></a>Problémy domény
 
@@ -163,17 +164,17 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
 - Neexistuje žádná platební karta u předplatného Azure nebo platební karty je neplatné.
 
-    **Řešení**: přidejte do svého předplatného uvedenou platnou platební kartu.
+    **Řešení**: Ke svému předplatnému přidáte uvedenou platnou platební kartu.
 
 - Nejste se vlastník předplatného, tak, že nemáte oprávnění k nákupu domény.
 
-    **Řešení**: [přiřazení role vlastníka](../role-based-access-control/role-assignments-portal.md) ke svému účtu. Nebo se obraťte na správce předplatného o získání oprávnění kupovat doménu.
+    **Řešení**: [Přiřazení role vlastníka](../role-based-access-control/role-assignments-portal.md) ke svému účtu. Nebo se obraťte na správce předplatného o získání oprávnění kupovat doménu.
 - Dosáhli jste limitu pro nákup domén v rámci předplatného. Současný limit je 20.
 
     **Řešení**: Chcete-li požádat o zvýšení limitu, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Typ vašeho předplatného Azure nepodporuje koupit doménu služby App Service.
 
-    **Řešení**: upgradu vašeho předplatného Azure na jiný typ předplatného, jako je například předplatné s průběžnými platbami.
+    **Řešení**: Upgradujte vaše předplatné Azure na jiný typ předplatného, jako je například předplatné s průběžnými platbami.
 
 ### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Nelze přidat název hostitele do webové aplikace 
 
@@ -187,10 +188,10 @@ K tomuto problému dochází z jednoho z následujících důvodů:
 
 - Nemáte oprávnění přidat název hostitele.
 
-    **Řešení**: požádejte správce předplatného o udělení oprávnění přidat název hostitele.
+    **Řešení**: Požádejte správce předplatného o udělení oprávnění přidat název hostitele.
 - Nepovedlo se ověřit vaše vlastnictví domény.
 
-    **Řešení**: Ověřte, zda je správně nakonfigurován váš záznam CNAME nebo záznam. K mapování vlastní domény na webovou aplikaci, vytvořte záznam CNAME nebo záznam. Pokud chcete použít kořenovou doménu, musíte použít záznamy A a TXT:
+    **Řešení**: Ověřte, zda je správně nakonfigurována vaše CNAME nebo záznam. K mapování vlastní domény na webovou aplikaci, vytvořte záznam CNAME nebo záznam. Pokud chcete použít kořenovou doménu, musíte použít záznamy A a TXT:
 
     |Typ záznamu|Hostitel|Přejděte na|
     |------|------|-----|

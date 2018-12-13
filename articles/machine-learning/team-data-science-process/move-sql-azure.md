@@ -8,15 +8,15 @@ editor: cgronlun
 ms.service: machine-learning
 ms.component: team-data-science-process
 ms.topic: article
-ms.date: 5/04/2018
+ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2ae03dc41d4e5611b75b683975f26874187de1d0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136290"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268628"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Téma, které popisuje možnosti pro přesun dat do SQL serveru v místním pro 
 
 Následující tabulka shrnuje možnosti pro přesun dat do služby Azure SQL Database.
 
-| <b>ZDROJ</b> | <b>Cíl: Azure SQL Database</b> |
+| <b>ZDROJ</b> | <b>CÍL: Azure SQL Database</b> |
 | --- | --- |
 | <b>Plochý soubor (sdíleného svazku clusteru nebo ve formátu TSV)</b> |[Dotaz SQL pro hromadné vložení](#bulk-insert-sql-query) |
 | <b>Na místním SQL serveru</b> |1.[exportovat do plochých souborů](#export-flat-file)<br> 2. [Průvodce migrací služby SQL Database](#insert-tables-bcp)<br> 3. [Databáze back up a obnovení](#db-migration)<br> 4. [Azure Data Factory](#adf) |
@@ -39,7 +39,7 @@ Postupy, podle zde uvedeného vyžadují, abyste měli:
 * Přístup **Azure SQL Database**. Pokud je nutné nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
-**Data**: procesu migrace je ukázán pomocí [datovou sadu NYC taxislužby](http://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxislužby datová sada obsahuje informace o data o jízdách a veletrhů a je k dispozici ve službě Azure blob storage: [Data taxislužby města NYC](http://www.andresmh.com/nyctaxitrips/). Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
+**Data**: Procesu migrace je ukázán pomocí [datovou sadu NYC taxislužby](http://chriswhong.com/open-data/foil_nyc_taxi/). NYC taxislužby datová sada obsahuje informace o data o jízdách a veletrhů a je k dispozici ve službě Azure blob storage: [Data taxislužby města NYC](http://www.andresmh.com/nyctaxitrips/). Ukázka a popis tyto soubory jsou k dispozici v [NYC taxislužby zkracuje dobu odezvy datovou sadu popis](sql-walkthrough.md#dataset).
 
 Můžete přizpůsobit podle postupů popsaných tady na sadu vlastních dat nebo postupujte podle pokynů, jak je popsáno s použitím datové sady NYC taxislužby. K odeslání NYC taxislužby datovou sadu do místní databáze SQL serveru, postupujte podle postupu uvedeného v [hromadného importu dat do databáze SQL serveru](sql-walkthrough.md#dbload). Tyto pokyny jsou určené pro SQL Server na virtuálním počítači Azure, ale postup pro jeho odeslání do místního SQL serveru je stejný.
 

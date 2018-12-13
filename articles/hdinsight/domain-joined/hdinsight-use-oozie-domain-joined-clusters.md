@@ -1,22 +1,23 @@
 ---
-title: Apache Hadoop Oozie pracovních postupů v clusterech Azure HDInsight s balíčkem Enterprise Security Package
-description: Použití Hadoop Oozie v Linuxovým systémem HDInsight Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
+title: Zabezpečené pracovní postupy Apache Oozie s balíčkem Enterprise Security Package – Azure HDInsight
+description: Zabezpečené pracovní postupy Apache Oozie pomocí Azure HDInsight Enterprise Security Package. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: mamccrea
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633661"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165142"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package
+
 Apache Oozie je systém koordinace a pracovního postupu, který spravuje úlohy Apache Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
 - Apache MapReduce
 - Apache Pig
@@ -26,6 +27,7 @@ Apache Oozie je systém koordinace a pracovního postupu, který spravuje úlohy
 Oozie můžete také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
 ## <a name="prerequisite"></a>Požadavek
+
 - Cluster Azure HDInsight Hadoop s Enterprise Security Package (ESP). Zobrazit [konfigurace HDInsight clustery s ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
@@ -224,8 +226,11 @@ nano workflow.xml
    Tento soubor vlastnosti musí být k dispozici místně při spuštění úlohy Oozie.
 
 ## <a name="create-custom-hive-scripts-for-oozie-jobs"></a>Vytvoření vlastních skriptů Hive pro úlohy Oozie
+
 Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je znázorněno v následujících částech.
+
 ### <a name="hive-server-1-file"></a>Soubor Hive server 1
+
 1.  Vytvoření a úprava souboru pro Hive server 1 akce:
     ```bash
     nano countrowshive1.hql
@@ -244,6 +249,7 @@ Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je 
     ```
 
 ### <a name="hive-server-2-file"></a>Soubor Hive server 2
+
 1.  Vytvoření a úprava pole pro Hive server 2 akce:
     ```bash
     nano countrowshive2.hql
@@ -262,11 +268,13 @@ Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je 
     ```
 
 ## <a name="submit-oozie-jobs"></a>Odesílání úloh Oozie
+
 Odesílání úloh Oozie pro clustery ESP je jako odesílání Oozie úloh v clusterech bez ESP.
 
 Další informace najdete v tématu [použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Výsledky odeslání úlohy Oozie
+
 Oozie úloha pro daného uživatele. Takže Apache YARN a Apache Rangeru auditu zobrazit protokoly úloh spuštěn jako zosobněného uživatele. Rozhraní příkazového řádku výstup úlohy Oozie by měl vypadat jako v následujícím kódu:
 
 
@@ -304,6 +312,7 @@ Oozie úloha pro daného uživatele. Takže Apache YARN a Apache Rangeru auditu 
 V protokolech auditu Ranger Hive server 2 akce zobrazit Oozie spuštění akce uživatele. Zobrazení Ranger a YARN jsou viditelné pouze pro správce clusteru.
 
 ## <a name="configure-user-authorization-in-oozie"></a>Konfigurace autorizace uživatelů v Oozie
+
 Oozie sám o sobě má konfiguraci autorizace uživatele, který může zablokovat uživatelům možnost zastavení nebo odstranění úlohy jinými uživateli. Chcete-li povolit tuto konfiguraci, nastavte `oozie.service.AuthorizationService.security.enabled` k `true`. 
 
 Další informace najdete v tématu [Oozie instalace a konfigurace](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
@@ -311,6 +320,7 @@ Další informace najdete v tématu [Oozie instalace a konfigurace](https://oozi
 Pro komponenty, jako jsou serveru Hive 1, kdy modul plug-in Ranger není k dispozici nebo se nepodporuje je možné pouze hrubých HDFS autorizace. Detailní autorizace je k dispozici pouze prostřednictvím Ranger moduly plug-in.
 
 ## <a name="get-the-oozie-web-ui"></a>Získat Oozie webového uživatelského rozhraní
+
 Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy Oozie v clusteru. Pokud chcete získat ve webovém uživatelském rozhraní, proveďte následující kroky v clusterech ESP:
 
 1. Přidat [hraniční uzel](../hdinsight-apps-use-edge-node.md) a povolit [SSH ověřování pomocí protokolu Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).

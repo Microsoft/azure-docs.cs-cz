@@ -1,5 +1,5 @@
 ---
-title: Azure App Service Hybrid Connections | Dokumentace Microsoftu
+title: Hybridní připojení - službě Azure App Service | Dokumentace Microsoftu
 description: Jak vytvořit a používat Hybrid Connections pro přístup k prostředkům v různých sítích
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: cdfe1a35dbbf8fa048e0b0ca24f06bb0e73bde61
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 084d5e9453ea5a55bdeeff839e4c70890575c83d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968305"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258011"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -136,7 +137,7 @@ Při spuštění uživatelského rozhraní HCM, první věc, kterou vidíte je t
 K přidání jednoho nebo více hybridní připojení k vaší HCM:
 
 1. Spuštění uživatelského rozhraní HCM.
-1. Vyberte **nakonfigurovat jiné hybridní připojení**.
+2. Vyberte **nakonfigurovat jiné hybridní připojení**.
 ![Snímek obrazovky konfigurace nové hybridní připojení][8]
 
 1. Přihlaste se pomocí svého účtu Azure.
@@ -197,7 +198,7 @@ Objekt JSON přidružený k hybridní připojení vypadá takto:
       }
     }
 
-Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient] [ armclient] projektu z githubu. Tady je příklad existující hybridní připojení se připojuje k vaší webové aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
+Jeden ze způsobů použití těchto informací se armclient, které můžete získat [ARMClient] [ armclient] projektu z Githubu. Tady je příklad existující hybridní připojení se připojuje k vaší webové aplikace. Vytvořte soubor JSON na výše uvedené schéma jako:
 
     {
       "name": "relay-demo-hc",

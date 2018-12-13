@@ -1,5 +1,5 @@
 ---
-title: Co je služba Azure Event Hubs? | Dokumenty Microsoft
+title: Co je služba Azure Event Hubs? -Služba pro ingestování velkého objemu dat | Dokumentace Microsoftu
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 services: event-hubs
 documentationcenter: na
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d7f2bd5487a5eab248f08b408341470dcaf04a93
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cffa9f566c6b2f4feb0fd7426eeea54a4644fda8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017283"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140145"
 ---
 # <a name="azure-event-hubs---a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – velké objemy dat, platformy a události služba pro ingestování datových proudů
 
@@ -24,7 +24,7 @@ Azure Event Hubs je platforma pro streamování velkých objemů dat a služba p
 Služba Event Hubs se používá v některých následujících běžných situacích:
 
 - Detekce anomálií (podvody/odlehlé hodnoty)
-- Protokolování aplikace
+- Protokolování aplikací
 - Analytické kanály, jako například navštívené stránky
 - Živé řídicí panely
 - Archivace dat
@@ -66,11 +66,11 @@ Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Pyt
 
 Služba Event Hubs poskytuje možnost zpracovávat datové proudy zpráv. Její charakteristiky ji ale odlišují od tradičních podnikových způsobů zasílání zpráv. Možnosti služby Event Hubs jsou vycházejí ze scénářů zpracování událostí a vysoké propustnosti. Event Hubs obsahuje následující [klíčové komponenty](event-hubs-features.md):
 
-- **Poskytovatelé událostí**: Entita, která posílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
-- **Oddíly**: Každý příjemce čte jenom konkrétní podmnožinu, neboli oddíl, streamu zprávy.
-- **Skupiny příjemců**: Zobrazení (stav, pozice nebo posun) celého centra událostí. Skupiny příjemců poskytují různým přijímajícím aplikacím oddělená zobrazení datového proudu událostí a umožňují jim nezávisle číst datový proud vlastním tempem a s použitím vlastních posunů.
-- **Jednotky propustnosti**: Předem koupené jednotky kapacity, které řídí kapacitu propustnosti služby Event Hubs.
-- **Příjemci událostí**: Entita, která čte data událostí z centra událostí. Všichni příjemci se ve službě Event Hubs připojují pomocí relace protokolu AMQP 1.0 a události se doručují tak, jak jsou postupně dostupné. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
+- **Producentů událostí**: Každá entita, která odesílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
+- **Oddíly**: Každý příjemce četl jenom konkrétní podmnožinu nebo oddíl datového proudu zpráv.
+- **Skupiny příjemců**: Zobrazení (stavu, pozice nebo posunu) celého centra událostí. Skupiny příjemců poskytují různým přijímajícím aplikacím oddělená zobrazení datového proudu událostí a umožňují jim nezávisle číst datový proud vlastním tempem a s použitím vlastních posunů.
+- **Jednotky propustnosti**: Předem zakoupené jednotky kapacity, které řídí kapacita propustnosti služby Event Hubs.
+- **Přijímače událostí**: Každá entita, která čte data událostí z centra událostí. Všichni příjemci se ve službě Event Hubs připojují pomocí relace protokolu AMQP 1.0 a události se doručují tak, jak jsou postupně dostupné. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
@@ -81,7 +81,7 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 Pokud chcete začít používat službu Event Hubs, podívejte se na následující články:
 
-1. **Vytvoření centra událostí:** [Azure Portal](event-hubs-create.md), [Azure CLI](event-hubs-quickstart-cli.md), [Azure PowerShell](event-hubs-quickstart-powershell.md), [Šablona Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md)
+1. **Vytvoření centra událostí**: [Azure portal](event-hubs-create.md), [rozhraní příkazového řádku Azure](event-hubs-quickstart-cli.md), [prostředí Azure PowerShell](event-hubs-quickstart-powershell.md), [šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub.md)
 2. **Odesílání událostí do centra událostí**: [.NET Core](event-hubs-dotnet-standard-getstarted-send.md), [rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [Node.js](event-hubs-node-get-started-send.md), [Přejít](event-hubs-go-get-started-send.md), [C](event-hubs-c-getstarted-send.md)
 3. **Příjem událostí z centra událostí**: [.NET Core](event-hubs-dotnet-standard-getstarted-receive-eph.md), [rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md), [Java](event-hubs-java-get-started-receive-eph.md), [Python](event-hubs-python-get-started-receive.md), [Node.js ](event-hubs-node-get-started-receive.md), [Přejít](event-hubs-go-get-started-receive-eph.md), [Apache Storm](event-hubs-storm-getstarted-receive.md)   
 

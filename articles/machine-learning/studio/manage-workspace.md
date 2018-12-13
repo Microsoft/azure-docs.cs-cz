@@ -1,12 +1,11 @@
 ---
-title: Správa pracovního prostoru Machine Learning – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Správa pracovního prostoru Machine Learning Studio | Dokumentace Microsoftu
 description: Správa přístupu k pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby webového rozhraní API ML
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: daf3d413-7a77-4beb-9a7a-6b4bdf717719
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: c470d10b933b31d4cfe151fb541c2182562a2805
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8c5dfd82a7bf0d1985869c8de4e3b313ef885947
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314100"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270769"
 ---
-# <a name="manage-an-azure-machine-learning-workspace"></a>Správa pracovního prostoru Azure Machine Learning
+# <a name="manage-an-azure-machine-learning-studio-workspace"></a>Správa pracovního prostoru Azure Machine Learning Studio
 
 > [!NOTE]
 > Informace o správě webových služeb Machine Learning Web Services portálu najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
@@ -32,7 +31,7 @@ ms.locfileid: "52314100"
 
 Můžete spravovat pracovní prostory Machine Learning na webu Azure Portal.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 

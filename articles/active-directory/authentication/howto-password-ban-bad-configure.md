@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 34011144d4f960413e78f13c999dfddf6d2660bf
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743286"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252197"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurace seznamu vlastních zakázaných hesel
 
@@ -36,7 +36,7 @@ Konfigurace seznamu zakázaných hesel vlastní vyžaduje licenci Azure Active D
    * Seznam vlastních zakázaných hesel může obsahovat až 1000 slova.
    * Seznam vlastních zakázaných hesel je velká a malá písmena.
    * Seznam vlastních zakázaných hesel bere v úvahu běžné náhradní znak.
-      * Příklad: "o" a "0" nebo "a" a "@"
+      * Příklad: "o" a "0" nebo "a" a "\@"
    * Minimální délka řetězce je čtyři znaky a maximální hodnota je 16 znaků.
 1. Pokud jste přidali všechny řetězce, klikněte na tlačítko **Uložit**.
 

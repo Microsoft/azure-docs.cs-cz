@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 60d19f6d598c6090e0dc00c61817a0f8aed35003
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: ae6ddea3860c7fc636e071b3c39c418ff4a10272
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889493"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273931"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -109,7 +109,7 @@ Můžete optimalizovat nebo dotazů souvisejících s úředníci s nejvyšším
 
 Také můžete snížit zatížení optimalizace nebo distribuci přes více databází. Nebo můžete k distribuci vašich úloh mezi několik databází. Pokud tato řešení není možné, zvažte zvýšení cenové úrovně předplatného databáze SQL zvýšit objem paměťových prostředků dostupných v databázi.
 
-Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: záhadnými a často příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: Záhadnými a často příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Uzamykání
 
@@ -227,7 +227,7 @@ Tento model zjistitelná výkonu označuje výkonovou podmínku databáze, ve kt
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostický protokol vrátí podrobnosti o sporu databázi tempDB. Informace můžete použít jako výchozí bod pro řešení potíží. Můžete pokračovat zmírnění tento druh kolize a zvýší propustnost celkovou úlohu dvě věci: můžete zastavit pomocí dočasných tabulek. Můžete použít také paměťově optimalizovaných tabulkách. 
+Diagnostický protokol vrátí podrobnosti o sporu databázi tempDB. Informace můžete použít jako výchozí bod pro řešení potíží. Můžete pokračovat zmírnění tento druh kolize a zvýší propustnost celkovou úlohu dvě věci: Můžete zastavit pomocí dočasných tabulek. Můžete použít také paměťově optimalizovaných tabulkách. 
 
 Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabulkách](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 

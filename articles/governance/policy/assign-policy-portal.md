@@ -1,5 +1,5 @@
 ---
-title: Vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků v Azure
+title: Vytvoření zásady pro identifikaci prostředků, které nedodržují předpisy
 description: Tento článek vás provede postupem vytvoření definice zásady pro identifikaci prostředků, které nedodržují předpisy.
 services: azure-policy
 author: DCtheGeek
@@ -7,16 +7,16 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a48a3b8df88a434b59ff200ec6d36fb32ee7122b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: ddf30f6a7bc00be9ac24952adf0ba41e6151bd10
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079258"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311163"
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy
 
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků.
 Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.

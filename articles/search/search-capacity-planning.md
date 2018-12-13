@@ -1,5 +1,5 @@
 ---
-title: Přidělit oddílů a replik pro dotazy a indexování ve službě Azure Search | Dokumentace Microsoftu
+title: Přidělit oddíly a replikami dotazů a indexování – Azure Search
 description: Upravte oddílů a replik prostředky počítače ve službě Azure Search, kde každého prostředku se účtuje v jednotkách fakturovatelné vyhledávání.
 author: HeidiSteen
 manager: cgronlun
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: fa1a13c5c786867f6e92a678c40a491e0a226076
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: e2eff6c854dae48961700341a6db19dc7113901c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238727"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316110"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Přidělit oddílů a replik pro dotazy a indexování úloh ve službě Azure Search
 Poté co [zvolte cenovou úroveň](search-sku-tier.md) a [při zřizování vyhledávací služby](search-create-service-portal.md), dalším krokem je Volitelně můžete zvýšit počet repliky nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet jednotek fakturace. Tento článek vysvětluje, jak přidělit jednotkách zajistit optimální konfiguraci, která vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
@@ -92,12 +93,12 @@ Hledat aplikace, které vyžadují téměř aktualizace dat v reálném čase, b
 
 Indexy větší trvat delší dobu dotazu. V důsledku toho můžete zjistit, že každý další nárůst oddíly vyžaduje menší, ale proporcionální zvýšení replik. Do rychlost provádění dotazů bude převedena bude faktor složité dotazy a množství dotazů.
 
-## <a name="basic-tier-partition-and-replica-combinations"></a>Úroveň Basic: kombinace oddílů a replik
+## <a name="basic-tier-partition-and-replica-combinations"></a>Úroveň Basic: Kombinace oddílů a replik
 Základní služby může obsahovat právě jeden oddíl a až tři repliky, maximum omezit tři služby SUS. Pouze měnitelné prostředek je repliky. Budete potřebovat minimálně dvě repliky pro zajištění vysoké dostupnosti pro dotazy.
 
 <a id="chart"></a>
 
-## <a name="standard-tiers-partition-and-replica-combinations"></a>Úrovně Standard: kombinace oddílů a replik
+## <a name="standard-tiers-partition-and-replica-combinations"></a>Úrovně Standard: Kombinace oddílů a replik
 Tato tabulka ukazuje SUs nezbytném k podpoře kombinací repliky a oddíly, v souladu s 36 SU limitu pro všechny úrovně Standard.
 
 |   | **oddíl 1** | **2 oddíly** | **3 oddíly** | **4 oddíly** | **6 oddíly** | **12 oddíly** |

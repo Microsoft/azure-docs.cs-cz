@@ -10,17 +10,15 @@ ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: a2cedb95469f97b564aaad2baa0ff7c784d67bf8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56234562f64073e2b772f6ebf302ddba9ea56188
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960987"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53189537"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorování pomocí Log Analytics ke sledování jejich stavu Surface Huby
 

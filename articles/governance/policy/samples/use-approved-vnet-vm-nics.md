@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+title: Ukázkové – schválené použití virtuální sítě pro síťová rozhraní virtuálního počítače
 description: Tato ukázková zásada vyžaduje, aby síťová rozhraní používala schválenou virtuální síť.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: 2a0b3ac82d6ff8e7c6df850e5303c342cc269834
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 9e99e6614a5ddfb1f692e5db99c95b3907051fa5
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959168"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308788"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 16037a84-dad0-4a8c-9874-a1d3bd551cf0
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: b51af78625d869fb168dce7c7bd7ed57e159cbda
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92067a93a1f67711df0312f4daf484a577ff14d1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104762"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273187"
 ---
-# <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Machine Learning Studio: Zjištění modulů služby vlastní machine learning v galerii Azure AI
+# <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Ve službě Machine Learning Studio: Zjištění modulů služby vlastní machine learning v galerii Azure AI
 
 [Galerie Azure AI](http://gallery.cortanaintelligence.com) nabízí několik [vlastních modulů](https://gallery.cortanaintelligence.com/customModules) , které rozšiřují možnosti nástroje Azure Machine Learning Studio. Můžete importovat další moduly pro použití v své experimenty, takže můžete vyvíjet i sofistikovanějších řešení prediktivní analýzy.
 
@@ -94,5 +93,5 @@ Použití importovaného modulu:
 
 **[Přejít do Galerie](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

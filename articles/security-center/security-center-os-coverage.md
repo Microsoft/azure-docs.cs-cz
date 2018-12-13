@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f4bc90b2d1a80125ae88b4b5c4c11e42a34a985a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240422"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185575"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
-Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače (VM) vytvořené pomocí modelu classic a modely nasazení Resource Manager a počítače.
+Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuální počítače (VM) vytvořené pomocí modelu classic a modely nasazení Resource Manager i počítače.
 
 > [!NOTE]
 > Další informace o [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
@@ -35,7 +35,7 @@ Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuáln
 Tato část uvádí platformy, na kterých agent Azure Security Center můžete spustit a odkud mohla shromažďovat data.
 
 ### <a name="supported-platforms-for-windows-computers-and-vms"></a>Podporované platformy pro Windows, počítačů a virtuálních počítačů
-Podporované operační systémy Windows:
+Následující operační systémy Windows se podporují:
 
 * Windows Server 2008
 * Windows Server 2008 R2
@@ -45,24 +45,24 @@ Podporované operační systémy Windows:
 
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro virtuální počítače a počítače s Linuxem
-Podporované operační systémy Linux:
+Jsou podporovány následující operační systémy Linux:
 
-* Verze Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS
-* Debian verze 6, 7, 8, 9
-* CentOS verze 5, 6, 7
-* Red Hat Enterprise Linux (RHEL) verze 5, 6, 7
-* SUSE Linux Enterprise Server (SLES) verze 11, 12
-* Oracle Linux verze 5, 6, 7
-* Linux Amazon 2012.09 2017
-* OpenSSL 1.1.0 je podporována pouze na platformách x86_64 (64 bitů)
+* Verze Ubuntu 12.04 LTS, 14.04 LTS a 16.04 LTS.
+* Debian verze 6, 7, 8 a 9.
+* CentOS verze 5, 6 a 7.
+* Red Hat Enterprise Linux (RHEL) verze 5, 6 a 7.
+* SUSE Linux Enterprise Server (SLES) verze 11 a 12.
+* Oracle Linux verze 5, 6 a 7.
+* Linux Amazon 2012.09 2017.
+* OpenSSL 1.1.0 je podporována pouze na platformách x86_64, 64 bitů.
 
 > [!NOTE]
-> Pro vypracování analýzy chování virtuálního počítače nejsou k dispozici pro operační systémy a Linux.
+> Pro vypracování analýzy chování virtuálního počítače zatím nejsou k dispozici pro operační systémy a Linux.
 >
 >
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
-Podporují se také virtuální počítače spuštěné v cloudové službě. Pouze cloud services – webové a pracovní role běžících v produkčním prostředí, které jsou monitorovány sloty. Další informace o cloudové služby, najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md).
+Podporují se také virtuální počítače, na kterých běží v cloudové službě. Jsou monitorovány pouze cloud services webové a pracovní role, které běží v slot na produkční. Další informace o službách cloud services, najdete v článku [přehled o Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 
 
 ## <a name="supported-iaas-features"></a>Podporované funkce IaaS
@@ -74,25 +74,25 @@ Podporují se také virtuální počítače spuštěné v cloudové službě. Po
 |----|----|----|----|----|
 |Prostředí|Azure|Mimo službu Azure|Azure|Mimo službu Azure|
 |Výstrahy detekce hrozeb VMBA|✔|✔|✔ (o podporovaných verzích)|✔|
-|Výstrahy detekce hrozeb na základě sítě|✔|X|✔|X|
+|Výstrahy detekce hrozeb založené na síti|✔|X|✔|X|
 |Ochrana ATP v programu Windows Defender integrace *|✔ (o podporovaných verzích)|✔|X|X|
 |Chybějící opravy|✔|✔|✔|✔|
 |Konfigurace zabezpečení|✔|✔|✔|✔|
-|Anti-malware|✔|✔|X|X|
+|Antimalwarové programy|✔|✔|X|X|
 |Přístup k virtuálnímu počítači podle potřeby|✔|X|✔|X|
 |Adaptivní řízení aplikací|✔|X|X|X|
 |FIM|✔|✔|✔|✔|
 |Šifrování disku|✔|X|✔|X|
 |Nasazení třetích stran|✔|X|✔|X|
 |Skupiny NSG|✔|X|✔|X|
-|Detekce hrozeb Filess|✔|✔|X|X|
+|Detekce hrozeb fileless|✔|✔|X|X|
 |Mapování sítě|✔|X|✔|X|
 |Ovládací prvky pro adaptivní síť|✔|X|✔|X|
 
 \* Tyto funkce jsou aktuálně podporované ve verzi public preview.
 
 
-## <a name="supported-paas-features"></a>Podporované funkce PaaS
+## <a name="supported-paas-features"></a>Podporované funkce PaaS 
 
 
 |Služba|Doporučení|Detekce hrozeb|
@@ -100,7 +100,7 @@ Podporují se také virtuální počítače spuštěné v cloudové službě. Po
 |SQL|✔| ✔|
 |PostGreSQL *|✔| ✔|
 |MySQL *|✔| ✔|
-|Účty úložiště BLOB *|✔| ✔|
+|Azure Blob storage účty *|✔| ✔|
 |Aplikační služby|✔| ✔|
 |Cloud Services|✔| X|
 |Virtuální sítě|✔| Není k dispozici|
@@ -109,11 +109,11 @@ Podporují se také virtuální počítače spuštěné v cloudové službě. Po
 |Skupiny NSG|✔| Není k dispozici|
 |Předplatné|✔| ✔|
 
-\* Tyto funkce jsou aktuálně podporované ve verzi public preview.
+\* Tyto funkce jsou aktuálně podporované ve verzi public preview. 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Průvodce Azure Security Center plánováním a provozem](security-center-planning-and-operations-guide.md) – zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center
-- [Výstrahy zabezpečení podle typu ve službě Azure Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis) – Další informace o analýza chování virtuálního počítače a k chybě při analýze výpisu paměti ve službě Security Center
-- [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-- [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů
+- Zjistěte, jak [naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center](security-center-planning-and-operations-guide.md).
+- Další informace o [analýza chování virtuálního počítače a při selhání výpis stavu paměti analýzy ve službě Security Center](security-center-alerts-type.md#virtual-machine-behavioral-analysis).
+- Najít [– nejčastější dotazy o použití Azure Security Center](security-center-faq.md).
+- Najít [příspěvky o zabezpečení Azure a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

@@ -1,6 +1,6 @@
 ---
-title: Pochopení životního cyklu Azure podrobného plánu
-description: Další informace o životním cyklu, který prochází podrobný plán a podrobnosti o každé fázi.
+title: Princip životního cyklu podrobný plán
+description: Další informace o životního cyklu, která procházejí podrobný plán a podrobnosti o každé fázi.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,16 +8,17 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 882279019a5f321c6af9beab1f4d0f220781bc5c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094155"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309802"
 ---
-# <a name="understand-the-life-cycle-of-an-azure-blueprint"></a>Pochopení životního cyklu Azure podrobného plánu
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Princip životního cyklu Azure podrobného plánu
 
-Stejně jako mnoho prostředků v rámci Azure má podrobný plán v Azure plány typický a přirozené životního cyklu. Jste vytvořili, nasazení a nakonec odstraněn, když už nebude potřebné nebo relevantní.
+Stejně jako mnoho prostředků v rámci Azure má podrobný plán v Azure plány životní cyklus typické a přirozené. Jste vytvořili, nasazení a nakonec odstraněn, když už nebude potřebné nebo relevantní.
 Plány podporuje operace standardní životního cyklu. Potom staví na nich další úrovně stavu, které podporují běžné průběžnou integraci a průběžné nasazování pro organizace, které spravují infrastrukturu jako kód – klíčovým elementem v DevOps.
 
 Abyste úplně pochopili podrobný plán a fáze, si probereme standardní životní cyklus:
@@ -68,7 +69,7 @@ Každá verze plán, podle kterého je jedinečný objekt a může být zvláš�
 > [!NOTE]
 > Není možné odstranit podrobný plán, který má aktivní přiřazení. Nejprve odstraňte přiřazení a pak odstraňte verze, kterou chcete odebrat.
 
-1. Klikněte na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na stránce **Zásady** klikněte na **plány**.
+1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
 
 1. Vyberte **definice podrobného plánu** ze stránky na levé straně a použití možnosti filtru k vyhledání plán, podle kterého chcete odstranit verzi. Klikněte na něj pro otevření stránky pro úpravu.
 
@@ -87,7 +88,7 @@ Odstranit podrobný plán se [webu Azure portal](../create-blueprint-portal.md#d
 
 ## <a name="assignments"></a>Přiřazení
 
-Existuje několik bodů během životního cyklu, které plán, podle kterého je možné přiřadit k předplatnému. Pokud je režim verzi podrobný plán **publikováno**, pak tuto verzi je možné přiřadit k předplatnému. Životní cyklus umožňuje verze podrobného plánu použít a aktivně přiřazen, zatímco je vyvíjena novější verze.
+Existuje několik bodů během životního cyklu, které plán, podle kterého je možné přiřadit k předplatnému. Pokud je režim verzi podrobný plán **publikováno**, pak tuto verzi je možné přiřadit k předplatnému. Tento životní cyklus umožňuje verze podrobného plánu použít a aktivně přiřazen, zatímco je vyvíjena novější verze.
 
 Jelikož se přidělují verzích plány, je důležité pochopit, kde jsou přiřazení a jaké parametry se přiřadil s. Parametry může být buď statická nebo dynamická. Další informace najdete v tématu [statické a dynamické parametry](parameters.md).
 

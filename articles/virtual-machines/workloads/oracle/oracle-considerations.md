@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6435c866f6cdf5abea3862a718579f3a6e4d7378
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.custom: seodec18
+ms.openlocfilehash: 50e5dfa21cf7a8f7203e7d96640e3cf5215130a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493060"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191457"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Oracle řešení a jejich nasazení v Microsoft Azure
 Tento článek obsahuje informace potřebné k úspěšnému nasazení řešení pro různé Oracle v Microsoft Azure. Tato řešení jsou založeny na Image virtuálních počítačů publikované společností Oracle v Azure Marketplace. Pokud chcete získat seznam aktuálně dostupných imagí, spusťte následující příkaz:
@@ -57,7 +58,7 @@ Oracle podporuje imagemi virtuálního počítače založeného na Oracle Linuxu
 Spolehněte se na službu Azure Blob storage připojených disků. Každý standardní disk je schopen teoretické maximum přibližně 500 vstupně výstupní operace za sekundu (IOPS). Naše nabídky disk premium je upřednostňována pro vysoce výkonné databázové úlohy a může dosáhnout až 5000 vstupně-výstupních operací na disk. Při jednom disku můžete použít, pokud, který vyhovuje vašim požadavkům na výkon – Pokud používáte více připojených disků můžete zlepšit efektivní výkon vstupně-výstupních operací, rozložit dat z databáze mezi nimi a pak pomocí automatického úložiště Oracle Management (ASM). Zobrazit [Oracle automatického úložiště – přehled](http://www.oracle.com/technetwork/database/index-100339.html) Oracle ASM konkrétní informace. Příklad toho, jak nainstalovat a nakonfigurovat Oracle ASM na virtuálním počítači Azure Linux - můžete vyzkoušet [instalace a konfigurace Oracle automatizované Storage Management](configure-oracle-asm.md) kurzu.
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Clusterová aplikace skutečný Oracle (Oracle RAC)
-Oracle RAC slouží ke zmírnění selhání jednoho uzlu v konfiguraci v místním clusteru s několika uzly. Spoléhá na dva místními technologiemi, které nejsou nativní pro vysoce škálovatelné veřejných cloudových prostředích: všesměrového vysílání v síti a sdíleného disku. Pokud vaše řešení databáze vyžaduje RAC Oracle v Azure, musíte software 3. stran k povolení těchto technologií.  A **Microsoft Azure Certified** nabídky volá [FlashGrid uzel pro Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) je k dispozici na webu Azure Marketplace vydané FlashGrid Inc. Další informace o tomto řešení a jak to funguje v Azure, najdete v tématu [stránka řešení FlashGrid](https://www.flashgrid.io/oracle-rac-in-azure/).
+Oracle RAC slouží ke zmírnění selhání jednoho uzlu v konfiguraci v místním clusteru s několika uzly. Spoléhá na dva místními technologiemi, které nejsou nativní pro vysoce škálovatelné veřejných cloudových prostředích: všesměrového vysílání v síti a sdíleného disku. Pokud vaše řešení databáze vyžaduje RAC Oracle v Azure, musíte software 3. stran k povolení těchto technologií. Další informace o Oracle RAC, najdete v tématu [stránka řešení FlashGrid](https://www.flashgrid.io/oracle-rac-in-azure/).
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>Aspekty vysoké dostupnosti a po havárii pro obnovení
 Při používání databází Oracle v Azure, zodpovídáte za implementaci vysokou dostupnost a obnovení řešení žádné výpadky. 

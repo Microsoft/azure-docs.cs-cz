@@ -1,6 +1,6 @@
 ---
-title: Import dat ve službě Azure Search | Dokumentace Microsoftu
-description: Naučte se nahrát data do indexu ve službě Azure Search.
+title: Import dat pro příjem dat do indexu vyhledávání – Azure Search
+description: Naplnit a nahrát data z externích zdrojů dat do indexu ve službě Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,14 +8,15 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: ab26adb330e69f71d94aa296ede558b44e47a187
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 731519b4e099bd696002af3aa08ada145e490260
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249774"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314852"
 ---
-# <a name="indexing-in-azure-search"></a>Indexování ve službě Azure Search
+# <a name="indexing-external-data-for-queries-in-azure-search"></a>Indexování externích dat u dotazů ve službě Azure Search
 > [!div class="op_single_selector"]
 > * [Přehled](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -23,7 +24,7 @@ ms.locfileid: "51249774"
 > 
 > 
 
-Ve službě Azure Search se dotazy provádějí nad obsahem načteným do [indexu vyhledávání](search-what-is-an-index.md). Tento článek zkoumá dva základní přístupy k načítání obsahu do indexu: *nabídka* (Push) dat do indexu prostřednictvím kódu programu nebo nasměrování [indexeru Azure Search](search-indexer-overview.md) na podporovaný zdroj dat a *přetáhnutí* (Pull) dat.
+Ve službě Azure Search se dotazy provádějí nad obsahem nahrán a uložili v [indexu vyhledávání](search-what-is-an-index.md). Tento článek zkoumá dva základní přístupy pro naplňování indexu: *nabízených* vaše data do indexu prostřednictvím kódu programu, nebo přejděte [indexeru Azure Search](search-indexer-overview.md) na podporovaný zdroj dat k  *o přijetí změn* v datech.
 
 ## <a name="pushing-data-to-an-index"></a>Nabídka dat do indexu
 Model Push, který slouží k odesílání dat do služby Azure Search prostřednictvím kódu programu, je nejflexibilnějším přístupem. Za prvé u něj neplatí žádná omezení týkající se typu zdroje dat. Do indexu Azure Search je možné nabídnout jakoukoli datovou sadu skládající se z dokumentů JSON za předpokladu, že každý dokumente v datové sadě obsahuje mapování polí na pole definovaná ve schématu vašeho indexu. Za druhé u něj neplatí žádná omezení týkající se četnosti provádění. Do indexu můžete nabízet změny, jak často chcete. U aplikací vyžadujících velmi nízkou latenci (např. když potřebujete, aby operace hledání byly synchronizované s dynamickými databázemi zásob) je model Push vaší jedinou možností.

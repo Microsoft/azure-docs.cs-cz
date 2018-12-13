@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu | Microsoft Docs
+title: Vytvoření webové aplikace v Pythonu v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 5f9d694d47c0bd0765af7871d7e535a4174c30ff
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404717"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261846"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu (verze Preview)
 
@@ -170,7 +170,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně ve verzi Preview a je možné přizpůsobit příkaz sloužící ke spuštění vaší aplikace. Produkční aplikace v Pythonu můžete místo toho vytvářet taky s využitím vlastního kontejneru.
 

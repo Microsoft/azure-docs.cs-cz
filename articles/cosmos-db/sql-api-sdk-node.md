@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL Node.js API, SDK & zdroje'
+title: 'Azure Cosmos DB: SQL Node.js API, SDK a zdroje informací'
 description: Další informace o SQL Node.js API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB Node.js SDK.
 services: cosmos-db
 author: deborahc
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5616ee6f6b855cb366f24c79c73d12a03b69b2ac
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 9a859c2a8feeaf60be56404367f126bbd252771b
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865654"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164853"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -152,10 +152,10 @@ ms.locfileid: "52865654"
 * Oprava chyby RangePartitionResolver.resolveForRead, kde ji se vrací odkazy z důvodu chybné concat výsledků.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Oprava hashPartitionResolver resolveForRead(): není zadaný klíč oddílu byl při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
+* Oprava hashPartitionResolver resolveForRead(): Není zadaný klíč oddílu se při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
 
 ### <a name="1.5.4"/>1.5.4</a>
-* Oprava potíží [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – vyhrazený Agent HTTPS: neměli upravovat globální agenta pro účely služby Azure Cosmos DB. Použijte vyhrazený agent pro všechny požadavky na nástroj lib.
+* Oprava potíží [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – vyhrazený Agent HTTPS: Vyhněte se úpravy globální agenta pro účely služby Azure Cosmos DB. Použijte vyhrazený agent pro všechny požadavky na nástroj lib.
 
 ### <a name="1.5.3"/>1.5.3</a>
 * Oprava potíží [#81](https://github.com/Azure/azure-documentdb-node/issues/81) – správně zpracovat pomlčky v ID média.

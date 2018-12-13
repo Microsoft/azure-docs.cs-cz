@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 37d57b0dc381f0ed2edf1f3debb76e5b54eae157
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b0e0f26abbf8eb5cbf1cf9ba2014204d773ae15d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093824"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187309"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
  
@@ -38,34 +38,34 @@ V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
 * **Formát XML služby Service Bus**  
 
-  * **předchozí verze:** Azure Stream Analytics používá DataContractSerializer, takže obsah zprávy zahrnout tagů XML. Příklad:
+  * **Předchozí verze:** Azure Stream Analytics používá DataContractSerializer, takže obsah zprávy zahrnout tagů XML. Příklad:
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "teploty": 64\}\u0001 
+    @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "teploty": 64\}\u0001 
 
-  * **aktuální verze:** obsah zprávy obsahuje datovým proudem přímo s žádné další značky. Příklad:
+  * **aktuální verze:** Obsah zprávy obsahuje datovým proudem přímo s žádné další značky. Příklad:
   
-   {"SensorId": "1", "teploty": 64} 
+    {"SensorId": "1", "teploty": 64} 
  
 * **Zachování rozlišování názvů polí**  
 
-  * **předchozí verze:** názvy polí byly změněny na malá písmena, když modul Azure Stream Analytics zpracovává. 
+  * **Předchozí verze:** Názvy polí byly změněny na malá písmena, když modul Azure Stream Analytics zpracovává. 
 
   * **aktuální verze:** rozlišování se ukládají pro názvy polí při jejich zpracování pomocí modulu Azure Stream Analytics. 
 
-  > [!NOTE] 
-  > Zachování rozlišování ještě není k dispozici pro Stream analytických úloh, které jsou hostované pomocí hraničním prostředí. Názvy všech polí v důsledku toho jsou převedeny na malá písmena, pokud vaše úloha je hostovaná na hraničních zařízeních. 
+    > [!NOTE] 
+    > Zachování rozlišování ještě není k dispozici pro Stream analytických úloh, které jsou hostované pomocí hraničním prostředí. Názvy všech polí v důsledku toho jsou převedeny na malá písmena, pokud vaše úloha je hostovaná na hraničních zařízeních. 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **předchozí verze:** příkazu CREATE TABLE není filtrovat události s NaN (Not a Number. Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
+  * **Předchozí verze:** Příkaz CREATE TABLE není filtrovat události s NaN (Not a Number. Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
 
-  * **aktuální verze:** CREATE TABLE umožňuje zadat silné schématu. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN. 
+  * **aktuální verze:** VYTVOŘIT tabulku můžete zadat silné schématu. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN. 
 
 * **Zakážete automatické přetypování nahoru pro řetězce data a času ve formátu JSON.**  
 
-  * **předchozí verze:** by JSON analyzátor upcast automaticky řetězec hodnoty Datum/čas/pásmo informace, které data a času typu a převeďte jej na UTC. To bylo způsobeno dojde ke ztrátě informace o časovém pásmu.
+  * **Předchozí verze:** Analyzátor JSON by automaticky upcast řetězcové hodnoty s informacemi o datum/čas/pásmo na typ DateTime a převeďte jej na UTC. To bylo způsobeno dojde ke ztrátě informace o časovém pásmu.
 
-  * **aktuální verze:** neexistuje žádné další automaticky upcast řetězcových hodnot s informacemi o datum/čas/pásmo na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu. 
+  * **aktuální verze:** Neexistuje žádné další automaticky upcast řetězcových hodnot s informacemi o datum/čas/pásmo na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu. 
 
 ## <a name="next-steps"></a>Další postup
 * [Řešení potíží s Azure Stream Analytics vstupy](stream-analytics-troubleshoot-input.md)

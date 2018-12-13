@@ -10,25 +10,23 @@ ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 53837573daef56bad12f627400f7db1ccd1c26cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836963"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186799"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka pro dlaždice Návrhář zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat ve vašem pracovním prostoru Log Analytics. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
-* [Zobrazit návrháře](view-designer.md): poskytuje přehled o Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
-* [Referenční informace k části vizualizace](view-designer-parts.md): obsahuje referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
+* [Zobrazit návrháře](view-designer.md): Poskytuje přehled o Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+* [Referenční informace k části vizualizace](view-designer-parts.md): Poskytuje referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 
 
 K dispozici Návrhář zobrazení dlaždic jsou popsány v následující tabulce:  
@@ -142,7 +140,7 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 | **Spojnicový graf** |**> Popis obrázku** |
 | Název popisku | Text, který se zobrazí nad hodnotou popisku. |
 | Název řady |Hodnota vlastnosti řady má být použit jako hodnota popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
-| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li><li>Poslední vzorek: hodnota posledního intervalu, který je součástí grafu.</li><li>Maximální počet: Maximální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
+| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota intervalů, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
 | **Spojnicový graf** |**> Osa y** |
 | Použít logaritmické měřítko |Vyberte tento odkaz použít logaritmické měřítko osy y. |
 | Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
@@ -166,12 +164,12 @@ Tuto dlaždici má oba řádek graf této zobrazí více řad z protokolu dotaz 
 | Legenda |Text, který se zobrazí pod popisek pro první řady. |
 | Barva |Barva, která se používá pro sloupce v první řadě. |
 | Dotaz na graf |Dotaz, který se spouští pro první řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
-| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li><li>Poslední vzorek: hodnota posledního intervalu, který je součástí grafu.</li><li>Maximální počet: Maximální hodnota intervalů, které jsou zahrnuty v grafu.</li></ul> |
+| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota intervalů, které jsou zahrnuty v grafu.</li></ul> |
 | **Druhý graf** | |
 | Legenda |Text, který se zobrazí pod popisek druhé řady. |
 | Barva |Barva, která se používá pro sloupce v druhé řady. |
 | Dotaz na graf |Dotaz, který se spouští pro druhé řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
-| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li><li>Poslední vzorek: hodnota posledního intervalu, který je součástí grafu.</li><li>Maximální počet: Maximální hodnota intervalů, které jsou zahrnuty v grafu. |
+| Operace |Operace, která se provádí na vlastnost value slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota intervalů, které jsou zahrnuty v grafu. |
 | **Upřesnit** |**> Ověření toku dat** |
 | Povoleno |Pokud byste měli povolit ověření toku dat pro dlaždice, vyberte tento odkaz. Tento přístup poskytuje alternativní zprávu, pokud data nejsou dostupná. Obvykle použít přístup k poskytování zprávy během doby dočasné, při zobrazení je nainstalovaný a data bude k dispozici. |
 | Dotaz |Dotaz, který určuje, jestli je k dispozici pro zobrazení dat se spouští. Pokud dotaz nebyly vráceny žádné výsledky, zobrazí se zpráva místo hodnotu hlavního dotazu. |

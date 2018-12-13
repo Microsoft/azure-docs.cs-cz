@@ -1,5 +1,5 @@
 ---
-title: Použití služby Azure App Service environment
+title: Pomocí služby App Service environment – Azure
 description: Jak vytvářet, publikovat a škálovat aplikace ve službě Azure App Service environment
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 5f2959183e1741c8e37db92ede249d83bb3d53a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: eca6f7996b05e58614c8f15067dacabb13730396
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964692"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274713"
 ---
 # <a name="use-an-app-service-environment"></a>Pomocí služby App Service environment #
 
@@ -26,10 +27,10 @@ ms.locfileid: "52964692"
 
 Azure App Service Environment je nasazení služby Azure App Service do podsítě ve virtuální síti Azure zákazníka. Skládá se z:
 
-- **Front-endů**: front-endů jsou, kde končí HTTP/HTTPS ve službě App Service environment (ASE).
-- **Pracovní procesy**: zaměstnanci jsou prostředky, které jsou hostiteli vaše aplikace.
-- **Databáze**: databáze obsahuje informace, které definují prostředí.
-- **Úložiště**: úložiště se používá k hostování aplikací publikovaných zákazníka.
+- **Front-endů**: Front-endů jsou, kde končí HTTP/HTTPS ve službě App Service environment (ASE).
+- **Pracovní procesy**: Zaměstnanci jsou prostředky, které jsou hostiteli vaše aplikace.
+- **Databáze**: Databáze obsahuje informace, které definují prostředí.
+- **Úložiště**: Úložiště se používá k hostování aplikací publikovaných zákazníka.
 
 > [!NOTE]
 > Existují dvě verze služby App Service Environment: ASEv1 a ASEv2. Ve verzi ASEv1 musí spravovat prostředky, abyste mohli používat. Zjistěte, jak konfigurovat a spravovat ASEv1, najdete v článku [konfigurace App Service environment v1][ConfigureASEv1]. Zbývající část tohoto článku se zaměřuje na ASEv2.
@@ -51,7 +52,7 @@ Vytvoření webové aplikace ve službě ASE:
 
 1. Vyberte **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
-1. Zadejte název webové aplikace. Pokud jste již vybrali plán služby App Service ve službě ASE, název domény pro aplikace odráží název domény služby ase.
+2. Zadejte název webové aplikace. Pokud jste již vybrali plán služby App Service ve službě ASE, název domény pro aplikace odráží název domény služby ase.
 
     ![Výběr názvu webové aplikace][1]
 
@@ -70,7 +71,7 @@ Vytvoření webové aplikace ve službě ASE:
 
     b. Zadejte název plánu služby App Service.
 
-    c. Vyberte svoji službu ASE v **umístění** rozevíracího seznamu. Hostování aplikace pro Linux v ASE je povolená jenom v 6 oblastech, v tuto chvíli: **západní USA, východní USA, západní Evropa, Severní Evropa, Austrálie – východ, Asie – jihovýchod.** 
+    c. Vyberte svoji službu ASE v **umístění** rozevíracího seznamu. Hostování aplikace pro Linux v ASE je povolena pouze v 6 oblastech, v tuto chvíli: **Západní USA, východní USA, západní Evropa, Severní Evropa, Austrálie – východ, Asie – jihovýchod.** 
 
     d. Vyberte **izolované** cenovou úroveň. Vyberte **vyberte**.
 

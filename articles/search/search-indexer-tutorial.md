@@ -1,5 +1,5 @@
 ---
-title: Kurz indexování databází Azure SQL ve službě Azure Search | Dokumentace Microsoftu
+title: Kurz indexování databází Azure SQL na webu Azure portal – Azure Search
 description: V tomto kurzu projdete databázi Azure SQL, extrahujete prohledávatelná data a naplníte jimi index služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: heidist
-ms.openlocfilehash: b40d3a74904d6814eb01b5d41d10632e8c9af5be
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988791"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312047"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz: Procházení databáze Azure SQL pomocí indexerů Azure Search
+# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Kurz: Procházejte databázi Azure SQL pomocí indexerů Azure Search
 
 V tomto kurzu se dozvíte, jak nakonfigurovat indexer pro extrahování prohledávatelných dat z ukázkové databáze Azure SQL. [Indexery](search-indexer-overview.md) jsou součástí služby Azure Search, které procházejí externí zdroje dat a naplňují [index vyhledávání](search-what-is-an-index.md) obsahem. Ze všech indexerů je nejpoužívanější indexer pro databázi Azure SQL. 
 
@@ -272,9 +273,9 @@ Všechny indexery, včetně toho, který jste právě vytvořili prostřednictv�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
+Nejrychlejším způsobem, jak po kurzu všechno uklidit, je odstranit skupinu prostředků, která obsahuje službu Azure Search. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Název příslušné skupiny prostředků najdete na portálu na stránce Přehled služby Azure Search.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Algoritmy využívající AI je možné připojit ke kanálu indexování. Jako další krok pokračujte následujícím kurzem.
 

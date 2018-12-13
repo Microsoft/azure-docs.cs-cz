@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Sestavení webové aplikace Flask pomocí Pythonu a MongoDB API služby Azure Cosmos DB'
+title: 'Azure Cosmos DB: Vytvoření webové aplikace Flask pomocí Pythonu a MongoDB API služby Azure Cosmos DB'
 description: Představuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování do rozhraní API MongoDB služby Azure Cosmos DB.
 services: cosmos-db
 author: slyons
@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc, seodec18
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/02/2017
-ms.openlocfilehash: 96ccaf70906d495d1bd2781cf9eeaed7c27bc35e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 09c19f57a2993c0faad3dca708f67526f99d13df
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101377"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53165108"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Sestavení aplikace Flask pomocí rozhraní API MongoDB
 
@@ -46,7 +46,7 @@ Tato úvodní příručka používá následující [příklad Flask](https://gi
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci rozhraní API Flask-MongoDB z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
+Teď naklonujeme aplikaci rozhraní API Flask-MongoDB z Githubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu.
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
@@ -134,7 +134,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="deploy-to-azure"></a>Nasazení do Azure
 
-Pokud chcete tuto aplikaci nasadit, můžete v Azure vytvořit novou webovou aplikaci a povolit průběžné nasazování ve forku tohoto úložiště GitHub. Postup nastavení průběžného nasazování pomocí GitHubu v Azure najdete v tomto [kurzu](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment).
+Pokud chcete nasadit tuto aplikaci, můžete vytvořit novou webovou aplikaci v Azure a umožnit průběžné nasazování ve forku tohoto úložiště GitHub. Použít tento [kurzu](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment) nastavit průběžné nasazování pomocí Githubu v Azure.
 
 Při nasazování do Azure je potřeba odebrat klíče aplikace a ujistit se, následující část není označená jako komentář:
 
@@ -153,7 +153,7 @@ Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na n�
 </a>
 
 > [!NOTE]
-> Pokud máte v plánu uložit svůj kód na GitHub nebo chcete použít jiné možnosti správy zdrojového kódu, nezapomeňte z kódu odebrat připojovací řetězce. Ty je možné místo toho nastavit pomocí nastavení dané webové aplikace.
+> Pokud máte v plánu uložit svůj kód na Githubu nebo jiných možností správy zdrojového kódu, nezapomeňte z kódu odebrat připojovací řetězce. Ty je možné místo toho nastavit pomocí nastavení dané webové aplikace.
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 

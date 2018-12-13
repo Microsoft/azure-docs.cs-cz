@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d166d490c00a9805ec9cecae6509acc531d8d711
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959864"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309446"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Připojit zařízení s Windows IoT Core do aplikace Azure IoT Central
 
 Tento článek popisuje, jak jako vývojář zařízení pro zařízení s Windows IoT Core připojit k aplikaci Microsoft Azure IoT Central.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 2. Zařízení s operačním systémem Windows 10 IoT Core. V tomto návodu budeme používat Raspberry Pi.
 
 
@@ -57,9 +57,9 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **Windows IoT Core
 
 ### <a name="what-youll-need"></a>Co budete potřebovat
 
-Nastavení fyzického zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://developer.microsoft.com/en-us/windows/iot/getstarted/prototype/setupdevice).
+Nastavení fyzického zařízení Windows 10 IoT Core, musíte nejprve mít zařízení se systémem Windows 10 IoT Core. Zjistěte, jak nastavit zařízení s Windows 10 IoT Core [tady](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
-Budete také potřebovat klientské aplikace, který může komunikovat s Azure IoT Central. Můžete sestavit vlastní aplikaci pomocí sady Azure SDK a nasaďte ji do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předem připravené ukázky](https://developer.microsoft.com/en-us/windows/iot/samples) a jednoduše nasadit a spustit ho v zařízení. 
+Budete také potřebovat klientské aplikace, který může komunikovat s Azure IoT Central. Můžete sestavit vlastní aplikaci pomocí sady Azure SDK a nasaďte ji do zařízení pomocí sady Visual Studio, nebo si můžete stáhnout [předem připravené ukázky](https://developer.microsoft.com/windows/iot/samples) a jednoduše nasadit a spustit ho v zařízení. 
 
 ### <a name="deploying-the-sample-client-application"></a>Nasazení ukázkové aplikace klienta
 

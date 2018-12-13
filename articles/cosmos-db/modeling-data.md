@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: andrl
 ms.custom: seodec18
-ms.openlocfilehash: 22a22789f7eed6402d7bf3abd3b356dbcb4caa37
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 5b75f620194a58aa7801fe390148a327a319c4a3
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134876"
+ms.locfileid: "53166638"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modelování dat dokumentů databází NoSQL
 
@@ -38,7 +38,7 @@ Předtím, než se budeme věnovat příliš mnohem víc, dejte nám zpět prov�
 
 Při práci s relačními databázemi, jsme jsme se museli celé roky normalizovat normalizovat, normalizovat.
 
-Normalizaci dat obvykle zahrnuje pořizování entity, jako je osoba a jeho rozdělení na samostatné části data. V předchozím příkladu osoba může mít více podrobností o kontaktu záznamů, jakož i více záznamů adresu. Můžeme dokonce přejděte o krok dál a rozebere kontaktní údaje další extrahováním běžné pole, jako jsou typu. Stejnou adresu, každý záznam tady má typ jako *Domů* nebo *firmy* 
+Normalizaci dat obvykle zahrnuje pořizování entity, jako je osoba a jeho rozdělení na samostatných částí dat. V předchozím příkladu osoba může mít více záznamů podrobnosti o kontaktu, jakož i více záznamů adresu. Můžeme dokonce přejděte o krok dál a rozebere kontaktní údaje další extrahováním běžné pole, jako jsou typu. Stejnou adresu, každý záznam tady má typ jako *Domů* nebo *firmy* 
 
 Která bude obsahovat místní normalizace dat se **Vyhněte se ukládání redundantních dat** na každý záznam a místo toho odkazovat na data. V tomto příkladu číst osoba, s jejich kontaktní údaje a adresy, budete muset použít spojení jak efektivně agregovat data v době běhu.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6e9d44c4b64e41b04c40d0c511a638e539752da4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 213bf0cc063fa1f756a6baeacc47aadec0857a7c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435022"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270514"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurace výstrah stavu služby s použitím OpsGenie
 
@@ -48,15 +48,15 @@ Tento článek ukazuje, jak nastavit upozornění na stav služby Azure s použi
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Vytvořit upozornění na webu Azure Portal pomocí použitím OpsGenie
 ### <a name="for-a-new-action-group"></a>Pro nová skupina akcí:
-1. Postupujte podle kroků 1 až 8 v [vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+1. Postupujte podle kroků 1 až 8 v [vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 1. Definování v seznamu **akce**:
 
-    a. **Typ akce:** *Webhooku*
+    a. **Typ akce:** *Webhook*
 
-    b. **Podrobnosti:** použitím OpsGenie **adresu URL integrace** jste uložili dřív.
+    b. **Podrobnosti:** Použitím OpsGenie **adresu URL integrace** jste uložili dřív.
 
-    c. **Název:** Webhooku pro název, alias nebo identifikátor.
+    c. **Jméno:** Webhook na název, alias nebo identifikátor.
 
 1. Vyberte **Uložit** po dokončení vytvoření výstrahy.
 
@@ -69,16 +69,16 @@ Tento článek ukazuje, jak nastavit upozornění na stav služby Azure s použi
 
 1. Přidat do seznamu **akce**:
 
-    a. **Typ akce:** *Webhooku*
+    a. **Typ akce:** *Webhook*
 
-    b. **Podrobnosti:** použitím OpsGenie **adresu URL integrace** jste uložili dřív.
+    b. **Podrobnosti:** Použitím OpsGenie **adresu URL integrace** jste uložili dřív.
 
-    c. **Název:** Webhooku pro název, alias nebo identifikátor.
+    c. **Jméno:** Webhook na název, alias nebo identifikátor.
 
 1. Vyberte **Uložit** po dokončení aktualizovat skupinu akcí.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování vaší integraci webhooků prostřednictvím požadavku HTTP POST
-1. Vytvořte datová část služby stavu, který chcete odeslat. Můžete najít příkladu služby health datová část webhooku v [upozornění protokolů Webhooky Azure aktivity](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Vytvořte datová část služby stavu, který chcete odeslat. Můžete najít příkladu služby health datová část webhooku v [upozornění protokolů Webhooky Azure aktivity](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 1. Vytvoření požadavku HTTP POST následujícím způsobem:
 
@@ -95,6 +95,6 @@ Tento článek ukazuje, jak nastavit upozornění na stav služby Azure s použi
 
 ## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro správu problémů](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Další informace o [služby oznámení o stavu](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Další informace o [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Další informace o [skupiny akcí](../azure-monitor/platform/action-groups.md).

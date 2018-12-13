@@ -3,8 +3,8 @@ title: Ukázkový skript Azure Powershellu – obnovení webové aplikace ze zá
 description: Ukázkový skript Azure Powershellu – obnovení webové aplikace ze zálohy
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jpconnoc
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -13,16 +13,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 6e8d950db6facacd9ae84566c6e85a14657050fe
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 1f9e35c471ef846a77667eee94f0e048bd914710
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292158"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193344"
 ---
-# <a name="restore-a-web-app-from-a-backup"></a>Obnovení webové aplikace ze zálohy
+# <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Obnovení webové aplikace ze zálohy pomocí Azure Powershellu
 
 Tento ukázkový skript načte zálohu předchozí dokončená z existující webové aplikace a obnoví přepsáním jeho obsah. 
 

@@ -1,5 +1,5 @@
 ---
-title: Technologie Open source nejčastější dotazy k Azure web apps | Dokumentace Microsoftu
+title: Technologie Open source nejčastější dotazy – Azure App Service | Dokumentace Microsoftu
 description: Získejte odpovědi na nejčastější dotazy týkající se open source technologií ve funkci Web Apps služby Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 19168f965f2a98a1dc3f94ae0b029449865a9582
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ac80cd5ee1c530736666338e8bc3763b110c688c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971341"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255529"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy k Web Apps v Azure
 
@@ -189,7 +190,7 @@ Pokud jste nedávno migrovali do Azure, může být původní adresu URL domény
 
 WordPress Buddy + se rozšíření webu Azure, který vám pomůže aktualizovat adresu URL přesměrování přímo v databázi. Další informace o používání WordPress Buddy +, naleznete v tématu [WordPress nástroje a migrace MySQL s Wordpressem Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
 
-Případně, pokud budete chtít ručně aktualizovat přesměrování URL pomocí dotazů SQL nebo phpmyadmin zobrazuje, naleznete v tématu [WordPress: přesměrování na nesprávnou adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
+Případně, pokud budete chtít ručně aktualizovat přesměrování URL pomocí dotazů SQL nebo phpmyadmin zobrazuje, naleznete v tématu [WordPress: Přesměrování na nesprávnou adresu URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Jak změnit přihlašovací heslo WordPress?
 
@@ -203,8 +204,8 @@ Pokud se uzamčen a vyloučen z Wordpressu po instalaci nedávno modul plug-in, 
 
 Máte několik možností pro migraci databáze MySQL, který je připojen na váš web WordPress:
 
-* : Vývojáři [příkazový řádek nebo phpmyadmin zobrazuje](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
-* Nevývojáře: Použít [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
+* Vývojáři: Použití [příkazový řádek nebo phpmyadmin zobrazuje](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/)
+* Non vývojáře: Použití [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Jak můžu pomáhají zabezpečit WordPress?
 

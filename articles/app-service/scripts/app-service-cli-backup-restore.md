@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Obnovení webové aplikace ze zálohy | M
 description: Ukázkový skript Azure CLI – Obnovení webové aplikace ze zálohy
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.service: app-service-web
@@ -12,16 +12,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/07/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 34b71d6c1553ad6803eabe32252af57ae08064c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu;cephalin
+ms.custom: seodec18
+ms.openlocfilehash: a2c8c3568dcdafee3039d6ec1a198fab255af528
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948600"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183331"
 ---
-# <a name="restore-a-web-app-from-a-backup"></a>Obnovení webové aplikace ze zálohy
+# <a name="restore-a-web-app-from-a-backup-using-cli"></a>Obnovení webové aplikace ze zálohy pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří jednorázovou zálohu. 
 
@@ -46,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh webové aplikace. |
 | [`az webapp config backup restore`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-restore) | Obnoví webovou aplikaci ze zálohy. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

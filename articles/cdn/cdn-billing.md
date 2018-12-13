@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: magattus
-ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091807"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309262"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Principy fakturace Azure CDN
 
@@ -40,7 +40,7 @@ Fakturační oblasti je geografické oblasti, která umožňuje určit, jaké sa
 
 Informace o oblastech point-of-presence (POP) najdete v tématu [místa POP sítě CDN Azure podle oblasti](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Například pomocí protokolu POP umístěný v Mexiku je v oblasti Severní Amerika a je proto zahrnuty v zóně 1. 
 
-Informace o cenách Azure CDN najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/is-is/pricing/details/cdn/).
+Informace o cenách Azure CDN najdete v tématu [ceny Content Delivery Network](https://azure.microsoft.com/pricing/details/cdn/).
 
 ## <a name="how-are-delivery-charges-calculated-by-region"></a>Jak se počítají poplatky doručování podle oblasti?
 Oblast fakturace Azure CDN je založena na umístění zdrojového serveru, doručování obsahu koncovému uživateli. Cíl (fyzické umístění) klienta se nepovažuje za fakturační oblasti.
@@ -55,19 +55,19 @@ Použití Azure CDN se účtují taky využití poplatky za služby využité ja
 
 Pokud používáte Azure Blob storage jako zdroj pro obsah, také účtovat následující poplatky za úložiště pro mezipaměť výplně:
 
-- Využité GB skutečná: skutečnou velikost úložiště vaší zdrojové objekty.
+- Skutečné využité GB: Skutečnou velikost úložiště vaší zdrojové objekty.
 
-- Přenosy v GB: množství dat přenášených tak, aby vyplnil mezipaměti CDN.
+- Přenosy v GB: Množství dat přenášených tak, aby vyplnil mezipaměti CDN.
 
-- Transakce: podle potřeby mezipaměť zaplní.
+- Transakce: Podle potřeby mezipaměť zaplní.
 
 Další informace o fakturaci Azure Storage najdete v tématu [Principy Azure Storage fakturace – šířka pásma, transakce a kapacita](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
 Pokud používáte *hostovaná služba doručování*, budou účtovat poplatky následujícím způsobem:
 
-- Výpočetní čas: výpočetní instance, které se chovají jako zdroj.
+- Výpočetní čas: Výpočetní instance, které se chovají jako zdroj.
 
-- Přenos výpočetní prostředky Azure: data se přenáší z výpočetní instance tak, aby vyplnil mezipaměti Azure CDN.
+- Přenos výpočetní prostředky Azure: Data se přenáší z výpočetní instance tak, aby vyplnil mezipaměti Azure CDN.
 
 Pokud klient používá požadavky na zjištění rozsahu bajtů (bez ohledu na původ služby), platí následující aspekty:
 
@@ -78,11 +78,11 @@ Pokud klient používá požadavky na zjištění rozsahu bajtů (bez ohledu na 
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Nastane, kolik aktivit přenosu pro podporu mezipaměti?
 Pokaždé, když potřebuje CDN POP tak, aby vyplnil své mezipaměti odešle požadavek na původní název pro objekt do mezipaměti. V důsledku toho původ s sebou nese náklady fakturovatelných transakcí na každé Neúspěšné přístupy do mezipaměti. Počet nezdařených přístupů k mezipaměti závisí na několika faktorech:
 
-- Jak lze uložit do mezipaměti obsah je: Pokud obsah obsahuje vysoké hodnoty TTL (time-to-live) / vypršení platnosti hodnoty a je často přistupuje, takže zůstane Oblíbené v mezipaměti, bude většinu zatížení zařizuje služba CDN. Typické dobrý poměr přístupů do mezipaměti se že více než 90 %, což znamená, že méně než 10 % požadavky klientů se muset vrátit na původní název, buď pro Neúspěšné přístupy do mezipaměti nebo objekt aktualizovat.
+- Jak lze uložit do mezipaměti obsah je: Pokud obsah obsahuje vysoké hodnoty TTL (time-to-live) / vypršení platnosti hodnoty a je často přistupuje, takže zůstane v mezipaměti, bude většinu zatížení oblíbených zařizuje služba CDN. Typické dobrý poměr přístupů do mezipaměti se že více než 90 %, což znamená, že méně než 10 % požadavky klientů se muset vrátit na původní název, buď pro Neúspěšné přístupy do mezipaměti nebo objekt aktualizovat.
 
-- Kolik uzlů muset načíst objekt: pokaždé, když uzel služeb načte objekt z původního zdroje, budou vám účtovány fakturovatelných transakcí. V důsledku toho víc globálních obsah (získat přístup z více uzlů) má za následek více fakturovatelných transakcí.
+- Kolik uzlů je potřeba načíst objekt: Pokaždé, když uzel služeb načte objekt z původního zdroje, budou vám účtovány fakturovatelných transakcí. V důsledku toho víc globálních obsah (získat přístup z více uzlů) má za následek více fakturovatelných transakcí.
 
-- Hodnota TTL vliv: znamená vyšší hodnoty TTL pro objekt musí být méně často načíst z původního zdroje. Také znamená, že klienti, jako jsou prohlížeče, může ukládat do mezipaměti déle, objekt, který může snížit transakce do CDN.
+- Hodnota TTL vliv: Vyšší hodnota TTL pro objekt znamená, že je potřeba načítat ze zdroje méně často. Také znamená, že klienti, jako jsou prohlížeče, může ukládat do mezipaměti déle, objekt, který může snížit transakce do CDN.
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Jak můžu nejefektivněji spravovat náklady?
 Nastavte interval TTL, ZÍSKÁ nejdelší možné obsahu. 

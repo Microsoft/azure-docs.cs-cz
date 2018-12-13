@@ -1,5 +1,5 @@
 ---
-title: Omezení IP adres služby Azure App Service | Dokumentace Microsoftu
+title: Omezení klienta IP adresy – Azure App Service | Dokumentace Microsoftu
 description: Jak použít omezení IP adres pomocí služby Azure App Service
 author: ccompy
 manager: stefsch
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 7/30/2018
 ms.author: ccompy
-ms.openlocfilehash: 9ffeb01a46b62202292f6e1ea91f47cd87954387
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: seodec18
+ms.openlocfilehash: 01c948bbfd1883e24dc161d46ba53aef42af0f1d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219124"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250688"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Omezení statickou IP adresu služby Azure App Service #
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvořit, spravovat a zabezpečit správce a dotaz klíče api Key pro službu Azure Search | Dokumentace Microsoftu
+title: Vytvořit, spravovat a zabezpečit správce a dotaz klíče api Key - Azure Search
 description: klíče API Key řídit přístup ke koncovému bodu služby. Klíče správce udělují oprávnění k zápisu. Pro přístup jen pro čtení můžete vytvořit klíče dotazu.
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0a8975fad21645535a6e7407bcd2d59f537a9fff
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec2018
+ms.openlocfilehash: 6ba63fa776e92dd2f8035cfbbdb8cea2860d106f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727969"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316912"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
 
@@ -67,7 +68,7 @@ Zabezpečení klíče je zajištěno omezení přístupu prostřednictvím port�
 
 + Na řídicím panelu služby, klikněte na tlačítko **řízení přístupu (IAM)** a pak **přiřazení rolí** kartě přiřazení rolí pro vaši službu.
 
-Členy z těchto druhů rolí můžete zobrazit a znovu generovat klíče: vlastník, Přispěvatel, [přispěvatelé služby Search](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Členy z těchto druhů rolí můžete zobrazit a znovu generovat klíče: Vlastník, Přispěvatel, [hledání služby přispěvatelé](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
 > Pro přístup na základě identity výsledků vyhledávání můžete vytvořit filtry zabezpečení mají být odebrány výsledky podle identity, odebírání dokumentů, pro které žadatel by přístup mít neměly. Další informace najdete v tématu [filtry zabezpečení](search-security-trimming-for-azure-search.md) a [zabezpečené službou Active Directory](search-security-trimming-for-azure-search-with-aad.md).

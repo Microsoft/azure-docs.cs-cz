@@ -1,5 +1,5 @@
 ---
-title: Referenční Poznámka v vstupy a výstupy v rámci kanálu kognitivního vyhledávání ve službě Azure Search | Dokumentace Microsoftu
+title: Odkaz na vstupy a výstupy v cognitive hledání kanálů – Azure Search
 description: Popisuje syntaxe poznámky a odkaz na poznámku na vstupy a výstupy dovedností v kanálu kognitivního vyhledávání ve službě Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.custom: seodec2018
+ms.openlocfilehash: 57fed710d7d58199fb3cb70640d1f2d3f316f180
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801943"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315801"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Způsob vytvoření odkazu poznámky v dovedností kognitivního vyhledávání
 
@@ -33,7 +34,7 @@ Před kontrola syntaxe, Vraťme se k pár důležitých konceptů k lepšímu po
 | Rozšíření kontextu | Kontext, ve kterém obohacení probíhá, z hlediska, který je element rozšiřují. Ve výchozím nastavení, rozšíření kontextu je na `"/document"` úroveň, omezená na jednotlivé dokumenty. Když konkrétní dovednosti běží, výstupy dovednosti, stane [vlastnosti definované kontextu](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Příklad 1: Odkaz na poznámku jednoduchý
+## <a name="example-1-simple-annotation-reference"></a>Příklad 1: Odkaz na jednoduché poznámku
 
 Ve službě Azure Blob storage Předpokládejme, že máte celou řadu soubory, které obsahují odkazy na jména osob, které mají být extrahovány pomocí rozpoznávání pojmenovaných entit. V definici dovednosti níže `"/document/content"` textovou reprezentaci celého dokumentu a "osob" je extrakci úplné názvy pro entity identifikované jako osoby.
 
@@ -93,7 +94,7 @@ Po pole nebo kolekce řetězců se poznámky můžete cílit na konkrétní čle
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Příklad 3: Odkazovat na členy v rámci pole
+## <a name="example-3-reference-members-within-an-array"></a>Příklad 3: Odkaz na členy v rámci pole
 
 Někdy potřebujete seskupit všechny poznámky určitého typu předávat do konkrétní dovednosti. Vezměte v úvahu hypotetické vlastních dovedností, který identifikuje nejběžnější příjmení od poslední názvů extrahována v příkladu 2. Pokud chcete poskytnout jenom poslední názvy vlastních dovedností, určení kontextu jako `"/document"` a vstupu jako `"/document/people/*/lastname"`.
 

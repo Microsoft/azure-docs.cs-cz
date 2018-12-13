@@ -9,36 +9,36 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 4784672364e2bdf44f0415ab4e1e386a5a80076b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228398"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313050"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure
 
-[Škálovací sady virtuálních počítačů Azure](/azure/virtual-machine-scale-sets)-vám umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení, u kterých se může počet instancí virtuálních počítačů podle zatížení či definovaného plánu automaticky zvýšit nebo snížit. 
+[Škálovací sady virtuálních počítačů Azure](/azure/virtual-machine-scale-sets)-vám umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení, u kterých se může počet instancí virtuálních počítačů podle zatížení či definovaného plánu automaticky zvýšit nebo snížit.
 
 V tomto kurzu zjistíte, jak pomocí služby [Azure Cloud Shell](/azure/cloud-shell/overview) provést následující úlohy:
 
 > [!div class="checklist"]
 > * Nastavit nasazení Terraformu
-> * Použít proměnné a výstupy u nasazení Terraformu 
+> * Použít proměnné a výstupy u nasazení Terraformu
 > * Vytvořit a nasadit síťovou infrastrukturu
 > * Vytvořit a nasadit škálovací sadu virtuálních počítačů a připojit ji k síti
 > * Vytvořit a nasadit jumpbox pro připojení k virtuálním počítačům prostřednictvím protokolu SSH
 
 > [!NOTE]
-> Nejnovější verzi konfiguračních souborů Terraformu použitých v tomto článku najdete v [úložišti Awesome Terraform na GitHubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Překopírujte nejnovější verzi Terraformu soubory konfigurace použité v tomto článku jsou v [Super Terraformu úložišti na Githubu](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nainstalovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Nainstalujte Terraformu**: Postupujte podle pokynů v článku, [Terraform a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Vytvořený pár klíčů SSH**: Pokud ještě pár klíčů SSH nemáte, postupujte podle pokynů v článku o [vytvoření a použití páru veřejného a privátního klíče SSH pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Vytvoření páru klíčů SSH**: Pokud ještě nemáte SSH pár klíčů, postupujte podle pokynů v článku, [postupy vytváření a používání veřejných a privátních pár klíčů SSH pro virtuální počítače s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="create-the-directory-structure"></a>Vytvoření struktury adresáře
 
@@ -122,7 +122,8 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
 
 1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-1. Do editoru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN). :
+1. Do editoru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
+:
 
   ```JSON
     output "vmss_public_ip" {
@@ -139,9 +140,9 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
     ```
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>Definování infrastruktury sítě v šabloně
-V této části vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu: 
+V této části vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu:
 
-  - Jednu virtuální síť (VNET) s adresním prostorem 10.0.0.0/16 
+  - Jednu virtuální síť (VNET) s adresním prostorem 10.0.0.0/16
   - Jednu podsíť s adresním prostorem 10.0.2.0/24
   - Dvě veřejné IP adresy – jednu pro nástroj pro vyrovnávání zatížení škálovací sady virtuálních počítačů a druhou pro připojení k jumpboxu SSH
 
@@ -155,7 +156,7 @@ Ve službě Azure Cloud Shell proveďte následující kroky:
 
 1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-1. Na konec tohoto souboru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN). 
+1. Na konec tohoto souboru vložte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény (FQDN).
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -210,7 +211,7 @@ Pomocí služby Azure Cloud Shell proveďte v adresáři, ve kterém jste vytvo�
 1. Inicializujte Terraform.
 
   ```bash
-  terraform init 
+  terraform init
   ```
 
 1. Spuštěním následujícího příkazu nasaďte definovanou infrastrukturu do Azure.
@@ -235,8 +236,8 @@ Pomocí služby Azure Cloud Shell proveďte v adresáři, ve kterém jste vytvo�
 V této části se dozvíte, jak do šablony přidat následující prostředky:
 
 - Nástroj pro vyrovnávání zatížení Azure a pravidla, která budou obsluhovat aplikaci a připojí ji k veřejné IP adrese nakonfigurované dříve v tomto článku.
-- Backendový fond adres Azure, který přiřadíte k nástroji pro vyrovnávání zatížení. 
-- Port sondy stavu, který používá aplikace a konfiguruje se v nástroji pro vyrovnávání zatížení. 
+- Backendový fond adres Azure, který přiřadíte k nástroji pro vyrovnávání zatížení.
+- Port sondy stavu, který používá aplikace a konfiguruje se v nástroji pro vyrovnávání zatížení.
 - Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
 - Server [Nginx](http://nginx.org/) na uzlech škálovací sady virtuálních počítačů používající [cloud-init](http://cloudinit.readthedocs.io/en/latest/).
 
@@ -359,7 +360,7 @@ V Cloud Shellu proveďte následující kroky:
     :wq
     ```
 
-1. Vytvořte soubor s názvem `web.conf`, který bude sloužit jako konfigurace cloud-init pro virtuální počítače, které jsou součástí škálovací sady. 
+1. Vytvořte soubor s názvem `web.conf`, který bude sloužit jako konfigurace cloud-init pro virtuální počítače, které jsou součástí škálovací sady.
 
     ```bash
     vi web.conf
@@ -407,7 +408,7 @@ V Cloud Shellu proveďte následující kroky:
   variable "admin_password" {
       description = "Default password for admin account"
   }
-  ``` 
+  ```
 
 1. Stisknutím klávesy Esc ukončete režim vkládání.
 
@@ -430,14 +431,14 @@ V Cloud Shellu proveďte následující kroky:
 1. Nasaďte tyto nové prostředky do Azure.
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
   Výstup příkazu by se měl podobat následujícímu snímku obrazovky:
 
   ![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem. 
+1. Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem.
 
   ![Výsledky přejití na plně kvalifikovaný název domény](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
@@ -545,7 +546,7 @@ V Cloud Shellu proveďte následující kroky:
 1. Nasaďte jumpbox.
 
   ```bash
-  terraform apply 
+  terraform apply
   ```
 
 Po dokončení nasazení se bude obsah skupiny prostředků podobat následujícímu snímku obrazovky:
@@ -555,7 +556,7 @@ Po dokončení nasazení se bude obsah skupiny prostředků podobat následujíc
 > [!NOTE]
 > Možnost přihlásit se pomocí hesla je u nasazeného jumpboxu a škálovací sady virtuálních počítačů zakázaná. Přihlaste se pomocí SSH, abyste získali přístup k virtuálnímu počítači / virtuálním počítačům.
 
-## <a name="environment-cleanup"></a>Vyčištění prostředí 
+## <a name="environment-cleanup"></a>Vyčištění prostředí
 
 Pokud chcete odstranit prostředky Terraformu, které jste v tomto kurzu vytvořili, zadejte do služby Cloud Shell následující příkaz:
 
@@ -565,10 +566,10 @@ terraform destroy
 
 Odstranění můžete trvat i několik minut.
 
-## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak použit Terraform k vytvoření škálovací sady virtuálních počítačů Azure. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
+## <a name="next-steps"></a>Další postup
+V tomto článku jste zjistili, jak použit Terraform k vytvoření škálovací sady virtuálních počítačů Azure. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky:
 
- [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentace k Terraformu zprostředkovatele Azure](https://aka.ms/terraform)  
- [Zdrojová data k Terraformu zprostředkovatele Azure](https://aka.ms/tfgit)  
+[Terraform centru na webu Microsoft.com](https://docs.microsoft.com/azure/terraform/)
+[dokumentaci poskytovatele Terraformu pro Azure](https://aka.ms/terraform)
+[Terraformu pro Azure poskytovatele zdroj](https://aka.ms/tfgit) 
  [Moduly Terraformu pro Azure](https://aka.ms/tfmodules)

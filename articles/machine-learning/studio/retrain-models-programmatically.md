@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: da3edf7bc17240dabcb5519317f38bdb468be9f2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 7a1381ce43056607486a27710cd6ee6181b9a5c1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099983"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257389"
 ---
-# <a name="retrain-machine-learning-studio-models-programmatically"></a>Programová obnova modelů Machine Learning Studio
+# <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programově přeučit modely Azure Machine Learning Studio
 V tomto návodu se dozvíte, jak prostřednictvím kódu programu přeučování webové služby Azure Machine Learning Studio pomocí C# a provedení dávky služby Machine Learning service.
 
 Jakmile máte retrained modelu, následující postupy ukazují, jak aktualizace modelu v prediktivní webové služby:
@@ -36,14 +35,14 @@ Přehled procesu retraining, naleznete v tématu [Přeučování Model strojové
 Pokud chcete začít s vaší stávající webové služby založené na nový Azure Resource Manageru, přečtěte si téma [Přeučování existující prediktivní webové služby](retrain-existing-resource-manager-based-web-service.md).
 
 ## <a name="create-a-training-experiment"></a>Vytvořit výukový experiment
-V tomto příkladu budete používat "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: pro dospělé datovou sadu" z ukázky Microsoft Azure Machine Learning. 
+V tomto příkladu budete používat "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Pro dospělé datové sady"z ukázky Microsoft Azure Machine Learning. 
 
 Vytvoření testu:
 
 1. Přihlaste se k Microsoft Azure Machine Learning Studio. 
 2. V pravém dolním rohu řídicího panelu, klikněte na **nový**.
 3. Microsoft Samples vyberte ukázkový 5.
-4. Přejmenování experimentu v horní části plátna experimentu, vyberte název experimentu "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: pro dospělé Dataset".
+4. Přejmenování experimentu v horní části plátna experimentu, vyberte název experimentu "vzorku 5: Trénování, testování, vyhodnotit pro binární klasifikace: Pro dospělé Dataset".
 5. Typ modelu sčítání.
 6. V dolní části na plátno experimentu klikněte na tlačítko **spustit**.
 7. Klikněte na tlačítko **Set Up webová služba** a vyberte **Přetrénování webová služba**. 
@@ -93,7 +92,7 @@ V tomto příkladu použijete C# k vytvoření aplikace přeučení. Můžete ta
 
 Chcete-li volat rozhraní Retraining API:
 
-1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio: **nový** > **projektu** > **Visual C#** > **Windows Klasický desktopový** > **aplikace konzoly (.NET Framework)**.
+1. Vytvoření C# konzolovou aplikaci v sadě Visual Studio: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)**.
 2. Přihlaste se k portálu webové služby Machine Learning.
 3. Pokud pracujete s webovou službou Classic, klikněte na tlačítko **klasické webové služby**.
    1. Klikněte na webovou službu, kterou pracujete.
@@ -159,7 +158,7 @@ Prohlédněte si následující příklad:
 
 ![Přeškolení výstupu][6]
 
-Obrázek 4: Přetrénování výstup.
+Obrázek 4: Přeškolení výstup.
 
 ## <a name="evaluate-the-retraining-results"></a>Vyhodnoťte Retraining výsledky
 Při spuštění aplikace výstup obsahuje adresu URL a SAS token potřebné pro přístup k výsledky hodnocení.

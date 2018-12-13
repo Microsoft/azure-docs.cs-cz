@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 411ffd9479c3f686495de21b60ef0a811915c260
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e81b87a6cbaddf61492fa1fc41e66950eb7ce1d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834566"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191617"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -31,7 +31,7 @@ Pokud se zjistí neobvyklé aktivity, které můžou značit neoprávněný př�
 
 ## <a name="access-the-users-flagged-for-risk-report"></a>Zpřístupnění sestavy uživatelů označených příznakem rizika
 
-Uživatelé označení příznakem rizika prostřednictvím můžete zkontrolovat [sestava ohrožených uživatelů](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) na webu Azure Portal. Pokud nemáte Azure AD, které můžete ZDARMA zaregistrovat v [ https://aka.ms/AccessAAD ](https://aka.ms/AccessAAD). 
+Uživatelé označení příznakem rizika prostřednictvím můžete zkontrolovat [sestava ohrožených uživatelů](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RiskyUsers) na webu Azure Portal. Pokud nemáte Azure AD, které můžete ZDARMA zaregistrovat v [ https://aka.ms/AccessAAD ](https://aka.ms/AccessAAD). 
 
 Od uživatelů označených příznakem rizika sestavy můžete provést následující akce pro každého uživatele:
 

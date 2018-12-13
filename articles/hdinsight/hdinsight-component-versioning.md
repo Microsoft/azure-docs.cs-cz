@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: b1a63862444969bbb7058841fb755e147dcf6909
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 878d9e635d82e52d8a47d47a135ba865f140c9e9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015836"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321882"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -28,7 +28,7 @@ Azure HDInsight podporuje více verzích clusterů systému Hadoop, které mohou
 
 Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následující tabulce: 
 
-> [!NOTE]
+> [!NOTE]  
 > Výchozí verze pro službu HDInsight mohou změnit bez předchozího upozornění. Pokud máte verzi závislosti, zadejte verzi HDInsight při vytváření clusterů s využitím .NET SDK pomocí Azure Powershellu a rozhraní příkazového řádku Azure Classic.
 
 | Komponenta | HDInsight 4.0 (Preview) | HDInsight 3.6 (výchozí) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight verze 3.1 | HDInsight 3.0 |
@@ -60,9 +60,7 @@ Verze součástí spojené s verzemi clusterů HDInsight jsou uvedeny v následu
 
 Verze součástí ekosystému Hadoop spojené s verzemi clusterů HDInsight můžete změnit pomocí aktualizací na HDInsight. Chcete-li ověřit, jaké verze jsou používány pro cluster a zkontrolujte součásti platformy Hadoop, pomocí rozhraní Ambari REST API. **GetComponentInformation** příkaz načte informace o součásti služby. Podrobnosti najdete v tématu [dokumentaci Apache Ambari][ambari-docs].
 
-Další způsob kontroly verze komponenty je v případě clusterů Windows přihlášení ke clusteru pomocí vzdálené plochy a zkontrolovat obsah adresáře C:\apps\dist\.
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Linux je pouze operační systém používaný v HDInsight verze 3.4 a vyšší. Další informace najdete v tématu [vyřazení Windows na HDInsight](#hdinsight-windows-retirement).
 
 ### <a name="release-notes"></a>Poznámky k verzi
@@ -84,7 +82,7 @@ Následující tabulka uvádí verze HDInsight, které jsou k dispozici na webu 
 
 *&ast; Podpora HDInsight 3.5 se rozšířilo pouze pro typy clusterů Spark*
 
-> [!NOTE]
+> [!NOTE]  
 > Za podporu pro verzi vypršela platnost, nemusí být k dispozici prostřednictvím portálu Microsoft Azure. Ale i nadále být k dispozici pomocí verze clusteru `Version` parametr v prostředí Windows PowerShell [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) příkazu a sady SDK .NET až do verze vyřazením.
 >
 
@@ -104,7 +102,7 @@ Následující tabulka uvádí verze HDInsight, které jsou **není** k dispozic
 | HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28. října 2013 |12. května 2014 |31. května 2015 |Ano |Ne |
 | HDInsight 1.6 |HDP 1.1 | |28. října 2013 |26. dubna 2014 |31. května 2015 |Ne |Ne |
 
-> [!NOTE]
+> [!NOTE]  
 > Clustery s vysokou dostupností pomocí dvou hlavních uzlů se nasadí ve výchozím nastavení pro HDInsight verze 2.1 nebo novější. Nejsou k dispozici u clusterů HDInsight verze 1.6.
 
 ## <a name="enterprise-security-package-for-hdinsight"></a>Enterprise Security Package pro HDInsight
@@ -193,12 +191,12 @@ Spouští se s HDInsight verze 3.4, společnost Microsoft vydala pouze v operač
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Smlouva o úrovni služeb pro verze clusteru HDInsight
 Smlouva o úrovni služeb (SLA) je definován z hlediska _podporu okno_. Okno podpory je časový úsek, který je ve verzi clusteru HDInsight nepodporuje Microsoft zákaznický servis a podporu. Pokud je verze _podporují datum vypršení platnosti_ , který je předán, HDInsight cluster je mimo časový interval pro podporu. Další informace o podporovaných verzích najdete v seznamu [podporované verze clusteru HDInsight](hdinsight-migrate-from-windows-to-linux.md). Datum vypršení platnosti podpora pro zadanou HDInsight verze X (po je dostupná novější verze X + 1) se počítá jako později z:  
 
-* Vzorec 1: Přidejte k datu, kdy byla vydána verze clusteru HDInsight X 180 dnů.
-* Vzorec 2: Přidání 90 dní k datu, kdy verze clusteru HDInsight X + 1 je k dispozici na webu Azure portal.
+* Vzorec 1: Přidáte k datu, kdy byla vydána verze clusteru HDInsight X 180 dnů.
+* Vzorec 2: Přidáte 90 dní k datu, kdy verze clusteru HDInsight X + 1 je k dispozici na webu Azure portal.
 
 _Vyřazením_ je datum, po jejímž uplynutí verze clusteru nelze pro HDInsight. Od 31. července 2017, nelze změnit velikost clusteru služby HDInsight po datu vyřazení z provozu. 
 
-> [!NOTE]
+> [!NOTE]  
 > Clustery HDInsight Windows (včetně verze, 2.1, 3.0, 3.1, 3.2 nebo 3.3) spustit v Azure hostovaný operační systém řady verze 4, který používá 64bitovou verzi systému Windows Server 2012 R2. Azure hostovaný operační systém řady verze 4 podporuje rozhraní .NET Framework verze 4.0, 4.5, 4.5.1 a 4.5.2.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Poznámky k spojené s HDInsight verze verzi Hortonworks
@@ -222,41 +220,36 @@ V části obsahuje odkazy na poznámky k verzi pro datovou platformou Hortonwork
 
 
 
-
-
-
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Výchozí konfigurace a virtuální počítač velikosti uzlů pro clustery
-Následující tabulky uvádějí výchozí velikostí virtuálních počítačů (VM) pro clustery HDInsight.
+Následující tabulky uvádějí výchozí velikostí virtuálních počítačů (VM) pro clustery HDInsight.  V této tabulce jsou nezbytné pro zjištění velikosti virtuálních počítačů pro použití při vytváření skriptů prostředí PowerShell nebo rozhraní příkazového řádku Azure k nasazení clusterů HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud potřebujete více než 32 uzlů pracovního procesu v clusteru, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM.
-> 
-> 
 
 * Všechny podporované oblastech kromě Brazílie – jih a Japonsko – západ:
 
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | ML Server |
+  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark  | ML Server |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Hlavní: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2 | D13, D14 |A4 v2 |D12 v2 |D12 v2 |
-  | Hlavní: doporučené velikosti virtuálních počítačů |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A4 v2, instance A8 v2, A2m v2 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
-  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
-  | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | Hlavní: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2 | D13,<br/> D14 |A4 v2 |D12 v2 |D12 v2 |
+  | Hlavní: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |A4 v2<br/> A8 v2<br/> A2m v2 |D12 v2<br/> D13 v2<br/> D14 v2 |D12 v2<br/> D13 v2<br/> D14 v2 |
+  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 v2 |D3 v2  | D13,<br/> D14 |D3 v2 |D4 v2 | D4 v2 |
+  | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3 v2<br/> D4 v2<br/> D12 v2 |D3 v2<br/> D4 v2<br/> D12 v2  | D13,<br/> D14 |D3 v2<br/> D4 v2<br/> D12 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
   | ZooKeeper: výchozí velikosti virtuálního počítače | |A4 v2 | |A2 v2 | | |
-  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A4 v2, instance A8 v2, A2m v2 | | A2 v2, A4 v2, instance A8 v2 | | |
-  | Edge: výchozí velikosti virtuálního počítače | | | | | |Windows: D12 v2; Linux: D4 v2 |
-  | Edge: Doporučená velikost virtuálního počítače | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A4 v2<br/> A8 v2<br/> A2m v2 | | A2 v2<br/> A4 v2<br/> A8 v2 | | |
+  | Edge: výchozí velikosti virtuálního počítače | | | | | |D4 v2 |
+  | Edge: Doporučená velikost virtuálního počítače | | | | | |D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
   | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služby ML |
   | --- | --- | --- | --- | --- | --- | --- |
-  | Hlavní: výchozí velikosti virtuálního počítače |D3 |D3  | D13, D14 |A3 |D12 |D12 |
-  | Hlavní: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |
-  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Hlavní: výchozí velikosti virtuálního počítače |D3 |D3  | D13,<br/> D14 |A3 |D12 |D12 |
+  | Hlavní: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |A3<br/> A4<br/> A5 |D12,<br/> D13,<br/> D14 |D12,<br/> D13,<br/> D14 |
+  | Pracovních procesů: výchozí velikosti virtuálního počítače |D3 |D3  | D13,<br/> D14 |D3 |D4 |D4 |
+  | Pracovního procesu: doporučené velikosti virtuálních počítačů |D3,<br/> D4,<br/> D12 |D3,<br/> D4,<br/> D12  | D13,<br/> D14 |D3,<br/> D4,<br/> D12 |D4,<br/> D12,<br/> D13,<br/> D14 | D4,<br/> D12,<br/> D13,<br/> D14 |
   | ZooKeeper: výchozí velikosti virtuálního počítače | |A2 | | A2 | | |
-  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2, A3, A4 | |A2, A3, A4 | | |
-  | Edge: velikosti virtuálních počítačů výchozí | | | | | |Windows: D12; Linux: D4 |
-  | Edge: doporučené velikosti virtuálních počítačů | | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | ZooKeeper: doporučené velikosti virtuálních počítačů | |A2,<br/> A3<br/> A4 | |A2,<br/> A3<br/> A4 | | |
+  | Edge: velikosti virtuálních počítačů výchozí | | | | | |D4 |
+  | Edge: doporučené velikosti virtuálních počítačů | | | | | |D4,<br/> D12,<br/> D13,<br/> D14 |
 
 > [!NOTE]
 > - Hlavní se označuje jako *Nimbus* typ clusteru Storm.

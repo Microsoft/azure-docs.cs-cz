@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 6978360769ba350d85a06116bfee6db9f80b0607
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157356"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256668"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box brány požadavky na systém (Preview)
 
@@ -26,6 +26,19 @@ Požadavky na systém pro virtuální zařízení Data Box brány patří:
 
 > [!IMPORTANT]
 > Data Box Gateway je ve verzi Preview. Před nasazením tohoto řešení si prosím přečtěte [podmínky použití verze Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+
+## <a name="specifications-for-the-virtual-device"></a>Specifikace pro virtuální zařízení
+
+Základní systém hostitele pro pole brána dat je možné vyhradit následující prostředky pro zřízení virtuálního zařízení:
+
+| Specifikace                                          | Popis              |
+|---------------------------------------------------------|--------------------------|
+| Virtuální procesory (jádra)   | Minimálně 4 |            
+| Memory (Paměť)  | Minimálně 8 GB|
+| Dostupnost|Jeden uzel|
+| Disky| Disk s operačním systémem: 250 GB <br> Datový disk: Minimálně 2 TB, dynamického zajišťování zřízené a musí být založená na jednotkách SSD|
+| Síťová rozhraní|1 nebo více rozhraní virtuální sítě|
+
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Podporovaný operační systém pro klienty připojené k zařízení
 

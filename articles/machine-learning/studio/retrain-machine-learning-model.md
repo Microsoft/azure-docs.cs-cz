@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 57e3a444c9de951fdd974d98679908eb5a744ad1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 614a342dd28b711e3030c19f347fa432e3994a86
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099783"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257576"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Přeučování model ve službě Azure Machine Learning Studio
 Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 
@@ -43,7 +42,7 @@ V těchto scénářích programových rozhraní API poskytuje pohodlný způsob,
 > 
 
 ## <a name="end-to-end-workflow"></a>Ucelený pracovní postup
-Tento proces zahrnuje následující součásti: experimentu A trénování a prediktivní Experiment publikovat jako webovou službu. Povolit přeučováním trénovaného modelu, musí být publikován výukový Experiment jako webové služby s výstupem trénovaného modelu. To umožňuje přístup k rozhraní API modelu pro přetrénování. 
+Tento proces zahrnuje následující součásti: Výukový Experiment a prediktivní Experiment publikovat jako webovou službu. Povolit přeučováním trénovaného modelu, musí být publikován výukový Experiment jako webové služby s výstupem trénovaného modelu. To umožňuje přístup k rozhraní API modelu pro přetrénování. 
 
 Následující postup se vztahuje na nový a klasické webové služby:
 

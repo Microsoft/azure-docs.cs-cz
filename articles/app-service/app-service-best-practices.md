@@ -1,5 +1,5 @@
 ---
-title: Osvědčené postupy pro Azure App Service
+title: Osvědčené postupy – Azure App Service
 description: Přečtěte si osvědčené postupy a řešení potíží pro službu Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: ff79680c00a394790ba56db9ab4b237f06c677e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240626"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261819"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
 Tento článek shrnuje osvědčené postupy při používání [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -38,7 +39,7 @@ Pokud si všimnete aplikace využívá více paměti, než se očekávalo jako i
 ## <a name="CPUresources"></a>Když aplikace spotřebovávat více procesorů, než se čekalo
 Pokud si všimnete aplikace využívá více procesorů, než se očekávalo nebo prostředí pro opakované využití procesoru špičky indikován při monitorování nebo služba doporučení, zvažte vertikální navýšení kapacity nebo horizontální navýšení kapacity plánu služby App Service. Pokud vaše aplikace je stavový, vertikální navýšení kapacity je jedinou možností, a pokud je vaše aplikace bezstavové, škálování na více instancí přináší větší flexibilitu a vyšší riziko škálování. 
 
-Další informace o vs "stavové" "" bezstavové můžete sledovat toto video: [plánování škálovatelné začátku do konce vícevrstvou aplikaci v Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnosti škálování a automatické škálování služby App Service najdete v tématu [škálování webové aplikace ve službě Azure App Service](web-sites-scale.md).  
+Další informace o vs "stavové" "" bezstavové můžete sledovat toto video: [Plánování škálovatelné začátku do konce vícevrstvou aplikaci v Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnosti škálování a automatické škálování služby App Service najdete v tématu [škálování webové aplikace ve službě Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Když je vyčerpání prostředků soketu
 Častým důvodem, proč spotřebovává odchozí připojení TCP je použití klientské knihovny, které nejsou implementovány pro opětovné použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně jako je například udržování připojení HTTP. Projděte si dokumentaci pro každou z knihoven odkazuje aplikace v plánu App Service jsou nakonfigurované nebo přístupné z kódu pro efektivní opakované použití odchozí připojení. Také pomocí pokynů knihovny dokumentace pro správné vytvoření a vydání nebo čištění, aby předešla úniku připojení. Během vyšetřování klientské knihovny jsou v průběhu, může být zmírnit dopad horizontální navýšení kapacity na několik instancí.

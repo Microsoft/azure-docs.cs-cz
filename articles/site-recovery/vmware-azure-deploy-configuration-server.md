@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: 5d6510c1e069abe1fc295f2fccd9f2c0a9aad5bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/11/2018
+ms.author: mayg
+ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837559"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251024"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -148,6 +148,9 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
 7. Kde lze stáhnout registrační klíče trezoru?
 
     V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. Na serverech, vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
+8. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
+
+    **Ne**, použití klonovaný součásti serveru Configuration není podporováno. 
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

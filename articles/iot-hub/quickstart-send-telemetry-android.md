@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/05/2018
 ms.author: wesmc
-ms.openlocfilehash: 66c1380070c9f9732369cb0d209e428525d53ce8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427903"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164309"
 ---
-# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Rychlý start: Odeslání IoT telemetrická data ze zařízení s Androidem
+# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Rychlý start: Odesílat IoT telemetrická data ze zařízení s Androidem
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -49,7 +49,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
 
-   **YourIoTHubName**: Tento zástupný text pod nahraďte název, který zvolíte pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
    **MyAndroidDevice**: MyAndroidDevice je název pro registrovaná zařízení. Použijte MyAndroidDevice, jak je znázorněno. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
@@ -60,7 +60,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-    **YourIoTHubName**: Tento zástupný text pod nahraďte název, který zvolíte pro službu IoT hub.
+    **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidDevice --output table
@@ -74,7 +74,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 ## <a name="send-telemetry"></a>Odeslání telemetrie
 
-1. Otevřete ukázkový projekt Android githubu v nástroji Android Studio. Projekt se nachází v následujícím adresáři klonované nebo stažených kopie [azure-iot ukázka java](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště.
+1. Otevřete ukázkový projekt Android Githubu v nástroji Android Studio. Projekt se nachází v následujícím adresáři klonované nebo stažených kopie [azure-iot ukázka java](https://github.com/Azure-Samples/azure-iot-samples-java) úložiště.
 
         \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
 
@@ -99,7 +99,7 @@ V této části budete používat Azure Cloud Shell s [rozšíření IoT](https:
 
 1. Pomocí služby Azure Cloud Shell spusťte následující příkaz, který provede připojení a čtení zpráv z centra IoT:
 
-   **YourIoTHubName**: Tento zástupný text pod nahraďte název, který zvolíte pro službu IoT hub.
+   **YourIoTHubName**: Nahraďte tento zástupný text pod názvem, který jste vybrali pro službu IoT hub.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
@@ -120,5 +120,5 @@ V tomto rychlém startu jste nastavení IoT hub, zaregistrované zařízení, od
 Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Řízení zařízení připojeného k centru IoT](quickstart-control-device-android.md)
+> [Rychlý start: Řízení zařízení připojeném do služby IoT hub](quickstart-control-device-android.md)
 

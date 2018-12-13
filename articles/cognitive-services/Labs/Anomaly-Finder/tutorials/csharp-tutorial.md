@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Detekce anomálií, jazyk C#'
+title: 'Kurz: Detekce anomáliíC#'
 titlesuffix: Azure Cognitive Services
 description: Prozkoumejte aplikaci jazyka C#, která používá rozhraní API pro detekci anomálií. Odešlete původní datové body do rozhraní API a získejte očekávanou hodnotu a body anomálie.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: ea9083d530d9a94825b8c568ef4c3dbc847c44c0
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887645"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162456"
 ---
-# <a name="tutorial-anomaly-detection-with-c-application"></a>Kurz: Detekce anomálií pomocí aplikace jazyka C#
+# <a name="tutorial-anomaly-detection-with-c-application"></a>Kurz: Detekce anomálií pomocí služby C# aplikace
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
@@ -35,7 +35,7 @@ Tento příklad jsme vyvinuli pro .NET Framework pomocí sady [Visual Studio 201
 
 ## <a name="get-and-use-the-example"></a>Získání a použití příkladu
 
-Ukázkovou aplikaci detekce anomálií můžete do svého počítače naklonovat z [Githubu](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
+Můžete naklonovat detekce anomálií ukázková aplikace do počítače z [Githubu](https://github.com/MicrosoftAnomalyDetection/csharp-sample.git). 
 <a name="Step1"></a>
 ### <a name="install-the-example"></a>Instalace příkladu
 
@@ -127,7 +127,7 @@ Následující fragment kódu ukazuje, jak můžete pomocí HTTPClient odeslat s
     }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

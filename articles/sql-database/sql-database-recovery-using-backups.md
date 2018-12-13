@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 2d7b50eadc130900cbd69d579f5ebb2997ad46a0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 4d77f8aad07d2fd4b3e2c4ec42b5b0ec328f779d
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872934"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269511"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 
@@ -64,10 +64,10 @@ Pro jedno předplatné, existují určitá omezení pro počet souběžných obn
 |Elastický fond (na fond)|4|200|
 ||||
 
-Neexistuje žádná vestavěná funkce hromadné obnovení. [Azure SQL Database: úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skript představuje příklad jednoho způsobu provádění této úlohy.
+Neexistuje žádná vestavěná funkce hromadné obnovení. [Azure SQL Database: Úplné obnovení serveru](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) skript představuje příklad jednoho způsobu provádění této úlohy.
 
 > [!IMPORTANT]
-> Pokud chcete obnovit, pomocí automatizovaného zálohování, musí být členem role Přispěvatel SQL serveru v rámci předplatného nebo být vlastník předplatného – viz [RBAC: vestavěné role](../role-based-access-control/built-in-roles.md). Obnovení můžete provést pomocí webu Azure Portal, prostředí PowerShell nebo rozhraní REST API. Nelze použít jazyk Transact-SQL.
+> Pokud chcete obnovit, pomocí automatizovaného zálohování, musí být členem role Přispěvatel SQL serveru v rámci předplatného nebo být vlastník předplatného – viz [RBAC: Předdefinované role](../role-based-access-control/built-in-roles.md). Obnovení můžete provést pomocí webu Azure Portal, prostředí PowerShell nebo rozhraní REST API. Nelze použít jazyk Transact-SQL.
 
 ## <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
@@ -129,7 +129,7 @@ Geografické obnovení je výchozí možnost zotavení, pokud vaše databáze ne
 Obnovení bodu v čase na typu geo-secondary se momentálně nepodporuje. Obnovení k určitému bodu v čase lze provést pouze u primární databáze. Podrobné informace o použití geografické obnovení k zotavení z výpadku, naleznete v tématu [zotavení z výpadku](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Obnovení ze záloh je naprosto základní řešení zotavení po havárii, která je k dispozici ve službě SQL Database s cílem bodu nejdelší obnovení (RPO) a doba obnovení odhad (ERT). Pro řešení s využitím malou velikost databáze (například základní úrovně nebo malou velikost databází v elastických fondech tenantů) geografické obnovení je často rozumné řešení zotavení po Havárii pomocí ERT až 12 hodin (obvykle mnohem menší). Řešení pomocí velkých databází a vyžadovat obnovení kratší dobu, měli byste zvážit použití [převzetí služeb při selhání skupiny a aktivní geografickou replikaci](sql-database-geo-replication-overview.md). Aktivní geografická replikace nabízí mnohem nižší cíl bodu obnovení a vložit vyžaduje pouze zahájení převzetí služeb při selhání do průběžně replikovanou sekundární lokality. Další informace o volby obchodní kontinuity podnikových procesů najdete v tématu [přehled kontinuity](sql-database-business-continuity.md).
+> Obnovení ze záloh je naprosto základní řešení zotavení po havárii, která je k dispozici ve službě SQL Database s cílem bodu nejdelší obnovení (RPO) a doba obnovení odhad (ERT). Pro řešení s využitím malou velikost databáze (například základní úrovně nebo malou velikost databází v elastických fondech tenantů) geografické obnovení je často rozumné řešení zotavení po Havárii pomocí ERT až 12 hodin (obvykle mnohem menší). Řešení pomocí velkých databází a vyžadovat obnovení kratší dobu, měli byste zvážit použití [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md). Aktivní geografická replikace nabízí mnohem nižší cíl bodu obnovení a vložit vyžaduje pouze zahájení převzetí služeb při selhání do průběžně replikovanou sekundární lokality. Automatické převzetí služeb při selhání skupiny umožňují automatické převzetí služeb při selhání pro skupinu databází. Další informace o volby obchodní kontinuity podnikových procesů najdete v tématu [přehled kontinuity](sql-database-business-continuity.md).
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Geografické obnovení prostřednictvím webu Azure portal
 
@@ -177,4 +177,4 @@ Automatické zálohování ochrana vaší databáze od uživatele a chyb aplikac
 - Přehled zajištění provozní kontinuity podnikání a scénáře, naleznete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md).
 - Další informace o Azure SQL Database, automatické zálohování, naleznete v tématu [automatické zálohování SQL Database](sql-database-automated-backups.md).
 - Další informace o dlouhodobé uchovávání dat najdete v tématu [dlouhodobé uchovávání](sql-database-long-term-retention.md).
-- Další informace o možnosti rychlejší obnovení najdete v tématu [převzetí služeb při selhání skupiny a aktivní geografickou replikaci](sql-database-geo-replication-overview.md).
+- Další informace o možnosti rychlejší obnovení najdete v tématu [aktivní geografickou replikaci](sql-database-active-geo-replication.md) nebo [-automatické převzetí služeb při selhání skupiny](sql-database-auto-failover-group.md).

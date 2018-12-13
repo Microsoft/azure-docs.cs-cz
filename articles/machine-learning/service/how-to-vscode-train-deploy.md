@@ -1,5 +1,5 @@
 ---
-title: Použití Visual Studio Code k trénování a nasazování modelů
+title: Trénování a nasazovat modely z VS Code
 titleSuffix: Azure Machine Learning service
 description: Přečtěte si o Azure Machine Learning pro Visual Studio Code a jak spustit trénovací a nasazení strojového učení a hloubkového učení modelů ve službě Azure Machine Learning pomocí nástroje Visual Studio Code.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 62c3dd051f9f4c06d8d5b5cd08422b34cf565f2f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100663"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271704"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Použití Visual Studio Code pro trénování a nasazovat modely machine learningu
 
@@ -27,11 +27,11 @@ A můžete je nasadit tyto modely pro vaše potřeby testovacím nebo produkčn�
 
 ## <a name="prerequisites"></a>Požadavky
 
++ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
+
 + Máte [Azure Machine Learning pro VS Code](how-to-vscode-tools.md) nastavit rozšíření.
 
 + Máte [Azure Machine Learning SDK pro Python nainstalován](how-to-vscode-tools.md) s VS Code.
-
-+ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="create-and-manage-compute-targets"></a>Vytvoření a Správa cílových výpočetních prostředí
 
@@ -55,7 +55,7 @@ Toto rozšíření podporuje několik cílových výpočetních prostředí růz
 
 6. Po dokončení konfigurace vaší cílové výpočetní prostředí, klikněte na tlačítko **odeslat** v vpravo dole.
 
-Tady je příklad pro Azure Machine Learning Compute (AMLCompute): [ ![vytvořit AML Compute ve VS Code](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
+Tady je příklad pro Azure Machine Learning Compute (AMLCompute): [![Vytvořte výpočetní AML ve VS Code](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
 
 ### <a name="use-remote-computes-for-experiments-in-vs-code"></a>Použití vzdálené výpočetní prostředí pro experimentů v nástroji VS Code
 
@@ -185,6 +185,6 @@ Webová služba je momentálně nasazené.
 
 ## <a name="next-steps"></a>Další postup
 
-Návod, jak školení s Machine learningem mimo VS Code, přečtěte si [kurz: trénování modelů Azure Machine Learning](tutorial-train-models-with-aml.md).
+Návod, jak školení s Machine learningem mimo VS Code, přečtěte si [kurzu: Trénování modelů Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 Návod, jak úprav, spouštění a ladění kódu místně, najdete v článku [kurz Pythonu Hello World](https://code.visualstudio.com/docs/python/python-tutorial)

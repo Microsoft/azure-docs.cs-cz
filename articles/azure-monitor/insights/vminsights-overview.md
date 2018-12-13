@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: c7d2004da52d83ceda62dc31583797d9a218ef48
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085447"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188490"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co je Azure Monitor pro virtuální počítače (preview)?
 
@@ -27,11 +26,11 @@ Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azu
 
 Azure Monitor pro virtuální počítače jako řešení, zahrnuje podporu pro monitorování výkonu a používání závislosti virtuálních počítačů, které jsou hostované v místním prostředí nebo jiného zprostředkovatele cloudu. Tři klíčové funkce poskytovat podrobnější informace:
 
-* **Logické součásti virtuálních počítačů Azure, který spustí Windows a Linuxem**: se měří podle kritérií stavu předem nakonfigurované a že vás upozornit, když je splněna podmínka Vyhodnocená.  
+* **Logické součásti virtuálních počítačů Azure, který spustí Windows a Linuxem**: Se měří podle kritérií stavu předem nakonfigurované a že vás upozornit, když je splněna podmínka Vyhodnocená.  
 
 * **Předem definované, grafy výkonu vzroste zájem o**: Zobrazit základní metriky výkonu z hostovaného operačního systému virtuálního počítače.
 
-* **Mapa závislostí**: zobrazí vzájemně propojených součástí virtuálního počítače z různých skupin prostředků a předplatných.  
+* **Mapa závislostí**: Zobrazí vzájemně propojených součástí virtuálního počítače z různých skupin prostředků a předplatných.  
 
 Funkce jsou uspořádané do tří perspektiv:
 
@@ -46,8 +45,8 @@ Integraci s Log Analytics poskytuje výkonné agregace a filtrování, a to anal
 
 Tato data můžete zobrazit v jeden virtuální počítač z virtuálního počítače přímo, nebo Azure Monitor můžete použít k zajištění souhrnný náhled na vašich virtuálních počítačů. Toto zobrazení vychází z perspektivy jednotlivých funkcí:
 
-* **Stav**: virtuální počítače se vztahují na skupinu prostředků.
-* **Mapa** a **výkonu**: virtuální počítače jsou nakonfigurované k ukládání dat do konkrétního pracovního prostoru Log Analytics.
+* **Stav**: Virtuální počítače se vztahují na skupinu prostředků.
+* **Mapa** a **výkonu**: Virtuální počítače jsou nakonfigurované k ukládání dat do konkrétního pracovního prostoru Log Analytics.
 
 ![Insights perspektivy virtuálního počítače na webu Azure Portal](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 

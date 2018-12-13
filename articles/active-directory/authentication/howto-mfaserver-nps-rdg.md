@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 99ed74a9664fbeeb65d90e51d0afcd97dd0b0ca0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 67c9cc5b46b7567674b3d0bf99bd85ab321c6bd3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346488"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277162"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Vzdálená plocha brány a server Azure Multi-Factor Authentication využívající protokol RADIUS
 
@@ -30,6 +30,9 @@ Nainstalujte Multi-Factor Authentication Server na samostatném serveru, který 
 - Azure MFA Server připojený k doméně. Pokud jej ještě nemáte nainstalovaný, postupujte podle pokynů v tématu [Začínáme s Azure Multi-Factor Authentication Serverem](howto-mfaserver-deploy.md).
 - NPS Server z existujícího nakonfigurovali.
 - Brána vzdálené plochy, která provádí ověřování pomocí serveru NPS.
+
+> [!NOTE]
+> V tomto článku by měla sloužit s pouze nasazení MFA serveru není Azure MFA (Cloud-based).
 
 ## <a name="configure-the-remote-desktop-gateway"></a>Konfigurace služby Brána vzdálené plochy
 Nakonfigurujte službu Brána VP na odesílání ověřování RADIUS na Azure Multi-Factor Authentication Server. 

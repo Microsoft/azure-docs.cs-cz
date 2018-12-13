@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3c33612ef76a572bd4bf63a5e7d6f05e36c7847b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 46c9eb99d808874e0f49dee5fa4865a4867873f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081995"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271517"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -43,6 +43,8 @@ Vzory pomocí kombinace technologií předpovědi. Nastavení pro šablony utter
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Vzory nevedou k lepšímu zjišťování entit
 Zatímco vzory vyžadují entity, vzor nepomůže, detekovat entity. Vzor je určená jenom usnadňují půjček s využitím záměry a rolí.  
+
+Nečekejte zobrazíte predikcí vylepšené entity při sbalení více projevy do jednoho modelu. Pro jednoduché entity má provést, budete muset přidání projevů nebo použijte jiný seznam entit vzorku neaktivují.
 
 ## <a name="patterns-use-entity-roles"></a>Vzory použít entitu role
 Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách. To je ekvivalentní na podřízené položky v hierarchické entity, ale je **pouze** k dispozici ve vzorcích. 

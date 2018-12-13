@@ -1,6 +1,6 @@
 ---
-title: Mapování polí v indexerech Azure Search
-description: Nakonfigurujte mapování polí indexeru Azure Search pro rozdíly v názvy polí a formátovaná data
+title: Mapování polí pro automatické indexování pomocí indexerů – Azure Search
+description: Nakonfigurujte mapování polí indexeru Azure Search pro rozdíly v názvy polí a formátovaná data.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 01edc7001ec463cb16d8b6c715794b0028508143
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 94a7274c0e950661d118ad5421e7c763fe555434
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404713"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312693"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v indexerech Azure Search
 Když pomocí indexerů Azure Search, čas od času najdete sami v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **mapování polí** pro transformaci dat do požadované podoby.
@@ -134,7 +135,7 @@ Pokud nezadáte žádné `parameters`, klikněte na výchozí hodnotu `useHttpSe
 <a name="base64details"></a>
 
 ### <a name="details-of-base64-encoding-and-decoding"></a>Podrobnosti ve formátu base64, kódování a dekódování
-Služba Azure Search podporuje dvě kódování base64: adresa URL HttpServerUtility kódování base64 token a adresu URL bezpečné bez odsazení. Budete muset použít stejné kódování jako funkce mapování, pokud chcete zakódovat klíč dokumentu najdete nahoru, hodnotu, která se dekódovat. že se indexer zakódování nebo dekódování pole kódovaný pomocí indexeru.
+Služba Azure Search podporuje dvě kódování base64: Adresa URL HttpServerUtility token a adresu URL bezpečné kódování base64 bez odsazení. Budete muset použít stejné kódování jako funkce mapování, pokud chcete zakódovat klíč dokumentu najdete nahoru, hodnotu, která se dekódovat. že se indexer zakódování nebo dekódování pole kódovaný pomocí indexeru.
 
 Pokud `useHttpServerUtilityUrlTokenEncode` nebo `useHttpServerUtilityUrlTokenDecode` parametry pro kódování a dekódování v uvedeném pořadí jsou nastaveny na `true`, pak `base64Encode` se chová jako [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) a `base64Decode` se chová jako [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 

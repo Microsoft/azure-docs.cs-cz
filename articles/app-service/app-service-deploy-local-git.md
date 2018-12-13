@@ -1,5 +1,5 @@
 ---
-title: Místní nasazení z Gitu do služby Azure App Service
+title: Nasazení z místního úložiště Git – Azure App Service
 description: Zjistěte, jak povolit místní nasazení z Gitu do služby Azure App Service.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 242eb906c95b373b2edd538be5f06756cac1e8c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959321"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256501"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -157,23 +158,23 @@ Tady jsou běžné chyby nebo problémy při použití Git k publikování pro a
 ---
 **Příznak**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
-**Příčina**: k této chybě může dojít, pokud nebude funkční ani po aplikaci.
+**Příčina**: K této chybě může dojít, pokud nebude funkční ani po aplikaci.
 
 **Rozlišení**: Spusťte aplikaci na webu Azure Portal. Nasazení z Gitu není dostupná, když webová aplikace zastavená.
 
 ---
 **Příznak**: `Couldn't resolve host 'hostname'`
 
-**Příčina**: k této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
+**Příčina**: K této chybě může dojít, pokud bylo nesprávné informace o adrese zadali při vytváření vzdáleného "azure".
 
-**Rozlišení**: použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
+**Rozlišení**: Použití `git remote -v` příkazu zobrazte výpis všech Vzdálená úložiště, spolu s přidružené adresy URL. Ověřte správnost adresy URL pro "azure" vzdálené. V případě potřeby odebrat a znovu vytvořit toto vzdálené používá správnou adresu URL.
 
 ---
 **Příznak**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**Příčina**: k této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
+**Příčina**: K této chybě může dojít, pokud nechcete zadat větev během `git push`, nebo pokud jste nenastavili `push.default` hodnota v `.gitconfig`.
 
-**Rozlišení**: Spusťte `git push` znovu, určení hlavní větve. Příklad:
+**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -182,9 +183,9 @@ git push azure master
 ---
 **Příznak**: `src refspec [branchname] does not match any.`
 
-**Příčina**: této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
+**Příčina**: K této chybě může dojít, pokud se pokusíte vložit pouze hlavní větve na "azure" vzdálené.
 
-**Rozlišení**: Spusťte `git push` znovu, určení hlavní větve. Příklad:
+**Rozlišení**: Spustit `git push` znovu, určení hlavní větve. Příklad:
 
 ```bash
 git push azure master
@@ -193,7 +194,7 @@ git push azure master
 ---
 **Příznak**: `RPC failed; result=22, HTTP code = 5xx.`
 
-**Příčina**: této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
+**Příčina**: Této chybě může dojít, pokud se pokusíte úložiště velké git push přes protokol HTTPS.
 
 **Rozlišení**: Změna konfigurace git v místním počítači lze zviditelnit postBuffer větší
 
@@ -204,9 +205,9 @@ git config --global http.postBuffer 524288000
 ---
 **Příznak**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**Příčina**: k této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
+**Příčina**: K této chybě může dojít, pokud nasazení aplikace v Node.js s _package.json_ soubor, který určuje další požadované moduly.
 
-**Rozlišení**: další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
+**Rozlišení**: Další zprávy pomocí "npm ERR!" před tato chyba se mají protokolovat a poskytnete další kontext při selhání. Následující seznam uvádí známé příčiny této chyby a odpovídající "npm ERR!" zpráva:
 
 * **Soubor package.json poškozený**: npm ERR! Nelze číst závislosti.
 * **Nativní modul, který nemá binární distribuce pro Windows**:

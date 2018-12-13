@@ -11,19 +11,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 2fcd5a784801c3591d76b4c4569a7dda9472686e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103978"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138054"
 ---
-# <a name="deprecated-entities"></a>Zastaralé entity
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Nepoužívané předem připravených entit v aplikaci LUIS
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
 
-* **Datum a čas**: aplikace existující LUIS, používající **data a času** by se měly migrovat do **datetimeV2**, i když entity data a času je nadále funkční v již existující aplikace, které ji používají.
-* **Zeměpisné oblasti**: aplikace existující LUIS, používající **zeměpisné oblasti** platí až do prosince 2018.
-* **Encyklopedie**: aplikace existující LUIS, používající **encyklopedie** platí až do prosince 2018.
+* **Datum a čas**: Existující aplikace LUIS, které používají **data a času** by se měly migrovat do **datetimeV2**, i když entity data a času je nadále funkční v již existující aplikace, které ji používají.
+* **Zeměpisné oblasti**: Existující aplikace LUIS, které používají **zeměpisné oblasti** platí až do prosince 2018.
+* **Encyklopedie**: Existující aplikace LUIS, které používají **encyklopedie** platí až do prosince 2018.
 
 ## <a name="geography-culture"></a>Zeměpisné oblasti jazykovou verzi
 **Zeměpisné oblasti** je k dispozici pouze v `en-us` národní prostředí.
@@ -43,7 +43,7 @@ Předem připravených entit   |   Ukázková promluva   |   JSON
 **Encyklopedie** je k dispozici pouze v `en-US` národní prostředí.
 
 #### <a name="encyclopedia-subtypes"></a>Podtypy encyklopedie
-Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: encyklopedie entity se navíc často mapují na víc typů. Například dotaz Ronald Reagan poskytuje: 
+Integrované entity encyklopedie obsahuje více než 100 podtypy v následující tabulce: Kromě toho encyklopedie entity se často mapují na víc typů. Například dotaz Ronald Reagan poskytuje: 
 
 ```json
 {

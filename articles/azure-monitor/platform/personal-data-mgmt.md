@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: be14b560eb48adc2fcf0ad0a1cf7fe27792a402a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5b8db52623eead2800b0a5d8154a222573808750
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002458"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192426"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 
@@ -55,19 +54,19 @@ Log Analytics je flexibilní úložiště, které při systematická schématu k
     search "[username goes here]"
     ```
 Nezapomeňte se podívat nejen čitelné uživatelská jména, ale také identifikátory GUID, které lze přímo vysledovat zpět s určitým uživatelem!
-* *ID zařízení*: jako ID uživatelů, zařízení identifikátory jsou někdy považována za "privátní". Použít stejným způsobem, jak je uvedeno výše pro ID uživatele identifikuje tabulky tam, kde to může být žádný problém. 
+* *ID zařízení*: Jako ID uživatele ID zařízení jsou někdy považovány za "privátní". Použít stejným způsobem, jak je uvedeno výše pro ID uživatele identifikuje tabulky tam, kde to může být žádný problém. 
 * *Vlastní data*: Log Analytics umožňuje kolekci v různých metodách: vlastní protokoly a vlastních polí [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md) , a shromažďovat protokoly událostí systému v rámci vlastní data. Všechny z nich může docházet k obsahující soukromá data a by měla být prozkoumána ověřit, zda existuje žádná takováto data.
-* *Řešení zachyceným datům*: vzhledem k tomu, že mechanismus řešení je některý z otevřený, doporučujeme zkontrolujete všechny tabulky generovaných řešení, aby zařízení dodržovalo předpisy.
+* *Řešení zachyceným datům*: Vzhledem k tomu, že mechanismus řešení je některý z otevřený, doporučujeme zkontrolujete všechny tabulky generovaných řešení, aby zařízení dodržovalo předpisy.
 
 ### <a name="application-data"></a>Data aplikací
 
-* *IP adresy*: zatímco Application Insights se ve výchozím nastavení obfuskaci všech polí IP adresy na hodnotu "0.0.0.0", je poměrně běžný vzor pro přepsání této hodnoty s IP Adresou skutečného uživatelského zachovat informace o relaci. Následující dotaz Analytics je možné najít žádné tabulky, který obsahuje hodnoty ve sloupci IP adresa než "0.0.0.0" za posledních 24 hodin:
+* *IP adresy*: Application Insights se ve výchozím nastavení obfuskaci všech polí IP adresy na hodnotu "0.0.0.0", je poměrně běžný vzor pro přepsání této hodnoty s IP Adresou skutečného uživatelského zachovat informace o relaci. Následující dotaz Analytics je možné najít žádné tabulky, který obsahuje hodnoty ve sloupci IP adresa než "0.0.0.0" za posledních 24 hodin:
     ```
     search client_IP != "0.0.0.0"
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *ID uživatele*: ve výchozím nastavení, Application Insights používat náhodně generované identifikátory pro uživatele a sledování relace. Je však běžně setkat tato pole potlačena za účelem ukládání ID relevantnější pro aplikaci. Například: uživatelská jména, GUID AAD, atd. Tyto identifikátory jsou často považuje za v oboru jako osobní údaje a proto by měl zpracováno odpovídajícím způsobem. Naše doporučení je vždy pokusí obfuskaci nebo anonymizovat tyto identifikátory. Pole, ve kterém se běžně vyskytují tyto hodnoty patří session_Id, user_Id, user_AuthenticatedId, user_AccountId, jakož i customDimensions.
+* *ID uživatele*: Ve výchozím nastavení Application Insights používat náhodně generované identifikátory pro uživatele a sledování relace. Je však běžně setkat tato pole potlačena za účelem ukládání ID relevantnější pro aplikaci. Například: uživatelská jména, GUID AAD, atd. Tyto identifikátory jsou často považuje za v oboru jako osobní údaje a proto by měl zpracováno odpovídajícím způsobem. Naše doporučení je vždy pokusí obfuskaci nebo anonymizovat tyto identifikátory. Pole, ve kterém se běžně vyskytují tyto hodnoty patří session_Id, user_Id, user_AuthenticatedId, user_AccountId, jakož i customDimensions.
 * *Vlastní data*: Application Insights umožňuje připojit sadu vlastní rozměry libovolného datového typu. Tyto dimenze může být *jakékoli* data. Použijte tento dotaz k identifikaci žádné vlastní dimenzi shromážděných za posledních 24 hodin:
     ```
     search * 

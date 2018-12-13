@@ -1,5 +1,5 @@
 ---
-title: Vytvoření služby App Service Environment v1
+title: Vytvoření služby App Service Environment v1 – Azure
 description: Popis vytvoření toku pro app service environment v1
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 289ff76e533497a731a4fc51b3e54101a9d34a68
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1cfe8dae750cb113dd5346bfba261099fd3b6044
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958362"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276736"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření služby App Service Environment v1 
 
@@ -55,7 +56,7 @@ K vytvoření App Service Environment v1, můžete na Azure Marketplace vyhledej
 4. Proveďte požadovaná nastavení virtuální sítě a umístění. Můžete vytvořit novou virtuální síť nebo vybrat už existující virtuální sítě. Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Novou virtuální síť bude mít 192.168.250.0/23 rozsah adres a podsíť s názvem **výchozí** , který je definován jako 192.168.250.0/24. Můžete také jednoduše vybrat již existující Classic nebo virtuální síti správce prostředků. Typ VIP výběr určuje, zda vaše služba ASE je přímo přístupný z Internetu (externí), nebo pokud používá interní zatížení Balancer (ILB). Další informace o nich přečíst [interního nástroje Load Balancer pomocí služby App Service Environment][ILBASE]. Pokud vyberete virtuální IP adresu typu externí můžete vybrat kolik externích IP adres v systému se vytvoří s pro účely IPSSL. Pokud vyberete interní je potřeba zadat subdomény, které vaše služba ASE bude používat. Je možné nasadit služby ase do virtuální sítě, které používají *buď* rozsahů adres veřejné *nebo* definice RFC1918 adresní prostory (tj. privátní adresy). Chcete-li použít virtuální síť s veřejnou adresu rozsahu, je potřeba vytvořit virtuální síť předem. Když vyberete existující virtuální sítě je potřeba vytvořit novou podsíť během vytváření služby ASE. **Nelze použít předem vytvořený podsítě na portálu. Pokud vaše služba ASE pomocí šablony resource Manageru vytvoříte, můžete vytvořit službu ASE s existující podsítí.** Vytvořit službu ASE ze šablony použijte tyto informace tady, [vytváření služby App Service Environment pomocí šablony] [ ILBAseTemplate] a tady [vytvoření ILB App Service Environment pomocí šablony] [ASEfromTemplate].
 
 ### <a name="details"></a>Podrobnosti
-Služba ASE se vytvoří s 2 front-endy a 2 pracovní procesy. Front-endy fungovat jako koncové body HTTP/HTTPS a odesílat provoz do pracovních procesů, které jsou role, které jsou hostiteli vaše aplikace. Můžete upravit množství po vytvoření služby ASE a dokonce nastavit pravidla automatického škálování na těchto fondů zdrojů. Další podrobnosti o ruční škálování, správu a monitorování služby App Service Environment najdete tady: [konfigurace služby App Service Environment][ASEConfig] 
+Služba ASE se vytvoří s 2 front-endy a 2 pracovní procesy. Front-endy fungovat jako koncové body HTTP/HTTPS a odesílat provoz do pracovních procesů, které jsou role, které jsou hostiteli vaše aplikace. Můžete upravit množství po vytvoření služby ASE a dokonce nastavit pravidla automatického škálování na těchto fondů zdrojů. Další podrobnosti o ruční škálování správu a monitorování služby App Service Environment najdete tady: [Postup konfigurace služby App Service Environment][ASEConfig] 
 
 V podsíti služby ASE používá může existovat pouze jeden služby ASE. Podsíť se nedá použít pro ostatní formáty vyjma služby ASE
 
@@ -67,9 +68,9 @@ Po vytvoření služby ASE můžete upravit:
 * Počet IP adres pro IP SSL.
 * Výpočetní prostředek velikosti používá front-endy nebo pracovní procesy (minimální velikost front-endu je P2)
 
-Existují další podrobnosti o ruční škálování, správu a monitorování služby App Service Environment tady: [konfigurace služby App Service Environment][ASEConfig] 
+Existují další podrobnosti o ruční škálování, správu a monitorování služby App Service Environment tady: [Postup konfigurace služby App Service Environment][ASEConfig] 
 
-Informace o automatické škálování je Průvodce tady: [postup konfigurace automatického škálování služby App Service Environment][ASEAutoscale]
+Informace o automatické škálování je Průvodce tady: [Postup konfigurace automatického škálování služby App Service Environment][ASEAutoscale]
 
 Existují další závislosti, které nejsou k dispozici pro přizpůsobení, jako jsou databáze a úložišť. Tyto jsou zpracovány Azure a součástí systému. Systém úložiště podporuje až 500 GB pro celé služby App Service Environment a databáze je upravit tak, že Azure podle potřeby škálování systému.
 

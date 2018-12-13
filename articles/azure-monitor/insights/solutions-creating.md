@@ -8,19 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24ffe9eded908c82750ce5a6d6fbe87991bdae72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 03a7454aec43963a093dc0d7fcc347dac3ef5d43
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872838"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192919"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -58,7 +57,7 @@ Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživate
 
 Pokud tento problém můžete opravit potenciálně pomocí automatizovaného procesu, pak obvykle vytvoříte sady runbook ve službě Azure Automation, abyste mohli provést tento nápravu.  Většina služeb Azure je možné spravovat pomocí [rutiny](/powershell/azure/overview) kterém sada runbook by využívat k provádění těchto funkcí.
 
-Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../../monitoring-and-diagnostics/alert-metric.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
+Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../../azure-monitor/platform/alerts-metric.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
 
 ### <a name="views"></a>Zobrazení
 Zobrazení v Log Analytics se používají k vizualizaci dat v úložišti Log Analytics.  Každé řešení bude obvykle obsahovat na jednom místě [dlaždici](../../azure-monitor/platform/view-designer-tiles.md) , která se zobrazí v hlavním řídicím panelu uživatele.  Zobrazení může obsahovat libovolný počet [části vizualizace](../../azure-monitor/platform/view-designer-parts.md) poskytovat různé vizualizace shromážděných dat uživatele.

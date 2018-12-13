@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: c437f350e394dc8c264903508a2a5a66fa8225a7
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346685"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53161980"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Řešení potíží s dotazy Azure Stream Analytics
 
@@ -47,47 +48,47 @@ Při zpracování dat v reálném čase vědět, co vypadá uprostřed dotazu m�
 
 Následující příklad dotazu v úloze Azure Stream Analytics je zadání jednoho datového proudu, dvě referenční datové výstupy a výstup do služby Azure Table Storage. Dotaz spojuje data z centra událostí a dvě referenční přes bloby až po získání informací o názvů a kategorie:
 
-![Dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Příklad Stream Analytics dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
 Všimněte si, že je úloha spuštěná, ale žádné události jsou vytvořených ve výstupu. Na **monitorování** dlaždice zobrazené, uvidíte, že vstup je vytváření dat, ale si nejste jisti, který krok **připojte se k** způsobil všechny události zavěšení.
 
-![Dlaždice monitorování](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Dlaždice monitorování Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
 V takovém případě můžete přidat několik dalších příkazech SELECT INTO "přihlásit" mezilehlé výsledky spojení a data, která je načtený ze vstupu.
 
 V tomto příkladu jsme přidali dvě nové "dočasné výstupy." Mohou být libovolné jímky, kolikrát chcete. Tady používáme jako příklad služby Azure Storage:
 
-![Přidání dalších příkazech SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Přidání dalších příkazech SELECT INTO do dotazu Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
 Potom můžete přepište dotaz následujícím způsobem:
 
-![Přepsaný dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![Přepsaný dotazu vyberte do Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
 Nyní spusťte znovu úlohu a nechat běžet několik minut. Potom zadejte dotaz temp1 a temp2 pomocí Průzkumníka cloudu Visual Studio k vytvoření následujících tabulek:
 
 **Tabulka temp1**
-![SELECT INTO temp1 tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
+![dotaz SELECT INTO temp1 tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
 
 **Tabulka temp2**
-![SELECT INTO temp2 tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
+![dotaz SELECT INTO temp2 tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
 Jak je vidět, temp1 a temp2 mají data a název sloupce je v temp2 správně zadána. Ale protože ve výstupu ještě neexistuje žádná data, něco se nepovedlo:
 
-![Příkaz SELECT INTO tabulky output1 bez dat](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![Příkaz SELECT INTO tabulku output1 se žádná data dotazu Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 Vzorkování dat, můžete si být téměř jisti, že problém s druhou spojení. Můžete stáhnout z objektu blob referenčních dat a podívejte se:
 
-![Příkaz SELECT INTO Referenční tabulka](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![Dotaz SELECT INTO ref tabulky Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
 Jak je vidět, se liší od formátu formát čísla GUID v této referenční data [sloupec v temp2 z]. To je důvod, proč data nebyla doručení output1 podle očekávání.
 
 Můžete opravit formát dat, nahrajte ho odkazovat na objekt blob, a zkuste to znovu:
 
-![Příkaz SELECT INTO dočasné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![Příkaz SELECT INTO dotazu Stream Analytics dočasné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
 Tentokrát, data ve výstupu jsou ve formátu a vyplní podle očekávání.
 
-![Příkaz SELECT INTO konečné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![Dotaz SELECT INTO konečná tabulka takto Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 ## <a name="get-help"></a>Podpora
 

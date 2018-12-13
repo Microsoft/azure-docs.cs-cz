@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: c1bd1463858d55c6bf9d82e255aae5d2ec0788e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b8441d72f85c2160cf756df37722fa6037441236
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882476"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191542"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zápis pokročilé dotazy v Log Analytics
 

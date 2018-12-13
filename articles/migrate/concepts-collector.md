@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 5a542ae23bf500125fd08338b2efd30dd42d9a8d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 255f5b34e53ddfb1a503130f0bccbac16a420f9a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840907"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255971"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -32,13 +32,13 @@ Zařízení kolektoru je trvalým připojením k projektu Azure Migrate a průb�
 - Tento model nejsou závislé na nastavení statistiky vCenter Server ke shromažďování dat výkonu.
 - Můžete zastavit průběžné profilování v kdykoli z kolekce.
 
-**Rychlé provést synchronizaci dříve:** s průběžná zjišťování zařízení, jakmile se dokončí zjišťování (trvá několik hodin v závislosti na počtu virtuálních počítačů), můžete okamžitě vytvořit posouzení. Protože shromažďování dat výkonu spustí, když zahájíte zjišťování, pokud chcete pro rychlé provést synchronizaci dříve, měli vybrat kritérium určení velikosti v posouzení jako *jako místní*. Vyhodnocení na základě výkonu doporučujeme počkejte alespoň jeden den a poté rutinního zjišťování tak, aby Získejte doporučení k reliable velikosti.
+**Rychlé provést synchronizaci dříve:** S průběžná zjišťování zařízení, jakmile se dokončí zjišťování (trvá několik hodin v závislosti na počtu virtuálních počítačů), můžete okamžitě vytvořit posouzení. Protože shromažďování dat výkonu spustí, když zahájíte zjišťování, pokud chcete pro rychlé provést synchronizaci dříve, měli vybrat kritérium určení velikosti v posouzení jako *jako místní*. Vyhodnocení na základě výkonu doporučujeme počkejte alespoň jeden den a poté rutinního zjišťování tak, aby Získejte doporučení k reliable velikosti.
 
 Zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
-- Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+- Přidání položek (virtuálních počítačů, disků, jader atd.): Pro provedení těchto změn na webu Azure Portal, můžete zastavit zjišťování ze zařízení a znovu spustit. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
-- Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
+- Odstranění virtuálních počítačů: Kvůli způsobu, jakým je navržena na zařízení se neprojeví odstranění virtuálních počítačů i v případě zastavení a spuštění zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 > [!NOTE]
 > Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.
@@ -48,7 +48,7 @@ Zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny 
 Nasazení pomocí šablony OVF zařízení Kolektoru:
 
 - Stáhněte šablonu OVF z projektu Azure Migrate na webu Azure Portal. Importujte stažený soubor do vCenter serveru, nastavení zařízení Kolektoru virtuálního počítače.
-- Z OVF nastaví VMware virtuální počítač s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém je Windows Server 2012 R2 (64bitová verze).
+- Z OVF nastaví VMware virtuální počítač s 8 jader, 16 GB paměti RAM a jeden disk 80 GB. Operační systém je Windows Server 2016 (64 bitů).
 - Při spuštění Kolektoru, abyste měli jistotu, že kolektor může připojit k Azure Migrate spustit řadu kontrol požadovaných součástí.
 
 - [Další informace](tutorial-assessment-vmware.md#create-the-collector-vm) o vytváření kolekcí.
@@ -58,21 +58,25 @@ Nasazení pomocí šablony OVF zařízení Kolektoru:
 
 Kolekce musí úspěšně projít několik kontroly splnění podmínek se můžete připojit ke službě Azure Migrate přes internet a nahrávání zjištěné data.
 
-- **Zkontrolujte připojení k Internetu**: The kolekcí může připojit k Internetu přímo nebo prostřednictvím proxy serveru.
+- **Ověření cloudu Azure**: Kolektoru je potřeba vědět, ke které máte v úmyslu migrovat cloudu Azure.
+    - Pokud máte v úmyslu migrovat do cloudu Azure Government, vyberte Azure Government.
+    - Vyberte Azure globální, pokud máte v úmyslu migrovat do komerčním cloudu Azure.
+    - Založené na cloudu tady zadané, pošle zařízení zjištěná metadata do příslušných koncových bodů.
+- **Zkontrolujte připojení k Internetu**: Kolektor může připojit k Internetu přímo nebo prostřednictvím proxy serveru.
     - Kontrola předpokladů ověří připojení k [povinné a nepovinné adresy URL](#connect-to-urls).
     - Pokud máte přímé připojení k Internetu, není žádná konkrétní akce požadované, než je zajistit, aby kolektor přístup požadované adresy URL.
     - Pokud připojujete přes proxy server, Všimněte si, [níže uvedené požadavky](#connect-via-a-proxy).
-- **Zkontrolujte synchronizaci času**: The kolekcí synchronizovat s internetovým časovým serverem k zajištění ověření požadavků na službu.
+- **Zkontrolujte synchronizaci času**: Kolektor synchronizovat s internetovým časovým serverem k zajištění, že ověření požadavků na službu.
     - Adrese portal.azure.com. adresa url by měla být dosažitelný z Kolektoru, tak, aby čas může být ověřen.
     - Pokud počítač není synchronizovaný, musíte změnit čas na virtuálním počítači Kolektoru tak, aby odpovídaly aktuálním časem. Provedete to otevřete Správce řádek na virtuálním počítači, spusťte **w32tm /tz** ke kontrole časové pásmo. Spustit **w32tm/resync** synchronizovat čas.
-- **Kontrola spuštění služby kolektoru**: Služba Azure Migrate Collector by měl běžet na virtuálním počítači Kolektoru.
+- **Kontrola spuštění služby kolektoru**:  Služba Azure Migrate Collector by měl běžet na virtuálním počítači Kolektoru.
     - Tato služba je spuštěna automaticky při spuštění počítače.
     - Pokud služba není spuštěná, spusťte ji pomocí ovládacího panelu.
     - Služba Collector připojí k serveru vCenter, shromažďuje data metadata a výkonu virtuálních počítačů a odesílá je do služby Azure Migrate.
-- **Zkontrolovat VMware PowerCLI 6.5 je nainstalovaný**: musí být nainstalovaný modul VMware PowerCLI 6.5 Powershellu na virtuálním počítači Kolektoru, aby mohl komunikovat s vCenter Server.
+- **Zkontrolovat VMware PowerCLI 6.5 je nainstalovaný**: Modul prostředí PowerShell VMware PowerCLI 6.5 musí nainstalovat na virtuálním počítači Kolektoru, tak, aby mohl komunikovat s vCenter Server.
     - Kolektor může získat přístup k adresám URL požadovaným pro instalaci modulu, je instalace automaticky během nasazení Kolektoru.
     - Pokud kolekce nelze nainstalovat modul během nasazení, je nutné [nainstalujte ho ručně](#install-vwware-powercli-module-manually).
-- **Zkontrolujte připojení k serveru vCenter**: The kolekce musí být schopen systému vCenter Server a dotazy na virtuální počítače, jejich metadata a čítače výkonu. [Ověřte požadavky](#connect-to-vcenter-server) pro připojení.
+- **Zkontrolujte připojení k serveru vCenter**: Kolekce musí být schopen systému vCenter Server a dotazy na virtuální počítače, jejich metadata a čítače výkonu. [Ověřte požadavky](#connect-to-vcenter-server) pro připojení.
 
 
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Připojení k Internetu přes proxy server
@@ -107,7 +111,8 @@ Kontrola připojení se ověří pomocí připojení k seznamu adres URL.
 
 **Adresa URL** | **Podrobnosti**  | **Kontrola požadovaných součástí**
 --- | --- | ---
-*.portal.azure.com | Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
+*.portal.azure.com | Vztahuje se na Azure Global. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
+*. portal.azure.us | Platí jenom pro Azure Government. Zkontroluje připojení pomocí služby Azure a synchronizaci času. | Přístup k je vyžadována adresa URL.<br/><br/> Kontrola předpokladů selže, pokud neexistuje žádná připojení.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Použít ke stažení modulu PowerShell vCenter PowerCLI. | Přístup k adresám URL, které jsou volitelné.<br/><br/> K selhání kontroly požadavků.<br/><br/> Instalace modulu automatické na virtuálním počítači Kolektoru se nezdaří. Bude nutné ručně nainstalovat modul.
 
 
@@ -216,7 +221,7 @@ Zařízení kolektoru zjistí následující metadat konfigurace pro každý vir
 
  Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
 
-**Čítač** |  **Dopad na posouzení**
+**Counter** |  **Dopad na posouzení**
 --- | ---
 CPU.Usage.average | Doporučené velikosti virtuálních počítačů a náklady  
 mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  

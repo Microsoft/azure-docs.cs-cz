@@ -1,5 +1,5 @@
 ---
-title: Konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service, která používá Traffic Manager pro vyrovnávání zatížení.
+title: Konfigurovat názvy DNS pro aplikace, které používají Traffic Manager – Azure App Service
 description: Použijte název vlastní domény webové aplikace ve službě Azure App Service, včetně služby Traffic Manager pro vyrovnávání zatížení.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: b140ccba2b45dbfb1e4413c9fbeb12e9fec6bc8a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 2b2efbbccedc2478b30a05fe2cd60c063de2a64d
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227174"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309480"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service pomocí Traffic Manageru
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]

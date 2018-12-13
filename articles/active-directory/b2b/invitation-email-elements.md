@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: cbb81f62bcea43c3c30abff6b5f76e3a89347813
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985392"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321285"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
@@ -26,11 +26,11 @@ E-mailových pozvánek jsou zásadní pro partnery na palubě jako uživatele sp
 ## <a name="explaining-the-email"></a>S vysvětlením, e-mailu
 Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
 
-### <a name="subject"></a>Předmět
-Předmět e-mailu používá následující vzor: vás &lt;tenantname&gt; organizace
+### <a name="subject"></a>Subjekt
+Předmět e-mailu odpovídá následujícímu vzoru: Zveme vás k &lt;tenantname&gt; organizace
 
 ### <a name="from-address"></a>Adresa odesílatele
-Používáme vzor LinkedIn jako adresa odesílatele.  By měl být jasné, kdo je odesílatel pozvánky a ze společnosti a i vyjasnit, e-mailu přichází z Microsoftu e-mailovou adresu. Formát je: &lt;zobrazované jméno odesílatele pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>
+Používáme vzor LinkedIn jako adresa odesílatele.  By měl být jasné, kdo je odesílatel pozvánky a ze společnosti a i vyjasnit, e-mailu přichází z Microsoftu e-mailovou adresu. Formát je: &lt;Zobrazované jméno odesílatele pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Zpáteční adresa
 Odpovědi e-mailu je nastavena k e-mailu odesílatel pozvánky, pokud je k dispozici, takže odpovídání na e-mailu odešle e-mailu zpět odesílatel pozvánky.
@@ -40,7 +40,7 @@ E-mailových pozvánek z vašeho tenanta používání firemní branding, které
 
 ### <a name="call-to-action"></a>Výzva k akci
 Výzvou k akci se skládá ze dvou částí: s vysvětlením, proč příjemce obdrží e-mailu a co příjemce je požádaná, jak je řešit.
-- V části "Proč" se dají řešit pomocí následujícímu vzoru: dostali jste pozvání k přístupu k aplikacím v &lt;tenantname&gt; organizace
+- V části "Proč" se dají řešit pomocí následujícímu vzoru: Dostali jste pozvání k přístupu k aplikacím v &lt;tenantname&gt; organizace
 
 - A "co zobrazí se výzva provedete" oddíl je označen přítomnost **Začínáme** tlačítko. Po přidání příjemce bez nutnosti pozvánky, nebude se zobrazí toto tlačítko.
 
@@ -52,7 +52,7 @@ Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciál
   ![Zobrazení iniciály odesílatel pozvánky.](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Tělo
-Text obsahuje zprávu, odesílatel pozvánky lze kombinovat nebo se předá prostřednictvím e-mailové pozvánce rozhraní API. Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
+Text obsahuje zprávu, že odesílatel pozvánky kontextovému při [pozvání uživatelů typu Host do adresáře, skupiny nebo aplikace](add-users-administrator.md) nebo [pomocí e-mailové pozvánce API](customize-invitation-api.md). Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
 
 ### <a name="footer-section"></a>Zápatí
 Zápatí obsahuje značky společnosti Microsoft a umožní příjemce vědět, pokud byla odeslána e-mailu byla odeslaná z nemonitorovaného aliasu. Zvláštní případy:

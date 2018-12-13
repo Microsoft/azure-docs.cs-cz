@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Začínáme v Pythonu'
+title: 'Rychlý start:  Začínáme v Pythonu'
 titleSuffix: Azure Machine Learning service
 description: Začínáme se službou Azure Machine Learning v Pythonu. Pomocí sady Python SDK k vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely machine learningu.
 services: machine-learning
@@ -11,16 +11,16 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ca97275848d87ccc03c7839265f867f9c3c3948
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3ab55cec4b8483cf254ec3d9fe68521baca9cdf5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073345"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268495"
 ---
-# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Použití Python SDK pro seznámení s Azure Machine Learning
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
-V tomto rychlém startu použijete sadu SDK služby Azure Machine Learning pro Python, abyste vytvořili a potom používali [pracovní prostor](concept-azure-machine-learning-architecture.md) služby Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu začnete nakonfigurováním vlastního prostředí Pythonu a serveru poznámkového bloku Jupyter. Pokud chcete pokračovat bez jakékoli instalace, přečtěte si téma [Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal](quickstart-get-started.md).
+V tomto rychlém startu použijete sadu SDK služby Azure Machine Learning pro Python, abyste vytvořili a potom používali [pracovní prostor](concept-azure-machine-learning-architecture.md) služby Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu začnete nakonfigurováním vlastního prostředí Pythonu a serveru poznámkového bloku Jupyter. Pokud chcete spustit v žádné instalaci, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal](quickstart-get-started.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
@@ -40,14 +40,12 @@ Do vašeho pracovního prostoru se automaticky přidají následující prostře
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
->[!NOTE]
-> Kód v tomto článku vyžaduje Azure Machine Learning SDK verze 1.0.2 nebo novější. 
-
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
-
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 ## <a name="install-the-sdk"></a>Instalace sady SDK
+
+>[!NOTE]
+> Kód v tomto článku vyžaduje Azure Machine Learning SDK verze 1.0.2 nebo novější. 
 
 *Pokud používáte virtuální počítač pro datové vědy vytvořený po 27. září 2018, tuto část přeskočte.* Na těchto virtuálních počítačích pro datové vědy je sada Python SDK již předinstalovaná.
 
@@ -206,6 +204,6 @@ Abyste své prostředí mohli používat v kurzech služby Machine Learning, je 
 Po dokončení instalace těchto balíčků postupujte podle kurzů věnovaných trénování a nasazení modelu. 
 
 > [!div class="nextstepaction"]
-> [Kurz: Školení modelu klasifikace obrázků](tutorial-train-models-with-aml.md)
+> [Kurz: Trénování modelu klasifikace obrázků](tutorial-train-models-with-aml.md)
 
 Můžete prozkoumat také [pokročilejší příklady na GitHubu](https://aka.ms/aml-notebooks).

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 22b2faa91be9b4a2504bff542deb559d33b9fa4f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0e58fb35fa29cde16b1ccf50dc20dacc693a4757
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101008"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141760"
 ---
-# <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocí C#
+# <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocíC#
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -47,11 +47,11 @@ K získání stejných výsledků, jaké jste viděli v okně prohlížeče v p�
 
 1. V sadě Visual Studio vytvořte novou konzolovou aplikaci. 
 
-    ![Přístup do nabídky nastavení uživatelů služby LUIS](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
+    ![Vytvořte novou konzolovou aplikaci v sadě Visual Studio](media/luis-get-started-cs-get-intent/visual-studio-console-app.png)
 
 2. V projektu sady Visual Studio v Průzkumníku řešení vyberte **Přidat odkaz** a potom na kartě Sestavení vyberte **System.Web**.
 
-    ![Přístup do nabídky nastavení uživatelů služby LUIS](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
+    ![Vyberte Přidat odkaz a pak vyberte na kartě sestavení System.Web](media/luis-get-started-cs-get-intent/add-system-dot-web-to-project.png)
 
 3. Soubor Program.cs přepište následujícím kódem:
     

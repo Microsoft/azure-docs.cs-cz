@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525514"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316576"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure formát souborů protokolu služby Import/Export
 Když služba Microsoft Azure Import/Export provede akci na disk jako součást úlohy importu nebo úlohy exportu, protokoly se zapisují do bloku, objekty BLOB v účtu úložiště přidruženého k této úlohy.  
@@ -74,7 +74,7 @@ page-range-list ::=
 <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        [Hash="md5-hash"] Status="page-range-status"/>]  
 </PageRangeList>  
   
@@ -82,7 +82,7 @@ block-list ::=
 <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        [Hash="md5-hash"] Status="block-status"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        [Hash="md5-hash"] Status="block-status"/>]  
 </BlockList>  
   
@@ -142,7 +142,7 @@ Následující tabulka popisuje prvky souboru protokolu.
 |`Properties/Path/@Hash`|Atribut řetězců|Kódování Base16 hodnota hash MD5 vlastnosti souboru.|  
 |`Blob/Status`|Řetězec|Stav zpracování objektu blob.|  
   
-# <a name="drive-status-codes"></a>Drive stavové kódy  
+## <a name="drive-status-codes"></a>Drive stavové kódy  
 Následující tabulka uvádí stavové kódy pro zpracování jednotku.  
   
 |Kód stavu|Popis|  

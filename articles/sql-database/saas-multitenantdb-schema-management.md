@@ -12,15 +12,15 @@ ms.author: genemi
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: e7aeb273d4ae276d3460c3de1f404230276cffb7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 14183475fcca0e12c56f009f105e77aaf11b0c98
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056637"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315199"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Správa schématu v aplikaci SaaS, která používá horizontálně dělené databáze SQL více tenantů
- 
+
 Tento kurz zkoumá výzvy zachování počtu databází ve Software jako služba (SaaS) aplikací. Řešení je ukázán pro ventilační si změn schématu napříč flotilou databází.
 
 Jako každá aplikace SaaS aplikace Wingtip Tickets aplikace bude časem vyvíjet a bude vyžadovat změny v databázi. Změny může mít vliv na data schématu nebo odkaz, nebo použít úlohy údržby databáze. U SaaS aplikace pomocí databáze na tenanta vzor musí být změny koordinovat napříč potenciálně velkého počtu databází tenantů. Kromě toho musí obsahovat tyto změny do databáze, ujistěte se, že jsou zahrnuty do nových databází při jejich vytvoření procesu zřizování.
@@ -64,12 +64,12 @@ Model horizontálně dělené databázi s více tenanty používané v tomto př
 ## <a name="elastic-jobs-limited-preview"></a>Elastic Jobs verze Limited Preview
 
 Existuje nová verze služby Elastic Jobs je teď integrované funkce služby Azure SQL Database. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Omezenému ve verzi preview momentálně podporuje použití Powershellu k vytvoření úlohy agenta a T-SQL k vytvoření a Správa úloh.
-> [!NOTE] 
+> [!NOTE]
 > Tento kurz používá funkce služby SQL Database, které jsou ve verzi limited preview (úlohy elastické databáze). Pokud chcete provést v tomto kurzu, zadejte ID svého předplatného na SaaSFeedback@microsoft.com předmět uveďte Elastic Jobs Preview. Jakmile dostanete potvrzení, že vaše předplatné se povolila, stáhněte a nainstalujte nejnovější předběžnou verzi rutin úloh. V této verzi preview je omezená, takže obraťte se na SaaSFeedback@microsoft.com pro dotazy související s hesly nebo podpory.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Získat zdrojový kód aplikace Wingtip Tickets SaaS databázi s více tenanty a skripty
 
-Jsou k dispozici v databázi s více tenanty SaaS aplikace Wingtip Tickets skripty a zdrojový kód aplikace [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) úložišti na Githubu. Zobrazit [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skripty. 
+Jsou k dispozici v databázi s více tenanty SaaS aplikace Wingtip Tickets skripty a zdrojový kód aplikace [WingtipTicketsSaaS MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) úložišti na Githubu. Zobrazit [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skripty.
 
 ## <a name="create-a-job-agent-database-and-new-job-agent"></a>Vytvoření úlohy agenta, databáze a nové úlohy agenta
 
@@ -84,9 +84,9 @@ Tento kurz vyžaduje použití Powershellu k vytvoření databáze agenta úloh 
 
 #### <a name="prepare"></a>Příprava
 
-Databáze každého tenanta zahrnuje sadu typů míst v **VenueTypes** tabulky. Každý typ místa definuje typ události, které může být hostovaných jako místo. Tyto typy míst odpovídají obrázky na pozadí, které se zobrazí v aplikaci událostí tenanta.  V tomto cvičení nasadíte aktualizaci u všech databází, které chcete přidat dva další typy míst: *Motorcycle Racing* a *Swimming Club*. 
+Databáze každého tenanta zahrnuje sadu typů míst v **VenueTypes** tabulky. Každý typ místa definuje typ události, které může být hostovaných jako místo. Tyto typy míst odpovídají obrázky na pozadí, které se zobrazí v aplikaci událostí tenanta.  V tomto cvičení nasadíte aktualizaci u všech databází, které chcete přidat dva další typy míst: *Motorcycle Racing* a *Swimming Club*.
 
-Nejprve si přečtěte typy míst zahrnuta v každé databázi tenantů. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a zkontrolujte tabulku VenueTypes.  Můžete také zadávat dotazy této tabulky v editoru dotazů na webu Azure Portal k němu přistupovat z databáze. 
+Nejprve si přečtěte typy míst zahrnuta v každé databázi tenantů. Připojte se k jedné z databází tenantů v SQL Server Management Studio (SSMS) a zkontrolujte tabulku VenueTypes.  Můžete také zadávat dotazy této tabulky v editoru dotazů na webu Azure Portal k němu přistupovat z databáze.
 
 1. Otevřete SSMS a připojte se k serveru tenanta: *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
 1. Zkontrolujte, že *Motorcycle Racing* a *Swimming Club* **nejsou** momentálně zahrnutá, přejděte *contosoconcerthall* databáze na *tenants1-dpt -&lt;uživatele&gt;*  serveru a dotazování *VenueTypes* tabulky.

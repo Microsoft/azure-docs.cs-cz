@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e46caf855bca184ff8a714d2c93d573b910fea8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 7bafc30bbf8661f7054e49c36af420507f37c989
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226848"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53326534"
 ---
-Můžete snadno [automatické škálování](../articles/monitoring-and-diagnostics/insights-autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
+Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vodorovné nebo svislé škálování
 
@@ -35,7 +35,7 @@ Můžete povolit automatické škálování, při vytváření škálovací sady
  
 ### <a name="metrics"></a>Metriky
 
-Funkce automatického škálování služby Azure Monitor umožňuje škálovat počet spuštěných virtuálních počítačů nebo dolů na základě [metriky](../articles/monitoring-and-diagnostics/insights-autoscale-common-metrics.md). Ve výchozím nastavení virtuální počítače mají základní metriky na úrovni hostitele pro disk, síť a využití procesoru. Při konfiguraci shromažďování dat diagnostiky pomocí diagnostického rozšíření čítače výkonu další hostovaného operačního systému k dispozici pro disk, procesoru a paměti.
+Funkce automatického škálování služby Azure Monitor umožňuje škálovat počet spuštěných virtuálních počítačů nebo dolů na základě [metriky](../articles/azure-monitor/platform/autoscale-common-metrics.md). Ve výchozím nastavení virtuální počítače mají základní metriky na úrovni hostitele pro disk, síť a využití procesoru. Při konfiguraci shromažďování dat diagnostiky pomocí diagnostického rozšíření čítače výkonu další hostovaného operačního systému k dispozici pro disk, procesoru a paměti.
 
 ![Metriky kritéria](./media/virtual-machines-autoscale/virtual-machines-autoscale-criteria.png)
 
@@ -49,7 +49,7 @@ Pokud vaše aplikace potřebuje ke škálování na základě metrik, které nej
  
 ### <a name="notifications"></a>Oznámení
 
-Je možné [nastavení aktivační události](../articles/monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md) tak, aby se nazývají konkrétní webové adresy URL nebo e-mailů se odesílá podle pravidel automatického škálování, které vytvoříte. Webhooky umožňují směrování Azure oznámení výstrah do jiných systémů pro následné zpracování nebo vlastních oznámení.
+Je možné [nastavení aktivační události](../articles/azure-monitor/platform/autoscale-webhook-email.md) tak, aby se nazývají konkrétní webové adresy URL nebo e-mailů se odesílá podle pravidel automatického škálování, které vytvoříte. Webhooky umožňují směrování Azure oznámení výstrah do jiných systémů pro následné zpracování nebo vlastních oznámení.
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Ruční škálování virtuálních počítačů ve škálovací sadě
 

@@ -1,6 +1,6 @@
 ---
-title: Plánování prostředí Azure Time Series Insights (Preview) | Dokumentace Microsoftu
-description: Plánování prostředí Azure Time Series Insights (Preview)
+title: Azure plánování čas Series Insights ve verzi Preview – plánování prostředí Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+description: Plánování prostředí Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,104 +9,113 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: c385d10aac01c844f1d4b390c0bb3d064b9befa3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 1df4847f20329e924352adfe782faa43d10dde98
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878699"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277042"
 ---
-# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí Azure Time Series Insights (Preview)
+# <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí Azure čas Series Insights ve verzi Preview
 
-Tento článek popisuje osvědčené postupy pro plánování a rychle začít s používáním Azure Time Series Insights (Preview).
+Tento článek popisuje osvědčené postupy pro plánování a začít rychle používat Azure čas Series Insights ve verzi Preview.
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Osvědčené postupy pro plánování a příprava
 
-Abyste mohli začít s Time Series Insights (TSI), je vhodné, pokud jste na paměti následující:
+Abyste mohli začít s Time Series Insights, je vhodné, pokud rozumíte:
 
-* Co se zobrazuje při zřizování prostředí TSI (Preview).
-* Co vaše **čas řady ID** a **časové razítko** jsou vlastnosti.
-* Jaké nové **modelu časové řady** je a jak vytvořit vlastní.
-* Jak odesílat události efektivně ve formátu JSON.  
-* TSI obchodní možnosti zotavení po havárii.
+* Co všechno získáte při zřizování prostředí čas Series Insights ve verzi Preview.
+* Jsou vaše ID řady čas a časové razítko vlastností.
+* Co je nového modelu časové řady a jak vytvořit vlastní.
+* Jak odesílat události efektivně ve formátu JSON. 
+* Time Series Insights možnosti zotavení po havárii firmy.
 
-Aktualizace služby Time Series Insights využívá modelu s průběžnými platbami firmy.  Další informace o poplatky a kapacity najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Time Series Insights využívá modelu s průběžnými platbami firmy. Další informace o poplatky a kapacity najdete v tématu [Time Series Insights ceny](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
-## <a name="the-time-series-insights-preview-environment"></a>Prostředí Time Series Insights (Preview)
+## <a name="the-time-series-insights-preview-environment"></a>Čas Series Insights ve verzi Preview prostředí
 
-Při zřizování prostředí TSI (Preview), vytvořte dva prostředky Azure:
+Při zřizování prostředí čas Series Insights ve verzi Preview, vytvoříte dva prostředky Azure:
 
-* Prostředí TSI (Preview)
-* Účet Azure storage pro obecné účely V1
+* Prostředí Time Series Insights ve verzi Preview
+* Azure Storage pro obecné účely V1 účtu
 
-Chcete-li dát do toho, bude nutné tři další položky.  První je [modelu časové řady](./time-series-insights-update-tsm.md), druhá [připojený zdroj událostí k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md), a třetí je [události přenášejí do zdroje událostí](./time-series-insights-send-events.md) , které jsou obě mapovat na model a jsou v platném formátu JSON.  
+Pokud chcete začít, potřebujete tři další položky:
+ 
+- A [časové řady modelu](./time-series-insights-update-tsm.md) 
+- [Připojený zdroj událostí k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md) 
+- [Události přenášejí do zdroje událostí](./time-series-insights-send-events.md) , které jsou namapovány na model a jsou v platném formátu JSON 
 
 ## <a name="configure-your-time-series-ids-and-timestamp-properties"></a>Nakonfigurujte čas řady ID a časové razítko vlastnosti
 
-Chcete-li vytvořit nové prostředí služby TSI, vyberte **ID řady času**. To uděláte tak funguje jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že má váš **čas řady ID** připraven.
+Pokud chcete vytvořit nové prostředí Time Series Insights, vyberte řady čas ID. To uděláte tak funguje jako logický oddíl pro vaše data. Jak je uvedeno, ujistěte se, že má vaše ID řady čas připraven.
 
 > [!IMPORTANT]
-> **Time Series ID** jsou **neměnné** a **není možné později změnit**. Ověřte každý před posledním výběr a prvním použití.
+> ID řady času jsou *neměnné* a *není možné později změnit*. Zkontrolujte každé z nich před posledním výběr a prvním použití.
 
-Můžete vybrat až **tři** (3) klíče jednoznačně rozlišit vašich prostředků. Čtení [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md) a [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md) články pro další informace.
+Můžete vybrat až tři (3) klíče jednoznačně rozlišit vašich prostředků. Další informace najdete v článku [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md) a [úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md).
 
-**Časové razítko** vlastnost je také velmi důležité. Tuto vlastnost lze určit při přidávání zdroje událostí. Každý zdroj události má volitelnou **časové razítko** vlastnost, která se používá ke zdrojům událostí sledovat v čase. **Časové razítko** hodnoty jsou malá a velká písmena a musí být naformátován jednotlivé specifikace každý zdroj událostí.
+Vlastnost časového razítka je také důležité. Tuto vlastnost můžete určit, při přidání zdroje událostí. Každý zdroj události má volitelná vlastnost časového razítka, která se používá ke zdrojům událostí sledovat v čase. Časové razítko hodnoty jsou malá a velká písmena a musí být naformátován jednotlivé specifikace každý zdroj událostí.
 
 > [!TIP]
 > Zkontrolujte požadavky na formátování a analýzy pro zdroje událostí.
 
-Pokud nevyplníte, **čas zařazení události** události zdroj se používá jako událost **časové razítko**. Pokud odesíláte historická data nebo dávkové události, pravděpodobně zjistíte, přizpůsobení **časové razítko** vlastnost má být užitečnější než výchozí **čas zařazení události**. Další informace, přečtěte si informace o [přidání zdroje událostí ve službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md).  
+Když necháte prázdnou, čas zařazení události ze zdroje událostí se používá jako časové razítko události. Pokud odešlete historická data nebo dávkové události, přizpůsobení vlastnost časového razítka je užitečnější než výchozí čas zařazení události. Další informace, přečtěte si informace o [přidání zdroje událostí ve službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md). 
 
 ## <a name="understand-the-time-series-model"></a>Pochopení časové řady modelu
 
-Teď můžete nakonfigurovat prostředí TSI **modelu časové řady**. Nový model usnadňuje vyhledání a analýza dat IoT. Dosahuje tím, že umožňuje kurátorování, údržby a obohacení dat časových řad a umožňuje připravit spotřebiteli datových sad. Model využívá **čas řady ID**, které mapují na instanci jedinečný prostředek přidružení proměnné (označuje se jako typy) a hierarchie. Přečtěte si informace o novém [modelu časové řady](./time-series-insights-update-tsm.md).
+Teď můžete nakonfigurovat prostředí Time Series Insights Model časové řady. Nový model usnadňuje vyhledání a analýza dat IoT. Umožňuje kurátorování, údržby a obohacení dat časových řad a umožňuje připravit spotřebiteli datových sad. Model využívá **čas řady ID**, které mapují na instanci, která přidruží jedinečný prostředek s proměnnými, označované jako typy a hierarchie. Přečtěte si informace o novém [modelu časové řady](./time-series-insights-update-tsm.md).
 
-Model je dynamické, takže můžete vytvořené v každém okamžiku. Ale budete moct začít pracovat rychleji, když ho má sestavena a nahrána před vás od pro zápis dat do služby TSI. Sestaví váš model, zkontrolujte [použití TSM](./time-series-insights-update-how-to-tsm.md) článku.
+Model je dynamická, tak může být sestaven v každém okamžiku. Abyste mohli rychle začít, sestavení a nahrajte ho před doručením (push) dat do služby Time Series Insights. Pokud chcete vytvořit váš model, najdete v článku [použít Model časové řady](./time-series-insights-update-how-to-tsm.md).
 
-Pro mnoho zákazníků, Očekáváme, že **modelu časové řady** mapovat existující model prostředku nebo systému ERP již na místě. Pro zákazníky, které nemají existující model, předem připravené uživatelské prostředí je [poskytuje](https://github.com/Microsoft/tsiclient) zobrazíte rychle začít fungovat. Jak model vám můžou pomoct zobrazením hlavních naše [ukázka ukázkovém prostředí](https://insights.timeseries.azure.com/preview/demo).  
+Pro mnoho zákazníků Model časové řady mapuje existující model prostředku nebo systému ERP již na místě. Pokud nemáte existující model, předem připravených uživatelské prostředí je [poskytuje](https://github.com/Microsoft/tsiclient) zobrazíte rychle začít fungovat. Chcete-li představíte, že jak modelu může vám pomoct, podívejte se [ukázka ukázkovém prostředí](https://insights.timeseries.azure.com/preview/demo). 
 
-## <a name="shaping-your-events"></a>Strukturování události
+## <a name="shape-your-events"></a>Obrazce události
 
-Je důležité ověřit tak, jak odesílat události TSI. Události se v ideálním případě denormalizovat správně a efektivně.
+Můžete ověřit tak, jak odesílat události do služby Time Series Insights. V ideálním případě by se události denormalizovaný správně a efektivně.
 
 Základním pravidlem:
 
-* Metadata by měla být uložena ve vašich **Model časové řady**
-* **Čas režimu řady.**  instance pole a události by měla pouze nezbytné informace jako například:
-  * **ID číselné řady čas**
-  * **Časové razítko**
+* Store metadat v vašeho modelu časové řady
+* Časový režim řady, pole instancí a události jenom potřebné informace, jako patří:
+  * ID časové řady
+  * Timestamp
 
-Zkontrolujte [jak tvar události](./time-series-insights-send-events.md#json) najdete víc podrobností.
+Další informace najdete v tématu [obrazce události](./time-series-insights-send-events.md#json).
 
 ## <a name="business-disaster-recovery"></a>Zotavení po havárii firmy
 
-Jako službu Azure TSI je služba s vysokou dostupností (HA) pomocí redundance na úrovni oblasti Azure. Použít tyto vlastní funkce není nutná žádná konfigurace. Platforma Microsoft Azure také zahrnuje funkce, které vám pomůžou vytvářet řešení s možností zotavení po havárii nebo dostupnosti mezi oblastmi. Pokud chcete zadat globální, mezi různými oblastmi HA pro zařízení nebo uživatele, využijte tyto funkce zotavení po Havárii Azure. Tento článek [Azure obchodní kontinuity podnikových procesů technickou pomoc](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance) popisuje předdefinované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Po havárii](https://docs.microsoft.com/azure/architecture/resiliency/index) obnovení a vysoká dostupnost pro aplikace Azure dokument obsahuje pokyny k architektuře strategie pro aplikace v Azure zajistit vysokou dostupnost a zotavení po Havárii.
+Time Series Insights je vysoce dostupná služba, která používá redundance na úrovni oblasti Azure. Konfigurace není nutné používat tyto funkce přináší. Platforma Microsoft Azure také zahrnuje funkce, které vám pomůžou vytvářet řešení pomocí možnosti zotavení po havárii nebo dostupnosti mezi oblastmi. Poskytovat globální mezi různými oblastmi vysoká dostupnost pro zařízení nebo uživatele, využijte tyto funkce pro zotavení po havárii Azure. 
+
+Informace o integrovaných funkcí v Azure pro provozní kontinuitu a zotavení po havárii (BCDR), najdete v části [technickou pomoc Azure obchodní kontinuity podnikových procesů](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Doprovodné materiály k architektuře týkající se strategií pro aplikace Azure, abyste dosáhli vysoké dostupnosti a zotavení po havárii, naleznete dokumentu na [zotavení po havárii a vysoká dostupnost pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-> Azure Time Series Insights nemá žádné předdefinované BCDR.
-> Ve výchozím nastavení mají obnovení vytvořené Azure Storage, Azure IoT Hub a Event Hubs.
 
-Další informace:
+>  Time Series Insights nemá vestavěné BCDR.
+> Ve výchozím nastavení mají obnovení vytvořené Azure Storage, Azure IoT Hub a Azure Event Hubs.
 
-* Přečtěte si informace o [redundance služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
-* Přečtěte si informace o [zotavení po Havárii vysokou dostupnost služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).
-* Přečtěte si informace o [zásady centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).
+Další informace, přečtěte si informace o:
 
-Nicméně zákazníci, kteří vyžadují BCDR můžete stále implementovat strategii zotavení tak, že vytvoříte prostředí druhý TSI v záloze oblasti Azure. Zákazníci události odesílat do tohoto sekundárního prostředí ze zdroje události primární využívat druhou vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.
+* [Azure redundance úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Zotavení po havárii vysokou dostupnost služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)
+* [Zásady centra událostí.](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 
-Konkrétní kroky k tomu jsou následující:
+Pokud budete potřebovat BCDR, můžete stále implementovat strategii zotavení. Vytvoření druhého prostředí Time Series Insights ve službě backup oblasti Azure. Odesílání událostí do tohoto sekundárního prostředí ze zdroje událostí primární. Použijte druhý vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.
 
-1. Vytvořte prostředí v druhé oblasti. Přečtěte si informace o [TSI prostředí](./time-series-insights-get-started.md).
-1. Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí a připojení tohoto zdroje událostí do nového prostředí. Nezapomeňte určit druhé, vyhrazená skupina příjemců. Další informace z [dokumentace ke službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) nebo [dokumentace k Centru událostí](./time-series-insights-data-access.md).
-1. Pokud primární oblasti má vliv během události po havárii, přesměrovat na zálohování prostředí TSI operací.
+Postupujte podle těchto kroků k vytvoření a použití sekundárních prostředí Time Series Insights.
+
+1. Vytvořte prostředí v druhé oblasti. Další informace najdete v tématu [prostředí Time Series Insights](./time-series-insights-get-started.md).
+1. Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí. Připojte tento zdroj událostí do nového prostředí. Nezapomeňte určit druhé skupině příjemců. Další informace najdete v tématu [dokumentace ke službě IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) nebo [dokumentace k Centru událostí](./time-series-insights-data-access.md).
+1. Pokud primární oblast je ovlivněné incidentem po havárii, přesměrování operací zálohování prostředí Time Series Insights.
 
 > [!IMPORTANT]
-> * Všimněte si, že ke zpoždění může dojít v případě selhání.
-> * Převzetí služeb při selhání také můžou způsobit mometary Špička ve zpracování zprávy, jako jsou přesměrovány operace.
-> * Další informace najdete v tématu [zmírnění latence ve službě TSI](./time-series-insights-environment-mitigate-latency.md).
+> * Všimněte si, že ke zpoždění může setkat v případě selhání.
+> * Převzetí služeb při selhání také může způsobit přechodné špičky ve zpracování zprávy, jako jsou přesměrovány operace.
+> * Další informace najdete v tématu [zmírnění latence v Time Series Insights](./time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si [Azure TSI (Preview) úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md).
+Další informace, přečtěte si informace o:
 
-Přečtěte si informace o [modelování dat](./time-series-insights-update-tsm.md).
+- [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
+- [Modelování dat](./time-series-insights-update-tsm.md)

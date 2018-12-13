@@ -1,5 +1,5 @@
 ---
-title: Jak škálovat prostředí Azure Time Series Insights | Dokumentace Microsoftu
+title: Škálování Azure Time Series Insights – postupy škálování prostředí Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje, jak škálovat vaše prostředí Azure Time Series Insights. Pomocí webu Azure portal můžete přidávat nebo odebírat kapacity v rámci cenové SKU.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: f80c3ad28c3944bd365100d1d873231869da46f8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 1adb93d935e16bdce23e35e306592a9575967452
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629714"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271857"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak škálovat vaše prostředí Time Series Insights
 

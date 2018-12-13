@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.component: ''
-ms.openlocfilehash: 0c75926943ceb2e77335732445f56099961f7667
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6ac34df87c3138aa667e57f7112d31b306e4d9f5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099031"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191219"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -73,7 +72,7 @@ Třetí architektura poměr mezi těmito dvěma možnostmi. Je založen na prvn�
 
 Existují dvě možnosti, jak implementovat centrální umístění ve službě Log Analytics:
 
-1. Centrální pracovního prostoru: poskytovatel služeb můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) k načítání dat z různých pracovních prostorů k této centrální umístění. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
+1. Centrální pracovního prostoru: Můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá poskytovatele služeb [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) k načítání dat z různých pracovních prostorů na tomto místě. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integraci mezi službou Log Analytics a [Power BI](../../azure-monitor/platform/powerbi.md). 
 

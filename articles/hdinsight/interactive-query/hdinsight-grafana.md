@@ -6,23 +6,21 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/17/2018
-ms.openlocfilehash: 8103c06e3fec51316e367de903ed84d0023568bc
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/11/2018
+ms.openlocfilehash: f47c9ee85348cc96915a0fa637b06b0a73059351
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308150"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322290"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Grafana přístupu v Azure HDInsight
 
 
 [Grafana](https://grafana.com/) je Oblíbené, open source grafů a řídicích panelů Tvůrce. Grafana je funkce bohaté; nejen nemá umožníte uživatelům vytvářet přizpůsobitelný a ke sdílení řídicích panelů, nabízí také bez vizuálního vzhledu/skripty řídicí panely, integrace protokolu LDAP, více zdrojů dat a další.
 
-V současné době Grafana je podpora pouze podle typu clusteru Interactive Query ve službě Azure HDInsight.
-
+V současné době v Azure HDInsight, Grafana podporuje typy clusterů Hbase a Interactive Query.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -65,7 +63,7 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
    
     ![Počáteční skupina prostředků HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Skupina prostředků clusteru Azure HDInsight")
     
-5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. Cluster HDInsight a jeho výchozí účet úložiště musí být umístěny společně a nacházet se ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
+5. Na dlaždici je uvedené také výchozí úložiště přidružené ke clusteru. Každý cluster obsahuje závislost [účtu Azure Storage](../hdinsight-hadoop-use-blob-storage.md) nebo [účtu Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Označuje se jako výchozí účet úložiště. HDInsight cluster a jeho výchozí účet úložiště, musí být umístěny společně ve stejné oblasti Azure. Odstraněním clusterů nedojde k odstranění účtu úložiště.
     
 
 > [!NOTE]
@@ -76,16 +74,22 @@ V této části vytvoříte cluster Interactive Query v HDInsight pomocí šablo
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicím panelem Grafana
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+
 2. Vyberte **clustery HDInsight**a pak vyberte název clusteru, který jste vytvořili v předchozí části.
+
 3. V části **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**.
 
     ![Portál řídicí panel clusteru HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "řídicí panel clusteru HDInsight na portálu")
 
-4. Z řídicího panelu, klikněte na tlačítko **Grafana** dlaždici.
+4. Z řídicího panelu, klikněte na tlačítko **Grafana** dlaždici. Alternativně přejděte `/grafana/` cestu adresy URL vašeho clusteru. Například, `https://<clustername>.azurehdinsight.net/grafana/`.
+
 5. Zadejte přihlašovací údaje clusteru Hadoop.
-6. Řídicím panelem Grafana vypadá takto:
+
+6. Řídicím panelem Grafana se zobrazí a bude vypadat jako v tomto příkladu:
 
     ![Řídicím panelem HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "řídicím panelem HDInsight Grafana")
+
+   
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. 
@@ -137,5 +141,3 @@ Pokud potřebujete další informace o vytváření a správě clusteru HDInsigh
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-use-hive]: hdinsight-use-hive.md
 [hdinsight-use-pig]: hdinsight-use-pig.md
-
-

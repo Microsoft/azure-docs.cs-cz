@@ -1,5 +1,5 @@
 ---
-title: Ukázka pro Azure Policy – Provedení auditu v případě, že není žádný správce Azure AD
+title: Ukázkový – Audit žádný správce Azure AD
 description: Tato ukázková zásada provede audit v případě, že k serveru SQL není přiřazený žádný správce Azure Active Directory.
 services: azure-policy
 author: DCtheGeek
@@ -8,13 +8,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.custom: mvc
-ms.openlocfilehash: f85653f57d5052c60ca2a6170370513c88c3b8cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 4ca215fbb905eed22b1e1911d25a773e236fe4c2
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965292"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311741"
 ---
 # <a name="audit-no-azure-active-directory-administrator"></a>Auditování, když není žádný správce Azure Active Directory
 
@@ -69,6 +68,6 @@ Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuáln
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další ukázky najdete v [ukázkách pro Azure Policy](index.md).

@@ -3,8 +3,8 @@ title: Ukázkový skript Azure PowerShellu – Vytvoření naplánovaného zálo
 description: Ukázkový skript Azure PowerShellu – Vytvoření naplánovaného zálohování webové aplikace
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
@@ -13,16 +13,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: b2e5b66e93f94085484658f4cc43141354910e3a
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: f207ba5071c4e8499e42d7cb42ce0b82effc70b6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324687"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192378"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app"></a>Vytvoření naplánovaného zálohování webové aplikace
+# <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>Vytvoření naplánovaného zálohování webové aplikace pomocí Powershellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří naplánované zálohování. 
 
@@ -56,7 +56,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Získá seznam záloh webové aplikace. |
 | [Get-AzureRmWebAppBackupConfiguration](/powershell/module/azurerm.websites/get-azurermwebappbackupconfiguration) | Získá konfiguraci zálohování webové aplikace. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

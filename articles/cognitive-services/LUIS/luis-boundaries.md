@@ -8,17 +8,17 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6f2f69fc746da049e8e48f870fc0e03ffd8ee1a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 716c6b67676bb3421fd5dbd0274ed41c7705c676
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078935"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133515"
 ---
-# <a name="luis-boundaries"></a>Služba LUIS hranice
+# <a name="boundaries-for-your-luis-model-and-keys"></a>Hranice pro LUIS model a klíče
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
 
 
@@ -32,7 +32,7 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 | Explicitní seznam | 50 na aplikaci.|
 | **[Hierarchické](./luis-concept-entity-types.md) |100 s až 10 podřízených objektů |
 | [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://aka.ms/dispatch-tool) aplikace nemá odpovídající 500 odeslání zdroje|
-| [Seznam entit](./luis-concept-entity-types.md) | Nadřízený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
+| [Seznam entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
 | [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
 | [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznam|

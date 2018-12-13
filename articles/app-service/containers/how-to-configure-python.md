@@ -1,5 +1,5 @@
 ---
-title: Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
+title: Konfigurace aplikace v Pythonu v Linuxu – služba Azure App Service
 description: Tento kurz popisuje možnosti vytváření a konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
-ms.custom: mvc
-ms.openlocfilehash: 22afdc0ae483959940776aecd20b0a29854097d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970752"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249630"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak [služba Azure App Service v Linuxu](app-service-li
 
 ## <a name="set-python-version"></a>Nastavení verze Pythonu
 
-Jsou k dispozici dva základní Image: Python 3.6 a Python 3.7. Vytvoření aplikace s požadovanou image na základě Python. Například pokud chcete vytvořit aplikaci pomocí Pythonu 3.7, spusťte následující příkaz ve službě Cloud Shell:
+K dispozici jsou dvě základní bitové kopie: Python 3.6 a Python 3.7. Vytvoření aplikace s požadovanou image na základě Python. Například pokud chcete vytvořit aplikaci pomocí Pythonu 3.7, spusťte následující příkaz ve službě Cloud Shell:
 
 ```azurecli-interactive
 az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
@@ -59,9 +59,9 @@ Tento kontejner má následující vlastnosti:
 V průběhu spuštění služba App Service v kontejneru Linuxu spustí následující kroky:
 
 1. Kontrola a použití vlastního spouštěcího příkazu, pokud byl zadaný.
-1. Kontrola existence souboru *wsgi.py* aplikace Django. Když existuje, spuštění serveru Gunicorn za použití tohoto souboru.
-1. Kontrola existence souboru *application.py*. Když existuje, spuštění serveru Gunicorn za použití `application:app`. Předpokládá se, že jde o aplikaci Flask.
-1. Pokud se žádná další aplikace nenajde, následuje spuštění výchozí aplikace sestavené do kontejneru.
+2. Kontrola existence souboru *wsgi.py* aplikace Django. Když existuje, spuštění serveru Gunicorn za použití tohoto souboru.
+3. Kontrola existence souboru *application.py*. Když existuje, spuštění serveru Gunicorn za použití `application:app`. Předpokládá se, že jde o aplikaci Flask.
+4. Pokud se žádná další aplikace nenajde, následuje spuštění výchozí aplikace sestavené do kontejneru.
 
 Podrobnosti ke každému bodu poskytnou následující oddíly.
 

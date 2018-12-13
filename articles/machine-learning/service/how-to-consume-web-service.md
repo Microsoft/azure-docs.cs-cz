@@ -1,22 +1,22 @@
 ---
-title: Využívání nasazených webových služeb
+title: Vytvoření klienta pro nasazenou webovou službu využití
 titleSuffix: Azure Machine Learning service
 description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webové služby, který zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API pomocí programovacím jazyce podle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.author: raymondl
-author: raymondlaghaeian
+ms.author: aashishb
+author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0cf585ec3eb95b71080436791fd47d96239dfa9f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100434"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251126"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 

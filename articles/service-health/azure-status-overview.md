@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: be3c8d10ef034a4bd03f178bc1334b8a9eeb2f58
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282902"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308276"
 ---
 # <a name="azure-status"></a>Stav Azure
 [Stav Azure](https://azure.microsoft.com/status/) vám poskytuje globální přehled o stavu služeb Azure. Stav služby Azure umožňuje získat nejčerstvější informace na dostupnost služby. Všichni mají přístup ke stavu Azure a můžete zobrazit všechny služby, které hlásit jejich stav služby. 
@@ -37,8 +37,8 @@ Na stránce stavu Azure vždy zobrazovat nejnovější informace o stavu, ale kd
 Zde můžete vidět události až do 90 dnů v minulosti, včetně předběžný hlavní příčinu, zmírnění škod a další kroky pro Azure.
 
 ## <a name="rss-feed"></a>Informační kanál RSS
-Stav služby Azure také poskytuje [informačního kanálu RSS](https://azure.microsoft.com/en-us/status/feed/) změn stavu služby Azure, které se můžete přihlásit k odběru.
+Stav služby Azure také poskytuje [informačního kanálu RSS](https://azure.microsoft.com/status/feed/) změn stavu služby Azure, které se můžete přihlásit k odběru.
 
-# <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další kroky
 * Přečtěte si, jak lze získat více přizpůsobené zobrazení do Azure health se službou [Service Health](./service-health-overview.md).
 * Přečtěte si, jak můžete získat podrobnější zobrazení do stavu konkrétních prostředků Azure pomocí [Resource Health](./resource-health-overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Synchronizovat obsah z cloudové složky do služby Azure App Service
+title: Synchronizovat obsah z cloudové složky - službě Azure App Service
 description: Zjistěte, jak nasadit aplikaci do služby Azure App Service prostřednictvím synchronizace obsahu z cloudové složky.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 10a33163b2bfe6a1c9c24b9de58f83813e7534a6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: a818cf440fea939eb86271482e95aa813d678e06
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863920"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258623"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizovat obsah z cloudové složky do služby Azure App Service
 V tomto článku se dozvíte, jak synchronizovat obsah, abyste [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z Dropboxu a OneDrive. 

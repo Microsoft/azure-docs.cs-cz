@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b961dadbe8743f1485ef0d13a44a1bb0f3ce32b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741568"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321371"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Nastaví vertikální automatické škálování díky škálování virtuálního počítače
 Tento článek popisuje, jak vertikální škálování Azure [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/) s nebo bez něj neukončil. Vertikální škálování virtuálních počítačů, které nejsou ve škálovacích sadách najdete v tématu [vertikální škálování virtuálních počítačů Azure s využitím Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -84,7 +84,7 @@ Po importu sady runbook, přidání webhooku do sady runbook, může být aktivo
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Přidání výstrahy pro škálovací sadu virtuálních počítačů
-Následující skript prostředí PowerShell, který ukazuje, jak přidat upozornění na škálovací sadu virtuálních počítačů nastavena. Přečtěte si následující článek a získat tak název metriky, která se aktivuje upozornění na: [běžné metriky automatického škálování Azure monitoru](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+Následující skript prostředí PowerShell, který ukazuje, jak přidat upozornění na škálovací sadu virtuálních počítačů nastavena. Přečtěte si následující článek a získat tak název metriky, která se aktivuje upozornění na: [Azure Monitor běžné metriky automatického škálování](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -120,7 +120,7 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 Další informace o tom, jak vytvářet výstrahy najdete v následujících článcích:
 
 * [Ukázky Azure Powershellu monitorování rychlý start](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Ukázky rychlý start Azure Cross-platform CLI monitorování](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Ukázky rychlý start Azure Cross-platform CLI monitorování](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>Souhrn
 Tento článek vám ukázal, jednoduché vertikální škálování příklady. Pomocí těchto stavebních bloků – účet služby Automation, sady runbook, webhooky, výstrahy – se můžete připojit bohatou řadu událostí, s vlastní sadu akcí.

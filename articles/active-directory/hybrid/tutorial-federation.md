@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50868d32b35e77495965b9ee9d0023d23b43fd5a
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b813a276c2047a41038408744637b3dd50aff863
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426379"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163510"
 ---
-# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Vytvoření federace pro jedno prostředí doménové struktury AD do cloudu
+# <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Federace prostředí jedné doménové struktury služby AD do cloudu
 
 ![Vytvořit](media/tutorial-federation/diagram.png)
 
@@ -87,7 +87,7 @@ Pokud chcete dokončit vytváření virtuálního počítače, je potřeba dokon
 5. Klikněte na tlačítko **nainstalovat**.
 6. Zadejte klíč licence a klikněte na tlačítko **Další**.
 7. Zkontrolujte ** Přijímám licenční podmínky a klikněte na tlačítko **Další**.
-8. Vyberte **vlastní: instalovat pouze Windows (rozšířené)**
+8. Vyberte **vlastní:  Instalovat pouze Windows (rozšířené)**
 9. Klikněte na **Další**
 10. Po dokončení instalace restartujte virtuální počítač, přihlášení a spuštění aktualizací Windows k zajištění, že je virtuální počítač nejnovější.  Nainstalujte nejnovější aktualizace.
 
@@ -214,7 +214,7 @@ Když teď máme tenanta služby Azure AD, vytvoříme účet globálního sprá
 1.  V části **Spravovat** vyberte **Uživatele**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **všichni uživatelé** a pak vyberte **+ nový uživatel**.
-3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Jakmile budete hotovi, vyberte **vytvořit**.</br>
+3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Až to budete mít, vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Po dokončení, otevřete nový webový prohlížeč a přihlaste se do myapps.microsoft.com pomocí nového účtu globálního správce a dočasné heslo.
 5. Změňte heslo pro globálního správce a něco, co si budou pamatovat.
@@ -245,7 +245,7 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 
 1. Na obrazovce připojení ke službě Azure AD, zadejte uživatelské jméno a heslo globálního správce, který jsme vytvořili výše a klikněte na tlačítko **Další**.
 2. Na obrazovce adresáře připojení, klikněte na tlačítko **přidat adresář**.  Potom vyberte **vytvořit nový účet AD** zadejte contoso\Administrator uživatelské jméno a heslo a klikněte na tlačítko **OK**.
-3. Klikněte na **Další**.
+3. Klikněte na tlačítko **Další**.
 4. Na obrazovce konfigurace přihlášení Azure AD, vyberte **pokračovat bez odpovídajícího všechny přípony UPN k ověřených domén** a klikněte na tlačítko **Další.**
 5. Na doménu a organizační jednotku filtrování obrazovka, klikněte na tlačítko **Další**.
 6. Na Jednoznačná identifikace uživatelů obrazovky, klikněte na tlačítko **Další**.
@@ -255,10 +255,10 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 10. Na obrazovce pro farmu služby AD FS, ujistěte se, že **konfigurovat novou farmu služby AD FS** zaškrtnuto.
 11. Vyberte **použít certifikát nainstalovaný na federačních serverech** a klikněte na tlačítko **Procházet**.
 12. Do vyhledávacího pole zadejte řadič domény DC1 a vyberte ji, když je nalezena.  Klikněte na tlačítko **OK**.
-13. Z **soubor certifikátu** rozevíracího seznamu, vyberte **adfs.contoso.com** certifikát, který jsme vytvořili výše.  Klikněte na **Další**.
+13. Z **soubor certifikátu** rozevíracího seznamu, vyberte **adfs.contoso.com** certifikát, který jsme vytvořili výše.  Klikněte na tlačítko **Další**.
 ![Federace](media/tutorial-federation/fed2.png)
 
-1. Na obrazovce server služby AD FS, klikněte na tlačítko **Procházet** a do vyhledávacího pole zadejte řadič domény DC1 a vyberte ji, když je nalezena.  Klikněte na tlačítko **OK**.  Klikněte na **Další**.
+1. Na obrazovce server služby AD FS, klikněte na tlačítko **Procházet** a do vyhledávacího pole zadejte řadič domény DC1 a vyberte ji, když je nalezena.  Klikněte na tlačítko **OK**.  Klikněte na tlačítko **Další**.
 ![Federace](media/tutorial-federation/fed3.png)
 
 1. V okně webové aplikace Proxy servery klikněte na tlačítko **Další**.

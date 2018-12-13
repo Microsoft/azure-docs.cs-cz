@@ -1,5 +1,5 @@
 ---
-title: Připojení ke službě Azure HDInsight pomocí nástrojů Data Lake pro Visual Studio
+title: Připojení k Apache Hadoopu pomocí nástrojů Data Lake pro Visual Studio – Azure HDInsight
 description: Zjistěte, jak nainstalovat a používat nástroje Data Lake pro Visual Studio pro připojení ke clusterům Apache Hadoop v Azure HDInsight a následné spouštění dotazů Hive.
 keywords: hadoop tools, hive query, visual studio, visual studio hadoop
 services: hdinsight
@@ -7,15 +7,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive, hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 05/16/2018
-ms.openlocfilehash: e25a43f4589b7266edccd7f8c14a0937515d13a3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.date: 12/06/2018
+ms.openlocfilehash: 24efb8490afdf67b96d531802362f88bef7d13de
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015173"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166485"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 

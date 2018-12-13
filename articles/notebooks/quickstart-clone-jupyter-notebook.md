@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e30057f773afe6ec625b811c6ca1447c519ceda7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c13650d53098c891b168cb88516dbee53f3da5cc
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106324"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260245"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Rychlý start: Klonování poznámkového bloku
 
@@ -34,19 +34,19 @@ Klonování vytvoří kopii Poznámkový blok Githubu ve vašem účtu poznámko
 
     ![Moje projekty odkaz horní části okna prohlížeče](media/quickstarts/my-projects-link.png)
 
-1. Na **projekty** vyberte tlačítka se šipkou nahoru (Klávesová zkratka: U; na tlačítko se zobrazí jako **nahrát úložiště Github** Pokud okno prohlížeče je dostatečně široký):
+1. Na **projekty** vyberte tlačítka se šipkou nahoru (Klávesová zkratka: U; tlačítko se zobrazí jako **nahrát úložiště GitHub se vzorovými** Pokud okno prohlížeče je dostatečně široký):
 
-    ![Odeslat příkaz úložiště Github na stránce Mé projekty](media/quickstarts/upload-github-repo-command.png)
+    ![Odeslat příkaz úložiště GitHub na stránce Mé projekty](media/quickstarts/upload-github-repo-command.png)
 
-1. V **nahrát úložiště Github** , který se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **Import**:
+1. V **nahrát úložiště GitHub** , který se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **Import**:
 
     - **Úložiště Github**: Microsoft/cognitive-services-poznámkových bloků (Tento název duplicity poznámkové bloky Jupyter pro Azure Cognitive Services v [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
     - **Klonovat rekurzivně**: (zaškrtnuto)
-    - **Název projektu**: klonování služby Cognitive Services
+    - **Název projektu**: Klon služby cognitive Services
     - **ID projektu**: cognitive services klonování
     - **Veřejné**: (zaškrtnuto)
 
-    ![Nahrát úložiště Github automaticky otevírané okno lze shromažďovat informace o úložišti](media/quickstarts/upload-github-repo-popup.png)
+    ![Nahrát úložiště GitHub automaticky otevírané okno lze shromažďovat informace o úložišti](media/quickstarts/upload-github-repo-popup.png)
 
 1. Při dokončení procesu; buďte prosím trpěliví. klonování úložiště může trvat několik minut.
 

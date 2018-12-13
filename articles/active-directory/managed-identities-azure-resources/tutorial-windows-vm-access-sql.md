@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ee4b504cf26456baa7d10eab05305eee5e36c35a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623821"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191899"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k Azure SQL
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -63,6 +63,8 @@ Pro tento další krok budete potřebovat aplikaci [Microsoft SQL Server Managem
 
 - [Univerzální ověřování s využitím služeb SQL Database a SQL Data Warehouse (podpora SSMS pro MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Konfigurace a správa ověřování služby Azure Active Directory s využitím služby SQL Database nebo SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
+
+SQL DB vyžaduje jedinečné zobrazované názvy AAD. Díky tomu účty AAD, jako jsou uživatelé, skupiny nebo instanční objekty (aplikace) a názvy virtuálních počítačů, které jsou povolené pro spravovanou identitu musí být definovány jedinečně v adresáři AAD. Pokud jde o zobrazovaného jména. SQL DB zkontroluje AAD zobrazovaný název při vytváření jazyka T-SQL těchto uživatelů a pokud není jedinečný, příkaz se nezdaří, pokud chcete zadat jedinečný název zobrazovaný AAD pro daný účet.
 
 1.  Spusťte aplikaci SQL Server Management Studio.
 2.  V dialogovém okně **Připojení k serveru** zadejte do pole **Název serveru** název vašeho serveru SQL.

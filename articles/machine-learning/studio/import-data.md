@@ -5,9 +5,8 @@ keywords: Importujte dat, formát dat, datové typy, zdroje dat, trénovacích d
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c194ee3b-838c-4efe-bb2a-c1d052326216
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 8f6bc6e1e13de879f81e6fc6f1f447d0c2856ced
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2f8c1eb43fddb21a59d4f00fd86b08d3fb3608f4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315252"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269953"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Import cvičných dat do nástroje Azure Machine Learning Studio z různých zdrojů dat
 
@@ -39,10 +38,6 @@ Chcete-li použít vlastní data ve službě Machine Learning Studio k vývoji a
 > 
 
 Tento úvodní článek také popisuje, jak získat data připravená k použití v nástroji Machine Learning Studio a popisuje datové typy a formáty dat podporovaných.
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 ## <a name="get-data-ready-for-use-in-azure-machine-learning-studio"></a>Získat data připravená k použití v nástroji Azure Machine Learning Studio
 Machine Learning Studio je navržena pro práci s obdélníkové nebo tabulkových dat, jako jsou textová data, která má s oddělovači nebo strukturovaná data z databáze, i když se v některých případech může použít neobdélníkových data.

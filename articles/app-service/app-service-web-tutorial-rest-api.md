@@ -1,5 +1,5 @@
 ---
-title: Rozhraní RESTful API s CORS v Azure App Service | Microsoft Docs
+title: Hostování rozhraní RESTful API s CORS – služba Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS.
 services: app-service\api
 documentationcenter: dotnet
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d8a95ee4afc844868cfda78087773a6a37c07c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445425"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53261564"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
 
@@ -58,7 +58,7 @@ Ukázkové úložiště naklonujete spuštěním následujícího příkazu.
 git clone https://github.com/Azure-Samples/dotnet-core-api
 ```
 
-Toto úložiště obsahuje aplikaci vytvořenou podle následujícího kurzu: [Generování stránek nápovědy webového rozhraní ASP.NET Core API pomocí Swaggeru](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
+Toto úložiště obsahuje aplikaci, která je vytvořena na základě následujícího kurzu: [Stránky nápovědy ASP.NET Core webového rozhraní API pomocí Swaggeru](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Aplikace s využitím generátoru Swagger poskytuje [uživatelské rozhraní Swagger](https://swagger.io/swagger-ui/) a koncový bod JSON pro Swagger.
 
 ### <a name="run-the-application"></a>Spuštění aplikace
 
@@ -211,4 +211,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak ověřovat a autorizovat uživatele.
 
 > [!div class="nextstepaction"]
-> [Kurz: Komplexní ověřování a autorizace uživatelů](app-service-web-tutorial-auth-aad.md)
+> [Kurz: Ověřování a autorizaci uživatelů začátku do konce](app-service-web-tutorial-auth-aad.md)

@@ -1,5 +1,5 @@
 ---
-title: Podpora SSH pro Azure App Service v Linuxu | Dokumentace Microsoftu
+title: Podpora SSH pro službu App Service v Linuxu – Azure | Dokumentace Microsoftu
 description: Další informace o používání SSH se službou Azure App Service v Linuxu.
 keywords: služby Azure app service, webové aplikace, linux a oss
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 4fa5e40b75be933ee62c8ba59449a78ac071dc43
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958165"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251286"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
 
@@ -66,7 +67,7 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Přidat [ `COPY` instrukce](https://docs.docker.com/engine/reference/builder/#copy) k souboru Dockerfile ke kopírování [sshd_config](https://man.openbsd.org/sshd_config) do souboru */etc/ssh/* adresáře. Konfigurační soubor by měl vycházet souboru sshd_config v úložišti GitHub Azure App Service [tady](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+2. Přidat [ `COPY` instrukce](https://docs.docker.com/engine/reference/builder/#copy) k souboru Dockerfile ke kopírování [sshd_config](https://man.openbsd.org/sshd_config) do souboru */etc/ssh/* adresáře. Konfigurační soubor by měl vycházet souboru sshd_config v úložišti GitHub Azure App Service [tady](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
 
     > [!NOTE]
     > *Sshd_config* soubor musí obsahovat následující jinak připojení selže: 
@@ -77,13 +78,13 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
     COPY sshd_config /etc/ssh/
     ```
 
-1. Zahrnovat port 2222 [ `EXPOSE` instrukce](https://docs.docker.com/engine/reference/builder/#expose) pro soubor Dockerfile. I když je známé kořenové heslo, port 2222 není přístupný z internetu. Jde interní pouze port přístupný pouze kontejnery v rámci síťového mostu privátní virtuální síť.
+3. Zahrnovat port 2222 [ `EXPOSE` instrukce](https://docs.docker.com/engine/reference/builder/#expose) pro soubor Dockerfile. I když je známé kořenové heslo, port 2222 není přístupný z internetu. Jde interní pouze port přístupný pouze kontejnery v rámci síťového mostu privátní virtuální síť.
 
     ```docker
     EXPOSE 2222 80
     ```
 
-1. Ujistěte se, že chcete spustit službu SSH pomocí skriptu prostředí (podívejte se na příklad [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
+4. Ujistěte se, že chcete spustit službu SSH pomocí skriptu prostředí (podívejte se na příklad [init_container.sh](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)).
 
     ```bash
     #!/bin/bash

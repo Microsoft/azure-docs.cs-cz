@@ -1,5 +1,5 @@
 ---
-title: Použití Apache Pig v HDInsight
+title: Použití Apache Pig – Azure HDInsight
 description: Další informace o použití Pigu se Apache Hadoop v HDInsight.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 4eb4fa201a435df5e2b5016ba9686d76707c0635
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 25a91c6217aac1b2278957c1ff0ed8b7a9b1f6ac
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011619"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166162"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Použití Apache Pig s Apache Hadoop v HDInsight
 
@@ -40,11 +40,11 @@ Pig umožňuje definovat zpracování jako řadu objektů transformace, které d
 
 Jazyka Pig Latin můžete k popisu toku dat z vstup nezpracovaných dat, prostřednictvím jednoho nebo více transformací, k vytvoření požadovaného výstupu. Pig Latin programy postupovat podle tohoto vzoru Obecné:
 
-* **Zatížení**: čtení dat manipulovat ze systému souborů
+* **Zatížení**: Čtení dat manipulovat ze systému souborů
 
-* **Transformace**: práce s daty
+* **Transformace**: Práce s daty
 
-* **Výpis stavu nebo ukládat**: výstup dat na obrazovku nebo ukládat pro zpracování
+* **Výpis stavu nebo ukládat**: Výstupní data do obrazovky nebo ukládat pro zpracování
 
 ### <a name="user-defined-functions"></a>Uživatelem definované funkce
 

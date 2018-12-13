@@ -1,5 +1,5 @@
 ---
-title: Konfigurace automatizovaného se strojovým učením
+title: Vytváření automatizovaných experimentů v ML
 titleSuffix: Azure Machine Learning service
 description: Automatizované machine learning vybere algoritmus pro vás a generuje modelu připravené na nasazení. Další možnosti, které můžete použít ke konfiguraci automatické se strojovým učením.
 author: nacharya1
@@ -11,22 +11,22 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f5237ab2b6970772e1f08264bb44223640c33a37
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140162"
+ms.locfileid: "53187258"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
 Automatizované machine learning za vás vybere algoritmus a hyperparameters a generuje modelu připravené na nasazení. Existuje několik možností, které můžete použít ke konfiguraci automatické se strojovým učením. V této příručce se dozvíte, jak definovat různá nastavení konfigurace.
 
-Chcete-li zobrazit příklady automatizované experimentů machine learningu, naleznete v tématu [kurz: Vyškolíme model klasifikace pomocí automatizovaných strojového učení](tutorial-auto-train-models.md) nebo [trénování modelů pomocí automatizovaných strojového učení v cloudu](how-to-auto-train-remote.md).
+Chcete-li zobrazit příklady automatizované experimentů machine learningu, naleznete v tématu [kurzu: Trénování modelu klasifikace automatizované machine Learning](tutorial-auto-train-models.md) nebo [trénování modelů pomocí automatizovaných strojového učení v cloudu](how-to-auto-train-remote.md).
 
 Možnosti konfigurace je k dispozici ve službě automatizované machine learning:
 
-* Vyberte typ testu: klasifikace, regrese nebo Prognózování
+* Vyberte typ testu: Klasifikace, regrese řetězce nebo předvídáte
 * Zdroj dat, formát a načítat data
 * Vyberte cílové výpočetní prostředky: místní nebo vzdálené
 * Automatizované strojového učení nastavení testu
@@ -219,7 +219,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `iteration_timeout_minutes` |   Omezuje množství času (v minutách), trvá konkrétní iteraci. Pokud iterace překročí zadanou hodnotu, bude zrušen danou iteraci. Pokud není nastavena, pak iterace běží nepřetržitě až do dokončení. |   Žádný
 `n_cross_validations`   |Počet rozdělení křížových ověření| Žádný
 `validation_size`   |Velikost ověření nastavit jako procento všech ukázka školení.|  Žádný
-`preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje číselných dat s průměrem, Text se většina výskyt chybí </li><li>Hodnoty zařazené do kategorií: Pokud datový typ je číselné a počet jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true |  False | 
+`preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje číselných dat s průměrem, Text se většina výskyt chybí </li><li>Hodnoty zařazené do kategorií: Pokud je datový typ číselné a počtem jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true |  False | 
 `blacklist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace vyloučení určitých algoritmů z experimentu. Je užitečné, pokud jste si vědomi, že algoritmy nefungují dobře u datové sady. S výjimkou algoritmů můžete ušetřit vám výpočetní prostředky a školení čas.<br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Žádný
 `whitelist_models`  | Automatizované experimentu strojového učení a má mnoho různých algoritmů, které se pokusí. Konfigurace zahrnují určitých algoritmů pro experiment. Je užitečné, pokud jste si vědomi, že algoritmy fungují dobře u datové sady. <br/>Povolené hodnoty pro klasifikaci<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Povolené hodnoty pro regresní<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Povolené hodnoty pro prognózování<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Žádný
 `verbosity` |Určuje úroveň protokolování s informacemi, které se nejvíce podrobné a kritické přičemž nejmenší. Úroveň podrobností má stejné hodnoty, jak jsou definovány v protokolování balíček pythonu. Povolené hodnoty jsou:<br/><li>logging.INFO</li><li>protokolování. UPOZORNĚNÍ</li><li>protokolování. CHYBA</li><li>protokolování. KRITICKÁ</li>  | logging.INFO</li> 
@@ -244,8 +244,8 @@ Pokud používáte `preprocess=True`, následující data předběžného zpraco
     *   Numerické funkce dává chybějící hodnoty pomocí průměr hodnot ve sloupci.
     *   Funkce zařazené do kategorií dává chybějící hodnoty pomocí nejčastěji se vyskytující hodnotu.
 1.  Generovat další funkce
-    * Pro funkce data a času: rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodinu, minutu, sekundu.
-    * Pro textové funkce: termín frekvenci podle slovo unigram bi gramy a tri gramy, počet vektorizaci.
+    * Datum a čas funkcí: Rok, měsíc, den, den v týdnu, den roku, čtvrtletí, týden v roce, hodinu, minutu, sekundu.
+    * Pro textové funkce: Termín frekvenci podle slovo unigram bi gramy a tri gramy, počet vektorizaci.
 1.  Transformace a kódování
     * Číselné funkce s velmi malým počtem jedinečných hodnot transformována do kategorií funkce.
     * V závislosti na mohutnosti zařazené do kategorií funkcí proveďte popisek kódování nebo (algoritmu hash) jeden horkou kódování.

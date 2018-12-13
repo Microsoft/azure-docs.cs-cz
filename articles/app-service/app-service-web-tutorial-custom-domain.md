@@ -1,5 +1,5 @@
 ---
-title: Mapování existujícího vlastního názvu DNS na Azure Web Apps | Microsoft Docs
+title: Mapování existujícího vlastního názvu DNS - službě Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak přidat existující vlastní název domény DNS (individuální doména) k webové aplikaci, back-endu mobilní aplikace nebo aplikaci API ve službě Azure App Service.
 keywords: app service, azure app service, domain mapping, domain name, existing domain, hostname
 services: app-service\web
@@ -15,13 +15,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 30199005db93f9a43a37d2c72bb34dd772265419
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664883"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270259"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Kurz: Mapování existujícího vlastního názvu DNS na Azure Web Apps
 
@@ -52,7 +52,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="prepare-the-app"></a>Příprava aplikace
 
-Abyste mohli mapovat vlastní název DNS na webovou aplikaci, [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) příslušné webové aplikace musí být na placené úrovni (**Shared**, **Basic**, **Standard** nebo **Premium**). V tomto kroku se ujistíte, že je aplikace App Service na podporované cenové úrovni.
+K mapování vlastního názvu DNS na webovou aplikaci, webové aplikace na [plán služby App Service](https://azure.microsoft.com/pricing/details/app-service/) musí být placenou úroveň (**Shared**, **základní**, **standardní**, **Premium** nebo **spotřeby** pro službu Azure Functions). V tomto kroku se ujistíte, že je aplikace App Service na podporované cenové úrovni.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -349,7 +349,7 @@ Set-AzureRmWebApp `
 
 Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/app-service-powershell-configure-custom-domain.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

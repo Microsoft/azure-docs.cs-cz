@@ -1,5 +1,5 @@
 ---
-title: Příklady dotazů Lucene pro službu Azure Search | Dokumentace Microsoftu
+title: Příklady dotazů Lucene – Azure Search
 description: Syntaxe dotazů Lucene pro vyhledávání přibližných shod, vyhledávání blízkých výrazů, zvyšování skóre termínu, hledání regulárního výrazu a vyhledávání se zástupnými znaky v rámci služby Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -9,12 +9,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: b5a3e2eac218ba2aa6958ffc56bd59f5b513cf48
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.custom: seodec2018
+ms.openlocfilehash: 0ce230bc6a926229ed383c828f83aafd60117471
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055030"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317148"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Příklady dotazů syntaxe Lucene pro vytváření upřesňující dotazy ve službě Azure Search
 Při vytváření dotazů pro službu Azure Search, můžete nahradit výchozí [jednoduchý analyzátor dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) s více obsáhlém [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) formulovat specializované a pokročilé dotazu definice. 
@@ -112,7 +113,7 @@ Nezapomeňte vložit více řetězce v uvozovkách, pokud chcete, aby oba řetě
 
 V zadané pole **fieldname:searchterm** musí být prohledávatelné pole. Zobrazit [vytvoření indexu (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) podrobnosti o použití atributů indexu v definicích polí.
 
-## <a name="example-3-fuzzy-search"></a>Příklad 3: Vyhledávání přibližných shod
+## <a name="example-3-fuzzy-search"></a>Příklad 3: vyhledávání přibližných shod
 
 Úplná syntaxe Lucene také podporuje přibližné vyhledávání shody s termíny, které mají podobné konstrukce. Chcete-li provést vyhledávání přibližných shod, přidejte tilda `~` symbolu na konci jednoho slova s volitelný parametr, hodnotu mezi 0 a 2, která určuje vzdálenost úpravy. Například `blue~` nebo `blue~1` vracel spojovací, modrá a blues.
 
@@ -129,7 +130,7 @@ Za [Lucene dokumentaci](https://lucene.apache.org/core/4_10_2/queryparser/org/ap
 > Přibližné dotazy nejsou [analyzovat](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Typy dotazů s neúplné podmínky (předponu dotazu, dotaz zástupný znak, regulární výraz dotazu, fuzzy dotazu) jsou přidány přímo do stromu dotazu obcházení fázi analýzy. Pouze transformace provedené na neúplný dotaz podmínky je předpoklady.
 >
 
-## <a name="example-4-proximity-search"></a>Příklad 4: Vyhledávání blízkých výrazů
+## <a name="example-4-proximity-search"></a>Příklad 4: vyhledávání blízkých výrazů
 Vyhledávání blízkých výrazů se používají k vyhledání podmínky, která jsou blízko sebe v dokumentu. Vložit tildou "~" symbolu na konci věty následovaný počtem slova, která vytvořit hranici blízkosti. Například "hotelu letiště" přibližně 5 najdou podmínky hotelu a letiště v rámci 5 slov v dokumentu.
 
 V tomto dotazu pro úlohy s označením "vedoucí analytik", kde jsou oddělené oddělovačem více než jedno slovo:
@@ -145,7 +146,7 @@ Zkuste to znovu odebrání slova mezi termín "vedoucí analytik". Všimněte si
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&queryType=full&search=business_title:%22senior%20analyst%22~0
 ```
 
-## <a name="example-5-term-boosting"></a>Příklad 5: Zvyšování skóre termínu
+## <a name="example-5-term-boosting"></a>Příklad 5: zvýšení skóre termínu
 Zvyšování skóre termínu odkazuje na hodnocení vyšší, pokud obsahuje Posílený termín, vzhledem k dokumentům, které neobsahují termín dokumentu. Zvyšte termín, použijte blikající kurzor, "^", symbol s faktorem zesílení (číslo) na konci se hledaný termín. 
 
 V tomto "dotazu before" hledání pro úlohy s označením *počítače analytik* a Všimněte si, že neexistují žádné výsledky obsahující oba slova *počítače* a *analytik*, ještě  *počítač* úlohy jsou v horní části výsledků.
@@ -187,7 +188,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 > Regulární výraz dotazy nejsou [analyzovat](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Pouze transformace provedené na neúplný dotaz podmínky je předpoklady.
 >
 
-## <a name="example-7-wildcard-search"></a>Příklad 7: Hledání pomocí zástupných znaků
+## <a name="example-7-wildcard-search"></a>Příklad 7: hledání pomocí zástupných znaků
 Obecně rozpoznaná syntaxe můžete použít pro více (\*) nebo jednotné hledání zástupný znak (?). Všimněte si, že analyzátor dotazů Lucene podporuje použití těchto symbolů se jeden výraz a ne frázi.
 
 V tomto dotazu hledání pro úlohy, které obsahují předponu "ProgID' bude to zahrnovat obchodní názvy s podmínkami, programování a programátor v ní. Nelze použít * nebo? symbol jako první znak vyhledávání.

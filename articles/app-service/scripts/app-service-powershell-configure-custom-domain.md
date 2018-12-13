@@ -3,8 +3,8 @@ title: Ukázkový skript Azure PowerShellu – Přiřazení vlastní domény k w
 description: Ukázkový skript Azure PowerShellu – Přiřazení vlastní domény k webové aplikaci
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 356f5af9-f62e-411c-8b24-deba05214103
@@ -13,16 +13,16 @@ ms.workload: web
 ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: f07a43f3bb0895bf05565c0d683e1242c4518545
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: 52c4753ad60c88531f9d645b9133a4bdf440b2b0
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324506"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190029"
 ---
-# <a name="assign-a-custom-domain-to-a-web-app"></a>Přiřazení vlastní domény k webové aplikaci
+# <a name="assign-a-custom-domain-to-a-web-app-using-powershell"></a>Přiřazení vlastní domény do webové aplikace pomocí Powershellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`. 
 
@@ -52,7 +52,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Set-AzureRmAppServicePlan](/powershell/module/azurerm.websites/set-azurermappserviceplan) | Upraví plán služby App Service a změní jeho cenovou úroveň. |
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Upraví konfiguraci webové aplikace. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

@@ -1,5 +1,5 @@
 ---
-title: Úvodní dotazy na Azure Resource Graph
+title: Úvodní ukázky dotazů
 description: Použijte Azure Resource Graph ke spuštění některých úvodních dotazů.
 services: resource-graph
 author: DCtheGeek
@@ -8,13 +8,13 @@ ms.date: 10/22/2018
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: d5b2bb719bcd5c2145740a02bc408385953ff739
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: a1e54c4f78f502c6ae354ecdf4dd3c4b48a3457b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084526"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310177"
 ---
 # <a name="starter-resource-graph-queries"></a>Úvodní dotazy na Resource Graph
 
@@ -250,7 +250,7 @@ Search-AzureRmGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | 
 > [!NOTE]
 > Tento příklad používá `==` pro shodu místo podmínky `=~`. `==` je shoda rozlišující velikost písmen.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [dotazovacím jazyku](../concepts/query-language.md)
 - Naučte se [prozkoumat prostředky](../concepts/explore-resources.md)

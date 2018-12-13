@@ -1,20 +1,21 @@
 ---
-pageTitle: Synonyms in Azure Search | Microsoft Docs
-description: Použití synonym rozbalte obor vyhledávací dotaz
-author: mhko
+Title: Synonyms for query expansion over a search index  - Azure Search
+description: Vytvořte mapu synonym k rozšíření rozsahu vyhledávání v indexu Azure Search. Obor je rozšířena zahrnout ekvivalentní termíny, které zadáte v seznamu.
+author: brjohnstmsft
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
-ms.author: nateko
-ms.openlocfilehash: fcb4314583036c2abfffdf7e5d0b5d90478dbe6b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: brjohnst
+ms.custom: seodec2018
+ms.openlocfilehash: ce9eb8ed099a232128ba924da1466917df542fbb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468547"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315654"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma ve službě Azure Search
 
@@ -73,7 +74,7 @@ Alternativně můžete pomocí PUT a zadejte název mapy synonym v identifikáto
 
 ##### <a name="apache-solr-synonym-format"></a>Formát synonymum Apache Solr
 
-Solr formát podporuje mapování synonym ekvivalentní a explicitní. Pravidla mapování dodržovat specifikace filtru synonymum opensourcových Apache Solr, popsané v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Následuje ukázka pravidla ekvivalentní synonym.
+Solr formát podporuje mapování synonym ekvivalentní a explicitní. Pravidla mapování dodržujte specifikaci opensourcových synonymum filtr Apache Solr, popsané v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Následuje ukázka pravidla ekvivalentní synonym.
 ```
 USA, United States, United States of America
 ```

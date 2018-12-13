@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 6acc9a8b9cd7b6ef1218b1e8cae2e6a9af92f9d8
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9eb8b6e6af6fb2912789b66ed622fd47d2cb8b8b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393690"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311877"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Postup odebrání přístupu uživatele k aplikaci
 
@@ -70,5 +70,6 @@ K **zakázat všechny operace vyjádření souhlasu budoucí uživatele v adres�
 6.  Nastavte **uživatelé můžou povolit aplikacím přístup k firemním datům jejich jménem** přepnutím **ne** a klikněte na tlačítko Uložit.
 
 
-# <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další postup
+
 [Správa přístupu k aplikacím](what-is-access-management.md)

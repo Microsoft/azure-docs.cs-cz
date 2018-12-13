@@ -1,5 +1,5 @@
 ---
-title: Komplexní ověřování a autorizace uživatelů v Azure App Service v Linuxu | Microsoft Docs
+title: Ověřování a autorizaci uživatelů end až do konce v Linuxu – Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí ověřování a autorizace pomocí služby App Service zabezpečit aplikace App Service, včetně přístupu ke vzdáleným rozhraním API.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 services: app-service\web
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
-ms.openlocfilehash: a468c5d0f73cc182927f26ea9b7a85e2c5afb7c8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: aa57e6198050b7e250c42f4bb019009e59ca4ba7
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766355"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254084"
 ---
-# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service v Linuxu
+# <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. V kurzu se používá aplikace ASP.NET Core s front-endem v Angular.js, ta ale slouží pouze jako příklad. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
 
@@ -241,7 +242,7 @@ Jako zprostředkovatele identity použijete Azure Active Directory. Další info
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Povolení ověřování a autorizace pro back-endovou aplikaci
 
-Na webu [Azure Portal](https://portal.azure.com) otevřete stránku správy vaší back-endové aplikace tak, že v levé nabídce postupně kliknete na: **Skupiny prostředků** > **myAuthResourceGroup** > _\<název\_back\_endové\_aplikace>_.
+V [webu Azure portal](https://portal.azure.com), otevřete stránku správy vaší back endové aplikace klikněte v levé nabídce na: **Skupiny prostředků** > **myAuthResourceGroup** > _\<zpět\_end\_aplikace\_name >_.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
@@ -439,7 +440,7 @@ az group delete --name myAuthResourceGroup
 Spuštění tohoto příkazu může trvat přibližně minut.
 
 <a name="next"></a>
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučili jste se:
 

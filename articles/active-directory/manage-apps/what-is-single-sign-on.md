@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: b2eff49f94dfcd67cb9741055520d990429051cd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 627bd114504de20517abcd05f45dc6c58fe80117
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098555"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322700"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Zjistěte, jak zvolit nejvhodnější jednotné přihlašování metodu při konfiguraci aplikací v Azure Active Directory (Azure AD). 
@@ -67,7 +67,7 @@ Konfigurace aplikace pro založené na SAML jednotného přihlašování, nalezn
 Další informace o tom, jak funguje protokol SAML, naleznete v tématu [jednotné přihlašování – protokol SAML](../develop/single-sign-on-saml-protocol.md).
 
 ## <a name="password-based-sso"></a>Jednotné přihlašování pomocí hesla
-Aplikace založené na heslech přihlašování, ověřuje aplikace pomocí uživatelského jména a hesla. Koncoví uživatelé přihlásit k aplikaci při prvním čas, když přístup. Po první přihlášení poskytuje Azure Active Directory uživatelské jméno a heslo k aplikaci. 
+Založené na heslech přihlašování koncoví uživatelé přihlásit k aplikaci pomocí uživatelského jména a hesla při prvním přístupu k jeho. Po první přihlášení poskytuje Azure Active Directory uživatelské jméno a heslo k aplikaci. 
 
 Založené na heslech jednotné přihlašování pomocí stávajícího procesu ověřování poskytované aplikací. Když povolíte heslem jednotného přihlašování pro aplikace, služby Azure AD shromažďuje a bezpečně uloží uživatelské jméno a heslo pro aplikaci. Přihlašovací údaje uživatele jsou uloženy v šifrovaném stavu v adresáři. 
 
@@ -177,6 +177,6 @@ Další informace najdete v článku [Edice služby Azure Active Directory](../f
 * [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Kurz ke konfiguraci jednotného přihlašování](configure-single-sign-on-portal.md)
 * [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
-* Odkaz ke stažení: [plánu nasazení přihlašování](https://aka.ms/SSODeploymentPlan).
+* Odkaz ke stažení: [Plán nasazení přihlašování](https://aka.ms/SSODeploymentPlan).
 
 

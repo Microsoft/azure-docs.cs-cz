@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 772807fc0a1378eea662a7c4a7e3c720d7092bef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013010"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320654"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -39,7 +39,7 @@ Některá z těchto nastavení se vztahují na MFA Server, Azure MFA nebo obojí
 | [Nastavení telefonních hovorů.](#phone-call-settings) | Konfigurovat nastavení související s telefonních hovorů a greetings cloudových a místních prostředích. |
 | Poskytovatelé | Tím se zobrazí všechny existující zprostředkovatelé ověřování můžou přiřadit k vašemu účtu. Noví zprostředkovatelé ověřování, nemusí být vytvořena od 1. září 2018 |
 
-## <a name="manage-mfa-server"></a>Správa serveru MFA
+## <a name="manage-mfa-server"></a>Spravovat MFA Server
 
 Nastavení v této části jsou k dispozici pouze pro MFA Server.
 
@@ -87,8 +87,8 @@ Konfigurace _upozornění na podvod_ funkci tak, aby vaši uživatelé můžete 
 
 ### <a name="configuration-options"></a>Možnosti konfigurace
 
-* **Blokování uživatele při nahlášení podvodu**: Pokud uživatel nahlásí podvod, jejich účet zablokován po dobu 90 dnů nebo dokud se odblokuje správce svého účtu. Správce můžete zkontrolovat přihlášení pomocí sestavy přihlášení a provést příslušnou akci, k prevenci podvodného budoucí. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
-* **Kód pro nahlášení podvodu při úvodním pozdravu**: když uživatelé dostanou telefonního hovoru dvoustupňové ověřování, jsou obvykle stiskněte **#** k potvrzení jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stisknutím klávesy **#**. Tento kód je **0** ve výchozím nastavení, ale můžete ji přizpůsobit.
+* **Blokování uživatele při nahlášení podvodu**: Pokud uživatel nahlásí podvod, jejich účet je zablokovaný, po dobu 90 dnů nebo dokud se odblokuje správce svého účtu. Správce můžete zkontrolovat přihlášení pomocí sestavy přihlášení a provést příslušnou akci, k prevenci podvodného budoucí. Správce pak může [Odblokovat](#unblock-a-user) uživatelského účtu.
+* **Kód pro nahlášení podvodu při úvodním pozdravu**: Když uživatelé dostanou telefonního hovoru dvoustupňové ověřování, jsou obvykle stiskněte **#** k potvrzení jejich přihlášení. Pro nahlášení podvodu uživatel zadá kód před stisknutím klávesy **#**. Tento kód je **0** ve výchozím nastavení, ale můžete ji přizpůsobit.
 
    >[!NOTE]
    >Výchozí hlasový pozdrav od Microsoftu vyzvat uživatele, aby stiskněte **0#** odesílat upozornění na možný podvod. Pokud chcete použít jiné než kód **0**, uložte a nahrajte vlastní pozdravy vlastním hlasem s odpovídající pokyny pro uživatele.
@@ -257,12 +257,15 @@ Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikac�
 
 _Důvěryhodné IP adresy_ správci tenanta spravované nebo federovaných se používá funkce ověřování Azure Multi-Factor Authentication. Funkce obchází dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. Tato funkce je k dispozici s plnou verzi Azure Multi-Factor Authentication a ne bezplatnou verzi pro správce. Podrobnosti o tom, jak získat plnou verzi Azure Multi-Factor Authentication najdete v tématu [ověřování Azure Multi-Factor Authentication](multi-factor-authentication.md).
 
+> [!NOTE]
+> MFA důvěryhodné IP adresy a podmíněný přístup – pojmenovaná umístění fungovat jenom s IPV4 adresy.
+
 Pokud vaše organizace nasadí rozšíření NPS pro zajištění vícefaktorové ověřování pro místní aplikace Poznámka zdrojové IP adresy se vždycky zobrazí se serverem NPS ověřování pokusit prochází.
 
 | Typ tenanta Azure AD | Možnosti funkcí, které důvěryhodné IP adresy |
 |:--- |:--- |
-| Spravované |**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet.|
-| Federovaná |**Všichni uživatelé federované**: všechny federovaných uživatelů, kteří přihlásit z v rámci organizace může obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarací identity, který vystaví služba Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
+| Spravované |**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet.|
+| Federovaná |**Všechny federovaní uživatelé**: Všechny federovaných uživatelů, kteří přihlásit z v rámci organizace může obejít dvoustupňové ověřování. Uživatelé obejít ověření pomocí deklarací identity, který vystaví služba Active Directory Federation Services (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci určit rozsah IP adres, které lze obejít dvoustupňové ověřování pro uživatele, kteří přihlásit z firemní intranet. |
 
 Důvěryhodné IP adresy se nebude používat funguje pouze uvnitř firemní intranet. Pokud vyberete **všechny federované uživatele** možnost a uživatel přihlásí z mimo firemní intranet, má uživatel k ověření pomocí dvoustupňového ověření. Proces je stejný, i v případě, uživatel předloží deklaraci identity služby AD FS. 
 
@@ -297,7 +300,7 @@ Bez ohledu na to, zda je povolena funkce důvěryhodné IP adresy je vyžadován
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **Pro žádosti od konkrétního rozsahu objektů veřejné IP adresy**: tuto možnost, zadejte IP adresy v textovém poli pomocí zápisu CIDR.
+   * **Pro žádosti od konkrétního rozsahu objektů veřejné IP adresy**: Chcete-li tuto možnost zvolte, zadejte IP adresy v textovém poli pomocí zápisu CIDR.
       * IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použít zápis jako **xxx.xxx.xxx.0/24**.
       * Pro jednu IP adresu, použít zápis jako **xxx.xxx.xxx.xxx/32**.
       * Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se z těchto IP adres obejít dvoustupňové ověřování.
@@ -316,7 +319,7 @@ Bez ohledu na to, zda je povolena funkce důvěryhodné IP adresy je vyžadován
 
       `c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);`
 
-   * **Pro požadavky z podsítí zadaného rozsahu IP adres**: tuto možnost, zadejte IP adresy v textovém poli pomocí zápisu CIDR.
+   * **Pro požadavky z podsítí zadaného rozsahu IP adres**: Chcete-li tuto možnost zvolte, zadejte IP adresy v textovém poli pomocí zápisu CIDR.
       * IP adresy, které jsou v rozsahu xxx.xxx.xxx.1 prostřednictvím xxx.xxx.xxx.254, použít zápis jako **xxx.xxx.xxx.0/24**.
       * Pro jednu IP adresu, použít zápis jako **xxx.xxx.xxx.xxx/32**.
       * Zadejte až 50 rozsahy IP adres. Uživatelé, kteří se z těchto IP adres obejít dvoustupňové ověřování.
@@ -385,6 +388,6 @@ Funkci snižuje počet ověření ve službě web apps, které obvykle výzvu po
 
 Když povolíte funkci zapamatovat Multi-Factor Authentication, uživatelé mohou označit zařízení jako důvěryhodná při přihlášení tak, že vyberete **příště se už neptat**.
 
-# <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další postup
 
-[Úprava brandingu přihlašovací stránky Azure AD](..\fundamentals\customize-branding.md)
+[Úprava brandingu přihlašovací stránky Azure AD](../fundamentals/customize-branding.md)

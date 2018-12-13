@@ -1,5 +1,5 @@
 ---
-title: Služba LUIS robotů s využitím Node.js
+title: Bot - Node.js – v4
 titleSuffix: Azure Cognitive Services
 description: Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
@@ -9,16 +9,16 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: d9645c1d1c5ee153a4d24ae18f253f33c6557bd1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 20d2ed28291c8d8adfed4779b48f93c657438e0d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134967"
 ---
-# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Bot LUIS v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
+# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
 Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
 
 **V tomto kurzu se naučíte:**
@@ -198,7 +198,7 @@ Před změnou kódu nebo nastavení zkontrolujte, jestli robot funguje.
 3. Vytvořte soubor pro proměnné prostředí, které kód robota hledá. Pojmenujte soubor `.env`. Přidejte tyto proměnné prostředí:
 
     <!--there is no code language that represents an .env file correctly-->
-    ```
+    ```env
     botFilePath=
     botFileSecret=
     ```

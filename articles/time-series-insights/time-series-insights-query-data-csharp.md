@@ -1,5 +1,5 @@
 ---
-title: Dotazování dat z prostředí Azure Time Series Insights pomocí jazyka C# | Dokumentace Microsoftu
+title: Azure Time Series Insights C# dotazuje - dotaz na data z prostředí Azure Time Series Insights pomocí C# kódu | Dokumentace Microsoftu
 description: Tento článek popisuje, jak dotazovat data z prostředí Azure Time Series Insights pomocí kódování vlastní aplikace napsané v jazyce C# (C sharp) .NET.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 6c4a99096efc95f439d6c9479cb9014957207ea6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 82a3d4527d241aba80eb471508c99c7781dd4a41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630853"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277944"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Dotaz na data z prostředí Azure Time Series Insights pomocí jazyka C#
 

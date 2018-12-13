@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 6fe9a95c891ecd560682d02f14485cc9d198a0a4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: 2d6df569a2b5b813bd832adf5ef2e1d193de9364
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879142"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187564"
 ---
-# <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
+# <a name="automated-backups"></a>Automatizované zálohy
 
-SQL Database automaticky vytvoří zálohy databáze a používá Azure geograficky redundantní úložiště jen pro čtení (RA-GRS) pro zajištění geografickou redundancí. Tyto zálohy se vytvoří automaticky a bez dalších poplatků. Nemusíte dělat nic, abyste je provedli. Zálohování databáze jsou nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jejich Chraňte svoje data před náhodným poškozením nebo odstranění. Pokud vaše pravidla zabezpečení vyžadovat, že zálohy, které jsou k dispozici pro delší dobu, můžete nakonfigurovat zásadu dlouhodobého uchovávání záloh. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+SQL Database automaticky vytvoří zálohy databáze, které jsou zachovány mezi 7 až 35 dnů a využívají Azure geograficky redundantní úložiště jen pro čtení (RA-GRS) k zajištění toho, že jsou zachovány i v případě, že není k dispozici datové centrum. Tyto zálohy se vytvoří automaticky a bez dalších poplatků. Nemusíte dělat nic, abyste je provedli a můžete je [změnit období uchování zálohy](#how-to-change-the-pitr-backup-retention-period). Zálohování databáze jsou nedílnou součást každé strategie obchodní kontinuity podnikových procesů a po havárii pro obnovení, protože jejich Chraňte svoje data před náhodným poškozením nebo odstranění. Pokud vaše pravidla zabezpečení vyžadovat, že zálohy, které jsou k dispozici pro delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 

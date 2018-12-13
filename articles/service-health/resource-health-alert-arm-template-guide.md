@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: ac1b9dbbb5739dd015c0bda5f1ea82fe26bb0c70
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625942"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184091"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace výstrahy týkající se stavu prostředků pomocí šablon Resource Manageru
 
@@ -32,7 +32,7 @@ Azure Resource Health zachovat informována o aktuální a Historický stav svý
 Postupujte podle pokynů na této stránce, budete muset předem zařídit pár věcí:
 
 1. Je potřeba nainstalovat [modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`)
-2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md) nakonfigurovaný tak, aby upozornění
+2. Je potřeba [vytvořit nebo znovu použít skupiny akcí](../azure-monitor/platform/action-groups.md) nakonfigurovaný tak, aby upozornění
 
 ## <a name="instructions"></a>Pokyny
 1. Pomocí Powershellu, připojte se k Azure pomocí svého účtu a vyberte předplatné, které chcete pracovat s
@@ -233,7 +233,7 @@ Pokud chcete být upozornění pro všechny čtyři fází událostí stavu, tut
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Nastavení výstrah Resource Health, aby "Neznámý" události
 
-Azure Resource Health můžete nahlásit vám nejnovější stav svých prostředků nepřetržitým monitorováním jejich pomocí nástrojům test Runner. Relevantní ohlášené stavu stavy jsou: "K dispozici", "Není k dispozici" a "Snížený". Ale v situacích, kdy jsou schopné komunikovat spouštěče a prostředků Azure, "Neznámý" stav nahlašuje prostředku a bude se považovat za událost "Aktivním" stavu.
+Azure Resource Health můžete nahlásit vám nejnovější stav svých prostředků nepřetržitým monitorováním jejich pomocí nástrojům test Runner. Relevantní ohlášené stavu stavy jsou: "Dostupný", "Není k dispozici" a "Snížený výkon". Ale v situacích, kdy jsou schopné komunikovat spouštěče a prostředků Azure, "Neznámý" stav nahlašuje prostředku a bude se považovat za událost "Aktivním" stavu.
 
 Ale pokud prostředek ohlásí "Neznámá", je pravděpodobné, že jeho stav nebyl změněn od posledního hlášení o přesné. Pokud chcete odstranit oznámení o událostech "Neznámý", můžete zadat tuto logiku v šabloně:
 
@@ -435,4 +435,4 @@ Další informace o službě Resource Health:
 -  [Typy prostředků a kontroly stavu dostupné prostřednictvím služby Azure Resource Health](resource-health-checks-resource-types.md)
 
 Vytvoření upozornění na stav služby:
--  [Konfigurace výstrah pro Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 
+-  [Konfigurace výstrah pro Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 

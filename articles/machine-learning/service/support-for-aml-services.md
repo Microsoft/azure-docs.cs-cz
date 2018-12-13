@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6acebef4481fc3d22cc7186663ce17e2602cde53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: cbf245b27bc6df9933a4786def42d85f848e09d7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073495"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192086"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Získat podporu a školení pro služby Azure Machine Learning
 
@@ -37,10 +37,10 @@ Je možné **požadavky můžete odesílat** Další výukové materiály pomoc�
 
 Podívejte se na tyto prostředky podpory:
 
-+ **Technická podpora**: navštivte [technické podpoře Azure](https://azure.microsoft.com/support/options/) a vyberte Machine Learning. 
++ **Technická podpora**: Navštivte [technické podpoře Azure](https://azure.microsoft.com/support/options/) a vyberte Machine Learning. 
 
-+ **Fórum uživatelů**: klást otázky, odpovídat na otázky a připojení s ostatními uživateli v [fórum podpory služby Azure Machine Learning na webu MSDN](https://aka.ms/aml-forum-service).
++ **Fórum uživatelů**: Klást otázky, odpovídat na otázky a připojení s ostatními uživateli v [fórum podpory služby Azure Machine Learning na webu MSDN](https://aka.ms/aml-forum-service).
 
-+ **Stack Overflow**: navštívit komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) označené "Azure Machine Learning".
++ **Stack Overflow**: Navštívit komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) označené "Azure Machine Learning".
 
 + **Sdílejte návrhy týkající se produktu** a obsahují požadavky v našich [Azure Machine Learning zpětnou vazbu kanálu](https://feedback.azure.com/forums/257792-machine-learning), což je také přístupné pomocí odkazu v dolní části každého článku. 

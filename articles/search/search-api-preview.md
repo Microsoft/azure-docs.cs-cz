@@ -1,6 +1,6 @@
 ---
-title: Verze rozhraní API 2017 modulu Azure Search služby REST-11-11-Preview | Microsoft Docs
-description: Azure vyhledávání služby REST verze rozhraní API 2017-11-11-Preview zahrnuje povolenými experimentálními funkcemi, jako je například synonyma a moreLikeThis hledání.
+title: Náhled rozhraní REST API pro Azure Search 2017-11-11-Preview – Azure Search
+description: Azure Search REST pro službu rozhraní API verze 2017-11-11-Preview zahrnuje seznámit s experimentálními funkcemi, jako je například synonym a moreLikeThis hledání.
 services: search
 author: HeidiSteen
 manager: cgronlun
@@ -11,51 +11,52 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 06/28/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: b5cb60bf16a4c904c9a6060113eba8b4d3a671ef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.custom: seodec2018
+ms.openlocfilehash: e496e4e2e7e2f66033d090a0534911bff4c53baa
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112598"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310224"
 ---
-# <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Verze rozhraní api REST služby vyhledávání systému Azure 2017-11-11-Preview
-Tento článek popisuje `api-version=2017-11-11-Preview` verzi služby Azure Search rozhraní REST API, nabízí povolenými experimentálními funkcemi ještě není obecně k dispozici.
+# <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Služby Azure Search rozhraní REST api verze 2017-11-11-Preview
+Tento článek popisuje `api-version=2017-11-11-Preview` verze služby Azure Search REST API, nabízí seznámit s experimentálními funkcemi, které ještě není obecně k dispozici.
 
 > [!NOTE]
-> Funkce Preview jsou k dispozici pro testování a experimenty s cílem shromažďování zpětné vazby a mohou podléhat změnám. Důrazně nedoporučujeme používání preview rozhraní API v produkční aplikace.
+> Funkce ve verzi Preview jsou k dispozici pro testování a experimentování s cílem shromažďování zpětné vazby a můžou se změnit. Důrazně nedoporučujeme používání verze preview rozhraní API v aplikacích v produkčním prostředí.
 
 
 ## <a name="new-in-2017-11-11-preview"></a>Novinka v 2017-11-11-Preview
 
-[**Automatické dokončování** ](search-autocomplete-tutorial.md) spojí existující [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) přidat doplňkové našeptávání dojde k panelu vyhledávání. Automatické dokončování vrátí vyhledávacích dotazů, které může uživatel jako řetězec dotazu pro následné vyhledávání kandidátských. Návrhy vrátí skutečné dokumenty v reakci na částečné vstupy: výsledky hledání jsou okamžité a dynamicky měnit s růstem zadání podmínek vyhledávání v délku a specifické podobě.
+[**Automatické dokončování** ](search-autocomplete-tutorial.md) spojí stávající [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) přidat doplňkové našeptávání narazí na panelu hledání. Automatické dokončování vrátí Release candidate termíny dotazu, které může uživatel vybrat jako řetězec dotazu pro následném vyhledávání. Návrhy vrátí skutečný dokumenty v reakci na částečné vstupy: výsledky hledání jsou okamžité a dynamicky mění s růstem vstup termín vyhledávání a specifické podobě.
 
-[**Kognitivní vyhledávání**](cognitive-search-concept-intro.md), novou funkci obohacení ve službě Azure Search vyhledá latentní informace v jiné textové zdroje a poskytujících blíže neurčené text, převod do textu v plném znění s možností vyhledávání obsahu ve službě Azure Search. V následujících zdrojích informací jsou zavedena nebo upravit v rozhraní REST API ve verzi preview. Všechny ostatní rozhraní API REST jsou stejné, ať už volání obecně dostupná nebo náhled verze.
+[**Kognitivní vyhledávání**](cognitive-search-concept-intro.md), nová funkce rozšíření ve službě Azure Search vyhledá latentní informace v jiné textové zdrojích a nediferencovanými text transformace na prohledávatelný obsah textu v plném znění ve službě Azure Search. V následujících zdrojích informací jsou zavedené nebo upraveny ve verzi preview rozhraní REST API. Všechna další rozhraní API REST jsou stejné, ať už volání obecně dostupná, nebo verze preview.
 
-+ [Skillset operations(api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
++ [Operations(api-version=2017-11-11-Preview) dovedností](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
-+ [Vytvoření Indexer (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Vytvoření indexeru (rozhraní api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 
-Všechny ostatní rozhraní API REST jsou stejné bez ohledu na to, jak nastavit verze rozhraní api. Například `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11-Preview` a `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11` (bez `Preview`) jsou funkčně rovnocenné.
+Všechny ostatní rozhraní REST API jsou stejné bez ohledu na to, jak nastavit verzi api-version. Například `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11-Preview` a `GET https://[service name].search.windows.net/indexes/hotels?api-version=2017-11-11` (bez `Preview`) jsou funkčně ekvivalentní.
 
-## <a name="other-preview-features"></a>Další funkce preview
+## <a name="other-preview-features"></a>Další funkce ve verzi preview
 
-Funkce, které oznamují v dřívějších verzích Preview jsou stále ve verzi public preview. Pokud jste volání rozhraní API z předchozích verzí preview rozhraní api-, můžete dál používat tuto verzi nebo přepněte do `2017-11-11-Preview` bez změny chování očekávané.
+Funkce, které jsme oznámili v dřívějších verzích Preview jsou stále ve verzi public preview. Pokud voláte rozhraní API z předchozích verzí preview rozhraní api –, můžete nadále používat tuto verzi nebo přepněte na `2017-11-11-Preview` beze změn očekávané chování.
 
-+ [CSV soubory v Azure Blob indexování](search-howto-index-csv-blobs.md), přináší `api-version=2015-02-28-Preview`, zůstane funkce preview. Tato funkce je součástí indexování objektů Blob v Azure a je vyvolána prostřednictvím nastavení parametru. Každý řádek v souboru CSV je indexovaný jako samostatný dokument.
++ [Soubory CSV v indexování objektů Blob v Azure](search-howto-index-csv-blobs.md), přináší `api-version=2015-02-28-Preview`, zůstane funkce ve verzi preview. Tato funkce je součástí indexování objektů Blob v Azure a je vyvolána prostřednictvím nastavení parametru. Každý řádek v souboru CSV se indexovat jako samostatný dokument.
 
-+ [Pole JSON v Azure Blob indexování](search-howto-index-json-blobs.md), přináší `api-version=2015-02-28-Preview`, zůstane funkce preview. Tato funkce je součástí indexování objektů Blob v Azure a je vyvolána prostřednictvím nastavení parametru. Každý prvek v poli, kde je indexovaný jako samostatný dokument.
++ [Pole JSON v indexování objektů Blob v Azure](search-howto-index-json-blobs.md), přináší `api-version=2015-02-28-Preview`, zůstane funkce ve verzi preview. Tato funkce je součástí indexování objektů Blob v Azure a je vyvolána prostřednictvím nastavení parametru. kde je každý prvek v poli indexovat jako samostatný dokument.
 
-+ [parametr dotazu moreLikeThis](search-more-like-this.md) Vyhledá dokumenty, které se vztahují k určitému dokumentu. Tato funkce byla v dřívějších verzích Preview. 
++ [parametr dotazu moreLikeThis](search-more-like-this.md) Vyhledá dokumenty, které souvisí s určitým dokumentem. Tato funkce byla v dřívějších verzích Preview. 
 
 
-## <a name="how-to-call-a-preview-api"></a>Jak volat preview rozhraní API
+## <a name="how-to-call-a-preview-api"></a>Jak volat rozhraní API ve verzi preview
 
-Starší verze Preview jsou stále v provozu, ale budou zastaralé v čase. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2015-02-28-Preview`, těchto volání musí být stále platné. Ale pouze nejnovější verzi preview se aktualizují s vylepšeními. 
+Starší verze Preview jsou stále v provozu, ale jsou pak zastaralá v čase. Pokud váš kód volá `api-version=2016-09-01-Preview` nebo `api-version=2015-02-28-Preview`, tato volání jsou stále platné. Nicméně pouze nejnovější verzi preview se aktualizují s vylepšeními. 
 
-Následující příklad syntaxe znázorňuje volání ve verzi preview rozhraní API.
+Následující příklad syntaxe znázorňuje volání na verzi preview rozhraní API.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2017-11-11-Preview
 
-Služba Azure Search je k dispozici v několika verzích. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).
+Služba Azure Search je dostupná ve více verzí. Další informace najdete v tématu [verze rozhraní API](search-api-versions.md).

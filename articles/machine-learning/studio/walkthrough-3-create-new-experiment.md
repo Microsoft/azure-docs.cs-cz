@@ -1,12 +1,11 @@
 ---
 title: 'Krok 3: Vytvoření nového experimentu Machine Learning Studio – Azure | Dokumentace Microsoftu'
-description: 'Krok 3 vývoj prediktivního řešení návod: vytvoření nového výukového experimentu v nástroji Azure Machine Learning Studio.'
+description: 'Vývoj prediktivního řešení návod krok 3: Vytvoření nového výukového experimentu v nástroji Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cgronlun
 ms.assetid: 660e3c27-55ef-4c33-a4e9-dff4d1224630
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: a6f12c536cfc18ed0be55ec1755c7fe5179006ba
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5f3f73e2c2cb281887e795d974403a17cffd5978
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317524"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260782"
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-studio-experiment"></a>Krok 3 průvodce: Vytvoření nového experimentu služby Azure Machine Learning Studio
 Toto je třetí krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -56,7 +55,7 @@ Dalším krokem v tomto návodu je vytvořit nový experiment v Machine Learning
     ![Datovou sadu přidat do experimentu][7]
 
 ## <a name="prepare-the-data"></a>Příprava dat
-Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: klikněte na výstupní port datové sady (malý kruh v dolní části) a vyberte **vizualizovat**.  
+Můžete zobrazit prvních 100 řádků dat a některé statistické informace pro celou datovou sadu: Klikněte na výstupní port datové sady (malý kruh v dolní části) a vyberte **vizualizovat**.  
 
 Protože datový soubor nebyl dodán záhlaví sloupců, Studio poskytuje obecný záhlaví (Sloupec1, Sloupec2, *atd*). Dobré záhlaví nejsou nezbytné pro vytvoření modelu, ale jejich usnadňují práci s daty v experimentu. Také když jsme se nakonec publikovat tento model ve webové službě, záhlaví pomoci při identifikaci sloupce, které chcete uživatele služby.  
 
@@ -164,7 +163,7 @@ Naše experiment teď vypadá přibližně takto:
 
 Další informace o používání skriptů jazyka R ve své experimenty, naleznete v tématu [rozšíření experimentů pomocí R](extend-your-experiment-with-r.md).
 
-**Další krok: [trénování a vyhodnocení modelů](walkthrough-4-train-and-evaluate-models.md)**
+**Další: [Natrénování a vyhodnocení modelů](walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/walkthrough-3-create-new-experiment/rename-experiment.png

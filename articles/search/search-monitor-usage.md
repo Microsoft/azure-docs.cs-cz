@@ -1,5 +1,5 @@
 ---
-title: Monitorování využití a statistiky v rámci služby Azure Search | Dokumentace Microsoftu
+title: Monitorování využití a statistiky pro službu search – Azure Search
 description: Sledování využití a index velikost prostředku pro službu Azure Search, hostované cloudové vyhledávací službě v Microsoft Azure.
 author: HeidiSteen
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 274513c7e8ad1ca9ed0452f6237eec4ebb38e9cd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.custom: seodec2018
+ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134858"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53314155"
 ---
-# <a name="monitoring-an-azure-search-service"></a>Monitorování služby Azure Search
+# <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorování služby Azure Search na webu Azure portal
 
 Azure Search nabízí různé prostředky pro sledování využití a výkonu služby search. Poskytuje přístup k metriky, protokoly, indexové statistiky a rozšířené možnosti monitorování v Power BI. Tento článek popisuje, jak povolit různé strategie monitorování a jak interpretovat Výsledná data.
 
@@ -26,9 +27,9 @@ Metriky vám poskytují téměř v reálném čase přehled o vaší vyhledávac
 
 Služba Azure Search shromažďuje data pro tři různé požadované metriky:
 
-* Latence hledání: čas službu search potřebné ke zpracování vyhledávacích dotazů, agregují za minutu.
-* Vyhledávací dotazy za sekundu (QPS): počet vyhledávací dotazy přijaté za sekundu, agregují za minutu.
-* Dotazuje procento omezených vyhledávacích: procento vyhledávacích dotazů, které byly omezené, agregují za minutu.
+* Latence vyhledávání: Čas službu search potřebné ke zpracování vyhledávacích dotazů, agregují za minutu.
+* Vyhledávací dotazy za sekundu (QPS): Počet vyhledávací dotazy přijaté za sekundu, agregují za minutu.
+* Procento omezených vyhledávacích dotazů: Procento vyhledávacích dotazů, které byly omezené agregovat za minutu.
 
 ![Snímek obrazovky QPS aktivity][1]
 
@@ -71,7 +72,7 @@ Můžete exportovat protokoly operací pro vaši službu a nezpracovaných dat p
 ### <a name="enabling-monitoring"></a>Povolení sledování
 Otevřete svou službu Azure Search v [webu Azure portal](http://portal.azure.com) pod možnost povolit monitorování.
 
-Zvolte data, kterou chcete exportovat: protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo exportovat je do Log Analytics.
+Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo exportovat je do Log Analytics.
 
 ![Povolení monitorování na portálu][3]
 
@@ -99,7 +100,7 @@ Každý objekt blob má záznamy na všechny operace, ke kterým došlo během j
 | operationName |řetězec |"Query.Search" |Název operace |
 | operationVersion |řetězec |"2015-02-28" |Používá rozhraní api-version |
 | category |řetězec |"OperationLogs" |Konstanty |
-| resultType |řetězec |"Success" |Možné hodnoty: úspěch nebo neúspěch |
+| resultType |řetězec |"Success" |Možné hodnoty: Úspěch nebo neúspěch |
 | resultSignature |int |200 |Kód výsledku protokolu HTTP |
 | doby trvání v MS |int |50 |Doba trvání operace v milisekundách |
 | properties |objekt |v následující tabulce najdete |Objekt obsahující data specifická pro operace |

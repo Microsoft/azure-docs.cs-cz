@@ -1,48 +1,50 @@
 ---
-title: Vytvoření automaticky škálované zónově redundantní Application Gateway s vyhrazenou IP adresou – Azure PowerShell
-description: Zjistěte, jak vytvořit automaticky škálovanou zónově redundantní Application Gateway s vyhrazenou IP adresou pomocí Azure PowerShellu.
+title: 'Kurz: Vytvoření automaticky škálované zónově redundantní Application Gateway s vyhrazenou IP adresou – Azure PowerShell'
+description: V tomto kurzu se naučíte se vytvořit automatickým Škálováním, zónově redundantní služba application gateway s vyhrazenou IP adresu pomocí Azure Powershellu.
 services: application-gateway
 author: amitsriva
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 9/26/2018
+ms.date: 11/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.openlocfilehash: 99fa5d6f0ba74b56a53f2d1af1b99c7e5c2896a7
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016930"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323196"
 ---
-# <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>Kurz: Vytvoření automaticky škálované zónově redundantní Application Gateway s vyhrazenou IP adresou pomocí Azure PowerShellu
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Kurz: Vytvoření služby application gateway, která zvyšuje přístup k webové aplikaci
 
-Tento kurz popisuje, jak vytvořit Azure Application Gateway pomocí rutin Azure PowerShellu a modelu nasazení Azure Resource Manageru. Tento kurz se zaměřuje na rozdíly v nové automaticky škálované skladové položce v porovnání s existující standardní skladovou položkou. Konkrétně na funkce pro podporu automatického škálování a redundanci zón a vyhrazené virtuální IP adresy (statické IP adresy).
+Pokud jste obeznámeni s zlepšení přístup k webové aplikaci správce IT, můžete optimalizovat vaše brána application gateway škálování zákazníků na základě poptávky a span několika zónami dostupnosti. Tento kurz vám pomůže s konfigurací funkce Azure Application Gateway, které to: automatické škálování, zóna redundance a vyhrazené virtuální IP adresy (statické IP adresy). Chcete-li vyřešit tento problém budete používat rutin Azure Powershellu a modelu nasazení Azure Resource Manageru.
 
-Další informace o automatickém škálování a redundanci zón Application Gateway najdete v článku o [automaticky škálované a zónově redundantní Application Gateway (Public Preview)](application-gateway-autoscaling-zone-redundant.md).
-
-> [!IMPORTANT]
-> Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> [!IMPORTANT] 
+> Skladová položka automaticky škálované a zónově redundantní Application Gateway je aktuálně ve verzi Public Preview. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení parametru konfigurace automatického škálování
-> * Použití parametru zón
-> * Použití statické virtuální IP adresy
+> * Vytvoření virtuální sítě automatického škálování
+> * Vytvoření vyhrazené veřejné IP adresy
+> * Nastavení infrastruktury application gateway
+> * Určení automatického škálování
 > * Vytvoření služby Application Gateway
-
+> * Otestování aplikační brány
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+## <a name="prerequisites"></a>Požadavky
+
 Tento kurz vyžaduje místní použití Azure PowerShellu. Musíte mít nainstalovaný modul Azure PowerShell verze 6.9.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Po ověření verze PowerShellu spusťte příkaz `Login-AzureRmAccount`, abyste vytvořili připojení k Azure.
 
-## <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 ```azurepowershell
 Connect-AzureRmAccount
 Select-AzureRmSubscription -Subscription "<sub name>"
 ```
+
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Vytvořte skupinu prostředků v jednom z dostupných umístění.
 
@@ -54,8 +56,9 @@ $rg = "<rg name>"
 New-AzureRmResourceGroup -Name $rg -Location $location
 ```
 
-## <a name="create-a-vnet"></a>Vytvoření virtuální sítě
-Vytvořte virtuální síť s jednou vyhrazenou podsítí pro automaticky škálovanou Application Gateway. Aktuálně je možné v každé vyhrazené podsíti nasadit jenom jednu automaticky škálovanou Application Gateway.
+## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+
+Vytvoření virtuální sítě s jednou podsítí vyhrazenou pro službu application gateway automatického škálování. Aktuálně je možné v každé vyhrazené podsíti nasadit jenom jednu automaticky škálovanou Application Gateway.
 
 ```azurepowershell
 #Create VNet with two subnets
@@ -67,7 +70,7 @@ $vnet = New-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg `
 
 ## <a name="create-a-reserved-public-ip"></a>Vytvoření vyhrazené veřejné IP adresy
 
-Určete metodu přidělování PublicIPAddress jako **Statická**. Virtuální IP adresa automaticky škálované Application Gateway může být jenom statická. Dynamické IP adresy nejsou podporované. Podporovaná je jenom standardní skladová položka PublicIpAddress.
+Zadejte metodu přidělování PublicIPAddress jako **statické**. Virtuální IP adresa automaticky škálované Application Gateway může být jenom statická. Dynamické IP adresy nejsou podporované. Podporovaná je jenom standardní skladová položka PublicIpAddress.
 
 ```azurepowershell
 #Create static public IP
@@ -77,7 +80,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP" `
 
 ## <a name="retrieve-details"></a>Načtení podrobností
 
-Načtěte podrobnosti o skupině prostředků, podsíti a IP v místním objektu k vytvoření podrobností konfigurace IP Application Gateway.
+Načtěte podrobnosti o skupině prostředků, podsíti a IP v místní objekt k vytvoření podrobnosti konfigurace IP adresy pro službu application gateway.
 
 ```azurepowershell
 $resourceGroup = Get-AzureRmResourceGroup -Name $rg
@@ -85,8 +88,10 @@ $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rg -name "AppGwVIP"
 $vnet = Get-AzureRmvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
 ```
-## <a name="configure-application-gateway-infrastructure"></a>Konfigurace infrastruktury Application Gateway
-Nakonfigurujte konfiguraci IP, konfigurace IP front-endu, back-endový fond, nastavení protokolu http, certifikát, port, naslouchací proces a pravidlo ve stejném formátu jako ve stávající standardní Application Gateway. Nová skladová položka se řídí stejným modelem objektu jako standardní skladová položka.
+
+## <a name="configure-the-infrastructure"></a>Konfigurace infrastruktury
+
+Nakonfigurujte IP konfigurace, front-endové konfigurace protokolu IP, back endového fondu, HTTP nastavení, certifikát, port, naslouchací proces a pravidlo ve formátu identické ke stávající standardní application gateway. Nová skladová položka se řídí stejným modelem objektu jako standardní skladová položka.
 
 ```azurepowershell
 $ipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -114,14 +119,15 @@ $rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleTyp
 
 ## <a name="specify-autoscale"></a>Určení automatického škálování
 
-Teď můžete zadat konfiguraci automatického škálování pro Application Gateway. Podporují se dva typy konfigurace automatického škálování:
+Nyní můžete zadat konfiguraci automatického škálování pro službu application gateway. Podporují se dva typy konfigurace automatického škálování:
 
-- **Režim pevné kapacity**. V tomto režimu Application Gateway neprovádí automatické škálování a funguje s pevnou kapacitou jednotky škálování.
+* **Režim pevné kapacity**. V tomto režimu Application Gateway neprovádí automatické škálování a funguje s pevnou kapacitou jednotky škálování.
 
    ```azurepowershell
    $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
-- **Režim automatického škálování**. V tomto režimu provádí Application Gateway automatické škálování podle vzoru provozu aplikací.
+
+* **Režim automatického škálování**. V tomto režimu provádí Application Gateway automatické škálování podle vzoru provozu aplikací.
 
    ```azurepowershell
    $autoscaleConfig = New-AzureRmApplicationGatewayAutoscaleConfiguration -MinCapacity 2
@@ -130,9 +136,7 @@ Teď můžete zadat konfiguraci automatického škálování pro Application Gat
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvořte Application Gateway a zahrňte zóny redundance. 
-
-Konfigurace zón je podporovaná jenom v oblastech, kde jsou k dispozici zóny Azure. V oblastech, kde zóny Azure k dispozici nejsou, by se parametr zón používat neměl. Application Gateway je možné nasadit také v jedné zóně, dvou zónách nebo všech třech zónách. Parametr PublicIPAddress pro Application Gateway s jednou zónou musí být svázaný se stejnou zónou. Pro Application Gateway se dvěma nebo třemi redundantními zónami musí být parametr PublicIPAddress také zónově redundantní, takže bez zadané zóny.
+Vytvoření služby application gateway a zahrnují konfiguraci automatického škálování a redundanci zón.
 
 ```azurepowershell
 $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
@@ -145,24 +149,17 @@ $appgw = New-AzureRmApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 `
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-K získání veřejné IP adresy aplikační brány použijte rutinu [Get-AzureRmPublicIPAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress). Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
+Get-AzureRmPublicIPAddress použijte k získání veřejné IP adresy služby application gateway. Zkopírujte veřejnou IP adresu nebo název DNS a pak vložte do adresního řádku prohlížeče.
 
 `Get-AzureRmPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP`
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Nejdřív prozkoumejte prostředky vytvořené pomocí Application Gateway a pak, až je nebudete potřebovat, odstraňte pomocí příkazu `Remove-AzureRmResourceGroup` skupinu prostředků, Application Gateway a všechny související prostředky.
+
+Nejprve si projděte prostředky, které byly vytvořeny ve službě application gateway. Pokud jste už nepotřebujete, můžete použít `Remove-AzureRmResourceGroup` příkazu k odebrání skupiny prostředků, služba application gateway a všechny související prostředky.
 
 `Remove-AzureRmResourceGroup -Name $rg`
 
-## <a name="next-steps"></a>Další kroky
-
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Použití statické virtuální IP adresy
-> * Nastavení parametru konfigurace automatického škálování
-> * Použití parametru zón
-> * Vytvoření služby Application Gateway
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-powershell.md)

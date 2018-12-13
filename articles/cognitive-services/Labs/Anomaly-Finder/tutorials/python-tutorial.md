@@ -10,14 +10,14 @@ ms.component: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 98f83fbc4db8685526833c3d4f1d15903419ad3f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: d1e9afc32625cdbf97f576ee091d7dc03271e2fc
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887747"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164802"
 ---
-# <a name="tutorial-anomaly-detection-with-python-application"></a>Kurz: Detekce anomálií pomocí aplikace Pythonu
+# <a name="tutorial-anomaly-detection-with-python-application"></a>Kurz: Detekce anomálií pomocí aplikace v Pythonu
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
@@ -31,7 +31,7 @@ V tomto kurzu se dozvíte, jak používat rozhraní API pro detekci anomálií v
 
 ## <a name="download-the-example-code"></a>Stáhněte si ukázkový kód
 
-1. Přejděte k [notebooku s kurzem v Githubu](https://github.com/MicrosoftAnomalyDetection/python-sample).
+1. Přejděte k [poznámkovému bloku s kurzem v GitHubu](https://github.com/MicrosoftAnomalyDetection/python-sample).
 2. Po kliknutí na zelené tlačítko můžete kurz klonovat nebo stáhnout. 
 
 ## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Otevření notebooku s kurzem v Jupyteru
@@ -52,7 +52,7 @@ K použití notebooku potřebujete klíč předplatného k rozhraní API pro det
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [REST API – referenční informace](https://dev.labs.cognitive.microsoft.com/docs/services/anomaly-detection/operations/post-anomalydetection)

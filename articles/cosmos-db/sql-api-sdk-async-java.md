@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL asynchronní Java API, SDK & zdroje'
+title: 'Azure Cosmos DB: Rozhraní Java API SQL asynchronní, sady SDK a zdroje informací'
 description: Další informace o SQL asynchronní Java API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB SQL asynchronní Java SDK.
 services: cosmos-db
 author: SnehaGunda
@@ -9,14 +9,14 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: fadefe09f9f744fabe0f0f3f3cb519b3abb50b41
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 635eb1d373867d238c570c805943df4fe29da1b3
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098879"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253608"
 ---
-# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -45,7 +45,7 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 
 <tr><td>**Ukázka kódu**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
 
-<tr><td>**Tipy pro zvýšení výkonu**</td><td>[Soubor Readme pro Github](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
+<tr><td>**Tipy pro zvýšení výkonu**</td><td>[Soubor Readme pro GitHub](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
 
 <tr><td>**Minimální podporovaný modul runtime**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
@@ -63,7 +63,7 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Je opravená chyba NPE v cestě k zápisu zkuste to znovu.
 * Je opravená chyba NPE v koncového bodu správy.
-* Upgradovat zranitelné závislosti ([githubu #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
+* Upgradovat zranitelné závislosti ([Githubu #68](https://github.com/Azure/azure-cosmosdb-java/issues/68)).
 * Přidání podpory pro protokolování Netty sítě pro řešení potíží.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
@@ -72,16 +72,16 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * Přidání podpory pro proxy server.
 * Přidání podpory pro autorizační token prostředku.
-* Oprava chyby v nakládání s klíči velkých oddílů ([githubu #63](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
+* Oprava chyby v nakládání s klíči velkých oddílů ([63 Githubu](https://github.com/Azure/azure-cosmosdb-java/issues/63)).
 * Vylepšili jsme dokumentaci.
 * Sada SDK rozdělí do podrobnější moduly.
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
-* Oprava chyby u jiných jazycích než angličtině ([githubu #51](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
+* Oprava chyby u jiných jazycích než angličtině ([51 Githubu](https://github.com/Azure/azure-cosmosdb-java/issues/51)).
 * Přidání pomocné metody v konfliktu prostředků.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
-* Nahrazuje org.json závislost jackson kvůli kvůli výkonu a licencování ([githubu #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
+* Nahrazuje org.json závislost jackson kvůli kvůli výkonu a licencování ([29 Githubu](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
 * Odebrat zastaralé OfferV2 třídy.
 * Přidání přístupové metody pro třídu nabídky pro propustnost obsah.
 * V dokumentu nebo prostředek, vrátí typy org.json změněn na návratový typ objektu jackson libovolnou metodu.
@@ -94,18 +94,18 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 * Přidání podpory pro zásady jedinečný Index.
 * Přidání podpory pro omezení velikost odpovědi token pokračování v možnostech informačního kanálu.
 * Přidání podpory pro rozdělení oddílů v dotazu napříč oddíly.
-* Oprava chyby v serializaci Json časové razítko ([githubu #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Oprava chyby v serializaci Json časové razítko ([32 Githubu](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
 * Oprava chyby v serializaci Json výčtu.
-* Oprava chyby při správě dokumenty s velikostí 2MB ([githubu #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
-* Závislost com.fasterxml.jackson.core:jackson-databind upgradovat na 2.9.5 kvůli chybě ([jackson databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
-* Závislost na upgradovat na 0.8.0.17 kvůli chybě rxjava – funkce ([rxjava extra: github #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* Oprava chyby při správě dokumenty s velikostí 2MB ([Githubu č. 33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* Závislost com.fasterxml.jackson.core:jackson-databind upgradovat na 2.9.5 kvůli chybě ([jackson databind: GitHub #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* Závislost na upgradovat na 0.8.0.17 kvůli chybě rxjava – funkce ([rxjava funkce: GitHub #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
 * Popis metadat v souboru pom tier\web inline se zbytkem dokumentaci.
-* Zlepšení syntaxe ([githubu #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([githubu #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
+* Zlepšení syntaxe ([Githubu č. 41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([Githubu č. 40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Přidání podpory protitlak v dotazu.
 * Přidání podpory pro id rozsah klíče oddílu v dotazu.
-* Opravu, která umožňuje větší token pro pokračování v hlavičce požadavku (github opravu #24).
+* Opravu, která umožňuje větší token pro pokračování v hlavičce požadavku (opravu 24 Githubu).
 * Upgradovat na 4.1.22.Final zajistit JVM netty závislost ukončí po dokončení hlavního vlákna.
 * Opravte a vyhněte se předávání tokenu relace při čtení hlavní prostředky.
 * Přidat další příklady.

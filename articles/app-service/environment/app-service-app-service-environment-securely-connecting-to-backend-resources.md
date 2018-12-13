@@ -1,5 +1,5 @@
 ---
-title: Bezpečné připojení k back-Endovým prostředkům ze služby App Service Environment
+title: Připojujte se bezpečně k back end prostředky z prostředí služby App Service – Azure
 description: Další informace o tom, jak bezpečně připojit back-endové prostředky ze služby App Service Environment.
 services: app-service
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 4fccfbb4cbc1b0db0c032d95ad66b497520aa619
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: aea51234d26e5dbaef836419c2a13a12f8083e6f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960936"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315855"
 ---
-# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Bezpečné připojení k back-Endovým prostředkům ze služby App Service Environment
+# <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Připojujte se bezpečně k back end prostředky ze služby App Service environment
 ## <a name="overview"></a>Přehled
 Protože služba App Service Environment se vždy vytvářejí ve **buď** virtuální sítí Azure Resource Manageru **nebo** modelu nasazení classic [virtuální sítě] [ virtualnetwork], odchozí připojení ze služby App Service Environment do dalších back-endovým prostředkům může probíhat výhradně prostřednictvím virtuální sítě.  Nedávné změny provedené v červnu 2016 je možné také nasadit služby ase do virtuální sítě, které používají rozsahy adres veřejné nebo definice RFC1918 adresní prostory (tj. privátní adresy).  
 

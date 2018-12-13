@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 3af59bd3b19744983a44157e108430620fae3532
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019538"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260748"
 ---
-# <a name="azure-cache-for-redis-faq"></a>Mezipaměť Azure pro Redis – nejčastější dotazy
+# <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Co když můj dotaz zde nenalezl?
@@ -35,30 +35,30 @@ Pokud zde není uveden váš dotaz, dejte nám vědět a pomůžeme vám najít 
 ## <a name="azure-cache-for-redis-basics"></a>Azure mezipaměti Redis základy
 Nejčastější dotazy v této části se věnují několika základní informace o mezipaměti Azure pro Redis.
 
-* [Co je Azure mezipaměti Redis?](#what-is-azure-redis-cache)
-* [Jak mám začít s Azure Cache pro Redis?](#how-can-i-get-started-with-azure-redis-cache)
+* [Co je Azure mezipaměti Redis?](#what-is-azure-cache-for-redis)
+* [Jak mám začít s Azure Cache pro Redis?](#how-can-i-get-started-with-azure-cache-for-redis)
 
 Následující nejčastější dotazy se věnují základní koncepty a dotazy týkající se Azure Cache pro Redis a jsou zodpovězeny v některé z dalších částí – nejčastější dotazy.
 
-* [Jaké mezipaměti Azure Redis a jeho velikost mám použít?](#what-redis-cache-offering-and-size-should-i-use)
-* [Jaké mezipaměti Azure Redis klientů můžete použít?](#what-redis-cache-clients-can-i-use)
-* [Je pro Redis místní emulátor pro Azure Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
+* [Jaké mezipaměti Azure Redis a jeho velikost mám použít?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Jaké mezipaměti Azure Redis klientů můžete použít?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Je pro Redis místní emulátor pro Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
 * [Jak monitorovat stav a výkon své mezipaměti?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
 ## <a name="planning-faqs"></a>Plánování nejčastější dotazy
-* [Jaké mezipaměti Azure Redis a jeho velikost mám použít?](#what-redis-cache-offering-and-size-should-i-use)
-* [Mezipaměť Azure Redis výkonu](#azure-redis-cache-performance)
+* [Jaké mezipaměti Azure Redis a jeho velikost mám použít?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
+* [Mezipaměť Azure Redis výkonu](#azure-cache-for-redis-performance)
 * [V jaké oblasti by měl mi najít mé mezipaměti?](#in-what-region-should-i-locate-my-cache)
-* [Jak se fakturují pro mezipaměť Azure Redis?](#how-am-i-billed-for-azure-redis-cache)
-* [Můžete použít Azure Cache pro Redis pomocí cloudu Azure Government, Azure China Cloud nebo Microsoft Azure Germany?](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Jak se fakturují pro mezipaměť Azure Redis?](#how-am-i-billed-for-azure-cache-for-redis)
+* [Můžete použít Azure Cache pro Redis pomocí cloudu Azure Government, Azure China Cloud nebo Microsoft Azure Germany?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Nejčastějších dotazech týkajících se vývoje
 * [Jaké možnosti konfigurace StackExchange.Redis udělat?](#what-do-the-stackexchangeredis-configuration-options-do)
-* [Jaké mezipaměti Azure Redis klientů můžete použít?](#what-redis-cache-clients-can-i-use)
-* [Je pro Redis místní emulátor pro Azure Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
+* [Jaké mezipaměti Azure Redis klientů můžete použít?](#what-azure-cache-for-redis-clients-can-i-use)
+* [Je pro Redis místní emulátor pro Azure Cache?](#is-there-a-local-emulator-for-azure-cache-for-redis)
 * [Jak mohu spustit příkazy Redis?](#how-can-i-run-redis-commands)
-* [Proč Azure mezipaměti Redis nemá MSDN knihovny tříd jako některé z dalších služeb Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
-* [Můžu použít Azure Cache pro Redis jako mezipaměť relace PHP?](#can-i-use-azure-redis-cache-as-a-php-session-cache)
+* [Proč Azure mezipaměti Redis nemá MSDN knihovny tříd jako některé z dalších služeb Azure?](#why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+* [Můžu použít Azure Cache pro Redis jako mezipaměť relace PHP?](#can-i-use-azure-cache-for-redis-as-a-php-session-cache)
 * [Co jsou databáze Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Nejčastější dotazy k zabezpečení
@@ -104,18 +104,18 @@ Každá mezipaměť Azure nabídku Redis poskytuje různé úrovně **velikost**
 
 Následují faktory pro výběr variant mezipaměti.
 
-* **Paměť**: úrovně Basic a Standard nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 530 GB. Další informace najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
+* **Paměť**: Úrovně Basic a Standard nabízejí 250 MB – 53 GB. Úroveň Premium nabízí až 530 GB. Další informace najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/pricing/details/cache/).
 * **Výkon sítě**: Pokud máte úlohu, která vyžaduje vysokou propustnost, na úrovni Premium nabízí větší šířku pásma v porovnání s Standard nebo Basic. Také v každé úrovni mít větší velikost mezipaměti větší šířku pásma z důvodu základní virtuální počítač, který je hostitelem mezipaměti. Zobrazit [následující tabulky](#cache-performance) Další informace.
-* **Propustnost**: úroveň Premium nabízí maximální propustnost k dispozici. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, můžete obdržet vypršení časového limitu na straně klienta. Další informace najdete v tématu v následující tabulce.
-* **Vysoká dostupnost/SLA**: mezipaměti Redis Azure zaručuje, že mezipaměti úrovně Standard nebo Premium je k dispozici alespoň 99,9 % času. Další informace o smlouvě SLA najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Součástí smlouvy SLA není ochrana proti ztrátě dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat.
-* **Trvalost dat redis**: úroveň Premium umožňuje trvalé uchování mezipaměti dat v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Pokud jsou základní problémy infrastrukturu může být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti trvalosti Redis. Další informace najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
-* **Redis Cluster**: Chcete-li vytvořit ukládá do mezipaměti větší než 53 GB, nebo sdílení dat mezi více uzlů Redis, můžete použít Redis clustering, která je dostupná na úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro zajištění vysoké dostupnosti. Další informace najdete v tématu [postup konfigurace clusterů pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-clustering.md).
-* **Rozšířené zabezpečení a síťové izolace**: nasazení Azure Virtual Network (VNET) nabízí vyšší míru zabezpečení a izolaci pro mezipaměť Azure Redis, stejně jako podsítě, zásady řízení přístupu a jiné funkce pro další omezení přístupu. Další informace najdete v tématu [konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md).
-* **Konfigurace Redis**: ve vrstvách Standard a Premium, můžete nakonfigurovat pro oznámení Keyspace Redis.
-* **Maximální počet připojení klientů**: úroveň Premium nabízí maximální počet klientů, které se mohou připojit k úložišti Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Clustering nezvyšuje počet připojení, které jsou k dispozici pro clusterové mezipaměti. Další informace najdete v tématu [mezipaměti Azure Redis ceny](https://azure.microsoft.com/pricing/details/cache/).
-* **Vyhrazená jádra serveru Redis**: všech velikostí mezipaměti na úrovni Premium máte vyhrazená jádra pro Redis. Na úrovních Basic nebo Standard, velikost C1 a výše máte vyhrazená jádra pro Redis server.
+* **Propustnost**: Úroveň Premium nabízí maximální propustnost k dispozici. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, můžete obdržet vypršení časového limitu na straně klienta. Další informace najdete v tématu v následující tabulce.
+* **Vysoká dostupnost/SLA**: Mezipaměti Redis Azure zaručuje, že mezipaměť Standard nebo Premium je k dispozici alespoň 99,9 % času. Další informace o smlouvě SLA najdete v tématu [mezipaměti Azure redis Cache ceny](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Smlouva SLA pokrývá jenom připojení ke koncovým bodům mezipaměti. Součástí smlouvy SLA není ochrana proti ztrátě dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat.
+* **Trvalost dat redis**: Úroveň Premium umožňuje zachovat data v mezipaměti v účtu služby Azure Storage. V mezipaměti Basic nebo Standard všechna data uložena pouze v paměti. Pokud jsou základní problémy infrastrukturu může být potenciální ztráty dat. Doporučujeme použití funkce trvalosti dat Redis na úrovni Premium ke zvýšení odolnosti proti ztrátě dat. Mezipaměti Redis Azure nabízí RDB a AOF (už brzo) možnosti trvalosti Redis. Další informace najdete v tématu [konfigurace trvalosti pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-persistence.md).
+* **Redis Cluster**: Vytvoření mezipaměti větší než 53 GB, nebo sdílení dat mezi více uzlů Redis, můžete Redis clustering, která je dostupná na úrovni Premium. Každý uzel se skládá z dvojice primární/replika mezipaměti pro zajištění vysoké dostupnosti. Další informace najdete v tématu [postup konfigurace clusterů pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-clustering.md).
+* **Rozšířené zabezpečení a síťové izolace**: Nasazení Azure Virtual Network (VNET) nabízí vyšší míru zabezpečení a izolaci pro mezipaměť Azure Redis, stejně jako podsítě, zásady řízení přístupu a jiné funkce pro další omezení přístupu. Další informace najdete v tématu [konfigurace podpory služby Virtual Network pro mezipaměť Azure Premium pro Redis](cache-how-to-premium-vnet.md).
+* **Konfigurace Redis**: Ve vrstvách Standard a Premium můžete nakonfigurovat pro oznámení Keyspace Redis.
+* **Maximální počet připojení klientů**: Úroveň Premium nabízí maximální počet klientů, které se mohou připojit k úložišti Redis, s vyšší počet připojení pro větší velikosti mezipaměti. Clustering nezvyšuje počet připojení, které jsou k dispozici pro clusterové mezipaměti. Další informace najdete v tématu [mezipaměti Azure Redis ceny](https://azure.microsoft.com/pricing/details/cache/).
+* **Vyhrazených jader k serveru Redis**: Na úrovni Premium mají všechny velikosti mezipaměti vyhrazená jádra pro Redis. Na úrovních Basic nebo Standard, velikost C1 a výše máte vyhrazená jádra pro Redis server.
 * **Redis je jednovláknový** tak s více než dvě jádra neposkytuje výhody oproti s právě dvě jádra, ale větší velikosti virtuálních počítačů obvykle mají větší šířku pásma než menší velikost. Pokud klienta nebo serveru mezipaměti dosáhne omezení šířky pásma, obdržíte vypršení časového limitu na straně klienta.
-* **Vylepšení výkonu**: mezipaměť na úrovni Premium jsou nasazené na hardware, který má rychlejšími procesory, poskytuje lepší výkon ve srovnání s na úrovni Basic nebo Standard. Mezipaměti úrovně Premium má vyšší propustnost a nižší latenci.
+* **Vylepšení výkonu**: Mezipaměť na úrovni Premium jsou nasazené na hardware, který má rychlejšími procesory, poskytuje lepší výkon ve srovnání na úroveň Basic nebo Standard. Mezipaměti úrovně Premium má vyšší propustnost a nižší latenci.
 
 <a name="cache-performance"></a>
 
@@ -349,7 +349,7 @@ Následující příkazy jsou příkladem použití redis benchmark.exe. Pro př
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * Test zřetězena získat požadavků pomocí datové části je 1 kB.
-  Poznámka: Spustit test sada je uveden výše nejprve k naplnění mezipaměti
+  POZNÁMKA: Spustit test sady uvedené nahoře první naplňte mezipaměť
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 

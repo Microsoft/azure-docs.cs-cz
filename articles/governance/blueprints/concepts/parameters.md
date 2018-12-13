@@ -1,5 +1,5 @@
 ---
-title: Vytváření dynamických plány prostřednictvím parametrů v Azure podrobné plány
+title: Použijte parametry pro vytvoření dynamické podrobné plány.
 description: Další informace o statické a dynamické parametry a jejich používání způsob, jak vytvořit dynamické podrobné plány.
 services: blueprints
 author: DCtheGeek
@@ -8,12 +8,13 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f6485b01c391ba336799ceb35ee67402b3603585
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.custom: seodec18
+ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093747"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310313"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických plány prostřednictvím parametrů
 
@@ -51,13 +52,13 @@ Hodnota parametru definované v definici plán, podle kterého se volá **static
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statické parametery nastavení na portálu
 
-1. Klikněte na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na stránce **Zásady** klikněte na **plány**.
+1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
 
 1. Vyberte **definice podrobného plánu** ze stránky na levé straně.
 
 1. Klikněte na existující plán a pak klikněte na tlačítko **upravit podrobný plán** nebo klikněte na tlačítko **+ vytvořit podrobný plán** a vyplňte informace o **Základy** kartu.
 
-1. Klikněte na tlačítko **Další: artefakty** nebo klikněte na **artefakty** kartu.
+1. Klikněte na tlačítko **Další: Artefakty** nebo klikněte na **artefakty** kartu.
 
 1. Artefakty do podrobný plán, které mají parametr možnosti Zobrazit **naplněných parametrů X z Y** v **parametry** sloupce. Klikněte na řádek artefaktů můžete upravit parametry artefaktů.
 
@@ -168,7 +169,7 @@ Je opakem statický parametr **dynamického parametru**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Nastavení dynamické parametry na portálu
 
-1. Klikněte na **všechny služby** a vyhledáte a vyberete **zásady** v levém podokně. Na stránce **Zásady** klikněte na **plány**.
+1. Klikněte na **Všechny služby** a v levém podokně vyhledejte a vyberte **Zásady**. Na stránce **Zásady** klikněte na **plány**.
 
 1. Vyberte **definice podrobného plánu** ze stránky na levé straně.
 

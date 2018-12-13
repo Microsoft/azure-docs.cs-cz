@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: danimir
-ms.author: v-daljep
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 0d728d81a29c5520938c8553c026727c0f94cc43
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.date: 12/10/2018
+ms.openlocfilehash: 9e8b9b24707577aba5df754984953ef2f59b9ff9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956999"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272860"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Sledování a ladění výkonu
 
@@ -85,7 +85,91 @@ Pokud zjistíte, že máte problém s výkonem souvisejících s běží, je va�
 > [!IMPORTANT]
 > Sada dotazů T-SQL pomocí těchto zobrazení dynamické správy k řešení potíží využití procesoru, naleznete v tématu [procesoru identifikovat problémy s výkonem](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues).
 
+### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Řešení potíží s dotazy s problémy plán spuštění závislé na parametru dotazu
+
+Potíže s parametrem citlivé plán (PSP) odkazuje na scénáři, kde Optimalizátor dotazů generuje plán provádění dotazu, který je ideální jenom pro konkrétní parametr (nebo sadu hodnot) a bude plánů v mezipaměti optimální zadání hodnot parametrů používaných pro počet po sobě jdoucích spuštění. Optimální jiné plány může pak způsobit problémy s výkonem dotazů a celkovou propustnost snížení zatížení.
+
+Existuje několik řešení zmírnit problémy, každá má přidružené kompromisy a nevýhody:
+
+- Použití [znovu ZKOMPILOVAT](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu v každé spuštění dotazu. Toto řešení obchoduje čas kompilace obchody a zvýšení využití procesoru pro lepší kvalitu plánu. Použití `RECOMPILE` možnost je často není možné pro úlohy vyžadující vysokou propustnost.
+- Použití [možnosti (optimalizace pro...) ](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr s hodnotou typické parametr, který vytváří plán dostatečné pro většinu možností hodnotu parametru.   Tato možnost vyžaduje dostatečné povědomí o charakteristiky související plán a optimální parametr hodnoty.
+- Použití [možnosti (optimalizace pro neznámý)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu přepsat hodnotu skutečný parametr výměnou za pomocí vektoru průměr hustoty. Dalším způsobem, jak to provést, je zachycení příchozí hodnoty parametrů do místní proměnné a pak pomocí místní proměnné v rámci predikáty, namísto použití parametrů samotných. Musí být průměrné hustota *dostatečné* pomocí této opravy.
+- Zakažte parametr pro analýzu sítě zcela pomocí [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu.
+- Použití [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu tak, aby se znovu zkompiluje v mezipaměti. Toto řešení předpokládá *dobré dostatečně* běžné plán už je v mezipaměti. Aby bylo možné snížit pravděpodobnost svého Dobrý plán vyřazuje a nový plán chybný kompilovanému mohou také zakázat automatické aktualizace statistiky.
+- Nelze vynutit jiný plán explicitně pomocí [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) pomocný parametr dotazu (explicitním zadáním, nastavením konkrétní plán pomocí Query Store nebo povolením [automatické ladění](sql-database-automatic-tuning.md).
+- Nahraďte jedinou proceduru vnořenou sadu postupy, které lze každý použít na základě podmíněnou logiku a přidružené parametr hodnoty.
+- Vytvoření dynamické řetězce provádění alternativy k definici statické metody.
+
+Další informace o řešení těchto typů problémů najdete v tématu:
+
+- To [cítit parametr](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/) blogový příspěvek
+- To [parametr pro analýzu sítě problému a alternativní řešení](https://blogs.msdn.microsoft.com/turgays/2013/09/10/parameter-sniffing-problem-and-possible-workarounds/) blogový příspěvek
+- To [Slon a pro analýzu sítě myši parametr](ttps://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/) blogový příspěvek
+- To [dynamické srovnání plánu kvality pro parametrizované dotazy sql](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/) blogový příspěvek
+
+### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Řešení potíží s aktivitu kompilace z důvodu nesprávné Parametrizace
+
+Když má dotaz literály, databázový stroj zvolí možnost automaticky parametrizovat příkaz nebo uživatel můžete explicitně parametrizovat kvůli snížení počtu zkompiluje. Vysoké využití procesoru může způsobit vysoký počet zkompiluje dotazu pomocí stejného vzoru, ale jiné hodnoty literálu. Podobně pokud jen částečně parametrizace dotazu, který se bude mít literály, databázový stroj parametrizovat ho dále.  Níže je příklad částečně parametrizovaného dotazu:
+
+```sql
+select * from t1 join t2 on t1.c1=t2.c1
+where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+```
+
+V předchozím příkladu `t1.c1` trvá `@p1` ale `t2.c2` pokračuje trvat identifikátor GUID jako literál. V takovém případě pokud se změní hodnota `c2`, dotaz bude zacházeno jako jiný dotaz, a dojde k nové kompilace. Pokud chcete snížit kompilace v předchozím příkladu, řešením je také parametrizovat identifikátor GUID.
+
+Následující dotaz zobrazí počet dotazů podle hodnota hash dotazu k určení, pokud dotaz nebo není správně parametrizované:
+
+```sql
+   SELECT  TOP 10  
+      q.query_hash
+      , count (distinct p.query_id ) AS number_of_distinct_query_ids
+      , min(qt.query_sql_text) AS sampled_query_text
+   FROM sys.query_store_query_text AS qt
+      JOIN sys.query_store_query AS q
+         ON qt.query_text_id = q.query_text_id
+      JOIN sys.query_store_plan AS p 
+         ON q.query_id = p.query_id
+      JOIN sys.query_store_runtime_stats AS rs 
+         ON rs.plan_id = p.plan_id
+      JOIN sys.query_store_runtime_stats_interval AS rsi
+         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+   WHERE
+      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+      AND query_parameterization_type_desc IN ('User', 'None')
+   GROUP BY q.query_hash
+   ORDER BY count (distinct p.query_id) DESC
+```
+
+### <a name="resolve-problem-queries-or-provide-more-resources"></a>Vyřešte problém dotazy nebo Poskytněte další zdroje informací
+
 Jakmile identifikujete problém, můžete ladit problémových dotazů nebo upgradovat výpočetního prostředí nebo ke zvýšení kapacity databáze Azure SQL a chránit před požadavky na procesor úroveň služby. Informace o škálování prostředků pro izolované databáze, najdete v části [škálování izolované databáze prostředků ve službě Azure SQL Database](sql-database-single-database-scale.md) a škálování prostředků pro elastické fondy, najdete v části [škálování elastického fondu prostředků ve službě Azure SQL Databáze](sql-database-elastic-pool-scale.md). Informace o vertikálním navýšení managed instance najdete v tématu [omezení prostředků na úrovni Instance](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+
+### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>Určí, zda je spuštěna problémy z důvodu zvýšení zatížení svazku
+
+Pro zvýšení využití procesoru může účet zvýšení provozu aplikace a úlohy, ale musí být pozor, abyste správně diagnostiku tohoto problému. V případě vysoké využití procesoru v odpovězte na tyto otázky k určení, zda skutečně zvýšení využití procesoru je z důvodu změny hlasitosti úlohy:
+
+1. Jsou dotazy z aplikace příčinu vysoké využití procesoru problém?
+2. Pro začátek využívání procesoru dotazy (které je možné identifikovat):
+
+   - Určete, pokud došlo k několika plánům spuštění přidružené stejný dotaz. Pokud ano, zjistěte, proč.
+   - Pro dotazy s stejný plán spuštění určete, pokud spuštění s úspěšností byly konzistentní a zvýšení počtu spuštění. Pokud ano, jsou problémy s výkonem pravděpodobně z důvodu zvýšení zatížení.
+
+Stručně řečeno, pokud plán provádění dotazu neměli spouštět jinak, ale využití procesoru zvýšit spolu s počtem provádění, pravděpodobně nastane problém s úlohy související s zvýšení výkonu.
+
+Není vždy jednoduché k závěru, že dojde ke změně svazku zatížení, který má zásadní vliv na využití procesoru problém.   Faktory ke zvážení: 
+
+- **Změnit využití prostředků**
+
+  Zvažte například scénář, ve kterém procesoru zvýšit na hodnotu 80 % delší dobu.  Využití procesoru samostatně neznamená svazku úlohy změnit.  Dotaz na plán provádění, že regrese a rozdělení změny dat můžete přispívat také další využití prostředků i v případě, že aplikace provádí stejné úlohy přesné.
+
+- **Nový dotaz objevil**
+
+   Aplikace může to podpořit nové sady dotazů v různých časech.
+
+- **Počet požadavků, které zvýší nebo sníží**
+
+   Tento scénář je Nejobvyklejšími měr pracovní vytížení. Počet dotazů nebude vždy odpovídat další využití prostředků. Tato metrika je však stále významné signál za předpokladu, že další faktory jsou beze změny.
 
 ## <a name="waiting-related-performance-issues"></a>Problémy s výkonem souvisejících s čekání
 
@@ -94,6 +178,13 @@ Jakmile jste si jisti, že nejsou připojena vysoké využití procesoru, probl�
 - [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) poskytuje statistiky čekání každý dotaz v čase. Na Query Store čekání typy jsou sloučeny do kategorií čekání. Je k dispozici v mapování kategorií wait čekat typy [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [Sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) vrátí informace o všech čeká tak vlákna, která provedených během operace. Toto souhrnné zobrazení můžete použít k diagnostice problémů s výkonem s Azure SQL Database a také s konkrétní dotazy a dávek.
 - [Sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) vrátí informace o frontě čekání úlohy, které čekají na některých prostředků.
+
+Ve scénářích vysoké využití procesoru Query Store a statistiky čekání nemusí pokaždé odpovídat využití procesoru pro dvě z těchto důvodů:
+
+- Využívání dotazy vysoké využití procesoru může být stále provádí a dotazy nebylo dokončeno.
+- Vysoké využití procesoru náročné dotazy byly spuštěny při došlo k chybě převzetí služeb při selhání
+
+Query Store a zobrazení dynamické správy sledování statistiky čekání pouze zobrazit výsledky pro dotazy na úspěšně dokončené a časového limitu a nezobrazují data pro aktuálně spouští příkazy (až do dokončení).  Zobrazení dynamické správy [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) umožňuje sledovat právě spouští dotazy a přidružené pracovní doby.
 
 Jak je znázorněno v předchozí tabulce, jsou nejčastěji používané čeká:
 

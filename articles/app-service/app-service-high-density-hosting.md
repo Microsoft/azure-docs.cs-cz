@@ -1,5 +1,5 @@
 ---
-title: Hostování s vysokou hustotou ve službě Azure App Service pomocí škálování pro aplikaci | Dokumentace Microsoftu
+title: Hostování s vysokou hustotou pro aplikaci pomocí škálování – Azure App Service | Dokumentace Microsoftu
 description: Hostování s vysokou hustotou ve službě Azure App Service
 author: btardif
 manager: erikre
@@ -14,12 +14,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: e07653db70c5baff038cacf8628351c682e20f7f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: e7ebe3ade66e62e1f42aa304b33c42d96be72c06
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971976"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258912"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hostování s vysokou hustotou ve službě Azure App Service pomocí škálování pro aplikaci
 Ve výchozím nastavení, škálování aplikací služby App Service díky škálování [plán služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) jsou spuštěné na. Při spuštění více aplikací v rámci stejného plánu služby App Service, každá instance s horizontálním navýšením kapacity spustí všechny aplikace v plánu.
@@ -129,10 +130,10 @@ Za škálování aplikace je funkce, která je povolena v obou globálními obla
 Postupujte podle těchto kroků a nakonfigurujte hostování vašich aplikací s vysokou hustotou:
 
 1. Konfigurace služby App Service Environment a zvolte fond pracovních procesů, který je vyhrazen pro scénáře hostování s vysokou hustotou.
-1. Vytvořte jeden plán služby App Service a škálovat tak, aby používat všechny dostupné kapacity ve fondu pracovních procesů.
-1. Nastavte `PerSiteScaling` příznak na hodnotu true na plán služby App Service.
-1. Nové aplikace jsou vytvořeny a přiřazeny do tohoto plánu služby App Service s **numberOfWorkers** vlastnost nastavena na hodnotu **1**. Pomocí této konfigurace poskytuje nejvyšší možné hustota na tento fond pracovních procesů.
-1. Počet pracovních procesů můžete nakonfigurovat nezávisle na aplikaci udělit další prostředky podle potřeby. Příklad:
+2. Vytvořte jeden plán služby App Service a škálovat tak, aby používat všechny dostupné kapacity ve fondu pracovních procesů.
+3. Nastavte `PerSiteScaling` příznak na hodnotu true na plán služby App Service.
+4. Nové aplikace jsou vytvořeny a přiřazeny do tohoto plánu služby App Service s **numberOfWorkers** vlastnost nastavena na hodnotu **1**. Pomocí této konfigurace poskytuje nejvyšší možné hustota na tento fond pracovních procesů.
+5. Počet pracovních procesů můžete nakonfigurovat nezávisle na aplikaci udělit další prostředky podle potřeby. Příklad:
     - Můžete nastavit aplikaci intenzivně využívaných **numberOfWorkers** k **3** mít větší kapacitu zpracování pro tuto aplikaci. 
     - Nastaví nízkou použití aplikace **numberOfWorkers** k **1**.
 

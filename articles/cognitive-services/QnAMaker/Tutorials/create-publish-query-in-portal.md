@@ -11,14 +11,14 @@ ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: 71745ee73c71aba9c6c5cd5aea3972055fbec01d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087537"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164428"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze a následné zodpovězení otázky prostřednictvím portálu služby QnA Maker
+# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze knowledge base a zodpovědět dotazy přes portál QnA Maker
 
 Tento kurz vás provede vytvořením a publikováním znalostní báze a následným zodpovězením otázky ze znalostní báze.
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 * Dotazování znalostní báze pomocí cURL
 
 > [!NOTE] 
-> Programová verze tohoto kurzu je k dispozici v rámci kompletního řešení v [úložišti **Azure-Samples/cognitive-services-qnamaker-csharp** na GitHubu](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
+> Programové verzi tohoto kurzu je k dispozici s tak získají kompletní řešení z [ **Azure – ukázky/cognitive-services – QnA maker csharp** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base).
 
 ## <a name="prerequisites"></a>Požadavky
 

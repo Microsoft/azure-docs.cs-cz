@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: bf2cd5380760ef4cab8378aa7b66da461ac0cd69
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: b927b63744c9871c2a2d5451c685714c2d2ea6de
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092033"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268219"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Zjistit poznámkové bloky Jupyter v galerii Azure AI
 
@@ -69,5 +68,5 @@ Poznámkový blok se společně s další poznámkových bloků, uvedený na **p
 
 **[PŘEJÍT NA VE GALERII &GT;&GT;](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

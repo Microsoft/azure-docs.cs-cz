@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 44a2cb196e1a89b0abe229f478c0b76b146aa268
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620621"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275325"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -417,7 +417,7 @@ V následující tabulce jsou uvedeny verze Node.js používá každá hlavní v
 | Verze funkcí | Verze Node.js | 
 |---|---|
 | 1.x | 6.11.2 (uzamčeno modulem runtime) |
-| 2.x  | _Aktivní LTS_ a sudým číslem _aktuální_ verze Node.js (8.11.1 a 10.6.0 doporučeno). Nastavení verze s použitím WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace, které](functions-how-to-use-azure-function-app-settings.md#settings).|
+| 2.x  | _Aktivní LTS_ a sudým číslem _aktuální_ verze Node.js (8.11.1 a 10.14.1 doporučeno). Nastavení verze s použitím WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace, které](functions-how-to-use-azure-function-app-settings.md#settings).|
 
 Zobrazí aktuální verzi, která používá modul runtime kontrolou nad nastavení aplikace nebo tisk `process.version` z jakékoli funkce.
 

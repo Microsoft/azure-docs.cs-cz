@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití webu Azure portal spustíte'
+title: Rychlý start prostřednictvím webu Azure portal
 titleSuffix: Azure Machine Learning service
 description: Začínáme se službou Azure Machine Learning. Vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí webu Azure portal.
 services: machine-learning
@@ -11,16 +11,16 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 00ad774caa0fe0dcfb7f41614ec25e6cc802da10
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c215a3947069e572f73692ea54010c77d78ae4fd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103094"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273557"
 ---
-# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal
 
-V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu se používají cloudové prostředky a nevyžaduje se žádná instalace. Pokud místo toho chcete nakonfigurovat vlastní server poznámkového bloku Jupyter, přečtěte si [Rychlý start: Použití Pythonu při začátcích se službou Azure Machine Learning](quickstart-create-workspace-with-python.md).
+V tomto rychlém startu pomocí webu Azure Portal vytvoříte pracovní prostor služby Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu se používají cloudové prostředky a nevyžaduje se žádná instalace. Místo toho nakonfigurovat svůj vlastní server poznámkového bloku Jupyter, najdete v části [rychlý start: Začínáme s Azure Machine Learning pomocí Pythonu](quickstart-create-workspace-with-python.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -39,7 +39,7 @@ Do vašeho pracovního prostoru se automaticky přidají následující prostře
 
 Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Machine Learning. S ostatními službami Azure, jsou výpočetní omezení určitých prostředků pomocí služby Machine Learning, například velikost clusteru. Další informace o [výchozí omezení a o tom, aby vám zvýšila kvótu](how-to-manage-quotas.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru 
@@ -119,4 +119,4 @@ Vytvořili jste prostředky potřebné k experimentování s modely a jejich nas
 Podrobný pracovní postup najdete v kurzech pro Machine Learning věnovaných trénování a nasazení modelu.  
 
 > [!div class="nextstepaction"]
-> [Kurz: Školení modelu klasifikace obrázků](tutorial-train-models-with-aml.md)
+> [Kurz: Trénování modelu klasifikace obrázků](tutorial-train-models-with-aml.md)

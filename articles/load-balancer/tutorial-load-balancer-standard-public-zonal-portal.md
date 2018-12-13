@@ -1,14 +1,11 @@
 ---
-title: 'Kurz: Použití Load Balanceru pro virtuální počítače v rámci zóny – Azure Portal | Microsoft Docs'
+title: 'Kurz: Virtuální počítače nástroje pro vyrovnávání zatížení v zóně – Azure portal'
+titlesuffix: Azure Load Balancer
 description: V tomto kurzu si ukážeme, jak vytvořit Standard Load Balancer se zónovým front-endem, který bude vyrovnávat zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí webu Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -16,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 580015b7f8b1f894c69ddec0f26daeb524932e4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: dd4600d77373894cdc9d6225ae008a8bd677fb59
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637289"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262091"
 ---
-# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Standard Load Balanceru na webu Azure Portal
+# <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Kurz: Nástroj pro vyrovnávání zatížení virtuálních počítačů v zóně dostupnosti s využitím Load balanceru úrovně Standard s využitím webu Azure portal
 
 V tomto kurzu vytvoříte veřejnou [instanci Azure Standard Load Balanceru](https://aka.ms/azureloadbalancerstandard) se zónovým front-endem, který používá standardní veřejnou IP adresu na webu Azure Portal. V tomto scénáři zadáte určitou zónu pro instance front-endu a back-endu, aby se datové cesty a prostředky spojily s určitou zónou. Co se v tomto kurzu naučíte:
 
@@ -53,7 +50,7 @@ Standard Load Balancer podporuje jenom standardní veřejnou IP adresu. Když p�
 2. Na stránce **Vytvořit nástroj pro vyrovnávání zatížení** zadejte pro nástroj pro vyrovnávání zatížení tyto hodnoty:
     - **myLoadBalancer** – název nástroje pro vyrovnávání zatížení.
     - **Public** – typ nástroje pro vyrovnávání zatížení.
-     - **myPublicIPZonal** – nová veřejná IP adresa, kterou vytvoříte. Vyberte **Zvolte veřejnou IP adresu**. Potom vyberte, že chcete **vytvořit novou** adresu. Do názvu zadejte **myPublicIP**. SKU je ve výchozím nastavení standardní. V poli **Zóna dostupnosti** vyberte **Zóna 1**.
+      - **myPublicIPZonal** – nová veřejná IP adresa, kterou vytvoříte. Vyberte **Zvolte veřejnou IP adresu**. Potom vyberte, že chcete **vytvořit novou** adresu. Do názvu zadejte **myPublicIP**. SKU je ve výchozím nastavení standardní. V poli **Zóna dostupnosti** vyberte **Zóna 1**.
     - **myResourceGroupZLB** – název nové skupiny prostředků, kterou vytvoříte.
     - **westeurope** – umístění.
 3. Stisknutím tlačítka **Vytvořit** vytvořte nástroj pro vyrovnávání zatížení.
@@ -81,7 +78,7 @@ V této části vytvoříte virtuální síť. Vytvoříte také dva virtuální
     - **myNetworkSecurityGroup** – název skupiny zabezpečení sítě.
     - **myResourceGroupLBAZ** – název existující skupiny prostředků.
    
-    ![Vytvoření skupiny zabezpečení sítě](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
+     ![Vytvoření skupiny zabezpečení sítě](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 
 ### <a name="create-nsg-rules"></a>Vytvoření pravidel skupiny zabezpečení sítě
 
@@ -100,7 +97,7 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
     - **Popis** – zadejte **Povolení protokolu HTTP**.
 4. Vyberte **OK**.
  
- ![Vytvoření pravidel skupiny zabezpečení sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Vytvoření pravidel skupiny zabezpečení sítě](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 
 5. Opakováním kroků 2–4 vytvořte další pravidlo s názvem **myRDPRule**. Toto pravidlo umožní příchozí připojení RDP, které používá port 3389 a má následující hodnoty:
     - **Zdroj** – zadejte **Značka služby**.
@@ -112,7 +109,7 @@ V této části vytvoříte na webu Azure Portal pravidla NSG, která povolí p�
     - **Název** – zadejte **myRDPRule**.
     - **Popis** – zadejte **Povolení protokolu RDP**.
 
-    ![Vytvoření pravidla RDP](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
+      ![Vytvoření pravidla RDP](./media/tutorial-load-balancer-standard-zonal-portal/create-rdp-rule.png)
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
@@ -218,7 +215,7 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje, jak se provoz distri
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny další související prostředky. Vyberte skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení. Vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
 - [Vyrovnávání zatížení virtuálních počítačů mezi zónami dostupnosti](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

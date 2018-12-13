@@ -5,29 +5,35 @@ services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: bec0b9a7e34f1577f80a99f5380795c479c04bc8
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 3493b94e93a03faaf60aaa64bf8b80cefb754657
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890462"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53309055"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
 
-Pokud chcete sestavovat a spouštět aplikace Azure Service Fabric Mesh na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric Mesh, sadu SDK a nástroje.
+K vytváření a spouštění aplikací Azure Service Fabric mřížky na vývojovém počítači s Windows, budete potřebovat:
+
+* Docker
+* Visual Studio 2017
+* Modul runtime Service Fabric mřížky
+* Sada Service Fabric mřížky SDK a nástroje.
+
+A jeden z následujících verzí Windows:
+
+* Windows 10 (Enterprise, Professional nebo Education) verze 1709 (Fall Creators update) nebo 1803 (aktualizace systému Windows 10. dubna 2018)
+* Windows Server verze 1709
+* Windows Server verze 1803
+
+Následující pokyny se vše, co je nainstalována nápověda založen na verzi Windows, kterou používáte.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
-
-## <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
-
-Pro vývoj jsou podporovány tyto verze operačních systémů:
-
-* Windows 10 (Enterprise, Professional nebo Education)
-* Windows Server 2016
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -38,7 +44,9 @@ K nasazování aplikací Service Fabric Mesh se vyžaduje sada Visual Studio 201
 
 ## <a name="install-docker"></a>Instalace Dockeru
 
-#### <a name="windows-10"></a>Windows 10
+Pokud už máte nainstalovaný Docker, ujistěte se, že máte nejnovější verzi. Docker může výzvu, pokud je nová verze ale Zkontrolujte ručně, ujistěte se, že máte nejnovější verzi.
+
+#### <a name="install-docker-on-windows-10"></a>Nainstalujte Docker ve Windows 10
 
 Stáhněte a nainstalujte nejnovější verzi [Docker Community Edition pro Windows][download-docker] sloužící k podpoře kontejnerizovaných aplikací Service Fabric používaných službou Service Fabric Mesh.
 
@@ -46,7 +54,7 @@ Když se během instalace zobrazí výzva, vyberte **Use Windows containers inst
 
 Pokud na vašem počítači není povolená technologie Hyper-V, v instalačním programu Dockeru se zobrazí možnost ji povolit. Po zobrazení příslušné výzvy klikněte na **OK**.
 
-#### <a name="windows-server-2016"></a>Windows Server 2016
+#### <a name="install-docker-on-windows-server-2016"></a>Nainstalovat Docker na Windows serveru 2016
 
 Pokud nemáte povolenou roli Hyper-V, otevřete PowerShell jako správce, spuštěním následujícího příkazu povolte Hyper-V a pak restartuje počítač. Další informace najdete v tématu [Docker Enterprise Edition pro Windows Server][download-docker-server].
 
@@ -77,9 +85,13 @@ Nainstalujte modul runtime Service Fabric Mesh, sadu SDK a nástroje v následuj
 > Před vytvořením clusteru **musí** být spuštěný Docker.
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
 
+> [!Note]
+> Pokud vyvíjíte na Windows Fall Creators update (verze 1709) počítače, můžete použít pouze imagí dockeru docker Windows verze 1709.
+> Pokud vyvíjíte ve Windows 10. dubna 2018 update (verze 1803) počítače, můžete použít buď imagí dockeru verze 1709 nebo 1803 Windows.
+
 Pokud používáte Visual Studio, můžete tuto část přeskočit, protože Visual Studio vytvoří místní cluster, pokud žádný nemáte.
 
-Kvůli nejlepšímu výkonu ladění při vytváření a spouštění aplikací Service Fabric doporučujeme vytvořit místní vývojový cluster s jedním uzlem. Tento cluster musí být spuštěný vždy, když nasazujete nebo ladíte projekt služby Service Fabric Mesh.
+Pro nejlepší ladění výkonu při vytvoření a spuštění jednoduché aplikace Service Fabric najednou vytvořte jedním uzlem místního vývojového clusteru. Pokud používáte několik aplikací najednou, vytvořte pěti uzly místního vývojového clusteru. Cluster musí být spuštěna vždy, když nasazujete nebo ladit projekt služby prostředků infrastruktury sítě.
 
 Po instalaci modulu runtime, sady SDK, nástroje sady Visual Studio, Docker a mít spuštěnou Dockeru, vytvořte vývojový cluster.
 
@@ -105,7 +117,7 @@ Teď můžete začít vytvářet aplikace Service Fabric Mesh.
 
 Přečtěte si kurz [vytvoření aplikace Azure Service Fabric](service-fabric-mesh-tutorial-create-dotnetcore.md).
 
-Najděte odpovědi na [běžné dotazy](service-fabric-mesh-faq.md).
+Najděte odpovědi na [běžné dotazy a známé problémy](service-fabric-mesh-faq.md).
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli
 [download-docker]: https://store.docker.com/editions/community/docker-ce-desktop-windows

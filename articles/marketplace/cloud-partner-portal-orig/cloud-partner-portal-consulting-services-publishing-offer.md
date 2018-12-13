@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 43f1e71486cedbeccb2c02388147a68756581e50
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7ea4a58f072071f60cf87d1e8817ae19658be5fb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037758"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310415"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure a nabídky Dynamics 365 konzultační služby
 
 <table> <tr> <td>Tato část vysvětluje, jak publikovat konzultační služby buď Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a> nebo <a href="https://appsource.microsoft.com">AppSource Marketplace</a>. Řešení na základě Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>, <a href="https://products.office.com">Office 365</a>, <a href="https://powerbi.microsoft.com">Power BI</a>, a <a href="https://powerapps.microsoft.com">PowerApps</a> mají nárok na uvedené na AppSource. Další Microsoftu na základě jiné nabídky <a href="https://azure.microsoft.com/services">služeb Azure</a> jsou nárok na uvedení na webu Azure Marketplace. </td> <td><img src="./media/consulting-services-publishing-offer/consulting-icon1.png"  alt="Microsoft consulting icon" /></td> </tr> </table>
 
 
-# <a name="publishing-benefits"></a>Publikování výhody
+## <a name="publishing-benefits"></a>Publikování výhody
 
 Publikování na některý z Tržiště Microsoftu má významné výhody:
 
@@ -36,13 +36,11 @@ Publikování na některý z Tržiště Microsoftu má významné výhody:
 - Získejte služby povýšen pomocí Microsoft teams pole a prodej po telefonu.
 
 
-<a name="define-your-consulting-services-offer"></a>Definujte vaši nabídku konzultační služby
--------------------------------------
+## <a name="define-your-consulting-services-offer"></a>Definujte vaši nabídku konzultační služby
 
 Definujte zabalené konzultační nabídky služeb. Zaměřte se na pevnou oboru, oprava trvání odhad, pevnou cenu (nebo zdarma) a primárně orientované na předprodukční sales nabídky pro jediného zákazníka. Vyberte opakovatelné zabalené engagements, na kterých je Oblíbené a efektivitu při řízení novou obchodní činnost za vás.
 
-<a name="publish-a-consulting-service-offer"></a>Publikovat nabídku na konzultační služby
-----------------------------------
+## <a name="publish-a-consulting-service-offer"></a>Publikovat nabídku na konzultační služby
 
 Následující části popisují proces publikování vaší nabídky konzultační služby
 
@@ -80,7 +78,7 @@ Tento identifikátor se vztahuje k vašemu účtu. Pokud jste se přihlásili po
 
 Tento řetězec představuje, co se zobrazí jako název nabídky na AppSource nebo Azure Marketplace.
 
-**Důležité:** zadat pouze název aktuální služby. Nezahrnují doba trvání a typ služby.
+**Důležité:** Zadejte pouze název aktuální služby. Nezahrnují doba trvání a typ služby.
 
 Následující příklad pomocí Edgewater Fullscope ukazuje, jak je sestavena název nabídky. Název nabídky se zobrazí jako:
 
@@ -95,17 +93,17 @@ Název nabídky se skládá ze čtyř částí:
 
 Následující seznam obsahuje několik názvů dobře pojmenované nabídky:
 
--   Základy pro profesionální servisní: přehledové 1 hodina
--   Cloudovou platformu migrace: přehledové 1 hodina
--   PowerApps a Microsoft Flow: seminář 1 den
--   Služby Azure Machine Learning: koncepce 3 týdny
--   Cihla a klikněte na maloobchodní řešení: 1 hodina přehledové
--   Přineste si vlastní Data: seminář o 1 týden
--   Cloudech: seminář o 3 dny
--   Školení v Power BI: seminář 3denním
--   Řešení pro správu prodejní: implementace 1 týden
--   CRM rychlý start: seminář 1 den
--   Dynamics 365 for Sales: posouzení 2 dny
+-   Základy pro profesionální služby: Přehledové 1 hodina
+-   Cloudová platforma migrace: Přehledové 1 hodina
+-   PowerApps a Microsoft Flow: Seminář 1 den
+-   Azure Machine Learning Services: PoC 3 týdny
+-   Cihla a klikněte na maloobchodní řešení: Přehledové 1 hodina
+-   Přineste si vlastní Data: Seminář o 1 týden
+-   Cloudové analýzy: Seminář o 3 dny
+-   Školení v Power BI: Seminář o 3 dny
+-   Řešení pro správu prodejní: Implementace 1 týden
+-   Rychlý start CRM: Seminář 1 den
+-   Dynamics 365 for Sales: Posouzení 2 dny
 
 Po dokončení **nabízejí nastavení** kartu, můžete uložit své podání. Název nabídky se teď budou zobrazovat nad editoru, a najdete ho zpátky do všech nabízí.
 
@@ -131,28 +129,28 @@ Souhrn nabídky je stručný popis nabídky, která se zobrazí pod název nabí
 
 *Příklad 1*
 
--   **Název nabídky:** Cloudech: seminář o 3 dny
--   **Nabízí souhrn:** přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
+-   **Název nabídky:** Cloudové analýzy: Seminář o 3 dny
+-   **Souhrn nabídky:** Přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
 
 *Příklad 2*
 
--   **Název nabídky:** průmyslového IoT Azure: 30denního testování konceptu
--   **Nabízí souhrn:** vytvořit průmyslových připojených produktů pilotního nasazení pro zabezpečené připojení zařízení v poli s řešením Azure IoT Hub pomocí řídicích panelů, sestav a oznámení.
+-   **Název nabídky:** Průmyslové Azure IoT: 30denního testování konceptu
+-   **Souhrn nabídky:** Vytvoření pilotního nasazení průmyslové připojených produktů pro zabezpečené připojení zařízení v poli s řešením Azure IoT Hub pomocí řídicích panelů, sestav a oznámení.
 
 *Příklad 3*
 
--   **Název nabídky:** odborné služby: přehledové 1 hodina
--   **Souhrn nabídky:** přehled a ukázka předem nakonfigurované, extended Dynamics 365 pro operace řešení poskytuje rozšířené řízení projektů, fakturaci a zdroje informací pro profesionální služby.
+-   **Název nabídky:** Odborné služby: Přehledové 1 hodina
+-   **Souhrn nabídky:** Přehled a ukázka předem nakonfigurované, rozšířené Dynamics 365 pro řešení Operations poskytuje rozšířené řízení projektů, fakturaci a prostředků pro profesionální služby.
 
 *Příklad 4:*
 
--   **Název nabídky:** Power BI si světě: seminář o 4-Hr
--   **Nabízí souhrn:** začít pracovat s vaší první řídicí panel a přečtěte si osvědčené postupy. Až 12 studentů provádí na místě.
+-   **Název nabídky:** Power BI ve vaší světě: Seminář o 4-hr
+-   **Souhrn nabídky:** Začít pracovat s vaší první řídicí panel a přečtěte si osvědčené postupy. Až 12 studentů provádí na místě.
 
 *Příklad 5*
 
--   **Název nabídky:** Dynamics a projekty: 3denním posouzení
--   **Nabízí souhrn:** požadavky shromažďování a hodnocení pro řešení ERP, které jsou navržené pro společnosti poskytující odborné služby a podniky řízené projektu.
+-   **Název nabídky:** Dynamics a projekty: Posouzení 3 dny
+-   **Souhrn nabídky:** Požadavky na shromažďování a hodnocení pro řešení ERP, které jsou navržené pro společnosti poskytující odborné služby a podniky řízené projektu.
 
 ##### <a name="offer-description"></a>Popis nabídky
 
@@ -168,11 +166,11 @@ Zachovat stručný popis nabídky a dodržovat limit počtu znaků jako uživate
 
 Následující příklad ukazuje také skládá popis nabídky a její související název a souhrn:
 
-**Název nabídky:** Cloudech: seminář o 3 dny
+**Název nabídky:** Cloudové analýzy: Seminář o 3 dny
 
-**Nabízí souhrn:** přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
+**Souhrn nabídky:** Přehled Microsoft Azure a Power BI, vyhodnocení aktuálního prostředí a mini POC.
 
-**Nabízejí Popis:** dílně 3denním je pro technické a obchodní vedení a na straně klienta zařízení se nachází na místě.
+**Popis nabídky:** Tento den 3 seminář je pro technické a obchodní vedení a na straně klienta zařízení se nachází na místě.
 
 ***Program***
 
@@ -236,11 +234,11 @@ Microsoft je zaměření výhradně na pevný obor, pevnou platnost, odhadované
 
 Jsou zahrnuty následující pět typů nabídek:
 
--   **Hodnocení:** vyhodnocení na základě prostředí a určit použitelnost řešení a poskytuje odhad nákladů a časování.
--   **Přehledové:** Úvod k řešení nebo konzultační služby k vykreslení zájmu zákazníků s využitím architektury, ukázek a příkladů zákazníků. Brífinků musí být provedeny na místě.
--   **Implementace:** dokončení instalace, jejímž výsledkem plně funkčního řešení. Pro tohoto pilotního programu Společnost Microsoft doporučuje omezení na řešení, která může být implementovaná za týden nebo kratší.
--   **Testování konceptu:** implementace omezený rozsah k určení, pokud řešení budou splňovat požadavky zákazníka.
--   **Seminář:** interaktivní engagement provedených v místním prostředí zákazníka, které mohou obsahovat školicích seminářů, brífinků, hodnocení a ukázky založená na data nebo prostředí zákazníka.
+-   **Hodnocení:** Vyhodnocení na základě prostředí a určit použitelnost řešení a poskytuje odhad nákladů a časování.
+-   **Přehled:** Úvod do řešení a konzultační služby k vykreslení zájmu zákazníků s využitím architektury, ukázek a příkladů zákazníků. Brífinků musí být provedeny na místě.
+-   **Implementace:** Dokončení instalace, jejímž výsledkem plně funkčního řešení. Pro tohoto pilotního programu Společnost Microsoft doporučuje omezení na řešení, která může být implementovaná za týden nebo kratší.
+-   **Testování konceptu:** Omezený rozsah implementace k určení, pokud řešení budou splňovat požadavky zákazníka.
+-   **Seminář:** Interaktivní engagement se provádí v místním prostředí zákazníka, které mohou obsahovat školicích seminářů, brífinků, hodnocení a ukázky založená na data nebo prostředí zákazníka.
 
 **Dostupnost země/oblast**
 

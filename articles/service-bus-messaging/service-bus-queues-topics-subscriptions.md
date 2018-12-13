@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409757"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312873"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Fronty, témata a odběry služby Service Bus
 
@@ -32,9 +32,9 @@ Použití front pro zprostředkující mezi producenti a spotřebitelé zpráv p
 
 ### <a name="create-queues"></a>Vytvoření fronty
 
-Vytvoření fronty pomocí [webu Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [rozhraní příkazového řádku](service-bus-quickstart-cli.md), nebo [šablon Resource Manageru](service-bus-resource-manager-namespace-queue.md). Potom odesílat a přijímat zprávy pomocí [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektu. 
+Vytvoření fronty pomocí [webu Azure portal](service-bus-quickstart-portal.md), [PowerShell](service-bus-quickstart-powershell.md), [rozhraní příkazového řádku](service-bus-quickstart-cli.md), nebo [šablon Resource Manageru](service-bus-resource-manager-namespace-queue.md). Potom odesílat a přijímat zprávy pomocí [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektu.
 
-Rychle se naučíte, jak vytvořit frontu, pak odesílání a příjem zpráv z fronty a, najdete v článku [rychlých startů](service-bus-quickstart-portal.md) pro jednotlivé metody. Více podrobný kurz o tom, jak používat fronty, naleznete v tématu [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md). 
+Rychle se naučíte, jak vytvořit frontu, pak odesílání a příjem zpráv z fronty a, najdete v článku [rychlých startů](service-bus-quickstart-portal.md) pro jednotlivé metody. Více podrobný kurz o tom, jak používat fronty, naleznete v tématu [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md).
 
 Pracovní ukázku najdete v tématu [BasicSendReceiveUsingQueueClient ukázka](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) na Githubu.
 
@@ -56,7 +56,7 @@ Mimo jiné porovnání funkce zasílání zpráv pro fronty mapuje přímo na t�
 
 ### <a name="create-topics-and-subscriptions"></a>Vytvoření témata a odběry
 
-Vytvoření tématu je podobné jako vytvoření fronty, jak je popsáno v předchozí části. Potom odesílání zpráv s použitím [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) třídy. Pokud chcete přijímat zprávy, můžete vytvořit jeden nebo více odběrů na téma. Podobně jako u front, jsou zprávy přijímány pomocí předplatného [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) místo objektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektu. Vytvoření klienta předplatného, předejte název tématu, název předplatného a (volitelně) režim receive jako parametry. 
+Vytvoření tématu je podobné jako vytvoření fronty, jak je popsáno v předchozí části. Potom odesílání zpráv s použitím [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) třídy. Pokud chcete přijímat zprávy, můžete vytvořit jeden nebo více odběrů na téma. Podobně jako u front, jsou zprávy přijímány pomocí předplatného [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) místo objektu [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) objektu. Vytvoření klienta předplatného, předejte název tématu, název předplatného a (volitelně) režim receive jako parametry.
 
 Pro úplný práce příkladu najdete v článku [BasicSendReceiveUsingTopicSubscriptionClient ukázka](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient) na Githubu.
 
@@ -66,14 +66,14 @@ V mnoha případech je nutné zpracovat zprávy, které mají určité charakter
 
 Pro úplný práce příkladu najdete v článku [TopicSubscriptionWithRuleOperationsSample ukázka](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample) na Githubu.
 
-Další informace o hodnotách filtru je to možné, naleznete v dokumentaci pro [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) třídy. 
+Další informace o hodnotách filtru je to možné, naleznete v dokumentaci pro [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) a [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) třídy.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace a příklady použití zasílání zpráv Service Bus najdete v následujících Pokročilá témata:
 
 * [Přehled přenosu zpráv ve službě Service Bus](service-bus-messaging-overview.md)
-* [Rychlý start: Odeslání a příjem zpráv pomocí webu Azure portal a .NET](service-bus-quickstart-portal.md)
-* [Kurz: Aktualizace inventáře pomocí webu Azure portal a témata nebo předplatná](service-bus-tutorial-topics-subscriptions-portal.md)
+* [Rychlý start: Odesílání a příjem zpráv pomocí webu Azure portal a .NET](service-bus-quickstart-portal.md)
+* [Kurz: Aktualizovat inventáře pomocí webu Azure portal a témata nebo předplatná](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

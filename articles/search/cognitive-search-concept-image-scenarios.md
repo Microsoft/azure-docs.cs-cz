@@ -1,5 +1,5 @@
 ---
-title: Zpracování a extrahovat text z obrázků ve službě Azure Search | Dokumentace Microsoftu
+title: Zpracování a extrahování text z obrázků v kognitivního vyhledávání – Azure Search
 description: Zpracování a extrahování textu a dalších informací z obrázků v cognitive hledání kanálů ve službě Azure Search.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 5ee821f3d1e81e581f376d4b14b3e8393a8f190c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444628"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312608"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Postupy zpracování a extrahování informací z obrázků ve scénářích kognitivního vyhledávání
 
@@ -90,7 +91,7 @@ Když *imageAction* je nastavena na "generateNormalizedImages" nové *normalized
 
 ## <a name="image-related-skills"></a>Související s imagí dovednosti
 
-Existují dvě integrované kognitivní dovednosti, které jako vstup přijímat Image: [OCR](cognitive-search-skill-ocr.md) a [Analýza obrázků](cognitive-search-skill-image-analysis.md). 
+Existují dvě integrované kognitivní dovednosti, které jako vstup přijímat imagí: [OCR](cognitive-search-skill-ocr.md) a [Analýza obrázků](cognitive-search-skill-image-analysis.md). 
 
 V současné době předvedou dovednosti pracovat pouze s obrázky generované z kroku odhalující dokumentu. V důsledku toho je pouze podporované vstupní `"/document/normalized_images"`.
 

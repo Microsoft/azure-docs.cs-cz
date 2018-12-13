@@ -1,10 +1,10 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření webové aplikace s průběžným nasazováním z Azure DevOps Services | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření webové aplikace s průběžným nasazováním z Azure DevOps Services
+title: Skript Azure CLI ukázkový – vytvoření aplikace s průběžným nasazováním z úložiště Azure | Dokumentace Microsoftu
+description: Skript Azure CLI ukázkový – vytvoření webové aplikace s průběžným nasazováním z úložiště Azure
 services: app-service\web
 documentationcenter: ''
-author: syntaxc4
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cfowler
-ms.custom: mvc
-ms.openlocfilehash: fcb55c72f63a9964f04fba1e2b8abbaf39fe6b46
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: jeconnoc
+ms.custom: seodec18
+ms.openlocfilehash: cb2e427163d4a39c9286126b1774e09610fc328f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967030"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53308477"
 ---
-# <a name="create-a-web-app-with-continuous-deployment-from-azure-devops"></a>Vytvoření webové aplikace s průběžným nasazováním z Azure DevOps
+# <a name="create-a-web-app-with-continuous-deployment-using-azure-cli"></a>Vytvoření webové aplikace s průběžným nasazováním pomocí Azure CLI
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak nastaví průběžné nasazování z úložiště Azure DevOps. Pro tuto ukázku potřebujete:
 
@@ -54,7 +54,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
 | [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží webovou aplikaci Azure k úložišti Git nebo Mercurial. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

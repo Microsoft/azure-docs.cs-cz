@@ -1,6 +1,6 @@
 ---
-title: SMS výstrahy chování ve skupinách, akce
-description: Formát zprávy SMS a odpovídat na zprávy SMS k odhlášení odběru, obnovit předplatné nebo požádat o pomoc.
+title: Chování výstrah SMS ve skupinách akcí
+description: Formát zprávy SMS a reaguje na zprávy SMS k odhlášení odběru, obnovit předplatné nebo požádat o pomoc.
 author: dkamstra
 services: monitoring
 ms.service: azure-monitor
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: f2f463f6c428ce6c72e2640472376fa17a2bfe5a
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f287450bc1de994e22410b1a75cdb6f27e78b0ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263003"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187122"
 ---
-# <a name="sms-alert-behavior-in-action-groups"></a>SMS výstrahy chování ve skupinách, akce
+# <a name="sms-alert-behavior-in-action-groups"></a>SMS upozornění chování ve skupinách akcí
 ## <a name="overview"></a>Přehled ##
-Akce skupiny umožňují nakonfigurovat seznam akcí. Tyto skupiny se používá při definování výstrah; zajištění, že konkrétní akce skupiny zasláno oznámení, když je výstraha. Jednu z akcí podporovaných je SMS; Oznámení SMS podporují jednosměrnou komunikaci. Uživatel může reagovat na serveru služby SMS na:
+Skupiny akcí umožňují nakonfigurovat seznam akcí. Tyto skupiny se používají při definování oznámení; zajištění, že konkrétní akci skupiny zasláno oznámení, když se aktivuje upozornění. Jednou z akcí podporovaných je SMS; Oznámení SMS podporují obousměrné komunikace. Uživatel může odpovědět na zprávu SMS na:
 
-- **Odběr upozornění:** uživatel může odběr všech upozornění služby SMS pro všechny akce, nebo jednu akci skupiny.
-- **Obnovit předplatné výstrah:** uživatel může obnovit předplatné na všechny výstrahy služby SMS pro všechny skupiny akce nebo skupinu jedné akce.  
-- **Požádat o pomoc:** uživatel může požádat o další informace o serveru SMS. Je přesměrován na tomto článku.
+- **Zrušit odběr upozornění:** Uživatel může zrušit odběr všechna oznámení SMS pro všechny skupiny akcí nebo skupinu jedné akce.
+- **Nevybrala výstrah:** Uživatel může obnovit předplatné, pro všechny výstrahy služby SMS pro všechny skupiny akcí nebo skupinu jedné akce.  
+- **Požádat o pomoc:** Uživatel může požádat o další informace o serveru SMS. Bude přesměrován na tomto článku.
 
-Tento článek se zabývá chování výstrahy SMS a akce odpovědi uživatele můžete provádět na základě národního prostředí uživatele:
+Tento článek se týká chování výstrah SMS a odpověď akce, které uživateli umožňuje pořizovat závislosti na národním prostředí uživatele:
 
-## <a name="receiving-an-sms-alert"></a>Příjem oznámení SMS
-Přijímače SMS, který je nakonfigurovaný jako součást skupiny akce obdrží serveru služby SMS, když se výstraha. Serveru SMS obsahuje následující informace:
-* Shortname skupiny akce, které tato výstraha byla odeslána
+## <a name="receiving-an-sms-alert"></a>Přijetí upozornění zprávou SMS
+Přijímače SMS, který je nakonfigurovaný jako součást skupiny akcí obdrží zprávu SMS, když se aktivuje upozornění. Serveru SMS obsahuje následující informace:
+* Shortname skupinu akcí, kdy byla vyslána toto upozornění
 - Název výstrahy
 
 | ODPOVĚĎ | Popis |
 | ----- | ----------- |
-| ZAKÁZAT <Action Group Short name> | Zakáže další SMS ze skupiny akce |
-| POVOLIT <Action Group Short name> | Znovu povolí SMS ze skupiny akce |
-| STOP | Zakáže další SMS ze všech skupin, akce |
-| SPUŠTĚNÍ | Znovu povolí SMS ze všech skupin, akce |
-| NÁPOVĚDA | Uživateli se zobrazí odkaz na tento článek je odeslána odpověď. |
+| ZAKÁZAT <Action Group Short name> | Další SMS zakáže skupiny akcí |
+| POVOLIT <Action Group Short name> | Znovu povolí SMS skupiny akcí |
+| STOP | Další SMS zakáže ze všech skupin akcí |
+| SPUŠTĚNÍ | Znovu povolí SMS ze všech skupin akcí |
+| POMOC | Odkazy na tento článek je uživateli odeslána odpověď. |
 
 >[!NOTE]
->Pokud uživatel odhlásil(a) odběr z výstrah služby SMS, ale se pak přidá do nové skupiny akce; BUDE přijímat výstrahy služby SMS pro tuto novou skupinu akce ale zůstávají odhlásit ze všech skupin, předchozí akce.
+>Pokud uživatel odhlásil(a) z výstrah SMS, ale se pak přidá do nové skupiny akcí; BUDE dostávat oznámení SMS pro tuto nová skupina akcí ale zůstanou odhlásit ze všech skupin pro předchozí akci.
 
 ## <a name="next-steps"></a>Další kroky
-Získat [přehled výstrah aktivity protokolu](monitoring-overview-alerts.md) a zjistěte, jak získat výstrahy  
-Další informace o [omezení rychlosti SMS](monitoring-alerts-rate-limiting.md)  
-Další informace o [skupiny akcí](monitoring-action-groups.md)
+Získat [přehled upozornění protokolu aktivit](monitoring-overview-alerts.md) a zjistěte, jak nechte se upozornit,  
+Další informace o [rychlosti SMS](monitoring-alerts-rate-limiting.md)  
+Další informace o [skupiny akcí](../azure-monitor/platform/action-groups.md)

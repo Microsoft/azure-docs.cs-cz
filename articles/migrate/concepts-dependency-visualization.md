@@ -4,18 +4,21 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9cbb1f080b9a5a98984ad48854bccc4fb2044c16
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 88dcc7110acaf42243d0ebb3c1ae25aa6d0bca46
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998338"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53257963"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
 [Azure Migrate](migrate-overview.md) posuzuje skupiny místních počítačů pro migraci do Azure. Funkce vizualizace závislostí ve službě Azure Migrate můžete použít k vytváření skupin. Tento článek obsahuje informace o této funkci.
+
+> [!NOTE]
+> Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 ## <a name="overview"></a>Přehled
 

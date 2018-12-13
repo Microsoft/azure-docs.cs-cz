@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: danlep
-ms.openlocfilehash: 80ee1033ef7a5fee849126ab2b614de18b71e051
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3f058a68057d6b84cbbb2dfdb08ea8c2cb12b0b9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855846"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322086"
 ---
 # <a name="azure-container-registry-skus"></a>Skladové položky registru kontejnerů Azure
 
@@ -81,6 +81,8 @@ Podrobnosti o upgrade registru Classic k jednomu z spravovanými skladovými pol
 ## <a name="pricing"></a>Ceny
 
 Informace o cenách v každém skladové jednotky Azure Container Registry, najdete v článku [Container Registry ceny][container-registry-pricing].
+
+Podrobnosti o cenách pro přenosy dat najdete v tématu [podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,21 +1,21 @@
 ---
-title: Kurz služby Azure Container Instances – Příprava služby Azure Container Registry
-description: Kurz služby Azure Container Instances, část 2 ze 3 – Příprava služby Azure Container Registry
+title: Kurz – Příprava registru kontejnerů Azure Container Instances
+description: Kurz služby Azure Container Instances část 2 ze 3 – Příprava služby Azure container registry a nasdílet image
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: e7cf9c5fad6219e71205c181b2dbb6828595afdd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: eeb0fe5b19f23e101eab9393dca64e1e13bf6922
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855438"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188910"
 ---
-# <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
+# <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Kurz: Nasazení služby Azure container registry a nahrání image kontejneru
 
 Toto je druhá část třídílného kurzu. [V první části](container-instances-tutorial-prepare-app.md) tohoto kurzu se vytvářela image kontejneru Docker pro webovou aplikaci Node.js. V tomto kurzu nahrajete image do služby Azure Container Registry. Pokud jste image kontejneru ještě nevytvořili, vraťte se ke [kurzu 1 – Vytvoření image kontejneru](container-instances-tutorial-prepare-app.md).
 
@@ -24,11 +24,11 @@ Služba Azure Container Registry je vaším privátním registrem Dockeru v Azur
 > [!div class="checklist"]
 > * Vytvořit instanci služby Azure Container Registry
 > * Označit image kontejneru pro svůj registr kontejneru Azure
-> * Odeslat image do registru
+> * Odeslat image do svého registru
 
 V následujícím článku, který je posledním dílem série, nasadíte kontejner z privátního registru do služby Azure Container Instances.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 
@@ -192,7 +192,7 @@ Result
 v1
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste připravili registr kontejneru Azure pro použití se službou Azure Container Instances a nahráli jste image kontejneru do registru. Dokončili jste následující kroky:
 

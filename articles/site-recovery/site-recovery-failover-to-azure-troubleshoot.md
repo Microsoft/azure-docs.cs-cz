@@ -11,14 +11,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 5df31c4b2e82ef47c8b94d9aac498cce31f6f243
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847180"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255087"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
 
@@ -28,7 +28,7 @@ Může zobrazit jedna z následující chyby při provádění převzetí služe
 
 Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít vlivem jednoho z následujících důvodů:
 
-* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty.
+* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty.
 
 * Pokoušíte se převzetí služeb při selhání virtuálních počítačů z různých velikostní řady ve stejné sadě dostupnosti. Ujistěte se, že zvolíte stejnou řadu velikostí pro všechny virtuální počítače ve stejné sadě dostupnosti. Změnit velikost tak, že přejdete do nastavení výpočty a síť virtuálního počítače a pak zkuste převzetí služeb při selhání.
 
@@ -113,9 +113,6 @@ Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure j
 Při spouštění virtuálním počítači Windows příspěvek převzetí služeb při selhání, pokud se zobrazí zpráva neočekávané vypnutí na obnoveného virtuálního počítače, znamená to, že stav vypnutí virtuálního počítače nebyly zaznamenány v bodu obnovení pro převzetí služeb při selhání. To se stane, když obnovíte do bodu, když virtuální počítač kdyby byl vypnutý plně.
 
 To není obvykle příčinou znepokojení a obvykle se dá ignorovat pro neplánované převzetí služeb při selhání. V případě plánované převzetí služeb při selhání Ujistěte se, že virtuální počítač je správně vypnutý před převzetí služeb při selhání a poskytnout dostatek času na probíhající replikaci dat v místním k odeslání do Azure. Potom použijte **nejnovější** možnost [převzetí služeb při selhání obrazovky](site-recovery-failover.md#run-a-failover) tak, aby všechny čekající data v Azure je zpracován do bodu obnovení, který potom slouží pro převzetí služeb při selhání virtuálního počítače.
-
-## <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání
-Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač místní k **OnlineAll**. [Další informace](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
 ## <a name="next-steps"></a>Další postup
 - Řešení potíží s [připojení RDP k virtuálnímu počítači Windows](../virtual-machines/windows/troubleshoot-rdp-connection.md)

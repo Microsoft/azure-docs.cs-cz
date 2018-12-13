@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a monitorováním Log Analytics | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Windows Serverem 2016 a monitorováním Log Analytics
+title: Azure CLI ukázkový – vytvoření virtuálního počítače Azure s Log Analytics, monitorování | Dokumentace Microsoftu
+description: Azure CLI ukázkový – vytvoření virtuálního počítače s Windows serverem 2016 a Log Analytics, monitorování virtuálního počítače Azure.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.custom: mvc
-ms.openlocfilehash: d4b73981e3cb21f7b4caefaf443014853929b708
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: mvc,seodec18
+ms.openlocfilehash: a3dcb7a7c15c3bf8e5578371e05519e802355fdc
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403385"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188159"
 ---
 # <a name="monitor-a-vm-with-log-analytics"></a>Monitorování virtuálního počítače pomocí Log Analytics
 
@@ -54,7 +54,7 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Spustí pro virtuální počítač rozšíření virtuálního počítače. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

@@ -4,15 +4,15 @@ description: Tento článek shrnuje běžné otázky při nastavování zotaven�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 83216091c950593b16f158ea3d8df5a194ecee02
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.author: mayg
+ms.openlocfilehash: d7b3919d0f970190238dbc5899a20f2d9e7d8cd4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869819"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256502"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -27,7 +27,7 @@ Kontrola [ceny za Azure Site Recovery](https://azure.microsoft.com/pricing/detai
 Během replikace data se replikují do služby Azure storage a neplatíte žádné změny virtuálního počítače. Při spuštění převzetí služeb při selhání do Azure Site Recovery automaticky vytvoří virtuální počítače Azure IaaS. Následně se vám budeme fakturovat výpočetní prostředky, které využívají v Azure.
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Co je možné? s VMware pro replikaci Azure
-- **Zotavení po havárii**: můžete nastavit úplné havárii. V tomto scénáři replikaci místních virtuálních počítačů VMware do Azure storage. Potom Pokud není k dispozici v místní infrastruktuře, můžete převzít služby do Azure. Při převzetí služeb při selhání, se vytvoří virtuální počítače Azure pomocí replikovaná data. Aplikace a úlohy na virtuálních počítačích Azure, mají přístup až do vašeho místního datového centra je opět k dispozici. Pak můžete předat zpět z Azure do místní lokality.
+- **Zotavení po havárii**: Můžete nastavit úplné havárii. V tomto scénáři replikaci místních virtuálních počítačů VMware do Azure storage. Potom Pokud není k dispozici v místní infrastruktuře, můžete převzít služby do Azure. Při převzetí služeb při selhání, se vytvoří virtuální počítače Azure pomocí replikovaná data. Aplikace a úlohy na virtuálních počítačích Azure, mají přístup až do vašeho místního datového centra je opět k dispozici. Pak můžete předat zpět z Azure do místní lokality.
 - **Migrace**: Site Recovery můžete použít k migraci místních virtuálních počítačů VMware do Azure. V tomto scénáři replikaci místních virtuálních počítačů VMware do Azure storage. Pak převezme služby při selhání z místního Azure. Po převzetí služeb při selhání jsou vaše aplikace a úlohy dostupné a spuštěné na virtuálních počítačích Azure.
 
 
@@ -146,11 +146,14 @@ Ano. Stáhnout MySQL a jeho umístění **C:\Temp\ASRSetup** složky. Nainstaluj
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Můžete vyhnout stahování MySQL ale nechat nainstalovat Site Recovery?
 Ano. Stáhněte instalační program MySQL a umístěte ho **C:\Temp\ASRSetup** složky.  Když nastavíte konfigurační server VM, přijměte podmínky a klikněte na **stáhnout a nainstalovat**, portál použije instalační program přidá k instalaci MySQL.
  
-### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>CanL používám konfiguračního serveru virtuálního počítače na něco jiného?
+### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Můžete použít konfigurační server virtuálního počítače na něco jiného?
 Ne, byste měli používat jenom virtuální počítač pro konfigurační server. 
 
+### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>Můžete naklonovat konfiguračního serveru a použít ho k orchestraci?
+Ne, by měl nastavit novou konfiguračního serveru, abyste předešli problémům s registrací.
+
 ### <a name="can-i-change-the-vault-registered-in-the-configuration-server"></a>Můžete změnit trezoru zaregistrovaný na konfiguračním serveru?
-Ne. Konfigurační server zaregistruje trezoru, nejde změnit.
+Ne. Konfigurační server zaregistruje trezoru, nejde změnit. Kontrola [v tomto článku](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault) postup opětovné registraci.
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>Můžete použít stejný konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů
 Ano, ale nezapomeňte tento fyzický počítač může být pouze se zpět do virtuálního počítače VMware.

@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: a1594d3dfe449049258e5ee12bc173c413459f8a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082692"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132870"
 ---
 # <a name="manage-versions"></a>Správa verzí
 
@@ -45,7 +45,7 @@ Seznam verzí zobrazit, jaké verze jsou publikovány, kde jsou publikovány, a 
 
 Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nástrojů. 
 
-[![Části Správa, verze stránky](./media/luis-how-to-manage-versions/versions-other.png "části Správa, verze stránky")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Části Správa, verze stránky, zkontrolujte verzi akce](./media/luis-how-to-manage-versions/versions-other.png "části Správa, verze stránky, zkontrolujte verzi akce")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Import verze
 
@@ -53,7 +53,7 @@ Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nás
 
 2. V **Import nové verze** automaticky otevírané okno, zadejte název nové verze deset znaků. Stačí nastavit ID verze, pokud už existuje verze v souboru JSON v aplikaci.
 
-    ![Správa části, stránka verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Správa části, stránka verze, import nové verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
     Jakmile dokončíte import verze, nová verze stane aktivní verze.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: d938b8a7551f77f00b7c18421f07972a508f21ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c95c40404bb52f739c407eca3c0d48be5e0a86e6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019541"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262431"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Postup konfigurace mezipaměti Azure Redis
 Toto téma popisuje dostupné konfigurace pro mezipaměť Azure pro instance Redis. Toto téma také popisuje výchozí konfigurace serveru Redis pro mezipaměť Azure pro instance Redis.
@@ -46,7 +46,7 @@ Můžete zobrazit a nakonfigurovat následující nastavení použití **nabídc
 * [Nastavení](#settings)
     * [Přístupové klíče](#access-keys)
     * [Upřesňující nastavení](#advanced-settings)
-    * [Mezipaměť Azure pro Redis Advisor](#redis-cache-advisor)
+    * [Mezipaměť Azure pro Redis Advisor](#azure-cache-for-redis-advisor)
     * [Škálování](#scale)
     * [Velikost clusteru redis](#cluster-size)
     * [Trvalost dat Redis](#redis-data-persistence)
@@ -98,7 +98,7 @@ Klikněte na tlačítko **diagnostikovat a řešit problémy** poskytnuty čast�
 
 * [Přístupové klíče](#access-keys)
 * [Upřesňující nastavení](#advanced-settings)
-* [Mezipaměť Azure pro Redis Advisor](#redis-cache-advisor)
+* [Mezipaměť Azure pro Redis Advisor](#azure-cache-for-redis-advisor)
 * [Škálování](#scale)
 * [Velikost clusteru redis](#cluster-size)
 * [Trvalost dat Redis](#redis-data-persistence)
@@ -480,7 +480,7 @@ Příkazy můžete bezpečně posílat do mezipaměti Azure Redis instance pomoc
 
 > [!IMPORTANT]
 > - Konzola Redis nebude fungovat s [VNET](cache-how-to-premium-vnet.md). Pokud vaše mezipaměť je součástí virtuální sítě, pouze klienti ve virtuální síti mají přístup k mezipaměti. Protože se spouští konzola Redis v prohlížeči místní, což je mimo virtuální síť, se nemůže připojit k vaší mezipaměti.
-> - Ne všechny příkazy Redis podporují v Azure mezipaměti Redis. Seznam Redis příkazy, které jsou pro Azure Cache zakázán pro Redis, najdete v předchozím [Redis nepodporuje v mezipaměti Azure Redis příkazy](#redis-commands-not-supported-in-azure-redis-cache) oddílu. Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
+> - Ne všechny příkazy Redis podporují v Azure mezipaměti Redis. Seznam Redis příkazy, které jsou pro Azure Cache zakázán pro Redis, najdete v předchozím [Redis nepodporuje v mezipaměti Azure Redis příkazy](#redis-commands-not-supported-in-azure-cache-for-redis) oddílu. Další informace o příkazech Redis najdete v tématu [ http://redis.io/commands ](http://redis.io/commands).
 > 
 > 
 

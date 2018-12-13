@@ -1,9 +1,9 @@
 ---
-title: Práce s spolehlivé kolekce | Microsoft Docs
-description: Zjistěte, osvědčené postupy pro práci s spolehlivé kolekce.
+title: Práce s Reliable Collections | Dokumentace Microsoftu
+description: Podívejte se na osvědčené postupy pro práci s Reliable Collections.
 services: service-fabric
 documentationcenter: .net
-author: rajak
+author: tylermsft
 manager: timlt
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
-ms.author: rajak
-ms.openlocfilehash: 2568e116fdb3f80976d49787877d2ecf68f128ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: twhitney
+ms.openlocfilehash: 86e1370bb5241dbe14b34cebe2f2ee6d71a0a323
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210813"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193531"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
-Service Fabric nabízí stavová programovací model k dispozici pro vývojáře .NET prostřednictvím spolehlivé kolekce. Konkrétně Service Fabric nabízí třídy spolehlivé fronty a spolehlivé slovníku. Při použití těchto tříd vašemu stavu je rozdělena na oddíly (pro škálovatelnost), replikovat (pro dostupnosti) a transakční v rámci oddílu (pro ACID sémantiku). Umožňuje podívejte se na Typickým použitím objektu slovník spolehlivé a jaké jeho ve skutečnosti stav.
+Service Fabric nabízí stavový programovací model k dispozici pro vývojáře na platformě .NET pomocí spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé fronty třídy a spolehlivého slovníku. Při použití těchto tříd je svůj stav rozdělit na oddíly (pro zajištění škálovatelnosti), replikuje (dostupnosti) a nepodporuje transakce v rámci oddílu (pro odpovídající zásadám ACID sémantiku). Pojďme podívat se na Typickým použitím spolehlivého slovníku objektu a zobrazit, jaké jeho to skutečně udělali.
 
 ```csharp
 
@@ -49,20 +49,20 @@ catch (TimeoutException) {
 }
 ```
 
-Všechny operace v spolehlivé slovník objekty (s výjimkou ClearAsync, což nevratná), vyžadují ITransaction objekt. Tento objekt má přidruženo žádné a všechny změny, které se pokoušíte provést jakékoli spolehlivé slovníku nebo spolehlivé fronty objektů v rámci jednoho oddílu. Získat ITransaction objekt voláním oddílu je metoda CreateTransaction StateManager společnosti.
+Všechny operace na objektech spolehlivého slovníku (s výjimkou ClearAsync, která nevratná), vyžadují ITransaction objektu. Tento objekt k němu má přidružené žádné a všechny změny, které se pokoušíte provést jakékoli spolehlivého slovníku nebo spolehlivé fronty objektů v rámci jednoho oddílu. Získat ITransaction objektu voláním oddílu je metoda CreateTransaction StateManager.
 
-Ve výše uvedeném kódu je objekt ITransaction předaný metodě AddAsync spolehlivé slovník. Slovník metody, které přijímá klíč interně trvat zámek pro čtečky/zápis přidružené ke klíči. Pokud metoda mění hodnotu klíče, tato metoda přebírá uzamčení pro zápis na klíč, a pokud metoda četl pouze z hodnoty klíče, pak zámek pro čtení se provede na klíč. Vzhledem k tomu, že AddAsync upraví hodnota klíče na nové, předané hodnotu, je převzat uzamčení pro zápis klíče. Ano Pokud vláken 2 (nebo více) došlo k pokusu o přidání hodnot se stejným klíčem ve stejnou dobu, jedno vlákno se získat uzamčení pro zápis a bude blokovat jiná vlákna. Ve výchozím nastavení metody blok pro až 4 sekundy získat zámek; metody po 4 a víc sekund, throw TimeoutException. Přetížení metody existovat, což umožňuje předat hodnotu explicitní vypršení časového limitu, pokud si přejete.
+Ve výše uvedeném kódu je objekt ITransaction předaný metodě AddAsync spolehlivého slovníku. Interně slovníku metody, které přijímá klíč zámek čtení/zápis přidružený ke klíči. Pokud metoda změní hodnotu klíče, tato metoda přebírá zámek pro zápis na klíč, a pokud metoda čte pouze z hodnoty klíče, zámek pro čtení je následně přesměrován na klíč. Protože AddAsync změní hodnotu klíče s hodnotou nového, předaným, dochází k zámku pro zápis klíč. Ano 2 (nebo více) vlákna došlo k pokusu o přidání hodnoty se stejným klíčem ve stejnou dobu, jedno vlákno se získat zámek pro zápis a ostatní vlákna budou blokovat. Ve výchozím nastavení, blok metody pro získání zámku; až 4 sekundy Po 4 sekundy vyvolání metody TimeoutException. Přetížení metody existují, abyste mohli předat hodnotu explicitní vypršení časového limitu, pokud si přejete.
 
-Obvykle psaní kódu reagování na TimeoutException podle jeho zachytávání a opakovat celou operaci (jak je uvedeno ve výše uvedeném kódu). V jednoduchých kódu právě telefonické Task.Delay předávání pokaždé, když 100 milisekund. Ale ve skutečnosti může být lepší místo toho použít nějaký druh exponenciální zpoždění back vypnout.
+Obvykle při psaní kódu reagovat TimeoutException jejímu a celá operace opakování (jak je uvedeno ve výše uvedeném kódu). Jednoduchého kódu stačí telefonické Task.Delay pokaždé, když předávání 100 milisekund. Ale ve skutečnosti může být lepší místo toho použít nějaký druh exponenciální regresní zpoždění.
 
-Jakmile je získat zámek, AddAsync přidá klíč a hodnotu objektu odkazy na interní dočasné slovník, která je přidružená k objektu ITransaction. Důvodem je, že bude potřeba poskytnout sémantiku číst vaše – vlastní – zápis. To znamená, že po zavolání metody AddAsync novější volání TryGetValueAsync (s použitím stejného objektu ITransaction) vrátí hodnotu i v případě, že ještě nebyly potvrzené transakce. V dalším kroku AddAsync serializuje klíč a hodnotu objektů na pole bajtů a připojí tyto bajtová pole do souboru protokolu v místním uzlu. Nakonec AddAsync odešle bajtová pole na všech sekundárních replikách, mají stejné informace klíč/hodnota. I když informace klíč/hodnota byl zapsán do souboru protokolu, informace není považovány za součást slovníku, dokud transakce, které jsou přidružené byla.
+Jakmile je požadován zámek, AddAsync přidá klíč a hodnotu objektu odkazy na interní dočasné slovníku, která je přidružená k objektu ITransaction. Je to, kde přinášejí sémantiku čtení vlastní zápisů. To znamená, že po zavolání AddAsync pozdější volání TryGetValueAsync (s použitím stejného objektu ITransaction) vrátí hodnotu i v případě zatím ještě potvrzené transakce. V dalším kroku AddAsync serializuje klíč a hodnotu objekty bajtová pole a připojí tato pole bajtů do souboru protokolu v místním uzlu. Nakonec AddAsync odešle bajtová pole do sekundárních replik, mají stejné informace klíč/hodnota. I když informace klíč/hodnota se zapsala do souboru protokolu, informace není považováno za součást slovníku, dokud nebude transakce, které jsou přidruženy byla.
 
-Ve výše uvedeném kódu volání CommitAsync potvrdí všechny operace transakce. Konkrétně připojí potvrzení informace do souboru protokolu v místním uzlu a také odesílá potvrzení záznam všech sekundárních replikách. Jakmile má zodpovězených kvora (většinou) replik, všechny změny dat jsou považovány za trvalé a všechny zámky přidružené klíče, které byly manipulovat prostřednictvím objektu ITransaction vydávají tak dalších vláken transakcí můžete upravit stejnými klíči a jejich hodnoty.
+Ve výše uvedeném kódu voláním commitasync vyvolá potvrdí všechny operace transakce. Konkrétně přidá informace o potvrzení do souboru protokolu v místním uzlu a navíc odesílá záznam o zápisu do sekundárních replik. Jakmile odpověděl kvorum replik (většinou), všechny změny dat se považují za trvalé a uvolnění všech zámků přidružené klíče, které byly manipulovat prostřednictvím objektu ITransaction tak ostatní vlákna/transakce můžete pracovat s stejnými klíči a jejich hodnoty.
 
-Pokud CommitAsync není volána (obvykle kvůli výjimce hlášeny), získá objekt ITransaction zlikvidován. Při zahazování objekt nepotvrzené ITransaction Service Fabric připojí přerušení informace do souboru protokolu je místní uzel a nic potřebuje k odeslání do všech sekundárních replikách. A potom všechny zámky přidružené klíče, které byly pomocí transakce s nimi manipulovat neuvolní.
+Pokud commitasync vyvolá nevolá (obvykle z důvodu výjimky vyvolané), načte objekt ITransaction odstraněn. Při vyřazení objektu nepotvrzené ITransaction, Service Fabric připojí přerušení informace do souboru protokolu je místní uzel a není třeba nic odešlou ke kterékoli ze sekundárních replik. A pak uvolnění všech zámků přidružené klíče, které byly manipulovat prostřednictvím transakce.
 
-## <a name="common-pitfalls-and-how-to-avoid-them"></a>Běžné nástrahy a jak se vyhnout jejich
-Teď, když budete rozumět tomu, jak fungují spolehlivé kolekce interně, Podívejme se na některé běžné nevhodnému použití z nich. Viz následující kód:
+## <a name="common-pitfalls-and-how-to-avoid-them"></a>Běžné nástrahy a jak se jim vyhnout
+Teď, když chápete, jak fungují spolehlivé kolekce interně, Pojďme se podívat na některé běžné nevhodnému použití z nich. Viz kód uvedený níže:
 
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -78,9 +78,9 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Při práci s slovník regulární .NET, můžete přidat klíč/hodnota do slovníku a poté změňte hodnotu vlastnosti (například LastLogin). Tento kód však nebude fungovat správně s slovník spolehlivé. Mějte na paměti z dřívějších diskusní volání AddAsync serializuje objekty klíč/hodnota, které se bajtová pole a pak uloží pole do místního souboru a také je odešle do sekundárních replikách. Pokud později změníte vlastnost, tato operace změní hodnotu vlastnosti v paměti pouze; nemělo vliv místního souboru nebo data odeslaná do replik. Pokud dojde k chybě procesu, co je v paměti je zahozeny. Při spuštění nový proces nebo jiný replika stane primární, původní hodnota vlastnosti je co je k dispozici.
+Při práci s regulární slovník .NET, je přidání páru klíč/hodnota do slovníku a potom změňte hodnotu vlastnosti (například LastLogin). Tento kód však nebude fungovat správně s spolehlivého slovníku. Mějte na paměti z předchozích diskuse volání AddAsync serializuje objekty klíč/hodnota pro bajtová pole a pak uloží do místního souboru pole a také je odešle do sekundárních replik. Pokud později změníte vlastnost, tím se změní hodnota vlastnosti v paměti. to ale nijak neovlivní místního souboru nebo data odeslaná do replik. Pokud dojde k chybě procesu, co je v paměti je zahozeny. Když se spustí nový proces nebo jiná replika se stane primární, původní hodnota vlastnosti je co je k dispozici.
 
-Nelze I vystavila zátěži dostatečně jak je snadné aby druh chybu uvedené výše. A získáte pouze informace o chybu případě, že proces přestane fungovat. Správný způsob, jak napsat kód je jednoduše reverse dva řádky:
+Nejde mi zátěže dostatečně jak snadné je vytvořit druh výše uvedenou chybu. A pouze dozvíte o chybu pokud/když, že proces ocitne mimo provoz. Správný způsob, jak psát kód je jednoduše vrátit následující dva řádky:
 
 
 ```csharp
@@ -92,7 +92,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Zde je další příklad zobrazuje Obvyklou chybou:
+Tady je další příklad znázorňující běžnou chybou:
 
 ```csharp
 
@@ -111,11 +111,11 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-Znovu s regulární .NET slovník výše uvedený kód funguje bez problémů a je běžný vzor: vývojář použije klíč k vyhledání hodnoty. Pokud hodnota existuje, vývojáři změní vlastnosti na hodnotu. Však s spolehlivé kolekcí, tento kód vykazuje stejný problém už popsané: **objekt nesmí změnit, po které jste zadali na kolekci spolehlivé.**
+Znovu se pravidelně slovníky .NET výše uvedený kód funguje správně a je běžný vzor: vývojář použije klíč k vyhledání hodnoty. Pokud tato hodnota existuje, vývojář změní hodnoty vlastnosti. Nicméně s reliable collections, tento kód vykazuje stejný problém, které jsou už popsáno: **objekt NESMÍTE měnit, po které jste zadali do spolehlivé kolekce.**
 
-Správný způsob aktualizujte hodnotu v spolehlivé kolekci, je-li stávající hodnotu a zvažte objektu, na kterou odkazuje tento odkaz neměnné. Pak vytvořte nový objekt, který je přesnou kopii původní objekt. Nyní můžete upravit stav tento nový objekt a zapsat nový objekt do kolekce tak, aby získá serializovat na pole bajtů, připojí k místního souboru a odeslat do replik. Po potvrzení změny, mají přesném stavu, ve stejné objekty v paměti, místního souboru a všechny repliky. Všechny je dobré!
+Správný způsob, jak aktualizovat hodnotu ve spolehlivé kolekci, je k získání odkazu na existující hodnotu a vezměte v úvahu objektu, na které odkazuje tento odkaz neměnné. Vytvořte nový objekt, který je přesnou kopii původní objekt. Nyní můžete upravit stav tohoto nového objektu a napsat nový objekt do kolekce tak, aby jeho získá serializován, chcete-li bajtová pole, připojí k místnímu souboru a odeslané do replik. Po potvrzení změn, mají stejné přesném stavu objektů v paměti, místního souboru a všechny repliky. Je vše v pořádku!
 
-Následující kód ukazuje správný způsob aktualizujte hodnotu v spolehlivé kolekci:
+Následující kód ukazuje správný způsob, jak aktualizovat hodnotu do spolehlivé kolekce:
 
 ```csharp
 
@@ -142,10 +142,10 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ```
 
-## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definování typů neměnné dat, aby se zabránilo chybě programátory
-V ideálním případě by rádi bychom znali kompilátoru zprávy o chybách, když náhodně vytvořit kód, který mění stavu objektu, který se má vzít v úvahu neměnné. Ale kompilátor jazyka C# nemá možnost to udělat. Tak, aby se zabránilo potenciální chyby programátory, důrazně doporučujeme, aby definování typů pomocí spolehlivé kolekce se nedá změnit typy. Konkrétně to znamená, že přilepit na základní typy hodnot (například čísla [Int32, UInt64 atd.], DateTime, Guid, časový interval a podobně). A samozřejmě můžete také použít řetězec. Je vyhýbat se vlastnosti kolekce jako serializaci a deserializaci je můžete často může narušit výkonnost. Ale pokud budete chtít použít vlastnosti kolekce, důrazně doporučujeme použít. Knihovna neměnné kolekce na NET ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Tato knihovna je k dispozici ke stažení http://nuget.org. Doporučujeme také zapečetění tříd a provádění pole jen pro čtení, kdykoli je to možné.
+## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Definování typů neměnnými daty aby programátor chyba
+V ideálním případě by rádi bychom kompilátor pro hlášení chyb při neúmyslně vytvořit kód, který mění stav objektu, který se má vzít v úvahu neměnné. Ale, C# kompilátoru nemá možnost to udělat. Tak, aby se zabránilo potenciální chyby programátora, důrazně doporučujeme, že definujete typy s reliable collections vám být neměnné typy. Konkrétně to znamená, že Zůstaňte k základní typy hodnot (například čísla [Int32, UInt64, atd.], DateTime, Guid, TimeSpan a podobně). A samozřejmě můžete také použít řetězec. To se nedoporučuje vlastnosti kolekce jako serializaci a deserializaci je můžete často může snížit výkon. Nicméně pokud chcete použít vlastnosti kolekce, důrazně doporučujeme použití. Knihovna NET pro neměnné kolekce ([System.Collections.Immutable](https://www.nuget.org/packages/System.Collections.Immutable/)). Tato knihovna je k dispozici ke stažení z http://nuget.org. Doporučujeme také zapečetění tříd a provádění pole jen pro čtení, kdykoli je to možné.
 
-Typ informací o uživateli níže ukazuje, jak definovat typ neměnné využívat výhod zmíněnými doporučení.
+Typ informací o uživateli níže ukazuje, jak definovat typ neměnné výhod výše uvedených doporučení.
 
 ```csharp
 
@@ -181,7 +181,7 @@ public sealed class UserInfo {
 }
 ```
 
-Typ ItemId je také neměnné typu, jak je vidět tady:
+Typ ItemId je také neumlčitelným typem, jak je znázorněno zde:
 
 ```csharp
 
@@ -197,23 +197,23 @@ public struct ItemId {
 }
 ```
 
-## <a name="schema-versioning-upgrades"></a>Verze schématu (upgrade)
-Interně serializovat spolehlivé kolekce objektů s použitím. NET na DataContractSerializer. Serializovaných objektů jsou ukládaný na místním disku primární repliky a přenášejí na sekundárních replikách. Během existence služby, je pravděpodobné, že budete chtít změnit druhu dat (schéma), vaše služba vyžaduje. Správa verzí vašich dat s velmi pečlivě musí postupovat. Především musíte být vždy možné deserializovat stará data. Konkrétně to znamená deserializace kód musí být nekonečnou zpětně kompatibilní: 333 verze kódu služby musí být schopen pracovat umístěna v kolekci spolehlivé pomocí verze 1 kódu služby před 5 let.
+## <a name="schema-versioning-upgrades"></a>Schéma vytváření verzí (upgrade)
+Interně Reliable Collections serializovat objekty pomocí. DataContractSerializer vaší sítě. Serializované objekty jsou zachované místní disk primární repliky a přenášejí také do sekundárních replik. Během existence vaší služby, bude pravděpodobně že budete chtít změnit, jaká data (schéma), vaše služba vyžaduje. Správa verzí dat s velmi pečlivě musí postupovat. Především musíte vždy být schopná deserializovat stará data. Konkrétně to znamená, že váš kód deserializace musí být neomezeně zpětně kompatibilní: Verze 333 kódu služby musí být schopen zpracovat data umístěná ve spolehlivé kolekci podle verze 1 kódu služby před 5 lety.
 
-Kromě toho kódu služby je upgradovaná jednu upgradovací doménu najednou. Ano při upgradu, máte dvě různé verze vaší služby kód spuštěný současně. Je nutné nemuseli novou verzi kódu služby používaly nové schéma jako staré verze kódu služby nemusí být schopna zpracovávat nové schéma. Pokud je to možné, měli byste navrhnout každou verzi služby jako dopředně kompatibilní verze 1. Konkrétně to znamená, že V1 kódu služby byste měli mít ignorovat všechny prvky schématu, který nezpracovává explicitně. Ale musí být možné uložit data, které není explicitně vědět o a jednoduše zápis zpátky se při aktualizaci slovníku klíče nebo hodnoty.
+Kromě toho kód služby je upgradovaný jednu upgradovací doménu najednou. Proto při upgradu, máte dvě různé verze kódu služby běží souběžně. Je třeba se vyvarovat s novou verzi kódu služby používaly nové schéma, protože starší verze kódu služby nemusí být schopna zpracovávat nové schéma. Pokud je to možné, měli byste navrhnout každé verze služby bude dopředně kompatibilní verze 1. Konkrétně to znamená, že V1 kódu služby měli být schopni jednoduše ignorovat všechny elementy schématu, který nezpracovává explicitně. Však musí být schopni uložit všechny data, která není explicitně vědět o a jednoduše zápisu ji zpět při aktualizaci slovníku klíče nebo hodnoty.
 
 > [!WARNING]
-> Při změně schématu klíče, je nutné zajistit, že váš klíč hodnota hash a algoritmů rovná jsou stabilní. Pokud změníte způsob buď tyto algoritmy fungovat, nebudete moci vyhledávat klíč v rámci slovníku spolehlivé někdy znovu.
+> Při změně schématu klíč, musíte zajistit, že jsou stabilní kód hash si klíč a algoritmy rovná se. Pokud změníte, jak pracovat buď tyto algoritmy, nebude možné nikdy znovu vyhledat klíč do spolehlivého slovníku.
 >
 >
 
-Alternativně můžete provádět, co se obvykle označuje jako 2 fáze upgradu. Fáze 2 inovaci, upgradu služby V1 na V2: V2 obsahuje kód, který umí jak nakládat s novou změnu schématu, ale tento kód není spuštěn. Pokud kód V2 čte V1 data, pracuje na něm a zapisuje V1 data. Potom po dokončení upgradu je napříč doménami všechny upgradu, můžete mohou nějakým způsobem signál spuštěné instance V2 dokončení upgradu je. (Jeden ze způsobů, jak signál jde zavádět konfigurace upgradu; to je to díky upgradu fáze 2.) Instance V2 můžete nyní, čtení dat V1, převést na V2 data, pracovat s nimi a vypsat jako V2 data. Když ostatní instance načíst V2 data, není potřeba ji převést, se právě pracovat s nimi a zápis dat V2.
+Alternativně můžete provádět, co se obvykle označuje jako fáze 2 upgrade. Fáze 2 upgradu upgradu služby z V1 na V2: V2 obsahuje kód, který ví, jak zacházet s novou změnu schématu, ale nebude spouštět tento kód. Když V2 kód čte V1 data, funguje na něj a zapisuje V1 data. Poté po dokončení upgradu je přes všechny upgradovacích domén, vám může nějakým způsobem signál spuštěné instance V2 nebude dokončen upgrade. (Jeden ze způsobů, jak signál, toto je zavedení konfigurace upgradu; to je to kvůli tomu 2 fáze upgradu.) Instance V2 můžete nyní číst V1 data, převeďte jej na V2 dat, pracovat s nimi a vypsat jako V2 data. Při čtení dat V2 ostatních instancí není potřeba ho převést, jsou právě pracovat s nimi a zapíše V2 data.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vytváření dopředně kompatibilní datové kontrakty, najdete v části [kontrakty dat dopřednou](https://msdn.microsoft.com/library/ms731083.aspx).
+Další informace o vytváření kontraktů předávání dat kompatibilní, najdete v článku [kontraktů dat dopřednou](https://msdn.microsoft.com/library/ms731083.aspx).
 
-Osvědčené postupy v Správa verzí kontraktů dat naleznete v tématu [Správa verzí kontraktů dat](https://msdn.microsoft.com/library/ms731138.aspx).
+Informace o doporučených postupech ohledně Správa verzí kontraktů dat, naleznete v tématu [Správa verzí kontraktů dat](https://msdn.microsoft.com/library/ms731138.aspx).
 
-Zjistěte, jak implementovat kontrakty odolný vůči chybám dat verze, najdete v tématu [verze proti chybám zpětná volání serializace tolerantní](https://msdn.microsoft.com/library/ms733734.aspx).
+Zjistěte, jak implementovat kontraktů dat proti chybám verze, najdete v článku [tolerantní zpětná volání serializace](https://msdn.microsoft.com/library/ms733734.aspx).
 
-Zjistěte, jak zajistit datová struktura, která dokáže spolupracovat napříč více verzí, najdete v tématu [objekt IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
+Zjistěte, jak poskytnout datová struktura, která dokáže spolupracovat ve více verzích, najdete v článku [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).

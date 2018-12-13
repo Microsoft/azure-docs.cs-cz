@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 9057d9f5d63598ea249e8f3193b84fd715018829
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109967"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251704"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -24,10 +24,10 @@ Tento článek popisuje, jak zprovoznit datových kanálů pro opakovatelnost po
 
 V následujícím scénáři je vstupní data plochého souboru, který obsahuje dávku zapisovači letových údajů na jeden měsíc. Tato letu data zahrnují informace, jako jsou letiště původu a cíle, mil předávány, odeslání a přijetí časy a tak dále. Cílem při vytváření tohoto kanálu je slouží ke shrnutí denní výkon letecká společnost, kde každý letecká společnost má jeden řádek pro každý den s průměrné zpoždění odeslání a přijetí během několika minut a celková délka předávány, daný den.
 
-| ROK | MĚSÍC | DAY_OF_MONTH | POSKYTOVATEL SLUŽEB |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | MONTH | DAY_OF_MONTH | POSKYTOVATEL SLUŽEB |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1 | 3 | AA | 10.142229 | 7.862926 | 2644539 |
-| 2017 | 1 | 3 | STEJNĚ JAKO | 9.435449 | 5.482143 | 572289 |
+| 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DISTRIBUČNÍ SEZNAM | 6.935409 | -2.1893024 | 1909696 |
 
 Příklad kanálu počká, až dorazí nové časové období na zapisovači letových údajů a pak ukládá tyto informace podrobné letu do svého datového skladu Hive pro dlouhodobé analýzy. Kanál vytvoří také mnohem menší datové sady, který shrnuje jenom denní zapisovači letových údajů. Tento denní souhrn letů odesílat do služby SQL database poskytuje sestavy, například pro web.
@@ -156,7 +156,7 @@ K zobrazení stavu koordinátor a instance pracovních postupů pomocí Oozie we
 
 ### <a name="configure-hive"></a>Konfigurace Hive
 
-1. Stáhněte si příklad souboru .csv, který obsahuje zapisovači letových údajů na jeden měsíc. Stáhněte si svůj soubor ZIP `2017-01-FlightData.zip` z [úložiště HDInsight Github](https://github.com/hdinsight/hdinsight-dev-guide) a rozbalte ho do souboru CSV `2017-01-FlightData.csv`. 
+1. Stáhněte si příklad souboru .csv, který obsahuje zapisovači letových údajů na jeden měsíc. Stáhněte si svůj soubor ZIP `2017-01-FlightData.zip` z [úložiště HDInsight GitHub](https://github.com/hdinsight/hdinsight-dev-guide) a rozbalte ho do souboru CSV `2017-01-FlightData.csv`. 
 
 2. Zkopírujte tento soubor CSV až do účtu služby Azure Storage, které jsou připojené ke clusteru HDInsight a jeho umístění `/example/data/flights` složky.
 
@@ -553,7 +553,7 @@ Jak vidíte, je většinou koordinátor právě předávání konfiguračních i
 
     Koordinátor je zodpovědná za plánování akce v rámci `start` a `end` rozsah, kalendářních dat podle intervalu určeném `frequency` atribut. Všechny naplánované akce pak spustí pracovní postup podle konfigurace. Ve výše uvedená definice koordinátor koordinátor je nakonfigurovaný ke spouštění akcí z 1. ledna 2017 na 5. ledna 2017. Frekvence je nastavená na 1 den podle [jazyk výrazů Oozie](http://oozie.apache.org/docs/4.2.0/CoordinatorFunctionalSpec.html#a4.4._Frequency_and_Time-Period_Representation) frekvence výraz `${coord:days(1)}`. Výsledkem je koordinátor plánování akci (a tedy pracovního postupu) jednou za den. Pro rozsahy kalendářních dat, které jsou v minulosti, jako v následujícím příkladu bude naplánováno akce spustit bez zpoždění. Počáteční datum, ze kterých je naplánované spuštění akce je volána *nominální čas*. Například ke zpracování dat pro 1. ledna 2017 se koordinátor naplánuje akcí s dobou nominální 2017-01-01T00:00:00 GMT.
 
-* Bod 2: v rámci období pracovního postupu `dataset` element určuje, kde se mají hledat data pro konkrétní rozsah v HDFS a konfiguruje jak Oozie Určuje, zda je k dispozici data ještě pro zpracování.
+* Bod 2: V rámci pracovního postupu, období `dataset` element určuje, kde se mají hledat data pro konkrétní rozsah v HDFS a konfiguruje jak Oozie Určuje, zda je k dispozici data ještě pro zpracování.
 
     ```
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -566,7 +566,7 @@ Jak vidíte, je většinou koordinátor právě předávání konfiguračních i
 
     Prázdné `done-flag` element označuje, že když Oozie kontroly na přítomnost vstupní data v určené době, Oozie Určuje data, zda je k dispozici podle přítomnosti adresář nebo soubor. V tomto případě je přítomnost souboru csv. Pokud se nachází soubor csv, Oozie předpokládá data připravená a spustí instanci pracovního postupu při zpracování souboru. Pokud není dostupný k dispozici žádný soubor csv, Oozie předpokládá, že data jsou ještě nejsou připravené a tento běh pracovního postupu přejde do stavu čekání.
 
-* Bod 3: `data-in` prvek určuje konkrétní časové razítko pro použití jako o nominálních při nahrazení hodnot v `uri-template` pro přidružený objekt dataset.
+* Bod 3: `data-in` Prvek určuje konkrétní časové razítko pro použití jako o nominálních při nahrazení hodnot v `uri-template` pro přidružený objekt dataset.
 
     ```
     <data-in name="event_input1" dataset="ds_input1">

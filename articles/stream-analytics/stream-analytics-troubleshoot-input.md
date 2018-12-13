@@ -7,13 +7,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 0098d532f09ca2fa7ef4434add90729a15809ac5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087452"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164377"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží s připojeními vstupu
 
@@ -47,7 +48,7 @@ Můžete využít následující kroky a analyzovat události vstupu podrobně l
 
 2. Podrobnosti vstupu dlaždici se zobrazuje seznam upozornění s podrobnostmi o jednotlivých problémů. Upozornění následující příklad obsahuje oddíl, posun a pořadová čísla níž se nachází poškozená data JSON. 
 
-   ![Upozornění s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   ![Stream Analytics upozornění s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
    
 3. Vyhledat potřebná data JSON s nesprávný formát, spusťte CheckMalformedEvents.cs kód, který je k dispozici v [úložiště ukázek Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
 
@@ -90,8 +91,8 @@ Pokud streamování syntaxi dotazu odkazuje na stejný vstupní prostředek cent
 Scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pěti patří:
 
 * Více příkazů SELECT: Pokud používáte více příkazů SELECT, které odkazují na **stejné** vstup Centrum událostí, každý příkaz SELECT způsobí, že nového příjemce, který se má vytvořit.
-* SJEDNOCENÍ: Při použití SJEDNOCENÍ je možné mít více vstupů, které odkazují na **stejné** skupiny centra a příjemce událostí.
-* SPOJENÍ sama: Když použijete operaci JOIN SAMOOBSLUŽNÉHO, je možné odkazovat **stejné** centra událostí více než jednou.
+* SJEDNOCENÍ: Při použití SJEDNOCENÍ je možné mít více vstupů, které odkazují **stejné** skupiny centra a příjemce událostí.
+* SPOJENÍ SAMA NA SEBE: Když použijete operaci JOIN SAMOOBSLUŽNÉHO, je možné odkazovat **stejné** centra událostí více než jednou.
 
 Následující osvědčené postupy může pomoci zmírnit scénáře, ve kterých počet čtenářů na oddíl překračuje limit služby Event Hubs pět.
 
@@ -101,7 +102,7 @@ V klauzuli WITH určuje sadu dočasné pojmenované výsledků, které lze odkaz
 
 Například místo tohoto dotazu:
 
-```
+```SQL
 SELECT foo 
 INTO output1
 FROM inputEventHub
@@ -114,7 +115,7 @@ FROM inputEventHub
 
 Pomocí tohoto dotazu:
 
-```
+```SQL
 WITH data AS (
    SELECT * FROM inputEventHub
 )

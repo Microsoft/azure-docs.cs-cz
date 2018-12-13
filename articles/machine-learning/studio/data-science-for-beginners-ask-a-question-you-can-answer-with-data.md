@@ -4,10 +4,9 @@ description: Zjistěte, jak formulovat otázku sharp data science v datová věd
 keywords: data science problémy data science dotazy, mohli formulovat otázky, otázky regrese, klasifikace dotazy, sharp otázku
 services: machine-learning
 documentationcenter: na
-author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
-ms.author: amlstudiodocs
-manager: hjerez
+author: garyericson
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.author: garye
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -17,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: c6d42ed7920b634994adf5313656c77e2df6dd5b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 8f117a8c47d7c98f13101efe0ca5147ce8d8c25a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310833"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250973"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: Datová věda pro začátečníky řady
@@ -39,17 +38,17 @@ Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](
 *Datová věda pro začátečníky* článek obsahuje rychlý úvod do datových věd v pěti krátkých videích.
 
 * Video 1: [5 otázky, které odpovídá vědecké zkoumání dat](data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min 14 sek)*
-* Video 2: [jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
-* Video 3: Položení dotazu, kterou lze odpovědět pomocí dat
-* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
-* Video 5: [kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 2: [Jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
+* Video 3: Položení otázky, na kterou lze odpovědět pomocí dat
+* Video 4: [Předpovídání odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
+* Video 5: [Kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
 
-## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Přepis: Klást otázky, na kterou lze odpovědět pomocí dat
+## <a name="transcript-ask-a-question-you-can-answer-with-data"></a>Přepisu: Položení otázky, na kterou lze odpovědět pomocí dat
 Vítá vás třetí videa v této sérii "Datová věda pro začátečníky."  
 
 Do tohoto objektu za získáte některé tipy pro formulování otázky, na kterou lze odpovědět pomocí dat.
 
-Informace z tohoto videa mohou zobrazovat, pokud nejprve sledovat dvě starší videa v této sérii: "5 otázek datové vědy můžete odpovědět na" a "Je vaše data připravená pro vědecké zpracování dat?"
+Může se zobrazit informace z tohoto videa, pokud nejprve sledovat dvě starší videa v této sérii: "5 otázek datové vědy můžete odpovědět na" a "Je vaše data připravená pro vědecké zpracování dat?"
 
 ## <a name="ask-a-sharp-question"></a>Zeptejte se sharp
 Už jsme mluvili o tom, jak pro datové vědy je proces použití názvů (také nazývané kategorií nebo popisky) a čísel pro předpověď odpovědi na dotaz. Ale nemůže být jen na každou otázku; je třeba *sharp otázku.*
@@ -62,7 +61,7 @@ Pokud byste chtěli položit vágní dotaz, jako je "Co se to stát se Moje akci
 
 Ale pokud byste chtěli položit otázku sharp, jako je "Co Moje akcie prodejní cena bude příští týden?", nelze genie pomoci ale poskytují konkrétní odpovědět a předpovědět cenu prodej.
 
-## <a name="examples-of-your-answer-target-data"></a>Příklady odpovědi: cílová data
+## <a name="examples-of-your-answer-target-data"></a>Příklady odpovědi: Cíl dat
 Jakmile jste formulovat otázku, zaškrtněte, pokud chcete zjistit, jestli máte příklady odpovědi ve vašich datech.
 
 Pokud je naše otázku "Co Moje akcie prodejní cena bude příští týden?" potom máme Ujistěte se, že naše data obsahují historii minimální cenu akcie.

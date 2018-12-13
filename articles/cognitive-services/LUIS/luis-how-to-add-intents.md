@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 20d076e256143683b52cfaa713e25e4d31f0f3d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098691"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139853"
 ---
 # <a name="add-intents"></a>Přidání záměrů 
 
@@ -58,7 +58,7 @@ Příklad projevy jsou příkladem text otázky uživatele nebo příkazy. Před
 
 Utterance v záměru pravděpodobně záměru předpovědi relevanci vybrané záměr a skóre předpovědi. LUIS označuje této nesrovnalosti s červeným rámečkem okolo položky **označené záměr** na řádku utterance příklad. 
 
-![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným utterance](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
+![Stránce s podrobnostmi o snímek obrazovky záměrů, s chybami nesrovnalosti utterance predikcí](./media/luis-how-to-add-intents/prediction-discrepancy-intent.png) 
 
 V horním navigačním panelu vyberte **Train**. Predikce nesrovnalosti je nyní pryč.
 
@@ -107,7 +107,7 @@ Na jednotlivé utterance z nabídky tlačítko se třemi tečkami napravo od utt
 
 * Úpravy: změnit text utterance
 * Odstranit: odebrání záměr utterance. Pokud chcete i utterance, lepší metodou je přesunout **žádný** záměr. 
-* Přidejte vzor: vzor umožňuje provést běžné utterance a označit replaceable text a ignorable – text, a tím snižuje potřebu další projevy v záměr. 
+* Přidejte vzor: Vzor umožňuje provést běžné utterance a označit replaceable text a ignorable – text, a tím snižuje potřebu další projevy v záměr. 
 
 **Označené záměr** sloupec vám umožní změnit záměr utterance.
 

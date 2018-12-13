@@ -11,12 +11,12 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 807fd49a54c82b0930134beb8413e14c1c28b278
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
-ms.translationtype: HT
+ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115557"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164615"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
@@ -52,7 +52,7 @@ Klient Node.js nasadí dávkovou úlohu s přípravným úkolem (podrobně si ho
 
 Nyní si krok za krokem projdeme vytvoření klienta Node.js:
 
-### <a name="step-1-install-azure-batch-sdk"></a>Krok 1: Nainstalování sady SDK služby Azure Batch
+### <a name="step-1-install-azure-batch-sdk"></a>Krok 1: Instalace sady SDK služby Azure Batch
 
 Sadu SDK služby Azure Batch pro Node.js můžete nainstalovat pomocí příkazu npm install.
 
@@ -65,7 +65,7 @@ Tento příkaz nainstaluje nejnovější verzi sady azure-batch node SDK.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>Krok 2: Vytvoření účtu Azure Batch
+### <a name="step-2-create-an-azure-batch-account"></a>Krok 2: Vytvoření účtu služby Azure Batch
 
 Můžete ho vytvořit na webu [Azure Portal](batch-account-create-portal.md) nebo z příkazového řádku ([PowerShell](batch-powershell-cmdlets-get-started.md)  / [Azure CLI](/cli/azure)).
 
@@ -254,7 +254,7 @@ Následuje ukázka objektu výsledků vráceného funkcí pool.get.
 ```
 
 
-### <a name="step-4-submit-an-azure-batch-job"></a>Krok 4: Odeslání úlohy služby Azure Batch
+### <a name="step-4-submit-an-azure-batch-job"></a>Krok 4: Odeslat úlohu služby Azure Batch
 Úloha služby Azure Batch je logická skupina podobných úkolů. V našem scénáři se jedná o úlohu „Zpracování formátu CSV do formátu JSON“. Každý z těchto úkolů může zpracovávat soubory CSV v jednotlivých kontejnerech služby Azure Storage.
 
 Tyto úkoly budou spouštěné paralelně, nasazené v několika uzlech a orchestrované službou Azure Batch.
@@ -279,14 +279,14 @@ Skript můžete nahrát do účtu služby Azure Storage a vygenerovat identifik�
 
 Přípravný úkol se zadává během odesílání úlohy služby Azure Batch. Následují parametry konfigurace přípravného úkolu:
 
-* **ID:** Jedinečný identifikátor přípravného úkolu.
-* **commandLine:** Příkazový řádek, který spustí spustitelný soubor s úkolem.
-* **resourceFiles:** Pole objektů poskytujících podrobnosti o souborech, které je potřeba stáhnout pro spuštění tohoto úkolu.  Následují jeho možnosti:
-    - blobSource: Identifikátor URI SAS souboru.
-    - filePath: Místní cesta pro stažení a uložení souboru.
-    - fileMode: Režim souboru, který lze použít pouze pro uzly s Linuxem, v osmičkovém formátu a s výchozí hodnotou 0770.
-* **waitForSuccess:** Pokud je tento parametr nastavený na hodnotu true, úkol se nespustí, pokud dojde k chybě přípravného úkolu.
-* **runElevated:** Nastavte tento parametr na hodnotu true, pokud jsou ke spuštění úkolu potřeba zvýšená oprávnění.
+* **ID**: Jedinečný identifikátor přípravného úkolu
+* **CommandLine**: Provádění úlohy, spustitelný soubor příkazového řádku
+* **resourceFiles**: Pole objektů poskytujících podrobnosti o souborech, je potřeba stáhnout pro spuštění tohoto úkolu.  Následují jeho možnosti:
+    - blobSource: Identifikátor URI SAS souboru
+    - filePath: Místní cesta pro stažení a uložení souboru
+    - fileMode: Pouze použitelné pro uzly s Linuxem, režimu souboru fileMode je v osmičkovém formátu a s výchozí hodnotou 0770
+* **waitForSuccess**: Je-li nastavena hodnota true, úkol se nespustí na selhání úkolů přípravy
+* **runElevated**: Nastavte na hodnotu true, pokud jsou potřeba zvýšená oprávnění ke spuštění úlohy.
 
 Následující fragment kódu ukazuje příklad konfigurace skriptu přípravného úkolu:
 
@@ -317,8 +317,8 @@ Nyní, když máme vytvořenou úlohu pro zpracování formátu CSV, vytvoříme
 
 Když se podíváme na [skript Pythonu](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py), uvidíme, že přijímá dva parametry:
 
-* container name: Kontejner služby Storage, ze kterého se mají stáhnout soubory.
-* pattern: Volitelný parametr se vzorem názvu souboru.
+* název kontejneru: Stahovat soubory z kontejneru úložiště
+* Vzor: Volitelný parametr se vzorem názvu souboru
 
 Za předpokladu, že máme čtyři kontejnery con1, con2, con3 a con4, následující kód ukazuje odesílání úkolů do úlohy služby Azure Batch „process csv“, kterou jsme vytvořili dříve.
 
@@ -351,7 +351,7 @@ Kód do fondu přidá několik úkolů. Každý z úkolů se provede na uzlu ve 
 
 Na portálu jsou podrobná zobrazení stavů úkolů a úloh. Můžete také použít funkce list a get v sadě SDK Azure pro Node.js. Podrobnosti jsou uvedeny v [dokumentaci](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si článek [Přehled funkcí Azure Batch](batch-api-basics.md), který doporučujeme všem novým uživatelům služby.
 - Pokud chcete prozkoumat rozhraní API služby Batch, přečtěte si článek [Reference k Batch Node.js](/javascript/api/overview/azure/batch).

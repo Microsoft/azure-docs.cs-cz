@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Vyhledávání pomocí Javy – rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Provádět vyhledávání na webu s využitím Javy – rozhraní API REST webové vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu. Použijete k tomu Javu a jako odpověď dostanete objekt JSON.
+description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí Javy a přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
-ms.openlocfilehash: bd6630f67e151dd2ee1e60654352f3070466899b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: f56d64151f36216652c21067d5f3c64270ca266c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312659"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260969"
 ---
-# <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka Java k volání rozhraní API Bingu pro vyhledávání na webu  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-java"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Java
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu a dostanete odpověď ve formátu JSON.  
 

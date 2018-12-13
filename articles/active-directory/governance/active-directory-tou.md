@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/04/2018
+ms.date: 12/10/2018
 ms.author: rolyon
-ms.openlocfilehash: 85f15c67207128914ef0d0d1051a54a33d757e72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 448ef296af3ceaffffa1a4a69060916afd9abdc4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106273"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185677"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -130,7 +130,7 @@ Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následuj
     >[!IMPORTANT]
     >Zásady podmíněného přístupu (včetně podmínek použití) nepodporují vynucení u účtů služeb.  Doporučujeme, abyste ze zásad podmíněného přístupu všechny účty služeb vyloučili.
 
-     Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů).  Další informace najdete v tématu [rychlý start: podmínky použití přijmout před přístup ke cloudovým aplikacím vyžadovat](../conditional-access/require-tou.md).
+     Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů).  Další informace najdete v tématu [rychlý start: Podmínky použití přijmout před přístup ke cloudovým aplikacím vyžadovat](../conditional-access/require-tou.md).
 
 1. Klikněte na možnost **Vytvořit**.
 
@@ -227,7 +227,7 @@ Můžete upravit některé podrobnosti podmínek použití, ale nelze upravit ex
 
 1. Klikněte na tlačítko **Uložit** uložte provedené změny.
 
-    Po uložení změn, budou mít uživatelé znovu přijali jako nové podmínky.
+    Po uložení změn, uživatelé nebudou mít tyto úpravy ovlivnění.
 
 ## <a name="add-a-terms-of-use-language"></a>Přidání podmínek použití jazyka
 Následující postup popisuje, jak přidat podmínky použití jazyka.
@@ -334,44 +334,44 @@ Můžete nakonfigurovat zásady podmíněného přístupu pro aplikaci registrac
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: Jak poznám, kdy/jestli uživatel přijal podmínky použití?**</br>
-Odpověď: na podmínky použití okna, klikněte na číslo pod **přijato**. Můžete také zobrazit nebo Hledat přijmout aktivity ve službě Azure AD protokoly auditu. Další informace najdete v tématu [zobrazit sestavu kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [protokolů auditu Azure AD zobrazení](#view-azure-ad-audit-logs).
+**DOTAZ: Jak můžu zobrazit kdy / jestli uživatel přijal podmínky použití?**</br>
+ODPOVĚĎ: V podmínkách použití okna, klikněte na číslo v části **přijato**. Můžete také zobrazit nebo Hledat přijmout aktivity ve službě Azure AD protokoly auditu. Další informace najdete v tématu [zobrazit sestavu kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [protokolů auditu Azure AD zobrazení](#view-azure-ad-audit-logs).
 
-**Otázka: Jak dlouho se informace uchovávají?**</br>
-Odpověď: uživatel se počítá v podmínkách použití sestavy a na koho se přijata nebo odmítnuta se uchovávají po dobu životnosti podmínky použití. Po dobu 30 dnů se ukládají protokoly auditu Azure AD.
+**DOTAZ: Jak dlouho je informace uložené?**</br>
+ODPOVĚĎ: Uživatel se počítá v podmínkách použití sestavy a na koho se přijata nebo odmítnuta se uchovávají po dobu životnosti podmínky použití. Po dobu 30 dnů se ukládají protokoly auditu Azure AD.
 
-**Otázka: Proč vidím jiný počet souhlasy v podmínkách použití sestav a služby Azure AD protokoly auditu**</br>
-Odpověď: podmínky použití sestavy se ukládají po dobu platnosti této podmínky použití při auditování Azure AD, které protokoly se ukládají po dobu 30 dnů. Podmínky použití sestavy také zobrazí pouze aktuální stav souhlasu uživatele. Například pokud uživatel odmítne a pak přijme, podmínky použití sestavy se zobrazí pouze jeho přijetí. Pokud chcete zobrazit historii, můžete použít Azure AD protokoly auditu.
+**DOTAZ: Proč vidím jiný počet souhlasy v podmínkách použití sestav a služby Azure AD protokoly auditu**</br>
+ODPOVĚĎ: Podmínky použití sestavy se ukládají po dobu platnosti této podmínky použití při auditování Azure AD, které protokoly se ukládají po dobu 30 dnů. Podmínky použití sestavy také zobrazí pouze aktuální stav souhlasu uživatele. Například pokud uživatel odmítne a pak přijme, podmínky použití sestavy se zobrazí pouze jeho přijetí. Pokud chcete zobrazit historii, můžete použít Azure AD protokoly auditu.
 
-**D: Pokud upravím podrobnosti podmínek použití, je potřeba, aby uživatelé přijali znovu?**</br>
-Odpověď: Ano, pokud správce upraví podrobnosti podmínek použití, vyžaduje uživatelé znovu přijali jako nové podmínky.
+**DOTAZ: Pokud jsem upravit podrobnosti podmínek použití, je potřeba, aby uživatelé přijali znovu?**</br>
+ODPOVĚĎ: Ne, pokud správce upraví podrobnosti pro podmínky použití (název, zobrazovaný název, vyžadovat, aby uživatelé rozbalili nebo přidat jazyk), aby uživatelé znovu přijali jako nové podmínky.
 
-**Dotaz: lze aktualizovat existující podmínky použití dokumentů?**</br>
-Odpověď: v současné době nelze aktualizovat existující podmínky použití dokumentů. Chcete-li změnit podmínky použití dokumentů, budete muset vytvořit nové podmínky použití instance.
+**DOTAZ: Můžete aktualizovat existující podmínky použití dokumentů**</br>
+ODPOVĚĎ: V současné době nelze aktualizovat existující podmínky použití dokumentů. Chcete-li změnit podmínky použití dokumentů, budete muset vytvořit nové podmínky použití instance.
 
-**Otázka: Pokud jsou hypertextové odkazy v podmínkách použití dokumentů PDF, koncoví uživatelé uvidí na ně?**</br>
-Odpověď: soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.
+**DOTAZ: Pokud jsou hypertextové odkazy v podmínkách použití dokumentů PDF, koncoví uživatelé uvidí na ně?**</br>
+ODPOVĚĎ: Soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.
 
-**Otázka: Podporují se podmínky použití ve více jazycích?**</br>
-Odpověď: Ano. Aktuálně nejsou 108 různé jazyky, které správce může nakonfigurovat pro jeden podmínky použití.
+**DOTAZ: Podmínky použití může podporovat více jazycích?**</br>
+ODPOVĚĎ: Ano. Aktuálně nejsou 108 různé jazyky, které správce může nakonfigurovat pro jeden podmínky použití. Správce můžete nahrát několik dokumentů PDF a označte tyto dokumenty pomocí odpovídající jazyk (až 108). Když se koncoví uživatelé přihlásí, jsme podívejte se na jejich upřednostňovaný jazyk prohlížeče a zobrazí odpovídající dokumentu. Pokud není nalezena žádná shoda, zobrazí výchozí dokument, který je první dokument, který se odeslal.
 
-**Otázka: Kdy se podmínky použití aktivují?**</br>
-Odpověď: Podmínky použití se aktivují během přihlašování.
+**DOTAZ: Kdy se podmínky použití aktivují?**</br>
+ODPOVĚĎ: Podmínky použití se aktivují během přihlašovací prostředí.
 
-**Otázka: Na které aplikace je možné podmínkami použití cílit?**</br>
-Odpověď: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace s využitím moderního ověřování.  Další informace najdete v tématu věnovaném [podnikovým aplikacím](./../manage-apps/view-applications-portal.md).
+**DOTAZ: Jaké aplikace je možné cílit podmínkami použití?**</br>
+ODPOVĚĎ: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace používající moderní ověřování.  Další informace najdete v tématu věnovaném [podnikovým aplikacím](./../manage-apps/view-applications-portal.md).
 
-**Otázka: Je možné pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**</br>
-Odpověď: Ano, a to tak, že vytvoříte několik zásad podmíněného přístupu, které cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, přijetí jedné podmínky použití v čase.
+**DOTAZ: Můžete pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**</br>
+ODPOVĚĎ: Ano, tak, že vytvoříte několik zásad podmíněného přístupu cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, přijetí jedné podmínky použití v čase.
  
-**Otázka: Co se stane, když uživatel odmítne podmínky použití?**</br>
-Odpověď: Uživatel bude mít k zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a přijměte podmínky získal přístup.
+**DOTAZ: Co se stane, když uživatel odmítne podmínky použití?**</br>
+ODPOVĚĎ: Uživatel je zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a přijměte podmínky získal přístup.
  
-**Otázka: je možné unaccept podmínky použití, které byly dříve přijali službu?**</br>
-Odpověď: můžete [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
+**DOTAZ: Je možné unaccept podmínky použití, které byly dříve přijali službu?**</br>
+ODPOVĚĎ: Je možné [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
 
-**Otázka: co se stane, když také používám Intune podmínky a ujednání?**</br>
-Odpověď: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
+**DOTAZ: Co se stane, pokud také používám Intune podmínky a ujednání?**</br>
+ODPOVĚĎ: Pokud jste nakonfigurovali obě Azure AD podmínky použití a [Intune podmínky a ujednání](/intune/terms-and-conditions-create), uživatel bude muset přijmout. Další informace najdete v tématu [Volba správného řešení pro vaši organizaci blogový příspěvek podmínky](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ## <a name="next-steps"></a>Další postup
 

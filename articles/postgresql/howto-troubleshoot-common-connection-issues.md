@@ -10,12 +10,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 9dd2c5d619920e1205d9d3c64e463c15cf708b31
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: 67383db4bd1d57d194e10de2dc1964532b3619a4
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887831"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53160807"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Řešení problémů s připojením ke službě Azure Database for PostgreSQL
 
@@ -49,9 +49,9 @@ Při provádění údržby systému dojde k chybě hardwaru nebo softwaru či zm
 
 Pokud aplikace trvale nepodaří připojit ke službě Azure Database for PostgreSQL, obvykle znamená problém s jedním z následujících akcí:
 
-* Konfigurace brány firewall: The – Azure Database for PostgreSQL server nebo na straně klienta brána firewall neblokuje připojení.
-* Změnu konfigurace na straně klienta sítě: byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: například může být chybně se zadala některá připojení parametry, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
+* Konfigurace brány firewall serveru: Ujistěte se, že Azure Database for PostgreSQL serverová brána firewall nakonfigurována, aby umožňovala připojení z klienta, včetně proxy servery a brány.
+* Konfigurace brány firewall klienta: Brána firewall na váš klient musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty, ke které nelze na serveru musí být povoleny a také názvy aplikací, například PostgreSQL v některé brány firewall.
+* Chyba uživatele: Může být chybně parametry připojení, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
 

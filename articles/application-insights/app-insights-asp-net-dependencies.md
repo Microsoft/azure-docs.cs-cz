@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 77e78e6052e1477696eafa84a3e1c913593ec87e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097773"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268831"
 ---
-# <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: sledování závislostí
+# <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: Sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
 
 Toto monitorování závislostí out-of-the-box aktuálně hlásí volání pro tyto typy závislostí:
@@ -208,8 +208,9 @@ Naleznete v následující tabulce a zajistit, že jste zvolili správnou konfig
 | Platforma | Instalace |
 | --- | --- |
 | Server služby IIS |Buď [nainstalujte na server monitorování stavu](app-insights-monitor-performance-live-website-now.md). Nebo [Upgrade vaší aplikace na rozhraní .NET framework 4.6 nebo novější](https://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
+| Služba IIS Express |Místo toho použijte Server služby IIS. |
 | Webové aplikace Azure |V váš řídicí panel webové aplikace [otevřete okno Application Insights v ovládacím panelu webové aplikace](app-insights-azure-web-apps.md) a možnost instalace, pokud se zobrazí výzva. |
-| Cloudové služby Azure |[Úlohy po spuštění použijte](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Cloudové služby Azure |[Úlohy po spuštění použijte](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Video
 

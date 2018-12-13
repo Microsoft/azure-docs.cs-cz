@@ -4,9 +4,8 @@ description: Zjistěte, jak zvýšit souběžnost webové služby Azure Machine 
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 keywords: Azure, webové služby machine learning, operacionalizace, škálování, koncový bod, souběžnosti
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
@@ -17,14 +16,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 3077afc99e7879b14c36e16cdbed8afb3a07bdb3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 736c27f5c8ad6efb2b4e36f44998ce06d7b69248
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312177"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256345"
 ---
-# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Škálování webové služby Azure Machine Learning tak, že přidáte další koncové body
+# <a name="scaling-an-azure-machine-learning-studio-web-service-by-adding-additional-endpoints"></a>Škálování webové služby Azure Machine Learning Studio tak, že přidáte další koncové body
 > [!NOTE]
 > Toto téma popisuje postupy aplikovatelné **Classic** webové služby Machine Learning. 
 > 

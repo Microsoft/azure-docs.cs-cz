@@ -1,5 +1,5 @@
 ---
-title: Znovu sestavit Azure Search index nebo aktualizace prohledávatelného obsahu | Dokumentace Microsoftu
+title: Opětovné sestavení indexu Azure Search nebo aktualizujte prohledávatelného obsahu – Azure Search
 description: Přidat nové prvky, aktualizovat stávající prvky nebo dokumenty nebo odstranit zastaralé dokumentů v úplné opětovné sestavení nebo částečné přírůstkové indexování na aktualizace indexu Azure Search.
 services: search
 author: HeidiSteen
@@ -8,12 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 374e7601169647f0eb7d3a214cf15567b7b11090
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.custom: seodec2018
+ms.openlocfilehash: 9c9af69e45af6a70c5327393a1c10385ba2c2aed
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34641420"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316892"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Postup opětovné sestavení indexu Azure Search
 

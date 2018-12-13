@@ -1,5 +1,5 @@
 ---
-title: S názvem dovednosti kognitivního vyhledávání rozpoznávání entit (Azure Search) | Dokumentace Microsoftu
+title: S názvem dovednosti kognitivního vyhledávání entit – Azure Search
 description: Extrahujte pojmenované entity pro uživatele, umístění a organizace z textu v kanálu služby Azure Search kognitivního vyhledávání.
 services: search
 manager: pablocas
@@ -10,12 +10,13 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec2018
+ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442025"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313985"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
 
@@ -23,8 +24,10 @@ ms.locfileid: "52442025"
 
 > [!NOTE]
 > <ul>
-> <li>Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. </li>
-> <li> Dovednosti rozpoznávání pojmenovaných entit je považován za "zastaralé" a nebude podporovat oficiálně od 15 února 2019. Postupujte podle doporučení uvedených v <a href="cognitive-search-skill-deprecated.md">zastaralé kognitivní dovednosti vyhledávací</a> stránky pro migraci podporované dovedností</li>
+> <li>
+> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.>
+> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Přečtěte si [Další](cognitive-search-attach-cognitive-services.md).</li>
+> <li> Dovednosti rozpoznávání pojmenovaných entit je považován za "zastaralé" a nebude podporovat oficiálně od 15 února 2019. Postupujte podle doporučení uvedených v <a href="cognitive-search-skill-deprecated.md">zastaralé kognitivní dovednosti hledání</a> stránky pro migraci podporované dovedností</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill

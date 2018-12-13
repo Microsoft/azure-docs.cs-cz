@@ -1,5 +1,5 @@
 ---
-title: Vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+title: Průzkumník služby Azure čas Series Insights ve verzi Preview – vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Tento článek popisuje funkce a možnosti, které jsou k dispozici ve webové aplikaci Průzkumník Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
@@ -9,12 +9,13 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 3a2958d838f0646ac030421b3785fc11a1466dd6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 5372a36291ee13966d497bdae83a6e214dce99b9
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086721"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272333"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Vizualizace dat v Průzkumníku ve verzi Preview
 
@@ -24,7 +25,7 @@ Tento článek popisuje funkce a možnosti, které jsou k dispozici ve verzi Pre
 
 Než použijete Průzkumníka Azure čas Series Insights ve verzi Preview, musíte mít:
 
-* Máte nastavení prostředí Time Series Insights. Další informace najdete v tématu [kurz: Azure čas Series Insights ve verzi Preview](./time-series-insights-update-create-environment.md).
+* Máte nastavení prostředí Time Series Insights. Další informace najdete v tématu [kurzu: Azure Time Series Insights ve verzi Preview](./time-series-insights-update-create-environment.md).
 * Poskytuje přístup k datům prostředí Time Series Insights, který jste vytvořili pro účet. Můžete poskytnout přístup k i další uživatele tak, aby sami.
 * Přidání zdroje událostí do prostředí Time Series Insights k odesílání dat do prostředí.
 
@@ -34,12 +35,12 @@ Než použijete Průzkumníka Azure čas Series Insights ve verzi Preview, musí
 
 Průzkumník Azure čas Series Insights ve verzi Preview se skládá z následujících elementů:
 
-* **Navigační panel**: umožňuje přepínat mezi stránkami analýzy a modelu.
-* **Hierarchie stromu**: umožňuje vybrat konkrétní datové prvky, aby graf.
+* **Navigační panel**: Umožňuje přepínat mezi stránkami analýzy a modelu.
+* **Hierarchie stromu**: Umožňuje vybrat konkrétní datové prvky, aby graf.
 * **Time series dobře**: Zobrazí aktuálně vybrané datové prvky.
 * **Panely grafu**: Zobrazí aktuální pracovní grafu.
-* **Časová osa**: umožňuje upravovat vaše pracovní časový rozsah.
-* **Panel aplikace**: obsahuje vaše možností správy uživatelů, jako je například aktuálního tenanta a můžete změnit motiv a jazykové nastavení.
+* **Časová osa**: Umožňuje upravit vaše pracovní časový rozsah.
+* **Panel aplikace**: Obsahuje vaše možností správy uživatelů, jako je například aktuálního tenanta a můžete změnit motiv a jazykové nastavení.
 
 ## <a name="time-series-insights-preview-environment-panel"></a>Panel prostředí času Series Insights ve verzi Preview
 
@@ -53,17 +54,17 @@ V panelu prostředí se zobrazí všechna prostředí Time Series Insights, ke k
 
 V nabídce navigace můžete přepínat mezi aplikacemi Time Series Insights:
 
-* **Analýza**: umožňuje grafu a provádět bohaté analýzy na dat Modelovaný nebo nemodelované časových řad.
+* **Analýza**: Umožňuje grafu a provádět bohaté analýzy na dat Modelovaný nebo nemodelované časových řad.
 
-* **Model**: umožňuje vložit nové typy čas Series Insights ve verzi Preview, hierarchie a instance pro váš model Time Series Insights.
+* **Model**: Umožňuje vložit nové typy čas Series Insights ve verzi Preview, hierarchie a instance pro váš model Time Series Insights.
 
 ## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights ve verzi Preview vytváření modelu
 
 V této aplikaci můžete provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) na váš Model časové řady.  
 
-* **Časové řady Model typu**: typy umožňují definující proměnné nebo vzorce pro provádění výpočtů služby Time Series Insights. Jsou přidruženy k dané instance služby Time Series Insights. Typ může mít jednu nebo více proměnných.
-* **Časové řady modelu hierarchie**: hierarchií jsou systematické organizace vaše data. Hierarchie znázornění vztahy mezi různými entitami ve vašich datech Time Series Insights.
-* **Instance řady modelu čas**: instance jsou časové řady sami. Ve většině případů jsou DeviceID nebo AssetID, který je jedinečný identifikátor prostředku v prostředí.
+* **Časové řady Model typu**: Čas Series Insights typy umožňují definující proměnné nebo vzorce pro provádění výpočtů. Jsou přidruženy k dané instance služby Time Series Insights. Typ může mít jednu nebo více proměnných.
+* **Časové řady modelu hierarchie**: Hierarchie jsou systematické organizace vaše data. Hierarchie znázornění vztahy mezi různými entitami ve vašich datech Time Series Insights.
+* **Instance řady modelu čas**: Instance jsou časové řady sami. Ve většině případů jsou DeviceID nebo AssetID, který je jedinečný identifikátor prostředku v prostředí.
 
 Další informace o modelu časové řady, naleznete v tématu [časy řady modely](./time-series-insights-update-tsm.md).
 
@@ -94,19 +95,19 @@ Graf můžete zobrazit instance řady času jako řádky. Klepnutím na ovládac
 
   ![Průzkumník osm][8]
 
-1. **Vybraný rozsah**: ovládací prvky, které datové prvky jsou k dispozici pro vizualizaci.
+1. **Vybraný rozsah**: Ovládací prvky dat prvky, které jsou k dispozici pro vizualizaci.
 
-1. **Vnitřní nástroj pro posuvník rozsahu datum**: pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období.
+1. **Vnitřní nástroj pro posuvník rozsahu datum**: Pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období.
 
-1. **Časové rozpětí sbalení ovládacího prvku**: sbalení a rozbalí editor span panel čas.
+1. **Časové rozpětí sbalení ovládacího prvku**: Sbalí a rozbalí editor span panel čas.
 
-1. **Osa y formát ovládacího prvku**: procházení k dispozici možnosti osy y zobrazit:
+1. **Osa y formát ovládacího prvku**: Procházení k dispozici možnosti osy y zobrazit:
 
     * `Default`: Každý řádek obsahuje jednotlivé osy y.
     * `Stacked`: Umožňuje osy y data mění, na základě řádku vybrané zásobník více řádků na stejné ose y.
-    * `Shared`: Zobrazují na společném všechna data osy y.
+    * `Shared`: Zobrazit dohromady všechna data osy y.
 
-1. **Aktuální datový element**: aktuálně vybraný datový prvek a jeho přidružené podrobnosti.
+1. **Aktuální datový element**: Aktuálně vybraný datový prvek a jeho přidružené podrobnosti.
 
 Konkrétní datový řez můžete projít další klepněte levým tlačítkem myši na datový bod v aktuální grafu a pak přetažením vybrané oblasti do koncového bodu podle vašeho výběru. Klikněte pravým tlačítkem na šedé, vybrané oblasti a klikněte na tlačítko lupy, jak je znázorněno na následujícím obrázku:
 
@@ -126,19 +127,19 @@ Při práci s čas Series Insights ve verzi Preview, nejprve vyberte časový ro
 
   ![Průzkumník 12][12]
 
-1. **Vnitřní rozsah posuvníku nástroj**: pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období. Tento vnitřní rozsah je omezen v ovládacím prvku posuvník vnější rozsah.
+1. **Vnitřní rozsah posuvníku nástroj**: Pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období. Tento vnitřní rozsah je omezen v ovládacím prvku posuvník vnější rozsah.
 
-1. **Zvýšit a snížit datum rozsahu tlačítka**: zvýšení nebo snížení času span tak, že vyberete buď tlačítko pro požadovaný interval.
+1. **Zvýšit a snížit datum rozsahu tlačítka**: Zvýšení nebo snížení časový rozsah tak, že vyberete buď tlačítko pro interval, který chcete.
 
 1. **Časové rozpětí sbalení ovládacího prvku**: Tento webový ovládací prvek umožňuje skrýt ovládací prvky s výjimkou nástroje jezdce vnitřní rozsah.
 
-1. **Ovládací prvek posuvník vnější rozsah**: vyberte vnější časové období, které bude k dispozici pro ovládací prvek datum vnitřního rozsahu pomocí ovládacích prvků koncový bod.
+1. **Ovládací prvek posuvník vnější rozsah**: Vyberte rozsah vnější dat, která bude k dispozici pro ovládací prvek vnitřní rozsah pomocí ovládacích prvků koncový bod.
 
-1. **Rychlé časy datum rozsahu rozevírací**: umožňuje rychle přepínat mezi zadaném časovém rozpětí vybrané možnosti, jako je například posledních 30 minut, posledních 12 hodin nebo vlastní rozsah. Změna této hodnoty se změní také k dispozici interval rozsahy popsané v nástroje jezdce velikost intervalu.
+1. **Rychlé časy datum rozsahu rozevírací**: Umožňuje rychle přepínat mezi zadaném časovém rozpětí vybrané možnosti, jako je například posledních 30 minut, posledních 12 hodin nebo vlastní rozsah. Změna této hodnoty se změní také k dispozici interval rozsahy popsané v nástroje jezdce velikost intervalu.
 
-1. **Velikost intervalu posuvník nástroj**: umožňuje můžete přiblížit nebo oddálit intervalech přes stejný časového intervalu. Tato akce zajišťuje přesnější kontrolu nad pohyb mezi velké časové úseky. Zobrazí smooth trendy dolů řezy malá jako milisekund, což umožní zobrazit podrobné, s vysokým rozlišením kusy vaše data. Výchozí posuvníku počáteční bod je nastaven jako optimální zobrazení dat z vašeho výběru, který vyrovnává rozlišení, rychlost dotazů a členitosti.
+1. **Velikost intervalu posuvník nástroj**: Umožňuje přiblížit nebo intervaly oddálit za stejný časový rozsah. Tato akce zajišťuje přesnější kontrolu nad pohyb mezi velké časové úseky. Zobrazí smooth trendy dolů řezy malá jako milisekund, což umožní zobrazit podrobné, s vysokým rozlišením kusy vaše data. Výchozí posuvníku počáteční bod je nastaven jako optimální zobrazení dat z vašeho výběru, který vyrovnává rozlišení, rychlost dotazů a členitosti.
 
-1. **Z webový ovládací prvek a rozsah kalendářních dat**: pro tento webový ovládací prvek můžete jednoduše klikněte a vyberte požadované datum a časové rozsahy. Můžete také použít ovládací prvek přepínání různých časových pásmech. Po provedení změn, chcete-li použít do aktuálního pracovního prostoru, vyberte **Uložit**.
+1. **Z webový ovládací prvek a rozsah kalendářních dat**: Pro tento webový ovládací prvek můžete jednoduše klikněte a vyberte požadované datum a časové rozsahy. Můžete také použít ovládací prvek přepínání různých časových pásmech. Po provedení změn, chcete-li použít do aktuálního pracovního prostoru, vyberte **Uložit**.
 
   ![třináct Explorer][13]
 
@@ -169,8 +170,8 @@ Vyberte web ovládací prvek odkazu (zvýrazněno) ke generování adresy URL ul
 
 Azure čas Series Insights ve verzi Preview podporuje dva motivy:
 
-* **Světlý motiv**: výchozí motiv uvedené v tomto dokumentu.
-* **Tmavý motiv**: vykreslí explorer, jak je znázorněno zde:
+* **Světlý motiv**: Výchozí motiv uvedené v tomto dokumentu.
+* **Tmavý motiv**:  V Průzkumníku vykreslí, jak je znázorněno zde:
 
   ![Průzkumník sedmnáct][17]
 
@@ -188,7 +189,7 @@ Namísto hierarchii zobrazí se panel podmínek Time Series Insights, kde definu
 
 Panel editor podmínek čas Series Insights ve verzi Preview má následující parametry:
 
-**Kde**: where – klauzule vám umožní rychle filtrovat události z operandů sady uvedené v následující tabulce. Pokud spustíte hledání tak, že vyberete operand, predikát automaticky aktualizovat podle hledání. Operand podporované typy patří:
+**Kde**: Where – klauzule vám umožní rychle filtrovat události z operandů sady uvedené v následující tabulce. Pokud spustíte hledání tak, že vyberete operand, predikát automaticky aktualizovat podle hledání. Operand podporované typy patří:
 
 | Operace | Podporované typy   | Poznámky |
 | --- | --- | --- |
@@ -203,9 +204,9 @@ Další informace o podporovaných dotazu operace a datové typy najdete [čas �
 
   ![Průzkumník devatenáct][19]
 
-**Míra**: rozevíracího seznamu se zobrazí všechny číselné sloupce (**zdvojnásobí**), který slouží jako elementy pro aktuální graf.
+**Míra**: Tento rozevírací seznam se zobrazí všechny číselné sloupce (**zdvojnásobí**), který slouží jako elementy pro aktuální graf.
 
-**Rozděleno podle**: rozevíracího seznamu se zobrazí všechny dostupné zařazené do kategorií sloupce (řetězce) v modelu, který můžete seskupit podle data. Můžete přidat až pět podmínky zobrazíte na stejnou osu x. Zadejte požadované parametry a potom vyberte **přidat** přidat novou podmínku.
+**Rozděleno podle**: Tento rozevírací seznam se zobrazí všechny dostupné zařazené do kategorií sloupce (řetězce) v modelu, který můžete seskupit vašich dat prostřednictvím. Můžete přidat až pět podmínky zobrazíte na stejnou osu x. Zadejte požadované parametry a potom vyberte **přidat** přidat novou podmínku.
 
   ![dvacet Explorer][20]
 

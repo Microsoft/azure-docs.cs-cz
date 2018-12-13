@@ -1,12 +1,11 @@
 ---
-title: Přeučování existující prediktivní webové služby – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Přeučování existující prediktivní Studio webové služby – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trained model v Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
 ms.service: machine-learning
@@ -16,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: d24cfd8dce42ee920c87fa2c3593a860468a6160
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311292"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250548"
 ---
-# <a name="retrain-an-existing-predictive-web-service"></a>Přeučování existující prediktivní webové služby
+# <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Přeučování existující prediktivní webové služby Azure Machine Learning Studio
+
 Tento dokument popisuje retraining proces pro následující scénáře:
 
 * Máte výukového experimentu a prediktivní experiment, který jste nasadili jako zprovozněné webové službě.
@@ -66,7 +66,7 @@ V tomto příkladu používáme C# k vytvoření aplikace přeučení. K provede
 
 Pro volání rozhraní API pro přeučení:
 
-1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio: **nový** > **projektu** > **Visual C#** > **Windows Klasický desktopový** > **aplikace konzoly (.NET Framework)**.
+1. Vytvoření C# konzolovou aplikaci v sadě Visual Studio: **Nové** > **projektu** > **Visual C#**   >  **klasická plocha Windows**  >   **Aplikace konzoly (.NET Framework)**.
 2. Přihlaste se k portálu webových služeb Machine Learning.
 3. Klikněte na webové služby, pro kterou pracujete.
 4. Klikněte na tlačítko **využívat**.

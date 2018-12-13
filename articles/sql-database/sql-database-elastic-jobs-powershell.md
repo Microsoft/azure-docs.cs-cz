@@ -5,19 +5,19 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: ''
-ms.devlang: pwershell
+ms.devlang: powershell
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 36b03794f4b55af3de89f96ecee02f5542f40f01
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972095"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278453"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvoření a správa elastických úloh SQL Database pomocí Powershellu (preview)
 
@@ -31,7 +31,7 @@ Rozhraní API prostředí PowerShell pro **úlohy elastické databáze** (ve ver
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
 * Sada databáze vytvořené s nástroji Elastic Database. Zobrazit [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md).
 * Azure PowerShell Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
-* **Úlohy elastic Database** balíčků v Powershellu: viz [úlohy instalace elastické databáze](sql-database-elastic-jobs-service-installation.md)
+* **Úlohy elastic Database** balíčků v Powershellu: Zobrazit [úlohy instalace elastické databáze](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure
 Vyberte předplatné, je třeba Id předplatného (**- SubscriptionId**) nebo název předplatného (**- SubscriptionName**). Pokud máte více předplatných, můžete spustit **Get-AzureRmSubscription** rutiny a kopírovat nastavit informace o požadované předplatné z výsledku. Jakmile budete mít informace o vašem předplatném, spusťte následující rutiny můžete nastavit toto předplatné jako výchozí, konkrétně cíl pro vytváření a Správa úloh:
@@ -193,8 +193,8 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 
 Existují dva typy skupin, které můžete vytvořit: 
 
-* [Mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) skupiny: když je úloha odeslána cílovou mapy horizontálních oddílů, dotazuje mapy horizontálních oddílů k určení jeho aktuální sadu horizontálních oddílů úlohy a potom vytvoří podřízené úlohy pro každý horizontální oddíl v mapě horizontálních oddílů.
-* Vlastní skupiny kolekcí: definované vlastní sadu databází. Když projekt cílí na vlastní kolekce, vytvoří podřízené úlohy pro každou databázi aktuálně do vlastní kolekce.
+* [Mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) skupiny: Když je úloha odeslána cílovou mapy horizontálních oddílů, úloha dotazuje mapy horizontálních oddílů k určení jeho aktuální sadu horizontálních oddílů a pak vytvoří podřízené úlohy pro každý horizontální oddíl v mapě horizontálních oddílů.
+* Vlastní skupiny kolekcí: Vlastní definovanou sadu databází. Když projekt cílí na vlastní kolekce, vytvoří podřízené úlohy pro každou databázi aktuálně do vlastní kolekce.
 
 ## <a name="to-set-the-elastic-database-jobs-connection"></a>Chcete-li nastavit Elastic Database úlohy připojení
 Připojení musí být nastavena na úlohy, které *databáze správy* před použitím úlohy, které rozhraní API. Tuto rutinu spustíte aktivuje okno přihlašovacích údajů překryvné požadujícím uživatelské jméno a heslo vytvořené při instalaci úlohy elastické databáze. Všechny příklady v tomto tématu se předpokládá, že tento první krok už jsou hotové.
@@ -416,19 +416,19 @@ Zásady spouštění aktuálně umožňují definovat:
 
 * Název: Identifikátor pro zásady spouštění.
 * Časový limit úlohy: Celkový čas předtím, než úloha se zruší úlohy Elastic Database.
-* Počáteční Interval opakování: Interval čekání před prvním opakováním.
-* Maximální Interval opakování: Zakončení intervalů opakování, které chcete použít.
-* Opakovaný pokus o Interval omezení rychlosti koeficient: Koeficient pro výpočet na další interval mezi opakovanými pokusy.  Se používá tento vzorec: (počátečního intervalu opakování) * Math.Pow – (Interval omezení rychlosti koeficient (), (počet pokusů o) - 2). 
-* Maximální počet pokusů o: Maximální počet opakovaných pokusů provést v rámci úlohy.
+* Interval opakování počáteční: Interval čekání před prvním opakováním.
+* Maximální počet opakovaných Interval: Zakončení intervalů opakování používat.
+* Koeficient omezení rychlosti Interval opakování: Koeficient pro výpočet na další interval mezi opakovanými pokusy.  Se používá tento vzorec: (Počáteční Interval opakování) * Math.Pow – (Interval omezení rychlosti koeficient (), (počet opakování) - 2). 
+* Maximální počet pokusů: Maximální počet opakovaných pokusů provést v rámci úlohy.
 
 Výchozí zásadu spouštění používá následující hodnoty:
 
 * Název: Výchozí zásadu spouštění
 * Časový limit úlohy: 1 týden
-* Počátečního intervalu opakování: 100 milisekund
-* Maximální Interval opakování: 30 minut
+* Interval opakování počáteční:  100 milisekund
+* Maximální počet opakovaných Interval: 30 minut
 * Koeficient Interval opakování: 2
-* Maximální počet pokusů o: 2 147 483 647
+* Maximální počet pokusů: 2,147,483,647
 
 Vytvoření zásady požadovaného spouštění:
 
@@ -459,8 +459,8 @@ Aktualizujte zásady spouštění požadované aktualizace:
 
 Existují dva různé způsoby, že úlohy Elastic Database můžete provádět zrušení:
 
-1. Zrušit běžící úlohy: Pokud zrušením se zjistí, zatímco úloha je aktuálně spuštěná, proběhne pokus o zrušení v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, bude pokus o zrušení dotazu.
-2. Ruší se úloha opakovaných pokusů: Pokud vlákno ovládací prvek zjistí zrušením předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek se zabránilo spouštění úlohy a deklarovat žádost jako zrušená.
+1. Zrušit běžící úlohy: Pokud zrušením se zjistí, zatímco úloha je aktuálně spuštěná, zrušení se provedou v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, bude pokus o zrušení dotazu.
+2. Ruší se úloha opakování: Pokud vlákno ovládací prvek zjistí zrušením předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek se zabránilo spouštění úlohy a deklarovat žádost jako zrušená.
 
 Pokud je požadováno zrušení úlohy k nadřazené úloze se žádost o zrušení dodržet nadřazená úloha a všechny jeho podřízené úlohy.
 

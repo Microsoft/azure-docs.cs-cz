@@ -3,8 +3,8 @@ title: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení 
 description: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.service: app-service-web
@@ -13,16 +13,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: sample
 ms.topic: sample
 ms.date: 12/12/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 21f3c48da2e91849d476ec4d16a17fd2b67708c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: b828fd1e7b1135f2e31e7f6e33957983c476edfb
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952507"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53183926"
 ---
-# <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP
+# <a name="create-a-web-app-and-deploy-files-with-ftp-using-azure-cli"></a>Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP pomocí Azure CLI
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak s využitím protokolu FTP nasadí statickou stránku HTML. K nahrání přes protokol FTP skript jako příklad používá [cURL](https://en.wikipedia.org/wiki/CURL). K nahrání souborů můžete použít jakýkoli nástroj FTP.
 
@@ -49,7 +49,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
 | [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Získá podrobnosti o dostupných profilech nasazení webové aplikace. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

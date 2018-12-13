@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, PHP'
+title: 'Rychlý start: Hledání zpráv s využitím PHP – rozhraní API REST vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
-description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
+description: V tomto rychlém startu můžete odeslat požadavek na Bingu News Search REST API pomocí PHP a přijetí odpovědi JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: aahi
-ms.openlocfilehash: 0fb43bac75d677612f06b37f1ee91afba13417b5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: f34f86fe7fba09bfbc5a05814fb4e39ee40c003b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312863"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252435"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-php"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání zpráv s využitím PHP
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Rychlý start: Hledání zpráv pomocí PHP a rozhraní API REST vyhledávání zpráv Bingu
 
 Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá PHP, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 

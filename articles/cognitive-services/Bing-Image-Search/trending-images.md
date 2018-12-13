@@ -1,7 +1,7 @@
 ---
-title: Hledat na webu pro populárních obrázků – rozhraní API pro vyhledávání obrázků Bingu
+title: Získat populárních obrázků pomocí rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Další informace o použití rozhraní API pro vyhledávání obrázků Bingu pro vyhledávání na webu populárních obrázků.
+description: Hledání dnešní populárních obrázků z webu pomocí rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: seodec2018
+ms.openlocfilehash: 8d58c188275dc6b546d418b51835514c99f25d28
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296307"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258963"
 ---
-# <a name="get-trending-images-from-the-bing-image-search-api"></a>Získání populárních obrázků z rozhraní API Bingu pro vyhledávání obrázků
+# <a name="get-trending-images-from-the-web"></a>Získat populární imagí z webu
 
 Chcete-li získat dnešní populárních obrázků, poslat následující požadavek GET:  
 

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 1333ffe2-59b8-4f40-9be7-3bf1173fc38d
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 2063198ab2a7b11e15528e81acb46ba16277782a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 48e3ca0b9910b673491e20e834b38170308aa132
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097637"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53272163"
 ---
 # <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
@@ -31,11 +30,11 @@ Tento článek představuje referenční implementaci projektu pro analýzu pře
 Tento experiment se vývoji a testování Serge Berger, odborník přes Data objektu zabezpečení v Microsoftu a Roger Barga, dříve produktový manažer pro Microsoft Azure Machine Learning. Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
 
 > [!NOTE]
-> Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu, naleznete v tématu: [maloobchodní změny šablony modelu](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](http://gallery.cortanaintelligence.com/)
+> Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu naleznete v tématu: [Maloobchodní změny šablony modelu](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](http://gallery.cortanaintelligence.com/)
 > 
 > 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="the-problem-of-customer-churn"></a>Problém výpovědi zákazníků
 Firmy na trhu příjemce a ve všech odvětvích enterprise mají se změny. Někdy je příliš vysoká četnost změn a ovlivňuje rozhodnutí o zásadách. Tradiční řešení je k předvídání vysoce tendence churners a řešit jejich potřeby prostřednictvím služby concierge marketingových kampaní, nebo použitím zvláštní výjimky. Tyto přístupy se může lišit od odvětví průmyslu. Můžete dokonce se liší podle konkrétního příjemce clusteru v rámci jednoho oboru (například telekomunikace).
@@ -66,7 +65,7 @@ Tento přístup vpřed vypadající je nejlepší způsob, jak zpracovávat změ
 
 ![][2]
 
-*Obrázek 4: Unified vícemodelová archetype*  
+*Obrázek 4: Sjednocené archetype více modelů*  
 
 Interakce mezi modely je klíč, pokud se nám poskytovat holistický přístup k udržení zákazníků. Každý model nutně sníží, přetrénujte časem; Tato architektura je proto implicitní smyčky (archetype nastavit Standard OSTRÉ-DM dolování dat, podobně jako [***3***]).  
 
@@ -112,7 +111,7 @@ Následující obrázky znázorňují data, která byla použita.
  
 
 > Všimněte si, že tato data jsou privátní a proto není možné model a data sdílet.
-> Ale podobný modelu pomocí veřejně dostupných dat, naleznete v tématu této ukázce experimentovat v [galerii Azure AI](http://gallery.cortanaintelligence.com/): [výpovědí zákazníků Telco](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Ale podobný modelu pomocí veřejně dostupných dat, naleznete v tématu této ukázce experimentovat v [galerii Azure AI](http://gallery.cortanaintelligence.com/): [Výpovědi zákazníků](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Další informace o implementace modelu analysis změn pomocí Cortana Intelligence Suite, doporučujeme také [toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) tak Tok Hyong praco vedoucí manažer programu. 
 > 
@@ -175,7 +174,7 @@ Následující graf zobrazí nezpracované výsledky vyhodnocování pomocí pro
 
 ![][9]
 
-*Obrázek 11: Posíleného rozhodovacího stromu modelu vlastnosti*
+*Obrázek 11: Vlastnosti model posíleného rozhodovacího stromu*
 
 ## <a name="performance-comparison"></a>Porovnání výkonu
 Porovnání jsme rychlost, jakou se data za použití modelů Machine Learning Studio a srovnatelné model vytvořený pomocí klasické pracovní plochy edice SAS Enterprise Miner 12.1.  
@@ -217,13 +216,13 @@ Tento dokument popisuje rozumné přístup k řešení běžných problémů vý
  
 
 ## <a name="references"></a>Odkazy
-[1] prediktivní analýzy: nad rámec Predikcí, západ McKnight, informační správy, července/Srpen 2011, p.18 20.  
+[1] prediktivní analýzy: Kromě správy informace Predikcí, západ McKnight, července/Srpen 2011, p.18 20.  
 
-[2] článku na wikipedii: [přesnost](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] článku na wikipedii: [Přesnost](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
 [3] [OSTRÉ DM 1.0: Průvodce krok za krokem dat dolování](http://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Marketing velké objemy dat: upoutat zákazníky efektivněji a posílení hodnoty](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Marketing velké objemy dat: Upoutat zákazníky efektivněji a posílení hodnoty](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
 [5] [Telco změny šablony modelu](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) v [galerii Azure AI](http://gallery.cortanaintelligence.com/) 
  

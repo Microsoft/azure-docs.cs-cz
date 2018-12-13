@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 1e52f199847b9e03eb31da71f1f0577df92d2b51
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 827d3ceac267c78be9740adba6c890460ca3f2e9
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230406"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162983"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Používání úložiště Queue z Pythonu
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -49,7 +49,7 @@ pip install azure-storage-queue
 
 Metody alternativní instalace, najdete [Azure Storage SDK pro Python na Githubu](https://github.com/Azure/azure-storage-python/).
 
-## <a name="how-to-create-a-queue"></a>Postupy: Vytvoření fronty
+## <a name="how-to-create-a-queue"></a>Jak: Vytvoření fronty
 **QueueService** objekt vám umožňuje spolupracovat s frontami. Následující kód vytvoří **QueueService** objektu. Přidejte následující v horní části všechny soubory Pythonu, ve kterém chcete programovému přístupu ke službě Azure Storage:
 
 ```python
@@ -64,14 +64,14 @@ queue_service = QueueService(account_name='myaccount', account_key='mykey')
 queue_service.create_queue('taskqueue')
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Postupy: Vložit zprávu do fronty
+## <a name="how-to-insert-a-message-into-a-queue"></a>Jak: Vložit zprávu do fronty
 Chcete-li vložit zprávu do fronty, použijte **umístit\_zpráva** metoda vytvořit novou zprávu a přidat do fronty.
 
 ```python
 queue_service.put_message('taskqueue', u'Hello World')
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Postupy: Zobrazení náhledu další zprávy
+## <a name="how-to-peek-at-the-next-message"></a>Jak: Zobrazení náhledu další zprávy
 Můžete prohlížet zprávy ve frontě bez odebrání z fronty pomocí volání **Náhled\_zprávy** metody. Ve výchozím nastavení **Náhled\_zprávy** prohlédne do jedné zprávy.
 
 ```python
@@ -80,7 +80,7 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="how-to-dequeue-messages"></a>Postupy: Odstranění z fronty zpráv
+## <a name="how-to-dequeue-messages"></a>Jak: Odstranění z fronty zpráv
 Váš kód odebere zprávu z fronty ve dvou krocích. Při volání **získat\_zprávy**, získáte další zprávu ve frontě ve výchozím nastavení. Zpráva vrácená metodou **získat\_zprávy** stane neviditelnou pro jakýkoli jiný kód přečte zprávy z této fronty. Ve výchozím nastavení tato zpráva zůstává neviditelná po dobu 30 sekund. K dokončení odebrání zprávy z fronty, musíte také zavolat **odstranit\_zpráva**. Tento dvoukrokový proces odebrání zprávy zaručuje, že pokud váš kód se nepodaří zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, jiná instance vašeho kódu můžete získat stejná zpráva a zkuste to znovu. Kód volá **odstranit\_zpráva** hned po zpracování zprávy.
 
 ```python
@@ -100,7 +100,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)        
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Postupy: Změna obsahu zpráv zařazených ve frontě
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Jak: Změna obsahu zpráv zařazených ve frontě
 Podle potřeby můžete změnit obsah zprávy přímo ve frontě. Pokud zpráva představuje pracovní úlohu, mohli byste tuto funkci použít k aktualizaci stavu pracovních úloh. Kód uvedený níže používá **aktualizovat\_zpráva** způsob aktualizace zprávu. Časový limit viditelnosti je nastavena na hodnotu 0, což znamená, okamžitě se zobrazí zpráva a aktualizovat obsah.
 
 ```python
@@ -109,7 +109,7 @@ for message in messages:
     queue_service.update_message('taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Postupy: Získání délky fronty
+## <a name="how-to-get-the-queue-length"></a>Jak: Získání délky fronty
 Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. **Získat\_fronty\_metadat** metoda požádá službu front vrátit metadata o frontě a **approximate_message_count**. Výsledek je pouze přibližná, protože zprávy můžete přidat nebo odebrat po služba fronty jsou reaguje na váš požadavek.
 
 ```python
@@ -117,7 +117,7 @@ metadata = queue_service.get_queue_metadata('taskqueue')
 count = metadata.approximate_message_count
 ```
 
-## <a name="how-to-delete-a-queue"></a>Postupy: Odstranění fronty
+## <a name="how-to-delete-a-queue"></a>Jak: Odstranění fronty
 Chcete-li odstranit frontu se všemi zprávami, které v ní, zavolejte **odstranit\_fronty** metody.
 
 ```python

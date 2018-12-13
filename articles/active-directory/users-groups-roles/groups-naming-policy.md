@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 12/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 3368133dec82d946318a755dc98b068a048b9e83
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243125"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275104"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynucení zásad pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -58,6 +58,7 @@ Doporučujeme použít atributy, které se mají hodnoty pro všechny uživatele
 Zablokované slovo seznamu je čárkou oddělený seznam slovní spojení, která se zablokuje ve skupině názvy a aliasy. Žádné hledání dílčího řetězce probíhají. Přesná shoda mezi název skupiny a jedním nebo více vlastních blokované slova se vyžaduje k aktivaci selhání. Hledání dílčího řetězce se neprovádí, takže uživatelé můžou používat běžná slova jako 'Class', i když je zablokované slovo 'třídy'.
 
 Zablokované slovo seznam pravidel:
+
 - Blokované slova se nerozlišují malá a velká písmena.
 - Když uživatel zadá zablokované slovo jako součást názvu skupiny, se zobrazí chybová zpráva s zablokované slovo.
 - Neexistují žádná omezení znaků na blokovaných slova.
@@ -120,7 +121,7 @@ Pokud se zobrazí výzva k potvrzení přístupu k nedůvěryhodnému úložišt
   
 ### <a name="set-the-naming-policy-and-custom-blocked-words"></a>Nastavte zásady pojmenování a zadejte vlastní slova blokované
 
-1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu.
+1. Nastavte předpony a přípony názvů skupin v Azure AD PowerShellu. Pro funkci tak, aby fungovala správně [GroupName] musí být součástí nastavení.
   
   ````
   $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
@@ -166,6 +167,27 @@ $Settings["CustomBlockedWordsList"] = $BadWords
 $Settings["EnableMSStandardBlockedWords"] = $True
 Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings 
 ````
+
+## <a name="remove-the-naming-policy"></a>Odebrat zásady pojmenování
+
+1. Prázdná skupina název předpon a přípon v Azure AD PowerShell.
+  
+  ````
+  $Setting["PrefixSuffixNamingRequirement"] =""
+  ````
+  
+2. Prázdný vlastní blokované slova. 
+  
+  ````
+  $Setting["CustomBlockedWordsList"]=""
+  ````
+  
+3. Uložte nastavení.
+  
+  ````
+  Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+  ````
+
 
 ## <a name="naming-policy-experiences-across-office-365-apps"></a>Pojmenování zásady prostředí v aplikacích Office 365
 

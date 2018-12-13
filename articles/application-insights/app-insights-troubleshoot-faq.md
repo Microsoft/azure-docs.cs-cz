@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0e934a629edc41ce09cad810b0d3b9b88e36c6d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996521"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323350"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -26,7 +26,7 @@ ms.locfileid: "52996521"
 
 * [Aplikace .NET](app-insights-asp-net-troubleshoot-no-data.md)
 * [Monitorování již spuštěné aplikace](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
-* [Diagnostika Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Diagnostika Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Webová aplikace Java](app-insights-java-troubleshoot.md)
 
 *Můžu získat žádná data ze svého serveru*
@@ -102,7 +102,7 @@ Desktopové aplikace, které vám pomohou při konfiguraci Application Insights 
 Ze serveru webové aplikace:
 
 * Požadavky HTTP
-* [Závislosti](app-insights-asp-net-dependencies.md). Volání: databáze SQL. HTTP volání externích služeb; Azure Cosmos DB, table, úložiště objektů blob a fronty. 
+* [Závislosti](app-insights-asp-net-dependencies.md). Volání: Databáze SQL. HTTP volání externích služeb; Azure Cosmos DB, table, úložiště objektů blob a fronty. 
 * [Výjimky](app-insights-asp-net-exceptions.md) a trasování zásobníku.
 * [Čítače výkonu](app-insights-performance-counters.md) – Pokud používáte [monitorování stavu](app-insights-monitor-performance-live-website-now.md), [monitorování Azure](app-insights-azure-web-apps.md) nebo [Application Insights shromážděná zapisovače](app-insights-java-collectd.md).
 * [Vlastní události a metriky](app-insights-api-custom-events-metrics.md) , že kód.
@@ -118,7 +118,7 @@ Z [klientské webové stránky](app-insights-javascript.md):
 
 Z jiných zdrojů, pokud je konfigurace:
 
-* [Diagnostika Azure](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Diagnostika Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Kontejnery dockeru](app-insights-docker.md)
 * [Import tabulky do analýzy](app-insights-analytics-import.md)
 * [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
@@ -137,8 +137,8 @@ Další informace pro [ASP.NET](app-insights-api-filtering-sampling.md) nebo [Ja
 
 Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Telemetrická data prohlížeče: můžeme shromažďovat IP adresu odesílatele.
-* Server telemetrie: modul The Application Insights shromažďuje IP adresu klienta. Nejsou shromažďovány Pokud `X-Forwarded-For` nastavena.
+* Telemetrická data prohlížeče: Můžeme shromažďovat IP adresu odesílatele.
+* Telemetrie serveru: Modul Application Insights shromažďuje IP adresu klienta. Nejsou shromažďovány Pokud `X-Forwarded-For` nastavena.
 
 Můžete nakonfigurovat `ClientIpHeaderTelemetryInitializer` mají získat IP adresu z jiné záhlaví. U některých systémů, například se přesune na proxy serveru, načtěte nástroj pro vyrovnávání nebo sítěmi CDN, aby `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 

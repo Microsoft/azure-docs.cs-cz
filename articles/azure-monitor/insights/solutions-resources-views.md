@@ -8,18 +8,17 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 3807dcf9ea4625db72b0579e0609641e3aedb088
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6e0bab08e52233d10cff3ec936d024dcbb86d2a6
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845718"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188006"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
@@ -96,9 +95,9 @@ Všechny prostředky Log Analytics, které jsou definované v šabloně Resource
 
 | Verze v pracovním prostoru | Verze API | Dotaz |
 |:---|:---|:---|
-| V1 (starší verze)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = EventLevelName události = chyba  |
-| v2 (upgradovat) | 2015-11-01-preview | Starší verze formátu.  Převést na formát upgradovaný při instalaci.<br> Příklad: Zadejte = EventLevelName události = chyba<br>Převést na: událost &#124; kde EventLevelName == "Chyba"  |
-| v2 (upgradovat) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Event &#124; kde EventLevelName == "Chyba"  |
+| V1 (starší verze)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Typ = EventLevelName události = chyba  |
+| v2 (upgradovat) | 2015-11-01-preview | Starší verze formátu.  Převést na formát upgradovaný při instalaci.<br> Příklad: Typ = EventLevelName události = chyba<br>Převést na: Událost &#124; kde EventLevelName == "Chyba"  |
+| v2 (upgradovat) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Chyba"  |
 
 
 ## <a name="add-the-view-details"></a>Přidáním podrobností o zobrazení

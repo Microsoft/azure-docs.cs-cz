@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 6868b842f22a6d107936fcb1e49c46b0c1f58469
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5e2599c2089cbd9961b54966df5f0f98d6badcce
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345301"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274662"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
@@ -117,8 +117,7 @@ Sledování chování aplikace a výkonu po migraci. Ve spravované instanci ně
 
 Ke snížení rizik migrace, změňte úroveň kompatibility databáze až po monitorování výkonu. Query Store použijte jako ideální nástroj pro získání informací o výkon úloh před a po změně úrovně kompatibility databáze, jak je popsáno v [na novější verzi systému SQL Server během upgradu zachovat výkon, stabilitu](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 
-Jakmile budete na to plně spravovaná platforma, využijte výhody, které jsou poskytovány automaticky jako součást služby SQL Database. Například nemusíte vytvářet zálohy na Managed Instance – služba provádí zálohování za vás automaticky. Je již nutné starat o plánování, provádění a Správa zálohování. Managed Instance poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). Ve verzi public preview je doba uchování pevně sedm dní.
-Kromě toho není nutné starat o nastavení vysoké dostupnosti jako [vysoké dostupnosti](sql-database-high-availability.md) je součástí.
+Jakmile budete na to plně spravovaná platforma, využijte výhody, které jsou poskytovány automaticky jako součást služby SQL Database. Například nemusíte vytvářet zálohy na Managed Instance – služba provádí zálohování za vás automaticky. Je již nutné starat o plánování, provádění a Správa zálohování. Managed Instance poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore). Kromě toho není nutné starat o nastavení vysoké dostupnosti jako [vysoké dostupnosti](sql-database-high-availability.md) je součástí.
 
 K posílení zabezpečení, zvažte použití některé z funkcí, které jsou k dispozici:
 

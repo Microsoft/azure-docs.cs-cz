@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 5f6f3f61b5f7a06ac4056499edfb811780838cdc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd3bcd575e8e0f60d5d8f9640aa7b0ed4935249e
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441873"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273217"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurace výstrah stavu služby s použitím PagerDuty
 
@@ -38,7 +38,7 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 
     a. **Typ integrace**: Microsoft Azure
 
-    b. **Název integrace**: \<název\>
+    b. **Název integrace**: \<Jméno\>
 
     !["Nastavení integrace" v PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -50,15 +50,15 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Vytvořit upozornění PagerDuty pomocí webu Azure Portal
 ### <a name="for-a-new-action-group"></a>Pro nová skupina akcí:
-1. Postupujte podle kroků 1 až 8 v [vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
+1. Postupujte podle kroků 1 až 8 v [vytvořit upozornění na nová skupina akcí oznámení služby stavu s využitím webu Azure portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 1. Definování v seznamu **akce**:
 
-    a. **Typ akce:** *Webhooku*
+    a. **Typ akce:** *Webhook*
 
     b. **Podrobnosti:** PagerDuty **adresu URL integrace** jste uložili dřív.
 
-    c. **Název:** Webhooku pro název, alias nebo identifikátor.
+    c. **Jméno:** Webhook na název, alias nebo identifikátor.
 
 1. Vyberte **Uložit** po dokončení vytvoření výstrahy.
 
@@ -71,16 +71,16 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 
 1. Přidat do seznamu **akce**:
 
-    a. **Typ akce:** *Webhooku*
+    a. **Typ akce:** *Webhook*
 
     b. **Podrobnosti:** PagerDuty **adresu URL integrace** jste uložili dřív.
 
-    c. **Název:** Webhooku pro název, alias nebo identifikátor.
+    c. **Jméno:** Webhook na název, alias nebo identifikátor.
 
 1. Vyberte **Uložit** po dokončení aktualizovat skupinu akcí.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testování vaší integraci webhooků prostřednictvím požadavku HTTP POST
-1. Vytvořte datová část služby stavu, který chcete odeslat. Můžete najít příkladu služby health datová část webhooku v [upozornění protokolů Webhooky Azure aktivity](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
+1. Vytvořte datová část služby stavu, který chcete odeslat. Můžete najít příkladu služby health datová část webhooku v [upozornění protokolů Webhooky Azure aktivity](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 1. Vytvoření požadavku HTTP POST následujícím způsobem:
 
@@ -97,6 +97,6 @@ Tento článek ukazuje, jak nastavit oznámení o stavu služby Azure prostředn
 
 ## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro správu problémů](service-health-alert-webhook-guide.md).
-- Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md). 
+- Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Další informace o [služby oznámení o stavu](../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Další informace o [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+- Další informace o [skupiny akcí](../azure-monitor/platform/action-groups.md).

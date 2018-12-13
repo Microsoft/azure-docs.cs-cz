@@ -9,16 +9,16 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
-ms.custom: mvc
+ms.custom: mvc seodec18
 ms.date: 11/15/2017
-ms.openlocfilehash: 6d1e5951ed8cdd9542463ffc57be81e55e4b9194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
-ms.translationtype: HT
+ms.openlocfilehash: 6b2a21cf50c03c8e44794540074dabf90049bc7c
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629629"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275512"
 ---
-# <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumání služby Azure Time Series Insights
+# <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumat službu Azure Time Series Insights
 V tomto rychlém startu se dozvíte, jak začít s průzkumníkem služby Azure Time Series Insights v bezplatném ukázkovém prostředí. Zjistíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a prohlédnete si klíčové funkce průzkumníka služby Time Series Insights. 
 
 Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o datech a umožňuje rychle ověřit vaše řešení IoT a vyhnout se nákladným prostojům důležitých zařízení, protože pomáhá odhalovat skryté trendy, detekovat anomálie a provádět analýzy původních příčin téměř v reálném čase.  Pokud vytváříte aplikaci, která potřebuje ukládat nebo dotazovat data časových řad, můžete při vývoji využít rozhraní REST API služby Time Series Insights.
@@ -71,7 +71,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure]
 
 Po dokončení tohoto rychlého startu můžete experimentovat s ukázkovou sadou dat a vytvářet různé vizualizace. 
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 Jste připraveni vytvořit vlastní prostředí Time Series Insights:
 > [!div class="nextstepaction"]
 > [Plánování prostředí Time Series Insights](time-series-insights-environment-planning.md)

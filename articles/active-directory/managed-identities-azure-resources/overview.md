@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: daveba
-ms.openlocfilehash: e025d9041358fbb9dee9b64519e012c4c1988024
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 6b1eb36ae661d758f78f98de37f33c4b56741f89
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987256"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53320774"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Co jsou spravované identity prostředků Azure?
 
@@ -34,7 +34,15 @@ Funkce spravovaných identit prostředků Azure je bezplatnou součástí Azure 
 > [!NOTE]
 > Spravované identity prostředků Azure jsou novým názvem služby, která se dříve jmenovala Identita spravované služby (MSI).
 
-## Jak tato funkce funguje?<a name="how-does-it-work"></a>
+## <a name="terminology"></a>Terminologie
+
+V rámci spravovaných identit pro prostředky Azure dokumentaci sady se používají následující termíny:
+
+- **Id klienta** – jedinečný identifikátor generovaný aplikací Azure AD, která se váže k instančnímu objektu služby a aplikace během počátečního zřízení.
+- **Id objektu zabezpečení** – id objektu instanční objekt pro vaši spravovanou identitu, která se používá k udělení přístupu na základě role k prostředku Azure.
+- **Azure Instance Metadata služby (IMDS)** – koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. Koncový bod je k dispozici na dobře známé nesměrovatelných IP adrese (169.254.169.254), který je přístupný pouze z v rámci virtuálního počítače.
+
+## Jak funguje spravovaných identit pro prostředky Azure?<a name="how-does-it-work"></a>
 
 Existují dva typy spravovaných identit:
 
@@ -126,7 +134,7 @@ Informace o použití spravované identity s dalšími službami Azure:
 
 Spravované identity prostředků Azure můžete použít k ověřování ve službách, které podporují ověřování Azure AD. Seznam služeb Azure, které podporují funkci spravovaných identit prostředků Azure, najdete v článku o [službách podporujících spravované identity prostředků Azure](services-support-msi.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat funkci spravovaných identit prostředků Azure, projděte si následující články Rychlý start:
 

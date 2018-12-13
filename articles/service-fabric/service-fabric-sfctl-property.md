@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: f24d273afa47466fe53b93d9c9c22bbcb1fc6959
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 78c04abeea1fdc4771f44d44b973ca0dcd2922ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493515"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274985"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Vlastnosti v Service Fabric názvy Store a dotazu.
@@ -30,7 +30,7 @@ Vlastnosti v Service Fabric názvy Store a dotazu.
 | --- | --- |
 | delete | Odstraní zadanou vlastnost Service Fabric. |
 | získat | Získá zadanou vlastnost Service Fabric. |
-| Seznam | Získá informace o všech vlastnostech Service Fabric s daným názvem. |
+| list | Získá informace o všech vlastnostech Service Fabric s daným názvem. |
 | Vložit | Vytvoří nebo aktualizuje vlastnosti Service Fabric. |
 
 ## <a name="sfctl-property-delete"></a>sfctl vlastnost delete

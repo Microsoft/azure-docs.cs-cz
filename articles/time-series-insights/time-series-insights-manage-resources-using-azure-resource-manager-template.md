@@ -1,5 +1,5 @@
 ---
-title: Správa prostředí Azure Time Series Insights pomocí šablon Azure Resource Manageru | Dokumentace Microsoftu
+title: Správa šablon Azure Time Series Insights – jak spravovat prostředí Azure Time Series Insights pomocí šablon Azure Resource Manageru | Dokumentace Microsoftu
 description: Tento článek popisuje, jak spravovat prostředí Azure Time Series Insights prostřednictvím kódu programu pomocí Azure Resource Manageru.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: 70f82c19bced7618027379fcf9451348ac2591eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627123"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270616"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Vytvořit prostředky služby Time Series Insights pomocí šablon Azure Resource Manageru
 
@@ -91,7 +92,7 @@ Chcete-li vytvořit soubor parametrů, zkopírujte [201-timeseriesinsights prost
    | --- | --- |
    | eventHubNamespaceName | Obor názvů centra událostí, zdroje. |
    | eventHubName | Název centra událostí zdroje. |
-   | Název | Název skupiny příjemců, který bude služba Time Series Insights používat ke čtení dat z centra událostí. **Poznámka:** předejít sporu prostředků, musí tuto skupinu příjemců vyhrazená pro služby Time Series Insights a neměly by být sdíleny s jinými čtenáři. |
+   | Název | Název skupiny příjemců, který bude služba Time Series Insights používat ke čtení dat z centra událostí. **POZNÁMKA:** Předejít sporu prostředků, musí tuto skupinu příjemců vyhrazená pro služby Time Series Insights a neměly by být sdíleny s jinými čtenáři. |
    | EnvironmentName | Název prostředí. Název nesmí obsahovat: "<", ">", "%", "&", ":","\\','?', '/' a žádné řídicí znaky. Všechny ostatní znaky jsou povolené.|
    | eventSourceName | Název prostředku podřízený zdroj událostí. Název nesmí obsahovat: "<", ">", "%", "&", ":","\\','?', '/' a žádné řídicí znaky. Všechny ostatní znaky jsou povolené. |
 
@@ -99,7 +100,7 @@ Chcete-li vytvořit soubor parametrů, zkopírujte [201-timeseriesinsights prost
 
    | Parametr | Popis |
    | --- | --- |
-   | existingEventHubResourceId | Volitelné resource ID existující centrum událostí, které budou připojeny k prostředí Time Series Insights prostřednictvím zdroje událostí. **Poznámka:** uživatel nasazení šablony musí mít oprávnění k provedení této operace klíče listkey v Centru událostí. Pokud není předána žádná hodnota, vytvoří se nové Centrum událostí pomocí šablony. |
+   | existingEventHubResourceId | Volitelné resource ID existující centrum událostí, které budou připojeny k prostředí Time Series Insights prostřednictvím zdroje událostí. **POZNÁMKA:** Uživatel nasazení šablony musí mít oprávnění k provedení této operace klíče listkey v Centru událostí. Pokud není předána žádná hodnota, vytvoří se nové Centrum událostí pomocí šablony. |
    | environmentDisplayName | Volitelný popisný název pro zobrazení v nástroji nebo uživatelské rozhraní místo názvu prostředí. |
    | environmentSkuName | Název sku. Další informace najdete v tématu [stránce s cenami čas Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
    | environmentSkuCapacity | Kapacita jednotek SKU. Další informace najdete v tématu [stránce s cenami čas Series Insights](https://azure.microsoft.com/pricing/details/time-series-insights/).|

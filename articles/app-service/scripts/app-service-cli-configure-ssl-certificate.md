@@ -4,7 +4,7 @@ description: Ukázkový skript Azure CLI – Vazba vlastního certifikátu SSL n
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 13651663c7934cf7e065eb1ee27d14a7b59fd1ff
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: msangapu
+ms.custom: seodec18
+ms.openlocfilehash: bf9e0373e0e74b0d694e02c40857a5381a780a0e
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983816"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186534"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app"></a>Vazba vlastního certifikátu SSL na webovou aplikaci
+# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-cli"></a>Vazba vlastního certifikátu SSL na webovou aplikaci pomocí rozhraní příkazového řádku
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak k ní vytvoří vazbu certifikátu SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
 
@@ -55,7 +55,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Nahraje do webové aplikace certifikát SSL. |
 | [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Vytvoří vazbu nahraného certifikátu SSL na webovou aplikaci. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 0176cc5688f7210d5e444b094b360bb1e7df1e7c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4701143a24fdf89b1c61744a9661fffdbb61ed3
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136402"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278045"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -102,7 +100,7 @@ Všechny akce mají vlastnosti v následující tabulce.  Různé typy výstrah 
 ### <a name="retrieving-actions"></a>Načítají se akce
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Pomocí metody Get pro načtení všech akcí pro plán.
 
@@ -125,7 +123,7 @@ Formát požadavku pro vytvoření nové akce se liší podle typu akce, takže 
 ### <a name="deleting-actions"></a>Odstraňuje se akce
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Použijte metodu Delete s ID akce pro akci odstranit.
 
@@ -146,7 +144,7 @@ Plán by měl mít jeden a pouze jeden akce upozornění.  Akce upozornění maj
 | Akce Webhooku | Zápis dat z výstrah, k požadované službě jako JSON. |Není vyžadována, pokud se upozornění rozšíří do Azure|
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md).
 
 #### <a name="thresholds"></a>Mezní hodnoty
 Akci upozornění by měl mít jeden a pouze jeden prahovou hodnotu.  Když výsledky uložené výsledky hledání odpovídají prahovou hodnotu v akce přidružené k danému hledání, jsou spuštěny žádné další procesy v této akci.  Akce může také obsahovat pouze mezní hodnotu tak, že je možné s akcemi jiných typů, které neobsahují slovo prahové hodnoty.
@@ -249,7 +247,7 @@ Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.
 #### <a name="action-groups"></a>Skupiny akcí
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 
 
-Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) portálu nebo pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Přidat přidružení skupiny akcí na výstrahu, zadejte jedinečné ID Azure Resource Manageru skupiny akcí v definici upozornění. Obrázek ukázky jsou uvedeny níže:
 
@@ -285,7 +283,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
 Výchozí akcí postupujte podle standardní šablony a formát pro oznámení. Ale může uživatel přizpůsobit některé akce, i když jsou ovládány skupin akcí. V současné době je možné, předmět e-mailu a datová část Webhooku vlastní nastavení.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobit předmět e-mailu pro skupinu akcí
-Ve výchozím nastavení, je předmět e-mailu pro výstrahy: oznámení výstrah <AlertName> pro <WorkspaceName>. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
+Ve výchozím nastavení je předmět e-mailu pro výstrahy: Oznámení o upozornění <AlertName> pro <WorkspaceName>. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -317,7 +315,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Vlastní datová část Webhooku pro skupinu akcí
-Ve výchozím nastavení má webhooku odeslaná pomocí skupiny akcí pro log analytics pevnou strukturu. Ale jeden přizpůsobit datovou část JSON s použitím konkrétní proměnné, které jsou podporované pro splnění požadavků na koncový bod webhooku. Další informace najdete v tématu [akce Webhooku pro pravidla upozornění protokolů](../../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md). 
+Ve výchozím nastavení má webhooku odeslaná pomocí skupiny akcí pro log analytics pevnou strukturu. Ale jeden přizpůsobit datovou část JSON s použitím konkrétní proměnné, které jsou podporované pro splnění požadavků na koncový bod webhooku. Další informace najdete v tématu [akce Webhooku pro pravidla upozornění protokolů](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 Podrobnosti o vlastní webhooku nemusejí odeslat spolu s podrobnostmi skupina akcí a použít na všechny Webhooku URI zadat v rámci skupiny akcí; stejně jako v následující ukázce.
 
@@ -355,7 +353,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
 E-mailová oznámení odeslat poštu na jeden nebo více příjemcům.  Patří mezi ně vlastnosti v následující tabulce.
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou řízeny v skupiny akcí Azure nyní akce, jako je e-mailové oznámení. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou řízeny v skupiny akcí Azure nyní akce, jako je e-mailové oznámení. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
    
 
 | Vlastnost | Popis |
@@ -399,7 +397,7 @@ Použijte metodu Put se existující ID akce upravit e-mailové akce pro plán. 
 Nápravy spuštění runbooku ve službě Azure Automation, která se pokusí o odstranění problému identifikovaného výstrahou.  Musíte vytvořit webhook pro runbook používá v rámci nápravné akce a potom zadejte identifikátor URI ve vlastnosti WebhookUri.  Když vytvoříte tuto akci pomocí webu Azure portal, se automaticky vytvoří nový webhook pro runbook.
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou nyní akce, jako je náprava runbooku provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou nyní akce, jako je náprava runbooku provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Nápravy zahrnují vlastnosti v následující tabulce.
 
@@ -458,7 +456,7 @@ Následuje Úplný příklad k vytvoření nového e-mailové upozornění.  Tí
 Akce Webhooku spuštění procesu pomocí volání adresy URL a volitelně poskytuje datovou část, která je k odeslání.  Když se podobají nápravné akce, s výjimkou jsou určeny pro webhooky, které mohou vyvolat procesy než runbooky Azure Automation.  Obsahují taky další možnost poskytnout datovou část, která bude doručen do vzdáleného procesu.
 
 > [!NOTE]
-> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou akce, jako je Webhook teď provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+> Od 14. května 2018, se automaticky rozšíří všechna upozornění v instanci pracovního prostoru Log Analytics na veřejném cloudu Azure do Azure. Uživatel můžete odpojit zahájit rozšiřování upozornění do Azure před 14. května 2018. Další informace najdete v tématu [upozornění rozšířit do Azure od Log Analytics](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou akce, jako je Webhook teď provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 
 Akce Webhooku nemáte prahovou hodnotu, ale místo toho měla být přidána do plánu, který má akci upozornění s prahovou hodnotou.  
@@ -512,5 +510,5 @@ Použijte metodu Put se existující ID akce k úpravě akce webhooku pro plán.
 
 ## <a name="next-steps"></a>Další postup
 * Použití [rozhraní REST API k provedení prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
-* Další informace o [upozornění protokolů ve výstrahách azure](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
+* Další informace o [upozornění protokolů ve výstrahách azure](../../azure-monitor/platform/alerts-unified-log.md)
 

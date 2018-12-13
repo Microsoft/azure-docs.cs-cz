@@ -1,6 +1,6 @@
 ---
-title: Indexování objektů BLOB JSON pomocí indexeru Azure Search blob
-description: Indexování objektů BLOB JSON pomocí indexeru Azure Search blob
+title: Indexování objektů BLOB JSON z objektů Blob v Azure indexeru pro fulltextové vyhledávání – Azure Search
+description: Procházení objektů BLOB Azure JSON pro textový obsah pomocí indexeru Azure Search Blob. Indexery můžete automatizovat příjem dat pro vybrané zdroje dat jako úložiště objektů Blob v Azure.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec2018
+ms.openlocfilehash: 7eb215271a8d5d21403cc7c5a49028bb366e61fd
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711068"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312523"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB JSON pomocí indexeru Azure Search blob
 V tomto článku se dozvíte, jak nakonfigurovat indexer Azure Search blob k extrakci Strukturovaný obsah z objektů BLOB JSON ve službě Azure Blob storage.
@@ -186,7 +187,7 @@ Jednotlivá pole prvků lze také odkazovat pomocí index založený na nule. Na
 >
 >
 
-## <a name="example-indexer-request-with-field-mappings"></a>Příklad: Požadavek Indexer s mapování polí
+## <a name="example-indexer-request-with-field-mappings"></a>Příklad: Indexer požadavek s mapování polí
 
 V následujícím příkladu je plně zadaný indexer datovou část, včetně mapování polí:
 

@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -16,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: b0494a9da422b7c0effc14ff4188d3a5b20b8e9d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 57561c9841297b7ea2991bda1e94065a854597cd
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081927"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269409"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning Studio
 
 Toto téma popisuje, jak zvolit správný hyperparameter nastavení pro algoritmus ve službě Azure Machine Learning. Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 Existují různé způsoby, jak modelu výběru. Ve službě machine learning, křížového ověření je jedním z nejpoužívanějších metody pro výběr modelu a je mechanismus výběru výchozí model v Azure Machine Learning. Protože Azure Machine Learning podporuje R a Python, můžete vždy implementovat vlastní mechanismus výběru modelu pomocí R nebo Python.
 
 Probíhá hledání sady nejlepší čtyři kroky:
 
-1. **Definování prostor parametr**: pro algoritmus, nejdřív se rozhodněte, parametr přesné hodnoty, které chcete vezměte v úvahu.
+1. **Definování prostor parametr**: Pro algoritmus nejdřív se rozhodněte, přesné parametr hodnoty, které se mají zvážit.
 2. **Definujte nastavení křížového ověření**: Rozhodněte, jak zvolit přeložení křížového ověření datové sady.
 3. **Definování metriky**: Rozhodněte, jaké metriky pro určení nejlepší sadu parametrů, jako jsou správnost, střední kořenové spolehlivosti chyba, přesnosti, odvolání nebo f skóre.
-4. **Školení, vyhodnocení a porovnat**: pro každou jedinečnou kombinaci hodnot parametrů křížového ověřování prováděné a na základě metriky chyba definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
+4. **Školení, vyhodnocení a porovnat**: Pro každou jedinečnou kombinaci hodnot parametrů je křížového ověřování prováděné a na základě chybové metriky, které definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
 
 Ukazuje, jak jde tohoto dosáhnout v Azure Machine Learning je znázorněný na následujícím obrázku.
 
 ![Najít nejlepší sadu parametrů](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>Definování prostor parametr
-Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podokno parametr všechny algoritmy strojového učení má dva režimy trainer: *jediný parametr* a *parametr rozsahu*. Zvolte režim oblasti parametrů. V režimu parametr rozsahu můžete zadat více hodnot pro každý parametr. V textovém poli můžete zadat hodnoty oddělené čárkami.
+Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podokno parametr algoritmů strojového učení všechny má dva režimy trainer: *Jeden parametr* a *parametr rozsahu*. Zvolte režim oblasti parametrů. V režimu parametr rozsahu můžete zadat více hodnot pro každý parametr. V textovém poli můžete zadat hodnoty oddělené čárkami.
 
 ![Dvěma třídami posíleného rozhodovacího stromu, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 

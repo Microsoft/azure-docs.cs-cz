@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k nasazení pro Azure web apps | Dokumentace Microsoftu
+title: Nasazení – nejčastější dotazy služby Azure App Service | Dokumentace Microsoftu
 description: Získejte odpovědi na nejčastější dotazy týkající se nasazení pro funkci Web Apps služby Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: b38291df576d1dbd180f741659dbc379ca006d8e
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.custom: seodec18
+ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748438"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262108"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
@@ -39,7 +40,7 @@ Další informace najdete v tématu [nasazení aplikace do služby App Service](
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Při pokusu nasadit ze sady Visual Studio se zobrazit chybová zpráva. Jak to můžu vyřešit?
 
-Pokud se zobrazí následující zpráva, pravděpodobně používáte starší verzi sady SDK: "při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: předplatné není zaregistrované pro Typ prostředku "součástí" umístění "USA". Přeregistrujte prosím tohoto zprostředkovatele. Pokud chcete mít přístup do tohoto umístění." 
+Pokud se zobrazí následující zpráva, pravděpodobně používáte starší verzi sady SDK: "Při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: Předplatné není zaregistrované pro typ prostředku "součástí" umístění "USA". Přeregistrujte prosím tohoto zprostředkovatele. Pokud chcete mít přístup do tohoto umístění." 
 
 Pokud chcete tuto chybu vyřešit, upgradujte [nejnovější sadu SDK](https://azure.microsoft.com/downloads/). Pokud se zobrazí tato zpráva a máte nejnovější sadu SDK, odešlete žádost o podporu.
 

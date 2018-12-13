@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 01ba8b6d9ebef5d79b660638d60d5b745c624786
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725382"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271721"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 Můžete automatizovat konfiguraci [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
 
-Kromě toho můžete [nastavit webhooky automatizovat reakce na výstrahy](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Kromě toho můžete [nastavit webhooky automatizovat reakce na výstrahy](../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Pokud chcete vytvářet prostředky a výstrahy ve stejnou dobu, vezměte v úvahu [pomocí šablony Azure Resource Manageru](app-insights-powershell.md).
@@ -107,10 +107,10 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](a
 | `clientPerformance.sendRequest.value` |Čas odeslání žádosti |Doba, za kterou prohlížeč odešlete žádost. |
 | `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků |
 | `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzická paměť k dispozici pro proces nebo pro použití systémem. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence v/v procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
+| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence V/V procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |frekvence výjimek |Výjimek vyvolaných za sekundu. |
 | `performanceCounter.percentage_processor_time.value` |Proces – procesor |Procentuální hodnotu uplynulého času všechny podprocesy procesu používají procesor pro spouštění instrukcí pro proces aplikace. |
-| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech. |
+| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech |
 | `performanceCounter.process_private_bytes.value` |Privátní bajty procesu |Paměť exkluzivně přiřazená k procesům monitorované aplikace |
 | `performanceCounter.request_execution_time.value` |Doba provádění požadavku ASP.NET |Doba provádění nejnovější žádosti |
 | `performanceCounter.requests_in_application_queue.value` |Požadavky ASP.NET ve frontě na spuštění |Délka fronty žádostí na aplikace |
@@ -132,10 +132,10 @@ Metriky odesílá telemetrická data různých modulů:
 | žádost<br/>requestFailed |[Žádost serveru](app-insights-configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooky
-Je možné [automatizovat reakce na výstrahy](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Azure bude volat webovou adresu podle vašeho výběru, pokud je vyvolána výstraha.
+Je možné [automatizovat reakce na výstrahy](../azure-monitor/platform/alerts-webhooks.md). Azure bude volat webovou adresu podle vašeho výběru, pokud je vyvolána výstraha.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Skript pro konfiguraci Application Insights](app-insights-powershell-script-create-resource.md)
 * [Vytvořit Application Insights a webových testů prostředků ze šablony](app-insights-powershell.md)
 * [Automatizace párování Microsoft Azure Diagnostics do Application Insights](app-insights-powershell-azure-diagnostics.md)
-* [Automatizovat reakce na výstrahy](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+* [Automatizovat reakce na výstrahy](../azure-monitor/platform/alerts-webhooks.md)

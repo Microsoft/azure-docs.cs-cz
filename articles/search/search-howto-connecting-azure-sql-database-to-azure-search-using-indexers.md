@@ -1,6 +1,6 @@
 ---
-title: Připojení k Azure Search pomocí indexerů Azure SQL Database | Dokumentace Microsoftu
-description: Zjistěte, jak načítat data z Azure SQL Database do indexu Azure Search pomocí indexerů.
+title: Připojení a indexování Azure SQL Database obsahu pomocí indexerů – Azure Search
+description: Zjistěte, jak k procházení dat ve službě Azure SQL Database pro fulltextové vyhledávání ve službě Azure Search pomocí indexerů. Tento článek se týká připojení, konfigurace indexeru a přijímat data.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,14 +9,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: ba2ce12fcfad14b0910144b1a95efd44be54811f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec2018
+ms.openlocfilehash: 28b72f63360b4ce323c1cd82b11c2798b1fbc2ff
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245643"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53313390"
 ---
-# <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Připojte se k a indexování Azure SQL Database obsahu pomocí indexerů Azure Search
 
 Předtím, než můžete zadávat dotazy [index Azure Search](search-what-is-an-index.md), je nutné ho naplnit svými daty. Pokud se data nacházejí ve službě Azure SQL database **indexeru Azure Search pro službu Azure SQL Database** (nebo **indexer pro Azure SQL** zkráceně) můžete automatizovat proces indexování, což znamená, že menší kód pro zápis a méně Infrastruktura o kterého vám jde.
 
@@ -34,7 +35,7 @@ A **zdroj dat** Určuje, jaká data do indexu, přihlašovací údaje pro přís
 * Aktualizace indexu se změnami ve zdroji dat podle plánu.
 * Spouštět na vyžádání na aktualizace indexu, podle potřeby.
 
-Jeden indexer může využívat pouze jednu tabulku nebo zobrazení, ale pokud chcete naplnit pole více vyhledávacích indexů, můžete vytvořit několik indexerů. Další informace o konceptech najdete v tématu [operace indexeru: obvyklý pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Jeden indexer může využívat pouze jednu tabulku nebo zobrazení, ale pokud chcete naplnit pole více vyhledávacích indexů, můžete vytvořit několik indexerů. Další informace o konceptech najdete v tématu [operace indexeru: Typický pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Můžete nastavit a nakonfigurovat indexer Azure SQL pomocí:
 
@@ -314,31 +315,31 @@ Tato nastavení se používají v `parameters.configuration` objektu v definice 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Otázka: Mohu použít indexer pro Azure SQL s SQL Database běžící na virtuálních počítačích IaaS v Azure?**
+**DOTAZ: Můžete použít indexer pro Azure SQL s SQL Database běžící na virtuálních počítačích IaaS v Azure?**
 
 Ano. Ale budete muset povolit vaší vyhledávací služby pro připojení k vaší databázi. Další informace najdete v tématu [konfigurace připojení indexeru Azure Search k systému SQL Server na Virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**Otázka: Mohu použít indexer pro Azure SQL s databází SQL, které jsou spuštěné místně?**
+**DOTAZ: Můžete použít indexer pro Azure SQL s databází SQL, které jsou spuštěné místně?**
 
 Ne přímo. Společnost Microsoft nedoporučuje ani nepodporuje přímé připojení, jako to uděláte tak by vyžadovalo otevření databází pro provoz sítě Internet. Zákazníci mají proběhlo úspěšně, v tomto scénáři použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [vložení dat do indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**Otázka: Mohu použít indexer pro Azure SQL s databázemi než SQL Server běžící na IaaS v Azure?**
+**DOTAZ: Můžete použít indexer pro Azure SQL s databázemi než SQL Server běžící na IaaS v Azure?**
 
 Ne. Nepodporujeme tento scénář, protože nebyly testovány indexeru se žádné databáze než SQL Server.  
 
-**Dotaz: lze vytvořit několik indexerů spouštění podle plánu?**
+**DOTAZ: Můžete vytvořit několik indexerů spouštění podle plánu?**
 
 Ano. Nicméně pouze indexerů může běžet na jednom uzlu najednou. Pokud budete potřebovat několik indexerů, které jsou spuštěny souběžně, zvažte možnost škálování služby vyhledávání pro více než jedna jednotka služby search.
 
-**Otázka se spuštění indexeru vliv dotazu úlohy?**
+**DOTAZ: Spuštění indexeru dotazu úlohy ovlivní?**
 
 Ano. Spuštění indexeru na jednom z uzlů ve vaší vyhledávací služby a prostředky daného uzlu jsou sdílené mezi indexování a obsluhující provoz dotazu a další požadavky rozhraní API. Pokud spuštění úlohy náročné na indexování a dotazování a dojde k vysoké rychlosti 503 chyby nebo zvýšení doby odezvy, zvažte [vertikálně kapacitu vaší služby search](search-capacity-planning.md).
 
-**Dotaz: lze použít v sekundární replice [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
+**DOTAZ: Můžete použít v sekundární replice [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
 
 To záleží na okolnostech. Pro úplné indexování tabulky nebo zobrazení, můžete použít na sekundární repliku. 
 
-Přírůstkové indexování podporuje Azure Search, dvě zásady detekce změn: změnit SQL integrované sledování a vysoká označuje jako horní mez.
+Azure Search pro přírůstkové indexování podporuje dvě zásady detekce změn: S integrací SQL je sledování změn a vysoce mezí.
 
 Na repliky jen pro čtení SQL database nepodporuje sledování integrované změn. Proto musíte použít zásad vysoce mezí. 
 
@@ -348,7 +349,7 @@ Pokud se pokusíte použít rowversion repliky jen pro čtení, zobrazí se nás
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**Otázka: Mohu použít alternativní, sloupci bez rowversion pro sledování změn jako horní mez vysoce?**
+**DOTAZ: Můžete použít alternativní, sloupci bez rowversion pro vysoce mezí change tracking**
 
 Není doporučeno. Pouze **rowversion** umožňuje synchronizaci dat spolehlivé. Nicméně, v závislosti na vaší aplikace logiky může být bezpečné pokud:
 

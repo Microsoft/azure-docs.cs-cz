@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 869293076f79a73ccc8354aea9a46fbefd746952
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 5dcc8f497a8498b41e6ff7e802fc6e3d80935505
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100391"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53274866"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Zjišťování a sdílení kurzy v galerii Azure AI
 
@@ -77,5 +76,5 @@ Tento kurz je nyní v galerii Azure AI. Vaše kurzy jsou uvedené na stránce sv
 
 **[Přejít do Galerie](http://gallery.cortanaintelligence.com)**
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 

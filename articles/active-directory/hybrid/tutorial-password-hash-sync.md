@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace jedné doménové struktury AD do Azure s využitím synchronizace hodnot hash hesel (PHS) | Dokumentace Microsoftu'
+title: 'Kurz:  Integrace jedné doménové struktury AD do Azure s využitím synchronizace hodnot hash hesel (PHS) | Dokumentace Microsoftu'
 description: Ukazuje, jak nastavit prostředí hybridní identity pomocí synchronizace hodnot hash hesel.
 services: active-directory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: a8dfe39dc3d32ca96d6252bac96a2e7abc09eee5
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426906"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164690"
 ---
-# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz: Integrace jednu doménovou strukturu AD pomocí synchronizace hodnot hash hesel (PHS)
+# <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz:  Integrace jedné doménové struktury AD s využitím synchronizace hodnot hash hesel (PHS)
 
 ![Vytvořit](media/tutorial-password-hash-sync/diagram.png)
 
@@ -81,7 +81,7 @@ Pokud chcete dokončit vytváření virtuálního počítače, je potřeba dokon
 5. Klikněte na tlačítko **nainstalovat**.
 6. Zadejte klíč licence a klikněte na tlačítko **Další**.
 7. Zkontrolujte ** Přijímám licenční podmínky a klikněte na tlačítko **Další**.
-8. Vyberte **vlastní: instalovat pouze Windows (rozšířené)**
+8. Vyberte **vlastní:  Instalovat pouze Windows (rozšířené)**
 9. Klikněte na **Další**
 10. Po dokončení instalace restartujte virtuální počítač, přihlášení a spuštění aktualizací Windows k zajištění, že je virtuální počítač nejnovější.  Nainstalujte nejnovější aktualizace.
 
@@ -192,7 +192,7 @@ Když teď máme tenanta služby Azure AD, vytvoříme účet globálního sprá
 1.  V části **Spravovat** vyberte **Uživatele**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Vyberte **všichni uživatelé** a pak vyberte **+ nový uživatel**.
-3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Jakmile budete hotovi, vyberte **vytvořit**.</br>
+3.  Zadejte název a uživatelské jméno pro tohoto uživatele. To bude globální správce pro tenanta. Budete také chtít změnit **role adresáře** k **globálního správce.** Můžete také zobrazit dočasné heslo. Až to budete mít, vyberte **Vytvořit**.</br>
 ![Vytvoření](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Po dokončení, otevřete nový webový prohlížeč a přihlaste se do myapps.microsoft.com pomocí nového účtu globálního správce a dočasné heslo.
 5. Změňte heslo pro globálního správce a něco, co si budou pamatovat.
@@ -205,8 +205,8 @@ Nyní je čas ke stažení a instalaci Azure AD Connect.  Po jeho instalaci prov
 3. Na uvítací obrazovce zaškrtněte políčko, kterým odsouhlasíte licenční podmínky, a klikněte na **Pokračovat**.  
 4. Na obrazovce expresního nastavení klikněte na **Použít expresní nastavení**.</br>  
 ![Vytvoření](media/tutorial-password-hash-sync/express1.png)</br>
-5. Na obrazovce připojení ke službě Azure AD zadejte uživatelské jméno a heslo globálního správce pro službu Azure AD. Klikněte na **Další**.  
-6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na **Další**.  
+5. Na obrazovce připojení ke službě Azure AD zadejte uživatelské jméno a heslo globálního správce pro službu Azure AD. Klikněte na tlačítko **Další**.  
+6. Na obrazovce Připojení ke službě AD DS zadejte uživatelské jméno a heslo pro účet správce podnikové sítě. Klikněte na tlačítko **Další**.  
 7. Na obrazovce Připraveno ke konfiguraci klikněte na **Instalovat**.
 8. Až instalace skončí, klikněte na **Konec**.
 9. Po dokončení instalace se odhlaste a znovu se přihlaste teprve pak použijte Synchronization Service Manager nebo Synchronization Rule Editor.

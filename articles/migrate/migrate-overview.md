@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 98ff54bcfe67d79d8c15da666aad0bebfe48f6e0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fcf26b8a5eff407d6dde092ae645084fb20a14a8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839730"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250566"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -22,10 +22,10 @@ Služba Azure Migrate posuzuje místní úlohy pro migraci do Azure. Služba pos
 
 Azure Migrate vám pomůže s následujícími úlohami:
 
-- **Posouzení připravenosti pro Azure:** Posuďte, jestli jsou vaše místní počítače vhodné pro provoz v Azure.
-- **Získání doporučení týkajících se velikosti:** Získejte doporučení k velikosti pro virtuální počítače Azure na základě historie výkonu místních virtuálních počítačů.
-- **Odhadované měsíční náklady:** Získejte odhadované náklady na provoz místních počítačů v Azure.  
-- **Migrace s větší jistotou:** Vizualizací závislostí místních počítačů můžete vytvářet skupiny počítačů, které budete posuzovat a migrovat společně.
+- **Posouzení připravenosti pro Azure**: Vyhodnoťte, jestli vaše místní počítače jsou vhodné pro spuštění v Azure.
+- **Získejte doporučení k velikosti**: Získejte doporučení k velikosti pro virtuální počítače Azure na základě historie výkonu místních virtuálních počítačů.
+- **Odhadované měsíční náklady**: Získejte odhadované náklady na provoz místních počítačů v Azure.  
+- **Migrace s větší jistotou**: Vizualizace závislostí místních počítačů k vytváření skupin počítačů, které budete posuzovat a migrovat společně.
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
@@ -34,10 +34,14 @@ Azure Migrate vám pomůže s následujícími úlohami:
 - Je možné vyhledat až 1 500 virtuálních počítačů v rámci jednoho zjišťování a až 1 500 virtuálních počítačů v jednom projektu. Kromě toho můžete v rámci jednoho interního hodnocení vyhodnotit až 1 500 virtuálních počítačů.
 - Pokud chcete provést zjišťování u velkého prostředí, můžete zjišťování rozdělit a vytvořit několik projektů. [Další informace](how-to-scale-assessment.md). Azure Migrate podporuje až 20 projektů na jedno předplatné.
 - Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
--  Projekt Azure Migrate můžete vytvořit pouze v zeměpisné oblasti USA. Přesto ale můžete naplánovat migraci do libovolného cílového umístění Azure.
-    - V oblasti projektu migrace se ukládají pouze metadata zjištěná v místním prostředí.
-    - Metadata jsou uložena v jedné oblasti ve vybrané zeměpisné oblasti: západní střed USA a východní USA.
-    - Pokud můžete použít vizualizaci závislostí, tak, že vytvoříte nový pracovní prostor Log Analytics, vytvoří se pracovní prostor ve stejné oblasti jako projekt.
+-  Projekt Azure Migrate můžete vytvořit pouze v následujících zeměpisných oblastech. Ale to vás neomezuje vaše schopnost vytvořit posouzení pro jiné cílové umístění Azure.
+    **Zeměpisné oblasti** | **Umístění úložiště**
+    --- | ---
+    Sjednotí stavy | Střed USA – západ nebo USA – východ
+    Azure Government | USA (Gov) – Virginia
+
+    Zeměpisné oblasti přidružené k projektu migrace slouží k uložení metadat zjištěných v místním prostředí. Metadata jsou uložena v oblastech podle zeměpisné oblasti vybrané pro tento projekt migrace. Pokud můžete použít vizualizaci závislostí, tak, že vytvoříte nový pracovní prostor Log Analytics, vytvoří se pracovní prostor ve stejné oblasti jako projekt.
+- Funkce vizualizace závislostí není k dispozici ve službě Azure Government.
 
 
 ## <a name="what-do-i-need-to-pay-for"></a>Za co musím platit?
@@ -93,8 +97,8 @@ Místní virtuální počítač | Pracovní prostor Log Analytics | [TCP 443] | 
 
 Po posouzení místních počítačů můžete provést migraci pomocí několika nástrojů:
 
-- **Azure Site Recovery:** K migraci do Azure můžete použít Azure Site Recovery. Provedete to tak, že si nejprve [připravíte potřebné komponenty Azure](../site-recovery/tutorial-prepare-azure.md), včetně účtu úložiště a virtuální sítě. V místním prostředí si [připravíte prostředí VMware](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Jakmile bude vše připravené, nastavíte a povolíte replikaci do Azure a provedete migraci virtuálních počítačů. [Další informace](../site-recovery/vmware-azure-tutorial.md).
-- **Azure Database Migration:** Pokud na místních počítačích běží databáze, jako je SQL Server, MySQL nebo Oracle, pomocí služby [Azure Database Migration Service](../dms/dms-overview.md) je můžete migrovat do Azure.
+- **Azure Site Recovery**: Azure Site Recovery můžete migrovat do Azure. Provedete to tak, že si nejprve [připravíte potřebné komponenty Azure](../site-recovery/tutorial-prepare-azure.md), včetně účtu úložiště a virtuální sítě. V místním prostředí si [připravíte prostředí VMware](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Jakmile bude vše připravené, nastavíte a povolíte replikaci do Azure a provedete migraci virtuálních počítačů. [Další informace](../site-recovery/vmware-azure-tutorial.md).
+- **Azure Database Migration**: Pokud na místních počítačích běží databáze, jako je například SQL Server, MySQL nebo Oracle, můžete použít [Azure Database Migration Service](../dms/dms-overview.md) k migraci do Azure.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -1,5 +1,6 @@
 ---
-title: Vytvoření a správa pracovních prostorů služby Azure Machine Learning
+title: Vytvoření a správa pracovních prostorů
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak vytvářet, zobrazovat a odstraňovat pracovní prostory služby Azure Machine Learning na webu Azure Portal.
 services: machine-learning
 ms.service: machine-learning
@@ -10,20 +11,20 @@ ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 647af189319a1fa7b80b10410ad96f3297c18192
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 73a47929fa26ae0729943e17d0f6c9a054f4f6bb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083763"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276702"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Vytvoření a správa pracovních prostorů služby Azure Machine Learning
 
 V tomto článku budete vytvářet, zobrazení a odstranění [ **pracovních prostorů služby Azure Machine Learning** ](concept-azure-machine-learning-architecture.md#workspace) na webu Azure Portal pro [služby Azure Machine Learning](overview-what-is-azure-ml.md).  Můžete také vytvářet a odstraňovat pracovní prostory [pomocí rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) nebo [pomocí kódu Python](https://aka.ms/aml-sdk).
 
-Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
-
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru 
+
+Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -45,7 +46,7 @@ Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Po
 
 1. Vyberte pracovní prostor, který jste právě vytvořili, zobrazíte její vlastnosti.
 
-   ![PNG](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   ![Vlastnosti pracovního prostoru](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Odstranění pracovního prostoru
 

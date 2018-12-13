@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fe8806b4cc84bb9a15ce5620366fee23bba328c4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 73788b05cad3abac19b1ef509f1250542d10dba2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106426"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136643"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 
@@ -38,7 +38,7 @@ Publikování aplikace do všech oblastí, které jsou spojené s prostředky sl
 
 Pokud vaše aplikace se úspěšně publikuje, zobrazí se upozornění zelené úspěch v horní části stránky prohlížeče. Zelená oznamovací pruh také obsahuje odkaz na koncové body. 
 
-![Publikování automaticky otevíraném okně](./media/luis-how-to-publish-app/publish-success.png)
+![Publikování automaticky otevírané okno s odkazem na koncový bod](./media/luis-how-to-publish-app/publish-success.png)
 
 Pokud budete potřebovat adresu URL koncového bodu, vyberte odkaz. Získáte taky k adresám URL, koncový bod tak, že vyberete **spravovat** v horní nabídce vyberte **klíče a koncových bodů** v levé nabídce. 
 

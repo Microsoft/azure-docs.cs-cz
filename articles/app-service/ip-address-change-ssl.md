@@ -1,5 +1,5 @@
 ---
-title: Postup přípravy na změnu adresy SSL IP – Azure
+title: Příprava na změnu adresy SSL IP – Azure App Service
 description: Pokud je vaše adresa SSL IP změnit, zjistěte, co můžete udělat tak, aby vaše aplikace i nadále fungovat po provedení změny.
 services: app-service\web
 author: cephalin
@@ -10,12 +10,13 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: e8558b4c3c7dafca8d4fff7e2aae0597a66c031d
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.custom: seodec18
+ms.openlocfilehash: 4de20ba46d3c16d6cd7bde8e17efb0a6212bc771
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576538"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270786"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Postup přípravy na změnu adresy SSL IP
 
@@ -31,7 +32,7 @@ Pokud jste dostali oznámení, že se mění SSL IP adresu vaší aplikace Azure
 
 4.  V části **nastavení** záhlaví, klikněte na tlačítko **nastavení SSL** v levém navigačním panelu.
 
-5. V části vazby SSL vyberte záznam název hostitele. V editoru, které se otevře, zvolte **SNI SSL** na **typ SSL** rozevírací nabídky a klikněte na tlačítko **přidat vazbu**. Když se zobrazí zpráva o úspěchu operací, stávající IP adresa byla uvolněna.
+1. V části vazby SSL vyberte záznam název hostitele. V editoru, které se otevře, zvolte **SNI SSL** na **typ SSL** rozevírací nabídky a klikněte na tlačítko **přidat vazbu**. Když se zobrazí zpráva o úspěchu operací, stávající IP adresa byla uvolněna.
 
 6.  V **vazby SSL** znovu vyberte záznam stejného názvu hostitele s certifikátem. V editoru, které se otevře, zvolte tuto chvíli **IP SSL na základě** na **typ SSL** rozevírací nabídky a klikněte na tlačítko **přidat vazbu**. Když se zobrazí zpráva o úspěchu operací, které jste získali novou IP adresu.
 

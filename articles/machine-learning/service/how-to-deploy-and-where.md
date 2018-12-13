@@ -1,7 +1,7 @@
 ---
-title: Kam se mají modely nasadit
+title: Nasazení modelů jako webové služby
 titleSuffix: Azure Machine Learning service
-description: Další informace o různých způsobech, kterou můžete nasadit modely do produkčního prostředí pomocí služby Azure Machine Learning.
+description: 'Zjistěte, jak a kde k nasazení vašich modelů služby Azure Machine Learning, včetně: Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge a Field-programmable gate Array.'
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 53f3c61a98bc08b453ae894abaa512b94044bcf7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e7840bb3ac6449009b843bb74cc19b960b492205
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100697"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310143"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Nasazujte modely pomocí služby Azure Machine Learning
 
@@ -30,6 +30,8 @@ Můžete nasadit modely do následující cílových výpočetních prostředí:
 | [Azure Kubernetes Service (AKS)](#aks) | Webová služba | Vhodné pro nasazení v produkčním prostředí vysoce škálovatelné. Nabízí automatické škálování a krátké doby odezvy. |
 | [Azure IoT Edge](#iotedge) | Modul IoT | Nasaďte modely na zařízeních IoT. Odvozování se stane v zařízení. |
 | [Pole programmable gate array (FPGA)](#fpga) | Webová služba | Mimořádně nízkou latenci pro odvozování v reálném čase. |
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,9 +55,9 @@ Proces nasazení modelu se podobá všech cílových výpočetních prostředí:
 
     * Když **nasadit jako webovou službu**, existují tři možnosti nasazení:
 
-        * [nasazení](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): při použití této metody, není nutné k registraci modelu nebo vytvoření této image. Ale nemůžeme mít pod kontrolou název modelu nebo bitové kopie nebo přidružené značky a popisy.
-        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): při použití této metody, není nutné pro vytvoření image. Ale nemáte kontrolu nad název obrázku, který je vytvořen.
-        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): zaregistrujte model a před použitím této metody vytvoření bitové kopie.
+        * [Nasazení](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-): Při použití této metody, není potřeba zaregistrujte model nebo vytvoření této image. Ale nemůžeme mít pod kontrolou název modelu nebo bitové kopie nebo přidružené značky a popisy.
+        * [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-): Při použití této metody, není potřeba vytvořit bitovou kopii. Ale nemáte kontrolu nad název obrázku, který je vytvořen.
+        * [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-): Zaregistrujte model a před použitím této metody vytvoření bitové kopie.
 
         V příkladech v tomto dokumentu pomocí `deploy_from_image`.
 
@@ -78,7 +80,7 @@ model = Model.register(model_path = "model.pkl",
 > [!NOTE]
 > Při použití modelu uložen jako soubor pickle ukazuje příklad, můžete také používá modely ONNX. Další informace o použití modely ONNX, najdete v článku [ONNX a Azure Machine Learning](how-to-build-deploy-onnx.md) dokumentu.
 
-Další informace najdete v tématu v referenční dokumentaci [třída modelu](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
+Další informace najdete v tématu v referenční dokumentaci [třída modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
 ## <a id="configureimage"></a> Vytvořit konfiguraci bitové kopie
 
@@ -125,11 +127,9 @@ image = ContainerImage.create(name = "myimage",
                               )
 ```
 
-**Časový odhad**: přibližně 3 minuty.
+**Časový odhad**: Přibližně 3 minuty.
 
 Image se systémovou správou verzí automaticky při registraci více bitových kopií se stejným názvem. Například první obrázek zaregistrovaný jako `myimage` je přiřazena ID `myimage:1`. Při příštím zaregistrujete bitovou kopii jako `myimage`, ID nové image je `myimage:2`.
-
-Vytvoření Image trvá přibližně 5 minut.
 
 Další informace najdete v tématu v referenční dokumentaci [ContainerImage třídy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
 
@@ -147,7 +147,7 @@ Při přechodu na krok nasazení se mírně liší v závislosti na cílové vý
 Použití Azure Container Instances pro nasazení modelů jako webové služby, pokud jeden nebo více z následujících podmínek je splněných:
 
 - Potřebujete k rychlému nasazení a ověření modelu. Dokončení nasazení ACI za méně než 5 minut.
-- Testování modelu, který je ve vývoji. ACI umožňuje nasadit 20 skupiny kontejnerů na jedno předplatné. Další informace najdete v tématu [kvóty a dostupnost oblastí pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentu.
+- Testování modelu, který je ve vývoji. Kvóty a regionální dostupnosti ACI najdete v tématu [kvóty a dostupnost oblastí pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) dokumentu.
 
 Pokud chcete nasadit do služby Azure Container Instances, postupujte následovně:
 
@@ -159,7 +159,7 @@ Pokud chcete nasadit do služby Azure Container Instances, postupujte následovn
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
 
-    **Časový odhad**: přibližně 3 minuty.
+    **Časový odhad**: Přibližně 3 minuty.
 
     > [!TIP]
     > Pokud nejsou chyby během nasazení, použijte `service.get_logs()` k zobrazení protokolů služby AKS. Zaznamenané informace může ukazovat na příčinu chyby.
@@ -204,7 +204,7 @@ Pokud chcete nasadit do služby Azure Kubernetes Service, postupujte následovn�
     print(aks_target.provisioning_errors)
     ```
 
-    **Časový odhad**: přibližně 20 minut.
+    **Časový odhad**: Přibližně 20 minut.
 
     > [!TIP]
     > Pokud už máte AKS cluster ve vašem předplatném Azure, a je verze 1.11. *, ve kterém můžete nasadit svou image. Následující kód ukazuje, jak se připojit k existujícímu clusteru do pracovního prostoru:

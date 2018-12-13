@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 68ca8593dea93faf076ffb5d99ec7bcad210a810
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: ee0de5d03de29adddd8f77efbe7491603cc0e4c4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141828"
+ms.locfileid: "53188788"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -363,7 +362,7 @@ Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato č
 #### <a name="installer-prompts-for-a-reboot"></a>Instalační program zobrazí výzvu k restartování
 Agent závislostí *obecně* nevyžaduje restartování po instalaci nebo odinstalaci. Ale v některých výjimečných případech, Windows Server vyžaduje restartování počítače pokračujte s instalací. To se stane, když závislost, obvykle Microsoft Visual C++ Redistributable, vyžaduje restartování z důvodu soubor uzamčen.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Zpráva "nepovedlo se nainstalovat agenta závislostí: knihovny modulu Runtime Visual Studio se nepodařilo nainstalovat (kód = [číslo_účtu])" se zobrazí
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Zpráva "nepovedlo se nainstalovat agenta závislostí: Visual Studio běhové knihovny se nepodařilo nainstalovat (kód = [číslo_účtu]) "se zobrazí
 
 Agent Microsoft Dependency je založená na knihovnách modulu runtime Microsoft Visual Studio. Pokud dojde k problému při instalaci knihoven, zobrazí se zpráva. 
 
@@ -375,14 +374,14 @@ V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
 
 | Kód | Popis | Řešení |
 |:--|:--|:--|
-| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud odkaz na "Windows8.1-KB2999226-x64.msu" je následována řádku "Chyba 0x80240017: nepovedlo se provést MSU balíčku" není nutné požadavky pro instalaci KB2999226. Postupujte podle pokynů v oddílu požadavky v [Universal C Runtime ve službě Windows](https://support.microsoft.com/kb/2999226). Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
+| 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud je odkaz na "Windows8.1-KB2999226-x64.msu" následované řádku "Chyba 0x80240017: Nepovedlo se spustit MSU balíčku,"nemáte požadavky pro instalaci KB2999226. Postupujte podle pokynů v oddílu požadavky v [Universal C Runtime ve službě Windows](https://support.microsoft.com/kb/2999226). Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
 
 ### <a name="post-installation-issues"></a>Po instalaci problémy
 #### <a name="server-doesnt-appear-in-service-map"></a>Server se nezobrazí v Service Map
 Pokud vaše instalace agenta závislostí proběhla úspěšně, ale nevidíte serveru v řešení Service Map:
 * Agent závislostí úspěšné instalaci? Můžete si to ověřit tak, že kontroluje se, pokud je služba nainstalována a spuštěna.<br><br>
-**Windows**: Vyhledejte službu s názvem "Agent služby Microsoft Dependency."<br>
-**Linux**: oblast pro spouštění procesu "--agent služby microsoft dependency."
+**Windows:** Vyhledejte službu s názvem "Agent služby Microsoft Dependency."<br>
+**Linux:** Vyhledejte spuštěný proces "--agent služby microsoft dependency."
 
 * Se nacházíte [bezplatné cenové úrovni Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Plán Free umožňuje až k pěti serverům jedinečné řešení Service Map. Všechny následující servery nezobrazí v Service Map, i v případě, že předchozí pět už odesílají data.
 
@@ -390,7 +389,7 @@ Pokud vaše instalace agenta závislostí proběhla úspěšně, ale nevidíte s
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, agenta Log Analytics je správně funguje a komunikovat s Log Analytics. Pokud ne, zkontrolujte agenta na serveru: [agenta Log Analytics pro řešení potíží s Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta Log Analytics pro řešení potíží pro Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
+Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, agenta Log Analytics je správně funguje a komunikovat s Log Analytics. Pokud ne, zkontrolujte agenta na serveru: [Agenta log Analytics pro řešení potíží s Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta Log Analytics pro řešení potíží pro Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v Service Map, ale nemá žádné procesy
 Pokud se zobrazí váš server v Service Map, ale nemá žádná data proces nebo připojení, která označuje, že agenta závislostí je nainstalovaná a spuštěná, ale ovladač jádra se nenačetla. 

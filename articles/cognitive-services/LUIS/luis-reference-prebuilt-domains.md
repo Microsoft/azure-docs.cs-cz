@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106239"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140961"
 ---
-# <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Informace o předem připravených domény pro aplikace LUIS
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
 
 [Vlastní domény](luis-how-to-start-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
@@ -116,7 +116,7 @@ Doména komunikace poskytuje záměry a entity související s e-mailu, zpráv a
 | TurnForwardingOff| Telefonní hovor.|<br/><br/>|
 | Vytočit| Vytáčení nebo znovu volat na číslo.|Vytočit.<br/>Vytáčení Moje poslední volání.|
 | Odmítnout| Odmítne příchozí volání.|Odmítnutí volání<br/>Nelze přijmout<br/>V tuto chvíli není k dispozici a bude zpětné volání, později.|
-| Connectoru| Odeslání e-mailu. Cílem tohoto je se vztahuje na e-mailu, ale ne textové zprávy.|E-mailu do vod Mike: Mike, bylo splendid dinner minulý týden.<br/>Odeslání e-mailu pro Roberta<br/>|
+| Connectoru| Odeslání e-mailu. Cílem tohoto je se vztahuje na e-mailu, ale ne textové zprávy.|E-mailu Mike vod: Mike, bylo splendid dinner minulý týden.<br/>Odeslání e-mailu pro Roberta<br/>|
 | SendMessage| Odešlete textovou zprávu nebo rychlou zprávu.|Poslat text Chris a Karolínu|
 | SetSpeedDial| Nastavte místní volání rychlost pro telefonní číslo kontaktu.|Nastavení telefonního seznamu, jeden pro Karolínu.<br/>Nastavení telefonní pro mom.|
 | ShowNext| Zobrazit další položky, například na seznam textových zpráv nebo e-mailů.|Zobrazit další příkaz.<br/>Přejdete na další stránku.|
@@ -242,11 +242,12 @@ Doména HomeAutomation poskytuje záměry a entity související s řízením in
 Doména MovieTickets poskytuje záměry a entity související rezervace letenek na filmy v celé obrazovky video.
 
 ### <a name="examples"></a>Příklady
-```
-Book me two tickets for Captain Omar and the two Musketeers
-Cancel tickets
-When is Captain Omar showing?
-```
+
+|Příklady|
+|--|
+|Rezervuje dvě lístky pro vedoucího Omar a dvě Musketeers|
+|Zrušit lístky|
+|Když se zobrazuje vedoucího Omar?|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |

@@ -1,5 +1,5 @@
 ---
-title: Jak škálovat aplikaci ve službě App Service Environment
+title: Jak škálovat aplikaci ve službě App Service Environment – Azure
 description: Škálování aplikace ve službě App Service Environment
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: 3b2f93c9763805377ed534d59b1025a5aa1a32e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: c94e7f761dcbc7e05965e359d7f9a864335c9c6b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955526"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269341"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Škálování aplikací ve službě App Service Environment
 Ve službě Azure App Service jsou obvykle tři věci, které je možné škálovat:
@@ -39,7 +40,7 @@ Změna buď položku se provádí prostřednictvím odpovídající uživatelsk�
 
 ![][1]
 
-Nejde škálovat vaše ASP nad rámec počet dostupných výpočetních prostředků ve fondu pracovních procesů, které je vaše prostředí ASP v.  Pokud třeba výpočetní prostředky v tomto fondu pracovních procesů, budete muset požádat správce vaší služby ASE je přidat.  Informace kolem opětovná konfigurace vaší služby ASE najdete tyto informace tady: [konfigurace služby App Service environment][HowtoConfigureASE].  Můžete také využít výhod funkce automatického škálování služby ASE, které chcete přidat kapacitu podle plánu nebo metriky.  Další podrobnosti o konfiguraci najdete v článku automatického škálování pro prostředí ASE samotné [postup konfigurace automatického škálování služby App Service Environment][ASEAutoscale].
+Nejde škálovat vaše ASP nad rámec počet dostupných výpočetních prostředků ve fondu pracovních procesů, které je vaše prostředí ASP v.  Pokud třeba výpočetní prostředky v tomto fondu pracovních procesů, budete muset požádat správce vaší služby ASE je přidat.  Opětovná Konfigurace informací o vaší služby ASE najdete tyto informace tady: [Postup konfigurace služby App Service environment][HowtoConfigureASE].  Můžete také využít výhod funkce automatického škálování služby ASE, které chcete přidat kapacitu podle plánu nebo metriky.  Další podrobnosti o konfiguraci najdete v článku automatického škálování pro prostředí ASE samotné [postup konfigurace automatického škálování služby App Service Environment][ASEAutoscale].
 
 Více aplikací můžete vytvořit pomocí výpočetních prostředků z fondy pracovních procesů různé plány služby, nebo můžete použít stejný fond pracovních procesů.  Například pokud máte v 1 fondu pracovních procesů (10) k dispozici výpočetní prostředky, můžete také vytvořit jeden plán služby app service pomocí (6) výpočetní prostředky a plánu služby app service druhý, který používá (4) výpočetní prostředky.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Azure Cosmos DB: příklady v .NET pro rozhraní SQL API'
-description: Vyhledejte si na GitHubu příklady v C# .NET pro běžné úlohy prováděné pomocí rozhraní SQL API služby Azure Cosmos DB, včetně operací CRUD.
+description: Najít C# příklady .NET na Githubu pro běžné úlohy pomocí rozhraní Azure Cosmos DB SQL API, včetně operace CRUD.
 keywords: Příklad NoSQL
 author: rnagpal
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: c42677d595eae3a6742f4536dcdd0314ff2d20d8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104766"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166621"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Ukázky kódu pro .NET SDK verze 3.0 (Preview) najdete v tématu nejnovější u
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- Můžete si [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Za své předplatné sady Visual Studio každý měsíc získáváte kredity, které můžete použít k placení za služby Azure.
+- Je možné [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): Vaše předplatné sady Visual Studio vám dává kredity každý měsíc, můžete použít k placení za služby Azure.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -146,7 +146,7 @@ Ukázka kanálu změn [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/P
 | [Čtení kanálu změn](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Čtení rozsahů klíčů oddílů](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
 
-Ukázka procesoru kanálů změn: [Nástroj pro migraci kanálu změn](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) ukazuje, jak využít knihovnu procesorů kanálů změn k replikaci dat do jiné kolekce Cosmos DB.   
+Ukázka procesoru informačního kanálu změn:  [Změna kanálu nástroje pro migraci](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) ukazuje, jak používat knihovny procesoru kanálu změn k replikaci dat do jiné kolekce Cosmos DB.   
 
 ## <a name="server-side-programming-examples"></a>Příklady programování na straně serveru
 Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy.
@@ -161,7 +161,7 @@ Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet
 | [Vytvoření triggeru po akci](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [Vytvoření funkce definované uživatelem (UDF)](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-Další informace o programování na straně serveru najdete v tématu o [programování na straně serveru pro Azure Cosmos DB: uložené procedury, aktivační události databáze a UDF](programming.md).
+Další informace o programování na straně serveru, naleznete v tématu [programování na straně serveru služby Azure Cosmos DB: Uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi](programming.md).
 
 ## <a name="user-management-examples"></a>Příklady správy uživatelů
 Ukázkový soubor pro správu uživatelů [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs) ukazuje, jak provádět následující úlohy.

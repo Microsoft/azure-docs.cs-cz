@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vícekontejnerové aplikace (Preview) ve službě Azure Web App for Containers s použitím konfigurace Docker Compose
+title: Vytvoření vícekontejnerové aplikace pomocí Docker Compose - službě Azure App Service
 description: Nasazení první vícekontejnerové aplikace ve službě Azure Web App for Containers během několika minut
 keywords: azure app service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, kubernetes, wordpress, azure db for mysql, production database with containers
 services: app-service\web
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
-ms.custom: mvc
-ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576778"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316570"
 ---
-# <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Vytvoření vícekontejnerové aplikace (Preview) pomocí služby Web App for Containers
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření pomocí Docker Compose konfigurace aplikace s více kontejnerů (preview)
 
 Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. Tento rychlý start ukazuje, jak ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nasadit vícekontejnerovou aplikaci do služby Web App for Containers s použitím konfigurace Docker Compose. Informace pro Kubernetes a kompletní řešení s využitím Azure DB for MySQL najdete v [kurzu k vícekontejnerovým aplikacím](tutorial-multi-container-app.md).
 
@@ -135,7 +135,7 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření vícekontejnerové aplikace WordPress ve službě Web App for Containers](tutorial-multi-container-app.md)
