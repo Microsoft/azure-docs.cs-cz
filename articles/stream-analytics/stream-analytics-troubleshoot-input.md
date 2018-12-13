@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/11/2018
-ms.openlocfilehash: 2b2dc3ba78cfa682c4a326754bdddfa9bc81f836
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: MT
+ms.openlocfilehash: 0098d532f09ca2fa7ef4434add90729a15809ac5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346641"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087452"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží s připojeními vstupu
 
@@ -35,7 +35,7 @@ Deserializace potíže jsou způsobeny, když vstupní datový proud vaší úlo
  
 Když úloha Stream Analytics přijímá chybnou zprávu z vstup, zahodí a upozorní uživatele s upozorněním. Symbol upozornění se zobrazí na **vstupy** dlaždici vaší úlohy Stream Analytics. Tento znak upozornění existuje za předpokladu, že je úloha ve spuštěném stavu:
 
-![Dlaždici vstupy Azure Stream Analytics](media/stream-analytics-malformed-events/inputs_tile.png)
+![Dlaždici vstupy Azure Stream Analytics](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Povolte diagnostické protokoly, chcete-li zobrazit podrobnosti upozornění. Pro vstupní události nemají správný formát protokoly spuštění obsahovat zprávu, která bude vypadat takto: 
 <code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
@@ -47,8 +47,8 @@ Můžete využít následující kroky a analyzovat události vstupu podrobně l
 
 2. Podrobnosti vstupu dlaždici se zobrazuje seznam upozornění s podrobnostmi o jednotlivých problémů. Upozornění následující příklad obsahuje oddíl, posun a pořadová čísla níž se nachází poškozená data JSON. 
 
-   ![Upozornění s posunem](media/stream-analytics-malformed-events/warning_message_with_offset.png)
-
+   ![Upozornění s posunem](media/stream-analytics-malformed-events/warning-message-with-offset.png)
+   
 3. Vyhledat potřebná data JSON s nesprávný formát, spusťte CheckMalformedEvents.cs kód, který je k dispozici v [úložiště ukázek Githubu](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH). Tento kód čte ID oddílu, posun a vytiskne data, která se nachází v tento posun. 
 
 4. Jakmile načtete data, můžete analyzovat a opravit formát serializace.

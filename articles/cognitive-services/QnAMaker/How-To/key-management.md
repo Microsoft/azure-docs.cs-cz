@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: tulasim
-ms.openlocfilehash: 1fe39cf9e4a1e58a0d37cc8ebf9fe02c6ad7eed5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 25b23d280aca9ef13b8820596686a1f9dbecd2a1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334614"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085939"
 ---
-# <a name="key-management"></a>Správa klíčů
+# <a name="how-to-manage-keys-in-qna-maker"></a>Správa klíčů v nástroje QnA Maker
 
 Vaše služba QnA Maker se zabývá dvěma druhy klíče, **klíče předplatného** a **klíče koncového bodu**.
 

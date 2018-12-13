@@ -1,7 +1,7 @@
 ---
 title: Skóre spolehlivosti – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: S vysvětlením, skóre spolehlivosti
+description: Skóre spolehlivosti označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele.
 services: cognitive-services
 author: tulasim88
 manager: pchoudh
@@ -10,14 +10,15 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: b1126b2cdb7a5cd7451a916558bc928653bc0027
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.custom: seodec18
+ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577919"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081315"
 ---
-# <a name="confidence-score"></a>Skóre spolehlivosti
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
 
 Skóre spolehlivosti je číslo mezi 0 a 100. Skóre 100 je pravděpodobně přesnou shodu, zatímco skóre 0 znamená, která nebyla nalezena žádná odpovídající odpověď. Čím vyšší skóre – větší jistotou v odpovědi na dotaz. Pro daný dotaz může být vrátil více odpovědí. V takovém případě odpovědi se vrátí v pořadí podle snižuje pravděpodobnost.
@@ -78,15 +79,15 @@ Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0
 
 2. Kliknutím otevřete **služby App Service**.
 
-    ![Přístup ke službě App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Na webu Azure Portal přístup k App service pro nástroj QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
 3. Klikněte na **nastavení aplikace** a upravit **DefaultAnswer** do požadovaného výchozí odpověď. Klikněte na **Uložit**.
 
-    ![Změnit výchozí odpověď](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Vyberte nastavení aplikace a pak upravte DefaultAnswer pro nástroj QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
 
 4. Restartujte službu App service
 
-    ![Nástroj QnA Maker restartování služby App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Po změně DefaultAnswer restartujte App Service QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Další postup

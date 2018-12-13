@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 12/04/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: be88e84c48ba31ce564c31eca1f54f164aeb9f93
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 58dfb3f02b338d62fcfb10e4d8c1bc492cdacbda
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288233"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890547"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -121,8 +121,8 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
 
 2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
-   ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+   ```PowerShell
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parametr | Popis |  
@@ -147,11 +147,15 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. V dalším kroku ve stejné relaci Powershellu, ujistěte se, že jste přihlášeni k správný kontext Azure Powershellu. Toto je účet azure, který se použije k registraci poskytovatele prostředků služby Azure Stack výše. Prostředí PowerShell pro spuštění:
+6. V dalším kroku ve stejné relaci Powershellu, ujistěte se, že jste přihlášeni k správný kontext Azure Powershellu. Toto je účet Azure, který se použije k registraci poskytovatele prostředků služby Azure Stack výše. Prostředí PowerShell pro spuštění:
 
    ```PowerShell  
-   Add-AzureRmAccount -Environment "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
+
+   | Parametr | Popis |  
+   |-----|-----|
+   | EnvironmentName | Název prostředí předplatného cloudu Azure. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud se používá k předplatnému Azure Čína **AzureChinaCloud**.  |
 
 7. Ve stejné relaci prostředí PowerShell, spusťte **Set-AzsRegistration** rutiny. Prostředí PowerShell pro spuštění:  
 
@@ -182,7 +186,7 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
 2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
    ```PowerShell  
-      Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
+      Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
    | Parametr | Popis |  
@@ -298,7 +302,7 @@ Volitelně můžete použít rutinu Get-obsah tak, aby odkazoval na soubor, kter
 
 Pomocí těchto kroků můžete ověřit, že Azure Stack je úspěšně zaregistrovaný s Azure.
 
-1. Přihlaste se ke službě Azure Stack [portálu správce](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*.
+1. Přihlaste se ke službě Azure Stack [portál pro správu](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*.
 2. Vyberte **všechny služby**a potom v části **správu** vyberte **Marketplace správu** > **přidat z Azure**.
 
 Pokud se zobrazí seznam položek, které jsou k dispozici od Azure (např. WordPress), s aktivací bylo úspěšné. V odpojených prostředích položky Azure marketplace v Tržišti Azure Stack neuvidíte.
@@ -431,7 +435,7 @@ Pokud chcete spustit rutinu, budete potřebovat:
 | ResourceGroupName | Řetězec |  |
 | ResourceGroupLocation | Řetězec |  |
 | BillingModel | Řetězec | Model fakturace předplatného používá. Povolené jsou hodnoty pro tento parametr: kapacity, PayAsYouUse a vývoj. |
-| MarketplaceSyndicationEnabled |  |  |
+| MarketplaceSyndicationEnabled | True nebo False | Určuje, zda funkce pro správu webu marketplace je k dispozici na portálu. Nastavte na hodnotu true, pokud se registrace s připojením k Internetu. Nastavte na hodnotu false, pokud se registrace v odpojených prostředích. Pro odpojený registrace [nástroj v režimu offline syndikace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) lze použít pro stažení položek z marketplace. |
 | UsageReportingEnabled | True nebo False | Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání. Povolené jsou hodnoty pro tento parametr: hodnotu True, False. |
 | AgreementNumber | Řetězec |  |
 | registrationName | Řetězec | Nastavit jedinečný název pro registraci, pokud používáte skript registrace na více než jednu instanci služby Azure Stack pomocí stejného předplatného Azure ID. Parametr má výchozí hodnotu **AzureStackRegistration**. Nicméně pokud použijete stejný název ve více než jednu instanci služby Azure Stack, skript se nezdaří. |

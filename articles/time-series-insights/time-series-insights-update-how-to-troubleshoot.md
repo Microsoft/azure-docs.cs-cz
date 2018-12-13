@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: a9078d2f8a738700a30d265d9cfa3cd77ad72f08
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 4fdb7cf0007af5f92794ebe5f616c1c8a28af0e4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015445"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099649"
 ---
 # <a name="how-to-diagnose-and-troubleshoot"></a>Tom, jak Diagnostika a řešení potíží
 
@@ -91,13 +91,13 @@ Pokud **časové razítko** vlastnost nebyl explicitně zadán, bude můžeme vy
 
 1. Může být přistupujete k Time Series Insights S1 nebo S2 prostředí
 
-   Čas řady modely jsou podporována pouze v **PAYG** prostředí. Najdete v tomto článku pro další informace o přístupu k prostředí S1/S2 z Průzkumníka aktualizace času Series Insights.
+   Čas řady modely jsou podporována pouze v **PAYG** prostředí. Další informace o tom, jak přistupovat k prostředí S1/S2 z Exploreru čas Series Insights ve verzi Preview najdete v tématu [vizualizace dat v Průzkumníku](./time-series-insights-update-explorer.md).
 
    ![access][5]
 
 1. Možná nemáte oprávnění k zobrazení a úpravě modelu
 
-   Uživatelé potřebují "Přispěvatel" úroveň přístupu můžete upravit a zobrazit jejich modelu časové řady. Můžete ověřit aktuální úrovní přístupu a udělit další přístup pomocí najdete v části zásady přístupu k datům pro váš prostředek Time Series Insights na webu Azure Portal.
+   Uživatelé potřebují "Přispěvatel" úroveň přístupu k úpravám a zobrazování jejich modelu časové řady. Můžete ověřit aktuální úrovní přístupu a udělit další přístup pomocí najdete v části zásady přístupu k datům pro váš prostředek Time Series Insights na webu Azure Portal.
 
 ## <a name="problem-all-my-instances-in-time-series-insights-preview-explorer-dont-have-a-parent"></a>Problém: Všechny instance v Průzkumníku Time Series Insights (Preview) nemají nadřazený
 

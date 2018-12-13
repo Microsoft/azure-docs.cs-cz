@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v Objective-C v iOS s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka Objective-C - hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v Objective-C v iOS s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 3f9b523c1efc22a94ef2a18367689c356c5be8f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971619"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090194"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v iOS s využitím sady Speech SDK
 

@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 8: Extrahování klíčových frází v LUIS'
+title: Extrakce klíčových frází
 titleSuffix: Azure Cognitive Services
 description: Použijte předem připravenou entitu keyPhrase pro extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: fafb6a6cb986b5bcd795c9bac0fadfce2827c667
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424808"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096923"
 ---
 # <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrahování klíčových frází z promluvy
 V tomto kurzu použijete předem připravenou entitu keyPhrase k extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
@@ -31,7 +32,6 @@ Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extra
 
 **V tomto kurzu se naučíte:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Používat existující ukázkovou aplikaci
 > * Přidání entity klíčové fráze 
@@ -84,7 +84,7 @@ Přidejte předem připravenou entitu klíčové fráze pro extrahování témat
 
 2. Na konec adresy URL zadejte `does form hrf-123456 cover the new dental benefits and medical plan`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
     
-    ```JSON
+    ```json
     {
       "query": "does form hrf-123456 cover the new dental benefits and medical plan",
       "topScoringIntent": {

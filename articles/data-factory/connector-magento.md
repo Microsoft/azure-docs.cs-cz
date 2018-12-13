@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 36afc89ef583baa5484aa4e69c6969e7448c93c1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 03757aaf13d48730a3061f07ae3138f0aadbdf00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127580"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077847"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Kopírování dat z Magento pomocí Azure Data Factory (Preview)
 
@@ -77,7 +77,12 @@ Magento propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Magento datové sady.
 
-Ke zkopírování dat z Magento, nastavte vlastnost typ datové sady na **MagentoObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z Magento, nastavte vlastnost typ datové sady na **MagentoObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **MagentoObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -89,7 +94,8 @@ Ke zkopírování dat z Magento, nastavte vlastnost typ datové sady na **Magent
         "linkedServiceName": {
             "referenceName": "<Magento linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -98,14 +104,14 @@ Ke zkopírování dat z Magento, nastavte vlastnost typ datové sady na **Magent
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Magento.
 
-### <a name="magentosource-as-source"></a>MagentoSource jako zdroj
+### <a name="magento-as-source"></a>Magento jako zdroj
 
 Ke zkopírování dat z Magento, nastavte typ zdroje v aktivitě kopírování do **MagentoSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **MagentoSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Customers"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Customers"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

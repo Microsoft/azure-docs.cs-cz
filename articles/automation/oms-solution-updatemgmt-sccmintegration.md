@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097960"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integrace System Center Configuration Manager s Update managementem
 
@@ -26,7 +26,7 @@ Sestavy a aktualizovat spravované servery Windows tak, že vytváří a předem
 
 * Musíte mít [řešení Update Management](automation-update-management.md) přidá do vašeho účtu Automation.
 * Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru Log Analytics nahlásit, že mají povolené řešení Update Management.
-* Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Pokud chcete integrovat samostatný primární web nebo centrální web správy Configuration Manageru s Log Analytics, přečtěte si téma věnované [propojení Configuration Manageru k Log Analytics](../log-analytics/log-analytics-sccm.md).  
+* Tato funkce je povolená v nástroji System Center Configuration Manager aktuální verze 1606 a vyšší. Pokud chcete integrovat samostatný primární web nebo centrální web správy Configuration Manageru s Log Analytics, přečtěte si téma věnované [propojení Configuration Manageru k Log Analytics](../azure-monitor/platform/collect-sccm.md).  
 * Pokud agenti Windows nedostávají aktualizace zabezpečení z Configuration Manageru, musí mít nakonfigurovanou komunikaci se serverem služeb Windows Server Update Services (WSUS) nebo musí mít přístup ke službě Microsoft Update.   
 
 To, jak spravujete klienty hostované v Azure IaaS s využitím stávajícího prostředí Configuration Manageru, závisí primárně na připojení, které máte mezi datovými centry Azure a vaší infrastrukturou. Toto připojení ovlivňuje případné změny v návrhu, které je třeba provést v infrastruktuře Configuration Manageru, a náklady související s provedením těchto nezbytných změn. Pokud chcete lépe pochopit, jaké aspekty plánování byste měli vyhodnotit, než budete pokračovat dál, přečtěte si [nejčastější dotazy ke Configuration Manageru v Azure](/sccm/core/understand/configuration-manager-on-azure#networking).

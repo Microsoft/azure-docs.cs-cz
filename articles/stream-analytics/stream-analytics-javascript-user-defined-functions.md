@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.date: 04/01/2018
 ms.workload: data-services
 ms.author: rodrigoa
-ms.openlocfilehash: 56ac08593d29a9003f5509f2be52f50fa250bd75
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431591"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088870"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Kurz: Uživatelem definované funkce jazyka JavaScript v Azure Stream Analytics
  
@@ -58,7 +58,7 @@ Pokud chcete vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScr
 4.  V okně **Nová funkce** jako **Typ funkce** vyberte **JavaScript**. V editoru se zobrazí výchozí šablona funkce.
 5.  Jako **UDF alias** (Alias funkce definované uživatelem) zadejte **hex2Int** a změňte implementaci funkce takto:
 
-    ```
+    ```javascript
     // Convert Hex value to integer.
     function hex2Int(hexValue) {
         return parseInt(hexValue, 16);
@@ -73,7 +73,7 @@ Pokud chcete vytvořit jednoduchou uživatelem definovanou funkci jazyka JavaScr
 1. V editoru dotazů v části **TOPOLOGIE ÚLOHY** vyberte **Dotaz**.
 2.  Upravte dotaz a pak volejte uživatelem definovanou funkci, například takto:
 
-    ```
+    ```SQL
     SELECT
         time,
         UDF.hex2Int(offset) AS IntOffset
@@ -129,14 +129,14 @@ Pokud máte krok následného zpracování, který jako vstup používá výstup
 
 **Definice uživatelem definované funkce jazyka JavaScript:**
 
-```
+```javascript
 function main(x) {
 return JSON.stringify(x);
 }
 ```
 
 **Ukázkový dotaz:**
-```
+```SQL
 SELECT
     DataString,
     DataValue,
@@ -158,7 +158,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 ## <a name="get-help"></a>Podpora
 Pokud potřebujete další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili úlohu Stream Analytics, která spouští jednoduchou uživatelem definovanou funkci jazyka JavaScript. Pokud se chcete dozvědět o Stream Analytics více, pokračujte na další články obsahující scénáře z reálného života:
 

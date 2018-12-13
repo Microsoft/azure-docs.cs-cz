@@ -1,153 +1,108 @@
 ---
-title: 'Rychlý start: Publikování znalostní báze – REST, Java – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Tento rychlý start založený na REST vás provede procesem publikování vaší znalostní báze. Tento proces odešle nejnovější verzi otestované znalostní báze na vyhrazený index Azure Search, který přestavuje publikovanou znalostní bázi. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+title: Publikování znalostní báze knowledge base, REST, Java
+titleSuffix: QnA Maker - Azure Cognitive Services
+description: V tomto rychlém startu založené na protokolu REST Javy provede publikování znalostní báze, která odesílá na nejnovější verzi znalostní báze otestované vyhrazené index Azure Search představující publikované znalostní báze. Také se přitom vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 83390ace8d9747d218fdd5c6b50ba9bdc6d11957
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b46c794283fce59bbca12511bdd6d9845a86fad1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648815"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094385"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí Javy
 
-Tento rychlý start vás provede procesem publikování znalostní báze pomocí kódu programu. Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
+V tomto rychlém startu založené na protokolu REST provede programově publikování znalostní bázi (KB). Publikování odešle nejnovější verzi znalostní báze do vyhrazeného indexu Azure Search a vytvoří koncový bod, který je možné volat v aplikaci nebo chatovacím robotu.
 
 Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Publikování](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) –toto rozhraní API nevyžaduje v těle požadavku žádné informace.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+## <a name="prerequisites"></a>Požadavky
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Javy.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+* [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
+* Tato ukázka používá Apache [klienta HTTP](http://hc.apache.org/httpcomponents-client-ga/) ze součástí HTTP. Je potřeba přidat následující knihovny klienta Apache HTTP do projektu: 
+    * httpclient 4.5.3.jar
+    * httpcore 4.4.6.jar
+    * Commons. protokolování 1.2.jar
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Potřebujete [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Chcete-li načíst kód Product key, vyberte **klíče** pod **správy prostředků** v řídicím panelu Azure pro prostředek nástroje QnA Maker. . 
+* ID znalostní báze služby QnA Maker, které najdete v adrese URL v parametru kbid řetězce dotazu, jak vidíte níže.
 
-```java
-import java.io.*;
-import java.lang.reflect.Type;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+    ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *    <dependency>
- *      <groupId>com.google.code.gson</groupId>
- *      <artifactId>gson</artifactId>
- *      <version>2.8.1</version>
- *    </dependency>
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
+    Pokud znalostní bázi ještě nemáte, můžete si vytvořit ukázkovou znalostní bázi a použít ji v tomto rychlém startu. Přečtěte si o [vytvoření nové znalostní báze](create-new-kb-csharp.md).
 
-/* NOTE: To compile and run this code:
-1. Save this file as PublishKB.java.
-2. Run:
-    javac PublishKB.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar PublishKB
-*/
+> [!NOTE] 
+> Kompletní soubor(y) řešení jsou k dispozici v [**Azure-Samples/cognitive-services-qnamaker-java** úložišti GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
+## <a name="create-a-java-file"></a>Vytvořte soubor Java
+
+Otevřete VSCode a vytvořte nový soubor s názvem `PublishKB.java`.
+
+## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
+
+V horní části `PublishKB.java`, nad třídy, přidejte následující řádky do potřebné závislosti přidejte do projektu:
+
+[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
+
+## <a name="create-publishkb-class-with-main-method"></a>Vytvořte třídu PublishKB s main – metoda
+
+Po závislostech přidejte následující třídu:
+
+```Go
 public class PublishKB {
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace this with a valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
-
-// Replace this with a valid knowledge base ID.
-    static String kb = "ENTER ID HERE";
-
-    static String host = "https://westus.api.cognitive.microsoft.com";
-    static String service = "/qnamaker/v4.0";
-    static String method = "/knowledgebases/";
-
-    public static String PrettyPrint (String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-// Send an HTTP POST request.
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
-
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
-
-        if (connection.getResponseCode() == 204)
-        {
-            return "{'result' : 'Success.'}";
-        }
-        else {
-            StringBuilder response = new StringBuilder ();
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getErrorStream(), "UTF-8"));
-
-            String line;
-            while ((line = in.readLine()) != null) {
-                response.append(line);
-            }
-            in.close();
-
-            return response.toString();
-        }
-    }
-
-// Sends the request to publish the knowledge base.
-    public static String PublishKB (String kb) throws Exception {
-        URL url = new URL(host + service + method + kb);
-        System.out.println ("Calling " + url.toString() + ".");
-        return Post(url, "");
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = PublishKB (kb);
-            System.out.println (PrettyPrint (response));
-        }
-        catch (Exception e) {
-            System.out.println (e.getCause().getMessage());
-        }
+    public static void main(String[] args) 
+    {
     }
 }
 ```
 
-## <a name="the-publish-a-knowledge-base-response"></a>Odpověď na publikování znalostní báze
+## <a name="add-required-constants"></a>Přidání požadovaných konstant
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+V **hlavní** metodu, přidejte požadované konstanty na používání nástroje QnA Maker. Nahraďte hodnoty vlastními.
 
-```json
-{
-  "result": "Success."
-}
-```
+[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="add-post-request-to-publish-knowledge-base"></a>Přidání požadavku POST k publikování znalostní báze
+
+Za požadované konstanty přidejte následující kód, který odešle požadavek HTTPS API nástroje QnA Maker na publikování znalostní báze a přijímat odpovědi:
+
+[!code-java[Add a POST request to publish knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=32-44 "Add a POST request to publish knowledge base")]
+
+Volání API vrátí v případě úspěšného publikování stav 204, přičemž tělo odpovědi bude prázdné. Kód v případě odpovědi se stavem 204 přidá obsah.
+
+V případě jakékoli jiné odpověď se vrátí tato odpověď beze změny.
+
+## <a name="build-and-run-the-program"></a>Sestavení a spuštění programu
+
+Sestavit a spustit program z příkazového řádku. Automaticky se odešle požadavek rozhraní API nástroje QnA Maker a vytiskne se do okna konzoly.
+
+1. Sestavení souboru:
+
+    ```bash
+    javac -cp "lib/*" PublishKB.java
+    ```
+
+1. Spusťte soubor:
+
+    ```bash
+    java -cp ".;lib/*" PublishKB
+    ```
+
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+
+## <a name="next-steps"></a>Další postup
+
+Po publikování znalostní báze, je nutné [adresu URL koncového bodu pro generování odpovědi](../Tutorials/create-publish-answer.md#generating-an-answer).  
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

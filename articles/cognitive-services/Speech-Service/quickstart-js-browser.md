@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka Javascript (prohlížeči) – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v JavaScriptu v prohlížeči s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 1e844f83c715dd8ac78a3340628988625e95a4ba
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218436"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087911"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči s využitím sady Speech SDK
 
@@ -106,7 +106,7 @@ Pokud chcete aplikaci spustit, otevřete oblíbený webový prohlížeč a přej
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/js-browser`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Získejte naše ukázky](speech-sdk.md#get-the-samples)

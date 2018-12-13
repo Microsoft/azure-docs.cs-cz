@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: d22103a049d62f48e8b9b9d3f71138842fbfaa89
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5558409c3a3b0aef3757ebb73b2046a7018e4150
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088183"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Vytvoření kontejneru ve službě Azure Cosmos DB
 
@@ -30,7 +30,6 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
    * Vytvořte novou databázi nebo použijte existující.
    * Zadejte ID kolekce.
-   * Vyberte **neomezenou** kapacitu úložiště.
    * Zadejte klíč oddílu.
    * Zadejte propustnost, například 1 000 RU.
    * Vyberte **OK**.
@@ -212,7 +211,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V následujících článcích najdete informace o dělení ve službě Cosmos DB:
 

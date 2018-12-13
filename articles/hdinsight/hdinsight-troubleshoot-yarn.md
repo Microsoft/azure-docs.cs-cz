@@ -6,20 +6,19 @@ ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: c3904286fc998769b9a72522bd31d3a9797c55c2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 12/06/2018
+ms.openlocfilehash: 34db8900d285baa7e9c4f97874023bbb52d5e864
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008041"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087894"
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Řešení potíží s YARN pomocí Azure HDInsight
 
 Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache Hadoop YARN v Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Jak vytvořit novou frontu YARN v clusteru?
-
 
 ### <a name="resolution-steps"></a>Postup řešení 
 
@@ -138,10 +137,3 @@ Tyto změny se projeví okamžitě v Uživatelském rozhraní YARN plánovače.
 
 ### <a name="see-also"></a>Viz také
 [Řešení potíží pomocí Azure HDInsight](hdinsight-troubleshoot-guide.md)
-
-
-
-
-
-
-

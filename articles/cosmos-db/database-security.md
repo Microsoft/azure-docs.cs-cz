@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: d88a82921e5baee06aacc09fafe274a8c56780c7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0ffd07269570b26b527286f1a0b5a57a6b5c6018
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972401"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093416"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Doporučujeme následující kontrolní seznam požadavků, na kterém bude prob
 - Fyzická ochrana servery v centrech chráněná data
 - Certifikace
 
-A i když to může zdát zřejmé, poslední [rozsáhlé databáze porušení](http://thehackernews.com/2017/01/mongodb-database-security.html) připomene nám jednoduchý, ale důležité důležitost následující požadavky:
+A i když to může zdát zřejmé, poslední [rozsáhlé databáze porušení](https://thehackernews.com/2017/01/mongodb-database-security.html) připomene nám jednoduchý, ale důležité důležitost následující požadavky:
 - Opravit servery, které jsou zachovány aktuální.
 - Protokol HTTPS pomocí šifrování výchozí/SSL
 - Účty pro správu s silná hesla

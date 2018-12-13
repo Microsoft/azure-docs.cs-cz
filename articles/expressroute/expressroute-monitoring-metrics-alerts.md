@@ -1,5 +1,5 @@
 ---
-title: Monitorování Azure ExpressRoute, metriky a upozornění | Dokumentace Microsoftu
+title: Sledování, metriky a upozorněními – Azure ExpressRoute | Dokumentace Microsoftu
 description: Tato stránka obsahuje informace o monitorování ExpressRoute
 services: expressroute
 author: cherylmc
@@ -7,19 +7,20 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: 90735ac04c95ee3d270853c18eddebd3f11dd8c1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725947"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091760"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorování, metriky a výstrahy služby ExpressRoute
 
-Tento článek vám pomůže pochopit monitorování ExpressRoute, metriky a výstrahy. Azure Monitor je na jednom místě pro všechny metriky, výstrahy, diagnostických protokolů napříč všemi Azure.
+Tento článek vám pomůže porozumět monitorování metrik a výstrah pomocí monitorování Azure ExpressRoute. Azure Monitor je na jednom místě pro všechny metriky, výstrahy, diagnostických protokolů napříč všemi Azure.
  
 >[!NOTE]
->Pomocí **klasické metriky** se nedoporučuje. 
+>Pomocí **klasické metriky** se nedoporučuje.
 >
 
 ## <a name="circuit-metrics"></a>Metriky okruh
@@ -46,7 +47,7 @@ Můžete zobrazit metriky pro privátní, veřejný a Microsoftu partnerský vzt
 
 2. Klikněte na tlačítko **+ vyberte cíl** a vyberte prostředek brány připojení ExpressRoute.
 
-  ![Cíl]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+  ![cíl]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Definujte podrobnosti o upozornění.
 
   ![Skupina akcí](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)

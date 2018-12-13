@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 591b79d4d9d44c55c2438d872b61a90abbe6ecad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5cc6bdfa9c16a6dfbdd0f6c87873a90b2a203169
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841111"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089220"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Upozornění pacientů změny zdravotní péče záznamu HL7 FHIR pomocí Logic Apps a Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Tento článek vás provede změnu kanálu oznámení se řešení vytvořilo pr
 
 ## <a name="project-requirements"></a>Požadavky projektu
 - Poskytovatelé poslat že hl7 konsolidované klinické architektura dokumentů (C-CDA) dokumenty ve formátu XML. Dokumenty C CDA zahrnovat téměř všechny typy klinické dokumentu, včetně klinické dokumenty, jako jsou záznamy očkování, stejně jako správce a řady historie pracovního postupu a finanční dokumenty. 
-- C CDA dokumentům se převedou na [HL7 FHIR prostředky](http://hl7.org/fhir/2017Jan/resourcelist.html) ve formátu JSON.
+- C CDA dokumentům se převedou na [HL7 FHIR prostředky](https://hl7.org/fhir/2017Jan/resourcelist.html) ve formátu JSON.
 - Upravené FHIR prostředku se odesílají prostřednictvím e-mailu ve formátu JSON.
 
 ## <a name="solution-workflow"></a>Pracovní postup řešení 

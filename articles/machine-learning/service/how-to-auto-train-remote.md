@@ -1,5 +1,6 @@
 ---
-title: Nastavení cílových výpočetních prostředí vzdálené pro automatizované ML – služba Azure Machine Learning
+title: Nastavení cílových výpočetních prostředí vzdálené pro automatizované ML
+titleSuffix: Azure Machine Learning service
 description: Tento článek vysvětluje, jak vytvářet modely s využitím automatizovaných strojového učení na Data Science virtuální cílové výpočetní prostředí vzdáleného počítače (DSVM) pomocí služby Azure Machine Learning
 services: machine-learning
 author: nacharya1
@@ -10,13 +11,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: c18a36bc5d151835693c625e279b8ff89e9d5664
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: e8761b0671de38e7934df56847a5d0a7eafd3649
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014765"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097699"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaných strojového učení v cloudu
 

@@ -1,20 +1,21 @@
 ---
-title: Povolit Azure Disk Encryption s aplikací Azure AD pro virtuální počítače IaaS Windows (předchozí verze) | Dokumentace Microsoftu
+title: Azure Disk Encryption pomocí virtuálních počítačů IaaS v Azure AD aplikace Windows (předchozí verze)
 description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro Windows virtuální počítače IaaS.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/04/2018
-ms.openlocfilehash: 407ea9adaaae4df15054dc4da3391b870dd8dcc7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 347fe1de15661d63ac96444f704e2da919fc54bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622138"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083950"
 ---
-#  <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Povolit Disk Encryption pro Windows virtuálních počítačů Azure IaaS (předchozí verze)
+# <a name="enable-azure-disk-encryption-for-windows-iaas-vms-previous-release"></a>Povolit Disk Encryption pro Windows virtuálních počítačů Azure IaaS (předchozí verze)
 
 **Novou verzi sady Azure Disk Encryption eliminuje požadavek na poskytnutí parametrem aplikace Azure AD povolit šifrování disku virtuálního počítače. Nové verze se už nevyžadují zadejte přihlašovací údaje Azure AD během kroku povolení šifrování. Všechny nové virtuální počítače musí být zašifrován bez parametrů aplikace Azure AD pomocí nové verze. Chcete-li zobrazit pokyny, jak povolit šifrování disku virtuálního počítače pomocí nové verze, najdete v článku [Azure Disk Encryption pro Windows VMS](azure-security-disk-encryption-windows.md). Virtuální počítače, které již byly šifrované pomocí aplikace Azure AD, parametry jsou stále podporovány a má pokračovat udržovat syntaxí AAD.**
 

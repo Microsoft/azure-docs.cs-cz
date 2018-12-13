@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: e3968155c2619b5d6b09b68a59ff01607c45fa2b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843542"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091152"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrace dat do služby Azure Cosmos DB pomocí nástroje pro migraci dat
 
@@ -198,7 +198,7 @@ Podobně jako u zdroje SQL můžete použít vlastnost oddělovače vnořování
 
 Všimněte si aliasů, jako jsou DomainInfo.Domain_Name a RedirectInfo.Redirecting. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty DomainInfo a RedirectInfo. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Nástroj pro import se pokusí odvodit informace o typu hodnoty bez uvozovek v souborech CSV (hodnoty v uvozovkách jsou vždy považovány za řetězce).  Typy se identifikují v následujícím pořadí: číslo, datetime, logická hodnota.  
 

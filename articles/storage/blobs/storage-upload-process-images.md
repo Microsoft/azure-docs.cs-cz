@@ -2,7 +2,6 @@
 title: Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs
 description: Použití úložiště objektů Blob v Azure pomocí služby web app pro ukládání dat aplikací
 services: storage
-documentationcenter: ''
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 371a679978c501c71da6e8360d7541c31a6a720f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682319"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097943"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu pomocí služby Azure Storage
 

@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 7: Jednoduchá entita se seznamem frází ve službě LUIS'
+title: Jednoduché entity, seznam frází
 titleSuffix: Azure Cognitive Services
 description: Extrahování strojově naučených dat z promluvy
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f3e931344d2d2294c03756d630c688df1e5da9a8
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: a783491ca04f19964cc66f1faef5e2fdba142e24
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425241"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094436"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Kurz 7: Extrahování názvů pomocí jednoduché entity a seznamu frází
 
@@ -92,7 +93,7 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
 
 3. V promluvě `I want to apply for the new accounting job` vyberte `accounting`, zadejte `Job` do horního pole v místní nabídce a pak v této místní nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Snímek obrazovky aplikace LUIS se záměrem ApplyForJob (Přihláška na pracovní pozici) se zvýrazněným postupem vytvoření entity")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
+    [![Snímek obrazovky služby LUIS se záměrem "ApplyForJob" s vytvořit entitu kroky zvýrazněnou](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "snímek obrazovky služby LUIS se záměrem \"ApplyForJob\" s vytvořit entitu kroky zvýrazněnou")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
 4. V automaticky otevíraném okně ověřte název a typ entity a vyberte **Done** (Hotovo).
 
@@ -100,7 +101,7 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
 
 5. V promluvě `Submit resume for engineering position` označte slovo `engineering` jako entitu Job (Pracovní pozice). Vyberte slovo `engineering` a pak v místní nabídce vyberte **Job** (Pracovní pozice). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Snímek obrazovky aplikace LUIS se zvýrazněnou označenou entitou pracovní pozice")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
+    [![Snímek obrazovky LUIS označování entit úlohy zvýrazněný](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "snímek obrazovky LUIS označování entit úlohy zvýrazněný")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
     Všechny promluvy jsou označené, ale pět promluv není dostatečný počet k tomu, aby se služba LUIS naučila slova a fráze týkající se pracovních pozic. Pracovní pozice, které používají číselnou hodnotu, nepotřebují další příklady, protože se u nich používá entita regulárního výrazu. U pracovních pozic, které jsou zadány jako slova nebo fráze, je potřeba alespoň dalších 15 příkladů. 
 
@@ -157,7 +158,7 @@ Popisování, neboli _označení_, entity ukáže službě LUIS, kde se entita v
 
 2. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
 
-    ```JSON
+    ```json
     {
       "query": "Here is my c.v. for the programmer job",
       "topScoringIntent": {
@@ -226,7 +227,7 @@ Aplikace LUIS našla s vysokou spolehlivostí správný záměr a extrahovala n�
 
 V následujícím souboru JSON vrátí služba LUIS správný záměr `ApplyForJob`, ale neextrahuje název pracovní pozice `lead welder`. 
 
-```JSON
+```json
 {
   "query": "This is the lead welder paperwork.",
   "topScoringIntent": {
@@ -291,13 +292,13 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
 
 3. Nový seznam frází pojmenujte `Job` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty). Stiskněte klávesu ENTER. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+    [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Pokud chcete do seznamu frází přidat další slova, prohlédněte si část **Related Values** (Související hodnoty) a přidejte všechna slova, která jsou relevantní. 
 
 4. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází se slovy v polích s hodnotami seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+    [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní s slova v seznamu hodnot frázi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "snímek obrazovky s novou frázi seznamu dialogové okno Vytvořit místní obsahující slova v seznamu hodnot fráze")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
 5. Aplikaci [natrénujte](#train) a znovu [publikujte](#publish), aby tento seznam frází používala.
 
@@ -305,7 +306,7 @@ Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Sample
 
     Odpověď JSON obsahuje extrahovanou entitu:
 
-    ```JSON
+    ```json
     {
         "query": "This is the lead welder paperwork.",
         "topScoringIntent": {

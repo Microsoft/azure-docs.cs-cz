@@ -1,21 +1,22 @@
 ---
-title: Principy přístupu k aplikacím LUIS
-titleSuffix: Azure Cognitive Services
-description: Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace.
+title: Spolupráce na aplikaci s jinými uživateli
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d0f9d0834cffd642961b2c49d5d252a665b49e73
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: adf5395f94b55e956d9ea561c5b4541cd04f4dcc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637406"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081009"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 

@@ -1,6 +1,6 @@
 ---
-title: Spravované identity pro prostředky Azure s verzí preview služby Azure Event Hubs | Dokumentace Microsoftu
-description: Použití spravované identity pro prostředky Azure pomocí Azure Event Hubs
+title: Spravovaných identit pro prostředky Azure – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak pomocí spravované identity pro prostředky Azure pomocí Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d7ed4f0276e6220e6df528075e83cb9fabc6cc84
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011466"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087724"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Spravované identity pro prostředky Azure pomocí služby Event Hubs
 

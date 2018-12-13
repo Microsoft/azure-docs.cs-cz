@@ -1,21 +1,21 @@
 ---
 title: Nejčastější dotazy ke službě Cloudyn v Azure | Dokumentace Microsoftu
-description: Poskytuje odpovědi na některé běžné dotazy týkající se Cloudyn.
+description: Tento článek obsahuje odpovědi na některé běžné dotazy týkající se Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: e387ba0a4e20d9b584d88f7d6388ab6472ccc04c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997298"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098079"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Nejčastější dotazy pro Cloudyn
 
@@ -62,7 +62,7 @@ Chcete-li aktivovat účet:
 1.  Na portálu Cloudyn klikněte v pravém horním rohu na **Settings** (Nastavení) a vyberte **Cloud Accounts** (Účty v cloudu).
 2.  Na kartě účty Microsoft Azure, vyhledejte účty, které mají **neaktivovaných** předplatného.
 3.  Napravo od neaktivovaných účet, klikněte na tlačítko **upravit** symbol, který vypadá podobně jako tužka.
-4.  Váš tenant ID a ID sazby je automaticky rozpoznán. Klikněte na **Další**.
+4.  Váš tenant ID a ID sazby je automaticky rozpoznán. Klikněte na tlačítko **Další**.
 5.  Budete přesměrováni na webu Azure portal. Přihlaste se k portálu a autorizaci Cloudyn kolektor přístup k datům v Azure.
 6.  V dalším kroku budete přesměrováni na stránku Správa účty Cloudyn a vaše předplatné se aktualizuje s **aktivní** stav účtu. Zobrazuje zelená značka zaškrtnutí symbol.
 7.  Pokud se nezobrazí zelená značka zaškrtnutí symbolů pro jeden nebo více předplatných, znamená to, že nemáte oprávnění k vytvoření čtečky aplikace (CloudynCollector) pro předplatné. Uživatel s vyšší oprávnění u předplatného je potřeba zopakujte kroky 3 a 4.  

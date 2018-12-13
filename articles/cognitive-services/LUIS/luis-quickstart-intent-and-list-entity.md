@@ -1,21 +1,22 @@
 ---
-title: '4. kurz: Shodný text – entita seznamu LUIS'
+title: Shoda přesný text
 titleSuffix: Azure Cognitive Services
 description: Získejte data, která odpovídají předem definovanému seznamu položek. Každá položka v seznamu může mít synonyma, která také přesně odpovídají.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425067"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096685"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>4. kurz: Extrakce shodného textu
 V tomto kurzu se dozvíte, jak získat data která přesně odpovídají předdefinovanému seznamu položek. Ke každé položce v seznamu může existovat seznam synonym. V aplikaci pro lidské zdroje může být zaměstnanec identifikovaný různými klíčovými údaji, jako je jeho jméno, e-mail, telefonní číslo nebo daňové identifikační číslo. 
@@ -106,11 +107,11 @@ Primárním _kanonickým_ názvem každé položky je číslo zaměstnance. Tady
 
 3. V automaticky otevíraném dialogovém okně entity zadejte `Employee` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Done** (Hotovo).  
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Snímek obrazovky s dialogovým oknem pro vytváření nové entity")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
+    [![Snímek obrazovky vytváření nové entity automaticky otevíraná okna](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "snímek obrazovky vytváření nové entity automaticky otevíraná okna")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
 4. Na stránce entity Employee (Zaměstnanec) zadejte jako novou hodnotu `Employee-24612`.
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Snímek obrazovky se zadáváním hodnoty")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
+    [![Snímek obrazovky se zadáním hodnoty](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "snímek obrazovky se zadáním hodnoty")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
 5. Pro synonyma zadejte následující hodnoty:
 
@@ -122,7 +123,7 @@ Primárním _kanonickým_ názvem každé položky je číslo zaměstnance. Tady
     |Číslo osobního mobilního telefonu|425-555-1212|
     |Číslo amerického federálního sociálního pojištění|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Snímek obrazovky se zadáváním synonym")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+    [![Snímek obrazovky zadání synonyma](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "snímek obrazovky zadání synonyma")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 6. Jako novou hodnotu zadejte `Employee-45612`.
 
@@ -150,7 +151,7 @@ Primárním _kanonickým_ názvem každé položky je číslo zaměstnance. Tady
 
 2. Na konec adresy URL zadejte `shift 123-45-6789 from Z-1242 to T-54672`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `MoveEmployee` s extrahovanou hodnotou `Employee`.
 
-  ```JSON
+  ```json
   {
     "query": "shift 123-45-6789 from Z-1242 to T-54672",
     "topScoringIntent": {

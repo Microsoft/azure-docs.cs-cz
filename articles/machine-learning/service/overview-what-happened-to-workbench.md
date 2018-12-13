@@ -1,5 +1,6 @@
 ---
 title: Co se stalo s aplikací Azure Machine Learning Workbench?
+titleSuffix: Azure Machine Learning service
 description: Další informace o co se stalo se aplikace Workbench aplikace, co se změnilo ve službě Azure Machine Learning a co je časové osy podpory.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6df86d63e897d5cde34fb697ad2364c107a8fbe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 2d97ee70c8456bb3b21a14b646756c8024eab018
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011129"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090121"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Co se děje do aplikace Workbench ve službě Azure Machine Learning?
 
@@ -83,13 +84,13 @@ Přečtěte si, jak začít [v Pythonu používat hlavní sadu SDK](quickstart-g
  
 Modely, které jste zaregistrovali v registru starý model se musí migrovat na nový pracovní prostor, pokud chcete dál používat. Uděláte to tak, že si [modely stáhnete a znovu zaregistrujete](how-to-migrate.md) v novém pracovním prostoru. 
 
-Image vytvořené ve starém registru imagí je potřeba znovu vytvořit v novém pracovním prostoru, abyste je mohli dál používat. Postup najdete v části o [vytvoření image dockeru](how-to-deploy-to-aci.md#configure-an-image). 
+Image vytvořené ve starém registru imagí je potřeba znovu vytvořit v novém pracovním prostoru, abyste je mohli dál používat. Můžete to provést pomocí následujících [konfigurace a vytvoření bitové kopie](how-to-deploy-and-where.md#configureimage) oddíly. 
 
 ## <a name="what-about-deployed-web-services"></a>Co se stane s nasazenými webovými službami?
 
 Modely, které jste nasadili jako webové služby pomocí účtu pro správu modelů, budou dále fungovat, dokud bude podporovaná služba Azure Container Service (ACS). Tyto webové služby budou fungovat i po ukončení podpory účtů pro správu modelů. Jakmile skončí podpora starého rozhraní příkazového řádku (CLI), skončí i možnost správy těchto webových služeb.
 
-V novější verzi jsou modely nasazené jako webové služby v clusterech [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) nebo [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS). Můžete je také [nasadit do zařízení FPGA a IoT Edge](how-to-deploy-and-where.md). Své modely můžete znovu nasadit pomocí nové sady SDK nebo rozhraní příkazového řádku. Nemusíte přitom měnit bodovací soubory, závislosti ani schémata. 
+V novější verzi mají být nasazeny modely jako webové služby do clusterů Instances(ACI) kontejner Azure nebo Azure Kubernetes Service (AKS). Můžete také nasadit do FPGA a na hraničních zařízeních IoT. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu. Své modely můžete znovu nasadit pomocí nové sady SDK nebo rozhraní příkazového řádku. Nemusíte přitom měnit bodovací soubory, závislosti ani schémata. 
 
 ## <a name="what-about-the-old-sdk--cli"></a>Co se stane se starou sadou SDK a rozhraním příkazového řádku?
 

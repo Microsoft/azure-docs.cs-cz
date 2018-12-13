@@ -15,12 +15,12 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 986ee4f6081b71c0222118806427a9c6479f9028
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 0d6855982bb395813433974f72222a809c04e7dc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975653"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088221"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -32,7 +32,7 @@ ms.locfileid: "52975653"
 > * Přidání prohledávání protokolu na sdílený řídicí panel 
 > * Přizpůsobení dlaždice na sdíleném řídicím panelu
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
  
 ## <a name="log-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 

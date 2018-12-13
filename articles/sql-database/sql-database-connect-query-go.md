@@ -11,27 +11,27 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: c270fef40b732f170add32ef52eeadc790d8cd83
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/07/2018
+ms.openlocfilehash: 34b3ee54c48040eaa6f7b7569921678869baa84b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913497"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092362"
 ---
 # <a name="quickstart-use-go-to-query-an-azure-sql-database"></a>Rychlý start: Použití jazyka Go k dotazování databáze SQL Azure
 
-Tento rychlý start ukazuje, jak se pomocí jazyka [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) připojit k databázi SQL Azure. Ukazuje se také použití příkazů jazyka Transact-SQL k dotazování a úpravě dat.
+Tento rychlý start ukazuje použití [Přejít](https://godoc.org/github.com/denisenkom/go-mssqldb) programovací jazyk pro připojení k databázi Azure SQL a spusťte příkazy jazyka Transact-SQL k dotazování a upravovat data. [Přejděte](https://golang.org/) je open source programovací jazyk, který umožňuje snadno vytvářet jednoduché, spolehlivé a efektivní software.  
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
+Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
+- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) nakonfigurované pro veřejnou IP adresu počítače.
 
-- Máte nainstalovaný jazyk Go a související software pro váš operační systém:
+- Go a související software pro váš operační systém nainstalovaný:
 
     - **MacOS:** Nainstalujte Homebrew a jazyk Go. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
     - **Ubuntu:** Nainstalujte jazyk Go. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
@@ -49,7 +49,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
    mkdir SqlServerSample
    ```
 
-2. Přejděte do adresáře **SqlServerSample** a získejte a nainstalujte ovladač SQL Serveru pro jazyk Go:
+2. Změňte adresář na **SqlServerSample** a nainstalujte ovladač systému SQL Server for Go.
 
    ```bash
    cd SqlServerSample
@@ -59,7 +59,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 ## <a name="create-sample-data"></a>Vytvoření ukázkových dat
 
-1. Pomocí oblíbeného textového editoru vytvořte ve složce **SqlServerSample** soubor **CreateTestData.sql**. Zkopírujte a vložte do něj následující kód T-SQL. Tento kód vytvoří schéma a tabulku a vloží několik řádků.
+1. Ve svém oblíbeném textovém editoru vytvořte soubor s názvem **Sqlserversample** v **SqlServerSample** složky. V souboru zkopírujte a vložte následující kód T-SQL, který vytvoří schéma, tabulka a vloží několik řádků.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -82,7 +82,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
    GO
    ```
 
-2. Pomocí sqlcmd se připojte k databázi a spuštěním skriptu SQL vytvořte schéma a tabulku a vložte několik řádků. Hodnoty pro server, databázi, uživatelské jméno a heslo nahraďte příslušnými hodnotami.
+2. Použití `sqlcmd` připojení k databázi a spusťte váš nově vytvořený skript SQL. Hodnoty pro server, databázi, uživatelské jméno a heslo nahraďte příslušnými hodnotami.
 
    ```bash
    sqlcmd -S your_server.database.windows.net -U your_username -P your_password -d your_database -i ./CreateTestData.sql
@@ -92,7 +92,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 1. Ve složce **SqlServerSample** vytvořte soubor **sample.go**.
 
-2. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Přidejte příslušné hodnoty pro váš server, databázi, uživatelské jméno a heslo. Tento příklad k zajištění aktivního připojení k databázovému serveru používá kontextové metody jazyka Go.
+2. Otevřete soubor a vložte následující kód. Přidejte příslušné hodnoty pro váš server, databázi, uživatelské jméno a heslo. Tento příklad používá kontextové metody jazyka go, abyste měli jistotu, že je aktivní připojení k databázovému serveru.
 
    ```go
    package main
@@ -288,13 +288,13 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. V příkazovém řádku spusťte následující příkazy:
+1. Na příkazovém řádku spusťte následující příkaz.
 
    ```bash
    go run sample.go
    ```
 
-2. Ověřte výstup:
+2. Ověření výstupu.
 
    ```text
    Connected!
@@ -308,9 +308,9 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
    Deleted 1 row(s) successfully.
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
-- [Ovladač Go pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
+- [Ovladač go pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Hlášení problémů nebo kladení dotazů](https://github.com/denisenkom/go-mssqldb/issues)
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/23/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0bbfafcda77ca48fb22ad919c5848a7670a102
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 67658d75f7ad4a6db1af5db97a525774b0ab6e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309670"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095274"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopírování dat z ServiceNow pomocí Azure Data Factory
 
@@ -77,7 +77,12 @@ Pro ServiceNow propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje ServiceNow datové sady.
 
-Ke zkopírování dat z ServiceNow, nastavte vlastnost typ datové sady na **ServiceNowObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z ServiceNow, nastavte vlastnost typ datové sady na **ServiceNowObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **ServiceNowObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -89,7 +94,8 @@ Ke zkopírování dat z ServiceNow, nastavte vlastnost typ datové sady na **Ser
         "linkedServiceName": {
             "referenceName": "<ServiceNow linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -105,7 +111,7 @@ Ke zkopírování dat z ServiceNow, nastavte typ zdroje v aktivitě kopírován�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **ServiceNowSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Actual.alm_asset"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Actual.alm_asset"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 Při zadání schématu ve sloupci pro ServiceNow v dotazu, pamatujte na Tyhle a **najdete [tipy ke zvýšení výkonu](#performance-tips) na dopad na výkon kopírování**.
 

@@ -8,24 +8,24 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: b52305d59803d9fb8e70d89ae13cd5006c74129f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fd1fa105a880acb0d2b18a3b69ba8d475d8f82a3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865450"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081587"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýzy velkých objemů dat pomocí Apache Sparku do konektoru služby Azure Cosmos DB
  
-Konektor Apache Spark pro Azure Cosmos DB umožňuje službě Azure Cosmos DB být vstupem nebo výstupem pro úlohy Apache Spark. Připojení [Spark](http://spark.apache.org/) k [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) se řešení rychlé tempo data science problémů. Služby Azure Cosmos DB můžete použít k rychlému zachovat a dotazování na data. Tento konektor efektivně využívá nativní spravované indexy služby Azure Cosmos DB. Tyto indexy umožňují využít aktualizovatelné sloupce při provádění analýz a důkladné prediktivní filtrování rychle se měnících globálně distribuovaných dat. Tento typ dat musí být v rozsahu Internet of Things (IoT) pro datové vědy a analýzy scénáře.
+Konektor Apache Spark pro Azure Cosmos DB umožňuje službě Azure Cosmos DB být vstupem nebo výstupem pro úlohy Apache Spark. Připojení [Spark](https://spark.apache.org//) k [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) se řešení rychlé tempo data science problémů. Služby Azure Cosmos DB můžete použít k rychlému zachovat a dotazování na data. Tento konektor efektivně využívá nativní spravované indexy služby Azure Cosmos DB. Tyto indexy umožňují využít aktualizovatelné sloupce při provádění analýz a důkladné prediktivní filtrování rychle se měnících globálně distribuovaných dat. Tento typ dat musí být v rozsahu Internet of Things (IoT) pro datové vědy a analýzy scénáře.
 
 ## <a name="connector-components"></a>Součásti konektoru
 
 Spark pro konektor služby Azure Cosmos DB má následující komponenty:
 
-* [Azure Cosmos DB](http://documentdb.com) umožňuje zřizovat a Elasticky škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí.  
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) umožňuje zřizovat a Elasticky škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí.  
 
-* [Apache Spark](http://spark.apache.org/) je modul pro zpracování výkonné opensourcových, postavené na rychlost, snadné použití a sofistikované analýzy.  
+* [Apache Spark](https://spark.apache.org/) je modul pro zpracování výkonné opensourcových, postavené na rychlost, snadné použití a sofistikované analýzy.  
 
 * [Cluster Apache Spark v Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) umožňuje spouštět úlohy Spark v clusteru Spark.
 
@@ -177,7 +177,7 @@ Komunikace mezi Sparkem a Azure Cosmos DB je výrazně rychlejší, protože je 
 
 4. Extrahujte obsah ukázkové informační kanál Twitteru a otevřete soubor config.py. Aktualizujte hodnoty hlavního klíče, hostitele, ID databáze, collectionId a seznamu preferredLocations.  
 
-5. Přejděte na `http://apps.twitter.com/`a zaregistrujte twitteru přes aplikaci. Po výběru název vaší aplikace, budete mít k dispozici **uživatelský klíč, uživatelský tajný klíč, přístupový a tajný klíč přístupového tokenu**. Zkopírujte tyto hodnoty a jejich aktualizaci v souboru config.py poskytují že programový přístup k aplikaci pro Twitter informační kanál Twitteru.   
+5. Přejděte na `https://apps.twitter.com/`a zaregistrujte twitteru přes aplikaci. Po výběru název vaší aplikace, budete mít k dispozici **uživatelský klíč, uživatelský tajný klíč, přístupový a tajný klíč přístupového tokenu**. Zkopírujte tyto hodnoty a jejich aktualizaci v souboru config.py poskytují že programový přístup k aplikaci pro Twitter informační kanál Twitteru.   
 
 6. Uložte soubor config.py. Otevřete příkazový řádek a spusťte aplikaci v Pythonu pomocí následujícího příkazu:
 
@@ -511,4 +511,4 @@ Pokud jste tak dosud neučinili, stáhněte si Sparku do konektoru služby Azure
 * [Příklady agregace](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [Ukázkové skripty a poznámkovými bloky](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-Můžete také zkontrolovat [Apache Spark SQL, datových rámců a datových sad průvodce](http://spark.apache.org/docs/latest/sql-programming-guide.html)a [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) článku.
+Můžete také zkontrolovat [Apache Spark SQL, datových rámců a datových sad průvodce](https://spark.apache.org/docs/latest/sql-programming-guide.html)a [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) článku.

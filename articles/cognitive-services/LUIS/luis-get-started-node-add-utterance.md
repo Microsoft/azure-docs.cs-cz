@@ -1,21 +1,22 @@
 ---
-title: Rychlý start pro Node.js – změna modelu a trénování aplikace LUIS
+title: Změna, trénovat na základě modelu aplikace Node.js
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu pro Node.js přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
+description: V tomto rychlém startu pro Node.js přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a487f44e164830928367d9f6ea737e793e38c0a8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 048579aa6d22144b9de8129042ab9fd2a36d4d00
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036146"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092684"
 ---
 # <a name="quickstart-change-model-using-nodejs"></a>Rychlý start: Změna modelu pomocí Node.js
 
@@ -78,7 +79,7 @@ Spusťte aplikaci z příkazového řádku s Node.js.
 
 Volání `npm start` přidá promluvy, trénuje a získá stav školení.
 
-```CMD
+```console
 > npm start 
 ```
 
@@ -91,6 +92,6 @@ Tento příkazový řádek ukazuje výsledky volání rozhraní API pro přidáv
 
 Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md)

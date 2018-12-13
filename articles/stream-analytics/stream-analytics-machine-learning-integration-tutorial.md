@@ -2,19 +2,19 @@
 title: Integrace Azure Stream Analytics pomocí Azure Machine Learning
 description: Tento článek popisuje, jak rychle vytvořit jednoduchou úlohu Azure Stream Analytics, která se integruje s Azure Machine Learning, jak pomocí uživatelsky definovaná funkce.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/16/2018
-ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d90439e498e8812551d9e2994165f1714d3bdaab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685748"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093311"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning
 Tento článek popisuje, jak rychle vytvořit jednoduchou úlohu Azure Stream Analytics, která se integruje s Azure Machine Learning. Použijete modelem Machine Learning pro analýzu mínění v galerii Cortana Intelligence pro analýzu streamování textová data a určit skóre mínění v reálném čase. Pomocí Cortana Intelligence Suite vám umožňuje provést bez starostí o složitými rozhraními vytváření modelu analýzy mínění.
@@ -28,7 +28,7 @@ Můžete použít, co jste se naučili v tomto článku pro podobné scénáře 
 
 Ve skutečném scénáři by získat data přímo z datového proudu Twitter. Pro zjednodušení tento kurz je napsán tak, aby úlohy Stream Analytics získá tweetů ze souboru CSV v úložišti objektů Blob v Azure. Můžete vytvořit svůj vlastní soubor CSV, nebo můžete použít ukázkový soubor CSV, jak je znázorněno na následujícím obrázku:
 
-![Ukázka tweety v souboru CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
+![Ukázka tweety, které vidíte v souboru CSV](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-figure-2.png)  
 
 Úloha Stream Analytics, který vytvoříte platí modelu analýzy subjektivního hodnocení jako uživatelem definované funkce (UDF) na těchto ukázkových datech text z úložiště objektů blob. Výstup (výsledek analýzy mínění) je zapsán do stejného úložiště objektů blob v jiném souboru CSV. 
 
@@ -58,15 +58,15 @@ Pro tento krok můžete použít libovolný soubor CSV, jako je například je k
 
 3. Zadejte existující skupinu prostředků a umístění. Pro umístění doporučujeme vám, že všechny prostředky vytvořené v tomto kurzu používat stejné umístění.
 
-    ![Zadejte podrobnosti o účtu úložiště](./media/stream-analytics-machine-learning-integration-tutorial/create-sa1.png)
+    ![Zadejte podrobnosti o účtu úložiště](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
 4. Na webu Azure Portal vyberte účet úložiště. V okně účtu úložiště, klikněte na tlačítko **kontejnery** a potom klikněte na tlačítko  **+ &nbsp;kontejneru** k vytvoření objektu blob úložiště.
 
-    ![vytvořit kontejner objektů blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa2.png)
+    ![Vytvoření kontejneru úložiště objektů blob pro vstup](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
 5. Zadejte název kontejneru (`azuresamldemoblob` v příkladu) a ověřte, že **získat přístup k typu** je nastavena na **Blob**. Až to budete mít, klikněte na **OK**.
 
-    ![Zadejte podrobnosti o kontejneru objektů blob](./media/stream-analytics-machine-learning-integration-tutorial/create-sa3.png)
+    ![Zadejte podrobnosti o kontejneru objektů blob](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
 6. V **kontejnery** okně Vybrat nový kontejner, který se otevře okno pro tento kontejner.
 
@@ -123,7 +123,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která čte tweety, které uk�
 
 3. Název úlohy `azure-sa-ml-demo`, zadejte předplatné, zadejte existující skupinu prostředků nebo vytvořte novou a vyberte umístění pro úlohu.
 
-   ![Zadejte nastavení pro nové úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
+   ![Zadejte nastavení pro nové úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-job-1.png)
    
 
 ### <a name="configure-the-job-input"></a>Konfigurace vstupu úlohy
@@ -143,7 +143,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která čte tweety, které uk�
    |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve (`azuresamldemoblob`)        |
    |**Formát serializace události**  |  Vyberte **sdíleného svazku clusteru**       |
 
-   ![Nastavení pro nové vstupu úlohy](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
+   ![Nastavení pro nové vstup úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
 4. Klikněte na **Uložit**.
 
@@ -163,7 +163,7 @@ Nyní můžete vytvořit úlohu Stream Analytics, která čte tweety, které uk�
    |**Kontejner**  | Vyberte kontejner, který jste vytvořili dříve (`azuresamldemoblob`)        |
    |**Formát serializace události**  |  Vyberte **sdíleného svazku clusteru**       |
 
-   ![Nastavení pro nový výstup úlohy](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
+   ![Nastavení pro nový výstup úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
 4. Klikněte na **Uložit**.   
 
@@ -185,7 +185,7 @@ V této části kurzu definujete funkci v úloze Stream analýzy. Funkci lze vyv
    | **Adresa URL**| Vložte adresu URL webové služby.|
    |**Klíč** | Vložte klíč rozhraní API. |
   
-   ![Nastavení pro přidání funkce Machine Learning do úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![Nastavení pro přidání funkce Machine Learning do úlohy Stream Analytics](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
 4. Klikněte na **Uložit**.
 

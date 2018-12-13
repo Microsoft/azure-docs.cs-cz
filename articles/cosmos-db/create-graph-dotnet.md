@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 132e13f213a681b2e6e8581200070fb316e7b582
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 954d223b7534e7fc72c54bc6c30ad55053c2fe1d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847095"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089271"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB: Vytvoření aplikace v .NET Framework nebo .NET Core s využitím rozhraní Gremlin API
 
@@ -30,7 +30,7 @@ ms.locfileid: "52847095"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Gremlin API](graph-introduction.md) služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
+Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Gremlin API](graph-introduction.md) služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal. Potom sestavíte a spustíte konzolovou aplikaci pomocí open source ovladače [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet).  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -161,7 +161,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru Program.cs.
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) přejděte k vašemu účtu databáze grafů. Na kartě **Přehled** se zobrazují dva koncové body: 
+1. Na webu [Azure Portal](https://portal.azure.com/) přejděte k vašemu účtu databáze grafů. Na kartě **Přehled** se zobrazují dva koncové body: 
  
    **.Net SDK URI** – Tato hodnota se použije, když se k účtu databáze grafů připojíte s využitím knihovny Microsoft.Azure.Graphs. 
 

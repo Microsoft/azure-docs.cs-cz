@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 918ffaf42e7216313a385c866f73bd57a529784a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e663a7b8f68c43ebf4c562dd67630db5d113e979
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838884"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090750"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Použití Azure Cosmos DB změnit informační kanál k vizualizaci dat v reálném čase analýzy
 
@@ -94,13 +94,12 @@ Vytvoření prostředků Azure – Azure Cosmos DB, účet úložiště, Centrum
 
 Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování. Když uživatel zobrazí položka, přidá položku do jejich košíku nebo nákupy položky, kolekce se zobrazí záznam, který se týká také akce ("Zobrazit", "Přidání" nebo "koupit"), název položky ověřovaného cena související položky a identifikační číslo uživatele košíku i nvolved.
 
-1. Přejděte na [webu Azure Portal](http://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
+1. Přejděte na [webu Azure Portal](https://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
 
 2. Z **Průzkumník dat** vyberte **novou kolekci** , vyplňte formulář s následujícími podrobnostmi:  
 
    * Pro **id databáze** pole, vyberte **vytvořit nový**, zadejte **changefeedlabdatabase**. Nechte **propustnosti zřídit databáze** políčko nezaškrtnuté.  
    * Pro **kolekce** id zadejte **changefeedlabcollection**.  
-   * Pro **kapacitu úložiště**vyberte **Unlimited**.  
    * Pro **klíč oddílu** zadejte **/položky**. Toto je velká a malá písmena, proto zkontrolujte, že zadáte jeho správně.  
    * Pro **propustnost** zadejte **10000**.  
    * Vyberte tlačítko **OK**.  
@@ -119,7 +118,7 @@ Teď vytvoříte kolekci, podržte událostí webu elektronického obchodování
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Získání připojovacího řetězce služby Azure Cosmos DB
 
-1. Přejděte na [webu Azure Portal](http://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
+1. Přejděte na [webu Azure Portal](https://portal.azure.com/) a najít **účet služby Azure Cosmos DB** , který je vytvořil šablonu nasazení.  
 
 2. Přejděte **klíče** podokně zkopírujte primární PŘIPOJOVACÍ řetězec a zkopírovat ho do poznámkového bloku nebo jiného dokumentu, zda bude mít přístup k v rámci testovacího prostředí. Byste měli popsat **připojovací řetězec Cosmos DB**. Budete muset později zkopírujte řetězec do kódu, takže poznamenejte a mějte na paměti, kde jsou ukládání.
 
@@ -171,7 +170,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 3. Přidejte **kolekce** a **databáze** názvy. (Tyto názvy musí být **changefeedlabcollection** a **changefeedlabdatabase** nerozhodnete pojmenujte svůj odlišně.)
 
-   ![Aktualizace připojovacích řetězců](./media/changefeed-ecommerce-solution/update-connection-string.png)
+   ![Aktualizovat připojovací řetězce](./media/changefeed-ecommerce-solution/update-connection-string.png)
  
 4. Uložte změny na všechny soubory upravovat.  
 
@@ -179,7 +178,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
  
 6. Počkejte spuštění programu. Hvězdiček znamená, že data se chystá v! Zachovat spuštěný program – je důležité, že velké množství dat shromažďovaných.  
 
-7. Když přejdete na [webu Azure Portal](http://portal.azure.com/) , Cosmos DB účtu v rámci vaší skupiny prostředků, klikněte na **Průzkumník dat**, uvidíte náhodná data naimportovat do vaší  **changefeedlabcollection** .
+7. Když přejdete na [webu Azure Portal](https://portal.azure.com/) , Cosmos DB účtu v rámci vaší skupiny prostředků, klikněte na **Průzkumník dat**, uvidíte náhodná data naimportovat do vaší  **changefeedlabcollection** .
  
    ![Data generovaná v portálu](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -187,7 +186,7 @@ Chcete-li zobrazit zpracování kanálu změn nové akce na webu elektronického
 
 Azure Stream Analytics je plně spravovaná Cloudová služba pro zpracování streamovaných dat v reálném čase. V tomto testovacím prostředí použijete stream analytics zpracovávat nové události z centra událostí (například při zobrazit, přidat do košíku nebo položky zakoupili), začlenit tyto události do analýzy dat v reálném čase a odeslat je do Power BI pro vizualizace.
 
-1. Z [webu Azure Portal](http://portal.azure.com/), přejděte do vaší skupiny prostředků klikněte na **streamjob1** (úloha stream analytics, které jste vytvořili prelab).  
+1. Z [webu Azure Portal](https://portal.azure.com/), přejděte do vaší skupiny prostředků klikněte na **streamjob1** (úloha stream analytics, které jste vytvořili prelab).  
 
 2. Vyberte **vstupy** jak je znázorněno níže.  
 
@@ -322,11 +321,11 @@ Power BI je sada nástrojů pro obchodní analýzy k analýze dat a sdílet pře
 
 Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připojení k webu skutečné elektronického obchodování. Aby bylo možné vytvářet webu elektronického obchodování, použijte databázi Azure Cosmos DB k ukládání seznam kategorií produktů (ženy, Pánské, Unisex), katalog produktů a seznamu Oblíbené položky.
 
-1. Přejděte zpět na [webu Azure Portal](http://portal.azure.com/), pak na vaše **účtu služby Cosmos DB**, klikněte na **Průzkumník dat**.  
+1. Přejděte zpět na [webu Azure Portal](https://portal.azure.com/), pak na vaše **účtu služby Cosmos DB**, klikněte na **Průzkumník dat**.  
 
    Přidat dvě kolekce pod **changefeedlabdatabase** - **produkty** a **kategorie** s kapacitu dlouhodobého úložiště.
 
-   Přidat jiné kolekce pod **changefeedlabdatabase** s názvem **topItems** s **Unlimited** kapacitu úložiště. Zápis **/položky** jako klíč oddílu.
+   Přidat jiné kolekce pod **changefeedlabdatabase** s názvem **topItems** a **/položky** jako klíč oddílu.
 
 2. Vyberte **topItems** kolekce a v části **škálování a nastavení** nastavit **TTL** bude **30 sekund** tak, že topItems aktualizací každých 30 sekund.
 
@@ -392,7 +391,7 @@ Nyní zjistíte, jak můžete váš nový nástroj pro analýzu dat pro připoje
 
 ## <a name="delete-the-resources"></a>Odstranit prostředky
 
-Pokud chcete odstranit prostředky, které jste vytvořili v tomto prostředí, přejděte do skupiny prostředků na [webu Azure Portal](http://portal.azure.com/)a pak vyberte **odstranit skupinu prostředků** v nabídce v horní části stránky a postupujte podle pokynů k dispozici.
+Pokud chcete odstranit prostředky, které jste vytvořili v tomto prostředí, přejděte do skupiny prostředků na [webu Azure Portal](https://portal.azure.com/)a pak vyberte **odstranit skupinu prostředků** v nabídce v horní části stránky a postupujte podle pokynů k dispozici.
 
 ## <a name="next-steps"></a>Další postup 
   

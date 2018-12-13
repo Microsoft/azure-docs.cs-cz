@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 638946f0ffa8b6540f55fb7a22ac17bd262269bf
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ea3868b66ec44057f9e84292d30b1aaf6affdf1c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621679"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888048"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -84,10 +84,10 @@ Odpověď bude obsahovat podrobnosti o vytvořené spravované identitě přiřa
 
 Klienti můžou spravovanou identitu přiřazenou uživatelem používat pro několik prostředků Azure. Pomocí následujících příkazů přiřaďte spravovanou identitu přiřazenou uživatelem k jednomu virtuálnímu počítači. Jako hodnotu parametru `-IdentityID` použijte vlastnost `Id` vrácenou v předchozím kroku.
 
-Přiřaďte spravovanou identitu přiřazenou uživatelem k virtuálnímu počítači s Linuxem pomocí příkazu [az vm assign-identity](/cli/azure/vm#az-vm-assign-identity). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
+Přiřadit virtuálním počítačům s Linuxem pomocí spravované identity přiřazené uživateli [az vm identity přiřadit](/cli/azure/vm#az-vm-identity-assign). Nezapomeňte nahradit hodnoty parametrů `<RESOURCE GROUP>` a `<VM NAME>` vlastními hodnotami. Jako hodnotu parametru `--identities` použijte vlastnost `id` vrácenou v předchozím kroku.
 
 ```azurecli-interactive
-az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
+az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAMI NAME>"
 ```
 
 ## <a name="grant-your-user-assigned-managed-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Udělení přístupu spravované identitě přiřazené uživatelem ke skupině prostředků v Azure Resource Manageru 

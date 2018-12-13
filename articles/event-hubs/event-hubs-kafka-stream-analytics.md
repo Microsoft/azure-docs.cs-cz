@@ -1,5 +1,5 @@
 ---
-title: Zpracování Apache Kafka pro události služby Event Hubs pomocí Azure Stream analytics | Dokumentace Microsoftu
+title: Zpracování události Apache Kafka s použitím Stream analytics – služba Azure Event Hubs | Dokumentace Microsoftu
 description: Tento článek ukazuje, jak zpracovávat události Kafka, které se ingestuje do služby event hubs s využitím Azure Stream Analytics
 services: event-hubs
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 031ed86461420ca6ebb2ac3a8f669305666e3cf4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278340"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076836"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -205,15 +205,15 @@ Po dokončení nastavení úlohy Stream Analytics pro čtení příchozího dato
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Další informace o Event Hubs a centra událostí pro systém Kafka, naleznete v následujícím tématu:  
+V tomto článku jste zjistili, jak streamovat do služby Event Hubs s podporou Kafka, aniž byste museli měnit klienty protokolů nebo provozovat vlastní clustery. Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak vytvořit Kafka povolena Služba Event Hubs](event-hubs-create-kafka-enabled.md)
-- [Stream do služby Event Hubs ze svých aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Zrcadlení zprostředkovatele Kafka v Centru událostí podporující Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Připojení k rozbočovači Kafka povolená událost Apache Sparku](event-hubs-kafka-spark-tutorial.md)
-- [Připojit Apache Flink Kafka povolené eventhubu](event-hubs-kafka-flink-tutorial.md)
-- [Integrovat připojení Kafka s podporou Kafka eventhub](event-hubs-kafka-connect-tutorial.md)
-- [Připojit Akka datové proudy Kafka povolené eventhubu](event-hubs-kafka-akka-streams-tutorial.md)
-- [Prozkoumejte ukázky na náš GitHub](https://github.com/Azure/azure-event-hubs-for-kafka) 
+- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create-kafka-enabled.md)
+- [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Připojení Apache Sparku k centru událostí s podporou Kafka](event-hubs-kafka-spark-tutorial.md)
+- [Připojení Apache Flinku k centru událostí s podporou Kafka](event-hubs-kafka-flink-tutorial.md)
+- [Integrace připojení Kafka s centrem událostí s podporou Kafka](event-hubs-kafka-connect-tutorial.md)
+- [Připojení Akka Streams k centru událostí s podporou Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+- [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka) 

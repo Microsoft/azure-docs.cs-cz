@@ -7,13 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 869941781643d3486506b5a3caed4006019fb3b7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 555a2bdfe3997114c1aaa202a89d650287f27c0e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310031"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091624"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -34,13 +35,13 @@ Azure Data Lake Store výstup ze Stream Analytics není aktuálně dostupná v o
 
 1. Při výběru úložiště Data Lake jako výstup na webu Azure Portal, zobrazí se výzva k autorizaci připojení existující Data Lake Store.  
 
-   ![Povolit Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
+   ![Autorizovat připojení pro Data Lake Store](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
 2. Pokud již máte přístup k Data Lake Store, vyberte **povolit teď** a zobrazí stránku určující **přesměrování na autorizaci**. Po úspěšném ověření, zobrazí se stránka, která můžete konfigurovat výstupní Data Lake Store.
 
 3. Jakmile budete mít účet Data Lake Store, ověření, můžete konfigurovat vlastnosti pro výstup do Data Lake Store. V následující tabulce je seznam názvů vlastností a jejich popis nakonfigurovat výstup do Data Lake Store.
 
-   ![Povolit Data Lake Store](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
+   ![Definovat Data Lake Store jako výstupní Stream Analytics](./media/stream-analytics-define-outputs/07-stream-analytics-define-outputs.png)  
 
 | Název vlastnosti | Popis | 
 | --- | --- |
@@ -59,7 +60,7 @@ Je nutné donutit účtu Data Lake Store, pokud od úlohy byl vytvořen nebo pos
 
 Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data Lake Store > klikněte na tlačítko **obnovit autorizaci** propojit a po krátkou dobu a stránky objeví označující **přesměrování autorizace...**. Na stránce automaticky zavře a v případě úspěchu, označuje **autorizaci úspěšně obnovil**. Pak budete muset kliknout na **Uložit** v dolní části stránky a můžete pokračovat restartováním úlohy z **posledním zastavení** k zamezení ztrátě.
 
-![Povolit Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
+![Obnovit autorizaci Data Lake Store ve výstupu](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) může sloužit jako výstup pro data, která jsou svou povahou relační, nebo pro aplikace, které závisí na obsahu hostovaném v relační databázi. Úlohy Stream Analytics zapisovat do existující tabulky ve službě Azure SQL Database.  Schéma tabulky musí přesně odpovídat pole a jejich typy se výstup z vaší úlohy. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) je taky možné specifikovat jako výstup prostřednictvím také možnost výstupu SQL Database. Další informace o způsobech, jak zlepšit propustnost zápisu, naleznete [Stream Analytics pomocí služby Azure SQL DB jako výstup](stream-analytics-sql-output-perf.md) článku. Následující tabulka uvádí názvy vlastností a jejich popis vytvářejícím výstupem SQL Database.
@@ -133,11 +134,11 @@ Výstup Power BI ze Stream Analytics není aktuálně dostupná v oblastech Azur
 ### <a name="authorize-a-power-bi-account"></a>Povolit účet Power BI
 1. Když Power BI je vybrán jako výstup na webu Azure Portal, zobrazí se výzva k autorizaci stávajícího uživatele Power BI nebo vytvořte nový účet Power BI.  
    
-   ![Autorizace uživatele Power BI](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
+   ![Povolit uživatelům Power BI konfigurace výstupu](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 
 2. Vytvořte nový účet, pokud není ještě mít jeden a pak klikněte na tlačítko Povolit.  Můžete vidět na následující stránce:
    
-   ![Účet Azure Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
+   ![Ověření ve službě Power BI z účtu Azure](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)  
 
 3. V tomto kroku zadejte pracovní nebo školní účet pro autorizaci výstup Power BI. Pokud jste se už zaregistrovali službu Power BI, vyberte znaménko. Může být odlišné od účtu předplatného Azure, který jste aktuálně přihlášení pomocí pracovního nebo školního účtu, který používáte pro Power BI.
 
@@ -190,11 +191,11 @@ Datum a čas | Řetězec | Řetězec |  Datum a čas | Řetězec
 ### <a name="renew-power-bi-authorization"></a>Obnovit autorizaci Power BI
 Pokud po vytvoření nebo posledního ověření vaší úlohy Stream Analytics se změní heslo ke svému účtu Power BI, budete muset donutit Stream Analytics. Pokud Vícefaktorové ověřování (MFA) je nakonfigurován na tenantovi služby Azure Active Directory (AAD), musíte také obnovit autorizaci Power BI každé dva týdny. Příznaky tohoto problému je žádné výstupy a "ověřit uživatele chybu" v protokoly operací:
 
-  ![Chyba aktualizace tokenu Power BI](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
+  ![Power BI ověření chyba uživatele](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)  
 
 Chcete-li vyřešit tento problém, zastavte spuštěné úlohy a přejděte na výstup do Power BI.  Vyberte **obnovit autorizaci** propojit a restartujte úlohu z **posledním zastavení** k zamezení ztrátě.
 
-  ![Power BI se tato možnost obnoví autorizace](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![Obnovit autorizaci Power BI pro výstup](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Azure Table storage](../storage/common/storage-introduction.md) nabízí vysoce dostupné a široce škálovatelné úložiště, takže aplikace může automaticky škálovat podle požadavků uživatelů. Úložiště Table je úložiště klíčů/atributů typu NoSQL od Microsoftu, který můžete využít pro strukturovaná data s méně omezeními ve schématu. Azure Table storage můžete použít k ukládání dat pro trvalost a efektivní načtení.

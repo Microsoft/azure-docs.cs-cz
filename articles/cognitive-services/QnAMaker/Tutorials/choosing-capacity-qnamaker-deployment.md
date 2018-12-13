@@ -1,7 +1,7 @@
 ---
 title: Kapacita prostředků pro nasazení – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Tento průvodce výběrem kapacitu pro vaše nasazení nástroje QnA Maker
+description: Před vytvořením služby QnA Maker, byste měli rozhodnout, jaké úroveň výše uvedených služeb je pro vás vhodná.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 582ace641cadbc7ad3a622def07f70ed51ccac53
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 9e197929ce08f4e0c665f96d1c4ddbd382fdfb22
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389798"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084447"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Výběr kapacitu pro vaše nasazení nástroje QnA Maker
 

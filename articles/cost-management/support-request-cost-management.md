@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: ce6847accef6290497ff0833901a1c07ee59b7b6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4118e0bb0e42a1eec707b2fdb6682333400e2e1a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998030"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099830"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Vytvořit žádost o podporu pro Cloudyn
 
@@ -43,7 +43,7 @@ Pokud chcete vytvořit lístek podpory fakturace Cost Management, v části **ty
 
 Chcete-li zkontrolovat stav incidentu, který jste vytvořili, přečtěte si téma [všechny žádosti o podporu](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Pokud používáte starší verzi Cloudyn bez účtu Azure, můžete otevřít žádost o podporu na http://support.microsoft.com/oas/default.aspx?prid=16451.
+Pokud používáte starší verzi Cloudyn bez účtu Azure, můžete otevřít žádost o podporu na https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Další postup

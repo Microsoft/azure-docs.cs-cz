@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 81927c4e69f36fbc4859ac2865bc15cbfacb17fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843865"
+ms.locfileid: "52880110"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
 
@@ -89,7 +89,7 @@ Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovoln
 ### <a name="refresh-tokens"></a>Obnovovacích tokenů
 Aktualizovat tokeny jsou tokeny zabezpečení, které vaše aplikace můžete použít k získání nové tokeny typu ID a přístupové tokeny ve toku OAuth 2.0. Poskytují dlouhodobé přístup k prostředkům jménem uživatelů vaší aplikace bez nutnosti interakce s těmito uživateli.
 
-Pro příjem aktualizace tokenu v odpovědi tokenu, vaše aplikace musí požádat o `offline_acesss` oboru. Další informace o `offline_access` oboru, přečtěte si [referenční informace o protokolu Azure AD B2C](active-directory-b2c-reference-protocols.md).
+Pro příjem aktualizace tokenu v odpovědi tokenu, vaše aplikace musí požádat o `offline_access` oboru. Další informace o `offline_access` oboru, přečtěte si [referenční informace o protokolu Azure AD B2C](active-directory-b2c-reference-protocols.md).
 
 Obnovovacích tokenů jsou a bude vždy, stane zcela neprůhledný do vaší aplikace. Vydává se službou Azure AD a mohou být zkontrolovány a interpretovat jenom služby Azure AD. Jsou dlouhodobé, ale vaše aplikace, neměl by být zapsaný s předpokladem, že bude trvat obnovovací token pro určité časové období. Tokeny obnovení může být neplatné v daném okamžiku provádějí pro celou řadu důvodů. Jedině pro vaši aplikaci vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token do služby Azure AD.
 

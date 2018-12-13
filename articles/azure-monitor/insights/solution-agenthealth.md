@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 5823e6e3bf2614bf834a9ab64c3403829d58a779
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.openlocfilehash: 1c6012503c5300d64d17a4b8efc262fa91355c88
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715217"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890105"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
 Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
 
 ## <a name="prerequisites"></a>Požadavky
-Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../../log-analytics/log-analytics-om-agents.md) integrované s váš pracovní prostor.    
+Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../../azure-monitor/platform/om-agents.md) integrované s váš pracovní prostor.    
 
 ## <a name="solution-components"></a>Součásti řešení
 Toto řešení se skládá z následujících prostředků, které se přidají do vašeho pracovního prostoru, a přímo připojených agentů nebo skupiny pro správu připojené k nástroji Operations Manager.
@@ -36,7 +36,7 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="configuration"></a>Konfigurace
 Přidejte řešení Agent Health do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](solutions.md). Není nutná žádná další konfigurace.

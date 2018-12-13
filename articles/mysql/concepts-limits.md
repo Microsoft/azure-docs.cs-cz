@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/30/2018
-ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.date: 12/6/2018
+ms.openlocfilehash: 89451122ff8cae33f1710fc1458fcd4277964e1f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982874"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090988"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
@@ -31,10 +31,12 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Obecné použití| 8| 1250|
 |Obecné použití| 16| 2500|
 |Obecné použití| 32| 5000|
+|Obecné použití| 64| 10000|
 |Paměťově optimalizované| 2| 600|
 |Paměťově optimalizované| 4| 1250|
 |Paměťově optimalizované| 8| 2500|
 |Paměťově optimalizované| 16| 5000|
+|Paměťově optimalizované| 32| 10000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
 > Chyba 1040 (08004): Příliš mnoho připojení

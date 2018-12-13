@@ -3,19 +3,19 @@ title: Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js
 description: Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB
 services: cosmos-db
 author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.custom: quick start connect, mvc, devcenter
+ms.custom: quick start connect, mvc, devcenter, seodec2018
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
-ms.author: sngun
-ms.openlocfilehash: 6844fc2450154b7e71c74ad9728929c3dc9df2f9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1a5d0c7c2e44d934658434b8ea0b048c238a9bef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844477"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097858"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
 
@@ -45,13 +45,13 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
-Abyste mohli spustit příkazy `npm` a `git`, musíte mít kromě rozhraní příkazového řádku Azure místně nainstalovaný [Node.js](https://nodejs.org/) a [Git](http://www.git-scm.com/downloads).
+Abyste mohli spustit příkazy `npm` a `git`, musíte mít kromě rozhraní příkazového řádku Azure místně nainstalovaný [Node.js](https://nodejs.org/) a [Git](https://www.git-scm.com/downloads).
 
 Měli byste mít praktickou znalost Node.js. Tento rychlý start není určen jako pomůcka pro všeobecný vývoj aplikací v Node.js.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](http://meanjs.org/).
+Spuštěním následujících příkazů naklonujte ukázkové úložiště. Toto ukázkové úložiště obsahuje výchozí aplikaci [MEAN.js](https://meanjs.org/).
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
@@ -180,7 +180,7 @@ module.exports = {
 
 ## <a name="retrieve-the-key"></a>Načtení klíče
 
-Aby bylo možné se připojit k databázi služby Azure Cosmos DB, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys).
+Aby bylo možné se připojit k databázi služby Azure Cosmos DB, potřebujete klíč databáze. Pro načtení primárního klíče použijte příkaz [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys).
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup --query "primaryMasterKey"

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý start: Přístup ke službě Azure Active Directory a vytvoření nového tenanta | Microsoft Docs'
-description: Rychlý start s informace o tom, jak najít Azure Active Directory a jak vytvořit nového tenanta pro vaši organizaci.
+title: Rychlý start k přístupu a vytvořit nového tenanta – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak najít Azure Active Directory a jak vytvořit nového tenanta pro vaši organizaci.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
-custom: it-pro
-ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: cd179d371ec75a2e6ca258a1efbc2361e50a5438
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023540"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083258"
 ---
-# <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>Rychlý start: Přístup ke službě Azure Active Directory a vytvoření nového tenanta
+# <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Rychlý start: Vytvoření nového tenanta Azure Active Directory
 Pomocí portálu Azure Active Directory (Azure AD) můžete provádět všechny úlohy správy, včetně vytvoření nového tenanta pro vaši organizaci. 
 
 V tomto rychlém startu se dozvíte, jak se dostat na web Azure Portal a do služby Azure Active Directory a jak vytvořit základního tenanta pro vaši organizaci.
@@ -61,7 +61,7 @@ Pokud tuto aplikaci nebudete používat, můžete tenanta odstranit provedením 
 
     ![Stránka Vytvořit adresář](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Změňte nebo přidejte další názvy domén, viz [Přidání vlastního názvu domény do Azure Active Directory](add-custom-domain.md)
 
 - Přidejte uživatele, viz [Přidání nebo odstranění nového uživatele](add-users-azure-active-directory.md)

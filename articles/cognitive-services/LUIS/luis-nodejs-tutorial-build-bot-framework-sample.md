@@ -1,25 +1,26 @@
 ---
-title: Služba LUIS robotů s Node.js – Web app Bot - Bot Framework 3.0 SDK
+title: Služba LUIS robotů s využitím Node.js
 titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integrovaná aplikace LUIS pomocí rozhraní Bot Framework.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 7229155b9fbfb93babd45c746d0f36fbab812013
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042325"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093399"
 ---
-# <a name="luis-bot-in-nodejs"></a>Služba LUIS robotů v Node.js
+# <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
-Pomocí Node.js, sestavení je chatovací robot součástí jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
+Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -27,7 +28,7 @@ Než začnete vytvářet robota, postupujte podle kroků v [vytvořit aplikaci](
 
 Robot jsou reaguje na záměry od HomeAutomation domény, které jsou v aplikaci LUIS. Pro každou z těchto záměry aplikace LUIS poskytuje záměru, který se mapuje na ni. Robot poskytuje dialogového okna, která zpracovává záměru, který zjistí LUIS.
 
-| Záměr | Příklad utterance | Funkce robota |
+| Záměr | Ukázková promluva | Funkce robota |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Vypnul světla. | Vyvolá robota `TurnOnDialog` při `HomeAutomation.TurnOn` se detekuje. Toto dialogové okno je, kde by vyvolat služby IoT můžete zapnout v zařízení a informace pro uživatele, že zařízení je zapnutý. |
 | HomeAutomation.TurnOff | Vypněte ložnici světla. | Vyvolá robota `TurnOffDialog` při `HomeAutomation.TurnOff` se detekuje. Toto dialogové okno, kde by vyvolat služby IoT, vypněte zařízení a informace pro uživatele, která zařízení jsou vypnuté. |
@@ -78,7 +79,7 @@ Nainstalujte balíčky NPM pomocí následujících kroků:
 
 5. Otevře se nové okno prohlížeče. V konzole zadejte následující příkaz:
 
-    ```
+    ```console
     cd site\wwwroot && npm install
     ```
 
@@ -115,7 +116,7 @@ Přejít na druhé okno prohlížeče, pokud je stále otevřít nebo v prvním 
 
 V editoru kódu, otevřete `app.js`. Obsahuje následující kód:
 
-```javascript
+```nodejs
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -206,7 +207,7 @@ Existující záměry v app.js jsou ignorovány. Můžete je nechat.
 
 Zkopírujte následující kód a přidejte ho do `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -223,7 +224,7 @@ bot.dialog('TurnOn',
 
 Zkopírujte následující kód a přidejte ho do `app.js`.
 
-```javascript
+```nodejs
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);
@@ -241,7 +242,7 @@ Na webu Azure Portal, vyberte na **testování ve Web Chat** otestovat robota. Z
 > [!TIP]
 > Pokud zjistíte, že váš robot nerozpoznal vždy správné záměr nebo entity, zvýšit výkon aplikace LUIS tím, že je další příklad projevy jeho trénování. Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test).
 
-## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
+## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
 Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-js) sady SDK.
 
 ## <a name="next-steps"></a>Další postup

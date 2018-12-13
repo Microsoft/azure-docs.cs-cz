@@ -8,12 +8,12 @@ author: tknandu
 ms.author: ramkris
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: aacd41eef250577681a9910c9b7c68f3b7000f5c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: b6831e9c6b679d2fd4fa585331213290d67068c2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870788"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084007"
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementace architektury lambda na platformě Azure 
 
@@ -34,7 +34,7 @@ Architektury lambda je obecný, škálovatelná, a odolné proti chybám data ar
 
 Zdroj: http://lambda-architecture.net/
 
-Základní principy architektury lambda jsou popsané na předchozím obrázku jako za [ https://lambda-architecture.net ](http://lambda-architecture.net/).
+Základní principy architektury lambda jsou popsané na předchozím obrázku jako za [ http://lambda-architecture.net ](http://lambda-architecture.net/).
 
  1. Všechny **data** odesílají do *obě* *dávková vrstva* a *rychlostní vrstva*.
  2. **Dávková vrstva** má hlavní datové sady (set neměnné a jen pro připojení nezpracovaných dat) a předem vypočítá dávkové zobrazení.
@@ -278,4 +278,4 @@ Pokud jste tak dosud neučinili, stáhněte si Sparku do konektoru služby Azure
 * [Ukázky kanálu změn](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Stream zpracovávat změny pomocí Azure Cosmos DB Change Feed a Apache Sparku](https://github.com/Azure/azure-cosmosdb-spark/wiki/Stream-Processing-Changes-using-Azure-Cosmos-DB-Change-Feed-and-Apache-Spark)
 
-Můžete také zkontrolovat [Apache Spark SQL, datových rámců a datových sad průvodce](http://spark.apache.org/docs/latest/sql-programming-guide.html) a [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) článku.
+Můžete také zkontrolovat [Apache Spark SQL, datových rámců a datových sad průvodce](https://spark.apache.org/docs/latest/sql-programming-guide.html) a [Apache Spark v Azure HDInsight](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) článku.

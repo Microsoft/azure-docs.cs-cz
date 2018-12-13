@@ -9,19 +9,19 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 3a21b2521cc16b97519f2f84b40a3f51536757e2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: af7515c7888bf7710c9bd087af61b29ed0be0768
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999678"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085231"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorování využití a odhadované náklady
 
 > [!NOTE]
 > Tento článek popisuje, jak zobrazit využití a odhadované náklady napříč více monitorovacích funkcí Azure pro různé cenové modely.  Přečtěte si následující články související informace.
 > - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
-> - [Analýza využití dat v Log Analytics](../log-analytics/log-analytics-usage.md) popisuje, jak analyzovat a upozornění na data využití.
+> - [Analýza využití dat v Log Analytics](../azure-monitor/platform/data-usage.md) popisuje, jak analyzovat a upozornění na data využití.
 > - [Správa cen a objemů dat ve službě Application Insights](../application-insights/app-insights-pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
 
 V centru monitorování na portálu Azure Portal **využití a odhadované náklady** stránka vysvětluje použití základní monitorovací funkce, jako [upozornění, metriky, oznámení](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), a [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Pro zákazníky na cenové plány, které jsou k dispozici před dubnem 2018 to také zahrnuje využití Log Analytics koupíte přehledy a analýzy nabízejí.

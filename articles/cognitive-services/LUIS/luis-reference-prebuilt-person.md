@@ -1,29 +1,30 @@
 ---
-title: PersonName předem připravených entit – odkaz na LUIS
+title: PersonName předem připravených entit
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje personName informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cjgronlund
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0bc9d59fa44125429bfcb4e6ca9e68d93b81c04d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: ad19aa8eef72234e034fe9c0e1905e848ace0650
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950569"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091743"
 ---
-# <a name="personname-entity"></a>PersonName entity
+# <a name="personname-entity"></a>Entita PersonName
 PersonName předem připravených entit rozpozná jména lidí. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující personName k záměry aplikace. personName entity se podporuje v angličtině a čínština [jazykové verze](luis-reference-prebuilt-entities.md).
 
 ## <a name="resolution-for-personname-entity"></a>Řešení pro entitu personName
 Následující příklad ukazuje rozlišení **builtin.personName** entity.
 
-```JSON
+```json
 {
   "query": "Is Jill Jones in Cairo?",
   "topScoringIntent": {

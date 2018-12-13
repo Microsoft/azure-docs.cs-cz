@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 075f79707dda4683c288163ec7bfdbf9807e153f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b509c7eceb3c2e2fb2e53f20791976b0322ad744
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834863"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089730"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Úrovně konzistence ve službě Azure Cosmos DB
 
-Distribuované databáze, které závisí na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence.  [Linearizovatelnosti](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti data. Ale přidá strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné, jak programovat aplikace. 
+Distribuované databáze, které závisí na replikaci pro vysokou dostupnost, s nízkou latencí nebo obojí, ujistěte se, základní kompromis mezi konzistence čtení a dostupnosti, latence a propustnosti. Většina komerčně dostupný distribuovaných databází požádejte vývojáři zvolit mezi těmito dvěma modely extreme konzistence: silnou konzistenci a konečné konzistence.  [Linearizovatelnosti](https://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf) nebo model pro zajištění konzistence je zlatým standardem programovatelnosti data. Ale přidá strmá cenu vyšší latence (v stabilního stavu) a nižší dostupnost (při selhání). Na druhé straně konečné konzistence nabízí vyšší dostupnost a lepší výkon, ale je obtížné, jak programovat aplikace. 
 
 Konzistence dat jako celé spektrum od volby místo dvěma extrémy přistupuje k Azure Cosmos DB. Silná konzistence a konečné konzistence jsou na obou koncích, ale existuje mnoho možností konzistence podél spektra. Mohou vývojáři tyto možnosti volby přesné a detailní kompromisy s ohledem na vysokou dostupnost nebo výkon. 
 
@@ -38,7 +38,7 @@ Kdykoli můžete nakonfigurovat výchozí úroveň konzistence na vašem účtu 
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Záruky související s úrovní konzistence
 
-Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že splňují 100 procent požadavků na čtení záruce konzistence pro všechny úrovně konzistence, že kterou si zvolíte. Žádost o čtení splňuje konzistence smlouvy SLA, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Azure Cosmos DB s použitím [TLA + specifikačnímu jazyku](http://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. 
+Komplexní smlouvy SLA k dispozici ve službě Azure Cosmos DB záruku, že splňují 100 procent požadavků na čtení záruce konzistence pro všechny úrovně konzistence, že kterou si zvolíte. Žádost o čtení splňuje konzistence smlouvy SLA, pokud jsou splněny všechny záruky konzistence spojené s úrovní konzistence. Přesné definice úrovní pět konzistence ve službě Azure Cosmos DB s použitím [TLA + specifikačnímu jazyku](https://lamport.azurewebsites.net/tla/tla.html) jsou součástí [azure-cosmos-tla](https://github.com/Azure/azure-cosmos-tla) úložiště GitHub. 
 
 Sémantika úrovně konzistence pět jsou popsány zde:
 
@@ -85,7 +85,7 @@ Další informace o konceptech konzistence najdete v následujících článcíc
 - [Replikovaná Data konzistence je vysvětleno prostřednictvím baseballu (dokument White Paper) podle Doug Terry](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Relace záruky pro replikovaná data slabě konzistentní vzhledem k aplikacím](https://dl.acm.org/citation.cfm?id=383631)
 - [Konzistence kompromisy moderní systémy distribuované databáze-návrhu: limit je pouze část textu](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
-- [Omezená Neaktuálnost pravděpodobnostní (PBS) pro praktické částečné kvor](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
+- [Omezená Neaktuálnost pravděpodobnostní (PBS) pro praktické částečné kvor](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Nakonec konzistentní – kdykoli znovu spustit.](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 
 ## <a name="next-steps"></a>Další postup

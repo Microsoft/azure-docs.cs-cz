@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 8b982dbddf22393e276437c77007e18bc4d40042
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867185"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083882"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro službu Azure SQL Database pomocí Resource Health
 
@@ -67,11 +67,11 @@ Když vaši službu SQL Database dojde k výpadku, provedení analýzy určit d�
 
 #### <a name="planned-maintenance"></a>Plánovaná údržba
 
-Infrastruktura Azure pravidelně provede plánovanou údržbu – upgrade hardwarové nebo softwarové komponenty v datovém centru. Zatímco databáze při údržbě, SQL může ukončit některé existující připojení a odmítnout nové značky. Přihlášení jsou nejčastěji přechodné selhání během plánované údržby a logika opakování pomáhá snižovat dopad. Pokud budete nadále dochází k chybám přihlášení, kontaktujte prosím podporu.
+Infrastruktura Azure pravidelně provede plánovanou údržbu – upgrade hardwarové nebo softwarové komponenty v datovém centru. Zatímco databáze při údržbě, SQL může ukončit některé existující připojení a odmítnout nové značky. Neúspěšná přihlášení během plánované údržby jsou nejčastěji přechodné a [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomáhá snižovat dopad. Pokud budete nadále dochází k chybám přihlášení, kontaktujte prosím podporu.
 
 #### <a name="reconfiguration"></a>Rekonfigurace
 
-Rekonfigurací se považují za přechodné podmínky. proto se očekává, že čas od času. Tyto události mohou být spouštěny zavádění vyrovnávání nebo softwaru a hardwaru. Všechny klientské produkční aplikace, která se připojuje k Cloudová databázová služba by měly implementovat logiku pro opakování robustní připojení, spolu s logikou omezení rychlosti, protože by zmírnit tyto situace a by měly obecně průhledného chyby pro koncového uživatele.
+Rekonfigurací se považují za přechodné podmínky. proto se očekává, že čas od času. Tyto události mohou být spouštěny zavádění vyrovnávání nebo softwaru a hardwaru. Všechny klientské produkční aplikace, která se připojuje k databázi cloudu by měly implementovat robustní připojení [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), protože by zmírnit tyto situace a by měly obecně průhledného chyby pro koncového uživatele.
 
 ## <a name="next-steps"></a>Další postup
 

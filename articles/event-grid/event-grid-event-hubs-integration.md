@@ -1,6 +1,6 @@
 ---
-title: Integrace služeb Azure Event Grid a Event Hubs
-description: Článek popisuje, jak používat služby Azure Event Grid a Event Hubs k migraci dat do služby SQL Data Warehouse.
+title: Odeslat data do datového skladu služby Event Hubs – Event Grid
+description: Popisuje, jak migrovat data do SQL Data Warehouse pomocí Azure Event Grid a Event Hubs. Funkce Azure používá k načtení zachytávací soubor.
 services: event-grid
 author: tfitzmac
 manager: timlt
@@ -8,14 +8,14 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: aad7a24d8b0e0bc74815cad3604db1cc21a6db96
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: 0b77d0cc32464fe8b7ac28f491f2cb23b0790ba7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163222"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097603"
 ---
-# <a name="stream-big-data-into-a-data-warehouse"></a>Streamování velkých objemů dat do datového skladu
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: Stream velkých objemů dat do datového skladu
 
 Azure [Event Grid](overview.md) je inteligentní služba směrování událostí, se kterou můžete reagovat na oznámení aplikací a služeb. Může například aktivovat funkci Azure, která zpracuje data Event Hubs zachycená v úložišti objektů blob v Azure nebo službě Data Lake Store a provede migraci těchto dat do dalších úložišť dat. Tato [ukázka Zachytávání Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) ukazuje, jak pomocí Zachytávání Event Hubs a služby Event Grid bezproblémově migrovat data Event Hubs z úložiště objektů blob do služby SQL Data Warehouse.
 
@@ -182,7 +182,7 @@ Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function Ap
 
 6. Sestavte řešení. Spusťte aplikaci WindTurbineGenerator.exe. Po pár minutách zadejte dotaz do tabulky v datovém skladu a zkontrolujte, že obsahuje migrovaná data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pokud chcete poznat rozdíly ve službách Azure pro zasílání zpráv, přečtěte si článek [Výběr mezi službami Azure, které doručují zprávy](compare-messaging-services.md).
 * Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).

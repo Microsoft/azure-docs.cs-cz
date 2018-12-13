@@ -1,5 +1,5 @@
 ---
-title: Přístup k datovým prostředkům z Jupyter notebooks v Azure | Dokumentace Microsoftu
+title: Přístup k prostředkům data z aplikace Jupyter notebook v Azure
 description: Jak přistupovat k souborům, rozhraní REST API, databáze a různé prostředky služby Azure Storage z poznámkového bloku Jupyter.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: cf03b614826b8da644fbf7817a91f04456c194e7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 425c1019a9c67ac726d03955d60d1389bef7cae2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855773"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084936"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup k datům cloudu v poznámkovém bloku
 

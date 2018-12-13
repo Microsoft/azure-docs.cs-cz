@@ -1,6 +1,6 @@
 ---
-title: Metriky Azure Event Hubs ve službě Azure Monitor (preview) | Dokumentace Microsoftu
-description: Monitorování služby Event Hubs pomocí monitorování Azure
+title: Metriky ve službě Azure Monitor (preview) – služby Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak použít monitorování Azure k monitorování služby Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e01262d67b6d08cd1cb05a6375344a5087fffce3
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 27a9f2619801346660dfedbda3eefe57b41ad6ac
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012517"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094317"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
 

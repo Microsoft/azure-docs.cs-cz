@@ -1,6 +1,6 @@
 ---
-title: Co je bezpečnostní skóre identity ve službě Azure AD? – verze Preview | Microsoft Docs
-description: Zjistěte, jak můžete pomocí bezpečnostního skóre identity zlepšit stav zabezpečení svého tenanta služby Azure AD.
+title: Co je zabezpečené skóre Identity? – Azure Active Directory (Public preview) | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak můžete pomocí identity zabezpečení skóre a zlepšit stav zabezpečení vašeho tenanta Azure AD.
 services: active-directory
 keywords: bezpečnostní skóre identity, Azure AD, zabezpečený přístup k firemním prostředkům
 documentationcenter: ''
@@ -16,14 +16,15 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: a9bb22cae2e9fcd607a81d442f4fb51f12c43454
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.custom: it-pro
+ms.openlocfilehash: 5a133d0a38852ca3e95e3ae07716c4fbd3c87f5d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224133"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092062"
 ---
-# <a name="what-is-the-identity-secure-score-in-azure-ad---preview"></a>Co je bezpečnostní skóre identity ve službě Azure AD? – verze Preview
+# <a name="what-is-the-identity-secure-score-in-azure-active-directory-public-preview"></a>Co je skóre zabezpečení identit v Azure Active Directory? (Public preview)
 
 Jak zabezpečený je váš tenant služby Azure AD? Pokud nevíte, jak na tuto otázku odpovědět, dozvíte se v tomto článku, jak vám bezpečnostní skóre identity umožní monitorovat a zlepšit stav zabezpečení vaší identity. 
 
@@ -158,7 +159,7 @@ Historii skóre zobrazíte tak, že přejdete na stránku analyzátoru skóre na
 Bezpečnostní skóre identity představuje tu součást bezpečnostního skóre Office 365, která se týká identity. To znamená, že doporučení pro bezpečnostní skóre identity a skóre identity v Office 365 jsou stejná. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Kliknutím [sem](https://www.youtube.com/watch?v=jzfpDJ9Kg-A) se můžete podívat na video o bezpečnostním skóre Office 365.
  

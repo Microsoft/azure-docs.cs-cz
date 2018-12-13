@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7602524675edbf0e3ca96c74a2aba2eac48c417b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416932"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084069"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -195,6 +195,9 @@ Konfigurace **enableStaging** nastavení k určení, jestli chcete data budou um
 | **linkedServiceName** |Zadejte název [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) propojenou službu, která odkazuje na instanci úložiště, které můžete použít jako dočasné pracovní úložiště. <br/><br/> Úložiště pomocí sdíleného přístupového podpisu nelze použít k načtení dat do SQL Data Warehouse pomocí PolyBase. Můžete ji použít v jiných scénářích. |neuvedeno |Ano, pokud **enableStaging** nastavena na hodnotu TRUE |
 | **Cesta** |Zadejte cestu úložiště objektů Blob, který chcete s daty, dvoufázové instalace. Pokud nezadáte cestu, služba vytvoří kontejner pro uložení dočasných dat. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště pomocí sdíleného přístupového podpisu nebo vyžadujete dočasných dat v konkrétním umístění. |neuvedeno |Ne |
 | **enableCompression** |Určuje, zda data je nutné zkomprimovat. předtím, než je zkopírovat do cíle. Toto nastavení omezuje objem dat přenášených. |False |Ne |
+
+>[!NOTE]
+> Pokud používáte dvoufázové instalace kopírování s komprese zapnuta, instanční objekt nebo ověřováním MSI pro pracovního objektu blob propojená služba se nepodporuje.
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi, které jsou popsány v předchozí tabulce:
 

@@ -1,5 +1,6 @@
 ---
-title: Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure | Dokumentace Microsoftu
+title: Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure
+titlesuffix: Azure Load Balancer
 description: Postup konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure pro podporu spřažení se zdrojovou IP adresou.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b521d633f5779daeab431a16a13f72bbf301182c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: bc78c4afd3a85dc4b7b03fb3543632da7586ea31
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415521"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083263"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurace distribučního režimu nástroje pro vyrovnávání zatížení Azure
 

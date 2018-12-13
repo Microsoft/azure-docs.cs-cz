@@ -1,21 +1,22 @@
 ---
 title: Podpora jazyků – rozhraní API pro rozpoznávání řeči služeb
 titleSuffix: Azure Cognitive Services
-description: Seznam podporované službou Speech přirozeného jazyka.
+description: Hlasové služby Azure podporu mnoha jazyků pro převod řeči na text a převod textu na řeč, spolu s překladu řeči. Tento článek obsahuje úplný seznam jazykovou podporu služby.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284757"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094572"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
@@ -36,8 +37,8 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
  en-GB | Angličtina (Spojené království) | Ne | Ano | Ano
  en-IN | English (India) | Ano | Ano | Ano
  cs NZ | angličtina (Nový Zéland) | Ne | Ano | Ano  
- cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
- es-ES | Španělština (Španělsko) | Ne | Ano | Ne
+ en-US | Angličtina (Spojené státy) | Ano | Ano | Ano
+ es-ES | Španělština (Španělsko) | Ano | Ano | Ne
  es-MX | Španělština (Mexiko) | Ne | Ano | Ne
  fi-FI | Finština (Finsko) | Ne | Ne | Ne
  fr-CA | Francouzština (Kanada) | Ne | Ano | Ne
@@ -49,7 +50,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
  nb-NO | Norština (Bokmal) (Norsko) | Ne | Ne | Ne
  NL-NL | Nizozemština (Nizozemsko) | Ne | Ano | Ne
  pl-PL | Polština (Polsko) | Ne | Ne | Ne
- pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
+ pt-BR | Portugalština (Brazílie) | Ano | Ano | Ne
  pt-PT | Portugalština (Portugalsko) | Ne | Ano | Ne
  ru-RU | Ruština (Rusko) | Ano | Ano | Ne
  sv-SE | Švédština (Švédsko) | Ne | Ne | Ne
@@ -158,7 +159,7 @@ Přizpůsobení hlasu je k dispozici pro nás Angličtina (en US), Španělsko �
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z následující tabulky jazyka řeči. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). Jsou k dispozici pro podmnožinu těchto jazyků [syntézu řeči](language-support.md#text-languages). 
+**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z následující tabulky jazyka řeči. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). Jsou k dispozici pro podmnožinu těchto jazyků [syntézu řeči](language-support.md#text-languages).
 
 ### <a name="speech-languages"></a>Jazyků pro řeč
 

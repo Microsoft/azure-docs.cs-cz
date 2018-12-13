@@ -1,20 +1,19 @@
 ---
-title: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB | Microsoft Docs
+title: Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 description: Kurz, ve kterém se vytvoří aplikace Xamarin iOS, aplikace pro Android nebo formulářová aplikace s využitím Azure Cosmos DB. Azure Cosmos DB je rychlá cloudová databáze v globálním měřítku pro mobilní aplikace.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 6311316ab5aeab4685ca820ef5dbec4832896dcd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d5c17325bfccef2c97378cb54d8843290cc98635
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164502"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877996"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
 

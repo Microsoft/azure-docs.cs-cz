@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 9908dae627ae11a42e8e01a9a4f4d11f35ce0f8d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422956"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Kurz: Integrace Azure Active Directory s využitím The Fabric zabezpečení cloudu
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s využitím The Fabric zabezpečení cloudu, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - The Fabric zabezpečení cloudu jediného přihlášení povolený předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace The Fabric zabezpečení cloudu do služby Azure AD, budet
 
 **Chcete-li přidat The Fabric zabezpečení cloudu z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -108,12 +108,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Cloudové zabezpečení infrastruktury domény a adresy URL jednotného přihlašování – informace](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL:
+
     | |
     |--|
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
@@ -166,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-the-cloud-security-fabric-test-user"></a>Vytvoření zkušebního uživatele zabezpečení infrastruktury cloudu
 
-V této části vytvořte uživatele Britta Simon v prostředcích infrastruktury zabezpečení cloudu. Práce s [tým podpory zabezpečení infrastruktury cloudu](mailto:support@cloudlock.com) přidat uživatele na platformě zabezpečení infrastruktury cloudu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvořte uživatele Britta Simon v prostředcích infrastruktury zabezpečení cloudu. Práce s [tým podpory zabezpečení infrastruktury cloudu](mailto:support@cloudlock.com) přidat uživatele na platformě zabezpečení infrastruktury cloudu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -198,7 +200,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

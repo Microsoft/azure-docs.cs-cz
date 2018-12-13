@@ -1,21 +1,22 @@
 ---
 title: 'Kurz: Vytvoření jazykového modelu s využitím služby Speech'
 titlesuffix: Azure Cognitive Services
-description: Zjistěte, jak vytvořit jazykový model s využitím služby Speech.
+description: Zjistěte, jak vytvořit jazykový model s využitím služby Speech. Přidat do svojí aplikace hlasové interakce pomocí tohoto vlastního jazykového modelu ve spojení s existující modely řeči stavu nejmodernější od Microsoftu.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: b8d58450ccc5081e3be3131761d1321a32567df3
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468989"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093447"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -48,7 +49,7 @@ Věty nemusí být celé ani gramaticky správně, ale měly by přesně odráž
 
 Data jazykového modelu by se měla zapisovat ve formátu UTF-8 BOM. Textový soubor by měl obsahovat na každém řádku jeden příklad (větu, promluvu nebo dotaz).
 
-Pokud chcete, aby některé termíny měly větší váhu (důležitost), můžete do svých dat přidat několik promluv, které dané termíny obsahují. 
+Pokud chcete, aby některé termíny měly větší váhu (důležitost), můžete do svých dat přidat několik promluv, které dané termíny obsahují.
 
 Následující tabulka obsahuje souhrn hlavních požadavků na jazyková data.
 
@@ -75,7 +76,7 @@ Vyberte tlačítko **Importovat** na řádku **Sady jazykových dat** a na webu 
 
 Až budete chtít naimportovat svou sadu jazykových dat, přihlaste se k [portálu služeb Speech Services](https://customspeech.ai). Nejdříve vyberte rozevírací nabídku **Custom Speech** v horním pásu karet. Pak vyberte **Adaptační data**. Při prvním pokusu nahrát data do služeb Speech Services se zobrazí prázdná tabulka s názvem **Sady dat**.
 
-Pokud chcete importovat novou sadu dat, vyberte tlačítko **Importovat** na řádku **Sady jazykových dat**. Pak web zobrazí stránku, kde se dá nahrát nová sada dat. Zadejte **Název** a **Popis**, které vám v budoucnu pomůžou tuto sadu dat identifikovat, a pak zvolte národní prostředí. 
+Pokud chcete importovat novou sadu dat, vyberte tlačítko **Importovat** na řádku **Sady jazykových dat**. Pak web zobrazí stránku, kde se dá nahrát nová sada dat. Zadejte **Název** a **Popis**, které vám v budoucnu pomůžou tuto sadu dat identifikovat, a pak zvolte národní prostředí.
 
 Následně pomocí tlačítka **Vybrat soubor** vyhledejte textový soubor jazykových dat. Nakonec vyberte **Importovat** a sada dat se nahraje. V závislosti na velikosti sady dat může import trvat několik minut.
 
@@ -97,9 +98,9 @@ Jakmile budou vaše jazyková data připravená, vyberte **Jazykové modely** v 
 
 Před provedením jakékoli akce je nutné vybrat odpovídající národní prostředí. Aktuální národní prostředí je uvedené v názvu tabulky na všech stránkách dat, modelu a nasazení. Pokud chcete změnit národní prostředí, vyberte tlačítko **Změnit národní prostředí**, které najdete pod názvem tabulky.  Tím přejdete na stránku pro potvrzení národní prostředí. Vyberte **OK**, vrátíte se na tabulku.
 
-Na stránce Vytvořit jazykový model zadejte **Název** a **Popis**, které vám pomůžou sledovat důležité informace o tomto modelu, například použitou sadu dat. Pak v rozevírací nabídce vyberte **Základní jazykový model**. Tento model je výchozím bodem pro vaše přizpůsobení. 
+Na stránce Vytvořit jazykový model zadejte **Název** a **Popis**, které vám pomůžou sledovat důležité informace o tomto modelu, například použitou sadu dat. Pak v rozevírací nabídce vyberte **Základní jazykový model**. Tento model je výchozím bodem pro vaše přizpůsobení.
 
-Můžete si vybrat ze dvou základních jazykových modelů. Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. 
+Můžete si vybrat ze dvou základních jazykových modelů. Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách.
 
 Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. Veřejně dostupný je i nový model s názvem Universal (Univerzální). Univerzální model má za cíl poradit si se všemi scénáři a nakonec nahradit model pro vyhledávání a diktování i konverzační model.
 
@@ -119,7 +120,7 @@ Až model dosáhne stavu **Dokončeno**, dá se nasadit do koncového bodu. Kdy�
 
 Pokud někdy budete chtít změnit **Název** nebo **Popis** modelu, můžete k tomu použít odkaz **Upravit** na odpovídajícím řádku tabulky jazykových modelů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Získání zkušebního předplatného služeb Speech Services](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v C#](quickstart-csharp-dotnet-windows.md)

@@ -1,20 +1,21 @@
 ---
-title: Příjem událostí ze služby Azure Event Hubs pomocí jazyka Go | Dokumentace Microsoftu
-description: Začínáme s příjmem události ze služby Event Hubs pomocí jazyka Go
+title: Příjem událostí pomocí jazyka Go - Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytváření aplikací v jazyce Go, který přijímá události ze služby Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: db952b82172928e42e951563d98bb32b275e8af7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239487"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084987"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Příjem událostí ze služby Event Hubs pomocí jazyka Go
 

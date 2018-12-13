@@ -11,7 +11,7 @@ manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: 19bc8a58c1ad2115afdfd1d7e59b714ba19cadec
 ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2018
 ms.locfileid: "53078884"

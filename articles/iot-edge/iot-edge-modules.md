@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení modulů Azure IoT Edge | Dokumentace Microsoftu
-description: Další informace o Azure IoT Edge modulů a jejich konfiguraci
+title: Zjistěte, jak moduly spouštět logiku na vaše zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Moduly Azure IoT Edge jsou kontejnerizovaných jednotky logiku, která je možné nasadit a spravovat vzdáleně, takže můžete spustit obchodní logiku na hraničních zařízeních IoT zařízení
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3d76f5931e3636f19c2030c4090116a0791db819
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 90fb6eadb2edb92d4516d8565d8c2c2bd5120c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567328"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094181"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Vysvětlení modulů Azure IoT Edge
 
@@ -31,7 +32,7 @@ Obrázky existovat v cloudu a může být aktualizován, změnit a nasazené v r
 
 Pokaždé, když modul image je nasazená na zařízení a tím, že modul runtime IoT Edge je vytvořena nová instance tohoto modulu. Dvě zařízení v různých částech světa použít stejnou image modulem; ale každý má své vlastní instance modulu při spuštění modulu na zařízení. 
 
-![Bitové kopie modulu v cloudu – instance modulu na zařízeních](./media/iot-edge-modules/image_instance.png)
+![Diagram - bitové kopie modulu v cloudu, instancí modulu na zařízeních](./media/iot-edge-modules/image_instance.png)
 
 V implementaci moduly imagí existovat jako imagí kontejnerů v úložišti a instance modulu jsou kontejnery na zařízeních. 
 
@@ -46,7 +47,7 @@ Identita spojenou s instancí modulu závisí na identitě zařízení, na kter�
 
 Je zřejmé ve scénářích když potřebujete nasadit jednu image modul více než jednou na jednom zařízení můžete nasadit stejnou bitovou kopii několikrát s různými názvy.
 
-![Modul identity musí být jedinečné](./media/iot-edge-modules/identity.png)
+![Diagram – modul identity musí být jedinečné v rámci zařízení a napříč zařízeními](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>Dvojčaty modulů
 

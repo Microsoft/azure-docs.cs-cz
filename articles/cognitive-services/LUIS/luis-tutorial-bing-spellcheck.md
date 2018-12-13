@@ -1,21 +1,22 @@
 ---
-title: Přidat API kontrola pravopisu Bingu v7 LUIS dotazy | Dokumentace Microsoftu
+title: Správné slova s překlepem
 titleSuffix: Azure
 description: Správné slova s překlepem v projevy tak, že přidáte API V7 kontrola pravopisu Bingu dotazy koncový bod služby LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6d197b014d6936b12b34a6d8783d1ebd29dfa28a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 478970c6b5f4035949c8b6579f1021dfa161fd39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443325"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096787"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné chybně napsaná slova s kontrolu pravopisu Bingu
 
@@ -75,7 +76,7 @@ Koncový bod adresy URL obsahuje několik hodnot, které je potřeba předávat 
 
 4. Služba LUIS jako odpověď vrátí výsledek JSON pro `How far is the mountain?`. Pokud API kontrola pravopisu Bingu v7 zjistí chyba, `query` pole v odpovědi JSON aplikace LUIS obsahuje původní dotaz a `alteredQuery` pole obsahuje opravený dotaz odeslaný do služby LUIS.
 
-```
+```json
 {
   "query": "How far is the mountainn?",
   "alteredQuery": "How far is the mountain?",

@@ -1,6 +1,6 @@
 ---
-title: Jak upravit údaje skupiny pomocí služby Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak lze upravit informace o panelu skupiny s využitím Azure Active Directory.
+title: Upravit informace o vaší skupině – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak lze upravit informace o vaší skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: a02987fdce3a15cd5d416234e3717df6d33622ec
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: b857b0bd56b479d4301535a4e1f734d8002dcc8e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731338"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099048"
 ---
-# <a name="how-to-edit-your-group-information-using-azure-active-directory"></a>Postupy: Úprava skupiny informací pomocí Azure Active Directory
+# <a name="edit-your-group-information-using-azure-active-directory"></a>Upravit skupinu informací pomocí Azure Active Directory
 
-Pomocí Azure Active Directory, můžete upravit nastavení skupiny, včetně aktualizace jeho název, popis nebo typ členství.
+Pomocí Azure Active Directory (Azure AD), můžete upravit nastavení skupiny, včetně aktualizace jeho název, popis nebo členství v typu.
 
 ## <a name="to-edit-your-group-settings"></a>Chcete-li upravit nastavení skupiny
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
 
@@ -46,7 +46,7 @@ Pomocí Azure Active Directory, můžete upravit nastavení skupiny, včetně ak
 
     - **Název skupiny.** Upravte název existující skupiny.
     
-    - **Popis skupiny.** Upravte existující popis skupiny.
+    - **Popis skupiny**: Upravte existující popis skupiny.
 
     - **Typ skupiny.** Typ skupiny nelze změnit po vytvoření. Chcete-li změnit **typ skupiny**, musíte odstranit skupinu a vytvořte novou.
     
@@ -69,4 +69,4 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 - [Správa přístupu k prostředkům pomocí skupin](active-directory-manage-groups.md)
 
-- [Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

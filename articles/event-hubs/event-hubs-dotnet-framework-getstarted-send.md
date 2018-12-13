@@ -1,6 +1,6 @@
 ---
-title: Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework | Dokumentace Microsoftu
-description: Začínáme s odesíláním událostí do služby Event Hubs pomocí rozhraní .NET Framework
+title: Odesílání událostí pomocí rozhraní .NET Framework – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace .NET Fraemwork, která zasílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fac720940c2f8d3eb38e2231ce89284147d56b6a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 062dc707dea99ed6e5e04905a13572c234f0c172
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011214"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091151"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).

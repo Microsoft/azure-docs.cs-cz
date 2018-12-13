@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 12/06/2018
 ms.author: mabrigg
-ms.openlocfilehash: f8ef54393f3de00ae231c45c117e3a16a8d1aad1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7ebb9d683803a6c5a5a0fa25308b348eeea586c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725603"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097892"
 ---
 # <a name="supported-metrics-with-azure-monitor-on-azure-stack"></a>Podporované metriky ve službě Azure Monitor ve službě Azure Stack
 
@@ -26,7 +26,7 @@ ms.locfileid: "52725603"
 
 Můžete načíst metriky z Azure monitoru ve službě Azure Stack ve stejné jako globální Azure. Můžete vytvářet míry na portálu, je získat z rozhraní REST API nebo dotazovat pomocí Powershellu nebo rozhraní příkazového řádku.
 
-Následující tabulky uvádějí metriky, které jsou dostupné s Azure Monitor metriky kanálu ve službě Azure Stack. Pro dotazování a přístup k těmto metrikám, budete muset **2018-01-01** verzi api-version profilu rozhraní API. Další informace o profilech rozhraní API a služby Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
+Následující tabulky uvádějí metriky, které jsou dostupné s Azure Monitor metriky kanálu ve službě Azure Stack. Pro dotazování a přístup k těmto metrikám, budete muset použít **2018-01-01** verzi api-version profilu rozhraní API. Další informace o profilech rozhraní API a služby Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 

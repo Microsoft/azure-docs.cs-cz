@@ -1,11 +1,11 @@
 ---
-title: Kódy chyb služby Azure Machine Learning Studio REST API | Dokumentace Microsoftu
+title: Kódy chyb rozhraní REST API – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Tyto kódy mohou být vráceny operace webové služby Azure Machine Learning.
 keywords: ''
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 274fbced61318a6617b04ea3092e8e2f96a10940
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: becc8368ebd9b6096a56e2603944384aa6b50d29
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314897"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091726"
 ---
 # <a name="machine-learning-studio-rest-api-error-codes"></a>Ve službě Machine Learning Studio REST API chybové kódy
  

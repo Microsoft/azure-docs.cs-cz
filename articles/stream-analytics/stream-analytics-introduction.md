@@ -4,21 +4,20 @@ description: Přečtěte si o službě Stream Analytics, která umožňuje v re�
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
 ms.workload: data-services
-ms.custom: mvc
-ms.date: 03/27/2018
-ms.openlocfilehash: 7b38548ce3266d74ffd51ce75ffa92bdb4ac24b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
+ms.custom: seodec18
+ms.date: 12/07/2018
+ms.openlocfilehash: 9cd1a8a095c697c4baeaa435f80c136ce49e0313
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098572"
 ---
-# <a name="what-is-stream-analytics"></a>Co je služba Stream Analytics?
+# <a name="what-is-azure-stream-analytics"></a>Co je Azure Stream Analytics?
 
 Azure Stream Analytics je modul pro zpracování událostí, který umožňuje zkoumat velké objemy dat streamované ze zařízení. Příchozí data můžou pocházet ze zařízení, senzorů, webů, informačních kanálů sociálních médií, aplikací a dalších zdrojů. Podporuje také extrahování informací ze streamů, identifikování vzorů a relace. Tyto vzory potom můžete použít k aktivování dalších akcí ve směru server-klient, jako jsou upozornění nebo odesílání informací do nástrojů pro generování sestav, nebo je můžete uložit a využít později.
 
@@ -42,13 +41,13 @@ Po analýze příchozích dat zadáte výstup pro transformovaná data a můžet
 
 Následující obrázek ukazuje kanál Stream Analytics. Vaše úloha Stream Analytics může používat všechny vstupy a výstupy nebo vybranou sadu vstupů a výstupů. Tento obrázek ukazuje, jak se data posílají do služby Stream Analytics, jak se analyzují a posílají k dalším akcím, jako je uložení nebo prezentace:
 
-![Kanál Stream Analytics](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
+![Kanál Stream Analytics (úvod)](./media/stream-analytics-introduction/stream-analytics-intro-pipeline.png)
 
 ## <a name="key-capabilities-and-benefits"></a>Klíčové funkce a výhody
 
 Služba Azure Stream Analytics byla navržena jako snadno použitelná, flexibilní, spolehlivá a škálovatelná na libovolnou velikost úlohy. Je k dispozici ve více datových centrech i suverénních cloudech. Následující obrázek ukazuje klíčové funkce Azure Stream Analytics:
 
-![Klíčové funkce Stream Analytics](./media/stream-analytics-introduction/stream_analytics_key_capabilities.png)
+![Klíčové funkce Stream Analytics](./media/stream-analytics-introduction/stream-analytics-key-capabilities.png)
 
 ## <a name="ease-of-getting-started"></a>Snadný začátek
 
@@ -81,7 +80,7 @@ Stream Analytics zaručuje právě jedno zpracování událostí a minimálně j
 
 Služba Azure Stream Analytics je optimalizovaná na vysoký výkon, může zpracovávat streamovaná data a provádět výpočty v paměti. Umožňuje vám vertikální nastavování kapacity, aby bylo možné pracovat s aplikacemi pro zpracování komplexních událostí v reálném čase. Stream Analytics podporuje výkon díky dělení. Komplexní dotaz jde paralelně rozdělit a provádět na několika uzlech pro streamování. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď máte přehled o službě Azure Stream Analytics. V dalším kroku se můžete do tématu ponořit hlouběji a vytvořit si svoji první úlohu Stream Analytics:
 
