@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4fd896e3b26ae66621ba49d1bb8a5d86c0dd63ee
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963262"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53278595"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Upgrade existující mobilní služby Azure .NET do služby App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -68,7 +68,7 @@ Prvním krokem v rámci upgradu je vytvoření mobilní aplikace prostředku, kt
 
 V dalším kroku následujícím vytvořit druhou instanci aplikace [pokyny k vytvoření back-end .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Po zobrazení výzvy vyberte plán služby App Service nebo "plán hostování" zvolte plán migrované aplikace.
 
-Pravděpodobně budete chtít použijte stejnou databázi a centra oznámení, jako jste to udělali v Mobile Services. Tyto hodnoty můžete zkopírovat tak, že otevřete [Azure Portal] a přejdete na původní aplikace, pak klikněte na tlačítko **nastavení** > **nastavení aplikace**. V části **připojovací řetězce**, kopie `MS_NotificationHubConnectionString` a `MS_TableConnectionString`. Přejděte na svůj nový web upgradu a vložte je do přepíše všechny existující hodnoty. Tento postup opakujte pro další nastavení aplikace požadavkům vašich aplikací. Pokud nepoužíváte migrovanou službu, si můžete přečíst připojovací řetězce a nastavení aplikace z **konfigurovat** kartu části Mobile Services [Portál Azure Classic].
+Pravděpodobně budete chtít použijte stejnou databázi a centra oznámení, jako jste to udělali v Mobile Services. Tyto hodnoty můžete zkopírovat tak, že otevřete [Azure Portal] a přejdete na původní aplikace, pak klikněte na tlačítko **nastavení** > **nastavení aplikace**. V části **připojovací řetězce**, kopie `MS_NotificationHubConnectionString` a `MS_TableConnectionString`. Přejděte na svůj nový web upgradu a vložte je do přepíše všechny existující hodnoty. Tento postup opakujte pro další nastavení aplikace požadavkům vašich aplikací.
 
 Provedete kopii projektu ASP.NET pro aplikaci a publikujete ji na svůj nový web. Pomocí zkopírovat klientské aplikace aktualizovat novou adresu URL, ověřte, že vše funguje podle očekávání.
 
@@ -280,7 +280,6 @@ Až budete mít novou verzi klienta, která je připravená, vyzkoušejte si to 
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[Portál Azure Classic]: https://manage.windowsazure.com/
 [Co jsou Mobile Apps?]: app-service-mobile-value-prop.md
 [Mobilní aplikace Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md

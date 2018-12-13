@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: ded3c89774c39b5edee02b9e3c6807ce75ff16a4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2f4bc578b567462c2591c28b270f863ba5756815
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566189"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193905"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple zabezpečení a ochranu dat.
 
@@ -55,7 +55,7 @@ Oprávnění jenom zařízení se mohou připojit službu Správce zařízení S
 
 ![registrační klíč služby](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Další informace jak získat registrační klíč, přejděte na [krok 2: získání registračního klíče služby](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
+Další informace jak získat registrační klíč, přejděte na [krok 2: Získání registračního klíče služby](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key).
 
 Registrační klíč služby je dlouhý klíč, který obsahuje více než 100 znaků. Můžete zkopírovat klíč a uložte ho do textového souboru v zabezpečeném umístění tak, aby ho můžete používat k autorizaci další zařízení podle potřeby. Pokud po registraci prvního zařízení dojde ke ztrátě registrační klíč služby, můžete vygenerovat nový klíč ze služby Správce zařízení StorSimple. To nebude mít vliv na fungování stávajících zařízení.
 
@@ -210,10 +210,10 @@ StorSimple využívá tyto algoritmy šifrování chránit data uložená v nebo
 Správce zařízení StorSimple pro fyzické i virtuální řady shromažďuje osobní údaje v následující instance klíče:
 
 - Pošle upozornění, uživatelská nastavení, které jsou nakonfigurované e-mailovou adresu uživatele. Tyto informace můžete zobrazit a zrušeno správcem. To platí pro zařízeních StorSimple řady 8000 a virtuálních polí StorSimple.
- * K zobrazení a vymažte nastavení pro řadu StorSimple 8000, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-8000-manage-alerts.md#configure-alert-settings)
- * K zobrazení a vymažte nastavení pro StorSimple Virtual Array, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
+  * K zobrazení a vymažte nastavení pro řadu StorSimple 8000, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-8000-manage-alerts.md#configure-alert-settings)
+  * K zobrazení a vymažte nastavení pro StorSimple Virtual Array, postupujte podle kroků v [zobrazení a Správa výstrah StorSimple](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)
 - Uživatelé, kteří můžou přistupovat k datům na sdílené složky. Seznam uživatelů, kteří můžou přistupovat k datům sdílené složky se zobrazí a je možné zobrazit. Tento seznam se také odstraní při odstranění sdílené složky. To platí jenom pro virtuální pole StorSimple.
- * Chcete-li zobrazit seznam uživatelů, kdo může přistupovat nebo odstranit sdílenou složku, postupujte podle kroků v [spravovat sdílené složky na StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md)
+  * Chcete-li zobrazit seznam uživatelů, kdo může přistupovat nebo odstranit sdílenou složku, postupujte podle kroků v [spravovat sdílené složky na StorSimple Virtual Array](storsimple-virtual-array-manage-shares.md)
 
 Další informace najdete v Zásadách ochrany osobních údajů společnosti Microsoft v [Centru zabezpečení](https://www.microsoft.com/trustcenter).
 
@@ -221,65 +221,65 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 Následují některé otázky a odpovědi týkající se zabezpečení a Microsoft Azure StorSimple.
 
-**Otázka:** službu dojde k ohrožení. Co by měl být Moje další kroky?
+**DOTAZ:** Služba dojde k narušení. Co by měl být Moje další kroky?
 
-**Odpověď:** by tyto hodnoty okamžitě změnit šifrovací klíč dat služby a klíče účtu úložiště pro účet úložiště, který se používá pro vrstvení data. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Měli byste hned změnit šifrovací klíč dat služby a klíče účtu úložiště pro účet úložiště, který se používá pro vrstvení dat. Pokyny najdete v tématu:
 
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Obměna klíčů účtů úložiště](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
-**Otázka:** mám nové zařízení StorSimple, která žádá o registrační klíč služby. Jak ji mohu načíst?
+**DOTAZ:** Mám k dispozici nové zařízení StorSimple, která žádá o registrační klíč služby. Jak ji mohu načíst?
 
-**Odpověď:** tento klíč byl vytvořen při prvním vytvoření ve službě Správce zařízení StorSimple. Při použití služby Správce zařízení StorSimple pro připojení k zařízení, můžete použít na úvodní stránku služby k zobrazení nebo znovu vygenerovat registrační klíč služby. Generuje se nový registrační klíč služby neovlivní existující zaregistrovaná zařízení. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Tento klíč byl vytvořen při prvním vytvoření ve službě Správce zařízení StorSimple. Při použití služby Správce zařízení StorSimple pro připojení k zařízení, můžete použít na úvodní stránku služby k zobrazení nebo znovu vygenerovat registrační klíč služby. Generuje se nový registrační klíč služby neovlivní existující zaregistrovaná zařízení. Pokyny najdete v tématu:
 
 * [Zobrazení nebo znovu vygenerovat registrační klíč služby](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
 
-**Otázka:** ztrátou Moje šifrovací klíč dat služby. Co mám udělat?
+**DOTAZ:** Mohu ztratit Moje šifrovací klíč dat služby. Co mám udělat?
 
-**Odpověď:** obraťte na podporu Microsoftu. Se můžou přihlašovat do relace podporu na zařízení a nápovědu načíst klíč (za předpokladu, že je online alespoň jedno zařízení). Ihned poté, co můžete získat šifrovací klíč dat služby, měli byste změnit jej pro zajištění, že nový klíč znáte jenom vy. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Obraťte se na podporu Microsoftu. Se můžou přihlašovat do relace podporu na zařízení a nápovědu načíst klíč (za předpokladu, že je online alespoň jedno zařízení). Ihned poté, co můžete získat šifrovací klíč dat služby, měli byste změnit jej pro zajištění, že nový klíč znáte jenom vy. Pokyny najdete v tématu:
 
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**Otázka:** mám oprávnění zařízení pro změnu klíče šifrování dat služby, ale není začal proces změny klíče. Co bych měl/a dělat?
+**DOTAZ:**  Můžu oprávnění zařízení pro změnu klíče šifrování dat služby, ale není začal proces změny klíče. Co bych měl/a dělat?
 
-**Odpověď:** Pokud časový limit vypršela platnost, budete muset autorizovat zařízení pro změnu klíče šifrování dat služby a znovu ji spusťte proces.
+**ODPOVĚĎ:** Pokud časový limit vyprší, je potřeba autorizovat zařízení pro změnu klíče šifrování dat služby a znovu ji spusťte proces.
 
-**Otázka:** po změně šifrovacího klíče dat služby, ale jsem se nepodařilo aktualizovat na ostatních zařízeních do 4 hodin. Budu muset znovu spustit?
+**DOTAZ:**  Můžu změnit šifrovací klíč dat služby, ale jsem se nepodařilo aktualizovat na ostatních zařízeních do 4 hodin. Budu muset znovu spustit?
 
-**Odpověď:** 4hodinového časové období se pouze za inicializaci změny. Po spuštění procesu aktualizace na autorizované zařízení StorSimple autorizace je platná, dokud nebudou aktualizovány všechna zařízení.
+**ODPOVĚĎ:** 4 hodiny časové období se pouze za inicializaci změny. Po spuštění procesu aktualizace na autorizované zařízení StorSimple autorizace je platná, dokud nebudou aktualizovány všechna zařízení.
 
-**Otázka:** správce StorSimple náš opustil společnost. Co bych měl/a dělat?
+**DOTAZ:** Naše správce StorSimple opustil společnost. Co bych měl/a dělat?
 
-**Odpověď:** změny a resetování hesla, které umožňují přístup k zařízení StorSimple a změnit šifrování dat služby klíče k zajištění, že nové informace o nezná Neautorizováno pracovníky. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Změnit a resetovat hesla, které umožňují přístup k zařízení StorSimple a změnit šifrovací klíč dat služby k zajištění, že není znám nové informace neoprávněným osobám. Pokyny najdete v tématu:
 
 * [Použití služby Správce zařízení StorSimple, chcete-li změnit hesla služby storsimple](storsimple-8000-change-passwords.md)
 * [Změna šifrovacího klíče dat služby](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [Konfigurace protokolu CHAP pro zařízení StorSimple](storsimple-8000-configure-chap.md)
 
-**Otázka:** chci, aby k zadání hesla Snapshot Manageru zařízení StorSimple na hostitele, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co můžu udělat?
+**DOTAZ:** Chci, aby k zadání hesla Snapshot Manageru zařízení StorSimple na hostitele, který se připojuje k zařízení StorSimple, ale heslo není k dispozici. Co můžu udělat?
 
-**Odpověď:** Pokud jste zapomněli heslo, měli byste vytvořit nový. Pak nezapomeňte informovat všechny existující uživatele, že se změnil heslo a že by měl aktualizují jejich klientů na používání nové heslo. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Pokud jste zapomněli heslo, měli byste vytvořit nový. Pak nezapomeňte informovat všechny existující uživatele, že se změnil heslo a že by měl aktualizují jejich klientů na používání nové heslo. Pokyny najdete v tématu:
 
 * [Změna hesla Snapshot Manageru zařízení StorSimple](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 * [Ověřování zařízení](storsimple-snapshot-manager-manage-devices.md#authenticate-a-device)
 
-**Otázka:** certifikát pro vzdálený přístup k prostředí Windows PowerShell pro StorSimple se změnil na zařízení. Jak můžu aktualizovat mé klienty vzdáleného přístupu?
+**DOTAZ:** Certifikát pro vzdálený přístup k prostředí Windows PowerShell pro StorSimple se změnil na zařízení. Jak můžu aktualizovat mé klienty vzdáleného přístupu?
 
-**Odpověď:** můžete stáhnout nový certifikát ze služby Správce zařízení StorSimple a potom zadejte, aby byl nainstalován v úložišti certifikátů klienty vzdáleného přístupu. Pokyny najdete v tématu:
+**ODPOVĚĎ:** Můžete stáhnout nový certifikát ze služby Správce zařízení StorSimple a potom zadejte, aby byl nainstalován v úložišti certifikátů klienty vzdáleného přístupu. Pokyny najdete v tématu:
 
 * [Rutina Import-Certificate](https://docs.microsoft.com/powershell/module/pkiclient/import-certificate)
 
-**Otázka:** jsou moje data chráněná, pokud dojde k narušení služby Správce zařízení StorSimple?
+**DOTAZ:** Je moje data chráněných Pokud dojde k narušení služby Správce zařízení StorSimple?
 
-**Odpověď:** služby konfigurace se vždy šifrují pomocí veřejného klíče při zobrazení ve webovém prohlížeči. Vzhledem k tomu, že služba nemá přístup k privátnímu klíči, služba nebude moci zobrazit žádná data. Pokud dojde k narušení služby Správce zařízení StorSimple, neexistuje žádný vliv, protože neexistují žádné klíče uložené ve službě Správce zařízení StorSimple.
+**ODPOVĚĎ:** Konfigurační data služby je vždy šifrován veřejný klíč, při zobrazení ve webovém prohlížeči. Vzhledem k tomu, že služba nemá přístup k privátnímu klíči, služba nebude moci zobrazit žádná data. Pokud dojde k narušení služby Správce zařízení StorSimple, neexistuje žádný vliv, protože neexistují žádné klíče uložené ve službě Správce zařízení StorSimple.
 
-**Otázka:** Pokud někdo získá přístup k certifikátu šifrování dat, bude Moje data ohrožena?
+**DOTAZ:** Pokud někdo získá přístup k certifikátu šifrování dat, bude Moje data ohrožena?
 
-**Odpověď:** Microsoft Azure ukládá šifrovací klíč dat zákazníka (soubor .pfx) v zašifrovaném formátu. Protože soubor PFX je zašifrovaný a služby StorSimple nemá šifrovací klíč dat služby pro dešifrování souboru .pfx, nebude jednoduše získal přístup k souboru PFX vystavení jakýchkoli tajných kódů.
+**ODPOVĚĎ:** Microsoft Azure ukládá šifrovací klíč dat zákazníka (soubor .pfx) v zašifrovaném formátu. Protože soubor PFX je zašifrovaný a služby StorSimple nemá šifrovací klíč dat služby pro dešifrování souboru .pfx, nebude jednoduše získal přístup k souboru PFX vystavení jakýchkoli tajných kódů.
 
-**Otázka:** co se stane, když instituci státní požádá společnost Microsoft o Moje data?
+**DOTAZ:** Co se stane, když instituci státní požádá společnost Microsoft o Moje data?
 
-**Odpověď:** vzhledem k tomu, že všechna data se šifrují ve službě a privátní klíč se uchovává se zařízením, vládní entity musí zeptat zákazník data.
+**ODPOVĚĎ:** Protože veškerá data se šifrují ve službě a privátní klíč se uchovává se zařízením, musíte požádat instituci státní zákazníka pro data.
 
 
 

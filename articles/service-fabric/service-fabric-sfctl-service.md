@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/31/2018
+ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 84c2faaf137e19d78e7e17527feb50baebf8041b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dbe234b3c6aaeed90f0b95e5118c1ff2f9e2bb24
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494570"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53276872"
 ---
 # <a name="sfctl-service"></a>sfctl service
 Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb.
@@ -36,9 +36,9 @@ Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb.
 | nasadit seznam typů | Získá seznam obsahující informace o typech služeb z aplikace nasazené na uzly v clusteru Service Fabric. |
 | description | Získá popis existující službu Service Fabric. |
 | získat protokoly kontejneru | Získá protokoly kontejneru pro nasazení v uzlu Service Fabric container. |
-| stav | Získá stav zadané služby Service Fabric. |
+| zdravotnictví | Získá stav zadané služby Service Fabric. |
 | informace | Získá informace o konkrétní služby, které patří k aplikaci Service Fabric. |
-| Seznam | Získá informace o všech služeb, které patří k aplikaci podle ID aplikace. |
+| list | Získá informace o všech služeb, které patří k aplikaci podle ID aplikace. |
 | Manifest | Získá manifest popisující typ služby. |
 | nasazení balíčku | Soubory ke stažení balíčků přidružených k zadané služby manifestu do bitové kopie mezipaměti na zadaný uzel. |
 | package-health | Získá informace o stavu balíčku služby pro konkrétní aplikace nasazená pro uzel Service Fabric a aplikace. |
@@ -46,7 +46,7 @@ Vytvářet, odstraňovat a spravovat služby, typů služeb a balíčky služeb.
 | seznam balíčků | Získá seznam balíčků služeb nasazených na uzlu Service Fabricu. |
 | Obnovit | Do clusteru Service Fabric označuje, že by měl pokusí o zotavení zadanou službu, která je aktuálně zablokované ve ztrátě kvora. |
 | Stav sestavy | Odešle zprávu o stavu ve službě Service Fabric. |
-| řešení | Přeložit oddíl Service Fabric. |
+| vyřešit | Přeložit oddíl Service Fabric. |
 | seznam typů | Získá seznam obsahující informace o typech služeb, které jsou podporovány podle typu aplikací zřízených v clusteru Service Fabric. |
 | update | Aktualizuje zadaný služby pomocí popis pro danou aktualizaci. |
 
@@ -491,13 +491,13 @@ Sestavy stavu zadané služby Service Fabric. Sestava může obsahovat informace
 | – Stav – vlastnost [povinné] | Vlastnost s informacemi o stavu. <br><br> Entita může mít sestav o stavu pro různé vlastnosti. Vlastnost je řetězec a oprava výčet umožňují flexibilní reportérka ke kategorizaci podmínku stavu, který spouští sestavu. Například reportérka s ID zdroje "LocalWatchdog" můžete monitorovat stav disku v uzlu, tak ho může hlásit vlastnost "AvailableDisk" v tomto uzlu. Stejné reportérka můžete monitorovat připojení uzlu, takže ho může hlásit vlastnost "Připojení" ve stejném uzlu. V health store tyto sestavy jsou považovány za události samostatné stavu pro zadaný uzel. Spolu s ID zdroje vlastnost jednoznačně identifikuje informací o stavu. |
 | – Stav [povinné] | Možné hodnoty zahrnují\: "Neplatný", "Ok", "Upozorňující", "Chyba", "Neznámý". |
 | – id služby [povinné] | Identita služby. <br><br> Toto je obvykle celý název služby bez "prostředky infrastruktury\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "prostředků infrastruktury\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
-| – id zdroje [povinné] | Název zdroje, které identifikuje součásti klienta/sledovacího zařízení/systému, který se vygenerovat informace o stavu. |
+| – id zdroje [povinné] | Název zdroje, který identifikuje klienta/sledovacího zařízení/systémové součásti, které vygenerovalo informací o stavu. |
 | – Popis | Popis informací o stavu. <br><br> Představuje libovolný text pro přidání lidské čitelné informace o sestavě. Maximální délka řetězce popis je 4096 znaků. Pokud zadaný řetězec je delší, bude automaticky zkrácen. Při zkráceno, poslední znaky popis obsahovat značky "[zkrátila]" a celkový počet řetězec velikost je 4 096 znaků. Výskyt značky určuje uživatelům této zkrácení došlo k chybě. Všimněte si, že při zkráceno, popis má menší než 4096 znaků z původního řetězce. |
-| --okamžité | Příznak označující, zda mají být okamžitě odesílány sestavy. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
+| --okamžité | Příznak, který udává, zda sestavy by měl být odesílány okamžitě. <br><br> Sestava stavu posílá do Service Fabric gateway aplikace, který se předává k úložišti stavů. Pokud okamžité nastavená na hodnotu true, zpráva se odešle okamžitě ze brána protokolu HTTP k úložišti stavů, bez ohledu na nastavení klienta fabric, které používá brána aplikace HTTP. To je užitečné pro kritické zprávy, které by měly být odeslány co nejdříve. V závislosti na načasování a jiných podmínek odesílat sestavy může stále nezdaří, pokud bránu HTTP je uzavřený nebo zprávy nelze navázat spojení s bránou. Okamžité je nastavený na hodnotu false, sestava se odesílá podle nastavení stavu klienta ze brána protokolu HTTP. Proto bude možné dávce závislosti na konfiguraci HealthReportSendInterval. Toto je doporučené nastavení, protože umožňuje stavu klienta k optimalizaci zdraví, vytváření sestav zprávy k úložišti stavů, stejně jako zpracování sestavy stavu. Ve výchozím nastavení nejsou odesílány sestavy okamžitě. |
 | – vypršela platnost odebrat v případě | Hodnota, která označuje, zda sestava se odebere z health store, když jeho platnost vyprší. <br><br> Je-li nastavena hodnota true, sestava se odebere z health store po vypršení její platnosti. Pokud je nastaven na hodnotu false, sestava je považováno za chybu, pokud vypršela platnost. Hodnota této vlastnosti je ve výchozím nastavení hodnotu false. Když klienti pravidelně hlásit, nastavují by měl RemoveWhenExpired false (výchozí). Tímto způsobem je osoby podávající hlášení dochází k problémům (například zablokování) a nemůže oznamovat entity je vyhodnocena v chybě, když vyprší platnost sestava stavu. Označí entitu jako patřící do chybového stavu. |
 | --pořadové číslo | Pořadové číslo pro tuto sestavu stavu jako číselný řetězec. <br><br> Pořadové číslo sestav se používá v úložišti stavů ke zjišťování zastaralých sestavy. Pokud není zadán, je číslo sekvence automaticky generované klientem stavu při přidání sestavy. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
-| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole je použít formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
+| – Hodnota ttl | Doba trvání, pro kterou je tato sestava stavu platná. Toto pole používá formát ISO8601 pro zadání dobu trvání. <br><br> Když klienti pravidelně hlásit, odesílají by zprávy s frekvencí vyšší než hodnota time to live. Pokud klienti nenahlásí na přechod, nastavují time to live nekonečno. Když vyprší čas TTL, událost stavu, který obsahuje informace o stavu je odebrán z health store, pokud je RemoveWhenExpired hodnotu true, nebo vyhodnocovány v chybě, pokud RemoveWhenExpired false. Pokud není zadaný, čas TTL výchozí hodnoty na nekonečnou hodnotu. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
@@ -520,7 +520,7 @@ Přeložit oddíl služby Service Fabric a získání koncových bodů služby r
 | --- | --- |
 | – id služby [povinné] | Identita služby. Toto ID se obvykle celý název služby bez "fabric\:' schéma identifikátoru URI. Od verze 6.0, hierarchické názvy jsou oddělené znakem "\~" znak. Například, pokud je název služby "fabric\:/myapp/app1/svc1", bude identita služby "myapp\~app1\~svc1" v 6.0 + a "myapp/app1/svc1" v předchozích verzích. |
 | --typu klíče oddílu | Typ klíče oddílu. Tento parametr je povinný, pokud je schéma oddílu služby Int64Range nebo název. Možné hodnoty jsou následující. -Žádný (1) – označuje, že není zadán parametr PartitionKeyValue. Toto je platná pro oddíly s dělením schéma jako Singleton. Toto je výchozí hodnota. Hodnota je 1. -Int64Range (2) – označuje, že je parametr PartitionKeyValue klíčem oddílu int64. Toto je platná pro dělení schéma jako Int64Range oddíly. Hodnota je 2. -S názvem (3) – označuje, že je parametr PartitionKeyValue název oddílu. Toto je platná pro oddíly s jako pojmenované schéma vytváření oddílů. Hodnota je 3. |
-| --hodnotu klíče oddílu | Klíč oddílu. To je potřeba, pokud je schéma oddílu služby Int64Range nebo název. |
+| --hodnotu klíče oddílu | Klíč oddílu. To je potřeba, pokud je schéma oddílu služby Int64Range nebo název. Toto není ID oddílu, ale místo toho klíče buď celé číslo hodnoty, nebo v názvu identifikátor oddílu. Například pokud vaše služba používá rozsahové oddíly 0 až 10, pak PartitionKeyValue by celé číslo v daném rozsahu. Popis služby, chcete-li zobrazit oblast nebo název dotazu. |
 | – předchozí verze rsp | Hodnota v poli verze, která dříve byla přijata odpověď. Toto je nezbytné, pokud uživatel ví, že výsledek, který byl zadán dříve je zastaralá. |
 | --timeout -t | Server časový limit v sekundách.  Výchozí\: 60. |
 

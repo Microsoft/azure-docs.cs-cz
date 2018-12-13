@@ -1,5 +1,5 @@
 ---
-title: Vytvoření prostředí Azure Time Series Insights | Dokumentace Microsoftu
+title: Azure Time Series Insights vytvořit prostředí – vytvořit prostředí Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje, jak vytvořit nové prostředí Time Series Insights pomocí webu Azure portal.
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,12 +10,13 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 909d8a921e46f0f935bb8a059714b1c0170ddee4
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.custom: seodec18
+ms.openlocfilehash: f50f0de4cff72f8eaf8304893d49ab14a68a3fc4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627657"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277297"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
 Tento článek popisuje, jak vytvořit nové prostředí Time Series Insights pomocí webu Azure portal.

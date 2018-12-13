@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: fa19cdbb6c51248b5361ba747829c4f9e617ce6a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865382"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251109"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
-Azure Backup Server V2 a později se dodává s systému System Center 2016 Data Protection Manager moderní úložiště záloh. Moderní úložiště záloh nabízí úspory úložiště o 50 procent, zálohování, které jsou úložiště odpovídala trojnásobku rychlejší a efektivnější. Nabízí také úložiště zohledňující úlohy.
+Azure Backup Server V2 a novějších verzích podporuje moderní úložiště záloh, která nabízí úspory úložiště o 50 procent, zálohování, která jsou úložiště odpovídala trojnásobku rychlejší a efektivnější. Nabízí také úložiště zohledňující úlohy.
 
 > [!NOTE]
 > Na používání moderního úložiště záloh, musíte spustit zálohování serveru V2 nebo V3 na Windows Server 2016 nebo V3 na Windows Server 2019.
@@ -75,7 +75,7 @@ U služby úložiště zohledňující úlohy můžete vybrat svazky, které ukl
 
 ### <a name="update-dpmdiskstorage"></a>Update-DPMDiskStorage
 
-Úložiště zohledňující úlohy můžete nastavit pomocí rutiny Powershellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na serveru aplikace Data Protection Manager.
+Úložiště zohledňující úlohy můžete nastavit pomocí rutiny Powershellu Update-DPMDiskStorage, která aktualizuje vlastnosti svazku ve fondu úložiště na Azure Backup serveru. 
 
 Syntaxe:
 

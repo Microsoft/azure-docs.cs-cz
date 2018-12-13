@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/15/2018
+ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ab55ed73c7364b48f3159672ebee5d934365c92c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963909"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191525"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure stacku
 
@@ -55,8 +55,8 @@ Plánování strategie obnovení zálohování a zotavení po havárii pro každ
 
 |  | Global Azure | Azure Stack nasazené v datacentru CSP a provozuje CSP | Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Azure Stack nasazené v datacentru CSP a provozuje CSP** | Virtuální počítače uživatele se nasadí do CSP provozovat Azure Stack. Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zprostředkovatel kryptografických služeb pracuje primární a sekundární instance služby Azure Stack v jejich vlastních datových center. Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zprostředkovatel kryptografických služeb pracuje Azure Stack v primární lokalitě. Datovým centrem zákazníka je cíl obnovení nebo převzetí služeb při selhání. |
-| **Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická** | Virtuální počítače uživatele se nasadí do zákazník provozované služby Azure Stack. Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zákazník funguje primární a sekundární instance služby Azure Stack v jejich vlastních datových center. Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zákazník používá Azure Stack v primární lokalitě. Datacentra CSP je cíl obnovení nebo převzetí služeb při selhání. |
+| **Azure Stack nasazené v datacentru CSP a provozuje CSP** | Virtuální počítače uživatele se nasadí do CSP provozovat Azure Stack.<br><br>Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zprostředkovatel kryptografických služeb pracuje primární a sekundární instance služby Azure Stack v jejich vlastních datových center.<br><br>Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zprostředkovatel kryptografických služeb pracuje Azure Stack v primární lokalitě.<br><br>Datovým centrem zákazníka je cíl obnovení nebo převzetí služeb při selhání. |
+| **Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická** | Virtuální počítače uživatele se nasadí do zákazník provozované služby Azure Stack.<br><br>Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zákazník používá Azure Stack v primární lokalitě.<br><br>Datacentra CSP je cíl obnovení nebo převzetí služeb při selhání. | Zákazník funguje primární a sekundární instance služby Azure Stack v jejich vlastních datových center.<br><br>Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. |
 
 ![Kombinace zdroj cíl](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
@@ -82,8 +82,8 @@ Nejběžnější schéma ochrany pro aplikace založené na virtuálním počít
 Obnovení aplikace vyžaduje obnovení jednoho nebo více virtuálních počítačů na stejném cloudu nebo do nového cloudu. Zacílení na cloud ve vašem datovém centru nebo ve veřejném cloudu. V cloudu, kterou zvolíte je zcela v rámci ovládacího prvku a je na základě dat o ochraně osobních údajů a suverenity požadavků.
  
  - RTO: Výpadek měřeno v hodinách
- - Cíl bodu obnovení: Proměnné únikem informací (v závislosti na četnosti zálohování)
- - Topologie nasazení: aktivní/pasivní vysoká dostupnost
+ - CÍL BODU OBNOVENÍ: Ztráta dat proměnných (v závislosti na četnosti zálohování)
+ - Topologie nasazení: Aktivní/pasivní vysoká dostupnost
 
 #### <a name="planning-your-backup-strategy"></a>Plánování strategie zálohování
 
@@ -110,8 +110,8 @@ S tímto přístupem je aplikace nasazená v jeden cloud a jeho virtuální poč
 ![Replikace ruční převzetí služeb při selhání](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: Prostoje v minutách
- - Cíl bodu obnovení: Proměnné únikem informací (v závislosti na četnosti replikací)
- - Topologie nasazení: neslo aktivní/pasivní vysoká dostupnost
+ - CÍL BODU OBNOVENÍ: Ztráta dat proměnných (v závislosti na četnosti replikací)
+ - Topologie nasazení: Neslo aktivní/pasivní vysoká dostupnost
  
 ### <a name="high-availabilityautomatic-failover"></a>Vysoká dostupnost a automatické převzetí služeb při selhání
 
@@ -122,8 +122,8 @@ V kombinaci se škálovacími sadami aplikace bude vyžadovat nativní podporu v
 Tento přístup aplikace je aktivní pouze v jeden cloud, ale bude software nasazen do několika cloudy. Jiných cloudech jsou pohotovostní režim připraven ke spuštění aplikace, když se aktivuje převzetí služeb při selhání.
 
  - RTO: Výpadku v sekundách
- - Cíle bodu obnovení: Minimální únikem
- - Topologie nasazení: neslo aktivní/aktivní
+ - CÍL BODU OBNOVENÍ: Minimální únikem informací
+ - Topologie nasazení: Neslo aktivní/aktivní
 
 ### <a name="fault-tolerance"></a>Odolnost proti chybám
 
@@ -134,15 +134,15 @@ Nejprve je potřeba zajistit aplikaci, kterou jsou virtuální počítače nasaz
 Uvědomte si, že každý cloud služby Azure Stack je nezávisle na sobě navzájem, takže cloudy jsou vždy považovány za aktivní z hlediska infrastruktury. V takovém případě více aktivních instancích aplikace se nasadí na jeden nebo více cloudů aktivní.
 
  - RTO: Bez výpadků
- - Cíl bodu obnovení: Bez ztráty dat
- - Topologie nasazení: aktivní/aktivní
+ - CÍL BODU OBNOVENÍ: Bez ztráty dat.
+ - Topologie nasazení: Aktivní/aktivní
 
 ### <a name="no-recovery"></a>Bez obnovení
 
 Ochrana proti neplánované výpadky nebo ztrátě dat nemusí potřebovat některé aplikace ve vašem prostředí. Například virtuální počítače používat pro vývoj a testování obvykle není nutné obnovit. Je vaše rozhodnutí bez ochrany pro aplikaci nebo konkrétní virtuální počítač. Azure Stack nenabízí zálohování nebo replikace virtuálních počítačů v základní infrastruktuře. Podobně jako u Azure, musíte vyjádřit výslovný souhlas pro ochranu pro všechny virtuální počítače v každé z vašich předplatných.
 
- - RTO: neopravitelné
- - Cíl bodu obnovení: Úplné ztrátě dat
+ - RTO: Neopravitelné
+ - CÍL BODU OBNOVENÍ: Úplné ztrátě dat
 
 ## <a name="recommended-topologies"></a>Doporučená topologie
 

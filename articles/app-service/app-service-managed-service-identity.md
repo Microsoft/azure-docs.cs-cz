@@ -1,5 +1,5 @@
 ---
-title: Spravované identity ve službě App Service a Azure Functions | Dokumentace Microsoftu
+title: Spravované identity přehled – Azure App Service | Dokumentace Microsoftu
 description: Koncepční odkaz a Instalační příručka pro spravované identity v Azure App Service a Azure Functions
 services: app-service
 author: mattchenderson
@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 033667500f627a090c6ba6d686224126d217b833
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 40ae45eb401aeb302b2474cd181d29c0ee26c611
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971398"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254356"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
@@ -158,7 +158,7 @@ Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Identifi
 ## <a name="adding-a-user-assigned-identity-preview"></a>Přidání uživatelsky přiřazené identity (preview)
 
 > [!NOTE] 
-> Uživatelsky přiřazené identity jsou aktuálně ve verzi preview. Cloudy Sovreign se zatím nepodporují.
+> Uživatelsky přiřazené identity jsou aktuálně ve verzi preview. Suverénní cloudy se zatím nepodporují.
 
 Vytvoření aplikace pomocí uživatelsky přiřazené identity vyžaduje vytvoření identity a pak přidejte svůj identifikátor prostředku ke konfiguraci vaší aplikace.
 
@@ -299,7 +299,7 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 > |access_token|Požadovaný přístupový token. Volání webové služby můžete použít tento token k ověření přijímající webové služby.|
 > |expires_on|Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti.|
 > |prostředek|Identifikátor URI ID aplikace přijímající webové služby.|
-> |token_type|Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [rozhraní Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
+> |token_type|Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [rozhraní Framework autorizace OAuth 2.0: Použití tokenu nosiče (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
 
 Tato odpověď je stejné jako [odpověď pro požadavek tokenu přístupu do služby AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).

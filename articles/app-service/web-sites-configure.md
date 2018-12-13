@@ -1,5 +1,5 @@
 ---
-title: Konfigurace webových aplikací v prostředí Azure App Service
+title: Konfigurace webových aplikací – Azure App Service
 description: Jak nakonfigurovat webovou aplikaci ve službě Azure App Services
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 60675d7d40dbab863677ea120c25986cff61a308
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960137"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269426"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
@@ -38,8 +39,8 @@ Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [Azure Porta
 ### <a name="general-settings"></a>Obecná nastavení
 **Verze rozhraní Framework**. Pokud vaše aplikace používá některé tyto architektury, nastavte tyto možnosti: 
 
-* **Rozhraní .NET framework**: nastavte verze rozhraní .NET framework. 
-* **PHP**: nastavení verze PHP nebo **OFF** zakázat PHP. 
+* **Rozhraní .NET framework**: Nastavte verzi rozhraní .NET framework. 
+* **PHP**: Nastavení verze PHP nebo **OFF** zakázat PHP. 
 * **Java**: Vyberte verzi jazyka Java nebo **OFF** zakázat Java. Použití **webový kontejner** možnost si vybrat mezi verzí Tomcat a Jetty.
 * **Python**: Vyberte verzi Pythonu, nebo **OFF** zakázat Python.
 
@@ -164,7 +165,7 @@ Chcete-li zobrazit nasazovacích slotů, klikněte na tlačítko **všechna nast
 ### <a name="monitoring"></a>Monitorování
 V režimu Basic nebo Standard můžete otestovat dostupnost protokolu HTTP nebo HTTPS koncových bodů, z až tři geograficky distribuované umístění. Monitorování test selže, pokud se o chybu (4xx nebo 5xx), kód HTTP odpovědi nebo odpovědi trvá déle než 30 sekund. Koncový bod se považuje za k dispozici v případě úspěšné testy monitorování z určitých umístění. 
 
-Další informace najdete v tématu [postupy: sledování stavu koncových bodů webové].
+Další informace najdete v tématu [Jak: Stav koncového bodu monitorování webu].
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service], kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
@@ -184,7 +185,7 @@ Další informace najdete v tématu [postupy: sledování stavu koncových bodů
 [Konfigurace vlastní domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nasazení do přípravných prostředí pro Web Apps ve službě Azure App Service]: ./web-sites-staged-publishing.md
 [Povolení HTTPS pro aplikaci ve službě Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Postupy: sledování stavu koncových bodů webové]: https://go.microsoft.com/fwLink/?LinkID=279906
+[Jak: Stav koncového bodu monitorování webu]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Základy monitorování pro webové aplikace ve službě Azure App Service]: ./web-sites-monitor.md
 [režim kanálů]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Škálování webové aplikace ve službě Azure App Service]: ./web-sites-scale.md

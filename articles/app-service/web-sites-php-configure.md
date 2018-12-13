@@ -1,5 +1,5 @@
 ---
-title: Konfigurace PHP ve službě Azure App Service Web Apps
+title: Konfigurace modulu runtime PHP – Azure App Service
 description: Zjistěte, jak nakonfigurovat výchozí instalace PHP nebo přidat vlastní instalace PHP pro službu Web Apps ve službě Azure App Service.
 services: app-service
 documentationcenter: php
@@ -13,12 +13,13 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: d5ad7b392029ae33ee7666b80edfe5b4b7555b41
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965782"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273186"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurace PHP ve službě Azure App Service Web Apps
 
@@ -28,7 +29,7 @@ Tento průvodce vám ukáže, jak nakonfigurovat integrované modulu runtime PHP
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="how-to-change-the-built-in-php-version"></a>Postupy: Změna integrované verze PHP
+## <a name="how-to-change-the-built-in-php-version"></a>Postup: Změny integrovaných verze PHP
 
 Ve výchozím nastavení PHP 5.6 je nainstalována a okamžitě k dispozici pro použití při vytváření webové aplikace služby App Service. Nejlepší způsob, jak zobrazit dostupné verze revize, její výchozí konfiguraci a povolené rozšíření je k nasazení skriptu, který volá [phpinfo()] funkce.
 
@@ -39,10 +40,10 @@ Verze PHP 7.0 a PHP 7.2 jsou také k dispozici, ale není ve výchozím nastaven
 1. Přejděte do webové aplikace [webu Azure portal](https://portal.azure.com) a klikněte na **nastavení** tlačítko.
 
     ![Nastavení webové aplikace][settings-button]
-1. Z **nastavení** okně vyberte **nastavení aplikace** a vyberte novou verzi PHP.
+2. Z **nastavení** okně vyberte **nastavení aplikace** a vyberte novou verzi PHP.
 
     ![Nastavení aplikace][application-settings]
-1. Klikněte na tlačítko **Uložit** tlačítko v horní části **nastavení webové aplikace** okno.
+3. Klikněte na tlačítko **Uložit** tlačítko v horní části **nastavení webové aplikace** okno.
 
     ![Uložit nastavení konfigurace][save-button]
 
@@ -78,7 +79,7 @@ Pokud chcete používat rozhraní příkazového řádku Azure, je nutné [insta
 
         az webapp show --name {app-name} --resource-group {resource-group-name}
 
-## <a name="how-to-change-the-built-in-php-configurations"></a>Postupy: Změna předdefinovaných konfigurací PHP
+## <a name="how-to-change-the-built-in-php-configurations"></a>Postup: Změnit integrovaná konfigurace PHP
 
 Pro všechny předdefinované PHP runtime můžete změnit některé možnosti konfigurace pomocí následujících kroků. (Informace o souboru php.ini direktivy najdete v tématu [Seznam php.ini direktivy].)
 
@@ -109,7 +110,7 @@ Jako alternativu k použití `.user.ini` soubor, můžete použít [ini_set()] f
         wincache.maxfilesize=512
 1. Chcete-li znovu načíst změny, restartujte webovou aplikaci.
 
-## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Postupy: povolení rozšíření v výchozího PHP runtime
+## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Postup: Povolte rozšíření ve výchozího PHP runtime
 
 Jak je uvedeno v předchozí části, je nejlepší způsob, jak zobrazit výchozí verzi PHP, její výchozí konfiguraci a povolené rozšíření nasazení skriptu, který volá [phpinfo()]. Chcete-li povolit další rozšíření, pomocí následujících kroků:
 
@@ -144,7 +145,7 @@ Jak je uvedeno v předchozí části, je nejlepší způsob, jak zobrazit výcho
 
 Zend rozšíření jsou také podporovány pomocí **PHP_ZENDEXTENSIONS** klíč. Pokud chcete povolit více rozšíření, zahrnují čárkou oddělený seznam `.dll` soubory pro hodnotu nastavení aplikace.
 
-## <a name="how-to-use-a-custom-php-runtime"></a>Postupy: použití vlastního modulu runtime PHP
+## <a name="how-to-use-a-custom-php-runtime"></a>Postup: Použití vlastního modulu runtime PHP
 
 Namísto výchozího PHP runtime App Service Web Apps můžete použít modul runtime PHP, který zadáte pro spouštění skriptů PHP. Modul runtime, které poskytujete se dá nakonfigurovat pomocí `php.ini` soubor, který je rovněž poskytnout. Použití vlastního modulu runtime PHP s Web Apps, následujícím postupem.
 
@@ -165,7 +166,7 @@ Namísto výchozího PHP runtime App Service Web Apps můžete použít modul ru
 
 <a name="composer" />
 
-## <a name="how-to-enable-composer-automation-in-azure"></a>Postupy: povolení automatizace nástroje Composer v Azure
+## <a name="how-to-enable-composer-automation-in-azure"></a>Postup: Povolení automatizace nástroje Composer v Azure
 
 Ve výchozím nastavení služby App Service, nebude dělat nic s composer.json, pokud máte ve vašem projektu PHP. Pokud používáte [nasazení z Gitu](app-service-deploy-local-git.md), můžete povolit při zpracování souboru composer.json `git push` tím, že rozšíření autora.
 

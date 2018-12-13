@@ -1,6 +1,6 @@
 ---
-title: Indexování služby Azure Blob Storage pomocí služby Azure Search
-description: Zjistěte, jak index služby Azure Blob Storage a extrakci textu z dokumentů s Azure Search
+title: Indexování obsahu úložiště objektů Blob v Azure pro fulltextové vyhledávání – Azure Search
+description: Zjistěte, jak index služby Azure Blob Storage a extrakci textu z dokumentů s Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: d2706d4b10303cb62066f0381f9a69b553c05cb4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: c73a802cd67c9ecb94482cfcd6aac51fc8bbc19e
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406961"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317470"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů ve službě Azure Blob Storage pomocí služby Azure Search
 Tento článek popisuje, jak používat Azure Search k indexování dokumentů (jako jsou soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené ve službě Azure Blob storage. Nejprve vysvětluje základy tohoto nastavení a konfigurace indexeru blob. Potom nabízí blíže zkoumat chování a scénáře se pravděpodobně dojde k.
@@ -69,7 +70,7 @@ Další informace k rozhraní API pro vytvoření zdroje dat, naleznete v témat
 Zadejte přihlašovací údaje pro kontejner objektů blob v jednom z těchto způsobů:
 
 - **Připojovací řetězec účtu úložiště úplný přístup**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Připojovací řetězec můžete získat z webu Azure portal tak, že přejdete do okna účet úložiště > Nastavení > klíče (pro účty úložiště Classic) nebo nastavení > přístupové klíče (pro účty úložiště Azure Resource Manageru).
-- **Sdílený přístupový podpis úložiště účtu** připojovací řetězec (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` SAS by měl mít seznamu a oprávnění ke čtení u kontejnery a objekty (v tomto případě objektů BLOB).
+- **Sdílený přístupový podpis úložiště účtu** připojovací řetězec (SAS): `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Musí mít v seznamu a oprávnění ke čtení u kontejnery a objekty sdíleného přístupového podpisu (v tomto případě objektů BLOB).
 -  **Sdílený přístupový podpis kontejneru**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` SAS by měl mít seznamu a oprávnění ke čtení v kontejneru.
 
 Další informace o úložiště sdílené přístupové podpisy, naleznete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
@@ -128,7 +129,7 @@ V závislosti na tom [konfigurace indexeru](#PartsOfBlobToIndex), indexeru blob 
 * Textový obsah dokumentu je extrahován do pole řetězce s názvem `content`.
 
 > [!NOTE]
-> Služba Azure Search omezuje množství textu extrahuje v závislosti na cenové úrovni: 32 000 znaků bezplatné vrstvy, 64 000 pro základní a 4 miliony úrovně Standard, Standard S2 a Standard S3. Upozornění je zahrnutý v odpovědi stav indexeru pro oříznutá dokumenty.  
+> Služba Azure Search omezuje množství textu extrahuje v závislosti na cenové úrovně: 32 000 znaků bezplatné vrstvy, 64 000 pro základní a 4 miliony úrovně Standard, Standard S2 a Standard S3. Upozornění je zahrnutý v odpovědi stav indexeru pro oříznutá dokumenty.  
 
 * Metadata zadané uživatelem na objekt blob, pokud existuje, extrahují se vlastnosti znění.
 * Extrahují se vlastnosti metadat objektu blob standardní do následujících polí:
@@ -333,7 +334,7 @@ Indexování objektů BLOB může být časově náročný proces. V případech
 
 Můžete chtít "sestavení" dokumenty z více zdrojů v indexu. Chcete například sloučit text z objektů BLOB s další metadata uložená v databázi Cosmos DB. Nasdílení změn indexování rozhraní API spolu s různými indexery můžete použít i Vybudujte vyhledávání dokumentů z více částí. 
 
-Aby to fungovalo všechny indexery a další součásti musí shodnout na klíč dokumentu. Podrobný návod najdete v článku externí: [kombinovat dokumenty s ostatními daty ve službě Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+Aby to fungovalo všechny indexery a další součásti musí shodnout na klíč dokumentu. Podrobný návod najdete v článku externí: [Kombinovat dokumenty s ostatními daty ve službě Azure Search ](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indexování prostý text 
@@ -374,7 +375,7 @@ Následující tabulka shrnuje zpracování u každé formát dokumentu a popisu
 | ZPRÁVA (aplikace/vnd.ms – outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Extrahovat text, včetně příloh |
 | ZIP (aplikace a PSČ) |`metadata_content_type` |Rozbalte text z všechny dokumenty v archivu |
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Odstranit kód XML a extrahovat text |
-| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrakce textu<br/>Poznámka: Pokud je potřeba extrahovat více polí dokumentu z objektů blob JSON, naleznete v tématu [JSON indexování objektů blob](search-howto-index-json-blobs.md) podrobnosti |
+| JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |Extrakce textu<br/>POZNÁMKA: Pokud je potřeba extrahovat více polí dokumentu z objektů blob JSON, naleznete v tématu [JSON indexování objektů blob](search-howto-index-json-blobs.md) podrobnosti |
 | EML (zpráva/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Extrahovat text, včetně příloh |
 | RTF (application/rtf). |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Extrakce textu|
 | Prostý text (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Extrakce textu|

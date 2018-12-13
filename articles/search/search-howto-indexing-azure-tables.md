@@ -1,6 +1,6 @@
 ---
-title: Indexování služby Azure Table storage s Azure Search | Dokumentace Microsoftu
-description: Naučte se indexovat data uložená ve službě Azure Table storage s Azure Search
+title: Indexování obsahu z Azure Table storage pro fulltextové vyhledávání – Azure Search
+description: Naučte se indexovat data uložená ve službě Azure Table storage s Azure Search.
 ms.date: 10/17/2018
 author: mgottein
 manager: cgronlun
@@ -9,12 +9,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: 738518f94869a55cf80db1c87b8c74b167f5cce1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.custom: seodec2018
+ms.openlocfilehash: 39455669dd739309ac0201de49b390c2390e0067
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406921"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53317266"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Index Azure Table storage s Azure Search
 Tento článek ukazuje, jak pomocí Azure Search index data uložená v úložišti tabulek Azure.
@@ -66,9 +67,9 @@ Další informace o rozhraní API pro vytvoření zdroje dat, naleznete v témat
 
 Zadejte přihlašovací údaje pro tabulky v jednom z těchto způsobů: 
 
-- **Připojovací řetězec účtu úložiště úplný přístup**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` připojovací řetězec můžete získat z webu Azure portal tak, že přejdete **okno účet úložiště** > **nastavení**  >  **Klíče** (pro účty úložiště classic) nebo **nastavení** > **přístupové klíče** (pro úložiště Azure Resource Manageru účty).
-- **Účet úložiště sdíleného přístupu podpis připojovací řetězec**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` sdíleného přístupového podpisu musí mít v seznamu a oprávnění ke čtení u kontejnerů (tabulky v tomto případě) a objekty (řádky tabulky).
--  **Tabulka sdílený přístupový podpis**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` sdílený přístupový podpis by měl mít oprávnění pro dotaz (čtení) v tabulce.
+- **Připojovací řetězec účtu úložiště úplný přístup**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Připojovací řetězec můžete získat z webu Azure portal tak, že přejdete **okno účet úložiště** > **nastavení** > **klíče** (v případě klasického modelu účty úložiště) nebo **nastavení** > **přístupové klíče** (pro účty úložiště Azure Resource Manageru).
+- **Účet úložiště sdíleného přístupu podpis připojovací řetězec**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` Sdílený přístupový podpis by měl mít seznamu a oprávnění ke čtení u kontejnerů (tabulky v tomto případě) a objekty (řádky tabulky).
+-  **Tabulka sdílený přístupový podpis**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` Sdílený přístupový podpis by měl mít oprávnění pro dotaz (čtení) v tabulce.
 
 Další informace o úložiště sdílené přístupové podpisy, naleznete v tématu [použití sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 

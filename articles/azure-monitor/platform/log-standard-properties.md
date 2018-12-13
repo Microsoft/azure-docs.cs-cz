@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: e4e921223676f4b5d64025c67914fc8b7c29a6fe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d2db9d426da58b3783b07210165a55cc6ec27658
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974973"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185949"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-query/log-query-overview.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.

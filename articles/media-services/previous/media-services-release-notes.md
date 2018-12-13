@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: ae2697c96435ec18ae7645520d438c41837f036f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016857"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186306"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -86,7 +86,7 @@ Od 12. května 2018, živé kanály budou nadále podporu přenosového streamu 
     * Vylepšení dekodéru H.264 používaných pro kodér úrovně Standard odstranění některých výjimečných artefakty. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Obecnou dostupnost služby Azure Media Redactor: tento procesor médií provádí anonymizaci rozmazáním tváří vybraných jedinců a je ideální pro použití v veřejného scénáře a sdělovací. 
+Obecnou dostupnost služby Azure Media Redactor: Tento procesor médií provádí anonymizaci rozmazáním tváří vybraných jedinců a je ideální pro použití v veřejného scénáře a sdělovací. 
 
 Přehled na tento nový procesor, naleznete v tématu [tento příspěvek na blogu](https://azure.microsoft.com/blog/azure-media-redactor/). Informace o dokumentaci a nastaveních najdete v tématu [zákona o svobodném přístupu tváří pomocí Azure Media Analytics](media-services-face-redaction.md).
 
@@ -145,7 +145,7 @@ Od nejnovější verze služby po dokončení úlohu kódování, který generuj
 > 
 > 
 
-Další informace najdete v tématu [tento blog](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
+Další informace najdete v [tomto blogu](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/).
 
 ### <a name="known-issues"></a>Známé problémy
 Někteří klienti můžou pocházet napříč problém při opakovaném značky v manifestu technologie Smooth Streaming. Další informace najdete v tématu [v této části](media-services-deliver-content-overview.md#known-issues).
@@ -158,7 +158,7 @@ Někteří klienti můžou pocházet napříč problém při opakovaném značky
 Media Services teď můžete použít k dynamické šifrování vašeho HTTP Live Streaming (HLS) obsahu technologií Apple FairPlay. Službu doručování licencí Media Services můžete použít také k distribuci licencí FairPlay pro klienty. Další informace najdete v tématu "Používání Azure Media Services k streamování obsahu HLS chráněného technologií Apple FairPlay."
 
 ## <a id="feb_changes16"></a>Verze. února 2016
-Nejnovější verze služby Media Services SDK pro .NET (3.5.3) obsahuje opravy chyb souvisejících s Google Widevine. Nebylo možné znovu použít AssetDeliveryPolicy pro několik prostředků, které jsou šifrované pomocí Widevine. V rámci této opravy chyb, následující vlastnost byla přidána do sady SDK: WidevineBaseLicenseAcquisitionUrl.
+Nejnovější verze služby Media Services SDK pro .NET (3.5.3) obsahuje opravy chyb souvisejících s Google Widevine. Nebylo možné znovu použít AssetDeliveryPolicy pro několik prostředků, které jsou šifrované pomocí Widevine. Jako součást této opravy byla přidána následující vlastnost sady SDK: WidevineBaseLicenseAcquisitionUrl.
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -184,20 +184,20 @@ Tým Azure SDK publikované novou verzi sady [sady Azure SDK pro jazyk PHP](http
 Další informace naleznete v tématu:
 
 * Následující [ukázky kódu](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) dozvíte, jak rychle začít:
-  * **vodworkflow_aes.php**: PHP tento soubor ukazuje, jak používat dynamické šifrování AES-128 a služba doručování klíčů. Je založen na ukázku .NET je vysvětleno v [dynamického šifrování pomocí AES-128 a služba doručování klíčů](media-services-protect-with-aes128.md).
-  * **vodworkflow_aes.php**: PHP tento soubor ukazuje způsob použití dynamického šifrování PlayReady a službou doručování licencí. Je založen na ukázku .NET je vysvětleno v [běžného dynamického šifrování pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md).
-  * **scale_encoding_units.php**: PHP tento soubor popisuje postup při škálování jednotek rezervovaných pro kódování.
+  * **vodworkflow_aes.php**: Tento soubor PHP ukazuje, jak používat dynamické šifrování AES-128 a služba doručování klíčů. Je založen na ukázku .NET je vysvětleno v [dynamického šifrování pomocí AES-128 a služba doručování klíčů](media-services-protect-with-aes128.md).
+  * **vodworkflow_aes.php**: Tento soubor PHP ukazuje způsob použití dynamického šifrování PlayReady a službou doručování licencí. Je založen na ukázku .NET je vysvětleno v [běžného dynamického šifrování pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md).
+  * **scale_encoding_units.php**: Tento soubor PHP ukazuje, jak škálování jednotek rezervovaných pro kódování.
 
 ## <a id="nov_changes_15"></a>Verzi z listopadu 2015
- Media Services teď nabízejí službu doručování licencí Widevine v cloudu. Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Viz také [v tomto kurzu](media-services-protect-with-playready-widevine.md) a [úložiště GitHub](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
+ Media Services teď nabízejí službu doručování licencí Widevine v cloudu. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/). Viz také [v tomto kurzu](media-services-protect-with-playready-widevine.md) a [úložiště GitHub](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm). 
 
-Služeb doručování licencí Widevine poskytované službou Media Services jsou ve verzi preview. Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
+Služeb doručování licencí Widevine poskytované službou Media Services jsou ve verzi preview. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/).
 
 ## <a id="oct_changes_15"></a>Verze. října 2015
-Služba Media Services je teď v provozu v následujících datových centrech: Brazílie – Jih, Indie – Západ, Indie – jih a Indie – střed. Teď můžete na webu Azure portal [vytvoření účtů Media Service](media-services-portal-create-account.md) a provádění různých úloh popsaných v [webové stránce dokumentace k Media Services](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding není povolena v těchto datových centrech. Ne všechny typy jednotky rezervované pro kódování nejsou dále, k dispozici v těchto datových centrech.
+Služba Media Services je nyní za provozu v následujících datových centrech: Brazílie – Jih, Indie – Západ, Indie – jih a Indie – střed. Teď můžete na webu Azure portal [vytvoření účtů Media Service](media-services-portal-create-account.md) a provádění různých úloh popsaných v [webové stránce dokumentace k Media Services](https://azure.microsoft.com/documentation/services/media-services/). Live Encoding není povolena v těchto datových centrech. Ne všechny typy jednotky rezervované pro kódování nejsou dále, k dispozici v těchto datových centrech.
 
-* Brazílie – jih: Dostupné jsou jenom Standard a Basic jednotky rezervované pro kódování.
-* Indie – Západ, Indie – jih a Indie – střed: pouze základní jednotky rezervované pro kódování jsou k dispozici.
+* Brazílie – jih:                                          Jsou k dispozici pouze Standard a Basic jednotky rezervované pro kódování.
+* Indie – Západ, Indie – jih a Indie – střed:             K dispozici jsou pouze základní jednotky rezervované pro kódování.
 
 ## <a id="september_changes_15"></a>Verze. září 2015
 Media Services teď nabízejí možnost chránit videa na vyžádání a živé streamování s technologiemi DRM modulární Widevine. Při doručování licencí Widevine můžete použít následující partneři služeb doručování:
@@ -205,19 +205,19 @@ Media Services teď nabízejí možnost chránit videa na vyžádání a živé 
 * [EZDRM](http://ezdrm.com/) 
 * [castLabs](http://castlabs.com/company/partners/azure/) 
 
-Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
+Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/).
   
 Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Widevine můžete provést pomocí sady [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (počínaje verzí 3.5.1) nebo rozhraní REST API. 
-* Služba Media Services přidali podporu pro Apple ProRes videa. Teď můžete nahrát QuickTime zdrojové soubory videa, které používají Apple ProRes nebo jiných kodeky. Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
-* Nyní můžete kodéru Media Encoder Standard provedete klipů tak pro živé extrakce archivu. Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
+* Služba Media Services přidali podporu pro Apple ProRes videa. Teď můžete nahrát QuickTime zdrojové soubory videa, které používají Apple ProRes nebo jiných kodeky. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/).
+* Nyní můžete kodéru Media Encoder Standard provedete klipů tak pro živé extrakce archivu. Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
 * Byly provedeny následující aktualizace filtrování: 
   
   * Můžete teď pomocí formátu Apple HLS s filtrem pouze se zvukem. Tuto aktualizaci můžete použít k odebrání pouze se zvukem sledovat tak, že zadáte (jenom zvuk = false) v adrese URL.
   * Když definujete filtry pro vaše prostředky, teď můžete zkombinovat více (až tři) filtry v jedné adresy URL.
     
-    Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+    Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 * Media Services teď podporují I rámce při HLS verze 4. Můžu snímků podporu optimalizuje operace přechod na libovolný krok a vzad. Ve výchozím nastavení zahrnují všechny výstupy HLS verze 4 stop můžu snímků (EXT-X-I-FRAME-STREAM-INF).
-Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a id="august_changes_15"></a>Verzi ze srpna 2015
 * Media Services SDK pro jazyk Java verze 0.8.0 a nové ukázky jsou teď k dispozici. Další informace naleznete v tématu:
@@ -265,7 +265,7 @@ Následující nové funkce byly oznámili:
 * Přidala se podpora španělštiny.
 * Přidala se nová konfigurace pro formát XML.
 
-Další informace najdete v tématu [tento blog](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
+Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/).
 
 ### <a name="media-services-net-sdk-updates"></a>Aktualizace Media Services .NET SDK
 Media Services .NET SDK je teď verze 3.2.0.0. Byly provedeny následující aktualizace:
@@ -374,8 +374,8 @@ Při kódování prostředku výstupního prostředku je vytvořen po dokončen�
 ## <a id="july_changes_14"></a>Verze. července 2014
 Pro Azure Media Services Packageru a Encryptoru byly provedeny následující opravy:
 
-* Když k assetu živý archív se přenášejí na protokol HLS, přehrává zvuk pouze: Tento problém byl vyřešen, a teď můžete přehrát zvuk a video.
-* Pokud prostředek je zabalená do HLS a AES 128-bit šifrování obálky, zabalené datové proudy není přehrávání na zařízeních s Androidem: Tato chyba byla opravena a zabalené stream přehrávání na zařízeních s Androidem, které podporují HLS.
+* Když k assetu živý archív se přenášejí na protokol HLS, pouze audio přehrávání: Tento problém byl vyřešen, a teď můžete přehrát zvuk a video.
+* Pokud prostředek je zabalená do HLS a AES 128-bit šifrování obálky, zabalené datových proudů se není přehrávání na zařízeních s Androidem: Tato chyba byla opravena a zabalené stream přehrávání na zařízeních s Androidem, které podporují HLS.
 
 ## <a id="may_changes_14"></a>Verze. května 2014
 ### <a id="may_14_changes"></a>Aktualizace obecných Media Services
@@ -476,7 +476,7 @@ Tyto změny jsou zahrnuty v červnu 2013 Media Services SDK verze. Nejnovější
     * Účet úložiště vlastností
     * Vlastnost StorageAccountName
   
-    Další informace najdete v tématu [Media Services spravovat prostředky ve více účtech úložiště](https://msdn.microsoft.com/library/azure/dn271889.aspx).
+      Další informace najdete v tématu [Media Services spravovat prostředky ve více účtech úložiště](https://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Rozhraní API související s oznámení. Počínaje verzí 2.2.0.0, může naslouchat oznámení Azure Queue storage. Další informace najdete v tématu [zpracování Media Services úlohy oznámení](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
     * Vlastnost Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions
@@ -490,20 +490,20 @@ Tyto změny jsou zahrnuty v červnu 2013 Media Services SDK verze. Nejnovější
 ## <a id="december_changes_12"></a>Verzi z prosince 2012
 ### <a name="dec_12_dotnet_changes"></a>Změny Media Services .NET SDK
 * IntelliSense: Chybí IntelliSense dokumentace byla přidána pro mnoho typů.
-* Microsoft.Practices.TransientFaultHandling.Core: Byla chyba opravena kde SDK stále má závislost na starou verzi tohoto sestavení. Sada SDK nyní odkazuje na 5.1.1209.1 verzi tohoto sestavení.
+* Microsoft.Practices.TransientFaultHandling.Core: Pokud sada SDK stále měl závislost na starou verzi tohoto sestavení byla chyba opravena. Sada SDK nyní odkazuje na 5.1.1209.1 verzi tohoto sestavení.
 
 Řeší problémy zjištěné v listopadu 2012 SDK:
 
 * IAsset.Locators.Count: Tento počet je nyní správně hlášené na nová rozhraní IAsset po odstranění se všechny lokátory.
 * IAssetFile.ContentFileSize: Toto je nyní správně nastavit hodnotu po nahrání IAssetFile.Upload(filepath).
-* IAssetFile.ContentFileSize: Tuto vlastnost můžete nyní nastavit při vytváření souboru prostředků. To byla dříve jen pro čtení.
-* IAssetFile.Upload(filepath): Byla chyba opravena kde byla tato metoda synchronní nahrávání vyvolání následující chybu při více soubory byly odeslány do assetu. Došlo k chybě "serveru se nepodařilo ověřit žádost. Ujistěte se, že hodnota hlavičky autorizace je vytvořen správně včetně podpis. "
+* IAssetFile.ContentFileSize: Tuto vlastnost lze nastavit teď při vytváření souboru prostředků. To byla dříve jen pro čtení.
+* IAssetFile.Upload(filepath): Kde se tato metoda synchronní nahrávání vyvolání následující chybu při více soubory byly odeslány do assetu byla chyba opravena. Došlo k chybě "serveru se nepodařilo ověřit žádost. Ujistěte se, že hodnota hlavičky autorizace je vytvořen správně včetně podpis. "
 * IAssetFile.UploadAsync: Byla chyba opravena, který omezený souběžná nahrávání souborů, které mají pět souborů.
 * IAssetFile.UploadProgressChanged: Tato událost se teď poskytují prostřednictvím sady SDK.
 * IAssetFile.DownloadAsync (string, BlobTransferClient ILocator, CancellationToken): Toto přetížení metody je nyní k dispozici.
 * IAssetFile.DownloadAsync: Byla chyba opravena, který omezený souběžných stahování souborů, které mají pět souborů.
-* IAssetFile.Delete(): Byla chyba opravena kde volání delete může vyvolat výjimku, pokud žádný soubor byl nahrán pro IAssetFile.
-* Úlohy: Byla chyba opravena kde řetězení "Obsah ve formátu MP4 do funkce Smooth Streams úlohy" s "Ochrany úlohami PlayReady" pomocí šablony projektu nevytvořili žádné úlohy vůbec.
+* IAssetFile.Delete(): Kde volání delete může vyvolat výjimku, pokud žádný soubor byl nahrán pro IAssetFile byla chyba opravena.
+* Úlohy: Kde řetězení "Obsah ve formátu MP4 do funkce Smooth Streams úlohy" s "Ochrany úlohami PlayReady" pomocí šablony projektu nevytvořili žádné úlohy na všech byla chyba opravena.
 * EncryptionUtils.GetCertificateFromStore(): Tato metoda už vyvolá výjimka nulového odkazu, protože došlo k chybě při hledání certifikát založený na problémy s konfigurací certifikátu.
 
 ## <a id="november_changes_12"></a>Listopad 2012 release
@@ -521,10 +521,10 @@ Změny uvedené v této části jsou zahrnuté v listopadu 2012 (verze 2.0.0.0) 
   
     * IAssetFile nahradí FileInfo a má různé chování. Ho Pokud chcete použít, vytvořte instanci objektu IAssetFiles, za nímž následuje nahrávání souborů pomocí sady Media Services SDK nebo sady SDK služby Storage. Je možné použít následující IAssetFile.Upload přetížení:
   
-        * IAssetFile.Upload(filePath): Této synchronní metody blokuje vlákno a My ho doporučujeme pouze v případě, že můžete nahrát jeden soubor.
+        * IAssetFile.Upload(filePath): Blokuje vlákno, této synchronní metody, a My ho doporučujeme pouze v případě, že můžete nahrát jeden soubor.
         * IAssetFile.UploadAsync (CestakSouboru, blobTransferClient, Lokátor, cancellationToken): Tato asynchronní metoda je mechanismus upřednostňované nahrávání. 
     
-            Známý problém: Pokud používáte token zrušení, se zruší nahrávání. Úlohy může mít mnoho stavů zrušení. Musí správně zachytila a zpracovala výjimky.
+            Známého problému: Pokud používáte token zrušení, nahrávání se zrušila. Úlohy může mít mnoho stavů zrušení. Musí správně zachytila a zpracovala výjimky.
 * Lokátory
   
     * Specifické pro původ verze byly odebrány. Kontext, který specifické pro SAS. Zastaralé nebo odebrané podle všeobecné dostupnosti budou označeny Locators.CreateSasLocator (asset, accessPolicy). V části "Lokátory" v části "Nové funkce" aktualizované chování.

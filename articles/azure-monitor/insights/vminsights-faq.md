@@ -8,18 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/08/2018
 ms.author: magoedte
-ms.openlocfilehash: f5865cf72f413db49e70a08305de54aff955607b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a97a7be0eaa8438a4df27b610106ec6ab9f60d30
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075229"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53184385"
 ---
 # <a name="azure-monitor-for-vms-preview-faq"></a>Azure Monitor pro virtuální počítače (preview) – nejčastější dotazy
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Monitor pro virtuální počítače. Pokud máte nějaké další dotazy ohledně řešení, přejděte [diskusním fóru Azure](https://feedback.azure.com/forums/34192--general-feedback) a zveřejněte své dotazy. Jakmile dotazy jsou často budete vyzváni, přidáme je do tohoto článku, jsou dostupné rychlé a snadné.

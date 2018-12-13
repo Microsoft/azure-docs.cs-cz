@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 12/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5a1f0c0ee8a9f6ef6871e19e7722e09f4e96ba7f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106749"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142066"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -135,22 +135,22 @@ Předchozí znalosti Azure a Azure Stack je povinný. Další informace než bud
 
  -  **Fondu agentů sestavení Linux hostované VSTS.** Rychle sestavovat, testovat a nasazovat aplikace pomocí Microsoft, spravovat a udržovat hostovaného agenta. Další informace o prostředí sestavení VSTS najdete v článku agentů [hostovaných agentů](https://docs.microsoft.com/vsts/build-release/concepts/agents/hosted?view=vsts) dokumentaci.
 
-## <a name="step-1-create-a-storage-account"></a>Krok 1: Vytvoření účtu úložiště
+## <a name="step-1-create-a-storage-account"></a>Krok 1: vytvořit účet úložiště
 
 Vytvoření účtu úložiště a kontejner pro vyčistit data uložená.
 
 1.  Přihlaste se k [ *webu Azure portal*](https://portal.azure.com/).
 
-2.  Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **všechny služby**. Přejděte dolů k položce **úložiště** a zvolte **účty úložiště**. V ** účty úložiště ** okna zvolte **přidat**.
+2.  Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **všechny služby**. Přejděte dolů k položce **úložiště** a zvolte **účty úložiště**. V **účty úložiště** okna zvolte **přidat**.
 
 3.  Zadejte název účtu úložiště.
 
     > [!Note]  
     > Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Název účtu úložiště musí být jedinečný v rámci Azure. Na webu Azure portal upozorní, pokud se vybraný název účtu úložiště se už používá.
 
-4.  Zadejte model nasazení, který se má použít: **Resource Manageru**.
+4.  Zadejte model nasazení, který se má použít: **Resource Manager**.
 
-5.  Vyberte typ účtu úložiště: **pro obecné účely V1**, pak zadejte úroveň výkonu: **standardní**.
+5.  Vyberte typ účtu úložiště: **Obecné účely V1**, pak zadejte úroveň výkonu: **Standardní**.
 
 6.  Vyberte možnost replikace pro účet úložiště: **GRS**.
 
@@ -162,7 +162,7 @@ Vytvoření účtu úložiště a kontejner pro vyčistit data uložená.
 
 10. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
-    ![Alternativní text](/media/azure-stack-solution-machine-learning/image1.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image1.png)
 
 11.  Zvolte účet úložiště, nedávno vytvořili.
 
@@ -180,7 +180,7 @@ Vytvoření účtu úložiště a kontejner pro vyčistit data uložená.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image4.png)
 
-## <a name="step-2-create-a-data-science-virtual-machine"></a>Krok 2: Vytvoření virtuálního počítače pro datové vědy
+## <a name="step-2-create-a-data-science-virtual-machine"></a>Krok 2: Vytvořit virtuální počítač pro datové vědy
 
 Ubuntu dat virtuálního počítače VĚDY vytvořte na webu Azure Portal.
 
@@ -194,8 +194,8 @@ Ubuntu dat virtuálního počítače VĚDY vytvořte na webu Azure Portal.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image6.png)
 
-> ! [Důležité]  
-> **Zvolte** heslo ** jako*typ ověřování*.
+> [!Important]  
+> Zvolte **heslo** jako **typ ověřování**.
 
 Nové datové VĚDY umístěte do stejné skupiny prostředků jako na nově vytvořený účet úložiště. Všechny objekty Edge ML jsou nasazené v Azure v rámci této skupiny prostředků.
 
@@ -209,7 +209,8 @@ Nové datové VĚDY umístěte do stejné skupiny prostředků jako na nově vyt
 
     d.  Pro **účet úložiště diagnostiky**, vyberte dříve vytvořeného účtu úložiště.
 
-    e.  Poznámka: V AAD povolené a nakonfigurované pro předplatné Azure, spravované identity pro prostředky Azure je možné povolit také.
+    > [!Note]  
+    > Pomocí AAD povolené a nakonfigurované pro předplatné Azure je možné také povolit spravovaných identit pro prostředky Azure.
 
 2.  Vyberte **OK**.
 
@@ -312,7 +313,8 @@ Pomocí webu Azure portal ke zřízení účtů Azure Machine Learning:
 
 Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. Viz seznam [podporovaných platforem](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation).
 
-**Upozornění:** instalace dokončení může trvat přibližně hodinu.
+> [!Warning]  
+> Instalace může trvat přibližně hodinu na dokončení.
 
 1.  Stáhněte a spusťte nejnovější instalační program aplikace Workbench.
 
@@ -321,7 +323,7 @@ Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. V
 
 1.  Použijte na obrazovce pokynů k dokončení instalačního programu.
 
-    ** Instalace může trvat až 30 minut. **
+    **Instalace může trvat až 30 minut.**
     
     `Windows: C:\\Users\\<user>\\AppData\\Local\\AmlWorkbench`
     
@@ -865,7 +867,7 @@ Spustit skript v kontejneru Docker ve vzdáleném počítači s Linuxem, je pot�
     ```yaml  
     Framework: Python
     ```
-1.  Stejný příkaz jako předtím v okně rozhraní příkazového řádku pomocí cílové*<DSVM>* tentokrát pro spuštění skriptu iris_sklearn.py ve vzdáleném kontejneru Dockeru: (náhradní <DSVM> názvem Data Science virtuálního počítače, bez závorek).
+1.  Stejný příkaz jako předtím v okně rozhraní příkazového řádku pomocí cílové*<DSVM>* tentokrát pro spuštění skriptu iris_sklearn.py ve vzdáleném kontejneru Dockeru: (Náhradní <DSVM> názvem Data Science virtuálního počítače, bez závorek).
 
     ```CLI
         az ml experiment submit -c <DSVM> iris_sklearn.py
@@ -885,7 +887,7 @@ V předchozí části kurzu se skript **iris_sklearn.py** spouštěl místně v 
 
 4.  Podívejte se do souboru **iris_sklearn.py**, abyste věděli, kde se soubor pickle vygeneroval. Pomocí kombinace kláves CTRL+F otevřete dialogové okno **Vyhledávání** a potom v kódu Pythonu vyhledejte slovo **pickle**.
 
-Tento fragment kódu ukazuje, jak se vygeneroval výstupní soubor pickle. Výstupní soubor pickle má na disku název **model.pkl**.
+    Tento fragment kódu ukazuje, jak se vygeneroval výstupní soubor pickle. Výstupní soubor pickle má na disku název **model.pkl**.
 
     ```Python
         print("Export the model to model.pkl")
@@ -923,7 +925,7 @@ Vyhodnocení skriptu je potřeba k nasazení webové služby se souborem modelu.
 
     Tento skript vytvoří soubor JSON do **výstupy** oddílu, ve kterém je zaznamenané schéma vstupních dat vyžadované modelem.
 
-1.  Všimněte si podokna **Úlohy** na pravé straně podokna **Řídicí panel projektu**. Čekání úlohy score_iris.py** nejnovější ** zobrazí zelený **dokončeno** stav. Potom vyberte hypertextový odkaz **score_iris.py** u nejnovějšího spuštění úlohy a prohlédněte si podrobnosti o spuštění.
+1.  Všimněte si podokna **Úlohy** na pravé straně podokna **Řídicí panel projektu**. Počkejte, až se u nejnovější úlohy **score_iris.py** zobrazí zelený stav **Dokončeno**. Potom vyberte hypertextový odkaz **score_iris.py** u nejnovějšího spuštění úlohy a prohlédněte si podrobnosti o spuštění.
 
 2.  V podokně **Vlastnosti spuštění** v části **Výstupy** vyberte nově vytvořený soubor **service_schema.json**. Zaškrtněte políčko vedle názvu souboru a pak vyberte **Stáhnout**. Uložte soubor do kořenové složky projektu.
 
@@ -958,17 +960,17 @@ Nasazení a použití služby Azure Container Registry.
 
 Pomocí příkazu **az acr create** vytvořte registr kontejneru Azure. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Skupina prostředků je stejná.
 
-    ```CLI
-        az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
-    ```
+```CLI
+    az acr create --resource-group <ResourceGroup> --name  <acrName> --sku Basic
+```
 
 ### <a name="container-registry-login"></a>Přihlášení k registru kontejneru
 
 Pomocí příkazu **az acr login** se přihlaste k instanci služby ACR. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
-    ```CLI
-        az acr login --name <acrName>
-    ```
+```CLI
+    az acr login --name <acrName>
+```
 
 Příkaz vrátí ' bylo přihlášení úspěšné zprávu po dokončení.
 
@@ -978,11 +980,11 @@ Použití *místní režim* nasazení ke spouštění v kontejnerech Docker v m�
 
 K provedení následujících kroků pro zprovoznění modelu je potřeba, aby byl modul Docker spuštěný místně. Použití `-h` příznak na konci každého příkazu můžete zobrazit odpovídající zprávu nápovědy.
 
-    > [!Note]  
-    > If Docker engine is not locally available, proceed by creating a cluster in Azure for deployment and keep the cluster for re-use, or delete it after the tutorial to avoid ongoing charges.
+> [!Note]  
+> Pokud není modul Docker místně dostupné, pokračovat vytvořením clusteru v Azure pro nasazení a zachovat clusteru pro opakované použití nebo odstranit po tomto kurzu, aby se zabránilo nenabíhaly poplatky.
 
-    > [!Note]  
-    > Web services deployed locally do not appear in Azure Portal's list of services. They will be running in Docker on the local machine.
+> [!Note]  
+> Webové služby nasazené místně se nezobrazí v seznamu služeb na webu Azure Portal. Budou spuštěné v Dockeru na místním počítači.
 
 1.  Otevřete rozhraní příkazového řádku (CLI). V aplikaci Machine Learning Workbench v nabídce **Soubor** vyberte **Otevřít příkazový řádek**.
 
@@ -1017,7 +1019,7 @@ K provedení následujících kroků pro zprovoznění modelu je potřeba, aby b
     az provider show -n Microsoft.ContainerRegistry
     ```
 
-    Ve třetím řádku výstupu se zobrazí **"registrationState": "Registrace"**. Chvíli počkejte a opakujte **zobrazit** příkaz, dokud se ve výstupu nezobrazí **"registrationState": "registrováno.**
+    Na třetím řádku výstupu se zobrazí **"registrationState": "Registrace"**. Chvíli počkejte a opakujte **zobrazit** příkaz, dokud se ve výstupu nezobrazí **"registrationState": "Registrováno.**
 
 1.  Vytvořte prostředí. Spuštění tohoto kroku jednou pro každé prostředí.
 
@@ -1218,9 +1220,9 @@ Dejte přístupu instančního objektu služby k předplatnému, aby ho může v
 
     ![Nasadit šablonu řešení](media/azure-stack-solution-machine-learning/image59.png)
 
-10\. Vyberte **Základy** v vytvoření clusteru Kubernetes.
+10. Vyberte **Základy** v vytvoření clusteru Kubernetes.
 
-    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-machine-learning/image60.png)
 
 11. Zadejte **uživatelské jméno správce virtuálního počítače Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
 
@@ -1261,7 +1263,7 @@ Z prostředí WSL spuštěním následujících příkazů kubectl instalace ve 
 
 ```PowerShell  
 Install-script -name install-kubectl -scope CurrentUser -force
-Install-kubectl.ps1 -downloadlocation “C:\Users\<Current User>\Documents\Kube
+Install-kubectl.ps1 -downloadlocation "C:\Users\<Current User>\Documents\Kube"
 ```
 
 ### <a name="install-kubectl-on-the-windows-subsystem-for-linux-environment"></a>Instalace kubectl v subsystému Windows pro Linuxové prostředí
@@ -1301,7 +1303,7 @@ Například při spuštění clusteru Kubernetes na místním přenosném počí
 Pokud cluster kubectl-informace o vrátí adresu url odpovědi, ale clusteru není stále dostupný, zkontrolujte správnou konfiguraci pomocí:
 
 ```Bash  
-> kubectl cluster-info dump
+    kubectl cluster-info dump
 ```
 
 ### <a name="enable-shell-autocompletion"></a>Povolení automatického doplňování prostředí
@@ -1349,7 +1351,7 @@ Po získání místního souboru JSON, v nové relaci WSL, použijte následují
     kubectl proxy
     kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
     kubectl proxy
-    set KUBECONFIG=”/mnt/c/users/<current user>/documents/Kube/kubeconfig.json”
+    set KUBECONFIG="/mnt/c/users/<current user>/documents/Kube/kubeconfig.json"
     kubectl.exe config view
 ```
 
@@ -1408,7 +1410,7 @@ Uložit **iris_deployment.yaml** souboru (umístěný ve /*mnt/c/uživatele/<cur
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image67.png)
 
 Zkontrolujte stav nasazení:
 
@@ -1416,7 +1418,7 @@ Zkontrolujte stav nasazení:
 Kubectl get deployments
 ```
 
-    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image68.png)
 
 Nasazení může nějakou dobu trvat.
 
@@ -1553,7 +1555,7 @@ Jako součást konfigurace koncového bodu služby VSTS vyžaduje **ID Tenanta**
 
 Udělení práv instanční objekt služby pro nasazení prostředků v rámci předplatného Azure Stack
 
-Pro přístup k prostředkům v rámci předplatného, přiřazení aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Pro přístup k prostředkům v rámci předplatného, přiřazení aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: Vestavěné role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 Nastavte obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Například přidáním aplikace k roli Čtenář pro skupinu prostředků mu umožní načíst skupinu prostředků a všechny prostředky, které obsahuje.
 
@@ -1828,7 +1830,7 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
 3.  **Adresa URL serveru**: Zadejte adresu služby kontejneru v formathttp: / / {adresa serveru rozhraní API}
 
-4.  **Kubeconfig**: hodnota Kubeconfig získáte spuštěním následujících příkazů Azure na příkazovém řádku spustit s oprávněními správce.
+4.  **Kubeconfig**: K získání hodnoty Kubeconfig, spusťte následující příkazy Azure v příkazovém řádku spustit s oprávněními správce.
 
     > [!Important]  
     > Použijte toto okno rozhraní příkazového řádku k provedení dalších kroků.
@@ -1914,7 +1916,7 @@ Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasaz
 
     ```Bash  
     git add .
-    git commit -m “Added Service YAML” 
+    git commit -m "Added Service YAML" 
     git push
     ```
 
@@ -1959,9 +1961,8 @@ Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasaz
 1.  Nastavit připojení k službě Kubernates připojení k Azure Stack vytvořili dříve a pak vyberte **pomocí konfiguračních souborů** zaškrtávací políčko a přidáním konfigurační soubor. Přejděte k souboru iris_service.yaml v propojených artefaktů.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image135.png)
-
-
-    ![Alternativní text](media/azure-stack-solution-machine-learning/image136.png)
+    <!-- -->
+    ![alternativní text](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  Uložte definici verze.
 
@@ -2013,7 +2014,7 @@ By měl zobrazit ověřovací zpráva podobná následující:
 
 Aplikace function app se vyžaduje k hostování provádění jednotlivých funkcí. Aplikace function app umožňuje funkci seskupování jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
-1.  Na portálu Azure Stack user portal, vyberte **+ nová** nalezeno tlačítko v levém horním rohu, pak vyberte**Web + mobilní zařízení** >**aplikace Function App**.
+1.  Na portálu Azure Stack user portal, vyberte **+ nová** nalezeno tlačítko v levém horním rohu, pak vyberte **Web + mobilní zařízení** >**aplikace Function App**.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image141.png)
 
@@ -2021,13 +2022,13 @@ Aplikace function app se vyžaduje k hostování provádění jednotlivých funk
 
     ![Definovat nové nastavení aplikace function app](media/azure-stack-solution-machine-learning/image142.png)
 
-1.  Vyberte**vytvořit**zřídíte a nasadíte aplikaci function app.
+1.  Vyberte **vytvořit**zřídíte a nasadíte aplikaci function app.
 
-2.  Vyberte ikonu oznámení v pravém horním rohu portálu a podívejte se**nasazení bylo úspěšné** zprávy.
+2.  Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**.
 
     ![Určení nastavení nové aplikace Function App](media/azure-stack-solution-machine-learning/image143.png)
 
-1.  Vyberte**přejít k prostředku** Chcete-li zobrazit novou aplikaci function app.
+1.  Vyberte **přejít k prostředku** Chcete-li zobrazit novou aplikaci function app.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image144.png)
 
@@ -2103,13 +2104,13 @@ Vytvoření účtu úložiště Azure Stack a fronty úložiště pro data.
 
 6.  Vyberte **místní** pro umístění pro účet úložiště.
 
-7.  Vyberte**vytvořit**k vytvoření účtu úložiště.
+7.  Vyberte **vytvořit**k vytvoření účtu úložiště.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image156.png)
 
 1.  Zvolte účet úložiště, nedávno vytvořili.
 
-2.  Vyberte na**fronty**.
+2.  Vyberte na **fronty**.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image157.png)
 
@@ -2129,7 +2130,7 @@ Vytvoření účtu úložiště Azure Stack a fronty úložiště pro data.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image161.png)
 
-1.  Zadejte název účtu úložiště **název** pole, přidat na konec; _úložiště
+1.  Zadejte název účtu úložiště **název** pole, přidat do konce a `_STORAGE`.
 
 Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
@@ -2229,7 +2230,7 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image178.png)
 
-1.  Zkontrolujte analyzoval účet úložiště hostované v Azure, který chcete zobrazit data do cloudu v Azure: Úspěch bude vypadat podobně jako níže.
+1.  Zkontrolujte účtu úložiště hostované v Azure, abyste zjistili, že má být data do cloudu v Azure: Úspěch bude vypadat podobně jako níže.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image179.png)
 

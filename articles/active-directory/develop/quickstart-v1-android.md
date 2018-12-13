@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7f7ae858f633a910b796f544ed69a582e749beaf
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287230"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53311061"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlašování uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 Pokud vyvíjíte aplikaci pro Android, Microsoft vám usnadní práci s přihlášením uživatelů do Azure Active Directory (Azure AD). Azure AD umožňuje vaší aplikaci získat přístup k datům uživatelů prostřednictvím Microsoft Graphu nebo vlastního chráněného webového rozhraní API.
 
-Knihovna Azure Active Directory Authentication Library (ADAL) pro Android umožňuje vaší aplikaci začít používat [cloud Microsoft Azure](https://cloud.microsoft.com) a [rozhraní API pro Microsoft Graph](https://developer.microsoft.com/graph), protože používá standardní oborové protokoly OAuth 2.0 a OpenID Connect a podporuje [účty Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+Knihovna pro Android Azure AD Authentication Library (ADAL) dává aplikaci možnost začít používat [cloudu Microsoft Azure](https://cloud.microsoft.com) a [Microsoft Graph API](https://developer.microsoft.com/graph) díky podpoře [Microsoft Azure Účty služby Active Directory](https://azure.microsoft.com/services/active-directory/) pomocí oborový standard OAuth 2.0 a OpenID Connect.
 
 V tomto rychlém startu se naučíte:
 
@@ -41,9 +41,9 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, budete potřebovat tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ještě tenanta nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
+Abyste mohli začít, budete potřebovat tenanta služby Azure AD, ve kterém můžete vytvářet uživatele a zaregistrovat aplikaci. Pokud ho ještě nemáte, [zjistěte, jak ho získat](quickstart-create-new-tenant.md).
 
-## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlášení uživatelů a volání Microsoft Graphu
+## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Scénář: Přihlašování uživatelů a volání Microsoft Graphu
 
 ![Topologie](./media/quickstart-v1-android/active-directory-android-topology.png)
 
@@ -51,23 +51,23 @@ Tuto aplikaci můžete použít pro všechny účty Azure AD. Podporuje jak scé
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Kompletní ukázkový kód najdete [na GitHubu](https://github.com/Azure-Samples/active-directory-android).
+Úplnou ukázku kódu lze najít [na Githubu](https://github.com/Azure-Samples/active-directory-android).
 
 ```Java
 // Initialize your app with MSAL
 AuthenticationContext mAuthContext = new AuthenticationContext(
-        MainActivity.this, 
-        AUTHORITY, 
+        MainActivity.this,
+        AUTHORITY,
         false);
 
 
 // Perform authentication requests
 mAuthContext.acquireToken(
-    getActivity(), 
-    RESOURCE_ID, 
-    CLIENT_ID, 
-    REDIRECT_URI,  
-    PromptBehavior.Auto, 
+    getActivity(),
+    RESOURCE_ID,
+    CLIENT_ID,
+    REDIRECT_URI,
+    PromptBehavior.Auto,
     getAuthInteractiveCallback());
 
 // ...
@@ -95,7 +95,7 @@ Budete potřebovat nativní klientskou aplikaci zaregistrovanou u Microsoftu pro
     - Vyberte **Přidat** a uvnitř možnosti **Vyberte rozhraní API** vyberte ***Microsoft Graph***.
     - Vyberte oprávnění **Přihlášení a čtení uživatelského profilu** a stisknutím **Vybrat** vše uložte.
         - Toto oprávnění se mapuje do oboru `User.Read`.
-    - Volitelné: V části **Požadovaná oprávnění > Windows Azure Active Directory** vybrané oprávnění **Přihlášení a čtení uživatelského profilu** odeberte. Stránka se souhlasem uživatele pak nebude uvádět oprávnění dvakrát.
+    - Volitelné: Uvnitř **požadovaná oprávnění > Windows Azure Active Directory**, odeberte vybrané oprávnění **přihlášení a čtení profilu uživatele**. Stránka se souhlasem uživatele pak nebude uvádět oprávnění dvakrát.
 
 4. Blahopřejeme! Aplikace se úspěšně nakonfigurovala. V další části budete potřebovat:
     - `Application ID`

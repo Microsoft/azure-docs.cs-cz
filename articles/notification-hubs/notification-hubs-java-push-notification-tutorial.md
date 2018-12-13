@@ -14,30 +14,31 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: a7ced71f2d0a8c5d956bbdbcd8fcae485aee3fc6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3251e2ecc9171081c5128dd0782eecdf83064114
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241564"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53312251"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Jak používat Notification Hubs z Javy
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Toto téma popisuje klíčové funkce nové plně podporované oficiální Azure Notification Hub Java SDK. Tento projekt je projekt open source a je možné zobrazit celý kód SDK na [Java SDK]. 
+Toto téma popisuje klíčové funkce nové plně podporované oficiální Azure Notification Hub Java SDK.
+Tento projekt je projekt open source a je možné zobrazit celý kód SDK na [Java SDK].
 
-Obecně platí, dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje obálku dynamického zajišťování prostřednictvím těchto rozhraní REST v jazyce Java. 
+Obecně platí, dostanete všechny funkce Notification Hubs z Javy/PHP nebo Python nebo Ruby back endem pomocí rozhraní REST centra oznámení, jak je popsáno v tématu MSDN [rozhraní REST API Notification Hubs](https://msdn.microsoft.com/library/dn223264.aspx). Tato sada Java SDK poskytuje obálku dynamického zajišťování prostřednictvím těchto rozhraní REST v jazyce Java.
 
 Sada SDK aktuálně podporuje:
 
-* CRUD do Notification Hubs 
+* CRUD do Notification Hubs
 * CRUD registrací
 * Instalace správy
 * Import/Export registrace
 * Pravidelně zasílá
 * Naplánované odešle
 * Asynchronní operace prostřednictvím Java NIO
-* Podporované platformy: APNS (iOS), GCM (Android), služby nabízených oznámení Windows (aplikace pro Windows Store), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez služby Google) 
+* Podporované platformy: APNS (iOS), GCM (Android), služby nabízených oznámení Windows (aplikace pro Windows Store), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android bez služby Google)
 
 ## <a name="sdk-usage"></a>Použití sady SDK
 ### <a name="compile-and-build"></a>Kompilace a buildu
@@ -85,7 +86,7 @@ Sestavení:
 
     WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
     reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");    
+    reg.getTags().add("myOtherTag");
     hub.createRegistration(reg);
 
 **Vytvoření registrace iOS:**
@@ -122,33 +123,34 @@ Odebere duplicitní položky z důvodu žádné ztráty odpovědi, pokud uklád�
 **Registrace dotazu:**
 
 * **Získejte jednotné registrace:**
-  
+
         hub.getRegistration(regid);
 
 * **Získáte všechny registrace v centru:**
-  
+
         hub.getRegistrations();
 
 * **Získání registrace pomocí značky:**
-  
+
         hub.getRegistrationsByTag("myTag");
 
 * **Získáte registrace kanálu:**
-  
+
         hub.getRegistrationsByChannel("devicetoken");
 
 
 Všechny dotazy sběr dat podporují tokeny $top a pokračování.
 
 ### <a name="installation-api-usage"></a>Instalace rozhraní API využití
-Instalace rozhraní API je alternativní mechanismus pro správu registrace. Namísto zachování více registrace, které nejsou jednoduchého dotazu a může snadno provést nesprávně nebo neefektivně, je nyní možné použít objekt jedna instalace. Instalace obsahuje všechno, co potřebujete: push kanálu (token zařízení), značky, šablony, sekundární dlaždice (pro služby nabízených oznámení Windows a APNS). Není nutné volat službu k získání ID už – právě generovat identifikátor GUID nebo jakýkoli jiný identifikátor, uchovávejte na zařízení a odeslat do back-endu spolu s nabízenou kanálu (token zařízení). Na back-endu, byste měli dělat pouze jedno volání: CreateOrUpdateInstallation, je plně idempotentní, takže můžete bez obav opakovat v případě potřeby.
+Instalace rozhraní API je alternativní mechanismus pro správu registrace. Namísto zachování více registrace, které nejsou jednoduchého dotazu a může snadno provést nesprávně nebo neefektivně, je nyní možné použít objekt jedna instalace. Instalace obsahuje všechno, co potřebujete: push kanálu (token zařízení), značky, šablony, sekundární dlaždice (pro služby nabízených oznámení Windows a APNS). Není nutné volat službu k získání ID už – právě generovat identifikátor GUID nebo jakýkoli jiný identifikátor, uchovávejte na zařízení a odeslat do back-endu spolu s nabízenou kanálu (token zařízení).
+Na back-endu byste měli provést pouze jedno volání: CreateOrUpdateInstallation, je plně idempotentní, takže můžete bez obav opakovat v případě potřeby.
 
 Jako příklad pro Amazon Kindle Fire.
 
     Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
     hub.createOrUpdateInstallation(installation);
 
-Pokud chcete ji aktualizovat: 
+Pokud chcete ji aktualizovat:
 
     installation.addTag("foo");
     installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
@@ -186,7 +188,7 @@ Stejné jako regulární odeslat, ale jeden další parametr - hodnotou schedule
 **Plán nativní oznámení Windows:**
 
     Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, 1);    
+    c.add(Calendar.DATE, 1);
     Notification n = Notification.createWindowsNotification("WNS body");
     hub.scheduleNotification(n, c.getTime());
 
@@ -216,34 +218,34 @@ Někdy je potřeba provést hromadné operace s registrací. Obvykle je pro inte
         job = hub.getNotificationHubJob(job.getJobId());
         if(job.getJobStatus() == NotificationHubJobStatus.Completed)
             break;
-    }       
+    }
 
 **Získá všechny úlohy:**
 
     List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**Identifikátor URI s podpisem SAS:** tato adresa URL je adresa URL některé souboru objektu blob nebo kontejneru objektů blob a sadu parametrů, jako jsou oprávnění a čas vypršení platnosti a podpis těchto věcí, které bylo vytvořeno s použitím klíče SAS účtu. Azure Java SDK úložiště má bohaté možnosti, jako je vytváření těchto druh identifikátorů URI. Jednoduché alternativou může trvat podívat ImportExportE2E testovací třídy (od umístění githubu), která obsahuje základní a compact provádění podpisový algoritmus.
+**Identifikátor URI s podpisem SAS:** Tato adresa URL je adresa URL některé souboru objektu blob nebo kontejneru objektů blob a sadu parametrů, jako jsou oprávnění a čas vypršení platnosti a podpis těchto věcí, které bylo vytvořeno s použitím klíče SAS účtu. Azure Java SDK úložiště má bohaté možnosti, jako je vytváření těchto druh identifikátorů URI. Jednoduché alternativou může trvat podívat ImportExportE2E testovací třídy (od umístění Githubu), která obsahuje základní a compact provádění podpisový algoritmus.
 
 ### <a name="send-notifications"></a>Odesílání oznámení
 Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomáhají při vytváření objektů nativní a šablonu oznámení.
 
 * **Windows Store a Windows Phone 8.1 (bez Silverlight)**
-  
+
         String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
         Notification n = Notification.createWindowsNotification(toast);
         hub.sendNotification(n);
 * **iOS**
-  
+
         String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
         Notification n = Notification.createAppleNotification(alert);
         hub.sendNotification(n);
 * **Android**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createGcmNotification(message);
         hub.sendNotification(n);
 * **Windows Phone 8.0 a 8.1 Silverlight**
-  
+
         String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                     "<wp:Notification xmlns:wp=\"WPNotification\">" +
                        "<wp:Toast>" +
@@ -253,7 +255,7 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
         Notification n = Notification.createMpnsNotification(toast);
         hub.sendNotification(n);
 * **Kindle Fire**
-  
+
         String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
         Notification n = Notification.createAdmNotification(message);
         hub.sendNotification(n);
@@ -263,11 +265,11 @@ Objekt oznámení je jednoduše text záhlaví, některé metody nástroje pomá
         tags.add("boo");
         tags.add("foo");
         hub.sendNotification(n, tags);
-* **Odeslat do výrazu značky**       
-  
+* **Odeslat do výrazu značky**
+
         hub.sendNotification(n, "foo && ! bar");
 * **Odeslání šablony oznámení**
-  
+
         Map<String, String> prop =  new HashMap<String, String>();
         prop.put("prop1", "v1");
         prop.put("prop2", "v2");
@@ -279,7 +281,7 @@ Spouštění kódu Java by měl nyní vytvořit oznámení uvedených na cílov�
 ## <a name="next-steps"></a>Další kroky
 Toto téma vám ukázal vytvoření jednoduchého klienta REST Javy pro Notification Hubs. Odsud můžete:
 
-* Stáhněte si kompletní [Java SDK], který obsahuje celý kód SDK. 
+* Stáhněte si kompletní [Java SDK], který obsahuje celý kód SDK.
 * Pohrajte si s ukázky:
   * [Začínáme s Notification Hubs]
   * [Odesílání mimořádných zpráv]

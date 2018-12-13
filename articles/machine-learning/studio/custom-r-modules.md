@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -16,18 +15,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 5cddc767b4652df6753cc57eb7305b46ec45e19d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2bdc8b7b28bee37ae88e466874d2b3d22dcd7556
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098630"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53277926"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definování vlastních modulů R pro Azure Machine Learning Studio
 
 Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v nástroji Azure Machine Learning Studio. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="what-is-a-custom-r-module"></a>Co je vlastní modul R?
 A **vlastního modulu** je modul definovaný uživatelem, který může odeslat do pracovního prostoru a spustit v rámci experimentu Azure Machine Learning. A **vlastní modul R** je vlastní modul, který se spustí uživatelem definovanou funkci jazyka R. **R** je programovací jazyk pro statistické výpočty a grafiku, které je běžně používaný v vědeckými pracovníky a odborníky přes data pro implementaci algoritmy. V současné době R je jediným podporovaným v vlastních modulů, ale podpora pro další jazyky je plánovaná pro budoucí verze jazykem.
@@ -96,7 +95,7 @@ To vystavit `CustomAddRows` funkce jako modul služby Azure Machine Learning, de
     </Module>
 
 
-Je důležité si uvědomit, že hodnota **id** atributy **vstup** a **Arg** elementy v souboru XML musí shodovat s názvy parametru funkce kódu R v CustomAddRows.R přesně souborů: (*dataset1*, *dataset2*, a *prohození* v příkladu). Podobně, hodnota **entryPoint** atribut **jazyka** elementu musí přesně odpovídat názvu funkce ve skriptu R: (*CustomAddRows* v příkladu) . 
+Je důležité si uvědomit, že hodnota **id** atributy **vstup** a **Arg** elementy v souboru XML musí shodovat s názvy parametru funkce kódu R v CustomAddRows.R přesně souborů: (*dataset1*, *dataset2*, a *prohození* v příkladu). Podobně, hodnota **entryPoint** atribut **jazyka** element musí přesně odpovídat názvu funkce ve skriptu R: (*CustomAddRows* v příkladu). 
 
 Naproti tomu **id** atribut pro **výstup** elementu neodpovídá žádné proměnné ve skriptu R. Když se vyžaduje více než jeden výstup, jednoduše vrátila seznam z funkce R s výsledky umístit *ve stejném pořadí* jako **výstupy** elementů jsou deklarovány v souboru XML.
 
@@ -150,7 +149,7 @@ Každá vstupní a výstupní port může mít volitelně **popis** podřízený
 ### <a name="input-elements"></a>Elementy vstupu
 Vstupní porty umožní předat data do R funkce a pracovní prostor. **Datové typy** , které jsou podporovány pro vstupní porty jsou následující: 
 
-**Objekt DataTable:** tento typ je předán do funkce R jako data.frame. Ve skutečnosti všechny typy (například soubory CSV nebo ARFF soubory), které jsou podporovány v Machine Learning a, která jsou kompatibilní s **DataTable** jsou převedeny na data.frame automaticky. 
+**Objekt DataTable:** Tento typ je předán do funkce R jako data.frame. Ve skutečnosti všechny typy (například soubory CSV nebo ARFF soubory), které jsou podporovány v Machine Learning a, která jsou kompatibilní s **DataTable** jsou převedeny na data.frame automaticky. 
 
         <Input id="dataset1" name="Input 1" type="DataTable" isOptional="false">
             <Description>Input Dataset 1</Description>
@@ -159,7 +158,7 @@ Vstupní porty umožní předat data do R funkce a pracovní prostor. **Datové 
 **Id** atribut spojené s jednotlivými **DataTable** vstupního portu musí mít jedinečnou hodnotu a tato hodnota se musí shodovat s názvem parametru ve funkci R odpovídající.
 Volitelné **DataTable** porty, které nejsou předané jako vstup v jednom experimentu mají hodnotu **NULL** předaný funkci jazyka R a volitelné zip, porty jsou ignorovány, pokud vstup není připojený. **Schedule** atribut je volitelný pro obě **DataTable** a **Zip** typů a je *false* ve výchozím nastavení.
 
-**ZIP:** vlastní moduly může přijmout komprimovaného souboru jako vstup. Tento vstup je vybaleno do pracovního adresáře r. vaší funkce
+**ZIP:** Vlastní moduly můžete jako vstup přijmout soubor zip. Tento vstup je vybaleno do pracovního adresáře r. vaší funkce
 
         <Input id="zippedData" name="Zip Input" type="Zip" IsOptional="false">
             <Description>Zip files to be extracted to the R working directory.</Description>
@@ -177,7 +176,7 @@ U vlastních modulů R nemá identifikátor pro PSČ port tak, aby odpovídaly �
 * Hodnota **Schedule** atribut **vstup** element není vyžadován (a je *false* ve výchozím nastavení, pokud není zadán); ale pokud je zadán, musí být *true* nebo *false*.
 
 ### <a name="output-elements"></a>Výstup elementy
-**Standardní výstupní porty:** výstupní porty jsou namapovány na návratové hodnoty z funkce R, který můžete použít následující moduly. *Objekt DataTable* je momentálně nepodporuje typ portu pouze standardní výstup. (Podpora *inteligentních algoritmů* a *transformuje* je připravovaný.) A *DataTable* výstup je definován jako:
+**Standardní výstupní porty:** Výstupní porty jsou mapovány na návratové hodnoty z funkce R, který můžete použít následující moduly. *Objekt DataTable* je momentálně nepodporuje typ portu pouze standardní výstup. (Podpora *inteligentních algoritmů* a *transformuje* je připravovaný.) A *DataTable* výstup je definován jako:
 
     <Output id="dataset" name="Dataset" type="DataTable">
         <Description>Combined dataset</Description>
@@ -215,7 +214,7 @@ A vrátí seznam objektů v seznamu ve správném pořadí v "CustomAddRows.R":
     return (list(dataset, dataset1, dataset2)) 
     } 
 
-**Vizualizace výstupu:** můžete také určit výstupní port modulu typu *vizualizace*, který se zobrazí výstup z výstupu R grafiky zařízení a konzoly. Tento port není součástí výstupu funkce R a není v konfliktu s pořadím z ostatních typů výstupní port. Pokud chcete přidat do modulů, které vlastní vizualizace port, přidejte **výstup** element s hodnotou *vizualizace* pro jeho **typ** atribut:
+**Vizualizace výstupu:** Můžete také určit výstupní port modulu typu *vizualizace*, který se zobrazí výstup z výstupu R grafiky zařízení a konzoly. Tento port není součástí výstupu funkce R a není v konfliktu s pořadím z ostatních typů výstupní port. Pokud chcete přidat do modulů, které vlastní vizualizace port, přidejte **výstup** element s hodnotou *vizualizace* pro jeho **typ** atribut:
 
     <Output id="deviceOutput" name="View Port" type="Visualization">
       <Description>View the R console graphics device output.</Description>
@@ -372,6 +371,6 @@ Prostředí pro spuštění skriptu R používá stejnou verzi jazyka R, jako **
 
 **Omezení spouštěcí prostředí** patří:
 
-* Dočasný soubor systému: během různých spuštění stejného modulu nejsou trvalé soubory zapsané při spuštění vlastního modulu.
+* Dočasný soubor systému: Soubory zapsané při spuštění vlastního modulu nejsou trvalé během různých spuštění stejného modulu.
 * Žádný přístup k síti
 
