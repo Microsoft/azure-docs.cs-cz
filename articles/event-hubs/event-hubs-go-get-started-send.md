@@ -1,20 +1,21 @@
 ---
-title: Odesílání událostí do služby Azure Event Hubs pomocí jazyka Go | Dokumentace Microsoftu
-description: Začínáme s odesíláním událostí do služby Event Hubs pomocí jazyka Go
+title: Odesílání událostí pomocí jazyka Go - Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytváření aplikací v jazyce Go, která zasílá události ze služby Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2cc7c19d623427f7c98bbb66089b764bb067136b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 44cbea8cc40f83ed5fdd2863da0cb0a01e8dc2b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954906"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091056"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Odesílání událostí do služby Event Hubs pomocí jazyka Go
 

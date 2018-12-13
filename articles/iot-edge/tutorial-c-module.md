@@ -1,5 +1,5 @@
 ---
-title: Kurz k Azure IoT Edge C | Microsoft Docs
+title: Kurz vytvoření vlastního modulu C - Azure IoT Edge | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce C a jak ho nasadit na hraniční zařízení.
 services: iot-edge
 author: shizn
@@ -8,13 +8,13 @@ ms.author: xshi
 ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: bc66e143dc8cb98f08080092af95661ba50be9a3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.custom: mvc, seodec18
+ms.openlocfilehash: fb2f0162eeacddf83c166619fe356d117a9304a6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317700"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099773"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge v jazyce C a jeho nasazení na simulované zařízení
 

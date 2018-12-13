@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory – přehled | Dokumentace Microsoftu
+title: Představení služby Azure Active Directory | Dokumenty Microsoft
 description: Přečtěte si o Azure Active Directory, včetně požadované terminologie cílovou skupinu, licencování základy a související funkce.
 services: active-directory
 author: eross-msft
@@ -8,12 +8,13 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.openlocfilehash: 1b1561ed8470c39b13def72774e253db28bf58d8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 80c3108d468465e68d554b3d36c527c5ccd4a13c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686581"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085922"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory 
 Azure Active Directory (Azure AD) je společnosti Microsoft cloudových identit a přístupu služba pro správu. Azure AD pomáhá zaměstnancům přihlásit a získat přístup k prostředkům v:

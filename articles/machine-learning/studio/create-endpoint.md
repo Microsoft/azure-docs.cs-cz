@@ -1,10 +1,10 @@
 ---
-title: Vytváření koncových bodů webové služby v Machine Learning – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Vytváření koncových bodů webové služby ve službě Azure Machine Learning
+title: Vytváření koncových bodů webové služby – Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Vytváření koncových bodů webové služby ve službě Azure Machine Learning. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: ac4eb79d3b1505472113189a9e2b234212755244
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314009"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077099"
 ---
-# <a name="creating-endpoints"></a>Vytváření koncových bodů 
+# <a name="creating-endpoints-for-deployed-web-services"></a>Vytváření koncových bodů pro nasazené webové služby
 > [!NOTE]
 >  Toto téma popisuje postupy aplikovatelné **Classic** Machine Learning webové služby.
 > 

@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
-ms.custom: ''
-ms.openlocfilehash: b244c7347b458439e9c1c088cf83cff3d0ec5a2e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001119"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097212"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
 
@@ -35,7 +35,7 @@ Například můžete chtít sledovat % procesoru a paměti % virtuální počít
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Určení, zda je povoleno rozšířené metriky
 
-1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. V části **virtuálních počítačů**, vyberte virtuální počítač a potom v části **monitorování**vyberte **metriky**. Se zobrazí seznam dostupných metrik.
 3. Vyberte několik metrik a graf zobrazí data pro ně.  
     ![Příklad metrika – využití CPU na hostiteli](./media/azure-vm-extended-metrics/metric01.png)
@@ -55,18 +55,18 @@ Uvědomte si, že Azure a Linuxu monitorování na úrovni hosta se vyžaduje ú
 1. V **virtuálních počítačů**, zobrazit seznam vašich virtuálních počítačů a potom vyberte virtuální počítač.
 2. V části **monitorování**vyberte **nastavení diagnostiky**.
 3. Na stránce nastavení diagnostiky, klikněte na tlačítko **povolit monitorování na úrovni hosta**.  
-    ![Povolit monitorování na úrovni hosta](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+    ![Povolení úrovně monitorování hostovaného na stránce s přehledem](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
 4. Po několika minutách se nainstaluje agent diagnostiky Azure na virtuálním počítači. Základní nastavení metriky jsou přidány. Aktualizujte stránku. Na kartě Přehled se zobrazí přidané čítače výkonu.
 5. V části monitorování zvolte **metriky**.
 6. V grafu metrik v části **metrika Namespace**vyberte **hosta (Classic)**.
 7. V seznamu metrik můžete zobrazit všechny dostupných čítačů výkonu pro hosta virtuálního počítače.  
-    ![Rozšířené metriky](./media/azure-vm-extended-metrics/extended-metrics.png)
+    ![seznam příklad rozšířené metriky](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Povolit monitorování na úrovni hosta na nové virtuální počítače
 
 Při vytváření nové virtuální počítače, na kartě Správa, vyberte **na** pro **operačního systému hosta diagnostiky**.
 
-![Povolte diagnostiku hostovaného operačního systému](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![Nastavte na hodnotu On Diagnostika hostovaného operačního systému](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 Další informace o povolení rozšířené metriky pro virtuální počítače Azure najdete v tématu [porozumění a pomocí agenta Azure Linux](../virtual-machines/extensions/agent-linux.md) a [agenta virtuálního počítače Azure přehled](../virtual-machines/extensions/agent-windows.md).
 
@@ -82,7 +82,7 @@ Metriky virtuálního počítače pomocí skriptů prostředí Azure PowerShell 
 
 Pokud chcete zobrazit metriky výkonu na vaše instance Azure na portálu Cloudyn, přejděte na **prostředky** > **Compute** > **instanci Průzkumníka**. V seznamu instancí virtuálních počítačů rozbalte instanci a potom rozbalte prostředků k zobrazení podrobností.
 
-![Instance Průzkumníka](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Příklad informace zobrazené v Průzkumníku Instance](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Další postup
 

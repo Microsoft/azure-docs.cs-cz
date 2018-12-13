@@ -1,21 +1,22 @@
 ---
-title: Odeslání vlastních událostí pro Azure Event Grid do hybridního připojení |Microsoft Docs
+title: Odesílání vlastních událostí pro hybridní připojení – Event Grid, Azure CLI
 description: Pomocí Azure Event Gridu a Azure CLI můžete publikovat téma a přihlásit se k odběru příslušné události. Hybridní připojení se používá pro koncový bod.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/30/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: 488f4e09e329ee41fb307dc3579e76b5378d3a9f
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 1f66c75333b41cf399a72b801a7e362672744775
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747775"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099579"
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Kurz: Směrování vlastních událostí pro Azure Relay Hybrid Connections pomocí Azure CLI a Event gridu
 
 Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku vytvoříte pomocí Azure CLI vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
 
@@ -119,7 +120,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

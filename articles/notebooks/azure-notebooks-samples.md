@@ -1,5 +1,5 @@
 ---
-title: Ukázkové poznámkové bloky Jupyter pro poznámkových bloků Azure | Dokumentace Microsoftu
+title: Ukázkové poznámkové bloky Jupyter pro poznámkové bloky Azure
 description: Ukázky jsou skvělý způsob, jak prostředí poznámkové bloky Jupyter používané bezplatné poznámkových bloků Azure cloud services.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c355996d7d02a4027e4b2be49dc5c661cce64abe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855721"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082321"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Zjistit a použít ukázkové poznámkové bloky
 
@@ -32,10 +32,10 @@ Jakmile identifikujete Poznámkový blok, který chcete prozkoumat, tady je něk
 ## <a name="great-sample-notebooks"></a>Skvělé ukázkové poznámkové bloky
 
 - [Sady starter Azure poznámkových bloků](https://notebooks.azure.com/#sample-redirect) obsahuje úvodní informace k Pythonu, R, a F#, spolu s představením toho, přístup k datům, Azure Machine Learning Services a několik data science cvičení poznámkových bloků.
-- [Úvod do poznámkových bloků Jupyter](http://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
+- [Úvod do poznámkových bloků Jupyter](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (jupyter.org)
 - [Úvod do datových věd](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/code_listings) podle Jake Vanderplas.
 - [Galerie zajímavé poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projektu na Githubu)
-- [nbviewer.jupyter.org](http://nbviewer.jupyter.org)
+- [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Fyzika instrukce z [fyzika oddělení ve britských College London](https://notebooks.azure.com/cvanbreu/libraries)
 - [Azure Machine Learning úvodní ukázky služby](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
 

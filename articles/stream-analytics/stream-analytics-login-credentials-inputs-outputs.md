@@ -2,19 +2,19 @@
 title: Pravidelná změna přihlašovacích údajů přihlášení v úlohách Azure Stream Analytics
 description: Tento článek popisuje, jak aktualizovat přihlašovací údaje vstupů a výstupní jímky ve službě Azure Stream Analytics úlohy.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/11/2018
-ms.openlocfilehash: 362fdca3b9a54ea0a8785ae37b32b88cbe0f67ba
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 14e24c1e9a61eb7ea73a949e17ffbf8c5b768f05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978762"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099065"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Otočit o přihlašovací údaje pro vstupy a výstupy úlohy Stream Analytics
 
@@ -27,20 +27,20 @@ V této části jsme vás provede vygenerovalo znovu přihlašovací údaje pro 
 ### <a name="blob-storagetable-storage"></a>BLOB storage nebo Table storage
 1. Přihlaste se k webu Azure portal > vyhledejte účet úložiště, který jste použili jako vstup/výstup pro úlohu Stream Analytics.    
 2. V části nastavení, otevřete **přístupové klíče**. Mezi dvěma výchozí klíče (klíč1, klíč2) vyberte si ten, který se nepoužije, úlohy a obnovit ji:  
-   ![Znovu vygenerovat klíče účtu úložiště](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+   ![Znovu vygenerovat klíče účtu úložiště](media/stream-analytics-login-credentials-inputs-outputs/regenerate-storage-keys.png)
 3. Zkopírování nově vygenerovaný klíč.    
 4. Na webu Azure Portal, procházet vaší úlohy Stream Analytics > vyberte **Zastavit** a počkejte na zastavení úlohy.    
 5. Vyhledejte tabulek/objektů Blob úložiště vstupní a výstupní, pro které chcete aktualizovat přihlašovací údaje.    
 6. Najít **klíč účtu úložiště** pole a vložíte nově vygenerovaný klíč > klikněte na tlačítko **Uložit**.    
 7. Test připojení se automaticky spustí, když svoje změny uložíte, můžete je zobrazit na kartě upozornění. Jsou dva oznámení: 1 odpovídá ukládání aktualizace a jiné odpovídá testování připojení:  
-   ![Oznámení po dokončení úprav klíč](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+   ![Oznámení po dokončení úprav klíč](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. Přejít k [spuštění vaší úlohy z posledního času zastavené](#start-your-job-from-the-last-stopped-time) oddílu.
 
 ### <a name="event-hubs"></a>Event Hubs
 
 1. Přihlaste se k webu Azure portal > Procházet Centrum událostí, který jste použili jako vstup/výstup pro úlohu Stream Analytics.    
 2. V části nastavení, otevřete **zásady sdíleného přístupu** a vyberte zásadu, požadovaný přístup. Mezi **primární klíč** a **sekundární klíč**, vyberte si ten, který se nepoužije, úlohy a obnovit ji:  
-   ![Znovu vygenerovat klíče pro Centrum událostí](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+   ![Znovu vygenerovat klíče pro službu Event Hubs](media/stream-analytics-login-credentials-inputs-outputs/regenerate-event-hub-keys.png)
 3. Zkopírování nově vygenerovaný klíč.    
 4. Na webu Azure Portal, procházet vaší úlohy Stream Analytics > vyberte **Zastavit** a počkejte na zastavení úlohy.    
 5. Vyhledejte Event hubs vstupní a výstupní, pro které chcete aktualizovat přihlašovací údaje.    
@@ -54,7 +54,7 @@ Musíte se připojit k SQL database a aktualizovat přihlašovací údaje stáva
 
 1. Přihlaste se k webu Azure portal > Procházet databáze SQL, který jste použili jako výstup úlohy Stream Analytics.    
 2. Z **Průzkumník dat**, přihlášení/připojení k databázi > vyberte typ autorizace jako **ověřování systému SQL server** > zadejte vaší **přihlášení** a  **Heslo** podrobnosti > vyberte **Ok**.  
-   ![Znovu vygenerovat přihlašovací údaje pro službu SQL database](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
+   ![Znovu vygenerovat přihlašovací údaje pro službu SQL database](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
 3. Na kartě dotazu změnit heslo pro jeden z vašich uživatelů spuštěním následujícího dotazu (Nezapomeňte nahradit `<user_name>` se svým uživatelským jménem a `<new_password>` pomocí nového hesla):  
 
@@ -79,7 +79,7 @@ Musíte se připojit k SQL database a aktualizovat přihlašovací údaje stáva
 
 1. Přejděte do projektu **přehled** podokně > vyberte **Start** spustíte úlohu.    
 2. Vyberte **při posledním zastavení** > klikněte na tlačítko **Start**. Všimněte si, že "při posledním zastavení" možnost se zobrazí pouze pokud jste dříve spustili a má některé výstup vygenerována. Restartování úlohy závislosti na času poslední výstupní hodnota.
-   ![Spustit úlohu](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
+   ![Spuštění úlohy Stream Analytics](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

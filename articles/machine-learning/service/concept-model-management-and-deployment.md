@@ -1,5 +1,6 @@
 ---
-title: Správa a nasazování modelů ve službě Azure Machine Learning
+title: Správa a nasazování modelů
+titleSuffix: Azure Machine Learning service
 description: Další informace o použití služby Azure Machine Learning nasazovat, spravovat a monitorovat vlastní modely a neustále je vylepšovat. Můžete nasadit modely, které natrénovaný pomocí služby Azure Machine Learning, na místním počítači nebo z jiných zdrojů.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: ec0ab07d6bd35557e173641fbfbbc3621ad0ede2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885063"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097551"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Spravovat, nasazovat a sledovat modely pomocí služby Azure Machine Learning
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ef689aec58624495a61f5fde2a8050fb7400f56e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: e86499fea76b8223b161d6cff3bb1231398f63a6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888829"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093519"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -45,7 +45,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
-| [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
 | [Skupina pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 | [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 

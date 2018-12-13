@@ -5,7 +5,7 @@
 ## [Co je Service Health?](service-health-overview.md)
 ## [Co je Resource Health?](resource-health-overview.md)
 # Postup
-## [Konfigurace výstrah pro události Service Health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
+## [Konfigurace výstrah pro události Service Health](../azure-monitor/platform/alerts-activity-log-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
 ### [Zobrazení oznámení o stavu služby s využitím webu Azure Portal](../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
 ## [Konfigurace oznámení Service Health pomocí webhooku](service-health-alert-webhook-guide.md)
 ### [Konfigurace s použitím ServiceNow](service-health-alert-webhook-servicenow.md)

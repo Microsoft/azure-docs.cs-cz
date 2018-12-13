@@ -1,10 +1,12 @@
 ---
-title: Zřízení CentOS Data Science virtuálního počítače s Linuxem v Azure | Dokumentace Microsoftu
+title: Vytvořit virtuální počítač CentOS Linux datové vědy
+titleSuffix: Azure
 description: Nakonfigurujte a vytvořte virtuální počítač s Linuxem Data Science v Azure a provádět analýzy a strojové učení.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: ca3a0e9a8c63ddc9a5c2ca34faffc683d0324321
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 253934d450619ca67e429fbf396a5fed5b71a267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262549"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081859"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřízení CentOS Data Science virtuálního počítače s Linuxem v Azure
 

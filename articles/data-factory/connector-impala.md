@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ed29fb99025dbc69b9dae6a996f444954a7d88d1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 81d4fc3032b7b69bb438d28e97b62f483e36018b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123415"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078068"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopírování dat z Impala pomocí služby Azure Data Factory (Preview)
 
@@ -87,7 +87,12 @@ Následující vlastnosti jsou podporovány pro aplikaci Impala propojenou služ
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu Impala.
 
-Ke zkopírování dat z Impala, nastavte vlastnost typ datové sady na **ImpalaObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z Impala, nastavte vlastnost typ datové sady na **ImpalaObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **ImpalaObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -99,7 +104,8 @@ Ke zkopírování dat z Impala, nastavte vlastnost typ datové sady na **ImpalaO
         "linkedServiceName": {
             "referenceName": "<Impala linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -115,7 +121,7 @@ Ke zkopírování dat z Impala, nastavte typ zdroje v aktivitě kopírování do
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost type zdroje aktivity kopírování musí být nastavená na **ImpalaSource**. | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
 clicktale: true
-ms.openlocfilehash: 7686baf2476942748a67ae7c73b02596b6588607
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4422e656759418d715fb0bd26643581a0ca99a4f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853082"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089118"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Sestavení webové aplikace ASP.NET s Azure Cosmos DB pomocí rozhraní SQL API a webu Azure portal
 
@@ -117,7 +117,7 @@ Následující fragmenty kódu jsou převzaty ze souboru ToDoItemService.cs.
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) v účtu služby Azure Cosmos DB v levém navigačním panelu vyberte **Klíče** a pak **Klíče pro čtení i zápis**. V dalším kroku zkopírujte pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru web.config.
+1. Na webu [Azure Portal](https://portal.azure.com/) v účtu služby Azure Cosmos DB v levém navigačním panelu vyberte **Klíče** a pak **Klíče pro čtení i zápis**. V dalším kroku zkopírujte pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru web.config.
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-dotnet/keys.png)
 

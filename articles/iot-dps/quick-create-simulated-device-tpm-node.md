@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8b2d49d9df2cc8db98004ad9c186511d8d5e2b87
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156642"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087200"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -44,7 +44,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. Otevřete příkazový řádek nebo Git Bash. Naklonujte úložiště GitHub `azure-utpm-c`:
     
     ```cmd/sh
-    git clone https://github.com/Azure/azure-utpm-c.git
+    git clone https://github.com/Azure/azure-utpm-c.git --recursive
     ```
 
 1. Přejděte do kořenové složky GitHub a spusťte simulátor [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte, simulátor je potřeba nechat spuštěný až do konce této úvodní příručky: 
@@ -252,7 +252,7 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. Otevřete okno **Zařízení IoT** pro vaše centrum, vyberte *ID ZAŘÍZENÍ*, které jste zaregistrovali v rámci tohoto rychlého startu, a pak klikněte na tlačítko **Odstranit** v horní části.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V rámci tohoto rychlého startu jste na svém počítači vytvořili simulované zařízení TPM a pomocí služby IoT Hub Device Provisioning jste ho zřídili pro své centrum IoT. Pokud chcete zjistit, jak zaregistrovat zařízení TPM prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení TPM prostřednictvím kódu programu. 
 

@@ -1,21 +1,22 @@
 ---
-title: Nejčastější dotazy – nejčastější dotazy – Language Understanding (LUIS)
+title: Nejčastější dotazy
 titleSuffix: Azure Cognitive Services
 description: Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 938f74a543fd7d4f7563d1af8bc7c75e76fbcade
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 31d733ef7e80136641f0b6f6de46589f15567e57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960394"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097873"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 

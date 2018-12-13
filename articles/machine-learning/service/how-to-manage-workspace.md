@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 1565c54779278b440cfe631951e964921cc85720
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 647af189319a1fa7b80b10410ad96f3297c18192
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51709878"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083763"
 ---
 # <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Vytvoření a správa pracovních prostorů služby Azure Machine Learning
 
@@ -36,11 +37,11 @@ Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Po
 
 1. Ve výsledcích filtru vybrat **pracovní prostor služby Machine Learning** zobrazíte seznam vašich pracovních prostorů. 
 
-   ![Hledat pracovní prostor služby Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Seznam pracovních prostorů služby Azure Machine Learning](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. Prohlédněte si seznam pracovních prostorů nalezen. Můžete filtrovat podle předplatného, skupiny prostředků a umístění.  
 
-   ![Seznam pracovní prostor služby Azure Machine Learning](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Zobrazit pracovní prostory](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. Vyberte pracovní prostor, který jste právě vytvořili, zobrazíte její vlastnosti.
 
@@ -50,7 +51,7 @@ Chcete-li vytvořit pracovní prostor, budete potřebovat předplatné Azure. Po
 
 Použijte tlačítko Odstranit v horní části pracovního prostoru, který chcete odstranit.
 
-  ![PNG](media/how-to-manage-workspace/delete-workspace.png)
+  ![Tlačítko Odstranit](media/how-to-manage-workspace/delete-workspace.png)
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 

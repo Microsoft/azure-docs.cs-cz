@@ -1,24 +1,25 @@
 ---
-title: Architektura nasazení služby Azure vyhrazené HSM | Dokumentace Microsoftu
-description: Azure vyhrazené HSM nabízí možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
+title: Architektura nasazení – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Aspekty návrhu základní při používání vyhrazeného modulu hardwarového zabezpečení Azure jako součást architektury aplikace
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 8481f444464135a24d42612f334ac6096cba7b21
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 913be9d1ee6ce92d71f5f0c7eda46a618483ce8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319411"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078289"
 ---
-# <a name="deployment-architecture"></a>Architektura nasazení
+# <a name="azure-dedicated-hsm-deployment-architecture"></a>Architektura služby Azure vyhrazené nasazení modulu hardwarového zabezpečení
 
 Azure vyhrazené HSM nabízí kryptografického klíče úložiště v Azure. Splňuje požadavky na přísné zásady zabezpečení. Zákazníci se benefitovat z použití vyhrazené modulu hardwarového zabezpečení Azure, pokud jsou:
 

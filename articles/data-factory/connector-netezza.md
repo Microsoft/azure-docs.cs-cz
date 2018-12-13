@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1b7499990a049f276bf1af9e31b639ea4944d8f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 8e2b65f83395c9e8991338864d2037d0572dd269
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078002"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí služby Azure Data Factory 
 
@@ -80,7 +80,12 @@ Tato část obsahuje seznam vlastností, které podporuje Netezza datové sady.
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datových sad](concepts-datasets-linked-services.md). 
 
-Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na **NetezzaTable**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na **NetezzaTable**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **NetezzaTable** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -92,7 +97,8 @@ Chcete-li kopírovat data z Netezza, nastavte **typ** vlastnosti datové sady na
         "linkedServiceName": {
             "referenceName": "<Netezza linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,7 +116,7 @@ Ke zkopírování dat z Netezza, nastavte **zdroj** typ v aktivitě kopírován�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **NetezzaSource**. | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Příklad: `"SELECT * FROM MyTable"` | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

@@ -1,6 +1,6 @@
 ---
-title: Co je Azure Event Hubs Event Processor Host a proč ji používat | Dokumentace Microsoftu
-description: Přehled a úvod do služby Azure Event Hubs Event Processor Host
+title: Příjem událostí pomocí třídy Event Processor Host – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek popisuje třídy Event Processor Host v Azure Event Hubs, což zjednodušuje správu vytváření kontrolních bodů, pronájem a ikona paralelní čtení událostí.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 236103861ce8a296c77f708dbb4a7cc7e03f10f3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a28ae46a449d4aacf046636793585a84adc5ba83
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258948"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089619"
 ---
-# <a name="azure-event-hubs-event-processor-host-overview"></a>Přehled služby Azure Event Hubs Event Processor Host
+# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Příjem událostí z Azure Event Hubs pomocí třídy Event Processor Host
 
 Azure Event Hubs je služba pro ingestování výkonné telemetrická data, která slouží k streamujte miliony událostí za nízkou cenu. Tento článek popisuje, jak využívat přijaté události pomocí *Event Processor Host* (EPH); inteligentní agent příjemce, který zjednodušuje správu vytváření kontrolních bodů, pronájem a čtenáři paralelní události.  
 

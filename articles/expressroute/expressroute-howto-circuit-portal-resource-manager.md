@@ -1,26 +1,19 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute: Azure portal | Dokumentace Microsoftu'
-description: Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
-documentationcenter: na
+title: 'Vytvoření a úprava okruhu ExpressRoute – portál: Azure | Dokumentace Microsoftu'
+description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68d59d59-ed4d-482f-9cbc-534ebb090613
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/20/2017
+ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
-ms.openlocfilehash: 94d7b743bdec0d22254144d5316e0d94f5660a55
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235322"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091523"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Vytvoření a úprava okruhu ExpressRoute
 > [!div class="op_single_selector"]
@@ -31,10 +24,10 @@ ms.locfileid: "51235322"
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek popisuje, jak vytvořit okruh Azure ExpressRoute pomocí modelu nasazení Azure Resource Manageru a webu Azure portal. Následující kroky také ukazují, jak zkontrolovat stav okruhu, aktualizujte ji, nebo odstranit a zrušit jeho zřízení.
+Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazení Azure Resource Manageru a webu Azure portal. Můžete také zkontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 * Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 * Ujistěte se, že máte přístup k [webu Azure portal](https://portal.azure.com).
 * Ujistěte se, že máte oprávnění k vytvoření nových síťových prostředků. Pokud nemáte správná oprávnění, obraťte se na svého správce účtu.

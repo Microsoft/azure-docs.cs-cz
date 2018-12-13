@@ -1,6 +1,6 @@
 ---
-title: Vytvoření šablony Azure Resource Manageru pro nasazení šifrovaného účtu úložiště | Microsoft Docs
-description: Vytvořte šablonu pro nasazení šifrovaného účtu úložiště pomocí nástroje Visual Studio Code.
+title: Využít odkaz na šablonu Azure Resource Manageru | Dokumentace Microsoftu
+description: Využijte odkaz na šablonu Azure Resource Manageru k vytvoření šablony pro nasazení zašifrovaném účtu úložiště.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -10,17 +10,18 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.custom: seodec18
+ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613507"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097586"
 ---
-# <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Kurz: Nasazení šifrovaného účtu služby Azure Storage pomocí šablony Resource Manageru
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Kurz: Využít odkaz na šablonu Azure Resource Manageru
 
 Zjistěte, jak vyhledat informace o schématu šablony a jak pomocí těchto informací vytvářet šablony Azure Resource Manageru.
 
@@ -77,9 +78,11 @@ K dokončení tohoto článku potřebujete:
 
 1. Přejděte na článek o [šablonách Azure](https://docs.microsoft.com/azure/templates/).
 2. V nabídce **Filtrovat podle názvu**, zadejte **Účty úložiště**.
-3. Vyberte **odkaz / šablonu odkazu / úložiště / úložiště účtů**, jak je znázorněno na následujícím snímku obrazovky:
+3. Vyberte **odkaz/šablony odkaz/úložiště/<Version>/Storage účty** jak je znázorněno na následujícím snímku obrazovky:
 
     ![Odkaz šablony Azure Resource Manageru na účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    Pokud si nejste jisti, která verze se má vybrat, používali nejnovější verzi.
 
 4. Vyhledejte informace o definici týkající se šifrování.  
 

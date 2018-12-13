@@ -1,11 +1,11 @@
 ---
 title: Správa webových služeb Machine Learning Studio pomocí služby API Management – Azure | Dokumentace Microsoftu
-description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management.
+description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management. Správa koncových bodů rozhraní REST API tak, že definujete uživatelský přístup, omezení využití a řídicí panel monitorování.
 keywords: ve službě Machine learning, api management
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 76898d2b55d5187e12b91dbd6c9a85af6a274726
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308235"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091709"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled

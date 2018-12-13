@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: moderakh
-ms.openlocfilehash: 01d353d3f1b59fecbb1894d08c6404f441422593
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fadefe09f9f744fabe0f0f3f3cb519b3abb50b41
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098879"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "52872887"
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
-SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že poskytuje asynchronních operací s podporou [Netty knihovny](http://netty.io/). Existující [SQL API Java SDK](sql-api-sdk-java.md) nepodporuje asynchronní operace. 
+SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že poskytuje asynchronních operací s podporou [Netty knihovny](https://netty.io/). Existující [SQL API Java SDK](sql-api-sdk-java.md) nepodporuje asynchronní operace. 
 
 <table>
 
@@ -113,7 +113,7 @@ SQL API asynchronní Java SDK se liší od sady Java SDK API SQL tím, že posky
 * Oprava hlavičkové soubory Java pro generování dokumentu správné java.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Sady SDK verze GA s podporou začátku do konce neblokující pomocí vstupně-výstupních operací [Netty knihovny](http://netty.io/) v režimu brány. 
+* Sady SDK verze GA s podporou začátku do konce neblokující pomocí vstupně-výstupních operací [Netty knihovny](https://netty.io/) v režimu brány. 
 
 ## <a name="release-and-retirement-dates"></a>Datum vydání verze a vyřazení z provozu
 Microsoft bude poskytovat oznámení alespoň **12 měsíců** před vyřazením z provozu sady SDK ulehčení přechodu na verzi novější nebo podporované.

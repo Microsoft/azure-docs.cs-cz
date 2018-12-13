@@ -5,21 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1062cccbe2b4562d7538984c603a7360fbd871f2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
-ms.translationtype: HT
+ms.openlocfilehash: 8bdf655cd64d8947e51e80a4eae9f260871d7e94
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "30929338"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53111865"
 ---
-1. Na stránce **Nastavení** vaší virtuální sítě přejděte na **Servery DNS** a kliknutím otevřete stránku **Servery DNS**.
+1. V **nastavení** část stránce vaší virtuální sítě, vyberte **servery DNS** otevřít **servery DNS** stránky.
+
+2. Na **servery DNS** stránky, zadejte následující hodnoty:
+
+  - **Servery DNS**: vyberte **vlastní**.
+
+  - **Přidat DNS server**: Zadejte IP adresu serveru DNS, který chcete použít pro překlad názvů.
+
+2. Po dokončení přidávání serverů DNS, vybrat **Uložit**.
 
     ![Určení serveru DNS](./media/vpn-gateway-add-dns-rm-portal-include/specify-dns-server.png "Určení serveru DNS")
-
-  - **Servery DNS:** Vyberte **Vlastní**.
-  - **Přidat server DNS**: Zadejte IP adresu serveru DNS, který chcete používat pro překlad názvů.
-
-2. Až přidávání serverů DNS dokončíte, klikněte na **Uložit** v horní části stránky.

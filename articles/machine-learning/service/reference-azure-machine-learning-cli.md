@@ -1,5 +1,6 @@
 ---
-title: Jak používat rozšíření rozhraní příkazového řádku pro Azure Machine Learning
+title: Pomocí strojového učení rozšíření rozhraní příkazového řádku
+titleSuffix: Azure Machine Learning service
 description: Další informace o rozšíření Azure Machine Learning rozhraní příkazového řádku Azure CLI. Azure CLI je nástroj příkazového řádku napříč platformami, která umožňuje pracovat s prostředky v cloudu Azure. Rozšíření Machine Learning umožňuje pracovat s služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ab348ce3a6d45c2ac4d2d14978781e57a8b5d17
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: e1e94c2301cdbacf2ade037fe04cc8359ed06598
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872833"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078187"
 ---
-# <a name="use-the-azure-machine-learning-cli-extension"></a>Použití rozšíření Azure Machine Learning CLI
+# <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Použití rozšíření rozhraní příkazového řádku pro službu Azure Machine Learning
 
 Rozhraní příkazového řádku Azure Machine Learning je rozšíření [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), multiplatformního rozhraní příkazového řádku pro platformu Azure. Toto rozšíření poskytuje příkazy pro práci se službou Azure Machine Learning z příkazového řádku. Umožňuje vytvořit skripty pro automatizaci strojového učení pracovních postupů. Například můžete vytvořit skripty, které provést následující akce:
 

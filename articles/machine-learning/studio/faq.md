@@ -5,7 +5,7 @@ keywords: úvod ke strojovému učení, prediktivní modelování, co je strojov
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 4d4e6a47b35d3cb98e4425c11628625818642fa0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 23de87bb566764540f1a7bf152d72bfdc0e3719f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867847"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091275"
 ---
-# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy k Azure Machine Learning Studio: fakturace, schopnosti, omezení a podpora
+# <a name="azure-machine-learning-studio-faq-billing-capabilities-limitations-and-support"></a>Azure Machine Learning Studio – nejčastější dotazy: Fakturace, schopnosti, omezení a podpora
 Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
 
 **Máte dotaz, který tady nemůžete najít?**

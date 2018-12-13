@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d99209af9b1b6697419a046812928e75fed70321
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044480"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076950"
 ---
 # <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Přiřazení uživatelů a skupin k aplikaci v Azure Active Directory
 Tento článek ukazuje, jak přiřadit uživatele nebo skupiny k aplikaci v Azure Active Directory (Azure AD). Uživatelé musí být přiřazen k aplikaci předtím, než správce můžete jim udělit přístup k následujícím:
@@ -57,7 +57,7 @@ Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle ná
 
 5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
 6.  Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 
@@ -95,7 +95,7 @@ Jednu nebo více skupin přiřadit přímo k aplikaci, postupujte podle následu
 
 5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
 6.  Vyberte aplikaci, kterou chcete přiřadit uživatele ze seznamu.
 

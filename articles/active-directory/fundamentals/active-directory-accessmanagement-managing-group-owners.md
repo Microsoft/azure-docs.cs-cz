@@ -1,6 +1,6 @@
 ---
-title: Postup přidání nebo odebrání vlastníků skupin Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat nebo odebrat vlastníky skupiny pomocí služby Azure Active Directory.
+title: Přidání nebo odebrání vlastníků skupiny – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat nebo odebrat vlastníkům pomocí Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
-ms.custom: it-pro
-ms.openlocfilehash: fae68bccbeaa54ca1bab9d77510fe6baecd11fcc
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 8c70378993e0155cbe730a5a351848ca1a1daa0a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139716"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087146"
 ---
-# <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Postupy: Přidání nebo odebrání vlastníků skupin v Azure Active Directory
+# <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Přidání nebo odebrání vlastníků skupin v Azure Active Directory
 Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny jsou přiřazeny ke správě skupiny a její členy podle vlastníka prostředku (správce). Vlastníci skupiny nemusejí být členy skupiny. Po přiřazení vlastníka skupiny jenom vlastník prostředku můžete přidat nebo odebrat vlastníky.
 
 V některých případech se jako správce může rozhodnete přiřadit jako vlastníka skupiny. V tomto případě stát vlastníkem skupiny. Vlastníci kromě toho můžete přiřadit další vlastníky do skupiny, pokud jste to omezuje v nastavení skupiny.

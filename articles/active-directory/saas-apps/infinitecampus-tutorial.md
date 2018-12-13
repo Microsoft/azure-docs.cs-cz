@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 837d18a04a0cd22f29a5cbcb8b06b7e3f5fae255
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632802"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace Azure Active Directory s nekonečnou Campus
 
@@ -111,11 +111,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](common/editconfigure.png)
 
-5. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb** (krok **11.b**), proveďte následující kroky:
+5. Na **základní konfiguraci SAML** části, pokud máte **soubor metadat poskytovatele služeb** (přejděte ke kroku **11.c**), proveďte následující kroky:
 
     a. Klikněte na tlačítko **nahrát soubor metadat**.
 
-    ![image](common/b9_saml.png)
+        ![image](common/b9_saml.png)
 
     b. Klikněte na **složky logo** vyberte soubor metadat a klikněte na **nahrát**.
 
@@ -128,9 +128,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     d. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následující vzorek (doména bude lišit podle hostování modelu): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     > [!NOTE]
-    > Můžete získat **soubor metadat poskytovatele služeb** na stránce nekonečné Campus jednotného přihlašování služby poskytovatele konfigurace, který je vysvětlen později v tomto kurzu.
+    > Můžete získat **soubor metadat poskytovatele služeb** na stránce nekonečné Campus jednotného přihlašování služby poskytovatele konfigurace, který je vysvětlen později v tomto kurzu. Pokud začínáte s novou konfigurací SAML poskytovatele služeb v nekonečné Campus, přejděte k **krok 11** k dokončení exportu souboru metadat poskytovatele služeb.
 
-6. Pokud nemáte **soubor metadat poskytovatele služeb**, proveďte následující kroky:
+6. Pokud nemáte **soubor metadat poskytovatele služeb**, postupujte takto (Všimněte si, že doménu se bude lišit podle hostování modelu):
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
@@ -169,10 +169,10 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Jednotné přihlašování](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
     a. Vyberte **povolit SAML jednotného přihlašování**.
+    
+    b. Na **vyberte možnost načíst data serveru zprostředkovatele Identity (IDP)** vyberte **adresa URL metadat**, vložte **adresa Url federačních metadat aplikace** v poli a pak Klikněte na tlačítko **synchronizace**.
 
-    b. Klikněte na **Metadata poskytovatele služby** odkaz můžete uložit **soubor metadat poskytovatele služeb** ve vašem počítači a nahrajte ho v **základní konfiguraci SAML** části auto polulate **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure portal (viz část o ke kroku 5).
-
-    c. Na **vyberte možnost načíst data serveru zprostředkovatele Identity (IDP)** vyberte **adresa URL metadat** a vložte **adresa Url federačních metadat aplikace** do textového pole a potom klikněte na **synchronizace**.
+    c. Klikněte na **Metadata poskytovatele služby** odkaz můžete uložit **soubor metadat poskytovatele služeb** v počítači a nahrajte ho v **základní konfiguraci SAML** části auto naplnění **identifikátor** a **adresy URL odpovědi** hodnoty na webu Azure Portal (najdete v kroku 4 pro nahrávání a automatické naplnění hodnot nebo kroku 5 pro ruční zadání).
 
     d. Po kliknutí na tlačítko **synchronizace** hodnoty získat automaticky dosadí **konfigurace poskytovatele služby jednotného přihlašování** stránky.
 

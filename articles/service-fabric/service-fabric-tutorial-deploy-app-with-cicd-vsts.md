@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace Service Fabric s využitím kontinuální integrace (Azure DevOps Services) v Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak nastavit kontinuální integraci a nasazování pro aplikaci Service Fabric pomocí služby Azure DevOps Services.
+title: Nasazení aplikace Service Fabric s využitím průběžné integrace a kanály Azure ve službě Azure | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Service Fabric pomocí Azure kanálů.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,26 +12,26 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/15/2018
+ms.date: 12/02/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853724"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094946"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
-V tomto kurzu, který je čtvrtou částí série, se dozvíte, jak nastavit kontinuální integraci a nasazování pro aplikaci Azure Service Fabric pomocí Azure DevOps.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
+Tento kurz je čtvrtou částí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric s využitím Azure kanály.  Potřebujete existující aplikaci Service Fabric. Jako příklad se používá aplikace vytvořená v tématu [Sestavení aplikace .NET](service-fabric-tutorial-create-dotnet-app.md).
 
 Ve třetí části této série se naučíte:
 
 > [!div class="checklist"]
 > * Přidání správy zdrojového kódu do projektu
-> * Vytvoření kanálu buildu v Azure DevOps
-> * Vytvoření kanálu verze v Azure DevOps
+> * Vytvoření kanálu buildu v Azure Pipelines
+> * Vytvoření kanálu verze v Azure Pipelines
 > * Automatické nasazení a upgrade aplikace
 
 V této sérii kurzů se naučíte:
@@ -50,7 +50,7 @@ Než začnete s tímto kurzem:
 * [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 * Vytvořte v Azure cluster Service Fabric s Windows, například [podle tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Vytvořte [organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student).
+* Vytvořte [organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). To vám umožňuje vytvoření projektu v Azure DevOps a používat Azure kanály.
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
 
@@ -62,7 +62,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>Příprava profilu publikování
 
-Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a [nasadili jste tuto aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavit průběžnou integraci.  Nejprve ve své aplikaci připravte profil publikování použitý procesem nasazení, který se provádí v rámci Azure DevOps.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
+Teď, když jste [vytvořili aplikaci](service-fabric-tutorial-create-dotnet-app.md) a [nasadili jste tuto aplikaci do Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md), jste připraveni nastavit průběžnou integraci.  Nejprve připravte profil publikování v rámci vaší aplikace pro použití, proces nasazení, který se spustí v rámci Azure kanály.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
 
 Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracovní postup průběžné integrace, například Cloud.  Zadejte koncový bod připojení clusteru.  Zaškrtněte políčko **Upgradovat aplikaci**, aby se vaše aplikace upgradovala pro každé nasazení v Azure DevOps.  Kliknutím na hypertextový odkaz **Uložit** uložte nastavení do profilu publikování a pak kliknutím na **Zrušit** zavřete dialogové okno.
 
@@ -84,11 +84,11 @@ Ověřte svůj e-mail a v rozevíracím seznamu **Doména Azure DevOps** vyberte
 
 Publikováním úložiště se ve vašem účtu vytvoří nový projekt se stejným názvem jako místní úložiště. Pokud chcete úložiště vytvořit v existujícím projektu, klikněte na **Upřesnit** vedle **názvu úložiště** a vyberte projekt. Svůj kód můžete zobrazit na webu výběrem možnosti **Podívejte se na webu**.
 
-## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurace průběžného doručování pomocí Azure DevOps
+## <a name="configure-continuous-delivery-with-azure-pipelines"></a>Nakonfigurujte průběžné doručování s Azure kanály
 
-Kanál buildu Azure DevOps popisuje pracovní postup, který se skládá z řady postupně prováděných kroků buildu. Vytvořte kanál buildu, který vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [kanálech buildu Azure DevOps](https://www.visualstudio.com/docs/build/define/create). 
+Kanály Azure kanálu sestavení popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny postupně. Vytvořte kanál buildu, který vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Přečtěte si další informace o [kanálech buildu Azure Pipelines](https://www.visualstudio.com/docs/build/define/create). 
 
-Kanál verze Azure DevOps popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Přečtěte si další informace o [kanálech verze](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) Azure DevOps.
+Kanál pro vydávání verzí Azure kanály popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití provedou kanál buildu a kanál verze celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o [Azure kanály vydávání kanálů](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-pipeline"></a>Vytvoření kanálu buildu
 
@@ -156,11 +156,11 @@ V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktu
 
 ![Potvrdit vše][changes]
 
-Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Výběrem možnosti **Nasdílet změny** aktualizujte kód v Azure DevOps Services/TFS.
+Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Vyberte **Push** a aktualizujte svůj kód v kanálech Azure.
 
 ![Nasdílení změn][push]
 
-Nasdílením změn do Azure DevOps se automaticky aktivuje build.  Po úspěšném dokončení kanálu buildu se automaticky vytvoří verze a začne se upgradovat aplikace v clusteru.
+Nasdílením změn do kanálů Azure automaticky aktivuje sestavení.  Po úspěšném dokončení kanálu buildu se automaticky vytvoří verze a začne se upgradovat aplikace v clusteru.
 
 Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se build úspěšně spouští, definujte kanál verze, který nasadí vaši aplikaci do clusteru.
 

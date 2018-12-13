@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z vertikální pomocí Azure Data Factory | Microsoft Docs
-description: Postup kopírování dat z vertikální do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat z Vertica pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak ke zkopírování dat z Vertica do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,40 +11,40 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d4399fd26c4c536f89bb15e16bfc67fb1d0940fa
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4e13050715927fb0b158c32393b56b32290cf175
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058850"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078085"
 ---
-# <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopírování dat z vertikální pomocí Azure Data Factory 
+# <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopírování dat z Vertica pomocí Azure Data Factory 
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z vertikální. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Vertica. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Data můžete zkopírovat z vertikální do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z Vertica do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Azure Data Factory poskytuje integrované ovladače pro umožnění připojení, proto nemusíte ručně nainstalovat všechny ovladače, používání tohoto konektoru.
+Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
-Vytvoření kanálu s aktivitou kopírování pomocí sady .NET SDK, Python SDK, Azure PowerShell, REST API nebo šablony Azure Resource Manageru. V tématu [kurzu aktivity kopírování](quickstart-create-data-factory-dot-net.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Vytvoření kanálu s aktivitou kopírování pomocí sady .NET SDK, Python SDK, Azure Powershellu, rozhraní REST API nebo šablony Azure Resource Manageru. Zobrazit [kurz aktivity kopírování](quickstart-create-data-factory-dot-net.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
-Následující části obsahují podrobnosti o vlastnosti, které se používají k definování entit služby Data Factory, které jsou specifické pro vertikální konektor.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Vertica.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro vertikální propojené služby jsou podporovány následující vlastnosti:
+Vertica propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **vertikální** | Ano |
-| připojovací řetězec | Řetězec připojení rozhraní ODBC pro připojení k vertikální. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| type | Vlastnost type musí být nastavená na: **Vertica** | Ano |
+| připojovací řetězec | ODBC připojovací řetězec služby pro připojení k Vertica. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
 
@@ -69,9 +69,14 @@ Pro vertikální propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností nepodporuje vertikální datovou sadu.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Vertica datové sady.
 
-Ke zkopírování dat z vertikální, nastavte vlastnost typu datové sady, která **VerticaTable**. Není k dispozici žádné další vlastnosti specifické pro typ v tomto typu datové sady.
+Ke zkopírování dat z Vertica, nastavte vlastnost typ datové sady na **VerticaTable**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **VerticaTable** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -83,23 +88,24 @@ Ke zkopírování dat z vertikální, nastavte vlastnost typu datové sady, kter
         "linkedServiceName": {
             "referenceName": "<Vertica linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje vertikální zdroje.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Vertica zdroje.
 
-### <a name="vertica-as-source"></a>Vertikální jako zdroj
+### <a name="vertica-as-source"></a>Vertica jako zdroj
 
-Ke zkopírování dat z vertikální, nastavte typ zdroje v aktivitě kopírování do **VerticaSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke zkopírování dat z Vertica, nastavte typ zdroje v aktivitě kopírování do **VerticaSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **VerticaSource** | Ano |
-| query | Čtení dat pomocí vlastního dotazu SQL. Například: `"SELECT * FROM MyTable"`. | Ano |
+| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **VerticaSource** | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 
@@ -134,4 +140,4 @@ Ke zkopírování dat z vertikální, nastavte typ zdroje v aktivitě kopírová
 ```
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

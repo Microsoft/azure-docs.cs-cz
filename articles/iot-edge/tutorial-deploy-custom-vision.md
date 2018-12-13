@@ -1,6 +1,6 @@
 ---
-title: Nasazení služby Custom Vision do zařízení Azure IoT Edge | Microsoft Docs
-description: Zjistěte, jak zajistit spouštění modelu počítačového zpracování obrazu jako kontejneru s využitím služeb Custom Vision a IoT Edge.
+title: Kurz nasazení Custom Vision třídění zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak aby běžela jako kontejner pomocí vlastní vize a IoT Edge modelem počítačového zpracování obrazu.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: a8f72c62393f6ba470c31a55668382ae0beb290e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566478"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075824"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Kurz: Provádění klasifikace obrázků na hraničních zařízeních s využitím služby Custom Vision
 
@@ -99,7 +99,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 5. Vyberte **Nahrát soubory (10)**. 
 
-   ![Nahrání souborů se značkou hemlock](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
+   ![Nahrát soubory označené hemlock Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
 6. Po úspěšném nahrání obrázků vyberte **Hotovo**.
 
@@ -117,7 +117,7 @@ Při vytváření klasifikátoru obrázků je potřeba sada trénovacích obráz
 
 1. Po natrénování klasifikátoru na stránce Výkon klasifikátoru vyberte **Exportovat**. 
 
-   ![Export klasifikátoru obrázků](./media/tutorial-deploy-custom-vision/export.png)
+   ![Export klasifikátoru trénovaného image](./media/tutorial-deploy-custom-vision/export.png)
 
 2. Jako platformu vyberte **DockerFile**. 
 

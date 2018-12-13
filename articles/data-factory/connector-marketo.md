@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8c3210a560c079f66cd21dbb30be4a4b823a6502
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415827"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078204"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat ze služby Marketo pomocí Azure Data Factory (Preview)
 
@@ -79,7 +79,12 @@ Pro Marketo propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu služby Marketo.
 
-Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na **MarketoObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na **MarketoObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **MarketoObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -91,7 +96,8 @@ Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na
         "linkedServiceName": {
             "referenceName": "<Marketo linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -100,14 +106,14 @@ Pro kopírování dat ze služby Marketo, nastavte vlastnost typ datové sady na
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem Marketo.
 
-### <a name="marketosource-as-source"></a>MarketoSource jako zdroj
+### <a name="marketo-as-source"></a>Marketo jako zdroj
 
 Pro kopírování dat ze služby Marketo, nastavte typ zdroje v aktivitě kopírování do **MarketoSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **MarketoSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Activitiy_Types"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Activitiy_Types"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

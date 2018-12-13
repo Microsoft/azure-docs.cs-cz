@@ -1,20 +1,20 @@
 ---
-title: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs | Microsoft Docs
+title: Vizualizovat data anomálie v reálném čase události – Azure Event Hubs | Dokumentace Microsoftu
 description: Kurz – Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Microsoft Azure Event Hubs
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
 ms.author: shvija
-ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
-ms.custom: mvc
-ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
-ms.translationtype: HT
+ms.custom: seodec18
+ms.date: 12/06/2018
+ms.openlocfilehash: add88a24da2e217d705065274f26382c1ffe8e17
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004109"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091675"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Kurz: Vizualizace datových anomálií v událostech v reálném čase odesílaných do služby Azure Event Hubs
 
@@ -316,7 +316,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    ![Snímek obrazovky se zadáváním typu vizualizace a polí.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   Klikněte na **Další**.
+   Klikněte na tlačítko **Další**.
 
 10. Nastavte nadpis na **Podvodná použití** a podnadpis na **Součet za posledních několik minut**. Klikněte na tlačítko **Použít**. Dlaždice se uloží na váš řídicí panel.
 
@@ -326,7 +326,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
    * Klikněte na **Přidat dlaždici**.
    * Vyberte **Vlastní streamovaná data**. 
-   * Klikněte na **Další**.
+   * Klikněte na tlačítko **Další**.
    * Vyberte vaši datovou sadu a klikněte na **Další**. 
 
 12. V části **Typ vizualizace** vyberte **Spojnicový graf**.
@@ -335,7 +335,7 @@ V úloze Stream Analytics klikněte na **Spustit**, pak na **Nyní** a pak na **
 
 14. V části **Hodnoty** klikněte na **Přidat hodnotu** a vyberte **fraudulentuses**.
 
-15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na **Další**.
+15. V části **Časové okno k zobrazení** vyberte posledních pět minut. Klikněte na tlačítko **Další**.
 
 16. Jako nadpis zadejte **Zobrazení podvodných použití v průběhu času**, podnadpis dlaždice ponechte prázdný a klikněte na **Použít**. Vrátíte se na váš řídicí panel.
 
@@ -367,7 +367,7 @@ K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGrou
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]

@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.custom: seodec18
+ms.openlocfilehash: 6898b007287e4f4c87010649c6f0b66c03f7cf8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389713"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086262"
 ---
 # <a name="create-a-qna-maker-service"></a>Vytvoření služby QnA Maker
 
@@ -27,7 +28,7 @@ Tento instalační program nasadí několik prostředků Azure. Společně tyto 
 
 2.  Klikněte na **přidat nový prostředek**a do vyhledávacího pole zadejte "qna maker" a vyberte prostředek QnA Maker
 
-    ![Vytvořit novou službu QnA Maker](../media/qnamaker-how-to-setup-service/create-new-resource.png)
+    ![Vytvořit novou službu QnA Maker – přidat nový prostředek](../media/qnamaker-how-to-setup-service/create-new-resource.png)
 
 3.  Klikněte na **vytvořit** po přečtení podmínek a ujednání.
 
@@ -35,7 +36,7 @@ Tento instalační program nasadí několik prostředků Azure. Společně tyto 
 
 4. V **QnA Maker**, vyberte příslušné úrovně a oblasti.
 
-    ![Vytvořit novou službu QnA Maker](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Vytvořit novou službu QnA Maker – cenová úroveň a oblasti](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
     * Zadejte **název** s jedinečný název pro identifikaci této služby QnA Maker. Tento název také identifikuje koncový bod QnA Maker, do kterého mají být asociována znalostních bází.
     * Zvolte **předplatné** ve kterém bude nasazen nástroj QnA Maker prostředků.
@@ -57,7 +58,7 @@ Tento instalační program nasadí několik prostředků Azure. Společně tyto 
 
 6.  Jakmile se nasazení dokončí, zobrazí se následující prostředky vytvořené v rámci vašeho předplatného.
 
-    ![Vytvořit novou službu QnA Maker](../media/qnamaker-how-to-setup-service/resources-created.png)
+    ![Prostředek vytvoří nová služba QnA Maker](../media/qnamaker-how-to-setup-service/resources-created.png)
 
 ## <a name="next-steps"></a>Další postup
 

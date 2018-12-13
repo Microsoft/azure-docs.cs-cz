@@ -1,10 +1,10 @@
 ---
 title: Správa iterací experimentů v nástroji Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Správa iterací experimentů v nástroji Azure Machine Learning Studio
+description: Jak Správa iterací experimentů v nástroji Azure Machine Learning Studio. Předchozí běhy své experimenty můžete zkontrolovat v okamžiku, aby bylo možné výzva, opakování a nakonec potvrďte nebo upravit předchozí předpoklady.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: b96ab59db8c4586304a864ee432dbd1c74b25fd6
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: a95004a24a9b136708f948f6a2697563216506fb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313533"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086022"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Správa iterací experimentů v nástroji Azure Machine Learning Studio
 Vývojem modelu prediktivní analýzy je iterativní proces - úpravou různých funkcí a parametrů experimentu sloučit výsledky až se ujistíte, že máte natrénován efektivní model. Klíč k tomuto procesu se ke sledování různých iterací experimentu parametry a konfigurací.

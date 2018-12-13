@@ -1,22 +1,24 @@
 ---
-title: Vytvoření veřejné služby Load Balancer Standard s oblastmi veřejné IP adresy front-endu pomocí webu Azure portal | Dokumentace Microsoftu
+title: Vytvoření Load Balanceru úrovně Standard s oblastmi front-endové IP adresy – Azure portal
+titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit veřejné služby Load Balancer Standard s oblastmi veřejné IP adresy front-endu pomocí webu Azure portal
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: cc3d1e9f2d87da1ed7014674877212ea0be81bca
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e109504fe8657436d73870cc022ed4bc81c559f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416762"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095318"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-public-ip-address-frontend-using-azure-portal"></a>Vytvoření veřejné služby Load Balancer Standard s oblastmi veřejné IP adresy front-endu pomocí webu Azure portal
 

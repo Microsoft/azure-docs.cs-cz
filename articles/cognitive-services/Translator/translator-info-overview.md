@@ -1,5 +1,5 @@
 ---
-title: Co je Translator Text API?
+title: Co je Translator Text API? – Translator Text API
 titlesuffix: Azure Cognitive Services
 description: Integrací služby Translator Text API do vašich aplikací, webů, nástrojů a dalších řešení můžete poskytnout vícejazyčná uživatelská prostředí.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
-ms.date: 05/10/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 9d1c5fac9e305e397e0184653e6d8965f9098ee3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: eed06d64e81196bbd6964aa33840f37dc5f14dbc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037443"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091607"
 ---
 # <a name="what-is-translator-text-api"></a>Co je Translator Text API?
 
@@ -51,7 +52,7 @@ Modely NMT jsou v jádru rozhraní API a nejsou viditelné pro koncové uživate
 
 Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
 
@@ -61,7 +62,7 @@ Další informace o tom, [jak NMT funguje](https://www.microsoft.com/en-us/trans
 
 - [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) obsahuje technickou dokumentaci k rozhraním API.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=ai)
 - [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
