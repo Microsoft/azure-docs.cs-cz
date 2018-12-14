@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7599fbe05b99466ed1d1a3db17156888cf9ea353
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227142"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338281"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 Tento článek uvádí některé běžné pojmy používané v článcích služby IoT Hub.
@@ -21,7 +21,7 @@ Tento článek uvádí některé běžné pojmy používané v článcích služ
 ## <a name="advanced-message-queueing-protocol"></a>Rozšířené zprávy protokolu zařazení do fronty
 [Pokročilé protokolu služby Řízení front zpráv (AMQP)](https://www.amqp.org/) je jeden z zasílání zpráv, které protokoly [služby IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o protokoly zasílání zpráv, které podporuje službu IoT Hub najdete v tématu [odesílání a příjem zpráv pomocí služby IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Správa automatického zařízení
+## <a name="automatic-device-management"></a>Automatická správa zařízení
 Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizovat mnoho opakovaných a složité úlohy správy flotily nebo velké zařízení přes celého jejich životního cyklu. Automatická správa zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definují požadovanou konfiguraci a nechat pokaždé, když se do rozsahu sem přišli aktualizaci zařízení služby IoT Hub.  Se skládá z [automatické konfigurace](iot-hub-auto-device-config.md) a [automatické nasazení IoT Edge](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Konfigurace automatického zařízení
@@ -40,8 +40,8 @@ Existují _sady SDK pro zařízení_ dostupné pro různé jazyky, které vám u
 ## <a name="azure-iot-service-sdks"></a>Sady SDK pro služby Azure IoT
 Existují _služby sady SDK_ dostupné pro různé jazyky, které vám umožní vytvořit [back endové aplikace](#back-end-app) , které komunikovat s centrem IoT. IoT Hub kurzy ukazují, jak pomocí sady SDK pro tyto služby. V tomto Githubu můžete najít zdrojový kód a další informace o sadách SDK služby [úložiště](https://github.com/Azure/azure-iot-sdks).
 
-## <a name="azure-iot-toolkit"></a>Azure IoT Toolkit
-[Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) je různé platformy, open source rozšíření Visual Studio Code, který vám pomůže spravovat zařízení v nástroji VS Code a Azure IoT Hub. S Azure IoT Toolkit může IoT vývojáři vyvíjet pro projekty IoT v nástroji VS Code s lehkostí a elegancí.
+## <a name="azure-iot-hub-toolkit"></a>Sada Azure IoT Hub
+[Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit) je multiplatformní, open source rozšíření Visual Studio Code, která pomáhá spravovat zařízení v nástroji VS Code a Azure IoT Hub. Se sadou Azure IoT Hub nástrojů může vývojáře IoT vývoj IoT projektu v nástroji VS Code s lehkostí a elegancí.
 
 ## <a name="azure-portal"></a>portál Azure
 [Portálu Microsoft Azure](https://portal.azure.com) je centrálním místem, kde můžete zřizovat a spravovat prostředky Azure. Slouží k uspořádání obsahu pomocí _oken_.
@@ -141,7 +141,7 @@ Podobně jako u dvojče zařízení, dvojče modulu je dokument JSON, který ukl
 ## <a name="twin-synchronization"></a>Dvojče synchronizace
 Dvojče používá synchronizaci [požadované vlastnosti](#desired-properties) dvojčat zařízení nebo dvojčaty modulů ke konfiguraci zařízení nebo moduly a načíst [ohlášené vlastnosti](#reported-properties) z nich k uložení ve dvojčeti.
 
-## <a name="direct-method"></a>Přímé metody
+## <a name="direct-method"></a>Přímá metoda
 A [přímá metoda](iot-hub-devguide-direct-methods.md) je způsob, jakým můžete aktivovat metodu ke spuštění na zařízení prostřednictvím volání rozhraní API ve službě IoT hub.
 
 ## <a name="endpoint"></a>Koncový bod
