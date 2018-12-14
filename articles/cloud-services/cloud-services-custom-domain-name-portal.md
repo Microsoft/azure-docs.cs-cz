@@ -115,7 +115,7 @@ Chcete-li vytvořit záznam A, je nutné nejprve vyhledat virtuální IP adresu 
      IP adresu, uložte, protože ji budete potřebovat při vytváření záznamu.
 2. Přihlaste se k webu vašeho registrátora DNS a přejděte na stránku pro správu DNS. Vyhledejte odkazy nebo oblasti webu označené jako **název domény**, **DNS**, nebo **Name Server Management**.
 3. Nyní najdete, kde můžete vybrat nebo zadat záznamu. Bude pravděpodobně nutné vyberte typ záznamu rozevíracím seznamu, nebo přejděte na stránku rozšířeného nastavení.
-4. Vyberte nebo zadejte doménu nebo subdoménu, která bude používat tento záznam. Vyberte například **www** Pokud budete chtít vytvořit alias **www.customdomain.com**. Pokud chcete vytvořit položku zástupných znaků pro všechny subdomény, zadejte "***". To bude zahrnovat všechny subdomény, jako **mail.customdomain.com**, **login.customdomain.com**, a **www.customdomain.com**.
+4. Vyberte nebo zadejte doménu nebo subdoménu, která bude používat tento záznam. Vyberte například **www** Pokud budete chtít vytvořit alias **www.customdomain.com**. Pokud chcete vytvořit položku zástupných znaků pro všechny subdomény, zadejte "*****". To bude zahrnovat všechny subdomény, jako **mail.customdomain.com**, **login.customdomain.com**, a **www.customdomain.com**.
    
     Pokud chcete vytvořit záznam A pro kořenovou doménu, může být uveden jako "**@**" symbol v nástrojích DNS vašeho registrátora.
 5. Zadejte IP adresu vaší cloudové služby v zadané pole. To spojí zadaná doména používaných pro záznam A IP adresou vašeho nasazení cloudové služby.
@@ -126,7 +126,7 @@ Například následující záznam předává veškerý provoz z **contoso.com**
 | --- | --- |
 | \@ |137.135.70.239 |
 
-Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chcete vytvořit záznam zástupných znaků pro všechny subdomény, zadali byste: *** "jako subdomény.
+Tento příklad ukazuje vytvoření záznamu A pro kořenovou doménu. Pokud chcete vytvořit záznam zástupných znaků pro všechny subdomény, zadali byste: ***** "jako subdomény.
 
 > [!WARNING]
 > IP adresy v Azure jsou ve výchozím nastavení dynamické. Budete pravděpodobně chtít použít [vyhrazená IP adresa](../virtual-network/virtual-networks-reserved-public-ip.md) zajistit, že vaše IP adresa se nezmění.

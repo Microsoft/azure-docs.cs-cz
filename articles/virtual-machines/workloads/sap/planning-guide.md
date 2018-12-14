@@ -1668,7 +1668,7 @@ V typické SAP v následující tabulce jsou uvedeny portů pro komunikaci. V po
 
 *) nn = číslo Instance SAP
 
-*) sid = ID systému SAP
+**) sid = ID systému SAP
 
 Podrobnější informace o tom porty vyžadované pro různé produkty SAP nebo služby v jednotlivých produktů SAP najdete tady <http://scn.sap.com/docs/DOC-17124>.
 S tímto dokumentem byste měli moct otevřít vyhrazené porty v zařízení VPN pro konkrétní produktů SAP a scénářů.
