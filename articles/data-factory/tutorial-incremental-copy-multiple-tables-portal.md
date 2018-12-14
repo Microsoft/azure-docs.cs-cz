@@ -271,7 +271,7 @@ Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v 
 1. V okně **Instalace prostředí Integration Runtime** vyberte **Provést přesun dat a odeslání aktivit do externích výpočetních prostředí** a klikněte na **Další**. 
 
    ![Výběr typu prostředí Integration Runtime](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. Vyberte **Privátní síť** a klikněte na **Další**. 
+1. Vyberte ** Privátní síť** a klikněte na **Další**. 
 
    ![Výběr privátní sítě](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. Jako **Název** zadejte **MySelfHostedIR** a klikněte na **Další**. 

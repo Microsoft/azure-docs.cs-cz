@@ -140,7 +140,7 @@ Běží na pozadí pro shromažďování dat a diagnostikovat problémy s výkon
 > [!NOTE] 
 > V současné době se podporují Windows, které zahrnují rozhraní .NET Framework 4.5 nebo novější verze.
 
-### <a name="performance-counter-trace-"></a>Čítače sledování výkonu (*)
+### <a name="performance-counter-trace-"></a>Čítače sledování výkonu (\*\*)
 
 Shromažďuje následující čítače výkonu:
 
@@ -156,7 +156,7 @@ Shromažďuje následující čítače výkonu:
 #### <a name="for-azure-files"></a>Pro soubory Azure
 \SMB sdílených složek klienta
 
-### <a name="diskspd-benchmark-trace-"></a>Trasování srovnávacího testu Diskspd (*)
+### <a name="diskspd-benchmark-trace-"></a>Trasování srovnávacího testu Diskspd (\*\*\*)
 Diskspd vstupně-výstupních operací úloh testy (Disk s operačním systémem [zápis] a jednotky fondu [r/w])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Spusťte nástroj PerfInsights na vašem virtuálním počítači
