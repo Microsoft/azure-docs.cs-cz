@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: raynew
-ms.openlocfilehash: 67a236f592392744978b7d1d7f7e7d129515a9a0
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 50f9027301e4a04cd5624deee084429c803e04f4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321797"
+ms.locfileid: "53342710"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -134,7 +134,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikované počítače – Linux souboru systému/hostovaného úložiště
 
-* Systémy souborů: ext3 ext4, ReiserFS (Suse Linux Enterprise Server pouze), XFS
+* Systémy souborů: ext3 ext4, ReiserFS (pouze operačním systémem Suse Linux Enterprise Server), XFS, BTRFS
 * Správce svazků: LVM2
 * Software s funkcí Multipath: Mapování zařízení
 

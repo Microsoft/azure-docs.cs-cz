@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9cfb098fd8e6cb777b6cd968f92b20baabfab705
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313976"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338511"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -136,7 +136,7 @@ Výběr filtru v horní části řídicího panelu, vám umožní použít časo
 
   ![Nastavení][11]
 
-  **Konfigurace pracovního prostoru** otevře, zobrazuje tři karty: **registru Windows**, **soubory Windows**, a **soubory Linuxu**. Každá karta obsahuje entity, které můžete upravit v dané kategorii. Pro každou entitu uvedené, Security Center identifikuje FIM, je-li povolena (pravda) nebo nejsou povolené (false).  Úpravy entit umožňuje povolit nebo zakázat FIM.
+  **Konfigurace pracovního prostoru** otevře, zobrazuje tři karty: **Registr Windows**, **soubory Windows**, a **soubory Linuxu**. Každá karta obsahuje entity, které můžete upravit v dané kategorii. Pro každou entitu uvedené, Security Center identifikuje FIM, je-li povolena (pravda) nebo nejsou povolené (false).  Úpravy entit umožňuje povolit nebo zakázat FIM.
 
   ![Konfigurace pracovního prostoru][12]
 
@@ -153,7 +153,7 @@ V části **upravit pro řešení Change Tracking** můžete:
 
 ## <a name="add-a-new-entity-to-monitor"></a>Přidat novou entitu k monitorování
 1. Vraťte se **integirty souboru řídicího panelu monitorování** a vyberte **nastavení** v horní části. **Konfigurace pracovního prostoru** otevře.
-2. V části **konfigurace pracovního prostoru**, vyberte na kartě pro typ entity, které chcete přidat: registru Windows, Windows soubory nebo soubory Linuxu. V tomto příkladu jsme vybrali **soubory Linuxu**.
+2. V části **konfigurace pracovního prostoru**, vyberte na kartě pro typ entity, které chcete přidat: Registru Windows, Windows soubory nebo soubory Linuxu. V tomto příkladu jsme vybrali **soubory Linuxu**.
 
   ![Přidat novou položku k monitorování][14]
 
@@ -205,7 +205,7 @@ Můžete zakázat FIM. FIM pomocí řešení Azure Change Tracking sleduje a ide
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, chcete-li používat monitorování Integrity souborů (FIM) ve službě Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení](tutorial-security-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení](security-center-monitoring.md)– zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md)– zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.

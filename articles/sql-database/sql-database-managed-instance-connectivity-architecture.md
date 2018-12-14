@@ -12,16 +12,22 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: bf8b3ab62697857a636b7550376cfa0b6d4ebecd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 964f91f412645e141ca003d511480f6f6eb438a3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269528"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343281"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení
 
 Tento článek obsahuje přehled komunikace Azure SQL Database Managed Instance a také architektura připojení vysvětluje, jak různé součásti fungovat směrovat přenos dat do Managed Instance.  
+
+Azure SQL Database Managed Instance je umístěn uvnitř virtuální sítě Azure a v podsíti vyhrazená pro Managed instance. Toto nasazení umožňuje následující scénáře: 
+- Zabezpečené privátní IP adresu.
+- Připojení k Managed Instance přímo z místní sítě.
+- Připojení Managed Instance pro odkazovaný server nebo jiné v místním úložišti.
+- Připojování k prostředkům Azure Managed Instance.
 
 ## <a name="communication-overview"></a>Přehled komunikace
 
@@ -66,12 +72,53 @@ Klienti připojit k Managed Instance pomocí názvu hostitele, který má formul
 
 Tato privátní IP adresa patří k na spravované instanci interní zatížení nástroje pro vyrovnávání (ILB), která směruje provoz do na spravované instanci brány (gs). Více spravovaných instancí může potenciálně spuštění ve stejném clusteru GW používá název hostitele Managed Instance pro přesměrování přenosu dat na správné služby stroj SQL.
 
-Nasazení a správu služeb připojení k Managed Instance pomocí [koncový bod správy](sql-database-managed-instance-management-endpoint.md) , který se mapuje na externím vyrovnáváním zatížení. Provoz se směruje do uzlů pouze v případě, že byla přijata na předdefinovanou sadu porty, které používá jediná komponentami pro správu Managed Instance. Integrované brána firewall na uzlech je nakonfigurována pro povolení provozu pouze z konkrétní rozsahy IP Microsoft. Veškerá komunikace mezi komponentami správy a rovina správy se vzájemně certifikát ověřit.
+Nasazení a správu služeb připojení k Managed Instance pomocí [koncový bod správy](#management-endpoint) , který se mapuje na externím vyrovnáváním zatížení. Provoz se směruje do uzlů pouze v případě, že byla přijata na předdefinovanou sadu porty, které používá jediná komponentami pro správu Managed Instance. Integrované brána firewall na uzlech je nakonfigurována pro povolení provozu pouze z konkrétní rozsahy IP Microsoft. Veškerá komunikace mezi komponentami správy a rovina správy se vzájemně certifikát ověřit.
+
+## <a name="management-endpoint"></a>Koncový bod správy
+
+Virtuální cluster Azure SQL Database Managed Instance obsahuje koncový bod správy, který Microsoft používá ke správě Managed Instance. Koncový bod správy je chráněný pomocí předdefinovaných brány firewall sítě certifikát úrovně a proces vzájemného ověření na úrovni aplikace. Je možné [najít ip adresu koncového bodu správy](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+
+Zdá se, že provoz pochází z veřejnou IP adresu koncového bodu správy po připojení se zahájilo Managed Instance (zálohování, protokolu auditu). Může omezit přístup k veřejné služby ze Managed Instance, tak, že nastavíte pravidla brány firewall pro povolení pouze spravované Instance IP adres. Najít mor einformation o metodě, která se dá [ověření integrované firewall Managed Instance](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+
+> [!NOTE]
+> To neplatí pro nastavení pravidla brány firewall pro služby Azure, které jsou ve stejné oblasti jako Managed Instance, Platforma Azure má optimalizace pro provoz, který prochází mezi službami, které jsou společně umístěná.
+
+## <a name="network-requirements"></a>Síťové požadavky
+
+Managed Instance můžete nasadit ve vyhrazené podsíti (podsíť Managed Instance) uvnitř virtuální sítě, který splňuje následující požadavky:
+- **Vyhrazené podsíti**: Podsíť Managed Instance nesmí obsahovat jiné cloudové služby s ním spojená, a nesmí se jednat o podsíť brány. Nebudete mít k vytvoření Managed Instance v podsíti, která obsahuje prostředky než Managed Instance a dalších prostředků nelze přidat později v podsíti.
+- **Kompatibilní se skupina zabezpečení sítě (NSG)**: Skupina zabezpečení sítě přidružená k podsíti Managed Instance musí obsahovat pravidla je znázorněno v následujících tabulkách (pravidla povinné zabezpečení příchozích dat a povinná odchozí pravidla zabezpečení) před všechna pravidla. Skupina zabezpečení sítě můžete použít plně řídit přístup ke koncovému bodu data Managed Instance pomocí filtrování provozu na portu 1433. 
+- **Tabulku kompatibilní trasy definované uživatelem (UDR)**: Podsíť Managed Instance musí mít uživatel směrovací tabulku s **0.0.0.0/0 dalšího segmentu směrování Internetu** jako povinné přiřazené uživatelem definovaná TRASA. Kromě toho můžete přidat trasu UDR této směruje provoz, který má místní rozsahy privátních IP jako cíl přes bránu virtuální sítě nebo virtuální síťové zařízení (NVA). 
+- **Volitelné vlastní DNS**: Pokud vlastní DNS je zadána ve službě virtual network, Azure rekurzivní překladač IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Další informace najdete v tématu [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). Vlastní server DNS musí být schopen překladu názvů hostitelů na následující domény a jejich subdomény: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, a *microsoftonline-p.com*. 
+- **Žádné koncové body služby**: Podsíť Managed Instance nesmí mít přiřazen koncový bod služby. Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
+- **Dostatek IP adres**: Podsíť Managed Instance musí mít minimální 16 IP adres (Doporučená minimální je 32 IP adresy). Další informace najdete v tématu [určit velikost podsítě pro Managed instance](sql-database-managed-instance-determine-size-vnet-subnet.md). Můžete nasadit spravované instance v [existující síť](sql-database-managed-instance-configure-vnet-subnet.md) po můžete nakonfigurovat k uspokojení [Managed Instance, požadavky na síť](#network-requirements), nebo vytvořte [novou síť a podsíť](sql-database-managed-instance-create-vnet-subnet.md).
+
+> [!IMPORTANT]
+> Nebude moct nasadit nové Managed Instance, pokud není kompatibilní se všemi těmito požadavky cílové podsíti. Po vytvoření Managed Instance *zásady sítě záměr* se použije v podsíti, aby se zabránilo nekompatibilních změn konfigurace sítě. Po poslední instance se odebere z podsítě *zásady sítě záměr* bude odebrán také
+
+### <a name="mandatory-inbound-security-rules"></a>Pravidla povinné zabezpečení příchozích dat 
+
+| Název       |Port                        |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+|------------|----------------------------|--------|-----------------|-----------|------|
+|Správa  |9000, 9003, 1438, 1440, 1452|TCP     |Všechny              |Všechny        |Povolit |
+|mi_subnet   |Všechny                         |Všechny     |MI PODSÍTĚ        |Všechny        |Povolit |
+|health_probe|Všechny                         |Všechny     |AzureLoadBalancer|Všechny        |Povolit |
+
+### <a name="mandatory-outbound-security-rules"></a>Povinné odchozí pravidla zabezpečení 
+
+| Název       |Port          |Protocol (Protokol)|Zdroj           |Cíl|Akce|
+|------------|--------------|--------|-----------------|-----------|------|
+|Správa  |80, 443, 12000|TCP     |Všechny              |Všechny        |Povolit |
+|mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ  |Povolit |
+
+  > [!Note]
+  > I když povinné zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000 9003, 1438, 1440, 1452 tyto porty jsou chráněné bránou firewall integrované. To [článku](sql-database-managed-instance-find-management-endpoint-ip-address.md) ukazuje, jak lze zjistit IP adresu koncového bodu správy a ověřte pravidla brány firewall. 
 
 ## <a name="next-steps"></a>Další postup
 
 - Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md)
-- Další informace o konfiguraci virtuální sítě najdete v tématu [Managed Instance konfigurace virtuální sítě](sql-database-managed-instance-vnet-configuration.md).
+- Zjistěte, jak [nakonfigurovat nové sítě VNet](sql-database-managed-instance-create-vnet-subnet.md) nebo [konfigurace stávající virtuální síť](sql-database-managed-instance-configure-vnet-subnet.md) kde můžete nasadit spravované instance.
+- [Vypočítat na velikost podsítě](sql-database-managed-instance-determine-size-vnet-subnet.md) nasazování spravovaných instancí. 
 - Pro rychlý start zjistit, jak vytvořit spravovanou instanci:
   - Z [webu Azure portal](sql-database-managed-instance-get-started.md)
   - pomocí [prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)

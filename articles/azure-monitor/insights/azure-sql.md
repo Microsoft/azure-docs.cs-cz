@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: 7c567cc70a87e7856f511112d3bff692f5af3993
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bf2cbdb57276fccd31af61f2df1b76eeba816e66
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194007"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341622"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -299,4 +299,4 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 - Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
 - [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazení dat Azure SQL.
-- [Vytvořit upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) Pokud dojde k určité událostem Azure SQL.
+- [Vytvořit upozornění](../../azure-monitor/platform/alerts-overview.md) Pokud dojde k určité událostem Azure SQL.

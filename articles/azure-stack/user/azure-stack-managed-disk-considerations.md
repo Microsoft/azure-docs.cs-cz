@@ -15,20 +15,23 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 4bd36744cc417e85f49e58f9a08d2b9006da9fe4
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 9eed4c4bd8cd6290bd2126c91bcf4e37c1b0fa0b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284025"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341944"
 ---
-# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: Rozdíly a aspekty
+# <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack spravované disky: Rozdíly a aspekty
 Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
 Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](/azure/azure-stack/azure-stack-manage-storage-accounts) přidružené k diskům virtuálních počítačů.
+
+> [!Note]  
+> Spravované disky ve službě Azure Stack je k dispozici. 1808.
   
 
-## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: spravovaného disku rozdíly
+## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: Spravovaného disku rozdíly
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
@@ -40,9 +43,13 @@ Spravované disky zjednodušují správu disků pro virtuální počítače IaaS
 |Disky Premium  |Plně podporované. |Je možné zřídit, ale bez omezení výkonu nebo záruk  |
 |Prémiové disky vstupně-výstupních operací  |Závisí na velikosti disku  |2300 IOPs na disk |
 |Propustnost disků úrovně Premium |Závisí na velikosti disku |145 MB za sekundu na disk |
-|Velikost disku  |Disk Azure typu Premium: P4 (32 GB) na P80 (32 TB)<br>Disk Azure SSD na úrovni Standard: E10 (128 GB) na E80 (32 TB)<br>Disk Azure Standard HDD: S4 (32 GB) na S80 (32 TB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GB<br>M15: 256 GB<br>M20: 512 GB<br>M30: 1024 GB |
+|Velikost disku  |Disk Azure typu Premium: P4 (32 GB) na P80 (32 TB)<br>Disk Azure SSD na úrovni Standard: E10 (128 GB) na E80 (32 TB)<br>Pevný disk Azure standardní Disk: S4 (32 GB) na S80 (32 TB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GB |
+|Kopie snímků disků|Pořízení snímku Azure připojené do spuštěného virtuálního počítače nepodporuje spravované disky|Není dosud podporován. |
 |Výkon disků analýzy |Agregace metrik a metriky pro disk podporované |Není dosud podporován. |
 |Migrace      |Poskytuje nástroj pro migraci z existující nespravované správce prostředků virtuálních počítačů Azure bez nutnosti znovu vytvořte virtuální počítač  |Není dosud podporován. |
+
+> [!Note]  
+> Spravované disky vstupně-výstupních operací a propustnosti ve službě Azure Stack je číslo zakončení místo zřízené číslo, které může vliv hardwaru a pracovní postupy spouštěné ve službě Azure Stack.
 
 
 ## <a name="metrics"></a>Metriky

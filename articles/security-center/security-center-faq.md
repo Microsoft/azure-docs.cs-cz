@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 956ffb298301aef914221a8d2e623b19191909c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2be11f97882a7c6353b214886ce6c5a3a66add89
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095359"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339106"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která vám pomůže zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti a kontroly nad zabezpečením vašich prostředků Microsoft Azure.
@@ -251,7 +251,7 @@ Zásady zabezpečení povolené ve službě monitorování a doporučení pro za
 ### <a name="who-can-modify-a-security-policy"></a>Kdo může upravit zásady zabezpečení?
 Pokud chcete upravit nějakou zásadu zabezpečení, musíte být správce zabezpečení nebo vlastníka nebo přispěvatele daného předplatného.
 
-Další informace o konfiguraci zásad zabezpečení, najdete v článku [nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md).
+Další informace o konfiguraci zásad zabezpečení, najdete v článku [nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md).
 
 ### <a name="what-is-a-security-recommendation"></a>Co je doporučeným zabezpečením?
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Pokud se identifikují potenciální ohrožení zabezpečení, vytvoří se doporučení. Doporučení vás provede procesem konfigurace potřebných ovládacího prvku. Můžete například:

@@ -1,6 +1,6 @@
 ---
 title: Použití .NET Core k dotazování služby Azure SQL Database | Dokumentace Microsoftu
-description: Toto téma vám ukáže, jak pomocí .NET Core vytvořit program, který se připojí ke službě Azure SQL Database a bude ji dotazovat s použitím příkazů jazyka Transact-SQL.
+description: V tomto tématu se dozvíte, jak pomocí .NET Core vytvořit program, který se připojuje ke službě Azure SQL Database a dotazy pomocí příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,65 +11,73 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 646b75e845e1940a87a9a2f45aecda2840a96d81
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/10/2018
+ms.openlocfilehash: 471d2b0b8d98651d4b9ef4e88df0e863715b0c88
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913066"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341775"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Rychlý start: Použití .NET Core (jazyk C#) k dotazování databáze SQL Azure
 
-Tento rychlý start ukazuje použití [.NET Core](https://www.microsoft.com/net/) v systému Windows, Linux nebo macOS k vytvoření programu v jazyce C# pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento rychlý start ukazuje, jak používat [.NET Core](https://www.microsoft.com/net/) a C# kód pro připojení k databázi Azure SQL a spuštění příkazu jazyka Transact-SQL k dotazování na data.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
+Pro účely tohoto kurzu potřebujete:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
+- A [pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače.
 
-- Nainstalované [.NET Core pro váš operační systém](https://www.microsoft.com/net/core). 
+- [.NET core pro váš operační systém](https://www.microsoft.com/net/core) nainstalované. 
 
-## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
+> [!NOTE]
+> Tento rychlý start využívá *mySampleDatabase* databáze. Pokud chcete použít jinou databázi, budete muset změnit odkazy na databázi a upravit `SELECT` v dotazu C# kódu.
+
+
+## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-#### <a name="for-adonet"></a>ADO.NET
+#### <a name="get-adonet-connection-information-optional"></a>Získání informací o připojení ADO.NET (volitelné)
 
-1. Pokračujte kliknutím na **Zobrazit databázové připojovací řetězce**.
+1. Přejděte **mySampleDatabase** stránky a v části **nastavení**vyberte **připojovací řetězce**.
 
 2. Zkontrolujte úplný připojovací řetězec **ADO.NET**.
 
-    ![Připojovací řetězec pro ADO.NET](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
+    ![Připojovací řetězec pro ADO.NET](./media/sql-database-connect-query-dotnet/adonet-connection-string2.png)
 
-> [!IMPORTANT]
-> Musíte mít nastavené pravidlo brány firewall pro veřejnou IP adresu počítače, na kterém provádíte tento kurz. Pokud jste na jiném počítači nebo máte jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí webu Azure Portal](sql-database-get-started-portal-firewall.md). 
->
+3. Kopírovat **ADO.NET** připojovací řetězec, pokud máte v úmyslu použít.
   
-## <a name="create-a-new-net-project"></a>Vytvoření nového projektu .NET
+## <a name="create-a-new-net-core-project"></a>Vytvoření nového projektu .NET Core
 
-1. Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do složky, kterou jste vytvořili, a spusťte následující příkaz:
+1. Otevřete příkazový řádek a vytvořte složku **sqltest**. Přejděte do této složky a spusťte následující příkaz.
 
-    ```
+    ```cmd
     dotnet new console
     ```
+    Tím se vytvoří nová aplikace pro soubory projektu, včetně počáteční C# souboru s kódem (**Program.cs**), konfigurační soubor XML (**sqltest.csproj**) a potřebné binární soubory.
 
-2. Otevřete soubor ***sqltest.csproj*** v oblíbeném textovém editoru a pomocí následujícího kódu přidejte System.Data.SqlClient jako závislost:
+2. V textovém editoru otevřete **sqltest.csproj** a vložte následující kód XML mezi `<Project>` značky. Tento postup přidá `System.Data.SqlClient` jako závislost.
 
     ```xml
     <ItemGroup>
-        <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
+        <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
     </ItemGroup>
     ```
 
 ## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
 
-1. Ve vývojovém prostředí nebo oblíbeném textovém editoru otevřete soubor **Program.cs**.
+1. V textovém editoru otevřete **Program.cs**.
 
-2. Nahraďte jeho obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.
+2. Nahraďte obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databáze, uživatelské jméno a heslo.
+
+> [!NOTE]
+> Abyste mohli použít připojovací řetězec ADO.NET, nahraďte 4 řádky v kódu, nastavení serveru, databáze, uživatelské jméno a heslo s dalším řádku. V řetězci nastavte své uživatelské jméno a heslo.
+>
+>    `builder.ConnectionString="<your_ado_net_connection_string>";`
 
 ```csharp
 using System;
@@ -85,11 +93,12 @@ namespace sqltest
             try 
             { 
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "your_server.database.windows.net"; 
-                builder.UserID = "your_user";            
-                builder.Password = "your_password";     
-                builder.InitialCatalog = "your_database";
 
+                builder.DataSource = "<your_server.database.windows.net>"; 
+                builder.UserID = "<your_username>";            
+                builder.Password = "<your_password>";     
+                builder.InitialCatalog = "<your_database>";
+         
                 using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
@@ -119,7 +128,8 @@ namespace sqltest
             {
                 Console.WriteLine(e.ToString());
             }
-            Console.ReadLine();
+            Console.WriteLine("\nDone. Press enter.");
+            Console.ReadLine(); 
         }
     }
 }
@@ -127,19 +137,47 @@ namespace sqltest
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. V příkazovém řádku spusťte následující příkazy:
+1. Do příkazového řádku spusťte následující příkazy.
 
-   ```csharp
+   ```cmd
    dotnet restore
    dotnet run
    ```
 
-2. Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.
+2. Ověřte, že se vrátil prvních 20 řádků.
 
+   ```text
+   Query data example:
+   =========================================
 
-## <a name="next-steps"></a>Další kroky
+   Road Frames HL Road Frame - Black, 58
+   Road Frames HL Road Frame - Red, 58
+   Helmets Sport-100 Helmet, Red
+   Helmets Sport-100 Helmet, Black
+   Socks Mountain Bike Socks, M
+   Socks Mountain Bike Socks, L
+   Helmets Sport-100 Helmet, Blue
+   Caps AWC Logo Cap
+   Jerseys Long-Sleeve Logo Jersey, S
+   Jerseys Long-Sleeve Logo Jersey, M
+   Jerseys Long-Sleeve Logo Jersey, L
+   Jerseys Long-Sleeve Logo Jersey, XL
+   Road Frames HL Road Frame - Red, 62
+   Road Frames HL Road Frame - Red, 44
+   Road Frames HL Road Frame - Red, 48
+   Road Frames HL Road Frame - Red, 52
+   Road Frames HL Road Frame - Red, 56
+   Road Frames LL Road Frame - Black, 58
+   Road Frames LL Road Frame - Black, 60
+   Road Frames LL Road Frame - Black, 62
+
+   Done. Press enter.
+   ```
+3. Stisknutím klávesy **Enter** okna aplikace okno zavřete.
+
+## <a name="next-steps"></a>Další postup
 
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
-- Informace o [připojení k databázi SQL Azure a jejím dotazování pomocí rozhraní .NET Framework a sady Visual Studio](sql-database-connect-query-dotnet-visual-studio.md)  
-- Informace o [návrhu první databáze SQL Azure pomocí aplikace SSMS](sql-database-design-first-database.md) nebo [návrhu první databáze SQL Azure pomocí .NET](sql-database-design-first-database-csharp.md)
+- Zjistěte, jak [připojení a dotazování Azure SQL database pomocí rozhraní .NET Framework a sady Visual Studio](sql-database-connect-query-dotnet-visual-studio.md).  
+- Zjistěte, jak [návrh první databáze Azure SQL pomocí SSMS](sql-database-design-first-database.md) nebo [ návrh služby Azure SQL database a její připojení pomocí C# a ADO.NET](sql-database-design-first-database-csharp.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).

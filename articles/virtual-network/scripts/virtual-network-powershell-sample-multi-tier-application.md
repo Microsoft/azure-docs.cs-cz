@@ -13,14 +13,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
-ms.openlocfilehash: 3a57827616e4722b8520dcddb64e4e67fa8c79c9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: ebc0e18ecea61705ea8cb925a25d4233bfc9a2cb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599885"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340500"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Ukázkový skript pro vytvoření sítě pro vícevrstvé aplikace
 
@@ -32,10 +32,11 @@ Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/
 
 ## <a name="sample-script"></a>Ukázkový skript
 
+<!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 --> ID podsítě je přiřazena již vytvořené virtuální síti. Konkrétně, pomocí rutiny New-AzureRmVirtualNetwork s parametrem - podsítě. Při konfiguraci podsítě pomocí rutiny New-AzureRmVirtualNetworkSubnetConfig před voláním do New-AzureRmVirtualNetwork, neuvidíte ID podsítě až po volání New-AzureRmVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky:
 
@@ -59,7 +60,7 @@ Tento skript k vytvoření skupiny prostředků, virtuální sítě a skupin zab
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Vytvoří virtuální počítače a ke každému z nich připojí síťovou kartu. Tento příkaz také určuje image virtuálního počítače, která se má použít, a přihlašovací údaje pro správu. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků a všechny prostředky, které obsahuje. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

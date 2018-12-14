@@ -1,18 +1,19 @@
 ---
-title: 'Postup konfigurace směrování (partnerského vztahu) pro ExpressRoute okruhu: Azure: classic | Dokumentace Microsoftu'
+title: 'Konfigurace partnerského vztahu pro okruh – ExpressRoute: Azure: classic | Dokumentace Microsoftu'
 description: Tento článek vás provede kroky pro vytváření a zřizování soukromého a veřejného partnerského vztahu a partnerského vztahu Microsoftu okruhu ExpressRoute. Tento článek také ukazuje, jak kontrolovat stav partnerských vztahů pro váš okruh, aktualizovat je nebo je odstranit.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/27/2018
-ms.author: cherylmc;ganesr
-ms.openlocfilehash: 6e099d0cdf659aa6ed2ccbef1381021ae55c72c2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/11/2018
+ms.author: cherylmc
+ms.custom: seodec18
+ms.openlocfilehash: fbf97c984a00d6bdd7f79c26094ae36348e00236
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261838"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342030"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Vytvoření a úprava partnerského vztahu pro okruh ExpressRoute (classic)
 > [!div class="op_single_selector"]
@@ -25,7 +26,7 @@ ms.locfileid: "51261838"
 > * [PowerShell (Classic)](expressroute-howto-routing-classic.md)
 > 
 
-Tento článek vás provede kroky k vytvoření a správě konfigurace směrování pro okruh ExpressRoute pomocí Powershellu a modelu nasazení classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení. Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (Azure privátní, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. 
+Tento článek vás provede kroky k vytvoření a správě konfigurace partnerského vztahu/směrování pro okruh ExpressRoute pomocí Powershellu a modelu nasazení classic. Dál uvedené kroky také ukazují, jak kontrolovat stav partnerských vztahů pro okruh ExpressRoute, aktualizovat je nebo je odstranit a zrušit jejich zřízení. Můžete nakonfigurovat jeden, dva nebo všechny tři partnerské vztahy (Azure privátní, veřejný Azure a Microsoft) pro okruh ExpressRoute. Partnerské vztahy můžete konfigurovat v libovolném pořadí. Musíte se ale přesvědčit, že jste vždy konfiguraci každého partnerského vztahu dokončili. 
 
 Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb, které nabízejí služby připojení vrstvy 2. Pokud používáte poskytovatele služeb, který nabízí spravované vrstvy 3 služby (obvykle IPVPN, např. MPLS), se svého poskytovatele připojení, konfiguraci a správu směrování za vás.
 
@@ -33,7 +34,7 @@ Tyto pokyny platí jenom pro okruhy vytvořené poskytovateli služeb, které na
 
 **O modelech nasazení Azure**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="configuration-prerequisites"></a>Předpoklady konfigurace
 
@@ -328,9 +329,9 @@ Tato část obsahuje pokyny, jak vytvořit, získat, aktualizovat a odstranit ko
    * Podsíť /30 pro sekundární propojení. Musí se jednat o platnou předponu veřejné IPv4 adresy, kterou vlastníte a která je registrovaná u RIR/IRR.
    * Platné ID sítě VLAN, na kterém se má partnerský vztah vytvořit. Ověřte, že žádný jiný partnerský vztah v okruhu používá stejné ID sítě VLAN.
    * Číslo AS pro partnerský vztah. Můžete použít 2bajtová i 4bajtová čísla AS.
-   * Inzerované předpony: Musíte poskytnout seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
-   * Zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, na které jsou registrované. **Volitelné**.
-   * Název registru směrování: Můžete zadat RIR/IRR, kde jsou předpony a číslo AS registrované.
+   * Inzerované předpony: Je nutné zadat seznam všech předpon, které plánujete inzerovat přes relaci protokolu BGP. Přijímají se jenom předpony veřejných IP adres. Pokud chcete odeslat sadu předpon, můžete odeslat seznam oddělený čárkami. Tyto předpony musí být v RIR/IRR zaregistrované na vás.
+   * Zákaznické číslo ASN: Pokud inzerujete předpony, které nejsou registrované na číslo AS partnerského vztahu, můžete zadat číslo AS, do kterého jsou registrované. **Volitelné**.
+   * Název registru směrování: Můžete zadat RIR / IRR, kde AS jsou registrované předpony a číslo.
    * Hodnota hash MD5, pokud se ji rozhodnete použít. **Volitelné.**
      
   Spuštěním následující rutiny můžete nakonfigurovat partnerský vztah Microsoftu pro váš okruh:

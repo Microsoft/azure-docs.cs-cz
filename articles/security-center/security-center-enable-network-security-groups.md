@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2ac1baea3c4ef677f9c0927a038e15828683b851
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f10365f4acf62ba4719e89932f18433e70925ebf
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308745"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341758"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Povolit skupiny zabezpečení sítě v Azure Security Center
 Azure Security Center doporučí, abyste povolili skupinu zabezpečení sítě (NSG), pokud ještě není povolené. Skupiny Nsg obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz do vašich instancí virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho provoz do konkrétního virtuálního počítače je možné omezit další tím, že přidružíte skupinu NSG přímo k tomuto virtuálnímu počítači. Další informace najdete tady [co je skupina zabezpečení sítě (NSG)?](../virtual-network/security-overview.md)
 
-Pokud nemáte povolené skupiny zabezpečení sítě, Security Center nabízí dvě doporučení pro vás: Povolit skupiny zabezpečení sítě pro podsítě a povolení skupin zabezpečení sítě na virtuálních počítačích. Rozhodnete, jaké úroveň, podsíť nebo použití skupin zabezpečení sítě virtuálních počítačů.
+Pokud nemáte skupiny zabezpečení sítě povolené, Security Center nabízí dvě doporučení pro vás: Povolte skupiny zabezpečení sítě pro podsítě a povolení skupin zabezpečení sítě na virtuálních počítačích. Rozhodnete, jaké úroveň, podsíť nebo použití skupin zabezpečení sítě virtuálních počítačů.
 
 > [!NOTE]
 > Tento dokument vám tuto službu představí formou ukázkového nasazení.  Není to podrobný průvodce.
@@ -53,7 +53,7 @@ Tento článek vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

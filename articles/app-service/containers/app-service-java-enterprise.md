@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: e473326e9f337bfb2fd1202bc3b76e468dd6015e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 34506266ed4a2103f0d3bd7a8014b9a038b25491
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315073"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338035"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
 
-Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace pro platformu Java Enterprise (JEE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [Wildfly](http://wildfly.org/) aplikačního serveru.
+Azure App Service v Linuxu umožňuje vývojářům vytvářet, nasazovat a škálovat aplikace pro platformu Java Enterprise (JEE) na plně spravované služby založené na Linuxu v jazyce Java.  Základní běhové prostředí Java Enterprise je open source [Wildfly](https://wildfly.org/) aplikačního serveru.
 
 Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře Java Enterprise, kteří používají ve službě App Service pro Linux. Pokud jste nikdy nasadili aplikace Java pomocí Azure App Service pro Linux, by se měl Dokončit [Java quickstart](quickstart-java.md) první. Dotazy týkající se App Service pro Linux, které nejsou specifické pro jazyk Java Enterprise v odpovědi [Příručka pro vývojáře Java](app-service-linux-java.md) a [nejčastější dotazy týkající se App Service Linux](app-service-linux-faq.md).
 
@@ -115,5 +115,5 @@ Ve výchozím nastavení jsou povolené webové sokety ve službě App Service. 
 App Service poskytuje nástroje, které pomáhají při řešení problémů s vaší aplikací.
 
 -   Zapnutí protokolování kliknutím **diagnostické protokoly** v levém navigačním podokně. Klikněte na tlačítko **systému souborů** nastavit období kvótu a uchování vašeho úložiště a uložte provedené změny. Můžete najít v části tyto protokoly `/home/LogFiles/`.
--   [Pomocí SSH se připojte k instanci aplikace](/app-service-linux-ssh-support) si chcete zobrazit protokoly pro spouštění aplikací.
+-   [Pomocí SSH se připojte k instanci aplikace](app-service-linux-ssh-support.md) si chcete zobrazit protokoly pro spouštění aplikací.
 -   Kontrola diagnostické protokoly **diagnostické protokoly** panelu portálu nebo pomocí příkazového řádku Azure: ` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `

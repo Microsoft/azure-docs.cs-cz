@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: 7ce11b3e54a8770a2b3d53e335afc57f52d3d14e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425305"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338205"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 
@@ -41,7 +41,7 @@ Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="application-id-client-id"></a>id aplikace (id klienta)
 
-Jedinečný identifikátor služby Azure AD problémů, které registraci aplikace, který identifikuje konkrétní aplikaci a přidružené konfigurace. Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při ověřování požadavků a je do knihoven ověřování k dispozici v době vývoje. Id aplikace (id klienta) není tajným kódem. 
+Jedinečný identifikátor služby Azure AD problémů, které registraci aplikace, který identifikuje konkrétní aplikaci a přidružené konfigurace. Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při ověřování požadavků a je do knihoven ověřování k dispozici v době vývoje. Id aplikace (id klienta) není tajným kódem.
 
 ## <a name="application-manifest"></a>manifest aplikace
 
@@ -102,7 +102,7 @@ Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="client-application"></a>Klientská aplikace
 
-Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], aplikace, která vytvoří požadavky na chráněné prostředky jménem [vlastníka prostředku](#resource-owner). Termín "client" neznamená jakékoli vlastnosti implementace konkrétní hardware (například, jestli aplikace provádí na serveru, desktopové nebo jiná zařízení). 
+Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], aplikace, která vytvoří požadavky na chráněné prostředky jménem [vlastníka prostředku](#resource-owner). Termín "client" neznamená jakékoli vlastnosti implementace konkrétní hardware (například, jestli aplikace provádí na serveru, desktopové nebo jiná zařízení).
 
 Klientská aplikace požaduje [autorizace](#authorization) od vlastníka prostředku se účastnit [udělení autorizace OAuth2](#authorization-grant) tok a získávají přístup k rozhraní API/datům jménem vlastníka prostředku. Rozhraní autorizace OAuth2 [definuje dva typy klientů][OAuth2-Client-Types], "důvěrné informace" a "public", podle klienta schopnost zachovat utajení svých přihlašovacích údajů. Aplikace může implementovat [webový klient (důvěrné)](#web-client) na webovém serveru, která se spouští [nativního klienta (public)](#native-client) nainstalované v zařízení, nebo [na základě uživatelského agenta klienta (public)](#user-agent-based-client)která se spouští v prohlížeči zařízení.
 
@@ -118,7 +118,7 @@ Zobrazit [rozhraní pro udělování souhlasu](consent-framework.md) Další inf
 
 Zobrazit [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
-## <a name="microsoft-identity-platform"></a>Platforma identit Microsoft
+## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
 Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně funkční platforma, která se skládá z ověřovací služba, knihovny, registrace aplikace a konfiguraci, dokumentaci pro vývojáře, ukázky kódu a další obsah pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Zobrazit [platforma identit Microsoft o](about-microsoft-identity-platform.md) další podrobnosti.
 
@@ -151,7 +151,7 @@ Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], dokáže udělen�
 
 Podle definice [Framework autorizace OAuth2][OAuth2-Role-Def], server, že hostitelé chráněné zdroje, dokáže přijímat a reagovat na požadavky na chráněné prostředky podle [klienta aplikace](#client-application) , které obsahují [přístupový token](#access-token). Označované také jako chráněný prostředek serveru nebo aplikace prostředků.
 
-Server prostředků zpřístupňuje rozhraní API a vynucuje přístup k jeho chráněným prostředkům prostřednictvím [obory](#scopes) a [role](#roles), pomocí rozhraní autorizace OAuth 2.0. Mezi příklady patří Azure AD Graph API, která poskytuje přístup k datům tenanta Azure AD a rozhraní API Office 365, které poskytují přístup k datům, jako jsou e-mailu a kalendáře. Obě tyto jsou také zpřístupněno [Microsoft Graph API][Microsoft-Graph]. 
+Server prostředků zpřístupňuje rozhraní API a vynucuje přístup k jeho chráněným prostředkům prostřednictvím [obory](#scopes) a [role](#roles), pomocí rozhraní autorizace OAuth 2.0. Mezi příklady patří Azure AD Graph API, která poskytuje přístup k datům tenanta Azure AD a rozhraní API Office 365, které poskytují přístup k datům, jako jsou e-mailu a kalendáře. Obě tyto jsou také zpřístupněno [Microsoft Graph API][Microsoft-Graph].
 
 Stejně jako klientská aplikace pokládáme stav konfigurace identity aplikace prostředků prostřednictvím [registrace](#application-registration) v tenantovi Azure AD, zadejte do něj aplikaci a instanční objekt. Některá poskytovaný společností Microsoft rozhraní API, jako je například Azure AD Graph API, jste se zaregistrovali před instančních objektů k dispozici ve všech tenantech během zřizování.
 
@@ -191,7 +191,7 @@ Funkce přihlášení aplikace se obvykle používá k implementaci jednotného 
 
 Přidružený proces unauthenticating koncového uživatele, odpojení stavu uživatele [klientská aplikace](#client-application) relace během [přihlášení](#sign-in)
 
-## <a name="tenant"></a>tenanta
+## <a name="tenant"></a>tenant
 
 Instance adresáře služby Azure AD se označuje jako klient služby Azure AD. Poskytuje několik funkcí, včetně:
 

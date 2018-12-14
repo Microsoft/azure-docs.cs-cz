@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3a7701dacece515bb24567ff6117c183bfe2b526
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d3dfcb74852f90615af90f9eab3711b1b235c53e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643065"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341384"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílací/fan v scénář v Durable Functions – cloudové zálohování příklad
 
@@ -55,7 +55,7 @@ Tady je kód, který implementuje funkce orchestrátoru:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -67,9 +67,10 @@ Tato funkce nástroje orchestrator v podstatě provede následující akce:
 4. Čeká na dokončení všech nahrávání.
 5. Vrátí součet celkový počet bajtů, které byly odeslány do Azure Blob Storage.
 
-Všimněte si, že `await Task.WhenAll(tasks);` (C#) a `yield context.df.Task.all(tasks);` řádku (JS). Všechna volání `E2_CopyFileToBlob` funkce byly *není* očekáváno. Je to záměr, aby se mohly běžet paralelně. Když jsme předat toto pole úloh určených k `Task.WhenAll`, jsme vrátit úlohu, která se nikdy nedokončí *až do dokončení všech operací kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET, není to pro vás nová. Rozdíl je, že tyto úlohy mohou běžet na několika virtuálních počítačů současně, a rozšíření Durable Functions se zajistí, že začátku do konce provádění odolné vůči recyklace procesů.
+Všimněte si, že `await Task.WhenAll(tasks);` (C#) a `yield context.df.Task.all(tasks);` řádky (JavaScript). Všechny jednotlivých volání `E2_CopyFileToBlob` funkce byly *není* očekáváno. Je to záměr, aby se mohly běžet paralelně. Když jsme předat toto pole úloh určených k `Task.WhenAll` (C#) nebo `context.df.Task.all` (JavaScript), jsme vrátit úlohu, která se nikdy nedokončí *až do dokončení všech operací kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET nebo [ `Promise.all` ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) v jazyce JavaScript, není to pro vás nová. Rozdíl je, že tyto úlohy mohou běžet na několika virtuálních počítačů současně, a rozšíření Durable Functions se zajistí, že začátku do konce provádění odolné vůči recyklace procesů.
 
-Úlohy jsou velmi podobný koncept JavaScript příslibů. Ale `Promise.all` má několik rozdílů z `Task.WhenAll`. Koncept `Task.WhenAll` se přenáší přes jako součást `durable-functions` modul JavaScript a je určena výhradně pro ho.
+> [!NOTE]
+> I když se úkoly jsou koncepčně podobné příslibů JavaScriptu, funkcí nástroje orchestrator používejte `context.df.Task.all` a `context.df.Task.any` místo `Promise.all` a `Promise.race` ke správě paralelizace úloh.
 
 Po čekání na z `Task.WhenAll` (nebo získávání z `context.df.Task.all`), víme, že všechna volání funkce dokončili a vracet hodnoty zpět na nás. Každé volání `E2_CopyFileToBlob` vrátí počet bajtů nahráli, výpočet součtu počet celkový počet bajtů je otázkou přidání všech projektů společně návratové hodnoty.
 
@@ -85,7 +86,7 @@ A tady je implementace:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -104,7 +105,7 @@ Implementace jazyka C# je také poměrně jednoduchý. To se stane, že někter�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 Javascriptovou implementaci nemá přístup k `Binder` funkce Azure Functions, takže [sadu SDK služby Azure Storage pro uzel](https://github.com/Azure/azure-storage-node) jeho probíhá.
 

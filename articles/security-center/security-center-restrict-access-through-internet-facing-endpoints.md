@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 487b9d8d02909913f251ae7547d75669fa90f8d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a1677e2c5518fec4412adb87cd058571bd435dd4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313296"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338479"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center
 Azure Security Center vám doporučí omezení přístupu prostřednictvím internetových koncových bodů, pokud žádné skupiny zabezpečení sítě (Nsg) obsahuje jeden nebo více příchozí pravidla, která umožňují přístup z "libovolné" zdrojové IP adresy. Otevírání přístup k "žádný" může umožnit útočníkům získat přístup k vašim prostředkům. Security Center vám doporučí, abyste upravili tato příchozích pravidel pro omezení přístupu k zdrojové IP adresy, které skutečně potřebují mít přístup.
@@ -60,7 +60,7 @@ Tento článek vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak se konfigurují zásady zabezpečení pro vaše předplatné Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak se konfigurují zásady zabezpečení pro vaše předplatné Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2827461ee78be8d8976ec23e59d489213eb94e31
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0bbf67f728f7090c89d379f7b63474788d70a46c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316017"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338596"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení v Azure Security Center
 Tento článek pomáhá posílení stavu zabezpečení. Ujistěte se, že je tak vysoké jako možné a monitorování dodržování předpisů se zásadami zabezpečení vašich prostředků pomocí funkce sledování v Azure Security Center.
@@ -27,7 +27,7 @@ Tento článek pomáhá posílení stavu zabezpečení. Ujistěte se, že je tak
 ## <a name="how-do-you-strengthen-your-security-posture"></a>Jak je posílení stavu zabezpečení?
 Pod pojmem sledování si často představujeme pozorování a čekání, až se stane nějaká událost, abychom na situaci reagovali. Posílení stavu zabezpečení odkazuje na používání proaktivní strategie, kdy se auditují vaše prostředky a identifikují systémy, které nesplňují organizační standardy nebo osvědčené postupy.
 
-Po povolení [zásad zabezpečení](security-center-azure-policy.md) pro prostředky předplatného služba Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. Získání informací o konfiguraci virtuálních počítačů a počítačů, jako je stav aktualizace zabezpečení nebo konfigurace operačního systému, může trvat hodinu i déle v závislosti na počtu virtuálních počítačů a počítačů, na kterých máte nainstalovaného agenta. Můžete zobrazit úplný seznam problémů a způsoby, jak posílení zabezpečení sítě a opravovat rizika **doporučení** dlaždici.
+Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného služba Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě. Získání informací o konfiguraci virtuálních počítačů a počítačů, jako je stav aktualizace zabezpečení nebo konfigurace operačního systému, může trvat hodinu i déle v závislosti na počtu virtuálních počítačů a počítačů, na kterých máte nainstalovaného agenta. Můžete zobrazit úplný seznam problémů a způsoby, jak posílení zabezpečení sítě a opravovat rizika **doporučení** dlaždici.
 
 Můžete zobrazit stav zabezpečení svých prostředků a všechny problémy na typ prostředku:
 
@@ -49,8 +49,8 @@ Další informace o tom, jak používat doporučení, najdete v článku [Implem
 ## <a name="see-also"></a>Další informace najdete v tématech
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
-* [Časté otázky k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak konfigurovat nastavení zabezpečení ve službě Azure Security Center.
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy o použití této služby.
+* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

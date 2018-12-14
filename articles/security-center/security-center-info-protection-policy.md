@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: e3dfbc4fc4d7ed40ebac7de6fe78398b13eafd58
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b24e10abd7c0d4dd5a20f8f85c340de03dae696a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316544"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343815"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center (Preview)
  
@@ -86,7 +86,7 @@ V tomto článku jste se dozvěděli o definování zásady SQL Information Prot
 Další informace o zabezpečení zásady a zabezpečení dat ve službě Azure Security Center najdete v následujících článcích:
  
 - [Přehled zásad zabezpečení](security-center-policies-overview.md): Získejte přehled o zásad zabezpečení ve službě Security Center
-- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků
+- [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Další informace o konfiguraci zásad zabezpečení pro vaše předplatná Azure a skupiny prostředků
 - [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md): Zjistěte, jak se spravuje Security Center a chrání data
 
 

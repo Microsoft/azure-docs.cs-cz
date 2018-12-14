@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 558bf0eb6ab4abb4ad16910ebe36fdb7c1e19374
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7f66c87322aadafaa7167dff4190de6d08e5d18d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310925"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338409"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 
@@ -382,4 +382,4 @@ Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následuj�
 
 * [Jak používat dvojče zařízení](iot-hub-node-node-twin-getstarted.md)
 * [Jak používat vlastnosti dvojčat zařízení](tutorial-device-twins.md)
-* [Správa zařízení pomocí sady Azure IoT Toolkit pro VS Code](iot-hub-device-management-iot-toolkit.md)
+* [Správa zařízení pomocí sady Azure IoT Hub Toolkit pro VS Code](iot-hub-device-management-iot-toolkit.md)

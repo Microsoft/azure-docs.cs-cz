@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b5c11517209b9dfea8a28ce09084abd76d789d78
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bb427575d7cff69f0db778c5eb0e0bdf0671d8dd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270939"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343274"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -197,7 +197,7 @@ Po vytvoření upozornění je zobrazeno v **výstrahy** část **monitorování
 ## <a name="next-steps"></a>Další postup
 - Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy pro správu problémů](../../service-health/service-health-alert-webhook-guide.md).
 - Další informace o [služby oznámení o stavu](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
-- Další informace o [rychlosti oznámení](../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md).
+- Další informace o [rychlosti oznámení](../../azure-monitor/platform/alerts-rate-limiting.md).
 - Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Získat [přehled upozornění protokolu aktivit](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)a zjistěte, jak dostávat upozornění. 
+- Získat [přehled upozornění protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a zjistěte, jak dostávat upozornění. 
 - Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md).

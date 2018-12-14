@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: e94b9e6d39a8a2694658a4231c54a027523af10c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 57dd6fc822e0285b33368987d2af7c690d4f7786
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889238"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337814"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>U služeb virtual networks a téměř 100 % kompatibilitou pomocí SQL Database Managed Instance
 
@@ -47,7 +47,7 @@ Azure SQL Database Managed Instance jsou k dispozici nejlepší funkce, které j
 | --- | --- |
 |Žádný hardware, nákup a správu <br>Není potřeba Správa režie pro správu základní infrastruktury <br>Rychlé zřizování a škálování služby <br>Automatické použití dílčích oprav a verze upgradu <br>Integrace s dalšími službami PaaS dat |99,99 % smlouva SLA o provozuschopnosti  <br>Součástí [vysoké dostupnosti](sql-database-high-availability.md) <br>Data chráněná [automatické zálohování](sql-database-automated-backups.md) <br>Období zákazník možnost konfigurace uchovávání záloh <br>Uživatelem iniciované [zálohy](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Bod v čase obnovení databáze](sql-database-recovery-using-backups.md#point-in-time-restore) funkce |
 |**Zabezpečení a dodržování předpisů** | **Správa**|
-|Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-vnet-configuration.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD přihlášení</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
+|Izolované prostředí ([integrace virtuální sítě](sql-database-managed-instance-connectivity-architecture.md), jednoho tenanta služby, vyhrazené výpočetní prostředky a úložiště) <br>[Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Ověřování Azure AD](sql-database-aad-authentication.md), jednotné přihlašování – podpora <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD přihlášení</a> (**ve verzi public preview**) <br>Dodržuje standardy pro dodržování předpisů stejně jako Azure SQL database <br>[Auditování SQL](sql-database-managed-instance-auditing.md) <br>[Detekce hrozeb](sql-database-managed-instance-threat-detection.md) |Rozhraní API Azure Resource Manageru pro automatizaci služby zřizování a škálování <br>Azure portal funkci pro ruční službu zřizování a škálování <br>Data Migration Service
 
 Klíčové funkce Managed Instance jsou uvedeny v následující tabulce:
 
@@ -83,8 +83,8 @@ Další informace o rozdílech mezi generacemi hardwaru v [omezení prostředků
 
 Managed Instance je k dispozici ve dvou úrovních služeb:
 
-- **Obecné účely**: určená pro aplikace s typické výkon a latenci vstupně-výstupních operací.
-- **Důležité obchodní informace**: určená pro aplikace s nízkou latenci vstupně-výstupní operace a minimální dopad základní údržbových operací u zatížení.
+- **Obecné účely**: Je určená pro aplikace s typické výkon a latenci vstupně-výstupních operací.
+- **Pro důležité obchodní informace**: Je určená pro aplikace s nízkou latenci vstupně-výstupní operace a minimální dopad základní údržbových operací u zatížení.
 
 Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyberte velikost úložiště a výpočetní kapacitu. Další informace o architektura pro vysokou dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
 
@@ -122,15 +122,15 @@ Azure SQL Database Managed Instance kombinuje rozšířené funkce zabezpečení
 
 Managed Instance poskytuje dodatečné zabezpečení izolaci z jiných tenantů v cloudu Azure. Izolace zabezpečení zahrnuje:
 
-- [Implementace nativní virtuální sítě](sql-database-managed-instance-vnet-configuration.md) a připojení k vaší místní prostředí pomocí Azure Express Route nebo VPN Gateway
-- Koncový bod SQL je k dispozici pouze prostřednictvím privátní IP adresy, což bezpečné připojení z Azure privátní nebo hybridní sítě
-- Jedním tenantem pomocí vyhrazené základní infrastruktura (výpočetní prostředky, úložiště)
+- [Implementace nativní virtuální sítě](sql-database-managed-instance-connectivity-architecture.md) a připojení k vaší místní prostředí pomocí Azure Express Route nebo VPN Gateway.
+- Koncový bod SQL se zobrazují jen prostřednictvím privátní IP adresy, což bezpečné připojení z Azure privátní nebo hybridní sítě.
+- Jedním tenantem pomocí vyhrazené základní infrastruktura (výpočetní prostředky, úložiště).
 
 Následující diagram popisuje různé možnosti připojení pro vaše aplikace:
 
 ![Vysoká dostupnost](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
-Další podrobnosti o integrace virtuální sítě a sítě vynucení zásad na úrovni podsítě, najdete v článku [konfigurace virtuální sítě pro Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md) a [připojení aplikace ke službě Azure SQL Database Spravovaná Instance](sql-database-managed-instance-connect-app.md).
+Další podrobnosti o integrace virtuální sítě a sítě vynucení zásad na úrovni podsítě, najdete v článku [architekturu virtuální sítě pro Azure SQL Database Managed Instance](sql-database-managed-instance-connectivity-architecture.md) a [připojení aplikace ke službě Azure SQL Database Spravovaná Instance](sql-database-managed-instance-connect-app.md).
 
 > [!IMPORTANT]
 > Umístíte více spravované instance ve stejné podsíti, bez ohledu na to, který povoluje vaše požadavky na zabezpečení, jako, který vám přinese další výhody. Tyto instance ve stejné podsíti, se výrazně zjednodušit údržbu síťové infrastruktury a snížit čas, protože doba trvání dlouhé zřizování je spojen s náklady na nasazení první spravované instance v podsíti zřízení instance.
@@ -207,7 +207,7 @@ Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená
 
 - Vysoká dostupnost je součástí a předem nakonfigurované pomocí technologie podobný [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 - Automatizované zálohování a bodu v čase. Zákazník může iniciovat `copy-only` zálohy, které nejsou v konfliktu s řetězec automatického zálohování.
-- Managed Instance nepovoluje zadání úplné fyzické cesty, takže všechny odpovídající scénáře a jinak není podporován: obnovení databáze nepodporuje se přesun, vytvořit DB neumožňuje fyzické cesty, BULK INSERT funguje s objekty BLOB Azure pouze atd.
+- Managed Instance nepovoluje zadání úplné fyzické cesty, takže všechny odpovídající scénáře podporovat jinak: OBNOVENÍ databáze nepodporuje se přesun, vytvořit DB neumožňuje fyzické cesty, BULK INSERT funguje s objekty BLOB Azure pouze atd.
 - Managed Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudové alternativu k ověřování Windows.
 - Spravovaná Instance automaticky spravuje skupiny souborů XTP a soubory pro databáze, které obsahují objekty OLTP v paměti
 - Podporuje spravovanou instanci SQL Server Integration Services (SSIS) a můžete hostitele katalogu služby SSIS (SSISDB), která ukládá balíčků služby SSIS, ale jsou prováděna na spravované prostředí Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF), najdete v článku [Create Prostředí Azure-SSIS IR ve službě ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Porovnání funkcí služby SSIS v SQL Database a Managed Instance, najdete v článku [logický server porovnání SQL Database a Managed Instance](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
@@ -234,7 +234,7 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 
 - Zjistěte, jak vytvořit první Managed Instance, najdete v článku [příručky rychlý Start](sql-database-managed-instance-get-started.md).
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).
-- Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-vnet-configuration.md).
+- Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-connectivity-architecture.md).
 - Rychlý start, která vytváří Managed Instance a obnoví databázi ze zálohy, naleznete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
 - Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
 - Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)

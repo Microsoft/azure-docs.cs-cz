@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 0338ffa13d1b141bb40deaf43fd04fe37bfaf5d2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252089"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338579"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -291,7 +291,7 @@ Některé z informací, které můžete chtít získat po plně je nakonfigurova
     ![Distribuce virtuální sítě připraveném řídicím panelu](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Virtuální síťové topologie ukazuje na horním pásu karet pro výběr parametrů, jako je virtuální sítě (přenos mezi virtuálními sítěmi virtuální síť připojení/aktivní nebo neaktivní), externí připojení, aktivní toky a škodlivé toky ve virtuální síti.
-- Můžete filtrovat podle předplatných, pracovní prostory, resouece skupiny a časový interval virtuální síťové topologie. Další filtry, které vám pomůžou pochopit tok jsou: Tok typ (mezi virtuálními sítěmi, IntraVNET atd.), směr toku (vstupní, výstupní), stav toku (povolené, Uzavřeno) virtuální sítě (cílové a připojeno), typ připojení (partnerského vztahu nebo brány - P2S a S2S) a skupiny zabezpečení sítě. Tyto filtry použijte a zaměřte se na virtuální sítě, které chcete prozkoumat podrobněji.
+- Můžete filtrovat podle předplatných, pracovní prostory, skupiny prostředků a časový interval virtuální síťové topologie. Další filtry, které vám pomůžou pochopit tok jsou: Tok typ (mezi virtuálními sítěmi, IntraVNET atd.), směr toku (vstupní, výstupní), stav toku (povolené, Uzavřeno) virtuální sítě (cílové a připojeno), typ připojení (partnerského vztahu nebo brány - P2S a S2S) a skupiny zabezpečení sítě. Tyto filtry použijte a zaměřte se na virtuální sítě, které chcete prozkoumat podrobněji.
 - Virtuální síťové topologie znázorňuje distribuce provozu do virtuální sítě s ohledem na toků (povolené nebo blokované/příchozí/odchozí/Benign/škodlivé), aplikační protokol a skupin zabezpečení sítě, například:
 
     ![Virtuální síťové topologie, která ukazuje podrobnosti o distribuci a tok provozu](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2018
+ms.date: 12/9/2018
 ms.author: rkarlin
-ms.openlocfilehash: f46837751901015fd80d3ecc7a620878cadb3f12
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317870"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343866"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrana služby App Service pomocí Azure Security Center
 Tento článek vám pomůže používat Azure Security Center k monitorování a chránit vaše aplikace běžící na App Service.
 
-App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru bez nutnosti spravovat infrastrukturu. App Service nabízí automatické škálování a vysoká dostupnost, podporují jak Windows a Linuxem, tak i automatizované nasazení z Githubu, Visual Studio Team Services nebo v libovolném adresáři Gitu. 
+App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru bez nutnosti spravovat infrastrukturu. App Service nabízí automatické škálování a vysoká dostupnost, podporují jak Windows a Linuxem, tak i automatizované nasazení z Githubu, službě Azure DevOps nebo v libovolném adresáři Gitu. 
 
 Chyby ve webových aplikacích zneužívají útočníci, často, protože mají běžné a dynamického rozhraní pro téměř každé organizaci na Internetu. Požadavky na aplikace běžící na App Service prochází několika Gateway nasazené v datových centrech Azure po celém světě, zodpovědná za směrování každý požadavek jeho příslušné aplikace. 
 
@@ -34,7 +34,7 @@ Security Center bude využívat škálovatelnosti cloudu k identifikaci útoků 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K monitorování a zabezpečení vaší služby App Service, budete muset mít plán služby App Service, která souvisí s vyhrazených počítačů. Tyto plány jsou: Basic, Standard, Premium, izolované nebo Linux. Azure Security Center nepodporuje plány Free, Shared ani spotřeby. Další informace najdete v tématu [plány služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+K monitorování a zabezpečení vaší služby App Service, budete muset mít plán služby App Service, která souvisí s vyhrazených počítačů. Tyto plány jsou: Basic, Standard, Premium a izolované nebo Linux. Azure Security Center nepodporuje plány Free, Shared ani spotřeby. Další informace najdete v tématu [plány služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 ## <a name="security-center-protection"></a>Security Center ochrany
 
@@ -63,8 +63,8 @@ Chcete-li zakázat monitorování a doporučení pro službu App Service, opakuj
 ## <a name="see-also"></a>Další informace najdete v tématech
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
-* [Časté otázky k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak konfigurovat nastavení zabezpečení ve službě Azure Security Center.
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat a zpracovávat výstrahy zabezpečení.
+* [Monitorování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak monitorovat stav partnerských řešení.
+* [Nejčastější dotazy k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy o použití této služby.
+* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

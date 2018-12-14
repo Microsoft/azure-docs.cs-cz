@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7bc9341d7e078b0ae69cc9a734c02f257df6d96a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: beb6650125bdf7526b8167ba0f076b079e4e84a8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643352"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342863"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Lidská interakce v Durable Functions – Ukázka ověření telefonu
 
@@ -45,8 +45,8 @@ Tento článek vás provede následující funkce v ukázkové aplikaci:
 * **E4_SendSmsChallenge**
 
 Následující části popisují konfiguraci a kód, který se používají pro skriptovací C# a JavaScript. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
- 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace ověření SMS (Visual Studio Code a Azure portal ukázkový kód) 
+
+## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace ověření SMS (Visual Studio Code a Azure portal ukázkový kód)
 
 **E4_SmsPhoneVerification** funkce používá standardní *function.json* pro funkce nástroje orchestrator.
 
@@ -58,7 +58,7 @@ Tady je kód, který implementuje funkce:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
@@ -72,7 +72,7 @@ Po zahájení této funkce orchestrátoru provede následující akce:
 Uživatel obdrží zprávu SMS s čtyřmístný kód. Mají 90 sekund se má odeslat zpět do instance funkce nástroje orchestrator pro dokončení procesu ověření, že stejný kód 4 číslice. Pokud odesílání chybný kód, vývojáři získají další tři pokusí získat přímo (v rámci stejné 90sekundové okno).
 
 > [!NOTE]
-> Nemusí být zřejmé v první, ale tento orchestrator funkce je zcela deterministický. Je to proto, `CurrentUtcDateTime` vlastnost se používá k výpočtu čas vypršení platnosti časovač a tato vlastnost vrací stejnou hodnotu na každé opakování v tuto chvíli v kódu produktu orchestrator. To je důležité zajistit, aby stejné `winner` výsledkem každého opakovaná volání `Task.WhenAny`.
+> Nemusí být zřejmé v první, ale tento orchestrator funkce je zcela deterministický. Je to proto, `CurrentUtcDateTime` (.NET) a `currentUtcDateTime` vlastnosti (JavaScript) slouží k výpočtu čas vypršení platnosti časovač a tyto vlastnosti vrátí stejnou hodnotu na každé opakování v tuto chvíli v kódu produktu orchestrator. To je důležité zajistit, aby stejné `winner` výsledkem každého opakovaná volání `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript).
 
 > [!WARNING]
 > Je důležité [zrušení časovače](durable-functions-timers.md) Pokud už nepotřebujete jim vypršení platnosti, stejně jako v příkladu výše, když je přijata odpověď na výzvu.
@@ -89,7 +89,7 @@ A tady je kód, který generuje kód 4 číslice výzvy a odešle zprávu SMS:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
@@ -106,6 +106,7 @@ Content-Type: application/json
 
 "+1425XXXXXXX"
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 695
@@ -115,12 +116,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 {"id":"741c65651d4c40cea29acdd5bb47baf1","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
-   > [!NOTE]
-   > V současné době JavaScript Orchestrace starter funkce nemohou vracet instanci správy identifikátorů URI. Tato funkce bude přidána v novější verzi.
-
 Funkce orchestrátoru přijímá zadané telefonní číslo a okamžitě ji odešle zpráva SMS s náhodně generované 4 číslice ověřovací kód &mdash; například *2168*. Funkce potom odpověď 90 sekund čeká.
 
-Chcete-li odpovědět kódem, můžete použít `RaiseEventAsync` uvnitř jiného funkci nebo volání **sendEventUrl** HTTP POST webhooku odkazuje v odpovědi 202 výše, nahrazení `{eventName}` s názvem události, `SmsChallengeResponse`:
+Chcete-li odpovědět kódem, můžete použít [ `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) uvnitř jiného funkci nebo volání **sendEventUrl** HTTP POST webhooku odkazuje v odpovědi 202 výše , nahrazení `{eventName}` s názvem události `SmsChallengeResponse`:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -135,6 +133,7 @@ Pokud odešlete to předtím, než čas vyprší, dokončení orchestraci a `out
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 144

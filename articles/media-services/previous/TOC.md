@@ -177,8 +177,8 @@
 ### [Zpracování pomocí Content Moderatoru](media-services-content-moderation.md)
 
 ## [Konfigurace telemetrie](media-services-telemetry-overview.md)
-###[.NET](media-services-dotnet-telemetry.md)
-###[REST](media-services-rest-telemetry.md)
+### [.NET](media-services-dotnet-telemetry.md)
+### [REST](media-services-rest-telemetry.md)
 
 ## Měřítko
 ### [Zpracování médií](media-services-scale-media-processing-overview.md)

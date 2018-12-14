@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98380cc5b9daff314283ac4e45e5edf7b5601e1b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: fefbdffdeb3db86447038a3b3d4d24e8c7cd3803
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642295"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340432"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externího událostí v Durable Functions (Azure Functions)
 
@@ -25,7 +25,7 @@ Funkce nástroje Orchestrator mají možnost počkat a naslouchat událostem ext
 
 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) metoda umožňuje funkce orchestrátoru asynchronně čekat a naslouchat vnější události. Deklaruje naslouchání funkce orchestrátoru *název* události a *tvar dat.* očekává příjem.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -90,7 +90,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -133,7 +133,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,15 +155,17 @@ module.exports = df.orchestrator(function*(context) {
 [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) po neomezenou dobu čeká na vstup.  Aplikace function app může být bezpečně uvolněna při čekání. Pokud události dorazí pro tuto instanci Orchestrace, se probudí, automaticky a okamžitě zpracovává událost.
 
 > [!NOTE]
-> Pokud vaše aplikace function app používá, je plán Consumption, žádné poplatky se účtují, když funkce orchestrátoru je čekání na úlohu z `WaitForExternalEvent`, bez ohledu na to, jak dlouho čekat.
+> Pokud vaše aplikace function app používá, je plán Consumption, žádné poplatky se účtují, když funkce orchestrátoru je čekání na úlohu z `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` (JavaScript), bez ohledu na to, jak dlouho čekat.
 
 V rozhraní .NET, pokud se datová část události nejde převést na očekávaný typ. `T`, je vyvolána výjimka.
 
 ## <a name="send-events"></a>Odesílání událostí
 
-[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy odesílá události, která `WaitForExternalEvent` čeká.  `RaiseEventAsync` Přijímá metodu *eventName* a *eventData* jako parametry. Data události musí být serializovatelný JSON.
+[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy odesílá události, která `WaitForExternalEvent` (.NET) nebo `waitForExternalEvent` čeká (JavaScript).  `RaiseEventAsync` Přijímá metodu *eventName* a *eventData* jako parametry. Data události musí být serializovatelný JSON.
 
 Níže je příklad fronty aktivuje funkce, která odesílá událost "Schválení" na instanci funkce nástroje orchestrator. ID instance Orchestrace pochází z těla zprávy fronty.
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -175,38 +177,24 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
-V jazyce JavaScript musíme volání rest api k aktivaci událost, pro který se čeká odolné funkce.
-Následující kód používá balíček "žádost". Metoda níže lze použít pro vyvolání žádné události pro všechny instance trvalý – funkce
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
-```js
-function raiseEvent(instanceId, eventName) {
-        var url = `<<BASE_URL>>/runtime/webhooks/durabletask/instances/${instanceId}/raiseEvent/${eventName}?taskHub=DurableFunctionsHub`;
-        var body = <<BODY>>
-            
-        return new Promise((resolve, reject) => {
-            request({
-                url,
-                json: body,
-                method: "POST"
-            }, (e, response) => {
-                if (e) {
-                    return reject(e);
-                }
+```javascript
+const df = require("durable-functions");
 
-                resolve();
-            })
-        });
-    }
+module.exports = async function(context, instanceId) {
+    const client = df.getClient(context);
+    await client.raiseEvent(instanceId, "Approval", true);
+};
 ```
 
-<< BASE_URL >> bude základní adresu url vaše aplikace function app. Pokud používáte kód místně a pak ji bude vypadat podobně jako http://localhost:7071 nebo v Azure jako https://<<functionappname>>. azurewebsites.net
-
-
-Interně `RaiseEventAsync` zařadí zprávu, která získá vyzvednou funkce orchestrátoru čekání.
+Interně `RaiseEventAsync` (.NET) nebo `raiseEvent` zařadí zprávu, která získá vyzvednou funkce orchestrátoru čekání (JavaScript).
 
 > [!WARNING]
 > Pokud neexistuje žádná instance orchestration se zadaným *instance ID* nebo pokud není instance čeká na zadaný *název události*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29).
+
+> [!WARNING]
+> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -218,4 +206,3 @@ Interně `RaiseEventAsync` zařadí zprávu, která získá vyzvednou funkce orc
 
 > [!div class="nextstepaction"]
 > [Spuštění ukázky, která čeká na lidské interakce](durable-functions-phone-verification.md)
-

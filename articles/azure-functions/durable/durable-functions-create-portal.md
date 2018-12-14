@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3381939e296009b0fd58366f7fff410ea01d1206
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a79faa1dc5a28e5e2ac37ea164c341b855b3bb80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864022"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339718"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí webu Azure portal
 
@@ -24,17 +24,43 @@ ms.locfileid: "52864022"
 >[!NOTE]
 >
 >* Pokud vyvíjíte odolná služba functions v C#, měli byste místo toho zvážit [vývoje sady Visual Studio 2017](durable-functions-create-first-csharp.md).
-* Pokud vyvíjíte odolná služba functions v JavaScriptu, měli byste místo toho zvážit **vývoj pro Visual Studio Code**.
->
->Vytváření Durable Functions pomocí jazyka JavaScript se ještě nepodporuje na portálu. Místo toho použijte Visual Studio Code.
+* Pokud vyvíjíte odolná služba functions v JavaScriptu, měli byste místo toho zvážit [vývoj pro Visual Studio Code](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
-Musíte mít aplikaci function app k hostování provádění žádné funkce. Aplikace function app umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Je nutné vytvořit C# aplikace function app, protože šablony jazyka JavaScript pro Durable Functions zatím nepodporují.  
+Musíte mít aplikaci function app k hostování provádění žádné funkce. Aplikace function app umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Můžete vytvořit aplikaci .NET nebo JavaScript.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
-Ve výchozím nastavení používá aplikace function app vytvořena verze 2.x modulu runtime Azure Functions. Rozšíření Durable Functions funguje na obě verze 1.x a 2.x modulu runtime Azure Functions. Nicméně šablony jsou dostupné jenom při cílení na verzi 2.x modulu runtime.
+Ve výchozím nastavení používá aplikace function app vytvořena verze 2.x modulu runtime Azure Functions. Rozšíření Durable Functions funguje na obě verze 1.x a 2.x modulu runtime Azure Functions v C#a verze 2.x v jazyce JavaScript. Nicméně šablony jsou dostupné jenom při cílení na verzi 2.x modulu runtime bez ohledu na zvoleném jazyce.
+
+## <a name="install-the-durable-functions-npm-package-javascript-only"></a>Nainstalujte balíček npm durable functions (pouze pro jazyk JavaScript)
+
+Pokud vytváříte odolné funkce jazyka JavaScript, budete muset nainstalovat [ `durable-functions` balíčku npm](https://www.npmjs.com/package/durable-functions).
+
+1. Vyberte název vaší aplikace funkcí, za nímž následuje **funkce platformy**, pak **Rozšířené nástroje (Kudu)**.
+
+   ![Funkce platformy funkcí zvolte Kudu](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+
+2. V konzole Kudu vyberte **konzolou pro ladění** pak **CMD**.
+
+   ![Konzolou pro ladění modulu kudu](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+3. Zobrazit strukturu adresářů aplikace funkcí. Přejděte do složky `site/wwwroot`. Odtud můžete nahrát `package.json` soubor přetahováním do okna adresář souboru. Ukázka `package.json` je nižší než:
+
+    ```json
+    {
+      "dependencies": {
+        "durable-functions": "^1.1.2"
+      }
+    }
+    ```
+
+   ![Kudu nahrát soubor package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+
+4. Jednou vaše `package.json` nahraje, spusťte `npm install` příkaz z konzoly Kudu pro vzdálené spuštění.
+
+   ![Spuštění instalace npm kudu](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Vytvoření funkce orchestrátoru
 
@@ -92,7 +118,7 @@ Ve výchozím nastavení používá aplikace function app vytvořena verze 2.x m
         }
     ```
 
-1. Pokračovat volání `statusQueryGetUri` koncový bod, dokud se stav změní na **dokončeno**, a zobrazit odpověď podobná v následujícím příkladu: 
+1. Pokračovat volání `statusQueryGetUri` koncový bod, dokud se stav změní na **dokončeno**, a zobrazit odpověď podobná v následujícím příkladu:
 
     ```json
     {

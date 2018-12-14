@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 12/12/2018
 ms.author: kumud
-ms.openlocfilehash: d3e0fd510968abed55e0e3fea2a8689027713a2b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8ffc2a84850254451bb8356ceb0c08cd56823afd
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310398"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344206"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -56,6 +56,9 @@ Při použití [pravidla Vyrovnávání zatížení pro porty s vysokou DOSTUPNO
 Měli není překladu adres nebo proxy server sondy prostřednictvím instance, která přijímá sondu stavu do jiné instance ve vaší virtuální síti, protože to může vést ke kaskádovým selháním ve vašem scénáři.
 
 Pokud chcete otestovat selhání sondy stavu nebo označte dolů jednotlivé instance, můžete použít skupinu zabezpečení pro explicitní bloku sondu stavu (určení nebo [zdroj](#probesource)).
+
+>[!IMPORTANT]
+> Nepovolujte [časová razítka TCP](https://tools.ietf.org/html/rfc1323).  Povolení protokolu TCP časová razítka způsobí, že sond stavu selhání kvůli TCP paketů probíhá vyřazování podle Virtuálního počítače hosta zásobník protokolu TCP operačního systému, což vede k označení příslušný koncový bod nástroje pro vyrovnávání zatížení.
 
 ### <a name="tcpprobe"></a> Test protokolu TCP
 

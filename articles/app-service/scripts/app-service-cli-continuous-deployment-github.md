@@ -1,6 +1,6 @@
 ---
 title: Skript Azure CLI ukázkový – vytvoření aplikace s průběžným nasazováním z Githubu | Dokumentace Microsoftu
-description: Ukázkový skript Azure CLI – Vytvoření webové aplikace s průběžným nasazováním z GitHubu
+description: Ukázkový skript Azure CLI – vytvoření webové aplikace a průběžné nasazování z Githubu
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,12 +16,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f65c993515d0f8ce29c87d75412ae9f6a0c26bf7
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 032a866b39e51ebc130104797d9d4276cf19062a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315226"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342626"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github-using-cli"></a>Vytvoření webové aplikace s průběžným nasazováním z Githubu pomocí rozhraní příkazového řádku
 

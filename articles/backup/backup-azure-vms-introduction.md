@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: raynew
-ms.openlocfilehash: 7ebb71c6c5968f8f3548f1accd8d659039e6b545
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e38f245197f2b1bdb22a2866028ad10f4ec39ec1
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871638"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343492"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
 Tento článek obsahuje výkonu a prostředků návrhy vám pomohou při plánování infrastruktury zálohování virtuálních počítačů. Také definuje klíčové aspekty služby Backup; Tyto aspekty může být důležité při určování architektury, plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, přečtěte si [dokumentace k virtuálním počítačům](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -99,16 +99,16 @@ Celkový čas zálohování za méně než 24 hodin je platný pro přírůstkov
 Zálohování se skládá ze dvou fází: pořizování snímků a snímky přenosu do trezoru. Služba Backup optimalizuje úložiště. Při přenosu dat snímků do trezoru, přenese službu pouze přírůstkové změny z předchozího snímku.  Pokud chcete zjistit přírůstkové změny, vypočítá službu kontrolních součtů bloků. Pokud se změní bloku, blok je označena jako blok, který se pošlou do trezoru. Cvičení služby potom dále do všech identifikovaných bloky, hledají příležitosti minimalizovat objem dat pro přenos. Po vyhodnocení všechny změněné bloky, služba spojí změny a odešle je do trezoru. V některých starších aplikací nejsou malé, fragmentované zápisy optimální pro úložiště. Pokud tento záznam obsahuje mnoho malých, fragmentované zápisy, službu stráví další čas zpracování dat zapsaných aplikace. Pro aplikace běžící uvnitř virtuálního počítače je minimální doporučené zápisům aplikace bloku 8 KB. Pokud vaše aplikace používá blok méně než 8 KB, se provádí výkon zálohování. Nápovědu k ladění aplikace ke zlepšení výkonu zálohování, naleznete v tématu [ladění aplikací pro zajištění optimálního výkonu pomocí úložiště Azure](../virtual-machines/windows/premium-storage-performance.md). I když v článku věnovaném výkon zálohování se používají příklady úložiště úrovně Premium, je možné použít disky storage úrovně Standard pokynů.<br>
 Může existovat několik důvodů, proč čas dlouho zálohování:
   1. **První zálohování pro nově přidaný disk do už chráněných virtuálních počítačů** <br>
-    Pokud virtuální počítač je již přijít o které jsou předmětem přírůstkové zálohování, když je přidán nový disky zálohování SLA 1 den v závislosti na velikosti nový disk.
+    Pokud virtuální počítač dokončení prvotní zálohy a provádí přírůstkové zálohování. Přidání nové disky přijít o smlouvě SLA 1 den v závislosti na velikosti nový disk.
   2. **Fragmentace** <br>
-    Pokud aplikace zákazníka je špatně nakonfigurována, která přebírá fragmentované malých zápisů.<br>
-  3. **Účet úložiště zákazníka přetížení** <br>
-      a. Pokud je naplánováno zálohování v době zákazníka produkční aplikace.  
+    Pokud úlohu (aplikace) běžící na virtuálním počítači provádí malých zápisů fragmentované ho může nepříznivě ovlivnit výkon zálohování. <br>
+  3. **Účet úložiště přetížení** <br>
+      a. Pokud zálohování je naplánovat na dobu využití Náhled aplikace.  
       b. Pokud více než 5 až 10 disků jsou hostované v rámci stejného účtu úložiště.<br>
   4. **Režim Check(CC) konzistence** <br>
       > 1 TB disky, pokud probíhá zálohování v režimu kopie z důvodů uvedených níže:<br>
-        a. Přesune spravovaného disku jako součást zákazníka restartování virtuálního počítače.<br>
-        b. Zákazník podporuje snímku na základní objekt blob.<br>
+        a. Přesune spravovaného disku jako součást restartování virtuálního počítače.<br>
+        b. Zvýšit úroveň snímku na základní objekt blob.<br>
 
 ## <a name="total-restore-time"></a>Obnovení celkový čas
 

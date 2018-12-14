@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 911b8051530daca57fe26fb22c6dc1be845c6d6d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: e1482b4238211db45a7f317d874bbb3a8c974cb2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321422"
+ms.locfileid: "53337899"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Spravovat přístupová práva k Azure Blob a fronty dat pomocí RBAC (Preview)
 
@@ -27,11 +27,11 @@ Identity Azure AD může být uživatele, skupiny nebo instanční objekt aplika
 
 Azure Storage podporuje předdefinované i vlastní role RBAC. Azure Storage nabízí tyto předdefinované role RBAC pro použití se službou Azure AD:
 
-- [Přispěvatel dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview)
-- [Čtenář dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview)
-- [Vlastník dat úložiště objektů Blob (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview)
-- [Přispěvatel dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview)
-- [Čtenář dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview)
+- [Vlastník dat úložiště objektů Blob (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner-preview): Slouží k nastavení vlastnictví a seznamy ACL pro Azure Data Lake Storage Gen2 (preview). Další informace najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen2](../blobs/data-lake-storage-access-control.md).
+- [Přispěvatel dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor-preview): Slouží k udělení oprávnění ke čtení/zápis/delete k prostředkům úložiště objektů Blob.
+- [Čtenář dat objektu Blob služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader-preview): Slouží k udělení oprávnění jen pro čtení k prostředkům úložiště objektů Blob.
+- [Přispěvatel dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor-preview): Slouží k udělení oprávnění pro čtení/zápisu a odstranění do fronty Azure.
+- [Čtenář dat fronty služby Storage (Preview)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-reader-preview): Slouží k udělení oprávnění jen pro čtení do fronty Azure.
 
 Další informace o tom, předdefinované role jsou definované pro službu Azure Storage, najdete v článku [pochopení definic rolí](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#management-and-data-operations-preview).
 
@@ -45,10 +45,10 @@ Přiřazení RBAC role pro Azure identity k udělení oprávnění pro kontejner
 
 |Rozsah|Vlastník dat objektů BLOB|Přispěvatel dat objektu BLOB|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
 |---|---|---|---|---|---|
-|Úroveň předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
-|Úrovni skupiny prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny fronty ve skupině prostředků|Přístup pro čtení pro všechny fronty ve skupině prostředků|
-|Úroveň účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis do všech front v účtu úložiště|Přístup pro čtení pro všechny fronty v účtu úložiště|
-|Úroveň kontejneru či fronty|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadané fronty|Přístup pro čtení do zadané fronty|
+|Úroveň předplatného|Nastavit vlastnictví a seznamů ACL pro Data Lake Storage prostředky v předplatném|Čtení/zápis/delete přístup ke všem kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení/zápis/delete pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
+|Úrovni skupiny prostředků|Nastavit vlastnictví a seznamů ACL pro Data Lake Storage prostředky ve skupině prostředků|Přístup pro čtení/zápis/delete pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení/zápis/delete pro všechny fronty ve skupině prostředků|Přístup pro čtení pro všechny fronty ve skupině prostředků|
+|Úroveň účtu úložiště|Nastavit vlastnictví a seznamů ACL pro Data Lake Storage prostředky v účtu úložiště|Přístup pro čtení/zápis/delete pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení/zápis/delete pro všechny fronty v účtu úložiště|Přístup pro čtení pro všechny fronty v účtu úložiště|
+|Úroveň systému/kontejneru/frontě souborů|Nastavit vlastnictví a seznamy řízení přístupu pro prostředky úložiště Data Lake v systému souborů|Přístup pro čtení/zápisu a odstranění do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení/zápisu a odstranění do zadané fronty|Přístup pro čtení do zadané fronty|
 
 > [!NOTE]
 > Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Ji můžete přiřadit na úrovni předplatného, skupinu prostředků, účet úložiště, kontejner nebo fronty.

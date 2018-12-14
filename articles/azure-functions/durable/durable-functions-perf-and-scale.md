@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 54a88188a432a23476af6a1670635a23fb72eea7
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643142"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341164"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -33,7 +33,7 @@ Když je potřeba spustit instanci Orchestrace, odpovídající řádky v tabulc
 
 **Instance** jiné tabulky Azure Storage, který obsahuje stavy všech instancí Orchestrace v centru úkolu je tabulka. Jak se vytvářejí instance, nové řádky se přidají do této tabulky. Klíč oddílu v této tabulce je ID instance Orchestrace klíč řádku je dlouhodobý – konstanta Existuje jeden řádek pro každou instanci Orchestrace.
 
-Tato tabulka slouží ke splnění požadavků na dotazy instance z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) rozhraní API také [dotazu na stavovou rozhraní HTTP API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Je udržovat konzistentní s obsahem **historie** tabulka již bylo zmíněno dříve. Použití samostatné tabulky Azure Storage efektivně splňovat operace dotazů instance tímto způsobem je ovlivněno [zodpovědnosti příkazů a dotazů oddělení (CQRS) vzor](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+Tato tabulka slouží ke splnění požadavků na dotazy instance z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) (.NET) a `getStatus` (JavaScript) rozhraní API také [dotazu na stavovou rozhraní HTTP API](durable-functions-http-api.md#get-instance-status). Je udržovat konzistentní s obsahem **historie** tabulka již bylo zmíněno dříve. Použití samostatné tabulky Azure Storage efektivně splňovat operace dotazů instance tímto způsobem je ovlivněno [zodpovědnosti příkazů a dotazů oddělení (CQRS) vzor](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Vnitřní fronty aktivační události
 
@@ -53,10 +53,24 @@ Ovládací prvek fronty obsahují celou řadu typů Orchestrace životní cyklus
 
 Fronty, tabulky a objekty BLOB využívané Durable Functions jsou vytvořené v nakonfigurovaném účtu Azure Storage. Účet, který chcete použít se dá nastavit pomocí `durableTask/azureStorageConnectionStringName` nastavení **host.json** souboru.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "azureStorageConnectionStringName": "MyStorageAccountAppSetting"
+    }
   }
 }
 ```
@@ -67,6 +81,8 @@ Pokud není zadán, výchozí `AzureWebJobsStorage` účet úložiště se použ
 
 Aktivita funkce jsou bezstavové a horizontálně automaticky přidáním virtuálních počítačů. Funkce nástroje Orchestrator na druhé straně jsou *dělené* napříč jednu či více front ovládacího prvku. Počet front ovládací prvek je definována v **host.json** souboru. Následující příklad host.json fragment kódu nastaví `durableTask/partitionCount` vlastnost `3`.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
@@ -74,6 +90,19 @@ Aktivita funkce jsou bezstavové a horizontálně automaticky přidáním virtu�
   }
 }
 ```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "partitionCount": 3
+    }
+  }
+}
+```
+
 Centra úloh může mít nakonfigurovanou mezi 1 a 16 oddíly. Pokud není zadán, výchozí počet oddílů je **4**.
 
 Při horizontálním navýšení kapacity na několik instancí hostitele – funkce (obvykle v jiných virtuálních počítačů), každá instance získá zámek na jednom front ovládacího prvku. Tyto zámky se implementují interně jako objekt blob úložiště zapůjčení a ujistěte se, že instance Orchestrace pouze na jednom hostiteli instance byla najednou spuštěna. Pokud úloha centrum je nakonfigurováno pomocí tří řízení front, Orchestrace instance může být s vyrovnáváním zatížení ve virtuálních počítačích až tři. Ke zvýšení kapacity pro provedení aktivity funkce lze přidat další virtuální počítače.
@@ -106,11 +135,26 @@ Služba Azure Functions podporuje spuštění více funkcí současně v rámci 
 
 Oba limity aktivita funkce a nástroje orchestrator funkce souběžnosti se dá nakonfigurovat v **host.json** souboru. Jsou příslušné nastavení `durableTask/maxConcurrentActivityFunctions` a `durableTask/maxConcurrentOrchestratorFunctions` v uvedeném pořadí.
 
+### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
   "durableTask": {
     "maxConcurrentActivityFunctions": 10,
-    "maxConcurrentOrchestratorFunctions": 10,
+    "maxConcurrentOrchestratorFunctions": 10
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "maxConcurrentActivityFunctions": 10,
+      "maxConcurrentOrchestratorFunctions": 10
+    }
   }
 }
 ```
@@ -121,15 +165,31 @@ V předchozím příkladu maximálně 10 orchestrator 10 aktivity funkcí a sou�
 > Tato nastavení jsou užitečné ke správě paměti a využití procesoru na jeden virtuální počítač. Ale při škálované na víc virtuálních počítačů, každý virtuální počítač bude mít svou vlastní sadu omezení. Tato nastavení nelze použít k řízení souběžnosti na globální úrovni.
 
 ## <a name="orchestrator-function-replay"></a>Funkce opakování nástroje Orchestrator
+
 Jak už bylo zmíněno dříve, jsou funkcí nástroje orchestrator přehrály pomocí obsahu **historie** tabulky. Ve výchozím nastavení je kód funkce orchestrátoru přehrály pokaždé, když jsou odstraněné z fronty dávku zpráv z fronty ovládacího prvku.
 
 Tím, že se dají zakázat toto chování opakování agresivní **rozšířené relace**. Pokud jsou povolené rozšířené relace, funkce instancemi nástroje orchestrator jsou uložené v paměti, kterou déle a nové zprávy může zpracovat bez úplné opakování. Rozšířené relace se povoluje nastavením `durableTask/extendedSessionsEnabled` k `true` v **host.json** souboru. `durableTask/extendedSessionIdleTimeoutInSeconds` Nastavení se používá k řízení dobu nečinnosti relace se bude vysílat v paměti:
+
+### <a name="functions-1x"></a>Functions 1.x
 
 ```json
 {
   "durableTask": {
     "extendedSessionsEnabled": true,
     "extendedSessionIdleTimeoutInSeconds": 30
+  }
+}
+```
+
+### <a name="functions-2x"></a>Functions 2.x
+
+```json
+{
+  "extensions": {
+    "durableTask": {
+      "extendedSessionsEnabled": true,
+      "extendedSessionIdleTimeoutInSeconds": 30
+    }
   }
 }
 ```

@@ -8,26 +8,26 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 12/07/2018
 ms.author: glenga
-ms.openlocfilehash: 00735293d8fa8c6056f1ecf89fd312fe4b90bcac
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 78011e799fb4ddaf89fb1fd24c1f2a313ef49ba5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642701"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338103"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikování do služby Azure Event Grid (preview)
 
-Tento článek popisuje, jak nastavit Azure Durable Functions k publikování Orchestrace životní cyklus (například, vytvoří se události, dokončenou a neúspěšné) pro vlastní [tématu Azure Event gridu](https://docs.microsoft.com/azure/event-grid/overview). 
+Tento článek popisuje, jak nastavit Durable Functions k publikování Orchestrace životní cyklus (například, vytvoří se události, dokončenou a neúspěšné) pro vlastní [tématu Azure Event gridu](https://docs.microsoft.com/azure/event-grid/overview).
 
 Toto jsou některé scénáře, kdy se tato funkce je užitečná:
 
-* **Scénáře DevOps, jako je nasazení modrá nebo zelená**: můžete chtít vědět, pokud jsou všechny úkoly spuštěné před implementací [strategii nasazení vedle sebe](https://docs.microsoft.com/azure/azure-functions/durable-functions-versioning#side-by-side-deployments).
+* **Scénáře DevOps, jako je nasazení modrá nebo zelená**: Můžete chtít vědět, pokud jsou všechny úkoly spuštěné před implementací [strategii nasazení vedle sebe](durable-functions-versioning.md#side-by-side-deployments).
 
-* **Přidává rozšířenou podporu monitorování a diagnostiku**: vám může udržovat přehled o informace o stavu Orchestrace v externím úložišti optimalizované pro dotazy, jako je SQL database nebo cosmos DB.
+* **Přidává rozšířenou podporu monitorování a diagnostiku**: Vám může udržovat přehled o informace o stavu Orchestrace v externím úložišti optimalizované pro dotazy, jako je SQL database nebo cosmos DB.
 
-* **Aktivita dlouho běžící na pozadí**: Pokud používáte Durable Functions pro dlouho běžící aktivitu na pozadí, tato funkce vám umožní zjistit aktuální stav.
+* **Aktivita dlouho běžící na pozadí**: Pokud používáte Durable Functions pro dlouho běžící aktivitu na pozadí, tato funkce pomáhá zjistit aktuální stav.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -39,12 +39,12 @@ Toto jsou některé scénáře, kdy se tato funkce je užitečná:
 
 Vytvořte téma Event gridu pro odesílání událostí z Durable Functions. Následující pokyny ukazují, jak vytvořit téma s použitím rozhraní příkazového řádku Azure. Informace o tom, jak to udělat pomocí Powershellu nebo na webu Azure portal najdete v následujících článcích:
 
-* [EventGrid šablon rychlý start: Vytvoření vlastní události – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
-* [EventGrid šablon rychlý start: Vytvoření vlastní události – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
+* [EventGrid rychlých startů: Vytvoření vlastní události – PowerShell](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-powershell)
+* [EventGrid rychlých startů: Vytvoření vlastní události – Azure portal](https://docs.microsoft.com/azure/event-grid/custom-event-quickstart-portal)
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pomocí příkazu `az group create` vytvořte skupinu prostředků. Event Grid v současné době nepodporuje všech oblastech. Informace o tom, které oblasti jsou podporovány, naleznete v tématu [Přehled služby Event Grid](https://docs.microsoft.com/azure/event-grid/overview). 
+Pomocí příkazu `az group create` vytvořte skupinu prostředků. Event Grid v současné době nepodporuje všech oblastech. Informace o tom, které oblasti jsou podporovány, naleznete v tématu [Přehled služby Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 ```bash
 az group create --name eventResourceGroup --location westus2
@@ -55,7 +55,7 @@ az group create --name eventResourceGroup --location westus2
 Téma Event gridu poskytuje koncový bod definovaný uživatelem, do kterého odesíláte události do. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože bude záznam DNS.
 
 ```bash
-az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup 
+az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 ```
 
 ## <a name="get-the-endpoint-and-key"></a>Získání koncového bodu a klíče
@@ -119,7 +119,7 @@ Vytvoření aplikace Function App. Je nejlepší umístit ve stejné oblasti jak
 
 ### <a name="create-an-event-grid-trigger-function"></a>Vytvoření funkce pro aktivaci služby Event Grid
 
-Vytvoření funkce, která se zobrazí události životního cyklu. Vyberte **vlastní funkci**. 
+Vytvoření funkce, která se zobrazí události životního cyklu. Vyberte **vlastní funkci**.
 
 ![Vyberte možnost vytvořit vlastní funkci.](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -131,7 +131,7 @@ Zadejte název funkce a pak vyberte `Create`.
 
 ![Vytvoření triggeru služby Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
-Vytvoří funkci s následujícím kódem: 
+Vytvoří funkci s následujícím kódem:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -153,11 +153,11 @@ Vyberte `Event Grid Topics` pro **typ tématu**. Vyberte skupinu prostředků, k
 
 ![Vytvoří odběr Event Gridu.](./media/durable-functions-event-publishing/eventsubscription.png)
 
-Nyní jste připraveni přijímat události životního cyklu. 
+Nyní jste připraveni přijímat události životního cyklu.
 
-## <a name="create-durable-functions-to-send-the-events"></a>Vytvoření Durable Functions k odeslání události.
+## <a name="create-durable-functions-to-send-the-events"></a>Vytvoření Durable Functions k odesílání událostí
 
-Ve vašem projektu Durable Functions zahájit ladění na místním počítači.  Následující kód je stejný jako kód šablony pro Durable Functions. Jste již nakonfigurovali `host.json` a `local.settings.json` na místním počítači. 
+Ve vašem projektu Durable Functions zahájit ladění na místním počítači.  Následující kód je stejný jako kód šablony pro Durable Functions. Jste již nakonfigurovali `host.json` a `local.settings.json` na místním počítači.
 
 ```csharp
 using System.Collections.Generic;
@@ -217,7 +217,7 @@ Zobrazí protokoly z funkce, kterou jste vytvořili na webu Azure Portal.
 ```
 2018-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
 2018-04-20T09:28:21.104 [Info] {
-    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",    
+    "id": "054fe385-c017-4ce3-b38a-052ac970c39d",
     "subject": "durable/orchestrator/Running",
     "data": {
         "hubName": "DurableFunctionsHub",
@@ -259,18 +259,18 @@ Zobrazí protokoly z funkce, kterou jste vytvořili na webu Azure Portal.
 Následující seznam popisuje schéma události životního cyklu:
 
 * **ID**: Jedinečný identifikátor události Event gridu.
-* **Předmět**: cesta k předmětu událostí. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` bude `Running`, `Completed`, `Failed`, a `Terminated`.  
-* **data**: trvalý specifických parametrů funkcí.
-    * **hubName**: [TaskHub](https://docs.microsoft.com/azure/azure-functions/durable-functions-task-hubs) název.
-    * **functionName**: název funkce nástroje Orchestrator.
-    * **instanceId**: instanceId Durable Functions.
-    * **z důvodu**: další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-diagnostics)
-    * **runtimeStatus**: stav Runtime Orchestrace. Spuštěna, dokončena, se nezdařilo, protože bylo zrušeno. 
+* **Předmět**: Cesta k předmětu událostí. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` bude `Running`, `Completed`, `Failed`, a `Terminated`.  
+* **Data**: Odolná služba Functions konkrétní parametry.
+  * **hubName**: [TaskHub](durable-functions-task-hubs.md) název.
+  * **functionName**: Název funkce nástroje Orchestrator.
+  * **instanceId**: Trvalý instanceId funkce.
+  * **z důvodu**: Další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky v Durable Functions (Azure Functions)](durable-functions-diagnostics.md)
+  * **RuntimeStatus**: Orchestrace stav modulu Runtime. Spuštěna, dokončena, se nezdařilo, protože bylo zrušeno.
 * **Typ eventType**: "orchestratorEvent"
-* **čas události**: čas události (UTC).
-* **dataVersion**: verze schématu událostí životního cyklu.
-* **verze metadataVersion**: verze metadat.
-* **téma**: EventGrid tématu prostředků.
+* **čas události**: Čas události (UTC).
+* **dataVersion**: Verze schématu událostí životního cyklu.
+* **verze metadataVersion**:  Verze metadat.
+* **téma**: Téma EventGrid prostředků.
 
 ## <a name="how-to-test-locally"></a>Místní testování
 

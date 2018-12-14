@@ -11,18 +11,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 6d2e87c50eba293df7c5130ea6bf192ed7f83277
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679813"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344308"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
 Azure Media Services v3 umožňuje extrakce poznatků z videí a zvukových souborů s modulem Video Indexer prostřednictvím přednastavení analyzátor v3 AMS (popsané v tomto článku). Pokud chcete získat podrobnější přehledy, použijte přímo Video Indexer. Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v [dokumentu, který je porovnává](../video-indexer/compare-video-indexer-with-media-services-presets.md).
 
-Analyzovat obsah pomocí služby Media Services v3 přednastavení, vytvoříte **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset**. V následujícím článku ukazuje, jak používat **VideoAnalyzerPreset**: [kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md).
+Analyzovat obsah pomocí služby Media Services v3 přednastavení, vytvoříte **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset**. V následujícím článku ukazuje, jak používat **VideoAnalyzerPreset**: [Kurz: Analýza videa pomocí služby Azure Media Services](analyze-videos-tutorial-with-api.md).
 
 > [!NOTE]
 > Pokud použijete předvolby analyzátoru videa nebo zvuku, pomocí webu Azure Portal nastavte pro svůj účet 10 rezervovaných jednotek médií S3. Další informace najdete v tématu [Škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
@@ -33,8 +33,7 @@ Služba Media Services aktuálně podporuje následující předdefinované anal
 
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa.<br/>Můžete určit jazyk pro zvuk datovou část vstup ve formátu BCP-47 "jazyk značky region" (například "en US"). "en US", "en-GB", "es-ES", "es-MX",
-"fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN", "de-DE", "ar – např.,"ru-RU","hi-IN". Pokud jazyk není zadán nebo je nastavena na hodnotu Null, se použijí automatické rozpoznávání jazyka. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně viditelné řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejdou na angličtinu.|
+|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa. Vyberte jazyk datové části zvukový vstup ve formátu BCP-47 "jazyk oblast značky". Podporované jazyky jsou angličtina ("en US" a 'en-GB'), španělština ("es-ES" a "es-MX"), francouzština ("fr-FR"), italština ("it-IT"), japonština ("ja-JP"), portugalština ("pt-BR"), čínština ("zh-CN"), němčina ("de-DE"), arabština ("ar – např.), ruština ("ru-RU"), hindština ("hi v. ) a korejština ("ko-KR").<br/><br/> Pokud jazyk není zadaná nebo nastavená na hodnotu null a automatické zjišťování se použijí. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně viditelné řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejde zpět na angličtinu.|
 |**VideoAnalyzerPreset**|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
@@ -153,7 +152,7 @@ Příklad:
 |knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
 |referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
 |Hodnota referenceType|Aktuálně jenom Bingu.|
-|nadpis|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
+|název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
 |imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
 |instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
 

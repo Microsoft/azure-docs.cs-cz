@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
-ms.openlocfilehash: 4535b141d177e49567d99a88d0c3883f5ddf746a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 839c8bfe6748c1aeaf7c8804ef4388cf8a623bdb
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956802"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337831"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Služba Azure Security Center a Azure SQL Database
 [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -60,7 +60,7 @@ Můžete nastavit zásadu, která zobrazit doporučení pro účely auditování
 Pokud chcete nastavit zásady zabezpečení, vyberte **zásady** dlaždici na okno Security Center. Na **zásady zabezpečení** okno, vyberte předplatné, ve kterém chcete zásadu zabezpečení povolit. Vyberte **zásady ochrany před únikem informací** a zapnout **na** doporučení zabezpečení, které chcete v tomto předplatném používat.
 ![Zásady zabezpečení][3]
 
-Další informace najdete v tématu [nastavení zásad zabezpečení](security-center-azure-policy.md).
+Další informace najdete v tématu [nastavení zásad zabezpečení](tutorial-security-policy.md).
 
 ## <a name="manage-security-recommendation"></a>Správa doporučení zabezpečení
 Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provedou procesem konfigurace potřebných kontrol.
@@ -85,7 +85,7 @@ Postupujte podle kroků v [detekce hrozeb služby SQL Database na webu Azure Por
 Další informace o doporučeních najdete v tématu [Správa doporučení zabezpečení](security-center-recommendations.md).
 
 ## <a name="monitor-security-health"></a>Monitorování stavu zabezpečení
-Po povolení [zásad zabezpečení](security-center-azure-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  Můžete zobrazit stav zabezpečení vašich prostředků **stav zabezpečení prostředku** dlaždici. Po kliknutí na **Data** v **stav zabezpečení prostředku** dlaždici **datové prostředky** se otevře okno s SQL doporučeními pro problémy, jako je zakázané auditování nebo transparentní dat šifrování není povoleno. Také obsahuje doporučení pro obecný stav databáze.
+Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  Můžete zobrazit stav zabezpečení vašich prostředků **stav zabezpečení prostředku** dlaždici. Po kliknutí na **Data** v **stav zabezpečení prostředku** dlaždici **datové prostředky** se otevře okno s SQL doporučeními pro problémy, jako je zakázané auditování nebo transparentní dat šifrování není povoleno. Také obsahuje doporučení pro obecný stav databáze.
 ![Stav zabezpečení prostředku][6]
 
 Další informace najdete v tématu [sledování stavu zabezpečení](security-center-monitoring.md).

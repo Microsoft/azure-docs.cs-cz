@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 5c32b90c8a291ff744b4894af12f8d623cb95137
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 09231ab69276f3b4763f07c51230921d15333f63
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391400"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339429"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Vyexportovat a zobrazit informace o předplatném nejvyšší úrovně
 Pokud chcete zobrazit sady přidružené přihlašovací údaje uživatele, ID předplatného [stáhnout soubor .json, informace o vašem předplatném z centra účtů Azure](http://account.azure.com/subscriptions/download).
@@ -28,12 +28,13 @@ Pokud chcete zobrazit sady přidružené přihlašovací údaje uživatele, ID p
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 Soubor stažený .json obsahuje následující informace:
-- E-mailu: E-mailovou adresu spojenou s vaším účtem.
+- E-mail: E-mailovou adresu spojenou s vaším účtem.
 - Identifikátor PUID: Jedinečný identifikátor přidružený k fakturačnímu účtu.
 - SubscriptionIds: Seznam předplatných, které patří ke svému účtu, uvedené podle ID předplatného.
 
 ### <a name="subscriptionsjson-sample"></a>Ukázka Subscriptions.JSON
-~~~~
+
+```json
 {
   "Email":"admin@contoso.com",
   "Puid":"00052xxxxxxxxxxx",
@@ -46,4 +47,4 @@ Soubor stažený .json obsahuje následující informace:
     "90757cdc-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
   ]
 }
-~~~~
+```

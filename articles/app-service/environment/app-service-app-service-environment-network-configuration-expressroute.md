@@ -1,5 +1,5 @@
 ---
-title: Podrobnosti o konfiguraci sítě pro Azure ExpressRoute
+title: Podrobnosti o konfiguraci sítě pro Azure ExpressRoute – App Service
 description: Podrobnosti o konfiguraci sítě pro službu App Service Environment pro PowerApps do virtuální sítě připojené k okruh Azure ExpressRoute.
 services: app-service
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8dc6f595f312326f4082af9f875fefddc3a5fb8d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a9af97bcd85833a140d6c668fe4c757c85d7447a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320705"
+ms.locfileid: "53337168"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Podrobnosti o konfiguraci sítě pro službu App Service Environment pro PowerApps s využitím Azure ExpressRoute
 

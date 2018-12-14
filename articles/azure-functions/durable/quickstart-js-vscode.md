@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 7dceed4d81f1e1767cbf91804573043d1204beee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ad17b6ef032c7bc25a019d53f12cc33baa3163f3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838901"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340892"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
@@ -44,66 +44,35 @@ Pro absolvování tohoto kurzu potřebujete:
 
 [!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
 
+## <a name="install-the-durable-functions-npm-package"></a>Nainstalujte balíček npm Durable Functions
+
+1. Nainstalujte `durable-functions` balíčku npm spuštěním `npm install durable-functions` v kořenovém adresáři aplikace function app.
+
 ## <a name="create-a-starter-function"></a>Vytvoření funkce Starter
 
 Nejprve vytvořte funkci aktivovanou protokolem HTTP, který se spustí Orchestrace odolné funkce.
 
-1. Z oblasti **Azure: Functions** zvolte ikonu Vytvořit funkci.
+1. Z **Azure: Funkce**, zvolte ikonu Create Function.
 
     ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
 
-1. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**.
+2. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**.
 
     ![Volba šablony triggeru HTTP](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-1. Jako název funkce zadejte `HttpStart`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
+3. Jako název funkce zadejte `HttpStart`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
 
     ![Volba anonymního ověřování](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
     Funkce ve vybraném jazyce se vytvoří pomocí šablony funkce aktivované protokolem HTTP.
 
-1. Nahraďte index.js s pod JavaScript:
+4. Nahraďte index.js s pod JavaScript:
 
-    ```javascript
-    const df = require("durable-functions");
-    
-    module.exports = async function (context, req) {
-        const client = df.getClient(context);
-        const instanceId = await client.startNew(req.params.functionName, undefined, req.body);
-    
-        context.log(`Started orchestration with ID = '${instanceId}'.`);
-    
-        return client.createCheckStatusResponse(context.bindingData.req, instanceId);
-    };
-    ```
+    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-1. Nahraďte function.json se následující JSON:
+5. Nahraďte function.json se následující JSON:
 
-    ```JSON
-    {
-      "bindings": [
-        {
-          "authLevel": "anonymous",
-          "name": "req",
-          "type": "httpTrigger",
-          "direction": "in",
-          "route": "orchestrators/{functionName}",
-          "methods": ["post"]
-        },
-        {
-          "name": "$return",
-          "type": "http",
-          "direction": "out"
-        },
-        {
-          "name": "starter",
-          "type": "orchestrationClient",
-          "direction": "in"
-        }
-      ],
-      "disabled": false
-    }
-    ```
+    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
 Nyní jsme vytvořili vstupní bod do naší trvalé funkce. Přidejme orchestrátor.
 
@@ -113,11 +82,11 @@ Dále vytvoříte další funkce orchestrátoru. Šablonu funkce triggeru HTTP p
 
 1. Opakujte kroky v předchozí části, chcete-li vytvořit druhou funkci, která pomocí šablony triggeru HTTP. Pojmenujte funkci tentokrát `OrchestratorFunction`.
 
-1. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
+2. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-1. Otevřete soubor function.json a nahraďte ho následujícím kódem JSON:
+3. Otevřete soubor function.json a nahraďte ho následujícím kódem JSON:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
@@ -127,11 +96,11 @@ Přidali jsme orchestrator ke koordinaci aktivit funkce. Přidejme nyní odkazov
 
 1. Opakujte kroky v předchozích částech vytvoříte třetí funkci pomocí šablony triggeru HTTP. Ale tentokrát název funkce `SayHello`.
 
-1. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
+2. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
 
     [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-1. Nahraďte function.json se následující JSON:
+3. Nahraďte function.json se následující JSON:
 
     [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
@@ -141,19 +110,20 @@ Teď jsme přidali všechny komponenty potřebné ke spuštění vypnout Orchest
 
 Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce z Visual Studio Code.  
 
-1. Nainstalujte balíček npm durable functions spuštěním `npm install durable-functions` v kořenovém adresáři aplikace function app.
-
 1. Na počítači s Windows spusťte emulátor úložiště Azure a ujistěte se, že **AzureWebJobsStorage** vlastnost local.settings.json je nastavena na `UseDevelopmentStorage=true`. Na počítači Mac nebo Linux, je nutné nastavit **AzureWebJobsStorage** vlastnost připojovacího řetězce pro existující účet úložiště Azure. Dále v tomto článku vytvoříte účet úložiště.
 
-1. Pokud chcete funkci otestovat, nastavte zarážku v kódu funkce a stiskněte klávesu F5, abyste spustili projekt aplikace funkcí. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**. Pokud je toto vaše první přihlášení pomocí Durable Functions, instalaci rozšíření Durable Functions a sestavení může trvat několik sekund.
+2. Pokud chcete funkci otestovat, nastavte zarážku v kódu funkce a stiskněte klávesu F5, abyste spustili projekt aplikace funkcí. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**. Pokud je toto vaše první přihlášení pomocí Durable Functions, instalaci rozšíření Durable Functions a sestavení může trvat několik sekund.
 
-1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
+    > [!NOTE]
+    > JavaScript Durable Functions vyžaduje verzi **1.7.0** nebo větší **Microsoft.Azure.WebJobs.Extensions.DurableTask** rozšíření. Ověřit verzi rozšíření Durable Functions ve vaší `extensions.csproj` soubor splňuje tento požadavek. Pokud tomu tak není, zastavte aplikaci function app, změnit verzi a stiskněte klávesu F5 a restartujte aplikaci function app.
+
+3. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 
     ![Místní výstup Azure](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-1. Vložte adresu URL pro požadavek HTTP do panelu Adresa prohlížeče a zobrazit stav vaší Orchestrace.
+4. Vložte adresu URL pro požadavek HTTP do panelu Adresa prohlížeče a zobrazit stav vaší Orchestrace.
 
-1. Pokud chcete ladění zastavit, stiskněte Shift + F1.
+5. Pokud chcete ladění zastavit, stiskněte Shift + F1.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
@@ -165,9 +135,9 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 1. Zkopírujte adresu URL triggeru HTTP z panelu **Výstup**. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>
+        http://<functionappname>.azurewebsites.net/orchestrators/<functionname>
 
-1. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Měli byste obdržet stejnou odpověď stav jako před při použití publikované aplikace.
+2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Měli byste obdržet stejnou odpověď stav jako před při použití publikované aplikace.
 
 ## <a name="next-steps"></a>Další postup
 

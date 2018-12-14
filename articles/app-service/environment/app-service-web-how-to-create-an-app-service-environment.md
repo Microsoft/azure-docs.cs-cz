@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/11/2017
+ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1cfe8dae750cb113dd5346bfba261099fd3b6044
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276736"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339888"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření služby App Service Environment v1 
 

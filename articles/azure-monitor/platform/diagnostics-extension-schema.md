@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4191bcc70ff25dc71f469c587627098cd8ef98f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 42ed050606dd242e43903ed980a5670b4aa6f3df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325996"
+ms.locfileid: "53343169"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schématu konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics se dodávají jako součást sady Microsoft Azure SDK.  
@@ -67,7 +67,7 @@ Různé verze diagnostiky Azure pomocí různých konfiguračních schémat.
 ### <a name="diagnostics-extension-111"></a>Diagnostické rozšíření 1.11
 Přidání podpory pro jímka Azure monitoru. Tuto jímku platí pouze pro čítače výkonu. Povolí odesílání počítadla výkonu shromažďovaných na virtuálním počítači, VMSS nebo cloudové služby Azure monitor jako vlastní metriky. Jímka Azure monitoru podporuje:
 * Načítání všech čítačů výkonu odesílat přes Azure Monitor [Azure Monitor metriky rozhraní API.](https://docs.microsoft.com/rest/api/monitor/metrics/list)
-* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) ve službě Azure Monitor
+* Upozorňuje na všechny čítače výkonu odeslané do Azure monitoru na novém [sjednocené prostředí upozornění](../../azure-monitor/platform/alerts-overview.md) ve službě Azure Monitor
 * Použít zástupný znak operátoru v čítače výkonu jako dimenze "Instance" na vaše metriky. Například pokud jste shromáždili "logický disk (\*) / DiskWrites za sekundu" čítače by být schopen filtr a rozdělit na dimenzi "Instanci" do diagramů nebo upozorňovat na zápis disku/s pro každý logický Disk (C:, D: atd.)
 
 Definovat jako nové jímka v konfiguraci rozšíření diagnostiky Azure Monitor

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 56234562f64073e2b772f6ebf302ddba9ea56188
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a006e9a9eb3fe4d9dc049e29eb404e5edf8f35c9
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189537"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342132"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorování pomocí Log Analytics ke sledování jejich stavu Surface Huby
 
@@ -82,8 +82,8 @@ Surface hub monitorování pomocí Log Analytics je podobné jako u monitorován
 
    ![Řídicí panel zařízení Surface Hub](./media/surface-hubs/surface-hub-dashboard.png)
 
-Můžete vytvořit [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) založené na existující nebo vlastní prohledávání protokolů. Pomocí data, která Log Analytics shromažďuje z Surface hub, můžete vyhledat problémy a upozornění na podmínky, které definujete pro vaše zařízení.
+Můžete vytvořit [výstrahy](../../azure-monitor/platform/alerts-overview.md) založené na existující nebo vlastní prohledávání protokolů. Pomocí data, která Log Analytics shromažďuje z Surface hub, můžete vyhledat problémy a upozornění na podmínky, které definujete pro vaše zařízení.
 
 ## <a name="next-steps"></a>Další postup
 * Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných dat o Surface Hub.
-* Vytvoření [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) které vás upozorní, když dojde k problémům s Surface Huby.
+* Vytvoření [výstrahy](../../azure-monitor/platform/alerts-overview.md) které vás upozorní, když dojde k problémům s Surface Huby.

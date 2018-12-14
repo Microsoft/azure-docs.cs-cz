@@ -1,5 +1,5 @@
 ---
-title: O převod textu na řeč – hlasové služby
+title: O převodu textu na řeč – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API pro převod textu na řeč poskytuje více než 75 hlasy ve více než 45 jazyků a národních prostředí. Použít standardní hlasová písma, stačí zadat název hlasové s několika dalších parametrů při volání služby řeči.
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 42e9a7e02bbe7efeab4ea0d8ee5d9876b68a7565
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100646"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343203"
 ---
-# <a name="about-the-text-to-speech-api"></a>O převod textu na řeč rozhraní API
+# <a name="about-the-text-to-speech-api"></a>O rozhraní API pro převod textu na řeč
 
-**Převod textu na řeč** Speech service rozhraní API (převod textu na ŘEČ) převede vstupní text na řeč přirozeného to nezní (také nazývané *syntézu řeči*).
+**Převod textu na řeč** rozhraní API (převod textu na ŘEČ) převede vstupní text na řeč přirozeného to nezní (také nazývané *syntézu řeči*).
 
-Pro vygenerování řeči, vaše aplikace odešle požadavky HTTP POST do služby řeči. Tady je text syntetizovat do mluvené řeči lidských to nezní a vrátí jako zvukový soubor. Širokou škálu hlasy a jazyky jsou podporovány.
+Pro vygenerování řeči, vaše aplikace posílá požadavky HTTP POST do rozhraní API pro převod textu na řeč. Tady je text syntetizovat do mluvené řeči lidských to nezní a vrátí jako zvukový soubor. Širokou škálu hlasy a jazyky jsou podporovány.
 
 Mezi scénáře, v které řeči syntézu přijali patří:
 
@@ -30,15 +30,21 @@ Mezi scénáře, v které řeči syntézu přijali patří:
 
 * *Reagovat ve scénářích multitaskingu:* **převod textu na řeč** umožňuje uživatelům chránit před důležité informace rychle a pohodlně při zvyšování nebo jinak mimo pohodlnou čtení prostředí. Navigace je běžné aplikace v této oblasti.
 
-* *Vylepšení učení s několika režimy:* různí lidé další nejlepší různými způsoby. Online výuka odborníků ukázalo, že poskytuje pro hlasové hovory a textové společně vám pomohou lépe informace o další informace a zachovat.
+* *Vylepšení učení s několika způsoby:* Různí lidé další nejlepší různými způsoby. Online výuka odborníků ukázalo, že poskytuje pro hlasové hovory a textové společně vám pomohou lépe informace o další informace a zachovat.
 
-* *Poskytuje intuitivní roboti nebo Asistenti:* schopnost komunikovat může být nedílnou součástí inteligentní chatovací robot nebo virtuální Pomocníka s nastavením. Více společností vyvíjíte chatovací roboty k poskytování poutavé prostředí služby pro své zákazníky. Hlasové přidá jinou dimenzi tím, že odpovědi bodu robotů také přijímat aurally (například telefonní).
+* *Poskytuje intuitivní roboti nebo Asistenti:* Schopnost komunikovat může být nedílnou součástí inteligentní chatovací robot nebo virtuální Pomocníka s nastavením. Více společností vyvíjíte chatovací roboty k poskytování poutavé prostředí služby pro své zákazníky. Hlasové přidá jinou dimenzi tím, že odpovědi bodu robotů také přijímat aurally (například telefonní).
 
 ## <a name="voice-support"></a>Podpora hlasu
 
-Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Podrobnosti hlasy podporované, najdete v článku [podporované jazyky](language-support.md#text-to-speech).
+Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Další informace o podporovaných jazycích, národních prostředích a hlasy najdete v tématu [podporované jazyky](language-support.md#text-to-speech).
 
-Pokud chcete jedinečný hlas pro vaši aplikaci, můžete vytvořit [vlastní hlasové písmo](how-to-customize-voice-font.md) z vlastní ukázky řeči.
+### <a name="neural-voices"></a>Neurální hlasů
+
+Neurální převod textu na řeč umožňuje interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit navigaci systémy. Přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální převod textu na ŘEČ významně snížila naslouchání reorganizovaly při interakci s AI systémy. Další informace o neuronových sítí hlasů, naleznete v tématu [podporované jazyky](language-support.md#text-to-speech).
+
+### <a name="custom-voices"></a>Vlastní hlasů
+
+Přizpůsobení řeč umožňuje vytvářet rozpoznat, jeden z druhu hlas pro hodnotu značky: *hlasového písma.* K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidružené skripty jako trénovací data. Služba potom vytvoří jedinečný hlas modelu, která je vyladěná pro nahrávání. Můžete použít jeho hlasového písma tak, aby odpovídaly řeči. Další informace najdete v tématu [vlastní hlasové písmo](how-to-customize-voice-font.md).
 
 ## <a name="api-capabilities"></a>Funkce rozhraní API
 
@@ -57,5 +63,7 @@ Mnoho funkcí **převod textu na řeč** rozhraní API, zejména v oblasti Vlast
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zobrazit postup syntetizace mluvené řeči přes rozhraní REST API](how-to-text-to-speech.md)
+* [Pořiďte si předplatné služby zdarma řeči](https://azure.microsoft.com/try/cognitive-services/)
+* [Rychlý start: Převést převod textu na řeč, Python](quickstart-python-text-to-speech.md)
+* [Rychlý start: Převést převod textu na řeč, .NET Core](quickstart-dotnet-text-to-speech.md)
+* [REST API – referenční informace](rest-apis.md)

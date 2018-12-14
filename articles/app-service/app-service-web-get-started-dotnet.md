@@ -1,6 +1,6 @@
 ---
 title: Vytvoření C# webové aplikace ASP.NET Core – Azure App Service | Dokumentace Microsoftu
-description: Nasazením výchozí webové aplikace C# ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
+description: Zjistěte, jak spouštět webové aplikace ve službě Azure App Service nasazením výchozí C# webové aplikace ASP.NET Core.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 806af0c83f34a09d849f4440ffd609764bf9bec1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 70c24b8aef1672696c0e7d7289e23b98b6b49dfe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250943"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341435"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 

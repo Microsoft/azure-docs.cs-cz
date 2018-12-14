@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: edfd2e9e03aefa4833c8472a43d4857f08b95780
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495476"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339395"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy ke službě SQL Server běžící na virtuálních počítačích Windows v Azure
 
@@ -112,7 +112,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Je možné zaregistrovat svým nasazené virtuální počítače SQL serveru s poskytovatelem prostředků pro virtuální počítač SQL?**
 
-   Ano. Pokud jste nasadili SQL Server z vlastní média, můžete zaregistrovat virtuálního počítače s SQL s poskytovatelem prostředků zobrazíte možnosti správy výhody poskytované modulem rozšíření SQL IaaS. Můžete ale nejde převést na průběžné platby místním nasazený virtuální počítač SQL. 
+   Ano. Pokud nasazení SQL serveru z vlastní média a instalaci rozšíření SQL IaaS, virtuální počítač s SQL serverem můžete zaregistrovat u poskytovatele prostředků zobrazíte možnosti správy výhody poskytované modulem rozšíření SQL IaaS. Můžete ale nejde převést na průběžné platby místním nasazený virtuální počítač SQL.  
 
 ## <a name="administration"></a>Správa
 
@@ -122,7 +122,7 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
 
 1. **Můžete odinstalovat výchozí instanci systému SQL Server?**
 
-   Ano, ale zde jsou některé důležité informace. Jak je uvedeno v předchozí odpověď, funkce, které využívají [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) pracovat pouze na výchozí instanci. Pokud odinstalujete výchozí instance, podívejte se i nadále rozšíření a může způsobit chyby v protokolu událostí. Tyto chyby jsou z těchto dvou zdrojů: **Správa přihlašovacích údajů systému Microsoft SQL Server** a **agenta systému Microsoft SQL Server IaaS**. Některé z chyb může být podobné následujícímu:
+   Ano, ale zde jsou některé důležité informace. Jak je uvedeno v předchozí odpověď, funkce, které využívají [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) pracovat pouze na výchozí instanci. Pokud odinstalujete výchozí instance, podívejte se i nadále rozšíření a může způsobit chyby v protokolu událostí. Tyto chyby jsou z těchto dvou zdrojů: **Správa přihlašovacích údajů služby Microsoft SQL Server** a **Agent serveru Microsoft SQL Server IaaS**. Některé z chyb může být podobné následujícímu:
 
       Při navazování připojení k serveru SQL Server došlo k chybě související se sítí nebo s instancí. Server nebyl nalezen nebo nebyl přístupný.
 

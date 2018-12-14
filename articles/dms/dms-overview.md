@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/12/2018
+ms.openlocfilehash: b3509917f0473795ec204c6672a630b2857ff37c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962134"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343917"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat s minimálními prostoji (online migrace).
@@ -33,7 +33,9 @@ Aktuální informace o dostupnosti služby Azure Database Migration Service v je
 Aktuální informace o cenách služby Azure Database Migration Service najdete v tématu [ceny Azure Database Migration Service](https://azure.microsoft.com/pricing/details/database-migration/).
 
 ## <a name="next-steps"></a>Další postup
+- [Stav migrace scénáře podporované službou Azure Database Migration Service](resource-scenario-status.md).
 - [Vytvoření instance služby Azure Database Migration Service pomocí webu Azure portal](quickstart-create-data-migration-service-portal.md).
 - [Migrace SQL serveru do Azure SQL Database](tutorial-sql-server-to-azure-sql.md).
 - [Přehled požadavků na používání Azure Database Migration Service](pre-reqs.md).
 - [Nejčastější dotazy týkající se použití Azure Database Migration Service](faq.md).
+- [Služby a nástroje, které jsou k dispozici pro scénáře migrace dat](dms-tools-matrix.md).

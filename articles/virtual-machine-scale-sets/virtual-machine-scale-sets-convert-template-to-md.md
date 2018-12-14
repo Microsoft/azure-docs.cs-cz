@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
 ms.author: manayar
-ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: b2d1738b85799079b3af7ab39c5cb1799a38d382
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739562"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339871"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převod šablony škálovací sady na spravovaný disk šablony škálovací sady
 
@@ -126,7 +126,7 @@ Neexistuje žádná explicitní vlastnost do konfigurace škálovací sady pro, 
 
 ## <a name="data-disks"></a>Datové disky
 
-Výše uvedené změny škálovací sada používá spravované disky pro operační systém na disku, ale co datové disky? Pokud chcete přidat datové disky, přidejte vlastnost "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je JSON seznam objektů, z nichž každý má vlastnosti "logické jednotky" (který musí být jedinečný na datový disk na virtuálním počítači), "createOption" ("prázdná" je aktuálně jedinou podporovanou možností) a "diskSizeGB" (velikost disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v následujícím příkladu: 
+Výše uvedené změny škálovací sada používá spravované disky pro operační systém na disku, ale co datové disky? Pokud chcete přidat datové disky, přidejte vlastnost "dataDisks" v části "storageProfile" na stejné úrovni jako "osDisk". Hodnota vlastnosti je JSON seznam objektů, z nichž každý má vlastnosti "logické jednotky" (který musí být jedinečný na datový disk na virtuálním počítači), "createOption" ("prázdná" je aktuálně jedinou podporovanou možností) a "diskSizeGB" (velikost disku v gigabajtech; musí být větší než 0 a menší než 1024) jako v následujícím příkladu:
 
 ```
 "dataDisks": [
@@ -144,7 +144,7 @@ Další informace o použití datových disků se škálovacími sadami najdete 
 
 
 ## <a name="next-steps"></a>Další postup
-Příklad šablony Resource Manageru pomocí škálovací sady, vyhledejte "vmss" v [úložišti github šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates).
+Příklad šablony Resource Manageru pomocí škálovací sady, vyhledejte "vmss" v [úložišti šablon Azure Quickstart na Githubu](https://github.com/Azure/azure-quickstart-templates).
 
 Obecné informace, podívejte se [hlavní cílové stránce pro škálovací sady](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
 

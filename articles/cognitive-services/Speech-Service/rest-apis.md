@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5a3c160fcb550fc4f0c92145733aa993b95bd112
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b38c61f4fe884137204cba6d99d5e383b3259a0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089340"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338886"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -34,7 +34,7 @@ Každý požadavek na buď speech to text nebo převod textu na řeč rozhraní 
 | Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Ano | Ne |
-| Autorizace: nosiče | Ano | Ano |
+| Autorizace: Nosiče | Ano | Ano |
 
 Při použití `Ocp-Apim-Subscription-Key` záhlaví, je nutné pouze zadejte klíč předplatného. Příklad:
 
@@ -322,9 +322,20 @@ Přenos rozdělený do bloků dat (`Transfer-Encoding: chunked`) může pomoct s
 Tento vzorový kód ukazuje, jak posílat zvuk v blocích. Zvukový soubor záhlaví by měl obsahovat pouze u prvního bloku. `request` připojen objekt HTTPWebRequest na příslušný koncový bod REST. `audioFile` je cesta k zvukový soubor na disku.
 
 ```csharp
+
+    HttpWebRequest request = null;
+    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+    request.SendChunked = true;
+    request.Accept = @"application/json;text/xml";
+    request.Method = "POST";
+    request.ProtocolVersion = HttpVersion.Version11;
+    request.Host = host;
+    request.ContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
+    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
+    request.AllowWriteStreamBuffering = false;
+
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-
     /*
     * Open a request stream and write 1024 byte chunks in the stream one at a time.
     */
@@ -424,20 +435,10 @@ Toto je typická odpověď pro `detailed` rozpoznávání.
 
 ## <a name="text-to-speech-api"></a>Převod textu na řeč rozhraní API
 
-Tyto oblasti jsou podporovány pro převod textu na řeč pomocí rozhraní REST API. Ujistěte se, že vyberete koncového bodu, který odpovídá oblasti vašeho předplatného.
+Převod textu na řeč rozhraní REST API podporuje neuronových sítí a standardní převod textu na řeč hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
-
-Speech Service podporuje výstupní zvuková 24 KHz, spolu s 16 Khz výstupy, které byly k dispozici pro zpracování řeči Bingu. Jsou podporovány čtyři 24 KHz výstupních formátů a dvě 24 KHz hlasy.
-
-### <a name="voices"></a>Hlasů
-
-| Národní prostředí | Jazyk   | Pohlaví | Mapování |
-|--------|------------|--------|---------|
-| en-US  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" |
-| en-US  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)" |
-
-Zobrazit úplný seznam dostupných hlasů [podporované jazyky](language-support.md#text-to-speech).
+* Úplný seznam hlasů, naleznete v tématu [jazykovou podporu](language-support.md#text-to-speech).
+* Informace o dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#text-to-speech).
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -452,7 +453,7 @@ Tato tabulka obsahuje povinné a nepovinné hlavičky pro žádosti o převod ř
 
 ### <a name="audio-outputs"></a>Zvukový výstupy
 
-Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti o jako `X-Microsoft-OutputFormat` záhlaví. Každý zahrnuje s přenosovou rychlostí a typ kódování.
+Toto je seznam podporovaných formátů zvuku, které se odesílají v každé žádosti o jako `X-Microsoft-OutputFormat` záhlaví. Každý zahrnuje s přenosovou rychlostí a typ kódování. Speech Service podporuje 24 KHz a 16 KHz zvuku výstupů.
 
 |||
 |-|-|

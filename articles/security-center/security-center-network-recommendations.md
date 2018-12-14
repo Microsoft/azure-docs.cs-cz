@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 449fdbceeb0b64d58c589fe5dbde61302ee27afb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309204"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338229"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Chraňte své prostředky sítě v Azure Security Center
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol k posílení zabezpečení a ochraně vašich prostředků.
@@ -72,9 +72,9 @@ V **topologie** zobrazení mapy sítě, můžete zobrazit tyto přehledy o vaši
 Protože mapy je interaktivní a dynamické, každý uzel je po kliknutí a můžete změnit zobrazení podle filtry:
 
 1. Můžete upravit, co vidíte na mapování sítě pomocí filtrů v horní části. Můžete se soustředit na mapě, podle:
-   -  **Stav zabezpečení**: můžete filtrovat na mapě, podle závažnosti (vysoká, střední, nízká) vašich prostředků Azure.
-   - **Doporučení**: můžete vybrat, které prostředky se zobrazují podle doporučení, které jsou aktivní na tyto prostředky. Například můžete zobrazit jenom prostředky, pro které Security Center doporučí že povolení skupin zabezpečení sítě.
-   - **Sítě zóny**: ve výchozím nastavení, na mapě zobrazí pouze internetové prostředky, můžete vybrat interní virtuální počítače.
+   -  **Stav zabezpečení**: Můžete filtrovat na mapě, podle závažnosti (vysoká, střední, nízká) vašich prostředků Azure.
+   - **Doporučení**: Můžete vybrat, které prostředky se zobrazují podle doporučení, které jsou aktivní na tyto prostředky. Například můžete zobrazit jenom prostředky, pro které Security Center doporučí že povolení skupin zabezpečení sítě.
+   - **Sítě zóny**: Ve výchozím nastavení na mapě zobrazí pouze internetové různé prostředky, můžete vybrat interní virtuální počítače.
  
 2. Můžete kliknout na **resetování** v levém horním rohu, kdykoli se vraťte do výchozího stavu z mapy.
 
@@ -149,6 +149,6 @@ Další informace o doporučení, které se vztahují na jiné typy prostředků
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.

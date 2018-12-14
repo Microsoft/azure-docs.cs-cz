@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7af8015e424b4a9169a9b80ed5e7070a8fa6de1c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4322841f126e4aa017b4d901cbfb1afd39e5bccf
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643317"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342568"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování v Durable Functions – ukázka počasí sledovacího procesu
 
@@ -32,7 +32,7 @@ Tato ukázka sleduje aktuální počasí do umístění a upozorní uživatele p
 * Monitorování lze ukončit, když je splněna některá podmínka nebo ukončeno jiným procesem.
 * Monitorování může mít parametry. Ukázka ukazuje, jak stejným procesem monitorování počasí lze použít pro jakékoli požadované umístění a telefonní číslo.
 * Monitorování jsou škálovatelné. Protože jednotlivých monitorování je instance Orchestrace, je možné vytvořit více monitorů bez nutnosti vytvářet nové funkce nebo definovat další kód.
-* Monitorování dala se snadno integrovat do větší pracovních postupů. Monitorování může být jeden oddíl složitější funkce Orchestrace, nebo [dílčí Orchestrace](https://docs.microsoft.com/azure/azure-functions/durable-functions-sub-orchestrations).
+* Monitorování dala se snadno integrovat do větší pracovních postupů. Monitorování může být jeden oddíl složitější funkce Orchestrace, nebo [dílčí Orchestrace](durable-functions-sub-orchestrations.md).
 
 ## <a name="configuring-twilio-integration"></a>Konfigurace integrace platformy Twilio
 
@@ -55,11 +55,11 @@ Jakmile budete mít klíč rozhraní API, přidejte následující **nastavení 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
 * `E3_Monitor`: Funkce orchestrátoru, který volá `E3_GetIsClear` pravidelně. Volá `E3_SendGoodWeatherAlert` Pokud `E3_GetIsClear` vrací hodnotu true.
-* `E3_GetIsClear`Funkce: aktivitu, která kontroluje aktuální počasí pro určité místo.
+* `E3_GetIsClear`: Funkce aktivitu, která kontroluje aktuální počasí pro určité místo.
 * `E3_SendGoodWeatherAlert`: Aktivita funkce, která odešle zprávu SMS přes Twilio.
 
 Následující části popisují konfiguraci a kód, který se používají pro skriptovací C# a JavaScript. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
- 
+
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Počasí monitorování Orchestrace (Visual Studio Code a Azure portal ukázkový kód)
 
 **E3_Monitor** funkce používá standardní *function.json* pro funkce nástroje orchestrator.
@@ -72,7 +72,7 @@ Tady je kód, který implementuje funkce:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -83,7 +83,7 @@ Tato funkce orchestrátoru provede následující akce:
 3. Volání **E3_GetIsClear** k určení, zda jsou na požadované umístění skies vymazat.
 4. Pokud se počasí je jasné, zavolá **E3_SendGoodWeatherAlert** odeslat oznámení SMS pro požadovaný telefonní číslo.
 5. Vytvoří trvalý časovače obnovit Orchestrace při dalším intervalu dotazování. Ukázka používá pevně zakódovaný hodnotu pro zkrácení.
-6. Dál běžela až [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) předá přijde čas vypršení platnosti monitorování a upozornění zprávou SMS.
+6. Dál běžela až [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) nebo `currentUtcDateTime` (JavaScript) předá čas vypršení platnosti monitorování nebo odeslání upozornění zprávou SMS.
 
 Více instancemi nástroje orchestrator můžete současně spustit odesláním více **MonitorRequests**. Je možné zadat umístění pro monitorování a telefonního čísla pro zaslání upozornění zprávou SMS na.
 
@@ -107,7 +107,7 @@ A tady je implementace. Podobně jako POCOs použitá pro přenos dat logiky pra
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +121,7 @@ A tady je kód, který se odešle zpráva SMS:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -134,8 +134,9 @@ POST https://{host}/orchestrators/E3_Monitor
 Content-Length: 77
 Content-Type: application/json
 
-{ "Location": { "City": "Redmond", "State": "WA" }, "Phone": "+1425XXXXXXX" }
+{ "location": { "city": "Redmond", "state": "WA" }, "phone": "+1425XXXXXXX" }
 ```
+
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
@@ -144,9 +145,6 @@ RetryAfter: 10
 
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
-
-   > [!NOTE]
-   > V současné době JavaScript Orchestrace starter funkce nemohou vracet instanci správy identifikátorů URI. Tato funkce bude přidána v novější verzi.
 
 **E3_Monitor** spuštění instance a dotazy aktuální počasí pro požadované umístění. Pokud není zaškrtnuto, že volá funkci aktivity Odeslat výstrahu; počasí jinak nastaví časovače. Když čas vyprší, bude pokračovat orchestraci.
 
@@ -168,7 +166,7 @@ Uvidíte, že protokoly aktivit orchestraci pohledem na funkci na portálu Azure
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Bude orchestraci [ukončit](durable-functions-instance-management.md#terminating-instances) po jeho vypršení časového limitu je dosaženo nebo jeho zaškrtnutí zrušte skies zjištění. Můžete také použít `TerminateAsync` uvnitř jiného funkci nebo volání **terminatePostUri** HTTP POST webhooku odkazuje v odpovědi 202 nad nahrazení `{text}` s důvod ukončení:
+Bude orchestraci [ukončit](durable-functions-instance-management.md#terminating-instances) po jeho vypršení časového limitu je dosaženo nebo jeho zaškrtnutí zrušte skies zjištění. Můžete také použít `TerminateAsync` (.NET) nebo `terminate` (JavaScript) uvnitř jiné funkci nebo volání **terminatePostUri** HTTP POST webhooku odkazuje v odpovědi 202 výše, nahrazení `{text}` s důvod ukončení:
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

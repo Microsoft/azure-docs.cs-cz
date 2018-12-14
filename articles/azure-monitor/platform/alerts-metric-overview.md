@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 8eb23528391ffeccdad6ba92345d28b31e18f0a3
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: cf315718377210e13a6634c0eaf8caab158bcc4d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322096"
+ms.locfileid: "53342217"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Pochopit, jak metrika výstrahy práce ve službě Azure Monitor
 
-Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být metriky platformy [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Log Analytics převést na metriky](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md), standardních metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
+Upozornění metrik ve službě Azure Monitor pracovat nad vícedimenzionálních metrik. Tyto metriky můžou být metriky platformy [vlastní metriky](../../azure-monitor/platform/metrics-custom-overview.md), [oblíbených protokolů ze služby Log Analytics převést na metriky](../../azure-monitor/platform/alerts-metric-logs.md), standardních metrik Application Insights. Upozornění metrik hodnocení v pravidelných intervalech a zkontrolujte, zda podmínky na jeden nebo více metrika časových řad jsou true a vás upozorní, pokud se splní hodnocení. Upozornění na metriky jsou stavová, to znamená, že pouze odeslat oznámení při změně stavu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují upozornění na metriku
 
@@ -85,7 +85,7 @@ Můžete určit rozsah monitorování podle jednoho upozornění na metriku v je
 - všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupin prostředků v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
-Vytváření pravidla upozornění na metriky, které monitorují několik prostředků není aktuálně podporováno prostřednictvím webu Azure portal. Můžete vytvořit tato pravidla pomocí [šablon Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Zobrazí se jednotlivá oznámení pro každý virtuální počítač. 
+Vytváření pravidla upozornění na metriky, které monitorují několik prostředků není aktuálně podporováno prostřednictvím webu Azure portal. Můžete vytvořit tato pravidla pomocí [šablon Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Zobrazí se jednotlivá oznámení pro každý virtuální počítač. 
 
 ## <a name="typical-latency"></a>Typické latence
 
@@ -134,5 +134,5 @@ Pokud používáte klasického upozornění metrik ještě dnes a chcete zjistit
 ## <a name="next-steps"></a>Další postup
 
 - [Zjistěte, jak vytvořit, zobrazit a spravovat upozornění metrik v Azure](alerts-metric.md)
-- [Zjistěte, jak nasadit upozornění na metriku pomocí šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md)
+- [Zjistěte, jak nasadit upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-metric-create-templates.md)
 - [Další informace o skupinách akcí](action-groups.md)

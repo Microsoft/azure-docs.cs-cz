@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9cd89d861a758d51788dc4180af10882f0144977
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a4072e71d1e4ee54c4cffc3d16aa7c9b8e265cb8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317360"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337662"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Aktualizovat verzi operačního systému ve službě Azure Security Center
 Pro virtuální počítače (VM) ve službě cloud services Azure Security Center vám doporučí aktualizovat operační systém (OS) Pokud je k dispozici novější verze.  Pouze cloud services – webové a pracovní role běžících v produkčním prostředí, které jsou monitorovány sloty.
@@ -43,7 +43,7 @@ Tento článek vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

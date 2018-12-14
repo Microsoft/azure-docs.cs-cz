@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 9cd8e21ede794fcb46683ea7cedd2bf9ed833204
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643030"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338222"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Správa verzí v Durable Functions (Azure Functions)
 
@@ -121,25 +121,17 @@ Většina testování převzetí služeb při způsobem zajistit, že změny zp�
 
 Centra úloh se dá nakonfigurovat v *host.json* to následujícím způsobem:
 
+#### <a name="functions-1x"></a>Functions 1.x
+
 ```json
 {
-    "extensions": {
-        "durableTask": {
-            "HubName": "MyTaskHubV2"
-        }
+    "durableTask": {
+        "HubName": "MyTaskHubV2"
     }
 }
 ```
 
-> [!NOTE]
-> Pro funkce V1 *host.json* by měl být nakonfigurovaný jako toto místo
->```json
->{
->    "durableTask": {
->        "HubName": "MyTaskHubV2"
->    }
->}
->```
+#### <a name="functions-2x"></a>Functions 2.x
 
 Výchozí hodnota je `DurableFunctionsHub`.
 

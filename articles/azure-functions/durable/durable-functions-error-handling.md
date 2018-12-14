@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7a55e28f34f36cd02b67e56c6262b9e1f06dde8f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642659"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338188"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Je zařazeno zpět do funkce orchestrátoru a vyvolána jako jakoukoliv výjimku
 
 Představte si třeba následující funkce orchestrátoru, který převádí prostředků z jednoho účtu:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -38,16 +38,16 @@ public static async Task Run(DurableOrchestrationContext context)
 
     await context.CallActivityAsync("DebitAccount",
         new
-        { 
+        {
             Account = transferDetails.SourceAccount,
             Amount = transferDetails.Amount
         });
 
     try
     {
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.DestinationAccount,
                 Amount = transferDetails.Amount
             });
@@ -56,9 +56,9 @@ public static async Task Run(DurableOrchestrationContext context)
     {
         // Refund the source account.
         // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",         
+        await context.CallActivityAsync("CreditAccount",
             new
-            { 
+            {
                 Account = transferDetails.SourceAccount,
                 Amount = transferDetails.Amount
             });
@@ -66,7 +66,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -108,7 +108,7 @@ Pokud volání **CreditAccount** funkce selže u cílového účtu, funkce orche
 
 Při volání funkce aktivity nebo dílčí Orchestrace funkce, můžete určit zásadu automatické opakování. V následujícím příkladu se pokusí zavolat funkci až třikrát a čekat mezi opakováními 5 sekund:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -118,41 +118,41 @@ public static async Task Run(DurableOrchestrationContext context)
         maxNumberOfAttempts: 3);
 
     await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-    
+
     // ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
     const retryOptions = new df.RetryOptions(5000, 3);
-    
+
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
     // ...
 });
 ```
 
-`CallActivityWithRetryAsync` (C#) Nebo `callActivityWithRetry` přebírá rozhraní API (JS) `RetryOptions` parametru. Suborchestration volá pomocí `CallSubOrchestratorWithRetryAsync` (C#) nebo `callSubOrchestratorWithRetry` rozhraní API (JS) můžete použít tyto stejné zásady opakování.
+`CallActivityWithRetryAsync` (.NET) nebo `callActivityWithRetry` přebírá (JavaScript) rozhraní API `RetryOptions` parametru. Suborchestration volá pomocí `CallSubOrchestratorWithRetryAsync` (.NET) nebo `callSubOrchestratorWithRetry` (JavaScript) rozhraní API můžete použít tyto stejné zásady opakování.
 
 Existuje několik možností pro přizpůsobení zásady automatické opakování. Jsou to tyto země:
 
-* **Maximální počet pokusů o**: maximální počet opakovaných pokusů.
-* **První interval opakování**: dobu čekání před prvním opakováním pokus.
-* **Omezení rychlosti koeficient**: koeficient používá k určení míra zvýšení rychlosti. Výchozí hodnota je 1.
-* **Maximální interval opakování**: maximální dobu čekání mezi pokusy o opakování.
-* **Časového limitu opakování**: opakování maximální množství času na to. Výchozí chování je to chcete zkusit znovu po neomezenou dobu.
-* **Zpracování**: uživatelské zpětné volání, je možné zadat, která určuje, zda je třeba opakovat volání funkce.
+* **Maximální počet pokusů o**: Maximální počet opakovaných pokusů.
+* **První interval opakování**: Množství času se má čekat před první pokus o opakování.
+* **Omezení rychlosti koeficient**: Koeficient používá k určení míra zvýšení rychlosti. Výchozí hodnota je 1.
+* **Maximální interval opakování**: Maximální množství času čekat mezi opakovanými pokusy.
+* **Časového limitu opakování**: Počet opakování maximální množství času na to. Výchozí chování je to chcete zkusit znovu po neomezenou dobu.
+* **Zpracování**: Uživatelské zpětné volání lze určit, který určuje, zda je třeba opakovat volání funkce.
 
 ## <a name="function-timeouts"></a>Vypršení časových limitů – funkce
 
-Můžete chtít opustit volání funkce v rámci funkce orchestrátoru, pokud trvá moc dlouho. Správný způsob, jak to udělat ještě dnes je tak, že vytvoříte [trvalý časovače](durable-functions-timers.md) pomocí `context.CreateTimer` ve spojení s `Task.WhenAny`, jako v následujícím příkladu:
+Můžete chtít opustit volání funkce v rámci funkce orchestrátoru, pokud trvá moc dlouho. Správný způsob, jak to udělat ještě dnes je tak, že vytvoříte [trvalý časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -181,7 +181,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");

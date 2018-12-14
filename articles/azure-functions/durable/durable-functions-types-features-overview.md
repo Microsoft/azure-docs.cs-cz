@@ -8,18 +8,18 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 07/04/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 265314ebf2568bd586934d371e1e6c1d74e0b9bb
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 359594ab91b903033ecc303eccd270988be19810
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642309"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336522"
 ---
 # <a name="overview-of-function-types-and-features-for-durable-functions-azure-functions"></a>Přehled funkcí pro Durable Functions (Azure Functions) a typy funkce
 
-Odolná služba Azure Functions poskytuje stavové Orchestrace provádění funkce. Řešení se skládá z různých Azure Functions je odolné funkce. Každá z těchto funkcí můžete přehrát různé role v rámci Orchestrace. Následující dokument obsahuje přehled typů funkcí, které jsou součástí Orchestrace odolné funkce. Zahrnuje také některé běžné vzory v propojení funkce.  Pokud chcete rovnou začít, vytvořte první odolné funkce v [ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md).
+Odolná služba Functions poskytuje stavové Orchestrace provádění funkce. Řešení se skládá z různých Azure Functions je odolné funkce. Každá z těchto funkcí můžete přehrát různé role v rámci Orchestrace. Následující dokument obsahuje přehled typů funkcí, které jsou součástí Orchestrace odolné funkce. Zahrnuje také některé běžné vzory v propojení funkce.  Pokud chcete rovnou začít, vytvořte první odolné funkce v [ C# ](durable-functions-create-first-csharp.md) nebo [JavaScript](quickstart-js-vscode.md).
 
 ![Typy odolná služba functions][1]  
 
@@ -27,9 +27,11 @@ Odolná služba Azure Functions poskytuje stavové Orchestrace provádění funk
 
 ### <a name="activity-functions"></a>Funkce aktivity
 
-Aktivita funkce jsou základní jednotku práce v trvalé Orchestrace.  Aktivita funkce jsou funkce a úkoly jsou orchestrované v procesu.  Může například vytvořit odolné funkce, která se zákazníkovi účtovat zpracování objednávky - zkontrolujte soubor inventáře a vytvořit dodávku.  Jedna z těchto úloh by funkce protokolem aktivit.  Aktivita funkce nemají v typu práce můžete můžete v nich nějaká omezení.  Může být napsán v jakémkoli jazyce, Azure Functions podporuje.  Trvalý úloh framework zaručuje, že každá funkce volané aktivita se spustí alespoň jednou během Orchestrace.
+Aktivita funkce jsou základní jednotku práce v trvalé Orchestrace.  Aktivita funkce jsou funkce a úkoly jsou orchestrované v procesu.  Může například vytvořit odolné funkce, která se zákazníkovi účtovat zpracování objednávky - zkontrolujte soubor inventáře a vytvořit dodávku.  Jedna z těchto úloh by funkce protokolem aktivit.  Aktivita funkce nemají v typu práce můžete můžete v nich nějaká omezení.  Můžete napsat v jakémkoli [jazyk podporovaný Durable Functions](durable-functions-overview.md#language-support). Trvalý úloh Framework zaručuje, že každá funkce volané aktivita bude provedena alespoň jednou během Orchestrace.
 
-Funkce protokolem aktivity musí být aktivované [aktivační událost pro aktivitu](durable-functions-bindings.md#activity-triggers).  Tato funkce se zobrazí [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Aktivační událost můžete také navázat na libovolný objekt a zajistěte tak předání vstupy do funkce.  Aktivita funkce může také vracet hodnoty zpět na orchestrátoru.  Pokud odesílání nebo mnoho hodnot vrácení z funkce aktivitu, můžete [využít řazených kolekcí členů nebo pole](durable-functions-bindings.md#passing-multiple-parameters).  Aktivita funkce se dá spouštět jenom z instance Orchestrace.  Když nějaký kód mohou sdílet mezi funkcí sady aktivit a jiné funkci (například funkci aktivovanou protokolem HTTP), každá funkce může mít jenom jeden trigger.
+Funkce protokolem aktivity musí být aktivované [aktivační událost pro aktivitu](durable-functions-bindings.md#activity-triggers).  Funkce .NET obdrží [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr. Aktivační událost můžete také navázat na libovolný objekt a zajistěte tak předání vstupy do funkce. V jazyce JavaScript, vstup je přístupná prostřednictvím `<activity trigger binding name>` vlastnost [ `context.bindings` objekt](../functions-reference-node.md#bindings).
+
+Aktivita funkce může také vracet hodnoty zpět na orchestrátoru.  Pokud odesílání nebo mnoho hodnot vrácení z funkce aktivitu, můžete [využít řazených kolekcí členů nebo pole](durable-functions-bindings.md#passing-multiple-parameters).  Aktivita funkce se dá spouštět jenom z instance Orchestrace.  Když nějaký kód mohou sdílet mezi funkcí sady aktivit a jiné funkci (například funkci aktivovanou protokolem HTTP), každá funkce může mít jenom jeden trigger.
 
 Další informace a příklady najdete v [Durable Functions vazby článku](durable-functions-bindings.md#activity-triggers).
 
@@ -79,7 +81,9 @@ Další informace a příklady najdete v [článku pro zpracování chyb](durabl
 
 Přestože trvalý Orchestrace obecně kdekoli v rámci kontextu aplikace s jedinou funkci, existují vzorce a umožňují koordinaci Orchestrace napříč mnoha aplikace function App.  I když může být děje komunikaci mezi aplikacemi přes protokol HTTP, pomocí rozhraní odolné pro každou aktivitu znamená, že trvalý proces můžete udržovat stále mezi dvěma aplikacemi.
 
-Příklad aplikace funkcí mezi Orchestrace v jazyce C# jsou uvedeny níže.  Externí Orchestrace se spustí jednu aktivitu. Jiné aktivity pak načte a vrátí stav.  Orchestrátor bude čekat stavu na dokončení, než budete pokračovat.
+Příkladem aplikace funkcí mezi Orchestrace ve C# a jazyka JavaScript jsou uvedeny níže.  Externí Orchestrace se spustí jednu aktivitu. Jiné aktivity pak načte a vrátí stav.  Orchestrátor bude čekat stavu na dokončení, než budete pokračovat.
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("OrchestratorA")]
@@ -128,6 +132,64 @@ public static async Task<bool> CheckIsComplete([ActivityTrigger] string statusUr
         return response.StatusCode == HttpStatusCode.OK;
     }
 }
+```
+
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    // Do some work...
+
+    // Call a remote orchestration
+    const statusUrl = yield context.df.callActivity("StartRemoteOrchestration", "OrchestratorB");
+
+    // Wait for the remote orchestration to complete
+    while (true) {
+        const isComplete = yield context.df.callActivity("CheckIsComplete", statusUrl);
+        if (isComplete) {
+            break;
+        }
+
+        const waitTime = moment(context.df.currentUtcDateTime).add(1, "m").toDate();
+        yield context.df.createTimer(waitTime);
+    }
+
+    // B is done. Now go do more work...
+});
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, orchestratorName) {
+    const options = {
+        method: "POST",
+        uri: `https://appB.azurewebsites.net/orchestrations/${orchestratorName}`,
+        body: ""
+    };
+
+    const statusUrl = await request(options);
+    return statusUrl;
+};
+```
+
+```javascript
+const request = require("request-promise-native");
+
+module.exports = async function(context, statusUrl) {
+    const options = {
+        method: "GET",
+        uri: statusUrl,
+        resolveWithFullResponse: true,
+    };
+
+    const response = await request(options);
+    // 200 = Complete, 202 = Running
+    return response.statusCode === 200;
+};
 ```
 
 ## <a name="next-steps"></a>Další postup

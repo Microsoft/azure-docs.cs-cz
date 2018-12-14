@@ -17,14 +17,14 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422435"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337134"
 ---
-# <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře 
+# <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře
 
 Pokud se právě začínají integrovat s Azure Active Directory, Microsoft identity nebo Microsoft Graph API, nebo když implementujete nové funkce do vaší aplikace, jsou časy, které potřebujete získat pomoc od komunity nebo pochopit, bez ohledu Možnosti podpory, které máte jako vývojář. Tento článek vám pomůže porozumět následujících souhrn těchto možností:
 
@@ -38,7 +38,7 @@ Pokud se právě začínají integrovat s Azure Active Directory, Microsoft iden
 
 ## <a name="search"></a>Search
 
-Pokud máte dotazy související s vývojem, bude pravděpodobně možné najít odpověď, musíte na dokumentaci pro naše [githubu ukázky](https://github.com/azure-samples), nebo odpovědi na [Stack Overflow](https://www.stackoverflow.com) dotazy.
+Pokud máte dotazy související s vývojem, bude pravděpodobně možné najít odpověď, musíte na dokumentaci pro naše [Githubu ukázky](https://github.com/azure-samples), nebo odpovědi na [Stack Overflow](https://www.stackoverflow.com) dotazy.
 
 ### <a name="scoped-search"></a>Hledání s vymezeným oborem
 Rychlejší výsledky, omezit rozsah hledání na webu Stack Overflow, dokumentaci a ukázky kódu pomocí následujících na vaše [oblíbený vyhledávací web](https://bing.com):
@@ -76,7 +76,7 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 |Další oblasti související s ověřením nebo autorizací témata |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
-> Následující příspěvky z přetečení zásobníku obsahují tipy, jak provádět dotazy a tipy k přidání zdrojového kódu – držet těchto pokynů může přispět k vyšší pravděpodobnost pro členy komunity k vyhodnocení a rychle reagovat na vaši otázku:  
+> Následující příspěvky z přetečení zásobníku obsahují tipy, jak provádět dotazy a tipy k přidání zdrojového kódu – držet těchto pokynů může přispět k vyšší pravděpodobnost pro členy komunity k vyhodnocení a rychle reagovat na vaši otázku:
 > - [Jak můžu pokládat správné otázky](https://stackoverflow.com/help/how-to-ask)
 > - [Vytvoření minimální, dokončeno a ověřitelné příklad](https://stackoverflow.com/help/mcve)
 

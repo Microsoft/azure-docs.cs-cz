@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8cdcdd6c5e0201f8f6af39faab0a67a68920e568
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094572"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342086"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
-Různé jazyky jsou podporovány pro různé funkce služby řeči. Následující tabulky shrnují jazykovou podporu.
+Různé jazyky jsou podporovány pro různé funkce hlasové služby. Následující tabulky shrnují jazykovou podporu.
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
@@ -62,7 +62,24 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky. 
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
-Rozhraní API syntézu řeči nabízí následující hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
+Převod textu na řeč rozhraní REST API podporuje tyto hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
+
+### <a name="neural-voices-preview"></a>Hlasy neuronových sítí (Preview)
+
+Převod textu na řeč neuronových sítí je nový typ syntézu řeči s využitím hloubkových neurálních sítí. Při použití neuronových sítí hlasový vstup, je téměř nerozeznatelná od lidí záznamy řečového.
+
+Neurální hlasy slouží k interakce s chatovacích a virtuálních asistentů přirozenější a poutavější převést digitální texty např. e knihy audiobooks a vylepšit systémy navigaci. Přirozené prosody podobnou té lidské a jasné rozdělení slov Neurální hlasy výrazně snížit naslouchání reorganizovaly když uživatelé komunikují s AI systémy.
+
+Úplný seznam neuronových sítí hlasy a dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#neural-voices).
+
+| Národní prostředí | Jazyk | Pohlaví | Název mapování služby|
+|--------|----------|---------|--------------------|
+| en-US | English (US) | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, GuyNeural)" |
+| en-US | English (US) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaNeural)" |
+
+### <a name="standard-voices"></a>Standardní hlasů
+
+Jsou k dispozici ve více než 45 jazyků a národních prostředí, které umožňují převod textu na řeč syntetizovaný více než 75 standardní hlasy. Další informace o dostupnosti v jednotlivých oblastech najdete v tématu [oblastech](regions.md#standard-voices).
 
 Národní prostředí | Jazyk | Pohlaví | Název mapování služby
 -------|----------|---------|--------------------

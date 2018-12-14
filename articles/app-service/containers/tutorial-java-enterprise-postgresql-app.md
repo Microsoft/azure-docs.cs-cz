@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2b8151117a9093cb58ffe6db45bc5ee1a9abd54b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259252"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344223"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
-Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](http://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [služby App Service pro Linux](app-service-linux-intro.md).
+Tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Java Enterprise Edition (EE) ve službě Azure App Service a její připojení k databázi Postgres. Až budete hotovi, budete mít [WildFly](https://www.wildfly.org/about/) ukládající data ve [databáze Azure pro Postgres](https://azure.microsoft.com/services/postgresql/) běžící v Azure [služby App Service pro Linux](app-service-linux-intro.md).
 
 V tomto kurzu se naučíte, jak:
 > [!div class="checklist"]

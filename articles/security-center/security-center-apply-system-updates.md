@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a0d0cbacfa03080d519e5d9e3592ad01ed58b933
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f3c055d55da06e6410520084a1c96baa78b91496
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316579"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341708"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
 Azure Security Center monitoruje denní Windows a Linuxem a virtuální počítače (VM) pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurována na počítači Windows. Security Center také vyhledává nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítači chybí aktualizace systému, Security Center vám doporučí použít aktualizace systému.
@@ -45,19 +45,19 @@ V tomto příkladu budeme používat **Compute**.
 
   Dolní části řídicího panelu se zobrazí všechny chybějící aktualizace ve vašich virtuálních počítačů a počítačů a závažnost chybějící aktualizace.  Seznam obsahuje:
 
-    - Název: Název chybějící aktualizace.
+    - JMÉNO: Název chybějící aktualizace.
     - NE. Virtuálních počítačů a počítačů: Celkový počet virtuálních počítačů a počítačů, které chybí daná aktualizace.
-    - Stav: Aktuální stav doporučení:
+    - STAV: Aktuální stav doporučení:
 
       - Otevřít: Doporučení dosud nebylo řešeno.
-      - Probíhá: Doporučení se právě zavádí na tyto prostředky a nevyžaduje žádné akce se.
+      - Probíhá: Doporučení se právě zavádí k těmto prostředkům, a nevyžaduje žádné akce se.
       - Vyřešeno: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
 
     - ZÁVAŽNOST: Popisuje závažnost tohoto konkrétního doporučení:
 
       - Vysoká: Ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
-      - Střední: Nekritické nebo další kroky jsou potřebné k dokončení procesu nebo odstranění ohrožení.
-      - Nízká: Chybu mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+      - Střední: Nekritická nebo další kroky jsou nutné k dokončení procesu nebo odstranění ohrožení.
+      - Nízký: Ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 3. Vyberte chybějící aktualizace v seznamu zobrazíte podrobnosti.
 
@@ -84,7 +84,7 @@ Restartujte virtuální počítač z Azure na dokončení procesu.
 ## <a name="next-steps"></a>Další postup
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7a813d091378a0cef3193f7da1937eb0db00c1d1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8dcf4fb44456dcdad82c4c6e44749d6aa2918658
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264025"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340781"
 documentType: LandingData
 title: Uživatelská dokumentace k Azure Stacku
 metadata:
@@ -69,7 +69,6 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Nasazení aplikací do Azure Stacku a Azure</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">Konfigurace hybridní Cloudová identita s aplikacemi Azure a Azure Stack</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Konfigurace připojení k hybridní cloud s Azure a Azure Stack</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-solution-machine-learning">Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Vytvořit řešení analýzy pracovních dat s využitím Azure a Azure Stack </a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">Vytvoření řešení škálování cloudu s Azure</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Vytvoření řešení geograficky distribuované aplikace s využitím Azure a Azure Stack</a>

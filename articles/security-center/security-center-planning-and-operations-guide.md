@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f24baaf07f86722bc461cbb79e262f63b46c8a1f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: b3d6f30aa2a7858d673199e55090e96fb9aba915
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619941"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337625"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Průvodce plánováním a provozem služby Azure Security Center
 Tento průvodce je určený odborníkům na informační technologie (IT), IT architektům, analytikům zabezpečení informací a správcům cloudů, jejichž společnosti hodlají začít používat Azure Security Center.
@@ -161,7 +161,7 @@ Data shromážděná z agenta Microsoft Monitoring Agent (jménem služby Azure 
 
 Na webu Azure Portal můžete procházením zobrazit seznam pracovních prostorů Log Analytics, včetně těch vytvořených službou Azure Security Center. Pro nové pracovní prostory se vytvoří související skupina prostředků. Budou se řídit těmito zásadami vytváření názvů:
 
-* Pracovní prostor: *DefaultWorkspace-[ID_předplatného]-[zeměpisné umístění]*
+* Pracovní prostor: *DefaultWorkspace-[Id_předplatného]-[zeměpisné_umístění]*
 * Skupina prostředků: *DefaultResourceGroup-[zeměpisné_umístění]*
 
 U pracovních prostorů vytvořených službou Azure Security Center se data uchovávají po dobu 30 dnů. U existujících pracovních prostorů uchovávání závisí na cenové úrovni pracovního prostoru. Pokud chcete, můžete použít také existující pracovní prostor.
@@ -195,7 +195,7 @@ Jako součást každodenních operací zabezpečení si naplánujte navštíven�
 ### <a name="monitoring-for-new-or-changed-resources"></a>Sledování nových nebo změněných prostředků
 Většina prostředí Azure je dynamická a pravidelně v nich probíhá přidávání a odebírání prostředků, konfigurace a další změny. Security Center pomáhá zajistit přehled o stavu zabezpečení těchto nových prostředků.
 
-Když do prostředí Azure přidáte nové prostředky (virtuální počítače, databáze SQL), Security Center tyto prostředky automaticky zjistí a začne sledovat jejich zabezpečení. To zahrnuje také webové role a role pracovního procesu PaaS. Pokud je v [zásadě zabezpečení](security-center-azure-policy.md) povolené shromažďování dat, pro vaše virtuální počítače se automaticky povolí další funkce sledování.
+Když do prostředí Azure přidáte nové prostředky (virtuální počítače, databáze SQL), Security Center tyto prostředky automaticky zjistí a začne sledovat jejich zabezpečení. To zahrnuje také webové role a role pracovního procesu PaaS. Pokud je v [zásadě zabezpečení](tutorial-security-policy.md) povolené shromažďování dat, pro vaše virtuální počítače se automaticky povolí další funkce sledování.
 
 ![Klíčové oblasti](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 

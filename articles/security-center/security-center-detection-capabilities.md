@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 922e0afb77a9f1e42f014770ccc51d2a356d112b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e9aacdd75d35a714a9f878d059514fd8aa65f50d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843729"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340738"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje možnosti pokročilé detekce Azure Security Center, která pomáhá identifikovat aktivní hrozby pro vaše prostředky Microsoft Azure – Windows i Linuxem – a poskytne vám informace potřebné pro rychlou reakci na.
 
-Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. Bezplatná zkušební verze je k dispozici. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-azure-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. Bezplatná zkušební verze je k dispozici. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](tutorial-security-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="responding-to-todays-threats"></a>Reakce na současné hrozby
@@ -57,24 +57,24 @@ Behaviorální analýza je technika, která analyzuje a porovnává data se sado
 
 Kromě toho se pomocí vzájemné souvislosti s dalšími signály hledají podpůrné důkazy rozšířené kampaně. Tato korelace pomáhá identifikovat události, které jsou konzistentní se zavedenými ukazateli ohrožení zabezpečení. Možné příklady:
 
-* **Podezřelé spouštění procesů:** Útočníci používají řadu technik k tajnému spouštění škodlivého softwaru. Útočník může například malware pojmenovat stejně jako legitimní systémové soubory, ale umístí tyto souboru do alternativních umístění, nebo použije název velmi podobný neškodnému souboru nebo zamaskuje skutečnou příponu souboru. Modely služby Security Center zpracovávají chování a monitorují spouštění procesů s cílem odhalit právě takovéto mimořádné hodnoty.  
-* **Skrytý malware a pokusy o zneužití:** Sofistikovaný malware dokáže obejít tradiční antimalwarové produkty tím, že nikdy nezapisuje na disk nebo softwarové komponenty ukládané na disk šifruje.  Takový malware lze ale zjistit pomocí analýzy paměti, protože aby malware mohl fungovat, musí v paměti zanechat stopy. Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání.  Díky analýze paměti ve výpisu stavu systému dokáže služba Azure Security Center detekovat techniky, které využívají zranitelností softwaru, získávají přístup k důvěrným datům a nenápadně přetrvávají v napadeném počítači, aniž by to mělo dopad na jeho výkon.
-* **Laterální přesuny a interní sondování:** S cílem udržet se v napadené síti a najít/shromáždit hodnotná data se útočníci často pokouší přesunout z jednoho napadeného počítače do dalších zařízení ve stejné síti. Služba Security Center monitoruje aktivity procesů a přihlašování s cílem objevit pokusy útočníka o rozšíření základny v rámci sítě, například vzdálené sondování sítě spouštěním příkazů nebo výčet účtu.
-* **Škodlivé skripty prostředí PowerShell**: Pomocí prostředí PowerShell spouští útočníci v cílových virtuálních počítačích škodlivé kódy, které slouží pro různé účely. Služba Security Center kontroluje aktivitu prostředí PowerShell a hledá známky podezřelé aktivity.
-* **Odchozí útoky:** Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Napadené virtuální počítače je například možné použít pro spouštění útoků hrubou silou proti jiným virtuálním počítačům, odesílání nevyžádané pošty nebo skenování otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. V případě nevyžádané pošty služba Security Center také koreluje neobvyklý e-mailový provoz pomocí informací ze služby Office 365 a snaží se zjistit, jestli pošta neslouží pro nekalé účely nebo jestli je výsledkem legitimní e-mailové kampaně.  
+* **Podezřelé spouštění procesů**: Útočníci používají řadu technik k spouštění škodlivého softwaru. Útočník může například malware pojmenovat stejně jako legitimní systémové soubory, ale umístí tyto souboru do alternativních umístění, nebo použije název velmi podobný neškodnému souboru nebo zamaskuje skutečnou příponu souboru. Modely služby Security Center zpracovávají chování a monitorují spouštění procesů s cílem odhalit právě takovéto mimořádné hodnoty.  
+* **Skrytý malware a pokusy o zneužití**: Je sofistikovaný malware dokáže obejít tradiční antimalwarové produkty nikdy nezapisuje na disk nebo softwarové komponenty ukládané na disk šifruje.  Takový malware lze ale zjistit pomocí analýzy paměti, protože aby malware mohl fungovat, musí v paměti zanechat stopy. Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání.  Díky analýze paměti ve výpisu stavu systému dokáže služba Azure Security Center detekovat techniky, které využívají zranitelností softwaru, získávají přístup k důvěrným datům a nenápadně přetrvávají v napadeném počítači, aniž by to mělo dopad na jeho výkon.
+* **Laterální přesuny a interní sondování**: Pro uchování v napadené síti a najít/shromáždit hodnotná data, nastavení se útočníci často pokouší přesunout z jednoho napadeného počítače ostatním uživatelům v rámci stejné sítě. Služba Security Center monitoruje aktivity procesů a přihlašování s cílem objevit pokusy útočníka o rozšíření základny v rámci sítě, například vzdálené sondování sítě spouštěním příkazů nebo výčet účtu.
+* **Škodlivý Powershellových skriptů**: PowerShell je používán útočníci v cílových virtuálních počítačích pro různé účely spustit škodlivý kód. Služba Security Center kontroluje aktivitu prostředí PowerShell a hledá známky podezřelé aktivity.
+* **Odchozí útoky**: Útočníci často cílí na cloudové prostředky s cílem využít je k dalším útokům. Napadené virtuální počítače je například možné použít pro spouštění útoků hrubou silou proti jiným virtuálním počítačům, odesílání nevyžádané pošty nebo skenování otevřených portů a dalších zařízení na internetu. Služba Security Center pomocí strojového učení, které uplatňuje na síťový provoz, dokáže detekovat odchozí síťovou komunikaci vybočující z normy. V případě nevyžádané pošty služba Security Center také koreluje neobvyklý e-mailový provoz pomocí informací ze služby Office 365 a snaží se zjistit, jestli pošta neslouží pro nekalé účely nebo jestli je výsledkem legitimní e-mailové kampaně.  
 
 ### <a name="anomaly-detection"></a>Detekce anomálií
 Služba Azure Security Center také identifikuje hrozby pomocí detekce anomálií. Oproti behaviorální analýze (která závisí na známých schématech odvozovaných z velkých datových sad), je detekce anomálií více „personalizovaná“ a zaměřuje se na standardní hodnoty specifické pro vaše nasazení. Pomocí strojového učení se určí běžné úrovně aktivity pro vaše nasazení a poté se vygenerují pravidla definující neobvyklé hodnoty, které by mohly představovat událost zabezpečení. Zde naleznete příklad:
 
-* **Příchozí útoky hrubou silou RDP/SSH**: Vaše nasazení mohou obsahovat velmi vytížené virtuální počítače s velkým množstvím přihlášení každý den a další virtuální počítače, které mají velmi málo nebo žádná přihlášení. Azure Security Center dokáže určit standardní hodnoty pro přihlašovací aktivitu pro tyto virtuální počítače a pomocí strojového učení definovat, co je mimo rámec běžné přihlašovací aktivity. Pokud se počet přihlášení, čas přihlášení nebo místo, ze kterého žádost o přihlášení pochází, případně další charakteristiky související s přihlášením výrazně liší od standardních hodnot, vygeneruje se výstraha. A strojové učení tu zase určuje, co je významné.
+* **Příchozí útoky hrubou silou RDP/SSH**: Vaše nasazení mohou obsahovat vytížené virtuální počítače s velkým množstvím přihlášení každý den a další virtuální počítače, které mají velmi málo nebo žádná přihlášení. Azure Security Center dokáže určit standardní hodnoty pro přihlašovací aktivitu pro tyto virtuální počítače a pomocí strojového učení definovat, co je mimo rámec běžné přihlašovací aktivity. Pokud se počet přihlášení, čas přihlášení nebo místo, ze kterého žádost o přihlášení pochází, případně další charakteristiky související s přihlášením výrazně liší od standardních hodnot, vygeneruje se výstraha. A strojové učení tu zase určuje, co je významné.
 
 ## <a name="continuous-threat-intelligence-monitoring"></a>Průběžné monitorování analýzy hrozeb
 Služba Azure Security Center zaměstnává týmy pro výzkum zabezpečení a datové vědy, který neustále monitorují změny ve světě hrozeb. To zahrnuje následující iniciativy:
 
 * **Monitorování analýzy hrozeb**: Analýza hrozeb zahrnuje mechanismy, ukazatele, důsledky a praktické rady týkající se stávajících nebo nově vznikajících hrozeb. Tyto informace se sdílí v bezpečnostní komunitě a společnost Microsoft kanály analýzy hrozeb z interních i externích zdrojů nepřetržitě monitoruje.
-* **Sdílení signálu**: Informace od týmu zabezpečení z širokého portfolia cloudových a místních služeb a serverů společnosti Microsoft a z klientských koncových zařízení se sdílí a analyzují.
-* **Odborníci na zabezpečení společnosti Microsoft**: Průběžné zapojování týmů v rámci společnosti Microsoft, které pracují ve specializovaných oblastech zabezpečení, například forenzní analýza nebo detekce webových útoků.
-* **Optimalizace detekce**: V datových sadách reálných zákazníků se spouští algoritmy a výzkumníci z oblasti bezpečnosti pracují se zákazníky na ověřování výsledků. Pravdivě a falešně pozitivní výsledky pak slouží ke zlepšování algoritmů strojového učení.
+* **Sdílení signálu**: Přehledy na základě zabezpečení týmů ve společnosti Microsoft širokého portfolia cloudových a místních služeb, serverů a klientských koncových zařízení se sdílí a analyzují.
+* **Specialisty Microsoftu a zabezpečení**: Průběžné zapojování týmů v rámci Microsoftu, které pracují ve specializovaných oblastech zabezpečení, jako je detekce útoku forenzní analýzy a web.
+* **Optimalizace detekce**: Datových sadách reálných zákazníků se spouští algoritmy a výzkumníci pracují se zákazníky na ověřování výsledků. Pravdivě a falešně pozitivní výsledky pak slouží ke zlepšování algoritmů strojového učení.
 
 Toto celkové úsilí přineslo nové a vylepšené způsoby detekce, ze kterých budete mít okamžitý prospěch – a nemusíte sami nic dělat.
 

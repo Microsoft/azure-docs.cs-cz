@@ -9,14 +9,14 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 984a027a1fe2f9c894701058452490bdf12b66c4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633560"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338732"
 ---
-# <a name="example-how-to-detect-language-in-text-analytics"></a>Příklad: Jak rozpoznat jazyk pomocí funkce Analýza textu
+# <a name="example-how-to-detect-language-in-text-analytics"></a>Příklad: Jak zjistit jazyk v rozhraní Text Analytics
 
 [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) vyhodnotí textový vstup a pro každý dokument vrátí identifikátory jazyka se skóre, které označuje sílu analýzy. Analýza textu rozpozná až 120 jazyků.
 
@@ -52,7 +52,7 @@ Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete 
             },                
             {
                 "id": "5",
-                "text": "Этот документ находится на английском языке."
+                "text": "Этот документ на английском языке."
             }
         ]
     }
@@ -62,7 +62,7 @@ Dokument nesmí obsahovat více než 5 000 znaků a v každé kolekci můžete 
 
 Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
++ Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API pro tuto žádost: [Rozhraní API pro detekci jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
 + Nastavení koncového bodu HTTP pro rozpoznávání jazyka pomocí prostředek pro analýzu textu v Azure nebo vytvořenou instanci [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí obsahovat prostředek `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
 
@@ -73,7 +73,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 > [!Tip]
 > Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslat žádost
 
 Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každá žádost může mít maximální velikost 1 MB.
 

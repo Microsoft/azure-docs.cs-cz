@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9ee835978325968e1a61633ca868ed091b5b2484
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192511"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338800"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -163,7 +163,7 @@ Ukládání vyhledávacích dotazů je standardní funkce v Log Analytics a mů�
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Vytvářet upozornění z dotazů
-Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
+Po vytvoření dotazů, můžete využívat dotazy a zobrazí vám upozornění, když dojde k určité události. Zobrazit [upozornění v Log Analytics](../../azure-monitor/platform/alerts-overview.md) informace o tom, jak vytvářet výstrahy. Příklady výstrah dotazy a další příklady dotazů, najdete v článku [VMware monitorování pomocí Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) blogový příspěvek.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co je potřeba na ESXi hostovat nastavení? Jaký vliv bude mít na mé aktuální prostředí?
@@ -206,4 +206,4 @@ Může existovat několik důvodů:
 ## <a name="next-steps"></a>Další postup
 * Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
 * [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazující data hostitele VMware.
-* [Vytvořit upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) Pokud dojde k určité událostem hostitele VMware.
+* [Vytvořit upozornění](../../azure-monitor/platform/alerts-overview.md) Pokud dojde k určité událostem hostitele VMware.

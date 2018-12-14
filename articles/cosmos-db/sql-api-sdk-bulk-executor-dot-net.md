@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Hromadné prováděcí modul .NET API, SDK a prostředky'
+title: 'Azure Cosmos DB: Hromadně prováděcí modul .NET API, SDK a zdroje informací'
 description: Přečtěte si všechno o hromadné prováděcí modul .NET API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB hromadné prováděcí modul .NET SDK.
 author: tknandu
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: a0d2ab305f0ca819b8dba573a9570ff03682a947
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c239464a37637b21504227951d917977cfea6726
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875004"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343951"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna .NET hromadné prováděcí modul: Stažení informací 
 
@@ -27,7 +27,7 @@ ms.locfileid: "52875004"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [Prováděcí modul hromadného – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Prováděcí modul hromadného – Java](sql-api-sdk-bulk-executor-java.md)
 

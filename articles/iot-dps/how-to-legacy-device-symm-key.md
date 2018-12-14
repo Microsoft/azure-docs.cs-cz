@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 60321b2463a535c3f7a0c73e0922010bd12a3e82
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323231"
+ms.locfileid: "53341231"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Jak zřídit starší zařízení pomocí symetrických klíčů
 
@@ -239,22 +239,25 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
-
-7. V okně *Průzkumník řešení* sady Visual Studio přejděte na projekt **hsm\_security\_client** a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
-
-    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
-
-    Aktualizujte hodnotu `REGISTRATION_NAME` konstanty s **jedinečným registračním ID pro vaše zařízení**.
-    
-    Aktualizujte hodnotu `SYMMETRIC_KEY_VALUE` konstanty s vaší **odvozený klíč zařízení**.
+6. Najít volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_klienta\_sample.c** což je označené jako komentář.
 
     ```c
-    static const char* const REGISTRATION_NAME = "sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6";
-    static const char* const SYMMETRIC_KEY_VALUE = "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-7. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
+    Zrušením komentáře u volání funkce a nahraďte zástupné hodnoty (včetně ostrých závorek) s jedinečným registračním ID zařízení a klíč odvozené zařízení, který jste vygenerovali.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6", "Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=");
+    ```
+   
+    Uložte soubor.
+
+7. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
+
+8. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
 
     Následující výstup je příkladem úspěšného spuštění simulovaného zařízení a připojení k instanci služby zřizování pro přiřazení k IoT Hubu:
 
@@ -273,7 +276,7 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
     Press enter key to exit:
     ```
 
-8. Na webu Azure Portal přejděte do IoT Hubu, kam se simulované zařízení přiřadilo, a klikněte na kartu **Zařízení IoT**. Po úspěšném zřízení simulovaného zařízení v IoT Hubu se ID tohoto zařízení zobrazí v okně **Zařízení IoT** a jeho *STAV* se zobrazí jako **povoleno**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
+9. Na webu Azure Portal přejděte do IoT Hubu, kam se simulované zařízení přiřadilo, a klikněte na kartu **Zařízení IoT**. Po úspěšném zřízení simulovaného zařízení v IoT Hubu se ID tohoto zařízení zobrazí v okně **Zařízení IoT** a jeho *STAV* se zobrazí jako **povoleno**. Možná budete muset nahoře kliknout na tlačítko **Aktualizovat**. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 

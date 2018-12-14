@@ -8,52 +8,49 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 32f8872737fdf6dd766ae8df8ef3ed47692e2c9c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: df4cfd8cdf720dd085c3f14ad518c557f270ffa4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642274"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340857"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí Orchestrace v Durable Functions (Azure Functions)
 
 Kromě volání funkcí aktivitu, můžete volat funkce orchestrátoru jiné funkce nástroje orchestrator. Můžete například vytvořit větší Orchestrace mimo knihovnu funkcí nástroje orchestrator. Nebo můžete spouštět více instancí funkce orchestrátoru paralelně.
 
-Funkce orchestrátoru můžete volat jiné funkce nástroje orchestrator pomocí volání [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) nebo [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metody. [Zpracování chyb a kompenzace](durable-functions-error-handling.md#automatic-retry-on-failure) článek obsahuje další informace o automatické opakování.
+Funkce orchestrátoru můžete volat jiné funkce nástroje orchestrator pomocí volání [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) nebo [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metody v rozhraní .NET, nebo `callSubOrchestrator` nebo `callSubOrchestratorWithRetry` metody v jazyce JavaScript. [Zpracování chyb a kompenzace](durable-functions-error-handling.md#automatic-retry-on-failure) článek obsahuje další informace o automatické opakování.
 
 Dílčí orchestrator funkce se chovají stejně jako funkce aktivitu z hlediska volajícího. Vracejí hodnotu, vyvolat výjimku a může být očekávána pomocí funkce orchestrátoru nadřazené.
-
-> [!NOTE]
-> `CallSubOrchestratorAsync` a `CallSubOrchestratorWithRetryAsync` metody ještě nejsou k dispozici v jazyce JavaScript.
 
 ## <a name="example"></a>Příklad:
 
 Následující příklad ukazuje obsahující scénáře IoT ("Internet of Things"), kdy existuje více zařízení, které je potřeba zřídit. Neexistuje konkrétní Orchestrace, která musí provést pro každé zařízení, která může vypadat přibližně takto:
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
-    [OrchestrationTrigger] DurableOrchestrationContext ctx)
+    [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string deviceId = ctx.GetInput<string>();
+    string deviceId = context.GetInput<string>();
 
     // Step 1: Create an installation package in blob storage and return a SAS URL.
-    Uri sasUrl = await ctx.CallActivityAsync<Uri>("CreateInstallationPackage", deviceId);
+    Uri sasUrl = await context.CallActivityAsync<Uri>("CreateInstallationPackage", deviceId);
 
     // Step 2: Notify the device that the installation package is ready.
-    await ctx.CallActivityAsync("SendPackageUrlToDevice", Tuple.Create(deviceId, sasUrl));
+    await context.CallActivityAsync("SendPackageUrlToDevice", Tuple.Create(deviceId, sasUrl));
 
     // Step 3: Wait for the device to acknowledge that it has downloaded the new package.
-    await ctx.WaitForExternalEvent<bool>("DownloadCompletedAck");
+    await context.WaitForExternalEvent<bool>("DownloadCompletedAck");
 
     // Step 4: ...
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -74,24 +71,24 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Tato funkce produktu orchestrator může sloužit jako-je pro zřizování jednorázové zařízení nebo ho můžou být součástí větší Orchestrace. V takovém případě funkce orchestrátoru nadřazené lze naplánovat instance `DeviceProvisioningOrchestration` pomocí `CallSubOrchestratorAsync` (C#) nebo `callSubOrchestrator` rozhraní API (JS).
+Tato funkce produktu orchestrator může sloužit jako-je pro zřizování jednorázové zařízení nebo ho můžou být součástí větší Orchestrace. V takovém případě funkce orchestrátoru nadřazené lze naplánovat instance `DeviceProvisioningOrchestration` pomocí `CallSubOrchestratorAsync` (C#) nebo `callSubOrchestrator` (JavaScript) rozhraní API.
 
 Tady je příklad, který ukazuje, jak k paralelnímu spouštění více funkcí nástroje orchestrator.
 
-#### <a name="c"></a>C#
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
 public static async Task ProvisionNewDevices(
-    [OrchestrationTrigger] DurableOrchestrationContext ctx)
+    [OrchestrationTrigger] DurableOrchestrationContext context)
 {
-    string[] deviceIds = await ctx.CallActivityAsync<string[]>("GetNewDeviceIds");
+    string[] deviceIds = await context.CallActivityAsync<string[]>("GetNewDeviceIds");
 
     // Run multiple device provisioning flows in parallel
     var provisioningTasks = new List<Task>();
     foreach (string deviceId in deviceIds)
     {
-        Task provisionTask = ctx.CallSubOrchestratorAsync("DeviceProvisioningOrchestration", deviceId);
+        Task provisionTask = context.CallSubOrchestratorAsync("DeviceProvisioningOrchestration", deviceId);
         provisioningTasks.Add(provisionTask);
     }
 
@@ -101,7 +98,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");

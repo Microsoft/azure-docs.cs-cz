@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393975"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338458"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled fronty nedoručených zpráv služby Service Bus
 
@@ -76,7 +76,7 @@ Kromě dead-lettering funkcí poskytovaných systémem aplikace můžete DLQ se 
 
 Zprávy se odešlou do fronty nedoručených zpráv přenosu za následujících podmínek:
 
-- Zpráva prochází více než 3 front nebo témat, které jsou [zřetězit](service-bus-auto-forwarding.md).
+- Zpráva prochází více než 4 front nebo témat, které jsou [zřetězit](service-bus-auto-forwarding.md).
 - Cílová fronta nebo téma se zakázala nebo odstranila.
 - Cílová fronta nebo téma překračuje velikost maximální entity.
 

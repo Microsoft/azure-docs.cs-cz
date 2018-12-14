@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: d38fc727ed7e9e3c47d2fcb9af7894f8a2a7c7a7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262329"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341741"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -46,6 +46,8 @@ Následující položky jsou známé omezení verze Public Preview:
 - [Zálohování skupiny dostupnosti v distribuovaných](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017) mají omezení.
 - Vždy na převzetí služeb při selhání instance clusteru SQL Server (instancích Fci) nejsou podporovány.
 - Nakonfigurujte zálohování Azure pro ochranu databáze SQL serveru pomocí webu Azure portal. Prostředí Azure PowerShell, rozhraní příkazového řádku Azure a rozhraní REST API nejsou aktuálně podporované.
+- Operace zálohování a obnovení pro zrcadlení databáze, snímky databází a databází v rámci FCI nejsou podporovány.
+- Databáze s velkým počtem souborů nejde chránit. Maximální počet souborů, které jsou podporovány není velmi deterministické číslo, protože nejen závisí na počtu souborů, ale také závisí na délka cesty k souborům. Takové případy jsou však méně běžně se vyskytujícím. Vytváříme řešení, které se o to postarají.
 
 Najdete [oddílu Nejčastější dotazy](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq) podrobné informace o podpoře nebo není podporované scénáře.
 
@@ -105,6 +107,7 @@ Zálohujte databázi SQL serveru, zkontrolujte následující podmínky:
 - Identifikovat nebo [vytvořte trezor služby Recovery Services](backup-azure-sql-database.md#create-a-recovery-services-vault) ve stejné oblasti nebo národní prostředí jako virtuální počítač, který je hostitelem vaší instanci SQL serveru.
 - [Zkontrolujte oprávnění na virtuálním počítači](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) , které jsou potřeba k zálohování databází SQL.
 - Ověřte, že [SQL virtuální počítač má síťové připojení](backup-azure-sql-database.md#establish-network-connectivity).
+- Zkontrolujte, zda jsou databáze SQL s názvem, jak je uvedeno [pokyny pro pojmenování](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) pro službu Azure Backup úspěšné zálohování.
 
 > [!NOTE]
 > V době zálohování databází systému SQL Server může mít pouze jeden záložní řešení. Před použitím této funkce; zakázat další zálohy SQL zálohy v opačném případě bude v konfliktu a selhání. Můžete povolit Azure Backup pro virtuální počítač IaaS spolu s zálohování SQL bez jakéhokoli konfliktu.
@@ -133,7 +136,7 @@ Kompromisy mezi možnostmi jsou možnosti správy, podrobnou kontrolu a náklady
 
 ## <a name="set-permissions-for-non-marketplace-sql-vms"></a>Nastavení oprávnění pro jiné - Tržiště virtuálních počítačů SQL
 
-Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Azure Backup se zjistit databáze na virtuálním počítači, vytvoří účet **NT Service\AzureWLBackupPluginSvc**. Azure Backup se zjistit databáze SQL **NT Service\AzureWLBackupPluginSvc** SQL a SQL musí mít účet oprávnění správce. Následující postup vysvětluje, jak poskytnout tato oprávnění.
+Zálohování virtuálního počítače, vyžaduje Azure Backup **AzureBackupWindowsWorkload** rozšíření k instalaci. Pokud používáte virtuální počítače Azure Marketplace, i nadále [databáze SQL serveru zjistit](backup-azure-sql-database.md#discover-sql-server-databases). Pokud virtuální počítač, který je hostitelem databáze SQL není vytvořen z Azure Marketplace, proveďte následující postup k instalaci rozšíření a nastavte příslušná oprávnění. Kromě **AzureBackupWindowsWorkload** rozšíření, Azure Backup vyžaduje oprávnění správce systému SQL pro ochranu databáze SQL. Chcete-li zjistit databáze na virtuálním počítači, Azure Backup vytvoří účet **NT Service\AzureWLBackupPluginSvc**. Tento účet se používá pro zálohování a obnovení a musí mít oprávnění správce systému SQL. Kromě toho bude využívat Azure Backup **NT AUTHORITY\SYSTEM** účet pro zjišťování DB nebo dotaz, aby tento účet musí být veřejné přihlášení na SQL.
 
 Ke konfiguraci oprávnění:
 
@@ -201,6 +204,14 @@ Během procesu instalace, pokud se zobrazí chyba `UserErrorSQLNoSysadminMembers
 
 Poté, co přidružíte databáze v trezoru služby Recovery Services, dalším krokem je [konfigurace úlohy zálohování](backup-azure-sql-database.md#configure-backup-for-sql-server-databases).
 
+## <a name="sql-database-naming-guidelines-for-azure-backup"></a>SQL database, pokyny pro pojmenování pro službu Azure Backup
+Pro zajištění plynulého zálohování pomocí služby Azure Backup pro SQL Server na virtuálním počítači IaaS, nepoužívejte následující při pojmenování databáze:
+
+  * Na konci/úvodní mezery
+  * Na konci '!'
+
+Máme aliasů pro Azure table nepodporované znaky, ale doporučujeme ty také. Další informace najdete v tomto [článku](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
 ## <a name="discover-sql-server-databases"></a>Zjistit databáze systému SQL Server
@@ -215,7 +226,7 @@ Azure Backup zjistí všechny databáze na instanci systému SQL Server. Podle p
 
 3. V **všechny služby** dialogového okna zadejte **služby Recovery Services**. Při psaní váš vstup, vyfiltruje seznam prostředků. Vyberte **trezory služby Recovery Services** v seznamu.
 
-    ![Zadejte a vyberte trezory služby Recovery Services](./media/backup-azure-sql-database/all-services.png) <br/>
+  ![Zadejte a vyberte trezory služby Recovery Services](./media/backup-azure-sql-database/all-services.png) <br/>
 
     Zobrazí se seznam trezorů služby Recovery Services v rámci předplatného.
 
@@ -301,16 +312,9 @@ Konfigurace ochrany pro SQL database:
     > K optimalizaci zálohování zatížení, Azure Backup rozdělí rozsáhlé úlohy zálohování do několika dávek. Maximální počet databází ve jediná úloha zálohování je 50.
     >
 
-    Alternativně můžete povolit automatickou ochranu celého instance nebo skupiny dostupnosti Always On tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT** sloupce. Funkce Automatické ochrany nejen povolí ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
+      Alternativně můžete povolit [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) celý instance nebo skupiny dostupnosti Always On tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT**  sloupce. [Automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
 
       ![Povolit automatické ochrany na skupiny dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
-
-      V případě, že instance nebo skupiny dostupnosti již některé z jeho databází chráněn, je možné zapnout **ON** auto-protect možnost. V takovém případě zásady zálohování, které jsou definovány v dalším kroku nyní pouze budou platit do nechráněných databází během už chráněných databází i nadále chránit jejich odpovídajících zásadám.
-
-      Neexistuje žádné omezení počtu databází, které získáte vybrané najednou pomocí automatické ochrany funkci (jak se dají velký počet databází, stejně jako v trezoru).  
-
-      Je doporučeno, pokud chcete, aby všechny databáze v budoucnu se přidá automaticky nakonfigurovat ochranu zapnout automatickou ochranu pro všechny instance a skupinami dostupnosti Always On.
-
 
 7. K vytvoření nebo výběr zásady zálohování, na **zálohování** nabídce vyberte možnost **zásady zálohování**. **Zásady zálohování** otevře se nabídka.
 
@@ -340,6 +344,22 @@ Konfigurace ochrany pro SQL database:
 
     ![Oznamovací oblasti](./media/backup-azure-sql-database/notifications-area.png)
 
+
+## <a name="auto-protect-sql-server-in-azure-vm"></a>Automatická ochrana systému SQL Server na virtuálním počítači Azure  
+
+Automatická ochrana je funkce, která umožňuje automaticky chránit všechny existující databáze, jakož i budoucích databází, které přidáte v samostatné instanci SQL serveru nebo skupinu dostupnosti AlwaysOn SQL serveru.
+
+V případě, že instance nebo skupiny dostupnosti již některé z jeho databází chráněn, je možné zapnout **ON** auto-protect možnost. V takovém případě zásady zálohování takto definována pouze budou platit do nechráněných databází během už chráněných databází i nadále chránit jejich odpovídajících zásadám.
+
+![Povolit automatické ochrany na skupiny dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
+
+Neexistuje žádné omezení počtu databází, které získáte vybrané najednou pomocí automatické ochrany funkce. Konfigurace zálohování se aktivuje pro všechny databáze společně a lze sledovat v **úlohy zálohování**.
+
+Pokud z nějakého důvodu potřebujete zakázat automatickou ochranu pro instanci, klikněte na název instance v rámci **konfigurace zálohování** otevřete panel informací na pravé straně, který má **zakázat Autoprotect** na horní části. Klikněte na tlačítko **zakázat Autoprotect** zakázat automatickou ochranu pro tuto instanci.
+
+![Zakažte automatickou ochranu pro tuto instanci](./media/backup-azure-sql-database/disable-auto-protection.png)
+
+Všechny databáze v dané instanci bude nadále chránit. Ale tato akce zakáže automatické ochrany na všechny databáze, které se přidají v budoucnu.
 
 ### <a name="define-a-backup-policy"></a>Definice zásady zálohování
 
@@ -736,15 +756,9 @@ Ukončit ochranu pro databázi:
 
 7. Vyberte **Zastavit zálohování** ukončit ochranu databáze.
 
-  Pamatujte, že **Zastavit zálohování** možnost nebude fungovat pro databáze v instanci automaticky chráněny. Jediný způsob, jak zastavit ochranu této databáze má zakázat automatické ochrany na instanci prozatím a klikněte na tlačítko **Zastavit zálohování** v části **zálohování položek** pro tuto databázi.  
+  Pamatujte, že **Zastavit zálohování** možnost nebude fungovat pro databázi v [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) instance. Jediný způsob, jak zastavit ochranu této databáze je zakázat [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) na instanci prozatím a klikněte na tlačítko **Zastavit zálohování** v části **zálohování položek**pro tuto databázi.<br>
+  Po zakázání automatické ochrany můžete **Zastavit zálohování** pro databáze v rámci **zálohování položek**. Instance můžete znovu povolit pro automatickou ochranu nyní.
 
-  Můžete zakázat automatickou ochranu na instance nebo skupiny dostupnosti Always On v rámci **konfigurace zálohování**. Klikněte na název instance, otevřete panel informací na pravé straně, který má **zakázat Autoprotect** nahoře. Klikněte na tlačítko **zakázat Autoprotect** zakázat automatickou ochranu pro tuto instanci.
-
-    ![Zakažte automatickou ochranu pro tuto instanci](./media/backup-azure-sql-database/disable-auto-protection.png)
-
-Všechny databáze v dané instanci bude nadále chránit. Ale tato akce zakáže automatické ochrany na všechny databáze, které se přidají v budoucnu.
-
-Po zakázání automatické ochrany můžete **Zastavit zálohování** pro databáze v rámci **zálohování položek**. Instance můžete znovu povolit pro automatickou ochranu nyní.
 
 ### <a name="resume-protection-for-a-sql-database"></a>Pokračovat v ochraně databáze SQL
 
@@ -835,22 +849,22 @@ Azure Backup trezoru Recovery Services můžete zjišťovat a chránit všechny 
 
 ### <a name="while-i-want-to-protect-most-of-the-databases-in-an-instance-i-would-like-to-exclude-a-few-is-it-possible-to-still-use-the-auto-protection-feature"></a>Když chci chránit většinu databáze v instanci, chci vyloučit některé. Je možné dál používat funkci automatické ochrany?
 
-Ne, automatická ochrana se vztahuje na celý instance. Nemůžete chránit selektivně databází pomocí automatické ochrany instancí.
+Ne, [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) platí pro celou instanci. Nemůžete chránit selektivně databází pomocí automatické ochrany instancí.
 
 ### <a name="can-i-have-different-policies-for-different-databases-in-an-auto-protected-instance"></a>Může mít různé zásady pro různé databáze v instanci automaticky chráněná?
 
-Pokud už máte některé chráněné databáze v instanci, budou i nadále se dají chránit pomocí jejich příslušných zásad i po zapnutí **ON** možnost Automatická ochrana. Nicméně nechráněných databází spolu s těch, které by v budoucnu přidat budou mít pouze jednu zásadu, která je definovat v rámci **konfigurace zálohování** po databáze dwrepository. Na rozdíl od jiných chráněných databází, nelze ve skutečnosti, dokonce i změnit zásady pro databáze v rámci automaticky chráněná instance.
+Pokud už máte některé chráněné databáze v instanci, budou i nadále se dají chránit pomocí jejich příslušných zásad i po zapnutí **ON** [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) možnost. Nicméně nechráněných databází spolu s těch, které by v budoucnu přidat budou mít pouze jednu zásadu, která je definovat v rámci **konfigurace zálohování** po databáze dwrepository. Na rozdíl od jiných chráněných databází, nelze ve skutečnosti, dokonce i změnit zásady pro databáze v rámci automaticky chráněná instance.
 Pokud chcete udělat, je jediným způsobem zakázat automatickou ochranu pro instanci prozatím a potom změňte zásady pro tuto databázi. Teď můžete znovu povolit automatickou ochranu pro tuto instanci.
 
 ### <a name="if-i-delete-a-database-from-an-auto-protected-instance-will-the-backups-for-that-database-also-stop"></a>Když odstraním databázi z instance automaticky chráněny, bude zálohování této databáze také zastavit?
 
 Ne, pokud z automaticky chráněná instance je vyřadit databázi, zálohy pro tuto databázi jsou stále k pokusu o. Z toho vyplývá, že se zobrazí jako není v pořádku, v části začíná odstraněnou databázi **zálohování položek** a je stále považovány za chráněné.
 
-Jediný způsob, jak zastavit ochranu této databáze má zakázat automatické ochrany na instanci prozatím a klikněte na tlačítko **Zastavit zálohování** v části **zálohování položek** pro tuto databázi. Teď můžete znovu povolit automatickou ochranu pro tuto instanci.
+Jediný způsob, jak zastavit ochranu této databáze je zakázat [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) na instanci prozatím a klikněte na tlačítko **Zastavit zálohování** v části **zálohování položek**pro tuto databázi. Teď můžete znovu povolit automatickou ochranu pro tuto instanci.
 
 ###  <a name="why-cant-i-see-the-newly-added-database-to-an-auto-protected-instance-under-the-protected-items"></a>Proč nelze zobrazit nově přidaná databáze na instanci automaticky chráněná v rámci chráněné položky?
 
-Nově přidaná databáze do automaticky chráněná instance chráněné okamžitě nemusí zobrazit. Je to proto, že zjišťování spuštěno obvykle každých 8 hodin. Uživatel však můžete spustit ruční zjišťování pomocí **obnovení databází** možnost pro zjišťování a ochranu nové databáze hned, jak je znázorněno obrázku níže:
+Nemusíte vidět nově přidaná databáze do [automaticky chráněny](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) okamžitě chráněné instance. Je to proto, že zjišťování spuštěno obvykle každých 8 hodin. Uživatel však můžete spustit ruční zjišťování pomocí **obnovení databází** možnost pro zjišťování a ochranu nové databáze hned, jak je znázorněno obrázku níže:
 
   ![Zobrazí nově přidaná databáze](./media/backup-azure-sql-database/view-newly-added-database.png)
 

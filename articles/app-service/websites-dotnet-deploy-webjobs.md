@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 300ccf5da3528be63ae618338b8953d05b0e799d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965338"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337457"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service
 
@@ -142,7 +142,7 @@ Při konfiguraci konzolovou aplikaci WebJobs nasazení Visual Studio nainstaluje
           "runMode": "Continuous"
         }
 
-Tento soubor můžete upravit přímo a Visual Studio nabízí IntelliSense. Schéma souboru je uložen na [ http://schemastore.org ](http://schemastore.org/schemas/json/webjob-publish-settings.json) a lze je zobrazit.  
+Tento soubor můžete upravit přímo a Visual Studio nabízí IntelliSense. Schéma souboru je uložen na [ https://schemastore.org ](https://schemastore.org/schemas/json/webjob-publish-settings.json) a lze je zobrazit.  
 
 ## <a id="webjobslist"></a>webjobs-list.json
 Když propojíte svůj projekt povoleno WebJobs do webového projektu, Visual Studio ukládá název projektu WebJobs v *webjobs list.json* soubor v projektu webové *vlastnosti* složky. Seznam může obsahovat více projektů webových úloh, jak je znázorněno v následujícím příkladu:
@@ -159,7 +159,7 @@ Když propojíte svůj projekt povoleno WebJobs do webového projektu, Visual St
           ]
         }
 
-Tento soubor můžete upravit přímo a Visual Studio nabízí IntelliSense. Schéma souboru je uložen na [ http://schemastore.org ](http://schemastore.org/schemas/json/webjobs-list.json) a lze je zobrazit.
+Tento soubor můžete upravit přímo a Visual Studio nabízí IntelliSense. Schéma souboru je uložen na [ https://schemastore.org ](https://schemastore.org/schemas/json/webjobs-list.json) a lze je zobrazit.
 
 ## <a id="deploy"></a>Nasazení WebJobs projektu
 WebJobs projekt, který jste propojili do webového projektu automaticky nasadí s webového projektu. Informace o nasazení webového projektu naleznete v tématu **provede postupy** > **nasadit aplikaci** v levém navigačním panelu.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 765a3a985a2198951ed17292dc376b25adfccc03
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dbe1b3e3515f05f9addb8d2ac9333407ea2c0984
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314793"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336641"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Povolit transparentní šifrování dat ve službě Azure Security Center
 Azure Security Center vám doporučí povolit transparentní šifrování dat (TDE) u databází SQL, pokud již není povolené šifrování TDE. Transparentní šifrování dat chrání vaše data a pomáhá splnit požadavky na dodržování předpisů tím, že šifruje vaše databáze, přidružené zálohy a soubory protokolů transakcí v klidovém stavu, bez nutnosti změn do vaší aplikace. Další informace najdete tady [transparentního šifrování dat s využitím Azure SQL Database](https://msdn.microsoft.com/library/dn948096).
@@ -51,7 +51,7 @@ Tento článek vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

@@ -9,14 +9,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: ab4831a4a84e1f96624c5de1e53f9b8688a5c2cd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1544d60d94a73326d2cd0430de8a1f61aaefe373
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871655"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343964"
 ---
-# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
+# <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET change Feed procesoru SDK: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
@@ -27,7 +27,7 @@ ms.locfileid: "52871655"
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
-> * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [SQL](sql-api-query-reference.md)
 > * [BulkExecutor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor – Java](sql-api-sdk-bulk-executor-java.md)
 
@@ -41,6 +41,11 @@ ms.locfileid: "52871655"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+* Přidání podpory pro zpracování rozdělit do kolekce, které používají sdílenou databázi propustnost.
+  * Tato vydaná verze opravuje problém, ke kterému může dojít během rozdělení v kolekcích použití sdílené databáze propustnost při výsledek rozdělení do oddílů znovu vyrovnávání s rozsah klíčů pouze jeden podřízený prvek oddílu vytvořili místo dvou. Pokud k tomu dojde, Change Feed Processor můžou uváznout odstranit zapůjčení pro staré rozsah klíče oddílu a ne vytvořit nové zapůjčení. Problém je vyřešen v této verzi.
+  * Vedlejší narušující změna: Přidá novou metodu IChangeFeedDocumentClient.ReadOffersFeedAsync, který se používá ke kontrole, zda kolekce obsahuje přiřazené vyhrazené propustnosti nebo sdílených složek propustnost s jinými kolekcemi v databázi. Poskytující vlastní implementaci IChangeFeedDocumentClient je pokročilý scénář a slouží k monitorování všech volání Change Feed Processor na monitorované a zapůjčení kolekce. Díky této změně musíte změnit IChangeFeedDocumentClient implementace implementací nové metody.
 
 ### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
 * Přidání nové vlastnosti ChangeFeedProcessorOptions.StartContinuation pro podporu počáteční změnit informační kanál z žádosti o token pro pokračování. To se používá pouze při zapůjčení kolekce je prázdná nebo zapůjčení nemá ContinuationToken nastavit. Zapůjčení v kolekci zapůjčení, které mají ContinuationToken nastavit se používá token ContinuationToken a ChangeFeedProcessorOptions.StartContinuation se ignoruje.

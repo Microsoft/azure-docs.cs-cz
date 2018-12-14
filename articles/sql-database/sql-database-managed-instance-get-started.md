@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: c45c4476bbe8d825071e335bfab9e7b73fc31d51
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4b8c67cfff89b54b4776ebc8b4586cd8f52950b3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256481"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342608"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
@@ -48,7 +48,7 @@ Následujícím postupem vytvoříte spravovanou instanci.
    |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.|
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Umístění**|Umístění, ve kterém chcete vytvořit spravovanou instanci|Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/).|
-   |**Virtuální síť**|Vyberte buď **vytvořit novou virtuální síť** nebo platný virtuální sítě a podsítě.| Pokud síť/podsíť je zobrazené šedě je musí být [upravit tak, aby byly splněny požadavky na síť](sql-database-managed-instance-vnet-configuration.md#modify-an-existing-virtual-network-for-managed-instances) dřív, než vyberete jako cíl pro nové Managed Instance. Informace ohledně požadavků na konfiguraci síťového prostředí pro Managed Instance najdete v tématu [konfigurace virtuální sítě pro Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md). |
+   |**Virtuální síť**|Vyberte buď **vytvořit novou virtuální síť** nebo platný virtuální sítě a podsítě.| Pokud síť/podsíť je zobrazené šedě je musí být [upravit tak, aby byly splněny požadavky na síť](sql-database-managed-instance-configure-vnet-subnet.md) dřív, než vyberete jako cíl pro nové Managed Instance. Informace ohledně požadavků na konfiguraci síťového prostředí pro Managed Instance najdete v tématu [konfigurace virtuální sítě pro Azure SQL Database Managed Instance](sql-database-managed-instance-connectivity-architecture.md). |
    |**Skupina prostředků**|Nová nebo stávající skupina prostředků|Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
 
    ![formulář spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

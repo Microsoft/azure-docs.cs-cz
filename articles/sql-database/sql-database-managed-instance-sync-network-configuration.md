@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 03/07/2018
-ms.openlocfilehash: d5de908166e8de1d45a36f97aee8934653e59623
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e488fc7e568fc94f9a0744c12122b605f37f8152
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163154"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339667"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronizace konfigurace sítí pro plán hostování služby Azure App Service
 
@@ -47,4 +47,4 @@ Nyní jste připraveni pokusí znovu navázat připojení k Managed Instance.
 
 ## <a name="next-steps"></a>Další postup
 
-- Informace o konfiguraci virtuální sítě pro Managed Instance najdete v tématu [konfigurace připojení typu VNet Managed Instance](sql-database-managed-instance-vnet-configuration.md).
+- Informace o konfiguraci virtuální sítě pro Managed Instance najdete v tématu [Managed Instance VNet architektura](sql-database-managed-instance-connectivity-architecture.md) a [konfigurace stávající virtuální síť](sql-database-managed-instance-configure-vnet-subnet.md).

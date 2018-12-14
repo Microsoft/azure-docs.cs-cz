@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023742"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342234"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 
@@ -50,7 +50,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 |Vlastnost  |Popis  |
 |---------|---------|
 |Název správy zdrojového kódu     | Popisný název pro správu zdrojového kódu        |
-|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHub</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|Typ správy zdrojového kódu     | Typ zdrojového ovládacího prvku zdroje. Dostupné možnosti jsou:</br> GitHubu</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
 |Úložiště     | Název úložiště nebo projektu. Tato hodnota se načítají z úložiště správy zdrojového kódu. Příklad: $/ ContosoFinanceTFVCExample         |
 |Větev     | Větev o přijetí změn zdrojových souborů ze. Cílení na větev není k dispozici pro typ ovládacího prvku zdroje TFVC.          |
 |Cesta ke složce     | Tato složka obsahuje sady runbook k synchronizaci. Příklad: /Runbooks         |
@@ -62,7 +62,7 @@ Na **souhrnný ovládací prvek zdroje** stránce, potřebné informace a klikn�
 
 ## <a name="syncing"></a>Synchronizace
 
-Při konfiguraci integrace správy zdrojového kódu, konfigurace autosync, počáteční synchronizace automaticky spustí. Pokud nebyla nastavena automatická synchronizace, vyberte zdroj z tabulky na **(Preview) správy zdrojového kódu** stránky. Klikněte na tlačítko **zahájit synchronizaci** zahájíte proces synchronizace.  
+Při konfiguraci integrace správy zdrojového kódu, konfigurace autosync, počáteční synchronizace automaticky spustí. Pokud nebyla nastavena automatická synchronizace, vyberte zdroj z tabulky na **(Preview) správy zdrojového kódu** stránky. Klikněte na tlačítko **zahájit synchronizaci** zahájíte proces synchronizace.
 
 Můžete zobrazit stav aktuální úloha synchronizace nebo předchozích balíčcích kliknutím **synchronizovat úlohy** kartu. Na **správy zdrojových kódů** rozevíracího seznamu, vyberte správy zdrojového kódu.
 

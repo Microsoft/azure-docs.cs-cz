@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: acbb54da9cf52a73acf11b43d702675544bcc5fa
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873797"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339514"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Řešení potíží s zálohování SQL serveru v Azure
 
@@ -78,13 +78,13 @@ V následujících tabulkách jsou uspořádané podle čísla chyby.
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Zálohu nejde vytvořit, protože transakční protokol pro zdroj dat je plný. | Místa transakčního protokolu databáze je plná. | Chcete-li opravit tento problém, přečtěte si [dokumentace ke službě SQL](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
-| Tato databáze SQL nepodporuje požadovaný typ zálohy. | Vždy v AG sekundárních replik nepodporují úplné a rozdílové zálohy. | <ul><li>Pokud spuštění ad-hoc zálohy aktivujte zálohování na primárním uzlu.</li><li>Pokud zálohování byla naplánována pomocí zásad, ujistěte se, že je zaregistrovaný primárního uzlu. K registraci uzlu, [postupujte podle pokynů ke zjišťování do databáze SQL serveru](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> | 
+| Tato databáze SQL nepodporuje požadovaný typ zálohy. | Vždy v AG sekundárních replik nepodporují úplné a rozdílové zálohy. | <ul><li>Pokud spuštění ad-hoc zálohy aktivujte zálohování na primárním uzlu.</li><li>Pokud zálohování byla naplánována pomocí zásad, ujistěte se, že je zaregistrovaný primárního uzlu. K registraci uzlu, [postupujte podle pokynů ke zjišťování do databáze SQL serveru](backup-azure-sql-database.md#discover-sql-server-databases).</li></ul> |
 
 ## <a name="restore-failures"></a>Selhání obnovení
 
 Při obnovení úlohy se zobrazí následující kódy chyb.
 
-### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite 
+### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
@@ -107,7 +107,7 @@ Při obnovení úlohy se zobrazí následující kódy chyb.
 
 Následující kódy chyb jsou určené pro selhání registrace.
 
-### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError 
+### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
@@ -124,6 +124,16 @@ Následující kódy chyb jsou určené pro selhání registrace.
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
 | Služba Azure Backup agent hosta virtuálního počítače Azure pomocí provádí zálohování, ale není k dispozici na cílovém serveru agenta hosta. | Agent hosta není povolena, nebo není v pořádku. | [Nainstalujte agenta hosta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) ručně. |
+
+## <a name="configure-backup-failures"></a>Konfigurace zálohování selhání
+
+Následující chybové kódy jsou pro konfiguraci zálohování selhání.
+
+### <a name="autoprotectioncancelledornotvalid"></a>AutoProtectionCancelledOrNotValid
+
+| Chybová zpráva | Možné příčiny | Doporučená akce |
+|---|---|---|
+| Záměr automatické ochrany byla buď odebrána nebo je více platný. | Když povolíte automatické ochrany na instanci SQL, **konfigurace zálohování** úloha pro všechny databáze v této instanci. Pokud zakážete automatickou ochranu jsou spuštěné úlohy, které pak bude **probíhá** zrušení úloh s tímto kódem chyby. | Povolte automatickou ochranu znovu k ochraně všech zbývajících databází. |
 
 ## <a name="next-steps"></a>Další postup
 

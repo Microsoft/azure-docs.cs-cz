@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: d3183353cbadb821ac7f84c81f4da747be823e4f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 432f1a89979829bd43596d0d6a3ab7a2a3bfb996
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276719"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336464"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -29,7 +29,7 @@ Každá akce se skládá z následujících vlastností:
 * **Typ akce**: Akce k provedení. Mezi příklady patří odesílání hlasový hovor, SMS, e-mailů; nebo aktivace různé automatizované akce. Zobrazit typy dále v tomto článku. 
 * **Podrobnosti o**: Související podrobnosti, které se liší podle *typ akce*. 
 
-Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru skupiny akcí](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource Manageru najdete v tématu [šablon Resource Manageru skupiny akcí](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Vytvoření skupiny akcí s využitím webu Azure portal ##
 1. V [portál](https://portal.azure.com)vyberte **monitorování**. **Monitorování** okno konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
@@ -73,7 +73,7 @@ Po vytvoření skupiny akcí je viditelná ve **skupiny akcí** část **monitor
    - azureemail-noreply@microsoft.com
    - alerts-noreply@mail.windowsazure.com
 
-Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) článku
+Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku
 
 **ITSM** – můžete mít až 10 akce ITSM jedná o smluvní jednání akce skupiny ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -83,10 +83,10 @@ Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady info
 
 **Sada Runbook** -může obsahovat až 10 akce sada Runbook akce skupiny najdete [limity předplatného Azure](../../azure-subscription-service-limits.md) omezení datových částí sady Runbook pro
 
-**SMS** – může mít až 10 SMS akce v skupiny akcí v [tady informace](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) najdete v článku [chování výstrah SMS](../../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md) článku
+**SMS** – může mít až 10 SMS akce v skupiny akcí v [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) najdete v článku [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md) článku
 
 **Hlasové** -může obsahovat až 10 hlasové akce skupiny akcí</dd>
-Zobrazit [tady informace](./../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) článku</dd>
+Zobrazit [tady informace](./../../azure-monitor/platform/alerts-rate-limiting.md) článku</dd>
 
 **Webhook** – můžete mít až 10 akce Webhooku v skupiny akcí. Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.
 
@@ -102,9 +102,9 @@ Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfigura
 
 
 ## <a name="next-steps"></a>Další postup ##
-* Další informace o [chování výstrah SMS](../../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md).  
+* Další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Získat [pochopení schéma webhooku v upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
 * Další informace o [konektor ITSM](../../azure-monitor/platform/itsmc-overview.md)
-* Další informace o [rychlosti](../../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md) na výstrahy.
-* Získat [přehled upozornění protokolu aktivit](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)a zjistěte, jak dostávat upozornění.  
+* Další informace o [rychlosti](../../azure-monitor/platform/alerts-rate-limiting.md) na výstrahy.
+* Získat [přehled upozornění protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a zjistěte, jak dostávat upozornění.  
 * Zjistěte, jak [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b2efbbccedc2478b30a05fe2cd60c063de2a64d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 35493d9a7f47bda3344dbc8b0ea415d4492c5741
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309480"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340044"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service pomocí Traffic Manageru
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -71,8 +71,6 @@ Po dokončení přidávání nebo úprava záznamů DNS u vašeho poskytovatele 
 
 ## <a name="next-steps"></a>Další postup
 Další informace najdete ve [Středisku pro vývojáře Node.js](https://azure.microsoft.com/develop/nodejs/).
-
-[!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 

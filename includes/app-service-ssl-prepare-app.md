@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 858d098f18604d1360af8509eb8a0cec6fa7d0c7
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
-ms.translationtype: HT
+ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354528"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381425"
 ---
 ## <a name="prepare-your-web-app"></a>Příprava webové aplikace
 
@@ -41,7 +41,7 @@ Zkontrolujte, že vaše webová aplikace není na úrovni **F1** nebo **D1**. Ak
 
 ![Kontrola cenové úrovně](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete stránku **Vertikálně navýšit kapacitu** a přejděte k části [Nahrání a vytvoření vazby certifikátu SSL](#upload).
+Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete **vertikálně navýšit kapacitu** stránce a Přejít [vertikální navýšení kapacity plánu služby App Service](#scale-up-your-app-service-plan) části.
 
 ### <a name="scale-up-your-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 

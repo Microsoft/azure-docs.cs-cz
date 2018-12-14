@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 94358ffde697b8122e65aefcbe1dd97385ca5b3a
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1dca3621b31d74d2ae40156672009b15ba30e3f4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52621792"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339531"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory-preview"></a>Kopírování dat z aplikace Dynamics AX pomocí služby Azure Data Factory (Preview)
 
@@ -62,7 +62,7 @@ Následující vlastnosti jsou podporovány pro Dynamics AX propojené služby:
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
 | servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano |
-| aadResourceId | Zadejte prostředek, který žádáte autorizaci. | Ano |
+| aadResourceId | Zadejte prostředku AAD, které jste požádali o registraci. Například, pokud je vaše adresa URL Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/`, odpovídající prostředek AAD je obvykle `https://sampledynamics.sandbox.operations.dynamics.com`. | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat prostředí Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud je vaše úložiště dat se nachází v privátní síti). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad**
@@ -80,7 +80,7 @@ Následující vlastnosti jsou podporovány pro Dynamics AX propojené služby:
                 "value": "<service principal key>"
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
-            "aadResourceId": "<Dynamics AX resource url>"
+            "aadResourceId": "<AAD resource, e.g. https://sampledynamics.sandbox.operations.dynamics.com>"
         }
     },
     "connectVia": {
@@ -135,7 +135,7 @@ Chcete-li kopírovat data z Dynamics AX, nastavte **zdroj** typ v aktivitě kop�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **DynamicsAXSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: konektor kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: Konektor kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad**
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 394897976fc7453d0639d985806d7226cc059a6c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0548cbc9c84de27dd7278d1b4ae3228993d6a49f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956478"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338273"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center a Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -58,7 +58,7 @@ Zásady zabezpečení definují sadu ovládacích prvků doporučenou pro prost�
 ![Zásady zabezpečení](./media/security-center-virtual-machine/security-center-virtual-machine-fig1.png)
 
 > [!NOTE]
-> Další informace o jednotlivých dostupných **Zásadách prevence** najdete v článku [Nastavení zásad zabezpečení](security-center-azure-policy.md).
+> Další informace o jednotlivých dostupných **Zásadách prevence** najdete v článku [Nastavení zásad zabezpečení](tutorial-security-policy.md).
 > 
 > 
 
@@ -85,7 +85,7 @@ Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpe�
 > 
 
 ## <a name="monitor-security-health"></a>Monitorování stavu zabezpečení
-Po povolení [zásad zabezpečení](security-center-azure-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  V okně **Stav zabezpečení prostředků** můžete zobrazit stav zabezpečení svých prostředků spolu s případnými problémy. Když na dlaždici **Stav zabezpečení prostředků** kliknete na **Virtuální počítače**, otevře se okno **Virtuální počítače**, které obsahuje doporučení pro vaše virtuální počítače. 
+Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  V okně **Stav zabezpečení prostředků** můžete zobrazit stav zabezpečení svých prostředků spolu s případnými problémy. Když na dlaždici **Stav zabezpečení prostředků** kliknete na **Virtuální počítače**, otevře se okno **Virtuální počítače**, které obsahuje doporučení pro vaše virtuální počítače. 
 
 ![Stav zabezpečení](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
@@ -99,7 +99,7 @@ Vyberte výstrahu zabezpečení, abyste se dozvěděli další informace o udál
 ## <a name="see-also"></a>Další informace najdete v tématech
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
 

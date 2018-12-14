@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dda5a0cda284effdb795d4fb1960ac5fb94799cc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276379"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337984"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Vytvoření webové aplikace Python a PostgreSQL v Azure App Service
 
@@ -205,7 +205,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 > [!NOTE]
 > Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
-Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](http://www.whatsmyip.org/), abyste měli přístup k databázi.
+Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/), abyste měli přístup k databázi.
 
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myResourceGroup --server-name <postgresql_name> --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address> --name AllowLocalClient
@@ -287,7 +287,7 @@ Ověří Django `HTTP_HOST` záhlaví v příchozí požadavky. Pro vaši aplika
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
 ```
 
-V dalším kroku Django nepodporuje [obsluhy statických souborů v produkčním prostředí](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), takže budete muset ručně povolit. V tomto kurzu použijete [WhiteNoise](http://whitenoise.evans.io/en/stable/). Balíček WhiteNoise je již součástí _souboru requirements.txt_. Potřebujete nakonfigurovat Django jeho použití. 
+V dalším kroku Django nepodporuje [obsluhy statických souborů v produkčním prostředí](https://docs.djangoproject.com/en/2.1/howto/static-files/deployment/), takže budete muset ručně povolit. V tomto kurzu použijete [WhiteNoise](https://whitenoise.evans.io/en/stable/). Balíček WhiteNoise je již součástí _souboru requirements.txt_. Potřebujete nakonfigurovat Django jeho použití. 
 
 V _azuresite/settings.py_, vyhledejte `MIDDLEWARE` nastavením a přidejte `whitenoise.middleware.WhiteNoiseMiddleware` middlewaru, který má v seznamu přímo pod `django.middleware.security.SecurityMiddleware` middlewaru. Vaše `MIDDLEWARE` nastavení by měl vypadat přibližně takto:
 
@@ -307,7 +307,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 ```
 
-Další informace o konfiguraci WhiteNoise, najdete v článku [WhiteNoise dokumentaci](http://whitenoise.evans.io/en/stable/).
+Další informace o konfiguraci WhiteNoise, najdete v článku [WhiteNoise dokumentaci](https://whitenoise.evans.io/en/stable/).
 
 > [!IMPORTANT]
 > V části Nastavení databáze již následující doporučené postupy zabezpečení pomocí proměnné prostředí. Doporučení pro dokončení nasazení, najdete v části [Django dokumentaci: kontrolní seznam nasazení](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/).

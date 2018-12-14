@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: c8bee6902fb74cb77c34395fd05c1c861b4f630e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 349d3a6eacf22a0ce3f842dd30df19964cdf7f23
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166130"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337321"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí služby Azure Data Factory
 
@@ -35,7 +35,7 @@ Kopírovat data ze zdroje OData k jakékoli podporovaného úložiště dat jím
 Konkrétně tento konektor OData podporuje:
 
 - OData verze 3.0 a 4.0.
-- Kopírování dat pomocí jedné z následujících ověření: **anonymní**, **základní**, nebo **Windows**.
+- Kopírování dat pomocí jedné z následujících ověření: **Anonymní**, **základní**, **Windows**, **instanční objekt služby AAD**, a **se identita spravované služby**.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -51,12 +51,19 @@ Pro služby OData propojené se podporují následující vlastnosti:
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **OData**. |Ano |
 | url | Kořenovou adresu URL služby OData. |Ano |
-| authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, a **Windows**. OAuth se nepodporuje. | Ano |
+| authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData. Povolené hodnoty jsou **anonymní**, **základní**, **Windows**, **AadServicePrincipal**, a **ManagedServiceIdentity** . Uživatel se nepodporuje na základě OAuth. | Ano |
 | uživatelské jméno | Zadejte **uživatelské jméno** Pokud používáte ověřování Basic nebo Windows. | Ne |
 | heslo | Zadejte **heslo** uživatele účtu, který jste zadali pro **uživatelské jméno**. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| servicePrincipalId | Zadejte ID klienta aplikace Azure Active Directory. | Ne |
+| aadServicePrincipalCredentialType | Určení typu pověření pro ověřování instančních objektů. Povolené hodnoty jsou: `ServicePrincipalKey` nebo `ServicePrincipalCert`. | Ne |
+| servicePrincipalKey | Zadejte klíč aplikace Azure Active Directory. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| servicePrincipalEmbeddedCert | Určete certifikát kódovaný v base64 vaší aplikace v Azure Active Directory. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| servicePrincipalEmbeddedCertPassword | Pokud váš certifikát je zabezpečený pomocí hesla, zadejte heslo certifikátu. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md).  | Ne|
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ne |
+| aadResourceId | Zadejte prostředku AAD, které jste požádali o registraci.| Ne |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. Můžete vybrat prostředí Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud je vaše úložiště dat se nachází v privátní síti). Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
-**Příklad 1: Použití anonymní ověřování**
+**Příklad 1: Anonymní ověřování**
 
 ```json
 {
@@ -99,7 +106,7 @@ Pro služby OData propojené se podporují následující vlastnosti:
 }
 ```
 
-**Příklad 3: Použití ověřování Windows**
+**Příklad 3: Ověřování Windows**
 
 ```json
 {
@@ -119,6 +126,64 @@ Pro služby OData propojené se podporují následující vlastnosti:
             "referenceName": "<name of Integration Runtime>",
             "type": "IntegrationRuntimeReference"
         }
+    }
+}
+```
+
+**Příklad 4: Pomocí ověřování instančních objektů klíče**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of on-premises OData source>",
+            "authenticationType": "AadServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "aadServicePrincipalCredentialType": "ServicePrincipalKey",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "aadResourceId": "<AAD resource>"
+        }
+    },
+    "connectVia": {
+        "referenceName": "<name of Integration Runtime>",
+        "type": "IntegrationRuntimeReference"
+    }
+}
+```
+
+**Příklad 5: Pomocí ověřování certifikátu instančního objektu služby**
+
+```json
+{
+    "name": "ODataLinkedService",
+    "properties": {
+        "type": "OData",
+        "typeProperties": {
+            "url": "<endpoint of on-premises OData source>",
+            "authenticationType": "AadServicePrincipal",
+            "servicePrincipalId": "<service principal id>",
+            "aadServicePrincipalCredentialType": "ServicePrincipalCert",
+            "servicePrincipalEmbeddedCert": { 
+                "type": "SecureString", 
+                "value": "<base64 encoded string of (.pfx) certificate data>"
+            },
+            "servicePrincipalEmbeddedCertPassword": { 
+                "type": "SecureString", 
+                "value": "<password of your certificate>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "aadResourceId": "<AAD resource e.g. https://tenant.sharepoint.com>"
+        }
+    },
+    "connectVia": {
+        "referenceName": "<name of Integration Runtime>",
+        "type": "IntegrationRuntimeReference"
     }
 }
 ```
@@ -169,7 +234,7 @@ Chcete-li kopírovat data z prostředí OData, nastavte **zdroj** typ v aktivit�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **RelationalSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: konektor The OData kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: Konektor OData kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad**
 
@@ -213,7 +278,7 @@ Při kopírování dat z protokolu OData, se používají následující mapová
 | Edm.Boolean | BOOL |
 | Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
+| Edm.Decimal | Desítkově |
 | Edm.Double | Double |
 | Edm.Single | Jednoduchá |
 | Edm.Guid | Guid |

@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ccccad1cb510c4988092467c723e117a47456aaf
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 06006456a08c5eb499eff504fea5dcffdc11d662
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277501"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342387"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
 Řešení Update Management ve službě Azure Automation můžete použít ke správě aktualizací operačního systému pro počítače s Windows a Linuxem, které jsou nasazené v Azure, místním prostředí nebo jiných poskytovatelů cloudových služeb. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
-Můžete povolit správu aktualizací pro virtuální počítače přímo ze svého účtu Azure Automation. Informace o povolení správy aktualizací pro virtuální počítače ve svém účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro jeden virtuální počítač z podokna virtuálního počítače na webu Azure Portal. Tento scénář je k dispozici pro [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
+Můžete povolit správu aktualizací pro virtuální počítače přímo ze svého účtu Azure Automation. Informace o povolení správy aktualizací pro virtuální počítače ve svém účtu Automation najdete v tématu [Správa aktualizací pro několik virtuálních počítačů](manage-update-multi.md). Můžete také povolit správu aktualizací pro virtuální počítač z virtuálního počítače stránky na webu Azure Portal. Tento scénář je k dispozici pro [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) a [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuálních počítačů.
 
 ## <a name="solution-overview"></a>Přehled řešení
 
@@ -41,7 +41,7 @@ Až CVE vydání, trvá 2 – 3 hodiny pro opravu se zobrazí pro počítače s 
 
 Po dokončení kontroly dodržování předpisů pro aktualizace do počítače agenta předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení spouští každých 12 hodin.
 
-Mimo plán kontrol dodržování předpisů pro aktualizace, zahájí se kontrola v rámci 15 minut v případě restartování agenta MMA, před instalací aktualizací a po instalaci aktualizace.
+Mimo plán kontrol je zahájeno kontroly dodržování předpisů pro aktualizace do 15 minut po restartování, před instalací aktualizací a po instalaci aktualizací agenta MMA.
 
 Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nastavení provádí každé tři hodiny. Pokud restartování agenta MMA, kontroly dodržování předpisů je zahájeno do 15 minut.
 
@@ -148,7 +148,7 @@ Na počítači s Windows můžete zkontrolovat následující informace, chcete-
 1. V Ovládacích panelech otevřete **agenta Microsoft Monitoring Agent**. Na **Azure Log Analytics** agenta na kartě se zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojila k Log Analytics**.
 2. Otevřete protokol událostí Windows. Přejděte na **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ID události ze zdroje **konektoru služby**. Tyto události značí, že počítač je zaregistrovaná s pracovním prostorem Log Analytics a přijímá konfiguraci.
 
-Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit, zda je správně nakonfigurována brána firewall nebo proxy server, najdete v článku [konfiguraci sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
+Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy serveru, abyste potvrdili, že je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit správnou konfiguraci brány firewall nebo proxy serveru, najdete v článku [konfiguraci sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Pokud jsou vaše Linuxové systémy nakonfigurován pro komunikaci pomocí serveru proxy nebo brány Log Analytics a připojujete toto řešení, aktualizace *proxy.conf* oprávnění udělit skupině omiuser udělili oprávnění ho číst pomocí Následující příkazy:
@@ -285,7 +285,7 @@ Správa aktualizací spoléhá na webu Windows Update ke stažení a instalaci a
 
 ### <a name="pre-download-updates"></a>Náhled stahování aktualizací
 
-Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) k **3**. Stáhne aktualizace potřeba na pozadí, ale není možné nainstalovat je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
+Konfigurace automaticky stahování aktualizací v zásadách skupiny, můžete nastavit [nastavení konfigurace automatických aktualizací](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) k **3**. Stáhne aktualizace potřeba na pozadí, ale neinstaluje je. To zajišťuje Správa aktualizací v ovládacím prvku plánů, ale povolit aktualizace stáhnout mimo časové období údržby Update Management. To může zabránit **překročilo se časové období údržby** chyby v Update Management.
 
 Můžete to také nastavit pomocí prostředí PowerShell, spusťte následující příkaz Powershellu v systému, které chcete automaticky – stahování aktualizací.
 
@@ -297,7 +297,7 @@ $WUSettings.Save()
 
 ### <a name="enable-updates-for-other-microsoft-products"></a>Povolit aktualizace pro ostatní produkty Microsoftu
 
-Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, jako jsou třeba opravy zabezpečení věcí je SQL serverem nebo jiným softwarem první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
+Ve výchozím nastavení aktualizace Windows pouze poskytuje aktualizace pro Windows. Pokud povolíte **nabízet aktualizace pro ostatní produkty Microsoftu při aktualizaci Windows**, jsou součástí aktualizace ostatních produktů, včetně oprav zabezpečení takové věci pro SQL Server nebo jiný software první strany. Tuto možnost nelze konfigurovat pomocí zásad skupiny. Spusťte následující příkaz Powershellu v systémech, které chcete povolit jiné první strany opravy na a Update Management se případném dalším sdílení dodržovat tato nastavení.
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -305,6 +305,11 @@ $ServiceManager.Services
 $ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
 $ServiceManager.AddService2($ServiceId,7,"")
 ```
+
+## <a name="third-party"></a> Opravy třetích stran ve Windows
+
+Správa aktualizací spoléhá na službu WSUS nebo Windows Update o opravu podporované systémy Windows. Nástroje, jako je [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) umožní publikovat vlastní aktualizace do služby WSUS. Tento scénář umožňuje správu aktualizovat opravu počítačů, které pomocí služby WSUS jako jejich úložiště aktualizací se softwarem třetích stran. Informace o konfiguraci nástroje Updates Publisher najdete v tématu [nainstalovat Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Plánování sítě
 
@@ -325,7 +330,7 @@ Doporučuje se použít adresy, které uvedete při definování výjimky. Pro I
 
 Kromě podrobností, které jsou k dispozici na webu Azure Portal můžete provést hledání v protokolech. Na stránce řešení vyberte **Log Analytics**. **Prohledávání protokolů** se otevře podokno.
 
-Můžete se také dozvíte, jak upravit dotazy nebo je používat od různých klientů a víc návštěvou:  [Dokumentace ke službě hledání rozhraní API analýzy log](
+Můžete se také dozvíte, jak upravit dotazy nebo je používat od různých klientů a víc návštěvou:  [Dokumentace k rozhraní API hledání log Analytics](
 https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Ukázkové dotazy
@@ -334,7 +339,7 @@ Ukázkové dotazy protokolu pro záznamy aktualizace shromážděné tímto ře�
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Dotazy na jeden posouzení virtuálních počítačů Azure (Windows)
 
-Nahraďte hodnotu VMUUID identifikátor GUID virtuálního počítače z virtuálního počítače, který se dotazuje. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v Log Analytics: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Nahraďte hodnotu VMUUID identifikátor GUID virtuálního počítače z virtuálního počítače, který dotazujete. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v Log Analytics: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
 
@@ -584,7 +589,7 @@ Protože Update Management se provede aktualizace rozšíření v cloudu, někte
 
 Update Management však stále hlásit tohoto počítače, jako je nedodržují předpisy, protože obsahuje další informace o příslušné aktualizace.
 
-Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Jedná se omezení zypperu. V některých případech může být potřeba znovu spustit nasazení aktualizace, ověření zkontrolujte protokol aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nebude fungovat na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Toto chování se o omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace. Pokud chcete ověřit, zkontrolujte protokol aktualizace.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

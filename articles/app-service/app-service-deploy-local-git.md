@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 242eb906c95b373b2edd538be5f06756cac1e8c9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 47949ca5cd0fad498f3d383f4c530e75787387e2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256501"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344002"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -48,7 +48,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 Nejjednodušší způsob, jak povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu server sestavení je použití Cloud Shell.
 
-### <a name="create-a-deployment-user"></a>Vytvoření uživatele nasazení
+### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
@@ -86,7 +86,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 
 ### <a name="deploy-your-project"></a>Nasazení projektu
 
-Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<url >_ adresou URL vzdáleného úložiště Git, které jste získali z [povolit Git pro vaši aplikaci](#enable-git-for-you-app).
+Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<url >_ adresou URL vzdáleného úložiště Git, které jste získali z [povolit Git pro vaši aplikaci](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>

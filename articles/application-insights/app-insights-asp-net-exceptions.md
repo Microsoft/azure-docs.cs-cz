@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 21c1a92a71ac52a47a8b9d73d5e715afb6dc73d0
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997054"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343407"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights
 Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Insights](app-insights-overview.md). Neúspěšné požadavky můžete korelovat s výjimky a dalších událostí na klienta a serveru, tak, že můžete rychle Diagnostikujte příčiny.
@@ -25,8 +25,8 @@ Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Ins
 ## <a name="set-up-exception-reporting"></a>Nastavení generování sestav výjimky
 * K výjimkám hlášené z aplikací serveru:
   * Nainstalujte [Application Insights SDK](app-insights-asp-net.md) v kódu aplikace, nebo
-  * Webové servery služby IIS: Spusťte [Application Insights Agent](app-insights-monitor-performance-live-website-now.md); nebo
-  * Webové aplikace Azure: Přidejte [rozšíření Application Insights](app-insights-azure-web-apps.md)
+  * Webové servery služby IIS: Spustit [agenta Application Insights](app-insights-monitor-performance-live-website-now.md); nebo
+  * Azure web apps: Přidat [rozšíření Application Insights](app-insights-azure-web-apps.md)
   * Webové aplikace v Javě: Nainstalujte [agenta Java](app-insights-java-agent.md)
 * Nainstalujte [fragment kódu jazyka JavaScript](app-insights-javascript.md) na webových stránkách jak zachytávat výjimky prohlížeče.
 * V některých aplikační architektury, nebo s některými nastaveními je potřeba udělat některé dodatečné kroky, jak zachytávat výjimky Další:
@@ -50,14 +50,15 @@ Všimněte si, že můžete filtrovat sestavu pro zobrazení jenom výjimky.
 *Žádné výjimky, zobrazuje? Zobrazit [zachycení výjimek](#exceptions).*
 
 Klikněte na tlačítko sestava zobrazíte jeho trasování zásobníku výjimek.
-Klikněte na tlačítko s odkazem na řádek v trasování zásobníku, otevřete soubor odpovídající kód.  
+Klikněte na tlačítko s odkazem na řádek v trasování zásobníku, otevřete soubor odpovídající kód.
 
 V kódu Všimněte si, že CodeLens ukazuje údaje o výjimky:
 
 ![CodeLens oznámení o výjimkách.](./media/app-insights-asp-net-exceptions/35.png)
 
 ## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostikování chyb pomocí webu Azure portal
-Application Insights přichází s APM způsob při diagnostice chyb ve vašich monitorovaných aplikacích. Pokud chcete začít, klikněte na možnost selhání v nabídce prostředků Application Insights v části prozkoumat. Měli byste vidět zobrazení na celou obrazovku, který zobrazuje trendy míra selhání pro vaše požadavky, kolik z nich se nedaří a kolik uživatelů bylo ovlivněno. Na pravé straně uvidíte některé specifické pro vybranou nejužitečnější distribucí neúspěšné operace, včetně kódy odpovědí první 3, 3 nejpoužívanější typy výjimek a nejčastější 3 typy závislostí služeb při selhání. 
+Application Insights přichází s APM způsob při diagnostice chyb ve vašich monitorovaných aplikacích. Pokud chcete začít, klikněte na možnost selhání v nabídce prostředků Application Insights v části prozkoumat.
+Měli byste vidět zobrazení na celou obrazovku, který zobrazuje trendy míra selhání pro vaše požadavky, kolik z nich se nedaří a kolik uživatelů bylo ovlivněno. Na pravé straně uvidíte některé specifické pro vybranou nejužitečnější distribucí neúspěšné operace, včetně kódy odpovědí první 3, 3 nejpoužívanější typy výjimek a nejčastější 3 typy závislostí služeb při selhání.
 
 ![Chyby třídění zobrazení (kartu operace)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
@@ -98,7 +99,7 @@ Podrobnosti o žádosti jsou data odeslaná do vaší aplikace v rámci volání
 
 * [Instalace sady SDK](app-insights-asp-net.md) v projektu aplikace.
 * Vložení kódu v aplikaci volat [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Odeslat příspěvek data v parametru zprávy. Platí omezení na povolenou velikost, snažte se odeslat jenom základní data.
-* Při zkoumání neúspěšného požadavku najdete související trasování.  
+* Při zkoumání neúspěšného požadavku najdete související trasování.
 
 ![Procházet na podrobnosti](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
@@ -178,7 +179,7 @@ Ale pokud máte aktivní přesměrování, přidejte následující řádky do f
 ```csharp
     void Application_Error(object sender, EventArgs e)
     {
-      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
+      if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError () != null)
       {
          var ai = new TelemetryClient(); // or re-use an existing instance
 
@@ -199,12 +200,13 @@ Existuje několik případů, které nemůže zpracovat filtry výjimek. Příkl
 * Byla vyvolána výjimka při spuštění aplikace.
 * V úlohách na pozadí došlo k výjimce.
 
-Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně. Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
+Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně.
+Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
 
 ### <a name="prior-versions-support"></a>Předchozí verze podporují
 Pokud používáte MVC 4 (a předchozí) z Application Insights Web SDK 2.5 (a předchozí), najdete v následujících příkladech ke sledování výjimek.
 
-Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP služby](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Nicméně pokud je `RemoteOnly` (výchozí), nebo `On`, výjimka bude zaškrtnuté a není k dispozici pro službu Application Insights automaticky shromažďovat. Která můžete opravit tak, že přepíšete [System.Web.Mvc.HandleErrorAttribute třídy](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a jak je znázorněno pro různé verze MVC níže použití přepsané třídy ([zdroje githubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurace je `Off`, bude k dispozici pro výjimky [modulu HTTP služby](https://msdn.microsoft.com/library/ms178468.aspx) ke shromažďování. Nicméně pokud je `RemoteOnly` (výchozí), nebo `On`, výjimka bude zaškrtnuté a není k dispozici pro službu Application Insights automaticky shromažďovat. Která můžete opravit tak, že přepíšete [System.Web.Mvc.HandleErrorAttribute třídy](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a jak je znázorněno pro různé verze MVC níže použití přepsané třídy ([zdroje Githubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;
@@ -222,7 +224,7 @@ Pokud [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigura
             {
                 //If customError is Off, then AI HTTPModule will report the exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
-                {   //or reuse instance (recommended!). see note above  
+                {   //or reuse instance (recommended!). see note above
                     var ai = new TelemetryClient();
                     ai.TrackException(filterContext.Exception);
                 }
@@ -239,9 +241,9 @@ Atribut HandleError nahraďte nového atributu ve vašich kontrolerech.
 ```csharp
     namespace MVC2App.Controllers
     {
-       [AiHandleError]
-       public class HomeController : Controller
-       {
+        [AiHandleError]
+        public class HomeController : Controller
+        {
     ...
 ```
 
@@ -290,7 +292,8 @@ Existuje několik případů, které nemůže zpracovat filtry výjimek. Příkl
 * Byla vyvolána výjimka při spuštění aplikace.
 * V úlohách na pozadí došlo k výjimce.
 
-Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně. Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
+Všechny výjimky *zpracovává* aplikací stále potřeba sledovat ručně.
+Neošetřených výjimek pocházejících od řadičů obvykle za následek odpovědi 500 "Vnitřní chyba serveru". Pokud takové odpovědi je ručně vytvořený jako výsledek zpracování výjimek (nebo vůbec žádné výjimky) je sledována v odpovídající telemetrie žádostí s `ResultCode` 500, ale není schopen sledovat odpovídající výjimek Application Insights SDK.
 
 ### <a name="prior-versions-support"></a>Předchozí verze podporují
 Pokud používáte WebAPI 1 (a předchozí) z Application Insights Web SDK 2.5 (a předchozí), najdete v následujících příkladech ke sledování výjimek.
@@ -311,7 +314,7 @@ Override System.Web.Http.Filters.ExceptionFilterAttribute:
             if (actionExecutedContext != null && actionExecutedContext.Exception != null)
             {  //or reuse instance (recommended!). see note above
                 var ai = new TelemetryClient();
-                ai.TrackException(actionExecutedContext.Exception);    
+                ai.TrackException(actionExecutedContext.Exception);
             }
             base.OnException(actionExecutedContext);
         }
@@ -481,7 +484,7 @@ Tím se liší od počtu "Výjimek", počítá pomocí portálu služby Applicat
 
 ## <a name="video"></a>Video
 
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
+> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Další postup
 * [Monitorování REST, SQL a další volání závislostí](app-insights-asp-net-dependencies.md)

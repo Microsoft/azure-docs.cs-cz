@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9794c25bd5f0acd48362611d13bac17fc502450
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839498"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341044"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý v jazyce C\#
 
@@ -76,7 +76,7 @@ Visual Studio vytvoří projekt aplikace funkce empty.  Obsahuje základní konf
 
 Nová funkce trvalý se přidají do aplikace.  Otevřete nový soubor, chcete-li zobrazit obsah.  Tato funkce trvalý je jednoduchý příklad řetězení funkce.  
 
-* `RunOrchestrator` Metoda je přidružený k funkci nástroje orchestrator.  Tato funkce bude spustit, vytvoření seznamu a přidat výsledek tři volání funkce do seznamu.  Po dokončení volání tři funkce se vrátí v seznamu.  Je funkce, která se volá `SayHello` – metoda (výchozí bude volat "<NameOfFile>_Hello").
+* `RunOrchestrator` Metoda je přidružený k funkci nástroje orchestrator.  Tato funkce bude spustit, vytvoření seznamu a přidat výsledek tři volání funkce do seznamu.  Po dokončení volání tři funkce se vrátí v seznamu.  Je funkce, která se volá `SayHello` – metoda (výchozí, bude zavolána `<NameOfFile>_Hello`).
 * `SayHello` Funkce vrátí hello.
 * `HttpStart` Metoda popisuje funkce, která se spustí výskyty orchestraci.  Je přidružený [triggeru HTTP](../functions-bindings-http-webhook.md) , který spustí novou instanci třídy orchestrator a vrátit zpět odpověď na kontrolu stavu.
 
@@ -92,7 +92,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
     ![Místní modul runtime Azure](./media/durable-functions-create-first-csharp/functions-vs-debugging.png)
 
-3. Vložte adresu URL pro požadavek HTTP do panelu Adresa v prohlížeči a proveďte požadavek. Následuje ukázka odezvy na místní požadavek GET vrácené funkcí v prohlížeči: 
+3. Vložte adresu URL pro požadavek HTTP do panelu Adresa v prohlížeči a proveďte požadavek. Následuje ukázka odezvy na místní požadavek GET vrácené funkcí v prohlížeči:
 
     ![Odezva místního hostitele funkce v prohlížeči](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 

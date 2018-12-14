@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 3f485d2e7c2aefaede7d0334fd89ce3bea9e3f3a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f460c063ded489c8ec0ef23b35ab304c62943a98
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187904"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337066"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pomocí Azure monitoru pro virtuální počítače (Preview) mapu pochopit součásti aplikace
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
@@ -51,7 +51,7 @@ Pokud chcete povolit funkci Mapa k zobrazení příslušné výstrahy, vytvořte
 - Obsahovat klauzuli do skupiny podle počítače (například **počítače interval 1 minuta**).
 - Vyberte výstrahy založené na základě měření metriky.
 
-Další informace o Azure výstrahy a vytváření pravidel upozornění, najdete v části [Unified výstrah ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+Další informace o Azure výstrahy a vytváření pravidel upozornění, najdete v části [Unified výstrah ve službě Azure Monitor](../../azure-monitor/platform/alerts-overview.md)
 
 **Legendy** v pravém horním rohu možnost popisuje symboly a role na mapě.  Přiblížit pro bližší pohled na mapě a přesuňte it kolem ovládací prvky zvětšení v dolní pravé straně stránky nastaví úroveň přiblížení a přizpůsobit stránky a velikost aktuální stránky.  
 

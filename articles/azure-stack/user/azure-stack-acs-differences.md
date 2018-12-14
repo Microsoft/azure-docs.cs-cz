@@ -14,14 +14,14 @@ ms.topic: get-started-article
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: efdc1cda9b52b6b79a3ccdcfd16542f7cb4b891a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1d1811549978d78a8dddad8e89895fdf605ed02b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838544"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341894"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: rozdíly a aspekty
+# <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: Rozdíly a aspekty
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -29,7 +29,7 @@ ms.locfileid: "52838544"
 
 Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Storage. Také uvádí, co je třeba zvážit při nasazení Azure Stack. Další informace o nejvýraznějších rozdílů mezi globální Azure a Azure Stack, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
-## <a name="cheat-sheet-storage-differences"></a>Tahák: úložiště rozdíly
+## <a name="cheat-sheet-storage-differences"></a>Tahák: Rozdíly úložiště
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
@@ -41,6 +41,7 @@ Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Sto
 |Managed Disks|Premium a standard podporována|Podporovány, pokud používáte verzi 1808 nebo novější.
 |Název objektu blob|1 024 znaků (2 048 bajtů)|880 znaků (1,760 bajty)
 |Maximální velikost objektu blob bloku|4,75 TB (100 MB × 50 000 bloků)|4,75 TB (100 MB × 50 000 bloků) pro verzi 1802 update nebo novější verze. 50 000 × 4 MB (přibližně 195 GB) pro předchozí verze.
+|Kopie snímků objektů blob stránky|Zálohování Azure nespravovaných disků virtuálních počítačů připojený spuštěný virtuální počítač nepodporuje|Ještě není podporované.
 |Kopie přírůstkový snímek objektu blob stránky|Premium a objekty BLOB stránky standardní Azure, které jsou podporovány|Ještě není podporované.
 |Úrovně úložiště pro ukládání objektů blob|Horké studené a archivní úroveň úložiště.|Ještě není podporované.
 Obnovitelného odstranění pro úložiště objektů blob|Preview|Ještě není podporované.
@@ -62,21 +63,21 @@ Rozhraní API pro služby Azure Storage:
 
 aktualizace 1802 nebo novější:
 
- - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
- - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
- - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+- [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+- [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Předchozí verze:
 
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
+- [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Rozhraní API pro správu služby Azure Storage:
 
- - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
- - [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
+- [2016-01-01](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
 ## <a name="sdk-versions"></a>Verze sady SDK
 

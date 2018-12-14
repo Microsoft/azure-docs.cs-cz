@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 95fd44d5865eb804cb91d7adc2cc17bb5f957b5c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275206"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339803"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -396,7 +396,7 @@ V této části provedete následující úlohy k nastavení Application Insight
 
 V této části spustíte místně znovu ověřte, že data protokolování teď bude také Application Insights jde o konzole.
 
-1. Použití **Průzkumníka serveru** v sadě Visual Studio k vytvoření zprávy fronty, stejně jako jste to udělali [starší](#trigger-the-function)s výjimkou případů, zadejte *Hello App Insights!* jako text zprávy.
+1. Použití **Průzkumníka serveru** v sadě Visual Studio k vytvoření zprávy fronty, stejně jako jste to udělali [starší](#trigger-the-function-in-azure)s výjimkou případů, zadejte *Hello App Insights!* jako text zprávy.
 
 1. Spusťte projekt.
 

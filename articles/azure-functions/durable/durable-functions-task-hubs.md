@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 68771362c1b3904453eb7c32f58d28122e8660c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869463"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336896"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Centra úloh v Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Každá aplikace function app má Centrum samostatné úlohy. Pokud se více apl
 
 ## <a name="azure-storage-resources"></a>Prostředky Azure Storage
 
-Centra úloh se skládá z následujících prostředků služby storage: 
+Centra úloh se skládá z následujících prostředků služby storage:
 
 * Jednu či více front ovládacího prvku.
 * Jedna fronta pracovní položky.
@@ -41,7 +41,8 @@ Všechny tyto prostředky se vytvoří automaticky v účtu Azure Storage výcho
 
 Centra úloh je identifikována názvem, který je deklarován v *host.json* souboru, jak je znázorněno v následujícím příkladu:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (funkce v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (funkce 1.x)
+
 ```json
 {
   "durableTask": {
@@ -49,7 +50,9 @@ Centra úloh je identifikována názvem, který je deklarován v *host.json* sou
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkce v2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (funkce 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -60,9 +63,11 @@ Centra úloh je identifikována názvem, který je deklarován v *host.json* sou
   }
 }
 ```
+
 Centra úloh lze také nastavit pomocí nastavení aplikace, jak je znázorněno v následujícím *host.json* ukázkového souboru:
 
-### <a name="hostjson-functions-v1"></a>Host.JSON (funkce v1)
+### <a name="hostjson-functions-1x"></a>Host.JSON (funkce 1.x)
+
 ```json
 {
   "durableTask": {
@@ -70,7 +75,9 @@ Centra úloh lze také nastavit pomocí nastavení aplikace, jak je znázorněno
   }
 }
 ```
-### <a name="hostjson-functions-v2"></a>Host.JSON (funkce v2)
+
+### <a name="hostjson-functions-2x"></a>Host.JSON (funkce 2.x)
+
 ```json
 {
   "version": "2.0",
@@ -81,13 +88,14 @@ Centra úloh lze také nastavit pomocí nastavení aplikace, jak je znázorněno
   }
 }
 ```
+
 Název centra úloh se nastaví na hodnotu `MyTaskHub` nastavení aplikace. Následující `local.settings.json` ukazuje, jak definovat `MyTaskHub` nastavení jako `samplehubname`:
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "MyTaskHub" :  "samplehubname" 
+    "MyTaskHub" : "samplehubname"
   }
 }
 ```
@@ -111,9 +119,10 @@ public static async Task<HttpResponseMessage> Run(
     return starter.CreateCheckStatusResponse(req, instanceId);
 }
 ```
+
 A tady je požadované konfigurace pro jazyk JavaScript. Vlastnosti centra úloh v `function.json` soubor pomocí nastavení aplikace:
 
-```javascript
+```json
 {
     "name": "input",
     "taskHub": "%MyTaskHub%",

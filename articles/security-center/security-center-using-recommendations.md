@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: rkarlin
-ms.openlocfilehash: 36e3e8c6c34099149cb13aa60efb6668fcc7d53c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d496f3f28cee711109c5c200102d48482bf6cd9c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958404"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340687"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
 Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení.
@@ -30,7 +30,7 @@ Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskyt
 >
 
 ## <a name="managing-security-recommendations"></a>Správa doporučení zabezpečení
-Zásady zabezpečení definují sadu ovládacích prvků, které se doporučují pro prostředky v rámci daného předplatného nebo skupiny prostředků. Ve službě Security Center určíte zásady podle požadavků zabezpečení vaší společnosti. Další informace najdete v tématu [nastavení zásad zabezpečení ve službě Security Center](security-center-azure-policy.md).
+Zásady zabezpečení definují sadu ovládacích prvků, které se doporučují pro prostředky v rámci daného předplatného nebo skupiny prostředků. Ve službě Security Center určíte zásady podle požadavků zabezpečení vaší společnosti. Další informace najdete v tématu [nastavení zásad zabezpečení ve službě Security Center](tutorial-security-policy.md).
 
 Zásady zabezpečení pro skupiny prostředků se dědí z úrovně předplatného.
 

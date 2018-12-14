@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/10/2018
+ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 6aa13096b61fc1bf44d370b3d7dcc01a0df74e8d
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 74132c436670247f3eb84859216274d3e1363d07
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321337"
+ms.locfileid: "53338698"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před odesláním Windows virtuálních počítačů (VM) z místního na Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje **pouze virtuální počítače generace 1** , které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z VHDX souborový systém pro virtuální pevný disk a z dynamicky se zvětšující disku na pevnou velikostí. Nelze však změnit generaci Virtuálního počítače. Další informace najdete v tématu [bych si měl vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -73,6 +73,16 @@ Na virtuálním počítači, který chcete nahrát do Azure, spuštění všech 
     ```PowerShell
     netsh winhttp reset proxy
     ```
+
+    Pokud virtuální počítač potřebovat pro práci s žádné konkrétní proxy server, musíte přidat výjimky proxy serveru na Azure IP adresu ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)), takže virtuální počítač má připojení k Azure:
+    ```
+    $proxyAddress="<your proxy server>"
+    $proxyBypassList="<your list of bypasses>;168.63.129.16"
+
+    netsh winhttp set proxy $proxyAddress $proxyBypassList
+    ```
+
 3. Nastavte zásady disku sítě SAN na [Onlineall](https://technet.microsoft.com/library/gg252636.aspx):
    
     ```PowerShell

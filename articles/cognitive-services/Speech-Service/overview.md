@@ -1,37 +1,36 @@
 ---
 title: Co je služba Speech?
 titleSuffix: Azure Cognitive Services
-description: 'Služba Speech, která je součástí služeb Azure Cognitive Services, sjednocuje několik hlasových služeb, které byly dříve k dispozici samostatně: Zpracování řeči Bingu (skládající se z rozpoznávání řeči a převodu textu na řeč), Custom Speech a Překlad řeči.'
+description: 'Speech Service součástí Azure Cognitive Services, sjednotí několik hlasové služby, které byly dříve k dispozici samostatně: (Zahrnující rozpoznávání řeči a převod textu na řeč) pro zpracování řeči Bingu, vlastní řeč a překladu řeči.'
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470442"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336590"
 ---
-# <a name="what-is-the-speech-service"></a>Co je služba Speech?
+# <a name="what-is-speech-services"></a>Co je hlasové služby?
 
+Stejně jako jiné služby Azure řeči hlasové služby využívají řeči technologií používaných pro produkty, jako je Cortana a Microsoft Office.
 
-Podobně jako ostatní hlasové služby Azure i služba Speech využívá hlasové technologie používané v produktech, jako je Cortana a Microsoft Office.
+Hlasové služby sjednocení Azure Řečové funkce na dříve k dispozici prostřednictvím [rozhraní API pro zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home), a [vlastní Hlasové](http://customvoice.ai/) služby. Teď přístup ke všem těmto funkcím poskytuje jedno předplatné.
 
-Služba Speech sjednocuje hlasové funkce Azure, které byly dříve dostupné prostřednictvím služeb [Zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home), [Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/), [Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home) a [Custom Voice](http://customvoice.ai/). Teď přístup ke všem těmto funkcím poskytuje jedno předplatné.
+## <a name="main-speech-services-functions"></a>Funkce Main hlasové služby
 
-## <a name="main-speech-service-functions"></a>Hlavní funkce služby Speech
-
-Hlavními funkcemi služby Speech jsou převod řeči na text (označuje se také jako rozpoznávání nebo přepis řeči), převod textu na řeč (syntéza řeči) a překlad řeči.
+Primární funkce hlasové služby jsou řeči na text (také nazývané řeči nebo určené k transkripci), převod textu na řeč (syntézu řeči) a překladu řeči.
 
 |Funkce|Funkce|
 |-|-|
 |[Převod řeči na text](speech-to-text.md)| <li>Přepisuje plynulou řeč v reálném čase do textové podoby.<li>Dokáže dávkově přepisovat řeč ze zvukových nahrávek. <li>Podporuje okamžité výsledky, detekci konce řeči, automatické formátování textu a maskování vulgarismů. <li>Může volat službu [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), která z přepsané řeči odvodí záměr uživatele.\*|
-|[Převod textu na řeč](text-to-speech.md)| <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
+|[Převod textu na řeč](text-to-speech.md)| <li>**NOVÉ**: Poskytuje neuronových sítí převod textu na řeč hlasy téměř nerozeznatelná od lidské řeči (v angličtině). <li>Převádí text do přirozeně znějící řeči. <li>Nabízí několik pohlaví a dialektů pro celou řadu podporovaných jazyků. <li>Podporuje vstup v podobě prostého textu nebo jazyk SSML (Speech Synthesis Markup Language). |
 |[Překlad řeči](speech-translation.md)| <li>Téměř v reálném čase překládá streamovaný zvuk.<li> Dokáže zpracovat také záznam řeči.<li>Poskytuje výsledky v podobě textu nebo syntetizované řeči. |
 
 
@@ -52,18 +51,18 @@ Vlastní modely můžete použít všude, kde ve své aplikaci používáte stan
 
 Pro zjednodušení vývoje aplikací s podporou hlasových služeb poskytuje Microsoft sadu [Speech SDK](speech-sdk.md), kterou můžete použít se službou Speech. Sada Speech SDK poskytuje konzistentní a nativní rozhraní API pro převod řeči na text a překlad řeči pro jazyky C#, C++ a Java. Pokud při vývoji používáte jeden z těchto jazyků, zjednoduší vám sada Speech SDK vývoj tím, že se postará o podrobnosti sítě za vás.
 
-Služba Speech nabízí také rozhraní [REST API](rest-apis.md), které funguje s jakýmkoli programovacím jazykem, který dokáže provádět požadavky HTTP. Rozhraní REST nenabízí funkci streamování v reálném čase jako sada SDK.
+Hlasové služby má také [rozhraní REST API](rest-apis.md) , který funguje s libovolným programovacím jazykem, který umí vytvářet požadavky HTTP. Rozhraní REST nenabízí funkci streamování v reálném čase jako sada SDK.
 
 |<br>Metoda|Řeč<br>na text|Text na<br>Řeč|Řeč<br>Překlad|<br>Popis|
 |-|-|-|-|-|
 |[Speech SDK](speech-sdk.md)|Ano|Ne|Ano|Nativní rozhraní API pro jazyky C#, C++ a Java pro zjednodušení vývoje.|
-|[REST](rest-apis.md)|Ano|Ano|Ne|Jednoduché rozhraní API založené na HTTP, které usnadňuje přidání hlasových služeb do aplikací.|
+|[Rozhraní REST API](rest-apis.md)|Ano|Ano|Ne|Jednoduché rozhraní API založené na HTTP, které usnadňuje přidání hlasových služeb do aplikací.|
 
 ### <a name="websockets"></a>WebSockets
 
-Služba Speech nabízí také protokoly WebSocket pro streamování převodu řeči na text a překladu řeči. Sady Speech SDK pomocí těchto protokolů komunikují se službou Speech. Použijte sadu Speech SDK a nesnažte se implementovat vlastní komunikaci protokolu WebSocket se službou Speech.
+Hlasové služby také podporují protokoly WebSocket pro streamování speech to text i překladu řeči. Sady Speech SDK pomocí těchto protokolů komunikují se službou Speech. Použijte sadu Speech SDK a nesnažte se implementovat vlastní komunikaci protokolu WebSocket se službou Speech.
 
-Pokud už máte kód využívající Zpracování řeči Bingu nebo Translator Speech přes protokoly WebSocket, můžete ho aktualizovat tak, aby využíval službu Speech. Protokoly WebSocket jsou kompatibilní, liší se pouze koncové body.
+Pokud již máte kód, který se používá pro zpracování řeči Bingu nebo Translator Speech přes protokoly Websocket, můžete aktualizovat na používání hlasové služby. Protokoly WebSocket jsou kompatibilní, ale jsou různé koncové body.
 
 ### <a name="speech-devices-sdk"></a>Speech Devices SDK
 
@@ -72,7 +71,7 @@ Sada [Speech Devices SDK](speech-devices-sdk.md) je integrovaná hardwarová a s
 
 ## <a name="speech-scenarios"></a>Scénáře pro službu Speech
 
-Mezi případy použití služby Speech patří:
+Případy použití pro hlasové služby zahrnují:
 
 > [!div class="checklist"]
 > * Vytváření aplikací aktivovaných hlasem
@@ -85,15 +84,15 @@ Hlasový vstup představuje skvělý způsob, jak zajistit flexibilitu a možnos
 
 Pokud je vaše aplikace určená pro veřejnost, můžete využít výchozí modely rozpoznávání řeči. Dokážou rozpoznat širokou škálu řečníků v běžných prostředích.
 
-Pokud se vaše aplikace používá v určitém oboru, například v medicíně nebo IT, můžete vytvořit [jazykový model](how-to-customize-language-model.md). Pomocí tohoto modelu naučíte službu Speech speciální terminologii, která se v aplikaci používá.
+Pokud se vaše aplikace používá v určitém oboru, například v medicíně nebo IT, můžete vytvořit [jazykový model](how-to-customize-language-model.md). Můžete použít tento model představuje hlasové služby o speciální terminologii používané v aplikaci.
 
-Pokud se vaše aplikace používá v hlučném prostředí, například v továrně, můžete vytvořit vlastní [akustický model](how-to-customize-acoustic-models.md). Tento model pomáhá službě Speech odlišit řeč od hluku.
+Pokud se vaše aplikace používá v hlučném prostředí, například v továrně, můžete vytvořit vlastní [akustický model](how-to-customize-acoustic-models.md). Tento model pomáhá hlasových služeb pro rozlišení řeči od šumu.
 
 ### <a name="call-center-transcription"></a>Přepis nahrávek z call centra
 
 Nahrávky z call centra se často analyzují jen v případě, že z volání vzejde nějaký problém. S využitím služby Speech je snadné přepsat všechny nahrávky do textové podoby. Text můžete snadno indexovat pro [fulltextové vyhledávání](https://docs.microsoft.com/azure/search/search-what-is-azure-search) nebo použít [Analýzu textu](https://docs.microsoft.com/azure/cognitive-services/Text-Analytics/) k rozpoznání mínění, jazyka a klíčových frází.
 
-Pokud nahrávky z call centra obsahují odbornou terminologii (například názvy produktů nebo žargon IT), můžete vytvořit [jazykový model](how-to-customize-language-model.md), kterým službu Speech tuto slovní zásobu naučíte. Vlastní [akustický model](how-to-customize-acoustic-models.md) může službě Speech pomoct porozumět ne zcela optimálním telefonním spojením.
+Pokud vaše volání nahrávání zahrnují speciální terminologie, jako jsou názvy produktů nebo žargonu IT, můžete vytvořit [jazykový model](how-to-customize-language-model.md) představuje hlasové služby slovníku. Vlastní [akustický model](how-to-customize-acoustic-models.md) nápovědy hlasové služby by rozuměla méně než optimální phone připojení.
 
 Další informace o tomto scénáři najdete v článku o [dávkovém přepisu](batch-transcription.md) pomocí služby Speech.
 
@@ -103,9 +102,9 @@ Další informace o tomto scénáři najdete v článku o [dávkovém přepisu](
 
 Pokud chcete robota s podporou řeči doplnit o jedinečnou osobnost, můžete mu dát vlastní hlas. Vytvoření vlastního hlasu je dvoustupňový proces. Nejprve [pořídíte nahrávky](record-custom-voice-samples.md) hlasu, který chcete použít. Pak [tyto nahrávky odešlete](how-to-customize-voice-font.md) (společně s textovým přepisem) na [portál pro přizpůsobení hlasu](https://cris.ai/Home/CustomVoice) služby Speech, která se postará o zbytek. Až vlastní hlas vytvoříte, je postup jeho použití v aplikaci zřejmý.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Získejte klíč předplatného pro službu Speech.
+Získáte klíč předplatného pro hlasové služby.
 
 > [!div class="nextstepaction"]
-> [Vyzkoušejte si službu Speech zdarma](get-started.md)
+> [Vyzkoušejte hlasové služby zdarma](get-started.md)

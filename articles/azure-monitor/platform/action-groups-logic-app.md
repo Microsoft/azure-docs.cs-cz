@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 4b8547435293f26c7f22ed6d5181c64fbabcd574
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0ab496b884506b013c6a4abb2dff1e1feff4fc72
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285036"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342982"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Jak aktivovat složité akce s Azure Monitor výstrah
 
@@ -295,6 +295,6 @@ Je podobný procesu pro vytváření upozornění na metriku [vytvoření upozor
 Logic Apps má několik různých konektorů, které vám umožní pro aktivaci akcí v celé řadě aplikací a databází. Slack, SQL Server, Oracle, Salesforce, je několik příkladů. Další informace o konektorech najdete v tématu [konektory aplikací logiky](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>Další postup
-* Získat [přehled upozornění protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) a zjistěte, jak dostávat upozornění.  
+* Získat [přehled upozornění protokolu aktivit Azure](../../azure-monitor/platform/alerts-overview.md) a zjistěte, jak dostávat upozornění.  
 * Zjistěte, jak [nakonfigurovat výstrahy, když se pošle oznámení o Azure Service Health](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 * Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md).

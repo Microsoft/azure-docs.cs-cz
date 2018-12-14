@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e060a18f1117a9392f867f0bf42ddfa80f68048d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6f16325183f0a13382dd4533fd867a518f1750c3
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277484"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344291"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -26,7 +26,7 @@ ms.locfileid: "53277484"
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.   
 
 
-[Řešení pro správu](solutions.md) by měl obvykle zahrnovat [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](solutions-creating.md).
+[Řešení pro správu](solutions.md) by měl obvykle zahrnovat [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../../azure-monitor/platform/alerts-overview.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](solutions-creating.md).
 
 > [!NOTE]
 > Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](solutions-creating.md)  
@@ -89,7 +89,7 @@ Uložené výsledky hledání se jednotlivé vlastnosti je popsané v následuj�
 [Upozornění Azure Log](../../azure-monitor/platform/alerts-unified-log.md) jsou vytvořené pravidly upozornění Azure, které v pravidelných intervalech spouští dotazy zadaný protokol.  Pokud výsledky dotazu splňují zadaná kritéria, se vytvoří záznam o upozornění a jednu nebo více akcí se spouštějí pomocí [skupiny akcí](../../azure-monitor/platform/action-groups.md).  
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal rozšířit do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal rozšířit do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 Pravidla výstrah v rámci řešení pro správu se skládá z následujících tří různých prostředků.
 
@@ -145,7 +145,7 @@ Plán může mít více akcí. Akce může definovat jeden nebo více procesy pr
 Akce lze definovat pomocí [skupiny akcí] prostředku nebo akce.
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 
 Existují dva typy akcí prostředek určený souborem **typ** vlastnost.  Plán vyžaduje jednu **výstraha** akce, která definuje podrobnosti pravidlo upozornění a jaké akce se udělají, když se vytvoří výstraha. Akce prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
@@ -227,7 +227,7 @@ Tato část je nepovinná.  Zahrňte v této části, pokud chcete potlačit vý
 #### <a name="azure-action-group"></a>Skupiny akcí Azure
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 
 
-Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [skupiny akcí – šablona Resource](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 | Název elementu | Požaduje se | Popis |
 |:--|:--|:--|
@@ -241,7 +241,7 @@ Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu 
 Každý plán obsahuje jednu **výstrah** akce.  Definuje podrobnosti výstrahy a volitelně oznámení a nápravné akce.  Oznámení se odešle e-mail na jeden nebo více adres.  Nápravy spuštění sady runbook ve službě Azure Automation se pokusit k nápravě zjištěného problému.
 
 > [!NOTE]
-> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Od 14. května 2018, všechna upozornění v instanci pracovního prostoru Log Analytics veřejného cloudu Azure začal automaticky rozšíří do Azure. Další informace najdete v tématu [upozornění rozšířit do Azure](../../azure-monitor/platform/alerts-extend.md). Pro uživatele, kteří rozšíření upozornění do Azure jsou teď akce provádí na skupiny akcí Azure. Jakmile pracovního prostoru a jeho výstrahy se rozšíří do Azure, můžete načíst nebo přidání akcí s použitím [skupiny akcí – šablony Azure Resource Manageru](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
  Tato část je nepovinná zahrnout, pokud chcete výstrahu odesílat poštu do jednoho nebo více příjemců.

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ca6eefa6ccba3fabebd125d88010817c66db52ab
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 14d50a17cf7816cb8e792128f8dd3965781657e5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642673"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339582"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v Durable Functions – ukázka Hello pořadí
 
@@ -28,14 +28,15 @@ Funkce řetězení odkazuje na model provedení pořadí funkcí v určitém po�
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
 * `E1_HelloSequence`: Funkce orchestrátoru, který volá `E1_SayHello` více než jednou v sekvenci. Uloží výstup z `E1_SayHello` volá a zaznamená výsledky.
-* `E1_SayHello`: Aktivita funkce, která připojí řetězec "Hello".
+* `E1_SayHello`: Funkce aktivitu, která se připojí řetězec "Hello".
 
 Následující části popisují konfiguraci a kód, který se používají pro skriptovací C# a JavaScript. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
 
 > [!NOTE]
-> Odolná služba Functions je dostupná v jazyce JavaScript ve v2 modul runtime služby Functions pouze.
+> Odolné funkce jazyka JavaScript jsou k dispozici pro 2.x modul runtime služby Functions pouze.
 
 ## <a name="e1hellosequence"></a>E1_HelloSequence
+
 ### <a name="functionjson-file"></a>soubor Function.JSON
 
 Pokud používáte Visual Studio Code nebo na webu Azure portal pro vývoj, tady je obsah *function.json* souboru pro funkci nástroje orchestrator. Většina orchestrator *function.json* soubory vypadat například takto téměř úplně stejné.
@@ -47,7 +48,7 @@ Důležité je `orchestrationTrigger` typ vazby. Všechny funkce produktu orches
 > [!WARNING]
 > Budete dodržovat pravidla "bez vstupně-výstupní operace" funkcí nástroje orchestrator, nechcete používat žádné vstupní nebo výstupní vazby při použití `orchestrationTrigger` aktivovat vazby.  Pokud dalších vstupních nebo výstupních vazeb jsou potřeba, by měl místo toho se používají v rámci `activityTrigger` funkce, které jsou volány orchestrátor.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skript jazyka C# (Visual Studio Code a Azure portal ukázkový kód) 
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skript jazyka C# (Visual Studio Code a Azure portal ukázkový kód)
 
 Zde je zdrojový kód:
 
@@ -63,15 +64,16 @@ Zde je zdrojový kód:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Musí obsahovat všechny funkce Orchestrace jazyka JavaScript `durable-functions` modulu. Toto je knihovna JavaScript, která převede funkci Orchestrace akce do protokolu spuštění Durable v režimu out-of-proc jazyků. Existují tři významné rozdíly mezi funkce orchestraci a jiné funkce jazyka JavaScript:
+Musí obsahovat všechny funkce Orchestrace jazyka JavaScript [ `durable-functions` modulu](https://www.npmjs.com/package/durable-functions). To je knihovna, která umožňuje zápis Durable Functions v JavaScriptu. Existují tři významné rozdíly mezi funkce orchestraci a jiné funkce jazyka JavaScript:
 
 1. Funkce [generátoru funkcí.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. Funkce je zabalený ve volání `durable-functions` modulu (zde `df`).
-3. Funkce končí voláním `return`, nikoli `context.done`.
+2. Funkce je zabalený ve volání `durable-functions` modulu `orchestrator` – metoda (zde `df`).
+3. Funkce musí být synchronní. Protože metoda "orchestrator" zpracovává volání 'context.done", funkce by měla jednoduše 'return'.
 
-`context` Objekt obsahuje `df` objektu umožňuje volat jiné *aktivity* funkce a předání vstupních parametrů pomocí jeho `callActivityAsync` metoda. Kód volá `E1_SayHello` třikrát v sekvenci s různými hodnotami parametrů, pomocí `yield` k označení spuštění by měl čekat na volání funkce asynchronní aktivity se mají vrátit. Vrácené hodnoty každého volání je přidán do `outputs` seznam, který je vrácen na konci funkce.
+`context` Objekt obsahuje `df` objektu umožňuje volat jiné *aktivity* funkce a předání vstupních parametrů pomocí jeho `callActivity` metoda. Kód volá `E1_SayHello` třikrát v sekvenci s různými hodnotami parametrů, pomocí `yield` k označení spuštění by měl čekat na volání funkce asynchronní aktivity se mají vrátit. Vrácené hodnoty každého volání je přidán do `outputs` seznam, který je vrácen na konci funkce.
 
 ## <a name="e1sayhello"></a>E1_SayHello
+
 ### <a name="functionjson-file"></a>soubor Function.JSON
 
 *Function.json* soubor pro aktivitu funkce `E1_SayHello` je podobná `E1_HelloSequence` s tím rozdílem, že používá `activityTrigger` vazby typu, nikoli `orchestrationTrigger` typ vazby.
@@ -93,7 +95,7 @@ Tato funkce má parametr typu [DurableActivityContext](https://azure.github.io/a
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Na rozdíl od Orchestrace funkce JavaScriptu musí aktivita funkce jazyka JavaScript žádné speciální instalační program. Vstup předaný funkci orchestrator je umístěn na `context.bindings` objekt pod názvem `activitytrigger` vazby – v takovém případě `context.bindings.name`. Název vazby, jenž mohou být nastaveny jako parametr exportované funkce a k nim přistupuje přímo, což je, co dělá ukázkový kód.
+Na rozdíl od Orchestrace funkce JavaScriptu potřebuje funkce protokolem aktivit žádné speciální instalační program. Vstup předaný funkci orchestrator je umístěn na `context.bindings` objekt pod názvem `activityTrigger` vazby – v takovém případě `context.bindings.name`. Název vazby, jenž mohou být nastaveny jako parametr exportované funkce a k nim přistupuje přímo, což je, co dělá ukázkový kód.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
@@ -150,7 +152,7 @@ Tady je Orchestrace jako jeden soubor jazyka C# v sadě Visual Studio projekt:
 
 ## <a name="next-steps"></a>Další postup
 
-Tato ukázka vám ukázal, jednoduché funkce řetězení Orchestrace. Další příklad ukazuje, jak implementovat fan odesílací/fan v vzor. 
+Tato ukázka vám ukázal, jednoduché funkce řetězení Orchestrace. Další příklad ukazuje, jak implementovat fan odesílací/fan v vzor.
 
 > [!div class="nextstepaction"]
 > [Spustit Fan odesílací/fan v ukázce](durable-functions-cloud-backup.md)

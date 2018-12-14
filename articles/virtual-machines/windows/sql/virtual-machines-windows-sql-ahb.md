@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9a62dd6e50d2d2e9cd4b825a95d2a20e8469ff30
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cd784163047f4fe15fde719ce56aba64eed60dd2
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997487"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336981"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak změnit licenční model virtuálního počítače s SQL serverem v Azure
 Tento článek popisuje, jak změnit licenční model pro virtuální počítače s SQL serverem v Azure pomocí nového poskytovatele prostředků SQL - **Microsoft.SqlVirtualMachine**. Existují dva licenční modely pro virtuální počítač (VM), který je hostitelem SQL serveru – platby za využití a používání vlastní licence (BYOL). A teď se pomocí Powershellu nebo rozhraní příkazového řádku Azure, můžete upravit který licenční model virtuálního počítače s SQL využívá. 
@@ -33,7 +33,7 @@ Přepínání mezi těmito dvěma modely licence s sebou nese náklady **bez vý
 
 
 ## <a name="register-existing-sql-vm-with-new-resource-provider"></a>Registrace existujícího virtuálního počítače SQL pomocí nového poskytovatele prostředků
-Umožňuje přepnout mezi licenční modely je funkce poskytované nového poskytovatele prostředků SQL VM (Microsoft.SqlVirtualMachine). V tuto chvíli bude moci přepnout váš licenční model, je nejprve potřeba registraci nového poskytovatele do vašeho předplatného a pak zaregistrujte existujícího virtuálního počítače s poskytovatelem prostředků pro nový virtuální počítač s SQL. 
+Umožňuje přepnout mezi licenční modely je funkce poskytované nového poskytovatele prostředků SQL VM (Microsoft.SqlVirtualMachine). V tuto chvíli bude moci přepnout váš licenční model, je nejprve potřeba registraci nového poskytovatele do vašeho předplatného a pak zaregistrujte existujícího virtuálního počítače s poskytovatelem prostředků pro nový virtuální počítač s SQL. Využívat poskytovatele prostředků virtuálního počítače s SQL, musíte také nainstalovat rozšíření SQL IaaS. To vám umožní zaregistrovat virtuální pevný disk, který byl nasazen virtuální počítač. Další informace najdete v tématu [rozšíření SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md). 
 
   >[!IMPORTANT]
   > Pokud odstraníte váš prostředek virtuálního počítače s SQL, přejdete zpět na pevně zakódované licence nastavení bitové kopie. 

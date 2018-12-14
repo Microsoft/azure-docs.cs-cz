@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1109e72d00ccddd6fc0f120ee71c88adaae72fed
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316986"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337593"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -27,19 +27,19 @@ Tato změna přináší rozsáhlé možnosti koncový bod zjišťování a odpov
 
 Zákazníci Azure Security Center teď můžou využívat funkce ochrany ATP v programu Windows Defender:
 
-- **Generace příspěvek porušení detekci senzorů**: ochrana ATP v programu Windows Defender senzory pro funkce Windows serverů shromažďovat velké množství chování signálů.
+- **Generace příspěvek porušení detekci senzorů**: Ochrana ATP v programu Windows Defender senzory pro funkce Windows serverů shromažďovat velké množství chování signálů.
 
-- **Detekce porušení zabezpečení na základě analýzy, s využitím cloudu příspěvek**: ochrana ATP v programu Windows Defender rychle přizpůsobovat měnícím hrozbám. Využívá pokročilé analýzy a velké objemy dat. Ochrana ATP v programu Windows Defender je rozšířena výkonem Intelligent Security Graph se signály pro Windows, Azure a Office zjišťovat neznámé hrozby. Poskytuje užitečné výstrahy a umožňují rychle reagovat.
+- **Detekce porušení zabezpečení na základě analýzy, s využitím cloudu příspěvek**: Ochrana ATP v programu Windows Defender rychle přizpůsobovat měnícím hrozbám. Využívá pokročilé analýzy a velké objemy dat. Ochrana ATP v programu Windows Defender je rozšířena výkonem Intelligent Security Graph se signály pro Windows, Azure a Office zjišťovat neznámé hrozby. Poskytuje užitečné výstrahy a umožňují rychle reagovat.
 
-- **Hrozeb**: ochrana ATP v programu Windows Defender identifikuje útočník nástroje, techniky a postupy. Při zjištění těchto, vygeneruje upozornění. Použije data generovaná myslivci hrozeb Microsoftu a týmu zabezpečení rozšířeno díky partnery.
+- **Hrozeb**: Ochrana ATP v programu Windows Defender identifikuje útočník nástroje, techniky a postupy. Při zjištění těchto, vygeneruje upozornění. Použije data generovaná myslivci hrozeb Microsoftu a týmu zabezpečení rozšířeno díky partnery.
 
 Tyto možnosti jsou teď dostupné ve službě Azure Security Center:
 
-- **Automatické připojování**: The Windows Defender ATP senzor se automaticky povolí pro servery Windows, které se připojí ke službě Azure Security Center se.
+- **Automatické připojování**: Snímač ochrany ATP v programu Windows Defender je pro servery Windows, které se připojí ke službě Azure Security Center se automaticky povolené.
 
-- **Souhrnné zobrazení**: konzola The Azure Security Center zobrazuje výstrahy ochrany ATP v programu Windows Defender.
+- **Souhrnné zobrazení**: Konzoly Azure Security Center zobrazuje výstrahy ochrany ATP v programu Windows Defender.
 
-- **Podrobné zkoumání počítačů**: Azure Security Center zákazníci přístup ke konzole ochrany ATP v programu Windows Defender provádět podrobné zkoumání odhalit další obor porušení zabezpečení.
+- **Podrobné zkoumání počítačů**: Zákazníci Azure Security Center přístup ke konzole ochrany ATP v programu Windows Defender provádět podrobné zkoumání odhalit další obor porušení zabezpečení.
 
 ![Azure Security Center, zobrazení seznamu výstrah a obecné informace o jednotlivých výstrahách](media/security-center-wdatp/image1.png)
 
@@ -105,6 +105,6 @@ Generovat upozornění na neškodné ochrany ATP v programu Windows Defender:
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
-- [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
+- [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md): Zjistěte, jak monitorovat stav svých prostředků Azure.

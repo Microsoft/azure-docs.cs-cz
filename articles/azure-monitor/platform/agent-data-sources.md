@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3bebdfea34cea9d0b0b5c19489ce51bf25f60af9
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 152b9a7fdac91865baa8a2c20c632e7a228be62f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189723"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340755"
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
 Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
@@ -67,4 +67,4 @@ Všechna data shromážděná službou Log Analytics je v pracovním prostoru ul
 ## <a name="next-steps"></a>Další postup
 * Další informace o [řešení](../../azure-monitor/insights/solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru.
 * Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Konfigurace [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.
+* Konfigurace [výstrahy](../../azure-monitor/platform/alerts-overview.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.

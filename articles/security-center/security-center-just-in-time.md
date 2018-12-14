@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/2/2018
+ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6281b79e374db164bbd11b602e92336162cae089
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841757"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339038"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí just-in-time
 
@@ -49,7 +49,11 @@ Když uživatel požádá o přístup k virtuálnímu počítači, Security Cent
 >
 >
 
-## <a name="using-jit-access-in-azure-security-center"></a>Pomocí přístup JIT ve službě Azure Security Center
+Máte přístup JIT prostřednictvím:
+- [Pomocí přístup JIT ve službě Azure Security Center](#jit-asc)
+- [V okně virtuálního počítače Azure pomocí přístup JIT](#jit-vm)
+
+## Pomocí přístup JIT ve službě Azure Security Center <a name="jit-asc"></a>
 
 1. Otevřete řídicí panel **Security Center**.
 
@@ -121,7 +125,7 @@ Chcete-li upravit existující zásadu just-in-time virtuálního počítače:
 3. V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**, můžete upravit stávající nastavení už chráněných portu nebo přidat nový port. Tento vlastní port. Další informace najdete v tématu [nakonfigurujete zásady přístupu just-in-time](#jit-config). 
   ![přístup k virtuálnímu počítači JIT](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="using-jit-access-in-an-azure-vm-blade"></a>V okně virtuálního počítače Azure pomocí přístup JIT
+## V okně virtuálního počítače Azure pomocí přístup JIT <a name="jit-vm"></a>
 
 Pro usnadnění práce můžete připojit k virtuálnímu počítači pomocí JIT přímo z v rámci okna virtuálního počítače v Azure.
 
@@ -187,7 +191,7 @@ Přiřadit tato *akce* do role:
 -    V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
    - Microsoft.Compute/virtualMachines/write 
 
-Nastavte tato oprávnění a povolit tak uživateli úspěšně požádat o přístup JIT k virtuálnímu počítači: přiřadit tato *akce* uživateli:
+Nastavte tato oprávnění a povolit tak uživateli úspěšně požádat o přístup JIT k virtuálnímu počítači: Přiřadit tato *akce* uživateli:
 -   V oboru předplatného nebo skupiny prostředků, které souvisí s virtuálním Počítačem:
    - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ zahájení nebo akce
 -    V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:
@@ -264,7 +268,7 @@ V tomto článku jste zjistili, jak just-in-time přístup k virtuálním počí
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-- [Nastavení zásad zabezpečení](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Nastavení zásad zabezpečení](tutorial-security-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 - [Sledování stavu zabezpečení](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 - [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.

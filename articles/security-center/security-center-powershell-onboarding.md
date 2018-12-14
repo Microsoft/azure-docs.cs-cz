@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: ce410e69427f29ce70f8b2136a08bd7e6d00113c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ecfab15860ffc690d341069b626e5d7579c00da4
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249685"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340364"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace registrace služby Azure Security Center pomocí Powershellu
 
@@ -40,7 +40,7 @@ V tomto příkladu jsme povolit Security Center na předplatné s ID: d07c0080-1
 
 5. Nastavení organizace [Ředitelka jako adresu kontaktu zabezpečení ASC výstrahy a významné události](security-center-provide-security-contact-details.md).
 
-6. Centrum zabezpečení přiřadit [výchozí zásady zabezpečení](security-center-azure-policy.md).
+6. Centrum zabezpečení přiřadit [výchozí zásady zabezpečení](tutorial-security-policy.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -111,6 +111,6 @@ Další informace o použití Powershellu k automatizaci připojování ke služ
 
 Další informace o službě Security Center, najdete v následujícím článku:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.

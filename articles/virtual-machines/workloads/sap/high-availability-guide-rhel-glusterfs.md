@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: bbb0bbc6ddbbabb37932edc6946394b020631231
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 484a0043b9b5eefa5491dee75e87244d1c001620
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637461"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342319"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver
 
@@ -110,10 +110,10 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster. Potom vytvo
 1. Vytvoření skupiny dostupnosti  
    Nastavení maximální aktualizační doména
 1. Vytvoření virtuálního počítače 1  
-   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Vyberte dříve vytvořenou skupinu dostupnosti  
 1. Vytvoření virtuálního počítače 2  
-   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
+   Použijte alespoň RHEL 7, v tomto obrázku Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74-ARM>  
    Vyberte dříve vytvořenou skupinu dostupnosti  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
 

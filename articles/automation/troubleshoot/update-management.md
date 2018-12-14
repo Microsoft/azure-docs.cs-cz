@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7339592833db148acb38ce378fe4cf261977dd72
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275642"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342881"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -73,6 +73,20 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v Log Analytics pro počítač
+
+#### <a name="issue"></a>Problém
+
+Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale uvidíte prezenčního signálu dat v Log Analytics pro Hybrid Runbook Worker, ale ne Update Management.
+
+#### <a name="cause"></a>Příčina
+
+Funkce Hybrid Runbook Worker možná muset znovu zaregistrovat a opětovném nainstalování.
+
+#### <a name="resolution"></a>Řešení
+
+Postupujte podle kroků uvedených v [nasadit Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) přeinstalovat hybridních pracovních procesů pro Windows nebo [nasazení Linuxu Hybrid Runbook Worker](../automation-linux-hrw-install.md) pro Linux.
 
 ## <a name="windows"></a>Windows
 
@@ -141,20 +155,6 @@ Funkce Hybrid Runbook Worker nebyl schopen generovat certifikát podepsaný svý
 #### <a name="resolution"></a>Řešení
 
 Ověřte systémový účet má oprávnění ke čtení do složky **C:\ProgramData\Microsoft\Crypto\RSA** a zkuste to znovu.
-
-### <a name="nologs"></a>Scénář: Aktualizace správy dat se nezobrazuje v Log Analytics pro počítač
-
-#### <a name="issue"></a>Problém
-
-Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržování předpisů**, ale uvidíte prezenčního signálu dat v Log Analytics pro Hybrid Runbook Worker, ale ne Update Management.
-
-#### <a name="cause"></a>Příčina
-
-Funkce Hybrid Runbook Worker možná muset znovu zaregistrovat a opětovném nainstalování.
-
-#### <a name="resolution"></a>Řešení
-
-Postupujte podle kroků uvedených v [nasadit Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md) přeinstalovat Hybrid Worker.
 
 ### <a name="hresult"></a>Scénář: Počítač zobrazuje jako nevyhodnoceno a ukazuje výjimku HResult
 

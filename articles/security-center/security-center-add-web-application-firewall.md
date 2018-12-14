@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b633b1787fc34658a84a2810de6673f9530cbf3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 5e6d7dffb831e4e6541b5ef91cfc4ae4bbe88167
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310646"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343135"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidat firewall webových aplikací ve službě Azure Security Center
 Azure Security Center může doporučit přidat firewall webových aplikací (WAF) od partnera Microsoftu pro zabezpečení webové aplikace. Tento dokument vás příklad toho, jak toto doporučení.
@@ -46,7 +46,9 @@ Security Center doporučuje zřízení WAF, které pomáhají bránit útokům c
 
 6. **Nový Firewall webových aplikací** se otevře, kde můžete provádět **konfigurace virtuálního počítače** kroky a poskytují **informace o WAF**. Vyberte **konfigurace virtuálního počítače**.
 7. V části **konfigurace virtuálního počítače**, zadejte informace požadované pro zprovoznění virtuálního počítače, na kterém běží WAF.
+
    ![Konfigurace virtuálního počítače][4]
+   
 8. Vraťte se na **nový Firewall webových aplikací** a vyberte **informace o WAF**. V části **informace o WAF**, nakonfigurujete WAF, samotného. Krok 7 umožňuje konfigurovat virtuální počítač, na kterém běží WAF a kroku 8 umožňuje zřízení WAF, samotného.
 
 ## <a name="finalize-application-protection"></a>Finalizace ochrany aplikací
@@ -73,7 +75,7 @@ Tento dokument vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.

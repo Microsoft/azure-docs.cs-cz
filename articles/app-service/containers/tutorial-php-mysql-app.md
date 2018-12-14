@@ -1,6 +1,6 @@
 ---
 title: Vytvoření webové aplikace v PHP s MySQL v Linuxu – Azure App Service | Dokumentace Microsoftu
-description: Naučte se v Azure zprovoznit aplikaci PHP s připojením k databázi MySQL v Azure.
+description: Naučte se zprovoznit aplikaci PHP ve službě Azure App Service v Linuxu s připojením k databázi MySQL v Azure.
 services: app-service\web
 author: cephalin
 manager: erikre
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a8fc0b9dee8b496eabf7efded7ab83be0b958244
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5d9843eecfed56f09c3a6d659976ca1ce5f42d80
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274849"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342354"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace PHP využívající databázi MySQL ve službě Azure App Service v Linuxu
 
@@ -194,7 +194,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_n
 > Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 >
 
-Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](http://www.whatsmyip.org/), abyste měli přístup k databázi.
+Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/), abyste měli přístup k databázi.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your_ip_address> --end-ip-address=<your_ip_address>

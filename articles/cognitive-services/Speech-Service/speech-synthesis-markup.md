@@ -8,23 +8,26 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0c3c2fdddada3b90c84b3f06f8639bde7db50f95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53073546"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341129"
 ---
 # <a name="speech-synthesis-markup-language"></a>Značkovací jazyk syntézu řeči
 
-Jazyk kódu syntézu řeči (SSML) je jazyk založený na formátu XML kód, který poskytuje způsob, jak řídit výslovnost a *prosody* z převodu textu na řeč. Prosody odkazuje na rytmus a výšku řeči, Hudba, pokud budete. Můžete fonetický přepis zadejte slova, poskytnout nápovědu pro interpretaci čísel, vložit pozastaví, výška ovládacího prvku, svazek a míry a další.
+Jazyk kódu syntézu řeči (SSML) je jazyk založený na formátu XML kód, který poskytuje způsob, jak řídit výslovnost a *prosody* z převodu textu na řeč. Prosody odkazuje na rytmus a výšku řeči, Hudba, pokud budete. Můžete fonetický přepis zadejte slova, poskytnout nápovědu pro interpretaci čísel, vložit pozastaví, výška ovládacího prvku, svazek a míry a další. Další informace najdete v tématu [řeči syntézu Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
 
-Další informace najdete v tématu [řeči syntézu Markup Language (SSML) verze 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) na W3C.
+Úplný seznam podporovaných jazyků, národní prostředí a hlasů (neuronových sítí nebo standardním), najdete v části [jazykovou podporu](language-support.md#text-to-speech).
 
-Následující příklady ukazují, jak používat SSML pro běžné potřeby syntézu řeči:
+Následující části obsahují ukázky pro běžné řeči syntézu úlohy.
+
+>[!IMPORTANT]
+> V současné době prosody označování je k dispozici pouze pro standardní hlasy.
 
 ## <a name="add-a-break"></a>Vložit zalomení
 ```xml
@@ -90,5 +93,4 @@ Následující příklady ukazují, jak používat SSML pro běžné potřeby sy
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](quickstart-csharp-dotnet-windows.md)
+* [Podpora jazyků: hlasů, národní prostředí, jazyků](language-support.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 53a6ae828009db24b56a11b1fdcbea19842191f4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 454478fa02b8f4e71bc4efb61e1b8c194b927bc6
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106613"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340823"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrana vašich počítačů a aplikací ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol. Doporučení platí pro typy prostředků Azure: virtuální počítače (VM) a počítačů, aplikací, sítí, SQL a identit a přístupů.
@@ -74,20 +74,20 @@ Každé doporučení obsahuje sadu akcí, které můžete provést po výběru. 
 
 **Nainstalovat aktualizace systému** obsahuje souhrn důležitých aktualizací ve formátu grafu, jeden pro Windows a jeden pro Linux. Druhá část obsahuje tabulku s následujícími informacemi:
 
-- **NÁZEV:** Název chybějící aktualizace.
-- **POČET VIRTUÁLNÍCH POČÍTAČŮ A POČÍTAČŮ:** Celkový počet virtuálních počítačů a počítačů, na kterých chybí daná aktualizace.
-- **ZÁVAŽNOST aktualizace**: Popisuje závažnost tohoto konkrétního doporučení:
+- **NÁZEV**: Název chybějící aktualizace.
+- **POČET Virtuálních počítačů a počítačů**: Celkový počet virtuálních počítačů a počítačů, které chybí daná aktualizace.
+- **ZÁVAŽNOST AKTUALIZACE**: Popisuje závažnost tohoto konkrétního doporučení:
 
-    - **Kritické**: ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
-    - **Důležité**: nekritické nebo další kroky jsou potřebné k dokončení procesu nebo odstranění ohrožení.
-    - **Střední**: ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+    - **Kritické**: Ohrožení zabezpečení existuje u významného prostředku (aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
+    - **Důležité**: Nekritická nebo další kroky jsou nutné k dokončení procesu nebo odstranění ohrožení.
+    - **Střední**: Ohrožení zabezpečení, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 
 - **STAV**: Aktuální stav doporučení:
 
-    - **Otevřené**: Doporučení dosud nebylo řešeno.
-    - **Probíhá**: Doporučení se aktuálně na tyto prostředky používá a není třeba provádět žádnou akci.
-    - **Vyřešeno**: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
+    - **Otevřít**: Doporučení dosud nebylo řešeno.
+    - **V průběhu**: Doporučení se právě zavádí k těmto prostředkům, a nevyžaduje žádné akce se.
+    - **Vyřešené**: Doporučení už je dokončené. (Pokud byl problém vyřešen, položka je vyšedlá.)
 
 Pokud chcete zobrazit podrobnosti o doporučení, klikněte na název chybějící aktualizace v seznamu.
 
@@ -249,7 +249,7 @@ Další informace o doporučení, které se vztahují na jiné typy prostředků
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
 

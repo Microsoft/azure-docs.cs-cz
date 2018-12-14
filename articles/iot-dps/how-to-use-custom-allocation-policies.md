@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d75195656581021253b5787a8bfd46639cc1754
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323128"
+ms.locfileid: "53340045"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Použití vlastní přidělení zásad
 
@@ -449,20 +449,24 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 6. Klikněte pravým tlačítkem na projekt **prov\_dev\_client\_sample** a vyberte **Nastavit jako spouštěný projekt**. 
 
+
 #### <a name="simulate-the-contoso-toaster-device"></a>Simulace zařízení toaster Contoso
 
-1. V okně *Průzkumník řešení* sady Visual Studio přejděte na projekt **hsm\_security\_client** a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
-
-    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
-
-    Aktualizujte hodnotu `REGISTRATION_NAME` konstanta s ID registrace pro zařízení toaster **breakroom499 contoso tstrsd 007**.
-    
-    Aktualizujte hodnotu `SYMMETRIC_KEY_VALUE` konstantní klíčem zařízení, které jste vygenerovali toaster zařízení. Hodnota **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** dostane jenom jako příklad.
+1. Pro simulaci zařízení toaster najít volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_klienta\_sample.c** což je označené jako komentář.
 
     ```c
-    static const char* const REGISTRATION_NAME = "breakroom499-contoso-tstrsd-007";
-    static const char* const SYMMETRIC_KEY_VALUE = "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
+
+    Zrušením komentáře u volání funkce a nahraďte zástupné hodnoty (včetně ostrých závorek) s ID registrace toaster a odvozené zařízení klíč, který jste vygenerovali dříve. Hodnota klíče **JC8F96eayuQwwz + PkE7IzjH2lIAjCUnAa61tDigBnSs =** uvedené níže je pouze uvedeny jako příklad.
+
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("breakroom499-contoso-tstrsd-007", "JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=");
+    ```
+   
+    Uložte soubor.
 
 2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
 
@@ -485,20 +489,16 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
 #### <a name="simulate-the-contoso-heat-pump-device"></a>Simulace zařízení heat čerpadlo Contoso
 
-1. Zpět v sadě Visual Studio *Průzkumníku řešení* okno, přejděte **hsm\_zabezpečení\_klienta** projektu a rozbalte ho. Rozbalte **zdrojové soubory** a otevřete soubor **hsm\_client\_key.c**. 
-
-    Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny a soubor uložte.
-
-    Aktualizujte hodnotu `REGISTRATION_NAME` konstanta s ID registrace pro zařízení heat čerpadlo **mainbuilding167 contoso hpsd 088**.
-    
-    Aktualizujte hodnotu `SYMMETRIC_KEY_VALUE` konstantní klíčem zařízení, které jste vygenerovali toaster zařízení. Hodnota **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** dostane jenom jako příklad.
+1. Pro simulaci zařízení heat čerpadla, aktualizujte volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_klienta\_sample.c** znovu heat čerpadlo registrace ID a klíčem odvozené zařízení jste vygenerovali dříve . Hodnota klíče **6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg =** uvedené níže je také pouze uvedeny jako příklad.
 
     ```c
-    static const char* const REGISTRATION_NAME = "mainbuilding167-contoso-hpsd-088";
-    static const char* const SYMMETRIC_KEY_VALUE = "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("mainbuilding167-contoso-hpsd-088", "6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=");
     ```
+   
+    Uložte soubor.
 
-7. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
+2. V nabídce sady Visual Studio vyberte **Ladit** > **Spustit bez ladění** a spusťte řešení. Po zobrazení výzvy k opětovnému sestavení projektu klikněte na **Ano** a před spuštěním projekt znovu sestavte.
 
     Následující výstup je příkladem simulované čerpadlo heat zařízení úspěšně spouští a připojením k instanci služby zřizování pro přiřazení ve společnosti Contoso heat čerpadel IoT hubu pomocí zásad vlastní přidělení:
 
@@ -515,8 +515,6 @@ Tento ukázkový kód simuluje posloupnost spouštěcí zařízení, která ode�
 
     Press enter key to exit:
     ```
-
-
 
 
 ## <a name="troubleshooting-custom-allocation-policies"></a>Odstraňování potíží se zásadami vlastní přidělení

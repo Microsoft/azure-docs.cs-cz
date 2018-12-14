@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7b210a774cfdb9b7f33ec08cc75886c77e3e6cc0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 412ec0a7d2cd8574aadf6e9f104407792ddb29ed
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285547"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341521"
 ---
 # <a name="alerts-on-activity-log"></a>Upozornění v protokolu aktivit 
 
@@ -61,7 +61,7 @@ Další informace o skupinách akcí najdete v tématu [vytvořit a spravovat sk
 
 
 ## <a name="next-steps"></a>Další postup
-- Získat [přehled výstrah](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+- Získat [přehled výstrah](../../azure-monitor/platform/alerts-overview.md).
 - Další informace o [vytvářet a upravovat upozornění protokolu aktivit](../../azure-monitor/platform/alerts-activity-log.md).
 - Zkontrolujte [schéma webhooku v upozornění protokolu aktivit](activity-log-alerts-webhook.md).
 - Další informace o [služby oznámení o stavu](../../monitoring-and-diagnostics/monitoring-service-notifications.md).

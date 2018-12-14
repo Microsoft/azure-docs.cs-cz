@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 90e0f39b7c67866dbe5647f1392b766c91fa81ce
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d90c0c1ab1a6423a206345b7d7d6f34874d2366
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188805"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53335723"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
+[Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou open source nástroje pro monitorování. Výstrahy můžete shromažďovat z těchto nástrojů do Log Analytics, aby mohl analyzovat spolu s [výstrahy z jiných zdrojů](../../azure-monitor/platform/alerts-overview.md).  Tento článek popisuje, jak nakonfigurovat agenta Log Analytics pro Linux ke shromažďování výstrah z těchto systémů.
  
 ## <a name="prerequisites"></a>Požadavky
 Agenta Log Analytics pro Linux podporuje shromažďování údajů o výstrahy Nagios verzi 4.2.x a Zabbix verzi 2.x.
@@ -116,5 +116,5 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) v Log Analytics.
+* Další informace o [výstrahy](../../azure-monitor/platform/alerts-overview.md) v Log Analytics.
 * Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

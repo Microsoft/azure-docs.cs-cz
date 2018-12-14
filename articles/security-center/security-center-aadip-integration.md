@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2ed5791b352ee4b19f707e52bc6f8f78e1f0e5b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 8c0e90436cf030f1280b3c50f3fdc91c7429d542
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635301"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340296"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Připojení služby Azure Active Directory Identity Protection ke službě Azure Security Center
 Tento dokument vám umožní nakonfigurovat integraci Azure Active Directory (AD) Identity Protection a Azure Security Center.
@@ -48,7 +48,7 @@ Po dokončení této konfigurace řešení Azure AD Identity Protection objeví 
 V tomto dokumentu jste zjistili, jak se připojit ke službě Security Center služby Azure AD Identity Protection. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Propojení Microsoft Advanced Threat Analytics a Azure Security Center](security-center-ata-integration.md)
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.

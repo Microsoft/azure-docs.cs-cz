@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 04dbc5c60e802e7861b9e2a98c51446281b7ae3f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: da866145f9c1ad39987b0f9a4449d4e5ff7f18f5
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320603"
+ms.locfileid: "53337117"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
@@ -53,7 +53,7 @@ Starší classic monitorování a upozorňování se vyřadí z provozu 30. čer
 - Starší (classic) platformy a vlastní metriky pro Application Insights jako upozornění na ně jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](../azure-monitor/platform/alerts-classic.overview.md) z webu Azure portal a dostupné jako [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) prostředků
 - Starší (classic) anomálie selhání výstraha aktuálně k dispozici jako [inteligentního zjišťování v Application Insights,](../application-insights/app-insights-proactive-diagnostics.md) na webu Azure Portal; nakonfigurovaná upozornění ukazuje [upozornění (klasická) části](../azure-monitor/platform/alerts-classic.overview.md) Azure portál
 
-Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../azure-monitor/platform/alerts-classic-portal.md), [rozhraní příkazového řádku](../azure-monitor/platform/alerts-classic-portal.md), [stránka na webu Azure portal](../azure-monitor/platform/alerts-classic-portal.md)a [ Prostředek šablony](monitoring-enable-alerts-using-template.md) zůstane až do konce dne 2019 použitelné. 
+Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../azure-monitor/platform/alerts-classic-portal.md), [rozhraní příkazového řádku](../azure-monitor/platform/alerts-classic-portal.md), [stránka na webu Azure portal](../azure-monitor/platform/alerts-classic-portal.md)a [ Prostředek šablony](../azure-monitor/platform/alerts-enable-template.md) zůstane až do konce dne 2019 použitelné. 
 
 Na konci dne. 2019 ve službě Azure Monitor:
 
@@ -76,4 +76,4 @@ Tento článek bude průběžně aktualizované se odkazy & Podrobnosti týkají
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o [nový jednotný Azure Monitor](../azure-monitor/overview.md).
-* Další informace o novém [Azure Alerts](monitoring-overview-alerts.md).
+* Další informace o novém [Azure Alerts](../azure-monitor/platform/alerts-overview.md).

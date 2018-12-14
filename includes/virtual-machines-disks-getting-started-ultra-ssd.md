@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2fd2fd42f41c4f9575ebabd7722ca3e1b6e8c686
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec8fa6c06dff0091627a800c895d45fd3b0e778e
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194568"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53381423"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>Povolení Azure Ultra disky SSD
 

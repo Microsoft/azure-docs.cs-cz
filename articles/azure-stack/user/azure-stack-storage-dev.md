@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: a914a95831176a51cc6b5e2c5bf69ef1ad60bcc0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a218cf9b3d89236128c83d8b879691940e432a55
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035907"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341554"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure Stack nástroje pro vývoj úložišť
 
@@ -24,8 +24,8 @@ Microsoft Azure Stack nabízí sadu služeb úložiště, který obsahuje objekt
 
 Použijte tento článek jako vodítko a začněte využívat nástroje pro vývoj úložišť Azure Stack. Podrobnější informace a ukázky kódu najdete v odpovídající kurzy služby Azure storage.
 
-> [!NOTE]  
-> Jsou známy rozdíly mezi úložiště služby Azure Stack a Azure storage, včetně specifické požadavky pro jednotlivé platformy. Například existují konkrétní klientské knihovny a určitého koncového bodu přípona požadavky pro Azure Stack. Další informace najdete v tématu [úložiště služby Azure Stack: rozdíly a aspekty](azure-stack-acs-differences.md).
+> [!NOTE]
+> Jsou známy rozdíly mezi úložiště služby Azure Stack a Azure storage, včetně specifické požadavky pro jednotlivé platformy. Například existují konkrétní klientské knihovny a určitého koncového bodu přípona požadavky pro Azure Stack. Další informace najdete v tématu [úložiště služby Azure Stack: Rozdíly a aspekty](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Klientské knihovny Azure
 

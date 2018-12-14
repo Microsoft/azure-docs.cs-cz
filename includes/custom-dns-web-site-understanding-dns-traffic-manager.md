@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 73e95f6259c916b06fe61cb47fd36beac4c7a427
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 212e45a7b593a9607aa19a10efdf2aaf61c78d17
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571977"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344583"
 ---
 V systému DNS (Domain Name) slouží k vyhledání věci na Internetu. Například pokud v prohlížeči zadejte adresu nebo kliknutím na odkaz na webové stránce, používá DNS přeložit doménu na IP adresu. IP adresa je ze například adresu ulice, ale nejedná se o velmi lidské popisný. Například je mnohem jednodušší pamatovat název DNS jako **contoso.com** než adresu IP, jako je například 192.168.1.88 nebo 2001:0:4137:1f67:24a2:3888:9cce:fea3 mějte na paměti.
 
@@ -32,7 +32,7 @@ Záznam CNAME, který se mapuje *konkrétní* název DNS, jako **mail.contoso.co
 Jakmile přenos dorazí na Traffic Manager, pak se směruje provoz na svůj web pomocí metody, které je nakonfigurována pro vyrovnávání zatížení. Toto je pro návštěvníky na svůj web zcela transparentní. Zobrazí se pouze název vlastní domény ve svém prohlížeči.
 
 > [!NOTE]
-> Některé domény registrátorů umožňují pouze pro mapování subdomény, při použití záznam CNAME, jako například **www.contoso.com**a není kořenový názvy, například **contoso.com**. Další informace o záznamech CNAME najdete v tématu v dokumentaci od vašeho registrátora <a href="http://en.wikipedia.org/wiki/CNAME_record">Wikipedia položka záznamu CNAME</a>, nebo <a href="http://tools.ietf.org/html/rfc1035">názvy domén IETF – implementace a specifikace</a> dokumentu.
+> Některé domény registrátorů umožňují pouze pro mapování subdomény, při použití záznam CNAME, jako například **www.contoso.com**a není kořenový názvy, například **contoso.com**. Další informace o záznamech CNAME najdete v tématu v dokumentaci od vašeho registrátora <a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia položka záznamu CNAME</a>, nebo <a href="https://tools.ietf.org/html/rfc1035">názvy domén IETF – implementace a specifikace</a> dokumentu.
 > 
 > 
 

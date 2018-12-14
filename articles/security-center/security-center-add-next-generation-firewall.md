@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7daefc1de06ac704f0449d065ed748bbe0f1ac61
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307651"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341147"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Přidání brány Firewall příští generace ve službě Azure Security Center
 Azure Security Center může doporučit přidání brány firewall příští generace (NGFW) od partnera Microsoftu o navýšení vaší ochrany zabezpečení. Tento dokument vás příklad toho, jak to udělat.
@@ -62,7 +62,7 @@ Tento dokument vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

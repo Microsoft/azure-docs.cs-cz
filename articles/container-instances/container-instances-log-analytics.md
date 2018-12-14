@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 06123944072142187bfd5b875cbadd36b4d47bd2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4dbcccc1a4b23ca37918495dc536df08a70cade7
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958896"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337882"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokolování instancí kontejnerů s využitím Azure Log Analytics
 
@@ -44,7 +44,7 @@ Získání ID a primárního klíče pracovního prostoru služby Log Analytics:
 
 Jakmile máte ID a primární klíč pracovního prostoru služby Log Analytics, jste připravení vytvořit skupinu kontejnerů s povoleným protokolováním.
 
-Následující příklady ukazují dva způsoby vytvoření skupiny kontejnerů s využitím jednoho kontejneru [fluentd][fluentd]: Azure CLI a Azure CLI se šablonou YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
+Následující příklady znázorňují dva způsoby, jak vytvořit skupinu kontejnerů pomocí jediného [fluentd] [ fluentd] kontejneru: Azure CLI a rozhraní příkazového řádku Azure s využitím šablony YAML. Kontejner fluentd ve výchozí konfiguraci produkuje několik řádků výstupu. Tento výstup se odesílá do pracovního prostoru služby Log Analytics, takže se dobře hodí pro ukázku zobrazení a dotazování protokolů.
 
 ### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
@@ -135,7 +135,7 @@ ContainerInstanceLog_CL
 Další informace o dotazování protokolů a konfiguraci upozornění ve službě Azure Log Analytics najdete v těchto tématech:
 
 * [Principy hledání v protokolu ve službě Log Analytics](../log-analytics/log-analytics-log-search.md)
-* [Sjednocená upozornění ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+* [Sjednocená upozornění ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 
 ### <a name="monitor-container-cpu-and-memory"></a>Monitorování procesoru a paměti kontejneru

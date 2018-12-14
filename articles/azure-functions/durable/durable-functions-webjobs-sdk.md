@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 427c3601d6a4ca65407a98d54b0206cde9af4235
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 18c35070707408f43fd0e5dfc5e3330ef62a914d
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643275"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53343152"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit odolná služba functions jako WebJobs
 
@@ -35,7 +35,7 @@ K dokončení kroků v tomto článku:
 
 * [Instalace sady Visual Studio 2017 verze 15.6 nebo novější](https://docs.microsoft.com/visualstudio/install/) s **vývoj pro Azure** pracovního vytížení.
 
-  Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**. 
+  Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**.
 
   (Můžete použít [Visual Studio Code](https://code.visualstudio.com/) místo toho ale některé pokyny jsou specifické pro Visual Studio.)
 
@@ -43,7 +43,7 @@ K dokončení kroků v tomto článku:
 
 ## <a name="webjobs-sdk-versions"></a>Verze sady WebJobs SDK
 
-Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs (ekvivalentní k verzi Azure Functions 1.x). Informace o verzi 3.x, naleznete v tématu [sada WebJobs SDK 3.x](#webjobs-sdk-3x) dále v tomto článku. 
+Tento článek vysvětluje, jak k vývoji projektu 2.x sady SDK pro WebJobs (ekvivalentní k verzi Azure Functions 1.x). Informace o verzi 3.x, naleznete v tématu [sada WebJobs SDK 3.x](#webjobs-sdk-3x) dále v tomto článku.
 
 ## <a name="create-console-app"></a>Vytvoření konzolové aplikace
 
@@ -190,9 +190,9 @@ Tato část obsahuje základní informace o tom, jak spustit [ukázkový projekt
 
 1. Pokud chcete zobrazit protokoly ve službě Application Insights, když spouštíte místně:
 
-  a. Vytvořte prostředek Application Insights typu app **Obecné**.
+    a. Vytvořte prostředek Application Insights typu app **Obecné**.
 
-  b. Uložte klíč instrumentace do *App.config* souboru.
+    b. Uložte klíč instrumentace do *App.config* souboru.
 
 1. Spusťte projekt.
 
@@ -216,8 +216,8 @@ Hlavní změny zavedené 3.x je použití .NET Core namísto rozhraní .NET Fram
 
 1. Zvolte tuto předprodejní verzi 3.x následujících balíčků:
 
-  * `Microsoft.Azure.WebJobs.Extensions`
-  * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
+    * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
 1. Změna `Main` kódu metody k získání připojovacího řetězce úložiště a Instrumentační klíč Application Insights z *appsettings.json* soubor, pomocí rozhraní .NET Core konfigurace.  Tady je příklad:
 
@@ -235,7 +235,7 @@ Hlavní změny zavedené 3.x je použití .NET Core namísto rozhraní .NET Fram
            var config = new JobHostConfiguration();
 
            config.DashboardConnectionString = "";
-           config.StorageConnectionString = 
+           config.StorageConnectionString =
                appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
            var instrumentationKey =
                appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
@@ -258,4 +258,3 @@ Hlavní změny zavedené 3.x je použití .NET Core namísto rozhraní .NET Fram
 ## <a name="next-steps"></a>Další postup
 
 Další informace o sadě WebJobs SDK najdete v tématu [způsob použití sady WebJobs SDK](../../app-service/webjobs-sdk-how-to.md).
-

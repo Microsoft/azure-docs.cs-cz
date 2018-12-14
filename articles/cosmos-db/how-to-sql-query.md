@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 4f2a8431e353246b1f7304e7bfe30d13a7b4af4b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: fb8e2b11ce6178c10fb9dc7d13c5c7d817ece821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139295"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344104"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
 
@@ -1411,14 +1411,14 @@ Funkce pro kontrolu typů umožňují zkontrolujte typ výrazu v rámci dotazů 
 
 | **Použití** | **Popis** |
 |-----------|------------|
-| [Is_array – (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_array) | Vrátí logickou hodnotu označující, zda je typ hodnoty pole. |
-| [IS_BOOL (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_bool) | Vrátí logickou hodnotu označující, pokud je typ hodnoty logická hodnota. |
-| [IS_NULL (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_null) | Vrátí logickou hodnotu označující, zda je typ hodnoty null. |
-| [IS_NUMBER (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_number) | Vrátí logickou hodnotu označující, pokud je typ hodnoty čísla. |
-| [Is_object – (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_object) | Vrátí logickou hodnotu označující, pokud je typ hodnoty objektu JSON. |
-| [IS_STRING (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_string) | Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec. |
-| [IS_DEFINED (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_defined) | Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota. |
-| [IS_PRIMITIVE (výraz)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_is_primitive) | Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec, číslo, logickou hodnotu nebo hodnotu null. |
+| [Is_array – (výraz)](sql-api-query-reference.md#bk_is_array) | Vrátí logickou hodnotu označující, zda je typ hodnoty pole. |
+| [IS_BOOL (výraz)](sql-api-query-reference.md#bk_is_bool) | Vrátí logickou hodnotu označující, pokud je typ hodnoty logická hodnota. |
+| [IS_NULL (výraz)](sql-api-query-reference.md#bk_is_null) | Vrátí logickou hodnotu označující, zda je typ hodnoty null. |
+| [IS_NUMBER (výraz)](sql-api-query-reference.md#bk_is_number) | Vrátí logickou hodnotu označující, pokud je typ hodnoty čísla. |
+| [Is_object – (výraz)](sql-api-query-reference.md#bk_is_object) | Vrátí logickou hodnotu označující, pokud je typ hodnoty objektu JSON. |
+| [IS_STRING (výraz)](sql-api-query-reference.md#bk_is_string) | Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec. |
+| [IS_DEFINED (výraz)](sql-api-query-reference.md#bk_is_defined) | Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota. |
+| [IS_PRIMITIVE (výraz)](sql-api-query-reference.md#bk_is_primitive) | Vrátí logickou hodnotu označující, pokud je typ hodnoty řetězec, číslo, logickou hodnotu nebo hodnotu null. |
 
 Použití těchto funkcí, teď můžete spustit dotazy jak je znázorněno v následujícím příkladu:
 
@@ -1440,22 +1440,22 @@ Následující skalární funkce provádění operací na vstupní hodnotu řet�
 
 | Využití | Popis |
 | --- | --- |
-| [Délka (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_length) | Vrátí počet znaků ze zadaného řetězcového výrazu |
-| [CONCAT (str_expr str_expr [, str_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_concat) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
-| [Dílčí řetězec (str_expr, num_expr num_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_substring) | Vrátí část řetězcového výrazu. |
-| [STARTSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_startswith) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce začíná druhé |
-| [ENDSWITH (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_endswith) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce končí na druhý |
-| [OBSAHUJE (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_contains) | Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý. |
-| [INDEX_OF (str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_index_of) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci prvního zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
-| [LEFT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_left) | Vrátí levou část řetězec zadaný počet znaků. |
-| [RIGHT (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_right) | Vrátí část reprezentující správný řetězec zadaný počet znaků. |
-| [LTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_ltrim) | Vrátí řetězcový výraz po odebere úvodní mezery. |
-| [RTRIM (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_rtrim) | Vrátí řetězcový výraz po zkracování všechny koncové mezery. |
-| [MALÁ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) | Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena. |
-| [VELKÁ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
-| [NAHRAĎTE (str_expr, str_expr str_expr.)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) | Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
+| [Délka (str_expr)](sql-api-query-reference.md#bk_length) | Vrátí počet znaků ze zadaného řetězcového výrazu |
+| [CONCAT (str_expr str_expr [, str_expr])](sql-api-query-reference.md#bk_concat) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
+| [Dílčí řetězec (str_expr, num_expr num_expr.)](sql-api-query-reference.md#bk_substring) | Vrátí část řetězcového výrazu. |
+| [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce začíná druhé |
+| [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce končí na druhý |
+| [OBSAHUJE (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý. |
+| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci prvního zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec. |
+| [LEFT (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | Vrátí levou část řetězec zadaný počet znaků. |
+| [RIGHT (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | Vrátí část reprezentující správný řetězec zadaný počet znaků. |
+| [LTRIM (str_expr)](sql-api-query-reference.md#bk_ltrim) | Vrátí řetězcový výraz po odebere úvodní mezery. |
+| [RTRIM (str_expr)](sql-api-query-reference.md#bk_rtrim) | Vrátí řetězcový výraz po zkracování všechny koncové mezery. |
+| [MALÁ (str_expr)](sql-api-query-reference.md#bk_lower) | Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena. |
+| [VELKÁ (str_expr)](sql-api-query-reference.md#bk_upper) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
+| [NAHRAĎTE (str_expr, str_expr str_expr.)](sql-api-query-reference.md#bk_replace) | Nahradí všechny výskyty zadaná řetězcová hodnota s jinou hodnotou řetězce. |
 | [REPLIKACE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/sql-api-sql-query-reference#bk_replicate) | Opakuje hodnotu řetězce zadaného počtu opakování. |
-| [REVERZNÍ (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
+| [REVERZNÍ (str_expr)](sql-api-query-reference.md#bk_reverse) | Vrátí hodnotu řetězce obráceném pořadí. |
 
 Použití těchto funkcí, můžete nyní spouštět dotazy takto. Například se můžete vrátit název rodiny na velká písmena následujícím způsobem:
 
@@ -1522,10 +1522,10 @@ Následující skalární funkce provádění operací na hodnotu vstupního pol
 
 | Využití | Popis |
 | --- | --- |
-| [ARRAY_LENGTH (arr_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_length) |Vrátí počet prvků výrazu určeném poli. |
-| [ARRAY_CONCAT (arr_expr arr_expr [, arr_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_concat) |Vrátí pole, která je výsledkem zřetězení dvou nebo více hodnot pole. |
-| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_contains) |Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud shoda není celé nebo jeho část. |
-| [ARRAY_SLICE (arr_expr num_expr [, num_expr])](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_array_slice) |Vrátí část reprezentující výraz pole. |
+| [ARRAY_LENGTH (arr_expr)](sql-api-query-reference.md#bk_array_length) |Vrátí počet prvků výrazu určeném poli. |
+| [ARRAY_CONCAT (arr_expr arr_expr [, arr_expr])](sql-api-query-reference.md#bk_array_concat) |Vrátí pole, která je výsledkem zřetězení dvou nebo více hodnot pole. |
+| [ARRAY_CONTAINS (arr_expr, výraz [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |Vrátí logickou hodnotu označující, zda pole obsahuje zadanou hodnotu. Můžete zadat, pokud shoda není celé nebo jeho část. |
+| [ARRAY_SLICE (arr_expr num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |Vrátí část reprezentující výraz pole. |
 
 Pole funkcí lze použít k manipulaci s poli ve formátu JSON. Tady je příklad dotaz, který vrátí všechny položky, kde jeden z rodičů je "Robin Wakefieldů". 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e929ddec084c4abbdb572943f11f135cddd49045
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0b94a57f04d9e4b5884162dcd4cfd89d6b4bf879
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254839"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341027"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 
@@ -96,7 +96,7 @@ Takto si můžete prohlédnout data přicházející z modulu modbus:
 docker logs -f modbus
 ```
 
-K zobrazení telemetrických údajů, které zařízení odesílá, můžete použít také [rozšíření Azure IoT Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+Můžete také zobrazit telemetrická data odeslaná ze zařízení s použitím [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit).
 
 ## <a name="next-steps"></a>Další postup
 

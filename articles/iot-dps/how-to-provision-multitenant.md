@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6855521475e24b7243a391abdc6e6cf707991159
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320688"
+ms.locfileid: "53344087"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Jak zřídit pro víceklientskou architekturu 
 
@@ -139,7 +139,7 @@ Chcete-li vyčistit klidní, tyto virtuální počítače se přidají do stejn�
     ```azurecli-interactive
     az vm create \
     --resource-group contoso-us-resource-group \
-    --name ContosoSimDeviceEest \
+    --name ContosoSimDeviceEast \
     --location eastus \
     --image Canonical:UbuntuServer:18.04-LTS:18.04.201809110 \
     --admin-username contosoadmin \
@@ -327,28 +327,28 @@ Vzorový kód simuluje posloupnost spouštěcí zařízení, která odešle žá
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-
-1. Otevřít **~/azure-iot-sdk-c/provisioning\_klienta/adaptéry/hsm\_klienta\_key.c** oba virtuální počítače. 
-
-    ```bash
-     vi ~/azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.c
-    ```
-
-1. Vyhledejte deklaraci konstant `REGISTRATION_NAME` a `SYMMETRIC_KEY_VALUE`. Proveďte následující změny k souborům na oba místní virtuální počítače a uložte soubory.
-
-    Aktualizujte hodnotu `REGISTRATION_NAME` konstanty s **jedinečným registračním ID pro vaše zařízení**.
-    
-    Aktualizujte hodnotu `SYMMETRIC_KEY_VALUE` konstanty s vaší **odvozený klíč zařízení**.
+1. Na obou virtuálních počítačů, najděte volání `prov_dev_set_symmetric_key_info()` v **prov\_dev\_klienta\_sample.c** což je označené jako komentář.
 
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-east";
-    static const char* const SYMMETRIC_KEY_VALUE = "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=";
+    // Set the symmetric key if using they auth type
+    //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
+    Zrušením komentáře u volání funkce a nahraďte zástupné hodnoty (včetně ostrých závorek) s jedinečným registračním ID a klíče odvozené zařízení pro každé zařízení. Pouze pro účely jsou například klíče je uvedeno níže. Použití klíče, který jste vygenerovali dříve.
+
+    USA – východ:
     ```c
-    static const char* const REGISTRATION_NAME = "contoso-simdevice-west";
-    static const char* const SYMMETRIC_KEY_VALUE = "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=";
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-east", "p3w2DQr9WqEGBLUSlFi1jPQ7UWQL4siAGy75HFTFbf8=");
     ```
+
+    USA – západ:
+    ```c
+    // Set the symmetric key if using they auth type
+    prov_dev_set_symmetric_key_info("contoso-simdevice-west", "J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=");
+    ```
+
+    Uložte soubory.
 
 1. Oba virtuální počítače přejděte do složky s ukázkou níže a sestavit ukázku.
 
@@ -358,6 +358,13 @@ Vzorový kód simuluje posloupnost spouštěcí zařízení, která odešle žá
     ```
 
 1. Po úspěšném sestavení spusťte **prov\_dev\_klienta\_sample.exe** oba virtuální počítače pro simulaci zařízení klienta v každé oblasti. Všimněte si, že každé zařízení je přidělená k tenantovi nejblíže oblasti simulovaného zařízení služby IoT hub.
+
+    Spuštění simulace:
+    ```bash
+    ~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample
+    ```
+
+    Příklad výstupu z virtuálního počítače – Východ USA:
 
     ```bash
     contosoadmin@ContosoSimDeviceEast:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
@@ -374,6 +381,7 @@ Vzorový kód simuluje posloupnost spouštěcí zařízení, která odešle žá
 
     ```
 
+    Příklad výstupu z virtuálního počítače – západ USA:
     ```bash
     contosoadmin@ContosoSimDeviceWest:~/azure-iot-sdk-c/cmake/provisioning_client/samples/prov_dev_client_sample$ ./prov_dev_client_sample
     Provisioning API Version: 1.2.9

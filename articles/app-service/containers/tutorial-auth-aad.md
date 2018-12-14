@@ -1,6 +1,6 @@
 ---
 title: Ověřování a autorizaci uživatelů end až do konce v Linuxu – Azure App Service | Dokumentace Microsoftu
-description: Zjistěte, jak pomocí ověřování a autorizace pomocí služby App Service zabezpečit aplikace App Service, včetně přístupu ke vzdáleným rozhraním API.
+description: Zjistěte, jak zabezpečit aplikace App Service spuštěné v Linuxu, včetně přístupu ke vzdáleným rozhraním API pomocí služby App Service ověřování a autorizace.
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 services: app-service\web
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aa57e6198050b7e250c42f4bb019009e59ca4ba7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9ceb6d388bd4ff3c21b7c3c85e83fea2940b69af
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254084"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337645"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b05fd9571494dfc3680e2d56fabb02de17920378
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3a106b0fe570fe44f96529d830271dfe4912437f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196725"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53336465"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat upozornění na metriku pomocí Azure monitoru
 
-Upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Upozornění na metriku pracovat na celou řadu multidimenzionální platformy metriky, vlastní metriky, Application Insights standardní a vlastní metriky. V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky prostřednictvím webu Azure portal a rozhraní příkazového řádku Azure. Můžete také vytvořit pravidla upozornění na metriky pomocí šablon Azure Resource Manageru, která je popsána v [věnovaný samostatný článek](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+Upozornění metrik ve službě Azure Monitor poskytují způsob, jak chcete dostávat oznámení, když jeden metriky překročí prahovou hodnotu. Upozornění na metriku pracovat na celou řadu multidimenzionální platformy metriky, vlastní metriky, Application Insights standardní a vlastní metriky. V tomto článku jsme popisuje, jak vytvořit, zobrazit a spravovat pravidla upozornění na metriky prostřednictvím webu Azure portal a rozhraní příkazového řádku Azure. Můžete také vytvořit pravidla upozornění na metriky pomocí šablon Azure Resource Manageru, která je popsána v [věnovaný samostatný článek](../../azure-monitor/platform/alerts-enable-template.md).
 
 Přečtěte si víc o tom, jak metriky upozornění fungují z [přehled výstrah metrika](alerts-metric-overview.md).
 
@@ -128,6 +128,6 @@ V předchozích částech popsané, jak vytvořit, zobrazit a spravovat pravidla
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření upozornění na metriku pomocí šablony Azure Resource Manageru](../../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md).
+- [Vytvoření upozornění na metriku pomocí šablony Azure Resource Manageru](../../azure-monitor/platform/alerts-enable-template.md).
 - [Vysvětlení, jak metrika výstrahy pracovní](alerts-metric-overview.md).
 - [Pochopení schématu webových hook pro upozornění na metriku](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#payload-schema)

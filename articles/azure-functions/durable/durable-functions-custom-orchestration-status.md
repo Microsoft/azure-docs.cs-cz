@@ -8,27 +8,26 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b8017288adb75c990113b0f2ff5ba29a1f1e0a18
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 8487eb9009529e023e06bf6a717fcb142f50305f
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642652"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53342795"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní Orchestrace v Durable Functions (Azure Functions)
 
 Stav vlastní Orchestrace umožňuje nastavit vlastní stav hodnotu funkce nástroje orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API HTTP GetStatus nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API.
 
-> [!NOTE]
-> Stav vlastní Orchestrace pro jazyk JavaScript, bude k dispozici v nadcházející verzi.
-
-## <a name="sample-use-cases"></a>Ukázka případy použití 
+## <a name="sample-use-cases"></a>Ukázka případy použití
 
 ### <a name="visualize-progress"></a>Vizualizace průběhu
 
 Klienty můžete dotazovat stav koncového bodu a zobrazit průběh uživatelského rozhraní, které vizualizuje aktuální fáze spuštění. Následující příklad ukazuje průběh sdílení:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -55,7 +54,35 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const outputs = [];
+
+    outputs.push(yield context.df.callActivity("E1_SayHello", "Tokyo"));
+    context.df.setCustomStatus("Tokyo");
+    outputs.push(yield context.df.callActivity("E1_SayHello", "Seattle"));
+    context.df.setCustomStatus("Seattle");
+    outputs.push(yield context.df.callActivity("E1_SayHello", "London"));
+    context.df.setCustomStatus("London");
+
+    // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
+    return outputs;
+});
+```
+
+```javascript
+module.exports = async function(context, name) {
+    return `Hello ${name}!`;
+};
+```
+
 A pak klienta se zobrazí výstup orchestraci pouze tehdy, když `CustomStatus` pole nastavena na "Londýn":
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -88,9 +115,46 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-### <a name="output-customization"></a>Výstup vlastního nastavení 
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function(context, req) {
+    const client = df.getClient(context);
+
+    // Function input comes from the request content.
+    const eventData = req.body;
+    const instanceId = await client.startNew(req.params.functionName, undefined, eventData);
+
+    context.log(`Started orchestration with ID = '${instanceId}'.`);
+
+    let durableOrchestrationStatus = await client.getStatus(instanceId);
+    while (status.customStatus.toString() !== "London") {
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        durableOrchestrationStatus = await client.getStatus(instanceId);
+    }
+
+    const httpResponseMessage = {
+        status: 200,
+        body: JSON.stringify(durableOrchestrationStatus),
+    };
+
+    return httpResponseMessage;
+};
+```
+
+> [!NOTE]
+> V jazyce JavaScript `customStatus` pole se nastaví při další `yield` nebo `return` naplánované akce.
+
+> [!WARNING]
+> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
+
+### <a name="output-customization"></a>Výstup vlastního nastavení
 
 Další zajímavé scénář je tak, že vrací vlastní výstup na základě jedinečných charakteristik nebo interakcí segmentace uživatelů. Díky pomoci stav vlastní Orchestrace zůstane obecný kód na straně klienta. Všechny hlavní úpravy dojde na straně serveru, jak je znázorněno v následujícím příkladu:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -111,26 +175,61 @@ public static void Run(
     case 2:
       context.SetCustomStatus(new
       {
-        recommendedCity = new[] {"Seattle, London"},
+        recommendedCities = new[] {"Seattle, London"},
         recommendedSeasons = new[] {"Summer"}
       });
         break;
       case 3:
       context.SetCustomStatus(new
       {
-        recommendedCity = new[] {"Tokyo, London"},
+        recommendedCities = new[] {"Tokyo, London"},
         recommendedSeasons = new[] {"Spring", "Summer"}
       });
         break;
   }
 
   // Wait for user selection and refine the recommendation
-} 
+}
 ```
 
-### <a name="instruction-specification"></a>Specifikace instrukce 
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const userChoice = context.df.getInput();
+
+    switch (userChoice) {
+        case 1:
+            context.df.setCustomStatus({
+                recommendedCities: [ "Tokyo", "Seattle" ],
+                recommendedSeasons: [ "Spring", "Summer" ],
+            });
+            break;
+        case 2:
+            context.df.setCustomStatus({
+                recommendedCities: [ "Seattle", "London" ],
+                recommendedSeasons: [ "Summer" ],
+            });
+            break;
+        case 3:
+            context.df.setCustomStatus({
+                recommendedCity: [ "Tokyo", "London" ],
+                recommendedSeasons: [ "Spring", "Summer" ],
+            });
+            break;
+    }
+
+    // Wait for user selection and refine the recommendation
+});
+```
+
+### <a name="instruction-specification"></a>Specifikace instrukce
 
 Orchestrator může poskytovat klientům prostřednictvím vlastního stavu jedinečný pokyny. Stav vlastní pokyny budou zmapována do kroků Orchestrace kódu:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -158,21 +257,66 @@ public static async Task<bool> Run(
 }
 ```
 
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const userId = context.df.getInput();
+
+    const discount = yield context.df.callActivity("CalculateDiscount", userId);
+
+    context.df.setCustomStatus({
+        discount,
+        discountTimeout = 60,
+        bookingUrl = "https://www.myawesomebookingweb.com",
+    });
+
+    const isBookingConfirmed = yield context.df.waitForExternalEvent("bookingConfirmed");
+
+    context.df.setCustomStatus(isBookingConfirmed
+        ? { message: "Thank you for confirming your booking." }
+        : { message: "The booking was not confirmed on time. Please try again." }
+    );
+
+    return isBookingConfirmed;
+});
+```
+
 ## <a name="sample"></a>Ukázka
 
 V následujícím příkladu je vlastní stav nastaven.
 
+### <a name="c"></a>C#
+
 ```csharp
-public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
 {
     // ...do work...
 
     // update the status of the orchestration with some arbitrary data
     var customStatus = new { nextActions = new [] {"A", "B", "C"}, foo = 2, };
-    ctx.SetCustomStatus(customStatus);
+    context.SetCustomStatus(customStatus);
 
     // ...do more work...
 }
+```
+
+### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    const customStatus = { nextActions: [ "A", "B", "C" ], foo: 2, };
+    context.df.setCustomStatus(customStatus);
+
+    // ...do more work...
+});
 ```
 
 Je spuštěn orchestraci, můžete načíst externí klienti tento vlastní stav:
@@ -182,7 +326,7 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienti získáte odpovědi na následující: 
+Klienti získáte odpovědi na následující:
 
 ```http
 {
@@ -196,12 +340,9 @@ Klienti získáte odpovědi na následující:
 ```
 
 > [!WARNING]
->  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni vyplňoval sloupec Azure Table Storage. Vývojáři mohou pomocí externího úložiště, pokud budou potřebovat větší datovou část.
-
+> Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni vyplňoval sloupec Azure Table Storage. Vývojáři mohou pomocí externího úložiště, pokud budou potřebovat větší datovou část.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní API protokolu HTTP v Durable Functions](durable-functions-http-api.md)
-
-

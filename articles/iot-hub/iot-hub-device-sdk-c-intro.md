@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 97f1c9e16ae6be9e6bece69d0923f6290a8cd072
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 73eda631d43da87b4472615c2b6a28244372c613
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024711"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53339259"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Pro zařízení Azure IoT SDK pro jazyk C
 
@@ -75,11 +75,11 @@ Existuje několik opensourcových nástrojů, které vám pomohou při správě 
 
 * Aplikace Windows s názvem [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-* Volá se, Visual Studio Code příponou napříč platformami [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+* Volá se, Visual Studio Code příponou napříč platformami [Azure IoT Hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve Azure IoT Toolkit).
 
 * Python – multiplatformního rozhraní příkazového řádku volá [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension).
 
-Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *rozšíření Azure IoT Toolkit pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
+Tento kurz používá grafickém *Průzkumník zařízení* nástroj. Můžete použít *rozšíření Azure IoT Hub Toolkit pro VS Code* při vývoji v nástroji VS Code. Můžete také použít *rozšíření IoT pro Azure CLI 2.0* nástroj, pokud byste radši chtěli použít nástroj příkazového řádku.
 
 Nástroj device explorer knihovny služby Azure IoT používá k provádění různých funkcí v IoT Hubu, včetně přidávání zařízení. Pokud používáte nástroj Průzkumník zařízení pro přidání zařízení, získání připojovacího řetězce pro vaše zařízení. Je nutné tento připojovací řetězec pro spuštění ukázkové aplikace.
 
@@ -410,7 +410,7 @@ END_NAMESPACE(WeatherStation);
 
 **Začít\_obor názvů** a **END\_obor názvů** makra obou trvat obor názvů tohoto modelu jako argument. Očekává se, že něco mezi tato makra je definice modelu nebo modely a datové struktury, které používají modely.
 
-V tomto příkladu je volána jednoho modelu **ContosoAnemometer**. Tento model definuje dva druhy dat, která vaše zařízení může odesílat do služby IoT Hub: **DeviceId** a **rychlost větru**. Také definuje tři akce (zprávy), které vaše zařízení může získat: **TurnFanOn**, **TurnFanOff**, a **SetAirResistance**. Každý datový element má typ, a každou akci má název (a volitelně sadu parametrů).
+V tomto příkladu je volána jednoho modelu **ContosoAnemometer**. Tento model definuje dva druhy dat, která vaše zařízení může odesílat do služby IoT Hub: **ID zařízení** a **rychlost větru**. Definuje také tři akce (zprávy), které vaše zařízení může získat: **TurnFanOn**, **TurnFanOff**, a **SetAirResistance**. Každý datový element má typ, a každou akci má název (a volitelně sadu parametrů).
 
 Data a akce definované v modelu definovat povrch rozhraní API, můžete použít k odesílání zpráv do služby IoT Hub a reagovat na zprávy odeslané do zařízení. Použití tohoto modelu nejlépe odhalíte obsahuje příklad.
 

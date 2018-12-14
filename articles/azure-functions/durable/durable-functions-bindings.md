@@ -1,6 +1,6 @@
 ---
 title: Vazby pro Durable Functions – Azure
-description: Jak používat triggery a vazby pro trvalý Functons rozšíření pro službu Azure Functions.
+description: Jak používat triggery a vazby pro rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: kashimiz
 manager: jeconnoc
@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1a932e5548941a949120ab6c15c73c739a7dc8c3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 889d26be12fef62d37a471fbe0640a2b8ecdd99c
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642316"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53337185"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -27,7 +27,7 @@ Aktivační událost orchestration umožňuje vytvářet funkce trvalý orchestr
 
 Při použití nástroje Visual Studio tools pro službu Azure Functions, aktivační událost orchestration je nakonfigurovaný nástrojem [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) atribut rozhraní .NET.
 
-Při psaní funkcí nástroje orchestrator v skriptovací jazyky (například na portálu Azure), aktivační událost orchestration je definován následující objekt JSON v `bindings` pole *function.json* souboru:
+Při psaní funkcí nástroje orchestrator v skriptovací jazyky (například JavaScript nebo C# skriptování), aktivační událost orchestration je definován následující objekt JSON v `bindings` pole *function.json* soubor:
 
 ```json
 {
@@ -54,12 +54,15 @@ Tady jsou některé poznámky o orchestraci aktivační události:
 > [!WARNING]
 > Funkce nástroje Orchestrator nikdy použijte všechny vstupní nebo výstupní vazbu než orchestraci aktivovat vazby. To má potenciál způsobit problémy s příponou trvalé úlohy, protože tyto vazby nemusí dodržovat jedním – práce s vlákny a pravidla vstupně-výstupních operací.
 
-### <a name="trigger-usage"></a>Použití aktivační události
+> [!WARNING]
+> Funkce jazyka JavaScript orchestrator by měly být deklarovány nikdy `async`.
+
+### <a name="trigger-usage-net"></a>Použití aktivační události (.NET)
 
 Vazba podporuje aktivační událost Orchestrace vstupů a výstupů. Tady jsou některé možnosti vědět o vstupu a výstupu zpracování:
 
-* **vstupy** -Orchestrace funkce podporují pouze [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako typ parametru. Deserializace vstupů přímo v signatuře funkce není podporována. Musí používat kód [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metodu pro načtení vstupy funkce nástroje orchestrator. Tyto vstupy musí být JSON Serializovatelné typy.
-* **Vypíše** -Orchestrace triggery podpoře výstupní hodnoty, jakož i vstupy. Návratový typ funkce se používá pro přiřazení výstupní hodnota a musí být serializovatelný JSON. Pokud funkce vrací `Task` nebo `void`, `null` hodnota bude uložena jako výstup.
+* **vstupy** – funkce rozhraní .NET Orchestrace podporují pouze [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako typ parametru. Deserializace vstupů přímo v signatuře funkce není podporována. Musí používat kód [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) nebo `getInput` – metoda (JavaScript) pro načtení vstupy funkce nástroje orchestrator. Tyto vstupy musí být JSON Serializovatelné typy.
+* **Vypíše** -Orchestrace triggery podpoře výstupní hodnoty, jakož i vstupy. Návratový typ funkce se používá pro přiřazení výstupní hodnota a musí být serializovatelný JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` hodnota bude uložena jako výstup.
 
 ### <a name="trigger-sample"></a>Aktivační událost vzorku
 
@@ -76,7 +79,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -86,6 +89,9 @@ module.exports = df.orchestrator(function*(context) {
     return `Hello ${name}!`;
 });
 ```
+
+> [!NOTE]
+> `context` Objektu v jazyce JavaScript nepředstavuje DurableOrchestrationContext, ale [funkce kontextu jako celek.](../functions-reference-node.md#context-object). Orchestrace metody prostřednictvím můžete přistupovat `context` objektu `df` vlastnost.
 
 > [!NOTE]
 > Používejte JavaScript orchestrátorů `return`. `durable-functions` Knihovny se postará o volání `context.done` metody.
@@ -105,7 +111,7 @@ public static async Task<string> Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
 const df = require("durable-functions");
@@ -121,7 +127,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Aktivační událost aktivity umožňuje vytvářet funkce, které jsou volány funkce nástroje orchestrator.
 
-Pokud používáte Visual Studio, aktivační událost pro aktivitu je nakonfigurovaný nástrojem [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atribut rozhraní .NET. 
+Pokud používáte Visual Studio, aktivační událost pro aktivitu je nakonfigurovaný nástrojem [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atribut rozhraní .NET.
 
 Pokud používáte VS Code nebo na webu Azure portal pro vývoj, aktivační událost pro aktivitu je definován následující objekt JSON v `bindings` pole *function.json*:
 
@@ -150,13 +156,13 @@ Tady jsou některé poznámky o aktivační událost aktivity:
 > [!WARNING]
 > Podrobnosti implementace je back-endu úložiště pro funkce aktivity a uživatelský kód by neměl přímo spolupracovat se tyto entity úložiště.
 
-### <a name="trigger-usage"></a>Použití aktivační události
+### <a name="trigger-usage-net"></a>Použití aktivační události (.NET)
 
 Vazba podporuje aktivační událost aktivity vstupy a výstupy, stejně jako aktivační událost Orchestrace. Tady jsou některé možnosti vědět o vstupu a výstupu zpracování:
 
-* **vstupy** -nativně používat funkce aktivity [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Můžete také funkce protokolem aktivit mohou být deklarovány s jakýmkoli typem parametru, který serializovat na JSON. Při použití `DurableActivityContext`, můžete volat [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) k načtení a deserializaci funkce aktivitu vstup.
-* **Vypíše** – funkce aktivity podpoře výstupní hodnoty, jakož i vstupy. Návratový typ funkce se používá pro přiřazení výstupní hodnota a musí být serializovatelný JSON. Pokud funkce vrací `Task` nebo `void`, `null` hodnota bude uložena jako výstup.
-* **metadata** – funkce aktivity lze svázat `string instanceId` parametr získat ID instance Orchestrace nadřazené.
+* **vstupy** – funkce rozhraní .NET aktivity nativně používat [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typ parametru. Můžete také funkce protokolem aktivit mohou být deklarovány s jakýmkoli typem parametru, který serializovat na JSON. Při použití `DurableActivityContext`, můžete volat [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) k načtení a deserializaci funkce aktivitu vstup.
+* **Vypíše** – funkce aktivity podpoře výstupní hodnoty, jakož i vstupy. Návratový typ funkce se používá pro přiřazení výstupní hodnota a musí být serializovatelný JSON. Pokud funkce .NET vrátí `Task` nebo `void`, `null` hodnota bude uložena jako výstup.
+* **metadata** – funkce aktivity .NET lze svázat `string instanceId` parametr získat ID instance Orchestrace nadřazené.
 
 ### <a name="trigger-sample"></a>Aktivační událost vzorku
 
@@ -173,17 +179,7 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
-
-```javascript
-module.exports = function(context) {
-    context.done(null, `Hello ${context.bindings.name}!`);
-};
-```
-
-Výchozí typ parametru pro položku `ActivityTriggerAttribute` vazba je `DurableActivityContext`. Ale aktivace aktivity také podporu vazbu přímo do formátu JSON serializeable typy (včetně primitivní typy), může se dá zjednodušit na stejnou funkci jako následující:
-
-#### <a name="c"></a>C#
+Výchozí typ parametru pro .NET `ActivityTriggerAttribute` vazba je `DurableActivityContext`. Ale aktivační události .NET aktivity také podporu vazbu přímo do formátu JSON serializeable typy (včetně primitivní typy), může se dá zjednodušit na stejnou funkci jako následující:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -193,17 +189,25 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (funguje pouze 2.x)
 
 ```javascript
-module.exports = function(context, name) {
-    context.done(null, `Hello ${name}!`);
+module.exports = async function(context) {
+    return `Hello ${context.bindings.name}!`;
 };
 ```
 
-### <a name="passing-multiple-parameters"></a>Předání více parametrů 
+Vazby JavaScript lze také předat v jako další parametry, takže stejnou funkci může zjednodušit následujícím způsobem:
 
-Není možné předat více parametrů funkce aktivity přímo. Doporučení v tomto případě je a zajistěte tak předání pole objektů, nebo použít [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objekty.
+```javascript
+module.exports = async function(context, name) {
+    return `Hello ${name}!`;
+};
+```
+
+### <a name="passing-multiple-parameters"></a>Předání více parametrů
+
+Není možné předat více parametrů funkce aktivity přímo. Doporučení v tomto případě je a zajistěte tak předání pole objektů, nebo použít [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektů v rozhraní .NET.
 
 Následující příklad používá nové funkce [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) přidána s [jazyka C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
@@ -222,7 +226,7 @@ public static async Task<dynamic> RunOrchestrator(
 [FunctionName("CourseRecommendations")]
 public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContext inputs)
 {
-    // parse input for student's major and year in university 
+    // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();
 
     // retrieve and return course recommendations by major and university year
@@ -242,6 +246,7 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 ## <a name="orchestration-client"></a>Klient Orchestrace
 
 Klient Orchestrace vazba umožňuje psát funkce, které interagují s funkcemi nástroje orchestrator. Můžete například reagovat na orchestraci instance následujícími způsoby:
+
 * Je spusťte.
 * Dotaz jejich stav.
 * Ukončete je.
@@ -270,17 +275,20 @@ Pokud používáte skriptovací jazyky (například *.csx* nebo *js* soubory) pr
 
 ### <a name="client-usage"></a>Používání klienta
 
-V funkcí jazyka C#, obvykle svážete `DurableOrchestrationClient`, která poskytuje úplný přístup na všechny klienty odolná služba Functions podporuje rozhraní API. Rozhraní API v objektu klient patří:
+Ve funkcích rozhraní .NET, obvykle svážete `DurableOrchestrationClient`, která poskytuje úplný přístup na všechny klienty odolná služba Functions podporuje rozhraní API. V jazyce JavaScript jsou vystavené stejná rozhraní API `DurableOrchestrationClient` objekt vrácený z `getClient`. Rozhraní API v objektu klient patří:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
 * [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
-* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_)
+* [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (aktuálně pouze rozhraní .NET)
 
-Alternativně můžete vázat na `IAsyncCollector<T>` kde `T` je [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) nebo `JObject`.
+Alternativně lze svázat funkce .NET `IAsyncCollector<T>` kde `T` je [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) nebo `JObject`.
 
 Zobrazit [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) dokumentace k rozhraní API pro další podrobnosti o těchto operací.
+
+> [!WARNING]
+> Při vývoji místně v jazyce JavaScript, budete muset nastavit proměnnou prostředí `WEBSITE_HOSTNAME` k `localhost:<port>`, např. `localhost:7071` použití metod na `DurableOrchestrationClient`. Další informace o tomto požadavku najdete v tématu [problém Githubu](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="client-sample-visual-studio-development"></a>Ukázka klienta (vývoj pro Visual Studio)
 
@@ -315,9 +323,8 @@ Pokud nepoužíváte Visual Studio pro vývoj, můžete vytvořit následující
       "type": "orchestrationClient",
       "direction": "in"
     }
-  ],
-  "disabled": false
-} 
+  ]
+}
 ```
 
 Toto jsou ukázky specifické pro jazyk, které spuštění nových instancí funkce nástroje orchestrator.
@@ -339,22 +346,18 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 
 Následující příklad ukazuje, jak použít klienta trvalý Orchestrace vazby pro spuštění nové instance funkce z funkce JavaScript:
 
-```js
-module.exports = function (context, input) {
-    var id = generateSomeUniqueId();
-    context.bindings.starter = [{
-        FunctionName: "HelloWorld",
-        Input: input,
-        InstanceId: id
-    }];
+```javascript
+const df = require("durable-functions");
 
-    context.done(null, id);
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    return instanceId = await client.startNew("HelloWorld", undefined, context.bindings.input);
 };
 ```
 
 Další podrobnosti o spuštění instance najdete v [Instance správu](durable-functions-instance-management.md).
 
-<a name="host-json"></a>  
+<a name="host-json"></a>
 
 ## <a name="hostjson-settings"></a>nastavení Host.JSON
 
@@ -364,4 +367,3 @@ Další podrobnosti o spuštění instance najdete v [Instance správu](durable-
 
 > [!div class="nextstepaction"]
 > [Další informace o vytváření kontrolních bodů a opětovného přehrání chování](durable-functions-checkpointing-and-replay.md)
-
