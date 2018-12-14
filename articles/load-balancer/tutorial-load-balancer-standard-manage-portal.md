@@ -195,7 +195,7 @@ Na virtuálních počítačích, na kterých je vaše aplikace spuštěná, mož
 2. V části **Nastavení** klikněte na **Back-endové fondy** a v seznamu back-endového fondu klikněte na **myBackendPool**.
 3. Pokud chcete odebrat *VM1* z back-endu, klikněte na stránce **myBackendPool** v části **Target network IP configurations** (Cílové konfigurace protokolu IP sítě) na ikonu pro odstranění vedle položky **Virtual machine:myVM1** (Virtuální počítač:myVM1).
 
-Když už *myVM1* není v back-endovém fondu adres, můžete na *myVM1* provádět všechny úlohy údržby, jako jsou třeba instalace aktualizací softwaru. Protože teď není dostupný *VM1**, vyrovnává se zatížení s použitím *myVM2* a *myVM3*. 
+Když už *myVM1* není v back-endovém fondu adres, můžete na *myVM1* provádět všechny úlohy údržby, jako jsou třeba instalace aktualizací softwaru. Protože teď není dostupný * VM1 **, vyrovnává se zatížení s použitím *myVM2* a *myVM3*. 
 
 Když budete chtít přidat *myVM1* zpátky do back-endového fondu, postupujte podle pokynů v části *Přidání virtuálních počítačů do back-endového fondu* v tomto článku.
 
