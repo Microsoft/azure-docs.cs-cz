@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c7d38538b3876ae91c0ae3794e14ab11f08993c6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162881"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384254"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -68,6 +68,8 @@ Před spuštěním ukázky, upravte soubor App.config a v závislosti na scéná
 - Identifikátor URI pro přesměrování, který jste zadali ve vaší aplikaci v předchozích krocích.
  
 Když spustíte aplikaci konzoly, zobrazí se výzva k výběru scénáře; Klikněte na tlačítko **interaktivní přihlášení uživatele** zadáním příslušného čísla a stisknutím klávesy ENTER. Aplikace zobrazí okno přihlášení, vyzve k zadání vašeho svolení pro přístup k Event Hubs a potom použije službu pro spuštění prostřednictvím scénář posílání a přijímání pomocí identity přihlášení.
+
+Tato aplikace používá `ServiceAudience.EventHubsAudience` jako cílové skupiny tokenu. Při použití jiných jazyků nebo sad SDK, kde není k dispozici jako konstantu. na cílovou skupinu, je správná hodnota používat `https://eventhubs.azure.net/`.
 
 ## <a name="next-steps"></a>Další postup
 

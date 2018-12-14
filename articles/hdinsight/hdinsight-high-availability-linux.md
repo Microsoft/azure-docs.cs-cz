@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: d3326ef4bba5649f5420c1d92b6117d44edba47b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 41c8315bab1b716f79b47afb77c6d371a757691d
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281978"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386423"
 ---
-# <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Hadoop ve službě HDInsight
+# <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů systému Apache Hadoop v HDInsight
 
-Clustery HDInsight poskytují dva hlavní uzly zvýšit dostupnost a spolehlivost služby Hadoop a spouštění úloh.
+Clustery HDInsight poskytují dva hlavní uzly pro zvýšení dostupnosti a spolehlivosti služeb Apache Hadoop a spouštění úloh.
 
 Hadoop dosahuje vysoké dostupnosti a spolehlivosti replikuje data a služby napříč několika uzly v clusteru. Ale standardní distribucích systému Hadoop obvykle mívají pouze jeden hlavní uzel. Jakémkoli výpadku jeden hlavní uzel může způsobit, že cluster přestane fungovat. HDInsight poskytuje dva hlavní uzly zlepšit dostupnost a spolehlivost Hadoop.
 
@@ -29,23 +29,23 @@ Hadoop dosahuje vysoké dostupnosti a spolehlivosti replikuje data a služby nap
 
 Uzly v clusteru HDInsight jsou implementovány pomocí Azure Virtual Machines. Následující části popisují jednotlivých uzlů typy použité spolu s HDInsight. 
 
-> [!NOTE]
+> [!NOTE]  
 > Ne všechny typy uzlů se používají pro typ clusteru. Například typ clusteru Hadoop nemá žádné uzly Nimbus. Další informace o uzlech používá typy clusterů HDInsight, najdete v oddílu typy clusteru [založených na Linuxu vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentu.
 
 ### <a name="head-nodes"></a>Hlavní uzly
 
-K zajištění vysoké dostupnosti služby Hadoop HDInsight poskytuje dva hlavní uzly. Oba hlavní uzly jsou současně aktivní a v chodu v rámci clusteru HDInsight. Některé služby, například HDFS nebo YARN, jsou aktivní na jeden hlavní uzel pouze v daném okamžiku. Jiné služby, jako je například HiveServer2 nebo Hive MetaStore jsou aktivní na oba hlavní uzly ve stejnou dobu.
+K zajištění vysoké dostupnosti služby Hadoop HDInsight poskytuje dva hlavní uzly. Oba hlavní uzly jsou současně aktivní a v chodu v rámci clusteru HDInsight. Některé služby, jako je například Apache HDFS nebo Apache Hadoop YARN, jsou aktivní na jeden hlavní uzel pouze v daném okamžiku. Jiné služby, jako je například HiveServer2 nebo Hive MetaStore jsou aktivní na oba hlavní uzly ve stejnou dobu.
 
 Hlavní uzly (a dalších uzlů v HDInsight) mají číselnou hodnotu jako součást názvu hostitele uzlu. Například `hn0-CLUSTERNAME` nebo `hn4-CLUSTERNAME`.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > S tím, zda je uzel primární nebo sekundární nepřidružujte číselnou hodnotu. Číselná hodnota se nachází pouze jako jedinečný název pro každý uzel.
 
 ### <a name="nimbus-nodes"></a>Uzly Nimbus
 
-Uzly nimbus jsou k dispozici u clusterů Storm. Uzly Nimbus poskytují podobné funkce jako Hadoop jobtracker distribuci a monitorování zpracování v rámci pracovních uzlů. HDInsight poskytuje dva uzly Nimbus pro clustery Storm
+Uzly nimbus jsou k dispozici s clustery Apache Storm. Uzly Nimbus poskytují podobné funkce jako Hadoop jobtracker distribuci a monitorování zpracování v rámci pracovních uzlů. HDInsight poskytuje dva uzly Nimbus pro clustery Storm
 
-### <a name="zookeeper-nodes"></a>Uzly Zookeeper
+### <a name="apache-zookeeper-nodes"></a>Apache Zookeeper uzly
 
 [ZooKeeper](http://zookeeper.apache.org/) uzlů se používají pro vedoucího hlavní služeb na hlavní uzly. Používají se také zajistit, že služby, datových (pracovní) uzlů a brány vědět, které hlavního uzlu je hlavní služba aktivní na. Ve výchozím nastavení HDInsight poskytuje tři uzly ZooKeeper.
 
@@ -63,7 +63,7 @@ Informace o použití hraniční uzel s jinými typy clusteru, najdete v článk
 
 ## <a name="accessing-the-nodes"></a>Přístup k uzlům
 
-Poskytuje přístup ke clusteru přes internet prostřednictvím veřejné brány. Přístup je omezený na připojení k hlavním uzlům a (pokud existuje) na hraničním uzlu. Přístup ke službám, které běží na hlavní uzly. to neovlivní tím, že více hlavních uzlů. Veřejnou brány směruje žádosti do hlavního uzlu, který je hostitelem požadovanou službu. Například pokud Ambari je aktuálně hostitelem sekundárnímu hlavnímu uzlu, brány směruje příchozí žádosti pro Ambari do tohoto uzlu.
+Poskytuje přístup ke clusteru přes internet prostřednictvím veřejné brány. Přístup je omezený na připojení k hlavním uzlům a (pokud existuje) na hraničním uzlu. Přístup ke službám, které běží na hlavní uzly. to neovlivní tím, že více hlavních uzlů. Veřejnou brány směruje žádosti do hlavního uzlu, který je hostitelem požadovanou službu. Například pokud Apache Ambari je aktuálně hostitelem sekundárnímu hlavnímu uzlu, brány směruje příchozí žádosti pro Ambari do tohoto uzlu.
 
 Přístup přes veřejnou brány je omezen na portu 443 (HTTPS), 22 a 23.
 
@@ -79,7 +79,7 @@ Další informace o používání SSH najdete v tématu [použití SSH se služb
 
 Uzly v clusteru služby HDInsight mají interní IP adresy a plně kvalifikovaný název domény, který je přístupný pouze z clusteru. Při přístupu ke službám v clusteru pomocí interní plně kvalifikovaný název domény nebo IP adresa, měli byste použít Ambari ověření IP adresy nebo plně kvalifikovaný název domény pro použití při přístupu ke službě.
 
-Například služba Oozie dají spustit jenom na jeden hlavní uzel a použití `oozie` příkaz z relace SSH vyžaduje adresu URL služby. Tuto adresu URL můžete získat z Ambari pomocí následujícího příkazu:
+Například služba Apache Oozie dají spustit jenom na jeden hlavní uzel a použití `oozie` příkaz z relace SSH vyžaduje adresu URL služby. Tuto adresu URL můžete získat z Ambari pomocí následujícího příkazu:
 
     curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
@@ -87,7 +87,7 @@ Tento příkaz vrátí hodnotu, podobně jako následující příkaz, který ob
 
     "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 ### <a name="accessing-other-node-types"></a>Přístup k jiné typy uzlů
 
@@ -95,7 +95,7 @@ Můžete připojit k uzlům, které nejsou přímo přístupné přes internet p
 
 * **SSH**: Po připojení k hlavnímu uzlu pomocí SSH, pak vám pomůže SSH z hlavního uzlu připojení k ostatním uzlům v clusteru. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* **Tunel SSH**: Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které není přístupný z Internetu, je nutné použít tunelu SSH. Další informace najdete v tématu [použití tunelu SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
+* **SSH tunelového propojení**: Pokud potřebujete přístup k webové službě hostované na jednom z uzlů, které není přístupný z Internetu, musíte použít tunelu SSH. Další informace najdete v tématu [použití tunelu SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
 * **Azure Virtual Network**: Pokud váš cluster HDInsight je součástí služby Azure Virtual Network, prostředek ve stejné virtuální síti přímo přístupné všechny uzly v clusteru. Další informace najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md) dokumentu.
 
@@ -121,7 +121,7 @@ Vyberte odkaz pro jeden z hlavních uzlů se zobrazí služeb a součástí, kte
 
 ![Stav součásti](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Další informace o použití Ambari, naleznete v tématu [monitorování a správa HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).
+Další informace o použití Ambari, naleznete v tématu [monitorování a správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ### <a name="ambari-rest-api"></a>Rozhraní Ambari REST API
 
@@ -158,7 +158,7 @@ Pokud si nejste jisti, jaké služby jsou nainstalované v clusteru, můžete po
 
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+Další informace o práci se rozhraní Ambari REST API najdete v tématu [monitorování a správa HDInsight pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 #### <a name="service-components"></a>Součásti služby
 
@@ -191,12 +191,12 @@ Jakmile budete připojeni, zobrazí se `sftp>` řádku. Z příkazového řádku
 
 Seznam dostupných příkazů zadejte `help` na `sftp>` řádku.
 
-> [!NOTE]
+> [!NOTE]  
 > Existují také grafické rozhraní, které umožňují vizualizovat systému souborů při připojení pomocí protokolu SFTP. Například [MobaXTerm](http://mobaxterm.mobatek.net/) umožňuje procházet pomocí rozhraní Windows Explorer podobně jako systém souborů.
 
 ### <a name="ambari"></a>Ambari
 
-> [!NOTE]
+> [!NOTE]  
 > Pro přístup k souborům protokolu pomocí nástroje Ambari, je nutné použít tunelu SSH. Webové rozhraní pro jednotlivé služby nejsou zveřejněné veřejně na Internetu. Informace o používání tunelu SSH najdete v tématu [používání tunelového propojení SSH](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 
 Webové uživatelské rozhraní Ambari vyberte službu, kterou chcete zobrazit protokoly pro (například YARN). Pak pomocí **rychlé odkazy** vyberte které hlavního uzlu, chcete-li zobrazit v protokolech.
@@ -209,22 +209,22 @@ Velikost uzlu lze vybrat pouze při vytváření clusteru. Pro HDInsight na najd
 
 Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak zadat velikost pomocí [webu Azure portal][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [Klasické rozhraní příkazového řádku azure][azure-cli]:
 
-* **Azure portal**: při vytváření clusteru, můžete nastavit velikost uzlů cluster používat:
+* **Azure portal**: Při vytváření clusteru, můžete nastavit velikost uzlů cluster používat:
 
     ![Obrázek průvodce vytvořením clusteru s výběr velikost uzlu](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure Classic CLI**: při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
+* **Azure Classic CLI**: Při použití `azure hdinsight cluster create` příkazu, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `--headNodeSize`, `--workerNodeSize`, a `--zookeeperNodeSize` parametry.
 
-* **Prostředí Azure PowerShell**: při použití `New-AzureRmHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
+* **Prostředí Azure PowerShell**: Při použití `New-AzureRmHDInsightCluster` rutiny, můžete nastavit velikost head, pracovních procesů a uzly ZooKeeper s použitím `-HeadNodeVMSize`, `-WorkerNodeSize`, a `-ZookeeperNodeSize` parametry.
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o možnosti uvedené v tomto dokumentu pomocí následujících odkazů.
 
-* [Reference k rozhraní Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+* [Reference k rozhraní Apache Ambari REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Instalace a konfigurace rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md)
 * [Nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/overview)
-* [Správa HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Zřizování clusterů HDInsight se systémem Linux](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/

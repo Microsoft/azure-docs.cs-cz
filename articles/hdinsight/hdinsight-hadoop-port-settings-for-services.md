@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6204933d6b9a4a6b296a141520fc8887c9181f1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 22e15f58f3d4e7f4db3ac3bd519dbb286a36ef95
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279690"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384135"
 ---
-# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Porty používané služby Hadoop v HDInsight
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Porty používané služby Apache Hadoop v HDInsight
 
-Tento dokument obsahuje seznam portů používaných služby Hadoop spuštěné v clusterech HDInsight založených na Linuxu. Obsahuje také informace o portech používaných pro připojení ke clusteru pomocí SSH.
+Tento dokument obsahuje seznam portů používaných služby Apache Hadoop spuštěné v clusterech HDInsight založených na Linuxu. Obsahuje také informace o portech používaných pro připojení ke clusteru pomocí SSH.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Veřejné porty a porty neveřejné
 
@@ -26,7 +26,7 @@ Clusterů HDInsight se systémem Linux vystavit pouze tři porty veřejně na In
 
 Interně, HDInsight je implementována pomocí několika virtuálních počítačích Azure (uzlů v rámci clusteru) běžící na Azure Virtual Network. Z v rámci virtuální sítě, můžete použít porty nejsou přístupná přes internet. Například pokud se připojit k jednomu z hlavní uzly pomocí protokolu SSH z hlavního uzlu můžete pak přímo použít služby spuštěné na uzlech clusteru.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud nezadáte službě Azure Virtual Network jako možnosti konfigurace pro HDInsight, vytvoří se automaticky. Nelze však přidávání jiných počítačů (například vývojovém počítači klienta nebo jiných virtuálních počítačích Azure) do této virtuální sítě.
 
 
@@ -41,20 +41,20 @@ Všechny uzly v clusteru HDInsight se nacházejí ve službě Azure Virtual Netw
 | sshd |22 |SSH |Klienti se připojí k sshd na primárnímu hlavnímu uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Klienti se připojí k sshd na hraničním uzlu. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Klienti se připojí k sshd na sekundární hlavní uzel. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Webové uživatelské rozhraní Ambari. Zobrazit [Správa HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Rozhraní Ambari REST API. Zobrazit [Správa HDInsight pomocí rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API. Zobrazit [použití Hivu se službou Curl](hadoop/apache-hadoop-use-pig-curl.md), [použití Pigu se službou Curl](hadoop/apache-hadoop-use-pig-curl.md), [použití MapReduce se Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| Ambari |443 |HTTPS |Webové uživatelské rozhraní Ambari. Zobrazit [Správa HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Rozhraní Ambari REST API. Zobrazit [Správa HDInsight pomocí rozhraní Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API. Zobrazit [použití Apache Hivu pomocí Curl](hadoop/apache-hadoop-use-pig-curl.md), [pomocí Apache Pig nástroj Curl](hadoop/apache-hadoop-use-pig-curl.md), [použití MapReduce se Curl](hadoop/apache-hadoop-use-mapreduce-curl.md) |
 | HiveServer2 |443 |ODBC |Se připojí k Hive pomocí ovladače ODBC. Zobrazit [připojení Excelu k HDInsight pomocí ovladače Microsoft ODBC](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 |443 |JDBC |Připojení k Hivu pomocí JDBC. Zobrazit [připojit k Hive v HDInsight pomocí ovladače Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| HiveServer2 |443 |JDBC |Se připojí k ApacheHive pomocí JDBC. Zobrazit [připojit k Apache Hive v HDInsight pomocí ovladače Hive JDBC](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 Tady jsou k dispozici pro specifické typy clusterů:
 
 | Služba | Port | Protocol (Protokol) | Typ clusteru | Popis |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |Rozhraní REST API HBase. Zobrazit [Začínáme používat HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Rozhraní Spark REST API. Zobrazit [odesílání Sparkových úloh vzdáleně pomocí Livy](spark/apache-spark-livy-rest-interface.md) |
-| Server Spark Thrift |443 |HTTPS |Spark |Server Spark Thrift používaný k odesílání dotazů Hive. Zobrazit [použití Beeline pomocí Hive v HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Storm webového uživatelského rozhraní. Zobrazit [nasazení a správa topologií Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |Rozhraní REST API HBase. Zobrazit [začněte používat Apache HBase](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Rozhraní Spark REST API. Zobrazit [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy](spark/apache-spark-livy-rest-interface.md) |
+| Server Spark Thrift |443 |HTTPS |Spark |Server Spark Thrift používaný k odesílání dotazů Hive. Zobrazit [použití Beeline pomocí Apache Hive v HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |Storm webového uživatelského rozhraní. Zobrazit [nasazení a správa topologií Apache Storm v HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>Authentication
 
@@ -67,10 +67,10 @@ Všechny služby veřejně zpřístupnit v síti internet musí být ověřené:
 
 ## <a name="non-public-ports"></a>Neveřejné porty
 
-> [!NOTE]
+> [!NOTE]  
 > Některé služby jsou dostupné jenom pro specifické typy clusterů. Například HBase je dostupná jenom na typy clusterů HBase.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Některé služby spustit jenom na jeden hlavní uzel v čase. Pokud se pokusíte připojit ke službě na primární hlavní uzel a zobrazí se chyba, zkuste použít sekundární hlavní uzel.
 
 ### <a name="ambari"></a>Ambari
@@ -166,7 +166,7 @@ Příklady:
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift servery |Hlavní uzly |10002 |Thrift | &nbsp; | Služby pro připojení ke Spark SQL (Thrift/JDBC) |
 | Livy server | Hlavní uzly | 8998 | HTTP | &nbsp; | Služba pro spouštění příkazů, úlohy a aplikace |
-| Jupyter Notebook | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
+| Poznámkový blok Jupyter | Hlavní uzly | 8001 | HTTP | &nbsp; | Web poznámkového bloku Jupyter |
 
 Příklady:
 

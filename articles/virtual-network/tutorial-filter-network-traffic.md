@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 06/20/2018
+ms.date: 12/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a731c1e0617fe0ccf9d571dd2b7d0c2ad107bc9e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
-ms.translationtype: HT
+ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901394"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385393"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrování síťového provozu s využitím skupiny zabezpečení sítě na webu Azure Portal
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrování síťového provozu se skupinou zabezpečení sítě pomocí webu Azure Portal
 
 Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat pomocí skupiny zabezpečení sítě. Skupiny zabezpečení sítě obsahují pravidla zabezpečení, která filtrují síťový provoz podle IP adresy, portu a protokolu. Pravidla zabezpečení se vztahují na prostředky nasazené v podsíti. V tomto kurzu se naučíte:
 
@@ -38,7 +38,7 @@ K dokončení tohoto kurzu můžete použít [Azure CLI](tutorial-filter-network
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -71,7 +71,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Název           | myAsgWebServers                                               |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | Východ USA                                                       |
+    | Umístění       | USA – východ                                                       |
 
 4. Zopakujte 3. krok s použitím následujících hodnot:
 
@@ -80,7 +80,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Název           | myAsgMgmtServers                                              |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | Východ USA                                                       |
+    | Umístění       | USA – východ                                                       |
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -93,7 +93,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     |Název|myNsg|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění|Východ USA|
+    |Umístění|USA – východ|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Přidružení skupiny zabezpečení sítě k podsíti
 
@@ -220,7 +220,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 2. Vyberte **Odstranit skupinu prostředků**.
 3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili skupinu zabezpečení sítě a přidružili jste ji k podsíti virtuální sítě. Další informace o skupinách zabezpečení sítě najdete v tématech [Přehled skupin zabezpečení sítě](security-overview.md) a [Správa skupiny zabezpečení sítě](manage-network-security-group.md).
 

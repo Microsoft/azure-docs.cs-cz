@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: c20f2cc03565ce861dfc6317be8459fdafeef0bf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025331"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384101"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 Pokud vytvoříte nebo clustery správce AKS, někdy můžete setkat s problémy. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
@@ -59,8 +59,31 @@ Pokud se nezobrazí řídicí panel kubernetes, zkontrolujte, zda pod kube proxy
 
 Ujistěte se, že je otevřen pro připojení k rozhraní API serveru výchozí skupiny zabezpečení sítě se nezmění a port 22. Kontrola, zda je spuštěná tunnelfront pod v oboru názvů kube-system. Pokud není, platnost ho odstranit a bude restartován.
 
-### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva": "Změny vlastnosti"imageReference"nejsou povolené." Došlo k chybě.  Jak opravit tento problém?
+### <a name="i-am-trying-to-upgrade-or-scale-and-am-getting-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-issue"></a>Mohu provést upgrade nebo změna velikosti a Power BI Desktop zobrazuje "zpráva": "Změny vlastnosti"imageReference"nejsou povolené." Chyba  Jak opravit tento problém?
 
 Je možné, že se tato chyba zobrazuje, protože jste upravili značky v agentské uzly v clusteru AKS. Úprava a odstranění značek a dalších vlastností prostředků ve skupině prostředků MC_ * může vést k neočekávaným výsledkům. Úprava prostředků v rámci MC_ * v clusteru AKS dělí cíle na úrovni služby.
 
+### <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>Jak obnovit tajný klíč instančního objektu služby v clusteru AKS
 
+Ve výchozím nastavení, AKS clustery jsou vytvořeny pomocí služby instančního objektu, který má čas vypršení platnosti jeden rok. Jak jste téměř datum vypršení platnosti jeden rok můžete resetovat přihlašovací údaje pro instanční objekt služby rozšířit další dobu.
+
+Následující příklad provede následující kroky:
+
+1. Získá ID instančního objektu služby clusteru pomocí [az aks zobrazit](/cli/azure/aks#az-aks-show) příkazu.
+1. Jsou uvedeny na službu klienta instančního objektu tajných kódů pomocí [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list)
+1. Rozšiřuje objekt služby pro použití jiného jeden rok [az ad sp reset přihlašovacích údajů](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) příkazu. Tajný klíč klienta instančního objektu služby musí zůstat stejná pro cluster AKS správně spustit.
+
+```azurecli
+# Get the service principal ID of your AKS cluster
+sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
+    --query servicePrincipalProfile.clientId -o tsv)
+
+# Get the existing service principal client secret
+key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
+
+# Reset the credentials for your AKS service principal and extend for 1 year
+az ad sp credential reset \
+    --name $sp_id \
+    --password $key_secret \
+    --years 1
+```

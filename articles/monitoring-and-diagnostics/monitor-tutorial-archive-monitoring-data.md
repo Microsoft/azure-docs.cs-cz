@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: ab91ac3eb115504727e5ee9e912d070262027cc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eb99718fb2b39ded01abb075990fccb25a482cab
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834073"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386125"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -103,7 +103,7 @@ Data monitorování z vašeho prostředku se teď přenášejí do účtu úlož
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
+> *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 
@@ -150,7 +150,7 @@ Data monitorování z vašich virtuálních počítačů se teď přenášejí d
 
 Pokud jste postupovali podle předchozích kroků, data se začala přenášet do vašeho účtu úložiště.
 
-1. Pro některé typy dat, například pro protokol aktivit, musí existovat aktivita, která v účtu úložiště vygeneruje událost. Pokud chcete generovat aktivitu v protokolu aktivit, postupujte podle [těchto pokynů](./monitor-quick-audit-notify-action-in-subscription.md). Na zobrazení události v účtu úložiště možná budete muset počkat až pět minut.
+1. Pro některé typy dat, například pro protokol aktivit, musí existovat aktivita, která v účtu úložiště vygeneruje událost. Pokud chcete generovat aktivitu v protokolu aktivit, postupujte podle [těchto pokynů](./../azure-monitor/platform/quick-audit-notify-action-subscription.md). Na zobrazení události v účtu úložiště možná budete muset počkat až pět minut.
 
 2. Na portálu přejděte do části **Účty úložiště**, kterou najdete v levém navigačním panelu.
 

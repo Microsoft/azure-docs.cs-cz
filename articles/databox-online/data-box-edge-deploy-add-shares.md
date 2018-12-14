@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 61d427c22f2ac57627ac04a91748e4e6cf8c4e55
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 6c6553ace250aa9cbc06dfdfea77fc5e1637cd41
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165352"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384815"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>Kurz: Přenos dat pomocí Azure Data Boxu Edge (Preview)
+# <a name="tutorial-transfer-data-with-azure-data-box-edge-preview"></a>Kurz: Přenos dat pomocí Azure Data Box Edge (preview)
 
-Tento kurz popisuje, jak do Data Boxu Edge přidat sdílené složky a připojit se k nim. Po přidání sdílených složek může zařízení Data Box Edge přenést data do Azure.
+Tento kurz popisuje, jak přidat a připojte se ke sdíleným složkám na vašem zařízení Data Box Edge. Po přidání sdílených složek na okraji pole Data můžou přenášet data do Azure.
 
 Dokončení tohoto postupu může trvat přibližně 10 minut. 
 
@@ -29,75 +29,82 @@ V tomto kurzu se naučíte:
 > * Připojení ke sdílené složce
 
 > [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> Data Box Edge je ve verzi Preview. Než pořadí a nasazení tohohle řešení, projděte si [podmínkami pro verzi preview služby Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
  
 ## <a name="prerequisites"></a>Požadavky
 
-Před přidáním sdílených složek do Data Boxu Edge se ujistěte, že platí následující:
+Abyste mohli přidat sdílené složky do hraničních zařízení Data Box, ujistěte se, že:
+* Fyzické zařízení jste nainstalovali, jak je popsáno v [nainstalovat Azure Data Box Edge](data-box-edge-deploy-install.md). 
 
-* Nainstalovali jste fyzické zařízení, jak je podrobně popsáno v tématu [Instalace Data Boxu Edge](data-box-edge-deploy-install.md). 
+* Po dokončení aktivace fyzického zařízení, jak je popsáno v [připojení, nastavení a aktivovat Azure Data Box Edge](data-box-edge-deploy-connect-setup-activate.md). 
 
-    Fyzické zařízení je aktivované, jak je popsáno v tématu [Připojení a aktivace Azure Data Boxu Edge](data-box-edge-deploy-connect-setup-activate.md). Zařízení je připravené pro vytvoření sdílených složek a přenos dat.
+* Zařízení je připravené pro vytvoření sdílených složek a přenos dat.
 
 
 ## <a name="add-a-share"></a>Přidání sdílené složky
 
-Pokud chcete vytvořit sdílenou složku, proveďte na webu [Azure Portal](https://portal.azure.com/) následující kroky.
+Pokud chcete vytvořit sdílenou složku, proveďte následující postup:
 
-1. Vraťte se na Azure Portal. Přejděte do části **Všechny prostředky** a vyhledejte váš prostředek Data Boxu Edge.
+1. V [webu Azure portal](https://portal.azure.com/), přejděte na stránku **všechny prostředky**a poté vyhledejte okraj pole datového prostředku.
     
-2. Ve vyfiltrovaném seznamu prostředků vyberte prostředek Data Boxu Edge a přejděte do části **Přehled**. Na panelu příkazů zařízení klikněte na **+ Přidat sdílenou složku**.
+1. Ve filtrovaném seznamu prostředků vyberte prostředek Data Box Edge.
+
+1. V levém podokně vyberte **přehled**a pak vyberte **přidat sdílenou složku**.
    
    ![Přidání sdílené složky](./media/data-box-edge-deploy-add-shares/click-add-share.png)
 
-3. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky. 
+1. V **přidat sdílenou složku** podokno, proveďte následující postup:
 
-   Názvy sdílených složek můžou obsahovat pouze číslice, malá písmena a spojovníky. Název sdílené složky musí mít délku 3 až 63 znaků a začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník.
+    a. V **název** zadejte jedinečný název pro svou sdílenou složku.  
+    Název sdílené složky může mít jenom malá písmena, číslice a pomlčky. Musí mít délku 3 až 63 znaků a začínat písmenem nebo číslo. Pomlčky musí být před a následované písmenem nebo číslo.
     
-    1. Vyberte **Typ** sdílené složky. Typ může být SMB nebo NFS, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu. 
+    b. Vyberte **Typ** sdílené složky.  
+    Typ může být **SMB** nebo **NFS**, přičemž výchozí typ je SMB. Protokol SMB je standardem pro klienty Windows a systém souborů NFS se používá pro klienty Linuxu.  
+    V závislosti na tom, zda zvolíte, že sdílené složky SMB nebo NFS, zbývající možnosti mírně lišit. 
 
-    2. V závislosti na tom, jestli vyberete sdílené složky SMB nebo systému souborů NFS, se budou mírně lišit zobrazené možnosti. 
-
-    3. Musíte zadat účet úložiště, ve kterém se sdílená složka bude nacházet. V účtu úložiště se vytvoří kontejner s názvem sdílené složky, pokud ještě neexistuje. Pokud už kontejner existuje, použije se existující kontejner. 
+    c. Zadejte účet úložiště, kam se budou ukládat sdílenou složku.  
+    Pokud kontejner neexistuje, vytvoří se v účtu úložiště s názvem nově vytvořené sdílené složky. Pokud kontejner již existuje, použije se tento kontejner. 
     
-    4. V části **Služba úložiště** zvolte Objekt blob bloku, Objekt blob stránky nebo Soubory. Zvolený typ služby závisí na tom, v jakém formátu chcete ukládat data v Azure. V tomto případě chceme, aby se ukládala jako objekty blob bloku v Azure, proto vybereme Objekt blob bloku. Pokud zvolíte Objekt blob stránky, musíte zajistit, aby vaše data byla zarovnaná na 512 bajtů. Například formát VHDX je vždy zarovnaný na 512 bajtů.
+    d. V **službu Storage** rozevíracího seznamu vyberte **objektů Blob bloku**, **objektů Blob stránky**, nebo **soubory**.  
+    Typ služby, kterou jste vybrali závisí na to, jaký formát chtějí dat pro použití v Azure. V tomto příkladu, protože chceme, aby k ukládání dat jako objektů blob bloků v Azure, vybereme **objektů Blob bloku**. Pokud jste vybrali objekty Blob stránky, ujistěte se, že vaše data jsou 512 bajtů zarovnána. Například formát VHDX je vždy zarovnaný na 512 bajtů.
    
-    5. Postup v tomto kroku závisí na tom, jestli vytváříte sdílenou složku SMB nebo systému souborů NFS. 
+    e. V závislosti na tom, zda jste vytvořili sdílenou složku protokolu SMB nebo sdílené složky NFS proveďte jednu z následujících kroků: 
      
-        - **Pokud vytváříte sdílenou složku SMB** – V poli Místní uživatel se všemi oprávněními zvolte **Vytvořit nový** nebo **Použít existující**. Pokud vytváříte nového místního uživatele, zadejte **uživatelské jméno**, **heslo** a pak **potvrďte heslo**. Tím se místnímu uživateli přiřadí oprávnění. Jakmile tady přiřadíte oprávnění, můžete pak tato oprávnění upravit pomocí Průzkumníka souborů.
+    - **Sdílená složka SMB**: V části **všechny místní uživatel s oprávněním**vyberte **vytvořit nový** nebo **použít existující**. Pokud vytváříte novou místní uživatele, zadejte uživatelské jméno a heslo a potvrďte heslo. Tato akce přiřadí oprávnění na místního uživatele. Po přiřazení oprávnění tady, můžete je upravit Průzkumníka souborů.
 
-            Pokud pro data této sdílené složky zaškrtnete možnost **Povolit jen operace čtení**, budete mít možnost určit uživatele jen pro čtení.
+        Pokud vyberete **Povolit jenom operace čtení** zaškrtávací políčko pro tato data sdílené složky můžete zadat jen pro čtení uživatelů.
 
-            ![Přidání sdílené složky SMB](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
+        ![Přidání sdílené složky SMB](./media/data-box-edge-deploy-add-shares/add-share-smb-1.png)
    
-        - **Pokud vytváříte sdílenou složku systému souborů NFS** – Musíte zadat IP adresy klientů s povoleným přístupem ke sdílené složce.
+    - **Sdílených složek NFS**: Zadejte IP adresy povolené klientů, které můžete přístup ke sdílené složce.
 
-            ![Přidání sdílené složky systému souborů NFS](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
+        ![Přidání sdílené složky systému souborů NFS](./media/data-box-edge-deploy-add-shares/add-share-nfs-1.png)
    
-4. Kliknutím na **Vytvořit** vytvořte sdílenou složku. 
+1. Vyberte **vytvořit** sdílenou složku vytvořit. 
     
-    Zobrazí se oznámení o probíhajícím vytváření sdílené složky. Po vytvoření sdílené složky se zadaným nastavením se okno **Sdílené složky** aktualizuje a zobrazí se v něm nová sdílená složka. 
+    Zobrazí upozornění, že vytvoření sdílené složky se v průběhu. Po vytvoření sdílené složky se zadaným nastavením **sdílené složky** oddílu se aktualizuje novými informacemi sdílené složky. 
     
     ![Aktualizovaný seznam sdílených složek](./media/data-box-edge-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>Připojení ke sdílené složce
 
-Teď se můžete připojit k jedné nebo několik sdíleným složkám, které jste vytvořili v předchozím kroku. Postup se může lišit v závislosti na tom, jestli máte sdílenou složku SMB nebo sdílenou složku systému souborů NFS. 
+Teď můžete připojit k jednomu nebo více sdílených složek, které jste vytvořili v předchozím kroku. V závislosti na tom, jestli máte SMB nebo sdílené složky NFS, postup se může lišit. 
 
 ### <a name="connect-to-an-smb-share"></a>Připojení ke sdílené složce SMB
 
-Pokud se chcete připojit ke sdíleným složkám, na klientovi Windows Serveru připojeném k vašemu Data Boxu Edge proveďte následující kroky.
+V klientu Windows Server připojený do vašeho zařízení Data Box Edge připojení k serveru SMB pro sdílení zadáním příkazů:
 
 
-1. Otevřete příkazové okno. Na příkazovém řádku zadejte:
+1. V příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Po zobrazení výzvy zadejte heslo ke sdílené složce. Tady je ukázkový výstup tohoto příkazu.
+1. Po zobrazení výzvy k tomu, zadejte heslo pro sdílenou složku.  
+   Tady je ukázkový výstup tohoto příkazu.
 
     ```powershell
     Microsoft Windows [Version 10.0.16299.192) 
-    (c) 2017 microsoft Corporation. All rights reserved . 
+    (c) 2017 Microsoft Corporation. All rights reserved. 
     
     C: \Users\DataBoxEdgeUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser 
     Enter the password for 'TotallyNewUser' to connect to '10.10.10.60': 
@@ -107,7 +114,10 @@ Pokud se chcete připojit ke sdíleným složkám, na klientovi Windows Serveru 
     ```   
 
 
-2. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na **OK**. Tím se otevře Průzkumník souborů. Sdílené složky, které jste vytvořili, by se teď měly zobrazit jako složky. Pokud chcete zobrazit obsah sdílené složky, vyberte příslušnou složku a dvakrát na ni klikněte.
+1. Na klávesnici stiskněte Windows + r 
+
+1. V **spustit** okno, zadejte `\\<device IP address>`a pak vyberte **OK**.  
+   Otevře se Průzkumník souborů. Nyní by se zobrazit sdílené složky, které jste vytvořili jako složky. V Průzkumníku souborů dvakrát klikněte na sdílenou složku (složku) a zobrazit obsah.
  
     ![Připojení ke sdílené složce SMB](./media/data-box-edge-deploy-add-shares/connect-to-share2.png)
 
@@ -115,19 +125,20 @@ Pokud se chcete připojit ke sdíleným složkám, na klientovi Windows Serveru 
 
 ### <a name="connect-to-an-nfs-share"></a>Připojení ke sdílené složce systému souborů NFS
 
-Na klientovi Linuxu připojeném k vašemu Data Boxu Edge proveďte následující kroky.
+U svého klienta systému Linux, připojení k zařízení Data Box Edge proveďte následující postup:
 
-1. Ujistěte se, že je na klientovi nainstalovaný klient NFSv4. Klienta systému souborů NFS nainstalujete následujícím příkazem:
+1. Ujistěte se, že klient má názvů NFSv4 nainstalovaného klienta. Klienta systému souborů NFS nainstalujete následujícím příkazem:
 
    `sudo apt-get install nfs-common`
 
     Další informace najdete v článku věnovaném [instalaci klienta NFSv4](https://help.ubuntu.com/community/SettingUpNFSHowTo#NFSv4_client).
 
-2. Po nainstalování klienta systému souborů NFS pomocí následujícího příkazu připojte sdílenou složku systému souborů NFS, kterou jste vytvořili, ke svému zařízení Data Box Edge:
+1. Po instalaci klienta systému souborů NFS, připojte sdílenou složku systému souborů NFS, který jste vytvořili v zařízení Data Box Edge pomocí následujícího příkazu:
 
    `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
 
-    Před připojením sdílených složek se ujistěte, že už jsou vytvořené adresáře, které budou představovat přípojné body na místním počítači. Tyto adresáře nesmí obsahovat žádné soubory ani podsložky.
+    > [!IMPORTANT]
+    > Než připojíte sdílenou složku, ujistěte se, že budou vytvořeny již adresáře, které bude fungovat jako přípojné body na místním počítači. Tyto adresáře by neměly obsahovat jakékoli soubory nebo podsložky.
 
     Následující příklad ukazuje připojení ke sdílené složce na zařízení Data Box Edge přes systém souborů NFS. IP adresa zařízení je `10.10.10.60`. Sdílená složka `mylinuxshare2` je připojená k virtuálnímu počítači ubuntuVM. Přípojný bod sdílené složky je `/home/databoxubuntuhost/edge`.
 
@@ -135,19 +146,18 @@ Na klientovi Linuxu připojeném k vašemu Data Boxu Edge proveďte následujíc
 
 > [!NOTE] 
 > Pro verzi Preview platí následující upozornění:
-> - Po vytvoření souboru ve sdílené složce se nepodporuje přejmenování souboru. 
-> - Odstraněním souboru ze sdílené složky se neodstraní příslušná položka v účtu úložiště.
+> - Po vytvoření souboru ve sdílené složce přejmenování souboru se nepodporuje. 
+> - Při odstranění souboru ze sdílené složky nedojde k odstranění položky v účtu úložiště.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli o tématech spojených s Data Boxem Edge, jako jsou:
+V tomto kurzu jste se dozvěděli o následujících tématech okraj pole dat:
 
 > [!div class="checklist"]
 > * Přidání sdílené složky
 > * Připojení ke sdílené složce
 
-
-V dalším kurzu se dozvíte, jak pomocí Data Boxu Edge transformovat data.
+Informace o transformaci dat pomocí okraj pole dat, přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
 > [Transformace dat pomocí Data Boxu Edge](./data-box-edge-deploy-configure-compute.md)

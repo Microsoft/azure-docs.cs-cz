@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: cb14a23fbffb5ca9b7d3240a42e14aa17060f935
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820303"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384764"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -29,7 +29,7 @@ Než začnete vytvářet úlohy importu přenášet data do soubory Azure, pečl
 - Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems).
-- [Stáhněte si WAImportExport verze 2](https://www.microsoft.com/download/details.aspx?id=55280) v systému Windows. Rozbalte do výchozí složky `waimportexport`. Například, `C:\WaImportExport`.
+- [Stáhněte si WAImportExport verze 2](https://aka.ms/waiev2) v systému Windows. Rozbalte do výchozí složky `waimportexport`. Například, `C:\WaImportExport`.
 - Máte účet FedEx/DHL. 
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.
     - Generovat sledovací číslo pro úlohu exportu.
@@ -50,14 +50,14 @@ Proveďte následující kroky pro přípravu disků.
 2. Vytvořte jeden svazek NTFS na každou jednotku. Přiřazení písmene jednotky svazku. Nepoužívejte přípojné body.
 3. Upravit *dataset.csv* soubor v kořenové složce, ve kterém se nástroj nachází. V závislosti na tom, jestli chcete importovat soubor nebo složku nebo obojí, přidat položky *dataset.csv* souboru podobně jako v následujících příkladech.  
 
-    - **Import souboru**: data ke kopírování v následujícím příkladu se nachází na jednotce C:. Váš soubor *MyFile1.txt* zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* buď neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachováno.
+    - **Import souboru**: V následujícím příkladu data ke kopírování se nachází na jednotce C:. Váš soubor *MyFile1.txt* zkopírován do kořenového adresáře *MyAzureFileshare1*. Pokud *MyAzureFileshare1* buď neexistuje, vytvoří se v účtu Azure Storage. Struktura složek je zachováno.
 
         ```
             BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
         ```
-    - **Chcete importovat složku**: všechny soubory a složky v části *MyFolder2* jsou zkopírovány do sdílené složky rekurzivně. Struktura složek je zachováno.
+    - **Chcete importovat složku**: Všechny soubory a složky v části *MyFolder2* jsou zkopírovány do sdílené složky rekurzivně. Struktura složek je zachováno.
 
         ```
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
@@ -112,7 +112,7 @@ Proveďte následující kroky pro přípravu disků.
 
 Další ukázky, přejděte na [ukázky pro soubory deníku](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>Krok 2: Vytvoření úlohy importu 
+## <a name="step-2-create-an-import-job"></a>Krok 2: Vytvořit úlohu importu 
 
 Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal.
 1. Přihlaste se k https://portal.azure.com/.
@@ -162,11 +162,11 @@ Proveďte následující kroky k vytvoření úlohy importu na webu Azure Portal
 
         ![Vytvoření úlohy importu – krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Odeslání disků do datacentra Azure 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Dodávejte disků do datacentra Azure 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Aktualizace úlohy informace o sledování
+## <a name="step-4-update-the-job-with-tracking-information"></a>Krok 4: Informace o sledování aktualizace úlohy
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 

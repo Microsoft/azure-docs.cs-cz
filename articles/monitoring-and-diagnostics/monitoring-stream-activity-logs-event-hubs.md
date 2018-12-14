@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: c8a932ac06b58a8e683e326f082a3a2c038dba66
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ac3b87f8db89df4b766fee1a27707877a2d12ba3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273698"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383353"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
 Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.md) téměř v reálném čase pro libovolné aplikace buď:
@@ -99,7 +99,7 @@ Pokud profil protokolu již existuje, musíte nejprve odstranit stávající pro
 Schéma pro protokol aktivit je k dispozici v [monitorovat aktivitu předplatného se protokol aktivit Azure](monitoring-overview-activity-logs.md). Každá událost je v poli objektů BLOB JSON s názvem *záznamy*.
 
 ## <a name="next-steps"></a>Další postup
-* [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)
+* [Archivace protokolu aktivit do účtu úložiště](../azure-monitor/platform/archive-activity-log.md)
 * [Přečtěte si přehled protokolu aktivit Azure](monitoring-overview-activity-logs.md)
 * [Nastavte si výstrahy na základě události protokolu aktivit](../azure-monitor/platform/alerts-log-webhook.md)
 

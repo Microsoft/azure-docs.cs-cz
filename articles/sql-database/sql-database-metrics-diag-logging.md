@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 86fb7e715abc57c989202fc7f02ff04d33ddd6e1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275691"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387093"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -281,7 +281,7 @@ Přečtěte si informace o tom, jak [změnit nastavení diagnostiky pomocí REST
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
-Přečtěte si informace o tom, jak [povolení nastavení diagnostiky při vytváření prostředků pomocí šablony Resource Manageru](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md).
+Přečtěte si informace o tom, jak [povolení nastavení diagnostiky při vytváření prostředků pomocí šablony Resource Manageru](../azure-monitor/platform/diagnostic-logs-stream-template.md).
 
 ## <a name="stream-into-azure-sql-analytics"></a>Stream do Azure SQL Analytics
 

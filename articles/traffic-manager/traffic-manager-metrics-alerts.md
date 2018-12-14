@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: a85ec0bf126aa7a25edffdaaf7c7f8a16a370c40
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d0b2ac54f70fedc409c386243e1755704c1c332c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014340"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386352"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager metrik a výstrah
 
@@ -34,7 +34,7 @@ V následujícím příkladu obrázek 1 zobrazuje všechny odpovědi na dotaz, k
   
 ![Traffic Manager metriky – agregované zobrazení všech dotazů](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-queries-aggregate-view.png)
 
-*Obrázek 1: Agregovat zobrazení se všechny dotazy*
+*Obrázek 1: Souhrnné zobrazení se všechny dotazy*
   
 Obrázek 2 zobrazuje stejné informace, ale je rozdělený podle koncových bodů. V důsledku toho můžete zobrazit objem odpovědi na dotazy ve kterých byl vrácen určitého koncového bodu.
 
@@ -66,4 +66,4 @@ Kromě zpracování a zobrazení metrik z Traffic Manageru, Azure Monitor umož�
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [služby Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md)
-- Zjistěte, jak [vytvořit nový graf používat Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-charts.md#create-a-new-chart)
+- Zjistěte, jak [vytvořit nový graf používat Azure Monitor](../azure-monitor/platform/metrics-charts.md#create-a-new-chart)

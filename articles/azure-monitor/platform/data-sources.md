@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4b8908809cca23fb270494cc736f4b65aa9d1ca2
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c5035356d9d55298d5b060a3ac2fd3a7cd41f8df
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186187"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385546"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -43,7 +43,7 @@ Telemetrická data týkající se stavu a operace Azure samotné zahrnuje data o
 [Azure Service Health](../../monitoring-and-diagnostics/monitoring-service-notifications.md) poskytuje informace o stavu služby Azure ve vašem předplatném, které využívají vaše aplikace a prostředky. Můžete vytvářet výstrahy, které oznamuje aktuální a očekávaná zásadní potíže, které můžou ovlivnit vaši aplikaci. Stav služby záznamy ukládají v [protokol aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), takže můžete zobrazit v Průzkumníku protokolu aktivity a zkopírujte je do Log Analytics.
 
 ### <a name="azure-activity-log"></a>Protokol aktivit Azure
-[Protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) obsahuje záznamy stavu služby spolu s záznamů na změny konfigurace provedené u vašich prostředků Azure. Protokol aktivit je k dispozici pro všechny prostředky Azure a představuje jejich _externí_ zobrazení. Konkrétní typy záznamů v protokolu aktivit, které jsou popsány v [schéma událostí protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-activity-log-schema.md).
+[Protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) obsahuje záznamy stavu služby spolu s záznamů na změny konfigurace provedené u vašich prostředků Azure. Protokol aktivit je k dispozici pro všechny prostředky Azure a představuje jejich _externí_ zobrazení. Konkrétní typy záznamů v protokolu aktivit, které jsou popsány v [schéma událostí protokolu aktivit Azure](../../azure-monitor/platform/activity-log-schema.md).
 
 Můžete zobrazit na její stránce portálu Azure portal nebo zobrazení protokolů z více zdrojů v protokolu aktivit pro určitý prostředek [Průzkumníku protokol aktivity](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Je obzvláště užitečné ke kopírování položky protokolu do Log Analytics zkombinovat s dalšími daty monitorování. Můžete také odeslat do jiných umístění pomocí [Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md).
 
@@ -60,9 +60,9 @@ Většina služeb Azure vygeneruje [platformy metriky](data-collection.md#metric
 
 
 ### <a name="resource-diagnostic-logs"></a>Protokolů diagnostiky prostředků
-Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../../azure-monitor/platform/tutorial-dashboards.md).
 
-Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../../azure-monitor/platform/archive-diagnostic-logs.md) a exportovat je do [centra událostí](../../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
  [Řešení monitorování](../../azure-monitor/insights/solutions.md) shromažďování dat k poskytování dalších přehledů o fungování nějaká konkrétní služba nebo aplikace. Shromažďovat data do Log Analytics, kde mohou být analyzovány pomocí [dotazovací jazyk](../../azure-monitor/log-query/log-query-overview.md) nebo [zobrazení](../../azure-monitor/platform/view-designer.md) , které jsou typicky zahrnuty v řešení.
@@ -92,7 +92,7 @@ Kromě telemetrická data, která vaše aplikace může zapisovat do hostovanéh
 ### <a name="application-data"></a>Data aplikací
 Když povolíte Application Insights pro aplikace nainstalováním Instrumentační balíček, shromažďuje metriky a protokoly týkajících se výkonu a operací aplikace. To zahrnuje podrobné informace o zobrazení stránek, žádosti o aplikace a výjimky. Application Insights ukládá data, která shromažďuje metriky Azure a Log Analytics. Zahrnuje rozsáhlé nástroje pro analýzu těchto dat, ale můžete také analyzovat, jak s daty z jiných zdrojů pomocí nástrojů, jako je Průzkumník metrik a prohledávání protokolů.
 
-Můžete také použít službu Application Insights do [vytvořit vlastní metrika](../../application-insights/app-insights-api-custom-events-metrics.md).  To vám umožňuje definovat vlastní logiku pro výpočet číselné hodnoty a pak tuto hodnotu s ostatními metrikami, které lze k němu přistupovat z Průzkumníku metrik a použít pro ukládání [automatického škálování](../../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md) a upozornění na metriku.
+Můžete také použít službu Application Insights do [vytvořit vlastní metrika](../../application-insights/app-insights-api-custom-events-metrics.md).  To vám umožňuje definovat vlastní logiku pro výpočet číselné hodnoty a pak tuto hodnotu s ostatními metrikami, které lze k němu přistupovat z Průzkumníku metrik a použít pro ukládání [automatického škálování](../../azure-monitor/platform/autoscale-custom-metric.md) a upozornění na metriku.
 
 ### <a name="dependencies"></a>Závislosti
 Pokud si chcete monitorovat různé logické operace aplikace, musíte [shromažďování telemetrických dat napříč více komponent](../../application-insights/app-insights-transaction-diagnostics.md). Application Insights podporuje [distribuované korelace telemetrie](../../application-insights/application-insights-correlation.md) který identifikuje závislosti mezi komponentami, abyste mohli analyzovat společně.

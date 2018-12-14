@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: a4c4017d7fa798559817c281d159148ec675d158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281349"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386498"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Dotazování Azure Log Analytics k monitorování clusterů HDInsight
 
@@ -46,7 +46,7 @@ Zjistěte, jak hledat konkrétní metriky pro váš cluster HDInsight.
 
 5. V levém podokně v části **typ**, vyberte metriku, kterou chcete Ponořte se hlouběji do a pak vyberte **použít**. Následující snímek obrazovky ukazuje `metrics_resourcemanager_queue_root_default_CL` je vybrán.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Budete muset vybrat **[+] Další** tlačítko Najít metriky, které hledáte. Také **použít** tlačítko je v dolní části seznamu, takže musíte přejděte dolů a prohlédněte si ho.
 
     Všimněte si, že dotaz v textovém poli změní na popsaný v poli zvýrazněný na následujícím snímku obrazovky:

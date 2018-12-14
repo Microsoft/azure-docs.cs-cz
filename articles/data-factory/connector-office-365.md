@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: f76c1676e21e1abdc3f23e2e2c4a7f6f721fefdb
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955370"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386566"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Zkopírovat data z Office 365 do Azure pomocí Azure Data Factory (Preview) 
 
@@ -34,7 +34,7 @@ Prozatím se v rámci jednoho kopírování můžete pouze **kopírování dat z
 >- Předplatné Azure, který obsahuje objekt pro vytváření dat a úložiště dat jímky musí být ve stejném tenantovi Azure Active Directory (Azure AD) jako tenant Office 365.
 >- Zajištění oblasti Azure Integration Runtime používané pro aktivitu kopírování, stejně jako cíl je ve stejné oblasti, kde se nachází poštovní schránky uživatelů tenanta Office 365. Přečtěte si [tady](concepts-integration-runtime.md#integration-runtime-location) pochopit, jak je určeno umístění prostředí Azure IR. Odkazovat na [tabulku tady](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#data-regions) seznam podporovaných oblastí pro Office a odpovídající oblasti Azure.
 >-  Pokud nahráváte data Office 365 do **Azure Blob Storage** jako cíl, ujistěte se, že používáte **[ověřování instančních objektů](connector-azure-blob-storage.md#service-principal-authentication)** při definování propojené Služby Azure Blob Storage a bez použití [klíč účtu](connector-azure-blob-storage.md#account-key-authentication), [sdílený přístupový podpis](connector-azure-blob-storage.md#shared-access-signature-authentication) nebo [spravovaných identit pro prostředky Azure](connector-azure-blob-storage.md#managed-identity) ověření.
->-  Pokud nahráváte data Office 365 do **Azure Data Lake Storage Gen1** jako cíl, ujistěte se, že používáte [ **ověřování instančních objektů** ](connector-azure-data-lake-store.md#using-service-principal-authentication) při definování Propojená služba Azure Data Lake Storage Gen1 a bez použití [spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md#managed-identity).
+>-  Pokud nahráváte data Office 365 do **Azure Data Lake Storage Gen1** jako cíl, ujistěte se, že používáte [ **ověřování instančních objektů** ](connector-azure-data-lake-store.md#use-service-principal-authentication) při definování Propojená služba Azure Data Lake Storage Gen1 a bez použití [spravovaných identit pro ověřování prostředků Azure](connector-azure-data-lake-store.md#managed-identity).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -79,7 +79,7 @@ Pro Office 365, propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **Office 365** | Ano |
+| type | Vlastnost type musí být nastavená na: **Office365** | Ano |
 | office365TenantId | ID klienta Azure, ke kterému patří účet Office 365. | Ano |
 | servicePrincipalTenantId | Zadejte informace o tenantovi umístěn webové aplikace Azure AD. | Ano |
 | servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
@@ -119,7 +119,7 @@ Pokud chcete zkopírovat data z Office 365, jsou podporovány následující vla
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **Office365Table** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **Office365Table** | Ano |
 | tableName | Název datové sady, chcete-li extrahovat z Office 365. Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) seznam k dispozici pro extrahování datových sad Office 365. | Ano |
 | Predikát | Predikátu výraz, který můžete použít k filtrování konkrétní řádky, které mají extrahovat z Office 365.  Přečtěte si [tady](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) a zjistěte, sloupce, které lze použít pro filtrování predikát pro každou tabulku a formát výrazu filtru. | Ne<br>(Pokud není zadána žádná predikátu, výchozí hodnota je extrahovat data za posledních 30 dní) |
 

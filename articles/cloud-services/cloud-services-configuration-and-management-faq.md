@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: fe096efba5419b283981f27e16c3e30a791412da
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: ce171aa32e4f17e974a6d8a9752189ac78bf73fe
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322666"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386991"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Konfigurace a správy problémů pro Azure Cloud Services: Nejčastější dotazy (FAQ)
 
@@ -242,7 +242,7 @@ Automatické škálování podle metriky paměti pro Cloud Services se aktuáln�
 
 Chcete-li tento problém vyřešit, můžete použít Application Insights. Podporuje Application Insights jako zdroj metriky pro automatické škálování a můžete škálovat počet instancí role na základě hosta metriky, jako je "Paměti".  Budete muset nakonfigurovat Application Insights v balíčku souboru projektu cloudové služby (*.cspkg) a povolit rozšíření diagnostiky Azure na služby k implementaci této feat.
 
-Další informace o tom, jak využívat vlastní metriky pomocí Application Insights a nakonfigurovat automatické škálování na Cloud Services, najdete v článku [zahájení práce se automatické škálování díky vlastní metrika v Azure](../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md)
+Další informace o tom, jak využívat vlastní metriky pomocí Application Insights a nakonfigurovat automatické škálování na Cloud Services, najdete v článku [zahájení práce se automatické škálování díky vlastní metrika v Azure](../azure-monitor/platform/autoscale-custom-metric.md)
 
 Další informace o tom, jak integrovat Azure Diagnostics Application Insights pro služby Cloud Services, najdete v části [odeslat cloudové služby, virtuální počítač nebo Service Fabric diagnostická data do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 

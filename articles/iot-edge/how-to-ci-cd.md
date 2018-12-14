@@ -4,45 +4,43 @@ description: Nastavte průběžnou integraci a průběžné nasazování – Azu
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 11/29/2018
+ms.date: 12/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4db5fce89df0b5974261788608b785cf16917f1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a714cec5ce05473887f9f06d47c75563bf878081
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074789"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386821"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
-Můžete snadno přijmout DevOps s vašimi aplikacemi Azure IoT Edge integrované úlohy Azure IoT Edge v kanálech Azure nebo [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge) na serveru Jenkins. Tento článek ukazuje, jak můžete pomocí průběžné integrace a průběžného nasazování funkce kanály Azure a Azure DevOps Server sestavení, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
+Můžete snadno přijmout DevOps s vašimi aplikacemi Azure IoT Edge integrované úlohy Azure IoT Edge v kanálech Azure nebo [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge) na serveru Jenkins. Tento článek popisuje, jak vám pomůže průběžné integrace a průběžného nasazování funkce Azure kanálů sestavovat, testovat a nasazovat aplikace rychle a efektivně do vašeho Azure IoT Edge. 
 
 V tomto článku se dozvíte, jak:
 * Vytvoření a vrátit se změnami ukázkové řešení IoT Edge.
 * Nakonfiguruje kontinuální integraci (CI), abyste mohli sestavit řešení.
 * Konfigurace průběžného nasazování (CD) k nasazení řešení a zobrazování odpovědí.
 
-Bude trvat 20 minut, než k dokončení kroků v tomto článku.
-
 ![Diagram – CI a CD větve pro vývoj a provoz](./media/how-to-ci-cd/cd.png)
 
 
 ## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Vytvoření ukázkové řešení Azure IoT Edge pomocí Visual Studio Code
 
-V této části vytvoříte ukázkové hraničních zařízeních IoT řešení obsahující testy jednotek, které můžete spouštět jako součást procesu sestavení. Než budete postupovat pokyny v této části, proveďte kroky v [vývoj řešení IoT Edge s několika moduly v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
+V této části vytvoříte ukázkové hraničních zařízeních IoT řešení obsahující testy jednotek, které můžete spouštět jako součást procesu sestavení. Než budete postupovat pokyny v této části, proveďte kroky v [vývoj řešení IoT Edge s několika moduly v aplikaci Visual Studio Code](how-to-develop-multiple-modules-vscode.md).
 
-1. Paleta příkazů VS Code, zadejte a spusťte příkaz **Azure IoT Edge: nový IoT Edge řešení**. Vyberte si složku pracovního prostoru, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořit modulu jazyka C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště imagí vychází z místního registru Dockeru (`localhost:5000/filtermodule`). Změňte ho na Azure Container Registry (`<your container registry address>/filtermodule`) nebo centra Dockeru pro další průběžnou integraci.
+1. Paleta příkazů VS Code, zadejte a spusťte příkaz **Azure IoT Edge: Nové řešení IoT Edge**. Vyberte si složku pracovního prostoru, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořit modulu jazyka C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště imagí vychází z místního registru Dockeru (`localhost:5000/filtermodule`). Změňte ho na Azure Container Registry (`<your container registry address>/filtermodule`) nebo centra Dockeru pro další průběžnou integraci.
 
     ![Nastavení Azure Container Registry](./media/how-to-ci-cd/acr.png)
 
-2. Okna nástroje VS Code se načte pracovní prostor řešení IoT Edge. Volitelně zadejte a spustit **Azure IoT Edge: modul IoT Edge přidat** přidáte další moduly. Je `modules` složku, `.vscode` složku a soubor manifestu šablony nasazení v kořenové složce. Všechny kódy modulu uživatele bude podsložky ve složce `modules`. `deployment.template.json` Je v šabloně manifestu nasazení. Některé parametry v tomto souboru se získá analýzou z `module.json`, která existuje v všechny složky, které modul.
+2. Okna nástroje VS Code se načte pracovní prostor řešení IoT Edge. Volitelně zadejte a spustit **Azure IoT Edge: Přidat modul IoT Edge** přidáte další moduly. Je `modules` složku, `.vscode` složku a soubor manifestu šablony nasazení v kořenové složce. Všechny kódy modulu uživatele bude podsložky ve složce `modules`. `deployment.template.json` Je v šabloně manifestu nasazení. Některé parametry v tomto souboru se získá analýzou z `module.json`, která existuje v všechny složky, které modul.
 
 3. Ukázku řešení IoT Edge je teď připravený. Výchozí C# modul funguje jako zprávy modulu kanálu. V `deployment.template.json`, uvidíte toto řešení obsahuje dva moduly. Zpráva se budou generovat z `tempSensor` modulu a budou směrované přímo prostřednictvím `FilterModule`, pak odešlou do služby IoT hub.
 
-4. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure nebo Azure DevOps serveru úložiště.
+4. Uložte tyto projekty a potom potvrdit do vašeho úložiště Azure.
     
 > [!NOTE]
 > Další informace o použití úložiště Azure najdete v tématu [sdílení kódu pomocí sady Visual Studio a úložiště Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -59,7 +57,7 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
 
     ![Vytvoření nového kanálu sestavení](./media/how-to-ci-cd/add-new-build.png)
 
-1. Pokud se zobrazí výzva, vyberte **Azure DevOps Git** typ zdroje. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
+1. Pokud se zobrazí výzva, vyberte úložiště Azure pro váš zdroj. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
 
     ![Vyberte Azure úložišť Git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -101,7 +99,7 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
 ## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurovat kanály Azure pro průběžné nasazování
 V této části vytvoříte kanál pro vydávání verzí, která je nakonfigurována na automatické spuštění při vašeho kanálu sestavení zahodí artefakty a zobrazí protokolech nasazení v kanálech Azure.
 
-1. V **verze** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro vydávání, vyberte **+ nová** tlačítko.  
+1. V **verze** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro vydávání, vyberte **+ nová** tlačítko a klikněte na tlačítko **+ nový kanál verze**.  
 
     ![Přidejte kanál pro vydávání verzí](./media/how-to-ci-cd/add-release-pipeline.png)
 
@@ -109,7 +107,7 @@ V této části vytvoříte kanál pro vydávání verzí, která je nakonfiguro
 
     ![Začít s prázdnou úlohu](./media/how-to-ci-cd/start-with-empty-job.png)
 
-2. Potom bude kanál pro vydávání verzí inicializovat pomocí jedné fáze: **fáze 1**. Přejmenovat **fáze 1** k **QA** a ji považovat za testovací prostředí. V kanálu typické průběžné nasazování obvykle existuje více fázích, můžete vytvořit více založené na vaše postupy DevOps.
+2. Kanál pro vydávání verzí by pak inicializovat pomocí jedné fáze: **Fáze 1**. Přejmenovat **fáze 1** k **QA** a ji považovat za testovací prostředí. V kanálu typické průběžné nasazování obvykle existuje více fázích, můžete vytvořit více založené na vaše postupy DevOps.
 
     ![Vytvořit testovací prostředí fáze](./media/how-to-ci-cd/QA-env.png)
 

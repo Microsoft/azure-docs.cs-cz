@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7df61cad250663d4b08c8c8d32257718e2f37db
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a88d4b09178ea32526cb8d035b47e1aef9c19dc3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012839"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384227"
 ---
-# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Použití Mavenu k vytváření aplikací v Javě, které používají HBase s HDInsight se systémem Windows (Hadoop)
-Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) aplikace v Javě pomocí nástroje Apache Maven. Potom s použitím aplikace s Azure HDInsight (Hadoop).
+# <a name="use-apache-maven-to-build-java-applications-that-use-apache-hbase-with-windows-based-hdinsight-apache-hadoop"></a>Vytváření aplikací v Javě, které používají Apache HBase s HDInsight se systémem Windows (Apache Hadoop) pomocí nástroje Apache Maven
+Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) aplikace v Javě pomocí nástroje Apache Maven. Potom s použitím aplikace s Azure HDInsight (Apache Hadoop).
 
-[Maven](http://maven.apache.org/) je softwarový projekt správu procházením a porozuměním nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java. V tomto článku se dozvíte, jak ji používat k vytvoření základní aplikace v Javě, které vytváří, dotazy a odstraní tabulky HBase v clusteru Azure HDInsight.
+[Nástroje Apache Maven](http://maven.apache.org/) je softwarový projekt správu procházením a porozuměním nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java. V tomto článku se dozvíte, jak ji používat k vytvoření základní aplikace v Javě, které vytváří, dotazy a odstraní tabulky HBase v clusteru Azure HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, používající Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Požadavky
 * [Platforma Java JDK](https://aka.ms/azure-jdks) 7 nebo novější
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](http://maven.apache.org/)
 * Cluster HDInsight se systémem Windows s HBase
 
-    > [!NOTE]
+    > [!NOTE]  
     > Kroky v tomto dokumentu byly testovány pomocí verze clusteru HDInsight 3.2 nebo 3.3. Výchozí hodnoty v příkladech se pro cluster HDInsight 3.3.
 
 ## <a name="create-the-project"></a>Vytvoření projektu
@@ -40,8 +40,8 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
 
     Tento příkaz vytvoří adresář v aktuálním umístění s názvem zadaným **artifactID** parametr (**hbaseapp** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * **pom.xml**: The Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
-   * **src**: adresář obsahující **main\java\com\microsoft\examples** adresáře, kde se upravit aplikaci.
+   * **pom.xml**:  Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * **src**: Adresář, který obsahuje **main\java\com\microsoft\examples** adresáře, kde se upravit aplikaci.
 3. Odstranit **src\test\java\com\microsoft\examples\apptest.java** souboru, protože není použit v tomto příkladu.
 
 ## <a name="update-the-project-object-model"></a>Aktualizace objektu modelu projektu
@@ -53,9 +53,9 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
           <version>1.1.2</version>
         </dependency>
 
-    Tato část říká Maven, že projekt vyžaduje **hbase-client** verze **1.1.2**. V době kompilace je tato závislost stáhnout z úložiště Maven výchozí. Můžete použít [vyhledávání centrálního úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
+    Tato část říká Maven, že projekt vyžaduje **hbase-client** verze **1.1.2**. V době kompilace je tato závislost stáhnout z úložiště Maven výchozí. Můžete použít [Apache Maven centrální úložiště Search](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Číslo verze musí odpovídat verzi HBase, který je součástí vašeho clusteru HDInsight. V následující tabulce můžete najít na správné číslo verze.
    >
    >
@@ -65,7 +65,7 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
    | 3.2 |0.98.4-hadoop2 |
    | 3.3 |1.1.2 |
 
-    Další informace o verzích HDInsight a komponenty, naleznete v tématu [jaké jsou různé součásti platformy Hadoop HDInsight přináší](hdinsight-component-versioning.md).
+    Další informace o verzích HDInsight a komponenty, naleznete v tématu [jaké jsou různé komponenty Apache Hadoop, která je k dispozici s HDInsight](hdinsight-component-versioning.md).
 2. Pokud používáte cluster HDInsight 3.3, musíte taky přidat následující `<dependencies>` části:
 
         <dependency>
@@ -122,12 +122,12 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
 
     `<resources>` Části nakonfiguruje prostředku (**conf\hbase-site.xml**), který obsahuje informace o konfiguraci pro HBase.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Můžete také nastavit hodnoty konfigurace prostřednictvím kódu. Viz poznámky v **CreateTable** příkladu, který následuje, jak to provést.
    >
    >
 
-    To `<plugins>` části nakonfiguruje [modulu plug-in Maven kompilátoru](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru je používá ke kompilaci topologie. Modul plug-in odstín se používá při prevenci licence duplikace v balíček JAR, který je sestavený Maven. Z důvodů, proč to se používá se, že duplicitní licenčních souborů způsobit chybu v době běhu na clusteru HDInsight. Využitím odstín plug-in maven s `ApacheLicenseResourceTransformer` implementace brání k této chybě.
+    To `<plugins>` části nakonfiguruje [plug-in Apache Maven kompilátoru](http://maven.apache.org/plugins/maven-compiler-plugin/) a [plug-in Apache Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru je používá ke kompilaci topologie. Modul plug-in odstín se používá při prevenci licence duplikace v balíček JAR, který je sestavený Maven. Z důvodů, proč to se používá se, že duplicitní licenčních souborů způsobit chybu v době běhu na clusteru HDInsight. Využitím odstín plug-in maven s `ApacheLicenseResourceTransformer` implementace brání k této chybě.
 
     Plug-in odstín maven také vytvoří soubor jar uber (nebo fat jar), která obsahuje všechny závislosti vyžadované aplikací.
 4. Uložte soubor **pom.xml**.
@@ -173,7 +173,7 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
 
     Tento soubor se použije k načtení konfigurace HBase pro HDInsight cluster.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Toto je soubor minimálního hbase-site.xml, a obsahuje úplné minimální nastavení pro HDInsight cluster.
 
 6. Uložit **hbase-site.xml** souboru.
@@ -357,11 +357,11 @@ Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) apl
     To vyčistí všechny předchozí artefakty sestavení, soubory ke stažení všechny závislosti, které dosud nebyly nainstalovány, pak sestavení a balíčky aplikace.
 3. Po dokončení příkazu **hbaseapp\target** adresář obsahuje soubor s názvem **hbaseapp – 1.0-SNAPSHOT.jar**.
 
-   > [!NOTE]
+   > [!NOTE]  
    > **Hbaseapp – 1.0-SNAPSHOT.jar** uber je soubor jar (říká se jim fat jar), který obsahuje všechny závislosti potřebné ke spuštění aplikace.
 
 ## <a name="upload-the-jar-file-and-start-a-job"></a>Nahrání souboru JAR a spuštění úlohy
-Existuje mnoho způsobů, jak nahrát soubor do vašeho clusteru HDInsight, jak je popsáno v [nahrávání dat pro úlohy systému Hadoop v HDInsight](hdinsight-upload-data.md). Následující kroky pomocí Azure Powershellu.
+Existuje mnoho způsobů, jak nahrát soubor do vašeho clusteru HDInsight, jak je popsáno v [nahrávání dat pro úlohy Apache Hadoop v HDInsight](hdinsight-upload-data.md). Následující kroky pomocí Azure Powershellu.
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 

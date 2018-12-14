@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 09db1c7a7d348d866cd131e66102044a37c010a8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6da397927a99c89f4cd82adccab9d7c0defc54e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310330"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386399"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -52,22 +52,22 @@ Můžete analyzovat výsledná telemetrických dat spuštěním dotazu:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-V poznámce výsledek zobrazení, že všechny položky telemetrie sdílet kořenovou `operation_Id`. Při volání ajax udělali na stránce – nové jedinečné id `qJSXU` je přiřazena k telemetrii závislostí a id pro zobrazení stránky se používá jako `operation_ParentId`. Pak požadavek na serveru používá id jazyka ajax na jako `operation_ParentId`atd.
+V poznámce výsledek zobrazení, že všechny položky telemetrie sdílet kořenovou `operation_Id`. Při volání ajax udělali na stránce – nové jedinečné ID `qJSXU` je přiřazena k telemetrii závislostí a ID pro zobrazení stránky se používá jako `operation_ParentId`. Pak požadavek na serveru používá ID jazyka ajax na jako `operation_ParentId`atd.
 
-| itemType   | jméno                      | id           | operation_ParentId | operation_Id |
+| itemType   | jméno                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Základní stránka                |              | STYz               | STYz         |
 | závislost | / GET Home/Stock           | qJSXU        | STYz               | STYz         |
 | žádost    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | závislost | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
-Teď při volání `GET /api/stock/value` provedené externí služby chcete znát identitu serveru. Abyste mohli nastavit `dependency.target` pole odpovídajícím způsobem. Když externí služba nepodporuje sledování - `target` je nastavena na název hostitele služby jako `stock-prices-api.com`. Nicméně pokud tuto službu identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování pomocí dotazu na telemetrická data ze služby Application Insights. 
+Teď při volání `GET /api/stock/value` provedené externí služby chcete znát identitu serveru. Abyste mohli nastavit `dependency.target` pole odpovídajícím způsobem. Když nepodporuje externí služby monitorování - `target` je nastavena na název hostitele služby jako `stock-prices-api.com`. Nicméně pokud tuto službu identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování pomocí dotazu na telemetrická data ze služby Application Insights. 
 
 ## <a name="correlation-headers"></a>Korelace záhlaví
 
-Pracujeme na RFC návrh [korelační protokol HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Tento návrh definuje dvě záhlaví:
+Pracujeme na návrh RFC [korelační protokol HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Tento návrh definuje dvě záhlaví:
 
-- `Request-Id` provádění globálně jedinečné id volání
+- `Request-Id` provádění globálně jedinečné ID volání
 - `Correlation-Context` -provádění kolekce dvojic hodnot název vlastnosti distribuované trasování
 
 Standardní definuje také dvě schémata `Request-Id` generování - bez stromové struktury a hierarchické. Plochý schématu je dobře známé `Id` definovaný pro klíč `Correlation-Context` kolekce.
@@ -77,13 +77,13 @@ Definuje Application Insights [rozšíření](https://github.com/lmolkova/correl
 ### <a name="w3c-distributed-tracing"></a>W3C distribuované trasování
 
 Můžeme se převádějí na [formátu W3C distribuované trasování](https://w3c.github.io/trace-context/). Definuje:
-- `traceparent` -provádí operace globálně jedinečné id a jedinečný identifikátor hovoru
-- `tracestate` -představuje konkrétní kontext trasování systému.
+- `traceparent` -provádí operace globálně jedinečné ID a jedinečný identifikátor hovoru
+- `tracestate` -provádí trasování kontextu konkrétní systém.
 
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>Povolit podporu W3C distribuované trasování pro aplikace ASP.NET Classic
 
 Tato funkce je dostupná v balíčcích Microsoft.ApplicationInsights.Web a Microsoft.ApplicationInsights.DependencyCollector počínaje 2.8.0-beta1 verze.
-Je **vypnout** ve výchozím nastavení, chcete-li ji povolit, změňte `ApplicationInsights.config`:
+Má **vypnout** ve výchozím nastavení, chcete-li ji povolit, změňte `ApplicationInsights.config`:
 
 * v části `RequestTrackingTelemetryModule` přidat `EnableW3CHeadersExtraction` element s hodnotou nastavenou `true`
 * v části `DependencyTrackingTelemetryModule` přidat `EnableW3CHeadersInjection` element s hodnotou nastavenou `true`
@@ -91,7 +91,7 @@ Je **vypnout** ve výchozím nastavení, chcete-li ji povolit, změňte `Applica
 #### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Povolit podporu W3C distribuované trasování pro aplikace ASP.NET Core
 
 Tato funkce je ve Microsoft.ApplicationInsights.AspNetCore 2.5.0-beta1 verze a verze 2.8.0-beta1 Microsoft.ApplicationInsights.DependencyCollector.
-Je **vypnout** ve výchozím nastavení, aby je `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` k `true`:
+Má **vypnout** ve výchozím nastavení, aby je `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` k `true`:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -118,7 +118,6 @@ Další informace o Application Insights datový model, najdete v části [datov
 
 Zobrazit, otevřít trasování [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definice otevřít trasování koncepty.
 
-
 ## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 
 V čase .NET definovány různými způsoby pro korelaci protokolů telemetrie a Diagnostika. Je `System.Diagnostics.CorrelationManager` umožňuje sledovat [LogicalOperationStack a ID aktivity](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` a trasování událostí pro Windows Windows definovat metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` používá [protokolu obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF a Http při přenosu nahoru "aktuální" šíření kontextu.
@@ -139,11 +138,18 @@ Počáteční verze Application Insights SDK `2.4.0-beta1` používá Diagnostic
 ## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelace telemetrie v sadě Java SDK
 [Application Insights Java SDK](app-insights-java-get-started.md) podporuje automatické korelace telemetrie od verze `2.0.0`. Automaticky naplní `operation_id` pro veškerá telemetrie (trasování, výjimky, vlastní události atd.), vydáno v rámci oboru požadavku. Je také se postará o šíření korelace hlavičky (popsaných výše) pro volání mezi službami přes protokol HTTP-li [agenta Java SDK](app-insights-java-agent.md) je nakonfigurované. Poznámka: pro funkci korelace jsou podporovány pouze volání provedená prostřednictvím Apache HTTP klienta. Pokud používáte Spring Rest šablony nebo Feign, jak jde použít s klient Apache HTTP pod pokličkou.
 
-V současné době se nepodporuje automatické kontextu šíření napříč technologie zasílání zpráv (například Kafka, RabbitMQ, Azure Service Bus). Je ale možné ručně kódu s použitím scénářů `trackDependency` a `trackRequest` rozhraní API, kterým telemetrických závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
+V současné době se nepodporuje automatické kontextu šíření přes zasílání zpráv technologie (například Kafka, RabbitMQ, Azure Service Bus). Je ale možné ručně kódu s použitím scénářů `trackDependency` a `trackRequest` rozhraní API, kterým telemetrických závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
 
 <a name="java-role-name"></a>
-### <a name="role-name"></a>Název role
-V některých případech může být vhodné přizpůsobit způsob názvů součástí se zobrazuje v [Mapa aplikace](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_roleName` pomocí jedné z následujících akcí:
+## <a name="role-name"></a>Název role
+
+V některých případech může být vhodné přizpůsobit způsob názvů součástí se zobrazuje v [Mapa aplikace](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_RoleName` pomocí jedné z následujících akcí:
+
+Pokud používáte Spring Boot s Application Insights Spring Boot starter, je pouze požadovaná změna nastavit váš vlastní název aplikace v souboru application.properties souboru.
+
+`spring.application.name=<name-of-app>`
+
+Spring Boot starter bude automaticky přiřadit hodnotu zadanou pro vlastnost spring.application.name cloudRoleName.
 
 Pokud používáte `WebRequestTrackingFilter`, `WebAppNameContextInitializer` automaticky nastaví název aplikace. Přidejte následující konfigurační soubor (soubor ApplicationInsights.xml):
 ```XML
@@ -151,7 +157,9 @@ Pokud používáte `WebRequestTrackingFilter`, `WebAppNameContextInitializer` au
   <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
 </ContextInitializers>
 ```
+
 Pomocí třídy kontextu cloud:
+
 ```Java
 telemetryClient.getContext().getCloud().setRole("My Component Name");
 ```
@@ -159,6 +167,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 ## <a name="next-steps"></a>Další postup
 
 - [Psát vlastní telemetrii](app-insights-api-custom-events-metrics.md)
+- [Další informace o](app-insights-app-map.md#set-cloudrolename) nastavení cloud_RoleName jiných sad SDK.
 - Připojit všechny součásti micro služby Application insights. Podívejte se na [podporované platformy](app-insights-platforms.md).
 - Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
 - Zjistěte, jak [rozšířit a filtrování telemetrie](app-insights-api-filtering-sampling.md).

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: da486b25a9a35cb4f00d6e5a4689d5be3d270e36
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013271"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386890"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinovat ScaleR a SparkR v HDInsight
 
 Tento dokument popisuje, jak k předpovědi zpoždění letů doručení pomocí **ScaleR** Logistický regresní model. V příkladu se používá počasí a zpoždění letů, připojený k použití **SparkR**.
 
-I když oba balíčky se spouští na Hadoop Spark prováděcího modulu, jsou blokovány z dat v paměti pro sdílení obsahu jednotlivých potřebují vlastní příslušné relace Spark. Dokud tento problém je vyřešen v nadcházející verzi součástí ML Server, alternativním řešením je udržovat překrývat relace Spark a vyměňovat data prostřednictvím zprostředkující soubory. Zde uvedených pokynů ukazují, že tyto požadavky jsou jednoduché dosáhnout.
+I když oba balíčky se spouští na Apache Hadoop Spark prováděcího modulu, jsou blokovány z dat v paměti pro sdílení obsahu jednotlivých potřebují vlastní příslušné relace Spark. Dokud tento problém je vyřešen v nadcházející verzi součástí ML Server, alternativním řešením je udržovat překrývat relace Spark a vyměňovat data prostřednictvím zprostředkující soubory. Zde uvedených pokynů ukazují, že tyto požadavky jsou jednoduché dosáhnout.
 
 V tomto příkladu byl zpočátku sdílí v Přednáška na setkání Strata 2016 Mario Inchiosa a Roni Burd. Tato Přednáška na můžete najít [sestavování škálovatelná platforma pro datovou vědu s jazykem R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Vyhodnocování jinde
 
-Model můžeme využít také pro vyhodnocení dat na jiné platformě. Uložení do souboru vzdálené plochy a přenosu a import tohoto vzdálené plochy do cílového prostředí, například SQL Server R Services vyhodnocování. Je důležité zajistit, že úrovně dat zohlednit odpovídají těch, na kterých byla vytvořena modelu. Které odpovídají se dá dosáhnout extrahování a ukládá informace o sloupci přidružené k modelování dat prostřednictvím vaší ScaleR `rxCreateColInfo()` funkce a následným použitím tohoto sloupce informace ke zdroji vstupních dat pro předpovědi. V následujícím jsme uložit několik řádků datové sady, testovací a extrahovat a používat informace o sloupci od této ukázky ve skriptu předpovědi:
+Model můžeme využít také pro vyhodnocení dat na jiné platformě. Uložení do souboru vzdálené plochy a přenosu a import tohoto vzdálené plochy do cílového prostředí jako je například MIcrosoft SQL Server R Services vyhodnocování. Je důležité zajistit, že úrovně dat zohlednit odpovídají těch, na kterých byla vytvořena modelu. Které odpovídají se dá dosáhnout extrahování a ukládá informace o sloupci přidružené k modelování dat prostřednictvím vaší ScaleR `rxCreateColInfo()` funkce a následným použitím tohoto sloupce informace ke zdroji vstupních dat pro předpovědi. V následujícím jsme uložit několik řádků datové sady, testovací a extrahovat a používat informace o sloupci od této ukázky ve skriptu předpovědi:
 
 ```
 # save the model and a sample of the test dataset 
@@ -535,7 +535,7 @@ V tomto článku jsme ukázali, jak je možné kombinovat použití SparkR pro m
 
 ## <a name="next-steps-and-more-information"></a>Další informace a další kroky
 
-- Další informace o použití nástroje ML serveru ve Sparku, najdete v článku [Průvodce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Další informace o použití ML Server na Apache Sparku, najdete v článku [Průvodce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
 - Obecné informace o ML Server, najdete v článku [Začínáme s jazykem R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) článku.
 

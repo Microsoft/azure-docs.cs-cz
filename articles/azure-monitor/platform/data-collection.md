@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: c9929149c029d15d496eac0eb530371418e1e1f2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3795db2928e23b16d93e544c4f148b049eccfdef
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323503"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384832"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -96,9 +96,9 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 ### <a name="what-can-you-do-with-metrics"></a>Co můžete dělat s metrikami?
 Úlohy, které můžete provádět pomocí metrik, patří:
 
-- Použití [Průzkumníka metrik](../../monitoring-and-diagnostics/monitoring-metric-charts.md) k analýze shromážděných metrik a vykreslit v grafu. Sledování výkonu prostředků (jako je například virtuální počítač, webu nebo logiky aplikace) tak, že připnete grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).
+- Použití [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) k analýze shromážděných metrik a vykreslit v grafu. Sledování výkonu prostředků (jako je například virtuální počítač, webu nebo logiky aplikace) tak, že připnete grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurace [metriky pravidlo upozornění](alerts-metric.md) , který odešle oznámení, nebo má [automatizované akce](action-groups.md) Pokud metrika překročí mezní hodnotu.
-- Použití [automatického škálování](../../monitoring-and-diagnostics/monitoring-overview-autoscale.md) zvýšení nebo snížení prostředků na základě metriky překročení prahové hodnoty.
+- Použití [automatického škálování](../../azure-monitor/platform/autoscale-overview.md) zvýšení nebo snížení prostředků na základě metriky překročení prahové hodnoty.
 - Metriky tras do Log Analytics k analýze dat metriky spolu s daty log a k uložení hodnoty metrik déle než 93 dní. 
 - Stream metrik [centra událostí](../../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) směrovat je do [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) nebo k externím systémům.
 - [Archiv](../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md) historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo v režimu offline pro účely vykazování.
@@ -109,7 +109,7 @@ Existují tři základní zdroje z metrik shromážděných službou Azure Monit
 ### <a name="viewing-metrics"></a>Zobrazení metrik
 Metriky Azure jsou shromážděny v databázi metrik Azure monitoru. Toto je časové řady databáze optimalizovaný pro rychlé načítání a ukládá hodnoty metrik 93 dní. Kopírování metrik do Log Analytics pro dlouhodobé analýzy a sledování trendů.
 
-Data metriky se používá v mnoha různými způsoby, jak je popsáno výše. Použití [Průzkumníka metrik](../../monitoring-and-diagnostics/monitoring-metric-charts.md) přímo analyzovat data v úložišti metriky a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Data metriky se používá v mnoha různými způsoby, jak je popsáno výše. Použití [Průzkumníka metrik](../../azure-monitor/platform/metrics-charts.md) přímo analyzovat data v úložišti metriky a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Průzkumník metrik](media/data-collection/metrics-explorer.png)
 
@@ -174,7 +174,7 @@ Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [met
 ### <a name="logs-to-metrics"></a>Protokoly a metriky
 Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Log Analytics shromažďuje značné množství číselná data, která je vhodná pro metriky, ale není uložený v databázi Azure metriky.  Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do databáze metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.
 
-Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
+Vysvětlení této funkce je k dispozici na [vytvořit upozornění metriky pro protokoly ve službě Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md). Seznam hodnot podpora je k dispozici na [podporované metriky ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Datový Stream k externím systémům
 Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 

@@ -1,19 +1,20 @@
 ---
-title: 'Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage'
-description: V tomto rychlém startu se dozvíte, jak použít Průzkumníka služby Azure Storage k vytvoření adresáře a souboru. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a postup zobrazení celého souboru v adresáři. Také se dozvíte, jak vytvořit snímek souboru, spravovat zásady přístupu k adresáři a vytvořit sdílený přístupový podpis.
+title: 'Rychlý start: Použití Azure Storage Exploreru k vytvoření objektu blob v úložišti objektů pomocí Azure Data Lake Storage Gen2 povoleno'
+description: V tomto rychlém startu se dozvíte, jak vytvořit a systém souborů v účtu Azure Data Lake Storage Gen2, stejně jako adresář a soubor pomocí Průzkumníka služby Azure Storage. V dalším kroku se dozvíte, jak stáhnout soubor do místního počítače a postup zobrazení celého souboru v adresáři.
 services: storage
 author: tamram
+ms.component: data-lake-storage-gen2
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: tamram
-ms.openlocfilehash: c5b674a33b400a1e920b10c839d4708897120a31
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e556dbe377f5bba6cbd727ac69c3d4fb9127a2c9
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975856"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385614"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rychlý start: Vytvoření objektu blob v úložišti objektů pomocí Průzkumníka služby Azure Storage
 

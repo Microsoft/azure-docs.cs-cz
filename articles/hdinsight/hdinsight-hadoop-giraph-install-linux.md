@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 202a68d219bec3a70e50afa68228cbc6bf453518
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011659"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383897"
 ---
-# <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalovat Giraph u clusterů systému HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů
+# <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalovat Apache Giraph v clusterech HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů
 
 Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akce skriptu HDInsight umožňuje přizpůsobit cluster spuštěním skriptu bash. Skripty slouží k přizpůsobení clusterů, během a po vytvoření clusteru.
 
@@ -33,10 +33,10 @@ Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akc
 
 * Výpočet hodnocení stránky webových stránek.
 
-> [!WARNING]
+> [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované – Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
-> Vlastní komponenty, jako je například Giraph, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Microsoft Support pravděpodobně možné do vyřešení problému. V opačném případě musí konzultovat opensourcové komunity, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Giraph, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Microsoft Support pravděpodobně možné do vyřešení problému. V opačném případě musí konzultovat opensourcové komunity, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Co dělá skriptu
@@ -72,13 +72,13 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
 
    * **IDENTIFIKÁTOR URI SKRIPTU**: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-   * **HLAVNÍ**: Zkontrolujte tuto položku
+   * **HLAVNÍ**: Zkontrolujte tuto položku.
 
-   * **PRACOVNÍK**: nechte tuto položku není zaškrtnuto
+   * **PRACOVNÍK**: Tato položka nechte nezaškrtnuté.
 
-   * **ZOOKEEPER**: nechte tuto položku není zaškrtnuto
+   * **ZOOKEEPER**: Tato položka nechte nezaškrtnuté.
 
-   * **Parametry**: Toto pole nechat prázdné
+   * **PARAMETRY**: Toto pole nechte prázdné.
 
 3. V dolní části **akcí skriptů**, použijte **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **vyberte** tlačítko v dolní části **volitelná konfigurace** části a uložte informace o konfiguraci volitelné.
 
@@ -172,4 +172,4 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
 
 * [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md).
 
-* [Nainstalovat Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md).
+* [Instalace Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md).

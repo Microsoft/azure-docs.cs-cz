@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 46b00e102cbf5e981ac7036de65232e869dc9651
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 9b2566458bc32f9b1d7a36790fbdd5fbb2419ec1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272693"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384288"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -33,11 +33,11 @@ Protokol aktivit se liší od [diagnostické protokoly](monitoring-overview-of-d
 Události můžete načíst z váš protokol aktivit pomocí webu Azure portal, rozhraní příkazového řádku, rutin prostředí PowerShell a rozhraní REST API služby Azure Monitor.
 
 > [!NOTE]
-> [Novější upozornění](monitoring-overview-alerts.md) nabídnout vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](../azure-monitor/platform/alerts-activity-log.md).
+> [Novější upozornění](../azure-monitor/platform/alerts-overview.md) nabídnout vylepšené prostředí při vytváření a správa aktivit pravidel upozornění protokolů.  [Další informace](../azure-monitor/platform/alerts-activity-log.md).
 
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit
-Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schémat z těchto kategorií [najdete v článku](monitoring-activity-log-schema.md). Mezi ně patří:
+Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schémat z těchto kategorií [najdete v článku](../azure-monitor/platform/activity-log-schema.md). Mezi ně patří:
 * **Pro správu** – Tato kategorie obsahuje záznam všech vytvoření, aktualizace, odstranění a akce operace provést prostřednictvím Resource Manageru. Typy událostí, zobrazí se v této kategorii příklady "vytvořit virtuální počítač" a "odstranit skupinu zabezpečení sítě" každé akce, které uživatele nebo aplikace pomocí Resource Manageru je modelovaná jako operace na konkrétní typ prostředku. Pokud je typ operace zápisu, Delete nebo akce, záznamy o zahájení a úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Administrativní kategorie také zahrnuje všechny změny na řízení přístupu na základě rolí v rámci předplatného.
 * **Stav služby** – Tato kategorie obsahuje záznam všechny incidenty health service, ke kterým došlo v Azure. Je například typ události, kterou byste viděli v této kategorii "SQL Azure v oblasti východní USA má výpadek." Události služby Service health dostaneme v pěti typy: Požaduje se akce, obnovení s asistencí, Incident, údržby, informace nebo zabezpečení a zobrazí pouze v případě, že máte prostředek v rámci předplatného, který bude mít vliv na událost.
 * **Služba Resource Health** – Tato kategorie obsahuje záznam všechny události stavu prostředků, ke kterým došlo u vašich prostředků Azure. Je například typ události, kterou byste viděli v této kategorii "Virtuální počítač stav změní na není k dispozici." Události stavu prostředků může představovat jeden z čtyř stavů stavu: K dispozici, není k dispozici, snížení a neznámý. Kromě toho události stavu prostředků můžete zařadit iniciovanou platformy nebo uživatele.
@@ -48,7 +48,7 @@ Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schém
 * **Zásady** – Tato kategorie neobsahuje žádné události; je vyhrazená pro budoucí použití. 
 
 ## <a name="event-schema-per-category"></a>Schéma událostí podle jednotlivých kategorií
-[Najdete v článku o schéma událostí protokolu aktivit podle jednotlivých kategorií.](monitoring-activity-log-schema.md)
+[Najdete v článku o schéma událostí protokolu aktivit podle jednotlivých kategorií.](../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Co můžete dělat s protokolu aktivit
 Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
@@ -60,7 +60,7 @@ Tady jsou některé věci, které vám pomůžou s protokolu činnosti:
 * [Vytvořte výstrahu pro událost protokolu aktivit.](../azure-monitor/platform/activity-log-alerts.md)
 * [Stream umožňuje **centra událostí** ](monitoring-stream-activity-logs-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 * Analyzovat pomocí Power BI [ **balíček obsahu Power BI**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-* [Uložit ho. tím **účtu úložiště** pro archivaci nebo ruční kontrolu](monitoring-archive-activity-log.md). Můžete určit pomocí uchování (ve dnech) **profilu protokolu**.
+* [Uložit ho. tím **účtu úložiště** pro archivaci nebo ruční kontrolu](../azure-monitor/platform/archive-activity-log.md). Můžete určit pomocí uchování (ve dnech) **profilu protokolu**.
 * Zjistit pomocí rutiny Powershellu, rozhraní příkazového řádku nebo rozhraní REST API.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Dotaz protokolu aktivit na webu Azure Portal

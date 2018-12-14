@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 108b6cafa185788a66689a4d16bbfba7f30da6c3
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271466"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384713"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ![Pracovní prostor Log Analytics](media/oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>Jak změním oprávnění?
-Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../../azure-monitor/platform/roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak vytvořit nový pracovní prostor? 
 Ze seznamu pracovních prostorů na webu Azure Portal, klikněte na tlačítko **přidat** v seznamu pracovních prostorů.  Úplné podrobnosti najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../learn/quick-create-workspace.md).

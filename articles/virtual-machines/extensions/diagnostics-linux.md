@@ -7,14 +7,14 @@ manager: sankalpsoni
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994798"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53387042"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu pro monitorování metrik a protokolů
 
@@ -38,9 +38,7 @@ Toto rozšíření funguje s obou modelů nasazení Azure.
 
 ## <a name="installing-the-extension-in-your-vm"></a>Instalaci rozšíření ve virtuálním počítači
 
-Toto rozšíření můžete povolit pomocí rutin Azure Powershellu, rozhraní příkazového řádku Azure skriptů nebo šablony nasazení Azure. Další informace najdete v tématu [rozšíření funkce](features-linux.md).
-
-Pokud chcete povolit nebo nakonfigurovat LAD 3.0 nelze použít na webu Azure portal. Místo toho nainstaluje a nakonfiguruje verze 2.3. Azure portal grafů a výstrah pracovat s daty z obě verze rozšíření.
+Toto rozšíření můžete povolit pomocí rutin prostředí Azure PowerShell, skripty Azure CLI, šablony ARM nebo na webu Azure portal. Další informace najdete v tématu [rozšíření funkce](features-linux.md).
 
 Tyto pokyny k instalaci a [ukázky ke stažení konfigurace](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json) konfigurace LAD 3.0 na:
 
@@ -54,7 +52,7 @@ Ke stažení konfigurace je uvedené jenom jako příklad; upravte jej podle sv�
 ### <a name="prerequisites"></a>Požadavky
 
 * **Agent Azure Linux verze 2.2.0 nebo novější**. Většina Image z Galerie virtuálních počítačů Azure s Linuxem obsahují verzi 2.2.7 nebo novější. Spustit `/usr/sbin/waagent -version` k potvrzení verze nainstalovaná na virtuálním počítači. Pokud virtuální počítač běží starší verze agenta hosta, postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) ji aktualizovat.
-* **Azure CLI**. [Nastavení rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na svém počítači.
+* **Rozhraní příkazového řádku Azure**. [Nastavení rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) prostředí na svém počítači.
 * Příkaz wget, pokud ještě nemáte ho: Spusťte `sudo apt-get install wget`.
 * Stávající předplatné Azure a účet úložiště v rámci něj chcete uložit data.
 * Seznam podporovaných Linuxových distribucích se na https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
@@ -174,7 +172,7 @@ Element | Hodnota
 jméno | Řetězec se používá k odkazování na tuto jímku jinde v konfiguraci rozšíření.
 type | Typ jímky je definována. Určuje jiné hodnoty v instance tohoto typu (pokud existuje).
 
-Diagnostické rozšíření Linux verze 3.0 podporuje dva typy jímky: EventHub a JsonBlob.
+Diagnostické rozšíření Linux verze 3.0 podporuje dva typy jímku: Centra událostí a JsonBlob.
 
 #### <a name="the-eventhub-sink"></a>Centra událostí jímky
 
@@ -316,7 +314,7 @@ Element | Hodnota
 jímky | (volitelné) Čárkou oddělený seznam názvů jímky, do které LAD odešle agregovaná metrika výsledky. Všechna agregovaná metrika se publikují do jednotlivých uvedených jímky. Zobrazit [sinksConfig](#sinksconfig). Příklad: `"EHsink1, myjsonsink"`.
 type | Identifikuje skutečné zprostředkovatele metriky.
 Třída | Spolu s informací, že čítač"identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
-Čítač | Spolu s "třída" identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
+counter | Spolu s "třída" identifikuje konkrétní metriky v rámci oboru názvů poskytovatele.
 counterSpecifier | Identifikuje konkrétní metriky v rámci oboru názvů Azure metriky.
 condition | (volitelné) Vybere konkrétní instanci objektu, ke kterému metriku použije nebo vybere agregaci za všechny instance daného objektu. Další informace najdete v tématu [ `builtin` definice metrik](#metrics-supported-by-builtin).
 sampleRate | JE 8601 interval, který nastaví četnost, kdy se shromažďují nezpracovaná ukázek pro tuto metriku. Pokud není nastavený, intervalem sběru hodnot nastavená hodnota [sampleRateInSeconds](#ladcfg). Nejkratší podporované vzorkovací frekvence je 15 sekund (PT15S).
@@ -425,14 +423,14 @@ Zprostředkovatel metriky builtin je zdroj metriky zajímá nejvíce, široké �
 * Procesor
 * Memory (Paměť)
 * Síť
-* systém souborů
+* Systém souborů
 * Disk
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>předdefinované metriky pro třídu procesoru
 
 Třída procesoru metrik poskytuje informace o využití procesoru na virtuálním počítači. Při agregování procenta, výsledkem je průměr mezi všechny procesory. Ve virtuálním počítači dva virtuální procesory Pokud byl jeden virtuální procesor zaneprázdněný 100 % a druhý byl nečinný, 100 % by ohlášené PercentIdleTime 50. Pokud se každý virtuální procesor zaneprázdněný stejnou dobu 50 %, by také oznámený výsledek 50. Na virtuálním počítači čtyři virtuální procesory s jeden 100 virtuálních procesorů % zaneprázdněný a ostatní nečinnosti bude ohlášené PercentIdleTime 75.
 
-Čítač | Význam
+counter | Význam
 ------- | -------
 PercentIdleTime | Procentuální hodnota času během časového období agregace, procesory prováděla jádra nečinné smyčky
 percentProcessorTime | Procentuální hodnota času provádění jiných než nečinných vláken
@@ -450,7 +448,7 @@ Chcete-li získat jednu metriku agregovaný pro všechny procesory, nastavte `"c
 
 Třída paměti metrik poskytuje informace o využití paměti, stránkování a výměna.
 
-Čítač | Význam
+counter | Význam
 ------- | -------
 AvailableMemory | Dostupná fyzická paměť v MiB
 PercentAvailableMemory | Dostupná fyzická paměť v procentech celkové paměti
@@ -470,7 +468,7 @@ Tato třída metrik obsahuje jenom jednu instanci. Atribut "podmínku" nemá ž�
 
 Třída sítě metrik poskytuje informace o síťové aktivity na jednotlivých síťových rozhraních od spuštění počítače. LAD nevystavuje metriky šířky pásma, která se dá načíst z metrik hostitele.
 
-Čítač | Význam
+counter | Význam
 ------- | -------
 BytesTransmitted | Celkový počet bajtů odeslaných od spuštění
 BytesReceived | Celkový počet bajtů přijatých od spuštění
@@ -487,7 +485,7 @@ TotalCollisions | Počet kolizí hlášených síťové porty od spuštění
 
 Třída systému souborů metrik poskytuje informace o využití systému souborů. Absolutní a procentuální hodnoty jsou hlášeny jako by se zobrazí jako běžný uživatel (nikoli kořenový).
 
-Čítač | Význam
+counter | Význam
 ------- | -------
 FreeSpace | Volného místa na disku v bajtech
 UsedSpace | Využité místo na disku v bajtech
@@ -508,7 +506,7 @@ Agregované hodnoty napříč všechny systémy souborů je možné získat nast
 
 Třída disku metrik poskytuje informace o využití disku zařízení. Tyto statistiky vztahují na celé jednotky. Pokud existuje více systémy souborů na zařízení, čítače pro toto zařízení jsou efektivní, agreguje pro všechny z nich.
 
-Čítač | Význam
+counter | Význam
 ------- | -------
 ReadsPerSecond | Operace čtení za sekundu
 WritesPerSecond | Operace zápisu za sekundu

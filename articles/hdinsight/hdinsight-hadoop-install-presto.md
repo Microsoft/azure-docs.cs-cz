@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687074"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383812"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight Hadoop
 
@@ -22,16 +22,16 @@ V tomto dokumentu se dozvíte, jak nainstalovat Presto na clusterech HDInsight H
 
 HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache Hadoop. Další informace najdete v tématu [instalace aplikací jiných výrobců v Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují **cluster HDInsight 3.5 Hadoop** , který využívá systém Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight verze](hdinsight-component-versioning.md).
 
 ## <a name="what-is-presto"></a>Co je Presto?
 [Presto](https://prestodb.io/overview.html) rychlé distribuované dotazovací modul SQL pro velké objemy dat je. Presto je vhodný pro interaktivní dotazování petabajty dat. Podrobnosti o součásti Presto a jak pracují společně, naleznete v tématu [Presto koncepty](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst).
 
-> [!WARNING]
+> [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 > 
-> Vlastní komponenty, jako je například Presto, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Presto, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 > 
 > 
 
@@ -52,17 +52,17 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
    
    * **NÁZEV**: Zadejte popisný název akce skriptu.
    * **Identifikátor URI skriptu Bash:**`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`
-   * **HLAVNÍ**: Zaškrtněte tuto možnost
-   * **PRACOVNÍK**: Zaškrtněte tuto možnost
-   * **ZOOKEEPER**: Toto políčko ponechejte prázdné
-   * **Parametry**: Toto pole nechat prázdné
+   * **HLAVNÍ**: Zaškrtněte tuto možnost.
+   * **PRACOVNÍK**: Zaškrtněte tuto možnost.
+   * **ZOOKEEPER**: Toto zaškrtávací políčko nechte prázdné.
+   * **PARAMETRY**: Toto pole nechte prázdné.
 
 
 3. V dolní části **akcí skriptů** oblast, klikněte na tlačítko **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec klikněte na tlačítko **vyberte** tlačítko v dolní části **Upřesnit nastavení** oblast, kterou chcete uložit informace o konfiguraci.
 
 4. Pokračovat zřizování clusteru, jak je popsáno v [clustery HDInsight se systémem Linux](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Prostředí Azure PowerShell, rozhraní příkazového řádku Azure Classic, sady HDInsight .NET SDK nebo šablony Azure Resource Manageru je také možné použití akce skriptu. Akce se skripty můžete také použít k už běží clustery. Další informace najdete v tématu [HDInsight přizpůsobit clustery pomocí skriptových akcí](hdinsight-hadoop-customize-cluster-linux.md).
     > 
     > 
@@ -86,7 +86,7 @@ Pro práci s Presto v clusteru služby HDInsight, postupujte následovně:
    
         select count (*) from hivesampletable;
    
-    Ve výchozím nastavení [Hive](https://prestodb.io/docs/current/connector/hive.html) a [TPCH](https://prestodb.io/docs/current/connector/tpch.html) konektory pro Presto jsou už nakonfigurovaná. Konektor Hive je nakonfigurován pro použití Hive instalace výchozí instalaci, takže všechny tabulky z podregistru budou automaticky viditelná v Presto.
+    Ve výchozím nastavení [Apache Hive](https://prestodb.io/docs/current/connector/hive.html) a [TPCH](https://prestodb.io/docs/current/connector/tpch.html) konektory pro Presto jsou už nakonfigurovaná. Konektor Hive je nakonfigurován pro použití Hive instalace výchozí instalaci, takže všechny tabulky z podregistru budou automaticky viditelná v Presto.
 
     Další informace najdete v tématu [Presto dokumentaci](https://prestodb.io/docs/current/index.html).
 
@@ -168,11 +168,11 @@ Oborový standard pro měření výkonu mnoho rozhodnutí podpora systémů, vč
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). Odstín, který je webové uživatelské rozhraní, které umožňuje snadno vytvářet, spouštět a uložit Pigu a Hivu existující úlohy.
+* [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). Odstín, který je webové uživatelské rozhraní, které usnadňuje vytvoření, spuštění a uložit Apache Pig a úloh Hive.
 
-* [Clustery HDInsight nainstalovat Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight.
+* [Clustery HDInsight nainstalovat Apache Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight.
 
-* [Nainstalovat Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md). Clusterů systému HDInsight Hadoop nainstalovat Solr pomocí přizpůsobení clusteru. Solr umožňuje provádět operace výkonné hledání na uložená data.
+* [Instalace Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md). Clusterů systému HDInsight Hadoop nainstalovat Solr pomocí přizpůsobení clusteru. Solr umožňuje provádět operace výkonné hledání na uložená data.
 
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts-linux.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md

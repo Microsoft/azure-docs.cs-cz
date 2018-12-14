@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: c6001b0c95186dff53f33c73833b4cea30688db2
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a19cdac54fff641f72d0628c7b0d47060baba9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094888"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384118"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Šifrování služby Azure Storage pro neaktivní uložená data
 Šifrování služby Azure Storage pro neaktivní uložená data vám pomůže chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. Pomocí této funkce platformy Azure storage automaticky šifruje vaše data před uložením do Azure Managed Disks, tabulky, fronty nebo Azure Blob storage nebo Azure Files a dešifruje před načítání. Správa šifrování, šifrování neaktivních uložených dat, dešifrování a správu klíčů v šifrování služby Storage je pro uživatele transparentní. Všechna data zapsaná do platformy úložiště Azure je zašifrovaná pomocí 256bitových [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), jednu z nejsilnějších bloku šifer k dispozici.
@@ -33,7 +33,7 @@ Tato funkce automaticky šifruje data na:
 
 Šifrování služby Storage nemá vliv na výkon služby Azure storage.
 
-Spravovaná Microsoftem šifrovací klíče můžete použít pomocí šifrování služby Storage, nebo můžete použít vlastní šifrovací klíče. Další informace o použití vlastních klíčů najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Můžete použít šifrovací klíče s Šifrováním služby Storage spravované Microsoftem nebo vlastní šifrovací klíče. Další informace o použití vlastních klíčů najdete v tématu [šifrování služby Storage pomocí klíčů spravovaných zákazníkem ve službě Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
 
 ## <a name="view-encryption-settings-in-the-azure-portal"></a>Nastavení šifrování zobrazení na webu Azure Portal
 Chcete-li zobrazit nastavení pro šifrování služby Storage, přihlaste se k [webu Azure portal](https://portal.azure.com) a vyberte účet úložiště. V **nastavení** podokně, vyberte **šifrování** nastavení.
@@ -81,7 +81,7 @@ Ano, jsou šifrovány veškeré kopie tohoto účtu úložiště. Všechny redun
 Šifrování služby Storage je k dispozici ve všech oblastech.
 
 **Storage Service Encryption FIPS 140-2 je kompatibilní?**  
-Ano, je šifrování služby Storage podle standardu FIPS 140-2 kompatibilní.
+Ano, je šifrování služby Storage podle standardu FIPS 140-2 kompatibilní. Další informace o kryptografických modulů základní šifrování služby Storage najdete v tématu [rozhraní API kryptografických služeb: Další generace](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
 **Jak se mám obrátit někdo Pokud můžu mít jakékoli problémy nebo chcete poskytnout zpětnou vazbu?**  
 Kontakt [ ssediscussions@microsoft.com ](mailto:ssediscussions@microsoft.com) pro nějaké problémy nebo zpětnou vazbu související s šifrování služby Storage.

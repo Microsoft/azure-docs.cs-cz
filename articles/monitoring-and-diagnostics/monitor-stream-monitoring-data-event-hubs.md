@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 3bf2135e7d4cb0e34d6e38e8673d5d69f262979c
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: a65611c1e84bdd01bac525012553e6cd7c7fc4e4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322393"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386855"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -58,7 +58,7 @@ K odesílání dat z protokolů služby Azure Active Directory do Event Hubs obo
 
 ## <a name="azure-subscription-monitoring-data"></a>Předplatné Azure, monitorování dat
 
-Dat monitorování Azure předplatné k dispozici na [protokolu aktivit Azure](./monitoring-overview-activity-logs.md). Obsahuje vytvořit, aktualizovat a operace odstranění z Resource Manageru, změny v [službě Azure service health](../service-health/service-health-overview.md) , který může mít vliv na prostředky v rámci vašeho předplatného [služba resource health](../service-health/resource-health-overview.md) stavu přechody a několik dalších typů událostí na úrovni předplatného. [Tento článek podrobně popisuje všechny kategorie událostí, které se zobrazují v protokolu aktivit Azure](./monitoring-activity-log-schema.md).
+Dat monitorování Azure předplatné k dispozici na [protokolu aktivit Azure](./monitoring-overview-activity-logs.md). Obsahuje vytvořit, aktualizovat a operace odstranění z Resource Manageru, změny v [službě Azure service health](../service-health/service-health-overview.md) , který může mít vliv na prostředky v rámci vašeho předplatného [služba resource health](../service-health/resource-health-overview.md) stavu přechody a několik dalších typů událostí na úrovni předplatného. [Tento článek podrobně popisuje všechny kategorie událostí, které se zobrazují v protokolu aktivit Azure](./../azure-monitor/platform/activity-log-schema.md).
 
 ### <a name="activity-log-data"></a>Data protokolu aktivit
 
@@ -117,7 +117,7 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor umož
 * **Syslog server** – Pokud chcete data Azure Monitor Streamovat přímo na syslog server, si můžete prohlédnout [úložiště GitHub](https://github.com/miguelangelopereira/azuremonitor2syslog/).
 
 ## <a name="next-steps"></a>Další kroky
-* [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)
+* [Archivace protokolu aktivit do účtu úložiště](../azure-monitor/platform/archive-activity-log.md)
 * [Přečtěte si přehled protokolu aktivit Azure](monitoring-overview-activity-logs.md)
 * [Nastavte si výstrahy na základě události protokolu aktivit](../azure-monitor/platform/alerts-log-webhook.md)
 

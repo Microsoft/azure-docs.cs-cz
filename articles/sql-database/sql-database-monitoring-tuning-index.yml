@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 87fea5f033568303408f923d0a59c626cf72d4cc
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53388773"
+documentType: LandingData
+title: Azure SQL Database – monitorování a optimalizace
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Azure SQL Database – monitorování a optimalizace
+  meta.description: Learn how to monitor and tune your Azure SQL Database.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 12/12/2018
+  ms.author: jovanpop
+sections:
+- items:
+  - type: paragraph
+    text: Azure SQL Database umožňuje snadné monitorování a ladění vašich úloh databáze.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Informace o výkonu dotazů
+      href: /azure/sql-database/sql-database-query-performance
+      html: <p>Snadno monitorujte využití prostředků ve službě Azure SQL Database (izolované databáze) pomocí integrované funkce monitorování na webu Azure Portal.</p>
+    - title: Azure SQL Analytics
+      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
+      html: <p>Monitorování služby Azure SQL Analytics umožňuje snadno monitorovat velkého počtu databáze, elastické fondy a instance v podokně ze skla. Díky.</p>
+    - title: Automatické ladění
+      href: /azure/sql-database/sql-database-automatic-tuning
+      html: <p>Automatické ladění automaticky doporučuje a řeší problémy plán dotazu, vytváří a vyřazuje indexy pro zvýšení výkonu.</p>
+    - title: Inteligentní Performance Insight
+      href: /azure/sql-database/sql-database-intelligent-insights
+      html: <p>Inteligentní funkce integrované ve službě Azure SQL Database, zjišťují rušivé události, které způsobují nízký výkon ve vašich databázích a poskytuje doporučení zmírnění dopadů, pokud je to možné.</p>
+    - title: Doporučení k výkonu
+      href: /azure/sql-database/sql-database-advisor
+      html: <p>Azure SQL Database poskytuje sadu doporučení, které vám mohou pomoci při optimalizaci databáze na webu Azure portal.</p>
+    - title: Metriky a protokolování
+      href: /azure/sql-database/sql-database-metrics-diag-logging
+      html: <p>Stream vaší databáze diagnostickou telemetrii Azure SQL Analytics, Azure Event Hubs nebo Azure Blob Storage pro vlastní integraci.</p>
+- title: Další zdroje informací
+  items:
+  - type: paragraph
+    text: Další informace o další funkce, které vám mohou pomoci při optimalizaci výkonu vaší databáze.
+  - type: list
+    style: unordered
+    items:
+    - html: Další informace o <a href="sql-database-monitor-tune-overview.md">monitorování a optimalizace</a> ve službě Azure SQL Database.
+    - html: Zjistěte, jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">inteligentní dotaz zpracování</a> může zlepšit výkon vaší databáze.
+    - html: Nastavení a provozovat <a href="sql-database-operate-query-store.md">úložiště dotazů</a> – základní technologii SQL Server, která umožňují v reálném čase přehled o výkonu dotazů.
+    - html: Další informace o použití <a href="sql-database-operate-query-store.md">zobrazení dynamické správy</a> k analýze výkonu vašich úloh.
+    - html: Další informace o monitorování databázových aktivit s <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a>.
+    - html: Zjistěte, jak <a href="sql-database-performance-guidance.md">ručně vyladit vaše databáze</a>.

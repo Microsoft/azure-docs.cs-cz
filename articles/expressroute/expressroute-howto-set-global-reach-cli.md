@@ -1,24 +1,24 @@
 ---
-title: Konfigurace Azure ExpressRoute globální dosah pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: 'Konfigurace ExpressRoute globálním dosahem: Rozhraní příkazového řádku Azure | Dokumentace Microsoftu'
 description: Tento článek vám pomůže propojit okruhy ExpressRoute tvořit privátní sítě mezi místními sítěmi a povolit globální dosah.
-documentationcenter: na
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: 9a8e0a5df9383d8e3d7159aa916b0e4fbfeea948
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333247"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384040"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurace ExpressRoute globální dosah pomocí rozhraní příkazového řádku Azure (Preview)
 Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Azure CLI. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).
  
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 > 
@@ -55,24 +55,22 @@ Můžete povolit globální dosah ExpressRoute mezi jakékoli dva okruhy Express
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Povolit připojení mezi místními sítěmi
 
-Spusťte následující rozhraní příkazového řádku pro připojení dvou okruhů ExpressRoute.
+Při spuštění příkazu umožnění konektivity, vezměte v úvahu následující hodnoty:
 
-> [!NOTE]
-> *okruh peer* by měl být úplné ID prostředku, třeba
-> ```
-> */subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}*
-> ```
-> 
+* *okruh peer* by měl být ID úplné prostředku. Příklad: 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
+  ```
+* *-AddressPrefix* musí být IPv4 je/29 podsítě, například "10.0.0.0/29". IP adresy v této podsíti použije k navázání připojení mezi dva okruhy ExpressRoute. Ve virtuálních sítích Azure nebo v místních sítí, nesmí používat adresy v této podsíti.
+
+Spusťte následující rozhraní příkazového řádku pro připojení dvou okruhů ExpressRoute. Použijte příkaz v následujícím příkladu:
 
 ```azurecli
 az network express-route peering connection create -g <ResourceGroupName> --circuit-name <Circuit1Name> --peering-name AzurePrivatePeering -n <ConnectionName> --peer-circuit <Circuit2ResourceID> --address-prefix <__.__.__.__/29>
 ```
 
-> [!IMPORTANT]
-> *-AddressPrefix* musí být IPv4 je/29 podsítě, například "10.0.0.0/29". IP adresy v této podsíti použije k navázání připojení mezi dva okruhy ExpressRoute. Ve virtuálních sítích Azure nebo v místních sítí, nesmí používat adresy v této podsíti.
-> 
-
-Výstup rozhraní příkazového řádku by měl vypadat nějak takto.
+Výstup příkazového řádku by měl vypadat jako v následujícím příkladu:
 
 ```azurecli
 {

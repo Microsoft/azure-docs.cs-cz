@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 768dc4f555ade9483e11c3aec0f4622fe6b441c1
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005389"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384189"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 
 Zjistěte, jak přizpůsobit vašeho clusteru HDInsight pomocí skriptů prostředí Bash. Akce skriptů jsou způsob, jak přizpůsobit HDInsight během nebo po vytvoření clusteru.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Co jsou akce skriptu
@@ -43,7 +43,7 @@ Další informace o použití těchto metod lze aplikovat akce skriptu, najdete 
 
 Když vyvíjíte vlastní skript pro HDInsight cluster, existuje několik osvědčených postupů brát v úvahu:
 
-* [Cílová verze systému Hadoop](#bPS1)
+* [Cílení na verzi Apache Hadoop](#bPS1)
 * [Cílení na verzi operačního systému](#bps10)
 * [Stabilní odkazy skriptu prostředků](#bPS2)
 * [Použití předem kompilovaných prostředků](#bPS4)
@@ -54,10 +54,10 @@ Když vyvíjíte vlastní skript pro HDInsight cluster, existuje několik osvěd
 * [Ukládat soubory ve formátu ASCII s LF konce řádků](#bps8)
 * [Použít logika opakovaných pokusů provést obnovení při přechodné chyby](#bps9)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Akce se skripty musí dokončit během 60 minut nebo proces selže. Během zřizování uzlu, bude skript spuštěn současně jiných nastavení a konfigurace procesů. Soutěže pro prostředky, jako jsou procesor čas nebo síťové šířky pásma může způsobit skriptu trvá déle dokončit, než ve vašem vývojovém prostředí.
 
-### <a name="bPS1"></a>Cílová verze systému Hadoop
+### <a name="bPS1"></a>Cílení na verzi Apache Hadoop
 
 Různé verze HDInsight mají různé verze služby Hadoop a nainstalované součásti. Pokud váš skript očekává, že konkrétní verzi služby nebo komponenty, byste měli skript používat jenom s verzí služby HDInsight, který obsahuje požadované součásti. Můžete najít informace o verzích komponenty součástí pomocí HDInsight [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md) dokumentu.
 
@@ -110,7 +110,7 @@ Skript a související prostředky musí zůstat k dispozici v rámci životnost
 
 Osvědčeným postupem je ke stažení a archivovat vše, co v účtu služby Azure Storage v rámci předplatného.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Účet úložiště používané musí být výchozí účet úložiště pro cluster nebo veřejné, jen pro čtení kontejneru na jiný účet úložiště.
 
 Například vzorky od Microsoftu jsou uloženy v [ https://hdiconfigactions.blob.core.windows.net/ ](https://hdiconfigactions.blob.core.windows.net/) účtu úložiště. Toto umístění je veřejné, jen pro čtení kontejneru udržované týmem HDInsight.
@@ -129,12 +129,12 @@ Například skript, který upraví konfigurační soubory neměli byste přidáv
 
 Založené na Linuxu clustery HDInsight poskytují dva hlavní uzly, které jsou aktivní v rámci clusteru a akce skriptů, spusťte na obou uzlech. Pokud komponenty, které instalujete očekává pouze jeden hlavní uzel, neinstalujte součásti na oba hlavní uzly.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Služby poskytované v rámci HDInsight jsou navrženy pro převzetí služeb při selhání mezi dva hlavní uzly podle potřeby. Tato funkce není rozšířené k vlastní komponenty nainstalované prostřednictvím akce skriptu. Pokud potřebujete vysokou dostupnost pro vlastní komponenty, musíte implementovat vlastní mechanismus převzetí služeb při selhání.
 
 ### <a name="bPS6"></a>Konfigurace vlastních součástech používání úložiště objektů Blob v Azure
 
-Součásti, které instalujete na clusteru může být výchozí konfiguraci, která používá úložiště souboru systému HDFS (Hadoop Distributed). HDInsight používá Azure Storage nebo Data Lake Store jako výchozím úložištěm. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
+Součásti, které instalujete na clusteru může být výchozí konfigurace, který používá Apache Hadoop Distributed File System (HDFS) úložiště. HDInsight používá Azure Storage nebo Data Lake Store jako výchozím úložištěm. Oba poskytují systému HDFS kompatibilní soubor, který bude zachován dat i v případě odstranění clusteru. Budete muset konfigurovat součásti instalujete používat WASB nebo ADL namísto HDFS.
 
 Pro většinu operací není potřeba zadat v systému souborů. Například následující zkopíruje giraph-examples.jar soubor z místního systému souborů do úložiště clusteru:
 
@@ -148,8 +148,8 @@ V tomto příkladu `hdfs` příkaz transparentně používá výchozí úložiš
 
 Výstup skriptu protokoly HDInsight, která jsou zapsána do STDOUT a STDERR. Můžete zobrazit tyto informace pomocí webového uživatelského rozhraní Ambari.
 
-> [!NOTE]
-> Ambari slouží pouze k dispozici, pokud je cluster úspěšně vytvořen. Pokud použijete akci skriptu během vytváření clusteru a vytvoření selže, naleznete v části řešení potíží [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) existují i jiné možnosti přístupu k zaznamenané informace.
+> [!NOTE]  
+> Apache Ambari slouží pouze k dispozici, pokud je cluster úspěšně vytvořen. Pokud použijete akci skriptu během vytváření clusteru a vytvoření selže, naleznete v části řešení potíží [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) existují i jiné možnosti přístupu k zaznamenané informace.
 
 Většina nástrojů a instalační balíčky již zápis informací o do STDOUT a STDERR, ale můžete chtít přidat další protokolování. Chcete-li odeslat text do STDOUT, použijte `echo`. Příklad:
 
@@ -216,7 +216,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>Pomocné metody pro vlastní skripty
 
-Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou obsaženy v[ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skriptu. Stáhnout a použít je jako součást vašeho skriptu, použijte následující:
+Pomocné metody akcí skriptů jsou nástroje, které můžete použít při zápisu vlastních skriptů. Tyto metody jsou obsaženy v [ https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh ](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) skriptu. Stáhnout a použít je jako součást vašeho skriptu, použijte následující:
 
 ```bash
 # Import the helper method module.
@@ -278,16 +278,16 @@ Skripty používané k úpravám clusteru musí být uložen v jednom z následu
 
 * A __veřejně čitelné URI__. Například adresa URL k datům uloženým na Onedrivu, Dropboxu nebo jiný soubor, který je hostitelem služby.
 
-* __Účtu Azure Data Lake Store__ , který je přidružen HDInsight cluster. Další informace o používání Azure Data Lake Store se službou HDInsight najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Účtu Azure Data Lake Store__ , který je přidružen HDInsight cluster. Další informace o používání Azure Data Lake Store se službou HDInsight najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Instanční objekt služby, kterou používá HDInsight pro přístup k Data Lake Store musí mít oprávnění ke čtení pro skript.
 
 Prostředky využívané třídou skriptu musí být také veřejně dostupná.
 
 Ukládání souborů do účtu Azure Storage nebo Azure Data Lake Store poskytuje rychlý přístup, jako v rámci sítě Azure.
 
-> [!NOTE]
+> [!NOTE]  
 > Formát identifikátoru URI slouží jako odkaz na skript se liší v závislosti na používaných služeb. Pro účty úložiště přidružené ke clusteru HDInsight, použijte `wasb://` nebo `wasbs://`. Veřejně čitelné identifikátory URI, použijte `http://` nebo `https://`. Pro Data Lake Store, použijte `adl://`.
 
 ### <a name="checking-the-operating-system-version"></a>Kontroluje se verze operačního systému
@@ -332,8 +332,8 @@ Další informace o použití každé metody, naleznete v tématu [způsob použ
 Společnost Microsoft poskytuje ukázkové skripty pro instalaci součásti v clusteru HDInsight. V následujících tématech pro další příklad skriptových akcí.
 
 * [Nainstalovat a používat rozhraní Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md)
-* [Instalace a použití Solru na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md)
-* [Instalace a použití Giraphu na clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalace a použití Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md)
+* [Instalace a použití Giraphu Apache v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Instalace nebo upgrade Mono na clusterech HDInsight](hdinsight-hadoop-install-mono.md)
 
 ## <a name="troubleshooting"></a>Řešení potíží
@@ -342,13 +342,13 @@ Tady jsou chyby, které může dojít při používání skriptů, kterou jste v
 
 **Chyba**: `$'\r': command not found`. Někdy následovaný `syntax error: unexpected end of file`.
 
-*Příčina*: k této chybě dojde, pokud řádků ve skriptu končit znaky CRLF. Systémy UNIX očekávat, že pouze LF jako ukončení řádku.
+*Příčina*: K této chybě dojde, pokud řádků ve skriptu končit znaky CRLF. Systémy UNIX očekávat, že pouze LF jako ukončení řádku.
 
 Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Windows CRLF je běžné řádku ukončení pro mnoho textových editorů na Windows.
 
 *Rozlišení*: Pokud je možnost v textovém editoru, vyberte formát operačního systému Unix nebo LF pro ukončení řádku. Chcete-li změnit znaky CRLF LF může také použít následující příkazy v systému Unix:
 
-> [!NOTE]
+> [!NOTE]  
 > Následující příkazy jsou zhruba ekvivalentní v tom, že by měl mění konce řádků CRLF k LF. Vyberte jednu podle nástrojů, které jsou k dispozici ve vašem systému.
 
 | Příkaz | Poznámky |
@@ -362,7 +362,7 @@ Tento problém nejčastěji nastane, pokud se vytváří skript v prostředí Wi
 
 *Příčina*: Tato chyba nastane, pokud skript byl uložen jako UTF-8 s značky pořadí bajtů (BOM).
 
-*Rozlišení*: uložit soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
+*Rozlišení*: Uložte soubor ve formátu ASCII nebo jako UTF-8 bez BOM. Vytvoření souboru bez BOM může také použít následující příkaz v systému Linux nebo Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

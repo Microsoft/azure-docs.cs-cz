@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 64d30ef859dd4a64a3e59d82e6fd8c30e30c5ea3
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: b173336b7655b0a76e868177aff61c2cf5db422b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299720"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385767"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychlá Diagnostika potíží
 
@@ -402,7 +402,7 @@ Další informace o tom, jak interpretovat data o stavu, najdete v článku [př
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-migrate]: iot-hub-migrate-to-diagnostics-settings.md
 [lnk-AM-metrics]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md
-[lnk-AM-schemas]: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md
+[lnk-AM-schemas]: ../azure-monitor/platform/tutorial-dashboards.md
 [lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
 [lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
 [lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

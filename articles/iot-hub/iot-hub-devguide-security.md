@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 5e671c4eb47b56adf62a23791c403257c2538973
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 87df2731d45ffa51bc2fd298aa1b678b10e38515
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018923"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344325"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -91,7 +91,7 @@ HTTPS implementuje zahrnutím platný token v ověřování **autorizace** hlavi
 
 Uživatelské jméno (ID zařízení rozlišuje velká a malá písmena): `iothubname.azure-devices.net/DeviceId`
 
-Heslo (můžete vygenerovat token SAS se [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)):
+Heslo (můžete vygenerovat token SAS se [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [rozšíření Azure IoT Hub Toolkit pro Visual Studio Kód](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -136,13 +136,13 @@ Tady jsou očekávané hodnoty:
 
 | Hodnota | Popis |
 | --- | --- |
-| {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256. |
+| {podpis} |Řetězec podpisu HMAC SHA256 formuláře: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: Klíč je dekódovat z formátu base64 a použít jako klíč pro provádění výpočtů HMAC SHA256. |
 | {resourceURI} |Předponu identifikátoru URI (podle segmentů) koncových bodů, které lze přistupovat pomocí tohoto tokenu, počínaje název hostitele služby IoT hub (žádný protokol). Například `myHub.azure-devices.net/devices/device1`. |
 | {expiry} |Řetězce UTF8 pro počet sekund od 00:00:00 UTC epocha na 1. ledna 1970. |
 | {Adresu URL-encoded-resourceURI} |Nižší malá a velká kódování URL z identifikátoru URI prostředku malými písmeny |
 | {policyName} |Název zásad sdíleného přístupu, na který odkazuje tento token. Uveden v případě token, který odkazuje na přihlašovací údaje registru zařízení. |
 
-**Poznámka: na předponě**: identifikátor URI předponu je vypočítán segmentu a ne znak. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
+**Poznámka: na předponě**: Předponu identifikátoru URI se počítá podle segmentu a ne podle znaku. Například `/a/b` je předpona pro `/a/b/c` , ale nikoli pro `/a/bc`.
 
 Následující fragment kódu Node.js ukazuje funkci s názvem **generateSasToken** , který počítá token z vstupy `resourceUri, signingKey, policyName, expiresInMins`. Následující části podrobně popisují, jak inicializovat různé vstupy pro případy použití v odlišných tokenu.
 
@@ -272,7 +272,7 @@ Výsledek, který uděluje přístup ke všem funkcím pro ZAŘÍZENÍ1, by byl:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Je možné vytvořit token SAS s [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [rozšíření Azure IoT Toolkit pro Visual Studio Code ](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+> Je možné vytvořit token SAS s [Průzkumník zařízení](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) nástroje, rozšíření příkazu rozhraní příkazového řádku [az iot hub generovat--token sas](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token), nebo [rozšíření Azure IoT Hub Toolkit pro Visual Studio Kód](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ### <a name="use-a-shared-access-policy"></a>Použijte zásady sdíleného přístupu
 

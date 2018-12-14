@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 49f515c4321b13652d64c2e6f5b8e44ed6a29bca
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4ea00d1e23ce26855fe4bf01dc473c6b8672db47
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188091"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384543"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -76,7 +76,7 @@ Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overvie
 >
 
 * Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
-* Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+* Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/tutorial-dashboards.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Povolení diagnostiky pomocí PowerShellu
 Potřebujete listopadu 2016 (v2.3.0) nebo novější verze [prostředí Azure PowerShell](/powershell/azure/overview).

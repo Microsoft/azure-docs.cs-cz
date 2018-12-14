@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e9e92254db37edbd978b5799b13e63652e227f86
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014510"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385427"
 ---
-# <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Hive v Azure HDInsight
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizovat dotazy Apache Hive v Azure HDInsight
 
 V Azure HDInsight existuje několik typů clusteru a technologie, které můžete spouštět dotazy Apache Hive. Při vytváření clusteru HDInsight, zvolte typ příslušného clusteru za účelem optimalizace výkonu pro potřeby vašich úloh. 
 
@@ -38,7 +38,7 @@ Zvyšování počtu pracovních uzlů v clusteru služby HDInsight umožňuje pr
 
 Další informace o škálování HDInsight najdete v tématu [HDInsight škálování clusterů](hdinsight-scaling-best-practices.md)
 
-## <a name="use-tez-instead-of-map-reduce"></a>Používat Tez místo Map Reduce
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Použití Apache Tez místo Map Reduce
 
 [Apache Tez](https://hortonworks.com/hadoop/tez/) je alternativní spouštěcí modul pro modul MapReduce. Clustery se systémem Linux HDInsight mají Tez ve výchozím nastavení povolená.
 
@@ -124,16 +124,16 @@ Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/
 ## <a name="use-the-orcfile-format"></a>Použijte formát souborů Orc
 Hive podporuje různé formáty souborů. Příklad:
 
-* **Text**: výchozí formát souboru a spolupracuje s většinou scénářů
-* **Avro**: funguje dobře pro scénáře interoperability
-* **ORC/Parquet**: nejvhodnější pro výkon
+* **Text**: výchozí formát souboru a spolupracuje s většinou scénářů.
+* **Avro**: funguje dobře pro scénáře vzájemná funkční spolupráce.
+* **ORC/Parquet**: nejvhodnější pro výkon.
 
 Formát ORC (optimalizované řádek úložiště se sloupcovou strukturou) je velmi efektivní způsob, jak ukládat Hive data. Porovnání do jiných formátů, ORC má následující výhody:
 
-* Podpora pro komplexní typy, včetně data a času a částečně strukturovaných a komplexní typy
-* až o 70 % komprese
-* indexuje každých 10 000 řádky, které umožňují přeskočí řádky
-* výrazné snížení výkonu za běhu
+* Podpora pro komplexní typy, včetně data a času a částečně strukturovaných a komplexní typy.
+* až o 70 % komprese.
+* indexuje každých 10 000 řádky, které umožňují přeskočí řádky.
+* výrazné snížení výkonu za běhu.
 
 Pokud chcete povolit formátu ORC, nejprve vytvoříte tabulku s klauzulí *uložené jako ORC*:
 
@@ -171,7 +171,7 @@ V dalším kroku vložit data do tabulky ORC z pracovní tabulky. Příklad:
     FROM lineitem;
    ```
    
-Další informace na formát ORC v [Hive jazyk ruční](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Další informace na formát ORC v [Apache Hive jazyk ruční](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Vektorizace
 
@@ -196,10 +196,10 @@ Existují další metody optimalizace, které můžete zvážit, například:
 V tomto článku jste se naučili několik běžných metody optimalizace dotazů Hive. Další informace naleznete v následujících článcích:
 
 * [Použití Apache Hivu ve službě HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight](hdinsight-analyze-flight-delay-data.md)
-* [Analýza dat Twitteru pomocí Hivu ve službě HDInsight](hdinsight-analyze-twitter-data.md)
-* [Analýza dat senzoru pomocí konzoly pro dotazy Hive platformy hadoop v HDInsight](hadoop/apache-hive-analyze-sensor-data.md)
-* [Použití Hivu se službou HDInsight k analýze protokolů z webů](hadoop/apache-hive-analyze-website-log.md)
+* [Analyzovat zpoždění letů pomocí Apache Hive v HDInsight](hdinsight-analyze-flight-delay-data.md)
+* [Analýza dat Twitteru pomocí Apache Hive v HDInsight](hdinsight-analyze-twitter-data.md)
+* [Analýza dat senzoru pomocí Apache Hive konzoly pro dotazy na Apache Hadoop v HDInsight](hadoop/apache-hive-analyze-sensor-data.md)
+* [Použití Apache Hivu se službou HDInsight k analýze protokolů z webů](hadoop/apache-hive-analyze-website-log.md)
 
 [image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
 [image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png

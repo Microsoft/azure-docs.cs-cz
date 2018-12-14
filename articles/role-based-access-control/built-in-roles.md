@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f2143d15156c8f69430610eac2f467c5a6887300
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017813"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386957"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -76,8 +76,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Uživatel služby DevTest Labs](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
-| [Přispěvatel EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-contributor-preview) | Umožňuje spravovat EventGrid operací odběru události. |
-| [Čtenář EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-reader-preview) | Umožňuje číst EventGrid odběry událostí. |
+| [Přispěvatel EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-contributor-preview) | Umožňuje spravovat operace předplatných událostí Event Gridu. |
+| [Čtenář EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-reader-preview) | Umožňuje číst předplatná událostí Event Gridu. |
 | [Přispěvatel služby HDInsight domény](#hdinsight-domain-services-contributor) | Může číst, vytvářet, upravovat a odstraňovat operace, které souvisí s Domain Services a jsou nezbytné pro Balíček zabezpečení podniku HDInsight. |
 | [Přispěvatel účtů inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
 | [Přispěvatel Key Vaultu](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přistupovat k nim. |
@@ -92,9 +92,9 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Operátor spravovaných identit](#managed-identity-operator) | Čtení a přiřazování identity přiřazené uživateli |
 | [Přispěvatel skupiny pro správu](#management-group-contributor) | Role Přispěvatel skupiny pro správu |
 | [Čtečka skupiny pro správu](#management-group-reader) | Role Čtenář skupiny pro správu |
-| [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+| [Přispěvatel monitorování](#monitoring-contributor) | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 | [Monitorování metrik vydavatele](#monitoring-metrics-publisher) | Umožňuje publikovat metriky proti prostředkům Azure. |
-| [Čtenář monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+| [Čtenář monitorování](#monitoring-reader) | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 | [Přispěvatel sítě](#network-contributor) | Umožňuje správu sítí, ale ne přístup k nim. |
 | [Nové Přispěvatel účtů Relic APM](#new-relic-apm-account-contributor) | Umožňuje správu účtů a aplikací New Relic Application Performance Management, ale ne přístup k nim. |
 | [Čtenář a přístup k datům](#reader-and-data-access) | Umožňuje zobrazit všechno, ale neumožní odstraňovat ani vytvářet účet úložiště nebo obsažený prostředek. To vám také umožní přístup pro čtení a zápis ke všem datům obsaženým v účtu úložiště prostřednictvím přístupu ke klíčům účtu úložiště. |
@@ -102,9 +102,9 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel zásad prostředků (Preview)](#resource-policy-contributor-preview) | (Preview) Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvářet lístky podpory a číst prostředky a hierarchii |
 | [Přispěvatel kolekcí úloh scheduleru](#scheduler-job-collections-contributor) | Umožňuje správu kolekcí úloh Scheduleru, ale ne přístup k nim. |
 | [Přispěvatel služby Search](#search-service-contributor) | Umožňuje správu služeb Search, ale ne přístup k nim. |
-| [Správce zabezpečení](#security-admin) | Ve službě Security Center jenom: můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
+| [Správce zabezpečení](#security-admin) | Ve službě Security Center jenom: Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
 | [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší verze role. Místo toho použijte Správce zabezpečení |
-| [Čtenář zabezpečení](#security-reader) | Ve službě Security Center jenom: můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
+| [Čtenář zabezpečení](#security-reader) | Ve službě Security Center jenom: Můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
 | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery, ale ne vytvářet trezory a přiřazovat role. |
 | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
 | [Čtenář Site Recovery](#site-recovery-reader) | Umožňuje zobrazovat stav služby Site Recovery, ale ne provádět jiné operace správy. |
@@ -114,7 +114,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíčů účtů úložiště](#storage-account-key-operator-service-role) | Operátoři klíčů účtů úložiště můžou vypisovat a znovu generovat klíče pro účty úložiště. |
 | [Přispěvatel dat objektu Blob služby Storage (Preview)](#storage-blob-data-contributor-preview) | Umožňuje číst, zapisovat a odstraňovat kontejnery a data objektů blob služby Azure Storage. |
-| [Vlastník dat úložiště objektů Blob (Preview)](#storage-blob-data-owner-preview) | Umožňuje čtení, zápis, odstranění a přístupu POSIX superuživatele kontejnery objektů blob v Azure Storage a data |
+| [Vlastník dat úložiště objektů Blob (Preview)](#storage-blob-data-owner-preview) | Umožňuje číst, zapisovat a odstraňovat kontejnery a data objektů blob služby Azure Storage a přistupovat k nim jako superuživatel POSIX. |
 | [Čtenář dat objektu Blob služby Storage (Preview)](#storage-blob-data-reader-preview) | Umožňuje číst kontejnery a data objektů blob služby Azure Storage. |
 | [Přispěvatel dat fronty služby Storage (Preview)](#storage-queue-data-contributor-preview) | Umožňuje číst, zapisovat a odstraňovat fronty služby Azure Storage a jejich zprávy. |
 | [Čtenář dat fronty služby Storage (Preview)](#storage-queue-data-reader-preview) | Umožňuje číst fronty služby Azure Storage a jejich zprávy. |
@@ -149,8 +149,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/*/Delete | Nelze odstranit, role a přiřazení rolí |
 > | Microsoft.Authorization/*/Write | Nelze vytvořit role a přiřazení rolí |
 > | Microsoft.Authorization/elevateAccess/Action | Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta. |
-> | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu |
-> | Microsoft.Blueprint/blueprintAssignments/delete | Odstranit všechny artefakty podrobného plánu |
+> | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
+> | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
 
 ## <a name="reader"></a>Čtenář
 > [!div class="mx-tableFixed"]
@@ -341,23 +341,23 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
-## <a name="azure-kubernetes-service-cluster-admin-role"></a>Role správce clusteru služby Azure Kubernetes
+## <a name="azure-kubernetes-service-cluster-admin-role"></a>Role správce clusteru služby Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Popis** | Akce výpisu přihlašovacích údajů správce clusteru |
 > | **ID** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Akce** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Seznam přihlašovacích údajů clusterAdmin spravovaného clusteru |
+> | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Vypsat přihlašovací údaje správce spravovaného clusteru |
 
-## <a name="azure-kubernetes-service-cluster-user-role"></a>Role uživatele clusteru služby Azure Kubernetes
+## <a name="azure-kubernetes-service-cluster-user-role"></a>Role uživatele clusteru služby Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
 > | **Popis** | Akce výpisu přihlašovacích údajů uživatele clusteru |
 > | **ID** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Akce** |  |
-> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Seznam přihlašovacích údajů clusterUser spravovaného clusteru |
+> | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Vypsat přihlašovací údaje uživatele spravovaného clusteru |
 
 ## <a name="azure-stack-registration-owner"></a>Vlastník registrace Azure Stack
 > [!div class="mx-tableFixed"]
@@ -940,11 +940,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>Přispěvatel EventSubscription EventGrid (Preview)
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>Přispěvatel předplatného událostí Event Gridu (Preview)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat EventGrid operací odběru události. |
+> | **Popis** | Umožňuje spravovat operace předplatných událostí Event Gridu. |
 > | **ID** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -957,11 +957,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>Čtenář EventSubscription EventGrid (Preview)
+## <a name="eventgrid-eventsubscription-reader-preview"></a>Čtenář předplatného událostí Event Gridu (Preview)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje číst EventGrid odběry událostí. |
+> | **Popis** | Umožňuje číst předplatná událostí Event Gridu. |
 > | **ID** | 2414bbcf-6497-4FAF-8c65-045460748405 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -1194,7 +1194,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+> | **Popis** | Může číst všechna data monitorování a upravit nastavení monitorování. Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **ID** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Akce** |  |
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
@@ -1238,7 +1238,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
+> | **Popis** | Může číst všechna data monitorování (metriky, protokoly atd.). Viz také [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
 > | **ID** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Akce** |  |
 > | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
@@ -1348,7 +1348,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Ve službě Security Center jenom: můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
+> | **Popis** | Ve službě Security Center jenom: Můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
 > | **ID** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -1394,7 +1394,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Ve službě Security Center jenom: můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
+> | **Popis** | Ve službě Security Center jenom: Můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
 > | **ID** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -1697,11 +1697,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Vrátí výsledek zápisu objektu blob. |
 
-## <a name="storage-blob-data-owner-preview"></a>Vlastník dat úložiště objektů Blob (Preview)
+## <a name="storage-blob-data-owner-preview"></a>Vlastník dat objektu blob služby Storage (Preview)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje čtení, zápis, odstranění a přístupu POSIX superuživatele kontejnery objektů blob v Azure Storage a data |
+> | **Popis** | Umožňuje číst, zapisovat a odstraňovat kontejnery a data objektů blob služby Azure Storage a přistupovat k nim jako superuživatel POSIX. |
 > | **ID** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstraňování kontejneru. |

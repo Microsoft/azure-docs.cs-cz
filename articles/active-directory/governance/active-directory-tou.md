@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 12/10/2018
+ms.date: 12/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 448ef296af3ceaffffa1a4a69060916afd9abdc4
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 6ec3ca7c1323b342612293c5ea3ca1443370c9b4
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185677"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386380"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít pracovat s podmínkami použití.
@@ -313,6 +313,8 @@ Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu 
 ## <a name="b2b-guests-preview"></a>Hosté B2B (Preview)
 
 Většina organizací má proces místo jejich zaměstnanci mohli souhlas s jejich organizace podmínky použití a ochrana osobních údajů. Ale jak můžete vynutit stejné souhlasy pro Azure AD business-to-business (B2B) hosté přidané prostřednictvím služby SharePoint nebo týmy? Pomocí podmíněného přístupu a podmínky použití, můžete vynutit zásady přímo na uživatele typu Host B2B. Během toku uplatnění pozvánky se zobrazí uživatele s podmínkami použití. Tato podpora je aktuálně ve verzi preview.
+
+Podmínky použití se zobrazí pouze tehdy, pokud má uživatel účet hostovaný v Azure AD. SharePoint Online má v současné době [ad-hoc externí sdílení příjemce prostředí](/sharepoint/what-s-new-in-sharing-in-targeted-release) sdílení dokumentu nebo složky, která nevyžaduje, aby uživatel měl účet guest. V takovém případě se nezobrazí podmínky použití.
 
 ![Všichni uživatelé typu host](./media/active-directory-tou/b2b-guests.png)
 

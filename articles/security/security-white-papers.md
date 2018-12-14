@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 214598291e69acfec2064738f798a48180ad05a6
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bb23dd98768c4aaa343082bbc2caae43071a5e1f
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322991"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385665"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
@@ -41,3 +41,5 @@ ms.locfileid: "53322991"
 |[Izolace ve veřejném cloudu Azure](azure-isolation.md)|Popisuje, jak Azure poskytuje izolaci proti škodlivým a uživatele bez zlých uživatelům. Slouží jako vodítko při navrhování řešení v cloudu tím, že nabízí různé možnosti izolace architekty. Hlavním cílem je na ovládací prvky zabezpečení určených pro zákazníky a nebude pokoušet o adresu smlouvy o úrovni služeb, cenové modely a aspekty postupů DevOps.|
 |[Přehled o dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Nabídky dodržování předpisů Azure, včetně dosažené certifikace, osvědčení, ověření, autorizace a hodnocení vytvářených nezávislé auditování podniky třetích stran, stejně jako smluvní změny, popisuje tento dokument ke stažení vlastní posouzení a pokyny k dokumentům od společnosti Microsoft. <br/> Každá nabídka popis stavy, které určených pro zákazníky služby Azure jsou v oboru pro posouzení a poskytuje odkazy na materiály ke stažení zákazníkům povinností dodržování předpisů.|
 |[Správa zabezpečení v Azure](azure-security-management.md)|Popisuje problémy v vzdáleného přístupu k prostředkům Azure. Povaha správu vzdáleného přístupu požadavky na cloudu a tedy zabezpečení je prvořadá. Obsahuje pokyny pro obecné zabezpečení, konfiguraci klienta, osvědčené postupy a provozní zásad a postupů. |
+|[Důležité informace o zabezpečení Azure Active Directory](https://aka.ms/aaddatawhitepaper) | Dokument ke stáhnutí vysvětluje různých komponent nástroje Azure Active Directory a jejich interakce mezi sebou. Poskytuje přehled, jak chránit různé součásti, zabezpečení, šifrování nebo hodnoty hash svá data na cestě (například přes Internet) a tom, jak je chráněný v klidovém stavu. Vysvětluje různých datacentrech Azure AD a jejich interakce s místními adresáři, jakož i toků do a z Azure AD. A konečně popisuje provozní postupy používané technický tým služby Azure AD ke správě a zabezpečení služby.|
+

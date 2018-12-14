@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 89e9b7190a3c419c256513e477f85313e4f9f3bd
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134161"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384883"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -31,14 +31,14 @@ Tyto protokoly se liší od [protokolu aktivit](monitoring-overview-activity-log
 
 Tyto protokoly se také liší od hostovaného operačního systému – úroveň diagnostických protokolů. Diagnostické protokoly hostovaného operačního systému jsou tyto shromážděné agentem běžících v rámci virtuálního počítače nebo jiné podporovaný typ prostředku. Diagnostické protokoly na úrovni prostředku vyžadují specifické podle prostředků data z platformy Azure, bez agenta a zachycení, zatímco diagnostické protokoly úrovni operačního systému hosta zachytávat data z operační systém a aplikace běžící na virtuálním počítači.
 
-Ne všechny služby podpory diagnostické protokoly, které jsou zde popsány. [Tento článek obsahuje části najdou služby, které podporují diagnostické protokoly](./monitoring-diagnostic-logs-schema.md).
+Ne všechny služby podpory diagnostické protokoly, které jsou zde popsány. [Tento článek obsahuje části najdou služby, které podporují diagnostické protokoly](./../azure-monitor/platform/tutorial-dashboards.md).
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Co můžete dělat s využitím diagnostických protokolů
 Tady jsou některé věci, které vám pomůžou s využitím diagnostických protokolů:
 
 ![Logické umístění diagnostické protokoly](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
-* Uložte je do [ **účtu úložiště** ](monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
+* Uložte je do [ **účtu úložiště** ](../azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
 * [Stream je **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 * Analyzovat pomocí [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), ve kterém budou data zapsána okamžitě ke službě Log Analytics bez nutnosti nejprve zapíše data do úložiště.  
 
@@ -68,13 +68,13 @@ Tato nastavení se konfigurují snadno v portálu s příkazy prostředí Azure 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
+> *Například*: Metrika 'Příchozí zprávy' v Centru událostí můžete prozkoumat a převést na graf úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 
 ## <a name="how-to-enable-collection-of-diagnostic-logs"></a>Jak povolit shromažďování diagnostických protokolů
 
-Je možné povolit shromažďování diagnostických protokolů [při vytváření prostředku v šabloně Resource Manageru](./monitoring-enable-diagnostic-logs-using-template.md) nebo po vytvoření prostředku ze stránky tohoto prostředku na portálu. Můžete také povolit shromažďování v libovolném bodě pomocí příkazů prostředí Azure PowerShell nebo rozhraní příkazového řádku nebo pomocí REST API služby Azure Monitor.
+Je možné povolit shromažďování diagnostických protokolů [při vytváření prostředku v šabloně Resource Manageru](./../azure-monitor/platform/diagnostic-logs-stream-template.md) nebo po vytvoření prostředku ze stránky tohoto prostředku na portálu. Můžete také povolit shromažďování v libovolném bodě pomocí příkazů prostředí Azure PowerShell nebo rozhraní příkazového řádku nebo pomocí REST API služby Azure Monitor.
 
 > [!TIP]
 > Tyto pokyny se nemusí vztahovat přímo ke každému prostředku. Zobrazit schéma odkazy v dolní části této stránky můžete porozumět speciální kroky, které se můžou vztahovat na určité typy prostředků.
@@ -229,7 +229,7 @@ Přidání nastavení diagnostiky zobrazí zobrazení nastavení diagnostiky, kd
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Podporované služby, kategorie a schémata pro diagnostické protokoly
 
-[Najdete v článku](monitoring-diagnostic-logs-schema.md) úplný seznam podporovaných služeb a kategorie protokolu a schémat, které používají tyto služby.
+[Najdete v článku](../azure-monitor/platform/tutorial-dashboards.md) úplný seznam podporovaných služeb a kategorie protokolu a schémat, které používají tyto služby.
 
 ## <a name="next-steps"></a>Další postup
 

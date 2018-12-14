@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7b02f5b55b12b9e35e749ff845e2af2f6598364b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0524e38f155049c630ace7f33805ef230c8dccca
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285491"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344240"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -479,5 +479,5 @@ Tady jsou kroky nápravy u každé chyby:
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o novém [prostředí Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Další informace o novém [prostředí Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Další informace o [upozornění protokolů ve službě Azure Alerts](alerts-unified-log.md).

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a0fdab06606a88fafa803a9a112c05452578cfeb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3dcaba9c0512cbe2c4cf1cd14338a88209a80e85
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252860"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385308"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a používání dílčích oprav modulu runtime ve službě Azure App Service
 
@@ -81,7 +81,7 @@ Když ze starší verze je zastaralá, datum odebrání je oznámili tak, aby mo
 
 ## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak můžete dotazovat stav aktualizace operačního systému a modul runtime na Moje instance?  
 
-Zatímco důležité informace o operačním systému je uzamčen před přístupem (naleznete v tématu [funkce operačního systému ve službě Azure App Service](web-sites-available-operating-system-functionality.md)), [konzola Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) umožňuje dotazování vaší instance služby App Service týkající se operačního systému verze a verze modulu runtime. 
+Zatímco důležité informace o operačním systému je uzamčen před přístupem (naleznete v tématu [funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)), [konzola Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console) umožňuje dotazování vaší instance služby App Service týkající se operačního systému verze a verze modulu runtime. 
 
 Následující tabulka ukazuje jak verzí systému Windows a modulu runtime jazyka, na kterých běží vaše aplikace:
 

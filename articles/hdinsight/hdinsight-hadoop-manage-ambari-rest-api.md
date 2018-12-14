@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08b8d980b46ccbbce47c4f165a621daa14a95fa2
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b5083a2af335bd40dc55f7f325ac0a4ad125b682
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012908"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384221"
 ---
-# <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Ambari REST API
+# <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Apache Ambari REST API
 
 [!INCLUDE [ambari-selector](../../includes/hdinsight-ambari-selector.md)]
 
-Další informace o použití rozhraní Ambari REST API ke správě a monitorování clusterů systému Hadoop v Azure HDInsight.
+Zjistěte, jak použít rozhraní Apache Ambari REST API ke správě a monitorování clusterů systému Apache Hadoop v Azure HDInsight.
 
 Apache Ambari zjednodušuje správu a monitorování clusteru Hadoop tím, že poskytuje snadno pomocí webového uživatelského rozhraní a rozhraní REST API. Ambari je zahrnuta v clusterech HDInsight, které používají operační systém Linux. Ambari slouží k monitorování clusteru a provést změny konfigurace.
 
-## <a id="whatis"></a>Co je Ambari
+## <a id="whatis"></a>Co je Apache Ambari
 
 [Apache Ambari](http://ambari.apache.org) poskytuje webové uživatelské rozhraní, které lze použít ke správě a monitorování clusterů systému Hadoop. Vývojářům můžete integrovat tyto funkce do svých aplikací s použitím [rozhraní Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -32,7 +32,7 @@ Ambari je dostupné ve výchozím nastavení s clustery HDInsight založené na 
 
 ## <a name="how-to-use-the-ambari-rest-api"></a>Použití rozhraní Ambari REST API
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Informace a příklady v tomto dokumentu vyžadují clusteru služby HDInsight, který používá operační systém platformy Linux. Další informace najdete v tématu [Začínáme s HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
 V příkladech v tomto dokumentu jsou k dispozici pro prostředí Bourne (bash) a prostředí PowerShell. Příklady bash byly testovány s verzí bash GNU 4.3.11, ale by měla fungovat s další prostředí Unix. Příklady prostředí PowerShell byly testovány pomocí prostředí PowerShell 5.0, ale by měla fungovat s Powershellem 3.0 nebo vyšší.
@@ -47,7 +47,7 @@ Ať už pomocí Bashe nebo Powershellu, musíte mít také [jq](https://stedolan
 
 Základní identifikátor URI pro rozhraní Ambari REST API na HDInsight je https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, kde **CLUSTERNAME** je název vašeho clusteru.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Název clusteru v části plně kvalifikovaný název (FQDN) identifikátoru URI (CLUSTERNAME.azurehdinsight.net) je velká a malá písmena, další výskyty v identifikátoru URI jsou malá a velká písmena. Například, pokud je název vašeho clusteru `MyCluster`, platné identifikátory URI jsou následující:
 > 
 > `https://mycluster.azurehdinsight.net/api/v1/clusters/MyCluster`
@@ -64,7 +64,7 @@ Základní identifikátor URI pro rozhraní Ambari REST API na HDInsight je http
 
 Připojení k Ambari na HDInsight vyžaduje protokol HTTPS. Použijte název účtu správce (výchozí hodnota je **správce**) a heslo, které jste zadali při vytváření clusteru.
 
-## <a name="examples-authentication-and-parsing-json"></a>Příklady: Ověření a parsování formátu JSON
+## <a name="examples-authentication-and-parsing-json"></a>Příklady: Ověřování a parsování formátu JSON
 
 Následující příklady ukazují, jak vytvořit žádost o získání základní rozhraní Ambari REST API:
 
@@ -72,7 +72,7 @@ Následující příklady ukazují, jak vytvořit žádost o získání základn
 curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Bash příklady v tomto dokumentu vytvořit následující předpoklady:
 >
 > * Výchozí hodnota je přihlašovací jméno pro cluster `admin`.
@@ -85,7 +85,7 @@ $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/c
 $resp.Content
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Příklady prostředí PowerShell v tomto dokumentu vytvořit následující předpoklady:
 >
 > * `$creds` je objekt přihlašovacích údajů, který obsahuje přihlašovací jméno správce a heslo pro cluster. Tuto hodnotu lze nastavit pomocí `$creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"` a po zobrazení výzvy přihlašovacích údajů.
@@ -131,12 +131,12 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Přestože většina příkladů v tomto dokumentu využívají `ConvertFrom-Json` zobrazíte prvky z dokumentu odpovědi [Ambari aktualizace konfigurace](#example-update-ambari-configuration) příkladu jq. Jq v tomto příkladu slouží k vytvoření nové šablony z dokumentu JSON odpovědi.
 
-Úplný popis rozhraní REST API najdete v části [V1 referenční dokumentace rozhraní API Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Úplný popis rozhraní REST API najdete v části [Apache Ambari API Reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-## <a name="example-get-the-fqdn-of-cluster-nodes"></a>Příklad: Získejte plně kvalifikovaný název domény uzlů clusteru
+## <a name="example-get-the-fqdn-of-cluster-nodes"></a>Příklad: Získat plně kvalifikovaný název domény uzlů clusteru
 
 Při práci s HDInsight, budete muset vědět, plně kvalifikovaný název domény (FQDN) uzlu clusteru. Můžete snadno získat plně kvalifikovaný název domény pro různé uzly v clusteru pomocí následujících příkladech:
 
@@ -198,7 +198,7 @@ Při práci s HDInsight, budete muset vědět, plně kvalifikovaný název domé
 
 ## <a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Příklad: Získání interní IP adresy uzlů clusteru
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > IP adresy vrácených příklady v této části nejsou přímo přístupné přes internet. Jsou dostupné v rámci virtuální sítě Azure, která obsahuje HDInsight cluster.
 >
 > Další informace o práci s HDInsight a virtuálními sítěmi, najdete v části [možnosti rozšíření HDInsight s použitím vlastní virtuální sítě Azure](hdinsight-extend-hadoop-virtual-network.md).
@@ -213,7 +213,7 @@ do
 done
 ```
 
-> [!TIP]
+> [!TIP]  
 > Předchozí příklady výzvu k zadání hesla. Tento příklad se spouští `curl` příkazu více než jednou, takže heslo je k dispozici jako `$PASSWORD` více výzev.
 
 ```powershell
@@ -248,7 +248,7 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties.'fs.defaultFS'
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tyto příklady vrátí první konfigurace pro server (`service_config_version=1`) obsahující tyto informace. Pokud načtete hodnotu, která byla změněna po vytvoření clusteru, budete muset seznamu verze konfigurace a načíst nejnovější.
 
 Vrácená hodnota je podobná následující příklady:
@@ -289,7 +289,7 @@ Vrácená hodnota je podobná následující příklady:
 
     Vrácená hodnota je podobný `/clusters/CLUSTERNAME/`. Tato hodnota je cesta v rámci účtu Data Lake Store. Tato cesta je kořenový systému HDFS kompatibilní souborů pro cluster. 
 
-> [!NOTE]
+> [!NOTE]  
 > `Get-AzureRmHDInsightCluster` Rutiny poskytované [prostředí Azure PowerShell](/powershell/azure/overview) také vrátí informace o úložiště pro cluster.
 
 
@@ -341,7 +341,7 @@ Vrácená hodnota je podobná následující příklady:
 
     V tomto příkladu vrátí dokumentu JSON, který obsahuje aktuální konfiguraci `core-site` komponenty.
 
-## <a name="example-update-configuration"></a>Příklad: Aktualizace konfigurace
+## <a name="example-update-configuration"></a>Příklad: Konfigurace aktualizace
 
 1. Získejte aktuální konfiguraci, která Ambari ukládá jako "požadovanou konfiguraci":
 
@@ -392,7 +392,7 @@ Vrácená hodnota je podobná následující příklady:
     $resp.Content | jq --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Nahraďte **spark thrift-sparkconf** a **počáteční** pomocí součásti a značku, kterou chcete načíst konfiguraci.
    
     Chcete-li data načtená z HDInsight do nové šablony konfigurace se používá Jq. Tyto příklady konkrétně provést následující akce:
@@ -517,7 +517,7 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
     }
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > `href` Hodnoty vrácené pomocí tohoto identifikátoru URI používá interní IP adresa uzlu clusteru. Pro použití z mimo cluster, nahraďte část "10.0.0.18:8080" plně kvalifikovaný název domény clusteru. 
     
     Následující příkazy načtou stav požadavku:
@@ -572,5 +572,5 @@ V tomto okamžiku Pokud podíváte na webové uživatelské rozhraní Ambari, sl
 
 ## <a name="next-steps"></a>Další postup
 
-Úplný popis rozhraní REST API najdete v části [V1 referenční dokumentace rozhraní API Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Úplný popis rozhraní REST API najdete v části [Apache Ambari API Reference V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 88a4c6dbe9311a054c6ed93df0005d32e6d21672
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271789"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386532"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -64,13 +64,13 @@ Průběžná integrace / průběžné nasazování umožňuje automaticky integr
 
 - Použití [kanály Azure](/azure/devops/pipelines) implementovat průběžné nasazování a automatizovat celý proces od potvrzení změn kódu do produkčního prostředí založené na vaše testy CI/CD.
 - Použití [brány kvality](/devops/pipelines/release/approvals/gates) integrovat monitorování do před nasazením nebo po nasazení. Tím se zajistí, že vaše aplikace přesunout z dev do produkčního prostředí a případné rozdíly v prostředí infrastruktury nebo škálování není mít negativní vliv klíčových ukazatelů výkonu naplňujete metriky stavu a výkonu (KPI).
-- [Udržovat samostatné monitorování instance](../application-insights/app-insights-separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
+- [Udržovat samostatné monitorování instance](../application-insights/app-insights-separate-resources.md) mezi vývojových, testovacích, testovací a produkční prostředí jiného nasazení. Tím se zajistí, že shromážděných dat relevantní napříč přidružené aplikace a infrastrukturu. Pokud budete potřebovat ke korelaci dat napříč prostředími, můžete použít [grafy více prostředků v Průzkumníku metrik](../azure-monitor/platform/metrics-charts.md) nebo vytvořit [dotazy napříč prostředky ve službě Log Analytics](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Vytváření užitečných výstrahy s akcemi
 Důležité aspekty monitorování je proaktivnímu upozorňování na správci všech aktuálních a předpokládaných problémů. 
 
-- Vytvoření [výstrah ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) na základě protokolů a metrik k identifikaci předvídatelné selhání stavy. Měli byste mít cíl provádění všech výstrah užitečné, což znamená, že představují skutečné kritického stavu a které se snaží snížit počet falešně pozitivních výsledků. Použití [dynamickými prahovými hodnotami](platform/alerts-dynamic-thresholds.md) automaticky vypočítat směrné plány na data metriky místo definování vlastní statické prahové hodnoty. 
+- Vytvoření [výstrah ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md) na základě protokolů a metrik k identifikaci předvídatelné selhání stavy. Měli byste mít cíl provádění všech výstrah užitečné, což znamená, že představují skutečné kritického stavu a které se snaží snížit počet falešně pozitivních výsledků. Použití [dynamickými prahovými hodnotami](platform/alerts-dynamic-thresholds.md) automaticky vypočítat směrné plány na data metriky místo definování vlastní statické prahové hodnoty. 
 - Definování akcí pro oznámení používat nejúčinnějším způsobem oznámení vašim správcům. K dispozici [akcí pro oznámení](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) jsou SMS, e-mailů, nabízená oznámení nebo hlasových hovorů.
 - Použití rozšířené akce, které [připojení k nástroji ITSM](platform/itsmc-overview.md) nebo jiným systémům pro správu výstrah prostřednictvím [webhooky](platform/activity-log-alerts-webhook.md).
 - Napravit situacích identifikovat ve výstrahách taky [runbooků Azure Automation](../automation/automation-webhooks.md) nebo [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , který můžete spustit z výstrahy pomocí webhooků. 

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 06/21/2018
+ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 7d3361b44d47fd97c14f677e5e4bbc6c1ee5ad3f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608295"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385121"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu hostů pomocí Azure AD kontroly přístupu
 
@@ -39,7 +39,7 @@ Můžete také snadno zajistit, že uživatelé typu Host mají odpovídající 
 
 Kontroly přístupu jsou k dispozici v edici Premium P2 služby Azure AD, která je součástí řešení Microsoft Enterprise Mobility + Security, E5. Další informace najdete v článku [Edice služby Azure Active Directory](../fundamentals/active-directory-whatis.md). Každý uživatel, který komunikuje s touto funkcí, včetně akcí jako vytváření kontroly, vyplnění kontroly nebo potvrzení přístupu, musí mít licenci. 
 
-Pokud budete chtít požádat uživatele typu Host ke kontrole svůj vlastní přístup, přečtěte si informace o licencování uživatelů typu Host. Další informace najdete v tématu [licencování spolupráce B2B ve službě Azure AD](../b2b/licensing-guidance.md).
+Můžete také zadávat do kontrolovat svůj vlastní přístup uživatelů typu Host. Každé placené Azure AD Premium P2 licencí, přiřadit jeden z uživatelů vaší vlastní organizaci můžete pozvat až pět uživatelů typu Host externí příspěvek uživatele B2B. Tyto uživatele typu Host můžete také použít funkce Azure AD Premium P2. Další informace najdete v tématu [licencování spolupráce B2B ve službě Azure AD](../b2b/licensing-guidance.md).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Vytvoření a provedení kontroly přístupu hostů
 

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ab498a108eba39088aa610188918934dd4ec1d3e
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078949"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386770"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Připojení Průzkumníka služby storage k předplatnému Azure Stack nebo účet úložiště
 
@@ -45,9 +45,16 @@ Pro Azure Stack Development Kit je potřeba vyexportovat kořenový certifikát 
 
 2. V **souboru**vyberte **Přidat/odebrat modul Snap-in**a pak přidejte **certifikáty** ke správě **Můj uživatelský účet**.
 
-3. V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates** najít **AzureStackSelfSignedRootCert**.
+3.  V části **Console Root\Certificated (Local Computer) \Trusted Root Certification Authorities\Certificates**.
 
-    ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
+    - ASDK, Najít **AzureStackSelfSignedRootCert**.
+
+        ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
+
+    - Integrovaný systém vyhledejte kořenový certifikát externí certifikáty. 
+    
+        ![Načtení kořenového certifikátu služby Azure Stack pomocí mmc.exe](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
+        
 
 4. Klikněte pravým tlačítkem na certifikát, vyberte **všechny úkoly** > **exportovat**a pak postupujte podle pokynů a vyexportujte certifikát s **kódování Base-64 X.509 (. CER)**.
 

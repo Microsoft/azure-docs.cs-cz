@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b763da25fb5a707e6a0c0cee1aabbe3eda03ee4c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8dae593dea36944f8db037803c0dfac68cbac7c8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312370"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384900"
 ---
 # <a name="indexers-in-azure-search"></a>Indexery ve službě Azure Search
 
@@ -47,7 +47,8 @@ Indexery procházet úložiště dat v Azure.
 * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md) 
+    * Mějte prosím na paměti, že Azure Table Storage se nepodporuje pro [kognitivního vyhledávání](cognitive-search-concept-intro.md)
 
 
 ## <a name="basic-configuration-steps"></a>Postup základní konfigurace

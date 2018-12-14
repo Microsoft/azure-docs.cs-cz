@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 79e4d15c79a7f905a33fe471bcfda3e7ca367b01
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0d2b7a5e3239cf46c41db0a086b804c34df5d6e2
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996455"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386940"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -155,7 +155,7 @@ Chcete-li upřesněte svůj dotaz tak, že přidáte filtr, zvolte **+ přidat**
 
 Spolu s Azure Log Analytics můžete rozšířit použití diagnostických dat vaší aplikace logiky s ostatními službami Azure, například: 
 
-* [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
 Můžete získat v reálném čase sledování pomocí telemetrie a analýz z jiných služeb, jako jsou [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
@@ -174,7 +174,7 @@ Na základě možností, které chcete nastavit, ujistěte se, že jste první [
 
 ## <a name="set-up-alerts-for-your-logic-app"></a>Nastavení výstrah pro aplikaci logiky
 
-Pokud chcete sledovat určité metriky nebo došlo k překročení prahové hodnoty pro svou aplikaci logiky, nastavte [výstrah ve službě Azure](../monitoring-and-diagnostics/monitoring-overview-alerts.md). Další informace o [metrik v Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
+Pokud chcete sledovat určité metriky nebo došlo k překročení prahové hodnoty pro svou aplikaci logiky, nastavte [výstrah ve službě Azure](../azure-monitor/platform/alerts-overview.md). Další informace o [metrik v Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
 Postup nastavení výstrah bez [Azure Log Analytics](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků. Pro pokročilejší kritéria výstrahy a akce [nastavení Log Analytics](#azure-diagnostics) příliš.
 

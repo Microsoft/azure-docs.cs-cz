@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: b552918f6b415bcd55c7c27c80ff721df77ca99f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4a9f9c2592c7bf27e1caeb09dd492e4700768117
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276073"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383472"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
-Azure teď podporuje sledování [novou výstrahu typu metrika](monitoring-overview-alerts.md) která má významné výhody přes starší [klasického upozornění metrik](../azure-monitor/platform/alerts-classic.overview.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
+Azure teď podporuje sledování [novou výstrahu typu metrika](../azure-monitor/platform/alerts-overview.md) která má významné výhody přes starší [klasického upozornění metrik](../azure-monitor/platform/alerts-classic.overview.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Novější upozornění podporují podmnožinu typů prostředků (rostoucí). Tento článek uvádí tuto podmnožinu.
 
 
-Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky. Další informace získáte [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md).
+Můžete také novějších upozornění metrik na oblíbené protokoly analýzy protokolu extrahovat jako metriky. Další informace získáte [upozornění metriky pro protokoly](../azure-monitor/platform/alerts-metric-logs.md).
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, Powershellu, rozhraní příkazového řádku, REST podpory
-V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/), nebo [šablon Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí Powershellu a Azure CLI verze 2.0 a vyšší je již brzy.
+V současné době můžete pouze na portálu Azure vytvořit novějších upozornění metrik [rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/), nebo [šablon Resource Manageru](../azure-monitor/platform/alerts-metric-create-templates.md). Podpora konfigurace novější výstrah pomocí Powershellu a Azure CLI verze 2.0 a vyšší je již brzy.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
-Novějších upozornění metrik podporují výstrahy pro metriky, které dimenze použít. Dimenze můžete použít k filtrování vaší metrika správnou úroveň. Všechny podporované metriky spolu s příslušné dimenze můžete prozkoumat a vizualizovat z [Azure Monitor – Průzkumník metrik](monitoring-metric-charts.md).
+Novějších upozornění metrik podporují výstrahy pro metriky, které dimenze použít. Dimenze můžete použít k filtrování vaší metrika správnou úroveň. Všechny podporované metriky spolu s příslušné dimenze můžete prozkoumat a vizualizovat z [Azure Monitor – Průzkumník metrik](../azure-monitor/platform/metrics-charts.md).
 
 Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Azure monitor:
 
@@ -121,6 +121,6 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o novém [výstrahy prostředí](monitoring-overview-alerts.md).
+* Další informace o novém [výstrahy prostředí](../azure-monitor/platform/alerts-overview.md).
 * Další informace o [upozornění protokolů ve službě Azure](../azure-monitor/platform/alerts-unified-log.md).
-* Další informace o [výstrah ve službě Azure](monitoring-overview-alerts.md).
+* Další informace o [výstrah ve službě Azure](../azure-monitor/platform/alerts-overview.md).

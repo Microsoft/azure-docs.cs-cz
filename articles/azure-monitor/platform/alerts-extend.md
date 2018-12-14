@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 7896a205cd281f0d11724f6f549b9aa247180bac
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2028b9555ec20fc5e97511a2a908351b66aec216
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53285015"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385495"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 
@@ -27,7 +27,7 @@ Existuje několik výhod, vytváření a Správa výstrah na webu Azure Portal, 
 
 - Na rozdíl od portálu Operations Management Suite, kde pouze 250 výstrahy může vytvořit a zobrazit, Azure Alerts nemá žádné takové omezení.
 - Ve službě Azure Alerts můžete spravovat, výčet a zobrazit všechny typy výstrah. Dříve vám může tak učinit pouze pro upozornění Log Analytics.
-- Můžete omezit přístup pouze k monitorování a upozorňování s využitím uživatelům [role Azure Monitor](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
+- Můžete omezit přístup pouze k monitorování a upozorňování s využitím uživatelům [role Azure Monitor](../../azure-monitor/platform/roles-permissions-security.md).
 - Ve výstrahách Azure, můžete použít [skupiny akcí](../../azure-monitor/platform/action-groups.md). To umožňuje mít více než jednu akci pro každou výstrahu. Zprávy SMS, můžete odeslat hlasový hovor, volání runbooku Azure Automation, vyvolat webhook a nakonfigurujete konektor správy služeb IT (ITSM). 
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozšiřovat vaše upozornění
@@ -52,7 +52,7 @@ Po upozornění jsou rozšířeny, aby Azure Alerts, nadále být k dispozici na
 Při pokusu upravit existující upozornění nebo vytvořit nové oznámení na portálu Operations Management Suite, budete automaticky přesměrováni na Azure Alerts.  
 
 > [!NOTE]
-> Ujistěte se, že oprávnění přiřazená uživateli osobám, které potřebujete k přidání nebo úpravě výstrahy jsou správně přiřazené v Azure. Chcete-li pochopit, jaká oprávnění je nutné udělit, přečtěte si téma [oprávnění pro pomocí Azure monitoru a výstrahy](../../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).  
+> Ujistěte se, že oprávnění přiřazená uživateli osobám, které potřebujete k přidání nebo úpravě výstrahy jsou správně přiřazené v Azure. Chcete-li pochopit, jaká oprávnění je nutné udělit, přečtěte si téma [oprávnění pro pomocí Azure monitoru a výstrahy](../../azure-monitor/platform/roles-permissions-security.md).  
 > 
 
 Můžete pokračovat k vytvoření výstrahy [rozhraní API služby Log Analytics](../../azure-monitor/platform/api-alerts.md) a [šablony prostředku Log Analytics](../../azure-monitor/insights/solutions-resources-searches-alerts.md). Pokud tak učiníte, musíte zahrnout skupiny akcí.
@@ -60,5 +60,5 @@ Můžete pokračovat k vytvoření výstrahy [rozhraní API služby Log Analytic
 ## <a name="next-steps"></a>Další postup
 
 * Další informace o nástrojích pro [zahájit rozšiřování upozornění z Log Analytics do Azure](alerts-extend-tool.md).
-* Další informace o [prostředí Azure Alerts](../../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+* Další informace o [prostředí Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Zjistěte, jak vytvořit [upozornění protokolů ve službě Azure Alerts](alerts-unified-log.md).

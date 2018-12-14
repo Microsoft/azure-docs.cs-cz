@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2c4730b3ec84ca14bcc3e93ed82faf37b15970d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0d27b16690516becc586678f8cf3edea234feeea
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010367"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383391"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>Pochopení a vyřešení chyb přijatých z WebHCat v HDInsight
 
@@ -22,18 +22,18 @@ Další informace o chyb oznámených při použití WebHCat s HDInsight a způs
 
 ## <a name="what-is-webhcat"></a>Co je WebHCat
 
-[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je rozhraní REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulky a vrstva správy úložiště pro Hadoop. WebHCat je povolené ve výchozím nastavení v clusterech HDInsight a různé nástroje používají k odesílání úloh, není nutné se připojit ke clusteru můžete získat stav úlohy, atd.
+[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) je rozhraní REST API pro [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog), tabulky a vrstva správy úložiště pro Apache Hadoop. WebHCat je povolené ve výchozím nastavení v clusterech HDInsight a různé nástroje používají k odesílání úloh, není nutné se připojit ke clusteru můžete získat stav úlohy, atd.
 
 ## <a name="modifying-configuration"></a>Změna konfigurace
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Několik chyb uvedených v tomto dokumentu dojít, protože se překročila nakonfigurované maximum. Když krok řešení uvádí, že můžete změnit hodnotu, musíte použít jednu z následujících provádět změny:
 
-* Pro **Windows** clustery: nakonfigurujte hodnotu při vytváření clusteru pomocí skriptových akcí. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions.md).
+* Pro **Windows** clustery: Nakonfigurujte tuto hodnotu při vytváření clusteru pomocí skriptových akcí. Další informace najdete v tématu [vývoj akcí skriptů](hdinsight-hadoop-script-actions.md).
 
-* Pro **Linux** clustery: použití Ambari (web nebo rozhraní REST API) ke změně hodnoty. Další informace najdete v tématu [Správa HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
+* Pro **Linux** clustery: Použití Apache Ambari (web nebo rozhraní REST API) ke změně hodnoty. Další informace najdete v tématu [Správa HDInsight pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ### <a name="default-configuration"></a>Výchozí konfigurace

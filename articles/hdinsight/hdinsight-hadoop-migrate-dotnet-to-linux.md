@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: dc7cfb4df768fb7554bc7b5c772a6a778a8a793a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008109"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384190"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro Windows na základě HDInsight založených na Linuxu HDInsight
 
@@ -26,7 +26,7 @@ Mono verze 4.2.1 je součástí HDInsight verze 3.6. Další informace o verzi M
 
 Další informace o kompatibilitě mezi Mono a .NET najdete v článku [Mono compatibility (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Je kompatibilní s Mono rozhraní SCP.NET. Další informace o použití SCP.NET architektuře Mono, naleznete v tématu [vývoj topologií C# pro Apache Storm v HDInsight pomocí Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="automated-portability-analysis"></a>Automatizované přenositelnost analýzy
@@ -47,7 +47,7 @@ Další informace o kompatibilitě mezi Mono a .NET najdete v článku [Mono com
 
     ![Dialogové okno výsledků analyzátor přenositelnosti](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Analyzátor nemůže zachytit všech problémů v rámci řešení. Například cestu k souboru z `c:\temp\file.txt` se považuje za OK, pokud Mono běží na Windows. Stejné cesta není platná na platformě Linux.
 
 ## <a name="manual-portability-analysis"></a>Ruční přenositelnost analýzy
@@ -64,12 +64,12 @@ Jakmile změnili jste svoje řešení podle doporučení z .NET Portability Anal
 
 Další informace o přístup k protokolům najdete v následujících dokumentech:
 
-* [Přístup k protokolům aplikací YARN ve službě HDInsight s Linuxem](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Přístup aplikací Apache Hadoop YARN přihlášení založené na Linuxu HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 
 ## <a name="next-steps"></a>Další postup
 
 * [Použití jazyka C# s MapReduce v HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Použití uživatelem definované funkce jazyka C# s Hivem a Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Vývoj topologií C# pro Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Vývoj C# topologií pro Apache Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)

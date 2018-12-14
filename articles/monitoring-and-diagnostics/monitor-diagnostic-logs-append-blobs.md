@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1d580e6468044f14b6a206911c4da237f774af3b
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959873"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53386515"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava pro změnu formátu pro diagnostické protokoly Azure monitoru archivovat do účtu úložiště
 
 > [!WARNING]
-> Pokud odesíláte [diagnostických protokolů prostředků Azure nebo metrik na účet úložiště pomocí nastavení diagnostiky prostředků](./monitoring-archive-diagnostic-logs.md) nebo [profily protokolů aktivit do účtu úložiště pomocí protokolů](./monitoring-archive-activity-log.md), formát dat v účet úložiště se změní na řádky JSON na 1. listopadu 2018. Následující pokyny popisují dopad a k aktualizaci nástrojů pro zpracování na nový formát. 
+> Pokud odesíláte [diagnostických protokolů prostředků Azure nebo metrik na účet úložiště pomocí nastavení diagnostiky prostředků](./../azure-monitor/platform/archive-diagnostic-logs.md) nebo [profily protokolů aktivit do účtu úložiště pomocí protokolů](./../azure-monitor/platform/archive-activity-log.md), formát dat v účet úložiště se změní na řádky JSON na 1. listopadu 2018. Následující pokyny popisují dopad a k aktualizaci nástrojů pro zpracování na nový formát. 
 >
 > 
 
@@ -31,9 +31,9 @@ Azure Monitor nabízí možnosti, které vám umožní odesílat data diagnostik
 * Nastavení diagnostiky a 1. listopadu dál posílat data do aktuálního formátu až do 1. listopadu.
 * Tato změna dojde současně ve všech veřejných cloudových oblastech. Změna ještě nedojde v cloudech Azure China, Azure Germany a Azure Government.
 * Tato změna má vliv na následující typy dat:
-  * [Diagnostické protokoly Azure prostředků](./monitoring-archive-diagnostic-logs.md) ([najdete v seznamu prostředků zde](./monitoring-diagnostic-logs-schema.md))
+  * [Diagnostické protokoly Azure prostředků](./../azure-monitor/platform/archive-diagnostic-logs.md) ([najdete v seznamu prostředků zde](./../azure-monitor/platform/tutorial-dashboards.md))
   * [Metriky prostředků Azure se exportované sadou nastavení diagnostiky](./monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)
-  * [Azure data protokolu aktivit se exportované sadou profily protokolů](./monitoring-archive-activity-log.md)
+  * [Azure data protokolu aktivit se exportované sadou profily protokolů](./../azure-monitor/platform/archive-activity-log.md)
 * Tato změna nemá vliv:
   * Protokoly toku Network
   * Protokoly služby Azure nejsou k dispozici prostřednictvím služby Azure Monitor ještě (například diagnostické protokoly služby Azure App Service, protokoly analýzy úložiště)
@@ -135,5 +135,5 @@ Vlastní nástroje se musí aktualizovat na aktuální formát a formát řádk�
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [archivace diagnostických protokolů prostředků do účtu úložiště](./monitoring-archive-diagnostic-logs.md)
-* Další informace o [archivovat data protokolu aktivit do účtu úložiště](./monitoring-archive-activity-log.md)
+* Další informace o [archivace diagnostických protokolů prostředků do účtu úložiště](./../azure-monitor/platform/archive-diagnostic-logs.md)
+* Další informace o [archivovat data protokolu aktivit do účtu úložiště](./../azure-monitor/platform/archive-activity-log.md)

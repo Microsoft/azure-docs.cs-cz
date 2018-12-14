@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 1283f84b4a45f5eedc98e6b16e5277e5347be1a4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fae4fffbe9e4b0be0f2edacf3e86b6268cc58608
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270242"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384645"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
 
@@ -156,7 +156,7 @@ Sestavy omezení rizik útoků používá Netflow data protokolu, který je agre
 5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa chcete protokolovat metriky pro.
 6. Vyberte **zapnout diagnostiku pro shromažďování protokolů DDoSMitigationReports** a podle potřeby vyberte jako mnoho z následujících možností:
 
-    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -178,7 +178,7 @@ Protokoly toku omezení rizik útoků umožní zkontrolovat zhoršení provozu p
 5. Vyberte **veřejnou IP adresu** pro **typ prostředku**, pak vyberte konkrétní veřejná IP adresa chcete protokolovat metriky pro.
 6. Vyberte **zapnout diagnostiku pro shromažďování protokolů DDoSMitigationFlowLogs** a podle potřeby vyberte jako mnoho z následujících možností:
 
-    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Chcete-li zobrazit data protokolů toku v řídicím panelu Azure analytics, můžete importovat ukázkový řídicí panel z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip

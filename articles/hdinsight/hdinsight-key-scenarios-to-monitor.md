@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 727ecdb06f9a43bf3722f82fa10b7a3304cf4958
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255298"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383931"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
 
 Monitorování stavu a výkonu clusteru služby HDInsight je nezbytné pro udržování optimálního výkonu a využití prostředků. Monitorování vám také umožňují zjistit a řešit chyby v konfiguraci clusteru a potíží s kódem uživatele.
 
-Následující části popisují, jak sledovat a optimalizovat zatížení vašich clusterů, YARN fronty a zjištění problémů s úložištěm omezení.
+Následující části popisují, jak sledovat a optimalizovat zatížení vašich clusterů Apache Hadoop YARN fronty a zjišťovat úložiště omezování problémy.
 
 ## <a name="monitor-cluster-load"></a>Monitorování clusteru zatížení
 
@@ -43,7 +43,7 @@ Vyberte některou z hostitele pro podrobný pohled na součástí, které běž�
 
 ![Podrobnosti hostitele](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
 
-Zobrazit [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) podrobné informace o nastavení výstrah a zobrazení metrik.
+Zobrazit [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) podrobné informace o nastavení výstrah a zobrazení metrik.
 
 ## <a name="yarn-queue-configuration"></a>Konfigurace fronty YARN
 
@@ -79,14 +79,14 @@ Pokud používáte Azure Storage, informace o sledování problémů souvisejíc
 
 Pokud váš cluster záložního úložiště je Azure Data Lake Store (ADLS), vaše omezení je pravděpodobně z důvodu omezení šířky pásma. Omezení šířky pásma v tomto případě může být označen sledování chyb omezení v protokolech úloh. ADLS naleznete v části omezení pro příslušnou službu v těchto článcích:
 
-* [Průvodce laděním výkonu pro Hive ve službě HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Průvodce laděním výkonu pro Apache Hive v HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [Průvodce laděním výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Průvodce laděním výkonu pro Storm ve službě HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Průvodce laděním výkonu pro Apache Storm v HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Další postup
 
 Získáte další informace o řešení potíží a monitorování clusterů prostřednictvím následujících odkazů:
 
 * [Analýza protokolů služby HDInsight](hdinsight-debug-jobs.md)
-* [Ladění aplikací pomocí protokolů YARN](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Povolení výpisů paměti haldy pro služby Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Ladění aplikací pomocí protokolů Apache Hadoop YARN](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](hdinsight-hadoop-collect-debug-heap-dump-linux.md)

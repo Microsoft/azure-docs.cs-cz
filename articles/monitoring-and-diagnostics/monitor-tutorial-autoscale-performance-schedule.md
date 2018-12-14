@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.component: autoscale
-ms.openlocfilehash: b63e1fa316e9ebeaa564731b8bb0bc3ed5ba9036
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: adf3fdf694216353c5e6a0df8726cb5cd337ddf8
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264057"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385988"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Vytvoření webové aplikace a plánu služby App Service
 1. V levém navigačním podokně klikněte na možnost **Vytvořit prostředek**.
@@ -170,7 +170,7 @@ Stav škálování na méně instancí se pro příslušné nastavení automatic
 
 4. Potvrďte odstranění zadáním textu **yes** do textového pole a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste:  
 > [!div class="checklist"]
@@ -181,7 +181,7 @@ V tomto kurzu jste:
 > * vyčistili prostředky.
 
 
-Další informace o nastaveních automatického škálování najdete v [přehledu automatického škálování](monitoring-overview-autoscale.md).
+Další informace o nastaveních automatického škálování najdete v [přehledu automatického škálování](../azure-monitor/platform/autoscale-overview.md).
 
 > [!div class="nextstepaction"]
 > [Archivace dat monitorování](monitor-tutorial-archive-monitoring-data.md)

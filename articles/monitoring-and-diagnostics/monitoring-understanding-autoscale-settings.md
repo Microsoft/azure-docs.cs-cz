@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 36724c0934a68fa8b19b7fc69581275192f4ed36
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 2347d82b8c2f5a08b944577e5b06cde3b68617b3
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321319"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385002"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování pomáhají, ujistěte se, že máte správného množství prostředků systémem pro zpracování zátěže fluktuující vaší aplikace. Můžete nakonfigurovat nastavení automatického škálování tak, aby se dá spouštět podle metrik, které označují zátěžové nebo výkonové, nebo spouštěnou v naplánované datum a čas. V tomto článku se podíváme podrobné na anatomie nastavení automatického škálování. Článek začíná schématu a vlastnosti nastavení a potom provede odlišných typů profilů, které lze nastavit. Nakonec článek popisuje, jak funkce automatického škálování v Azure vyhodnocuje který profil ke spuštění v daném okamžiku.
@@ -217,7 +217,7 @@ Existují tři typy profilů automatického škálování:
 
     V předchozí nastavení, například "weekdayProfile" nastavená na spuštění v pondělí v 12:00:00. To znamená, že tento profil spuštění v pondělí v 12:00:00. To pokračuje, dokud sobota ve 12:00, kdy je naplánováno spuštění "weekendProfile".
 
-    **Příklad 2: Pracovní doba**
+    **Příklad 2: pracovní doba**
     
     Řekněme, že budete chtít mít jeden mezní hodnota metriky během pracovní doby (9:00:00 do 17:00 hodin) a jinou používat pro jinou dobu. Toto nastavení bude vypadat takto:
     
@@ -305,7 +305,7 @@ Například Řekněme, že existuje je škálovací sady virtuálních počíta�
 ## <a name="next-steps"></a>Další postup
 Další informace o automatické škálování rekapitulací takto:
 
-* [Přehled automatického škálování](monitoring-overview-autoscale.md)
+* [Přehled automatického škálování](../azure-monitor/platform/autoscale-overview.md)
 * [Azure Monitor běžné metriky automatického škálování](../azure-monitor/platform/autoscale-common-metrics.md)
 * [Osvědčené postupy pro automatické škálování služby Azure Monitor](../azure-monitor/platform/autoscale-best-practices.md)
 * [Pomocí akcí automatického škálování můžete odeslat emailová a webhooková oznámení výstrah](../azure-monitor/platform/autoscale-webhook-email.md)

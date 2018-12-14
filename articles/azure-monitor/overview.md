@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8b5b96f7a67dfbb33f470825b8ba4cabd3469dfc
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190556"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53385189"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -35,11 +35,11 @@ Následující obrázek poskytuje souhrnný přehled monitorování Azure. V cen
 ## <a name="monitoring-data-platform"></a>Monitorování datové platformy
 Všechna data shromážděná službou Azure Monitor zapadá do jednoho ze dvou základních typů, [metriky a protokoly](../azure-monitor/platform/data-collection.md). [Metriky](../azure-monitor/platform/data-collection.md#metrics) jsou číselné hodnoty, které popisují některé aspekty systému v určitém místě v čase. Jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. [Protokoly](../azure-monitor/platform/data-collection.md#logs) obsahovat různé druhy dat uspořádaných do s různými sadami vlastností pro jednotlivé typy záznamů. Telemetrická data, jako je například událostmi a sledováním jsou uloženy jako protokoly kromě na data výkonu tak, aby se všechny zkombinovat pro analýzu.
 
-Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumník metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
+Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumník metrik](../azure-monitor/platform/metrics-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
 
 ![Metriky](media/overview/metrics.png)
 
-Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../azure-monitor/log-query/portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../azure-monitor/log-query/portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../azure-monitor/platform/alerts-overview.md).
 
 Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../azure-monitor/log-query/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../azure-monitor/log-query/sql-cheatsheet.md) a [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
@@ -94,7 +94,7 @@ Mimo možnosti k interaktivní analýze dat monitorování, musí být schopné 
 
 
 ### <a name="alerts"></a>Výstrahy
-[Výstrahy ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zajistit aktivní upozorňování kritického stavu a potenciálně se pokusí provést opravné akce. Pravidla upozornění na základě metrik poskytuje téměř reálném čase výstrahy podle číselných hodnot, zatímco pravidla založená na protokolech umožňují komplexní logiku napříč daty z více zdrojů.
+[Výstrahy ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md) zajistit aktivní upozorňování kritického stavu a potenciálně se pokusí provést opravné akce. Pravidla upozornění na základě metrik poskytuje téměř reálném čase výstrahy podle číselných hodnot, zatímco pravidla založená na protokolech umožňují komplexní logiku napříč daty z více zdrojů.
 
 Pravidla, která používá Azure Monitor výstrah [skupiny akcí](../azure-monitor/platform/action-groups.md), které obsahují jedinečné sady příjemců a akce, které mohou být sdíleny napříč více pravidel. V závislosti na vašich požadavcích, skupiny akcí lze provádět činnosti, jako mají výstrahy spustit externí akce nebo integrují s vašimi nástroji ITSM pomocí webhooků.
 

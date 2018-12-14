@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
 ms.custom: hdinsightactive
-ms.openlocfilehash: 9daf0d45c9bb24192750991e7bf84fa3614c970d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f51de6ded29f93d29dbf80dd68715f621b5cb06
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011030"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384611"
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Instalace nebo aktualizace Mono v HDInsight
 
@@ -26,7 +26,7 @@ Mono je nainstalován na HDInsight 3.4 a vyšší a slouží ke spouštění apl
 
 Tento skript je možné zadat následující parametr:
 
-* __Číslo verze mono__: verze Mono k instalaci. Musí být k dispozici od verze [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
+* __Číslo verze mono__: Verze Mono k instalaci. Musí být k dispozici od verze [ https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/ ](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/).
 
 Tento skript nainstaluje následující Mono balíčky:
 
@@ -52,7 +52,7 @@ Během provádění akce dokument skriptu, použijte následující identifikát
 
 Pokud chcete nastavit Mono verze nainstalovaná, použijte číslo verze v __parametry__ pole. Zadejte například `5.4` instalace Mono 5.4.
 
-> [!NOTE]
+> [!NOTE]  
 > Při konfiguraci HDInsight pomocí tohoto skriptu, označí skript jako __trvalé__. Toto nastavení umožňuje HDInsight skript vyrovnat pracovní uzly přidané prostřednictvím operací škálování.
 
 ## <a name="next-steps"></a>Další postup
@@ -60,8 +60,8 @@ Pokud chcete nastavit Mono verze nainstalovaná, použijte číslo verze v __par
 Jste se naučili, jak upgrade nebo instalace konkrétní verze architektury mono na HDInsight. Další informace o použití aplikace .NET v Mono na HDInsight najdete v následujících dokumentech:
 
 * [Použití .NET pro streamování MapReduce v HDInsight](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Použití .NET s Hivem a Pig v HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Vývoj řešení C# se Stormem v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
+* [Použití technologie .NET s Apache Hivu a Apache Pig v HDInsight](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Vývoj C# řešení s Apache Storm v HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [Migrace řešení .NET do HDInsight založených na Linuxu](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
-Další informace o použití akce skriptu, naleznete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
+Další informace o použití akce skriptu, naleznete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).

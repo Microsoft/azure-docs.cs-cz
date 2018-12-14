@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0be2895bf08cc7d6aa0b2e55b62b2d6705b27725
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: eb407a1026ab62fa719600a3992dc3b4653f1583
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007292"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383914"
 ---
-# <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Ambari, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním
+# <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním
 
-Clustery HDInsight poskytují přístup k webové uživatelské rozhraní Ambari přes Internet, ale některé funkce vyžadují tunelu SSH. Například ve webovém uživatelském rozhraní pro službu Oozie nelze přistupovat prostřednictvím Internetu bez tunelu SSh.
+Clustery HDInsight poskytují přístup k webové uživatelské rozhraní Apache Ambari přes Internet, ale některé funkce vyžadují tunelu SSH. Například ve webovém uživatelském rozhraní pro službu Apache Oozie nelze přistupovat prostřednictvím Internetu bez tunelu SSh.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Proč používat tunelového propojení SSH
 
@@ -34,7 +34,7 @@ Následující webových uživatelských rozhraní vyžadovat tunelu SSH:
 
 Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, které nainstalujete, která zpřístupňují webové služby vyžadovat tunelu SSH. Například pokud instalace aplikace Hue pomocí akce skriptu musíte použít tunelového propojení SSH pro přístup k uživatelské rozhraní webu Hue.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud budete mít přímý přístup k HDInsight prostřednictvím virtuální sítě, není potřeba použít tunelových propojení SSH. Příklad přímý přístup k HDInsight prostřednictvím virtuální sítě, najdete v článku [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
 
 ## <a name="what-is-an-ssh-tunnel"></a>Co je tunelové propojení SSH
@@ -100,14 +100,14 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 ## <a name="use-the-tunnel-from-your-browser"></a>Použití tunelového propojení z prohlížeče
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v této části pomocí prohlížeče Mozilla FireFox, protože nabízí stejné nastavení proxy serveru na všech platformách. Další moderních prohlížečů, jako je například Google Chrome, můžou vyžadovat rozšíření například FoxyProxy pro práci s tunelové propojení.
 
 1. Prohlížeč nakonfigurovat pro použití **localhost** a port, který jste použili při vytváření tunelového propojení jako **SOCKS v5** proxy serveru. Tady je vypadat nastavení Firefox. Pokud jste použili jiný port než 9876, změňte port, který jste použili:
    
     ![Obrázek nastavení Firefox](./media/hdinsight-linux-ambari-ssh-tunnel/firefoxproxy.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Výběr **vzdálený DNS** řeší požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení řeší DNS pomocí hlavního uzlu clusteru.
 
 2. Zkontrolujte, jestli funguje tunelu návštěvou webu [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Vrácená IP adresa by měl být použitý v datacentru Microsoft Azure.
@@ -118,7 +118,7 @@ Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelsk
 
 1. V prohlížeči přejděte na http://headnodehost:8080. `headnodehost` Adresa je odeslán přes tunel ke clusteru a vyřešit k hlavnímu uzlu, na kterém běží Ambari na. Po zobrazení výzvy zadejte uživatelské jméno správce (správce) a heslo pro váš cluster. Můžete být vyzváni podruhé pomocí webového uživatelského rozhraní Ambari. Pokud ano, zadejte znovu informace.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Při použití http://headnodehost:8080 adresy pro připojení ke clusteru, se připojují prostřednictvím tunelu. Komunikace je zabezpečená pomocí tunelu SSH místo protokolu HTTPS. Chcete-li připojit přes internet pomocí protokolu HTTPS, použijte https://clustername.azurehdinsight.net, kde **clustername** je název clusteru.
 
 2. Webové uživatelské rozhraní Ambari vyberte ze seznamu na levé straně stránky HDFS.
@@ -129,7 +129,7 @@ Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelsk
 
     ![Image rozbalila se nabídka rychlé odkazy](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Když vyberete __rychlé odkazy__, můžete obdržet ukazatele čekání. K tomuto stavu může dojít, pokud máte pomalé připojení k Internetu. Počkejte minutu nebo dvě data, která mají být přijata ze serveru, a akci opakujte seznamu.
    >
    > Některé položky v **rychlé odkazy** nabídky může být oříznou podle pravé straně obrazovky. Pokud ano, rozbalte nabídku pomocí myši a použijte klávesy se šipkou doprava přejděte na obrazovce doprava a zobrazit zbývající nabídky.
@@ -138,14 +138,14 @@ Po vytvoření clusteru ověřte, že se dá dostat služby webovým uživatelsk
 
     ![Obrázek NameNode uživatelského rozhraní](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Všimněte si, že adresa URL pro tuto stránku; by měl být podobný **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster**. Pomocí tohoto identifikátoru URI používá interní plně kvalifikovaný název domény (FQDN) uzlu a je dostupný jenom při použití tunelu SSH.
 
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste se naučili, jak vytváření a používání tunelu SSH, najdete v následujícím dokumentu pro jiné způsoby, jak použít Ambari:
 
-* [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Správa clusterů HDInsight s použitím Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
 Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 

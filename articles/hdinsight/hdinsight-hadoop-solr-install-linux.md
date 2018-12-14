@@ -9,31 +9,31 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1c8c63e10e62af60e09af729b115cc675dae7205
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009398"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383591"
 ---
-# <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalace a použití Solru na clusterech HDInsight Hadoop
+# <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Apache Solr na clusterech HDInsight Hadoop
 
-Zjistěte, jak nainstalovat Solr Azure HDInsight pomocí skriptových akcí. Solr je platforma pro výkonné hledání a poskytuje funkce vyhledávání na podnikové úrovni s daty spravovanými Hadoopem.
+Zjistěte, jak nainstalovat Apache Solr Azure HDInsight pomocí skriptových akcí. Solr je platforma pro výkonné hledání a poskytuje funkce vyhledávání na podnikové úrovni s daty spravovanými Hadoopem.
 
-> [!IMPORTANT]
-    > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> [!IMPORTANT]  
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ukázkový skript v tomto dokumentu instaluje Solr 4.9 s určitou konfiguraci. Pokud chcete konfigurovat Solr cluster pomocí různých kolekcí, horizontální oddíly, schémata, repliky a podobně, je třeba upravit skript a Solr binární soubory.
 
 ## <a name="whatis"></a>Co je Solr
 
 [Apache Solr](http://lucene.apache.org/solr/features.html) je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
 
-> [!WARNING]
+> [!WARNING]   
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporovány společností Microsoft.
 >
-> Vlastní komponenty, jako je například Solr, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpora společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zapojit opensourcové komunity žádostí o pomoc. Existuje například mnoho komunitním webům, které lze použít jako: [fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Solr, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpora společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zapojit opensourcové komunity žádostí o pomoc. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Co dělá skriptu
 
@@ -59,7 +59,7 @@ Pokud chcete vytvořit cluster, který se má nainstalovat Solr, použijte postu
    * **HLAVNÍ**: Zaškrtněte tuto možnost
    * **PRACOVNÍK**: Zaškrtněte tuto možnost
    * **ZOOKEEPER**: Zaškrtněte tuto možnost k instalaci na uzlu Zookeeper
-   * **Parametry**: Toto pole nechat prázdné
+   * **PARAMETRY**: Toto pole nechat prázdné
 
 2. V dolní části **akcí skriptů** části **vyberte** tlačítko, čímž konfiguraci uložíte. Nakonec použijte **Další** se vrátit na __souhrn clusteru__
 
@@ -67,7 +67,7 @@ Pokud chcete vytvořit cluster, který se má nainstalovat Solr, použijte postu
 
 ## <a name="usesolr"></a>Použití Solr v HDInsight
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [webu Apache Solr](http://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Indexování dat
@@ -76,7 +76,7 @@ Pomocí následujícího postupu můžete přidat do Solr příkladu a pak ji do
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Nahraďte `sshuser` s uživatele SSH pro cluster. Nahraďte `clustername` s názvem clusteru.
 
     ```bash
@@ -85,7 +85,7 @@ Pomocí následujícího postupu můžete přidat do Solr příkladu a pak ji do
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-     > [!IMPORTANT]
+     > [!IMPORTANT]  
      > Kroky dále v tomto dokumentu používají tunelového propojení SSH pro připojení k webovým Uživatelským rozhraním Solr. Pokud chcete použít tyto kroky, musíte vytvořit tunel SSH a pak nakonfigurujte prohlížeč tak, že ho použít.
      >
      > Další informace najdete v tématu [použití tunelování SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
@@ -316,11 +316,11 @@ Použijte následující kroky pro zálohování Solr data do výchozího úlož
     hdfs dfs -put snapshot.20150806185338855.tgz /example/data
     ```
 
-Další informace o práci se Solr zálohování a obnovení najdete v tématu [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
+Další informace o práci s Apache Solr zálohování a obnovení najdete v tématu [ https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups ](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Clustery HDInsight nainstalovat Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight.
+* [Clustery HDInsight nainstalovat Apache Giraph](hdinsight-hadoop-giraph-install-linux.md). Clustery HDInsight Hadoop nainstalovat Giraph pomocí přizpůsobení clusteru. Giraph umožňuje provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight.
 
 * [Instalace aplikace Hue v clusterech HDInsight](hdinsight-hadoop-hue-linux.md). Přizpůsobení clusteru použijte postup instalace aplikace Hue v clusterech HDInsight Hadoop. Odstín, který je sada webových aplikací používaných pro interakci s clusterem Hadoop.
 

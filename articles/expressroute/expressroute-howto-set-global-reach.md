@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 12/13/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: eafb37f9bd54e0928e2f6c7615fc7fe365897620
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250597"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53383268"
 ---
 # <a name="configure-expressroute-global-reach-preview"></a>Konfigurace ExpressRoute globální dosah (preview)
 Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Powershellu. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).
@@ -66,22 +66,18 @@ $ckt_1 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGro
 $ckt_2 = Get-AzureRmExpressRouteCircuit -Name "Your_circuit_2_name" -ResourceGroupName "Your_resource_group"
 ```
 
-Spusťte následující příkaz okruh 1 a předat ID privátní partnerský vztah okruhu 2.
+Spusťte následující příkaz okruh 1 a předat ID privátní partnerský vztah okruhu 2. Při spuštění příkazu, vezměte na vědomí následující:
 
-> [!NOTE]
-> ID privátní partnerský vztah vypadat takhle: */subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/ Privátní partnerský vztah Azure*
-> 
->
+* ID privátní partnerský vztah vypadá podobně jako v následujícím příkladu: 
+
+  ```
+  /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
+  ```
+* *-AddressPrefix* musí být IPv4 je/29 podsítě, například "10.0.0.0/29". K navázání připojení mezi dva okruhy ExpressRoute používáme IP adres v této podsíti. Adresy byste neměli používat v této podsíti ve virtuálním sítím Azure nebo v místní síti.
 
 ```powershell
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name 'Your_connection_name' -ExpressRouteCircuit $ckt_1 -PeerExpressRouteCircuitPeering $ckt_2.Peerings[0].Id -AddressPrefix '__.__.__.__/29'
 ```
-
-> [!IMPORTANT]
-> *-AddressPrefix* musí být IPv4 je/29 podsítě, například "10.0.0.0/29". K navázání připojení mezi dva okruhy ExpressRoute používáme IP adres v této podsíti. Adresy byste neměli používat v této podsíti ve virtuálním sítím Azure nebo v místní síti.
-> 
-
-
 
 Uložte konfiguraci v okruhu 1 následujícím způsobem:
 ```powershell
