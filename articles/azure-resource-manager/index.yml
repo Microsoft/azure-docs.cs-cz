@@ -1,0 +1,83 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 4d719a0fe078d427a87b32f85497cc927ea77632
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53263040"
+documentType: LandingData
+title: Dokumentace k Resource Manageru v Azure
+metadata:
+  title: Dokumentace k Resource Manageru v Azure – kurzy, ukázky, odkazy a zdroje informací
+  description: Naučte se využívat Resource Manager k nasazování a správě prostředků řešení ve formě skupiny a k vytváření šablon pro konzistentní a opakovatelné nasazování prostředků.
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  keywords: Resource Manager, azure, devops, tutorials, samples, reference, documentation
+  author: mumian
+  manager: dougeby
+  ms.author: jgao
+  ms.topic: landing-page
+  ms.date: 12/10/2018
+abstract:
+  description: Naučte se využívat Resource Manager k nasazování, monitorování a správě prostředků řešení ve formě skupiny. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy nastavování skupin prostředků a vytváření šablon pro konzistentní a opakovatelné nasazování.
+sections:
+- title: Šablony Rychlý start
+  items:
+  - type: paragraph
+    text: K vytvoření šablon Azure Resource Manageru pro nasazení prostředků Azure se dají použít různé nástroje.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Vygenerování šablony s využitím webu Azure Portal
+      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
+      text: Vytvoření šablony s využitím editoru Visual Studio Code
+      href: https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
+      text: Vytvoření šablony s využitím sady Visual Studio
+      href: https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak vytvořit šablony Azure Resource Manageru pro nasazování prostředků Azure.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">Využití referenčních materiálů k šablonám Resource Manageru</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Vytvoření více instancí prostředku Azure</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">Nastavení pořadí nasazování prostředků</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">Použití podmínek</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Integrace služby Azure Key Vault</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">Vytvoření propojených šablon</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">Nasazování rozšíření virtuálních počítačů</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">Nasazování rozšíření SQL</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">Zabezpečené artefakty šablon</a>.
+    - html: <a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">Použití postupů bezpečného nasazení</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Ukázkové šablony konfigurace pro běžné úlohy nasazení.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/templates/">Šablony Azure pro rychlý start</a>
+    - html: <a href="https://resources.azure.com/">Azure Resource Explorer (Preview)</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Šablony
+      html: <p><a href="/azure/resource-group-template-functions">Funkce šablon</a></p><p><a href="/azure/templates/">Referenční informace k šablonám</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funkce definic uživatelského rozhraní</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Definiční prvky uživatelského rozhraní</a></p>
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/module/azurerm.resources">PowerShell</a></p><p><a href="/cli/azure/resource">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/azure/">Python</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/resources/">REST API</a></p>

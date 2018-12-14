@@ -206,7 +206,7 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Azure IoT Edge pro VS Code
     href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge
-  - name: Azure IoT Toolkit pro VS Code
+  - name: Azure IoT Hub Toolkit pro VS Code
     href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
   - name: Nástroj DeviceExplorer
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
@@ -226,9 +226,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 36f90f4ff43b16a7f9127d5efbabd02f15e14b2c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0f761c4395dc1e96aa58acc9dc737f115fcde09b
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101700"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53340840"

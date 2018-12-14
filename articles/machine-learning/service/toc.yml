@@ -4,30 +4,32 @@ items:
 - name: Přehled
   items:
   - name: Co je služba Azure Machine Learning?
-    displayName: AML, services, overview
+    displayName: AML services overview
     href: overview-what-is-azure-ml.md
   - name: Jak služba funguje
-    displayName: architecture
+    displayName: architecture concepts definitions
     href: concept-azure-machine-learning-architecture.md
   - name: Co se děje s Workbenchem?
-    displayName: desktop
+    displayName: desktop ui
     href: overview-what-happened-to-workbench.md
   - name: Poznámky k verzi
-    displayName: what's new
+    displayName: what's new issues bugs
     href: azure-machine-learning-release-notes.md
   expanded: true
 - name: Šablony Rychlý start
   items:
   - name: Začínáme – portál
+    displayName: install sdk workspace
     href: quickstart-get-started.md
   - name: Začínáme – Python
-    displayName: create workspace
+    displayName: create workspace install sdk
     href: quickstart-create-workspace-with-python.md
 - name: Kurzy
   items:
   - name: Klasifikace obrázků (data MNIST)
     items:
     - name: 1. Učení modelu
+      displayName: build modeling
       href: tutorial-train-models-with-aml.md
     - name: 2. Nasazení modelu
       href: tutorial-deploy-models-with-aml.md
@@ -43,6 +45,9 @@ items:
   href: samples-notebooks.md
 - name: Koncepty
   items:
+  - name: Automatizované strojové učení
+    displayName: automl, auto ml
+    href: concept-automated-ml.md
   - name: Správa modelů
     displayName: deploy, deployment
     href: concept-model-management-and-deployment.md
@@ -68,7 +73,6 @@ items:
         href: how-to-vscode-train-deploy.md
   - name: Příprava dat
     displayName: data prep, etl, elt, data preparation
-    href: how-to-data-prep.md
     items:
     - name: Načtení dat
       href: how-to-load-data.md
@@ -79,7 +83,7 @@ items:
   - name: Trénování modelů
     items:
     - name: Nastavení prostředí trénování
-      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Přístup k datům při trénování
       href: how-to-access-data.md
@@ -96,11 +100,11 @@ items:
       href: how-to-track-experiments.md
   - name: Automatizace strojového učení
     displayName: automl, auto ml
-    href: how-to-automated-ml.md
     items:
     - name: Konfigurace automatizovaného trénování
       href: how-to-configure-auto-train.md
     - name: Použití vzdálených cílových výpočetních prostředí
+      displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: Modely ONNX
     items:
@@ -109,9 +113,9 @@ items:
   - name: Modely nasazení
     items:
     - name: Kam se mají modely nasadit
-      displayName: publish, azure kubernetes, azure container instances
+      displayName: publish azure kubernetes azure container instances
       href: how-to-deploy-and-where.md
-    - name: Nasazení do FPGA
+    - name: FPGA
       href: how-to-deploy-fpga-web-service.md
     - name: Řešení potíží
       href: how-to-troubleshoot-deployment.md
@@ -120,7 +124,7 @@ items:
   - name: Využívání webových služeb
     items:
     - name: Využívání v reálném čase
-      displayName: create client, client, consume
+      displayName: create client consume
       href: how-to-consume-web-service.md
     - name: Spuštění dávkových predikcí
       href: how-to-run-batch-predictions.md
@@ -136,18 +140,18 @@ items:
     displayName: limits
     href: how-to-manage-quotas.md
   - name: Použití CLI služby Machine Learning
-    displayName: cli, command line, command-line, az,
+    displayName: cli command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
 - name: Referenční informace
   items:
   - name: Sada Machine Learning SDK
-    displayName: api, core, package
+    displayName: api core package python
     href: https://aka.ms/aml-sdk
   - name: Sada SDK pro přípravu dat
-    displayName: api, preparation, package
+    displayName: api preparation package python
     href: https://aka.ms/data-prep-sdk
   - name: Sada SDK pro monitorování
-    displayName: api, package
+    displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
 - name: Zdroje a prostředky
   items:
@@ -158,6 +162,7 @@ items:
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
   - name: Známé problémy
+    displayName: bugs errors troubleshoot
     href: resource-known-issues.md
   - name: Získat podporu
     href: support-for-aml-services.md
@@ -167,7 +172,7 @@ items:
   - name: Zastaralé dokumenty
     items:
     - name: Migrace z aplikace Workbench
-      displayName: Workbench, upgrade, update, transfer
+      displayName: Workbench upgrade update transfer
       href: how-to-migrate.md
     - name: Export nebo odstranění dat účtu (zastaralé)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
@@ -177,7 +182,7 @@ items:
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
     - name: 'Kurz 2: Sestavení modelů'
       href: ../desktop-workbench/tutorial-classifying-iris-part-2.md
-    - name: 'Kurz 3: Nasazení modelů'
+    - name: 'Kurz 3: Modely nasazení'
       href: ../desktop-workbench/tutorial-classifying-iris-part-3.md
     - name: 'Kurz 4: Pokročilá příprava dat'
       href: ../desktop-workbench/tutorial-bikeshare-dataprep.md
@@ -365,9 +370,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf7216271dea4bcdda7bea91c1b386a4ba612f8f
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101241"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53310500"

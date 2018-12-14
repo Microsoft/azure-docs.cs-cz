@@ -1,16 +1,18 @@
 # [Dokumentace k platformám Azure Marketplace a AppSource](index.md)
-## [Zásady hodnocení a recenzí](./rating-review-policies.md)   
+
 ## [Přehled a výhody platforem Azure Marketplace a AppSource](./marketplace-publishers-guide.md)  
 
 ### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
 #### [Vytvoření účtu Microsoft](./guidelines.md)
 #### [Registrace na webu Dev Center](./register-dev-center.md) 
 #### [Přisuzování využití ze strany zákazníků partnerům Azure](./azure-partner-customer-usage-attribution.md)
-#### [Správa potenciálních zákazníků pro cloudový marketplace](./lead-management-for-cloud-marketplace.md)
 
-### [Prodejní místa](./comparing-appsource-azure-marketplace.md)  
+### [Jeden marketplace, dvě prodejní místa](./comparing-appsource-azure-marketplace.md)  
 
-### [Určení možnosti publikování pro vaše řešení](./determine-your-listing-type.md)  
+### [Aspekty a možnosti publikování](./determine-your-listing-type.md)
+#### [Správa potenciálních zákazníků](./lead-management-for-cloud-marketplace.md)
+#### [Transakce na Azure Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [Soukromé nabídky](./private-offers.md)
 
 ### [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
@@ -26,8 +28,7 @@
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
 #### [Ověření obsahu na Marketplace](./marketplace-criteria-content-validation.md)
-#### [Soukromé nabídky](./private-offers.md)
-#### [Aspekty a možnosti komerčních transakcí na Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md)
+#### [Zásady hodnocení a recenzí](./rating-review-policies.md)   
 
 ### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
@@ -67,8 +68,15 @@
 #### [Běžné problémy při vytváření VHD](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
 #### [Připojení k virtuálnímu počítači](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
 #### [Konfigurace virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
-#### [Nasazení virtuálního počítače z VHD](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
-##### [Šablona nasazení VHD (JSON)](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+#### [Vzdálená správa systému Windows](./cloud-partner-portal/virtual-machine/cpp-winrm-over-https.md) 
+##### [Konfigurace WinRM po vytvoření virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-configure-winrm-after-vm-creation.md)
+#### [Nasazení virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [Vytvoření uživatelské image virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-create-user-image.md)
+##### [Vytvoření certifikátu trezoru klíčů](./cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert.md)
+###### [Šablona nasazení trezoru klíčů](./cloud-partner-portal/virtual-machine/cpp-key-vault-deploy-template.md)
+#### [Nasazení virtuálního počítače z virtuálního pevného disku uživatele](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-user-image.md)
+##### [Šablona nasazení VHD](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+##### [Nasazení virtuálního počítače z marketplace](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 #### [Certifikace image virtuálního počítače](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
 #### [Získání identifikátoru URI sdíleného přístupového podpisu](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 #### [Běžné problémy s adresou URL sdíleného přístupového podpisu](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
@@ -88,21 +96,53 @@
 ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
 ### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
 -->
+<!-- new section for Azure apps -->
 
-## [Nabídka aplikace Azure](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
-### [Vytvoření spravované aplikace](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
-### [Vytvoření šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
-### [Publikování řešení pro správu](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
-### [Doprovodné materiály pro SEO](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Zveřejnění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
-### [Aktualizace stávající nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
-### [Odstranění nabídky](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
-<!-- Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  -->
+## [Nabídka aplikace Azure](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
+### [Požadavky](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
+### [Vytvoření nabídky aplikací Azure](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
+#### [Karta Nastavení nabídky](./cloud-partner-portal/azure-applications/cpp-offer-settings-tab.md)
+#### [Karta Skladové položky](./cloud-partner-portal/azure-applications/cpp-skus-tab.md)
+#### [Karta Testovací verze](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
+#### [Karta Marketplace](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
+#### [Karta Podpora](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
+<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Publikování nabídky aplikací Azure](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
+### [Aktualizace stávající nabídky](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 
-## [Nabídka aplikace SaaS](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
-### [Technický průvodce publikováním aplikací SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
-### [Prodej SaaS přes Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+<!-- Legacy Azure App section replaced
+## [Azure application offer](./cloud-partner-portal-orig/cpp-azure-app-offer.md)
+    Obsolete ### [Author managed application](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-publish.md)
+### [Author solution template](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)
+### [Publish a Management Solution](./cloud-partner-portal-orig/cloud-partner-portal-management-solution-publish.md)
+### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-go-live.md)
+### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-update.md)
+### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-managed-app-offer-delete.md)
+   Obsolete ### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)  
+-->
+
+<!-- new for SaaS 12/05/2018 -->
+## [Nabídka aplikace SaaS](./cloud-partner-portal/saas-app/cpp-saas-offer.md)
+### [Požadavky](./cloud-partner-portal/saas-app/cpp-prerequisites.md)
+### [Vytvoření nabídky aplikací SaaS](./cloud-partner-portal/saas-app/cpp-create-offer.md)
+#### [Karta Nastavení nabídky](./cloud-partner-portal/saas-app/cpp-offer-settings-tab.md)
+#### [Karta Technické informace](./cloud-partner-portal/saas-app/cpp-technical-info-tab.md)
+#### [Karta Plány](./cloud-partner-portal/saas-app/cpp-plans-tab.md)
+#### [Karta informací o kanálech](./cloud-partner-portal/saas-app/cpp-channel-info-tab.md)
+#### [Karta Testovací verze](./cloud-partner-portal/saas-app/cpp-testdrive-tab.md)
+#### [Karta podrobností o prodejních místech](./cloud-partner-portal/saas-app/cpp-storefront-tab.md)
+#### [Karta Kontakty](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
+### [Publikování nabídky](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
+### [Aktualizace stávající nabídky](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 ### [Rozhraní API SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+
+<!-- Legacy SaaS Offer replaced
+## [SaaS application offer](./cloud-partner-portal-orig/cpp-saas-app-offer.md)
+### [SaaS apps technical publishing guide](./cloud-partner-portal-orig/cloud-partner-portal-saas-offers-tech-publishing-guide.md)
+### [SaaS Sell through Azure](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
+### [SaaS APIs](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+-->
 
 ## [Nabídka kontejnerů](./cloud-partner-portal/containers/cpp-containers-offer.md)
 ### [Požadavky](./cloud-partner-portal/containers/cpp-prerequisites.md)

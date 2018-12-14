@@ -100,7 +100,7 @@ items:
       items:
       - name: Vytvoření dynamické skupiny
         href: groups-create-rule.md
-      - name: Vlastnosti a syntaxe pravidel
+      - name: Pravidla dynamických skupin
         href: groups-dynamic-membership.md
       - name: Změna typu členství ve skupině
         href: groups-change-type.md
@@ -120,11 +120,11 @@ items:
       href: licensing-group-advanced.md
     - name: Skupinové licencování s využitím PowerShellu
       href: licensing-ps-examples.md
-    - name: Referenční informace k plánům služeb a produktů
+    - name: ID plánů služeb a produktů
       href: licensing-service-plan-reference.md
   - name: Role správce Azure AD
     items:
-    - name: Referenční informace k rolím a oprávněním
+    - name: Role a oprávnění
       href: directory-assign-admin-roles.md
     - name: Zobrazení a přiřazení rolí
       href: directory-manage-roles-portal.md
@@ -142,7 +142,7 @@ items:
     items:
     - name: Integrace LinkedInu s Azure AD
       href: linkedin-integration.md
-    - name: Souhlas uživatele a sdílení dat
+    - name: Sdílení dat LinkedInu
       href: linkedin-user-consent.md
   - name: Řešení potíží
     items:
@@ -161,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell pro Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: 23625fb345d3d27b5966be3a193e21b46408c525
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e2244b8058c53ff8d921bc54bfed71d6fe4d0df9
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514210"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133566"

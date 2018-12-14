@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7c8e534095da9144cb72c11a162af93699eb013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bdd2e3bd8175b5fd9a26e78979a804da65e255f1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957927"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53275121"
 documentType: LandingData
 title: Dokumentace k nástroji Azure Machine Learning Studio
 metadata:
@@ -12,7 +12,6 @@ metadata:
   description: Další informace o použití nástroje Azure Machine Learning Studio
   services: machine-learning
   author: j-martens
-  manager: cgronlun
   ms.service: machine-learning
   ms.component: studio
   ms.tgt_pltfrm: na
@@ -26,13 +25,13 @@ sections:
 - items:
   - type: list
     style: cards
-    className: cardsB
-    columns: 1
+    className: cardsFTitle
     items:
-    - html: <p>Začněte vytvářet a nasazovat modely v rozhraní nástroje Studio, které podporuje přetahování.</p>
+    - title: Začněte se seznamovat s nástrojem Azure Machine Learning Studio
+      href: create-experiment
       image:
         src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure Machine Learning Studio
+        href: create-experiment
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -53,7 +52,7 @@ sections:
     items:
     - html: <a href="walkthrough-develop-predictive-solution">Vytvoření a nasazení prediktivního řešení</a>
     - html: <a href="azure-ml-customer-churn-scenario">Příklad změn zákazníka</a>
-- title: Další technologie Azure Machine Learning
+- title: Další technologie Azure Machine Learningu
   items:
   - type: paragraph
     text: 'Další technologie dostupné ve službách Azure Machine Learning:'

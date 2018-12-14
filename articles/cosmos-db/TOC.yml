@@ -115,7 +115,7 @@ items:
     - name: Práce s databázemi, kontejnery a položkami
       href: databases-containers-items.md
     - name: Referenční informace k jazyku SQL
-      href: sql-api-sql-query-reference.md
+      href: sql-api-query-reference.md
     - name: Příklady dotazů jazyka SQL
       href: how-to-sql-query.md
     - name: Indexování
@@ -144,6 +144,28 @@ items:
       href: unique-keys.md
     - name: Transakce a optimistická souběžnost
       href: database-transactions-optimistic-concurrency.md
+  - name: Optimalizace nákladů na Azure Cosmos DB
+    items:
+    - name: Cenový model
+      href: how-pricing-works.md
+    - name: Celkové náklady na vlastnictví
+      href: total-cost-ownership.md
+    - name: Vysvětlení informací na faktuře
+      href: understand-your-bill.md
+    - name: Optimalizace nákladů na zřízenou propustnost
+      href: optimize-cost-throughput.md
+    - name: Optimalizace nákladů na dotazování
+      href: optimize-cost-queries.md
+    - name: Optimalizace nákladů na úložiště
+      href: optimize-cost-storage.md
+    - name: Optimalizace nákladů na čtení a zápis
+      href: optimize-cost-reads-writes.md
+    - name: Optimalizace nákladů na více oblastí
+      href: optimize-cost-regions.md
+    - name: Optimalizace úloh vývoje a testování
+      href: optimize-dev-test.md
+    - name: Předplacení záložní kapacity
+      href: cosmos-db-reserved-capacity.md
   - name: Zabezpečení
     items:
     - name: Přehled
@@ -164,8 +186,6 @@ items:
       href: online-backup-and-restore.md
     - name: Dodržování předpisů
       href: compliance.md
-  - name: Předplacení záložní kapacity
-    href: cosmos-db-reserved-capacity.md
 - name: Rozhraní API s více modely
   items:
   - name: Dokumentace k rozhraní SQL API
@@ -229,7 +249,7 @@ items:
     - name: Návody
       items:
       - name: Ladění výkonu dotazů
-        href: sql-api-sql-query-metrics.md
+        href: sql-api-query-metrics.md
       - name: Uložené procedury, triggery a systémy souborů UDF
         href: programming.md
       - name: Typy dat
@@ -288,7 +308,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: Část 4 – Vytvoření účtu
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: Část 5 – Připojení k databázi Cosmos DB
+          - name: Část 5 – Připojení ke službě Azure Cosmos DB
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: Část 6 – Provedení operací CRUD
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -509,7 +529,7 @@ items:
         href: performance-testing.md
     - name: Nákladově efektivní čtení a zápisy
       href: key-value-store-cost.md
-  - name: Vizualizace dat služby Cosmos DB
+  - name: Vizualizace dat Azure Cosmos DB
     items:
     - name: Použití Power BI
       href: powerbi-visualize.md
@@ -583,9 +603,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 413ec7cc09f748948cab92dd10495b667be06f40
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b172650cc0a69169bcbebf58e0a11d0bb9cd6450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961225"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254696"
