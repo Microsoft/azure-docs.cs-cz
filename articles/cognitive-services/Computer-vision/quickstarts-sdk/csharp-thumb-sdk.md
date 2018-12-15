@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vygenerování miniatury – SDK, C# – Počítačové zpracování obrazu'
+title: 'Rychlý start: Vygenerování thumbnail - SDK, C# -pro počítačové zpracování obrazu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 8c8a15af39972b79086a3eb2d392fdc4e7635323
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a4a6dac4ca42f98bd03da022aaed79db094a9ed6
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959423"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413281"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Vygenerování miniatury pomocí sady SDK počítačového zpracování obrazu a C#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Generování miniatur pomocí sady SDK služby pro zpracování obrazu počítač aC#
 
 V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské knihovny systému Windows počítačového zpracování obrazu.
 

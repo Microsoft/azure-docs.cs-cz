@@ -5,14 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/27/2018
+ms.date: 12/14/2018
 ms.author: victorh
-ms.openlocfilehash: 467e8242ffeec435976f3f8fa5740908ea93d262
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
+ms.openlocfilehash: abbbec05dfb6d81a65941619a36b7f3afcdc1fba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260901"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435561"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -54,6 +55,12 @@ Předpokladem správného fungování tohoto scénáře jsou tři klíčové po�
 - Při vytváření partnerského vztahu virtuální sítě VNet-Hub s virtuální sítí VNet-Spoke nezapomeňte nastavit **AllowGatewayTransit** a při vytváření partnerského vztahu virtuální sítě VNet-Spoke s virtuální sítí VNet-Hub nezapomeňte nastavit **UseRemoteGateways**.
 
 Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create-routes) v tomto kurzu.
+
+>[!NOTE]
+>Azure brány Firewall musí mít přímé připojení k Internetu. Pokud jste povolili vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset nakonfigurovat 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**a pak ji přiřaďte  **AzureFirewallSubnet**.
+
+>[!NOTE]
+>Přenos dat mezi přímo partnerských virtuálních sítích je směrován přímo i v případě, že zahrnout odkazuje na jako výchozí brána Firewall služby Azure. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat UDR předpona cílové podsítě sítě explicitně v obou podsítích.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -309,9 +316,6 @@ Dále vytvořte několik tras:
 
 - Trasa z podsítě brány rozbočovače do podsítě paprsku přes IP adresu brány firewall
 - Výchozí trasa z podsítě paprsku přes IP adresu brány firewall
-
->[!NOTE]
->Azure brány Firewall musí mít přímé připojení k Internetu. Pokud jste povolili vynuceného tunelování k místnímu přes ExpressRoute nebo služby Application Gateway, budete muset nakonfigurovat 0.0.0.0/0 uživatelem definovaná TRASA s **NextHopType** hodnota nastavená na **Internet**a pak ji přiřaďte  **AzureFirewallSubnet**.
 
 ```azurepowershell
 #Create a route table

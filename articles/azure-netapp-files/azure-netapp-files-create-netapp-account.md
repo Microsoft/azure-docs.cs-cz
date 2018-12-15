@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: ad8cc550ce69e4dc4c19a569718fa873a65b3620
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010340"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413179"
 ---
 # <a name="create-a-netapp-account"></a>Vytvoření účtu NetApp
 Vytvoření účtu NetApp umožňuje nastavit fond kapacity a následně vytvořit svazek. K vytvoření nového účtu NetApp se používá okno Azure NetApp Files.
 
-## <a name="before-you-begin"></a>Než začnete
-Musíte být v seznamu povolených pro přístup k poskytovateli prostředků Azure Microsoft.NetApp a nakonfigurovaní pro použití služby Azure NetApp Files.  
+## <a name="before-you-begin"></a>Před zahájením
+Musí mít zaregistrovaný předplatné poskytovatele prostředků NetApp a funkce verze public preview.
 
-[Přihlašovací stránka verze Public Preview služby Azure NetApp Files](https://aka.ms/nfspublicpreview) 
+[Registrace pro soubory Azure NetApp](azure-netapp-files-register.md)
 
 ## <a name="steps"></a>Kroky 
 
-1. V pozvánce verze Preview najděte adresu URL webu Azure Portal a přihlaste se k portálu. 
+1. Verze preview webu Azure portal vyhledejte adresu URL z pozvánku ve verzi preview a přihlaste se k portálu. 
 2.  Přejděte do okna Azure NetApp Files pomocí jedné z následujících metod:  
   * Vyhledejte **Azure NetApp Files** ve vyhledávacím poli webu Azure Portal.  
   * Klikněte na **Všechny služby** v navigaci a potom filtrujte Azure NetApp Files.  
@@ -58,8 +58,7 @@ Musíte být v seznamu povolených pro přístup k poskytovateli prostředků Az
 5. Klikněte na možnost **Vytvořit**.     
   Vytvořený účet NetApp se teď zobrazí v okně Azure NetApp Files. 
 
-## <a name="next-steps"></a>Další kroky  
+## <a name="next-steps"></a>Další postup  
 
-1. [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
-2. [Vytvoření svazku pro Azure NetApp Files](azure-netapp-files-create-volumes.md)
-3. [Konfigurace zásad exportu pro svazek (volitelné)](azure-netapp-files-configure-export-policy.md)
+[Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)
+

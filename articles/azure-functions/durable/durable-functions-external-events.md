@@ -10,16 +10,19 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: fefbdffdeb3db86447038a3b3d4d24e8c7cd3803
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 977123459bcf9bb10c6b7ecf5d7a364f60564c48
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340432"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437064"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externího událostí v Durable Functions (Azure Functions)
 
 Funkce nástroje Orchestrator mají možnost počkat a naslouchat událostem externí. Tato funkce [Durable Functions](durable-functions-overview.md) je často užitečné pro zpracování zásahem ze strany nebo jiné externí aktivační události.
+
+> [!NOTE]
+> Externí akce, které jsou jednosměrnou asynchronní operace. Nejsou vhodné pro situace, kdy bylo zahájeno odesílání události klienta musí synchronní neodpověděla funkce orchestrátoru.
 
 ## <a name="wait-for-events"></a>Čekání na události
 

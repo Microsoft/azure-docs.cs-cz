@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8cd389bee98058e5362a217268fb53d6aaf3424
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c0040958cbf748d3eafb3ee60806b064e4e0b1ba
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634477"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435782"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Použití MapReduce se v Apache Hadoop v HDInsight pomocí vzdálené plochy
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 V tomto článku se dozvíte, jak připojit k Apache Hadoop v clusteru HDInsight pomocí vzdálené plochy a pak spusťte úlohy mapreduce je možné pomocí příkazu Hadoop.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Vzdálená plocha je dostupná pouze na clusterech HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > HDInsight 3.4 nebo větší, přečtěte si téma [použití MapReduce se službou SSH](apache-hadoop-use-mapreduce-ssh.md) informace o připojení ke clusteru HDInsight a spouštění úloh MapReduce.
@@ -40,7 +40,7 @@ Pokud jste připojeni k ploše pro HDInsight cluster, použijte následující k
 
 1. Z plochy HDInsight, spusťte **příkazového řádku Hadoopu**. Tím se otevře nový příkazový řádek v **c:\apps\dist\hadoop-&lt;číslo verze >** adresáře.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Číslo verze se změní při aktualizaci Hadoop. **HADOOP_HOME** proměnnou prostředí je možné najít cestu. Například `cd %HADOOP_HOME%` změny adresáře do adresáře systému Hadoop, aniž by bylo potřeba znát číslo verze.
    >
    >
@@ -94,5 +94,5 @@ Obecné informace o úlohy mapreduce je možné v HDInsight:
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c8d40587ec6feee9b1ae16e383341fc0f2d1ffb6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7a233a5effb804ec3cc22727b46846509032d214
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137890"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438502"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
@@ -77,12 +77,12 @@ Pokud chcete povolit protokolování diagnostiky na portálu Azure portal, prove
 
     * **Název**: Zadejte název pro protokoly a vytvořit.
 
-    * **Archivovat do účtu úložiště**: Pokud chcete použít tuto možnost, budete potřebovat pro připojení k existující účet úložiště. Chcete-li vytvořit nový účet úložiště na portálu, najdete v článku [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md) a postupujte podle pokynů a vytvořte Azure Resource Manageru, účet pro obecné účely. Pak se vraťte k této stránce na portálu a vyberte svůj účet úložiště. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
+    * **Archivovat do účtu úložiště**: Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Chcete-li vytvořit nový účet úložiště na portálu, najdete v článku [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md) a postupujte podle pokynů a vytvořte Azure Resource Manageru, účet pro obecné účely. Pak se vraťte k této stránce na portálu a vyberte svůj účet úložiště. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
     * **Stream do centra událostí**: Pokud chcete použít tuto možnost, budete potřebovat existující služby Event Hubs oboru názvů a Centrum událostí se připojit k. Pokud chcete vytvořit obor názvů služby Event Hubs, najdete v článku [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte k této stránce portálu vyberte název služby Event Hubs oboru názvů a zásad.
-    * **Odeslání do Log Analytics**: Tato možnost dala použít, použijte existující pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-in-loganalytics).
-    * **Protokolovat DataPlaneRequests**: tuto možnost můžete protokolovat požadavky na back-end z podkladové služby Azure Cosmos DB distribuovanou platformu pro účty SQL, graf, MongoDB, Cassandra a Table API. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
-    * **Protokolovat MongoRequests**: tuto možnost můžete protokolovat požadavky zahájená uživatelem z front-endu služby Azure Cosmos DB pro poskytování účty rozhraní API MongoDB. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
-    * **Metrika žádosti**: tuto možnost použijte k ukládání podrobné údaje v [metriky Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
+    * **Odeslání do Log Analytics**: Pokud chcete použít tuto možnost, použít stávající pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-in-loganalytics).
+    * **Protokolovat DataPlaneRequests**: Vyberte tuto možnost, chcete-li protokolovat požadavky na back-end z podkladové služby Azure Cosmos DB distribuovanou platformu pro účty SQL, graf, MongoDB, Cassandra a Table API. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
+    * **Protokolovat MongoRequests**: Vyberte tuto možnost můžete protokolovat požadavky zahájená uživatelem z front-endu služby Azure Cosmos DB pro poskytování účty rozhraní API MongoDB. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
+    * **Metrika žádosti**: Tuto možnost použijte k ukládání podrobné údaje v [metriky Azure](../azure-monitor/platform/metrics-supported.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
 
 3. Vyberte **Uložit**.
 
@@ -442,11 +442,11 @@ Následující tabulka popisuje obsah každé položky protokolu.
 | **čas** | **TimeGenerated** | Datum a čas (UTC), kdy došlo k chybě operace. |
 | **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro kterou jsou povolené protokoly.|
 | **Kategorie** | **Kategorie** | Pro protokoly služby Azure Cosmos DB **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **OperationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahradit, Execute, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
+| **OperationName** | **OperationName** | Název operace Tato hodnota může být některý z následujících operací: Vytvoření, aktualizaci, čtení, ReadFeed, odstranění, nahrazení, spusťte, SqlQuery, dotaz, JSQuery, Head, HeadFeed nebo Upsert.   |
 | **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsány v řádcích, které následují. |
 | **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
 | **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|
-| **Typ prostředku** | **Typ prostředku** | Typ prostředku, u níž. Tato hodnota může být některý z těchto typů prostředků: databáze, kontejner, dokument, přílohy, uživatele, oprávnění, uložené procedury StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídky. |
+| **Typ prostředku** | **Typ prostředku** | Typ prostředku, u níž. Tato hodnota může být některý z těchto typů prostředků: Databáze, kontejner, dokument, přílohy, uživatele, oprávnění, uložené procedury StoredProcedure, aktivační událost, UserDefinedFunction nebo nabídky. |
 | **statusCode** | **statusCode_s** | Stav odpovědi operace. |
 | **requestResourceId** | **ID prostředku** | ID prostředku, které se vztahují k požadavku. Hodnota může odkazovat na databaseRid, collectionRid nebo documentRid v závislosti na operaci provést.|
 | **clientIpAddress** | **clientIpAddress_s** | IP adresa klienta. |

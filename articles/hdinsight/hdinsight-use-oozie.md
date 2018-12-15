@@ -10,17 +10,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f585a9d89418f15d9e5c08ae36b70791eca54219
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: bbe61477a9841173fb47267b53da1b5cf75d9924
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017146"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410291"
 ---
-# <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight
+# <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-Další informace o použití Apache Oozie pro definování pracovního postupu a spouštění pracovního postupu na HDInsight. Další informace o Oozie coordinator najdete v tématu [použití koordinátoru Oozie podle času Hadoop s HDInsight][hdinsight-oozie-coordinator-time]. Další služby Azure Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory][azure-data-factory-pig-hive].
+Další informace o použití Apache Oozie pro definování pracovního postupu a spouštění pracovního postupu na HDInsight. Další informace o Oozie coordinator najdete v tématu [pomocí HDInsight založeného na čase Apache Oozie Coordinator][hdinsight-oozie-coordinator-time]. Další služby Azure Data Factory najdete v tématu [použití Apache Pig a Apache Hivu se službou Data Factory][azure-data-factory-pig-hive].
 
 Apache Oozie je systém koordinace pracovních postupů /, který spravuje úlohy systému Hadoop. Je integrován do zásobníku Hadoop a podporuje úlohy systému Hadoop pro Apache MapReduce, Apache Pig, Apache Hivu a Apache Sqoop. To lze použít také k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
@@ -28,7 +28,7 @@ Pracovní postup, který můžete implementovat podle pokynů uvedených v tomto
 
 ![Diagram pracovního postupu][img-workflow-diagram]
 
-1. Akce Hive spustí skript HiveQL k výpočtu výskytů jednotlivých typů úroveň protokolu log4j souboru. Každý soubor log4j se skládá z řádku polí, která obsahuje pole [úroveň protokolu], který popisuje typ a závažnost, například:
+1. Akce Hive spouští skript HiveQL k výpočtu výskytů jednotlivých typů úroveň protokolování v souboru Apache Log4j. Každý soubor log4j se skládá z řádku polí, která obsahuje pole [úroveň protokolu], který popisuje typ a závažnost, například:
    
         2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
         2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -44,11 +44,11 @@ Pracovní postup, který můžete implementovat podle pokynů uvedených v tomto
         [TRACE] 816
         [WARN]  4
    
-    Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
-2. Sqoop akce exportuje výstup HiveQL do tabulky v databázi Azure SQL. Další informace o Sqoop najdete v tématu [použití Sqoopu Hadoop s HDInsight][hdinsight-use-sqoop].
+    Další informace o Hivu najdete v tématu [použití Apache Hivu se službou HDInsight][hdinsight-use-hive].
+2. Sqoop akce exportuje výstup HiveQL do tabulky v databázi Azure SQL. Další informace o Sqoop najdete v tématu [použití Apache Sqoop s HDInsight][hdinsight-use-sqoop].
 
-> [!NOTE]
-> Podporované verze Oozie na clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight?] [hdinsight-versions].
+> [!NOTE]  
+> Podporované verze Oozie na clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů systému Apache Hadoop poskytovaných službou HDInsight?] [hdinsight-versions].
 > 
 > 
 
@@ -613,16 +613,16 @@ Tady je ukázkový skript Powershellu, které můžete použít:
 ```
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a jak se spouští úloha Oozie s použitím prostředí PowerShell. Další informace naleznete v následujících článcích:
+V tomto kurzu jste zjistili, jak definovat pracovní postup Apache Oozie a jak se spouští úloha Oozie s použitím prostředí PowerShell. Další informace naleznete v následujících článcích:
 
-* [Použití koordinátoru Oozie časovou synchronizací s HDInsight][hdinsight-oozie-coordinator-time]
-* [Začínáme používat Hadoop pomocí Hive v HDInsight k analýze pomocí mobilního telefonu][hdinsight-get-started]
+* [Pomocí HDInsight založeného na čase Apache Oozie Coordinator][hdinsight-oozie-coordinator-time]
+* [Začněte používat Apache Hadoop s Apache Hive v HDInsight k analýze pomocí mobilního telefonu][hdinsight-get-started]
 * [Použití Azure Blob storage s HDInsight][hdinsight-storage]
 * [Správa HDInsight pomocí Powershellu][hdinsight-admin-powershell]
-* [Nahrání dat pro úlohy systému Hadoop v HDInsight][hdinsight-upload-data]
-* [Použití nástroje Sqoop se systémem Hadoop v HDInsight][hdinsight-use-sqoop]
-* [Použití Hivu s Hadoopem v HDInsight][hdinsight-use-hive]
-* [Použití Pigu se systémem Hadoop v HDInsight][hdinsight-use-pig]
+* [Nahrání dat pro úlohy Apache Hadoop v HDInsight][hdinsight-upload-data]
+* [Použití Apache Sqoop s Apache Hadoop v HDInsight][hdinsight-use-sqoop]
+* [Použití Apache Hivu s Apache Hadoop v HDInsight][hdinsight-use-hive]
+* [Použití Apache Pig s Apache Hadoop v HDInsight][hdinsight-use-pig]
 * [Vývoj programů Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563

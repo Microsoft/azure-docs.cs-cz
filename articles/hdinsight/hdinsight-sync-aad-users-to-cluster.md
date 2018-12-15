@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984309"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407283"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory pro HDInsight cluster
 
@@ -40,11 +40,11 @@ Chcete-li zobrazit hostitele, otevřete webové uživatelské rozhraní Ambari. 
 
 4. Vyberte **Vytvořit**.
 
-## <a name="use-the-ambari-rest-api-to-synchronize-users"></a>Použití rozhraní Ambari REST API k synchronizaci uživatelů
+## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>Použití Apache Ambari REST API k synchronizaci uživatelů
 
 V tu chvíli se synchronizují skupiny uživatelů zadaný během procesu vytváření clusteru. Synchronizace uživatelů proběhne automaticky jednou za hodinu. Okamžitě synchronizovat uživatele nebo synchronizovat skupiny než skupiny zadané při vytváření clusteru pomocí rozhraní Ambari REST API.
 
-Pomocí rozhraní Ambari REST API používá následující Metoda POST. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+Pomocí rozhraní Ambari REST API používá následující Metoda POST. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 1. [Připojení ke clusteru pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md). V podokně přehled pro váš cluster na webu Azure Portal, vyberte **Secure Shell (SSH)** tlačítko.
 
@@ -123,12 +123,12 @@ Pomocí rozhraní Ambari REST API používá následující Metoda POST. Další
 
 5. Tento výsledek zobrazí, že stav je **COMPLETE**jednoho nového uživatele vytvořil a uživateli se přiřadí členství. V tomto příkladu uživateli přiřazena "HiveUsers" synchronizovat skupiny protokolu LDAP, protože uživatel přidal do stejné skupiny ve službě Azure AD.
 
-> [!NOTE]
+> [!NOTE]  
 > Předchozí metoda synchronizuje pouze podle skupiny Azure AD **přístupová skupina uživatelů** vlastnost nastavení domény při vytváření clusteru. Další informace najdete v tématu [vytvořit HDInsight cluster](domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Ověřte nově přidané uživatele Azure AD
 
-Otevřít [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro ověření, že nové uživatele Azure AD byl přidán. Přístup k webovému uživatelskému rozhraní Ambari, tak, že přejdete do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo.
+Otevřít [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md) pro ověření, že nové uživatele Azure AD byl přidán. Přístup k webovému uživatelskému rozhraní Ambari, tak, že přejdete do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo.
 
 1. Z řídicího panelu Ambari vyberte **spravovat Ambari** pod **správce** nabídky.
 
@@ -148,6 +148,6 @@ Když se nový uživatel (nebo jiný uživatel domény) přihlásí k Ambari, po
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Konfigurace zásad Hivu ve HDInsight s ESP](hdinsight-domain-joined-run-hive.md)
+* [Nakonfigurovat zásady Apache Hive v HDInsight s ESP](hdinsight-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight s ESP](hdinsight-domain-joined-manage.md)
-* [Povolit uživatelům Ambari](hdinsight-authorize-users-to-ambari.md)
+* [Povolit uživatelům Apache Ambari](hdinsight-authorize-users-to-ambari.md)

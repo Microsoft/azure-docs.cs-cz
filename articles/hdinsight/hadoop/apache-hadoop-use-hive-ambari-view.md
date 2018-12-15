@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16c9e1cb568533e8dcad046c4ee21bfeaf19d5b7
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632743"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407843"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoop v HDInsight
 
@@ -26,7 +26,7 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
 * Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Webový prohlížeč
@@ -70,18 +70,18 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
     Tyto příkazy provádět následující akce:
 
-   * `DROP TABLE`: Odstraní tabulku a datový soubor v v případě, že tabulka již existuje.
+   * `DROP TABLE`: Odstraní tabulku a datový soubor, v případě, že tabulka již existuje.
 
    * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v podregistru.
    Externí tabulky uložte definici tabulky Hive. Data zůstane v původním umístění.
 
-   * `ROW FORMAT`: Zobrazí formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+   * `ROW FORMAT`: Ukazuje, jak je ve formátu data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Označuje, kde jsou data uložená a uložená jako text.
+   * `STORED AS TEXTFILE LOCATION`: Ukazuje, kde jsou data uložená a uložená jako text.
 
-   * `SELECT`: Vybere počet všech řádků, kde t4 sloupec obsahuje hodnotu [Chyba].
+   * `SELECT`: Počet všech řádků, kde t4 sloupec obsahuje hodnotu [Chyba] vybere.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Nechte __databáze__ výběr na __výchozí__. V příkladech v tomto dokumentu pomocí výchozí databáze je součástí HDInsight.
 
 5. Chcete-li spustit dotaz, použijte **Execute** tlačítko pod listem. Tlačítko oranžově a se text změní na **Zastavit**.
@@ -93,7 +93,7 @@ Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zob
 
     Můžete použít **protokoly** kartu, chcete-li zobrazit informace o vytvoření úlohy protokolování.
 
-   > [!TIP]
+   > [!TIP]  
    > Stáhnout nebo uložit výsledky z **uložit výsledky** rozevíracím seznamu dialogového okna v horním levém rohu **výsledky zpracování dotazu** oddílu.
 
 ### <a name="visual-explain"></a>Vysvětlují vizuálu
@@ -106,7 +106,7 @@ Chcete-li zobrazit vizualizaci plán dotazu, vyberte **Visual vysvětlují** kar
 
 Chcete-li zobrazit uživatelského rozhraní Tez pro dotaz, vyberte **Tez** kartu pod listem.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Chcete-li vyřešit všechny dotazy se nepoužívá tez. Mnoho dotazů lze vyřešit bez použití Tez. 
 
 Pokud Tez se použil při překladu dotazu, zobrazí se orientovaného Acyklického grafu (DAG). Pokud chcete zobrazit orientovaného acyklického grafu pro dotazy, které jste spustili v minulosti, nebo pokud chcete ladit proces Tez, použijte [Tez zobrazení](../hdinsight-debug-ambari-tez-view.md) místo.
@@ -129,7 +129,7 @@ Z **dotazu** kartu, můžete volitelně ukládat dotazy. Po uložení dotazu, m�
 
 ![Obrázek karty uložené dotazy](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
-> [!TIP]
+> [!TIP]  
 > Uložené dotazy jsou uloženy v výchozí úložiště clusteru. Uložené dotazy v rámci cesty můžete najít `/user/<username>/hive/scripts`. Tyto jsou uložené jako prostý text `.hql` soubory.
 >
 > Pokud cluster odstranit, ale zachovat úložiště, můžete použít nástroje, jako je třeba [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) nebo Data Lake Storage Explorer (z [webu Azure Portal](https://portal.azure.com)) načíst dotazy.
@@ -165,8 +165,8 @@ Pak můžete systému souborů UDF v dotazu. Například, `SELECT myawesomeudf(n
 
 Další informace o používání funkcí UDF pomocí Hive v HDInsight najdete v následujících článcích:
 
-* [Použití Pythonu s Hivem a Pigem ve HDInsight](python-udf-hdinsight.md)
-* [Jak přidat vlastní Hive UDF pro HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Použití Pythonu s Apache Hivu a Apache Pig v HDInsight](python-udf-hdinsight.md)
+* [Jak přidat vlastní účet Apache Hive UDF pro HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
 ## <a name="hive-settings"></a>Nastavení hivu
 
@@ -176,9 +176,9 @@ Můžete změnit různá nastavení Hive, jako je například změna prováděc�
 
 Obecné informace o Hive v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
 Další informace o dalších způsobech můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)

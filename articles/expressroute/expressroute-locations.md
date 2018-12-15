@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2018
+ms.date: 12/13/2018
 ms.author: pareshmu
-ms.openlocfilehash: 817dd1ec5cd047035099fb88d998f79cd8c39078
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0e683fefd0905eb48149e676b26341b47ccd9abf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276053"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409781"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -42,16 +42,16 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 
 | **Geopolitická oblast** | **Zóna** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- | --- |
-| **Australská vláda** |Zóna 1 | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
-| **Evropa** |Zóna 1 |Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Amsterdam2, Dublin, Londýn, Marseille, Newport (Wales), Paříž |
-| **Severní Amerika** |Zóna 1 |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
-| **Asie** |Zóna 2 |Východní Asie, Jihovýchodní Asie |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
-| **Austrálie** |Zóna 2 |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Sydney | 
-| **Indie** |Zóna 2 |Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
-| **Japonsko** |Zóna 2 |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
-| **Jižní Korea** |Zóna 2 |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
-| **Jižní Afrika** |Zóna 3 |[Jižní Afrika – západ+, Jižní Afrika – sever+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapské město, Johannesburg |
-| **Jižní Amerika** |Zóna 3 |Brazílie – jih |Sao Paulo |
+| **Australská vláda** | 1 | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
+| **Evropa** | 1 |Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Amsterdam2, Dublin, Londýn, Marseille, Newport (Wales), Paříž |
+| **Severní Amerika** | 1 |Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střed USA, Střed USA – jih, Střed USA – sever, Střed USA – západ, Střední Kanada, Východní Kanada |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, New York, Seattle, Silicon Valley, Washington DC, Montreal, Quebec City, Toronto |
+| **Asie** | 2 |Východní Asie, Jihovýchodní Asie |Hongkong, Kuala Lumpur, Singapur, Singapur2 |
+| **Austrálie** | 2 |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Sydney | 
+| **Indie** | 2 |Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
+| **Japonsko** | 2 |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
+| **Jižní Korea** | 2 |Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
+| **Jižní Afrika** | 3 |[Jižní Afrika – západ+, Jižní Afrika – sever+](https://blogs.microsoft.com/blog/2017/05/18/microsoft-deliver-microsoft-cloud-datacenters-africa/) |Kapské město, Johannesburg |
+| **Jižní Amerika** | 3 |Brazílie – jih |Sao Paulo |
 
 
  **+** označuje brzké uvedení.
@@ -62,8 +62,8 @@ Následující tabulka obsahuje informace o oblastech a geopolitických hranicí
 | **Geopolitická oblast** | **Oblasti Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Cloud vlády USA** |US Gov – Arizona, US Gov – Iowa, US Gov – Texas, US Gov – Virginie, US DoD – střed, US DoD – východ  |Chicago, Dallas, New York, Phoenix, San Antonio, Seattle, Silicon Valley, Washington DC |
-| **Čína – východ** |Čína – východ, Čína – východ 2 |Šanghaj |
-| **Čína – sever** |Čína – sever, Čína – sever 2 |Peking |
+| **Čína – východ** |Čína – východ, Čína – východ 2 |Šanghaj, Shanghai2 |
+| **Čína – sever** |Čína – sever, Čína – sever 2 |Peking, Beijing2 |
 | **Německo** |Střední Německo, Východní Německo |Berlín, Frankfurt |
 
 Připojení přes geopolitické oblasti není pomocí standardní SKU pro ExpressRoute podporované. Aby bylo podporované globální připojení, budete muset povolit doplněk ExpressRoute Premium. Připojení k prostředím národních cloudů není podporované. Podle potřeby můžete spolupracovat se svým poskytovatelem připojení.
@@ -160,6 +160,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
 | --- | --- | --- | --- |
 | **China Telecom** |Podporováno |Nepodporuje se |Peking, Šanghaj |
+| **GDS** |Podporováno |Nepodporuje se |Beijing2 Shanghai2 |
 
 Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsazure.cn/home/features/expressroute/).
 

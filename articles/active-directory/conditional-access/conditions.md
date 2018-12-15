@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eb7d5dc2d38d814625e904d1270446f5f1671624
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321097"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410058"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
@@ -74,7 +74,7 @@ Vyberte:
 
 - **Všechny cloudové aplikace** do směrného plánu zásad platí pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují vícefaktorové ověřování při zjištění rizika přihlašování všech cloudových aplikací. Použít zásady **všechny cloudové aplikace** platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazují na **vyberte aplikace** seznamu. 
 
-- Jednotlivých cloudových aplikací ke konkrétním službám cílové zásady. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
+- **Vyberte spps** ke konkrétním službám cíl ve vašich zásadách. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
 
 Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup. 
 
@@ -137,16 +137,16 @@ Další informace najdete v tématu [co je podmínka umístění podmíněného 
 
 Ve výchozím nastavení zásady podmíněného přístupu platí pro následující aplikace:
 
-- [Aplikace prohlížeče](technical-reference.md#supported-browsers) -prohlížečových aplikací zahrnují websites pomocí SAML, WS-Federation nebo OpenID Connect protokoly webové jednotné přihlašování. To platí i pro web nebo webovou službu, který byl zaregistrován jako důvěrné klienta OAuth. Například web Office 365 SharePoint. 
+- **[Aplikace prohlížeče](technical-reference.md#supported-browsers)**  -prohlížečových aplikací zahrnují websites pomocí SAML, WS-Federation nebo OpenID Connect protokoly webové jednotné přihlašování. To platí i pro web nebo webovou službu, který byl zaregistrován jako důvěrné klienta OAuth. Například web Office 365 SharePoint. 
 
-- [Mobilní a desktopové aplikace používající moderní ověřování](technical-reference.md#supported-mobile-applications-and-desktop-clients) – tyto aplikace zahrnují desktopových aplikacích Office a telefonní aplikace. 
+- **[Mobilní a desktopové aplikace používající moderní ověřování](technical-reference.md#supported-mobile-applications-and-desktop-clients)**  – tyto aplikace zahrnují desktopových aplikacích Office a telefonní aplikace. 
 
 
 Kromě toho je možné cílit na zásady pro konkrétní klientské aplikace, které nepoužívají moderní ověřování, například:
 
-- Klientské aplikace pomocí protokolu Microsoft Exchange ActiveSync. Po blocích zásad, pomocí protokolu Exchange ActiveSync, ovlivnění uživatelé získat e-mail o karanténě jeden s informacemi, proč jsou zablokované. V případě potřeby e-mailu obsahuje pokyny pro registraci zařízení v Intune.
+- **[Klienti Exchange ActiveSync](conditions.md#exchange-activesync-clients)**  – po blocích zásad, pomocí protokolu Exchange ActiveSync, ovlivnění uživatelé získat e-mail o karanténě jeden s informacemi, proč jsou zablokované. V případě potřeby e-mailu obsahuje pokyny pro registraci zařízení v Intune.
 
-- Ostatní klienti. Tyto aplikace zahrnovat klienty, kteří používají základní ověřování pomocí protokolů e-mailu, jako jsou IMAP, MAPI, POP, SMTP a starší aplikace Office, které nepoužívají moderní ověřování. Další informace najdete v tématu [jak moderní ověřování funguje pro klientské aplikace Office 2013 a Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
+- **[Jiní klienti](block-legacy-authentication.md)**  – tyto aplikace zahrnovat klienty, kteří používají základní ověřování pomocí protokolů e-mailu, jako jsou IMAP, MAPI, POP, SMTP a starší aplikace Office, které nepoužívají moderní ověřování. Další informace najdete v tématu [jak moderní ověřování funguje pro klientské aplikace Office 2013 a Office 2016](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016).
 
 ![Klientské aplikace](./media/conditions/41.png)
 
@@ -154,7 +154,7 @@ Běžné případy použití pro tuto podmínku jsou zásady s následujícími 
 
 - **[Vyžadovat, aby spravovaná zařízení](require-managed-devices.md)**  pro mobilních a desktopových aplikací, které stahování dat do zařízení. Ve stejnou dobu povolit přístup z prohlížeče z libovolného zařízení. Tento scénář zabrání ukládání a synchronizaci dokumentů na nespravovaném zařízení. Pomocí této metody můžete snížit pravděpodobnost ke ztrátě dat. Pokud dojde ke ztrátě nebo odcizení zařízení.
 
-- **[Vyžadovat, aby spravovaná zařízení](require-managed-devices.md)**  aplikace pomocí aplikace ActiveSync přístup k Exchangi Online.
+- **[Vyžadovat, aby spravovaná zařízení](require-managed-devices.md)**  pro aplikace pomocí aplikace ActiveSync přístup k Exchangi Online.
 
 - **[Blok starší verze ověřování](block-legacy-authentication.md)**  do služby Azure AD (dalších klientů)
 

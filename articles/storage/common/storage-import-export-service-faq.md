@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 12/13/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: b53f679f6f93dd5d4889fbe51f8b5caf62fc1a36
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8111d80d0888455fbdf3ccf37e723fe348a62bee
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236711"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435000"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 
 Níže jsou dotazy a odpovědi, které můžou mít při použití služby Azure Import/Export pro přenos dat do služby Azure storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:
@@ -66,7 +66,10 @@ Ano. Úlohy můžete zrušit, pokud je jeho stav **vytváření** nebo **přesou
 Stav dokončené úlohy můžete zobrazit až 90 dnů. Dokončené úlohy jsou odstraněny po 90 dnech.
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Když chcete importovat nebo exportovat více než 10 jednotek, co mám dělat?
-Jeden import nebo export úloh může odkazovat pouze na 10 jednotek v rámci jedné úlohy. K odeslání více než 10 jednotek, měli byste vytvořit několik úloh. Jednotky spojené s stejná úloha musí dodané společně ve stejném balíku. Pro úlohy importu Další informace a pokyny, když datové kapacity zahrnuje více disků, obraťte se na společnost Microsoft zde bulkimport@microsoft.com.                                                              
+Jeden import nebo export úloh může odkazovat pouze na 10 jednotek v rámci jedné úlohy. K odeslání více než 10 jednotek, měli byste vytvořit několik úloh. Jednotky spojené s stejná úloha musí dodané společně ve stejném balíku. Pro úlohy importu Další informace a pokyny, když datové kapacity zahrnuje více disků, obraťte se na společnost Microsoft zde bulkimport@microsoft.com. 
+
+### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Nahraný objekt blob ukazuje stav jako "Vypršení platnosti zapůjčení". Co bych měl/a dělat?
+Pole "Vypršení platnosti zapůjčení" můžete ignorovat. Import/Export převezme zapůjčení objektu blob při nahrávání, abyste měli jistotu, že žádný jiný proces můžete aktualizovat objekt blob paralelně. Konec platnosti zapůjčení znamená, že je už odesílání importu/exportu a objekt blob je k dispozici pro použití. 
 
 ## <a name="shipping-disks"></a>Přesouvání disků
 

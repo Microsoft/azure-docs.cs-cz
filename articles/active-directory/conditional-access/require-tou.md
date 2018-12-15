@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901874"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413366"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rychlý start: Vyžadovat podmínky použití přijmout před přístupem k cloudových aplikací 
 
@@ -72,13 +72,13 @@ Tato část obsahuje kroky k vytvoření ukázkové podmínky použití. Když v
 
 2. Typ **Moje podmínky použití**a potom uložte dokument na počítač jako **mytou.pdf**.
 
-3. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+3. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 
 4. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**. 
 
     ![Azure Active Directory](./media/require-tou/02.png)
 
-5. Na **Azure Active Directory** stránku, **spravovat** klikněte na tlačítko **podmíněného přístupu**.
+5. Na **Azure Active Directory** stránku, **zabezpečení** klikněte na tlačítko **podmíněného přístupu**.
 
     ![Podmíněný přístup](./media/require-tou/03.png) 
 
@@ -237,7 +237,7 @@ Kliknutím na **co když** vytvoří sestavu simulace, která zobrazí:
 3. Klikněte na tlačítko **co když**.
 
 
-## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
 
 V předchozí části jste zjistili, jak vyhodnotit simulované přihlášení. Kromě simulaci byste měli také otestovat své zásady podmíněného přístupu k zajištění, že funguje podle očekávání. 
 

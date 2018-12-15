@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 2c468ec8bfa9217cb8d045bf0129da28e46d8229
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388799"
+ms.locfileid: "53408880"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správa nejčastější dotazy ke službě Web Apps v Azure
 
@@ -280,11 +280,11 @@ Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resour
 ## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak ověřování a autorizace funguje ve službě App Service?
 
 Podrobnou dokumentaci pro ověřování a autorizace ve službě App Service najdete v dokumentaci pro různé identifikovat zprostředkovatele přihlášení:
-* [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Google](app-service-mobile-how-to-configure-google-authentication.md)
-* [Účet Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Azure Active Directory](configure-authentication-provider-aad.md)
+* [Facebook](configure-authentication-provider-facebook.md)
+* [Google](configure-authentication-provider-google.md)
+* [Účet Microsoft](configure-authentication-provider-microsoft.md)
+* [Twitter](configure-authentication-provider-twitter.md)
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak přesměrovat výchozí *. azurewebsites.net domény k vlastní doméně Moje webové aplikace Azure?
 

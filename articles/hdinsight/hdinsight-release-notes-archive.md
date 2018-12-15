@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e70a92b4a0de633f88012d756276cef07226c82
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037669"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408804"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Poznámky k verzi archivované pro Azure HDInsight
 
 Pro **nejnovější** distribuovatelných oprav Azure HDInsight, naleznete v tématu [poznámky k verzi systému HDInsight](hdinsight-release-notes.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [článku Správa verzí HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>Poznámky k 27/06/2018 – vydání nové verze opensourcového atd. ADLS Gen2 HDInsight 3.6
@@ -28,7 +28,7 @@ Verze z června 2018 HDInsight je významné verze s velkým množstvím nových
 
 Následující části jsou nejdůležitější funkce obsahuje. Podrobné poznámky k verzi, známé problémy a podobně a opravy chyb najdete [poznámky k verzi pro Azure HDInsight](hdinsight-release-notes.md).
 
-- **Aktualizovat Hadoop a další projekty open source** – kromě 1000 opravy chyb napříč 20 + open source projekty, tato aktualizace obsahuje novou verzi (2.3) Sparkem a systémem Kafka (1.0).
+- **Aktualizovat Apache Hadoop a další projekty open source** – kromě 1000 opravy chyb napříč 20 + open source projekty, tato aktualizace obsahuje novou verzi (2.3) Apache Spark a Apache Kafka (1.0).
 - **Aktualizovat R serveru 9.1 na Machine Learning Services 9.3** – v této verzi poskytujeme datovým vědcům a inženýrům s využitím nejlepší open source vylepšeno díky vylepšením inovace a snadno se operacionalizace, všechny dostupné v jejich Upřednostňovaný jazyk s rychlostí Apache Spark. Tato verze rozšiřují možnosti nabízené v R serveru pomocí přidání podpory pro Python, což vede k změnu názvu clusteru R server pro služby ML. 
 - **Podpora pro Azure Data Lake Storage Gen2** – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. Zákazníci budou moct zvolit účet ADLS Gen2 jako úložiště pro svých clusterů HDInsight v oblasti k dispozici.
 - **Aktualizace balíčků zabezpečení organizace HDInsight (Preview)** – (Preview) sítě koncové body služeb virtuální podporu objektů blob v Azure Storage, ADLS Gen1, Cosmos DB a Azure DB. 
@@ -43,11 +43,11 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
 | Titul | Popis | Ovlivněné oblasti  | Typ clusteru  | 
 | --- | --- | --- | --- | --- |
 | Verze Microsoft R Server 9.1 na HDInsight |HDInsight teď podporuje zřizování clustery R serveru 9.1 na HDInsight. Další informace o vydání Microsoft R serveru 9.1, naleznete v tématu [tento blog](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Služba |R Server |
-| Teď obsahuje novější verze do zásobníku Hadoop HDInsight 3.6|<ul><li>Podrobný seznam aktualizovaných verzí, naleznete v tématu [verzích komponenty systému Hadoop v HDInsight k dispozici](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).</li><li>Seznam opravených v nejnovějších verzích do zásobníku Hadoop najdete v tématu [informace o opravě Apache](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Seznam rozbíjejících změn mezi HDP 2.6.1 (která je teď dostupná v HDInsight 3.6), najdete v části [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Seznam známých problémů v HDP 2.6.1 najdete v tématu [známé problémy](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Služba |Vše |neuvedeno |
-| Aktualizace pro clustery s interaktivním Hivem (Preview) |<ul><li><b>Zlepšení funkce.</b> Implementace v mezipaměti metastore, která snižuje zatížení na back-endu SQL díky ukládání do mezipaměti metadat a zvyšuje výkon pro všechny operace s metadaty.  Toto vylepšení je teď výchozí nastavení na všech clusterech Interactive Hive. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>Zlepšení funkce.</b> Načítání dynamických oddílů je optimalizovaný. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>Zlepšení funkce.</b> Konfigurace optimalizace pro HDInsight v Linuxu.</li><li><b>Oprava chyby.</b> `CredentialProviderFactory$getProviders` není bezpečné pro vlákna. Tato chyba je opravená. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Oprava chyby.</b> Vysoké využití procesoru s ovladačem WASB `liststatus` výsledkem je špatné ATS výkon rozhraní API. Tato chyba je opravená. Další informace najdete na adrese [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Služba |Interaktivní Hive (Preview) |
+| Teď obsahuje novější verze do zásobníku Hadoop HDInsight 3.6|<ul><li>Podrobný seznam aktualizovaných verzí, naleznete v tématu [verze součástí Apache Hadoop v HDInsight k dispozici](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).</li><li>Seznam opravených v nejnovějších verzích do zásobníku Hadoop najdete v tématu [informace o opravě Apache](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Seznam rozbíjejících změn mezi HDP 2.6.1 (která je teď dostupná v HDInsight 3.6), najdete v části [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Seznam známých problémů v HDP 2.6.1 najdete v tématu [známé problémy](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Služba |Vše |neuvedeno |
+| Aktualizace pro clustery s interaktivním Hivem (Preview) |<ul><li><b>Zlepšení funkce.</b> Implementace v mezipaměti metastore, která snižuje zatížení na back-endu SQL díky ukládání do mezipaměti metadat a zvyšuje výkon pro všechny operace s metadaty.  Toto vylepšení je teď výchozí nastavení na všech clusterech Interactive Apache Hive. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>Zlepšení funkce.</b> Načítání dynamických oddílů je optimalizovaný. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>Zlepšení funkce.</b> Konfigurace optimalizace pro HDInsight v Linuxu.</li><li><b>Oprava chyby.</b> `CredentialProviderFactory$getProviders` není bezpečné pro vlákna. Tato chyba je opravená. Další informace najdete na adrese [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Oprava chyby.</b> Vysoké využití procesoru s ovladačem WASB `liststatus` výsledkem je špatné ATS výkon rozhraní API. Tato chyba je opravená. Další informace najdete na adrese [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Služba |Interaktivní Hive (Preview) |
 | Aktualizace pro clustery Hadoop |Templeton úlohy operace spolehlivost. Další informace najdete v tématu [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |Služba |Hadoop |
 | Aktualizace YARN | HDInsight teď vytvoří databázi Ambari 250 GB (bez zvýšení nákladů), což vede k lepší prostředí pro zákazníky. Tato změna by měl ATS zabránit v získání vyplněné nahoru a pravděpodobně mají lepší výkon. |Služba |Vše |
-| Aktualizace Sparku | Verze sparku 2.1.1. Další informace najdete v tématu [verzi Sparku 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html). | Služba | Spark |
+| Aktualizace Sparku | Verze sparku 2.1.1. Další informace najdete v tématu [Apache Spark verze 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html). | Služba | Spark |
 
   
 
@@ -72,12 +72,12 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
 * **Zastarání rozhraní příkazového řádku Hive**: Hive rozhraní příkazového řádku je zastaralé a místo toho použít Beeline nepodnikovým zákazníkům. Další informace najdete v tématu [dokumentaci Apache](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline). Pokyny týkající se použití Beeline s HDInsight naleznete v tématu [použití Beeline s HDInsight Hadoop clusterů](hadoop/apache-hadoop-use-hive-beeline.md).
 
 * **Nové funkce v Apache Phoenix a HBase**.
-    * Podpora kvótu úložiště: běžně používá v prostředích s více tenanty umožňující omezené úložný prostor na každou tabulku a na úrovni oboru názvů.
-    * Phoenix indexování vylepšení: vytváření přírůstkových indexu nebo opětovné sestavení/obnovení indexování z předchozích chyb.
-    * Nástroj pro integritu dat Phoenix: podporuje ověřování schéma, index a další metadata.
+    * Podpora kvótu úložiště: Běžně používá v prostředích s více tenanty umožňující omezené úložný prostor na každou tabulku a na úrovni oboru názvů.
+    * Phoenix indexování vylepšení: Vytvoření přírůstkových indexu a opětovné sestavení a obnovování indexování z předchozích chyb.
+    * Phoenix nástroj integritu dat: Podporuje ověřování schéma, index a další metadata.
 
 
-* **Problém s HBase**: při spuštění MapReduce sdíleného svazku clusteru hromadné načtení projektu, může dojít k chybě syntaxe.
+* **Problém s HBase**: Při spuštění sdíleného svazku clusteru hromadné načtení úlohu MapReduce, syntaxi může vést k chybě.
 
         HADOOP_CLASSPATH=$(hbase mapredcp):/path/to/hbase/conf hadoop jar phoenix-<version>-client.jar org.apache.phoenix.mapreduce.CsvBulkLoadTool --table EXAMPLE --input /data/example.csv
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 52657ae18b6fd06408887df82bd822eb2ff8fffe
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8c8ba338a7059d6d11f43bda6348aa6e645ab98c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964352"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410155"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -33,8 +33,8 @@ Technologie Hyper-V bez Virtual Machine Manager | Můžete provést zotavení po
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Technologie Hyper-V (bez Virtual Machine Manager spuštěna) | Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Když konfigurujete ve službě Site Recovery do lokality Hyper-V, kombinování hostitele se systémem Windows Server 2016 a 2012 R2 se nepodporuje.<br/><br/> Pro virtuální počítače na hostitele se systémem Windows Server 2016 není podporováno obnovení do alternativního umístění.
-Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2012 R2 Virtual Machine Manager 2016 | Pokud se používá Virtual Machine Manager, by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/> Virtual Machine Manager cloud, který kombinuje hostitele Hyper-V spuštěné na Windows serveru 2016 a 2012 R2 se momentálně nepodporuje.<br/><br/> Prostředí, které zahrnují upgrade existujícího serveru Virtual Machine Manager 2012 R2 na 2016 nejsou podporovány.
+Technologie Hyper-V (bez Virtual Machine Manager spuštěna) | Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pro virtuální počítače na hostitele se systémem Windows Server 2016 není podporováno obnovení do alternativního umístění.<br/><br/> Pokud jste už nakonfigurovali systému Windows Server 2012 R2 s / nebo SCVMM 2012 R2 s Azure Site Recovery a chcete upgradovat operační systém, postupujte podle pokynů [dokumentaci.](upgrade-2012R2-to-2016.md) 
+Technologie Hyper-V (spuštěné s Virtual Machine Manager) | Virtual Machine Manager 2012 R2 Virtual Machine Manager 2016 | Pokud se používá Virtual Machine Manager, by měl spravovat hostitele Windows serveru 2016 ve Virtual Machine Manager 2016.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
@@ -59,16 +59,16 @@ Přidání disku na replikovaný virtuální počítač Hyper-V | Nepodporuje se
 
 **Komponenta** | **Technologie Hyper-V s Virtual Machine Manager** | **Technologie Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Hostitelské sítě: seskupování síťové karty | Ano | Ano
-Hostitelské sítě: sítě VLAN | Ano | Ano
+Hostitelské sítě: Seskupování síťových adaptérů | Ano | Ano
+Hostitelské sítě: Síť VLAN | Ano | Ano
 Hostitelské sítě: IPv4 | Ano | Ano
 Hostitelské sítě: IPv6 | Ne | Ne
-Síť virtuálních počítačů hosta: seskupování síťové karty | Ne | Ne
+Síť virtuálních počítačů hosta: Seskupování síťových adaptérů | Ne | Ne
 Síť virtuálních počítačů hosta: IPv4 | Ano | Ano
 Síť virtuálních počítačů hosta: IPv6 | Ne | Ano
-Síť virtuálních počítačů hosta: statická IP adresa (Windows) | Ano | Ano
-Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne | Ne
-Síť virtuálních počítačů hosta: s více síťovými Kartami | Ano | Ano
+Síť virtuálních počítačů hosta: Statická IP adresa (Windows) | Ano | Ano
+Síť virtuálních počítačů hosta: Statická IP adresa (Linux) | Ne | Ne
+Síť virtuálních počítačů hosta: S více síťovými Kartami | Ano | Ano
 
 
 
@@ -111,8 +111,8 @@ Systém souborů NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ne | Ne
 RDM | Není k dispozici | Není k dispozici
 Disk > 1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
-Disku: logický a fyzický sektor 4 kB | Není podporováno: 1 nebo generace 2. generace | Není podporováno: 1 nebo generace 2. generace
-Disku: 4 kB logický a fyzický sektor 512 bajtů | Ano |  Ano
+Disk: Logický a fyzický sektor 4 kB | Nejsou podporovány: 1 nebo generace 2. generace | Nejsou podporovány: 1 nebo generace 2. generace
+Disk: 4 kB logický a fyzický sektor 512 bajtů | Ano |  Ano
 Správa logických svazků (LVM). LVM je podporován pouze pro datové disky. Azure poskytuje pouze jedním diskem operačního systému. | Ano | Ano
 Svazek s prokládané disk > 1 TB | Ano | Ano
 Prostory úložiště | Ano | Ano
@@ -181,7 +181,7 @@ Pokud chcete mít jistotu, že vaše nasazení je kompatibilní s nastaveními v
 
 **Název** | **Popis** | **Podrobnosti**
 --- | --- | --- | --- | ---
-Zprostředkovatel Azure Site Recovery | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Technologie Hyper-V s Virtual Machine Manager: nainstalovat na servery Virtual Machine Manager<br/><br/> Technologie Hyper-V bez Virtual Machine Manager: nainstalovány na hostitelích Hyper-V| Nejnovější verze: 5.1.2700.1 (k dispozici na webu Azure Portal)<br/><br/> [Nejnovější funkce a opravy](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
+Zprostředkovatel Azure Site Recovery | Koordinuje komunikaci mezi místními servery a Azure <br/><br/> Technologie Hyper-V s Virtual Machine Manager: Nainstalovat na servery Virtual Machine Manager<br/><br/> Technologie Hyper-V bez Virtual Machine Manager: Nainstalovat na hostitelích Hyper-V| Nejnovější verze: 5.1.2700.1 (k dispozici na webu Azure Portal)<br/><br/> [Nejnovější funkce a opravy](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Agenta služeb zotavení Microsoft Azure | Řídí replikaci mezi virtuálními počítači Hyper-V a Azure<br/><br/> Nainstalovat na místní servery Hyper-V (s nebo bez Virtual Machine Manager) | Nejnovější verzi agenta, které jsou k dispozici z portálu
 
 

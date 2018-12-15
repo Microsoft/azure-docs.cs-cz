@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 12/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: fb77c7e8a511d9d97720066113217a39ffc23b24
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4f6dbb52778893de0468dbab82351b9020af2927
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196728"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412805"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikace Azure
 
-Tento článek popisuje, jak vytvářet a publikovat položku nabídky aplikace Azure pro Azure Marketplace. Každé nabídky se zobrazí jako vlastní entity na webu Azure Marketplace a je přidružený nejmíň jeden skladové položky. Nabídka se skládá z následujících seskupení prostředků a služeb podpory:
+Tento článek popisuje, jak vytvářet a publikovat položku nabídky aplikace Azure pro Azure Marketplace. Každé nabídky se zobrazí jako vlastní entity na webu Azure Marketplace a se skládá z následujících seskupení prostředků a služeb podpory: Podrobnosti, skladové jednotky, marketingové artefakty, nabídky a informace o podpoře.
 
 ## <a name="new-offer-form"></a>Formulář nové nabídky
 
@@ -33,7 +33,7 @@ Přihlaste se k [portál partnerů cloudu](http://cloudpartner.azure.com/)a pak 
 
 ## <a name="next-steps"></a>Další postup
 
-Na stránce Nová nabídka pro typ nabídky aplikace Azure poskytuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Každý z následujících článků vysvětluje, jak karta slouží k definování skupin prostředků a služeb podpory pro nové nabídky.
+Stránka Nová nabídka obsahuje sadu karet a pole formuláře, které použijete k vytvoření nové nabídky. Následující články popisují, jak definovat skupiny prostředků a služeb podpory pro nové nabídky.
 
 * [Karta Nastavení nabídky](./cpp-offer-settings-tab.md)
 * [Karta Skladové položky](./cpp-skus-tab.md)

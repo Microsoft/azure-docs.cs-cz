@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2018
+ms.date: 12/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5f2f086dbe5056ee3d83be2d8725f49fd502d1b2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b0aba4d2bf9cb666d1cb7ae30d0cbdefe3045b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139225"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438402"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -509,6 +509,8 @@ Vrácený objekt je v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
+`resourceGroup()` Funkci nelze použít v šabloně, která je [nasazené na úrovni předplatného](deploy-to-subscription.md). To jde použít jenom v šablonách, které jsou nasazeny do skupiny prostředků.
+
 K vytváření prostředků ve stejném umístění jako skupina prostředků se běžně používá funkci skupina prostředků. Následující příklad používá umístění skupiny prostředků přiřadit umístění pro webový server.
 
 ```json
@@ -593,9 +595,9 @@ Tento identifikátor se vrátí v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
-Hodnoty parametrů, které jste zadali závisí na tom, jestli prostředek je ve stejného předplatného a skupiny prostředků jako aktuální nasazení.
+Při použití s [nasazení na úrovni předplatného](deploy-to-subscription.md), `resourceId()` funkce se dá načíst jenom ID prostředků, které jsou nasazené na této úrovni. Například můžete získat ID definice zásady nebo definice role, ale ne ID účtu úložiště. Nasazení do skupiny prostředků opak má hodnotu true. Nelze získat ID prostředku prostředky nasazené na úrovni předplatného.
 
-Pokud chcete získat ID prostředku účtu úložiště ve stejném předplatném a skupině prostředků, použijte:
+Hodnoty parametrů, které jste zadali závisí na tom, jestli prostředek je ve stejného předplatného a skupiny prostředků jako aktuální nasazení. Pokud chcete získat ID prostředku účtu úložiště ve stejném předplatném a skupině prostředků, použijte:
 
 ```json
 "[resourceId('Microsoft.Storage/storageAccounts','examplestorage')]"
@@ -617,6 +619,12 @@ Chcete-li získat ID prostředku pro databázi v jiné skupině prostředků, po
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]"
+```
+
+Při nasazení v oboru předplatného, získejte ID prostředků prostředků na úrovni předplatného, použijte:
+
+```json
+"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 Často je potřeba tuto funkci použít, pokud používáte účet úložiště nebo virtuální sítě ve skupině prostředků alternativní. Následující příklad ukazuje, jak lze prostředek ze skupiny pro externí zdroj jednoduše použít:

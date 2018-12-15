@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: HT
+ms.openlocfilehash: 8dacfb054a36801c076435037a530daa87c4a89c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918571"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409381"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Vytváření škálovacích sad virtuálních počítačů v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. V tomto článku se dozvíte, jak pomocí Ansible vytvořit škálovací sadu virtuálních počítačů a horizontálně navýšit její kapacitu. 
@@ -37,7 +37,7 @@ Tato část představuje ukázkový playbook Ansible, který definuje následuj�
 
 Místo hodnoty *admin_password* zadejte vlastní heslo správce.
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -141,7 +141,7 @@ Playbook Ansible spustíte pomocí příkazu **ansible-playbook** následující
 
 Po spuštění playbooku se zobrazí podobný výstup jako v následujícím příkladu, který ukazuje úspěšné vytvoření škálovací sady virtuálních počítačů:
 
-  ```bash
+  ```Output
   PLAY [localhost] ***********************************************************
 
   TASK [Gathering Facts] *****************************************************
@@ -190,7 +190,7 @@ Zobrazí se podobný výsledek jako v následujícím výstupu:
 
 Teď provedeme škálování ze dvou na tři instance. Následující kód playbooku Ansible načte informace o škálovací sadě virtuálních počítačů a změní její kapacitu ze dvou na tři instance. 
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -225,7 +225,7 @@ Následující příkaz spustí playbook:
 
 Výstup spuštění playbooku Ansible ukazuje úspěšné horizontální navýšení kapacity škálovací sady virtuálních počítačů:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -273,6 +273,8 @@ Výsledek spuštění příkazu ve službě Cloud Shell ukazuje, že teď existu
   }
   ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
-> [Ukázkový playbook Ansible pro škálovací sadu virtuálních počítačů](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Nasazení aplikací do škálovací sady virtuálních počítačů pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
+
+> [Automaticky škálujte škálovací sadu virtuálních počítačů pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

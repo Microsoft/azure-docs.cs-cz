@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 93c2808dc244a86f7a58aa65d649e9c3e8c17f7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 787da07c5b8d8610e264963f81d858fce98d304f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251704"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436156"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Zprovoznění kanálu datových analýz
 
@@ -30,13 +30,13 @@ V následujícím scénáři je vstupní data plochého souboru, který obsahuje
 | 2017 | 1 | 3 | AS | 9.435449 | 5.482143 | 572289 |
 | 2017 | 1 | 3 | DISTRIBUČNÍ SEZNAM | 6.935409 | -2.1893024 | 1909696 |
 
-Příklad kanálu počká, až dorazí nové časové období na zapisovači letových údajů a pak ukládá tyto informace podrobné letu do svého datového skladu Hive pro dlouhodobé analýzy. Kanál vytvoří také mnohem menší datové sady, který shrnuje jenom denní zapisovači letových údajů. Tento denní souhrn letů odesílat do služby SQL database poskytuje sestavy, například pro web.
+Příklad kanálu počká, až dorazí nové časové období na zapisovači letových údajů a pak ukládá tyto informace podrobné letu do datového skladu Apache Hive pro dlouhodobé analýzy. Kanál vytvoří také mnohem menší datové sady, který shrnuje jenom denní zapisovači letových údajů. Tento denní souhrn letů odesílat do služby SQL database poskytuje sestavy, například pro web.
 
 Následující diagram znázorňuje kanál příklad.
 
 ![Flight datového kanálu](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
 
-## <a name="oozie-solution-overview"></a>Přehled řešení Oozie
+## <a name="apache-oozie-solution-overview"></a>Přehled řešení Apache Oozie
 
 Tento kanál používá Apache Oozie spouští v clusteru HDInsight Hadoop.
 
@@ -139,7 +139,7 @@ Azure SQL Database je teď připravený.
 
 K zobrazení stavu koordinátor a instance pracovních postupů pomocí Oozie webovou konzolu, nastavení tunelu SSH ke clusteru HDInsight. Další informace najdete v tématu [tunel SSH](hdinsight-linux-ambari-ssh-tunnel.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Můžete také použít Chrome se [Foxy Proxy](https://getfoxyproxy.org/) rozšíření pro procházení webových prostředků vašeho clusteru přes tunelové propojení SSH. Konfigurace proxy serveru všechny žádosti přes hostitele `localhost` na port na tunel 9876. Tento přístup je kompatibilní s subsystém Windows pro Linux, označované také jako Bash on Windows 10.
 
 1. Spusťte následující příkaz pro otevření tunelového propojení SSH k vašemu clusteru:
@@ -430,7 +430,7 @@ Následující tabulka shrnuje každého vlastností a označuje místo, kde naj
 | měsíc | Komponentu měsíc dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 | den | Den v měsíci dne, pro které let se souhrny zpracovávají. Nechte, jak je. |
 
-> [!NOTE]
+> [!NOTE]  
 > Nezapomeňte aktualizovat kopii `job.properties` souboru s hodnotami, které jsou specifické pro vaše prostředí, aby bylo možné nasazení a spuštění pracovního postupu Oozie.
 
 ### <a name="deploy-and-run-the-oozie-workflow"></a>Nasazujte a spouštějte pracovní postup Oozie

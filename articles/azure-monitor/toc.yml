@@ -137,7 +137,7 @@ items:
   - name: Vizualizace dat
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: Integrace partnerů
-    href: ../monitoring-and-diagnostics/monitoring-partners.md?toc=/azure/azure-monitor/toc.json
+    href: platform/partners.md
   - name: Nejčastější dotazy
     items:
     - name: Log Analytics
@@ -219,7 +219,7 @@ items:
         - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
           href: platform/diagnostic-logs-stream-template.md
         - name: Příprava pro formát řádkových diagnostických protokolů JSON
-          href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostic-logs-append-blobs.md
         - name: Host virtuálního počítače do úložiště metrik
           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
         - name: Host škálovací sady virtuálních počítačů do úložiště metrik
@@ -651,7 +651,7 @@ items:
       - name: Export dat aplikací
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: Odeslání dat do Grafany
-      href: ../monitoring-and-diagnostics/monitor-send-to-grafana.md?toc=/azure/azure-monitor/toc.json
+      href: platform/grafana-plugin.md
   - name: Analýza dat
     items:
     - name: Vytvoření grafů metrik v Průzkumníku metrik
@@ -798,7 +798,7 @@ items:
     - name: Automatické škálování
       items:
       - name: Principy automatického škálování
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-get-started.md
       - name: Vysvětlení nastavení automatického škálování
         href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
       - name: Osvědčené postupy
@@ -806,7 +806,7 @@ items:
       - name: Běžné metriky
         href: platform/autoscale-common-metrics.md
       - name: Obvyklé scénáře
-        href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-common-scale-patterns.md
       - name: Automatické škálování s použitím vlastních metrik
         href: platform/autoscale-custom-metric.md
       - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
@@ -832,7 +832,7 @@ items:
   - name: Správa využití a nákladů
     items:
     - name: Využití a odhadované náklady
-      href: ../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/usage-estimated-costs.md
     - name: Objem a uchování dat aplikace
       href: ../application-insights/app-insights-pricing.md?toc=/azure/azure-monitor/toc.json
     - name: Podrobnosti plánu Enterprise pro aplikace
@@ -866,7 +866,7 @@ items:
     - name: Rozhraní API
       items:
       - name: Názorný postup s použitím REST API
-        href: ../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md?toc=/azure/azure-monitor/toc.json
+        href: platform/rest-api-walkthrough.md
       - name: Rozhraní API pro výstrahy
         href: platform/api-alerts.md
     - name: Aplikace
@@ -952,7 +952,7 @@ items:
   - name: Metriky
     items:
     - name: Podporované metriky
-      href: ../monitoring-and-diagnostics/monitoring-supported-metrics.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-supported.md
     - name: Podporované metriky pro novější upozornění
       href: ../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=/azure/azure-monitor/toc.json
   - name: Schémata
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 037ec2d246e30725448fb3da98263b557e11186d
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9be0566a2e0fddc61d5c7028e9ecc7a24930b2f2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384425"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438383"

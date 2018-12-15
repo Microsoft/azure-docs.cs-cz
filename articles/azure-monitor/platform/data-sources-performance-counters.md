@@ -1,6 +1,6 @@
 ---
-title: Shromažďujte a analyzujte čítače výkonu ve službě Azure Log Analytics | Dokumentace Microsoftu
-description: Čítače výkonu jsou shromážděná službou Log Analytics k analýze výkonu agentů Windows a Linux.  Tento článek popisuje, jak konfigurovat shromažďování čítačů výkonu pro obě Windows a agenti systému Linux, podrobnosti o jejich jsou uložené v pracovním prostoru a analyzovat je na webu Azure Portal.
+title: Shromažďujte a analyzujte čítače výkonu ve službě Azure Monitor | Dokumentace Microsoftu
+description: Čítače výkonu jsou shromážděné službou Azure Monitor k analýze výkonu agentů Windows a Linux.  Tento článek popisuje, jak konfigurovat shromažďování čítačů výkonu pro obě Windows a agenti systému Linux, podrobnosti o jejich jsou uložené v pracovním prostoru a analyzovat je na webu Azure Portal.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 11/28/2018l
 ms.author: magoedte
-ms.openlocfilehash: 23e416c510c3a6fff7c282406beaec1acf42b2ef
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f6b6d04df3e3b705fd57e7dffe1570a5e10adb5d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186867"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438366"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows a Linuxem zdroje dat výkonu do Log Analytics
-Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Log Analytics může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor
+Čítače výkonu ve Windows a Linuxu poskytují přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v pravidelných intervalech pro analýzu v téměř reálném čase (NRT) kromě agregaci údajů o výkonu pro delší dlouhodobější analýzu a generování sestav.
 
 ![Čítače výkonu](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
-Nakonfigurujte čítače výkonu z [dat nabídky v nastavení analýzy protokolů](agent-data-sources.md#configuring-data-sources).
+Nakonfigurujte čítače výkonu z [dat nabídky v upřesňujícím nastavení](agent-data-sources.md#configuring-data-sources).
 
-Při první konfiguraci Windows nebo Linux výkon čítače pro nový pracovní prostor Log Analytics, budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou kontrolovány všechny čítače mají zpočátku vytvořit a potom klikněte na **přidat vybrané čítače výkonu**.
+Při první konfiguraci Windows nebo Linux výkon čítače pro nový pracovní prostor, budete mít možnost rychle vytvořit několik běžných čítačů.  Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.  Ujistěte se, že jsou kontrolovány všechny čítače mají zpočátku vytvořit a potom klikněte na **přidat vybrané čítače výkonu**.
 
 Pro čítače výkonu Windows můžete zvolit konkrétní instance pro každý čítač výkonu. Pro čítače výkonu systému Linux instance jednotlivých čítačů, kterou zvolíte se vztahuje na všechny podřízené čítače nadřazené čítače. Následující tabulka uvádí běžné instance k dispozici pro čítače výkonu systému Linux a Windows.
 
@@ -88,7 +88,7 @@ Parametry v tomto elementu jsou popsány v následující tabulce.
 | interval | Frekvence, s jakou se shromažďují čítače objektu. |
 
 
-V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat v konfiguračním souboru.  K dispozici další čítače pro určité aplikace, jak je popsáno v [shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics](data-sources-linux-applications.md).
+V následující tabulce jsou uvedeny objekty a čítače, které můžete zadat v konfiguračním souboru.  K dispozici další čítače pro určité aplikace, jak je popsáno v [shromáždit čítače výkonu pro Linuxové aplikace ve službě Azure Monitor](data-sources-linux-applications.md).
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -182,7 +182,7 @@ Toto je výchozí konfigurace pro metriky výkonu.
     </source>
 
 ## <a name="data-collection"></a>Shromažďování dat
-Log Analytics shromažďuje všechny čítače výkonu zadaný v jejich zadané vzorkovací interval na všechny agenty, kteří mají nainstalované čítač.  Data nejsou agregovány a nezpracovaných dat je k dispozici ve všech zobrazeních log search po dobu zadanou vaším předplatným.
+Azure Monitor provádí sběr všech čítačů výkonu zadaný v jejich zadané vzorkovací interval na všechny agenty, kteří mají nainstalované čítač.  Data nejsou agregovány a nezpracovaných dat je k dispozici ve všech zobrazeních dotazu protokolu po dobu zadanou vaším předplatným.
 
 ## <a name="performance-record-properties"></a>Vlastnosti výkonnostní záznamu
 Výkon záznamy mají typ **výkonu** a mít vlastnosti v následující tabulce.
@@ -203,8 +203,8 @@ Výkon záznamy mají typ **výkonu** a mít vlastnosti v následující tabulce
 
     1 MB x (number of counters) x (number of agents) x (number of instances)
 
-## <a name="log-searches-with-performance-records"></a>Hledání v protokolu s záznamů o výkonu
-Následující tabulka obsahuje příklady různých prohledávání protokolů, které načítají záznamů o výkonu.
+## <a name="log-queries-with-performance-records"></a>Protokol dotazů s záznamů o výkonu
+Následující tabulka obsahuje příklady různých dotazů na protokoly, které načítají záznamů o výkonu.
 
 | Dotaz | Popis |
 |:--- |:--- |
@@ -225,5 +225,5 @@ Následující tabulka obsahuje příklady různých prohledávání protokolů,
 
 ## <a name="next-steps"></a>Další postup
 * [Získat čítače výkonu z aplikace pro Linux](data-sources-linux-applications.md) včetně MySQL serveru Apache HTTP Server.
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Export shromážděná data [Power BI](../../azure-monitor/platform/powerbi.md) další vizualizace a analýzy.
+* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Export shromážděná data [Power BI](powerbi.md) další vizualizace a analýzy.

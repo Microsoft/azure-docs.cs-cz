@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: danlep
-ms.openlocfilehash: 01281c0328fab85814ff93c73f9ea25e0d4c1b08
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 41a3a801214ff00c01397034e26fde6946ab97f0
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232796"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407809"
 ---
-# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>Příklad rozhraní příkazového řádku: Vytvoření clusteru Batch AI pomocí konfiguračního souboru clusteru
+# <a name="cli-example-create-a-batch-ai-cluster-using-a-cluster-configuration-file"></a>Příklad rozhraní příkazového řádku: Vytvořte cluster Batch AI pomocí souboru konfigurace clusteru
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 Tento skript ukazuje, jak použít konfigurační soubor JSON k zadání nastavení clusteru Batch AI. Tato nastavení použijte místo odpovídajících parametrů příkazového řádku pro `az batchai cluster create`. Konfigurační soubor je užitečný, když potřebujete k uzlům clusteru připojit více systémů souborů nebo chcete použít stejnou konfiguraci v několika clusterech.
 
@@ -56,6 +59,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az batchai cluster show](/cli/azure/batchai/cluster#az-batchai-cluster-show) | Zobrazí informace o clusteru Batch AI. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

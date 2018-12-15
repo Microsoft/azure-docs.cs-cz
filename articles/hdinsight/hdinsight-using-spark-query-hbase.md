@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 1136d97ad1c1d02320331e6d2013b68526d5abb4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f76dfc8499d294c2c682c4d9c4cf2cd2f858432f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277887"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408850"
 ---
-# <a name="use-spark-to-read-and-write-hbase-data"></a>Použití Sparku ke čtení a zápisu dat HBase
+# <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Použití Apache Sparku ke čtení a zápisu dat Apache HBase
 
-Apache HBase je obvykle dotazovat pomocí jejího nízké úrovně rozhraní API (kontrol, získá a vloží) nebo se syntaxí SQL pomocí Phoenix. Apache také poskytuje konektor Spark HBase, což je pohodlnou a výkonnější alternativou k dotazování a modifikaci dat uložených v HBase.
+Apache HBase je dotazovaný obvykle s jeho nízké úrovně rozhraní API (kontrol, získá a vloží) nebo se syntaxí SQL pomocí Apache Phoenix. Apache také poskytuje Apache Spark HBase konektor, který je pohodlnou a výkonnější alternativou k dotazování a modifikaci dat uložených v HBase.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,9 +38,9 @@ Proces vysoké úrovně pro povolení váš cluster Spark na HDInsight cluster d
 5. Definujte katalog, který mapuje schématu ze Spark HBase.
 6. Práce s daty HBase pomocí RDD nebo rozhraní API datového rámce.
 
-## <a name="prepare-sample-data-in-hbase"></a>Příprava ukázkových dat v HBase
+## <a name="prepare-sample-data-in-apache-hbase"></a>Příprava ukázkových dat v Apache HBase
 
-V tomto kroku vytvoření a vyplnění jednoduché tabulky v HBase, který potom můžete dotazovat pomocí Sparku.
+V tomto kroku vytvoření a vyplnění jednoduché tabulky v Apache HBase, který potom můžete dotazovat pomocí Sparku.
 
 1. Připojení k hlavnímu uzlu clusteru HBase pomocí protokolu SSH. Další informace najdete v tématu [připojení k HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 2. Spusťte prostředí HBase:
@@ -132,7 +132,7 @@ V tomto kroku vytvoření a vyplnění jednoduché tabulky v HBase, který potom
 
 ## <a name="define-a-catalog-and-query"></a>Zadejte katalogu a dotaz
 
-V tomto kroku definujete objekt katalogu, který mapuje schématu ze Spark HBase. 
+V tomto kroku definujete objekt katalogu, který se mapuje schéma z Apache Spark pro Apache HBase. 
 
 1. V otevřené prostředí Spark, spusťte následující příkaz `import` příkazy:
 
@@ -244,4 +244,4 @@ V tomto kroku definujete objekt katalogu, který mapuje schématu ze Spark HBase
 
 ## <a name="next-steps"></a>Další postup
 
-* [Konektor Spark HBase](https://github.com/hortonworks-spark/shc)
+* [Apache HBase konektor Spark](https://github.com/hortonworks-spark/shc)

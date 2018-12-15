@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633321"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438094"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -32,11 +32,11 @@ Orchestrace zahrnuje ve všech fázích kanálu ETL. Úlohy ETL v HDInsight čas
 
 Orchestrace je potřeba ke spuštění příslušné úlohy v příslušnou dobu.
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie je systém koordinace pracovních postupů, které spravuje úlohy platformy Hadoop. Oozie běží v rámci clusteru služby HDInsight a je integrován do zásobníku Hadoop. Oozie podporuje úlohy systému Hadoop pro Apache MapReduce, Apache Pig, Apache Hivu a Apache Sqoop. Oozie lze také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
+Apache Oozie je systém koordinace pracovních postupů, které spravuje úlohy platformy Hadoop. Oozie běží v rámci clusteru služby HDInsight a je integrován do zásobníku Hadoop. Oozie podporuje úlohy systému Hadoop pro Apache Hadoop MapReduce, Apache Pig, Apache Hivu a Apache Sqoop. Oozie lze také použít k plánování úloh, které jsou specifické pro systém, jako jsou programy v jazyce Java nebo skripty prostředí.
 
-Další informace najdete v tématu [použití Oozie s Hadoopem k definování a spuštění pracovního postupu na HDInsight](../hdinsight-use-oozie-linux-mac.md) podrobné informace o ukazující způsob použití Oozie Centrum umožňující prosazovat kanál začátku do konce, naleznete v tématu [zprovoznění datového kanálu](../hdinsight-operationalize-data-pipeline.md). 
+Další informace najdete v tématu [pomocí Apache Oozie s Apache Hadoop pro definování a spouštění pracovního postupu na HDInsight](../hdinsight-use-oozie-linux-mac.md) podrobné informace o ukazující způsob použití Oozie Centrum umožňující prosazovat kanál začátku do konce, naleznete v tématu [zprovoznění datovým kanálem](../hdinsight-operationalize-data-pipeline.md). 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
@@ -52,7 +52,7 @@ Další informace o Azure Data Factory najdete v článku [dokumentaci](../../da
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Ingestování souborového úložiště a úložiště výsledků
 
-Zdrojové datové soubory jsou obvykle načtou do umístění ve službě Azure Storage nebo Azure Data Lake Store. Soubory mohou být v libovolném formátu, ale obvykle jsou plochých souborů jako sdílené svazky clusteru. 
+Zdrojové datové soubory jsou obvykle načtou do umístění ve službě Azure Storage nebo Azure Data Lake Storage. Soubory mohou být v libovolném formátu, ale obvykle jsou plochých souborů jako sdílené svazky clusteru. 
 
 ### <a name="azure-storage"></a>Azure Storage 
 
@@ -66,11 +66,11 @@ Víc objektů blob je možné distribuovat napříč mnoha servery pro horizont�
 
 Data se obvykle ingestuje do služby Azure Storage pomocí prostředí PowerShell, sadu SDK služby Azure Storage nebo AZCopy.
 
-### <a name="azure-data-lake-store"></a>Azure Data Lake Store
+### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
-Azure Data Lake Store (ADLS) je spravovaná, velkokapacitní úložiště pro analýzy dat, který je kompatibilní s HDFS.  ADLS používá paradigma návrhu, který je podobný HDFS a nabízí neomezenou škálovatelnost z hlediska celková kapacita a velikosti jednotlivých souborů. ADLS je velmi dobré při práci s velkými soubory, protože s velkými soubory mohou být uloženy na více uzlech.  Dělení dat v ADLS probíhá na pozadí.  Získáte mimořádně velkou propustnost pro spouštění analytických úloh s tisíci souběžnými vykonavateli, kteří efektivně čtou a zapisují stovky terabajtů dat.
+Azure Data Lake Storage (ADLS) je spravovaná, velkokapacitní úložiště pro analýzy dat, který je kompatibilní s HDFS.  ADLS používá paradigma návrhu, který je podobný HDFS a nabízí neomezenou škálovatelnost z hlediska celková kapacita a velikosti jednotlivých souborů. ADLS je velmi dobré při práci s velkými soubory, protože s velkými soubory mohou být uloženy na více uzlech.  Dělení dat v ADLS probíhá na pozadí.  Získáte mimořádně velkou propustnost pro spouštění analytických úloh s tisíci souběžnými vykonavateli, kteří efektivně čtou a zapisují stovky terabajtů dat.
 
-Data se obvykle ingestuje do služby ADLS pomocí služby Azure Data Factory, sady SDK ADLS, AdlCopy služby, Apache DistCp nebo Apache Sqoop.  Tyto služby používat do značné míry závisí na místě, kde data.  Pokud data je aktuálně v existujícím clusteru Hadoop, můžete použít Apache DistCp, služba AdlCopy nebo Azure Data Factory.  Pokud je ve službě Azure Blob Storage, můžete použít .NET SDK služby Azure Data Lake Store, Azure Powershellu nebo Azure Data Factory.
+Data se obvykle ingestuje do služby ADLS pomocí služby Azure Data Factory, sady SDK ADLS, AdlCopy služby, Apache DistCp nebo Apache Sqoop.  Tyto služby používat do značné míry závisí na místě, kde data.  Pokud data je aktuálně v existujícím clusteru Hadoop, můžete použít Apache DistCp, služba AdlCopy nebo Azure Data Factory.  Pokud je ve službě Azure Blob Storage, můžete použít .NET SDK služby Azure Data Lake Storage, Azure Powershellu nebo Azure Data Factory.
 
 ADLS je také optimalizovaná pro příjem událostí pomocí Azure Event Hub nebo Apache Storm.
 
@@ -78,9 +78,9 @@ ADLS je také optimalizovaná pro příjem událostí pomocí Azure Event Hub ne
 
 Nahrát datových sad v oblasti terabajt, latence sítě může být závažný problém, zejména v případě, že data pochází z umístění v místním.  V takovém případě můžete pomocí následujících možností:
 
-* Azure ExpressRoute: Azure ExpressRoute umožňuje vytvářet privátní připojení mezi datacentry Azure a vaší místní infrastruktury. Tato připojení poskytují spolehlivé variantou při přenosech velkých objemů dat. Další informace najdete v tématu [dokumentace ke službě Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute:  Azure ExpressRoute umožňuje vytvářet privátní připojení mezi datacentry Azure a vaší místní infrastruktury. Tato připojení poskytují spolehlivé variantou při přenosech velkých objemů dat. Další informace najdete v tématu [dokumentace ke službě Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-* "Do režimu offline" nahrávání dat. Můžete použít [služba Azure Import/Export](../../storage/common/storage-import-export-service.md) dodávat pevných disků se svými daty a datového centra Azure. Vaše data se nejprve nahrát do objektů BLOB Azure Storage. Pak můžete použít [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) nástroj pro kopírování dat z Azure Storage BLOB do Data Lake Store.
+* "Do režimu offline" nahrávání dat. Můžete použít [služba Azure Import/Export](../../storage/common/storage-import-export-service.md) dodávat pevných disků se svými daty a datového centra Azure. Vaše data se nejprve nahrát do objektů BLOB Azure Storage. Pak můžete použít [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) nástroj pro kopírování dat z Azure Storage BLOB do Data Lake Storage.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
@@ -88,7 +88,7 @@ Azure SQL data Warehouse je skvělou volbou pro ukládání Vyčištěná a při
 
 Azure SQL Data Warehouse (datový Sklad SQL) je relační databáze úložiště optimalizované pro analytické úlohy.  Azure SQL data Warehouse se škáluje na základě na dělené tabulky.  Tabulky můžete rozdělit na oddíly na více uzlech.  Azure SQL data Warehouse uzly jsou vybrány v době vytvoření.  Můžete škálovat po jejich výskytu, ale to je aktivní proces, který může vyžadovat přesun dat. Zobrazit [SQL Data Warehouse – spravovat výpočetní](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) Další informace.
 
-### <a name="hbase"></a>HBase
+### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBase je k dispozici v Azure HDInsight úložiště dvojic klíč hodnota.  Apache HBase je NoSQL databáze typu open source, která je založena na Hadoop a modelována podle Google BigTable. HBase poskytuje výkonné náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat v databázi schemaless uspořádané podle rodin sloupců.
 
@@ -118,17 +118,17 @@ Analýza datové krychle můžete škálovat tak, že změníte úrovně pro ka�
 
 Jakmile data existuje v Azure, vám pomůže mnoha služeb extrakce a načítání do jiných produktů.  HDInsight podporuje Sqoop a Flume. 
 
-### <a name="sqoop"></a>Sqoop
+### <a name="apache-sqoop"></a>Apache Sqoop
 
 Apache Sqoop je nástroj určený pro efektivní přenosu dat mezi strukturovaných, částečně strukturovaných a nestrukturovaných zdrojů. 
 
 Sqoop používá MapReduce pro import a export dat, k poskytování paralelní operace a odolnost proti chybám.
 
-### <a name="flume"></a>Flume
+### <a name="apache-flume"></a>Apache Flume
 
 Apache Flume je distribuovaná, spolehlivé a k dispozici služba pro efektivní shromažďování, agregaci a přesouvání velkého objemu dat protokolu. Flume má jednoduché a flexibilní architekturu podle streamování datové toky. Flume je robustní a odolné proti chybám s možností vyladění spolehlivost mechanismy a mnoho mechanismů převzetí služeb při selhání a obnovení. Flume používá jednoduché extensible datový model, který umožňuje analytické aplikace v režimu online.
 
-Apache Flume nelze použít s Azure HDInsight.  Místní instalace Hadoop můžete použít Flume k odesílání dat do objektů BLOB Azure Storage nebo Azure Data Lake Store.  Další informace najdete v tématu [pomocí Apache Flume s HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume nelze použít s Azure HDInsight.  Místní instalace Hadoop můžete použít Flume k odesílání dat do objektů BLOB Azure Storage nebo Azure Data Lake Storage.  Další informace najdete v tématu [pomocí Apache Flume s HDInsight](https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Transformace
 
@@ -136,5 +136,5 @@ Jakmile dat existuje ve zvolené umístění, budete muset vyčistit ho ho zkomb
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 * [Použití Apache Hivu jako nástroj ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

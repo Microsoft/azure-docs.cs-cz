@@ -3,18 +3,18 @@ title: Vyhledávání s využitím Azure Maps | Microsoft Docs
 description: Vyhledání okolního bodu zájmu s využitím Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/22/2018
+ms.date: 12/14/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c11274b8f9d6c3b8c934201b4ec4acd6842d7c0b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262053"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435357"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -103,7 +103,7 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
          margin: 0;
       }
 
-      #map {
+      #myMap {
          width: 100%;
          height: 100%;
       }

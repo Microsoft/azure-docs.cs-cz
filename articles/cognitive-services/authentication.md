@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 8adff94a4cb536c3d8dbf7382b8acb69184030b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53325843"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435765"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -23,6 +23,10 @@ Každý požadavek do služby Azure Cognitive musí obsahovat hlavičku ověřov
 * [Ověření s klíčem jednoúčelovou předplatného](#authenticate-with-a-single-service-subscription-key)
 * [Ověření s klíčem víc služeb předplatného](#authenticate-with-a-multi-service-subscription-key)
 * [Ověřování pomocí tokenu](#authenticate-with-an-authentication-token)
+
+## <a name="prerequisites"></a>Požadavky
+
+Před provedením požadavku, budete potřebovat účet Azure a předplatné služeb Azure Cognitive Services. Pokud již máte účet, neváhejte a přejděte k další části. Pokud nemáte účet, máme Tento průvodce vám několika minut: [Vytvoření účtu služeb Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
 ## <a name="authentication-headers"></a>Ověřovací hlavičky
 

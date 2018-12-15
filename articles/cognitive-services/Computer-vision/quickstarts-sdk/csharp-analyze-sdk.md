@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza obrázku – SDK, C# – Počítačové zpracování obrazu'
+title: 'Rychlý start: Analýza obrázku - SDK, C# -pro počítačové zpracování obrazu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu analyzujete obrázek pomocí klientské knihovny C# systému Windows počítačového zpracování obrazu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: 7de7a87c73c2dabddf2268a6a0bc2992d6017e4d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 0983978221e9872e92ca366edd3bd3f2bfd9c3f4
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853927"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413315"
 ---
-# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku s použitím sady SDK pro počítačové zpracování obrazu a C#
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Analýza obrázku pomocí sady SDK služby pro zpracování obrazu počítač aC#
 
 V tomto rychlém startu analyzujete místní a vzdálený obrázek za účelem extrakce vizuálních prvků pomocí klientské knihovny Windows počítačového zpracování obrazu.
 
@@ -162,7 +162,7 @@ namespace ImageAnalyze
 
 Úspěšná odpověď zobrazí nejrelevantnější titulek každého obrázku.
 
-Příklad nezpracovaného výstupu JSON najdete v [rychlých startech pro rozhraní API a analýzu místního obrázku s C#](../QuickStarts/CSharp-analyze.md#examine-the-response).
+Zobrazit [rozhraní API, šablony rychlý start: Analýza místní image použijte C# ](../QuickStarts/CSharp-analyze.md#examine-the-response) příklad nezpracovaném formátu JSON výstupu.
 
 ```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg

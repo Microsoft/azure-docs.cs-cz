@@ -5,30 +5,32 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 12/14/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 957aa05efab68f9531fb6576de775aa9901ab44d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f701f0f6d00d2913eaf5b237435fd375b2030e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685799"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435272"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
-Inteligentní uzamčení používá inteligentní cloudové funkce uzamknete nesprávnými účastníky, kteří se snaží uhodnout hesla uživatelů nebo využít hrubou silou. Tento intelligence rozpoznají přihlášení pocházející z platných uživatelů a jinak než těch, které útočníci a dalších neznámé zdroje jsou s nimi zacházet. Inteligentní uzamčení k uzamčení útočníci při se vaši uživatelé i nadále přístup ke svým účtům a produktivitu.
+Inteligentní uzamčení pomáhá při uzamčení nesprávnými účastníky, kteří se snaží uhodnout hesla uživatelů nebo využít hrubou silou. Může rozpoznat přihlášení pocházející z platných uživatelů a jinak než těch, které útočníci a dalších neznámé zdroje jsou s nimi zacházet. Inteligentní uzamčení k uzamčení útočníci při se vaši uživatelé i nadále přístup ke svým účtům a produktivitu.
 
 Ve výchozím nastavení zamkne inteligentní uzamčení účtu z pokusů o přihlášení pro jednu minutu po 10 neúspěšných pokusů o přihlášení. Uzamčení účtu po každé následné selhání pokus o přihlášení, na minutu na první a delší dobu v následné pokusy.
 
-* Inteligentní uzamčení sleduje poslední tři hodnoty hash chybných zadání hesla, aby reincrementing čítače uzamčení. Pokud někdo zadá chybné heslo více než jednou, toto chování nezpůsobí účet, který chcete uzamčení.
-   * Tato funkce není dostupná pro zákazníky s povoleno předávací ověřování.
+Inteligentní uzamčení sleduje poslední tři hodnoty hash chybných zadání hesla, aby reincrementing čítače uzamčení. Pokud někdo zadá chybné heslo více než jednou, toto chování nezpůsobí účet, který chcete uzamčení.
+
+ > [!NOTE]
+ > Sledování funkce hash není k dispozici pro zákazníky s předávací ověřování povolit, protože není v cloudu v místním využíváno ověření.
 
 Inteligentní uzamčení je vždy pro všechny zákazníky Azure AD se tato výchozí nastavení, které nabízejí správné kombinace zabezpečení a použitelnost. Přizpůsobení nastavení inteligentním uzamčením, s hodnotami, které jsou specifické pro vaši organizaci, vyžaduje Azure AD Basic nebo vyšší licencí pro vaše uživatele.
 
-Pomocí inteligentního uzamčení nezaručuje, že bude pravý uživatel nikdy uzamčena na. Inteligentní uzamčení uzamčení uživatelského účtu, snažíme co nejlépe uzamčení originální uživatele. Služba uzamčení se pokusí zajistit, že nesprávnými účastníky nemůže získat přístup k účtu uživatele originálního.  
+Pomocí inteligentního uzamčení nezaručuje, že bude pravý uživatel nikdy uzamčena na. Inteligentní uzamčení uzamčení uživatelského účtu, snažíme co nejlépe uzamčení originální uživatele. Služba uzamčení se pokusí zajistit, že nesprávnými účastníky nemůže získat přístup k originální uživatelský účet.  
 
 * Každé datové centrum Azure Active Directory nezávisle na sobě sleduje uzamčení. Uživatel bude mít (threshold_limit * datacenter_count) počet pokusů, pokud uživatel stiskne každé datové centrum.
 * Inteligentní uzamčení používá známé umístění vs neznámého umístění rozlišovat mezi chybný actor a pravý uživatele. Neznámé a dobře známého umístění bude mít samostatné uzamčení čítače.

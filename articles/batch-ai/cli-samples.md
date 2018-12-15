@@ -16,14 +16,17 @@ ms.workload: ''
 ms.date: 07/27/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 704952b9c1330e372047be06f61bce9a15a90b92
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 740c2ea894fd3493d0e47480784a90e9021ecbeb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058121"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410495"
 ---
 # <a name="azure-cli-examples-for-azure-batch-ai"></a>Příklady Azure CLI pro službu Azure Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Následující tabulka obsahuje odkazy na příklady Azure CLI pro službu Azure Batch AI.
 

@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 08ffc3a9eb4942cb21c0a800d493b87b016d7f87
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016166"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409917"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
 HDInsight má úplný přístup k datům v Azure Storage účty přidružené ke clusteru. Sdílené přístupové podpisy v kontejneru objektů blob můžete použít k omezení přístupu k datům. Sdílených přístupových podpisů (SAS) jsou funkce účty úložiště Azure, která vám umožní omezit přístup k datům. Například poskytuje přístup jen pro čtení k datům.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pro řešení, které využívá Apache Ranger zvažte použití HDInsight připojených k doméně. Další informace najdete v tématu [konfigurace HDInsight připojených k doméně](./domain-joined/apache-domain-joined-configure.md) dokumentu.
 
-> [!WARNING]
+> [!WARNING]  
 > HDInsight musí mít úplný přístup k výchozím úložištěm clusteru.
 
 ## <a name="requirements"></a>Požadavky
@@ -34,9 +34,9 @@ HDInsight má úplný přístup k datům v Azure Storage účty přidružené ke
   * Visual Studio musí být ve verzi 2013, 2015 nebo 2017
   * Python musí být verze 2.7 nebo novější
 
-* Cluster HDInsight se systémem Linux nebo [prostředí Azure PowerShell] [ powershell] – Pokud máte existující cluster založených na Linuxu, vám pomůže Ambari do clusteru přidat sdílený přístupový podpis. Pokud ne, můžete použít Azure PowerShell k vytvoření clusteru a přidejte sdílený přístupový podpis při vytváření clusteru.
+* Cluster HDInsight se systémem Linux nebo [prostředí Azure PowerShell] [ powershell] – Pokud máte existující cluster založených na Linuxu, vám pomůže Apache Ambari do clusteru přidat sdílený přístupový podpis. Pokud ne, můžete použít Azure PowerShell k vytvoření clusteru a přidejte sdílený přístupový podpis při vytváření clusteru.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * V příkladu souborů z [ https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature ](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Toto úložiště obsahuje následující položky:
@@ -49,9 +49,9 @@ HDInsight má úplný přístup k datům v Azure Storage účty přidružené ke
 
 Existují dvě formy sdílené přístupové podpisy:
 
-* Ad hoc: čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS.
+* Ad hoc: Čas zahájení, čas vypršení platnosti a oprávnění pro SAS jsou všechny zadané v identifikátoru URI SAS.
 
-* Uložené zásady přístupu: uložené zásady přístupu je definován na kontejner prostředku, jako je například kontejner objektů blob. Zásadu lze použít ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Když přiřadíte SAS uložené zásady přístupu, dědí SAS omezení – čas zahájení, čas vypršení platnosti a oprávnění – definice zásady přístupu.
+* Uložené zásady přístupu: Uložené zásady přístupu je definován na kontejner prostředku, jako je například kontejner objektů blob. Zásadu lze použít ke správě omezení pro jeden nebo více sdílených přístupových podpisů. Když přiřadíte SAS uložené zásady přístupu, dědí SAS omezení – čas zahájení, čas vypršení platnosti a oprávnění – definice zásady přístupu.
 
 Rozdíl mezi dvě různými formami je důležité pro jeden klíč scénář: odvolání. SAS je adresa URL, takže každý, kdo získává sdíleného přístupového podpisu, použít bez ohledu na to, který je požadovaný začneme. Pokud SAS je publikována veřejně, je možné použít kdokoli na světě. SAS, která se distribuuje je platné, dokud jednu ze čtyř akcí se stane:
 
@@ -66,7 +66,7 @@ Rozdíl mezi dvě různými formami je důležité pro jeden klíč scénář: o
 
 4. Klíč účtu, který byl použit k vytvoření sdíleného přístupového podpisu se znova vygeneroval. Obnovuje se klíč způsobí, že všechny aplikace, které používají předchozí klíč vč. ověřování. Aktualizujte všechny komponenty na nový klíč.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Identifikátor URI sdíleného přístupového podpisu je přidružená ke klíči účet použitý k vytvoření podpisu a přidruženého uložené zásady přístupu (pokud existuje). Pokud není zadána žádná uložené zásady přístupu, chcete-li změnit klíč účtu je jediný způsob, jak odebrat sdílený přístupový podpis.
 
 Doporučujeme vždy používat uložené zásady přístupu. Při použití uložené zásady, můžete odvolat podpisy nebo prodloužit datum vypršení platnosti podle potřeby. Kroky v tomto dokumentu využívají uložené zásady přístupu k vygenerování SAS.
@@ -83,9 +83,9 @@ Další informace o sdílených přístupových podpisů najdete v tématu [vysv
 
    * StorageConnectionString: Připojovací řetězec pro účet úložiště, který chcete vytvořit SAS pro a uložené zásady. Formát by měl být `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` kde `myaccount` je název vašeho účtu úložiště a `mykey` je klíč pro účet úložiště.
 
-   * ContainerName: Kontejneru v účtu úložiště, který chcete omezit přístup k datům.
+   * ContainerName: Kontejner v účtu úložiště, který chcete omezit přístup k datům.
 
-   * SASPolicyName: Název pro uložené zásady použít k vytvoření.
+   * SASPolicyName: Název, který se má použít pro uložené zásady k vytvoření.
 
    * FileToUpload: Cesta k souboru, který se nahraje do kontejneru.
 
@@ -99,15 +99,15 @@ Další informace o sdílených přístupových podpisů najdete v tématu [vysv
 
 1. Otevřete soubor SASToken.py a změňte následující hodnoty:
 
-   * zásady\_name: název, který má použít pro uložené zásady k vytvoření.
+   * zásady\_název: Název, který se má použít pro uložené zásady k vytvoření.
 
-   * úložiště\_účet\_name: název účtu úložiště.
+   * úložiště\_účet\_název: Název účtu úložiště.
 
-   * úložiště\_účet\_klíč: klíč pro účet úložiště.
+   * úložiště\_účet\_klíč: Klíč pro účet úložiště.
 
-   * úložiště\_kontejneru\_name: kontejner v účtu úložiště, který chcete omezit přístup k datům.
+   * úložiště\_kontejneru\_název: Kontejner v účtu úložiště, který chcete omezit přístup k datům.
 
-   * Příklad\_souboru\_cesta: cesta k souboru, který se nahraje do kontejneru.
+   * Příklad\_souboru\_cesta: Cesta k souboru, který se nahraje do kontejneru.
 
 2. Spusťte skript. Po dokončení skriptu zobrazí token SAS, který je podobný následujícímu textu:
 
@@ -177,7 +177,7 @@ Příklad vytvoření clusteru služby HDInsight, který používá sdíleného 
 
     Při vytváření clusteru se systémem Linux, zobrazí se výzva pro název uživatelského účtu SSH a heslo. Tento účet se používá pro vzdálené přihlášení ke clusteru.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Po zobrazení výzvy pro HTTP/s nebo SSH uživatelské jméno a heslo, musí se zadat heslo, které splňují následující kritéria:
    >
    > * Musí být minimálně 10 znaků
@@ -200,7 +200,7 @@ Pokud máte existující cluster založených na Linuxu, můžete přidat SAS **
 4. Rozbalte **základního webu vlastní** část a pak přejděte k ukončení a vyberte **přidat vlastnost...**  odkaz. Použijte následující hodnoty **klíč** a **hodnotu** pole:
 
    * **Key**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
-   * **Hodnota**: SAS vrácený jste dříve spustili aplikaci C# nebo Python
+   * **Hodnota**: Vrácený podpis C# nebo jste dříve spustili aplikaci v Pythonu
 
      Nahraďte **CONTAINERNAME** s názvem kontejneru, který jste použili aplikaci C# nebo SAS. Nahraďte **STORAGEACCOUNTNAME** názvem účtu úložiště můžete použít.
 
@@ -208,7 +208,7 @@ Pokud máte existující cluster založených na Linuxu, můžete přidat SAS **
 
     Klikněte na tlačítko **OK** kdy byly změny dokončeny.
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Změna se projeví až po restartování několik služeb.
 
 6. Webové uživatelské rozhraní Ambari, vyberte **HDFS** ze seznamu na levé straně a pak vyberte **restartujte všechny ovlivněné** z **akce služby** rozevírací seznam na pravé straně. Po zobrazení výzvy vyberte __potvrďte restartování všech__.
@@ -277,7 +277,7 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 ### <a name="a-task-was-canceled"></a>Úloha byla zrušena
 
-**Příznaky**: při vytváření clusteru pomocí skriptu prostředí PowerShell, může zobrazit následující chybová zpráva:
+**Příznaky**: Při vytváření clusteru pomocí skriptu prostředí PowerShell, může se zobrazit následující chybová zpráva:
 
     New-AzureRmHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
@@ -286,9 +286,9 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**Příčina**: k této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
+**Příčina**: K této chybě může dojít, pokud uživatele SSH můžete použít heslo uživatele správce nebo HTTP pro cluster nebo (u clusterů se systémem Linux).
 
-**Rozlišení**: použijte heslo, které splňují následující kritéria:
+**Rozlišení**: Použijte heslo, které splňuje následující kritéria:
 
 * Musí být minimálně 10 znaků
 * Musí obsahovat alespoň jednu číslici
@@ -299,8 +299,8 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 Teď, když jste se naučili, jak přidat úložiště omezený přístup ke svému clusteru HDInsight, přečtěte si další způsoby, jak pracovat s daty ve vašem clusteru:
 
-* [Použití Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](hadoop/hdinsight-use-pig.md)
+* [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs

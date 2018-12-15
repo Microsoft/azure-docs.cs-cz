@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 21186c522e46dac11c1dc88bbad5c4b330bc1e3f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e45c5a37c4ba12d93ff7f78bb465cb650a7faffb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012024"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435085"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoop v HDInsight
 
@@ -55,7 +55,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 ## <a name="create-the-c-projects"></a>Vytvoření jazyka C\# projekty
 
-### <a name="hive-udf"></a>Hive UDF
+### <a name="apache-hive-udf"></a>Apache Hive UDF
 
 1. Otevřít Visual Studio a vytvořte řešení. Pro typ projektu vyberte **Konzolová aplikace (.NET Framework)** a pojmenujte nový projekt **HiveCSharp**.
 
@@ -115,7 +115,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 3. Sestavte projekt.
 
-### <a name="pig-udf"></a>Pig UDF
+### <a name="apache-pig-udf"></a>Apache Pig UDF
 
 1. Otevřít Visual Studio a vytvořte řešení. Pro typ projektu vyberte **konzolovou aplikaci**a pojmenujte nový projekt **PigUDF**.
 
@@ -168,7 +168,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
     * Pokud tuto položku lze rozšířit, používáte __účet služby Azure Storage__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a potom dvakrát klikněte __(výchozí kontejner)__.
 
-    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako výchozího úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte __(výchozí účet úložiště)__ položka.
+    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Storage__ jako výchozího úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte __(výchozí účet úložiště)__ položka.
 
 6. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
 
@@ -176,11 +176,11 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
         ![Nahrát ikonu](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřít**.
+    * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **HiveCSharp.exe** souboru a klikněte na tlačítko **otevřít**.
 
     Jednou __HiveCSharp.exe__ nahrávání dokončí, opakujte proces nahrávání __PigUDF.exe__ souboru.
 
-## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
+## <a name="run-an-apache-hive-query"></a>Spuštění dotazu Apache Hive
 
 1. V sadě Visual Studio, otevřete **Průzkumníka serveru**.
 
@@ -193,7 +193,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
     -- add file wasb:///HiveCSharp.exe;
-    -- Uncomment the following if you are using Azure Data Lake Store
+    -- Uncomment the following if you are using Azure Data Lake Storage
     -- add file adl:///HiveCSharp.exe;
 
     SELECT TRANSFORM (clientid, devicemake, devicemodel)
@@ -212,7 +212,7 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 6. Klikněte na tlačítko **aktualizovat** aktualizovat souhrn až do **stav úlohy** změny **dokončeno**. Pokud chcete zobrazit výstup úlohy, klikněte na tlačítko **výstup úlohy**.
 
-## <a name="run-a-pig-job"></a>Spuštění úlohy Pig
+## <a name="run-an-apache-pig-job"></a>Spuštění úlohy Apache Pig
 
 1. Použijte jednu z následujících metod pro připojení ke clusteru HDInsight:
 
@@ -256,10 +256,10 @@ Další informace o verzi rozhraní .NET framework a Mono je součástí verze H
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto dokumentu jste zjistili, jak používat aplikace rozhraní .NET Framework v Hivu a Pigu v HDInsight. Pokud chcete další informace o použití Pythonu s Hivem a Pig, přečtěte si téma [použití Pythonu s Hivem a Pigem ve HDInsight](python-udf-hdinsight.md).
+V tomto dokumentu jste zjistili, jak používat aplikace rozhraní .NET Framework v Hivu a Pigu v HDInsight. Pokud chcete další informace o použití Pythonu s Hivem a Pig, přečtěte si téma [používat Python s Apache Hivu a Apache Pig v HDInsight](python-udf-hdinsight.md).
 
 Další způsoby použití Pigu a Hivu a další informace o použití prostředí MapReduce naleznete v následujících dokumentech:
 
-* [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

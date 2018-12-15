@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 90eac2fda46dc5fbfff791e1fc0afb9858aa27a4
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103451"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408030"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -93,9 +93,9 @@ namespace Functions.Tests
 
 `ListLogger` Třída implementuje následující členy jako zakázku podle `ILogger` rozhraní:
 
-- **BeginScope**: obory přidání kontextu do vaší protokolování. V tomto případě test právě odkazuje na statickou instanci služby [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) třídu, která umožňuje testovací funkce.
+- **BeginScope**: Obory přidání kontextu do vaší protokolování. V tomto případě test právě odkazuje na statickou instanci služby [NullScope](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.abstractions.internal.nullscope) třídu, která umožňuje testovací funkce.
 
-- **Hodnotu IsEnabled**: výchozí hodnota `false` je k dispozici.
+- **Hodnotu IsEnabled**: Výchozí hodnota `false` je k dispozici.
 
 - **Protokol**: Tato metoda používá zadaných `formatter` fungovat jako formát zprávy a poté přidá výsledný text, který má `Logs` kolekce.
 
@@ -184,7 +184,7 @@ namespace Functions.Tests
 
 - **CreateHttpRequest**: Tato metoda vytvoří inicializovat pomocí parametrů řetězce dotazu daného požadavku HTTP.
 
-- **CreateLogger**: podle typu protokolovač, tato metoda vrátí třídu protokolovací nástroj pro testování. `ListLogger` Uchovává informace o zprávy zaznamenané dříve k dispozici pro vyhodnocení v testech.
+- **CreateLogger**: Podle typu protokolovač, tato metoda vrátí třídu protokolovací nástroj pro testování. `ListLogger` Uchovává informace o zprávy zaznamenané dříve k dispozici pro vyhodnocení v testech.
 
 Dále **klikněte pravým tlačítkem na** na *Functions.Test* aplikaci a vyberte **Přidat > třída**, pojmenujte ho **FunctionsTests.cs** a zadejte Následující kód:
 
@@ -231,7 +231,7 @@ namespace Functions.Tests
 
 - **Http_trigger_should_return_known_string**: Tento test vytvoří žádost s dotazem řetězcové hodnoty `name=Bill` funkce protokolem HTTP a kontroly, které se vrátí očekávaná odezva.
 
-- **Http_trigger_should_return_string_from_member_data**: Tento test pomocí atributů xUnit poskytuje ukázková data do funkce protokolu HTTP.
+- **Http_trigger_should_return_string_from_member_data**: Tento test používá xUnit atributy pro zajištění ukázková data do funkce protokolu HTTP.
 
 - **Timer_should_log_message**: Tento test vytvoří instanci `ListLogger` a předá ji do funkcí časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
 
@@ -357,6 +357,6 @@ Dále nastavte zarážku v testu a stiskněte klávesu **F5**.
 ## <a name="next-steps"></a>Další postup
 
 Teď, když jste zjistili, jak sepsání automatizovaných testů pro vaše funkce, pokračujte s těmito prostředky:
-
+- [Ruční spuštění jiné funkci aktivovanou protokolem HTTP](./functions-manually-run-non-http.md)
 - [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Funkce Azure Event Grid aktivovat místní ladění](./functions-debug-event-grid-trigger-local.md)

@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5e5b8320459561ac2dbbf72a812e29e837e08cd6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: ced7964fc96138ad7b18ab72d6c479e8db7eab8a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166655"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436214"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package pomocí Azure Active Directory Domain Services
 
@@ -22,13 +22,13 @@ Clustery Enterprise Security Package (ESP) poskytují přístup k více uživate
 
 V tomto článku se dozvíte, jak konfigurace clusteru HDInsight s ESP pomocí Azure Active Directory Domain Services (Azure AD DS).
 
->[!NOTE]
->ESP je GA v HDI 3.6 pro Apache Hadoop, Spark a interaktivní. ESP pro typy clusterů HBase a Kafka je ve verzi preview.
+>[!NOTE]  
+>ESP je GA v HDI 3.6 pro Apache Spark, Interactive a Apache Hadoop. ESP pro typy clusterů Apache HBase a Apache Kafka je ve verzi preview.
 
 ## <a name="enable-azure-ad-ds"></a>Povolení služby Azure AD DS
 
-> [!NOTE]
-> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Store (ADLS) Gen1 a Gen2, zakažte Vícefaktorové ověřování (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru. Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
+> [!NOTE]  
+> Pouze správci tenanta nemá oprávnění pro povolení služby Azure AD – DS. Pokud je úložiště clusteru služby Azure Data Lake Storage (ADLS) Gen1 a Gen2, zakažte Vícefaktorové ověřování (MFA) pouze pro uživatele, kteří se potřebují přístup ke clusteru. Pokud je cluster úložiště Azure Blob Storage (WASB), nezakazujte vícefaktorové ověřování.
 
 Povolení služby Azure AD DS je předpokladem předtím, než vytvoříte HDInsight cluster s ESP. Další informace najdete v tématu [povolit Azure Active Directory Domain Services pomocí webu Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
 
@@ -66,7 +66,7 @@ Jakmile spravovaná identita je vytvořen a daný správnou roli, můžete nasta
 
 ## <a name="networking-considerations"></a>Aspekty sítí
 
-> [!NOTE]
+> [!NOTE]  
 > Azure AD DS musí být nasazený ve virtuální síti na základě Azure Resource Manageru (ARM). Klasické virtuální sítě nejsou podporovány pro Azure AD – DS. Najdete [povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-network) další podrobnosti.
 
 Po povolení služby Azure AD-DS místní server služby DNS (Domain Name) běží na virtuálních počítačích (VM) AD. Konfigurace služby AD DS virtuální sítě (virtuální sítě Azure) používat tyto vlastní servery DNS. Chcete-li najít správné IP adresy, vyberte **vlastnosti** pod **spravovat** kategorie a podívejte se na IP adresy uvedené pod **IP adresu ve virtuální síti**.
@@ -114,5 +114,5 @@ Spravovaná identita, kterou jste vytvořili můžete zvolit ve z rozevíracího
 
 
 ## <a name="next-steps"></a>Další postup
-* Konfigurace zásad Hivu a spouštět dotazy Hive, najdete v části [konfigurace zásad Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).
-* Použití SSH pro připojení ke clusterům HDInsight s ESP, naleznete v tématu [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux, Unix nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* Konfigurace zásad Hivu a spouštět dotazy Hive, najdete v části [zásad konfigurace Apache Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).
+* Použití SSH pro připojení ke clusterům HDInsight s ESP, naleznete v tématu [použití SSH se systémem Linux Apache Hadoop v HDInsight ze systému Linux, Unix nebo OS X](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

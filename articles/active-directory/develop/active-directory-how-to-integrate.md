@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fcc0badc17675c1c8923c744afd3fa46e98fef32
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d3b2edefd602a90ff28b8e0645d3c48932ba44dd
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954693"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410308"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
@@ -36,7 +36,7 @@ Existuje několik způsobů, jak pro vaši aplikaci pro integraci s Azure AD. Vy
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora služby Azure AD jako způsob, jak se k aplikaci
 **Snižte přihlášení třecí plochy a snížit náklady na podporu.** Pomocí služby Azure AD k přihlášení do vaší aplikace, vaši uživatelé nebudou mít jeden další název a heslo a mějte na paměti. Jako vývojář máte jeden menší heslo k ukládání a ochraně. Není potřeba zpracovat resetovat zapomenuté heslo může být významné úspory samostatně. Azure AD poskytuje přihlášení pro některé z celého světa nejoblíbenější cloudové aplikace, včetně Office 365 a Microsoft Azure. Stovky milionů uživatelů z milionům organizací, je pravděpodobné uživatel je už přihlášení do služby Azure AD. Další informace o [přidání podpory pro přihlášení Azure AD](authentication-scenarios.md).
 
-**Zjednodušte přihlašování až pro vaši aplikaci.**  Během registrace pro vaši aplikaci můžete služby Azure AD odeslat důležité informace o uživateli, takže můžete předběžně vyplnit registrace formuláře nebo zcela eliminuje. Uživatelé mohou zaregistrovat svoji aplikaci pomocí svého účtu Azure AD prostřednictvím prostředí pro známé vyjádření souhlasu podobné těm v sociálních a mobilních aplikací. Každý uživatel může zaregistrovat a přihlaste se k aplikaci, která je integrovaná s Azure AD bez zapojení IT. Další informace o [registrace vaší aplikace pro přihlášení k účtu Azure AD](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+**Zjednodušte přihlašování až pro vaši aplikaci.**  Během registrace pro vaši aplikaci můžete služby Azure AD odeslat důležité informace o uživateli, takže můžete předběžně vyplnit registrace formuláře nebo zcela eliminuje. Uživatelé mohou zaregistrovat svoji aplikaci pomocí svého účtu Azure AD prostřednictvím prostředí pro známé vyjádření souhlasu podobné těm v sociálních a mobilních aplikací. Každý uživatel může zaregistrovat a přihlaste se k aplikaci, která je integrovaná s Azure AD bez zapojení IT. Další informace o [registrace vaší aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Procházet pro uživatele, spravovat zřizování uživatelů a řízení přístupu k aplikaci
 **Projděte pro uživatele v adresáři.**  Používání rozhraní Graph API k poskytování pomoci uživatelům vyhledat a procházet jinými lidmi, kteří ve své organizaci při pozvání ostatních nebo udělení přístupu, namísto nutnosti jejich nutnost zadejte e-mailové adresy. Můžou uživatelé procházet pomocí stylu rozhraní známou adresu adresáře, včetně zobrazení podrobností o organizační hierarchie. Další informace o [rozhraní Graph API](active-directory-graph-api.md).

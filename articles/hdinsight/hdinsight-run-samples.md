@@ -9,44 +9,44 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 96c51bb30f76ffe4d5efb3bb616c00554b7aab62
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011500"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408676"
 ---
-# <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ukázky spouštění Hadoop MapReduce v HDInsight se systémem Windows
+# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Spuštění ukázek Apache Hadoop MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Které vám pomohou začít spuštěných úloh MapReduce v clusterech Hadoop pomocí Azure HDInsight poskytuje řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
+Které vám pomohou začít spuštěné úlohy MapReduce na clusterech Apache Hadoop pomocí Azure HDInsight poskytuje řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
 
-* [**Word count**][hdinsight-sample-wordcount]: vypočítá frekvenci výskytu slov v textovém souboru.
-* [**Počet slov streamováním v C#**][hdinsight-sample-csharp-streaming]: vypočítá frekvenci výskytu slov v textovém souboru pomocí rozhraní streamování Hadoop.
-* [**Odhadu hodnoty pí**][hdinsight-sample-pi-estimator]: používá statistického (dál Monte Carlo) způsob, jak odhadnout hodnotu čísla pí.
-* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: spusťte pro obecné účely GraySort na 10 GB souboru pomocí HDInsight. Existují tři úlohy pro spuštění: Teragen generují data, Terasort řadit data a Teravalidate potvrďte správně seřazená data.
+* [**Word count**][hdinsight-sample-wordcount]: Vypočítá frekvenci výskytu slov v textovém souboru.
+* [**C#streamování počet slov**][hdinsight-sample-csharp-streaming]: Vypočítá frekvenci výskytu slov v textovém souboru pomocí rozhraní streamování Hadoop.
+* [**Odhadu hodnoty pí**][hdinsight-sample-pi-estimator]: Používá statistického (dál Monte Carlo) způsob, jak odhadnout hodnotu čísla pí.
+* [**10 GB Graysort**][hdinsight-sample-10gb-graysort]: Spustíte pro obecné účely GraySort na 10 GB souboru pomocí HDInsight. Existují tři úlohy pro spuštění: Teragen generují data, Terasort řadit data a Teravalidate potvrďte správně seřazená data.
 
-> [!NOTE]
+> [!NOTE]  
 > Zdrojový kód můžete najít v dodatku.
 
 Existuje dodatečných dokumentaci na webu pro technologie související s Hadoop, jako je například programování založené na jazyce Java MapReduce a datových proudů a dokumentaci o rutinách, které se používají v prostředí Windows PowerShell skriptování. Další informace o těchto prostředků najdete v tématu:
 
-* [Vývoj programů Java MapReduce pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Odesílání úloh Hadoop do služby HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Odeslání úloh systému Apache Hadoop v HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Úvod do služby Azure HDInsight][hdinsight-introduction]
 
-V současné době mnoho lidí zvolte Hive a Pig přes MapReduce.  Další informace naleznete v tématu:
+V současné době mnoho lidí zvolte Apache Hivu a Apache Pig přes MapReduce.  Další informace naleznete v tématu:
 
-* [Použití Hivu ve službě HDInsight](hadoop/hdinsight-use-hive.md)
-* [Použití Pigu se v HDInsight](hadoop/hdinsight-use-pig.md)
+* [Použití Apache Hivu ve službě HDInsight](hadoop/hdinsight-use-hive.md)
+* [Použití Apache Pig v HDInsight](hadoop/hdinsight-use-pig.md)
 
 **Požadavky**:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **HDInsight cluster**. Různé způsoby, ve kterých je možné vytvořit clustery tohoto typu, v tématu [vytváření clusterů Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+* **HDInsight cluster**. Různé způsoby, ve kterých je možné vytvořit clustery tohoto typu, v tématu [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a 1. ledna 2017 dojde k jejímu odebrání. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
     > Postupujte podle kroků v [instalace a konfigurace Azure Powershellu](/powershell/azureps-cmdlets-docs) nainstalovat nejnovější verzi Azure Powershellu. Pokud máte skripty, které je potřeba upravit tak, aby používají nové rutiny, které pracují s Azure Resource Manageru, najdete v [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -56,7 +56,7 @@ K odeslání projektu MapReduce, nejprve vytvoříte definici úlohy MapReduce. 
 
 Zdrojový kód najdete v [příloha A](#apendix-a---the-word-count-MapReduce-program-in-java).
 
-Postup vývoje MapReduce v Javě programu, najdete v článku – [programů vývoj Java MapReduce pro Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+Postup vývoje MapReduce v Javě programu, najdete v článku – [programů MapReduce v Javě vyvíjet pro Apache Hadoop v HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
 **Odeslat úlohu MapReduce počet slov**
 
@@ -120,7 +120,7 @@ Postup vývoje MapReduce v Javě programu, najdete v článku – [programů vý
 ## <a name="hdinsight-sample-csharp-streaming"></a>Word count - streamováním v C#
 Hadoop MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java poskytuje rozhraní API pro streamování.
 
-> [!NOTE]
+> [!NOTE]  
 > Postup v tomto kurzu se vztahuje pouze na clustery HDInsight se systémem Windows. Příklad streamování pro clustery HDInsight založené na Linuxu najdete v tématu [vývoj streamovacích programů v Pythonu pro HDInsight](hadoop/apache-hadoop-streaming-python.md).
 
 V příkladu mapper a reduktorem jsou spustitelné soubory, které číst vstupu z [stdin –][stdin-stdout-stderr] (řádek po řádku) a výstup do [stdout][stdin-stdout-stderr]. Program Spočítá slova v textu.
@@ -207,10 +207,10 @@ Ukázka každý odpovídá jedné z programů MapReduce popsané v úvodu vyžad
 ## <a name="next-steps"></a>Další postup
 Z tohoto článku a články v každém z ukázek jste zjistili, jak ke spuštění ukázky, které jsou součástí clusterů HDInsight pomocí Azure Powershellu. Kurzy o používání Pig, Hive a MapReduce s HDInsight najdete v následujících tématech:
 
-* [Začínáme používat Hadoop pomocí Hive v HDInsight k analýze pomocí mobilního telefonu][hdinsight-get-started]
-* [Použití Pigu se systémem Hadoop v HDInsight][hdinsight-use-pig]
-* [Použití Hivu s Hadoopem v HDInsight][hdinsight-use-hive]
-* [Odesílání úloh Hadoop v HDInsight][hdinsight-submit-jobs]
+* [Začněte používat Apache Hadoop s Apache Hive v HDInsight k analýze pomocí mobilního telefonu][hdinsight-get-started]
+* [Použití Apache Pig s Apache Hadoop v HDInsight][hdinsight-use-pig]
+* [Použití Apache Hivu s Apache Hadoop v HDInsight][hdinsight-use-hive]
+* [Odeslání úlohy Apache Hadoop v HDInsight][hdinsight-submit-jobs]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>Příloha A – zdrojový kód počet slov
 

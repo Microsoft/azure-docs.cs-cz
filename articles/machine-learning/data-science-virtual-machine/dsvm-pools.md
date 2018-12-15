@@ -14,36 +14,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 12/10/2018
 ms.author: gokuma
-ms.openlocfilehash: acae59922f5a46f059e19db6865491f5186139f7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 648b0818f07aca8763fa4af01380076ae307b0a2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103400"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408948"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Vytvoření sdíleného fondu z virtuálního počítače pro datové vědy
 
 Tento článek popisuje, jak může vytvořit sdílený fond z virtuálního počítače pro datové vědy (datové) pro tým používat. Mezi výhody používání sdíleného fondu jsou lepší využití prostředků usnadnění sdílení a spolupráci a efektivnější správu DSVM prostředků. 
 
-Mnoho metod a technologií můžete použít k vytvoření fondu datové. Tento článek se zaměřuje na fondy pro dávkové zpracování a interaktivní virtuálních počítačů.
-
-## <a name="batch-processing-pool"></a>Dávkové zpracování fondu
-Pokud chcete nastavit fondu datové hlavně pro spouštění úloh ve službě batch v režimu offline, můžete použít [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) nebo [Azure Batch](https://docs.microsoft.com/azure/batch/) služby. Tento článek se zaměřuje na Azure Batch AI.
-
-Ubuntu verzi datové VĚDY je podporovaný jako některou k imagí v Azure Batch AI. V sadě Python SDK, ve kterém vytvoříte cluster Azure Batch AI, nebo rozhraní příkazového řádku Azure můžete zadat `image` parametr a nastavte ho na `UbuntuDSVM`. Můžete určit, jaký druh zpracování uzly má: založený na grafickém procesoru instancí a instancí jen procesoru, počtu procesorů a paměti [široký výběr z instancí virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) k dispozici v Azure. 
-
-Při použití image Ubuntu DSVM v Batch AI s uzly založený na grafickém procesoru potřebné ovladače GPU a hloubkové učení architektury jsou předinstalovány. Předinstalace uloží docela dlouho při přípravě uzly služby batch. Ve skutečnosti Pokud vyvíjíte na Ubuntu DSVM interaktivně, můžete si všimnout, že uzly služby Batch AI jsou přesně stejného nastavení a konfiguraci prostředí. 
-
-Obvykle při vytváření clusteru Batch AI, můžete také vytvořit sdílenou složku, která je připojena ve všech uzlech. Sdílené složky se používá pro vstup a výstup dat, jakož i ukládání kódu a skriptů úlohy služby batch. 
-
-Po vytvoření clusteru Batch AI, můžete použít stejnou sadu Python SDK nebo rozhraní příkazového řádku k odesílání úloh ke spuštění. Platíte jenom čas, který se používá ke spouštění dávkových úloh. 
-
-Další informace naleznete v tématu:
-* Podrobný návod k používání [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/batch-ai/quickstart-cli) ke správě služby Batch AI
-* Podrobný návod k používání [Python](https://docs.microsoft.com/azure/batch-ai/quickstart-python) ke správě služby Batch AI
-* [Batch AI recepty](https://github.com/Azure/BatchAI) , která ukazují, jak používat různé AI a hloubkového učení architektury s využitím služby Batch AI
+Mnoho metod a technologií můžete použít k vytvoření fondu datové. Tento článek se zaměřuje na fondy pro interaktivní virtuální počítače. Alternativní spravovanou výpočetní infrastruktury je Azure Machine Learning Compute. Zobrazit [nastavení cílových výpočetních prostředí](../service/how-to-set-up-training-targets.md#amlcompute) Další informace.
 
 ## <a name="interactive-vm-pool"></a>Interaktivní fond virtuálních počítačů
 

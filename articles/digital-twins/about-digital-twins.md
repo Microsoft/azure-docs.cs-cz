@@ -3,18 +3,18 @@ title: Přehled služby Azure Digital Twins | Microsoft Docs
 description: V tomto článku najdete další informace o službě Azure Digital Twins, řešení Azure IoT pro prostorovou inteligenci.
 author: julieseto
 ms.author: jseto
-ms.date: 10/10/2018
+ms.date: 12/14/2018
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 84f329c0a97d0f79a5f612fb3054b82a182e4da9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 2848f9ce97c2bdad59d86031c5894219875b6059
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287366"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437108"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Přehled služby Azure Digital Twins
 
@@ -27,12 +27,12 @@ S Azure digitální dvojče se můžete dotazovat data z fyzického místa na di
 - Optimalizujte využití volného místa pro office.
 
 Azure digitální dvojče platí pro všechny typy prostředí. Jen několik příkladů jsou sklady, pobočky, školách, nemocnice a bank. Může dokonce sloužit pro stadionech, objekty pro vytváření, parkovací velké, parků, inteligentní mřížky a města. Azure digitální Dvojčata je možné v následující příklad scénáře:
- 
-- Sledovat denní teploty v rámci více státech. 
+
+- Sledovat denní teploty v rámci více státech.
 - Monitorování zaneprázdněn dronu cest.
-- Identifikujte autonomní vozidel. 
-- Analyzujte obsazení úrovně budovy. 
-- Najdete za nejvytíženější pokladna ve vašem úložišti. 
+- Identifikujte autonomní vozidel.
+- Analyzujte obsazení úrovně budovy.
+- Najdete za nejvytíženější pokladna ve vašem úložišti.
 
 Ať už je váš skutečný obchodní scénář jakýkoli, prostřednictvím služby Azure Digital Twins můžete zřídit odpovídající digitální instanci.
 
@@ -94,7 +94,7 @@ Azure digitální dvojče je užitečné pro představující fyzického světa 
 
 Azure Digital Twins se pomocí služby Azure IoT Hub připojuje k zařízením a senzorům IoT, které zajišťují stálou synchronizaci s fyzickým světem. Následující diagram znázorňuje, jak Azure digitální dvojče má vztah k jiné služby Azure IoT.
 
-![Azure Digital Twins je služba postavená na službě Azure IoT Hub](./media/overview/azure-digital-twins-in-iot-ecosystem.png)
+![Azure Digital Twins je služba postavená na službě Azure IoT Hub][1]
 
 Další informace o IoT najdete v tématu [technologie Azure IoT a řešení](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
 
@@ -102,15 +102,18 @@ Další informace o IoT najdete v tématu [technologie Azure IoT a řešení](ht
 
 Přejdete na krátkou ukázku o digitální dvojče Azure:
 
-> [!div class="nextstepaction"]
-> [Rychlý start: Najít dostupné místnosti s použitím digitálních Dvojčat Azure](./quickstart-view-occupancy-dotnet.md)
+>[!div class="nextstepaction"]
+>[Rychlý start: Najít dostupné místnosti s použitím digitálních Dvojčat Azure](./quickstart-view-occupancy-dotnet.md)
 
 Prohlédněte si blíže aplikace pro správu zařízení pomocí Dvojčat digitální Azure:
 
-> [!div class="nextstepaction"]
-> [Kurz: Nasazení služby Azure Digital Twins a konfigurace prostorového grafu](./tutorial-facilities-setup.md)
+>[!div class="nextstepaction"]
+>[Kurz: Digitální dvojče Azure nasadit a nakonfigurovat prostorový graf](./tutorial-facilities-setup.md)
 
 Seznamte se se základními koncepty služby Azure Digital Twins:
 
-> [!div class="nextstepaction"]
-> [Principy digitální dvojče objektový model a Prostorové řady grafu](./concepts-objectmodel-spatialgraph.md)
+>[!div class="nextstepaction"]
+>[Principy digitální dvojče objektový model a Prostorové řady grafu](./concepts-objectmodel-spatialgraph.md)
+
+<!-- Images -->
+[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

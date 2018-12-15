@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 1725be4209bfc9335654c574098c43102eca5a2d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/14/2018
+ms.openlocfilehash: a315e8b42ab8e0df659a3388a50fedf5dd3a54d2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961174"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413060"
 ---
 # <a name="monitor-migration-activity"></a>Monitorování aktivity migrace
 V tomto článku se dozvíte, jak můžete sledovat průběh migrace na úrovni databáze i na úrovni tabulky.
@@ -136,7 +136,7 @@ Následující tabulka popisuje pole zobrazená v průběhu migrace úrovně tab
 | **Aktualizace** | Počet CDC aktualizace řádků použitý k cíli.      |
 | **Odstranění**      | Počet CDC odstraní v řádcích použitý k cíli. |
 | **Celkově použito**      | Celkový počet CDC aktualizací, vkládání a odstranění řádků použitý k cíli. |
-| **Data chyby** | Počet chyb dat došlo v této tabulce. Tady je několik příkladů chyb *511: Nelze vytvořit řádek velikosti %d, což je více než povolená maximální velikost řádku % d, 8114: Chyba při převodu datového typu %ls. % ls.*  Zákazník musí dotaz z attms_apply_exceptions tabulky v Azure cílové zobrazíte podrobnosti o chybě.    |
+| **Data chyby** | Počet chyb dat došlo v této tabulce. Tady je několik příkladů chyb *511: Nelze vytvořit řádek velikosti %d, což je více než povolená maximální velikost řádku % d, 8114: Při převodu datového typu %ls. % ls.*  Zákazník musí dotaz z dms_apply_exceptions tabulky v Azure cílové zobrazíte podrobnosti o chybě.    |
 
 > [!NOTE]
 > CDC hodnoty Insert, Update a Delete a celkový počet použít může snížit, pokud je přímou migraci databáze nebo byl restartován migrace.

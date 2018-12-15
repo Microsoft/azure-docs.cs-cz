@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 8f43edfe468958bbc4a6fde14e8e03e5b4d4e0f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88aeaf1246583345d1d28218e8e91b3ecbcd166b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264139"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429939"
 ---
 Organizace mají rozsáhlých výpočetních potřeb. Tyto úlohy Big Compute zahrnují technického návrhu a analýzy, výpočty finančních rizik, vykreslování obrázků, komplexního modelování, simulace typu Monte Carlo a další. 
 
@@ -86,7 +86,6 @@ Spouštějte vlastní nebo obchodní aplikace HPC v Azure. Několik příkladů 
 
 ### <a name="ai-and-deep-learning"></a>AI a hloubkového učení
 
-* [Batch AI](../articles/batch-ai/overview.md) školení pro modely obsáhlého learningu
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
 * [Hloubkové učení virtuálního počítače](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [Batch loděnice receptů obsáhlého learningu](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
@@ -154,7 +153,7 @@ Další informace:
 
 Virtuální počítače Azure, škálovací sady virtuálních počítačů, Batch a související výpočetních služeb jsou základem pro většinu řešení Azure HPC. Řešení však můžete využít výhod mnoha souvisejících služeb Azure. Tady je částečný seznam:
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 * [Objekt BLOB, table a queue storage](../articles/storage/storage-introduction.md)
 * [Úložiště souborů](../articles/storage/storage-files-introduction.md)
@@ -168,7 +167,6 @@ Virtuální počítače Azure, škálovací sady virtuálních počítačů, Bat
 
 ### <a name="ai-and-machine-learning"></a>AI a strojové učení
 * [Služby Machine Learning](../articles/machine-learning/service/overview-what-is-azure-ml.md)
-* [Batch AI](../articles/batch-ai/overview.md)
 * [Genomics](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>Sítě

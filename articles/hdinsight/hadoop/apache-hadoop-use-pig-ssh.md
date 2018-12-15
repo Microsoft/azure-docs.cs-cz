@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632218"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435051"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Spouštět úlohy Apache Pig na cluster založených na Linuxu pomocí příkazu Pig (SSH)
 
@@ -22,7 +22,7 @@ ms.locfileid: "51632218"
 
 Zjistěte, jak interaktivně spouštět úlohy Apache Pig z připojení SSH ke clusteru HDInsight. Programovacím jazyce Pig Latin můžete popsat transformace, které se použijí pro vstupní data pro vytvoření požadovaného výstupu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="ssh"></a>Připojení přes SSH
@@ -35,7 +35,7 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 
 Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a id="pig"></a>Použití příkazu Pig
+## <a id="pig"></a>Použití příkazu Apache Pig
 
 1. Jakmile budete připojeni, pomocí následujícího příkazu spusťte Pig rozhraní příkazového řádku (CLI):
 
@@ -74,7 +74,7 @@ Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdi
     | `FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;` | Vytvoří sadu dat, která obsahuje všechny jedinečné protokoly hodnota úrovně a jak často se vyvolá. Datová sada ukládána do `FREQUENCIES`. |
     | `RESULT = order FREQUENCIES by COUNT desc;` | Řadí úrovních protokolování podle počtu (sestupně) a uloží do `RESULT`. |
 
-    > [!TIP]
+    > [!TIP]  
     > Použití `DUMP` abyste viděli výsledek transformace po provedení každého kroku.
 
 5. Můžete také uložit výsledky transformace s využitím `STORE` příkazu. Například následující příkaz uloží `RESULT` k `/example/data/pigout` adresář na výchozí úložiště pro cluster:
@@ -83,7 +83,7 @@ Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdi
     STORE RESULT into '/example/data/pigout';
     ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jsou data uložená v zadaném adresáři v souborech s názvem `part-nnnnn`. Pokud adresář již existuje, zobrazí se chybová zpráva.
 
 6. Pro ukončení řádku grunt, zadejte následující příkaz:
@@ -136,9 +136,9 @@ Můžete také Pig příkaz ke spuštění Pig Latin obsažené v souboru.
 
 Obecné informace o Pig v HDInsight najdete v následujícím dokumentu:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 
 Další informace o další způsoby, jak pracovat s Hadoop v HDInsight najdete v následujících dokumentech:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)

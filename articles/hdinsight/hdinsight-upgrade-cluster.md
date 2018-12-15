@@ -8,17 +8,17 @@ ms.author: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: cab2c7aabf23ba8636f46a92c8d864b1c9b74120
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2ebfc4b0d9bb71cf51e0927e6399d30488c2f939
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594841"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409407"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Upgrade clusteru HDInsight na novější verzi
 Abyste mohli využívat nejnovější funkce HDInsight, doporučujeme, abyste clustery HDInsight upgradovali na nejnovější verzi. Postupujte níže uvedených pokynů k upgradu vašeho HDInsight clusteru verze.
 
-> [!NOTE]
+> [!NOTE]  
 > Informace o podporovaných verzích HDInsight najdete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 >
 >
@@ -44,6 +44,6 @@ Jakmile si ověříte, že vše funguje podle očekávání, naplánujte výpadk
 
 ## <a name="next-steps"></a>Další kroky
 * [Zjistěte, jak vytvářet clustery HDInsight založené na Linuxu](hdinsight-hadoop-provision-linux-clusters.md)
-* [Připojení k HDInsight pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [Správa clusteru s linuxem pomocí nástroje Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Připojení k HDInsightu pomocí protokolu SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
+* [Správa clusteru založených na Linuxu pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 

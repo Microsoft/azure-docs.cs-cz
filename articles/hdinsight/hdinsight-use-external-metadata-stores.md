@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 288ee46e9a5741a49ddcec1ef155c6f08b7b6cbc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016164"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408319"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsight
 
-Metastore Hive v HDInsight je zásadní součástí systému Hadoop architektury. Metastoru je centrální schéma úložiště, které lze použít v jiných nástrojích přístup velké objemy dat, jako je Spark, interaktivní dotazy (LLAP), Presto nebo Pig. HDInsight používá Azure SQL Database jako úložiště metadat Hive.
+Metastore Apache Hive v HDInsight je zásadní součástí architektury Apache Hadoop. Metastoru je centrální schéma úložiště, které lze použít v jiných nástrojích přístup velké objemy dat, jako je Apache Spark, interaktivní dotazy (LLAP), Presto nebo Apache Pig. HDInsight používá Azure SQL Database jako úložiště metadat Hive.
 
 ![Architektura HDInsight Hive metadat Store](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -72,12 +72,12 @@ Tady jsou některé obecné HDInsight Hive metastore osvědčených postupů:
 - Po vytvoření nové, vyšší verzi Azure HDInsight na stávající databázi vlastní úložiště metadat systému upgraduje schématu metaúložiště, které je nevratná operace bez obnovení ze zálohy databáze.
 - Pokud metastoru sdílíte mezi více clusterů, ujistěte se, že všechny clustery jsou na stejné verzi HDInsight. Různé verze Hive pomocí různých metastore databázových schématech. Například nemůžete sdílet metastoru napříč clustery Hive 1.2 a Hive 2.1 systémovou správou verzí. 
 
-## <a name="oozie-metastore"></a>Úložiště metadat Oozie
+##  <a name="apache-oozie-metastore"></a>Apache Oozie Metastore
 
 Apache Oozie je systém koordinace pracovních postupů, které spravuje úlohy platformy Hadoop.  Oozie podporuje úlohy systému Hadoop pro Apache MapReduce, Pig, Hive a další.  Oozie metastoru používá k ukládání podrobnosti o aktuálních a dokončených pracovních postupů. Pokud chcete zvýšit výkon při použití Oozie, můžete použít Azure SQL Database jako vlastní úložiště metadat. Metastore také poskytuje přístup k datům úlohy Oozie po odstranění clusteru.
 
-Pokyny týkající se vytvoření úložiště metadat Oozie s Azure SQL Database najdete v tématu [použití Oozie pro pracovní postupy](hdinsight-use-oozie-linux-mac.md).
+Pokyny týkající se vytvoření úložiště metadat Oozie s Azure SQL Database najdete v tématu [použití Apache Oozie pro pracovní postupy](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](./hdinsight-hadoop-provision-linux-clusters.md)
+- [Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](./hdinsight-hadoop-provision-linux-clusters.md)

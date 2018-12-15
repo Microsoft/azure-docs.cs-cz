@@ -7,22 +7,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: overview
 ms.date: 10/04/2018
-ms.openlocfilehash: ade162d0261b765336cbff9ea8a6429f9bd2d871
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: 34582e66dec3b2f97efba7856ccfbf678f8f1f63
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801813"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408081"
 ---
 # <a name="hdinsight-40-overview-preview"></a>Přehled HDInsight 4.0 (Preview)
 
-Azure HDInsight je mezi podnikovými zákazníky jednou z nejoblíbenějších služeb pro analýzu Hadoop a Spark v Azure. HDInsight (HDI) 4.0 je cloudová distribuce komponent Hadoop z platformy [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Tento článek obsahuje informace o nejnovější verzi Azure HDInsight a pokyny k upgradu.
+Azure HDInsight je jedním z nejoblíbenějších služeb mezi podnikovými zákazníky pro open source Apache Hadoop a Apache Sparku a analýzy v Azure. Je Cloudová distribuce komponent Apache Hadoop v HDInsight (Hdinsight) 4.0 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html). Tento článek obsahuje informace o nejnovější verzi Azure HDInsight a pokyny k upgradu.
 
 ## <a name="whats-new-in-hdi-40"></a>Co je nového ve verzi HDI 4.0?
 
-### <a name="hive-30-and-llap"></a>Hive 3.0 a LLAP
+### <a name="apache-hive-30-and-llap"></a>Apache Hive, 3.0 a LLAP
 
-Díky analytickému zpracování s nízkou latencí (LLAP), které používá trvalé dotazovací servery a ukládání do mezipaměti v paměti, nabízí Hive rychlé výsledky dotazů SQL na data ve vzdáleném cloudovém úložišti. LLAP pro Hive využívá sadu trvalých procesů démonů, kteří provádějí fragmenty dotazů Hive. Provádění dotazu s LLAP se podobá Hive bez LLAP, přičemž úlohy pracovních procesů neběží v kontejnerech, ale uvnitř procesů démonů LLAP.
+Apache Hive analytické zpracování vyžadují nízkou latenci (LLAP) využívá trvalý dotaz, že servery a poskytovat rychlé SQL ukládání do mezipaměti dotazování výsledků s daty v vzdálené cloudového úložiště. LLAP pro Hive využívá sadu trvalých procesů démonů, kteří provádějí fragmenty dotazů Hive. Provádění dotazu s LLAP se podobá Hive bez LLAP, přičemž úlohy pracovních procesů neběží v kontejnerech, ale uvnitř procesů démonů LLAP.
 
 Mezi výhody LLAP pro Hive patří:
 
@@ -72,7 +72,7 @@ Už nemusíte mít obavy, když se nechtěně pokusíte o přístup k transakčn
 Přečtěte si další informace o [Apache Sparku](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html).
 
 
-### <a name="oozie"></a>Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 4.3.1 je součástí HDI 4.0 s následujícími změnami:
 
@@ -90,7 +90,7 @@ Neexistuje žádný podporovaný způsob upgradu z předchozích verzí HDI na H
 
 ## <a name="limitations"></a>Omezení
 
-* HDI 4.0 nepodporuje MapReduce. Použijte místo toho Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
+* HDI 4.0 nepodporuje MapReduce. Místo toho použijte Apache Tez. Přečtěte si další informace o [Apache Tez](https://tez.apache.org/).
 
 * Zobrazení Hive už není v HDI 4.0 k dispozici. 
 
@@ -100,7 +100,7 @@ Neexistuje žádný podporovaný způsob upgradu z předchozích verzí HDI na H
 
 * Azure Data Lake Storage Gen2 nemůže v clusteru Spark ukládat poznámkové bloky Jupyter.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Dokumentace k Azure HDInsight](index.yml)
 * [Poznámky k verzi](hdinsight-release-notes.md)

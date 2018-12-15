@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 08/01/2018
 ms.author: danlep
-ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37f1bf5dc20d097f7f5f560e3bf1fdd25dc38045
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052695"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408047"
 ---
 # <a name="what-is-azure-batch-ai"></a>Co je Azure Batch AI?
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Azure Batch AI je spravovaná služba umožňující odborníkům na data a výzkumníkům AI trénovat a testovat modely strojového učení a AI v Azure ve velkém měřítku, aniž by bylo potřeba spravovat složitou infrastrukturu. Stačí, když popíšete výpočetní prostředky, úlohy, které chcete spustit, a umístění pro uložení vstupů modelu a výstupů. Batch AI se postará o všechno ostatní.
 
@@ -49,13 +52,13 @@ Po natrénování modelu použijte Batch AI k otestování modelu, pokud to neby
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-Ke správě výpočetních prostředků a naplánování úloh pro trénování a testování AI se používají sady SDK služby Batch AI, skripty příkazového řádku nebo Azure Portal: 
+Ke správě výpočetních prostředků a naplánování úloh pro trénování a testování AI se používají sady SDK služby Batch AI, skripty příkazového řádku nebo Azure Portal: 
 
 * **Zřizování a škálování clusterů virtuálních počítačů:** Můžete zvolit počet uzlů (virtuálních počítačů) a vybrat velikost virtuálního počítače (s podporou GPU nebo jiného), která vyhovuje vašim potřebám pro trénování. Počet uzlů lze zvyšovat nebo snižovat automaticky nebo ručně, takže prostředky využíváte jenom v případě potřeby. 
 
 * **Správa závislostí a kontejnerů:** Ve výchozím nastavení clustery Batch AI běží na imagích virtuálních počítačů s Linuxem, které mají předem nainstalované závislosti pro spouštění architektur trénování založených na kontejnerech na GPU nebo CPU. Pro další konfiguraci můžete používat vlastní image nebo spouštěcí skripty.
 
-* **Distribuce dat:** Můžete zvolit jednu nebo několik možností úložiště pro správu vstupních dat a skriptů a výstup úlohy: Soubory Azure, Azure Blob Storage nebo spravovaný server systému souborů NFS. Batch AI podporuje také vlastní řešení úložiště včetně vysoce výkonných paralelních systémů souborů. Systémy souborů úložiště lze připojit k uzlům clusteru a kontejnerům úloh pomocí jednoduchých konfiguračních souborů.
+* **Distribuce dat** – vyberte jednu nebo několik možnosti úložiště pro správu vstupní data a skripty a výstup úlohy: Služba soubory Azure, Azure Blob storage nebo spravovaný server systému souborů NFS. Batch AI podporuje také vlastní řešení úložiště včetně vysoce výkonných paralelních systémů souborů. Systémy souborů úložiště lze připojit k uzlům clusteru a kontejnerům úloh pomocí jednoduchých konfiguračních souborů.
 
 * **Plánování úloh:** Můžete odesílat úlohy do fronty úloh založené na prioritě, která umožňuje sdílení prostředků clusterů a využívání virtuálních počítačů s nízkou prioritou a rezervovaných instancí.
 
@@ -65,7 +68,7 @@ Ke správě výpočetních prostředků a naplánování úloh pro trénování 
 
 Batch AI je služba Azure, takže podporuje běžné nástroje, jako je třeba zabezpečení pomocí řízení přístupu na základě role (RBAC) a virtuálních sítí Azure.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Získejte další informace o [prostředcích Batch AI](resource-concepts.md) pro trénování modelu strojového učení nebo AI.
 

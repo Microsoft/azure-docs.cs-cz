@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: f17d2d1cf25f533fb37d44da2890b6ad8741be82
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326033"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437720"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor běžné metriky automatického škálování
 Automatické škálování Azure Monitor umožňuje škálování více spuštěných instancích směrem nahoru nebo dolů, na základě telemetrických dat (metriky). Tento dokument popisuje běžné metriky, které chcete použít. Na webu Azure Portal můžete zvolit metrika prostředku, který chcete škálovat. Ale můžete také jakékoliv metriky z různých zdrojů škálovat podle.
@@ -34,8 +34,8 @@ Pokud obou předchozích případech má hodnotu true, pak si projděte [použit
 ### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem
 Následující metriky na úrovni hostitele jsou emitovány ve výchozím nastavení pro virtuální počítač Azure a VMSS ve Windows i Linuxem instancí. Tyto metriky popisují váš virtuální počítač Azure, ale se shromažďují z hostitele virtuálního počítače Azure, nikoli přes agenta nainstalovaného na virtuálním počítači hosta. Tyto metriky můžete použít v pravidlech automatického škálování.
 
-- [Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
-- [Metriky hostitele založeného na správci prostředků Windows a Linux VM Scale Sets](../../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
+- [Metriky hostitele pro Windows využívající Resource Manager a virtuální počítače s Linuxem](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Metriky hostitele založeného na správci prostředků Windows a Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
 ### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metriky hostovaného operačního systému virtuálních počítačů Windows využívající Resource Manager
 Při vytváření virtuálního počítače v Azure diagnostics je povoleno pomocí diagnostického rozšíření. Rozšíření diagnostiky generuje sadu metriky přijatá z uvnitř virtuálního počítače. To znamená, že je možné automaticky škálovat z metriky, které nejsou ve výchozím nastavení zaznamenávány.

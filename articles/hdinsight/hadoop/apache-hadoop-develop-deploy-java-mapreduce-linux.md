@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013747"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436853"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight
 
@@ -285,8 +285,8 @@ Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu. Dalš�
 
 V tomto dokumentu jste zjistili, jak vývoj úloh MapReduce v Javě. Najdete v následujících dokumentech další způsoby práce s HDInsight.
 
-* [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
 
 Další informace najdete v tématu taky [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).

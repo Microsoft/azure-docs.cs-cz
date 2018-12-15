@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 0d2b7a5e3239cf46c41db0a086b804c34df5d6e2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3779260d2dd6036e65be39b4a59ceb1459d01b9e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386940"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434252"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -207,7 +207,7 @@ Postup nastavení výstrah bez [Azure Log Analytics](../log-analytics/log-analyt
 
 ## <a name="azure-diagnostics-event-settings-and-details"></a>Nastavení Azure Diagnostics událostí a podrobnosti
 
-Každý diagnostickou událost obsahuje podrobnosti o aplikaci logiky a události, například stav, čas spuštění, koncový čas a tak dále. Prostřednictvím kódu programu nastavit monitorování, sledování a protokolování, můžete tyto podrobnosti s [rozhraní REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [rozhraní REST API pro Azure Diagnostics](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftlogicworkflows).
+Každý diagnostickou událost obsahuje podrobnosti o aplikaci logiky a události, například stav, čas spuštění, koncový čas a tak dále. Prostřednictvím kódu programu nastavit monitorování, sledování a protokolování, můžete tyto podrobnosti s [rozhraní REST API pro Azure Logic Apps](https://docs.microsoft.com/rest/api/logic) a [rozhraní REST API pro Azure Diagnostics](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows).
 
 Například `ActionCompleted` událost má `clientTrackingId` a `trackedProperties` vlastnosti, které můžete použít pro sledování a monitorování:
 

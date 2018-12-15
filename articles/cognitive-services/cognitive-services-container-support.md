@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: eabdeb9aaf57db2281cb6450d9e21f1b2f098c01
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8d98e428d60c0981385b842bcb4dfc77bdbbcf22
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087317"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413043"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -31,10 +31,10 @@ Následující video ukazuje použití kontejner služeb Cognitive Services.
 
 ## <a name="features-and-benefits"></a>Funkce a výhody
 
-- **Kontrola nad daty**: umožňuje zákazníkům zvolit, kam svá data zpracovává tyto služby Cognitive Services.  To je nezbytné pro zákazníky, které nelze odesílat data do cloudu, ale přístup k technologie služeb Cognitive Services. Podpora konzistence v hybridním prostředí – napříč daty, správu, identity a zabezpečení.
-- **Ovládací prvek průběhu aktualizace modelu**: poskytují zákazníkům flexibilitu při vytváření verzí a aktualizace modelů nasazení v rámci svých řešení.
-- **Přenosné architektura**: Povolte vytvoření přenosné aplikace architektury, který je možné nasadit v Azure, místní a hraniční. Kontejnery, které je možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Zásobník](/azure/azure-stack/). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
-- **Vysoká propustnost / nízká latence**: poskytují zákazníkům možnost škálování tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data pro vysokou propustností a nízkou latenci. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky. 
+- **Kontrola nad daty**: Umožňuje zákazníkům zvolit, kam svá data zpracovává tyto služby Cognitive Services. To je nezbytné pro zákazníky, které nelze odesílat data do cloudu, ale přístup k technologie služeb Cognitive Services. Podpora konzistence v hybridním prostředí – napříč daty, správu, identity a zabezpečení.
+- **Ovládací prvek průběhu aktualizace modelu**: Poskytují zákazníkům flexibilitu při vytváření verzí a aktualizace modelů nasazení v rámci svých řešení.
+- **Přenosné architektura**: Povolte vytváření architektura přenosné aplikace, který je možné nasadit v Azure, místní a hraniční. Kontejnery, které je možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/), [Azure Container Instances](/azure/container-instances/), nebo [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Zásobník](/azure/azure-stack/). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+- **Vysoká propustnost / nízká latence**: Umožňují zákazníkům škálovat pro vysokou propustností a nízkou latencí tím, že služby Cognitive Services a spusťte fyzicky blízko jejich aplikační logiku a data. Kontejnery není limit transakcí za sekundu (TPS) a můžete provést škálování současně i horizontální navyšování kapacity pro zpracování poptávky, pokud zadáte nezbytné hardwarové prostředky.
 
 
 ## <a name="containers-in-azure-cognitive-services"></a>Kontejnery v Azure Cognitive Services
@@ -43,7 +43,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 
 | Služba | Kontejner| Popis |
 |---------|----------|-------------|
-|[Počítačové zpracování obrazu](Computer-vision/computer-vision-how-to-install-containers.md) |**Rozpoznání textu** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky.<br/><br/>**Důležité:** kontejneru rozpoznat Text v současné době používá pouze angličtinu.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Počítačové zpracování obrazu](Computer-vision/computer-vision-how-to-install-containers.md) |**Rozpoznání textu** |Extrahuje tištěný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení a plakáty nebo vizitky.<br/><br/>**Důležité:** Kontejner rozpoznat Text v současné době používá pouze angličtinu.<br>[Žádost o přístup](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Rozpoznávání tváře](Face/face-how-to-install-containers.md) |**Rozpoznávání tváře** |Zjistí lidských tváří na obrázcích a Určuje atributy, včetně orientačních bodů pro rozpoznávání tváře (například ústa a oči), pohlaví, věk a další funkce rozpoznávání obličeje předpovědět počítače. Kromě zjišťování můžete pro rozpoznávání tváře zkontrolujte, jestli dvě tváře na stejnou bitovou kopii nebo jinou Image jsou stejné s použitím skóre spolehlivosti nebo porovnání proti databázi a zjistěte, jestli podobně vypadajících tváří, nebo identické pro rozpoznávání tváře již existuje. Můžete také uspořádat podobných tváří do skupin pomocí sdílené visual vlastností.<br>[Žádost o přístup](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
@@ -61,11 +61,11 @@ Kontejnery služby Azure Cognitive Services jsou veřejně dostupné prostředni
 
 Před použitím kontejnerů Azure Cognitive Services, musí splňovat následující požadavky:
 
-**Modul docker**: musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/) nebo [Azure Container Instances](/azure/container-instances/).
+**Modul docker**: Musíte mít lokálně nainstalovaný modul Docker. Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), a [Windows](https://docs.docker.com/docker-for-windows/). Na Windows Docker musí být nakonfigurované pro podporu kontejnerů Linuxu. Kontejnery dockeru je také možné nasadit přímo do [Azure Kubernetes Service](/azure/aks/) nebo [Azure Container Instances](/azure/container-instances/).
 
 Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure.
 
-**Znalost společnosti Microsoft Container Registry a Docker**: byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost základní `docker` příkazy.  
+**Znalost společnosti Microsoft Container Registry a Docker**: Byste měli mít základní znalost konceptů Microsoft Container Registry a Docker, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.
 
 Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 
@@ -73,7 +73,7 @@ Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a po
 
 ## <a name="developer-samples"></a>Ukázky pro vývojáře
 
-Ukázky pro vývojáře najdete na adrese naše [úložiště Github](https://github.com/Azure-Samples/cognitive-services-containers-samples). 
+Ukázky pro vývojáře najdete na adrese naše [úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-containers-samples).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: bce79aed49b94071b4e83524de2d599fca182256
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632522"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438561"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce se službou Apache Hadoop v HDInsight pomocí SSH
 
@@ -63,7 +63,7 @@ Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH
     Tento příkaz spustí `wordcount` třídu, která je součástí `hadoop-mapreduce-examples.jar` souboru. Používá `/example/data/gutenberg/davinci.txt` dokumentu jako vstup a výstup je uložen na `/example/data/WordCountOutput`.
 
     > [!NOTE]
-    > Další informace o této úlohy MapReduce a ukázková data, najdete v části [použití MapReduce se v clusteru Hadoop v HDInsight](hdinsight-use-mapreduce.md).
+    > Další informace o této úlohy MapReduce a ukázková data, najdete v části [použití MapReduce se v Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md).
 
 2. Úlohy vysílá podrobnosti, jak zpracovávat, a vrátí informace podobné následujícímu textu po dokončení úlohy:
 
@@ -80,7 +80,7 @@ Další informace o použití SSH s HDInsight naleznete v tématu [použití SSH
 
     Tento příkaz zobrazí dva soubory `_SUCCESS` a `part-r-00000`. `part-r-00000` Soubor obsahuje výstup pro tuto úlohu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Některé úlohy mapreduce je možné může rozdělit mezi více výsledky **část. r ###** soubory. Pokud ano, použít ### příponu k určení pořadí souborů.
 
 4. Pokud chcete zobrazit výstup, použijte následující příkaz:
@@ -111,5 +111,5 @@ Obecné informace o úlohy mapreduce je možné v HDInsight:
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)

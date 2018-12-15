@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090260"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409537"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
 
@@ -26,10 +26,10 @@ Jeden nebo více databází Azure Cosmos můžete vytvořit v rámci vašeho ú�
 
 | **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
-|Databáze Azure Cosmos | Databáze | Prostor klíčů | Databáze | Není k dispozici | Není k dispozici |
+|Databáze Azure Cosmos | Databáze | Prostor klíčů | Databáze | Databáze | Není k dispozici |
 
 > [!NOTE]
-> Gremlin a rozhraní API tabulky se automaticky vytvoří účty, při vytvoření prvního grafu nebo tabulce vytvoří i výchozí databáze v rámci svého účtu Azure Cosmos.
+> S účty rozhraní API tabulky když vytvoříte první tabulky vytvoří i výchozí databáze se automaticky vytvoří v rámci svého účtu Azure Cosmos.
 
 ### <a name="operations-on-an-azure-cosmos-database"></a>Operace v databázi Azure Cosmos
 
@@ -49,9 +49,9 @@ Kontejner služby Azure Cosmos je jednotka škálovatelnost pro obě zřízenou 
 
 Při vytváření kontejneru Azure Cosmos, nakonfigurujete propustnost v jednom z těchto režimů:
 
-* **Vyhrazená propustnost** režimu: v kontejneru zřízenou propustnost výhradně pro ně vyhrazené a je zajištěná smluv SLA. Další informace najdete v tématu [jak zřídit propustnost kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+* **Vyhrazená propustnost** režimu: V kontejneru zřízenou propustnost výhradně pro ně vyhrazené a je zajištěná smluv SLA. Další informace najdete v tématu [jak zřídit propustnost kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 
-* **Sdílené zřízená propustnost** režimu: Tyto kontejnery sdílejí zřízená propustnost s dalších kontejnerů ve stejné databázi (s výjimkou těchto kontejnerů, které jsou nakonfigurované s vyhrazenou zřízená propustnost). Jinými slovy zřízená propustnost v databázi se sdílí mezi "sdílené" kontejnery. Další informace najdete v tématu [konfigurace zřízenou propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
+* **Sdílené zřízená propustnost** režimu: Tyto kontejnery sdílejí zřízená propustnost pomocí dalších kontejnerů ve stejné databázi (s výjimkou těchto kontejnerů, které jsou nakonfigurované s vyhrazenou zřízená propustnost). Jinými slovy zřízená propustnost v databázi se sdílí mezi "sdílené" kontejnery. Další informace najdete v tématu [konfigurace zřízenou propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
 Kontejner služby Azure Cosmos můžete Elasticky škálovat, zda vytvořit kontejnery s oběma "sdílené" nebo "vyhrazených" zřízené propustnosti režimy.
 
@@ -69,7 +69,7 @@ Kontejner služby Azure Cosmos je specializovaný do entity specifické pro rozh
 
 | **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
-|Kontejner Azure Cosmos | Kontejner | Table | Kolekce | Graph | Table |
+|Kontejner Azure Cosmos | Kolekce | Table | Kolekce | Graph | Table |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Vlastnosti kontejneru Azure Cosmos
 
@@ -105,7 +105,7 @@ V závislosti na výběru rozhraní API položka Azure Cosmos může představov
 
 | **Cosmos entity** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos položky | Položka | Řádek | Dokument | Uzlů nebo hran | Položka |
+|Azure Cosmos položky | Dokument | Řádek | Dokument | Uzlů nebo hran | Položka |
 
 ### <a name="properties-of-an-item"></a>Vlastnosti položky
 

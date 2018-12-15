@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636879"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436921"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Principy digitální dvojče objektové modely a Prostorové řady grafu
 
@@ -48,11 +48,11 @@ Další kategorie objekty jsou:
 - **Role** jsou sady oprávnění přiřazená k uživatelům a zařízením v prostorový graf, například `Space Administrator`, `User Administrator`, a `Device Administrator`.
 - **Přiřazení rolí** se přidružení mezi role a objekt v prostorových grafu. Například uživatel nebo instanční objekt služby můžete udělit oprávnění ke správě mezeru prostorových grafu.
 - **Úložiště klíčů zabezpečení** poskytnutí klíčů zabezpečení pro všechna zařízení v hierarchii v rámci dané místo objektu a umožňuje zabezpečeně komunikovat se službou digitální dvojče zařízení.
-- **Uživatelem definované funkce** (UDF) povolit telemetrii přizpůsobitelné senzor zpracování v rámci prostorový graf. Například můžete uživatelem definovanou FUNKCI: 
-    - Nastavte hodnotu senzoru. 
-    - Provést vlastní logiku podle údajů snímačů přes a nastavte výstup na znak. 
-    - Metadata se připojte k mezerou. 
-    - Odesílání oznámení, pokud předem definované podmínky jsou splněny. Uživatelem definovanými funkcemi v současné době je možné psát v jazyce JavaScript.
+- **Uživatelem definované funkce** (UDF) povolit telemetrii přizpůsobitelné senzor zpracování v rámci prostorový graf. Například můžete uživatelem definovanou FUNKCI:
+  - Nastavte hodnotu senzoru.
+  - Provést vlastní logiku podle údajů snímačů přes a nastavte výstup na znak.
+  - Metadata se připojte k mezerou.
+  - Odesílání oznámení, pokud předem definované podmínky jsou splněny. Uživatelem definovanými funkcemi v současné době je možné psát v jazyce JavaScript.
 - **Procesy pro hledání shody** jsou objekty, které určují, které UDF jsou spouštěny pro danou telemetrické zprávy.
 - **Koncové body** jsou umístění, ve kterém zprávy telemetrie a událostí digitálním Dvojčata je možné směrovat, například `Event Hub`, `Service Bus`, a `Event Grid`.
 
@@ -103,9 +103,9 @@ Všechna volání rozhraní API musí být ověřeny pomocí [OAuth](https://doc
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o připojení zařízení a jak odesílat telemetrické zprávy do digitální dvojče [Azure digitální dvojče zařízení připojení a telemetrie příchozího přenosu dat](concepts-device-ingress.md).
+- Další informace o připojení zařízení a jak odesílat telemetrické zprávy do digitální dvojče [Azure digitální dvojče zařízení připojení a telemetrie příchozího přenosu dat](concepts-device-ingress.md).
 
-* Další informace o omezení rozhraní API pro správu a omezení, přečtěte si [Azure digitální dvojče API management a omezení](concepts-service-limits.md).
+- Další informace o omezení rozhraní API pro správu a omezení, přečtěte si [Azure digitální dvojče API management a omezení](concepts-service-limits.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-spatial-graph-building.png

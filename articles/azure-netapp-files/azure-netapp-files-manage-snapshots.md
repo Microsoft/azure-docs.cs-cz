@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 48cb88b9815ba723d93c18caf63f33b50eea850c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009193"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53412927"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Spravovat snímky pomocí NetApp soubory Azure
 Soubory NetApp Azure můžete použít k vytvoření snímku na vyžádání pro svazek nebo obnovit ze snímku do nového svazku.
@@ -42,30 +42,34 @@ V současné době můžete obnovit snímek pouze do nového svazku.
     ![Obnovení snímku do nového svazku](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. V okně Nový svazek zadejte informace pro nový svazek:  
-    * **Jméno**   
+    * **Název**   
         Zadejte název svazku, který vytváříte.  
         
-        Název musí být jedinečný v rámci skupiny prostředků. Musí být minimálně 3 znaky.  Může použít jakékoli alfanumerické znaky.
+        Název musí být v rámci skupiny prostředků jedinečný. Musí být alespoň tři znaky.  Může používat libovolné alfanumerické znaky.
 
     * **Cesta k souboru**     
-        Zadejte cestu k souboru, který se použije k vytvoření cesty export pro nový svazek. Cesta pro export slouží k připojení a přístup ke svazku.   
+        Zadejte cestu k souboru, která se použije k vytvoření cesty pro export nového svazku. Cesta pro export slouží pro připojení svazku a přístup k němu.   
         
-        Cíl připojení je koncový bod IP adresy pro službu systému souborů NFS. Není automaticky vygenerován.   
+        Cíl připojení je koncový bod IP adresy služby NFS. Generuje se automaticky.   
         
-        Název cesty souboru může obsahovat písmena, číslice a pomlčky ("-") pouze. Musí být mezi 16 až 40 znaků. 
+        Název cesty k souboru může obsahovat pouze písmena, číslice a pomlčky („-“). Musí být dlouhý 16 až 40 znaků. 
 
     * **Kvóta**  
-        Zadejte velikost logického úložiště, který je přidělen svazku.  
+        Určuje velikost logického úložiště, které je přidělené svazku.  
 
-        **Dostupnou kvótu** pole zobrazuje množství nevyužité místo ve zvolené kapacitu fondu, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.
+        Pole **Dostupná kvóta** zobrazuje množství nevyužitého místa ve zvoleném fondu kapacity, které můžete použít k vytvoření nového svazku. Velikost nového svazku nesmí překročit dostupnou kvótu.
 
     *   **Virtuální síť**  
-        Zadejte virtuální síť Azure (Vnet) ze kterého chcete pro přístup ke svazku. 
-        
-        Virtuální síť, kterou zadáte, musí mít souborů NetApp Azure nakonfigurovaný. Služba soubory Azure NetApp je přístupný pouze z jedné virtuální sítě, která je ve stejném umístění jako svazek.  
+        Zadejte virtuální síť Azure (Vnet), ze které chcete ke svazku přistupovat.  
+        Virtuální síť, kterou zadáte, musí mít podsíť delegovat do služby soubory Azure NetApp. Služba soubory Azure NetApp přístupná pouze ze stejné virtuální síti nebo z virtuální sítě, která je ve stejné oblasti jako svazek prostřednictvím partnerského vztahu virtuální sítě. Svazek se můžete dostat taky z vaší místní sítě prostřednictvím Expressroute. 
 
-    ![Obnovit nový svazek](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
-    
+    * **Podsíť**  
+        Zadejte podsíť, kterou chcete použít pro daný svazek.  
+        Podsítě, které jste zadali, je potřeba delegovat do služby soubory Azure NetApp. Můžete vytvořit novou podsíť tak, že vyberete **vytvořit nový** pod polem podsítě.  
+<!--
+    ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
+-->
+
 5. Klikněte na **OK**.   
     Nový svazek, ke kterému je obnovení snímku se zobrazí v okně svazky.
 

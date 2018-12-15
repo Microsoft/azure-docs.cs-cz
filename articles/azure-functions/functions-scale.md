@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdd0c647021c453095ec4e05c042992011389b9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: b42529df406febc617c778d18d5b420f9c38c59a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975886"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434660"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Hostování a škálování Azure Functions
 
-Spuštění Azure Functions ve dvou různých režimech: plán Consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon, pokud váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód není spuštěný. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.
+Služba Azure Functions se spustí ve dvou různých režimech: Plán consumption a plán služby App Service. Plán Consumption automaticky přiděluje výpočetní výkon, pokud váš kód běží. Vaše aplikace je škálovat na více systémů v případě potřeby pro zpracování zátěže a kapacitu vertikálně snížit, když kód není spuštěný. Nemusíte platit za nečinných virtuálních počítačů nebo záložní kapacita předem.
 
 > [!NOTE]  
 > [Hostování v Linuxu](functions-create-first-azure-function-azure-cli-linux.md) je momentálně dostupná jenom na plán služby App Service.
@@ -68,7 +68,7 @@ Vezměte v úvahu plán služby App Service v těchto případech:
 
 Virtuální počítač ze počet spuštění, čas spuštění a paměť použitá odděluje obě části. V důsledku toho nebude platit víc než náklady na instance virtuálních počítačů, kterou přidělíte. Podrobnosti o tom, jak funguje plán služby App Service najdete v tématu [podrobný přehled plánů služby Azure App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
-S plánem služby App Service můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Také můžete škálovat výběrem jiný plán služby App Service. Další informace najdete v tématu [vertikální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
+S plánem služby App Service můžete ručně škálovat přidáváním dalších instancí virtuálních počítačů, nebo můžete povolit automatické škálování. Další informace najdete v tématu [ruční nebo automatické škálování počtu instancí](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Také můžete škálovat výběrem jiný plán služby App Service. Další informace najdete v tématu [vertikální navýšení kapacity aplikace v Azure](../app-service/web-sites-scale.md). 
 
 Při spuštění funkce jazyka JavaScript na plán služby App Service, měli byste zvolit plán, který má menší počet virtuálních procesorů. Další informace najdete v tématu [zvolte plány služby App Service jednojádrový](functions-reference-node.md#considerations-for-javascript-functions).  
 

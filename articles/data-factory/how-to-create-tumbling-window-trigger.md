@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 4f124be9ef2247ab91d1e968b4533297ee8dba02
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868324"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437244"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, který spouští kanál na aktivační událost pro přeskakující okno
 Tento článek popisuje kroky k vytvoření, spuštění a monitorování přeskakující okno. Obecné informace o aktivačních událostech a podporovaných typů najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -84,9 +84,9 @@ Následující tabulka obsahuje přehled hlavních elementů JSON, které jsou s
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Například pokud **interval** 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, což může být v minulosti. První interval aktivační událost (**startTime**, **startTime** + **interval**). | DateTime | Hodnota data a času. | Ano |
 | **endTime**| Poslední výskyt, což může být v minulosti. | DateTime | Hodnota data a času. | Ano |
-| **delay** | Množství času zpoždění spuštění zpracování dat pro okno. Spuštění kanálu je spuštěna za očekávanou dobu spuštění plus velikost **zpoždění**. **Zpoždění** definuje, jak dlouho čekat aktivační událost po vypršení platnosti čase před aktivací nové spuštění. **Zpoždění** nemění v okně **startTime**. Například **zpoždění** hodnotu 00:10:00 znamená trvat 10 minut. | Časový interval  | Čas, kdy výchozí hodnota je 00:00:00. | Ne |
+| **delay** | Množství času zpoždění spuštění zpracování dat pro okno. Spuštění kanálu je spuštěna za očekávanou dobu spuštění plus velikost **zpoždění**. **Zpoždění** definuje, jak dlouho čekat aktivační událost po vypršení platnosti čase před aktivací nové spuštění. **Zpoždění** nemění v okně **startTime**. Například **zpoždění** hodnotu 00:10:00 znamená trvat 10 minut. | Časový interval<br/>(hh: mm:)  | Časový interval hodnotu, pokud výchozí hodnota je 00:00:00. | Ne |
 | **maxConcurrency** | Počet spuštění souběžných aktivační události, které se aktivuje například pro windows, které jsou připravené. Například výplň pozadí každou hodinu spouštění pro výsledky včera v systému windows 24. Pokud **maxConcurrency** = 10, aktivační události jsou vyvolávány jen u prvních 10 windows (00:00-01:00 - 09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se spuštění aktivační události se aktivuje například pro dalších 10 systému windows (10:00-11:00 – 19:00 – 20:00). Pokračujte v tomto příkladu z **maxConcurrency** = 10, pokud existují 10 windows budete mít, existují 10 spuštění celkový kanálu. Pokud je pouze 1 okno připravený, je pouze 1 spuštění kanálu. | Integer | Celé číslo mezi 1 až 50 znaků. | Ano |
-| **retryPolicy: počet** | Počet opakování před spuštění kanálu je označena jako "Se nezdařilo."  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádná opakování). | Ne |
+| **retryPolicy: Počet** | Počet opakování před spuštění kanálu je označena jako "Se nezdařilo."  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádná opakování). | Ne |
 | **retryPolicy: intervalInSeconds** | Zpoždění mezi opakovanými pokusy zadávají v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | Ne |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart a WindowEnd systémové proměnné

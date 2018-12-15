@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6e31062e3965c9ed5a0b24e822f0ec14234cec1c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012483"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435068"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použijte Java UDF Apache Hive v HDInsight
 
@@ -213,7 +213,7 @@ Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkc
     ```
 
     > [!NOTE]
-    > Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro cluster. Pokud váš cluster používá místo toho Data Lake Store, změňte `wasb:///` hodnota, která se `adl:///`.
+    > Tento příklad předpokládá, že Azure Storage je výchozí úložiště pro cluster. Pokud váš cluster používá úložiště Data Lake místo toho, `wasb:///` hodnota, která se `adl:///`.
 
 3. UDF použijte k převodu hodnoty získané z tabulky na řetězce na malá písmena.
 
@@ -240,6 +240,6 @@ Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkc
 
 ## <a name="next-steps"></a>Další postup
 
-Další způsoby, jak pracovat s Hive, najdete v části [použití Hivu se službou HDInsight](hdinsight-use-hive.md).
+Další způsoby, jak pracovat s Hive, najdete v části [použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md).
 
-Další informace o funkcích Hive User-Defined, naleznete v tématu [Hive operátory a uživatelsky definovaných funkcí](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) část wiki Hive na webu apache.org.
+Další informace o funkcích Hive User-Defined, naleznete v tématu [operátory Apache Hive a uživatelsky definovaných funkcí](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) část wiki Hive na webu apache.org.

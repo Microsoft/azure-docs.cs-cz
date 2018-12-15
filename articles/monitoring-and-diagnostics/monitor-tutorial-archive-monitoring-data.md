@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: eb99718fb2b39ded01abb075990fccb25a482cab
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 512f9346654c68e568f5ba60b9491df8dffe1ad2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386125"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434593"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -144,7 +144,7 @@ Data monitorování z vašich virtuálních počítačů se teď přenášejí d
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>Zobrazení dat monitorování v účtu úložiště
 
 > [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 
+> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
 >
 > 
 

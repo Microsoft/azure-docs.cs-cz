@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření znalostní báze – REST, Java – QnA Maker'
+title: 'Rychlý start: Vytvoření znalostní báze knowledge base - REST, Javy – QnA Maker'
 titlesuffix: Azure Cognitive Services
 description: Tento rychlý start založený na REST a Javě vás provede procesem vytvoření ukázkové znalostní báze služby QnA Maker prostřednictvím kódu programu. Tato znalostní báze se zobrazí na řídicím panelu Azure účtu rozhraní API služeb Cognitive Services.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: diberry
-ms.openlocfilehash: 47a900f6877355fb45481d7b04052387ab3619cf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 87ba02b6a840d416d54e3129b5720b4f59820eb8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229590"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413434"
 ---
-# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze ve službě QnA Maker pomocí Javy
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Vytvoření znalostní báze v jazyce Java pomocí nástroje QnA Maker
 
-Tento rychlý start vás provede vytvořením ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API. 
+Tento rychlý start vás provede vytvořením ukázkové znalostní báze služby QnA Maker pomocí kódu programu. Služba QnA Maker automaticky extrahuje otázky a odpovědi z částečně strukturovaného obsahu, jako jsou třeba časté otázky, ze [zdrojů dat](../Concepts/data-sources-supported.md). Model pro znalostní bázi je definovaný v kódu ve formátu JSON poslaném v těle požadavku rozhraní API.
 
-[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+[!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
-## <a name="create-a-knowledge-base-file"></a>Vytvoření souboru pro znalostní bázi 
+## <a name="create-a-knowledge-base-file"></a>Vytvoření souboru pro znalostní bázi
 
 Vytvořte soubor s názvem `CreateKB.java`.
 
@@ -34,7 +34,7 @@ Na začátek souboru `CreateKB.java` přidejte následující řádky na přidá
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=1-5 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Přidání požadovaných konstant
-Za předcházející požadované závislosti přidejte do třídy `CreateKB` požadované konstanty pro přístup ke službě QnA Maker. Nahraďte hodnotu proměnné `subscriptionKey` vlastním klíčem služby QnA Maker. Na konec třídy není potřeba přidávat ukončovací složenou závorku, ta je v konečném fragmentu kódu na konci tohoto rychlého startu. 
+Za předcházející požadované závislosti přidejte do třídy `CreateKB` požadované konstanty pro přístup ke službě QnA Maker. Nahraďte hodnotu proměnné `subscriptionKey` vlastním klíčem služby QnA Maker. Na konec třídy není potřeba přidávat ukončovací složenou závorku, ta je v konečném fragmentu kódu na konci tohoto rychlého startu.
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=26-34 "Add the required constants")]
 
@@ -48,7 +48,7 @@ Za konstanty přidejte do třídy `CreateKB` následující třídy a funkce pro
 
 Dále do třídy `CreateKB` přidejte následující podpůrné funkce.
 
-1. Přidejte následující funkci pro tisk souboru JSON v čitelném formátu:    
+1. Přidejte následující funkci pro tisk souboru JSON v čitelném formátu:
 
     [!code-java[Add the PrettyPrint function](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=82-87 "Add the KB model definition classes")]
 
@@ -56,7 +56,7 @@ Dále do třídy `CreateKB` přidejte následující podpůrné funkce.
 
     [!code-java[Add class to manage the HTTP response](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=89-97 "Add class to manage the HTTP response")]
 
-3. Přidejte následující metodu pro vytvoření požadavku POST na rozhraní API služby QnA Maker. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování. 
+3. Přidejte následující metodu pro vytvoření požadavku POST na rozhraní API služby QnA Maker. `Ocp-Apim-Subscription-Key` je klíč služby QnA Maker používaný k ověřování.
 
     [!code-java[Add POST method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=99-121 "Add POST method")]
 
@@ -65,11 +65,11 @@ Dále do třídy `CreateKB` přidejte následující podpůrné funkce.
     [!code-java[Add GET method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=123-137 "Add GET method")]
 
 ## <a name="add-a-method-to-create-the-kb"></a>Přidání metody pro vytvoření znalostní báze
-Přidejte následující metodu pro vytvoření znalostní báze zavoláním metody Post. 
+Přidejte následující metodu pro vytvoření znalostní báze zavoláním metody Post.
 
 [!code-java[Add CreateKB method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=139-144 "Add CreateKB method")]
 
-Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila. 
+Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje i ID operace. Toto ID operace použijte ke zjištění toho, jestli se znalostí báze úspěšně vytvořila.
 
 ```JSON
 {
@@ -82,11 +82,11 @@ Toto volání rozhraní API vrátí odpověď ve formátu JSON, která obsahuje 
 ```
 
 ## <a name="add-a-method-to-get-status"></a>Přidání metody pro získání stavu
-Přidejte následující metodu pro kontrolu stavu vytváření. 
+Přidejte následující metodu pro kontrolu stavu vytváření.
 
 [!code-java[Add GetStatus method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=146-150 "Add GetStatus method")]
 
-Volání opakujte, dokud neskočí úspěchem nebo neúspěchem: 
+Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 
 ```JSON
 {
@@ -100,10 +100,10 @@ Volání opakujte, dokud neskočí úspěchem nebo neúspěchem:
 ```
 
 ## <a name="add-a-main-method"></a>Přidání metody main
-Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** vytváření, které se pak použije jako část trasy v požadavku GET. **Smyčka `while` kontroluje stav, dokud není dokončený. 
+Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. V poli hlavičky odpovědi POST **Location** se vrátí **ID operace** vytváření, které se pak použije jako část trasy v požadavku GET. **Smyčka `while` kontroluje stav, dokud není dokončený.
 
 [!code-java[Add main method](~/samples-qnamaker-java/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java?range=152-191 "Add main method")]
- 
+
 ## <a name="compile-and-run-the-program"></a>Kompilace a spuštění programu
 
 1. Ujistěte se, že adresář `./libs` obsahuje knihovnu gson. Na příkazovém řádku zkompilujte soubor `CreateKB.java`:
@@ -118,11 +118,11 @@ Metoda main vytvoří znalostní bázi a pak se dotazuje na stav. V poli hlavič
     java -cp ",;libs/*" CreateKB
     ```
 
-Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices).    
+Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices).
 
-[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

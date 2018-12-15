@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 988d61d6db867c33a2dd9998d675f40f49e71332
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: e2e6742fb3eda0523c7333451e836beb069e57ca
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341741"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410359"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Zálohování databází systému SQL Server do Azure
 
@@ -298,7 +298,7 @@ Konfigurace ochrany pro SQL database:
 
     ![Vyberte konfiguraci zálohování](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
-    Služba Azure Backup se zobrazí všechny instance systému SQL Server pomocí samostatné databáze a skupiny dostupnosti AlwaysOn SQL serveru. Chcete-li zobrazit samostatné databáze v instanci systému SQL Server, vyberte dvojitou šipku nalevo od názvu instance. Podobným způsobem vyberte dvojitou šipku nalevo od skupiny dostupnosti Always On zobrazíte seznam databází. Na následujícím obrázku je příklad samostatná a skupiny dostupnosti Always On.
+    Služba Azure Backup se zobrazí všechny instance systému SQL Server pomocí samostatné databáze a SQL Server vždy na skupiny dostupnosti. Chcete-li zobrazit samostatné databáze v instanci systému SQL Server, vyberte dvojitou šipku nalevo od názvu instance. Podobným způsobem vyberte dvojitou šipku nalevo od skupiny vždy na dostupnosti zobrazíte seznam databází. Na následujícím obrázku je příklad samostatná instance a vždy na dostupnosti skupiny.
 
       ![Zobrazení všech instancí systému SQL Server u samostatných databází](./media/backup-azure-sql-database/list-of-sql-databases.png)
 
@@ -312,7 +312,7 @@ Konfigurace ochrany pro SQL database:
     > K optimalizaci zálohování zatížení, Azure Backup rozdělí rozsáhlé úlohy zálohování do několika dávek. Maximální počet databází ve jediná úloha zálohování je 50.
     >
 
-      Alternativně můžete povolit [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) celý instance nebo skupiny dostupnosti Always On tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT**  sloupce. [Automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
+      Alternativně můžete povolit [automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) celý instance nebo skupina vždy na dostupnosti tak, že vyberete **ON** možnost v rozevíracím seznamu příslušné v **AUTOPROTECT**  sloupce. [Automatickou ochranu](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) funkci nejen umožňuje ochranu pro všechny existující databáze najednou, ale také automaticky chrání jakýchkoli nových databází, které budou přidány do této instance nebo skupina dostupnosti v budoucnosti.  
 
       ![Povolit automatické ochrany na skupiny dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -347,9 +347,7 @@ Konfigurace ochrany pro SQL database:
 
 ## <a name="auto-protect-sql-server-in-azure-vm"></a>Automatická ochrana systému SQL Server na virtuálním počítači Azure  
 
-Automatická ochrana je funkce, která umožňuje automaticky chránit všechny existující databáze, jakož i budoucích databází, které přidáte v samostatné instanci SQL serveru nebo skupinu dostupnosti AlwaysOn SQL serveru.
-
-V případě, že instance nebo skupiny dostupnosti již některé z jeho databází chráněn, je možné zapnout **ON** auto-protect možnost. V takovém případě zásady zálohování takto definována pouze budou platit do nechráněných databází během už chráněných databází i nadále chránit jejich odpovídajících zásadám.
+Automatická ochrana umožňuje automaticky chránit všechny existující databáze a databáze, které můžete přidat v budoucnosti do samostatná instance SQL serveru nebo SQL Server vždy na skupinu dostupnosti. Zapnutí **ON** Automatická ochrana a výběr zásady zálohování bude platit pro nově chráněných databází, existující chráněných databází bude nadále používat předchozí zásady.
 
 ![Povolit automatické ochrany na skupiny dostupnosti Always On](./media/backup-azure-sql-database/enable-auto-protection.png)
 
@@ -479,7 +477,7 @@ Můžete také vybrat konkrétní úplnou nebo rozdílovou zálohu k obnovení p
     - **Přepsat databázi**: Obnovení dat na stejnou instanci systému SQL Server jako původní zdroj. Účinek této možnosti je přepisovat původní databázi.
 
     > [!Important]
-    > Pokud vybraná databáze patří do skupiny dostupnosti Always On, SQL Server nepovoluje databáze, kterou chcete přepsat. V takovém případě pouze **alternativního umístění** je povolená možnost.
+    > Pokud vybraná databáze patří do skupiny vždy na dostupnost, SQL Server nepovoluje databáze, kterou chcete přepsat. V takovém případě pouze **alternativního umístění** je povolená možnost.
     >
 
     ![Obnovení nabídky konfigurace](./media/backup-azure-sql-database/restore-restore-configuration-menu.png)

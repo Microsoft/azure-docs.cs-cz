@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6b3299bc93910d1211b0188bdb6639b19302be3c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014451"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437142"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -124,6 +124,8 @@ Je známo, že následující nastavení zásad v konfliktu s možností k reset
    * NoLockScreen je nastaveno na povoleno nebo 1
    * EnableLostMode nastavená na zařízení
    * Explorer.exe nahradí za vlastní prostředí
+
+Tato funkce nefunguje pro sítí pomocí protokolu 802. 1 x ověřování sítě nasazené a možnost "Provádět bezprostředně před přihlášením uživatele". Sítí pomocí protokolu 802. 1 x ověřování sítě nasadit se doporučuje použití ověřování počítače pro tuto funkci povolil.
 
 Pokud jsou vaše počítače s Windows 10 za proxy serverem nebo bránou firewall, měl by být povolený provoz HTTPS (port 443) na adresu passwordreset.microsoftonline.com and ajax.aspnetcdn.com.
 

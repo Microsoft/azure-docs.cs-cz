@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73f4aeb77124c21a07771ab080b88a56231e50da
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 34d084bc4115d0abf8f57c576c16330611f3a21b
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185711"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409866"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
@@ -35,7 +35,6 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 > Doporučujeme vytvořit nový pracovní prostor používat Azure Machine Learning Compute. Může se vzdálená stát, které uživatelům pokusu o vytvoření aplikace Azure Machine Learning Compute z existujícího pracovního prostoru může zobrazit chyba. By měla fungovat to neovlivní existující výpočetních prostředků ve vašem pracovním prostoru.
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning sady SDK pro Python v1.0.2
-
 + **Rozbíjející změny v**
   + V této verzi jsme se odebrání podpory pro vytvoření virtuálního počítače ze služby Azure Machine Learning. Stále můžete připojit existující cloud virtuálního počítače nebo na vzdáleném místním serverem. 
   + Podpora pro BatchAI, které by měl být podporovány prostřednictvím Azure Machine Learning Compute nyní také odebíráme.
@@ -56,7 +55,6 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Sada SDK v0.5.2 pro přípravu dat Azure Machine Learning
-
 + **Rozbíjející změny v** 
   * `SummaryFunction.N` byla přejmenována na `SummaryFunction.Count`.
   
@@ -66,6 +64,9 @@ Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure
   * to_spark_dataframe() už havaruje při Spark využívá Kryo serializace
   * Počet hodnot inspektoru teď můžete zobrazit více než 1 000 jedinečných hodnot
   * Náhodné rozdělení už selže, pokud původní tok dat nemá název  
+
++ **Další informace**
+  * [Sada SDK pro přípravu dat Azure Machine Learning](https://aka.ms/data-prep-sdk)
 
 ### <a name="docs-and-notebooks"></a>Dokumentace a poznámkové bloky
 + Kanály ML

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dc0421baf1e5cb19be925072b5fffb989e23a3b
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 9bdd3060219907f95454bfc9248572f796afd72e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979246"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437601"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrace služby Azure Active Directory s Azure Kubernetes Service
 
@@ -149,7 +149,7 @@ Nejprve [az aks get-credentials] [ az-aks-get-credentials] příkazů `--admin` 
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-V dalším kroku použijte následující manifest k vytvoření ClusterRoleBinding pro účet služby Azure AD. Aktualizujte uživatelské jméno s jedním z vašeho tenanta Azure AD. V tomto příkladu poskytuje úplný přístup k účtu na všechny obory názvů clusteru:
+V dalším kroku použijte následující manifest k vytvoření ClusterRoleBinding pro účet služby Azure AD. V tomto příkladu poskytuje úplný přístup k účtu na všechny obory názvů clusteru. Vytvoření souboru, například *rbac-aad-user.yaml*a vložte následující obsah. Jedním z vašeho tenanta Azure AD, aktualizujte uživatelské jméno:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -166,7 +166,13 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Vazba role můžete také vytvořit pro všechny členy skupiny Azure AD. Skupiny Azure AD jsou určeny pomocí ID objektu skupiny, jak je znázorněno v následujícím příkladu:
+Použít pomocí vazby [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
+
+```console
+kubectl apply -f rbac-aad-user.yaml
+```
+
+Vazba role můžete také vytvořit pro všechny členy skupiny Azure AD. Skupiny Azure AD jsou určeny pomocí ID objektu skupiny, jak je znázorněno v následujícím příkladu. Vytvoření souboru, například *rbac-aad-group.yaml*a vložte následující obsah. Aktualizace ID objektu skupiny s jedním z vašeho tenanta Azure AD:
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -181,6 +187,12 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
    name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
+```
+
+Použít pomocí vazby [použití kubectl] [ kubectl-apply] příkaz, jak je znázorněno v následujícím příkladu:
+
+```console
+kubectl apply -f rbac-aad-group.yaml
 ```
 
 Další informace o zabezpečení clusteru Kubernetes pomocí RBAC najdete v tématu [pomocí RBAC se podařilo Autorizovat][rbac-authorization].
@@ -221,6 +233,7 @@ Další informace o zabezpečení clusterů Kubernetes pomocí RBAC s [pomocí R
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [rbac-authorization]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create

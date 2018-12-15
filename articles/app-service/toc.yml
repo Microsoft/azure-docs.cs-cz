@@ -134,15 +134,15 @@ items:
     - name: Ověřování uživatelů
       items:
       - name: Ověřování pomocí Azure AD
-        href: app-service-mobile-how-to-configure-active-directory-authentication.md
+        href: configure-authentication-provider-aad.md
       - name: Ověřování pomocí Facebooku
-        href: app-service-mobile-how-to-configure-facebook-authentication.md
+        href: configure-authentication-provider-facebook.md
       - name: Ověřování pomocí Googlu
-        href: app-service-mobile-how-to-configure-google-authentication.md
+        href: configure-authentication-provider-google.md
       - name: Ověřování pomocí účtu Microsoft
-        href: app-service-mobile-how-to-configure-microsoft-authentication.md
+        href: configure-authentication-provider-microsoft.md
       - name: Ověřování pomocí Twitteru
-        href: app-service-mobile-how-to-configure-twitter-authentication.md
+        href: configure-authentication-provider-twitter.md
     - name: Pokročilé ověřování
       href: app-service-authentication-how-to.md
     - name: Omezení IP adres
@@ -162,7 +162,7 @@ items:
     - name: Konfigurace úrovně PremiumV2
       href: app-service-configure-premium-tier.md
     - name: Horizontální navýšení kapacity na několik instancí
-      href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+      href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
     - name: Hostování s vysokou hustotou
       href: app-service-high-density-hosting.md
   - name: Monitorování aplikace
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: Adresa SSL
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 5a3af3678496bb850ed99397f8d6bb186ce92677
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2a0dc03143688e1aadb0666242d44ab06763f04b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53382792"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437873"

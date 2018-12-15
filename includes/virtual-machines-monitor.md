@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 43615caf00bec79c1f87736b6ca0d2b74bfb95d7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a65dbbcfddf33692ee179755b4306019ffa8863e
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857268"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399825"
 ---
 Můžete využít výhod množství příležitostí k monitorování virtuálních počítačů shromažďování, zobrazení a analýza diagnostických a protokolovat data. Provést jednoduché [monitorování](../articles/azure-monitor/overview.md) vašeho virtuálního počítače, můžete použít obrazovka s přehledem pro virtuální počítač na webu Azure Portal. Můžete použít [rozšíření](../articles/virtual-machines/windows/extensions-features.md) ke konfiguraci diagnostiky na virtuálních počítačích shromažďovat další data metriky. Můžete použít také pokročilejší možnosti monitorování, jako například [Application Insights](../articles/application-insights/app-insights-overview.md) a [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -31,7 +31,7 @@ Můžete vytvořit a monitorovat kolekce [diagnostická data](https://docs.micro
 
 ## <a name="alerts"></a>Výstrahy
 
-Můžete vytvořit [výstrahy](../articles/monitoring-and-diagnostics/monitoring-overview-alerts.md) podle konkrétních metrik výkonu. Příklady problémy, se kterými můžete dostat upozornění: když průměrné využití procesoru překročí určitou prahovou hodnotu nebo volné místo na disku klesne pod určitou dobu. Upozornění se dá nakonfigurovat v [webu Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)s použitím [prostředí Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), nebo [rozhraní příkazového řádku Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
+Můžete vytvořit [výstrahy](../articles/azure-monitor/platform/alerts-overview.md) podle konkrétních metrik výkonu. Příklady problémy, se kterými můžete dostat upozornění: když průměrné využití procesoru překročí určitou prahovou hodnotu nebo volné místo na disku klesne pod určitou dobu. Upozornění se dá nakonfigurovat v [webu Azure portal](../articles/monitoring-and-diagnostics/insights-alerts-portal.md)s použitím [prostředí Azure PowerShell](../articles/monitoring-and-diagnostics/insights-alerts-powershell.md), nebo [rozhraní příkazového řádku Azure](../articles/monitoring-and-diagnostics/insights-alerts-command-line-interface.md).
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -50,7 +50,7 @@ Některé z akcí, které vám pomůžou s protokolu aktivit patří:
 - Vytvoření [výstrahu pro událost protokolu aktivit](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 - [Stream do centra událostí](../articles/monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 - Analyzovat pomocí Power BI [balíček obsahu Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
-- [Uložte ho do účtu úložiště](../articles/monitoring-and-diagnostics/monitoring-archive-activity-log.md) pro archivaci nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech) pomocí profilu protokolu.
+- [Uložte ho do účtu úložiště](../articles/azure-monitor/platform/archive-activity-log.md) pro archivaci nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech) pomocí profilu protokolu.
 
 Data protokolu aktivit se můžete dostat taky pomocí [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor), nebo [monitorování rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/).
 
@@ -58,7 +58,7 @@ Data protokolu aktivit se můžete dostat taky pomocí [prostředí Azure PowerS
 
 Některé z akcí, které vám pomůžou s diagnostických protokolů patří:
 
-- [Uložit do účtu úložiště](../articles/monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
+- [Uložit do účtu úložiště](../articles/azure-monitor/platform/archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
 - [Stream do služby Event Hubs](../articles/monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
 - Analyzovat pomocí [OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 

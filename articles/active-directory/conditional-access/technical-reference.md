@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2018
+ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 2f9075cef671128cacc37f16e8bf29bf0f60401d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619635"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408574"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -179,22 +179,29 @@ Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplik
 |---|---|---|
 |Vzdálené aplikace Azure|Služba vzdálené aplikace Azure|Windows 10, Windows 8.1, Windows 7, iOS, Android a Mac OS X|
 |Aplikace Dynamics CRM|Dynamics CRM|Windows 10, Windows 8.1, iOS a Android|
-|E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)|Office 365 Exchange Online|Windows 10|
+|E-mailu, kalendáři/uživatelé aplikace, aplikace Outlook 2016, Outlook 2013 |Office 365 Exchange Online|Windows 10|
 |Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány. |Všechny služby app service pro Moje aplikace|Android a iOS|
 |Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
-|Synchronizovat klientských aplikací Office 2016, Office 2013 (s moderním ověřováním), OneDrive (viz [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
-|Aplikace pro Office 2016, Office univerzální aplikace, Office 2013 (s moderním ověřováním), synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint|Office 365 SharePoint Online|Windows 10|
+|Synchronizačního klienta Onedrivu aplikací, Office 2013, Office 2016 (viz [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Aplikace pro Office 2016, Office univerzální aplikace, Office 2013, synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint|Office 365 SharePoint Online|Windows 10|
 |Office 2016 pro macOS (Word, Excel, PowerPoint, OneNote pouze). OneDrive pro firmy podpora do budoucna plánujeme přidat|Office 365 SharePoint Online|Mac OS X|
 |Mobilní aplikace Office|Office 365 SharePoint Online|Android, iOS|
 |Aplikace Yammer pro Office|Office 365 Yammeru|Windows 10, iOS, Android|
 |Outlook 2016 (Office pro macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním)|Office 365 Exchange Online|Windows 8.1, Windows 7|
+|Outlook 2016, Outlook 2013, Skype pro firmy|Office 365 Exchange Online|Windows 8.1, Windows 7|
 |Mobilní aplikace Outlook|Office 365 Exchange Online|Android, iOS|
 |Aplikace Power BI|Služba Power BI|Windows 10, Windows 8.1, Windows 7, Android a iOS|
 |Skype pro firmy|Office 365 Exchange Online|Android, IOS |
 |Aplikace Azure DevOps|Azure DevOps|Windows 10, Windows 8.1, Windows 7, iOS a Android|
 
 
+## <a name="support-for-legacy-authentication"></a>Podpora pro starší verze ověřování
+
+Výběrem **ostatní klienty**, určíte podmínku, která má vliv na aplikace, které používají základní ověřování pomocí protokolů e-mailu, jako jsou IMAP, MAPI, POP, SMTP a starší aplikace Office, které nepoužívají moderní ověřování.  
+
+![Ostatní klienti](./media/technical-reference/11.png)
+
+Další informace najdete v tématu [klientské aplikace](conditions.md#client-apps).
 
 ## <a name="approved-client-app-requirement"></a>Požadavek schválené klientské aplikace 
 
@@ -222,7 +229,7 @@ Toto nastavení platí pro následující klientské aplikace:
 - Microsoft StaffHub
 - Microsoft Teams
 - Microsoft Visio
-- Aplikace Microsoft Word
+- Microsoft Word
 - Microsoft To-Do
 - Microsoft Stream
 - Microsoft Edge

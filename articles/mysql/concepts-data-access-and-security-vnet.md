@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f18f52fc409df769d164607a128caaf02ead5e4b
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054845"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437965"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for MySQL
 
@@ -31,13 +31,13 @@ Chcete-li vytvořit pravidlo virtuální sítě, nejprve musí být [virtuální
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
-**Virtuální síť:** může mít virtuální sítě přidružený k vašemu předplatnému Azure.
+**Virtuální síť:** Může mít virtuální sítě přidružený k vašemu předplatnému Azure.
 
-**Podsíť:** virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), ke kterým máte jsou přidruženy k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlech. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k vaší virtuální sítě, pokud konfiguraci zabezpečení pro povolení přístupu.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), ke kterým máte jsou přidruženy k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlech. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k vaší virtuální sítě, pokud konfiguraci zabezpečení pro povolení přístupu.
 
-**Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. V tomto článku jsme se zajímat název typu **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem. Tuto značku služby platí také pro Azure Database for MySQL a PostgreSQL služby. Je důležité při použití zásad skupiny pamatujte **Microsoft.Sql** značka služby do koncového bodu služby virtuální sítě nakonfiguruje provoz koncový bod služby pro Azure SQL Database, Azure Database for MySQL a – Azure Database for postgresql – servery v podsíti. 
+**Koncový bod pro služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. V tomto článku jsme se zajímat název typu **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem. Tuto značku služby platí také pro Azure Database for MySQL a PostgreSQL služby. Je důležité při použití zásad skupiny pamatujte **Microsoft.Sql** značka služby do koncového bodu služby virtuální sítě nakonfiguruje provoz koncový bod služby pro Azure SQL Database, Azure Database for MySQL a – Azure Database for postgresql – servery v podsíti. 
 
-**Pravidlo virtuální sítě:** pravidlo virtuální sítě pro váš server Azure Database for MySQL je podsíť, která je uvedena v seznamu řízení přístupu (ACL) z vašeho serveru Azure Database for MySQL. Chcete-li se v seznamu ACL pro váš server Azure Database for MySQL, musí obsahovat podsíť **Microsoft.Sql** název typu.
+**Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro váš server Azure Database for MySQL je podsíť, která je uvedena v seznamu řízení přístupu (ACL) vašeho serveru Azure Database for MySQL. Chcete-li se v seznamu ACL pro váš server Azure Database for MySQL, musí obsahovat podsíť **Microsoft.Sql** název typu.
 
 Pravidlo virtuální sítě sdělí váš server Azure Database for MySQL tak, aby přijímal komunikaci od každý uzel, který je v podsíti.
 
@@ -91,8 +91,8 @@ Každé pravidlo virtuální sítě se vztahuje k vaší celý server Azure Data
 
 Je oddělení rolí zabezpečení ve správě koncových bodů služby virtuální sítě. Akce je zapotřebí ve směru z každé z následujících rolí:
 
-- **Správce sítě:** &nbsp; zapnout koncový bod.
-- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsíti serveru Azure Database for MySQL.
+- **Správce sítě:** &nbsp; Zapněte koncový bod.
+- **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsíti serveru Azure Database for MySQL.
 
 *Ve zkratce RBAC:*
 
@@ -115,7 +115,7 @@ Funkce pravidel virtuální sítě pro službu Azure Database for MySQL, má ná
 
 - Virtuální síť pravidla se vztahují pouze k virtuálním sítím Azure Resource Manageru; a nikoli k [modelu nasazení classic] [ arm-deployment-model-568f] sítě.
 
-- Zapnutí na virtuální síť koncových bodů služby do služby Azure Database for MySQL pomocí **Microsoft.Sql** značka služby také umožňuje koncové body pro všechny služby Azure Database: Azure Database for MySQL – Azure Database for PostgreSQL Azure SQL Database a Azure SQL Data Warehouse.
+- Zapnutí na virtuální síť koncových bodů služby do služby Azure Database for MySQL pomocí **Microsoft.Sql** značka služby také umožňuje koncové body pro všechny služby Azure Database: Azure Database for MySQL – Azure Database for PostgreSQL, Azure SQL Database a Azure SQL Data Warehouse.
 
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
@@ -144,7 +144,7 @@ Můžete nastavit **IgnoreMissingServiceEndpoint** příznak pomocí rozhraní p
 - [Vytvoření a správě Azure Database for MySQL VNet pravidla pomocí webu Azure portal](howto-manage-vnet-using-portal.md)
 - [Vytvoření a správě Azure Database for MySQL VNet pravidla pomocí Azure CLI](howto-manage-vnet-using-cli.md)
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 39223f49d315e722b13b734b3424d61f630834b1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6a86b5db5e5c79916325ebb547d65c9a30bf3e6a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966121"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410138"
 ---
-## <a name="configuring-homepage"></a>Konfigurace domovské stránky
+# <a name="configuring-homepage"></a>Konfigurace domovské stránky
 
 Domovské stránce je stránka, která načte, když uživatelé, kteří mají přístup k aplikaci přejděte na adresu URL vaší aplikace. Pokud jste vybrali "Ukázkové společnosti Contoso" nebo "Ukázka Devkits" aplikace šablony při vytváření vaší aplikace, aplikace bude mít předdefinované domovské stránky. Pokud jste vybrali na druhé straně šablony aplikace "Aplikace vlastní", bude prázdné vaší domovské stránce.
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d44b13bb087f171c3f0474cde73167481221274f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7a04b875befdd523527d286113fddb783984d4af
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136576"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408727"
 ---
 # <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Úlohy pro skupiny správce na týmovém projektu datové vědy
 
@@ -26,7 +26,8 @@ Tohoto tématu jsou podrobněji popsány dále úlohy, které má správce skupi
 ![0](./media/group-manager-tasks/tdsp-group-manager.png)
 
 
->[AZURE.NOTE] Uvádíme kroky potřebné k nastavení prostředí TDSP skupiny pomocí služby Azure DevOps v následujících pokynech. Můžeme určit způsob k provedení těchto úloh se službami Azure DevOps, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud jiný kód hostování platformy se používá pro vaši skupinu, úlohy, které musíte provést správce skupiny obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
+> [!NOTE] 
+> Uvádíme kroky potřebné k nastavení prostředí TDSP skupiny pomocí služby Azure DevOps v následujících pokynech. Můžeme určit způsob k provedení těchto úloh se službami Azure DevOps, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud jiný kód hostování platformy se používá pro vaši skupinu, úlohy, které musíte provést správce skupiny obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
 
 1. Nastavit **Azure DevOps služby** pro skupinu.
 2. Vytvoření **projektu skupiny** na služby Azure DevOps (pro uživatele služby Azure DevOps)
@@ -41,83 +42,84 @@ Každý z předchozích kroků je podrobně popsáno v. Ale nejprve jsme vám se
 
 Tento kurz používá zkrácené názvy pro úložiště a adresáře. Tyto definice usnadňují sledování operací mezi úložišť a adresáře. Tento typ notation se používá v následujících částech:
 
-- **G1**: úložiště šablon projektu vyvinul a spravuje TDSP tým Microsoftu.
-- **G2**: úložiště nástroje vyvinul a spravuje TDSP tým Microsoftu.
-- **R1**: The GroupProjectTemplate úložiště v Gitu jste nastavili na váš server Azure DevOps skupiny.
-- **R2**: The GroupUtilities úložiště v Gitu jste nastavili na váš server Azure DevOps skupiny.
-- **Lg1** a **LG2**: místní adresáře na počítači, že klonování G1 a G2, v uvedeném pořadí.
-- **LR1** a **LR2**: místní adresáře na počítači, že klonování R1 a R2, v uvedeném pořadí.
+- **G1**: Úložiště šablon projektu vyvíjí a spravuje TDSP tým Microsoftu.
+- **G2**: Úložiště nástroje vyvíjí a spravuje TDSP tým Microsoftu.
+- **R1**: GroupProjectTemplate úložiště v Gitu jste nastavili na váš server Azure DevOps skupiny.
+- **R2**: GroupUtilities úložiště v Gitu jste nastavili na váš server Azure DevOps skupiny.
+- **Lg1** a **LG2**: Místní adresáře na počítači, že klonování G1 a G2, v uvedeném pořadí.
+- **LR1** a **LR2**: Místní adresáře na počítači, že klonování R1 a R2, v uvedeném pořadí.
 
 ### <a name="pre-requisites-for-cloning-repositories-and-checking-code-in-and-out"></a>Předpoklady pro klonování úložišť a kontrola kódu dovnitř a ven
- 
-- Git musí být nainstalován na počítači. Pokud používáte Data virtuálního počítače VĚDY, Git je předem nainstalovaný a jste připravení. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).  
-- Pokud používáte **Windows DSVM**, musíte mít [Git Credential Manageru (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) na vašem počítači nainstalovaný. V souboru README.md přejděte dolů k položce **stáhněte a nainstalujte** a klikněte *nejnovější instalační program*. Tento krok vás přesměruje na stránku pro nejnovější instalační program. Stažení instalačního programu .exe odsud a spustíme ji. 
-- Pokud používáte **Linux DSVM**vytvořte veřejný klíč SSH na vaše DSVM a přidejte k vašim službám Azure DevOps skupiny. Další informace o SSH najdete v tématu **vytvořit veřejný klíč SSH** tématu [platformami a nástroji příloha](platforms-and-tools.md#appendix). 
+
+- Git musí být nainstalován na počítači. Pokud používáte Data virtuálního počítače VĚDY, Git je předem nainstalovaný a jste připravení. V opačném případě najdete v článku [platformami a nástroji příloha](platforms-and-tools.md#appendix).
+- Pokud používáte **Windows DSVM**, musíte mít [Git Credential Manageru (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) na vašem počítači nainstalovaný. V souboru README.md přejděte dolů k položce **stáhněte a nainstalujte** a klikněte *nejnovější instalační program*. Tento krok vás přesměruje na stránku pro nejnovější instalační program. Stažení instalačního programu .exe odsud a spustíme ji.
+- Pokud používáte **Linux DSVM**vytvořte veřejný klíč SSH na vaše DSVM a přidejte k vašim službám Azure DevOps skupiny. Další informace o SSH najdete v tématu **vytvořit veřejný klíč SSH** tématu [platformami a nástroji příloha](platforms-and-tools.md#appendix).
 
 
 ## <a name="1-create-account-on-azure-devops-services"></a>1. Vytvoření účtu na službách Azure DevOps
 
 Hostitelem služeb Azure DevOps následující úložiště:
 
-- **Skupina úložišť běžné**: úložiště pro obecné účely, které může být osvojena více týmů v rámci skupiny pro více projekty datových věd. Například *GroupProjectTemplate* a *GroupUtilities* úložišť.
-- **týmových úložišť**: úložiště pro konkrétní týmy v rámci skupiny. Tato úložiště jsou specifické pro potřeby týmu a může být více projektech provést daným týmem přijatý, ale není dostatečně obecný být užitečné pro více týmy v rámci datové vědy skupiny. 
-- **Projekt úložišť**: úložiště nejsou k dispozici pro konkrétní projekty. Taková úložiště nemusí být dostatečně obecná, být užitečné pro více projektů, tým provádět a několik týmů v datové vědě skupiny.
+- **Skupina úložišť běžné**: Úložiště pro obecné účely, ke kterým může být osvojena více týmů v rámci skupiny pro více projekty datových věd. Například *GroupProjectTemplate* a *GroupUtilities* úložišť.
+- **týmových úložišť**:  Úložiště pro konkrétní týmy v rámci skupiny. Tato úložiště jsou specifické pro potřeby týmu a může být více projektech provést daným týmem přijatý, ale není dostatečně obecný být užitečné pro více týmy v rámci datové vědy skupiny.
+- **Projekt úložišť**: Úložiště nejsou k dispozici pro konkrétní projekty. Taková úložiště nemusí být dostatečně obecná, být užitečné pro více projektů, tým provádět a několik týmů v datové vědě skupiny.
 
 
 ### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>Nastavení přihlašování služby Azure DevOps do svého účtu Microsoft
-    
-Přejděte na [Visual Studio online](https://www.visualstudio.com/), klikněte na tlačítko **přihlášení** v pravém horním rohu a přihlaste se k účtu Microsoft. 
-    
+
+Přejděte na [Visual Studio online](https://www.visualstudio.com/), klikněte na tlačítko **přihlášení** v pravém horním rohu a přihlaste se k účtu Microsoft.
+
 ![1](./media/group-manager-tasks/login.PNG)
 
-Pokud nemáte účet Microsoft, klikněte na tlačítko **zaregistrujte** k vytvoření účtu Microsoft a pak se přihlaste pomocí tohoto účtu. 
+Pokud nemáte účet Microsoft, klikněte na tlačítko **zaregistrujte** k vytvoření účtu Microsoft a pak se přihlaste pomocí tohoto účtu.
 
-Pokud má vaše organizace předplatné sady Visual Studio/MSDN, klikněte na zelené **přihlaste pomocí svého pracovního nebo školního účtu** pole a přihlaste se pomocí přihlašovacích údajů spojených s tímto předplatným. 
-        
+Pokud má vaše organizace předplatné sady Visual Studio/MSDN, klikněte na zelené **přihlaste pomocí svého pracovního nebo školního účtu** pole a přihlaste se pomocí přihlašovacích údajů spojených s tímto předplatným.
+
 ![2](./media/group-manager-tasks/signin.PNG)
 
 
-        
-Jakmile se přihlásíte, klikněte na tlačítko **Create New Account** v pravém horním rohu jak je znázorněno na následujícím obrázku:
-        
-![3](./media/group-manager-tasks/create-account-1.PNG)
-        
-Zadejte informace pro služby Azure DevOps, které chcete vytvořit v **vytvoření účtu** průvodce s použitím následujících hodnot: 
 
-- **Adresa URL serveru**: nahradit *mysamplegroup* vlastními *název serveru*. Adresa URL serveru bude: *https://\<servername\>. visualstudio.com*. 
-- **Spravovat kód pomocí:** vyberte  **_Git_**.
-- **Název projektu:** Enter *GroupCommon*. 
-- **Uspořádat práci pomocí pracovních:** zvolit *Agile*.
-- **Hostovat projekty v::** zvolte geografické polohy. V tomto příkladu jsme zvolili *střed USA – jih*. 
-        
+Jakmile se přihlásíte, klikněte na tlačítko **Create New Account** v pravém horním rohu jak je znázorněno na následujícím obrázku:
+
+![3](./media/group-manager-tasks/create-account-1.PNG)
+
+Zadejte informace pro služby Azure DevOps, které chcete vytvořit v **vytvoření účtu** průvodce s použitím následujících hodnot:
+
+- **Adresa URL serveru**: Nahraďte *mysamplegroup* vlastními *název serveru*. Adresa URL serveru bude: *https://\<servername\>. visualstudio.com*.
+- **Spravujete kód pomocí:** Vyberte  **_Git_**.
+- **Název projektu:** Zadejte *GroupCommon*.
+- **Uspořádejte práci pomocí:** Zvolte *agilní*.
+- **Hostovat projekty v::** Zvolte geografické polohy. V tomto příkladu jsme zvolili *střed USA – jih*.
+
 ![4](./media/group-manager-tasks/fill-in-account-information.png)
 
->[AZURE.NOTE] Pokud následující automaticky otevírané okno zobrazí po kliknutí na **vytvořit nový účet**, pak budete muset kliknout na **změnit podrobnosti** zobrazíte všechna pole, které jsou oddělené.
+> [!NOTE] 
+> Pokud následující automaticky otevírané okno zobrazí po kliknutí na **vytvořit nový účet**, pak budete muset kliknout na **změnit podrobnosti** zobrazíte všechna pole, které jsou oddělené.
 
 ![5](./media/group-manager-tasks/create-account-2.png)
 
 
-Klikněte na **Pokračovat**. 
+Klikněte na **Pokračovat**.
 
 ## <a name="2-groupcommon-project"></a>2. GroupCommon projektu
 
 **GroupCommon** stránky (*https://\<servername\>.visualstudio.com/GroupCommon*) se otevře po vytvoření služby Azure DevOps.
-                            
+
 ![6](./media/group-manager-tasks/server-created-2.PNG)
 
 ## <a name="3-create-the-grouputilities-r2-repository"></a>3. Vytvořit úložiště GroupUtilities (R2)
 
 Chcete-li vytvořit **GroupUtilities** úložišti (R2) v rámci služby Azure DevOps:
 
-- Otevřete **vytvořit nové úložiště** průvodce, klikněte na tlačítko **nové úložiště** na **verzí** kartu vašeho projektu. 
+- Otevřete **vytvořit nové úložiště** průvodce, klikněte na tlačítko **nové úložiště** na **verzí** kartu vašeho projektu.
 
-![7](./media/group-manager-tasks/create-grouputilities-repo-1.png) 
+  ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png)
 
-- Vyberte *Git* jako **typ**a zadejte *GroupUtilities* jako **název**a potom klikněte na tlačítko **vytvořit**. 
+- Vyberte *Git* jako **typ**a zadejte *GroupUtilities* jako **název**a potom klikněte na tlačítko **vytvořit**.
 
-![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
-                
-Teď byste měli vidět dvě úložiště Git **GroupProjectTemplate** a **GroupUtilities** v levém sloupci **verzí** stránky: 
+  ![8](./media/group-manager-tasks/create-grouputilities-repo-2.png)
+
+Teď byste měli vidět dvě úložiště Git **GroupProjectTemplate** a **GroupUtilities** v levém sloupci **verzí** stránky:
 
 ![9](./media/group-manager-tasks/two-repo-under-groupCommon.PNG)
 
@@ -127,30 +129,30 @@ Teď byste měli vidět dvě úložiště Git **GroupProjectTemplate** a **Group
 Nastavení úložiště pro skupiny server Azure DevOps se skládá ze dvou úloh:
 
 - Přejmenujte výchozí **GroupCommon** úložiště***GroupProjectTemplate***.
-- Vytvořte **GroupUtilities** úložiště ve službě Azure DevOps v rámci projektu **GroupCommon**. 
+- Vytvořte **GroupUtilities** úložiště ve službě Azure DevOps v rámci projektu **GroupCommon**.
 
 Pokyny pro první úkol jsou obsaženy v této části po poznámky na zásady vytváření názvů nebo našich úložištích a adresáře. Pokyny pro druhý úkol jsou obsaženy v kroku 4 v následující části.
 
 ### <a name="rename-the-default-groupcommon-repository"></a>Přejmenujte výchozí GroupCommon úložiště
 
 Přejmenování výchozí **GroupCommon** úložiště jako *GroupProjectTemplate* (označované jako **R1** v tomto kurzu):
-    
-- Klikněte na tlačítko **spolupráce na kódu** na **GroupCommon** stránce projektu. Tím přejdete na výchozí stránce úložiště Git projektu **GroupCommon**. V současné době toto úložiště Git je prázdný. 
 
-![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
-        
-- Klikněte na tlačítko **GroupCommon** na levého horního rohu (zvýrazněno s červeným rámečkem na následujícím obrázku) na stránce úložiště Git **GroupCommon** a vyberte **spravovat úložiště**(zvýrazněná zeleného pole na následujícím obrázku). Tento postup vyvolá **ovládací panely**. 
-- Vyberte **verzí** kartu vašeho projektu. 
+- Klikněte na tlačítko **spolupráce na kódu** na **GroupCommon** stránce projektu. Tím přejdete na výchozí stránce úložiště Git projektu **GroupCommon**. V současné době toto úložiště Git je prázdný.
 
-![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+  ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
 
-- Klikněte na tlačítko **...**  napravo od **GroupCommon** úložiště na levém panelu a vyberte **přejmenovat úložiště**. 
+- Klikněte na tlačítko **GroupCommon** na levého horního rohu (zvýrazněno s červeným rámečkem na následujícím obrázku) na stránce úložiště Git **GroupCommon** a vyberte **spravovat úložiště**(zvýrazněná zeleného pole na následujícím obrázku). Tento postup vyvolá **ovládací panely**.
+- Vyberte **verzí** kartu vašeho projektu.
 
-![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
-        
-- V **přejmenovat úložiště GroupCommon** průvodce, který bodů POP, zadejte *GroupProjectTemplate* v **název úložiště** pole a potom klikněte na tlačítko **přejmenovat** . 
+  ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
 
-![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
+- Klikněte na tlačítko **...**  napravo od **GroupCommon** úložiště na levém panelu a vyberte **přejmenovat úložiště**.
+
+  ![12](./media/group-manager-tasks/rename-groupcommon-repo-5.png)
+
+- V **přejmenovat úložiště GroupCommon** průvodce, který bodů POP, zadejte *GroupProjectTemplate* v **název úložiště** pole a potom klikněte na tlačítko **přejmenovat** .
+
+  ![13](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
 
 
@@ -172,36 +174,36 @@ Osazení postup používá adresáře na místním DSVM jako zprostředkující 
 
 ### <a name="clone-g1--g2-repositories-to-your-local-dsvm"></a>Klonovat G1 & G2 úložiště na místním DSVM
 
-V tomto kroku naklonujete ProjectTemplate vědecké zpracování týmových dat (TDSP) úložiště (G1) a nástrojů (G2) z úložišť github TDSP do složky ve vaší místní DSVM jako LG1 a LG2:
+V tomto kroku naklonujete ProjectTemplate vědecké zpracování týmových dat (TDSP) úložiště (G1) a nástrojů (G2) z úložišť TDSP GitHub do složky ve vaší místní DSVM jako LG1 a LG2:
 
-- Vytvořte adresář, který slouží jako kořenový adresář pro hostování všech duplicit úložišť. 
-    -  Ve Windows datové VĚDY, vytvořte adresář *C:\GitRepos\TDSPCommon*. 
-    -  V systému Linux datové VĚDY, vytvořte adresář *GitRepos\TDSPCommon* ve svém domovském adresáři. 
+- Vytvořte adresář, který slouží jako kořenový adresář pro hostování všech duplicit úložišť.
+  -  Ve Windows datové VĚDY, vytvořte adresář *C:\GitRepos\TDSPCommon*.
+  -  V systému Linux datové VĚDY, vytvořte adresář *GitRepos\TDSPCommon* ve svém domovském adresáři.
 
 - Spusťte následující sady příkazů z *GitRepos\TDSPCommon* adresáře.
 
-    `git clone https://github.com/Azure/Azure-TDSP-ProjectTemplate`<br>
-    `git clone https://github.com/Azure/Azure-TDSP-Utilities`
-        
-![14](./media/group-manager-tasks/two-folder-cloned-from-TDSP-windows.PNG)
+  `git clone https://github.com/Azure/Azure-TDSP-ProjectTemplate`<br>
+  `git clone https://github.com/Azure/Azure-TDSP-Utilities`
 
-- Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli: 
+  ![14](./media/group-manager-tasks/two-folder-cloned-from-TDSP-windows.PNG)
+
+- Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli:
     - -G1 – klonovat do > LG1
     - G2 - klonovat do -> LG2
-- Po dokončení klonování byste měli vidět dva adresáře _ProjectTemplate_ a _nástroje_v části **GitRepos\TDSPCommon** adresáře. 
+- Po dokončení klonování byste měli vidět dva adresáře _ProjectTemplate_ a _nástroje_v části **GitRepos\TDSPCommon** adresáře.
 
 ### <a name="clone-r1--r2-repositories-to-your-local-dsvm"></a>Naklonujte úložiště R1 & R2 k vaší místní DSVM
 
 V tomto kroku naklonujete úložiště GroupProjectTemplate (R1) a úložišti GroupUtilities (R2) na místní adresáře (označované jako LR1 a LR2,) v části **GitRepos\GroupCommon** na vaše DSVM.
 
-- Adresy URL úložiště R1 a R2, přejděte k vaší **GroupCommon** domovskou stránku na služby Azure DevOps. Tato adresa URL má obvykle *https://\<Azure DevOps služby jméno\>.visualstudio.com/GroupCommon*. 
-- Klikněte na tlačítko **kód**. 
-- Zvolte **GroupProjectTemplate** a **GroupUtilities** úložišť. Zkopírujte a uložte každou z adres URL (protokol HTTPS pro Windows; SSH pro Linux) z **adresa URL klonu** element v důsledku pro použití v těchto skriptů:  
+- Adresy URL úložiště R1 a R2, přejděte k vaší **GroupCommon** domovskou stránku na služby Azure DevOps. Tato adresa URL má obvykle *https://\<Azure DevOps služby jméno\>.visualstudio.com/GroupCommon*.
+- Klikněte na tlačítko **kód**.
+- Zvolte **GroupProjectTemplate** a **GroupUtilities** úložišť. Zkopírujte a uložte každou z adres URL (protokol HTTPS pro Windows; SSH pro Linux) z **adresa URL klonu** element v důsledku pro použití v těchto skriptů:
 
-![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
+  ![15](./media/group-manager-tasks/find_https_ssh_2.PNG)
 
 - Přejděte do **GitRepos\GroupCommon** ve vaší Windows nebo Linux DSVM a spusťte jeden z následující sady příkazů naklonujte R1 a R2 do tohoto adresáře.
-        
+
 Tady se o skripty Windows a Linux:
 
     # Windows DSVM
@@ -218,9 +220,10 @@ Tady se o skripty Windows a Linux:
 
 ![17](./media/group-manager-tasks/clone-two-empty-group-reo-linux-2.PNG)
 
->[AZURE.NOTE] By se měl zobrazit upozornění, že LR1 a LR2 jsou prázdné.    
+> [!NOTE] 
+> By se měl zobrazit upozornění, že LR1 a LR2 jsou prázdné.
 
-- Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli: 
+- Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli:
     - R1 - klonovat do -> LR1
     - LR2-R2 - klonovat do >   
 
@@ -229,12 +232,12 @@ Tady se o skripty Windows a Linux:
 
 V dalším kroku v místním počítači, zkopírujte obsah ProjectTemplate a nástroje adresáře (s výjimkou metadata v adresářích .git) v části GitRepos\TDSPCommon k adresářům GroupProjectTemplate a GroupUtilities pod **GitRepos\ GroupCommon**. Tady jsou dva úkoly k dokončení v tomto kroku:
 
-- Zkopírujte soubory v GitRepos\TDSPCommon\ProjectTemplate (**LG1**) k GitRepos\GroupCommon\GroupProjectTemplate (**LR1**) 
-- Zkopírujte soubory v GitRepos\TDSPCommon\Utilities (**LG2** k GitRepos\GroupCommon\Utilities (**LR2**). 
+- Zkopírujte soubory v GitRepos\TDSPCommon\ProjectTemplate (**LG1**) k GitRepos\GroupCommon\GroupProjectTemplate (**LR1**)
+- Zkopírujte soubory v GitRepos\TDSPCommon\Utilities (**LG2** k GitRepos\GroupCommon\Utilities (**LR2**).
 
-K dosažení těchto dvou úloh, spuštěním následujících skriptů v konzole Powershellu (Windows) nebo prostředí skriptu konzoly (Linux). Zobrazí se výzva k zadání úplné cesty k LG1, LR1, LG2 a LR2. Cesty, které zadáte, se ověří. Zadejte adresář, který neexistuje, budete vyzváni k zadání znovu. 
+K dosažení těchto dvou úloh, spuštěním následujících skriptů v konzole Powershellu (Windows) nebo prostředí skriptu konzoly (Linux). Zobrazí se výzva k zadání úplné cesty k LG1, LR1, LG2 a LR2. Cesty, které zadáte, se ověří. Zadejte adresář, který neexistuje, budete vyzváni k zadání znovu.
 
-    # Windows DSVM      
+    # Windows DSVM
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 1
@@ -251,9 +254,9 @@ Nyní uvidíte, že soubory v adresářích LG1 a LG1 (s výjimkou souborů v ad
     bash tdsp_local_copy_linux.sh 1
 
 ![20](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux-2.PNG)
-        
+
 Teď vidíte, že se soubory ve dvou složkách (s výjimkou souborů v adresáři .git) zkopírují do GroupProjectTemplate a GroupUtilities v uvedeném pořadí.
-    
+
 ![21](./media/group-manager-tasks/copy-two-folder-to-group-folder-linux.PNG)
 
 - Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli:
@@ -262,11 +265,11 @@ Teď vidíte, že se soubory ve dvou složkách (s výjimkou souborů v adresá�
 
 ### <a name="option-to-customize-the-contents-of-lr1--lr2"></a>Možnost upravit obsah LR1 & LR2
     
-Pokud chcete upravit obsah LR1 a LR2 splnili specifické požadavky vaší skupiny, je to fáze procedury, kde, která je vhodná. Můžete upravit šablony dokumentů, změnit strukturu adresáře a přidat stávající nástroje, který byl vyvinut vaší skupiny nebo které jsou užitečné pro celou skupinu. 
+Pokud chcete upravit obsah LR1 a LR2 splnili specifické požadavky vaší skupiny, je to fáze procedury, kde, která je vhodná. Můžete upravit šablony dokumentů, změnit strukturu adresáře a přidat stávající nástroje, který byl vyvinut vaší skupiny nebo které jsou užitečné pro celou skupinu.
 
 ### <a name="add-the-contents-in-lr1--lr2-to-r1--r2-on-group-server"></a>Přidejte obsah v LR1 & LR2 R1 & R2 na serveru skupiny
 
-Teď budete muset přidat obsah v LR1 a LR2 k úložištím R1 a R2. Tady je git příkazy prostředí bash, které můžete spustit v prostředí Windows PowerShell nebo Linux. 
+Teď budete muset přidat obsah v LR1 a LR2 k úložištím R1 a R2. Tady je git příkazy prostředí bash, které můžete spustit v prostředí Windows PowerShell nebo Linux.
 
 Spusťte následující příkazy z adresáře GitRepos\GroupCommon\GroupProjectTemplate:
 
@@ -290,12 +293,13 @@ Nakonec změňte **GitRepos\GroupCommon\GroupUtilities** adresáře a spustit st
     git commit -m"push from DSVM"
     git push
 
->[AZURE.NOTE] Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
-        
-    git config --global user.name <your name>
-    git config --global user.email <your email address>
- 
->Pokud jsou přiřazeni k více úložišť Git, použijte stejný název a e-mailovou adresu když jste se zavázali k každý z nich. Pomocí stejného jména a e-mailovou adresu prokáže pohodlný později při vytváření řídicích panelů Power BI ke sledování aktivit Git na více úložišť.
+> [!NOTE] 
+> Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
+>
+>  `git config --global user.name <your name>`  
+>  `git config --global user.email <your email address>`
+>
+> Pokud jsou přiřazeni k více úložišť Git, použijte stejný název a e-mailovou adresu když jste se zavázali k každý z nich. Pomocí stejného jména a e-mailovou adresu prokáže pohodlný později při vytváření řídicích panelů Power BI ke sledování aktivit Git na více úložišť.
 
 
 - Pomocí našich názvy zkrácený úložiště, to je, co tyto skripty dosáhli:
@@ -306,7 +310,7 @@ Nakonec změňte **GitRepos\GroupCommon\GroupUtilities** adresáře a spustit st
 
 Ze skupiny Azure DevOps služby na domovskou stránku, klikněte na tlačítko **ikonu ozubeného kola** vedle vaše uživatelské jméno v pravém horním rohu vyberte **zabezpečení** kartu. Přidat členy do skupiny tady s různými oprávněními.
 
-![24](./media/group-manager-tasks/add_member_to_group.PNG) 
+![24](./media/group-manager-tasks/add_member_to_group.PNG)
 
 
 ## <a name="next-steps"></a>Další postup

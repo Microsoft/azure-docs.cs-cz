@@ -10,19 +10,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6b835dc300808453240dd3b9fe47957bd5feab9b
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004582"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435221"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Použití více clusterů HDInsight pomocí účtu Azure Data Lake Store
 
 Spouští se s HDInsight verze 3.5, můžete vytvářet clustery HDInsight s účty Azure Data Lake Store jako výchozí systém souborů.
-Data Lake Store podporuje neomezené úložiště, díky které je ideální nejen pro velké objemy dat; hostování Můžete ale také pro hostování více HDInsight clustery tuto sdílenou složku jednoho účtu Data Lake Store. Pokyny o tom, jak vytvořit HDInsight cluster s Data Lake Store jako úložiště najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Data Lake Store podporuje neomezené úložiště, díky které je ideální nejen pro velké objemy dat; hostování Můžete ale také pro hostování více HDInsight clustery tuto sdílenou složku jednoho účtu Data Lake Store. Pokyny o tom, jak vytvořit HDInsight cluster s Data Lake Store jako úložiště najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-Tento článek obsahuje doporučení pro Data Lake Správce úložiště pro nastavení jediné a sdílené účtu Data Lake Store, který lze použít v rámci více **aktivní** clustery HDInsight. Tato doporučení se vztahují k hostování několika zabezpečených stejně jako nezabezpečené clustery Hadoop v sdíleného účtu Data Lake store.
+Tento článek obsahuje doporučení pro Data Lake Správce úložiště pro nastavení jediné a sdílené účtu Data Lake Store, který lze použít v rámci více **aktivní** clustery HDInsight. Tato doporučení se vztahují k hostování několika zabezpečených stejně jako nezabezpečené clustery systému Apache Hadoop na sdíleného účtu Data Lake store.
 
 
 ## <a name="data-lake-store-file-and-folder-level-acls"></a>Seznamy řízení přístupu na úrovni souborů data Lake Store a složek
@@ -78,7 +78,7 @@ Při vytváření instančního objektu s přístupem s názvem uživatele (jak 
 
 V této části najdete seznam známých problémů pro HDInsight pomocí Data Lake Store a jejich řešení.
 
-### <a name="publicly-visible-localized-yarn-resources"></a>Veřejně viditelné lokalizovaných prostředků YARN
+### <a name="publicly-visible-localized-apache-hadoop-yarn-resources"></a>Veřejně viditelné lokalizované prostředky Apache Hadoop YARN
 
 Při vytvoření nového účtu Azure Data Lake store je kořenový adresář automaticky zřízena sadu 770 bitů oprávnění přístupového seznamu ACL. Kořenové složky vlastnící uživatel je nastaven na uživatele, který vytvořil účet (Data Lake Store správce) a je vlastnící skupina nastavena na primární skupiny uživatele, který účet vytvořil. Žádný přístup neposkytujeme "ostatní".
 
@@ -93,6 +93,6 @@ Sada čtení spouštěcích oprávnění k **ostatní** prostřednictvím hierar
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Rychlý start: Nastavení clusterů ve službě HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Rychlý start: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

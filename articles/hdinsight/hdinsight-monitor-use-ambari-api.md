@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ae9b374e97c0f4be32d6c6a7d47fd803a1a0e5
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 062925f7e072651f4b4189cec7ca73144c0cf994
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011517"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436326"
 ---
-# <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Sledování clusterů Hadoop ve službě HDInsight pomocí rozhraní API Ambari
-Další informace o monitorování clusterů HDInsight pomocí rozhraní Ambari API.
+# <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Monitorování clusterů systému Apache Hadoop v HDInsight pomocí rozhraní API Apache Ambari
+Další informace o monitorování clusterů HDInsight pomocí rozhraní API Apache Ambari.
 
-> [!NOTE]
-> Informace v tomto článku je primárně pro clustery HDInsight se systémem Windows, které poskytují verzi rozhraní Ambari REST API jen pro čtení. Pro clustery založené na Linuxu najdete v článku [spravovat Hadoop clusterů pomocí nástroje Ambari](hdinsight-hadoop-manage-ambari.md).
+> [!NOTE]  
+> Informace v tomto článku je primárně pro clustery HDInsight se systémem Windows, které poskytují verzi rozhraní Ambari REST API jen pro čtení. Pro clustery založené na Linuxu najdete v článku [spravovat Apache Hadoop clusterů pomocí nástroje Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 > 
 > 
 
@@ -36,7 +36,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 * **Pracovní stanice s prostředím Azure PowerShell**.
 * (Volitelné) [cURL][curl]. K jeho instalaci, naleznete v tématu [cURL vydané verze a soubory ke stažení][curl-download].
   
-  > [!NOTE]
+  > [!NOTE]  
   > Při použití příkazu cURL ve Windows, použijte dvojité uvozovky místo jednoho uvozovky u hodnot možností.
   > 
   > 
@@ -120,9 +120,9 @@ Výstup bude:
 Při použití koncového bodu Ambari, "https://{clusterDns}.azurehdinsight.net/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.net/services/{servicename}/components/{componentname}" *název_hostitele* pole Vrátí plně kvalifikovaný název domény (FQDN) uzlu místo názvu hostitele. Před vydáním 8/10/2014 v tomto příkladu vrátí jednoduše "**headnode0**". Po vydání 8/10/2014 získat plně kvalifikovaný název "**headnode0. { ClusterDNS} gt; .azurehdinsight .net**", jak je znázorněno v předchozím příkladu. Tato změna byla nutná k usnadnění scénářů, kde je možné nasadit více typů clusteru (jako je například HBase a Hadoop) v jedné virtuální síti (VNET). V takovém případě třeba při použití HBase jako back endovou platformu pro Hadoop.
 
 ## <a name="ambari-monitoring-apis"></a>Monitorování rozhraní API Ambari
-V následující tabulce jsou uvedeny některé nejběžnější Ambari, monitorování volání rozhraní API. Další informace o rozhraní API najdete v tématu [Reference k rozhraní API Ambari][ambari-api-reference].
+V následující tabulce jsou uvedeny některé nejběžnější Ambari, monitorování volání rozhraní API. Další informace o rozhraní API najdete v tématu [Reference k rozhraní API Apache Ambari][ambari-api-reference].
 
-| Monitorování rozhraní API volání | URI | Popis |
+| Monitorování rozhraní API volání | Identifikátor URI | Popis |
 | --- | --- | --- |
 | Získat clustery |`/api/v1/clusters` | |
 | Získání informací o clusteru. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net` |clustery, služby, hostitelé |
@@ -138,7 +138,7 @@ V následující tabulce jsou uvedeny některé nejběžnější Ambari, monitor
 | Získejte informace o konfiguraci. |`/api/v1/clusters/<ClusterName>.azurehdinsight.net/configurations?type=<ConfigType>&tag=<VersionName>` |Konfigurace typů: základního webu, hdfs-site, mapred web, server hive |
 
 ## <a name="next-steps"></a>Další kroky
-Nyní jste se naučili, jak použít monitorování volání rozhraní API Ambari. Další informace naleznete v tématu:
+Nyní jste se naučili, jak použít monitorování volání rozhraní API Apache Ambari. Další informace naleznete v tématu:
 
 * [Správa clusterů HDInsight pomocí webu Azure portal][hdinsight-admin-portal]
 * [Správa clusterů HDInsight pomocí Azure Powershellu][hdinsight-admin-powershell]

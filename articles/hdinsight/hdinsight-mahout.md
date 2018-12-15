@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5c12a84610d09b7557f0beb177273deba4468cc0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014816"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438544"
 ---
-# <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování filmových doporučení pomocí Apache Mahout Hadoop v HDInsight (PowerShell)
+# <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>Generování filmových doporučení pomocí Apache Mahout s Apache Hadoop v HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
@@ -26,27 +26,27 @@ Další informace o použití [Apache Mahout](http://mahout.apache.org) knihovna
 
 * Cluster HDInsight se systémem Linux. Informace o vytvoření nového, najdete v části [Začínáme používat Hadoop využívající systém Linux v HDInsight][getstarted].
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Generování doporučení pomocí Azure Powershellu
 
-> [!WARNING]
+> [!WARNING]  
 > V této části pracuje s využitím Azure Powershellu. Mnohé z tříd poskytovaných pomocí Mahoutu nefungují aktuálně pomocí Azure Powershellu. Seznam tříd, které fungují s Azure Powershellem, najdete v článku [Poradce při potížích s](#troubleshooting) oddílu.
 >
-> Příklad použití SSH pro připojení k HDInsight a spuštění příkladů Mahout přímo na clusteru, naleznete v tématu [generování filmových doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+> Příklad použití SSH pro připojení k HDInsight a spuštění příkladů Mahout přímo na clusteru, naleznete v tématu [generování filmových doporučení pomocí Apache Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 Jednou z funkcí, které poskytuje Mahout je doporučovací modul. Tento modul přijímá data ve formátu `userID`, `itemId`, a `prefValue` (Předvolby uživatele pro položky). Mahout data používá k určení uživatelů s předvolby podobné položky, které je možné použít k doporučení.
 
 Následující příklad je zjednodušený návod, jak toho, jak funguje proces doporučení:
 
-* **Společného výskytu**: Joe, Alice a Bob všechny líbilo *Hvězdných*, *The Empire katastrof zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří se také jako jednu z těchto filmy, jako je další dvě.
+* **společného výskytu**: Joe, Alice a Bob všechny líbilo *Hvězdných*, *The Empire katastrof zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří se také jako jednu z těchto filmy, jako je další dvě.
 
-* **Společného výskytu**: Bob a Alice spokojeni také *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří také líbilo předchozí tři filmy, jako jsou tyto videa.
+* **společného výskytu**: Bob a Alice spokojeni také *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří také líbilo předchozí tři filmy, jako jsou tyto videa.
 
-* **Doporučení podle podobnosti**: protože Joe líbilo první tři videa, Mahout vypadá na filmy ostatní se podobá předvolby spokojeni, ale Joe nebyl sledovali vysílání televizní (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*.
+* **Doporučení podle podobnosti**: Vzhledem k tomu, že Joe líbilo první tři videa, Mahout vypadá na filmy ostatní se podobá předvolby líbilo, ale nebyla Joe sledované (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*.
 
 ### <a name="understanding-the-data"></a>Pochopení dat
 
@@ -66,12 +66,12 @@ Data obsažená v ratings.txt uživatel má strukturu z `userID`, `movieID`, `us
 
 Pomocí následujícího skriptu prostředí Windows PowerShell a spusťte úlohu, která používá data o filmech doporučovací modul Mahout:
 
-> [!NOTE]
+> [!NOTE]  
 > Tento soubor vás vyzve k zadání informací, které se používá pro připojení k vašemu clusteru HDInsight a spouštění úloh. Může trvat několik minut, než se úlohy dokončí, a stáhněte si soubor výstup.txt.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
-> [!NOTE]
+> [!NOTE]  
 > Mahout úlohy neodebírejte dočasných dat, který je vytvořen při zpracování úlohy. `--tempDir` Je zadán parametr v úloze příklad k izolaci dočasných souborů do konkrétní adresář.
 
 Mahout úlohy do STDOUT nevrátí výstup. Místo toho je uložený v zadané výstupní adresář jako **část r-00000**. Tento soubor a stáhne skript **výstup.txt** v aktuálním adresáři na pracovní stanici.
@@ -202,14 +202,14 @@ Mahout úlohy, které používají následující třídy vrátit různé chybov
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Ke spuštění úlohy, které používají tyto třídy, připojte se ke clusteru HDInsight pomocí SSH a spusťte úlohy z příkazového řádku. Příklad použití SSH ke spouštění úloh Mahout, naleznete v tématu [generování filmových doporučení pomocí Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
+Ke spuštění úlohy, které používají tyto třídy, připojte se ke clusteru HDInsight pomocí SSH a spusťte úlohy z příkazového řádku. Příklad použití SSH ke spouštění úloh Mahout, naleznete v tématu [generování filmových doporučení pomocí Apache Mahout a HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak pomocí Mahoutu, popisující další způsoby práce s daty v HDInsight:
+Teď, když jste se naučili, jak používat Apache Mahout, popisující další způsoby práce s daty v HDInsight:
 
-* [Hive s HDInsight](hadoop/hdinsight-use-hive.md)
-* [Pig s HDInsight](hadoop/hdinsight-use-pig.md)
+* [Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md)
+* [Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html

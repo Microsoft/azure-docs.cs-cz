@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 7bafc30bbf8661f7054e49c36af420507f37c989
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326534"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53399830"
 ---
-Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/monitoring-and-diagnostics/monitoring-overview-autoscale.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
+Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/azure-monitor/platform/autoscale-overview.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vodorovné nebo svislé škálování
 

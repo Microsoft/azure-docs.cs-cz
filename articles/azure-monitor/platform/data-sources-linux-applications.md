@@ -1,5 +1,5 @@
 ---
-title: Výkon Linuxových aplikací v Log Analytics shromažďovat | Dokumentace Microsoftu
+title: Shromažďovat výkon aplikací Linux ve službě Azure Monitor | Dokumentace Microsoftu
 description: Tento článek obsahuje podrobnosti pro konfiguraci agenta Log Analytics pro Linux ke shromažďování čítačů výkonu pro MySQL a serveru Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 03faa393d42f3596aa6b05c4a3afb476c8b9e0a3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 824d3f2402861ed8a54a29c9571654cc581e4c5e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186510"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434626"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Tento článek obsahuje podrobné informace pro konfiguraci [agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace.  Aplikací obsažených v tomto článku jsou:  
+Tento článek obsahuje podrobné informace pro konfiguraci [agenta Log Analytics pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) získat čítače výkonu pro určité aplikace do Azure monitoru protokolů.  Aplikací obsažených v tomto článku jsou:  
 
 - [MySQL](#MySQL)
 - [Serveru Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ Tato oprávnění lze udělit spuštěním následujících příkazů udělení
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](data-sources-windows-events.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux k odesílání dat do Azure monitoru, musíte nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor](data-sources-performance-counters.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definování čítače výkonu
 
-Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do Log Analytics, je nutné nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu do Log Analytics](data-sources-windows-events.md) s čítače v následující tabulce.
+Jakmile nakonfigurujete agenta Log Analytics pro Linux k odesílání dat do Azure monitoru, musíte nakonfigurovat čítačů výkonu k získání.  Použijte postup uvedený v [Windows a Linuxem zdroje dat výkonu ve službě Azure Monitor](data-sources-performance-counters.md) s čítače v následující tabulce.
 
 | Název objektu | Název počítadla |
 |:--|:--|
@@ -168,4 +168,4 @@ Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do L
 
 ## <a name="next-steps"></a>Další postup
 * [Shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Linuxu.
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

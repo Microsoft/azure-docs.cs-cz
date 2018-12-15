@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997874"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410461"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Export rozhraní API hostovaných v Azure do PowerApps a Microsoft Flow
 
@@ -146,7 +146,7 @@ PowerApps a Microsoft Flow podporují kolekci zprostředkovatelů identity, kter
 ``` 
 Během exportu zadejte hodnoty konfigurace, které umožňují PowerApps a Microsoft Flow k ověřování uživatelů.
 
-Tato část popisuje typy ověřování, které jsou podporovány v **Express** režimu: klíč rozhraní API, Azure Active Directory a obecné OAuth 2.0. PowerApps a Microsoft Flow také podporují základní ověřování nebo OAuth 2.0 pro konkrétní služby jako Dropbox, Facebook nebo SalesForce.
+Tato část popisuje typy ověřování, které jsou podporovány v **Express** režimu: Klíč rozhraní API, Azure Active Directory a obecné OAuth 2.0. PowerApps a Microsoft Flow také podporují základní ověřování nebo OAuth 2.0 pro konkrétní služby jako Dropbox, Facebook nebo SalesForce.
 
 ### <a name="api-key"></a>Klíč rozhraní API
 Pokud použijete klíč rozhraní API, uživatelé vašeho konektoru se výzva k zadání klíče při vytváření připojení. Zadáte klíče název rozhraní API, aby to pomohl ostatním pochopit, které je zapotřebí. V předchozím příkladu vytvoříme s využitím názvu `API Key (contact meganb@contoso.com)` aby uživatelé věděli, kde lze získat informace o klíči rozhraní API. Pro službu Azure Functions klíčem je obvykle jeden z klíčů hostitele, pokrývající několik funkcí v rámci aplikace function app.
@@ -154,7 +154,7 @@ Pokud použijete klíč rozhraní API, uživatelé vašeho konektoru se výzva k
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 Při použití služby Azure AD, budete potřebovat dva registrace aplikace Azure AD: jeden pro samotné rozhraní API a jeden pro vlastní konektor:
 
-- Ke konfiguraci registrace pro rozhraní API, použijte [ověřování/autorizace služby App Service](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md) funkce.
+- Ke konfiguraci registrace pro rozhraní API, použijte [ověřování/autorizace služby App Service](../app-service/configure-authentication-provider-aad.md) funkce.
 
 - Ke konfiguraci registrace pro konektor, postupujte podle kroků v [přidáním aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Registrace musí mít Delegovaný přístup k rozhraní API a adresu URL odpovědi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 

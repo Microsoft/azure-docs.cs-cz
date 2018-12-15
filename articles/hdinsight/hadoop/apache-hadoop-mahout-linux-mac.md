@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 9e0f614344372d08974bc7592ccb88e7382e4cb4
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017538"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435187"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Generování filmových doporučení pomocí Apache Mahout s linuxovým Apache Hadoop v HDInsight (SSH)
 
@@ -28,14 +28,14 @@ Mahout je [strojového učení] [ ml] knihovna pro Apache Hadoop. Mahout obsahuj
 
 * Cluster HDInsight se systémem Linux. Informace o vytvoření nového, najdete v části [Začínáme používat Hadoop využívající systém Linux v HDInsight][getstarted].
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Klient SSH. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="mahout-versioning"></a>Správa verzí mahout
+## <a name="apache-mahout-versioning"></a>Apache Mahout správy verzí
 
-Další informace o verzi Mahout v HDInsight najdete v tématu [HDInsight verze a součásti platformy Hadoop](../hdinsight-component-versioning.md).
+Další informace o verzi Mahout v HDInsight najdete v tématu [HDInsight verze a součásti systému Apache Hadoop](../hdinsight-component-versioning.md).
 
 ## <a name="recommendations"></a>Vysvětlení doporučení
 
@@ -43,11 +43,11 @@ Jednou z funkcí, které poskytuje Mahout je doporučovací modul. Tento modul p
 
 Následující pracovní postup je zjednodušený příklad, který používá data o filmech:
 
-* **Společného výskytu**: Joe, Alice a Bob všechny líbilo *Hvězdných*, *The Empire katastrof zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří se také jako jednu z těchto filmy, jako je další dvě.
+* **společného výskytu**: Joe, Alice a Bob všechny líbilo *Hvězdných*, *The Empire katastrof zpět*, a *návrat Jedi*. Mahout Určuje, že uživatelé, kteří se také jako jednu z těchto filmy, jako je další dvě.
 
-* **Společného výskytu**: Bob a Alice spokojeni také *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří také líbilo předchozí tři filmy, jako jsou tyto tři videa.
+* **společného výskytu**: Bob a Alice spokojeni také *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*. Mahout Určuje, že uživatelé, kteří také líbilo předchozí tři filmy, jako jsou tyto tři videa.
 
-* **Doporučení podle podobnosti**: protože Joe líbilo první tři videa, Mahout vypadá na filmy ostatní se podobá předvolby spokojeni, ale Joe nebyl sledovali vysílání televizní (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*.
+* **Doporučení podle podobnosti**: Vzhledem k tomu, že Joe líbilo první tři videa, Mahout vypadá na filmy ostatní se podobá předvolby líbilo, ale nebyla Joe sledované (líbilo nebo hodnocení). V takovém případě se doporučuje Mahout *The fiktivní Menace*, *útoku klonů*, a *odvety Sith*.
 
 ### <a name="understanding-the-data"></a>Pochopení dat
 
@@ -59,8 +59,8 @@ Data obsažená v ratings.txt uživatel má strukturu z `userID`, `movieID`, `us
 
     196    242    3    881250949
     186    302    3    891717742
-    22    377    1    878887116
-    244    51    2    880606923
+    22     377    1    878887116
+    244    51     2    880606923
     166    346    1    886397596
 
 ## <a name="run-the-analysis"></a>Spuštění analýzy
@@ -71,7 +71,7 @@ Z připojení SSH ke clusteru použijte následující příkaz ke spuštění �
 mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Úlohy může trvat několik minut a může spustit několik úloh MapReduce.
 
 ## <a name="view-the-output"></a>Zobrazit výstup
@@ -188,7 +188,7 @@ Mahout úlohy neodebírejte dočasných dat, který je vytvořen při zpracován
 hdfs dfs -rm -f -r /temp/mahouttemp
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Pokud chcete spustit příkaz znovu, musíte také odstranit výstupní adresář. Pomocí následujícího postupu odstraňte tento adresář:
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
@@ -198,8 +198,8 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 Teď, když jste se naučili, jak pomocí Mahoutu, popisující další způsoby práce s daty v HDInsight:
 
-* [Hive s HDInsight](hdinsight-use-hive.md)
-* [Pig s HDInsight](hdinsight-use-pig.md)
+* [Apache Hive s HDInsight](hdinsight-use-hive.md)
+* [Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)
 
 [build]: https://mahout.apache.org/developers/buildingmahout.html

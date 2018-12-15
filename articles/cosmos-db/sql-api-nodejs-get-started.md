@@ -9,14 +9,15 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 8d2272ca468f7c415d9d03506ecaa3fbe667f0c0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
+ms.openlocfilehash: c758b3f56d8935b8d0d7873df41a965be1281044
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873168"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407572"
 ---
-# <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
+# <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Sestavení aplikace konzoly Node.js pomocí sady JavaScript SDK ke správě dat SQL API služby Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
@@ -28,19 +29,17 @@ ms.locfileid: "52873168"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci Node.js pro vytváření prostředků Azure Cosmos DB a jejich dotazování.
+Jako vývojář můžete mít aplikace, které používají dat dokumentů typu NoSQL. Účet rozhraní SQL API ve službě Azure Cosmos DB můžete použít k ukládání a přístup k těmto datům dokumentu. V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci Node.js a vytvořte prostředky služby Azure Cosmos DB a jejich dotazování.
 
-Tento kurz se zabývá následujícími úkony:
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Vytvoření účtu služby Azure Cosmos DB a připojení k němu
-> * Nastavení aplikace
-> * Vytvoření databáze
-> * Vytvoření kontejneru
-> * Přidání položek do kontejneru
-> * Provádění operací CRUD s položkami, kontejnerem a databází
-
-Nemáte čas aplikaci vytvářet? Nevadí! Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ). Rychlé pokyny najdete v části [Získání úplného řešení](#GetSolution) tohoto článku.
+> * Vytvoření a připojení k účtu služby Azure Cosmos DB.
+> * Nastavení aplikace.
+> * Vytvoření databáze.
+> * Vytvořte kontejner.
+> * Přidání položek do kontejneru.
+> * Provádění základních operací, o položkách, kontejnerů a databáze.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -50,15 +49,17 @@ Ujistěte se, že máte následující prostředky:
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js](https://nodejs.org/) verze 6.0.0 nebo novější.
+* [Node.js](https://nodejs.org/) v6.0.0 nebo vyšší.
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
+## <a name="create-azure-cosmos-db-account"></a>Vytvoření účtu Azure Cosmos DB
 
 Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete použít, můžete přeskočit k části [Nastavení aplikace Node.js](#SetupNode). Pokud používáte emulátor služby Azure Cosmos DB, nastavte emulátor pomocí postupu v tématu [Emulátor služby Azure Cosmos DB](local-emulator.md) a přeskočte k části [Nastavení aplikace Node.js](#SetupNode). 
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupNode"></a>Krok 2: Nastavení aplikace Node.js
+## <a id="SetupNode"></a>Nastavení aplikace Node.js
+
+Než začnete psát kód pro vytvoření aplikace, můžete vytvořit rozhraní pro vaši aplikaci. Provedením následujících kroků pro nastavení aplikace Node.js, který má kód framework:
 
 1. Otevřete svůj oblíbený terminál.
 2. Vyhledejte složku nebo adresář, do kterého chcete uložit aplikaci Node.js.
@@ -75,7 +76,9 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 4. Nainstalujte přes npm modul @azure/cosmos. Použijte následující příkaz:
    * ```npm install @azure/cosmos --save```
 
-## <a id="Config"></a>Krok 3: Nastavení konfigurací aplikace
+## <a id="Config"></a>Nastavení konfigurací aplikace
+
+Teď, když vaše aplikace existuje, musíte zajistit, aby že komunikoval s Azure Cosmos DB. Stačí aktualizovat několik nastavení konfigurace, jak je znázorněno v následujícím postupu můžete nastavit aplikaci komunikovat s Azure Cosmos DB:
 
 1. Ve svém oblíbeném textovém editoru otevřete ```config.js```.
 
@@ -91,7 +94,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
    config.primaryKey = "~your primary key here~";
    ``` 
 
-1. Zkopírujte údaje ```database```, ```container``` a ```items``` a vložte je do objektu ```config``` pod nastavení vlastností ```config.endpoint``` a ```config.primaryKey```. Pokud již máte data, která chcete uložit do databáze, můžete tady místo definování dat použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB.
+1. Zkopírujte údaje ```database```, ```container``` a ```items``` a vložte je do objektu ```config``` pod nastavení vlastností ```config.endpoint``` a ```config.primaryKey```. Pokud již máte data, která chcete uložit do databáze, můžete použít nástroj pro migraci dat do služby Azure Cosmos DB místo definování dat tady.
 
    ```nodejs
    var config = {}
@@ -165,7 +168,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
    };
    ```
 
-   Poznámka: Pokud znáte předchozí verzi sady JavaScript SDK, možná jste zvyklí na používání termínů „kolekce“ a „dokument“. Vzhledem k tomu, že Azure Cosmos DB podporuje [více modelů rozhraní API](https://docs.microsoft.com/azure/cosmos-db/introduction#key-capabilities), ve verzi 2.0 sady JavaScript SDK a novější se používají obecné termíny „kontejner“ a „položka“. Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. 
+   Sada JavaScript SDK používá obecné podmínky *kontejneru* a *položky*. Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. 
 
 1. Nakonec exportujte objekt ```config```, abyste na něj mohli odkazovat ze souboru ```app.js```.
 
@@ -179,7 +182,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
    module.exports = config;
    ```
 
-## <a id="Connect"></a>Krok 4: Připojení k účtu služby Azure Cosmos DB
+## <a id="Connect"></a>Připojte se k účtu služby Azure Cosmos DB
 
 1. V textovém editoru otevřete prázdný soubor ```app.js```. Zkopírováním a vložením kódu níže importujte modul ```@azure/cosmos``` a nově vytvořený modul ```config```.
 
@@ -205,9 +208,9 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 
 Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věnovat práci s prostředky Azure Cosmos DB.
 
-## <a name="step-5-create-a-database"></a>Krok 5: Vytvoření databáze
+## <a name="create-a-database"></a>Vytvoření databáze
 
-1. Zkopírujte a vložte kód níže, který nastaví ID databáze a ID kontejneru. Pomocí těchto ID klient Azure Cosmos DB najde správnou databázi a kontejner.
+1. Zkopírujte a vložte kód níže, který nastaví ID databáze a ID kontejneru. Tyto identifikátory jsou, jak bude klient služby Azure Cosmos DB najít správnou databázi a kontejner.
 
    ```nodejs
    const client = new CosmosClient({ endpoint: endpoint, auth: { masterKey: masterKey } });
@@ -219,7 +222,7 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
    const containerId = config.container.id;
    ```
 
-   Databázi lze vytvořit buď pomocí [createIfNotExists](/javascript/api/%40azure/cosmos/databases) nebo [vytvořit](/javascript/api/%40azure/cosmos/databases) funkce **databází** třídy. Databáze je logický kontejner položek rozdělených napříč kontejnery. 
+   Databázi lze vytvořit buď pomocí `createIfNotExists` nebo vytvořit funkci **databází** třídy. Databáze je logický kontejner položek rozdělených napříč kontejnery. 
 
 2. Zkopírujte metody **createDatabase** a **readDatabase** a vložte je do souboru app.js pod definici ```databaseId``` a ```containerId```. Funkce **createDatabase** vytvoří novou databázi s ID ```FamilyDatabase``` definovaným v objektu ```config```, pokud ještě neexistuje. Funkce **readDatabase** přečte definici databáze a ověří, jestli databáze existuje.
 
@@ -321,14 +324,14 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.
+## <a id="CreateContainer"></a>Vytvoření kontejneru
 
-## <a id="CreateContainer"></a>Krok 6: Vytvoření kontejneru
+Dále vytvořte kontejner v účtu Azure Cosmos DB, tak, že můžete ukládat a dotazovat data. 
 
 > [!WARNING]
-> Zavoláním funkce **createContainer** se vytvoří nový kontejner, za který se hradí poplatky. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
+Vytvoření kontejneru se hradí. Navštivte naše [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) abyste věděli, co mají očekávat.
 
-Kontejner je možné vytvořit pomocí funkce [createIfNotExists](/javascript/api/%40azure/cosmos/containers) nebo [create](/javascript/api/%40azure/cosmos/containers) z třídy **Containers**.  Kontejner se skládá z položek (v případě rozhraní SQL API to jsou dokumenty JSON) a přidružené logiky javascriptové aplikace.
+Kontejner můžete vytvořit buď pomocí `createIfNotExists` nebo vytvoření funkce z **kontejnery** třídy.  Kontejner se skládá z položek (v případě rozhraní SQL API to jsou dokumenty JSON) a přidružené logiky javascriptové aplikace.
 
 1. Zkopírujte funkce **createContainer** a **readContainer** a vložte je pod funkci **readDatabase** v souboru app.js. Funkce **createContainer** vytvoří nový kontejner s ID ```containerId``` definovaným v objektu ```config```, pokud ještě neexistuje. Funkce **readContainer** přečte definici kontejneru a ověří, jestli kontejner existuje.
 
@@ -441,11 +444,9 @@ Kontejner je možné vytvořit pomocí funkce [createIfNotExists](/javascript/ap
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos DB.
+## <a id="CreateItem"></a>Vytvoření položky
 
-## <a id="CreateItem"></a>Krok 7: Vytvoření položky
-
-Položku je možné vytvořit pomocí funkce [create](/javascript/api/%40azure/cosmos/items) z třídy **Items**. Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Teď můžete do služby Azure Cosmos DB vložit položku.
+Položky můžete vytvořit pomocí funkce vytvořit **položky** třídy. Pokud používáte rozhraní SQL API, položky se vykreslují jako dokumenty, které jsou uživatelem definovaný (libovolný) obsah JSON. Teď můžete do služby Azure Cosmos DB vložit položku.
 
 1. Zkopírujte funkci **createFamilyItem** a vložte ji pod funkci **readContainer**. Funkce **createFamilyItem** vytvoří položky obsahující data JSON uložená v objektu ```config```. Před vytvořením položky zkontrolujeme, že položka se stejným ID ještě neexistuje.
 
@@ -494,13 +495,11 @@ Položku je možné vytvořit pomocí funkce [create](/javascript/api/%40azure/c
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste vytvořili položku Azure Cosmos DB.
 
+## <a id="Query"></a>Dotazování prostředků Azure Cosmos DB
+Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v jednotlivých kontejnerech. Následující vzorový kód ukazuje dotaz, který můžete spouštět proti dokumentům v kontejneru.
 
-## <a id="Query"></a>Krok 8: Dotazování prostředků Azure Cosmos DB
-Azure Cosmos DB podporuje [bohaté dotazy](how-to-sql-query.md) na dokumenty JSON uložené v jednotlivých kontejnerech. Následující vzorový kód ukazuje dotaz, který můžete spouštět proti dokumentům v kontejneru.
-
-1. Zkopírujte funkci **queryContainer** a vložte ji pod funkci **createFamilyItem** v souboru app.js. Jak je vidět níže, Azure Cosmos DB podporuje dotazy podobné jazyku SQL. Další informace o vytváření komplexních dotazů najdete v [Query Playground](https://www.documentdb.com/sql/demo) a [dokumentaci k dotazům](how-to-sql-query.md).
+1. Zkopírujte funkci **queryContainer** a vložte ji pod funkci **createFamilyItem** v souboru app.js. Jak je vidět níže, Azure Cosmos DB podporuje dotazy podobné jazyku SQL.
 
    ```nodejs
    /**
@@ -552,9 +551,8 @@ Azure Cosmos DB podporuje [bohaté dotazy](how-to-sql-query.md) na dokumenty JSO
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste provedli dotaz na položky Azure Cosmos DB.
 
-## <a id="ReplaceItem"></a>Krok 9: Nahrazení položky
+## <a id="ReplaceItem"></a>Nahraďte položku
 Azure Cosmos DB podporuje nahrazování obsahu položek.
 
 1. Zkopírujte funkci **replaceFamilyItem** a vložte ji pod funkci **queryContainer** v souboru app.js. Všimněte si, že jsme změnili vlastnost grade podřízeného prvku z předchozí hodnoty 5 na hodnotu 6.
@@ -598,9 +596,8 @@ Azure Cosmos DB podporuje nahrazování obsahu položek.
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste nahradili položku Azure Cosmos DB.
 
-## <a id="DeleteItem"></a>Krok 10: Odstranění položky
+## <a id="DeleteItem"></a>Odstranění položky
 
 Azure Cosmos DB podporuje odstraňování položek JSON.
 
@@ -644,9 +641,8 @@ Azure Cosmos DB podporuje odstraňování položek JSON.
    node app.js
    ```
 
-Blahopřejeme! Úspěšně jste odstranili položku Azure Cosmos DB.
 
-## <a id="DeleteDatabase"></a>Krok 11: Odstranění databáze
+## <a id="DeleteDatabase"></a>Odstranění databáze
 
 Odstraněním vytvořené databáze dojde k odstranění databáze a všech jejích podřízených prostředků (kontejnerů, položek atd.).
 
@@ -683,7 +679,7 @@ Odstraněním vytvořené databáze dojde k odstranění databáze a všech jej�
       .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
    ```
 
-## <a id="Run"></a>Krok 12: Spuštění celé aplikace Node.js
+## <a id="Run"></a>Spustit aplikaci v Node.js
 
 Jako celek by váš kód měl vypadat přibližně takto:
 
@@ -876,36 +872,35 @@ Měl by se zobrazit výstup počáteční aplikace. Výstup by měl odpovídat u
     Press any key to exit
    ```
 
-Blahopřejeme! Dokončili jste kurz Node.js a máte svou první konzolovou aplikaci využívající službu Azure Cosmos DB!
+## <a id="GetSolution"></a>Získání úplného řešení kurzu k Node.js 
 
-## <a id="GetSolution"></a>Získání úplného řešení kurzu k Node.js
+Pokud jste neměli dostatek času k dokončení kroků v tomto kurzu nebo si jenom chcete stáhnout kód, můžete ho získat z [GitHubu](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ). 
 
-Pokud jste neměli dostatek času k dokončení kroků v tomto kurzu nebo si jenom chcete stáhnout kód, můžete ho získat z [GitHubu](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started ).
+Pokud chcete spustit načítání Začínáme řešení, které obsahuje veškerý kód v tomto článku, budete potřebovat: 
 
-Pokud chcete spustit řešení Getting Started, které obsahuje veškerý kód v tomto článku, budete muset provést následující kroky:
+* [Účet služby Azure Cosmos DB][create-account]. 
+* Řešení [Getting Started](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started), které je k dispozici na GitHubu. 
 
-* [Účet služby Azure Cosmos DB][create-account].
-* Řešení [Getting Started](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started), které je k dispozici na GitHubu.
+Nainstalujte přes npm modul **@azure/cosmos**. Použijte následující příkaz: 
 
-Nainstalujte přes npm modul **@azure/cosmos**. Použijte následující příkaz:
+* ```npm install @azure/cosmos --save``` 
 
-* ```npm install @azure/cosmos --save```
+Vedle ```config.js``` souboru, jak je popsáno v aktualizujte hodnoty config.endpoint a config.primaryKey [krok 3: Nastavení konfigurací aplikace](#Config).  
 
-Dále v souboru ```config.js``` aktualizujte hodnoty config.endpoint a config.primaryKey, jak je popsáno v části [Krok 3: Nastavení konfigurací aplikace](#Config). 
+Potom v terminálu vyhledejte soubor ```app.js``` a spusťte příkaz:  
 
-Potom v terminálu vyhledejte soubor ```app.js``` a spusťte příkaz: 
-
-```bash 
-node app.js
+```bash  
+node app.js 
 ```
 
-A to je vše, máte hotovo. 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud tyto prostředky už nepotřebujete, můžete odstranit skupinu prostředků, účet služby Azure Cosmos DB a všech souvisejících prostředků. Uděláte to tak, vyberte skupinu prostředků, který jste použili pro účet služby Azure Cosmos DB, vyberte **odstranit**a potom ověřte název skupiny prostředků pro odstranění.
 
 ## <a name="next-steps"></a>Další postup
 
-* Hledáte složitější ukázku Node.js? Viz [Sestavení webové aplikace Node.js využívající službu Azure Cosmos DB](sql-api-nodejs-application.md).
-* Zjistěte, jak [monitorovat účet služby Azure Cosmos DB](monitor-accounts.md).
-* Spouštějte dotazy proti ukázkovým datovým sadám v [Query Playground](https://www.documentdb.com/sql/demo).
+> [!div class="nextstepaction"]
+> [Monitorování účtu služby Azure Cosmos DB](monitor-accounts.md)
 
 [create-account]: create-sql-api-dotnet.md#create-account
 [keys]: media/sql-api-nodejs-get-started/node-js-tutorial-keys.png

@@ -4,25 +4,25 @@ description: Informace o řešení potíží s agentem Update Management.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/06/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 028a06a7fb627fd69bdd2f0a2084bbdef11eaed4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077235"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438638"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly systému Linux agenta v Update Management
 
-Může být mnoho důvodů, proč počítač Azure se nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích se z portálu Azure portal a v případě offline scénářů.
+Může být mnoho důvodů, proč počítač nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z webu Azure portal a počítače mimo Azure v [offline scénáři](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-Kliknutím **Poradce při potížích** odkaz pod **připravenost agenta aktualizací** sloupce na portálu, spusťte **řešení potíží s aktualizací agenta** stránky. Tato stránka zobrazuje problémy s agentem a odkaz na tento článek vám pomůže vyřešit vaše potíže.
+Pro počítače Azure, kliknutím **Poradce při potížích** odkaz v části **připravenost agenta aktualizací** sloupec v portálu spustí **řešení potíží s aktualizací agenta** stránky. Pro počítače mimo Azure přináší na odkaz můžete k tomuto článku. Zobrazit [offline pokyny](#offline) řešení potíží s počítači mimo Azure.
 
 ![Stránka seznamu virtuálních počítačů](../media/update-agent-issues-linux/vm-list.png)
 
@@ -54,12 +54,12 @@ Kontrola operačního systému, ověří, pokud funkce Hybrid Runbook Worker s n
 
 ### <a name="oms-agent"></a>Agenta OMS
 
-Této kontroly zajistí, že je nainstalovaný Agent OMS pro Linux. Pokyny k její instalaci najdete v tématu [instalace agenta pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+Tato kontrola se zajistí, že je nainstalovaný Agent OMS pro Linux. Pokyny k její instalaci najdete v tématu [instalace agenta pro Linux](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 ).
 
 ### <a name="oms-agent-status"></a>Stav agenta OMS
 
-Tato kontrola se zajistí, že je spuštěn Agent OMS pro Linux. Pokud agent není spuštěn spustíte následující příkaz, který se pokusí o restartování. Další informace o řešení potíží s agenta najdete v tématu [Linux Hybrid Runbook worker Poradce při potížích](hybrid-runbook-worker.md#linux)
+Tato kontrola se zajistí, že je spuštěn Agent OMS pro Linux. Pokud agent není spuštěn, můžete spustit následující příkaz, který se pokusí o restartování. Další informace o řešení potíží s agenta najdete v tématu [Linux Hybrid Runbook worker Poradce při potížích](hybrid-runbook-worker.md#linux)
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -71,7 +71,7 @@ Tato kontrola Určuje, jestli se agent hlásí do několika pracovních prostor�
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-Tato kontrola ověřuje zajistit, že má Agent OMS pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutná pro správu aktualizací pro práci.
+Tato kontrola ověřuje, jestli má agenta OMS pro Linux balíček Hybrid Runbook Worker. Tento balíček je nutná pro správu aktualizací pro práci.
 
 ### <a name="hybrid-runbook-worker-status"></a>Stav hybrid Runbook Worker
 

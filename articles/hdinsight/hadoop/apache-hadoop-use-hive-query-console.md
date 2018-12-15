@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99cb1c4aed8e82afd819185d7acab88cdae6c418
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016789"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409696"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>Spouštění dotazů Apache Hive pomocí konzoly pro dotazy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 V tomto článku se dozvíte, jak spouštět dotazy Apache Hive v clusteru HDInsight Hadoop z prohlížeče pomocí konzoly pro dotazy HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Konzole pro dotazy HDInsight je dostupná pouze na clusterech HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4 nebo větší, přečtěte si téma [spouštění dotazů Hive v zobrazení Ambari Hive](apache-hadoop-use-hive-ambari-view.md) informace o spouštění dotazů Hive z webového prohlížeče.
+> HDInsight 3.4 nebo větší, přečtěte si téma [spustit Apache Hive dotazy v zobrazení Ambari Hive](apache-hadoop-use-hive-ambari-view.md) informace o spouštění dotazů Hive z webového prohlížeče.
 
 ## <a id="prereq"></a>Požadavky
 K dokončení kroků v tomto článku, budete potřebovat.
@@ -32,7 +32,7 @@ K dokončení kroků v tomto článku, budete potřebovat.
 * Cluster HDInsight Hadoop využívající systém Windows
 * Moderní webový prohlížeč
 
-## <a id="run"></a> Spouštění dotazů Hive pomocí konzoly pro dotazy
+## <a id="run"></a> Spouštění dotazů Apache Hive pomocí konzoly pro dotazy
 1. Otevřete webový prohlížeč a přejděte do **https://CLUSTERNAME.azurehdinsight.net**, kde **CLUSTERNAME** je název vašeho clusteru HDInsight. Pokud se zobrazí výzva, zadejte uživatelské jméno a heslo, které jste použili při vytváření clusteru.
 2. Z odkazů v horní části stránky vyberte **Hive Editor**. Zobrazí se formulář, který je možné zadat příkazy HiveQL, které chcete spustit v clusteru HDInsight.
 
@@ -49,20 +49,20 @@ K dokončení kroků v tomto článku, budete potřebovat.
 
     Tyto příkazy provádět následující akce:
 
-   * **DROP TABLE**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
-   * **CREATE EXTERNAL TABLE**: vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložení pouze definice tabulky v podregistru; data zůstane v původním umístění.
+   * **TABULKY**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
+   * **CREATE EXTERNAL TABLE**: Vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložení pouze definice tabulky v podregistru; data zůstane v původním umístění.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Externí tabulky, které má být použit, při očekáváte, že podkladová data aktualizovat pomocí externího zdroje (například procesu nahrávání automatizovaných datových) nebo jiné operaci MapReduce, ale chcete, aby dotazy Hive používat nejnovější data.
      >
      > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
      >
      >
-   * **ŘÁDEK formát**: říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
-   * **ULOŽEN jako textový soubor umístění**: říká Hive, ve kterém se data ukládají (do adresáře příkladu/dat) a, která je uložená jako text
-   * **Vyberte**: Vyberte počet všech řádků ve kterém sloupci **t4** obsahovat hodnotu **[Chyba]**. To by měl vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+   * **ŘÁDEK FORMÁT**: Říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+   * **ULOŽEN JAKO TEXTOVÝ SOUBOR UMÍSTĚNÍ**: Říká Hive, ve kterém jsou data uložená (do adresáře příkladu/dat) a, která je uložená jako text
+   * **VYBERTE**: Vyberte počet všech řádků ve kterém sloupci **t4** obsahovat hodnotu **[Chyba]**. To by měl vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
    * **INPUT__FILE__NAME jako "%.log"** -říká Hive, který jsme by měl vrátit pouze data ze souborů s koncovkou. log. To omezuje vyhledávání na souboru sample.log, který obsahuje data a udržuje ho z vracet data z jiných příklad datové soubory, které neodpovídají schématu, které jsme definovali.
-3. Klikněte na tlačítko **odeslat**. **Relaci úloh** v dolní části stránky, by měl zobrazit podrobnosti pro konkrétní úlohu.
+3. Klikněte na **Submit** (Odeslat). **Relaci úloh** v dolní části stránky, by měl zobrazit podrobnosti pro konkrétní úlohu.
 4. Když **stav** změny pole s **dokončeno**vyberte **zobrazit podrobnosti o** pro úlohu. Na stránce podrobností **výstup úlohy** obsahuje `[ERROR]    3`. Můžete použít **Stáhnout** tlačítko v tomto poli se stáhnout soubor, který obsahuje výstup úlohy.
 
 ## <a id="summary"></a>Shrnutí
@@ -73,17 +73,17 @@ Další informace o použití konzoly pro dotazy Hive můžete spouštět úlohy
 ## <a id="nextsteps"></a>Další kroky
 Obecné informace o Hivu ve službě HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pro informace o ladění:
 
-* [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
-* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
+* [Použití uživatelského rozhraní Apache Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

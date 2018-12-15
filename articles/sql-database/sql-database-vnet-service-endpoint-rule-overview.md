@@ -1,5 +1,5 @@
 ---
-title: Koncové body služeb virtuální sítě a pravidel pro službu Azure SQL Database | Dokumentace Microsoftu
+title: Koncové body služeb virtuální sítě a pravidla pro Azure SQL Database a SQL Data Warehouse | Dokumentace Microsoftu
 description: Označte jako koncový bod služby virtuální sítě podsítě. Klikněte koncový bod jako pravidlo virtuální sítě do seznamu řízení přístupu Azure SQL Database. SQL Database je pak podporují komunikaci ze všech virtuálních počítačů a ostatní uzly v podsíti.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/13/2018
+ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958384"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438587"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL Database a SQL Data Warehouse
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
 
-*Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda Azure [SQL Database](sql-database-technical-overview.md) nebo [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) server přijímá komunikaci, kterou jsou odesílány z konkrétní podsítí ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost pro umožnění bezpečné komunikace s Azure SQL Database.
+*Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda Azure [SQL Database](sql-database-technical-overview.md) nebo [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) server přijímá komunikaci, kterou jsou odesílány z konkrétní podsítí ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost pro umožnění bezpečné komunikace s Azure SQL Database a SQL Data Warehouse.
 
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
@@ -36,13 +36,13 @@ Pokud vytvoříte pouze pravidlo virtuální sítě, můžete přeskočit ke kro
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
-**Virtuální síť:** může mít virtuální sítě přidružený k vašemu předplatnému Azure.
+**Virtuální síť:** Může mít virtuální sítě přidružený k vašemu předplatnému Azure.
 
-**Podsíť:** virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), ke kterým máte jsou přidruženy k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlech. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k vaší virtuální sítě, pokud konfiguraci zabezpečení pro povolení přístupu.
+**Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure (VM), ke kterým máte jsou přidruženy k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlech. Výpočetní uzly, které jsou mimo virtuální síť nemůže přistupovat k vaší virtuální sítě, pokud konfiguraci zabezpečení pro povolení přístupu.
 
-**Koncový bod služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. V tomto článku jsme se zajímat název typu **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem.
+**Koncový bod pro služby virtuální sítě:** A [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] je podsíť, jejichž hodnoty vlastností zahrnují jeden nebo víc názvů typu formální služby Azure. V tomto článku jsme se zajímat název typu **Microsoft.Sql**, která odkazuje na službu Azure SQL Database s názvem.
 
-**Pravidlo virtuální sítě:** pravidlo virtuální sítě pro váš server SQL Database je podsíť, která je uvedena v seznamu řízení přístupu (ACL) serveru služby SQL Database. Chcete-li se v seznamu ACL pro vaši databázi SQL, musí obsahovat podsítě **Microsoft.Sql** název typu.
+**Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro váš server SQL Database je podsíť, která je uvedena v seznamu řízení přístupu (ACL) serveru služby SQL Database. Chcete-li se v seznamu ACL pro vaši databázi SQL, musí obsahovat podsítě **Microsoft.Sql** název typu.
 
 Pravidlo virtuální sítě říká databáze SQL serveru tak, aby přijímal komunikaci od každý uzel, který je v podsíti.
 
@@ -92,8 +92,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý server Azure SQL Databa
 
 Je oddělení rolí zabezpečení ve správě koncových bodů služby virtuální sítě. Akce je zapotřebí ve směru z každé z následujících rolí:
 
-- **Správce sítě:** &nbsp; zapnout koncový bod.
-- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě k serveru SQL Database.
+- **Správce sítě:** &nbsp; Zapněte koncový bod.
+- **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě k serveru SQL Database.
 
 *Ve zkratce RBAC:*
 
@@ -129,7 +129,7 @@ Funkce pravidel virtuální sítě pro službu Azure SQL Database má následuj�
 
 Při používání koncových bodů služby pro službu Azure SQL Database, přečtěte si následující aspekty:
 
-- **Odchozí do veřejné IP adresy na Azure SQL Database se vyžaduje**: skupiny zabezpečení sítě (Nsg) musí být otevřen pro Azure SQL Database IP adres umožňující připojení k. Můžete to provést pomocí skupiny zabezpečení sítě [značky služeb](../virtual-network/security-overview.md#service-tags) pro službu Azure SQL Database.
+- **Odchozí do veřejné IP adresy na Azure SQL Database se vyžaduje**: Skupiny zabezpečení sítě (Nsg) musí být otevřen pro Azure SQL Database IP adres umožňující připojení k. Můžete to provést pomocí skupiny zabezpečení sítě [značky služeb](../virtual-network/security-overview.md#service-tags) pro službu Azure SQL Database.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -243,19 +243,19 @@ Chyba připojení 40914 má vztah k *pravidel virtuální sítě*, jak je určen
 
 ### <a name="error-40914"></a>Chyba 40914
 
-*Text zprávy:* nejde otevřít server "*[název_serveru]*' požadovaný v přihlášení. Klient není povolen přístup k serveru.
+*Text zprávy:* Nejde otevřít server "*[název_serveru]*' požadovaný v přihlášení. Klient není povolen přístup k serveru.
 
-*Popis chyby:* se v podsíti, která má koncové body serveru virtuální sítě. Ale nemá žádné pravidlo virtuální sítě, která uděluje k podsíti práva ke komunikaci s databází SQL serveru Azure SQL Database.
+*Popis chyby:* Klient je v podsíti, která má koncové body serveru virtuální sítě. Ale nemá žádné pravidlo virtuální sítě, která uděluje k podsíti práva ke komunikaci s databází SQL serveru Azure SQL Database.
 
-*Řešení chyb:* na bránu Firewall podokně webu Azure portal, použijte ovládací prvek pravidel virtuální sítě [přidáte pravidlo virtuální sítě](#anchor-how-to-by-using-firewall-portal-59j) pro podsíť.
+*Řešení chyb:* V podokně brány Firewall na webu Azure portal pomocí ovládacího prvku pravidla virtuální sítě k [přidáte pravidlo virtuální sítě](#anchor-how-to-by-using-firewall-portal-59j) pro podsíť.
 
 ### <a name="error-40615"></a>Chyba 40615
 
-*Text zprávy:* nejde otevřít server "{0}' požadovaný v přihlášení. Klient s IP adresou{1}' nemá povolený přístup k serveru.
+*Text zprávy:* Nejde otevřít server "{0}' požadovaný v přihlášení. Klient s IP adresou{1}' nemá povolený přístup k serveru.
 
-*Popis chyby:* klient se pokouší o připojení z IP adresy, která není autorizován pro připojení k serveru Azure SQL Database. Brána firewall serveru nemá žádné pravidlo adresy IP, která umožňuje klientům komunikovat z dané IP adresy do služby SQL Database.
+*Popis chyby:* Klient se pokouší o připojení z IP adresy, která není autorizován pro připojení k serveru Azure SQL Database. Brána firewall serveru nemá žádné pravidlo adresy IP, která umožňuje klientům komunikovat z dané IP adresy do služby SQL Database.
 
-*Řešení chyb:* zadejte IP adresu klienta jako pravidlo IP. To lze proveďte pomocí podokna brány Firewall na webu Azure Portal.
+*Řešení chyb:* Zadejte IP adresu klienta jako pravidlo IP. To lze proveďte pomocí podokna brány Firewall na webu Azure Portal.
 
 Seznam chybových zpráv SQL Database je zdokumentován [tady][sql-database-develop-error-messages-419g].
 
@@ -278,7 +278,7 @@ Skript prostředí PowerShell můžete také vytvořit pravidla virtuální sít
 
 Rutiny Powershellu pro virtuální síť SQL akce interně, volání rozhraní REST API. Rozhraní REST API můžete volat přímo.
 
-- [Pravidla virtuální sítě: operace][rest-api-virtual-network-rules-operations-862r]
+- [Pravidla virtuální sítě: Operace][rest-api-virtual-network-rules-operations-862r]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -320,10 +320,10 @@ Podsíť, která je označena jako konkrétní koncový bod služby virtuální 
 
 > [!NOTE]
 > Na tato pravidla se vztahují následující stavy nebo stavy:
-> - **Připraveno:** označuje, že operace, která jste spustili proběhla úspěšně.
-> - **Nezdařilo se:** označuje, že operace, které jste spustili se nezdařila.
-> - **Odstranit:** pouze se vztahuje na operaci odstranění zopakovat a označuje, že pravidlo byl odstraněn a už neplatí.
-> - **Probíhá zpracování:** označuje, že probíhá operace. Staré pravidlo během operace je v tomto stavu.
+> - **Připravené:** Označuje, že operace, která jste spustili proběhla úspěšně.
+> - **Nezdařilo se:** Označuje, že operace, které jste spustili se nezdařila.
+> - **Odstranit:** Pouze platí pro operaci odstranění zopakovat a označuje, že pravidlo byl odstraněn a už neplatí.
+> - **Probíhá zpracování:** Označuje, že operace probíhá. Staré pravidlo během operace je v tomto stavu.
 
 <a name="anchor-how-to-links-60h" />
 
@@ -347,7 +347,7 @@ Funkce pravidlo virtuální sítě pro službu Azure SQL Database jsou dostupné
 
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
-<!-- Link references, to text, Within this same Github repo. -->
+<!-- Link references, to text, Within this same GitHub repo. -->
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
@@ -369,7 +369,7 @@ Funkce pravidlo virtuální sítě pro službu Azure SQL Database jsou dostupné
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
-<!-- Link references, to text, Outside this Github repo (HTTP). -->
+<!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 

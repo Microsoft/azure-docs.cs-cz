@@ -15,14 +15,17 @@ ms.devlang: Python
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0c805deb85a999d3c23be24b81c1d97ed5fe55eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 86ce9fd77ccf83ed6f5f1c722b4c8c809ef0eedf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057466"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407911"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-python-sdk"></a>Spuštění trénovací úlohy CNTK pomocí sady Azure Python SDK
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 V tomto článku si ukážeme jak používat sadu Azure Python SDK k trénování ukázkového modelu Microsoft Cognitive Toolkit (CNTK) ve službě Batch AI.
 
@@ -303,6 +306,6 @@ Pomocí následujícího kódu odstraňte všechny přidělené prostředky:
 ```Python
 resource_management_client.resource_groups.delete('myresourcegroup')
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o použití služby Batch AI na různých platformách najdete v článku s [návody na trénování](https://github.com/Azure/BatchAI).

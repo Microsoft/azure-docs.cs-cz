@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b429f9dab0411dba599fd696dff3d424916007e0
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4da64f01f3b4f39bd10fd3cb1b67910ffca886b8
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635165"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413264"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
@@ -96,7 +96,23 @@ Následující části tohoto článku popisují jednotlivé vlastnosti nejvyš�
 
 Toto nastavení je podřízeným prvkem [protokolování](#logging).
 
-[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
+Ovládací prvky [vzorkování funkcí ve službě Application Insights](./functions-monitoring.md#configure-sampling).
+
+```json
+{
+    "applicationInsights": {
+        "samplingSettings": {
+          "isEnabled": true,
+          "maxTelemetryItemsPerSecond" : 5
+        }
+    }
+}
+```
+
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------| 
+|hodnotu isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začíná.| 
 
 ## <a name="cosmosdb"></a>cosmos DB
 
@@ -185,7 +201,28 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jaké úroveň protokolování do souboru je povolená.  Možnosti jsou `never`, `always`, `debugOnly`. |
 |LogLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|konzola|neuvedeno| [Konzoly](#console) nastavení protokolování. |
 |applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
+
+## <a name="console"></a>konzola
+
+Toto nastavení je podřízeným prvkem [protokolování](#logging). Určuje konzoly protokolování není v režimu ladění.
+
+```json
+{
+    "logging": {
+    ...
+        "console": {
+          "isEnabled": "false"
+        },
+    ...
+    }
+}
+```
+
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------| 
+|hodnotu isEnabled|false (nepravda)|Povolí nebo zakáže protokolování konzoly.| 
 
 ## <a name="queues"></a>fronty
 

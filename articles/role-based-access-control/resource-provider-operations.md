@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b09f64e2183453b3656efa340d53682a241dd00e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017949"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410529"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -80,7 +80,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/addsservices/features/userpreference/read | Získá nastavení předvolby uživatele pro doménovou strukturu.<br>Příklad – MetricCounterName jako ldapsuccessfulbinds ntlmauthentications, kerberosauthentications, addsinsightsagentprivatebytes, ldapsearches.<br>Nastavení pro další grafy uživatelského rozhraní. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/forestsummary/read | Získá doménové struktury souhrnu dané doménové struktury, jako je název doménové struktury, počet domén v rámci této doménové struktuře, počet lokalitami a lokalitami atd. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu AD FS atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu atd ATQ vlákna celkový počet pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
-> | Akce | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API je možné získat informace související s: uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/addsservices/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/premiumcheck/read | Toto rozhraní API získá seznam všech připojili ADDomainServices pro klienta premium. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/read | Získá podrobnosti o službě pro zadaný název služby. |
 > | Akce | Microsoft.ADHybridHealthService/addsservices/replicationdetails/read | Získá podrobnosti o replikaci pro všechny servery pro zadaný název služby. |
@@ -115,9 +115,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/services/exportstatus/read | Získá stav exportu pro určitou službu. |
 > | Akce | Microsoft.ADHybridHealthService/services/feedbacktype/feedback/read | Získá zpětnou vazbu upozornění pro určitou službu a server. |
 > | Akce | Microsoft.ADHybridHealthService/services/metricmetadata/read | Získá seznam podporovaných metrik pro určitou službu.<br>Pro příklad uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu AD FS atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu atd ATQ vlákna celkový počet pro ADDomainService.<br>Spuštění profilu latence, navázat připojení TCP, Insights agenta nesdílených bajtů, statistiky exportu do služby Azure AD pro službu ADSync. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Toto rozhraní API s ohledem služby, získá průměr metriky pro určitou službu.<br>Například toto rozhraní API je možné získat informace související s: uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API je možné získat informace související s: uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Toto rozhraní API s ohledem služby, získá agregovaná zobrazení pro metriky pro určitou službu.<br>Například toto rozhraní API je možné získat informace související s: uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/average/read | Toto rozhraní API s ohledem služby, získá průměr metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/metrics/groups/sum/read | Toto rozhraní API s ohledem služby, získá agregovaná zobrazení pro metriky pro určitou službu.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfiguration/write | Přidat nebo aktualizovat konfiguraci monitorování pro služby. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfigurations/read | Získá konfigurace monitorování pro určitou službu. |
 > | Akce | Microsoft.ADHybridHealthService/services/monitoringconfigurations/write | Přidání nebo aktualizace konfigurací monitorování pro služby. |
@@ -130,7 +130,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/datafreshness/read | Toto rozhraní API pro daný server, získá seznam datových typů, které se nahrávají servery a čas posledního pro každý nahraný. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/delete | Odstraní instanci serveru ve službě. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/exportstatus/read | Získá podrobnosti o chybě exportu synchronizace pro určitou službu synchronizace. |
-> | Akce | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API je možné získat informace související s: uzamčení extranetu účet, celkový počet neúspěšných požadavků, nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
+> | Akce | Microsoft.ADHybridHealthService/services/servicemembers/metrics/groups/read | S ohledem služby, toto rozhraní API získá informace o metrikách.<br>Například toto rozhraní API slouží k získání informací o související s: Extranetu uzamčení účtu, celkový počet neúspěšných požadavků nevyřízené žádosti o tokeny (Proxy), za sekundu žádostí o Token pro službu ADFederation atd.<br>NTLM ověření za sekundu, vazby protokolu LDAP úspěšný/s, čas vytvoření vazby protokolu LDAP, aktivní vlákna LDAP, Kerberos ověření za sekundu, ATQ vlákna celkový atd ADDomain služby.<br>Spuštění profilu, čekací doba připojení protokolu TCP, Insights agenta nesdílených bajtů, exportujte statistiky do služby Azure AD pro službu synchronizace. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/read | Načte instanci serveru ve službě. |
 > | Akce | Microsoft.ADHybridHealthService/services/servicemembers/serviceconfiguration/read | Získá konfiguraci služby pro daného tenanta. |
 > | Akce | Microsoft.ADHybridHealthService/services/tenantwhitelisting/read | Získá stav přidávání na seznam povolených funkcí pro daného tenanta. |
@@ -600,38 +600,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Batch/register/action | Zaregistruje předplatné u poskytovatele prostředků služby Batch a povolí vytvoření účtů služby Batch |
 > | Akce | Microsoft.Batch/unregister/action | Zruší registraci předplatného u poskytovatele prostředků služby Batch, brání vytváření účtů služby Batch |
 
-## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Typ akce | Operace | Popis |
-> | --- | --- | --- |
-> | Akce | Microsoft.BatchAI/clusters/read | Clustery Batch AI jsou uvedeny nebo načte vlastnosti cluster Batch AI |
-> | Akce | Microsoft.BatchAI/fileservers/read | Uvádí služby Batch AI fileservers nebo načte vlastnosti souborového serveru služby Batch AI |
-> | Akce | Microsoft.BatchAI/locations/operationresults/read | Získá výsledek operace asynchronní služby Batch AI v zadané oblasti Azure |
-> | Akce | Microsoft.BatchAI/locations/operationstatuses/read | Získá stav operace asynchronní služby Batch AI v zadané oblasti Azure |
-> | Akce | Microsoft.BatchAI/locations/usages/read | Získá použití služby Batch AI zadaného předplatného v zadané oblasti Azure |
-> | Akce | Microsoft.BatchAI/register/action | Zaregistruje předplatné u poskytovatele prostředků služby Batch AI a povolí vytváření prostředků služby Batch AI |
-> | Akce | Microsoft.BatchAI/unregister/action | Zruší registraci předplatného u poskytovatele prostředků služby Batch AI brání vytváření prostředků služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/clusters/delete | Odstraní cluster Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/clusters/read | Clustery Batch AI jsou uvedeny nebo načte vlastnosti cluster Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/clusters/remoteLoginInformation/action | Uvádí informace o vzdálené přihlášení pro cluster Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/clusters/write | Vytvoří nový cluster Batch AI nebo aktualizuje existující cluster Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/delete | Odstraní pracovní prostor služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/delete | Odstraní experimentu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/delete | Odstraní úlohu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/listoutputfiles/action | Seznamy výstupních souborů pro úlohu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/read | Seznamy úloh služby Batch AI nebo získá vlastnosti úlohy Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/remoteLoginInformation/action | Uvádí informace o vzdálené přihlášení pro úlohu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/terminate/action | Ukončí úlohu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/jobs/write | Vytvoří novou úlohu služby Batch AI nebo aktualizuje existující úlohy služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/read | Seznamy Batch AI experimenty nebo načte vlastnosti experimentu služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/experiments/write | Vytvoří nový experiment služby Batch AI nebo aktualizuje existující experiment služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/fileservers/delete | Odstraní souborového serveru služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/fileservers/read | Uvádí služby Batch AI fileservers nebo načte vlastnosti souborového serveru služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/fileservers/write | Vytvoří nové služby Batch AI u souborového serveru nebo aktualizuje existující Souborový_server služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/read | Zobrazí seznam pracovních prostorů služby Batch AI nebo načte vlastnosti pracovního prostoru služby Batch AI |
-> | Akce | Microsoft.BatchAI/workspaces/write | Vytvoří nový pracovní prostor služby Batch AI nebo aktualizuje existující pracovní prostor služby Batch AI |
-
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -658,20 +626,20 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.Blueprint/blueprintAssignments/delete | Odstranit všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprintAssignments/read | Číst všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprints/artifacts/delete | Odstranit všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprints/artifacts/read | Číst všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprints/artifacts/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprints/delete | Odstranit všechny podrobné plány. |
-> | Akce | Microsoft.Blueprint/blueprints/read | Přečte všechny podrobné plány |
-> | Akce | Microsoft.Blueprint/blueprints/versions/artifacts/read | Číst všechny artefakty podrobného plánu |
-> | Akce | Microsoft.Blueprint/blueprints/versions/delete | Odstranit všechny podrobné plány. |
-> | Akce | Microsoft.Blueprint/blueprints/versions/read | Přečte všechny podrobné plány |
+> | Akce | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprintAssignments/read | Přečte všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprints/artifacts/delete | Odstraní všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprints/artifacts/read | Přečte všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprints/artifacts/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprints/delete | Odstraní všechny podrobné plány. |
+> | Akce | Microsoft.Blueprint/blueprints/read | Přečte všechny podrobné plány. |
+> | Akce | Microsoft.Blueprint/blueprints/versions/artifacts/read | Přečte všechny artefakty podrobného plánu. |
+> | Akce | Microsoft.Blueprint/blueprints/versions/delete | Odstraní všechny podrobné plány. |
+> | Akce | Microsoft.Blueprint/blueprints/versions/read | Přečte všechny podrobné plány. |
 > | Akce | Microsoft.Blueprint/blueprints/versions/write | Vytvoří nebo aktualizuje všechny podrobné plány. |
 > | Akce | Microsoft.Blueprint/blueprints/write | Vytvoří nebo aktualizuje všechny podrobné plány. |
-> | Akce | Microsoft.Blueprint/register/action | Zaregistrovat poskytovatele prostředků Azure podrobné plány. |
+> | Akce | Microsoft.Blueprint/register/action | Zaregistruje poskytovatele prostředků podrobných plánů Azure |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -1324,16 +1292,16 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ContainerService/containerServices/delete | Odstraní službu kontejneru. |
 > | Akce | Microsoft.ContainerService/containerServices/read | Získat službu kontejneru |
 > | Akce | Microsoft.ContainerService/containerServices/write | Vytvoří novou službu kontejneru nebo aktualizuje stávající. |
-> | Akce | Microsoft.ContainerService/locations/operationresults/read | Získá stav výsledek asynchronní operace |
+> | Akce | Microsoft.ContainerService/locations/operationresults/read | Umožňuje získat stav výsledku asynchronní operace. |
 > | Akce | Microsoft.ContainerService/locations/operations/read | Umožňuje získat stav asynchronní operace. |
-> | Akce | Microsoft.ContainerService/locations/orchestrators/read | Seznamy podporovaných orchestrátorů |
+> | Akce | Microsoft.ContainerService/locations/orchestrators/read | Vypíše podporované orchestrátory. |
 > | Akce | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Získat profil přístupu spravovaného clusteru podle názvu role pomocí přihlašovacích údajů seznamu |
 > | Akce | Microsoft.ContainerService/managedClusters/accessProfiles/read | Získat profil přístupu spravovaného clusteru podle názvu role |
 > | Akce | Microsoft.ContainerService/managedClusters/delete | Odstraní spravovaný cluster. |
-> | Akce | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Seznam přihlašovacích údajů clusterAdmin spravovaného clusteru |
-> | Akce | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Seznam přihlašovacích údajů clusterUser spravovaného clusteru |
+> | Akce | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Vypsat přihlašovací údaje správce spravovaného clusteru |
+> | Akce | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Vypsat přihlašovací údaje uživatele spravovaného clusteru |
 > | Akce | Microsoft.ContainerService/managedClusters/read | Získat spravovaný cluster |
-> | Akce | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | Získá profil upgradu clusteru |
+> | Akce | Microsoft.ContainerService/managedClusters/upgradeprofiles/read | Získá profil upgradu clusteru. |
 > | Akce | Microsoft.ContainerService/managedClusters/write | Vytvoří nový spravovaný cluster nebo aktualizuje stávající. |
 > | Akce | Microsoft.ContainerService/openShiftClusters/delete | Odstranění clusteru Open Shift |
 > | Akce | Microsoft.ContainerService/openShiftClusters/read | Získat Cluster Open Shift |
@@ -1341,9 +1309,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ContainerService/openShiftManagedClusters/delete | Odstranění clusteru spravované Open Shift |
 > | Akce | Microsoft.ContainerService/openShiftManagedClusters/read | Získejte spravovaný Cluster Open Shift |
 > | Akce | Microsoft.ContainerService/openShiftManagedClusters/write | Vytvoří nové Open Shift spravovat Cluster nebo aktualizuje nějakou existující |
-> | Akce | Microsoft.ContainerService/operations/read | Zobrazit seznam operací dostupných na zprostředkovateli prostředků Microsoft.ContainerService |
-> | Akce | Microsoft.ContainerService/register/action | Zaregistruje předplatné u poskytovatele prostředků Microsoft.ContainerService |
-> | Akce | Microsoft.ContainerService/unregister/action | Zruší registraci předplatného u poskytovatele prostředků Microsoft.ContainerService |
+> | Akce | Microsoft.ContainerService/operations/read | Vypíše seznam operací dostupných v poskytovateli prostředků Microsoft.ContainerService. |
+> | Akce | Microsoft.ContainerService/register/action | Zaregistruje předplatné u poskytovatele prostředků Microsoft.ContainerService. |
+> | Akce | Microsoft.ContainerService/unregister/action | Zruší registraci předplatného poskytovatele prostředků Microsoft.ContainerService. |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 
@@ -1542,9 +1510,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | --- | --- | --- |
 > | Akce | Microsoft.Databricks/register/action | Provede registraci v Databricks. |
 > | Akce | Microsoft.Databricks/workspaces/delete | Odebere pracovní prostor Databricks. |
-> | Akce | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Nastaví nastavení diagnostiky k dispozici pro pracovní prostor Databricks |
+> | Akce | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | Nastaví dostupná nastavení diagnostiky pro pracovní prostor Databricks. |
 > | Akce | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | Umožňuje přidat nebo změnit nastavení diagnostiky. |
-> | Akce | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | Získá definice protokolu pro pracovní prostor Databricks |
+> | Akce | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné definice protokolu pro pracovní prostor Databricks. |
 > | Akce | Microsoft.Databricks/workspaces/read | Načte seznam pracovních prostorů Databricks. |
 > | Akce | Microsoft.Databricks/workspaces/write | Vytvoří pracovní prostor Databricks. |
 
@@ -2169,7 +2137,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Získání seznamu metriky clusteru popisů prostředků |
 > | Akce | Microsoft.EventHub/clusters/read | Získá popis prostředku clusteru. |
 > | Akce | Microsoft.EventHub/clusters/write | Získá popis prostředku clusteru. |
-> | Akce | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla virtuální sítě v poskytovatele prostředků EventHub pro zadanou virtuální síť |
+> | Akce | Microsoft.EventHub/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla zadané virtuální sítě v poskytovateli prostředků EventHub. |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je PUT. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/delete | Odstraňte autorizační pravidlo Namespace. Výchozí Namespace autorizační pravidlo nelze odstranit.  |
 > | Akce | Microsoft.EventHub/namespaces/authorizationRules/listkeys/action | Získat připojovací řetězec k oboru názvů |
@@ -2298,10 +2266,10 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/logDefinitions/Read | Číst definice protokolů |
 > | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/AutoscaleSettings/Read | Přečte nastavení automatického škálování. |
-> | Akce | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Zahájeno automatické vertikální snížení kapacity |
-> | Akce | Microsoft.Insights/AutoscaleSettings/ScaledownResult/Action | Dokončeno automatické vertikální snížení kapacity |
-> | Akce | Microsoft.Insights/AutoscaleSettings/Scaleup/Action | Zahájeno automatické vertikální navýšení kapacity |
-> | Akce | Microsoft.Insights/AutoscaleSettings/ScaleupResult/Action | Dokončeno automatické vertikální navýšení kapacity |
+> | Akce | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Zahájeno automatické škálování vertikálním snížením kapacity |
+> | Akce | Microsoft.Insights/AutoscaleSettings/ScaledownResult/Action | Dokončeno automatické škálování vertikálním snížením kapacity |
+> | Akce | Microsoft.Insights/AutoscaleSettings/Scaleup/Action | Zahájeno automatické škálování vertikálním navýšením kapacity |
+> | Akce | Microsoft.Insights/AutoscaleSettings/ScaleupResult/Action | Dokončeno automatické škálování vertikálním navýšením kapacity |
 > | Akce | Microsoft.Insights/AutoscaleSettings/Write | Vytvoří nebo aktualizuje nastavení automatického škálování. |
 > | Akce | Microsoft.Insights/Components/AnalyticsItems/Delete | Odstranění položky analýzy Application Insights |
 > | Akce | Microsoft.Insights/Components/AnalyticsItems/Read | Čtení položky analýzy Application Insights |
@@ -2680,24 +2648,24 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.LocationBasedServices/accounts/delete | (Zastaralé: použijte /providers/Microsoft.Maps) Odstranit Location Based Services účtu. |
-> | Akce | Microsoft.LocationBasedServices/accounts/listKeys/action | (Zastaralé: použijte /providers/Microsoft.Maps) Vypsat klíče účet Location Based Services |
-> | Akce | Microsoft.LocationBasedServices/accounts/read | (Zastaralé: použijte /providers/Microsoft.Maps) Získat Location Based Services účtu. |
-> | Akce | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Zastaralé: použijte /providers/Microsoft.Maps) Generovat nový účet Location Based Services primární nebo sekundární klíč |
-> | Akce | Microsoft.LocationBasedServices/accounts/write | (Zastaralé: použijte /providers/Microsoft.Maps) Vytvořit nebo aktualizovat účet Location Based Services. |
-> | Akce | Microsoft.LocationBasedServices/register/action | (Zastaralé: použijte /providers/Microsoft.Maps) Zaregistrujte poskytovatele |
+> | Akce | Microsoft.LocationBasedServices/accounts/delete | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) odstranit účet Location Based Services. |
+> | Akce | Microsoft.LocationBasedServices/accounts/listKeys/action | (Zastaralé: Použijte prosím klíče /providers/Microsoft.Maps)List účet Location Based Services |
+> | Akce | Microsoft.LocationBasedServices/accounts/read | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) získat účet Location Based Services. |
+> | Akce | Microsoft.LocationBasedServices/accounts/regenerateKey/action | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) vygenerovat nový účet Location Based Services primární nebo sekundární klíč |
+> | Akce | Microsoft.LocationBasedServices/accounts/write | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) vytvořit nebo aktualizovat účet Location Based Services. |
+> | Akce | Microsoft.LocationBasedServices/register/action | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) zaregistrujte poskytovatele |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.LocationServices/accounts/delete | (Zastaralé: použijte /providers/Microsoft.Maps) Odstranění účtu služby umístění. |
-> | Akce | Microsoft.LocationServices/accounts/listKeys/action | (Zastaralé: použijte /providers/Microsoft.Maps) Vypsat klíče účet Location Based Services |
-> | Akce | Microsoft.LocationServices/accounts/read | (Zastaralé: použijte /providers/Microsoft.Maps) Získáte účet služby umístění. |
-> | Akce | Microsoft.LocationServices/accounts/regenerateKey/action | (Zastaralé: použijte /providers/Microsoft.Maps) Generovat nový účet Location Based Services primární nebo sekundární klíč |
-> | Akce | Microsoft.LocationServices/accounts/write | (Zastaralé: použijte /providers/Microsoft.Maps) Vytvořit nebo aktualizovat účet služby umístění. |
-> | Akce | Microsoft.LocationServices/register/action | (Zastaralé: použijte /providers/Microsoft.Maps) Zaregistrujte poskytovatele |
+> | Akce | Microsoft.LocationServices/accounts/delete | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) odstranit účet služby umístění. |
+> | Akce | Microsoft.LocationServices/accounts/listKeys/action | (Zastaralé: Použijte prosím klíče /providers/Microsoft.Maps)List účet Location Based Services |
+> | Akce | Microsoft.LocationServices/accounts/read | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) získat účet služby umístění. |
+> | Akce | Microsoft.LocationServices/accounts/regenerateKey/action | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) vygenerovat nový účet Location Based Services primární nebo sekundární klíč |
+> | Akce | Microsoft.LocationServices/accounts/write | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) vytvořit nebo aktualizovat účet služby umístění. |
+> | Akce | Microsoft.LocationServices/register/action | (Zastaralé: Použijte prosím /providers/Microsoft.Maps) zaregistrujte poskytovatele |
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 
@@ -4357,7 +4325,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | --- | --- | --- |
 > | Akce | Microsoft.ServiceBus/checkNameAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. |
 > | Akce | Microsoft.ServiceBus/checkNamespaceAvailability/action | Zkontroluje dostupnost oboru názvů v daném předplatném. Toto rozhraní API je zastaralé. použijte místo něj Checknameavailability. |
-> | Akce | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla virtuální sítě v poskytovateli prostředků servicebus není platná pro zadanou virtuální síť |
+> | Akce | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Odstraní pravidla zadané virtuální sítě v poskytovateli prostředků ServiceBus. |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/action | Aktualizace Namespace autorizační pravidlo. Toto rozhraní API je PUT. Použijte prosím volání PUT se místo toho aktualizovat autorizační pravidlo Namespace... Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/delete | Odstraňte autorizační pravidlo Namespace. Výchozí Namespace autorizační pravidlo nelze odstranit.  |
 > | Akce | Microsoft.ServiceBus/namespaces/authorizationRules/listkeys/action | Získat připojovací řetězec k oboru názvů |

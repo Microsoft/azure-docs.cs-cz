@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9c1b0d52a83d707df3a01212f2ab23c625987da0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013215"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435306"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight
 
@@ -157,7 +157,7 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
 
     * Pokud tuto položku lze rozšířit, používáte __účet služby Azure Storage__ jako výchozí úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, rozbalte položku a potom dvakrát klikněte __(výchozí kontejner)__.
 
-    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Store__ jako výchozího úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte __(výchozí účet úložiště)__ položka.
+    * Pokud tuto položku nelze rozšířit, používáte __Azure Data Lake Storage__ jako výchozího úložiště pro cluster. Chcete-li zobrazit soubory na výchozí úložiště pro cluster, dvakrát klikněte __(výchozí účet úložiště)__ položka.
 
 5. Pokud chcete nahrát soubory .exe, použijte jednu z následujících metod:
 
@@ -165,17 +165,17 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
 
         ![Nahrát ikonu](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * Pokud používáte __Azure Data Lake Store__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **otevřít**.
+    * Pokud používáte __Azure Data Lake Storage__, klikněte pravým tlačítkem na prázdnou oblast v seznamu souboru a pak vyberte __nahrát__. Nakonec vyberte **mapper.exe** souboru a klikněte na tlačítko **otevřít**.
 
     Jednou __mapper.exe__ nahrávání dokončí, opakujte proces nahrávání __reducer.exe__ souboru.
 
-## <a name="run-a-job-using-an-ssh-session"></a>Spuštění úlohy: relace SSH pomocí
+## <a name="run-a-job-using-an-ssh-session"></a>Spuštění úlohy: Pomocí relace SSH
 
 1. Pomocí SSH se připojte ke clusteru HDInsight. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Pomocí jedné z následujících příkazů spusťte úlohu MapReduce:
 
-    * Pokud používáte __Data Lake Store__ jako výchozí úložiště:
+    * Pokud používáte __Data Lake Storage__ jako výchozí úložiště:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -214,7 +214,7 @@ Po vytvoření aplikace, sestavte ho vytvořit `/bin/Debug/reducer.exe` soubor v
         yourselves      3
         youth   17
 
-## <a name="run-a-job-using-powershell"></a>Spuštění úlohy: pomocí Powershellu
+## <a name="run-a-job-using-powershell"></a>Spuštění úlohy: Pomocí prostředí PowerShell
 
 Pomocí následujícího skriptu prostředí PowerShell spustit úlohu MapReduce a stáhněte si výsledky.
 
@@ -236,6 +236,6 @@ Tento skript vás vyzve k zadání název účtu přihlášení clusteru a heslo
 
 Další informace o používání MapReduce s HDInsight naleznete v tématu [použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md).
 
-Informace o používání jazyka C# s Hivem a Pig, naleznete v tématu [pomocí jazyka C# uživatelem definované funkce s Hivem a Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
+Informace o používání C# s Hivem a Pig, naleznete v tématu [použití C# uživatelem definovanou funkci s Apache Hivu a Apache Pig](apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-Informace o používání jazyka C# se Stormem v HDInsight najdete v tématu [vývoj topologií C# pro Storm v HDInsight](../storm/apache-storm-develop-csharp-visual-studio-topology.md).
+Informace o používání C# se Stormem v HDInsight, naleznete v tématu [vývoj C# topologií pro Apache Storm v HDInsight](../storm/apache-storm-develop-csharp-visual-studio-topology.md).

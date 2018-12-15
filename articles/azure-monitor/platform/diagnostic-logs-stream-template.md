@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 02029170046e3c70965e2f607aa6c00c7ca131e3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388770"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438672"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
 
 > [!WARNING]
-> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md). 
+> 1. listopadu 2018 se formát dat protokolů v účtu úložiště změní na řádky JSON. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
 >
 > 
 
@@ -116,7 +116,7 @@ Pro prostředky rozsáhlých výpočetních prostředků budete muset udělat dv
     ]
     ```
 
-Vlastnosti objektu blob pro nastavení diagnostiky následuje [formátu popsaném v tomto článku](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Přidávání `metrics` vlastnost vám umožní také odeslat metriky prostředků tyto stejné výstupy, za předpokladu, že [prostředek podporuje metrik Azure monitoru](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Vlastnosti objektu blob pro nastavení diagnostiky následuje [formátu popsaném v tomto článku](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Přidávání `metrics` vlastnost vám umožní také odeslat metriky prostředků tyto stejné výstupy, za předpokladu, že [prostředek podporuje metrik Azure monitoru](../../azure-monitor/platform/metrics-supported.md).
 
 Tady je úplný příklad, který vytváří aplikaci logiky a zapne streamování do Event Hubs a úložiště v účtu úložiště.
 

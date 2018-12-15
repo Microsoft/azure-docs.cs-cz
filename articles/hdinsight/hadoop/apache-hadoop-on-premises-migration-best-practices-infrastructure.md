@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6a1641a76d43cdbac6253e00ea35f70325870853
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 6b0b047e74496fb9e58df05dc6118c5f376cb99d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993385"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437516"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -39,7 +39,7 @@ Zobrazit [výchozí velikosti virtuálního počítače a konfigurace uzlů pro 
 
 Každá verze HDInsight je Cloudová distribuce verze Hortonworks Data Platform (HDP) a se skládá sada součástí ekosystému Hadoop. Zobrazit [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md) podrobnosti o všech součástí HDInsight a jejich aktuální verze.
 
-Také můžete uživatelské rozhraní Ambari nebo Ambari REST API ke kontrole komponenty a verze v HDInsight.
+Ke kontrole komponenty a verze v HDInsight můžete také použít Apache Ambari, Uživatelskému nebo Ambari REST API.
 
 Aplikace nebo komponenty, které byly k dispozici v místních clusterech, ale nejsou součástí clusterů HDInsight se dají přidat na hraničním uzlu nebo na virtuálním počítači ve stejné virtuální síti jako HDInsight cluster. Aplikace Hadoop jiných výrobců, která není k dispozici v Azure HDInsight můžete nainstalovat pomocí možnosti "Aplikace" v clusteru HDInsight. Vlastních aplikací Hadoop můžete nainstalovat na clusteru HDInsight pomocí "akce". V následující tabulce jsou uvedeny některé z běžných aplikací a jejich možnosti integrace HDInsight:
 
@@ -90,7 +90,7 @@ HDInsight poskytuje předpřipravené skripty v clusterech HDInsight nainstalova
 - Přednačíst knihovny Hive
 - Instalace nebo aktualizace Mono
 
-> [!Note]
+> [!Note]  
 > HDInsight neposkytuje přímou podporu pro vlastní hadoop součásti nebo součásti nainstalovat pomocí akcí skriptů.
 
 Akce se skripty můžete také publikovat na webu Azure Marketplace jako aplikace HDInsight.
@@ -140,7 +140,9 @@ Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejn
 
 Hraniční uzly je možné vytvořit a odstranit prostřednictvím webu Azure portal a mohou být použity během nebo po vytvoření clusteru. Po vytvoření na hraničním uzlu, můžete se připojit k hraničnímu uzlu pomocí SSH a spuštění klientské nástroje pro přístup ke clusteru Hadoop v HDInsight. Na hraničním uzlu ssh je koncový bod `<EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22`.
 
+
 Další informace najdete v článku [použití prázdných hraničních uzlů v clusterech Apache Hadoop v HDInsight](../hdinsight-apps-use-edge-node.md).
+
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Pomocí funkce horizontálního navýšení nebo snížení clusterů
 
@@ -188,7 +190,7 @@ Pomocí Azure Virtual Network s HDInsight umožňuje následující scénáře:
 
 HDInsight je buď přidat do nové nebo existující virtuální sítě Azure. Pokud HDInsight se přidává do existující virtuální síť, existující skupiny zabezpečení sítě a trasy definované uživatelem musí aktualizovat, chcete-li povolit neomezený přístup k [několik IP adres](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) v datovém centru Azure. Také zajistěte, aby blokovat provoz [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) který se právě využívají služby HDInsight.
 
-> [!Note]
+> [!Note]  
 > HDInsight aktuálně nepodporují vynucené tunelování. Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořte novou podsíť pro HDInsight. HDInsight také nepodporuje omezení odchozího síťového připojení.
 
 Další informace najdete v následujících článcích:

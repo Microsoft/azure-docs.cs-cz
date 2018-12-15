@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: 753a0ad72e1d4b60a93daa570ceecc25d21bb228
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 6f1620c9977f997b4037fbf3f823c429e43b4f6a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634137"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436258"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí Powershellu
 
@@ -26,7 +26,7 @@ Tento dokument obsahuje příklad použití Azure Powershellu a spusťte úlohu 
 
 * **Cluster Azure HDInsight (Hadoop v HDInsight)**
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **Pracovní stanice s prostředím Azure PowerShell**.
@@ -37,15 +37,15 @@ Prostředí Azure PowerShell poskytuje *rutiny* , které umožňují vzdálené 
 
 Při spuštění úlohy mapreduce je možné ve vzdáleném clusteru HDInsight se používají následující rutiny.
 
-* **Connect-AzureRmAccount**: ověřuje prostředí Azure PowerShell ke svému předplatnému Azure.
+* **Connect-AzureRmAccount**: Ověří prostředí Azure PowerShell ke svému předplatnému Azure.
 
-* **Nové AzureRmHDInsightMapReduceJobDefinition**: vytvoří nový *úlohy definice* s použitím zadaných informací MapReduce.
+* **Nové AzureRmHDInsightMapReduceJobDefinition**: Vytvoří novou *úlohy definice* s použitím zadaných informací MapReduce.
 
-* **Start-AzureRmHDInsightJob**: odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
+* **Start-AzureRmHDInsightJob**: Odešle definice úlohy HDInsight a spustí úlohu. A *úlohy* je vrácen objekt.
 
-* **Čekání AzureRmHDInsightJob**: používá objekt úlohy a zkontrolujte stav úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
+* **Čekání AzureRmHDInsightJob**: Objekt úlohy používá ke kontrole stavu úlohy. To počká, až do dokončení úlohy nebo je Překročená doba čekání.
 
-* **Get-AzureRmHDInsightJobOutput**: používá se k načtení výstupu úlohy.
+* **Get-AzureRmHDInsightJobOutput**: Umožňuje načíst výstup úlohy.
 
 Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve vašem clusteru HDInsight.
 
@@ -73,7 +73,7 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve
 
     Tento výstup označuje, že úloha byla úspěšně dokončena.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud **ExitCode** je hodnota než 0, najdete v článku [Poradce při potížích s](#troubleshooting).
 
     Tento příklad také ukládá stažené soubory, které chcete **výstup.txt** souboru v adresáři, který spustí skript z.
@@ -82,7 +82,7 @@ Následující kroky ukazují, jak tyto rutiny použít ke spuštění úlohy ve
 
 Chcete-li zobrazit slova a počty vytvořený úlohou, otevřete **výstup.txt** souboru v textovém editoru.
 
-> [!NOTE]
+> [!NOTE]  
 > Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud znovu spustíte tento příklad, musíte změnit název výstupního souboru.
 
 ## <a id="troubleshooting"></a>Řešení potíží
@@ -113,5 +113,5 @@ Obecné informace o úlohy mapreduce je možné v HDInsight:
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)

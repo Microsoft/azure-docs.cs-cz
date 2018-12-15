@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 6ee16a0483b13471f12654f82ef6972b41ace634
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0f6075bcbaae14fc60df6f33f4e65cd4abcec731
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316922"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409458"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -468,20 +468,17 @@ Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azur
 | **Text chyby** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Požadována náprava** | Ano |
 
-K této chybě obvykle dochází, protože čas serveru je nesprávný nebo vypršela platnost certifikátu používaného pro ověřování. Pokud je serveru správná, proveďte následující kroky se odstranit certifikát s prošlou platností (pokud vypršela platnost) a obnovit stav registrace serveru:
+K této chybě obvykle dochází, protože čas serveru je nesprávný nebo vypršela platnost certifikátu používaného pro ověřování. Pokud je serveru správná, postupujte následovně pro prodloužení platnosti vypršela platnost certifikátu:
 
 1. Otevřete modul snap-in Certifikáty konzoly MMC, zvolte účet počítače a přejděte do \Personal\Certificates certifikáty (místní počítač).
-2. Odstranit certifikát pro ověřování klientů, pokud vypršela platnost a zavřete modul snap-in Certifikáty konzoly MMC.
-3. Otevřete Regedit a odstranění ServerSetting klíče v registru: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync\ServerSetting
-4. Na webu Azure Portal přejděte do části registrovaných serverů služby synchronizace úložiště. Klikněte pravým tlačítkem na server s certifikát s prošlou platností a klikněte na tlačítko "Zrušit registraci serveru."
-5. Spusťte následující příkazy Powershellu na serveru:
+2. Zaškrtněte, pokud vypršela platnost certifikátu ověřování klienta. Pokud platnost certifikátu vypršela, zavřete modul snap-in Certifikáty konzoly MMC a proceeed ve zbývajících krocích. 
+3. Ověření agenta Azure File Sync verze 4.0.1.0 nebo novější nainstalován.
+4. Spusťte následující příkazy Powershellu na serveru:
 
     ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Reset-StorageSyncServer
+    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+    Reset-AzureRmStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-6. Opětovná registrace serveru spuštěním ServerRegistration.exe (výchozí umístění je C:\Program Files\Azure\StorageSyncAgent).
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Svazku, kde je umístěn koncový bod serveru je málo místa na disku.**  
 | | |
