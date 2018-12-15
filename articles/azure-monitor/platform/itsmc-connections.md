@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 5998396faf746bd54d4f2dbd9c633ad3b4003878
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7184a5e1e9b41653cfe23aa863f8e4e4ea86c620
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193395"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409237"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../azure-monitor/platform/itsmc-overview.md).
@@ -291,7 +291,7 @@ Ujistěte se, že jsou splněné následující požadavky:
 
 
 - ITSMC nainstalované. Další informace: [Přidání IT řešení pro správu konektoru služby](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- S Azure AD – by měly být zaregistrovány aplikace provance a ID klienta je k dispozici. Podrobné informace najdete v tématu [ke konfiguraci ověřování služby active directory](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+- S Azure AD – by měly být zaregistrovány aplikace provance a ID klienta je k dispozici. Podrobné informace najdete v tématu [ke konfiguraci ověřování služby active directory](../../app-service/configure-authentication-provider-aad.md).
 
 - Role uživatele:  Správce.
 
@@ -319,7 +319,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 | **Uživatelské jméno**   | Zadejte uživatelské jméno, které se můžou připojovat k ITSMC.    |
 | **Heslo**   | Zadejte heslo přidružené k tomuto uživatelskému jménu. **Poznámka:** Uživatelské jméno a heslo slouží ke generování tokenů ověřování jenom a nejsou nikde uložené ve službě ITSMC. _|
 | **Adresa URL serveru**   | Zadejte adresu URL, kterou chcete připojit k ITSMC Provance instance. |
-| **ID klienta**   | Zadejte ID klienta pro toto připojení, který jste vygenerovali v instanci Provance ověřování.  Další informace o ID klienta, viz [ke konfiguraci ověřování služby active directory](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md). |
+| **ID klienta**   | Zadejte ID klienta pro toto připojení, který jste vygenerovali v instanci Provance ověřování.  Další informace o ID klienta, viz [ke konfiguraci ověřování služby active directory](../../app-service/configure-authentication-provider-aad.md). |
 | **Rozsah synchronizace dat**   | Vyberte Provance pracovní položky, které chcete synchronizovat s Azure Log Analytics prostřednictvím ITSMC.  Tyto pracovní položky jsou importovány do log analytics.   **Možnosti:**   Incidenty, žádosti o změnu.|
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
 | **Vytvořit novou položku konfigurace v řešení ITSM** | Tuto možnost vyberte, pokud chcete vytvářet položky konfigurace v produktu ITSM. Pokud je vybráno, ITSMC vytvoří ovlivněné položky konfigurace jako položky konfigurace (v případě neexistující CIs) v podporovaném systému ITSM. **Výchozí**: zakázáno.|

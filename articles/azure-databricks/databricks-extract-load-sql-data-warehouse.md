@@ -10,14 +10,14 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 11/19/2018
-ms.openlocfilehash: 748eefd78f8235a906d0e87874b29432b4b869c7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 48b2cdb26994d01dfced8216bb70493802f672a7
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106783"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413672"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
+# <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načítání dat pomocí Azure Databricks
 
 V tomto kurzu budete provádět operace ETL (extrahování, transformace a načítání dat) pomocí Azure Databricks. Budete extrahovat data z Azure Data Lake Store do Azure Databricks, spouštět transformace dat v Azure Databricks a načítat transformovaná data do služby Azure SQL Data Warehouse.
 
@@ -44,9 +44,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, ujistěte se, že splňujete následující požadavky:
-- Vytvořili jste Azure SQL Data Warehouse, vytvořili jste na serveru pravidlo firewallu a připojili jste se k serveru jako správce. Použijte postup v tématu [Rychlý start: Vytvoření Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md).
+- Vytvořili jste Azure SQL Data Warehouse, vytvořili jste na serveru pravidlo firewallu a připojili jste se k serveru jako správce. Postupujte podle pokynů na adrese [rychlý start: Vytvoření služby Azure SQL Data Warehouse](../sql-data-warehouse/create-data-warehouse-portal.md)
 - Vytvořili jste v Azure SQL Data Warehouse hlavní databázový klíč. Použijte postup v tématu [Vytvoření hlavního databázového klíče](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
-- Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Použijte pokyny v tématu [Rychlý start: Vytvoření účtu Azure Blog Storage](../storage/blobs/storage-quickstart-blobs-portal.md).
+- Vytvořili jste účet Azure Blob Storage a v něm kontejner. A načetli jste přístupový klíč pro přístup k účtu úložiště. Postupujte podle pokynů na adrese [rychlý start: Vytvoření účtu služby Azure Blob storage](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -54,7 +54,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
-V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks. 
+V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **Azure Databricks**.
 
@@ -65,7 +65,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     ![Vytvoření pracovního prostoru služby Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Vytvoření pracovního prostoru služby Azure Databricks")
 
     Zadejte následující hodnoty:
-     
+    
     |Vlastnost  |Popis  |
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
@@ -96,7 +96,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     * Zadejte název clusteru.
     * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**.
-    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po \_\_ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+    * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
     
     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -106,11 +106,11 @@ V této části vytvoříte účet Azure Data Lake Store a přidružíte k němu
 
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Úložiště** > **Data Lake Store**.
 3. V okně **Nová služba Data Lake Store** zadejte hodnoty tak, jak ukazuje následující snímek obrazovky:
-   
+
     ![Vytvoření nového účtu Azure Data Lake Store](./media/databricks-extract-load-sql-data-warehouse/create-new-datalake-store.png "Vytvoření nového účtu Azure Data Lake Store")
 
-    Zadejte následující hodnoty: 
-     
+    Zadejte následující hodnoty:
+    
     |Vlastnost  |Popis  |
     |---------|---------|
     |**Název**     | Zadejte jedinečný název účtu Data Lake Storu.        |
@@ -125,7 +125,7 @@ V této části vytvoříte účet Azure Data Lake Store a přidružíte k němu
 Teď vytvoříte instanční objekt Azure Active Directory a přidružíte ho k vytvořenému účtu Data Lake Store.
 
 ### <a name="create-an-azure-active-directory-service-principal"></a>Vytvoření objektu služby Azure Active Directory
-   
+
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby** a najděte **Azure Active Directory**.
 
 2. Vyberte **Registrace aplikací**.
@@ -193,7 +193,7 @@ Při programovém přihlášení potřebujete kromě žádosti o ověření pře
 
 ## <a name="upload-data-to-data-lake-store"></a>Nahrání dat do Data Lake Store
 
-V této části nahrajete do služby Data Lake Store ukázkový datový soubor. Později tento soubor použijete v Azure Databricks ke spuštění některých transformací. Ukázková data (**small_radio_json.json**), která budete používat v tomto kurzu, jsou k dispozici v tomto [úložišti GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
+V této části nahrajete do služby Data Lake Store ukázkový datový soubor. Později tento soubor použijete v Azure Databricks ke spuštění některých transformací. Ukázková data (**small_radio_json.json**) používané v tomto kurzu je k dispozici v tomto [úložiště GitHub se vzorovými](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte účet Data Lake Store, který jste vytvořili.
 
@@ -378,7 +378,7 @@ V této části načtete transformovaná data do služby Azure SQL Data Warehous
 
 Jak už bylo zmíněno dříve, konektor SQL data warehouse používá Azure Blob Storage jako dočasné umístění k odesílání dat mezi službami Azure Databricks a Azure SQL Data Warehouse. Proto musíte napřed zadat konfiguraci pro připojení k účtu tohoto úložiště. Vytvoření účtu už bylo v předpokladech v úvodu tohoto článku.
 
-1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks. Pokud jste z portálu zkopírujte adresu URL pro úložiště objektů blob, nezapomeňte odebrat *https://* od začátku. 
+1. Zadejte konfiguraci pro přístup k účtu Azure Storage z Azure Databricks. Pokud jste z portálu zkopírujte adresu URL pro úložiště objektů blob, nezapomeňte odebrat *https://* od začátku.
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
@@ -410,7 +410,7 @@ Jak už bylo zmíněno dříve, konektor SQL data warehouse používá Azure Blo
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
           "true")
-        
+    
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
             .option("url", sqlDwUrlSmall)

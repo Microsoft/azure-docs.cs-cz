@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: f2bbcf0218291f91d3ee5b25e89a5f580e0c1c86
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105729"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413475"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -79,6 +79,8 @@ Pro koncový bod vlastnictví prokázat způsobem, vracení kód pro ověření 
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Musíte se vrátit stavového kódu odpovědi HTTP 200 OK. HTTP 202 přijato nebyl rozpoznán jako platná odpověď ověřování odběr služby Event Grid.
 
 Nebo můžete ručně ověřit předplatné z odesláním požadavku GET na adresu URL pro ověření. Odběr událostí zůstane ve stavu čekající na vyřízení, dokud nebude ověření.
 
@@ -271,7 +273,7 @@ Pokud je třeba zadat oprávnění, která se liší od předdefinované role, m
 
 Následují definice rolí služby Event Grid ukázky, které umožňují uživatelům provádět různé akce. Tyto vlastní role se liší od předdefinované role, protože udělují širší přístup než jenom odběry událostí.
 
-**EventGridReadOnlyRole.json**: Povolí jenom operace určené jen pro čtení.
+**EventGridReadOnlyRole.json**: Povolte pouze operace určené jen pro čtení.
 
 ```json
 {
@@ -290,7 +292,7 @@ Následují definice rolí služby Event Grid ukázky, které umožňují uživa
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Povolí akce s omezeným přístupem po ale zakázat akce odstranění.
+**EventGridNoDeleteListKeysRole.json**: Povolit akce post s omezeným přístupem, ale zakázat akce odstranění.
 
 ```json
 {
@@ -313,7 +315,7 @@ Následují definice rolí služby Event Grid ukázky, které umožňují uživa
 }
 ```
 
-**EventGridContributorRole.json**: všechny akce event grid.
+**EventGridContributorRole.json**: Umožňuje všechny akce event grid.
 
 ```json
 {

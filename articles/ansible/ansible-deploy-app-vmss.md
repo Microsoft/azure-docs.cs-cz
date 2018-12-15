@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 049fc711d0cf6a69b584ad3926bd9e9c0fc9e27d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413991"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408370"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Nasazování aplikací do škálovacích sad virtuálních počítačů v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete nasadit své aplikace do Azure. V tomto článku se dozvíte, jak do škálovací sady virtuálních počítačů (VMSS) Azure nasadit aplikaci v Javě.  
@@ -35,7 +35,7 @@ Tato část ukazuje, jak pomocí Ansible načíst informace o hostiteli skupiny 
 
 Uložte následující ukázkový playbook jako `get-hosts-tasks.yml`: 
 
-  ```yaml
+  ```yml
   - name: Get facts for all Public IPs within a resource groups
     azure_rm_publicipaddress_facts:
       resource_group: "{{ resource_group }}"
@@ -63,7 +63,7 @@ Uložte následující ukázkový playbook jako `get-hosts-tasks.yml`:
 
 V této části pomocí gitu naklonujete z GitHubu ukázkový projekt v Javě a sestavíte ho. Uložte následující ukázkový playbook jako `app.yml`:
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
@@ -87,7 +87,7 @@ Pomocí následujícího příkazu spusťte ukázkový playbook Ansible:
 
 Zobrazí se podobný výstup příkazu ansible-playbook jako v následujícím příkladu, kde vidíte, že příkaz sestavil ukázkovou aplikaci naklonovanou z GitHubu:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -110,7 +110,7 @@ Playbook Ansible v následující části nainstaluje Java Runtime Environment v
 
 (Hodnotu `admin_password` změňte na své heslo.)
 
-  ```yaml
+  ```yml
   - hosts: localhost
     vars:
       resource_group: myResourceGroup
@@ -167,7 +167,7 @@ Pomocí následujícího příkazu spusťte playbook:
 
 Výstup spuštění příkazu ansible-playbook značí, že se ukázková aplikace v Javě nainstalovala do skupiny hostitelů škálovací sady virtuálních počítačů:
 
-  ```bash
+  ```Output
   PLAY [localhost] **********************************************************
 
   TASK [Gathering Facts] ****************************************************
@@ -206,6 +206,6 @@ Blahopřejeme! Vaše aplikace je teď spuštěná v Azure. Teď můžete přejí
 
 ![Aplikace v Javě spuštěná ve škálovací sadě virtuálních počítačů v Azure](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
-> [Ukázkový playbook Ansible pro škálovací sadu virtuálních počítačů](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Automaticky škálujte škálovací sadu virtuálních počítačů pomocí Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

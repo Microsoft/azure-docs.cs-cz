@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 54741bd2d76a7ba414613a40e07c47be703aa033
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994412"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433419"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
 
@@ -25,7 +25,7 @@ Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. To je s
 Existují dvě hlavní možnosti, jak migrovat data z místního prostředí Azure:
 
 1.  Přenos dat přes síť pomocí protokolu TLS
-    1. Přes internet – můžete přenést data do úložiště Azure přes regulární připojení k Internetu pomocí některého z několik nástrojů, jako: Průzkumník služby Azure Storage, AzCopy, Azure Powershellu a rozhraní příkazového řádku Azure.  Zobrazit [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) Další informace.
+    1. Přes internet – můžete přenést data do úložiště Azure přes regulární připojení k Internetu pomocí některého z několik nástrojů, jako: Průzkumník služby Azure Storage, AzCopy, Azure Powershellu a Azure CLI.  Zobrazit [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md) Další informace.
     2. Expressroute – ExpressRoute je služba Azure, která umožňuje vytvářet privátní připojení mezi datacentry Microsoftu a infrastrukturou ve vlastních prostorách nebo v společně umístěného zařízení. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a rychlost s nižší latencí než Typická připojení přes Internet. Další informace najdete v tématu [vytvoření a úprava okruhu ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     1. Přenosy dat online pole dat – okraj pole Data a brána pole dat jsou online data převodu produkty, které fungují jako sítě úložiště brány pro správu dat mezi vaší lokalitou a Azure. Data Box Edge je místní síťové zařízení, které přenáší data do a z Azure a při zpracování dat využívá hraniční výpočetní prostředky s podporou umělé inteligence (AI). Data Box Gateway je virtuální zařízení s funkcemi brány úložiště. Další informace najdete v tématu [Azure dokumentaci služby Data Box – Online přenos](https://docs.microsoft.com/azure/databox-online/).
 1.  Přesouvání dat do offline režimu
@@ -47,9 +47,11 @@ Následující tabulka má dobu přenosu přibližné dat na základě dat svazk
 |1 PB|6 let|3 roky|97 dnů|10 dnů|
 |2 PB|12 let|5 let.|194 dnů|19 dnů|
 
-Nástroje pro nativní pro Azure, jako jsou DistCp, Azure Data Factory a AzureCp, je možné posílat data přes síť. Nástroj třetí strany WANDisco lze použít také ke stejnému účelu. Nástroje Mirrormaker Kafka a Sqoop slouží pro přenosy probíhající dat z místního systémů služby Azure storage.
+Nástroje pro nativní pro Azure, jako jsou Apache Hadoop DistCp, Azure Data Factory a AzureCp, je možné posílat data přes síť. Nástroj třetí strany WANDisco lze použít také ke stejnému účelu. Nástroje Mirrormaker Apache Kafka a Apache Sqoop slouží pro přenosy probíhající dat z místního systémů služby Azure storage.
 
-## <a name="performance-considerations-with-apache-distcp"></a>Důležité informace o výkonu s Apache DistCp
+
+## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Požadavky na výkon při použití Apache Hadoop DistCp
+
 
 DistCp je projekt Apache, který používá k přenosu dat, zpracování chyb a zotavení z těchto chyb úlohu MapReduce mapy. Každý úkol mapy přiřazuje seznam zdrojových souborů. Úloha mapy všechny své přiřazené soubory pak zkopíruje do cíle. Existuje několik postupů může zlepšit výkon DistCp.
 
@@ -86,7 +88,7 @@ hadoop distcp -Dmapreduce.fileoutputcommitter.algorithm.version=2 -numListstatus
 
 ## <a name="metadata-migration"></a>Migrace metadat
 
-### <a name="hive"></a>Hive
+### <a name="apache-hive"></a>Apache Hive
 
 Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace databáze.
 
@@ -106,7 +108,7 @@ Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace datab
 ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 ```
 
-### <a name="ranger"></a>Ranger
+### <a name="apache-ranger"></a>Apache Ranger
 
 - Export místní zásady Ranger pro soubory xml.
 - Transformace v místním prostředí konkrétním systémem HDFS cesty k WASB nebo ADLS pomocí některého nástroje, například XSLT.

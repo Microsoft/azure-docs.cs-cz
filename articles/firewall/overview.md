@@ -8,12 +8,13 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.author: victorh
-ms.openlocfilehash: b90496b0ccc6c8243c2d1b3ead1e7c4faa4801ec
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
+ms.openlocfilehash: b01e16f85eaccee4d765b4985769df670d4d35ca
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582034"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413026"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -69,11 +70,13 @@ Brána Azure Firewall má následující známé problémy:
 Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla síťového filtrování pro jiné protokoly než TCP/UDP nefungují s překladem SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Zkoumáme možnosti, jak podporu tohoto scénáře zahrnout do budoucích verzí.|
 |Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a rozhraní příkazového řádku nepodporují ICMP jako platný protokol v pravidlech sítě.|ICMP můžete pořád používat jako protokol prostřednictvím portálu a rozhraní REST API. Pracujeme na brzkém přidání protokolu ICMP do PowerShellu a rozhraní příkazového řádku.|
 |Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikace se značkami plně kvalifikovaného názvu domény vyžadují definici port:protokol.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo při použití značek plně kvalifikovaného názvu domény nepovinné.|
-|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Podpora této funkce se na náš podrobný popis. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
+|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného se nepodporuje|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Podpora této funkce se na náš podrobný popis. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
+|Rozsah portů v pravidlech sítě a aplikace|Porty s vysokou jsou vyhrazené pro správu a stavu jsou omezená na 64 000 portů sondy. |Pracujeme na toto omezení zmírnit.|
+|
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal](tutorial-firewall-deploy-portal.md)
+- [Kurz: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](tutorial-firewall-deploy-portal.md)
 - [Nasazení brány Azure Firewall pomocí šablony](deploy-template.md)
 - [Vytvoření testovacího prostředí brány Azure Firewall](scripts/sample-create-firewall-test.md)
 

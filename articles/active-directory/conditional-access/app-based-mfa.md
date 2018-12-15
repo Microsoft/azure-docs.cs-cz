@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604191"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413145"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý start: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory 
 
@@ -79,17 +79,17 @@ V zásadách nastavte:
 
 **Ke konfiguraci zásady podmíněného přístupu:**
 
-1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 
 2. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**. 
 
     ![Azure Active Directory](./media/app-based-mfa/02.png)
 
-3. Na **Azure Active Directory** stránku, **spravovat** klikněte na tlačítko **podmíněného přístupu**.
+3. Na **Azure Active Directory** stránku, **zabezpečení** klikněte na tlačítko **podmíněného přístupu**.
 
     ![Podmíněný přístup](./media/app-based-mfa/03.png)
  
-4. Na **podmíněného přístupu** klikněte na stránku, na panelu nástrojů v horní části **přidat**.
+4. Na **podmíněného přístupu** klikněte na stránku, na panelu nástrojů v horní části **nové zásady**.
 
     ![Přidat](./media/app-based-mfa/04.png)
 
@@ -153,7 +153,7 @@ V zásadách nastavte:
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Simulace odhad dopadu tomto přihlášení na zásady a generuje sestavy simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodobně chcete zjistit, jestli fungují podle očekávání. Jako první krok pomocí podmíněného přístupu, nástroj pro co když zásady pro simulaci u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
 K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
 
@@ -196,7 +196,7 @@ K inicializaci co, pokud nástroj pro vyhodnocení zásad, nastavit:
 3. Klikněte na tlačítko **co když**.
 
 
-## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
 
 V předchozí části jste zjistili, jak vyhodnotit simulované přihlášení. Kromě simulaci byste měli také otestovat své zásady podmíněného přístupu k zajištění, že funguje podle očekávání. 
 

@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: d86600dd000d3e9c71a38b632aa75e82239401dd
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86b10d65ecaa52055244f3530f91c1cabbe219e0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104575"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435544"
 ---
 # <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix ve službě HDInsight
 
-[Apache Phoenix](http://phoenix.apache.org/) je vrstva masivně paralelní relační databáze založená na open source [HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy na podobném SQL nad HBase. Phoenix používá ovladače JDBC pod umožňující uživatelům vytvořit, odstranit, změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, umožňují vytvářet aplikace s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění v adresním prostoru serveru klientem poskytnutý kód spouští kód umístěny společně s daty. Tento přístup minimalizuje přenosu dat klienta nebo serveru.
+[Apache Phoenix](http://phoenix.apache.org/) je vrstva masivně paralelní relační databáze založená na open source [Apache HBase](hbase/apache-hbase-overview.md). Phoenix umožňuje používat dotazy na podobném SQL nad HBase. Phoenix používá ovladače JDBC pod umožňující uživatelům vytvořit, odstranit, změnit tabulek, indexů, zobrazení a pořadí a upsert řádky SQL jednotlivě a hromadně. Phoenix používá nativní kompilace noSQL místo použití prostředí MapReduce ke kompilaci dotazů, umožňují vytvářet aplikace s nízkou latencí nad HBase. Phoenix přidá coprocessors k podpoře spouštění v adresním prostoru serveru klientem poskytnutý kód spouští kód umístěny společně s daty. Tento přístup minimalizuje přenosu dat klienta nebo serveru.
 
-Apache Phoenix otevře velkých objemů dat pro nevývojáře, kteří můžou využívat syntaxe pro SQL místo programování. Phoenix je vysoce optimalizovaných pro HBase, na rozdíl od jiných nástrojů, jako [Hive](hadoop/hdinsight-use-hive.md) a Spark SQL. Výhoda pro vývojáře je zápis vysoce výkonných dotazů s mnohem menším množstvím kódu.
+Apache Phoenix otevře velkých objemů dat pro nevývojáře, kteří můžou využívat syntaxe podobném SQL místo programování. Phoenix je vysoce optimalizovaných pro HBase, na rozdíl od jiných nástrojů, jako [Hive](hadoop/hdinsight-use-hive.md) a Apache Spark SQL. Výhoda pro vývojáře je zápis vysoce výkonných dotazů s mnohem menším množstvím kódu.
 <!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Když odešlete dotaz SQL, Phoenix zkompiluje dotaz pro nativní volání HBase a spustí skener (nebo plán) paralelní optimalizace. Tato vrstva abstrakce uvolní vývojářům od vytváření úloh MapReduce, místo toho se soustředit na obchodní logiku a pracovní postup jejich aplikaci kolem Phoenix pro velké objemy dat úložiště.
@@ -122,7 +122,7 @@ CREATE TABLE Saltedweblogs (
     shippingamount DOUBLE NULL) SALT_BUCKETS=4;
 ```
 
-## <a name="enable-and-tune-phoenix-with-ambari"></a>Povolit a vyladění Phoenixu s Ambari
+## <a name="enable-and-tune-phoenix-with-apache-ambari"></a>Povolit a vyladění Phoenixu s Apache Ambari
 
 Cluster HDInsight HBase obsahuje [uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) k provádění změn konfigurace.
 

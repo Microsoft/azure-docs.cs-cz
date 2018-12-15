@@ -11,14 +11,17 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16032ec5ba1e613462f92b86281ce93153b70923
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391806"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409713"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Omezení a kvóty služby batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Jako s ostatními službami Azure, se vztahují omezení určitých prostředků služby Batch AI. V Batch AI, tato omezení jsou výchozí kvóty uplatňované na úrovni předplatného pro každou oblast, kde je služba [dostupné](https://azure.microsoft.com/global-infrastructure/services/). Tento článek popisuje tyto výchozí hodnoty a jak můžete požádat o kvóta zvýší.
 
@@ -74,7 +77,7 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit k předplatnému slu�
    
     d. **Plán podpory** > vyberte váš plán podpory.
 
-    Klikněte na **Další**.
+    Klikněte na tlačítko **Další**.
 4. V **problém**:
    
     a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
@@ -83,7 +86,7 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit k předplatnému slu�
 
     c. Volitelné – nahrát všechny relevantní soubory s dalšími informacemi o váš důvod pro zvýšení.
    
-    Klikněte na **Další**.
+    Klikněte na tlačítko **Další**.
 5. V **kontaktní informace**:
    
     a. Vyberte **upřednostňovaný způsob kontaktování**.

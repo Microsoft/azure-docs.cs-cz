@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 00f6f84a2065a67e999149e4b0f9e28f18e5e297
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b60e1639a1c32763c4759720fe61b0e571fc9dd1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239419"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437091"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Učení klíčové koncepty pracovního postupu Windows Powershellu pro automatizaci sady runbook
 
@@ -193,10 +193,10 @@ Workflow Copy-Files
 }
 ```
 
-Můžete použít **ForEach-Parallel** konstrukce ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci se zpracovávají paralelně, zatímco příkazy v bloku skriptu spouští sekvenčně. Tady se používá následující syntaxi uvedenou níže. V takovém případě se aktivity "activity1" spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "activity2" spustí po dokončení aktivit "activity1". Aktivita "activity3" spustí až po dokončení aktivit "activity1" a "activity2" pro všechny položky.
+Můžete použít **ForEach-Parallel** konstrukce ke zpracování příkazů pro každou položku v kolekci současně. Položky v kolekci se zpracovávají paralelně, zatímco příkazy v bloku skriptu spouští sekvenčně. Tady se používá následující syntaxi uvedenou níže. V takovém případě se aktivity "activity1" spustí ve stejnou dobu pro všechny položky v kolekci. Pro každou položku "activity2" spustí po dokončení aktivit "activity1". Aktivita "activity3" spustí až po dokončení aktivit "activity1" a "activity2" pro všechny položky. Používáme `ThrottleLimit` parametr omezte paralelismus. Příliš vysokou `ThrottleLimit` může způsobit problémy. Ideální hodnotu `ThrottleLimit` parametr závislá na mnoha faktorech ve vašem prostředí. By měl akci spuštění s nízkou hodnotu a zkuste jiné zvýšení hodnoty, dokud nenajdete funguje pro konkrétní situaci.
 
 ```powershell
-ForEach -Parallel ($<item> in $<collection>)
+ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
 {
     <Activity1>
     <Activity2>
@@ -211,7 +211,7 @@ Workflow Copy-Files
 {
     $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-    ForEach -Parallel ($File in $Files)
+    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
     {
         Copy-Item -Path $File -Destination \\NetworkPath
         Write-Output "$File copied."
@@ -258,7 +258,7 @@ Workflow Copy-Files
 }
 ```
 
-Protože uživatelské jméno pověření nejsou trvale uložena po volání [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) aktivity nebo po poslední kontrolní bod, je nutné nastavit přihlašovací údaje s hodnotou null a poté je znovu načíst z úložiště asset po  **Suspend-Workflow** nebo kontrolního bodu je volána.  V opačném případě může zobrazit následující chybová zpráva: *úlohy pracovního postupu nelze pokračovat, buď persistentních dat nelze uložit zcela nebo uložil persistentních dat byla poškozena. Je nutné restartovat pracovního postupu.*
+Protože uživatelské jméno pověření nejsou trvale uložena po volání [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) aktivity nebo po poslední kontrolní bod, je nutné nastavit přihlašovací údaje s hodnotou null a poté je znovu načíst z úložiště asset po  **Suspend-Workflow** nebo kontrolního bodu je volána.  V opačném případě může zobrazit následující chybová zpráva: *Nelze obnovit úlohu pracovního postupu, buď persistentních dat nelze uložit zcela nebo uložil persistentních dat byla poškozena. Je nutné restartovat pracovního postupu.*
 
 Následující stejný kód ukazuje, jak o to postarají v runboocích pracovního postupu Powershellu.
 

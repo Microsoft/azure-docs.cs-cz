@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 9b2566458bc32f9b1d7a36790fbdd5fbb2419ec1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: debc5ac2771b57fe1a6091ef8dc97291aa11365e
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384288"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437039"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -102,7 +102,7 @@ Můžete použít úložiště účtu nebo událostí centra oboru názvů, kter
 >  Nelze aktuálně archivace dat do účtu úložiště, který je za zabezpečené virtuální síti.
 
 > [!WARNING]
-> Formát data protokolu v aktuálním účtu úložiště změnit na řádky JSON na 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./monitor-diagnostic-logs-append-blobs.md). 
+> Formát data protokolu v aktuálním účtu úložiště změnit na řádky JSON na 1. listopadu 2018. [Informace o dopadu a postup pro aktualizaci nástrojů, aby si s novým formátem poradily, najdete v tomto článku](./../azure-monitor/platform/diagnostic-logs-append-blobs.md). 
 >
 > 
 

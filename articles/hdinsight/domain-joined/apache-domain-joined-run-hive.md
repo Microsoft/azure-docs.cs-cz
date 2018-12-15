@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 43b3e293bf2990c953aeb2947b1113ee30175dee
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632811"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435511"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Nakonfigurovat zásady Apache Hive v HDInsight s balíčkem Enterprise Security Package
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto článku vytvoříte dvě zásady Ranger pro omezení přístupu k hivesampletable. Hivesampletable je součástí clusterů HDInsight. Po nakonfigurování zásad použijete Excel nebo ovladač ODBC a připojíte se k tabulkám Hivu ve službě HDInsight.
@@ -28,10 +28,9 @@ Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro Apache Hive. V tomto č
 
 1. V prohlížeči se připojte k uživatelskému rozhraní správce Ranger. Adresa URL je: https://&lt;název_clusteru>.azurehdinsight.net/Ranger/.
 
-   > [!NOTE]
-   > Ranger používá jiné přihlašovací údaje než cluster Hadoop. Abyste zabránili prohlížeči v použití mezipaměti přihlašovacích údajů systému Hadoop, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
-   >
-   >
+   > [!NOTE]  
+   > Ranger používá jiné přihlašovací údaje než cluster Apache Hadoop. Abyste zabránili prohlížeči v použití mezipaměti přihlašovacích údajů systému Hadoop, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
+
 2. Přihlaste se pomocí doménového uživatelského jména a hesla správce clusteru:
 
     ![Domovská stránka HDInsight ESP Ranger](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
@@ -59,7 +58,7 @@ V této části vytvoříte dvě zásady Ranger pro přistupování k hivesample
 
      ![Konfigurace zásady Hivu v Ranger HDInsight ESP](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
-     > [!NOTE]
+     > [!NOTE]  
      > Pokud uživatel domény v části Select User (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
      >
      >
@@ -134,6 +133,6 @@ Testování druhé zásady (read-hivesampletable-devicemake), který jste vytvo�
 * Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package, naleznete v tématu [konfigurace HDInsight clustery s ESP](apache-domain-joined-configure.md).
 * Cluster HDInsight s ESP, přečtěte si téma [spravovat HDInsight clustery s ESP](apache-domain-joined-manage.md).
 * Spouštění dotazů Hive pomocí SSH na clusterech HDInsight s ESP, naleznete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
-* Pokud se chcete připojit k Hivu pomocí Hive JDBC, přečtěte si téma [Připojení k Hivu ve službě Azure HDInsight pomocí ovladače Hive JDBC](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
-* Pokud chcete připojit Excel k systému Hadoop pomocí rozhraní Hive ODBC, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* Pokud chcete připojit Excel k systému Hadoop pomocí doplňku Power Query, přečtěte si téma [Připojení Excelu k systému Hadoop pomocí doplňku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md).
+* Připojení Hivu pomocí Hive JDBC, naleznete v tématu [připojit k Apache Hive v Azure HDInsight pomocí ovladače Hive JDBC](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)
+* Připojení Excelu k Hadoopu pomocí ovladače ODBC Hive, najdete v části [připojení Excelu k systému Apache Hadoop pomocí jednotky Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
+* Připojení Excelu k Hadoopu pomocí Power Query, naleznete v tématu [připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)

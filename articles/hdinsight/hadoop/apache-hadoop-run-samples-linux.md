@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bf1fa41abe1c1f9b0d07ee7d77fe1c819e88ddc1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f9bafec093a3ad6e26eb12cfdb321945353b4d08
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017616"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434133"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce v HDInsight
 
@@ -25,43 +25,43 @@ Zjistěte, jak spustit MapReduce příklady součástí Apache Hadoop v HDInsigh
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **HDInsight cluster**: viz [Začínáme používat Hadoop pomocí Hivu ve službě HDInsight v Linuxu](apache-hadoop-linux-tutorial-get-started.md)
+* **HDInsight cluster**: Zobrazit [začněte používat Apache Hadoopu s Apache Hive v HDInsight v Linuxu](apache-hadoop-linux-tutorial-get-started.md)
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* **Klient SSH**: Další informace najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH**: Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="the-mapreduce-examples"></a>Příklady MapReduce
 
-**Umístění**: jsou ukázky umístěny na clusteru HDInsight na `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+**Umístění**: Ukázky jsou umístěny na clusteru HDInsight na `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
-**Obsah**: následující ukázky jsou obsaženy v archivu:
+**Obsah**: Následující ukázky jsou obsaženy v archivu:
 
-* `aggregatewordcount`: Agregaci na základě program mapreduce, který spočítá slova v vstupních souborů.
-* `aggregatewordhist`: Agregaci na základě program mapreduce, která vypočítá histogram slov ve vstupních souborů.
+* `aggregatewordcount`: Agregace na základě program mapreduce, který spočítá slova v vstupních souborů.
+* `aggregatewordhist`: Agregace na základě program mapreduce, která vypočítá histogram slov ve vstupních souborů.
 * `bbp`: Program mapreduce, která používá Bailey. Borwein Plouffe vypočítat přesné číslice čísla pí.
-* `dbcount`: Příklad úlohu, která vrátí počet zobrazení stránky protokolů uložených v databázi.
+* `dbcount`: Úlohu příklad, který počítá zobrazení stránky protokolů uložených v databázi.
 * `distbbp`: Program mapreduce, která používá BBP typu Vzorec pro výpočet přesné bits pí.
 * `grep`: Program mapreduce, který počítá shody regulárního výrazu ve vstupu.
 * `join`: Úloha, která provádí spojení přes seřazený, rovnoměrně rozdělit na oddíly datové sady.
-* `multifilewc`: Úlohu, která počítá slova z více souborů.
+* `multifilewc`: Úlohy, který počítá slova z více souborů.
 * `pentomino`: Dlaždice, kterým program mapreduce k vyhledání řešení pentomino problémy.
 * `pi`: Program mapreduce, který odhaduje pí pomocí dál Monte Carlo metody.
 * `randomtextwriter`: Program mapreduce, která zapisuje 10 GB náhodné textových dat podle počtu uzlů.
 * `randomwriter`: Program mapreduce, která zapisuje 10 GB náhodných dat na jeden uzel.
 * `secondarysort`: Příklad definování sekundární řazení do fáze zmenšit.
 * `sort`: Program mapreduce, který seřadí dat zapsaných náhodné zapisovače.
-* `sudoku`Řešitel: sudoku.
-* `teragen`: Data pro terasort generovat.
+* `sudoku`: Řešitel sudoku.
+* `teragen`: Generovat data pro terasort.
 * `terasort`: Spusťte terasort.
 * `teravalidate`: Kontrola výsledků terasort.
 * `wordcount`: Program mapreduce, který spočítá slova v vstupních souborů.
 * `wordmean`: Program mapreduce, který počítá průměrná délka slova ve vstupních souborů.
 * `wordmedian`: Program mapreduce, který počítá Střední délka slova ve vstupních souborů.
-* `wordstandarddeviation`: Program mapreduce, který počítá směrodatné odchylky poměru délky slov ve vstupních souborů.
+* `wordstandarddeviation`: Program mapreduce, který vrátí směrodatnou odchylku Délka slova ve vstupních souborů.
 
-**Zdrojový kód**: zdrojový kód pro tyto ukázky je zahrnuta v clusteru HDInsight na `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**Zdrojový kód**: Zdrojový kód pro tyto ukázky je zahrnuta v clusteru HDInsight na `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 ## <a name="run-the-wordcount-example"></a>Spusťte příklad wordcount
 
@@ -95,7 +95,7 @@ Zjistěte, jak spustit MapReduce příklady součástí Apache Hadoop v HDInsigh
 
     Zadejte pro tuto úlohu je pro čtení z `/example/data/gutenberg/davinci.txt`. Výstup v tomto příkladu je uložen v `/example/data/davinciwordcount`. Obě cesty jsou umístěny na výchozí úložiště clusteru, není místním systému souborů.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jak je uvedeno v nápovědě pro ukázka wordcountu, můžete také zadat více vstupních souborů. Například `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` počítá slova v davinci.txt a ulysses.txt.
 
 5. Po dokončení úlohy následujícím příkazem zobrazíte výstup:
@@ -171,13 +171,13 @@ Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spust
 
 Tato ukázka používá tři páry programů MapReduce:
 
-* **TeraGen**: program A MapReduce, který generuje data seřadit řádky
+* **TeraGen**: Program MapReduce, která generuje data seřadit řádky
 
-* **TeraSort**: ukázkové vstupní data a řadit data do celkového pořadí pomocí MapReduce
+* **TeraSort**: Ukázkové vstupní data a řadit data do celkového pořadí pomocí MapReduce
 
     TeraSort je standardní řazení MapReduce, s výjimkou vlastního rozdělovače. Dělicí používá seřazený seznam N-1 vzorkovány klíče, které definovat rozsah klíče pro každý zmenšit. Zejména všechny klíče takové, které ukázkový [i-1] < = klíč < ukázka [i] odešlou ke snížení i. Tato dělicí metoda záruky, že výstupy snížit i všechny jsou menší, než se výstup snížit i + 1.
 
-* **TeraValidate**: program A MapReduce, který ověří, že výstup globálně seřazené
+* **TeraValidate**: Program MapReduce, která ověřuje, že výstup globálně seřazené
 
     Vytvoří jednu mapu každý soubor ve výstupním adresáři a každé mapování zajistí, že každý klíč je menší nebo rovna předchozí. Mapování funkce generuje záznamy první a poslední klíče každého souboru. Funkci reduce zajistí, že první klíč souboru je větší než poslední klíč souboru i-1. Žádné problémy s označené jako výstup fáze snížit, pomocí klíčů, které jsou mimo pořadí.
 
@@ -209,9 +209,9 @@ Pomocí následujících kroků pro generování dat, řazení a ověřte výstu
 
 V tomto článku jste zjistili, jak ke spuštění ukázky zahrnuté v clusterech HDInsight založených na Linuxu. Kurzy o používání Pig, Hive a MapReduce s HDInsight najdete v následujících tématech:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:apache-hadoop-introduction.md

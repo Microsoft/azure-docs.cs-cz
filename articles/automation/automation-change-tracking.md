@@ -10,12 +10,12 @@ ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 27bacb12c66ac57a0bf1aea88a447d395b6dde8c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166997"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408914"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -63,7 +63,7 @@ To umožňuje řešení pro svůj účet automation. Řešení může trvat až 
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurace řešení Change Tracking a Inventory
 
-Další informace jak připojit počítače k řešení najdete v tématu: [řešení automatizace registrace](automation-onboard-solutions-from-automation-account.md). Jakmile budete mít počítač připojování pomocí řešení Change Tracking a Inventory můžete konfigurovat položky, které chcete sledovat. Když povolíte nový soubor nebo klíč registru pro sledování, je povolen pro řešení Change Tracking a Inventory.
+Další informace jak připojit počítače k řešení najdete v tématu: [Řešení pro automatizaci připojování](automation-onboard-solutions-from-automation-account.md). Jakmile budete mít počítač připojování pomocí řešení Change Tracking a Inventory můžete konfigurovat položky, které chcete sledovat. Když povolíte nový soubor nebo klíč registru pro sledování, je povolen pro řešení Change Tracking a Inventory.
 
 Při sledování změn souborů na Windows i Linuxem, se používají hodnoty hash MD5 souborů. Tyto hodnoty hash se použije ke zjištění, pokud byla provedena změna od poslední inventarizace.
 
@@ -85,7 +85,7 @@ Použijte následující postup ke konfiguraci sledování souborů na počíta�
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – ignoruje symbolické odkazy a nezahrnuje odkazované soubory a adresáře.<br>**Postupujte podle** – během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – sleduje symbolické odkazy a umožňuje změnu vráceného obsahu.     |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **Hodnota TRUE** nebo **False**.|
 
 > [!NOTE]
 > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
@@ -105,7 +105,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
-|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **Hodnota TRUE** nebo **False**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Nastavení zástupný znak, rekurze a prostředí
 
@@ -135,7 +135,7 @@ Pomocí následujících kroků nakonfigurovat sledování klíčů registru v p
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru. Příklad: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common spuštění"      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru. Příklad: "Spuštění HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common"      |
 
 ## <a name="limitations"></a>Omezení
 
@@ -167,10 +167,21 @@ V následující tabulce jsou uvedeny frekvence shromažďování dat pro typy z
 | Registru Windows | 50 minut |
 | Soubor Windows | 30 minut |
 | Souborů v Linuxu | 15 minut |
-| Služby pro Windows | 10 sekund až 30 minut.</br> Výchozí hodnota: 30 minut |
+| Služby pro Windows | 10 sekund až 30 minut.</br> Výchozí: 30 minut |
 | Procesy démon Linuxu | 5 minut |
 | Windows software | 30 minut |
 | Softwaru platformy Linux | 5 minut |
+
+Následující tabulka uvádí omezení sledované položky na počítač pro řešení Change Tracking.
+
+| **Prostředek** | **Limit**| **Poznámky** |
+|---|---|---|
+|File|500||
+|Registr|250||
+|Windows software|250|Nezahrnuje aktualizací softwaru|
+|Balíčky Linux|1250||
+|Služby|250||
+|Démon|250||
 
 ### <a name="windows-service-tracking"></a>Sledování služby Windows
 

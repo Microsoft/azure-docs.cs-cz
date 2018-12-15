@@ -8,15 +8,15 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 8bde1e8846dbaee957e2498ea4fae0c5cf79a913
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 34bf642cbdecce31be1a8119adc483d017686479
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059081"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434041"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy operačního systému pro HDInsight 
-Spravovaná služba, Hadoop HDInsight postará o opravy OS základních virtuálních počítačů, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili zásady použití dílčích oprav operačního systému hosta clusterech HDInsight založených na Linuxu (verze 3.4). Cílem nové zásady je výrazně snížil počet restartování z důvodu opravy. Nová zásada bude nadále opravu virtuálních počítačů (VM) na clusterech s Linuxem každé pondělí a čtvrtek, od 00: 00 UTC postupný způsobem napříč uzly v jakémkoliv daného clusteru. Libovolný daný virtuální počítač se restartuje však pouze maximálně jednou za 30 dnů z důvodu opravy hostovaného operačního systému. Kromě toho první restartování pro nově vytvořený cluster se neprovede dřív než 30 dní od data vytvoření clusteru. Opravy začnou platit, až se virtuální počítače se restartují.
+Spravovaná služba, Apache Hadoop HDInsight postará o opravy OS základních virtuálních počítačů, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili zásady použití dílčích oprav operačního systému hosta clusterech HDInsight založených na Linuxu (verze 3.4). Cílem nové zásady je výrazně snížil počet restartování z důvodu opravy. Nová zásada bude nadále opravu virtuálních počítačů (VM) na clusterech s Linuxem každé pondělí a čtvrtek, od 00: 00 UTC postupný způsobem napříč uzly v jakémkoliv daného clusteru. Libovolný daný virtuální počítač se restartuje však pouze maximálně jednou za 30 dnů z důvodu opravy hostovaného operačního systému. Kromě toho první restartování pro nově vytvořený cluster se neprovede dřív než 30 dní od data vytvoření clusteru. Opravy začnou platit, až se virtuální počítače se restartují.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Jak nakonfigurovat plán pro clustery HDInsight založené na Linuxu oprav operačního systému
 Virtuální počítače v clusteru služby HDInsight je potřeba restartovat příležitostně tak, že je možné nainstalovat důležité opravy. Od 1. srpna 2016 se restartují nových clusterů HDInsight založených na Linuxu (verze 3.4,), pomocí následujícího plánu:
@@ -31,7 +31,7 @@ Pomocí skriptových akcí popsaných v tomto článku, můžete upravit násled
 2. Nastavení četnosti restartuje (ve dnech mezi jednotlivými restartováními)
 3. Nastavte dne v týdnu, kdy dojde k restartování
 
-> [!NOTE]
+> [!NOTE]  
 > Tuto akci se skripty budou fungovat jenom s clustery HDInsight založené na Linuxu vytvořená po 1. srpna 2016. Opravy bude platit pouze v případě, že virtuální počítače se restartují. 
 >
 
@@ -43,7 +43,7 @@ Při použití tento skript vyžaduje následující informace:
 2. Typy uzlů clusteru, které skript platí pro: hlavního uzlu, workernode, zookeeper. Tento skript se musí použít na všechny typy uzlů v clusteru. Pokud není použité u typu uzlu, virtuálních počítačů pro daný typ uzlu bude nadále používat předchozí plán oprav.
 
 
-3.  Parametr: Tento skript přijímá tři číselné parametry:
+3.  Parametr: Tento skript je možné zadat tři číselné parametry:
 
     | Parametr | Definice |
     | --- | --- |
@@ -52,10 +52,8 @@ Při použití tento skript vyžaduje následující informace:
     | Den v týdnu |1 až 7 (včetně). Hodnota 1 značí restartování počítače se budou objevovat v pondělí a 7 znamená Sunday.For příklad, pomocí parametrů 1 60 2 výsledky v automaticky restartuje každých 60 dní (maximální) úterý. |
     | Trvalost |Při použití akce skriptu do existujícího clusteru, můžete skript označit jako trvalý. Trvalých skriptů se použijí, když se přidají nové workernodes ke clusteru prostřednictvím operace škálování. |
 
-> [!NOTE]
-> Tento skript je třeba označit jako trvalý, při použití do existujícího clusteru. V opačném případě žádné nové uzly, které jsou vytvořené prostřednictvím operací škálování bude používat výchozí plán oprav.
-Pokud použijete skript jako součást procesu vytváření clusteru, se ukládají automaticky.
->
+> [!NOTE]  
+> Tento skript je třeba označit jako trvalý, při použití do existujícího clusteru. V opačném případě žádné nové uzly, které jsou vytvořené prostřednictvím operací škálování bude používat výchozí plán oprav.  Pokud použijete skript jako součást procesu vytváření clusteru, se ukládají automaticky.
 
 ## <a name="next-steps"></a>Další postup
 

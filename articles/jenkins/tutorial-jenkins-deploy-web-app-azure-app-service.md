@@ -8,14 +8,14 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 274de7ac63df0afc1a59e197deebeb7929cf1ef8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b65972b79fd16b912abfbd2e35642ef5d9f5adc4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854686"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438468"
 ---
-# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service s Jenkinsem průběžnou integraci a nasazování
+# <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do služby Azure App Service pomocí Jenkinse průběžnou integraci a nasazování
 
 V tomto kurzu se nasadí webová aplikace Java ukázky z Githubu do [Azure App Service v Linuxu](/azure/app-service/containers/app-service-linux-intro) nastavením průběžné integrace (CI) a průběžného nasazování (CD) Jenkinse. Když aktualizujete aplikaci formou potvrzení Githubu, Jenkins automaticky sestaví a znovu publikuje uzamkl vaší aplikace do služby Azure App Service. Ukázková aplikace v tomto kurzu byla vyvinuta pomocí [Spring Boot](http://projects.spring.io/spring-boot/) rozhraní framework. 
 
@@ -43,7 +43,7 @@ K dokončení tohoto kurzu, budete potřebovat tyto položky:
 
 * A [Jenkins](https://jenkins.io/) serveru pomocí nástroje Java Development Kit (JDK) a Maven nainstalovaný na virtuálním počítači Azure s Linuxem
 
-  Pokud nemáte Jenkins server, dokončete tyto kroky teď na webu Azure portal: [serveru Jenkins vytvořte na virtuálním počítači Azure s Linuxem](/azure/jenkins/install-jenkins-solution-template)
+  Pokud nemáte Jenkins server, proveďte tyto kroky teď na webu Azure portal: [Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem](/azure/jenkins/install-jenkins-solution-template)
 
 * A [Githubu](https://github.com) účtem, takže můžete získat pracovní kopie ([forku](#fork)) pro ukázkovou webovou aplikaci Java. 
 
@@ -92,7 +92,7 @@ Chcete-li mít Jenkinse, Githubu monitorování a reakce při získání nové p
 > 
 > Tyto kroky vytvoří osobní přístupový token přihlašovacích údajů pro Jenkinse, aby fungoval s Githubem pomocí Githubu uživatelské jméno a heslo. 
 > Pokud účet GitHub pomocí dvojúrovňového ověřování, ale vytvoření tokenu v Githubu a Jenkinse nastavit místo toho použít tento token. 
-> Další informace najdete v tématu [modulu plug-in Jenkinse Githubu](https://wiki.jenkins.io/display/JENKINS/Github+Plugin) dokumentaci.
+> Další informace najdete v tématu [modulu plug-in Jenkinse Githubu](https://wiki.jenkins.io/display/JENKINS/GitHub+Plugin) dokumentaci.
 
 1. Z **spravovat Jenkins** stránce **konfigurovat systém**. 
 

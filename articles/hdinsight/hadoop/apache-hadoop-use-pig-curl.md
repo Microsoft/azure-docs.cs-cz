@@ -9,34 +9,35 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 65d94c4df3111e1ffe5a5340bba1db454681bb5e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 855ee1b7396be97c6529480b8fa8200bb8167ee6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016006"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434004"
 ---
-# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig s Apache Hadoop v HDInsight pomocí REST
+# <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spouštět úlohy Apache Pig s Apache Hadoop v HDInsight pomocí REST
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do clusteru Azure HDInsight. Curl slouží k předvedení jak mohou komunikovat s HDInsight pomocí rozhraní REST API WebHCat.
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud jste obeznámeni s pomocí serverů se systémem Linux Apache Hadoop, ale teprve začínáte HDInsight, naleznete v tématu [tipy k Linuxovým systémem HDInsight](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Požadavky
 
 * Cluster Azure HDInsight (Hadoop v HDInsight) (založené na Linuxu nebo na základě Windows)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Curl](https://curl.haxx.se/)
 
 * [jq](https://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Spuštění úlohy Pig pomocí Curl
+## <a id="curl"></a>Spouštět úlohy Apache Pig pomocí Curl
+
 
 > [!NOTE]
 > Rozhraní REST API je zabezpečeno pomocí [ověřování přístupu basic](https://en.wikipedia.org/wiki/Basic_access_authentication). Vždy proveďte požadavky pomocí Secure HTTP (HTTPS) k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
@@ -57,8 +58,8 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-u**: uživatelské jméno a heslo použité pro ověření žádosti
-    * **-G**: Určuje, že tento požadavek je požadavek GET
+    * **-u**: Uživatelské jméno a heslo použité pro ověření žádosti
+    * **-G**: Označuje, že tento požadavek je požadavek GET
 
      Počáteční adresa URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, je stejný pro všechny požadavky. Cesta, **/status**, označuje, že žádost je vrátit stav WebHCat (také známé jako Templeton) pro server.
 
@@ -70,13 +71,13 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
     Parametry použité v tomto příkazu jsou následující:
 
-    * **-d**: protože `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
+    * **-d**: Protože `-G` se nepoužívá výchozí nastavení požadavku pro metodu POST. `-d` Určuje hodnoty dat, které se odesílají s požadavkem.
 
-    * **User.Name**: uživatel, který spouští příkaz
-    * **Spustit**: The Pig Latin příkazy ke spuštění
-    * **statusdir**: adresáře, který stavu pro tuto úlohu je zapsán do
+    * **User.Name**: Uživatel, který spouští příkaz
+    * **Spustit**: Pig Latin příkazy ke spuštění
+    * **statusdir**: Adresář, který stavu pro tuto úlohu je zapsán do
 
-    > [!NOTE]
+    > [!NOTE]  
     > Všimněte si, že jsou nahrazené mezery v příkazech Pig Latin `+` znaků při použití s Curl.
 
     Tento příkaz by měl vrátit, který slouží ke kontrole stavu úlohy, například ID úlohy:
@@ -93,14 +94,14 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
 
     Pokud úloha dokončí, je stav **SUCCEEDED**.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tento požadavek Curl vrátí dokument JavaScript Object Notation (JSON) se informace o úloze a jq slouží k načtení jenom hodnoty stavu.
 
 ## <a id="results"></a>Zobrazení výsledků
 
 Když má stav úlohy změní na **SUCCEEDED**, můžete načíst výsledky úlohy. `statusdir` Parametr předaný s dotazem obsahuje umístění výstupního souboru; v takovém případě `/example/pigcurl`.
 
-HDInsight můžete použít Azure Storage nebo Azure Data Lake Store jako výchozího datového úložiště. Existují různé způsoby, jak získat data v závislosti na tom, co používáte. Další informace najdete v části úložiště [Linuxovým systémem HDInsight informace](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
+HDInsight můžete použít Azure Storage nebo Azure Data Lake Storage jako výchozího datového úložiště. Existují různé způsoby, jak získat data v závislosti na tom, co používáte. Další informace najdete v části úložiště [Linuxovým systémem HDInsight informace](../hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) dokumentu.
 
 ## <a id="summary"></a>Shrnutí
 
@@ -112,9 +113,9 @@ Další informace o rozhraní REST použité v tomto článku najdete v tématu 
 
 Obecné informace o Pig v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 040b0ae80defcd6d1c737851edd5a7dc16273fc6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d947974575cf996ed880f2c1b5f8f7700b81ffd3
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340398"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413502"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: Zpráva k vydání verze a prostředky
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 ### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
 * Ve verzi Preview 1 [verze 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) sady .NET SDK pro verzi public preview.
 * Cíl .NET Standard, která podporuje 4.6.1+ rozhraní .NET framework a .NET Core 2.0 +
-* Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
-* Podpora pro datové proudy. 
-* Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
+* Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy.
+* Podpora pro datové proudy.
+* Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď.
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -136,7 +136,7 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
  
- * Branding změny z Azure DocumentDB do služby Azure Cosmos DB v referenční dokumentaci rozhraní API, dokumentaci, informace o metadatech v sestaveních a balíček NuGet. 
+ * Branding změny z Azure DocumentDB do služby Azure Cosmos DB v referenční dokumentaci rozhraní API, dokumentaci, informace o metadatech v sestaveních a balíček NuGet.
  * Diagnostické informace a čekací doba odpovědi žádosti odeslané s režimem přímé připojení k zpřístupnit. Názvy vlastností, které jsou ve třídě ResourceResponse RequestDiagnosticsString a RequestLatency.
  * Tato verze sady SDK vyžaduje nejnovější verzi Azure emulátor služby Cosmos DB k dispozici ke stažení z https://aka.ms/cosmosdb-emulator.
  
@@ -150,8 +150,8 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
 
-* Přidání podpory pro PartitionKeyRangeId jako FeedOption pro vymezení výsledky dotazu na rozsah klíče hodnotu konkrétního oddílu. 
-* Přidání podpory pro StartTime jako ChangeFeedOption, abyste mohli začít sledovat změny po uplynutí této doby. 
+* Přidání podpory pro PartitionKeyRangeId jako FeedOption pro vymezení výsledky dotazu na rozsah klíče hodnotu konkrétního oddílu.
+* Přidání podpory pro StartTime jako ChangeFeedOption, abyste mohli začít sledovat změny po uplynutí této doby.
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
@@ -216,12 +216,12 @@ Azure Cosmos DB .NET Core SDK umožňuje vytváření rychlých a multiplatformn
 Azure Cosmos DB .NET Core ve verzi Preview SDK umožňuje vytváření rychlých a multiplatformní [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace pro Windows, Mac a Linux.
 
 Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md) a podporuje následující:
-* Všechny [režimy připojení](performance-tips.md#networking): Režim brány, s přímým přístupem TCP a HTTPs s přímým přístupem. 
+* Všechny [režimy připojení](performance-tips.md#networking): Režim brány, s přímým přístupem TCP a HTTPs s přímým přístupem.
 * Všechny [úrovně konzistence](consistency-levels.md): Silný, relace, omezená Neaktuálnost a konečný výsledek.
-* [Dělené kolekce](partition-data.md). 
+* [Dělené kolekce](partition-data.md).
 * [Účty databáze ve více oblastech a geografická replikace](distribute-data-globally.md).
 
-Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues).
 
 ## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
 
@@ -256,5 +256,5 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 | [0.1.0-preview](#0.1.0-preview) |15. listopadu 2016 |Do 31. prosince 2016 |
 
 ## <a name="see-also"></a>Viz také
-Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby. 
+Další informace o službě Cosmos DB najdete v tématu [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) stránku služby.
 

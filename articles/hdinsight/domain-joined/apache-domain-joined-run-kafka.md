@@ -8,14 +8,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0d9ad11ab9a53cf5de51dd3f262dc16054be5d85
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633033"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438604"
 ---
-# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurujte zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
 
 Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro clustery Apache Kafka Enterprise Security Package (ESP). ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger pro omezení přístupu k tématům `sales*` a `marketingspend`.
 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření témat v clusteru Kafka
 > * Testování zásad Ranger
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 1. Z prohlížeče se připojte k uživatelskému rozhraní Ranger Admin pomocí adresy URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Nezapomeňte změnit `<ClusterName>` na název vašeho clusteru Kafka.
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Přihlašovací údaje k Rangeru nejsou stejné jako údaje ke clusteru Hadoop. Abyste zabránili prohlížeči v použití přihlašovacích údajů clusteru Hadoop uložených v mezipaměti, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
 
 2. Přihlaste se pomocí svých přihlašovacích údajů správce k Azure Active Directory (AD). Přihlašovací údaje správce k Azure AD nejsou stejné jako přihlašovací údaje ke clusteru HDInsight nebo přihlašovací údaje SSH k uzlu HDInsight Linux.
@@ -74,7 +74,7 @@ Vytvoření zásady Ranger pro uživatele **sales_user** a **marketing_user**.
 
    ![Zásada vytvoření uživatelského rozhraní správce Apache Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)   
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
 
 4. Kliknutím na **Přidat** uložte zásadu.
@@ -113,17 +113,17 @@ Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
    read -p 'Enter your Kafka cluster name:' CLUSTERNAME
    ```
 
-3. K získání hostitelů zprostředkovatelů Kafka a hostitelů Zookeeper použijte následující příkazy. Po zobrazení výzvy zadejte heslo účtu správce clusteru.
+3. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper použijte následující příkazy. Po zobrazení výzvy zadejte heslo účtu správce clusteru.
 
    ```bash
    export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
    export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
    ```
-> [!Note]
+> [!Note]  
 > Než budete pokračovat, možná budete muset nastavit své vývojové prostředí, pokud jste to ještě neudělali. Budete potřebovat komponenty, jako jsou sada Java JDK, Apache Maven a klient SSH s scp. Další podrobnosti najdete v těchto [pokynech k instalaci](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 1. Stáhněte si [příklady pro producenta a konzumenta Apache Kafka připojené k doméně](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer).
 
-1. Postupujte podle kroků 2 a 3 v části **Sestavení a nasazení příkladu** v [kurzu použití rozhraní Apache Kafka Producer and Consumer API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example).
+1. Postupujte podle kroků 2 a 3 v části **sestavovat a nasazovat v příkladu** v [kurzu: Použití Apache Kafka Producer and Consumer API](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-producer-consumer-api#build-and-deploy-the-example)
 
 1. Spusťte následující příkazy:
 
@@ -132,7 +132,7 @@ Abyste vytvořili dvě témata **salesevents** a **marketingspend**:
    java -jar -Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf kafka-producer-consumer.jar create marketingspend $KAFKABROKERS
    ```
 
-   >[!NOTE] 
+   >[!NOTE]   
    >Pouze vlastník procesu služby Kafka, jako je například root, může zapisovat do z-uzlů Zookeeperu `/config/topics`. Zásady Ranger nejsou vynucovány, pokud uživatel bez oprávnění vytvoří téma. Je to proto, že skript `kafka-topics.sh` při tvorbě tématu komunikuje přímo s Zookeeperem. Položky jsou přidány do uzlů Zookeeperu, zatímco sledovací procesy na straně zprostředkovatele monitorují a tvoří témata odpovídajícím způsobem. Autorizaci není možné provést pomocí plug-inu Ranger a výše uvedený příkaz je spuštěn pomocí `sudo` prostřednictvím zprostředkovatele Kafka.
 
 
@@ -210,5 +210,5 @@ Na základě nakonfigurovaných zásad Ranger, mohou uživatelé **sales_user** 
 
 ## <a name="next-steps"></a>Další postup
 
-* [Používání vlastního klíče v systému Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
-* [Úvod do zabezpečení Hadoop s balíčkem zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)
+* [Přineste si vlastní klíč k Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
+* [Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

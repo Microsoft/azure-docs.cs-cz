@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 5acc9bfdd674d6677ad6da69b87bb8053cc43a19
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5052ec73114c040a4c140d258b197fdde58f6667
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972214"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409322"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak používat Azure Mobile Apps SDK pro Android
 
@@ -189,13 +189,13 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-Další postup vytvoření dalších tabulek v váš back-end Mobile Apps naleznete v tématu [postupy: definování řadič tabulky][15] (.NET back-end) nebo [definovat tabulky pomocí dynamické schématu][16] (back-end Node.js).
+Zjistěte, jak vytvořit další tabulky v back-endu Mobile Apps, najdete v článku [jak: Definování řadič tabulek] [ 15] (back-end .NET) nebo [definice tabulky pomocí dynamické schéma] [ 16] (back-end Node.js).
 
 Tabulku back-endu Azure Mobile Apps definuje pět zvláštní pole čtyři z nich jsou dostupné klientům:
 
-* `String id`: Globálně jedinečné ID záznamu.  Jako osvědčený postup, ujistěte se, id řetězcové vyjádření [UUID] [ 17] objektu.
-* `DateTimeOffset updatedAt`: Datum/čas poslední aktualizace.  Pole updatedAt nastavit server a by nikdy nastavit váš klientský kód.
-* `DateTimeOffset createdAt`: Data a času, který byl vytvořen objekt.  Pole createdAt nastavit server a by nikdy nastavit váš klientský kód.
+* `String id`: Globálně jedinečný Identifikátor záznamu.  Jako osvědčený postup, ujistěte se, id řetězcové vyjádření [UUID] [ 17] objektu.
+* `DateTimeOffset updatedAt`: Datum a čas poslední aktualizace.  Pole updatedAt nastavit server a by nikdy nastavit váš klientský kód.
+* `DateTimeOffset createdAt`: Datum/čas, který byl vytvořen objekt.  Pole createdAt nastavit server a by nikdy nastavit váš klientský kód.
 * `byte[] version`: Obvykle reprezentovaná jako řetězec, verze je také nastavena na serveru.
 * `boolean deleted`: Označuje, že má záznam odstranit ale ještě nebyl vymazán.  Nepoužívejte `deleted` jako vlastnost ve své třídě.
 
@@ -446,7 +446,7 @@ do {
 > [!TIP]
 > Volba velikosti pravá stránka je rovnováhu mezi využití paměti při žádosti se děje, využití šířky pásma a zpoždění při přijímání dat úplně.  Výchozí hodnota (50 záznamů) je vhodný pro všechna zařízení.  Pokud provozujete výhradně na větší paměťová zařízení, zvýšit až 500.  Zjistili, který zvyšuje velikost stránky nad rámec 500 záznamů výsledků v zpožděním a velké paměti problémy.
 
-### <a name="chaining"></a>Postupy: řetězení metody dotazů
+### <a name="chaining"></a>Jak: Metody zřetězení dotazů
 
 Metody používané v dotazy na back-endu tabulky mohou být spojeny. Řetězení metody dotazu, můžete vybrat konkrétní sloupcích filtrované řádky, které jsou seřazené a stránkovaného fondu. Můžete vytvořit komplexní logické filtry.  Každá metoda dotaz vrací objekt dotazu. Chcete-li ukončit řadu metod a skutečně spusťte dotaz, zavolejte **provést** metody. Příklad:
 
@@ -672,7 +672,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Postupy: práce s daty bez typu
+## <a name="untyped"></a>Jak: Práce s daty bez typu
 
 Netypové programovací model poskytuje přesnou kontrolu nad serializace JSON.  Zde jsou uvedeny některé obvyklé scénáře, kde můžete chtít použít netypové programovací model. Například, pokud tabulka back-end obsahuje mnoho sloupců a potřebujete odkazovat na podmnožinu sloupců.  Zadaný model vyžaduje, abyste definujte všechny řádky, které jsou definovány v back-endu Mobile Apps ve své třídě data.  Většinu volání rozhraní API pro přístup k datům jsou podobné typy programovací volání. Hlavní rozdíl spočívá v tom, že v netypové modelu můžete vyvolávat metody v **MobileServiceJsonTable** objektu, nikoli **MobileServiceTable** objektu.
 
@@ -767,7 +767,7 @@ Stejnou sadu filtrování, filtrování a stránkování metody, které jsou k d
 
 Azure Mobile Apps Client SDK také implementuje offline synchronizace dat s využitím databáze SQLite k uložení kopie dat serveru místně.  Operace provedené na offline tabulce nevyžadují, aby mobilní připojení k práci.  Offline synchronizace pomáhá při odolnost a výkon za cenu mnohem složitější logiku pro případ řešení konfliktů.  Azure Mobile Apps Client SDK implementuje následující funkce:
 
-* Přírůstková synchronizace: Pouze aktualizované a nové záznamy se stahují, ukládají se využití šířky pásma a paměti.
+* Přírůstková synchronizace: Pouze budou staženy aktualizované a nové záznamy, ukládají se využití šířky pásma a paměti.
 * Optimistického řízení souběžnosti: Operace se předpokládá, že proběhla úspěšně.  Řešení konfliktů je odloženo, dokud se aktualizace prováděly na serveru.
 * Řešení konfliktů: Sada SDK rozpozná konfliktní změny byly provedeny na serveru a poskytuje zachytávání k upozornění uživatele.
 * Obnovitelné odstranění: Odstraněné záznamy jsou označeny odstraněné, což jiná zařízení k aktualizaci jejich offline mezipaměti.
@@ -892,7 +892,7 @@ public void completeItem(View view) {
 
 Podrobné kurzy již popisují způsob přidání těchto funkcí.
 
-App Service podporuje [ověřování uživatelů aplikace](app-service-mobile-android-get-started-users.md) pomocí různých externích zprostředkovatelů identity: Facebook, Google, Microsoft Account, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v back-endu.
+App Service podporuje [ověřování uživatelů aplikace](app-service-mobile-android-get-started-users.md) pomocí různých externích zprostředkovatelů identity: Facebook, Google, účet Microsoft, Twitter a Azure Active Directory. Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identity ověřeného uživatele můžete také použít k implementaci autorizační pravidla v back-endu.
 
 Jsou podporovány dvě toky ověřování: **server** toku a **klienta** toku. Tok server poskytuje nejjednodušší prostředí pro ověřování, spoléhá na webové rozhraní poskytovatele identity.  Žádné další sady SDK je potřeba implementovat tok ověřování serveru. Tok ověřování serveru neposkytuje hluboká integrace do mobilních zařízení a doporučuje se jen pro testování konceptu scénáře.
 
@@ -907,7 +907,7 @@ Povolení ověřování v aplikaci je potřeba provést čtyři kroky:
 
 Můžete nastavit oprávnění pro tabulky, pokud chcete omezit přístup pro určité operace pouze ověřeným uživatelům. Identifikátor SID ověřeného uživatele můžete použít také k úpravě požadavky.  Další informace najdete v tématu [Začínáme s ověřováním] a v dokumentaci k serveru SDK postupy.
 
-### <a name="caching"></a>Ověřování: Tok serveru
+### <a name="caching"></a>Ověřování: Server toku
 
 Následující kód spustí proces serveru toku přihlášení pomocí zprostředkovatele Google.  Další konfigurace se vyžaduje kvůli požadavkům na zabezpečení pro zprostředkovatele Google:
 
@@ -1314,6 +1314,6 @@ Tento kód je nutné provést před vytvořením odkazu mobilního klienta pomoc
 [19]: https://www.odata.org/documentation/odata-version-3-0/
 [20]: https://hashtagfail.com/post/46493261719/mobile-services-android-querying
 [21]: https://github.com/Azure-Samples/azure-mobile-apps-android-quickstart
-[22]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[22]: ../app-service/configure-authentication-provider-aad.md
 [Future]: https://developer.android.com/reference/java/util/concurrent/Future.html
 [AsyncTask]: https://developer.android.com/reference/android/os/AsyncTask.html

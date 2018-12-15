@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: d52a9411863962528eb0693f735ca0c4ee4c9991
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166502"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438808"
 ---
-# <a name="analyze-hadoop-logs"></a>Analýza protokolů Hadoop
+# <a name="analyze-apache-hadoop-logs"></a>Analýza protokolů Apache Hadoopu
 
-Každý cluster Apache Hadoop v Azure HDInsight obsahuje účet úložiště Azure používat jako výchozí systém souborů. Účet úložiště se označuje jako výchozí účet úložiště. Cluster používá služby Azure Table storage a Blob storage na výchozí účet úložiště k ukládání svých protokolů.  Výchozí účet úložiště pro váš cluster najdete v tématu [spravovat Hadoop clusterů v HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Protokoly uchovávat v účtu úložiště i po odstranění clusteru.
+Každý cluster Apache Hadoop v Azure HDInsight obsahuje účet úložiště Azure používat jako výchozí systém souborů. Účet úložiště se označuje jako výchozí účet úložiště. Cluster používá služby Azure Table storage a Blob storage na výchozí účet úložiště k ukládání svých protokolů.  Výchozí účet úložiště pro váš cluster najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account). Protokoly uchovávat v účtu úložiště i po odstranění clusteru.
 
 ## <a name="logs-written-to-azure-tables"></a>Protokoly se zapisují do tabulek Azure
 
@@ -101,9 +101,11 @@ Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete 
 ## <a name="logs-written-to-azure-blob-storage"></a>Protokoly se zapisují do úložiště objektů Blob v Azure
 [Protokoly zapisují do tabulek Azure](#log-written-to-azure-tables) poskytuje jednu úroveň přehled o tom, co se děje s clusterem HDInsight. Tyto tabulky však neposkytují úroveň úkolu protokoly, které mohou být užitečné při procházení k dalším potížím, které se objeví. Kvůli této další úroveň podrobností clustery HDInsight umožňují zapisovat protokoly úlohy do svého účtu úložiště objektů Blob pro úlohy, které je odeslána prostřednictvím Templeton. Prakticky to znamená, že pomocí rutin prostředí Azure PowerShell nebo rozhraní .NET API odeslání úlohy, není odeslaných přes RDP/příkazového řádku přístup ke clusteru úloh odeslaných úloh. 
 
-Pokud chcete zobrazit protokoly, naleznete v tématu [protokolům aplikací YARN přístupu na základě Linux HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+Pokud chcete zobrazit protokoly, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v HDInsight se systémem Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Další informace o aplikačních protokolů najdete v tématu [zjednodušuje správu přihlášení uživatele a přístup v YARNU](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
+Další informace o aplikačních protokolů najdete v tématu [zjednodušuje správu přihlášení uživatele a přístup v Apache Hadoop YARN](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+
 
 ## <a name="view-cluster-health-and-job-logs"></a>Zobrazit protokoly stavu a úlohy clusteru
 ### <a name="access-the-ambari-ui"></a>Přístup k rozhraní Ambari
@@ -313,6 +315,6 @@ Některé z těchto chybových zpráv může také zobrazit na webu Azure Portal
 
 ## <a name="next-steps"></a>Další postup
 
-* [Použití zobrazení Ambari k ladění úloh Tez v HDInsight](../hdinsight-debug-ambari-tez-view.md)
-* [Povolení výpisů paměti haldy pro služby Hadoop v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md)
+* [Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight](../hdinsight-debug-ambari-tez-view.md)
+* [Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
+* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

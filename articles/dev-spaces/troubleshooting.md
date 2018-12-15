@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104590"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413604"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -138,6 +138,18 @@ Chyba znamená, že tento azds.exe není v proměnné prostředí PATH, jak je v
 
 Spusťte VS Code z příkazového řádku, kde je správně nastavit proměnné prostředí PATH.
 
+## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Chyba "vyžaduje nástroje pro vytváření a ladění"projectname"jsou zastaralé."
+
+Pokud máte novější verzi rozšíření VS Codu pro Azure Dev mezery, ale starší verzi rozhraní příkazového řádku Azure Dev prostory, zobrazí se tato chyba ve Visual Studio Code.
+
+### <a name="try"></a>Vyzkoušení
+
+Stáhněte a nainstalujte nejnovější verzi rozhraní příkazového řádku Azure Dev mezery:
+
+* [Windows](http://aka.ms/get-azds-windows)
+* [Mac](http://aka.ms/get-azds-mac)
+* [Linux](https://aka.ms/get-azds-linux)
+
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>Chyba 'azds' nebyl rozpoznán jako vnitřního ani vnějšího příkazu, spustitelného programu nebo dávkového souboru
  
 Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se zobrazit tato chyba.
@@ -172,8 +184,8 @@ Port kontejneru není k dispozici. Tomuto problému může dojít, protože:
 ### <a name="try"></a>Zkuste:
 1. Jestli je kontejner právě vytvořená/nasazuje, můžete počkejte 2-3 sekund a zkuste to znovu přístupu ke službě. 
 1. Zkontrolujte konfiguraci portů. Zadaný port čísla by měla být **identické** ve níže prostředky:
-    * **Soubor Dockerfile:** určené `EXPOSE` instrukce.
-    * **[Diagram helmu](https://docs.helm.sh):** určené `externalPort` a `internalPort` hodnoty pro službu (nacházejí se často ve `values.yml` souboru),
+    * **Soubor Dockerfile:** Určená `EXPOSE` instrukce.
+    * **[Diagram helmu](https://docs.helm.sh):** Určená `externalPort` a `internalPort` hodnoty pro službu (nacházejí se často ve `values.yml` souboru),
     * Žádné porty se otevřely v kódu aplikace, například v Node.js: `var server = app.listen(80, function () {...}`
 
 
@@ -187,7 +199,7 @@ Je nutné spustit `azds up` z kořenového adresáře kódu, které chcete spust
 1. Do kořenové složky, která obsahuje kód služby změňte aktuální adresář. 
 1. Pokud nemáte _azds.yaml_ souboru ve složce kód spustit `azds prep` ke generování Docker, Kubernetes a Azure Dev prostory prostředky.
 
-## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: "cílového programu se neočekávaně ukončil s kódem 126 azds."
+## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: "Cílového programu"azds"neočekávaně ukončil s kódem 126."
 Spouští se ladicí program VS Code může někdy vést k této chybě.
 
 ### <a name="try"></a>Zkuste:

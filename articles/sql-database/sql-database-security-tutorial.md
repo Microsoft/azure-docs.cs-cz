@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 431781d190a552020989600774fde0f36761699b
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 12/13/2018
+ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274832"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409764"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Kurz: Zabezpečené izolované databáze ve službě Azure SQL Database
 
@@ -40,6 +40,7 @@ Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přís
 > - Nastavení pravidel brány firewall na úrovni serveru na webu Azure Portal
 > - Nastavení pravidel brány firewall na úrovni databáze pomocí aplikace SSMS
 > - Připojení k databázi pomocí zabezpečeného připojovacího řetězce
+> - Nakonfigurování správce Azure Active Directory pro Azure SQL
 > - Správa uživatelského přístupu
 > - Ochrana dat pomocí šifrování
 > - Povolení auditování služby SQL Database
@@ -54,6 +55,9 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 - Instalace nejnovější verze aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 - Instalace aplikace Microsoft Excel.
 - Vytvořený server a databázi SQL Azure – Viz [Vytvoření databáze SQL Azure na webu Azure Portal](sql-database-get-started-portal.md), [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-cli-samples.md) a [Vytvoření izolované databáze SQL Azure pomocí PowerShellu](sql-database-powershell-samples.md).
+
+> [!NOTE]
+> Tento kurz předpokládá, že budete mít buď již nakonfigurované služby Azure Active Directory nebo, že používáte počáteční Azure Active Directory spravované domény. Informace o konfiguraci služby Azure Active Directory pro různé scénáře, naleznete v tématu [integrace místních identit s Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [správě adresáře Azure AD](../active-directory/fundamentals/active-directory-administer.md), [spravovat Azure AD pomocí prostředí Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0), a [vyžaduje hybridní identita porty a protokoly](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -123,6 +127,27 @@ Tím se naváže připojení pomocí protokolu TLS (Transport Layer Security) a 
 
     ![Připojovací řetězec pro ADO.NET](./media/sql-database-security-tutorial/adonet-connection-string.png)
 
+## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Zřízení správce Azure Active Directory pro váš server Azure SQL Database
+
+Zřízení správce Azure Active Directory pro server Azure SQL na webu Azure Portal.
+
+1. V [webu Azure portal](https://portal.azure.com/), v pravém horním rohu vyberte připojení ke rozevírací seznam možných aktivního adresáře. Zvolte správné služby Active Directory jako výchozí služby Azure AD. Propojí Active Directory pro předplatné spojené s využitím Azure SQL serveru a ujistěte se, že stejné předplatné používá pro obě služby Azure AD a systému SQL Server. (Server Azure SQL lze hostování, Azure SQL Database nebo Azure SQL Data Warehouse.)
+
+    ![Zvolte ad](./media/sql-database-aad-authentication/8choose-ad.png)
+
+2. Na **systému SQL Server** stránce **správce Active Directory**a na **správce Active Directory** stránce **nastavit správce**.  ![vyberte služby active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+3. V **přidat správce** stránce, vyhledat uživatele, vyberte uživatele nebo skupiny jako správce a vyberte **vyberte**. (Na stránce správy služby Active Directory zobrazí všichni členové a skupiny služby Active Directory. Uživatelé nebo skupiny, jež jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správce Azure AD. (Viz seznam podporovaných správců v **funkce Azure AD a omezení** část [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu a se nerozšíří do systému SQL Server.
+    ![Vyberte správce](./media/sql-database-aad-authentication/select-admin.png)  
+
+4. V horní části **správce Active Directory** stránce **Uložit**.
+    ![Uložit správce](./media/sql-database-aad-authentication/save-admin.png)
+
+Proces změny správce může trvat několik minut. Pak nový správce se zobrazí v **správce Active Directory** pole.
+
+   > [!NOTE]
+   > Při nastavování správce Azure AD, nový název správce (uživatel nebo skupina) už nejde použít ve virtuální hlavní databázi jako uživatel ověřování serveru SQL Server. Pokud jsou k dispozici, se nezdaří instalace správce Azure AD; vrácení zpět jeho vytvoření a označením tohoto takový správce (název) již existuje. Od tohoto systému SQL Server ověřování uživatele není součástí služby Azure AD, žádné úsilí pro připojení k serveru pomocí ověřování Azure AD se nezdaří.
+
 ## <a name="creating-database-users"></a>Vytváření uživatelů databáze
 
 Před vytvořením uživatelů musíte nejprve zvolit jeden ze dvou typů ověřování, které podporuje služba Azure SQL Database:
@@ -131,7 +156,7 @@ Před vytvořením uživatelů musíte nejprve zvolit jeden ze dvou typů ověř
 
 **Ověřování Azure Active Directory,**, které používá identity spravované v Azure Active Directory.
 
-Pokud chcete k ověřování ve službě SQL Database použít [Azure Active Directory](./sql-database-aad-authentication.md), musí existovat naplněná služba Azure Active Directory, abyste mohli pokračovat.
+### <a name="create-a-user-using-sql-authentication"></a>Vytvořte uživatele využívajícího ověřování SQL
 
 Postupujte podle těchto kroků a vytvořte uživatele využívajícího ověřování SQL:
 
@@ -155,6 +180,27 @@ Postupujte podle těchto kroků a vytvořte uživatele využívajícího ověřo
     ```
 
 Pro připojení k databázi je osvědčeným postupem vytvořit tyto účty bez oprávnění správce na úrovni databáze, pokud nepotřebujete provádět úlohy správce, jako je vytváření nových uživatelů. Informace o ověřování pomocí Azure Active Directory najdete v [kurzu pro Azure Active Directory](./sql-database-aad-authentication-configure.md).
+
+### <a name="create-a-user-using-azure-active-directory-authentication"></a>Vytvořte uživatele využívajícího ověřování Azure Active Directory
+
+Ověřování pomocí Azure Active Directory vyžaduje, aby uživatelé databáze má být vytvořen jako uživatele databáze s omezením. Uživatel databáze s omezením na základě Azure AD identity je uživatel databáze nemá přihlášení v hlavní databázi, a který se mapuje na identitu v adresáři Azure AD, který je přidružený k databázi. Identity Azure AD může být jednotlivý uživatelský účet nebo skupinu. Další informace o uživatele databáze s omezením najdete v tématu [uživatelé databáze s omezením vytváření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx).
+
+> [!NOTE]
+> Nelze vytvořit uživatele databáze (s výjimkou správci) pomocí webu Azure portal. Role RBAC nejsou šířeny do systému SQL Server, SQL Database nebo SQL Data Warehouse. Role Azure RBAC se používají pro správu prostředků Azure a se nevztahují na oprávnění databáze. Například **Přispěvatel SQL serveru** role bez možnosti udělovat přístup pro připojení k SQL Database nebo SQL Data Warehouse. Přímo v databázi pomocí příkazů jazyka Transact-SQL musí být udělena oprávnění k přístupu.
+> [!WARNING]
+> Speciální znaky, jako je dvojtečka `:` nebo ampersand `&` obsažen jako uživatelská jména v příkazech jazyka T-SQL vytvořte přihlášení a vytvoření uživatele nejsou podporovány.
+
+1. Připojení k serveru SQL Azure pomocí účtu služby Azure Active Directory s alespoň **ALTER ANY USER** oprávnění.
+2. V Průzkumníku objektů klikněte pravým tlačítkem na databázi, pro kterou chcete přidat nového uživatele, a pak klikněte na **Nový dotaz**. Otevře se prázdné okno dotazu připojené k vybrané databázi.
+
+3. V okně dotazu zadejte následující dotaz a upravit `<Azure_AD_principal_name>` do určeným uživatelem. hlavní název uživatele služby Azure AD nebo zobrazovaného názvu skupiny Azure AD:
+
+   ```sql
+   CREATE USER <Azure_AD_principal_name> FROM EXTERNAL PROVIDER;
+   ```
+
+   > [!NOTE]
+   > Uživatelé Azure AD jsou označeny jako metadata databáze s typem E (EXTERNAL_USER) a pro skupiny s typem X (EXTERNAL_GROUPS). Další informace najdete v tématu [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ## <a name="protect-your-data-with-encryption"></a>Ochrana dat pomocí šifrování
 
@@ -249,6 +295,7 @@ V tomto kurzu jste zjistili, jak v několika jednoduchých krocích zlepšit och
 > [!div class="checklist"]
 > - Nastavení pravidel brány firewall pro server nebo databázi
 > - Připojení k databázi pomocí zabezpečeného připojovacího řetězce
+> - Nakonfigurování správce Azure Active Directory pro Azure SQL
 > - Správa uživatelského přístupu
 > - Ochrana dat pomocí šifrování
 > - Povolení auditování služby SQL Database

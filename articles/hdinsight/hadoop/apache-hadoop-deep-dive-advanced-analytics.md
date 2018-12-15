@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 81057271fefddf7d204217d73b56e2734c8c3d48
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162830"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436683"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 
@@ -56,14 +56,16 @@ Společně s výběrem nejlepší těsně algoritmy, je potřeba zvážit, jestl
 
 HDInsight obsahuje několik strojového učení možnosti pro pokročilou analýzu pracovní postup:
 
-* [Strojové učení a Sparku](#machine-learning-and-spark)
+* [Machine Learning a Apache Sparku](#machine-learning-and-spark)
 * [R a služby ML](#r-and-r-server)
-* [Azure Machine Learning a Hive](#azure-machine-learning-and-hive)
-* [Spark a obsáhlého learningu](#spark-and-deep-learning)
+* [Azure Machine Learning a Apache Hive](#azure-machine-learning-and-hive)
+* [Apache Spark a obsáhlého learningu](#spark-and-deep-learning)
 
-### <a name="machine-learning-and-spark"></a>Strojové učení a Sparku
+### <a name="machine-learning-and-apache-spark"></a>Machine Learning a Apache Sparku
 
-[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Spark](https://spark.apache.org/), sjednoceném open source, rozhraní framework paralelní zpracování dat, která používá zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
+
+[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Apache Spark](https://spark.apache.org/), sjednoceném open source, rozhraní framework paralelní zpracování dat, která používá zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
+
 
 Existují tři škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí:
 
@@ -75,11 +77,11 @@ Existují tři škálovatelné machine learning knihovny, které přinášejí m
 
 Jako součást HDInsight, můžete vytvořit cluster služby HDInsight s [služby ML](../r-server/r-server-overview.md) připravená k použití s velkými datovými sadami a modely. Tato nová funkce poskytuje odborníkům přes data a statistikům pomocí známých rozhraní R, kterou chcete škálovat na vyžádání prostřednictvím HDInsight, bez režie nastavení clusteru a údržby.
 
-### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning a Hive
+### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning a Apache Hive
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) poskytuje nástroje, které model prediktivní analýzy, stejně jako plně spravovanou službu, můžete své prediktivní modely nasazovat jako připravené využívání webových služeb. Azure Machine Learning poskytuje nástroje pro vytváření kompletních řešení prediktivní analýzy v cloudu a rychle vytvářet, testovat, zprovoznit a spravovat prediktivní modely. Vyberte od velké knihovny algoritmů, použít studio založeného na webu pro vytváření modelů a snadno model nasadit jako webovou službu.
 
-### <a name="spark-and-deep-learning"></a>Spark a obsáhlého learningu
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark a obsáhlého learningu
 
 [Obsáhlý learning](https://www.microsoft.com/research/group/dltc/) je větev služby machine learning, která používá *hluboké neuronové sítě* (dopředné), která vychází z biologických procesy lidský mozek. Mnoho výzkumní pracovníci naleznete v tématu obsáhlý learning jako slibně přístup pro umělou inteligenci. Některé příklady obsáhlý learning jsou mluvený jazyk překladatele, systémy rozpoznávání obrazu a posuzování počítače. Abyste předem své vlastní práci v obsáhlého learningu, společnost Microsoft vyvinula open-source zdarma, snadno použitelný, [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Se sadou nástrojů používá výrazně širokou škálu produktů společnosti Microsoft, společností po celém světě s museli nasazovat hloubkového učení ve velkém měřítku a studenty zájem o nejnovější algoritmy a postupy. 
 
@@ -118,16 +120,16 @@ Postupujte podle [v tomto kurzu](../spark/apache-spark-microsoft-cognitive-toolk
 
 ## <a name="next-steps"></a>Další postup
 
-Hive nebo Azure Machine Learning
+Apache Hive a Azure Machine Learning
 
-* [Hive a Azure Machine Learning začátku do konce](../../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Apache Hive nebo Azure Machine Learning end-to-end](../../machine-learning/team-data-science-process/hive-walkthrough.md)
 * [Pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
-Spark a MLLib
+Apache Spark a MLLib
 
-* [Machine learning se Spark v HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Strojové učení s Apache Spark v HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark s Machine Learning: Použití Apache Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Apache Spark v HDInsight k předpovědím výsledků kontroly potravin](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
 Obsáhlý Learning, Cognitive Toolkit a dalších
 

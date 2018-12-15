@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988480"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434881"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -24,13 +24,13 @@ Správa protokolů clusteru HDInsight zahrnuje informace o všech aspektech pros
 
 Typické postupy ve službě HDInsight log management jsou:
 
-* Krok 1: Určení protokolu zásady uchovávání informací
-* Krok 2: Správa protokoly konfigurace verze služby clusteru
+* Krok 1: Určení zásady uchovávání protokolů
+* Krok 2: Správa clusteru service verze konfigurace protokolů
 * Krok 3: Správa souborů protokolu úlohy spuštění clusteru
-* Krok 4: Předpověď velikosti svazku úložiště protokolů a nákladů
+* Krok 4: Odhad velikosti svazku úložiště protokolů a nákladů
 * Krok 5: Určení protokolu archivu zásadami a procesy
 
-## <a name="step-1-determine-log-retention-policies"></a>Krok 1: Určení protokolu zásady uchovávání informací
+## <a name="step-1-determine-log-retention-policies"></a>Krok 1: Určení zásady uchovávání protokolů
 
 Prvním krokem při vytváření strategie správy protokolu clusteru HDInsight je ke shromažďování informací o obchodní scénáře a požadavky na úložiště historie provádění úlohy.
 
@@ -51,7 +51,7 @@ Můžete získat většinu těchto nejvyšší úrovně informací pomocí webu 
 ```
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Chcete-li zobrazit tyto informace můžete také použít prostředí PowerShell.  Další informace najdete v tématu [spravovat Hadoop clusterů v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
+Chcete-li zobrazit tyto informace můžete také použít prostředí PowerShell.  Další informace najdete v tématu [clusterů systému Apache spravovat Hadoop v HDInsight pomocí Azure Powershellu](hdinsight-administer-use-powershell.md).
 
 ### <a name="understand-the-workloads-running-on-your-clusters"></a>Vysvětlení úloh, které běží na vašich clusterů
 
@@ -69,7 +69,7 @@ Je důležité porozumět typům úloh běží na vašich clusterů HDInsight na
 
 * Vezměte v úvahu, jak shromažďovat protokoly z clusteru, nebo z více než jeden cluster a kolaci pro účely, jako je auditování, plánování a sledování výstrah. Můžete použít vlastní řešení pro přístup k a stáhněte si soubory protokolů v pravidelných intervalech a kombinovat a analyzovat, aby poskytují zobrazení řídicího panelu. Můžete také přidat další funkce pro generování výstrah pro zabezpečení nebo detekce chyb. Můžete vytvořit tyto nástroje, pomocí prostředí PowerShell, sady HDInsight SDK nebo kód, který má přístup k modelu nasazení Azure classic.
 
-* Vezměte v úvahu, jestli řešení monitorování nebo služba bude užitečné výhodu. Nástroje Microsoft System Center poskytuje [sady management pack HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). Nástroje třetích stran, jako je například Chukwa a Ganglia můžete použít také ke shromáždění a centralizovat protokoly. Mnoho společností nabízet služby monitorování řešení pro velké objemy dat založenému na Hadoop, například Centerity, Compuware APM, Sematext SPM a Zettaset Orchestrator.
+* Vezměte v úvahu, jestli řešení monitorování nebo služba bude užitečné výhodu. Nástroje Microsoft System Center poskytuje [sady management pack HDInsight](https://www.microsoft.com/download/details.aspx?id=42521). Nástroje třetích stran, jako je Apache Chukwa a Ganglia můžete použít také ke shromáždění a centralizovat protokoly. Mnoho společností nabízet služby monitorování řešení pro velké objemy dat založenému na Hadoop, například: Centerity Compuware APM, Sematext SPM a Zettaset Orchestrator.
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Krok 2: Správa verzí služby clusteru a zobrazovat protokoly akce skriptu
 
@@ -136,7 +136,7 @@ Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clu
 2. V seznamu služeb na levé straně vyberte YARN.
 3. Rychlé odkazy rozevíracího seznamu vyberte jednu z hlavní uzly clusteru a pak vyberte **ResourceManager protokoly**. Zobrazí se seznam odkazů na protokoly YARN.
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Krok 4: Předpověď velikosti svazku úložiště protokolů a nákladů
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>Krok 4: Odhad velikosti svazku úložiště protokolů a nákladů
 
 Po dokončení předchozích kroků, budete mít pochopení typů a svazky protokolů, které vytvářejí vašich clusterů HDInsight.
 
@@ -177,5 +177,5 @@ Shromažďovat protokoly ze všech uzlů na jednom centrálním místě, můžet
 ## <a name="next-steps"></a>Další postup
 
 * [Monitorování a protokolování normy pro HDInsight](https://msdn.microsoft.com/library/dn749790.aspx)
-* [Přístup k protokolu aplikace YARN na Linuxovým systémem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-* [Jak řídit velikost protokolových souborů pro různé součásti systému Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)
+* [Protokol aplikace přístup Apache Hadoop YARN v HDInsight se systémem Linux](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Jak řídit velikost protokolových souborů pro různé součásti Apache Hadoop](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

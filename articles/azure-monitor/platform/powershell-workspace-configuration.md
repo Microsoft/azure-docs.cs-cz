@@ -14,12 +14,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 72d53f742c2a25d267c6e90a6814225d7f1a4cf9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 088d8155fda6c370d89cded516bfa6c174c9380a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384390"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438027"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
 Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) k provádění různých funkcí ve službě Log Analytics z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
@@ -211,7 +211,7 @@ Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagno
 | Weby               |     | Ano |
 | Farmy webových serverů        |     | Ano |
 
-Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/tutorial-dashboards.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Architektura připojení k Azure SQL Database | Dokumentace Microsoftu
-description: Tento dokument popisuje architekturu připojení k Azure SQL Database z v rámci Azure nebo z mimo Azure.
+title: Směruje Azure provoz do Azure SQL Database a SQL Data Warehouse | Dokumentace Microsoftu
+description: Tento dokument popisuje, Azure SQL Database a SQL Data Warehouse připojení architektury z v Azure nebo mimo Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/02/2018
-ms.openlocfilehash: 986741a68113da00800a18cb58648ac66b1de116
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.date: 12/13/2018
+ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322018"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435714"
 ---
-# <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database
+# <a name="azure-sql-connectivity-architecture"></a>Architektura připojení k Azure SQL
 
-Architektura připojení k Azure SQL Database i tento článek vysvětluje, jak různé součásti fungovat pro směrování provozu do vaší instance služby Azure SQL Database. Tyto Azure SQL Database připojení komponenty funkce ke směrování síťového provozu směřujícího do databáze Azure s klientů připojujících se z v rámci Azure a klientů připojujících se z mimo Azure. Tento článek také obsahuje ukázkové skripty, chcete-li změnit, jak dojde k připojení a důležité informace související s Změna výchozího nastavení připojení.
+Azure SQL Database a SQL Data Warehouse připojení k architektuře a tento článek vysvětluje, jak různé součásti fungovat směrovat přenos dat k vaší instanci Azure SQL. Tyto funkce součástí připojení ke směrování síťového provozu do Azure SQL Database nebo SQL Data Warehouse s klientů připojujících se z v rámci Azure a klientů připojujících se z mimo Azure. Tento článek také obsahuje ukázkové skripty, chcete-li změnit, jak dojde k připojení a důležité informace související s Změna výchozího nastavení připojení.
 
 > [!IMPORTANT]
 > **[Nadcházející změny] Pro koncový bod připojení služby pro servery Azure SQL `Default` chování připojení se změní na `Redirect`.**
@@ -36,7 +36,10 @@ Architektura připojení k Azure SQL Database i tento článek vysvětluje, jak 
 > - Aplikace se připojí k existující server zřídka, naše telemetrie nebyla zaznamenat informace o těchto aplikací 
 > - Automatické nasazení logiky vytvoří logický server za předpokladu, že je výchozí chování pro koncový bod připojení služby `Proxy` 
 >
-> Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags). Pokud to není pro vás, přepněte server explicitně na `Proxy`.
+> Pokud nelze navázat koncový bod připojení služby k serveru Azure SQL a jsou podezření, že se vás tato změna, ověřte prosím, že typ připojení je explicitně nastaveno `Redirect`. Pokud je to tento případ, budete muset otevřít pravidla brány firewall virtuálního počítače a skupiny zabezpečení sítě (NSG) Azure IP adres v oblasti, které patří do Sql [značka služby](../virtual-network/security-overview.md#service-tags) pro porty 11000 12000. Pokud to není pro vás, přepněte server explicitně na `Proxy`.
+
+> [!NOTE]
+> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
 ## <a name="connectivity-architecture"></a>Architektura připojení
 
@@ -54,7 +57,7 @@ Následující kroky popisují, jak navázat připojení ke službě Azure SQL d
 
 Azure SQL Database podporuje tři následující možnosti pro nastavení zásad připojení databáze SQL serveru:
 
-- **Přesměrování (doporučeno):** Klienti připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení, klienti musí umožňovat odchozí pravidla brány firewall na všech IP adres Azure v oblasti pomocí skupin zabezpečení sítě (NSG) s [značky služeb](../virtual-network/security-overview.md#service-tags)), nikoli jenom adresy IP pro Azure SQL Database brány. Vzhledem k tomu, že pakety přejít přímo k databázi, mají latenci a propustnost vyšší výkon.
+- **Přesměrování (doporučeno):** Klienti připojení přímo k uzlu, který je hostitelem databáze. Pokud chcete povolit připojení, klienti musí umožňovat odchozí pravidla brány firewall na všech IP adres Azure v oblasti pomocí skupin zabezpečení sítě (NSG) s [značky služeb](../virtual-network/security-overview.md#service-tags)) pro porty 11000 12000, ne jenom IP brány Azure SQL Database adresy na portu 1433. Vzhledem k tomu, že pakety přejít přímo k databázi, mají latenci a propustnost vyšší výkon.
 - **Proxy server:** V tomto režimu se všechna připojení jsou směrovány přes proxy server prostřednictvím bran Azure SQL Database. Pokud chcete povolit připojení, klient musí mít odchozí pravidla brány firewall, které umožňují jenom brána Azure SQL Database IP adresy (obvykle dvě IP adresy v jedné oblasti). Výběr v tomto režimu může vést k vyšší latence a propustnosti nižší, v závislosti na povaze zatížení. Důrazně doporučujeme `Redirect` zásady připojení přes `Proxy` zásady připojení pro nejnižší latenci a propustnost nejvyšší.
 - **Výchozí hodnota:** To platí zásady připojení ve všech serverech po vytvoření není-li explicitně změnit zásady připojení buď `Proxy` nebo `Redirect`. Platné zásady závisí na tom, jestli se připojení pocházejí z v rámci Azure (`Redirect`) nebo mimo systém Azure (`Proxy`).
 

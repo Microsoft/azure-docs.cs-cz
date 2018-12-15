@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: c0f384dafc4ba30eb3e735ee17ae051245378135
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f580c78fa2114905a0ef28f51feee50361717a27
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254985"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435323"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvání spolupráce služby Azure Active Directory s B2B
 
@@ -52,6 +52,12 @@ Po každý uživatel typu Host přihlášení pro přístup k prostředkům v or
 ![Snímek obrazovky zobrazující nastavení uživatele v přístupovém panelu](media/redemption-experience/ConsentScreen.png) 
 
 Informace o tom, jak jako správce tenanta můžete propojit prohlášení o ochraně osobních údajů vaší organizace, najdete v části [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement).
+
+## <a name="terms-of-use"></a>Podmínky použití
+
+Podmínky použití pro uživatele typu Host může předložit během procesu uplatnění. úvodní pomocí Azure AD Terms of použít funkci. Ve službě Azure Active Directory, můžete přístup k této funkci v rámci **spravovat** > **organizační vztahy** > **podmínky použití** nebo v části **Zabezpečení** > **podmíněného přístupu** > **podmínky použití**. Podrobnosti najdete v tématu [Azure AD Terms of použít funkci](../governance/active-directory-tou.md).
+
+![Snímek obrazovky zobrazující nové podmínky použití](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>Další postup
 

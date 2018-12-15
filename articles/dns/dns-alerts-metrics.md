@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 707a23cbd04db9a0420c7776a24eb568a3483b0b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385852"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434457"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS metrik a výstrah
 Azure DNS je hostitelská služba určená pro domény DNS, která nabízí řešení názvů pomocí infrastruktury Microsoft Azure. Tento článek popisuje metrik a výstrah pro službu Azure DNS.
@@ -32,7 +32,7 @@ Azure DNS poskytuje metriky pro zákazníky, aby se mohly sledovat konkrétní a
 -   RecordSetCount
 -   RecordSetCapacityUtilization
 
-Můžete zobrazit také [definice tyto metriky](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkdnszones) na stránce dokumentace ke službě Azure Monitor.
+Můžete zobrazit také [definice tyto metriky](../azure-monitor/platform/metrics-supported.md#microsoftnetworkdnszones) na stránce dokumentace ke službě Azure Monitor.
 >[!NOTE]
 > V tuto chvíli tyto metriky jsou k dispozici pouze pro veřejné služby DNS zóny hostované v Azure DNS. Pokud máte hostované v Azure DNS Private Zones tyto metriky neposkytne data pro tyto zóny. Kromě toho metrik a výstrah funkce je podporován pouze v Azure veřejného cloudu. Podpora pro suverénní cloudy bude následovat později. 
 

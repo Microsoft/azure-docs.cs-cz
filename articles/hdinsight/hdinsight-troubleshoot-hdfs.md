@@ -8,14 +8,14 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d85a7487b366f41b561a8f6e43f55bf1d8e609b1
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d3ae15193b5e2d759825e60f880dea4355329837
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013266"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407043"
 ---
-# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s HDFS pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop HDFS pomocí Azure HDInsight
 
 Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi souboru systému HDFS (Hadoop Distributed) v Apache Ambari.
 

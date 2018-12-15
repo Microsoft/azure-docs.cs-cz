@@ -9,14 +9,17 @@ ms.topic: tutorial
 ms.date: 09/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: de19b20865127fd37cd7bc1ac854288a95a68091
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 45255845d8645391ee33471830ac2ef27870a40d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058102"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408625"
 ---
-# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Kurz: Trénování distribuovaného modelu pomocí Horovodu
+# <a name="tutorial-train-a-distributed-model-with-horovod"></a>Kurz: Trénování modelu distribuované s Horovod
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 V tomto kurzu natrénujete distribuovaný model hloubkového učení tak, že ho spustíte paralelně napříč několika uzly v clusteru Batch AI. Batch AI je spravovaná služba pro trénování strojového učení a škálovatelných modelů AI v clusterech Azure GPU. 
 
@@ -473,7 +476,7 @@ Pokud nebudete chtít tento pracovní prostor a účet úložiště používat v
 az group delete --name batchai.horovod
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili tyto postupy:
 

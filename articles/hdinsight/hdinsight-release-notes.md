@@ -9,23 +9,23 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 663cf6ba2eec4b2abbc6ab4a37e05b756ee67ee9
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016807"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438859"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 
 Tento článek obsahuje informace o **nejnovější** Azure HDInsight distribuovatelných oprav. Informace o předchozích vydaných verzích najdete v tématu [archivu poznámky k verzi HDInsight](hdinsight-release-notes-archive.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [článku Správa verzí HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="summary"></a>Souhrn
 
-Azure HDInsight je mezi podnikovými zákazníky jednou z nejoblíbenějších služeb pro analýzu Hadoop a Spark v Azure. S [plus 50 procent cena na HDInsight Vyjmout](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), zákazníky, kteří přecházejí na cloud se využívat větší úspora než kdy dřív.
+Azure HDInsight je jedním z nejoblíbenějších služeb mezi podnikovými zákazníky pro open source Apache Hadoop a Apache Sparku a analýzy v Azure. S [plus 50 procent cena na HDInsight Vyjmout](https://azure.microsoft.com/blog/azure-hdinsight-announcements-significant-price-reduction-and-amazing-new-capabilities/#_blank), zákazníky, kteří přecházejí na cloud se využívat větší úspora než kdy dřív.
 
 ## <a name="new-features"></a>Nové funkce
 
@@ -33,9 +33,9 @@ Nové aktualizace a funkce spadají do následujících kategorií:
 
 1.  ***Aktualizovat Hadoop a další projekty open source*** – kromě více než 1000 opravy chyb napříč 20 + open source projekty, tato aktualizace obsahuje novou verzi **Spark (2.3)** a **Kafka (1.0)**.
 
-    a.  [**Nové funkce ve Sparku 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
+    a.  [**Nové funkce v Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Nové funkce ve verzi 1.0 Kafka**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Nové funkce ve verzi 1.0 Apache Kafka**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
 
 2.  ***Aktualizovat R serveru 9.1 na Machine Learning Services 9.3*** – v této verzi jsme se zobrazovaly datovým vědcům a inženýrům to nejlepší z oblasti open source vylepšeno díky vylepšením inovace a snadno se operacionalizace, všechny dostupné v jejich Upřednostňovaný jazyk s rychlostí Apache Spark. Tato verze rozšiřují možnosti nabízené v R serveru pomocí přidání podpory pro Python, což vede k změnu názvu clusteru R server pro služby ML. 
 
@@ -89,83 +89,83 @@ Novější verze několik komponent Apache jsou někdy spojeny v distribuci HDP 
 
 Tato verze obsahuje následující opravy Apache Hadoop běžné 2.7.3 a:
 
--   [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190): LoadBalancingKMSClientProvider zmiňovat v dokumentaci HA služby správy KLÍČŮ.
+-   [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190): Zmínění LoadBalancingKMSClientProvider v dokumentaci HA služby správy KLÍČŮ.
 
--   [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227): AsyncCallHandler používejte architektura založená na událostech pro zpracování asynchronního volání.
+-   [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227): AsyncCallHandler používejte ke zpracování asynchronního volání architektura založená na událostech.
 
--   [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104): Klient by se vždy dotázat namenode pro cestu poskytovatele služby správy klíčů.
+-   [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104): Klient by měl vždy se zeptat namenode na cesta zprostředkovatele služby správy klíčů.
 
--   [HADOOP 14799](https://issues.apache.org/jira/browse/HADOOP-14799): aktualizovat token jwt nimbus jose 4.41.1.
+-   [HADOOP 14799](https://issues.apache.org/jira/browse/HADOOP-14799): Aktualizujte token jwt nimbus jose 4.41.1.
 
--   [HADOOP 14814](https://issues.apache.org/jira/browse/HADOOP-14814): opravit nekompatibilní změn rozhraní API na FsServerDefaults k HADOOP 14104.
+-   [HADOOP 14814](https://issues.apache.org/jira/browse/HADOOP-14814): Opravte nekompatibilní změn rozhraní API na FsServerDefaults k HADOOP 14104.
 
--   [HADOOP 14903](https://issues.apache.org/jira/browse/HADOOP-14903): explicitně přidat json smart pom.xml.
+-   [HADOOP 14903](https://issues.apache.org/jira/browse/HADOOP-14903): Přidáte json smart explicitně pom.xml.
 
 -   [HADOOP 15042](https://issues.apache.org/jira/browse/HADOOP-15042): Azure PageBlobInputStream.skip() může vrátit zápornou hodnotu, pokud numberOfPagesRemaining je 0.
 
--   [HADOOP 15255](https://issues.apache.org/jira/browse/HADOOP-15255): velká a malá podpora převodu velikosti písmen názvů skupin v LdapGroupsMapping.
+-   [HADOOP 15255](https://issues.apache.org/jira/browse/HADOOP-15255): Podpora převodu velká a malá případu LdapGroupsMapping názvy skupin.
 
 -   [HADOOP 15265](https://issues.apache.org/jira/browse/HADOOP-15265): explicitně vyloučit chytře zacházející json z ověřování hadoop pom.xml.
 
 -   [HDFS 7922](https://issues.apache.org/jira/browse/HDFS-7922): ShortCircuitCache\#zavřít není uvolnění ScheduledThreadPoolExecutors.
 
--   [HDFS 8496](https://issues.apache.org/jira/browse/HDFS-8496): volání stopWriter() držení zámku pro FSDatasetImpl blokuje jiná vlákna (cmccabe).
+-   [HDFS 8496](https://issues.apache.org/jira/browse/HDFS-8496): Volání stopWriter() držení zámku pro FSDatasetImpl blokuje jiná vlákna (cmccabe).
 
--   [HDFS 10267](https://issues.apache.org/jira/browse/HDFS-10267): velmi "synchronizace" FsDatasetImpl\#recoverAppend a FsDatasetImpl\#recoverClose.
+-   [HDFS 10267](https://issues.apache.org/jira/browse/HDFS-10267): Extra "synchronizované" na FsDatasetImpl\#recoverAppend a FsDatasetImpl\#recoverClose.
 
--   [HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489): vyřazení dfs.encryption.key.provider.uri pro šifrování zóny HDFS.
+-   [HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489): Vyřazení dfs.encryption.key.provider.uri pro šifrování zóny HDFS.
 
--   [HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384): přidat možnost nástroj pro vyrovnávání rozptýlit getBlocks volání, aby společnosti NameNode rpc. CallQueueLength zásobníku.
+-   [HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384): Přidáte možnost nástroj pro vyrovnávání rozptýlit getBlocks volání, aby společnosti NameNode rpc. CallQueueLength zásobníku.
 
--   [HDFS 11689](https://issues.apache.org/jira/browse/HDFS-11689): nové výjimky vyvolané DFSClient % isHDFSEncryptionEnabled se podařilo přerušit hacky hive kódu.
+-   [HDFS 11689](https://issues.apache.org/jira/browse/HDFS-11689): Nové výjimky vyvolané DFSClient % isHDFSEncryptionEnabled se podařilo přerušit hacky hive kódu.
 
--   [HDFS 11711](https://issues.apache.org/jira/browse/HDFS-11711): rozlišující název by neměl odstranit blok na "příliš mnoho otevřených souborů" výjimka.
+-   [HDFS 11711](https://issues.apache.org/jira/browse/HDFS-11711): Rozlišující název by neměl odstranit blok na "příliš mnoho otevřených souborů" výjimka.
 
 -   [HDFS 12347](https://issues.apache.org/jira/browse/HDFS-12347): TestBalancerRPCDelay\#testBalancerRPCDelay velmi často selže.
 
--   [HDFS 12781](https://issues.apache.org/jira/browse/HDFS-12781): po Datanode dolů, je v Namenode uživatelského rozhraní Datanode kartu vyvolání upozornění.
+-   [HDFS 12781](https://issues.apache.org/jira/browse/HDFS-12781): Po Datanode dolů je karta v Namenode uživatelského rozhraní Datanode vyvolání upozornění.
 
--   [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054): zpracování PathIsNotEmptyDirectoryException v DFSClient odstranit volání.
+-   [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054): Při volání funkce delete DFSClient zpracování PathIsNotEmptyDirectoryException.
 
--   [HDFS 13120](https://issues.apache.org/jira/browse/HDFS-13120): snímek diff by mohla být poškozená po concat.
+-   [HDFS 13120](https://issues.apache.org/jira/browse/HDFS-13120): Snímek diff může být poškozený po concat.
 
 -   [YARN 3742](https://issues.apache.org/jira/browse/YARN-3742): Správce prostředků YARN vypne, pokud vytváření ZKClient vyprší časový limit.
 
--   [YARN 6061](https://issues.apache.org/jira/browse/YARN-6061): přidejte UncaughtExceptionHandler pro kritické vlákna v RM.
+-   [YARN 6061](https://issues.apache.org/jira/browse/YARN-6061): Přidat UncaughtExceptionHandler pro kritické vlákna v RM.
 
 -   [YARN 7558](https://issues.apache.org/jira/browse/YARN-7558): protokoly yarn selže příkaz k získání protokolů pro spouštění kontejnerů, pokud je povolené ověřování uživatelského rozhraní.
 
--   [YARN 7697](https://issues.apache.org/jira/browse/YARN-7697): načítají se protokoly pro dokončená aplikace nezdaří, i když je protokol agregace úplný.
+-   [YARN 7697](https://issues.apache.org/jira/browse/YARN-7697): Načítají se protokoly. pro dokončení aplikace selže i když je protokol agregace úplný.
 
 HDP 2.6.4 následující opravy Apache Hadoop běžné 2.7.3 a k dispozici:
 
--   [HADOOP 13700](https://issues.apache.org/jira/browse/HADOOP-13700): odebrání unthrown IOException TrashPolicy\#inicializovat a \#getInstance podpisy.
+-   [HADOOP 13700](https://issues.apache.org/jira/browse/HADOOP-13700): Odebrání unthrown IOException TrashPolicy\#inicializovat a \#getInstance podpisy.
 
--   [HADOOP 13709](https://issues.apache.org/jira/browse/HADOOP-13709): možnost Vyčištění podprocesů, které se vytvoří podřízený proces prostředí při ukončení procesu.
+-   [HADOOP 13709](https://issues.apache.org/jira/browse/HADOOP-13709): Možnost Vyčištění podprocesů, které se vytvoří podřízený proces prostředí při ukončení procesu.
 
 -   [HADOOP 14059](https://issues.apache.org/jira/browse/HADOOP-14059): máte překlep v chybové zprávě s3a přejmenovat (self, podřízený adresář).
 
--   [HADOOP 14542](https://issues.apache.org/jira/browse/HADOOP-14542): Přidat IOUtils.cleanupWithLogger, který přijímá slf4j protokolovacího nástroje rozhraní API.
+-   [HADOOP 14542](https://issues.apache.org/jira/browse/HADOOP-14542): Přidáte IOUtils.cleanupWithLogger, který přijímá slf4j protokolovacího nástroje rozhraní API.
 
--   [HDFS 9887](https://issues.apache.org/jira/browse/HDFS-9887): časový limit soketu WebHdfs by měl být konfigurovatelné.
+-   [HDFS 9887](https://issues.apache.org/jira/browse/HDFS-9887): Časový limit soketu WebHdfs by měl být konfigurovatelné.
 
--   [HDFS 9914](https://issues.apache.org/jira/browse/HDFS-9914): oprava konfigurovatelné WebhDFS připojení/čtení vypršení časového limitu.
+-   [HDFS 9914](https://issues.apache.org/jira/browse/HDFS-9914): Opravte konfigurovatelné WebhDFS připojení/čtení vypršení časového limitu.
 
 -   [MAPREDUCE 6698](https://issues.apache.org/jira/browse/MAPREDUCE-6698): Zvyšte časový limit na TestUnnecessaryBlockingOnHist oryFileInfo.testTwoThreadsQueryingDifferentJobOfSameUser.
 
--   [YARN 4550](https://issues.apache.org/jira/browse/YARN-4550): některé testy v TestContainerLanch dojít při jeho národní prostředí pro jiné než anglické jazykové prostředí.
+-   [YARN 4550](https://issues.apache.org/jira/browse/YARN-4550): Některé testy v TestContainerLanch neúspěšné, národní prostředí pro jiné než anglické jazykové prostředí.
 
--   [YARN 4717](https://issues.apache.org/jira/browse/YARN-4717): TestResourceLocalizationService.testPublicResourceInitializesLocalDir nepravidelně selhává kvůli IllegalArgumentException z vyčištění.
+-   [YARN 4717](https://issues.apache.org/jira/browse/YARN-4717): TestResourceLocalizationService.testPublicResourceInitializesLocalDir nezdaří z důvodu IllegalArgumentException z čištění nepravidelně.
 
--   [YARN 5042](https://issues.apache.org/jira/browse/YARN-5042): / sys připojení/fs/cgroup do kontejnerů Dockeru jako připojení jen pro čtení.
+-   [YARN 5042](https://issues.apache.org/jira/browse/YARN-5042): Připojení/sys/fs/cgroup do kontejnerů Dockeru jako připojení jen pro čtení.
 
--   [YARN 5318](https://issues.apache.org/jira/browse/YARN-5318): oprava Občasné selhání testu z TestRMAdminService\#te stRefreshNodesResourceWithFileSystemBasedConfigurationProvider.
+-   [YARN 5318](https://issues.apache.org/jira/browse/YARN-5318): Oprava Občasné selhání testu z TestRMAdminService\#te stRefreshNodesResourceWithFileSystemBasedConfigurationProvider.
 
--   [YARN 5641](https://issues.apache.org/jira/browse/YARN-5641): lokalizátora zanechá tarballs po dokončení kontejneru.
+-   [YARN 5641](https://issues.apache.org/jira/browse/YARN-5641): Lokalizátora zanechá tarballs po dokončení kontejneru.
 
 -   [YARN 6004](https://issues.apache.org/jira/browse/YARN-6004): Refaktorovat TestResourceLocalizationService\#testDownloadingResourcesOnContainer tak, že je míň než 150 řádky.
 
--   [YARN 6078](https://issues.apache.org/jira/browse/YARN-6078): kontejnery zablokované ve stavu lokalizace.
+-   [YARN 6078](https://issues.apache.org/jira/browse/YARN-6078): Kontejnery zablokované ve stavu Localizing.
 
 -   [YARN 6805](https://issues.apache.org/jira/browse/YARN-6805): NPE v LinuxContainerExecutor kvůli null PrivilegedOperationException ukončovací kód.
 
@@ -173,59 +173,59 @@ HDP 2.6.4 následující opravy Apache Hadoop běžné 2.7.3 a k dispozici:
 
 Tato verze obsahuje následující opravy Apache HBase 1.1.2 a.
 
--   [HBASE 13376](https://issues.apache.org/jira/browse/HBASE-13376): vylepšení Stochastic nástroj pro vyrovnávání zatížení.
+-   [HBASE 13376](https://issues.apache.org/jira/browse/HBASE-13376): Vylepšení nástroje pro vyrovnávání zatížení pomocí Stochastického.
 
--   [HBASE 13716](https://issues.apache.org/jira/browse/HBASE-13716): přestat používat Hadoop FSConstants.
+-   [HBASE 13716](https://issues.apache.org/jira/browse/HBASE-13716): Přestat používat Hadoop FSConstants.
 
--   [HBASE 13848](https://issues.apache.org/jira/browse/HBASE-13848): hesla SSL InfoServer přístup přes rozhraní API poskytovatele přihlašovacích údajů.
+-   [HBASE 13848](https://issues.apache.org/jira/browse/HBASE-13848): Hesla InfoServer SSL přístup přes rozhraní API poskytovatele přihlašovacích údajů.
 
--   [HBASE 13947](https://issues.apache.org/jira/browse/HBASE-13947): použití MasterServices namísto serveru v AssignmentManager.
+-   [HBASE 13947](https://issues.apache.org/jira/browse/HBASE-13947): Použití MasterServices namísto serveru v AssignmentManager.
 
--   [HBASE 14135](https://issues.apache.org/jira/browse/HBASE-14135): HBase zálohování a obnovení fáze 3: sloučení záložní bitové kopie.
+-   [HBASE 14135](https://issues.apache.org/jira/browse/HBASE-14135): HBase zálohování a obnovení – fáze 3: Sloučit záložní bitové kopie.
 
--   [HBASE 14473](https://issues.apache.org/jira/browse/HBASE-14473): výpočetní oblasti lokality paralelně.
+-   [HBASE 14473](https://issues.apache.org/jira/browse/HBASE-14473): Výpočetní oblasti lokality paralelně.
 
--   [HBASE 14517](https://issues.apache.org/jira/browse/HBASE-14517): Zobrazit regionserver od verze v hlavním stavové stránce.
+-   [HBASE 14517](https://issues.apache.org/jira/browse/HBASE-14517): Zobrazit regionserver verze v hlavním stavové stránce.
 
--   [HBASE 14606](https://issues.apache.org/jira/browse/HBASE-14606): Vypršel časový limit v režimu trunk testy TestSecureLoadIncrementalHFiles stavět na apache.
+-   [HBASE 14606](https://issues.apache.org/jira/browse/HBASE-14606): Vypršel časový limit v režimu trunk testy TestSecureLoadIncrementalHFiles postavené na apache.
 
--   [HBASE 15210](https://issues.apache.org/jira/browse/HBASE-15210): zpět protokolování nástroje pro vyrovnávání zatížení agresivní na desítky řádků za milisekundu.
+-   [HBASE 15210](https://issues.apache.org/jira/browse/HBASE-15210): Vrátit zpět protokolování nástroje pro vyrovnávání zatížení agresivní na desítky řádků za milisekundu.
 
--   [HBASE 15515](https://issues.apache.org/jira/browse/HBASE-15515): zlepšení LocalityBasedCandidateGenerator v pro vyrovnávání zatížení.
+-   [HBASE 15515](https://issues.apache.org/jira/browse/HBASE-15515): Zlepšení LocalityBasedCandidateGenerator v pro vyrovnávání zatížení.
 
--   [HBASE 15615](https://issues.apache.org/jira/browse/HBASE-15615): doba nesprávné režimu spánku, když RegionServerCallable potřebují, zkuste to znovu.
+-   [HBASE 15615](https://issues.apache.org/jira/browse/HBASE-15615): Nesprávný doba režimu spánku, když RegionServerCallable potřebují, zkuste to znovu.
 
--   [HBASE 16135](https://issues.apache.org/jira/browse/HBASE-16135): PeerClusterZnode pod rs odebrání partnerského uzlu mohou být odstraněny nikdy.
+-   [HBASE 16135](https://issues.apache.org/jira/browse/HBASE-16135): PeerClusterZnode pod rs odebrání partnerského uzlu nikdy budou odstraněny.
 
--   [HBASE 16570](https://issues.apache.org/jira/browse/HBASE-16570): výpočetní oblasti lokality paralelně při spuštění.
+-   [HBASE 16570](https://issues.apache.org/jira/browse/HBASE-16570): Výpočetní oblasti lokality paralelně při spuštění.
 
--   [HBASE 16810](https://issues.apache.org/jira/browse/HBASE-16810): HBase vyrovnávání ArrayIndexOutOfBoundsException vyvolá, když regionservers /hbase/draining znode a byla uvolněna.
+-   [HBASE 16810](https://issues.apache.org/jira/browse/HBASE-16810): Nástroje pro vyrovnávání HBase ArrayIndexOutOfBoundsException vyvolá, když regionservers /hbase/draining znode a byla uvolněna.
 
--   [HBASE 16852](https://issues.apache.org/jira/browse/HBASE-16852): TestDefaultCompactSelection selhalo na větev 1.3.
+-   [HBASE 16852](https://issues.apache.org/jira/browse/HBASE-16852): TestDefaultCompactSelection nejde na větev 1.3.
 
--   [HBASE 17387](https://issues.apache.org/jira/browse/HBASE-17387): snížení režie sestavy výjimek v RegionActionResult pro multi() použít.
+-   [HBASE 17387](https://issues.apache.org/jira/browse/HBASE-17387): Snížit režii sestavy výjimek v RegionActionResult pro multi() použít.
 
--   [HBASE 17850](https://issues.apache.org/jira/browse/HBASE-17850): zálohování systému opravit.
+-   [HBASE 17850](https://issues.apache.org/jira/browse/HBASE-17850): Nástroj Zálohování systému opravit.
 
--   [HBASE 17931](https://issues.apache.org/jira/browse/HBASE-17931): přiřadit k serverům s nejvyšší verze systémové tabulky.
+-   [HBASE 17931](https://issues.apache.org/jira/browse/HBASE-17931): Systémové tabulky přiřadíte k serverům s nejvyšší verze.
 
--   [HBASE 18083](https://issues.apache.org/jira/browse/HBASE-18083): velkých a malých souborů vyčistit možnost konfigurace v HFileCleaner číslo vlákna.
+-   [HBASE 18083](https://issues.apache.org/jira/browse/HBASE-18083): Ujistěte se, velký nebo malý soubor vyčistit možnost konfigurace v HFileCleaner číslo vlákna.
 
--   [HBASE 18084](https://issues.apache.org/jira/browse/HBASE-18084): zlepšení CleanerChore k vyčištění z adresáře, který využívá víc místa na disku.
+-   [HBASE 18084](https://issues.apache.org/jira/browse/HBASE-18084): Zlepšení CleanerChore k vyčištění z adresáře, který využívá víc místa na disku.
 
--   [HBASE 18164](https://issues.apache.org/jira/browse/HBASE-18164): mnohem rychlejší lokality náklady na funkci a Release candidate generátoru.
+-   [HBASE 18164](https://issues.apache.org/jira/browse/HBASE-18164): Mnohem rychlejší lokality náklady na funkci a Release candidate generátoru.
 
--   [HBASE 18212](https://issues.apache.org/jira/browse/HBASE-18212): V samostatném režimu s místním systémem souborů HBase zaznamená zprávu upozornění: Nepodařilo se vyvolat metodu "unbuffer" v org.apache.hadoop.fs.FSDataInputStream třídu třídy.
+-   [HBASE 18212](https://issues.apache.org/jira/browse/HBASE-18212): V samostatném režimu s místním systémem souborů HBase zaznamená zprávu upozornění: Nepovedlo se vyvolat metodu "unbuffer" v org.apache.hadoop.fs.FSDataInputStream třídu třídy.
 
--   [HBASE 18808](https://issues.apache.org/jira/browse/HBASE-18808): neúčinná config vrácení se změnami BackupLogCleaner\#getDeletableFiles().
+-   [HBASE 18808](https://issues.apache.org/jira/browse/HBASE-18808): Neúčinná config vrácení se změnami BackupLogCleaner\#getDeletableFiles().
 
 -   [HBASE 19052](https://issues.apache.org/jira/browse/HBASE-19052): FixedFileTrailer by měl rozpoznávat CellComparatorImpl třídy v 1.x větve.
 
 -   [HBASE 19065](https://issues.apache.org/jira/browse/HBASE-19065): HRegion\#bulkLoadHFiles() musí čekat na souběžné oblasti\#vyprázdnění() na dokončení.
 
--   [HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285): Přidat histogramy čekací doba na tabulku.
+-   [HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285): Přidáte histogramy čekací doba na tabulku.
 
--   [HBASE 19393](https://issues.apache.org/jira/browse/HBASE-19393): úplné 413 HTTP head při přístupu k uživatelské rozhraní HBase pomocí protokolu SSL.
+-   [HBASE 19393](https://issues.apache.org/jira/browse/HBASE-19393): HTTP 413 úplné head při přístupu k uživatelské rozhraní HBase pomocí protokolu SSL.
 
 -   [HBASE 19395](https://issues.apache.org/jira/browse/HBASE-19395): \[větev 1\] TestEndToEndSplitTransaction.testMasterOpsWhileSplitting selže s NPE.
 
@@ -245,71 +245,71 @@ Tato verze poskytuje Hive 1.2.1 a Hive 2.1.0 kromě následujících oprav:
 
 -   [*HIVE 11266*](https://issues.apache.org/jira/browse/HIVE-11266): počet (\*) nesprávný výsledek na základě statistik tabulky pro externí tabulky.
 
--   [*HIVE 12245*](https://issues.apache.org/jira/browse/HIVE-12245): podpora sloupce komentáře pro HBase zajištěné tabulky.
+-   [*HIVE 12245*](https://issues.apache.org/jira/browse/HIVE-12245): Podpora sloupce komentáře pro HBase podporovaný tabulky.
 
--   [*HIVE 12315*](https://issues.apache.org/jira/browse/HIVE-12315): oprava Vektorizovaná double dělení nulou.
+-   [*HIVE 12315*](https://issues.apache.org/jira/browse/HIVE-12315): Opravte Vectorized double dělení nulou.
 
 -   [*HIVE 12360*](https://issues.apache.org/jira/browse/HIVE-12360): Chybné hledání v nekomprimovaných ORC s predikátu přenosu směrem dolů.
 
--   [*HIVE 12378*](https://issues.apache.org/jira/browse/HIVE-12378): výjimka při HBaseSerDe.serialize binární pole.
+-   [*HIVE 12378*](https://issues.apache.org/jira/browse/HIVE-12378): Výjimka při HBaseSerDe.serialize binární pole.
 
--   [*HIVE 12785*](https://issues.apache.org/jira/browse/HIVE-12785): zobrazení na mapách typ sjednocení a UDF do struktury je poškozená.
+-   [*HIVE 12785*](https://issues.apache.org/jira/browse/HIVE-12785): Zobrazení na mapách typ sjednocení a UDF do struktury je poškozená.
 
--   [*HIVE 14013*](https://issues.apache.org/jira/browse/HIVE-14013): popis tabulky nezobrazuje správně kódování unicode.
+-   [*HIVE 14013*](https://issues.apache.org/jira/browse/HIVE-14013): Popis tabulky nezobrazuje správně kódování unicode.
 
 -   [*HIVE 14205*](https://issues.apache.org/jira/browse/HIVE-14205): Hive nepodporuje typ sjednocení AVRO soubor ve formátu.
 
--   [*HIVE 14421*](https://issues.apache.org/jira/browse/HIVE-14421): FS.deleteOnExit obsahuje odkazy na \_tmp\_space.db soubory.
+-   [*HIVE 14421*](https://issues.apache.org/jira/browse/HIVE-14421): Obsahuje odkazy na FS.deleteOnExit \_tmp\_space.db soubory.
 
--   [*HIVE 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignorovat neplatné operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimky.
+-   [*HIVE 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Neplatná operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimku ignorujte.
 
--   [*HIVE 15680*](https://issues.apache.org/jira/browse/HIVE-15680): nesprávné výsledky při hive.optimize.index.filter=true a stejné ORC tabulku se odkazuje v dotazu, v režimu MR dvakrát.
+-   [*HIVE 15680*](https://issues.apache.org/jira/browse/HIVE-15680): Nesprávné výsledky při hive.optimize.index.filter=true a stejné ORC tabulku se odkazuje v dotazu, v režimu MR dvakrát.
 
--   [*HIVE 15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase namapované tabulky v navrácení služeb po vložení Hive pro desetinné číslo.
+-   [*HIVE 15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase mapovat tabulky v podregistru vložit nezdaří desetinné číslo.
 
--   [*HIVE 16232*](https://issues.apache.org/jira/browse/HIVE-16232): podpora výpočet statistiky pro sloupce v QuotedIdentifier.
+-   [*HIVE 16232*](https://issues.apache.org/jira/browse/HIVE-16232): Podpora pro sloupce v QuotedIdentifier výpočtu statistik.
 
--   [*HIVE 16828*](https://issues.apache.org/jira/browse/HIVE-16828): S CBO povolena, vyvolá IndexOutOfBoundException dotaz na zobrazení oddílů.
+-   [*HIVE 16828*](https://issues.apache.org/jira/browse/HIVE-16828): Dotaz na zobrazení oddílů s CBO povolena, vyvolá IndexOutOfBoundException.
 
--   [*HIVE 17013*](https://issues.apache.org/jira/browse/HIVE-17013): žádost o odstranění poddotazem podle vyberte v zobrazení.
+-   [*HIVE 17013*](https://issues.apache.org/jira/browse/HIVE-17013): Odstraňte požadavek poddotazem podle vyberte v zobrazení.
 
 -   [*HIVE 17063*](https://issues.apache.org/jira/browse/HIVE-17063): Vložit přepsat oddíl na externí tabulky selhání při nejprve vyřaďte oddílu.
 
 -   [*HIVE 17259*](https://issues.apache.org/jira/browse/HIVE-17259): Hive JDBC UNIONTYPE sloupce nerozpoznal.
 
--   [*HIVE 17419*](https://issues.apache.org/jira/browse/HIVE-17419): příkaz analyzovat... COMPUTE statistiky pro sloupce tabulky zobrazí vypočítané statistiky pro maskované tabulky.
+-   [*HIVE 17419*](https://issues.apache.org/jira/browse/HIVE-17419): Zobrazí příkaz analyzovat... COMPUTE statistiky pro sloupce tabulky počítaný statistiky pro maskované tabulky.
 
 -   [*HIVE 17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException při převodu uniontype.
 
--   [*HIVE 17621*](https://issues.apache.org/jira/browse/HIVE-17621): nastavení webu Hive jsou ignorovány při výpočtu HCatInputFormat rozdělení.
+-   [*HIVE 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Nastavení webu Hive se ignorují během výpočtu HCatInputFormat rozdělení.
 
 -   [*HIVE 17636*](https://issues.apache.org/jira/browse/HIVE-17636): Přidání více\_agg.q test blobstores.
 
--   [*HIVE 17729*](https://issues.apache.org/jira/browse/HIVE-17729): přidejte databáze a vysvětlit související testy úložiště objektů BLOB.
+-   [*HIVE 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Přidejte databáze a vysvětlit související testy úložiště objektů BLOB.
 
 -   [*HIVE 17731*](https://issues.apache.org/jira/browse/HIVE-17731): přidat možnost zpětné kompatibility pro externí uživatele HIVE 11985.
 
--   [*HIVE 17803*](https://issues.apache.org/jira/browse/HIVE-17803): S více dotazy Pig, bude 2 HCatStorers zápisu do stejné tabulky trample výstupy druhé strany.
+-   [*HIVE 17803*](https://issues.apache.org/jira/browse/HIVE-17803): S více dotazy Pig bude 2 HCatStorers zápisu do stejné tabulky trample výstupy druhé strany.
 
--   [*HIVE 17829*](https://issues.apache.org/jira/browse/HIVE-17829): ArrayIndexOutOfBoundsException – tabulky podporovaný HBASE s schématu Avro v Hive2.
+-   [*HIVE 17829*](https://issues.apache.org/jira/browse/HIVE-17829): ArrayIndexOutOfBoundsException - podporovaný HBASE tabulky s schématu Avro v Hive2.
 
 -   [*HIVE 17845*](https://issues.apache.org/jira/browse/HIVE-17845): Vložit selže, pokud sloupce cílové tabulky nejsou malá písmena.
 
 -   [*HIVE 17900*](https://issues.apache.org/jira/browse/HIVE-17900): Analýza statistiky pro sloupce, které jsou aktivované lisovače vygeneruje chybný SQL s &gt; sloupec 1 oddílu.
 
--   [*HIVE 18026*](https://issues.apache.org/jira/browse/HIVE-18026): optimalizace webhcat instančního objektu konfigurace Hive.
+-   [*HIVE 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive optimalizace webhcat instančního objektu konfigurace.
 
--   [*HIVE 18031*](https://issues.apache.org/jira/browse/HIVE-18031): podpora replikace pro operaci Alter Database.
+-   [*HIVE 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Replikace se podporují pro operaci Alter Database.
 
 -   [*HIVE 18090*](https://issues.apache.org/jira/browse/HIVE-18090): odpovídající zásadám acid prezenčního signálu selže, pokud je připojený metastore prostřednictvím přihlašovacích údajů systému hadoop.
 
--   [*HIVE 18189*](https://issues.apache.org/jira/browse/HIVE-18189): vrací nesprávné výsledky dotazu Hive hive.groupby.orderby.position.alias při nastavení na hodnotu true.
+-   [*HIVE 18189*](https://issues.apache.org/jira/browse/HIVE-18189): Dotaz vrátí nesprávné výsledky Hive hive.groupby.orderby.position.alias při nastavení na hodnotu true.
 
--   [*HIVE 18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizace: omezení na straně skupiny podle MERGEPARTIAL s duplicitní sloupce je poškozená.
+-   [*HIVE 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizace: Omezit na straně skupiny podle MERGEPARTIAL s duplicitní sloupce je poškozená.
 
 -   [*HIVE 18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive se nedaří compact tabulky obsažené ve složce, které není vlastněno identita HiveMetaStore spuštěna.
 
--   [*HIVE 18327*](https://issues.apache.org/jira/browse/HIVE-18327): odeberte nepotřebné HiveConf závislost pro MiniHiveKdc.
+-   [*HIVE 18327*](https://issues.apache.org/jira/browse/HIVE-18327): Odeberte nepotřebné HiveConf závislost pro MiniHiveKdc.
 
 -   [*HIVE 18341*](https://issues.apache.org/jira/browse/HIVE-18341): Přidání podpory načtení repl pro přidání "neupravené" obor názvů pro transparentní šifrování dat pomocí stejné šifrovací klíče.
 
@@ -319,57 +319,57 @@ Tato verze poskytuje Hive 1.2.1 a Hive 2.1.0 kromě následujících oprav:
 
 -   [*HIVE 18390*](https://issues.apache.org/jira/browse/HIVE-18390): IndexOutOfBoundsException při dotazu zobrazení oddílů v ColumnPruner.
 
--   [*HIVE 18429*](https://issues.apache.org/jira/browse/HIVE-18429): komprimace by měl řešit případu při negeneruje žádný výstup.
+-   [*HIVE 18429*](https://issues.apache.org/jira/browse/HIVE-18429): Komprimace partnerova případ, když negeneruje žádný výstup.
 
--   [*HIVE 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: poskytují způsob, jakým uživatelé JDBC předat informace o souboru cookie prostřednictvím připojovacího řetězce.
+-   [*HIVE 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Zadejte způsob, jak předat informace o souboru cookie prostřednictvím připojovací řetězec JDBC uživatelům.
 
--   [*HIVE 18460*](https://issues.apache.org/jira/browse/HIVE-18460): lisovače neprojde vlastnosti tabulky do zapisovače Orc.
+-   [*HIVE 18460*](https://issues.apache.org/jira/browse/HIVE-18460): Lisovače neprojde vlastnosti tabulky do zapisovače Orc.
 
 -   [*HIVE 18467*](https://issues.apache.org/jira/browse/HIVE-18467): podpora výpisu celý skladu / načíst + vytvořit/drop database události (Anishek Agarwal, zkontroluje Sankar Hariappan).
 
--   [*HIVE 18551*](https://issues.apache.org/jira/browse/HIVE-18551): vektorizace: VectorMapOperator pokouší o zápis příliš mnoho sloupců vektorové pro hybridní odkladu.
+-   [*HIVE 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizace: VectorMapOperator pokouší o zápis pro hybridní odkladu příliš mnoho sloupců vektoru.
 
 -   [*HIVE 18587*](https://issues.apache.org/jira/browse/HIVE-18587): událost vložení po DML může pokusu o výpočet kontrolního součtu o adresářích.
 
--   [*HIVE 18613*](https://issues.apache.org/jira/browse/HIVE-18613): JsonSerDe rozšíření pro podporu BINÁRNÍHO typu.
+-   [*HIVE 18613*](https://issues.apache.org/jira/browse/HIVE-18613): Rozšiřte JsonSerDe pro podporu BINÁRNÍHO typu.
 
--   [*HIVE 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Repl zatížení "s" klauzulí nepředává úlohy konfigurace.
+-   [*HIVE 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Zatížení REPL "s" klauzulí nepředává konfigurace k úkolům.
 
 -   [*HIVE 18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nerozlišuje oddílu a virtuální sloupce.
 
--   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL stav by měl podporovat s klauzulí.
+-   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stav REPL by měly podporovat s klauzulí.
 
--   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL stav by měl podporovat s klauzulí.
+-   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stav REPL by měly podporovat s klauzulí.
 
--   [*HIVE 18788*](https://issues.apache.org/jira/browse/HIVE-18788): čištění vstupy JDBC PreparedStatement.
+-   [*HIVE 18788*](https://issues.apache.org/jira/browse/HIVE-18788): Vyčištění vstupy JDBC PreparedStatement.
 
--   [*HIVE 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Repl zatížení "s" klauzulí nepředává konfigurace úlohy pro tabulek bez oddílů.
+-   [*HIVE 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Zatížení REPL "s" klauzulí nepředává config úkoly tabulek bez oddílů.
 
--   [*HIVE 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Ujistěte se, komprimace robustnější při statistiky aktualizace nezdaří.
+-   [*HIVE 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Statistika aktualizace nezdaří zkontrolujte komprimace robustnější.
 
 -   [*HIVE 18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds výjimka při čtení tabulky v modelu ACID.
 
--   [*HIVE 18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatické sloučení není úspěšné při "Vložit do adresáře jako souborů orc".
+-   [*HIVE 18833*](https://issues.apache.org/jira/browse/HIVE-18833): Automaticky sloučit není úspěšné při "Vložit do adresáře jako souborů orc".
 
--   [*HIVE 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Zakáže vložený element v UDFXPathUtil musí fungovat, pokud xercesImpl.jar v cestě.
+-   [*HIVE 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Zakažte vložený element v UDFXPathUtil musí fungovat, pokud xercesImpl.jar v cestě.
 
--   [*HIVE 18907*](https://issues.apache.org/jira/browse/HIVE-18907): vytvořit nástroj pro odstranění problému odpovídající zásadám acid index klíče od HIVE 18817.
+-   [*HIVE 18907*](https://issues.apache.org/jira/browse/HIVE-18907): Vytvořte nástroj pro odstranění problému odpovídající zásadám acid index klíče od HIVE 18817.
 
 **Opravy Apache Hive 2.1.0:**
 
--   [*HIVE 14013*](https://issues.apache.org/jira/browse/HIVE-14013): popis tabulky nezobrazuje správně kódování unicode.
+-   [*HIVE 14013*](https://issues.apache.org/jira/browse/HIVE-14013): Popis tabulky nezobrazuje správně kódování unicode.
 
 -   [*HIVE 14205*](https://issues.apache.org/jira/browse/HIVE-14205): Hive nepodporuje typ sjednocení AVRO soubor ve formátu.
 
--   [*HIVE 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Ignorovat neplatné operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimky.
+-   [*HIVE 15563*](https://issues.apache.org/jira/browse/HIVE-15563): Neplatná operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimku ignorujte.
 
--   [*HIVE 15680*](https://issues.apache.org/jira/browse/HIVE-15680): nesprávné výsledky při hive.optimize.index.filter=true a stejné ORC tabulku se odkazuje v dotazu, v režimu MR dvakrát.
+-   [*HIVE 15680*](https://issues.apache.org/jira/browse/HIVE-15680): Nesprávné výsledky při hive.optimize.index.filter=true a stejné ORC tabulku se odkazuje v dotazu, v režimu MR dvakrát.
 
--   [*HIVE 15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase namapované tabulky v navrácení služeb po vložení Hive pro desetinné číslo.
+-   [*HIVE 15883*](https://issues.apache.org/jira/browse/HIVE-15883): HBase mapovat tabulky v podregistru vložit nezdaří desetinné číslo.
 
--   [*HIVE 16757*](https://issues.apache.org/jira/browse/HIVE-16757): Odeberte nepoužívané AbstractRelNode.getRows volání.
+-   [*HIVE 16757*](https://issues.apache.org/jira/browse/HIVE-16757): Odeberte volání zastaralé AbstractRelNode.getRows.
 
--   [*HIVE 16828*](https://issues.apache.org/jira/browse/HIVE-16828): S CBO povolena, vyvolá IndexOutOfBoundException dotaz na zobrazení oddílů.
+-   [*HIVE 16828*](https://issues.apache.org/jira/browse/HIVE-16828): Dotaz na zobrazení oddílů s CBO povolena, vyvolá IndexOutOfBoundException.
 
 -   [*HIVE 17063*](https://issues.apache.org/jira/browse/HIVE-17063): Vložit přepsat oddíl na externí tabulky selhání při nejprve vyřaďte oddílu.
 
@@ -377,7 +377,7 @@ Tato verze poskytuje Hive 1.2.1 a Hive 2.1.0 kromě následujících oprav:
 
 -   [*HIVE 17530*](https://issues.apache.org/jira/browse/HIVE-17530): ClassCastException při převodu uniontype.
 
--   [*HIVE 17600*](https://issues.apache.org/jira/browse/HIVE-17600): Ujistěte se, souborů Orc enforceBufferSize nastavitelné uživatele.
+-   [*HIVE 17600*](https://issues.apache.org/jira/browse/HIVE-17600): Ujistěte se, od souborů Orc enforceBufferSize nastavitelné uživatele.
 
 -   [*HIVE 17601*](https://issues.apache.org/jira/browse/HIVE-17601): zlepšení zpracování chyb v LlapServiceDriver.
 
@@ -385,47 +385,47 @@ Tato verze poskytuje Hive 1.2.1 a Hive 2.1.0 kromě následujících oprav:
 
 -   [*HIVE 17617*](https://issues.apache.org/jira/browse/HIVE-17617): Souhrn prázdná sada výsledků by měl obsahovat seskupení sady prázdné seskupení.
 
--   [*HIVE 17621*](https://issues.apache.org/jira/browse/HIVE-17621): nastavení webu Hive jsou ignorovány při výpočtu HCatInputFormat rozdělení.
+-   [*HIVE 17621*](https://issues.apache.org/jira/browse/HIVE-17621): Nastavení webu Hive se ignorují během výpočtu HCatInputFormat rozdělení.
 
--   [*HIVE 17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: muset povolit selektivní ukládání do mezipaměti tabulek nebo oddílů a povolit čtení při prewarming seznam povolených/zakázaných config.
+-   [*HIVE 17629*](https://issues.apache.org/jira/browse/HIVE-17629): CachedStore: Seznam povolených/zakázaných config máte povolit selektivní ukládání do mezipaměti tabulek nebo oddílů a povolit čtení při prewarming.
 
 -   [*HIVE 17636*](https://issues.apache.org/jira/browse/HIVE-17636): Přidání více\_agg.q test blobstores.
 
 -   [*HIVE 17702*](https://issues.apache.org/jira/browse/HIVE-17702): nesprávný isRepeating v desítkové čtečky v ORC.
 
--   [*HIVE 17729*](https://issues.apache.org/jira/browse/HIVE-17729): přidejte databáze a vysvětlit související testy úložiště objektů BLOB.
+-   [*HIVE 17729*](https://issues.apache.org/jira/browse/HIVE-17729): Přidejte databáze a vysvětlit související testy úložiště objektů BLOB.
 
 -   [*HIVE 17731*](https://issues.apache.org/jira/browse/HIVE-17731): přidat možnost zpětné kompatibility pro externí uživatele HIVE 11985.
 
--   [*HIVE 17803*](https://issues.apache.org/jira/browse/HIVE-17803): S více dotazy Pig, bude 2 HCatStorers zápisu do stejné tabulky trample výstupy druhé strany.
+-   [*HIVE 17803*](https://issues.apache.org/jira/browse/HIVE-17803): S více dotazy Pig bude 2 HCatStorers zápisu do stejné tabulky trample výstupy druhé strany.
 
 -   [*HIVE 17845*](https://issues.apache.org/jira/browse/HIVE-17845): Vložit selže, pokud sloupce cílové tabulky nejsou malá písmena.
 
 -   [*HIVE 17900*](https://issues.apache.org/jira/browse/HIVE-17900): Analýza statistiky pro sloupce, které jsou aktivované lisovače vygeneruje chybný SQL s &gt; sloupec 1 oddílu.
 
--   [*HIVE 18006*](https://issues.apache.org/jira/browse/HIVE-18006): optimalizace paměťové nároky HLLDenseRegister.
+-   [*HIVE 18006*](https://issues.apache.org/jira/browse/HIVE-18006): Paměťové nároky HLLDenseRegister Optimalizujte.
 
--   [*HIVE 18026*](https://issues.apache.org/jira/browse/HIVE-18026): optimalizace webhcat instančního objektu konfigurace Hive.
+-   [*HIVE 18026*](https://issues.apache.org/jira/browse/HIVE-18026): Hive optimalizace webhcat instančního objektu konfigurace.
 
--   [*HIVE 18031*](https://issues.apache.org/jira/browse/HIVE-18031): podpora replikace pro operaci Alter Database.
+-   [*HIVE 18031*](https://issues.apache.org/jira/browse/HIVE-18031): Replikace se podporují pro operaci Alter Database.
 
 -   [*HIVE 18090*](https://issues.apache.org/jira/browse/HIVE-18090): odpovídající zásadám acid prezenčního signálu selže, pokud je připojený metastore prostřednictvím přihlašovacích údajů systému hadoop.
 
--   [*HIVE 18189*](https://issues.apache.org/jira/browse/HIVE-18189): pořadí podle pozice nefunguje při cbo je zakázaná.
+-   [*HIVE 18189*](https://issues.apache.org/jira/browse/HIVE-18189): Pokud je zakázán cbo pořadí podle umístění nebude fungovat.
 
--   [*HIVE 18258*](https://issues.apache.org/jira/browse/HIVE-18258): vektorizace: omezení na straně skupiny podle MERGEPARTIAL s duplicitní sloupce je poškozená.
+-   [*HIVE 18258*](https://issues.apache.org/jira/browse/HIVE-18258): Vektorizace: Omezit na straně skupiny podle MERGEPARTIAL s duplicitní sloupce je poškozená.
 
--   [*HIVE 18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: rychlé llap vstupně-výstupní operace s kanálem pomalé zpracování může vést k typu.
+-   [*HIVE 18269*](https://issues.apache.org/jira/browse/HIVE-18269): LLAP: Rychlé llap vstupně-výstupní operace s kanálem pomalé zpracování může vést k typu.
 
 -   [*HIVE 18293*](https://issues.apache.org/jira/browse/HIVE-18293): Hive se nedaří compact tabulky obsažené ve složce, které není vlastněno identita HiveMetaStore spuštěna.
 
--   [*HIVE 18318*](https://issues.apache.org/jira/browse/HIVE-18318): čtečky LLAP záznam by měl zkontrolovat přerušení i v případě, že neblokuje.
+-   [*HIVE 18318*](https://issues.apache.org/jira/browse/HIVE-18318): Čtečka záznam LLAP měli počítač zkontrolovat přerušení i v případě, že neblokuje.
 
 -   [*HIVE 18326*](https://issues.apache.org/jira/browse/HIVE-18326): Plánovač LLAP Tez – pouze vyřizuje úlohy, pokud neexistuje závislost mezi nimi.
 
--   [*HIVE 18327*](https://issues.apache.org/jira/browse/HIVE-18327): odeberte nepotřebné HiveConf závislost pro MiniHiveKdc.
+-   [*HIVE 18327*](https://issues.apache.org/jira/browse/HIVE-18327): Odeberte nepotřebné HiveConf závislost pro MiniHiveKdc.
 
--   [*HIVE 18331*](https://issues.apache.org/jira/browse/HIVE-18331): Přidat relogin po vypršení platnosti lístku TGT i některé protokolování nebo výrazu lambda.
+-   [*HIVE 18331*](https://issues.apache.org/jira/browse/HIVE-18331): Přidáte relogin po vypršení platnosti lístku TGT i některé protokolování nebo výrazu lambda.
 
 -   [*HIVE 18341*](https://issues.apache.org/jira/browse/HIVE-18341): Přidání podpory načtení repl pro přidání "neupravené" obor názvů pro transparentní šifrování dat pomocí stejné šifrovací klíče.
 
@@ -437,97 +437,97 @@ Tato verze poskytuje Hive 1.2.1 a Hive 2.1.0 kromě následujících oprav:
 
 -   [*HIVE 18390*](https://issues.apache.org/jira/browse/HIVE-18390): IndexOutOfBoundsException při dotazu zobrazení oddílů v ColumnPruner.
 
--   [*HIVE 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: poskytují způsob, jakým uživatelé JDBC předat informace o souboru cookie prostřednictvím připojovacího řetězce.
+-   [*HIVE 18447*](https://issues.apache.org/jira/browse/HIVE-18447): JDBC: Zadejte způsob, jak předat informace o souboru cookie prostřednictvím připojovací řetězec JDBC uživatelům.
 
--   [*HIVE 18460*](https://issues.apache.org/jira/browse/HIVE-18460): lisovače neprojde vlastnosti tabulky do zapisovače Orc.
+-   [*HIVE 18460*](https://issues.apache.org/jira/browse/HIVE-18460): Lisovače neprojde vlastnosti tabulky do zapisovače Orc.
 
--   [*HIVE 18462*](https://issues.apache.org/jira/browse/HIVE-18462): (vysvětlit ve formátu pro dotazy pomocí mapy spojení má columnExprMap s názvem neformátovaný sloupce).
+-   [*HIVE 18462*](https://issues.apache.org/jira/browse/HIVE-18462): (Vysvětlete je formátovaný pro dotazy pomocí mapy spojení má columnExprMap s názvem neformátovaný sloupce).
 
 -   [*HIVE 18467*](https://issues.apache.org/jira/browse/HIVE-18467): podpora výpisu celý skladu / načíst + vytvořit/drop database události.
 
--   [*HIVE 18488*](https://issues.apache.org/jira/browse/HIVE-18488): LLAP ORC čtenáři chybí některé kontroly hodnoty null.
+-   [*HIVE 18488*](https://issues.apache.org/jira/browse/HIVE-18488): Čtenáři LLAP ORC chybí některé kontroly hodnoty null.
 
--   [*HIVE 18490*](https://issues.apache.org/jira/browse/HIVE-18490): dotaz s existuje a není EXISTS se bez ekvivalentní predikátu zapříčinit nesprávnému výsledku.
+-   [*HIVE 18490*](https://issues.apache.org/jira/browse/HIVE-18490): Dotaz s existuje a není EXISTS se bez ekvivalentní predikátu zapříčinit nesprávnému výsledku.
 
 -   [*HIVE 18506*](https://issues.apache.org/jira/browse/HIVE-18506): LlapBaseInputFormat - index záporný pole.
 
--   [*HIVE-18517*](https://issues.apache.org/jira/browse/HIVE-18517): vektorizace: Příznak VectorMapOperator opravit, zkontrolujte a přijměte VRBs správně vektorizovaná pro podporu ukládání do mezipaměti LLAP).
+-   [*HIVE 18517*](https://issues.apache.org/jira/browse/HIVE-18517): Vektorizace: Oprava VectorMapOperator zkontrolovat a přijmout VRBs vektorizovaná příznak správně pro podporu ukládání do mezipaměti LLAP).
 
--   [*HIVE 18523*](https://issues.apache.org/jira/browse/HIVE-18523): oprava souhrnných řádek v případě, že neexistují žádné vstupy.
+-   [*HIVE 18523*](https://issues.apache.org/jira/browse/HIVE-18523): Opravte souhrnu řádků v případě, že neexistují žádné vstupy.
 
--   [*HIVE 18528*](https://issues.apache.org/jira/browse/HIVE-18528): získání agregované statistiky v ObjectStore nesprávnému výsledku.
+-   [*HIVE 18528*](https://issues.apache.org/jira/browse/HIVE-18528): Agregované statistiky v ObjectStore získat nesprávnému výsledku.
 
--   [*HIVE 18530*](https://issues.apache.org/jira/browse/HIVE-18530): replikace by měla tabulka MM (zatím přeskočit).
+-   [*HIVE 18530*](https://issues.apache.org/jira/browse/HIVE-18530): Replikace by měla tabulka MM (zatím přeskočit).
 
--   [*HIVE 18548*](https://issues.apache.org/jira/browse/HIVE-18548): oprava log4j importu.
+-   [*HIVE 18548*](https://issues.apache.org/jira/browse/HIVE-18548): Opravte log4j importu.
 
--   [*HIVE 18551*](https://issues.apache.org/jira/browse/HIVE-18551): vektorizace: VectorMapOperator pokouší o zápis příliš mnoho sloupců vektorové pro hybridní odkladu.
+-   [*HIVE 18551*](https://issues.apache.org/jira/browse/HIVE-18551): Vektorizace: VectorMapOperator pokouší o zápis pro hybridní odkladu příliš mnoho sloupců vektoru.
 
 -   [*HIVE 18577*](https://issues.apache.org/jira/browse/HIVE-18577): SemanticAnalyzer.validate má některá volání bezúčelné metastore.
 
 -   [*HIVE 18587*](https://issues.apache.org/jira/browse/HIVE-18587): událost vložení po DML může pokusu o výpočet kontrolního součtu o adresářích.
 
--   [*HIVE 18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: vždy balíček jar log4j2 rozhraní API pro org.apache.log4j.
+-   [*HIVE 18597*](https://issues.apache.org/jira/browse/HIVE-18597): LLAP: Vždy balíček jar log4j2 rozhraní API pro org.apache.log4j.
 
--   [*HIVE 18613*](https://issues.apache.org/jira/browse/HIVE-18613): JsonSerDe rozšíření pro podporu BINÁRNÍHO typu.
+-   [*HIVE 18613*](https://issues.apache.org/jira/browse/HIVE-18613): Rozšiřte JsonSerDe pro podporu BINÁRNÍHO typu.
 
--   [*HIVE 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Repl zatížení "s" klauzulí nepředává úlohy konfigurace.
+-   [*HIVE 18626*](https://issues.apache.org/jira/browse/HIVE-18626): Zatížení REPL "s" klauzulí nepředává konfigurace k úkolům.
 
 -   [*HIVE 18643*](https://issues.apache.org/jira/browse/HIVE-18643): nezaškrtávejte políčko pro archivované oddíly pro odpovídající zásadám ACID ops.
 
 -   [*HIVE 18660*](https://issues.apache.org/jira/browse/HIVE-18660): PCR nerozlišuje oddílu a virtuální sloupce.
 
--   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): REPL stav by měl podporovat s klauzulí.
+-   [*HIVE 18754*](https://issues.apache.org/jira/browse/HIVE-18754): Stav REPL by měly podporovat s klauzulí.
 
--   [*HIVE 18788*](https://issues.apache.org/jira/browse/HIVE-18788): čištění vstupy JDBC PreparedStatement.
+-   [*HIVE 18788*](https://issues.apache.org/jira/browse/HIVE-18788): Vyčištění vstupy JDBC PreparedStatement.
 
--   [*HIVE 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Repl zatížení "s" klauzulí nepředává konfigurace úlohy pro tabulek bez oddílů.
+-   [*HIVE 18794*](https://issues.apache.org/jira/browse/HIVE-18794): Zatížení REPL "s" klauzulí nepředává config úkoly tabulek bez oddílů.
 
--   [*HIVE 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Ujistěte se, komprimace robustnější při statistiky aktualizace nezdaří.
+-   [*HIVE 18808*](https://issues.apache.org/jira/browse/HIVE-18808): Statistika aktualizace nezdaří zkontrolujte komprimace robustnější.
 
--   [*HIVE 18815*](https://issues.apache.org/jira/browse/HIVE-18815): Odeberte nepoužívané funkce HPL/SQL.
+-   [*HIVE 18815*](https://issues.apache.org/jira/browse/HIVE-18815): Odebere nevyužité funkce HPL/SQL.
 
 -   [*HIVE 18817*](https://issues.apache.org/jira/browse/HIVE-18817): ArrayIndexOutOfBounds výjimka při čtení tabulky v modelu ACID.
 
--   [*HIVE 18833*](https://issues.apache.org/jira/browse/HIVE-18833): automatické sloučení není úspěšné při "Vložit do adresáře jako souborů orc".
+-   [*HIVE 18833*](https://issues.apache.org/jira/browse/HIVE-18833): Automaticky sloučit není úspěšné při "Vložit do adresáře jako souborů orc".
 
--   [*HIVE 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Zakáže vložený element v UDFXPathUtil musí fungovat, pokud xercesImpl.jar v cestě.
+-   [*HIVE 18879*](https://issues.apache.org/jira/browse/HIVE-18879): Zakažte vložený element v UDFXPathUtil musí fungovat, pokud xercesImpl.jar v cestě.
 
--   [*HIVE 18944*](https://issues.apache.org/jira/browse/HIVE-18944): pozice nastaví požadavek Groupping je nesprávně nastavena během DPP.
+-   [*HIVE 18944*](https://issues.apache.org/jira/browse/HIVE-18944): Pozice nastaví Požadavek GroupPing během DPP nastavena nesprávně.
 
 ### <a name="kafka"></a>Kafka
 
 Tato verze obsahuje následující opravy Apache Kafka 1.0.0 a.
 
--   [KAFKA 4827](https://issues.apache.org/jira/browse/KAFKA-4827): Kafka připojit: Chyba speciální znaky v názvu konektoru.
+-   [KAFKA 4827](https://issues.apache.org/jira/browse/KAFKA-4827): Připojení k systému Kafka: Chyba speciální znaky v názvu konektoru.
 
--   [KAFKA 6118](https://issues.apache.org/jira/browse/KAFKA-6118): kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials přechodné chyby.
+-   [KAFKA 6118](https://issues.apache.org/jira/browse/KAFKA-6118): Přechodné chyby kafka.api.SaslScramSslEndToEndAuthorizationTest.testTwoConsumersWithDifferentSaslCredentials.
 
 -   [KAFKA 6156](https://issues.apache.org/jira/browse/KAFKA-6156): JmxReporter nemůže zpracovat cesty k adresářům stylu windows.
 
--   [KAFKA 6164](https://issues.apache.org/jira/browse/KAFKA-6164): ClientQuotaManager vlákna zabránit vypnutí, když dojde k nějaké chybě, načítají se protokoly.
+-   [KAFKA 6164](https://issues.apache.org/jira/browse/KAFKA-6164): Vlákna ClientQuotaManager zabránit vypnutí, když dojde k nějaké chybě, načítají se protokoly.
 
--   [KAFKA 6167](https://issues.apache.org/jira/browse/KAFKA-6167): časové razítko v adresáři datové proudy obsahuje dvojtečku, což je neplatný znak.
+-   [KAFKA 6167](https://issues.apache.org/jira/browse/KAFKA-6167): Časové razítko v adresáři datové proudy obsahuje dvojtečku, což je neplatný znak.
 
 -   [KAFKA 6179](https://issues.apache.org/jira/browse/KAFKA-6179): RecordQueue.clear() nerušte zaškrtnutí políčka MinTimestampTracker je udržovat seznam.
 
--   [KAFKA 6185](https://issues.apache.org/jira/browse/KAFKA-6185): nevrácení paměti selektor s vysokou pravděpodobnost OOM v případě klíčových dolů převodu.
+-   [KAFKA 6185](https://issues.apache.org/jira/browse/KAFKA-6185): Selektor nevracení paměti s vysokou pravděpodobnost OOM v případě klíčových dolů převodu.
 
 -   [KAFKA 6190](https://issues.apache.org/jira/browse/KAFKA-6190): GlobalKTable nikdy nedokončí, obnovení při využívání transakčních zpráv.
 
 -   [KAFKA 6210](https://issues.apache.org/jira/browse/KAFKA-6210): IllegalArgumentException, pokud se používá pro inter.broker.protocol.version nebo log.message.format.version 1.0.0.
 
--   [KAFKA 6214](https://issues.apache.org/jira/browse/KAFKA-6214): použití pohotovostní repliky se v paměti stavu úložiště způsobí, že datové proudy selhání.
+-   [KAFKA 6214](https://issues.apache.org/jira/browse/KAFKA-6214): Použití úsporného replik s v paměti úložiště stavu způsobí, že datové proudy selhání.
 
--   [KAFKA 6215](https://issues.apache.org/jira/browse/KAFKA-6215): v režimu trunk KafkaStreamsTest selže.
+-   [KAFKA 6215](https://issues.apache.org/jira/browse/KAFKA-6215): KafkaStreamsTest selže v režimu trunk.
 
--   [KAFKA 6238](https://issues.apache.org/jira/browse/KAFKA-6238): problémy s verzí protokolu po použití upgradu se zajištěním provozu na 1.0.0.
+-   [KAFKA 6238](https://issues.apache.org/jira/browse/KAFKA-6238): Problémy s verzí protokolu po použití upgradu se zajištěním provozu na 1.0.0.
 
 -   [KAFKA 6260](https://issues.apache.org/jira/browse/KAFKA-6260): AbstractCoordinator zpracovává není jasně výjimku NULL.
 
--   [KAFKA 6261](https://issues.apache.org/jira/browse/KAFKA-6261): žádost o protokolování vyvolá výjimku, pokud se potvrzení = 0.
+-   [KAFKA 6261](https://issues.apache.org/jira/browse/KAFKA-6261): Požádat o protokolování vyvolá výjimku, pokud se potvrzení = 0.
 
--   [KAFKA 6274](https://issues.apache.org/jira/browse/KAFKA-6274): ukládání stavu zdroje zlepšit KTable automaticky generované názvy.
+-   [KAFKA 6274](https://issues.apache.org/jira/browse/KAFKA-6274): Zlepšení KTable zdrojové úložiště automaticky generované názvy.
 
 ### <a name="mahout"></a>Mahout
 
@@ -547,99 +547,99 @@ V HDP 2.5.x a 2.6.x jsme z Mahout odebrat knihovně "commons httpclient", proto�
 
 Tato verze poskytuje s následující opravy Apache Oozie 4.2.0.
 
--   [OOZIE 2571](https://issues.apache.org/jira/browse/OOZIE-2571): Přidání vlastnosti Maven spark.scala.binary.version tak, aby Scala 2.11 můžete použít.
+-   [OOZIE 2571](https://issues.apache.org/jira/browse/OOZIE-2571): Přidáte vlastnost Maven spark.scala.binary.version tak, aby Scala 2.11 můžete použít.
 
--   [OOZIE 2606](https://issues.apache.org/jira/browse/OOZIE-2606): nastavte spark.yarn.jars Spark 2.0 s Oozie opravit.
+-   [OOZIE 2606](https://issues.apache.org/jira/browse/OOZIE-2606): Nastavte spark.yarn.jars Spark 2.0 s Oozie opravit.
 
 -   [OOZIE 2658](https://issues.apache.org/jira/browse/OOZIE-2658): – ovladač třídy path mohou přepsat cestě v SparkMain.
 
 -   [OOZIE. 2787](https://issues.apache.org/jira/browse/OOZIE-2787): Oozie distribuuje jar aplikace dvakrát provádění úlohy spark nezdaří.
 
--   [OOZIE. 2792](https://issues.apache.org/jira/browse/OOZIE-2792): Hive2 akce není ID aplikace Spark ze souboru protokolu parsování správně po Hive ve Sparku.
+-   [OOZIE. 2792](https://issues.apache.org/jira/browse/OOZIE-2792): Hive2 akce není správně analýza ID aplikace Spark ze souboru protokolu, po Hive ve Sparku.
 
--   [OOZIE. 2799](https://issues.apache.org/jira/browse/OOZIE-2799): nastavení umístění protokolu pro spark sql na hive.
+-   [OOZIE. 2799](https://issues.apache.org/jira/browse/OOZIE-2799): Nastavení umístění protokolu pro spark sql na hive.
 
 -   [OOZIE. 2802](https://issues.apache.org/jira/browse/OOZIE-2802): Spark ve Sparku 2.1.0 z důvodu duplicitní sharelibs selhání akce.
 
--   [OOZIE 2923](https://issues.apache.org/jira/browse/OOZIE-2923): Spark zlepšit možnosti analýzy.
+-   [OOZIE 2923](https://issues.apache.org/jira/browse/OOZIE-2923): Zlepšete možnosti Spark analýza kódu.
 
--   [OOZIE 3109](https://issues.apache.org/jira/browse/OOZIE-3109): SCA: skriptování napříč weby: projeví.
+-   [OOZIE 3109](https://issues.apache.org/jira/browse/OOZIE-3109): SCA: Skriptování napříč weby: Projeví.
 
 -   [OOZIE 3139](https://issues.apache.org/jira/browse/OOZIE-3139): Oozie nesprávně ověří pracovní postup.
 
--   [OOZIE 3167](https://issues.apache.org/jira/browse/OOZIE-3167): verze upgradu tomcat na větev Oozie 4.3.
+-   [OOZIE 3167](https://issues.apache.org/jira/browse/OOZIE-3167): Upgradujte verzi tomcat na větev Oozie 4.3.
 
 ### <a name="phoenix"></a>Phoenix
 
 Tato verze obsahuje následující opravy Apache Phoenix 4.7.0 a:
 
--   [PHOENIX. 1751](https://issues.apache.org/jira/browse/PHOENIX-1751): provést řazení a tak dále, v preScannerNext místo postScannerOpen agregací.
+-   [PHOENIX. 1751](https://issues.apache.org/jira/browse/PHOENIX-1751): Proveďte řazení a tak dále, v preScannerNext místo postScannerOpen agregací.
 
--   [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714): odhad v BaseResultIterators správné bajtů a vystavit jako rozhraní.
+-   [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714): Opravte odhad počtu bajtů v BaseResultIterators a vystavit jako rozhraní.
 
--   [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724): dotaz s velkým počtem guideposts nižší ve srovnání s žádné statistiky.
+-   [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724): Dotaz s velkým počtem guideposts nižší ve srovnání s žádné statistiky.
 
--   [PHOENIX. 2855](https://issues.apache.org/jira/browse/PHOENIX-2855): naprostou serializovat pro HBase 1.2 TimeRange přírůstek alternativní řešení.
+-   [PHOENIX. 2855](https://issues.apache.org/jira/browse/PHOENIX-2855): Alternativní řešení přírůstek TimeRange naprostou serializovat pro HBase 1.2.
 
--   [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023): pomalý výkon při limitu dotazů ve výchozím nastavení spouští paralelně.
+-   [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023): Nízký výkon při limitu dotazů ve výchozím nastavení spouští paralelně.
 
 -   [PHOENIX 3040](https://issues.apache.org/jira/browse/PHOENIX-3040): Nepoužívejte guideposts pro provádění dotazů sériově.
 
--   [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112): částečný řádek kontroly správně nebyla zpracována.
+-   [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112): Kontrola částečný řádek správně nebyla zpracována.
 
 -   [PHOENIX 3240](https://issues.apache.org/jira/browse/PHOENIX-3240): ClassCastException z Pig zavaděče.
 
--   [PHOENIX 3452](https://issues.apache.org/jira/browse/PHOENIX-3452): poslední FIRST/NULL hodnoty Null by neměla mít vliv, zda GROUP BY je v pořadí zachování.
+-   [PHOENIX 3452](https://issues.apache.org/jira/browse/PHOENIX-3452): POSLEDNÍ FIRST/NULL hodnoty Null by neměla mít vliv, zda GROUP BY je v pořadí zachování.
 
--   [PHOENIX 3469](https://issues.apache.org/jira/browse/PHOENIX-3469): nesprávný řazení DESC primární klíč pro hodnoty Null poslední / NEJPRVE Null.
+-   [PHOENIX 3469](https://issues.apache.org/jira/browse/PHOENIX-3469): Chybné řazení DESC primární klíč pro hodnoty Null poslední / Null první.
 
--   [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789): spuštění pro různé oblasti index údržby volání v postBatchMutateIndispensably.
+-   [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789): Provádění volání Údržba indexu mezi různými oblastmi v postBatchMutateIndispensably.
 
--   [PHOENIX 3865](https://issues.apache.org/jira/browse/PHOENIX-3865): IS NULL nesmí vracet správné výsledky při první rodin sloupců nejsou filtrovány proti.
+-   [PHOENIX 3865](https://issues.apache.org/jira/browse/PHOENIX-3865): JE NULL nesmí vracet správné výsledky při první rodin sloupců nejsou filtrovány proti.
 
--   [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290): skenování celé tabulky provést k odstranění pomocí tabulky s indexy neměnné.
+-   [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290): Skenování celé tabulky provést k odstranění pomocí tabulky s indexy neměnné.
 
--   [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373): klíč s proměnnou délkou místního indexu může mít na konci hodnoty Null při upserting.
+-   [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373): Klíč s proměnnou délkou místního indexu může mít na konci hodnoty Null při upserting.
 
 -   [PHOENIX 4466](https://issues.apache.org/jira/browse/PHOENIX-4466): java.lang.RuntimeException: kód odpovědi 500 – spuštění úlohy spark job pro připojení k phoenix query server a k načtení dat.
 
--   [PHOENIX 4489](https://issues.apache.org/jira/browse/PHOENIX-4489): nevrácení připojení HBase v Phoenix MR úlohy.
+-   [PHOENIX 4489](https://issues.apache.org/jira/browse/PHOENIX-4489): Nevrácení připojení HBase v úlohách Phoenix MR
 
--   [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525): přetečení celého čísla v provádění GroupBy.
+-   [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525): Přetečení celého čísla v provádění GroupBy.
 
--   [PHOENIX 4560](https://issues.apache.org/jira/browse/PHOENIX-4560): ORDER BY s Group nefunguje, pokud je na sloupec pk WHERE.
+-   [PHOENIX 4560](https://issues.apache.org/jira/browse/PHOENIX-4560): Klauzule ORDER BY s Group nefunguje, pokud je na sloupec pk WHERE.
 
 -   [PHOENIX 4586](https://issues.apache.org/jira/browse/PHOENIX-4586): Vyberte UPSERT nepřijímá operátory porovnání účtu pro poddotazy.
 
--   [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588): klonování výraz také máte své podřízené objekty Determinism.PER\_VYVOLÁNÍ.
+-   [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588): Také klonovat výraz máte své podřízené objekty Determinism.PER\_VYVOLÁNÍ.
 
 ### <a name="pig"></a>Pig
 
 Tato verze poskytuje s následující opravy Apache Pig 0.16.0.
 
--   [PIG 5159](https://issues.apache.org/jira/browse/PIG-5159): oprava Pig není ukládání grunt historie.
+-   [PIG 5159](https://issues.apache.org/jira/browse/PIG-5159): Opravte Pig není ukládání grunt historie.
 
--   [PIG 5175](https://issues.apache.org/jira/browse/PIG-5175): Upgrade jruby 1.7.26.
+-   [PIG 5175](https://issues.apache.org/jira/browse/PIG-5175): Upgradujte jruby 1.7.26.
 
 ### <a name="ranger"></a>Ranger
 
 Tato verze obsahuje následující opravy Apache Ranger 0.7.0 a:
 
--   [RANGER 1805](https://issues.apache.org/jira/browse/RANGER-1805): Code zlepšování dodržujte doporučené postupy zabezpečení v js.
+-   [RANGER 1805](https://issues.apache.org/jira/browse/RANGER-1805): Vylepšení kódu dodržujte doporučené postupy zabezpečení v js.
 
--   [RANGER 1960](https://issues.apache.org/jira/browse/RANGER-1960): vzít v úvahu pro odstranění snímku název tabulky.
+-   [RANGER 1960](https://issues.apache.org/jira/browse/RANGER-1960): Název tabulky snímku vzít v úvahu pro odstranění.
 
--   [RANGER 1982](https://issues.apache.org/jira/browse/RANGER-1982): Chyba zlepšování metriky Analytics správce Ranger a Ranger služby správy klíčů.
+-   [RANGER 1982](https://issues.apache.org/jira/browse/RANGER-1982): Chyba zlepšení metriky Analytics správce Ranger a Ranger služby správy klíčů.
 
--   [RANGER 1984](https://issues.apache.org/jira/browse/RANGER-1984): záznamů protokolu auditu Hbase se nemusí zobrazit všechny značky přidružené jenom sloupce.
+-   [RANGER 1984](https://issues.apache.org/jira/browse/RANGER-1984): Hbase záznamů protokolu auditu se nemusí zobrazit všechny značky přidružené jenom sloupce.
 
--   [RANGER 1988](https://issues.apache.org/jira/browse/RANGER-1988): nezabezpečené náhodnost opravit.
+-   [RANGER 1988](https://issues.apache.org/jira/browse/RANGER-1988): Opravte nezabezpečené náhodnost.
 
--   [RANGER 1990](https://issues.apache.org/jira/browse/RANGER-1990): podpora přidat One-way SSL MySQL v správce Ranger.
+-   [RANGER 1990](https://issues.apache.org/jira/browse/RANGER-1990): Přidání podpory One-way SSL MySQL v správce Ranger.
 
--   [RANGER 2006](https://issues.apache.org/jira/browse/RANGER-2006): oprava problémů zjištěných statickou analýzu kódu v ranger usersync zdroje synchronizace ldap.
+-   [RANGER 2006](https://issues.apache.org/jira/browse/RANGER-2006): Oprava problémů zjištěných statickou analýzu kódu v ranger usersync zdroje synchronizace ldap.
 
--   [RANGER 2008](https://issues.apache.org/jira/browse/RANGER-2008): vyhodnocení zásad dochází u podmínky víceřádkové zásad.
+-   [RANGER 2008](https://issues.apache.org/jira/browse/RANGER-2008): Vyhodnocení zásad dochází u podmínky víceřádkové zásad.
 
 ### <a name="slider"></a>Posuvník
 
@@ -649,127 +649,127 @@ Tato verze poskytuje posuvník 0.92.0 s další opravy, Apache.
 
 Tato verze obsahuje následující opravy Apache Spark 2.3.0 a:
 
--   [SPARK 13587](https://issues.apache.org/jira/browse/SPARK-13587): podpora virtualenv v pyspark.
+-   [SPARK 13587](https://issues.apache.org/jira/browse/SPARK-13587): Podpora virtualenv v pyspark.
 
--   [SPARK 19964](https://issues.apache.org/jira/browse/SPARK-19964): Vyhněte se čtení ze vzdálených úložišť v SparkSubmitSuite.
+-   [SPARK 19964](https://issues.apache.org/jira/browse/SPARK-19964): Čtení ze vzdálených úložišť v SparkSubmitSuite vyhněte.
 
 -   [SPARK 22882](https://issues.apache.org/jira/browse/SPARK-22882): ML testu pro strukturované streamování: ml.classification.
 
--   [SPARK 22915](https://issues.apache.org/jira/browse/SPARK-22915): streamování testy pro spark.ml.feature n až Z.
+-   [SPARK 22915](https://issues.apache.org/jira/browse/SPARK-22915): Streamování testy pro spark.ml.feature n až Z.
 
--   [SPARK 23020](https://issues.apache.org/jira/browse/SPARK-23020): oprava jiného závodu v testu v rámci procesu Spouštěče.
+-   [SPARK 23020](https://issues.apache.org/jira/browse/SPARK-23020): Opravte jiného závodu v procesu spuštění testu.
 
--   [SPARK 23040](https://issues.apache.org/jira/browse/SPARK-23040): vrátí přerušitelné iterátoru pro čtečku náhodně.
+-   [SPARK 23040](https://issues.apache.org/jira/browse/SPARK-23040): Vrátí iterátor přerušitelné pro čtečku náhodně.
 
 -   [SPARK 23173](https://issues.apache.org/jira/browse/SPARK-23173): Vyhněte se vytváření soubory parquet poškozen při načítání dat z formátu JSON.
 
--   [SPARK 23264](https://issues.apache.org/jira/browse/SPARK-23264): oprava scala. MatchError v literals.sql.out.
+-   [SPARK 23264](https://issues.apache.org/jira/browse/SPARK-23264): Opravte scala. MatchError v literals.sql.out.
 
--   [SPARK 23288](https://issues.apache.org/jira/browse/SPARK-23288): oprava výstupu metriky ve službě parquet jímky.
+-   [SPARK 23288](https://issues.apache.org/jira/browse/SPARK-23288): Oprava výstupu metriky s parquet jímky.
 
 -   [SPARK 23329](https://issues.apache.org/jira/browse/SPARK-23329): Oprava dokumentace trigonometrické funkce.
 
--   [SPARK 23406](https://issues.apache.org/jira/browse/SPARK-23406): datový proud stream povolit spojení pro větev 2.3.
+-   [SPARK 23406](https://issues.apache.org/jira/browse/SPARK-23406): Povolit datový proud stream spojení pro větev 2.3.
 
 -   [SPARK 23434](https://issues.apache.org/jira/browse/SPARK-23434): Spark by neměl upozornit \`adresáře metadat\` pro cestu k souboru HDFS.
 
--   [SPARK 23436](https://issues.apache.org/jira/browse/SPARK-23436): odvodit oddílu jako datum pouze v případě, že může být převedena na datum.
+-   [SPARK 23436](https://issues.apache.org/jira/browse/SPARK-23436): Odvodit oddílu jako datum pouze v případě, že může být převedena na datum.
 
--   [SPARK 23457](https://issues.apache.org/jira/browse/SPARK-23457): nejprve zaregistrujte naslouchacích procesů dokončení úkolů v ParquetFileFormat.
+-   [SPARK 23457](https://issues.apache.org/jira/browse/SPARK-23457): Nejprve zaregistrujte naslouchacích procesů dokončení úkolu v ParquetFileFormat.
 
 -   [SPARK 23462](https://issues.apache.org/jira/browse/SPARK-23462): zlepšení chybějící pole chybovou zprávu ve \`StructType\`.
 
 -   [SPARK 23490](https://issues.apache.org/jira/browse/SPARK-23490): Zkontrolujte storage.locationUri s existující tabulku v CreateTable.
 
--   [SPARK 23524](https://issues.apache.org/jira/browse/SPARK-23524): velké objemy místní shuffle bloky by neměla být zaškrtnuta poškození.
+-   [SPARK 23524](https://issues.apache.org/jira/browse/SPARK-23524): Velké objemy místní shuffle bloky by neměla být zaškrtnuta poškození.
 
--   [SPARK 23525](https://issues.apache.org/jira/browse/SPARK-23525): podpora ALTER změnit sloupec komentář pro tabulku hive externí.
+-   [SPARK 23525](https://issues.apache.org/jira/browse/SPARK-23525): Příkaz ALTER komentář sloupce změnit podporu hive externí tabulky.
 
--   [SPARK 23553](https://issues.apache.org/jira/browse/SPARK-23553): testů by neměl předpokládají výchozí hodnotu \`spark.sql.sources.default\`.
+-   [SPARK 23553](https://issues.apache.org/jira/browse/SPARK-23553): Testy by neměl předpokládají výchozí hodnotu \`spark.sql.sources.default\`.
 
 -   [SPARK 23569](https://issues.apache.org/jira/browse/SPARK-23569): Povolit pandas\_udf pro práci s pythonu3 styl anotovaný typ funkce.
 
--   [SPARK 23570](https://issues.apache.org/jira/browse/SPARK-23570): přidejte Spark 2.3.0 HiveExternalCatalogVersionsSuite.
+-   [SPARK 23570](https://issues.apache.org/jira/browse/SPARK-23570): Přidejte Spark 2.3.0 HiveExternalCatalogVersionsSuite.
 
--   [SPARK 23598](https://issues.apache.org/jira/browse/SPARK-23598): zveřejnit metody v BufferedRowIterator, aby chyba v běhu u velkých dotazu.
+-   [SPARK 23598](https://issues.apache.org/jira/browse/SPARK-23598): Zveřejněte metody v BufferedRowIterator, aby chyba v běhu u velkých dotazu.
 
 -   [SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): Přidání generátoru UUID z Pseudo-Random čísla.
 
--   [SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): RandomUUIDGenerator použití ve výrazu Uuid.
+-   [SPARK 23599](https://issues.apache.org/jira/browse/SPARK-23599): Použití RandomUUIDGenerator ve výrazu Uuid.
 
--   [SPARK 23601](https://issues.apache.org/jira/browse/SPARK-23601): odeberte .md5 soubory z verze.
+-   [SPARK 23601](https://issues.apache.org/jira/browse/SPARK-23601): Odeberte .md5 soubory z verze.
 
--   [SPARK 23608](https://issues.apache.org/jira/browse/SPARK-23608): Přidání synchronizace v SHS mezi attachSparkUI a detachSparkUI funkce, které se chcete vyhnout souběžné úpravy problému rutinám Jetty.
+-   [SPARK 23608](https://issues.apache.org/jira/browse/SPARK-23608): Přidáte synchronizační SHS mezi attachSparkUI a detachSparkUI funkce, které se chcete vyhnout souběžné úpravy problému rutinám Jetty.
 
--   [SPARK 23614](https://issues.apache.org/jira/browse/SPARK-23614): oprava exchange nesprávné opakované použití při ukládání do mezipaměti se používá.
+-   [SPARK 23614](https://issues.apache.org/jira/browse/SPARK-23614): Opravte nesprávné opakované použití exchange při ukládání do mezipaměti se používá.
 
 -   [SPARK 23623](https://issues.apache.org/jira/browse/SPARK-23623): Vyhněte se souběžné použití objektu v mezipaměti spotřebitelů v CachedKafkaConsumer (větve 2.3).
 
--   [SPARK 23624](https://issues.apache.org/jira/browse/SPARK-23624): změnit doc metoda pushFilters ve zdroji dat V2.
+-   [SPARK 23624](https://issues.apache.org/jira/browse/SPARK-23624): Revidovat doc metoda pushFilters ve zdroji dat V2.
 
 -   [SPARK 23628](https://issues.apache.org/jira/browse/SPARK-23628): calculateParamLength by neměly vracet, 1 + num výrazů.
 
--   [SPARK 23630](https://issues.apache.org/jira/browse/SPARK-23630): Povolit uživatele hadoop conf vlastní nastavení se projeví.
+-   [SPARK 23630](https://issues.apache.org/jira/browse/SPARK-23630): Povolte uživatele hadoop conf vlastní nastavení se projeví.
 
--   [SPARK 23635](https://issues.apache.org/jira/browse/SPARK-23635): stejné proměnné env název AM přepíše proměnné env prováděcí modul Sparku.
+-   [SPARK 23635](https://issues.apache.org/jira/browse/SPARK-23635): Stejný název proměnné env AM přepíše proměnné env prováděcí modul Sparku.
 
 -   [SPARK 23637](https://issues.apache.org/jira/browse/SPARK-23637): Yarn může přidělit více prostředků, pokud stejné prováděcí modul je ukončen více než jednou.
 
--   [SPARK 23639](https://issues.apache.org/jira/browse/SPARK-23639): získání tokenu před init metastore klienta v SparkSQL rozhraní příkazového řádku.
+-   [SPARK 23639](https://issues.apache.org/jira/browse/SPARK-23639): Získáte token před init metastore klienta v SparkSQL rozhraní příkazového řádku.
 
--   [SPARK 23642](https://issues.apache.org/jira/browse/SPARK-23642): AccumulatorV2 podtřídy iszero – scaladoc oprava.
+-   [SPARK 23642](https://issues.apache.org/jira/browse/SPARK-23642): Oprava scaladoc iszero – AccumulatorV2 podtřídy.
 
--   [SPARK 23644](https://issues.apache.org/jira/browse/SPARK-23644): použít pro volání REST v SHS absolutní cestu.
+-   [SPARK 23644](https://issues.apache.org/jira/browse/SPARK-23644): Použít pro volání REST v SHS absolutní cestu.
 
--   [SPARK 23645](https://issues.apache.org/jira/browse/SPARK-23645): přidání dokumentů RE \`pandas\_udf\` s argumenty – klíčové slovo.
+-   [SPARK 23645](https://issues.apache.org/jira/browse/SPARK-23645): Přidání dokumentů RE \`pandas\_udf\` s argumenty – klíčové slovo.
 
--   [SPARK 23649](https://issues.apache.org/jira/browse/SPARK-23649): Přeskočení zakázáno v kódování UTF-8 znaků.
+-   [SPARK 23649](https://issues.apache.org/jira/browse/SPARK-23649): Přeskakuje se znaky zakázáno v kódování UTF-8.
 
 -   [SPARK 23658](https://issues.apache.org/jira/browse/SPARK-23658): InProcessAppHandle používá třídu nesprávné v getLogger.
 
--   [SPARK 23660](https://issues.apache.org/jira/browse/SPARK-23660): po ukončení aplikace rychle opravit výjimek v režimu clusteru yarn.
+-   [SPARK 23660](https://issues.apache.org/jira/browse/SPARK-23660): Oprava výjimek v režimu clusteru yarn při ukončení aplikace rychle.
 
--   [SPARK 23670](https://issues.apache.org/jira/browse/SPARK-23670): nevrácení paměti oprava SparkPlanGraphWrapper.
+-   [SPARK 23670](https://issues.apache.org/jira/browse/SPARK-23670): Oprava na SparkPlanGraphWrapper nevracení paměti.
 
--   [SPARK 23671](https://issues.apache.org/jira/browse/SPARK-23671): Opravte podmínku, která má povolit SHS fondu vláken.
+-   [SPARK 23671](https://issues.apache.org/jira/browse/SPARK-23671): Vyřešte podmínku, která má povolit SHS fondu vláken.
 
--   [SPARK 23691](https://issues.apache.org/jira/browse/SPARK-23691): použití sql\_conf util v PySpark testů, kde je to možné.
+-   [SPARK 23691](https://issues.apache.org/jira/browse/SPARK-23691): Použití sql\_conf util v PySpark testů, kde je to možné.
 
 -   [SPARK 23695](https://issues.apache.org/jira/browse/SPARK-23695): Oprava chybové zprávy pro Kinesis streamování testy.
 
 -   [SPARK 23706](https://issues.apache.org/jira/browse/SPARK-23706): spark.conf.get (výchozí hodnoty = None) by měl vytvářet žádný PySpark.
 
--   [SPARK 23728](https://issues.apache.org/jira/browse/SPARK-23728): oprava ML testy s očekávané výjimky streamování testů.
+-   [SPARK 23728](https://issues.apache.org/jira/browse/SPARK-23728): Oprava ML testy s očekávané výjimky streamování testů.
 
--   [SPARK 23729](https://issues.apache.org/jira/browse/SPARK-23729): fragment URI dodržování při překladu globy.
+-   [SPARK 23729](https://issues.apache.org/jira/browse/SPARK-23729): Při rozpoznávání globy, respektují fragmentu identifikátoru URI.
 
--   [SPARK 23759](https://issues.apache.org/jira/browse/SPARK-23759): nejde vytvořit vazbu uživatelského rozhraní Spark konkrétní název hostitele / IP.
+-   [SPARK 23759](https://issues.apache.org/jira/browse/SPARK-23759): Nejde vytvořit vazbu uživatelského rozhraní Spark konkrétní název hostitele / IP.
 
 -   [SPARK 23760](https://issues.apache.org/jira/browse/SPARK-23760): CodegenContext.withSubExprEliminationExprs by měla uložit/obnovit stav rozšíření na straně klienta správně.
 
--   [SPARK 23769](https://issues.apache.org/jira/browse/SPARK-23769): odebrat komentáře, které zbytečně zakázat Scalastyle kontrolu.
+-   [SPARK 23769](https://issues.apache.org/jira/browse/SPARK-23769): Odeberte komentáře, které zbytečně zakázat Scalastyle kontrolu.
 
--   [SPARK 23788](https://issues.apache.org/jira/browse/SPARK-23788): oprava závodu v StreamingQuerySuite.
+-   [SPARK 23788](https://issues.apache.org/jira/browse/SPARK-23788): Opravte v StreamingQuerySuite závodu.
 
 -   [SPARK 23802](https://issues.apache.org/jira/browse/SPARK-23802): PropagateEmptyRelation můžete nechat plán dotazu v nerozpoznané stavu.
 
 -   [SPARK 23806](https://issues.apache.org/jira/browse/SPARK-23806): Broadcast.unpersist může způsobit závažné výjimce při použití s dynamického přidělení.
 
--   [SPARK 23808](https://issues.apache.org/jira/browse/SPARK-23808): nastavit výchozí relace Spark v relacích pouze testovací spark.
+-   [SPARK 23808](https://issues.apache.org/jira/browse/SPARK-23808): Nastavte výchozí relace Spark v relacích pouze testovací spark.
 
--   [SPARK 23809](https://issues.apache.org/jira/browse/SPARK-23809): Active SparkSession by měl být nastavil getOrCreate.
+-   [SPARK 23809](https://issues.apache.org/jira/browse/SPARK-23809): Aktivní SparkSession by měl nastavit getOrCreate.
 
 -   [SPARK 23816](https://issues.apache.org/jira/browse/SPARK-23816): Ignorovat FetchFailures ukončených úkolů.
 
--   [SPARK 23822](https://issues.apache.org/jira/browse/SPARK-23822): zlepšení chybovou zprávu pro Parquet neshody schématu.
+-   [SPARK 23822](https://issues.apache.org/jira/browse/SPARK-23822): Zlepšení chybovou zprávu pro Parquet neshody schématu.
 
 -   [SPARK 23823](https://issues.apache.org/jira/browse/SPARK-23823): Mějte transformExpression původu.
 
--   [SPARK 23827](https://issues.apache.org/jira/browse/SPARK-23827): StreamingJoinExec byste se ujistit, že vstupní data je rozdělená na konkrétní počet oddílů.
+-   [SPARK 23827](https://issues.apache.org/jira/browse/SPARK-23827): StreamingJoinExec se ujistěte, že vstupní data je rozdělená na konkrétní počet oddílů.
 
--   [SPARK 23838](https://issues.apache.org/jira/browse/SPARK-23838): příkaz jazyka SQL spuštěn se zobrazí jako "Completed (dokončeno) na kartě SQL.
+-   [SPARK 23838](https://issues.apache.org/jira/browse/SPARK-23838): Spuštění dotazu SQL se zobrazí jako "Completed (dokončeno) na kartě SQL.
 
--   [SPARK 23881](https://issues.apache.org/jira/browse/SPARK-23881): oprava nespolehlivých testů JobCancellationSuite. " přerušitelné iterátor náhodného čtečky".
+-   [SPARK 23881](https://issues.apache.org/jira/browse/SPARK-23881): Opravit nespolehlivých testů JobCancellationSuite." přerušitelné iterátor náhodného čtečky".
 
 ### <a name="sqoop"></a>Sqoop
 
@@ -779,15 +779,15 @@ Tato verze poskytuje 1.4.6 s další opravy, Apache Sqoop.
 
 Tato verze obsahuje následující opravy Apache Storm 1.1.1 a:
 
--   [STORM 2652](https://issues.apache.org/jira/browse/STORM-2652): výjimka v metodě JmsSpout otevřít.
+-   [STORM 2652](https://issues.apache.org/jira/browse/STORM-2652): Výjimka v metodě JmsSpout otevřít.
 
 -   [STORM 2841](https://issues.apache.org/jira/browse/STORM-2841): testNoAcksIfFlushFails UT selže s NullPointerException.
 
--   [STORM 2854](https://issues.apache.org/jira/browse/STORM-2854): vystavit IEventLogger modulární provádět protokolování událostí.
+-   [STORM 2854](https://issues.apache.org/jira/browse/STORM-2854): Zveřejněte IEventLogger modulární provést protokolování událostí.
 
 -   [STORM 2870](https://issues.apache.org/jira/browse/STORM-2870): FileBasedEventLogger nevracení ExecutorService bez démonů, což zabrání na dokončení procesu.
 
--   [STORM 2960](https://issues.apache.org/jira/browse/STORM-2960): lepší k zátěžovému důležitost nastavení správný účet operačního systému pro Storm zpracovává.
+-   [STORM 2960](https://issues.apache.org/jira/browse/STORM-2960): Lepší k zátěžovému důležitost nastavení správný účet operačního systému pro Storm zpracovává.
 
 ### <a name="tez"></a>Tez
 
@@ -801,9 +801,9 @@ Tato verze poskytuje Zeppelin 0.7.3 s additionalApache opravy.
 
 -   [ZEPPELIN 3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072): Zeppelin přestane reagovat uživatelské rozhraní pomalý nebo pokud jsou příliš mnoho poznámkových bloků.
 
--   [ZEPPELIN 3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): uživatelské rozhraní Zeppelin není Odhlásit se v Internet Exploreru.
+-   [ZEPPELIN 3129](https://issues.apache.org/jira/browse/ZEPPELIN-3129): Uživatelské rozhraní Zeppelin není Odhlásit se v Internet Exploreru.
 
--   [ZEPPELIN 903](https://issues.apache.org/jira/browse/ZEPPELIN-903): nahraďte CXF Jersey2.
+-   [ZEPPELIN 903](https://issues.apache.org/jira/browse/ZEPPELIN-903): Nahraďte CXF Jersey2.
 
 ### <a name="zookeeper"></a>ZooKeeper
 
@@ -813,11 +813,11 @@ Tato verze obsahuje následující opravy Apache ZooKeeper 3.4.6 a:
 
 -   [ZOOKEEPER 1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[JDK8\] řazení podřízené položky pro porovnání v AsyncOps testy.
 
--   [ZOOKEEPER 2423](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): verze upgradovat Netty kvůli ohrožení zabezpečení (CVE 2014 3488).
+-   [ZOOKEEPER 2423](https://issues.apache.org/jira/browse/ZOOKEEPER-2423): Upgrade verze Netty kvůli ohrožení zabezpečení (CVE 2014 3488).
 
--   [ZOOKEEPER 2693](https://issues.apache.org/jira/browse/ZOOKEEPER-2693): útoku DOS na wchp/wchc čtyři písmeno slova (4lw).
+-   [ZOOKEEPER 2693](https://issues.apache.org/jira/browse/ZOOKEEPER-2693): Útok DOS na wchp/wchc čtyři písmeno slova (4lw).
 
--   [ZOOKEEPER 2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): oprava pro představuje potenciální konflikt časování.
+-   [ZOOKEEPER 2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): Oprava pro představuje potenciální konflikt časování.
 
 ## <a name="fixed-common-vulnerabilities-and-exposures"></a>Oprava Common Vulnerabilities and Exposures
 
@@ -862,7 +862,7 @@ Tato část zahrnuje všechny známých chyb zabezpečení a rizika (CVE), kter�
 
 | **Shrnutí:** handler/ssl/OpenSslEngine.java v Netty 4.0.x před 4.0.37.Final a 4.1.x před 4.1.1.Final umožňuje vzdáleným útočníkům způsobit odepření služby (nekonečné smyčce) |
 |--------------------------------------------------------------------------------------------------|
-| **Závažnost:** střední  |
+| **Závažnost:** Střední  |
 | **Dodavatel:** Hortonworks  |
 | **Verze vliv:** HDP 2.x.x od 2.3.x  |
 | **Uživatelé chybu:** všechny uživatele, kteří používají HDFS. |
@@ -874,11 +874,11 @@ Tato část zahrnuje všechny známých chyb zabezpečení a rizika (CVE), kter�
 | **Shrnutí:** Apache Ranger cesta odpovídající problém ve vyhodnocování zásad                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
 | **Závažnost:** normální                                                                                                                   |
-| **Dodavatel:** Hortonworks                                                                                                                |
+| **Výrobce:** Hortonworks                                                                                                                |
 | **Verze chybu:** všechny verze HDP 2.5, včetně verzí 0.6.0/0.6.1/0.6.2 Apache Ranger                                         |
 | **Ovlivnění uživatelé:** všichni uživatelé nástroj pro správu zásad ranger.                                                                         |
 | **Dopad:** modul zásad Ranger nesprávně odpovídá cesty za určitých podmínek, pokud zásady obsahují zástupné znaky a rekurzivní příznaky. |
-| **Opravte podrobnosti:** oprava logika vyhodnocení zásad                                                                                          |
+| **Opravte podrobnosti:** Logika vyhodnocení pevné zásad                                                                                          |
 | **Doporučená akce:** uživatelé by měli upgradovat 2.5.4+ HDP (s Apache Rangerem 0.6.3+) nebo HDP 2.6 + (s Apache Rangerem 0.7.0+)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
@@ -907,12 +907,12 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 88774              | [HIVE 17617](https://issues.apache.org/jira/browse/HIVE-17617), [HIVE 18413](https://issues.apache.org/jira/browse/HIVE-18413), [HIVE 18523](https://issues.apache.org/jira/browse/HIVE-18523)                                                                                 | selhání query36, Neshoda počtu řádků                                                                                    |
 | CHYBA 89765              | [HIVE 17702](https://issues.apache.org/jira/browse/HIVE-17702)                                                                                                                                                                                                                 | nesprávný isRepeating v desítkové čtečky v ORC                                                                |
 | CHYBA 92293              | [HADOOP 15042](https://issues.apache.org/jira/browse/HADOOP-15042)                                                                                                                                                                                                             | Azure PageBlobInputStream.skip() může vrátit zápornou hodnotu v případě numberOfPagesRemaining 0                            |
-| CHYBA 92345              | [ATLAS 2285](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | Uživatelské rozhraní: Byl přejmenován uložené výsledky hledání s atributem datum.                                                                         |
+| CHYBA 92345              | [ATLAS 2285](https://issues.apache.org/jira/browse/ATLAS-2285)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Přejmenovat uložené výsledky hledání s atributem datum.                                                                         |
 | CHYBA 92563              | [HIVE 17495](https://issues.apache.org/jira/browse/HIVE-17495), [HIVE 18528](https://issues.apache.org/jira/browse/HIVE-18528)                                                                                                                                                 | Agregované statistiky v ObjectStore získat nesprávnému výsledku                                                                        |
 | CHYBA 92957              | [HIVE 11266](https://issues.apache.org/jira/browse/HIVE-11266)                                                                                                                                                                                                                 | počet (\*) nesprávný výsledek na základě statistik tabulky pro externí tabulky                                                   |
 | CHYBA 93097              | [RANGER 1944](https://issues.apache.org/jira/browse/RANGER-1944)                                                                                                                                                                                                               | Akce filtru auditu správce nefunguje                                                                           |
 | CHYBA 93335              | [HIVE 12315](https://issues.apache.org/jira/browse/HIVE-12315)                                                                                                                                                                                                                 | vektorizace\_krátký\_regress.q má chybný výsledek problém pro double výpočet                                      |
-| CHYBA 93415              | [HIVE 18258](https://issues.apache.org/jira/browse/HIVE-18258), [HIVE 18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizace: MERGEPARTIAL snížit straně skupiny BY se duplicitní sloupce bylo přerušeno                                      |
+| CHYBA 93415              | [HIVE 18258](https://issues.apache.org/jira/browse/HIVE-18258), [HIVE 18310](https://issues.apache.org/jira/browse/HIVE-18310)                                                                                                                                                 | Vektorizace: Omezit na straně skupiny podle MERGEPARTIAL s duplicitní sloupce bylo přerušeno                                      |
 | CHYBA 93939              | [ATLAS 2294](https://issues.apache.org/jira/browse/ATLAS-2294)                                                                                                                                                                                                                 | Speciálním parametrem "Popis" přidat při vytváření typu                                                               |
 | CHYBA 94007              | [PHOENIX. 1751](https://issues.apache.org/jira/browse/PHOENIX-1751), [PHOENIX 3112](https://issues.apache.org/jira/browse/PHOENIX-3112)                                                                                                                                         | Phoenix dotazů vrací hodnoty Null z důvodu HBase částečné řádky                                                          |
 | CHYBA 94266              | [HIVE 12505](https://issues.apache.org/jira/browse/HIVE-12505)                                                                                                                                                                                                                 | Vložit přepsat ve stejném šifrované zóny bez upozornění nepodaří odeberte některé existující soubory                                   |
@@ -931,7 +931,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 98655              | [RANGER. 2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | Hbase sloupec řady přístup je autorizovaný podle sloupce označené v rodině sloupců                                       |
 | CHYBA 99883              | [HIVE 19073](https://issues.apache.org/jira/browse/HIVE-19073), [HIVE 19145](https://issues.apache.org/jira/browse/HIVE-19145)                                                                                                                                                 | StatsOptimizer může mangle konstantní sloupce                                                                             |
 
-**Ostatní**
+**Jiné**
 
 | **ID chyby Hortonworks** | **Apache JIRA**                                                                                                                        | **Souhrn**                                                                                                                                |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -940,11 +940,11 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 93159              | [OOZIE 3139](https://issues.apache.org/jira/browse/OOZIE-3139)                                                                         | Oozie nesprávně ověří pracovní postup                                                                                                       |
 | CHYBA 93936              | [ATLAS 2289](https://issues.apache.org/jira/browse/ATLAS-2289)                                                                         | Kód operací spustit/zastavit vložený kafka/zookeeper serveru přesunout mimo KafkaNotification implementace                                        |
 | CHYBA 93942              | [ATLAS 2312](https://issues.apache.org/jira/browse/ATLAS-2312)                                                                         | Použít parametr ThreadLocal DateFormat objekty, aby souběžné používání z více vláken                                                         |
-| CHYBA 93946              | [ATLAS. 2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | Uživatelské rozhraní: Odstraňuje se značka, které jsou v 25 + umístění v seznamu klíčových slov v paušální a stromové struktury potřebuje aktualizovat a odstranit značku ze seznamu. |
+| CHYBA 93946              | [ATLAS. 2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                         | UŽIVATELSKÉ ROZHRANÍ: Odstraňuje se značka, které jsou v 25 + umístění v seznamu klíčových slov v paušální a stromové struktury potřebuje aktualizovat a odstranit značku ze seznamu. |
 | CHYBA 94618              | [YARN 5037](https://issues.apache.org/jira/browse/YARN-5037), [YARN 7274](https://issues.apache.org/jira/browse/YARN-7274)             | Možnost zakázání elasticita na úrovni listu fronty                                                                                          |
 | CHYBA 94901              | [HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285)                                                                       | Přidat histogramy latence-table                                                                                                           |
 | CHYBA 95259              | [HADOOP 15185](https://issues.apache.org/jira/browse/HADOOP-15185), [HADOOP 15186](https://issues.apache.org/jira/browse/HADOOP-15186) | Aktualizovat adls konektor používat aktuální verzi sady ADLS SDK                                                                               |
-| CHYBA 95619              | [HIVE 18551](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Vektorizace: VectorMapOperator pokouší o zápis příliš mnoho sloupců vektoru pro hybridní odkladu                                                   |
+| CHYBA 95619              | [HIVE 18551](https://issues.apache.org/jira/browse/HIVE-18551)                                                                         | Vektorizace: VectorMapOperator pokouší o zápis pro hybridní odkladu příliš mnoho sloupců vektoru                                                   |
 | CHYBA 97223              | [SPARK 23434](https://issues.apache.org/jira/browse/SPARK-23434)                                                                       | Spark by neměl upozornit \`adresáře metadat\` pro cestu k souboru HDFS                                                                          |
 
 **Výkon**
@@ -958,14 +958,14 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 93577              | [RANGER 1938](https://issues.apache.org/jira/browse/RANGER-1938)                                                                                                                                                                                                                                                                                                                                                                                                             | Solr pro Audit nastavení nepoužívá DocValues efektivně                                                                              |
 | CHYBA 93910              | [HIVE 18293](https://issues.apache.org/jira/browse/HIVE-18293)                                                                                                                                                                                                                                                                                                                                                                                                               | Hive se nedaří compact tabulky obsažené ve složce, které není vlastněno identita spuštěna HiveMetaStore                     |
 | CHYBA 94345              | [HIVE 18429](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                               | Komprimace by měl řešit případu při negeneruje žádný výstup                                                                          |
-| CHYBA 94381              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | RequestHedgingProxyProvider RetryAction objednávku zpracovává: selhání &lt; OPAKUJTE &lt; převzetí služeb při selhání\_a\_zkuste to znovu.                                  |
+| CHYBA 94381              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                           | Zpracování RequestHedgingProxyProvider RetryAction pořadí: SELHÁNÍ &lt; OPAKUJTE &lt; PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ\_A\_ZKUSTE TO ZNOVU.                                  |
 | CHYBA 94432              | [HIVE 18353](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                               | CompactorMR by měly volat jobclient.close() čištění                                                                        |
 | CHYBA 94869              | [PHOENIX 4290](https://issues.apache.org/jira/browse/PHOENIX-4290), [PHOENIX 4373](https://issues.apache.org/jira/browse/PHOENIX-4373)                                                                                                                                                                                                                                                                                                                                       | Požadovaný řádek mimo rozsah. u metody Get na HRegion pro místní indexované solené phoenix tabulku.                                               |
 | CHYBA 94928              | [HDFS 11078](https://issues.apache.org/jira/browse/HDFS-11078)                                                                                                                                                                                                                                                                                                                                                                                                               | Opravte NPE v LazyPersistFileScrubber                                                                                                  |
 | CHYBA 94964              | [HIVE 18269](https://issues.apache.org/jira/browse/HIVE-18269), [HIVE 18318](https://issues.apache.org/jira/browse/HIVE-18318), [HIVE 18326](https://issues.apache.org/jira/browse/HIVE-18326)                                                                                                                                                                                                                                                                               | Několik oprav LLAP                                                                                                                 |
 | CHYBA 95669              | [HIVE 18577](https://issues.apache.org/jira/browse/HIVE-18577), [HIVE 18643](https://issues.apache.org/jira/browse/HIVE-18643)                                                                                                                                                                                                                                                                                                                                               | Při spuštění aktualizace nebo odstranění dotazu o kyseliny dělené tabulky, HS2 číst všechny jednotlivých oddílů.                                               |
 | CHYBA 96390              | [HDFS 10453](https://issues.apache.org/jira/browse/HDFS-10453)                                                                                                                                                                                                                                                                                                                                                                                                               | ReplicationMonitor vlákno může kvůli závodu mezi replikace dlouhou dobu zablokuje a stejný soubor v velký cluster odstranit. |
-| CHYBA 96625              | [HIVE 16110](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | Vrácení "vektorizace: podpora 2 hodnotu případu při místo fall zpět do VectorUDFAdaptor"                                       |
+| CHYBA 96625              | [HIVE 16110](https://issues.apache.org/jira/browse/HIVE-16110)                                                                                                                                                                                                                                                                                                                                                                                                               | Vrácení "vektorizace: Hodnota případu podpory 2 při místo fall zpět do VectorUDFAdaptor"                                       |
 | CHYBA 97109              | [HIVE 16757](https://issues.apache.org/jira/browse/HIVE-16757)                                                                                                                                                                                                                                                                                                                                                                                                               | Použití zastaralé getRows() místo nové estimateRowCount(RelMetadataQuery...) nemá vliv na výkon                      |
 | CHYBA 97110              | [PHOENIX 3789](https://issues.apache.org/jira/browse/PHOENIX-3789)                                                                                                                                                                                                                                                                                                                                                                                                           | Provádění volání Údržba indexu mezi různými oblastmi v postBatchMutateIndispensably                                                        |
 | CHYBA 98833              | [YARN 6797](https://issues.apache.org/jira/browse/YARN-6797)                                                                                                                                                                                                                                                                                                                                                                                                                 | TimelineWriter nespotřebovává plně odpověď na příspěvek                                                                             |
@@ -997,7 +997,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 94280              | [HIVE 12785](https://issues.apache.org/jira/browse/HIVE-12785)                                                                         | Zobrazení na mapách typ sjednocení a UDF pro \`přetypování\` struktury je přerušeno                                          |
 | CHYBA 94505              | [PHOENIX 4525](https://issues.apache.org/jira/browse/PHOENIX-4525)                                                                     | Přetečení celého čísla v provádění GroupBy                                                                  |
 | CHYBA 95618              | [HIVE 18506](https://issues.apache.org/jira/browse/HIVE-18506)                                                                         | LlapBaseInputFormat - index záporný pole                                                             |
-| CHYBA 95644              | [HIVE 9152](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Dotaz Hive se nedaří v Tez s výjimkou java.lang.IllegalArgumentException |
+| CHYBA 95644              | [HIVE 9152](https://issues.apache.org/jira/browse/HIVE-9152)                                                                           | CombineHiveInputFormat: Dotaz Hive s výjimkou java.lang.IllegalArgumentException selhává v Tez |
 | CHYBA 96762              | [PHOENIX 4588](https://issues.apache.org/jira/browse/PHOENIX-4588)                                                                     | Také klonovat výraz máte své podřízené objekty Determinism.PER\_VYVOLÁNÍ                                |
 | CHYBA 97145              | [HIVE 12245](https://issues.apache.org/jira/browse/HIVE-12245), [HIVE 17829](https://issues.apache.org/jira/browse/HIVE-17829)         | Podpora sloupce komentáře pro HBase zajištěné tabulky                                                      |
 | CHYBA 97741              | [HIVE 18944](https://issues.apache.org/jira/browse/HIVE-18944)                                                                         | Pozice nastaví Požadavek GroupPing je nesprávně nastavena během DPP                                                  |
@@ -1056,7 +1056,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 100430             | [HIVE 14483](https://issues.apache.org/jira/browse/HIVE-14483)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | java.lang.ArrayIndexOutOfBoundsException org.apache.orc.impl.TreeReaderFactory\$BytesColumnVectorUtil.commonReadByteArrays                     |
 | CHYBA 100432             | [HIVE 19219](https://issues.apache.org/jira/browse/HIVE-19219)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Přírůstkové REPL VÝPISU by mělo vyvolat chyby, pokud požadovaný události jsou vyčištěné.                                                                   |
 | CHYBA 100448             | [SPARK 23637](https://issues.apache.org/jira/browse/SPARK-23637), [SPARK 23802](https://issues.apache.org/jira/browse/SPARK-23802), [SPARK 23809](https://issues.apache.org/jira/browse/SPARK-23809), [SPARK 23816](https://issues.apache.org/jira/browse/SPARK-23816), [SPARK 23822](https://issues.apache.org/jira/browse/SPARK-23822), [ SPARK 23823](https://issues.apache.org/jira/browse/SPARK-23823), [SPARK 23838](https://issues.apache.org/jira/browse/SPARK-23838), [SPARK 23881](https://issues.apache.org/jira/browse/SPARK-23881)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Aktualizovat Spark2 2.3.0+ (4/11)                                                                                                                 |
-| CHYBA 100740             | [HIVE 16107](https://issues.apache.org/jira/browse/HIVE-16107)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | JDBC: HttpClient zopakovat ještě jednou na NoHttpResponseException                                                                         |
+| CHYBA 100740             | [HIVE 16107](https://issues.apache.org/jira/browse/HIVE-16107)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | JDBC: Zopakovat ještě jednou na NoHttpResponseException HttpClient                                                                         |
 | CHYBA 100810             | [HIVE 19054](https://issues.apache.org/jira/browse/HIVE-19054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Hive funkce replikace selže                                                                                                               |
 | CHYBA 100937             | [MAPREDUCE 6889](https://issues.apache.org/jira/browse/MAPREDUCE-6889)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Přidat úlohu\#zavřete rozhraní API k vypnutí MR klientské služby.                                                                                             |
 | CHYBA 101065             | [ATLAS 2587](https://issues.apache.org/jira/browse/ATLAS-2587)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Sada čtení seznamu ACL pro /apache\_atlas/aktivní\_server\_znode informace v HA pro Knox proxy ke čtení.                                                       |
@@ -1074,7 +1074,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 87624              | neuvedeno                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Povolení protokolování pracovníkům způsobí, že průběžně kostka událostí stormu                                                                                |
 | CHYBA 88929              | [HBASE 15615](https://issues.apache.org/jira/browse/HBASE-15615)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nesprávný doba režimu spánku, když potřebují RegionServerCallable opakování                                                                                          |
 | CHYBA 89628              | [HIVE 17613](https://issues.apache.org/jira/browse/HIVE-17613)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Odeberte objekt fondy pro krátkou a stejném vlákně přidělení                                                                                         |
-| CHYBA 89813              | neuvedeno                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | SCA: Kód správnosti: synchronizované metody přepsání nesynchronizovaného – metoda                                                                  |
+| CHYBA 89813              | neuvedeno                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | SCA: Správnost kódu: Synchronizovaná metoda přepíše nesynchronizovaného – metoda                                                                  |
 | CHYBA 90437              | [ZEPPELIN 3072](https://issues.apache.org/jira/browse/ZEPPELIN-3072)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Zeppelin přestane reagovat uživatelské rozhraní pomalý nebo pokud jsou příliš mnoho poznámkové bloky                                                                          |
 | CHYBA 90640              | [HBASE 19065](https://issues.apache.org/jira/browse/HBASE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | HRegion\#bulkLoadHFiles() musí čekat na souběžné oblasti\#vyprázdnění() na dokončení                                                                 |
 | CHYBA 91202              | [HIVE 17013](https://issues.apache.org/jira/browse/HIVE-17013)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Odstranit požadavek poddotazem podle vyberte prostřednictvím zobrazení                                                                                     |
@@ -1110,7 +1110,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 94330              | [HADOOP 13190](https://issues.apache.org/jira/browse/HADOOP-13190), [HADOOP 14104](https://issues.apache.org/jira/browse/HADOOP-14104), [HADOOP 14814](https://issues.apache.org/jira/browse/HADOOP-14814), [HDFS 10489](https://issues.apache.org/jira/browse/HDFS-10489), [HDFS 11689](https://issues.apache.org/jira/browse/HDFS-11689)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | HDFS by měly podporovat pro více identifikátorů URI služby správy KLÍČŮ                                                                                                      |
 | CHYBA 94345              | [HIVE 18429](https://issues.apache.org/jira/browse/HIVE-18429)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Komprimace by měl řešit případu při negeneruje žádný výstup                                                                                     |
 | CHYBA 94372              | [ATLAS 2229](https://issues.apache.org/jira/browse/ATLAS-2229)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | DSL dotazu: hive\_název tabulky = \["t1", "t2"\] neplatný dotaz výjimku DSL                                                                |
-| CHYBA 94381              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | RequestHedgingProxyProvider RetryAction objednávku zpracovává: selhání &lt; OPAKUJTE &lt; převzetí služeb při selhání\_a\_zkuste to znovu.                                             |
+| CHYBA 94381              | [HADOOP 13227](https://issues.apache.org/jira/browse/HADOOP-13227), [HDFS 13054](https://issues.apache.org/jira/browse/HDFS-13054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Zpracování RequestHedgingProxyProvider RetryAction pořadí: SELHÁNÍ &lt; OPAKUJTE &lt; PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ\_A\_ZKUSTE TO ZNOVU.                                             |
 | CHYBA 94432              | [HIVE 18353](https://issues.apache.org/jira/browse/HIVE-18353)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | CompactorMR by měly volat jobclient.close() čištění                                                                                   |
 | CHYBA 94575              | [SPARK 22587](https://issues.apache.org/jira/browse/SPARK-22587)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Úloha Spark se nezdaří, pokud soubor jar fs.defaultFS a aplikace jsou jinou adresu url                                                                          |
 | CHYBA 94791              | [SPARK 22793](https://issues.apache.org/jira/browse/SPARK-22793)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nevracení paměti v Spark Thrift Server                                                                                                             |
@@ -1120,7 +1120,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 95200              | [HDFS 13061](https://issues.apache.org/jira/browse/HDFS-13061)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | SaslDataTransferClient\#checkTrustAndSend neměli důvěřovat částečně důvěryhodný kanál                                                         |
 | CHYBA 95201              | [HDFS 13060](https://issues.apache.org/jira/browse/HDFS-13060)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Přidávání BlacklistBasedTrustedChannelResolver pro TrustedChannelResolver                                                                       |
 | CHYBA 95284              | [HBASE 19395](https://issues.apache.org/jira/browse/HBASE-19395)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | \[větev 1\] TestEndToEndSplitTransaction.testMasterOpsWhileSplitting selže s NPE                                                           |
-| CHYBA 95301              | [HIVE 18517](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Vektorizace: Oprava VectorMapOperator zkontrolovat a přijmout VRBs vektorizovaná příznak správně pro podporu ukládání do mezipaměti LLAP                                |
+| CHYBA 95301              | [HIVE 18517](https://issues.apache.org/jira/browse/HIVE-18517)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Vektorizace: Příznak VectorMapOperator opravu zkontrolovat a přijmout VRBs správně vektorizovaná pro podporu ukládání do mezipaměti LLAP                                |
 | CHYBA 95542              | [HBASE 16135](https://issues.apache.org/jira/browse/HBASE-16135)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Můžou se odstranit nikdy PeerClusterZnode pod rs odebrání partnerského uzlu                                                                                 |
 | CHYBA 95595              | [HIVE 15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Neplatná operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimku ignorujte.                                         |
 | CHYBA 95596              | [YARN 4126](https://issues.apache.org/jira/browse/YARN-4126), [YARN 5750](https://issues.apache.org/jira/browse/YARN-5750)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | TestClientRMService selže                                                                                                                      |
@@ -1199,8 +1199,8 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 100646             | [ATLAS 2102](https://issues.apache.org/jira/browse/ATLAS-2102)                                                                                                                                                                                                                 | Atlas vylepšení uživatelského rozhraní: Stránka výsledků hledání                                                                                                                   |
 | CHYBA 100737             | [HIVE 19049](https://issues.apache.org/jira/browse/HIVE-19049)                                                                                                                                                                                                                 | Přidat podporu pro příkaz Alter table přidat sloupce pro Druid                                                                                                            |
 | CHYBA 100750             | [KNOX 1246](https://issues.apache.org/jira/browse/KNOX-1246)                                                                                                                                                                                                                   | Aktualizujte konfiguraci služby v Knox na podporu pro Ranger nejnovější konfigurací.                                                                                   |
-| CHYBA 100965             | [ATLAS 2581](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Regrese s oznámeními hook V2 Hive: přesunutí tabulky do jiné databáze                                                                            |
-| CHYBA 84413              | [ATLAS 1964](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | Uživatelského rozhraní: Podpora na pořadí sloupců v tabulce pro hledání                                                                                                                |
+| CHYBA 100965             | [ATLAS 2581](https://issues.apache.org/jira/browse/ATLAS-2581)                                                                                                                                                                                                                 | Regrese s oznámeními hook V2 Hive: Přesunutí tabulky do jiné databáze                                                                            |
+| CHYBA 84413              | [ATLAS 1964](https://issues.apache.org/jira/browse/ATLAS-1964)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Podpora pro pořadí sloupců v tabulce pro hledání                                                                                                                |
 | CHYBA 90570              | [HDFS 11384](https://issues.apache.org/jira/browse/HDFS-11384), [HDFS 12347](https://issues.apache.org/jira/browse/HDFS-12347)                                                                                                                                                 | Přidáte možnost nástroj pro vyrovnávání rozptýlit getBlocks volání, aby společnosti NameNode rpc. CallQueueLength zásobníku                                                            |
 | CHYBA 90584              | [HBASE 19052](https://issues.apache.org/jira/browse/HBASE-19052)                                                                                                                                                                                                               | FixedFileTrailer by měl rozpoznávat CellComparatorImpl třídy ve větvi 1.x                                                                                     |
 | CHYBA 90979              | [KNOX 1224](https://issues.apache.org/jira/browse/KNOX-1224)                                                                                                                                                                                                                   | Knox HADispatcher proxy serveru pro podporu Atlas v vysokou dostupnost.                                                                                                              |
@@ -1221,15 +1221,15 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 93933              | [ATLAS 2286](https://issues.apache.org/jira/browse/ATLAS-2286)                                                                                                                                                                                                                 | Předem připravené typu "kafka\_téma" by neměly deklarovat atribut "tématu" jako jedinečnou.                                                                                 |
 | CHYBA 93938              | [ATLAS 2283](https://issues.apache.org/jira/browse/ATLAS-2283), [ATLAS 2295](https://issues.apache.org/jira/browse/ATLAS-2295)                                                                                                                                                 | Aktualizace uživatelského rozhraní pro klasifikace                                                                                                                               |
 | CHYBA 93941              | [ATLAS 2296](https://issues.apache.org/jira/browse/ATLAS-2296), [ATLAS 2307](https://issues.apache.org/jira/browse/ATLAS-2307)                                                                                                                                                 | Základní vyhledávání vylepšení volitelně vyloučit dílčí typ entity a dílčí classification typy                                                                |
-| CHYBA 93944              | [ATLAS 2318](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | Uživatelské rozhraní: Kliknutím dvakrát na podřízená značka, je vybrán nadřazené značky                                                                                                    |
-| CHYBA 93946              | [ATLAS. 2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | Uživatelské rozhraní: Odstraňuje se značka, které jsou v 25 + umístění v seznamu klíčových slov v paušální a stromové struktury potřebuje aktualizovat a odstranit značku ze seznamu.                   |
+| CHYBA 93944              | [ATLAS 2318](https://issues.apache.org/jira/browse/ATLAS-2318)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Dvakrát kliknete na podřízená značka je vybrané nadřazené značky                                                                                                    |
+| CHYBA 93946              | [ATLAS. 2319](https://issues.apache.org/jira/browse/ATLAS-2319)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Odstraňuje se značka, které jsou v 25 + umístění v seznamu klíčových slov v paušální a stromové struktury potřebuje aktualizovat a odstranit značku ze seznamu.                   |
 | CHYBA 93977              | [HIVE 16232](https://issues.apache.org/jira/browse/HIVE-16232)                                                                                                                                                                                                                 | Podpora výpočtu statistik pro sloupec v QuotedIdentifier                                                                                                     |
 | CHYBA 94030              | [ATLAS. 2332](https://issues.apache.org/jira/browse/ATLAS-2332)                                                                                                                                                                                                                 | Vytvoření typu se atributy s vnořený typ kolekce dat se nezdaří                                                                                     |
 | CHYBA 94099              | [ATLAS 2352](https://issues.apache.org/jira/browse/ATLAS-2352)                                                                                                                                                                                                                 | Atlas server by měla poskytnout konfigurace k určení platnosti pro DelegationToken protokolu Kerberos                                                                   |
 | CHYBA 94280              | [HIVE 12785](https://issues.apache.org/jira/browse/HIVE-12785)                                                                                                                                                                                                                 | Zobrazení na mapách typ sjednocení a UDF pro \`přetypování\` struktury je přerušeno                                                                                                |
 | CHYBA 94332              | [SQOOP 2930](https://issues.apache.org/jira/browse/SQOOP-2930)                                                                                                                                                                                                                 | Sqoop úloh exec nepřepisujete na generické vlastnosti uložené úlohy                                                                                               |
 | CHYBA 94428              | neuvedeno                                                                                                                                                                                                                                                                            | Podpora roviny dat Profiler agenta REST API Knox                                                                                                               |
-| CHYBA 94514              | [ATLAS 2339](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | Uživatelské rozhraní: Změny v "sloupců" v zobrazení výsledků základní hledání DSL ovlivňuje také.                                                                                |
+| CHYBA 94514              | [ATLAS 2339](https://issues.apache.org/jira/browse/ATLAS-2339)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Změny v "sloupců" v zobrazení výsledků základní hledání má vliv DSL.                                                                                |
 | CHYBA 94515              | [ATLAS 2169](https://issues.apache.org/jira/browse/ATLAS-2169)                                                                                                                                                                                                                 | Odstranit požadavek selže při konfiguraci pevného delete                                                                                                          |
 | CHYBA 94518              | [ATLAS 2329](https://issues.apache.org/jira/browse/ATLAS-2329)                                                                                                                                                                                                                 | Více najede Atlas uživatelského rozhraní se zobrazí v případě, že uživatel kliknout na jinou značku, což není správně                                                                             |
 | CHYBA 94519              | [ATLAS 2272](https://issues.apache.org/jira/browse/ATLAS-2272)                                                                                                                                                                                                                 | Uložte stav Přetahované sloupců pomocí uložit rozhraní API pro vyhledávání.                                                                                                     |
@@ -1238,7 +1238,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 94793              | [HIVE 14013](https://issues.apache.org/jira/browse/HIVE-14013)                                                                                                                                                                                                                 | Popis tabulky nezobrazuje správně kódování unicode                                                                                                                 |
 | CHYBA 94900              | [OOZIE 2606](https://issues.apache.org/jira/browse/OOZIE-2606), [OOZIE 2658](https://issues.apache.org/jira/browse/OOZIE-2658), [. OOZIE 2787](https://issues.apache.org/jira/browse/OOZIE-2787), [OOZIE. 2802](https://issues.apache.org/jira/browse/OOZIE-2802)                 | Nastavte spark.yarn.jars opravit Spark 2.0 s Oozie                                                                                                              |
 | CHYBA 94901              | [HBASE 19285](https://issues.apache.org/jira/browse/HBASE-19285)                                                                                                                                                                                                               | Přidat histogramy latence-table                                                                                                                             |
-| CHYBA 94908              | [ATLAS. 1921](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | Uživatelské rozhraní: Vyhledávání pomocí atributů entity a vlastností: uživatelské rozhraní neprovádí kontrolu rozsahu a povolí poskytování mimo rozsah hodnot pro datové typy celé číslo a plovoucí desetinnou čárkou.  |
+| CHYBA 94908              | [ATLAS. 1921](https://issues.apache.org/jira/browse/ATLAS-1921)                                                                                                                                                                                                                 | UŽIVATELSKÉ ROZHRANÍ: Hledání, pomocí atributů entity a vlastnosti: Uživatelské rozhraní neprovádí kontrolu rozsahu a povolí poskytování mimo rozsah hodnot pro datové typy celé číslo a plovoucí desetinnou čárkou.  |
 | CHYBA 95086              | [RANGER 1953](https://issues.apache.org/jira/browse/RANGER-1953)                                                                                                                                                                                                               | zlepšení na výpis stránku skupiny uživatelů                                                                                                                       |
 | CHYBA 95193              | [1252 POSUVNÍKU](https://issues.apache.org/jira/browse/SLIDER-1252)                                                                                                                                                                                                               | Posuvník agenta nezdaří a zobrazí se chyby ověření SSL s 2.7.5-58 pythonu                                                                                           |
 | CHYBA 95314              | [YARN 7699](https://issues.apache.org/jira/browse/YARN-7699)                                                                                                                                                                                                                   | pro volání rozhraní REST api getApp přichází queueUsagePercentage jako INF                                                                                               |
@@ -1248,7 +1248,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 | CHYBA 95512              | [HIVE 18467](https://issues.apache.org/jira/browse/HIVE-18467)                                                                                                                                                                                                                 | Podpora výpisu celý skladu / načíst + vytvořit/drop database události                                                                                            |
 | CHYBA 95593              | neuvedeno                                                                                                                                                                                                                                                                            | Rozšíření utils Oozie DB pro podporu vytváření sharelib Spark2                                                                                                    |
 | CHYBA 95595              | [HIVE 15563](https://issues.apache.org/jira/browse/HIVE-15563)                                                                                                                                                                                                                 | Neplatná operace stavu přechodu výjimka v SQLOperation.runQuery vystavit skutečné výjimku ignorujte.                                                       |
-| CHYBA 95685              | [ATLAS 2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Export: Export na základě typu podporu                                                                                                                            |
+| CHYBA 95685              | [ATLAS 2422](https://issues.apache.org/jira/browse/ATLAS-2422)                                                                                                                                                                                                                 | Export: Podpora na základě typu exportu                                                                                                                            |
 | CHYBA 95798              | [PHOENIX 2714](https://issues.apache.org/jira/browse/PHOENIX-2714), [PHOENIX 2724](https://issues.apache.org/jira/browse/PHOENIX-2724), [PHOENIX 3023](https://issues.apache.org/jira/browse/PHOENIX-3023), [PHOENIX 3040](https://issues.apache.org/jira/browse/PHOENIX-3040) | Nepoužívejte guideposts pro provádění dotazů sériově                                                                                                          |
 | CHYBA 95969              | [HIVE 16828](https://issues.apache.org/jira/browse/HIVE-16828), [HIVE 17063](https://issues.apache.org/jira/browse/HIVE-17063), [HIVE 18390](https://issues.apache.org/jira/browse/HIVE-18390)                                                                                 | Zobrazení oddílů se nezdaří s se nezdařilo: IndexOutOfBoundsException Index: 1, velikost: 1                                                                              |
 | CHYBA 96019              | [HIVE 18548](https://issues.apache.org/jira/browse/HIVE-18548)                                                                                                                                                                                                                 | Oprava log4j import                                                                                                                                             |
@@ -1301,11 +1301,11 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 |**Apache komponenty**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
 |--|--|--|--|
 |**Spark 2.3** |**–** |**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |-Je dokument "Vyřazení" a "Změnit chování" vodítko, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Pro část SQL je jiného průvodce podrobné "Migration" (z 2.2 k 2.3) http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE 12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku dokončí úspěšně, ale je chyba úplné kvóty disku HDFS |**Scénář:** systémem **vložit přepsat** Pokud kvótu nastavená na uživatele, který spouští příkaz složky Koš.<br /><br />**Předchozí chování:** úloha úspěšně dokončí, i v případě, že ji nebude možné přesunout data do koše. Výsledek může obsahovat chybně některá data v tabulce dříve k dispozici.<br /><br />**Nové chování:** při přesunu do složky Koš selže, soubory se trvale odstraní.|
+|Spark |[**HIVE 12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku dokončí úspěšně, ale je chyba úplné kvóty disku HDFS |**Scénář:** Spuštění **vložit přepsat** Pokud kvótu nastavená na uživatele, který spouští příkaz složky Koš.<br /><br />**Předchozí chování:** Úloha úspěšně dokončí, i v případě, že ji nebude možné přesunout data do koše. Výsledek může obsahovat chybně některá data v tabulce dříve k dispozici.<br /><br />**Nové chování:** Při přesunu do složky Koš selže, se trvale odstraní soubory.|
 |**Kafka 1.0**|**–**|**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
-|**Hive / Ranger** | |Požadované pro vložení PŘEPSAT zásady další ranger hive |**Scénář:** požadované pro další ranger hive zásady **vložit PŘEPSAT**<br /><br />**Předchozí chování:** Hive **vložit PŘEPSAT** úspěšné dotazy jako obvykle.<br /><br />**Nové chování:** Hive **vložit PŘEPSAT** dotazy se neočekávaně nedaří po upgradu na HDP 2.6.x s chybou:<br /><br />Při kompilaci příkazu došlo k chybě: se nezdařilo: HiveAccessControlException oprávnění bylo odepřeno: jdoe uživatel nemá oprávnění k zápisu na /tmp/\*(stav = 42000 kód = 40000)<br /><br />Od verze HDP-2.6.0 Hive **vložit PŘEPSAT** dotazy vyžadují identifikátor URI Ranger zásadu pro povolení operací zápisu, i v případě, že má uživatel oprávnění k zápisu poskytuje prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:**<br /><br />1. Vytvořte novou zásadu v úložišti Hive.<br />2. V rozevíracím seznamu, kde se zobrazí databáze vyberte identifikátor URI.<br />3. Aktualizovat cestu (Příklad: / tmp / *)<br />4. Přidat uživatele a skupiny a uložte.<br />5. Vložit dotaz znovu.|
+|**Hive / Ranger** | |Požadované pro vložení PŘEPSAT zásady další ranger hive |**Scénář:** Požadované pro další ranger hive zásady **vložit PŘEPSAT**<br /><br />**Předchozí chování:** Hive **vložit PŘEPSAT** úspěšné dotazy jako obvykle.<br /><br />**Nové chování:** Hive **vložit PŘEPSAT** dotazy se neočekávaně nedaří po upgradu na HDP 2.6.x s chybou:<br /><br />Chyba při kompilaci – příkaz: NEZDAŘILO SE: HiveAccessControlException oprávnění bylo odepřeno: jdoe uživatel nemá oprávnění k zápisu na /tmp/\*(stav = 42000 kód = 40000)<br /><br />Od verze HDP-2.6.0 Hive **vložit PŘEPSAT** dotazy vyžadují identifikátor URI Ranger zásadu pro povolení operací zápisu, i v případě, že má uživatel oprávnění k zápisu poskytuje prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:**<br /><br />1. Vytvořte novou zásadu v úložišti Hive.<br />2. V rozevíracím seznamu, kde se zobrazí databáze vyberte identifikátor URI.<br />3. Aktualizovat cestu (Příklad: / tmp / *)<br />4. Přidat uživatele a skupiny a uložte.<br />5. Vložit dotaz znovu.|
 |**HDFS**|**–** |HDFS by měly podporovat pro více identifikátorů URI služby správy KLÍČŮ |**Předchozí chování:** dfs.encryption.key.provider.uri vlastnost byl použit ke konfiguraci cesty poskytovatele služby správy KLÍČŮ.<br /><br />**Nové chování:** dfs.encryption.key.provider.uri je nyní zastaralé a místo toho použití hadoop.security.key.provider.path ke konfiguraci cesty poskytovatele služby správy KLÍČŮ.|
-|**Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zákazu zasílání zpráv scheduleru |**Součást vliv:** Zeppelin serveru<br /><br />**Předchozí chování:** v předchozích verzích aplikace Zeppelinu nenabízí možnost zákazu zasílání zpráv plánovače.<br /><br />**Nové chování:** ve výchozím nastavení, uživatelé nebudou moci zobrazit Plánovač, jako je zakázané ve výchozím nastavení.<br /><br />**Alternativní řešení/očekávaný zákaznické akce:** Pokud chcete povolit scheduleru, je potřeba přidat azeppelin.notebook.cron.enable s hodnotou true zeppelin vlastního webu v nastavení Zeppelin z Ambari.|
+|**Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zákazu zasílání zpráv scheduleru |**Součást vliv na:** Zeppelin Server<br /><br />**Předchozí chování:** V předchozích verzích aplikace Zeppelinu nenabízí možnost zákazu zasílání zpráv plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení budou uživatelům už nezobrazovaly Plánovač, jako je zakázané ve výchozím nastavení.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:** Pokud chcete povolit scheduleru, je potřeba přidat azeppelin.notebook.cron.enable s hodnotou true zeppelin vlastního webu v nastavení Zeppelin z Ambari.|
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -1328,11 +1328,11 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 -   **Alternativní řešení pro Ranger selhání kontroly služby**
 
-    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Chyba kontroly Ranger služby při provádění upgradu na HDP 2.6.2 z předchozích verzí HDP alternativní řešení.
+    -   [RANGER 1607](https://issues.apache.org/jira/browse/RANGER-1607): Alternativní řešení pro Ranger služby zkontrolujte chybu při provádění upgradu na HDP 2.6.2 z předchozích verzí HDP.
 
-        >[!NOTE]
-        >Pouze v případě Ranger je protokol SSL povolený. 
-    
+        > [!NOTE]  
+        > Pouze v případě Ranger je protokol SSL povolený. 
+     
     Tomuto problému dochází při pokusu o upgrade na HDP 2.6.1 z předchozí verze HDP prostřednictvím Ambari. Ambari používá curl volání a provede kontrolu služby Ranger služby v Ambari. Pokud sadu JDK verze používané v Ambari JDK 1.7, curl volání se nezdaří s následující chybu:
     
     `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
@@ -1353,7 +1353,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
             
             SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_ WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]
+    >[!NOTE]  
     >Uvedené hodnoty jsou příklady práce a nemusí být směrodatný pro vaše prostředí. Zajistěte, aby odpovídal tak, jak tyto vlastnosti nastavit, jak vaše prostředí nakonfigurované.   
 
 -   **RangerUI: Řídicí zásad podmínku textem zadaným ve formuláři zásad**
@@ -1374,7 +1374,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
     
     **Alternativní řešení**
     
-    - **Možnost \#1: vytvoření/aktualizace zásad prostřednictvím rozhraní Rest API pro Ranger**
+    - **Možnost \#1: Vytvoření nebo aktualizace zásad prostřednictvím rozhraní Rest API pro Ranger**
         
         Adresa URL REST: http://&lt;hostitele&gt;: 6080/zásady/service/modulů plug-in
         
@@ -1396,7 +1396,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
         
         `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **Možnost \#2: použití jazyka Javascript se změní**
+    - **Možnost \#2: Použít změny jazyka Javascript**
         
         Kroky a aktualizujete soubor JS sady:
         
@@ -1412,7 +1412,7 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 ## <a name="deprecation"></a>Vyřazení
 
--   **Portál OMS:** jsme odebrali odkazu na stránce prostředků HDInsight, který se odkazuje na portálu OMS. Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat. Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj. HDInsight se nepoužívá podporu pro portál OMS. Zákazníci budou integraci HDInsight Log Analytics pomocí webu Azure portal.
+-   **Portál OMS:** Odebrali jsme odkazu na stránce prostředků HDInsight, který se odkazuje na portálu OMS. Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat. Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj. HDInsight se nepoužívá podporu pro portál OMS. Zákazníci budou integraci HDInsight Log Analytics pomocí webu Azure portal.
 
 -   **Spark 2.3**
 

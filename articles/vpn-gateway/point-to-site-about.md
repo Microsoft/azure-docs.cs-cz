@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe25858f185cf4ddfd17f956b66846a22ddb0e6c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bf84ec16d5d13439796b386a8ab4f40840ca4eaa
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971367"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438406"
 ---
 # <a name="about-point-to-site-vpn"></a>Informace o VPN typu Point-to-Site
 
@@ -93,6 +93,8 @@ Konfigurace P2S vyžaduje poměrně musíte provést konkrétní postup. Násled
 * [Konfigurace připojení typu P2S – ověřování pomocí protokolu RADIUS](point-to-site-how-to-radius-ps.md)
 
 * [Konfigurace připojení typu P2S – nativní ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+* [Konfigurace OpenVPN](vpn-gateway-howto-openvpn.md)
 
 ## <a name="faqcert"></a>Nejčastější dotazy týkající se nativní ověřování certifikátů Azure
 

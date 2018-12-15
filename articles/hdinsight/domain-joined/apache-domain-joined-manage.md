@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634460"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434813"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight s balíčkem Enterprise Security Package
 Další uživatelé a role v HDInsight Enterprise Security Package (ESP) a jak spravovat clustery ESP.
@@ -22,7 +22,7 @@ Další uživatelé a role v HDInsight Enterprise Security Package (ESP) a jak s
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
 
 Můžete propojit normální cluster s použitím Apache Ambari, spravovat uživatelské jméno, také propojit cluster Apache Hadoop zabezpečení s využitím doména uživatelské jméno (například: user1@contoso.com).
-1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: propojení clusteru**.
+1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: Propojení clusteru**.
 
    ![příkaz Link clusteru](./media/apache-domain-joined-manage/link-cluster-command.png)
 
@@ -30,14 +30,14 @@ Můžete propojit normální cluster s použitím Apache Ambari, spravovat uživ
    
    ![Dialogové okno clusteru odkaz](./media/apache-domain-joined-manage/link-cluster-process.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Propojené uživatelské jméno a heslo se použijí, pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru. 
    
 3. Propojené clusteru můžete zobrazit pomocí příkazu **clusteru seznamu**. Nyní můžete odeslat skript do tohoto clusteru propojené.
 
    ![propojené clusteru](./media/apache-domain-joined-manage/linked-cluster.png)
 
-4. Také můžete zrušit propojení clusteru podle vložení **HDInsight: zrušení propojení clusteru** z palety příkazů.
+4. Také můžete zrušit propojení clusteru podle vložení **HDInsight: Zrušit propojení clusteru** z palety příkazů.
 
 ## <a name="use-intellij-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí IntelliJ
 
@@ -50,7 +50,7 @@ Můžete propojit normální cluster pomocí Ambari, spravovat uživatelské jm�
    
    ![Dialogové okno clusteru odkaz](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru používáme klíč propojené úložiště, uživatelské jméno a heslo.
    > ![Průzkumník služby Storage v IntelliJ](./media/apache-domain-joined-manage/storage-explorer-in-IntelliJ.png)
 
@@ -74,7 +74,7 @@ Můžete propojit normální cluster pomocí Ambari, spravovat uživatelské jm�
    
    ![Dialogové okno clusteru odkaz](./media/apache-domain-joined-manage/link-cluster-dialog.png)
    
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud cluster jak zaznamenána v rámci předplatného Azure a propojené clusteru používáme klíč propojené úložiště, uživatelské jméno a heslo.
    > ![Průzkumník služby Storage v Eclipse](./media/apache-domain-joined-manage/storage-explorer-in-Eclipse.png)
 
@@ -94,13 +94,13 @@ Zabezpečení a uživatelských izolace jsou důležité pro cluster HDInsight s
 
 |Úloha|Scénář|Metoda přístupu|
 |--------|--------|-------------|
-|Hadoop|Hive – interaktivní úlohy a dotazy |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|Interaktivní úlohy a dotazy, interaktivní PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin s Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
-|Spark|Scénáře služby batch – Spark odeslat PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
+|Apache Hadoop|Hive – interaktivní úlohy a dotazy  |<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|Interaktivní úlohy a dotazy, interaktivní PySpark|<ul><li>[Beeline](#beeline)</li><li>[Zeppelin s Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
+|Apache Spark|Scénáře služby batch – Spark odeslat PySpark|<ul><li>[Livy](../spark/apache-spark-livy-rest-interface.md)</li></ul>|
 |Interaktivní dotazy (LLAP)|Interaktivní|<ul><li>[Beeline](#beeline)</li><li>[Zobrazení Hive](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[Rozhraní ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Nástroje sady Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Všechny|Instalace vlastních aplikací|<ul><li>[Akce skriptů](../hdinsight-hadoop-customize-cluster-linux.md)</li></ul>|
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jupyter není nainstalován nebo podporované v Enterprise Security Package.
 
 Použití standardních rozhraní API pomáhá z hlediska zabezpečení. Kromě toho získáte následující výhody:
@@ -147,7 +147,7 @@ Cluster HDInsight ESP má dva uživatelské účty, které jsou vytvořeny běhe
 
 Cluster HDInsight s ESP má tři nové uživatele kromě správce Ambari.
 
-* **Správce ranger**: Tento účet je účet místního správce Apache Ranger. Není uživatele domény služby active directory. Tento účet slouží k nastavení zásad a nastavte další uživatele správci nebo delegovaní správci (tak, aby tito uživatelé mohou spravovat zásady). Ve výchozím nastavení, uživatelské jméno je *správce* a heslo je stejná jako heslo správce Ambari. Heslo je aktualizovat ze stránky nastavení v Ranger.
+* **Správce ranger**:  Tento účet je účet místního správce Apache Ranger. Není uživatele domény služby active directory. Tento účet slouží k nastavení zásad a nastavte další uživatele správci nebo delegovaní správci (tak, aby tito uživatelé mohou spravovat zásady). Ve výchozím nastavení, uživatelské jméno je *správce* a heslo je stejná jako heslo správce Ambari. Heslo je aktualizovat ze stránky nastavení v Ranger.
 * **Uživatel domény s rolí Správce clusteru**: Tento účet je určen jako správce clusteru Hadoop, včetně Ambari a Ranger uživatele domény služby active directory. Při vytváření clusteru je nutné zadat přihlašovací údaje tohoto uživatele. Tento uživatel má následující oprávnění:
 
   * Připojení počítače k doméně a umístit je v rámci organizační jednotky, které zadáte během vytváření clusteru.
@@ -157,7 +157,7 @@ Cluster HDInsight s ESP má tři nové uživatele kromě správce Ambari.
     Všimněte si, že pro ostatní uživatele AD také mít tato oprávnění.
 
     Existují některé koncové body v rámci clusteru (například Templeton), které nejsou spravovány nástrojem Ranger a proto nejsou zabezpečené. Tyto koncové body jsou uzamčené pro všechny uživatele kromě domény uživatele s rolí Správce clusteru.
-* **Pravidelné**: při vytváření clusteru, můžete zadat více skupin služby active directory. Uživatelé z těchto skupin se synchronizují do Ranger a Ambari. Tito uživatelé jsou uživatelé domény a mají přístup pouze spravovaná Ranger koncových bodů (například Hiveserver2). Všechny zásady RBAC a auditování se vztahuje na tyto uživatele.
+* **Pravidelné**: Při vytváření clusteru můžete zadat více skupin služby active directory. Uživatelé z těchto skupin se synchronizují do Ranger a Ambari. Tito uživatelé jsou uživatelé domény a mají přístup pouze spravovaná Ranger koncových bodů (například Hiveserver2). Všechny zásady RBAC a auditování se vztahuje na tyto uživatele.
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>Role clusterů HDInsight s ESP
 HDInsight Enterprise Security Package má následující role:
@@ -223,4 +223,4 @@ HDInsight Enterprise Security Package má následující role:
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace clusteru HDInsight s balíčkem Enterprise Security Package, naleznete v tématu [konfigurace HDInsight clustery s ESP](apache-domain-joined-configure.md).
-* Konfigurovat zásady Hivu a spouštět dotazy Hivu, naleznete v tématu [konfigurace zásad Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).
+* Konfigurovat zásady Hivu a spouštět dotazy Hivu, naleznete v tématu [zásad konfigurace Apache Hivu pro HDInsight clustery s ESP](apache-domain-joined-run-hive.md).

@@ -15,14 +15,17 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 09/03/2018
 ms.author: danlep
-ms.openlocfilehash: 0d4ba7edfb22a6710222c854ceb2bf86284d2d77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1ea12c9a544704ea91b85ae944e611e6769b5592
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057591"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407129"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Rychlý start: Vytvoření clusteru pro trénovací úlohy Batch AI pomocí Azure CLI
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-cli"></a>Rychlý start: Vytvoření clusteru pro úlohy trénování služby Batch AI pomocí Azure CLI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit cluster Batch AI, který můžete použít k trénování modelů umělé inteligence a strojového učení. Batch AI je spravovaná služba určená pro odborníky na data a výzkumníky v oblasti umělé inteligence. Umožňuje jim trénovat modely AI a strojového učení požadované velikosti na clusterech virtuálních počítačů Azure.
 
@@ -168,7 +171,7 @@ Příkazem `az group delete` můžete odebrat skupinu prostředků Batch AI, pok
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak vytvořit cluster Batch AI pomocí Azure CLI. Pokud se chcete dozvědět, jak používat cluster Batch AI k trénování modelu, pokračujte rychlým startem určeným k trénování modelu hloubkového učení.
 

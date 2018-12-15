@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: cf2dd013b0d6f8867129d2d53311af21af5a1fe2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4c32d6eccc996bf1a3670a521a7a86394a2f866f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385325"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434507"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Používat data monitorování z Azure
 
@@ -23,7 +23,7 @@ Celou platformu Azure Dáváme dohromady data monitorování na jednom místě d
 
 | Typ dat | Kategorie | Podporované služby | Metody přístupu |
 | --- | --- | --- | --- |
-| Metriky Azure Monitor úrovni platformy | Metriky | [Podívejte se sem seznam](monitoring-supported-metrics.md) | <ul><li>**ROZHRANÍ REST API:** [Metriky rozhraní API Azure monitoru](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Úložiště objektů blob nebo event hub:** [Nastavení diagnostiky](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
+| Metriky Azure Monitor úrovni platformy | Metriky | [Podívejte se sem seznam](../azure-monitor/platform/metrics-supported.md) | <ul><li>**ROZHRANÍ REST API:** [Metriky rozhraní API Azure monitoru](https://docs.microsoft.com/rest/api/monitor/metrics)</li><li>**Úložiště objektů blob nebo event hub:** [Nastavení diagnostiky](monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)</li></ul> |
 | Výpočet metrik OS hosta (např.) čítače výkonu) | Metriky | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) a virtuální počítače s Linuxem (v2), [cloudových služeb](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Storage table nebo blob:** [Windows nebo Linux Azure diagnostics](../azure-monitor/platform/diagnostics-extension-to-storage.md)</li><li>**Centrum událostí:** [Windows Azure diagnostics](../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | Aplikace nebo vlastních metrik | Metriky | Všechny aplikace používaná s Application Insights | <ul><li>**ROZHRANÍ REST API:** [Rozhraní REST API služby Application Insights](https://dev.applicationinsights.io/reference)</li></ul> |
 | Metriky úložiště | Metriky | Azure Storage | <ul><li>**Tabulka úložiště:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
@@ -37,7 +37,7 @@ Celou platformu Azure Dáváme dohromady data monitorování na jednom místě d
 | Generování sestav v Active Directory | Události | Azure Active Directory | <ul><li>**ROZHRANÍ REST API:** [Azure Active Directory graph API](../active-directory/reports-monitoring/concept-reporting-api.md)</li></ul> |
 | Stav prostředku Security Center | Status | [Všechny podporované prostředky](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**ROZHRANÍ REST API:** [Stavy zabezpečení](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | Resource Health | Status | Podporované služby | <ul><li>**ROZHRANÍ REST API:** [Služba Resource health rozhraní REST API](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
-| Upozornění metrik Azure monitoru | Oznámení | [Podívejte se sem seznam](monitoring-supported-metrics.md) | <ul><li>**Webhook:** [Upozornění metrik v Azure](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
+| Upozornění metrik Azure monitoru | Oznámení | [Podívejte se sem seznam](../azure-monitor/platform/metrics-supported.md) | <ul><li>**Webhook:** [Upozornění metrik v Azure](../azure-monitor/platform/alerts-webhooks.md)</li></ul> |
 | Upozornění protokolu aktivit monitorování Azure | Oznámení | Všechny služby Azure | <ul><li>**Webhook:** Upozornění protokolu aktivit Azure</li></ul> |
 | Oznámení o automatickém škálování | Oznámení | [Podívejte se sem seznam](../azure-monitor/platform/autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Schéma datová část webhooku oznámení automatického škálování](../azure-monitor/platform/autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
 | Vyhledávací dotaz upozornění protokolů | Oznámení | Log Analytics | <ul><li>**Webhook:** [Akce Webhooku pro pravidla upozornění protokolů](../monitoring-and-diagnostics/../azure-monitor/platform/alerts-log-webhook.md)</li></ul> |

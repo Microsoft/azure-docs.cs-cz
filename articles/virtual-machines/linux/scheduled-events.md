@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: fc9ceb06eb51d1e88306f0971ad055facd05f9fb
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744703"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437261"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Služby Azure Metadata: Naplánované události pro virtuální počítače s Linuxem
 
@@ -93,7 +93,7 @@ Pokud restartování virtuálního počítače, událost s typem `Reboot` naplá
 
 ## <a name="use-the-api"></a>Použití rozhraní API
 
-### <a name="headers"></a>Záhlaví
+### <a name="headers"></a>Hlavičky
 Když odešlete dotaz na Metadata Service, je nutné zadat hlavičku `Metadata:true` zajistit požadavek nebyl přesměrován náhodně. `Metadata:true` Hlavičky je povinná pro všechny požadavky naplánovaných událostí. Nepodařilo se zahrnout hlavičku požadavku za následek "Chybný požadavek" odpověď z metadat služby.
 
 ### <a name="query-for-events"></a>Dotaz pro události
@@ -126,10 +126,10 @@ V případě, kdy jsou naplánované události, odpověď obsahuje celou řadu u
 |Vlastnost  |  Popis |
 | - | - |
 | ID události | Globálně jedinečný identifikátor pro tuto událost. <br><br> Příklad: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Tento virtuální počítač je naplánovaná pozastavit na několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Tento virtuální počítač je naplánovaná restartování. (Nonpersistent paměti je ztracena). <li>`Redeploy`: Tento virtuální počítač je naplánovaná přesunout do jiného uzlu. (Dočasné disky se ztratí.) |
+| Typ události | Dopad, který způsobí, že se tato událost. <br><br> Hodnoty: <br><ul><li> `Freeze`: Virtuální počítač je naplánovaná pozastavit na několik sekund. Procesor je pozastaveno, ale neexistuje žádný vliv na paměť, otevřené soubory nebo připojení k síti. <li>`Reboot`: Virtuální počítač je naplánovaná restartování. (Nonpersistent paměti je ztracena). <li>`Redeploy`: Virtuální počítač je naplánovaná přesunout do jiného uzlu. (Dočasné disky se ztratí.) |
 | ResourceType | Typ prostředku, který má vliv na tuto událost. <br><br> Hodnoty: <ul><li>`VirtualMachine`|
 | Zdroje a prostředky| Seznam prostředků, které má vliv na tuto událost. V seznamu je zaručeno, že obsahují počítače maximálně jednu [aktualizační doména](manage-availability.md), ale nemusí obsahovat všechny počítače ve skupině UD. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
-| EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Spuštění po dobu určenou v tato událost je naplánováno `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici. Vrátí události se už po dokončení události.
+| EventStatus | Stav této události. <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánované spuštění po dobu určenou v `NotBefore` vlastnost.<li>`Started`: Tato událost se spustila.</ul> Ne `Completed` nebo podobné stav je stále k dispozici. Vrátí události se už po dokončení události.
 | neplatí před| Doba, po jejímž uplynutí může spustit tuto událost. <br><br> Příklad: <br><ul><li> Pondělí, 19. září 2016 18:29:47 GMT  |
 
 ### <a name="event-scheduling"></a>Plánování události
@@ -211,6 +211,6 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Další postup 
 - Sledování [naplánovaných událostí v Azure Friday](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance) k podívejte se na ukázku. 
-- Projděte si ukázky kódu naplánovaných událostí [úložiště Azure Instance Metadata naplánované události Github](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
+- Projděte si ukázky kódu naplánovaných událostí [úložiště Azure Instance Metadata naplánované události GitHub](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm).
 - Další informace o rozhraní API, která jsou k dispozici v [služba Instance Metadata](instance-metadata-service.md).
 - Další informace o [plánované údržby pro virtuální počítače s Linuxem v Azure](planned-maintenance.md).

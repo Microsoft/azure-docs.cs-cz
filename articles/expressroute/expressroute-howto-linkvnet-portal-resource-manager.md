@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f2b22eb779a8ebe1d1fd804443663abc9a4245ec
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141641"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438825"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -88,6 +88,10 @@ Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu aut
 **Chcete-li vytvořit připojení autorizace**
 
 Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačního klíče, který je možné připojit své brány virtuální sítě k okruhu ExpressRoute uživatelem okruhu. Povolení platí jenom jedno připojení.
+
+> [!NOTE]
+> Každé připojení vyžaduje samostatnou autorizaci.
+>
 
 1. Na stránce ExpressRoute, klikněte na **povolení** a potom zadejte **název** autorizace a klikněte na **Uložit**.
 

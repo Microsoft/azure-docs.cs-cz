@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b083b9a09b478ca5ad68e19d3a2133fb529da851
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4832a48489a043493639bdedd6c6adf3c828de11
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342948"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434694"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Jednotlivý prvek orchestrátorů v Durable Functions (Azure Functions)
 
-Pro úlohy na pozadí nebo objektu actor – vizuální styl Orchestrace, je často potřeba zajistit, že pouze jedna instance byla najednou spuštěna konkrétní orchestrator. To můžete udělat [Durable Functions](durable-functions-overview.md) přiřazením konkrétní ID instance pro orchestrátor při jejím vytváření.
+Pro úlohy na pozadí, který je často potřeba zajistit byla najednou spuštěna této jenom jeden výskyt určitého produktu orchestrator. To můžete udělat [Durable Functions](durable-functions-overview.md) přiřazením konkrétní ID instance pro orchestrátor při jejím vytváření.
 
 ## <a name="singleton-example"></a>Příklad typu singleton
 

@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: robb
-ms.openlocfilehash: 1ea8fddf2b4e75abba38f011a271aada848a8cb5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ce54b63aa7831ed40a8592d536c43fc83fdc5567
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192188"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433084"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení z modelu nasazení classic rozhraní API pro metriky a automatické škálování
 
@@ -24,7 +24,7 @@ Stejné operace jsou podporovány pomocí sady Azure Resource Manageru na zákla
 
 Pokud spravujete automatické škálování prostřednictvím webu Azure portal, [novou sadu SDK Azure Monitor](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/), šablon Resource Manageru, rozhraní příkazového řádku nebo Powershellu, není nutná žádná akce.  
 
-Pokud jsou využívání metriky přes Azure portal nebo prostřednictvím různých [monitorování partnerské služby](../../monitoring-and-diagnostics/monitoring-partners.md), není nutná žádná akce. Microsoft ve spolupráci s partnery, aby migrovali na nové rozhraní API pro monitorování.
+Pokud jsou využívání metriky přes Azure portal nebo prostřednictvím různých [monitorování partnerské služby](../../azure-monitor/platform/partners.md), není nutná žádná akce. Microsoft ve spolupráci s partnery, aby migrovali na nové rozhraní API pro monitorování.
 
 ## <a name="who-is-affected"></a>Kdo to se týká
 

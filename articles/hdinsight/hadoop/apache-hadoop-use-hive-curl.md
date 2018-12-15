@@ -9,36 +9,36 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 637ce81f2e2ef4c7271e26bd4e9dfe36da524e27
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c5bf69a2ac6a70410339a5696da53169ca87170f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012738"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407214"
 ---
-# <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Hive pomocí Apache Hadoop v HDInsight pomocí rozhraní REST
+# <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spustit dotazy Apache Hive s Apache Hadoop v HDInsight pomocí rozhraní REST
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Další informace o použití rozhraní REST API WebHCat ke spouštění dotazů Hive v clusteru Azure HDInsight se Apache Hadoop.
+Zjistěte, jak spustit dotazy Apache Hive v clusteru Azure HDInsight s Apache Hadoop pomocí rozhraní REST API WebHCat.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Hadoop založených na Linuxu v clusteru HDInsight verze 3.4 nebo vyšší.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Klient REST. Tento dokument používá prostředí Windows PowerShell a [Curl](https://curl.haxx.se/) příklady.
 
-    > [!NOTE]
-    > Prostředí Azure PowerShell obsahuje jednoúčelové rutiny určené pro práci s Hive v HDInsight. Další informace najdete v tématu [použití Hivu se službou Azure Powershellu](apache-hadoop-use-hive-powershell.md) dokumentu.
+    > [!NOTE]  
+    > Prostředí Azure PowerShell obsahuje jednoúčelové rutiny určené pro práci s Hive v HDInsight. Další informace najdete v tématu [použití Apache Hivu se službou Azure Powershellu](apache-hadoop-use-hive-powershell.md) dokumentu.
 
 Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://stedolan.github.io/jq/) ke zpracování dat JSON vrácených z požadavky REST.
 
 ## <a id="curl"></a>Spuštění dotazu Hive
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud používáte cURL nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight.
 >
 > Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). K zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server, vždy proveďte požadavky pomocí Secure HTTP (HTTPS).
@@ -135,7 +135,7 @@ Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://ste
    * `DROP TABLE` – Pokud je tabulka již existuje, je odstranit.
    * `CREATE EXTERNAL TABLE` -Vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložte definici tabulky Hive. Data zůstane v původním umístění.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat další operaci MapReduce nebo procesu.
      >
      > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
@@ -144,7 +144,7 @@ Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://ste
    * `STORED AS TEXTFILE LOCATION` -Data se mají ukládat (do adresáře příkladu/dat) a, která je uložená jako text.
    * `SELECT` – Počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** jsou tři řádky, které obsahují tuto hodnotu.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Všimněte si, že jsou nahrazené mezery mezi příkazy HiveQL `+` znaků při použití s Curl. Hodnoty v uvozovkách, které obsahují mezeru, jako jsou oddělovač, by neměly být nahrazen `+`.
 
       Tento příkaz vrátí ID úlohy, který slouží ke kontrole stavu úlohy.
@@ -177,16 +177,16 @@ Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://ste
 
 Obecné informace o Hive s HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
 Další informace o dalších způsobech můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pro informace o ladění:
 
-* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
+* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
 Další informace o rozhraní REST API v tomto dokumentu najdete v tématu [WebHCat odkaz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
 

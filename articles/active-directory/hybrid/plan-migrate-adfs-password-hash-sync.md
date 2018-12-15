@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 687ff4a7411113721b16636e1d11b30573e41642
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c226eb19dbd2049c486acfb1ffb9423fdb1dad43
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346057"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410257"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-ad"></a>Migrace z federace na synchronizaci hodnot hash hesel pro službu Azure AD
 Následující dokument obsahuje pokyny k přechod ze služby AD FS na synchronizaci hodnot hash hesel.
@@ -29,7 +29,7 @@ Následující dokument obsahuje pokyny k přechod ze služby AD FS na synchroni
 Následující závislosti jsou požadovány, než bude možné migrovat.
 ### <a name="update-azure-ad-connect"></a>Aktualizace služby Azure AD Connect
 
-Jako minimum úspěšně provést kroky k migraci na předávací ověřování, měli byste mít [služby Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594.) 1.1.819.0. Tato verze obsahuje významné změny způsobu, jakým se provádí převod přihlášení a snižuje celkový čas na migraci z federace na cloudové ověřování z potenciálně hodin, minut.
+Jako minimum úspěšně provést kroky k migraci na předávací ověřování, měli byste mít [služby Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Tato verze obsahuje významné změny způsobu, jakým se provádí převod přihlášení a snižuje celkový čas na migraci z federace na cloudové ověřování z potenciálně hodin, minut.
 
 > [!IMPORTANT]
 > Zastaralé dokumentaci, nástroje a blogy znamenat, že převod uživatelů o požadovaný krok při převodu domény federativní na spravované. Všimněte si, že převod uživatele není potřeba zobrazovat a společnost Microsoft pracuje na aktualizaci dokumentace a nástroje pro tyto změny projeví.
@@ -82,7 +82,7 @@ V části uživatel přihlásit ověřte, že federace je povolené a zakázané
    
    3. Na obrazovce Kontrola řešení poznamenejte si stav synchronizace hesel.</br> 
 
-   Pokud se synchronizace hodnot Hash hesel je aktuálně nastavený na zakázáno, je potřeba postupujte podle kroků v tomto průvodci, aby je. Pokud synchronizaci hodnot Hash hesel je aktuálně nastaven na povoleno, můžete bezpečně přeskočit část [krok 1 – povolení synchronizace hodnot Hash hesel](#_Step_1_–) v této příručce.
+   Pokud se synchronizace hodnot Hash hesel je aktuálně nastavený na zakázáno, je potřeba postupujte podle kroků v tomto průvodci, aby je. Pokud synchronizaci hodnot Hash hesel je aktuálně nastaven na povoleno, můžete bezpečně přeskočit část [krok 1 – povolení synchronizace hodnot Hash hesel](#step-1--enable-password-hash-synchronization) v této příručce.
    4. Na obrazovce Kontrola řešení posuňte se dolů Active Directory Federation Services (AD FS).</br>
  
    Pokud se zobrazí, že konfigurace služby AD FS je v této části a potom můžete bezpečně předpokládat služby AD FS se původně nakonfigurovalo prostřednictvím služby Azure AD Connect a proto převod vaší domény ze Federovaná do služby managed mohou být řízeny prostřednictvím Azure AD Connect "Změna uživatele přihlášení – v "možnost, tento proces je podrobně popsán v části **možnost A – přepínače z federace na synchronizaci hodnot Hash hesel pomocí služby Azure AD Connect**.
@@ -132,10 +132,9 @@ Před převodem z federativní na spravované, byste se podívat úzce na způso
 | If| Potom |
 |-|-|
 | Chystáte se zachovat služby AD FS pro tyto aplikace.| Budete používat AD FS a Azure AD a muset vzít v úvahu činnost koncového uživatele ve výsledku. Uživatelé mohou potřebovat k ověření dvakrát v některých scénářích, jakmile do služby Azure AD (kde dostanou jednotného přihlašování a vyšší do jiných aplikací, jako je Office 365) a opakujte pro všechny aplikace stále vázaná na službu AD FS jako vztah důvěryhodnosti předávající strany. |
-| Služba AD FS je silně přizpůsobený a závislé na konkrétní vlastní nastavení v souboru onload.js, která nemůže být duplicitní ve službě Azure AD 
-(například jste změnili přihlašovací prostředí tak, aby uživatelé pouze zadat své uživatelské jméno na rozdíl od UPN formátu SamAccountName nebo máte silně brandingem přihlašovací prostředí)| Je potřeba ověřit, že aktuální požadavků na přizpůsobení mohou být splněny Azure AD, než budete pokračovat. Naleznete v částech Branding pro AD FS a vlastního nastavení AD FS pro další informace a pokyny.|
+| Služba AD FS je silně přizpůsobený a závislé na konkrétní vlastní nastavení v souboru onload.js, která nemůže být duplicitní ve službě Azure AD (například jste změnili přihlašovací prostředí tak, aby uživatelé pouze zadat formátu SamAccountName pro své uživatelské jméno, nikoli na UPN, nebo máte silně brandingem přihlašovací prostředí)| Je potřeba ověřit, že aktuální požadavků na přizpůsobení mohou být splněny Azure AD, než budete pokračovat. Naleznete v částech Branding pro AD FS a vlastního nastavení AD FS pro další informace a pokyny.|
 | Se blokování klientů starší verze ověřování pomocí služby AD FS.| Zvažte nahrazení ovládací prvky pro blokování starší verze ověřování klientů, které jsou aktuálně k dispozici ve službě AD FS s kombinací [řídí podmíněného přístupu pro starší verze ověřování](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) a [Exchange Online Client Access Pravidla](http://aka.ms/EXOCAR).|
-| Vyžadujete, aby uživatelům s místním MFA server řešením provádíte MFA při ověřování se službou AD FS.| Nebudete mít vložení výzvu MFA prostřednictvím místní řešení vícefaktorového ověřování do tok ověření pro spravované domény, ale může využívat služby Azure MFA k tomu od nynějška jednou domény je převeden. Pokud uživatelé nepoužívají vícefaktorové ověřování Azure ještě dnes, to bude zahrnovat registračního kroku jednorázové koncového uživatele, který budete muset připravit a komunikovat se svým koncovým uživatelům. |
+| Vyžadujete, aby uživatelům s místním MFA server řešením provádíte MFA při ověřování se službou AD FS.| Nebudete mít vložení výzvu MFA prostřednictvím místní řešení vícefaktorového ověřování do tok ověření pro spravované domény, ale může využívat služby Azure MFA k tomu od nynějška jednou domény je převeden. Pokud uživatelé nepoužívají vícefaktorové ověřování Azure ještě dnes, to bude zahrnovat registračního kroku jednorázové koncového uživatele, který budete muset připravit a komunikovat se svým koncovým uživatelům.|
 | Zásady řízení přístupu (pravidel AuthZ) už dnes používáte ve službě AD FS pro řízení přístupu k Office 365.| Zvažte nahrazení těchto prvků s ekvivalentní Azure AD [zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) a [Exchange Online pravidla klientského přístupu](http://aka.ms/EXOCAR).|
 
 ### <a name="considerations-for-common-ad-fs-customizations"></a>Důležité informace týkající se běžných vlastní nastavení služby AD FS
@@ -298,7 +297,7 @@ Tuto metodu použijte, když služby AD FS byl zpočátku nakonfigurován pomoc�
    7. Otevřít na portálu Azure AD, vyberte Azure Active Directory a potom vyberte Azure AD Connect.
    8. Ověřte, že federační vypnutá při bezproblémové jednotné přihlašování a jsou povolené synchronizace hesel.  
   ![Obrázek 37](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)</br>
-   9. Přejděte na [testování a další kroky](#_Next_Steps_and).
+   9. Přejděte na [testování a další kroky](#testing-and-next-steps).
    
    > [!IMPORTANT]
    > Přeskočit část možnost B - přepnutí z federace na synchronizaci hodnot Hash hesel pomocí služby Azure AD Connect a prostředí PowerShell je popsaný v této části se nevztahují.  
@@ -351,11 +350,14 @@ Převod se provádí pomocí modulu Azure AD PowerShell.
 
    1. Otevřete okno Powershellu a přihlaste se k Azure AD pomocí účtu globálního správce.  
    2. Převést první doména, spusťte následující příkaz:  
+   
    ``` PowerShell
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domainname>
    ```
+   
    3. Otevřít na portálu Azure AD, vyberte Azure Active Directory a potom vyberte Azure AD Connect.
    4. Ověřte, že domény byl převeden na spravovaný spuštěním následujícího příkazu:
+   
    ``` PowerShell
    Get-MsolDomain -DomainName <domainname>
    ```
@@ -391,7 +393,7 @@ Pak se získat uživatele přesměruje a úspěšně přihlásil na přístupov�
 > [!NOTE]
 > Bezproblémové jednotné přihlašování funguje na služby Office 365, které podporuje Nápovědu domény (například myapps.microsoft.com/contoso.com). Portál Office 365 (portal.office.com) aktuálně nepodporuje nápovědu domény a proto se očekává, že uživatelé budou muset zadejte jejich hlavní název uživatele. Jakmile UPN je zadané, bezproblémové jednotné přihlašování na můžete získat lístek protokolu Kerberos jménem uživatele a je do protokolu bez zadávání hesla. 
 
-> [!NOTE]
+> [!TIP]
 > Zvažte nasazení [hybridní Azure AD Join ve Windows 10](https://docs.microsoft.com/azure/active-directory/device-management-introduction) pro jednotné přihlašování – vylepšení.
 
 ### <a name="removal-of-the-relying-party-trust"></a>Odebrání vztah důvěryhodnosti předávající strany

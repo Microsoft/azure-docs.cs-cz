@@ -1,19 +1,19 @@
 ---
-title: 'Požadavky směrování – ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Směrování požadavků – ExpressRoute: Azure | Dokumentace Microsoftu'
 description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu směrování pro okruhy ExpressRoute.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/13/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 52ef636424a67c5f0d0bc77cec7667f6436f8276
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135793"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406551"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -101,7 +101,7 @@ Pokud vám ve výše uvedených registrech nejsou přiřazeny vaše předpony a 
 U partnerského vztahu Microsoftu je povoleno soukromé číslo AS, které ale také vyžaduje ruční ověření. Kromě toho v AS PATH odebereme soukromá čísla AS pro přijaté předpony. V důsledku toho nebudete moct připojit soukromá čísla AS k AS PATH, abyste [ovlivnili směrování pro partnerský vztah Microsoftu](expressroute-optimize-routing.md). 
 
 > [!IMPORTANT]
-> Neprovádějí stejnou veřejnou IP trasy do veřejného Internetu a přes ExpressRoute. Důrazně doporučujeme inzerovat konkrétnější trasu přes ExpressRoute a další obecné směrují do Internetu pro [NAT](expressroute-nat.md). Kromě veřejné trasy pro překlad adres, můžete také inzerovat přes ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body služeb Office 365 v rámci Microsoftu. 
+> Neprovádějí stejnou veřejnou IP trasy do veřejného Internetu a přes ExpressRoute. Aby se snížilo riziko chybné konfigurace způsobuje asymetrické směrování, důrazně doporučujeme, aby [adres IP pro NAT](expressroute-nat.md) inzerovaným Microsoftu přes ExpressRoute být z rozsahu, který není vůbec inzerované na Internetu. Pokud to není možné dosáhnout, je nezbytné zajistit, že inzerujete konkrétnější oblast přes ExpressRoute než na připojení k Internetu. Kromě veřejné trasy pro překlad adres, můžete také inzerovat přes ExpressRoute veřejné IP adresy používané servery ve vaší místní síti, které komunikují s koncovými body služeb Office 365 v rámci Microsoftu. 
 > 
 > 
 

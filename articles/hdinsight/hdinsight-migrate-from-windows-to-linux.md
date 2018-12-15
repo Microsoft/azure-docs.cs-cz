@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3f0c912d1489884e0fef87e495d91486f3b1fc67
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010061"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437125"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
 Tento dokument obsahuje podrobné informace o rozdílech mezi HDInsight ve Windows a Linux. Obsahuje také pokyny o tom, jak migrovat existující úlohy do clusteru se systémem Linux.
 
-HDInsight se systémem Windows poskytuje snadný způsob, jak používat Hadoop v cloudu, budete muset migrovat do clusteru se systémem Linux. Chcete-li například využít založených na Linuxu nástrojů a technologií, které jsou požadovány pro vaše řešení. Mnoho věcí v ekosystému Hadoop jsou vyvíjeny v systémech založených na Linuxu a možná není k dispozici pro použití se službou HDInsight se systémem Windows. Mnoho knih, videa a další školicí materiály se předpokládá, že používáte systém Linux, při práci se systémem Hadoop.
+HDInsight se systémem Windows poskytuje snadný způsob, jak používat Apache Hadoop v cloudu, budete muset migrovat do clusteru se systémem Linux. Chcete-li například využít založených na Linuxu nástrojů a technologií, které jsou požadovány pro vaše řešení. Mnoho věcí v ekosystému Hadoop jsou vyvíjeny v systémech založených na Linuxu a možná není k dispozici pro použití se službou HDInsight se systémem Windows. Mnoho knih, videa a další školicí materiály se předpokládá, že používáte systém Linux, při práci se systémem Hadoop.
 
-> [!NOTE]
+> [!NOTE]  
 > Clustery HDInsight se systémem Ubuntu dlouhodobé podporu (LTS) použít jako operační systém pro uzly v clusteru. Informace o verzi Ubuntu s HDInsight, spolu s dalšími informacemi součásti správy verzí, naleznete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md).
 
 ## <a name="migration-tasks"></a>Úlohy migrace
@@ -82,7 +82,7 @@ Pomocí následujících kroků ke zkopírování dat z produkčního prostřed�
     hdfs dfs -cp wasb://CONTAINER@ACCOUNT.blob.core.windows.net/path/to/old/data /path/to/new/location
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud v testovacím prostředí neexistuje adresářovou strukturu, která obsahuje data, můžete vytvořit pomocí následujícího příkazu:
 
     ```bash
@@ -97,7 +97,7 @@ Alternativně můžete chtít použít `Start-AzureStorageBlobCopy` rutiny Azure
 
 ## <a name="client-side-technologies"></a>Technologie na straně klienta
 
-Klientské technologie, jako [rutin prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md), nebo [sady .NET SDK pro Hadoop](https://hadoopsdk.codeplex.com/) pokračovat v práci clusterů se systémem Linux. Tyto technologie závisí na rozhraní REST API, která jsou stejné ve oba typy clusterů operačního systému.
+Klientské technologie, jako [rutin prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs), [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md), nebo [sady .NET SDK pro Apache Hadoop](https://hadoopsdk.codeplex.com/) pokračovat v práci clusterů se systémem Linux. Tyto technologie závisí na rozhraní REST API, která jsou stejné ve oba typy clusterů operačního systému.
 
 ## <a name="server-side-technologies"></a>Technologie na straně serveru
 
@@ -110,7 +110,7 @@ Následující tabulka obsahuje pokyny k migraci komponenty na straně serveru, 
 | **Součásti rozhraní .NET** |.NET je podporována v systémem Linux HDInsight prostřednictvím [Mono](https://mono-project.com). Další informace najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | **Součásti systému Win32 nebo jiné technologie jen pro Windows** |Pokyny k závisí na součásti nebo technologii. Je možné najít verzi, která je kompatibilní s Linuxem. Pokud ne, musíte najít alternativní řešení nebo přepsání této součásti. |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Správa HDInsight SDK není plně kompatibilní s Mono. Nepoužívejte ho jako součást řešení, které jsou nasazené na clusteru HDInsight.
 
 ## <a name="cluster-creation"></a>Vytvoření clusteru
@@ -133,7 +133,7 @@ Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsi
 
 Další přizpůsobení funkcí je **bootstrap**. V případě clusterů Windows tuto funkci můžete zadat umístění další knihovny pro použití pomocí Hive. Po vytvoření clusteru, jsou automaticky dostupné pro použití s dotazy Hive, aniž byste museli používat tyto knihovny `ADD JAR`.
 
-Spuštění funkce pro clustery založené na Linuxu nenabízí tuto funkci. Místo toho použijte akci skriptu dokumentovány v článku [knihovny Hive přidat při vytváření clusteru](hdinsight-hadoop-add-hive-libraries.md).
+Spuštění funkce pro clustery založené na Linuxu nenabízí tuto funkci. Místo toho použijte akci skriptu dokumentovány v článku [přidat Apache Hive knihovny během vytváření clusteru](hdinsight-hadoop-add-hive-libraries.md).
 
 ### <a name="virtual-networks"></a>Virtuální sítě
 
@@ -143,18 +143,18 @@ Další informace o požadavcích na konfiguraci, najdete v článku [HDInsight 
 
 ## <a name="management-and-monitoring"></a>Správa a monitorování
 
-Mnoho webových uživatelských rozhraní, které jste mohli použít s HDInsight založené na Windows, jako je historie úlohy nebo uživatelském rozhraní Yarn, jsou k dispozici prostřednictvím Ambari. Kromě toho zobrazení Ambari Hive poskytuje způsob, jak spouštět dotazy Hive pomocí webového prohlížeče. Webové uživatelské rozhraní Ambari je k dispozici v clusterech založených na Linuxu v https://CLUSTERNAME.azurehdinsight.net.
+Mnoho webových uživatelských rozhraní, které jste mohli použít s HDInsight založené na Windows, jako je historie úlohy nebo uživatelském rozhraní Yarn, jsou k dispozici prostřednictvím Apache Ambari. Kromě toho zobrazení Ambari Hive poskytuje způsob, jak spouštět dotazy Hive pomocí webového prohlížeče. Webové uživatelské rozhraní Ambari je k dispozici v clusterech založených na Linuxu v https://CLUSTERNAME.azurehdinsight.net.
 
 Další informace o práci s Ambari najdete v následujících dokumentech:
 
-* [Ambari Web](hdinsight-hadoop-manage-ambari.md)
-* [Rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Apache Ambari Web](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
 
 ### <a name="ambari-alerts"></a>Ambari výstrahy
 
 Ambari obsahuje upozornění systému, který může identifikovat potenciální problémy s clusterem. Výstrahy se zobrazují jako červené a žluté položky ve webové uživatelské rozhraní Ambari, ale můžete také načíst přes rozhraní REST API.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ambari upozornění označuje, zda *může* se jednat o problém není že v něm *je* problém. Například můžete obdržet upozornění, že nelze získat přístup k serveru HiveServer2, i když k němu máte přístup normálně.
 >
 > Mnoho výstrah jsou implementovány jako bázi intervalů dotazy na službu a očekávat odpověď v určitém časovém limitu. Takže upozornění nemusí nutně znamenat, že služba je mimo provoz, to nevrátil výsledky v očekávané časovém rámci.
@@ -176,30 +176,30 @@ Obecně platí Pokud znáte název souboru, můžete použít následující př
 
 Můžete také použít zástupné znaky s názvem souboru. Například `find / -name *streaming*.jar 2>/dev/null` vrátí cestu pro soubory jar, které obsahují slovo "streaming" jako součást názvu souboru.
 
-## <a name="hive-pig-and-mapreduce"></a>Hive, Pig a MapReduce
+## <a name="apache-hive-apache-pig-and-mapreduce"></a>Apache Hive, Apache Pig a MapReduce
 
 Úlohy pig a MapReduce se podobně jako na linuxových clusterech. Však clustery HDInsight se systémem Linux můžete vytvořit pomocí novější verze systému Hadoop, Hive a Pig. Tyto rozdíly mezi verzemi může zavádět změny v tom funkce vaše existující řešení. Další informace o verzích komponenty, které jsou zahrnuté v HDInsight najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md).
 
 Linuxovým systémem HDInsight neposkytuje funkce vzdálené plochy. Místo toho můžete použít SSH ke vzdálenému připojení k hlavním uzlům clusteru. Další informace najdete v tématu v následujících dokumentech:
 
-* [Použití Hivu pomocí SSH](hdinsight-hadoop-use-hive-ssh.md)
-* [Použití Pigu se službou SSH](hadoop/apache-hadoop-use-pig-ssh.md)
+* [Použití Apache Hivu pomocí SSH](hdinsight-hadoop-use-hive-ssh.md)
+* [Použití Apache Pig pomocí protokolu SSH](hadoop/apache-hadoop-use-pig-ssh.md)
 * [Použití MapReduce se přes SSH](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud používáte externí metaúložiště Hive, byste měli zálohovat metastore před použitím s Linuxovým systémem HDInsight. HDInsight se systémem Linux je k dispozici s novějšími verzemi Hive, který může mít nekompatibility s metaúložiště vytvořené ve starších verzích.
 
 Následující diagram obsahuje pokyny k migraci vašich úloh Hive.
 
 | Na základě Windows používám... | Na základě Linux... |
 | --- | --- |
-| **Hive Editor** |[Zobrazení Ambari Hive](hadoop/apache-hadoop-use-hive-ambari-view.md) |
-| `set hive.execution.engine=tez;` povolení Tez |Tez je výchozí prováděcí modul pro clustery založené na Linuxu, takže příkaz set je už je nepotřebujete. |
+| **Hive Editor** |[Apache Hive, zobrazení Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md) |
+| `set hive.execution.engine=tez;` povolení Tez |Apache Tez je výchozí prováděcí modul pro clustery založené na Linuxu, takže příkaz set je už je nepotřebujete. |
 | Uživatelem definované funkce jazyka C# | Informace o ověřování komponenty jazyka C# s Linuxovým systémem HDInsight najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD soubory nebo skripty na serveru vyvolat jako součást úlohy Hive |použití skriptů prostředí Bash |
-| `hive` příkaz pro vzdálené plochy |Použití [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) nebo [Hive z relace SSH](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` příkaz pro vzdálené plochy |Použití [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) nebo [Apache Hive z relace SSH](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -215,9 +215,9 @@ Následující diagram obsahuje pokyny k migraci vašich úloh Hive.
 | Komponenty jazyka C# mapovací a redukční funkci | Informace o ověřování komponenty jazyka C# s Linuxovým systémem HDInsight najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD soubory nebo skripty na serveru vyvolat jako součást úlohy Hive |použití skriptů prostředí Bash |
 
-## <a name="oozie"></a>Oozie
+## <a name="apache-oozie"></a>Apache Oozie
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud používáte externí metaúložiště Oozie, byste měli zálohovat metastore před použitím s Linuxovým systémem HDInsight. HDInsight se systémem Linux je k dispozici s novějšími verzemi Oozie, který může mít nekompatibility s metaúložiště vytvořené ve starších verzích.
 
 Oozie pracovních postupů prostředí akce povolit. Akce prostředí pomocí výchozí prostředí pro operační systém můžete spouštět příkazy příkazového řádku. Pokud máte pracovní postupy s Oozie, které závisí na prostředí Windows, je třeba přepsat pracovní postupy závisí na prostředí v Linuxu (Bash). Další informace o používání prostředí akce s Oozie najdete v tématu [rozšíření akce prostředí Oozie](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
@@ -228,15 +228,15 @@ Pokud máte pracovní postup, který používá aplikace v jazyce C#, ověření
 
 | Na základě Windows používám... | Na základě Linux... |
 | --- | --- |
-| Řídicí panel Storm |Řídicí panel Storm není k dispozici. Zobrazit [topologií nasazení a správa Storm v HDInsight se systémem Linux](storm/apache-storm-deploy-monitor-topology-linux.md) způsoby, jak odeslat topologie |
+| Řídicí panel Storm |Řídicí panel Storm není k dispozici. Zobrazit [topologií nasazení a správa Apache Storm v HDInsight se systémem Linux](storm/apache-storm-deploy-monitor-topology-linux.md) způsoby, jak odeslat topologie |
 | Storm UI |Uživatelské rozhraní Storm je k dispozici na https://CLUSTERNAME.azurehdinsight.net/stormui |
 | Visual Studio k vytvoření, nasazení a správa topologií C# nebo hybridní |Visual Studio umožňuje vytvářet, nasazovat a spravovat jazyka C# (SCP.NET) nebo hybridní topologie na linuxovým Storm v HDInsight. To jde použít jenom s clustery vytvořené po 10/28/2016. |
 
-## <a name="hbase"></a>HBase
+## <a name="apache-hbase"></a>Apache HBase
 
 Na clusterech založených na Linuxu je nadřazenou znode HBase `/hbase-unsecure`. Nastavení této hodnoty v konfiguraci pro jakéhokoli Java klienta aplikace, které používají nativní rozhraní API Java HBase.
 
-Zobrazit [sestavení aplikace založené na jazyce Java HBase](hdinsight-hbase-build-java-maven.md) příklad klienta, který nastaví tuto hodnotu.
+Zobrazit [sestavit aplikaci Apache HBase založené na jazyce Java](hdinsight-hbase-build-java-maven.md) pro příklad klienta, který nastaví tuto hodnotu.
 
 ## <a name="spark"></a>Spark
 
@@ -261,7 +261,7 @@ Vždy používejte LF jako konců řádků pro skripty, které běží na uzlech
 
 Pokud tyto skripty neobsahují řetězce s vložené znaky CR, můžete provést hromadnou změnu konce řádků pomocí jedné z následujících metod:
 
-* **Před nahráním do clusteru**: ke změně konce řádků z CRLF na LF před odesláním skriptu na clusteru použijte následující příkazy prostředí PowerShell.
+* **Před nahráním do clusteru**: Ke změně konce řádků z CRLF na LF před odesláním skriptu na clusteru, použijte následující příkazy prostředí PowerShell.
 
     ```powershell
     $original_file ='c:\path\to\script.py'
@@ -269,7 +269,7 @@ Pokud tyto skripty neobsahují řetězce s vložené znaky CR, můžete provést
     [IO.File]::WriteAllText($original_file, $text)
     ```
 
-* **Po nahrání do clusteru**: použijte následující příkaz z relace SSH do clusteru založených na Linuxu a upravte skript.
+* **Po nahrání do clusteru**: Použijte následující příkaz z relace SSH do clusteru založených na Linuxu a upravte skript.
 
     ```bash
     hdfs dfs -get wasb:///path/to/script.py oldscript.py
@@ -281,4 +281,4 @@ Pokud tyto skripty neobsahují řetězce s vložené znaky CR, můžete provést
 
 * [Zjistěte, jak vytvářet clustery HDInsight založené na Linuxu](hdinsight-hadoop-provision-linux-clusters.md)
 * [Použití SSH pro připojení k HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
-* [Správa clusteru s linuxem pomocí nástroje Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Správa clusteru založených na Linuxu pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md)

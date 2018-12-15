@@ -15,18 +15,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 8b9daa0fbbf84e0f602498a0847c9e120f709b17
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057478"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408931"
 ---
-# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru Batch AI pro úlohy trénování na webu Azure Portal
+# <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru pro úlohy trénování služby Batch AI pomocí webu Azure portal
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 V tomto rychlém startu si ukážeme, jak používat Azure Portal k vytvoření clusteru Batch AI, který použijete k trénování modelů AI a strojového učení. Batch AI je spravovaná služba určená pro odborníky na data a výzkumníky v oblasti umělé inteligence. Umožňuje jim trénovat modely AI a strojového učení požadované velikosti v clusterech virtuálních počítačů Azure.
 
-Na začátku má cluster jediný uzel GPU a připojený souborový server. Na konci tohoto rychlého startu budete mít cluster, který můžete škálovat a používat k trénování modelů hloubkového učení. K přidělení tréningových úloh clusteru můžete použít Batch AI, nástroje [Azure Machine Learning](../machine-learning/service/overview-what-is-azure-ml.md) nebo [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai).
+Na začátku má cluster jediný uzel GPU a připojený souborový server. Na konci tohoto rychlého startu budete mít cluster, který můžete škálovat a používat k trénování modelů hloubkového učení. K odeslání trénovacích úloh do clusteru můžete použít Batch AI, nástroje [Azure Machine Learning](../machine-learning/service/overview-what-is-azure-ml.md) nebo [Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai).
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -91,7 +94,7 @@ Následující postup slouží k vytvoření clusteru s jedním uzlem GPU. Jako 
    |**Velikost virtuálního počítače**     |Standard NC6|
    |**Cílový počet uzlů**     |1|
 
-3. Zadejte **uživatelské jméno správce** a zkopírujte obsah souboru s veřejným klíčem SSH do pole **Klíč SSH**. Potvrďte zbývající výchozí hodnoty na této stránce a vyberte **Další: Nastavení uzlu**.
+3. Zadejte **uživatelské jméno správce** a zkopírujte obsah souboru s veřejným klíčem SSH do pole **Klíč SSH**. Přijměte výchozí hodnoty pro zbývající hodnoty na této stránce a vyberte **Další: Nastavení uzlu**.
 
    ![Zadání základních informací o clusteru](./media/quickstart-create-cluster-portal/create-cluster.png)
 
@@ -135,7 +138,7 @@ Bude se vám účtovat cluster Batch AI a souborový server na spuštěných vir
 
 Až nebudete pracovní prostor Batch AI potřebovat, odstraňte ho i s clusterem a souborovým serverem. Uděláte to tak, že vyberete pracovní prostor Batch AI a vyberete **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili vytvářet cluster Batch AI a připojený souborový server na webu Azure Portal. Pokud se chcete dozvědět, jak používat cluster Batch AI k trénování modelu, pokračujte rychlým startem o trénování modelu hloubkového učení.
 

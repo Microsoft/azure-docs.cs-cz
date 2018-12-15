@@ -10,14 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 08838fef472cd82f976579f70a4c6be33db9d009
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017556"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407090"
 ---
-# <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Nahrání dat úloh Hadoopu do služby HDInsight
+# <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrání dat pro úlohy Apache Hadoop v HDInsight
 
 Azure HDInsight nabízí v porovnání s Azure Storage a Azure Data Lake Storage (Gen1 a Gen2) plně funkční distribuovaného systému souborů Hadoop (HDFS). Azure Storage a Data lake Storage Gen1 a Gen2 jsou navrženy jako rozšíření HDFS poskytuje bezproblémové prostředí pro zákazníky. Umožňují celá sada komponent v ekosystému Hadoop pracovat přímo na data, která spravuje. Azure Storage, Data Lake Storage Gen1 a Gen2 jsou systémy různých souborů, které jsou optimalizované pro úložiště dat a výpočty na těchto datech. Informace o výhodách používání služby Azure Storage najdete v tématu [použití služby Azure Storage s HDInsight][hdinsight-storage], [použití Data Lake Storage Gen1 s HDInsight](hdinsight-hadoop-use-data-lake-store.md) a [ Pomocí HDInsight v Data Lake Storage Gen2](../storage/data-lake-storage/use-hdi-cluster.md).
 
@@ -44,7 +44,7 @@ Společnost Microsoft poskytuje následující nástroje pro práci s Azure Stor
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Příkaz Hadoop](#commandline) |✔ |✔ |✔ |
 
-> [!NOTE]
+> [!NOTE]  
 > Rozhraní příkazového řádku Azure Classic, prostředí Azure PowerShell a AzCopy můžete využít z mimo Azure, příkaz Hadoop je dostupná pouze na clusteru HDInsight. A tento příkaz umožňuje pouze načítání dat z místního systému souborů do služby Azure Storage.
 >
 >
@@ -95,11 +95,11 @@ Rozhraní příkazového řádku Azure Classic je multiplatformní nástroj, kte
         azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
         ```
     
-> [!NOTE]
+> [!NOTE]  
 > Pokud pracujete se vždy pomocí stejného účtu úložiště, můžete nastavit následující proměnné prostředí místo zadání účtu a klíč pro každý příkaz:
 >
-> * **AZURE\_úložiště\_účet**: název účtu úložiště
-> * **AZURE\_úložiště\_přístup\_klíč**: klíč účtu úložiště
+> * **AZURE\_ÚLOŽIŠTĚ\_ÚČET**: Název účtu úložiště
+> * **AZURE\_ÚLOŽIŠTĚ\_PŘÍSTUP\_KLÍČ**: Klíč účtu úložiště
 >
 >
 
@@ -152,8 +152,8 @@ Příkazový řádek systému Hadoop je platný pouze pro ukládání dat do úl
 
 Chcete-li použít příkaz systému Hadoop, musíte nejdřív připojit k hlavnímu uzlu pomocí jedné z následujících metod:
 
-* **HDInsight se systémem Windows**: [připojit pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **HDInsight se systémem Linux**: připojení pomocí [SSH nebo PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **HDInsight se systémem Windows**: [Připojit pomocí vzdálené plochy](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+* **HDInsight se systémem Linux**: Připojte se pomocí [SSH nebo PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Jakmile budete připojeni, můžete k nahrání souboru do úložiště následující syntaxi.
 
@@ -173,8 +173,8 @@ nebo
 
 Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v tématu [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
-> [!WARNING]
-> U clusterů HBase zablokuje výchozí velikost použitou při zápisu dat je 256 KB. I když to funguje správně při použití rozhraní API HBase nebo rozhraní REST API, používat `hadoop` nebo `hdfs dfs` příkazy k zápisu dat větší než ~ 12 GB za následek chyby. Další informace najdete v tématu [výjimce úložiště pro zápis u objektu blob](#storageexception) části v tomto článku.
+> [!WARNING]  
+> Na clusterech Apache HBase zablokuje výchozí velikost použitou při zápisu dat je 256 KB. I když to funguje správně při použití rozhraní API HBase nebo rozhraní REST API, používat `hadoop` nebo `hdfs dfs` příkazy k zápisu dat větší než ~ 12 GB za následek chyby. Další informace najdete v tématu [výjimce úložiště pro zápis u objektu blob](#storageexception) části v tomto článku.
 >
 >
 
@@ -196,7 +196,7 @@ Další informace najdete v tématu [procházejte propojené prostředky](hadoop
 #### <a id="storageexplorer"></a>Průzkumník služby Azure Storage
 *Průzkumník služby Azure Storage* je užitečným nástrojem pro kontrolu a změnu dat v objektech BLOB. Je bezplatný open source nástroj, který si můžete stáhnout z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Zdrojový kód je k dispozici také tento odkaz.
 
-Před použitím nástroje, musíte znát vaše služby Azure storage účtu název a klíč účtu. Pokyny o tom, jak tyto informace najdete v tématu "postupy: zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště" část [vytvořit, spravovat nebo odstranit účet úložiště][azure-create-storage-account].
+Před použitím nástroje, musíte znát vaše služby Azure storage účtu název a klíč účtu. Pokyny o tom, jak tyto informace najdete v tématu "jak: Zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště"část [vytvořit, spravovat nebo odstranit účet úložiště][azure-create-storage-account].
 
 1. Spusťte Průzkumníka služby Azure Storage. Pokud je první spustíte Storage Explorer, zobrazí se výzva k zadání **název účtu _úložiště** a **klíč účtu úložiště**. Pokud jste spustili před, použijte **přidat** tlačítko můžete přidat název nového účtu úložiště a klíč.
 
@@ -243,7 +243,7 @@ Další informace o instalaci sady Azure SDK najdete v tématu [Azure, soubory k
 
 ### <a name="troubleshooting"></a>Řešení potíží
 #### <a id="storageexception"></a>Výjimka úložiště pro zápis u objektu blob
-**Příznaky**: při použití `hadoop` nebo `hdfs dfs` příkazy k zápisu souborů, které jsou přibližně 12 GB nebo více v clusteru služby HBase můžete setkat s následující chybu:
+**Příznaky**: Při použití `hadoop` nebo `hdfs dfs` příkazy k zápisu souborů, které jsou přibližně 12 GB nebo více v clusteru služby HBase můžete setkat s následující chybu:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -267,13 +267,13 @@ Další informace o instalaci sady Azure SDK najdete v tématu [Azure, soubory k
 
 **Příčina**: HBase v HDInsight clustery výchozí velikost bloku 256 kB při zápisu do úložiště Azure. Zatímco funguje pro rozhraní API HBase nebo rozhraní REST API, je výsledkem k chybě při použití `hadoop` nebo `hdfs dfs` nástroje příkazového řádku.
 
-**Rozlišení**: použití `fs.azure.write.request.size` k určení větší velikost bloku. Můžete to provést na základě za použití pomocí `-D` parametru. Následující příkaz je uvedený příklad používající tento parametr se `hadoop` příkaz:
+**Rozlišení**: Použití `fs.azure.write.request.size` k určení větší velikost bloku. Můžete to provést na základě za použití pomocí `-D` parametru. Následující příkaz je uvedený příklad používající tento parametr se `hadoop` příkaz:
 
 ```bash
 hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 ```
 
-Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí Ambari. Následující postup slouží ke změně hodnoty v webovému uživatelskému rozhraní Ambari:
+Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí Apache Ambari. Následující postup slouží ke změně hodnoty v webovému uživatelskému rozhraní Ambari:
 
 1. V prohlížeči přejděte na uživatelské rozhraní Ambari Web pro váš cluster. Toto je https://CLUSTERNAME.azurehdinsight.net, kde **CLUSTERNAME** je název vašeho clusteru.
 
@@ -284,15 +284,15 @@ Můžete taky zvýšit hodnotu `fs.azure.write.request.size` globálně pomocí 
 
 ![Obrázek změna hodnoty prostřednictvím webového uživatelského rozhraní Ambari](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md).
+Další informace o použití Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>Další postup
 Teď, když chápete, jak načíst data do HDInsight, přečtěte si, jak provádět analýzu následujících článcích:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Odesílání úloh Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
-* [Použití Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použití Pigu se službou HDInsight][hdinsight-use-pig]
+* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
+* [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
+* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 
 [azure-management-portal]: https://porta.azure.com
 [azure-powershell]: https://msdn.microsoft.com/library/windowsazure/jj152841.aspx

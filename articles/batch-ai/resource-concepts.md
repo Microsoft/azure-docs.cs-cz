@@ -15,14 +15,17 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4a9e3529f9d68ecdc614ea69cffc6897891f4548
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4454448809411c6390bc1f65c33b4abe76094ded
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057040"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407741"
 ---
 # <a name="overview-of-resources-in-batch-ai"></a>Přehled prostředků v rámci služby Batch AI
+
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
 Při prvním spuštění pomocí služby Batch AI, bude nutné pochopit dostupné prostředky služby Batch AI. S ostatními službami Azure při vytváření prostředků služby Batch AI v Azure jednu nebo více *skupiny prostředků*. Vytvořte jeden nebo více služby Batch AI *pracovní prostory* ve skupině prostředků. Každý pracovní prostor obsahuje směs služby Batch AI *clustery*, *souborové servery*, a *experimenty*. Batch AI experiment zapouzdří skupinu *úlohy*.
 

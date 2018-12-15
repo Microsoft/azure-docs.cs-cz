@@ -1,6 +1,6 @@
 ---
-title: Migrovat aktualizované Azure Batch AI API | Microsoft Docs
-description: Postup aktualizace Azure Batch AI kódů a skriptů pomocí pracovního prostoru a Experimentujte prostředky
+title: Migrace na aktualizované API služby Azure Batch AI | Dokumentace Microsoftu
+description: Postup aktualizace Azure Batch AI kódu a skriptů pro pracovní prostor a experimentovat prostředky
 services: batch-ai
 documentationcenter: na
 author: dlepow
@@ -15,44 +15,47 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ROBOTS: NOINDEX
+ms.openlocfilehash: 75a9a5e9bafd62b320397c00ef6574b7536d9e09
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294954"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407776"
 ---
-# <a name="migrate-to-the-updated-batch-ai-api"></a>Migrovat aktualizované Batch API AI
+# <a name="migrate-to-the-updated-batch-ai-api"></a>Migrace na aktualizované rozhraní API služby Batch AI
 
-V Batch AI REST API verze 2018-05-01 a související AI SDK služby Batch a nástroje byly zavedeny významné změny a nové funkce.
+[!INCLUDE [batch-ai-retiring](../../includes/batch-ai-retiring.md)]
 
-Pokud jste použili předchozí verzi rozhraní API služby Batch AI, tento článek vysvětluje, jak upravit kód a skripty pro práci s novým rozhraním API. 
+V rozhraní REST API verze 2018-05-01 služby Batch AI a souvisejících sad SDK služby Batch AI a nástroje byly zavedeny nové funkce a významné změny.
 
-## <a name="whats-changing"></a>Co je změna?
+Pokud používáte předchozí verzi rozhraní API služby Batch AI, tento článek vysvětluje, jak upravit vašeho kódu a skriptů pro práci s nové rozhraní API. 
 
-V reakci na názory zákazníků jsme se odebírá omezení počtu úloh a usnadnit tak spravovat prostředky Batch AI. Nové rozhraní API představuje dva nové prostředky, *prostoru* a *experimentovat*. Shromažďování školení související úlohy v rámci experimentu a uspořádat všechny související prostředky Batch AI (clusterů souborových serverů, experimenty, úlohy) v pracovním prostoru.  
+## <a name="whats-changing"></a>Co se mění?
 
-* **Pracovní prostor** -nejvyšší úrovně kolekce všechny typy prostředků Batch AI. Clusterů a souborových serverů jsou obsaženy v pracovním prostoru. Pracovní prostory obvykle samostatné pracovní patřící do různých skupin nebo projekty. Například můžete mít vývoj a testovací prostoru. Bude pravděpodobně nutné jenom omezený počet pracovních prostorů jedno předplatné. 
+V reakci na zpětnou vazbu od zákazníků jsme se odebrání omezení počtu úloh a usnadnit tak spravovat prostředky služby Batch AI. Nové rozhraní API představuje dva nové prostředky, *pracovní prostor* a *experimentovat*. Úlohy související školení v rámci experimentu shromažďování a uspořádání všech souvisejících prostředků služby Batch AI (clustery souborových serverů, experimenty, úlohy) v pracovním prostoru.  
 
-* **Experiment** -kolekce souvisejících úloh, které mohou být dotazována a spravují dohromady. Experimentu můžete například použijte k seskupení všechny úlohy, které se provádí v rámci vyladění oblouku hyper parametr. 
+* **Pracovní prostor** -kolekci nejvyšší úrovně všech typů prostředků služby Batch AI. Clusterů a souborových serverů jsou obsaženy v pracovním prostoru. Pracovní prostory obvykle samostatné pracovní patřící do různých skupin nebo projekty. Například můžete mít vývojář a zkušební pracovní prostor. Bude pravděpodobně nutné pouze omezený počet pracovních prostorů na předplatné. 
 
-Následující obrázek znázorňuje příklad hierarchie prostředků. 
+* **Experiment** -sadu související úlohy, které jde dotazovat a spravovaných společně. Experiment můžete například použijte k seskupení všechny úlohy, které se provádí jako součást ladění úklidu hyperparametrické. 
+
+Následující obrázek ukazuje hierarchii příklad prostředků. 
 
 ![](./media/migrate-to-new-api/batch-ai-resource-hierarchy.png)
 
-## <a name="monitor-and-manage-existing-resources"></a>Sledování a správě existujících prostředků
-V každé skupině prostředků, kde jste již vytvořili Batch AI clustery, úlohy nebo souborové servery, bude služba Batch AI vytvořit pracovní prostor s názvem `migrated-<region>` (například `migrated-eastus`) a experimentu s názvem `migrated`. Pro přístup k dřív vytvořených úloh, clustery nebo souborové servery, musíte použít migrované pracovní prostor a Experimentujte. 
+## <a name="monitor-and-manage-existing-resources"></a>Monitorování a Správa existujících prostředků
+V každé skupině prostředků, ve které jste již vytvořili clustery, úlohy nebo souborové servery Batch AI, služba Batch AI vytvoří pracovní prostor s názvem `migrated-<region>` (například `migrated-eastus`) a experimentu s názvem `migrated`. Pro přístup k dříve vytvořené úlohy, clustery nebo souborové servery, budete muset použít migrované pracovní prostor a experimentovat. 
 
 ### <a name="portal"></a>Portál 
-Přístup k dřív vytvořených úloh, clusterů a souborových serverů pomocí portálu, vyberte nejdřív `migrated-<region>` pracovního prostoru. Vyberte pracovní prostor a proveďte operace, jako je například změna velikosti nebo odstranění clusteru a zobrazit stav úlohy a výstupy. 
+Přístup k dříve vytvořené úlohy, clusterů a souborových serverů pomocí portálu, vyberte nejdřív `migrated-<region>` pracovního prostoru. Jakmile vyberete pracovní prostor, proveďte operace, jako je změna velikosti nebo odstranění clusteru a zobrazení stavu úlohy a výstupy. 
 
 ### <a name="sdks"></a>Sady SDK 
-Přístup k úlohy, clusterů a souborových serverů, které dříve vytvořené prostřednictvím sady SDK služby Batch AI, zadejte název pracovního prostoru a experimentovat název parametry. 
+Přístup k úlohy, clusterů a souborových serverů se dříve vytvořených prostřednictvím sad SDK služby Batch AI, zadejte název pracovního prostoru a experimentovat parametr name. 
 
-Pokud používáte sady SDK pro Python, v následujících příkladech jsou zobrazeny příslušné změny. Změny se podobají jiné AI SDK služby Batch. 
+Pokud používáte Python SDK, důležité změny jsou uvedeny v následujících příkladech. Změny jsou podobné jako u jiných SDK služby Batch AI. 
 
 
-#### <a name="get-old-cluster"></a>Získat původního clusteru 
+#### <a name="get-old-cluster"></a>Získání původní cluster 
 
 ```python
 cluster = client.clusters.get(resource_group_name, 'migrated-<region>', cluster_name)
@@ -64,7 +67,7 @@ cluster = client.clusters.get(resource_group_name, 'migrated-<region>', cluster_
 client.clusters.delete(resource_group_name, 'migrated-<region>', cluster_name)
 ```
 
-#### <a name="get-old-file-server"></a>Získat staré souborového serveru 
+#### <a name="get-old-file-server"></a>Získání staré souborového serveru 
 
 ```python
 cluster = client.fileservers.get(resource_group_name, 'migrated-<region>', fileserver_name)
@@ -77,7 +80,7 @@ client.fileservers.delete(resource_group_name, 'migrated-<region>', fileserver_n
 ``` 
 
 
-#### <a name="get-old-job"></a>Získat staré úlohu 
+#### <a name="get-old-job"></a>Získání staré úlohy 
 
 ```python
 cluster = client.jobs.get(resource_group_name, 'migrated-<region>', 'migrated', job_name)
@@ -91,10 +94,10 @@ client.jobs.delete(resource_group_name, 'migrated-<region>', 'migrated', job_nam
  
 ### <a name="azure-cli"></a>Azure CLI 
  
-Při použití rozhraní příkazového řádku Azure k přístupu vytvořili úlohy, clusterům nebo souborové servery, `-w` a `-e` parametry zadejte prostoru a experimentovat názvy. 
+Při použití rozhraní příkazového řádku Azure pro přístup k dříve vytvořené úlohy, clustery nebo souborové servery, použijte `-w` a `-e` parametry zadat pracovní prostor a experimentovat názvy. 
 
 
-#### <a name="get-old-cluster"></a>Získat původního clusteru
+#### <a name="get-old-cluster"></a>Získání původní cluster
 
 ```azurecli
 az batchai cluster show -g resource-group-name -w migrated-<region> -n cluster-name
@@ -107,7 +110,7 @@ az batchai cluster show -g resource-group-name -w migrated-<region> -n cluster-n
 az batchai cluster delete -g resource-group-name -w migrated-<region> -n cluster-name
 ```
 
-#### <a name="get-old-file-server"></a>Získat staré souborového serveru
+#### <a name="get-old-file-server"></a>Získání staré souborového serveru
 
 ```azurecli
 az batchai file-server show -g resource-group-name -w migrated-<region> -n fileserver-name
@@ -121,7 +124,7 @@ az batchai file-server delete -g resource-group-name -w migrated-<region> -n fil
 ``` 
 
 
-#### <a name="get-old-job"></a>Získat staré úlohu
+#### <a name="get-old-job"></a>Získání staré úlohy
 
 ```azurecli
 az batchai job show -g resource-group-name -w migrated-<region> -e migrated -n job-name
@@ -134,12 +137,12 @@ az batchai job show -g resource-group-name -w migrated-<region> -e migrated -n j
 az batchai job delete -g resource-group-name -w migrated-<region> -e migrated -n job-name
 ``` 
 
-## <a name="create-batch-ai-resources"></a>Vytvořit prostředky Batch AI 
+## <a name="create-batch-ai-resources"></a>Vytvořit prostředky služby Batch AI 
  
-Pokud používáte některou existující sady SDK AI Batch, můžete použít k vytvoření dávky AI prostředky (úlohy, clusterům nebo souborové servery) bez provedení změn kódu. Ale po upgradu na novou sadu SDK, musíte provést následující změny.
+Pokud pracujete s některou ze stávajících sad SDK služby Batch AI, můžete nadále používat k vytváření prostředků služby Batch AI (úloh, clustery nebo souborové servery) bez změn kódu. Ale po upgradu na novou sadu SDK, budete muset provést následující změny.
  
-### <a name="create-workspace"></a>Vytvořit pracovní prostor 
-V závislosti na scénáři můžete vytvořit pracovní prostor ručně jednorázové prostřednictvím portálu nebo rozhraní příkazového řádku. Pokud používáte rozhraní příkazového řádku, vytvořte pracovní prostor pomocí následujícího příkazu: 
+### <a name="create-workspace"></a>Vytvoření pracovního prostoru 
+V závislosti na vašem scénáři můžete vytvořit pracovní prostor ručně jednorázové prostřednictvím portálu nebo rozhraní příkazového řádku. Pokud používáte rozhraní příkazového řádku, vytvořte pracovní prostor pomocí následujícího příkazu: 
 
 ```azurecli
 az batchai workspace create -g resource-group-name -n workspace-name
@@ -148,18 +151,18 @@ az batchai workspace create -g resource-group-name -n workspace-name
 ### <a name="create-experiment"></a>Vytvoření experimentu 
 
 
-V závislosti na scénáři můžete vytvořit experimentu ručně jednorázové prostřednictvím portálu nebo rozhraní příkazového řádku. Pokud používáte rozhraní příkazového řádku, vytvořte nový experiment, pomocí následujícího příkazu: 
+V závislosti na vašem scénáři můžete vytvořit experiment ručně jednorázové prostřednictvím portálu nebo rozhraní příkazového řádku. Pokud používáte rozhraní příkazového řádku, vytvoření experimentu pomocí následujícího příkazu: 
 
 ```azurecli
 az batchai experiment create -g resource-group-name -w workspace-name -n experiment-name
 
 ```
 
-### <a name="create-clusters-file-servers-and-jobs"></a>Vytváření clusterů souborových serverů a úloh
+### <a name="create-clusters-file-servers-and-jobs"></a>Vytvoření clusterů souborových serverů a úloh
  
-Pokud používáte portál k vytvoření úlohy, clusterům nebo souborové servery, na portálu vám pomohou při vytváření prostředí a zadejte název pracovního prostoru experimentovat název parametry.
+Pokud používáte portál k vytvoření úlohy, clustery nebo souborové servery, na portálu vás provede během vytváření prostředí pro zadejte název pracovního prostoru a experimentovat parametr name.
 
-K vytvoření úlohy, clusterům nebo souborové servery prostřednictvím aktualizované SDK, zadejte parametr název pracovního prostoru. Pokud používáte sady SDK pro Python, v následujících příkladech jsou zobrazeny příslušné změny. Nahraďte *workspace_name* a *experiment_name* s pracovní prostor a experimentu, který jste vytvořili dříve. Změny se podobají jiné AI SDK služby Batch. 
+Vytvoření úlohy, clustery nebo souborové servery prostřednictvím aktualizované sady SDK, zadejte parametr název pracovního prostoru. Pokud používáte Python SDK, důležité změny jsou uvedeny v následujících příkladech. Nahraďte *workspace_name* a *experiment_name* se pracovní prostor a experiment, který jste vytvořili dříve. Změny jsou podobné jako u jiných SDK služby Batch AI. 
 
 
 #### <a name="create-cluster"></a>Vytvoření clusteru 
@@ -183,4 +186,4 @@ _ = client.jobs.create(resource_group_name, workspace_name, experiment_name, job
 
 ## <a name="next-steps"></a>Další postup
 
-* V tématu referenční dokumentace rozhraní API AI Batch: [rozhraní příkazového řádku](/cli/azure/batchai), [.NET](/dotnet/api/overview/azure/batchai), [Java](/java/api/overview/azure/batchai), [Node.js](/javascript/api/overview/azure/batchai), [Python](/python/api/overview/azure/batchai)a [REST](/rest/api/batchai)
+* Přečtěte si referenční informace rozhraní API služby Batch AI: [Rozhraní příkazového řádku](/cli/azure/batchai), [.NET](/dotnet/api/overview/azure/batchai), [Java](/java/api/overview/azure/batchai), [Node.js](/javascript/api/overview/azure/batchai), [Python](/python/api/overview/azure/batchai), a [REST](/rest/api/batchai)

@@ -4,25 +4,25 @@ description: Informace o řešení potíží s agentem Update Management.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 68bac54de4f6a9f16f54032b10031bcf7222c676
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969307"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434762"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta Windows v Update Management
 
-Existuje mnoho důvodů, proč nemusí zobrazit počítač Azure **připravené** stav ve službě Azure Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích s správu aktualizací z webu Azure portal a v případě offline scénářů.
+Může být mnoho důvodů, proč počítač nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z webu Azure portal a počítače mimo Azure v [offline scénáři](#troubleshoot-offline).
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-Na webu Azure Portal **řešení potíží s aktualizací agenta** stránky zobrazí problémy s agentem. Na stránce je odkaz na tomto článku vám pomůžou při řešení potíží. Přejděte na **řešení potíží s aktualizací agenta** stránky, vyberte **Poradce při potížích s** odkaz v **připravenost agenta aktualizací** sloupec.
+Pro počítače Azure, kliknutím **Poradce při potížích** odkaz v části **připravenost agenta aktualizací** sloupec v portálu spustí **řešení potíží s aktualizací agenta** stránky. Pro počítače mimo Azure přináší na odkaz můžete k tomuto článku. Zobrazit [offline pokyny](#troubleshoot-offline) řešení potíží s počítači mimo Azure.
 
 ![Aktualizovat seznam pro správu virtuálních počítačů](../media/update-agent-issues/vm-list.png)
 

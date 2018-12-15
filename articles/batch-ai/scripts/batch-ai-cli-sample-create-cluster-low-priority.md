@@ -14,14 +14,17 @@ ms.tgt-pltfrm: multiple
 ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 1fb21ab754e85dd347ff3bd66bafc2fadd95f8b1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c56cd7d25ce391b67798c7833894e248f37300bf
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058109"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406602"
 ---
-# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-low-priority-nodes"></a>Příklad rozhraní příkazového řádku: Vytvoření a správa clusteru Batch AI s uzly s nízkou prioritou
+# <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-low-priority-nodes"></a>Příklad rozhraní příkazového řádku: Vytvářet a spravovat cluster Batch AI uzlů s nízkou prioritou
+
+[!INCLUDE [batch-ai-retiring](../../../includes/batch-ai-retiring.md)]
 
 V tomto skriptu si ukážeme některé příkazy dostupné v Azure CLI, které umožňují vytvořit a spravovat cluster Batch AI složený z uzlů (virtuálních počítačů) s nízkou prioritou.
 
@@ -59,6 +62,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az batchai cluster resize](/cli/azure/batchai/cluster#az-batchai-cluster-resize) | Změní velikost clusteru Batch AI.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).

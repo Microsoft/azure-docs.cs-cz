@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 9e99e5f999c927ed0376a89b9f6d9f73fa8b2b2b
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384169"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438434"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -31,7 +31,7 @@ Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure M
 
 Metriky jsou Azure telemetrická data (také nazývané čítače výkonu), protože ho vygeneroval vašich prostředků Azure, které se spotřebovávají služby Azure Monitor. Příklad metriky v účtu Batch patří: Vytvoření fondu událostí, počet uzlů s nízkou prioritou a úlohy dokončení události. 
 
-Zobrazit [seznam podporovaných metrik služby Batch](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts).
+Zobrazit [seznam podporovaných metrik služby Batch](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
 Metriky jsou:
 

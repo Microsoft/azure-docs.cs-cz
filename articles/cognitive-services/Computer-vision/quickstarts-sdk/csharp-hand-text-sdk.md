@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrakce textu – SDK, C# – počítačové zpracování obrazu'
+title: 'Rychlý start: Extrahovat text – sady SDK, C# -pro počítačové zpracování obrazu'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: pafarley
-ms.openlocfilehash: c1b25db440023618d3d633f9a2b2ebcd5c0a6293
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c0323c215e83850dc53acd5e350d7eeeeb9a05b1
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852482"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413213"
 ---
-# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Extrakce textu s použitím sady SDK pro počítačové zpracování obrazu a jazyka C#
+# <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Extrahovat text pomocí sady SDK služby pro zpracování obrazu počítač aC#
 
 V tomto rychlém startu extrahujete rukou psaný nebo tištěný text z obrázku pomocí klientské knihovny počítačového zpracování obrazu systému Windows.
 
@@ -188,7 +188,7 @@ namespace ExtractText
 
 Úspěšná odpověď zobrazí řádky rozpoznaného textu jednotlivých obrázků.
 
-Příklad nezpracovaného výstupu JSON najdete v tématu [Rychlý start: Extrakce rukou psaného textu – REST, C#](../QuickStarts/CSharp-hand-text.md#examine-the-response).
+Zobrazit [rychlý start: Extrahujte rukou psaný text - REST, C# ](../QuickStarts/CSharp-hand-text.md#examine-the-response) příklad nezpracovaném formátu JSON výstupu.
 
 ```cmd
 Calling GetHandwritingRecognitionOperationResultAsync()

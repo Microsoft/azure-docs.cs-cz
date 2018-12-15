@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 945cdf63a178a09f121f355aaa7635537e46e5ff
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703628"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413553"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Vytvoření testovaní částí pro stavové služby
 Testování stavové služby Service Fabric řešit běžné chyby, které nemusí nutně být zachycena konvenční aplikace nebo testování částí specifického pro doménu. Při vývoji, testování částí pro stavové služby, jsou některé důležité informace, které se uchovávají v úvahu.
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary 
+//promote idle secodary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary
@@ -100,7 +100,7 @@ PromoteNewReplicaToPrimaryAsync()
 PromoteNewReplicaToPrimaryAsync(4)
 ```
 
-## <a name="putting-it-all-together"></a>Vložení všechno dohromady
+## <a name="putting-it-all-together"></a>Spojení všech součástí dohromady
 Následující testovací ukazuje nastavení sady replik třemi uzly a ověření, že data jsou k dispozici ze sekundární po změně role. Typické potíže to může zachytit, je-li přidat data během `InsertAsync` byl uložen do něco paměti nebo do spolehlivé kolekce bez spuštění `CommitAsync`. V obou případech bude synchronizován s primární sekundární. To by vedlo ke nekonzistentní odpovědi po přesunutí služby.
 
 ```csharp

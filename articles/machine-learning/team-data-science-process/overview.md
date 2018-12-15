@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4dbcc3cb655220db66a5f49712f1fd5f87109e61
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 94728bbc74d1864c76aa801628fcbfb133b97abd
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141318"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435986"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -104,4 +104,4 @@ Tady je příklad sdílení různých komponent infrastruktury cloudové analýz
 
 ## <a name="next-steps"></a>Další postup
 
-[Vědeckého zpracování týmových dat: Role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Toto téma popisuje role klíče pracovníky a jejich přidružených úloh pro datové vědy tým, který standardizuje o tomto procesu. 
+[Vědecké zpracování týmových dat: Role a úlohy](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Toto téma popisuje role klíče pracovníky a jejich přidružených úloh pro datové vědy tým, který standardizuje o tomto procesu. 

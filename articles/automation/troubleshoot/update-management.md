@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 87edc2911a48aea1ff0d7ac826439fe547c7cd86
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342881"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434728"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update managementem
 
@@ -164,7 +164,7 @@ Máte počítače, které se zobrazují jako **nevyhodnoceno** pod **dodržován
 
 #### <a name="cause"></a>Příčina
 
-Aktualizace Windows není správně nakonfigurovaný na počítači.
+Windows Update nebo WSUS není v počítači správně nakonfigurován. Update Management využívá Windows Update nebo WSUS za účelem zajištění aktualizací, které jsou nezbytné a stav opravy a výsledků nasazení oprav. Bez těchto informací nemůže Update Management zprávu o opravy, které jsou potřeba nebo nainstalovaná správně.
 
 #### <a name="resolution"></a>Řešení
 

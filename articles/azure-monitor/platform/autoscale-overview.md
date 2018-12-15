@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: bf3105201f8eac8bebfe06320ab477cf0b7011e2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: adeb2d1f1268ed3f933a340c184a531510a7ff88
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388761"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437428"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování v Microsoft Azure Virtual Machines, Cloud Services a webových aplikací
 Tento článek popisuje, co Microsoft Azure při automatickém škálování je, jeho výhody a jak začít používat.  
@@ -96,7 +96,7 @@ Další informace najdete v tématu [vertikální škálování virtuálních po
 ## <a name="methods-of-access"></a>Metody přístupu
 Můžete nastavit automatické škálování prostřednictvím
 
-* [Azure Portal](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md)
+* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings)
 * [Rozhraní příkazového řádku (CLI) pro různé platformy](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -104,7 +104,7 @@ Můžete nastavit automatické škálování prostřednictvím
 ## <a name="supported-services-for-autoscale"></a>Podporované služby pro automatické škálování
 | Služba | Schéma a dokumentace |
 | --- | --- |
-| Web Apps |[Škálování webové aplikace](../../monitoring-and-diagnostics/monitoring-autoscale-get-started.md) |
+| Web Apps |[Škálování webové aplikace](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[Automatické škálování cloudové služby](../../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtuální počítače: Classic |[Škálovací sady dostupnosti klasický virtuální počítač](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtuální počítače: Windows Škálovací sady |[Škálování virtuálního počítače škálovací sady v Windows](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |

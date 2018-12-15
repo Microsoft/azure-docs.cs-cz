@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5b4798b183b44ef33b24a61c4f995b3ae7b3b9d0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c1c4637bf3b71ade6cceb4427180edf8bc408670
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014103"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408098"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
 
@@ -27,7 +27,7 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím služby Azure Virtual Network__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
 * __Použití Beeline na klientovi, připojení k HDInsight prostřednictvím veřejného Internetu__: `-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
-> [!NOTE]
+> [!NOTE]  
 > Nahraďte `admin` s účet přihlášení clusteru pro váš cluster.
 >
 > Nahraďte `password` se heslo pro účet přihlášení clusteru.
@@ -40,7 +40,7 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 
 * Hadoop založených na Linuxu v clusteru HDInsight verze 3.4 nebo vyšší.
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Místní Beeline klienta nebo klienta SSH. Většina kroků v tomto dokumentu předpokládají, že používáte Beeline z relace SSH do clusteru. Informace o spouštění Beeline z mimo cluster najdete v tématu [použití Beeline vzdáleně](#remote) oddílu.
@@ -139,7 +139,7 @@ Beeline je klient Hive, který je součástí hlavní uzly clusteru HDInsight. B
 
     * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že ji by měl vrátit pouze data ze souborů s koncovkou. log.
 
-  > [!NOTE]
+  > [!NOTE]  
   > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat operaci MapReduce nebo procesu.
   >
   > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
@@ -193,7 +193,7 @@ Pomocí následujících kroků vytvořte soubor a pak ji spustit pomocí Beelin
     * **ULOŽENÉ jako ORC** – ukládá data ve formátu optimalizované řádek úložiště se sloupcovou strukturou (ORC). Formát ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
     * **VLOŽIT PŘEPSÁNÍ... Vyberte** -vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]**, pak vloží data do **nepřenesl** tabulky.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Na rozdíl od externích tabulek vyřadit interní tabulku odstraní podkladová data.
 
 3. Chcete-li uložit soubor, použijte **Ctrl**+**_X**, zadejte **Y**a nakonec **Enter**.
@@ -204,7 +204,7 @@ Pomocí následujících kroků vytvořte soubor a pak ji spustit pomocí Beelin
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > `-i` Parametr spustí Beeline a provede příkazy ve `query.hql` souboru. Po dokončení dotazu se dostanete na `jdbc:hive2://headnodehost:10001/>` řádku. Můžete také spustit soubor pomocí `-f` parametr, který ukončí Beeline po dokončení dotazu.
 
 5. Pro ověření, že **nepřenesl** byla vytvořena tabulka, použijte následující příkaz vrátí všechny řádky z **nepřenesl**:
@@ -242,11 +242,11 @@ Pokud máte nainstalovaný místně Beeline a připojení přes virtuální sí�
 
 * __Připojovací řetězec__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
 
-Pokud chcete zjistit plně kvalifikovaný název domény hlavního uzlu, použijte informace v [Správa HDInsight pomocí rozhraní Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentu.
+Pokud chcete zjistit plně kvalifikovaný název domény hlavního uzlu, použijte informace v [Správa HDInsight pomocí rozhraní REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentu.
 
-## <a id="sparksql"></a>Použití Beeline se Sparkem
+## <a id="sparksql"></a>Použití Beeline s Apache Sparkem
 
-Spark poskytuje vlastní implementaci serveru HiveServer2, který se někdy označuje jako server Spark Thrift. Tato služba překladu místo Hive pomocí Spark SQL a může poskytovat lepší výkon v závislosti na dotazu.
+Apache Spark poskytuje vlastní implementaci serveru HiveServer2, který se někdy označuje jako server Spark Thrift. Tato služba překladu místo Hive pomocí Spark SQL a může poskytovat lepší výkon v závislosti na dotazu.
 
 __Připojovací řetězec__ použít při připojení přes internet se mírně liší. Anglický `httpPath=/hive2` je `httpPath/sparkhive2`. Následuje příklad připojení přes internet:
 
@@ -264,17 +264,17 @@ beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
 
 Další obecné informace o Hivu ve službě HDInsight najdete v následujícím dokumentu:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
 Další informace o jiných způsobech mohl pracovat s Hadoop v HDInsight najdete v následujících dokumentech:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 Pokud používáte pomocí Hive Tez, najdete v následujících dokumentech:
 
-* [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
-* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
+* [Použití uživatelského rozhraní Apache Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

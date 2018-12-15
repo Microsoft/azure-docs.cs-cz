@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cf0c7a5339d2880bbed01fc95b54038d15f1c2ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d705993c7cd3816e89da21625dc5b003435b9128
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083530"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408151"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V důsledku toho Služba Event Hubs využití často zvětšuje po začali používat službu. Použití je potřeba zvýšit předem [jednotek propustnosti](event-hubs-features.md#throughput-units) zpracovat větší množství přenesených dat a škálovat služby Event Hubs. **Automatické rozšiřování** funkce Event Hubs se automaticky zvětší zvýšením počtu jednotek propustnosti, které bude vyhovovat požadavkům využití. Zvýšení jednotek propustnosti brání omezení scénáře, ve kterém:
@@ -47,15 +47,25 @@ Můžete povolit nebo zakázat automatické rozšiřování na obor názvů slu�
 
 ### <a name="enable-auto-inflate-through-the-portal"></a>Povolit automatické rozšiřování prostřednictvím portálu
 
-Při vytváření oboru názvů Event Hubs můžete povolit funkci automatické rozšiřování:
+
+#### <a name="enable-at-the-time-of-creation"></a>Povolit v době vytvoření 
+Můžete povolit funkci automatické rozšiřování **při vytváření oboru názvů Event Hubs**:
  
 ![Povolit automatické rozšiřování v době vytvoření centra událostí](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Tato možnost povolená můžete začít v malém s kapacitu jednotek propustnosti a vertikálně navyšujte kapacitu podle využití musí zvýšení. Horní mez pro inflaci nemá vliv na okamžitě ceny, které závisí na počtu použitých jednotek propustnosti za hodinu.
 
-Můžete také povolit automatické rozšiřování pomocí **škálování** možnost v podokně nastavení na portálu:
+#### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Povolit automatické rozšiřování pro existující centrum událostí
+Můžete také povolit funkci automatické rozšiřování a její nastavení upravit pomocí následujících pokynů: 
  
-![Povolit automatické rozšiřování pomocí možnosti měřítko](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+1. Na **Event Hubs Namespace** stránce **zakázané** pod **automatické rozšiřování jednotek propustnosti**.  
+
+    ![Výběr jednotek propustnosti na stránce obor názvů služby Event Hubs](./media/event-hubs-auto-inflate/select-throughput-units.png)
+2. V **nastavení škálování** stránce, zaškrtněte políčko pro **povolit** (Pokud je funkce automatického škálování není povolené).
+
+    ![Vyberte možnost povolit](./media/event-hubs-auto-inflate/scale-settings.png)
+3. Zadejte **maximální** počet jednotek propustnosti nebo použití posuvník nastavíte hodnotu. 
+4. (volitelné) Aktualizace **minimální** počet jednotek propustnosti v horní části této stránky. 
 
 
 > [!NOTE]

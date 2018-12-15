@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 69eeadd8252d20dd25ac6d0abbbf0c6c158383d5
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633338"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438621"
 ---
 # <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>Spouštět úlohy Apache Pig z připojení ke vzdálené ploše
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
 Tento dokument poskytuje návod pro použití příkazu Apache Pig spouští příkazy Pig Latin z připojení ke vzdálené ploše na cluster HDInsight se systémem Windows. Pig Latin můžete vytvářet aplikace MapReduce zadáním popisu vašeho nového transformace dat, spíše než mapovací a redukční funkce.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Vzdálená plocha je dostupná pouze na clustery HDInsight, používající jako operační systém Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4 nebo větší, přečtěte si téma [použití Pigu se službou HDInsight a SSH](apache-hadoop-use-pig-ssh.md) informace o tom, z příkazového řádku interaktivně spustíte úlohy Pig přímo na clusteru.
+> HDInsight 3.4 nebo větší, přečtěte si téma [použití Apache Pig s HDInsight a SSH](apache-hadoop-use-pig-ssh.md) informace o tom, z příkazového řádku interaktivně spustíte úlohy Pig přímo na clusteru.
 
 ## <a id="prereq"></a>Požadavky
 K dokončení kroků v tomto článku, budete potřebovat.
@@ -78,7 +78,7 @@ Povolení vzdálené plochy pro HDInsight cluster a pak k němu připojit pomoc�
 
         STORE RESULT into 'wasb:///example/data/pigout'
 
-   > [!NOTE]
+   > [!NOTE]  
    > Jsou data uložená v zadaném adresáři v souborech s názvem **část nnnnn**. Pokud adresář již existuje, zobrazí se chybová zpráva.
    >
    >
@@ -119,9 +119,9 @@ Jak je vidět, příkaz Pig umožňuje interaktivně spusťte operace MapReduce 
 ## <a id="nextsteps"></a>Další kroky
 Obecné informace o Pig v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)

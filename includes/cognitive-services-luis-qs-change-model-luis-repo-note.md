@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: a44a7aa3048094f6e21a2670e4a495343624249a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 3ba4105fccda8948b953b2dc8c790b66c691eb4d
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044125"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53429942"
 ---
-> [!NOTE] 
-> Kompletní řešení včetně ukázkového souboru `utterances.json` je dostupné v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/).
+> [!NOTE]
+> Kompletní řešení, včetně příklad `utterances.json` souboru jsou k dispozici na [ **LUIS-Samples** úložiště GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/).

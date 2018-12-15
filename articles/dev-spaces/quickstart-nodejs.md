@@ -10,14 +10,14 @@ ms.date: 09/26/2018
 ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: efb3e63841dbe88bd8711881b373ab505468eabd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 52cca29392f226aa0f33081b9303a8c5d1f41036
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704762"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413332"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (Node.js)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rychlý start: Vytvoření prostoru vývoje Kubernetes s Azure Dev prostory (Node.js)
 
 V tomto průvodci se naučíte:
 
@@ -37,12 +37,12 @@ V tomto průvodci se naučíte:
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Nastavení služby Azure Dev Spaces
 
-Azure CLI a rozšíření Azure Dev Spaces je možné nainstalovat a spustit na počítačích se systémem Windows, Mac nebo Linux. V případě Linuxu se podporují následující distribuce: Ubuntu (18.04, 16.04 a 14.04), Debian 8 a 9, RHEL 7, Fedora 26 a novější, CentOS 7, openSUSE 42.2 a SLES 12.
+Azure CLI a rozšíření Azure Dev Spaces je možné nainstalovat a spustit na počítačích se systémem Windows, Mac nebo Linux. Pro Linux jsou podporovány následující distribuce: (18.04, 16.04 a 14.04) se systémem Ubuntu, Debian 8 až 9, 7 RHEL, Fedora 26 +, CentOS 7, openSUSE 42.2 a SLES 12.
 
 Podle těchto pokynů nastavte Azure Dev Spaces:
 

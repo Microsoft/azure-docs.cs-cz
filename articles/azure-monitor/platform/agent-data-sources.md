@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zdroje dat v Azure Log Analytics | Dokumentace Microsoftu
-description: Zdroje dat definují data, že připojení Log Analytics shromažďuje z agentů a dalších zdrojů.  Tento článek popisuje koncept jak Log Analytics používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje přehled různých zdrojů dat. k dispozici.
+title: Konfigurace zdroje dat agenta ve službě Azure Monitor | Dokumentace Microsoftu
+description: Zdroje dat definují data protokolu, že Azure Monitor shromažďuje z agentů a další připojení zdrojů.  Tento článek popisuje princip toho, jak Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat a poskytuje přehled různých zdrojů dat. k dispozici.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,25 +11,22 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/26/2018
+ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 152b9a7fdac91865baa8a2c20c632e7a228be62f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 19878477888b37592105927ea03a849d3da7c891
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340755"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434932"
 ---
-# <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
-Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
+# <a name="agent-data-sources-in-azure-monitor"></a>Agent zdroje dat ve službě Azure Monitor
+Data, která shromažďuje agenty Azure Monitor je definována zdroje dat, které nakonfigurujete.  Data z agentů se ukládá jako [můžete vytvářet protokoly dat](data-collection.md) sadu záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
 
-![Shromažďování dat analýzy protokolů](./media/agent-data-sources/overview.png)
-
-Zdroje dat se liší od [řešení pro správu](../../azure-monitor/insights/solutions.md), což také shromažďovat data z připojené zdroje a vytvářet záznamy ve službě Log Analytics.  Kromě shromažďování dat, obvykle zahrnují řešení prohledávání protokolů a zobrazení, které vám pomůžou analyzovat operace určitá aplikace nebo služby.
-
+![Shromažďování dat protokolu](media/agent-data-sources/overview.png)
 
 ## <a name="summary-of-data-sources"></a>Přehled zdrojů dat
-Následující tabulka obsahuje seznam zdrojů dat, které jsou aktuálně k dispozici ve službě Log Analytics.  Každý odkaz na věnovaný samostatný článek poskytuje podrobnosti pro tento zdroj dat má.   Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. Vysvětlení sloupců, naleznete v tématu [podrobnosti shromažďování dat pro řešení pro správu v Azure](../../azure-monitor/insights/solutions-inventory.md).
+V následující tabulce jsou uvedeny agenta zdroje dat, které jsou aktuálně k dispozici ve službě Azure Monitor.  Každý odkaz na věnovaný samostatný článek poskytuje podrobnosti pro tento zdroj dat má.   Poskytuje také informace o jejich metoda a frekvenci shromažďování. 
 
 
 | Zdroj dat | Platforma | Agent sledování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu | Četnost shromažďování dat |
@@ -44,27 +41,27 @@ Následující tabulka obsahuje seznam zdrojů dat, které jsou aktuálně k dis
 
 
 ## <a name="configuring-data-sources"></a>Konfigurace zdroje dat
-Konfigurace zdroje dat z **Data** nabídky ve službě Log Analytics **Upřesnit nastavení**.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace nelze aktuálně vyloučit všechny agenty.
+Konfigurace zdroje dat z **Data** v nabídce **Upřesnit nastavení** pro pracovní prostor.  Všechny konfigurace se doručí do všech připojených zdrojů ve vašem pracovním prostoru.  Z této konfigurace nelze aktuálně vyloučit všechny agenty.
 
 ![Konfigurace událostí Windows](./media/agent-data-sources/configure-events.png)
 
-1. Na webu Azure Portal, vyberte **Log Analytics** > váš pracovní prostor > **Upřesnit nastavení**.
+1. Na webu Azure Portal, vyberte **pracovní prostory** > váš pracovní prostor > **Upřesnit nastavení**.
 2. Vyberte **Data**.
 3. Klikněte na zdroj dat, který chcete konfigurovat.
 4. Použijte odkaz na dokumentaci pro jednotlivé zdroje dat v tabulce výše uvedené podrobnosti o jejich konfiguraci.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
-Konfigurace zdroje dat jsou doručeny agentům, které jsou přímo připojené ke službě Log Analytics během několika minut.  Je zadaná data shromážděná z agenta a doručované přímo do Log Analytics v intervalech, které jsou specifické pro každý zdroj dat.  Naleznete v dokumentaci pro jednotlivé zdroje dat pro tyto konkrétní.
+Konfigurace zdroje dat jsou doručeny agentům byli přímo připojení k Azure Monitor během několika minut.  Je zadaná data shromážděná z agenta a doručované přímo do Azure monitoru v intervalech, které jsou specifické pro každý zdroj dat.  Naleznete v dokumentaci pro jednotlivé zdroje dat pro tyto konkrétní.
 
-Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Log Analytics nebo bude agent posílat data do Log Analytics bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro řešení pro správu v Azure](../../azure-monitor/insights/solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Log Analytics a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
+Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Azure monitoru, nebo bude agent posílat data do Azure monitoru bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro monitorování řešení v Azure](../../azure-monitor/insights/solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Azure Monitor a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md).
 
-Pokud je agent nemůže připojit k Log Analytics nebo Operations Manager, bude nadále shromažďovat data, která bude poskytovat navazuje připojení.  Data mohou být ztraceny, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
+Pokud je agent nemůže připojit k Azure Monitor nebo Operations Manager, bude nadále shromažďovat data, která bude poskytovat navazuje připojení.  Data mohou být ztraceny, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
 
-## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Všechna data shromážděná službou Log Analytics je v pracovním prostoru uloží jako záznamy.  Záznamy shromážděné z různých zdrojů dat budou mít své vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro jednotlivé zdroje dat a řešení pro podrobnosti pro každý typ záznamu.
+## <a name="log-records"></a>Záznamy protokolu
+Všechna data protokolů shromážděná službou Azure Monitor je v pracovním prostoru uloží jako záznamy.  Záznamy shromážděné z různých zdrojů dat budou mít své vlastní sadu vlastností a identifikovat podle jejich **typ** vlastnost.  Najdete v dokumentaci pro jednotlivé zdroje dat a řešení pro podrobnosti pro každý typ záznamu.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [řešení](../../azure-monitor/insights/solutions.md) , které doplňují do Log Analytics a také shromažďovat data do pracovního prostoru.
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
-* Konfigurace [výstrahy](../../azure-monitor/platform/alerts-overview.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a řešení.
+* Další informace o [řešení monitorování](../../azure-monitor/insights/solutions.md) , které doplňují do Azure monitoru a také shromažďovat data do pracovního prostoru.
+* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a monitorování řešení.  
+* Konfigurace [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) můžete zajistit aktivní upozorňování kritických dat shromážděných ze zdroje dat a monitorování řešení.

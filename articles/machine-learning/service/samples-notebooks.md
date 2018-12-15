@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7affc60e3504b9b43d7663a4b7799c52fef79e7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082777"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434524"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Použití poznámkových bloků Jupyter a prozkoumejte službu Azure Machine Learning
 
@@ -29,7 +29,7 @@ Zjistěte, jak používat službu s dokumentací na tomto webu a tyto poznámkov
 
 Dokončení [rychlý start Python pro Azure Machine Learning](quickstart-get-started.md) k vytvoření pracovního prostoru a spuštění poznámkových bloků Azure.
 
-## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Vyzkoušejte Azure poznámkových bloků: Bezplatný Jupyter notebooks v cloudu
+## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Vyzkoušejte Azure poznámkových bloků: Bezplatné poznámkové bloky Jupyter v cloudu
 
 Je snadné začít s poznámkovými bloky Azure! [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) již nainstalován a nakonfigurován v poznámkových blocích Azure za vás. Instalace a aktualizace budoucí jsou automaticky spravovány prostřednictvím služby Azure.
   
@@ -116,9 +116,10 @@ Přestože můžete použít některou z výše uvedených možností, můžete 
       + Nakonfiguruje widgetu
       + Spuštění poznámkového bloku jupyter
       
-      Skript používá název prostředí conda jako volitelný parametr. Je výchozí název prostředí conda `azure_automl`. Přesný příkaz závisí na operačním systému. 
+   >[!NOTE]
+   > Skript používá název prostředí conda jako volitelný parametr. Je výchozí název prostředí conda `azure_automl`. Přesný příkaz závisí na operačním systému. To je užitečné, pokud vytváříte nové prostředí nebo upgrade na novou verzi. Například můžete použít "automl_setup.cmd azure_automl_sandbox" k vytvoření azure_automl_sandbox evironment název. 
       
-      Po dokončení skriptu, zobrazí se domovská stránka Poznámkový blok Jupyter v prohlížeči.
+1. Po dokončení skriptu, zobrazí se domovská stránka Poznámkový blok Jupyter v prohlížeči.
 
 1. Přejděte do umístění, kam jste uložili poznámkových bloků. 
 

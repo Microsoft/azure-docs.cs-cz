@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 10/20/2018
+ms.date: 12/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 7e547f49ec14bdb69a85dd916ef435c3f30f6ef2
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50254464"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413723"
 ---
 ### <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -37,7 +37,7 @@ Brána Firewall služby Azure můžete nasadit na všechny virtuální sítě, a
 
 ### <a name="how-can-i-install-the-azure-firewall"></a>Jak nainstalovat Azure bránu Firewall?
 
-Brána Firewall služby Azure můžete nastavit pomocí webu Azure portal, Powershellu, rozhraní REST API nebo pomocí šablon. Zobrazit [kurz: nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](../articles/firewall/tutorial-firewall-deploy-portal.md) podrobné pokyny.
+Brána Firewall služby Azure můžete nastavit pomocí webu Azure portal, Powershellu, rozhraní REST API nebo pomocí šablon. Zobrazit [kurzu: Nasazení a konfiguraci brány Firewall Azure pomocí webu Azure portal](../articles/firewall/tutorial-firewall-deploy-portal.md) podrobné pokyny.
 
 ### <a name="what-are-some-azure-firewall-concepts"></a>Jaké jsou některé pojmy Brána Firewall služby Azure?
 
@@ -45,8 +45,8 @@ Azure Brána Firewall podporuje pravidel a kolekcí pravidel. Kolekce pravidel j
 
 Existují dva typy kolekcí pravidel:
 
-* *Pravidla aplikací*: umožňují nakonfigurovat plně kvalifikované názvy domény (FQDN), které mohou být přístupné z podsítě.
-* *Pravidla síťových*: je možné nakonfigurovat pravidla, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
+* *Pravidla aplikací*: Umožňují nakonfigurovat plně kvalifikované názvy domény (FQDN), které mohou být přístupné z podsítě.
+* *Pravidla síťových*: Umožňují nakonfigurovat pravidla, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Brána Firewall služby Azure podporuje filtrování příchozího provozu?
 
@@ -54,7 +54,7 @@ Azure Brána Firewall podporuje filtrování příchozího a odchozího. Přích
 
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Které protokolování a analýza služby jsou podporovány bránou Azure Firewall?
 
-Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazení a analýza protokolů brány firewall. Protokoly můžete odeslat do Log Analytics, Azure Storage nebo služby Event Hubs. Mohou být analyzovány v Log Analytics, nebo prostřednictvím různých nástrojů, jako je Excel a Power BI. Další informace najdete v tématu [kurz: Brána Firewall služby Azure Monitor protokoly](../articles/firewall/tutorial-diagnostics.md).
+Brány Firewall na Azure je integrovaná se službou Azure Monitor pro zobrazení a analýza protokolů brány firewall. Protokoly můžete odeslat do Log Analytics, Azure Storage nebo služby Event Hubs. Mohou být analyzovány v Log Analytics, nebo prostřednictvím různých nástrojů, jako je Excel a Power BI. Další informace najdete v tématu [kurzu: Monitorujte protokoly brány Firewall Azure](../articles/firewall/tutorial-diagnostics.md).
 
 ### <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Jak se Brána Firewall služby Azure z existujících služeb, jako je například síťová virtuální zařízení na webu Marketplace funguje jinak?
 
@@ -117,10 +117,14 @@ Omezení služby Brána Firewall služby Azure najdete v tématu [předplatného
 
 Ano, brána Firewall služby Azure můžete v centrální virtuální síti pro směrování a filtrování provozu mezi dvěma paprsku virtuální sítě. Podsítě v každé virtuální sítě paprsků, musíte mít UDR přejdete Brána Firewall služby Azure jako výchozí brána pro tento scénář tak, aby správně fungovat.
 
-### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Brána Firewall služby Azure můžete předat dál a filtrování síťového provozu mezi podsítěmi ve stejné virtuální síti?
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Brána Firewall služby Azure můžete předat dál a filtrování síťového provozu mezi podsítěmi ve stejné virtuální síti nebo v partnerských virtuálních sítích?
 
 Provoz mezi podsítěmi ve stejné virtuální síti nebo přímo partnerské virtuální síti je směrován přímo i v případě směrování definovaného uživatelem odkazuje na brány Firewall Azure jako výchozí brána. Doporučenou metodou pro interní síť segmentace, je pomocí skupin zabezpečení sítě. K odeslání podsítě pro podsíť provozu do brány firewall v tomto scénáři, musí obsahovat UDR předpona cílové podsítě sítě explicitně v obou podsítích.
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují všechny brány firewall omezení skupin prostředků?
 
 Ano. Brána firewall, podsítě, virtuální sítě a veřejné IP adresy musí být ve stejné skupině prostředků.
+
+### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Při konfiguraci DNAT pro příchozí síťový provoz, také potřeba nakonfigurovat odpovídající pravidlo sítě, které umožňují tento přenos dat?
+
+Ne. Pravidla NAT implicitně přidat odpovídající pravidlo sítě přeložené provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](../articles/firewall/rule-processing.md).

@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e664fc83fde937b26a4726f997da4c0cb4d8f8a
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948113"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407877"
 ---
 # <a name="scale-hdinsight-clusters"></a>Škálování clusterů HDInsight
 
 HDInsight poskytuje pružnost tím, že možnost vertikálně navýšit a snížit počet pracovních uzlů v clusterech služby. To umožňuje zmenšit cluster po hodinách, nebo o víkendech a rozbalte ho během špičky obchodními požadavky.
 
-Například pokud máte nějaké zpracování služby batch, který se stane jednou denně nebo jednou za měsíc, clusteru HDInsight se dá škálovat pár minut před této naplánované události, bude mít dostatečnou paměť a výpočetní výkon procesoru. Škálování pomocí rutiny Powershellu můžete automatizovat [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
+Například pokud máte nějaké zpracování služby batch, který se stane jednou denně nebo jednou za měsíc, clusteru HDInsight se dá škálovat pár minut před této naplánované události, bude mít dostatečnou paměť a výpočetní výkon procesoru. Škálování pomocí rutiny Powershellu můžete automatizovat [ `Set–AzureRmHDInsightClusterSize` ](hdinsight-administer-use-powershell.md#scale-clusters).  Později po dokončení zpracování a využití ocitne mimo provoz znovu, můžete vertikálně snížit kapacitu clusteru HDInsight na míň pracovních uzlů.
 
 * Škálování clusteru prostřednictvím [Powershellu](hdinsight-administer-use-powershell.md):
 
@@ -77,7 +77,7 @@ Příklad:
 yarn application -kill "application_1499348398273_0003"
 ```
 
-## <a name="rebalancing-an-hbase-cluster"></a>Opětovné vyvážení clusteru HBase
+## <a name="rebalancing-an-apache-hbase-cluster"></a>Opětovné vyvážení clusteru Apache HBase
 
 Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut po dokončení operace škálování. Ručně vyvážit oblastní servery, postupujte následovně:
 
@@ -99,11 +99,11 @@ Jak už bylo zmíněno dříve, všechny čekající na vyřízení nebo spušt�
 
 ![Škálování clusteru](./media/hdinsight-scaling-best-practices/scale-cluster.png)
 
-Pokud váš cluster na minimálně jeden pracovní uzel, zmenšení, jak je znázorněno na předchozím obrázku, HDFS, může zablokovány v nouzovém režimu, když pracovní uzly se restartují, z důvodu opravy nebo bezprostředně po provedení této operace škálování.
+Pokud váš cluster na minimálně jeden pracovní uzel, zmenšení, jak je znázorněno na předchozím obrázku, Apache HDFS, může zablokovány v nouzovém režimu, když pracovní uzly se restartují, z důvodu opravy nebo bezprostředně po provedení této operace škálování.
 
 Primární příčinou je, že Hive používá několik `scratchdir` soubory a ve výchozím nastavení předpokládá, že tří replik každého bloku, ale existuje pouze jedna replika možné Jestliže vertikálně snížit kapacitu k uzlu minimální jeden pracovní proces. V důsledku toho souborů `scratchdir` stát *under-replikované*. To může způsobit HDFS zůstat v nouzovém režimu, když po provedení této operace škálování se restartují služby.
 
-Když vertikálně pokus se stane, závisí HDInsight správy rozhraní Ambari nejprve vyřadit z provozu velmi nežádoucí pracovních uzlů, které jejich HDFS bloky replikuje do dalších uzlů pracovního procesu online, a bezpečně clusteru vertikálně snížit kapacitu. HDFS přejde v nouzovém režimu během časového období údržby a by měl pocházet po dokončení změny velikosti. V tomto okamžiku je, že HDFS můžete zablokovány v nouzovém režimu.
+Když vertikálně pokus se stane, závisí HDInsight Apache Ambari rozhraní pro správu nejprve vyřadit z provozu velmi nežádoucí pracovních uzlů, které jejich HDFS bloky replikuje do dalších uzlů pracovního procesu online, a bezpečně clusteru vertikálně snížit kapacitu. HDFS přejde v nouzovém režimu během časového období údržby a by měl pocházet po dokončení změny velikosti. V tomto okamžiku je, že HDFS můžete zablokovány v nouzovém režimu.
 
 HDFS, nastavena `dfs.replication` nastavení 3. Proto bloky pomocné soubory jsou under-replikované pokaždé, když jsou méně než tři pracovní uzly online, protože nejsou k dispozici není očekávaný tři kopie každého souboru bloku.
 
@@ -117,13 +117,13 @@ Po opuštění nouzovém režimu, můžete ručně odstranit dočasné soubory, 
 
 ### <a name="example-errors-when-safe-mode-is-turned-on"></a>Příklady chyb po zapnutí Nouzový režim
 
-* H070 nelze otevřít relaci Hive. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **nelze vytvořit adresář**  /tmp/hive/hive / 8 819c215c – 6d 87 4311 97c-4f0b9d2adcf0. **Název uzlu je v nouzovém režimu**. Ohlášené bloky 75 potřebuje další 12 bloků k dosažení prahové hodnoty 0.9900 celkový počet bloků 87. Počet živých datanodes 10 dosáhl minimální číslo 0. Nouzový režim se vypne automaticky, jakmile bylo dosaženo prahové hodnoty.
+* H070 nelze otevřít relaci Hive. org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nelze vytvořit adresář** /tmp/hive/hive/819c215c-6d 87 4311 97 c 8-4f0b9d2adcf0. **Název uzlu je v nouzovém režimu**. Ohlášené bloky 75 potřebuje další 12 bloků k dosažení prahové hodnoty 0.9900 celkový počet bloků 87. Počet živých datanodes 10 dosáhl minimální číslo 0. Nouzový režim se vypne automaticky, jakmile bylo dosaženo prahové hodnoty.
 
-* H100 nejde odeslat příkaz Zobrazit databází: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Připojte se k hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername . internal.cloudapp.NET/1.1.1.1] se nezdařilo: **připojení bylo odmítnuto**
+* H100 nejde odeslat příkaz Zobrazit databází: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Připojte se k hn0-clustername.servername.internal.cloudapp.net:10001 [hn0 clustername.servername. internal.cloudapp.NET/1.1.1.1] se nezdařilo: **Připojení bylo odmítnuto**
 
-* Není H020 může vytvořit připojení ke službě .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: připojení k hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nepovedlo: připojení bylo odmítnuto: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Připojte se k hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: **připojení bylo odmítnuto**
+* Není H020 může vytvořit připojení ke službě .net hn0 hdisrv.servername.bx.internal.cloudapp: 10001: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Připojte se ke hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: Připojení bylo odmítnuto: org.apache.thrift.transport.TTransportException: Nepodařilo se vytvořit připojení http k http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/. org.apache.http.conn.HttpHostConnectException: Připojte se ke hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28] se nezdařilo: **Připojení bylo odmítnuto**
 
-* Z protokolů Hive: upozornění [main]: server. HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Chyba při spuštění serveru HiveServer2 při pokusu 21, bude akci opakovat v 60 sekundách java.lang.RuntimeException: Chyba při použití zásad autorizace na konfigurace hive: org.apache.hadoop.ipc.RemoteException () org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **nelze vytvořit adresář** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Název uzlu je v nouzovém režimu**.
+* Z protokolů Hive: UPOZORNIT [main]: server. HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Chyba při spuštění serveru HiveServer2 při pokusu 21, bude akci opakovat v 60 sekundách java.lang.RuntimeException: Chyba při použití zásad autorizace na konfigurace hive: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Nelze vytvořit adresář** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Název uzlu je v nouzovém režimu**.
     Ohlášené bloky 0 potřebuje další bloky 9 k dosažení prahové hodnoty 0.9900 bloků celkem 9.
     Počet živých datanodes 10 dosáhl minimální číslo 0. **Nouzový režim vypnou bude automaticky po bylo dosaženo prahové hodnoty**.
     at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1324)
@@ -151,7 +151,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode get
 
 ![Nouzový režim vypnuto](./media/hdinsight-scaling-best-practices/safe-mode-off.png)
 
-> [!NOTE]
+> [!NOTE]  
 > `-D` Přepínač je potřeba, protože je výchozí systém souborů v HDInsight, Azure Storage nebo Azure Data Lake Store. `-D` Určuje, že příkazy spouštějte místní systém souborů HDFS.
 
 V dalším kroku můžete zobrazit sestavu, která zobrazuje podrobnosti o stavu HDFS:
@@ -251,7 +251,7 @@ Vyčistit pomocné soubory, které odebere chyby replikace bloku, SSH do každé
 hadoop fs -rm -r -skipTrash hdfs://mycluster/tmp/hive/
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Tento příkaz může dojít k narušení Hive některé úlohy jsou spuštěné.
 
 ### <a name="how-to-prevent-hdinsight-from-getting-stuck-in-safe-mode-due-to-under-replicated-blocks"></a>Jak zabránit získávání zablokuje a nespustí z důvodu under-replikované bloky HDInsight
@@ -327,4 +327,4 @@ Posledním způsobem je moct vzácných případech mohou oprávnění, ve kter�
 
 * [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md)
 * [Škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)

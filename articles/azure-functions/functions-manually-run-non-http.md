@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: eba0901561b7c1455b7b06849e1773629d9d357f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388017"
+ms.locfileid: "53406926"
 ---
-# <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění jiné funkci aktivovanou protokolem HTTP
+# <a name="manually-run-a-non-http-triggered-function"></a>Ruční spuštění funkce neaktivované protokolem HTTP
 
 Tento článek ukazuje, jak ručně spustit jiných funkci aktivovanou protokolem HTTP pomocí speciálně formátovaného požadavku HTTP.
 
@@ -43,6 +43,9 @@ Přejděte do funkce na webu Azure Portal a klikněte na **spravovat** a najít 
 ![Zkopírujte hlavní klíč z obrazovky Management – funkce](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
 Po zkopírování hlavního klíče, klikněte na název funkce se vraťte do okna soubor kódu. Potom kliknutím na **protokoly** kartu. Zobrazí zprávy z funkce tady protokolují, když ručně spustíte funkci z Postman.
+
+> [!CAUTION]  
+> Z důvodu vyšší úroveň oprávnění v aplikaci function app udělit pomocí hlavního klíče by neměly sdílet tento klíč s třetími stranami nebo distribuovat v aplikaci.
 
 ## <a name="call-the-function"></a>Volání funkce
 

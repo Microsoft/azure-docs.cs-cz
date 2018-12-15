@@ -8,14 +8,14 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600019"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407012"
 ---
-# <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Řešení potíží s Hive pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hive pomocí Azure HDInsight
 
 Další informace o častých dotazů a jejich řešení při práci s Apache Hive datové části v Apache Ambari.
 
@@ -104,7 +104,7 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
 - [Vlastnosti konfigurace Hive](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak mohu analyzovat data Tez DAG na clusteru kritickou cestu?
+## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Jak mohu analyzovat data Apache Tez DAG na clusteru kritickou cestu?
 
 
 ### <a name="resolution-steps"></a>Postup řešení
@@ -126,17 +126,17 @@ Kód v kroků pro řešení předpokládá, že cesty k datům v novém clusteru
   Ukázkový program je nutné zadat jako první argument.
 
   Program platné názvy patří:
-    - **ContainerReuseAnalyzer**: Tisknout podrobnosti o opakované použití kontejneru ve skupině DAG
-    - **CriticalPath**: najít kritické cesty DAG
-    - **LocalityAnalyzer**: vytisknout podrobnosti lokality ve skupině DAG
+    - **ContainerReuseAnalyzer**: Vytisknout podrobnosti o opakované použití kontejneru ve skupině DAG
+    - **CriticalPath**: Najít kritické cesty DAG
+    - **LocalityAnalyzer**: Vytisknout podrobnosti lokality ve skupině DAG
     - **ShuffleTimeAnalyzer**: Analýza podrobností o času shuffle ve skupině DAG
     - **SkewAnalyzer**: Analýza zkosení podrobností ve skupině DAG
-    - **SlowNodeAnalyzer**: Tisknout podrobnosti o uzlu ve skupině DAG
-    - **SlowTaskIdentifier**: tisk podrobnosti pomalé úlohy ve skupině DAG
-    - **SlowestVertexAnalyzer**: tisk nejpomalejší podrobnosti vrcholu ve skupině DAG
-    - **SpillAnalyzer**: tisk přelití podrobnosti ve skupině DAG
-    - **TaskConcurrencyAnalyzer**: tisk souběžnosti podrobnosti úlohy ve skupině DAG
-    - **VertexLevelCriticalPathAnalyzer**: najít kritickou cestu na úrovni vrcholů ve skupině DAG
+    - **SlowNodeAnalyzer**: Vytisknout podrobnosti o uzlu ve skupině DAG
+    - **SlowTaskIdentifier**: Vytisknout podrobnosti pomalé úlohy ve skupině DAG
+    - **SlowestVertexAnalyzer**: Tisk nejpomalejší podrobnosti vrcholu ve skupině DAG
+    - **SpillAnalyzer**: Tisk přelití podrobností ve skupině DAG
+    - **TaskConcurrencyAnalyzer**: Tisk souběžnosti podrobnosti úlohy ve skupině DAG
+    - **VertexLevelCriticalPathAnalyzer**: Najít kritickou cestu na úrovni vrcholů ve skupině DAG
 
 
 ### <a name="additional-reading"></a>Další čtení

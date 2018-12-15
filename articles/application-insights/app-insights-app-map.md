@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/12/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: d1c95802889c80baf79eaf0a0af1e30d6bc3fdfd
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 3929e4d2a915e58922d26f6d4b81c7d3a4fc8afe
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322273"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434099"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 
@@ -200,6 +200,8 @@ Pokud máte problémy dostat se mapa aplikace fungovat podle očekávání, prov
 3. Pokud používáte Azure Functions s C#, proveďte upgrade na [funkce V2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
 4. Potvrďte [cloud_RoleName](app-insights-app-map.md#Set-cloud-RoleName) je správně nakonfigurovaný.
+
+5. Pokud jste chybí závislost, ujistěte se, že je v seznamu [automaticky shromažďovaných závislostí](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Pokud ne, můžete dál sledovat ručně pomocí [sledování volání závislosti](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="portal-feedback"></a>Portálu zpětné vazby
 Pokud chcete poskytnout zpětnou vazbu, použijte možnost portálu zpětnou vazbu.

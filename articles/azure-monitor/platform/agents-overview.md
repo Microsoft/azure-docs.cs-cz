@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5726444033d8da14c213918f409ddf5875e026b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322751"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438196"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -44,7 +44,7 @@ Můžete shromažďovat:
 Agenta diagnostiky Azure byste měli použít, když chcete:
 
 * Archivovat protokoly a metriky do služby Azure storage
-* Data monitorování integraci s nástroji třetích stran. Tyto nástroje používat různými metodami, včetně dotazování na účet úložiště předá [Event Hubs](../../event-hubs/event-hubs-about.md), nebo dotazování pomocí [rozhraním API REST pro monitorování Azure](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
+* Data monitorování integraci s nástroji třetích stran. Tyto nástroje používat různými metodami, včetně dotazování na účet úložiště předá [Event Hubs](../../event-hubs/event-hubs-about.md), nebo dotazování pomocí [rozhraním API REST pro monitorování Azure](../../azure-monitor/platform/rest-api-walkthrough.md)
 * Nahrání dat do služby Azure Monitor k vytvoření grafů metrik na webu Azure Portal nebo vytvořit téměř v reálném čase [upozornění na metriku](../../azure-monitor/platform/alerts-metric-overview.md). 
 * Škálovací sady virtuálních počítačů automatického škálování a cloudové služby Classic podle metrik operačního systému hosta.
 * Prozkoumat problémy spouštění virtuálních počítačů s [Diagnostika spouštění](../../virtual-machines/troubleshooting/boot-diagnostics.md).

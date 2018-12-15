@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: a81cb9041b905cfb00183981036116fbc61f376a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8a0acbfa18053b6b50bd872d109b02d556a6f5f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000878"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436055"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Správa cen a objemů dat ve službě Application Insights
 
 > [!NOTE]
 > Tento článek popisuje, jak analyzovat využití dat Application Insights.  Přečtěte si následující články související informace.
-> - [Monitorování využití a odhadované náklady](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
+> - [Monitorování využití a odhadované náklady](../azure-monitor/platform/usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
 
 Ceny za [Azure Application Insights] [ start] se podle objemu dat na aplikaci. Každý prostředek Application Insights se účtuje jako samostatná služba a přispívá k vyúčtování předplatného Azure.
 
@@ -86,14 +86,14 @@ Poplatky za Application Insights se přidají do vašeho vyúčtování služeb 
 ## <a name="data-rate"></a>Přenosová rychlost
 Objem dat odesílaných je omezená třemi způsoby:
 
-* **Vzorkování**: vzorkování můžete použít ke snížení množství telemetrie odesílané z serverových a klientských aplikací, s minimální narušení metrik. Vzorkování je primárním nástrojem, který můžete použít k vyladění objemu dat, které odesíláte. Další informace o [vzorkování funkce](app-insights-sampling.md). 
+* **Vzorkování**: Vzorkování můžete snížit objem telemetrických dat, která je odeslána ze serveru a klientské aplikace s minimální narušení metrik. Vzorkování je primárním nástrojem, který můžete použít k vyladění objemu dat, které odesíláte. Další informace o [vzorkování funkce](app-insights-sampling.md). 
 * **Denní limit**: Když vytvoříte prostředek Application Insights na webu Azure Portal, denní limit je nastavený na 100 GB za den. Když vytvoříte prostředek Application Insights v sadě Visual Studio, použije se malé (pouze 32,3 MB/den). Denní limit výchozí nastavení je usnadnit testování. Předpokládá se, že uživatel vyvolá denního limitu před nasazením aplikace do produkčního prostředí. 
 
     Maximální limit je 1 000 GB za den, pokud požadujete vyšší maximum pro aplikace s vysokým provozem. 
 
     Péče o použijte, pokud nastavíte denní limit. Máte v úmyslu by mělo být *nikdy dosaženo denního limitu*. Když dosáhnou denního limitu můžete přijít o data po zbytek dne a není možné sledovat vaše aplikace. Chcete-li změnit denního limitu, použijte **denní limit objemu** možnost. Této možnosti v můžete přistupovat **využití a odhadované náklady** podokně (to je podrobněji popsaný dále v tomto článku).
     Odebrali jsme omezení pro některé typy předplatných, které mají kredit, který nelze použít pro službu Application Insights. Dříve Pokud předplatné limit útraty, denní limit dialogové okno obsahuje pokyny k odebrání limitu útraty a povolit denní limit zapříčinil nad 32,3 MB za den.
-* **Omezení šířky pásma**: omezení rychlost dat na 32 000 událostí za sekundu, byla více než 1 minuty na jeden Instrumentační klíč.
+* **Omezení šířky pásma**: Omezení rychlost přenosu dat do 32 000 událostí za sekundu, byla více než 1 minuty na jeden Instrumentační klíč.
 
 *Co když Moje aplikace překračuje omezení frekvence?*
 

@@ -15,12 +15,12 @@ ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a2be1735561d31f934f1353a336b5e4d198227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dd42f6317f684fcc5ad9da94c1b09ab1870ccf76
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622189"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408119"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -46,7 +46,7 @@ K připojení aplikace pomocí šablony integrace aplikace, přihlaste se k webu
 
 V galerii aplikací můžete přidat neuvedené aplikace tak, že vyberete **aplikace mimo galerii** dlaždici, která je zobrazena ve výsledcích hledání, pokud požadované aplikace se nenašla. Jakmile zadáte název vaší aplikace, můžete nakonfigurovat, volby jednotného přihlašování a chování. 
 
-**Rychlý tip**: jako osvědčený postup, můžete zkontrolovat, jestli aplikace již existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí jednotného přihlašování, pak aplikaci již podporují pro federované jednotné přihlašování.
+**Rychlý tip**:  Jako osvědčený postup můžete zkontrolovat, jestli aplikace již existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí jednotného přihlašování, pak aplikaci již podporují pro federované jednotné přihlašování.
 
   ![Search](./media/configure-single-sign-on-non-gallery-applications/customapp2.png)
 
@@ -163,7 +163,7 @@ Jakmile jsou zachyceny na přihlašovací stránku, může být přiřazena uži
 >
 
 ## <a name="existing-single-sign-on"></a>Existující jednotné přihlašování
-Vyberte tuto možnost, chcete-li přidat odkaz na aplikaci na přístupový Panel Azure AD nebo Office 365 portál vaší organizace. Můžete přidat odkazy na vlastní webové aplikace, které používají Azure Active Directory Federation Services (nebo jiné služby federation service) místo Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePoint nebo jiných webových stránek, které chcete zobrazit na přístupových panelech uživatele. 
+Vyberte tuto možnost, chcete-li přidat odkaz na aplikaci na přístupový Panel Azure AD nebo Office 365 portál vaší organizace. Můžete přidat odkazy na vlastní webové aplikace, které používají Active Directory Federation Services (nebo jiné služby federation service) místo Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePoint nebo jiných webových stránek, které chcete zobrazit na přístupových panelech uživatele. 
 
 Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace propojení. Po dokončení, uživatelů a skupin může být přiřazen k aplikaci, což způsobí, že aplikace bude zobrazovat v [Spouštěči aplikací Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel služby Azure AD](end-user-experiences.md) pro tyto uživatele.
 

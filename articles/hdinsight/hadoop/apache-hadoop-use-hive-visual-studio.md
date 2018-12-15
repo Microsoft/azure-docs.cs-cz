@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2b059c9a8808db3b2426db0d997df15196be604d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: ae2b06f266ef19d9558511284ba94c77cdca1955
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012075"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409679"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštějte dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
@@ -24,7 +24,7 @@ Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive
 
 * Cluster Azure HDInsight (Apache Hadoop v HDInsight)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Visual Studio (jedna z následujících verzí):
@@ -37,7 +37,7 @@ Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive
 
 * Nástroje HDInsight pro Visual Studio nebo Azure Data Lake tools pro Visual Studio. Zobrazit [začněte používat nástroje Visual Studio Hadoop pro HDInsight](apache-hadoop-visual-studio-tools-get-started.md) informace o instalaci a konfiguraci nástroje.
 
-## <a id="run"></a> Spouštění dotazů Hive pomocí sady Visual Studio
+## <a id="run"></a> Spouštějte dotazy Apache Hive pomocí sady Visual Studio
 
 1. Otevřít **sady Visual Studio** a vyberte **nový** > **projektu** > **Azure Data Lake**  >   **HIVE** > **Hive aplikace**. Zadejte název pro tento projekt.
 
@@ -58,14 +58,14 @@ Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive
 
    * `CREATE EXTERNAL TABLE`: Vytvoří novou tabulku "externí" v podregistru. Externí tabulky pouze uložte definici tabulky Hive (data zůstane v původním umístění).
 
-     > [!NOTE]
+     > [!NOTE]  
      > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například úlohy MapReduce nebo služby Azure.
      >
      > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
 
-   * `ROW FORMAT`: Přikáže Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+   * `ROW FORMAT`: Říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
 
-   * `STORED AS TEXTFILE LOCATION`: Přikáže Hive, že jsou data uložená v adresáři příklad/dat a uložená jako text.
+   * `STORED AS TEXTFILE LOCATION`: Hive říká, že jsou data uložená v adresáři příklad/dat a uložená jako text.
 
    * `SELECT`: Vyberte počet všech řádků ve kterém sloupci `t4` obsahuje hodnotu `[ERROR]`. Tento příkaz vrátí hodnotu `3` vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
 
@@ -93,9 +93,9 @@ Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive
 
     Tyto příkazy provádět následující akce:
 
-   * `CREATE TABLE IF NOT EXISTS`: Vytvoří tabulku, pokud ještě neexistuje. Vzhledem k tomu, `EXTERNAL` – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou spravované pomocí Hive.
+   * `CREATE TABLE IF NOT EXISTS`: Pokud ještě neexistuje, vytvoří tabulku. Vzhledem k tomu, `EXTERNAL` – klíčové slovo se nepoužívá, tento příkaz vytvoří interní tabulku. Interní tabulky jsou uložené v datovém skladu Hive a jsou spravované pomocí Hive.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Na rozdíl od `EXTERNAL` tabulek, vyřadit interní tabulku také odstraní podkladová data.
 
    * `STORED AS ORC`: Ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. ORC je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
@@ -112,13 +112,13 @@ Jak je vidět, nástroje HDInsight pro Visual Studio poskytují snadný způsob,
 
 Obecné informace o Hivu ve službě HDInsight:
 
-* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Hivu s Apache Hadoop v HDInsight](hdinsight-use-hive.md)
 
 Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s Apache Hadoop v HDInsight](hdinsight-use-pig.md)
 
-* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou Apache Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
 Další informace o nástrojích HDInsight pro Visual Studio:
 

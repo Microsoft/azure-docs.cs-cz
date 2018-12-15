@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 67d08379d98873fa88ef20b5cc8c87163c067e3a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 931c1bc68c4e357432081dbfa2df685fcf9fc96d
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310449"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409747"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
@@ -29,11 +29,11 @@ Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 
 * [Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
 * [Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service pro Linux](containers/tutorial-auth-aad.md)
-* [Konfigurace aplikace pro použití přihlášení Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md)
-* [Konfigurace aplikace pro použití přihlášení k Facebooku](app-service-mobile-how-to-configure-facebook-authentication.md)
-* [Konfigurace aplikace pro použití přihlášení ke Googlu](app-service-mobile-how-to-configure-google-authentication.md)
-* [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
-* [Konfigurace aplikace pro použití přihlášení k Twitteru](app-service-mobile-how-to-configure-twitter-authentication.md)
+* [Konfigurace aplikace pro použití přihlášení Azure Active Directory](configure-authentication-provider-aad.md)
+* [Konfigurace aplikace pro použití přihlášení k Facebooku](configure-authentication-provider-facebook.md)
+* [Konfigurace aplikace pro použití přihlášení ke Googlu](configure-authentication-provider-google.md)
+* [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](configure-authentication-provider-microsoft.md)
+* [Konfigurace aplikace pro použití přihlášení k Twitteru](configure-authentication-provider-twitter.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Použití více poskytovatelů přihlášení
 
@@ -183,7 +183,7 @@ Když vyprší platnost přístupového tokenu poskytovatele, musíte uživatele
 - **Google**: Připojit `access_type=offline` parametr řetězce do dotazu vaše `/.auth/login/google` volání rozhraní API. Pokud pomocí sady SDK služby Mobile Apps, můžete přidat parametr do jednoho z `LogicAsync` přetížení (naleznete v tématu [Google aktualizovat tokeny](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Neposkytuje obnovovací tokeny. Dlouhodobé tokeny vyprší za 60 dní (naleznete v tématu [Facebook vypršení platnosti a rozšíření přístupové tokeny](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
 - **Twitter**: Přístupové tokeny nevyprší (viz [nejčastější dotazy k Twitteru OAuth](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
-- **Účet Microsoft**: Když [nastavení ověřování účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), vyberte `wl.offline_access` oboru.
+- **Účet Microsoft**: Když [nastavení ověřování účtu Microsoft](configure-authentication-provider-microsoft.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky vyberte **r/w**.
     1. V levém prohlížeč, přejděte na **předplatná** > **_\<předplatné\_název_**   >  **resourceGroups** > _**\<prostředků\_skupiny\_name >**_   >  **poskytovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **config** > **authsettings**. 

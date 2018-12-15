@@ -9,19 +9,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d3c9c8eab0ce13aee5dbe7bdb732d45555e547fb
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634562"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407163"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštějte dotazy Apache Hive pomocí sady HDInsight .NET SDK
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
 Zjistěte, jak odesílat dotazy Apache Hive pomocí sady HDInsight .NET SDK. Napište program C# se odeslat dotaz Hive pro zobrazení seznamu tabulek Hive a zobrazení výsledků.
 
-> [!NOTE]
+> [!NOTE]  
 > Kroky v tomto článku je potřeba provést z klienta Windows. Informace o použití systému Linux, OS X nebo Unix klienta pro práci s Hive použijte volič karty zobrazí v horní části článku.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -29,8 +29,8 @@ Před zahájením tohoto článku, musíte mít následující položky:
 
 * **Cluster Apache Hadoop v HDInsight**. Zobrazit [Začínáme používat Hadoop využívající systém Linux v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
-    > [!WARNING]
-    > Od 15. září 2017 sady HDInsight .NET SDK podporuje pouze vrácení výsledků dotazu Hive z účtů služby Azure Storage. Pokud používáte v tomto příkladu se cluster HDInsight, používající Azure Data Lake Store jako primární úložiště, nelze načíst výsledky hledání pomocí sady .NET SDK.
+    > [!WARNING]  
+    > Od 15. září 2017 sady HDInsight .NET SDK podporuje pouze vrácení výsledků dotazu Hive z účtů služby Azure Storage. Pokud používáte v tomto příkladu se cluster HDInsight, používající Azure Data Lake Storage jako primární úložiště, nelze načíst výsledky hledání pomocí sady .NET SDK.
 
 * **Visual Studio 2013/2015/2017**.
 
@@ -138,11 +138,11 @@ Výstup aplikace musí být podobně jako:
 V tomto článku jste se naučili několik způsobů, jak vytvořit HDInsight cluster. Další informace naleznete v následujících článcích:
 
 * [Začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
-* [Vytvoření clusterů Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-* [Správa clusterů Hadoop v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-management-portal.md)
+* [Vytvořte clustery systému Apache Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-management-portal.md)
 * [Referenční dokumentace sady HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
-* [Použití nástroje Sqoop se HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Sqoop s HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Vytvoření aplikací .NET HDInsight pro neinteraktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
  
 

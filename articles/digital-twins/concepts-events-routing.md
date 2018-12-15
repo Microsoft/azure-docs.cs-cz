@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: a1a31ec7ee0d1daea9f178e51dc860279d3787ec
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e16d27314a159b124e35560ffb8cd9685fc5c7a0
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615333"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438009"
 ---
 # <a name="routing-events-and-messages"></a>Směrování událostí a zpráv
 
@@ -23,9 +23,9 @@ ms.locfileid: "51615333"
 
 Digitální dvojče Azure nabízí dva způsoby, jak integrace událostí IoT do jiných služeb Azure nebo obchodních aplikací:
 
-* **Směrování událostí Azure digitální dvojče**: objekt prostorový graf změny, telemetrická data, která se zobrazila, nebo uživatelem definovanou funkci, která vytvoří oznámení na základě předdefinovaných podmínek, mohou aktivovat události digitální dvojče Azure. Uživatelé můžou posílat událostí do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [témat Azure Service Bus](https://azure.microsoft.com/services/service-bus/), nebo [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) k dalšímu zpracování.
+* **Směrování událostí Azure digitální dvojče**: Objekt prostorový graf změny, telemetrická data, která se zobrazila, nebo uživatelem definovanou funkci, která vytvoří oznámení na základě předdefinovaných podmínek, mohou aktivovat události digitální dvojče Azure. Uživatelé můžou posílat událostí do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [témat Azure Service Bus](https://azure.microsoft.com/services/service-bus/), nebo [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) k dalšímu zpracování.
 
-* **Směrování telemetrii zařízení**: kromě směrování událostí, digitální dvojče Azure můžete také směrovat zprávy typu zařízení nezpracovaná telemetrická data do služby Event Hubs pro další přehledy a analýzy. Tyto typy zpráv, které nejsou zpracovávány digitální dvojče Azure. A jste pouze předávají do centra událostí.
+* **Směrování telemetrii zařízení**: Kromě směrování událostí digitální dvojče Azure můžete také směrovat nezpracované zařízení telemetrické zprávy do služby Event Hubs pro další přehledy a analýzy. Tyto typy zpráv, které nejsou zpracovávány digitální dvojče Azure. A jste pouze předávají do centra událostí.
 
 Uživatelé mohou zadat jednu nebo více koncových bodů odchozího přenosu dat k odeslání události nebo předávání zpráv. Události a zprávy se odešlou do koncových bodů podle těchto předdefinovaných směrování požadavků. Jinými slovy můžou uživatelé nastavit určité koncový bod pro příjem událostí operace grafu, jiné příjem událostí telemetrie zařízení, a tak dále.
 

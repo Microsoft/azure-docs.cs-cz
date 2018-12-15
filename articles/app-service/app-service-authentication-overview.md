@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: add470aec1b19a8862a17d4a5a84bc221b8582b4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: dc5a90506021eef06cd914c72a943dcfa7fa9195
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250871"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408999"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -153,11 +153,11 @@ Průvodce postupy specifickým pro zprostředkovatele:
 * [Jak nakonfigurovat aplikaci pro použití přihlášení k Twitteru][Twitter]
 * [Jak: Použití vlastního ověřování pro vaši aplikaci][custom-auth]
 
-[AAD]: app-service-mobile-how-to-configure-active-directory-authentication.md
-[Facebook]: app-service-mobile-how-to-configure-facebook-authentication.md
-[Google]: app-service-mobile-how-to-configure-google-authentication.md
-[MSA]: app-service-mobile-how-to-configure-microsoft-authentication.md
-[Twitter]: app-service-mobile-how-to-configure-twitter-authentication.md
+[AAD]: configure-authentication-provider-aad.md
+[Facebook]: configure-authentication-provider-facebook.md
+[Google]: configure-authentication-provider-google.md
+[MSA]: configure-authentication-provider-microsoft.md
+[Twitter]: configure-authentication-provider-twitter.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

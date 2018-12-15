@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 2bc0579d3dd60d66a23a29dabff7e43ca8dfee76
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578345"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53435391"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Pro interakci s rozhraními API Azure vyžaduje cluster AKS [instanční objekt 
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
@@ -105,7 +105,7 @@ Můžete použít rozšířeného sítě kde virtuální sítě a podsítě nebo
   - *Microsoft.Network/publicIPAddresses/join/action*
 - Nebo přiřadit [Přispěvatel sítě] [ rbac-network-contributor] předdefinovaná role v podsíti ve virtuální síti
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 
 Potřebujete přístup k existující prostředky disku v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
 
@@ -113,6 +113,10 @@ Potřebujete přístup k existující prostředky disku v jiné skupině prostř
   - *Microsoft.Compute/disks/read*
   - *Microsoft.Compute/disks/write*
 - Nebo přiřadit [Přispěvatel účtů úložiště] [ rbac-storage-contributor] předdefinovanou roli ve skupině prostředků.
+
+### <a name="azure-container-instances"></a>Azure Container Instances
+
+Pokud používáte Virtual Kubelet k integraci s AKS a zvolit spuštění služby Azure Container Instances (ACI) ve skupině prostředků samostatný AKS cluster, musí mít udělena instanční objekt služby AKS *Přispěvatel* oprávnění pro prostředek ACI Skupina.
 
 ## <a name="additional-considerations"></a>Další aspekty
 

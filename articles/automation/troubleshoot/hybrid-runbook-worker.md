@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 38e2589365c2f1c88145fbf068d3ed267d4a4621
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a95c9f1edd6983c915316f2900885a8131245860
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284557"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437822"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -34,7 +34,7 @@ Spuštění sady Runbook selže a zobrazí se následující chyba:
 "The job action 'Activate' cannot be run, because the process stopped unexpectedly. The job action was attempted three times."
 ```
 
-Vaše sada runbook je pozastavený, krátce po pokusu o provedení jeho třikrát. Existují podmínky, které mohou narušit runbook úspěšně dokončit a související chybové zprávy neobsahuje žádné další informace o označující důvod, proč.
+Vaše sada runbook je pozastavený, krátce po pokusu o provedení jeho třikrát. Existují podmínky, které mohou narušit runbook úspěšně dokončit a související chybové zprávy neobsahuje další informace, který označuje důvod, proč.
 
 #### <a name="cause"></a>Příčina
 
@@ -52,7 +52,7 @@ Toto jsou možné příčiny:
 
 Ověřte, že má počítač odchozí přístup k *.azure-automation.net na portu 443.
 
-Počítače se systémem Hybrid Runbook Worker by měl splňovat minimální požadavky na hardware před určit ji hostovat tuto funkci. V závislosti na využití prostředků jiných procesů na pozadí a konflikty způsobené runbooků během spuštění, v opačném případě počítač stane přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.
+Počítače se systémem Hybrid Runbook Worker by měl splňovat minimální požadavky na hardware před určit ji hostovat tuto funkci. V závislosti na využití prostředků z jiné procesy na pozadí a během může spuštění sady runbook v opačném případě příčina počítač stane přetížen a způsobit zpoždění úlohy sady runbook nebo vypršení časových limitů.
 
 Potvrďte, že počítač určený pro spouštění funkce Hybrid Runbook Worker splňuje minimální hardwarové požadavky. Pokud ano, monitorování využití procesoru a paměti určit jakákoli korelace mezi výkonem procesy Hybrid Runbook Worker a Windows. Pokud je paměť nebo procesor přetížení, může to znamenat nemusíte upgradovat nebo přidání dalších procesorů nebo navyšte paměť adres kritickým bodem prostředků a vyřešení chyby. Alternativně vyberte různé výpočetního prostředku, který podporuje požadavky na minimální a škálování při vytížení označující, že zvýšení je nezbytné.
 
@@ -62,7 +62,7 @@ Zkontrolujte **Microsoft SMA** protokolu událostí pro odpovídající událost
 
 Hybrid Runbook Worker Linuxu závisí na agenta OMS pro Linux ke komunikaci s účtem služby Automation k registraci pracovního procesu, přijímat úlohy runbooku a informuje o stavu. Pokud pracovní proces registrace selže, tady jsou některé možné příčiny chyby:
 
-### <a name="oms-agent-not-running"></a>Scénář: Agenta OMS pro Linux není spuštěná.
+### <a name="oms-agent-not-running"></a>Scénář: Není spuštěn Agent OMS pro Linux
 
 Pokud není spuštěn Agent OMS pro Linux, zabrání Hybrid Runbook Worker Linuxu komunikaci s Azure Automation. Ověření, je agent spuštěn tak, že zadáte následující příkaz: `ps -ef | grep python`. Byste měli vidět výstup podobný následujícímu procesů python pomocí **nxautomation** uživatelský účet. Pokud nejsou povolené řešení Update Management nebo služby Azure Automation, žádný z následujících postupů běží.
 
@@ -72,9 +72,9 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-Následující seznam uvádí procesy, které jsou spouštěny pro Linux Hybrid Runbook Worker. Všechny jsou umístěny v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
+Následující seznam uvádí procesy, které jsou spouštěny pro Linux Hybrid Runbook Worker. Všechny nacházejí v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
 
-* **OMS.conf** – to je správce pracovního procesu, to je spuštěna přímo z DSC.
+* **OMS.conf** – tento proces je správce pracovního procesu, tento proces je spuštěn přímo z DSC.
 
 * **Worker.conf** -tohoto procesu je automaticky zaregistrovaný hybridní pracovní proces, se spustí Správce pracovních procesů. Tento proces používá správu aktualizací a je pro uživatele transparentní. Tento proces není k dispozici, pokud na počítači není povolené řešení Update Management.
 
@@ -84,7 +84,7 @@ Pokud agenta OMS pro Linux neběží, spusťte následující příkaz ke spušt
 
 ### <a name="class-does-not-exist"></a>Scénář: Zadanou třídu neexistuje.
 
-Pokud se zobrazí chyba: **zadanou třídu neexistuje...** v `/var/opt/microsoft/omsconfig/omsconfig.log` pak agenta OMS pro Linux je potřeba aktualizovat. Spusťte následující příkaz, který znovu nainstalujte agenta OMS:
+Pokud se zobrazí následující chyba: **Zadaná třída neexistuje...** v `/var/opt/microsoft/omsconfig/omsconfig.log` pak agenta OMS pro Linux je potřeba aktualizovat. Spusťte následující příkaz, který znovu nainstalujte agenta OMS:
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -102,7 +102,7 @@ Funkce Hybrid Runbook Worker Windows závisí na agenta Microsoft Monitoring Age
 
 #### <a name="cause"></a>Příčina
 
-Pokud služba Microsoft Monitoring agenta Windows není spuštěna, zabrání Hybrid Runbook Worker komunikaci s Azure Automation.
+Pokud služba Microsoft Monitoring agenta Windows není spuštěna, tento scénář brání Hybrid Runbook Worker v komunikaci s Azure Automation.
 
 #### <a name="resolution"></a>Řešení
 
@@ -112,21 +112,51 @@ Ověření, je agent spuštěn tak, že zadáte následující příkaz Powershe
 
 #### <a name="issue"></a>Problém
 
-V **Application and Services Logs\Operations Manager** protokolu událostí se zobrazí události 4502 a zpráva události obsahuje **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**s tímto popisem: *certifikát předložený službou \<wsid\>. oms.opinsights.azure.com nevydala certifikační autorita používaná pro služby Microsoftu. Obraťte se prosím na správce sítě a zjistěte, jestli jsou spuštěné proxy server, který zachycuje komunikace TLS/SSL. Najdete v článku KB3126513 obsahuje další informace o připojení k řešení potíží.*
+V **Application and Services Logs\Operations Manager** protokolu událostí, zobrazí se události 4502 a zpráva události, která obsahuje **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**s tímto popisem: *Certifikát předložený službou \<wsid\>. oms.opinsights.azure.com nevydala certifikační autorita používaná pro služby Microsoftu. Obraťte se prosím na správce sítě a zjistěte, jestli jsou spuštěné proxy server, který zachycuje komunikace TLS/SSL. Najdete v článku KB3126513 obsahuje další informace o připojení k řešení potíží.*
 
 #### <a name="cause"></a>Příčina
 
-Příčinou může být proxy server nebo síťové brány firewall blokující komunikaci s Microsoft Azure. Ověřte, že má počítač odchozí přístup k *.azure-automation.net porty 443.
+Tento problém může být způsobeno proxy serveru nebo síťové brány firewall blokující komunikaci s Microsoft Azure. Ověřte, že má počítač odchozí přístup k *.azure-automation.net porty 443.
 
 #### <a name="resolution"></a>Řešení
 
-Protokoly se ukládají místně na každé hybridní pracovní proces v C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete zkontrolovat, pokud jsou nějaké upozornění nebo chybové události zapsané do **aplikace a služby Logs\Microsoft-SMA\Operations** a **Application and Services Logs\Operations Manager** protokolu událostí by označoval připojení nebo jiný problém ovlivňuje registrace rolí do služby Azure Automation nebo problém při provádění běžných operací.
+Protokoly se ukládají místně na každé hybridní pracovní proces v C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Můžete zkontrolovat, zda je žádné upozornění nebo chybové události v **aplikace a služby Logs\Microsoft-SMA\Operations** a **Application and Services Logs\Operations Manager** protokolu událostí, který by označení připojení nebo jiný problém, který má vliv na připojení role do Azure Automation nebo problém v rámci normálního provozu.
 
-[Sada Runbook výstup a zprávy](../automation-runbook-output-and-messages.md) se odesílají do služby Azure Automation z hybridní pracovní procesy, stejně jako úlohy sady runbook spouštět v cloudu. Můžete také povolit podrobné a průběhu zpracování datových proudů stejně jako byste to udělali pro jiné sady runbook.
+[Sada Runbook výstup a zprávy](../automation-runbook-output-and-messages.md) jsou odesílány do Azure Automation hybrid Worker stejně jako úlohy runbooku, který běží v cloudu. Můžete také povolit podrobné a průběhu zpracování datových proudů stejně jako byste to udělali pro jiné sady runbook.
+
+### <a name="corrupt-cache"></a> Funkce hybrid Runbook Worker nevytvářejících sestavy
+
+#### <a name="issue"></a>Problém
+
+Funkce Hybrid Runbook Worker počítač běží, ale nevidíte dat prezenčního signálu pro počítač v pracovním prostoru.
+
+Následující příklad dotazu zobrazí v pracovním prostoru a jejich poslední prezenční signál počítače:
+
+```loganalytics
+// Last heartbeat of each computer
+Heartbeat 
+| summarize arg_max(TimeGenerated, *) by Computer
+```
+
+#### <a name="cause"></a>Příčina
+
+Tento problém může být způsobeno poškozený mezipaměti v procesu Hybrid Runbook Worker.
+
+#### <a name="resolution"></a>Řešení
+
+Chcete-li tento problém vyřešit, přihlaste se k procesu Hybrid Runbook Worker a spusťte následující skript. Tento skript agenta Microsoft Monitoring Agent zastaví, odebere uloženou v mezipaměti a restartuje službu. Tato akce vynutí Hybrid Runbook Worker znovu stáhnout jeho konfiguraci ze služby Azure Automation.
+
+```powershell
+Stop-Service -Name HealthService
+
+Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State' -Recurse
+
+Start-Service -Name HealthService
+```
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud nenalezli váš problém nebo nepovedlo se vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
+Pokud nezobrazila váš problém nebo nelze vyřešit vaše potíže, navštíví některý z následujících kanálů pro další podporu:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
 * Spojte se s [@AzureSupport](https://twitter.com/azuresupport). Tento oficiální účet Microsoft Azure pomáhá vylepšovat uživatelské prostředí tím, že propojuje komunitu Azure s vhodnými zdroji: odpověďmi, podporou a odborníky.

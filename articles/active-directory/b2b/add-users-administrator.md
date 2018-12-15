@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: bda01b5c9fbd43feed8c407e85b90b31bef0ffa1
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 3da427974c4a270a7a743bb81d2376cf61b77390
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335057"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436904"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele spolupráce Azure Active Directory B2B na webu Azure Portal
 
@@ -24,7 +24,7 @@ Jako globální správce nebo uživatel, který se přiřadí role adresáře sp
 Po přidání uživatele typu Host do adresáře, můžete buď poslat uživateli typu Host přímý odkaz do sdílené aplikace, nebo uživatel typu Host můžete kliknout na adresu URL uplatnění v e-mailová pozvánka. Další informace o uplatnění procesu, naleznete v tématu [uplatnění pozvání spolupráce B2B](redemption-experience.md).
 
 > [!IMPORTANT]
-> Postupujte podle kroků v [postupy: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement) přidejte adresu URL prohlášení o ochraně osobních údajů vaší organizace. Jako součást procesu uplatnění pozvání první čas musí pozvaný uživatel vyjádřit souhlas. na vaše zásady ochrany osobních údajů, abyste mohli pokračovat. 
+> Postupujte podle kroků v [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement) přidejte adresu URL prohlášení o ochraně osobních údajů vaší organizace. Jako součást procesu uplatnění pozvání první čas musí pozvaný uživatel vyjádřit souhlas. na vaše zásady ochrany osobních údajů, abyste mohli pokračovat. 
 
 ## <a name="add-guest-users-to-the-directory"></a>Přidat uživatele typu Host do adresáře
 
@@ -37,6 +37,9 @@ Chcete-li přidat uživatele spolupráce B2B do adresáře, postupujte podle tě
 
    ![Ukazuje, kde je nový uživatel typu Host v uživatelském rozhraní](./media/add-users-administrator/NewGuestUser-Directory.png) 
  
+   > [!NOTE]
+   > **Nový uživatel typu Host** možnost je také k dispozici na **organizační vztahy** stránky. V **Azure Active Directory**v části **spravovat**vyberte **organizační vztahy**.
+
 5. V části **Uživatelské jméno** zadejte e-mailovou adresu externího uživatele. Volitelně můžete zahrnout uvítací zprávu. Příklad:
 
    ![Ukazuje, kde je nový uživatel typu Host v uživatelském rozhraní](./media/add-users-administrator/InviteGuest.png) 
@@ -59,7 +62,7 @@ Pokud je potřeba ručně přidat uživatele spolupráce B2B do skupiny jako spr
 3. V části **spravovat**vyberte **skupiny**.
 4. Vyberte skupinu (nebo klikněte na tlačítko **novou skupinu** vytvořit nový). Je vhodné zahrnout do popisu skupiny, tato skupina obsahuje hosty B2B.
 5. Vyberte **členy**. 
-6. Proveďte jednu z následujících akcí:
+6. Udělejte jednu z těchto věcí:
    - Pokud uživatel typu Host už existuje v adresáři, vyhledejte uživatele B2B. Vyberte uživatele a potom klikněte na tlačítko **vyberte** přidejte uživatele do skupiny.
    - Pokud uživatel typu Host ještě neexistuje v adresáři, pozvánku do skupiny do vyhledávacího pole zadáte e-mailová adresa, zadáním volitelnou osobní zprávu a pak levým na **vyberte**. E-mailové pozvánce automaticky nedostane mimo pozvaného uživatele.
      
@@ -81,7 +84,7 @@ Chcete-li přidat uživatele spolupráce B2B do aplikace jako správce Azure AD,
 
 6. Vyberte **přidat uživatele**.
 7. V části **přidat přiřazení**vyberte **uživatele a skupiny**.
-8. Proveďte jednu z následujících akcí:
+8. Udělejte jednu z těchto věcí:
    - Pokud uživatel typu Host už existuje v adresáři, vyhledejte uživatele B2B. Vyberte uživatele, klikněte na tlačítko **vyberte**a potom klikněte na tlačítko **přiřadit** přidejte uživatele k aplikaci.
    - Pokud uživatel typu Host ještě neexistuje v adresáři, v části **vyberte člena nebo Pozvěte externího uživatele**, zadejte e-mailovou adresu uživatele. V okně se zprávou Zadejte volitelnou zprávu osobní. V okně se zprávou, klikněte na možnost **pozvat**.
            

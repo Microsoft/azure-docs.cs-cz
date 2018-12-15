@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f0860982da6a06a3529539768179f9bc28a0695a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a9e91a2c11dbef3b3d9b887bfd6bb4b3372f3523
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272979"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408608"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -91,6 +91,8 @@ Získáte kredity, které můžete využít na služby Azure. Po jejich vyčerp�
 - Postupujte podle kurzu komplexně [trénování a nasadit model klasifikace obrázků s Azure Machine Learning](tutorial-train-models-with-aml.md).
 
 - [Použití Azure Machine Learning pro automatické generování a automatické ladění modelu](tutorial-auto-train-models.md).
+
+- Použití [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) připravit vaše data.
 
 - Seznamte se s [kanály strojového učení](/azure/machine-learning/service/concept-ml-pipelines), které umožňují vytvářet, optimalizovat a spravovat scénáře strojového učení.
 

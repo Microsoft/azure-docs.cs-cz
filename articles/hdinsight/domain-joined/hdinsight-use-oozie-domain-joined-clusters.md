@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d0bc48e07efeaf8f09f177367da0570cf3c250ec
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165142"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436275"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package
 
@@ -30,8 +30,8 @@ Oozie můžete také použít k plánování úloh, které jsou specifické pro 
 
 - Cluster Azure HDInsight Hadoop s Enterprise Security Package (ESP). Zobrazit [konfigurace HDInsight clustery s ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
-    > [!NOTE]
-    > Podrobné pokyny týkající se použití Oozie v clusterech bez ESP, naleznete v tématu [pracovních postupů pomocí Hadoop Oozie v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
+    > [!NOTE]  
+    > Podrobné pokyny týkající se použití Oozie v clusterech bez ESP, naleznete v tématu [použití Apache Oozie pracovních postupů v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="connect-to-an-esp-cluster"></a>Připojení ke clusteru ESP
 
@@ -52,7 +52,7 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     Stavový kód odpovědi **200 OK** označuje úspěšnou registraci. Zkontrolujte uživatelské jméno a heslo, pokud neoprávněné odpověď, jako je například 401.
 
 ## <a name="define-the-workflow"></a>Definování pracovního postupu
-Definice pracovního postupu Oozie jsou napsané v Hadoop procesu Definition Language (hPDL). hPDL je jazyk definice procesu XML. Proveďte následující kroky k definování pracovního postupu:
+Definice pracovního postupu Oozie jsou napsané v Apache Hadoop procesu Definition Language (hPDL). hPDL je jazyk definice procesu XML. Proveďte následující kroky k definování pracovního postupu:
 
 1.  Nastavte pracovní prostor uživatele domény:
  ```bash
@@ -243,7 +243,7 @@ Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je 
     select devicemake from hivesampletable limit 2;
     ```
 
-3.  Uložte soubor do souboru systému HDFS (Hadoop Distributed):
+3.  Uložte soubor do Apache HDFS Hadoop Distributed File System ():
     ```bash
     hdfs dfs -put countrowshive1.hql countrowshive1.hql
     ```
@@ -271,11 +271,11 @@ Můžete vytvořit dvě skriptů Hive pro Hive server 1 a Hive server 2, jak je 
 
 Odesílání úloh Oozie pro clustery ESP je jako odesílání Oozie úloh v clusterech bez ESP.
 
-Další informace najdete v tématu [použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
+Další informace najdete v tématu [použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="results-from-an-oozie-job-submission"></a>Výsledky odeslání úlohy Oozie
+Oozie úloha pro daného uživatele. Takže Apache Hadoop YARN a Apache Rangeru auditu zobrazit protokoly úloh spuštěn jako zosobněného uživatele. Rozhraní příkazového řádku výstup úlohy Oozie by měl vypadat jako v následujícím kódu:
 
-Oozie úloha pro daného uživatele. Takže Apache YARN a Apache Rangeru auditu zobrazit protokoly úloh spuštěn jako zosobněného uživatele. Rozhraní příkazového řádku výstup úlohy Oozie by měl vypadat jako v následujícím kódu:
 
 
 ```bash
@@ -315,7 +315,7 @@ V protokolech auditu Ranger Hive server 2 akce zobrazit Oozie spuštění akce u
 
 Oozie sám o sobě má konfiguraci autorizace uživatele, který může zablokovat uživatelům možnost zastavení nebo odstranění úlohy jinými uživateli. Chcete-li povolit tuto konfiguraci, nastavte `oozie.service.AuthorizationService.security.enabled` k `true`. 
 
-Další informace najdete v tématu [Oozie instalace a konfigurace](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
+Další informace najdete v tématu [Apache Oozie instalace a konfigurace](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 
 Pro komponenty, jako jsou serveru Hive 1, kdy modul plug-in Ranger není k dispozici nebo se nepodporuje je možné pouze hrubých HDFS autorizace. Detailní autorizace je k dispozici pouze prostřednictvím Ranger moduly plug-in.
 
@@ -328,6 +328,6 @@ Webové uživatelské rozhraní Oozie poskytuje webové zobrazení stavu úlohy 
 2. Postupujte podle [Oozie webového uživatelského rozhraní](../hdinsight-use-oozie-linux-mac.md) postup pro povolení tunelového propojení SSH k hraničnímu uzlu a přístup k webovým Uživatelským rozhraním.
 
 ## <a name="next-steps"></a>Další postup
-* [Použití Oozie s Hadoopem k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
-* [Použití koordinátoru Oozie podle času](../hdinsight-use-oozie-coordinator-time.md).
-* [Připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* [Použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v Azure HDInsight založených na Linuxu](../hdinsight-use-oozie-linux-mac.md).
+* [Použití Apache Oozie coordinator podle času](../hdinsight-use-oozie-coordinator-time.md).
+* [Připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).

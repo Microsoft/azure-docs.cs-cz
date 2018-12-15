@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7422e7d91edc9c190bee4300717b3d4c6fe8186b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 982ed4533c34cd4a6613d289ef4712001977538f
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017847"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436207"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>Použití Apache DataFu Pig s Pig Apache v HDInsight
 
@@ -29,21 +29,21 @@ Další informace o DataFu Pig, naleznete v tématu [ https://datafu.apache.org/
 
 * Cluster Azure HDInsight (Linux nebo Windows na základě)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Základní znalost [pomocí Pig v HDInsight](hdinsight-use-pig.md)
+* Základní znalost [pomocí Apache Pig v HDInsight](hdinsight-use-pig.md)
 
 ## <a name="install-datafu-on-linux-based-hdinsight"></a>Nainstalovat DataFu Linuxovým systémem HDInsight
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > DataFu je nainstalován na linuxových clusterech verze 3.3 a vyšší a v clusterech se systémem Windows. Není nainstalován na linuxových clusterech dříve než 3.3.
 >
 > Pokud používáte clusteru se systémem Windows nebo linuxem clusteru vyšší než verze 3.3, tuto část přeskočte.
 
 DataFu je možné stáhnout a nainstalovat z úložiště Maven. Použijte následující postup k vyhledání verze potřebujete a přidejte ho do vašeho clusteru HDInsight:
 
-> [!WARNING]
+> [!WARNING]  
 > Verze DataFu mohou mít požadavky, které nejsou splněny HDInsight. Například pokud používáte starší verzi DataFu, můžou vyžadovat jinou verzi Pig než je počet obsažený v HDInsight.
 
 ### <a name="find-a-version"></a>Najít verzi
@@ -62,7 +62,7 @@ DataFu je možné stáhnout a nainstalovat z úložiště Maven. Použijte násl
 
 2. Ke stažení souboru jar DataFu pomocí nástroje wget použijte následující příkaz:
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Odkaz v příkazu nahraďte adresu URL, které jste si zkopírovali dříve.
 
     ```
@@ -71,21 +71,21 @@ DataFu je možné stáhnout a nainstalovat z úložiště Maven. Použijte násl
 
 3. V dalším kroku soubor nahrajte do výchozího úložiště pro váš cluster HDInsight. Ve výchozím umístění souboru úložiště je dostupné pro všechny uzly v clusteru.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Číslo verze v názvu souboru nahraďte verze, kterou jste si stáhli.
 
     ```
     hdfs dfs -put datafu-pig-1.4.0.jar /example/jars
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Předchozí příkaz uloží soubor jar v `/example/jars` protože tento adresář již existuje v úložišti clusteru. Můžete použít libovolného umístění, které chcete v úložišti clusteru HDInsight.
 
 ## <a name="use-datafu-with-pig"></a>Použití DataFu s Pig
 
 Kroky v této části předpokládají, že máte zkušenosti s používáním Pig v HDInsight. Další informace o používání Pig s HDInsight naleznete v tématu [použití Pigu se službou HDInsight](hdinsight-use-pig.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud jste ručně instalovali DataFu pomocí kroků v předchozí části, je musíte zaregistrovat před jeho použitím.
 >
 > * Pokud váš cluster používá službu Azure Storage, použijte `wasb://` cestu. Například, `register wasb:///example/jars/datafu-pig-1.4.0.jar`.
@@ -140,4 +140,4 @@ Vygeneruje následující výstup:
 Další informace o DataFu nebo Pig najdete v následujících dokumentech:
 
 * [Apache Pig DataFu Začínáme](https://datafu.apache.org/docs/datafu/getting-started.html).
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)

@@ -9,21 +9,31 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a4b6b1d267e9c86a03644129ee639b74ed214d88
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901316"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53408353"
 ---
 # <a name="custom-vision-service-release-notes"></a>Zpráva k vydání verze služby Custom Vision
+
+
+## <a name="december-12-2018"></a>12. prosince 2018
+- Export podporu modely detekce objektů (zavedení objektu zjišťování Compact domény).
+- Opravili jsme několik problémů s přístupností pro lepší obrazovky a navigace podpora klávesnice. 
+- Aktualizace uživatelského rozhraní pro prohlížeč obrázků a vylepšené detekce označování prostředí pro rychlejší označování.  
+- Aktualizované základní model pro doménu objektu zjišťování pro zjišťování objektů lepší kvality. 
+- Opravy chyb.
+
+## <a name="november-6-2018"></a>6. listopadu 2018
+- Přidání podpory pro doménu Logo při zjišťování objektu.
 
 ## <a name="october-9-2018"></a>9. října 2018
 - Detekce objektů zadá placená verze preview. Nyní můžete vytvořit objekt detekce projekty k prostředku Azure.
 - "Přesun do Azure" funkce na webu, aby bylo snazší upgradovat projekt omezenou zkušební verzí propojit s Azure. Odkazovaný projekt prostředků (F0 nebo S0.) To můžete najít na stránce nastavení pro svůj produkt.  
 - Přidání export ONNX 1.2, podporovat Windows Update. října 2018 verzi Windows ML.
 Opravy chyb včetně pro export ONNX speciální znaky. 
-
 
 ## <a name="august-14-2018"></a>14. srpna 2018
 - Přidání "Začínáme" widget, který se customvision.ai webu provedou uživatele školení projektu. 

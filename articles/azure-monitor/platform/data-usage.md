@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
-ms.openlocfilehash: af41e2af87afbbeb8629d07508d4e5244351a4df
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e709f1bed10ee1f7d45bea18b8bdf2c6653be6a6
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277338"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433977"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
 > [!NOTE]
 > Tento článek popisuje, jak analyzovat využití dat v Log Analytics.  Přečtěte si následující články související informace.
 > - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
-> - [Monitorování využití a odhadované náklady](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
+> - [Monitorování využití a odhadované náklady](../../azure-monitor/platform/usage-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
 
 ## <a name="understand-usage"></a>Vysvětlení využití
 

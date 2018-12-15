@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 4ea00d1e23ce26855fe4bf01dc473c6b8672db47
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 6b5fc02e763b66f1d7d01643d1c9d6c971d6db84
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384543"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53434201"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -75,7 +75,7 @@ Prostředky Azure, které podporují [Azure monitor](../../azure-monitor/overvie
 >
 >
 
-* Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+* Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
 * Podrobnosti o dostupných protokolů, najdete v tématu [podporované služby a schéma pro diagnostické protokoly](../../azure-monitor/platform/tutorial-dashboards.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Povolení diagnostiky pomocí PowerShellu

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 80a2cea90d8d1d2dd43207fa504e601b216714cc
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6a9f3fcb372606e7f608b5137fb1ed15376d72d9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343475"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407333"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -135,7 +135,7 @@ Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [
 
 ### <a name="authenticate-users"></a>Ověřování uživatelů
 
-Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele.  Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) a související články pro jiné zprostředkovatele identity.
+Nastavení ověřování aplikace na webu Azure Portal s **ověřování a autorizace** možnost. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přihlašování přes sociální sítě jako je Facebook, Google nebo GitHub. Konfigurace Azure portal funguje pouze v případě konfigurace ověřování jednotným poskytovatele.  Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](/azure/app-service/configure-authentication-provider-aad) a související články pro jiné zprostředkovatele identity.
 
 Pokud je potřeba povolit více poskytovatelů přihlásit, postupujte podle pokynů [přizpůsobit ověřování pomocí služby App Service](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) článku.
 

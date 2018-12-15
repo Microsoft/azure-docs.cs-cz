@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994152"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53433998"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy architektury
 
@@ -75,7 +75,9 @@ Výpočetní clustery jsou vytvořeny blízko prostředků účtu úložiště v
 
 ## <a name="use-external-metadata-stores"></a>Použití externích úložišť metadat
 
+
 Existují dva hlavní metaúložiště, které fungují s clustery HDInsight: [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/). Hive metastore je centrální schéma úložiště, které můžete používat moduly pro zpracování dat včetně Hadoopu, Sparku, LLAP, Presto a Apache Pig. Úložiště metadat Oozie ukládá informace o plánování a stavu v průběhu a dokončení úlohy systému Hadoop.
+
 
 HDInsight používá Azure SQL Database u metaúložiště Hive a Oozie. Existují dva způsoby, jak nastavit metastore v clusterech HDInsight:
 

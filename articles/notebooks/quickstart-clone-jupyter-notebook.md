@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c13650d53098c891b168cb88516dbee53f3da5cc
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260245"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413128"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Rychlý start: Klonování poznámkového bloku
 
@@ -40,7 +40,7 @@ Klonování vytvoří kopii Poznámkový blok Githubu ve vašem účtu poznámko
 
 1. V **nahrát úložiště GitHub** , který se zobrazí, zadejte nebo nastavte tyto údaje a pak vyberte **Import**:
 
-    - **Úložiště Github**: Microsoft/cognitive-services-poznámkových bloků (Tento název duplicity poznámkové bloky Jupyter pro Azure Cognitive Services v [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+    - **Úložiště GitHub**: Microsoft/cognitive-services-poznámkových bloků (Tento název duplicity poznámkové bloky Jupyter pro Azure Cognitive Services v [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
     - **Klonovat rekurzivně**: (zaškrtnuto)
     - **Název projektu**: Klon služby cognitive Services
     - **ID projektu**: cognitive services klonování

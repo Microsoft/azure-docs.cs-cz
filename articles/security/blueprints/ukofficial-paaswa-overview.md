@@ -8,14 +8,14 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321984"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409016"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webového hostování aplikací pro oficiální úlohy Spojené království
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Plány zabezpečení a dodržování předpisů v Azure
 
@@ -104,14 +104,14 @@ Data jsou přenosu z mimo a mezi komponentami Azure je chráněný pomocí [Tran
 
 Azure Web Apps poskytuje plně spravovaná webová hostitelské prostředí pro webové aplikace vyvinuté v jazyce Java, PHP, Node.js, Python, HTML a C# bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) nebo libovolného úložiště gitu.
 
-App Service je [ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/) a můžou k ověření uživatelů pomocí [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) nebo přihlášení prostřednictvím sociální sítě ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), a [ověřování Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
+App Service je [ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/) a můžou k ověření uživatelů pomocí [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) nebo přihlášení prostřednictvím sociální sítě ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), a [ověřování Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
 
 Basic, Standard a plány Premium jsou určené pro produkční úlohy a běží na vyhrazených instancích virtuálních počítačů. Každá instance může podporovat více aplikací a domén. Aplikace služby také podporu [omezení podle IP adresy](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpečit provoz na důvěryhodné IP adresy, pokud je to nutné a také [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) pro zabezpečené připojení k jiným službám PaaS například [trezor klíčů](https://azure.microsoft.com/services/key-vault/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Je-li zvýšit zabezpečení vyžadováním náš plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k vaší místní síti nebo dodatečný výkon a škálování.
 
 Tato šablona nasadí následující funkce služby App Service:
 
 - [Standardní](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) úroveň plánu služby App Service
-- Více webové aplikace [sloty nasazení](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): vývoj, ve verzi Preview, dotazů a odpovědí, UAT a samozřejmě produkčního prostředí (výchozí slot).
+- Více webové aplikace [sloty nasazení](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Vývoj, ve verzi Preview, dotazů a odpovědí, UAT a samozřejmě produkčního prostředí (výchozí slot).
 - [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) pro připojení k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to může také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integrace s [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) ke sledování výkonu
 - [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
@@ -230,9 +230,9 @@ Tento zabezpečení Azure a dodržování předpisů podrobného plánu Automati
 Tři přístupy k dispozici pro nasazení; Jednoduchý "express" [2 rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) vhodný rychle vytvářet testovací prostředí; parametrizované [2 rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) přístup poskytuje větší konfigurace prostředí úloh; a webu Azure portal na základě nasazení, kde operátor, který můžete zadat parametry nasazení na webu Azure portal. 
 
 1.  Klonovat nebo stáhnout [to](https://aka.ms/ukofficial-paaswa-repo) úložišti GitHub na váš místní pracovní stanici.
-2.  Kontrola [metoda 1: 2 rozhraní příkazového řádku Azure (verze Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) a zadané příkazy.
-3.  Kontrola [metoda 1a: 2 rozhraní příkazového řádku Azure (konfigurace nasazení přes argumenty skriptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) a zadané příkazy
-4.  Kontrola [metoda 2: proces nasazování portálu Azure](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) a spouštět uvedené příkazy
+2.  Kontrola [metoda 1: Azure CLI 2 (verze Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) a zadané příkazy.
+3.  Kontrola [metoda 1a: Azure CLI 2 (konfigurace nasazení přes argumenty skriptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) a zadané příkazy
+4.  Kontrola [metoda 2: Proces nasazení Azure Portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) a spouštět uvedené příkazy
 
 ## <a name="guidance-and-recommendations"></a>Pokyny a doporučení
 

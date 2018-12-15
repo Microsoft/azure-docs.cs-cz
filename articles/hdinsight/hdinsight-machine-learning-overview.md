@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08d0221c785fdaeb18fe9a2999d08ded67d1fa91
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005330"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437193"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Strojové učení v HDInsight
 
-HDInsight umožňuje machine learning s velkými objemy dat, poskytuje schopnosti získávat cenné informace z velkých objemů (petabajty nebo dokonce exabajtů) strukturovaných, nestrukturovaných a rychlé tempo data. Existují možnosti několik strojového učení v HDInsight: ve SparkML a MLlib, R, Hive a Microsoft Cognitive Toolkit.
+HDInsight umožňuje machine learning s velkými objemy dat, poskytuje schopnosti získávat cenné informace z velkých objemů (petabajty nebo dokonce exabajtů) strukturovaných, nestrukturovaných a rychlé tempo data. Existuje několik strojového učení možnosti v HDInsight:  Ve SparkML a MLlib, R, Apache Hivu a sady Microsoft Cognitive Toolkit.
 
 ## <a name="sparkml-and-mllib"></a>Ve SparkML a MLlib
 
-[HDInsight Spark](spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Spark](http://spark.apache.org/), sjednoceném open source, rozhraní paralelní zpracování dat podporuje zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. Existují dvě škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí: MLlib a ve SparkML. MLlib obsahuje původní rozhraní API, které jsou postavené na Rdd. Ve SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavené na datových rámců. Ve SparkML zatím nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako Spark standardní knihovnou pro machine learning.
+[HDInsight Spark](spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Apache Spark](http://spark.apache.org/), sjednoceném open source, rozhraní paralelní zpracování dat podporuje zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. Existují dvě škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí: MLlib a ve SparkML. MLlib obsahuje původní rozhraní API, které jsou postavené na Rdd. Ve SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavené na datových rámců. Ve SparkML zatím nepodporuje všechny funkce MLlib, ale nahrazuje MLlib jako Spark standardní knihovnou pro machine learning.
 
 Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://github.com/Azure/mmlspark). Tato knihovna je určená produktivnější odborníci přes data ve Sparku, zvýšit frekvenci experimentování a využít techniky nejmodernější strojového učení, včetně obsáhlého learningu na velmi rozsáhlých datových sadách. MMLSpark poskytuje vrstvu nad nízké úrovně rozhraní API v ve SparkML při sestavování škálovatelných modelů ML, jako jsou indexování řetězce podřízenému data do rozložení očekává počítačem učení se supervizí a propojením vektory funkce. Knihovna MMLSpark zjednodušuje tyto a další běžné úlohy vytváření modelů v PySpark.
 
@@ -36,7 +36,7 @@ Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru 
 
 Pomocí služby ML na HDInsight se Spark můžete paralelizovat školení na uzlech clusteru s použitím výpočetním kontextu Spark. Spouštění skriptů R přímo na hraničním uzlu, pomocí všechna dostupná jádra paralelně, podle potřeby. Alternativně můžete spustit váš kód z hraničního uzlu aktivovala zpracování, která je distribuovaná napříč všemi uzly v clusteru. Služby ML na HDInsight se Spark paralelního funkce z balíčků opensourcového jazyka R, taky umožňuje v případě potřeby.
 
-## <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning a Hive
+## <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning a Apache Hive
 
 Azure Machine Learning poskytuje nástroje, které model prediktivní analýzy, stejně jako plně spravovaná služba, které můžete své prediktivní modely nasazovat jako připravené využívání webových služeb. Azure Machine Learning je kompletní prediktivní analytická řešení v cloudu, ve kterém můžete vytvářet, testovat, zprovoznit a spravovat prediktivní modely. Vyberte od velké knihovny algoritmů, použít studio založeného na webu pro vytváření modelů a snadno model nasadit jako webovou službu.
 
@@ -54,14 +54,14 @@ Abyste předem své vlastní práci v obsáhlého learningu, společnost Microso
 
 ### <a name="scenarios"></a>Scénáře
 
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Generování filmových doporučení pomocí Mahoutu](hadoop/apache-hadoop-mahout-linux-mac.md)
-* [Hive nebo Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
-* [Hive a Azure Machine Learning začátku do konce](../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Machine learning se Spark v HDInsight](../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Generování filmových doporučení pomocí Mahout Apache](hadoop/apache-hadoop-mahout-linux-mac.md)
+* [Apache Hive a Azure Machine Learning](../machine-learning/team-data-science-process/create-features-hive.md)
+* [Apache Hive nebo Azure Machine Learning end-to-end](../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Strojové učení s Apache Spark v HDInsight](../machine-learning/team-data-science-process/spark-overview.md)
 
 ### <a name="deep-learning-resources"></a>Prostředky obsáhlého learningu
 
-* [Sada nástrojů obsáhlý learning se Spark](https://blogs.technet.microsoft.com/machinelearning/2017/04/25/using-microsofts-deep-learning-toolkit-with-spark-on-azure-hdinsight-clusters/)
-* [Klasifikace obrázků jednoduše paralelně zpracovatelné pomocí Cognitive toolkit + Tensorflow ve Sparku](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
+* [Hloubkové učení toolkit s Apache Sparkem](https://blogs.technet.microsoft.com/machinelearning/2017/04/25/using-microsofts-deep-learning-toolkit-with-spark-on-azure-hdinsight-clusters/)
+* [Klasifikace obrázků jednoduše paralelně zpracovatelné pomocí Cognitive toolkit + Tensorflow na Apache Sparku](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)

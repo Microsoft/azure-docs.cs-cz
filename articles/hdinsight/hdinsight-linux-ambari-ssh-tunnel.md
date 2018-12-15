@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: eb407a1026ab62fa719600a3992dc3b4653f1583
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383914"
+ms.locfileid: "53409518"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním
 
@@ -78,9 +78,19 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 ## <a name="useputty"></a>Vytvořit tunel pomocí PuTTY
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro Windows. Použijte následující postup k vytvoření tunelu SSH pomocí PuTTY:
+[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro Windows. Pokud nejste obeznámeni s PuTTY, přečtěte si článek [PuTTY dokumentaci](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Použijte následující postup k vytvoření tunelu SSH pomocí PuTTY:
 
-1. Otevřete PuTTY a zadejte informace o připojení. Pokud nejste obeznámeni s PuTTY, přečtěte si článek [PuTTY dokumentaci (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+### <a name="create-or-load-a-session"></a>Vytvořit nebo načíst relaci
+
+1. Otevřete PuTTY a ověřte **relace** je vybrána v nabídce vlevo. Pokud již máte uložené relace, vyberte název relace, od **uložit relací** seznamu a klikněte na tlačítko **zatížení**.
+
+1. Pokud ještě nemáte uložený relace, zadejte informace o připojení:
+    * **Název hostitele (nebo IP adresa)** -SSH adres pro HDInsight cluster. Například **mycluster-ssh.azurehdinsight.net**
+    * **Port** – 22.
+    * **Typ připojení** - SSH
+1. Klikněte na **Uložit**.
+
+    ![Vytvořte relaci SSH](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 
 2. V **kategorie** části nalevo od dialogového okna, rozbalte **připojení**, rozbalte **SSH**a pak vyberte **tunely**.
 
@@ -88,7 +98,7 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
    
    * **Zdrojový port** – port na straně klienta, který chcete přesměrovat. Například **9876**.
 
-   * **Určení** -SSH adres pro cluster HDInsight se systémem Linux. Například **mycluster-ssh.azurehdinsight.net**.
+   * **Určení** -SSH adres pro HDInsight cluster. Například **mycluster-ssh.azurehdinsight.net**.
 
    * **Dynamicky** – umožňuje dynamické směrování proxy SOCKS.
      

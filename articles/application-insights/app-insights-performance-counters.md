@@ -10,46 +10,52 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/11/2016
+ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: bcfb3a52793ba0daca980564d5d2248629b5caf4
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323008"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407928"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
-Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat své vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud je aplikace spuštěna v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu. Grafy označují prostředky dostupné pro vaše živé aplikace a může pomoct identifikovat nevyváženého zatížení mezi instancemi serveru.
 
-Čítače výkonu se zobrazí v okně servery, který obsahuje tabulku tohoto segmentů podle instance serveru.
-
-![Čítače výkonu v Application Insights](./media/app-insights-performance-counters/counters-by-server-instance.png)
-
-(Čítače výkonu nejsou k dispozici pro Azure Web Apps. Ale můžete [odesílání Azure Diagnostics do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).)
+Windows poskytuje širokou škálu [čítače výkonu](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat vlastní čítače výkonu. Tak dlouho, dokud vaše aplikace běží v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu.
 
 ## <a name="view-counters"></a>Zobrazení čítačů
-Ukazuje blade servery výchozí sadu čítačů výkonu. 
 
-Pokud chcete zobrazit další čítače, úpravy grafů v okně servery nebo otevřete nové [Průzkumníka metrik](app-insights-metrics-explorer.md) okno a přidejte nový graf. 
+V podokně metriky se zobrazí výchozí sadu čítačů výkonu.
 
-Dostupné čítače jsou uvedené jako metriky, když upravujete grafu.
+![Čítače výkonu v Application Insights](./media/app-insights-performance-counters/performance-counters.png)
 
-![Čítače výkonu v Application Insights](./media/app-insights-performance-counters/choose-performance-counters.png)
+Aktuální výchozí čítače, které se shromažďují pro webové aplikace .NET jsou:
+
+         - % Process\\Processor Time
+         - % Process\\Processor Time Normalized
+         - Memory\\Available Bytes
+         - ASP.NET Requests/Sec
+         - .NET CLR Exceptions Thrown / sec
+         - ASP.NET ApplicationsRequest Execution Time
+         - Process\\Private Bytes
+         - Process\\IO Data Bytes/sec
+         - ASP.NET Applications\\Requests In Application Queue
+         - Processor(_Total)\\% Processor Time
 
 Pokud chcete zobrazit všechny nejužitečnější grafy na jednom místě, vytvořit [řídicí panel](app-insights-dashboards.md) a připínat je na to.
 
 ## <a name="add-counters"></a>Přidání čítačů
-Pokud čítač výkonu, které chcete nezobrazuje v seznamu metrik, je to, protože Application Insights SDK se shromažďují ve vašem webovém serveru. Můžete nakonfigurovat ji tak.
 
-1. Zjistěte, jaké čítače jsou k dispozici na serveru pomocí tohoto příkazu prostředí PowerShell na serveru:
+Pokud čítač výkonu, které chcete nejsou zahrnuty v seznamu metrik, můžete ho přidat.
+
+1. Zjistěte, jaké čítače jsou k dispozici na serveru pomocí tohoto příkazu prostředí PowerShell na místním serveru:
    
     `Get-Counter -ListSet *`
    
     (Viz [ `Get-Counter` ](https://technet.microsoft.com/library/hh849685.aspx).)
 2. Otevřete soubor ApplicationInsights.config.
    
-   * Pokud jste přidali Application Insights do vaší aplikace během vývoje, upravit soubor ApplicationInsights.config v projektu a pak znovu nasadit na servery.
+   * Pokud jste přidali Application Insights do vaší aplikace během vývoje, upravit soubor ApplicationInsights.config v projektu a pak ho znovu nasadíte na serverech.
    * Pokud monitorování stavu jste použili k instrumentaci webové aplikace za běhu, vyhledejte soubor ApplicationInsights.config v kořenovém adresáři aplikace ve službě IIS. Aktualizujte ji, existuje v každé instanci serveru.
 3. Upravte směrnice kolekce výkonu:
    
@@ -64,7 +70,7 @@ Pokud čítač výkonu, které chcete nezobrazuje v seznamu metrik, je to, proto
 
 ```
 
-Můžete zaznamenat standardní čítače i ty že sami sebe implementovali. `\Objects\Processes` Příkladem standardní čítač je k dispozici na všech systémech Windows. `\Sales(photo)\# Items Sold` je příkladem vlastní čítače, která může být implementována ve webové službě. 
+Můžete zaznamenat standardní čítače i ty že jsme implementovali sami. `\Objects\Processes` je příkladem standardní čítač, který je k dispozici na všech systémech Windows. `\Sales(photo)\# Items Sold` je příkladem vlastní čítače, která může být implementována ve webové službě. 
 
 Formát je `\Category(instance)\Counter"`, nebo kategorií, které nemají instancí, právě `\Category\Counter`.
 
@@ -99,7 +105,7 @@ Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](app-insigh
 
 ![Čítače výkonu ve službě Application Insights analytics](./media/app-insights-performance-counters/analytics-performance-counters.png)
 
-('Instance' zde vztahuje na instance čítače výkonu není instance počítače roli nebo server. Název instance čítače výkonu obvykle segmenty čítače, jako například čas procesoru podle názvu procesu nebo aplikace.)
+('Instance' tady odkazuje na instanci čítače výkonu, není role nebo instance počítače serveru. Název instance čítače výkonu obvykle segmenty čítače, jako například čas procesoru podle názvu procesu nebo aplikace.)
 
 Pokud chcete získat grafu dostupné paměti za poslední období: 
 
@@ -113,13 +119,14 @@ Další telemetrická data, jako jsou **čítače výkonu** má také sloupec `c
 *Jaký je rozdíl mezi frekvence výjimek a metriky výjimky?*
 
 * *Frekvence výjimek* je čítač výkonu systému. CLR vrátí počet všech zpracovaných a nezpracovaných výjimek, které jsou vyvolány a vydělí celkový počet v intervalu vzorkování délku intervalu. Sadu SDK Application Insights shromažďuje tento výsledek a odešle ji na portál.
+
 * *Výjimky* je počet sestav TrackException přijatých na portálu v intervalu vzorkování grafu. Zahrnuje pouze zpracované výjimky, ve kterém jste napsali TrackException volání v kódu a nezahrnuje všechny [neošetřené výjimky](app-insights-asp-net-exceptions.md). 
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace Asp.Net Core
+## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace ASP.Net Core
 Čítače výkonu jsou podporovány pouze v případě, že aplikace cílí na úplné rozhraní .NET Framework. Neexistuje žádná možnost získat čítače výkonu pro.Net Core aplikací.
 
 ## <a name="alerts"></a>Výstrahy
-Stejně jako jiné metriky můžete [nastavit výstrahu](app-insights-alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevře se okno oznámení a klikněte na tlačítko Přidat oznámení.
+Stejně jako jiné metriky můžete [nastavit výstrahu](app-insights-alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevřete podokno oznámení a klikněte na tlačítko Přidat oznámení.
 
 ## <a name="next"></a>Další kroky
 * [Sledování závislostí](app-insights-asp-net-dependencies.md)

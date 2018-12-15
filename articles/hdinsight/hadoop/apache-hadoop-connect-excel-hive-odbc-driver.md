@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: ace12e9bd5cb1b9f6e38f57ca42faa6c6870af87
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 963e34ae9327b7b124d47f4223de8d6ab2082fbf
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162541"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437006"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 
@@ -94,11 +94,11 @@ Následující kroky popisují způsob, jak importovat data z tabulky Hive do se
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak načíst data ze služby HDInsight do Excelu pomocí ovladače Microsoft Hive ODBC. Podobně může načítat data ze služby HDInsight do služby SQL Database. Je také možné nahrát data do služby HDInsight. Další informace naleznete v tématu:
 
-* [Vizualizace dat Hive pomocí Microsoft Power BI v Azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
+* [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](apache-hadoop-connect-hive-power-bi.md).
 * [Vizualizace dat Interactive Query Hive pomocí Power BI v Azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
-* [Použití Zeppelinu ke spouštění dotazů Hive v HDInsight Azure ](./../hdinsight-connect-hive-zeppelin.md).
-* [Připojení Excelu k Hadoopu pomocí Power Query](apache-hadoop-connect-excel-power-query.md).
-* [Připojení k Azure HDInsight a spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
+* [Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure ](./../hdinsight-connect-hive-zeppelin.md).
+* [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](apache-hadoop-connect-excel-power-query.md).
+* [Připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md).
 * [Pomocí nástroje Azure HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).
 * [Nahrání dat do HDInsight](./../hdinsight-upload-data.md).
 

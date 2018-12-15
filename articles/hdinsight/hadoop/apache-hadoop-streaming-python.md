@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e8cf8de25a35909cb2a0fc94237bfa517c72e685
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634018"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410342"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu
 
@@ -47,9 +47,9 @@ Následující diagram znázorňuje, co se stane během mapy a snížit fáze.
 
 Hadoop umožňuje zadat soubor, který obsahuje mapu a snížit logiku, která používají úlohy. Konkrétní požadavky na mapě a snížit logiky jsou:
 
-* **Vstupní**: mapy a snížit součásti musí číst vstupní data ze STDIN.
-* **Výstup**: mapy a snížit součásti musí zapsat výstupní data do STDOUT.
-* **Formát dat**: data používat a vytváří musí být pár klíč hodnota oddělené tabulátorem.
+* **Vstup**: Na mapě a snížit součásti musí číst vstupní data ze STDIN.
+* **Výstup**: Na mapě a snížit součásti musí zapsat výstupní data do STDOUT.
+* **Formát dat**: Data, používat a vytváří musí být pár klíč hodnota oddělené tabulátorem.
 
 Python pomocí snadno zvládne tyto požadavky `sys` modulu pro čtení z STDIN a pomocí `print` tisknout do STDOUT. Zbývající úloh je jednoduše formátování dat pomocí karty (`\t`) znak mezi klíčem a hodnotou.
 
@@ -144,7 +144,7 @@ Pomocí následujícího skriptu prostředí PowerShell pro nahrávání soubor�
 
     Tento příkaz zkopíruje soubory z místního systému k hlavnímu uzlu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud jste použili heslo k zabezpečení účtu SSH, zobrazí se výzva k zadání hesla. Pokud jste použili klíče SSH, bude pravděpodobně nutné použít `-i` parametr a cesta k privátnímu klíči. Například, `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.net:`.
 
 2. Připojte se ke clusteru pomocí SSH:
@@ -170,7 +170,7 @@ Pomocí následujícího skriptu prostředí PowerShell pro nahrávání soubor�
 
     Tento příkaz má následující části:
 
-   * **hadoop streaming.jar**: při provádění operací streamování MapReduce. Rozhraní systému Hadoop, s externí kód MapReduce, který zadáte.
+   * **hadoop streaming.jar**: Při provádění operací streamování MapReduce. Rozhraní systému Hadoop, s externí kód MapReduce, který zadáte.
 
    * **– soubory**: Přidá zadané soubory do úlohy MapReduce.
 
@@ -178,9 +178,9 @@ Pomocí následujícího skriptu prostředí PowerShell pro nahrávání soubor�
 
    * **-redukční funkci**: Určuje soubor, který chcete použít jako redukční funkci Hadoop.
 
-   * **-vstupní**: vstupního souboru, který jsme měli počítat slova z.
+   * **-vstupní**: Vstupní soubor, který jsme měli počítat slova z.
 
-   * **-výstupní**: adresáře, který je výstup zapsán.
+   * **-výstupní**: Adresář, který je výstup zapsán.
 
     Jak funguje úlohu MapReduce, proces se zobrazí jako procenta.
 
@@ -199,6 +199,6 @@ Pomocí následujícího skriptu prostředí PowerShell pro nahrávání soubor�
 
 Teď, když jste se naučili použití datových proudů úloh MapRedcue s HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
 
-* [Použití Hivu se službou HDInsight](hdinsight-use-hive.md)
-* [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
+* [Použití Apache Hivu se službou HDInsight](hdinsight-use-hive.md)
+* [Použití Apache Pig s HDInsight](hdinsight-use-pig.md)
 * [Použití úloh MapReduce se službou HDInsight](hdinsight-use-mapreduce.md)

@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8da2309a16c07440158c1de324eea1fa05b1c98b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 15aa80c5291854c937bdc128a597ed5bebd608a2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189060"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437415"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: Vytvoření a nasazení interoperabilní modely AI
 
@@ -202,6 +202,6 @@ Další informace o ONNX nebo přispět k projektu:
 + [ONNX kódu na Githubu](https://github.com/onnx/onnx)
 
 Další informace o modulu Runtime ONNX nebo přispět k projektu:
-+ [Úložiště Github se vzorovými ONNX modulu Runtime](https://github.com/Microsoft/onnxruntime)
++ [Úložiště GitHub se vzorovými ONNX modulu Runtime](https://github.com/Microsoft/onnxruntime)
 
 

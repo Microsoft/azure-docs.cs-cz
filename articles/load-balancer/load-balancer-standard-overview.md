@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 845f991085a4427ab4f4301cab1dc60215374554
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: feaa0058aed566b40d3f2da548da1d961d5c82f3
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185762"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53438757"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure Load balancer úrovně Standard
 
@@ -229,7 +229,7 @@ Load balanceru úrovně standard se účtuje produkt na základě počtu nakonfi
 - Další informace o [sond stavu](load-balancer-custom-probe-overview.md).
 - Další informace o [zóny dostupnosti](../availability-zones/az-overview.md).
 - Další informace o [diagnostické nástroje pro vyrovnávání zatížení standardní](load-balancer-standard-diagnostics.md).
-- Další informace o [podporované vícedimenzionálních metrik](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
+- Další informace o [podporované vícedimenzionálních metrik](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) pro diagnostiku v [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
 - Další informace o [odchozí pravidla](load-balancer-outbound-rules-overview.md).
 - Další informace o [TCP resetovat při nečinnosti](load-balancer-tcp-reset.md).

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270922"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436955"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -53,7 +53,14 @@ Můžete si prohlédnout protokolu spuštění informace, které obsahuje metrik
 
 ## <a name="model-explainability"></a>Model explainability
 
-Běžné trávení automatizované machine Learning je nemožnost zobrazíte-celým procesem. Azure Machine Learning umožňuje zobrazit podrobné informace o modelech pro zvýšení transparentnosti do co běží na back endu. Výstup ukazuje celkový funkce význam při ladění modelu řazení výsledků podle funkce vliv na váš model na maximum. Pro klasifikaci problémy můžete navíc zobrazit význam funkce třídy a hodnocení.
+Běžné trávení automatizované machine Learning je nemožnost zobrazíte-celým procesem. Azure Machine Learning umožňuje zobrazit podrobné informace o modelech pro zvýšení transparentnosti do co běží na back endu. Některé modely, jako je lineární regrese, jsou považovány za poměrně jednoznačné a proto lze snadno porozumět. Můžete však přidat další funkce a používat složitější modelů strojového učení, získá princip je mnohem obtížnější. Existují dva klíčové aspekty transparentně ve službě machine learning:
+
+1. Sledování strojového učení kanálu a všechny kroky zahrnuta, včetně předzpracování dat a snadné a hyperparameter hodnot.
+1. Principy vztah mezi vstupních proměnných (označované také jako "funkce") a výstup modelu.  Znalost, velikosti a směr dopadu jednotlivých funkcí v předpovězené hodnoty pomůže lépe pochopit a popisují modelu. To se označuje jako funkce význam.
+
+Můžete povolit globální funkce význam příspěvek na vyžádání, školení pro kanál podle vašeho výběru, nebo ji povolit pro všechny kanály, jako součást automatizovaného ML školení.  Toto je funkce ve verzi preview a My budeme pokračovat s investicemi v bohatší informace, které vám pomůže lépe pochopit modely ML.  
+
+Použít tento [ukázkový poznámkový blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) můžete experimentovat s vysvětlením modelu ve službě Azure Machine Learning.
 
 ## <a name="next-steps"></a>Další postup
 
