@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4ee182202cf1ecbbb0845541269f7241de26c170
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.openlocfilehash: 3e4f5c07602d5bc1b7760793664415f092301c20
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30326502"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444041"
 ---
 ### <a name="gwipnoconnection"></a>Úprava IP adresy brány místní sítě (GatewayIpAddress) – žádné připojení brány
 
@@ -34,32 +34,32 @@ Pokud zařízení VPN, ke kterému se chcete připojit, změnilo svou veřejnou 
 
 1. Odeberte připojení. Název vašeho připojení můžete najít pomocí rutiny Get-AzureRmVirtualNetworkGatewayConnection.
 
-  ```azurepowershell-interactive
-  Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
-  -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+   -ResourceGroupName TestRG1
+   ```
 2. Upravte hodnotu GatewayIpAddress. Můžete také zároveň upravit předpony adresy. Ujistěte se, že k přepsání aktuálního nastavení používáte existující název brány místní sítě. Pokud to neuděláte, vytvoříte novou bránu místní sítě, místo abyste přepsali tu stávající.
 
-  ```azurepowershell-interactive
-  New-AzureRmLocalNetworkGateway -Name Site1 `
-  -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
-  -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   New-AzureRmLocalNetworkGateway -Name Site1 `
+   -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
+   -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
+   ```
 3. Vytvořte připojení. V tomto příkladu konfigurujeme typ připojení IPsec. Až budete připojení znovu vytvářet, použijte typ připojení stanovený pro vaši konfiguraci. Informace o dalších typech připojení najdete na stránce [Rutina prostředí PowerShell](https://msdn.microsoft.com/library/mt603611.aspx).  Pokud chcete získat název brány VirtualNetworkGateway, můžete spustit rutinu Get-AzureRmVirtualNetworkGateway.
    
     Nastavte proměnné.
 
-  ```azurepowershell-interactive
-  $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
-  $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-  ```
+   ```azurepowershell-interactive
+   $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+   $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+   ```
    
     Vytvořte připojení.
 
-  ```azurepowershell-interactive 
-  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
-  -Location "East US" `
-  -VirtualNetworkGateway1 $vnetgw `
-  -LocalNetworkGateway2 $local `
-  -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-  ```
+   ```azurepowershell-interactive 
+   New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
+   -Location "East US" `
+   -VirtualNetworkGateway1 $vnetgw `
+   -LocalNetworkGateway2 $local `
+   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
+   ```

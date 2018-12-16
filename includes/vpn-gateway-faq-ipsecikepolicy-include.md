@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 12/14/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48240012"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444063"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?
 Vlastní zásady IPsec/IKE jsou podporovány v branách Azure VPN Gateway úrovně **VpnGw1, VpnGw2, VpnGw3, Standard** a **HighPerformance**. Skladová položka **Basic** **není** podporována.
@@ -102,3 +102,6 @@ Ano. Tunel typu VNet-to-VNet se skládá ze dvou prostředků připojení v Azur
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Fungují zásady IPsec/IKE na připojení ExpressRoute?
 Ne. Zásady IPsec/IKE fungují pouze na připojeních VPN typu Site-to-Site a VNet-to-VNet prostřednictvím bran Azure VPN Gateway.
+
+### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Kde najdu Další informace o konfiguraci protokolu IPsec
+Zobrazit [zásady Konfigurace protokolu IPsec/IKE pro připojení typu S2S nebo VNet-to-VNet](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

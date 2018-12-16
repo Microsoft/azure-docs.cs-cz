@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: b0dd0c0c0c300b4db94c1ab22205f9e808556f0b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0b2b6814ad0b55d8f56998f6d4c9b6bb88663e04
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166823"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53444045"
 ---
 ## <a name="state-behavior"></a>Chování stavu
 
