@@ -239,11 +239,11 @@ Níže popisuje více co jednotlivé oznámení položky znamená, že a příkl
 
 -   **Zobrazovaný název** – **(může být prázdné)** podrobnější zobrazovaný název pro chybu
 
-    -   Příklad * – **nastavení proxy aplikace.**
+    -   Příklad *– **nastavení proxy aplikace.**
 
 -   **Stav** – konkrétní stavové oznámení
 
-    -   Příklad * – **se nezdařilo**
+    -   Příklad *– **se nezdařilo**
 
 -   **ID objektu** – **(může být prázdné)** ID objektu, proti kterému byla provedena operace
 
