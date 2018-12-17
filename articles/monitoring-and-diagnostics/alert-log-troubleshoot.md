@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4593c19a05484f7075b7a4a15a6be2e6a1bc0d28
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: 38153a605bc3c2fb32662e2733d2521fa1bf519a
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271500"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53341214"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 ## <a name="overview"></a>Přehled
@@ -27,7 +27,7 @@ Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního do
 
 ## <a name="log-alert-didnt-fire"></a>Neměli aktivovat upozornění protokolu
 
-Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](../azure-monitor/platform/alerts-log.md) nezobrazí stav [jako *aktivuje* očekával](monitoring-alerts-managing-alert-states.md). 
+Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](../azure-monitor/platform/alerts-log.md) nezobrazí stav [jako *aktivuje* očekával](../azure-monitor/platform/alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
 Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
@@ -71,7 +71,7 @@ Protože agregační po časové razítko data seřadí na sloupec časového ra
 - (Nebo) znovu nakonfigurovat pravidlo upozornění na použití logika upozornění na základě *celkový počet porušení* místo toho správně
  
 ## <a name="log-alert-fired-unnecessarily"></a>Zbytečně aktivováno upozornění protokolu
-Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](../azure-monitor/platform/alerts-log.md) můžou být vyvolány v [Azure Alerts](monitoring-alerts-managing-alert-states.md), když jste Neočekáváme, že se nebudou vydány.
+Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](../azure-monitor/platform/alerts-log.md) můžou být vyvolány v [Azure Alerts](../azure-monitor/platform/alerts-managing-alert-states.md), když jste Neočekáváme, že se nebudou vydány.
 
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha se aktivuje částečná data
 Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).

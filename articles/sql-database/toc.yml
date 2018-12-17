@@ -101,6 +101,8 @@ items:
       href: sql-database-service-tiers-dtu.md
     - name: Předplacení záložní kapacity
       href: sql-database-reserved-capacity.md
+    - name: Migrace z úrovně služeb Premium RS
+      href: sql-database-service-tiers-prs.md
   - name: Výpočetní prostředky a úložiště
     items:
     - name: Přehled
@@ -115,7 +117,7 @@ items:
       href: sql-database-service-tier-hyperscale-faq.md
   - name: Izolované databáze
     items:
-    - name: Izolovaná databáze
+    - name: Přehled izolované databáze
       href: sql-database-single-index.yml
     - name: Vytvoření a správa
       href: sql-database-single-databases-manage.md
@@ -149,7 +151,7 @@ items:
       href: sql-database-single-database-scale.md
   - name: Spravované instance
     items:
-    - name: Spravované instance
+    - name: Přehled spravovaných instancí
       href: sql-database-managed-instance-index.yml
     - name: Přehled spravovaných instancí
       href: sql-database-managed-instance.md
@@ -163,7 +165,7 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
   - name: Platforma jako služba
     items:
-    - name: Platforma jako služba
+    - name: Platforma jako služba – přehled
       href: sql-database-paas.yml
     - name: Kontinuita podnikových procesů
       href: sql-database-business-continuity.md
@@ -195,7 +197,7 @@ items:
         href: sql-database-disaster-recovery-drills.md
   - name: Zabezpečení
     items:
-    - name: Zabezpečení
+    - name: Přehled zabezpečení
       href: sql-database-security-index.yml
     - name: Přehled zabezpečení
       href: sql-database-security-overview.md
@@ -249,7 +251,7 @@ items:
         href: transparent-data-encryption-byok-azure-sql.md
   - name: Škálovatelnost
     items:
-    - name: Škálovatelnost
+    - name: Přehled škálovatelnosti
       href: sql-database-scalability-index.yml
     - name: Vertikální navýšení/snížení kapacity
       href: sql-database-scale-resources.md
@@ -283,6 +285,8 @@ items:
     href: sql-database-features.md
   - name: Sledování a ladění
     items:
+    - name: Přehled sledování a ladění
+      href: sql-database-monitoring-tuning-index.yml
     - name: Sledování a ladění výkonu
       href: sql-database-monitor-tune-overview.md
     - name: Sledování výkonu
@@ -315,8 +319,12 @@ items:
       href: sql-database-temporal-tables.md
 - name: Návody
   items:
+  - name: Přehled
+    href: sql-database-howto.md
   - name: Izolovaná databáze
     items:
+    - name: Přehled
+      href: sql-database-howto-single-database.md
     - name: Migrace do služby SQL Database
       href: sql-database-cloud-migrate.md
     - name: Správa SQL Database po migraci
@@ -393,6 +401,8 @@ items:
         href: elastic-jobs-migrate.md
   - name: Spravovaná instance
     items:
+    - name: Přehled
+      href: sql-database-howto-managed-instance.md
     - name: Migrace spravované instance
       href: sql-database-managed-instance-migrate.md
     - name: Migrace certifikace TDE do spravované instance
@@ -666,9 +676,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d276b202da8055965a43f5313b6a8c4b335f74b2
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384271"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53436020"

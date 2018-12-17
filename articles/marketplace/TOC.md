@@ -91,7 +91,7 @@
 #### [Karta Testovací verze](./cloud-partner-portal/azure-applications/cpp-testdrive-tab.md)
 #### [Karta Marketplace](./cloud-partner-portal/azure-applications/cpp-marketplace-tab.md)
 #### [Karta Podpora](./cloud-partner-portal/azure-applications/cpp-support-tab.md)
-<!-- ### [Create technical assets](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md) -->
+### [Vytvoření technických prostředků](./cloud-partner-portal/azure-applications/cpp-create-technical-assets.md)
 ### [Publikování nabídky aplikací Azure](./cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal/azure-applications/cpp-update-existing-offer.md)
 

@@ -144,6 +144,12 @@ items:
       href: unique-keys.md
     - name: Transakce a optimistická souběžnost
       href: database-transactions-optimistic-concurrency.md
+  - name: Programování na straně serveru
+    items:
+    - name: Uložené procedury, triggery a funkce UDF
+      href: stored-procedures-triggers-udfs.md
+    - name: Rozhraní API pro dotazy JavaScript
+      href: javascript-query-api.md
   - name: Optimalizace nákladů na Azure Cosmos DB
     items:
     - name: Cenový model
@@ -178,8 +184,6 @@ items:
       href: firewall-support.md
     - name: Přístup z virtuálních sítí
       href: vnet-service-endpoint.md
-    - name: Podpora trezoru klíčů
-      href: access-secrets-from-keyvault.md
   - name: Připravenost pro podnikové zpracování
     items:
     - name: Online zálohování a obnovení
@@ -250,8 +254,14 @@ items:
       items:
       - name: Ladění výkonu dotazů
         href: sql-api-query-metrics.md
-      - name: Uložené procedury, triggery a systémy souborů UDF
-        href: programming.md
+      - name: Programování na straně serveru
+        items:
+        - name: Psaní uložených procedur, triggerů a funkcí UDF
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Psaní uložených procedur a triggerů s rozhraním API pro dotazy JavaScript
+          href: how-to-write-javascript-query-api.md
+        - name: Použití uložených procedur, triggerů a funkcí UDF
+          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Typy dat
         items:
         - name: DateTime
@@ -308,7 +318,7 @@ items:
             href: tutorial-develop-mongodb-nodejs-part3.md
           - name: Část 4 – Vytvoření účtu
             href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: Část 5 – Připojení ke službě Azure Cosmos DB
+          - name: Část 5 – Připojení k databázi Cosmos DB
             href: tutorial-develop-mongodb-nodejs-part5.md
           - name: Část 6 – Provedení operací CRUD
             href: tutorial-develop-mongodb-nodejs-part6.md
@@ -479,6 +489,8 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
+    - name: Zabezpečení s využitím služby Key Vault
+      href: access-secrets-from-keyvault.md
   - name: Připravenost pro podnikové zpracování
     items:
     - name: Obnovení dat ze zálohy
@@ -529,7 +541,7 @@ items:
         href: performance-testing.md
     - name: Nákladově efektivní čtení a zápisy
       href: key-value-store-cost.md
-  - name: Vizualizace dat Azure Cosmos DB
+  - name: Vizualizace dat služby Cosmos DB
     items:
     - name: Použití Power BI
       href: powerbi-visualize.md
@@ -603,9 +615,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: d31364cb9d458e54ae407d10fd88d8db4e9f457f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384662"
+ms.locfileid: "53410104"
