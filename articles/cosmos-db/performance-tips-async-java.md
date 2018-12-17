@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 8cfc62948df679fa900099c0e5dbb33a60e42b08
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 440dc13e2c6f4d9acc270b644cc549280e6d91be
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876245"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413570"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a Async Javu
 
@@ -35,7 +35,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     Pokud je to možné, umístěte všechny aplikace, volání služby Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos DB. Pro porovnávání přibližné volání do služby Azure Cosmos DB v rámci stejné oblasti dokončena do 1 až 2 ms, ale latence mezi západním a východním pobřežím USA je > 50 ms. Latence může žádost z požadavku pravděpodobně lišit v závislosti na trasu v požadavku během z klienta na hranici datového centra Azure. Nejnižší možnou latenci se dosahuje tím, že zajišťuje, že je volající aplikace umístěné ve stejné oblasti Azure jako koncový bod zřízené služby Azure Cosmos DB. Seznam dostupných oblastí naleznete v tématu [oblastí Azure](https://azure.microsoft.com/regions/#services).
 
     ![Obrázek připojení zásad služby Azure Cosmos DB](./media/performance-tips/same-region.png)
-   
+
 ## <a name="sdk-usage"></a>Použití sady SDK
 1. **Nainstalujte nejnovější sadu SDK**
 
@@ -54,17 +54,17 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 
     Azure Cosmos DB SQL asynchronní sady Java SDK podporuje paralelní dotazy, které vám umožní dotazovat do dělené kolekce paralelně. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) týkající se práce spolu se sadami SDK. Paralelní dotazy jsou navržené ke zlepšení latence dotazu a propustnost nad jejich protějšky sériového portu.
 
-    (a) ***ladění setMaxDegreeOfParallelism\:***  paralelní dotazy pracovní dotazováním více oddílů souběžně. Data z jednotlivých dělené kolekce je však načíst sériově s ohledem na dotaz. Ano setMaxDegreeOfParallelism použijte k nastavení počtu oddílů, který má maximální příležitost dosáhnout většina výkonné, zadaný dotaz všech ostatních situacích, systém zůstávají stejné. Pokud si nejste jisti počet oddílů, setMaxDegreeOfParallelism můžete použít k nastavení vysoké číslo a systém zvolí jako maximální volnost paralelismu minimální (počet oddílů, vstup uživatele, které jsou k dispozici). 
+    (a) ***ladění setMaxDegreeOfParallelism\:***  paralelní dotazy pracovní dotazováním více oddílů souběžně. Data z jednotlivých dělené kolekce je však načíst sériově s ohledem na dotaz. Ano setMaxDegreeOfParallelism použijte k nastavení počtu oddílů, který má maximální příležitost dosáhnout většina výkonné, zadaný dotaz všech ostatních situacích, systém zůstávají stejné. Pokud si nejste jisti počet oddílů, setMaxDegreeOfParallelism můžete použít k nastavení vysoké číslo a systém zvolí jako maximální volnost paralelismu minimální (počet oddílů, vstup uživatele, které jsou k dispozici).
 
     Je důležité si uvědomit, že paralelní dotazy vytvořit nejlepší výhody, pokud je data rovnoměrně rozdělené mezi všechny oddíly s ohledem na dotaz. Pokud dělené kolekce je rozdělit na oddíly tak, že se soustřeďuje všechny nebo většina dat vrácených dotazem v několika oddílech (jeden oddíl v nejhorším případě) a pak výkon dotazu by bottlenecked podle těchto oddílů.
 
     (b) ***ladění setMaxBufferedItemCount\:***  paralelní dotaz byl navržen k předběžného načítání výsledků během zpracování dávky aktuální výsledky klientem. Předběžné načítání pomáhá zvyšování celkové latence dotazu. setMaxBufferedItemCount omezuje počet předem počet získaných výsledků. Nastavení setMaxBufferedItemCount očekávaný počet výsledků vrácených (nebo vyššího čísla) umožňuje dotazu pro příjem maximální výhody z předběžného načítání.
 
-    Předběžné načítání funguje stejným způsobem bez ohledu na to, z MaxDegreeOfParallelism a jednu vyrovnávací paměti pro data ze všech oddílů.  
+    Předběžné načítání funguje stejným způsobem bez ohledu na to, z MaxDegreeOfParallelism a jednu vyrovnávací paměti pro data ze všech oddílů.
 
 5. **Implementace omezení rychlosti intervalech getRetryAfterInMilliseconds**
 
-    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy. 
+    Během testování výkonnosti, měli byste zvýšit zatížení dokud malý počet žádostí o získání omezené. Když omezený, klientská aplikace má omezení rychlosti pro interval opakování zadaný server. Respektování omezení rychlosti zajistí, že strávíte co nejkratším čase čekat mezi opakovanými pokusy.
 6. **Horizontální navýšení kapacity vašich úloh klienta**
 
     Pokud testujete při vysoké propustnosti (> 50 000 RU/s), aplikace klienta se může stát kritickým bodem kvůli počítač omezení navýšení kapacity na využití procesoru nebo sítě. Pokud překročíte tento bod, můžete nadále push další účet Azure Cosmos DB díky horizontálnímu navýšení kapacity klientských aplikací napříč několika servery.
@@ -81,7 +81,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     Abyste snížili počet sítě zaokrouhlit zkracuje dobu odezvy potřebný k načtení všech platných výsledky, můžete zvýšit velikost stránky pomocí [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) hlavičku požadavku na až 1000. V případech, kdy potřebujete zobrazit jenom pár výsledky například pokud vaše uživatelské rozhraní nebo aplikací rozhraní API vrátí jenom 10 výsledky čas, může také snížit velikost stránky na 10 ke snížení propustnosti využité pro dotazy a čtení.
 
     Můžete také nastavit velikost stránky pomocí metody setMaxItemCount.
-    
+
 9. **Použít příslušné Plánovač (nepoužívejte zcizování Netty vláken vstupně-výstupních operací smyčky událostí)**
 
     Pomocí sady Java SDK asynchronní [netty](https://netty.io/) pro neblokující vstupně-výstupních operací. Sada SDK používá pevný počet vstupně-výstupních operací netty události smyčky vláken (počet jader procesoru, které má váš počítač) pro provádění v/v operace. Pozorovat vrácená rozhraním API vysílá výsledek na jednom ze sdílených vstupně-výstupních operací události smyčky netty vlákna. Proto je důležité nedochází k blokování sdílené vstupně-výstupních operací události smyčky netty vlákna. Provádějící práce náročné na procesor nebo blokující operace ve vlákně netty smyčky událostí vstupně-výstupní operace může způsobit zablokování nebo významné snížení propustnosti SDK.
@@ -175,7 +175,7 @@ Pro jiné platformy (Red Hat, Windows, Mac, atd.) najdete v těchto pokynech htt
  
 1. **Vyloučit cesty nevyužité indexování pro rychlejší zápisy**
 
-    Zásady indexování služby Azure Cosmos DB umožňuje určit, které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty (setIncludedPaths a setExcludedPaths). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované.  Například následující kód ukazuje, jak vyloučit celý oddíl dokumenty (označovaný také jako podstrom) z indexování pomocí "*" zástupný znak.
+    Zásady indexování služby Azure Cosmos DB umožňuje určit, které dokumentu cesty pro zahrnutí nebo vyloučení z indexování s využitím indexování cesty (setIncludedPaths a setExcludedPaths). Použití indexování cesty může nabídnout zápisu lepší výkon a dolní index úložiště pro scénáře, ve kterých vzory dotazů znám předem, jako jsou indexování náklady přímo korelační počtu jedinečné cesty indexované. Například následující kód ukazuje, jak vyloučit celý oddíl dokumenty (označovaný také jako podstrom) z indexování pomocí "*" zástupný znak.
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -196,7 +196,7 @@ Pro jiné platformy (Red Hat, Windows, Mac, atd.) najdete v těchto pokynech htt
 
     Azure Cosmos DB nabízí bohatou sadu databázových operací včetně relačních a hierarchických dotazů s uživatelem definovanými funkcemi, uložených procedur a aktivačních událostí. všechno funguje s dokumenty v databázové kolekci. Náklady spojené s každou z těchto operací se liší v závislosti na využití procesoru, vstup/výstup a paměti potřebných k dokončení operace. Místo přemýšlet o tom a správy hardwarových prostředků můžete jako jedno opatření pro prostředky požadované k provádění různých databázových operací a plnění požadavků aplikace představit jednotky žádosti (RU).
 
-    Zřízení propustnosti na základě počtu [jednotky žádostí](request-units.md) nastavit pro každý kontejner. Spotřeba jednotek žádosti se vyhodnotí jako sazba za sekundu. Aplikace, které překračují jednotka frekvence zřízené požadavků na své kontejnery jsou omezené, dokud rychlost klesne pod úroveň zřízené pro kontejner. Pokud vaše aplikace vyžaduje vyšší úroveň propustnosti, můžete zvýšit propustnost zřizování další jednotky žádostí. 
+    Zřízení propustnosti na základě počtu [jednotky žádostí](request-units.md) nastavit pro každý kontejner. Spotřeba jednotek žádosti se vyhodnotí jako sazba za sekundu. Aplikace, které překračují jednotka frekvence zřízené požadavků na své kontejnery jsou omezené, dokud rychlost klesne pod úroveň zřízené pro kontejner. Pokud vaše aplikace vyžaduje vyšší úroveň propustnosti, můžete zvýšit propustnost zřizování další jednotky žádostí.
 
     Složitost dotazu má vliv na tom, kolik jednotek žádosti se spotřebovávají pro operaci. Počet predikátů, povaze predikáty, počet funkcí UDF a velikost zdrojové datové sady všech ovlivnit náklady na operace dotazů.
 
@@ -206,7 +206,7 @@ Pro jiné platformy (Red Hat, Windows, Mac, atd.) najdete v těchto pokynech htt
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,
                                                      false).toBlocking.single();
     response.getRequestCharge();
-    ```             
+    ```
 
     Vrácená v hlavičce tohoto platí požadavek se zlomek zřízené propustnosti. Například pokud máte 2000 zřízené RU/s, a pokud předchozí dotaz vrací 1000 1KB – dokumenty, náklady na operace je 1000. V rámci jedné sekundy, v důsledku toho serveru respektuje pouze dva takové požadavky před tady následných žádostí. Další informace najdete v tématu [jednotky žádostí](request-units.md) a [Kalkulačka jednotek žádosti](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
@@ -222,7 +222,7 @@ Pro jiné platformy (Red Hat, Windows, Mac, atd.) najdete v těchto pokynech htt
 
     Pokud máte více než jednoho klienta kumulativně provozní konzistentně výše je frekvence požadavků, nemusí stačit výchozí počet opakování aktuálně nastavená na 9 interně klientem; v tomto případě klient vyvolá DocumentClientException se stavovým kódem 429 do aplikace. Výchozí počet opakování můžete změnit pomocí setRetryOptions ConnectionPolicy instance. Ve výchozím nastavení je vrácena DocumentClientException se stavovým kódem 429 po uplynutí určité doby kumulativní Počkejte 30 sekund, pokud požadavek dál pracovat nad frekvence požadavků. K tomu dojde i v případě aktuální počet opakování je menší než počet opakování, jde o výchozí hodnotu 9 nebo uživatelem definovanou hodnotu.
 
-    Při automatické opakování chování pomáhá zlepšit odolnost proti chybám a použitelnost pro většinu aplikací, zřejmě na odds při provádění srovnávací testy výkonu, zejména v případě měření latence.  Klienta pozorované latence se dosahuje, pokud experiment narazí na server omezení a způsobí, že klientská sada SDK tiše opakování. Aby se zabránilo latence dosahující během výkonu experimenty, měřit poplatek vrácený každou operaci a ujistěte se, jsou požadavky funguje pod sazbu žádost o rezervovanou. Další informace najdete v tématu [jednotky žádostí](request-units.md).
+    Při automatické opakování chování pomáhá zlepšit odolnost proti chybám a použitelnost pro většinu aplikací, zřejmě na odds při provádění srovnávací testy výkonu, zejména v případě měření latence. Klienta pozorované latence se dosahuje, pokud experiment narazí na server omezení a způsobí, že klientská sada SDK tiše opakování. Aby se zabránilo latence dosahující během výkonu experimenty, měřit poplatek vrácený každou operaci a ujistěte se, jsou požadavky funguje pod sazbu žádost o rezervovanou. Další informace najdete v tématu [jednotky žádostí](request-units.md).
 3. **Návrh pro zajištění vyšší propustnost menších dokumentů**
 
     Zátěž žádostí (náklady na zpracování žádosti) dané operace jsou korelována přímo velikost dokumentu. Operace na velkých dokumentů nákladů více než operace pro malé dokumenty.
