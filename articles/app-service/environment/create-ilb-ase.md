@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě Azure App Service Environment
+title: Vytvoření interního nástroje load balancer pomocí služby App Service Environment – Azure
 description: Podrobnosti o tom, jak vytvořit a používat službu Azure App Service Environment izolovanou od internetu
 services: app-service
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
-ms.custom: mvc
-ms.openlocfilehash: e86367d5df8294a7e0f798e47bf87ff3fb8ccf72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: b6c04c5b167eb963e9b2befa57e270ac454f5d74
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967568"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53344274"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -58,17 +58,17 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **webové** > **služby App Service Environment**.
 
-1. Vyberte své předplatné.
+2. Vyberte své předplatné.
 
-1. Vyberte nebo vytvořte skupinu prostředků.
+3. Vyberte nebo vytvořte skupinu prostředků.
 
-1. Vyberte nebo vytvořte virtuální síť.
+4. Vyberte nebo vytvořte virtuální síť.
 
-1. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
+5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
 
-1. Vyberte **virtuální síť/umístění** > **konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
+6. Vyberte **virtuální síť/umístění** > **konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
 
-1. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
+7. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
 
     * net   
 
@@ -133,8 +133,8 @@ Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou j
 
 Vaše služba ASE s interním nástrojem pro vyrovnávání zatížení potřebuje platný certifikát SSL. Použijte interní certifikační autority, kupte si certifikát od externího vystavitele nebo použijte certifikát podepsaný svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
-* **Předmět:** Tento atribut musí být nastavený na hodnotu *.vase-zdejsi-korenova-domena.
-* **Alternativní název předmětu**: Tento atribut musí obsahovat hodnotu **.vase-zdejsi-korenova-domena* i **.scm.vase-zdejsi-korenova-domena*. Připojení SSL k webu SCM/Kudu spojenému s každou aplikací používá adresu ve formátu *nazev-vasi-aplikace.scm.vase-zdejsi-korenova-domena*.
+* **Předmět**: Tento atribut musí být nastaven na hodnotu *.vase kořenové zdejsi korenova.
+* **Alternativní název subjektu**: Tento atribut musí obsahovat **.vase kořenové zdejsi korenova* a **.vase-kořenové-domain-tady*. Připojení SSL k webu SCM/Kudu spojenému s každou aplikací používá adresu ve formátu *nazev-vasi-aplikace.scm.vase-zdejsi-korenova-domena*.
 
 Převeďte/uložte certifikát SSL jako soubor .pfx. Soubor .pfx musí obsahovat všechny zprostředkující a kořenové certifikáty. Zabezpečte ho pomocí hesla.
 
