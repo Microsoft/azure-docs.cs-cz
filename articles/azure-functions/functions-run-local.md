@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2264e6ff686519f7ef0d436d67f3055a48a7421b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997083"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409441"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -303,7 +303,7 @@ func host start
 | **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
 | **`--debug`** | Spustí hostitele s portu ladění otevřete tak, aby se můžete připojit k **func.exe** procesu z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) nebo [Visual Studio 2017](functions-dotnet-class-library.md). Platné hodnoty jsou `VSCode` a `VS`.  |
 | **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
-| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí hodnota: Hodnota ze souboru launch.json nebo 5858. Verzi 1.x pouze. |
+| **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
 | **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
 | **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Používá pouze v případě, že spuštění nástroje Core z integrovaného vývojového prostředí (IDE).|
@@ -444,7 +444,7 @@ Následující projekt možnosti publikování jsou podporovány pouze ve verzi 
 | **`--publish-settings-only -o`** |  Pouze nastavení publikování a přejít obsah. Výchozí hodnota je prompt. |
 |**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování, který je založen na souboru .funcignore ignorován. |
 | **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, který je založen na souboru .funcignore. |
-| **`--zip`** | Publikování běhu z Zip balíčku. Vyžaduje, aby aplikace mají AzureWebJobsStorage nastavení definované. |
+| **`--nozip`** | Výchozí hodnota se změní `Run-From-Zip` režimu vypnout. |
 | **`--build-native-deps`** | Aplikace function přeskočí .wheels složky při publikování pythonu. |
 | **`--additional-packages`** | Seznam balíčků, které mají nainstalovat při sestavování nativních závislosti. Například: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorujte předem publikování ověřování v některých scénářích. |

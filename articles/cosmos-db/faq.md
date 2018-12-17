@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 70feaae718bc6ff8e3f956f0fbc6aa395ba27061
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139652"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53410393"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Vyzkoušejte Azure Cosmos DB odběratelům platí následující podmínky:
 * Jeden kontejner na předplatné pro účty SQL, rozhraní Gremlin API a tabulky.
 * Až 3 kolekce na předplatné pro účty MongoDB.
 * Kapacita 10 GB úložiště.
-* Globální replikace je k dispozici v následujících [oblastí Azure](https://azure.microsoft.com/regions/): střed USA, Severní Evropa a jihovýchodní Asie
+* Globální replikace je k dispozici v následujících [oblastí Azure](https://azure.microsoft.com/regions/): Střed USA, Severní Evropa a jihovýchodní Asie
 * Maximální propustnost 5 tis. RU/s.
 * Předplatná platnost vyprší po uplynutí 24 hodin a je možné rozšířit na maximální počet celkem 48 hodin.
 * Pro účty vyzkoušejte Azure Cosmos DB; nelze vytvořit lístky podpory Azure Podpora je však poskytuje předplatitelům s stávajících plánech podpory.
@@ -147,7 +147,7 @@ Ano, rozhraní SQL API umožňuje aplikacím ukládat libovolné dokumenty JSON 
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Podporuje rozhraní SQL API transakce ACID?
 
-Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako JavaScript uložených procedur a aktivačních událostí. Transakce jsou omezená na jeden oddíl v rámci každého kontejneru a jsou prováděny s odpovídající zásadám ACID sémantiku jako "všechno nebo nic," izolovaně od jiných souběžně spuštěných kódů a požadavků uživatelů. Pokud jsou výjimky vyvolány prostřednictvím provádění kód Javascriptové aplikace na straně serveru, celá transakce se vrátí zpět. Další informace o transakcích najdete v tématu [databáze programu transakce](programming.md#database-program-transactions).
+Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako JavaScript uložených procedur a aktivačních událostí. Transakce jsou omezená na jeden oddíl v rámci každého kontejneru a jsou prováděny s odpovídající zásadám ACID sémantiku jako "všechno nebo nic," izolovaně od jiných souběžně spuštěných kódů a požadavků uživatelů. Pokud jsou výjimky vyvolány prostřednictvím provádění kód Javascriptové aplikace na straně serveru, celá transakce se vrátí zpět. 
 
 ### <a name="what-is-a-container"></a>Co je kontejner?
 
@@ -234,7 +234,7 @@ Rozhraní MongoDB API spolu s běžné kódy chyb MongoDB má svůj vlastní kon
 | Chyba               | Kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí je větší než počet zřízených jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů Azure portal nebo opakuje akci. |
-| ExceededMemoryLimit | 16501 | Jako víceklientská služba operace přešel přes klienta přidělení paměti. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {name: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {stáří: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+| ExceededMemoryLimit | 16501 | Jako víceklientská služba operace přešel přes klienta přidělení paměti. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {název: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {stáří: -1}}<br> &nbsp; &nbsp; &nbsp;&nbsp;])*) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Je ovladač Simba pro MongoDB podporovaných pro použití s MongoDB API služby Azure cosmos DB?
 
@@ -395,11 +395,11 @@ Ano, informace o tom, jak využívat distribuovaná povaha služby Azure Cosmos 
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>Když je povolené globální distribuci, jak dlouho trvá replikovat data?
 
-Azure Cosmos DB potvrzení data trvale v místní oblasti a odesílá data do jiných oblastí okamžitě v řádu milisekund. Tato replikace je závislé pouze na dobu odezvy (požadavku) datového centra. Další informace o možnosti globální distribuce služby Azure Cosmos DB najdete v tématu [služby Azure Cosmos DB: globálně distribuovaná databázová služba v Azure](distribute-data-globally.md).
+Azure Cosmos DB potvrzení data trvale v místní oblasti a odesílá data do jiných oblastí okamžitě v řádu milisekund. Tato replikace je závislé pouze na dobu odezvy (požadavku) datového centra. Další informace o možnosti globální distribuce služby Azure Cosmos DB najdete v tématu [služby Azure Cosmos DB: Globálně distribuovaná databázová služba v Azure](distribute-data-globally.md).
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>Je možné změnit úroveň konzistence požadavek na čtení?
 
-Pomocí služby Azure Cosmos DB můžete nastavit úroveň konzistence na úrovni kontejneru (v tabulce). Pomocí sady .NET SDK, můžete změnit úroveň tím, že poskytuje hodnotu pro klíč TableConsistencyLevel v souboru app.config. Možné hodnoty jsou: silná, omezená Neaktuálnost, relace, konzistentní Předpona a konečná. Další informace najdete v tématu [možností vyladění data úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Klíč spočívá v nelze nastavit požadavek konzistence úrovně více než nastavení pro tabulku. Například nelze nastavit úroveň konzistence v tabulce na úrovni konzistence požadavek na silné a konečná.
+Pomocí služby Azure Cosmos DB můžete nastavit úroveň konzistence na úrovni kontejneru (v tabulce). Pomocí sady .NET SDK, můžete změnit úroveň tím, že poskytuje hodnotu pro klíč TableConsistencyLevel v souboru app.config. Možné hodnoty jsou: Silná, omezená Neaktuálnost, relace, konzistentní Předpona a konečný výsledek. Další informace najdete v tématu [možností vyladění data úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Klíč spočívá v nelze nastavit požadavek konzistence úrovně více než nastavení pro tabulku. Například nelze nastavit úroveň konzistence v tabulce na úrovni konzistence požadavek na silné a konečná.
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>Jak rozhraní Table API zpracovává převzetí služeb při selhání Pokud oblast přestane fungovat?
 
@@ -413,11 +413,11 @@ Ano, rozhraní Table API využívá platformu Azure Cosmos DB pro zálohy. Zálo
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Rozhraní Table API všechny atributy indexu entity ve výchozím nastavení?
 
-Ano, všechny atributy entity jsou indexovány ve výchozím nastavení. Další informace najdete v tématu [služby Azure Cosmos DB: zásadám indexování](index-policy.md).
+Ano, všechny atributy entity jsou indexovány ve výchozím nastavení. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md).
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Dělá to znamená, které nemusíte vytvářet více než jeden index splňovat dotazy?
 
-Ano, Azure Cosmos DB Table API poskytuje, automatické indexování všechny atributy bez jakékoli definice schématu. Tato automatizace uvolní vývojářům zaměřit na aplikace a nikoli na vytvoření indexu a správu. Další informace najdete v tématu [služby Azure Cosmos DB: zásadám indexování](index-policy.md).
+Ano, Azure Cosmos DB Table API poskytuje, automatické indexování všechny atributy bez jakékoli definice schématu. Tato automatizace uvolní vývojářům zaměřit na aplikace a nikoli na vytvoření indexu a správu. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md).
 
 ### <a name="can-i-change-the-indexing-policy"></a>Můžete změnit zásady indexování?
 
@@ -536,13 +536,13 @@ Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automati
 
 Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
-### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: nepovedlo se najít žádné metody" Chyba?
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: Nelze najít žádné metody"Chyba?
 
 Gremlin API služby Azure Cosmos DB implementuje podmnožinu funkce je definována v útoku na Gremlin. Podporované kroky a další informace najdete v tématu [podpora Gremlin](gremlin-support.md) článku.
 
 Nejlepším alternativním řešením je přepsání požadovaných kroků konzoly Gremlin s podporované funkce, protože všechny základních kroků konzoly Gremlin jsou podporovány službou Azure Cosmos DB.
 
-### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Proč se zobrazuje "WebSocketException: server vrátil stavový kód"200", když byl očekáván stavový kód"101"" Chyba?
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Proč se zobrazuje "WebSocketException: Server vrátil stavový kód "200", když byl očekáván stavový kód "101" "Chyba?
 
 Tato chyba je pravděpodobně vyvolána při nesprávné koncový bod se používá. Koncový bod, který generuje tato chyba má následujícímu vzoru:
 
@@ -777,11 +777,11 @@ Můžete přidat jakýkoli počet oblastí pro účet a řídit, kdy se převzí
 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Rozhraní Apache Cassandra API všechny atributy indexu entity ve výchozím nastavení?
 
-Ano, všechny atributy entity jsou indexovány ve výchozím nastavení služba Azure Cosmos DB. Další informace najdete v tématu [služby Azure Cosmos DB: zásadám indexování](index-policy.md). Získejte výhody zaručený výkon s konzistentní indexování a trvalý kvora potvrzené zapíše vždycky.
+Ano, všechny atributy entity jsou indexovány ve výchozím nastavení služba Azure Cosmos DB. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md). Získejte výhody zaručený výkon s konzistentní indexování a trvalý kvora potvrzené zapíše vždycky.
 
 ### <a name="does-this-mean-i-dont-have-to-create-more-than-one-index-to-satisfy-the-queries"></a>Dělá to znamená, které nemusíte vytvářet více než jeden index splňovat dotazy?
 
-Ano, Azure Cosmos DB nabízí, automatické indexování všechny atributy bez jakékoli definice schématu. Tato automatizace uvolní vývojářům zaměřit na aplikace a nikoli na vytvoření indexu a správu. Další informace najdete v tématu [služby Azure Cosmos DB: zásadám indexování](index-policy.md).
+Ano, Azure Cosmos DB nabízí, automatické indexování všechny atributy bez jakékoli definice schématu. Tato automatizace uvolní vývojářům zaměřit na aplikace a nikoli na vytvoření indexu a správu. Další informace najdete v tématu [služby Azure Cosmos DB: Zásady indexování](index-policy.md).
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu používat sadu SDK Cassandra API místně v emulátoru?
 

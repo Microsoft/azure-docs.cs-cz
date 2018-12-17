@@ -29,6 +29,8 @@ items:
     href: ./ansible-create-configure-vmss.md
   - name: Nasazení aplikace do VMSS
     href: ./ansible-deploy-app-vmss.md
+  - name: Automatické škálování VMSS
+    href: ./ansible-auto-scale-vmss.md
   - name: Vytvoření a konfigurace clusterů AKS
     href: ./ansible-create-configure-aks.md
   - name: Vytvoření a konfigurace služby Azure Application Gateway
@@ -63,9 +65,9 @@ items:
   items:
   - name: Rozšíření editoru Visual Studio Code pro Ansible
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: 6e4a972588a63a5ce028a3e1f7a868565bbabbf7
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f426841f2a02b085e34e9e2a768c43a052bf62f7
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164650"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409132"

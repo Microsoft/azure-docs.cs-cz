@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 140994de4b1be61f16593e450d156b81727a9f52
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251018"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437829"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení pomocí Azure Notification Hubs: Nejčastější dotazy
 ## <a name="general"></a>Obecné
@@ -39,8 +39,8 @@ Podrobnosti o nejnovější cenách najdete na [ceník Notification Hubs] strán
 
 Funkce úrovně Standard:
 * **Telemetrie s bohatými funkcemi**: Notification Hubs Telemetrii jednotlivých zpráv můžete sledovat jakékoli žádosti o nabízených oznámení a zpětná vazba systému oznámení platformy pro ladění.
-* **Víceklientskou architekturu**: můžete pracovat s přihlašovací údaje systému oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno tenanty rozdělují na rozbočovače v rámci stejného oboru názvů.
-* **Plánované nabízené**: můžete naplánovat oznámení posílat kdykoli.
+* **Víceklientskou architekturu**: Můžete pracovat s přihlašovací údaje systému oznámení platformy na úrovni oboru názvů. Tato možnost umožňuje snadno tenanty rozdělují na rozbočovače v rámci stejného oboru názvů.
+* **Plánované nabízené**: Můžete naplánovat oznámení posílat kdykoli.
 
 ### <a name="what-is-the-notification-hubs-sla"></a>Co je smlouva SLA Notification Hubs?
 Pro úrovně Basic a Standard centra oznámení správně nakonfigurovaných aplikací můžete odesílat nabízená oznámení nebo provádění operací správy registrace nejméně 99,9 % času. Další informace o smlouvě SLA, přejděte [Notification Hubs SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/) stránky.
@@ -51,9 +51,9 @@ Pro úrovně Basic a Standard centra oznámení správně nakonfigurovaných apl
 ### <a name="which-customers-are-using-notification-hubs"></a>Které zákazníci používají Notification Hubs?
 Mnozí uživatelé používají Notification Hubs. Tady jsou uvedené některé důležité položky:
 
-* Soči v roce 2014: Stovky zájmových skupin, 3 + miliony zařízení a 150 + milionů oznámení odeslaných za dva týdny. [Případová studie: soči v roce]
+* Soči v roce 2014: Stovky zájmových skupin, 3 + miliony zařízení a 150 + milionů oznámení odeslaných za dva týdny. [Případová studie: Soči v roce]
 * Skanska: [Případová studie: Skanska]
-* Časy Seattle: [Případová studie: Seattle časy]
+* Seattle časy: [Případová studie: Časy Praha]
 * Mural.ly: [Případová studie: Mural.ly]
 * 7Digital: [Případová studie: 7Digital]
 * Aplikace pro Bing: Desítky milionů zařízení odesílat oznámení 3 miliony za den.
@@ -199,9 +199,9 @@ Nabízíme také možnost exportovat telemetrická data prostřednictvím kódu 
 [Azure Portal]: https://portal.azure.com
 [Ceník Notification Hubs]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
-[Případová studie: soči v roce]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
+[Případová studie: Soči v roce]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [Případová studie: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Případová studie: Seattle časy]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
+[Případová studie: Časy Praha]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [Případová studie: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [Případová studie: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Rozhraní REST API Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
@@ -213,7 +213,7 @@ Nabízíme také možnost exportovat telemetrická data prostřednictvím kódu 
 [Model zabezpečení Notification Hubs]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Kurzu centra zabezpečení nabízená oznámení]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Řešení potíží s Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Notification Hubs metriky]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Ukázky využití Notification Hubs metriky]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Registrace exportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

@@ -59,7 +59,7 @@ Toto ID je viditelný v adresách URL produktu. Může se skládat jenom z malý
 
 **Příklad:**
 
-Pokud vydavatel **contoso** vytvoří v rámci nabídky s ID nabídky *ukázka Cortana Intelligence*, se zobrazí v AppSource jako "https://appsource.microsoft.com/marketplace/apps/**contoso**.*Ukázka Cortana Intelligence*? tab = Overview ".
+Pokud vydavatel **contoso** vytvoří v rámci nabídky s ID nabídky *ukázka Cortana Intelligence*, se zobrazí v AppSource jako "https://appsource.microsoft.com/marketplace/apps/**contoso**.*Ukázka Cortana Intelligence\*? tab = Overview ".
 
 ### <a name="publisher-id"></a>ID vydavatele
 

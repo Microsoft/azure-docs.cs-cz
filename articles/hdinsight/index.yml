@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: bf2b326b6e0003b9a690e560d5a312f16659dad9
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455738"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53406739"
 documentType: LandingData
 title: Dokumentace ke službě HDInsight
 metadata:
@@ -70,12 +70,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: 'Hadoop: <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">Provádění operací ETL</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Vytváření clusterů na vyžádání</a>'
-    - html: 'Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Spouštění interaktivních dotazů</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Vizualizace dat</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Strojové učení</a>'
-    - html: 'Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturované streamování s využitím Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Použití se Stormem v HDInsightu</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Použití rozhraní Kafka Producer and Consumer API</a>'
-    - html: 'HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Vytváření clusterů HBase ve virtuální síti</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Použití Apache Phoenixu</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Připojení ke Sparku</a>'
+    - html: 'Apache Hadoop: <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">Provádění operací ETL</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Vytváření clusterů na vyžádání</a>'
+    - html: 'Apache Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Spouštění interaktivních dotazů</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Vizualizace dat</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Strojové učení</a>'
+    - html: 'Apache Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturované streamování s využitím Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Použití se Stormem v HDInsightu</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Použití rozhraní Kafka Producer and Consumer API</a>'
+    - html: 'Apache HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Vytváření clusterů HBase ve virtuální síti</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Použití Apache Phoenixu</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Připojení ke Sparku</a>'
     - html: 'Interactive Query: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Propojení s Power BI s využitím Direct Query</a>'
-    - html: 'Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Store</a>'
+    - html: 'Apache Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Store</a>'
     - html: Služby ML Services&#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Použití Nástrojů R pro Visual Studio</a>
 - title: Referenční informace
   items:

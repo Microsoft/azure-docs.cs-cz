@@ -101,6 +101,10 @@ items:
       href: howto-create-and-manage-applications-as-CSP.md
     - name: Konfigurace domovské stránky
       href: howto-configure-homepage.md
+  - name: Personalizace
+    items:
+    - name: Správa vašich předvoleb
+      href: howto-manage-preferences.md
 - name: Související
   items:
   - name: Řešení
@@ -133,9 +137,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Podporované prohlížeče
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 691a3c5da906a66d4773ebaf458c3e99e6a03f99
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 045599c517c9ba4c85b0e2bb7d7bec6c531b0439
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316314"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53407758"

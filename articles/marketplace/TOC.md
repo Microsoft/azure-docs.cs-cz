@@ -83,21 +83,6 @@
 ### [Publikování nabídky virtuálních počítačů](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
 ### [Aktualizace stávající nabídky](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
-<!-- Following legacy VM section was replaced.  -->
-<!-- 
-## Virtual machines
-### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
--->
-<!-- new section for Azure apps -->
-
 ## [Nabídka aplikace Azure](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 ### [Požadavky](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)
 ### [Vytvoření nabídky aplikací Azure](./cloud-partner-portal/azure-applications/cpp-create-offer.md)
@@ -201,7 +186,16 @@
 ### [BPM a metodologie](./cloud-partner-portal-orig/bpm-and-methodologies.md)
 ### [Wikiweb nápovědy](./cloud-partner-portal-orig/help-wiki.md)
 
-## [Konzultační služby](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+<!--
+## [Consulting services](./cloud-partner-portal-orig/cloud-partner-portal-consulting-services-publishing-offer.md)
+-->
+## [Konzultační služby](./cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md)
+### [Požadavky](./cloud-partner-portal/consulting-services/cpp-consulting-service-prerequisites.md)
+### [Vytvoření nabídky konzultačních služeb](./cloud-partner-portal/consulting-services/cpp-consulting-service-create-offer.md)
+#### [Karta nastavení nabídky](./cloud-partner-portal/consulting-services/cpp-consulting-service-define-offer-settings.md)
+#### [Karta podrobností o prodejních místech](./cloud-partner-portal/consulting-services/cpp-consulting-service-storefront-details.md)
+### [Publikování nabídky konzultačních služeb](./cloud-partner-portal/consulting-services/cpp-consulting-service-publish-offer.md) 
+
 ## [Správa profilu vydavatele](./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md)
 ## [Správa uživatelů](./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md)
 ## [Dodržování předpisů GDPR](./cloud-partner-portal-orig/cloud-partner-portal-gdpr.md)

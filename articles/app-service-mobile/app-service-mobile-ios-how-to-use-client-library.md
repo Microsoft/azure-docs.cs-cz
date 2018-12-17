@@ -13,12 +13,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8eef75a6e1f4f05aa6d7ce8f9e6fdda52162d0bc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b284b599c569fe1c492b28d09fbc62a9130e939e
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960715"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409305"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak iOS použijte klientskou knihovnu pro Azure Mobile Apps
 
@@ -28,7 +28,7 @@ Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovějš
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 
-Referenční dokumentace pro iOS Klientská sada SDK je umístěná tady: [Azure Mobile Apps iOS odkaz klienta][2].
+Referenční dokumentace pro klienta pro iOS SDK je umístěná tady: [Azure Mobile Apps iOS odkaz klienta][2].
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
@@ -41,7 +41,7 @@ Tato sada SDK není proto vhodný pro Watch-type nebo podobně jako zařízení 
 
 Tato příručka předpokládá, že vytvoříte back-end s tabulkou. Tento průvodce to předpokládá, že tabulka má stejné schéma jako tabulky v těchto kurzech. Tento průvodce to předpokládá také, že ve vašem kódu, které odkazují na `MicrosoftAzureMobile.framework` a importovat `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
 
-## <a name="create-client"></a>Postupy: vytvoření klienta
+## <a name="create-client"></a>Jak: Vytvoření klienta
 
 Pokud chcete získat přístup k back-endu Azure Mobile Apps ve vašem projektu, vytvořte `MSClient`. Nahraďte `AppUrl` pomocí adresy URL aplikace. Můžete ponechat `gatewayURLString` a `applicationKey` prázdný. Pokud jste nastavili Brána pro ověřování, naplnění `gatewayURLString` s adresou URL brány.
 
@@ -57,7 +57,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>Postupy: vytvoření odkazu na tabulku
+## <a name="table-reference"></a>Jak: Vytvořit odkaz na tabulku
 
 Pro přístup k datům a jejich aktualizaci vytvořte odkaz na back-endovou tabulku. Nahraďte `TodoItem` názvem vaší tabulky.
 
@@ -73,7 +73,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>Postupy: dotazování na Data
+## <a name="querying"></a>Jak: Dotazování na Data
 
 Chcete-li vytvořit dotaz na databázi, dotazování `MSTable` objektu. Následující dotaz načte všechny položky v `TodoItem` a protokolovat text každé položky.
 
@@ -105,7 +105,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>Postupy: Filtr vrátil Data
+## <a name="filtering"></a>Jak: Filtr vrátil Data
 
 Chcete-li filtrovat výsledky, existuje mnoho možností k dispozici.
 
@@ -145,7 +145,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>Postupy: použití MSQuery
+## <a name="query-object"></a>Jak: Použití MSQuery
 
 K provedení složitých dotazů (včetně řazení a stránkování), vytvořte `MSQuery` přímo nebo pomocí predikátu objektu:
 
@@ -174,7 +174,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 
 Spuštění `MSQuery` dotazu voláním `readWithCompletion` objektu.
 
-## <a name="sorting"></a>Postupy: řazení dat s MSQuery
+## <a name="sorting"></a>Jak: Řazení dat s MSQuery
 
 Chcete-li seřadit výsledky, Podívejme se na příklad. Seřadit podle pole text a pak podle sestupných "úplné", vyvolat `MSQuery` takto:
 
@@ -210,7 +210,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>Postupy: omezení polí a parametrů řetězce dotazu s MSQuery rozbalte
+## <a name="selecting"></a><a name="parameters"></a>Jak: Omezení pole a rozbalte parametrů řetězce dotazu s MSQuery
 
 Chcete-li omezit pole, který se má vrátit v dotazu, zadejte názvy polí v **selectFields** vlastnost. V tomto příkladu vrátí pouze text a dokončené pole:
 
@@ -243,7 +243,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>Postupy: Konfigurace velikosti stránky
+## <a name="paging"></a>Jak: Konfigurovat velikost stránky
 
 S Azure Mobile Apps velikost stránky určuje počet záznamů, které se berou v době z tabulek back-endu. Volání `pull` dat by pak dávky dat na základě této stránky velikosti, až nebudou existovat žádné další záznamy o přijetí změn.
 
@@ -255,7 +255,7 @@ Toto nastavení řídí pouze velikost stránky na straně klienta. Pokud klient
 
 Toto nastavení je také *číslo* datových záznamů, ne *nadměrná velikost v bajtech*.
 
-Pokud zvýšíte velikost stránky klienta, by měl také zvýšit velikost stránky na serveru. V tématu ["postupy: přizpůsobení velikosti stránkovacího tabulky"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) pokyny k tomu.
+Pokud zvýšíte velikost stránky klienta, by měl také zvýšit velikost stránky na serveru. Zobrazit ["jak: Přizpůsobení velikosti stránkovacího tabulky"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) pokyny k tomu.
 
 **Objective-C**:
 
@@ -280,7 +280,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>Postupy: vkládání dat
+## <a name="inserting"></a>Jak: Vkládání dat
 
 Chcete-li vložit nový řádek tabulky, vytvořte `NSDictionary` a vyvolání `table insert`. Pokud [dynamické schéma] je povoleno, mobilních back-endu Azure App Service automaticky vygeneruje nové sloupce na základě `NSDictionary`.
 
@@ -314,7 +314,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>Postupy: Změna dat
+## <a name="modifying"></a>Jak: Úprava dat
 
 Aby se aktualizoval stávající řádek, upravte položky a volání `update`:
 
@@ -375,7 +375,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 Minimálně `id` atribut musí být nastaven při provádění aktualizací.
 
-## <a name="deleting"></a>Postupy: odstranění dat
+## <a name="deleting"></a>Jak: Odstranit Data
 
 Odstranit položku, vyvolat `delete` s položkou:
 
@@ -431,7 +431,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 Minimálně `id` atribut musí být nastaven při provádění odstraní.
 
-## <a name="customapi"></a>Postupy: volání vlastních rozhraní API
+## <a name="customapi"></a>Jak: Volání vlastních rozhraní API
 
 Vlastní rozhraní API můžete zveřejnit žádné funkce back-endu. Není třeba mapují na operace tabulky. Nejen získáte větší kontrolu nad zasílání zpráv, můžete dokonce pro čtení nebo nastaví záhlaví a změnit formát těla zprávy odpovědi. Zjistěte, jak vytvořit vlastní rozhraní API na back-endu, přečtěte si téma [vlastních rozhraní API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
@@ -472,7 +472,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>Postupy: registrace nabízených oznámení šablon k odesílání oznámení napříč platformami
+## <a name="templates"></a>Jak: Registrace šablon nabízených oznámení k odesílání oznámení napříč platformami
 
 Chcete-li zaregistrovat šablony, předejte šablony s vaší **client.push registerDeviceToken** metoda ve vaší klientské aplikace.
 
@@ -512,7 +512,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Všechna klíčová slova jsou odebrána z požadavku pro zabezpečení.  Přidání značek na zařízení nebo šablony v rámci instalace naleznete v tématu [pracovat s back-end .NET server SDK pro Azure Mobile Apps][4].  K odesílání oznámení pomocí těchto registrovaných šablon, pracovat s [rozhraní API pro Notification Hubs][3].
 
-## <a name="errors"></a>Postupy: zpracování chyb
+## <a name="errors"></a>Jak: Zpracování chyb
 
 Při volání back-endu mobilní služby Azure App Service obsahuje blok dokončení `NSError` parametru. Pokud dojde k chybě, je tento parametr nemá hodnotu nil. Ve vašem kódu zkontrolujte tento parametr a zpracování chyb podle potřeby, jak je ukázáno v předchozích fragmentů kódu.
 
@@ -544,7 +544,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>Postupy: ověřování uživatelů pomocí Active Directory Authentication Library
+## <a name="adal"></a>Jak: Ověřování uživatelů pomocí Active Directory Authentication Library
 
 Můžete používat Active Directory Authentication Library (ADAL) pro přihlášení uživatelů do vaší aplikace pomocí Azure Active Directory. Tok ověřování klientů pomocí zprostředkovatele identity sada SDK je vhodnější než použít `loginWithProvider:completion:` metody.  Tok ověření klienta obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
@@ -631,7 +631,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>Postupy: ověřování uživatelů pomocí sady SDK Facebooku pro iOS
+## <a name="facebook-sdk"></a>Jak: Ověřování uživatelů pomocí sady SDK Facebooku pro iOS
 
 Sady SDK Facebooku pro iOS můžete použít pro přihlášení uživatelů do vaší aplikace pomocí služby Facebook.  Tok ověřování klienta je vhodnější než použít `loginWithProvider:completion:` metody.  Tok ověření klienta obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
@@ -710,11 +710,11 @@ Sady SDK Facebooku pro iOS můžete použít pro přihlášení uživatelů do v
     }
     ```
 
-## <a name="twitter-fabric"></a>Postupy: ověřování uživatelů pomocí Twitteru prostředků infrastruktury pro iOS
+## <a name="twitter-fabric"></a>Jak: Ověřování uživatelů pomocí Twitteru prostředků infrastruktury pro iOS
 
 Prostředky infrastruktury pro iOS můžete použít pro přihlášení uživatelů do vaší aplikace pomocí služby Twitter. Tok ověřování klientů je vhodnější než použít `loginWithProvider:completion:` metody, protože obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
-1. Konfigurace back-endu mobilní aplikace pro Twitter přihlásit pomocí následujících [konfigurace služby App Service pro přihlášení k Twitteru](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) kurzu.
+1. Konfigurace back-endu mobilní aplikace pro Twitter přihlásit pomocí následujících [konfigurace služby App Service pro přihlášení k Twitteru](../app-service/configure-authentication-provider-twitter.md) kurzu.
 2. Přidejte do projektu prostředků infrastruktury pomocí následujících [Prostředky infrastruktury pro iOS – Začínáme] dokumentace ke službě a nastavení TwitterKit.
 
    > [!NOTE]
@@ -792,11 +792,11 @@ Prostředky infrastruktury pro iOS můžete použít pro přihlášení uživate
     }
     ```
 
-## <a name="google-sdk"></a>Postupy: ověřování uživatelů pomocí služby Google přihlášení SDK pro iOS
+## <a name="google-sdk"></a>Jak: Ověřování uživatelů pomocí služby Google přihlášení SDK pro iOS
 
 Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatelů do vaší aplikace pomocí účtu Google.  Google nedávno jsme oznámili změny zásad zabezpečení jejich OAuth.  Tyto změny zásad bude v budoucnu vyžadovat použití sady SDK služby Google.
 
-1. Konfigurace back-endu mobilní aplikace pro Google přihlásit pomocí následujících [konfigurace služby App Service pro Google přihlášení](../app-service/app-service-mobile-how-to-configure-google-authentication.md) kurzu.
+1. Konfigurace back-endu mobilní aplikace pro Google přihlásit pomocí následujících [konfigurace služby App Service pro Google přihlášení](../app-service/configure-authentication-provider-google.md) kurzu.
 2. Instalace sady SDK služby Google pro iOS pomocí následujících [přihlášení Google pro iOS – začněte s integrací](https://developers.google.com/identity/sign-in/ios/start-integrating) dokumentaci. V části "Ověření se a back-end Server", můžete vynechat.
 3. Přidejte následující tohoto delegáta `signIn:didSignInForUser:withError:` metoda podle jazyka, který používáte.
 
@@ -920,7 +920,7 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
-[7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[7]: ../app-service/configure-authentication-provider-aad.md
 [8]:../active-directory/develop/quickstart-v1-ios.md
-[9]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
+[9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

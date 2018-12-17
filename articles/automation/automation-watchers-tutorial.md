@@ -90,7 +90,7 @@ Runbook služby akce slouží k práci s daty do něho předaný ze sady runbook
 1. Zadejte následující hodnoty pro parametry:
 
    ***EVENTDATA** – ponechte prázdné. Data je předáno ze sady runbook sledovacích procesů.  
-   ***Nastavení spuštění** – Azure, ponechte tato sada runbook běží ve službě Automation.
+   ***Nastavení spuštění** ** – Azure, ponechte tato sada runbook běží ve službě Automation.
 
 1. Klikněte na tlačítko **OK**a pak vyberte se vrátíte na stránku sledovacích procesů.
 1. Klikněte na tlačítko **OK** k vytvoření úlohy sledovacího procesu.

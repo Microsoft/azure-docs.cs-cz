@@ -157,14 +157,8 @@ items:
       href: sql-database-managed-instance-create-manage.md
     - name: Omezení prostředků
       href: sql-database-managed-instance-resource-limits.md
-    - name: Konfigurace virtuální sítě
-      items:
-      - name: Konfigurace virtuální sítě
-        href: sql-database-managed-instance-vnet-configuration.md
-      - name: Architektura připojení
-        href: sql-database-managed-instance-connectivity-architecture.md
-      - name: Koncový bod správy
-        href: sql-database-managed-instance-management-endpoint.md
+    - name: Architektura připojení
+      href: sql-database-managed-instance-connectivity-architecture.md
     - name: Rozdíly v jazyce T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
   - name: Platforma jako služba
@@ -287,34 +281,28 @@ items:
       href: elastic-jobs-overview.md
   - name: Porovnání funkcí SQL
     href: sql-database-features.md
-  - name: Sledování a ladění výkonu
+  - name: Sledování a ladění
     items:
-    - name: Přehled sledování a ladění
+    - name: Sledování a ladění výkonu
       href: sql-database-monitor-tune-overview.md
-    - name: Inteligentní výkon
+    - name: Sledování výkonu
       items:
-      - name: Doporučení a akce ladění
-        href: sql-database-performance.md
       - name: Query Performance Insight
         href: sql-database-query-performance.md
-      - name: Doporučení ohledně výkonu pro nástroj Database Advisor
-        href: sql-database-advisor.md
-    - name: Pokročilé sledování
-      items:
       - name: Sledování služby Azure SQL Analytics
         href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql
       - name: Protokolování diagnostických telemetrických dat
         href: sql-database-metrics-diag-logging.md
-    - name: Inteligentní přehledy o výkonu
-      href: sql-database-intelligent-insights.md
-    - name: Automatické ladění
-      href: sql-database-automatic-tuning.md
-    - name: Inteligentní zpracování dotazů
+    - name: Inteligentní výkon
       items:
-      - name: Inteligentní zpracování dotazů
-        href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-      - name: Adaptivní zpracování dotazů
-        href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
+      - name: Automatické ladění
+        href: sql-database-automatic-tuning.md
+      - name: Inteligentní přehledy o výkonu
+        href: sql-database-intelligent-insights.md
+      - name: Doporučení a akce ladění
+        href: sql-database-performance.md
+      - name: Doporučení ohledně výkonu pro nástroj Database Advisor
+        href: sql-database-advisor.md
   - name: Funkce databází
     items:
     - name: Funkce databází
@@ -409,10 +397,20 @@ items:
       href: sql-database-managed-instance-migrate.md
     - name: Migrace certifikace TDE do spravované instance
       href: sql-database-managed-instance-migrate-tde-certificate.md
+    - name: Určení velikosti podsítě spravované instance
+      href: sql-database-managed-instance-determine-size-vnet-subnet.md
+    - name: Vytvoření nové virtuální sítě a podsítě pro spravovanou instanci
+      href: sql-database-managed-instance-create-vnet-subnet.md
+    - name: Konfigurace stávající virtuální sítě a podsítě pro spravovanou instanci
+      href: sql-database-managed-instance-configure-vnet-subnet.md
     - name: Konfigurace vlastního systému DNS
       href: sql-database-managed-instance-custom-dns.md
     - name: Synchronizace konfigurace sítě
       href: sql-database-managed-instance-sync-network-configuration.md
+    - name: Vyhledání IP adresy koncového bodu správy
+      href: sql-database-managed-instance-find-management-endpoint-ip-address.md
+    - name: Ověření integrované ochrany brány firewall
+      href: sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md
     - name: Transakční replikace
       href: replication-with-sql-database-managed-instance.md
     - name: Konfigurace zjišťování hrozeb
@@ -668,9 +666,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: bb051db62acda98e40be09c174216208578afccc
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d94f4fb39ccdee60fae434204369fd844aedeb20
+ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320961"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53384271"

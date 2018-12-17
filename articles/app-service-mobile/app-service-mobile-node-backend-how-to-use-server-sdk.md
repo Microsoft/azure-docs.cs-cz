@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
+ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963994"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53409254"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
 
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-Každý parametr je jedním z se standardními RESTful akcemi: získat, POST, PATCH nebo odstranění. Metoda je standard [ExpressJS middlewaru] funkce, která odesílá požadovaný výstup.
+Každý parametr je jedním z se standardními RESTful akcemi: ZÍSKAT, POST, PATCH nebo odstranění. Metoda je standard [ExpressJS middlewaru] funkce, která odesílá požadovaný výstup.
 
 ### <a name="howto-customapi-auth"></a>Ověřování vyžadovat pro přístup k vlastní rozhraní API
 
@@ -918,13 +918,13 @@ Operace s tabulkou i můžete upravit pomocí editoru služby App Service. Když
 
 Následující příkazy jsou k dispozici na panelu příkazů pro tabulku:
 
-* **Změna oprávnění**: oprávnění pro čtení, vložení, aktualizace a odstranění operace v tabulce.
+* **Změna oprávnění**: Upravit oprávnění pro čtení, vkládání, aktualizace a odstranění týkající se v tabulce.
  Možnosti jsou k povolení anonymního přístupu, vyžadují ověřování nebo zakažte veškerý přístup k operaci.
-* **Upravit skript**: otevření souboru skriptu k tabulce v App Service Editor.
-* **Správa schématu**: Přidání nebo odstranění sloupců nebo změně indexu tabulky.
-* **Vymazat tabulku**: existující tabulku zkrátit tak, že odstraníte všechny řádky dat, ale ponechání schéma beze změny.
-* **Odstranit řádky**: odstranit jednotlivé řádky dat.
-* **Zobrazit protokoly streamování**: připojení ke službě streamování protokolů pro váš web.
+* **Upravit skript**: Otevření souboru skriptu k tabulce v App Service Editor.
+* **Správa schématu**: Přidat nebo odstranit sloupce nebo změnit tabulku indexu.
+* **Vymazat tabulku**: Existující tabulku zkrátit tak, že odstraníte všechny řádky dat, ale ponechání schéma beze změny.
+* **Odstranit řádky**: Odstraňte jednotlivé řádky dat.
+* **Zobrazit protokoly streamování**: Připojení ke službě streamování protokolů pro váš web.
 
 ### <a name="work-easy-apis"></a>Práce s jednoduchá rozhraní API na webu Azure Portal
 
@@ -963,11 +963,11 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 [Rychlé spuštění klienta Xamarin.Forms]: app-service-mobile-xamarin-forms-get-started.md
 [Rychlý start klientů Windows Store]: app-service-mobile-windows-store-dotnet-get-started.md
 [synchronizaci offline dat]: app-service-mobile-offline-data-sync.md
-[Konfigurovat ověřování Azure Active Directory]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
-[Konfigurace ověřování sítě Facebook]: ../app-service/app-service-mobile-how-to-configure-facebook-authentication.md
-[Konfigurace ověřování Google]: ../app-service/app-service-mobile-how-to-configure-google-authentication.md
-[Konfigurace ověřování společnosti Microsoft]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Konfigurace ověřování Twitteru]: ../app-service/app-service-mobile-how-to-configure-twitter-authentication.md
+[Konfigurovat ověřování Azure Active Directory]: ../app-service/configure-authentication-provider-aad.md
+[Konfigurace ověřování sítě Facebook]: ../app-service/configure-authentication-provider-facebook.md
+[Konfigurace ověřování Google]: ../app-service/configure-authentication-provider-google.md
+[Konfigurace ověřování společnosti Microsoft]: ../app-service/configure-authentication-provider-microsoft.md
+[Konfigurace ověřování Twitteru]: ../app-service/configure-authentication-provider-twitter.md
 [Průvodce nasazením služby Azure App Service]: ../app-service/app-service-deploy-local-git.md
 [Monitorování služby Azure App Service]: ../app-service/web-sites-monitor.md
 [Povolit diagnostické protokolování ve službě Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md

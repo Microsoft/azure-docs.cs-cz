@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 35768aed3509d6ec5b73c64c7a8a6b132957ace1
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
+ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632726"
+ms.lasthandoff: 12/15/2018
+ms.locfileid: "53437584"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -62,5 +62,5 @@ Pomocí místní služby Active Directory nebo Active Directory na virtuálních
 ## <a name="next-steps"></a>Další postup
 
 * [Konfigurace clusterů HDInsight s ESP](apache-domain-joined-configure-using-azure-adds.md)
-* [Konfigurace zásad Hivu pro clustery HDInsight s ESP](apache-domain-joined-run-hive.md)
+* [Konfigurace zásad Apache Hivu pro clustery HDInsight s ESP](apache-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight s ESP](apache-domain-joined-manage.md) 
