@@ -45,7 +45,7 @@ Aplikace musí být spuštěn v **standardní**, **Premium**, nebo **izolované*
     ![Přidat nový slot nasazení][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Pokud aplikace ještě není v **standardní**, **Premium**, nebo **izolované* vrstvy, obdržíte zprávu s oznámením podporované úrovně pro povolení fázované publikování. V tomto okamžiku máte možnost vybrat si **upgradovat** a přejděte do **škálování** kartu vaší aplikace, než budete pokračovat.
+   > Pokud aplikace ještě není v **standardní**, **Premium**, nebo **izolované* vrstvy, obdržíte zprávu s oznámením podporované úrovně pro povolení fázované publikování. V tomto okamžiku máte možnost vybrat si ** **upgradovat** a přejděte do **škálování** kartu vaší aplikace, než budete pokračovat.
    > 
    > 
 3. V **přidat slot** okně zadejte název slotu a vyberte, jestli se má klonovat konfigurace aplikace z jiného existujícího slotu nasazení. Klikněte na zaškrtávací políčko, abyste mohli pokračovat.
