@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 79f2aa9c3e73037aa25848b7d11c34a73bf35f64
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f212e2555b6097912628791635a539bc488d4979
+ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342394"
+ms.lasthandoff: 12/14/2018
+ms.locfileid: "53413156"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Začínáme s rozhraním API pro rozpoznávání řeči v jazyce JavaScript
 
@@ -34,10 +34,10 @@ Rozhraní Speech API je součástí služeb Cognitive Services. Můžete získat
 
 ## <a name="get-started"></a>Začínáme
 
-V této části jsme vás provede kroky potřebné ke načíst ukázkovou stránku HTML. Tato ukázka se nachází v našich [úložiště github](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Je možné **otevřete ukázku přímo** z úložiště, nebo **otevřete ukázku z místní kopie** úložiště. 
+V této části jsme vás provede kroky potřebné ke načíst ukázkovou stránku HTML. Tato ukázka se nachází v našich [úložiště GitHub](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Je možné **otevřete ukázku přímo** z úložiště, nebo **otevřete ukázku z místní kopie** úložiště.
 
 > [!NOTE]
-> Některé prohlížeče blokovat přístup k mikrofonu na zrušení bezpečný původ. Proto se doporučuje pro hostování "ukázkový" nebo "aplikace" na https její práce na všech podporovaných prohlížečů. 
+> Některé prohlížeče blokovat přístup k mikrofonu na zrušení bezpečný původ. Proto se doporučuje pro hostování "ukázkový" nebo "aplikace" na https její práce na všech podporovaných prohlížečů.
 
 ### <a name="open-the-sample-directly"></a>Otevřete ukázku přímo
 
