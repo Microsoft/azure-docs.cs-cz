@@ -19,6 +19,7 @@
 ## [Použití PowerShellu k migraci SQL Serveru do Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
 ## [Použití PowerShellu k migraci SQL Serveru do Azure SQL DB MI](howto-sql-server-to-azure-sql-mi-powershell.md)
 ## [Monitorování aktivit migrace](how-to-monitor-migration-activity.md)
+## [Migrace balíčků SSIS do Azure](how-to-migrate-ssis-packages.md)
 
 # Zdroje a prostředky
 ## [Stav scénáře migrace databází](resource-scenario-status.md)

@@ -3,26 +3,30 @@ items:
   href: index.yml
 - name: Přehled
   items:
-  - name: Co je Vlastní vyhledávání Bingu?
+  - name: Co je rozhraní API pro vlastní vyhledávání Bingu?
     href: overview.md
   expanded: true
-- name: Rychlá zprovoznění pro REST API
+- name: Šablony Rychlý start
   items:
-  - name: Vytvoření první instance
+  - name: Vytvoření instance vlastního vyhledávání
     href: quick-start.md
-  - name: C#
-    href: call-endpoint-csharp.md
-  - name: Java
-    href: call-endpoint-java.md
-  - name: Node.js
-    href: call-endpoint-nodejs.md
-  - name: Python
-    href: call-endpoint-python.md
+  - name: Získání výsledků hledání z vaší instance
+    items:
+    - name: REST API
+      items:
+      - name: Pomocí C#
+        href: call-endpoint-csharp.md
+      - name: Pomocí Javy
+        href: call-endpoint-java.md
+      - name: Pomocí Node.js
+        href: call-endpoint-nodejs.md
+      - name: Pomocí Pythonu
+        href: call-endpoint-python.md
+    - name: Sada SDK
+      items:
+      - name: Pomocí C#
+        href: sdk-csharp-quick-start.md
   expanded: true
-- name: Rychlá zprovoznění pro SDK
-  items:
-  - name: Rychlé zprovoznění SDK v C#
-    href: sdk-csharp-quick-start.md
 - name: Kurzy
   items:
   - name: Vytvoření webové stránky pro vlastní vyhledávání
@@ -35,21 +39,21 @@ items:
   items:
   - name: Konfigurace vlastního vyhledávacího prostředí
     href: define-your-custom-view.md
-  - name: Volání vlastního vyhledávání
+  - name: Volání instance vlastního vyhledávání
     href: search-your-custom-view.md
-  - name: Konfigurace prostředí pro hostované uživatelské rozhraní
+  - name: Konfigurace a integrace hostovaného uživatelského rozhraní
     href: hosted-ui.md
-  - name: Sdílení vlastního vyhledávání
+  - name: Sdílení instance vlastního vyhledávání
     href: share-your-custom-search.md
-  - name: Získání obrázků z vaší instance
+  - name: Získání obrázků z vaší instance vyhledávání
     href: get-images-from-instance.md
-  - name: Získání videí z vaší instance
+  - name: Získání videí z vaší instance vyhledávání
     href: get-videos-from-instance.md
   - name: Konfigurace prostředí pro vlastní automatické návrhy
     href: define-custom-suggestions.md
   - name: Zpracování zvýrazňování nalezených položek
     href: hit-highlighting.md
-  - name: Stránkování webových stránek
+  - name: Procházení webových stránek
     href: page-webpages.md
 - name: Referenční informace
   items:
@@ -85,9 +89,9 @@ items:
     href: endpoint-custom.md
   - name: Podpora jazyků a oblastí
     href: language-support.md
-ms.openlocfilehash: 62392b7ff226072108c61f10b3f0519677aaba6b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 81d0d94efc519fa241ab36979506b2baddf50d91
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431976"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555860"

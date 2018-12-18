@@ -19,9 +19,9 @@ ms.locfileid: "50139220"
 
 Budete potřebovat dvě součásti softwaru k nasazení brány edge pro *připojená továrna* akcelerátor řešení:
 
--  *Proxy serveru OPC* naváže připojení k připojené továrny. Proxy server OPC a čeká na příkazy a ovládání zpráv z rozhraní integrované OPC v prohlížeči, na kterém běží na portálu řešení připojené továrny.
+- Proxy  *serveru OPC* naváže připojení k připojené továrny. Proxy server OPC a čeká na příkazy a ovládání zpráv z rozhraní integrované OPC v prohlížeči, na kterém běží na portálu řešení připojené továrny.
 
--  *Vydavatel OPC* připojí k existující místní servery OPC UA a předává telemetrické zprávy z nich pro propojenou továrnu. Můžete připojit pomocí klasické zařízení OPC [OPC classic adaptér pro OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+- Vydavatel  *OPC* připojí k existující místní servery OPC UA a předává telemetrické zprávy z nich pro propojenou továrnu. Můžete připojit pomocí klasické zařízení OPC [OPC classic adaptér pro OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
 Obě komponenty jsou open source a jsou k dispozici jako source na Githubu a jako kontejnery Dockeru na Dockerhubu:
 

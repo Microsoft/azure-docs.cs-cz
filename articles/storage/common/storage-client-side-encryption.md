@@ -60,7 +60,7 @@ Při šifrování klientské knihovny bude generovat náhodné inicializační v
 > 
 > 
 
-Stažení objektu blob šifrované zahrnuje načítání obsahu z celý objekt blob pomocí **DownloadTo *** /** BlobReadStream ** vhodné metody. Zabalené CEK je neobalený a používá se společně s IV (uložené v tomto případě jako metadata objektu blob) k vrácení dešifrovaná data pro uživatele.
+Stažení objektu blob šifrované zahrnuje načítání obsahu z celý objekt blob pomocí **DownloadTo**\*/** BlobReadStream** vhodné metody. Zabalené CEK je neobalený a používá se společně s IV (uložené v tomto případě jako metadata objektu blob) k vrácení dešifrovaná data pro uživatele.
 
 Stažení libovolného rozsahu (**DownloadRange*** metody) v objektu blob šifrované zahrnuje úpravy rozsahu poskytuje uživatelům zajistí malé množství další data, která slouží k dešifrování úspěšně požadované rozsah.
 

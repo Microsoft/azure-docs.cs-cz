@@ -51,8 +51,8 @@ Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější n
 ### <a name="application-2"></a>Aplikace #2: 
 Postupujte stejným způsobem jako u aplikace č. 1, s následujícími výjimkami: 
 
-**Krok #5**: interní adresa URL by nyní měly být adresy URL QlikSense s port ověřování v aplikaci použít. Výchozí hodnota je **4244** protokoly HTTPS a 4248 pro protokol HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
-**Krok #10:** nemáte nastavit jednotné přihlašování a nechte **jednotné přihlašování zakázáno**
+**Krok #5**: interní adresa URL by nyní měly být adresy URL QlikSense s port ověřování v aplikaci použít. Výchozí hodnota je **4244** protokoly HTTPS a 4248 pro protokol HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br>**Krok #10:** nemáte nastavit jednotné přihlašování a nechte **jednotné přihlašování zakázáno** 
+
  
  
 ## <a name="testing"></a>Testování 

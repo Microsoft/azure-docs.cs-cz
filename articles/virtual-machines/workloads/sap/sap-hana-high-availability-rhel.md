@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 77f4eeec1aa87f42c90d4e93f98f460a8b54b9a9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
+ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167405"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53338518"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -87,8 +87,8 @@ Abyste dosáhli vysoké dostupnosti, se SAP HANA nainstaluje na dva virtuální 
 
 Použití nastavení systémové replikace SAP HANA vyhrazené virtuální název hostitele a virtuální IP adresy. V Azure je potřeba nástroj pro vyrovnávání zatížení pomocí virtuální IP adresu. Následující seznam obsahuje konfiguraci nástroje pro vyrovnávání zatížení:
 
-* Konfigurace front-endových: IP adresa 10.0.0.13 hn1 db
-* Konfigurace back endu: připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí systémové replikace HANA
+* Konfigurace front-endu: IP adresa 10.0.0.13 hn1 db
+* Konfigurace back endu: Připojení k primární síťová rozhraní všech virtuálních počítačů, které by měla být součástí systémové replikace HANA
 * Port testu: Port 62503
 * Pravidla Vyrovnávání zatížení: 30313 TCP, 30315 TCP, 30317 TCP, 30340 TCP, 30341 TCP, 30342 TCP
 
@@ -103,12 +103,12 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 
 1. Otevřít [databázové šablony] [ template-multisid-db] na portálu Azure portal.
 1. Zadejte následující parametry:
-    * **ID systému SAP**: Zadejte ID systému SAP systému SAP, kterou chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
-    * **Typ operačního systému**: vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte **RHEL 7**.
-    * **Typ databáze**: vyberte **HANA**.
+    * **ID systému SAP**: Zadejte ID systému SAP systému SAP, ve kterém chcete nainstalovat. ID se používá jako předpona pro prostředky, které jsou nasazené.
+    * **Typ operačního systému**: Vyberte jednu z Linuxových distribucí. V tomto příkladu vyberte **RHEL 7**.
+    * **Typ databáze**: Vyberte **HANA**.
     * **Velikost systému SAP**: Zadejte počet protokoly, které je nový systém přechází k poskytování SAP. Pokud si nejste jisti kolik protokoly SAP bude systém vyžadovat, požádejte SAP technologické partnery nebo systémový integrátor.
-    * **Dostupnost systému**: vyberte **HA**.
-    * **Uživatelské jméno správce, správce hesla nebo klíče SSH klíč**: je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
+    * **Dostupnost systému**: Vyberte **HA**.
+    * **Uživatelské jméno správce, správce hesla nebo klíče SSH klíč**: Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
     * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá jako **/subscriptions/\<ID předplatného > /resourceGroups/\<název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě > /subnets/ \<název podsítě >**. Nechte prázdné, pokud chcete vytvořit novou virtuální síť
 
 ### <a name="manual-deployment"></a>Ruční nasazení
@@ -120,9 +120,9 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
 1. Vytvořte nástroj pro vyrovnávání zatížení (interní).
    * Vyberte virtuální síť vytvořili v kroku 2.
 1. Vytvoření virtuálního počítače 1.  
-   Použijte nejméně Red Hat Enterprise Linux 7.4 pro SAP HANA. Tento příklad používá pro SAP HANA image Red Hat Enterprise Linux 7.4 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> vyberte skupinu vytvořenou v kroku 3 dostupnosti.
+   Použijte nejméně Red Hat Enterprise Linux 7.4 pro SAP HANA. Tento příklad používá pro SAP HANA image Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> vyberte skupinu vytvořenou v kroku 3 dostupnosti.
 1. Vytvoření virtuálního počítače 2.  
-   Použijte nejméně Red Hat Enterprise Linux 7.4 pro SAP HANA. Tento příklad používá pro SAP HANA image Red Hat Enterprise Linux 7.4 <https://ms.portal.azure.com/#create/RedHat.RedHatEnterpriseLinux74forSAPHANA-ARM> vyberte skupinu vytvořenou v kroku 3 dostupnosti.
+   Použijte nejméně Red Hat Enterprise Linux 7.4 pro SAP HANA. Tento příklad používá pro SAP HANA image Red Hat Enterprise Linux 7.4 <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM> vyberte skupinu vytvořenou v kroku 3 dostupnosti.
 1. Použití datových disků.
 1. Konfigurace nástroje pro vyrovnávání zatížení. Nejprve vytvořte front-endový fond IP:
 
@@ -187,9 +187,9 @@ Další informace o požadované porty pro SAP HANA, najdete v kapitole [připoj
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : Krok platí pro všechny uzly.
-* **[1]** : Krok platí pro pouze uzlu 1.
-* **[2]** : Krok se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]** : V kroku se vztahuje na všechny uzly.
+* **[1]** : V kroku se týká pouze uzlu 1.
+* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Nastavení rozložení disků: **Správce logických svazků (LVM)**.
 
@@ -257,7 +257,7 @@ Kroky v této části používají následující předpony:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]**  Nastavení rozložení disků: **standardní disky**.
+1. **[A]**  Nastavení rozložení disků: **Standardní disky**.
 
    Pro ukázku systémy můžete umístit vaše HANA dat a souborů protokolu na jeden disk. Na /dev/disk/azure/scsi1/lun0 vytvořit oddíl a naformátovat s xfs:
 
@@ -303,30 +303,30 @@ Kroky v této části používají následující předpony:
    Instalace systémové replikace SAP HANA, postupujte podle <https://access.redhat.com/articles/3004101>.
 
    * Spustit **hdblcm** program z disku DVD HANA. Zadejte následující hodnoty do příkazového řádku:
-   * Zvolte typ instalace: Zadejte **1**.
+   * Zvolte instalaci: Zadejte **1**.
    * Vyberte další součásti k instalaci: Zadejte **1**.
-   * Zadejte instalační cesta [/ hana/sdílené]: Vyberte Enter.
-   * Zadejte název místního hostitele [hodnota]: Vyberte Enter.
-   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: Zadejte vyberte.
-   * Zadejte ID systému SAP HANA: Zadejte SID HANA, například: **HN1**.
+   * Zadejte instalační cesta [/ hana/sdílené]: Vyberte možnost Enter.
+   * Zadejte název místního hostitele [hodnota]: Vyberte možnost Enter.
+   * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: Vyberte možnost Enter.
+   * Zadejte ID systému SAP HANA: Zadejte identifikátor SID HANA, například: **HN1**.
    * Zadejte číslo Instance [00]: Zadejte číslo HANA Instance. Zadejte **03** -li použít šablony Azure nebo následován ručního nasazení části tohoto článku.
-   * Vyberte režim databáze / zadejte Index [1]: Zadejte vyberte.
-   * Využití systému vyberte / zadejte Index [4]: vyberte hodnotu využití systému.
-   * Zadejte umístění datové svazky [/ hana/data/HN1]: Vyberte Enter.
-   * Zadejte umístění svazky s protokoly [/ hana/log/HN1]: Vyberte Enter.
-   * Omezit maximální přidělení paměti? [n]: Zadejte vyberte.
-   * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Zadejte vyberte.
+   * Vyberte režim databáze / zadejte Index [1]: Vyberte možnost Enter.
+   * Využití systému vyberte / zadejte Index [4]: Vyberte hodnotu využití systému.
+   * Zadejte umístění datové svazky [/ hana/data/HN1]: Vyberte možnost Enter.
+   * Zadejte umístění svazky s protokoly [/ hana/log/HN1]: Vyberte možnost Enter.
+   * Omezit maximální přidělení paměti? [n]: Vyberte možnost Enter.
+   * Zadejte název hostitele certifikátu pro hostitele '...' [...]: Vyberte možnost Enter.
    * Zadejte SAP hostitele agenta uživatele (sapadm) heslo: Zadejte heslo uživatele agenta hostitele.
    * Potvrďte uživatel agenta hostitele systému SAP (sapadm) heslo: Zadejte heslo uživatele agenta hostitele znovu pro potvrzení.
    * Zadejte správce systému (hdbadm) heslo: Zadejte heslo správce systému.
    * Potvrzení správce systému (hdbadm) heslo: Zadejte heslo správce systému znovu pro potvrzení.
-   * Správce systému ENTER domácí adresář [/ usr / / sap/HN1 home]: Vyberte Enter.
-   * Zadejte prostředí přihlašovací jméno správce systému [/ bin/sh]: Vyberte Enter.
-   * Zadejte ID uživatele pro správce systému [1001]: Vyberte Enter.
-   * Zadejte ID ze skupiny uživatelů (sapsys) [79]: Vyberte Enter.
-   * Zadejte heslo uživatele databáze (systém): Zadejte heslo uživatele databáze.
-   * Potvrzení hesla uživatele databáze (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
-   * Restartování systému po restartování počítače? [n]: Zadejte vyberte.
+   * Zadejte domovského adresáře správce systému [/ usr / / sap/HN1 home]: Vyberte možnost Enter.
+   * Zadejte prostředí přihlašovací jméno správce systému [/ bin/sh]: Vyberte možnost Enter.
+   * Zadejte ID uživatele pro správce systému [1001]: Vyberte možnost Enter.
+   * Zadejte ID ze skupiny uživatelů (sapsys) [79]: Vyberte možnost Enter.
+   * Zadejte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze.
+   * Potvrďte heslo k databázi uživatele (systém): Zadejte heslo uživatele databáze znovu pro potvrzení.
+   * Restartování systému po restartování počítače? [n]: Vyberte možnost Enter.
    * Chcete pokračovat? (Ano/Ne): Souhrn ověření. Zadejte **y** pokračujte.
 
 1. **[A]**  Upgrade agenta hostitele SAP.
@@ -348,9 +348,9 @@ Kroky v této části používají následující předpony:
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : Krok platí pro všechny uzly.
-* **[1]** : Krok platí pro pouze uzlu 1.
-* **[2]** : Krok se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]** : V kroku se vztahuje na všechny uzly.
+* **[1]** : V kroku se týká pouze uzlu 1.
+* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Konfigurace brány firewall
 
@@ -439,9 +439,9 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 Kroky v této části používají následující předpony:
 
-* **[A]** : Krok platí pro všechny uzly.
-* **[1]** : Krok platí pro pouze uzlu 1.
-* **[2]** : Krok se vztahuje na uzlu 2 pouze Pacemaker clusteru.
+* **[A]** : V kroku se vztahuje na všechny uzly.
+* **[1]** : V kroku se týká pouze uzlu 1.
+* **[2]** : V kroku se vztahuje na uzlu 2 pouze Pacemaker clusteru.
 
 1. **[A]**  Konfigurace brány firewall
 

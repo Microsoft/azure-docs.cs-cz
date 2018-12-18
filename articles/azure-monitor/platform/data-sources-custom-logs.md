@@ -92,7 +92,7 @@ Následující tabulka obsahuje příklady platných vzorů k určení různých
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis pro protokol
 Vámi určeným názvem se použije pro typ protokolu, jak je popsáno výše.  Vždy skončí s _CL odlišující jej jako vlastní protokol.
 
-1. Zadejte název protokolu.   **\_CL** přípona je poskytována automaticky.
+1. Zadejte název protokolu.  **\_CL** přípona je poskytována automaticky.
 2. Přidat volitelný **popis**.
 3. Klikněte na tlačítko **Další** se uložit definici vlastního protokolu.
 

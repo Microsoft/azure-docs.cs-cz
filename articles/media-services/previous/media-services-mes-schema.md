@@ -146,7 +146,7 @@ Zvukový kodek|Podrobnosti
 ### <a name="attributes"></a>Atributy
 | Název | Typ | Popis |
 | --- | --- | --- |
-| **FileName** |**xs:String** |Název výstupního souboru.<br/><br/> Makra popsané v následující tabulce můžete použít k vytváření názvů výstupních souborů. Příklad:<br/><br/> **"Výstupy": [{"Název_souboru": "{Basename}*{rozlišení}* MP4 {s přenosovou rychlostí}", "Formátu": {"Type": "MP4Format"}}]** |
+| **FileName** |**xs:String** |Název výstupního souboru.<br/><br/> Makra popsané v následující tabulce můžete použít k vytváření názvů výstupních souborů. Příklad:<br/><br/> **"Výstupy": [{"Název_souboru": "{Basename} *{rozlišení}* MP4 {s přenosovou rychlostí}", "Formátu": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makra
 | – Makro | Popis |
