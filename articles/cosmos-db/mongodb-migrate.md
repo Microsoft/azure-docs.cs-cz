@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 50bb34d86780dec003c63b5ff0a3884049dd47c1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a17b2121feb5656df4298bddc2b1e90bb9ac6457
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52871000"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545605"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Kurz: Migrace dat do účtu rozhraní MongoDB API služby Azure Cosmos DB
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-api-account-for-mongodb"></a>Kurz: Migrace dat do účtu Azure Cosmos DB API pro MongoDB
 
-Tento kurz obsahuje pokyny k migraci dat uložených v MongoDB do účtu rozhraní MongoDB API služby Azure Cosmos DB. Pokud importujete data z MongoDB a plánujete je používat s rozhraním SQL API služby Azure Cosmos DB, měli byste k importu dat použít [nástroj pro migraci dat](import-data.md).
+Tento kurz obsahuje pokyny o tom, jak migrovat data uložená v MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB. Pokud importujete data z MongoDB a plánujete je používat s rozhraním SQL API služby Azure Cosmos DB, měli byste k importu dat použít [nástroj pro migraci dat](import-data.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -29,7 +29,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Migrace dat pomocí nástroje mongoimport
 > * Migrace dat pomocí nástroje mongorestore
 
-Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte nějaká ukázková data MongoDB. Pokud nemáte ukázkovou databázi MongoDB, můžete si stáhnout a nainstalovat [komunitní server MongoDB](https://www.mongodb.com/download-center), vytvořit ukázkovou databázi a pomocí aplikace mongoimport.exe nebo mongorestore.exe nahrát ukázková data. 
+Před migrací dat do rozhraní API služby Azure Cosmos DB pro MongoDB, ujistěte se, že máte nějaké ukázkové MongoDB data. Pokud nemáte ukázkovou databázi MongoDB, můžete si stáhnout a nainstalovat [komunitní server MongoDB](https://www.mongodb.com/download-center), vytvořit ukázkovou databázi a pomocí aplikace mongoimport.exe nebo mongorestore.exe nahrát ukázková data. 
 
 ## <a name="plan-for-migration"></a>Plánování migrace
 
@@ -59,7 +59,7 @@ Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte něja
 
 1. Vypočítejte průměrný poplatek za RU pro jeden zápis dokumentu:
 
-   a. Z prostředí MongoDB Shell se připojte ke svému účtu rozhraní MongoDB API služby Azure Cosmos DB. Pokyny najdete v tématu [Připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md).
+   a. Připojení k vaší služby Azure Cosmos DB přes rozhraní API pro MongoDB z MongoDB Shell. Pokyny najdete v tématu [Připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md).
     
    b. Z prostředí MongoDB Shell spusťte ukázkový příkaz pro vložení s použitím některého z vašich ukázkových dokumentů:
    
@@ -127,11 +127,11 @@ Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte něja
 
 ## <a name="prerequisites-for-migration"></a>Požadavky na migraci
 
-* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
+* **Zvýšení propustnosti:** Doba trvání migrace dat závisí na množství propustnost, kterou můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu [Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB](performance-levels.md).
 
-* **Povolený protokol SSL:** Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Postup pro povolení SSL pro mongoimport a mongorestore najdete ve zbývající části článku.
+* **Povolte protokol SSL:** Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Postup pro povolení SSL pro mongoimport a mongorestore najdete ve zbývající části článku.
 
-* **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření kolekcí Azure Cosmos DB zadat klíč oddílu.
+* **Vytvořte prostředky služby Azure Cosmos DB:** Než začnete migraci dat, vytvoření vaší kolekce na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření kolekcí Azure Cosmos DB zadat klíč oddílu.
 
 ## <a name="get-your-connection-string"></a>Získání připojovacího řetězce 
 

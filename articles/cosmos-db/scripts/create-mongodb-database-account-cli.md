@@ -1,22 +1,22 @@
 ---
-title: Skript Azure CLI – vytvoření účtu rozhraní MongoDB API služby Azure Cosmos DB, databáze a kolekce
-description: Ukázkový skript Azure CLI – Vytvoření účtu, databáze a kolekce rozhraní MongoDB API služby Azure Cosmos DB
+title: Skript Azure CLI – vytvoření rozhraní API Azure Cosmos DB pro účet, databázi a kolekci MongoDB
+description: Skript Azure CLI ukázkový – vytvoření Azure Cosmos DB API pro účet, databázi a kolekci MongoDB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: sample
 ms.date: 10/26/2018
-ms.openlocfilehash: 7c7f3f6907f0c21e3c66a3d814dc355476bec553
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9fd26b0de990a93f6594b0ede8ea52a64bf44b7e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958345"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547996"
 ---
-# <a name="azure-cosmos-db-create-an-mongodb-api-account-using-azure-cli"></a>Azure Cosmos DB: Vytvoření účtu rozhraní MongoDB API pomocí Azure CLI
+# <a name="azure-cosmos-db-create-an-azure-cosmos-db-api-account-for-mongodb-using-azure-cli"></a>Azure Cosmos DB: Vytvoření účtu služby Azure Cosmos DB API pro MongoDB pomocí rozhraní příkazového řádku Azure
 
-Tento ukázkový skript rozhraní příkazového řádku vytvoří účet, databázi a kolekci rozhraní MongoDB API služby Azure Cosmos DB.
+Tento ukázkový skript rozhraní příkazového řádku vytvoří účet rozhraní API služby Azure Cosmos DB pro MongoDB, databázi a kolekci.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -24,7 +24,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-mongodb-account/create-cosmosdb-mongodb-account.sh "Create an Azure Cosmos DB MongoDB API account, database, and collection.")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-mongodb-account/create-cosmosdb-mongodb-account.sh "Create an Azure Cosmos DB API account for MongoDB, database, and collection.")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 

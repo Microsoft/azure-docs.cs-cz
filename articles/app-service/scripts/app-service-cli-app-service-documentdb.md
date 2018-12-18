@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 922760d115fac4aaad69c4a3ec6ea1373bd66acf
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4177f3c72fd66a77cd8c362b535085bd84b371e9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193803"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538902"
 ---
 # <a name="connect-a-web-app-to-cosmos-db-using-cli"></a>Připojení webové aplikace ke službě Cosmos DB pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří pomocí rozhraní MongoDB API účet služby Azure Cosmos DB a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojí připojovací řetězec MongoDB s webovou aplikací.
+Tento ukázkový skript vytvoří účet rozhraní API služby Azure Cosmos DB pro MongoDB a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojí připojovací řetězec MongoDB s webovou aplikací.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Ingestování dat pomocí knihovny Node Azure Data Exploreru'
+title: 'Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat'
 description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru pomocí Node.js.
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: c638369efc89ca4442b69c9337827fe3872fd197
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a7ebceff18016a5aa527a032a644d2723aceee7a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085956"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558562"
 ---
-# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Node Azure Data Exploreru
+# <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí dvě klientské knihovny pro Node: [knihovnu ingestování](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-node/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
@@ -42,19 +42,23 @@ npm i --save azure-kusto-ingest azure-kusto-data
 Importujte třídy z knihoven.
 
 ```javascript
-const KustoClient = require('azure-kusto-data').KustoClient;
-const KustoIngestClient = require('azure-kusto-ingest').KustoIngestClient;
-const KustoConnectionStringBuilder = require('azure-kusto-ingest').KustoConnectionStringBuilder;
-```
 
+const KustoConnectionStringBuilder = require("azure-kusto-data").KustoConnectionStringBuilder;
+const KustoClient = require("azure-kusto-data").Client;
+const KustoIngestClient = require("azure-kusto-ingest").IngestClient;
+const IngestionProperties = require("azure-kusto-ingest").IngestionProperties;
+const { DataFormat } = require("azure-kusto-ingest").IngestionPropertiesEnums;
+const { BlobDescriptor } = require("azure-kusto-ingest").IngestionDescriptors;
+
+```
 K ověření aplikace používá Azure Data Explorer ID vašeho tenanta Azure Active Directory. Pokud chcete zjistit ID svého tenanta, postupujte podle pokynů k [vyhledání ID tenanta Office 365](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id).
 
 Před spuštěním tohoto kódu nastavte hodnoty `authorityId`, `kustoUri`, `kustoIngestUri` a `kustoDatabase`.
 
 ```javascript
 const authorityId = "<TenantId>";
-const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
-const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443/";
+const kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443";
+const kustoIngestUri = "https://ingest-<ClusterName>.<Region>.kusto.windows.net:443";
 const kustoDatabase  = "<DatabaseName>";
 ```
 
@@ -74,24 +78,20 @@ const destTableMapping = "StormEvents_CSV_Mapping";
 Importujte další třídy a nastavte konstanty pro soubor zdroje dat. Tento příklad používá ukázkový soubor hostovaný v Azure Blob Storage. Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
 ```javascript
-from azure.storage.blob import BlockBlobService
-from azure.kusto.ingest import KustoIngestClient, IngestionProperties, FileDescriptor, BlobDescriptor, DataFormat, ReportLevel, ReportMethod
-
 const container = "samplefiles";
 const account = "kustosamplefiles";
 const sas = "?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 const filePath = "StormEvents.csv";
-const fileSize = 64158321; // in bytes
 const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePath}${sas}`;
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Vytvoření tabulky v testovacím clusteru
 
-Vytvořte tabulku, která odpovídá schématu dat v souboru `StormEvents.csv`. Když se tento kód spustí, vrátí podobnou zprávu: *Pokud se chcete přihlásit, otevřete ve webovém prohlížeči stránku https://microsoft.com/devicelogin a zadejte kód XXXXXXXXX k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, budou vyžadovat, abyste se znovu přihlásili.
+Vytvořte tabulku, která odpovídá schématu dat v souboru `StormEvents.csv`. Když tento kód se spustí, vrátí se zpráva podobná následující: *Pro přihlášení, použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód XXXXXXXXX k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, budou vyžadovat, abyste se znovu přihlásili.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);
-const createTableCommand = ".create table StormEvents (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)";
+const createTableCommand = `.create table ${destTable} (StartTime: datetime, EndTime: datetime, EpisodeId: int, EventId: int, State: string, EventType: string, InjuriesDirect: int, InjuriesIndirect: int, DeathsDirect: int, DeathsIndirect: int, DamageProperty: int, DamageCrops: int, Source: string, BeginLocation: string, EndLocation: string, BeginLat: real, BeginLon: real, EndLat: real, EndLon: real, EpisodeNarrative: string, EventNarrative: string, StormSummary: dynamic)`;
 
 kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
     console.log(result.primaryResults[0]);
@@ -103,7 +103,7 @@ kustoClient.executeMgmt(kustoDatabase, createTableCommand, (err, results) => {
 Namapujte příchozí data CSV na názvy sloupců a datové typy použité při vytváření tabulky.
 
 ```javascript
-const createMappingCommand = `.create table StormEvents ingestion csv mapping ${destTableMapping} '[{\"Name\":\"StartTime\",\"datatype\":\"datetime\",\"Ordinal\":0}, {\"Name\":\"EndTime\",\"datatype\":\"datetime\",\"Ordinal\":1},{\"Name\":\"EpisodeId\",\"datatype\":\"int\",\"Ordinal\":2},{\"Name\":\"EventId\",\"datatype\":\"int\",\"Ordinal\":3},{\"Name\":\"State\",\"datatype\":\"string\",\"Ordinal\":4},{\"Name\":\"EventType\",\"datatype\":\"string\",\"Ordinal\":5},{\"Name\":\"InjuriesDirect\",\"datatype\":\"int\",\"Ordinal\":6},{\"Name\":\"InjuriesIndirect\",\"datatype\":\"int\",\"Ordinal\":7},{\"Name\":\"DeathsDirect\",\"datatype\":\"int\",\"Ordinal\":8},{\"Name\":\"DeathsIndirect\",\"datatype\":\"int\",\"Ordinal\":9},{\"Name\":\"DamageProperty\",\"datatype\":\"int\",\"Ordinal\":10},{\"Name\":\"DamageCrops\",\"datatype\":\"int\",\"Ordinal\":11},{\"Name\":\"Source\",\"datatype\":\"string\",\"Ordinal\":12},{\"Name\":\"BeginLocation\",\"datatype\":\"string\",\"Ordinal\":13},{\"Name\":\"EndLocation\",\"datatype\":\"string\",\"Ordinal\":14},{\"Name\":\"BeginLat\",\"datatype\":\"real\",\"Ordinal\":16},{\"Name\":\"BeginLon\",\"datatype\":\"real\",\"Ordinal\":17},{\"Name\":\"EndLat\",\"datatype\":\"real\",\"Ordinal\":18},{\"Name\":\"EndLon\",\"datatype\":\"real\",\"Ordinal\":19},{\"Name\":\"EpisodeNarrative\",\"datatype\":\"string\",\"Ordinal\":20},{\"Name\":\"EventNarrative\",\"datatype\":\"string\",\"Ordinal\":21},{\"Name\":\"StormSummary\",\"datatype\":\"dynamic\",\"Ordinal\":22}]'`;
+const createMappingCommand = `.create table ${destTable} ingestion csv mapping '${destTableMapping}' '[{"Name":"StartTime","datatype":"datetime","Ordinal":0}, {"Name":"EndTime","datatype":"datetime","Ordinal":1},{"Name":"EpisodeId","datatype":"int","Ordinal":2},{"Name":"EventId","datatype":"int","Ordinal":3},{"Name":"State","datatype":"string","Ordinal":4},{"Name":"EventType","datatype":"string","Ordinal":5},{"Name":"InjuriesDirect","datatype":"int","Ordinal":6},{"Name":"InjuriesIndirect","datatype":"int","Ordinal":7},{"Name":"DeathsDirect","datatype":"int","Ordinal":8},{"Name":"DeathsIndirect","datatype":"int","Ordinal":9},{"Name":"DamageProperty","datatype":"int","Ordinal":10},{"Name":"DamageCrops","datatype":"int","Ordinal":11},{"Name":"Source","datatype":"string","Ordinal":12},{"Name":"BeginLocation","datatype":"string","Ordinal":13},{"Name":"EndLocation","datatype":"string","Ordinal":14},{"Name":"BeginLat","datatype":"real","Ordinal":16},{"Name":"BeginLon","datatype":"real","Ordinal":17},{"Name":"EndLat","datatype":"real","Ordinal":18},{"Name":"EndLon","datatype":"real","Ordinal":19},{"Name":"EpisodeNarrative","datatype":"string","Ordinal":20},{"Name":"EventNarrative","datatype":"string","Ordinal":21},{"Name":"StormSummary","datatype":"dynamic","Ordinal":22}]'`;
 
 kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
     console.log(result.primaryResults[0]);
@@ -115,15 +115,12 @@ kustoClient.executeMgmt(kustoDatabase, createMappingCommand, (err, results) => {
 Přidejte zprávu do fronty k získání dat z úložiště objektů blob a tato data ingestujte do Průzkumníka dat Azure.
 
 ```javascript
-const { DataFormat, JsonColumnMapping } =  require("azure-kusto-ingest").IngestionPropertiesEnums;
-const { BlobDescriptor } = require("azure-kusto-ingest").Descriptors;
-const ingestClient = new KustoIngestClient(kcsbIngest);
-
-
+const defaultProps  = new IngestionProperties(kustoDatabase, destTable, DataFormat.csv, null,destTableMapping, {'ignoreFirstRecord': 'true'});
+const ingestClient = new KustoIngestClient(kcsbIngest, defaultProps);
 // All ingestion properties are documented here: https://docs.microsoft.com/azure/kusto/management/data-ingest#ingestion-properties
-const ingestionProps  = new IngestionProperties(kustoDatabase, destTable, DataFormat.csv, null,destTableMapping, {'ignoreFirstRecord': 'true'});
+
 const blobDesc = new BlobDescriptor(blobPath, 10);
-ingestClient.ingestFromBlob(blobDesc,ingestionProps, (err) => {
+ingestClient.ingestFromBlob(blobDesc,null, (err) => {
     if (err) throw new Error(err);
 });
 ```
@@ -133,9 +130,9 @@ ingestClient.ingestFromBlob(blobDesc,ingestionProps, (err) => {
 Ověřte, že se data ingestovala do tabulky. Počkejte pět až deset minut, než ingestace ve frontě naplánuje ingestování a načte data do Průzkumníka dat Azure. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce `StormEvents`.
 
 ```javascript
-const query = "StormEvents | count";
+const query = `${destTable} | count`;
 
-kustoClient.execute(kustoDatabse, query, (err, results) => {
+kustoClient.execute(kustoDatabase, query, (err, results) => {
     if (err) throw new Error(err);  
     console.log(results.primaryResults[0].toString());
 });

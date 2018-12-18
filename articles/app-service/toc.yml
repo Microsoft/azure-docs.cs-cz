@@ -102,19 +102,19 @@ items:
     - name: Nasazení aplikace
       items:
       - name: Nasazení souboru ZIP nebo WAR
-        href: app-service-deploy-zip.md
+        href: deploy-zip.md
       - name: Nasazení prostřednictvím FTP
-        href: app-service-deploy-ftp.md
+        href: deploy-ftp.md
       - name: Nasazení prostřednictvím cloudové synchronizace
-        href: app-service-deploy-content-sync.md
+        href: deploy-content-sync.md
       - name: Průběžné nasazování
-        href: app-service-continuous-deployment.md
+        href: deploy-continuous-deployment.md
       - name: Nasazení z místního Gitu
-        href: app-service-deploy-local-git.md
+        href: deploy-local-git.md
       - name: Nasazení pomocí šablony
-        href: app-service-deploy-complex-application-predictably.md
+        href: deploy-complex-application-predictably.md
     - name: Nastavení přihlašovacích údajů nasazení
-      href: app-service-deployment-credentials.md
+      href: deploy-configure-credentials.md
     - name: Vytvoření přípravných prostředí
       href: web-sites-staged-publishing.md
     - name: Pokyny pro šablony Resource Manageru
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: Adresa SSL
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 2a0dc03143688e1aadb0666242d44ab06763f04b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 2c1d686bc6dfb46bcacccb68063553739a5d9947
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437873"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542393"

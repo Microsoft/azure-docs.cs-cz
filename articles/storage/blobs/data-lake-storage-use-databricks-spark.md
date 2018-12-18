@@ -1,6 +1,6 @@
 ---
-title: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku | Microsoft Docs
-description: Naučte se spouštět dotazy Sparku v clusteru Azure Databricks, abyste měli přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
+title: 'Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku | Microsoft Docs'
+description: Tento kurz ukazuje, jak spustit dotazy Spark na clusteru Azure Databricks pro přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 services: storage
 author: dineshmurthy
 ms.component: data-lake-storage-gen2
@@ -8,56 +8,62 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: dineshm
-ms.openlocfilehash: 88a05eb8fa59740012ca6c7a8d8508d565854dc7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975610"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548982"
 ---
-# <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku
+# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k verzi Preview služby Data Lake Storage Gen2 dat pomocí Azure Databricks pomocí Spark
 
-V tomto kurzu se naučíte spouštět dotazy Sparku v clusteru Azure Databricks, abyste se mohli dotazovat na data v účtu úložiště Azure s povolenou službou Azure Data Lake Storage Gen2 Preview.
+V tomto kurzu se dozvíte, jak se připojit k datům uloženým v účtu úložiště Azure s Azure Data Lake Storage Gen2 cluster Azure Databricks (Preview) povolena. Toto připojení vám umožňuje nativně dotazy a analýzy můžete spouštět z clusteru s vašimi daty.
+
+V tomto kurzu provedete následující:
 
 > [!div class="checklist"]
 > * Vytvoření clusteru Databricks
 > * Ingestace nestrukturovaných dat do účtu úložiště
 > * Spuštění analýzy dat v úložišti objektů blob
 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu si ukážeme, jak využívat a dotazovat se na data o odletech aerolinek, která dává k dispozici [ministerstvo dopravy USA](https://transtats.bts.gov/Tables.asp?DB_ID=120&DB_Name=Airline%20On-Time%20Performance%20Data&DB_Short_Name=On-Time). Stáhněte si data o leteckých linkách alespoň za dva poslední roky (vyberte všechna pole) a uložte si výsledek do počítače. Nezapomeňte si poznamenat název souboru a cestu, kam si ho stáhnete. Tyto údaje budete potřebovat v dalším kroku.
+V tomto kurzu si ukážeme, jak využívat a dotazovat se na data o odletech aerolinek, která dává k dispozici [ministerstvo dopravy USA](https://transtats.bts.gov/DL_SelectFields.asp). 
 
-> [!NOTE]
-> Pokud chcete vybrat všechna datová pole, klikněte na zaškrtávací políčko **Prezipped file** (Komprimovaný soubor). Budete stahovat mnoho gigabajtů, ale k analýze potřebujete velký objem dat.
+1. Vyberte **Prezipped souboru** zaškrtávací políčko Vybrat všechna datová pole.
+2. Vyberte **Stáhnout** a uložte výsledky do svého počítače.
+3. Poznamenejte si název souboru a cestu souboru ke stažení; Tyto informace v pozdějším kroku budete potřebovat.
 
-## <a name="create-an-azure-storage-account-with-analytic-capabilities"></a>Vytvoření účtu úložiště Azure s možnostmi analýzy
+K dokončení tohoto kurzu, budete potřebovat účet úložiště s možností analýzy jednotlivých. Doporučujeme, abyste dokončení našich [rychlý Start](data-lake-storage-quickstart-create-account.md) k tomuto tématu, aby bylo možné vytvořit. Po vytvoření ho, přejděte na účet úložiště k načtení nastavení konfigurace.
 
-Začněte vytvořením nového [účtu úložiště s možnostmi analýzy](data-lake-storage-quickstart-create-account.md) a jedinečným názvem. Pak přejděte k účtu úložiště, abyste mohli načíst konfigurační nastavení.
-
-1. V části **Nastavení** klikněte na **Přístupové klíče**.
-2. Klikněte na tlačítko **Kopírovat** vedle **Key1** a zkopírujte hodnotu klíče.
+1. V části **nastavení**vyberte **přístupové klíče**.
+2. Vyberte **kopírování** vedle **key1** na hodnotu klíče si zkopírujte.
 
 Název účtu a klíč budete potřebovat v dalších krocích tohoto kurzu. Otevřete textový editor a poznamenejte si do něj název účtu a klíč k pozdějšímu použití.
 
 ## <a name="create-a-databricks-cluster"></a>Vytvoření clusteru Databricks
 
-V dalším kroku vytvoříte [cluster Databricks](https://docs.azuredatabricks.net/) jako pracovní prostor pro data.
+Dalším krokem je vytvoření clusteru Databricks vytvořit pracovní prostor data.
 
-1. Vytvořte [službu Databricks](https://ms.portal.azure.com/#create/Microsoft.Databricks) a pojmenujte ji **myFlightDataService** (při vytvoření služby nezapomeňte zaškrtnout políčko *Připnout na řídicí panel*).
-2. Klikněte, že chcete **spustit pracovní prostor** a otevřete pracovní prostor v novém okně prohlížeče.
-3. V navigačním podokně vlevo klikněte na **clustery**.
-4. Klikněte, že chcete **vytvořit cluster**.
-5. Do pole s **názvem clusteru** zadejte *myFlightDataCluster*.
-6. V poli **typu pracovního procesu** vyberte *Standard_D8s_v3*.
-7. Hodnotu **minimálního počtu pracovních procesů** změňte na *4*.
-8. Nahoře na stránce klikněte, že chcete **vytvořit cluster** (dokončení procesu může trvat pět minut).
-9. Jakmile proces doběhne, vyberte na navigačním panelu vlevo nahoře **Azure Databricks**.
-10. V dolní polovině stránky vyberte v oddílu **Nový** položku **Poznámkový blok**.
-11. Do pole **Název** zadejte libovolný název a jako jazyk vyberte **Python**.
-12. Ve všech ostatních polích můžete nechat výchozí hodnoty.
-13. Vyberte **Vytvořit**.
-14. Vložte následující kód do **Cmd 1** buňky. Nezapomeňte nahradit zástupné symboly v závorce v ukázce vlastními hodnotami:
+1. Z [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
+2. Zadejte **Azure Databricks** do vyhledávacího pole.
+3. Vyberte **vytvořit** v okně Azure Databricks.
+4. Pojmenujte službu Databricks **myFlightDataService** (ujistěte se, že ke kontrole *připnout na řídicí panel* zaškrtávací políčko při vytvoření služby).
+5. Vyberte **spustit pracovní prostor** otevřete pracovní prostor v novém okně prohlížeče.
+6. Vyberte **clustery** v levém navigačním panelu.
+7. Vyberte **vytvoření clusteru**.
+8. Do pole s **názvem clusteru** zadejte **myFlightDataCluster**.
+9. V poli **typu pracovního procesu** vyberte **Standard_D8s_v3**.
+10. Hodnotu **minimálního počtu pracovních procesů** změňte na **4**.
+11. Vyberte **vytvořit Cluster** v horní části stránky. (Tento proces může trvat až 5 minut na dokončení.)
+12. Po dokončení procesu vyberte **Azure Databricks** v levém horním rohu navigačního panelu.
+13. V dolní polovině stránky vyberte v oddílu **Nový** položku **Poznámkový blok**.
+14. Zadejte název zvoleného v **název** pole a vyberte **Python** jako jazyk.
+15. Ve všech ostatních polích můžete nechat výchozí hodnoty.
+16. Vyberte **Vytvořit**.
+17. Vložte následující kód do **Cmd 1** buňky. Nahraďte zástupné symboly v závorce v ukázce vlastními hodnotami:
 
     ```scala
     %python%
@@ -72,13 +78,13 @@ V dalším kroku vytvoříte [cluster Databricks](https://docs.azuredatabricks.n
         mount_point = "/mnt/flightdata",
         extra_configs = configs)
     ```
-15. Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.
+18. Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.
 
 ## <a name="ingest-data"></a>Ingestace dat
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
 
-Dalším úkolem je zkopírovat data ze souboru *.csv* do úložiště Azure nástrojem AzCopy. Otevřete okno příkazového řádku a zadejte následující příkazy. Nezapomeňte nahradit zástupné znaky `<DOWNLOAD_FILE_PATH>` a `<ACCOUNT_KEY>` odpovídajícími hodnotami, které jste si poznamenali v předchozím kroku.
+Dalším úkolem je zkopírovat data ze souboru *.csv* do úložiště Azure nástrojem AzCopy. Otevřete okno příkazového řádku a zadejte následující příkazy. Nezapomeňte nahradit zástupné symboly `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>`, a `<ACCOUNT_KEY>` s odpovídajícími hodnotami, které jste nastavili jste si poznamenali v předchozím kroku.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -90,12 +96,12 @@ azcopy cp "<DOWNLOAD_FILE_PATH>" https://<ACCOUNT_NAME>.dfs.core.windows.net/dbr
 
 Znovu otevřete v prohlížeči Databricks a proveďte následující kroky:
 
-1. Na navigačním panelu vlevo nahoře vyberte **Azure Databricks**.
+1. Vyberte **Azure Databricks** v levém horním rohu navigačního panelu.
 2. V dolní polovině stránky vyberte v oddílu **Nový** položku **Poznámkový blok**.
 3. Do pole **Název** zadejte **CSV2Parquet**.
 4. Ve všech ostatních polích můžete nechat výchozí hodnoty.
 5. Vyberte **Vytvořit**.
-6. Do buňky **Cmd 1** vložte následující kód (tento kód provede automatické uložení v editoru).
+6. Vložte následující kód do **Cmd 1** buňky. (Tento kód automaticky – uloží v editoru.)
 
     ```python
     # Use the previously established DBFS mount point to read the data
@@ -106,11 +112,11 @@ Znovu otevřete v prohlížeči Databricks a proveďte následující kroky:
     print("Done")
     ```
 
-## <a name="explore-data-using-hadoop-distributed-file-system"></a>Prozkoumání dat pomocí systému souborů HDFS (Hadoop Distributed File System)
+## <a name="explore-data"></a>Zkoumání dat
 
-Vraťte se do pracovního prostoru Databricks a na navigačním panelu vlevo klikněte na ikonu **Nedávné**.
+Vraťte se do pracovního prostoru Databricks a vyberte **poslední** ikony v levém navigačním panelu.
 
-1. Klikněte na poznámkový blok **Flight Data Analytics** (Analýza letových dat).
+1. Vyberte **letu Data Analytics** poznámkového bloku.
 2. Stisknutím kombinace kláves **Ctrl+Alt+N** vytvořte novou buňku.
 
 Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter**, abyste spustili skript Pythonu.
@@ -137,7 +143,7 @@ Na těchto vzorových kódech jste prozkoumali hierarchickou povahu systému sou
 
 Teď můžete začít vytvářet dotazy na data, která jste nahráli do svého účtu úložiště. Do buňky **Cmd 1** zadejte všechny následující bloky kódu a stiskněte **Cmd+Enter**, abyste spustili skript Pythonu.
 
-### <a name="simple-queries"></a>Ukázkové dotazy
+### <a name="run-simple-queries"></a>Spuštění jednoduchých dotazů
 
 Pokud chcete vytvořit datové rámce zdrojů dat, spusťte následující skript:
 
@@ -198,7 +204,8 @@ print('Airports in Texas: ', out.show(100))
 out1 = spark.sql("SELECT distinct(Carrier) FROM FlightTable WHERE OriginStateName='Texas'")
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
-### <a name="complex-queries"></a>Složitější dotazy
+
+### <a name="run-complex-queries"></a>Spouštění složitých dotazů
 
 Pokud chcete spustit následující složitější dotazy, spusťte v poznámkovém bloku postupně jednotlivé segmenty a prohlédněte si výsledky.
 
@@ -241,6 +248,12 @@ output.show(10, False)
 display(output)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-* [Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+Pokud jste už nepotřebujete, odstraňte skupinu prostředků a všechny související prostředky. Uděláte to tak, vyberte skupinu prostředků pro účet úložiště a vyberte **odstranit**.
+
+## <a name="next-steps"></a>Další postup
+
+[!div class="nextstepaction"] 
+> [Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight](data-lake-storage-tutorial-extract-transform-load-hive.md)
+

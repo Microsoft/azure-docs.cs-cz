@@ -156,7 +156,7 @@ Je nutné začít s indexování Solr pomocí některé datové soubory. Solr pa
           </response>
       ```
       
-   2. Ve vzdálené relaci, přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořeny pomocí ukázkového skriptu, měl by to být `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. V tomto umístění, měli byste vidět složky snímků s názvem podobný **snímku.* časové razítko ***.
+   2. Ve vzdálené relaci, přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořeny pomocí ukázkového skriptu, měl by to být `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. V tomto umístění, měli byste vidět složky snímků s názvem podobný **snímku.\*časové razítko**\*.
    
    3. Složka snímku zkomprimovat a nahrát ho do úložiště objektů Blob v Azure. Z příkazového řádku Hadoopu přejděte do umístění složky snímků pomocí následujícího příkazu:
 

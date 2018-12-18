@@ -1,21 +1,21 @@
 ---
-title: Kopírování dat do Microsoft Azure Data Boxu | Microsoft Docs
-description: Zjistěte, jak zkopírovat data do Azure Data Boxu.
+title: Kopírování dat do vaší aplikace Microsoft Azure Data Box přes SMB | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data do Azure Data Box prostřednictvím protokolu SMB
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: alkohli
-ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: e5219a0ade610a41d316970aecda06d4020b37f2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093455"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546177"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box"></a>Kurz: Kopírování dat do Azure Data Boxu 
+# <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
 Tento kurz popisuje, jak se pomocí místního webového uživatelského rozhraní připojit z hostitelského počítače k Data Boxu, zkopírovat do něj data z hostitelského počítače a pak připravit Data Box k odeslání.
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [Kurz: Nastavení Azure Data Boxu](data-box-deploy-set-up.md).
+1. Dokončili jste [kurzu: Nastavení Azure Data Box](data-box-deploy-set-up.md).
 2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
@@ -47,13 +47,9 @@ Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou enti
 Představte si následující příklad. 
 
 - Účet úložiště: *Mystoracct*
-- Sdílená složka pro objekty blob bloku: *Mystoracct_BlockBlob/my-container/blob*
-- Sdílení složka pro objekty blob stránky: *Mystoracct_PageBlob/my-container/blob*
-- Sdílená složka pro soubory: *Mystoracct_AzFile/my-share*
-
-Postup připojení a kopírování se může lišit v závislosti na tom, jestli je Data Box připojený k hostiteli s Windows Serverem nebo hostiteli s Linuxem.
-
-### <a name="connect-via-smb"></a>Připojení přes protokol SMB 
+- Sdílené složky pro objekt blob bloku: *Mystoracct_BlockBlob/my kontejneru/objektů blob*
+- Sdílené složky pro objekt blob stránky: *Mystoracct_PageBlob/my kontejneru/objektů blob*
+- Sdílené složky pro soubor: *Mystoracct_AzFile/my-share*
 
 Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Data Boxu pomocí následujícího postupu.
 
@@ -90,29 +86,6 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
-### <a name="connect-via-nfs"></a>Připojení přes systém souborů NFS 
-
-Pokud používáte hostitelský počítač s Linuxem, pomocí následujícího postupu nakonfigurujte Data Box tak, aby povoloval přístup klientům systému souborů NFS.
-
-1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**. 
-
-    ![Konfigurace přístupu klientů systému souborů NFS 1](media/data-box-deploy-copy-data/nfs-client-access.png)
-
-2. Zadejte IP adresu klienta systému souborů NFS a klikněte na **Přidat**. Opakováním tohoto kroku můžete nakonfigurovat přístup pro více klientů systému souborů NFS. Klikněte na **OK**.
-
-    ![Konfigurace přístupu klientů systému souborů NFS 2](media/data-box-deploy-copy-data/nfs-client-access2.png)
-
-2. Ujistěte se, že je na hostitelském počítači s Linuxem nainstalovaná [podporovaná verze](data-box-system-requirements.md) klienta systému souborů NFS. Použijte konkrétní verzi pro vaši distribuci Linuxu. 
-
-3. Po nainstalování klienta systému souborů NFS pomocí následujícího příkazu připojte sdílenou složku systému souborů NFS ke svému zařízení Data Box:
-
-    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
-
-    Následující příklad ukazuje připojení ke sdílené složce Data Boxu přes systém souborů NFS. IP adresa zařízení Data Box je `10.161.23.130`, sdílená složka `Mystoracct_Blob` se připojí k virtuálnímu počítači s Ubuntu a přípojný bod je `/home/databoxubuntuhost/databox`.
-
-    `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
-
-
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
 Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Před kopírováním dat si nezapomeňte přečíst následující důležité informace:
@@ -122,13 +95,11 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
 - Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
 - Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
 
-### <a name="copy-data-via-smb"></a>Kopírování dat pomocí protokolu SMB
-
 Po připojení ke sdílené složce SMB zahajte kopírování dat. 
 
 Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
     
-    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
+    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
  Atributy jsou popsané v následující tabulce.
     
@@ -223,82 +194,13 @@ Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní s
     
    ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
-### <a name="copy-data-via-nfs"></a>Kopírování dat přes systém souborů NFS
-
-Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
-
-Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. Další informace o jeho použití najdete na [manuálových stránkách pro příkaz cp](http://man7.org/linux/man-pages/man1/cp.1.html).
-
-Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
-
- - V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
-
-    `sudo apt-get install cifs-utils`
-
-    `sudo apt-get install nfs-utils`
-
- -  Nainstalujte **Rsync** a **Parallel** (liší se v závislosti na distribuované verzi Linuxu).
-
-    `sudo apt-get install rsync`
-   
-    `sudo apt-get install parallel` 
-
- - Vytvořte přípojný bod.
-
-    `sudo mkdir /mnt/databox`
-
- - Připojte svazek.
-
-    `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
-
- - Zrcadlete adresářovou strukturu složky.  
-
-    `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
-
- - Zkopírujte soubory. 
-
-    `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
-
-     V tomto příkazu parametr j určuje úroveň paralelizace a hodnota X počet paralelních kopií.
-
-     Doporučujeme začít s 16 paralelními kopiemi a zvyšovat počet vláken v závislosti na dostupnosti prostředků.
 
 ## <a name="prepare-to-ship"></a>Příprava k odeslání
 
-Posledním krokem je připravit zařízení k odeslání. V tomto kroku se všechny sdílené složky zařízení převedou do režimu offline. Jakmile zahájíte přípravu zařízení k odeslání, ztratíte přístup ke sdíleným složkám.
-1. Přejděte do části **Připravit k odeslání** a klikněte na **Zahájit přípravu**. 
-   
-    ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
-2. Kontrolní součty se standardně počítají na řádku během přípravě k odeslání. Výpočet kontrolního součtu může v závislosti na velikosti vašich dat chvíli trvat. Klikněte na **Zahájit přípravu**.
-    1. Během přípravy k odeslání se sdílené složky zařízení převedou do režimu offline a zařízení se uzamkne.
-        
-        ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 
-   
-    2. Po dokončení přípravy zařízení se stav zařízení změní na *Připraveno k odeslání*. 
-        
-        ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship3.png)
 
-    3. Stáhněte si seznam souborů (manifest), které se v tomto procesu zkopírovaly. Později můžete tento seznam použít k ověření nahrání souborů do Azure.
-        
-        ![Příprava k odeslání 1](media/data-box-deploy-copy-data/prepare-to-ship4.png)
-
-3. Vypněte zařízení. Přejděte na stránku **Vypnout nebo restartovat** a klikněte na **Vypnout**. Po zobrazení výzvy k potvrzení pokračujte kliknutím na **OK**.
-4. Odpojte kabely. Dalším krokem je odeslat zařízení do Microsoftu.
-
- 
-<!--## Appendix - robocopy parameters
-
-This section describes the robocopy parameters used when copying the data to optimize the performance.
-
-|    Platform    |    Mostly small files < 512 KB                           |    Mostly medium  files 512 KB-1 MB                      |    Mostly large files > 1 MB                             |   
-|----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|---|
-|    Data Box         |    2 Robocopy sessions <br> 16 threads per sessions    |    3 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 24 threads per sessions    |  |
-|    Data Box Heavy     |    6 Robocopy sessions <br> 24 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |    6 Robocopy sessions <br> 16 threads per sessions    |   
-|    Data Box Disk         |    4 Robocopy sessions <br> 16 threads per sessions             |    2 Robocopy sessions <br> 16 threads per sessions    |    2 Robocopy sessions <br> 16 threads per sessions    |   
--->
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
@@ -307,7 +209,7 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 > * Kopírování dat do Data Boxu
 > * Příprava k odeslání Data Boxu
 
-V dalším kurzu se dozvíte, jak Data Box nastavit a zkopírovat do něj data.
+Přejděte k dalšímu kurzu se naučíte k odeslání vašeho zařízení Data Box zpět společnosti Microsoft.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)

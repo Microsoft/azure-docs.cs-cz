@@ -1,23 +1,20 @@
 ---
-title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure Portal'
+title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure portal'
 description: V tomto kurzu se dozvíte, jak navrhnout první databázi Azure Database for PostgreSQL pomocí webu Azure Portal.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406378"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536521"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure Portal
+# <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí webu Azure portal
 
 Azure Database for PostgreSQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze PostgreSQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 
@@ -51,7 +48,7 @@ Server Azure Database for PostgreSQL vytvoříte pomocí tohoto postupu:
     ![Vytvoření serveru](./media/tutorial-design-database-using-azure-portal/2-create.png)
 
     - Název serveru: **mydemoserver** (název serveru se mapuje na název DNS a proto musí být globálně jedinečný) 
-    - Předplatné: Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém prostředek existuje nebo je účtován.
+    - Předplatné: Pokud máte více předplatných, vyberte odpovídající předplatné, ve kterém tento prostředek existuje nebo ve kterém se fakturuje.
     - Skupina prostředků: **myresourcegroup**
     - Přihlašovací jméno správce serveru a heslo dle vašeho výběru
     - Umístění
@@ -195,13 +192,13 @@ Představte si, že jste tuto tabulku omylem odstranili. Taková situace se tě�
 
    ![Azure Portal – Možnosti formuláře Obnovit](./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png)
 
-   - **Bod obnovení:** Vyberte bod v čase, který nastal dřív, než došlo ke změně serveru.
-   - **Cílový server:** Zadejte nový název serveru, na který chcete provést obnovení.
-   - **Umístění:** Oblast nemůžete vybrat, ve výchozím nastavení je stejná jako u zdrojového serveru.
-   - **Cenová úroveň:** Při obnovování serveru tuto hodnotu nemůžete změnit. Je stejná jako u zdrojového serveru. 
+   - **Bod obnovení**: Vyberte v daném okamžiku, který nastal dřív, než se server změnil
+   - **Cílový server**: Zadejte nový název serveru, kterou chcete obnovit
+   - **Umístění**: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
+   - **Cenová úroveň**: Tuto hodnotu nemůžete změnit, při obnovování serveru. Je stejná jako u zdrojového serveru. 
 3.  Kliknutím na **OK** provedete [obnovení serveru k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Obnovení serveru k jinému bodu v čase vytvoří duplicitní nový server k původnímu serveru v bodu v čase, který zadáte, a to za předpokladu, že spadá do doby uchování pro vaši [cenovou úroveň](./concepts-pricing-tiers.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili, jak pomocí webu Azure Portal a dalších nástrojů provádět následující úlohy:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
@@ -212,4 +209,4 @@ V tomto kurzu jste se naučili, jak pomocí webu Azure Portal a dalších nástr
 > * Aktualizace dat
 > * Obnovení dat
 
-Pokud teď chcete zjistit, jak podobné úlohy provést pomocí Azure CLI, přečtěte si tento kurz: [Návrh první databáze Azure Database for PostgreSQL pomocí Azure CLI](tutorial-design-database-using-azure-cli.md).
+V dalším kroku se dozvíte, jak podobné úlohy provést pomocí rozhraní příkazového řádku Azure CLI, přečtěte si tento kurz: [Návrh první databáze Azure Database for PostgreSQL pomocí Azure CLI](tutorial-design-database-using-azure-cli.md)

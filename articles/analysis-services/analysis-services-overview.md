@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15dbdc0bb2a3b7ee5af544adb2672a97f839f694
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2dd209025db762f659510898e23cb371a31291b9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970191"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544681"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -23,13 +23,13 @@ Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), kter
 
 ![Zdroje dat](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Video:** Podívejte se na video s [přehledem služby Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) a zjistěte, jak služba Azure Analysis Services zapadá do celkových možností BI od Microsoftu.
+**Video:** Podívejte se na [Přehled služby Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) se dozvíte, jak služba Azure Analysis Services zapadá Microsoft's celkové možnosti BI.
 
 ## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
 
 Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
-**Video:** Podívejte se na video o [automatizaci nasazení](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation), ve kterém se dozvíte více o tom, jak můžete urychlit vytvoření serveru pomocí služby Azure Automation.
+**Video:** Podívejte se na [automatizace nasazení](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) Další informace o použití Azure Automation k vytvoření serveru rychlost.
 
 Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak sestavovat sofistikovaná analytická řešení. Integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) poskytuje zabezpečený přístup na základě role k důležitým datům. Můžete provést integraci s kanály [Azure Data Factory](../data-factory/introduction.md) vložením aktivity, která načte data do modelu. Můžete použít služby [Azure Automation](../automation/automation-intro.md) a [Azure Functions](../azure-functions/functions-overview.md) k prosté orchestraci modelů pomocí vlastního kódu. 
 
@@ -146,7 +146,7 @@ Tabulkové modely ve službě Azure Analysis Services podporují celou řadu zdr
 
 ## <a name="your-data-is-secure"></a>Vaše data jsou v bezpečí
 
-Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Na úrovni serveru poskytuje bránu firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. A na úrovni datového modelu zajišťují bezpečnost vašich dat a to, že je vidí pouze uživatelé, pro které jsou určena, role uživatele, zabezpečení na úrovni řádků a zabezpečení na úrovni objektů.
+Služba Azure Analysis Services poskytuje zabezpečení citlivých dat na více úrovních. Na úrovni serveru: Brána firewall, ověřování Azure, role správce serveru a šifrování na straně serveru. A na úrovni datového modelu zajišťují bezpečnost vašich dat a to, že je vidí pouze uživatelé, pro které jsou určena, role uživatele, zabezpečení na úrovni řádků a zabezpečení na úrovni objektů.
 
 ### <a name="firewall"></a>Brána firewall
 
@@ -215,7 +215,7 @@ Podporují se všechny moderní nástroje pro zkoumání a vizualizaci dat, jako
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
-Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). Monitorujte a odesílejte protokoly do služby [Azure Storage](https://azure.microsoft.com/services/storage/), streamujte je do služby [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) a exportujte je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/), což je služba [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
+Služba Azure Analysis Services je integrovaná do metriky Azure. Poskytuje velký počet metrik pro konkrétní prostředky, které vám pomůžou s monitorováním výkonu a stavu serverů. Další informace najdete v tématu [Monitorování metrik serveru](analysis-services-monitor.md). Metriky zaznamenávejte pomocí [diagnostických protokolů prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md). Monitorujte a odesílejte protokoly do služby [Azure Storage](https://azure.microsoft.com/services/storage/), streamujte je do služby [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) a exportujte je do [Log Analytics](https://azure.microsoft.com/services/log-analytics/), což je služba [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Další informace najdete v článku o [nastavení protokolování diagnostiky](analysis-services-logging.md).
 
 Služba Azure Analysis Services také podporuje používání [zobrazení dynamické správy](https://docs.microsoft.com/sql/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). Zobrazení dynamické správy koordinují na základě syntaxe SQL sady řádků schématu, které vracejí metadata a informace monitorování týkající se instance serveru.
 

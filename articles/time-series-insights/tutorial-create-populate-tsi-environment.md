@@ -1,5 +1,5 @@
 ---
-title: Vytvoření prostředí Azure Time Series Insights | Dokumentace Microsoftu
+title: 'Kurz: Vytvoření prostředí Azure Time Series Insights | Dokumentace Microsoftu'
 description: Přečtěte si, jak vytvořit prostředí Time Series Insights naplněné daty ze simulovaných zařízení.
 services: time-series-insights
 author: ashannon7
@@ -9,12 +9,12 @@ ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 1a5f9901dfb3b08a068d1051b7ea434f1d5d5412
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c2aeab6888cf93be75742028b0354c45a1834d51
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278487"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537278"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 

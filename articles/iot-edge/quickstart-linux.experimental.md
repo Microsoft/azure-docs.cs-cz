@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 1bc7425d1979b2e1a35884c0800117455aebe9b6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc9ad544bb974dded098a27855ff5f6b9885d879
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338052"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556573"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému x64 zařízení
 
@@ -69,7 +69,7 @@ Zařízení IoT Edge:
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte centrum IoT.
+Spuštění tohoto rychlého startu tak, že vytvoříte službu IoT hub pomocí Azure CLI.
 
 ![Diagram – vytvoření centra IoT v cloudu](./media/quickstart-linux/create-iot-hub.png)
 
@@ -106,7 +106,9 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte připojovací řetězec a uložte si ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části. 
+3. Zkopírujte připojovací řetězec z výstupu JSON a uložte ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+
+   ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="connect-the-iot-edge-device-to-iot-hub"></a>Připojit zařízení IoT Edge do služby IoT Hub
 

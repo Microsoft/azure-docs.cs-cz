@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 3493b94e93a03faaf60aaa64bf8b80cefb754657
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a2c00d5373bd4e19a6e6057c6eddc758857860da
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309055"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556760"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
 
@@ -86,7 +86,7 @@ Nainstalujte modul runtime Service Fabric Mesh, sadu SDK a nástroje v následuj
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
 
 > [!Note]
-> Pokud vyvíjíte na Windows Fall Creators update (verze 1709) počítače, můžete použít pouze imagí dockeru docker Windows verze 1709.
+> Pokud vyvíjíte na Windows Fall Creators update (verze 1709) počítače, můžete použít pouze imagí dockeru Windows verze 1709.
 > Pokud vyvíjíte ve Windows 10. dubna 2018 update (verze 1803) počítače, můžete použít buď imagí dockeru verze 1709 nebo 1803 Windows.
 
 Pokud používáte Visual Studio, můžete tuto část přeskočit, protože Visual Studio vytvoří místní cluster, pokud žádný nemáte.

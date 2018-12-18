@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19b485add894dbe99a524d16f891d001991c1ec7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075110"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558375"
 ---
-# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Povolit sběr událostí pomocí Azure Event Event Hubs
+# <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Povolit sběr událostí pomocí Azure Event Hubs
 
 Azure [Event Hubs Capture][capture-overview] umožňuje automatické doručování streamovaných dat ve službě Event Hubs do služby [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) nebo do účtu [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) podle vašeho výběru.
 

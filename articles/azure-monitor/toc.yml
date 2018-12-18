@@ -71,11 +71,11 @@ items:
     - name: Zdroje dat
       href: platform/data-sources.md
     - name: Zdroje dat Azure
-      href: ../monitoring-and-diagnostics/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+      href: platform/data-sources-reference.md
     - name: Protokol aktivit
-      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-logs-overview.md
     - name: Diagnostické protokoly
-      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+      href: platform/diagnostic-logs-overview.md
     - name: Protokolování času pro příjem dat
       href: platform/data-ingestion-time.md
     - name: Vlastní metriky do úložiště metrik
@@ -445,13 +445,13 @@ items:
       - name: Archivace diagnostických protokolů
         href: platform/archive-diagnostic-logs.md
       - name: Ukládání diagnostických protokolů
-        href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-log-store.md
       - name: Streamování protokolu aktivit do služby Event Hubs
         href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: Protokoly a metriky do služby centra událostí
         href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
       - name: Diagnostické protokoly do centra událostí
-        href: ../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Data aplikací do služby Log Analytics
         href: platform/app-insights-connector.md
       - name: Export dat aplikací
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9be0566a2e0fddc61d5c7028e9ecc7a24930b2f2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 31569287fa00f123d3462d6d3dc5bf35a3650d19
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438383"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549441"

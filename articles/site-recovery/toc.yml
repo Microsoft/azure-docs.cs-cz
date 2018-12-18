@@ -66,8 +66,8 @@ items:
     href: site-recovery-faq.md
   - name: O zotavení po havárii virtuálního počítače Azure do Azure
     items:
-    - name: Architektura replikace z Azure do Azure
-      href: azure-to-azure-architecture.md
+    - name: Časté dotazy
+      href: azure-to-azure-common-questions.md
     - name: Systém podpory replikace z Azure do Azure
       href: azure-to-azure-support-matrix.md
     - name: Akcelerované síťové služby pro zotavení po havárii virtuálního počítače Azure
@@ -440,9 +440,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: a4d7fba88c362d9d2c0f19cba022da46b0927775
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c08b4dea562a8f43d1fb7c331858598b8121888f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409815"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545752"

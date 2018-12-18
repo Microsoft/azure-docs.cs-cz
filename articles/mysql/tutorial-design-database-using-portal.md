@@ -1,23 +1,20 @@
 ---
-title: 'Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure Portal'
+title: 'Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure portal'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí webu Azure Portal.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: 395ebbe3879660ce31abd570e936a010536db4de
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.openlocfilehash: bf46b047af69dcd1a751661a701b1eb9b7f75563
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266529"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537720"
 ---
-# <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure Portal
+# <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databázi Azure Database for MySQL pomocí webu Azure portal
 Azure Database for MySQL je spravovaná služba, která umožňuje spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 
 V tomto kurzu se naučíte, jak pomocí webu Azure Portal provést následující kroky:
@@ -52,7 +49,7 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
     Skupina prostředků | *myresourcegroup* | Zadejte název nové nebo existující skupiny prostředků.    Skupina prostředků|*myresourcegroup*| Název nové skupiny prostředků nebo některé ze stávajících ve vašem předplatném.
     Výběr zdroje | *Prázdné* | Vyberte *Prázdné* a vytvořte nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MySQL, vyberte *Záloha*.)
     Přihlašovací jméno správce serveru | myadmin | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
+    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % a tak dále).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
@@ -151,14 +148,14 @@ Představte si, že omylem odstraníte důležitou databázovou tabulku a nemů�
    
    ![10-2 Formulář Obnovit](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Bod obnovení:** Vyberte v zadaném časovém rozmezí okamžik, který chcete obnovit. Nezapomeňte převést své místní časové pásmo na čas UTC.
-   - **Obnovit na nový server:** Zadejte nový název serveru, na který chcete provést obnovení.
-   - **Umístění:** Oblast se shoduje se zdrojovým serverem a nedá se změnit.
-   - **Cenová úroveň:** Cenová úroveň se shoduje se zdrojovým serverem a nedá se změnit.
+   - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit, rozmezí okamžik. Nezapomeňte převést své místní časové pásmo na čas UTC.
+   - **Obnovit na nový server**: Zadejte nový název serveru, kterou chcete obnovit.
+   - **Umístění**: Oblast je stejná jako u zdrojového serveru a nedá se změnit.
+   - **Cenová úroveň**: Cenová úroveň je stejný jako zdrojový server a nelze změnit.
    
 3. Kliknutím na **OK** provedete obnovení serveru [k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k zadanému bodu v čase. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili, jak na webu Azure Portal provádět následující kroky:
 
 > [!div class="checklist"]

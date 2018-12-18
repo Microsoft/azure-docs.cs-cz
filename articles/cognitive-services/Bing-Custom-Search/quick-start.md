@@ -1,46 +1,55 @@
 ---
-title: 'Rychlý start: Vytvoření první instance vlastního vyhledávání Bingu'
+title: 'Rychlý start: Vytvoření první instance vlastního vyhledávání Bingu | Dokumentace Microsoftu'
 titlesuffix: Azure Cognitive Services
-description: Pokud chcete použít Vlastní vyhledávání Bingu, musíte vytvořit instanci vlastního vyhledávání, která definuje vaše zobrazení nebo řez webu. Instance obsahuje nastavení, která určují požadované veřejné domény, podřízené weby a webové stránky, které má Bing prohledávat, a případné úpravy hodnocení.
+description: Chcete-li vytvořit vlastní Bing, jež může hledat domény a webové stránky, které definujete pomocí tohoto článku.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2017
-ms.author: v-brapel
-ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ba1444b3115ffd2c73e1773aa926d11fed81f830
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816218"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556114"
 ---
-# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Rychlý start: Vytvoření první instance vlastního vyhledávání Bingu
-Pokud chcete použít vlastní vyhledávání Bingu, musíte vytvořit instanci vlastního vyhledávání, která definuje vaše zobrazení nebo řez webu. Instance obsahuje nastavení, která určují požadované veřejné domény, weby a webové stránky, které má Bing prohledávat, a případné úpravy hodnocení. K vytvoření instance použijte [portál](https://customsearch.ai) Vlastní vyhledávání Bingu. 
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>Rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu
+
+Pokud chcete použít vlastní vyhledávání Bingu, musíte vytvořit instanci vlastního vyhledávání, která definuje vaše zobrazení nebo řez webu. Tato instance obsahuje veřejné domény, weby a webové stránky, které chcete hledat, spolu s nějaké úpravy hodnocení, budete potřebovat. 
+
+Chcete-li vytvořit instanci, použijte [vlastní vyhledávání Bingu portál](https://customsearch.ai). 
+
+![Obrázek portálu pro vlastní vyhledávání Bingu](media/blockedCustomSrch.png)
+
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-a-custom-search-instance"></a>Vytvoření instance vlastního vyhledávání
 
 Vytvoření instance vlastního vyhledávání Bingu:
 
-1.  Získejte klíč rozhraní API pro vlastní vyhledávání. Přečtěte si téma [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
-2.  Klikněte na tlačítko **Přihlásit se** a přihlaste se k portálu pomocí účtu Microsoft. 
-    - Pokud účet Microsoft nemáte, klikněte na **Vytvořit účet Microsoft**. Na portálu se zobrazí výzva k udělení oprávnění pro přístup k vašim datům. Klikněte na **Ano**.
-    - Přijměte podmínky služeb Cognitive Services. Zaškrtněte políčko **Souhlasím** a klikněte na **Souhlasím**.  
-3.  Po přihlášení klikněte na **Nová instance** a zadejte název instance. Použijte smysluplný název popisující typ obsahu, který vyhledávání vrací. Název můžete kdykoli změnit. 
-4.  Na kartě **Aktivní** v části **Vyhledávací prostředí** zadejte adresy URL webů, které chcete do vyhledávání zahrnout.
-5.  Pokud chcete ověřit, že vaše instance vrací výsledky, zadejte dotaz do podokna náhledu na pravé straně. Pokud se nezobrazí žádné výsledky, zadejte nový web. Bing vrátí výsledky pouze pro veřejné weby, které indexoval.
-6.  Kliknutím na **Publikovat** publikujte změny konfigurace do produkčního prostředí. Po zobrazení výzvy publikování potvrďte kliknutím na **Publikovat**.
-7.  Klikněte na **Produkce** > **Koncové body** a zkopírujte **ID vlastní konfigurace**. Toto ID budete potřebovat k volání rozhraní API pro vlastní vyhledávání.
+1. Klikněte na tlačítko **Začínáme** na [vlastní vyhledávání Bingu portál](https://customsearch.ai) webové stránky a přihlaste se pomocí svého účtu Microsoft.
 
-## <a name="next-steps"></a>Další kroky
+2. Klikněte na tlačítko **novou instanci**a zadejte popisný název. Kdykoli můžete změnit název vaší instance.
+ 
+3. Na kartě **Aktivní** v části **Vyhledávací prostředí** zadejte adresy URL webů, které chcete do vyhledávání zahrnout. 
 
-Pokračujte v práci s instancí vlastního vyhledávání, kterou jste právě vytvořili, a postupujte podle pokynů v těchto praktických průvodcích:
+    > [!NOTE]
+    > Instance vlastního vyhledávání Bingu se vrátí pouze výsledky pro domény a webové stránky, které jsou veřejné a byla indexované bingem.
 
-- [Konfigurace vlastního vyhledávacího prostředí](./define-your-custom-view.md)
-- [Volání vlastního vyhledávání](./search-your-custom-view.md)
-- [Sdílení vlastního vyhledávání](./share-your-custom-search.md)
-- [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
-- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+4. Zadejte dotaz a podívejte se na výsledky hledání vrácenou instanci hledání můžete použít pravé straně portálu pro vlastní vyhledávání Bingu. Pokud se nezobrazí žádné výsledky, zkuste zadat jinou adresu URL.  
+
+5. Klikněte na tlačítko **publikovat** publikujte své změny do produkčního prostředí, a aktualizovat koncové body instance.
+
+6.  Klikněte na **produkční** kartu podle **koncové body**, kopie vašeho **ID vlastní konfigurace**. Toto ID pro volání rozhraní API pro vlastní vyhledávání přidáním tak budete potřebovat `customconfig=` parametr ve volání dotazu.
+
+
+## <a name="next-steps"></a>Další postup
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Volání váš koncový bod pro vlastní vyhledávání Bingu](./call-endpoint-csharp.md)

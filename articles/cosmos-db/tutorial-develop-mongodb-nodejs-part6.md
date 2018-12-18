@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ec6fc4237fd2be11d1e937ec6aed12898689e73f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 78880385dcdc7c2422cf1bcd6d270ac39f481329
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139975"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542709"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-crud-functions-to-the-app"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – část 6: Přidání funkcí CRUD do aplikace
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci [MongoDB API](mongodb-introduction.md) napsanou v Node.js s Express a Angular a jak ji připojit k databázi Azure Cosmos DB.
+Tento vícedílný kurz ukazuje, jak vytvořit novou [účet rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) aplikace napsané v Node.js s Express a Angular a pak ho připojíte k databázi Azure Cosmos DB.
 
 Šestá část kurzu vychází z [části 5](tutorial-develop-mongodb-nodejs-part5.md) a zabývá se následujícími úlohami:
 

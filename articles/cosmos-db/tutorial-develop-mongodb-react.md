@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: bd72aad51d2649ba6f110ab07b3f85d58da2a09d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 54a58ed9a3adf405f1384a2d0a31c569707acfc9
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867031"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542981"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
 
-Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá jako server Node a Express, pomocí rozhraní [MongoDB API](mongodb-introduction.md) se připojuje ke službě Azure Cosmos DB a následně připojuje front-end v React k serverové části aplikace. Kurz také ukazuje, jak škálovat službu Azure Cosmos DB ukázáním a kliknutím na webu Azure Portal a jak nasadit aplikaci na internet, aby všichni mohli sledovat své oblíbené hrdiny. 
+Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá uzel a Express pro server, se připojí ke službě Azure Cosmos DB s [účet rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí k serveru část aplikace React front-endu. Kurz také ukazuje, jak škálovat službu Azure Cosmos DB ukázáním a kliknutím na webu Azure Portal a jak nasadit aplikaci na internet, aby všichni mohli sledovat své oblíbené hrdiny. 
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje klientská připojení MongoDB, takže můžete místo MongoDB používat službu Azure Cosmos DB a přitom dál používat stejný kód jako pro aplikace MongoDB, ale s dalšími výhodami, jako je snadné nasazení v cloudu, škálování a mimořádná rychlost čtení a zápisu.  
 

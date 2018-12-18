@@ -8,12 +8,12 @@ ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 9c16a882e49ceec4fc733cb3a8c1061dd1949e28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d8aff2048d80b2c1542241c8370a9eb2b79366ac
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166621"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541893"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -161,7 +161,7 @@ Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet
 | [Vytvoření triggeru po akci](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L329) |[DocumentClient.CreateTriggerAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createtriggerasync.aspx) |
 | [Vytvoření funkce definované uživatelem (UDF)](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L389) |[DocumentClient.CreateUserDefinedFunctionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserdefinedfunctionasync.aspx) |
 
-Další informace o programování na straně serveru, naleznete v tématu [programování na straně serveru služby Azure Cosmos DB: Uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi](programming.md).
+Další informace o programování na straně serveru, naleznete v tématu [programování na straně serveru služby Azure Cosmos DB: Uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi](stored-procedures-triggers-udfs.md).
 
 ## <a name="user-management-examples"></a>Příklady správy uživatelů
 Ukázkový soubor pro správu uživatelů [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs) ukazuje, jak provádět následující úlohy.

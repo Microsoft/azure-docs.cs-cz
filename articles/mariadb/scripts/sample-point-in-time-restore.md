@@ -1,21 +1,19 @@
 ---
 title: Skript Azure CLI – obnovení serveru Azure Database for MariaDB
 description: Tento ukázkový skript Azure CLI ukazuje, jak obnovit serveru Azure Database for MariaDB a jeho databáze k dřívějšímu bodu v čase.
-services: mariadb
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
-ms.openlocfilehash: 5c7e3f96488ef5142c19920b7f14282fe3c89b9a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585306"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544375"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Obnovení serveru Azure Database for MariaDB pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden Azure Database pro MariaDB serveru k určitému bodu v čase.
@@ -43,5 +41,5 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
-- Vyzkoušejte i další skripty: [ukázky v Azure CLI pro službu Azure Database pro MariaDB](../sample-scripts-azure-cli.md)
+- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
+- Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database pro MariaDB](../sample-scripts-azure-cli.md)

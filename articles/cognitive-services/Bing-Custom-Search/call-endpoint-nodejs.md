@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Volání koncového bodu pomocí Node.js – vlastní vyhledávání Bingu'
+title: 'Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí Node.js | Dokumentace Microsoftu'
 titlesuffix: Azure Cognitive Services
-description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Node.js k volání koncového bodu pro vlastní vyhledávání Bingu.
+description: V tomto rychlém startu můžete začít si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu pomocí Node.js
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,77 +10,71 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: aahi
-ms.openlocfilehash: c0c97dd52f8fc3ff590c86f32f794beeb00f4b05
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3af35a9aea9115971d1fbd251da3fbaddb011c5f
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310231"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555791"
 ---
-# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>Rychlý start: Volání koncového bodu pro vlastní vyhledávání Bingu (Node.js)
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-nodejs"></a>Rychlý start: Volání vlastního vyhledávání Bingu koncový bod pomocí Node.js
 
-Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Node.js k volání koncového bodu pro vlastní vyhledávání Bingu. 
+V tomto rychlém startu můžete začít si vyžádat výsledky hledání od vaší instance vlastního vyhledávání Bingu. Zatímco tato aplikace je napsána v jazyce JavaScript, rozhraní API pro vlastní vyhledávání Bingu je kompatibilní s Většina programovacích jazyků rozhraní RESTful webová služba. Zdrojový kód k této ukázce je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingCustomSearchv7.js).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+- Instanci vlastního vyhledávání Bingu. Zobrazit [rychlý start: Vytvoření první instanci vlastního vyhledávání Bingu](quick-start.md) Další informace.
 
-- Instance vlastního vyhledávání připravená k použití. Přečtěte si téma [Vytvoření první instance vlastního vyhledávání Bingu](quick-start.md).
-- Nainstalovaný jazyk [Node.js](https://www.nodejs.org/).
-- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+- [Node.js](https://www.nodejs.org/)
 
-## <a name="run-the-code"></a>Spuštění kódu
+- [Knihovna žádostí o jazyka JavaScript](https://github.com/request/request)
 
-Pokud chcete tuto ukázku spustit, postupujte takto:
+[!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
-1. Vytvořte pro svůj kód složku.  
-  
-2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.  
-  
-3. Nainstalujte modul uzlu **request**:
-    <pre>
-    npm install request
-    </pre>  
-    
-4. Ve vytvořené složce vytvořte soubor s názvem BingCustomSearch.js a zkopírujte do něj následující kód. Položky **YOUR-SUBSCRIPTION-KEY** a **YOUR-CUSTOM-CONFIG-ID** nahraďte klíčem předplatného a ID konfigurace.  
-  
-    ``` javascript
+## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
+
+1. Vytvořte nový soubor JavaScript ve vašich oblíbených prostředím IDE nebo editorem a přidejte `require()` příkaz pro knihovnu požadavky. Vytváření proměnných pro váš klíč předplatného, ID konfigurace vlastní a hledaný termín. 
+
+    ```javascript
     var request = require("request");
     
     var subscriptionKey = 'YOUR-SUBSCRIPTION-KEY';
     var customConfigId = 'YOUR-CUSTOM-CONFIG-ID';
     var searchTerm = 'microsoft';
-    
-    var options = {
+    ```
+
+## <a name="send-and-receive-a-search-request"></a>Odeslat a přijmout žádost o vyhledávání 
+
+1. Vytvoření proměnné k ukládání informací odesílaných ve vaší žádosti. Vytvořit žádost o adresu URL připojením hledaný termín `q=` parametr dotazu a search instance vlastní ID konfigurace `customconfig=`. oddělení parametrů s `&` znak. 
+
+    ```javascript
+    var info = {
         url: 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?' + 
-          'q=' + searchTerm + 
-          '&customconfig=' + customConfigId,
+            'q=' + searchTerm + "&" +
+            'customconfig=' + customConfigId,
         headers: {
             'Ocp-Apim-Subscription-Key' : subscriptionKey
         }
     }
-    
-    request(options, function(error, response, body){
-        var searchResponse = JSON.parse(body);
-        for(var i = 0; i < searchResponse.webPages.value.length; ++i){
-            var webPage = searchResponse.webPages.value[i];
-            console.log('name: ' + webPage.name);
-            console.log('url: ' + webPage.url);
-            console.log('displayUrl: ' + webPage.displayUrl);
-            console.log('snippet: ' + webPage.snippet);
-            console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
-            console.log();
-        }
-    })
-    ```  
-  
-6. Spusťte kód pomocí následujícího příkazu:  
-  
-    ```    
-    node BingCustomSearch.js
-    ``` 
+    ```
+
+1. Použijte knihovnu JavaScript žádost odeslat žádost o vyhledávání vaší instance vlastního vyhledávání Bingu a vytiskne informace o výsledcích, včetně názvu, adresu url a datum, že byl naposledy procházen webovou stránku.
+
+    ```javascript
+    request(info, function(error, response, body){
+            var searchResponse = JSON.parse(body);
+            for(var i = 0; i < searchResponse.webPages.value.length; ++i){
+                var webPage = searchResponse.webPages.value[i];
+                console.log('name: ' + webPage.name);
+                console.log('url: ' + webPage.url);
+                console.log('displayUrl: ' + webPage.displayUrl);
+                console.log('snippet: ' + webPage.snippet);
+                console.log('dateLastCrawled: ' + webPage.dateLastCrawled);
+                console.log();
+            }
+    ```
 
 ## <a name="next-steps"></a>Další postup
-- [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
-- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
-- [Stránkování webových stránek](./page-webpages.md)
+
+> [!div class="nextstepaction"]
+> [Sestavení webové aplikace s vlastní vyhledávání](./tutorials/custom-search-web-page.md)

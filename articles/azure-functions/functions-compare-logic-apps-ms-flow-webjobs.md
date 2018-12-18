@@ -1,6 +1,6 @@
 ---
 title: Porovnání služeb Flow, Logic Apps, Functions a WebJobs – Azure
-description: 'Porovnání cloudových služeb společnosti Microsoft, které jsou optimalizované pro úlohy integrace: Flow, Logic Apps, Functions a WebJobs'
+description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizované pro úlohy integrace:  Flow, Logic Apps, Functions a WebJobs.'
 services: functions, logic-apps
 documentationcenter: na
 author: ggailey777
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 69026520a03a940f5f5ddc4586663d8047b39e04
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634927"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547656"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 
@@ -47,7 +47,7 @@ Následující tabulka vám pomůže určit, jestli je pro danou integraci nejle
 | Návrhářský nástroj |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
 | Správa životního cyklu aplikací (ALM) |Návrh a testování v neprodukčním prostředí, přesun do produkčního prostředí až po ověření připravenosti. |DevOps: správa zdrojového kódu, testování, podpora, automatizace a možnosti správy ve [správě prostředků Azure](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Prostředí pro správu |Správa zásad prostředí služby Flow a prevence ztráty dat (DLP), sledování licencí [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování [https://portal.azure.com](https://portal.azure.com) |
-| Zabezpečení |Protokoly auditu zabezpečení a dodržování předpisů Office 365, prevence ztráty dat (DLP), [šifrování v klidovém stavu](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data atd. |Zajištění zabezpečení Azure: [zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) a další. |
+| Zabezpečení |Protokoly auditu zabezpečení a dodržování předpisů Office 365, prevence ztráty dat (DLP), [šifrování v klidovém stavu](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data atd. |Zajištění zabezpečení Azure: [Zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)a provádění dalších akcí. |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Porovnání služeb Azure Functions a Azure Logic Apps
 
@@ -70,7 +70,7 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 
 ## <a name="compare-functions-and-webjobs"></a>Porovnání služeb Functions a WebJobs
 
-Podobně jako Azure Functions je služba Azure App Service WebJobs se sadou WebJobs SDK integrační služba *založená na kódu* a navržená pro vývojáře. Obě jsou postavené na službě [Azure App Service](../app-service/app-service-web-overview.md) a podporují funkce, jako jsou [integrace správy zdrojového kódu](../app-service/app-service-continuous-deployment.md), [ověřování](../app-service/app-service-authentication-overview.md) a [integrace monitorování pomocí Application Insights](functions-monitoring.md).
+Podobně jako Azure Functions je služba Azure App Service WebJobs se sadou WebJobs SDK integrační služba *založená na kódu* a navržená pro vývojáře. Obě jsou postavené na službě [Azure App Service](../app-service/app-service-web-overview.md) a podporují funkce, jako jsou [integrace správy zdrojového kódu](../app-service/deploy-continuous-deployment.md), [ověřování](../app-service/app-service-authentication-overview.md) a [integrace monitorování pomocí Application Insights](functions-monitoring.md).
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>Služba WebJobs a sada WebJobs SDK
 

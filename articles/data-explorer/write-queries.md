@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnoty zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
+[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnoty zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi**, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter**, **rightsemi**.
 
 Následující příklad připojí pomocí vnitřního spojení dvou tabulek.
 

@@ -1,24 +1,21 @@
 ---
 title: Připojení k Azure Database for MySQL z jazyka C++
 description: V tomto rychlém startu najdete vzorový kód jazyka C++, který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
-ms.devlang: C++
+ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: b262359b91a2545682e7611c44cfccd2b08da0c1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987660"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544188"
 ---
-# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
+# <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ použít k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí C++ a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -41,10 +38,10 @@ Kroky v této části předpokládají, že máte zkušenosti s vývojem pomocí
    2. Spusťte instalační program a podle zobrazených pokynů instalaci dokončete.
 
 ### <a name="configure-visual-studio"></a>**Konfigurace sady Visual Studio**
-1. V sadě Visual Studio v části Projekt -> Vlastnosti -> Linker > Obecné > Další adresáře knihoven přidejte adresář \lib\opt (tj.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) konektoru C++.
+1. Ze sady Visual Studio Projekt -> Vlastnosti -> Linker -> Obecné > Další adresáře knihoven přidejte adresář "\lib\opt" (například: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9\lib\opt) konektoru C++.
 2. V sadě Visual Studio v části Projekt -> Vlastnosti -> C/C++ > Obecné -> Další adresáře k zahrnutí:
-   - Přidejte adresář \include konektoru C++ (tj.: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include\).
-   - Přidejte kořenový adresář knihovny Boost (tj.: C:\boost_1_64_0\).
+   - Přidejte adresář "\include" konektoru c++ (například: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9\include\).
+   - Přidejte kořenový adresář knihovny Boost (tj: C:\boost_1_64_0\).
 3. V sadě Visual Studio v části Projekt -> Vlastnosti -> Linker -> Vstup -> Další závislosti přidejte do textového pole **mysqlcppconn.lib**.
 4. Zkopírujte soubor **mysqlcppconn.dll** ze složky knihovny konektoru C++ z kroku 3 do stejného adresáře jako spustitelný soubor aplikace nebo ho přidejte do proměnné prostředí, aby ho vaše aplikace mohla najít.
 
@@ -306,6 +303,6 @@ int main()
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.](concepts-migrate-dump-restore.md)

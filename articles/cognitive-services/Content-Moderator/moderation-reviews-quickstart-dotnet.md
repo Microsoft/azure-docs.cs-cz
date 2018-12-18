@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření revizí pomocí prostředí .NET – Content Moderator'
+title: 'Rychlý start: Vytvoření pomocí rozhraní .NET – Content Moderator revize'
 titlesuffix: Azure Cognitive Services
 description: Způsob vytvoření revizí pomocí sady Azure Content Moderator SDK pro .NET
 services: cognitive-services
@@ -10,48 +10,48 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 6409011c1a7c125dd03bb706f49ccad1a1fd49a4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226581"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538867"
 ---
-# <a name="quickstart-create-reviews-using-net"></a>Rychlý start: Vytvoření revizí pomocí prostředí .NET
+# <a name="quickstart-create-reviews-using-net"></a>Rychlý start: Vytvoření kontroly pomocí .NET
 
 Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [sadu Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k následujícím účelům:
  
 - Vytvoření sady revizí pro lidské moderátory
 - Získání stavu existujících revizí pro lidské moderátory
 
-Většinou obsah projde nějakým automatizovaným moderováním, než se naplánuje lidská revize. Tento článek se zabývá pouze způsobem vytvoření revize pro lidské moderování. Kompletnější scénář najdete v kurzech o [moderování facebookového obsahu](facebook-post-moderation.md) a [moderování katalogů elektronického obchodování](ecommerce-retail-catalog-moderation.md).
+Většinou obsah projde nějakým automatizovaným moderováním, než se naplánuje lidská revize. Tento článek se zabývá pouze způsobem vytvoření revize pro lidské moderování. Kompletní scénář, najdete v článku [moderování obsahu Facebook](facebook-post-moderation.md) a [moderování obrázků produktů elektronického obchodování](ecommerce-retail-catalog-moderation.md) kurzy.
 
-Tento článek předpokládá, že máte zkušenosti s Visual Studiem a jazykem C#.
+Tento článek předpokládá, že už máte zkušenosti se sadou Visual Studio a jazykem C#.
 
-## <a name="sign-up-for-content-moderator"></a>Zaregistrování Content Moderatoru
+## <a name="sign-up-for-content-moderator"></a>Registrace do Content Moderatoru
 
 Než začnete služby Content Moderatoru prostřednictvím rozhraní REST API nebo sady SDK používat, budete potřebovat klíč předplatného.
-Podívejte se na tento [Rychlý start](quick-start.md), abyste zjistili, jak klíč získat.
+Informace o tom, jak klíč získat, najdete v [Rychlém startu](quick-start.md).
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro revidování (pokud jste to už neudělali v předchozím kroku)
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrace účtu nástroje pro kontrolu, pokud jste se nezaregistrovali v předchozím kroku
 
-Pokud jste Content Moderator získali z webu Azure Portal, také si [zaregistrujte účet nástroje pro revidování](https://contentmoderator.cognitive.microsoft.com/) a vytvořte tým revidujících. Abyste mohli zavolat rozhraní API pro revize, spustit úlohu a zobrazit si revize v nástroji pro revidování, budete potřebovat ID týmu a nástroj pro revidování.
+Pokud jste Content Moderator získali na portálu Azure Portal, [zaregistrujte si i účet nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) a vytvořte posuzovací tým. Abyste mohli zavolat rozhraní API pro kontroly a tím zahájit úlohu a zobrazit kontroly v nástroji pro kontrolu, budete potřebovat ID týmu a nástroj pro kontrolu.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může k vytvoření revize volat rozhraní API pro revize
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
-Pokud jste začínali na webu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru. 
+Pokud jste začínali na portálu Azure Portal, můžete po dokončení předchozích kroků získat dva klíče Content Moderatoru. 
 
-Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro revize](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby aplikace mohla volat rozhraní API pro revize a vytvářet revize.
+Pokud plánujete ve své ukázkové sadě SDK používat klíč rozhraní API poskytnutý službou Azure, postupujte podle pokynů v části o [použití klíče Azure s rozhraním API pro kontroly](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api), aby aplikace mohla volat rozhraní API pro kontroly a vytvářet kontroly.
 
 Pokud budete používat klíč bezplatné zkušební verze vygenerovaný nástrojem pro revidování, pak váš účet nástroje pro revidování už klíč zná a není potřeba už žádné další kroky provádět.
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu v sadě Visual Studio
 
-1. Přidejte ke svému řešení nový projekt **Konzolová aplikace (.NET Framework)**.
+1. Přidejte do svého řešení nový projekt **Konzolová aplikace (.NET Framework)**.
 
    Ve vzorovém kódu pojmenujte tento projekt **CreateReviews**.
 
-1. Projekt vyberte jako jeden spouštěný projekt řešení.
+1. Projekt vyberte jako jediný spouštěný projekt řešení.
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -76,7 +76,7 @@ Upravte příkazy using programu.
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
-Přidáním následujícího kódu vytvořte pro své předplatné klienta Content Moderatoru.
+Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
 
 > [!IMPORTANT]
 > Aktualizujte pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
@@ -499,7 +499,7 @@ ID revizí a adresy URL obsahu obrázků se při každém spuštění aplikace m
 
 ## <a name="your-callback-url-if-provided-receives-this-response"></a>Adresa URL pro zpětné volání (pokud je k dispozici) získá tuto odpověď
 
-Zobrazí se odpověď, která vypadá jako následující příklad:
+Zobrazí se odpověď, která vypadá přibližně takto:
 
     {
         "ReviewId": "201801i48a2937e679a41c7966e838c92f5e649",
@@ -518,6 +518,6 @@ Zobrazí se odpověď, která vypadá jako následující příklad:
     }
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.
+Získejte pro tento rychlý start a jiné rychlé starty Content Moderatoru pro technologii .NET [sadu Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a začněte se svou integrací.

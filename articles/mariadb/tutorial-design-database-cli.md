@@ -1,24 +1,21 @@
 ---
-title: 'Kurz: Návrh databáze Azure pro MariaDB pomocí Azure CLI'
+title: 'Kurz: Návrh služby Azure Database pro MariaDB pomocí Azure CLI'
 description: Tento kurz vysvětluje, jak vytvářet a spravovat Azure Database pro MariaDB server a databáze pomocí rozhraní příkazového řádku Azure z příkazového řádku.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2d715f89b56af822c2c1174cca0f2a9c1b847fc0
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: fa056dad052914e771251585cb426c70591aa235
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516329"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541187"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: Návrh databáze Azure pro MariaDB pomocí Azure CLI
+# <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Kurz: Návrh služby Azure Database pro MariaDB pomocí Azure CLI
 
 Azure Database pro MariaDB je služba relačních databází v cloudu Microsoftu založená na databázovém stroji MariaDB Community Edition. V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
 
@@ -175,10 +172,10 @@ Představte si, že jste tuto tabulku omylem odstranili. Taková situace se tě�
 
 K obnovení budete potřebovat následující informace:
 
-- Bod obnovení: Vyberte bod v čase, který nastal dřív, než došlo ke změně serveru. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
-- Cílový server: Zadejte nový název serveru, na který chcete provést obnovení.
-- Zdrojový server: Zadejte název serveru, ze kterého se má obnovení provést.
-- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru.
+- Bod obnovení: Vyberte v daném okamžiku, který nastal dřív, než se server změnil. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
+- Cílový server: Zadejte nový název serveru, kterou chcete obnovit
+- Zdrojový server: Zadejte název serveru, který chcete obnovit z
+- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver

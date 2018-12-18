@@ -1,6 +1,6 @@
 ---
-title: Skript Azure Powershellu – vytvoření účtu rozhraní MongoDB API služby Azure Cosmos DB
-description: Ukázkový skript Azure PowerShellu – Vytvoření účtu rozhraní MongoDB API služby Azure Cosmos DB
+title: Skript Azure Powershellu – vytvoření účtu rozhraní API služby Azure Cosmos DB pro MongoDB
+description: Skript Azure Powershellu ukázkový – vytvoření účtu služby Azure Cosmos DB API pro MongoDB
 services: cosmos-db
 ms.service: cosmos-db
 author: SnehaGunda
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
 ms.date: 05/29/2018
-ms.openlocfilehash: 1df8749f0032f60bc3d18f6d8352712e74c53fd5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 006aff3c9dd45d3a8a932eb6761c393ab5bcd1d7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963892"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544797"
 ---
-# <a name="azure-cosmos-db-create-a-mongodb-api-account-using-powershell"></a>Azure Cosmos DB: Vytvoření účtu rozhraní MongoDB API pomocí PowerShellu
+# <a name="create-a-azure-cosmos-db-api-account-for-mongodb-using-powershell"></a>Vytvořit účet rozhraní API služby Azure Cosmos DB pro MongoDB pomocí Powershellu
 
-Tento ukázkový skript PowerShellu vytvoří účet rozhraní MongoDB API služby Azure Cosmos DB. 
+Tento ukázkový skript Powershellu vytvoří účet rozhraní API služby Azure Cosmos DB pro MongoDB. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

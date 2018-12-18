@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: cff7d0dea27dd21ac4f7bb133e297e4f5928d2c2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8ef4e9917623f43e5c9900150deb22d62169c836
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680595"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555961"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Moduly Terraformu v Azure můžete testovat pomocí Terratest
 
@@ -35,10 +35,10 @@ Tento článek praktické je nezávislá na platformě. Příklady kódu, které
 
 Než začnete, nainstalujte následující software:
 
-- **Přejděte programovací jazyk**: Terraformu testovací případy jsou napsané v [Přejít](https://golang.org/dl/).
+- **Přejděte programovací jazyk**: Terraform testovací případy jsou napsané v [Přejít](https://golang.org/dl/).
 - **dep:** [dep](https://github.com/golang/dep#installation) je nástroj pro správu závislostí pro Go.
-- **Azure CLI**: [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování pomocí instančního objektu v Azure nebo [prostřednictvím rozhraní příkazového řádku Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
-- **Obrázek**: používáme [spustitelné bitové kopii](https://github.com/magefile/mage/releases) až vám ukážeme, jak můžete zjednodušit spuštěné Terratest případy. 
+- **Azure CLI**: [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) je nástroj příkazového řádku můžete použít ke správě prostředků Azure. (Terraformu podporuje ověřování pomocí instančního objektu v Azure nebo [prostřednictvím rozhraní příkazového řádku Azure](https://www.terraform.io/docs/providers/azurerm/authenticating_via_azure_cli.html).)
+- **Obrázek**: Používáme [spustitelné bitové kopii](https://github.com/magefile/mage/releases) až vám ukážeme, jak můžete zjednodušit spuštěné Terratest případy. 
 
 ## <a name="create-a-static-webpage-module"></a>Vytvoření modulu statického webu
 
@@ -93,10 +93,10 @@ output "homepage_url" {
 ```
 
 Hlavní logika modulu zřizuje čtyři prostředky:
-- **Skupina prostředků**: název skupiny prostředků je `website_name` vstup doplněno `-staging-rg`.
-- **účet úložiště**: název účtu úložiště je `website_name` vstup doplněno `data001`. Dodržovat omezení název účtu úložiště, modul odebere všechny speciální znaky a používá malá písmena v názvu účtu celého úložiště.
-- **Oprava název kontejneru**: název kontejneru `wwwroot` a je vytvořen v účtu úložiště.
-- **jeden soubor HTML**: soubor HTML se číst z `html_path` vstup a nahráli do `wwwroot/index.html`.
+- **Skupina prostředků**: Název skupiny prostředků je `website_name` vstup doplněno `-staging-rg`.
+- **Účet úložiště**: Název účtu úložiště je `website_name` vstup doplněno `data001`. Dodržovat omezení název účtu úložiště, modul odebere všechny speciální znaky a používá malá písmena v názvu účtu celého úložiště.
+- **Oprava název kontejneru**: Kontejner má název `wwwroot` a je vytvořen v účtu úložiště.
+- **jeden soubor HTML**: Je pro čtení ze souboru HTML `html_path` vstup a nahráli do `wwwroot/index.html`.
 
 Logika modulu statického webu se implementuje v souboru `./main.tf`:
 
@@ -267,7 +267,7 @@ Tradiční výsledek testu Go vrátí přibližně minutu.
 
 Na rozdíl od testování částí musí testy integrace zřizovat prostředky do reálného prostředí pro perspektivu začátku do konce. Terratest odvádí dobrou práci, tento typ úlohy. 
 
-Osvědčené postupy pro instalaci incude modulů Terraformu `examples` složky. `examples` Složka obsahuje některé ukázky začátku do konce. Vyhněte se práce s reálná data, případně proč bezpečná není testovacích tyto ukázky jako integrační testy? V této části se zaměříme na tři soubory, které jsou označeny hvězdičkou `(*)` ve struktuře následující složky:
+Osvědčené postupy pro moduly Terraformu zahrnovat instalaci `examples` složky. `examples` Složka obsahuje některé ukázky začátku do konce. Vyhněte se práce s reálná data, případně proč bezpečná není testovacích tyto ukázky jako integrační testy? V této části se zaměříme na tři soubory, které jsou označeny hvězdičkou `(*)` ve struktuře následující složky:
 
 ```
  📁 GoPath/src/staticwebpage
@@ -298,7 +298,7 @@ Začněme s ukázkami. Nové ukázkové složky s názvem `hello-world/` se vytv
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample webpage to demostrate Terratest.</p>
+    <p>This is a sample webpage to demonstrate Terratest.</p>
 </body>
 </html>
 ```
@@ -365,7 +365,7 @@ func TestIT_HelloWorldExample(t *testing.T) {
     http_helper.HttpGetWithCustomValidation(t, homepage, func(status int, content string) bool {
         return status == 200 &&
             strings.Contains(content, "Hi, Terraform Module") &&
-            strings.Contains(content, "This is a sample web page to demostrate Terratest.")
+            strings.Contains(content, "This is a sample web page to demonstrate Terratest.")
     })
 }
 ```
@@ -417,9 +417,9 @@ Jediné, co vyžaduje Ndex bitové kopie je `magefile.go` v kořenovém adresá�
 ```
 
 Tady je příklad `./magefile.go`. V tento skript sestavení, napsané v cestách můžeme implementovat pět kroků sestavení:
-- `Clean`: Krok odstraní všechny generované a dočasné soubory, které jsou generovány během provádění testů.
+- `Clean`: V kroku odebere všechny generované a dočasné soubory, které jsou generovány během provádění testů.
 - `Format`: Je krok spuštěn `terraform fmt` a `go fmt` k formátování vašeho základu kódu.
-- `Unit`: Krok spustí všechny testy jednotek (s použitím konvence název funkce `TestUT_*`) v části `./test/` složky.
+- `Unit`: V kroku spustí všechny testy jednotek (s použitím konvence název funkce `TestUT_*`) v části `./test/` složky.
 - `Integration`: Krok je podobný `Unit`, ale místo testování částí se provede integrační testy (`TestIT_*`).
 - `Full`: Je krok spuštěn `Clean`, `Format`, `Unit`, a `Integration` postupně.
 
@@ -504,7 +504,7 @@ Můžete použít následující příkazy k provedení úplné testovací sady.
 $ cd [Your GoPath]/src/staticwebpage
 GoPath/src/staticwebpage$ dep init    # Run only once for this folder
 GoPath/src/staticwebpage$ dep ensure  # Required to run if you imported new packages in magefile or test cases
-GoPath/src/staticwebpage$ go fmt      # Only requied when you change the magefile
+GoPath/src/staticwebpage$ go fmt      # Only required when you change the magefile
 GoPath/src/staticwebpage$ az login    # Required when no service principal environment variables are present
 GoPath/src/staticwebpage$ mage
 ```
@@ -513,7 +513,7 @@ Poslední příkazového řádku můžete nahradit mage další kroky. Napříkl
 
 S Ndex bitové kopie může také sdílet kroky pomocí systému balíček Go. V takovém případě můžete zjednodušit magefiles přes všechny moduly odkazující na běžnou implementaci a deklarační popisovač závislosti (`mg.Deps()`).
 
-**Volitelné: Nastavení služby proměnných instančního objektu prostředí pro spouštění testů přijetí**
+**Volitelné: Nastavení služby instančního objektu prostředí proměnných pro spouštění testů přijetí**
  
 Místo spouštění `az login` před testy, můžete dokončit ověřování Azure nastavením proměnné prostředí instančního objektu služby. Publikuje Terraform [seznam názvů proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/index.html#testing). (Povinné jsou pouze první čtyři z těchto proměnných prostředí.) Terraform, publikuje také podrobné pokyny, které vysvětlují, jak [získat hodnotu z těchto proměnných prostředí](https://www.terraform.io/docs/providers/azurerm/authenticating_via_service_principal.html).
 

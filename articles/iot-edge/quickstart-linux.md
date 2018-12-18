@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6757438512c03ad7b5a80c08babf5a37417dbe49
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 6479bfbb81468649108ed648035122e4623041e3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339497"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555502"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge k Linuxovému x64 zařízení
 
@@ -65,7 +65,7 @@ Zařízení IoT Edge:
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte centrum IoT.
+Spuštění tohoto rychlého startu tak, že vytvoříte službu IoT hub pomocí Azure CLI.
 
 ![Diagram – vytvoření centra IoT v cloudu](./media/quickstart-linux/create-iot-hub.png)
 
@@ -102,7 +102,9 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte připojovací řetězec a uložte si ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části. 
+3. Zkopírujte připojovací řetězec z výstupu JSON a uložte ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+
+   ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalace a spuštění modulu runtime IoT Edge
 
@@ -115,7 +117,7 @@ Během konfigurace modulu runtime zadáte připojovací řetězec zařízení. P
 
 ### <a name="connect-to-your-iot-edge-device"></a>Připojte se k zařízení IoT Edge
 
-Kroky v této části všechny proběhla na zařízení IoT Edge. Pokud používáte vlastní počítače jako zařízení IoT Edge, můžete tuto část přeskočit. Pokud používáte virtuální počítač nebo sekundární hardware, budete chtít připojit k tomuto počítači. 
+Kroky v této části všechny proběhla na zařízení IoT Edge. Pokud používáte vlastní počítače jako zařízení IoT Edge, můžete pokračovat k další části. Pokud používáte virtuální počítač nebo sekundární hardware, budete chtít připojit k tomuto počítači. 
 
 Pokud jste vytvořili virtuální počítač Azure pro tento rychlý start, získat veřejnou IP adresu, který byl výstupem příkazu pro vytvoření. Můžete také najít veřejnou IP adresu na stránce Přehled virtuálního počítače na webu Azure Portal. Použijte následující příkaz pro připojení k virtuálnímu počítači. Nahraďte **{publicIpAddress}** adresou vašeho počítače. 
 

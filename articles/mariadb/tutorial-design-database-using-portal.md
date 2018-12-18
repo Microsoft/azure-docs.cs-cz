@@ -1,22 +1,20 @@
 ---
-title: 'Kurz: Návrh služby Azure Database for MariaDB pomocí webu Azure Portal'
+title: 'Kurz: Návrh služby Azure Database pro MariaDB s využitím webu Azure portal'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MariaDB pomocí webu Azure Portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 20714bed5c36cd93d11cb4ade6640798775f5055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 23af00b8a8e061056e9b7ad8ea2c999414783ad6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322052"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538102"
 ---
-# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB pomocí webu Azure Portal
+# <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MariaDB s využitím webu Azure portal
 
 Azure Database for MariaDB je spravovaná služba, pomocí které můžete provozovat, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. Azure Portal umožňuje snadnou správu vašeho serveru a návrh databáze.
 
@@ -56,7 +54,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou [výpočetníc
     Skupina prostředků | **myresourcegroup** | Zadejte název nové skupiny prostředků nebo vyberte existující skupinu prostředků.
     Výběr zdroje | **Prázdné** | Vyberte **Prázdné** a vytvořte nový server. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MariaDB, vyberte **Záloha**.)
     Přihlašovací jméno správce serveru | **myadmin** | Přihlašovací účet, který budete používat pro připojení k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
+    Heslo | *Nějaké si zvolte* | Zadejte nové heslo pro účet správce serveru. Musí mít 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, číslice (0 – 9) a jiné než alfanumerické znaky (!, $, #, % a tak dále).
     Potvrzení hesla | *Nějaké si zvolte*| Potvrďte heslo účtu správce.
     Umístění | *Oblast nejbližší vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Verze | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující použití jiné verze).
@@ -171,14 +169,14 @@ Představte si, že jste omylem odstranili důležitou databázovou tabulku a ne
    
    ![Formulář Obnovit](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **Bod obnovení:** Vyberte v uvedeném časovém rozmezí bod v čase, ke kterému chcete provést obnovení. Nezapomeňte převést své místní časové pásmo na čas UTC.
-   - **Obnovit na nový server:** Zadejte název nového serveru, na který chcete provést obnovení.
-   - **Umístění:** Oblast se shoduje se zdrojovým serverem a nedá se změnit.
-   - **Cenová úroveň:** Cenová úroveň se shoduje se zdrojovým serverem a nedá se změnit.
+   - **Bod obnovení**: Vyberte bod v čase, který chcete provést obnovení, v rozmezí okamžik. Nezapomeňte převést své místní časové pásmo na čas UTC.
+   - **Obnovit na nový server**: Zadejte nový název serveru, chcete-li obnovit.
+   - **Umístění**: V oblasti je stejná jako u zdrojového serveru a nedá se změnit.
+   - **Cenová úroveň**: Cenová úroveň je stejný jako u zdrojového serveru a nedá se změnit.
    
 3. Výběrem **OK** provedete [obnovení serveru k určitému bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k vybranému bodu v čase. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili, jak na webu Azure Portal provádět následující kroky:
 
 > [!div class="checklist"]

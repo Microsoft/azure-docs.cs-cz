@@ -1,22 +1,19 @@
 ---
 title: 'Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI'
 description: Tento kurz vysvětluje, jak vytvořit a spravovat databázi a server Azure Database for MySQL pomocí Azure CLI z příkazového řádku.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 60cfb5e1c5fa44952ca6a5e6fc411f4a6ab0e8be
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966975"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545786"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí Azure CLI
 
@@ -175,19 +172,19 @@ Představte si, že jste tuto tabulku omylem odstranili. Z této situace se nejd
 
 K obnovení budete potřebovat následující informace:
 
-- Bod obnovení: Vyberte bod v čase, který nastal dřív, než došlo ke změně serveru. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
-- Cílový server: Zadejte nový název serveru, na který chcete provést obnovení.
-- Zdrojový server: Zadejte název serveru, ze kterého se má obnovení provést.
-- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru.
+- Bod obnovení: Vyberte v daném okamžiku, který nastal dřív, než se server změnil. Musí být větší nebo rovný hodnotě Nejstarší záloha zdrojové databáze.
+- Cílový server: Zadejte nový název serveru, kterou chcete obnovit
+- Zdrojový server: Zadejte název serveru, který chcete obnovit z
+- Umístění: Nejde vyberte oblast, ve výchozím nastavení je stejná jako u zdrojového serveru
 
 ```azurecli-interactive
 az mysql server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mydemoserver
 ```
 
 Příkaz `az mysql server restore` potřebuje následující parametry:
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
 | jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -196,7 +193,7 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for MySQL

@@ -1,24 +1,21 @@
 ---
 title: Připojení k Azure Database for MySQL pomocí Javy
 description: V tomto rychlém startu najdete vzorový kód Java, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
-services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 02/28/2018
-ms.openlocfilehash: 4532b920fe1d4b20eb34f09fac4cb3b30ad36e6a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: e660daa0a0676f7f4267be7e6852568d80791774
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985384"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539105"
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí Javy
+# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure Database for MySQL: Použití Javy k připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v Javě a ovladače JDBC [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Tento článek předpokládá, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for MySQL.
 
 Řadu dalších příkladů a vzorových kódů najdete na [stránce s příklady pro konektor MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html).
@@ -394,7 +391,7 @@ public class DeleteTable {
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Řadu dalších příkladů a vzorových kódů najdete na [stránce s příklady pro konektor MySQL Connector/J](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html).
 
 > [!div class="nextstepaction"]

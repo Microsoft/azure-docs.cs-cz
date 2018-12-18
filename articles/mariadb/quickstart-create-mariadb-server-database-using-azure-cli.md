@@ -1,21 +1,19 @@
 ---
-title: 'Rychlý start: Vytvoření serveru Azure Database for MariaDB – Azure CLI'
+title: 'Rychlý start: Vytvoření serveru Azure Database for MariaDB – rozhraní příkazového řádku Azure'
 description: Tento rychlý start popisuje, jak použít Azure CLI k vytvoření serveru Azure Database for MariaDB ve skupině prostředků Azure.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: bc32cde7e4b4cf68b12b100eb402237098459aae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 19c1952a25e6a6db9b81b74f79bdcd2970cb2c78
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566444"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538735"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Vytvoření serveru Azure Database for MariaDB pomocí Azure CLI
 
@@ -53,13 +51,13 @@ jméno | **mydemoserver** | Zadejte jedinečný název, který identifikuje vá�
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
 sku-name | **GP_Gen5_2** | Název skladové položky. Dodržuje konvenci *cenová úroveň*\_*výpočetní generace*\_*počet virtuálních jader* ve zkráceném zápisu. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
 backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
-geo-redundant-backup | **Disabled** (Zakázáno) | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
+geo-redundant-backup | **Disabled** (Zakázáno) | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Povolené**, **zakázané**.
 location | **westus** | Lokace Azure pro server.
-ssl-enforcement | **Enabled** (Povoleno) | Určuje, jestli pro tento server má být povolený protokol SSL. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
+ssl-enforcement | **Enabled** (Povoleno) | Určuje, jestli pro tento server má být povolený protokol SSL. Povolené hodnoty: **Povolené**, **zakázané**.
 velikost úložiště | **51200** | Kapacita úložiště serveru (jednotkou jsou megabajty). Platné velikosti úložiště jsou 5 120 MB (minimum) a vyšší s přírůstky po 1 024 MB. Další informace o omezeních velikosti úložiště najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md). 
 version | **10.2** | Hlavní verze modulu MariaDB
 admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Parametr **admin-user** nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
+admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z následujících kategorií: Velká písmena anglické abecedy, malá písmena, čísla a jiné než alfanumerické znaky.
 
 Hodnota parametru **sku-name** má formát *cenová úroveň*\_*výpočetní generace*\_*počet virtuálních jader*, jak je znázorněno v následujících příkladech:
 + `--sku-name B_Gen5_4` se mapuje na cenovou úroveň Basic, výpočetní generaci Gen 5 a 4 virtuální jádra.

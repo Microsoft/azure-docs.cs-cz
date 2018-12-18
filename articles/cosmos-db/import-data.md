@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 57c70716ac0e3156440d4a602704cb0ac2e30130
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fb412e32eee8cbc38f90e4325ab31a9926060beb
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091152"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537677"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrace dat do služby Azure Cosmos DB pomocí nástroje pro migraci dat
 
@@ -24,7 +24,7 @@ Jaké rozhraní API budete se službou Azure Cosmos DB používat?
 
 * **[SQL API](documentdb-introduction.md)** – Při importu dat můžete využít jakoukoli z možností zdroje, které nástroj pro migraci dat poskytuje.
 * **[Table API](table-introduction.md)** – K importu dat můžete využít nástroj pro migraci dat nebo AzCopy. Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
-* **[Rozhraní MongoDB API](mongodb-introduction.md)**  – nástroj migraci dat v současné době nepodporuje rozhraní MongoDB API služby Azure Cosmos DB jako zdroje nebo jako cíl. Pokud chcete migrovat data do nebo z kolekcí rozhraní MongoDB API ve službě Azure Cosmos DB, přečtěte si pokyny v tématu [Azure Cosmos DB: Migrace dat pro rozhraní MongoDB API](mongodb-migrate.md). Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
+* **[Azure Cosmos DB: API pro MongoDB](mongodb-introduction.md)**  – nástroj migraci dat nepodporuje aktuálně rozhraní API služby Azure Cosmos DB pro MongoDB jako zdroj nebo jako cíl. Pokud chcete migrovat data do nebo ze kolekcí ve službě Azure Cosmos DB, podívejte se na [postupu migrace dat pro Azure Cosmos DB API pro MongoDB](mongodb-migrate.md) pokyny. Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API.
 * **[Gremlin API](graph-introduction.md)**  – nástroj migraci dat není v tuto chvíli import podporovaný nástroj pro účty rozhraní Gremlin API.
 
 Tento kurz se zabývá následujícími úkony:
@@ -40,9 +40,9 @@ Než budete postupovat podle pokynů tohoto článku, ujistěte se, že provedet
 
 * **Nainstalujte** [rozhraní Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) nebo vyšší.
 
-* **Zvýšená propustnost:** Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu [úrovně výkonu](performance-levels.md) a [cenové úrovně](https://azure.microsoft.com/pricing/details/cosmos-db/) ve službě Azure Cosmos DB.
+* **Zvýšení propustnosti:** Doba trvání migrace dat závisí na množství propustnost, kterou můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu [úrovně výkonu](performance-levels.md) a [cenové úrovně](https://azure.microsoft.com/pricing/details/cosmos-db/) ve službě Azure Cosmos DB.
 
-* **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny kolekce na webu Azure Portal. Pokud chcete migrovat do účtu služby Azure Cosmos DB, který má databáze úroveň propustnosti, zadejte klíč oddílu při vytváření kolekce Azure Cosmos DB.
+* **Vytvořte prostředky služby Azure Cosmos DB:** Než začnete migraci dat, vytvoření vaší kolekce na webu Azure Portal. Pokud chcete migrovat do účtu služby Azure Cosmos DB, který má databáze úroveň propustnosti, zadejte klíč oddílu při vytváření kolekce Azure Cosmos DB.
 
 ## <a id="Overviewl"></a>Přehled
 
@@ -63,8 +63,8 @@ Přestože nástroj pro import obsahuje grafické uživatelské rozhraní (dtui.
 
 Zdrojový kód nástroje pro migraci je k dispozici na GitHubu v [tomto úložišti](https://github.com/azure/azure-documentdb-datamigrationtool). Řešení si můžete stáhnout a místně zkompilovat nebo si můžete [stáhnout předkompilovaný binární soubor](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip) a pak spustit:
 
-* **Dtui.exe:** Verze nástroje s grafickým rozhraním
-* **Dt.exe:** Verze nástroje pro příkazový řádek
+* **Dtui.exe**: Verze nástroje grafického rozhraní
+* **DT.exe**: Verze nástroje příkazového řádku
 
 ## <a name="select-data-source"></a>Výběr zdroje dat
 
@@ -174,7 +174,7 @@ Dotaz vrátí následující (částečné) výsledky:
 
 Všimněte si aliasů, jako jsou Address.AddressType a Address.Location.StateProvinceName. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty Address a Address.Location. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
+*{"id": "956", "Name": "Jemnější prodej a služby", "adresa": {"AddressType": "Hlavní kanceláře", "AddressLine1": "č. 500 – 75 O'Connor ulice", "Umístění": {"City": "Ottawa", "StateProvinceName": "Ontario"} "PostalCode": "K4B 1S2", "CountryRegionName": "Kanada"}}*
 
 Tady je několik ukázek příkazového řádku pro import z SQL Serveru:
 
@@ -198,7 +198,7 @@ Podobně jako u zdroje SQL můžete použít vlastnost oddělovače vnořování
 
 Všimněte si aliasů, jako jsou DomainInfo.Domain_Name a RedirectInfo.Redirecting. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty DomainInfo a RedirectInfo. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV" }, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{"DomainInfo": {"Název_domény": "ACUS.GOV", "Domain_Name_Address": "https://www.ACUS.GOV"}, "Federální agentura": "Pro správu konference USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 Nástroj pro import se pokusí odvodit informace o typu hodnoty bez uvozovek v souborech CSV (hodnoty v uvozovkách jsou vždy považovány za řetězce).  Typy se identifikují v následujícím pořadí: číslo, datetime, logická hodnota.  
 
@@ -302,10 +302,10 @@ Pokud chcete importovat z jedné kolekce Azure Cosmos DB, zadejte název kolekce
 
 Možnost importu ze zdroje Azure Cosmos DB nabízí následující pokročilé možnosti:
 
-1. Include Internal Fields (Zahrnout interní pole): Určuje, jestli se mají do exportu zahrnout systémové vlastnosti dokumentu Azure Cosmos DB (například _rid, _ts).
-2. Number of Retries on Failure (Počet opakování v případě selhání): Určuje, kolikrát se má opakovat pokus o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
-3. Retry Interval (Interval opakování): Určuje, jak dlouho se má počkat před zopakováním pokusu o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
-4. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
+1. Vnitřní pole patří: Určuje, jestli se mají zahrnout vlastnosti systému dokument Azure Cosmos DB v exportu (například _rid, _ts).
+2. Počet opakovaných pokusů při selhání: Určuje počet pokusů o zopakování připojení ke službě Azure Cosmos DB v případě přechodné selhání (například připojení k přerušení sítě).
+3. Interval opakování: Určuje, jak dlouho se má čekat mezi opakování pokusu o připojení ke službě Azure Cosmos DB v případě přechodné selhání (například připojení k přerušení sítě).
+4. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
 ![Snímek obrazovky s pokročilými možnostmi zdroje Azure Cosmos DB](./media/import-data/documentdbsourceoptions.png)
 
@@ -389,19 +389,19 @@ Kromě toho máte při importování datových typů (například z SQL Serveru 
 
  ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
-* String (Řetězec): Zachování jako hodnoty řetězce
-* Epoch (Epocha): Zachování jako hodnoty unixového času
-* Both (Obojí): Zachování hodnoty řetězce i hodnoty unixového času. Tato možnost vytvoří vnořený dokument, například: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Řetězec: Zachovat jako hodnotu řetězce
+* Unixový: Zachovat jako číselnou hodnotu epocha
+* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245}
 
 Nástroj pro hromadný import ze služby Azure Cosmos DB nabízí následující další pokročilé možnosti:
 
-1. Batch Size (Velikost dávky): Nástroj jako výchozí velikost dávky používá 50.  Pokud jsou dokumenty určené k importu velké, zvažte snížení velikosti dávky. Pokud jsou dokumenty určené k importu malé, zvažte naopak zvýšení velikosti dávky.
-2. Max Script Size (bytes) (Maximální velikost skriptu v bajtech): Nástroj jako maximální velikost skriptu používá 512 kB.
-3. Zakázat automatické generování Id: Pokud má každý dokument k importu pole ID, pak výběrem této možnosti může zvýšit výkon. Chybějící jedinečné ID pole dokumenty nebudou importovány.
-4. Aktualizace existující dokumenty: Nástroj výchozí hodnoty nelze nahradit stávající dokumenty s ID je v konfliktu. Tato volba umožňuje přepsání s odpovídajícím identifikátorem ID existující dokumenty. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
+1. Velikost dávky: Nástroj výchozí velikost dávky 50.  Pokud jsou dokumenty určené k importu velké, zvažte snížení velikosti dávky. Pokud jsou dokumenty určené k importu malé, zvažte naopak zvýšení velikosti dávky.
+2. Skript maximální velikost (bajty): Nástroj výchozí velikosti max. skriptu 512 kB.
+3. Zakážete automatické Id generování: Pokud má každý dokument k importu pole ID, pak výběrem této možnosti může zvýšit výkon. Chybějící jedinečné ID pole dokumenty nebudou importovány.
+4. Aktualizace stávajících dokumentů: Nástroj výchozí hodnota není nahrazení stávající dokumenty s ID je v konfliktu. Tato volba umožňuje přepsání s odpovídajícím identifikátorem ID existující dokumenty. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
 5. Počet opakovaných pokusů při selhání: Určuje, jak často se má pokus o připojení ke službě Azure Cosmos DB při přechodném selhání (například připojení k přerušení sítě).
-6. Retry Interval (Interval opakování): Určuje, jak dlouho se má počkat před zopakováním pokusu o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
-7. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
+6. Interval opakování: Určuje, jak dlouho se má čekat mezi opakování pokusu o připojení ke službě Azure Cosmos DB v případě přechodné selhání (například připojení k přerušení sítě).
+7. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
 ![Snímek obrazovky s pokročilými možnostmi hromadného importu do služby Azure Cosmos DB](./media/import-data/docdbbulkoptions.png)
 
@@ -444,18 +444,18 @@ Během importu je k dispozici několik pokročilých možností. Za prvé, při 
 
  ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
-* String (Řetězec): Zachování jako hodnoty řetězce
-* Epoch (Epocha): Zachování jako hodnoty unixového času
-* Both (Obojí): Zachování hodnoty řetězce i hodnoty unixového času. Tato možnost vytvoří vnořený dokument, například: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
+* Řetězec: Zachovat jako hodnotu řetězce
+* Unixový: Zachovat jako číselnou hodnotu epocha
+* Obojí: Zachování řetězce a epocha číselné hodnoty. Vytvoří se tato možnost vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epocha": 1382390245}
 
 Nástroj pro sekvenční import záznamů Azure Cosmos DB nabízí následující další pokročilé možnosti:
 
-1. Number of Parallel Requests (Počet paralelních požadavků): Nástroj ve výchozím nastavení využívá dva paralelní požadavky. Pokud jsou dokumenty určené k importu malé, zvažte zvýšení počtu paralelních požadavků. Pokud toto číslo zvýšíte příliš, může docházet k omezování rychlosti importu.
-2. Zakázat automatické generování Id: Pokud má každý dokument k importu pole ID, pak výběrem této možnosti může zvýšit výkon. Chybějící jedinečné ID pole dokumenty nebudou importovány.
-3. Aktualizace existující dokumenty: Nástroj výchozí hodnoty nelze nahradit stávající dokumenty s ID je v konfliktu. Tato volba umožňuje přepsání s odpovídajícím identifikátorem ID existující dokumenty. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
+1. Počet paralelních požadavků: Nástroj výchozí dva paralelní požadavky. Pokud jsou dokumenty určené k importu malé, zvažte zvýšení počtu paralelních požadavků. Pokud toto číslo zvýšíte příliš, může docházet k omezování rychlosti importu.
+2. Zakážete automatické Id generování: Pokud má každý dokument k importu pole ID, pak výběrem této možnosti může zvýšit výkon. Chybějící jedinečné ID pole dokumenty nebudou importovány.
+3. Aktualizace stávajících dokumentů: Nástroj výchozí hodnota není nahrazení stávající dokumenty s ID je v konfliktu. Tato volba umožňuje přepsání s odpovídajícím identifikátorem ID existující dokumenty. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
 4. Počet opakovaných pokusů při selhání: Určuje, jak často se má pokus o připojení ke službě Azure Cosmos DB při přechodném selhání (například připojení k přerušení sítě).
-5. Interval opakování: Určuje, jak dlouho chcete čekat mezi opakování pokusu o připojení ke službě Azure Cosmos DB při přechodném selhání (například připojení k přerušení sítě).
-6. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
+5. Interval opakování: Určuje, jak dlouho se má čekat mezi opakování pokusu o připojení ke službě Azure Cosmos DB při přechodném selhání (například připojení k přerušení sítě).
+6. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
 ![Snímek obrazovky s pokročilými možnostmi sekvenčního importu záznamů do služby Azure Cosmos DB](./media/import-data/documentdbsequentialoptions.png)
 

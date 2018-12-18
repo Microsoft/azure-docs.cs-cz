@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 814d558efee4a72a25d956828e0db237424cab24
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 12/17/2018
+ms.openlocfilehash: aea95c245b86905b7bef0a35ffaa6c5e00567111
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409764"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558630"
 ---
 # <a name="tutorial-secure-a-single-database-in-azure-sql-database"></a>Kurz: Zabezpečené izolované databáze ve službě Azure SQL Database
 
@@ -136,6 +136,9 @@ Zřízení správce Azure Active Directory pro server Azure SQL na webu Azure Po
     ![Zvolte ad](./media/sql-database-aad-authentication/8choose-ad.png)
 
 2. Na **systému SQL Server** stránce **správce Active Directory**a na **správce Active Directory** stránce **nastavit správce**.  ![vyberte služby active directory](./media/sql-database-aad-authentication/select-active-directory.png)  
+
+   > [!IMPORTANT]
+   > Musíte být správcem"společnost" nebo "Globální správce" k provedení této úlohy.
 
 3. V **přidat správce** stránce, vyhledat uživatele, vyberte uživatele nebo skupiny jako správce a vyberte **vyberte**. (Na stránce správy služby Active Directory zobrazí všichni členové a skupiny služby Active Directory. Uživatelé nebo skupiny, jež jsou zobrazena šedě nelze vybrat, protože nejsou podporovány jako správce Azure AD. (Viz seznam podporovaných správců v **funkce Azure AD a omezení** část [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication.md).) Řízení přístupu na základě role (RBAC) se vztahuje pouze na portálu a se nerozšíří do systému SQL Server.
     ![Vyberte správce](./media/sql-database-aad-authentication/select-admin.png)  

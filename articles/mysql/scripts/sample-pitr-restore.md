@@ -1,22 +1,19 @@
 ---
 title: Skript Azure CLI – Obnovení serveru Azure Database for MySQL k dřívějšímu bodu v čase
 description: Tento ukázkový skript rozhraní příkazového řádku obnoví server Azure Database for MySQL k dřívějšímu bodu v čase.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 5e59468897b04dd5f017480bcf7b5abc4656a5c2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8506e6eaac51730cb3d7a20f1d21f1c8bce03bee
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582163"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540023"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Obnovení serveru Azure Database for MySQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku obnoví jeden server Azure Database for MySQL k dřívějšímu bodu v čase.
@@ -44,5 +41,5 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group delete](/cli/azure/group#delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
+- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
 - Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for MySQL](../sample-scripts-azure-cli.md)

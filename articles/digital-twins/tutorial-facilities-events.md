@@ -1,18 +1,19 @@
 ---
-title: Zachycení událostí z prostorem digitální dvojče Azure | Dokumentace Microsoftu
+title: 'Kurz: Zachycení událostí z prostorem digitální dvojče Azure | Dokumentace Microsoftu'
 description: Zjistěte, jak pomocí kroků v tomto kurzu dostávat oznámení z prostorů díky integraci služby Azure Digital Twins s Logic Apps.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: bf41be4a3a4856302a054e5767b3d7b5ba423c60
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: a52a3be8c3023893569e95b566a18c032be26459
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583257"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556012"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: Dostávat oznámení od prostory vaší digitální dvojče Azure s využitím Logic Apps
 
@@ -174,7 +175,7 @@ Můžete použít [Azure Logic Apps](../logic-apps/logic-apps-overview.md) služ
 
    c. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V **subjektu**, zadejte text **digitální dvojče oznámení nízký air kvality v prostoru**. Potom vyberte **TopologyObjectId** z **dynamický obsah** seznamu pro **Parsovat JSON**.
 
-   d. V části **tělo** ve stejném okně zadejte text podobný tomuto: **air špatná kvalita zjistil v místnosti, a teploty se musí upravit**. Nebojte se pracovalo za použití prvků z **dynamický obsah** seznamu.
+   d. V části **tělo** ve stejném okně zadejte text, podobně jako tato: **Air špatná kvalita zjistil v místnosti, a teploty se musí upravit**. Nebojte se pracovalo za použití prvků z **dynamický obsah** seznamu.
 
    ![Výběr "Odeslat e-mail" aplikace logiky](./media/tutorial-facilities-events/logic-app-send-email.png)
 
@@ -205,7 +206,7 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 
 Informace o vizualizaci dat snímačů, analýze trendů a detekovat anomálie, přejděte k dalšímu kurzu: 
 > [!div class="nextstepaction"]
-> [Kurz: Vizualizace a analýza událostí z prostorů Azure Digital Twins s využitím služby Time Series Insights](tutorial-facilities-analyze.md)
+> [Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure pomocí služby Time Series Insights](tutorial-facilities-analyze.md)
 
 Můžete také další informace o Prostorové řady grafů a objektové modely v digitální dvojče Azure: 
 > [!div class="nextstepaction"]

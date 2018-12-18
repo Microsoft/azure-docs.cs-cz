@@ -1,22 +1,19 @@
 ---
 title: Skript Azure CLI – Změna konfigurace serveru
 description: Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné možnosti konfigurace serveru a aktualizuje hodnotu jedné z nich.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 1a2ce1b8f8bdd5c06a4bbd42568166bf0ac73a71
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: c570982fed746b01f5a8c15edb94bdeac679b248
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580401"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545601"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Výpis a aktualizace konfigurace serveru Azure Database for PostgreSQL pomocí Azure CLI
 Tento ukázkový skript rozhraní příkazového řádku vypíše všechny dostupné parametry konfigurace a jejich povolené hodnoty pro server Azure Database for PostgreSQL a nastaví parametr *log_retention_days* na jinou než výchozí hodnotu.
@@ -46,6 +43,6 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o Azure CLI najdete tady: [Dokumentace k Azure CLI](/cli/azure).
+- Přečtěte si další informace o Azure CLI: [Dokumentace k Azure CLI](/cli/azure).
 - Vyzkoušejte i další skripty: [Ukázky v Azure CLI pro službu Azure Database for PostgreSQL](../sample-scripts-azure-cli.md)
 - Další informace o parametrech serveru najdete v tématu [Konfigurace parametrů serveru na webu Azure Portal](../howto-configure-server-parameters-using-portal.md).

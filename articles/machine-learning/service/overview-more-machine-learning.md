@@ -1,5 +1,6 @@
 ---
-title: Porovnání strojového učení možnosti produktu v Microsoftu
+title: Porovnání strojového učení možnosti produktu
+titleSuffix: Microsoft
 description: Porovnejte produkty v široké nabídce Microsoftu pro sestavování, nasazování a správu modelů strojového učení. Rozhodněte, které produkty by byly vhodné pro vaše řešení.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: bae28fd24cfbbf9fe36a626af1f0ec9359c8cda0
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274105"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557882"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 
@@ -37,7 +38,7 @@ Microsoft nabízí širokou škálu produktů pro sestavování, nasazování a 
 
 ## <a name="azure-machine-learning-service"></a>Služba Azure Machine Learning
 
-[Služba Azure Machine Learning](overview-what-is-azure-ml.md) je plně spravovaná Cloudová služba použít k trénování, nasazovat a spravovat modely ML ve velkém měřítku. Plně podporuje open source technologie, takže můžete používat desítky tisíc volně dostupných balíčků Pythonu, například TensorFlow, PyTorch a scikit-learn. Bohaté nástroje jsou k dispozici, například také [poznámkových bloků Azure](https://notebooks.azure.com/), [poznámkové bloky Jupyter](http://jupyter.org), nebo [Azure Machine Learning pro Visual Studio Code](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) rozšíření umožňují snadno zkoumat a transformace dat a poté je trénovat a nasazovat modely. Azure Machine Learning obsahuje funkce, které automatizují generování a ladění modelů, a to snadno, efektivně a přesně.
+[Služba Azure Machine Learning](overview-what-is-azure-ml.md) je plně spravovaná Cloudová služba použít k trénování, nasazovat a spravovat modely ML ve velkém měřítku. Plně podporuje open source technologie, takže můžete používat desítky tisíc volně dostupných balíčků Pythonu, například TensorFlow, PyTorch a scikit-learn. Bohaté nástroje jsou k dispozici, například také [poznámkových bloků Azure](https://notebooks.azure.com/), [poznámkové bloky Jupyter](http://jupyter.org), nebo [Azure Machine Learning pro Visual Studio Code](https://aka.ms/vscodetoolsforai) rozšíření umožňují snadno zkoumat a transformace dat a poté je trénovat a nasazovat modely. Azure Machine Learning obsahuje funkce, které automatizují generování a ladění modelů, a to snadno, efektivně a přesně.
 
 Pomocí služby Azure Machine Learning můžete trénovat, nasazovat a spravovat modely strojového učení s použitím Pythonu a rozhraní CLI ve velkém měřítku.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: 2a38b117cde6d6b51b101f6b0ef0eb3a19b42ba3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3a668783e8257ef9074d12b30ff0afc3a40325f4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344223"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539717"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace v Azure platformě Java EE určený a Postgres
 
@@ -170,7 +170,7 @@ Důrazně doporučujeme čtení obsahu těchto souborů, zejména _jboss_cli_com
 
 ### <a name="ftp-the-configuration-files"></a>Konfigurační soubory protokolu FTP
 
-Budeme muset FTP obsah `wildfly_config/` naše instanci služby App Service. Chcete-li získat pověření serveru FTP, klikněte na tlačítko **získat profil publikování** tlačítka v okně App Service na webu Azure Portal. FTP uživatelské jméno a heslo bude v stažené dokumentu XML. Další informace o profilu publikování najdete v tématu [tento dokument](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+Budeme muset FTP obsah `wildfly_config/` naše instanci služby App Service. Chcete-li získat pověření serveru FTP, klikněte na tlačítko **získat profil publikování** tlačítka v okně App Service na webu Azure Portal. FTP uživatelské jméno a heslo bude v stažené dokumentu XML. Další informace o profilu publikování najdete v tématu [tento dokument](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 Pomocí FTP nástroje podle vašeho výběru, přenášet čtyři soubory v `wildfly_config/` k `/home/site/deployments/tools/`. (Všimněte si, že by neměla přenos adresář pouze soubory sami.)
 

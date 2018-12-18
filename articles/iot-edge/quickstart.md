@@ -4,17 +4,17 @@ description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Ed
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/02/2018
+ms.date: 12/17/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 941d5d8f356fbd1477b4559f1475511165c01341
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 96c261619a0e6930ea299b5e2a50050dca5471f8
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340092"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554771"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
 
@@ -59,18 +59,15 @@ Cloudové prostředky:
 Zařízení IoT Edge:
 
 * Počítač nebo virtuální počítač s Windows, který bude fungovat jako zařízení IoT Edge. Použití podporované verze Windows:
-  * Windows 10 nebo novější
-  * Windows Server 2016 nebo novější
-* Pokud je počítač Windows, zkontrolujte, zda splňuje [požadavky na systém](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) pro Hyper-V.
-* Pokud je virtuální počítač, povolte [vnořená virtualizace](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) a přidělit nejméně 2 GB paměti.
-* Nainstalujte [Docker for Windows](https://docs.docker.com/docker-for-windows/install/) a zkontrolujte, že běží.
-
-> [!TIP]
-> Během instalace Dockeru máte možnost zvolit použití kontejnerů Windows nebo kontejnerů Linuxu. Tento rychlý start popisuje, jak nakonfigurovat modul runtime IoT Edge pro použití s kontejnery Linuxu.
+  * Windows 10 nebo IoT Core s října 2018 update (build 17763)
+  * Windows Server 2019
+* Povolit virtualizaci tak, aby vaše zařízení může hostovat kontejnery
+   * Pokud je počítač Windows, povolte funkci containers. Na úvodní panel, přejděte na **Windows zapnout nebo vypnout funkce** a zaškrtněte políčko vedle položky **kontejnery**.
+   * Pokud je virtuální počítač, povolte [vnořená virtualizace](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) a přidělit nejméně 2 GB paměti.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte centrum IoT.
+Spuštění tohoto rychlého startu tak, že vytvoříte službu IoT hub pomocí Azure CLI.
 
 ![Diagram – vytvoření centra IoT v cloudu](./media/quickstart/create-iot-hub.png)
 
@@ -107,7 +104,9 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. Zkopírujte připojovací řetězec a uložte si ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+3. Zkopírujte připojovací řetězec z výstupu JSON a uložte ho. Tuto hodnotu použijete ke konfiguraci modulu runtime IoT Edge v další části.
+
+   ![Načtení připojovacího řetězce z výstupu rozhraní příkazového řádku](./media/quickstart/retrieve-connection-string.png)
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalace a spuštění modulu runtime IoT Edge
 
@@ -116,13 +115,15 @@ Nainstalujte na své zařízení IoT Edge modul runtime Azure IoT Edge a nakonfi
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **Proces démon zabezpečení IoT Edge**, který se spustí při každém restartování a spuštění zařízení Edge tím, že se spustí agent IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
 
+Instalační skript také zahrnuje modul kontejner volá Moby, který spravuje imagí kontejneru na vašem zařízení IoT Edge. 
+
 Během instalace modulu runtime se zobrazí výzva k zadání připojovacího řetězce zařízení. Použijte řetězec, který jste získali z Azure CLI. Tento řetězec přidruží vaše fyzické zařízení k identitě zařízení IoT Edge v Azure.
 
-Podle pokynů v této části se nakonfiguruje modul runtime IoT Edge s kontejnery Linuxu. Pokud chcete použít kontejnery Windows, přečtěte si téma [Instalace modulu runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows](how-to-install-iot-edge-windows-with-windows.md).
+Pokyny v této části Konfigurace modulu runtime IoT Edge s kontejnery Windows. Pokud chcete používat kontejnery Linuxu, přečtěte si téma [modul runtime nainstalovat Azure IoT Edge ve Windows](how-to-install-iot-edge-windows-with-linux.md) pro tyto požadavky a kroky instalace.
 
 ### <a name="connect-to-your-iot-edge-device"></a>Připojte se k zařízení IoT Edge
 
-Kroky v této části všechny proběhla na zařízení IoT Edge. Pokud používáte vlastní počítače jako zařízení IoT Edge, můžete tuto část přeskočit. Pokud používáte virtuální počítač nebo sekundární hardware, budete chtít připojit k tomuto počítači. 
+Kroky v této části všechny proběhla na zařízení IoT Edge. Pokud používáte virtuální počítač nebo sekundární hardware, budete chtít připojit k tomuto počítači teď přes SSH nebo Vzdálená plocha. Pokud používáte vlastní počítače jako zařízení IoT Edge, můžete pokračovat k další části. 
 
 ### <a name="download-and-install-the-iot-edge-service"></a>Stažení a instalace služby IoT Edge
 
@@ -134,7 +135,7 @@ Pomocí PowerShellu stáhněte a nainstalujte modul runtime IoT Edge. Ke konfigu
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Install-SecurityDaemon -Manual -ContainerOs Linux
+   Install-SecurityDaemon -Manual -ContainerOs Windows
    ```
 
 3. Po zobrazení výzvy k zadání **připojovacího řetězce** zadejte řetězec, který jste si zkopírovali v předchozí části. Připojovací řetězec zadejte bez uvozovek.
@@ -217,25 +218,13 @@ Odeberte skupinu **IoTEdgeResources**.
 
 ### <a name="remove-the-iot-edge-runtime"></a>Odebrání modulu runtime IoT Edge
 
-Pokud máte v úmyslu používat zařízení IoT Edge pro testování v budoucnu, ale v době, kdy se nepoužívá, chcete zastavit odesílání dat z modulu tempSensor do vašeho IoT Hubu, zastavte službu IoT Edge pomocí následujícího příkazu.
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   ```
-
-Až budete připravení k opětovnému zahájení testování, můžete tuto službu znovu spustit.
-
-   ```powershell
-   Start-Service iotedge
-   ```
-
 Pokud chcete instalace ze zařízení odebrat, použijte následující příkazy.  
 
-Odeberte modul runtime IoT Edge.
+Odeberte modul runtime IoT Edge. Pokud plánujete přeinstalaci IoT Edge, vynechte `-DeleteConfig` a `-DeleteMobyDataRoot` parametry tak, aby se stejnou konfigurací, které jste právě nastavili můžete znovu nainstalovat.
 
    ```powershell
    . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
-   Uninstall-SecurityDaemon
+   Uninstall-SecurityDaemon -DeleteConfig -DeleteMobyDataRoot
    ```
 
 Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.

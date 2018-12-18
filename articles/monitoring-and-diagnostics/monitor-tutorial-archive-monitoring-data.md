@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: 512f9346654c68e568f5ba60b9491df8dffe1ad2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 5723193c0c8232f660a28d53f219a61fdf9e832b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434593"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547299"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -46,7 +46,7 @@ Nejprve je potřeba nastavit účet úložiště, do kterého se data monitorov�
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Směrování protokolů předplatného do účtu úložiště
 
-Teď jste připraveni začít nastavovat své prostředí Azure pro směrování dat monitorování do účtu úložiště. Nejprve nakonfigurujeme směrování dat na úrovni předplatného (obsažená v protokolu aktivit Azure) do účtu úložiště. [**Protokol aktivit Azure**](monitoring-overview-activity-logs.md) poskytuje historii událostí na úrovni předplatného v Azure. Najdete ho na webu Azure Portal a jeho procházením můžete určit, *kdo* vytvořil, aktualizoval nebo odstranil *jaké* prostředky a *kdy* k tomu došlo.
+Teď jste připraveni začít nastavovat své prostředí Azure pro směrování dat monitorování do účtu úložiště. Nejprve nakonfigurujeme směrování dat na úrovni předplatného (obsažená v protokolu aktivit Azure) do účtu úložiště. [**Protokol aktivit Azure**](../azure-monitor/platform/activity-logs-overview.md) poskytuje historii událostí na úrovni předplatného v Azure. Najdete ho na webu Azure Portal a jeho procházením můžete určit, *kdo* vytvořil, aktualizoval nebo odstranil *jaké* prostředky a *kdy* k tomu došlo.
 
 1. V levém navigačním seznamu klikněte na tlačítko **Monitorování** a pak na **Protokol aktivit**.
 

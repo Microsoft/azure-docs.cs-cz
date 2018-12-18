@@ -1,20 +1,21 @@
 ---
-title: Monitorování prostoru pomocí služby Azure Digital Twins | Microsoft Docs
+title: 'Kurz: Monitorování prostoru pomocí služby Azure Digital Twins | Microsoft Docs'
 description: Zjistěte, jak zřizovat prostředky prostorových a sledování pracovních podmínek s Dvojčaty digitální Azure pomocí kroků v tomto kurzu.
 services: digital-twins
 author: dsk-2015
+ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: a9784860cbc0b6d58f63fb22b7ad676048c8aee6
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584192"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556097"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Kurz: Zřízení budovy a monitorování pracovních podmínek pomocí služby Azure Digital Twins
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Kurz: Zřízení sestavení a sledování práce pomocí digitální dvojče Azure
 
 Tento kurz ukazuje, jak pomocí služby Azure Digital Twins monitorovat požadované teplotní podmínky a úroveň komfortu v prostorech. Poté co [konfigurace budovy ukázka](tutorial-facilities-setup.md), můžete zajistit vaše sestavení a spuštění vlastní funkce pro vaše data ze senzorů pomocí kroků v tomto kurzu.
 
@@ -203,9 +204,9 @@ V této části použijete projektu s názvem *připojení zařízení* ve vzork
 
 1. Otevřít **appSettings.json** souboru ve svém editoru a upravte následující hodnoty:
 
-   a. **DeviceConnectionString:** Přiřaďte hodnotu `ConnectionString` z okna výstupu z předchozí části. Zkopírujte tento řetězec kompletně v uvozovkách, tak simulátor můžete připojit správně prostřednictvím služby IoT hub.
+   a. **DeviceConnectionString**: Přiřaďte hodnotu `ConnectionString` v okně výstup z předchozí části. Zkopírujte tento řetězec kompletně v uvozovkách, tak simulátor můžete připojit správně prostřednictvím služby IoT hub.
 
-   b. **HardwareId** v rámci **senzorů** pole: vzhledem k tomu, že jste simulace událostí ze senzorů zřízené k vaší instanci Azure digitální dvojče, ID hardwaru a názvy snímačů v tomto souboru by měla odpovídat `sensors` uzel provisionSample.yaml souboru.
+   b. **HardwareId** v rámci **senzorů** pole: Protože jste simulace událostí ze senzorů zřízené k vaší instanci Azure digitální dvojče, by měl odpovídat ID hardwaru a názvy snímačů v tomto souboru `sensors` uzel provisionSample.yaml souboru.
 
       Přidáte novou položku senzoru teploty. **Senzorů** uzlu v souboru appSettings.json by měl vypadat nějak takto:
 
@@ -264,7 +265,7 @@ Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez 
 Teď, když máte zřízenou prostory vaší a vytvoření rozhraní pro aktivaci vlastní oznámení můžete přejít na jednu z následujících kurzů:
 
 > [!div class="nextstepaction"]
-> [Kurz: Příjem oznámení z prostorů Azure Digital Twins pomocí Logic Apps](tutorial-facilities-events.md)
+> [Kurz: Dostávat oznámení od prostory vaší digitální dvojče Azure pomocí Logic Apps](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
-> [Kurz: Vizualizace a analýza událostí z prostorů Azure Digital Twins s využitím služby Time Series Insights](tutorial-facilities-analyze.md)
+> [Kurz: Vizualizujte a analyzujte události z prostory vaší digitální dvojče Azure pomocí služby Time Series Insights](tutorial-facilities-analyze.md)

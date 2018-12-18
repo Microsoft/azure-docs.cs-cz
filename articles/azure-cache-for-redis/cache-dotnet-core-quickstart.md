@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f2d55155a6df496eec4a92aca5b3b932e03c181
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019152"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554839"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý start: Použití mezipaměti Azure pro Redis s .NET Core aplikace
 
@@ -195,7 +195,7 @@ V souboru *Program.cs* přidejte pro proceduru `Program` třídy konzolové apli
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
             Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET Core console app!").ToString());
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             cacheCommand = "GET Message";
             Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
             Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
@@ -211,7 +211,7 @@ V souboru *Program.cs* přidejte pro proceduru `Program` třídy konzolové apli
 
 Soubor *Program.cs* uložte.
 
-Mezipaměť Azure pro Rediss mají Konfigurovatelný počet databází (výchozí je 16), které slouží k logickému oddělení dat v rámci mezipaměti Azure redis Cache. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
+Azure mezipaměť Redis má Konfigurovatelný počet databází (výchozí je 16), které slouží k logickému oddělení dat v rámci Azure Cache pro Redis. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
 
 Položky v mezipaměti lze ukládat a načítat pomocí metod `StringSet` a `StringGet`.
 
@@ -248,7 +248,7 @@ dotnet add package Newtonsoft.json
 
 Na začátek souboru *Program.cs* přidejte následující příkaz `using`:
 
-```charp
+```csharp
 using Newtonsoft.Json;
 ```
 

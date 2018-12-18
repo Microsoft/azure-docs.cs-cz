@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: ea69e4c8ba74dc685dd0b0fb7ac61cc6d061a26f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 88e26e6f69fa5d283695fc4c3b1d2fda9d6b7fad
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137646"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545973"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB 
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci [MongoDB API](mongodb-introduction.md) s Express, Angular a Node.js (balík MEAN) a jak ji připojit k databázi Azure Cosmos DB. Azure Cosmos DB podporuje klientská připojení MongoDB, takže můžete místo MongoDB používat službu Azure Cosmos DB a přitom dál používat stejný kód jako pro aplikace MongoDB, ale s dalšími výhodami. Tyto výhody, které přináší služba Azure Cosmos DB, jsou snadné nasazení v cloudu, škálování, zabezpečení, globálně replikovaná data, podpora více modelů a mimořádná rychlost čtení a zápisu. 
+Tento vícedílný kurz ukazuje, jak vytvořit novou [účet rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) aplikace s Express, Angular a Node.js (balík MEAN) a jejím připojení k databázi Azure Cosmos DB. Azure Cosmos DB podporuje klientská připojení MongoDB, takže můžete místo MongoDB používat službu Azure Cosmos DB a přitom dál používat stejný kód jako pro aplikace MongoDB, ale s dalšími výhodami. Tyto výhody, které přináší služba Azure Cosmos DB, jsou snadné nasazení v cloudu, škálování, zabezpečení, globálně replikovaná data, podpora více modelů a mimořádná rychlost čtení a zápisu. 
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, kterým přináší výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
 

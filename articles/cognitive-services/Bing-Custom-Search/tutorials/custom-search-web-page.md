@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření webové stránky pro vlastní vyhledávání – Vlastní vyhledávání Bingu'
+title: 'Kurz: Vytvoření vlastního vyhledávání webové stránky – vlastní vyhledávání Bingu'
 titlesuffix: Azure Cognitive Services
 description: Tento kurz popisuje postup konfigurace instance vlastního vyhledávání a její integrace do webové stránky.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: aahi
-ms.openlocfilehash: d39ec856d628a8a607c6a8ea214f5dd9fbd63a9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0c98f75417bbcba13e179502eb1c8b4488b17d78
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427341"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558018"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -79,7 +79,7 @@ Pokud chcete vyloučit výsledky z konkrétních webů nebo adres URL, přidejte
 
 ## <a name="add-pinned-entries"></a>Přidání připnutých položek
 
-Pokud chcete určitou webovou stránku připnout na začátek výsledků hledání, přidejte danou webovou stránku a termín dotazu na kartě **Připnuté**. Karta **Připnuté** obsahuje seznam párů webových stránek a termínů dotazu určujících webové stránky, které se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-to-top).
+Pokud chcete určitou webovou stránku připnout na začátek výsledků hledání, přidejte danou webovou stránku a termín dotazu na kartě **Připnuté**. Karta **Připnuté** obsahuje seznam párů webových stránek a termínů dotazu určujících webové stránky, které se zobrazí jako nejlepší výsledek pro konkrétní dotaz. Webová stránka se připne pouze v případě, že řetězec dotazu uživatele odpovídá řetězci dotazu připnuté webové stránky na základě podmínky shody připnuté webové stránky. Ve vyhledávání se zobrazí pouze indexované webové stránky. Další informace najdete v tématu [Definování vlastního zobrazení](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
 1. Na stránce **Konfigurace** klikněte na kartu **Připnuté** a zadejte webovou stránku, kterou chcete vrátit jako nejlepší výsledek, a její termín dotazu.  
   
@@ -127,10 +127,10 @@ Vlastní vyhledávání poskytuje hostované uživatelské rozhraní pro vykresl
 
 Hostované uživatelské rozhraní můžete používat dvěma způsoby.  
 
-- Možnost 1: Integrace poskytnutého fragmentu kódu JavaScriptu do aplikace
-- Možnost 2: Použití poskytnutého koncového bodu HTML
+- Možnost 1: Integrace zadaný fragment kódu jazyka JavaScript do vaší aplikace.
+- Možnost 2: Použití koncového bodu ve formátu HTML za předpokladu.
 
-Zbývající část tohoto kurzu ilustruje **Možnost 1: Fragment kódu JavaScriptu**.  
+Zbývající část tohoto kurzu ukazuje **možnost 1: Fragment kódu jazyka JavaScript**.  
 
 ## <a name="set-up-your-visual-studio-solution"></a>Nastavení řešení v sadě Visual Studio
 

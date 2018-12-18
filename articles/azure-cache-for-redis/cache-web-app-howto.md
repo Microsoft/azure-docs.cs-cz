@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 11e674771e9f4a8afbe820aa91dfee1c8b8ab6db
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019148"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556183"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Rychlý start: Vytvoření webové aplikace ASP.NET 
 
@@ -118,7 +118,7 @@ Protože soubor *CacheSecrets.config* není nasazený v Azure společně s aplik
 * Před: `<appSettings>`
 * Po: ` <appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu `<appSettings>`. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje. Vaše tajné kódy (připojovací řetězce k mezipaměti) nejsou součástí zdrojového kódu aplikace. Při nasazování webové aplikace do Azure se soubor *CacheSecrests.config* nenasadí.
+Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu `<appSettings>`. Pokud zadaný soubor nelze nalézt, modul runtime atribut souboru ignoruje. Vaše tajné kódy (připojovací řetězce k mezipaměti) nejsou součástí zdrojového kódu aplikace. Při nasazení vaší webové aplikace do Azure, *CacheSecrets.config* soubor není nasazen.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Konfigurace aplikace pro používání StackExchange.Redis
 
@@ -173,7 +173,7 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
             ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
             ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
 
-            // Demostrate "SET Message" executed as expected...
+            // Demonstrate "SET Message" executed as expected...
             ViewBag.command4 = "GET Message";
             ViewBag.command4Result = cache.StringGet("Message").ToString();
 
@@ -266,7 +266,7 @@ Jakmile aplikaci úspěšně místně otestujete, můžete ji nasadit do Azure a
 
 1. V sadě Visual Studio klikněte pravým tlačítkem na uzel projektu v Průzkumníku řešení. Potom vyberte **Publikovat**.
 
-    ![Publikovat](./media/cache-web-app-howto/cache-publish-app.png)
+    ![Publikování](./media/cache-web-app-howto/cache-publish-app.png)
 
 2. Vyberte **Microsoft Azure App Service**, dále **Vytvořit nový** a nakonec **Publikovat**.
 
@@ -301,7 +301,7 @@ Po publikování nové aplikace přidejte nové nastavení aplikace. Toto nastav
 
 2. Přidejte nové nastavení aplikace s názvem **PřipojeníKMezipaměti**, které aplikace použije pro připojení k mezipaměti. Použijte stejnou hodnotu, jakou jste pro `CacheConnection` nakonfigurovali v souboru *TajnéKódyMezipaměti.config*. Tato hodnota obsahuje název hostitele mezipaměti a přístupový klíč.
 
-    ![Přidat nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
+    ![Přidání nastavení aplikace](./media/cache-web-app-howto/cache-add-app-setting.png)
 
 ### <a name="run-the-app-in-azure"></a>Spuštění aplikace v Azure
 
@@ -326,7 +326,7 @@ V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém s
 
 2. Do pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. U skupiny prostředků ve výsledcích hledání vyberte **...** a pak vyberte **Odstranit skupinu prostředků**.
 
-    ![Odstranit](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![Odstranění](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**.
 

@@ -55,7 +55,7 @@
 ### [Aplikace bez serveru](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [Cluster mikroslužeb](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## Nasazení
-### [Webové a mobilní aplikace ze správy zdrojového kódu](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
+### [Webové a mobilní aplikace ze správy zdrojového kódu](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)
 ### [Mikroslužby lokálně](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)

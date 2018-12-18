@@ -133,7 +133,7 @@ Vždy se pokusí resetovat heslo pomocí [webu Azure portal nebo Azure Powershel
      ![Zkopírujte disk identifikátoru URI](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. Vytvoření virtuálního počítače z disku s operačním systémem zdrojového Virtuálního počítače:
    
-   * Použití [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) vytvoření virtuálního počítače ze specializovaného VHD. Klikněte na tlačítko `Deploy to Azure` tlačítko Otevřít na webu Azure portal s podrobnostmi bez vizuálního vzhledu za vás.
+   Použití [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet) vytvoření virtuálního počítače ze specializovaného VHD. Klikněte na tlačítko `Deploy to Azure` tlačítko Otevřít na webu Azure portal s podrobnostmi bez vizuálního vzhledu za vás.
    * Pokud chcete zachovat všechny předchozí nastavení pro virtuální počítač, vyberte *úpravy šablony* poskytovat existující virtuální síť, podsíť, síťový adaptér nebo veřejnou IP adresu.
    * V `OSDISKVHDURI` parametr textového pole, vložit získat identifikátor URI zdroje virtuální pevný disk v předchozím kroku:
      

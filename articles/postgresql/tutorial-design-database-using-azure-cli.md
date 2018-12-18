@@ -1,22 +1,19 @@
 ---
 title: 'Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI'
 description: Tento kurz ukazuje, jak vytvořit, nakonfigurovat a dotazovat první server Azure Database for PostgreSQL pomocí Azure CLI.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
-ms.devlang: azure-cli
+ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
-ms.openlocfilehash: c04eede63df50359af55f3956041df10fa2d075e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 03c9d647c98122b63b81baa453e0cccdf951901a
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982337"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547316"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-azure-cli"></a>Kurz: Návrh databáze Azure Database for PostgreSQL pomocí Azure CLI 
 V tomto kurzu použijete Azure CLI (rozhraní příkazového řádku) a další nástroje k získání informací o těchto tématech:
@@ -195,9 +192,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 Příkaz `az postgres server restore` potřebuje následující parametry:
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které se nachází zdrojový server.  |
 | jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Vyberte bod v čase, ke kterému se má provést obnovení. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete použít například své místní časové pásmo, třeba `2017-04-13T05:59:00-08:00`, nebo formát UTC Zulu `2017-04-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -207,7 +204,7 @@ Obnovení serveru k bodu v čase vytvoří nový server jako kopii původního s
 Příkaz je synchronní a vrátí se po obnovení serveru. Po dokončení obnovení vyhledejte nově vytvořený server. Ověřte, že se data obnovila podle očekávání.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak pomocí Azure CLI (rozhraní příkazového řádku) a dalších nástrojů provést následující:
 > [!div class="checklist"]
 > * Vytvoření serveru Azure Database for PostgreSQL
@@ -218,4 +215,4 @@ V tomto kurzu jste zjistili, jak pomocí Azure CLI (rozhraní příkazového ř�
 > * Aktualizace dat
 > * Obnovení dat
 
-Pokud teď chcete zjistit, jak podobné úlohy provést pomocí webu Azure Portal, přečtěte si tento kurz: [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure Portal](tutorial-design-database-using-azure-portal.md).
+V dalším kroku zjistěte, jak podobné úlohy provést, přečtěte si tento kurz pomocí webu Azure portal: [Návrh první databáze Azure Database for PostgreSQL pomocí webu Azure portal](tutorial-design-database-using-azure-portal.md)

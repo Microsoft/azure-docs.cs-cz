@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 59173550c0cdff44931e0b686308b39e985dddcf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 23a737c97cad0ce8c525d52db97bfb32ef4eb300
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254951"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537178"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Node.js využívající databázi MongoDB ve službě Azure App Service v Linuxu
 
@@ -28,14 +28,14 @@ ms.locfileid: "53254951"
 > Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service ve _Windows_ je popsané v tématu [Vytvoření webové aplikace Node.js využívající databázi MongoDB v Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. V tomto kurzu se dozvíte, jak vytvořit webovou aplikaci Node.js, místně ji připojit k databázi MongoDB a pak ji nasadit do Azure s připojením k databázi Cosmos DB pomocí rozhraní MongoDB API. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková aplikace [webovou architekturu MEAN.js](https://meanjs.org/).
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento kurz ukazuje, jak vytvořit webovou aplikaci Node.js, místně ji připojit k databázi MongoDB a potom nasadí do rozhraní API služby Azure Cosmos DB pro MongoDB. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková aplikace [webovou architekturu MEAN.js](https://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 Naučíte se:
 
 > [!div class="checklist"]
-> * Vytvořit v Azure databázi Cosmos DB pomocí rozhraní MongoDB API
+> * Vytvoření databáze v rozhraní API služby Azure Cosmos DB pro MongoDB
 > * Připojit aplikaci Node.js k MongoDB
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
@@ -319,7 +319,7 @@ http://<app_name>.azurewebsites.net
 
 V horní nabídce klikněte na **Zaregistrovat se** a vytvořte fiktivního uživatele.
 
-Pokud budete úspěšní a aplikace se automaticky přihlásí k vytvořenému uživateli, znamená to, že se vaše aplikace MEAN.js v Azure může připojit k rozhraní MongoDB API databáze Cosmos DB.
+Pokud budete úspěšní a aplikace se automaticky přihlásí k vytvořenému uživateli, vaše aplikace MEAN.js v Azure může připojit k rozhraní API Azure Cosmos DB pro MongoDB.
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -474,7 +474,7 @@ Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tat
 Naučili jste se:
 
 > [!div class="checklist"]
-> * Vytvořit v Azure databázi Cosmos DB pomocí rozhraní MongoDB API
+> * Vytvoření databáze v rozhraní API služby Azure Cosmos DB pro MongoDB
 > * Připojit aplikaci Node.js k MongoDB
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
