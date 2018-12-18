@@ -215,7 +215,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure globální služby * | 12076:5050 |
 | Jiné online služby Office 365 | 12076:5100 |
 
-***Globální služby Azure zahrnuje Azure DevOps**
+***Globální služby Azure zahrnuje Azure DevOps**\**
 
 
 > [!NOTE]

@@ -170,7 +170,7 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. 
 
 ![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
 
- **Nastavení úložiště** otevře se podokno konfigurace:
+Nastavení  **úložiště** otevře se podokno konfigurace:
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image2.png)
 
@@ -202,7 +202,7 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. 
 
 ![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
 
- **Nastavení úložiště** otevře se podokno konfigurace:
+Nastavení  **úložiště** otevře se podokno konfigurace:
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image3.png)
 
