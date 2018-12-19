@@ -233,7 +233,7 @@ Pokud chcete zkontrolovat připojení k síti VPN, vytvořte dva virtuální po�
 6. Zadejte **předplatné**, **skupiny prostředků**, a **umístění**a pak vyberte **OK**.
 7. Na **velikost** části této instance, vyberte velikost virtuálního počítače a pak vyberte **vyberte**.
 8. Na **nastavení** části, přijměte výchozí hodnoty. Ujistěte se, že **Azs-VNet** je vybraná virtuální síť. Ověřte, že podsíť je nastavená na **10.1.0.0/24**. Pak vyberte **OK**.
-9. Na **Souhrn** části, zkontrolujte nastavení a pak vyberte * OK **.
+9. Na **Souhrn** části, zkontrolujte nastavení a pak vyberte *OK*\*.
 
 ## <a name="test-the-connection"></a>Otestování připojení
 

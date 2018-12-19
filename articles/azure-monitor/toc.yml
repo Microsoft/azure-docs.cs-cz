@@ -39,11 +39,11 @@ items:
   - name: Vizualizace dat v Log Analytics
     href: learn/tutorial-logs-dashboards.md
   - name: Archivace metrik platformy a dat protokolů
-    href: ../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-archive-data.md
   - name: Upozornění na data protokolů
     href: learn/tutorial-response.md
   - name: Automatické škálování podle výkonu a plánu
-    href: ../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md?toc=/azure/azure-monitor/toc.json
+    href: learn/tutorial-autoscale-performance-schedule.md
   - name: Vyhledání běhových výjimek aplikací
     href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
   - name: Vyhledání potíží s výkonem aplikací
@@ -367,8 +367,6 @@ items:
           href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
         - name: Dynamics CRM
           href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
-        - name: Další platformy
-          href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
       - name: Inteligentní zjišťování
         href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
         items:
@@ -426,10 +424,8 @@ items:
         href: platform/data-collector-api.md
       - name: Příklad kanálu rozhraní API kolekce dat služby Log Analytics
         href: platform/create-pipeline-datacollector-api.md
-      - name: Data aplikací
-        href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
       - name: Rozhraní REST API úložiště metrik
-        href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
+        href: platform/metrics-store-custom-rest-api.md
       - name: Hostovaný operační systém do linuxového virtuálního počítače úložiště metrik (Telegraf)
         href: platform/collect-custom-metrics-linux-telegraf.md
     - name: System Center
@@ -447,9 +443,9 @@ items:
       - name: Ukládání diagnostických protokolů
         href: platform/diagnostic-logs-stream-log-store.md
       - name: Streamování protokolu aktivit do služby Event Hubs
-        href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/activity-logs-stream-event-hubs.md
       - name: Protokoly a metriky do služby centra událostí
-        href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Diagnostické protokoly do centra událostí
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Data aplikací do služby Log Analytics
@@ -538,7 +534,7 @@ items:
       - name: Monitorování aplikací Dockeru
         href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
     - name: Monitorování skupin prostředků
-      href: ../monitoring-and-diagnostics/resource-group-insights.md?toc=/azure/azure-monitor/toc.json
+      href: insights/resource-group-insights.md
     - name: Monitorování databází
       items:
       - name: Azure SQL
@@ -659,7 +655,7 @@ items:
     - name: Zobrazení událostí v protokolu aktivit
       href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
     - name: Zobrazení oznámení služby
-      href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+      href: platform/service-notifications.md
     - name: Dotazy na data protokolů
       items:
       - name: Dokumentace k dotazovacímu jazyku
@@ -754,7 +750,7 @@ items:
         - name: Akce webhooku pro výstrahy protokolu
           href: platform/alerts-log-webhook.md
         - name: Řešení potíží s výstrahami protokolu
-          href: ../monitoring-and-diagnostics/alert-log-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alert-log-troubleshoot.md
       - name: Použití upozornění protokolu aktivit
         items:
         - name: Konfigurace upozornění pro událost protokolu aktivit
@@ -800,7 +796,7 @@ items:
       - name: Principy automatického škálování
         href: platform/autoscale-get-started.md
       - name: Vysvětlení nastavení automatického škálování
-        href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-understanding-settings.md
       - name: Osvědčené postupy
         href: platform/autoscale-best-practices.md
       - name: Běžné metriky
@@ -818,7 +814,7 @@ items:
     - name: Oznámení služby
       items:
       - name: Zobrazení oznámení služby
-        href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+        href: platform/service-notifications.md
       - name: Konfigurace upozornění pro oznámení služby
         href: platform/alerts-activity-log-service-notifications.md
     - name: Správa služeb IT
@@ -846,7 +842,7 @@ items:
     - name: PowerShell
       items:
       - name: Ukázky Azure PowerShellu
-        href: ../monitoring-and-diagnostics/insights-powershell-samples.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powershell-quickstart-samples.md
       - name: Rutiny prostředí PowerShell
         href: platform/powershell-workspace-configuration.md
       - name: Aplikace
@@ -915,6 +911,8 @@ items:
       href: ../application-insights/application-insights-correlation.md?toc=/azure/azure-monitor/toc.json
     - name: Balíčky NuGet
       href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
+    - name: Podpora platformy
+      href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
   - name: Datový model Application Insights
     items:
     - name: Přehled
@@ -954,7 +952,7 @@ items:
     - name: Podporované metriky
       href: platform/metrics-supported.md
     - name: Podporované metriky pro novější upozornění
-      href: ../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-metric-near-real-time.md
   - name: Schémata
     items:
     - name: Služby, kategorie a schémata pro diagnostické protokoly
@@ -975,7 +973,7 @@ items:
     - name: Klasické rozhraní API pro metriky a automatické škálování
       href: ./platform/classic-api-retirement-metrics-autoscale.md
     - name: Klasické upozorňování a monitorování
-      href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
+      href: platform/monitoring-classic-retirement.md
     - name: Rozšíření upozornění z Log Analytics do Azure
       href: platform/alerts-extend.md
     - name: Zkopírování upozornění z portálu OMS na web Azure Portal
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 31569287fa00f123d3462d6d3dc5bf35a3650d19
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 0187e9a74da758a5756ce3841953141093aa203c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549441"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601011"

@@ -26,18 +26,18 @@
 
 # Ukázky
 ## Azure CLI
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-cli)
 ### [Virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## Azure PowerShell
-### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/samples-powershell)
 ### [Virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # Koncepty
 ## [Fakturace a předplatná](https://docs.microsoft.com/azure/billing/billing-getting-started)
 ## [Porovnání hostingů](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
-## [Co je App Service?](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+## [Co je App Service?](https://docs.microsoft.com/azure/app-service/overview)
 ## Virtuální počítače
 ### [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Virtuální počítače s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/overview)

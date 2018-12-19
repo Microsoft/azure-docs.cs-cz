@@ -59,7 +59,7 @@ Na webu Azure portal obsahuje průvodce, který vás provede vytvořením manife
 
 ### <a name="specify-routes"></a>Zadejte trasy
 
-Ve výchozím nastavení průvodce umožňuje volat trasu **trasy** a definovaná jako **FROM /* do $upstream **, což znamená, že všechny zprávy výstupu tak všechny moduly, které se odesílají do služby IoT hub.  
+Ve výchozím nastavení průvodce umožňuje volat trasu **trasy** a definovaná jako **FROM /\* do $upstream**, což znamená, že všechny zprávy výstupu tak všechny moduly, které se odesílají do služby IoT hub.  
 
 Přidat nebo aktualizovat trasy s informacemi z [trasy deklarovat](module-composition.md#declare-routes)a pak vyberte **Další** pokračujte k části revize.
 

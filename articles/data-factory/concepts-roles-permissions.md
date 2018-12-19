@@ -79,7 +79,7 @@ Tady je pár příkladů, které ukazují, můžete dosáhnout s vlastními role
   Tento scénář vyžaduje dvě přiřazení rolí.
 
   1. Přiřadíte integrovanou **Přispěvatel** na objekt pro vytváření dat na úrovni role.
-  2. Vytvořit vlastní roli s oprávněním * Microsoft.Resources/deployments/**. Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
+  2. Vytvořit vlastní roli s oprávněním *Microsoft.Resources/deployments/*\*. Tuto vlastní roli přiřadíte uživatele na úrovni skupiny prostředků.
 
 - Umožní uživateli aktualizovat objekt pro vytváření dat z Powershellu nebo sady SDK, ale není na portálu Azure portal.
 

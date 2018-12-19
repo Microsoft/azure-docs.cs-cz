@@ -51,7 +51,7 @@ Formulář pro nastavení nabídky je základní formulář a zadejte nastavení
 
 Toto je jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID se nebude zobrazovat v adresách URL produktu. Může se skládat jenom z malých alfanumerických znaků nebo pomlček (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. Toto pole je uzamčen, jakmile uvedete nabídky.
 
-Například pokud vydavatele contoso vydavatele vytvoří nabídka s ID nabídky *dynamics365 vzorku pro operace*, se zobrazí v AppSource jako \"https://appsource.microsoft.com/marketplace/apps/**contoso**.\*Ukázka dynamics 365 pro operace\*? tab = přehled\"
+Například pokud vydavatele contoso vydavatele vytvoří nabídka s ID nabídky *dynamics365 vzorku pro operace*, se zobrazí v AppSource jako \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*Ukázka dynamics 365 pro operace* ? tab = přehled\"
 
 ### <a name="publisher-id"></a>ID vydavatele
 

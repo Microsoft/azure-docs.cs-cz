@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d4ee723b8b8303f2eaf9bea4db8dfc1aaa1c4931
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242122"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608813"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -35,8 +35,8 @@ Aplikace slouží jako vývěsní tabule pro inzerci. Uživatelé vytvářejí r
 
 Aplikace používá [způsob práce zaměřený na fronty](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern), aby vyvážila práci při vytváření miniatur (která je náročná na prostředky procesoru) vůči back-endovému procesu.
 
-## <a name="alternative-architecture-web-apps-and-webjobs"></a>Alternativní architektura: Web Apps a WebJobs
-Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [Azure Web Apps](/azure/app-service/) a použití funkce [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které budou nejlépe vyhovovat vašemu scénáři, najdete v článku o [porovnání webů Azure, služeb Cloud Services a virtuálních počítačů](../app-service/choose-web-site-cloud-service-vm.md).
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternativní architektura: App Service a WebJobs
+Tento kurz ukazuje, jak spustit front-end i back-end v cloudové službě Azure. Alternativou je spuštění front-endu v [služby Azure App Service](/azure/app-service/) a použít [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) funkce pro back-end. Kurz, který používá webové úlohy, najdete v článku [Začínáme se sadou SDK pro Azure WebJobs](https://github.com/Azure/azure-webjobs-sdk/wiki). Informace o tom, jak zvolit služby, které nejlíp vyhovují vašemu scénáři najdete v tématu [srovnání Azure App Service, Cloud Services a virtual machines](../app-service/choose-web-site-cloud-service-vm.md).
 
 ## <a name="what-youll-learn"></a>Co se dozvíte
 * Postup zprovoznění počítače pro vývoj na platformě Azure nainstalováním sady Azure SDK.
@@ -391,7 +391,7 @@ V této části budete konfigurovat službu Azure Storage a připojovací řet�
 8. Ještě v okně vlastností **ContosoAdsWorker [Role]** přidejte další připojovací řetězec:
 
    * Název: ContosoAdsDbConnectionString
-   * Typ: Řetězec
+   * Zadejte: Řetězec
    * Hodnota: Vložte stejný připojovací řetězec, který jste použili pro projekt webové role. (Následující příklad je určený pro Visual Studio 2013. Pokud tento příklad kopírujete a používáte Visual Studio 2015 nebo vyšší, nezapomeňte změnit zdroj dat.)
 
        ```
@@ -407,9 +407,9 @@ Pokud chcete přidat soubory do projektu nebo složky, klikněte pravým tlačí
 2. Do projektu ContosoAdsWeb přidejte následující soubory ze staženého projektu.
 
    * *Global.asax.cs*.  
-   * Do složky *Views\Shared*: *\_Layout.cshtml*.
-   * Do složky *Views\Home*: *Index.cshtml*.
-   * Do složky *Controllers*: *AdController.cs*.
+   * V *Views\Shared* složky: *\_Layout.cshtml*.
+   * V *Views\Home* složky: *Index.cshtml*.
+   * V *řadiče* složky: *AdController.cs*.
    * Do složky *Views\Ad* (nejdřív složku vytvořte): pět souborů *.cshtml*.
 3. Do projektu ContosoAdsWorker přidejte soubor *WorkerRole.cs* ze staženého projektu.
 
@@ -761,7 +761,7 @@ Pokud chcete změnit projekt, který používá úplný emulátor, klikněte pra
 
 Pokud chcete aplikaci spustit s úplným emulátorem, otevřete Visual Studio s oprávněními správce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Aplikace Contoso Ads je kvůli úvodnímu kurzu záměrně jednoduchá. Například neimplementuje [vkládání závislostí](http://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) nebo [úložiště a jednotky pracovních vzorů](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nepodporuje [používání rozhraní k protokolování](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nepoužívá [migrace Code First EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) ke správě změn datových modelů nebo [odolnost připojení EF](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) ke správě přechodných síťových chyb a tak dále.
 
 Níže uvádíme několik ukázkových aplikací cloudových služeb, které předvádějí realističtější postupy kódování (jsou řazené od méně složitých po složitější):
@@ -775,7 +775,7 @@ Video úvod do osvědčených postupů a vzorů služby Azure Storage najdete v 
 
 Další informace najdete v následujících materiálech:
 
-* [Cloudové služby Azure Cloud Services část 1: Úvod](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Azure Cloud Services část 1: Úvod](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

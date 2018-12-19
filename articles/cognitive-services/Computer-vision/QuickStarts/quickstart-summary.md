@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: e44eb52323a93bddd629f3591cdbfbf021768629
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 645c57c9bfeaefcfd2fc50b2dd431713fffaa42b
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344083"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578780"
 ---
 # <a name="quickstart-summary"></a>Rychlý start: Souhrn
 
@@ -51,7 +52,7 @@ Kód jednotlivých ukázek je podobný. Zdůrazňují ale různé funkce počít
 | Extrakce tištěného textu     | language=unk&detectOrientation=true         | Řetězec ve formátu JSON       |
 | Extrakce rukou psaného textu | handwriting=true                            | URL, řetězec JSON  |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu.
 

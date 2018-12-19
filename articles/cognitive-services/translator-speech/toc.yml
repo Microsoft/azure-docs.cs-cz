@@ -1,45 +1,47 @@
+items:
 - name: Dokumentace k rozhraní Translator Speech API
-  href: index.yml
 - name: Přehled
   items:
-    - name: Informace o rozhraní Translator Speech API
-      href: Overview.md
-    - name: Podporované jazyky
-      href: languages.md
+  - name: Informace o rozhraní Translator Speech API
+    href: Overview.md
+  - name: Podporované jazyky
+    href: languages.md
 - name: Šablony Rychlý start
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: Python
-      href: quickstarts/python.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: Python
+    href: quickstarts/python.md
 - name: Kurzy
   items:
-    - name: Aplikace Translator
-      href: tutorial-translator-speech-csharp.md
+  - name: Aplikace Translator
+    href: tutorial-translator-speech-csharp.md
 - name: Ukázky
   items:
-    - name: Ukázky na GitHubu
-      href: 'https://aka.ms/TranslatorGitHub'
-- name: Návody
-  items:
-    - name: Registrace k rozhraní Translator Speech API
-      href: translator-speech-how-to-signup.md
+  - name: Ukázky na GitHubu
+    href: https://aka.ms/TranslatorGitHub
 - name: Referenční informace
   href: reference.md
   items:
-    - name: Jazyky
-      href: languages-reference.md
+  - name: Jazyky
+    href: languages-reference.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-speech-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+  - name: Nejčastější dotazy
+    href: https://www.microsoft.com/en-us/translator/faq.aspx
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-speech-api/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/558796-translator
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-translator
+ms.openlocfilehash: 8519e4a514f7fa1a811966ff971c64a331378ce8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604078"

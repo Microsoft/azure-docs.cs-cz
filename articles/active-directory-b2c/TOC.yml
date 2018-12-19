@@ -87,10 +87,22 @@ items:
     href: active-directory-b2c-reference-mfa.md
   - name: Architektura prostředí identit
     items:
-    - name: Vytvoření vlastní zásady
-      href: active-directory-b2c-get-started-custom.md
     - name: Shromažďování protokolů pomocí Application Insights
       href: active-directory-b2c-troubleshoot-custom.md
+    - name: Konfigurace uživatelského vstupu
+      href: active-directory-b2c-configure-signup-self-asserted-custom.md
+    - name: Vytvoření vlastní zásady
+      href: active-directory-b2c-get-started-custom.md
+    - name: Přizpůsobení uživatelského rozhraní
+      href: active-directory-b2c-ui-customization-custom.md
+    - name: Dynamické přizpůsobení uživatelského rozhraní
+      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: Přizpůsobení tokenů
+      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+    - name: Definování vlastních atributů
+      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+    - name: Povolení možnosti zůstat přihlášeni
+      href: active-directory-b2c-reference-kmsi-custom.md
     - name: Integrace rozhraní RESTful API
       items:
       - name: Ověření vstupu uživatele
@@ -123,6 +135,10 @@ items:
       href: page-contract.md
     - name: Předávání přístupového tokenu
       href: idp-pass-through-custom.md
+    - name: Složitost hesla
+      href: active-directory-b2c-reference-password-complexity-custom.md
+    - name: Změna hesla
+      href: active-directory-b2c-reference-password-change-custom.md
     - name: Poskytovatelé SAML
       items:
       - name: ADFS
@@ -131,24 +147,6 @@ items:
         href: active-directory-b2c-setup-sf-app-custom.md
     - name: Sledování chování uživatelů
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
-    - name: Toky uživatele
-      items:
-      - name: Konfigurace uživatelského vstupu
-        href: active-directory-b2c-configure-signup-self-asserted-custom.md
-      - name: Vlastní atributy
-        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-      - name: Přizpůsobení uživatelského rozhraní
-        href: active-directory-b2c-ui-customization-custom.md
-      - name: Dynamické přizpůsobení uživatelského rozhraní
-        href: active-directory-b2c-ui-customization-custom-dynamic.md
-      - name: Přizpůsobení tokenů
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: Složitost hesla
-        href: active-directory-b2c-reference-password-complexity-custom.md
-      - name: Změna hesla
-        href: active-directory-b2c-reference-password-change-custom.md
-      - name: Povolení možnosti zůstat přihlášeni
-        href: active-directory-b2c-reference-kmsi-custom.md
     - name: Referenční informace
       items:
       - name: Překladače deklarace identity
@@ -326,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 80e90efcc500f04e3ec1f3e10c157c9b415f0eda
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d61d6726d388fd7bf18f1bcbc168078afadd1a71
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079071"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579800"
