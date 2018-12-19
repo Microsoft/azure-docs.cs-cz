@@ -12,20 +12,14 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Nahrávání, kódování a streamování
-    items:
-    - name: S využitím .NET
-      href: stream-files-tutorial-with-api.md
-    - name: S využitím REST
-      href: stream-files-tutorial-with-rest.md
-  - name: Živé streamování
-    items:
-    - name: S využitím .NET Core
-      href: stream-live-tutorial-with-api.md
-  - name: Analýza videa
-    items:
-    - name: S využitím .NET
-      href: analyze-videos-tutorial-with-api.md
+  - name: Kódování vzdáleného souboru a streamování videa – REST
+    href: stream-files-tutorial-with-rest.md
+  - name: Kódování načteného souboru a streamování videa – .NET
+    href: stream-files-tutorial-with-api.md
+  - name: Živé streamování – .NET
+    href: stream-live-tutorial-with-api.md
+  - name: Analýza videa – .NET
+    href: analyze-videos-tutorial-with-api.md
 - name: Ukázky
   items:
   - name: Ukázky kódu Azure
@@ -186,9 +180,9 @@ items:
     href: limits-quotas-constraints.md
   - name: Nejčastější dotazy
     href: frequently-asked-questions.md
-ms.openlocfilehash: 9c42d463bc88ae936e0fbe965fd4039a716e3052
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 49c15b2540b33a3f37f4f276b435ce3f4508b513
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557168"
+ms.locfileid: "53582503"

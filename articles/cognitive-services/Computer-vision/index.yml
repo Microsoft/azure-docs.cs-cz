@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: da70af8eb2239fb9246071605aa5323e2e9e041e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eea9875be7926614811327dfeb89b721b43436e2
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958437"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580262"
 documentType: LandingData
 title: Dokumentace k rozhraní API pro počítačové zpracování obrazu
 metadata:
-  title: Dokumentace k rozhraní API pro počítačové zpracování obrazu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  title: Dokumentace k rozhraní API  – počítačové zpracování obrazu – Azure Cognitive Services | Microsoft Docs
   description: Naučte se využívat k počítačové zpracování obrazu ke zpracování obrázků a vrácení informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
   services: cognitive-services
   author: nitinme
@@ -20,6 +20,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/24/2018
   ms.author: nitinme
+ms.custom: seodec18
 abstract:
   description: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
   aside:
@@ -101,4 +102,4 @@ sections:
     - title: PowerShell
       html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
     - title: Rozhraní příkazového řádku
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>

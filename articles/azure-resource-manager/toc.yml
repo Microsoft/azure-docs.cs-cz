@@ -94,7 +94,7 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: Nasazení šablon
     items:
-    - name: Nasazení s využitím portálu
+    - name: Nasazení s využitím webu Azure Portal
       href: resource-group-template-deploy-portal.md
     - name: Nasazení s využitím rozhraní příkazového řádku Azure
       href: resource-group-template-deploy-cli.md
@@ -123,27 +123,27 @@ items:
       maintainContext: true
   - name: Správa šablon
     items:
-    - name: Azure PowerShell
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI
-      href: cli-azure-resource-manager.md
-    - name: portál Azure
+    - name: Správa pomocí webu Azure Portal
       href: resource-group-portal.md
-    - name: Používání značek k uspořádání prostředků
-      href: resource-group-using-tags.md
-    - name: Přesunutí prostředků do nové skupiny nebo předplatného
+    - name: Správa pomocí Azure PowerShellu
+      href: powershell-azure-resource-manager.md
+    - name: Správa pomocí rozhraní příkazového řádku Azure
+      href: cli-azure-resource-manager.md
+    - name: Přesunutí prostředků
       href: resource-group-move-resources.md
       items:
       - name: Podpora k přesunutí na základě typu prostředku
         href: move-support-resources.md
+    - name: Uspořádání prostředků pomocí značek
+      href: resource-group-using-tags.md
+    - name: Uzamčení prostředků
+      href: resource-group-lock-resources.md
+    - name: Ověřovací rozhraní API pro přístup k předplatným
+      href: resource-manager-api-authentication.md
     - name: Vytvoření předplatných EA
       href: programmatically-create-subscription.md
     - name: Udělení přístupu pro vytváření předplatných EA
       href: grant-access-to-create-subscription.md
-    - name: Ověřovací rozhraní API pro přístup k předplatným
-      href: resource-manager-api-authentication.md
-    - name: Uzamčení prostředků
-      href: resource-group-lock-resources.md
   - name: Auditování nasazení
     items:
     - name: Zobrazení protokolů aktivit
@@ -211,7 +211,7 @@ items:
     href: /rest/api/resources/
   - name: REST – Deployment Manager
     href: /rest/api/deploymentmanager/
-  - name: PowerShell
+  - name: Azure PowerShell
     href: /powershell/module/azurerm.resources
   - name: Azure CLI
     href: /cli/azure/resource
@@ -235,9 +235,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 166a23d480db7dfda7a78a5a63e7717b5e721bb9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436785"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600940"

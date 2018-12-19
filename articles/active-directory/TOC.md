@@ -274,7 +274,8 @@
 ##### [Potíže s konfigurací zřizování uživatelů – aplikace v galerii](manage-apps/application-provisioning-config-problem.md)
 ##### [Potíže při ukládání přihlašovacích údajů správce při konfigurací zřizování uživatelů – aplikace v galerii](manage-apps/application-provisioning-config-problem-storage-limit.md)
 ##### [Uživatelé nejsou zřízení – aplikace v galerii](manage-apps/application-provisioning-config-problem-no-users-provisioned.md)
-##### [Zřízení nesprávných uživatelů konfigurací zřizování uživatelů – aplikace v galerii](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [Zřízení nesprávných uživatelů – aplikace v galerii](manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md)
+##### [Problémy s kompatibilitou SCIM – aplikace mimo galerii](manage-apps/application-provisioning-config-problem-scim-compatibility.md)
 
 #### Jednotné přihlašování
 ##### [Volba metody](manage-apps/single-sign-on-modes.md)
@@ -321,10 +322,10 @@
 ## [Řešení problémů](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Nasazení testování konceptu (POC) Azure AD
-### [Scénáře PoC: Úvod](active-directory-playbook-intro.md)
-### [Scénáře PoC: Složky](active-directory-playbook-ingredients.md)
-### [Scénáře PoC: Implementace](active-directory-playbook-implementation.md)
-### [Scénáře PoC: Stavební bloky](active-directory-playbook-building-blocks.md)
+### [Playbook PoC: Úvod](active-directory-playbook-intro.md)
+### [Playbook PoC: Komponenty](active-directory-playbook-ingredients.md)
+### [Playbook PoC: Implementace](active-directory-playbook-implementation.md)
+### [Playbook PoC: Stavební bloky](active-directory-playbook-building-blocks.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=active-directory)

@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6b7e0bf650d46f7e445aacc4bb61efca94510716
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1a16dd52d06e4ee31e6645d6e5a4090afd897de9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538660"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605394"
 documentType: LandingData
-title: Dokumentace k Web Apps
+title: Dokumentace ke službě App Service
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: Dokumentace ke službě Azure Web Apps – kurzy, reference k rozhraní API
-  meta.description: Learn how to use App Service Web Apps to build and host websites and web applications.
+  title: Dokumentace ke službě Azure App Service – kurzy, reference k rozhraní API
+  meta.description: Learn how to use App Service to build and host websites and web applications.
   services: app-service
   author: czeumault
   manager: carolz
@@ -21,7 +21,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure Web Apps umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
     image:
       alt: 
@@ -35,7 +35,7 @@ sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Jak nasadit první aplikaci do cloudu pomocí Web Apps:'
+    text: 'Podívejte se, jak nasadit první aplikaci do cloudu pomocí App Service:'
   - type: list
     style: icon48
     items:
