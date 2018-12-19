@@ -24,7 +24,7 @@ ms.locfileid: "53309174"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
-**DOTAZ: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako není k dispozici pro hybridních zařízení připojených k Azure AD? ** 
+**DOTAZ: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako není k dispozici pro hybridních zařízení připojených k Azure AD?**
  **A:** Zařízení s Windows 10, která jsou připojená k hybridní Azure AD nezobrazí v zařízení uživatele.
 Budete muset použít zobrazení všech zařízení na webu Azure portal. Můžete také použít PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
 
@@ -107,14 +107,14 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 
 ---
 
-**DOTAZ: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD? ** 
+**DOTAZ: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD?**
  **A:** Ano. Windows uložil do mezipaměti přihlašovací možnost povolit, dříve přihlášení uživatelé pro přístup k ploše rychle i bez připojení k síti. Pokud zařízení se odstraní nebo je zakázaný ve službě Azure AD, není znám do zařízení Windows. Takže dříve přihlášení uživatelé můžou dál přístup k ploše s přihlášení uložené v mezipaměti. Ale jak zařízení se odstraní nebo zakázán, uživatelé nemají přístup k prostředkům nechrání podmíněným přístupem na základě zařízení. 
 
 Uživatelé, kteří se ještě nepřihlásili nelze přístupu k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
 
 ---
 
-**DOTAZ: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD? ** 
+**DOTAZ: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD?**
  **A:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, není okamžitě známé zařízení Windows. Takže dříve přihlášení uživatelé mají přístup k ploše s přihlášení uložené v mezipaměti. Jakmile je zařízení přehled o stavu uživatele (obvykle v méně než 4 hodinami), Windows zablokuje uživatelům přístup k ploše. Jako uživatel se odstraní nebo je zakázaný ve službě Azure AD, se jejich tokeny odvolá, nemají přístup k žádným prostředkům. 
 
 Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze přístup k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
@@ -127,7 +127,7 @@ Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze
 
 ---
 
-**DOTAZ: Jak se připojit k vzdálené službě Azure AD na zařízení? ** 
+**DOTAZ: Jak se připojit k vzdálené službě Azure AD na zařízení?**
  **A:** Najdete v článku https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc podrobnosti.
 
 ---

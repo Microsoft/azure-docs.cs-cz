@@ -249,7 +249,7 @@ Topologie zobrazené na mapě se topologie vrstvy 3 a neobsahuje vrstvy 2 zaří
 
 ## <a name="log-analytics-search"></a>Hledání log Analytics 
 
-Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu. Běžné  **dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 

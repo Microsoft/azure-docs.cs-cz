@@ -259,7 +259,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
     
     Vyberte **vložit** zahájíte úpravou souboru. Vytvořit novou čáru a vložte následující text. Upravte více cest ID disku na základě Identifikátoru zvýrazněné více cest z předchozího příkazu.
 
-     **/dev/Mapovač/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
+    **/dev/Mapovač/<Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
 
     Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončete) zavřete okno editoru.
 

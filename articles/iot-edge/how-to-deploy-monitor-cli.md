@@ -158,7 +158,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 * **– id nasazení** – název nasazení, který existuje ve službě IoT hub.
 * **– název centra** – název služby IoT hub, ve které existuje nasazení. Centrum musí být v rámci aktuálního předplatného. Přepnutí na požadované předplatné příkazem `az account set -s [subscription name]`
 
-Zkontrolujte nasazení v příkazovém okně. **Metriky** počet pro každou metriku, která se vyhodnocuje na základě každé centrum seznamů vlastností:
+Zkontrolujte nasazení v příkazovém okně. Metriky počet pro každou **metriku**, která se vyhodnocuje na základě každé centrum seznamů vlastností:
 * **targetedCount** – systém metriku, která určuje počet dvojčat zařízení ve službě IoT Hub, která splňují cílovou podmínku.
 * **appliedCount** -metrika systému určuje počet zařízení, která jste využili obsahu nasazení u jejich dvojčaty modulů ve službě IoT Hub.
 * **reportedSuccessfulCount** -metriku zařízení, která určuje počet hraničních zařízení v nasazení generování sestav úspěšnost modul runtime IoT Edge klienta.
