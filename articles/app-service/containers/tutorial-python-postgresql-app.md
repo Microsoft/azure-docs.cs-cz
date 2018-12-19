@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8846ec386ad1776172ae1949b5e0f26e03ddf1df
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 86b80e8d2e4dbec96807edaba2dff813d0eda029
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337984"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607417"
 ---
 # <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Vytvoření webové aplikace Python a PostgreSQL v Azure App Service
 
@@ -431,7 +431,7 @@ V tomto kurzu jste se naučili:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](../app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurovat předdefinované Pythonu obrázků a řešení potíží s chybami](how-to-configure-python.md)

@@ -4,7 +4,7 @@ description: Zjistěte, jak se připojit ke službě SQL Database pomocí nástr
 keywords: Připojení k službě SQL Database
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,14 +13,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 786b4fab42fb49cd44c1985bfa04ce33e77cadf0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5e0b2fff7ca5bc7f5856a6de05e18b99bbf8b938
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098980"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600824"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití nástroje Visual Studio Code k připojení a dotazování Azure SQL Database
+# <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití Visual Studio Code k připojení a dotazování Azure SQL Database
 
 [Visual Studio Code](https://code.visualstudio.com/docs) je grafický editor kódu pro Linux, macOS a Windows. Podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse. Tento rychlý start ukazuje použití Visual Studio Code k připojení k databázi Azure SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizace a odstranění dat.
 
@@ -174,6 +174,6 @@ Pomocí následujících [odstranit](https://docs.microsoft.com/sql/t-sql/statem
 
 ## <a name="next-steps"></a>Další postup
 
-- Připojení a dotazování pomocí aplikace SQL Server Management Studio najdete v tématu [rychlý start: použití SQL Server Management Studio pro připojení k Azure SQL Database a dotazování dat](sql-database-connect-query-ssms.md).
-- Připojení a dotazování pomocí webu Azure portal najdete v tématu [rychlý start: použití editoru dotazů SQL webu Azure Portal k připojení a dotazování dat](sql-database-connect-query-portal.md).
+- Připojení a dotazování pomocí aplikace SQL Server Management Studio najdete v tématu [rychlý start: Připojení k Azure SQL Database a dotazování dat pomocí SQL Server Management Studio](sql-database-connect-query-ssms.md).
+- Připojení a dotazování pomocí webu Azure portal najdete v tématu [rychlý start: Použití editoru dotazů SQL webu Azure Portal k připojení a dotazování dat](sql-database-connect-query-portal.md).
 - Článek z časopisu MSDN o použití editoru Visual Studio Code najdete v blogovém příspěvku [Vytvoření databáze IDE s rozšířením MSSQL](https://msdn.microsoft.com/magazine/mt809115).

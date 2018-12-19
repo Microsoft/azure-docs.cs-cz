@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 8ac288a3b62b305ca45ba8ef2dcc6cdaf6aaf6bd
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 1dd80cffe64e6c93a0681400d067182f1a74afff
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309637"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581848"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě HDInsight
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
 [Apache Kafka](https://kafka.apache.org/) je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky.
 >
 > Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
@@ -43,7 +43,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
     * [Nainstalujte podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10). Distribuce Linuxu dostupné v Microsoft Storu poskytují příkaz `ssh`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Kroky v tomto dokumentu předpokládají, že používáte některého z klientů SSH uvedených výše. Pokud používáte jiného klienta SSH a narazíte na potíže, zkuste najít řešení v dokumentaci pro vašeho klienta SSH.
     >
     > Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -132,16 +132,16 @@ New-AzureRmHDInsightCluster `
         -DisksPerWorkerNode $disksPerNode
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Vytvoření clusteru HDInsight může trvat až 20 minut.
 
-> [!TIP]
+> [!TIP]  
 > Parametr `-DisksPerWorkerNode` konfiguruje škálovatelnost platformy Kafka v HDInsight. Kafka ve službě HDInsight používá k ukládání dat místní disk virtuálního počítače v clusteru. Platforma Kafka je náročná na vstupně-výstupní operace, proto se k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel využívá služba [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). 
 >
 > Typ spravovaného disku může být buď __Standardní__ (HDD), nebo __Prémiový__ (SSD). Typ disku závisí na velikosti virtuálního počítače používaného pracovními uzly (zprostředkovateli Kafka). U virtuálních počítačů řady DS a GS se automaticky používají disky Premium. Všechny ostatní typy virtuálních počítačů používají standardní disky. Typ virtuálního počítače můžete nastavit pomocí parametru `-WorkerNodeSize`. Další informace o parametrech najdete v dokumentaci [New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster).
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud hodláte použít víc než 32 pracovních uzlů (při vytvoření clusteru nebo škálováním clusteru po vytvoření), musíte pomocí parametru `-HeadNodeSize` určit velikost virtuálního počítače s aspoň 8 jádry a 14 GB RAM.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -169,7 +169,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.
@@ -210,7 +210,7 @@ V této části můžete získat informace o hostiteli od Apache Ambari REST API
 
     Po zobrazení výzvy zadejte heslo účtu pro přihlášení ke clusteru (ne účtu SSH).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tento příkaz načte všechny hostitele Zookeeper a pak vrátí jenom první dva záznamy. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
 
 4. Pokud chcete ověřit správné nastavení proměnné prostředí, použijte následující příkaz:
@@ -257,14 +257,14 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
     * Každý oddíl se replikuje mezi tři pracovní uzly v clusteru.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Pokud jste vytvořili cluster v oblasti Azure, která poskytuje tři domény selhání, použijte faktor replikace 3. Jinak použijte faktor replikace 4.
         
         V oblastech se třemi doménami selhání faktor replikace 3 umožní rozložení replik mezi domény selhání. V oblastech se dvěma doménami selhání faktor replikace 4 rozloží repliky rovnoměrně mezi domény selhání.
         
         Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-        > [!IMPORTANT] 
+        > [!IMPORTANT]   
         > Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
         Pokud chcete zajistit vysokou dostupnost, použijte [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
@@ -291,7 +291,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
     Tento příkaz odstraní téma s názvem `topicname`.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Pokud odstraníte dříve vytvořené téma `test`, pak ho musíte vytvořit znovu. Používá se v dalších krocích tohoto dokumentu.
 
 Další informace o příkazech, které jsou k dispozici v nástroji `kafka-topics.sh`, získáte pomocí tohoto příkazu:
@@ -324,7 +324,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
    
     Tento příkaz načte záznamy z tématu a zobrazí je. Parametr `--from-beginning` způsobí, že konzument začne načítat od začátku datového proudu a zpracuje tak všechny záznamy.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
 
 4. Konzumenta zastavíte stisknutím __Ctrl+C__.
@@ -339,7 +339,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, HDInsig
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-> [!WARNING]
+> [!WARNING]  
 > Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.

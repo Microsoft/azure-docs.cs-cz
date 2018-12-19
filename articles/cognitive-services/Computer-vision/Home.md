@@ -1,5 +1,5 @@
 ---
-title: Co je rozhraní API pro počítačové zpracování obrazu?
+title: Co je rozhraní API pro počítačové zpracování obrazu? -Počítačové zpracování obrazu
 titlesuffix: Azure Cognitive Services
 description: Služba počítačového zpracování obrazu umožňuje vývojářům používat pokročilé algoritmy, které zpracovávají obrázky a vrací informace.
 services: cognitive-services
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: c5340599bc4ed400ce11ea8ba997d03c4df7cc05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 4c952c847aa56b385065a878b664b3d1d98763f4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963211"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584016"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 

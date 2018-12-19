@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: c55e63d813c462db8a6c404894b8754f4130d935
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2692d174a0f959384a9dd3d587107e5f726e28cb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097943"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606108"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu pomocí služby Azure Storage
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
 Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit webovou aplikaci, která používá Klientská knihovna pro úložiště Azure můžete nahrávat obrázky do účtu úložiště. Jakmile budete hotovi, budete mít webovou aplikaci, která ukládá a zobrazuje obrázky ze služby Azure storage.
 
@@ -111,9 +111,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Webová aplikace poskytuje prostor hostitele pro kód ukázkové aplikace, která se nasadí z ukázkového úložiště Githubu. Pomocí příkazu [az webapp create](/cli/azure/webapp#az_webapp_create) vytvořte [webovou aplikaci](../../app-service/app-service-web-overview.md) v plánu služby App Service `myAppServicePlan`.  
+Webová aplikace poskytuje prostor hostitele pro kód ukázkové aplikace, která se nasadí z ukázkového úložiště Githubu. Pomocí příkazu [az webapp create](/cli/azure/webapp#az_webapp_create) vytvořte [webovou aplikaci](../../app-service/overview.md) v plánu služby App Service `myAppServicePlan`.  
 
-V následujícím příkazu nahraďte `<web_app>` s jedinečným názvem. Platné znaky jsou `a-z`, `0-9` a `-`. Pokud není název `<web_app>` jedinečný, zobrazí se chybová zpráva _Web se zadaným názvem `<web_app>` už existuje._ Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.  
+V následujícím příkazu nahraďte `<web_app>` s jedinečným názvem. Platné znaky jsou `a-z`, `0-9` a `-`. Pokud `<web_app>` není jedinečný, zobrazí se chybová zpráva: _Web se zadaným názvem `<web_app>` již existuje._ Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan

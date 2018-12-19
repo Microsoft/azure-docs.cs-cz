@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a7e7c04b458575cdc9f2608d0c84f0df105bf202
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a594d6704b9fa76c212719f0ac423942e9f57d7a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261751"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604027"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Vytvoření webové aplikace Azure App Service web apps pomocí Ansible
-[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
+[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
 
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. V tomto článku se dozvíte, jak pomocí Ansible vytvořit webovou aplikaci s použitím modulu runtime Java. 
 

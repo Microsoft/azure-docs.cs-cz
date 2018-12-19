@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušení cloudového řešení prediktivní údržby IoT v Azure | Microsoft Docs
+title: Zkuste založené na cloudu IoT řešení prediktivní údržby – Azure | Dokumentace Microsoftu
 description: V tomto rychlém startu nasadíte akcelerátor řešení prediktivní údržby Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: c56bdb5968b5f5ada902aa9212282c3cfebe2eaf
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139835"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604333"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
+# <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Zkuste cloudové řešení pro spuštění analýzy prediktivní údržby na připojené zařízení
 
 V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení prediktivní údržby Azure IoT, abyste mohli spustit cloudovou simulaci prediktivní údržby. Po nasazení akcelerátoru řešení spustíte na stránce **řídicího panelu** řešení analýzu prediktivní údržby u dat ze simulace leteckého motoru. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
@@ -80,7 +80,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 ![Odstranění řešení](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili akcelerátor řešení prediktivní údržby a spustili jste simulaci.
 

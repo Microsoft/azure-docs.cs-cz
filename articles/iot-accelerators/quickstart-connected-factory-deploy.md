@@ -1,5 +1,5 @@
 ---
-title: Zkouška řešení pro správu průmyslových zařízení IoT v Azure | Microsoft Docs
+title: Vyzkoušejte řešení pro správu průmyslová zařízení IoT – Azure | Dokumentace Microsoftu
 description: V tomto rychlém zprovoznění nasadíte akcelerátor řešení připojené továrny Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 8cb604aee39f651770cb708f8dd92b6fbc0921f5
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138991"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602643"
 ---
-# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlé zprovoznění: Zkouška cloudového řešení pro správu průmyslových zařízení IoT
+# <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Rychlý start: Zkuste cloudové řešení ke správě mých průmyslová zařízení IoT
 
 V tomto rychlém zprovoznění se dozvíte, jak nasadit akcelerátor řešení připojené továrny Azure IoT pro cloudovou simulaci monitorování a správy průmyslových zařízení IoT. Když nasadíte akcelerátor řešení připojené továrny, bude předem naplněný simulovanými prostředky, které vám umožní projít si běžný scénář z oblasti průmyslu IoT. K řešení je připojených několik simulovaných továren, které hlásí hodnoty dat potřebné k výpočtu celkové účinnosti vybavení (OEE) a klíčových ukazatelů výkonu (KPI). V tomto rychlém zprovoznění se dozvíte, jak pomocí řídicího panelu řešení provést tyto úkony:
 
@@ -76,7 +76,7 @@ Panel **Celková efektivita zařízení** zobrazuje hodnoty celkové účinnosti
 
 [![Celková účinnost vybavení](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
-Celková účinnost vybavení hodnotí efektivitu výrobního procesu pomocí provozních parametrů souvisejících s výrobou. Celková efektivita zařízení (OEE) je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
+Celková účinnost vybavení hodnotí efektivitu výrobního procesu pomocí provozních parametrů souvisejících s výrobou. Celková efektivita zařízení je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
 
 Celkovou účinnost vybavení můžete hlouběji analyzovat na libovolné úrovni dat v hierarchii. Klikněte na ukazatel celkové účinnosti vybavení, dostupnosti, výkonu nebo kvality. Zobrazí se místní panel s vizualizacemi, která znázorňují data za různá časová období:
 
@@ -147,7 +147,7 @@ Pokud už akcelerátor řešení nepotřebujete, odstraňte ho na stránce [Zř�
 
 ![Odstranění řešení](media/quickstart-connected-factory-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém zprovoznění jste nasadili akcelerátor řešení připojené továrny a naučili se procházet továrny, výrobní linky a stanice. Taky jste se naučili zobrazit na libovolné úrovni hodnoty celkové účinnosti vybavení a klíčových ukazatelů výkonu a dozvěděli jste se, jak reagovat na upozornění.
 

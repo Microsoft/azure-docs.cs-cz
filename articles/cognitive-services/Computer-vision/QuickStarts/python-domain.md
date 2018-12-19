@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití doménového modelu – REST, Python – počítačové zpracování obrazu'
+title: 'Rychlý start: Obsah specifický pro doménu image - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete doménové modely k identifikaci celebrit a památek na obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 4594d84c411994b4157b2fa51ed5d6d24088380d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 9a511cb26f5bc4ba44e4d999cb7b3c3ba98bca4c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852329"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582221"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Použití doménového modelu pomocí rozhraní REST API a Pythonu v počítačovém zpracování obrazu
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Použít doménový model pomocí rozhraní REST API a Python v počítačové zpracování obrazu
 
 V tomto rychlém startu použijete doménový model k identifikaci památek nebo (volitelně) celebrit na vzdáleně uloženém obrázku pomocí rozhraní REST API počítačového zpracování obrazu. K rozpoznávání obsahu na obrázku pomocí metody [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) můžete využít model specifický pro doménu.
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: aae7836448ff27b4c80d7bb53e108034ee52db1c
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
-ms.translationtype: HT
+ms.openlocfilehash: 7945ff5d67f8229802666ac4a12209c2d26607f7
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586287"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608405"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -73,9 +73,9 @@ Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů apli
 
 ### <a name="integrate-with-other-azure-services"></a>Integrace s ostatními službami Azure
 
-Služba Key Vault se jako zabezpečené úložiště v Azure používá ke zjednodušení scénářů, jako je služba [Azure Disk Encryption](../security/azure-security-disk-encryption.md), funkce [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) v SQL Serveru a Azure SQL Database a [webové aplikace Azure]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a Log Analytics.
+Jako zabezpečené úložiště v Azure Key Vault používá k zjednodušení scénářů, jako je [Azure Disk Encryption](../security/azure-security-disk-encryption.md), [s funkcí always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkce v systému SQL server a Azure SQL Database, [aplikace Azure Služba]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a Log Analytics.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku](quick-create-cli.md)
 - [Konfigurace webové aplikace Azure pro čtení tajného klíče ze služby Key Vault](tutorial-web-application-keyvault.md)

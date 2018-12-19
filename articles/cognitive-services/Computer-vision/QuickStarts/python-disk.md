@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza místního obrázku – REST, Python – počítačové zpracování obrazu'
+title: 'Rychlý start: Analyzujte místní image - REST, Python'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Pythonu.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: ef95d68f37de7637abd546a1a7fdffff547bda6b
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 3e62e5af00e69cea4656c38d9cde57fae11b67fa
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854131"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582690"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Analýza místního obrázku pomocí rozhraní REST API a Pythonu v počítačovém zpracování obrazu
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>Rychlý start: Analýza místní image pomocí rozhraní REST API a Python v počítačové zpracování obrazu
 
 V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 

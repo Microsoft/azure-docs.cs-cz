@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 26b5b16e3eb016edbe53c3526e51c3aa44f307b5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 43f1918e7c80fdc04b80583ce374cfb8127dd021
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583580"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602558"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Kurz: Jak používat Azure Key Vault s Windows virtuální počítač Azure v Pythonu
 
 Azure Key Vault pomáhá chránit tajné klíče, jako jsou klíče rozhraní API nebo databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
-V tomto kurzu si projdete nezbytné kroky pro využití webové aplikace Azure k načtení informací ze služby Azure Key Vault pomocí spravovaných identit pro prostředky Azure. Tento kurz je založený na službě [Azure Web Apps](../app-service/app-service-web-overview.md). V následujících částech získáte informace o těchto tématech:
+V tomto kurzu si projdete nezbytné kroky pro využití webové aplikace Azure k načtení informací ze služby Azure Key Vault pomocí spravovaných identit pro prostředky Azure. V následujících částech získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
@@ -80,7 +80,7 @@ V tomto článku se používá skupina prostředků, kterou jste právě vytvoř
 
 Dále ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a může obsahovat pouze následující znaky: 0–9, a–z, A–Z a spojovník (-).
+* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze (0-9, a – z, A-Z a -).
 * Název skupiny prostředků.
 * Umístění: **USA – západ**.
 

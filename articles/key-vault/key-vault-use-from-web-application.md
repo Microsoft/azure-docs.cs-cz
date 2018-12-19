@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.openlocfilehash: 272238e41327e09af8e4d3967868c21c37683236
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079459"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602046"
 ---
-# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití služby Azure Key Vault z webové aplikace
+# <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití Azure Key Vault z webové aplikace
 
 Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace v Azure. Ukazuje postup při přístupu k tajnému klíči ze služby Azure Key Vault pro použití ve webové aplikaci. Kurz pak tento prostup rozšiřuje a místo tajného klíče klienta používá certifikát. Tento kurz je určený pro webové vývojáře se základními znalostmi vytváření webových aplikací v Azure.
 
@@ -40,7 +40,7 @@ K dokončení tohoto kurzu potřebujete následující položky:
 * ID klienta a tajný klíč klienta pro webovou aplikaci zaregistrovanou v Azure Active Directory, která má přístup k vaší službě Key Vault
 * Webová aplikace. Tento kurz obsahuje kroky pro aplikaci ASP.NET MVC nasazenou v Azure jako webová aplikace.
 
-Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
+Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/overview.md).
 
 Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Vy byste ale měli místo toho použít [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), které umožňují automatické zřizování identit Azure AD. Další informace najdete v [ukázce na GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu o službách App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Můžete se taky podívat na kurz [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md), který se týká konkrétně služby Key Vault.
 
@@ -159,7 +159,7 @@ Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw
 Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
-Poznamenejte si koncové datum a heslo pro soubor .pfx (v tomto příkladu je to 15. května 2019 a MyPassword). Budete je potřebovat pro následující skript. 
+Poznamenejte si datum ukončení a heslo pro soubor .pfx (v tomto příkladu: 15. května 2019 a heslo). Budete je potřebovat pro následující skript. 
 ### <a name="associate-the-certificate-with-an-azure-ad-application"></a>Přidružení certifikátu k aplikaci Azure AD
 
 Teď, když máte certifikát, ho musíte přidružit k aplikaci Azure AD. Přidružení můžete provést prostřednictvím PowerShellu. Spuštěním následujících příkazů přidružte certifikát k aplikaci Azure AD:
@@ -192,7 +192,7 @@ Nejprve přidáme kód pro přístup k certifikátu. Všimněte si, že StoreLoc
 
 ```cs
 //Add this using statement
-using System.Security.Cryptography.X509Certificates;  
+using System.Security.Cryptography.X509Certificates;  
 
 public static class CertificateHelper
 {

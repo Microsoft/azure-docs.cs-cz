@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1a26cbea3aaca700f5e501d3b6be0f7d1c942f36
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075183"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607536"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ ve Windows s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ ve Windows s použitím sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -37,7 +37,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
     V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++**.
 
-1. Ověřte, že je dostupná komponenta **Správce balíčků NuGet**. Přepněte na kartu **Jednotlivé komponenty** dialogového okna instalačního programu sady Visual Studio a vyberte **Správce balíčků NuGet**, pokud ještě není povolený.
+1. Ověřte, že je dostupná komponenta **Správce balíčků NuGet**. Přepněte **jednotlivé komponenty** kartu dialogové okno instalačního programu sady Visual Studio. Vyberte **Správce balíčků NuGet** Pokud ještě není povolené.
 
       ![Snímek obrazovky s kartou Jednotlivé komponenty sady Visual Studio](media/sdk/vs-enable-nuget-package-manager.png)
 
@@ -47,7 +47,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. Pokud používáte 64bitovou verzi Windows, můžete pomocí rozevírací nabídky na panelu nástrojů sady Visual Studio přepnout platformu sestavení na `x64`. (64bitové verze Windows dokážou spouštět 32bitové aplikace, takže to není povinné.)
+1. Pokud používáte 64bitovou verzi Windows, můžete pomocí rozevírací nabídky na panelu nástrojů sady Visual Studio přepnout platformu sestavení na `x64`. (64bitová verze Windows můžou spouštět 32bitové aplikace přímo.)
 
     ![Snímek obrazovky panelu nástrojů sady Visual Studio se zvýrazněnou možností x64](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
 
@@ -60,7 +60,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
     ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
     > [!NOTE]
-    > Aktuální verze sady Cognitive Services Speech SDK je `1.1.0`.
+    > Aktuální verze sady Cognitive Services Speech SDK je `1.2.0`.
 
 1. Přijměte zobrazenou licenci a zahajte instalaci tohoto balíčku NuGet.
 

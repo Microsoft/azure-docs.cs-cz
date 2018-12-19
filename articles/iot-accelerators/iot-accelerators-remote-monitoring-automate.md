@@ -1,5 +1,5 @@
 ---
-title: Kurz detekce problémů se zařízeními v řešení vzdáleného monitorování založeném na Azure | Microsoft Docs
+title: Zjišťování problémů se zařízením ve vzdálené monitorování řešení kurz – Azure | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak v řešení vzdáleného monitorování pomocí pravidel a akcí automaticky detekovat problémy se zařízeními na základě prahových hodnot.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7ebe81565bc6bd28747f3a251b39a3c010493307
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819096"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598669"
 ---
-# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení monitorování
+# <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Rozpoznávání problémů se zařízeními připojenými k vaší řešení monitorování
 
 V tomto kurzu nakonfigurujete akcelerátor řešení vzdáleného monitorování tak, aby detekoval problémy s připojenými zařízeními IoT. Problémy se zařízeními můžete detekovat tak, že přidáte pravidla, která generují upozornění na řídicím panelu řešení.
 

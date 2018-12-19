@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cb81699671bd2a0e86838d043ad0a4442eb79a6c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5bfef1662ea23f3dfa1e01c91912f11e674e1e06
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254237"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600170"
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace .NET Core využívající databázi SQL ve službě Azure App Service v Linuxu
 
@@ -390,4 +390,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](../app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

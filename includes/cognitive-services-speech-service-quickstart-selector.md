@@ -2,14 +2,14 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: 776f6ee07a6ec48e308d399a5fc98447fc68ccfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 72a0930cc1e527f73f3235d2b213367c4a9499ba
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47021675"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53609000"
 ---
 > [!div class="op_single_selector"]
 > - [C# – .NET ve Windows](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md)
@@ -20,4 +20,6 @@ ms.locfileid: "47021675"
 > - [Java – Android](~/articles/cognitive-services/speech-service/quickstart-java-android.md)
 > - [Java – prostředí JRE](~/articles/cognitive-services/speech-service/quickstart-java-jre.md)
 > - [JavaScript – prohlížeč](~/articles/cognitive-services/speech-service/quickstart-js-browser.md)
+> - [JavaScript – Node.js](~/articles/cognitive-services/speech-service/quickstart-js-node.md)
 > - [Objective-C – iOS](~/articles/cognitive-services/speech-service/quickstart-objectivec-ios.md)
+> - [Python](~/articles/cognitive-services/speech-service/quickstart-python.md)

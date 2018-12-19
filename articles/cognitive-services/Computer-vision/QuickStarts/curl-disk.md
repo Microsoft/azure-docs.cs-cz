@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Analýza místního obrázku – REST, cURL – počítačové zpracování obrazu'
+title: 'Rychlý start: Analyzujte místní image - REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat místní obrázek pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: pafarley
-ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: c5e3de438593a6fb960edaffd14fa18ebe03f548
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339912"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579381"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Rychlý start: Analýza místního obrázku pomocí rozhraní REST API a cURL v počítačovém zpracování obrazu
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Rychlý start: Analýza místní image pomocí rozhraní REST API a cURL v počítačové zpracování obrazu
 
 V tomto rychlém startu analyzujete obrázek uložený místně za účelem extrakce vizuálních prvků pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
@@ -109,7 +110,7 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: applic
 
 Pokud už tuto ukázku nepotřebujete, zavřete okno příkazového řádku a textový editor.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

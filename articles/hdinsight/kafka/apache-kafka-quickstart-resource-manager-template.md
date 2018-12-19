@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 03d7c63d09ddaf64a552a4534612f0f7e9fd249b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2c9d31fc11ae014a40de3224f4a294968aa0be53
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312363"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584407"
 ---
-# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě HDInsight
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
 [Apache Kafka](https://kafka.apache.org/) je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky.
 >
 > Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
@@ -40,7 +40,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
     * [Nainstalujte podsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10). Distribuce Linuxu dostupné v Microsoft Storu poskytují příkaz `ssh`.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Kroky v tomto dokumentu předpokládají, že používáte některého z klientů SSH uvedených výše. Pokud používáte jiného klienta SSH a narazíte na potíže, zkuste najít řešení v dokumentaci pro vašeho klienta SSH.
     >
     > Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
@@ -68,7 +68,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 3. Vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**, vyberte **Připnout na řídicí panel** a potom klikněte na **Koupit**.
 
-> [!NOTE]
+> [!NOTE]  
 > Vytvoření clusteru trvá přibližně 20 minut.
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
@@ -94,7 +94,7 @@ Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.13.0-1011-azure x86_64)
  * Support:        https://ubuntu.com/advantage
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 83 packages can be updated.
 37 updates are security updates.
@@ -135,7 +135,7 @@ V této části získáte informace o hostiteli z rozhraní REST API Ambari v cl
 
     Po zobrazení výzvy zadejte heslo účtu pro přihlášení ke clusteru (ne účtu SSH).
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tento příkaz načte všechny hostitele Zookeeper a pak vrátí jenom první dva záznamy. Je to proto, že chcete určitou redundanci pro případ, že jeden hostitel bude nedosažitelný.
 
 4. Pokud chcete ověřit správné nastavení proměnné prostředí, použijte následující příkaz:
@@ -182,14 +182,14 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
     * Každý oddíl se replikuje mezi tři pracovní uzly v clusteru.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Pokud jste vytvořili cluster v oblasti Azure, která poskytuje tři domény selhání, použijte faktor replikace 3. Jinak použijte faktor replikace 4.
         
         V oblastech se třemi doménami selhání faktor replikace 3 umožní rozložení replik mezi domény selhání. V oblastech se dvěma doménami selhání faktor replikace 4 rozloží repliky rovnoměrně mezi domény selhání.
         
         Informace o počtu domén selhání v oblasti najdete v dokumentu popisujícím [dostupnost Linuxových virtuálních počítačů](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set).
 
-        > [!IMPORTANT] 
+        > [!IMPORTANT]   
         > Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
         Pokud chcete zajistit vysokou dostupnost, použijte [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
@@ -216,7 +216,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
 
     Tento příkaz odstraní téma s názvem `topicname`.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Pokud odstraníte dříve vytvořené téma `test`, pak ho musíte vytvořit znovu. Používá se v dalších krocích tohoto dokumentu.
 
 Další informace o příkazech, které jsou k dispozici v nástroji `kafka-topics.sh`, získáte pomocí tohoto příkazu:
@@ -249,7 +249,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
    
     Tento příkaz načte záznamy z tématu a zobrazí je. Parametr `--from-beginning` způsobí, že konzument začne načítat od začátku datového proudu a zpracuje tak všechny záznamy.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud používáte starší verzi Kafka, nahraďte `--bootstrap-server $KAFKABROKERS` za `--zookeeper $KAFKAZKHOSTS`.
 
 4. Konzumenta zastavíte stisknutím __Ctrl+C__.
@@ -270,7 +270,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-> [!WARNING]
+> [!WARNING]  
 > Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.

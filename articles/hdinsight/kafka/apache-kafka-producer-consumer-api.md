@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: dd4c077e23170a295a29a75df08cf8f29f8ba3e4
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 23a676c64ec2788ec4a9b3d61f86529fa437079f
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413349"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580378"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití Apache Kafka Producer and Consumer API
 
@@ -39,7 +39,7 @@ Ve vývojovém prostředí potřebujete mít nainstalované následující kompo
 
 * [Java JDK 8](https://aka.ms/azure-jdks) nebo ekvivalentní, například OpenJDK.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Klient SSH a příkaz `scp`. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -82,7 +82,7 @@ V souboru `pom.xml` je důležité porozumět následujícímu:
     </dependency>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
 * Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
@@ -220,7 +220,7 @@ Tento příkaz pomocí `tmux` rozdělí terminál do dvou sloupců. V obou sloup
 
 Konzumace klienty ze stejné skupiny se realizuje rozdělením tématu na oddíly. V tomto vzorovém kódu má dříve vytvořené téma `test` osm oddílů. Pokud spustíte osm konzumentů, každý z nich bude číst záznamy z jednoho oddílu tématu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Ve skupině příjemců nemůže být víc instancí konzumentů než má téma oddílů. V tomto příkladu může skupina konzumentů obsahovat až osm konzumentů, protože to je počet oddílů tématu. Nebo můžete mít více skupin konzumentů, každou s maximálně osmi konzumenty.
 
 Záznamy se v systému Kafka ukládají v pořadí, ve kterém je oddíl přijme. Pro dosažení doručování záznamů ve správném pořadí *v rámci oddílu* vytvořte skupinu příjemců, ve které bude počet instancí konzumentů odpovídat počtu oddílů. Pro dosažení doručování záznamů ve správném pořadí *v rámci tématu* vytvořte skupinu obsahující pouze jednu instanci konzumenta.

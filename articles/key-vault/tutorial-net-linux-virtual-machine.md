@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 928339a245525933ae142a5d73137ce699cf1f7c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 28c695462f6989efd2e69ab6b0e23df38a8205ff
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712326"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600535"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v .NET
 
 Azure Key Vault pomáhá chránit tajné klíče, jako jsou klíče rozhraní API nebo databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
-V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci ke čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. Tento kurz je založený na službě [Azure Web Apps](../app-service/app-service-web-overview.md). V následujících částech získáte informace o těchto tématech:
+V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci ke čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. V následujících částech získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
@@ -80,7 +80,7 @@ V tomto článku se používá skupina prostředků, kterou jste právě vytvoř
 
 Dále ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vytvoříte trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a může obsahovat pouze následující znaky: 0–9, a–z, A–Z a spojovník (-).
+* Název trezoru klíčů: Název musí být řetězec dlouhý 3 až 24 znaků a musí obsahovat pouze (0-9, a – z, A-Z a -).
 * Název skupiny prostředků.
 * Umístění: **USA – západ**.
 

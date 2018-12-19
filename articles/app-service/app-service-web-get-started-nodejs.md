@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/30/2018
 ms.author: cephalin;msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 4646456acb44f3054ef948a17d3db330e4e1e727
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 33778661d9d46a605543fecee79796835c250479
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257964"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608302"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "53257964"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v Node.js ve službě Azure App Service v Linuxu](./containers/quickstart-nodejs.md).
 >
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu Rychlý start se dozvíte, jak nasadit aplikaci Node.js pomocí služby Azure Web Apps. K vytvoření webové aplikace použijete [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a pak použijete ZipDeploy k nasazení ukázkového kódu Node.js do webové aplikace.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak nasadit aplikaci Node.js do služby Azure App Service. K vytvoření webové aplikace použijete [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) a pak použijete ZipDeploy k nasazení ukázkového kódu Node.js do webové aplikace.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 

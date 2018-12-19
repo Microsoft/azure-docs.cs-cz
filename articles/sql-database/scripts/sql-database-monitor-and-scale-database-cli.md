@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/02/2018
-ms.openlocfilehash: 9021f04dad41f81b935b9412900336687011e87a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
+ms.openlocfilehash: 1953271935b87176e407de96abc41dcd6edcb0f8
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249260"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598665"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>Monitorování a škálování izolované databáze SQL pomocí rozhraní příkazového řádku
 
@@ -57,7 +57,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

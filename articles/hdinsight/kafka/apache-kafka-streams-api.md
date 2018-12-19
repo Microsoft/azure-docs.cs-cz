@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití rozhraní Kafka Streams API – Azure HDInsight '
+title: 'Kurz: Použít API datové proudy Apache Kafka – Azure HDInsight '
 description: Zjistěte, jak používat rozhraní Apache Kafka Streams API se systémem Kafka ve službě HDInsight. Toto rozhraní API umožňuje provádět zpracování datových proudů mezi tématy v systému Kafka.
 services: hdinsight
 ms.service: hdinsight
@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 8319376c597f16a5bfe1a357d74c59453b797e51
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495134"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584152"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Rozhraní Apache Kafka Streams API
+# <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Apache Kafka streams API
 
 Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Apache Kafka datových proudů a spustit ji s využitím Kafka v HDInsight. 
 
 Aplikace použitá v tomto kurzu počítá slova v datovém proudu. Přečte textová data z tématu Kafka, extrahuje jednotlivá slova a pak uloží slova a jejich počet do jiného tématu Kafka.
 
-> [!NOTE]
+> [!NOTE]  
 > Zpracování datových proudů Kafka se často provádí pomocí Apache Spark nebo Apache Storm. V systému Kafka verze 0.10.0 (ve službě HDInsight 3.5 a 3.6) se zavedlo rozhraní Kafka Streams API. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu. 
 >
 > Další informace o datových proudech Kafka najdete v [úvodní dokumentaci k datovým proudům](https://kafka.apache.org/10/documentation/streams/) na webu Apache.org.
@@ -48,7 +48,7 @@ Ve vývojovém prostředí potřebujete mít nainstalované následující kompo
 
 * [Java JDK 8](https://aka.ms/azure-jdks) nebo ekvivalentní, například OpenJDK.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Klient SSH a příkaz `scp`. Další informace najdete v dokumentu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -56,14 +56,14 @@ Ve vývojovém prostředí potřebujete mít nainstalované následující kompo
 
 Ukázková aplikace se nachází na adrese [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v podadresáři `Streaming`. Aplikace se skládá ze dvou souborů:
 
-* `pom.xml`: Tento soubor definuje závislosti projektu, verzi Javy a metody balení.
-* `Stream.java`: Tento soubor implementuje logiku streamování.
+* `pom.xml`: Tento soubor definuje závislosti projektu, verze Javy a balení metody.
+* `Stream.java`: Tento soubor implementuje logiku datových proudů.
 
 ### <a name="pomxml"></a>Pom.xml
 
 V souboru `pom.xml` je důležité porozumět následujícímu:
 
-* Závislosti: Tento projekt spoléhá na rozhraní Kafka Streams API, které je součástí balíčku `kafka-clients`. Tuto závislost definuje následující kód XML:
+* Závislosti: Tento projekt využívá rozhraní API datové proudy Kafka poskytuje `kafka-clients` balíčku. Tuto závislost definuje následující kód XML:
 
     ```xml
     <!-- Kafka client for producer/consumer operations -->
@@ -74,13 +74,13 @@ V souboru `pom.xml` je důležité porozumět následujícímu:
     </dependency>
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Položka `${kafka.version}` se deklaruje v části `<properties>..</properties>` souboru `pom.xml` a je nakonfigurovaná na verzi systému Kafka v clusteru HDInsight.
 
-* Moduly plug-in: Moduly plug-in Mavenu poskytují různé funkce. V tomto projektu se používají následující moduly plug-in:
+* Moduly plug-in: Moduly plug-in maven poskytují různé možnosti. V tomto projektu se používají následující moduly plug-in:
 
-    * `maven-compiler-plugin`: Slouží k nastavení verze Javy, kterou projekt používá, na 8. Javu 8 vyžaduje HDInsight 3.6.
-    * `maven-shade-plugin`: Slouží k vygenerování souboru JAR, který obsahuje tuto aplikaci i všechny závislosti. Používá se také k nastavení vstupního bodu aplikace, abyste mohli přímo spustit soubor JAR bez nutnosti zadávat hlavní třídu.
+    * `maven-compiler-plugin`: Slouží k nastavení Java verze používané v projektu na 8. Javu 8 vyžaduje HDInsight 3.6.
+    * `maven-shade-plugin`: Použít ke generování uber jar, který obsahuje tato aplikace, stejně jako všechny závislosti. Používá se také k nastavení vstupního bodu aplikace, abyste mohli přímo spustit soubor JAR bez nutnosti zadávat hlavní třídu.
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -184,7 +184,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
 4. K vytvoření témat, která používá operace streamování, použijte následující příkazy:
 
-    > [!NOTE]
+    > [!NOTE]  
     > Možná se zobrazí chyba, protože téma `test` již existuje. To je v pořádku, protože se mohlo vytvořit v kurzu k rozhraní Producer and Consumer API.
 
     ```bash
@@ -199,12 +199,12 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
     Témata slouží k následujícím účelům:
 
-    * `test`: V tomto tématu se přijímají záznamy. Odtud čte data aplikace streamování.
-    * `wordcounts`: Do tohoto tématu aplikace streamování ukládá výstup.
-    * `RekeyedIntermediateTopic`: Toto téma slouží k opětovnému rozdělení dat při aktualizaci počtu pomocí operátoru `countByKey`.
-    * `wordcount-example-Counts-changelog`: Toto téma používá operace `countByKey` jako úložiště stavu.
+    * `test`: Toto téma je, kde jsou přijímány záznamy. Odtud čte data aplikace streamování.
+    * `wordcounts`: Toto téma je, kde streamování aplikace ukládá svůj výstup.
+    * `RekeyedIntermediateTopic`: V tomto tématu se používá k znovu rozdělovat data, jako je počet aktualizovat `countByKey` operátor.
+    * `wordcount-example-Counts-changelog`: Toto téma je stav úložiště používané konvencemi `countByKey` operace
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Systém Kafka ve službě HDInsight je také možné nakonfigurovat tak, aby vytvářel témata automaticky. Další informace najdete v dokumentu [Konfigurace automatického vytváření témat](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Spuštění kódu
@@ -215,8 +215,8 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]
-    > Možná se zobrazí upozornění ohledně log4j. To můžete ignorovat.
+    > [!NOTE]  
+    > Může zobrazit upozornění týkající se Apache log4j. To můžete ignorovat.
 
 2. K odesílání záznamů do tématu `test` použijte následující příkaz, který spustí aplikaci producenta:
 
@@ -230,7 +230,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Parametry `--property` říkají konzole konzumenta, aby vytiskla klíč (slovo) společně s počtem (hodnota). Tento parametr také konfiguruje deserializátor, který se použije při čtení těchto hodnot ze systému Kafka.
 
     Výstup se bude podobat následujícímu:
@@ -248,7 +248,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
         jumped  13640
         jumped  13641
    
-    > [!NOTE]
+    > [!NOTE]  
     > Parametr `--from-beginning` konfiguruje konzumenta tak, aby začal číst záznamy uložené v tématu od začátku. Počet se zvýší při každém zjištění slova, takže téma obsahuje pro každé slovo několik záznamů s rostoucím počtem.
 
 7. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření aplikace strojového učení Sparku v Azure HDInsight'
+title: 'Kurz: Sestavení služby machine learning aplikací v Azure HDInsight Spark'
 description: Podrobné pokyny k vytvoření aplikace strojového učení Apache Sparku v clusterech HDInsight Spark pomocí poznámkového bloku Jupyter.
 services: hdinsight
 ms.service: hdinsight
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0a0712e4985414263d1e90299d78d5e30fe78a3e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580555"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608507"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Kurz: Vytvoření Apache Spark machine learningu aplikace v HDInsight 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Kurz: Sestavení Apache Spark machine learningu aplikace v HDInsight 
 
 V tomto kurzu se dozvíte, jak používat [Poznámkový blok Jupyter](https://jupyter.org/) k sestavení [Apache Spark](https://spark.apache.org/) služby machine learning aplikací pro Azure HDInsight. 
 
@@ -97,7 +97,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
     pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
     ```
 
-    Další informace o kanálu a jak funguje najdete v článku věnovaném <a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">kanálu strojového učení Sparku</a>.
+    Další informace o kanálu a jak to funguje, najdete v části <a href="https://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">kanálu strojového učení Apache Sparku</a>.
 
 5. Přizpůsobte kanál pro trénovací dokument.
    
@@ -184,7 +184,7 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
 10. Vypněte poznámkový blok a uvolněte tak prostředky. Provedete to tak, že v nabídce **Soubor** poznámkového bloku vyberete **Zavřít a zastavit**. Tato akce poznámkový blok vypne a zavře.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Použití knihovny Anaconda scikit-learn pro strojové učení Sparku
-Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-learn najdete tady: [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
+Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-learn najdete tady: [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="next-steps"></a>Další postup
 

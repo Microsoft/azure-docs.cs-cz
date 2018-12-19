@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7359374e520469e13d98b88b46ddf467d64d3ba7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 77dd9424f20017b009b3de2cd8f7f78314feb316
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545684"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600246"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
 
@@ -456,4 +456,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

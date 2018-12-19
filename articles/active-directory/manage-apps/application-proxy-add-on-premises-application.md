@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 444fb5576ed6886e5919202cf7f22ef14e1255b5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 91e28ed1f498ce717b72bb592adff324a84f2e09
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321405"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601538"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidat místní aplikace pro vzdálený přístup prostřednictvím Proxy aplikací v Azure Active Directory
 
@@ -119,7 +119,7 @@ Pokud vaše organizace používá proxy servery pro připojení k Internetu, mus
 
 Informace o konektory, plánování kapacity a jak zůstanou aktuální najdete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md). 
 
-Pokud vaše aplikace používá objekty Websocket pro připojení, ujistěte se, že jste nainstalovali nejnovější konektoru.  Objekty Websocket jsou podporovány verze konektoru 1.5.612.0 nebo novější.
+Pokud používáte aplikaci Qlik Sense, vždy nainstalujte nejnovější konektoru. Qlik Sense používá objekty Websocket, která je pouze podporované verze konektoru 1.5.612.0 nebo novější.
 
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>Ověřte konektor nainstalován a správně zaregistrován

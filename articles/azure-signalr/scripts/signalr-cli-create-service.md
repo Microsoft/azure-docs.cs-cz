@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/20/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 364a8b6574b06aa2403ea028fecd0676ba0342a7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8653d8da8b180fb657169523e83a651d822343e4
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256209"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605027"
 ---
 # <a name="create-a-signalr-service"></a>Vytvoření služby SignalR 
 
@@ -48,7 +48,7 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az signalr create](/cli/azure/group#az-group-create) | Vytvoří prostředek služby Azure SignalR. |
+| [az signalr create](/cli/azure/ext/signalr/signalr#ext-signalr-az-signalr-create) | Vytvoří prostředek služby Azure SignalR. |
 | [az signalr key list](/cli/azure/ext/signalr/signalr/key#ext-signalr-az-signalr-key-list) | Vypíše klíče, které bude vaše aplikace používat při nabízení aktualizací obsahu v reálném čase pomocí SignalR. |
 
 

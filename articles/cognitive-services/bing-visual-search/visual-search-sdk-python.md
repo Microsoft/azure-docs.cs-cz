@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Sada SDK Vizuálního vyhledávání Bingu, Python'
+title: 'Rychlý start: Pro vizuální vyhledávání Bingu sady SDK, Python'
 titleSuffix: Azure Cognitive Services
 description: Nastavení pro konzolovou aplikaci v Pythonu sady SDK pro vizuální vyhledávání
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 9f2a6d9b75ccf704862d169b96ea1a1f2edb9815
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ba76e1da73cac1b4f7df79a4c7e903a85ae58931
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445680"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599650"
 ---
-# <a name="quickstart-bing-visual-search-sdk-python"></a>Rychlý start: Sada SDK Vizuálního vyhledávání Bingu v Pythonu
+# <a name="quickstart-bing-visual-search-sdk-python"></a>Rychlý start: Python SDK pro vizuální vyhledávání Bingu
 
 SDK Vizuálního vyhledávání Bingu používá funkce REST API pro webové žádosti a parsování výsledků.
 [Zdrojový kód pro ukázky sady SDK Vizuálního vyhledávání Bingu v Pythonu](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) je dostupný v Git Hubu.
@@ -58,6 +58,7 @@ Pokud chcete vytvořit instanci klienta `VisualSearchAPI`, naimportujte si násl
 import http.client, urllib.parse
 import json
 import os.path
+from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
 from azure.cognitiveservices.search.visualsearch.models import (
     VisualSearchRequest,
@@ -73,7 +74,7 @@ subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
 ```
 Potom vytvořte instanci klienta:
 ```
-var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = WebSearchAPI(ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 Pomocí klienta vyhledejte obrázky a parsujte výsledky:
 ```
@@ -122,6 +123,15 @@ Následující konzolová aplikace provede dříve definovaný dotaz a parsuje v
 import http.client, urllib.parse
 import json
 import os.path
+from msrest.authentication import CognitiveServicesCredentials
+from azure.cognitiveservices.search.visualsearch import VisualSearchAPI
+from azure.cognitiveservices.search.visualsearch.models import (
+    VisualSearchRequest,
+    CropArea,
+    ImageInfo,
+    Filters,
+    KnowledgeRequest,
+)
 
 # Replace the subscriptionKey string value with your valid subscription key.
 subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'

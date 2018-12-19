@@ -1,23 +1,25 @@
 ---
-title: Vyhledávání nestrukturovaných dat v cloudovém úložišti Azure
-description: Vyhledávání nestrukturovaných dat pomocí služby Azure Search.
+title: 'Kurz: Prohledávání nestrukturovaných dat v úložišti objektů Blob v Azure'
+description: 'Kurz: Prohledávání nestrukturovaných dat v úložišti objektů Blob pomocí služby Azure search.'
 author: roygara
 services: storage
 ms.service: storage
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 902009d7807b1ce340000c271350af1c37231d77
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: HT
+ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181188"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599828"
 ---
-# <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Kurz: Vyhledávání nestrukturovaných dat v cloudovém úložišti
+# <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Kurz: Prohledávání nestrukturovaných dat v cloudovém úložišti
 
-V tomto kurzu se dozvíte, jak pomocí [Azure Search](../../search/search-what-is-azure-search.md) vyhledávat nestrukturovaná data na základě dat uložených v objektech blob v Azure. Nestrukturovaná data jsou data, která buď nejsou uspořádaná předdefinovaným způsobem, nebo nemají datový model. Příkladem může být soubor s příponou TXT.
+V tomto kurzu se dozvíte, jak k prohledávání nestrukturovaných dat s využitím [Azure Search](../../search/search-what-is-azure-search.md), pomocí dat uložených v úložišti objektů Blob v Azure. Nestrukturovaná data jsou data, která buď nejsou uspořádaná předdefinovaným způsobem, nebo nemají datový model. Příkladem je soubor s příponou .txt.
+
+Tento kurz vyžaduje, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 V tomto kurzu se naučíte:
 
@@ -27,41 +29,23 @@ V tomto kurzu se naučíte:
 > * Vytvoření kontejneru
 > * Nahrání dat do kontejneru
 > * Vytvoření vyhledávací služby na portálu
+> * Připojení služby search na účet úložiště
+> * Vytvoření zdroje dat
+> * Konfigurace indexu
+> * Vytvoření indexeru
 > * Prohledávání kontejneru pomocí vyhledávací služby
 
-## <a name="download-the-sample"></a>Stažení ukázky
+## <a name="prerequisites"></a>Požadavky
 
-Připravili jsme pro vás ukázkovou datovou sadu. **Stáhněte soubor [clinical-trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip)** a rozbalte ho do samostatné složky.
-
-Ukázka se skládá z textových souborů získaných na webu [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). Můžete je použít jako příklad textových souborů k prohledávání pomocí Azure.
-
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure. Skupina prostředků je logický kontejner pro seskupení služeb Azure. Když vytvoříte účet úložiště, máte možnost vytvořit novou skupinu prostředků nebo použijte existující skupinu prostředků. Tento kurz vytvoří novou skupinu prostředků.
 
 Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-Účet úložiště poskytuje jedinečné umístění pro ukládání datových objektů Azure Storage a přístup k nim.
+Ukázkové datové sadě připravili jsme pro vás tak, aby měli využít pro účely tohoto kurzu. Stáhněte si [klinické trials.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials.zip) a rozbalte ho do samostatné složky.
 
-V současné době existují dva typy účtů úložiště: **Objekt blob** a **Pro obecné účely**. V tomto kurzu vytvoříte účet úložiště typu **Pro obecné účely**.
-
-Pokud ještě nevíte, jak vytvořit účet úložiště pro obecné účely, postup je následující:
-
-1. V nabídce vlevo vyberte **Účty úložiště** a potom **Přidat**.
-
-2. Zadejte jedinečný název účtu úložiště. 
-
-3. Jako **Model nasazení** zvolte **Resource Manager** a v rozevírací nabídce **Druh účtu** zvolte **Pro obecné účely**.
-
-4. V rozevírací nabídce **Replikace** vyberte **Místně redundantní úložiště (LRS)**.
-
-5. U položky **Skupina prostředků** zvolte **Vytvořit nový** a zadejte jedinečný název.
-
-6. Vyberte odpovídající předplatné.
-
-7. Vyberte umístění a zvolte **Vytvořit**.
-
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/storagepanes2.png)
+Ukázka se skládá z textových souborů získaných na webu [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results). V tomto kurzu je využívá jako příklad textové soubory, které budou vyhledány pomocí služby Azure Search.
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -69,15 +53,15 @@ Kontejnery jsou podobné složkám a používají se k ukládání objektů blob
 
 V tomto kurzu uložíte textové soubory získané z webu clinicaltrials.gov do jednoho kontejneru.
 
-1. Na webu Azure Portal přejděte na svůj účet úložiště.
+1. Přejděte do účtu úložiště na webu Azure Portal.
 
-2. U položky **Blob Service** zvolte **Procházet objekty blob**.
+2. Vyberte **procházet objekty BLOB** pod **služby Blob Service**.
 
 3. Přidejte nový kontejner.
 
-4. Dejte tomuto kontejneru název „data“ vyberte **Kontejner** pro veřejnou úroveň přístupu.
+4. Název kontejneru **data** a vyberte **kontejneru** pro úroveň veřejného přístupu.
 
-5. Kliknutím na **OK** kontejner vytvoříte. 
+5. Kliknutím na **OK** kontejner vytvoříte.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/storageactinfo.png)
 
@@ -87,9 +71,9 @@ Vytvořili jste kontejner a teď do něj můžete nahrát ukázková data.
 
 1. Vyberte kontejner a zvolte **Nahrát**.
 
-2. Vyberte modrou ikonu složky vedle pole Soubory a přejděte do místní složky, do které jste rozbalili ukázková data.
+2. Vyberte ikonu modré složky vedle **soubory** pole a přejděte do místní složky, které jste extrahovali ukázková data.
 
-3. Vyberte všechny extrahované soubory a potom zvolte **Otevřít**.
+3. Vyberte všechny extrahované soubory a pak vyberte **otevřít**.
 
 4. Zvolte **Nahrát**, aby se zahájil proces nahrávání.
 
@@ -97,19 +81,19 @@ Vytvořili jste kontejner a teď do něj můžete nahrát ukázková data.
 
 Proces nahrávání může chvíli trvat.
 
-Po jeho dokončení přejděte zpátky do svého datového kontejneru a zkontrolujte, jestli se do něj nahrály textové soubory.
+Poté, co dokončí, přejděte zpět do kontejneru dat potvrďte, že nahraný textové soubory.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/clinicalfolder.png)
 
 ## <a name="create-a-search-service"></a>Vytvoření vyhledávací služby
 
-Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání dat ve webových, mobilních a firemních aplikacích.
+Azure Search je řešení vyhledávání jako služby cloud, které poskytuje vývojářům rozhraní API a nástroje pro přidání vyhledávací funkce nad vašimi daty.
 
-Pokud ještě nevíte, jak vytvořit vyhledávací službu, postup je následující:
+V tomto kurzu použijete k vyhledat textové soubory získané z clinicaltrials.gov vyhledávací službu.
 
-1. Na webu Azure Portal přejděte na svůj účet úložiště.
+1. Přejděte do účtu úložiště na webu Azure Portal.
 
-2. Posuňte se dolů a u položky **BLOB SERVICE** klikněte na **Přidat Azure Search**.
+2. Přejděte dolů a vyberte možnost **přidat Azure Search** pod **služby BLOB SERVICE**.
 
 3. U položky **Importovat data** zvolte **Vyberte svoji službu**.
 
@@ -117,9 +101,9 @@ Pokud ještě nevíte, jak vytvořit vyhledávací službu, postup je následuj�
 
 5. V části **Nová služba vyhledávání** zadejte do pole **Adresa URL** jedinečný název vyhledávací služby.
 
-6. V části **Skupina prostředků** zvolte **Použít existující** a vyberte skupinu prostředků, kterou jste předtím vytvořili.
+6. V části **skupiny prostředků**vyberte **použít existující** a zvolte skupinu prostředků, kterou jste vytvořili dříve.
 
-7. U položky **Cenová úroveň** zvolte úroveň **Free** a klikněte na **Vybrat**.
+7. Pro **cenová úroveň**, vyberte **Free** vrstvy a klikněte na tlačítko **vyberte**.
 
 8. Vytvořte vyhledávací službu kliknutím na **Vytvořit**.
 
@@ -129,74 +113,68 @@ Pokud ještě nevíte, jak vytvořit vyhledávací službu, postup je následuj�
 
 Vytvořili jste vyhledávací službu a teď ji můžete připojit ke svému úložišti objektů blob. Tato část vás provede procesem výběru zdroje dat a vytvořením indexu a indexeru.
 
-1. Přejděte na svůj účet úložiště.
+1. Přejděte do účtu úložiště.
 
-2. U položky **BLOB SERVICE** klikněte na **Přidat Azure Search**.
+2. Vyberte **přidat Azure Search** pod **služby BLOB SERVICE**.
 
-3. U položky **Importovat data** zvolte **Služba vyhledávání** a potom klikněte na vyhledávací službu, kterou jste vytvořili v předchozí části. Otevře se okno **Nový zdroj dat**.
+3. Vyberte **vyhledávací služba** uvnitř **Import dat**a potom klikněte na službu search, kterou jste vytvořili v předchozí části. Tím se otevře **nový zdroj dat**.
 
-### <a name="new-data-source"></a>Nový zdroj dat
+### <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
   Zdroj dat určuje, jaká data se mají indexovat a jak se k nim bude získávat přístup. Stejná vyhledávací služba může opakovaně využívat jeden zdroj dat.
 
 1. Zadejte název zdroje dat. V části **Data, která se mají extrahovat** zvolte **Obsah a metadata**. Zdroj dat určuje, které části objektu blob se mají indexovat.
-    
-    a. Ve vlastních budoucích scénářích můžete taky zvolit **Jenom metadata úložiště**. Tuto položku vyberte v případě, že chcete omezit data k indexaci na standardní vlastnosti objektů blob nebo vlastnosti definované uživatelem.
-    
-    b. Můžete taky zvolit **Všechna metadata** a získat jak standardní vlastnosti objektu blob, tak *všechna* metadata specifická pro daný typ obsahu. 
 
-2. Vzhledem k tomu, že objekty blob, které používáte, jsou textové soubory, u položky **Režim parsování** nastavte **Text**.
-    
-    a. Ve vlastních budoucí scénářích možná budete chtít vybrat [jiné režimy parsování](../../search/search-howto-indexing-azure-blob-storage.md) v závislosti na obsahu objektů blob.
+2. Nastavit, protože používáte objekty BLOB jsou textové soubory, **analýze režimu** k **Text**.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datasources.png)
 
 3. Zvolte **Kontejner úložiště**. Zobrazí se seznam dostupných účtů úložiště.
 
-4. Vyberte svůj účet úložiště a potom vyberte kontejner, který jste předtím vytvořili.
-
-5. Kliknutím na **Vybrat** se vrátíte do okna **Nový zdroj dat**. Pokračujte kliknutím na **OK**.
+4. Vyberte svůj účet úložiště a potom vyberte kontejner, který jste vytvořili dříve.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/datacontainer.png)
 
+5. Klikněte na tlačítko **vyberte** se vraťte do **nový zdroj dat**a vyberte **OK** pokračujte.
+
 ### <a name="configure-the-index"></a>Konfigurace indexu
 
-  Index je kolekce polí ze zdroje dat, která se dají prohledávat. Index umožňuje vyhledávací službě poznat, jakými způsoby se mají vaše data prohledávat.
+  Index je kolekce polí ze zdroje dat, která se dají prohledávat. Nastavit a nakonfigurovat parametry v těchto polí tak, aby vaše vyhledávací služba ví, co způsoby data prohledat.
 
-1. V části **Importovat data** zvolte **Přizpůsobit cílový index**.
- 
+1. V **importovat data**vyberte **přizpůsobit cílový index**.
+
 2. Do pole **Název indexu** zadejte název svého indexu.
 
-3. Zaškrtněte políčko atributu **Zobrazitelné** v části **metadata_storage_name**.
+3. Vyberte **Retrievable** atributu zaškrtávací políčko v oblasti **metadata_storage_name**.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/valuestoselect.png)
 
-4. Klikněte na **OK**. Zobrazí se okno **Vytvořit indexer**.
+4. Vyberte **OK**, která se vyvolá **vytvořit Indexer**.
 
-Parametry indexu a atributy, které jim přiřadíte, mají velký význam. Parametry určují, *jaká* data se mají uložit, a atributy zase udávají, *jak* má ukládání dat probíhat.
+Parametry indexu a atributy, které jim přiřadíte, mají velký význam. Zadejte parametry *co* data k uložení a atributy určují *jak* na tato data ukládat.
 
 Parametry jsou uvedené ve sloupci **NÁZEV POLE**. Následující tabulka obsahuje seznam dostupných atributů a jejich popisy.
 
-### <a name="field-attributes"></a>Atributy polí
+#### <a name="field-attributes"></a>Atributy polí
+
 | Atribut | Popis |
 | --- | --- |
 | *Klíč* |Řetězec obsahující jedinečné ID jednotlivých dokumentů, které slouží k vyhledávání dokumentů. Každý index musí mít jeden klíč. Jenom jedno pole může být klíč a jeho typ musí být nastavený na Edm.String. |
 | *Retrievable* |Určuje, jestli může být pole vrácené ve výsledku hledání. |
 | *Filterable* |Umožňuje použít pole ve filtrovacích dotazech. |
 | *Sortable* |Umožňuje dotazu seřadit výsledky hledání podle tohoto pole. |
-| *Facetable* |Umožňuje použití pole ve struktuře fasetové navigace k filtrování, které je řízené samotným uživatelem. Jako fasety obvykle nejlépe fungují pole, která obsahují opakované hodnoty použitelné k seskupení více dokumentů (například více dokumentů, které spadají pod jednu značku nebo kategorii služeb). |
+| *Facetable* |Umožňuje použití pole ve struktuře fasetové navigace k filtrování, které je řízené samotným uživatelem. Pole, která obsahují opakované hodnoty, které můžete použít k dokumentům skupiny společně (například více dokumentů, které spadají pod jednu značku nebo kategorii služeb) obvykle fungují nejlépe jako omezujících vlastností. |
 | *Searchable* |Označí pole jako fulltextově prohledávatelné. |
 
-
 ### <a name="create-an-indexer"></a>Vytvoření indexeru
-    
+
   Indexer propojuje zdroj dat s indexem vyhledávání a poskytuje plán přeindexování dat.
 
 1. Do pole **Název** zadejte název a klikněte na **OK**.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exindexer.png)
 
-2. Vrátíte se do okna **Importovat data**. Kliknutím na **OK** dokončíte proces připojování.
+2. Budete přesměrováni zpět **Import dat**. Vyberte **OK** dokončete proces připojení.
 
 Právě jste úspěšně připojili svůj objekt blob k vyhledávací službě. Bude několik minut trvat, než se naplnění indexu daty projeví na portálu. Vyhledávací služba ale hned začne indexovat, takže můžete okamžitě vyhledávat.
 
@@ -206,53 +184,54 @@ Pokud chcete prohledávat soubory, otevřete v nově vytvořené vyhledávací s
 
 Následující postup vám napoví, kde Průzkumníka služby Hledání najít, a najdete v něm i pár ukázkových dotazů:
 
-1. Přejděte na všechny prostředky a najděte nově vytvořenou vyhledávací službu.
+1. Přejít na všechny prostředky a najděte si nově vytvořený vyhledávací službu.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/exampleurl.png)
 
-3. Vyberte svůj index a otevřete ho. 
+2. Vyberte indexu tak, aby ho otevřete.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/overview.png)
 
-4. Vyberte a otevřete **Průzkumníka služby Hledání**, ve kterém můžete zadávat živé dotazy na data.
+3. Vyberte **Průzkumníka služby Search** otevřete Průzkumníka služby search, kde můžete provádět živých dotazů na data.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/indexespane.png)
 
-5. Při prázdném poli řetězce dotazu zvolte **Hledat**. Prázdný dotaz vrátí *všechna* data z objektů blob.
+4. Při prázdném poli řetězce dotazu zvolte **Hledat**. Prázdný dotaz vrátí *všechna* data z objektů blob.
 
   ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/emptySearch.png)
 
-### <a name="full-text-search"></a>Fulltextové vyhledávání 
+### <a name="perform-a-full-text-search"></a>Fulltextové vyhledávání
 
-Do pole **Řetězec dotazu** zadejte „Myopia“ a zvolte **Hledat**. Zahájí se prohledávání obsahu souborů a vrátí se podmnožina souborů, které obsahují slovo „Myopia“.
+Zadejte **Myopia** v **řetězec dotazu** pole a vyberte **hledání**. Tento krok spustí vyhledávání soubory obsahu a vrátí jen některé z nich, který obsahuje slovo "Myopia."
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/secondMyopia.png) 
+  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/secondMyopia.png)
 
-### <a name="system-properties-search"></a>Vyhledávání podle systémových vlastností
+### <a name="perform-a-system-properties-search"></a>Hledání vlastnosti systému
 
-Pomocí parametru `$select` můžete taky vytvářet dotazy, které vyhledávají podle systémových vlastností. Do řetězce dotazu zadejte `$select=metadata_storage_name` a stiskněte Enter. Vrátí se jenom příslušné pole.
-    
+Kromě fulltextové vyhledávání, můžete vytvořit dotazy, které hledat podle vlastností systému pomocí `$select` parametru.
+
+Zadejte `$select=metadata_storage_name` do řetězce dotazu a stiskněte klávesu **Enter**. To způsobí, že pouze tento konkrétní pole se má vrátit.
+
 Řetězec dotazu přímo upravuje adresu URL, takže v něm nejsou povolené mezery. Pokud chcete vyhledat víc polí, použijte čárku, jak je vidět tady: `$select=metadata_storage_name,metadata_storage_path`
-    
+
 Parametr `$select` se dá použít jenom u polí, která při definování indexu označíte jako zobrazitelná.
 
-  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/metadatasearchunstructured.png) 
+  ![Prohledávání nestrukturovaných dat](media/storage-unstructured-search/metadatasearchunstructured.png)
 
 Právě jste dokončili tento kurz a máte prohledávatelnou sadu nestrukturovaných dat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto kurzu jste se seznámili s prohledáváním nestrukturovaných dat pomocí služby Azure Search a následujícími tématy:
+Nejjednodušší způsob, jak odebrat prostředky, které jste vytvořili, je odstranit skupinu prostředků. Odebráním skupiny prostředků se odstraní také všechny prostředky, které tato skupina obsahuje. V následujícím příkladu se odebráním skupiny prostředků odebere účet úložiště a samotná skupiny prostředků.
 
-> [!div class="checklist"]
-> * Vytvoření skupiny prostředků
-> * vytvořit účet úložiště
-> * Vytvoření kontejneru
-> * Nahrání dat do kontejneru
-> * Vytvoření vyhledávací služby
-> * Prohledávání kontejneru pomocí vyhledávací služby
+1. Na webu Azure Portal přejděte na seznam skupin prostředků ve vašem předplatném.
+2. Vyberte skupinu prostředků, kterou chcete odstranit.
+3. Vyberte **odstranit skupinu prostředků** tlačítko a zadejte název skupiny prostředků v poli odstranění.
+4. Vyberte **Odstranit**.
 
-Pokud se chcete dozvědět víc o indexování dokumentů v Azure Search, klikněte na následující odkaz.
+## <a name="next-steps"></a>Další postup
+
+Další informace o indexování dokumentů s Azure Search na následujícím odkazu:
 
 > [!div class="nextstepaction"]
 > [Indexování dokumentů pomocí služby Azure Blob Storage v Azure Search](../../search/search-howto-indexing-azure-blob-storage.md)

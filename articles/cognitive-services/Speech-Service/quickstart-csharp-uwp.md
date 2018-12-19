@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 55988ef65e223c76a485c3cbec13626abf68d3b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 036c5230104e9915f9bcbaa5dd535a359fecf55a
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104625"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599446"
 ---
-# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte aplikaci pro Univerzální platformu Windows (UPW) v jazyce C# pomocí sady Cognitive Services [Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu zařízení na text. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
+V tomto článku se při vývoji C# univerzální platformu Windows (UPW; Windows verze 1709 později) aplikací pomocí služeb Cognitive Services [sadou SDK pro řeč](speech-sdk.md). Program se přepisy řeči na text v reálném čase z vašeho zařízení mikrofonu. Tato aplikace je vytvořená pomocí [balíčku NuGet sady Speech SDK](https://aka.ms/csspeech/nuget) a sady Microsoft Visual Studio 2017 (libovolné edice).
 
 > [!NOTE]
 > Univerzální platforma Windows umožňuje vyvíjet aplikace, které běží na všech zařízeních podporujících Windows 10 včetně počítačů, Xboxu, Surface Hubu a dalších.
@@ -45,7 +45,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
     ![Snímek obrazovky s dialogovým oknem Nový projekt](media/sdk/qs-csharp-uwp-01-new-blank-app.png)
 
-1. Sada Speech SDK vyžaduje, aby aplikace byla vytvořená pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
+1. Sadou SDK pro řeč vyžaduje sestavení vaší aplikace pro Windows 10 Fall Creators Update nebo novější. V zobrazeném okně **Nový projekt Univerzální platformy Windows** zvolte v poli **Minimální verze** možnost **Windows 10 Fall Creators Update (10.0; build 16299)**. V poli **Cílová verze** vyberte tuto nebo novější verzi a pak klikněte na **OK**.
 
     ![Snímek obrazovky s oknem Nový projekt univerzální platformy Windows](media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
@@ -71,7 +71,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 1. V konzole Správce balíčků se zobrazí následující řádek výstupu.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.1.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.2.0' to helloworld
    ```
 
 1. Protože aplikace používá mikrofon pro hlasový vstup, přidejte do projektu schopnost **Mikrofon**. V Průzkumníku řešení dvakrát klikněte na **Package.appxmanifest** a upravte manifest aplikace. Přepněte na kartu **Schopnosti**, zaškrtněte políčko u schopnosti **Mikrofon** a uložte provedené změny.

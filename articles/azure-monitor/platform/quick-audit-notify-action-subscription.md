@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 76ed904a90b84e7b0bac86b2ed5380289d7802c1
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 79375dbbc7c966f2e972389788cefe8a0fe3692d
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388045"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582673"
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Audit a přijímání oznámení o důležitých akcích ve vašem předplatném Azure
 
@@ -98,4 +98,4 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a skupinu zabezpeč
 V tomto rychlém startu jste provedli operaci pro vygenerování události protokolu aktivit a následně jste vytvořili upozornění protokolu aktivit, abyste byli informováni o dalším výskytu této operace v budoucnu. Pak jste upozornění otestovali opětovným provedením této operace. Azure zpřístupňuje události protokolu aktivit za posledních 90 dnů. Pokud potřebujete události uchovávat déle než 90 dnů, zkuste data protokolu aktivit archivovat společně s dalšími daty monitorování.
 
 > [!div class="nextstepaction"]
-> [Archivace dat monitorování](./../../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md)
+> [Archivace dat monitorování](./../../azure-monitor/learn/tutorial-archive-data.md)

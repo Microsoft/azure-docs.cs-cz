@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b22ea49367009a4c76135d979d783c5b73449d9d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2351acea7fe5361e22e8221572b81085a0e3a476
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261564"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606924"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
 
-[Azure App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Kromě toho zahrnuje App Service integrovanou podporu [Sdílení prostředků různého původu (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) pro rozhraní RESTful API. V tomto kurzu se dozvíte, jak do App Service nasadit aplikaci ASP.NET Core API s podporou CORS. Aplikaci nakonfigurujete pomocí nástrojů příkazového řádku a nasadíte pomocí Gitu. 
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Kromě toho zahrnuje App Service integrovanou podporu [Sdílení prostředků různého původu (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) pro rozhraní RESTful API. V tomto kurzu se dozvíte, jak do App Service nasadit aplikaci ASP.NET Core API s podporou CORS. Aplikaci nakonfigurujete pomocí nástrojů příkazového řádku a nasadíte pomocí Gitu. 
 
 V tomto kurzu se naučíte:
 

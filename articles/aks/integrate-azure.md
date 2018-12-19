@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: d0b6fc1ebd08b29b9acc28cfb0107b815c7d7bad
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
-ms.translationtype: HT
+ms.openlocfilehash: 74240298b0c8bec46ab2beab6fcdfbb59fd7b12a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068234"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579970"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
@@ -77,7 +77,7 @@ v1beta1.storage.k8s.io               10
 
 Dalším krokem je instalace zprostředkovatele [Open Service Broker for Azure][open-service-broker-azure], která zahrnuje katalog pro služby spravované Azure. Příkladem dostupných služeb Azure jsou Azure Database for PostgreSQL, Azure Database for MySQL a Azure SQL Database.
 
-Začněte přidáním zprostředkovatele Open Service Broker for Azure do úložiště Helmu:
+Začněte přidáním zprostředkovatele Open Service Broker pro Azure do úložiště helmu:
 
 ```azurecli-interactive
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
@@ -171,7 +171,7 @@ Nakonec zobrazte seznam všech dostupných plánů služeb. Plány služeb jsou 
 V tomto kroku použijete Helm k instalaci aktualizovaného grafu Helm pro WordPress. Tento graf zřídí externí instanci Azure Database for MySQL, kterou může použít WordPress. Tento proces může trvat několik minut.
 
 ```azurecli-interactive
-helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0
+helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 K ověření, že instalace zřídila správné prostředky, zobrazte seznam nainstalovaných instancí služeb a vazeb:
@@ -187,7 +187,7 @@ Zobrazte seznam nainstalovaných tajných kódů:
 kubectl get secrets -n wordpress -o yaml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Podle tohoto článku jste nasadili Service Catalog do clusteru Azure Kubernetes Service (AKS). Použili jste Open Service Broker for Azure k nasazení instalace WordPressu, která využívá služby spravované Azure, v tomto případě Azure Database for MySQL.
 

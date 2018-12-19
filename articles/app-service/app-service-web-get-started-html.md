@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 237b0e104ca6e9ecd0b807dc61ec848ab436ce7f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99afa5a1167d5f1a06504aacdca215564a672833
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543202"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608592"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start vás provede postupem nasazení základního webu v HTML se styly CSS do služby Azure Web Apps. Absolvujete ho ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento rychlý start ukazuje, jak nasazení základní lokality HTML + CSS do služby Azure App Service. Absolvujete ho ve službě [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale příkazy můžete také spouštět místně pomocí [Azure CLI](/cli/azure/install-azure-cli).
 
 ![Domovská stránka ukázkové aplikace](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 

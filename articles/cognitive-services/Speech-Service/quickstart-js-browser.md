@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka Javascript (prohlížeči) – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka JavaScript (prohlížeči) – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v JavaScriptu v prohlížeči s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: f8b6f4d39ce4dc65d691ec6a0e3d0734abb19734
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 01e66e1e592d98433a015dfb294a6182438be238
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087911"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601878"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v JavaScriptu v prohlížeči s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sady SDK služby řeči
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit web pro přepis řeči na text s využitím vazby JavaScriptu na sadu Cognitive Services Speech SDK.
-Tato aplikace je založená na sadě Microsoft Cognitive Services Speech SDK ([stáhnout verzi 1.1.0](https://aka.ms/csspeech/jsbrowserpackage)).
+Aplikace je založena na Microsoft Cognitive Services sadou SDK pro řeč ([stáhnout verzi 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,8 +40,8 @@ Vytvořte novou prázdnou složku. Pokud chcete ukázku hostovat na webovém ser
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Měly by se rozbalit dva soubory, tj. `microsoft.cognitiveservices.speech.sdk.bundle.js` a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
-Druhý soubor je volitelný a v případě potřeby slouží jako pomůcka při ladění kódu sady SDK.
+Stáhněte si sadu Speech SDK jako [balíček .zip](https://aka.ms/csspeech/jsbrowserpackage) a rozbalte ho do nově vytvořené složky. Výsledkem je dva soubory během rozbalování `microsoft.cognitiveservices.speech.sdk.bundle.js` a `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Druhá možnost soubor je volitelný a je užitečné pro ladění do kódu SDK.
 
 ## <a name="create-an-indexhtml-page"></a>Vytvoření stránky index.html
 
@@ -74,7 +74,7 @@ Vytvořte ve složce nový soubor `index.html` a otevřete ho v textovém editor
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#speechsdkref)]
 
-1. Nastavte obslužné rutiny pro tlačítko rozpoznávání, výsledek rozpoznávání a pole související s předplatným definovaná v kódu uživatelského rozhraní:
+1. Nastavit obslužné rutiny pro rozpoznávání tlačítko, výsledek rozpoznání a týkajících se předplatného polí definovaných v kódu uživatelského rozhraní:
 
   [!code-html[](~/samples-cognitive-services-speech-sdk/quickstart/js-browser/index.html#quickstartcode)]
 

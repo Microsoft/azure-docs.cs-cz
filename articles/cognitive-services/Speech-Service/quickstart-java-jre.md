@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 7d1f26a43866025c3b542fc10a3f316ad0d1dc37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9b8327a529baf230bc64dd9abcc808924b31293b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103111"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603431"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v Javě ve Windows nebo v Linuxu s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java na Windows nebo Linux s použitím sady SDK služby řeči
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven sady Speech SDK a prostředí Eclipse Java IDE (verze 4.8) na 64bitovém systému Windows nebo Ubuntu Linux 16.04. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Ubuntu Linux 16.04 nebo Windows 64-bit / 18.04. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
@@ -33,7 +33,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 ## <a name="create-and-configure-project"></a>Vytvoření a konfigurace projektu
 
-Pokud používáte Ubuntu 16.04, proveďte před spuštěním Eclipse následující příkazy, abyste se ujistili, že jsou vyžadované balíčky nainstalované.
+Pokud používáte Ubuntu 16.04 nebo 18.04, před zahájením Eclipse, spusťte následující příkazy, abyste měli jistotu, že jsou nainstalované požadované balíčky.
 
   ```sh
   sudo apt-get update
@@ -74,7 +74,7 @@ Pokud používáte Ubuntu 16.04, proveďte před spuštěním Eclipse následuj�
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-  * Přidejte také element `dependencies`, ve kterém nastavíte jako závislost sadu Speech SDK verze 1.1.0:
+  * Také přidat `dependencies` element se sadou SDK pro řeč verzi 1.2.0 jako závislost:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

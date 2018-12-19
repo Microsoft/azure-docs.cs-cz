@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření aplikace Scala Maven pro Spark v Azure HDInsight pomocí IntelliJ'
+title: 'Kurz: Vytvoření aplikace v jazyce Scala Maven pro Spark v Azure HDInsight pomocí IntelliJ'
 description: Vytvořte aplikaci Spark napsanou v jazyce Scala, která jako sestavovací systém používá Apache Maven, s využitím existujícího archetypu Maven pro Scala, který poskytuje IntelliJ IDEA.
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: eef755c01a6703976383ee31b52bde14d32f0110
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499306"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604061"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace v jazyce Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
@@ -26,7 +26,7 @@ V tomto kurzu se dozvíte, jak vytvořit [Apache Spark](https://spark.apache.org
 * Vygenerování souboru JAR, který je možné odeslat do clusterů HDInsight Spark
 * Spuštění aplikace v clusteru Spark pomocí Livy
 
-> [!NOTE]
+> [!NOTE]  
 > HDInsight také nabízí nástroj v podobě modulu plug-in pro IntelliJ IDEA, který zjednodušuje proces vytváření a odesílání aplikací do clusteru HDInsight Spark v Linuxu. Další informace najdete v tématu [použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Apache Spark](apache-spark-intellij-tool-plugin.md).
 > 
 

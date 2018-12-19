@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Použití doménového modelu – REST, PHP – počítačové zpracování obrazu'
+title: 'Rychlý start: Obsah specifický pro doménu image - REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete doménový model k identifikaci památek na obrázku pomocí rozhraní API pro počítačové zpracování obrazu a PHP.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 176e11615fe2f2c1b58b7608dfd5cbd349f9e547
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 19aa1874a93c4a52f6fc5ff75848c1ca6815db1e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340065"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581330"
 ---
-# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Rychlý start: Použití doménového modelu pomocí rozhraní REST API a PHP v počítačovém zpracování obrazu
+# <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Rychlý start: Rozpoznávání obsahu specifického pro doménu pomocí rozhraní REST API a PHP s pro počítačové zpracování obrazu
 
 V tomto rychlém startu použijete doménový model k identifikaci památek nebo (volitelně) celebrit na vzdáleně uloženém obrázku pomocí rozhraní REST API počítačového zpracování obrazu. K rozpoznávání obsahu na obrázku pomocí metody [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) můžete využít model specifický pro doménu.
 
@@ -33,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Nainstalujte balíček PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+1. Nainstalujte balíček PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2).
    1. Otevřete okno příkazového řádku jako správce.
    1. Spusťte následující příkaz:
 
@@ -151,7 +152,7 @@ Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte bal�
 
 3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

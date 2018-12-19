@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e739f3905ff2bbb60669b1f1e214a4630b896db4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 695cc2afbfd231758e90889eea2c154fbc16dffb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255461"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602609"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Škálování aplikací ASP.NET Core SignalR pomocí služby Azure SignalR
 
@@ -21,7 +21,7 @@ V současné době jsou [dvě verze](https://docs.microsoft.com/aspnet/core/sign
 
 SignalR pro ASP.NET Core je přepsaná předchozí verze. To znamená, že SignalR pro ASP.NET Core není zpětně kompatibilní se starší verzí SignalR. Rozhraní API a chování se liší. Sada SDK služby SignalR pro ASP.NET Core cílí na .NET Standard, takže ji stále můžete používat s rozhraním .NET Framework. Místo starých rozhraní API však musíte použít nová rozhraní API. Pokud používáte SignalR a chcete přejít na SignalR pro ASP.NET Core neboli službu Azure SignalR, budete muset změnit svůj kód s ohledem na rozdíly v rozhraních API.
 
-V případě služby Azure SignalR je serverová komponenta SignalR pro ASP.NET Core hostovaná v Azure. Vzhledem k tomu, že tato technologie využívá ASP.NET Core, však budete moct spouštět vlastní webové aplikace na několika platformách (Windows, Linux a MacOS), zatímco k hostování můžete použít [Azure App Service](../app-service/app-service-web-overview.md), [službu IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index), [NGINX](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx), [Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) nebo [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index). Ve vlastním procesu můžete využít také samoobslužné hostování.
+V případě služby Azure SignalR je serverová komponenta SignalR pro ASP.NET Core hostovaná v Azure. Vzhledem k tomu, že tato technologie využívá ASP.NET Core, však budete moct spouštět vlastní webové aplikace na několika platformách (Windows, Linux a MacOS), zatímco k hostování můžete použít [Azure App Service](../app-service/overview.md), [službu IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index), [NGINX](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx), [Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) nebo [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index). Ve vlastním procesu můžete využít také samoobslužné hostování.
 
 Pokud mezi cíle vaší aplikace patří podpora nejnovějších funkcí pro aktualizace obsahu webových klientů v reálném čase, provoz na několika platformách (Azure, Windows, Linux a macOS) a hostování v různých prostředích, může být nejlepší volbou využít službu Azure SignalR.
 

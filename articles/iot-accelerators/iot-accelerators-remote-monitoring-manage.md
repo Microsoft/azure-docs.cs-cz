@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zařízení v založené na Azure vzdálené monitorování řešení kurzu | Dokumentace Microsoftu
+title: Konfigurace zařízení v vzdáleného monitorování řešení kurz – Azure | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak nakonfigurovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679150"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599497"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k řešení monitorování
 

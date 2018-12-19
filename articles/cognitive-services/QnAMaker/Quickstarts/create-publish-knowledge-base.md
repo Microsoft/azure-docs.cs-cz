@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: c57edd897797d4352706283072aa19444948436b
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4b4f208524f18b98d44dc3d34e05359445fb2f17
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644781"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598306"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Vytvoření, trénování a publikování znalostní báze služby QnA Maker
 
@@ -57,9 +57,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
 11. V pravém horním rohu vyberte **Save and train** (Uložit a natrénovat), aby se uložily provedené úpravy a natrénoval model služby QnA Maker. Úpravy se nezachovají, pokud se neuloží.
 
-   ![Uložení a natrénování](../media/qnamaker-quickstart-kb/add-qna-pair2.png)
-
-12. V pravém horním rohu vyberte **Test** (Otestovat) a otestujte, že se provedené změny projevily. Do pole zadejte **hi there** a stiskněte Enter. Jako odpověď by se měla zobrazit odpověď, kterou jste vytvořili.
+12. V pravém horním rohu vyberte **Test** (Otestovat) a otestujte, že se provedené změny projevily. Zadejte `hi there` do pole a stiskněte Enter. Jako odpověď by se měla zobrazit odpověď, kterou jste vytvořili.
 
 13. Pokud chcete odpověď prozkoumat podrobněji, vyberte **Inspect** (Prozkoumat). Okno Test slouží k testování změn znalostní báze před publikováním.
 
@@ -73,7 +71,7 @@ Znalostní bázi služby QnA Maker můžete vytvořit s použitím vlastního ob
 
    ![Publikování](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření znalostní báze](../How-To/create-knowledge-base.md)

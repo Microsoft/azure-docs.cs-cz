@@ -16,16 +16,16 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2debb52c703aaa25b2ff0a182bed3e07431b6f48
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3eff646a1b3681c58c820695d296d5e09297e03b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270259"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600199"
 ---
-# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-web-apps"></a>Kurz: Mapování existujícího vlastního názvu DNS na Azure Web Apps
+# <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak mapovat existující vlastní název DNS na Azure Web Apps.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak mapovat existující vlastní název DNS do služby Azure App Service.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -156,7 +156,7 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -231,7 +231,7 @@ Zobrazení nového názvu hostitele na stránce **Vlastní domény** aplikace m�
 ![Přidaný záznam A](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 Pokud jste nějaký krok vynechali nebo jste někde udělali překlep, ve spodní části stránky se zobrazí chyba ověření.
 
@@ -286,7 +286,7 @@ Znovu vyberte ikonu **+** a přidejte další název hostitele, který odpovíd�
 ![Přidaný záznam CNAME](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Pokud chcete přidat vazbu SSL, přečtěte si téma [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md).
+> Pokud chcete přidat vazbu SSL, najdete v článku [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Test v prohlížeči
 
@@ -334,7 +334,7 @@ az webapp config hostname add \
     --hostname <fully_qualified_domain_name> 
 ``` 
 
-Další informace najdete v tématu [Mapování vlastní domény na webovou aplikaci](scripts/app-service-cli-configure-custom-domain.md). 
+Další informace najdete v tématu [Mapování vlastní domény na webovou aplikaci](scripts/cli-configure-custom-domain.md). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
@@ -347,7 +347,7 @@ Set-AzureRmWebApp `
     -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
 ```
 
-Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/app-service-powershell-configure-custom-domain.md).
+Další informace najdete v tématu [Přiřazení vlastní domény k webové aplikaci](scripts/powershell-configure-custom-domain.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -363,4 +363,4 @@ V tomto kurzu jste se naučili:
 V dalším kurzu se dozvíte, jak vytvořit vazbu vlastního certifikátu SSL k webové aplikaci.
 
 > [!div class="nextstepaction"]
-> [Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](app-service-web-tutorial-custom-ssl.md)

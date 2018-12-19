@@ -11,27 +11,27 @@ ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea446c89fc74fca444793a5e0f803a54fa251ed1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d93eadd1053cfbc88b2d0748f2f22e359694baa7
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312166"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579647"
 ---
-# <a name="tutorial--deploy-an-image-classification-model-in-azure-container-instance"></a>Kurz:  Nasadit model klasifikace image v Azure Container Instance
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Kurz: Nasadit model klasifikace obrázků ve službě Azure Container Instances
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V [předchozím kurzu](tutorial-train-models-with-aml.md) jste trénovali modely strojového učení a pak jste zaregistrovali model ve vašem pracovním prostoru v cloudu.  
 
-Nyní jste připraveni tento model nasadíme jako webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Webová služba je image, v tomto případě image Dockeru, která obsahuje logiku hodnocení a samotný model. 
+Nyní jste připraveni tento model nasadíme jako webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/). Webová služba je image, v tomto případě image Dockeru. Zapouzdřuje bodovací logiku a samotného modelu. 
 
-V této části kurzu použijete službu Azure Machine Learning:
+V této části kurzu se pomocí služby Azure Machine Learning pro následující úlohy:
 
 > [!div class="checklist"]
-> * Nastavení vašeho testovacího prostředí
-> * Načtení modelu z vašeho pracovního prostoru
-> * Místní testování modelu
-> * Nasazení modelu Container Instances
-> * Testování nasazeného modelu
+> * Nastavte své testovací prostředí.
+> * Načtení z pracovního prostoru modelu.
+> * Otestování modelu místně.
+> * Nasazení modelu do služby Container Instances.
+> * Otestujte nasazeného modelu.
 
 Container Instances není ideální pro nasazení v produkčním prostředí, ale je velmi vhodná pro testování a pochopení pracovního postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md).
 
@@ -46,7 +46,7 @@ V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupy
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončení cvičení modelu do poznámkového bloku následující: [Kurz #1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Proveďte cvičení modelu do poznámkového bloku následující: [Kurz (část 1): Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning](tutorial-train-models-with-aml.md).  
 
 
 ## <a name="set-up-the-environment"></a>Nastavení prostředí
@@ -55,7 +55,7 @@ Začněte tím, že nastavíte testovací prostředí.
 
 ### <a name="import-packages"></a>Import balíčků
 
-Naimportujte balíčky Pythonu, které jsou pro tento kurz potřeba.
+Importujte balíčky Pythonu pro tento kurz potřeba:
 
 ```python
 %matplotlib inline
@@ -72,7 +72,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="retrieve-the-model"></a>Načtení modelu
 
-V předchozím kurzu jste zaregistrovali model ve vašem pracovním prostoru. Teď načtete tento pracovní prostor a stáhnete model do místního adresáře.
+V předchozím kurzu jste zaregistrovali model ve vašem pracovním prostoru. Teď načíst tento pracovní prostor a stahovat modelu do místního adresáře:
 
 
 ```python
@@ -87,16 +87,16 @@ import os
 os.stat('./sklearn_mnist_model.pkl')
 ```
 
-## <a name="test-model-locally"></a>Místní testování modelu
+## <a name="test-the-model-locally"></a>Místní testování modelu
 
-Před nasazením ověřte pomocí těchto postupů, že model funguje místně:
-* Načtení testovacích dat
-* Předpovídání testovacích dat
-* Prozkoumání chybové matice
+Před nasazením, ujistěte se, že váš model funguje místně:
+* Data zátěžového testu.
+* Předpověď testovací data.
+* Zkontrolujte chybovou matici.
 
 ### <a name="load-test-data"></a>Načtení testovacích dat
 
-Načtěte testovací data z adresáře **./data/**, který se vytvořil během kurzu věnovaného trénování.
+Načíst testovací data z **. /data/** adresář vytvořený během kurzu školení:
 
 ```python
 from utils import load_data
@@ -110,7 +110,7 @@ y_test = load_data('./data/test-labels.gz', True).reshape(-1)
 
 ### <a name="predict-test-data"></a>Předpovídání testovacích dat
 
-Vložte testovací datovou sadu do modelu, abyste získali předpovědi.
+Chcete-li získat predikcí, informačního kanálu testovací datové modelu:
 
 ```python
 import pickle
@@ -122,7 +122,7 @@ y_hat = clf.predict(X_test)
 
 ###  <a name="examine-the-confusion-matrix"></a>Prozkoumání chybové matice
 
-Vygenerujte chybovou matici, abyste zjistili, kolik vzorků z testovací sady má správnou klasifikaci. Všimněte si, že chybně klasifikované hodnotu pro nesprávný předpovědi. 
+Vygenerujte chybovou matici, abyste zjistili, kolik vzorků z testovací sady má správnou klasifikaci. Všimněte si, že chybně klasifikované hodnota nesprávné předpovědí: 
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -147,7 +147,7 @@ Výstup zobrazuje chybovou matici:
     Overall accuracy: 0.9204
    
 
-Pomocí knihovny `matplotlib` zobrazíte chybovou matici jako graf. V tomto grafu osa X představuje skutečné hodnoty a osa Y představuje předpovídané hodnoty. Barva v jednotlivých polích mřížky představuje chybovost. Čím světlejší je barva, tím vyšší je chybovost. Například mnoho 5 jsou chybně klasifikované jako od 3. Proto se zobrazí jasně mřížky v (5,3).
+Pomocí knihovny `matplotlib` zobrazíte chybovou matici jako graf. V tomto grafu zobrazuje skutečné hodnoty osy x a osy y zobrazí predikované hodnoty. Zobrazí barva v každé mřížce míra chyb. Čím světlejší je barva, tím vyšší je chybovost. Například mnoho 5 jsou chybně klasifikované jako od 3. Zobrazí se tak jasně mřížky v (5,3):
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -172,23 +172,23 @@ plt.show()
 
 ![Diagram znázorňující chybovou matici](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-web-service"></a>Nasazení jako webová služba
+## <a name="deploy-as-a-web-service"></a>Nasadit jako webovou službu
 
-Jakmile jste otestovali modelu a s výsledky spokojeni, tento model nasadíme jako webovou službu hostované ve službě Container Instances. 
+Po testování modelu a budete spokojeni s výsledky, tento model nasadíme jako webovou službu hostované ve službě Container Instances. 
 
-K vytvoření správné prostředí pro Container Instances, zadejte následující:
-* Hodnoticí skript, který ukáže, jak se daný model používá
-* Soubor prostředí, který ukáže balíčky, které je nutné nainstalovat
-* Konfigurační soubor k vytvoření instance kontejneru
-* Model, který jste natrénovali
+K vytvoření správné prostředí pro Container Instances, obsahují následující součásti:
+* Hodnoticí skript, který ukazují, jak použít model.
+* Prostředí soubor, který chcete zobrazit, co musíte balíčky nainstalovat.
+* Konfigurační soubor k vytvoření instance kontejneru.
+* Model, který jste dříve školení.
 
 <a name="make-script"></a>
 
 ### <a name="create-scoring-script"></a>Vytvoření hodnoticího skriptu
 
-Vytváření hodnoticí skript volá score.py. Volání webové služby pomocí této funkce ukazují, jak použít model.
+Vytváření hodnoticí skript volá **score.py**. Volání webové služby používá tento skript k ukazují, jak použít model.
 
-Do hodnoticího skriptu je nutné zahrnout dvě povinné funkce:
+Zahrnout tyto dvě požadované funkce hodnoticí skript:
 * Funkce `init()`, která obvykle načítá daný model do globálního objektu. Tato funkce se spustí jenom jednou, a to při spuštění kontejneru Dockeru. 
 
 * Funkce `run(input_data)` používá daný model k předpovědi hodnoty na základě vstupních dat. Vstupy a výstupy spuštění obvykle pro serializaci a deserializaci používají JSON, ale podporují se i další formáty.
@@ -206,7 +206,7 @@ from azureml.core.model import Model
 
 def init():
     global model
-    # retreive the path to the model file using the model name
+    # retrieve the path to the model file using the model name
     model_path = Model.get_model_path('sklearn_mnist')
     model = joblib.load(model_path)
 
@@ -221,7 +221,7 @@ def run(raw_data):
 
 ### <a name="create-environment-file"></a>Vytvoření souboru prostředí
 
-Pak vytvořte soubor prostředí s názvem myenv.yml, který určuje všechny závislosti balíčků daného skriptu. Tento soubor slouží k tomu, aby se zajistila instalace všech těchto závislostí do image Dockeru. Tento model vyžaduje `scikit-learn` a `azureml-sdk`.
+Dále vytvořte souboru prostředí s názvem **myenv.yml**, všechny závislé součásti balíčku skript, který určuje. Tento soubor se používá, abyste měli jistotu, že všechny tyto závislosti nainstalují do image Dockeru. Tento model musí `scikit-learn` a `azureml-sdk`:
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies 
@@ -232,16 +232,16 @@ myenv.add_conda_package("scikit-learn")
 with open("myenv.yml","w") as f:
     f.write(myenv.serialize_to_string())
 ```
-Zkontrolujte obsah souboru `myenv.yml`.
+Zkontrolujte obsah `myenv.yml` souboru:
 
 ```python
 with open("myenv.yml","r") as f:
     print(f.read())
 ```
 
-### <a name="create-configuration-file"></a>Vytvoření konfiguračního souboru
+### <a name="create-a-configuration-file"></a>Vytvoření konfiguračního souboru
 
-Vytvořte konfigurační soubor nasazení a zadejte počet procesorů a GB paměti RAM potřebné pro váš kontejner Container Instances. Tyto hodnoty jsou závislé na příslušném modelu, ale pro mnoho modelů obvykle postačují výchozí hodnoty 1 jádro a 1 GB RAM. Pokud později zjistíte, že je potřeba tyto hodnoty navýšit, bude nutné znovu vytvořit danou image a znovu nasadit danou službu.
+Vytvořte konfigurační soubor nasazení. Zadejte počet procesorů a GB paměti RAM potřebné pro váš kontejner Container Instances. Přestože je závislé na váš model, výchozí jedno jádro a 1 GB paměti RAM je dostačující pro mnoho modelů. Pokud potřebujete další rozšíření později, budete muset znovu vytvořte image a službu znovu nasaďte.
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -253,15 +253,15 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 ```
 
 ### <a name="deploy-in-container-instances"></a>Nasazení ve službě Container Instances
-Odhadovaný čas dokončení: **asi 7–8 minut**
+Odhadovaný čas na dokončení nasazení je **asi sedm až osm minut**.
 
 Nakonfigurujte image a nasaďte ji. Následující kód provede tyto kroky:
 
-1. Sestavte image pomocí:
-   * Soubor vyhodnocení (`score.py`).
-   * Soubor prostředí (`myenv.yml`).
+1. Sestavte image pomocí těchto souborů:
+   * Soubor vyhodnocení `score.py`.
+   * Soubor prostředí `myenv.yml`.
    * Soubor modelu.
-1. Registrace dané image v pracovním prostoru 
+1. Registrace na obrázku v části pracovní prostor. 
 1. Odeslat image do kontejneru Container Instances.
 1. Spuštění kontejneru ve službě Container Instances pomocí bitové kopie.
 1. Získání koncového bodu HTTP webové služby
@@ -286,25 +286,25 @@ service = Webservice.deploy_from_model(workspace=ws,
 service.wait_for_deployment(show_output=True)
 ```
 
-Získejte koncový bod HTTP hodnoticí webové služby, který přijímá volání klienta REST. Tento koncový bod můžete sdílet s kýmkoli, kdo chce testovat webovou službu nebo ji integrovat do aplikace. 
+Získejte koncový bod HTTP hodnoticí webové služby, který přijímá volání klienta REST. Tento koncový bod můžete sdílet s kýmkoli, kdo chce testovat webovou službu nebo ji integrovat do aplikace: 
 
 ```python
 print(service.scoring_uri)
 ```
 
 
-## <a name="test-deployed-service"></a>Testování nasazené služby
+## <a name="test-the-deployed-service"></a>Testování nasazené službě
 
-Dříve skóre všechna data testu v místní verzi modelu. Teď můžete otestovat nasazený model pomocí náhodného vzorku 30 obrázků z testovacích dat.  
+Dříve skóre všechna data testu v místní verzi modelu. Nyní můžete otestovat nasazeného modelu pomocí náhodného vzorku 30 imagí v testovacích datech.  
 
 Následující kód provede tyto kroky:
 1. Odesílání dat jako JSON pole k webové službě hostované ve službě Container Instances. 
 
-1. Použití rozhraní `run` API sady SDK k vyvolání služby. Nezpracovaná volání můžete provést také pomocí libovolného nástroje protokolu HTTP, jako je například curl.
+1. Použití rozhraní `run` API sady SDK k vyvolání služby. Můžete také provést nezpracovaná volání pomocí libovolného nástroje protokolu HTTP, jako **curl**.
 
-1. Tisk vrácené předpovědi a vykreslení spolu s vstupní Image. K označení chybně klasifikovaných vzorků se používá červené písmo a inverzní obraz (bílá na černém pozadí). 
+1. Tisk vrácených předpovědí a jejich vykreslení spolu se vstupními obrázky. Abyste měli na očích chybně klasifikované ukázky se používá červeně a inverzní obrázku na černou, bílou. 
 
- Přesnost modelu je vysoká, takže než se objeví chybně klasifikovaný vzorek, bude asi potřeba spustit následující kód několikrát.
+Protože je vysoká přesnost modelu, budete muset několikrát spusťte následující kód, než uvidíte chybně klasifikované ukázku:
 
 ```python
 import json
@@ -339,9 +339,13 @@ for s in sample_indices:
 plt.show()
 ```
 
-Tady je výsledkem jedna náhodného vzorku imagím pro testování: ![Obrázek znázorňující výsledky](./media/tutorial-deploy-models-with-aml/results.png)
+Tento výsledek je z jednoho náhodného vzorku imagím pro testování:
 
-Při testování webové služby můžete odeslat také požadavek HTTP v základním formátu.
+![Obrázek znázorňující výsledky](./media/tutorial-deploy-models-with-aml/results.png)
+
+![Výsledky](./media/tutorial-deploy-models-with-aml/results.png)
+
+Můžete také odeslat nezpracovaná požadavku HTTP k otestování webové služby:
 
 ```python
 import requests
@@ -378,6 +382,6 @@ service.delete()
 
 ## <a name="next-steps"></a>Další postup
 
-+ Přečtěte si o všech [možnosti nasazení pro službu Azure Machine Learning](how-to-deploy-and-where.md), včetně ACI, službě Azure Kubernetes, FPGA a IoT Edge.
++ Přečtěte si o všech [možnosti nasazení pro službu Azure Machine Learning](how-to-deploy-and-where.md). Mezi možnosti patří Azure Container Instances, Azure Kubernetes Service, FPGA a Azure IoT Edge.
 
-+ Podívejte se jak služby Azure Machine Learning můžete vybrat automatického vyladění nejlepšího algoritmu pro model a sestavení modelu pro vás. Vyzkoušejte si [automatické algoritmus výběru](tutorial-auto-train-models.md) kurzu. 
++ Podívejte se jak služba Azure Machine Learning může automatický výběr je a vyladit nejlepšího algoritmu pro model. Můžete ale zároveň vytvoří tohoto modelu. Vyzkoušejte si [automatické algoritmus výběru](tutorial-auto-train-models.md) kurzu. 

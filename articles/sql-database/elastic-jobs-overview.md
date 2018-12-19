@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: overview
 author: srinia
 ms.author: srinia
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 0d593e52c8dc3bc961df706ccef2da9da2f3f778
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f91632bfe16ea145a087656ffc946e4a76e07466
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087129"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608661"
 ---
 # <a name="manage-groups-of-databases-with-elastic-database-jobs"></a>Správa skupin databází pomocí úloh elastické databáze
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 63e35a32cb4a031ea9848486c4ecda7058707914
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989902"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599889"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Vytvoření bezserverového rozhraní API pomocí služby Azure Functions
 
@@ -46,7 +46,7 @@ Funkce aktivovaná protokolem HTTP je standardně nakonfigurovaná tak, aby při
     | Povolené metody HTTP | Vybrané metody | Určuje, jaké metody HTTP mohou být použity k vyvolání této funkce. |
     | Vybrané metody HTTP | GET | Umožňuje, aby se k vyvolání této funkce daly použít jen vybrané metody HTTP. |
     | Šablona trasy | /hello | Určuje, jaká trasa se používá k vyvolání této funkce. |
-    | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje vaši funkci bez klíče rozhraní API. |
+    | Úroveň autorizace | Anonymní | Volitelné: Zpřístupňuje funkci bez klíče rozhraní API |
 
     > [!NOTE] 
     > Všimněte si, že jste do šablony trasy nezahrnuli předponu základní trasy `/api`, protože to se řeší globálním nastavením.
@@ -71,7 +71,7 @@ V další části zpřístupníte rozhraní API prostřednictvím proxy. Proxy s
 
 Proxy může odkazovat na libovolný prostředek HTTP, například na:
 - Azure Functions 
-- Aplikace API ve službě [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- Aplikace API ve službě [Azure App Service](https://docs.microsoft.com/azure/app-service/overview)
 - Kontejnery Dockeru ve službě [App Service v Linuxu](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
 - Jakékoli jiné hostované rozhraní API
 
@@ -180,7 +180,7 @@ Tím přidáte nový proxy GetUserByName bez vlastnosti backendUri. Místo volá
 
 Otestujte napodobeninu rozhraní API voláním koncového bodu `<YourProxyApp>.azurewebsites.net/api/users/{username}` pomocí prohlížeče nebo oblíbeného klienta REST. Nezapomeňte nahradit _{username}_ řetězcovou hodnotou představující uživatelské jméno.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak sestavit a přizpůsobit rozhraní API ve službě Azure Functions. Také jste zjistili, jak spojit více rozhraní API (včetně napodobenin) do jednoho sjednoceného rozsahu rozhraní API. Pomocí těchto technik můžete vytvořit jakkoli složité rozhraní API, a zároveň používat bezserverový výpočetní model, který poskytuje služba Azure Functions.
 

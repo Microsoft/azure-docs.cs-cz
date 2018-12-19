@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozhraní API pro počítačové zpracování obrazu v JavaScriptu'
+title: 'Kurz: Provádění operací image – JavaScript'
 titlesuffix: Azure Cognitive Services
 description: Prozkoumejte základní aplikaci v JavaScriptu, která v Azure Cognitive Services používá rozhraní API pro počítačové zpracování obrazu. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: c024e517eb59c7d3b61408e477c94004ccb01a54
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 46d992fc44a0c3b2d355861d5753aa6f8c22215e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341306"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581364"
 ---
-# <a name="tutorial-computer-vision-api-javascript"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v JavaScriptu
+# <a name="tutorial-computer-vision-api-javascript"></a>Kurz: Počítač pro zpracování obrazu rozhraní API jazyka JavaScript
 
 Tento kurz ukazuje funkce rozhraní REST API pro počítačové zpracování obrazu služby Azure Cognitive Services.
 
@@ -37,7 +38,7 @@ Před vytvořením příkladu musíte získat předplatné rozhraní API pro po�
 
 ## <a name="acquire-the-incomplete-tutorial-project"></a>Získání neúplného výukového projektu
 
-### <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
+### <a name="download-the-tutorial-project"></a>Stažení výukového projektu
 
 Naklonujte úložiště [Cognitive Services JavaScript Computer Vision Tutorial](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial) nebo stáhněte soubor ZIP a extrahujte ho do prázdného adresáře.
 
@@ -494,7 +495,7 @@ Funkce optického rozpoznávání znaků (OCR) počítačového zpracování obr
 
 K dokončení funkce OCR výukové aplikace musíte provést následující kroky:
 
-### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>Funkce OCR krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
+### <a name="ocr-step-1-add-the-event-handler-code-for-the-form-button"></a>OCR krok 1: Přidání kódu obslužné rutiny události k tlačítku formuláře
 
 V textovém editoru otevřete soubor **ocr.html** a na konci souboru najděte funkci **ocrButtonClick**.
 
@@ -742,7 +743,7 @@ function ReadHandwrittenImage(sourceImageUrl, responseTextArea) {
 
 Soubor **handwriting.html** uložte a otevřete ho ve webovém prohlížeči. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Zadejte adresu URL obrázku s textem, který se má přečíst, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz – rozhraní API pro počítačové zpracování obrazu s C&#35;](CSharpTutorial.md)
 - [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](PythonTutorial.md)

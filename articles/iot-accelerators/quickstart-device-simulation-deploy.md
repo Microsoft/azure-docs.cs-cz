@@ -1,5 +1,5 @@
 ---
-title: Zkouška spuštění řešení pro simulaci zařízení v Azure | Microsoft Docs
+title: Vyzkoušejte a spuštění řešení simulace zařízení – Azure | Dokumentace Microsoftu
 description: V tomto rychlém startu nasadíte Simulaci zařízení Azure IoT a spustíte simulaci.
 author: troyhopwood
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/28/2018
 ms.author: troyhop
-ms.openlocfilehash: a109f3536ea8709313de3d1d6d17ce69c5652289
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.openlocfilehash: 12f993f606fc1ef44280142d5acfa2687cd4e043
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50753926"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601589"
 ---
-# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasazení a spuštění simulace zařízení IoT v Azure
+# <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasadit a spustit simulaci zařízení IoT v Azure
 
 V tomto rychlém startu se dozvíte, jak nasadit Simulaci zařízení Azure IoT pro účely testování řešení IoT. Po nasazení akcelerátoru řešení začnete spuštěním ukázkové simulace.
 
@@ -90,7 +90,7 @@ Pokud už Simulaci zařízení nepotřebujete, odstraňte ji na stránce [Zříz
 
 ![Odstranění řešení](media/quickstart-device-simulation-deploy/deletesolution.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili Simulaci zařízení a spustili jste ukázkovou simulaci zařízení IoT.
 

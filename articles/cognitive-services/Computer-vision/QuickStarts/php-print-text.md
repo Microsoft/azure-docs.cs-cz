@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrahování tištěného textu (OCR) – REST, PHP – počítačové zpracování obrazu'
+title: 'Rychlý start: Extrahovat tištěný text - REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a PHP.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 10be09c4d18cc7bc395937e1a175a5bfcd1e5d7e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 2707134c3fb451f4386748f691086eeb617d3ebe
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340235"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581371"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Rychlý start: Extrahování tištěného textu (OCR) pomocí rozhraní REST API a PHP v počítačovém zpracování obrazu
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Rychlý start: Extrahovat tištěný text (OCR) pomocí rozhraní REST API a PHP v počítačové zpracování obrazu
 
 V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí optického rozpoznávání znaků (OCR) s využitím rozhraní REST API počítačového zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
@@ -33,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
-1. Nainstalujte balíček PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2).
+1. Nainstalujte balíček PHP5 [`HTTP_Request2`](https://pear.php.net/package/HTTP_Request2).
    1. Otevřete okno příkazového řádku jako správce.
    1. Spusťte následující příkaz:
 
@@ -229,7 +230,7 @@ Pokud už tuto ukázku nepotřebujete, odstraňte soubor a pak odinstalujte bal�
 
 3. Po úspěšné odinstalaci balíčku zavřete okno příkazového řádku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro počítačové zpracování obrazu, které se používá pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

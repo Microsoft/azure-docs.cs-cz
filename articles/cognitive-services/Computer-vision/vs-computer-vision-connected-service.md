@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Počítačové zpracování obrazu v jazyce C#'
+title: Visual Studio připojená služba - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Připojte se k rozhraní API pro počítačové zpracování obrazu z webové aplikace ASP.NET Core.
+description: Připojení k rozhraní API pro počítačové zpracování obrazu z webové aplikace ASP.NET Core pomocí funkce připojení ve službě Visual Studio.
 services: cognitive-services
 author: ghogen
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: ebfcabdea1e83a83af5eea8025ba5a411c3f9880
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e9207fe19272dac23db165e160ce9f7a7e802c14
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077946"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579732"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Připojení k rozhraní API pro počítačové zpracování obrazu s využitím připojených služeb v sadě Visual Studio
 
@@ -37,15 +38,15 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 1. V **Průzkumníku řešení** zvolte **Přidat**  > **Připojená služba**.
    Zobrazí se stránka Připojená služba se službami, které můžete přidat do projektu.
 
-   ![Položka nabídky Přidat připojenou službu](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Snímek obrazovky nabídky klikněte pravým tlačítkem na projekt sady Visual Studio: Přidat > připojená služba](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. V nabídce dostupných služeb zvolte **Rozhraní API služeb Cognitive Services pro počítačové zpracování obrazu**.
 
-   ![Výběr služby, ke které se má připojit](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![v nabídce připojené služby, zvýraznění Analýza obrázků pomocí pro počítačové zpracování obrazu](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Pokud jste přihlášení k sadě Visual Studio a máte ke svému účtu přidružené předplatné Azure, zobrazí se stránka s rozevíracím seznamem vašich předplatných.
 
-   ![Vyberte své předplatné.](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Okno s zvýrazněnou rozevírací nabídce předplatných sady Visual Studio "Rozhraní API pro počítačové zpracování obrazu"](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Vyberte předplatné, které chcete použít, a pak zvolte název rozhraní API pro počítačové zpracování obrazu, nebo zvolte odkaz Upravit a změňte automaticky vygenerovaný název, zvolte skupinu prostředků a cenovou úroveň.
 
@@ -93,11 +94,11 @@ Tento článek a jeho doprovodné články obsahují podrobnosti k použití fun
 
 1. Do složky wwwroot projektu přidejte složku images a do složky wwwroot přidejte soubor obrázku. Jako příklad můžete použít jeden z obrázků na této [stránce rozhraní API pro počítačové zpracování obrazu](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Klikněte pravým tlačítkem na jeden z obrázků, uložte ho na místní pevný disk a potom v Průzkumníku řešení klikněte pravým tlačítkem na složku images a výběrem možnosti **Přidat** > **Existující položka** ho přidejte do projektu. V Průzkumníku řešení by měl projekt vypadat takto: 
   
-   ![Složka images se souborem obrázku](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
+   ![Snímek obrazovky zobrazení Průzkumníka řešení se souborem bitové kopie vybrané](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 
 1. Klikněte pravým tlačítkem na soubor obrázku, zvolte Vlastnosti a pak zvolte **Kopírovat, pokud je novější**. 
 
-   ![Kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Okno aplikace bitové kopie vlastnosti; Kopírovat do výstupního adresáře nastavená na Kopírovat, pokud je novější](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Nahraďte metodu Configure následujícím kódem pro přístup k rozhraní API pro počítačové zpracování obrazu a otestování obrázku.
 
@@ -259,6 +260,6 @@ Pokud už ji nepotřebujete, odstraňte skupinu prostředků. Tím se odstraní 
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Do pole **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ:** zadejte název vaší skupiny prostředků a vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o rozhraní API pro počítačové zpracování obrazu najdete v [dokumentaci k rozhraní API pro počítačové zpracování obrazu](Home.md).

@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: b9321241f174a97976b2f150a9bd6c3547f0dc20
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 45ee4a5310df699e37258996e654c87c88081266
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253151"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605139"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/).
 
 > [!NOTE]
 >

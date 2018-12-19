@@ -10,12 +10,13 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: acd6d41e8b6d1fb834697ec3d026419ee6b69ec9
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957023"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582350"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 
@@ -38,10 +39,10 @@ Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývoj�
 * [Můžou ořezávat fotky používané jako miniatury.](#Thumbnails)
 
 ## <a name="requirements"></a>Požadavky
-* Podporované vstupní metody: Nezpracovaný binární obrázek ve tvaru streamu typu application/octet nebo adresa URL obrázku.
-* Podporované formáty obrázku: JPEG, PNG, GIF, BMP.
-* Velikost souboru obrázku: méně než 4 MB.
-* Rozměry obrázku: větší než 50 × 50 pixelů.
+* Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image.
+* Podporované formáty bitové kopie: GIF JPEG, PNG, BMP.
+* Velikost souboru obrázku: Méně než 4 MB.
+* Dimenze bitové kopie: Větší než 50 × 50 pixelů.
 
 ## <a name="tagging-images"></a>Označování obrázků
 Rozhraní API pro počítačové zpracování obrazu vrací značky na základě tisíce rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
@@ -137,9 +138,9 @@ Zjistí lidské tváře na obrázku a vygeneruje jejich souřadnice, obdélník 
 
 Image|Odpověď
 ----|----
-![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
-![Vizuální analýza tváří matky s dcerou](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
-![Vizuální analýza tváří na fotce rodiny](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Male", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Male", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
+![Vizuální analýza ženy na střeše](./Images/woman_roof_face.png) | [{"age": 23, "pohlaví": "Ženský", "faceRectangle": {"left": 1379 "top": 320, "šířka": 310, "výška": 310}}]
+![Vizuální analýza tváří matky s dcerou](./Images/mom_daughter_face.png) | [{"age": 28, "pohlaví": "Ženský", "faceRectangle": {"left": 447 "top": 195, "šířka": 162, "výška": 162}}, {"age": 10, "pohlaví": "Mužského", "faceRectangle": {"left": 355, "top": 87 "šířka": v 143 "výška": 143}}]
+![Vizuální analýza tváří na fotce rodiny](./Images/family_photo_face.png) | [{"age": 11, "pohlaví": "Mužského", "faceRectangle": {"left": 113 "top": 314, "šířka": 222, "výška": 222}}, {"age": 11, "pohlaví": "Ženský", "faceRectangle": {"left": 1200: "top": 632, "šířka": 215, "výška": 215}}, {"age": 41, "pohlaví": "Mužského", "faceRectangle": {"left": 514 "top": 223, "šířka": 205, "výška": 205}}, {"age": 37, "pohlaví": "Ženský", "faceRectangle": {"left": 1008: "top": 277, "šířka": 201, "výška": 201}}]
 
 
 ## <a name="domain-specific-content"></a>Obsah určité domény
@@ -231,7 +232,7 @@ Mezi různými obrazovými kategoriemi je i skupina nevhodného obsahu a obsahu 
 ## <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
 Technologie OCR rozpozná na obrázku textový obsah a extrahuje zjištěný text do strojově čitelného znakového streamu. Výsledek můžete použít k vyhledávání nebo k různým jiným účelům, třeba jako lékařské záznamy, pro zabezpečení nebo bankovnictví. Jazyk se rozpoznává automaticky. Technologie OCR šetří čas a zvyšuje pohodlí uživatelů, protože umožňuje text místo přepisování vyfotografovat.
 
-OCR podporuje 25 jazyků. Jsou to tyto jazyky: angličtina, arabština, čeština, čínština (tradiční), čínština (zjednodušená), dánština, finština, francouzština, holandština, italština, japonština, korejština, maďarština, němčina, norština, polština, portugalština, rumunština, ruština, řečtina, slovenština, srbština (cyrilice a latinka), španělština, švédština a turečtina.
+OCR podporuje 25 jazyků. Tyto jazyky jsou: Arabské, čínština (zjednodušená), Čínské tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinky), slovenština, španělština, Švédština a turečtina.
 
 V případě potřeby technologie OCR opraví otočení rozpoznaného textu ve stupních kolem vodorovné osy obrázku. OCR nabízí souřadnice rámečku každého slova. Je to vidět na následujícím obrázku.
 
@@ -250,7 +251,7 @@ Přesnost rozpoznaného textu závisí na kvalitě obrázku. Nepřesnosti při �
 - příliš velká nebo chybějící velká písmena na začátku slov;
 - dolní index, horní index nebo přeškrtnutý text.
 
-Omezení: Na fotkách, na kterých převažuje text, můžou vznikat falešné pozitivní výsledky v podobě částečně rozpoznaných slov. Na některých fotkách, zejména na fotkách bez textu, se může přesnost výrazně lišit podle typu obrázku.
+Omezení: Na fotografie, kde je dominantní textu počet falešně pozitivních výsledků mohou pocházet z částečně rozpoznaná slova. Na některých fotkách, zejména na fotkách bez textu, se může přesnost výrazně lišit podle typu obrázku.
 
 ## <a name="recognize-handwritten-text"></a>Rozpoznání rukopisu
 Tato technologie umožňuje detekovat a extrahovat rukopis z poznámek, dopisů, esejů, tabulí, formulářů apod. Pracuje s různými povrchy a pozadími, jako je bílý papír, žluté samolepicí bločky nebo tabule.
@@ -258,7 +259,7 @@ Tato technologie umožňuje detekovat a extrahovat rukopis z poznámek, dopisů,
 Rozpoznávání rukopisného textu šetří čas i námahu. Můžete být produktivnější, protože nemusíte text přepisovat, ale stačí ho vyfotit. Poznámky můžete digitalizovat. Digitalizace umožňuje snadno a rychle implementovat vyhledávání. Také už nebudete tak zavaleni papíry.
 
 Požadavky na vstupy:
-- Podporované formáty obrázku: JPEG, PNG a BMP.
+- Podporované formáty bitové kopie: JPEG, PNG nebo BMP.
 - Soubor s obrázkem musí být menší než 4 MB.
 - Rozměry obrázku musí být alespoň 40 × 40 ale maximálně 3200 × 3200 pixelů.
 

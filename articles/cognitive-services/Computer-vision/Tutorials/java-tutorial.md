@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozhraní API pro počítačové zpracování obrazu v Javě'
+title: 'Kurz: Provádění operací image – Java'
 titlesuffix: Azure Cognitive Services
 description: Prozkoumejte základní aplikaci v Java Swingu, která v Azure Cognitive Services používá rozhraní API pro počítačové zpracování obrazu. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
@@ -9,15 +9,16 @@ ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
 ms.author: kefre
+ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 36a8a49ee49636d186ca217ae223b1eebf9bb54b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: f039e85ab3fccfc36b704f06d9fcfa3b4cfed758
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340252"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584543"
 ---
-# <a name="tutorial-computer-vision-api-java"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v Javě
+# <a name="tutorial-computer-vision-api-java"></a>Kurz: Počítače API Java pro zpracování obrazu
 
 Tento kurz ukazuje funkce rozhraní REST API pro počítačové zpracování obrazu služby Azure Cognitive Services.
 
@@ -47,7 +48,7 @@ Před vytvořením příkladu musíte získat předplatné rozhraní API pro po�
 
 ## <a name="acquire-the-incomplete-tutorial-project"></a>Získání neúplného výukového projektu
 
-### <a name="download-the-tutorial-project"></a>Stáhněte si výukový projekt
+### <a name="download-the-tutorial-project"></a>Stažení výukového projektu
 
 1. Přejděte do úložiště [Cognitive Services Java Computer Vision Tutorial](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial).
 1. Klikněte na tlačítko **Naklonovat nebo stáhnout**.
@@ -83,7 +84,7 @@ Aplikace v Java Swingu má nastavených šest karet. Každá karta představuje 
 
 ### <a name="analyze-an-image"></a>Analýza obrázku
 
-Funkce Analyze v rozhraní API pro počítačové zpracování obrazu prohledává v obrázcích více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
+Funkce Analyze v rozhraní API pro počítačové zpracování obrazu během prohledávání obrázků analyzuje více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Po dokončení analýzy se vrátí objekt JSON, který popisuje obrázek popisnými značkami, analýzou barev, titulky a dalšími položkami.
 
 K dokončení funkce Analyze výukové aplikace musíte provést následující kroky:
 
@@ -845,7 +846,7 @@ Metodu **HandwritingImage** zkopírujte a vložte těsně pod metodu **handwriti
 
 Stisknutím klávesy **F6** spusťte aplikaci. Do pole **Subscription Key** (Klíč předplatného) vložte svůj klíč předplatného a zkontrolujte, že v poli **Subscription Region** (Oblast předplatného) používáte správnou oblast. Klikněte na kartu **Read Handwritten Text** (Přečíst rukou psaný text), zadejte adresu URL obrázku s rukou psaným textem, potom klikněte na tlačítko **Read Image** (Přečíst obrázek) a podívejte se na výsledek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz – rozhraní API pro počítačové zpracování obrazu s C&#35;](CSharpTutorial.md)
 - [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](PythonTutorial.md)

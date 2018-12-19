@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Rozhraní API pro počítačové zpracování obrazu v Pythonu'
+title: 'Kurz: Provádění operací image – Python'
 titlesuffix: Azure Cognitive Services
 description: Přečtěte si, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu s poznámkovými bloky Jupyter. K vizualizaci výsledků můžete použít oblíbené knihovny.
 services: cognitive-services
@@ -8,24 +8,25 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/06/2018
 ms.author: kefre
-ms.openlocfilehash: 16054d19c1ce6f211ebd3e2f0bbc4d152a255dda
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 55e5168c36eb16944142c2deaae9bc94d60d2fe4
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51276963"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582010"
 ---
-# <a name="tutorial-computer-vision-api-python"></a>Kurz: Rozhraní API pro počítačové zpracování obrazu v Pythonu
+# <a name="tutorial-computer-vision-api-python"></a>Kurz: Python API pro zpracování obrazu počítače
 
-V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a jak vizualizovat výsledky s využitím oblíbených knihoven. V tomto kurzu použijete Jupyter. Informace o tom, jak začít používat interaktivní poznámkové bloky Jupyter, najdete v [dokumentaci k Jupyteru](http://jupyter.readthedocs.io/en/latest/index.html).
+V tomto kurzu se dozvíte, jak používat rozhraní API pro počítačové zpracování obrazu v Pythonu a jak vizualizovat výsledky s využitím oblíbených knihoven. V tomto kurzu použijete Jupyter. Informace o tom, jak začít používat interaktivní poznámkové bloky Jupyter, najdete v [dokumentaci k Jupyteru](https://jupyter.readthedocs.io/en/latest/index.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
 - Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
-- Nainstalovaný [poznámkový blok Jupyter](http://jupyter.org/install)
+- Nainstalovaný [poznámkový blok Jupyter](https://jupyter.org/install)
 
 ## <a name="open-the-tutorial-notebook-in-jupyter"></a>Otevření poznámkového bloku s kurzem v Jupyteru 
 

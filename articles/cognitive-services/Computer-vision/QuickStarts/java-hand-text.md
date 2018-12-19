@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Extrakce rukou psaného textu – REST, Java – Počítačové zpracování obrazu'
+title: 'Rychlý start: Extrahujte rukou psaný text - REST, Java'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 271a37ffc4ae60bf7bfc1605c36b6b29d358118a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.custom: seodec18
+ms.openlocfilehash: 1eb74c7901318e7568ffcd96ea96ba5709744e61
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852261"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583235"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Rychlý start: Extrakce rukou psaného textu pomocí rozhraní REST API a Javy v Počítačovém zpracování obrazu
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Rychlý start: Extrahujte rukou psaný text pomocí rozhraní REST API a Java v počítačové zpracování obrazu
 
 V tomto rychlém startu extrahujete rukou psaný text z obrázku pomocí rozhraní REST API počítačového zpracování obrazu. Pomocí metod [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) (Rozpoznat text) a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) (Získat výsledky operace rozpoznávání textu) můžete detekovat rukou psaný text v obrázku a extrahovat rozpoznané znaky do strojově použitelného proudu znaků.
 

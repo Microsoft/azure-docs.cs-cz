@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a20373e43780cea10e550ae968deb2a8720b9a9f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9bd57ae6926f57dc8b6c0fc12199649f63cba261
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251670"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608558"
 ---
 # <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Kurz: Sestavení webové aplikace PHP s připojením k databázi MySQL v Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "53251670"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace PHP s připojením k databázi MySQL ve službě Azure App Service v Linuxu](./containers/tutorial-php-mysql-app.md).
 >
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace PHP v Azure a jejím připojení k databázi MySQL. Po dokončení budete mít ve službě Azure App Service Web Apps spuštěnou aplikaci [Laravel](https://laravel.com/).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace PHP v Azure a jejím připojení k databázi MySQL. Po dokončení budete mít ve službě Azure App Service Web Apps spuštěnou aplikaci [Laravel](https://laravel.com/).
 
 ![Aplikace PHP spuštěná ve službě Azure App Service](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -637,4 +637,4 @@ V tomto kurzu jste se naučili:
 V dalším kurzu se dozvíte, jak namapovat na webovou aplikaci vlastní název DNS.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md)

@@ -4,7 +4,7 @@ description: Zjistěte, jak se připojit k SQL Database na Azure pomocí služby
 keywords: Připojení k SQL Database, SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -13,14 +13,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b3342164aec49967e819c316827dca9a65f2674f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7049691e6635940e70795f0b5b4cc4c94cfd3631
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098926"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607315"
 ---
-# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití SQL Server Management Studio k připojení a dotazování Azure SQL database
+# <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
 Můžete použít [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) pro správu jakékoliv infrastruktury SQL z SQL serveru do služby SQL Database pro Microsoft Windows. Tento rychlý start ukazuje použití SSMS k připojení k databázi Azure SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat. 
 

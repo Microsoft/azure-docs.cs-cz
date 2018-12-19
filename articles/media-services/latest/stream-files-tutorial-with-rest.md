@@ -1,6 +1,6 @@
 ---
-title: Nahrávání, kódování a streamování využívajícího službu Azure Media Services - REST | Dokumentace Microsoftu
-description: Tento kurz popisuje, jak nahrát soubor, zakódovat video a streamovat obsah v Azure Media Services pomocí rozhraní REST.
+title: Kódování na vzdálený soubor, na základě adresy URL a datového proudu pomocí Azure Media Services - REST | Dokumentace Microsoftu
+description: Postupujte podle kroků v tomto kurzu kódování souboru podle adresy URL a Streamovat obsah pomocí služby Azure Media Services pomocí rozhraní REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/11/2018
+ms.date: 12/17/2018
 ms.author: juliako
-ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: a26d3c8d6582c07c9724c2872d035e0d4fc01f5e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615768"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581337"
 ---
-# <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Kurz: Vzdálený soubor na základě adresy URL kódování a streamování videa – REST
 
 Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
 
-V tomto kurzu se dozvíte postupy nahrávání, kódování a streamování videosouborů pomocí Azure Media Services pomocí rozhraní REST. 
+V tomto kurzu se dozvíte postupy kódování souboru podle adresy URL a Streamovat videa pomocí služby Azure Media Services pomocí rozhraní REST. 
 
 ![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -52,7 +52,7 @@ V tomto kurzu získáte informace o následujících postupech:
 
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
-    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
+    V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další možnosti jsou: **Visual Studio Code** pomocí modulu plug-in REST nebo **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Stažení souborů nástroje Postman
 
@@ -111,7 +111,7 @@ V této části odešleme požadavky relevantní pro kódování a vytvoření a
 
 ### <a name="get-azure-ad-token"></a>Získání tokenu služby Azure AD 
 
-1. V levém okně nástroje Postman vyberte „Step 1: Get AAD Auth token“ (Krok 1: Získání ověřovacího tokenu AAD).
+1. V levém okně Postman, vyberte "krok 1: Získání ověřování AAD tokenu".
 2. Potom vyberte „Get Azure AD Token for Service Principal Authentication“ (Získat token služby Azure AD pro ověření instančního objektu).
 3. Stiskněte **Odeslat**.
 
@@ -228,7 +228,7 @@ V tomto příkladu se vstup úlohy vytvoří na základě adresy URL protokolu H
 
 Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. K zobrazení průběhu úlohy doporučujeme použít službu Event Grid. Ta je navržená s ohledem na vysokou dostupnost, stabilní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
-**Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
+**Úlohy** obvykle prochází následujících stavů: **Naplánované**, **ve frontě**, **zpracování**, **dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 

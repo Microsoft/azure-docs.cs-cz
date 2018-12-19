@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 41b73e662316a6f61ec4145c06fb5e9c06e83f06
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 91396828df4aec560bcc84d9f0d44900850ab706
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537855"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603874"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js a MongoDB v Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "53537855"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace Node.js a MongoDB v Azure v Linuxu](./containers/tutorial-nodejs-mongodb-app.md).
 >
 
-Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace Node.js v Azure a jejím připojení k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](app-service-web-overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková aplikace [webovou architekturu MEAN.js](https://meanjs.org/).
+Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace Node.js v Azure a jejím připojení k databázi MongoDB. Po dokončení budete mít ve službě [Azure App Service](overview.md) spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková aplikace [webovou architekturu MEAN.js](https://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 

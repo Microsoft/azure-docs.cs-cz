@@ -7,17 +7,17 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: mashamsft
+ms.author: mathoma
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 558ee0b9af5d33743274dba7704f9ee9dcb4cff9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dd9ca3849497facdd72defd9f524cc5f80a71087
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960273"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598132"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi SQL Azure ve fondu pomocí PowerShellu
 

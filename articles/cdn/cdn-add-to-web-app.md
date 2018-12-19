@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: db4a9a43a971f66870c2079762b9c62802122baa
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093319"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602813"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidat Azure CDN do webové aplikace Azure App Service
 
-V tomto kurzu se naučíte přidat službu [Azure Content Delivery Network (CDN)](cdn-overview.md) do [webové aplikace Azure App Service](../app-service/app-service-web-overview.md). Web Apps je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. 
+V tomto kurzu se naučíte přidat službu [Azure Content Delivery Network (CDN)](cdn-overview.md) do [webové aplikace Azure App Service](../app-service/overview.md). Web Apps je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. 
 
 Tady je domovská stránka ukázkového statického webu v HTML, se kterým budete pracovat:
 
@@ -256,7 +256,7 @@ Další informace najdete v tématu [Řízení chování Azure CDN při ukládá
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučili jste se:
 
@@ -268,6 +268,6 @@ Naučili jste se:
 V následujících článcích se dozvíte, jak optimalizovat výkon sítě CDN:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
+> [Kurz: Přidat vlastní doménu do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

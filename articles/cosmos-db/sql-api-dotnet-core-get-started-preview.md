@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 84dead2b3e7d16360264f467c6b7ab1fb358a496
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f96082aaa174886c085ba67ee0f3e870e53136e1
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557271"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600756"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Sestavení aplikace konzoly .NET Core pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -765,6 +765,6 @@ Pokud chcete obnovit odkazy na rozhraní SQL API pro Azure Cosmos DB .NET Core S
 V tomto kurzu jste zjistili, jak sestavit aplikaci .NET Core pro správu dat SQL API služby Azure Cosmos DB. Teď můžete do účtu Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do služby azure cosmos db](import-data.md)
+> [Importování dat do služby Azure Cosmos DB](import-data.md)
 
 [cosmos-db-create-account]: create-sql-api-dotnet-preview.md#create-account

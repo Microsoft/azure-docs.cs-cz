@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 57046b9e199fbe5e88d0ea7fa25248641693508a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 51d28eb9507952708a964d0a76a12e601de1dbbb
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256991"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599923"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby mezi existujícím vlastním certifikátem SSL a Azure Web Apps
 
-Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit vazbu vlastního certifikátu SSL, který jste zakoupili od důvěryhodné certifikační autority, k [Azure Web Apps](app-service-web-overview.md). Jakmile budete hotovi, budete ke své webové aplikaci mít přístup přes koncový bod HTTPS vaší vlastní domény DNS.
+Azure Web Apps je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak vytvořit vazbu vlastního certifikátu SSL, který jste si koupili od důvěryhodné certifikační autority do [služby Azure App Service](overview.md). Jakmile budete hotovi, budete ke své webové aplikaci mít přístup přes koncový bod HTTPS vaší vlastní domény DNS.
 
 ![Webová aplikace s vlastním certifikátem SSL](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 

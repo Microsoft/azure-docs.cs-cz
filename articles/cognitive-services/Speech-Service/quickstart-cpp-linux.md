@@ -8,20 +8,20 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff192377b94a9b3af65089f51e4fdef39bbb889d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094028"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605734"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ v Linuxu s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci C++ pro Ubuntu Linux 16.04. Použijete sadu Cognitive Services [Speech SDK](speech-sdk.md) k přepisu řeči na text v reálném čase z mikrofonu počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
+V tomto článku vytvoříte pro Ubuntu Linux 16.04 nebo 18.04 konzolové aplikace jazyka C++. Použijete sadu Cognitive Services [Speech SDK](speech-sdk.md) k přepisu řeči na text v reálném čase z mikrofonu počítače. Aplikace je sestavená se [sadou Speech SDK pro Linux](https://aka.ms/csspeech/linuxbinary) a kompilátorem C++ vaší Linuxové distribuce (například `g++`).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,9 +31,9 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.1.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.2.0`.
 
-Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a soubory hlaviček si můžete stáhnout jako soubor tarfile z https://aka.ms/csspeech/linuxbinary.
+Sadu Speech SDK pro Linux můžete použít k sestavení 64bitových i 32bitových aplikací. Požadované knihovny a soubory hlaviček si můžete stáhnout jako soubor tar z https://aka.ms/csspeech/linuxbinary.
 
 Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 

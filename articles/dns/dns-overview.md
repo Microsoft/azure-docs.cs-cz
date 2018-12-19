@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 9535ad73300406408a94a6f38f001e45ba7409a2
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 0b8cb815e89b0df2fd7a326fe92dd75a85e1c855
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093091"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601674"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
 Azure DNS je hostitelská služba určená pro domény DNS, která zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Azure DNS nelze použít k nákupu názvu domény. Název domény si můžete za roční poplatek zakoupit s využitím [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
+Azure DNS nelze použít k nákupu názvu domény. Za roční poplatek, můžete si koupit názvu domény pomocí [domény služby App Service](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) nebo registrátora názvu domén třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-domain-delegation.md).
 
 Součástí Azure DNS jsou následující funkce.
 
@@ -62,7 +62,7 @@ Kromě toho teď můžete vrchol domény nebo základní doménu odkazovat pomoc
 Další informace najdete v [přehledu záznamů aliasů Azure DNS](dns-alias.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Informace o záznamech a zónách DNS najdete v tématu [Přehled záznamů a zón DNS](dns-zones-records.md).
 

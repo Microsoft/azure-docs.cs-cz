@@ -1,5 +1,5 @@
 ---
-title: Zjišťovat anomálie na hraničních zařízeních v kurzu řešení Azure | Dokumentace Microsoftu
+title: Zjišťovat anomálie na hraničních zařízeních v řešení kurz – Azure | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak sledovat zařízení IoT Edge pomocí akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843304"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606244"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekci anomálií na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekovat anomálie na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
 
 V tomto kurzu nakonfigurujete řešení vzdáleného monitorování reakce na anomálie zjištěných zařízení IoT Edge. Zařízení IoT Edge umožňuje zpracování telemetrických dat na hraničních zařízeních snížit objem telemetrická data odesílaná do řešení a umožňuje provádět rychlejší reakce na události na zařízeních. Další informace o výhodách zpracování hraničních zařízení najdete v tématu [co je Azure IoT Edge](../iot-edge/about-iot-edge.md).
 

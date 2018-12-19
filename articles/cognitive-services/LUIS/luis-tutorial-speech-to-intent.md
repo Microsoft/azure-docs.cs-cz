@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: efbe24500dd83ddd84c070ea36c423c742c26d4b
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162627"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53607400"
 ---
-# <a name="integrate-speech-service"></a>Integrace služby Speech
+# <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
 
 Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS], abyste mohli aplikaci importovat.

@@ -165,7 +165,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
    ![Výběr SQL Serveru](./media/tutorial-hybrid-copy-data-tool/select-source-data-store.png)
 
-1. V části New Linked Service (SQL Server) **Name**** (Nová propojená služba (SQL Server) **Název****) zadejte **SqlServerLinkedService**. V části **Connect via integration runtime** (Připojit prostřednictvím prostředí Integration Runtime) vyberte **+New** (+Nový). Musíte vytvořit místní prostředí Integration Runtime, stáhnout ho na svůj počítač a zaregistrovat ho ve službě Data Factory. Místní prostředí Integration Runtime kopíruje data mezi vaším místním prostředím a cloudem.
+1. V části New Linked Service (SQL Server) **Name**\*\* (Nová propojená služba (SQL Server) Název) zadejte **SqlServerLinkedService**. V části **Connect via integration runtime** (Připojit prostřednictvím prostředí Integration Runtime) vyberte **+New** (+Nový). Musíte vytvořit místní prostředí Integration Runtime, stáhnout ho na svůj počítač a zaregistrovat ho ve službě Data Factory. Místní prostředí Integration Runtime kopíruje data mezi vaším místním prostředím a cloudem.
 
    ![Vytvoření místního prostředí Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-link.png)
 
@@ -223,7 +223,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. V dialogovém okně **New Linked Service (Azure Blob Storage)** (Nová propojená služba (Azure Blob Storage)) proveďte následující kroky: 
 
-     a. Do pole **Name**** (Název) zadejte **AzureStorageLinkedService**.
+     a. Do pole **Name**\*\* (Název) zadejte **AzureStorageLinkedService**.
 
      b. V části **Connect via integration runtime** (Připojit prostřednictvím prostředí Integration Runtime) vyberte **TutorialIntegrationRuntime**.
 

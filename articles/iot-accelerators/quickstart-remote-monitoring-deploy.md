@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušení cloudového řešení vzdáleného monitorování IoT v Azure | Microsoft Docs
+title: Zkuste založené na cloudu IoT pro vzdálené monitorování řešení – Azure | Dokumentace Microsoftu
 description: V tomto rychlém startu nasadíte akcelerátor řešení vzdáleného monitorování Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824774"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608353"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Vyzkoušení cloudového řešení vzdáleného monitorování
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Zkuste cloudové řešení vzdáleného monitorování
 
 V tomto rychlém startu se dozvíte, jak nasadit akcelerátor řešení vzdáleného monitorování Azure IoT. V tomto cloudovém řešení použijete stránku **Řídicí panel** k vizualizaci simulovaných zařízení na mapě a stránku **Údržba** k reakci na upozornění na tlak ze simulovaného chladícího zařízení. Tento akcelerátor řešení můžete využít jako výchozí bod pro vlastní implementaci nebo jako učební nástroj.
 
@@ -142,4 +142,4 @@ V tomto rychlém startu jste nasadili akcelerátor řešení vzdáleného monito
 Další informace o akcelerátoru řešení se simulovanými zařízeními získáte v následujícím kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Monitorování zařízení IoT](iot-accelerators-remote-monitoring-monitor.md)
+> [Kurz: Monitorujte svoje zařízení IoT](iot-accelerators-remote-monitoring-monitor.md)

@@ -9,24 +9,24 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 52036dd0bdcdbc9d4ae71f388a7bb750fd781a5f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c4c33094f070e603057042eaea8187e29270fb77
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547979"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606839"
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Úvod do služby Azure Cosmos DB přes rozhraní API pro MongoDB
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba Microsoftu s více modely pro klíčové aplikace. Azure Cosmos DB poskytuje [globální distribuci na klíč](distribute-data-globally.md), [elastické škálování propustnosti a úložiště](partition-data.md) po celém světě, latence v řádu milisekund na 99. percentilu, zaručenou vysokou dostupnost. To vše je zajištěno [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos DB [automaticky indexuje data](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. 
 
-![Azure Cosmos DB přes rozhraní API pro MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png) 
+![Rozhraní API služby Azure Cosmos DB pro MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
 Databáze Azure Cosmos DB lze použít jako úložiště dat aplikací psaných pro [MongoDB](https://docs.mongodb.com/manual/introduction/). Tato funkce znamená, že s využitím existujících [ovladačů](https://docs.mongodb.org/ecosystem/drivers/) teď aplikace psané pro MongoDB mohou komunikovat se službou Azure Cosmos DB a používat databáze Azure Cosmos DB místo databází MongoDB. V mnoha případech můžete přejít od používání MongoDB na Azure Cosmos DB jednoduchou změnou připojovacího řetězce. Díky tomu můžete jednoduše vytvářet a provozovat globálně distribuované databázové aplikace MongoDB v cloudu Azure se službou Azure Cosmos DB a jejími [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db) a zároveň dál používat známé dovednosti a nástroje pro MongoDB.
 
 **Kompatibilita MongoDB**: Jak služby Azure Cosmos DB implementuje přenosový protokol MongoDB můžete použít stávající odborné znalosti, aplikace kódu a nástroje pro MongoDB. Můžete vyvíjet aplikace využívající MongoDB a nasazovat je do produkce pomocí plně spravované a globálně distribuované služby Azure Cosmos DB. Další informace o podporovaných verzích najdete v tématu popisujícím [podporu protokolu MongoDB](mongodb-feature-support.md#mongodb-protocol-support).
 
-Azure Cosmos DB API pro MongoDB nelze použít jako direct koncový bod pro služby, jako je Azure Stream Analytics, protože it používá stejný [ovladače klienta](https://docs.mongodb.org/ecosystem/drivers/) jako nativní MongoDB. Chcete-li integrovat se službou Azure Stream Analytics, zvažte použití [služby Azure App Service](../app-service/app-service-web-overview.md) nebo [služba Azure Functions](../azure-functions/functions-overview.md) jako služba middlewaru, který umožňuje zápis dat do Azure Cosmos DB API pro MongoDB.
+Azure Cosmos DB API pro MongoDB nelze použít jako direct koncový bod pro služby, jako je Azure Stream Analytics, protože it používá stejný [ovladače klienta](https://docs.mongodb.org/ecosystem/drivers/) jako nativní MongoDB. Chcete-li integrovat se službou Azure Stream Analytics, zvažte použití [služby Azure App Service](../app-service/overview.md) nebo [služba Azure Functions](../azure-functions/functions-overview.md) jako služba middlewaru, který umožňuje zápis dat do Azure Cosmos DB API pro MongoDB.
 
 ## <a name="what-is-the-benefit-of-using-azure-cosmos-db-for-mongodb-applications"></a>Jaké přínosy má používání služby Azure Cosmos DB pro aplikace MongoDB?
 

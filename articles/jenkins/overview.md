@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 93185483a2c5a1ddb308cc2fc9fd918c539b5e3d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105525"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602325"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 
@@ -46,5 +46,5 @@ Pomocí modulů plug-in Jenkinse můžete nasazovat aplikace do Azure v rámci k
 
  Moduly plug-in je možné nasadit do následujících služeb a prostředí:
 
-- [Azure Web App on Linux](/azure/app-service/containers/app-service-linux-intro). Začněte prostudováním tohoto [kurzu](java-deploy-webapp-tutorial.md).
-- [Webová aplikace Azure](/azure/app-service/app-service-web-overview). Začněte prostudováním těchto [postupů](deploy-Jenkins-app-service-plugin.md).
+- [Azure App Service v Linuxu](/azure/app-service/containers/app-service-linux-intro). Začněte prostudováním tohoto [kurzu](java-deploy-webapp-tutorial.md).
+- [Azure App Service](/azure/app-service/overview). Začněte prostudováním těchto [postupů](deploy-Jenkins-app-service-plugin.md).

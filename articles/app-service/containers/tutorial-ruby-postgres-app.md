@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 247c4f24869901f0f50b081d8f57b7e3841a8e8a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 93cdf83797cde40d75d6f6d6220cf4e02cb56cef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271024"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604214"
 ---
 # <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Ruby využívající databázi Postgres ve službě Azure App Service v Linuxu
 
@@ -509,4 +509,4 @@ V tomto kurzu jste se naučili:
 V dalším kurzu se dozvíte, jak namapovat na webovou aplikaci vlastní název DNS.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](../app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

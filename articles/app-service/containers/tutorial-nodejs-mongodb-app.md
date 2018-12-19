@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 23a737c97cad0ce8c525d52db97bfb32ef4eb300
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: af72a9de2b4dea7c61e23d3608c7df7855b5500c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537178"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608524"
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Node.js využívající databázi MongoDB ve službě Azure App Service v Linuxu
 
@@ -484,4 +484,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](../app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

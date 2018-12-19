@@ -1,7 +1,7 @@
 ---
 title: Kontrola projevy koncového bodu
 titleSuffix: Azure Cognitive Services
-description: Vylepšete predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS, které nemusí být správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS.
+description: Vylepšete predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS, které nemusí být správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: bc641732d74dac4f566420ada6338362932df4d7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7084766273ec392856d829f245d3588ce57c8dae
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080448"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605768"
 ---
 # <a name="tutorial-1-fix-unsure-predictions"></a>Kurz 1: Oprava nejistých předpovědí
 V tomto kurzu vylepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTPS služby LUIS, které nemusí mít tato služba správně naučené. U některých promluv může být potřeba zkontrolovat záměr, zatímco u jiných entitu. Promluvy koncového bodu byste měli pravidelně kontrolovat v rámci plánované údržby služby LUIS. 

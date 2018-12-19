@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 9853e84ffd2de8a1dfd6d9c4f32f58bb36b16403
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 581c47d84466f37d7c7c3ad3e98ae1749f8d9524
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164428"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608643"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Kurz: Vytvoření znalostní báze knowledge base a zodpovědět dotazy přes portál QnA Maker
 
@@ -83,9 +83,9 @@ Tento kurz vyžaduje existující [službu QnA Maker](../How-To/set-up-qnamaker-
 
 1. V dolní části tabulky vyberte poslední stránku otázek a odpovědí. Na stránce se zobrazí otázky a odpovědi s charakterem konverzace. 
 
-1. Na panelu nástrojů nad seznamem otázek a odpovědí vyberte ozubené kolo. Tím se zobrazí filtry jednotlivých otázek a odpovědí. Konverzační otázky již mají nastavený filtr **editorial: chit-chat**. Tento filtr se vrátí do klientské aplikace společně s vybranou odpovědí. Klientská aplikace, například chatbot, může pomocí tohoto filtru rozhodnout o dalším zpracování nebo interakcích s uživatelem.
+1. Na panelu nástrojů nad seznamem otázek a odpovědí vyberte ikonu metadat. Zobrazí metadata značky pro každý otázek a odpovědí. Otázky Chit chat mají **redakční: chit chat** metadat již nastaven. Tato metadata se vrátí do klientské aplikace spolu s vybranou odpovědí. Klientská aplikace, jako je chatovací robot, slouží k určení interakcí s uživatelem nebo další zpracování tohoto filtrovaných metadat.
 
-    ![Zobrazení filtrů](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![Zobrazit značky metadat](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
 
 1. V horní nabídce vyberte **Save and train** (Uložit a natrénovat).
 
@@ -171,7 +171,7 @@ Po publikování znalostní báze se zobrazí koncový bod.
    
     ```
 
-    Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. Služba QnA Maker vrátila také všechny související otázky společně s vlastností metadata obsahující informace o filtru konverzace.  
+    Vzhledem k tomu, že otázka `Thank you` (Děkuji) přesně odpovídá konverzační otázce, služba QnA Maker udává naprostou jistotu se skóre 100. Nástroj QnA Maker, vrátí všechny související dotazy, stejně jako vlastnost metadat obsahující informace o značku metadat Chit konverzace.  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Odeslání dotazu na výchozí odpověď pomocí cURL
 

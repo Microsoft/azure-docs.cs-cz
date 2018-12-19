@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 775d7595e80c02bcfbc1c3d6abc687d5e335d7da
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ebbb12ff5f4e824b9ae27a75dfa3ccdd9b399b12
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261003"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604884"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Kurz: Vytvoření webové aplikace .NET Core využívající SQL Database ve službě Azure App Service
 
@@ -27,7 +27,7 @@ ms.locfileid: "53261003"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsáno v tématu[Vytvoření webové aplikace .NET Core využívající SQL Database ve službě Azure App Service v Linuxu](./containers/tutorial-dotnetcore-sqldb-app.md).
 >
 
-[App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Tento kurz demonstruje postup při vytváření webové aplikace .NET Core a jejím připojení k databázi SQL. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service.
+[App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů v Azure. Tento kurz demonstruje postup při vytváření webové aplikace .NET Core a jejím připojení k databázi SQL. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service.
 
 ![aplikace spuštěná ve službě App Service](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
@@ -397,4 +397,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md)

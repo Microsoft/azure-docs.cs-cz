@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 50a7f3166d677fe1af961866ccae4445a3d810b8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c2e278b606ebfb445fc76294b2fac78d729aa970
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322137"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606159"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Azure Key Vault používat s webovou aplikaci Azure v .NET
 
 Služba Azure Key Vault pomáhá chránit tajné kódy jako jsou klíče rozhraní API a databázové připojovací řetězce. To vám poskytne přístup k aplikacím, služby a materiály k seriálu IT.
 
-V tomto kurzu se dozvíte, jak vytvořit webové aplikace Azure, který může číst informace z trezoru klíčů Azure. Proces využívá spravovaných identit pro prostředky Azure. Další informace o Azure webové aplikace najdete v tématu [Azure Web Apps](../app-service/app-service-web-overview.md).
+V tomto kurzu se dozvíte, jak vytvořit webové aplikace Azure, který může číst informace z trezoru klíčů Azure. Proces využívá spravovaných identit pro prostředky Azure. Další informace o Azure webové aplikace najdete v tématu [služby Azure App Service](../app-service/overview.md).
 
 Tento článek ukazuje, jak do:
 

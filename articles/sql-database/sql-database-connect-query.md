@@ -3,7 +3,7 @@ title: Připojení ke službě Azure SQL Database a její dotazování – Rychl
 description: Rychlé starty pro službu Azure SQL Database, které ukazují připojení k databázi SQL Azure a její dotazování.
 services: sql-database
 ms.service: sql-database
-ms.subservice: scenario
+ms.subservice: ''
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,14 +12,14 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 11/01/2018
-ms.openlocfilehash: ab1f96b2348c24a746aaa7bdd670f396884ee3f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 613b4cf2b08269259a4608a6960b815777cd0ae9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870193"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608030"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Rychlé starty: Připojení ke službě Azure SQL Database a její dotazování
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Šablony rychlý start: Azure SQL Database připojení a dotazování
 
 Následující dokument obsahuje odkazy na příklady Azure, které ukazují připojení k databázi SQL Azure a její dotazování. Obsahuje také několik doporučení týkající se protokolu TLS (Transport Level Security).
 

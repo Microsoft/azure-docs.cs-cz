@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 14dbd723772caa0045e9744ddb726060e3a1b8cf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 781c560429a01397fe36204360e896233bdd23f5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257773"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600365"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak v Azure nasadit webovou aplikaci ASP.NET řízenou daty a připojit ji ke službě [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po dokončení budete mít v Azure spuštěnou aplikaci ASP.NET připojenou ke službě SQL Database.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto kurzu se dozvíte, jak v Azure nasadit webovou aplikaci ASP.NET řízenou daty a připojit ji ke službě [Azure SQL Database](../sql-database/sql-database-technical-overview.md). Po dokončení budete mít v Azure spuštěnou aplikaci ASP.NET připojenou ke službě SQL Database.
 
 ![Publikovaná aplikace ASP.NET ve webové aplikaci Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 

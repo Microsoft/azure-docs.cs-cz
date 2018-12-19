@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 69026520a03a940f5f5ddc4586663d8047b39e04
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4b76e18315dcf4768f2dfc9c668b0222e2adf4f9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547656"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600569"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 
@@ -70,7 +70,7 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 
 ## <a name="compare-functions-and-webjobs"></a>Porovnání služeb Functions a WebJobs
 
-Podobně jako Azure Functions je služba Azure App Service WebJobs se sadou WebJobs SDK integrační služba *založená na kódu* a navržená pro vývojáře. Obě jsou postavené na službě [Azure App Service](../app-service/app-service-web-overview.md) a podporují funkce, jako jsou [integrace správy zdrojového kódu](../app-service/deploy-continuous-deployment.md), [ověřování](../app-service/app-service-authentication-overview.md) a [integrace monitorování pomocí Application Insights](functions-monitoring.md).
+Podobně jako Azure Functions je služba Azure App Service WebJobs se sadou WebJobs SDK integrační služba *založená na kódu* a navržená pro vývojáře. Obě jsou postavené na službě [Azure App Service](../app-service/overview.md) a podporují funkce, jako jsou [integrace správy zdrojového kódu](../app-service/deploy-continuous-deployment.md), [ověřování](../app-service/app-service-authentication-overview.md) a [integrace monitorování pomocí Application Insights](functions-monitoring.md).
 
 ### <a name="webjobs-and-the-webjobs-sdk"></a>Služba WebJobs a sada WebJobs SDK
 

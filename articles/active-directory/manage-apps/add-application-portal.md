@@ -10,23 +10,23 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/24/2018
 ms.author: barbkess
-ms.openlocfilehash: 9cb3cb16e0eba30f98767efd0d1c0d9123304c27
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 5cdadd93273b6010200b7211b75ca86dfa126b9d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394984"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604816"
 ---
-# <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do tenanta Azure Active Directory
+# <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Rychlý start: Přidání aplikace do svého tenanta Azure Active Directory
 
-Azure Active Directory (Azure AD) nabízí galerii obsahující tisíce předem integrovaných aplikací. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. V tomto rychlém startu se pomocí webu Azure Portal přidá aplikace z galerie do tenanta Azure Active Directory (Azure AD). 
- 
+Azure Active Directory (Azure AD) nabízí galerii obsahující tisíce předem integrovaných aplikací. Galerie pravděpodobně obsahuje i některé aplikace, které využívá vaše organizace. V tomto rychlém startu se pomocí webu Azure Portal přidá aplikace z galerie do tenanta Azure Active Directory (Azure AD).
+
 Po přidání aplikace do tenanta Azure AD můžete:
 
 - Spravovat přístup uživatelů k aplikaci pomocí zásad podmíněného přístupu.
 - Konfigurovat jednotné přihlašování uživatelů k aplikaci pomocí jejich účtů Azure AD.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 K přidání aplikace do tenanta budete potřebovat:
 
@@ -41,13 +41,13 @@ K testování postupů v tomto kurzu doporučujeme použít neprodukční prost�
 
 Přidání aplikace z galerie do tenanta Azure AD:
 
-1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**. 
+1. Na webu [Azure Portal](https://portal.azure.com) klikněte na levém navigačním panelu na **Azure Active Directory**.
 
-2. V okně **Azure Active Directory** klikněte na **Podnikové aplikace**. 
+2. V okně **Azure Active Directory** klikněte na **Podnikové aplikace**.
 
     ![Otevřené podnikové aplikace](media/add-application-portal/open-enterprise-apps.png)
 
-3. Otevře se okno **Všechny aplikace**, ve kterém se zobrazí náhodný vzorek aplikací ve vašem tenantovi Azure AD. 
+3. Otevře se okno **Všechny aplikace**, ve kterém se zobrazí náhodný vzorek aplikací ve vašem tenantovi Azure AD.
 
     ![Okno Všechny aplikace](media/add-application-portal/applications-blade.png)
 
@@ -56,13 +56,13 @@ Přidání aplikace z galerie do tenanta Azure AD:
 
     ![Nová aplikace](media/add-application-portal/new-application.png)
 
-5. Pokud chcete zobrazit seznam aplikací v galerii, je nejjednodušší použít **Kategorie**, protože ikony v části **Vybrané aplikace** představují náhodný vzorek aplikací v galerii. 
+5. Pokud chcete zobrazit seznam aplikací v galerii, je nejjednodušší použít **Kategorie**, protože ikony v části **Vybrané aplikace** představují náhodný vzorek aplikací v galerii.
 
     ![Hledání podle názvu nebo kategorie](media/add-application-portal/categories.png)
 
     Další aplikace můžete zobrazit kliknutím na **Zobrazit více**. Hledání tímto způsobem nedoporučujeme, protože galerie obsahuje tisíce aplikací.
 
-6. Pokud chcete vyhledat aplikaci, v části **Přidat z galerie** zadejte název aplikace, kterou chcete přidat. Ve výsledcích vyberte aplikaci a klikněte na **Přidat**. Následující příklad ukazuje formulář **Přidat aplikaci**, který se zobrazí po vyhledání GitHub.com.
+6. Pokud chcete vyhledat aplikaci, v části **Přidat z galerie** zadejte název aplikace, kterou chcete přidat. Ve výsledcích vyberte aplikaci a klikněte na **Přidat**. Následující příklad ukazuje **přidat aplikaci** formulář, který se zobrazí po hledání webu github.com.
 
     ![Přidání aplikace](media/add-application-portal/add-an-application.png)
 
@@ -70,23 +70,23 @@ Přidání aplikace z galerie do tenanta Azure AD:
 
 8. Jakmile budete se změnami vlastností hotovi, klikněte na **Přidat**.
 
-9. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci. 
+9. Zobrazí se stránka Začínáme s možnostmi konfigurace aplikace pro vaši organizaci.
 
     ![Nabídka Začínáme](media/add-application-portal/get-started.png)
 
-Dokončili jste přidání vaší aplikace. Můžete si udělat pauzu.  V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
+Dokončili jste přidání vaší aplikace. Můžete si udělat pauzu. V následujících částech se dozvíte, jak změnit logo a upravit další vlastnosti aplikace.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Vyhledání aplikace tenanta Azure AD
 
 Předpokládejme, že jste se museli vzdálit a teď se vracíte dokončit konfiguraci aplikace. První věc, kterou je potřeba udělat, je najít aplikaci.
 
-1. Na webu **[Azure Portal](https://portal.azure.com)** klikněte na levém navigačním panelu na **Azure Active Directory**. 
+1. Na webu **[Azure Portal](https://portal.azure.com)** klikněte na levém navigačním panelu na **Azure Active Directory**.
 
-2. V okně Azure Active Directory klikněte na **Podnikové aplikace**. 
+2. V okně Azure Active Directory klikněte na **Podnikové aplikace**.
 
 3. V rozevírací nabídce **Typ aplikace** vyberte **Všechny aplikace** a klikněte na **Použít**. Další informace o možnostech zobrazení najdete v tématu [Zobrazení aplikací tenanta](view-applications-portal.md).
 
-4. Zobrazí se seznam všech aplikací ve vašem tenantovi Azure AD.  Tento seznam představuje náhodný vzorek. Pokud chcete zobrazit další aplikace, jednou nebo vícekrát klikněte na **Zobrazit více**. 
+4. Zobrazí se seznam všech aplikací ve vašem tenantovi Azure AD. Tento seznam představuje náhodný vzorek. Pokud chcete zobrazit další aplikace, jednou nebo vícekrát klikněte na **Zobrazit více**.
 
 5. Pokud chcete rychle vyhledat aplikaci ve svém tenantovi, zadejte název aplikace do vyhledávacího pole a klikněte na **Použít**. V tomto příkladu se vyhledá dříve přidaná aplikace GitHub-test.
 
@@ -104,41 +104,41 @@ Teď, když jste našli aplikaci, ji můžete otevřít a nakonfigurovat její v
 
     ![Okno Upravit vlastnosti](media/add-application-portal/edit-properties.png)
 
-3. Seznamte se s možnostmi přihlašování. Kombinací možností **Mohou se uživatelé přihlásit?**, **Je přiřazení uživatelů povinné?** a **Uvidí ji uživatelé?** se určuje, jestli se můžou přihlásit uživatelé přiřazení nebo nepřiřazení k aplikaci.  Tyto možnosti také určují, jestli se uživateli zobrazí aplikace na přístupovém panelu. 
+3. Seznamte se s možnostmi přihlašování. Kombinací možností **Mohou se uživatelé přihlásit?**, **Je přiřazení uživatelů povinné?** a **Uvidí ji uživatelé?** se určuje, jestli se můžou přihlásit uživatelé přiřazení nebo nepřiřazení k aplikaci. Tyto možnosti také určují, jestli se uživateli zobrazí aplikace na přístupovém panelu.
 
     - Možnost **Mohou se uživatelé přihlásit?** určuje, jestli se můžou přihlásit uživatelé přiřazení k aplikaci.
     - Možnost **Je přiřazení uživatelů povinné?** určuje, jestli se můžou přihlásit uživatelé nepřiřazení k aplikaci.
-    - Možnost **Uvidí ji uživatelé?** určuje, jestli se uživatelům přiřazeným k aplikaci zobrazí aplikace na přístupovém panelu a ve spouštěči O365. 
+    - Možnost **Uvidí ji uživatelé?** určuje, jestli se uživatelům přiřazeným k aplikaci zobrazí aplikace na přístupovém panelu a ve spouštěči O365.
 
-4. Následující tabulky vám pomůžou zvolit možnosti, které jsou pro vaše potřeby nejvhodnější. 
+4. Následující tabulky vám pomůžou zvolit možnosti, které jsou pro vaše potřeby nejvhodnější.
 
-     - Chování pro **přiřazené** uživatele:
+    - Chování pro **přiřazené** uživatele:
 
-       | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
-       |---|---|---|---|---|
-       | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
-       | ano | ano | ano | ano | ano  |
-       | ano | ano | ne  | ano | ne   |
-       | ano | ne  | ano | ano | ano  |
-       | ano | ne  | ne  | ano | ne   |
-       | ne  | ano | ano | ne  | ne   |
-       | ne  | ano | ne  | ne  | ne   |
-       | ne  | ne  | ano | ne  | ne   |
-       | ne  | ne  | ne  | ne  | ne   |
+        | Nastavení vlastností aplikace | | | Prostředí pro přiřazené uživatele | |
+        |---|---|---|---|---|
+        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se přiřazení uživatelé přihlásit? | Zobrazí se aplikace přiřazeným uživatelům?* |
+        | ano | ano | ano | ano | ano  |
+        | ano | ano | ne  | ano | ne   |
+        | ano | ne  | ano | ano | ano  |
+        | ano | ne  | ne  | ano | ne   |
+        | ne  | ano | ano | ne  | ne   |
+        | ne  | ano | ne  | ne  | ne   |
+        | ne  | ne  | ano | ne  | ne   |
+        | ne  | ne  | ne  | ne  | ne   |
 
-     - Chování pro **nepřiřazené** uživatele:
-  
-       | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
-       |---|---|---|---|---|
-       | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
-       | ano | ano | ano | ne  | ne   |
-       | ano | ano | ne  | ne  | ne   |
-       | ano | ne  | ano | ano | ne   |
-       | ano | ne  | ne  | ano | ne   |
-       | ne  | ano | ano | ne  | ne   |
-       | ne  | ano | ne  | ne  | ne   |
-       | ne  | ne  | ano | ne  | ne   |
-       | ne  | ne  | ne  | ne  | ne   |
+    - Chování pro **nepřiřazené** uživatele:
+
+        | Nastavení vlastností aplikace | | | Prostředí pro nepřiřazené uživatele | |
+        |---|---|---|---|---|
+        | Mohou se uživatelé přihlásit? | Je přiřazení uživatelů povinné? | Uvidí ji uživatelé? | Mohou se nepřiřazení uživatelé přihlásit? | Zobrazí se aplikace nepřiřazeným uživatelům?* |
+        | ano | ano | ano | ne  | ne   |
+        | ano | ano | ne  | ne  | ne   |
+        | ano | ne  | ano | ano | ne   |
+        | ano | ne  | ne  | ano | ne   |
+        | ne  | ano | ano | ne  | ne   |
+        | ne  | ano | ne  | ne  | ne   |
+        | ne  | ne  | ano | ne  | ne   |
+        | ne  | ne  | ne  | ne  | ne   |
 
     * Zobrazí se aplikace uživateli na přístupovém panelu a ve spouštěči aplikací Office 365?
 
@@ -155,11 +155,11 @@ Použití vlastního loga:
     ![Změna loga](media/add-application-portal/change-logo.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se dozvěděli, jak do tenanta Azure AD přidat aplikaci z galerie. Zjistili jste, jak upravit vlastnosti aplikace. 
+V tomto rychlém startu jste se dozvěděli, jak do tenanta Azure AD přidat aplikaci z galerie. Zjistili jste, jak upravit vlastnosti aplikace.
 
-Teď jste připraveni nakonfigurovat pro aplikaci jednotné přihlašování. 
+Teď jste připraveni nakonfigurovat pro aplikaci jednotné přihlašování.
 
 > [!div class="nextstepaction"]
 > [Konfigurace jednotného přihlašování](configure-single-sign-on-portal.md)

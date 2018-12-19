@@ -10,14 +10,14 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: eaa44f942082c6bd062599dbdd0401fe4505daf4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 824fa5ceb5828394fedfe7af8bf48af2980160d9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090194"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606312"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v iOS s využitím sady Speech SDK
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí sady SDK služby řeči
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -35,7 +35,7 @@ Než začnete, tady je seznam požadovaných součástí:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je `1.1.0`.
+Aktuální verze sady Cognitive Services Speech SDK je `1.2.0`.
 
 Sada Cognitive Services Speech SDK pro Mac a iOS je v současné době distribuovaná jako rozhraní Cocoa.
 Můžete si ho stáhnout na adrese https://aka.ms/csspeech/iosbinary. Stáhněte si tento soubor do svého domovského adresáře.
@@ -49,15 +49,15 @@ V následujících dialogových oknech proveďte následující výběry:
 
 1. Dialogové okno Project Options (Možnosti projektu)
     1. Zadejte název aplikace Rychlý start, například `helloworld`.
-    1. Pokud už máte účet Apple Developer, zadejte odpovídající název a identifikátor organizace. Pro účely testování stačí vybrat jakýkoli název, třeba `testorg`. Abyste mohli aplikaci podepsat, potřebujete také vhodný zřizovací profil. Podrobnosti najdete na [webu Apple Developer](https://developer.apple.com/).
+    1. Pokud už máte účet Apple Developer, zadejte odpovídající název a identifikátor organizace. Pro účely testování stačí vybrat jakýkoli název, třeba `testorg`. K podepsání aplikace, budete potřebovat správné zřizovacího profilu. Odkazovat [webu Apple developer](https://developer.apple.com/) podrobnosti.
     1. Ujistěte se, že jako jazyk projektu je zvolený jazyk Objective-C.
     1. Zrušte zaškrtnutí všech políček týkajících se testů a základních dat.
     ![Nastavení projektu](media/sdk/qs-objectivec-project-settings.png)
 1. Vyberte adresář projektu.
-    1. Zvolte svůj domovský adresář, do kterého se projekt umístí. Tím se ve vašem domovském adresáři vytvoří adresář `helloworld` obsahující všechny soubory pro projekt Xcode.
+    1. Zvolte svůj domovský adresář, do kterého se projekt umístí. Tím se vytvoří `helloworld` adresáře ve svém domovském adresáři, který obsahuje všechny soubory projektu Xcode.
     1. Zakažte vytvoření úložiště Git pro tento ukázkový projekt.
     1. V části *Project Settings* (Nastavení projektu) upravte cesty k sadě SDK.
-        1. Na kartě **General** (Obecné) pod nadpisem **Embedded Binaries** (Vložené binární soubory) přidejte knihovnu sady SDK jako rozhraní: vyberte **Add embedded binaries** > **Add other...** (Přidat vložené binární soubory > Přidat jiné...), přejděte do svého domovského adresáře a zvolte soubor `MicrosoftCognitiveServicesSpeech.framework`. Tím se knihovna sady SDK automaticky přidá také pod nadpis **Linked Framework and Libraries** (Připojená rozhraní a knihovny).
+        1. V **Obecné** kartu **vložených binárních souborů** záhlaví, přidání sady SDK knihovny jako rozhraní: **Přidat vložených binárních souborů** > **přidat další...**  > Přejít na domovský adresář a vyberte soubor `MicrosoftCognitiveServicesSpeech.framework`. Tento postup přidá hlavičku knihovny sady SDK **propojené rozhraní a knihovny** automaticky.
         ![Přidané rozhraní](media/sdk/qs-objectivec-framework.png)
         1. Přejděte na kartu **Build Settings** (Nastavení sestavení) a aktivujte **všechna** nastavení.
         1. Do části *Framework Search Paths* (Cesty pro hledání rozhraní) pod nadpisem **Search Paths** (Cesty pro hledání) přidejte adresář `$(SRCROOT)/..`.
@@ -65,10 +65,10 @@ V následujících dialogových oknech proveďte následující výběry:
 
 ## <a name="set-up-the-ui"></a>Nastavení uživatelského rozhraní
 
-Ukázková aplikace bude mít velmi jednoduché uživatelské rozhraní: dvě tlačítka pro spuštění rozpoznávání řeči ze souboru nebo vstupu z mikrofonu a textový popisek pro zobrazení výsledku.
+Ukázková aplikace bude mít velmi jednoduché uživatelské rozhraní: Dvě tlačítka spustit rozpoznávání řeči ze souboru nebo z vstup mikrofon a textový popisek k zobrazení výsledku.
 Uživatelské rozhraní se nastavuje v části `Main.storyboard` projektu.
 Otevřete zobrazení XML scénáře tak, že ve stromu projektu kliknete pravým tlačítkem na položku `Main.storyboard` a vyberete **Open As...** > **Source Code** (Otevřít jako... > Zdrojový kód).
-Nahraďte automaticky vygenerovaný kód XML tímto:
+Nahraďte automaticky generované XML s tímto kódem:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/Base.lproj/Main.storyboard)]
 
@@ -81,7 +81,7 @@ V následujícím dialogovém okně neměňte nastavení a klikněte na **Finish
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
 1. Řetězec `YourSubscriptionKey` nahraďte klíčem předplatného.
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
-1. Přidejte žádost o přístup k mikrofonu. Ve stromu projektu klikněte pravým tlačítkem na položku `Info.plist` a vyberte **Open As...** > **Source Code** (Otevřít jako... > Zdrojový kód). Do části `<dict>` přidejte následující řádky a pak soubor uložte.
+1. Přidejte žádost o přístup k mikrofonu. Klikněte pravým tlačítkem myši `Info.plist` položka stromu projektu a vyberte **otevřít jako...**   >  **Zdrojový kód**. Do části `<dict>` přidejte následující řádky a pak soubor uložte.
     ```xml
     <key>NSMicrophoneUsageDescription</key>
     <string>Need microphone access for speech recognition from microphone.</string>

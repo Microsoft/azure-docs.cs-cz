@@ -15,16 +15,16 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 192736e014e54f77fb55d659a9849ecdc93ff2ed
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2d247a3135888fc00efd837b706e0a4f0ecc5c47
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547776"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601436"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service
 
-[Azure App Service ](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](app-service-authentication-overview.md). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. V kurzu se používá aplikace ASP.NET Core s front-endem v Angular.js, ta ale slouží pouze jako příklad. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](app-service-authentication-overview.md). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. V kurzu se používá aplikace ASP.NET Core s front-endem v Angular.js, ta ale slouží pouze jako příklad. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
 
 Tento kurz na ukázkové aplikaci ukazuje, jak zabezpečit samostatnou aplikaci (v části [Povolení ověřování a autorizace pro back-endové aplikace](#enable-authentication-and-authorization-for-back-end-app)).
 
@@ -446,4 +446,4 @@ Naučili jste se:
 V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md)
