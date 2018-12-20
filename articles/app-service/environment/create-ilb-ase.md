@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 285bd8ec7ac5c4f0b39a32408c039c9616dc7a07
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9c44e2564c26a16d632a16195d3e53b8ce83d735
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604612"
+ms.locfileid: "53629879"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -78,7 +78,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
     * &lt;nazev_ase&gt;.p.azurewebsites.net
 
-   Existuje funkce označovaná jako Vlastní názvy domén, která umožňuje namapovat na webovou aplikaci existující název DNS. Další informace o této funkci najdete v dokumentu [Mapování existujícího názvu DNS na webovou aplikaci][customdomain]. Vlastní název domény pro aplikace se nesmí překrývat s názvem domény používaným vaší službou ASE. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení s názvem domény _contoso.com_ není možné použít vlastní názvy domény pro aplikace podobné těmto:
+   Je možné [mapování existujícího názvu DNS do vaší aplikace][customdomain]. Vlastní název domény pro aplikace se nesmí překrývat s názvem domény používaným vaší službou ASE. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení s názvem domény _contoso.com_ není možné použít vlastní názvy domény pro aplikace podobné těmto:
 
     * www.contoso.com
 
@@ -88,7 +88,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
    Pokud znáte vlastní názvy domén pro vaše aplikace, vyberte si pro službu ASE s interním nástrojem pro vyrovnávání zatížení doménu, která nebude s těmito vlastními názvy domén v konfliktu. V tomto příkladu můžete použít pro službu ASE třeba doménu *contoso-internal.com*, ta totiž nebude v konfliktu s vlastními názvy domén, které končí *.contoso.com*.
 
-1. Vyberte **OK** a potom vyberte **Vytvořit**.
+8. Vyberte **OK** a potom vyberte **Vytvořit**.
 
     ! [Vytvoření služby ASE] [1]
 
@@ -160,23 +160,23 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
 1. Získejte adresu interního nástroje pro vyrovnávání zatížení pro vaši službu ASE. Vyberte položky **ASE** > **Vlastnosti** > **Virtuální IP adresa**.
 
-1. Po vytvoření služby ASE vytvořte ve své službě ASE webovou aplikaci.
+2. Vytvoření aplikace ve vaší službě ASE po vytvoření služby ASE.
 
-1. Pokud ještě v dané virtuální síti nemáte virtuální počítač, vytvořte ho.
+3. Pokud ještě v dané virtuální síti nemáte virtuální počítač, vytvořte ho.
 
     > [!NOTE] 
     > Nepokoušejte se tento virtuální počítač vytvořit ve stejné podsíti jako službu ASE, protože by došlo k chybě nebo potížím.
     >
 
-1. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Pokud chcete provést několik jednoduchých testů, upravte ve svém virtuálním počítači soubor hostitelů a nastavte název webové aplikace na virtuální IP adresu:
+4. Nastavte službu DNS pro doménu vaší služby ASE. V doméně ve vaší službě DNS můžete použít zástupný znak. Provedete několik jednoduchých testů, upravte soubor hostitelů na vašem virtuálním počítači nastavit název aplikace na virtuální IP adresu:
 
-    a. Pokud má vaše služba ASE název domény _.ilbase.com_ a vytvoříte webovou aplikaci s názvem _mytestapp_, bude mít adresu _mytestapp.ilbase.com_. Adresu _mytestapp.ilbase.com_ potom nastavíte tak, aby se překládala na adresu interního nástroje pro vyrovnávání zatížení. (Ve Windows je soubor hostitelů v adresáři _C:\Windows\System32\drivers\etc\_.)
+    a. Pokud má vaše služba ASE název domény _. ilbase.com_ a vytvoříte aplikaci s názvem _mytestapp_, bude _mytestapp.ilbase.com_. Adresu _mytestapp.ilbase.com_ potom nastavíte tak, aby se překládala na adresu interního nástroje pro vyrovnávání zatížení. (Ve Windows je soubor hostitelů v adresáři _C:\Windows\System32\drivers\etc\_.)
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 
-1. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
+5. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. (Nebo přejděte na cokoli, co je název vaší aplikace ve vaší doméně.)
 
-1. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
+6. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 
