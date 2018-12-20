@@ -1,6 +1,6 @@
 ---
 title: Ukázkový skript Azure CLI – škálování aplikace po celém světě s využitím Traffic Manageru | Dokumentace Microsoftu
-description: Ukázkový skript Azure CLI – škálování webové aplikace po celém světě s využitím architektury vysokou dostupnost
+description: Ukázkový skript Azure CLI – škálování aplikace služby App Service s využitím architektury vysokou dostupnost po celém světě
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3c2aa753c5521ca5bc57da2c833187f16e4146a4
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3165904eb7757b43d35a4fa3051d29d10bce70a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584916"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632904"
 ---
-# <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Škálování webové aplikace po celém světě s vysokou dostupností architektury pomocí rozhraní příkazového řádku Azure
+# <a name="scale-an-app-service-app-worldwide-with-a-high-availability-architecture-using-azure-cli"></a>Škálování aplikace služby App Service po celém světě s vysokou dostupností architektury pomocí rozhraní příkazového řádku Azure
 
-Tento ukázkový skript vytvoří skupinu prostředků, dva plány služby App Service, dvě webové aplikace, profil služby Traffic Manager a dva koncové body služby Traffic Manager. Na konci cvičení budete mít vysoce dostupnou architekturu zajišťující globální dostupnost vaší webové aplikace na základě nejnižší latence sítě.
+Tento ukázkový skript vytvoří skupinu prostředků, dva plány služby App Service, dvě aplikace, profil služby traffic manager a dva koncové body traffic Manageru. Po dokončení na konci cvičení budete mít vysoce dostupnou architekturu zajišťující globální dostupnost vaší aplikace na základě nejnižší latence sítě.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,13 +41,13 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služby Traffic Manager a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, aplikace služby App Service, profil služby traffic manager a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) | Vytvoří profil služby Azure Traffic Manager. |
 | [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 

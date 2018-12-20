@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vazba vlastního certifikátu SSL na webovou aplikaci | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vazba vlastního certifikátu SSL na webovou aplikaci
+title: Ukázkový skript Azure CLI – vazba vlastního certifikátu SSL na aplikaci | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – vazba vlastního certifikátu SSL na aplikaci
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 383bd26d1ec18621890337f0a89f72e0eff71abf
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 89483c6396ea344a035ec22bf79e2f90dada4c96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584877"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634639"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-cli"></a>Vazba vlastního certifikátu SSL na webovou aplikaci pomocí rozhraní příkazového řádku
+# <a name="bind-a-custom-ssl-certificate-to-an-app-service-app-using-cli"></a>Vazba vlastního certifikátu SSL na aplikaci služby App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak k ní vytvoří vazbu certifikátu SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
+Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky a pak do ní vytvoří vazbu certifikátu SSL vlastního názvu domény. Pro tuto ukázku potřebujete:
 
 * Přístup ke konfigurační stránce DNS doménového registrátora.
 * Platný soubor .PFX a heslo pro certifikát SSL, který chcete nahrát a svázat.
@@ -38,7 +38,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -50,10 +50,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Namapuje na webovou aplikaci vlastní doménu. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Nahraje do webové aplikace certifikát SSL. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Vytvoří vazbu nahraného certifikátu SSL na webovou aplikaci. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Vlastní doména se mapuje na aplikaci služby App Service. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-upload) | Nahrání certifikátu SSL pro aplikaci služby App Service. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az-webapp-config-ssl-bind) | Vytvoří vazbu nahraného certifikátu SSL pro aplikaci služby App Service. |
 
 ## <a name="next-steps"></a>Další postup
 
