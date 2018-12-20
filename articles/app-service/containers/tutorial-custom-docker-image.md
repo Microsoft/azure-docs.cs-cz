@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: ae9da43ac40a3da188e6030659cfb6de166c53bb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256073"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632972"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -193,7 +193,7 @@ v1.0.0: digest: sha256:21f2798b20555f4143f2ca0591a43b4f6c8138406041f2d32ec908974
 
 ## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
 
-Pomocí Azure Web Apps můžete v cloudu hostovat nativní aplikace pro Linux. Pokud chcete vytvořit službu Web App for Containers, musíte spustit příkazy Azure CLI, které vytvoří skupinu, pak plán služby a nakonec samotnou webovou aplikaci. 
+Chcete-li vytvořit aplikaci, která používá image, kterou jste právě odeslali, spouštíte příkazy rozhraní příkazového řádku Azure, které vytvoření skupiny, pak plán služby a nakonec samotnou webovou aplikaci. 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
