@@ -16,7 +16,7 @@ ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
 ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/12/2018
 ms.locfileid: "53271007"
@@ -169,7 +169,7 @@ První dva příchozí požadavky pro službu ASE tak funkce se zobrazí v horn�
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo umožňuje IP adresy ve virtuální síti komunikovat s podsíti služby ASE. Další výchozí pravidlo umožňuje nástroje pro vyrovnávání zatížení, označované také jako veřejnou virtuální IP adresy, ke komunikaci se službou ASE. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepřít všechno ostatní pravidla po pravidla skupiny zabezpečení sítě je vidět, zabránit provoz mezi virtuální IP adresy a služby ASE. Chcete-li zabránit provoz přicházející z uvnitř virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použít prostředek rovna AzureLoadBalancer s cílovou **jakékoli** a rozsah portů **\\***. Vzhledem k tomu, že pravidlo NSG, je použita na podsíti služby ASE, nemusíte být konkrétní v cílovém umístění.
+Výchozí pravidlo umožňuje IP adresy ve virtuální síti komunikovat s podsíti služby ASE. Další výchozí pravidlo umožňuje nástroje pro vyrovnávání zatížení, označované také jako veřejnou virtuální IP adresy, ke komunikaci se službou ASE. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepřít všechno ostatní pravidla po pravidla skupiny zabezpečení sítě je vidět, zabránit provoz mezi virtuální IP adresy a služby ASE. Chcete-li zabránit provoz přicházející z uvnitř virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použít prostředek rovna AzureLoadBalancer s cílovou **jakékoli** a rozsah portů **\***. Vzhledem k tomu, že pravidlo NSG, je použita na podsíti služby ASE, nemusíte být konkrétní v cílovém umístění.
 
 Pokud jste IP adresy přiřazené vaší aplikaci, ujistěte se, že můžete ponechat porty otevřené. Pokud chcete zobrazit porty, vyberte **služby App Service Environment** > **IP adresy**.  
 
