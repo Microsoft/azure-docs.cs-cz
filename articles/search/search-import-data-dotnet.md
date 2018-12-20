@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/13/2017
 ms.custom: seodec2018
-ms.openlocfilehash: ae723e07f92a05f128ca78a7c5974cd0ebc55ac6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a34a48f8816315602fc497d4f39dcfee7fe2b032
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313288"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634894"
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>Odesílání dat do služby Azure Search pomocí .NET SDK
 > [!div class="op_single_selector"]
@@ -208,11 +208,11 @@ public partial class Hotel
 Všimněte si, že prvním krokem je, že každá veřejná vlastnost třídy `Hotel` odpovídá poli v definici indexu, ale s jedním zásadním rozdílem: Název každého pole začíná malým písmenem ("camelCase"), zatímco název každé veřejné vlastnosti třídy `Hotel` začíná velké písmeno ("pascalcase"). To je běžný scénář v .NET aplikacích provádějících datové vazby, kde je cílové schéma mimo kontrolu vývojáře aplikace. Místo porušování směrnic pojmenování .NET psaním názvů vlastností ve stylu CamelCase můžete pomocí atributu `[SerializePropertyNamesAsCamelCase]` říct sadě SDK, aby mapovala názvy vlastností na CamelCase automaticky.
 
 > [!NOTE]
-> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](http://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v části [Vlastní serializace pomocí technologie JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet). Příkladem toho je použití atributu `[JsonProperty]` na vlastnost `DescriptionFr` ve výše uvedeném ukázkovém kódu.
+> .NET SDK služby Azure Search používá k serializaci a deserializaci vlastních objektů modelu do a z JSON knihovnu [NewtonSoft JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). V případě potřeby lze serializaci přizpůsobit. Další podrobnosti najdete v části [Vlastní serializace pomocí technologie JSON.NET](search-howto-dotnet-sdk.md#JsonDotNet). Příkladem toho je použití atributu `[JsonProperty]` na vlastnost `DescriptionFr` ve výše uvedeném ukázkovém kódu.
 > 
 > 
 
-Dále jsou ve třídě `Hotel` důležité datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `DataType.String`. Podobná mapování typu probíhají mezi `bool?` a `DataType.Boolean`, `DateTimeOffset?` a `DataType.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations#Microsoft_Azure_Search_IDocumentsOperations_GetWithHttpMessagesAsync__1_System_String_System_Collections_Generic_IEnumerable_System_String__Microsoft_Azure_Search_Models_SearchRequestOptions_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_).
+Dále jsou ve třídě `Hotel` důležité datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `DataType.String`. Podobná mapování typu probíhají mezi `bool?` a `DataType.Boolean`, `DateTimeOffset?` a `DataType.DateTimeOffset` atd. Konkrétní pravidla pro mapování typu jsou popsaná u metody `Documents.Get` v tématu [Reference k sadě .NET SDK služby Azure Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get).
 
 Tato možnost používat vlastní třídy jako dokumenty funguje v obou směrech – Můžete také načíst výsledky vyhledávání a nechat sadu SDK, aby je automaticky deserializovala do požadovaného typu, jak ukazuje [následující článek](search-query-dotnet.md).
 

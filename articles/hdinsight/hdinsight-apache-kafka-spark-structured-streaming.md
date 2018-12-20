@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4ac341d780a3c348f9ba9f8fd0241c351bd5fdc5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162423"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652860"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku s využitím Apache Kafka v HDInsight
 
 Tento kurz ukazuje, jak používat [strukturovaného streamování Apache Sparku](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight.
 
-Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. 
+Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty.  
 
 V tomto kurzu se naučíte:
 
@@ -41,7 +41,7 @@ Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit
 
 * Znalost vytváření témat Kafka. Další informace najdete v tématu [Apache Kafka v HDInsight quickstart](kafka/apache-kafka-get-started.md) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
@@ -118,7 +118,7 @@ Následující diagram znázorňuje tok komunikace mezi Sparkem a systémem Kafk
 
 ![Diagram clusterů Spark a Kafka ve virtuální síti Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Komunikace služby Kafka je omezená na virtuální síť. Další služby v clusteru, jako jsou SSH a Ambari, jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Spark v rámci této sítě použijte následující postup:
@@ -135,7 +135,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     * Cluster Spark 2.2.0 ve službě HDInsight 3.6.
     * Virtuální síť Azure obsahující clustery HDInsight.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Poznámkový blok strukturovaného streamování použitý v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
 
 2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
@@ -158,7 +158,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. 
 
-> [!NOTE]
+> [!NOTE]  
 > Vytvoření clusterů může trvat až 20 minut.
 
 ## <a name="upload-the-notebook"></a>Nahrání poznámkového bloku
@@ -198,7 +198,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-> [!WARNING]
+> [!WARNING]  
 > Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.

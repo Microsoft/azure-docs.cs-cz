@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/26/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 77dd9424f20017b009b3de2cd8f7f78314feb316
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d04fa3f01c468b71f0150812e543043c193c848f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600246"
+ms.locfileid: "53634690"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Ověřování a autorizaci uživatelů začátku do konce ve službě Azure App Service v Linuxu
 
@@ -53,7 +53,7 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat .NET Core 2.0](https://www.microsoft.com/net/core/).
@@ -86,7 +86,7 @@ V tomto kroku nasadíte projekt do dvou aplikací App Service. Jedna je front-en
 
 ### <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
-Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě webové aplikace. Nahraďte _&lt;front\_end\_app\_name>_ a _&lt;back\_end\_app\_name>_ dvěma globálně jedinečnými názvy aplikací (platné znaky jsou `a-z`, `0-9` a `-`). Další informace o jednotlivých příkazech najdete v tématu [Vytvoření webové aplikace .NET Core ve službě App Service v Linuxu](quickstart-dotnetcore.md).
+Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě aplikace služby App Service. Nahraďte _&lt;front\_end\_app\_name>_ a _&lt;back\_end\_app\_name>_ dvěma globálně jedinečnými názvy aplikací (platné znaky jsou `a-z`, `0-9` a `-`). Další informace o jednotlivých příkazech najdete v tématu [vytvoření aplikace .NET Core ve službě App Service v Linuxu](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
@@ -143,7 +143,7 @@ git remote add frontend <deploymentLocalGitUrl-of-front-end-app>
 git push frontend master
 ```
 
-### <a name="browse-to-the-azure-web-apps"></a>Přechod do webových aplikací Azure
+### <a name="browse-to-the-azure-apps"></a>Přejděte do aplikace Azure
 
 V prohlížeči přejděte na následující adresy URL, kde se zobrazí dvě funkční aplikace.
 
@@ -453,7 +453,7 @@ Naučili jste se:
 > * Použití přístupových tokenů z kódu serveru
 > * Použití přístupových tokenů z klientského kódu (v prohlížeči)
 
-V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
+Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
 
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)

@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 7e28b8938c8c0eb258fbb599dd5765258a4d52e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867371"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53627755"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Výpočet fakturace celkové velikosti kontejneru objektů blob
 
@@ -126,6 +126,6 @@ Tady je rozpis:
 
 - Další informace o fakturaci Azure Storage najdete v tématu [Principy Windows Azure Storage fakturace](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- Další informace o modulu Azure Powershellu najdete v tématu [dokumentaci k Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.4.1).
+- Další informace o modulu Azure Powershellu najdete v tématu [dokumentaci k Azure Powershellu](https://docs.microsoft.com/powershell/azure/overview).
 
 - Můžete najít další ukázkové skripty Powershellu pro úložiště v [ukázky Powershellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

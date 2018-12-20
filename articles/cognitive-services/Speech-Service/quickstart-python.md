@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: chlandsi
-ms.openlocfilehash: bfa781dc76d54ad016fd72f8b28330632bbce624
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46f19876215c4c1ffac7d99e377381451a0ea7df
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609398"
+ms.locfileid: "53629284"
 ---
 # <a name="quickstart-using-the-speech-service-from-python"></a>Rychlý start: Pomocí služby řeči z Pythonu
 
@@ -39,7 +39,7 @@ Než začnete, tady je seznam požadovaných součástí:
 
 * Na Windows, musíte také [Microsoft Visual C++ Redistributable pro Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu.
 
-## <a name="get-the-speech-sdk-python-package"></a>Získání balíčku Python SDK řeči
+## <a name="get-the-speech-sdk-python-package"></a>Získat balíček Python SDK řeči
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -63,13 +63,20 @@ Pokud máte problém nebo funkce chybí, podíváme se na naše [stránku podpor
 
 ### <a name="running-the-sample-in-a-terminal"></a>V terminálu spuštěním ukázky
 
-Buď můžete zkopírovat kód z tohoto rychlého startu do zdrojového souboru `quickstart.py` a ho spustit v prostředí (IDE) nebo v konzole
+Můžete kopírovat [kód](#quickstart-code) z tohoto rychlého startu do zdrojového souboru `quickstart.py` a ho spustit v prostředí (IDE) nebo v konzole
 
 ```sh
 python quickstart.py
 ```
 
 nebo si můžete stáhnout tento rychlý úvodní kurz jako [Jupyter](https://jupyter.org) Poznámkový blok z [úložiště ukázek Cognitive Services řeči](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spusťte ho jako poznámkový blok.
+
+### <a name="quickstart-code"></a>Kód tohoto rychlého startu
+
+[!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
+
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Vyhledejte tuto ukázku ve složce `quickstart/python`.
 
 ### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>Instaluje se balíček Python SDK řeči a spuštění ukázky ve Visual Studio Code
 
@@ -82,7 +89,7 @@ nebo si můžete stáhnout tento rychlý úvodní kurz jako [Jupyter](https://ju
    ![Otevřít složku](media/sdk/qs-python-vscode-python-open-folder.png)
 1. Vytvoření nového zdrojového souboru Python `speechsdk.py`, kliknutím na ikonu nový soubor.
    ![Vytvoření souboru](media/sdk/qs-python-vscode-python-newfile.png)
-1. Kopírovat, Vložit a uložte níže uvedený kód Python do nově vytvořený soubor.
+1. Kopírovat, Vložit a uložit [kódu Pythonu](#quickstart-code) na nově vytvořený soubor.
 1. Vložte informace o předplatném Speech Service.
 1. Pokud už je zvolená interpret Pythonu, zobrazí se na levé straně stavového řádku v dolní části okna.
    V opačném případě můžete klást svoje seznam dostupných interpretů Pythonu tak, že otevřete **paletu příkazů** (`Ctrl+Shift+P`) a zadáním příkazu **Pythonu: Vyberte interpret**a vyberte odpovídající.
@@ -94,13 +101,6 @@ nebo si můžete stáhnout tento rychlý úvodní kurz jako [Jupyter](https://ju
    ![Spuštění ukázky](media/sdk/qs-python-vscode-python-run.png)
 
 Pokud existují problémy těchto pokynů, podívejte se na více rozsáhlé [Visual Studio kódu Pythonu pro tento kurz](https://code.visualstudio.com/docs/python/python-tutorial).
-
-### <a name="quickstart-code"></a>Kód tohoto rychlého startu
-
-[!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
-
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/python`.
 
 ## <a name="next-steps"></a>Další postup
 

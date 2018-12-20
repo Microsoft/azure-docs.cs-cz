@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v Pythonu s PostgreSQL v Linuxu – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření aplikace v Pythonu s PostgreSQL v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak v Azure spustit aplikaci Python řízenou daty s připojením k databázi PostgreSQL.
 services: app-service\web
 documentationcenter: python
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 86b80e8d2e4dbec96807edaba2dff813d0eda029
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 69e1bc5e537ed251801816f48d55cd50b54884c4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607417"
+ms.locfileid: "53635370"
 ---
-# <a name="build-a-python-and-postgresql-web-app-in-azure-app-service"></a>Vytvoření webové aplikace Python a PostgreSQL v Azure App Service
+# <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Vytvoření aplikace Python a PostgreSQL v Azure App Service
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje postup vytvoření webové aplikace řízené daty v Pythonu pomocí PostgreSQL jako back-endové databáze. Jakmile budete hotovi, budete mít ve službě App Service v Linuxu spuštěnou aplikaci Django.
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje, jak vytvářet datově řízené aplikace v Pythonu, pomocí PostgreSQL jako databáze back-endu. Jakmile budete hotovi, budete mít ve službě App Service v Linuxu spuštěnou aplikaci Django.
 
 ![Aplikaci Python Django ve službě App Service v Linuxu](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit aplikaci Python k PostgreSQL
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Zobrazit diagnostické protokoly
 > * Spravovat aplikaci na webu Azure Portal
 
@@ -40,7 +40,7 @@ Podle kroků v tomto článku můžete postupovat v systému macOS. Pokyny pro L
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat Python](https://www.python.org/downloads/).
@@ -371,9 +371,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 Server nasazení služby App Service se zobrazí _souboru requirements.txt_ v kořenovém adresáři úložiště a správy balíčků Pythonu spustí automaticky po `git push`.
 
-### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
 
-Přejděte do nasazené webové aplikace. Když se o aplikaci žádá poprvé, spuštění nějakou dobu trvá, protože se musí stáhnout a spustit kontejner. Pokud stránce vyprší časový limit nebo se na ní zobrazí chybová zpráva, počkejte několik minut a stránku aktualizujte.
+Přejděte do nasazené aplikace. Když se o aplikaci žádá poprvé, spuštění nějakou dobu trvá, protože se musí stáhnout a spustit kontejner. Pokud stránce vyprší časový limit nebo se na ní zobrazí chybová zpráva, počkejte několik minut a stránku aktualizujte.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -403,15 +403,15 @@ Po zapnutí protokolování kontejneru spuštěním následujícího příkazu z
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-## <a name="manage-your-web-app-in-the-azure-portal"></a>Správa webové aplikace na portálu Azure Portal
+## <a name="manage-your-app-in-the-azure-portal"></a>Správa aplikace na webu Azure Portal
 
-Přejděte na web [Azure Portal](https://portal.azure.com) k webové aplikaci, kterou jste vytvořili.
+Přejděte [webu Azure portal](https://portal.azure.com) a zobrazte aplikaci jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**, pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/tutorial-python-postgresql-app/app-resource.png)
+![Přechod do aplikace Azure na portálu](./media/tutorial-python-postgresql-app/app-resource.png)
 
-Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení, na portálu se zobrazí vaše aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/tutorial-python-postgresql-app/app-mgmt.png)
 
@@ -424,11 +424,11 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit aplikaci Python k PostgreSQL
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Zobrazit diagnostické protokoly
 > * Spravovat aplikaci na webu Azure Portal
 
-V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
+Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
 
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

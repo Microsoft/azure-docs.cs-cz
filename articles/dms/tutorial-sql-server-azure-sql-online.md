@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: aea6b9628ffff4ba5075338c48340b88c95b6174
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/19/2018
+ms.openlocfilehash: 3f0d854c82934d0cb38139c4d198862fbbc85a18
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956853"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631375"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Kurz: Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) s minimálními výpadky. V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Stažení sestavy migrace
 
 > [!NOTE]
-> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance založené na cenovou úroveň Premium.
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
@@ -59,7 +59,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 - Ujistěte se, že přihlašovací údaje použité pro připojení k cílové instanci služby Azure SQL Database mají oprávnění CONTROL DATABASE k cílovým databázím SQL Azure.
 - Verze zdrojového SQL Serveru musí být SQL Server 2005 nebo novější. Návod k určení verze vaší instance SQL Serveru najdete v článku [Určení verze, edice a úrovně aktualizace SQL Serveru a jeho komponent](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an).
 - Databáze musí být v režimu hromadného protokolování nebo úplného obnovení. Návod k určení modelu obnovení nakonfigurovaného pro vaši instanci SQL Serveru najdete v článku [Zobrazení nebo změna modelu obnovení databáze (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server?view=sql-server-2017).
-- Nezapomeňte provést úplné zálohování databází. Návod k vytvoření úplné zálohy databáze najdete v článku [Postup: Vytvoření úplné zálohy databáze (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)).
+- Nezapomeňte provést úplné zálohování databází. Pokud chcete vytvořit úplnou zálohu databáze, najdete v článku [jak: Vytvořit úplnou zálohu databáze (Transact-SQL)](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms191304(v=sql.105)).
 - Pokud některé z tabulek nemají primární klíč, povolte pro databázi a příslušné tabulky funkci Change Data Capture (CDC).
     > [!NOTE]
     > K vyhledání tabulek bez primárních klíčů můžete použít následující skript.

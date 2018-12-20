@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření účtu úložiště – Azure Storage'
+title: 'Rychlý start: Vytvořit účet úložiště – Azure Storage'
 description: V tomto rychlém startu se naučíte vytvořit účet úložiště pomocí webu Azure Portal, Azure PowerShellu nebo Azure CLI. Účet úložiště Azure poskytuje v Microsoft Azure jedinečný obor názvů pro ukládání a přístup k datovým objektům, které vytvoříte ve službě Azure Storage.
 services: storage
 author: tamram
@@ -9,16 +9,18 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: d34be70e3283869a28f036f0016a0d3f8f241a8a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990123"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634843"
 ---
-# <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+# <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 V tomto rychlém startu se naučíte vytvořit účet úložiště pomocí webu [Azure Portal](https://portal.azure.com/), [Azure PowerShellu](https://docs.microsoft.com/powershell/azure/overview) nebo [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -63,10 +65,10 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a při ověřování postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a při ověřování postupujte podle pokynů na obrazovce.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -95,26 +97,26 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Napřed vytvořte novou skupinu prostředků v PowerShellu pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
+Nejprve vytvořte novou skupinu prostředků s použitím prostředí PowerShell [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz: 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-Pokud si nejste jisti, jakou oblast máte zadat v parametru `-Location`, můžete pomocí příkazu [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) načíst seznam podporovaných oblastí pro vaše předplatné:
+Pokud si nejste jisti, jakou oblast pro `-Location` parametr, můžete načíst seznam podporovaných oblastí pro vaše předplatné se [Get-AzLocation](/powershell/module/az.resources/get-azlocation) příkaz:
 
 ```powershell
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "westus"
 ```
 
-Dále vytvořte účet úložiště Univerzální v2 s místně redundantním úložištěm (LRS). Použijte příkaz [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount): 
+Dále vytvořte účet úložiště Univerzální v2 s místně redundantním úložištěm (LRS). Použití [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) příkaz: 
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -186,10 +188,10 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup): 
+Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkaz: 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -202,7 +204,7 @@ az group delete --name myResourceGroup
 
 ---
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili účet úložiště úrovně Standard pro obecné účely. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
 

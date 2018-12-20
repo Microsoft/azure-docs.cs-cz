@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight '
+title: 'Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight '
 description: Zjistěte, jak načítat data a spouštět interaktivní dotazy v clusterech Spark ve službě Azure HDInsight.
 services: azure-hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 11/06/2018
-ms.openlocfilehash: f279d7ca40eac1764ec5549aecec36b0f62034e8
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4dd9634d5d5e6ce749a4ee563903b07e22bc45ee
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495782"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652328"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight
 
 V tomto kurzu se dozvíte, jak vytvořit datový rámec ze souboru csv a jak spouštět interaktivní dotazy Spark SQL na [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight. Ve Sparku je datový rámec distribuovaná kolekce dat uspořádaných do pojmenovaných sloupců. Datový rámec je koncepčním ekvivalentem tabulky v relační databázi nebo datového rámce v R nebo Pythonu.
  
@@ -58,7 +58,7 @@ Aplikace může vytvářet datové rámce přímo ze souborů nebo složek ve vz
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Díky použití jádra PySpark k vytvoření poznámkového bloku se relace `spark` vytvoří automaticky za vás při spuštění první buňky kódu. Není potřeba relaci vytvářet explicitně.
 
 
@@ -87,7 +87,7 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Se službou HDInsight se vaše data a poznámkové bloky Jupyter ukládají ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
+HDInsight vaše data a poznámkové bloky Jupyter uloží ve službě Azure Storage nebo Azure Data Lake Storage, takže je můžete clusteru bezpečně odstranit, až nebude používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na dalším kurzu, měli byste cluster zachovat.
 
 Otevřete cluster na webu Azure Portal a vyberte **Odstranit**.
 

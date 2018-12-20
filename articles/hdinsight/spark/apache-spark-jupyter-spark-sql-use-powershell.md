@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí Azure PowerShellu'
+title: 'Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí Azure Powershellu'
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShellu vytvořit cluster Apache Spark v Azure HDInsight a jak spustit jednoduchý dotaz Spark SQL.
 services: azure-hdinsight
 author: hrasheed-msft
@@ -9,19 +9,19 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: fcc25449d4e65dc36be0eb2f13cb35bf23ae6f00
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 055c6772ab07de85227abc9163bcd46417714ba6
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498060"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652843"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí Powershellu
-Zjistěte, jak vytvořit [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight a spouštění dotazů Spark SQL proti [Apache Hive](https://hive.apache.org/) tabulky. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Apache Spark ve službě HDInsight najdete v tématu [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
+Zjistěte, jak vytvořit [Apache Spark](https://spark.apache.org/) clusteru v Azure HDInsight a spouštění dotazů Spark SQL proti [Apache Hive](https://hive.apache.org/) tabulky. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku v HDInsight najdete v tématu [přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
 
-V tomto rychlém startu pomocí Azure PowerShellu vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+V tomto rychlém startu pomocí Azure PowerShellu vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o použití Data Lake Storage Gen2 najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Clustery HDInsight se fakturují za minutu bez ohledu na to, jestli je používáte, nebo ne. Až přestanete cluster používat, nezapomeňte ho odstranit. Další informace najdete v části [Vyčištění prostředků](#clean-up-resources) tohoto článku.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 Vytvoření clusteru HDInsight zahrnuje vytvoření těchto objektů a prostředků Azure:
 
 - Skupina prostředků Azure. Skupina prostředků Azure je kontejner prostředků Azure. 
-- Účet úložiště Azure nebo Azure Data Lake Store.  Každý cluster HDInsight vyžaduje závislé úložiště dat. V tomto rychlém startu vytvoříte účet úložiště.
+- Účet služby Azure storage nebo Azure Data Lake Storage.  Každý cluster HDInsight vyžaduje závislé úložiště dat. V tomto rychlém startu vytvoříte účet úložiště.
 - Cluster HDInsight různých typů clusteru.  V tomto rychlém startu vytvoříte cluster Spark 2.3.
 
 Pomocí skriptu PowerShellu vytvoříte prostředky.  Když spustíte skript, zobrazí se výzva k zadání těchto hodnot:
@@ -173,7 +173,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 2. V nabídce **Soubor** poznámkového bloku vyberte **Zavřít a zastavit**. Ukončením poznámkového bloku se uvolní prostředky clusteru.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-HDInsight ukládá vaše data ve službě Azure Storage nebo Azure Data Lake Store, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na kurzu uvedeném v části [Další kroky](#next-steps), měli byste cluster zachovat.
+HDInsight ukládá vaše data ve službě Azure Storage nebo v úložišti Azure Data Lake, takže můžete cluster bezpečně odstranit, když se nepoužívá. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. Pokud se chystáte hned začít pracovat na kurzu uvedeném v části [Další kroky](#next-steps), měli byste cluster zachovat.
 
 Přepněte zpět na web Azure Portal a vyberte **Odstranit**.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 282942d82a688b4fc47b8473b0f8708ba23b5674
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 49f98958c540faa06aa15fbfc429f87f92463c3e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602473"
+ms.locfileid: "53635438"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Kurz: Zabezpečené připojení k databázi SQL Azure ze služby App Service pomocí spravované identity
 
@@ -147,7 +147,7 @@ V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt **DotNetA
 
 Na stránce publikování klikněte na **Publikovat**. Pokud se na nové webové stránce zobrazí seznam úkolů, připojuje se vaše aplikace k databázi pomocí spravované identity.
 
-![Webová aplikace Azure po migraci Code First](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
+![Aplikace Azure po migraci Code First](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
 Teď byste měli mít možnost upravovat seznam úkolu stejně jako předtím.
 
@@ -186,7 +186,7 @@ Ve službě Cloud Shell se přihlaste ke službě SQL Database pomocí příkazu
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-Na příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, kterými přidáte dříve vytvořenou skupinu Azure Active Directory a udělíte jí oprávnění nezbytná pro vaši aplikaci. Například: 
+Na příkazovém řádku SQL pro požadovanou databázi spusťte následující příkazy, kterými přidáte dříve vytvořenou skupinu Azure Active Directory a udělíte jí oprávnění nezbytná pro vaši aplikaci. Například 
 
 ```sql
 CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;

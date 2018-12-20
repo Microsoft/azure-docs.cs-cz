@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3e20af1c90f0e8a7a582d2d01dc4218a14496c40
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621424"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653284"
 ---
-# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy přihlašování na webu Azure Portal
+# <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy přihlášení pomocí webu Azure portal
 
 V tomto rychlém startu se dozvíte, jak stáhnout data přihlašování pro vašeho tenanta za posledních 24 hodin.
 
@@ -31,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak stáhnout data přihlašování pro va�
 
 Budete potřebovat:
 
-* Tenanta Azure Active Directory s licencí Premium k zobrazení sestavy aktivit přihlašování. 
+* Tenanta Azure Active Directory s licencí Premium k zobrazení sestavy aktivit přihlašování. Zobrazit [Začínáme se službou Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) upgradovat edici Azure Active Directory.
 * Uživatel, který je v **správce zabezpečení**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role pro příslušného tenanta. Každý uživatel v tenantovi může navíc přistupovat k vlastním přihlášením.
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Rychlý start: Stažení sestavy přihlašování

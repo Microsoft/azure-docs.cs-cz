@@ -1,27 +1,27 @@
 ---
-title: Rychlý start – vytvoření clusteru služby Azure Kubernetes Service na portálu
-description: Zjistěte, jak pomocí webu Azure Portal rychle vytvořit cluster služby AKS (Azure Kubernetes Service) a potom nasadit a monitorovat aplikaci.
+title: Rychlý start – vytvoření clusteru Azure Kubernetes Service (AKS) na portálu
+description: Zjistěte, jak rychle vytvořit Kubernetes cluster, nasazení aplikace a sledování výkonu ve službě Azure Kubernetes Service (AKS) pomocí webu Azure portal.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6075086b390a14e807e493bd574ac889b81272bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 39d267c1d113c2f1950650416c18bfd8ad8caa9c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437346"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653590"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasaďte cluster Azure Kubernetes Service (AKS)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rychlý start: Nasazení clusteru služby Azure Kubernetes Service (AKS) pomocí webu Azure portal
 
-V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure. Následně se na tomto clusteru spustí vícekontejnerová aplikace skládající se z front-endu webu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
+Azure Kubernetes Service (AKS) je spravovaná služba, která vám umožní rychle nasadit a spravovat clustery Kubernetes. V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure. V clusteru je spustí vícekontejnerová aplikace, která obsahuje webový front-end a Redis instance. Zobrazí se postup sledování stavu clusteru a podů, na kterých běží vaše aplikace.
 
 ![Obrázek přechodu na ukázkovou aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Podrobné informace o Kubernetes najdete v [dokumentaci ke Kubernetes][kubernetes-documentation].
+Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [Kubernetes pro Azure Kubernetes Service (AKS) základní koncepty][kubernetes-concepts].
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -31,7 +31,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Kubernetes Service**.
+V levém horním rohu webu Azure portal vyberte **+ vytvořit prostředek** > **služby Kubernetes**.
 
 Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
 
@@ -49,34 +49,21 @@ Pokud chcete vytvořit cluster AKS, proveďte následující kroky:
     - Vytvořte nový instanční objekt nebo *nakonfigurujte* použití existujícího. Pokud použijete stávající hlavní název služby (SPN), je potřeba zadat ID klienta a tajný klíč SPN.
     - Povolte možnost řízení přístupu na základě role (RBAC) v Kubernetes. Tyto ovládací prvky poskytují podrobnější řízení přístupu k prostředkům Kubernetes nasazeným ve vašem clusteru AKS.
 
-    Vyberte **Další: Sítě** po dokončení.
+    Ve výchozím nastavení *základní* sítí se používá a je povoleno monitorování Azure pro kontejnery. Vyberte **Zkontrolovat a vytvořit** a jakmile budete připraveni, vyberte **Vytvořit**.
 
-1. **Sítě**: Nakonfigurujte následující možnosti sítě:
-    
-    - **Směrování aplikace HTTP** – Vyberte **Ano** a nakonfigurujte integrovaný kontroler příchozího přenosu dat tak, aby automaticky vytvořil veřejný název DNS. Další informace o směrování HTTP najdete v tématu [Směrování HTTP a DNS ve službě AKS][http-routing].
-    - **Konfigurace sítě** – Vyberte **Základní** konfiguraci sítě s využitím modulu plug-in Kubernetes [kubenet][kubenet] místo pokročilé konfigurace sítě s využitím [Azure CNI][azure-cni]. Další informace o možnostech sítí najdete v tématu [Přehled sítí AKS][aks-network].
-    
-    Vyberte **Další: Monitorování** po dokončení.
-
-1. Při nasazování clusteru AKS můžete nakonfigurovat službu Azure Monitor pro kontejnery tak, aby monitorovala stav clusteru AKS a podů spuštěných v clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
-
-    Výběrem možnosti **Ano** povolte monitorování kontejneru a vyberte existující pracovní prostor Log Analytics nebo vytvořte nový.
-    
-    Vyberte **Zkontrolovat a vytvořit** a jakmile budete připraveni, vyberte **Vytvořit**.
-
-Vytvoření clusteru AKS a jeho příprava k použití trvá několik minut. Přejděte ke skupině prostředků clusteru AKS, například *myResourceGroup*, a vyberte prostředek AKS, například *myAKSCluster*. Zobrazí se řídicí panel clusteru AKS, podobně jako na následujícím ukázkovém snímku obrazovky:
+Vytvoření clusteru AKS a jeho příprava k použití trvá několik minut. Až budete hotovi, přejděte na skupinu prostředků clusteru AKS, jako například *myResourceGroup*a vyberte prostředek AKS, jako je například *myAKSCluster*. Zobrazí se řídicí panel clusteru AKS, podobně jako na následujícím ukázkovém snímku obrazovky:
 
 ![Příklad řídicího panelu AKS na webu Azure Portal](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
-Ke správě clusteru Kubernetes použijte klienta příkazového řádku Kubernetes [kubectl][kubectl]. Klient `kubectl` je předinstalovaný ve službě Azure Cloud Shell.
+Ke správě clusteru Kubernetes použijete [kubectl][kubectl], klienta příkazového řádku Kubernetes. Klient `kubectl` je předinstalovaný ve službě Azure Cloud Shell.
 
 Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu Azure.
 
 ![Portál s otevřenou službou Azure Cloud Shell](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad získá přihlašovací údaje pro název clusteru *myAKSCluster* ve skupině prostředků *myResourceGroup*:
+Pomocí příkazu [az aks get-credentials][az-aks-get-credentials] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Tento příkaz stáhne přihlašovací údaje a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití. Následující příklad získá přihlašovací údaje pro název clusteru *myAKSCluster* ve skupině prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -88,21 +75,21 @@ Pokud chcete ověřit připojení ke clusteru, použijte příkaz [kubectl get][
 kubectl get nodes
 ```
 
-Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, že stav uzlu je "Připraveno".
+Následující příklad výstupu ukazuje jeden uzel vytvořený v předchozích krocích. Ujistěte se, zda je stav uzlu *připravené*:
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     10m       v1.11.2
+aks-agentpool-14693408-0   Ready     agent     15m       v1.11.5
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, včetně toho, jaké image kontejnerů mají být spuštěné. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění ukázkové aplikace Azure Vote. Mezi tyto objekty patří dvě [nasazení Kubernetes][kubernetes-deployment] – jedno pro front-end aplikace Azure Vote a druhé pro instanci Redis. Vytvoří se také dvě [služby Kubernetes][kubernetes-service] – interní služba pro instanci Redis a externí služba pro přístup k aplikaci Azure Vote z internetu.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, například jaké kontejneru obrázků ke spuštění. V tomto rychlém startu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Tento manifest zahrnuje dva [nasazení Kubernetes] [ kubernetes-deployment] – jednu pro ukázkové aplikace Azure Vote Python a druhé pro instanci Redis. Dvě [služby Kubernetes] [ kubernetes-service] také vytvářejí – interní služba pro instanci Redis a externí služby pro přístup k aplikaci Azure Vote z Internetu.
 
 > [!TIP]
 > V tomto rychlém startu ručně vytvoříte manifest aplikace a nasadíte ho do clusteru AKS. V reálnějších situacích můžete k rychlé iteraci a ladění kódu přímo v clusteru AKS použít [Azure Dev Spaces][azure-dev-spaces]. Dev Spaces můžete používat na různých platformách operačních systémů a v různých vývojových prostředích a spolupracovat s ostatními členy vašeho týmu.
 
-Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující kód YAML. Pokud pracujete ve službě Azure Cloud Shell, vytvořte tento soubor pomocí editoru `vi` nebo `Nano`, stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému.
+Vytvořte soubor s názvem `azure-vote.yaml` a zkopírujte do následující definice YAML. Ve službě Azure Cloud Shell vytvořte pomocí souboru `vi` nebo `Nano`, stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému:
 
 ```yaml
 apiVersion: apps/v1
@@ -185,13 +172,13 @@ spec:
     app: azure-vote-front
 ```
 
-Pomocí příkazu [kubectl apply][kubectl-apply] spusťte aplikaci.
+Nasazení aplikace pomocí [použití kubectl] [ kubectl-apply] příkaz a zadejte název vašeho YAML manifestu:
 
 ```azurecli-interactive
 kubectl apply -f azure-vote.yaml
 ```
 
-Následující příklad výstupu ukazuje prostředky Kubernetes vytvořené ve vašem clusteru AKS:
+Následující příklad výstupu ukazuje nasazení a služby se úspěšně vytvořil:
 
 ```
 deployment "azure-vote-back" created
@@ -202,7 +189,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Při spuštění aplikace se vytvoří [služba Kubernetes][kubernetes-service], která zveřejní aplikaci na internetu. Dokončení tohoto procesu může trvat několik minut.
+Při spuštění aplikace, služba Kubernetes poskytuje front-endu aplikace k Internetu. Dokončení tohoto procesu může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -210,30 +197,30 @@ Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` mů�
 kubectl get service azure-vote-front --watch
 ```
 
-Na začátku se bude adresa *EXTERNAL-IP* pro službu *azure-vote-front* zobrazovat ve stavu *Probíhá*.
+Zpočátku *EXTERNAL-IP* pro *azure-vote-front* služby se zobrazuje jako *čekající*.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl.
+Když *EXTERNAL-IP* adresa se změní z *čekající* skutečné veřejnou IP adresu, použijte `CTRL-C` Zastavit `kubectl` sledujte proces. Následující příklad výstupu ukazuje platnou veřejnou IP adresu přiřazené příslušné službě:
 
 ```
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Otevřete webový prohlížeč a přejděte na externí IP adresu vaší služby. Zobrazí se aplikace Azure Vote, jak je znázorněno v následujícím příkladu:
+Pokud chcete zobrazit aplikaci Azure Vote v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
 
 ![Obrázek přechodu na ukázkovou aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 ## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
 
-Při vytváření clusteru se povolilo monitorování přehledů o kontejnerech. Tato funkce monitorování poskytuje metriky stavu clusteru AKS i podů spuštěných na tomto clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
+Při vytváření clusteru byl povolen monitorování Azure pro kontejnery. Tato funkce monitorování poskytuje metriky stavu clusteru AKS i podů spuštěných na tomto clusteru.
 
 Naplnění těchto dat na webu Azure Portal může trvat několik minut. Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, na webu Azure Portal přejděte zpět k prostředku AKS, například *myAKSCluster*. Přístup ke stavu potom získáte následujícím způsobem:
 
-1. V části **Sledování** na levé straně zvolte **Přehledy (Preview)**
+1. V části **monitorování** na levé straně zvolte **Insights**
 1. V horní části zvolte **+ Přidat filtr**
 1. Jako vlastnost vyberte *Obor názvů* a potom zvolte *\<Všechny kromě kube-system\>*.
 1. Vyberte zobrazení **Kontejnery**.
@@ -259,7 +246,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 ## <a name="get-the-code"></a>Získání kódu
 
-V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem vytvořené image kontejnerů. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
+V tomto rychlém startu předem vytvořené Image kontejnerů byly použity k vytvoření nasazení Kubernetes. Související kód aplikace, soubor Dockerfile a soubor manifestu Kubernetes jsou k dispozici na GitHubu.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
@@ -274,16 +261,13 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
-[azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
-[kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
-[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
+[kubernetes-concepts]: concepts-clusters-workloads.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
 [aks-monitor]: ../monitoring/monitoring-container-health.md
@@ -292,3 +276,5 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [http-routing]: ./http-application-routing.md
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
 [azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
+[kubernetes-service]: concepts-network.md#services

@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Připojení webové aplikace k databázi SQL | Microsoft Docs
-description: Ukázkový skript Azure CLI – Připojení webové aplikace k databázi SQL
+title: Skript Azure CLI ukázkový – připojení aplikace k SQL database | Dokumentace Microsoftu
+description: Skript Azure CLI ukázkový – připojení aplikace k SQL database
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 33f1086010d15d8a045e924a619d6acc77a01413
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e23ef4a12182aaeb6db84615106ed4e8919938bf
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584869"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634248"
 ---
-# <a name="connect-a-web-app-to-a-sql-database-using-cli"></a>Připojení webové aplikace k SQL database pomocí rozhraní příkazového řádku
+# <a name="connect-an-app-service-app-to-a-sql-database-using-cli"></a>Aplikace služby App Service se připojit k SQL database pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří databázi SQL Azure a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojí databázi SQL s webovou aplikací.
+Tento ukázkový skript vytvoří databázi Azure SQL a aplikaci služby App Service. Pak do aplikace pomocí nastavení aplikace propojí databázi SQL.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -41,17 +41,17 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, webové aplikace, služby SQL Database a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, aplikace služby App Service, SQL Database a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Vytvoří server služby SQL Database.  |
 | [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Vytvoří na serveru služby SQL Database novou databázi. |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | Vygeneruje připojovací řetězec k databázi. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro webovou aplikaci Azure. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro aplikaci služby App Service. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další postup
 

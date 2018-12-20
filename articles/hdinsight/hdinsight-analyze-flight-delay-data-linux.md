@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Provádění operací extrakce, transformace a načítání (ETL) pomocí Hivu ve službě HDInsight – Azure '
+title: 'Kurz: Provedení extrakce, transformace a načítání (ETL) operací s použitím Hive v HDInsight – Azure '
 description: Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí Hivu ve službě HDInsight a pak transformovaná data načíst do databáze SQL Azure pomocí Apache Sqoopu.
 services: hdinsight
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: c0123008e5b15d6d3edce27245a7ed1fa6c431e7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e5ee2f40526837fbe0251e1fdda6847db1c51288
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015037"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634350"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
-V tomto kurzu trvat nezpracovaný datový soubor CSV, importovat do úložiště clusteru HDInsight a pak transformuje data pomocí [Apache Hive](https://hive.apache.org/) v Azure HDInsight. Po transformaci dat, načtete data do databáze Azure SQL pomocí [Apache Sqoop](http://sqoop.apache.org/). V tomto článku budete používat veřejně dostupné údaje o letech.
+V tomto kurzu trvat nezpracovaný datový soubor CSV, importovat do úložiště clusteru HDInsight a pak transformuje data pomocí [Apache Hive](https://hive.apache.org/) v Azure HDInsight. Po transformaci dat, načtete data do databáze Azure SQL pomocí [Apache Sqoop](https://sqoop.apache.org/). V tomto článku budete používat veřejně dostupné údaje o letech.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je jediný operační systém, který se používá ve službě Azure HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 Tento kurz se zabývá následujícími úkony: 
@@ -76,7 +76,7 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
 
     Nahraďte *FILENAME* názvem souboru .zip. Nahraďte *USERNAME* přihlašovacím jménem SSH pro cluster HDInsight. Nahraďte *CLUSTERNAME* názvem clusteru HDInsight.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla. Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
 
 2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Na příkazovém řádku zadejte následující příkaz:
@@ -212,7 +212,7 @@ Pokud už máte databázi SQL, musíte získat název serveru. Název serveru m�
 
 ![Získání podrobností o serveru SQL Azure](./media/hdinsight-analyze-flight-delay-data-linux/get-azure-sql-server-details.png "Získání podrobností o serveru SQL Azure")
 
-> [!NOTE]
+> [!NOTE]  
 > Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit tabulku. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
 
 
@@ -315,7 +315,7 @@ V tomto kurzu jste zjistili, jak pomocí clusteru Apache Hadoop ve službě HDIn
 
 Informace o dalších způsobech práce s daty ve službě HDInsight najdete v následujících článcích:
 
-* [Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
+* [Kurz: Extrakce, transformace a načítání dat pomocí Apache Hive v Azure HDInsight](../storage/data-lake-storage/tutorial-extract-transform-load-hive.md)
 * [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 * [Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight][hdinsight-develop-mapreduce]
@@ -330,7 +330,7 @@ Informace o dalších způsobech práce s daty ve službě HDInsight najdete v n
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
@@ -346,4 +346,4 @@ Informace o dalších způsobech práce s daty ve službě HDInsight najdete v n
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

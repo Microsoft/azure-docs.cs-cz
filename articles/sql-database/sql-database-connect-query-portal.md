@@ -1,5 +1,5 @@
 ---
-title: 'Azure Portal: Dotazování služby Azure SQL Database s využitím editoru dotazů | Dokumentace Microsoftu'
+title: 'Azure portal: Dotazování Azure SQL Database pomocí editoru dotazů | Dokumentace Microsoftu'
 description: Zjistěte, jak se připojit k SQL Database na webu Azure Portal pomocí editoru dotazů SQL. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: connect to sql database,azure portal, portal, query editor
 services: sql-database
@@ -13,16 +13,16 @@ ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/05/2018
-ms.openlocfilehash: fa46260fdd5623ba32da9979aaea8470139096b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 86120e65ad6a3b7fab2a5db78a338bed0e277cb8
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091386"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651943"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Rychlý start: Připojení a dotazování dat pomocí editoru dotazů SQL webu Azure portal
 
-Editor dotazů SQL je nástroj Prohlížeč Azure portal poskytuje snadný způsob, jak spouštět dotazy SQL v Azure SQL Database nebo Azure SQL Data Warehouse. Tento rychlý start ukazuje použití editoru dotazů k připojení k SQL database a spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
+Editor dotazů SQL je nástroj Prohlížeč Azure portal poskytuje snadný způsob, jak spouštět dotazy SQL v Azure SQL Database nebo Azure SQL Data Warehouse. V tomto rychlém startu použijete k připojení k databázi SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat editoru dotazů.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -70,7 +70,7 @@ Konfigurace správce Active Directory (AD) umožňuje používat jednu identitu 
 
 4. Vyberte z panelu nástrojů stránky Správce AD **Uložit**.
 
-5. Přejděte **mySampleDatabase** databáze a v nabídce vlevo vyberte **editor dotazů (preview)**. **Přihlášení** se zobrazí stránka. Pokud jste správce AD, potom na pravé straně v části **služby Active Directory jednotného přihlašování**, zobrazí se zpráva s informacemi o tom jste se přihlásili. 
+5. Přejděte **mySampleDatabase** databáze a v nabídce vlevo vyberte **editor dotazů (preview)**. **Přihlášení** se zobrazí stránka. Pokud jste správce AD, potom na pravé straně v části **služby Active Directory jednotného přihlašování**, zobrazí se zpráva s informacemi o tom budete přihlášeni. 
    
 6. Vyberte **OK**.
 
@@ -92,7 +92,7 @@ Konfigurace správce Active Directory (AD) umožňuje používat jednu identitu 
 
 ## <a name="insert-data"></a>Vložení dat
 
-Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.aspx) příkazu Transact-SQL pro přidání nového produktu v `SalesLT.Product` tabulky.
+Spusťte následující příkaz [vložit](https://msdn.microsoft.com/library/ms174335.aspx) příkazu Transact-SQL pro přidání nového produktu v `SalesLT.Product` tabulky.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -117,12 +117,12 @@ Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.a
    ```
 
 
-2. Vyberte **spustit** vložit nový řádek v tabulce Product. **Zprávy** podokně se zobrazí **dotaz: ovlivněných řádků: 1**.
+2. Vyberte **spustit** vložte nový řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **dotaz: Ovlivněné řádky: 1**.
 
 
 ## <a name="update-data"></a>Aktualizace dat
 
-Pomocí následujících [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) příkazu Transact-SQL k úpravě nového produktu.
+Spusťte následující příkaz [aktualizace](https://msdn.microsoft.com/library/ms177523.aspx) příkazu Transact-SQL k úpravě nového produktu.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -132,11 +132,11 @@ Pomocí následujících [aktualizace](https://msdn.microsoft.com/library/ms1775
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **spustit** k aktualizujte zadaný řádek v tabulce Product. **Zprávy** podokně se zobrazí **dotaz: ovlivněných řádků: 1**.
+2. Vyberte **spustit** aktualizujte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **dotaz: Ovlivněné řádky: 1**.
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Pomocí následujících [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) příkazu jazyka Transact-SQL k odstranění nového produktu.
+Spusťte následující příkaz [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) příkazu jazyka Transact-SQL k odstranění nového produktu.
 
 1. Nahraďte předchozí dotaz s touto položkou:
 
@@ -145,7 +145,7 @@ Pomocí následujících [odstranit](https://msdn.microsoft.com/library/ms189835
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **spustit** odstranit zadaný řádek v tabulce Product. **Zprávy** podokně se zobrazí **dotaz: ovlivněných řádků: 1**.
+2. Vyberte **spustit** odstraňte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **dotaz: Ovlivněné řádky: 1**.
 
 
 ## <a name="query-editor-considerations"></a>Požadavky editoru dotazů
@@ -156,7 +156,7 @@ Existuje několik věcí, které při práci s editorem dotazů.
 
 * Stisknutím klávesy F5 aktualizuje stránku editoru dotazů a dojde ke ztrátě všech dotazů se pracuje.
 
-* Editor dotazů nepodporuje připojení k hlavní databázi.
+* Editor dotazů nepodporuje připojení k `master` databáze.
 
 * Časový limit 5 minut pro provádění dotazů není k dispozici.
 

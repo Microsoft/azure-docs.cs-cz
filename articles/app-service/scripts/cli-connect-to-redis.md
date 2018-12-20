@@ -1,6 +1,6 @@
 ---
-title: Skript Azure CLI ukázkový – připojení webové aplikace do služby Azure Cache pro Redis | Dokumentace Microsoftu
-description: Skript Azure CLI ukázkový – připojení webové aplikace do služby Azure Cache pro Redis
+title: Azure CLI ukázkový skript – připojení aplikace k Azure Cache pro Redis | Dokumentace Microsoftu
+description: Azure CLI ukázkový skript – připojení aplikace k Azure Cache pro Redis
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: a9ba4c60fd15f9a92f86d74d5ef40296781fb7c0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 87e4e56e429039d943d85fe74003edb8cb148cac
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584921"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631104"
 ---
-# <a name="connect-a-web-app-to-an-azure-cache-for-redis-using-cli"></a>Připojení webové aplikace do služby Azure Cache pro Redis pomocí příkazového řádku
+# <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>Připojit aplikaci služby App Service do mezipaměti Azure Redis pomocí příkazového řádku
 
-Tento ukázkový skript vytvoří mezipaměti Azure Redis a webovou aplikaci Azure. Pak propojí ukládání do mezipaměti Azure pro Redis do webové aplikace pomocí nastavení aplikace.
+Tento ukázkový skript vytvoří mezipaměti Azure Redis a aplikaci služby App Service. Propojí pak ukládání do mezipaměti Azure pro Redis s aplikací pomocí nastavení aplikace.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -41,16 +41,16 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, webové aplikace Azure mezipaměti Redis, a všechny související prostředky. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k vytvoření skupiny prostředků, aplikace služby App Service, Azure mezipaměti Redis, a všechny související prostředky. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | Vytvoření nové mezipaměti Azure pro Redis instance. |
 | [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Vypíše přístupové klíče pro ukládání do mezipaměti Azure pro Redis instance. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro webovou aplikaci Azure. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro aplikaci služby App Service. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další postup
 

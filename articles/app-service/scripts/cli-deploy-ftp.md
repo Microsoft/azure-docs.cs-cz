@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP
+title: Ukázkový skript Azure CLI – vytvoření nové aplikace a nasazení souborů s využitím protokolu FTP | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – vytvoření aplikace služby App Service a nasazení souborů s využitím protokolu FTP
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,16 +15,16 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 416b6573a7cec85442ca725583f8c53fa5a6c697
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 7bca306911dc72a2f8ec31d2ac80f99b4925c9fd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584878"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634282"
 ---
-# <a name="create-a-web-app-and-deploy-files-with-ftp-using-azure-cli"></a>Vytvoření webové aplikace a nasazení souborů s využitím protokolu FTP pomocí Azure CLI
+# <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>Vytvoření aplikace služby App Service a nasazení souborů s využitím protokolu FTP pomocí Azure CLI
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak s využitím protokolu FTP nasadí statickou stránku HTML. K nahrání přes protokol FTP skript jako příklad používá [cURL](https://en.wikipedia.org/wiki/CURL). K nahrání souborů můžete použít jakýkoli nástroj FTP.
+Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky a pak nasadí statickou stránku HTML pomocí FTP. K nahrání přes protokol FTP skript jako příklad používá [cURL](https://en.wikipedia.org/wiki/CURL). K nahrání souborů můžete použít jakýkoli nástroj FTP.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create a web app and deploy files with FTP")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create an app and deploy files with FTP")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -46,8 +46,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
-| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Získá podrobnosti o dostupných profilech nasazení webové aplikace. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | Získá podrobnosti o profilech nasazení k dispozici aplikace. |
 
 ## <a name="next-steps"></a>Další postup
 

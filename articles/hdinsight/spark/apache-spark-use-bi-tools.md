@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Analýza dat Apache Sparku pomocí Power BI v Azure HDInsight '
+title: 'Kurz: Analýza dat Apache Spark v Azure HDInsight pomocí Power BI '
 description: Pomocí Microsoft Power BI k vizualizaci dat Apache Spark uložené clustery HDInsight
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 688aab6c6e67b259931e4e2331e2d632e87f1db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583274"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651465"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI 
 
@@ -28,8 +28,8 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Dokončete článek [Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight](./apache-spark-load-data-run-query.md)**.
-* **Power BI:** [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) a [zkušební předplatné Power BI](https://app.powerbi.com/signupredirect?pbi_source=web) (volitelné).
+* **Dokončení článku [kurzu: Načtení dat a spouštění dotazů v clusteru Apache Spark v Azure HDInsight](./apache-spark-load-data-run-query.md)**.
+* **Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) a [zkušební předplatné Power BI](https://app.powerbi.com/signupredirect?pbi_source=web) (volitelné).
 
 
 ## <a name="verify-the-data"></a>Ověření dat
@@ -69,7 +69,7 @@ V této části pomocí Power BI vytvoříte vizualizace, sestavy a řídicí pa
 ### <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
 Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desktopu, načtení dat z clusteru a vytvoření základní vizualizace na základě těchto dat.
 
-> [!NOTE]
+> [!NOTE]  
 > Konektor ukázaný v tomto článku je aktuálně ve verzi Preview. Případnou zpětnou vazbu můžete poskytnout přes web [komunity Power BI](https://community.powerbi.com/) nebo na fóru [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) (Nápady ohledně Power BI).
 
 1. Otevřete [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
@@ -174,7 +174,7 @@ Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat da
 >
 >
 
-1. Install [Tableau Desktop](http://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
+1. Install [Tableau Desktop](https://www.tableau.com/products/desktop) on the computer where you are running this Apache Spark BI tutorial.
 
 2. Make sure that computer also has Microsoft Spark ODBC driver installed. You can install the driver from [here](https://go.microsoft.com/fwlink/?LinkId=616229).
 

@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 0d4ae2ce567da0df9a15f229d3fc12e06c4993af
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 133f8e82d7a46bae11eb049b2d1c9393990c9042
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608371"
+ms.locfileid: "53634571"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
 Dnešní aplikace musí být vždy online a s velmi rychlou odezvou. Pokud chcete dosáhnout nízké latence a vysoká dostupnost, instancí těchto aplikací je nutné nasadit v datových centrech, která jsou blízko uživatelům. Aplikace potřebovat reagovat v reálném čase na velké změny využití v obdobích špičky, ukládat rostoucímu množství dat a tato data zpřístupníte uživatelům v milisekundách.
 
-Azure Cosmos DB je globálně distribuovaná a vícemodelová databázová služba od Microsoftu. Stačí kliknout na tlačítko a Azure Cosmos DB vám umožní elasticky a nezávisle škálovat propustnost a úložiště v řadě geografických oblastí Azure. Můžete Elasticky škálovat propustnost a úložiště a využívat přístup k datům rychlé, jeden milisekund použití oblíbených rozhraní API mezi SQL, MongoDB, Apache Cassandra, tabulek nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://aka.ms/acdbsla) (SLA) pro propustnosti, latence, dostupnosti a záruky konzistence, něco žádné jiné databázové služby můžou nabízet.
+Azure Cosmos DB je globálně distribuovaná a vícemodelová databázová služba od Microsoftu. Stačí kliknout na tlačítko a Azure Cosmos DB vám umožní elasticky a nezávisle škálovat propustnost a úložiště v řadě geografických oblastí Azure. Můžete Elasticky škálovat propustnost a úložiště a využívat přístup k datům rychlé, jeden milisekund použití oblíbených rozhraní API mezi SQL, MongoDB, Cassandra, tabulek nebo Gremlin. Cosmos DB poskytuje komplexní [smlouvy o úrovni služeb](https://aka.ms/acdbsla) (SLA) pro propustnosti, latence, dostupnosti a záruky konzistence, něco žádné jiné databázové služby můžou nabízet.
 
 [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
@@ -82,17 +82,16 @@ Cosmos DB je první a jedinou službou, která nabízí [špičkové komplexní 
 
 Můžete spustit [Spark](spark-connector.md) s daty uloženými ve službě Cosmos DB. Díky této funkci můžete provádět s nízkou latencí, provozní analýzy v globálním měřítku bez dopadu na provoz přímo službou Cosmos DB transakčními úlohami.
 
-### <a name="native-wire-compatible-mongodb-cassandra-gremlin-and-azure-table-storage-apis"></a>Nativní kompatibilního se při přenosu MongoDB, Cassandra, Gremlin a API pro Azure Table Storage
+### <a name="develop-applications-for-cosmos-db-using-popular-nosql-apis"></a>Vývoj aplikací pro Cosmos DB s použitím oblíbených rozhraní API NoSQL
 
 Cosmos DB nabízí široký výběr rozhraní API k aktualizaci a dotazování na data uložená v databázi Cosmos. Ve výchozím nastavení [můžete použít SQL](how-to-sql-query.md) aktualizaci a dotazování na data v databázi Cosmos.
 
-Cosmos DB také implementuje [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), a [Gremlin](graph-introduction.md) svážete protokoly přímo ve službě. To umožňuje bod Cassandra, MongoDB, nebo ovladače klienta Gremlin (Nástroje) přímo do vaší služby Cosmos databáze a Cosmos DB můžete využít jako plně spravovanou, globálně distribuované a Cassandra/MongoDB/Gremlin jako-service bez nutnosti platit za licence, podpora, nebo provozní náklady na dodavatele databáze. Nativní podpora pro Storage Cassandra, MongoDB a Gremlin/Table storage API poskytuje řadu výhod. Můžete:
+Cosmos DB také implementuje [Cassandra](cassandra-introduction.md), [MongoDB](mongodb-introduction.md), [Gremlin](graph-introduction.md) a [Azure Table Storage](table-introduction.md) svážete protokoly přímo ve službě. To umožňuje bod ovladače klienta (a nástroje) pro běžně používané NoSQL API přímo k databázi Cosmos. Díky podpoře protokolů přenosu běžně používaných NoSQL API, Cosmos DB umožňuje:
 
-* Snadno migrate databáze Cassandra, MongoDB, Gremlin a Table Storage do služby Cosmos DB. 
-* Zachovat velkou část vaší aplikace logiky beze změny s rozhraním Cassandra, MongoDB, Gremlin a Table storage rozhraní služby Cosmos DB.
+* Snadno migrujte své aplikace do služby Cosmos DB při zachování významné části vaší aplikace logiky.
 * Zachovat aplikaci přenosné a nadále zůstávají nezávislá na cloud dodavatele.
-* Získání oboru přední a finančně zajištěné smlouvy SLA pro Cassandra, MongoDB a Gremlin databáze Cosmos DB používá technologii. 
-* Elasticky škálujte propustnost a úložiště pro vaše Cassandra a databáze MongoDB podle svých potřeb a Plaťte jenom za propustnost a úložiště, které potřebujete. To vede k výrazné úspory nákladů.
+* Získání oboru přední a finančně zajištěné smlouvy SLA pro společné rozhraní API typu NoSQL. 
+* Elasticky škálujte zřízenou propustnost a úložiště pro vaše databáze podle svých potřeb a platíte jenom za propustnost a úložiště, které potřebujete. To vede k výrazné úspory nákladů.
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Řešení, kterým služba Azure Cosmos DB přináší výhody
 

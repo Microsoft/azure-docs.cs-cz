@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Mapování vlastní domény na webovou aplikaci | Microsoft Docs
-description: Ukázkový skript Azure CLI – Mapování vlastní domény na webovou aplikaci
+title: Ukázkový skript Azure CLI – mapování vlastní domény na aplikaci | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – mapování vlastní domény na aplikaci
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d4bc6cd0a9b0740302d3ac2fc4661e11bd754d6d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 58d13498e1b86421ae04f5a3aa60cf0c44242a39
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584839"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629131"
 ---
-# <a name="map-a-custom-domain-to-a-web-app-using-cli"></a>Mapování vlastní domény na webovou aplikaci pomocí rozhraní příkazového řádku
+# <a name="map-a-custom-domain-to-an-app-service-app-using-cli"></a>Mapování vlastní domény na aplikaci služby App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`.
+Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky a pak namapuje `www.<yourdomain>` k němu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +35,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-custom-domain/configure-custom-domain.sh?highlight=3 "Map a custom domain to a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/configure-custom-domain/configure-custom-domain.sh?highlight=3 "Map a custom domain to an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -47,8 +47,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Namapuje na webovou aplikaci vlastní doménu. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az-webapp-config-hostname-add) | Vlastní doména se mapuje na aplikaci služby App Service. |
 
 ## <a name="next-steps"></a>Další postup
 

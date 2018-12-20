@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 99afa5a1167d5f1a06504aacdca215564a672833
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ae37befe2ae2220feaf17ae4354b6fc780147f7e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608592"
+ms.locfileid: "53634231"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -106,7 +106,7 @@ Poznamenejte si hodnotu `resourceGroup`. Budete ji potřebovat v části [Vyči�
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-V prohlížeči přejděte na adresu URL webové aplikace Azure: `http://<app_name>.azurewebsites.net`.
+V prohlížeči přejděte na adresu URL aplikace: `http://<app_name>.azurewebsites.net`.
 
 Stránka je spuštěná jako webová aplikace služby Azure App Service.
 
@@ -132,13 +132,13 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ![Domovská stránka aktualizované ukázkové aplikace](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Správa vaší nové webové aplikace Azure
+## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
 Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-get-started-html/portal1.png)
+![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-html/portal1.png)
 
 Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 

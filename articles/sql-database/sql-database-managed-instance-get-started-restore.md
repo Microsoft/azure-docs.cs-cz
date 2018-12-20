@@ -11,42 +11,46 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: bc27ece2eddc842a81698aaa685cbe6d63c6a1df
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/14/2018
+ms.openlocfilehash: 40d07827cbd856fe3be3d797dde793b1a7f50207
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912250"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653234"
 ---
-# <a name="quickstart-restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Rychlý start: Obnovení zálohy databáze do spravované instance Azure SQL Database
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rychlý start: Obnovit databázi do Managed Instance 
 
-V tomto rychlém startu se dozvíte, jak obnovit zálohu databáze uloženou v Azure Blob Storage do spravované instance pomocí zálohy Wide World Importers – Standard. Tato metoda s sebou nese nutný výpadek. 
+V tomto rychlém startu použijete SQL Server Management Studio (SSMS) k obnovení databáze (Wide World Importers – Standard záložní soubor) z Azure blob storage do služby Azure SQL Database [Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance). 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
-Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md). Diskuzi o různých metodách migrace najdete v tématu [Migrace instance SQL Serveru do Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md).
+> [!NOTE]
+> * Další informace o migraci pomocí Azure Database Migration Service (DMS) najdete v tématu [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md). 
+> * Další informace o různých metodách migrace najdete v tématu [migrace instance SQL serveru do Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento rychlý start:
-- Používá jako výchozí bod prostředky vytvořené v tomto rychlém startu: [Vytvoření spravované instance](sql-database-managed-instance-get-started.md).
-- Vyžaduje nejnovější verzi [SQL Server Management Studia](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) na místním klientském počítači.
-- Vyžaduje připojení ke spravované instanci pomocí SQL Server Management Studia. Možnosti připojení najdete v těchto rychlých startech:
-  - [Připojení ke spravované instanci Azure SQL Database z virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md)
-  - [Připojení ke spravované instanci Azure SQL Database z místního prostředí pomocí připojení Point-to-Site](sql-database-managed-instance-configure-p2s.md).
-- Používá předkonfigurovaný účet Azure Blob Storage obsahující záložní soubor Wide World Importers – Standard (stažený z https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Standard.bak).
+- Používá prostředky z [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) rychlý start.
+- Počítač vyžaduje nejnovější [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) nainstalované.
+- Vyžaduje použití SSMS k připojení k Managed Instance. O tom, jak připojit najdete v těchto rychlých startů:
+  * [Připojení ke spravované instanci Azure SQL Database z virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md)
+  * [Konfigurace připojení typu point-to-site k Azure SQL Database Managed Instance z místní](sql-database-managed-instance-configure-p2s.md).
+
 
 > [!NOTE]
-> Další informace o zálohování a obnovení databáze SQL Serveru pomocí služby Azure Blob Storage a sdíleného přístupového podpisu (SAS) najdete v článku o [zálohování SQL Serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
+> Další informace o zálohování a obnovení serveru SQL database s využitím úložiště objektů blob v Azure a [klíče sdíleného přístupového podpisu (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), naleznete v tématu [zálohování SQL serveru na adresu URL](sql-database-managed-instance-get-started-restore.md).
 
-## <a name="restore-the-wide-world-importers-database-from-a-backup-file"></a>Obnovení databáze Wide World Importers ze zálohy
+## <a name="restore-the-database-from-a-backup-file"></a>Obnovte databázi ze zálohy
 
-Pomocí aplikace SSMS podle následujících kroků obnovte ze zálohy databázi Wide World Importers do své Managed Instance.
+V aplikaci SSMS postupujte podle těchto kroků k obnovení databáze Wide World Importers k Managed Instance. Záložní soubor databáze je uložena v účtu úložiště objektů blob v Azure předem nakonfigurovaná.
 
-1. Otevřete SQL Server Management Studio (SSMS) a připojte se ke spravované instanci.
-2. V aplikaci SSMS otevřete nové okno dotazu.
-3. Pomocí následujícího skriptu ve spravované instanci vytvořte přihlašovací údaje s využitím předkonfigurovaného účtu úložiště a klíče SAS.
+1. Otevřete SMSS a připojte se k Managed Instance.
+
+2. Z nabídky na levé straně, klikněte pravým tlačítkem na Managed Instance a vyberte **nový dotaz** otevřete nové okno dotazu.
+
+3. Spusťte následující skript SQL, která používá předem nakonfigurovaný účet úložiště a klíč SAS pro [vytvoření přihlašovacích údajů](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=sql-server-2017) v Managed Instance.
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases] 
@@ -56,10 +60,8 @@ Pomocí aplikace SSMS podle následujících kroků obnovte ze zálohy databázi
 
     ![vytvoření přihlašovacích údajů](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-    > [!NOTE]
-    > Vždy odstraňte **?** ze začátku vygenerovaného klíče SAS.
   
-3. Pomocí následující skriptu zkontrolujte platnost přihlašovacích údajů SAS a zálohy – zadejte adresu URL kontejneru se zálohou:
+3. Pokud chcete zkontrolovat svoje přihlašovací údaje, spusťte následující skript, který používá [kontejneru](https://azure.microsoft.com/services/container-instances/) adresu URL pro načtení seznamu záložního souboru.
 
    ```sql
    RESTORE FILELISTONLY FROM URL = 
@@ -68,7 +70,7 @@ Pomocí aplikace SSMS podle následujících kroků obnovte ze zálohy databázi
 
     ![seznam souborů](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-4. Pomocí následujícího skriptu obnovte ze zálohy databázi Wide World Importers – zadejte adresu URL kontejneru se zálohou:
+4. Spusťte následující skript k obnovení databáze Wide World Importers.
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -77,20 +79,20 @@ Pomocí aplikace SSMS podle následujících kroků obnovte ze zálohy databázi
 
     ![Obnovení](./media/sql-database-managed-instance-get-started-restore/restore.png)
 
-5. Pokud chcete sledovat stav obnovení, spusťte v nové relaci dotazu následující dotaz:
+5. Spusťte následující skript, který sledovat stav vašich obnovení.
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
       , dateadd(second,estimated_completion_time/1000, getdate()) as estimated_completion_time 
    FROM sys.dm_exec_requests r 
    CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) a 
-   WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')`
+   WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
 6. Po dokončení obnovení zobrazte databázi v Průzkumníku objektů. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Řešení potíží se zálohování na adresu URL najdete v [osvědčených postupech a řešení potíží se zálohováním SQL Serveru na adresu URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
-- Přehled možností připojení pro aplikace najdete v článku o [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
-- Informace o dotazování pomocí některého z vašich oblíbených nástrojů nebo jazyků najdete v článku o [připojení a dotazování](sql-database-connect-query.md).
+- Řešení potíží s zálohování na adresu URL, najdete v části [SQL Server zálohování na adresu URL osvědčené postupy a řešení potíží](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
+- Přehled možností připojení aplikace, najdete v části [připojení aplikací k Managed Instance](sql-database-managed-instance-connect-app.md).
+- Provádět dotazy pomocí oblíbených nástrojů nebo jazyků, naleznete v tématu [rychlých startů: Azure SQL Database připojení a dotazování](sql-database-connect-query.md).

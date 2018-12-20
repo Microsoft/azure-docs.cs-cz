@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v Node.js v Linuxu – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření aplikace v Node.js v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Node.js Hello World ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.topic: quickstart
 ms.date: 06/07/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c22b5f0c1a445f30a99b7aba4afffaf077818335
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c739aa4fb510bd5ebe9e3ffff67f93a2dd49cf0c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543542"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631528"
 ---
-# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Node.js ve službě Azure App Service v Linuxu
+# <a name="create-a-nodejs-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node.js ve službě Azure App Service v Linuxu
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service ve _Windows_ je popsané v tématu [Vytvoření webové aplikace v Node.js v Azure](../app-service-web-get-started-nodejs.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service v _Windows_, naleznete v tématu [vytvoření aplikace Node.js v Azure](../app-service-web-get-started-nodejs.md).
 >
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci Node.js do služby App Service v Linuxu s použitím služby [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
@@ -136,17 +136,17 @@ Příkaz `az webapp up` provádí tyto akce:
 
 - Vytvoření aplikace se zadaným názvem
 
-- [Nasazení souborů ZIP](https://docs.microsoft.com/azure/app-service/deploy-zip) z aktuálního pracovního adresáře do webové aplikace
+- [Nasazení ZIP](https://docs.microsoft.com/azure/app-service/deploy-zip) soubory z aktuálního pracovního adresáře do aplikace.
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-V prohlížeči zadejte adresu nasazené aplikace. Nahraďte <app name> názvem vaší webové aplikace.
+V prohlížeči zadejte adresu nasazené aplikace. Nahraďte název vaší aplikace < název_aplikace >.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Vzorový kód Node.js je spuštěný ve webové aplikaci s použitím integrované image.
+Vzorový kód Node.js je spuštěný ve službě App Service v Linuxu s použitím integrované image.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -166,7 +166,7 @@ response.end("Hello Azure!");
 
 Uložte změny a editor nano zavřete. K uložení použijte příkaz `^O` a k zavření příkaz `^X`.
 
-Teď můžete aplikaci opětovně nasadit. `<app_name>` nahraďte webovou aplikací.
+Teď můžete aplikaci opětovně nasadit. Náhradní `<app_name>` s vaší aplikací.
 
 ```bash
 az webapp up -n <app_name>
@@ -176,15 +176,15 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-nodejs/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Správa vaší nové webové aplikace Azure
+## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> ke správě aplikace, které jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
+![Přechod do aplikace Azure na portálu](./media/quickstart-nodejs/nodejs-docs-hello-world-app-service-list.png)
 
-Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úkoly správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
+Se zobrazí stránka s přehledem vaší aplikace. Tady můžete provádět základní úkoly správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
 ![Stránka služby App Service na webu Azure Portal](media/quickstart-nodejs/nodejs-docs-hello-world-app-service-detail.png)
 

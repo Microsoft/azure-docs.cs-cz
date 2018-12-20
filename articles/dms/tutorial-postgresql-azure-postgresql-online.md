@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/04/2018
-ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.date: 12/19/2018
+ms.openlocfilehash: 7eb5fd5d53499180b85fe268ef95d787e6e5b0cf
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000916"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629709"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Online migrace PostgreSQL do služby Azure Database for PostgreSQL pomocí DMS
+# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Migrace PostgreSQL do Azure Database for PostgreSQL online pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL do služby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **DVD Rental** z místní instance PostgreSQL verze 9.6 do služby Azure Database for PostgreSQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Monitorování migrace
 
 > [!NOTE]
-> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance založené na cenovou úroveň Premium.
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
@@ -190,7 +190,7 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     Například následující příkaz vytvoří službu v:
     - Umístění: USA – východ 2
     - Předplatné: 97181df2-909d-420b-ab93-1bff15acb6b7
-    - Název skupina prostředků: PostgresDemo
+    - Název skupiny prostředků: PostgresDemo
     - Název služby DMS: PostgresCLI
 
     ```
@@ -233,8 +233,8 @@ K dokončení všech databázových objektů, jako jsou schémata tabulek, index
     ```
     Například následující příkaz vytvoří projekt s použitím těchto parametrů:
 
-      - Umístění: USA – středozápad
-      - Název skupina prostředků: PostgresDemo
+      - Umístění: Západní střed USA
+      - Název skupiny prostředků: PostgresDemo
       - Název služby: PostgresCLI
       - Název projektu: PGMigration
       - Zdrojová platforma: PostgreSQL

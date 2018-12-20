@@ -1,6 +1,6 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell - přístupový klíč účtu úložiště otáčení | Microsoft Docs
-description: Vytvoření účtu úložiště Azure potom načíst a otočit jeden z jeho přístupových klíčů k účtu.
+title: Ukázkový skript Azure Powershellu – přístupový klíč účtu úložiště otočit | Dokumentace Microsoftu
+description: Vytvoření účtu služby Azure Storage a načtení a obměně jeden z jeho přístupových klíčů účtu.
 services: storage
 documentationcenter: na
 author: tamram
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: a7aaacf316799540a6a72b699ba8ea8bb389c8a8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: HT
+ms.openlocfilehash: 026c399af70a0c97446fba28b5dd7ca1ed82b89c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
-ms.locfileid: "25984158"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635489"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a otočit jeho přístupových klíčů k účtu
+# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a obměna přístupových klíčů tohoto účtu
 
-Tento skript vytvoří účet úložiště Azure, zobrazí nový účet úložiště primární přístupový klíč a pak obnovuje (otočí) klíče.
+Tento skript vytvoří účet služby Azure Storage, zobrazuje nový účet úložiště primární přístupový klíč a pak klíče obnoví (obmění) klíč.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -36,26 +36,26 @@ Tento skript vytvoří účet úložiště Azure, zobrazí nový účet úloži�
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, účet úložiště a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, účet úložiště a všechny související prostředky.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name rotatekeystestrg
+Remove-AzResourceGroup -Name rotatekeystestrg
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření účtu úložiště a načtení a otočit jeden z jeho přístupové klíče. Každou položku v tabulce odkazy na dokumentaci specifické pro příkaz.
+Tento skript k vytvoření účtu úložiště a načtení a obměně jeden z jeho přístupových klíčů používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) | Získá všechny umístění a podporovaných poskytovatelích prostředků pro každé umístění. |
-| [Nový AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků Azure. |
-| [Nové AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Vytvoří účet úložiště. |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Získá přístupové klíče pro účet úložiště Azure. |
-| [Nové AzureRmStorageAccountKey](/powershell/module/azurerm.storage/new-azurermstorageaccountkey) | Znovu generuje přístupový klíč pro účet úložiště Azure. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Získá všechny umístění a podporovaných poskytovatelích prostředků pro každé umístění. |
+| [Nové AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure. |
+| [Nové AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Získá seznam přístupových klíčů pro účet služby Azure Storage. |
+| [Nové AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Obnovuje se přístupový klíč pro účet služby Azure Storage. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další úložiště naleznete v [ukázky pro úložiště objektů Blob v Azure PowerShell](../blobs/storage-samples-blobs-powershell.md).
+Další ukázkové skripty PowerShellu pro úložiště najdete v tématu [Ukázky PowerShellu pro úložiště objektů blob v Azure](../blobs/storage-samples-blobs-powershell.md).

@@ -15,20 +15,20 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9bd57ae6926f57dc8b6c0fc12199649f63cba261
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 575315836b13f09e452b660c4347df01f64348b4
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608558"
+ms.locfileid: "53629602"
 ---
-# <a name="tutorial-build-a-php-and-mysql-web-app-in-azure"></a>Kurz: Sestavení webové aplikace PHP s připojením k databázi MySQL v Azure
+# <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Kurz: Vytvoření PHP a MySQL aplikaci v Azure
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace PHP s připojením k databázi MySQL ve službě Azure App Service v Linuxu](./containers/tutorial-php-mysql-app.md).
+> Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linux_, naleznete v tématu [vytvoření aplikace PHP využívající databázi MySQL ve službě Azure App Service v Linuxu](./containers/tutorial-php-mysql-app.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz předvádí postup při vytváření webové aplikace PHP v Azure a jejím připojení k databázi MySQL. Po dokončení budete mít ve službě Azure App Service Web Apps spuštěnou aplikaci [Laravel](https://laravel.com/).
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz ukazuje postupy při vytvoření aplikace v PHP v Azure a jejím připojení k databázi MySQL. Jakmile budete hotovi, budete mít [Laravel](https://laravel.com/) ve službě Azure App Service spuštěnou aplikaci.
 
 ![Aplikace PHP spuštěná ve službě Azure App Service](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi MySQL v Azure
 > * Připojit k MySQL aplikaci PHP
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat PHP 5.6.4 nebo novější](https://php.net/downloads.php)
@@ -384,17 +384,17 @@ V okně místního terminálu pomocí příkazu `php artisan` vygenerujte nový 
 php artisan key:generate --show
 ```
 
-Ve službě Cloud Shell pomocí příkazu [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) nastavte klíč aplikace ve webové aplikaci App Service. Nahraďte zástupné texty _&lt;appname>_ and _&lt;outputofphpartisankey:generate>_.
+Ve službě Cloud Shell nastavte klíč aplikace v aplikaci služby App Service s použitím [ `az webapp config appsettings set` ](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu. Nahraďte zástupné texty _&lt;appname>_ and _&lt;outputofphpartisankey:generate>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-Atribut `APP_DEBUG="true"` dává Laravelu pokyn k vrácení informací o ladění v případě, že v nasazené webové aplikaci dojde k chybám. Při spouštění produkční aplikace ho nastavte na `false`, což je bezpečnější.
+`APP_DEBUG="true"` dává pokyn k vrácení informací o ladění, když dojde k chybám nasazené aplikace Laravel. Při spouštění produkční aplikace ho nastavte na `false`, což je bezpečnější.
 
 ### <a name="set-the-virtual-application-path"></a>Nastavení cesty virtuální aplikace
 
-Nastavte cestu virtuální aplikace k webové aplikaci. Tento krok je nezbytný, protože [životní cyklus aplikace Laravel](https://laravel.com/docs/5.4/lifecycle) začíná ve _veřejném_ adresáři, ne v kořenovém adresáři aplikace. Ostatní platformy PHP, jejichž životní cyklus začíná v kořenovém adresáři, můžou fungovat bez ruční konfigurace cesty virtuální aplikace.
+Nastavte cestu virtuální aplikace pro aplikaci. Tento krok je nezbytný, protože [životní cyklus aplikace Laravel](https://laravel.com/docs/5.4/lifecycle) začíná ve _veřejném_ adresáři, ne v kořenovém adresáři aplikace. Ostatní platformy PHP, jejichž životní cyklus začíná v kořenovém adresáři, můžou fungovat bez ruční konfigurace cesty virtuální aplikace.
 
 Ve službě Cloud Shell nastavte cestu virtuální aplikace pomocí příkazu [`az resource update`](/cli/azure/resource#az-resource-update). Nahraďte zástupný symbol _&lt;appname>_.
 
@@ -433,7 +433,7 @@ remote: Running deployment command...
 > Pomocí tohoto postupu můžete přidat do služby App Service libovolný krok nasazení z Gitu. Další informace najdete v tématu [Vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
 
 Přejděte na adresu `http://<app_name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
@@ -569,7 +569,7 @@ V okně místního terminálu spusťte migrace databází Laravel s produkčním
 php artisan migrate --env=production --force
 ```
 
-Potvrďte všechny změny v Gitu a potom odešlete změny kódu do Azure.
+Potvrďte všechny změny v Gitu a potom nasdílejte změny kódu do Azure.
 
 ```bash
 git add .
@@ -577,7 +577,7 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Po dokončení operace `git push` přejděte do webové aplikace Azure a vyzkoušejte nové funkce.
+Jakmile `git push` dokončí, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -593,7 +593,7 @@ Ke spuštění streamování protokolů použijte příkaz [`az webapp log tail`
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Po zahájení streamování protokolu aktualizací webové aplikace Azure v prohlížeči získáte webový provoz. Teď se zobrazí protokoly konzoly směrované do terminálu. Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
+Po zahájení streamování protokolu aktualizací aplikace Azure v prohlížeči získáte webový provoz. Teď se zobrazí protokoly konzoly směrované do terminálu. Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
 
 Streamování protokolů můžete kdykoli zastavit zadáním `Ctrl`+`C`.
 
@@ -604,15 +604,15 @@ Streamování protokolů můžete kdykoli zastavit zadáním `Ctrl`+`C`.
 >
 >
 
-## <a name="manage-the-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web [Azure Portal](https://portal.azure.com).
+Přejděte [webu Azure portal](https://portal.azure.com) ke správě aplikace, které jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-tutorial-php-mysql/access-portal.png)
+![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
-Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
+Se zobrazí stránka s přehledem vaší aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
 
 Levá nabídka obsahuje stránky pro konfiguraci vaší aplikace.
 
@@ -629,12 +629,12 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit databázi MySQL v Azure
 > * Připojit k MySQL aplikaci PHP
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
-V dalším kurzu se dozvíte, jak namapovat na webovou aplikaci vlastní název DNS.
+V dalším kurzu se dozvíte, jak namapovat na aplikaci vlastní název DNS.
 
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS do služby Azure App Service](app-service-web-tutorial-custom-domain.md)

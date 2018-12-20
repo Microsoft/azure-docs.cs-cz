@@ -1,31 +1,30 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure | Microsoft Docs
-description: Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure
+title: Ukázkový skript Azure Powershellu – zálohování virtuálního počítače Azure | Dokumentace Microsoftu
+description: Ukázkový skript Azure Powershellu – zálohování virtuálního počítače Azure
 services: backup
 documentationcenter: ''
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: backup
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/07/2017
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4376add4a2e51806bd5db228ad2fe2afcf2e4f57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: eb22dc88c971e0ddc293fabd64bfd30145b2edd1
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23842647"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651380"
 ---
-# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrované virtuálního počítače Azure pomocí prostředí PowerShell
+# <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrovaných virtuálních počítačů Azure pomocí Powershellu
 
-Tento skript vytvoří trezoru služeb zotavení s geograficky redundantní úložiště (GRS) pro šifrované virtuální počítač Azure. Do trezoru se uplatní výchozí zásady ochrany. Zásady generuje denní zálohování pro virtuální počítač a každá záloha uchovává po dobu 30 dnů. Skript také vytvoření počátečního bodu obnovení pro virtuální počítač se aktivuje a bude mít tento bod obnovení pro 365 dnů. 
+Tento skript vytvoří trezor služby Recovery Services s geograficky redundantní úložiště (GRS) pro šifrované virtuální počítač Azure. Výchozí zásada ochrany platí do trezoru. Zásady generuje denní zálohování pro virtuální počítač a každá záloha uchovává po dobu 30 dnů. Skript také aktivuje prvotní bod obnovení pro virtuální počítač a uchovává tento bod obnovení po dobu 365 dnů. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -37,7 +36,7 @@ Tento skript vytvoří trezoru služeb zotavení s geograficky redundantní úlo
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -45,23 +44,23 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nasazení. Každou položku v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 
 | Příkaz | Poznámky | 
 |---|---| 
-| [Nový AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky. | 
-| [Nové AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/New-AzureRmRecoveryServicesVault) | Vytvoří trezoru služeb zotavení pro ukládání záloh. | 
-| [Set-AzureRmRecoveryServicesBackupProperties](/powershell/module/azurerm.recoveryservices/Set-AzureRmRecoveryServicesBackupProperties) | Nastaví zálohování vlastností úložiště na trezor služeb zotavení. | 
-| [Nové AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)| Vytvoří zásady ochrany pomocí plán zásad a zásad uchovávání informací v trezoru služeb zotavení. | 
-| [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) | Nastaví oprávnění pro Key Vault udělit přístup k hlavní službě pro šifrovací klíče. | 
-| [Povolit AzureRmRecoveryServicesBackupProtection](/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection) | Povolí zálohování pro položku se zadanou zásady ochrany zálohování. | 
-| [Set-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/set-azurermrecoveryservicesbackupprotectionpolicy)| Upravuje existující zásady zálohování ochrany. | 
-| [Zálohování AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem) | Spustí zálohování pro chráněné položky zálohování Azure, který není vázaný na plán zálohování. |
-| [Počkejte AzureRmRecoveryServicesBackupJob](/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob) | Čeká na dokončení úlohy Azure Backup. | 
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky obsažené v rámci. | 
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. | 
+| [Nový AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/New-AzureRmRecoveryServicesVault) | Vytvoří trezor služby recovery services k ukládání záloh. | 
+| [Set-AzureRmRecoveryServicesBackupProperties](/powershell/module/azurerm.recoveryservices/Set-AzureRmRecoveryServicesBackupProperties) | Nastaví zálohování vlastnosti úložiště pro trezor služby Recovery Services. | 
+| [Nový AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy)| Vytvoří zásady ochrany pomocí zásady plánování a zásady uchovávání informací v trezoru služby Recovery Services. | 
+| [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) | Nastaví oprávnění ke službě Key Vault tak, že instančnímu objektu udělí přístup k šifrovacím klíčům. | 
+| [Enable-AzureRmRecoveryServicesBackupProtection](/powershell/module/azurerm.recoveryservices.backup/enable-azurermrecoveryservicesbackupprotection) | Povolí zálohování pro položku zadané zásady ochrany zálohování. | 
+| [Set-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/set-azurermrecoveryservicesbackupprotectionpolicy)| Upraví stávající zásady ochrany zálohování. | 
+| [Backup-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem) | Spuštění zálohování pro chráněnou položku Azure Backup, která se neváže na plán zálohování. |
+| [Wait-AzureRmRecoveryServicesBackupJob](/powershell/module/azurerm.recoveryservices.backup/wait-azurermrecoveryservicesbackupjob) | Čeká na dokončení úlohy Azure Backup. | 
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. | 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

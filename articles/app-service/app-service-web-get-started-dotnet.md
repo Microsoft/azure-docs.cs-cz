@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5bf6ce30251bd83dc4fc68722573dc4d99d5b0ae
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 2762a81c9f366ad4a5d0d6d87cf04490fc10b23c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605054"
+ms.locfileid: "53630580"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -28,7 +28,7 @@ ms.locfileid: "53605054"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md). 
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak nasadit první ASP.NET Core do služby Azure App Service webovou aplikaci. Po dokončení kurzu budete mít skupinu prostředků, která se bude skládat z plánu služby App Service a webové aplikace Azure s nasazenou webovou aplikací.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak nasadit první ASP.NET Core do služby Azure App Service webovou aplikaci. Jakmile budete hotovi, budete mít skupinu prostředků, která se skládá z plánu služby App Service a aplikaci služby App Service s nasazenou webovou aplikací.
 
 ![](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
@@ -147,13 +147,13 @@ Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL we
 
 ![Aktualizovaná webová aplikace ASP.NET v Azure](./media/app-service-web-get-started-dotnet/web-app-running-live-updated.png)
 
-## <a name="manage-the-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
 Pokud chcete webovou aplikaci spravovat, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V levé nabídce klikněte na **App Services** a potom vyberte název své webové aplikace Azure.
+V nabídce vlevo vyberte **App Services**a potom vyberte název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/app-service-web-get-started-dotnet/access-portal.png)
+![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-dotnet/access-portal.png)
 
 Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 

@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b0bb45233aa34dce6794638e5d49fc2b47bef71d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002207"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53615201"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(NEPOUŽÍVANÉ) Container Service – nejčastější dotazy
 
@@ -32,7 +32,7 @@ Aktuálně jsou podporovány kontejnery Linux se všemi orchestrátory. Podpora 
 ### <a name="do-you-recommend-a-specific-orchestrator-in-azure-container-service"></a>Doporučujete ve službě Azure Container Service použití konkrétního orchestrátoru? 
 Obecně nedoporučujeme konkrétní orchestrator. Pokud máte zkušenosti s některým z podporovaných orchestrátorů, můžete je využít ve službě Azure Container Service. Trendy v datech nicméně naznačují, že systém DC/OS se v produkčním prostředí osvědčil pro úlohy s velkým objemem dat a úlohy IoT, Kubernetes se skvěle hodí pro úlohy nativní pro cloud a Docker Swarm je známý svou integrací s nástroji Dockeru a jednoduchostí osvojování.
 
-V závislosti na scénáři můžete také vytvořit a spravovat vlastní řešení kontejnerů pomocí dalších služeb Azure. Mezi tyto služby patří [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/app-service-web-overview.md) a [Batch](../articles/batch/batch-technical-overview.md).  
+V závislosti na scénáři můžete také vytvořit a spravovat vlastní řešení kontejnerů pomocí dalších služeb Azure. Mezi tyto služby patří [Virtual Machines](../articles/virtual-machines/linux/overview.md), [Service Fabric](../articles/service-fabric/service-fabric-overview.md), [Web Apps](../articles/app-service/overview.md) a [Batch](../articles/batch/batch-technical-overview.md).  
 
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaký je rozdíl mezi službou Azure Container Service a modulem ACS? 
 Azure Container Service je služba Azure, na kterou se vztahuje smlouva SLA, s funkcemi na webu Azure Portal, nástroji příkazového řádku Azure a rozhraními API Azure. Služba umožňuje rychlou implementaci a správu clusterů se standardními nástroji pro orchestraci kontejnerů a poskytuje poměrně málo možností konfigurace. 
@@ -79,9 +79,9 @@ Běžně používané adresy URL pro váš cluster najdete na webu Azure Portal,
 
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Jak zjistím, která verze orchestrátoru je spuštěna v mém clusteru?
 
-* DC/OS: Viz [Dokumentace Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/).
-* Docker Swarm: Spusťte příkaz `docker version`.
-* Kubernetes: Spusťte příkaz `kubectl version`.
+* DC/OS: Zobrazit [dokumentaci Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
+* Docker Swarm: Spusťte `docker version`.
+* Kubernetes: Spusťte `kubectl version`.
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Jak můžu upgradovat orchestrátor po nasazení?
 

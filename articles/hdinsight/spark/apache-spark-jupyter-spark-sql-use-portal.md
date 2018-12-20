@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí webu Azure Portal'
+title: 'Rychlý start: Vytvoření clusteru Spark v HDInsight pomocí webu Azure portal'
 description: V tomto rychlém startu se dozvíte, jak pomocí webu Azure Portal vytvořit cluster Apache Spark v Azure HDInsight a jak spustit Spark SQL.
 services: hdinsight
 author: hrasheed-msft
@@ -9,19 +9,19 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.custom: mvc
-ms.openlocfilehash: 370503cc463fd3683f47fe0b573ad83daa0b9d14
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e70dc762f7b6874bc27ace9c7f304564c045bc50
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584549"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652094"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-the-azure-portal"></a>Rychlý start: Vytvoření clusteru Apache Spark v HDInsight pomocí webu Azure portal
-Zjistěte, jak vytvořit cluster Apache Spark v Azure HDInsight a jak spustit dotazy Spark SQL na tabulky Hive. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Apache Spark ve službě HDInsight najdete v tématu [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
+Zjistěte, jak vytvořit cluster Apache Spark v Azure HDInsight a jak spustit dotazy Spark SQL na tabulky Hive. Apache Spark umožňuje rychlou analýzu dat a clusterové výpočty s využitím zpracování v paměti. Informace o Sparku v HDInsight najdete v tématu [přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md).
 
-V tomto rychlém startu pomocí webu Azure Portal vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+V tomto rychlém startu pomocí webu Azure Portal vytvoříte cluster HDInsight Spark. Cluster jako úložiště využívá Azure Storage Blob. Další informace o použití Data Lake Storage Gen2 najdete v tématu [rychlý start: Nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Clustery HDInsight se fakturují za minutu bez ohledu na to, jestli je používáte, nebo ne. Až přestanete cluster používat, nezapomeňte ho odstranit. Další informace najdete v části [Vyčištění prostředků](#clean-up-resources) tohoto článku.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -53,7 +53,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
     ![Vytvoření clusteru Spark v HDInsight s konfigurací úložiště](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-create-hdinsight-spark-cluster-storage.png "Vytvoření clusteru Spark v HDInsight s konfigurací úložiště")
 
-    > [!NOTE] 
+    > [!NOTE]  
     > Na snímku obrazovky je vidět **Vybrat existující**. Odkaz se přepíná mezi **Vytvořit nový** a **Vybrat existující**.
 
     **Výchozí kontejner** má výchozí název.  Pokud chcete, můžete název změnit.

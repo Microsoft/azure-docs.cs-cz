@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: b-juche
-ms.openlocfilehash: fc8ec5c3bbe0157f5737e2eb757478357aa6e867
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 8ec41c6db8c8e5c62d15dc0638762f2649c637b8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414059"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631647"
 ---
-# <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegát podsítě do služby soubory Azure NetApp 
+# <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegování podsítě do Azure NetApp Files 
 
 Podsíť, která se soubory Azure NetApp musí delegovat.   Při vytváření svazku je třeba zadat delegované podsítě.
 
 ## <a name="about-this-task"></a>O této úloze
 * Průvodce vytvořením nové podsítě. výchozí hodnota je/24 je maska sítě, která poskytuje pro 251 dostupných IP adres. Pomocí o velikosti/28 maska sítě, která poskytuje 16 použitelných IP adres, je dostatečná pro službu.
 * Nelze určit skupinu zabezpečení sítě nebo služby koncového bodu v delegované podsítě. To způsobí, že podsíť delegování selhání.
-* V každé Azure Virtual Network (VNet) je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.
+* V každé Azure Virtual Network (Vnet) je možné jenom jednu podsíť delegovat do služby soubory Azure NetApp.
 * Přístup ke svazku z partnerské virtuální síti se aktuálně nepodporuje.
 
 ## <a name="steps"></a>Kroky 

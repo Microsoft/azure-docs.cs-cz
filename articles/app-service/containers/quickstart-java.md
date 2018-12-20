@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: d27491d84d4df1757f77a403cd754496bbff6887
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0c72318f6c80563d138d9c885ea5984a22c5c7fa
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252605"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653896"
 ---
-# <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření webové aplikace v Javě ve službě App Service v Linuxu
+# <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Rychlý start: Vytvoření aplikace v Javě ve službě App Service v Linuxu
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak se dá [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modulem plug-in Maven pro Azure Web Apps (Preview)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) použít k nasazení souboru webového archivu (WAR) webové aplikace v Javě.
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak používat [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) s [modul plug-in Maven pro Azure Web Apps (Preview)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) k nasazení souboru webového archivu (WAR) Java.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-java/java-hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "53252605"
 
 ## <a name="create-a-java-app"></a>Vytvoření aplikace v Javě
 
-Spusťte následující příkaz Maven v příkazovém řádku Cloud Shellu k vytvoření nové webové aplikace s názvem `helloworld`:
+Ve službě Cloud Shell výzvu k vytvoření nové aplikace s názvem spustíte následující příkaz Mavenu `helloworld`:
 
 ```bash
 mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
@@ -62,12 +62,12 @@ Pak do elementu `<build>` souboru `pom.xml` přidejte následující definici mo
         <version>1.4.0</version>
         <configuration>
    
-            <!-- Web App information -->
+            <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
-            <!-- Java Runtime Stack for Web App on Linux-->
+            <!-- Java Runtime Stack for App on Linux-->
             <linuxRuntime>tomcat 8.5-jre8</linuxRuntime>
    
         </configuration>
@@ -84,9 +84,9 @@ V konfiguraci modulu plug-in aktualizujte následující zástupné symboly:
 
 | Zástupný symbol | Popis |
 | ----------- | ----------- |
-| `RESOURCEGROUP_NAME` | Název nové skupiny prostředků, ve které chcete vytvořit webovou aplikaci. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu zadáním jedinečného názvu nové skupiny prostředků, třeba *TestResources*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
-| `WEBAPP_NAME` | Název aplikace bude součástí názvu hostitele webové aplikace při nasazení do Azure (NAZEV_WEBOVE_APLIKACE.azurewebsites.net). Aktualizujte tuto hodnotu zadáním jedinečného názvu nové webové aplikace Azure, která bude hostitelem vaší aplikace v Javě, třeba *contoso*. |
-| `REGION` | Oblast Azure, kde je webová aplikace hostovaná, například `westus2`. Seznam oblastí můžete získat z Cloud Shellu nebo rozhraní příkazového řádku pomocí příkazu `az account list-locations`. |
+| `RESOURCEGROUP_NAME` | Název pro novou skupinu prostředků, ve kterém chcete vytvořit aplikaci. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. Aktualizujte tuto hodnotu zadáním jedinečného názvu nové skupiny prostředků, třeba *TestResources*. Tento název skupiny prostředků použijete v pozdější fázi k vyčištění všech prostředků Azure. |
+| `WEBAPP_NAME` | Část názvu hostitele pro aplikace nasazené do Azure (WEBAPP_NAME.azurewebsites.net) bude mít název aplikace. Aktualizujte tuto hodnotu jedinečný název pro novou aplikaci služby App Service, který bude hostovat aplikaci v Javě, například *contoso*. |
+| `REGION` | Určitá oblast Azure, ve kterém je aplikace hostovaná, například `westus2`. Seznam oblastí můžete získat z Cloud Shellu nebo rozhraní příkazového řádku pomocí příkazu `az account list-locations`. |
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -108,7 +108,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste použili Maven k vytvoření webové aplikace v Javě, nakonfigurovali jste [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) a potom jste nasadili aplikaci v Javě zabalenou do webového archivu do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App v Linuxu.
+V tomto rychlém startu jste použili Maven k vytvoření aplikace v Javě, nakonfigurována [modul plug-in Maven pro Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), pak nasadili webovou aplikaci Java archivu zabalené do služby App Service v Linuxu. Odkazovat na následující kurzy a články s návody pro další informace o hostování aplikací v Javě ve službě App v Linuxu.
 
 - [Kurz: Nasazení aplikace v Javě podnikové aplikace s PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 - [Konfigurace zdroje dat Tomcat](app-service-linux-java.md#connecting-to-data-sources)

@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 11/01/2018
-ms.openlocfilehash: 82cf0303019d2cbb620c442fd6f750f733930f84
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 0608bd9c923ed9ba04f257d87faad48765d3201a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912335"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650287"
 ---
-# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Kurz: Návrh databáze SQL Azure a její připojení pomocí jazyka C&#x23; a ADO.NET
+# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Kurz: Návrh databáze SQL Azure a její připojení pomocí C&#x23; a ADO.NET
 
 Azure SQL Database je relační databáze jako služba (DBaaS) v cloudu Microsoftu (Azure). V tomto kurzu zjistíte, jak pomocí webu Azure Portal a ADO.NET v sadě Visual Studio provádět následující úlohy:
 
@@ -49,18 +49,18 @@ And it starts with a ## H2.
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili základním úkonům při práci s databází, jako je vytvoření databáze a tabulek, načtení a dotazování dat a obnovení databáze k určitému bodu v čase. Naučili jste se tyto postupy:
 > [!div class="checklist"]
 > * Vytvoření databáze
 > * Nastavení pravidla brány firewall
 > * Připojení k databázi pomocí sady [Visual Studio a jazyka C#](sql-database-connect-query-dotnet-visual-studio.md)
-> * Vytvoření tabulek
+> * Vytváření tabulek
 > * Vložení, aktualizace a odstranění dat
 > * Dotazování dat
 
 V dalším kurzu se dozvíte, jak migrovat data.
 
 > [!div class="nextstepaction"]
-> [Migrace databáze SQL Serveru do služby Azure SQL Database](sql-database-migrate-your-sql-server-database.md)
+> [Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS](../dms/tutorial-sql-server-to-azure-sql.md)

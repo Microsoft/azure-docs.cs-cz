@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace Ruby s Postgres v Linuxu – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření aplikace v Ruby s Postgres v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Naučte se v Azure zprovoznit aplikaci Ruby s připojením k databázi PostgreSQL v Azure.
 services: app-service\web
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 93cdf83797cde40d75d6f6d6220cf4e02cb56cef
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 67dfc99490787eef9164759d34ef9f5ee542b76a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604214"
+ms.locfileid: "53635336"
 ---
-# <a name="build-a-ruby-and-postgres-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace Ruby využívající databázi Postgres ve službě Azure App Service v Linuxu
+# <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření Ruby a Postgres aplikace ve službě Azure App Service v Linuxu
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento kurz předvádí postup při vytváření webové aplikace Ruby a jejím připojení k databázi PostgreSQL. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Ruby on Rails](https://rubyonrails.org/).
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento kurz ukazuje postupy při vytvoření aplikace v Ruby a jejím připojení k databázi PostgreSQL. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci [Ruby on Rails](https://rubyonrails.org/).
 
 ![Aplikace Ruby on Rails spuštěná ve službě Azure App Service](./media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit k PostgreSQL aplikaci Ruby on Rails
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
@@ -39,7 +39,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat jazyk Ruby 2.3](https://www.ruby-lang.org/en/documentation/installation/).
@@ -357,7 +357,7 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
 
 Přejděte na adresu `http://<app_name>.azurewebsites.net` a přidejte do seznamu několik úkolů.
 
@@ -462,7 +462,7 @@ V terminálu spusťte migrace databáze Rails, aby produkční prostředí prove
 rake db:migrate RAILS_ENV=production
 ```
 
-Potvrďte všechny změny v Gitu a potom odešlete změny kódu do Azure.
+Potvrďte všechny změny v Gitu a potom nasdílejte změny kódu do Azure.
 
 ```bash
 git add .
@@ -470,21 +470,21 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-Po dokončení operace `git push` přejděte do webové aplikace Azure a vyzkoušejte nové funkce.
+Jakmile `git push` dokončí, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/tutorial-ruby-postgres-app/complete-checkbox-published.png)
 
 Pokud jste přidali nějaké úkoly, zůstanou v databázi. Aktualizace schématu dat nechávají existující data netknutá.
 
-## <a name="manage-the-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web [Azure Portal](https://portal.azure.com).
+Přejděte [webu Azure portal](https://portal.azure.com) ke správě aplikace, které jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/tutorial-php-mysql-app/access-portal.png)
+![Přechod do aplikace Azure na portálu](./media/tutorial-php-mysql-app/access-portal.png)
 
-Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
+Se zobrazí stránka s přehledem vaší aplikace. Tady můžete provádět základní úkoly správy, jako je zastavení, spuštění, restartování, procházení a odstranění.
 
 Levá nabídka obsahuje stránky pro konfiguraci vaší aplikace.
 
@@ -501,12 +501,12 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit v Azure databázi Postgres
 > * Připojit k Postgres aplikaci Ruby on Rails
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
-V dalším kurzu se dozvíte, jak namapovat na webovou aplikaci vlastní název DNS.
+Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
 
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

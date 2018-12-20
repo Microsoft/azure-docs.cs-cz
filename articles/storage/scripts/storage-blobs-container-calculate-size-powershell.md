@@ -1,6 +1,6 @@
 ---
-title: Azure skript prostředí PowerShell ukázkový – vypočítat velikost kontejneru objektů blob | Microsoft Docs
-description: Vypočítejte velikost kontejneru v úložiště objektů Blob v Azure pomocí součtem velikost každého z jeho objekty BLOB.
+title: Skript Azure Powershellu ukázkový – výpočet velikosti kontejneru objektů blob | Dokumentace Microsoftu
+description: Vypočítá velikost kontejneru v úložišti objektů Blob v Azure součtem velikostí jednotlivých jeho objekty BLOB.
 services: storage
 documentationcenter: na
 author: tamram
@@ -15,23 +15,23 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: tamram
-ms.openlocfilehash: f6f421e780bfbb7922a4b11f758330f2a9a0b84b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
-ms.translationtype: HT
+ms.openlocfilehash: b41366b89a0598d52ae973e2a6d27e60ed548765
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24814571"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634452"
 ---
-# <a name="calculate-the-size-of-a-blob-storage-container"></a>Vypočítat velikost kontejner úložiště objektů Blob
+# <a name="calculate-the-size-of-a-blob-storage-container"></a>Výpočet velikosti kontejneru úložiště objektů blob
 
-Tento skript se vypočítá velikost kontejner v úložišti objektů Blob Azure součtem velikost objektů BLOB v kontejneru.
+Tento skript vypočítá velikost kontejneru v úložišti objektů blob v Azure součtem velikostí jednotlivých objektů blob v kontejneru.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
-> Tento skript prostředí PowerShell poskytuje odhadovanou velikost kontejneru a by se neměla používat pro výpočty fakturace. Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v části [vypočítat velikost kontejner úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
+> Tento skript Powershellu, poskytuje odhadovanou velikost kontejneru a neměl by se používat k výpočtům fakturace. Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v článku [výpočet velikosti kontejneru úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md). 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -39,25 +39,25 @@ Tento skript se vypočítá velikost kontejner v úložišti objektů Blob Azure
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, kontejneru a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, kontejner a všechny související prostředky.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name bloblisttestrg
+Remove-AzResourceGroup -Name bloblisttestrg
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy vypočítat velikost kontejner úložiště objektů Blob. Každou položku v tabulce odkazy na dokumentaci specifické pro příkaz.
+Tento skript k výpočtu velikosti kontejneru úložiště objektů blob používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get AzureRmStorageAccount](/powershell/module/azurerm.storage/get-azurermstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložiště ve skupině prostředků nebo předplatného. |
-| [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) | Zobrazí seznam objektů BLOB v kontejneru. ||
+| [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | Získá zadaný účet úložiště nebo všechny účty úložišť ve skupině prostředků nebo předplatného. |
+| [Get-AzStorageBlob](/powershell/module/azure.storage/get-AzStorageblob) | Vypíše objekty BLOB v kontejneru. ||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v části [vypočítat velikost kontejner úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
+Skript, který vypočítá velikost kontejneru pro účely fakturace, najdete v článku [výpočet velikosti kontejneru úložiště objektů Blob pro účely fakturace](../scripts/storage-blobs-container-calculate-billing-size-powershell.md).
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další úložiště naleznete v [ukázky prostředí PowerShell pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).
+Ukázkové skripty Powershellu pro úložiště najdete v [ukázky Powershellu pro Azure Storage](../blobs/storage-samples-blobs-powershell.md).

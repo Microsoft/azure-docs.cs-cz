@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Připojení webové aplikace k účtu úložiště | Microsoft Docs
-description: Ukázkový skript Azure CLI – Připojení webové aplikace k účtu úložiště
+title: Skript Azure CLI ukázkový – připojení aplikace k účtu úložiště | Dokumentace Microsoftu
+description: Skript Azure CLI ukázkový – připojení aplikace k účtu úložiště
 services: appservice
 documentationcenter: appservice
 author: msangapu
@@ -16,16 +16,16 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3e32f6d27172d801ed18ae2e37e58457842bc320
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 57a1e9ad6bf377fa5148a4d5c716be00db786c84
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584863"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632276"
 ---
-# <a name="connect-a-web-app-to-a-storage-account-using-cli"></a>Připojení webové aplikace do účtu úložiště pomocí rozhraní příkazového řádku
+# <a name="connect-an-app-service-app-to-a-storage-account-using-cli"></a>Připojit aplikaci služby App Service do účtu úložiště pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří účet úložiště Azure a webovou aplikaci Azure. Pak pomocí nastavení aplikace propojí účet úložiště s webovou aplikací.
+Tento ukázkový skript vytvoří účet úložiště Azure a aplikaci služby App Service. Pak do aplikace pomocí nastavení aplikace propojí účet úložiště.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -42,16 +42,16 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript k vytvoření skupiny prostředků, webové aplikace, účtu úložiště a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, aplikace služby App Service, účet úložiště a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | Vytvoří účet úložiště. |
 | [`az storage account show-connection-string`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) | Získá připojovací řetězec pro účet úložiště. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro webovou aplikaci Azure. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Vytvoří nebo aktualizuje nastavení aplikace pro aplikaci služby App Service. Nastavení aplikace se pro vaši aplikaci zveřejní jako proměnné prostředí. |
 
 ## <a name="next-steps"></a>Další postup
 

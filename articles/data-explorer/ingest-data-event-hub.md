@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru'
+title: 'Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure'
 description: V tomto rychlém startu se dozvíte, jak ingestovat (načíst) data do Azure Data Exploreru z centra událostí.
 services: data-explorer
 author: orspod
@@ -8,22 +8,20 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3350c222cced036af6319cee166c53da0b14f2a9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 563b171177b491037e34dce891b565ea0943feda
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210444"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654100"
 ---
-# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru
+# <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. Dokáže zpracovat miliony událostí za sekundu prakticky v reálném čase. V tomto rychlém startu vytvoříte centrum událostí, připojíte se k němu z Azure Data Exploreru a podíváte se na tok dat v rámci systému.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-
 ## <a name="prerequisites"></a>Požadavky
 
-Kromě předplatného Azure budete k dokončení tohoto rychlého startu potřebovat:
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 
 * [Testovací cluster a databázi](create-cluster-database-portal.md)
 
@@ -61,7 +59,7 @@ V tomto rychlém startu vygenerujete ukázková data a odešlete je do centra ud
     |---|---|---|
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svoje centrum událostí.|
     | Skupina prostředků | *test-hub-rg* | Vytvořte novou skupinu prostředků. |
-    | Umístění | *Západní USA* | V tomto rychlém startu vyberte *USA – západ*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
+    | Umístění | *Západní USA* | V tomto rychlém startu vyberte *USA – západ*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám. Vytvořte obor názvů centra událostí ve stejném umístění jako cluster Kusto pro zajištění nejlepšího výkonu (nejdůležitější pro obory názvů centra událostí při vysoké propustnosti).
     | Název oboru názvů | Jedinečný název oboru názvů | Zvolte jedinečný název, který identifikuje váš obor názvů. Například *mytestnamespace*. K názvu, který zadáte, bude připojen název domény *servicebus.windows.net*. Název může obsahovat pouze písmena, číslice a pomlčky. Musí začínat písmenem a končit písmenem nebo číslicí. Počet znaků musí být mezi 6 a 50.
     | Název centra událostí | *test-hub* | Centrum událostí se nachází v rámci oboru názvů, který poskytuje jedinečný kontejner oboru. Název centra událostí musí být v rámci oboru názvů jedinečný. |
     | Název skupiny uživatelů | *test-group* | Skupiny uživatelů umožňují, aby měla každá z aplikací samostatné zobrazení streamu událostí. |
@@ -197,7 +195,7 @@ Pokud už centrum událostí nebudete chtít dál používat, vyčistěte **test
 
 1. V novém okně zadejte název skupiny prostředků, kterou chcete odstranit (*test-resource-group*), a pak vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rychlý start: Dotazování na data v Azure Data Exploreru](web-query-data.md)
+> [Rychlý start: Dotazování dat v Průzkumníku dat Azure](web-query-data.md)

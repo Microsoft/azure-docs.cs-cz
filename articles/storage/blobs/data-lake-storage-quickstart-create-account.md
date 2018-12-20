@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 914dcf6d19ca0791c5914e7d605e48f15a610d62
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d093dbe50cb76faedc463603edc459b22dda4fba
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099507"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628234"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2
 
@@ -89,9 +89,9 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 2. Vyberte vaše **předplatné** a **skupiny prostředků** jste vytvořili dříve.
 3. Zadejte název účtu úložiště.
 4. Nastavte **Umístění** na **Západní USA 2**.
-5. Následujících polích ponechte výchozí nastavení: **výkonu**, **druh účtu**, **replikace**, **úroveň přístupu**.
+5. Ponechte tato pole výchozí nastavení: **Výkon**, **druh účtu**, **replikace**, **úroveň přístupu**.
 6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
-7. Vyberte **Další: Advanced >**
+7. Vyberte **Další: Upřesnit >**
 8. Ponechte hodnoty v rámci **zabezpečení** a **VIRTUÁLNÍCH sítí** pole výchozí nastavení.
 9. V části **Data Lake Storage Gen2 (Preview)** nastavte **Hierarchický obor názvů** na **Povoleno**.
 10. Klikněte na tlačítko **revize + vytvořit** k vytvoření účtu úložiště.
@@ -116,21 +116,11 @@ Potom upgradovat modul prostředí powershell, přihlaste se ke svému předplat
 
 ### <a name="upgrade-your-powershell-module"></a>Upgrade modulu PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 K interakci s Data Lake Storage Gen2 pomocí prostředí PowerShell, budete muset nainstalovat verzi modulu Az.Storage **0,7** nebo novější.
 
 Začněte tak, že otevřete relaci Powershellu se zvýšenými oprávněními.
-
-Zjistěte, pokud máte instalace modulu AzureRM.Storage.
-
-```powershell
-Get-Module -ListAvailable AzureRM.Storage
-```
-
-Pokud se zobrazí modul, odinstalujte ji.
-
-```powershell
-Uninstall-Module AzureRM.Storage -Force
-```
 
 Instalace modulu Az.Storage
 
@@ -138,28 +128,20 @@ Instalace modulu Az.Storage
 Install-Module Az.Storage -Repository PSGallery -RequiredVersion 0.7.0 -AllowPrerelease -AllowClobber -Force
 ```
 
-Povolte režim kompatibility pro AzureRM.
-
-```powershell
-Enable-AzureRMAlias
-```
-
-Režim kompatibility znamená, že všechny skripty, které používají modulu AzureRM.Storage budou fungovat i v případě, že odinstalujete modulu AzureRM.Storage.
-
 > [!NOTE]
-> Moduly Azure Powershellu Az jsou upřednostňované moduly pro práci se službami Azure v prostředí Powershell. Další informace najdete v tématu [představení nového modulu Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0).
+> Moduly Azure Powershellu Az jsou upřednostňované moduly pro práci se službami Azure v prostředí Powershell. Další informace najdete v tématu [představení nového modulu Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
 
 ### <a name="log-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
-Použití `Login-AzureRmAccount` příkaz a postupujte podle pokynů na obrazovce pokynů k ověření.
+Použití `Login-AzAccount` příkaz a postupujte podle pokynů na obrazovce pokynů k ověření.
 
 ```powershell
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte příkaz [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): 
+Chcete-li vytvořit novou skupinu prostředků pomocí Powershellu, použijte [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz: 
 
 > [!NOTE]
 > Hierarchický obor názvů je v současné době dostupný ve všech veřejných oblastech. Momentálně není k dispozici v suverénních cloudech.
@@ -169,17 +151,17 @@ Pokud chcete vytvořit novou skupinu prostředků pomocí PowerShellu, použijte
 # without hardcoding it repeatedly
 $resourceGroup = "storage-quickstart-resource-group"
 $location = "westus2"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Vytvoření účtu úložiště pro obecné účely verze 2
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 pomocí PowerShellu s využitím místně redundantního úložiště (LRS), použijte příkaz [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount):
+Chcete-li vytvořit účet úložiště pro obecné účely verze 2 v Powershellu s místně redundantním úložištěm (LRS), použijte [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) příkaz:
 
 ```powershell
 $location = "westus2"
 
-New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
@@ -189,10 +171,10 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 ### <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup): 
+Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkaz: 
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="create-an-account-using-azure-cli"></a>Vytvoření účtu pomocí Azure CLI

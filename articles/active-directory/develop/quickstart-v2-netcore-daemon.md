@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/28/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c920782810cc8b7b302799a5bab53a737b11c0a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 787a817b32838d11cb8974737037543f73285b0d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853029"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653421"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Rychlý start: Získání tokenu a volat Microsoft Graph API z konzoly aplikace pomocí identity aplikace
 
@@ -37,23 +37,20 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrace a stažení aplikace pro rychlý start
-
-> [!div renderon="portal" class="sxs-lookup"]
+>
 > Aplikaci pro rychlý start můžete spustit dvěma způsoby:
-> * [Expresní] [Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Ruční] [Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Express] [Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [Ruční] [Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automatická konfigurace aplikace a následné stažení vzorového kódu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Možnost 1: Registrace a automaticky konfigurovat svoji aplikaci a pak si stáhnout ukázku kódu
 >
-> 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+> 1. Přejděte na [Azure Portal – Registrace aplikace (Preview)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs).
 > 1. Zadejte název vaší aplikace a Vyberte **Zaregistrovat**.
 > 1. Postupujte podle pokynů ke stažení a automatické konfiguraci nové aplikace jedním kliknutím.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registraci a ručně konfiguraci vaší aplikace a ukázku kódu
 >
-
-> [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
+> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace vaší aplikace
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -67,7 +64,9 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
 > 1. V části **uživatele** uzlu, vyberte **User.Read.All**a pak vyberte **přidat oprávnění**
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
+> ### <a name="download-and-configure-your-quickstart-app"></a>Stažení a konfigurace aplikace pro rychlý start
+> 
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Konfigurace aplikace na webu Azure portal
 > Pro ukázkový kód pro tento rychlý start pro práci, budete muset vytvořit tajný kód klienta a přidat rozhraní Graph API **User.Read.All** oprávnění k aplikaci.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Tyto změny provést pro mě]()
@@ -75,11 +74,11 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-windows-desktop/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stažení projektu sady Visual Studio
+#### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: Stáhněte si svůj projekt sady Visual Studio
 
 [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Nakonfigurujte si projekt sady Visual Studio
+#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 1. Otevřete řešení v sadě Visual Studio – **démon console.sln** (volitelné).
@@ -99,6 +98,7 @@ Tento rychlý start vyžaduje [.NET Core 2.1](https://www.microsoft.com/net/down
     >> * `Enter_the_Tenant_Id_Here` -Nahraďte tuto hodnotu **Id Tenanta** nebo **název Tenanta** (například contoso.microsoft.com)
     >> * `Enter_the_Client_Secret_Here` -Nahraďte tuto hodnotu s tajným klíčem klienta vytvořili v kroku 1.
 
+    > [!div renderon="docs"]
     > > [!TIP]
     > > Pokud chcete najít hodnoty z **ID aplikace (klient)**, **ID adresáře (tenant)**, přejděte na aplikaci **přehled** stránky na webu Azure Portal. Pokud chcete generovat nový klíč, přejděte na **certifikáty a tajné kódy** stránky.
     
@@ -130,7 +130,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
 
 > [!NOTE]
-> Může se zobrazit chyba *"AADSTS50011: pro aplikaci není zaregistrován žádný zpáteční adresu"* po udělení souhlasu do aplikace pomocí předchozí adresou URL. To možné tuto aplikaci a adresu URL přesměrování URI - nemají prosím dokončená, chybu ignorujte.
+> Může se zobrazit chyba *"AADSTS50011: Pro aplikaci není zaregistrován žádný zpáteční adresu "* po udělení souhlasu do aplikace pomocí předchozí adresou URL. To možné tuto aplikaci a adresu URL přesměrování URI - nemají prosím dokončená, chybu ignorujte.
 
 #### <a name="step-5-run-the-application"></a>Krok 5: Spuštění aplikace
 

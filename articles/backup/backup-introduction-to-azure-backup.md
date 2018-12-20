@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 8/2/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b0d920c1a41ff679c3dedcb6745e250b77cb769a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f07bcf3cb1b489ad7ec06dff1437e49d83748998
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878293"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631150"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Přehled funkcí ve službě Azure Backup
 Azure Backup je služba Azure, kterou můžete využívat k zálohování (ochraně) a obnovování vašich dat v Microsoft Cloudu. Azure Backup nahrazuje současná řešení místního nebo odlehlého zálohování spolehlivým, bezpečným a cenově konkurenceschopným cloudovým řešením. Azure Backup nabízí několik komponent, které můžete stáhnout a nasadit na vhodném počítači, na serveru, nebo v cloudu. Nasazená komponenta nebo agent závisí na tom, co chcete chránit. Všechny komponenty služby Azure Backup (bez ohledu na to, jestli chráníte data v místním nebo cloudovém úložišti) je možné použít k zálohování dat do trezoru služby Recovery Services v Azure. Informace o tom, kterou komponentu použít pro ochranu konkrétních data, aplikací nebo úloh, najdete v [tabulce komponent Azure Backup](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (dále v tomto článku).
@@ -78,17 +78,17 @@ Následující tabulka obsahuje matici dat a úloh, které se dají chránit s p
 | Virtuální počítače Azure IaaS (Linux) |spuštěno v Azure |[Azure Backup (rozšíření virtuálního počítače)](backup-azure-vms-introduction.md) |
 
 ## <a name="linux-support"></a>Podpora Linuxu
-Následující tabulka uvádí komponenty Azure Backup s podporou pro Linux.  
+Následující tabulka uvádí komponenty Azure Backup nepodporuje pro Linux.  
 
-| Komponenta | Podpora Linuxu (schváleného Azure) |
-| --- | --- |
-| Agent Azure Backup (MARS) |Ne (pouze agent založený na Windows) |
-| System Center DPM |<li> Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/> <li> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru </br> </br>  *Zálohování s konzistentními soubory není dostupné pro virtuální počítače Azure* <br/> |
-| Server Azure Backup |<li>Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/> <li> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru </br></br> *Zálohování s konzistentními soubory není dostupné pro virtuální počítače Azure*  |
-| Zálohování virtuálních počítačů Azure IaaS |Zálohování konzistentní s aplikací pomocí [rozhraní s předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/> [Detailní obnovení souborů](backup-azure-restore-files-from-vm.md)<br/> [Obnovení všech disků virtuálního počítače](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [Obnovení virtuálního počítače](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
+**Komponenta** | **Linuxu (schváleného Azure)**
+--- | --- 
+Agent Azure Backup (MARS) | Žádný (založené na Windows agent jenom) 
+System Center DPM | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálního počítače pro virtuální počítače hosta s Linuxem v Hyper-V a VMwaru</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure
+Server Azure Backup | Záloha s konzistentními soubory virtuálních počítačů hosta s Linuxem v Hyper-V a VMWaru<br/><br/> Obnovení virtuálních počítačů Hyper-V a virtuálních počítačů VMWare s Linuxem hosta</br></br> Konzistentní zálohování není k dispozici pro virtuální počítače Azure 
+Zálohování virtuálních počítačů Azure IaaS | Konzistentní zálohování pomocí [rozhraní předzálohovacími a pozálohovacími skripty](backup-azure-linux-app-consistent.md)<br/><br/> [Obnovení na úrovni souboru](backup-azure-restore-files-from-vm.md)<br/><br/> [Vytvoření virtuálního počítače z obnoveného disku](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Vytvoření virtuálního počítače z bodu obnovení](backup-azure-arm-restore-vms.md#create-new-create-a-vm).
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Použití virtuálních počítačů služby Premium Storage s Azure Backup
-Azure Backup chrání virtuální počítače služby Premium Storage. Azure Premium Storage představuje úložiště využívající disky SSD (solid-state drive) určené pro podporu úloh náročných na množství vstupně-výstupních operací. Služba Premium Storage je zajímavá pro úlohy virtuálních počítačů. Další informace o službě Storage úrovně Premium najdete v článku [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../virtual-machines/windows/premium-storage.md).
+Azure Backup chrání virtuální počítače služby Premium Storage. Azure Premium Storage představuje úložiště využívající disky SSD (solid-state drive) určené pro podporu úloh náročných na množství vstupně-výstupních operací. Služba Premium Storage je zajímavá pro úlohy virtuálních počítačů. Další informace o službě Premium Storage najdete v článku, [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../virtual-machines/windows/premium-storage.md).
 
 ### <a name="back-up-premium-storage-vms"></a>Zálohování virtuálních počítačů služby Premium Storage
 Během zálohování virtuálních počítačů služby Premium Storage vytvoří služba Backup v účtu Premium Storage dočasné pracovní umístění s názvem „AzureBackup-“. Velikost pracovního umístění odpovídá velikosti snímku bodu obnovení. Ujistěte se, že je v účtu služby Premium Storage dostatek volného místa pro toto dočasné pracovní umístění. Další informace najdete v článku věnovaném [omezení služby Premium Storage](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Po dokončení úlohy zálohování je pracovní umístění odstraněno. Cena úložiště použitého pro pracovní umístění je konzistentní s [Cenami Premium Storage](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
@@ -113,7 +113,7 @@ Azure Backup umožňuje kompletní obnovení virtuálního počítače se spravo
 ## <a name="what-are-the-features-of-each-backup-component"></a>Jaké jsou funkce jednotlivých komponent služby Backup?
 Následující části obsahují tabulky, které shrnují dostupnost nebo podporu různých funkcí v jednotlivých komponentách Azure Backup. Informace o další podpoře nebo podrobnosti najdete pod jednotlivými tabulkami.
 
-### <a name="storage"></a>Úložiště
+### <a name="storage"></a>Storage
 | Funkce | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |
 | --- | --- | --- | --- | --- |
 | Trezor služby Recovery Services |![Ano][green] |![Ano][green] |![Ano][green] |![Ano][green] |
@@ -197,19 +197,19 @@ Azure Backup má limit 9999 bodů obnovení (označovaných také jako záložn�
 |  | Agent Azure Backup | System Center DPM | Server Azure Backup | Zálohování virtuálních počítačů Azure IaaS |
 | --- | --- | --- | --- | --- |
 | Frekvence zálohování<br/> (do trezoru služby Recovery Services) |Tři zálohy za den |Dvě zálohy za den |Dvě zálohy za den |Jedna záloha za den |
-| Frekvence zálohování<br/> (na disk) |Neuvedeno |<li>Každých 15 minut pro SQL Server <li>Každou hodinu pro ostatní úlohy |<li>Každých 15 minut pro SQL Server <li>Každou hodinu pro ostatní úlohy</p> |Neuvedeno |
+| Frekvence zálohování<br/> (na disk) |Neuvedeno |<li>Každých 15 minut pro SQL Server <li>Každou hodinu pro ostatní úlohy |<li>Každých 15 minut pro SQL Server <li>Každou hodinu pro ostatní úlohy</p> |Nelze použít |
 | Možnosti uchovávání |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |Denně, týdně, měsíčně, ročně |
 | Maximální počet bodů obnovení na chráněnou instanci |9999|9999|9999|9999|
 | Maximální doba uchovávání |Závisí na četnosti zálohování |Závisí na četnosti zálohování |Závisí na četnosti zálohování |Závisí na četnosti zálohování |
-| Body obnovení na místním disku |Neuvedeno |<li>64 pro souborové servery,<li>448 pro aplikační servery |<li>64 pro souborové servery,<li>448 pro aplikační servery |Neuvedeno |
-| Body obnovení na pásku |Neuvedeno |Unlimited |Neuvedeno |Neuvedeno |
+| Body obnovení na místním disku |Nelze použít |<li>64 pro souborové servery,<li>448 pro aplikační servery |<li>64 pro souborové servery,<li>448 pro aplikační servery |Nelze použít |
+| Body obnovení na pásku |Nelze použít |Unlimited |Nelze použít |Nelze použít |
 
 ## <a name="what-is-a-protected-instance"></a>Co je chráněná instance
 Chráněná instance je obecný odkaz na počítač se systémem Windows, server (fyzický nebo virtuální) nebo databázi SQL, která byla nakonfigurovaná pro zálohování do Azure. Instance je chráněná v okamžiku, kdy pro příslušný počítač, server nebo databázi nakonfigurujete zásady zálohování a vytvoříte záložní kopii dat. Další kopie záložních dat pro tuto chráněnou instanci (používá se pro ně označení body obnovení) zvyšují objem využitého úložiště. Pro chráněnou instanci je možné vytvořit až 9999 bodů obnovení. Pokud bod obnovení odstraníte z úložiště, nebude se do celkového počtu 9999 bodů obnovení započítávat.
 Mezi běžné příklady chráněných instancí patří virtuální počítače, aplikační servery, databáze a osobní počítače s operačním systémem Windows. Příklad:
 
 * Virtuální počítač se spuštěnými prostředky infrastruktury hypervisoru Azure IaaS nebo Hyper-V. Hostovanými operačními systémy pro virtuální počítač může být Windows Server nebo Linux.
-* Aplikační server: Aplikačním serverem může být fyzický nebo virtuální počítač se systémem Windows Server a úlohy s daty, která je potřeba zálohovat. Mezi běžné úlohy patří Microsoft SQL Server, server Microsoft Exchange, server Microsoft SharePoint a role souborového serveru ve Windows Serveru. K zálohování těchto úloh potřebujete System Center Data Protection Manager (DPM) nebo Azure Backup Server.
+* Aplikační server: Aplikační server může být fyzický nebo virtuální počítač s Windows serverem a úlohy s daty, která je potřeba zálohovat. Mezi běžné úlohy patří Microsoft SQL Server, server Microsoft Exchange, server Microsoft SharePoint a role souborového serveru ve Windows Serveru. K zálohování těchto úloh potřebujete System Center Data Protection Manager (DPM) nebo Azure Backup Server.
 * Osobní počítač, pracovní stanice nebo přenosný počítač s operačním systémem Windows.
 
 

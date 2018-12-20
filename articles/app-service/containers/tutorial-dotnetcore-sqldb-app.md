@@ -15,20 +15,20 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5bfef1662ea23f3dfa1e01c91912f11e674e1e06
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fe6a1db295bc8fb1ab8e6c9d2d149be62871e733
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600170"
+ms.locfileid: "53629811"
 ---
-# <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Vytvoření webové aplikace .NET Core využívající databázi SQL ve službě Azure App Service v Linuxu
+# <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace .NET Core využívající SQL Database ve službě Azure App Service v Linuxu
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service ve _Windows_ je popsáno v tématu[Vytvoření webové aplikace .NET Core využívající SQL Database ve službě Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Nasazení do služby App Service v _Windows_, naleznete v tématu [sestavit aplikaci .NET Core využívající SQL Database ve službě Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md).
 >
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento kurz demonstruje postup při vytváření webové aplikace .NET Core a jejím připojení k databázi SQL. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service v Linuxu.
+[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento kurz ukazuje postupy při vytváření aplikace .NET Core a jejím připojení k databázi SQL. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service v Linuxu.
 
 ![aplikace spuštěná ve službě App Service v Linuxu](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -46,7 +46,7 @@ Naučíte se:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat .NET Core](https://www.microsoft.com/net/core/).
@@ -179,7 +179,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 Dále nastavte proměnnou `ASPNETCORE_ENVIRONMENT` aplikace na hodnotu _Production_. Toto nastavení vám umožňuje zjistit, jestli je aplikace spuštěná v Azure, protože v místním vývojovém prostředí používáte SQLite a v prostředí Azure používáte SQL Database.
 
-V následujícím příkladu se konfiguruje proměnná `ASPNETCORE_ENVIRONMENT` aplikace ve webové aplikaci Azure. Nahraďte zástupný symbol *\<app_name>*.
+Následující příklad nastaví `ASPNETCORE_ENVIRONMENT` nastavení aplikace, které v aplikaci Azure. Nahraďte zástupný symbol *\<app_name>*.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
@@ -250,9 +250,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Přechod do webové aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
 
-Ve webovém prohlížeči přejděte k nasazené webové aplikaci.
+Přejděte do nasazené aplikace pomocí webového prohlížeče.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -354,21 +354,21 @@ git commit -m "added done field"
 git push azure master
 ```
 
-Po dokončení operace `git push` přejděte do webové aplikace Azure a vyzkoušejte nové funkce.
+Jakmile `git push` dokončit, přejděte do aplikace Azure a vyzkoušejte si nové funkce.
 
-![Webová aplikace Azure po migraci Code First](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
+![Aplikace Azure po migraci Code First](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
 Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opětovném publikování aplikace .NET Core nedojde ke ztrátě existujících dat v databázi SQL. Migrace Entity Framework Core také změní jen datové schéma, ale existující data ponechá beze změny.
 
-## <a name="manage-your-azure-web-app"></a>Správa webové aplikace Azure
+## <a name="manage-your-azure-app"></a>Spravovat svou aplikaci Azure
 
-Přejděte na web [Azure Portal](https://portal.azure.com) k webové aplikaci, kterou jste vytvořili.
+Přejděte [webu Azure portal](https://portal.azure.com) a zobrazte aplikaci jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**, pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
+![Přechod do aplikace Azure na portálu](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení, na portálu se zobrazí vaše aplikace **přehled** stránky. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
@@ -387,7 +387,7 @@ Naučili jste se:
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal
 
-V dalším kurzu se dozvíte, jak namapovat vlastní název DNS na webovou aplikaci.
+Přejděte k dalšímu kurzu, kde se naučíte, jak namapovat vlastní název DNS do vaší aplikace.
 
 > [!div class="nextstepaction"]
 > [Mapování existujícího vlastního názvu DNS do služby Azure App Service](../app-service-web-tutorial-custom-domain.md)

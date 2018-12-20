@@ -1,6 +1,6 @@
 ---
 title: Skript Azure CLI ukázkový – vytvoření aplikace a nasazení kódu do přípravného slotu | Dokumentace Microsoftu
-description: Ukázkový skript Azure CLI – vytvoření webové aplikace a nasazení kódu do přípravného slotu
+description: Ukázkový skript Azure CLI – vytvoření aplikace služby App Service a nasazení kódu do přípravného slotu
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -16,16 +16,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3af61d7398e369fb392b9cf03820d71b935b6067
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 069dbcb5784414e63d093b7e38c399f358f830fb
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584944"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653777"
 ---
-# <a name="create-a-web-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Vytvoření webové aplikace a nasazení kódu do přípravného prostředí pomocí Azure CLI
+# <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Vytvoření aplikace služby App Service a nasazení kódu do přípravného prostředí pomocí Azure CLI
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci s dalším slotem nasazení „staging“ a pak do slotu „staging“ nasadí ukázkovou aplikaci.
+Tento ukázkový skript vytvoří aplikaci ve službě App Service s dalším slotem nasazení názvem "pracovní" a pak do slotu "staging" nasadí ukázkovou aplikaci.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,7 +36,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Create a web app and deploy code to a staging environment")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Create an app and deploy code to a staging environment")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -48,9 +48,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
 | [`az webapp deployment slot create`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az-webapp-deployment-slot-create) | Vytvoří slot nasazení. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží webovou aplikaci Azure k úložišti Git nebo Mercurial. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží k aplikaci služby App Service úložišti Git nebo Mercurial. |
 | [`az webapp deployment slot swap`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az-webapp-deployment-slot-swap) | Přepne zadaný slot nasazení do produkčního prostředí. |
 
 ## <a name="next-steps"></a>Další postup

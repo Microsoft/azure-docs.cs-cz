@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc34411cc27870dbd9c707a34ebf34b96c7253dc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3ebf450f4e84fed572307a18f20f36013e32c7a5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986113"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630695"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 V tomto kurzu si ukážeme základní postup rozšíření kapacity úložiště Windows Serveru s využitím Synchronizace souborů Azure. Přestože pro účely tohoto kurzu používáme virtuální počítač Azure s Windows Serverem, obvykle tento postup použijete u svých místních serverů. Pokud jste připraveni nasadit Synchronizaci souborů Azure ve vlastním prostředí, místo tohoto kurzu postupujte podle článku [Nasazení Synchronizace souborů Azure](storage-sync-files-deployment-guide.md).
@@ -163,14 +163,14 @@ Na virtuálním počítači s **Windows Serverem 2016 Datacenter** se automatick
 
 1. Zavřete **Průzkumníka** a **Správce serveru**.
 
-### <a name="download-the-azurerm-powershell-module"></a>Stažení modulu AzureRM PowerShell
-Dále na virtuálním počítači s **Windows Serverem 2016 Datacenter** nainstalujte na server **modul AzureRM PowerShell**.
+### <a name="download-the-azure-powershell-module"></a>Stáhnout modul Azure PowerShell
+Dále v **systému Windows Server 2016 Datacenter** virtuálního počítače, nainstalujte **modulu Azure PowerShell** na serveru.
 
 1. Na virtuálním počítači otevřete okno PowerShellu se zvýšenými oprávněními.
 1. Spusťte následující příkaz:
 
    ```powershell
-   Install-Module -Name AzureRM -AllowClobber
+   Install-Module -Name Az -AllowClobber
    ```
 
    > [!NOTE]
@@ -189,7 +189,7 @@ Dále na virtuálním počítači s **Windows Serverem 2016 Datacenter** nainsta
 
 1. Pokračujte v instalaci výběrem `Yes` nebo `Yes to All`.
 
-Modul `AzureRM` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
+Modul `Az` je kumulativní modul pro rutiny Azure PowerShellu. Jeho instalace stáhne všechny dostupné moduly Azure Resource Manageru a zpřístupní jejich rutiny k použití.
 
 Právě jste dokončili nastavování svého prostředí pro tento kurz a jste připraveni začít nasazovat **službu synchronizace úložiště**.
 
@@ -229,15 +229,15 @@ Agent Synchronizace souborů Azure je balíček ke stažení, který umožňuje 
 1. Vyberte **Povolit jednou** > **Spustit** > **Otevřít** a otevřete soubor.
 1. Pokud jste to ještě neudělali, zavřete okno PowerShellu.
 1. V **Průvodci instalací agenta synchronizace úložiště** přijměte výchozí hodnoty.
-1. Klikněte na **Nainstalovat**.
-1. Klikněte na **Dokončit**.
+1. Klikněte na tlačítko **nainstalovat**.
+1. Klikněte na tlačítko **Dokončit**.
 
 Na virtuální počítač s **Windows Serverem 2016 Datacenter** jste nasadili službu synchronizace Azure a nainstalovali agenta. Teď je potřeba virtuální počítač zaregistrovat ve **službě synchronizace úložiště**.
 
 ## <a name="register-windows-server"></a>Registrace Windows Serveru
 Registrací vašeho Windows Serveru ve službě synchronizace úložiště se vytvoří vztah důvěryhodnosti mezi vaším serverem (nebo clusterem) a službou synchronizace úložiště. Každý server je možné zaregistrovat pouze k jedné službě synchronizace úložiště a může se synchronizovat s ostatními servery a sdílenými složkami Azure přidruženými ke stejné službě synchronizace úložiště.
 
-Po dokončení instalace **agenta Synchronizace souborů Azure** by se mělo automaticky otevřít uživatelské rozhraní pro registraci serveru. Pokud ne, můžete ho otevřít ručně z umístění jeho souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+Po dokončení instalace **agenta Synchronizace souborů Azure** by se mělo automaticky otevřít uživatelské rozhraní pro registraci serveru. Pokud tomu tak není, lze jej otevřít ručně z umístění souboru: C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
 
 1. Jakmile se na virtuálním počítači otevře uživatelské prostředí pro registraci serveru, klikněte na **OK**.
 1. Začněte kliknutím na **Přihlásit se**.
@@ -304,7 +304,7 @@ Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a Windows Ser
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili základní postup rozšíření kapacity úložiště Windows Serveru s využitím Synchronizace souborů Azure. Na následujícím odkazu najdete podrobnější přehled plánování nasazení Synchronizace souborů Azure.
 
 > [!div class="nextstepaction"]

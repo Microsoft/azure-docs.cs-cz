@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 1c2a61ba936fa86bb3acb560909b29cda762693c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 44ad80732d1e874ccec4ecc376b9ce9b513a3aa9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166570"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652367"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu s Apache Kafka v HDInsight
 
@@ -37,9 +37,9 @@ V tomto kurzu se naučíte:
 
 * Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologií, které používají [tok](https://storm.apache.org/releases/current/flux.html) rozhraní framework. Další informace naleznete v části [Vytvoření topologie Storm v Javě](./storm/apache-storm-develop-java-topology.md).
+* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologií, které používají [Apache Storm tok](https://storm.apache.org/releases/current/flux.html) rozhraní framework. Další informace najdete v tématu [vytvoření topologie Apache Storm v jazyce Java](./storm/apache-storm-develop-java-topology.md) dokumentu.
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
+* [Java JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -54,7 +54,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
     * `JAVA_HOME\bin` (nebo odpovídající cestu).
     * Adresář, kde je nainstalovaný Maven.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Storm ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve službě Azure Virtual Network, což umožňuje přímou komunikaci clusteru Storm s clusterem Kafka.
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
@@ -124,7 +124,7 @@ V tomto kurzu se využívají dvě topologie:
 
 * Kafka-reader: Čte data z platformy Kafka a uloží jej do úložiště HDFS kompatibilní soubor pro Storm cluster.
 
-    > [!WARNING] 
+    > [!WARNING]  
     > Pokud chcete umožnit Stormu práci s úložištěm kompatibilním s HDFS, které používá HDInsight, je nutná akce skriptu. Skript nainstaluje pro Storm několik souborů jar do cesty `extlib`. Šablona v tomto kurzu při vytváření clusteru tento skript použije automaticky.
     >
     > Pokud nepoužijete k vytvoření clusteru Storm šablonu v tomto dokumentu, pak musíte akci skriptu použít na cluster ručně.
@@ -141,7 +141,7 @@ Pro tyto topologie jsou za běhu nastaveny následující parametry:
 
 * `${kafka.zookeeper.hosts}`: Hostitelé, Zookeeper, na kterých běží v clusteru Kafka.
 
-* `${hdfs.url}`: Adresu URL souboru systému HDFSBolt komponenty. Určuje, jestli se data zapisují do účtu úložiště Azure Storage nebo do Azure Data Lake Store.
+* `${hdfs.url}`: Adresu URL souboru systému HDFSBolt komponenty. Určuje, jestli data se zapisují do účtu Azure Storage nebo Azure Data Lake Storage.
 
 * `${hdfs.write.dir}`: Adresář, který data se zapisují do.
 
@@ -373,7 +373,7 @@ Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro př
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |
 | `kafka.topic` | Téma Kafka, které topologie používají. |
 | `hdfs.write.dir` | Adresář, do kterého topologie Kafka-reader zapisuje. |
-| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb:///`. Pro Azure Data Lake Store použijte hodnotu `adl:///`. |
+| `hdfs.url` | Systém souborů používaný clusterem Storm. Pro účty úložiště Azure Storage použijte hodnotu `wasb:///`. Azure Data Lake Storage, použijte hodnotu `adl:///`. |
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
@@ -383,7 +383,7 @@ Následující diagram znázorňuje tok komunikace mezi Stormem a systémem Kafk
 
 ![Diagram clusterů Storm a Kafka ve virtuální síti Azure](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Další služby v clusteru, jako jsou SSH a [Apache Ambari](https://ambari.apache.org/) přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Storm v rámci této sítě použijte následující postup:
@@ -400,7 +400,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     * Kafka v HDInsight verze 3.6 (tři pracovní uzly)
     * Storm v HDInsight verze 3.6 (tři pracovní uzly)
 
-  > [!WARNING]
+  > [!WARNING]  
   > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
 2. Podle následujícího návodu vyplňte položky v části **Vlastní nasazení**:
@@ -425,7 +425,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
 4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**.
 
-> [!NOTE]
+> [!NOTE]  
 > Vytvoření clusterů může trvat až 20 minut.
 
 ## <a name="build-the-topology"></a>Vytvoření topologie
@@ -463,7 +463,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Následující příklad Bash předpokládá, že `$CLUSTERNAME` obsahuje název clusteru __Kafka__. Dále předpokládá, že nainstalovaná verze [jq](https://stedolan.github.io/jq/) je 1.5 nebo vyšší. Po zobrazení výzvy zadejte heslo účtu pro přihlášení ke clusteru.
 
     ```bash
@@ -474,7 +474,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
         wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > V clusteru sice můžete mít víc než dva zprostředkovatelské hostitele, není však nutné poskytovat klientům jejich úplný seznam. Jeden nebo dva jsou postačující.
 
 2. Pomocí jedné z následujících metod zjistěte hostitele Zookeeper pro systém __Kafka__ v clusteru HDInsight:
@@ -490,7 +490,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Následující příklad Bash předpokládá, že `$CLUSTERNAME` obsahuje název clusteru __Kafka__. Dále předpokládá instalaci [jq](https://stedolan.github.io/jq/). Po zobrazení výzvy zadejte heslo účtu pro přihlášení ke clusteru.
 
     ```bash
@@ -501,7 +501,7 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
 
         zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Ačkoli máte více než dva uzly Zookeeper, není nutné poskytovat klientům úplný seznam jejich hostitelů. Jeden nebo dva jsou postačující.
 
     Uložte tuto hodnotu, bude se hodit později.
@@ -512,8 +512,8 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-    > [!IMPORTANT]
-    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Chcete-li použít tuto topologii s cluster Storm, který používá Data Lake Store, změňte tuto hodnotu z `wasb` na `adl`.
+    > [!IMPORTANT]  
+    > Položka `hdfs.url` je konfigurována pro cluster, který používá účet úložiště Azure Storage. Chcete-li tuto topologii použijte, pokud se cluster Storm, který používá Data Lake Storage, změňte tuto hodnotu z `wasb` k `adl`.
 
 4. Uložte soubor `dev.properties` a následujícím příkazem ho nahrajte do clusteru **Storm**:
 
@@ -630,7 +630,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko __Další__ (...) na pravé straně seznamu.
 3. Vyberte __Odstranit skupinu prostředků__ a potvrďte tuto akci.
 
-> [!WARNING]
+> [!WARNING]  
 > Účtování clusteru HDInsight začne vytvořením clusteru a skončí jeho odstraněním. Účtuje se poměrnou částí po minutách, takže byste cluster měli odstranit vždy, když už se nepoužívá.
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.

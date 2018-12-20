@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/06/2018
-ms.openlocfilehash: 5e0b2fff7ca5bc7f5856a6de05e18b99bbf8b938
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 994f7d300b1e9a76e109e73467a2e7f0d4c1584d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600824"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652111"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Použití Visual Studio Code k připojení a dotazování Azure SQL Database
 
-[Visual Studio Code](https://code.visualstudio.com/docs) je grafický editor kódu pro Linux, macOS a Windows. Podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse. Tento rychlý start ukazuje použití Visual Studio Code k připojení k databázi Azure SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizace a odstranění dat.
+[Visual Studio Code](https://code.visualstudio.com/docs) je grafický editor kódu pro Linux, macOS a Windows. Podporuje rozšíření, včetně [rozšíření mssql](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a SQL Data Warehouse. V tomto rychlém startu použijete Visual Studio Code k připojení k databázi Azure SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +66,7 @@ Ve Visual Studio Code, nastavte jazykový režim **SQL** k povolili příkazy ms
 
 1. Otevřete nové okno nástroje Visual Studio Code. 
 
-2. Stisknutím klávesy **CTRL**+**N**. Otevře se nový soubor ve formátu prostého textu. 
+2. Stisknutím klávesy **Ctrl**+**N**. Otevře se nový soubor ve formátu prostého textu. 
 
 3. Vyberte **prostý Text** v pravém dolním rohu stavového řádku.
 
@@ -77,16 +77,16 @@ Ve Visual Studio Code, nastavte jazykový režim **SQL** k povolili příkazy ms
 Pomocí nástroje Visual Studio Code navažte připojení k serveru služby Azure SQL Database.
 
 > [!IMPORTANT]
-> Než budete pokračovat, ujistěte se, že máte vašeho serveru a přihlašovací informace připravené. Jakmile začnete zadávat informace o profilu připojení, je-li změnit váš výběr z Visual Studio Code, budete muset restartovat vytváření profilu.
+> Než budete pokračovat, ujistěte se, že máte serveru a informace, které jsou připravené na přihlašovací. Jakmile začnete zadávat informace o profilu připojení, je-li změnit váš výběr z Visual Studio Code, budete muset restartovat vytváření profilu.
 >
 
 1. Ve Visual Studio Code, stiskněte klávesu **Ctrl + Shift + P** (nebo **F1**) otevřete paletu příkazů.
 
-2. Vyberte **MS SQL: připojit** a stiskněte klávesu **Enter**.
+2. Vyberte **MS SQL: připojit** a zvolte **Enter**.
 
 3. Vyberte **vytvoření profilu připojení**.
 
-4. Postupujte podle výzev a zadejte vlastnosti připojení pro nový profil. Po zadání všech hodnot, stiskněte klávesu **Enter** pokračujte. 
+4. Postupujte podle výzev a zadejte vlastnosti připojení pro nový profil. Po zadání všech hodnot, zvolte **Enter** pokračujte. 
 
    | Vlastnost       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- | 
@@ -102,7 +102,7 @@ Pomocí nástroje Visual Studio Code navažte připojení k serveru služby Azur
 
 ## <a name="query-data"></a>Dotazování dat
 
-Pomocí následujících [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) příkazu jazyka Transact-SQL k dotazu na top 20 produktů podle kategorie.
+Spusťte následující příkaz [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) příkazu jazyka Transact-SQL k dotazu na top 20 produktů podle kategorie.
 
 1. V okně editoru vložte následující dotaz SQL.
 
@@ -119,7 +119,7 @@ Pomocí následujících [vyberte](https://msdn.microsoft.com/library/ms189499.a
 
 ## <a name="insert-data"></a>Vložení dat
 
-Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.aspx) příkazu Transact-SQL pro přidání nového produktu do `SalesLT.Product` tabulky.
+Spusťte následující příkaz [vložit](https://msdn.microsoft.com/library/ms174335.aspx) příkazu Transact-SQL pro přidání nového produktu do `SalesLT.Product` tabulky.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -147,7 +147,7 @@ Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.a
 
 ## <a name="update-data"></a>Aktualizace dat
 
-Pomocí následujících [aktualizovat](https://msdn.microsoft.com/library/ms177523.aspx) příkazů jazyka Transact-SQL. doje k aktualizaci přidaný produkt.
+Spusťte následující příkaz [aktualizovat](https://msdn.microsoft.com/library/ms177523.aspx) příkazů jazyka Transact-SQL. doje k aktualizaci přidaný produkt.
 
 1. Nahraďte předchozí dotaz s touto položkou:
 
@@ -161,7 +161,7 @@ Pomocí následujících [aktualizovat](https://msdn.microsoft.com/library/ms177
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Pomocí následujících [odstranit](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) příkazu jazyka Transact-SQL k odstranění nového produktu.
+Spusťte následující příkaz [odstranit](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) příkazu jazyka Transact-SQL k odstranění nového produktu.
 
 1. Nahraďte předchozí dotaz s touto položkou:
 

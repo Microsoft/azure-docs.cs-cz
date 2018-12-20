@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: cc94e309db3fd0e97e06b5be5884a0b6e7337cea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 236a4e4f79e6da89154e1e52bb9f45daf3a54d59
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158971"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632039"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Azure CLI
+# <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -87,7 +87,7 @@ Informace o připojení sdílené složky s využitím protokolu SMB najdete v n
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Použití sdílené složky Azure se souborovým protokolem REST 
-Se souborovým protokolem REST můžete pracovat přímo (tedy zpracovávat volání REST HTTP ručně), ale nejběžnějším způsobem, jak používat souborový protokol REST, je použít Azure CLI, [modul Azure RM PowerShellu](storage-how-to-use-files-powershell.md) nebo sadu SDK služby Azure Storage. Všechny tyto metody poskytují praktickou obálku souborového protokolu REST v libovolném skriptovacím nebo programovacím jazyce.  
+Je možné pracovat přímo s protokolu REST souboru přímo (to znamená handcrafting REST HTTP volá sami), ale nejběžnější způsob pro použití REST soubor protokolu je použít rozhraní příkazového řádku Azure [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), nebo Azure Sada SDK úložiště, které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru.  
 
 Předpokládáme, že ve většině případů použití služby Soubory Azure budete chtít se sdílenými složkami Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
@@ -95,7 +95,7 @@ Předpokládáme, že ve většině případů použití služby Soubory Azure b
 - Potřebujete spustit skript nebo aplikaci z klienta, který nedokáže připojit sdílené složky SMB, jako jsou například místní klienti s blokovaným portem 445.
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
 
-Následující příklady ukazují, jak pomocí modulu AzureRM PowerShellu manipulovat se sdílenou složkou Azure s využitím souborového protokolu REST. 
+Následující příklady ukazují, jak používat rozhraní příkazového řádku Azure k manipulaci s vaší sdílenou složku Azure pomocí REST souboru protokolu. 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
 Pomocí příkazu [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create) vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure:
@@ -293,7 +293,7 @@ Další možností je odebrat prostředky jednotlivě.
         --yes
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Co je služba Soubory Azure?](storage-files-introduction.md)

@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 12e6b3a3fe790183a35c71fbb87243890ad22236
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
-ms.translationtype: HT
+ms.openlocfilehash: f295245cc14000e48cb3db55dc291edf02bb660e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944834"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634384"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí webu Azure Portal 
+# <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Rychlý start: Vytváření a správě sdílených složek Azure pomocí webu Azure portal 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí webu [Azure Portal](https://portal.azure.com/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -45,7 +45,7 @@ Informace o připojení sdílené složky s využitím protokolu SMB najdete v n
 - [macOS](storage-how-to-use-files-mac.md)
 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Použití sdílené složky Azure z webu Azure Portal
-Všechny požadavky provedené přes Azure Portal se provedou pomocí souborového rozhraní REST API, které umožňuje vytvářet, upravovat a odstraňovat soubory a adresáře na klientech bez přístupu k protokolu SMB. Se souborovým protokolem REST můžete pracovat přímo (tedy zpracovávat volání REST HTTP ručně), ale nejběžnějším způsobem (mimo použití webu Azure Portal), jak používat souborový protokol REST, je použít [modul Azure RM PowerShellu](storage-how-to-use-files-powershell.md), [Azure CLI](storage-how-to-use-files-cli.md) nebo sadu SDK služby Azure Storage. Všechny tyto metody poskytují praktickou obálku souborového protokolu REST v libovolném skriptovacím nebo programovacím jazyce. 
+Všechny požadavky provedené přes Azure Portal se provedou pomocí souborového rozhraní REST API, které umožňuje vytvářet, upravovat a odstraňovat soubory a adresáře na klientech bez přístupu k protokolu SMB. Je možné pracovat přímo s protokolu REST souboru přímo (to znamená, handcrafting REST HTTP volá sami), ale nejběžnější způsob (nad rámec pomocí webu Azure portal) k použití služby REST soubor protokolu je použít [modulu Azure PowerShell](storage-how-to-use-files-powershell.md), [rozhraní příkazového řádku Azure](storage-how-to-use-files-cli.md), nebo Azure Storage SDK, které poskytují dobrý obálku protokolu REST souboru skriptovací a programovací jazyk podle vašeho výběru. 
 
 Předpokládáme, že ve většině případů použití služby Soubory Azure budete chtít se sdílenými složkami Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
@@ -82,7 +82,7 @@ Kliknutím pravým tlačítkem na soubor, který jste nahráli, můžete stáhno
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Co je služba Soubory Azure?](storage-files-introduction.md)

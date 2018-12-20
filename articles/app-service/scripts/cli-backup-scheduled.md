@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Vytvoření naplánovaného zálohování webové aplikace | Microsoft Docs
-description: Ukázkový skript Azure CLI – Vytvoření naplánovaného zálohování webové aplikace
+title: Skript Azure CLI ukázkový – vytvoření naplánovaného zálohování pro aplikace | Dokumentace Microsoftu
+description: Skript Azure CLI ukázkový – vytvoření naplánovaného zálohování aplikace
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -14,16 +14,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 8bfe6030d5573c35f00043fedc1db54f15b34475
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: b5f75ded0b51b78d56354bf97b5ebb0488022509
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584946"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635734"
 ---
-# <a name="create-a-scheduled-backup-for-a-web-app-using-cli"></a>Vytvoření naplánovaného zálohování webové aplikace pomocí rozhraní příkazového řádku
+# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Vytvoření naplánovaného zálohování pro aplikaci služby App Service pomocí rozhraní příkazového řádku
 
-Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak pro ni vytvoří naplánované zálohování. 
+Tento ukázkový skript vytvoří aplikaci ve službě App Service se souvisejícími prostředky a pak pro ni vytvoří naplánované zálohování. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -33,7 +33,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-scheduled/backup-scheduled.sh?highlight=3-7 "Create a scheduled backup for a web app")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-scheduled/backup-scheduled.sh?highlight=3-7 "Create a scheduled backup for an app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -48,10 +48,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | Vytvoří kontejner úložiště Azure. |
 | [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | Vygeneruje token SAS pro kontejner úložiště Azure.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webovou aplikaci Azure. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | Nakonfiguruje nový plán zálohování webové aplikace. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Zobrazí plán zálohování webové aplikace. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh webové aplikace. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | Nakonfiguruje nový plán zálohování pro aplikaci služby App Service. |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Zobrazí plán zálohování pro aplikaci služby App Service. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Získá seznam záloh pro aplikaci služby App Service. |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace v Pythonu v Linuxu – Azure App Service | Dokumentace Microsoftu
+title: Vytvoření aplikace v Pythonu v Linuxu – služba Azure App Service | Dokumentace Microsoftu
 description: Během několika minut můžete nasadit svou první aplikaci Hello world v Pythonu ve službě Azure App Service v Linuxu.
 services: app-service\web
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d9d6f3549ec5db914536400fac53de60f2ad4a94
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3af8f57cab6e420a7c7515bdf32b7ef382441cf9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261846"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633143"
 ---
-# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Vytvoření webové aplikace v Pythonu ve službě Azure App Service v Linuxu (verze Preview)
+# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Vytvoření aplikace v Pythonu v Azure App Service v Linuxu (Preview)
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. Tento rychlý start ukazuje, jak nasadit aplikaci v Pythonu na integrovanou image Pythonu (verze Preview) ve službě App Service v Linuxu pomocí [Azure CLI](/cli/azure/install-azure-cli).
 
@@ -85,17 +85,17 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-Přejděte na web a zobrazte nově vytvořenou webovou aplikaci s použitím integrované image. Nahraďte _&lt;app name>_ názvem vaší webové aplikace.
+Přejděte na web a zobrazte nově vytvořenou aplikaci s použitím integrované image. Nahraďte  _&lt;název aplikace >_ názvem vaší aplikace.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Vaše nová webová aplikace by měla vypadat takto:
+Zde je, jak by měla vypadat nové aplikace:
 
-![Prázdná stránka webové aplikace](media/quickstart-php/app-service-web-service-created.png)
+![Stránka prázdné aplikace](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -129,7 +129,7 @@ V prohlížeči zadejte adresu nasazené aplikace.
 http://<app_name>.azurewebsites.net
 ```
 
-Ukázkový kód Pythonu se spustí ve webové aplikaci s použitím integrované image.
+Vzorový kód Pythonu je spuštěný ve službě App Service v Linuxu s použitím integrované image.
 
 ![Ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-world-in-browser.png)
 
@@ -154,15 +154,15 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-new-azure-web-app"></a>Správa vaší nové webové aplikace Azure
+## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
+Přejděte <a href="https://portal.azure.com" target="_blank">webu Azure portal</a> ke správě aplikace, které jste vytvořili.
 
-V levé nabídce klikněte na **App Services** a pak klikněte na název vaší webové aplikace Azure.
+V levé nabídce klikněte na tlačítko **App Services**a pak klikněte na název aplikace Azure.
 
-![Navigace portálem k webové aplikaci Azure](./media/quickstart-python/app-service-list.png)
+![Přechod do aplikace Azure na portálu](./media/quickstart-python/app-service-list.png)
 
-Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
+Se zobrazí stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění.
 
 ![Stránka služby App Service na webu Azure Portal](media/quickstart-python/app-service-detail.png)
 
@@ -181,7 +181,7 @@ Integrovaná image v Pythonu v rámci služby App Service v Linuxu je aktuálně
 > [Konfigurace vlastního spouštěcího příkazu](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
-> [Řešení potíží](how-to-configure-python.md#troubleshooting)
+> [Odstraňování potíží](how-to-configure-python.md#troubleshooting)
 
 > [!div class="nextstepaction"]
 > [Použití vlastní image](tutorial-custom-docker-image.md)
