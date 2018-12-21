@@ -27,7 +27,7 @@ Standardní hlasy jsou k dispozici v těchto oblastech:
 
 | Oblast | Koncový bod |
 |--------|----------|
-| USA – západ | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
+| Západní USA | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | Západní USA 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 |
 | USA – východ | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | USA – východ 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |

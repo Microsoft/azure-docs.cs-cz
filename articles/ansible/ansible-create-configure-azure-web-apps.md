@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: a594d6704b9fa76c212719f0ac423942e9f57d7a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4a772977130f5679da2d879cc12738b89be09f1d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604027"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726727"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Vytvoření webové aplikace Azure App Service web apps pomocí Ansible
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (nebo jenom Web Apps) hostitele webové aplikace, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce &mdash; .NET, .NET Core, Java, Ruby, Node.js, PHP nebo Python.
@@ -93,7 +93,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ## <a name="create-an-app-service-by-using-traffic-manager"></a>Vytvoření služby App Service pomocí služby Traffic Manager
 Pomocí služby [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) můžete řídit způsob distribuce požadavků z webových klientů do aplikací ve službě Azure App Service. Pokud do profilu služby Azure Traffic Manager přidáte koncové body služby App Service, Traffic Manager bude sledovat stav vašich aplikací App Service. Mezi stavy patří Spuštěno, Zastaveno nebo Odstraněno. Traffic Manager se pak může rozhodnout, do kterého z těchto koncových bodů se má směrovat provoz.
 
-Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
+Ve službě App Service se aplikace spouští v rámci [plánu služby App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
 ). Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace. Plán služby App Service a webovou aplikaci můžete spravovat v různých skupinách.
 
 Tato část představuje ukázkový playbook Ansible, který definuje následující prostředky:

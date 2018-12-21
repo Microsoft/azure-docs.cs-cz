@@ -8,29 +8,27 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 171d6c6a972d6fa3eb2e96ceacb75dd2fce1eb92
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f5b33f0710070ff71ab52a1798773fe97965ef34
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074891"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719060"
 ---
-# <a name="quickstart-recognize-and-transcribe-speech-using-the-speech-sdk-and-net-framework-windows"></a>Rychlý start: Rozpoznávání a přepis řeči s využitím sady Speech SDK a rozhraní .NET Framework (Windows)
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro rozhraní .NET Framework (Windows)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Pomocí této příručky vytvoříte konzolovou aplikaci pro převod řeči na text s využitím rozhraní .NET Framework pro Windows a sady Speech SDK. Po dokončení můžete použít mikrofon vašeho počítače a v reálném čase přepisovat řeč na text.
-
-K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s povolenou službou Microsoft Speech. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started).
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto projektu budete potřebovat:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Klíč předplatného pro službu Speech
+* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 * Přístup k mikrofonu vašeho počítače
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
@@ -63,16 +61,12 @@ K dokončení tohoto projektu budete potřebovat:
 
     ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Výstup konzoly po úspěšném rozpoznání")
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Kód je k dispozici ve složce `quickstart/csharp-dotnet-windows`.
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#](how-to-recognize-intents-from-speech-csharp.md)
+> [Prozkoumejte C# ukázky na Githubu](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

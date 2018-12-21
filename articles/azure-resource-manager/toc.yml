@@ -20,6 +20,8 @@ items:
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: Vytvoření několika instancí
     href: resource-manager-tutorial-create-multiple-instances.md
+  - name: Přesunutí prostředků
+    href: resource-manager-tutorial-move-resources.md
   - name: Nastavení pořadí nasazování prostředků
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: Použití podmínek
@@ -44,9 +46,10 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: Koncepty
   items:
-  - name: Struktura šablon
-    href: resource-group-authoring-templates.md
+  - name: Šablony
     items:
+    - name: Struktura souborů šablon
+      href: resource-group-authoring-templates.md
     - name: Parametry
       href: resource-manager-templates-parameters.md
     - name: Proměnné
@@ -57,17 +60,21 @@ items:
       href: resource-manager-templates-resources.md
     - name: Výstupy
       href: resource-manager-templates-outputs.md
+  - name: Doprovodné materiály
+    items:
+    - name: Osvědčené postupy pro šablony
+      href: template-best-practices.md
+    - name: Zásady správného řízení pro předplatná
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
+      maintainContext: true
+    - name: Šablony pro konzistenci cloudu
+      href: templates-cloud-consistency.md
   - name: Poskytovatelé a typy prostředků
     href: resource-manager-supported-services.md
   - name: Skupiny pro správu
     href: management-groups-overview.md
   - name: Deployment Manager
     href: deployment-manager-overview.md
-  - name: Zásady správného řízení pro předplatná
-    href: /azure/architecture/cloud-adoption-guide/subscription-governance
-    maintainContext: true
-  - name: Šablony pro konzistenci cloudu
-    href: templates-cloud-consistency.md
   - name: Režimy nasazení
     href: deployment-modes.md
   - name: Odstranění prostředku
@@ -235,9 +242,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 47766ce1bd0250c1eeaa269c4bc2436a2e117f02
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 71ea002b3f29952521a79ef5165e5432a48e72d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600940"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714453"

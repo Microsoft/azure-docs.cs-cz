@@ -76,7 +76,7 @@ Následující tabulka uvádí příklad, jak jsou definované příklad virtuá
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |
 |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |
+| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |
 
 ## <a name="classicvnet"></a>Oddíl 1 – konfigurace nastavení klasické virtuální sítě
@@ -175,7 +175,7 @@ Před vytvořením brány virtuální sítě, musíte nejprve vytvořit podsíť
 
 | Virtual Network | Adresní prostor | Oblast | Se připojí k místní síťové lokality |Veřejné IP adresy brány|
 |:--- |:--- |:--- |:--- |:--- |
-| ClassicVNet |(10.0.0.0/24) |USA – západ | RMVNetLocal (192.168.0.0/16) |Veřejnou IP adresu, která je přiřazena ClassicVNet brány|
+| ClassicVNet |(10.0.0.0/24) |Západní USA | RMVNetLocal (192.168.0.0/16) |Veřejnou IP adresu, která je přiřazena ClassicVNet brány|
 | RMVNet | (192.168.0.0/16) |USA – východ |ClassicVNetLocal (10.0.0.0/24) |Veřejnou IP adresu, která je přiřazena RMVNet brány.|
 
 Brána místní sítě určuje rozsah adres a veřejnou IP adresu přidružené k vaší klasickou virtuální sítí a svou bránu virtuální sítě. Pokud byste tyto kroky jako cvičení, podívejte se na ukázkové hodnoty.

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: wolfma
-ms.openlocfilehash: ff192377b94a9b3af65089f51e4fdef39bbb889d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d741550fc64ef7544e33304f8608ad6e6ee3426e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605734"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723637"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
@@ -122,23 +122,19 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
    ./helloworld
    ```
 
-1.  V okně konzoly se zobrazí výzva požadující, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vyslovená řeč se přenese do služby Speech a přepíše na text, který se zobrazí ve stejném okně.
+1.  V okně konzoly se zobrazí výzva požadující, abyste něco řekli. Vyslovte anglickou frázi nebo větu. Vaše řeč se přenese do služby Speech a přepíše na text, který se zobrazí ve stejném okně.
 
    ```text
    Say something...
    We recognized: What's the weather like?
    ```
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/cpp-linux`.
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C++](how-to-recognize-intents-from-speech-cpp.md)
+> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

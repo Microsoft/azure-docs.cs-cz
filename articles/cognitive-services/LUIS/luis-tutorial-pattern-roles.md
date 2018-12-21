@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d789954c0ebc71f88fb434430de5b5076ca6c246
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094402"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713710"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
 
@@ -29,7 +29,7 @@ Jméno nového zaměstnance (Billy Patterson) ještě není součástí seznamu 
 
 Nového zaměstnance s rodinou je teď potřeba přesunout z aktuálního města do města, kde sídlí fiktivní společnost. Protože může nový zaměstnanec pocházet z libovolného města, je potřeba zjistit umístění. Seznam sad, jako například seznam entity, by nefungoval, protože to by dovolovalo extrahovat pouze města, která tento seznam obsahuje.
 
-Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. Entita **NewEmployeeRelocation** je jednoduchá entita obsahující dvě role: **NewEmployeeReloOrigin** and **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
+Názvy rolí spojených s městem původu a cílovým městem musejí být jedinečná napříč všemi entitami. Snadný způsob, jak zajistit, aby byly role jedinečné, je spojit tyto role s entitou, která je obsahuje, pomocí strategie vytváření názvů. **NewEmployeeRelocation** entita je jednoduchou entitu s dvě role: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**. Relo je zkráceně relokace (přemístění).
 
 Protože má ukázková promluva `Move new employee Robert Williams from Sacramento and San Francisco` pouze strojově naučené entity, je důležité poskytnout záměru dostatek ukázkových promluv, aby se daly entity určit.  
 
@@ -57,7 +57,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

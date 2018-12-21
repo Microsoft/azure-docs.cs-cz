@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: chlandsi
-ms.openlocfilehash: 824fa5ceb5828394fedfe7af8bf48af2980160d9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606312"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718108"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávat řeč v Objective-C v iOS pomocí sady SDK služby řeči
 
@@ -99,10 +99,7 @@ Sada Speech SDK v současné době podporuje pouze 64bitové platformy iOS.
 
 1. Po kliknutí na tlačítko „Recognize (Microphone)“ (Rozpoznat – mikrofon) v aplikaci a vyslovení několika slov by se ve spodní části obrazovky měl zobrazit vyslovený text.
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/objectivec-ios`.
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získejte naše ukázky](speech-sdk.md#get-the-samples)
+> [Prozkoumejte ukázky jazyka Objective-C na Githubu](https://aka.ms/csspeech/samples)

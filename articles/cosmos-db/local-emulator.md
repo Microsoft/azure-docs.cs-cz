@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 334396b99609ea52085e36ee2740583e0957c3a4
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 12f08ad67025a3a791c021005fc82c8743b37c9d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600025"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720371"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -34,7 +34,7 @@ ms.locfileid: "53600025"
 
 Emulátor služby Azure Cosmos DB zajistí místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje. Pomocí emulátoru služby Azure Cosmos DB můžete vyvíjet a testovat aplikace místně bez vytváření předplatného Azure a bez jakýchkoli nákladů. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
 
-V tuto chvíli Průzkumník dat v emulátoru plně podporuje pouze kolekce rozhraní SQL API a kolekce MongoDB. Kontejnery Table, Graph a Cassandra nejsou plně podporovány.
+V tuto chvíli v Průzkumníku dat se spustila v emulátoru pouze plně podporuje klienty pro rozhraní SQL API a MongoDB API. Klienti pro tabulky, Graph a Cassandra nejsou plně podporované.
 
 Tento článek se zabývá následujícími úkony:
 
@@ -57,7 +57,7 @@ Přestože je emulace služby Azure Cosmos DB věrná, implementace emulátoru s
 ## <a name="differences-between-the-emulator-and-the-service"></a>Rozdíly mezi emulátorem a službou
 Vzhledem k tomu, že emulátor služby Azure Cosmos DB poskytuje emulované prostředí běžící na místní pracovní stanici vývojáře, existují některé rozdíly ve funkčnosti mezi emulátorem a účtem služby Azure Cosmos DB v cloudu:
 
-* V současné době Průzkumník dat v emulátoru podporuje pouze kolekce rozhraní SQL API a kolekce MongoDB. Rozhraní API Table, Graph a Cassandra nejsou zatím podporovány.
+* Průzkumník dat se spustila v emulátoru teď podporuje klienty pro rozhraní SQL API a MongoDB API. Klienti pro tabulky, Graph a rozhraní Cassandra API se zatím nepodporují.
 * Emulátor služby Azure Cosmos DB podporuje pouze jeden pevný účet a známý hlavní klíč. Opětovné generování klíče není v emulátoru služby Azure Cosmos DB možné.
 * Emulátor služby Azure Cosmos DB není škálovatelná služba a nebude podporovat velké množství kolekcí.
 * Emulátor služby Azure Cosmos DB nepodporuje simulaci různých [úrovní konzistence služby Azure Cosmos DB](consistency-levels.md).
@@ -125,14 +125,14 @@ Emulátor můžete spustit v místní síti. Pokud chcete povolit přístup k s�
 Jestliže chcete povolit přístup k síti poprvé, měli byste vypnout emulátor a vymazat datový adresář emulátoru (C:\ Users\uživatelské_jméno\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Vývoj v emulátoru
-Jakmile máte v počítači spuštěný emulátor služby Azure Cosmos DB, můžete k interakci s emulátorem použít libovolnou podporovanou sadu [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo rozhraní [REST API služby Azure Cosmos DB](/rest/api/cosmos-db/). Emulátor služby Azure Cosmos DB také zahrnuje integrované Průzkumník dat, která umožňuje vytvářet kolekce pro rozhraní API Azure Cosmos DB pro SQL, MongoDB a zobrazení a úpravám dokumentů, aniž byste museli psát jakýkoli kód.
+Jakmile máte v počítači spuštěný emulátor služby Azure Cosmos DB, můžete k interakci s emulátorem použít libovolnou podporovanou sadu [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) nebo rozhraní [REST API služby Azure Cosmos DB](/rest/api/cosmos-db/). Emulátor služby Azure Cosmos DB také zahrnuje integrované Průzkumník dat, která vám umožní vytvořit kolekce pro rozhraní SQL API nebo Cosmos DB pro rozhraní Mongodb API a zobrazení a úpravám dokumentů, aniž byste museli psát jakýkoli kód.
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
         new Uri("https://localhost:8081"),
         "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
-Pokud používáte [podporu protokolů služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), použijte následující připojovací řetězec:
+Pokud používáte [služby Azure Cosmos DB při přenosu podpora protokolů pro MongoDB API](mongodb-introduction.md), použijte následující připojovací řetězec:
 
     mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
 
@@ -151,7 +151,7 @@ Pokud chcete získat certifikát pro použití s jazyky a moduly runtime, které
 
 ![Certifikát SSL místního emulátoru služby Azure Cosmos DB](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
-Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Jakmile je certifikát importován do úložiště certifikátů, budou se aplikace Javy a MongoDB moci připojit k emulátoru služby Azure Cosmos DB.
+Certifikát X.509 lze importovat do úložiště certifikátů Javy podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store). Po importu certifikátu do úložiště certifikátů, klienti pro SQL a rozhraní MongoDB API budou moci připojit k emulátoru služby Azure Cosmos DB.
 
 Při připojování k emulátoru ze sad SDK Pythonu a Node.js je zakázáno ověřování SSL.
 

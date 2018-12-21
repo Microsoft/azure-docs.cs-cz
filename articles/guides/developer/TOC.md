@@ -36,7 +36,7 @@
 
 # Koncepty
 ## [Fakturace a předplatná](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [Porovnání hostingů](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [Porovnání hostingů](https://docs.microsoft.com/azure/app-service/overview-compare)
 ## [Co je App Service?](https://docs.microsoft.com/azure/app-service/overview)
 ## Virtuální počítače
 ### [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
@@ -76,11 +76,11 @@
 ### [Webové a mobilní aplikace](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## Backup
-### [Webové a mobilní aplikace](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+### [Webové a mobilní aplikace](https://docs.microsoft.com/azure/app-service/manage-backup)
 ### [Virtual Machines](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## Monitorování
-### [Webové a mobilní aplikace](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
+### [Webové a mobilní aplikace](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs)
 ### [Virtuální počítač s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Virtuální počítač s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [Mikroslužby](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)

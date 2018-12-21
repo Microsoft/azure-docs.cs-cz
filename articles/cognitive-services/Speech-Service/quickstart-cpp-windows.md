@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 1a26cbea3aaca700f5e501d3b6be0f7d1c942f36
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 60897e1fac607ebd5bfe7e7c35a43c249f7c71e2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607536"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722121"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ ve Windows s použitím sadou SDK pro řeč
 
@@ -29,44 +29,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-1. Spusťte Visual Studio 2017.
-
-1. Ověřte, že je k dispozici sada funkcí **Vývoj desktopových aplikací pomocí C++**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, přeskočte na další krok.
-
-    ![Snímek obrazovky s kartou Sady funkcí pro Visual Studio](media/sdk/vs-enable-cpp-workload.png)
-
-    V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++**.
-
-1. Ověřte, že je dostupná komponenta **Správce balíčků NuGet**. Přepněte **jednotlivé komponenty** kartu dialogové okno instalačního programu sady Visual Studio. Vyberte **Správce balíčků NuGet** Pokud ještě není povolené.
-
-      ![Snímek obrazovky s kartou Jednotlivé komponenty sady Visual Studio](media/sdk/vs-enable-nuget-package-manager.png)
-
-1. Pokud potřebujete povolit sadu funkcí C++ nebo NuGet, vyberte **Změnit** (v levém dolním rohu dialogového okna). Instalace nových funkcí chvíli trvá. Pokud už jsou obě funkce povolené, zavřete toto dialogové okno.
-
-1. Vytvořte novou konzolovou aplikaci pro plochu Windows v jazyce Visual C++. Nejdříve v nabídce vyberte **Soubor** > **Nový** > **Projekt**. V dialogovém okně **Nový projekt** rozbalte **Nainstalováno** > **Visual C++** > **Desktop Windows** v levém podokně. Pak vyberte **Konzolová aplikace pro Windows**. Jako název projektu zadejte *helloworld*.
-
-    ![Snímek obrazovky s dialogovým oknem Nový projekt](media/sdk/qs-cpp-windows-01-new-console-app.png)
-
-1. Pokud používáte 64bitovou verzi Windows, můžete pomocí rozevírací nabídky na panelu nástrojů sady Visual Studio přepnout platformu sestavení na `x64`. (64bitová verze Windows můžou spouštět 32bitové aplikace přímo.)
-
-    ![Snímek obrazovky panelu nástrojů sady Visual Studio se zvýrazněnou možností x64](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
-
-1. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a zvolte **Spravovat balíčky NuGet pro řešení**.
-
-    ![Snímek obrazovky s Průzkumníkem řešení a zvýrazněnou možností Spravovat balíčky NuGet pro řešení](media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
-
-1. V poli **Zdroj balíčku** v pravém horním rohu vyberte **nuget.org**. Vyhledejte balíček `Microsoft.CognitiveServices.Speech` a nainstalujte ho do projektu **helloworld**.
-
-    ![Snímek obrazovky s dialogovým oknem Spravovat balíčky pro řešení](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
-
-    > [!NOTE]
-    > Aktuální verze sady Cognitive Services Speech SDK je `1.2.0`.
-
-1. Přijměte zobrazenou licenci a zahajte instalaci tohoto balíčku NuGet.
-
-    ![Snímek obrazovky s dialogovým oknem Přijetí licence](media/sdk/qs-cpp-windows-05-nuget-license.png)
-
-Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
@@ -94,16 +57,14 @@ Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
 
    ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/cpp-windows`.
-
 ## <a name="next-steps"></a>Další postup
 
+Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na Githubu.
+
 > [!div class="nextstepaction"]
-> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C++](how-to-recognize-intents-from-speech-cpp.md)
+> [Prozkoumejte C++ – ukázky na Githubu](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

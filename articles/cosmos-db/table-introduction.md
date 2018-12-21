@@ -1,6 +1,6 @@
 ---
 title: Úvod do služby Azure Cosmos DB Table API
-description: Zjistěte, jak můžete používat službu Azure Cosmos DB k ukládání a dotazování velkých objemů dat, klíč hodnota s nízkou latencí pomocí oblíbených účet rozhraní API OSS Azure Cosmos DB pro MongoDB.
+description: Zjistěte, jak můžete používat službu Azure Cosmos DB k ukládání a dotazování velkých objemů dat, klíč hodnota s nízkou latencí pomocí rozhraní API tabulky Azure.
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.component: cosmosdb-table
 ms.topic: overview
 ms.date: 11/20/2017
 ms.author: sngun
-ms.openlocfilehash: 8e386d5d56654610f92ac07648ccc271fd3e9467
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 393a64cb62bcaf3623f77850ff43437396d7db81
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535042"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720148"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do služby Azure Cosmos DB: Rozhraní Table API
 

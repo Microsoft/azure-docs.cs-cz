@@ -209,7 +209,7 @@ Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do své
 docker push <acrName>.azurecr.io/acr-helloworld:v1
 ```
 
-Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *USA – západ* i *USA – východ*.
+Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *Západní USA* i *Východní USA*.
 
 ```console
 $ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1

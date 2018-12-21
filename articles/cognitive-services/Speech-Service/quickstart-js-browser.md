@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: fmegen
-ms.openlocfilehash: 01e66e1e592d98433a015dfb294a6182438be238
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b6add6ac94e45789033cfe9913ec64e69f394f45
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601878"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715133"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v prohlížeči pomocí sady SDK služby řeči
 
@@ -103,10 +103,7 @@ Pokud chcete aplikaci spustit, dvakrát klikněte na soubor index.html nebo tent
 
 Pokud chcete aplikaci spustit, otevřete oblíbený webový prohlížeč a přejděte na veřejnou adresu URL, na které složku hostujete. Zadejte vaši [oblast](regions.md) a aktivujte rozpoznávání s využitím mikrofonu. Pokud je tak nakonfigurovaná, aplikace získá token z vašeho zdroje tokenu.
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/js-browser`.
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získejte naše ukázky](speech-sdk.md#get-the-samples)
+> [Prozkoumejte ukázky jazyka JavaScript na Githubu](https://aka.ms/csspeech/samples)

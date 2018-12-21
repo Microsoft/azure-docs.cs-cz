@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 7af18272c335c835a2aa406fc635f3e7afda2a3a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 182dada35e0bea7101cc58ff62fde76fbcb8971e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003448"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722273"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Sestavení a nasazení aplikace Node.js ve službě Azure Cloud Service
 
@@ -60,8 +60,8 @@ Proveďte následující kroky, a vytvořte tak nový projekt Azure Cloud Servic
 
     Rutina vytvoří následující soubory:
 
-   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: soubory specifické pro Azure, které jsou zapotřebí pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
-   * **deploymentSettings.json**: uloží místní nastavení, které používají rutiny Azure PowerShellu sloužící k nasazení.
+   * **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** a **ServiceDefinition.csdef**: Soubory týkající se Azure je nezbytné pro publikování aplikace. Další informace najdete v tématu [Přehled vytváření hostované služby pro Azure].
+   * **deploymentSettings.json**: Uloží místní nastavení, které jsou používány rutin nasazení prostředí Azure PowerShell.
 4. Zadejte následující příkaz pro přidání nové webové role:
 
        Add-AzureNodeWebRole
@@ -159,12 +159,12 @@ Může se stát, že po nasazení budete chtít aplikaci zastavit a vyhnout se t
    > [!NOTE]
    > Odstraněním služby nedojde k odstranění účtu úložiště, který byl vytvořen při prvním publikování služby. Budou vám tedy i nadále účtovány poplatky za využívání úložiště. Pokud se úložiště nepoužívá pro nic jiného, můžete je odstranit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace najdete ve [Středisko pro vývojáře Node.js].
 
 <!-- URL List -->
 
-[Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: ../app-service/choose-web-site-cloud-service-vm.md
+[Porovnání webů Azure, služby Cloud Services a služby Virtual Machines]: ../app-service/overview-compare.md
 [Použití jednoduché webové aplikace]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK pro .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178

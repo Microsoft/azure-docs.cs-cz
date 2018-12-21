@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 54a58ed9a3adf405f1384a2d0a31c569707acfc9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f7f247da93290aafaec62fe68158a036bc6cb887
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542981"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723330"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
 
-Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá uzel a Express pro server, se připojí ke službě Azure Cosmos DB s [účet rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí k serveru část aplikace React front-endu. Kurz také ukazuje, jak škálovat službu Azure Cosmos DB ukázáním a kliknutím na webu Azure Portal a jak nasadit aplikaci na internet, aby všichni mohli sledovat své oblíbené hrdiny. 
+Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá uzel a Express pro server, se připojí ke službě Azure Cosmos DB s [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md)a pak připojí k serveru část aplikace React front-endu. Kurz také ukazuje, jak škálovat službu Azure Cosmos DB ukázáním a kliknutím na webu Azure Portal a jak nasadit aplikaci na internet, aby všichni mohli sledovat své oblíbené hrdiny. 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje klientská připojení MongoDB, takže můžete místo MongoDB používat službu Azure Cosmos DB a přitom dál používat stejný kód jako pro aplikace MongoDB, ale s dalšími výhodami, jako je snadné nasazení v cloudu, škálování a mimořádná rychlost čtení a zápisu.  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje klientská připojení MongoDB, takže můžete používat službu Azure Cosmos DB místo MongoDB.  
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 12/19/2018
 ms.author: juliako
-ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 266227b87381fde74efd0fa05c6ea10a0eace985
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613388"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724959"
 ---
-# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Live Stream pomocí Media Services v3 pomocí rozhraní API
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Stream živé pomocí Media Services v3 pomocí rozhraní API
 
 Ve službě Azure Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. LiveEvent poskytuje vstupní koncový bod (ingestovanou adresu URL), kterou pak poskytnete do kodéru pro kódování v reálném čase. LiveEvent přijímá vstupní datové proudy v reálném čase z kodéru pro kódování v reálném čase a zpřístupňuje je ke streamování prostřednictvím jednoho nebo více koncových bodů streamování [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události LiveEvent poskytují také koncový bod náhledu (adresu URL náhledu), který se používá k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
 
@@ -89,7 +89,7 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-a-live-event"></a>Vytvoření živé události
 
-V této části vidíte, jak vytvořit **průchozí** typ události LiveEvent (pro LiveEventEncodingType je nastavená hodnota Žádné). Pokud chcete vytvořit událost LiveEvent, u které je povolené kódování v reálném čase, nastavte pro LiveEventEncodingType hodnotu Základní. 
+V této části vidíte, jak vytvořit **průchozí** typ události LiveEvent (pro LiveEventEncodingType je nastavená hodnota Žádné). Pokud chcete vytvořit Livestream, který je povolený pro kódování v reálném čase LiveEventEncodingType nastaven na úroveň Standard. 
 
 Některá další nastavení, která můžete chtít zadat při vytváření události v reálném čase:
 

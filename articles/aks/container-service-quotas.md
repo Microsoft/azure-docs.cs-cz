@@ -44,8 +44,8 @@ Služba Azure Kubernetes Service (AKS) je dostupná v následujících oblastech
 - Spojené království – jih
 - Spojené království – západ
 - Západní Evropa
-- USA – západ
-- USA – západ 2
+- Západní USA
+- Západní USA 2
 
 ## <a name="next-steps"></a>Další kroky
 

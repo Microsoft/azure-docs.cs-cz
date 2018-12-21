@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 67621cb95cbf5072ab7b72770f43c0b68785c78e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: b9bcba78600e90c28f95c4ea842bf4b25b1c0da7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092096"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722784"
 ---
-# <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
+# <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidat vlastní doménu do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
 
 Ve výchozím nastavení se po vytvoření koncového bodu CDN ve vašem profilu vloží název koncového bodu, což je subdoména domény azureedge.net, do adresy URL pro doručování obsahu CDN (například https:\//contoso.azureedge.net/photo.png). Pro usnadnění práce poskytuje Azure CDN možnost přidružit ke koncovému bodu CDN vlastní doménu. Díky této možnosti můžete doručovat obsah na adrese URL s vlastní doménou místo názvu koncového bodu (například https:\//www.contoso.com/photo.png). 
@@ -36,9 +36,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [Rychlý start: Vytvoření profilu a koncového bodu Azure CDN](cdn-create-new-endpoint.md).
+Před dokončením kroků v tomto kurzu musíte nejprve vytvořit profil CDN a alespoň jeden koncový bod CDN. Další informace najdete v tématu [rychlý start: Vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md).
 
-Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).
+Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
 Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overview) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [Delegování domény do DNS Azure](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
 
@@ -68,11 +68,11 @@ Vytvoření záznamu CNAME se subdoménou cdnverify:
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
-    - Zdroj: Zadejte název vlastní domény včetně subdomény cdnverify v následujícím formátu: cdnverify._&lt;název_vlastní_domény&gt;. Například cdnverify.www.contoso.com.
+    - Zdroj: Zadejte název vaší vlastní domény včetně subdomény cdnverify v následujícím formátu: cdnverify. _&lt;vlastního názvu domény&gt;. Například cdnverify.www.contoso.com.
 
-    - Typ: Zadejte *CNAME*.
+    - Zadejte: Zadejte *CNAME*.
 
-    - Cíl: Zadejte název hostitele koncového bodu CDN včetně subdomény cdnverify v následujícím formátu: cdnverify._&lt;název_koncového_bodu&gt;_.azureedge.net. Například cdnverify.contoso.azureedge.net.
+    - Cíl: Zadejte název hostitele koncového bodu CDN, včetně subdomény cdnverify v následujícím formátu: cdnverify.  _&lt;název koncového bodu&gt;_. azureedge.net. Například cdnverify.contoso.azureedge.net.
 
 4. Uložte provedené změny.
 
@@ -90,13 +90,13 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
+    - Zadejte: Ponechte *CNAME* vybrané.
 
-    - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény cdnverify. Například cdnverify.www.
+    - Hostitel: Zadejte subdoménu vlastní domény k použití, včetně názvu subdomény cdnverify. Například cdnverify.www.
 
-    - Points to (Odkazuje na): Zadejte název hostitele vašeho koncového bodu CDN včetně názvu subdomény cdnverify. Například cdnverify.contoso.azureedge.net. 
+    - Odkazuje na: Zadejte název hostitele vašeho koncového bodu CDN, včetně názvu subdomény cdnverify. Například cdnverify.contoso.azureedge.net. 
 
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
+    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  
@@ -162,9 +162,9 @@ Vytvoření záznamu CNAME pro vlastní doménu:
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azureedge.net |
 
-    - Zdroj: Zadejte název vlastní domény (například www.contoso.com).
+    - Zdroj: Zadejte vlastní název domény (například www.contoso.com).
 
-    - Typ: Zadejte *CNAME*.
+    - Zadejte: Zadejte *CNAME*.
 
     - Cíl: Zadejte název hostitele koncového bodu CDN. Musí mít následující formát: _&lt;název_koncového_bodu&gt;_.azureedge.net. Například contoso.azureedge.net.
 
@@ -188,13 +188,13 @@ Například postup pro registrátora domén GoDaddy je následující:
 
     ![Záznam CNAME](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
+    - Zadejte: Ponechte *CNAME* vybrané.
 
-    - Host (Hostitel): Zadejte subdoménu vlastní domény, kterou chcete použít. Například www nebo cdn.
+    - Hostitel: Zadejte subdoménu vlastní domény k použití. Například www nebo cdn.
 
-    - Points to (Odkazuje na): Zadejte název hostitele vašeho koncového bodu CDN. Například contoso.azureedge.net. 
+    - Odkazuje na: Zadejte název hostitele vašeho koncového bodu CDN. Například contoso.azureedge.net. 
 
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
+    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  
@@ -218,7 +218,7 @@ V předchozích krocích jste přidali vlastní doménu do koncového bodu CDN. 
    Zruší se přidružení vlastní domény ke koncovému bodu.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

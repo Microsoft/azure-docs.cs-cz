@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1a16dd52d06e4ee31e6645d6e5a4090afd897de9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 178ae177d3183d492540f03c8dc1dfa064ddeb22
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605394"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652434"
 documentType: LandingData
 title: Dokumentace ke službě App Service
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
   title: Dokumentace ke službě Azure App Service – kurzy, reference k rozhraní API
-  meta.description: Learn how to use App Service to build and host websites and web applications.
+  meta.description: Learn how to use App Service to build and host websites and web applications, including RESTful APIs and mobile back ends.
   services: app-service
   author: czeumault
   manager: carolz
@@ -21,14 +21,14 @@ metadata:
   ms.date: 01/23/2017
   ms.author: carolz
 abstract:
-  description: Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Azure App Service umožňuje vytvářet a hostovat webové aplikace, mobilní back-endy a rozhraní RESTful API v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png
       width: 250
-    title: Vytvořte webovou aplikaci pomocí Node.js a Azure App Service. (2:41)
+    title: Vytvořte aplikaci pomocí Node.js a Azure App Service. (2:41)
     href: https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/
     width: 250
 sections:

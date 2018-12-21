@@ -91,7 +91,7 @@ items:
     - name: Python
       href: functions-reference-python.md
   - name: Diagnostika
-    href: ../app-service/app-service-diagnostics.md
+    href: ../app-service/overview-diagnostics.md
   - name: Otázky výkonu
     href: functions-best-practices.md
   - name: Proxy servery služby Functions
@@ -171,7 +171,7 @@ items:
     - name: Omezení IP adres
       href: ../app-service/app-service-ip-restrictions.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Použití spravované identity
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Odkazování na tajné klíče ze služby Key Vault
       href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: Integrace
@@ -189,7 +189,7 @@ items:
     - name: Volání funkce z Microsoft Flow
       href: functions-flow-scenario.md
     - name: Použití spravované identity
-      href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
   - name: Řešení potíží
     items:
     - name: Řešení potíží s úložištěm
@@ -279,9 +279,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 824ab6ce8d5ea8c2764b9c204d5288a4b55fc8ac
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 7528b43987cebcad064f77ba64f9b3e658ba189c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408642"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727815"

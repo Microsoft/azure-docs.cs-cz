@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 12/13/2018
 ms.openlocfilehash: eeb1ae2904a9b132ed1de8e66cad83d5ff5144b8
 ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/15/2018
 ms.locfileid: "53435714"
@@ -115,7 +115,7 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Západní střed USA | 13.78.145.25 | |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |
 | USA – západ 1 | 23.99.34.75 | 104.42.238.205 |
-| USA – západ 2 | 13.66.226.202 | |
+| Západní USA 2 | 13.66.226.202 | |
 ||||
 
 \* **POZNÁMKA:** *USA – východ 2* má také terciární IP adresu z `52.167.104.0`.

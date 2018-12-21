@@ -67,7 +67,7 @@ az login
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Vyberte název skupiny prostředků a nahraďte zástupný text.
-Následující příklad vytvoří skupinu prostředků v umístění USA – západ:
+Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
 
 ```azurecli
 # To list locations: az account list-locations --output table

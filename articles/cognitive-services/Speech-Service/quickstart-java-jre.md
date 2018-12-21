@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči, jazyka Java – hlasové služby'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka Java (Windows, Linux) – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v Javě (Windows nebo Linux).
+description: V tomto rychlém startu se dozvíte vytvořit jednoduchou aplikaci Java, který zachytí a transcribes řeči uživatele z počítače mikrofonu.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
@@ -10,75 +10,41 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 9b8327a529baf230bc64dd9abcc808924b31293b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0591ca0275c039ddb5828cb48bda2b0b305d7003
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603431"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721377"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java na Windows nebo Linux s použitím sady SDK služby řeči
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Rychlý start: Rozpoznávání řeči se sadou SDK pro řeč pro Javu
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Ubuntu Linux 16.04 nebo Windows 64-bit / 18.04. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+V tomto článku vytvoříte konzolovou aplikaci Javy pomocí [sady Speech SDK](speech-sdk.md). V reálném čase přepíšete řeč z mikrofonu počítače na text. Aplikace je sestavená pomocí balíčku Maven řeči sady SDK a Java IDE Eclipse (v4.8) na Windows 64-bit nebo 64bitová verze Ubuntu Linux 16.04 / 18.04. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu potřebujete klíč předplatného služby Speech. Můžete ho získat zdarma. Podrobnosti najdete v článku [Vyzkoušejte si službu Speech zdarma](get-started.md).
+K tomuto rychlému startu potřebujete:
 
+* Operační systém: Windows (64 bitů) nebo 16.04/18.04 Ubuntu Linux (64 bitů)
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+
+Pokud používáte Ubuntu 16.04/18.04, ujistěte se, že jsou tyto závislosti nainstalovány před zahájením Eclipse.
+
+```console
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+```
 
 ## <a name="create-and-configure-project"></a>Vytvoření a konfigurace projektu
 
-Pokud používáte Ubuntu 16.04 nebo 18.04, před zahájením Eclipse, spusťte následující příkazy, abyste měli jistotu, že jsou nainstalované požadované balíčky.
-
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
-  ```
-
-1. Spusťte Eclipse.
-
-1. Ve spouštěcím programu Eclipse zadejte do pole **Workspace** (Pracovní prostor) název nového adresáře pracovního prostoru. Potom vyberte **Launch** (Spustit).
-
-   ![Snímek obrazovky spouštěcího programu Eclipse](media/sdk/qs-java-jre-01-create-new-eclipse-workspace.png)
-
-1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud se zobrazí úvodní obrazovka, zavřete ji.
-
-1. Vytvořte nový projekt tak, že na řádku nabídek Eclipse vyberete **File** (Soubor)  >  **New** (Nový)  >  **Project** (Projekt).
-
-1. Zobrazí se dialogové okno **Nový projekt**. Vyberte **Java Project** (Projekt Javy) a vyberte **Next** (Další).
-
-   ![Snímek obrazovky dialogového okna New Project (Nový projekt) se zvýrazněnou možností Java Project (Projekt Javy)](media/sdk/qs-java-jre-02-select-wizard.png)
-
-1. Spustí se průvodce novým projektem Javy. Do pole **Project name** (Název projektu) zadejte **quickstart** a jako spouštěcí prostředí zvolte **JavaSE-1.8**. Vyberte **Finish** (Dokončit).
-
-   ![Snímek obrazovky s průvodcem novým projektem Javy](media/sdk/qs-java-jre-03-create-java-project.png)
-
-1. Pokud se zobrazí okno **Open Associated Perspective?** (Otevřít související perspektivu?), vyberte **Open Perspective** (Otevřít perspektivu).
-
-1. V **průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt **quickstart**. V místní nabídce zvolte **Configure** (Konfigurovat)  >  **Convert to Maven Project** (Převést na projekt Maven).
-
-   ![Snímek obrazovky s průzkumníkem balíčků](media/sdk/qs-java-jre-04-convert-to-maven-project.png)
-
-1. Zobrazí se okno **Create new POM** (Vytvořit nový POM). Do pole **Group Id** (ID skupiny) zadejte **com.microsoft.cognitiveservices.speech.samples** a do pole **Artifact Id** (ID artefaktu) zadejte **quickstart**. Pak vyberte **Dokončit**.
-
-   ![Snímek obrazovky s oknem Create new POM (Vytvořit nový POM)](media/sdk/qs-java-jre-05-configure-maven-pom.png)
-
-1. Otevřete soubor **pom.xml** a upravte ho.
-
-   * Na konci souboru před ukončovací značkou `</project>` vytvořte element `repositories` s odkazem na úložiště Maven pro sadu Speech SDK, jak můžete vidět tady:
-
-     [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
-
-  * Také přidat `dependencies` element se sadou SDK pro řeč verzi 1.2.0 jako závislost:
-
-     [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
-
-   * Uložte změny.
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
@@ -105,16 +71,15 @@ Následujících 15 sekund hlasového vstupu z mikrofonu se rozpozná a zaprotok
 
 ![Snímek obrazovky s výstupem konzoly po úspěšném rozpoznání](media/sdk/qs-java-jre-07-console-output.png)
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/java-jre`.
-
 ## <a name="next-steps"></a>Další postup
 
+Další ukázky, jako je čtení řeči z zvukový soubor, jsou k dispozici na Githubu.
+
 > [!div class="nextstepaction"]
-> [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro Javu](how-to-recognize-intents-from-speech-java.md)
+> [Prozkoumejte ukázky v Javě na Githubu](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Překlad řeči](how-to-translate-speech-csharp.md)
+- [Rychlý start: Překlad řeči, jazyka Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)
 - [Přizpůsobení jazykových modelů](how-to-customize-language-model.md)

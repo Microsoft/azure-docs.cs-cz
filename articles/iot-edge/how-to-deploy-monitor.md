@@ -95,7 +95,7 @@ Jakmile budete mít všechny moduly pro nasazení nakonfigurované, vyberte **Da
 
 ### <a name="step-3-specify-routes-optional"></a>Krok 3: Určení tras (volitelné)
 
-Trasy definovat, jak moduly navzájem komunikují v rámci nasazení. Ve výchozím nastavení průvodce umožňuje volat trasu **trasy** a definovaná jako **FROM /\* do $upstream**, což znamená, že všechny zprávy výstupu tak všechny moduly, které se odesílají do služby IoT hub.  
+Trasy definovat, jak moduly navzájem komunikují v rámci nasazení. Ve výchozím nastavení průvodce umožňuje volat trasu **trasy** a definovaná jako **FROM /* do $upstream**, což znamená, že všechny zprávy výstupu tak všechny moduly, které se odesílají do služby IoT hub.  
 
 Přidat nebo aktualizovat trasy s informacemi z [trasy deklarovat](module-composition.md#declare-routes)a pak vyberte **Další** pokračujte k části revize.
 

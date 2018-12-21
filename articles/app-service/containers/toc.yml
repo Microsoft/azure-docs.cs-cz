@@ -8,7 +8,7 @@ items:
   - name: Informace o App Service v Linuxu
     href: app-service-linux-intro.md
   - name: Porovnání možností hostování
-    href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Šablony Rychlý start
   items:
   - name: Vytvoření aplikace v .NET Core
@@ -69,7 +69,7 @@ items:
   - name: Jak funguje App Service
     href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Plány služby App Service
-    href: ../azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service Environment
     href: ../environment/intro.md
   - name: Příručka pro vývojáře v Javě
@@ -77,13 +77,13 @@ items:
   - name: Podniková příručka k Javě
     href: app-service-java-enterprise.md
   - name: Příchozí a odchozí IP adresy
-    href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Ověřování a autorizace
-    href: ../app-service-authentication-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    href: ../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Volba typu nasazení
     href: choose-deployment-type.md
   - name: Diagnostika
-    href: ../app-service-diagnostics.md
+    href: ../overview-diagnostics.md
 - name: Návody
   items:
   - name: Konfigurace aplikace
@@ -113,15 +113,15 @@ items:
     - name: Nastavení přihlašovacích údajů nasazení
       href: ../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Vytvoření přípravných prostředí
-      href: ../web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Mapování vlastní domény
     items:
     - name: Zakoupení domény
-      href: ../custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Mapování domén s Traffic Managerem
       href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Migrace aktivní domény
-      href: ../app-service-custom-domain-name-migrate.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Zabezpečená aplikace
     items:
     - name: Zakoupení certifikátů SSL
@@ -149,7 +149,7 @@ items:
     - name: Horizontální navýšení kapacity na několik instancí
       href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Hostování s vysokou hustotou
-      href: ../app-service-high-density-hosting.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-scale-per-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Monitorování aplikace
     items:
     - name: Připojení k aplikaci přes SSH
@@ -157,13 +157,13 @@ items:
     - name: Kvóty a výstrahy
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Povolení protokolů
-      href: ../web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Integrace Java APM
       href: how-to-java-apm-monitoring.md
   - name: Správa aplikace
     items:
     - name: Zálohování aplikace
-      href: ../web-sites-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Obnovení zálohy
       href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Klonování aplikace
@@ -205,7 +205,7 @@ items:
   - name: Řešení potíží
     items:
     - name: Řešení potíží se sadou Visual Studio
-      href: ../web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Řešení potíží s aplikací v Node.js
       href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Řešení chyb HTTP 502 a 503
@@ -222,9 +222,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Nejčastější dotazy ke konfiguraci a správě
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 3e0ce6b9c8f3fa3aaf88ba8994bf7eb58911da85
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604493"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719519"

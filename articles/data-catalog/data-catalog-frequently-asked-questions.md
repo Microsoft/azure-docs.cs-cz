@@ -35,7 +35,7 @@ Katalog data Catalog je určen pro technická a Netechnická uživatele, včetn�
 ## <a name="what-is-its-availability-by-region"></a>Co je její dostupnost podle oblasti?
 Data katalogu služeb jsou aktuálně dostupné v následujících datových centrech:
 
-* USA – západ
+* Západní USA
 * USA – východ
 * Západní Evropa
 * Severní Evropa

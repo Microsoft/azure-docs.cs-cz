@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: chlandsi
-ms.openlocfilehash: 46f19876215c4c1ffac7d99e377381451a0ea7df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629284"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723905"
 ---
 # <a name="quickstart-using-the-speech-service-from-python"></a>Rychlý start: Pomocí služby řeči z Pythonu
 
@@ -27,8 +27,8 @@ Tento článek ukazuje, jak použít službu rozpoznávání řeči pomocí sado
 
 Než začnete, tady je seznam požadovaných součástí:
 
-* A [klíč předplatného](get-started.md) pro službu rozpoznávání řeči.
-* Python 3.5 (64bitová verze) nebo novější je povinný. Soubory ke stažení jsou k dispozici [tady](https://www.python.org/downloads/).
+* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
+* [Python 3.5 (64-bit)](https://www.python.org/downloads/) nebo novější.
 * Balíček sadou SDK pro řeč Python je k dispozici pro Windows (x64) Mac (verze macOS X 10.12 nebo novější) a Linux (Ubuntu 16.04 nebo 18.04 ve x64).
 * Ubuntu spusťte následující příkazy pro instalaci požadované balíčky:
 
@@ -75,9 +75,6 @@ nebo si můžete stáhnout tento rychlý úvodní kurz jako [Jupyter](https://ju
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/python`.
-
 ### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>Instaluje se balíček Python SDK řeči a spuštění ukázky ve Visual Studio Code
 
 1. [Stáhněte si](https://www.python.org/downloads/) a nainstalujte verzi 64-bit (3.5 nebo novější) aplikace Pythonu ve vašem počítači.
@@ -105,5 +102,4 @@ Pokud existují problémy těchto pokynů, podívejte se na více rozsáhlé [Vi
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získejte naše ukázky](speech-sdk.md#get-the-samples)
-
+> [Prozkoumejte ukázky Pythonu na Githubu](https://aka.ms/csspeech/samples)

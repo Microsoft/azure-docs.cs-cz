@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085395"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713603"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
@@ -66,12 +66,12 @@ Každý Poznámkový blok jupyter vyberete jádra (to znamená, běhové prostř
 - Python 2.7 + Anaconda2 5.3.0
 - Python 3.6 + Anaconda3 5.3.0
 - Python 3.5 + Anaconda3-4.2.0 (bude zastaralé)
-- R 3.3 + Microsoft R otevřete 3.3.0
+- Verze 3.4.1 R + Microsoft R otevřete 3.4.1
 - F#4.1.9
 
 Poznámkových bloků Azure obsahuje také další balíčky nad rámec základní distribuce. Jádrech Pythonu, například obsahovat numpy, balíčky pandas, scikit-informace rozostření knihoven a matplotlib.
 
-Můžete také upravit projekt pro vytvoření prostředí pro všechny poznámkových bloků v daném projektu. Další informace najdete v tématu [rychlý start: vytvoření projektu s vlastním prostředím](quickstart-create-jupyter-notebook-project-environment.md).
+Můžete také upravit projekt pro vytvoření prostředí pro všechny poznámkových bloků v daném projektu. Další informace najdete v tématu [rychlý start: Vytvoření projektu s vlastním prostředím](quickstart-create-jupyter-notebook-project-environment.md).
 
 Kromě základní distribuce poznámkových bloků Azure dodává s předinstalovanou s mnoha dalších balíčků, které jsou užitečné pro odborníky přes data. Můžete také nainstalovat vlastní balíčky pomocí typickým procesem pro jednotlivé jazyky.
 
@@ -79,11 +79,11 @@ Kromě základní distribuce poznámkových bloků Azure dodává s předinstalo
 
 Poznámkových bloků Azure je předem nakonfigurovaný s těmito příponami Jupyter:
 
-- [PŘEKONÁNÍ](https://github.com/damianavila/RISE): A Jupyter prezentace rozšíření (označované také jako live_reveal). Další informace najdete v tématu [spustit Poznámkový blok prezentace](present-jupyter-notebooks-slideshow.md).
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): úplné výpočetní prostředí pro práci s poznámkovými bloky Jupyter.
-- [Altair](https://github.com/ellisonbg/altair): deklarativní statistické vizualizace knihovny pro Python.
-- [BQPlot](https://github.com/bloomberg/bqplot): interaktivní zobrazování framework pro aplikace Jupyter notebook.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interaktivní HTML pomůcky pro poznámkové bloky Jupyter.
+- [PŘEKONÁNÍ](https://github.com/damianavila/RISE): Jupyter prezentace příponu (označované také jako live_reveal). Další informace najdete v tématu [spustit Poznámkový blok prezentace](present-jupyter-notebooks-slideshow.md).
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Úplné výpočetní prostředí pro práci s poznámkovými bloky Jupyter.
+- [Altair](https://github.com/ellisonbg/altair): Deklarativní statistické vizualizace knihovny pro Python.
+- [BQPlot](https://github.com/bloomberg/bqplot): Interaktivní zobrazování rozšiřovatelnou platformu pro poznámkové bloky Jupyter.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktivní pomůcky HTML pro aplikace Jupyter notebook.
 
 ## <a name="issues-and-getting-help"></a>Problémy a získání nápovědy
 

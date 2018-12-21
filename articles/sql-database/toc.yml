@@ -199,7 +199,7 @@ items:
     items:
     - name: Přehled zabezpečení
       href: sql-database-security-index.yml
-    - name: Přehled zabezpečení
+    - name: Možnosti zabezpečení
       href: sql-database-security-overview.md
     - name: Rozšířená ochrana před internetovými útoky
       items:
@@ -680,9 +680,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalace elastické úlohy (zastaralé)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 6e00ce0b4e218342a5c8fc1f7894b215acb172ae
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a33b66928e4c84f020856af1897b1bc40e351dc7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602235"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654117"

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 60f16405f76654ce2646ec651a47396d79268cc2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2c11aa11bad7e3cbdeae418eef92a042ca0731b4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537116"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725571"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: Migrace stávající webové aplikace mongodb s podporou Node.js 
 
@@ -29,7 +29,7 @@ ms.locfileid: "53537116"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v Node.js a jejím připojení k databázi Azure Cosmos DB, která podporuje klientská připojení MongoDB pomocí [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md). Jinými slovy aplikace Node.js ví pouze to, že se připojuje k databázi pomocí API služby Azure Cosmos DB pro MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
+Tento rychlý start popisuje způsob použití stávající aplikace MongoDB napsané v Node.js a jejím připojení k databázi Azure Cosmos DB, která podporuje klientská připojení MongoDB pomocí [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md). Jinými slovy aplikace Node.js ví pouze to, že se připojuje k databázi pomocí služby Azure Cosmos DB pro rozhraní API MongoDB. V aplikaci se transparentně zobrazuje, že data jsou uložena ve službě Azure Cosmos DB.
 
 Po dokončení budete mít ve službě [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) spuštěnou aplikaci MEAN (MongoDB, Express, Angular a Node.js). 
 

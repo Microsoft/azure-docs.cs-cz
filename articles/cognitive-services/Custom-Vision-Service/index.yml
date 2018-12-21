@@ -1,0 +1,101 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 9f6e1a00d97e178f70fec9be21b1bfd483477b49
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654358"
+documentType: LandingData
+title: Dokumentace k rozhraní API služby Custom Vision
+metadata:
+  title: Dokumentace k rozhraní API služby Custom Vision – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  description: Další informace o použití služby Custom Vision k vytváření, nasazování a vylepšování vlastních klasifikací obrázků Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
+  services: cognitive-services
+  author: nitinme
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.component: custom-vision
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/20/2018
+  ms.author: nitinme
+abstract:
+  description: Cloudové rozhraní API služby Custom Vision poskytuje vývojářům možnost vytvářet, nasazovat a vylepšovat vlastní klasifikátory obrázků. Klasifikátor obrázků je služba AI, která v závislosti na určitých vlastnostech uspořádává obrázky s využitím značek.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/custom-vision-landing-page-video.png
+      width: 250
+    title: Trénování a identifikace jedinečných obrázků (26:10)
+    href: https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/Custom-Vision-Service/home
+      html: <p>Další informace o rozhraní API služby Custom Vision</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je Custom Vision?
+    - href: /azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier
+      html: <p>Naučte se vytvářet klasifikátory.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Sestavení klasifikátoru
+    - href: /azure/cognitive-services/Custom-Vision-Service/export-your-model
+      html: <p>Naučte se exportovat modely do mobilních zařízení</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Export modelu do mobilních zařízení
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Další informace o zahájení práce se službou Custom Vision výběrem příslušného odkazu <img src="media/index/link.jpg" height="15" width="15"></img>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_java.svg
+    rows:
+    - title: Klasifikace obrázků
+      values:
+      - href: csharp-tutorial
+      - href: python-tutorial
+      - href: java-tutorial
+    - title: Detekce objektů
+      values:
+      - href: csharp-tutorial-od
+      - href: python-tutorial-od
+      - href: java-tutorial-od
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Ukázky pro rozhraní API služby Custom Vision:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?sort=Relevance&service=cognitive-services&term=Custom+Vision">Ukázky kódu</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Rozhraní API
+      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Trénování</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Předpověď</a></p>
+    - title: Sada SDK
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training">Go – trénování</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction">Go – předpověď</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

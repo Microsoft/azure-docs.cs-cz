@@ -37,7 +37,7 @@ Když nasadíte webovou aplikaci z image kontejneru v registru a máte geografic
 
 ## <a name="deploy-a-web-app-for-containers-instance"></a>Nasazení instance služby Web App for Containers
 
-V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA – západ*.
+V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *Západní USA*.
 
 Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
@@ -53,10 +53,10 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
-| **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
+| **Plán služby App Service / umístění** | Vytvořte nový plán s názvem `plan-westus` v oblasti **Západní USA**. |
 | **Image** | `acr-helloworld:v1`
 
-Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – západ*.
+Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *Západní USA*.
 
 ![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-02]
 

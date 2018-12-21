@@ -9,12 +9,12 @@ ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 0193d79dec663b089184099c2a4d275c91380c8b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a78c4d64761b5eecc5b7ebf8aa0223b862935575
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163408"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728189"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Store dat na hraničních zařízeních s databází SQL serveru
 
@@ -350,7 +350,7 @@ Aktualizujte stav vašeho zařízení v části zařízení Azure IoT Hub VS Cod
 
 Když pro své zařízení použijete manifest nasazení, získáte tři spuštěné moduly. Modul tempSensor generuje simulovaná data prostředí. Modul sqlFunction přebírá data a formátuje je pro databázi. Tato část vás provede nastavením databáze SQL pro ukládání údajů o teplotě. 
 
-Spusťte následující příkazy na zařízení IoT Edge. Tyto příkazy připojení k **sql** modulu běžícího ve vašem zařízení a vytvoří databázi a tabulku pro uchovávání dat teploty odesílané do něj. 
+Spusťte následující příkazy na zařízení IoT Edge. Tyto příkazy připojení k **sql** modulu běžícího ve vašem zařízení a vytvořte databázi a tabulku pro uchovávání dat teploty odesílané do něj. 
 
 1. V nástroji příkazového řádku na vašem zařízení IoT Edge připojení k vaší databázi. 
    * Kontejner Windows:

@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e556b63fbe6bf1fe89672ee3aad4b7c9191233c5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098915"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727628"
 ---
-# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Kurz 9: Extrahování mínění z celé promluvy
+# <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Kurz 9:  Extrahovat zabarvení celkové utterance
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění. Mínění se určuje z celé promluvy.
 
 Analýza mínění představuje možnost určit, jestli je promluva uživatele pozitivní, negativní nebo neutrální. 
@@ -52,7 +52,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-keyphrase-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

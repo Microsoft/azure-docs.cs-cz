@@ -111,11 +111,11 @@ Existujícímu primárnímu klíči OMS|Primární klíč pro připojení k exis
 Název parametru| Popis| Povolené hodnoty |Výchozí hodnoty
 ---|---|---|---
 Číslo oblasti| Počet oblastí k nasazení sítě konsorcia|1, 2, 3, 4, 5| 2
-První oblasti| První oblasti k nasazení sítě konsorcia|Všechny povolené oblastí Azure| USA – západ
+První oblasti| První oblasti k nasazení sítě konsorcia|Všechny povolené oblastí Azure| Západní USA
 Druhé oblasti |Druhé oblasti k nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 2)|Všechny povolené oblastí Azure| USA – východ
 Třetí oblasti| Třetí oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 3)|Všechny povolené oblastí Azure| USA – střed
 Čtvrtý oblasti| Čtvrtý oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 4)|Všechny povolené oblastí Azure| Východní USA 2
-Pátý oblasti| Pátý oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 5)|Všechny povolené oblastí Azure| USA – západ 2
+Pátý oblasti| Pátý oblast pro nasazení sítě konsorcia (viditelné pouze v případě počtu oblastí je vybrán jako 5)|Všechny povolené oblastí Azure| Západní USA 2
 
 ### <a name="network-size-and-performance"></a>Velikost síťových a výkonu
 

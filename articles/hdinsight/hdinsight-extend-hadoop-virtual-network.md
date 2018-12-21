@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
 ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/28/2018
 ms.locfileid: "52497792"
@@ -297,8 +297,8 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | &nbsp; | USA – východ | 13.82.225.233</br>40.71.175.99 | 443 | Příchozí |
     | &nbsp; | Střed USA – sever | 157.56.8.38</br>157.55.213.99 | 443 | Příchozí |
     | &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | 443 | Příchozí |
-    | &nbsp; | USA – západ | 13.64.254.98</br>23.101.196.19 | 443 | Příchozí |
-    | &nbsp; | USA – západ 2 | 52.175.211.210</br>52.175.222.222 | 443 | Příchozí |
+    | &nbsp; | Západní USA | 13.64.254.98</br>23.101.196.19 | 443 | Příchozí |
+    | &nbsp; | Západní USA 2 | 52.175.211.210</br>52.175.222.222 | 443 | Příchozí |
 
     Informace o IP adres k používání pro Azure Government, najdete v článku [Azure Government inteligence a analýza](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentu.
 

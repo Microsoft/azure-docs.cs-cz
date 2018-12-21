@@ -10,7 +10,7 @@ ms.date: 09/24/2018
 ms.author: alkohli
 ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
 ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/12/2018
 ms.locfileid: "49166980"
@@ -100,7 +100,7 @@ Provedením následujících kroků na webu Azure Portal vytvořte prostředek D
     |Název prostředku   | Popisný název pro identifikaci prostředku.<br>Název musí obsahovat 2 až 50 znaků a může obsahovat písmena, číslice a spojovníky.<br> Název musí začínat a končit na písmeno nebo číslici.        |
     |Předplatné    |Předplatné je propojené s vaším fakturačním účtem. |
     |Skupina prostředků  |Vyberte existující skupinu nebo vytvořte novou.<br>Další informace o [skupinách prostředků Azure](../azure-resource-manager/resource-group-overview.md).     |
-    |Umístění     |Pro tuto verzi jsou dostupné oblasti USA – východ, USA – západ 2, Jihovýchodní Asie a Západní Evropa. <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
+    |Umístění     |Pro tuto verzi jsou dostupné oblasti USA – východ, Západní USA 2, Jihovýchodní Asie a Západní Evropa. <br> Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit.|
     
     ![Vytvoření prostředku Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

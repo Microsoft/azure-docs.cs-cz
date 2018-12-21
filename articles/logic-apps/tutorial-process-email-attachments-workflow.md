@@ -63,7 +63,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
    | **Název** | attachmentstorageacct | Název účtu úložiště | 
    | **Model nasazení** | Resource Manager | [Model nasazení](../azure-resource-manager/resource-manager-deployment-model.md) pro správu nasazení prostředků | 
    | **Druh účtu** | Obecné účely | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
-   | **Umístění** | USA – západ | Oblast, kam se mají ukládat informace o vašem účtu úložiště | 
+   | **Umístění** | Západní USA | Oblast, kam se mají ukládat informace o vašem účtu úložiště | 
    | **Replikace** | Místně redundantní úložiště (LRS) | Toto nastavení určuje, jak se budou kopírovat, ukládat, spravovat a synchronizovat data. Další informace najdete v tématu [Replikace](../storage/common/storage-introduction.md#replication). | 
    | **Výkon** | Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). | 
    | **Vyžádání bezpečného přenosu** | Zakázáno | Toto nastavení určuje zabezpečení vyžadované u požadavků směřujících od připojení. Další informace najdete v tématu [Vyžádání bezpečného přenosu](../storage/common/storage-require-secure-transfer.md). | 
@@ -143,7 +143,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve | 
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve | 
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). | 
-   | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve | 
+   | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve | 
    | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace function App a liší se od vašeho dříve vytvořený účet úložiště pro přílohy e-mailu. | 
    | **Application Insights** | Vypnuto | Zapne monitorování aplikací pomocí [Application Insights](../application-insights/app-insights-overview.md). Pro účely tohoto kurzu ale zvolte nastavení **Vypnuto**. | 
    |||| 
@@ -234,7 +234,7 @@ Když zkontrolujete, že funkce pracuje správně, vytvořte aplikaci logiky. Te
    | **Název** | LA-ProcessAttachment | Název vaší aplikace logiky | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve | 
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
-   | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve | 
+   | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve | 
    | **Log Analytics** | Vypnuto | Pro potřeby tohoto kurzu zvolte nastavení **Vypnuto**. | 
    |||| 
 

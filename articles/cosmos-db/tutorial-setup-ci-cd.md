@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
-ms.openlocfilehash: 167c6a63064b7d66b869984e0cffb5aaf90900e8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 27940cc9f612c62625c0c0b2809e7afc8cd990d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542184"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53711920"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -81,7 +81,7 @@ Níže je uvedený příklad souboru **.runsettings**, který definuje parametry
 </RunSettings>
 ```
 
-Pokud jsou nastavení kanálu CI/CD pro aplikaci, která používá rozhraní API Azure Cosmos DB pro MongoDB, připojovacího řetězce MongoDB ve výchozím nastavení obsahuje číslo portu 10255. Ale tento port není otevřen, místo toho byste měli použít port 10250 k navázání připojení. Rozhraní API Azure Cosmos DB připojovacího řetězce MongoDB zůstává stejná s tím rozdílem, je číslo portu podporované 10250 místo 10255.
+Pokud jsou nastavení kanálu CI/CD pro aplikaci, která používá služby Azure Cosmos DB pro rozhraní API MongoDB, připojovacího řetězce MongoDB ve výchozím nastavení obsahuje číslo portu 10255. Ale tento port není otevřen, místo toho byste měli použít port 10250 k navázání připojení. Azure Cosmos DB pro rozhraní MongoDB API připojovací řetězec zůstává stejná s tím rozdílem, je číslo portu podporované 10250 místo 10255.
 
 Tyto parametry `TestRunParameters` jsou odkazovány prostřednictvím vlastnosti `TestContext` v projektu testů aplikace. Tady je příklad testu, který se spouští ve službě Cosmos DB.
 

@@ -102,7 +102,7 @@ Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do
 |---------|---------|
 |Západní střed USA     |Kanada – střed       |        
 |Západní USA 2     |Kanada – východ         |     
-|USA – západ     | Západní Evropa        |      
+|Západní USA     | Západní Evropa        |      
 |Střed USA – jih   |Severní Evropa     |         
 |USA – střed     |Austrálie – východ|
 |Střed USA – sever  |Austrálie – jihovýchod   |

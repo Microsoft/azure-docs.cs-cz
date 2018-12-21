@@ -41,10 +41,10 @@ Obrázek 1 – Azure oblastních párech
 | Indie |Indie – západ (1) |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Korea – střed |Jižní Korea – jih |
-| Severní Amerika |USA – východ |USA – západ |
+| Severní Amerika |USA – východ |Západní USA |
 | Severní Amerika |Východní USA 2 |USA – střed |
 | Severní Amerika |Střed USA – sever |Střed USA – jih |
-| Severní Amerika |USA – západ 2 |Západní střed USA 
+| Severní Amerika |Západní USA 2 |Západní střed USA 
 | Spojené království |Spojené království – západ |Velká Británie – jih |
 | ministerstvo obrany USA |US DoD – východ |US DoD – střed |
 | US Government |USA (Gov) – Arizona |USA (Gov) – Texas |

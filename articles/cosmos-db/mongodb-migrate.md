@@ -1,5 +1,5 @@
 ---
-title: Používáte věnované a mongorestore s rozhraním API Azure Cosmos DB pro MongoDB.
+title: Použití věnované a mongorestore službou Azure Cosmos DB pro rozhraní MongoDB API
 description: Zjistěte, jak pomocí nástrojů mongoimport a mongorestore importovat data do rozhraní API pro účet MongoDB.
 keywords: mongoimport, mongorestore
 services: cosmos-db
@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: a17b2121feb5656df4298bddc2b1e90bb9ac6457
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c0fed311a43677465559ca9ea86b384a39b9fbfd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545605"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723412"
 ---
-# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-api-account-for-mongodb"></a>Kurz: Migrace dat do účtu Azure Cosmos DB API pro MongoDB
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-configured-for-mongodb-api"></a>Kurz: Migrace dat do nakonfigurované pro rozhraní API MongoDB služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny o tom, jak migrovat data uložená v MongoDB do rozhraní API služby Azure Cosmos DB pro MongoDB. Pokud importujete data z MongoDB a plánujete je používat s rozhraním SQL API služby Azure Cosmos DB, měli byste k importu dat použít [nástroj pro migraci dat](import-data.md).
+Tento kurz obsahuje pokyny o tom, jak migrovat data uložená v MongoDB do nakonfigurované pro rozhraní API MongoDB služby Azure Cosmos DB. Pokud importujete data z MongoDB a plánujete použít, s nakonfigurované rozhraní Azure Cosmos DB pro rozhraní SQL API, měli byste použít [nástroj pro migraci dat](import-data.md) importovat data.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -29,7 +29,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Migrace dat pomocí nástroje mongoimport
 > * Migrace dat pomocí nástroje mongorestore
 
-Před migrací dat do rozhraní API služby Azure Cosmos DB pro MongoDB, ujistěte se, že máte nějaké ukázkové MongoDB data. Pokud nemáte ukázkovou databázi MongoDB, můžete si stáhnout a nainstalovat [komunitní server MongoDB](https://www.mongodb.com/download-center), vytvořit ukázkovou databázi a pomocí aplikace mongoimport.exe nebo mongorestore.exe nahrát ukázková data. 
+Před migrací dat do služby Azure Cosmos DB pro rozhraní API MongoDB, ujistěte se, že máte nějaké ukázkové MongoDB data. Pokud nemáte ukázkovou databázi MongoDB, můžete si stáhnout a nainstalovat [komunitní server MongoDB](https://www.mongodb.com/download-center), vytvořit ukázkovou databázi a pomocí aplikace mongoimport.exe nebo mongorestore.exe nahrát ukázková data. 
 
 ## <a name="plan-for-migration"></a>Plánování migrace
 
@@ -59,7 +59,7 @@ Před migrací dat do rozhraní API služby Azure Cosmos DB pro MongoDB, ujistě
 
 1. Vypočítejte průměrný poplatek za RU pro jeden zápis dokumentu:
 
-   a. Připojení k vaší služby Azure Cosmos DB přes rozhraní API pro MongoDB z MongoDB Shell. Pokyny najdete v tématu [Připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md).
+   a. Připojení k účtu Cosmos nakonfigurované pro rozhraní API MongoDB z MongoDB Shell. Pokyny najdete v tématu [Připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md).
     
    b. Z prostředí MongoDB Shell spusťte ukázkový příkaz pro vložení s použitím některého z vašich ukázkových dokumentů:
    
@@ -161,7 +161,7 @@ mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cos
 
 ## <a name="migrate-data-by-using-mongorestore"></a>Migrace dat pomocí nástroje mongorestore
 
-K obnovení dat do svého účtu rozhraní API pro MongoDB použijte následující šablonu pro spuštění importu. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.
+K obnovení dat do účtu Cosmos nakonfigurovaný pro rozhraní MongoDB API, pomocí následující šablony můžete provést import. Vyplňte *hostitele*, *uživatelské jméno* a *heslo* pomocí hodnot specifických pro váš účet.
 
 Šablona:
 
@@ -177,7 +177,7 @@ mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u co
 
 ## <a name="next-steps"></a>Další postup
 
-Můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data MongoDB pomocí služby Azure Cosmos DB. 
+Můžete pokračovat k dalšímu kurzu a zjistěte, jak zadávat dotazy na data v databázi Cosmos pomocí klienti a nástroje pro MongoDB. 
 
 > [!div class="nextstepaction"]
 >[Jak dotazovat data MongoDB?](../cosmos-db/tutorial-query-mongodb.md)

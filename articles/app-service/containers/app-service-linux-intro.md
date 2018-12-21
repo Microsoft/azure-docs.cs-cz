@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: 23b1ec176572b3a7e6deb0cba60ac7a1e73eeffb
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ea63049e7d3315ff3166ea5414d96b071675046c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605513"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725537"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -63,7 +63,7 @@ Další podrobnosti najdete v tématu [Vytvoření webové aplikace v Javě ve s
 
 ## <a name="scaling"></a>Škálování
 
-* Zákazníci můžou vertikálně navyšovat nebo snižovat kapacitu aplikací změnou úrovně [plánu služby App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json).
+* Zákazníci můžou vertikálně navyšovat nebo snižovat kapacitu aplikací změnou úrovně [plánu služby App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans?toc=%2fazure%2fapp-service-web%2ftoc.json).
 
 ## <a name="locations"></a>Umístění
 
@@ -105,7 +105,7 @@ Další podrobnosti o službě App Service v Linuxu najdete v následujících �
 
 * [Nejčastější dotazy k App Service pro Linux](app-service-linux-faq.md)
 * [Podpora SSH pro službu App Service v Linuxu](app-service-linux-ssh-support.md)
-* [Nastavení přípravných prostředí ve službě App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Nastavení přípravných prostředí ve službě App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Průběžné nasazování pomocí Centra Dockeru](app-service-linux-ci-cd.md)
 
 Otázky a připomínky můžete publikovat na [našem fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview).

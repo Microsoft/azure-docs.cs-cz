@@ -10,7 +10,7 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
 ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/29/2018
 ms.locfileid: "50214813"
@@ -50,7 +50,7 @@ Cluster Azure Data Exploreru vytvoříte ve skupině prostředků Azure s defino
     | Název clusteru | Jedinečný název clusteru | Zvolte jedinečný název, který identifikuje váš cluster. Například *mytestcluster*. K názvu clusteru, který zadáte, bude připojen název domény *[oblast].kusto.windows.net*. Název může obsahovat jenom malá písmena a číslice. Musí se skládat ze 3 až 22 znaků.
     | Předplatné | Vaše předplatné | Vyberte předplatné Azure, které chcete použít pro svůj cluster.|
     | Skupina prostředků | *test-resource-group* | Vytvořte novou skupinu prostředků. |
-    | Umístění | *Západní USA* | V tomto rychlém startu vyberte *USA – západ*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
+    | Umístění | *Západní USA* | V tomto rychlém startu vyberte *Západní USA*. Pro produkční systém vyberte oblast, která nejlépe vyhovuje vašim potřebám.
     | Specifikace výpočetních prostředků | *D13_v2* | Pro tento rychlý start vyberte specifikaci nejnižší ceny. Pro produkční systém vyberte specifikaci, která nejlépe vyhovuje vašim potřebám.
     | | |
 

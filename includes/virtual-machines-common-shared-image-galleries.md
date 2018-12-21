@@ -47,8 +47,8 @@ Místní podpora pro sdílené bitové kopie Galerie je ve verzi limited preview
 | Západní střed USA    |Střed USA – jih|
 | Východní USA 2          |USA – východ|
 | Střed USA – jih   |Východní USA 2|
-| Jihovýchodní Asie     |USA – západ|
-| Západní Evropa        |USA – západ 2|
+| Jihovýchodní Asie     |Západní USA|
+| Západní Evropa        |Západní USA 2|
 |                    |USA – střed|
 |                    |Střed USA – sever|
 |                    |Kanada – střed|

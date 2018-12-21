@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3eff646a1b3681c58c820695d296d5e09297e03b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 89852e30929cc26aa0cbe63ed4e334c4e878b90b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600199"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714334"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: Mapování existujícího vlastního názvu DNS do služby Azure App Service
 
@@ -48,7 +48,7 @@ Pro absolvování tohoto kurzu potřebujete:
   Abyste například mohli přidat záznamy DNS pro `contoso.com` a `www.contoso.com`, musíte mít možnost konfigurovat nastavení DNS pro kořenovou doménu `contoso.com`.
 
   > [!NOTE]
-  > Pokud nemáte žádný existující název domény, zvažte [zakoupení domény pomocí webu Azure Portal](custom-dns-web-site-buydomains-web-app.md). 
+  > Pokud nemáte žádný existující název domény, zvažte [zakoupení domény pomocí webu Azure Portal](manage-custom-dns-buy-domain.md). 
 
 ## <a name="prepare-the-app"></a>Příprava aplikace
 
@@ -56,7 +56,7 @@ K mapování vlastního názvu DNS na webovou aplikaci, webové aplikace na [pl�
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se pomocí svého účtu Azure.
 
@@ -305,7 +305,7 @@ Pokud se při přechodu na adresu URL vaší vlastní domény zobrazí chyba HTT
 
 ## <a name="migrate-an-active-domain"></a>Migrace aktivní domény
 
-Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS bez výpadku, přečtěte si článek o [migraci aktivního názvu DNS do služby Azure App Service](app-service-custom-domain-name-migrate.md).
+Pokud chcete do služby App Service migrovat živý web a jeho název domény DNS bez výpadku, přečtěte si článek o [migraci aktivního názvu DNS do služby Azure App Service](manage-custom-dns-migrate-domain.md).
 
 ## <a name="redirect-to-a-custom-directory"></a>Přesměrování do vlastního adresáře
 

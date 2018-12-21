@@ -102,11 +102,11 @@ Tento článek obsahuje odpovědi na některé nejběžnější otázky o spušt
  
    Ano. Všichni zákazníci budou moct zaregistrovat u nového poskytovatele prostředků virtuálního počítače s SQL. Ale můžete jenom zákazníci s programem Software Assurance Benefit aktivovat [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (byol) na virtuální počítač s SQL serverem. 
 
-1. **Co se stane _* Microsoft.SqlVirtualMachine_* prostředku, pokud je přesunut nebo vyřadit prostředku virtuálního počítače?** 
+1. **Co se stane _\*Microsoft.SqlVirtualMachine_\* prostředku, pokud je přesunut nebo vyřadit prostředku virtuálního počítače?** 
 
    Pokud je prostředků Microsoft.Compute/VirtualMachine vyřadit nebo přesunout, pak je přidružený prostředek Microsoft.SqlVirtualMachine upozornění, že má asynchronní replikace operaci.
 
-1. **Co se stane k virtuálnímu počítači, pokud _* vyřadit Microsoft.SqlVirtualMachine_* prostředků?**
+1. **Co se stane k virtuálnímu počítači, pokud _\*vyřadit Microsoft.SqlVirtualMachine_\* prostředků?**
 
    Prostředek Microsoft.Compute/VirtualMachine nemá žádný vliv při přetažení Microsoft.SqlVirtualMachine prostředků. Licencování změní se však výchozí zpět na původní zdroj obrázku. 
 

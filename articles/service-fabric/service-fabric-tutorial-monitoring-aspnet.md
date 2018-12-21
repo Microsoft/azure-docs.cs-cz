@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: a130351131f59511ef4f60b579197da96f9334e6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444780"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720724"
 ---
-# <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core na platformě Service Fabric pomocí Application Insights
+# <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a Diagnostika aplikace ASP.NET Core v Service Fabric pomocí Application Insights
 
 Tento kurz je pátou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md).
 
@@ -181,7 +181,7 @@ Přejděte ke svému prostředku Application Insights na webu Azure Portal.
 Kliknutím na **Přehled** se vraťte na úvodní stránku vašeho prostředku. Pak kliknutím na **Vyhledávání** v horní části zobrazte příchozí trasování. Zobrazení trasování v Application Insights trvá několik minut. V případě, že se žádné nezobrazí, chvíli počkejte a stiskněte tlačítko **Aktualizovat** v horní části.
 ![Zobrazení trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou trvala v hlasovací aplikaci, musí být požadavek PUT odchozí ze *VotingWeb* (PUT hlasy nebo Put [name]), z příchozí žádosti PUT *VotingData* (PUT VoteData nebo Put název []), za nímž následuje pár požadavků GET pro aktualizace dat, které se zobrazí. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad toho, co se zobrazí po přidání jednoho hlasu: ![Trasování ukázkového požadavku Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou trvala v hlasovací aplikaci, musí být požadavek PUT odchozí ze *VotingWeb* (PUT hlasy nebo Put [name]), z příchozí žádosti PUT *VotingData* (PUT VoteData nebo Put název []), za nímž následuje pár požadavků GET pro aktualizace dat, které se zobrazí. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad se zobrazí jednoho hlasu se přidá: ![Trasování ukázkového požadavku AI](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 Kliknutím na některé z trasování můžete zobrazit další podrobnosti. Zobrazí se užitečné informace o požadavku, které poskytuje Application Insights, včetně *doby odezvy* a *adresy URL požadavku*. Navíc vzhledem k tomu, že jste přidali balíček NuGet specifický pro Service Fabric, se v části *Vlastní data* uvedené níže zobrazí také data o vaší aplikaci v kontextu clusteru Service Fabric. To zahrnuje kontext služby, takže se zobrazí *ID oddílu* a *ID repliky* zdroje požadavku, pomocí kterých můžete lépe vyhledat problémy při diagnostice chyb v aplikaci.
 
@@ -191,11 +191,11 @@ Kromě toho můžete kliknutím na *Mapa aplikace* v levé nabídce na stránce 
 
 ![Podrobnosti o trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-Mapa aplikace vám může pomoct lépe porozumět topologii vaší aplikace, zejména když začnete přidávat více různých služeb, které mezi sebou spoluprací. Poskytuje také základní data o úspěšnosti požadavků a může vám pomoct diagnostikovat požadavky, které selhaly, abyste zjistili, kde pravděpodobně dochází k problémům. Další informace o používání mapy aplikace najdete v tématu [Mapa aplikace v Application Insights](../application-insights/app-insights-app-map.md).
+Mapa aplikace vám může pomoct lépe porozumět topologii vaší aplikace, zejména když začnete přidávat více různých služeb, které mezi sebou spoluprací. Poskytuje také základní data o úspěšnosti požadavků a může vám pomoct diagnostikovat požadavky, které selhaly, abyste zjistili, kde pravděpodobně dochází k problémům. Další informace o používání mapy aplikace najdete v tématu [Mapa aplikace v Application Insights](../azure-monitor/app/app-map.md).
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>Přidání vlastní instrumentace do aplikace
 
-Přestože Application Insights poskytuje od začátku spoustu telemetrie, možná budete chtít přidat další vlastní instrumentaci. Ta může vycházet z vašich obchodních potřeb nebo být určená k vylepšení diagnostiky v případě, že ve vaší aplikaci dochází k problémům. Application Insights má rozhraní API pro ingestování vlastních událostí a metrik, o kterém si můžete přečíst více [tady](../application-insights/app-insights-api-custom-events-metrics.md).
+Přestože Application Insights poskytuje od začátku spoustu telemetrie, možná budete chtít přidat další vlastní instrumentaci. Ta může vycházet z vašich obchodních potřeb nebo být určená k vylepšení diagnostiky v případě, že ve vaší aplikaci dochází k problémům. Application Insights má rozhraní API pro ingestování vlastních událostí a metrik, o kterém si můžete přečíst více [tady](../azure-monitor/app/api-custom-events-metrics.md).
 
 Přidejme do souboru *VoteDataController.cs* (v části *VotingData* > *Kontrolery*) několik vlastních událostí, abychom mohli sledovat přidávání a odstraňování hlasů ze základního *votesDictionary*.
 

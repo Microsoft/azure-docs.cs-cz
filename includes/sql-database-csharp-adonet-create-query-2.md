@@ -2,382 +2,296 @@
 author: MightyPen
 ms.service: sql-database
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: c4329b9efef3cdb2911466e64ac6c9f07a1e9b31
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269651"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728542"
 ---
-<a name="cs_0_csharpprogramexample_h2"/>
-
 ## <a name="c-program-example"></a>C#Příklad programu
 
-Další části tohoto článku, který je k dispozici C# program, který se používá k odesílání příkazů jazyka Transact-SQL do služby SQL database ADO.NET. C# Program provede následující akce:
+Další části tohoto článku, který je k dispozici C# program, který se používá k odesílání příkazů jazyka Transact-SQL (T-SQL) do služby SQL database ADO.NET. C# Program ukazuje následující akce:
 
-1. [Se připojí k databázi SQL pomocí ADO.NET](#cs_1_connect).
-2. [Vytvoří tabulky](#cs_2_createtables).
-3. [Naplní tabulky s daty, pomocí příkazů T-SQL vložit](#cs_3_insert).
-4. [Aktualizuje data pomocí spojení](#cs_4_updatejoin).
-5. [Odstraní data pomocí spojení](#cs_5_deletejoin).
-6. [Vybere řádky dat pomocí spojení](#cs_6_selectrows).
-7. Ukončí připojení (který zahodí všechny dočasné tabulky z databáze tempdb).
+- [Připojení k SQL database pomocí ADO.NET](#cs_1_connect)
+- [Metody, které vracejí příkazy jazyka T-SQL](#cs_2_return)
+    - Vytvoření tabulek
+    - Naplnění tabulek daty
+    - Aktualizace, odstranění a výběr dat
+- [Odeslat T-SQL na databázi](#cs_3_submit)
 
-C# Program obsahuje:
+### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů entit (opravné)
 
-- C#kód k připojení k databázi.
-- Metody, které vracejí zdrojový kód T-SQL.
-- Dvě metody, které odesílají T-SQL pro databázi.
+`CREATE TABLE` Zahrnovat příkazy **odkazy** – klíčové slovo k vytvoření *cizí klíč* (Cizíklíč) vztah mezi dvěma tabulkami. Pokud používáte *tempdb*, okomentujte `--REFERENCES` – klíčové slovo pomocí dvojice přední pomlčky.
 
-#### <a name="to-compile-and-run"></a>Kompilace a spuštění
+Opravné zobrazuje vztah mezi dvěma tabulkami. Hodnoty **tabEmployee.DepartmentCode** *podřízené* sloupce jsou omezené na hodnoty z **tabDepartment.DepartmentCode** *nadřazené*sloupce.
 
-To C# programu je logicky .cs souborů. Ale tady je program fyzicky rozdělen na několik bloků kódu, abyste mohli snadněji vidět a pochopit každého bloku. Kompilace a spuštění tohoto programu, postupujte takto:
-
-1. Vytvoření C# projektu v sadě Visual Studio.
-    - Typ projektu by měl být *konzoly* aplikace z něco jako u následující hierarchie: **šablony** > **Visual C#**  > **Klasická plocha Windows** > **aplikace konzoly (.NET Framework)**.
-3. V souboru **Program.cs**, vymazat malé starter řádky kódu.
-3. Do souboru Program.cs zkopírujte a vložte každé z následujících bloků ve stejném pořadí, které jsou uvedeny zde.
-4. V souboru Program.cs, upravte následující hodnoty **hlavní** metody:
-
-   - **označení CB. Zdroj dat**
-   - **CD. ID uživatele**
-   - **označení CB. Heslo**
-   - **Počáteční katalog**
-
-5. Ověřte, že sestavení **System.Data.dll** odkazuje. Chcete-li ověřit, rozbalte **odkazy** uzlu v **Průzkumníka řešení** podokně.
-6. K vytvoření programu v sadě Visual Studio, klikněte na tlačítko **sestavení** nabídky.
-7. Chcete-li spustit program z aplikace Visual Studio, klikněte na tlačítko **Start** tlačítko. Výstup sestavy se zobrazí v okně cmd.exe.
+![Opravné zobrazující cizí klíč](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Máte možnost úprav jazyka T-SQL pro přidání úvodní **#** názvy tabulek, která je vytvořila jako dočasné tabulky v **tempdb**. To může být užitečné pro demonstrační účely, pokud je k dispozici žádné testovací databáze. Dočasné tabulky se automaticky odstraní po ukončení připojení. Pro dočasné tabulky nevynucují žádné odkazy na cizí klíče.
->
+> Máte možnost úprav jazyka T-SQL pro přidání úvodní `#` názvy tabulek, která je vytvořila jako dočasné tabulky v *tempdb*. To je užitečné pro demonstrační účely, pokud je k dispozici žádné testovací databáze. Všechny odkazy na cizí klíče nejsou vynucená při jejich používání a dočasných tabulek se automaticky odstraní, když se zavře po ukončení programu.
+
+### <a name="to-compile-and-run"></a>Kompilace a spuštění
+
+C# Programu je logicky jeden soubor .cs a fyzicky je rozdělen na několik bloků kódu, aby každý blok snadněji jim porozumíte. Kompilace a spuštění programu, proveďte následující kroky:
+
+1. Vytvoření C# projektu v sadě Visual Studio. Typ projektu by měl být *konzoly*, je uvedený v části **šablony** > **Visual C#**   >  **Windows Desktop**  >  **Aplikace konzoly (.NET Framework)**.
+
+1. V souboru *Program.cs*, starter řádky kódu nahraďte následující kroky:
+
+    1. Kopírování a vkládání v následujícím kódu bloky ve stejném pořadí se zobrazí, naleznete v tématu [připojit k databázi](#cs_1_connect), [generovat T-SQL](#cs_2_return), a [odeslat do databáze](#cs_3_submit).
+
+    1. Změňte následující hodnoty `Main` metody:
+
+        - *označení CB. Zdroj dat*
+        - *označení CB. ID uživatele*
+        - *označení CB. Heslo*
+        - *označení CB. Počáteční katalog*
+
+1. Ověřte, sestavení *System.Data.dll* odkazuje. Chcete-li ověřit, rozbalte **odkazy** uzlu v **Průzkumníka řešení** podokně.
+
+1. Sestavte a spusťte program ze sady Visual Studio, vyberte **Start** tlačítko. Výstup sestavy se zobrazí v okně aplikace, ale identifikátor GUID hodnoty se budou lišit mezi testovacími běhy.
+
+    ```Output
+    =================================
+    T-SQL to 2 - Create-Tables...
+    -1 = rows affected.
+
+    =================================
+    T-SQL to 3 - Inserts...
+    8 = rows affected.
+
+    =================================
+    T-SQL to 4 - Update-Join...
+    2 = rows affected.
+
+    =================================
+    T-SQL to 5 - Delete-Join...
+    2 = rows affected.
+
+    =================================
+    Now, SelectEmployees (6)...
+    8ddeb8f5-9584-4afe-b7ef-d6bdca02bd35 , Alison , 20 , acct , Accounting
+    9ce11981-e674-42f7-928b-6cc004079b03 , Barbara , 17 , hres , Human Resources
+    315f5230-ec94-4edd-9b1c-dd45fbb61ee7 , Carol , 22 , acct , Accounting
+    fcf4840a-8be3-43f7-a319-52304bf0f48d , Elle , 15 , NULL , NULL
+    View the report output here, then press any key to end the program...
+    ```
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>C#blok 1: připojení pomocí technologie ADO.NET
 
-- [Další](#cs_2_createtables)
-
+### <a name="connect-to-sql-database-using-adonet"></a>Připojení k SQL database pomocí ADO.NET
 
 ```csharp
 using System;
-using System.Data.SqlClient;   // System.Data.dll 
+using System.Data.SqlClient;   // System.Data.dll
 //using System.Data;           // For:  SqlDbType , ParameterDirection
 
 namespace csharp_db_test
 {
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         try
-         {
-            var cb = new SqlConnectionStringBuilder();
-            cb.DataSource = "your_server.database.windows.net";
-            cb.UserID = "your_user";
-            cb.Password = "your_password";
-            cb.InitialCatalog = "your_database";
-
-            using (var connection = new SqlConnection(cb.ConnectionString))
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            try
             {
-               connection.Open();
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "your_server.database.windows.net";
+                cb.UserID = "your_user";
+                cb.Password = "your_password";
+                cb.InitialCatalog = "your_database";
 
-               Submit_Tsql_NonQuery(connection, "2 - Create-Tables",
-                  Build_2_Tsql_CreateTables());
+                using (var connection = new SqlConnection(cb.ConnectionString))
+                {
+                    connection.Open();
 
-               Submit_Tsql_NonQuery(connection, "3 - Inserts",
-                  Build_3_Tsql_Inserts());
+                    Submit_Tsql_NonQuery(connection, "2 - Create-Tables", Build_2_Tsql_CreateTables());
 
-               Submit_Tsql_NonQuery(connection, "4 - Update-Join",
-                  Build_4_Tsql_UpdateJoin(),
-                  "@csharpParmDepartmentName", "Accounting");
+                    Submit_Tsql_NonQuery(connection, "3 - Inserts", Build_3_Tsql_Inserts());
 
-               Submit_Tsql_NonQuery(connection, "5 - Delete-Join",
-                  Build_5_Tsql_DeleteJoin(),
-                  "@csharpParmDepartmentName", "Legal");
+                    Submit_Tsql_NonQuery(connection, "4 - Update-Join", Build_4_Tsql_UpdateJoin(),
+                        "@csharpParmDepartmentName", "Accounting");
 
-               Submit_6_Tsql_SelectEmployees(connection);
+                    Submit_Tsql_NonQuery(connection, "5 - Delete-Join", Build_5_Tsql_DeleteJoin(),
+                        "@csharpParmDepartmentName", "Legal");
+
+                    Submit_6_Tsql_SelectEmployees(connection);
+                }
             }
-         }
-         catch (SqlException e)
-         {
-            Console.WriteLine(e.ToString());
-         }
-         Console.WriteLine("View the report output here, then press any key to end the program...");
-         Console.ReadKey();
-      }
-```
-
-
-<a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C#blokovat 2: T-SQL k vytvoření tabulky
-
-- [Předchozí](#cs_1_connect) &nbsp;  /  &nbsp; [další](#cs_3_insert)
-
-```csharp
-      static string Build_2_Tsql_CreateTables()
-      {
-         return @"
-DROP TABLE IF EXISTS tabEmployee;
-DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
-
-
-CREATE TABLE tabDepartment
-(
-   DepartmentCode  nchar(4)          not null
-      PRIMARY KEY,
-   DepartmentName  nvarchar(128)     not null
-);
-
-CREATE TABLE tabEmployee
-(
-   EmployeeGuid    uniqueIdentifier  not null  default NewId()
-      PRIMARY KEY,
-   EmployeeName    nvarchar(128)     not null,
-   EmployeeLevel   int               not null,
-   DepartmentCode  nchar(4)              null
-      REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
-);
-";
-      }
-```
-
-#### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů entit (opravné)
-
-Předchozí příkazy CREATE TABLE zahrnují **odkazy** – klíčové slovo k vytvoření *cizí klíč* (Cizíklíč) vztah mezi dvěma tabulkami.  Pokud používáte databázi tempdb, okomentujte `--REFERENCES` – klíčové slovo pomocí dvojice přední pomlčky.
-
-Dále je opravné, zobrazující vztah mezi dvěma tabulkami. Hodnoty #tabEmployee.DepartmentCode *podřízené* sloupce jsou omezeny na hodnoty, které jsou součástí #tabDepartment.Department *nadřazené* sloupce.
-
-![Opravné zobrazující cizí klíč](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
-
-
-<a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C#blokovat 3: T-SQL k vložení dat
-
-- [Předchozí](#cs_2_createtables) &nbsp;  /  &nbsp; [další](#cs_4_updatejoin)
-
-
-```csharp
-      static string Build_3_Tsql_Inserts()
-      {
-         return @"
--- The company has these departments.
-INSERT INTO tabDepartment
-   (DepartmentCode, DepartmentName)
-      VALUES
-   ('acct', 'Accounting'),
-   ('hres', 'Human Resources'),
-   ('legl', 'Legal');
-
--- The company has these employees, each in one department.
-INSERT INTO tabEmployee
-   (EmployeeName, EmployeeLevel, DepartmentCode)
-      VALUES
-   ('Alison'  , 19, 'acct'),
-   ('Barbara' , 17, 'hres'),
-   ('Carol'   , 21, 'acct'),
-   ('Deborah' , 24, 'legl'),
-   ('Elle'    , 15, null);
-";
-      }
-```
-
-
-<a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C#blokovat 4: T-SQL pro aktualizace připojení
-
-- [Předchozí](#cs_3_insert) &nbsp;  /  &nbsp; [další](#cs_5_deletejoin)
-
-
-```csharp
-      static string Build_4_Tsql_UpdateJoin()
-      {
-         return @"
-DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
-
-
--- Promote everyone in one department (see @parm...).
-UPDATE empl
-   SET
-      empl.EmployeeLevel += 1
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName1;
-";
-      }
-```
-
-
-<a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C#blokovat 5: T-SQL pro připojení k odstranění
-
-- [Předchozí](#cs_4_updatejoin) &nbsp;  /  &nbsp; [další](#cs_6_selectrows)
-
-
-```csharp
-      static string Build_5_Tsql_DeleteJoin()
-      {
-         return @"
-DECLARE @DName2  nvarchar(128);
-SET @DName2 = @csharpParmDepartmentName;  --'Legal';
-
-
--- Right size the Legal department.
-DELETE empl
-   FROM
-      tabEmployee   as empl
-      INNER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   WHERE
-      dept.DepartmentName = @DName2
-
--- Disband the Legal department.
-DELETE tabDepartment
-   WHERE DepartmentName = @DName2;
-";
-      }
-```
-
-
-
-<a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C#blokovat 6: T-SQL pro výběr řádků
-
-- [Předchozí](#cs_5_deletejoin) &nbsp;  /  &nbsp; [další](#cs_6b_datareader)
-
-
-```csharp
-      static string Build_6_Tsql_SelectEmployees()
-      {
-         return @"
--- Look at all the final Employees.
-SELECT
-      empl.EmployeeGuid,
-      empl.EmployeeName,
-      empl.EmployeeLevel,
-      empl.DepartmentCode,
-      dept.DepartmentName
-   FROM
-      tabEmployee   as empl
-      LEFT OUTER JOIN
-      tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
-   ORDER BY
-      EmployeeName;
-";
-      }
-```
-
-
-<a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>C#blokovat 6b: ExecuteReader
-
-- [Předchozí](#cs_6_selectrows) &nbsp;  /  &nbsp; [další](#cs_7_executenonquery)
-
-Tato metoda je určena pro spuštění příkazu T-SQL SELECT, který je sestavený **Build_6_Tsql_SelectEmployees** metody.
-
-
-```csharp
-      static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("Now, SelectEmployees (6)...");
-
-         string tsql = Build_6_Tsql_SelectEmployees();
-
-         using (var command = new SqlCommand(tsql, connection))
-         {
-            using (SqlDataReader reader = command.ExecuteReader())
+            catch (SqlException e)
             {
-               while (reader.Read())
-               {
-                  Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
-                     reader.GetGuid(0),
-                     reader.GetString(1),
-                     reader.GetInt32(2),
-                     (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
-                     (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
-               }
+                Console.WriteLine(e.ToString());
             }
-         }
-      }
+
+            Console.WriteLine("View the report output here, then press any key to end the program...");
+            Console.ReadKey();
+        }
 ```
 
+<a name="cs_2_return"/>
 
-<a name="cs_7_executenonquery"/>
-### <a name="c-block-7-executenonquery"></a>C#blokovat 7: metodu ExecuteNonQuery
-
-- [Předchozí](#cs_6b_datareader) &nbsp;  /  &nbsp; [další](#cs_8_output)
-
-Tato metoda je volána pro operace, které upravují data obsahu tabulek bez vrácení všech řádků data.
-
+### <a name="methods-that-return-t-sql-statements"></a>Metody, které vracejí příkazy jazyka T-SQL
 
 ```csharp
-      static void Submit_Tsql_NonQuery(
-         SqlConnection connection,
-         string tsqlPurpose,
-         string tsqlSourceCode,
-         string parameterName = null,
-         string parameterValue = null
-         )
-      {
-         Console.WriteLine();
-         Console.WriteLine("=================================");
-         Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
+static string Build_2_Tsql_CreateTables()
+{
+    return @"
+        DROP TABLE IF EXISTS tabEmployee;
+        DROP TABLE IF EXISTS tabDepartment;  -- Drop parent table last.
 
-         using (var command = new SqlCommand(tsqlSourceCode, connection))
-         {
-            if (parameterName != null)
-            {
-               command.Parameters.AddWithValue(  // Or, use SqlParameter class.
-                  parameterName,
-                  parameterValue);
-            }
-            int rowsAffected = command.ExecuteNonQuery();
-            Console.WriteLine(rowsAffected + " = rows affected.");
-         }
-      }
-   } // EndOfClass
+        CREATE TABLE tabDepartment
+        (
+            DepartmentCode  nchar(4)          not null    PRIMARY KEY,
+            DepartmentName  nvarchar(128)     not null
+        );
+
+        CREATE TABLE tabEmployee
+        (
+            EmployeeGuid    uniqueIdentifier  not null  default NewId()    PRIMARY KEY,
+            EmployeeName    nvarchar(128)     not null,
+            EmployeeLevel   int               not null,
+            DepartmentCode  nchar(4)              null
+            REFERENCES tabDepartment (DepartmentCode)  -- (REFERENCES would be disallowed on temporary tables.)
+        );
+    ";
+}
+
+static string Build_3_Tsql_Inserts()
+{
+    return @"
+        -- The company has these departments.
+        INSERT INTO tabDepartment (DepartmentCode, DepartmentName)
+        VALUES
+            ('acct', 'Accounting'),
+            ('hres', 'Human Resources'),
+            ('legl', 'Legal');
+
+        -- The company has these employees, each in one department.
+        INSERT INTO tabEmployee (EmployeeName, EmployeeLevel, DepartmentCode)
+        VALUES
+            ('Alison'  , 19, 'acct'),
+            ('Barbara' , 17, 'hres'),
+            ('Carol'   , 21, 'acct'),
+            ('Deborah' , 24, 'legl'),
+            ('Elle'    , 15, null);
+    ";
+}
+
+static string Build_4_Tsql_UpdateJoin()
+{
+    return @"
+        DECLARE @DName1  nvarchar(128) = @csharpParmDepartmentName;  --'Accounting';
+
+        -- Promote everyone in one department (see @parm...).
+        UPDATE empl
+        SET
+            empl.EmployeeLevel += 1
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName1;
+    ";
+}
+
+static string Build_5_Tsql_DeleteJoin()
+{
+    return @"
+        DECLARE @DName2  nvarchar(128);
+        SET @DName2 = @csharpParmDepartmentName;  --'Legal';
+
+        -- Right size the Legal department.
+        DELETE empl
+        FROM
+            tabEmployee   as empl
+        INNER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        WHERE
+            dept.DepartmentName = @DName2
+
+        -- Disband the Legal department.
+        DELETE tabDepartment
+            WHERE DepartmentName = @DName2;
+    ";
+}
+
+static string Build_6_Tsql_SelectEmployees()
+{
+    return @"
+        -- Look at all the final Employees.
+        SELECT
+            empl.EmployeeGuid,
+            empl.EmployeeName,
+            empl.EmployeeLevel,
+            empl.DepartmentCode,
+            dept.DepartmentName
+        FROM
+            tabEmployee   as empl
+        LEFT OUTER JOIN
+            tabDepartment as dept ON dept.DepartmentCode = empl.DepartmentCode
+        ORDER BY
+            EmployeeName;
+    ";
 }
 ```
 
+<a name="cs_3_submit"/>
 
-<a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C#blokovat 8: skutečný test výstup do konzoly
+### <a name="submit-t-sql-to-the-database"></a>Odeslat T-SQL na databázi
 
-- [Předchozí](#cs_7_executenonquery)
+```csharp
+static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("Now, SelectEmployees (6)...");
 
-Tato část jsou zaznamenané výstup, který program odeslán do konzoly. Mezi testovacími běhy se liší pouze hodnot guid.
+    string tsql = Build_6_Tsql_SelectEmployees();
 
+    using (var command = new SqlCommand(tsql, connection))
+    {
+        using (SqlDataReader reader = command.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Console.WriteLine("{0} , {1} , {2} , {3} , {4}",
+                    reader.GetGuid(0),
+                    reader.GetString(1),
+                    reader.GetInt32(2),
+                    (reader.IsDBNull(3)) ? "NULL" : reader.GetString(3),
+                    (reader.IsDBNull(4)) ? "NULL" : reader.GetString(4));
+            }
+        }
+    }
+}
 
-```text
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->> csharp_db_test.exe
+static void Submit_Tsql_NonQuery(
+    SqlConnection connection,
+    string tsqlPurpose,
+    string tsqlSourceCode,
+    string parameterName = null,
+    string parameterValue = null
+    )
+{
+    Console.WriteLine();
+    Console.WriteLine("=================================");
+    Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
 
-=================================
-Now, CreateTables (10)...
-
-=================================
-Now, Inserts (20)...
-
-=================================
-Now, UpdateJoin (30)...
-2 rows affected, by UpdateJoin.
-
-=================================
-Now, DeleteJoin (40)...
-
-=================================
-Now, SelectEmployees (50)...
-0199be49-a2ed-4e35-94b7-e936acf1cd75 , Alison , 20 , acct , Accounting
-f0d3d147-64cf-4420-b9f9-76e6e0a32567 , Barbara , 17 , hres , Human Resources
-cf4caede-e237-42d2-b61d-72114c7e3afa , Carol , 22 , acct , Accounting
-cdde7727-bcfd-4f72-a665-87199c415f8b , Elle , 15 , NULL , NULL
-
-[C:\csharp_db_test\csharp_db_test\bin\Debug\]
->>
+    using (var command = new SqlCommand(tsqlSourceCode, connection))
+    {
+        if (parameterName != null)
+        {
+            command.Parameters.AddWithValue(  // Or, use SqlParameter class.
+                parameterName,
+                parameterValue);
+        }
+        int rowsAffected = command.ExecuteNonQuery();
+        Console.WriteLine(rowsAffected + " = rows affected.");
+    }
+}
+} // EndOfClass
+}
 ```

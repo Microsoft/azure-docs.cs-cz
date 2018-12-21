@@ -17,8 +17,8 @@ ms.locfileid: "52440061"
 |---------------------|-------------------------|
 | USA – východ             | 3                       |
 | Východní USA 2           | 3                       |
-| USA – západ             | 3                       |
-| USA – západ 2           | 2                       |
+| Západní USA             | 3                       |
+| Západní USA 2           | 2                       |
 | USA – střed          | 3                       |
 | Střed USA – sever    | 3                       |
 | Střed USA – jih    | 3                       |

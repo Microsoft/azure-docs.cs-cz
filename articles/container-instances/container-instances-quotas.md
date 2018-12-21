@@ -29,11 +29,11 @@ Služba Azure Container Instances je dostupná v následujících oblastech s uv
 | Umístění | Operační systém | Procesor | Paměť (GB) |
 | -------- | -- | :---: | :-----------: |
 | Kanada – střed | Linux | 4 | 16 |
-| USA – východ, Severní Evropa, Západní Evropa, USA – západ, USA – západ 2 | Linux | 4 | 14 |
+| USA – východ, Severní Evropa, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 14 |
 | Japonsko – východ | Linux | 2 | 8 |
 | Austrálie – východ, USA – východ 2, Jihovýchodní Asie | Linux | 2 | 7 |
 | Střed Indie, východní Asie, severní centrální USA, střed USA – Jih, Indie – jih | Linux | 2 | 3,5 |
-| USA – východ, Západní Evropa, USA – západ | Windows | 4 | 14 |
+| USA – východ, Západní Evropa, Západní USA | Windows | 4 | 14 |
 | Austrálie – východ, Kanada – střed, střed Indie, východní Asie, východní USA 2, Japonsko – východ, USA (střed) – sever, Severní Evropa, střed USA – Jih, Indie – Jih, jihovýchodní Asie, USA – západ 2 | Windows | 2 | 3,5 |
 
 Pro instance kontejnerů vytvořené v mezích těchto omezení prostředků platí určitá omezení z hlediska dostupnosti v rámci oblasti nasazení. V případě velkého zatížení oblasti může při nasazování instancí docházet k selhání. Pokud chcete selhání nasazení zmírnit, zkuste nasazení instancí s nižšími nastaveními procesoru a paměti nebo zkuste nasazení později.

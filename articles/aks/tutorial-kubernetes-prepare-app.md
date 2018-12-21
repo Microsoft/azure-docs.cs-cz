@@ -3,20 +3,19 @@ title: Kurz Kubernetes v Azure – Příprava aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak pomocí Docker Compose připravit a sestavit vícekontejnerovou aplikaci, kterou pak můžete nasadit do AKS.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: b529af1db6d72d87abc25eb37f2f1c39216a0ba4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297056"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724160"
 ---
-# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS)
+# <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)
 
 V tomto kurzu, který je první částí sedmidílné série, se připraví vícekontejnerová aplikace pro použití v Kubernetes. Pomocí existujících vývojových nástrojů, jako je Docker Compose, se aplikace místně sestaví a otestuje. Získáte informace o těchto tématech:
 
@@ -29,9 +28,9 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 ![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-V následujících kurzech se image kontejneru nahraje do služby Azure Container Registry a pak se nasadí do clusteru AKS.
+V dalších kurzech se image kontejneru nahraje do služby Azure Container Registry a pak nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
@@ -49,7 +48,7 @@ Pomocí příkazu [git][] naklonujte ukázkovou aplikaci do svého vývojového 
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Změňte adresáře tak, abyste pracovali v naklonovaném adresáři.
+Změnit na klonovaný adresář.
 
 ```console
 cd azure-voting-app-redis
@@ -106,7 +105,7 @@ docker-compose down
 
 Po odebrání místní aplikace budete mít image Dockeru obsahující aplikaci Azure Vote *azure-front-front*, kterou můžete použít v dalším kurzu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se otestovala aplikace a vytvořily se pro ni image kontejnerů. Naučili jste se tyto postupy:
 

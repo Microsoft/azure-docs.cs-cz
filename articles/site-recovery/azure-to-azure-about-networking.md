@@ -78,7 +78,7 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Severní Evropa | 40.69.212.238 | 52.169.18.8
    Západní Evropa | 52.166.13.64 | 40.68.93.145
    USA – východ | 13.82.88.226 | 104.45.147.24
-   USA – západ | 40.83.179.48 | 104.40.26.199
+   Západní USA | 40.83.179.48 | 104.40.26.199
    Střed USA – jih | 13.84.148.14 | 104.210.146.250
    USA – střed | 40.69.144.231 | 52.165.34.144
    Východní USA 2 | 52.184.158.163 | 40.79.44.59
@@ -90,7 +90,7 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Kanada – střed | 52.228.36.192 | 40.85.226.62
    Kanada – východ | 52.229.125.98 | 40.86.225.142
    Západní střed USA | 52.161.20.168 | 13.78.149.209
-   USA – západ 2 | 52.183.45.166 | 13.66.228.204
+   Západní USA 2 | 52.183.45.166 | 13.66.228.204
    Spojené království – západ | 51.141.3.203 | 51.141.14.113
    Velká Británie – jih | 51.140.43.158 | 51.140.189.52
    Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139

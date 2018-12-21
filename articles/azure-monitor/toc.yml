@@ -320,7 +320,7 @@ items:
         - name: Závislosti
           href: ../application-insights/app-insights-asp-net-dependencies.md?toc=/azure/azure-monitor/toc.json
         - name: Poznámky k verzi
-          href: ../application-insights/app-insights-annotations.md?toc=/azure/azure-monitor/toc.json
+          href: app/annotations.md
         - name: ApplicationInsights.config
           href: ../application-insights/app-insights-configuration-with-applicationinsights-config.md?toc=/azure/azure-monitor/toc.json
         - name: Ladicí program snímků
@@ -397,7 +397,7 @@ items:
         - name: Ladicí program snímků
           href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
         - name: Analýzy
-          href: ../application-insights/app-insights-analytics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+          href: app/analytics-troubleshooting.md
         - name: Java
           href: ../application-insights/app-insights-java-troubleshoot.md?toc=/azure/azure-monitor/toc.json
         - name: Analýza využití
@@ -476,7 +476,7 @@ items:
         - name: Živý datový proud
           href: ../application-insights/app-insights-live-stream.md?toc=/azure/azure-monitor/toc.json
         - name: Mapa aplikace
-          href: ../application-insights/app-insights-app-map.md?toc=/azure/azure-monitor/toc.json
+          href: app/app-map.md
         - name: Diagnostika transakcí
           href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: Data HockeyApp
@@ -639,7 +639,7 @@ items:
       - name: Logs
         href: platform/dashboards.md
       - name: Aplikace
-        href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
+        href: app/app-insights-dashboards.md
     - name: Power BI
       items:
       - name: Export dat protokolů
@@ -711,7 +711,7 @@ items:
       - name: Protokolování dat
         items:
         - name: Data aplikací
-          href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
+          href: app/analytics.md
         - name: Standardní vlastnosti
         - name: Analýza textových dat
           href: log-query/parse-text.md
@@ -764,7 +764,7 @@ items:
         - name: Dostupnost
           href: ../application-insights/app-insights-monitor-web-app-availability.md?toc=/azure/azure-monitor/toc.json
         - name: Upozornění metrik
-          href: ../application-insights/app-insights-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: app/alerts.md
       - name: Použití skupin akcí s upozorněními
         items:
         - name: Vytvoření skupin akcí
@@ -878,11 +878,11 @@ items:
     - name: Aplikace
       items:
       - name: Rozhraní API pro vlastní události a metriky
-        href: ../application-insights/app-insights-api-custom-events-metrics.md?toc=/azure/azure-monitor/toc.json
+        href: app/api-custom-events-metrics.md
       - name: Sledování vlastních operací v sadě .NET SDK
         href: ../application-insights/application-insights-custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json
       - name: Filtrování a předběžné zpracování telemetrie
-        href: ../application-insights/app-insights-api-filtering-sampling.md?toc=/azure/azure-monitor/toc.json
+        href: app/api-filtering-sampling.md
       - name: Vzorkování
         href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
     - name: Řešení monitorování
@@ -1008,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 0187e9a74da758a5756ce3841953141093aa203c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 819cce3f144c3073f5b831d78cb3d9fa1b0a0a8a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601011"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726440"

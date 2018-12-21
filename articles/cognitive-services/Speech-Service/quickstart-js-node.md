@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: fmegen
-ms.openlocfilehash: 6dc482f8629bf8ca75af5f1643999ae896fa2435
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609400"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724421"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v jazyce JavaScript v Node.js pomocí sady SDK služby řeči
 
@@ -26,7 +26,7 @@ Aplikace je založena na webu společnosti Microsoft [sadou SDK pro řeč Cognit
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu Speech. Viz [Vyzkoušejte si službu Speech zdarma](get-started.md).
+* Klíč předplatného pro službu rozpoznávání řeči. [Získat zdarma](get-started.md).
 * Aktuální verze [Node.js](https://nodejs.org).
 
 ## <a name="create-a-new-project-folder"></a>Vytvořte novou složku projektu
@@ -120,10 +120,7 @@ Ukázku můžete spustit i z Visual Studio Code. Postupujte podle těchto kroků
 
    ![Snímek obrazovky s konzolou pro ladění](media/sdk/qs-js-node-07-debug_output.png)
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Vyhledejte tuto ukázku ve složce `quickstart/js-node`.
-
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získejte naše ukázky](speech-sdk.md#get-the-samples)
+> [Prozkoumejte Node.js ukázky na Githubu](https://aka.ms/csspeech/samples)

@@ -49,7 +49,7 @@ Pomocí rozhraní příkazového řádku Azure vytvořte skupinu prostředků a 
    ```
 
    > [!TIP]
-   > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
+   > Předchozí příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
    >
    >``` bash
    >az account list-locations -o table

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: b58237f25a51438f0255243f960cc2a6aed2b0ca
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6badfabb3ad20b5c17b3bb2bf09ae13f63568d05
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679167"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714743"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -106,10 +106,18 @@ Application Gateway poskytuje nativní podporu pro protokoly WebSocket a HTTP/2.
 
 Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají malou režii, na rozdíl od protokolu HTTP, a můžou znovu použít stejné připojení protokolu TCP pro více žádostí nebo odpovědí. Díky tomu je využití prostředků efektivnější. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
 
+## <a name="rewrite-http-headers-public-preview"></a>Přepsání hlavičky protokolu HTTP (public preview)
+
+Hlavičky protokolu HTTP umožňují klienta a serveru předat další informace o požadavku nebo odpovědi. Přepsání těchto HTTP záhlaví vám pomáhá s několik důležitých scénářů, jako je například přidávání bezpečnostních záhlaví pole jako HSTS / X-XSS ochrany nebo odebírá hlavičku odpovědi pole, která může odhalit citlivé informace, jako je název serveru back-endu. 
+
+Služba Application Gateway nyní podporuje schopnosti přepsat záhlaví příchozí HTTP požadavky i odchozí odpovědi protokolu HTTP. Budete moct přidat, odebrat nebo aktualizovat hlavičky požadavku a odpovědi protokolu HTTP požadavku nebo odpovědi pakety přesunout mezi klientem a back-endové fondy. Je možné přepsat standardní (definované v [dokumentu RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)) a také pole nestandardní hlavičky.  
+
+Další informace o této funkci ve verzi public preview, najdete v části [hlavičky protokolu HTTP přepsat](rewrite-http-headers.md).
+
 ## <a name="next-steps"></a>Další postup
 
 V závislosti na vašich požadavcích a prostředí můžete vytvořit testovací Application Gateway pomocí portálu Azure Portal, Azure PowerShellu nebo rozhraní Azure CLI:
 
-- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – portál Azure Portal](quick-create-portal.md)
-- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
-- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI](quick-create-cli.md)
+- [Rychlý start: Směrování webového provozu s využitím Azure Application Gateway – Azure portal](quick-create-portal.md).
+- [Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
+- [Rychlý start: Přímé webového provozu s využitím Azure Application Gateway – rozhraní příkazového řádku Azure](quick-create-cli.md)

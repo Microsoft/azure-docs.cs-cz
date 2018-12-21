@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 97ebeeb11fcd77f200a6a7e6d66f2ebc542445cc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 73710b812a78af9728873a8cb9e0586091f48f66
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542488"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717904"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – část 3: Vytvoření uživatelského rozhraní pomocí Angular
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou [účet rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) aplikace napsané v Node.js s Express a Angular a pak ho připojíte k databázi Azure Cosmos DB.
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md).
 
 Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-part2.md) a zabývá se následujícími úlohami:
 

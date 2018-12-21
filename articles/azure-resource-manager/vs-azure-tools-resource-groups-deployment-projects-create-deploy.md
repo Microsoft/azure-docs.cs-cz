@@ -1,5 +1,5 @@
 ---
-title: Projekty skupiny prostředků Azure v sadě Visual Studio | Microsoft Docs
+title: Projekty skupiny prostředků Azure v sadě Visual Studio | Dokumentace Microsoftu
 description: Pomocí sady Visual Studio můžete vytvořit projekt skupiny prostředků Azure a nasadit tyto prostředky do Azure.
 services: azure-resource-manager
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c5f1c5add069be99f7a6f467f6e3e2bd9c2b3535
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: HT
+ms.openlocfilehash: 082170d6f8bfb687195de87cde4247697571b0d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543084"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715915"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 Pomocí sady Visual Studio můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Visual Studio poskytuje řadu různých předem připravených šablon pro běžné scénáře nasazení. V tomto článku nasadíte webovou aplikaci a SQL Database.  
@@ -132,7 +132,7 @@ Teď můžete svůj projekt nasadit. Když nasadíte projekt skupiny prostředk�
     ![Tlačítko Upravit parametry](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/edit-parameters.png)
 4. Zadejte hodnoty prázdných parametrů a stiskněte tlačítko **Uložit**. Prázdnými parametry jsou **hostingPlanName**, **administratorLogin**, **administratorLoginPassword** a **databaseName**.
    
-    **hostingPlanName** určuje název [plánu služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), který chcete vytvořit. 
+    **hostingPlanName** určuje název [plánu služby App Service](../app-service/overview-hosting-plans.md), který chcete vytvořit. 
    
     **administratorLogin** určuje uživatelské jméno správce SQL Serveru. Nepoužívejte běžné názvy správců, například **sa** nebo **admin**. 
    
@@ -304,7 +304,7 @@ Nejste omezení jenom na prostředky dostupné prostřednictvím rozhraní sady 
 
 Přístup k řídicímu panelu můžete spravovat pomocí skupin RBAC. Vzhled řídicího panelu můžete také upravit po nasazení. Pokud ovšem provádíte opakované nasazení skupiny prostředků, uvede se řídicí panel do výchozího stavu ve vaší šabloně. Další informace o vytváření řídicích panelů najdete v tématu [Vytváření řídicích panelů Azure prostřednictvím kódu programu](../azure-portal/azure-portal-dashboards-create-programmatically.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili, jak vytvořit a nasadit šablony pomocí sady Visual Studio. V dalším kurzu se dozvíte, jak v referenčních informacích k šablonám vyhledat potřebné informace, abyste mohli vytvořit šifrovaný účet služby Azure Storage.
 

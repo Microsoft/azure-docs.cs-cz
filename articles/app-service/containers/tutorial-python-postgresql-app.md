@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: beverst;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 69e1bc5e537ed251801816f48d55cd50b54884c4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 663e2ef224cdc9f79db642a8a2b8958599f16f60
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635370"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728155"
 ---
 # <a name="build-a-python-and-postgresql-app-in-azure-app-service"></a>Vytvoření aplikace Python a PostgreSQL v Azure App Service
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit aplikaci Python k PostgreSQL
-> * Nasazení aplikace do Azure
+> * Nasadit aplikaci do Azure
 > * Zobrazit diagnostické protokoly
 > * Spravovat aplikaci na webu Azure Portal
 
@@ -40,7 +40,7 @@ Podle kroků v tomto článku můžete postupovat v systému macOS. Pokyny pro L
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat Python](https://www.python.org/downloads/).
@@ -203,7 +203,7 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 ```
 
 > [!NOTE]
-> Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
+> Toto nastavení umožňuje síťová připojení ze všech IP adres v síti Azure. Pro produkční prostředí zkuste nakonfigurovat co nejvíce omezující pravidla firewallu tak, že [použijete jen odchozí IP adresy, které používá vaše aplikace](../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#find-outbound-ips).
 
 Spusťte v Cloud Shellu tento příkaz znovu, ale nahraďte *\<your_ip_address>* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/), abyste měli přístup k databázi.
 
@@ -424,7 +424,7 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit aplikaci Python k PostgreSQL
-> * Nasazení aplikace do Azure
+> * Nasadit aplikaci do Azure
 > * Zobrazit diagnostické protokoly
 > * Spravovat aplikaci na webu Azure Portal
 

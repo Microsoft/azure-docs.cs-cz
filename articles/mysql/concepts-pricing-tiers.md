@@ -11,7 +11,7 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.openlocfilehash: 644a3a2fe6bce6ccc99b0c1c99ea07b129676653
 ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
 ms.locfileid: "53320842"
@@ -53,8 +53,8 @@ Výpočetní prostředky jsou k dispozici jako virtuální jádra, která předs
 | Východní USA 2 | X | X |
 | Střed USA – sever | X | X |
 | Střed USA – jih | X | X |
-| USA – západ | X | X |
-| USA – západ 2 |  | X |
+| Západní USA | X | X |
+| Západní USA 2 |  | X |
 | Kanada – střed | X | X |
 | Kanada – východ | X | X |
 | Brazílie – jih | X | X |

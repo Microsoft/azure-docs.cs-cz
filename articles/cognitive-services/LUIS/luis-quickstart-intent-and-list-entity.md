@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5706e0b124bb9ceaf1abf7228faf088dc4e510ce
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf2cd8a3dade408bf98a6fcc64af0d4ee4419fa0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096685"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718244"
 ---
-# <a name="tutorial-4-extract-exact-text-matches"></a>4. kurz: Extrakce shodného textu
+# <a name="tutorial-4-extract-exact-text-matches"></a>Kurz 4: Extrakce přesných textových shod
 V tomto kurzu se dozvíte, jak získat data která přesně odpovídají předdefinovanému seznamu položek. Ke každé položce v seznamu může existovat seznam synonym. V aplikaci pro lidské zdroje může být zaměstnanec identifikovaný různými klíčovými údaji, jako je jeho jméno, e-mail, telefonní číslo nebo daňové identifikační číslo. 
 
 Aplikace pro lidské zdroje potřebuje zjistit, jaký zaměstnanec se pohybuje z jedné budovy do druhé. Pro promluvu o pohybu zaměstnance zjistí LUIS účel a vybere zaměstnance, aby klientská aplikace pro zaměstnance vytvořila standardní příkaz k přesunu.
@@ -49,7 +49,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

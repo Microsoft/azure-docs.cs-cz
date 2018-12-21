@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: a36caf8786b836faad93a31bde952b66b7f690fc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5d56a9c5bee007568fc893a020edf487403c9fde
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537150"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720284"
 ---
 # <a name="provision-throughput-for-an-azure-cosmos-db-container"></a>Zřízení propustnosti pro kontejner Azure Cosmos DB
 
@@ -47,7 +47,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-Pokud zřizujete propustnosti pro účet rozhraní API služby Azure Cosmos DB pro MongoDB, použijte ' / myShardKey "pro cestu ke klíči oddílů a při zřizování propustnosti pro účet Cassandra API, použijte ' / myPrimaryKey" pro cestu ke klíči oddílů.
+Pokud zřizujete propustnosti pro účet Cosmos nakonfigurovaný pro rozhraní MongoDB API, použijte ' / myShardKey "pro cestu ke klíči oddílů a při zřizování propustnosti pro účet Cosmos nakonfigurovaný pro rozhraní Cassandra API, použijte ' / myPrimaryKey" pro cestu ke klíči oddílů.
 
 ## <a name="provision-throughput-using-net-sdk"></a>Zřízení propustnosti pomocí sady .NET SDK
 

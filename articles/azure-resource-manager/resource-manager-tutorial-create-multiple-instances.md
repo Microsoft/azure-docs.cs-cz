@@ -13,16 +13,18 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f355604e2bff1c3f03c8237f30cbe41ce7e5810
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3ac7517327e1447fbcd20cf3ffb506b7207a78b3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616143"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717565"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření více instancí prostředků pomocí šablon Resource Manageru
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření víc instancí prostředků pomocí šablon Resource Manageru
 
 Zjistěte, jak iterovat vaši šablonu Azure Resource Manageru k vytvoření více instancí prostředku Azure. V tomto kurzu upravíte šablonu tak, aby vytvořila tři instance účtu úložiště.
+
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Otevření šablony pro rychlý start
@@ -149,7 +151,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště. Zatím jste vytvořili jeden účet úložiště nebo více instancí účtu úložiště. V dalším kurzu se zaměříte na vývoj šablony s více prostředky a více typy prostředků. Některé prostředky mají závislé prostředky.
+V tomto kurzu jste se naučili, jak vytvořit více instancí účtu úložiště. V dalším kurzu se dozvíte, jak přesunout prostředek z jedné skupiny prostředků do jiné skupiny prostředků.
 
 > [!div class="nextstepaction"]
-> [Vytvořit závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Přesunutí prostředků](./resource-manager-tutorial-move-resources.md)

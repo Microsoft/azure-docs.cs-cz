@@ -1,6 +1,6 @@
 ---
-title: Kurz instalace fyzického zařízení Azure Data Box Edge | Microsoft Docs
-description: Druhý kurz k instalaci Azure Data Boxu Edge se zabývá rozbalením fyzického zařízení, jeho usazením do racku a zapojením kabeláže.
+title: Kurz o fyzické zařízení Azure Data Box Edge instalaci | Dokumentace Microsoftu
+description: Druhé části kurzu o instalaci Azure Data Box Edge zahrnuje jak Vybalte, namontujte do racku a fyzickým zařízením.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,39 +9,39 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 6bd3c1b2cdbd83673a181ee7e088adb39749036e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 6776eeb3cfdef98084c36a9441acafb8de1ab5b2
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963842"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720318"
 ---
-# <a name="tutorial-install-azure-data-box-edge-preview"></a>Kurz: Instalace Azure Data Boxu Edge (Preview)
+# <a name="tutorial-install-azure-data-box-edge-preview"></a>Kurz: Nainstalovat Azure Data Box Edge (preview)
 
-Tento kurz popisuje, jak nainstalovat fyzické zařízení Data Box Edge. Postup instalace zahrnuje rozbalení zařízení, jeho usazení do racku a zapojení kabeláže. 
+Tento kurz popisuje, jak nainstalovat fyzické zařízení Data Box Edge. Postup instalace zahrnuje při rozbalování, montáže do racku a kabeláž zařízení. 
 
-Dokončení instalace může trvat přibližně 2 hodiny.
+Instalace může trvat přibližně dvě hodiny pro dokončení.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Rozbalení zařízení
-> * Usazení zařízení do racku
+> * Namontovat zařízení
 > * Zapojení kabeláže zařízení
 
 > [!IMPORTANT]
-> Data Box Edge je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Data Box Edge řešení je ve verzi preview. Než pořadí a nasazení tohohle řešení, projděte si [podmínkami pro verzi preview služby Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Požadavky na instalaci fyzického zařízení jsou následující.
+Předpoklady pro instalaci fyzické zařízení následujícím způsobem:
 
 ### <a name="for-the-data-box-edge-resource"></a>Prostředek Data Box Edge
 
 Než začnete, ujistěte se, že:
 
-* Dokončili jste všechny kroky v tématu [Příprava portálu pro Data Box Edge](data-box-edge-deploy-prep.md).
-    * Vytvořili jste prostředek Data Box Edge pro nasazení vašeho zařízení.
+* Jste dokončili všechny kroky v [Příprava na nasazení Azure Data Box Edge (preview)](data-box-edge-deploy-prep.md).
+    * Vytvořili jste prostředek Data Box Edge do zařízení nasadit.
     * Vygenerovali jste aktivační klíč pro aktivaci zařízení s použitím prostředku Data Box Edge.
 
  
@@ -49,18 +49,21 @@ Než začnete, ujistěte se, že:
 
 Před nasazením zařízení:
 
-- Ujistěte se, že je zařízení bezpečně umístěné na rovném a stabilním pracovním povrchu (nebo něčem podobném).
+- Ujistěte se, že zařízení bezpečně postavená na bez stromové struktury, stabilní a úrovni pracovní plocha.
 - Ověřte, že lokalita, kterou chcete nastavit, disponuje jedním z následujícího:
-    - Nezávislý zdroj standardního střídavého proudu
-    - Rozvodná energetická jednotka racku s nepřerušitelným zdrojem napájení (UPS)
-- Ujistěte se, že v racku, do kterého chcete zařízení usadit, je k dispozici slot 1U.
+    - Standardní napájení z nezávislých zdroje
+
+        - nebo -
+    - Jednotka distribuci napájení (PDU) rack s nepřerušitelný zdroj napájení (UPS)
+    - K dispozici 1U slot na stojan, na který chcete připojit zařízení
 
 ### <a name="for-the-network-in-the-datacenter"></a>Síť v datovém centru
 
 Než začnete:
 
-- Projděte si požadavky na síť pro nasazení Data Boxu Edge a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro Data Box Edge](data-box-gateway-system-requirements.md#networking-requirements).
-- Ujistěte se, že je šířka internetového pásma minimálně 20 Mb/s, aby zařízení mohlo fungovat optimálně.
+- Zkontrolujte požadavky na síť pro nasazení hrany pole Data a nakonfigurujte síť datacenter konkrétní požadavky. Další informace najdete v tématu popisujícím [požadavky na síť pro Data Box Edge](data-box-gateway-system-requirements.md#networking-requirements).
+
+- Ujistěte se, že minimální šířky pásma Internetu je 20 MB/s pro optimální fungování zařízení.
 
 
 ## <a name="unpack-the-device"></a>Rozbalení zařízení
@@ -68,36 +71,40 @@ Než začnete:
 Toto zařízení se dodává v jedné krabici. Zařízení rozbalíte pomocí následujících kroků. 
 
 1. Umístěte krabici na rovný povrch.
-2. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud jsou krabice nebo obal vážně poškozené, krabici neotevírejte. Obraťte se na podporu Microsoftu, která vám pomůže určit, jestli je zařízení v dobrém funkčním stavu.
+2. Zkontrolujte krabici a výplňový materiál, jestli nejsou pomačkané, pořezané nebo poškozené vodou nebo jestli nenesou stopy jiného zjevného poškození. Pokud pole nebo balení je vážně poškozen, neotevírejte ho. Obraťte se na podporu Microsoftu, která vám pomůže určit, jestli je zařízení v dobrém funkčním stavu.
 3. Rozbalte krabici. Po rozbalení krabice se ujistěte, že obsahuje následující:
     - Jedno zařízení Edge v jedné skříni
     - Dva napájecí kabely
-    - Jedna sada pro usazení do racku zasunutím bez nástrojů (součástí balení jsou dvě boční kolejnice a montážní prvky)
-4. Pokud jste některou z výše uvedených položek neobdrželi, kontaktujte podporu pro Data Box Edge. Dalším krokem je usazení zařízení do racku.
+    - Jeden snímek bez nástroje do racku kit (dvě na straně rails a hardware připojení jsou zahrnuty)
+
+Pokud jste nedostali všechny položky, které jsou tady uvedené, obraťte se na podporu Data Box Edge. Dalším krokem je stojan připojení vašich zařízení.
 
 
 ## <a name="rack-the-device"></a>Usazení zařízení do racku
 
-Zařízení je potřeba nainstalovat do standardního 19palcového racku. Pomocí následujícího postupu usaďte zařízení do standardního 19palcového racku s předním a zadním sloupkem.
+Zařízení musí být nainstalován na standardní 19 palec stojanu. Pomocí následujícího postupu do racku připojení vašeho zařízení na standardní stojanu 19 palce na přední a zadní příspěvky.
 
 > [!IMPORTANT]
 > Aby zařízení Data Box Edge správně fungovala, musí být usazená do racku.
 
 
-1. Zatáhněte za přední uvolňovací mechanismus a uvolněte vnitřní kolejnici od výsuvné lišty. Uvolněte zarážku a zatlačte prostřední kolejnici dovnitř, abyste kolejnici mohli vytáhnout. Vnitřní a vnější kolejnice by teď měly být oddělené.
+1. Zatáhněte za přední uvolňovací mechanismus a uvolněte vnitřní kolejnici od výsuvné lišty. Uvolněte zarážku a zatlačte prostřední kolejnici dovnitř, abyste kolejnici mohli vytáhnout.  
+    Vnitřní a vnější kolejnice by teď měly být oddělené.
 
     ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
-2. Teď namontujte vnější kolejnice ke svislým lištám skříně racku. Pro usnadnění orientace jsou vodicí lišty označené slovem Front (Přední) a takto označený konec se má připevnit do přední části skříně. 
-    
-    1. Vyhledejte čepy v přední a zadní části montážní lišty. Roztáhněte kolejnici tak, aby se vešla mezi sloupky racku. Nejprve připevněte vnější kolejnici do zadní části racku. Nastavte zadní nosné držáky a umístěte je do montážních otvorů v zadní části racku.   
-    2. Stlačte a přidržte západku na zadním držáku, aby se odhalily kovové háčky. Kovové háčky srovnejte, vložte je do montážních otvorů a pak uvolněte západku.
+2. Nainstalujte vnější rails CAB svislé členy stojanu. Abyste při orientaci, jsou označeny snímky lišty **Front**, a proto je směrem dopředu skříň.    
+    1. Vyhledejte čepy v přední a zadní části montážní lišty. Roztáhněte kolejnici tak, aby se vešla mezi sloupky racku. Nejprve připevněte vnější kolejnici do zadní části racku. Upravte zadní připojení závorky umístěte do zadní děr montáže do racku.   
+
+    2. Stlačte a přidržte západku na zadním držáku, aby se odhalily kovové háčky. Zarovnat a vložit zpět závorky do otvorů připojení a uvolněte aktivační událost.
+
     3. Zarovnejte přední držák s montážním otvorem.
-    4. Přední držák by teď měl být upevněný v racku. Volitelně můžete k upevnění kolejnic ke sloupkům použít šroubky M5 X 10L. 
+
+    4. Přední závorky by měl nyní pevného v racku. Volitelně můžete M5 X 10L šrouby slouží k zabezpečení rails s příspěvky v případě potřeby. 
 
     ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
-3. Abyste mohli do skříně připevnit vnitřní kolejnici, ujistěte se, že jsou otvory na vnitřní kolejnici zarovnané s pomocnými čepy na straně skříně. Zkontrolujte, že hlavičky pomocných čepů na skříni procházejí otvory ve vnitřní kolejnici. Vytáhněte kolejnici směrem dopředu skříně, dokud kolejnice se slyšitelným cvaknutím nezapadne na místo. To samé zopakujte i s druhou vnitřní kolejnicí. Dokončete instalaci do racku tím, že zasunete skříň s vnitřní kolejnicí do vodicí lišty.
+3. Připojit vnitřní lišty ve skříni, ujistěte se, že klíčové dírky otvory na vnitřní lišty jsou v souladu s vyhledáním PIN kódy Toolbar skříni. Zkontrolujte, že hlavičky pomocných čepů na skříni procházejí otvory ve vnitřní kolejnici. Vytáhněte kolejnici směrem dopředu skříně, dokud kolejnice se slyšitelným cvaknutím nezapadne na místo. To samé zopakujte i s druhou vnitřní kolejnicí. Dokončete instalaci do racku tím, že zasunete skříň s vnitřní kolejnicí do vodicí lišty.
 
     ![Montáž kolejnic pro usazení do racku](./media/data-box-edge-deploy-install/rack-mount-rail-3.png)
 
@@ -105,36 +112,37 @@ Zařízení je potřeba nainstalovat do standardního 19palcového racku. Pomoc�
 
 Následující postupy vysvětlují, jak zapojit napájecí a síťový kabel zařízení Edge.
 
-## <a name="prerequisites"></a>Požadavky
-
-Než začnete zapojovat kabeláž zařízení, budete potřebovat následující:
+Než začnete kabeláže zařízení, budete potřebovat následující:
 
 - Rozbalené fyzické zařízení Edge usazené do racku
 - Dva napájecí kabely 
 - Alespoň jeden síťový kabel 1 GbE RJ-45 pro připojení k rozhraní pro správu. Na zařízení jsou dvě síťová rozhraní 1 GbE – jedno pro správu a druhé pro data.
-- Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Alespoň jedno datové síťové rozhraní (PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6) musí být připojené k internetu (pro zajištění možnosti připojení k Azure).
-- Přístup ke dvěma rozvodným energetickým jednotkám (doporučeno)
+- Jeden měděný kabel 25 GbE SFP+ pro každé datové síťové rozhraní, které chcete konfigurovat. Nejméně jeden datový síťové rozhraní z PORT 2, PORT 3, PORT 4, PORT 5 nebo 6 portu musí být připojený k Internetu (s připojením k Azure).  
+- Přístup ke dvěma jednotek pro distribuci napájení (doporučeno).
 
 > [!NOTE]
 > - Pokud připojujete pouze jedno datové síťové rozhraní, doporučujeme k odesílání dat do Azure použít síťové rozhraní 25 GbE, jako je PORT 3, PORT 4, PORT 5 nebo PORT 6. 
 > - Pro zajištění nejlepšího výkonu a zpracování velkých objemů dat zvažte připojení všech datových portů.
 > - Zařízení Edge musí být připojené k síti datacentra, aby mohlo ingestovat data ze serverů zdroje dat. 
 
-Vaše zařízení Edge má 8 disků SSD NVMe. Přední panel obsahuje také indikátory LED stavu a tlačítka napájení. Na zadní straně zařízení se nacházejí také redundantní jednotky PSU (Power Supply Unit). Vaše zařízení má 6 síťových rozhraní: dvě rozhraní 1 Gb/s a čtyři rozhraní 25 Gb/s. Vaše zařízení obsahuje kontroler BMC (Baseboard Management Controller). Identifikujte různé porty na propojovacím rozhraní vašeho zařízení.
+Vaše zařízení Edge má 8 disků SSD NVMe. Přední panel obsahuje také indikátory LED stavu a tlačítka napájení. Zařízení obsahuje redundantní napájení dodavatelského jednotek (PSUs) na pozadí. Vaše zařízení má 6 síťových rozhraní: dvě rozhraní 1 Gb/s a čtyři rozhraní 25 Gb/s. Vaše zařízení obsahuje kontroler BMC (Baseboard Management Controller). Identifikujte různé porty na propojovacím rozhraní vašeho zařízení.
  
   ![Propojovací rozhraní zařízení se zapojenou kabeláží](./media/data-box-edge-deploy-install/backplane-cabled.png)
  
-Při zapojování napájecího a síťového kabelu zařízení postupujte následovně.
+Proveďte následující kroky a zapojení kabeláže zařízení pro napájení a sítě.
 
 1. Připojte napájecí kabely k oběma jednotkám PSU ve skříni. Pokud chcete zajistit vysokou dostupnost, nainstalujte a připojte obě jednotky k různým zdrojům napájení.
+
 2. Připojte napájecí kabely k rozvodným energetickým jednotkám racku. Ujistěte se, že obě jednotky PSU používají samostatné zdroje napájení.
-3. Připojte PORT 1 síťového rozhraní 1 GbE k počítači, který slouží ke konfiguraci fyzického zařízení. PORT 1 představuje vyhrazené rozhraní pro správu.
+
+3. Rozhraní sítě 1 GbE PORT 1 připojení k počítači, který se používá ke konfiguraci fyzického zařízení. PORT 1 představuje vyhrazené rozhraní pro správu.
+
 4. Připojte jeden nebo několik portů PORT 2, PORT 3, PORT 4, PORT 5 nebo PORT 6 k internetu nebo síti datacentra. Pokud připojujete PORT 2, použijte síťový kabel RJ-45. V případě síťových rozhraní 25 GbE použijte měděné kabely SFP+.  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se dozvěděli o tématech spojených s Data Boxem Edge, jako jsou:
+V tomto kurzu jste se dozvěděli o Data Box Edge témata naučili jste se například:
 
 > [!div class="checklist"]
 > * Rozbalení zařízení
@@ -144,6 +152,6 @@ V tomto kurzu jste se dozvěděli o tématech spojených s Data Boxem Edge, jako
 V dalším kurzu se dozvíte, jak připojit, nastavit a aktivovat zařízení.
 
 > [!div class="nextstepaction"]
-> [Připojení a nastavení Data Boxu Edge](./data-box-edge-deploy-connect-setup-activate.md)
+> [Připojení a nastavení dat pole Edge](./data-box-edge-deploy-connect-setup-activate.md)
 
 
