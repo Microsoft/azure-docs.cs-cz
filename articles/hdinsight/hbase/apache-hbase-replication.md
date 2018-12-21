@@ -11,7 +11,7 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
 ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
 ms.locfileid: "53163823"
@@ -69,7 +69,7 @@ Některé z hodnot pevně zakódované v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | USA – západ |
+| Umístění | Západní USA |
 | Název virtuální sítě | &lt;ClusterNamePrevix >-ze sítě vnet1 |
 | Předponu adresního prostoru | 10.1.0.0/16 |
 | Název podsítě | podsíť 1 |

@@ -34,7 +34,7 @@ Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání ře
 
   Oblast | Parametr SDK řeči | Přizpůsobení portálu řeči
  ------|-------|--------
- USA – západ | `westus` | https://westus.cris.ai
+ Západní USA | `westus` | https://westus.cris.ai
  Západní USA 2 | `westus2` | https://westus2.cris.ai
  USA – východ | `eastus` | https://eastus.cris.ai
  USA – východ 2 | `eastus2` | https://eastus2.cris.ai

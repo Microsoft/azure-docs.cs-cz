@@ -13,7 +13,7 @@ ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 4c9f92f80275d04cd1bab408213fd02abf5c9139
 ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/08/2018
 ms.locfileid: "51279394"
@@ -58,7 +58,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | --- | --- | --- |
     | **Název** | MyCognitiveServicesAccnt | Zvolte jedinečný název účtu. |
-    | **Umístění** | USA – západ | Použijte umístění, které je k vám nejblíže. |
+    | **Umístění** | Západní USA | Použijte umístění, které je k vám nejblíže. |
     | **Cenová úroveň** | F0 | Začněte s nejnižší úrovní. Pokud vyčerpáte všechna volání, proveďte škálování na vyšší úroveň.|
     | **Skupina prostředků** | myResourceGroup | Stejnou skupinu prostředků použijte pro všechny služby v tomto kurzu.|
 

@@ -25,7 +25,7 @@ sections:
     text: >-
       > [!IMPORTANT]
 
-      > Služba Azure Dev Spaces je aktuálně ve verzi Preview a podporují ji jenom clustery AKS v oblastech **USA – východ**,**USA – východ 2**, **USA – střed**, **USA – západ 2**, **Západní Evropa**, **Jihovýchodní Asie**, **Kanada – střed** a **Kanada – východ**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+      > Služba Azure Dev Spaces je aktuálně ve verzi Preview a podporují ji jenom clustery AKS v oblastech **USA – východ**,**USA – východ 2**, **USA – střed**, **Západní USA 2**, **Západní Evropa**, **Jihovýchodní Asie**, **Kanada – střed** a **Kanada – východ**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 - title: Začínáme s Azure Dev Spaces
   items:
   - type: paragraph

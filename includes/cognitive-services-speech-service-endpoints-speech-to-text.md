@@ -6,14 +6,14 @@ ms.date: 05/07/2018
 ms.author: wolfma
 ms.openlocfilehash: e95104825562effae622e1f4fc21adc8fae7acdd
 ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/15/2018
 ms.locfileid: "51713601"
 ---
 | Oblast | Koncový bod |
 |--------|----------|
-| USA – západ | https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1 |
+| Západní USA | https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1 |
 | Západní USA 2 | https://westus2.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1 |
 | USA – východ | https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1 |
 | USA – východ 2 | https://eastus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1 |

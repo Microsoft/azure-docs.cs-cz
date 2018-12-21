@@ -35,7 +35,7 @@ Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořen�
 * Střed USA – jih
 * USA – východ
 * Východní USA 2
-* USA – západ 2
+* Západní USA 2
 * Kanada – střed
 * Západní Evropa
 * Velká Británie – jih

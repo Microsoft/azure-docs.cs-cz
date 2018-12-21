@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak spravovat zóny DNS pomocí webu Azure portal.
    |**Název**|contoso.com|Název zóny DNS|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém chcete vytvořit zónu DNS.|
    |**Skupina prostředků**|**Vytvořit novou:** contosoDNSRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný. Další informace o skupinách prostředků najdete v článku s přehledem [Resource Manageru](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups).|
-   |**Umístění**|USA – západ||
+   |**Umístění**|Západní USA||
 
 > [!NOTE]
 > Skupina prostředků označuje umístění skupiny prostředků a nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.

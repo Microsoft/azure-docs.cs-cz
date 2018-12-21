@@ -66,7 +66,7 @@ Hodnota parametru **sku-name** má formát *cenová úroveň*\_*výpočetní gen
 
 Informace o platných hodnotách pro jednotlivé oblasti a úrovně najdete v tématu [Cenové úrovně](./concepts-pricing-tiers.md).
 
-Následující příklad vytvoří server **mydemoserver** v oblasti USA – západ. Server je ve skupině prostředků **myresourcegroup** a má přihlašovací jméno správce serveru **myadmin**. Jedná se o server 5. generace na cenové úrovni pro obecné účely se 2 virtuálními jádry. Název serveru se mapuje na název DNS a v rámci Azure musí být globálně jedinečný. Nahraďte `<server_admin_password>` vlastním heslem správce serveru.
+Následující příklad vytvoří server **mydemoserver** v oblasti Západní USA. Server je ve skupině prostředků **myresourcegroup** a má přihlašovací jméno správce serveru **myadmin**. Jedná se o server 5. generace na cenové úrovni pro obecné účely se 2 virtuálními jádry. Název serveru se mapuje na název DNS a v rámci Azure musí být globálně jedinečný. Nahraďte `<server_admin_password>` vlastním heslem správce serveru.
 
 ```azurecli-interactive
 az mariadb server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 10.2

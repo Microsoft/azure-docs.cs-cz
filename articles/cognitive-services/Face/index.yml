@@ -1,28 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: af2dad930f4c236923b79481651f358ab747c84e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ecaced4404a2f2769db96a978ae5ee4f2d246b8b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338246"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651233"
 documentType: LandingData
-title: Dokumentace ke službě Rozpoznávání tváře
+title: Dokumentace k rozhraní API pro rozpoznávání tváře
 metadata:
-  title: Dokumentace ke službě Face – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
-  description: Naučte se využívat službu Face k rozpoznávání a identifikaci tváří v obrázcích a vrácení příslušných informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
+  title: Dokumentace k rozhraní API pro rozpoznávání tváře – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  description: Naučte se využívat rozhraní API pro rozpoznávání tváře k rozpoznávání a identifikaci tváří v obrázcích a vrácení příslušných informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
   services: cognitive-services
   author: PatrickFarley
-  manager: nolachar
+  manager: cgronlun
   ms.service: cognitive-services
-  ms.component: computer-vision
+  ms.component: face-api
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/31/2018
-  ms.author: nolachar
+  ms.date: 12/20/2018
+  ms.author: nitinme
 abstract:
   description: Cloudové rozhraní API pro rozpoznávání tváře poskytuje vývojářům přístup k pokročilým algoritmům pro rozpoznávání tváře. Algoritmy služby Microsoft Face umožňují detekovat atributy tváří a rozpoznávat jednotlivé tváře. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/face/overview
+      html: <p>Další informace o rozhraní API pro rozpoznávání tváře</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je rozhraní API pro rozpoznávání tváře?
+    - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
+      html: <p>Naučte se rozpoznávat tváře v obrázku.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Rozpoznávání tváří v obrázcích
+    - href: /azure/cognitive-services/face/face-how-to-install-containers
+      html: <p>Naučte se používat rozhraní API pro rozpoznávání tváře v kontejnerech.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Použití rozhraní API pro rozpoznávání tváře v kontejnerech
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -53,12 +74,20 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: 'Naučte se vyvíjet aplikace s využitím služby Rozpoznávání tváře:'
+    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro rozpoznávání tváře:'
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Detekce a orámování tváří na obrázku ve Windows</a></li>
     - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Detekce a orámování tváří na obrázku v Androidu</a></li>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Ukázky pro rozhraní API pro rozpoznávání tváře:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">Ukázky kódu</a>
 - title: Referenční informace
   items:
   - type: list
@@ -68,4 +97,8 @@ sections:
     - title: Rozhraní API
       html: <p><a href="APIReference">Rozhraní API pro rozpoznávání tváře</a></p>
     - title: Sady SDK
-      html: <p><a href="https://github.com/Microsoft/Cognitive-Face-Windows">Windows</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Python">Python</a></p> <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Android">Android</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

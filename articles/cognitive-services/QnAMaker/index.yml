@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a4402d33bda8ece965608a19c8150ec616118b1c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a6afbd8e2ffd76ca29be294f5badbc7fa2edbc9a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105967"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650009"
 documentType: LandingData
 title: Dokumentace ke QnA Makeru
 metadata:
@@ -18,10 +18,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/10/2018
+  ms.date: 12/18/2018
   ms.author: tulasim
 abstract:
-  description: QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty nebo adresy URL s nejčastějšími dotazy a příručky k produktům.
+  description: QnA Maker je cloudová služba API, která nad vašimi daty vytváří konverzační vrstvu otázek a odpovědí. QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům. Služba QnA Maker odpovídá na otázky uživatelů v přirozeném jazyce tak, že je porovnává s nejlepší možnou odpovědí v otázkách a odpovědích ve znalostní bázi.
   aside:
     image:
       alt: 
@@ -32,6 +32,27 @@ abstract:
     href: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/qnamaker/overview/overview
+      html: <p>Další informace o QnA Makeru</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co je QnA Maker?
+    - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
+      html: <p>Naučte se vytvářet, trénovat a publikovat znalostní báze.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Vytvoření, trénování a publikování znalostní báze
+    - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
+      html: <p>Naučte se publikovat znalostní báze.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Principy zdrojů dat
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
@@ -59,6 +80,15 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: Quickstarts/create-new-kb-python
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím QnA Makeru:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">Vytvoření znalostní báze a zodpovídání dotazů</a></li>
+    - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">Vytvoření robota QnA Makeru</a></li>
 - title: Referenční informace
   items:
   - type: list

@@ -10,7 +10,7 @@ items:
   - name: Informace o službách App Service Environment
     href: environment/intro.md
   - name: Porovnání možností hostování
-    href: choose-web-site-cloud-service-vm.md
+    href: overview-compare.md
 - name: Šablony Rychlý start
   items:
   - name: Vytvoření aplikace v .NET Core
@@ -67,26 +67,26 @@ items:
   - name: Jak funguje App Service
     href: app-service-how-works-readme.md
   - name: Plány služby App Service
-    href: azure-web-sites-web-hosting-plans-in-depth-overview.md
+    href: overview-hosting-plans.md
   - name: Funkce operačního systému
     href: operating-system-functionality.md
   - name: Zabezpečení
-    href: app-service-security.md
+    href: overview-security.md
     items:
     - name: Ověřování a autorizace
-      href: app-service-authentication-overview.md
+      href: overview-authentication-authorization.md
     - name: Opravy operačního systému a modulů runtime
-      href: app-service-patch-os-runtime.md
+      href: overview-patch-os-runtime.md
   - name: Příchozí a odchozí IP adresy
-    href: app-service-ip-addresses.md
+    href: overview-inbound-outbound-ips.md
   - name: Hybridní připojení
     href: app-service-hybrid-connections.md
   - name: Integrace Traffic Manageru
     href: web-sites-traffic-manager.md
   - name: Místní mezipaměť
-    href: app-service-local-cache-overview.md
+    href: overview-local-cache.md
   - name: Diagnostika
-    href: app-service-diagnostics.md
+    href: overview-diagnostics.md
 - name: Návody
   items:
   - name: Konfigurace aplikace
@@ -116,17 +116,17 @@ items:
     - name: Nastavení přihlašovacích údajů nasazení
       href: deploy-configure-credentials.md
     - name: Vytvoření přípravných prostředí
-      href: web-sites-staged-publishing.md
+      href: deploy-staging-slots.md
     - name: Pokyny pro šablony Resource Manageru
-      href: web-sites-rm-template-guidance.md
+      href: deploy-resource-manager-template.md
   - name: Mapování vlastní domény
     items:
     - name: Zakoupení domény
-      href: custom-dns-web-site-buydomains-web-app.md
+      href: manage-custom-dns-buy-domain.md
     - name: Mapování domén s Traffic Managerem
       href: web-sites-traffic-manager-custom-domain-name.md
     - name: Migrace aktivní domény
-      href: app-service-custom-domain-name-migrate.md
+      href: manage-custom-dns-migrate-domain.md
   - name: Zabezpečená aplikace
     items:
     - name: Zakoupení certifikátů SSL
@@ -148,7 +148,7 @@ items:
     - name: Omezení IP adres
       href: app-service-ip-restrictions.md
     - name: Použití spravované identity
-      href: app-service-managed-service-identity.md
+      href: overview-managed-identity.md
     - name: Odkazování na tajné klíče ze služby Key Vault
       href: app-service-key-vault-references.md
     - name: Použití certifikátu SSL v kódu aplikace
@@ -164,19 +164,19 @@ items:
     - name: Horizontální navýšení kapacity na několik instancí
       href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
     - name: Hostování s vysokou hustotou
-      href: app-service-high-density-hosting.md
+      href: manage-scale-per-app.md
   - name: Monitorování aplikace
     items:
     - name: Kvóty a výstrahy
       href: web-sites-monitor.md
     - name: Povolení protokolů
-      href: web-sites-enable-diagnostic-log.md
+      href: troubleshoot-diagnostic-logs.md
   - name: Správa aplikace
     items:
     - name: Správa plánu hostování
       href: app-service-plan-manage.md
     - name: Zálohování aplikace
-      href: web-sites-backup.md
+      href: manage-backup.md
     - name: Obnovení zálohy
       href: web-sites-restore.md
     - name: Obnovení snímku
@@ -188,9 +188,9 @@ items:
   - name: Spouštění úloh na pozadí
     items:
     - name: Vytvoření webových úloh
-      href: web-sites-create-web-jobs.md
+      href: webjobs-create.md
     - name: Vývoj webových úloh pomocí VS
-      href: websites-dotnet-deploy-webjobs.md
+      href: webjobs-dotnet-deploy-vs.md
     - name: Začínáme se sadou WebJobs SDK
       href: webjobs-sdk-get-started.md
     - name: Použití sady WebJobs SDK
@@ -230,7 +230,7 @@ items:
   - name: Řešení potíží
     items:
     - name: Řešení potíží se sadou Visual Studio
-      href: web-sites-dotnet-troubleshoot-visual-studio.md
+      href: troubleshoot-dotnet-visual-studio.md
     - name: Řešení potíží s aplikací v Node.js
       href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
     - name: Řešení chyb HTTP 502 a 503
@@ -257,9 +257,9 @@ items:
       href: ip-address-change-outbound.md
     - name: Adresa SSL
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 2256595005b39000cbad8e4967276beb65f22de3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e18c991d1ca722b16af2d5df9f2eb3a3d08127d3
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599684"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716204"

@@ -13,7 +13,7 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.openlocfilehash: fe2ca48c1cab3789f2bb501eaf00aeb9cd866b8c
 ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2018
 ms.locfileid: "50233680"
@@ -47,7 +47,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | **Název** | MyFirstLogicApp | Název vaší aplikace logiky | 
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure | 
    | **Skupina prostředků** | My-First-LA-RG | Název [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k uspořádání souvisejících prostředků | 
-   | **Umístění** | USA – západ | Oblast, do které se uloží informace o vaší aplikaci logiky | 
+   | **Umístění** | Západní USA | Oblast, do které se uloží informace o vaší aplikaci logiky | 
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    |||| 
 

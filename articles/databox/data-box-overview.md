@@ -11,7 +11,7 @@ ms.date: 10/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
 ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2018
 ms.locfileid: "49955333"
@@ -111,7 +111,7 @@ Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách st
 Data Box může přenášet data na základě oblasti, ve které se služba nasazuje, země do které se zařízení odesílá, a cíle účtu Azure Storage, do kterého data přenášíte. 
 
 - **Dostupnost služby** – u této vydané verze je služba Data Box dostupná v následujících oblastech:
-    - Všechny oblasti ve Spojených státech amerických: USA – středozápad, USA – západ 2, USA – západ, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
+    - Všechny oblasti ve Spojených státech amerických: USA – středozápad, Západní USA 2, Západní USA, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
     - Evropská unie: západní a severní Evropa
     - Spojené království: Velká Británie – jih a Velká Británie – západ
     - Francie: Francie – střed a Francie – jih
