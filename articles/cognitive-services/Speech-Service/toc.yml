@@ -10,50 +10,66 @@ items:
   expanded: true
 - name: Šablony Rychlý start
   items:
-  - name: Rozpoznávání řeči
+  - name: Sada SDK
     items:
-    - name: Pomocí C# (.NET ve Windows)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-csharp-dotnet-windows.md
-    - name: Pomocí C# (.NET Core ve Windows)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-csharp-dotnetcore-windows.md
-    - name: Pomocí C# (Univerzální platforma Windows)
-      displayName: recognize speech, speech recognition, speech to text, stt, C#, UWP
-      href: quickstart-csharp-uwp.md
-    - name: Pomocí C++ (Windows)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-cpp-windows.md
-    - name: Pomocí C++ (Linux)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-cpp-linux.md
-    - name: Pomocí Javy (Android)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-java-android.md
-    - name: Pomocí Javy (Windows nebo Linux)
-      displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
-      href: quickstart-java-jre.md
-    - name: Pomocí JavaScriptu (prohlížeč)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-js-browser.md
-    - name: Pomocí JavaScript (Node.js)
-      displayName: recognize speech, speech recognition, speech to text, stt
-      href: quickstart-js-node.md
-    - name: Pomocí Objective-C (iOS)
-      displayName: recognize speech, speech recognition, speech to text, stt, xcode
-      href: quickstart-objectivec-ios.md
-    - name: Pomocí Pythonu
-      displayName: recognize speech, speech recognition, speech to text, stt, python
-      href: quickstart-python.md
-  - name: Převod textu na řeč
+    - name: Rozpoznávání řeči
+      items:
+      - name: C# (.NET Framework Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-csharp-dotnet-windows.md
+      - name: C# (.NET Core Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-csharp-dotnetcore-windows.md
+      - name: C# (UPW)
+        displayName: recognize speech, speech recognition, speech to text, stt, C#, universal windows platform
+        href: quickstart-csharp-uwp.md
+      - name: C++ (Windows)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-cpp-windows.md
+      - name: C++ (Linux)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-cpp-linux.md
+      - name: Java (Android)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-java-android.md
+      - name: Java (Windows, Linux)
+        displayName: recognize speech, speech recognition, speech to text, stt, jre, jvm
+        href: quickstart-java-jre.md
+      - name: JavaScript (prohlížeč)
+        href: quickstart-js-browser.md
+      - name: JavaScript (Node.js)
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-js-node.md
+      - name: Objective-C (iOS)
+        displayName: recognize speech, speech recognition, speech to text, stt, xcode
+        href: quickstart-objectivec-ios.md
+      - name: Python
+        displayName: recognize speech, speech recognition, speech to text, stt
+        href: quickstart-python.md
+    - name: Překlad řeči
+      items:
+      - name: C# (.NET Core Windows)
+        href: quickstart-translate-speech-dotnetcore-windows.md
+      - name: C# (.NET Framework Windows)
+        href: quickstart-translate-speech-dotnetframework-windows.md
+      - name: C# (UPW)
+        displayName: recognize speech, speech recognition, speech to text, stt, C#, universal windows platform
+        href: quickstart-translate-speech-uwp.md
+      - name: C++ (Windows)
+        href: quickstart-translate-speech-cpp-windows.md
+      - name: Java (Windows, Linux)
+        href: quickstart-translate-speech-java-jre.md
+  - name: Rozhraní REST API
     items:
-    - name: Pomocí jazyka C# a REST
-      href: quickstart-dotnet-text-to-speech.md
-    - name: Pomocí Node.js a REST
-      href: quickstart-nodejs-text-to-speech.md
-    - name: Pomocí Pythonu a REST
-      href: quickstart-python-text-to-speech.md
-  - name: Začínáme se sadou Speech Devices SDK
+    - name: Převod textu na řeč
+      items:
+      - name: C# (.NET Core)
+        href: quickstart-dotnet-text-to-speech.md
+      - name: Node.js
+        href: quickstart-nodejs-text-to-speech.md
+      - name: Python
+        href: quickstart-python-text-to-speech.md
+  - name: Speech Devices SDK
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk-qsg.md
 - name: Kurzy
@@ -210,9 +226,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Ochrana osobních údajů a soubory cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 47335f2e0b09f797b01bfcbcc876f9a09dc57ecc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 16459f36ce6c65199fb609310ceac0a8863a6324
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605819"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715031"

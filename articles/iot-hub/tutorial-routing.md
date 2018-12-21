@@ -376,7 +376,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    **Skupina prostředků**: Klikněte na tlačítko **použít existující** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
-   **Umístění**: Použijte vaši polohu. Tento kurz používá **Západ USA**. 
+   **Umístění**: Použijte vaši polohu. Tento kurz používá **Západní USA**. 
 
    **Log Analytics**: Toto přepínací tlačítko by měla být vypnuta. 
 
@@ -432,7 +432,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
    **Skupina prostředků**: Použijte stejnou skupinu prostředků, které jsou používané služby IoT hub. Tento kurz používá **ContosoResources**. 
 
-   **Umístění**: Použijte stejné umístění, které jsou používané ve skriptu instalace. Tento kurz používá **Západ USA**. 
+   **Umístění**: Použijte stejné umístění, které jsou používané ve skriptu instalace. Tento kurz používá **Západní USA**. 
 
    ![Snímek obrazovky předvádějící vytvoření úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
 

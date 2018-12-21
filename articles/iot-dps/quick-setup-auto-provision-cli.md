@@ -11,7 +11,7 @@ manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: c9e3bbbc4fbe8a9aade3364d6cbe9e93b5798595
 ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/17/2018
 ms.locfileid: "42023060"
@@ -41,7 +41,7 @@ az group create --name my-sample-resource-group --location westus
 ```
 
 > [!TIP]
-> Tento příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
+> Tento příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
 >
 >
 
@@ -66,7 +66,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> Tento příklad vytvoří službu zřizování v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech je možné zadat umístění v jednoslovném nebo víceslovném formátu, například: westus, USA – západ, USA – ZÁPAD atd. V hodnotě se nerozlišují malá a velká písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
+> Tento příklad vytvoří službu zřizování v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech je možné zadat umístění v jednoslovném nebo víceslovném formátu, například: westus, USA – západ, Západní USA atd. V hodnotě se nerozlišují malá a velká písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
 >
 
 

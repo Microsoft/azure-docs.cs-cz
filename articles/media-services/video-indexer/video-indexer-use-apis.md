@@ -83,7 +83,7 @@ Používají se hodnoty popsané v následující tabulce. **Hodnota parametru**
 |**Název**|**Hodnota parametru**|**Popis**|
 |---|---|---|
 |Zkušební verze|trial|Používá se pro zkušební účty.|
-|USA – západ|westus2|Používá se pro oblasti Azure USA – západ 2.|
+|Západní USA|westus2|Používá se pro oblasti Azure Západní USA 2.|
 |Severní Evropa |northeurope|Používá se pro oblasti Azure Severní Evropa.|
 |Východní Asie|eastasia|Používá se pro oblasti Azure Východní Asie.|
 

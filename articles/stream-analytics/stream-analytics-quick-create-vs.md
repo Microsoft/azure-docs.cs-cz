@@ -11,7 +11,7 @@ ms.custom: mvc
 manager: kfile
 ms.openlocfilehash: be4c906535981c6b05c1a72aa23e4e1f78f57edf
 ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2018
 ms.locfileid: "49954740"
@@ -46,7 +46,7 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
    ```
 2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na asaquickstartstorage, **Umístění** na USA – západ a **Skupinu prostředků** na asaquickstart-resourcegroup (kvůli zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
+3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na asaquickstartstorage, **Umístění** na Západní USA a **Skupinu prostředků** na asaquickstart-resourcegroup (kvůli zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
 
    ![Vytvoření účtu úložiště](./media/stream-analytics-quick-create-vs/create-a-storage-account-vs.png)
 

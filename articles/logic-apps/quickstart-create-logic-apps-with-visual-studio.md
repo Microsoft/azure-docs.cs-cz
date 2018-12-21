@@ -14,7 +14,7 @@ ms.suite: integration
 ms.date: 07/31/2018
 ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
 ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2018
 ms.locfileid: "50231028"
@@ -97,8 +97,8 @@ Po vytvoření projektu skupiny prostředků Azure vytvořte a sestavte svou apl
    | ------- | ------------- | ----------- | 
    | Výpis profilu uživatele | Contoso <br> jamalhartnett@contoso.com | Ve výchozím nastavení se jedná o účet, který jste použili k přihlášení | 
    | **Předplatné** | Průběžné platby <br> (jamalhartnett@contoso.com) | Název vašeho předplatného Azure a přidruženého účtu |
-   | **Skupina prostředků** | MyLogicApp-RG <br> (USA – západ) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků pro vaši aplikaci logiky | 
-   | **Umístění** | MyLogicApp-RG2 <br> (USA – západ) | Jiné umístění, pokud nechcete použít umístění skupiny prostředků |
+   | **Skupina prostředků** | MyLogicApp-RG <br> (Západní USA) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků pro vaši aplikaci logiky | 
+   | **Umístění** | MyLogicApp-RG2 <br> (Západní USA) | Jiné umístění, pokud nechcete použít umístění skupiny prostředků |
    ||||
 
 3. Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. Posuňte se za video a triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.

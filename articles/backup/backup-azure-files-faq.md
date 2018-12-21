@@ -61,9 +61,9 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 -   Velká Británie – jih (UKS) 
 -   Velká Británie – západ (UKW) 
 -   Západní Evropa (WE) 
--   USA – západ (WUS)
+-   Západní USA (WUS)
 -   Střed USA – západ (WCUS)
--   USA – západ 2 (WUS 2)
+-   Západní USA 2 (WUS 2)
 
 Pokud potřebujete zálohování použít v konkrétní zeměpisné oblasti, která není uvedená výše, obraťte se na e-mail [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com).
 

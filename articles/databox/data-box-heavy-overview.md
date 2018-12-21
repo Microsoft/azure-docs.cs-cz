@@ -17,7 +17,7 @@ ms.date: 09/24/2018
 ms.author: alkohli
 ms.openlocfilehash: 0a5b7f93f9ac6cc5b1076881727a42fd5b95ff4b
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51235152"
@@ -112,7 +112,7 @@ Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách st
 Data Box Heavy může přenést data na základě oblasti, ve které se služba nasazuje, země do které se zařízení odesílá a cíle účtu Azure Storage, do kterého data přenášíte. 
 
 - **Dostupnost služby** – u této vydané verze je služba Data Box Heavy dostupná v následujících oblastech:
-    - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, USA – západ 2, USA – západ, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
+    - Všechny oblasti veřejného cloudu ve Spojených státech amerických – USA – středozápad, Západní USA 2, Západní USA, USA (střed) – jih, USA – střed, USA (střed) – sever, USA – východ a USA – východ 2
     - Evropská unie – západní a severní Evropa
     - Spojené království: Velká Británie – jih a Velká Británie – západ
     - Francie: Francie – střed a Francie – jih

@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o databázi Azure Cosmos
+  - name: Vítá vás Azure Cosmos DB
     href: introduction.md
 - name: Šablony Rychlý start
   items:
@@ -192,7 +192,7 @@ items:
       href: compliance.md
 - name: Rozhraní API s více modely
   items:
-  - name: Dokumentace k rozhraní SQL API
+  - name: SQL API
     items:
     - name: Modelování dat dokumentů
       href: modeling-data.md
@@ -296,11 +296,11 @@ items:
         href: /rest/api/cosmos-db/
       - name: Poskytovatel prostředků REST
         href: /rest/api/cosmos-db-resource-provider/
-  - name: Dokumentace k rozhraní MongoDB API
+  - name: Rozhraní MongoDB API
     items:
     - name: Úvod
       href: mongodb-introduction.md
-    - name: Podpora MongoDB
+    - name: Podpora přenosového protokolu
       href: mongodb-feature-support.md
     - name: Kurzy
       items:
@@ -346,11 +346,11 @@ items:
         href: mongodb-time-to-live.md
       - name: Správa indexování dat
         href: mongodb-indexing.md
-  - name: Dokumentace k rozhraní Gremlin API
+  - name: Rozhraní Gremlin API
     items:
     - name: Úvod
       href: graph-introduction.md
-    - name: Podpora Gremlin
+    - name: Podpora přenosového protokolu
       href: gremlin-support.md
     - name: Kurzy
       items:
@@ -362,11 +362,11 @@ items:
         href: bulk-executor-graph-dotnet.md
       - name: Dělení dat v grafu
         href: graph-partitioning.md
-  - name: Dokumentace k rozhraní Cassandra API
+  - name: Rozhraní Cassandra API
     items:
     - name: Úvod
       href: cassandra-introduction.md
-    - name: Podpora Cassandra
+    - name: Podpora přenosového protokolu
       href: cassandra-support.md
     - name: Kurzy
       items:
@@ -400,7 +400,7 @@ items:
         href: cassandra-spark-aggregation-ops.md
       - name: Kopírování dat tabulek
         href: cassandra-spark-table-copy-ops.md
-  - name: Dokumentace k rozhraní Table API
+  - name: Rozhraní Table API
     items:
     - name: Úvod
       href: table-introduction.md
@@ -615,9 +615,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: 34fc77f13f0c0bd394d96e19b86a1632ce2846b1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0afac84a08028219e5aa0acdc94ec9775d16c368
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410104"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728019"

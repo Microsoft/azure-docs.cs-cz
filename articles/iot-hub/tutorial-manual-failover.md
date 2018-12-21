@@ -11,7 +11,7 @@ ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
 ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/25/2018
 ms.locfileid: "39249937"
@@ -50,7 +50,7 @@ V tomto kurzu provedete následující úlohy:
     **Oblast:** Vyberte oblast ve vaší blízkosti, která je součástí verze Preview. Tento kurz používá oblast `westus2`. Převzetí služeb při selhání se dá provést jenom mezi geograficky spárovanými oblastmi Azure. S oblastí westus2 je geograficky spárovaná oblast WestCentralUS.
     
    > [!NOTE]
-   > Ruční převzetí služeb při selhání je momentálně ve verzi Public Preview a *není* dostupné v těchto oblastech Azure: USA – východ, USA – západ, Severní Evropa, Západní Evropa, Brazílie – jih a Střed USA – jih.
+   > Ruční převzetí služeb při selhání je momentálně ve verzi Public Preview a *není* dostupné v těchto oblastech Azure: USA – východ, Západní USA, Severní Evropa, Západní Evropa, Brazílie – jih a Střed USA – jih.
 
    **Název centra IoT Hub:** Zadejte název vašeho IoT Hubu. Název centra musí být globálně jedinečný. 
 

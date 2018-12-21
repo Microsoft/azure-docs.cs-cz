@@ -78,7 +78,7 @@ docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-hellowo
 
 ## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Pak aktualizovanou image kontejneru *acr-helloworld* nahrajte do svého geograficky replikovaného registru. Zde provedete jediný příkaz `docker push`, kterým nasadíte aktualizovanou image do replik registru v obou oblastech (*West US* a *East US*).
+Pak aktualizovanou image kontejneru *acr-helloworld* nahrajte do svého geograficky replikovaného registru. Zde provedete jediný příkaz `docker push`, kterým nasadíte aktualizovanou image do replik registru v obou oblastech (*Západní USA* a *Východní USA*).
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -107,9 +107,9 @@ Pokud si chcete zobrazit regionální webhooky, které se vytvořily v předchoz
 
 ![Webhooky v registru kontejnerů na portálu Azure Portal][tutorial-portal-01]
 
-Historii volání a odpovědí webhooku uvidíte po kliknutí na jeden z nich. V protokolech obou webhooků byste měli vidět řadu pro akci **nahrání**. Protokol webhooku umístěného v oblasti *West US* zobrazuje aktivaci akce **nahrání** příkazem `docker push` z předchozího kroku:
+Historii volání a odpovědí webhooku uvidíte po kliknutí na jeden z nich. V protokolech obou webhooků byste měli vidět řadu pro akci **nahrání**. Protokol webhooku umístěného v oblasti *Západní USA* zobrazuje aktivaci akce **nahrání** příkazem `docker push` z předchozího kroku:
 
-![Protokol webhooku v registru kontejnerů na portálu Azure Portal (West US)][tutorial-portal-02]
+![Protokol webhooku v registru kontejnerů na portálu Azure Portal (Západní USA)][tutorial-portal-02]
 
 ## <a name="view-the-updated-web-app"></a>Zobrazení aktualizované webové aplikace
 
@@ -119,9 +119,9 @@ Přejděte ve svém prohlížeči na obě nasazení regionální webové aplikac
 
 ![Přehled služby App Service na portálu Azure Portal][tutorial-portal-03]
 
-Pokud si chcete aktualizovanou aplikaci zobrazit, vyberte odkaz v přehledu služby App Service. Zde je příklad zobrazení aplikace běžící v oblasti *West US*:
+Pokud si chcete aktualizovanou aplikaci zobrazit, vyberte odkaz v přehledu služby App Service. Zde je příklad zobrazení aplikace běžící v oblasti *Západní USA*:
 
-![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti West US][deployed-app-westus-modified]
+![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti Západní USA][deployed-app-westus-modified]
 
 Ověřte si zobrazením v prohlížeči, že aktualizovaná image kontejneru byla nasazená také v oblasti *East US*.
 

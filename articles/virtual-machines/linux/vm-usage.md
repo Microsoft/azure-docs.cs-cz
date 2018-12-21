@@ -108,7 +108,7 @@ Název oblasti, v poli umístění prostředku v podrobnosti o využití se liš
 |    westcentralus         |    USA – středozápad                       |
 |    westeurope            |    Západní Evropa                           |
 |    WestIndia             |    Indie – západ                               |
-|    westus                |    USA – západ                               |
+|    westus                |    Západní USA                               |
 |    westus2               |    USA – západ 2                             |
 
 

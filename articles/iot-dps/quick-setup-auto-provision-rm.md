@@ -11,7 +11,7 @@ manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
 ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
 ms.locfileid: "46999037"
@@ -58,7 +58,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
     ```
 
     > [!TIP]
-    > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
+    > Předchozí příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
     >
     >
 

@@ -10,7 +10,7 @@ ms.author: ancav
 ms.component: metrics
 ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
 ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2018
 ms.locfileid: "53326028"
@@ -172,7 +172,7 @@ Ve verzi public preview je k dispozici pouze v podmnožině oblastí s Azure mo�
 |USA – východ|https://eastus.monitoring.azure.com/|
 |Střed USA – jih|https://southcentralus.monitoring.azure.com/|
 |Západní střed USA|https://westcentralus.monitoring.azure.com/|
-|USA – západ 2|https://westus2.monitoring.azure.com/|
+|Západní USA 2|https://westus2.monitoring.azure.com/|
 |Jihovýchodní Asie|https://southeastasia.monitoring.azure.com/|
 |Severní Evropa|https://northeurope.monitoring.azure.com/|
 |Západní Evropa|https://westeurope.monitoring.azure.com/|

@@ -12,7 +12,7 @@ ms.date: 05/19/2017
 ms.author: kefre
 ms.openlocfilehash: db4d589bb0c7611e632a90f2174ad8e9c415bf6a
 ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2018
 ms.locfileid: "45985418"
@@ -28,7 +28,7 @@ Klíče předplatného jsou platné pouze pro jeden z těchto [oblasti Microsoft
 
 | Oblast | Adresa |
 |---|---|
-| USA – západ | westus.API.cognitive.microsoft.com |
+| Západní USA | westus.API.cognitive.microsoft.com |
 | Východní USA 2 | eastus2.API.cognitive.microsoft.com |
 | Západní střed USA | westcentralus.API.cognitive.microsoft.com |
 | Západní Evropa | westeurope.API.cognitive.microsoft.com |

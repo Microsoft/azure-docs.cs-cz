@@ -49,8 +49,8 @@ Správce dat StorSimple je dostupná v následujících 7 oblastech:
 
  - Jihovýchodní Asie
  - USA – východ
- - USA – západ
- - USA – západ 2
+ - Západní USA
+ - Západní USA 2
  - Západní střed USA
  - Severní Evropa
  - Západní Evropa

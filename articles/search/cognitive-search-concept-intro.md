@@ -12,7 +12,7 @@ ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
 ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/12/2018
 ms.locfileid: "53315600"
@@ -97,7 +97,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 + Střed USA – jih
 + USA – východ
 + Východní USA 2
-+ USA – západ 2
++ Západní USA 2
 + Kanada – střed
 + Západní Evropa
 + Velká Británie – jih

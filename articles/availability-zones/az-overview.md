@@ -45,7 +45,7 @@ Pokud chcete dosáhnout komplexní obchodní kontinuity podnikových procesů v 
 - Severní Evropa
 - Jihovýchodní Asie 
 - Západní Evropa
-- USA – západ 2
+- Západní USA 2
 
 
 
