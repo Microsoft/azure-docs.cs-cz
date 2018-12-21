@@ -110,7 +110,7 @@ Při vytváření cloudové služby nebo služba úložiště, je třeba zadat p
 * USA – střed
 * Střed USA – sever
 * Střed USA – jih
-* USA – západ
+* Západní USA
 * USA – východ
 * Japonsko – východ
 * Japonsko – západ

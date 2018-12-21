@@ -13,7 +13,7 @@ ms.locfileid: "51713652"
 ---
 Oblast| Koncový bod služby tokenu
 -|-
-USA – západ| https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken
+Západní USA| https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken
 Západní USA 2| https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken
 USA – východ| https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken
 USA – východ 2| https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issueToken

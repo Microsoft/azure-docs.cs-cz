@@ -159,8 +159,8 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | **Severní Amerika** | |
 | USA – východ | 12076:51004 |
 | Východní USA 2 | 12076:51005 |
-| USA – západ | 12076:51006 |
-| USA – západ 2 | 12076:51026 |
+| Západní USA | 12076:51006 |
+| Západní USA 2 | 12076:51026 |
 | Západní střed USA | 12076:51027 |
 | Střed USA – sever | 12076:51007 |
 | Střed USA – jih | 12076:51008 |

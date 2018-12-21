@@ -117,14 +117,14 @@ Pro provozní kontinuitu a po havárii (BCDR) obnovení důvodů jste zadali, ž
 | Kanada – východ | https://kailani-cae.one.microsoft.com | Kanada – střed | https://tm-kailani.cae.one.microsoft.com |
 | USA – střed | https://kailani-cus.one.microsoft.com | Východní USA 2 | https://tm-kailani-cus.one.microsoft.com |
 | Východní Asie | https://kailani11.one.microsoft.com | Jihovýchodní Asie | https://tm-kailani11.one.microsoft.com |
-| USA – východ | https://kailani1.one.microsoft.com | USA – západ | https://tm-kailani1.one.microsoft.com |
+| USA – východ | https://kailani1.one.microsoft.com | Západní USA | https://tm-kailani1.one.microsoft.com |
 | Východ USA 2 | https://kailani-ess.one.microsoft.com | USA – střed | https://tm-kailani-ess.one.microsoft.com |
 | Severní Evropa | https://kailani7.one.microsoft.com | Západní Evropa | https://tm-kailani7.one.microsoft.com |
 | Jihovýchodní Asie | https://kailani10.one.microsoft.com | Východní Asie | https://tm-kailani10.one.microsoft.com |
 | Velká Británie – jih | https://kailani-uks.one.microsoft.com | Spojené království – západ | https://tm-kailani-uks.one.microsoft.com |
 | Spojené království – západ | https://kailani-ukw.one.microsoft.com | Velká Británie – jih | https://tm-kailani-ukw.one.microsoft.com |
 | Západní Evropa | https://kailani6.one.microsoft.com | Severní Evropa | https://tm-kailani6.one.microsoft.com |
-| USA – západ | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
+| Západní USA | https://kailani.one.microsoft.com | USA – východ | https://tm-kailani.one.microsoft.com |
 
 - Pokud používáte místně redundantní (LRS) a účty úložiště (ZRS) redundantní zóny, potřebujete jenom povolit adresu URL v části "primární koncový bod adresy URL".
 

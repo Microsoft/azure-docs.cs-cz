@@ -13,7 +13,7 @@ ms.date: 12/07/2018
 ms.author: diberry
 ms.openlocfilehash: 5d8d3d4d55d4d03eb6d6a62898823158812d7c1f
 ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
 ms.locfileid: "53135827"
@@ -45,18 +45,18 @@ Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publik
 
  Globální oblast | Oblast pro tvorbu<br>`API region name` | Publikování a dotazování na oblast<br>`API region name`   |   Služba LUIS webu | Formát adresy URL koncového bodu   |
 |-----|------|------|------|------|
-| Asie | USA – západ<br>`westus`| Východní Asie<br>`eastasia`     | [www.LUIS.ai][www.luis.ai] |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Asie | USA – západ<br>`westus`| Jihovýchodní Asie<br>`souteastasia`     | [www.LUIS.ai][www.luis.ai] |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Asie | Západní USA<br>`westus`| Východní Asie<br>`eastasia`     | [www.LUIS.ai][www.luis.ai] |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Asie | Západní USA<br>`westus`| Jihovýchodní Asie<br>`souteastasia`     | [www.LUIS.ai][www.luis.ai] |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | *[Austrálie](#publishing-to-australia) | Austrálie – východ<br>`australiaeast`| Austrálie – východ<br>`australiaeast`     |   [AU.LUIS.ai][au.luis.ai] | https://australiaeast.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | *[Evropa](#publishing-to-europe)| Západní Evropa<br>`westeurope`| Severní Evropa<br>`northeurope`     | [EU.LUIS.ai][eu.luis.ai]|  https://northeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
 | *[Evropa](#publishing-to-europe) | Západní Evropa<br>`westeurope`| Západní Evropa<br>`westeurope`     | [EU.LUIS.ai][eu.luis.ai]|  https://westeurope.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| Severní Amerika | USA – západ<br>`westus` | USA – východ<br>`eastus`      |[www.LUIS.ai][www.luis.ai] |   https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Severní Amerika | USA – západ<br>`westus` | Východní USA 2<br>`eastus2`     | [www.LUIS.ai][www.luis.ai] |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Severní Amerika | USA – západ<br>`westus` | Střed USA – jih<br>`southcentralus`     | [www.LUIS.ai][www.luis.ai] |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
-| Severní Amerika | USA – západ<br>`westus` | Západní střed USA<br>`westcentralus`     |[www.LUIS.ai][www.luis.ai] |  https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
-| Severní Amerika | USA – západ<br>`westus` | USA – západ<br>`westus`  |  [www.LUIS.ai][www.luis.ai] | https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
-| Severní Amerika | USA – západ<br>`westus` | USA – západ 2<br>`westus2`    | [www.LUIS.ai][www.luis.ai] |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
-| Jižní Amerika | USA – západ<br>`westus` | Brazílie – jih<br>`brazilsouth`     | [www.LUIS.ai][www.luis.ai] |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Severní Amerika | Západní USA<br>`westus` | USA – východ<br>`eastus`      |[www.LUIS.ai][www.luis.ai] |   https://eastus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Severní Amerika | Západní USA<br>`westus` | Východní USA 2<br>`eastus2`     | [www.LUIS.ai][www.luis.ai] |  https://eastus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Severní Amerika | Západní USA<br>`westus` | Střed USA – jih<br>`southcentralus`     | [www.LUIS.ai][www.luis.ai] |  https://southcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   | 
+| Severní Amerika | Západní USA<br>`westus` | Západní střed USA<br>`westcentralus`     |[www.LUIS.ai][www.luis.ai] |  https://westcentralus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
+| Severní Amerika | Západní USA<br>`westus` | Západní USA<br>`westus`  |  [www.LUIS.ai][www.luis.ai] | https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
+| Severní Amerika | Západní USA<br>`westus` | Západní USA 2<br>`westus2`    | [www.LUIS.ai][www.luis.ai] |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
+| Jižní Amerika | Západní USA<br>`westus` | Brazílie – jih<br>`brazilsouth`     | [www.LUIS.ai][www.luis.ai] |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
 ## <a name="publishing-to-europe"></a>Publikování v Evropě
 

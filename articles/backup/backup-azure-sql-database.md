@@ -78,8 +78,8 @@ Azure Backup podporuje pro následujících zeměpisných oblastech:
 - Velká Británie – západ (UKW)
 - Střed USA – západ (WCUS)
 - Západní Evropa (WE)
-- USA – západ (WUS)
-- USA – západ 2 (WUS 2)
+- Západní USA (WUS)
+- Západní USA 2 (WUS 2)
 
 ## <a name="support-for-operating-systems-and-sql-server-versions"></a>Podpora pro operační systémy a verze systému SQL Server
 

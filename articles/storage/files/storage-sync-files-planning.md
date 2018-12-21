@@ -10,7 +10,7 @@ ms.author: wgries
 ms.component: files
 ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
 ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/27/2018
 ms.locfileid: "52335176"
@@ -241,7 +241,7 @@ Azure File Sync je k dispozici pouze v těchto oblastech:
 | Velká Británie – jih | Londýn |
 | Spojené království – západ | Cardiff |
 | Západní Evropa | Nizozemsko |
-| USA – západ | Kalifornie |
+| Západní USA | Kalifornie |
 
 Azure File Sync podporuje synchronizaci pouze u sdílené složky Azure, který je ve stejné oblasti jako služba synchronizace úložiště.
 
@@ -259,7 +259,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Střed Indie       | Indie – jih        |
 | USA – střed          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| USA – východ             | USA – západ            |
+| USA – východ             | Západní USA            |
 | Východ USA 2           | USA – střed         |
 | Severní Evropa        | Západní Evropa        |
 | Střed USA – sever    | Střed USA – jih   |
@@ -268,7 +268,7 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 | Velká Británie – jih            | Spojené království – západ            |
 | Spojené království – západ             | Velká Británie – jih           |
 | Západní Evropa         | Severní Evropa       |
-| USA – západ             | USA – východ            |
+| Západní USA             | USA – východ            |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

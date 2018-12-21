@@ -122,9 +122,9 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 |Země  |Země  |Země  |Země  |
 |---------|---------|---------|---------|
 |USA – východ    | Severní Evropa        | Střed Indie        |US Gov – Iowa         |
-|USA – západ     |Západní Evropa         | Indie – jih        | US DoD – východ        |
+|Západní USA     |Západní Evropa         | Indie – jih        | US DoD – východ        |
 |Východní USA 2    | Východní Asie        |  Indie – západ        | US DoD – střed        |
-|USA – západ 2     | Jihovýchodní Asie        | Kanada – střed        | Čína – východ         |
+|Západní USA 2     | Jihovýchodní Asie        | Kanada – střed        | Čína – východ         |
 |USA – střed     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
 |Střed USA – sever     |  Austrálie – jihovýchod       | Brazílie – jih        | Velká Británie – jih        |
 |Střed USA – jih     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |

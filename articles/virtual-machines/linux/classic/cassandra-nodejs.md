@@ -158,7 +158,7 @@ Na obrazovce "Konfigurace virtuálního počítače" #2 zadejte následující i
 <tr><th>NÁZEV POLE             </th><th> HODNOTA POLE                       </th><th> POZNÁMKY                                 </th></tr>
 <tr><td> CLOUDOVÉ SLUŽBY    </td><td> Vytvořit novou cloudovou službu    </td><td>Cloudová služba je kontejneru výpočetní prostředky, jako jsou virtuální počítače</td></tr>
 <tr><td> NÁZEV CLOUDOVÉ SLUŽBY DNS    </td><td>ubuntu-template.cloudapp.net    </td><td>Pojmenujte nástroje pro vyrovnávání zatížení nezávislá počítače</td></tr>
-<tr><td> OBLAST NEBO SKUPINA VZTAHŮ/VIRTUÁLNÍ SÍTĚ </td><td>    USA – západ    </td><td> Vyberte oblast, ze kterého vaše webové aplikace přístup ke clusteru Cassandra</td></tr>
+<tr><td> OBLAST NEBO SKUPINA VZTAHŮ/VIRTUÁLNÍ SÍTĚ </td><td>    Západní USA    </td><td> Vyberte oblast, ze kterého vaše webové aplikace přístup ke clusteru Cassandra</td></tr>
 <tr><td>ÚČET ÚLOŽIŠTĚ </td><td>    Použijte výchozí.    </td><td>Použít výchozí účet úložiště nebo předem vytvořený účet úložiště v konkrétní oblasti</td></tr>
 <tr><td>SKUPINA DOSTUPNOSTI </td><td>    Žádný </td><td>    Ponechte prázdné</td></tr>
 <tr><td>KONCOVÉ BODY    </td><td>Použijte výchozí. </td><td>    Použít výchozí konfiguraci SSH </td></tr>
@@ -309,7 +309,7 @@ Tento proces trvá několik sekund a na obrázku by měla být k dispozici v č�
 <table>
 <tr><th>Atribut název virtuálního počítače</th><th>Hodnota</th><th>Poznámky</th></tr>
 <tr><td>Název</td><td>vnet-cass-west-us</td><td></td></tr>
-<tr><td>Oblast</td><td>USA – západ</td><td></td></tr>
+<tr><td>Oblast</td><td>Západní USA</td><td></td></tr>
 <tr><td>Servery DNS</td><td>Žádný</td><td>Tuto zprávu ignorovat, protože nepoužíváme DNS Server</td></tr>
 <tr><td>Adresní prostor</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>Počáteční IP</td><td>10.1.0.0</td><td></td></tr>    
