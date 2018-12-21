@@ -304,7 +304,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 V tomto kroku vytvoříte **kanálu** s jedním **aktivity kopírování** , která používá **EmpOnPremSQLTable** jako vstup a **OutputBlobTable** jako výstup.
 
-1. V editoru služby Data Factory, klikněte na tlačítko **... Další** a poté na **Nový kanál.
+1. V editoru služby Data Factory, klikněte na tlačítko **... Další** a poté na **Nový kanál**.
 2. Nahraďte kód JSON v pravém podokně následujícím textem:    
 
     ```JSON   
