@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 8106c68397dea8d52c6d2daa2d09dfbc72c2a4c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 58829bcd1b3c38b70929167beae5d8866483d616
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995053"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716493"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Kurz: Přidání vlastní domény do služby Front Door
 V tomto kurzu se dozvíte, jak do služby Front Door přidat vlastní doménu. Pokud k doručování aplikací používáte službu Azure Front Door Service a chcete, aby se v požadavcích koncových uživatelů zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky.
@@ -34,9 +34,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [Rychlý start: Vytvoření služby Front Door](quickstart-create-front-door.md).
+Před dokončením kroků v tomto kurzu musíte nejprve vytvořit službu Front Door. Další informace najdete v tématu [rychlý start: Vytvoření branou](quickstart-create-front-door.md).
 
-Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app).
+Pokud ještě nemáte vlastní doménu, musíte ji nejprve zakoupit u poskytovatele domén. Příklad najdete v tématu [Nákup vlastního názvu domény](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).
 
 Pokud k hostování [domén DNS](https://docs.microsoft.com/azure/dns/dns-overview) používáte Azure, musíte delegovat DNS (Domain Name System) poskytovatele domén na Azure DNS. Další informace najdete v tématu [Delegování domény do DNS Azure](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Jinak, pokud vaši doménu DNS spravuje poskytovatel domény, přejděte k části [Vytvoření záznamu DNS CNAME](#create-a-cname-dns-record).
 
@@ -66,11 +66,11 @@ Vytvoření záznamu CNAME se subdoménou afdverify:
     |---------------------------|-------|---------------------------------|
     | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
 
-    - Zdroj: Zadejte vlastní název domény včetně subdomény afdverify v následujícím formátu: afdverify_&lt;vlastní_název_domény&gt;_. Například afdverify.www.contoso.com.
+    - Zdroj: Zadejte název vaší vlastní domény včetně subdomény afdverify v následujícím formátu: afdverify.  _&lt;vlastního názvu domény&gt;_. Například afdverify.www.contoso.com.
 
-    - Typ: Zadejte *CNAME*.
+    - Zadejte: Zadejte *CNAME*.
 
-    - Cíl: Zadejte výchozího hostitele front-endu služby Front Door včetně subdomény afdverify v následujícím formátu: _&lt;název_koncového_bodu&gt;_.azurefd.net. Například afdverify.contoso.azurefd.net.
+    - Cíl: Zadejte výchozí branou front-endu hostitele, včetně subdomény afdverify v následujícím formátu: afdverify.  _&lt;název koncového bodu&gt;_. azurefd.net. Například afdverify.contoso.azurefd.net.
 
 4. Uložte provedené změny.
 
@@ -86,13 +86,13 @@ Například postup pro registrátora domén GoDaddy je následující:
 
 5. Vyplňte následující pole záznamu CNAME:
 
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
+    - Zadejte: Ponechte *CNAME* vybrané.
 
-    - Host (Hostitel): Zadejte subdoménu své vlastní domény, kterou chcete použít, včetně názvu subdomény afdverify. Například afdverify.www.
+    - Hostitel: Zadejte subdoménu vlastní domény k použití, včetně názvu subdomény afdverify. Například afdverify.www.
 
-    - Points to (Odkazuje na): Zadejte název výchozího hostitele front-endu služby Front Door včetně názvu subdomény afdverify. Například afdverify.contoso.azurefd.net. 
+    - Odkazuje na: Zadejte název hostitele vašeho výchozího branou front-endu hostitele, včetně názvu subdomény afdverify. Například afdverify.contoso.azurefd.net. 
 
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
+    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  
@@ -143,11 +143,11 @@ Vytvoření záznamu CNAME pro vlastní doménu:
     |-----------------|-------|-----------------------|
     | www.contoso.com | CNAME | contoso.azurefd.net |
 
-    - Zdroj: Zadejte název vlastní domény (například www.contoso.com).
+    - Zdroj: Zadejte vlastní název domény (například www.contoso.com).
 
-    - Typ: Zadejte *CNAME*.
+    - Zadejte: Zadejte *CNAME*.
 
-    - Cíl: Zadejte výchozího hostitele front-endu služby Front Door. Musí mít následující formát: _&lt;název_hostitele&gt;_.azurefd.net. Například contoso.azurefd.net.
+    - Cíl: Zadejte hostitele výchozí branou front-endu. Musí mít následující formát: _&lt;název_hostitele&gt;_.azurefd.net. Například contoso.azurefd.net.
 
 4. Uložte provedené změny.
 
@@ -167,13 +167,13 @@ Například postup pro registrátora domén GoDaddy je následující:
 
 5. Vyplňte pole záznamu CNAME:
 
-    - Type (Typ): Ponechte vybranou hodnotu *CNAME*.
+    - Zadejte: Ponechte *CNAME* vybrané.
 
-    - Host (Hostitel): Zadejte subdoménu vlastní domény, kterou chcete použít. Například www nebo profile.
+    - Hostitel: Zadejte subdoménu vlastní domény k použití. Například www nebo profile.
 
-    - Points to (Odkazuje na): Zadejte výchozí název hostitele vaší služby Front Door. Například contoso.azurefd.net. 
+    - Odkazuje na: Zadejte výchozí název hostitele vašeho branou. Například contoso.azurefd.net. 
 
-    - TTL: Ponechte vybranou hodnotu *1 Hour* (1 hodina).
+    - HODNOTA TTL: Ponechte *1 hodina* vybrané.
 
 6. Vyberte **Uložit**.
  
@@ -195,7 +195,7 @@ V předchozích krocích jste do služby Front Door přidali vlastní doménu. P
    Zruší se přidružení vlastní domény ke koncovému bodu.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

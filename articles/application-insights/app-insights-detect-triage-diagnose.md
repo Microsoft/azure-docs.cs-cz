@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: cb106abaff2446fdbc2d025ae96c95745bc53150
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ab3d4d2df8f12c28fa6dbdbdd7d6913d53f12884
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728051"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715065"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -108,7 +108,7 @@ Takže řešení problému už je na cestě, a to dokonce před zkoumáním prot
 ![neúspěšný požadavek](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detect-exceptions"></a>Zjišťování výjimek
-Stačí nepatrné nastavení a [výjimky](app-insights-asp-net-exceptions.md) se hlásí do Application Insights automaticky. Můžete je zachycovat také explicitně vložením volání metody [TrackException()](app-insights-api-custom-events-metrics.md#trackexception) do kódu:  
+Stačí nepatrné nastavení a [výjimky](app-insights-asp-net-exceptions.md) se hlásí do Application Insights automaticky. Můžete je zachycovat také explicitně vložením volání metody [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) do kódu:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -131,7 +131,7 @@ Stačí nepatrné nastavení a [výjimky](app-insights-asp-net-exceptions.md) se
 
 Tým banky Fabrikam vyvinul postup spočívající v tom, že se telemetrie vždy odesílá jako výjimka, pokud nejde o zřejmé obnovení.  
 
-Jejich strategie je ve skutečnosti ještě širší – odesílají telemetrii ve všech případech, kdy zákazník může být frustrovaný něčím, co se snaží udělat, ať už to odpovídá výjimce v kódu nebo ne. Můžou sledovat i události, kdy například externí systém mezibankovních přenosů vrátí zprávu o nemožnosti dokončení transakce z nějakých provozních důvodů (bez chyby na straně zákazníka).
+Jejich strategie je ve skutečnosti ještě širší: Odesílají telemetrii ve všech případech, kde je zákazník frustrovaní něčím, co chcete provést, ať už to odpovídá výjimce v kódu nebo ne. Můžou sledovat i události, kdy například externí systém mezibankovních přenosů vrátí zprávu o nemožnosti dokončení transakce z nějakých provozních důvodů (bez chyby na straně zákazníka).
 
     var successCode = AttemptTransfer(transferAmount, ...);
     if (successCode < 0)

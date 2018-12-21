@@ -1,6 +1,6 @@
 ---
-title: Vytvoření webové aplikace pomocí rozhraní API služby Azure Cosmos DB pro MongoDB pomocí .NET SDK a webu Azure portal
-description: Představuje ukázku kódu .NET, které můžete použít k připojení a dotazování do rozhraní API služby Azure Cosmos DB pro MongoDB.
+title: Vytvoření webové aplikace pomocí služby Azure Cosmos DB pro rozhraní API MongoDB pomocí .NET SDK a webu Azure portal
+description: Obsahuje ukázku kódu .NET, které můžete použít k připojení a dotazování služby Azure Cosmos DB pro rozhraní API MongoDB.
 services: cosmos-db
 author: slyons
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sclyon
-ms.openlocfilehash: 7800a9d4e4a5ad5d24415ec8c4c0ce70d7ab2a70
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ffc6296af2366723076f2b6242cbda3f85feef34
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537252"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714861"
 ---
-# <a name="build-a-web-app-with-azure-cosmos-db-api-for-mongodb-using-net-sdk-and-the-azure-portal"></a>Vytvoření webové aplikace pomocí rozhraní API služby Azure Cosmos DB pro MongoDB pomocí .NET SDK a webu Azure portal
+# <a name="build-a-web-app-with-azure-cosmos-db-for-mongodb-api-using-net-sdk-and-the-azure-portal"></a>Vytvoření webové aplikace pomocí služby Azure Cosmos DB pro rozhraní API MongoDB pomocí .NET SDK a webu Azure portal
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53537252"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob vytvoření účtu služby Azure Cosmos DB API pro MongoDB, databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte a nasadíte webovou aplikaci seznamu úkolů založenou na [ovladači .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
+Tento rychlý start ukazuje, jak pomocí služby Azure Cosmos DB pro rozhraní MongoDB API, databáze dokumentů a kolekce pomocí webu Azure portal vytvořit účet. Potom sestavíte a nasadíte webovou aplikaci seznamu úkolů založenou na [ovladači .NET MongoDB](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>Požadavky na spuštění ukázkové aplikace
 
@@ -110,7 +110,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru Dal.cs v adresá�
     collection.Find(new BsonDocument()).ToList();
     ```
 
-* Vytvoří se úloha a vloží se do kolekce MongoDB.
+Vytvoření úlohy a vložte jej do kolekce
 
    ```csharp
     public void CreateTask(MyTask task)
@@ -166,8 +166,8 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos a spuštění webové aplikace pomocí rozhraní API pro MongoDB. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Cosmos a spuštění webové aplikace pomocí ovladače klienta pro rozhraní API MongoDB. Teď můžete do účtu Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
-> [Import dat do rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
+> [Import dat do služby Azure Cosmos DB nakonfigurovaný pro rozhraní MongoDB API](mongodb-migrate.md)
 

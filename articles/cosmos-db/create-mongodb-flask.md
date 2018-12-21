@@ -1,6 +1,6 @@
 ---
-title: Vytvoření webové aplikace Flask pomocí Pythonu a rozhraní Azure Cosmos DB API pro MongoDB
-description: Představuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování dat ze služby Azure Cosmos DB API pro MongoDB.
+title: Vytvoření webové aplikace Flask pomocí Pythonu a rozhraní Azure Cosmos DB pro rozhraní API MongoDB
+description: Obsahuje ukázku kódu Python Flask, kterou můžete použít k připojení a dotazování dat ze služby Azure Cosmos DB pro rozhraní API MongoDB.
 services: cosmos-db
 author: slyons
 ms.author: sclyon
@@ -10,14 +10,14 @@ ms.custom: quick start connect, mvc, seodec18
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/02/2017
-ms.openlocfilehash: 6645350dcc2f67d37b26bfdbe6b2c4a88871e734
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4bd62507ae3cae25d4bca10a906a305550d0b61a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543053"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715815"
 ---
-# <a name="build-a-flask-app-with-the-azure-cosmos-db-api-for-mongodb"></a>Sestavení aplikace Flask pomocí služby Azure Cosmos DB přes rozhraní API pro MongoDB
+# <a name="build-a-flask-app-with-the-azure-cosmos-db-for-mongodb-api"></a>Sestavení aplikace Flask pomocí služby Azure Cosmos DB pro rozhraní MongoDB API
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53543053"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
-Tato úvodní příručka používá následující [příklad Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci seznamu úkolů Flask pomocí [emulátor služby Azure Cosmos DB](local-emulator.md) a rozhraní Azure Cosmos DB API pro MongoDB místo nativní MongoDB.
+Tato úvodní příručka používá následující [příklad Flask](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) a ukazuje, jak vytvořit jednoduchou aplikaci seznamu úkolů Flask pomocí [emulátor služby Azure Cosmos DB](local-emulator.md) a rozhraní Azure Cosmos DB pro rozhraní API MongoDB.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -165,7 +165,7 @@ Pokud nechcete vytvořit fork tohoto úložiště, můžete také kliknout na n�
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Flask pomocí rozhraní API pro MongoDB. Teď můžete do svého účtu služby Cosmos DB importovat další data.
+V tomto rychlém startu jste zjistili, jak vytvořit účet služby Azure Cosmos DB a spuštění aplikace Flask pomocí klienta pro rozhraní API MongoDB. Teď můžete do účtu Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
+> [Import dat do služby Azure Cosmos DB pro rozhraní API MongoDB databáze](mongodb-migrate.md)

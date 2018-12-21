@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 92e10b1f4ec8be1dc67ff449df32ef76e365b5f2
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3a16c87e96a94fcf95694d3cbfd6f8f07adedb74
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162660"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717068"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Get záměr pomocí Node.js
 
@@ -34,7 +34,7 @@ V tomto rychlém startu budete do koncového bodu služby LUIS předávat promlu
 
 
 > [!NOTE] 
-> Kompletní řešení Node.js je k dispozici [ **LUIS-Samples** úložiště GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/analyze-text/node).
+> Kompletní řešení Node.js je k dispozici [ **Azure-Samples** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/analyze-text/node).
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 

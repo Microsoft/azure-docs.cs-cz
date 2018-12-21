@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 1d9b0e356f0f65be44a533fe098282084b900d89
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f7e63fa75f473d5da911fbf845f0662d8eec5c70
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249630"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717394"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
@@ -132,4 +132,4 @@ Pokud služba App Service nenajde vlastní příkaz, aplikaci Django nebo aplika
 - **V prohlížeči se zobrazí zpráva „Služba není dostupná“.** Vypršel časový limit čekání prohlížeče na odpověď služby App Service. To naznačuje, že služba App Service sice spustila server Gunicorn, ale argumenty, které specifikuje kód aplikace, jsou nesprávné.
   - Aktualizujte okno prohlížeče, zejména v případě, že používáte nejnižší cenové úrovně v Plánu služby App Service. Aplikace se může spouštět pomaleji (když používáte například úrovně free) a po aktualizaci okna prohlížeče začne znovu odpovídat.
   - Zkontrolujte, že má aplikace strukturu, kterou služba App Service očekává u aplikací [Django](#django-app) nebo [Flask](#flask-app), nebo použijte [vlastní spouštěcí příkaz](#custom-startup-command).
-  - Připojte se ke službě App Service pomocí SSH nebo konzoly Kudu. Zkontrolujte diagnostické protokoly uložené ve složce *LogFiles*. Další informace o protokolování naleznete v [Povolení protokolování diagnostiky pro webové aplikace služby Azure App Service](../web-sites-enable-diagnostic-log.md).
+  - Připojte se ke službě App Service pomocí SSH nebo konzoly Kudu. Zkontrolujte diagnostické protokoly uložené ve složce *LogFiles*. Další informace o protokolování naleznete v [Povolení protokolování diagnostiky pro webové aplikace služby Azure App Service](../troubleshoot-diagnostic-logs.md).

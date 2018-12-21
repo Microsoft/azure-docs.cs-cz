@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 0a064966f118925d2a08e0ff1ce6efc7683cac96
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7de18cc0ed2e8284e020a1ae6fb9c876ed3d2197
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096923"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718388"
 ---
-# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrahování klíčových frází z promluvy
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>Kurz 8: Extrakce klíčových frází utterance
 V tomto kurzu použijete předem připravenou entitu keyPhrase k extrahování témat z promluv. Není potřeba označovat promluvy s předem vytvořenými entitami. Příslušná entita se rozpozná automaticky.
 
 Následující promluvy ukazují příklady klíčových frází:
@@ -47,7 +47,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

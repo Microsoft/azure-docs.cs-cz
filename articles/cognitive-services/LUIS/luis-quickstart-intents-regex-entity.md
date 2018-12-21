@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: d4deeec2c5af5047fa16a2d80f0992409d517910
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 654d3c4e7dd7ec8916b785f52a78388ec04b3cc9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135572"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53712776"
 ---
-# <a name="tutorial-3-extract-well-formatted-data"></a>Tutoriál 3: Extrakce správně naformátovaných dat
+# <a name="tutorial-3-extract-well-formatted-data"></a>Kurz 3: Extrakce správně naformátovaných dat
 V tomto kurzu změníte aplikaci Human Resources, aby extrahovala konzistentně formátovaná data z promluvy pomocí entity **regulárního výrazu**.
 
 Účelem entity je extrahovat důležitá data obsažená v promluvě. Aplikace využívá entitu regulárního výrazu k získání formátovaných čísel formulářů lidských zdrojů z promluvy. Když se záměr promluvy vždy určuje pomocí strojového učení, tento konkrétní typ entity se pomocí strojového učení nezískává. 
@@ -55,7 +55,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1. Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-prebuilts-HumanResources.json) a uložte si ho.
+1. Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-prebuilts-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

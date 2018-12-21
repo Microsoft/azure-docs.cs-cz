@@ -1,6 +1,6 @@
 ---
 title: Funkce podpory Azure Cosmos DB pro MongoDB
-description: Další informace o podporovaných funkcích, které poskytuje Azure Cosmos DB API pro MongoDB pro MongoDB 3.4.
+description: Další informace o podporovaných funkcích, které poskytuje Azure Cosmos DB pro rozhraní MongoDB API pro MongoDB 3.4.
 services: cosmos-db
 author: alekseys
 ms.service: cosmos-db
@@ -8,32 +8,32 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: alekseys
-ms.openlocfilehash: 3a62df3cca50a3d9d95ffbcfaa661bbeb0982c16
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1d7b8454743e4a18e6e80c07f718e378136320ef
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544596"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722171"
 ---
-# <a name="azure-cosmos-db-api-for-mongodb-support-for-mongodb-features-and-syntax"></a>Podpora Azure Cosmos DB: API pro MongoDB pro funkce a syntaxi MongoDB
+# <a name="azure-cosmos-db-for-mongodb-api-support-for-mongodb-features-and-syntax"></a>Podpora Azure Cosmos DB pro rozhraní API MongoDB pro funkce a syntaxi MongoDB
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s Azure Cosmos DB API pro MongoDB prostřednictvím libovolného opensourcového klienta MongoDB [ovladače](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB API pro MongoDB umožňuje použití existujících ovladačů klienta dodržováním MongoDB [svážete protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Může komunikovat s Azure Cosmos DB pro rozhraní MongoDB API prostřednictvím libovolného opensourcového klienta MongoDB [ovladače](https://docs.mongodb.org/ecosystem/drivers). Azure Cosmos DB pro rozhraní API MongoDB umožňuje použití existujících ovladačů klienta dodržováním MongoDB [svážete protokol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol).
 
-Pomocí rozhraní Azure Cosmos DB API pro MongoDB můžete využívat výhod MongoDB jste zvyklí, se všemi podnikových funkcí, které poskytuje služba Azure Cosmos DB: [globální distribuce](distribute-data-globally.md), [automatické horizontální dělení](partition-data.md), záruky latence a dostupnost, automatické indexování každé pole, šifrování neaktivních uložených dat, zálohování a spoustu dalších věcí.
+Pomocí služby Azure Cosmos DB pro rozhraní MongoDB API, můžete využívat výhod MongoDB jste zvyklí, se všemi podnikových funkcí, které poskytuje služba Azure Cosmos DB: [globální distribuce](distribute-data-globally.md), [automatické horizontální dělení](partition-data.md), záruky latence a dostupnost, automatické indexování každé pole, šifrování neaktivních uložených dat, zálohování a spoustu dalších věcí.
 
 ## <a name="mongodb-protocol-support"></a>Podpora protokolu MongoDB
 
-Azure Cosmos DB API pro MongoDB I je kompatibilní s verzí serveru MongoDB **3.2** ve výchozím nastavení. Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Funkce nebo operátory dotazu přidané v MongoDB verze **3.4** jsou v současné době dostupné jako funkce Preview. Všechny ovladače klienta, která analyzuje tyto protokoly by měl být schopný se připojit k rozhraní API služby Azure Cosmos DB pro MongoDB.
+Azure Cosmos DB pro rozhraní API MongoDB je kompatibilní s verzí serveru MongoDB **3.2** ve výchozím nastavení. Podporované operátory a případná omezení nebo výjimky jsou uvedené níže. Funkce nebo operátory dotazu přidané v MongoDB verze **3.4** jsou v současné době dostupné jako funkce Preview. Všechny ovladače klienta, která analyzuje tyto protokoly by měl být může připojit ke službě Azure Cosmos DB pro rozhraní API MongoDB.
 
 [Kanál agregace MongoDB](#aggregation-pipeline) je v současné době také dostupný jako samostatná funkce Preview.
 
 ## <a name="mongodb-query-language-support"></a>Podpora dotazovacího jazyka MongoDB
 
-Azure Cosmos DB: API pro MongoDB poskytuje komplexní podporu pro konstruktory jazyka dotazů MongoDB. Níže najdete podrobný seznam aktuálně podporovaných operací, operátorů, fází, příkazů a možností.
+Azure Cosmos DB pro rozhraní MongoDB API poskytuje komplexní podporu pro konstruktory jazyka dotazů MongoDB. Níže najdete podrobný seznam aktuálně podporovaných operací, operátorů, fází, příkazů a možností.
 
 ## <a name="database-commands"></a>Databázové příkazy
 
-Azure Cosmos DB podporuje následující databáze příkazy na všech API služby Azure Cosmos DB pro MongoDB.
+Azure Cosmos DB pro rozhraní MongoDB API podporuje následující příkazy databáze:
 
 ### <a name="query-and-write-operation-commands"></a>Příkazy pro dotazovací a zápisové operace
 - delete
@@ -310,11 +310,11 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klíče �
 
 Azure Cosmos DB standardně indexuje všechna pole v dokumentech, která jsou zapsaná do databáze. Jedinečné indexy zajišťují, aby určité pole nemělo duplicitní hodnoty v rámci všech dokumentů v kolekci. Je to podobné, jako když má být zachovaná jedinečnost výchozího klíče „_id“. Ve službě Azure Cosmos DB teď můžete vyvářet vlastní indexy příkazem createIndex včetně omezení „unique“.
 
-Jedinečné indexy jsou k dispozici pro všechny Azure Cosmos DB API pro MongoDB účty.
+Jedinečné indexy jsou k dispozici pro všechny služby Azure Cosmos DB pro účty rozhraní API MongoDB.
 
 ## <a name="time-to-live-ttl"></a>Hodnota TTL (Time-To-Live)
 
-Azure Cosmos DB podporuje relativní hodnotu TTL (Time-To-Live) založenou na časovém razítku dokumentu. Hodnota TTL je možné povolit pro rozhraní API služby Azure Cosmos DB pro MongoDB kolekce prostřednictvím [webu Azure portal](https://portal.azure.com).
+Azure Cosmos DB podporuje relativní hodnotu TTL (Time-To-Live) založenou na časovém razítku dokumentu. Hodnota TTL je možné povolit pro službu Azure Cosmos DB pro kolekce rozhraní MongoDB API prostřednictvím [webu Azure portal](https://portal.azure.com).
 
 ## <a name="user-and-role-management"></a>Správa uživatelů a rolí
 
@@ -326,7 +326,7 @@ Azure Cosmos DB podporuje automatickou nativní replikaci v nejnižších vrstv�
 
 ## <a name="write-concern"></a>Write Concern
 
-Některé Azure Cosmos DB API pro MongoDB zadání podpory [zápisu problém](https://docs.mongodb.com/manual/reference/write-concern/) která určuje počet odpovědí vyžaduje během operace zápisu. Kvůli tomu, jak Cosmos DB zpracovává replikaci na pozadí, jsou všechny zápisy ve výchozím nastavení automaticky kvora. Každý Write Concern určený klientským kódem se ignoruje. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md).
+Určení podpory určitých rozhraní API MongoDB [zápisu problém](https://docs.mongodb.com/manual/reference/write-concern/) která určuje počet odpovědí vyžaduje během operace zápisu. Kvůli tomu, jak Cosmos DB zpracovává replikaci na pozadí, jsou všechny zápisy ve výchozím nastavení automaticky kvora. Každý Write Concern určený klientským kódem se ignoruje. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md).
 
 ## <a name="sharding"></a>Sharding
 
@@ -337,3 +337,5 @@ Azure Cosmos DB podporuje automatický sharding na straně serveru. Azure Cosmos
 - Zjistěte, jak [používat Studio 3T](mongodb-mongochef.md) s rozhraním API pro databázi MongoDB.
 - Zjistěte, jak [používat Robo 3T](mongodb-robomongo.md) s rozhraním API pro databázi MongoDB.
 - Prozkoumejte Azure Cosmos DB pomocí podpory protokolů pro [ukázky](mongodb-samples.md) MongoDB.
+
+<sup>Poznámka: Tento článek popisuje funkce služby Azure Cosmos DB, která poskytuje kompatibilitu s protokolem při přenosu pomocí databáze MongoDB. Microsoft se nespustí databáze MongoDB pro tuto službu poskytovat. Azure Cosmos DB není přidružený žádný MongoDB, Inc.</sup>

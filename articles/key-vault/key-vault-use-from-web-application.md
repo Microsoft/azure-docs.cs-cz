@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: 272238e41327e09af8e4d3967868c21c37683236
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 85eb7762437bff8d9f6f6a360fc9cc1ea2e6e145
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602046"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718210"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití Azure Key Vault z webové aplikace
 
@@ -42,7 +42,7 @@ K dokončení tohoto kurzu potřebujete následující položky:
 
 Proveďte kroky v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) a získejte identifikátor URI pro tajný klíč, ID klienta a tajný klíč klienta a zaregistrujte aplikaci. Webová aplikace bude mít přístup k trezoru a musí být zaregistrovaná v Azure Active Directory. Kromě toho musí mít přístupová práva ke službě Key Vault. Pokud tomu tak není, vraťte se k části Registrace aplikace v kurzu Začínáme a zopakujte uvedené kroky. Další informace o vytvoření služby Azure Web Apps najdete v [přehledu Web Apps](../app-service/overview.md).
 
-Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Vy byste ale měli místo toho použít [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), které umožňují automatické zřizování identit Azure AD. Další informace najdete v [ukázce na GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu o službách App Service a Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). Můžete se taky podívat na kurz [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md), který se týká konkrétně služby Key Vault.
+Tato ukázka se spoléhá na ruční zřizování identit Azure Active Directory. Vy byste ale měli místo toho použít [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md), které umožňují automatické zřizování identit Azure AD. Další informace najdete v [ukázce na GitHubu](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) a v souvisejícím [kurzu o službách App Service a Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity). Můžete se taky podívat na kurz [Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault](tutorial-web-application-keyvault.md), který se týká konkrétně služby Key Vault.
 
 ## <a id="packages"></a>Přidání balíčků NuGet
 

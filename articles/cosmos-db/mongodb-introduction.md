@@ -1,5 +1,5 @@
 ---
-title: Úvod do služby Azure Cosmos DB přes rozhraní API pro MongoDB
+title: Úvod do služby Azure Cosmos DB pro rozhraní MongoDB API
 description: Zjistěte, jak můžete používat službu Azure Cosmos DB k ukládání a dotazování velkého množství dokumentů JSON s nízkou latencí pomocí oblíbených rozhraní API OSS MongoDB.
 keywords: Rozhraní API služby Azure Cosmos DB pro MongoDB
 services: cosmos-db
@@ -9,12 +9,12 @@ ms.component: cosmosdb-mongo
 ms.topic: overview
 ms.date: 12/19/2018
 ms.author: sclyon
-ms.openlocfilehash: d8b423bcbfc8f999ce04c7713a57cfa096fa2c55
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fc6c9567073bbdfa77d753b9b274f7ed5e901405
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654032"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720560"
 ---
 # <a name="azure-cosmos-db-for-mongodb-api-clients"></a>Azure Cosmos DB pro rozhraní MongoDB API klienty
 
@@ -55,3 +55,5 @@ Tady jsou odkazy na informace, které vám pomůžou začít:
 * Postupujte podle [podporují migrace dat do služby Azure Cosmos DB pomocí protokolu pro MongoDB API](mongodb-migrate.md) kurzu a importovat data do databáze Cosmos.
 * Připojte se k účtu Cosmos pomocí [Robomongo](mongodb-robomongo.md).
 * Zjistíte, jak [nakonfigurovat předvolby čtení pro globálně distribuované aplikace](../cosmos-db/tutorial-global-distribution-mongodb.md).
+
+<sup>Poznámka: Tento článek popisuje funkce služby Azure Cosmos DB, která poskytuje kompatibilitu s protokolem při přenosu pomocí databáze MongoDB. Microsoft se nespustí databáze MongoDB pro tuto službu poskytovat. Azure Cosmos DB není přidružený žádný MongoDB, Inc.</sup>

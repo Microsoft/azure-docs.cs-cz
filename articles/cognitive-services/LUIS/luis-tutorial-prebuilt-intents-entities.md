@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b6fb603b84cdcf3cb0f75d0020fa2047a0a838d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 20f5fb918c836bda9bee19feec3259cfd4858875
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074059"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722410"
 ---
-# <a name="tutorial-2-identify-common-intents-and-entities"></a>Kurz 2: Identifikace běžných záměrů a entit
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>Kurz 2: Identifikovat běžné záměry a entity
 V tomto kurzu se upravíte aplikaci pro lidské zdroje. Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami, protože příslušná entita se rozpozná automaticky.
 
 Předem připravené modely běžných domén předmětů a datových typů vám pomůžou rychle vytvořit model a také poskytují ukázku, jak model vypadá. 
@@ -40,7 +40,7 @@ Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním 
 
 Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json) a uložte si ho.
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json) a uložte si ho.
 
 2. Naimportujte soubor JSON do nové aplikace.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 133f8e82d7a46bae11eb049b2d1c9393990c9042
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 0fe01f6654be715c83cc119e1b7940d78e385e97
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634571"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728274"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -104,7 +104,7 @@ Další informace o Cosmos DB [globální distribuce](distribute-data-globally.m
 Začínáme se službou Azure Cosmos DB s využitím jedné ze čtyř šablon Rychlý start:
 
 * [Začínáme s rozhraním SQL API služby Azure Cosmos DB](create-sql-api-dotnet.md)
-* [Začínáme s Azure Cosmos DB API pro MongoDB](create-mongodb-nodejs.md)
+* [Začínáme s Azure Cosmos DB pro rozhraní MongoDB API](create-mongodb-nodejs.md)
 * [Začínáme s rozhraním Cassandra API služby Azure Cosmos DB](create-cassandra-dotnet.md)
 * [Začínáme s rozhraním Gremlin API služby Azure Cosmos DB](create-graph-dotnet.md)
 * [Začínáme s rozhraním Table API služby Azure Cosmos DB](create-table-dotnet.md)

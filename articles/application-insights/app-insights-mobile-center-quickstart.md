@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 77fafb3f3a4c834c5a7f185d129a1c651db58089
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950518"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719842"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -126,7 +126,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 
 
-   Další informace o [Application Insights Analytics](app-insights-analytics.md) a [dotazovacím jazyku Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
+   Další informace o [Application Insights Analytics](../azure-monitor/app/analytics.md) a [dotazovacím jazyku Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
 
 
 2. **Segmentace a filtrování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte v obsahu **Uživatelé**.
@@ -166,7 +166,7 @@ Odstranění prostředku Application Insights:
 1. V nabídce vlevo na webu Azure Portal klikněte na **Skupiny prostředků** a vyberte skupinu prostředků, ve které se vytvořil váš prostředek Application Insights.
 2. Otevřete prostředek Application Insights, který chcete odstranit. Pak v horní nabídce prostředku klikněte na **Odstranit** a potvrďte volbu. Tím se trvale odstraní kopie dat exportovaných do Application Insights.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Porozumění způsobu, jakým zákazníci používají vaši aplikaci](app-insights-usage-overview.md)

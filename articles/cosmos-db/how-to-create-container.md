@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: c1f78421fd431ca6a1aeab9f6147a3cca936cf9b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bf91377b544328ed63d3767ce9b0064a6c4eeaff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539751"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53711886"
 ---
 # <a name="create-a-container-in-azure-cosmos-db"></a>Vytvoření kontejneru ve službě Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
 ## <a name="create-a-container-using-azure-portal"></a>Vytvoření kontejneru pomocí webu Azure Portal
 
-### <a id="portal-sql"></a>Azure Cosmos DB přes rozhraní API pro server SQL (jader)
+### <a id="portal-sql"></a>ROZHRANÍ SQL API
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -36,7 +36,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
 ![Rozhraní SQL API vytvoří kolekci](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Azure Cosmos DB přes rozhraní API pro MongoDB
+### <a id="portal-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -51,9 +51,9 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
    * Zadejte propustnost, například 1 000 RU.
    * Vyberte **OK**.
 
-![Vytvoří kolekci Azure Cosmos DB: API pro MongoDB](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Vytvoří kolekci Azure Cosmos DB pro rozhraní MongoDB API](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Azure Cosmos DB přes rozhraní API pro Cassandra
+### <a id="portal-cassandra"></a>Rozhraní API Cassandra
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -72,7 +72,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 > [!NOTE]
 > V případě rozhraní API Cassandra se jako klíč oddílu používá primární klíč.
 
-### <a id="portal-gremlin"></a>Azure Cosmos DB přes rozhraní API pro Gremlin
+### <a id="portal-gremlin"></a>Rozhraní Gremlin API
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -89,7 +89,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
 ![Rozhraní Gremlin API vytvoří kolekci](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
-### <a id="portal-table"></a>Azure Cosmos DB přes rozhraní API pro tabulky
+### <a id="portal-table"></a>Rozhraní API pro tabulky
 
 1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
 
@@ -109,7 +109,7 @@ Tento článek popisuje různé způsoby vytvoření kontejneru (kolekce, tabulk
 
 ## <a name="create-a-container-using-azure-cli"></a>Vytvoření kontejneru pomocí Azure CLI
 
-### <a id="cli-sql"></a>Azure Cosmos DB přes rozhraní API pro server SQL (jader)
+### <a id="cli-sql"></a>ROZHRANÍ SQL API
 
 ```azurecli-interactive
 # Create a container with a partition key and provision 1000 RU/s throughput.
@@ -123,7 +123,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-mongodb"></a>Azure Cosmos DB přes rozhraní API pro MongoDB
+### <a id="cli-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
 
 ```azurecli-interactive
 # Create a collection with a shard key and provision 1000 RU/s throughput.
@@ -136,7 +136,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-cassandra"></a>Azure Cosmos DB přes rozhraní API pro Cassandra
+### <a id="cli-cassandra"></a>Rozhraní API Cassandra
 
 ```azurecli-interactive
 # Create a table with a partition/primary key and provision 1000 RU/s throughput.
@@ -149,7 +149,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-gremlin"></a>Azure Cosmos DB přes rozhraní API pro Gremlin
+### <a id="cli-gremlin"></a>Rozhraní Gremlin API
 
 ```azurecli-interactive
 # Create a graph with a partition key and provision 1000 RU/s throughput.
@@ -162,7 +162,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-### <a id="cli-table"></a>Azure Cosmos DB přes rozhraní API pro tabulky
+### <a id="cli-table"></a>Rozhraní API pro tabulky
 
 ```azurecli-interactive
 # Create a table with 1000 RU/s
@@ -177,7 +177,7 @@ az cosmosdb collection create \
 
 ## <a name="create-a-container-using-net-sdk"></a>Vytvoření kontejneru pomocí sady .NET SDK
 
-### <a id="dotnet-sql-graph"></a>Azure Cosmos DB přes rozhraní API pro SQL a Gremlin
+### <a id="dotnet-sql-graph"></a>Rozhraní SQL API a Gremlin API
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -191,7 +191,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Azure Cosmos DB přes rozhraní API pro MongoDB
+### <a id="dotnet-mongodb"></a>Azure Cosmos DB pro rozhraní MongoDB API
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -199,9 +199,9 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> MongoDB nezná koncept jednotek žádostí. Pokud chcete vytvořit novou kolekci s propustností, použijte Azure Portal nebo rozhraní SQL API, jak je znázorněno v předchozích příkladech.
+Přenosový protokol MongoDB nemá koncept jednotky žádostí. Chcete-li vytvořit novou kolekci s propustností, pomocí webu Azure Portal nebo rozhraní SQL API jak ukazují příklady theprevious.
 
-### <a id="dotnet-cassandra"></a>Azure Cosmos DB přes rozhraní API pro Cassandra
+### <a id="dotnet-cassandra"></a>Rozhraní API Cassandra
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.

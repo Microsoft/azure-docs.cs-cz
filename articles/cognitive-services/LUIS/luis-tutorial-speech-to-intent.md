@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: efbe24500dd83ddd84c070ea36c423c742c26d4b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8e664e26a2cafc2f0b32ebea0f019918426d956c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607400"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714574"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Speech service integrovat s vaší aplikací Language Understanding
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -27,7 +27,7 @@ Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS],
 Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md#create-luis-endpoint-key) klíč služby **Language Understanding** (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Import aplikace LUIS pro lidské zdroje
-Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště GitHub. Stáhněte soubor [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
+Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) úložiště GitHub. Stáhněte soubor [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
 
 Tato aplikace obsahuje záměry, entity a promluvy související s doménou lidských zdrojů. Mezi ukázkové promluvy patří:
 
@@ -62,7 +62,7 @@ Po importu aplikace vyberte **Entities** (Entity) a pak **Add prebuilt entity** 
 V tomto článku se používá zvukové zařízení na vašem počítači. Tímto zařízením může být náhlavní souprava s mikrofonem nebo integrované zvukové zařízení. Zkontrolujte úrovně zvukového vstupu a zjistěte, jestli je potřeba mluvit hlasitěji než normálně, aby zvukové zařízení rozpoznalo váš projev. 
 
 ## <a name="download-the-luis-sample-project"></a>Stažení ukázkového projektu LUIS
- Naklonujte nebo si stáhněte úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples). V sadě Visual Studio otevřete [projekt převodu řeči na záměr](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) a obnovte balíčky NuGet. Soubor řešení sady Visual Studio je .\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
+ Klonovat nebo stáhnout [Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding) úložiště. V sadě Visual Studio otevřete [projekt převodu řeči na záměr](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-speech-intent-recognition) a obnovte balíčky NuGet. Soubor řešení VS je documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
 
 Sada SDK služby Speech je již zahrnutá jako odkaz. 
 
@@ -93,7 +93,7 @@ Sada SDK služby Speech vrací úplnou odpověď služby LUIS.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už ji nepotřebujete, odstraňte aplikaci LUIS pro lidské zdroje. Provedete to tak, že vyberete aplikaci a pak na kontextovém panelu nástrojů nad seznamem vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
-Až se vzorovým kódem skončíte, nezapomeňte odstranit adresář LUIS-Samples.
+Nezapomeňte odstranit adresář, jakmile budete hotovi pomocí ukázkového kódu.
 
 ## <a name="next-steps"></a>Další postup
 

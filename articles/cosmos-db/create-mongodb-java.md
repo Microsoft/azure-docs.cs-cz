@@ -1,6 +1,6 @@
 ---
-title: Sestavení aplikace konzoly v jazyce Java s rozhraním API Azure Cosmos DB pro MongoDB
-description: Představuje ukázku kódu Java, které můžete použít k připojení a dotazování do rozhraní API služby Azure Cosmos DB pro MongoDB
+title: Vytvoření konzolové aplikace pomocí Javy a rozhraní Azure Cosmos DB pro rozhraní API MongoDB
+description: Představuje ukázku kódu Java, které můžete použít k připojení a dotazování služby Azure Cosmos DB pro rozhraní MongoDB API
 services: cosmos-db
 author: slyons
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: sclyon
-ms.openlocfilehash: ddecb179b2ea0001ec358ad17ec76754054b0309
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 106db77dbd884ea15e12ccfc49a8de7e6c3c1924
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535550"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717666"
 ---
-# <a name="build-a-console-app-with-java-and-the-azure-cosmos-db-api-for-mongodb"></a>Sestavení aplikace konzoly v jazyce Java s rozhraním API Azure Cosmos DB pro MongoDB
+# <a name="build-a-console-app-with-java-and-the-azure-cosmos-db-for-mongodb-api"></a>Vytvoření konzolové aplikace pomocí Javy a rozhraní Azure Cosmos DB pro rozhraní API MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53535550"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start ukazuje, jak vytvořit [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md) účtu, databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte a nasadíte aplikaci konzoly založenou na [ovladači Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
+Tento rychlý start ukazuje, jak vytvořit [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md) účtu, databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte a nasadíte aplikaci konzoly založenou na [ovladači Java MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +53,7 @@ Novou databázi pojmenujte **db** a novou kolekci **coll**.
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme API služby Azure Cosmos DB pro aplikace MongoDB z Githubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Teď naklonujeme aplikaci z Githubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
 1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 

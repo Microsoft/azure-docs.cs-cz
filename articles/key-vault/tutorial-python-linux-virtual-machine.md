@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 480957dd0700c898c85b15702905919483d0de68
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: f5d74c2283d25d5774bd46bb9fe94795ff98fe9b
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607485"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720559"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v Pythonu
 
@@ -67,7 +67,7 @@ az login
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Vyberte název skupiny prostředků a nahraďte zástupný text.
-Následující příklad vytvoří skupinu prostředků v umístění USA – západ:
+Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
 
 ```azurecli
 # To list locations: az account list-locations --output table
@@ -160,7 +160,7 @@ Můžete použít tento [kurz](https://docs.microsoft.com/azure/virtual-machines
 
 ## <a name="create-and-run-sample-python-app"></a>Vytvořit a spustit ukázkovou aplikaci v Pythonu
 
-Níže je právě ukázkového souboru s názvem "Sample.py". Používá [požadavky](http://docs.python-requests.org/master/) knihovny pro volání HTTP GET.
+Níže je právě ukázkového souboru s názvem "Sample.py". Používá [požadavky](https://pypi.org/project/requests/2.7.0/) knihovny pro volání HTTP GET.
 
 ## <a name="edit-samplepy"></a>Upravit Sample.py
 Po vytvoření Sample.py otevřete soubor a zkopírujte níže uvedeného kódu

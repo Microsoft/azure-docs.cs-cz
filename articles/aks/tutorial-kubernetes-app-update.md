@@ -3,22 +3,21 @@ title: Kurz Kubernetes v Azure – Aktualizace aplikace
 description: V tomto kurzu Azure Kubernetes Service (AKS) zjistíte, jak aktualizovat existující nasazení aplikace do AKS o novou verzi kódu aplikace.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2dd52fec112b879e072d3ac5598dd7978e68cbc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: ed4a65e9e4e579277866bdafda67eb577a76bbfe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919380"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714810"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
-Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení.
+Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je vynášené, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení.
 
 V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje aplikace Azure Vote. Získáte informace o těchto tématech:
 
@@ -28,23 +27,23 @@ V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje ap
 > * Odeslání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se nahrála do služby Azure Container Registry (ACR) a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes.
+V předchozích kurzech se aplikace zabalila do image kontejneru. Tato image se odeslala do Azure Container Registry a vytvoření clusteru AKS. Aplikace se pak nasadí do clusteru AKS.
 
-Také se naklonovalo úložiště aplikace, které zahrnuje zdrojový kód aplikace, a předem se vytvořil soubor Docker Compose použitý v tomto kurzu. Ověřte, že jste vytvořili klon úložiště a že jste změnili adresáře na klonovaný adresář. Pokud jste tyto kroky nedokončili a chcete je sledovat, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
+Také se naklonovalo úložiště aplikace, které zahrnuje zdrojový kód aplikace, a předem se vytvořil soubor Docker Compose použitý v tomto kurzu. Ověřte, že jste vytvořili klon úložiště a změnili adresáře na klonovaný adresář. Pokud jste tyto kroky nedokončili a chcete postupovat s námi, začněte tématem [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje použití Azure CLI verze 2.0.44 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, že používáte Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="update-an-application"></a>Aktualizace aplikace
 
-Teď upravíme ukázkovou aplikaci a pak aktualizujeme verzi, která je už nasazená v clusteru AKS. Zdrojový kód ukázkové aplikace najdete v adresáři *azure-vote*. V editoru, jako je například `vi`, otevřete soubor *config_file.cfg*:
+Teď upravíme ukázkovou aplikaci a pak aktualizujeme verzi, která je už nasazená v clusteru AKS. Ujistěte se, že jste v klonované *azure vote app-redis* adresáře. Zdrojový kód ukázkové aplikace můžete prvku najít *azure-vote* adresáře. V editoru, jako je například `vi`, otevřete soubor *config_file.cfg*:
 
 ```console
 vi azure-vote/azure-vote/config_file.cfg
 ```
 
-Změňte hodnoty *VOTE1VALUE* a *VOTE2VALUE* na jiné barvy. Následující příklad ukazuje aktualizované hodnoty barev:
+Změnit hodnoty *VOTE1VALUE* a *VOTE2VALUE* na různé hodnoty, jako je například barvy. Následující příklad ukazuje aktualizovanými hodnotami:
 
 ```
 # UI Configurations
@@ -54,7 +53,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-Uložte soubor a zavřete ho.
+Uložte soubor a zavřete ho. V `vi`, použijte `:wq`.
 
 ## <a name="update-the-container-image"></a>Aktualizace image kontejneru
 
@@ -70,7 +69,7 @@ Pokud chcete ověřit, že se v aktualizované imagi kontejneru projevily proved
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
-Ve spuštěné aplikaci se zobrazí aktualizované hodnoty barev, které jste zadali v souboru *config_file.cfg*.
+Aktualizované hodnoty, které jsou součástí *config_file.cfg* souboru se zobrazí ve spuštěné aplikaci.
 
 ## <a name="tag-and-push-the-image"></a>Označení a odeslání image
 
@@ -86,7 +85,7 @@ K označení image použijte [docker tag][docker-tag]. Nahraďte `<acrLoginServe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR. Pokud máte s nahráváním do registru ACR problémy, ujistěte se, že jste spustili příkaz [az acr login][az-acr-login].
+Teď pomocí příkazu [docker push][docker-push] nahrajte image do registru. Nahraďte `<acrLoginServer>` názvem přihlašovacího serveru ACR. Pokud dochází k problémům doručením (push) do registru ACR, ujistěte se, že jste spustili [az acr login] [ az-acr-login] příkazu.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -94,7 +93,7 @@ docker push <acrLoginServer>/azure-vote-front:v2
 
 ## <a name="deploy-the-updated-application"></a>Nasazení aktualizované aplikace
 
-K zajištění maximální doby provozu musí být spuštěno několik instancí podu aplikace. Pomocí příkazu [kubectl get pods][kubectl-get] ověřte počet spuštěných instancí front-endu:
+Pokud chcete zadat maximální dobu provozu, musí být spuštěna více instancí podu aplikace. Pomocí příkazu [kubectl get pods][kubectl-get] ověřte počet spuštěných instancí front-endu:
 
 ```
 $ kubectl get pods
@@ -106,7 +105,7 @@ azure-vote-front-233282510-dhrtr   1/1       Running   0          10m
 azure-vote-front-233282510-pqbfk   1/1       Running   0          10m
 ```
 
-Pokud nemáte několik podů front-endu, škálujte nasazení *azure-vote-front* následujícím způsobem:
+Pokud nemáte několik podů se front-endu, škálování *azure-vote-front* nasazení následujícím způsobem:
 
 ```console
 kubectl scale --replicas=3 deployment/azure-vote-front
@@ -144,13 +143,13 @@ Pokud chcete zobrazit aktualizovanou aplikaci, nejprve získejte externí IP adr
 kubectl get service azure-vote-front
 ```
 
-Teď otevřete místní webový prohlížeč a přejděte na tuto IP adresu.
+Nyní otevřete místní webový prohlížeč na IP adresu vaší služby:
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru Kubernetes. Naučili jste se tyto postupy:
+V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru AKS. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Aktualizace kódu front-endu aplikace
