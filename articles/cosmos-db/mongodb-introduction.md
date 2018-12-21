@@ -11,7 +11,7 @@ ms.date: 12/19/2018
 ms.author: sclyon
 ms.openlocfilehash: fc6c9567073bbdfa77d753b9b274f7ed5e901405
 ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2018
 ms.locfileid: "53720560"

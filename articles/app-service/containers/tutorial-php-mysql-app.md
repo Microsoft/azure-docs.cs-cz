@@ -13,7 +13,7 @@ ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 49302f3033d76f2662712179ceec33496f031023
 ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2018
 ms.locfileid: "53718476"
