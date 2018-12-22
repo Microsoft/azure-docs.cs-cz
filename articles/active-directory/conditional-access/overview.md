@@ -17,18 +17,18 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f0ba365096808954c24beb073f3570499fd23523
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 06866b1a0b986190ab6770e5484fb7d950d10b26
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408272"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753910"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Co je podmíněný přístup v Azure Active Directory?
 
 Zabezpečení je největší starostí organizací, které využívají cloud. Při správě cloudových prostředků jsou klíčovým aspektem zabezpečení cloudu identita a přístup. Ve světě orientovaném na mobilní zařízení a cloud můžou uživatelé přistupovat k prostředkům vaší organizace odkudkoli pomocí různých zařízení a aplikací. Proto už nestačí soustředit se na to, kdo má přístup k prostředku. Pokud chcete zajistit optimální rovnováhu mezi zabezpečením a produktivitou, musíte při rozhodování o udělení přístupu zohlednit také způsob přístupu k prostředku. Tento požadavek můžete vyřešit pomocí podmíněného přístupu služby Azure Active Directory (Azure AD). Podmíněný přístup je funkce služby Azure Active Directory. S využitím podmíněného přístupu můžete implementovat automatizované rozhodování ohledně řízení přístupu k vašim cloudovým aplikacím na základě podmínek. 
 
-Po dokončení první dvojúrovňové ověřování se vynucují zásady podmíněného přístupu. Jinými slovy podmíněný přístup není určen jako mechanismus, například čítače míru útok na dostupnost služby (DoS) útoky.  
+Po dokončení první dvojúrovňové ověřování se vynucují zásady podmíněného přístupu. Proto podmíněného přístupu není určen jako první linií obrany řádku pro scénáře, jako jsou útoky s cílem odepření služeb (DoS), ale můžete využít signály z těchto událostí (například úroveň rizika přihlášení, umístění žádosti a tak dále) a zjistí přístup k.  
 
 ![Řízení](./media/overview/81.png)
 

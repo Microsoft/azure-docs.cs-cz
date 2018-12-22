@@ -9,18 +9,36 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: e48231e154c04e75ab27f2a92783486b83d00d3b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c0c79e3d85a8ced2b868c9fa7741a14105c1de05
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719502"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753043"
 ---
-# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Kurz 7: Extrahovat názvy s jednoduchý seznam entit a frází
+# <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Kurz: Extrahovat názvy s jednoduchou entitu a seznam fráze
 
 V tomto kurzu extrahujete strojově naučená data názvu pracovní pozice z promluvy pomocí **jednoduché** entity. Za účelem zvýšení přesnosti extrakce přidáte seznam termínů, které jsou pro jednoduchou entitu specifické.
+
+Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo frázích.
+
+**V tomto kurzu se naučíte:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Importovat ukázková aplikace
+> * Přidat jednoduchou entitu 
+> * Přidat seznam frázi a zvýšit tak signál slova
+> * Trénování 
+> * Publikování 
+> * Zjistit záměry a entity z koncového bodu
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+
+## <a name="simple-entity"></a>Jednoduchá entita
 
 V tomto kurzu přidáte novou jednoduchou entitu k extrahování názvu pracovní pozice. Účelem jednoduché entity v této aplikaci LUIS je naučit službu LUIS, co je název pracovní pozice a kde ho v promluvě najít. Část promluvy, která představuje název pracovní pozice, se může u jednotlivých promluv lišit na základě volby slov a délky promluvy. LUIS potřebuje příklady názvů pracovních pozic ve všech záměrech, které používají názvy pracovních pozic.  
 
@@ -31,34 +49,6 @@ Jednoduchá entita je vhodná pro tento typ dat, když platí následující:
 * Data nejsou běžná, nejedná se například o předem připravenou entitu telefonních čísel nebo dat.
 * Data přesně neodpovídají seznamu známých slov, jako je tomu například u entity seznamu.
 * Data neobsahují jiné datové položky, nejedná se například o složenou nebo hierarchickou entitu.
-
-**V tomto kurzu se naučíte:**
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci
-> * Přidání jednoduché entity k extrahování pracovních pozic z aplikace
-> * Přidání seznamu frází ke zlepšení signalizování slov týkajících se pracovních pozic
-> * Trénování 
-> * Publikování 
-> * Zjistit záměry a entity z koncového bodu
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Použití existující aplikace
-
-Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
-
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
-
-1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json) a uložte si ho.
-
-2. Naimportujte soubor JSON do nové aplikace.
-
-3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
-
-## <a name="simple-entity"></a>Jednoduchá entita
-Jednoduchá entita rozpozná jeden koncept dat obsažený ve slovech nebo frázích.
 
 Představte si následující promluvy z chatbota:
 
@@ -87,25 +77,38 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 
 Jakmile označíte entity v ukázkových promluvách, je důležité přidat seznam frází, abyste zesílili signál jednoduché entity. Seznam frází **neslouží** jako přesná shoda a nemusí zahrnovat všechny možné očekávané hodnoty. 
 
+## <a name="import-example-app"></a>Importovat ukázková aplikace
+
+1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/intentonly.json) z kurzu záměry.
+
+2. Naimportujte soubor JSON do nové aplikace.
+
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL.
+
+## <a name="mark-entities-in-example-utterances-of-an-intent"></a>Označování entit v příkladu projevy záměru
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Na stránce **Intents** (Záměry) vyberte záměr **ApplyForJob** (Přihláška na pracovní pozici). 
+1. Na stránce **Intents** (Záměry) vyberte záměr **ApplyForJob** (Přihláška na pracovní pozici). 
 
-3. V promluvě `I want to apply for the new accounting job` vyberte `accounting`, zadejte `Job` do horního pole v místní nabídce a pak v této místní nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
+1. V promluvě `I want to apply for the new accounting job` vyberte `accounting`, zadejte `Job` do horního pole v místní nabídce a pak v této místní nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
     [![Snímek obrazovky služby LUIS se záměrem "ApplyForJob" s vytvořit entitu kroky zvýrazněnou](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "snímek obrazovky služby LUIS se záměrem \"ApplyForJob\" s vytvořit entitu kroky zvýrazněnou")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-4. V automaticky otevíraném okně ověřte název a typ entity a vyberte **Done** (Hotovo).
+1. V automaticky otevíraném okně ověřte název a typ entity a vyberte **Done** (Hotovo).
 
     ![Modální automaticky otevírané okno pro vytvoření jednoduché entity s názvem pracovní pozice a typem Simple (Jednoduchá)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-5. V promluvě `Submit resume for engineering position` označte slovo `engineering` jako entitu Job (Pracovní pozice). Vyberte slovo `engineering` a pak v místní nabídce vyberte **Job** (Pracovní pozice). 
+1. Ve zbývající projevy označit slov úlohy související s **úlohy** entity, když vyberete slovo nebo frázi, poté vyberete **úlohy** v místní nabídce. 
 
     [![Snímek obrazovky LUIS označování entit úlohy zvýrazněný](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "snímek obrazovky LUIS označování entit úlohy zvýrazněný")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-    Všechny promluvy jsou označené, ale pět promluv není dostatečný počet k tomu, aby se služba LUIS naučila slova a fráze týkající se pracovních pozic. Pracovní pozice, které používají číselnou hodnotu, nepotřebují další příklady, protože se u nich používá entita regulárního výrazu. U pracovních pozic, které jsou zadány jako slova nebo fráze, je potřeba alespoň dalších 15 příkladů. 
 
-6. Přidejte další promluvy a označte slova a fráze označující pracovní pozice jako entitu **Job** (Pracovní pozice). Typy pracovních pozic jsou obecné jako pozice používané pracovní agenturou. Pokud byste chtěli používat pracovní pozice, které se vztahují ke konkrétnímu odvětví, měla by to slova označující tyto pracovní pozice odrážet. 
+## <a name="add-more-example-utterances-and-mark-entity"></a>Přidejte další příklad projevy a označte entity
+
+Jednoduché entity musí mnoho příkladů abyste měli vysokou spolehlivostí předpovědí. 
+ 
+1. Přidejte další promluvy a označte slova a fráze označující pracovní pozice jako entitu **Job** (Pracovní pozice). 
 
     |Promluva|Entita pracovní pozice|
     |:--|:--|
@@ -126,100 +129,64 @@ Jakmile označíte entity v ukázkových promluvách, je důležité přidat sez
     |My curriculum vitae for professor of biology is enclosed (Přikládám curriculum vitae pro pozici profesor biologie).|professor of biology (profesor biologie)|
     |I would like to apply for the position in photography (Chtěl bych se přihlásit na pozici fotograf).|photography (fotograf)|git 
 
-## <a name="label-entity-in-example-utterances"></a>Popisování entity v ukázkových promluvách
-
-Popisování, neboli _označení_, entity ukáže službě LUIS, kde se entita v ukázkových promluvách nachází.
+## <a name="mark-job-entity-in-other-intents"></a>Označit úlohu entity v jiných záměry
 
 1. V levé nabídce vyberte **Intents** (Záměry).
 
-2. V seznamu záměrů vyberte **GetJobInformation** (Informace o pracovní pozici). 
+1. V seznamu záměrů vyberte **GetJobInformation** (Informace o pracovní pozici). 
 
-3. Označte pracovní pozice v příkladech promluv:
+1. Popisek úlohy v příkladu projevy
 
-    |Promluva|Entita pracovní pozice|
-    |:--|:--|
-    |Is there any work in databases? (Nabízíte nějakou práci se zaměřením na databáze?)|databáze|
-    |Looking for a new situation with responsibilities in accounting (Hledám něco nového v oboru účetnictví).|accounting (účetnictví)|
-    |What positions are available for senior engineers? (Jaké pozice jsou otevřené na úrovni inženýr senior?)|senior engineers (inženýr senior)|
+    Pokud jsou v jedné záměr než jiné záměr projevů další příklad, tohoto záměru má vyšší pravděpodobnost, že se nejvyšší předpokládané intext. 
 
-    K dispozici jsou další příklady promluv, ale neobsahují slova týkající se pracovních pozic.
-
-## <a name="train"></a>Trénování
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trénování aplikace, takže můžete otestovat změny k příslušnému záměru 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish"></a>Publikování
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikování aplikace, tedy dotazovatelné z koncového bodu trénovaného modelu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Získání předpovědi záměr a entity z koncového bodu 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
+2. Na konec adresy URL zadejte `Here is my c.v. for the engineering job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
 
     ```json
     {
-      "query": "Here is my c.v. for the programmer job",
+      "query": "Here is my c.v. for the engineering job",
       "topScoringIntent": {
         "intent": "ApplyForJob",
-        "score": 0.9826467
+        "score": 0.98052007
       },
       "intents": [
         {
           "intent": "ApplyForJob",
-          "score": 0.9826467
+          "score": 0.98052007
         },
         {
           "intent": "GetJobInformation",
-          "score": 0.0218927357
-        },
-        {
-          "intent": "MoveEmployee",
-          "score": 0.007849265
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.00349470088
-        },
-        {
-          "intent": "Utilities.Confirm",
-          "score": 0.00348804821
+          "score": 0.03424581
         },
         {
           "intent": "None",
-          "score": 0.00319909188
-        },
-        {
-          "intent": "FindForm",
-          "score": 0.00222647213
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.00211193133
-        },
-        {
-          "intent": "Utilities.Stop",
-          "score": 0.00172086991
-        },
-        {
-          "intent": "Utilities.Cancel",
-          "score": 0.00138010911
+          "score": 0.0015820954
         }
       ],
       "entities": [
         {
-          "entity": "programmer",
+          "entity": "engineering",
           "type": "Job",
           "startIndex": 24,
-          "endIndex": 33,
-          "score": 0.5230502
+          "endIndex": 34,
+          "score": 0.668959737
         }
       ]
     }
     ```
     
-    Služba LUIS našla správný záměr, **ApplyForJob**, a extrahovala správnou entitu, **Job**, s hodnotou `programmer`.
+    Služba LUIS našla správný záměr, **ApplyForJob**, a extrahovala správnou entitu, **Job**, s hodnotou `engineering`.
 
 
 ## <a name="names-are-tricky"></a>S názvy je to složitější
@@ -229,51 +196,23 @@ V následujícím souboru JSON vrátí služba LUIS správný záměr `ApplyForJ
 
 ```json
 {
-  "query": "This is the lead welder paperwork.",
+  "query": "This is the lead welder paperwork",
   "topScoringIntent": {
     "intent": "ApplyForJob",
-    "score": 0.468558252
+    "score": 0.860295951
   },
   "intents": [
     {
       "intent": "ApplyForJob",
-      "score": 0.468558252
+      "score": 0.860295951
     },
     {
       "intent": "GetJobInformation",
-      "score": 0.0102701457
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.009442534
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00639619166
+      "score": 0.07265678
     },
     {
       "intent": "None",
-      "score": 0.005859333
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.005087704
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00315379258
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00259344373
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00193389168
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.000420796918
+      "score": 0.00482481951
     }
   ],
   "entities": []
@@ -282,94 +221,76 @@ V následujícím souboru JSON vrátí služba LUIS správný záměr `ApplyForJ
 
 Protože názvem může být cokoli, predikuje služba LUIS entity přesněji, pokud má seznam frází se slovy pro zlepšení signalizování.
 
-## <a name="to-boost-signal-add-phrase-list"></a>Zesílení signálu přidáním seznamu frází
+## <a name="to-boost-signal-of-the-job-related-words-add-a-phrase-list-of-job-related-words"></a>Chcete-li boost signál slov souvisejících s úlohami přidejte frázi seznam souvisejících s úlohami slov
 
-Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště GitHub Azure-Samples. V seznamu je více než tisíc slov a frází označujících pracovní pozice. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
+Otevřít [úlohy. frázi list.csv](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště GitHub Azure-Samples. Seznam je více než 1 000 úloh slova a slovní spojení. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
 
 1. V části **Build** (Sestavit) aplikace LUIS vyberte možnost **Phrase lists** (Seznamy frází) v nabídce **Improve app performance** (Zvýšení výkonu aplikací).
 
-2. Vyberte **Create new phrase list** (Vytvořit nový seznam frází). 
+1. Vyberte **Create new phrase list** (Vytvořit nový seznam frází). 
 
-3. Nový seznam frází pojmenujte `Job` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty). Stiskněte klávesu ENTER. 
+1. Nový seznam frází pojmenujte `JobNames` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty). Stiskněte klávesu ENTER. 
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi rozbalovací](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
     Pokud chcete do seznamu frází přidat další slova, prohlédněte si část **Related Values** (Související hodnoty) a přidejte všechna slova, která jsou relevantní. 
 
-4. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
+1. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
 
     [![Snímek obrazovky vytvořit dialogové okno Nový seznam frázi místní s slova v seznamu hodnot frázi](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "snímek obrazovky s novou frázi seznamu dialogové okno Vytvořit místní obsahující slova v seznamu hodnot fráze")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. Aplikaci [natrénujte](#train) a znovu [publikujte](#publish), aby tento seznam frází používala.
+1. Aplikaci [natrénujte](#train) a znovu [publikujte](#publish), aby tento seznam frází používala.
 
-6. Znovu zadejte dotaz na koncovém bodě pomocí stejné promluvy: `This is the lead welder paperwork.`
+1. Znovu zadejte dotaz na koncovém bodě pomocí stejné promluvy: `This is the lead welder paperwork.`
 
     Odpověď JSON obsahuje extrahovanou entitu:
 
     ```json
-    {
-        "query": "This is the lead welder paperwork.",
-        "topScoringIntent": {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
+      {
+      "query": "This is the lead welder paperwork.",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.983076453
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.983076453
         },
-        "intents": [
-            {
-            "intent": "ApplyForJob",
-            "score": 0.920025647
-            },
-            {
-            "intent": "GetJobInformation",
-            "score": 0.003800706
-            },
-            {
-            "intent": "Utilities.StartOver",
-            "score": 0.00299335527
-            },
-            {
-            "intent": "MoveEmployee",
-            "score": 0.0027167045
-            },
-            {
-            "intent": "None",
-            "score": 0.00259556063
-            },
-            {
-            "intent": "FindForm",
-            "score": 0.00224019377
-            },
-            {
-            "intent": "Utilities.Stop",
-            "score": 0.00200693542
-            },
-            {
-            "intent": "Utilities.Cancel",
-            "score": 0.00195913855
-            },
-            {
-            "intent": "Utilities.Help",
-            "score": 0.00162656687
-            },
-            {
-            "intent": "Utilities.Confirm",
-            "score": 0.0002851904
-            }
-        ],
-        "entities": [
-            {
-            "entity": "lead welder",
-            "type": "Job",
-            "startIndex": 12,
-            "endIndex": 22,
-            "score": 0.8295959
-            }
-        ]
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0120766377
+        },
+        {
+          "intent": "None",
+          "score": 0.00248388131
+        }
+      ],
+      "entities": [
+        {
+          "entity": "lead welder",
+          "type": "Job",
+          "startIndex": 12,
+          "endIndex": 22,
+          "score": 0.8373154
+        }
+      ]
     }
     ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+
+## <a name="related-information"></a>Související informace
+
+* [Záměry bez kurzu entity](luis-quickstart-intents-only.md)
+* [Jednoduché entity](luis-concept-entity-types.md) koncepční informace
+* [Seznam frází](luis-concept-feature.md) koncepční informace
+* [Trénování](luis-how-to-train.md)
+* [Jak publikovat](luis-how-to-publish-app.md)
+* [Testování v portálu služby LUIS](luis-interactive-test.md)
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 820f43a8caa5e0d6d9960985fd1d46271071b0fb
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084002"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742826"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -39,7 +39,7 @@ K provedení kroků v tomto kurzu je potřeba:
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Povolit [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](app-insights-asp-net.md). 
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../azure-monitor/app/asp-net.md). 
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure

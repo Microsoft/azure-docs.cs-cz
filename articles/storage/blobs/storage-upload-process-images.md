@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: accefc89d7fe252c9e86de7977a2ce36f5c3e3aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 882a43a75fa720b13d931740818e5ee6e893bcab
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725163"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753332"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Kurz: Odeslání dat obrázků do cloudu v Azure Storage
 
 Tento kurz je první částí série. V tomto kurzu se dozvíte, jak nasadit webovou aplikaci, která používá Klientská knihovna pro úložiště Azure můžete nahrávat obrázky do účtu úložiště. Jakmile budete hotovi, budete mít webovou aplikaci, která ukládá a zobrazuje obrázky ze služby Azure storage.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Zobrazení kontejneru obrázků](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
@@ -121,7 +121,7 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Nasazení ukázkové aplikace z úložiště GitHubu
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 Služba App Service podporuje několik způsobů nasazení obsahu do webové aplikace. V tomto kurzu nasadíte webovou aplikaci z [veřejného úložiště ukázek GitHubu](https://github.com/Azure-Samples/storage-blob-upload-from-webapp). Nakonfigurujte nasazení z GitHubu do webové aplikace pomocí příkazu [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config). Položku `<web_app>` nahraďte názvem webové aplikace, kterou jste vytvořili v předchozím kroku.
 
@@ -159,7 +159,7 @@ Po nasazení a konfigurace webové aplikace, můžete v aplikaci otestovat funkc
 Pokud chcete otestovat webovou aplikaci, přejděte na adresu URL publikované aplikace. Výchozí adresa URL webové aplikace je `https://<web_app>.azurewebsites.net`.
 Vyberte **mohl odesílat fotky** oblasti vybrat a nahrát soubor nebo soubor přetáhněte do oblasti. Obrázek po úspěšném nahrání zmizí.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 ![Aplikace ImageResizer](media/storage-upload-process-images/figure1.png)
 
@@ -281,7 +281,7 @@ Pomocí nástroje pro výběr souborů vyberte soubor a vyberte **nahrát**.
 
 Vraťte se do své aplikace a zkontrolujte, jestli je viditelný obrázek nahraný do kontejneru **thumbnails**.
 
-# <a name="nettabnet"></a>[\.NET](#tab/net)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Zobrazení kontejneru obrázků](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)

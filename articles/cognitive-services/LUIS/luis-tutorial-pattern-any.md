@@ -9,18 +9,32 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: db0b0472fe4878bc7b6bc6cb0a65fbcdbd232301
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 58a62a5a882c6883c6fed31a7b95d949247e1bf1
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720744"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752601"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Kurz 5: Extrakce dat volného tvaru
+# <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Kurz: Extrahování dat volného tvaru pomocí Pattern.any entity
 
 V tomto kurzu použijete entitu Pattern.any k extrakci dat ze správně naformátovaných promluv, kde je možné snadno zaměnit konec dat se zbývajícími slovy promluvy. 
+
+**V tomto kurzu se naučíte:**
+
+> [!div class="checklist"]
+> * Importovat ukázková aplikace
+> * Přidání ukázkových promluv do stávající entity
+> * Vytvoření entity Pattern.any
+> * Vytvoření vzoru
+> * Trénování
+> * Test nového vzoru
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="using-patternany-entity"></a>Použití Pattern.any entity
 
 Entita Pattern.any umožňuje vyhledat data volného tvaru, kde je kvůli formulaci entity obtížné odlišit konec entity od zbytku promluvy. 
 
@@ -50,22 +64,10 @@ Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat 
 |Who authored {FormName}[?] (Kdo vytvořil {FormName}[?])|
 |{FormName} is published in French[?] (Je {FormName} ve francouzštině[?])|
 
-**V tomto kurzu se naučíte:**
-
-> [!div class="checklist"]
-> * Používat existující ukázkovou aplikaci
-> * Přidání ukázkových promluv do stávající entity
-> * Vytvoření entity Pattern.any
-> * Vytvoření vzoru
-> * Trénování
-> * Test nového vzoru
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="use-existing-app"></a>Použití existující aplikace
+## <a name="import-example-app"></a>Importovat ukázková aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
+Použijte k tomu následující postup:
 
 1.  Stáhněte si [soubor JSON aplikace](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-pattern-roles-HumanResources.json) a uložte si ho.
 

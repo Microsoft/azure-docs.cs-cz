@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 49302f3033d76f2662712179ceec33496f031023
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: 0470c12f7965ec5d7e151bb6b03163d6946b83e6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718476"
+ms.locfileid: "53743234"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Vytvoření PHP a MySQL aplikaci ve službě Azure App Service v Linuxu
 
@@ -161,7 +161,7 @@ V tomto kroku vytvoříte v [Azure Database for MySQL](/azure/mysql) databázi M
 
 Pomocí příkazu [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az-mysql-server-create) vytvořte v Azure Database for MySQL server.
 
-V následujícím příkazu nahraďte zástupnou hodnotu *\<mysql_server_name>* jedinečným názvem serveru, zástupnou hodnotu *\<admin_user>* uživatelským jménem a zástupnou hodnotu *\<admin_password>* heslem. Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql_server_name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
+V následujícím příkazu nahraďte zástupnou hodnotu *\<mysql_server_name>* jedinečným názvem serveru, zástupnou hodnotu *\<admin_user>* uživatelským jménem a zástupnou hodnotu *\<admin_password>* heslem. Název serveru se používá jako součást koncového bodu MySQL (`https://<mysql_server_name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure. Podrobnosti o výběru MySQL DB SKU, najdete v tématu [vytvoření serveru Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server).
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <admin_password> --sku-name B_Gen5_1

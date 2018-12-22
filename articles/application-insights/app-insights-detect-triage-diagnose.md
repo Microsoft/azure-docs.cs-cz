@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: ab3d4d2df8f12c28fa6dbdbdd7d6913d53f12884
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: eea1ca2d1a4c9f062f374f4fcaddcc7206aee65d
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715065"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753706"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -108,7 +108,7 @@ Takže řešení problému už je na cestě, a to dokonce před zkoumáním prot
 ![neúspěšný požadavek](./media/app-insights-detect-triage-diagnose/23.png)
 
 ## <a name="detect-exceptions"></a>Zjišťování výjimek
-Stačí nepatrné nastavení a [výjimky](app-insights-asp-net-exceptions.md) se hlásí do Application Insights automaticky. Můžete je zachycovat také explicitně vložením volání metody [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) do kódu:  
+Stačí nepatrné nastavení a [výjimky](../azure-monitor/app/asp-net-exceptions.md) se hlásí do Application Insights automaticky. Můžete je zachycovat také explicitně vložením volání metody [TrackException()](../azure-monitor/app/api-custom-events-metrics.md#trackexception) do kódu:  
 
     var telemetry = new TelemetryClient();
     ...
@@ -227,7 +227,7 @@ Toto byla ukázka jednoho týmu, který pomocí Application Insights nejen řeš
 ## <a name="next-steps"></a>Další postup
 V závislosti na vlastnostech vaší aplikace můžete začít několika způsoby. Vyberte si, co vám nejvíce vyhovuje:
 
-* [Webová aplikace ASP.NET](app-insights-asp-net.md)
+* [Webová aplikace ASP.NET](../azure-monitor/app/asp-net.md)
 * [Webová aplikace Java](app-insights-java-get-started.md)
 * [Webová aplikace Node.js](app-insights-nodejs.md)
 * Již nasazené aplikace hostované ve [službě IIS](app-insights-monitor-web-app-availability.md), na platformě [J2EE](app-insights-java-live.md) nebo v [Azure](app-insights-overview.md).

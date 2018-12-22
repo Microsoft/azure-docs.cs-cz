@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: a0071d651f322da7bbdeb914393ef3d3be650b36
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: d5279391c4f85411e592ce1d071fb1743cd135d5
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715490"
+ms.locfileid: "53744118"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -109,7 +109,7 @@ Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vy
   * [**Virtuální počítač nebo webová aplikace Azure**](app-insights-monitor-performance-live-website-now.md)
   * [**J2EE**](app-insights-java-live.md)
 * **Během vývoje: Přidejte Application Insights do vašeho kódu.** Umožňuje napsat vlastní telemetrii a instrumentovat back-endové a desktopové aplikace.
-  * [Visual Studio](app-insights-asp-net.md) 2013 s aktualizací Update 2 nebo novější.
+  * [Visual Studio](../azure-monitor/app/asp-net.md) 2013 s aktualizací Update 2 nebo novější.
   * [Java](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
   * [Jiné platformy](app-insights-platforms.md)
@@ -126,7 +126,7 @@ Začínáme při spuštění:
 
 Začínáme při vývoji:
 
-* [ASP.NET](app-insights-asp-net.md)
+* [ASP.NET](../azure-monitor/app/asp-net.md)
 * [Java](app-insights-java-get-started.md)
 * [Node.js](app-insights-nodejs.md)
 
@@ -153,7 +153,7 @@ Začínáme při vývoji:
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
 [detect]: app-insights-detect-triage-diagnose.md
-[greenbrown]: app-insights-asp-net.md
+[greenbrown]: ../azure-monitor/app/asp-net.md
 [ios]: app-insights-mobile-center-quickstart.md
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md

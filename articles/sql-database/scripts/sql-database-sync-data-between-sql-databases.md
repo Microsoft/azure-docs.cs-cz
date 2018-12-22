@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 22953447e52333dd5d7940605da0968f3436727a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4d343520ebfb7820cf1de769233e262f89862f14
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718703"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754233"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Synchronizace mezi několika databázemi SQL pomocí PowerShellu
  
@@ -133,6 +133,7 @@ $Credential = $Host.ui.PromptForCredential("Need credential",
               "")
 
 # Add a new sync member
+# You can add members from other subscriptions, you don't need to specify Subscription Id for the member
 Write-Host "Adding member"$SyncMemberName" to the sync group"
 New-AzureRmSqlSyncMember   -ResourceGroupName $ResourceGroupName `
                             -ServerName $ServerName `

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: 669d5995b66322a2a6ad346643444d5a46c4b6f8
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42812867"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744407"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -35,7 +35,7 @@ K provedení kroků v tomto kurzu je potřeba:
 - Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](app-insights-asp-net.md).
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../azure-monitor/app/asp-net.md).
 - [Povolit Application Insights Profiler](app-insights-profiler.md#installation) pro vaši aplikaci.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
@@ -122,7 +122,7 @@ Propojením shromážděných dat o výkonu serveru zpřístupňuje Application 
     ![Inteligentní diagnostika](media/app-insights-tutorial-performance/client-smart-diagnostics.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, přejděte k dalšímu kurzu, ve kterém zjistíte, jak jako reakci na chyby vytvářet upozornění.
 
 > [!div class="nextstepaction"]

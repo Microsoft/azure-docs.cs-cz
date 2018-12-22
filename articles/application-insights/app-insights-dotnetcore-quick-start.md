@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 008e61841611f36c440bb4896ae5a85d0bf4d874
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
-ms.translationtype: HT
+ms.openlocfilehash: 17c1cce5c20570f36505ce67a472280b03ef8f0e
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991590"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744513"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
@@ -33,7 +33,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 - [Nainstalovat sadu .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - Budete potřebovat předplatné Azure a webovou aplikaci v .NET Core.
 
-Pokud webovou aplikaci ASP.NET Core nemáte, můžete použít našeho podrobného průvodce k [vytvoření aplikace ASP.NET Core a přidání Application Insights](app-insights-asp-net-core.md).
+Pokud webovou aplikaci ASP.NET Core nemáte, můžete použít našeho podrobného průvodce k [vytvoření aplikace ASP.NET Core a přidání Application Insights](../azure-monitor/app/asp-net-core.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -124,7 +124,7 @@ Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevym
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vyhledání a diagnostika běhových výjimek](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

@@ -13,16 +13,16 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 7049691e6635940e70795f0b5b4cc4c94cfd3631
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607315"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745070"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Rychlý start: Pomocí SQL Server Management Studio k připojení a dotazování Azure SQL database
 
-Můžete použít [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) pro správu jakékoliv infrastruktury SQL z SQL serveru do služby SQL Database pro Microsoft Windows. Tento rychlý start ukazuje použití SSMS k připojení k databázi Azure SQL a pak spusťte příkazy Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat. 
+V tomto rychlém startu použijete [SQL Server Management Studio] [ ssms-install-latest-84g] (SSMS) pro připojení k databázi Azure SQL. Potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizace a odstranění dat. Použití SSMS pro správu jakékoliv infrastruktury SQL z SQL serveru do služby SQL Database pro Microsoft Windows.  
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -75,11 +75,11 @@ V SMSS připojení k vašemu serveru Azure SQL Database.
 
 ## <a name="query-data"></a>Dotazování dat
 
-Pomocí následujících [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL k dotazu na top 20 produktů podle kategorie.
+To [vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL k dotazu na top 20 produktů podle kategorie.
 
-1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a vyberte **nový dotaz**. Otevře se prázdné okno dotazu připojené k vaší databázi.
+1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a vyberte **nový dotaz**. Otevře se nové okno dotazu připojené k vaší databázi.
 
-1. V okně dotazu vložte tento dotaz SQL.
+2. V okně dotazu vložte tento dotaz SQL.
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -90,11 +90,11 @@ Pomocí následujících [vyberte](https://msdn.microsoft.com/library/ms189499.a
 
 3. Na panelu nástrojů vyberte **Execute** načítat data z `Product` a `ProductCategory` tabulky.
 
-    ![Dotaz pro načtení dat z tabulek 2](./media/sql-database-connect-query-ssms/query2.png)
+    ![dotaz pro načtení dat ze dvou tabulek](./media/sql-database-connect-query-ssms/query2.png)
 
 ## <a name="insert-data"></a>Vložení dat
 
-Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulky.
+To [vložit](https://msdn.microsoft.com/library/ms174335.aspx) kód jazyka Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulky.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -117,7 +117,7 @@ Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.a
            ,GETDATE() );
    ```
 
-2. Vyberte **Execute** vložit nový řádek v tabulce Product. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** vložte nový řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
 
 ## <a name="view-the-result"></a>Zobrazení výsledku
 
@@ -134,7 +134,7 @@ Pomocí následujících [vložit](https://msdn.microsoft.com/library/ms174335.a
  
 ## Update data
 
-Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify the new product you just added.
+Run this [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL code to modify your new product.
 
 1. Replace the previous query with this one.
 
@@ -144,11 +144,11 @@ Use the following [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Tra
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** k aktualizujte zadaný řádek v tabulce Product. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** aktualizujte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Pomocí následujících [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-SQL k odstranění nového produktu, který jste přidali dříve.
+To [odstranit](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-SQL k odstranění nového produktu.
 
 1. Nahraďte předchozí dotaz s touto položkou.
 
@@ -157,7 +157,7 @@ Pomocí následujících [odstranit](https://msdn.microsoft.com/library/ms189835
    WHERE Name = 'myNewProduct';
    ```
 
-2. Vyberte **Execute** odstranit zadaný řádek v tabulce Product. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
+2. Vyberte **Execute** odstraňte zadaný řádek v `Product` tabulky. **Zprávy** podokně se zobrazí **(1 řádek vliv)**.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d34be70e3283869a28f036f0016a0d3f8f241a8a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8c347c9ab15b68325a9a7ebc645a3146f4b7a180
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634843"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754573"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -26,11 +26,11 @@ V tomto rychlém startu se naučíte vytvořit účet úložiště pomocí webu 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Žádné.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Tento rychlý start vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Aktuální verzi zjistíte spuštěním `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps).
 
@@ -59,11 +59,11 @@ Azure CLI můžete také nainstalovat a používat místně. Tento rychlý start
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a při ověřování postupujte podle pokynů na obrazovce.
 
@@ -91,11 +91,11 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 
 Účet úložiště **Univerzální v2** poskytuje přístup ke všem službám Azure Storage: objektům blob, souborům, frontám, tabulkám a diskům. V tomto rychlém startu vytvoříte účet úložiště Univerzální v2, ale postup vytvoření libovolného typu účtu úložiště je podobný.   
 
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Nejprve vytvořte novou skupinu prostředků s použitím prostředí PowerShell [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) příkaz: 
 
@@ -178,7 +178,7 @@ Další informace o dostupných možnostech replikace najdete v tématu věnovan
 
 Pokud chcete vyčistit prostředky vytvořené v tomto rychlém startu, stačí jednoduše odstranit skupinu prostředků. Odstraněním skupiny prostředků odstraníte také přidružený účet úložiště a všechny další prostředky, které jsou k příslušné skupině prostředků přidružené.
 
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Odebrání skupiny prostředků pomocí webu Azure Portal:
 
@@ -186,7 +186,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko **Další** (**...** ) na pravé straně seznamu.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Chcete-li odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte [odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) příkaz: 
 
@@ -208,12 +208,12 @@ az group delete --name myResourceGroup
 
 V tomto rychlém startu jste vytvořili účet úložiště úrovně Standard pro obecné účely. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
 
-# <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 > [!div class="nextstepaction"]
 > [Práce s objekty blob pomocí webu Azure Portal](../blobs/storage-quickstart-blobs-portal.md)
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!div class="nextstepaction"]
 > [Práce s objekty blob pomocí PowerShellu](../blobs/storage-quickstart-blobs-powershell.md)

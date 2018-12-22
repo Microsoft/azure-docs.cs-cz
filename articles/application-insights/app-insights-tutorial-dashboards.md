@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: HT
+ms.openlocfilehash: a67f8c0f6be1c388c4138ee0269d7ad8b76d8c4c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29178188"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744325"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -34,10 +34,10 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](app-insights-asp-net.md). 
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../azure-monitor/app/asp-net.md). 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se k portálu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-a-new-dashboard"></a>Vytvoření nového řídicího panelu
 Jeden řídicí panel může obsahovat prostředky z více aplikací, skupin prostředků a předplatných.  Tento kurz začněte vytvořením nového řídicího panelu pro vaši aplikaci.  
@@ -163,7 +163,7 @@ Vzhledem k tomu, že Azure Application Insights Analytics je samostatná služba
 5. Klikněte na **Publikovat změny**, aby se změny potvrdily do řídicího panelu, který teď zahrnuje celou řadu grafů a vizualizací z Application Insights.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili vytvářet vlastní řídicí panely, podívejte se na zbytek dokumentace Application Insights včetně případové studie.
 
 > [!div class="nextstepaction"]
