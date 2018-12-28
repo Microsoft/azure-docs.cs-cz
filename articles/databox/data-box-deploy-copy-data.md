@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 12/19/2018
 ms.author: alkohli
-ms.openlocfilehash: e5219a0ade610a41d316970aecda06d4020b37f2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6349ced07385ede42b21c9a8401dd3e0a23bcfbe
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546177"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790296"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Kurz: Kopírování dat do služby Azure Data Box prostřednictvím protokolu SMB
 
@@ -31,27 +31,28 @@ V tomto kurzu se naučíte:
 Než začnete, ujistěte se, že:
 
 1. Dokončili jste [kurzu: Nastavení Azure Data Box](data-box-deploy-set-up.md).
-2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**.
+2. Obdrželi jste Data Box a stav objednávky na portálu je **dodáno**.
 3. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
-    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení alespoň 10 GbE. Pokud nemáte k dispozici připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
+    - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud 10 GbE připojení není k dispozici, použijte odkaz 1 GbE dat ale rychlosti kopírování bude mít vliv. 
 
 ## <a name="connect-to-data-box"></a>Připojení k Data Boxu
 
 V závislosti na vybraném účtu úložiště vytvoří Data Box až:
 - Tři sdílené složky pro každý přidružený účet úložiště GPv1 a GPv2.
-- Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob. 
+- Jednu sdílenou složku pro účet úložiště Premium nebo účet úložiště objektů blob.
 
 Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou entitami první úrovně kontejnery a entitami druhé úrovně objekty blob. Ve sdílených složkách souborů Azure jsou entitami první úrovně sdílené složky a entitami druhé úrovně soubory.
 
-Představte si následující příklad. 
+V následující tabulce jsou uvedeny cesty UNC ke sdílené složky na vaše zařízení Data Box a Azure Storage cestu URL, kterého se nahrávají data. Konečná adresa URL služby Azure Storage cesta může být odvozena z cesty UNC sdílené složky.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Objekty BLOB bloku Azure | <li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Objekty BLOB stránky Azure  | <li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Soubory Azure       |<li>Cesta UNC ke sdílené složky: `\\<DeviceIPAddres>\<StorageAccountName_AzFile>\<ShareName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |      
 
-- Účet úložiště: *Mystoracct*
-- Sdílené složky pro objekt blob bloku: *Mystoracct_BlockBlob/my kontejneru/objektů blob*
-- Sdílené složky pro objekt blob stránky: *Mystoracct_PageBlob/my kontejneru/objektů blob*
-- Sdílené složky pro soubor: *Mystoracct_AzFile/my-share*
-
-Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Data Boxu pomocí následujícího postupu.
+Pokud používáte počítač s Windows serverem hostitele, postupujte podle těchto kroků se připojíte k zařízení Data Box.
 
 1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **Získat přihlašovací údaje** získejte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
 
@@ -61,16 +62,16 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Získejte přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (v následujícím příkladu je to Mystoracct). Pro přístup ke sdíleným složkám použijte cestu `\\<IP of the device>\ShareName`. V závislosti na formátu vašich dat se připojte ke sdíleným složkám (použijte název sdílené složky) na následující adrese: 
-    - *\\<IP address of the device>\Mystoracct_Blob*
-    - *\\<IP address of the device>\Mystoracct_Page*
-    - *\\<IP address of the device>\Mystoracct_AzFile*
-    
-    Pokud se chcete ke sdíleným složkám připojit z hostitelského počítače, otevřete příkazové okno. Na příkazovém řádku zadejte:
+3. Pro přístup ke složkám přidružené k účtu úložiště (*devicemanagertest1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Po zobrazení výzvy zadejte heslo ke sdílené složce. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
+    V závislosti na formátu vašich dat, sdílené cesty jsou následující:
+    - Azure objekt blob bloku – `\\10.126.76.172\devicemanagertest1_BlockBlob`
+    - Azure objektů blob stránky – `\\10.126.76.172\devicemanagertest1_PageBlob`
+    - Soubory Azure – `\\10.126.76.172\devicemanagertest1_AzFile`
+    
+4. Po zobrazení výzvy zadejte heslo ke sdílené složce. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
@@ -78,26 +79,27 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na **OK**. Tím se otevře Průzkumník souborů. Sdílené složky by se teď měly zobrazit jako složky.
+4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Klikněte na tlačítko **OK** otevřete Průzkumníka souborů.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5.  **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Občas se u složek může zobrazit šedý křížek. Křížek neoznačuje chybový stav. Aplikace složky označuje příznakem kvůli sledování stavu.
+    Teď byste měli vidět sdílené složky jako složky.
     
-    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
+    **Vždy vytvořte složku pro soubory, které chcete kopírovat, v rámci sdílené složky a potom je zkopírujte do této složky**. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data odesílají jako objekty BLOB. Nelze kopírovat soubory přímo do *$root* složky v účtu úložiště.
+    
+    ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
-Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírování dat. Před kopírováním dat si nezapomeňte přečíst následující důležité informace:
+Po připojení ke sdíleným složkám zařízení Data Box, dalším krokem je zkopírovat data. Než začnete kopírování dat, projděte si následující aspekty:
 
-- Ujistěte se, že data kopírujete do sdílených složek odpovídajících příslušnému formátu dat. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Pokud formát dat neodpovídá příslušnému typu sdílené složky, nahrávání dat do Azure v pozdějším kroku selže.
--  Při kopírování dat se ujistěte, že velikost dat odpovídá omezením velikosti popsaným v článku [Omezení úložiště Azure a Data Boxu](data-box-limits.md). 
+- Ujistěte se, že zkopírovat data do sdílené složky, které odpovídají formátu příslušná data. Data objektů blob bloku je například potřeba zkopírovat do sdílené složky určené pro objekty blob bloku. Pokud formát dat neshoduje s typem příslušné sdílené složky, pak v pozdějším kroku, nahrát data do Azure se nezdaří.
+-  Při kopírování dat, ujistěte se, že velikost dat odpovídá omezení velikosti podle [služby Azure storage a omezení zařízení Data Box](data-box-limits.md).
 - Pokud data nahrávaná Data Boxem zároveň nahrávají jiné aplikace mimo Data Box, může to způsobit selhání úlohy nahrávání a poškození dat.
-- Doporučujeme, abyste nepoužívali protokol SMB a systém souborů NFS současně a abyste nekopírovali stejná data do stejného cíle v Azure. V takových případech není možné určit konečný výsledek.
+- Doporučujeme použití protokolu SMB a systému souborů NFS na stejné nebo zkopírujte stejná data do stejného cíle end v Azure. V těchto případech nelze určit konečný výsledek.
+- Vždy vytvořte složku pro soubory, které chcete kopírovat v rámci sdílené složky a potom zkopírujte soubory do této složky. Složky vytvořené v rámci objektů blob bloku a objektů blob stránky sdílené složky představuje kontejner, do kterého se data nahrají jako objekty BLOB. Nelze kopírovat soubory přímo do *$root* složky v účtu úložiště.
 
-Po připojení ke sdílené složce SMB zahajte kopírování dat. 
-
-Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
+Po připojení ke sdílené složce protokolu SMB, začněte kopírovat data. Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování souborů kompatibilní s protokolem SMB, třeba Robocopy. Pomocí nástroje Robocopy je možné zahájit několik úloh kopírování najednou. Použijte následující příkaz:
     
     robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
   
@@ -109,8 +111,8 @@ Ke kopírování dat můžete použít jakýkoli nástroj pro kopírování soub
 |/r:     |Určuje počet opakovaných pokusů při neúspěšném kopírování.         |
 |/w:     |Určuje dobu čekání mezi opakovanými pokusy v sekundách.         |
 |/is     |Zahrne stejné soubory.         |
-|/nfl     |Určuje, že se nemají protokolovat názvy souborů.         |
-|/ndl    |Určuje, že se nemají protokolovat názvy adresářů.        |
+|/nfl     |Určuje, že názvy souborů nejsou protokolovány.         |
+|/ndl    |Určuje, že názvy adresářů se neprotokolují.        |
 |/np     |Určuje, že se nezobrazí průběh operace kopírování (počet dosud zkopírovaných souborů nebo adresářů). Zobrazení průběhu výrazně snižuje výkon.         |
 |/MT     | Určuje, že se má použít multithreading. Doporučený počet vláken je 32 nebo 64. Tato možnost se nepoužívá u zašifrovaných souborů. Možná bude nutné oddělit zašifrované a nezašifrované soubory. Kopírování s jedním vláknem však výrazně snižuje výkon.           |
 |/fft     | Slouží k omezení členitosti časových razítek v jakémkoli systému souborů.        |

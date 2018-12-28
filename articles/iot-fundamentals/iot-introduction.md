@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2480aa92dec8d8e8879db813b1cfcddc26f77b7e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582413"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792522"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet of Things (IoT)?
 
@@ -26,7 +26,7 @@ Hlavní části řešení IoT, jsou následující: zařízení, back endové sl
 
 ### <a name="iot-devices"></a>Zařízení IoT
 
-Zařízení se obvykle skládá z panelu okruhu s censors připojen, připojte se k Internetu. Mnoho zařízení komunikovat přes Wi-Fi čipu. Tady je několik příkladů zařízení IoT:
+Zařízení se obvykle skládá z okruhu panel s připojených senzorů, která připojení k Internetu. Mnoho zařízení komunikovat přes Wi-Fi čipu. Tady je několik příkladů zařízení IoT:
 
 * přetížení senzorů čerpadla Vzdálená olej
 * senzorů teploty a vlhkosti v jednotce nosníky
@@ -103,13 +103,13 @@ Implementace tohoto řešení IoT přinesla pro společnost zkontrolujte a zprac
 
 Existuje několik služeb souvisejících s IoT v Azure a může být matoucí zjistit, které z nich chcete použít. Některé nástroje, například IoT Central a akcelerátory řešení IoT, poskytují šablony, které vám pomůžou vytvářet vlastní řešení a rychlé zahájení práce. Můžete také plně vyvíjet vlastní řešení s použitím jiných služeb, které jsou k dispozici – to všechno závisí na tom, kolik Nápověda chcete a jak velkou kontrolu. Tady je seznam služeb k dispozici, a také jak je můžete používat pro.
 
-1. [**IoT Central**](../iot-central/overview-iot-central.md): to je řešení SaaS, která umožňuje připojení, monitorování a správa zařízení ioT. Pokud chcete začít, vyberte šablonu pro váš typ zařízení a vytvoříte a otestujete základní aplikace IoT Central, který bude používat operátory zařízení. Aplikace IoT Central vám také umožní sledovat zařízení a zřizovat nová zařízení. Tato služba je jednoduché řešení, která nevyžadují rozsáhlá přizpůsobení služeb. 
+1. [**IoT Central**](../iot-central/overview-iot-central.md): To je řešení SaaS, která umožňuje připojení, monitorování a správa zařízení IoT. Pokud chcete začít, vyberte šablonu pro váš typ zařízení a vytvoříte a otestujete základní aplikace IoT Central, který bude používat operátory zařízení. Aplikace IoT Central vám také umožní sledovat zařízení a zřizovat nová zařízení. Tato služba je jednoduché řešení, která nevyžadují rozsáhlá přizpůsobení služeb. 
 
-2. [**Akcelerátory řešení IoT**](/azure/iot-suite): jde o kolekci řešení PaaS můžete použít k urychlení vývoje řešení IoT. Začněte s zadané řešení IoT a plně přizpůsobit řešení vašim požadavkům. Potřebujete znalosti Javy nebo .NET k přizpůsobení back endu a znalosti JavaScriptu k přizpůsobení vizualizace. 
+2. [**Akcelerátory řešení IoT**](/azure/iot-suite): To je soubor řešení PaaS, které lze použít k urychlení vývoje řešení IoT. Začněte s zadané řešení IoT a plně přizpůsobit řešení vašim požadavkům. Potřebujete znalosti Javy nebo .NET k přizpůsobení back endu a znalosti JavaScriptu k přizpůsobení vizualizace. 
 
-3. [**IoT Hub**](/azure/iot-hub/): Tato služba umožňuje připojení ze zařízení do služby IoT hub a sledování a řízení miliard zařízení IoT. To je obzvláště užitečné, pokud potřebujete obousměrnou komunikaci mezi zařízeními IoT a back-endu. Toto je základní služby pro IoT Central a akcelerátory řešení IoT. 
+3. [**IoT Hub**](/azure/iot-hub/): Tato služba umožňuje vám umožní připojit se ze zařízení do služby IoT hub a monitorování a řízení miliard zařízení IoT. To je obzvláště užitečné, pokud potřebujete obousměrnou komunikaci mezi zařízeními IoT a back-endu. Toto je základní služby pro IoT Central a akcelerátory řešení IoT. 
 
-4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): Toto je pomocná služba pro IoT Hub, která vám umožní bezpečně zřizovat zařízení do služby IoT hub. Pomocí této služby se kterou jednoduše zprovozníte miliony zařízení rychle, místo zřizování je jeden po druhém. 
+4. [**Služba IoT Hub Device Provisioning**](/azure/iot-dps/): Toto je pomocná služba pro IoT Hub, která vám umožní bezpečně zřizovat zařízení do služby IoT hub. Pomocí této služby se kterou jednoduše zprovozníte miliony zařízení rychle, místo zřizování je jeden po druhém. 
 
 5. [**IoT Edge**](/azure/iot-edge/): Tato služba postavená na službě IoT Hub. Slouží k analýze dat na zařízeních IoT, nikoli v cloudu. Díky přesunu částí úlohy do hraničních zařízení, třeba méně zpráv k odeslání do cloudu. 
 

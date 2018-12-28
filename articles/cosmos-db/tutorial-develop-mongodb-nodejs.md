@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 585202203e0828848ea51cc5d0d548c6f1ac6cba
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 364c8d4c0ca9ac9a733ee98fd73b2dfd8497625f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724319"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791281"
 ---
-# <a name="create-an-azure-cosmos-db-for-mongodb-api-app-with-angular-and-cosmos-db"></a>Vytvoření Azure Cosmos DB pro aplikace rozhraní API MongoDB s Angular a službou Cosmos DB
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md).
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, kterým přináší výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Umožňuje vám rychle vytvořit a dotazovat databáze dokumentů, klíč/hodnota a grafů, které můžou využívat výhody globální distribuce a možností horizontálního škálování v jádru služby Cosmos DB. 
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 

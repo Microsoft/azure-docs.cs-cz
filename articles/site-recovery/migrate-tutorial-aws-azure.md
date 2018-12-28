@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd3229773b19b9f6c4d9ff76402f1841a4810bc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 24503a821445bbf1610588d7f69ec87948a812b9
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851124"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793066"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -113,7 +113,7 @@ Na stránce **Cíl ochrany** vyberete následující hodnoty:
 
 Jakmile to budete mít, přejděte zvolením **OK** na další krok.
 
-### <a name="2-prepare-source"></a>2: Příprava zdroje
+### <a name="2-prepare-source"></a>2: Připravit zdroj
 
 Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
@@ -136,9 +136,9 @@ Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
     11. V části **Installation Progress** (Průběh instalace) vidíte, jak je instalace daleko. Po dokončení vyberte **Finish** (Dokončit). Zobrazí se okno se zprávou o restartování. Vyberte **OK**. V dalším kroku se zobrazí okno s heslem pro připojení ke konfiguračnímu serveru. Zkopírujte heslo do schránky a bezpečně si ho uložte.
 6. Na virtuálním počítači spusťte program cspsconfigtool.exe, pomocí kterého vytvoříte na konfiguračním serveru jeden nebo více účtů pro správu. Ujistěte se, že účty pro správu mají oprávnění správce na instancích EC2, které chcete migrovat.
 
-Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal a vyberte server, který jste vytvořili jako **Konfigurační server**. Zvolením možnosti **OK** přejděte na krok 3: Příprava cíle.
+Po dokončení nastavení konfiguračního serveru přejděte zpátky na portál Azure Portal a vyberte server, který jste vytvořili jako **Konfigurační server**. Vyberte **OK** přejdete na 3: Připravte cíl.
 
-### <a name="3-prepare-target"></a>3: Příprava cíle
+### <a name="3-prepare-target"></a>3: Připravit cíl
 
 V této části zadáte informace o prostředcích, které jste vytvořili v předchozích krocích tohoto kurzu v části [Příprava prostředků Azure](#prepare-azure-resources).
 
@@ -169,7 +169,7 @@ Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. 
 
 1. Přejděte na [Azure Portal](htts://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
-2. V části **Pro místní počítače a virtuální počítače Azure** vyberte **Krok 1: Replikace aplikace**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
+2. V části **pro místní počítače a virtuální počítače Azure**vyberte **krok 1: Replikovat aplikaci**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
     - 1: Konfigurace zdroje
 
     |  |  |
@@ -222,9 +222,9 @@ Spusťte na portálu test převzetí služeb při selhání:
 
 1. Na stránce vašeho trezoru přejděte na **Chráněné položky** > **Replikované položky**. Vyberte virtuální počítač a potom zvolte **Testovací převzetí služeb při selhání**.
 2. Vyberte bod obnovení, který chcete pro převzetí služeb při selhání použít:
-    - **Nejnovější zpracovaný**: Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
-    - **Nejnovější konzistentní vzhledem k aplikacím**: Tato možnost vrátí všechny virtuální počítače k nejnovějšímu konzistentnímu bodu obnovení vzhledem k aplikacím. Časové razítko je vidět.
-    - **Vlastní**: Vyberete si libovolný bod obnovení.
+    - **Nejnovější zpracovaný**: Převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Časové razítko je vidět. U této možnosti nedochází k prodlevě při zpracování dat, takže poskytuje nízkou plánovanou dobu obnovení (RTO).
+    - **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání všech virtuálních počítačů k nejnovějšímu bodu obnovení s konzistentní aplikací. Časové razítko je vidět.
+    - **Vlastní**: Zvolte jakýkoli bod obnovení.
 
 3. V části **Testovací převzetí služeb při selhání** vyberte cílovou síť Azure, ke které se virtuální počítače Azure po převzetí služeb při selhání připojí. Měla by to být síť, kterou jste vytvořili v části [Příprava prostředků Azure](#prepare-azure-resources).
 4. Zvolením možnosti **OK** zahajte převzetí služeb při selhání. Pokud chcete sledovat průběh, otevřete zvolením virtuálního počítače jeho vlastnosti. Nebo můžete vybrat úlohu **Testovací převzetí služeb při selhání** na stránce trezoru. Pokud to chcete udělat, vyberte **Sledování a sestavy** > **Úlohy** >  **Úlohy Site Recovery**.

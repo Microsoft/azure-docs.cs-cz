@@ -4,15 +4,15 @@ description: Tento článek popisuje migraci místních počítačů do Azure po
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1df09a885d6c636ff6bd4bcbec03d27ff7b44ff9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5023171c4f943b7e698a0b6bbcadef209965e2df
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836980"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789242"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -63,9 +63,9 @@ Vyberte, jak chcete počítače replikovat a kam je chcete replikovat.
 1. Klikněte na **Trezory služby Recovery Services** > trezor.
 2. V nabídce prostředku klikněte na **Site Recovery** > **Příprava infrastruktury** > **Cíl ochrany**.
 3. V části **Cíl ochrany** vyberte, co chcete migrovat.
-    - **VMware:** Vyberte **Do Azure** > **Ano, s VMWare vSphere Hypervisor**.
-    - **Fyzický počítač:** Vyberte **Do Azure** > **Nevirtualizované/jiné**.
-    - **Hyper-V:** Vyberte **Do Azure** > **Ano, s technologií Hyper-V**. Pokud jsou virtuální počítače Hyper-V spravované nástrojem VMM, vyberte **Ano**.
+    - **VMware**: Vyberte **do Azure** > **Ano, s VMWare vSphere Hypervisor**.
+    - **Fyzický počítač**: Vyberte **do Azure** > **nevirtualizované/jiné**.
+    - **Technologie Hyper-V**: Vyberte **do Azure** > **Ano, s Hyper-V**. Pokud jsou virtuální počítače Hyper-V spravované nástrojem VMM, vyberte **Ano**.
 
 
 ## <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
@@ -119,7 +119,7 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 
 
 > [!WARNING]
-> **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Replikace virtuálního počítače se před spuštěním převzetí služeb při selhání zastaví. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
+> **Nepřerušujte převzetí služeb při selhání v průběhu**: Před spuštěním převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.
 
 V některých scénářích vyžaduje převzetí služeb při selhání další zpracování, které trvá asi osm až deset minut. Možná si všimnete delšího trvání testovacího převzetí služeb při selhání u fyzických serverů, počítačů VMware s Linuxem, virtuálních počítačů VMware, které nemají povolenou službu DHCP, a virtuálních počítačů VMware, které nemají následující ovladače spuštění: storvsc, vmbus, storflt, intelide, atapi.
 

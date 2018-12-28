@@ -1,33 +1,33 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Concur | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Concur.
+title: 'Kurz: Integrace Azure Active Directory se sadou nástrojů GoodPractice | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a GoodPractice Toolkit.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 1eee0a5d-24fa-4986-9aef-3c543cfe3296
+ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/11/2018
+ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e9956ad119865396a5e3842e3d5975c532aa8ee
+ms.openlocfilehash: 699a46dbb404e39c1f2005140b88a773832eb50c
 ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791196"
+ms.locfileid: "53797209"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-concur"></a>Kurz: Integrace Azure Active Directory s Concur
+# <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Kurz: Integrace se sadou nástrojů GoodPractice Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Concur s Azure Active Directory (Azure AD).
-Concur integraci se službou Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat GoodPractice Toolkit s Azure Active Directory (Azure AD).
+Integrace nástrojů GoodPractice s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Concur.
-* Můžete povolit uživatelům být automaticky přihlášeni k Concur (Single Sign-On) s jejich účty Azure AD.
+* Můžete řídit ve službě Azure AD, který má přístup k GoodPractice Toolkit.
+* Uživatelům se automaticky přihlášeni k GoodPractice Toolkit (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,23 +35,23 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Concur, potřebujete následující položky:
+Konfigurace integrace Azure AD se sadou nástrojů GoodPractice, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Concur jednotné přihlášení povolený předplatného
+* Sada nástrojů GoodPractice jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Concur podporuje **SP** jednotné přihlašování zahájené pomocí
-* Concur podporuje **JIT** zřizování uživatelů
+* Podporuje GoodPractice Toolkit **SP** jednotné přihlašování zahájené pomocí
+* Podporuje GoodPractice Toolkit **JIT** zřizování uživatelů
 
-## <a name="adding-concur-from-the-gallery"></a>Přidání Concur z Galerie
+## <a name="adding-goodpractice-toolkit-from-the-gallery"></a>Přidání GoodPractice Toolkit z Galerie
 
-Konfigurace integrace Concur do služby Azure AD, budete muset přidat Concur z Galerie na váš seznam spravovaných aplikací SaaS.
+Ke konfiguraci integration GoodPractice Toolkit do služby Azure AD, budete muset přidat GoodPractice Toolkit z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Concur z galerie, postupujte následovně:**
+**Sada nástrojů GoodPractice přidat z galerie, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -65,21 +65,20 @@ Konfigurace integrace Concur do služby Azure AD, budete muset přidat Concur z 
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Concur**vyberte **Concur** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **GoodPractice Toolkit**vyberte **GoodPractice Toolkit** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Concur v seznamu výsledků](common/search-new-app.png)
-
+     ![Sada nástrojů GoodPractice v seznamu výsledků](common/search-new-app.png)
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí Concur podle testovacího uživatele volá **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Concur.
+V této části nakonfigurujete a testovací služby Azure AD jednotného přihlašování se sadou nástrojů GoodPractice podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v sadě nástrojů GoodPractice.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Concur, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotného přihlašování se sadou nástrojů GoodPractice, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Concur Single Sign-On](#configure-concur-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace GoodPractice Toolkit Single Sign-On](#configure-goodpractice-toolkit-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele Concur](#create-concur-test-user)**  – Pokud chcete mít protějšek Britta Simon Concur, který je propojený s Azure AD reprezentace uživatele.
+4. **[Vytvořit testovacího uživatele GoodPractice Toolkit](#create-goodpractice-toolkit-test-user)**  – Pokud chcete mít protějšek Britta Simon v sadě nástrojů GoodPractice, který je propojený s Azure AD reprezentace uživatele.
 5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -87,9 +86,9 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Concur, které 
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s Concur, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotného přihlašování se sadou nástrojů GoodPractice, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Concur** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **GoodPractice Toolkit** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
@@ -103,20 +102,18 @@ Ke konfiguraci Azure AD jednotné přihlašování s Concur, proveďte následuj
 
 4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![Concur domény a adresy URL jednotné přihlašování – informace](common/sp-identifier.png)
+    ![GoodPractice sada domény a adresy URL jednotného přihlašování – informace](common/sp-intiated.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> `.
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<customer-domain>.concursolutions.com`
+    > [!Note]
+    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory GoodPractice Toolkit klienta](mailto:support@goodpractice.com) má být získána hodnota.
 
-    > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Concur klienta](https://www.concur.co.in/contact) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
-
-5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **soubor XML s metadaty**z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](common/metadataxml.png)
 
-6. Na **nastavení Concur** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+6. Na **nastavení GoodPractice Toolkit** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
     ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
@@ -126,14 +123,11 @@ Ke konfiguraci Azure AD jednotné přihlašování s Concur, proveďte následuj
 
     c. Adresa URL – odhlášení
 
-### <a name="configure-concur-single-sign-on"></a>Konfigurace Concur jednotného přihlašování
+### <a name="configure-goodpractice-toolkit-single-sign-on"></a>Konfigurace nástrojů GoodPractice jednotného přihlašování
 
-Ke konfiguraci jednotného přihlašování na **Concur** straně, je nutné odeslat na stažený **soubor XML s metadaty** a vhodné zkopírovaný adresy URL z webu Azure portal [tým podpory Concur](https://www.concur.co.in/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **GoodPractice Toolkit** straně, je nutné odeslat na stažený **kód XML metadat federace** a vhodné zkopírovaný adresy URL z webu Azure portal [GoodPractice Tým podpory Toolkit](mailto:support@goodpractice.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
-  > [!NOTE]
-  > Konfigurace předplatného Concur pro federované jednotné přihlašování pomocí SAML je samostatné úlohy, které musíte požádat o [tým podpory Concur klienta](https://www.concur.co.in/contact) provádět.
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
@@ -160,15 +154,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k Concur.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k GoodPractice Toolkit.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Concur**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **GoodPractice Toolkit**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **Concur**.
+2. V seznamu aplikací vyberte **GoodPractice Toolkit**.
 
-    ![Concur odkaz v seznamu aplikací](common/all-applications.png)
+    ![Odkaz GoodPractice Toolkit v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
@@ -184,15 +178,15 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-concur-test-user"></a>Vytvoření Concur testovacího uživatele
+### <a name="create-goodpractice-toolkit-test-user"></a>Vytvořit testovacího uživatele GoodPractice Toolkit
 
-V této části se vytvoří uživateli Britta Simon v Concur. Concur podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel již neexistuje mezi Concur, vytvoří se nový po ověření.
+V této části je uživateli Britta Simon vytvořené v sadě nástrojů GoodPractice. Podporuje GoodPractice Toolkit **just-in-time zřizování**, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v sadě nástrojů GoodPractice, je vytvořen nový při pokusu o přístup k GoodPractice Toolkit.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Concur na přístupovém panelu, můžete by měl být automaticky přihlášeni k Concur, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici GoodPractice Toolkit na přístupovém panelu, můžete by měl být automaticky přihlášeni k GoodPractice Toolkit, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 
@@ -201,3 +195,4 @@ Po kliknutí na dlaždici Concur na přístupovém panelu, můžete by měl být
 - [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

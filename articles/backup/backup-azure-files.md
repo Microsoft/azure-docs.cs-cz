@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 94a3282451a0efcc9209c4aac3d316e40560495f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 13003f671e479217d73d1c611be36987b3bda7bc
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972118"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793576"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -34,7 +34,7 @@ Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachá
 Zálohování sdílených složek Azure je ve verzi Preview. Sdílené složky Azure pro obecné účely v1 a účty úložiště pro obecné účely v2 jsou podporovány. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
 - Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
-- Pro ochranu souborů Azure pomocí služby Azure Backup není k dispozici PowerShell ani rozhraní příkazového řádku.
+- Není k dispozici pro ochranu souborů Azure pomocí služby Azure Backup žádné rozhraní příkazového řádku.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.

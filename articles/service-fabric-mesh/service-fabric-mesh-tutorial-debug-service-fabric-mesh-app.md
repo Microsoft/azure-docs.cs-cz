@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 10/31/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 06a7ce6301af6e5a7c04ac5c5a0a1240c21f834e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 6e7f6499a78b21ad81af5d541966e18090467532
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52887504"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787626"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric sítě ve vašem místním vývojovém clusteru spuštěná
 
 V tomto kurzu, který je druhou částí série, se dozvíte, jak sestavit a ladit aplikaci Azure Service Fabric Mesh v místním vývojovém clusteru.
 
@@ -93,8 +93,8 @@ Pokud se zobrazí chyby sestavení v **service.yaml**, zkontrolujte, že se k od
 ### <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 
 Při ladění aplikace Service Fabric mřížky v sadě Visual Studio používáte místní vývojový cluster Service Fabric. Pokud chcete zobrazit, jak se položky úkolů načítají z back-endové služby, zaměřte se při ladění na metodu OnGet().
-1. V projektu **WebFrontEnd** otevřete **Stránky** > **Index.cshtml** > **Index.cshtml.cs** a nastavte zarážku v metodě **Get** (řádek 17).
-2. V projektu **ToDoService** otevřete **TodoController.cs** a nastavte zarážku v metodě **OnGet** (řádek 15).
+1. V **WebFrontEnd** projekt, otevřete **stránky** > **Index.cshtml** > **Index.cshtml.cs** a nastavit Zarážka v **OnGet** – metoda (řádek 17).
+2. V **ToDoService** projekt, otevřete **TodoController.cs** a nastavte zarážku **získat** – metoda (řádek 15).
 3. Vraťte se do prohlížeče a aktualizujte stránku. Dostanete se k zarážce v metodě `OnGet()` front-endu. Můžete se podívat na proměnnou `backendUrl`, abyste zjistili, jak se proměnné prostředí definované v souboru **service.yaml** zkombinují do adresy URL, která se používá ke kontaktování back-endové služby.
 4. Vynechejte (F10) volání `client.GetAsync(backendUrl).GetAwaiter().GetResult())` a dostanete se k zarážce `Get()` kontroleru. V této metodě můžete vidět, jak se seznam položek úkolů načítá ze seznamu v paměti.
 5. Jakmile budete hotovi, zastavte ladění projektu v sadě Visual Studio stisknutím klávesy **Shift + F5**.

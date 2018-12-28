@@ -1,5 +1,5 @@
 ---
-title: Node.Js s využitím Angular aplikace pomocí rozhraní API MongoB (část3)
+title: Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – sestavení uživatelského rozhraní pomocí Angular
 titleSuffix: Azure Cosmos DB
 description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 73710b812a78af9728873a8cb9e0586091f48f66
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 462d0ea036ee50a3eea6812d87772bba9559125c
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717904"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788578"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – část 3: Vytvoření uživatelského rozhraní pomocí Angular
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Vytvořit aplikaci Angular s rozhraním API pro Azure Cosmos DB pro MongoDB – sestavení uživatelského rozhraní pomocí Angular
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md).
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
 
 Třetí část kurzu vychází z [části 2](tutorial-develop-mongodb-nodejs-part2.md) a zabývá se následujícími úlohami:
 

@@ -1,30 +1,30 @@
 ---
-title: Úvod do služby Azure Cosmos DB pro rozhraní MongoDB API
-description: Zjistěte, jak můžete používat službu Azure Cosmos DB k ukládání a dotazování velkého množství dokumentů JSON s nízkou latencí pomocí oblíbených rozhraní API OSS MongoDB.
+title: Úvod do služby Azure Cosmos DB pro rozhraní API pro MongoDB
+description: Zjistěte, jak můžete pomocí služby Azure Cosmos DB k ukládání a dotazování velkých objemů dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
 keywords: Rozhraní API služby Azure Cosmos DB pro MongoDB
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.topic: overview
-ms.date: 12/19/2018
-ms.author: sclyon
-ms.openlocfilehash: c2e009b81fa072fef5249f5dc697fcad547adb3e
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: f17d8f46bc14297c70c21919abe236fc544facfa
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744169"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787609"
 ---
-# <a name="azure-cosmos-db-for-mongodb-api-clients"></a>Azure Cosmos DB pro rozhraní MongoDB API klienty
+# <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
 [Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba Microsoftu s více modely pro klíčové aplikace. Azure Cosmos DB poskytuje [globální distribuci na klíč](distribute-data-globally.md), [elastické škálování propustnosti a úložiště](partition-data.md) po celém světě, latence v řádu milisekund na 99. percentilu, zaručenou vysokou dostupnost. To vše je zajištěno [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos DB [automaticky indexuje data](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. Ve výchozím nastavení budete moct setkat s Cosmos DB pomocí rozhraní SQL API. Kromě toho služby Cosmos DB implementuje protokoly přenosu pro běžné rozhraní API typu NoSQL, včetně Cassandra, MongoDB, Gremlin a Azure Table Storage. To umožňuje používat známé ovladače klienta NoSQL a nástroje k interakci s databází Cosmos.
 
 ## <a name="wire-protocol-compatibility"></a>Přenosový protokol kompatibility
 
-Cosmos DB implementuje přenosový protokoly common databáze NoSQL, včetně Cassandra, MongoDB, Gremlin a Azure Table Storage. Tím, že poskytuje nativní implementace protokolů přenosu efektivně a přímo ve službě Azure Cosmos, je možné existující klientské sady SDK, ovladačů a nástrojů z databáze NoSQL pro interakci s Cosmos DB transparentně. Cosmos DB nepoužívá žádný zdrojový kód databází k zajištění přenosu kompatibilní s rozhraním API pro žádnou z databází NoSQL.
+Azure Cosmos DB implementuje přenosový protokoly common databáze NoSQL, včetně Cassandra, MongoDB, Gremlin a Azure Table Storage. Tím, že poskytuje nativní implementace protokolů přenosu efektivně a přímo ve službě Azure Cosmos, je možné existující klientské sady SDK, ovladačů a nástrojů z databáze NoSQL pro interakci s Cosmos DB transparentně. Cosmos DB nepoužívá žádný zdrojový kód databází k zajištění přenosu kompatibilní s rozhraním API pro žádnou z databází NoSQL.
 
-Ve výchozím nastavení je kompatibilní s verze 3.2 přenosový protokol MongoDB API služby Azure Cosmos DB. Funkce nebo operátory dotazu byly přidány ve verzi 3.4 přenosový protokol jsou nyní dostupné jako funkce ve verzi preview. Všechny ovladače klienta MongoDB, která analyzuje tyto verze protokolu by měl být nativně připojit ke službě Azure Cosmos DB.
+Ve výchozím nastavení je kompatibilní s verzí 3.2 přenosový protokol MongoDB pro rozhraní API služby Azure Cosmos DB pro MongoDB. Funkce nebo operátory dotazu byly přidány ve verzi 3.4 přenosový protokol jsou nyní dostupné jako funkce ve verzi preview. Všechny ovladače klienta MongoDB, která analyzuje tyto verze protokolu by měl být nativně připojit ke službě Cosmos DB.
 
 ![Rozhraní API služby Azure Cosmos DB pro MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -38,22 +38,22 @@ Klíčové výhody jako plně spravovaná, globálně distribuovaná databáze j
 * Elastické škálování propustnosti a úložiště pro vaše databáze Cosmos podle svých potřeb a Plaťte jenom za propustnost a úložiště, které potřebujete. To vede k výrazné úspory nákladů.
 * Na klíč, globální distribuci s multimasterovou replikací.
 
-## <a name="cosmos-db-for-mongodb-api-clients"></a>Cosmos DB pro rozhraní MongoDB API klienty
+## <a name="cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby cosmos DB pro MongoDB
 
-Pomocí rychlých startů MongoDB vytvořte účet Azure Cosmos DB a migrujte svou existující aplikaci MongoDB tak, aby používala Azure Cosmos DB, nebo vytvořte novou:
+Postupujte podle šablon rychlý start k vytvoření účtu služby Cosmos a migrovat stávající aplikace MongoDB pomocí služby Azure Cosmos DB nebo vytvářet nové:
 
-* [Migrace existující webové aplikace MongoDB v jazyce Node.js](create-mongodb-nodejs.md)
-* [Vytvoření webové aplikace s využitím .NET a webu Azure portal pomocí služby Azure Cosmos DB pro rozhraní MongoDB API](create-mongodb-dotnet.md)
-* [Sestavení aplikace konzoly v jazyce Java a webu Azure portal pomocí služby Azure Cosmos DB pro rozhraní MongoDB API](create-mongodb-java.md)
+* [Migrace stávající webové aplikace Node.js s MongoDB](create-mongodb-nodejs.md).
+* [Vytvoření webové aplikace pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sady .NET SDK](create-mongodb-dotnet.md)
+* [Sestavit aplikaci konzoly pomocí rozhraní API služby Azure Cosmos DB pro MongoDB a sady Java SDK](create-mongodb-java.md)
 
 ## <a name="next-steps"></a>Další postup
 
 Tady jsou odkazy na informace, které vám pomůžou začít:
 
 * Postupujte podle [připojení aplikace MongoDB ke službě Azure Cosmos DB](connect-mongodb-account.md) kurzu se dozvíte, jak získat informace o vašem účtu připojovací řetězec.
-* Postupujte podle [použití studia 3T pomocí služby Azure Cosmos DB](mongodb-mongochef.md) kurzu se dozvíte, jak vytvořit připojení mezi vaší databázi Azure Cosmos DB a aplikaci MongoDB v sadě Studio 3 T.
-* Postupujte podle [podporují migrace dat do služby Azure Cosmos DB pomocí protokolu pro MongoDB API](mongodb-migrate.md) kurzu a importovat data do databáze Cosmos.
+* Postupujte podle [použití studia 3T pomocí služby Azure Cosmos DB](mongodb-mongochef.md) kurzu se dozvíte, jak vytvořit připojení mezi vaší databáze Cosmos a aplikaci MongoDB v sadě Studio 3 T.
+* Postupujte podle [data importovat MongoDB do služby Azure Cosmos DB](mongodb-migrate.md) kurzu a importovat data do databáze Cosmos.
 * Připojte se k účtu Cosmos pomocí [Robo 3T](mongodb-robomongo.md).
-* Zjistíte, jak [nakonfigurovat předvolby čtení pro globálně distribuované aplikace](../cosmos-db/tutorial-global-distribution-mongodb.md).
+* Zjistěte, jak [konfigurace načíst předvolby pro globálně distribuované aplikace](../cosmos-db/tutorial-global-distribution-mongodb.md).
 
 <sup>Poznámka: Tento článek popisuje funkce služby Azure Cosmos DB, která poskytuje kompatibilitu s protokolem při přenosu pomocí databáze MongoDB. Microsoft se nespustí databáze MongoDB pro tuto službu poskytovat. Azure Cosmos DB není přidružený žádný MongoDB, Inc.</sup>

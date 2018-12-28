@@ -1,23 +1,23 @@
 ---
 title: Funkce interval TTL, ZÍSKÁ každý dokument MongoDB ve službě Azure Cosmos DB
-description: Zjistěte, jak nastavit čas hodnotu TTL pro dokumenty v Azure Cosmos DB pro rozhraní MongoDB API účty automaticky jejich vymazání ze systému po určitou dobu.
+description: Zjistěte, jak nastavit čas hodnotu TTL pro dokumenty pomocí rozhraní API služby Azure Cosmos DB pro MongoDB automaticky jejich vymazání ze systému po určitou dobu.
 services: cosmos-db
-author: orestis-ms
-ms.author: orkostak
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 08/10/2018
-ms.openlocfilehash: 891fa2a54be3a74d2a0cc3b9e266a1978ecf6ce3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/26/2018
+ms.openlocfilehash: d7c811dba3ad9b894fd5dae47e898f51ec4d05e5
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724976"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790091"
 ---
-# <a name="expire-data-in-azure-cosmos-db-for-mongodb-api"></a>Vypršení platnosti dat v Azure Cosmos DB pro rozhraní MongoDB API
+# <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Vypršení platnosti dat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Funkce TTL (Time to Live) umožňuje automatické vypršení platnosti dat v databázi. Pro rozhraní MongoDB API služby Azure Cosmos DB využívá možnosti TTL služby Azure Cosmos DB. Podporují se dva režimy: nastavení výchozí hodnoty TTL pro celou kolekci a nastavení hodnot TTL pro každý dokument zvlášť. Logika řídící indexy TTL a hodnoty TTL pro jednotlivé dokumenty v rozhraní MongoDB API je [stejná jako ve službě Azure Cosmos DB](../cosmos-db/mongodb-indexing.md).
+Funkce TTL (Time to Live) umožňuje automatické vypršení platnosti dat v databázi. Rozhraní API služby Azure Cosmos DB pro MongoDB využívá základní funkce TTL pro Cosmos DB. Podporují se dva režimy: nastavení výchozí hodnoty TTL pro celou kolekci a nastavení hodnot TTL pro každý dokument zvlášť. Logika, kterými se řídí indexy TTL a interval TTL, ZÍSKÁ každý dokument hodnoty v Cosmos DB přes rozhraní API pro MongoDB, je [stejné jako u služby Cosmos DB](../cosmos-db/mongodb-indexing.md).
 
 ## <a name="ttl-indexes"></a>Indexy TTL
 Pokud chcete v kolekci povolit všeobecnou hodnotu TTL, je potřeba vytvořit [index TTL (Time to Live)](../cosmos-db/mongodb-indexing.md). Index TTL je index u pole _ts s hodnotou expireAfterSeconds.
@@ -73,10 +73,10 @@ globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: NumberLong(21474
 
 ## <a name="how-to-activate-the-per-document-ttl-feature"></a>Postup aktivace funkce TTL pro jednotlivé dokumenty
 
-Funkce interval TTL, ZÍSKÁ každý dokument lze aktivovat na účet Cosmos nakonfigurovaný pro rozhraní API MongoDB.
+Funkci interval TTL, ZÍSKÁ každý dokument můžete aktivovat pomocí rozhraní API služby Azure Cosmos DB pro MongoDB.
 
 ![Snímek obrazovky aktivace funkce TTL pro jednotlivé dokumenty na portálu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
 ## <a name="next-steps"></a>Další postup
-* [Automatické vypršení platnosti dat v kolekcích Azure Cosmos DB s využitím hodnoty TTL (Time to Live)](../cosmos-db/time-to-live.md)
-* [Indexování nakonfigurovaný pro rozhraní MongoDB API databáze Cosmos](../cosmos-db/mongodb-indexing.md)
+* [Vypršení platnosti dat v Azure Cosmos DB automaticky s časem TTL](../cosmos-db/time-to-live.md)
+* [Indexování databáze Cosmos nakonfigurovaný pro MongoDB API služby Azure Cosmos DB](../cosmos-db/mongodb-indexing.md)

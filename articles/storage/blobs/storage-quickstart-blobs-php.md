@@ -8,12 +8,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: 6ecb87af9cc75898aa8734b329dce01f70511a27
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 58d1d47b548569f7542e24bd09a41299f12e496e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712904"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787881"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
 V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisovat objekty blob bloku v kontejneru v úložišti objektů blob v Azure. 
@@ -43,14 +43,14 @@ Tento příkaz naklonuje úložiště do vaší místní složky gitu. Pokud chc
 ## <a name="configure-your-storage-connection-string"></a>Konfigurace připojovacího řetězce úložiště
 V aplikaci musíte zadat název svého účtu úložiště a klíč účtu pro vytvoření instance **BlobRestProxy** ve vaší aplikaci. Doporučujeme uložit tyto identifikátory do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systému vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů. Hodnoty **youraccountname** a **youraccountkey** nahraďte názvem a klíčem vašeho účtu.
 
-# <a name="linux-tablinux"></a>[Linux] (#tab/linux)
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windows-tabwindows"></a>[Windows] (#tab/windows)
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>

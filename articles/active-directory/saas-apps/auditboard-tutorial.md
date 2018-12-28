@@ -1,12 +1,12 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s polem | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole.
+title: 'Kurz: Integrace Azure Active Directory s AuditBoard | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AuditBoard.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
+ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 0dd91fb26777815844bdff5aba033a4bbeac4496
+ms.openlocfilehash: cb8eb2b13f82deb5f0146d413a917362301fc8a1
 ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794392"
+ms.locfileid: "53797206"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-box"></a>Kurz: Integrace Azure Active Directory s poli
+# <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>Kurz: Integrace Azure Active Directory s AuditBoard
 
-V tomto kurzu se dozvíte, jak integrovat Azure Active Directory (Azure AD) pole.
-Pole integrace s Azure AD poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat AuditBoard s Azure Active Directory (Azure AD).
+AuditBoard integraci se službou Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k poli.
-* Můžete povolit uživatelům, aby se automaticky přihlášeni k boxu (Single Sign-On) pomocí jejich účtů služby Azure AD.
+* Můžete řídit ve službě Azure AD, který má přístup k AuditBoard.
+* Můžete povolit uživatelům být automaticky přihlášeni k AuditBoard (Single Sign-On) s jejich účty Azure AD.
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,24 +35,22 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s polem, potřebujete následující položky:
+Konfigurace integrace Azure AD s AuditBoard, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
-* Pole jednotného přihlašování povolená předplatného
+* AuditBoard jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-* Podporuje pole **SP** jednotné přihlašování zahájené pomocí
-* Podporuje pole **JIT** zřizování uživatelů
-* Podporuje pole [automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) 
+* Podporuje AuditBoard **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
 
-## <a name="adding-box-from-the-gallery"></a>Přidání pole z Galerie
+## <a name="adding-auditboard-from-the-gallery"></a>Přidání AuditBoard z Galerie
 
-Pokud chcete nakonfigurovat integraci pole do služby Azure AD, budete muset přidat pole do seznamu spravovaných aplikací SaaS z galerie.
+Konfigurace integrace AuditBoard do služby Azure AD, budete muset přidat AuditBoard z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat pole z galerie, postupujte následovně:**
+**Chcete-li přidat AuditBoard z galerie, postupujte následovně:**
 
 1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
@@ -66,21 +64,21 @@ Pokud chcete nakonfigurovat integraci pole do služby Azure AD, budete muset př
 
     ![Tlačítko nové aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **pole**vyberte **pole** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **AuditBoard**vyberte **AuditBoard** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-     ![Pole v seznamu výsledků](common/search-new-app.png)
+     ![AuditBoard v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, konfigurace a testování Azure AD jednotné přihlašování pomocí pole založené na test uživateli **Britta Simon**.
-Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatele v poli.
+V této části je konfigurace a testování Azure AD jednotné přihlašování pomocí AuditBoard podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v AuditBoard.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s polem, které potřebujete k dokončení následujících stavebních bloků:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s AuditBoard, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Nakonfigurujte pole Single Sign-On](#configure-box-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+2. **[Konfigurace AuditBoard Single Sign-On](#configure-auditboard-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele pole](#create-box-test-user)**  – Pokud chcete mít protějšek Britta Simon pole, které souvisí s Azure AD reprezentace uživatele.
+4. **[Vytvořit testovacího uživatele AuditBoard](#create-auditboard-test-user)**  – Pokud chcete mít protějšek Britta Simon AuditBoard, který je propojený s Azure AD reprezentace uživatele.
 5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
@@ -88,9 +86,9 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s polem, které p
 
 V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s polem, proveďte následující kroky:
+Ke konfiguraci Azure AD jednotné přihlašování s AuditBoard, proveďte následující kroky:
 
-1. V [webu Azure portal](https://portal.azure.com/)na **pole** integrace stránce aplikace vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **AuditBoard** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
     ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
@@ -102,27 +100,30 @@ Ke konfiguraci Azure AD jednotné přihlašování s polem, proveďte následuj�
 
     ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **zprostředkovatele identity iniciované** režimu proveďte následující kroky:
 
-    ![Pole Doména a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
+    ![AuditBoard domény a adresy URL jednotného přihlašování – informace](common/idp-intiated.png)
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.account.box.com`
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL: `box.net`
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+
+    c. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP iniciované** režimu:
+
+    d. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.auditboardapp.com/`
+
+    ![AuditBoard domény a adresy URL jednotného přihlašování – informace](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > Hodnota přihlašovací adresa URL není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory pole klienta](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) má být získána hodnota. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Kontakt [tým podpory AuditBoard klienta](mailto:support@auditboard.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **kód XML metadat federace**  z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+4. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a uložte ji na vaše počítač.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-box-single-sign-on"></a>Nakonfigurujte pole jednotného přihlašování
+### <a name="configure-auditboard-single-sign-on"></a>Konfigurace AuditBoard jednotné přihlašování
 
-Pokud chcete nakonfigurovat jednotné přihlašování pro vaši aplikaci, postupujte podle pokynů v [nastavit jednotné přihlašování na vlastní](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown).
-
-> [!NOTE]
-> Pokud se nemůžete ke konfiguraci nastavení jednotného přihlašování pro svůj účet boxu, budete muset odeslat na stažený **kód XML metadat federace** k [pole tým podpory](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Ke konfiguraci jednotného přihlašování na **AuditBoard** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory AuditBoard](mailto:support@auditboard.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
 
@@ -151,15 +152,15 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k poli.
+V této části je povolit Britta Simon k udělení přístupu k AuditBoard použití Azure jednotného přihlašování.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **pole**.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **AuditBoard**.
 
     ![Okno aplikace organizace](common/enterprise-applications.png)
 
-2. V seznamu aplikace zadejte a vyberte **pole**.
+2. V seznamu aplikací vyberte **AuditBoard**.
 
-    ![Odkaz pole v seznamu aplikací](common/all-applications.png)
+    ![Odkaz AuditBoard v seznamu aplikací](common/all-applications.png)
 
 3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
@@ -175,18 +176,15 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-### <a name="create-box-test-user"></a>Vytvoření pole testovacího uživatele
+### <a name="create-auditboard-test-user"></a>Vytvoření AuditBoard testovacího uživatele
 
-V této části se uživateli Britta Simon vytvoří pole. Pole podporuje zřizování uživatelů v čase, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel ještě neexistuje v boxu, se po ověření vytvoří nový.
-
-> [!NOTE]
-> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [pole tým podpory](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire).
+V této části vytvoříte uživatele v AuditBoard jako Britta Simon. Práce s [tým podpory AuditBoard](mailto:support@auditboard.com) přidat uživatele na platformě AuditBoard. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Po kliknutí na dlaždici pole na přístupovém panelu, vám by měl být automaticky přihlášeni do pole, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici AuditBoard na přístupovém panelu, můžete by měl být automaticky přihlášeni k AuditBoard, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další prostředky
 

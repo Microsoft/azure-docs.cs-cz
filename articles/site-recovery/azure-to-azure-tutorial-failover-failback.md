@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 93928d7eb84ce986c8a9322188183e4c3dd76d99
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847860"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787838"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Převzetí služby při selhání a navrácení služby po obnovení pro virtuální počítače Azure mezi oblastmi Azure
 
@@ -44,9 +44,9 @@ Tento kurz popisuje, jak provést převzetí služeb při selhání jednoho virt
 
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
 
-   * **Nejnovější (výchozí):** Tato možnost zpracuje všechna data ve službě Site Recovery a zajistí nejnižší cíl bodu obnovení (RPO).
-   * **Nejnovější zpracovaný:** Tato možnost vrátí virtuální počítač k nejnovějšímu uloženému bodu obnovení zpracovanému službou Site Recovery.
-   * **Vlastní:** Tuto možnost použijte, pokud chcete převzít služby při selhání ke konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
+   * **Nejnovější** (výchozí): Tato možnost zpracuje všechna data ve službě Site Recovery a poskytuje nejnižší cíl bodu obnovení (RPO).
+   * **Nejnovější zpracovaný**: Tato možnost vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery.
+   * **Vlastní**: Tuto možnost použijte k převzetí služeb při selhání do konkrétnímu bodu obnovení. Tato možnost je užitečná při provádění testovacího převzetí služeb při selhání.
 
 3. Vyberte možnost **Před spuštěním převzetí služeb při selhání vypnout počítač**, pokud chcete, aby se služba Site Recovery pokusila před aktivací převzetí služeb při selhání vypnout zdrojové virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede.
 

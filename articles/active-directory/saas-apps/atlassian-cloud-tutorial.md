@@ -1,155 +1,172 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Cloud od společnosti Atlassian | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s cloudem od společnosti Atlassian | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cloud od společnosti Atlassian.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: joflore
+ms.reviewer: barbkess
 ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: tutorial
+ms.date: 12/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 68613b8613a2e5a9139b83eb23e66884659efc47
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 4ea8901db71176c0b4d378131ca2f351897e45eb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114930"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789428"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Kurz: Integrace Azure Active Directory se službou Cloud od společnosti Atlassian
+# <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Kurz: Integrace Azure Active Directory s cloudem od společnosti Atlassian
 
 V tomto kurzu se dozvíte, jak integrovat Cloud od společnosti Atlassian s Azure Active Directory (Azure AD).
-
 Integrace od společnosti Atlassian cloudu s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup pro Cloud od společnosti Atlassian.
-- Můžete povolit uživatelům, aby automaticky přihlášení (jednotné přihlašování) pro Cloud od společnosti Atlassian pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty v jednom centrálním místě na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup pro Cloud od společnosti Atlassian.
+* Uživatelům se automaticky přihlášeni k Cloud od společnosti Atlassian (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Další informace o softwaru jako integraci služby (SaaS) aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s cloudem od společnosti Atlassian, potřebujete následující položky:
 
-- Předplatné služby Azure AD.
-- Chcete-li povolit zabezpečení kontrolního výrazu SAML (Markup Language) jednotného přihlašování pro Cloud od společnosti Atlassian produkty, nastavení přístupu od společnosti Atlassian. Další informace o [přístupu od společnosti Atlassian]( https://www.atlassian.com/enterprise/cloud/identity-manager).
-
-> [!NOTE]
-> Při testování kroky v tomto kurzu doporučujeme je velmi riskantní používat produkčním prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Cloud od společnosti Atlassian jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
-Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-* Přidání Cloud od společnosti Atlassian z Galerie
-* Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-## <a name="add-atlassian-cloud-from-the-gallery"></a>Přidání Cloud od společnosti Atlassian z Galerie
-Konfigurace integrace produktů od společnosti Atlassian cloudu s Azure AD, přidejte Cloud od společnosti Atlassian z Galerie váš seznam spravovaných aplikací SaaS následujícím způsobem:
+* Podporuje Cloud od společnosti Atlassian **SP a zprostředkovatele identity** jednotné přihlašování zahájené pomocí
 
-1. V [webu Azure portal](https://portal.azure.com), v levém podokně, vyberte **Azure Active Directory** tlačítko.
+## <a name="adding-atlassian-cloud-from-the-gallery"></a>Přidání Cloud od společnosti Atlassian z Galerie
 
-    ![Tlačítko Azure Active Directory][1]
+Pokud chcete nakonfigurovat integraci od společnosti Atlassian Cloud do služby Azure AD, budete muset přidat Cloud od společnosti Atlassian z Galerie na váš seznam spravovaných aplikací SaaS.
 
-2. Vyberte **podnikové aplikace** > **všechny aplikace**.
+**Chcete-li přidat Cloud od společnosti Atlassian z galerie, postupujte následovně:**
 
-    ![V podokně podnikových aplikací][2]
-    
-3. Chcete-li přidat aplikaci, vyberte **novou aplikaci**.
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    !["Nové aplikace" tlačítko][3]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-4. Do vyhledávacího pole zadejte **Cloud od společnosti Atlassian**, v seznamu výsledků vyberte **Cloud od společnosti Atlassian**a pak vyberte **přidat**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Cloud od společnosti Atlassian v seznamu výsledků](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_addfromgallery.png)
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
+
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+    ![Tlačítko nové aplikace](common/add-new-app.png)
+
+4. Do vyhledávacího pole zadejte **Cloud od společnosti Atlassian**vyberte **Cloud od společnosti Atlassian** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+
+     ![Cloud od společnosti Atlassian v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části, nakonfigurovat a otestovat Azure AD jednotné přihlašování s cloudem od společnosti Atlassian, na základě testovací uživatele s názvem *Britta Simon*.
+V této části nakonfigurujete a testovací služby Azure AD jednotné přihlašování s cloudem od společnosti Atlassian podle testovacího uživatele volá **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v cloudu od společnosti Atlassian.
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje k identifikaci uživatelů od společnosti Atlassian cloudu a jeho protějšek ve službě Azure AD. Jinými slovy je potřeba vytvořit vztah odkazu mezi uživatele služby Azure AD a souvisejících uživatelů v cloudu od společnosti Atlassian.
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s cloudem od společnosti Atlassian, které potřebujete k dokončení následujících stavebních bloků:
 
-K navázání vztahu odkazu, přiřaďte jako Cloud od společnosti Atlassian *uživatelské jméno* stejnou hodnotu, která je přiřazena k Azure AD *uživatelské jméno*.
-
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s cloudem od společnosti Atlassian, budete muset provést stavební bloky v následujících částech.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace od společnosti Atlassian cloudu Single Sign-On](#configure-atlassian-cloud-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Vytvořit testovacího uživatele Cloud od společnosti Atlassian](#create-atlassian-cloud-test-user)**  – Pokud chcete mít protějšek Britta Simon od společnosti Atlassian cloudu, který je propojený s Azure AD reprezentace uživatele.
+5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Cloud od společnosti Atlassian.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-Ke konfiguraci Azure AD jednotné přihlašování s cloudem od společnosti Atlassian, postupujte takto:
+Ke konfiguraci Azure AD jednotné přihlašování s cloudem od společnosti Atlassian, proveďte následující kroky:
 
-1. Na webu Azure Portal v **Cloud od společnosti Atlassian** podokno integrace aplikací, vyberte **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Cloud od společnosti Atlassian** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. V **jednotného přihlašování** okno v **režim jednotného přihlašování** vyberte **přihlašování na základě SAML**.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Okno jednotné přihlašování](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_samlbase.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-3. Konfigurace aplikace v **zahájené pomocí IDP** režim, v části **od společnosti Atlassian Cloudová doména a adresy URL**, postupujte takto:
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Cloud od společnosti Atlassian domény a adresy URL jednotného přihlašování – informace](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url.png)
-    
-    a. V **identifikátor** pole, zadejte adresu URL s následujícím vzorem: `https://auth.atlassian.com/saml/<unique ID>`.
-    
-    b. V **adresy URL odpovědi** pole, zadejte adresu URL s následujícím vzorem: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`.
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    c. Zkontrolujte **zobrazit pokročilé nastavení URL**.
+4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
 
-    d. V **stav přenosu** pole, zadejte adresu URL s následujícím vzorem: `https://<instancename>.atlassian.net`.
+    ![[Název aplikace] Domény a adresy URL jednotného přihlašování – informace](common/idp-relay.png)
+
+    a. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://auth.atlassian.com/saml/<unique ID>`
+
+    b. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://auth.atlassian.com/login/callback?connection=saml-<unique ID>`
+
+    c. Klikněte na tlačítko **nastavit další adresy URL**.
+
+    d. V **stav přenosu** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<instancename>.atlassian.net`
 
     > [!NOTE]
     > Předchozí hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Zobrazí se tyto skutečné hodnoty z konfigurace SAML služby Cloud od společnosti Atlassian obrazovky, který je vysvětlen později v tomto kurzu.
 
-4. Konfigurace aplikace v režimu iniciovaného Zprostředkovatelem přihlašování, vyberte **zobrazit pokročilé nastavení URL** a pak na **přihlašovací adresa URL** pole, zadejte adresu URL s následujícím vzorem: `https://<instancename>.atlassian.net`.
+5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Cloud od společnosti Atlassian domény a adresy URL jednotného přihlašování – informace](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_url1.png)
+    ![[Název aplikace] Domény a adresy URL jednotného přihlašování – informace](common/both-signonurl.png)
+
+    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<instancename>.atlassian.net`
 
     > [!NOTE]
     > Předchozí přihlašovací adresa URL není skutečný. Skutečná adresa URL přihlašování zaktualizujte příslušnou hodnotu. Kontakt [tým podpory od společnosti Atlassian cloudu klienta](https://support.atlassian.com/) tuto výhodu získáte.
 
-5. V části **podpisový certifikát SAML**vyberte **Certificate(Base64)** a poté uložte soubor certifikátu v počítači.
+6. Od společnosti Atlassian cloudové aplikace očekává kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML.
 
-    ![Odkaz ke stažení certifikátu](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_certificate.png)
+    Ve výchozím nastavení **identifikátor uživatele** hodnota je namapována na user.userprincipalname. Tato hodnota k namapování k user.mail změňte. Můžete také zvolit jakoukoli jinou odpovídající hodnotu podle nastavení vaší organizace, ale ve většině případů by mělo fungovat e-mailu. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
 
-6. Od společnosti Atlassian cloudové aplikace očekává kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. 
+    ![image](common/edit-attribute.png)
 
-    Ve výchozím nastavení **identifikátor uživatele** hodnota je namapována na user.userprincipalname. Tato hodnota k namapování k user.mail změňte. Můžete také zvolit jakoukoli jinou odpovídající hodnotu podle nastavení vaší organizace, ale ve většině případů by mělo fungovat e-mailu.
+7. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, proveďte následující kroky:
 
-    ![Odkaz ke stažení certifikátu](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_attribute.png)
+    a. Klikněte na tlačítko **ikonu pro úpravu** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-7. Vyberte **Uložit**.
+    ![image](./media/atlassian-cloud-tutorial/tutorial_usermail.png)
 
-    ![Konfigurovat jednotné přihlašování tlačítko Uložit](./media/atlassian-cloud-tutorial/tutorial_general_400.png)
+    ![image](./media/atlassian-cloud-tutorial/tutorial_usermailedit.png)
 
-8. Chcete-li otevřít **nakonfigurovat přihlašování** okno v **konfigurace služby Cloud od společnosti Atlassian** vyberte **nakonfigurovat Cloud od společnosti Atlassian**.
+    b. Z **zdrojový atribut** seznamu vyberte **user.mail**.
 
-9. V **Stručná referenční příručka** tématu, zkopírujte **SAML Entity ID** a **SAML jednotné přihlašování – adresa URL služby**.
+    c. Klikněte na **Uložit**.
 
-    ![Konfigurace služby Cloud od společnosti Atlassian](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_configure.png)
+8. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-10. Chcete-li získat jednotné přihlašování nakonfigurované pro vaši aplikaci, přihlaste se k portálu od společnosti Atlassian pomocí přihlašovacích údajů správce.
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-11. Budete muset ověřit doménu před přechodem ke konfiguraci jednotného přihlašování. Další informace najdete v tématu [ověření domény od společnosti Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentu.
+9. Na **nastavit Cloud od společnosti Atlassian** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
 
-12. V levém podokně vyberte **SAML jednotného přihlašování**. Pokud jste tak již neučinili, přihlásit k odběru pro správce identit od společnosti Atlassian.
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+
+    a. Přihlašovací adresa URL
+
+    b. Identifikátor služby Azure Ad
+
+    c. Adresa URL – odhlášení
+
+### <a name="configure-atlassian-cloud-single-sign-on"></a>Nakonfigurujte Cloud od společnosti Atlassian jednotného přihlašování
+
+1. Chcete-li získat jednotné přihlašování nakonfigurované pro vaši aplikaci, přihlaste se k portálu od společnosti Atlassian pomocí přihlašovacích údajů správce.
+
+2. Budete muset ověřit doménu před přechodem ke konfiguraci jednotného přihlašování. Další informace najdete v tématu [ověření domény od společnosti Atlassian](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) dokumentu.
+
+3. V levém podokně vyberte **SAML jednotného přihlašování**. Pokud jste tak již neučinili, přihlásit k odběru pro správce identit od společnosti Atlassian.
 
     ![Konfigurace jednotného přihlašování](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_11.png)
 
-13. V **konfigurace přidat SAML** okno, postupujte takto:
+4. V **konfigurace přidat SAML** okno, postupujte takto:
 
     ![Konfigurace jednotného přihlašování](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_12.png)
 
@@ -158,55 +175,72 @@ Ke konfiguraci Azure AD jednotné přihlašování s cloudem od společnosti Atl
     b. V **zprostředkovatele Identity adresu URL jednotného přihlašování** pole, vložte adresu URL služby jednotného přihlašování SAML, který jste zkopírovali z portálu Azure portal.
 
     c. Otevřete stažený certifikát z portálu Azure portal v souboru .txt, zkopírujte hodnotu (bez *začít certifikát* a *End Certificate* řádků) a vložte jej do **veřejné X509 certifikát** pole.
-    
-    d. Vyberte **uložit konfiguraci**.
-     
-14. Aby bylo zajištěno, že jste nastavili správné adresy URL, aktualizujte nastavení Azure AD následujícím způsobem:
+
+    d. Klikněte na tlačítko **uložit konfiguraci**.
+
+5. Aby bylo zajištěno, že jste nastavili správné adresy URL, aktualizujte nastavení Azure AD následujícím způsobem:
 
     ![Konfigurace jednotného přihlašování](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_13.png)
 
     a. V okně SAML Kopírovat **SP Identity ID** a potom na webu Azure portal, v části Cloud od společnosti Atlassian **domény a adresy URL**, vložte ji **identifikátor** pole.
-    
+
     b. V okně SAML Kopírovat **SP adresa URL služby příjemce kontrolního výrazu** a potom na webu Azure portal, v části Cloud od společnosti Atlassian **domény a adresy URL**, vložte ji **adresy URL odpovědi** pole. Přihlašovací adresa URL je adresa URL tenanta Cloud od společnosti Atlassian.
 
     > [!NOTE]
     > Pokud jste stávající zákazník, po aktualizaci **SP Identity ID** a **SP adresa URL služby příjemce kontrolního výrazu** hodnoty na webu Azure Portal, vyberte **Ano, aktualizujte konfiguraci**. Pokud jste nového zákazníka, můžete tento krok přeskočit.
-    
-15. Na webu Azure Portal, vyberte **Uložit**.
-
-    ![Konfigurace jednotného přihlašování](./media/atlassian-cloud-tutorial/tutorial_general_400.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
-V této části můžete vytvořit testovacího uživatele Britta Simon na webu Azure Portal následujícím způsobem:
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-1. Na webu Azure Portal, v levém podokně, vyberte **Azure Active Directory** tlačítko.
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-    ![Tlačítko Azure Active Directory](./media/atlassian-cloud-tutorial/create_aaduser_01.png)
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-2. Chcete-li zobrazit seznam uživatelů, vyberte **uživatelů a skupin** > **všichni uživatelé**.
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/atlassian-cloud-tutorial/create_aaduser_02.png)
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-3. V **všichni uživatelé** okně **přidat**.
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    ![Tlačítko Přidat](./media/atlassian-cloud-tutorial/create_aaduser_03.png)
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-4. V **uživatele** okno, postupujte takto:
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    ![V okně uživatele](./media/atlassian-cloud-tutorial/create_aaduser_04.png)
+    d. Klikněte na možnost **Vytvořit**.
 
-    a. V **název** zadejte **BrittaSimon**.
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu pro Cloud od společnosti Atlassian.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Cloud od společnosti Atlassian**.
 
-    d. Vyberte **Vytvořit**.
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-### <a name="create-an-atlassian-cloud-test-user"></a>Vytvořit testovacího uživatele Cloud od společnosti Atlassian
+2. V seznamu aplikace zadejte a vyberte **Cloud od společnosti Atlassian**.
+
+    ![V seznamu aplikací na odkaz Cloud od společnosti Atlassian](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-atlassian-cloud-test-user"></a>Vytvořit testovacího uživatele Cloud od společnosti Atlassian
 
 Pokud chcete povolit Azure AD uživatelům umožní přihlásit se na Cloud od společnosti Atlassian, zřízení uživatelských účtů v cloudu od společnosti Atlassian ručně následujícím způsobem:
 
@@ -224,59 +258,20 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit se na Cloud od s
 
 4. Chcete-li odeslat e-mailová pozvánka pro uživatele, vyberte **pozvat uživatele**. Uživateli se odešle e-mailovou pozvánku a po přijetí e-mailové pozvánce, je uživatel aktivní v systému.
 
->[!NOTE]
->Můžete také hromadně – vytvořit uživatele tak, že vyberete **Hromadně vytvořit** tlačítko **uživatelé** části.
+> [!NOTE]
+> Můžete také hromadně – vytvořit uživatele tak, že vyberete **Hromadně vytvořit** tlačítko **uživatelé** části.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
-
-V této části povolit uživatele Britta Simon používat jednotné přihlašování Azure díky udělení přístupu pro Cloud od společnosti Atlassian. Chcete-li to provést, postupujte takto:
-
-![Přiřazení role uživatele][200]
-
-1. Na webu Azure Portal, otevřete **aplikací** zobrazit, přejděte do zobrazení adresáře a pak vyberte **podnikové aplikace** > **všechny aplikace**.
-
-    ![Přiřadit uživatele][201]
-
-2. V **aplikací** seznamu vyberte **Cloud od společnosti Atlassian**.
-
-    ![V seznamu aplikací na odkaz Cloud od společnosti Atlassian](./media/atlassian-cloud-tutorial/tutorial_atlassiancloud_app.png)
-
-3. V levém podokně vyberte **uživatelů a skupin**.
-
-    ![Odkaz "Uživatele a skupiny"][202]
-
-4. Vyberte **přidat** a pak na **přidat přiřazení** vyberte **uživatelů a skupin**.
-
-    ![Podokno Přidat přiřazení][203]
-
-5. V **uživatelů a skupin** okno v **uživatelé** seznamu vyberte **Britta Simon**.
-
-6. V **uživatelů a skupin** okně **vyberte**.
-
-7. V **přidat přiřazení** okně **přiřadit**.
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když vyberete **Cloud od společnosti Atlassian** dlaždici na přístupovém panelu, můžete musejí být podepsána automaticky do vaší aplikace Cloud od společnosti Atlassian.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici Cloud od společnosti Atlassian na přístupovém panelu, vám by měl být automaticky přihlášeni cloud od společnosti Atlassian, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/atlassian-cloud-tutorial/tutorial_general_01.png
-[2]: ./media/atlassian-cloud-tutorial/tutorial_general_02.png
-[3]: ./media/atlassian-cloud-tutorial/tutorial_general_03.png
-[4]: ./media/atlassian-cloud-tutorial/tutorial_general_04.png
-
-[100]: ./media/atlassian-cloud-tutorial/tutorial_general_100.png
-
-[200]: ./media/atlassian-cloud-tutorial/tutorial_general_200.png
-[201]: ./media/atlassian-cloud-tutorial/tutorial_general_201.png
-[202]: ./media/atlassian-cloud-tutorial/tutorial_general_202.png
-[203]: ./media/atlassian-cloud-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+   

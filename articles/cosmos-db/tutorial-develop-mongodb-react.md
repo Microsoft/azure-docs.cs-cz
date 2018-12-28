@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: f7f247da93290aafaec62fe68158a036bc6cb887
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c6086c3d3bc025feaf9da2d4c26d7f008b304b57
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723330"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788119"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s React a službou Azure Cosmos DB  
 
-Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá uzel a Express pro server, se připojí ke službě Azure Cosmos DB s [služby Azure Cosmos DB pro rozhraní MongoDB API](mongodb-introduction.md)a pak připojí k serveru část aplikace React front-endu. Kurz také ukazuje, jak škálovat službu Azure Cosmos DB ukázáním a kliknutím na webu Azure Portal a jak nasadit aplikaci na internet, aby všichni mohli sledovat své oblíbené hrdiny. 
+Tento vícedílný videokurz ukazuje, jak vytvořit aplikaci pro sledování hrdinů s front-endem v React. Aplikace používá uzel a Express pro server, se připojí k databázi Cosmos nakonfigurovanou [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md)a pak připojí k serveru část aplikace React front-endu. Kurz také ukazuje, jak provést ukázat a kliknout škálování služby Cosmos DB na webu Azure Portal a jak nasadit aplikaci do Internetu, aby všichni mohli sledovat své oblíbené hrdiny. 
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje klientská připojení MongoDB, takže můžete používat službu Azure Cosmos DB místo MongoDB.  
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) podporuje svážete kompatibilitu protokolů s databází MongoDB, umožňuje klientům používat službu Azure Cosmos DB místo MongoDB.  
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 

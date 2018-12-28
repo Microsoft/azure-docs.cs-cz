@@ -1,5 +1,5 @@
 ---
-title: Node.Js s využitím Angular aplikace pomocí rozhraní API MongoB (část4)
+title: Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB – vytvoření účtu Cosmos
 titleSuffix: Azure Cosmos DB
 description: Čtvrtá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
@@ -10,22 +10,22 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
-ms.openlocfilehash: 9cbf163b7d5a68540308bff49f036493b1f04a8d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d85183f0104d9066f93adc73c09c76406128700d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727050"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787796"
 ---
-# <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – část 4: Vytvoření účtu služby Azure Cosmos DB
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB – vytvoření účtu Cosmos
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md).
+Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsané v Node.js s Express a Angular a připojte ho k vaší [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md).
 
 Čtvrtá část kurzu vychází z [části 3](tutorial-develop-mongodb-nodejs-part3.md) a zabývá se následujícími úlohami:
 
 > [!div class="checklist"]
 > * Vytvoření skupiny prostředků Azure pomocí Azure CLI
-> * Vytvoření účtu služby Azure Cosmos DB pomocí Azure CLI
+> * Vytvoření účtu Cosmos pomocí rozhraní příkazového řádku Azure
 
 ## <a name="video-walkthrough"></a>Video s návodem
 

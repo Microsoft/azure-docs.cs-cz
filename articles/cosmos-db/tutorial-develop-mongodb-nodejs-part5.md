@@ -1,32 +1,32 @@
 ---
-title: 'Kurz: Vytvoření aplikace Node.js pro správu dat uložených v účtu rozhraní MongoDB API služby (část 5) – připojte se ke službě Azure Cosmos DB pomocí Mongoose'
+title: Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - připojit ke službě Cosmos DB pomocí Mongoose
 titleSuffix: Azure Cosmos DB
-description: Tento kurz popisuje, jak vytvořit aplikaci Node.js pomocí Angular a službou Express pro správu dat uložených v účtu rozhraní MongoDB API. V této části se pro připojení ke službě Azure Cosmos DB pomocí Mongoose.
+description: Tento kurz popisuje, jak vytvořit aplikaci Node.js pomocí Angular a službou Express pro správu dat uložených ve službě Cosmos DB. V této části se pro připojení ke službě Azure Cosmos DB pomocí Mongoose.
 author: johnpapa
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
-Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in a MongoDB API account of Azure Cosmos DB.
-ms.openlocfilehash: 714ba7360b500a76eba9ab7694ab9a2e54d697e9
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
+ms.openlocfilehash: 03b1f1d5fa1320f08059ed755f6f4f7d1c08d35e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752635"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793697"
 ---
-# <a name="tutorial-build-a-nodejs-application-to-manage-the-data-stored-in-a-mongodb-api-account-part-5---use-mongoose-to-connect-to-azure-cosmos-db"></a>Kurz: Vytvoření aplikace Node.js pro správu dat uložených v účtu rozhraní MongoDB API služby (část 5) – připojte se ke službě Azure Cosmos DB pomocí Mongoose
+# <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Vytvořit aplikaci Angular s rozhraním API služby Azure Cosmos DB pro MongoDB - připojit ke službě Cosmos DB pomocí Mongoose
 
-Jako vývojář můžete mít aplikace, které používají dat dokumentů typu NoSQL. Účet rozhraní MongoDB API ve službě Azure Cosmos DB můžete použít k ukládání a přístup k těmto datům dokumentu. Můžete vytvořit aplikaci Node.js, který chcete spravovat data uložená v účtu rozhraní MongoDB API služby Azure Cosmos DB. Tento vícedílný kurz ukazuje, jak vytvořit aplikaci Node.js s Express a Angular a propojte jej s [MongoDB API služby Azure Cosmos DB](mongodb-introduction.md) účtu. Tento článek popisuje část 5 tohoto kurzu a staví na [část 4](tutorial-develop-mongodb-nodejs-part4.md).
+Tento vícedílný kurz ukazuje, jak vytvořit aplikaci Node.js s Express a Angular a připojte ho k němu vaše [Cosmos účtu nakonfigurovanému pro Cosmos DB přes rozhraní API pro MongoDB](mongodb-introduction.md). Tento článek popisuje část 5 tohoto kurzu a staví na [část 4](tutorial-develop-mongodb-nodejs-part4.md).
 
 V této části kurzu provedete následující:
 
 > [!div class="checklist"]
-> * Připojení ke službě Azure Cosmos DB pomocí Mongoose.
-> * Získání připojovacího řetězce služby Azure Cosmos DB.
+> * Připojení ke službě Cosmos DB pomocí Mongoose.
+> * Získejte připojovací řetězec Cosmos DB.
 > * Vytvoření modelu Hero.
 > * Vytvoření služby Hero pro získání dat hrdinů.
 > * Spusťte aplikaci místně.
