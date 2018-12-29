@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 3428b9f6e0e938751cc130254c4e3dd2490d9613
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2fc81cc06063c0fee0a4f875b4b0f8bd1343cf85
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789735"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -78,8 +78,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s místní ShareP
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace služby SharePoint v místním jednotného přihlašování](#configure-sharepoint-on-premises-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Udělit přístup pro SharePoint v místním testovacího uživatele](#grant-access-to-sharepoint-on-premises-test-user)**  – Pokud chcete mít protějšek Britta Simon v místní SharePoint, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Udělit přístup pro SharePoint v místním testovacího uživatele](#grant-access-to-sharepoint-on-premises-test-user)**  – Pokud chcete mít protějšek Britta Simon v místní SharePoint, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování

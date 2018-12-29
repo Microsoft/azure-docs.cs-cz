@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: f3c1d42aa4591c679a67fd86bd13e8e714150233
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 6f2fb29e705edde24d6f54faafd17b580ae131b5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791587"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Kurz: Integrace Azure Active Directory se SAP cloudem pro odběratele
 
@@ -78,8 +78,8 @@ Nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP cloudem 
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace cloudu SAP pro zákazníka Single Sign-On](#configure-sap-cloud-for-customer-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvoření SAP cloudem pro zákazníka testovacího uživatele](#create-sap-cloud-for-customer-test-user)**  – Pokud chcete mít protějšek Britta Simon ve SAP Cloud for zákazníka, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvoření SAP cloudem pro zákazníka testovacího uživatele](#create-sap-cloud-for-customer-test-user)**  – Pokud chcete mít protějšek Britta Simon ve SAP Cloud for zákazníka, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování

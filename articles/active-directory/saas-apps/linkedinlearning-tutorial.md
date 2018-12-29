@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
-ms.openlocfilehash: d9165004a4828ab84cd6f86e4d818883112cf7ef
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e8d829c4990aa798ce77ecc9caae51ace4c53023
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790543"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808039"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Integrace Azure Active Directory s Linkedinem
 
@@ -79,8 +79,8 @@ Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Linkedinem, kte
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace LinkedIn Learning Single Sign-On](#configure-linkedin-learning-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele LinkedIn Learning](#create-linkedin-learning-test-user)**  – Pokud chcete mít protějšek Britta Simon ve službě LinkedIn Learning, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele LinkedIn Learning](#create-linkedin-learning-test-user)**  – Pokud chcete mít protějšek Britta Simon ve službě LinkedIn Learning, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -126,17 +126,16 @@ Ke konfiguraci Azure AD jednotné přihlašování s Linkedinem, proveďte násl
     
     | Název | Zdrojový atribut |
     | ---------------| --------------- |
-    | e-mail  | User.Mail  | neuvedeno |
+    | e-mail  | User.Mail  |
     | Oddělení  | User.Department  |
     | jméno  | user.givenname  |
     | Příjmení  | user.surname  |
-    | Jedinečný identifikátor uživatele | User.Mail |
 
     a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/linkedinlearning-tutorial/tutorial_usermail.png)
 
-    ![image](common/new-attribute-details.png)
+    ![image](./media/linkedinlearning-tutorial/tutorial_usermailedit.png)
 
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: dc5cad0d4d1919db23e5393f2bb02810a1d7f8f9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 1de479d5486bae224185407dadda4474a4ed8f0c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790190"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808940"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Kurz: Integrace Azure Active Directory se SAP HANA
 
@@ -89,8 +89,8 @@ Nakonfigurovat a otestovat Azure AD jednotného přihlašování se SAP HANA, kt
 1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
 2. **[Konfigurace SAP HANA Single Sign-On](#configure-sap-hana-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
 3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Vytvořit testovacího uživatele SAP HANA](#create-sap-hana-test-user)**  – Pokud chcete mít protějšek Britta Simon v SAP HANA, který je propojený s Azure AD reprezentace uživatele.
-5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele SAP HANA](#create-sap-hana-test-user)**  – Pokud chcete mít protějšek Britta Simon v SAP HANA, který je propojený s Azure AD reprezentace uživatele.
 6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování

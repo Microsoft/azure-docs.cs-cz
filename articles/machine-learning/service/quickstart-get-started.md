@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 96c4597c1031257eca329d0247c36f5d60456fe9
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582639"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807716"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal
 
@@ -71,7 +71,7 @@ Vyberte `Open Azure Notebooks` a vyzkoušejte první experiment.
 
 Vaše organizace může před přihlášením vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent).
 
-Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Vyberte `Clone`.
+Přihlášení do Azure poznámkových bloků pod stejným účtem, který jste použili pro přihlášení na webu Azure portal.  Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Vyberte `Clone`.
 
 
 ### <a name="run-the-notebook"></a>Spuštění poznámkového bloku

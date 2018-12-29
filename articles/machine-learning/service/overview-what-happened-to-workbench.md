@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 614c4b9f8cb6b748385d86d20cbec15928642d30
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: ff6b61874363bbc869bd509174e58640a2487f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753298"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811303"
 ---
 # <a name="whats-happening-to-machine-learning-workbench-in-azure-machine-learning-service"></a>Co se děje, Machine Learning Workbench ve službě Azure Machine Learning?
 
@@ -78,7 +78,7 @@ Neztratíte žádný kód ani práci. Ve starší verzi jsou projekty cloudové 
 
 Velká část obsahu projektu se již v místním počítači. Proto stačí na něj odkazovat ve vašem kódu pro připojení k vašemu pracovnímu prostoru a vytvoření konfiguračního souboru v tomto adresáři. Zjistěte, jak [migrovat existující projekty](how-to-migrate.md#projects).
 
-Zjistěte, jak [začít pracovat v Pythonu s hlavním SDK](quickstart-get-started.md).
+Zjistěte, jak začít pracovat [Python s hlavním SDK](quickstart-create-workspace-with-python.md) nebo pomocí [webu Azure portal](quickstart-get-started.md).
 
 ## <a name="what-about-my-registered-models-and-images"></a>Jak Moje registrované modely a Image?
  

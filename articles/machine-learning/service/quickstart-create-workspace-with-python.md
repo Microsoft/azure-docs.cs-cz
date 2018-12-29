@@ -11,27 +11,29 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: fd86e3a65b542bad0f3114a32362041c34fb74d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 95d7fc06d1ea7db3eddd0ac228263f3b6a07a719
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791230"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810249"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
-V tomto rychlém startu jste pomocí sady SDK Azure Machine Learning pro Python a potom pomocí služby Azure Machine Learning [pracovní prostor](concept-azure-machine-learning-architecture.md). Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. Začnete tím, že nakonfigurujete vlastní prostředí Pythonu a server poznámkového bloku Jupyter. Pokud chcete spustit v žádné instalaci, naleznete v tématu [rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal](quickstart-get-started.md).
+V tomto článku se pomocí sady SDK Azure Machine Learning pro Python a potom pomocí služby Azure Machine Learning [pracovní prostor](concept-azure-machine-learning-architecture.md). Pracovní prostor se základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí Machine Learning. 
+
+Začnete tím, že nakonfigurujete vlastní prostředí Pythonu a Server poznámkového bloku Jupyter. Aby ho spustili bez instalace, najdete v článku [rychlý start: Začínáme s Azure Machine Learning pomocí webu Azure portal](quickstart-get-started.md).
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
-V tomto kurzu nainstalujte si SDK pro Python a dokončení těchto úloh:
-
+V tomto článku:
+* Nainstalujte Python SDK.
 * Vytvořit pracovní prostor ve vašem předplatném Azure.
 * Vytvořit pro tento pracovní prostor konfigurační soubor pro pozdější použití v jiných poznámkových blocích a skriptech.
 * Napsat kód, který protokoluje hodnoty v pracovním prostoru.
 * Zobrazit zaprotokolované hodnoty z vašeho pracovního prostoru.
 
-V tomto rychlém startu vytvoříte pracovní prostor a konfigurační soubor. Tyto prostředky můžete použít jako nezbytné předpoklady pro další kurzy Machine Learning a články s postupy. Stejně jako u jiných služeb Azure, existují omezení a kvóty, které jsou spojeny s Machine Learning. [Další informace o kvótách a tom, jak požádat o další](how-to-manage-quotas.md).
+Vytvořte pracovní prostor a konfigurační soubor, který chcete použít jako požadavky na další kurzy Machine Learning a články s postupy. Stejně jako u jiných služeb Azure, jsou spojeny s Machine learningem určitá omezení a kvóty. [Další informace o kvótách a postupu, jak požádat o zvýšení.](how-to-manage-quotas.md)
 
 Do vašeho pracovního prostoru se automaticky přidají následující prostředky Azure, pokud jsou regionálně dostupné:
  
@@ -50,26 +52,25 @@ Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájen
 
 Kód v tomto článku vyžaduje Azure Machine Learning v sadě SDK verze 1.0.2 nebo novější.
 
-Před instalací sady SDK doporučujeme vytvořit izolované prostředí Pythonu. I když tento rychlý start používá aplikaci [Miniconda](https://conda.io/docs/user-guide/install/index.html), můžete také použít plnou nainstalovanou aplikaci [Anaconda](https://www.anaconda.com/) nebo [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
+Před instalací sady SDK doporučujeme vytvořit izolované prostředí Pythonu. Přestože tento článek používá [Miniconda](https://conda.io/docs/user-guide/install/index.html), můžete také použít úplnou [Anaconda](https://www.anaconda.com/) nainstalované nebo [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
 ### <a name="install-miniconda"></a>Instalace aplikace Miniconda
 
-
-[Stáhněte](https://conda.io/miniconda.html) a nainstalujte aplikaci Miniconda. Vyberte Python verze 3.7 nebo novější. Nevybírejte Python verze 2.x.
+[Stáhněte a nainstalujte Miniconda](https://conda.io/miniconda.html). Vyberte Python 3.7 nebo novější. Nevybírejte Python 2.x.
 
 ### <a name="create-an-isolated-python-environment"></a>Vytvoření izolovaného prostředí Pythonu 
 
-Otevřete okno příkazového řádku. Pak vytvořte nové prostředí conda s názvem **myenv** pomocí Pythonu 3.6.
+1. Otevřete okno příkazového řádku a pak vytvořte nové prostředí conda s názvem *myenv* pomocí Pythonu 3.6.
 
-```shell
-conda create -n myenv -y Python=3.6
-```
+    ```shell
+    conda create -n myenv -y Python=3.6
+    ```
 
-Aktivujte prostředí:
+1. Aktivujte prostředí.
 
-```shell
-conda activate myenv
-```
+    ```shell
+    conda activate myenv
+    ```
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
@@ -83,7 +84,7 @@ conda install nb_conda
 pip install azureml-sdk[notebooks]
 ```
 
-Další klíčová slova můžete také použít k instalaci dalších součástí sady SDK.
+Další klíčová slova můžete použít k instalaci dalších součástí sady SDK:
 
 ```sh
 # Install the base SDK and auto ml components
@@ -107,49 +108,46 @@ pip install azureml-sdk[databricks]
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
-Chcete-li spustit Poznámkový blok Jupyter, zadejte tento příkaz:
+1. Chcete-li spustit Poznámkový blok Jupyter, zadejte tento příkaz:
 
-```shell
-jupyter notebook
-```
+    ```shell
+    jupyter notebook
+    ```
 
-V okně prohlížeče se vytvoření nového poznámkového bloku pomocí výchozí **Python 3** jádra. 
+1. V okně prohlížeče vytvořte pomocí výchozího jádra `Python 3` nový poznámkový blok. 
 
-Pokud chcete zobrazit verzi sady SDK, zadejte následující kód Pythonu do buňky v poznámkovém bloku a spusťte ho.
+1. Pokud chcete zobrazit verzi sady SDK, zadejte a potom spusťte následující kód Pythonu v buňce Poznámkový blok:
 
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
+   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-Vytvořte novou skupinu prostředků Azure.
+1. Najít hodnotu `<azure-subscription-id>` parametr [seznam předplatných na webu Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Použijte libovolné předplatné, ve kterém máte roli vlastníka nebo přispěvatele.
 
-Najít hodnotu `<azure-subscription-id>` parametr [seznam předplatných na webu Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Použijte libovolné předplatné, ve kterém máte roli vlastníka nebo přispěvatele.
+   ```python
+   from azureml.core import Workspace
+   ws = Workspace.create(name='myworkspace',
+                         subscription_id='<azure-subscription-id>', 
+                         resource_group='myresourcegroup',
+                         create_resource_group=True,
+                         location='eastus2' # Or other supported Azure region   
+                        )
+   ```
 
-```python
-from azureml.core import Workspace
-ws = Workspace.create(name='myworkspace',
-                      subscription_id='<azure-subscription-id>',    
-                      resource_group='myresourcegroup',
-                      create_resource_group=True,
-                      location='eastus2' # Or other supported Azure region  
-                     )
-```
+   Při spouštění kódu vám může zobrazit výzva k přihlášení ke svému účtu Azure. Jakmile se přihlásíte, ověřovací token se uloží do místní mezipaměti.
 
-Při spouštění kódu vám může zobrazit výzva k přihlášení ke svému účtu Azure. Jakmile se přihlásíte, ověřovací token se uloží do místní mezipaměti.
+1. Pokud chcete viewe podrobnosti o pracovním prostoru, jako je například přidruženého úložiště, container registry a trezor klíčů, zadejte následující kód:
 
-Pokud chcete zobrazit pracovní prostor podrobnosti, jako je například přidruženého úložiště, container registry a služby key vault, zadejte následující kód:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
+    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
 
 
 ## <a name="write-a-configuration-file"></a>Zapsání konfiguračního souboru
 
-Uložte podrobnosti pracovního prostoru v konfiguračním souboru v aktuálním adresáři. Soubor **aml_config\config.json**.  
+Uložte podrobnosti pracovního prostoru v konfiguračním souboru do aktuálního adresáře. Tento soubor se nazývá *aml_config\config.json*.  
 
-Konfigurační soubor pracovního prostoru usnadňuje později načíst tato stejného pracovního prostoru. Můžete načíst pracovní prostor s jinými poznámkových bloků a skriptů ve stejném adresáři nebo podadresáře. 
+Tento konfigurační soubor pracovního prostoru usnadňuje stejného pracovního prostoru načíst později. Můžete ho načíst s jinými poznámkovými bloky a skripty ve stejném adresáři nebo podadresáři. 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=writeConfig)]
 
-
-Volání rozhraní API `write_config()` vytvoří konfigurační soubor v aktuálním adresáři. Souboru config.json obsahuje následující skript:
+Volání rozhraní API `write_config()` vytvoří konfigurační soubor v aktuálním adresáři. *Config.json* soubor obsahuje následující skript:
 
 ```json
 {
@@ -165,9 +163,8 @@ Napište kód, který používá základní rozhraní API sady SDK ke sledován�
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=useWs)]
 
-
 ## <a name="view-logged-results"></a>Zobrazení zaprotokolovaných výsledků
-Po dokončení spuštění můžete experimentální spuštění zobrazit na webu Azure Portal. Použijte následující kód k vytištění adresu URL, která přejde na výsledcích posledního spuštění:
+Po dokončení spuštění můžete experimentální spuštění zobrazit na webu Azure Portal. Tisk adresu URL, která přejde na výsledcích posledního spuštění, použijte následující kód:
 
 ```python
 print(run.get_portal_url())
@@ -178,34 +175,31 @@ Pokud chcete zobrazit zaprotokolované hodnoty na webu Azure Portal v prohlíže
 ![Zaznamenané hodnoty na webu Azure Portal](./media/quickstart-create-workspace-with-python/logged-values.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
+>[!IMPORTANT]
+>Můžete použít zdroje, které jste vytvořili jako požadavky na další kurzy Machine Learning a s postupy články.
 
-> [!IMPORTANT]
-> Prostředky, které jste vytvořili může sloužit jako požadavky na další kurzy Machine Learning a články s postupy.
-
-Pokud nemáte v úmyslu používat prostředky, které jste vytvořili v rámci tohoto rychlého startu, odstraňte je proto nebudou účtovat žádné poplatky.
+Pokud nemáte v úmyslu používat prostředky, které jste vytvořili v tomto článku, je vyhnout poplatkům za odstraníte.
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=delete)]
 
-
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili prostředky k experimentování a nasazování modelů. Spuštění kódu v poznámkovém bloku a prozkoumali historii spuštění pro kód ve vašem pracovním prostoru v cloudu.
+V tomto článku jste vytvořili prostředky, které je potřeba experimentovat a nasazovat modely. Spuštění kódu v poznámkovém bloku a prozkoumali historii spuštění pro kód ve vašem pracovním prostoru v cloudu.
 
 Použití kódu kurzy Machine Learning, potřebujete pár dalších balíčků ve vašem prostředí.
 
 1. Zavřete poznámkový blok v prohlížeči.
-1. V okně příkazového řádku zadejte Ctrl + C zastavte aplikace Jupyter Notebook server.
-1. Instalace dalších balíčků:
+1. V okně příkazového řádku vyberte Ctrl + C zastavte aplikace Jupyter Notebook server.
+1. Instalace dalších balíčků.
 
     ```shell
     conda install -y cython matplotlib scikit-learn pandas numpy
     pip install azureml-sdk[automl]
     ```
 
-
-Po instalaci balíčků, pokračujte v kurzech pro trénování a nasadit model. 
+Po instalaci těchto balíčků, pokračujte kurzy trénovat a nasazovat modell. 
 
 > [!div class="nextstepaction"]
 > [Kurz: Trénování modelu klasifikace obrázků](tutorial-train-models-with-aml.md)
 
-Můžete prozkoumat také [pokročilejší příklady na GitHubu](https://aka.ms/aml-notebooks).
+Můžete také prozkoumat [pokročilejší příklady na Githubu](https://aka.ms/aml-notebooks).

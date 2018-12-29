@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d5279391c4f85411e592ce1d071fb1743cd135d5
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a64156fb89eddfd549e1d3ff913fd58a918a2b26
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744118"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810317"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -65,7 +65,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Mapa aplikace**](../azure-monitor/app/app-map.md)<br/>Komponenty vaší aplikace, včetně klíčových metrik a výstrah. |![Mapa aplikace](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profiler**](app-insights-profiler.md)<br/>Zkontrolujte profily spouštění u vzorků požadavků. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Analýza využití**](app-insights-usage-overview.md)<br/>Analyzujte segmentaci a udržení uživatelů.|![Nástroj Udržení](./media/app-insights-overview/retention.png) |
-| [**Diagnostické vyhledávání dat instancí**](app-insights-diagnostic-search.md)<br/>Události vyhledávání a filtrování, jako jsou třeba požadavky, výjimky, volání závislosti, trasování protokolů a zobrazení stránek.  |![Telemetrie vyhledávání](./media/app-insights-overview/search-tn.png) |
+| [**Diagnostické vyhledávání dat instancí**](../azure-monitor/app/diagnostic-search.md)<br/>Události vyhledávání a filtrování, jako jsou třeba požadavky, výjimky, volání závislosti, trasování protokolů a zobrazení stránek.  |![Telemetrie vyhledávání](./media/app-insights-overview/search-tn.png) |
 | [**Průzkumník metrik pro agregovaná data**](app-insights-metrics-explorer.md)<br/>Prozkoumání, filtrování a segmentace agregovaných dat, jako jsou třeba frekvence požadavků, selhání a výjimek, doby odezvy a časy načtení stránek. |![Metriky](./media/app-insights-overview/metrics-tn.png) |
 | [**Řídicí panely**](../azure-monitor/app/app-insights-dashboards.md#dashboards)<br/>Propojení dat z různých zdrojů a jejich sdílení s ostatními. Ideální pro aplikace s více komponentami a pro nepřetržité zobrazení v týmové místnosti. |![Ukázka řídicího panelu](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live Metrics Stream**](app-insights-live-stream.md)<br/>Při nasazování nového sestavení sledujte tyto ukazatele výkonu téměř v reálném čase, abyste se ujistili, že všechno funguje podle očekávání. |![Ukázka živé metriky](./media/app-insights-overview/live-metrics-tn.png) |
@@ -74,7 +74,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Ladicí program snímků**](app-insights-snapshot-debugger.md)<br/>Laďte vzorky snímků z operací za provozu s hodnotami parametrů.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](app-insights-export-power-bi.md)<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Napište kód pro spouštění dotazů nad daty metrik a nezpracovanými daty.| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**Průběžný export**](app-insights-export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Export](./media/app-insights-overview/export-tn.png) |
+| [**Průběžný export**](../azure-monitor/app/export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Export](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Jak se Application Insights dá využít?
 
@@ -152,7 +152,7 @@ Začínáme při vývoji:
 [azure]: ../insights-perf-analytics.md
 [client]: app-insights-javascript.md
 [desktop]: app-insights-windows-desktop.md
-[detect]: app-insights-detect-triage-diagnose.md
+[detect]: ../azure-monitor/app/detect-triage-diagnose.md
 [greenbrown]: ../azure-monitor/app/asp-net.md
 [ios]: app-insights-mobile-center-quickstart.md
 [java]: app-insights-java-get-started.md

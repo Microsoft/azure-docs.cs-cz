@@ -1,6 +1,6 @@
 ---
-title: Sestavení aplikace Xamarin.Forms s .NET a Azure Cosmos DB pro rozhraní MongoDB API
-description: Představuje ukázku kódu Xamarin, které můžete použít k připojení a dotazování služby Azure Cosmos DB pro rozhraní MongoDB API
+title: Sestavení aplikace Xamarin.Forms s .NET a rozhraní API služby Azure Cosmos DB pro MongoDB
+description: Představuje ukázku kódu Xamarin, které můžete použít k připojení a dotazování pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 services: cosmos-db
 author: codemillmatt
 ms.service: cosmos-db
@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: e63b731913e974254061ab7925b543201d6b81b1
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 456d35666e1475379b7ec90e8683ed47a1946f67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717175"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808957"
 ---
-# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-using-clients-for-mongodb-api"></a>Rychlý start: Rychlý start: Vytvoření aplikace Xamarin.Forms s .NET pomocí rozhraní MongoDB API pro klienty
+# <a name="quickstart-quickstart-build-a-xamarinforms-app-with-net-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Rychlý start: Sestavení aplikace Xamarin.Forms s .NET a rozhraní API služby Azure Cosmos DB pro MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -30,7 +30,7 @@ ms.locfileid: "53717175"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
-Tento rychlý start ukazuje, jak vytvořit [nakonfigurovaný pro rozhraní MongoDB API účet služby Cosmos](mongodb-introduction.md), databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte aplikaci seznamu úkolů aplikace Xamarin.Forms s použitím [ovladač MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/).
+Tento rychlý start ukazuje, jak vytvořit [Cosmos účet byl konfigurován s rozhraním API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), databáze dokumentů a kolekce pomocí webu Azure portal. Potom sestavíte aplikaci seznamu úkolů aplikace Xamarin.Forms s použitím [ovladač MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>Požadavky na spuštění ukázkové aplikace
 
@@ -194,4 +194,4 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Xamarin.Forms pomocí rozhraní API pro MongoDB. Teď můžete do účtu Cosmos DB importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do služby Azure Cosmos DB nakonfigurovaný pro rozhraní MongoDB API](mongodb-migrate.md)
+> [Import dat do služby Azure Cosmos DB nakonfigurovaný pro MongoDB API služby Azure Cosmos DB](mongodb-migrate.md)
