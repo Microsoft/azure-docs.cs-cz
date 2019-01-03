@@ -8,18 +8,18 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: be918ecef3a9fb346d9aa441bef9b4c3991009d6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432219"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606465"
 ---
 # <a name="app-service-documentation"></a>Dokumentace ke službě App Service
 Azure App Service umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury, jazykem nebo modulem runtime webové architektury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Azure DevOps Services nebo libovolného úložiště Git. Naučte se používat službu Azure App Service prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
 
 ## <a name="windows-linux-and-docker"></a>Windows, Linux a Docker
-[Web Apps](/app-service/app-service-web-overview) je hlavní nabídky App Service pro sestavování a hostování webových aplikací s využitím prostředí Windows. Vývojáři, kteří upřednostňují prostředí Linux, mohou zvolit [App Service pro Linux](/app-service/containers/app-service-linux-intro). Vývojáři také mohou při nasazování vlastních modulů runtime nebo architektur nasazovat image Dockeru přímo do App Service pro Linux.
+[Web Apps](/app-service/overview) je hlavní nabídky App Service pro sestavování a hostování webových aplikací s využitím prostředí Windows. Vývojáři, kteří upřednostňují prostředí Linux, mohou zvolit [App Service pro Linux](/app-service/containers/app-service-linux-intro). Vývojáři také mohou při nasazování vlastních modulů runtime nebo architektur nasazovat image Dockeru přímo do App Service pro Linux.
 
 ## <a name="5-minute-quickstarts"></a>Zprovoznění během 5 minut
 
@@ -54,7 +54,7 @@ Zjistěte, jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v
 Vyhledání skriptů pro správu běžných úkolů
 
 - [Azure CLI](/azure/app-service/app-service-cli-sample)
-- [Azure PowerShell](/azure/app-service/app-service-powershell-samples)
+- [Azure PowerShell](/azure/app-service/samples-powershell)
 
 ## <a name="more"></a>Víc
 

@@ -139,7 +139,7 @@
 ### [Šifrování AES-128](media-services-protect-with-aes128.md)
 ### [PlayReady/Widevine pro streamování](media-services-protect-with-playready-widevine.md)
 ### [FairPlay pro streamování](media-services-protect-hls-with-fairplay.md)
-### [PlayReady pro Windows 10 v offline režimu](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [PlayReady pro Windows 10 v offline režimu](offline-playready-streaming-windows-10.md)
 ### [Fairplay pro iOS v offline režimu](media-services-protect-hls-with-offline-fairplay.md)
 ### [Widevine pro Android v offline režimu](offline-widevine-for-android.md)
 ### [Konfigurace na webu Azure Portal](media-services-portal-protect-content.md)
