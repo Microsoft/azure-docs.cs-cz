@@ -17,20 +17,20 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 731b68e3f7dbb46f2fa51a18cb5b3da6b4626fa6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 57c207af3a48eb03b9d526197aed85d7755ad370
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963930"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975946"
 ---
-# <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Nastavení vývojového prostředí
+# <a name="quickstart-set-up-a-dev-environment"></a>Rychlý start: Vytvoření a nastavení vývojového prostředí
 
-Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat platformu Microsoft Identity Platform, získáte přístup k prostředí, označovanému také jako tenant Azure AD, které může registrovat a spravovat aplikace, získat přístup k datům Microsoft 365 a nasazovat vlastní omezení podmíněného přístupu a tenanta. 
+Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace určené pro širokou škálu vlastních prostředí a identit Microsoft 365. Abyste mohli začít používat Microsoft identity platform, budete potřebovat přístup k prostředí, také nazývané tenanta služby Azure AD, který může zaregistrovat a spravovat aplikace, mají přístup k datům Microsoft 365 a nasadit vlastní omezení podmíněného přístupu a tenanta.
 
-Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365. 
+Tenant je reprezentace organizace. Jedná se o vyhrazenou instanci Azure AD, kterou organizace nebo vývojář aplikací obdrží při vytvoření partnerství s Microsoftem, například registrací do Azure, Microsoft Intune nebo Microsoft 365.
 
-Každý tenant Azure AD je odlišný a oddělený od ostatních tenantů Azure AD a používá vlastní reprezentaci pracovních a školních identit, identit zákazníků (pokud se jedná o tenanta Azure AD B2C) a registrací aplikací. Registrace aplikace uvnitř vašeho tenanta může umožňovat ověřování z účtů pouze v rámci vašeho tenanta nebo ve všech tenantech. 
+Každý tenant Azure AD je odlišný a oddělený od ostatních tenantů Azure AD a používá vlastní reprezentaci pracovních a školních identit, identit zákazníků (pokud se jedná o tenanta Azure AD B2C) a registrací aplikací. Registrace aplikace uvnitř vašeho tenanta může umožňovat ověřování z účtů pouze v rámci vašeho tenanta nebo ve všech tenantech.
 
 ## <a name="determining-environment-type"></a>Určení typu prostředí
 
@@ -69,9 +69,9 @@ Pokud ještě tenanta Azure AD nemáte nebo chcete pro účely vývoje vytvořit
 
 ## <a name="social-and-local-accounts"></a>Účty na sociálních sítích a místní účty
 
-Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociálních sítích a místních účtů, budete muset vytvořit tenanta Azure AD B2C. Pokud chcete začít, postupujte podle pokynů k [vytvoření tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md). 
+Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociálních sítích a místních účtů, budete muset vytvořit tenanta Azure AD B2C. Pokud chcete začít, postupujte podle pokynů k [vytvoření tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Vyzkoušejte rychlý start zaměřený na psaní kódu a začněte s ověřováním uživatelů. 
 * Podrobnější vzorové kódy najdete v dokumentaci v části **Kurzy**.

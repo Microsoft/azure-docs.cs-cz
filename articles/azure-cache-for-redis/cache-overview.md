@@ -14,16 +14,16 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 1f41172a493f3e5e1b98cbba32b0180cee16c072
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eab4365b6b86a82f29dbd1a79d4fda6dc9b30e0e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019196"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971320"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis
 
-Pro Redis Azure Cache je založená na oblíbené open source [mezipaměti Azure Redis](https://redis.io/). Obvykle se používá jako mezipaměť ke zlepšení výkonu a škálovatelnosti systémů, které z velké části spoléhají na back-endová úložiště dat. Lepšího výkonu se dosahuje dočasným zkopírováním často používaných dat do rychlého úložiště umístěného v blízkosti aplikace. S [mezipaměti Azure Redis](https://redis.io/), toto rychlé úložiště je umístěné v paměti s mezipamětí Azure pro Redis místo se načetl z disku databáze.
+Pro Redis Azure Cache je založená na oblíbené softwarové [Redis](https://redis.io/). Obvykle se používá jako mezipaměť ke zlepšení výkonu a škálovatelnosti systémů, které z velké části spoléhají na back-endová úložiště dat. Lepšího výkonu se dosahuje dočasným zkopírováním často používaných dat do rychlého úložiště umístěného v blízkosti aplikace. S [mezipaměti Azure Redis](https://redis.io/), toto rychlé úložiště je umístěné v paměti s mezipamětí Azure pro Redis místo se načetl z disku databáze.
 
 Azure mezipaměti Redis také slouží jako úložiště dat v paměti struktury, distribuované nerelační databáze a zprostředkovatele zpráv. Lepšího výkonu aplikací se dosahuje díky nízké latenci a vysoké propustnosti modulu Redis.
 
@@ -45,7 +45,7 @@ Existuje mnoho společných vzorů použití mezipaměti Redis Azure pro podporu
 
 Azure mezipaměti Redis je k dispozici v následujících úrovních:
 
-| Vrstva | Popis |
+| Úroveň | Popis |
 |---|---|
 Basic | Mezipaměť s jedním uzlem. Tato vrstva podporuje více velikostí paměti (250 MB – 53 GB). Jedná se o ideální vrstvu pro vývoj a testování nebo pro méně náročné úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
 | Standard | Replikovaná mezipaměť v konfiguraci primárního a sekundárního uzlu spravovaná Microsoftem, se smlouvou SLA zajišťující vysokou dostupnost (99,9 %). |

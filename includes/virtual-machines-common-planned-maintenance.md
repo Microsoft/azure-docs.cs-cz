@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: f5bd0923c1edac06f952ff93e087505a76407b05
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444061"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53805716"
 ---
 Azure pravidelně aktualizuje platformy zvýšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače. Tyto aktualizace v rozsahu od opravy softwarové komponenty v hostitelském prostředí upgrade síťových součástí, na vyřazení z provozu hardwaru. Většina těchto aktualizací mít žádný vliv na hostované virtuální počítače. Existují však případech, kdy aktualizace nemají vliv a Azure vybere metodu minimální dopad aktualizací:
 
@@ -27,7 +27,7 @@ Můžete získat v rámci virtuálního počítače upozornění o nadcházejíc
 
 "Postupy:" informace o správě plánované údržby, najdete v části "Zpracování oznámení plánované údržby" pro [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) nebo [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="non-rebootful-maintenance"></a>Non-rebootful údržby
+## <a name="memory-preserving-maintenance"></a>Údržba pro zachování paměti
 
 Pro většinu aktualizací bez rebootful je menší než 10 sekund pozastavení virtuálního počítače. V některých případech paměti Údržba pro zachování se používají mechanismus, který pozastaví virtuální počítač po dobu až 30 sekund a zachovává přitom paměť RAM. Virtuální počítač se pak obnoví a hodiny virtuálního počítače se automaticky synchronizuje. Azure je stále pomocí migrace za provozu technologie a zlepšení paměti zachování údržby mechanismus zkrátit dobu trvání pozastavení.
 

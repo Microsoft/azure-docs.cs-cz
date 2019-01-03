@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 35929d820ac6f72b83d6c3f25547255ca3423fc8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138442"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713569"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odkaz na službu Backup infrastruktury
 
@@ -87,9 +87,16 @@ Požadavky zahrnují:
 
 Infrastruktura zálohování řadič bude zálohovat data na vyžádání. Doporučuje se zálohování alespoň dvakrát den a udržování maximálně sedmidenní zálohy. 
 
+**1811 a novější**
 | Škálování prostředí | Očekávaná velikost zálohy | Celkové množství místa potřebné |
 |-------------------|--------------------------|--------------------------------|
-| 4 až 16 uzlů        | 10 GB                     | 140 GB                          |
+| 4 až 16 uzlů        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
+
+**Pre-1811**
+| Škálování prostředí | Očekávaná velikost zálohy | Celkové množství místa potřebné |
+|-------------------|--------------------------|--------------------------------|
+| 4 až 16 uzlů, ASDK  | 10 GB                     | 140 GB                        |
 
 ### <a name="network-requirements"></a>Síťové požadavky
 | Umístění úložiště                                                                 | Podrobnosti                                                                                                                                                                                 |
@@ -109,7 +116,7 @@ Tato omezení zvažte při plánování, nasazení a provozování vašich insta
 | Identifikátor omezení                                                 | Omezení        | Komentáře                                                                                                                                    |
 |------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Typ zálohování                                                      | Pouze úplné    | Infrastruktura zálohování kontroler podporuje pouze úplné zálohy. Přírůstkové zálohování se nepodporují.                                          |
-| Naplánované zálohování                                                | Jenom ručně  | Záložní řadič aktuálně podporuje jenom zálohování na vyžádání                                                                                 |
+| Naplánované zálohování                                                | Plánovaná a ruční  | Záložní řadič podporuje zálohování na vyžádání a plánované                                                                                 |
 | Maximální počet souběžných úloh zálohování                                   | 1            | Na instanci zálohování řadiče je podporována pouze jedna aktivní úloha zálohování.                                                                  |
 | Konfigurace přepínače sítě                                     | Není v oboru | Správce musí zálohování konfigurace přepínače sítě pomocí nástrojů pro výrobce OEM. V dokumentaci pro Azure Stack vám poskytne dodavatel každý výrobce OEM. |
 | Životní cyklus hostitelský hardware                                          | Není v oboru | Správce musí zálohovat hostitele životního cyklu hardwaru pomocí nástroje pro výrobce OEM. V dokumentaci pro Azure Stack vám poskytne dodavatel každý výrobce OEM.      |

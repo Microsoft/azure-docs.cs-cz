@@ -4,22 +4,22 @@ description: Informace o možnostech licencování Microsoft Smooth Streaming kl
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: femila
+manager: steveng
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b3f6410e65e9a43578d50d6aacaec0ea4ec4684
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136269"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753485"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -29,7 +29,7 @@ Návrh a vytváření správy digitálních práv (DRM) subsystém pro over-the-
 
 Cílové čtecí zařízení pro tento dokument se techniků, kteří pracují v DRM subsystémy OTT nebo řešení online streamování/s více obrazovkami nebo čtenáře, kteří mají zájem o subsystémy DRM. Předpokladem je, že čtečky obeznámeni s alespoň jedním technologií DRM na trhu, jako je PlayReady, Widevine, FairPlay nebo Adobe přístup.
 
-V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: běžné šifrování (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
+V této diskuzi pomocí několika variant DRM zahrnujeme 3 technologiemi DRM podporovaných službou Azure Media Services: Common Encryption (CENC) PlayReady a Widevine, FairPlay, jakož i AES-128 s nezašifrovaným klíčem. Hlavní trendu v oboru OTT a online streamování se má používat nativní technologiemi DRM na různých klientských platformách. Tento trend je posun z předchozí, který používá jeden DRM a jeho Klientská sada SDK pro různé platformy klienta. Při použití šifrování CENC s více nativní DRM PlayReady i Widevine jsou šifrované podle [používat standard Common Encryption (CENC 23001-7 ISO/IEC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikace.
 
 Mezi výhody používání nativní s více variantami DRM pro ochranu obsahu se, že:
 
@@ -119,11 +119,11 @@ Tyto aspekty jsou důležité
 
 Pokud chcete použít veřejný cloud pro naším vlastním doručováním licencí, trvalé a nonpersistent licence mít přímý vliv na náklady na licence doručování. Následující dva případy návrhů slouží pro ilustraci:
 
-* Měsíční předplatné: použijte trvalou licenci a obsahu klíč assetu mapování 1: m. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
+* Měsíční předplatné: Použijte trvalou licenci a obsahu klíč assetu mapování 1: m. Například všech dětí filmů, používáme jeden klíč k obsahu pro šifrování. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = 1
 
-* Měsíční předplatné: nonpersistent licenci a mapování 1: 1 mezi klíče k obsahu a prostředků. V tomto případě:
+* Měsíční předplatné: Používejte licenci nonpersistent a mapování 1: 1 mezi klíče k obsahu a prostředků. V tomto případě:
 
     Celkový počet licencí požadovaným pro všechny děti filmy/zařízení = [čísla filmů sledovali vysílání televizní] x [počet relací]
 
@@ -327,7 +327,7 @@ Registrace a konfigurace aplikace ukazatel ve službě Azure AD, proveďte násl
 
 2. Přidejte nový klíč aplikace prostředků.
 
-3. Aktualizujte soubor manifestu aplikace tak, aby vlastnost groupMembershipClaims má hodnotu "groupMembershipClaims": "Vše".
+3. Aktualizace souboru manifestu aplikace tak, aby vlastnost groupMembershipClaims má hodnotu "groupMembershipClaims": "Vše".
 
 4. V aplikaci Azure AD, která odkazuje na webové aplikace přehrávače, v části **oprávnění k ostatním aplikacím**, přidání aplikace prostředku, který byl přidán v kroku 1. V části **delegovaná oprávnění**vyberte **přístupu [resource_name]**. Tato možnost poskytuje oprávnění webové aplikace k vytvoření přístupové tokeny, které přístup k aplikaci prostředků. Proveďte pro místní a nasazené verze webové aplikace při vývoji v sadě Visual Studio a webové aplikace Azure.
 
@@ -360,13 +360,13 @@ Při použití vlastních služeb STS musí udělali dvě změny:
 
 Existují dva typy bezpečnostních klíčů:
 
-* Symetrický klíč: stejný klíč se používá ke generování a ověřit token JWT.
-* Asymetrický klíč: pár veřejného a privátního klíče v x X509 certifikát se používá s privátním klíčem k šifrování a generovat token JWT a s veřejným klíčem k ověření tokenu.
+* Symetrický klíč: Stejný klíč se používá ke generování a ověřit token JWT.
+* Asymetrický klíč: Pár veřejného a privátního klíče v x X509 certifikát se používá s privátním klíčem k šifrování a generovat token JWT a s veřejným klíčem k ověření tokenu.
 
 > [!NOTE]
 > Pokud používáte rozhraní .NET Framework a jazyka C# jako svou vývojovou platformu, X509 certifikát používaný pro asymetrické bezpečnostní klíč musí mít klíč délku aspoň 2048. Jde o požadavek třídy System.IdentityModel.Tokens.X509AsymmetricSecurityKey v rozhraní .NET Framework. V opačném případě je vyvolána následující výjimka:
 
-> IDX10630: Nesmí být menší než "2048" bits "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" pro podepisování.
+> IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" pro podepisování nesmí být menší než "2048" bits.
 
 ## <a name="the-completed-system-and-test"></a>Dokončené systému a testování
 Tato část vás provede následující scénáře v dokončené začátku do konce systému tak, aby základní přehled o chování může mít, než se ponoříte přihlašovací účet:
@@ -400,15 +400,15 @@ Autoři měli účet vytvoření nebo přidání za vás může kontaktovat.
 
 Na následujících snímcích obrazovky zobrazit různé přihlašovací stránky používá jinou doménu účty:
 
-**Vlastní služby Azure AD tenant účet domény**: přizpůsobené přihlašovací stránky z vlastní služby Azure AD tenanta domény.
+**Účet domény vlastní služby Azure AD tenant**: Přizpůsobená přihlašovací stránce vlastní služby Azure AD tenanta domény.
 
 ![Účtu tenanta domény vlastní služby Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
-**Microsoft doménový účet s čipovou kartu**: přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
+**Microsoft doménový účet s čipovou kartu**: Přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
 
 ![Účet domény vlastní služby Azure AD tenanta dvě](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
-**Účet Microsoft**: přihlašovací stránku účtu Microsoft pro zákazníky.
+**Účet Microsoft**: Přihlašovací stránku účtu Microsoft pro zákazníky.
 
 ![Účet domény vlastní služby Azure AD tenanta tři](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 

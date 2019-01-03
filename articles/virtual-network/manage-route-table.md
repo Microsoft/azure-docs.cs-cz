@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 790d327be27dae0c963c37e6e55f1721bf571c80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7c3c4eea80eb0ceddc48d30fd51cf23524df5640
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222110"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540754"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvořit, změnit nebo odstranit tabulku směrování
 
 Azure automaticky směruje provoz mezi Azure podsítěmi virtuálních sítí a místní sítí. Pokud chcete změnit výchozí Azure pro směrování, to provést tak, že vytvoříte směrovací tabulku. Pokud začínáte směrování ve virtuálních sítích, další informace o řezu [Přehled směrování](virtual-networks-udr-overview.md) nebo provedením [kurzu](tutorial-create-route-table-portal.md).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
@@ -64,7 +64,7 @@ Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* 
 1. Do vyhledávacího pole v horní části portálu zadejte *směrovací tabulky* do vyhledávacího pole. Když **směrovací tabulky** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte v seznamu, který chcete zobrazit podrobnosti pro směrovací tabulky. V části **nastavení**, můžete zobrazit **trasy** ve směrovací tabulce a **podsítě** směrovací tabulka je přidružen k.
 3. Další informace o běžných nastavení služby Azure, najdete v následující informace:
-    *   [Protokol aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
+    *   [Protokol aktivit](../azure-monitor/platform/activity-logs-overview.md)
     *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zámky](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -100,7 +100,7 @@ Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujt
 **Příkazy**
 
 - Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- Prostředí PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
+- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
 ## <a name="dissociate-a-route-table-from-a-subnet"></a>Zrušit přidružení směrovací tabulky z podsítě
 
@@ -115,7 +115,7 @@ Pokud zrušíte přidružení směrovací tabulky z podsítě, Azure směruje pr
 **Příkazy**
 
 - Azure CLI: [az network vnet podsíť aktualizace](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
-- Prostředí PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
+- PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
 ## <a name="delete-a-route-table"></a>Odstranit tabulku směrování
 
@@ -128,7 +128,7 @@ Směrovací tabulka je přidružen k žádné podsítě, nelze odstranit. [Zruš
 **Příkazy**
 
 - Azure CLI: [az sítě route-table delete](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- Prostředí PowerShell: [AzureRmRouteTable odebrat](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
+- PowerShell: [Odebrat AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
 
 ## <a name="create-a-route"></a>Vytvoření trasy
 
@@ -147,7 +147,7 @@ Platí omezení na tom, kolik tras ve směrovací tabulce můžete vytvořit pro
 **Příkazy**
 
 - Azure CLI: [vytvořit az network route-table trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
-- PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
+- PowerShell: [Nové AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Zobrazit trasy
 
@@ -198,7 +198,7 @@ Směrovací tabulka obsahuje nula nebo více tras. Další informace o informace
 **Příkazy**
 
 - Azure CLI: [az sítě route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
-- PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
+- PowerShell: [Odebrat AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
 ## <a name="view-effective-routes"></a>Zobrazení efektivních tras
 

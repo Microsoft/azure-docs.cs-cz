@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0621c2d1632dead41463810b9e71ebf0404a8cbe
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6de5fefa3d70c1daecf00909d3ce44d4a4d8561c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077745"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543559"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -27,7 +27,7 @@ Připojení ExpressRoute se nepřenášejí prostřednictvím veřejného intern
 
 ### <a name="where-is-the-service-available"></a>Pokud je daná služba dostupná?
 
-Najdete na této stránce pro umístění služby a dostupnost: [ExpressRoute partneři a umístění](expressroute-locations.md).
+Najdete na této stránce pro umístění služby a dostupnosti: [ExpressRoute partneři a umístění](expressroute-locations.md).
 
 ### <a name="how-can-i-use-expressroute-to-connect-to-microsoft-if-i-dont-have-partnerships-with-one-of-the-expressroute-carrier-partners"></a>Jak můžou využít ExpressRoute a připojení k Microsoftu, když nemám partnerství s jedním z partnerů ExpressRoute dopravce?
 
@@ -166,7 +166,7 @@ Ano. Na můžete mít až 10 připojení virtuální sítě na standardní okruh
 
 ### <a name="i-have-multiple-azure-subscriptions-that-contain-virtual-networks-can-i-connect-virtual-networks-that-are-in-separate-subscriptions-to-a-single-expressroute-circuit"></a>Mám několik předplatných Azure, které obsahují virtuální sítě. Můžete propojit virtuální sítě, které jsou v samostatné předplatné na jeden okruh ExpressRoute?
 
-Ano. Až 10 jiných předplatných Azure se má použít jeden okruh ExpressRoute může autorizovat. Tento limit můžete zvýšit tím, že funkce ExpressRoute premium.
+Ano. Můžete propojit až 10 virtuálních sítí ve stejném předplatném jako okruh nebo různých předplatných, pomocí jednoho okruhu ExpressRoute. Tento limit můžete zvýšit tím, že funkce ExpressRoute premium.
 
 Další informace najdete v tématu [okruh ExpressRoute pro sdílení obsahu napříč několika předplatnými](expressroute-howto-linkvnet-arm.md).
 

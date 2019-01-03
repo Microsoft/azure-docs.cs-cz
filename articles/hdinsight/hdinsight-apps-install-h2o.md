@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4be346163fd54c0c5f962d15bc2433c7fab49e0b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497209"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650939"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Instalace publikované aplikace – H2O Sparkling Water
 
-Tento článek popisuje, jak nainstalovat a spustit [H20 Sparkling Water](http://www.h2o.ai/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [H20 Sparkling Water](https://www.h2o.ai/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-h2o-sparkling-water"></a>O H2O Sparkling Water
 
@@ -34,7 +34,7 @@ H2O Sparkling Water umožňuje:
 ### <a name="resource-links"></a>Odkazy na materiály
 
 * [Plán H2O.AI Engineering](http://jira.h2o.ai/)
-* [Domovská stránka H2O.ai](http://www.h2o.ai/)
+* [Domovská stránka H2O.ai](https://www.h2o.ai/)
 * [Dokumentace ke službě H2O.ai](http://docs.h2o.ai/)
 * [Podpora H2O.ai](https://support.h2o.ai/)
 * [Open Source H2O.AI základu kódu](https://github.com/h2oai/)
@@ -43,7 +43,7 @@ H2O Sparkling Water umožňuje:
 
 K instalaci této aplikace na nový cluster HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
 
-* Cluster úrovně: Standard nebo Premium
+* Úrovně clusteru: Úrovně Standard nebo Premium
 * Typ clusteru: Spark
 * Verze clusteru: 3.5 a 3.6
 
@@ -55,7 +55,7 @@ Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých vý
 
 1. Po dokončení instalace můžete začít používat H2O Sparkling Water (h2o sparklingwater) z váš cluster na webu Azure portal tak, že otevřete [poznámkové bloky Jupyter](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`). Získáte taky pro Jupyter tak, že vyberete **řídicí panel clusteru** z podokna clusteru na portálu, pak vyberete **Poznámkový blok Jupyter**. Zobrazí se výzva k zadání přihlašovacích údajů. Zadejte přihlašovací údaje clusteru Hadoop je definován na vytváření clusteru.
 
-2. V Jupyter, uvidíte tři složky: H2O. PySparkling příklady, příklady PySpark a Scala příklady. Vyberte **H2O. PySparkling příklady** složky.
+2. V Jupyter uvidíte tři složky: H2O. PySparkling příklady, příklady PySpark a Scala příklady. Vyberte **H2O. PySparkling příklady** složky.
 
     ![Domácí poznámkové bloky Jupyter](./media/hdinsight-apps-install-h2o/jupyter-home.png)
 
@@ -69,7 +69,7 @@ Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých vý
 
 5. Po zprovoznění clusteru H2O se otevřete H2O tok tak, že přejdete do **`https://<ClusterName>-h2o.apps.azurehdinsight.net:443`**.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud nemůžete otevřít tok H2O, vymažte mezipaměť prohlížeče. Pokud stále nelze k němu přistoupit, pravděpodobně nemáte dostatek prostředků ve vašem clusteru. Zkuste zvýšit počet pracovních uzlů v rámci **škálování clusteru** možnost v podokně vašeho clusteru.
 
     ![Tok H2O řídicí panel](./media/hdinsight-apps-install-h2o/h2o-flow.png)
@@ -96,7 +96,7 @@ A to je vše! Jste využily umělou inteligenci ve Sparku v řádu minut. Teď s
 
 * [Dokumentace ke službě H2O](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/index.html)
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

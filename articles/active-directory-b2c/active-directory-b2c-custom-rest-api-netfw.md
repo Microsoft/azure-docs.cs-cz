@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e3d938c4464fc5141b97f85220bf096920e17d00
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b8718e02bc0306db1ac8cd4f5b133ebdb17a4ec3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339589"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557277"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -27,13 +27,13 @@ S architekturu rozhraní identit, která je základem Azure Active Directory B2C
 S využitím Azure AD B2C, můžete přidat vlastní obchodní logiku do cesty uživatele voláním služby RESTful. Architekturu rozhraní identit odesílá data do služby RESTful v *vstupní deklarace identity* kolekce a přijímá data z RESTful v *výstupních deklarací identity* kolekce. Integrace služby RESTful vám umožní:
 
 * **Ověření vstupu dat uživatele**: Tato akce zabraňuje poškozených datových uložením do služby Azure AD. Pokud hodnota od uživatele není platná, vaše služba RESTful vrátí chybovou zprávu, která informuje uživatele k zadání položku. Ověřte například, že e-mailovou adresu, které zadal uživatel existuje v databázi vašeho zákazníka.
-* **Přepsat vstupními deklaracemi identity**: například, pokud uživatel zadá křestní jméno jenom malá písmena nebo všechna písmena velká písmena, lze formátovat název pouze první písmeno velké.
-* **Obohaťte uživatelská data další integraci s podnikovým aplikacím z podnikové**: Služba vaše RESTful dostávat e-mailovou adresu uživatele, dotazy na databázi zákazníka a vrátí číslo věrnostní uživatele Azure AD B2C. Vrácení deklarací identity, můžou být uložené v účtu uživatele Azure AD, vyhodnocen v příštích *kroků Orchestrace*, nebo zahrnutý v přístupovém tokenu.
-* **Spuštění vlastní obchodní logiky**: můžete odesílat nabízená oznámení, aktualizovat podnikové databáze, spusťte proces migrace uživatelů, spravovat oprávnění, audit databáze a provádět jiné akce.
+* **Přepsat vstupními deklaracemi identity**: Například pokud uživatel zadá křestní jméno v všechna písmena malá nebo všechna velká písmena, lze formátovat název pouze první písmeno velké.
+* **Obohaťte uživatelská data další integraci s podnikovým aplikacím z podnikové**: Vaše služba RESTful může přijímat e-mailovou adresu uživatele, dotazy na databázi zákazníka a vrátí číslo věrnostní uživatele Azure AD B2C. Vrácení deklarací identity, můžou být uložené v účtu uživatele Azure AD, vyhodnocen v příštích *kroků Orchestrace*, nebo zahrnutý v přístupovém tokenu.
+* **Spuštění vlastní obchodní logiky**: Můžete odesílat nabízená oznámení, aktualizovat firemní databáze, spusťte proces migrace uživatelů, spravovat oprávnění, audit databáze a provádět jiné akce.
 
 Integrace služby RESTful můžete navrhnout následujícími způsoby:
 
-* **Technický profil ověření**: volání rozhraní RESTful služby se stane v rámci ověření technický profil zadaný technického profilu. Technický profil ověření ověřuje uživatelsky zadaných dat před cesty uživatele pokračuje. Technický profil ověření můžete:
+* **Technický profil ověření**: Volání služby RESTful se stane v rámci ověření technický profil zadaný technického profilu. Technický profil ověření ověřuje uživatelsky zadaných dat před cesty uživatele pokračuje. Technický profil ověření můžete:
    * Odeslání vstupních deklarací identity.
    * Ověření mezi vstupními deklaracemi identity a vyvolat vlastní chybové zprávy.
    * Odešlete deklarace identity back výstup.
@@ -76,7 +76,7 @@ Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>Krok 2: Příprava koncový bod rozhraní REST API
 
-### <a name="step-21-add-data-models"></a>Krok 2.1: Přidání datové modely
+### <a name="step-21-add-data-models"></a>Krok 2.1: Přidat datové modely
 Modely představují mezi vstupními deklaracemi identity a deklarací výstupní data ve službě RESTful. Váš kód načítá vstupní data pomocí deserializace modelu vstupních deklarací identity z řetězce JSON na objekt jazyka C# (modelu). ASP.NET web API automaticky deserializuje model deklarací výstupu zpět do formátu JSON a pak zapíše serializovaná data do textu zprávy s odpovědí HTTP. 
 
 Vytvoření modelu, který představuje vstupních deklarací identity s následujícím způsobem:
@@ -226,7 +226,7 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 
 6. Zkopírujte adresu URL webové aplikace.
 
-## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Přidejte nový `loyaltyNumber` deklaraci identity pro schéma souboru TrustFrameworkExtensions.xml
+## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 4: Přidejte nové `loyaltyNumber` deklaraci identity pro schéma souboru TrustFrameworkExtensions.xml
 `loyaltyNumber` Deklarace identity ještě není definovaná v našich schématu. Přidat definici v rámci `<BuildingBlocks>` elementu, které můžete vyhledat na začátku *TrustFrameworkExtensions.xml* souboru.
 
 ```xml
@@ -241,63 +241,63 @@ Ve webovém rozhraní API _řadič_ je objekt, který zpracovává požadavky HT
 </BuildingBlocks>
 ```
 
-## <a name="step-5-add-a-claims-provider"></a>Krok 5: Přidejte zprostředkovatele deklarací identity 
+## <a name="step-5-add-a-claims-provider"></a>Krok 5: Přidat zprostředkovatele deklarací identity 
 Každý zprostředkovatele deklarací identity, musí mít nejmíň jeden technické profily, které určíte, koncové body a protokoly, které jsou potřeba ke komunikaci s zprostředkovatele deklarací identity. 
 
 Zprostředkovatel deklarací může mít více technické profily z různých důvodů. Například více technické profily mohou být definovány, protože více protokolů podporuje zprostředkovatel deklarací, koncové body mohou mít různé možnosti nebo vydané verze může obsahovat deklarace identity, které mají různé úrovně záruky. Může být přijatelný uvolnit citlivých deklarací identity v cestě jednoho uživatele, ale ne v jiném. 
 
 Následující fragment kódu XML obsahuje uzel poskytovatele deklarací identity dva technické profily:
 
-* **Technický profil Id = "REST API SignUp"**: definuje vaši službu RESTful. 
+* **Technický profil Id = "REST API SignUp"**: Definuje vaši službu RESTful. 
    * `Proprietary` je popsána jako protokol pro zprostředkovatele na základě RESTful. 
    * `InputClaims` definuje deklarace, které se odešlou do služby REST z Azure AD B2C. 
 
    V tomto příkladu obsah deklarace identity `givenName` odešle službě REST jako `firstName`, obsah se deklarace `surname` odešle službě REST jako `lastName`, a `email` odešle je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
 
-* **Technický profil Id = "LocalAccountSignUpWithLogonEmail"**: Přidá technický profil ověření do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele. 
+* **Technický profil Id = "LocalAccountSignUpWithLogonEmail"**: Technický profil ověření přidá do stávající technický profil (definováno v základních zásadách). Technický profil ověření během registrace cesty, vyvolá předchozí technický profil. Pokud služba RESTful vrátí chybu HTTP 409 (konflikt chyba), zobrazí se chybová zpráva pro uživatele. 
 
 Vyhledejte `<ClaimsProviders>` uzel a potom přidejte následující fragment kódu XML v rámci `<ClaimsProviders>` uzlu:
 
 ```xml
 <ClaimsProvider>
-    <DisplayName>REST APIs</DisplayName>
-    <TechnicalProfiles>
+  <DisplayName>REST APIs</DisplayName>
+  <TechnicalProfiles>
     
     <!-- Custom Restful service -->
     <TechnicalProfile Id="REST-API-SignUp">
-        <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
-        <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-        <Metadata>
+      <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
         <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
-        </Metadata>
-        <InputClaims>
+        <Item Key="AllowInsecureAuthInProduction">true</Item>
+      </Metadata>
+      <InputClaims>
         <InputClaim ClaimTypeReferenceId="email" />
         <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
         <InputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
-        </InputClaims>
-        <OutputClaims>
+      </InputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+      </OutputClaims>
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
     </TechnicalProfile>
 
-<!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
+    <!-- Change LocalAccountSignUpWithLogonEmail technical profile to support your validation technical profile -->
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-        <OutputClaims>
+      <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="loyaltyNumber" />
-        </OutputClaims>
-        <ValidationTechnicalProfiles>
+      </OutputClaims>
+      <ValidationTechnicalProfiles>
         <ValidationTechnicalProfile ReferenceId="REST-API-SignUp" />
-        </ValidationTechnicalProfiles>
+      </ValidationTechnicalProfiles>
     </TechnicalProfile>
-
-    </TechnicalProfiles>
+  </TechnicalProfiles>
 </ClaimsProvider>
 ```
 
-## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: Přidejte `loyaltyNumber` deklaraci identity pro předávající strany soubor zásad, takže deklarace identity se odešlou do vaší aplikace
+## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 6: Přidat `loyaltyNumber` deklaraci identity pro předávající strany soubor zásad, takže deklarace identity se odešlou do vaší aplikace
 Upravit vaše *SignUpOrSignIn.xml* předávající stranu souboru a změnit TechnicalProfile Id = "PolicyProfile" prvek a přidat následující: `<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`.
 
 Po přidání nových deklarací identity, předávající strana kódu vypadá takto:
@@ -323,7 +323,7 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 </TrustFrameworkPolicy>
 ```
 
-## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Nahrajte zásady pro vašeho tenanta
+## <a name="step-7-upload-the-policy-to-your-tenant"></a>Krok 7: Odeslání zásady do vašeho tenanta
 
 1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak otevřete **Azure AD B2C**.
 
@@ -339,7 +339,7 @@ Po přidání nových deklarací identity, předávající strana kódu vypadá 
 
 7. Opakujte předchozí krok souborem SignUpOrSignIn.xml.
 
-## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Krok 8: Testování spustit pomocí vlastních zásad
+## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>Krok 8: Testování vlastní zásady pomocí možnosti spustit hned
 1. Vyberte **nastavení Azure AD B2C**a pak přejděte na **architekturu rozhraní identit**.
 
     > [!NOTE]

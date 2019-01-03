@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: e11c34b2587dcb7602161d36ba4deda1dca73c82
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9af2dd3a17eb150d44bf69cda86e480a083a3164
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720962"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971201"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -32,11 +32,11 @@ Na straně klienta Application Insights můžete využít telemetrii z webových
 ## <a name="setup"></a>Nastavení sledování výkonu
 Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud soubor ApplicationInsights.config nemá), vyberte jednu z těchto způsobů, jak začít:
 
-* [Webové aplikace ASP.NET](app-insights-asp-net.md)
-  * [Přidat monitorování výjimky](app-insights-asp-net-exceptions.md)
-  * [Přidat monitorování závislostí](app-insights-monitor-performance-live-website-now.md)
-* [Webových aplikací J2EE](app-insights-java-get-started.md)
-  * [Přidat monitorování závislostí](app-insights-java-agent.md)
+* [Webové aplikace ASP.NET](../azure-monitor/app/asp-net.md)
+  * [Přidat monitorování výjimky](../azure-monitor/app/asp-net-exceptions.md)
+  * [Přidat monitorování závislostí](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Webových aplikací J2EE](../azure-monitor/app/java-get-started.md)
+  * [Přidat monitorování závislostí](../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>Zkoumání metrik výkonu
 V [na webu Azure portal](https://portal.azure.com), přejděte do prostředku Application Insights, které jste nastavili pro vaše aplikace. Okno přehledu zobrazí data základního výkonu:
@@ -152,11 +152,11 @@ Možnosti pro zkoumání výkonu ukazuje sadu ukázek, které jste se rozhodli s
 
 <!--Link references-->
 
-[availability]: app-insights-monitor-web-app-availability.md
-[diagnostic]: app-insights-diagnostic-search.md
-[greenbrown]: app-insights-asp-net.md
+[availability]: ../azure-monitor/app/monitor-web-app-availability.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
+[greenbrown]: ../azure-monitor/app/asp-net.md
 [qna]: app-insights-troubleshoot-faq.md
-[redfield]: app-insights-monitor-performance-live-website-now.md
+[redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
 [livestream]: app-insights-live-stream.md

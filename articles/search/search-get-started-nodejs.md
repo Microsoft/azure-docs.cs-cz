@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 81fa7e34c2cacf1ee8613c080d55225ffc37cdfc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311078"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634673"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Začínáme se službou Azure Search v Node.js
 > [!div class="op_single_selector"]
@@ -25,12 +25,12 @@ ms.locfileid: "53311078"
 
 Naučte se sestavit vlastní vyhledávací aplikaci v Node.js, která k hledání používá službu Azure Search. V tomto kurzu se pomocí [rozhraní REST API služby Azure Search](https://msdn.microsoft.com/library/dn798935.aspx) vytvoří objekty a operace, které se použijí v tomto cvičení.
 
-Tento kód jsme vyvinuli a testovali pomocí [Node.js](https://Nodejs.org) a NPM, [Sublime Text 3](http://www.sublimetext.com/3) a Windows PowerShellu v systému Windows 8.1.
+Tento kód jsme vyvinuli a testovali pomocí [Node.js](https://Nodejs.org) a NPM, [Sublime Text 3](https://www.sublimetext.com/3) a Windows PowerShellu v systému Windows 8.1.
 
 Pokud chcete tuto ukázku spustit, musíte mít službu Azure Search, ke které se můžete zaregistrovat na webu [Azure Portal](https://portal.azure.com). Podrobné pokyny najdete v tématu [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
 
 ## <a name="about-the-data"></a>Informace o datech
-Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
+Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
 
 Program **DataIndexer** v této aplikaci sestaví a načte index pomocí konstruktoru [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx), přičemž načte filtrovanou sadu dat USGS z veřejné databáze Azure SQL Database. Přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Není potřeba žádná další konfigurace.
 

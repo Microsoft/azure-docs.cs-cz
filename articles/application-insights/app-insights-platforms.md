@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 9f7f7731490467ff32a72507239bfeedc794f2f2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3fe57fe0aac4c355b65b55ee37213221eb854a5c
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000540"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976543"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
 
 ## <a name="languages---officially-supported-by-application-insights-team"></a>Jazyky – oficiálně podporované týmem služby Application Insights
-* [C#|VB (.NET)](app-insights-asp-net.md)
-* [Java](app-insights-java-get-started.md)
-* [Webové stránky JavaScript](app-insights-javascript.md)
+* [C#|VB (.NET)](../azure-monitor/app/asp-net.md)
+* [Java](../azure-monitor/app/java-get-started.md)
+* [Webové stránky JavaScript](../azure-monitor/app/javascript.md)
 * [Node.js](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Jazyky – podporované komunitou
@@ -37,22 +37,22 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Cokoliv jiného](#projects)
 
 ## <a name="platforms-and-frameworks"></a>Platformy a rozhraní
-* [ASP.NET](app-insights-asp-net.md)
-* [ASP.NET – pro aplikace, které jsou již nasazeny](app-insights-monitor-performance-live-website-now.md)
-* [Jádro ASP.NET](app-insights-asp-net-core.md)
+* [ASP.NET](../azure-monitor/app/asp-net.md)
+* [ASP.NET – pro aplikace, které jsou již nasazeny](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Jádro ASP.NET](../azure-monitor/app/asp-net-core.md)
 * [Android](app-insights-mobile-center-quickstart.md) (App Center)
 * [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
-* [Azure Web Apps](app-insights-azure-web-apps.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)&#151; včetně webových a pracovních rolí
+* [Azure App Service](../azure-monitor/app/azure-web-apps.md)
+* [Azure Cloud Services](../azure-monitor/app/cloudservices.md)&#151; včetně webových a pracovních rolí
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
-* [Docker](app-insights-docker.md)
+* [Docker](../azure-monitor/app/docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
 * [iOS](app-insights-mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
-* [J2EE](app-insights-java-get-started.md)
-* [J2EE – pro aplikace, které jsou již nasazeny](app-insights-java-live.md)
+* [J2EE](../azure-monitor/app/java-get-started.md)
+* [J2EE – pro aplikace, které jsou již nasazeny](../azure-monitor/app/java-live.md)
 * [Node.js](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [Stack SAFE](https://safe-stack.github.io/docs/template-azure-ai/)
@@ -63,8 +63,8 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Cokoliv jiného](#projects)
 
 ## <a name="logging-frameworks"></a>Protokolování rozhraní
-* [Log4Net, NLog nebo System.Diagnostics.Trace](app-insights-asp-net-trace-logs.md)
-* [Java, Log4J nebo Logback](app-insights-java-trace-logs.md)
+* [Log4Net, NLog nebo System.Diagnostics.Trace](../azure-monitor/app/asp-net-trace-logs.md)
+* [Java, Log4J nebo Logback](../azure-monitor/app/java-trace-logs.md)
 * [Sémantické protokolování (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) – integruje se [sémantickým blokem protokolování aplikace](https://msdn.microsoft.com/library/dn440729.aspx)
 * [Cloudové zátěžové testování](https://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [Modul plug-in pro LogStash](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)

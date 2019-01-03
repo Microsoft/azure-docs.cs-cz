@@ -1,20 +1,17 @@
 ---
 title: Monitorování v Azure Database pro MariaDB
 description: Tento článek popisuje metriky pro monitorování a výstrah pro službu Azure Database pro MariaDB, včetně statistiky CPU, úložiště a připojení.
-services: mariadb
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: 3daa4eb07e626e53d9106abf978174f505e785ab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 476e74a4d167fb3e9158f07cc5c073f129a74daa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516138"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545888"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Monitorování v Azure Database pro MariaDB
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database pro MariaDB poskytuje různé metriky, které poskytují přehled o chování vašeho serveru.
@@ -39,7 +36,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database pro MariaDB:
 |serverlog_storage_limit|Limit úložiště protokolů serveru|B|Maximální serverové úložiště protokolu pro tento server.|
 |storage_limit|Limit úložiště.|B|Maximální velikost úložiště pro tento server.|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet selhání připojení k serveru.|
+|connections_failed|Chyba připojení|Počet|Počet selhání připojení k serveru.|
 |network_bytes_egress|Síťové výstupy|B|Odchozí síťový provoz mezi aktivních připojení.|
 |network_bytes_ingress|Síťové vstupy|B|Sítě v rámci aktivních připojení.|
 

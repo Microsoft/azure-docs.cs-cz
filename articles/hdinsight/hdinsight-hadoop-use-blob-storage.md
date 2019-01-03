@@ -1,6 +1,6 @@
 ---
 title: Dotazy na data z úložiště Azure kompatibilního se systémem HDFS – Azure HDInsight
-description: Zjistěte, jak zadávat dotazy na data ze služby Azure Storage a Azure Data Lake Store pro ukládání výsledků analýzy.
+description: Zjistěte, jak zadávat dotazy na data z Azure storage a Azure Data Lake Storage k ukládání výsledků analýzy.
 services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 359cfd5b0eba25de25ce4200a61b0103a3d0fade
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 7513ce90437ebf3d06d4ceb0ea5a83610db5f7dd
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384798"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742690"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
 Pokud chcete analyzovat data v clusteru HDInsight, můžete ukládat data buď ve službě Azure Storage, [Azure Data Lake Storage Gen 1 / Azure Data Lake Storage Gen2] nebo obojí. Obě možnosti ukládání umožňují bezpečné odstranění clusterů HDInsight, které se používají pro výpočty, aniž by se ztratila uživatelská data.
 
-Apache Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight, můžete zadat kontejner objektů blob ve službě Azure Storage jako výchozí systém souborů nebo u služby HDInsight 3.6, můžete vybrat služby Azure Storage nebo Azure Data Lake Storage Gen 1 / Azure Data Lake Store Gen 2 jako výchozí soubory systém s několika výjimkami. Možnosti použití Data Lake Storage Gen 1 jako výchozí i propojené úložiště, najdete v části [dostupnost pro HDInsight cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
+Apache Hadoop podporuje hodnoty výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight, můžete zadat kontejner objektů blob ve službě Azure Storage jako výchozí systém souborů nebo u služby HDInsight 3.6, můžete vybrat služby Azure Storage nebo Azure Data Lake Storage Gen 1 / Azure Data Lake Storage Gen 2 jako výchozí soubory systém s několika výjimkami. Možnosti použití Data Lake Storage Gen 1 jako výchozí i propojené úložiště, najdete v části [dostupnost pro HDInsight cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters).
 
-V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDInsight. Informace o tom, jak služba Data Lake Storage Gen 1 pracuje s clustery HDInsight, naleznete v tématu [clusterů pomocí Azure Data Lake Store pomocí Azure HDInsight](hdinsight-hadoop-use-data-lake-store.md). Další informace o vytvoření clusteru HDInsight najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDInsight. Informace o tom, jak služba Data Lake Storage Gen 1 pracuje s clustery HDInsight, naleznete v tématu [použití služby Azure Data Lake Storage s Azure HDInsight clustery](hdinsight-hadoop-use-data-lake-store.md). Další informace o vytvoření clusteru HDInsight najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 Azure Storage je robustní řešení úložiště pro obecné účely, které se jednoduše integruje se službou HDInsight. HDInsight může jako výchozí systém souborů pro cluster používat kontejner objektů blob ve službě Azure Storage. Prostřednictvím rozhraní systému souborů Hadoop DFS (HDFS) může celá sada komponent ve službě HDInsight pracovat přímo se strukturovanými nebo nestrukturovanými daty uloženými jako objekty blob.
 
@@ -97,7 +97,7 @@ Výchozí kontejner objektu blob ukládá konkrétní informace, jako je histori
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
-Při vytváření clusteru HDInsight z portálu máte možnost (jak je vidět níže) zadat podrobnosti účtu úložiště. Můžete také určit, jestli chcete ke clusteru přidružit další účet úložiště, a pokud ano, zvolit jako další úložiště službu Data Lake Store nebo další Azure Storage Blob.
+Při vytváření clusteru HDInsight z portálu máte možnost (jak je vidět níže) zadat podrobnosti účtu úložiště. Můžete také určit, zda chcete ještě účet úložiště přidružené ke clusteru a pokud ano, zvolit z úložiště Data Lake nebo jiné služby Azure Storage blob jako další úložiště.
 
 ![Zdroj dat pro vytvoření hadoopu HDInsight](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
 
@@ -330,7 +330,7 @@ V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště A
 Další informace naleznete v tématu:
 
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
-* [Začínáme se službou Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
+* [Začínáme s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
 * [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použití Apache Pig s HDInsight][hdinsight-use-pig]

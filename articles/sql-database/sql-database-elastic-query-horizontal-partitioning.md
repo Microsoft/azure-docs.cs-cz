@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: de96de96d68164d021f8b823e69bc52322642aa7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 02942cafe6e1532a6829ad7a6761b825739a1e85
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865399"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53597966"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč databázemi s horizontálním navýšením kapacity (preview)
 ![Dotazování napříč horizontálními oddíly][1]
@@ -140,7 +140,7 @@ DISTRIBUČNÍ klauzule určuje distribuci dat použít pro tuto tabulku. Proceso
 2. **REPLIKOVANÉ** znamená, že jsou k dispozici v každé databázi totožné kopie v tabulce. Je vaší povinností ujistit, že tyto repliky jsou identické napříč databázemi.
 3. **ROUND\_ROBIN** znamená, že v tabulce je horizontálně dělené do oddílů pomocí metody distribuce závislých na aplikaci. 
 
-**Data úrovně odkaz**: DDL odkazuje na externí zdroj dat externí tabulky. Externí zdroj dat určuje mapy horizontálních oddílů, který poskytuje informace potřebné k vyhledání všech databází ve vaší datové vrstvě externí tabulky. 
+**Data úrovně odkaz**: Externí tabulka DDL odkazuje na externí zdroj dat. Externí zdroj dat určuje mapy horizontálních oddílů, který poskytuje informace potřebné k vyhledání všech databází ve vaší datové vrstvě externí tabulky. 
 
 ### <a name="security-considerations"></a>Aspekty zabezpečení
 Uživatelé s přístupem k externí tabulky automaticky získáte přístup k podkladové vzdálených tabulek v části přihlašovací údaje zadané v definici zdroje externí data. Vyhněte se nežádoucí zvýšení oprávnění prostřednictvím přihlašovacích údajů zdroje dat externí. Pomocí GRANT nebo REVOKE pro externí tabulky, stejně, jako by šlo o běžnou tabulku.  
@@ -168,10 +168,10 @@ Následující dotaz spojí trojcestných sklady, objednávky a řádky a použ�
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uložené procedury pro vzdálené spuštění T-SQL: aktualizace sp\_execute_remote
 Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup k horizontální oddíly. Volání uložené procedury [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) a je možné ke spouštění uložené procedury vzdálený nebo kód T-SQL na vzdálené databáze. Ji používá následující parametry: 
 
-* Název zdroje dat (nvarchar): název externí zdroj dat typu relační databázový systém. 
-* Dotaz (nvarchar): dotaz T-SQL k provedení na jednotlivých horizontálních oddílů. 
-* Deklarace parametru (nvarchar) – volitelné: řetězec s definice typu dat pro parametry použité v parametru dotazu (např. sp_executesql). 
-* Seznam hodnot parametru - volitelné: čárkami oddělený seznam hodnot parametrů (jako je sp_executesql).
+* Název zdroje dat (nvarchar): Název externího zdroje dat typu relační databázový systém. 
+* Dotaz (nvarchar): Dotaz T-SQL, který se spustí na každý horizontální oddíl. 
+* Deklarace parametru (nvarchar) – volitelné: Řetězec s daty definic typů pro parametry použité v parametru dotazu (např. sp_executesql). 
+* Seznam hodnot parametru - volitelné: Čárkou oddělený seznam hodnot parametrů (jako je sp_executesql).
 
 Sp\_provést\_vzdálené externí zdroj dat součástí Parametry vyvolání používá ke spouštění daný příkaz T-SQL na vzdálené databáze. Přihlašovací údaje z externí zdroj dat používá pro připojení k databázi manager shardmap a vzdálené databáze.  
 

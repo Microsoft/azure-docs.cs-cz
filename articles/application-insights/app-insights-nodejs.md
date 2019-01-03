@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: a2ac309afc6b25f7fdb4667b767ead59cae3b696
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9d8b5a487898a81517eb25563fbbef8ffc489d01
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877316"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808532"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Azure Application Insights](app-insights-overview.md) monitoruje po nasazení vaše služby a komponenty back-end a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](app-insights-detect-triage-diagnose.md). Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
+[Azure Application Insights](app-insights-overview.md) monitoruje po nasazení vaše služby a komponenty back-end a tím vám pomáhá [zjišťovat a rychle diagnostikovat problémy nejen s výkonem](../azure-monitor/app/detect-triage-diagnose.md). Application Insights můžete použít pro služby Node.js hostované ve vašem datovém centru, na virtuálních počítačích a ve webových aplikacích Azure a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
@@ -107,8 +107,8 @@ Vzhledem k tomu, že sada SDK seskupuje data do dávek pro odesílání, může 
 
 * Pokračujte v používání aplikace. Proveďte více akcí pro vygenerování další telemetrie.
 * V zobrazení prostředku na portálu klikněte na **Aktualizovat**. Grafy se samy pravidelně aktualizují, ale ruční aktualizace vynutí jejich okamžitou aktualizaci.
-* Ověřte, že jsou otevřené [požadované výchozí porty](app-insights-ip-addresses.md).
-* Pomocí [Vyhledávání](app-insights-diagnostic-search.md) vyhledejte konkrétní události.
+* Ověřte, že jsou otevřené [požadované výchozí porty](../azure-monitor/app/ip-addresses.md).
+* Pomocí [Vyhledávání](../azure-monitor/app/diagnostic-search.md) vyhledejte konkrétní události.
 * Přečtěte si [Nejčastější dotazy][FAQ].
 
 
@@ -133,7 +133,7 @@ appInsights.setup("<instrumentation_key>")
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API
 
-Úplný popis rozhraní TelemetryClient API najdete v tématu [Rozhraní API Application Insights pro vlastní události a metriky](app-insights-api-custom-events-metrics.md).
+Úplný popis rozhraní TelemetryClient API najdete v tématu [Rozhraní API Application Insights pro vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md).
 
 Pomocí sady Application Insights Node.js SDK můžete sledovat jakékoli požadavky, události, metriky nebo výjimky. Následující příklad kódu ukazuje některá z rozhraní API, která můžete použít:
 
@@ -210,7 +210,7 @@ server.on("listening", () => {
 
 ## <a name="next-steps"></a>Další postup
 
-* [Monitorování telemetrických dat na portálu](app-insights-dashboards.md)
+* [Monitorování telemetrických dat na portálu](../azure-monitor/app/app-insights-dashboards.md)
 * [Psaní analytických dotazů do telemetrických dat](../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->

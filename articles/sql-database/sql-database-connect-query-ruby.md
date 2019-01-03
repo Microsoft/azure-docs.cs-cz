@@ -11,76 +11,79 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 751e7d6b401417ee3efd4ffc30263d2507ff2627
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.date: 12/20/2018
+ms.openlocfilehash: 66819cbd65f6f044d0dac68326eb5890476964b6
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913649"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993905"
 ---
-# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Rychlý start: Použití Ruby k dotazování databáze SQL Azure
+# <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Rychlý start: Použití Ruby k dotazování na službu Azure SQL Database
 
-Tento rychlý start ukazuje použití [Ruby](https://www.ruby-lang.org) k vytvoření programu pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.
+Tento rychlý start ukazuje, jak používat [Ruby](https://www.ruby-lang.org) pro připojení Azure SQL database a dotazování dat pomocí příkazů jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
+K dokončení tohoto rychlého startu budete potřebovat následující:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
+  
 - [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
+  
+- Ruby a související software pro váš operační systém:
+  
+  - **macOS**: Nainstalujte Homebrew, rbenv a ruby-build, Ruby, FreeTDS a TinyTDS. Najdete v krocích 1.2, 1.3, 1.4, 1.5 a 2.1 v [Ruby vytvořit aplikace s využitím SQL serveru v systému macOS](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).
+  
+  - **Ubuntu**: Instalace požadovaných součástí pro Ruby, rbenv a ruby-build, Ruby, FreeTDS a TinyTDS. Najdete v krocích 1.2, 1.3, 1.4, 1.5 a 2.1 v [Ruby vytvořit aplikace s využitím SQL serveru na Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
+  
+  - **Windows:** Nainstalujte Ruby, Ruby Devkit a TinyTDS. Zobrazit [konfigurace vývojového prostředí o vývoji v Ruby](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
-- Máte nainstalované Ruby a související software pro váš operační systém:
-    - **MacOS:** Nainstalujte Homebrew, nainstalujte rbenv a ruby-build, nainstalujte Ruby a potom nainstalujte FreeTDS. Viz [kroky 1.2, 1.3, 1.4 a 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).
-    - **Ubuntu:** Nainstalujte požadavky pro Ruby, nainstalujte rbenv a ruby-build, nainstalujte Ruby a potom nainstalujte FreeTDS. Viz [kroky 1.2, 1.3, 1.4 a 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
-
-## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
+## <a name="get-sql-server-connection-information"></a>Získejte informace o připojení SQL serveru
 
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-> [!IMPORTANT]
-> Musíte mít nastavené pravidlo brány firewall pro veřejnou IP adresu počítače, na kterém provádíte tento kurz. Pokud jste na jiném počítači nebo máte jinou veřejnou IP adresu, vytvořte [pravidlo brány firewall na úrovni serveru pomocí webu Azure Portal](sql-database-get-started-portal-firewall.md). 
+## <a name="create-code-to-query-your-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL
 
-## <a name="insert-code-to-query-sql-database"></a>Vložení kódu pro dotazování databáze SQL
-
-1. V oblíbeném textovém editoru vytvořte nový soubor **sqltest.rb**.
-
-2. Nahraďte jeho obsah následujícím kódem a přidejte odpovídající hodnoty pro váš server, databázi, uživatele a heslo.
-
-```ruby
-require 'tiny_tds'
-server = 'your_server.database.windows.net'
-database = 'your_database'
-username = 'your_username'
-password = 'your_password'
-client = TinyTds::Client.new username: username, password: password, 
-    host: server, port: 1433, database: database, azure: true
-
-puts "Reading data from table"
-tsql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
-        FROM [SalesLT].[ProductCategory] pc
-        JOIN [SalesLT].[Product] p
-        ON pc.productcategoryid = p.productcategoryid"
-result = client.execute(tsql)
-result.each do |row|
-    puts row
-end
-```
+1. V editoru kódu nebo textu, vytvořte nový soubor s názvem *sqltest.rb*.
+   
+1. Přidejte následující kód. Nahraďte hodnotami z Azure SQL database pro `<server>`, `<database>`, `<username>`, a `<password>`.
+   
+   >[!IMPORTANT]
+   >Kód v tomto příkladu se používá ukázková data AdventureWorksLT, které můžete použít jako zdroj při vytváření databáze. Pokud vaše databáze má jiná data, pomocí tabulek z vlastní databázi v dotazu SELECT. 
+   
+   ```ruby
+   require 'tiny_tds'
+   server = '<server>.database.windows.net'
+   database = '<database>'
+   username = '<username>'
+   password = '<password>'
+   client = TinyTds::Client.new username: username, password: password, 
+       host: server, port: 1433, database: database, azure: true
+   
+   puts "Reading data from table"
+   tsql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
+           FROM [SalesLT].[ProductCategory] pc
+           JOIN [SalesLT].[Product] p
+           ON pc.productcategoryid = p.productcategoryid"
+   result = client.execute(tsql)
+   result.each do |row|
+       puts row
+   end
+   ```
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-1. V příkazovém řádku spusťte následující příkazy:
+1. Na příkazovém řádku spusťte následující příkaz:
 
    ```bash
    ruby sqltest.rb
    ```
+   
+1. Ověřte, že se vrátí prvních 20 řádků kategorie nebo produktů z databáze. 
 
-2. Ověřte, že se vrátilo prvních 20 řádků, a potom zavřete okno aplikace.
-
-
-## <a name="next-steps"></a>Další kroky
-- [Návrh první databáze SQL Azure](sql-database-design-first-database.md)
-- [Úložiště GitHub pro TinyTDS](https://github.com/rails-sqlserver/tiny_tds)
-- [Hlášení problémů nebo kladení dotazů ohledně TinyTDS](https://github.com/rails-sqlserver/tiny_tds/issues)
-- [Ovladače Ruby pro SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
+## <a name="next-steps"></a>Další postup
+- [Návrh první databáze Azure SQL database](sql-database-design-first-database.md).
+- [Úložiště GitHub pro TinyTDS](https://github.com/rails-sqlserver/tiny_tds).
+- [Hlášení problémů nebo kladení dotazů ohledně TinyTDS](https://github.com/rails-sqlserver/tiny_tds/issues).
+- [Ovladače Ruby pro SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/).

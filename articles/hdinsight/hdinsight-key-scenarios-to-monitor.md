@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 22b9a63ab595b4d0b003d999bcd0f131e50aeabf
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383931"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742469"
 ---
 # <a name="monitor-cluster-performance"></a>Monitorování výkonu clusteru
 
@@ -77,11 +77,11 @@ Problémové místo výkonu clusteru může dojít, úrovni úložiště. Tento 
 
 Pokud používáte Azure Storage, informace o sledování problémů souvisejících se úložiště, včetně omezení, najdete v článku [monitorování, Diagnostika a řešení problémů s Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting).
 
-Pokud váš cluster záložního úložiště je Azure Data Lake Store (ADLS), vaše omezení je pravděpodobně z důvodu omezení šířky pásma. Omezení šířky pásma v tomto případě může být označen sledování chyb omezení v protokolech úloh. ADLS naleznete v části omezení pro příslušnou službu v těchto článcích:
+Pokud váš cluster záložního úložiště je Azure Data Lake Storage (ADLS), vaše omezení je pravděpodobně z důvodu omezení šířky pásma. Omezení šířky pásma v tomto případě může být označen sledování chyb omezení v protokolech úloh. ADLS naleznete v části omezení pro příslušnou službu v těchto článcích:
 
-* [Průvodce laděním výkonu pro Apache Hive v HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-hive.md)
-* [Průvodce laděním výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
-* [Průvodce laděním výkonu pro Apache Storm v HDInsight a Azure Data Lake Store](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+* [Průvodce laděním výkonu pro Apache Hive v HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-hive.md)
+* [Průvodce laděním výkonu pro MapReduce na HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
+* [Průvodce laděním výkonu pro Apache Storm v HDInsight a Azure Data Lake Storage](../data-lake-store/data-lake-store-performance-tuning-storm.md)
 
 ## <a name="next-steps"></a>Další postup
 

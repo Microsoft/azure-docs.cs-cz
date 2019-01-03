@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/19/2018
+ms.date: 12/28/2018
 ms.author: juliako
-ms.openlocfilehash: 266227b87381fde74efd0fa05c6ea10a0eace985
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724959"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969331"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Stream živé pomocí Media Services v3 pomocí rozhraní API
 
@@ -107,7 +107,7 @@ Při vytváření události můžete nastavit automatické spouštění.
 
 ### <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
 
-Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
+Po vytvoření Livestream můžete získat ingestované adresy URL, které poskytnete kodér služby live Encoding. Kodér tyto adresy URL používá ke vkládání živého proudu.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 

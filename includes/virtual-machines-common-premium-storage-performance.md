@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51678172"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53553415"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Návrh pro vysoký výkon
 
@@ -35,7 +35,7 @@ Nabízíme tyto pokyny konkrétně pro Premium Storage, protože úlohy běžíc
 > V některých případech možný problém výkonu disků je ve skutečnosti sítě kritickým bodem. V takových situacích doporučujeme optimalizovat vaše [výkon sítě](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
 > Pokud váš virtuální počítač podporuje akcelerované síťové služby, by měl se ujistěte, zda že je povoleno. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačů na obou [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) a [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Než začnete, pokud jste ještě na Premium Storage, nejdřív přečíst [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [Azure Storage škálovatelnost a cíle výkonnosti](../articles/storage/common/storage-scalability-targets.md)článků.
+Než začnete, pokud jste ještě na Premium Storage, nejdřív přečíst [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [Azure Storage škálovatelnost a cíle výkonnosti](../articles/storage/common/storage-scalability-targets.md) článků.
 
 ## <a name="application-performance-indicators"></a>Ukazatele výkonu aplikace
 
@@ -66,6 +66,14 @@ Proto je důležité určit optimální hodnoty vstupně-výstupních operací a
 Latence je dlouho trvá, aplikace pro příjem jednoho požadavku, odeslání na discích úložiště a odeslat odpověď do klienta. To je důležité míra výkon vaší aplikace kromě IOPS a propustnost. Latence disk úložiště úrovně premium je čas potřebný k načtení informací pro požadavek a komunikaci zpět do aplikace. Premium Storage poskytuje konsistentní nízkou latencí. Pokud povolíte jen pro čtení hostitele ukládání do mezipaměti na disky premium storage, získáte mnohem nižší latence čtení. Pojednává o používání mezipaměti disku podrobněji v pozdější části na *optimalizace výkonu aplikace*.
 
 Pokud chcete optimalizovat vaše aplikace, abyste získali lepší vstupně-výstupních operací a vyšší propustnost, bude mít vliv na latenci vaší aplikace. Po ladění výkonu aplikace, vždy vyhodnoceny latence aplikace, aby se zabránilo neočekávaným vysokou latencí chování.
+
+Následující operace roviny řízení na Managed Disks může zahrnovat přesun Disk z jednoho umístění úložiště do druhého. To je orchestrované přes pozadí kopii dat, což může trvat několik hodin, obvykle méně než 24 hodin v závislosti na množství dat na discích. Během této doby může aplikace docházet vyšší než obvykle latence čtení a některé čtení můžete získat přesměrováno do původního umístění, může trvat déle. Během tohoto období není žádný vliv na latence zápisu.  
+
+1.  [Aktualizovat typ úložiště](../articles/virtual-machines/windows/convert-disk-storage.md)
+2.  [Odpojit a připojit disk z jednoho virtuálního počítače do jiného](../articles/virtual-machines/windows/attach-disk-ps.md)
+3.  [Vytvoření spravovaného disku z virtuálního pevného disku](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
+4.  [Vytvoření spravovaného disku ze snímku](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
+5.  [Převod nespravovaných disků na Managed Disks](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
 
 ## <a name="gather-application-performance-requirements"></a>Shromáždění požadavků na výkon aplikace
 

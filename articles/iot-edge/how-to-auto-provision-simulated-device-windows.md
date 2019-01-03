@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a251eb3915ee3043ab4b69e0cd4cef8fa2170486
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1ad8435626b35859968bdf93589f22dc81e74e02
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101598"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557695"
 ---
 # <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows
 
@@ -61,14 +61,13 @@ Po vytvoření jednotlivé registrace, uložit hodnotu **ID registrace**. Tuto h
 
 Po dokončení předchozí části, měli byste vidět nové zařízení uvedené jako zařízení IoT Edge ve službě IoT Hub. Teď budete muset nainstalovat modul runtime IoT Edge na zařízení. 
 
-Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních. Na zařízeních s Windows můžete buď používat kontejnery Windows nebo kontejnery Linuxu. Zvolte typ kontejnerů, které chcete použít a postupujte podle pokynů. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování. 
+Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Jeho součástí spouštění v kontejnerech a můžete nasadit další kontejnery do zařízení tak, aby kód můžete spustit na hraničních zařízeních.  
 
-Postupujte podle pokynů a nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulované čipu TPM v předchozí části. 
+Postupujte podle pokynů a nainstalujte modul runtime IoT Edge na zařízení, na kterém běží simulované čipu TPM v předchozí části. Ujistěte se, že konfigurace modulu runtime IoT Edge není ruční, automatické zřizování.
 
-Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před zahájením těchto článků. 
+Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrace** před instalací na vašem zařízení IoT Edge. 
 
-* [Kontejnery Windows](how-to-install-iot-edge-windows-with-windows.md)
-* [Kontejnery Linuxu](how-to-install-iot-edge-windows-with-linux.md)
+[Instalace a automaticky zřizovat IoT Edge](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
