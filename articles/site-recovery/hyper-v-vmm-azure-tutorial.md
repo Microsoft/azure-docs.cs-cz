@@ -1,20 +1,7 @@
 ---
-title: Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Zjistěte, jak nastavit zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech System Center VMM do Azure pomocí služby Azure Site Recovery.
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: c4b5a200780761decfdd98289f7e7332244e5645
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
-ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846419"
----
+Název: Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure pomocí Azure Site Recovery | Microsoft Docs description: Zjistěte, jak nastavit zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech System Center VMM do Azure pomocí služby Azure Site Recovery.
+Services: site recovery Autor: rayne wiselman ms.service: site recovery ms.topic: koncepční ms.date: 27/12/2018 ms.author: raynew ms.custom: MVC
+
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 100c9266718d618b8b00a3169c3d88ac7d501791
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409917"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743353"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Omezení přístupu k datům v HDInsight pomocí Azure Storage sdílených přístupových podpisů
 
@@ -180,10 +180,10 @@ Příklad vytvoření clusteru služby HDInsight, který používá sdíleného 
    > [!IMPORTANT]  
    > Po zobrazení výzvy pro HTTP/s nebo SSH uživatelské jméno a heslo, musí se zadat heslo, které splňují následující kritéria:
    >
-   > * Musí být minimálně 10 znaků
-   > * Musí obsahovat alespoň jednu číslici
-   > * Musí obsahovat alespoň jeden jiný než alfanumerický znak
-   > * Musí obsahovat aspoň jedno velké nebo malé písmeno
+   > * Musí být minimálně 10 znaků.
+   > * Musí obsahovat alespoň jednu číslici.
+   > * Musí obsahovat alespoň jeden jiný než alfanumerický znak.
+   > * Musí obsahovat aspoň jedno velké nebo malé písmeno.
 
 To chvíli trvat, než tento skript k dokončení, obvykle přibližně 15 minut. Po dokončení skriptu bez chyb, cluster se vytvořil.
 
@@ -290,10 +290,10 @@ Po připojení ke clusteru, postupujte následovně Chcete-li ověřit, že je m
 
 **Rozlišení**: Použijte heslo, které splňuje následující kritéria:
 
-* Musí být minimálně 10 znaků
-* Musí obsahovat alespoň jednu číslici
-* Musí obsahovat alespoň jeden jiný než alfanumerický znak
-* Musí obsahovat aspoň jedno velké nebo malé písmeno
+* Musí být minimálně 10 znaků.
+* Musí obsahovat alespoň jednu číslici.
+* Musí obsahovat alespoň jeden jiný než alfanumerický znak.
+* Musí obsahovat aspoň jedno velké nebo malé písmeno.
 
 ## <a name="next-steps"></a>Další postup
 

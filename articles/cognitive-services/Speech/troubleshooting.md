@@ -10,12 +10,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 80e39e845ab631ad5cc3ae8af9e2e42f09b521bf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 2da6795e938f1a0c0ed0495fb169007126501eea
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342186"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753656"
 ---
 # <a name="troubleshooting-bing-speech"></a>Řešení potíží pro zpracování řeči Bingu
 
@@ -52,7 +52,7 @@ Můžete spustit následující příkaz k ověření. Poznámka: Chcete-li nahr
 > [!NOTE]
 > Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného.
 
-# <a name="powershelltabpowershell"></a>[Powershell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -88,7 +88,7 @@ Tento krok je nutný pouze, pokud používáte autorizační token pro ověřen�
 > [!NOTE]
 > Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku a `YOUR_ACCESS_TOKEN` autorizačním tokenem vrácené v předchozím kroku.
 
-# <a name="powershelltabpowershell"></a>[Powershell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```Powershell
 

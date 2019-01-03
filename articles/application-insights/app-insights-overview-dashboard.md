@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cd8bcc9345ec73f95e8e742446522ec41c1f0f65
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5d635ce63170cf9ec93f3996d608cfd5836de3b0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956938"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726319"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights přehled řídicího panelu
 
@@ -37,7 +37,7 @@ Výběr časového rozsahu zjednodušenou topologickou jednoduché rozhraní jed
 
 Celkový výkon se výrazně zvýšil. Máte přístup jedním kliknutím k oblíbených funkcí, jako je **hledání** a **Analytics**. Každý výchozí dynamicky aktualizuje dlaždice klíčových ukazatelů výkonu poskytuje podrobné informace o odpovídající funkce Application Insights. Další informace o selhání vyberte požadavky **selhání** pod **prošetření** hlavičky:
 
-![Počet selhání](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
+![Selhání](./media/app-insights-overview-dashboard/app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Řídicí panel aplikací
 
@@ -65,4 +65,4 @@ Chcete-li přejít zpět na stačí vybrat přehled prostředí:
 - [Trychtýře](usage-funnels.md)
 - [Uchování](app-insights-usage-retention.md)
 - [Toky uživatele](app-insights-usage-flows.md)
-- [Řídicí panely](app-insights-dashboards.md)
+- [Řídicí panely](../azure-monitor/app/app-insights-dashboards.md)

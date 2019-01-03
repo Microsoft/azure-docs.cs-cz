@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496454"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968804"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
@@ -22,8 +22,8 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure:** Než začnete tento kurz, musíte mít předplatné Azure. Další informace najdete v článku [Získání bezplatné zkušební verze Microsoft Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Předplatné Azure**: Než začnete tento kurz, musíte mít předplatné Azure. Další informace najdete v článku [Získání bezplatné zkušební verze Microsoft Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Klient Secure Shell (SSH)**: Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -31,28 +31,28 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Klikněte na **Vytvořit prostředek** > **Data a analýzy** > **HDInsight**.
+2. Přejděte do **+ vytvořit prostředek** > **Analytics** > **HDInsight**.
 
 3. V části **Základy** zadejte následující informace:
 
-    * **Název clusteru:** Název clusteru HDInsight.
-    * **Předplatné:** Vyberte předplatné, které chcete použít.
-    * **Uživatelské jméno přihlášení clusteru** a **Heslo přihlášení clusteru**: Přihlašovací údaje pro přístup ke clusteru pomocí protokolu HTTPS. Pomocí těchto přihlašovacích údajů pro přístup ke službám, jako jsou webové uživatelské rozhraní Apache Ambari nebo REST API.
-    * **Uživatelské jméno Secure Shell (SSH:)** Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
-    * **Skupina prostředků:** Skupina prostředků, ve které se cluster vytváří.
-    * **Umístění:** Oblast Azure, ve které se cluster vytváří.
+    * **Název clusteru**: Název clusteru HDInsight.
+    * **Předplatné**: Vyberte předplatné, které chcete použít.
+    * **Uživatelské jméno přihlášení clusteru** a **přihlašovací heslo clusteru**: Přihlašovací údaje pro přístup ke clusteru přes protokol HTTPS. Pomocí těchto přihlašovacích údajů pro přístup ke službám, jako jsou webové uživatelské rozhraní Apache Ambari nebo REST API.
+    * **Uživatelské jméno Secure Shell (SSH)**: Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
+    * **Skupina prostředků**: Skupina prostředků, ve které se cluster vytváří.
+    * **Umístění**: Oblast Azure, ve které se cluster vytváří.
 
         ![Základní informace o clusteru](./media/r-server-get-started/clustername.png)
 
 4. Vyberte **Typ clusteru** a pak v části **Konfigurace clusteru** zadejte následující hodnoty:
 
-    * **Typ clusteru**: ML Services
+    * **Typ clusteru**: Služby ML
 
-    * **Operační systém:** Linux
+    * **Operační systém**: Linux
 
-    * **Verze**: ML Server 9.3 (HDI 3.6). Zpráva k vydání verze pro ML Server 9.3 je dostupná na webu [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
+    * **Verze**: Server ML 9.3 (HDI 3.6). Zpráva k vydání verze pro ML Server 9.3 je dostupná na webu [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
 
-    * **Komunitní verze R Studia pro ML Server:** Toto integrované vývojové prostředí (IDE) v prohlížeči se ve výchozím nastavení nainstaluje na hraniční uzel. Pokud si jeho instalaci nepřejete, zrušte zaškrtnutí tohoto políčka. Pokud zvolíte jeho instalaci, adresu URL pro přístup k přihlašovací stránce RStudio Serveru najdete po vytvoření clusteru v okně aplikace portálu pro váš cluster.
+    * **Komunitní verze Rstudia pro ML Server**: Toto integrované vývojové prostředí založené na prohlížeči se instaluje standardně na hraničním uzlu. Pokud si jeho instalaci nepřejete, zrušte zaškrtnutí tohoto políčka. Pokud zvolíte jeho instalaci, adresu URL pro přístup k přihlašovací stránce RStudio Serveru najdete po vytvoření clusteru v okně aplikace portálu pro váš cluster.
 
         ![Základní informace o clusteru](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -66,7 +66,7 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost 
 
     ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/clustersummary.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Vytvoření clusteru trvá přibližně 20 minut.
 
 <a name="connect-to-rstudio-server"></a>
@@ -78,15 +78,16 @@ Pokud jste zvolili instalaci RStudio Serveru Community Edition jako součást sv
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **Možnost 2** – Otevřete cluster služby ML Services na portálu Azure Portal kliknutím na **Řídicí panely služby ML Services** v části **Rychlé odkazy**.
-
-     ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/dashboard-quick-links.png)
-
-    V části **Řídicí panely R Serveru** klikněte na **R Studio Server**.
+* **Možnost 2** -pomocí webu Azure portal.
+Z portálu:
+  1. Vyberte **všechny služby** v levé nabídce.
+  2. V části **ANALYTICS**vyberte **clustery HDInsight**.
+  3. Vyberte název vašeho clusteru z **clustery HDInsight** stránky.
+  4. Z **řídicích panelů služby ML**vyberte **R Studio server**. 
 
     ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Bez ohledu na použitou metodu bude při prvním přihlášení potřeba dvojí ověření.  Po zobrazení první výzvy k ověření zadejte *ID uživatele* a *heslo* správce clusteru. Po zobrazení druhé výzvy k ověření zadejte *ID uživatele* a *heslo* SSH. Při dalším přihlašování už budete potřebovat jenom přihlašovací údaje SSH.
 
 Po připojení by vaše obrazovka měla vypadat podobně jako na následujícím snímku obrazovky:
@@ -221,11 +222,11 @@ Vytváření clusteru služby ML Services pro HDInsight můžete automatizovat p
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](../hdinsight-administer-use-portal-linux.md#create-clusters).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku jste zjistili, jak vytvořit nový cluster služby ML Services v Azure HDInsight, a seznámili jste se se základy používání konzoly R z relace SSH. Následující články popisují další způsoby správy a práce se službou ML Services v HDInsight:
+V tomto článku jste zjistili, jak vytvořit nový cluster služby ML v Azure HDInsight a rozumět základům používání konzoly R z relace SSH. Následující články popisují další způsoby správy a práce se službou ML Services v HDInsight:
 
 * [Odesílání úloh z Nástrojů R pro Visual Studio](r-server-submit-jobs-r-tools-vs.md)
 * [Správa clusteru služby ML Services v HDInsight](r-server-hdinsight-manage.md)

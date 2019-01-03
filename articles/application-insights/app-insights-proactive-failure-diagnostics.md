@@ -10,20 +10,20 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/09/2017
+ms.date: 12/18/2018
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 0895d31475de5d78c82f3bfedc0765e5a9549339
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b9d51cb4462f5f2fdf6126dfd7ecbcb6b255adc1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877594"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970725"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
 
-Tato funkce funguje pro jazyk Java a ASP.NET webových aplikací hostovaných v cloudu nebo na vašich vlastních serverech. Funguje i pro každou aplikaci, která generuje telemetrická data požadavku nebo závislost – například pokud máte role pracovního procesu, která volá [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
+Tato funkce funguje pro jazyk Java a ASP.NET webových aplikací hostovaných v cloudu nebo na vašich vlastních serverech. Funguje i pro každou aplikaci, která generuje telemetrická data požadavku nebo závislost – například pokud máte role pracovního procesu, která volá [TrackRequest()](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](../azure-monitor/app/api-custom-events-metrics.md#trackdependency).
 
 Po nastavení [Application Insights pro váš projekt](app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrických dat, inteligentní detekci anomálií selhání trvá další normálního chování aplikace, než bude 24 hodin Přepnout a odesílání oznámení.
 
@@ -45,10 +45,10 @@ Všimněte si, že musíte:
 * Odkazy přímo na relevantní hledání na telemetrická data ve službě Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Výhody inteligentního zjišťování
-Běžné [upozornění na metriku](app-insights-alerts.md) říct, pravděpodobně došlo k potížím. Ale inteligentního zjišťování spustí diagnostické práce za vás provádí spoustu analýzy, které by jinak museli dělat sami. Získáte výsledky elegantně zabaleny, pomáhá zajistit, abyste se rychle dostanete se k problému.
+Běžné [upozornění na metriku](../azure-monitor/app/alerts.md) říct, pravděpodobně došlo k potížím. Ale inteligentního zjišťování spustí diagnostické práce za vás provádí spoustu analýzy, které by jinak museli dělat sami. Získáte výsledky elegantně zabaleny, pomáhá zajistit, abyste se rychle dostanete se k problému.
 
 ## <a name="how-it-works"></a>Jak to funguje
-Inteligentní zjišťování monitoruje telemetrická data přijatá z vaší aplikace, zejména chybovost. Toto pravidlo se počítá počet požadavků, pro kterou `Successful request` vlastnost má hodnotu false a počet závislosti volání pro kterou `Successful call` vlastnost má hodnotu false. Pro žádosti, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste napsali vlastní kód pro [filtr](app-insights-api-filtering-sampling.md#filtering) nebo generovat vlastní [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) volání). 
+Inteligentní zjišťování monitoruje telemetrická data přijatá z vaší aplikace, zejména chybovost. Toto pravidlo se počítá počet požadavků, pro kterou `Successful request` vlastnost má hodnotu false a počet závislosti volání pro kterou `Successful call` vlastnost má hodnotu false. Pro žádosti, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste napsali vlastní kód pro [filtr](../azure-monitor/app/api-filtering-sampling.md#filtering) nebo generovat vlastní [TrackRequest](../azure-monitor/app/api-custom-events-metrics.md#trackrequest) volání). 
 
 Výkon vaší aplikace je typický vzor chování. Některé požadavky nebo volání závislostí budou náchylnější k selhání než jiné; a celková míra selhání můžou směřovat stoupajícím zatížením. Inteligentní zjišťování využívá strojové učení k vyhledání těchto anomálie.
 
@@ -60,7 +60,15 @@ Pokud vaše služba se neinstrumentují službou těchto volání telemetrie, an
 
 Výsledný analýzy vám zaslán jako upozornění, pokud jste ji nakonfigurovali nikoli k.
 
-Podobně jako [výstrahy, je nastavit ručně](app-insights-alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat jej v okně oznámení vašemu prostředku Application Insights. Ale na rozdíl od ostatních výstrah, není nutné vytvořit nebo nakonfigurovat inteligentní zjišťování. Pokud chcete, můžete jej zakázat nebo změnit jeho cíl e-mailové adresy.
+Podobně jako [výstrahy, je nastavit ručně](../azure-monitor/app/alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat jej v okně oznámení vašemu prostředku Application Insights. Ale na rozdíl od ostatních výstrah, není nutné vytvořit nebo nakonfigurovat inteligentní zjišťování. Pokud chcete, můžete jej zakázat nebo změnit jeho cíl e-mailové adresy.
+
+### <a name="alert-logic-details"></a>Podrobnosti o logika upozornění
+
+Výstrahy jsou aktivovány naše speciální algoritmu strojového učení, takže jsme nelze sdílet podrobnosti implementace přesné. To ale nutné dodat rozumí tomu, že někdy potřebujete další informace o tom, jak funguje logiku. K základním faktorům, které je vyhodnocován pro určení, pokud by měl být výstraha jsou: 
+
+* Analýza selhání procento požadavky a závislosti v postupné časovým intervalem 20 minut.
+* Porovnání selhání procento posledních 20 minut rychlost v posledních 40 minut a posledních sedmi dnů a hledáte významné odchylky, které překračují X a časy této směrodatnou odchylku.
+* Pomocí adaptivního mezní procento minimální selhání, které se liší na základě aplikace objemu požadavků nebo závislostí.
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 Můžete zakázat inteligentní zjišťování, změnit příjemců e-mailu, vytvořte webhook nebo vyjádřit výslovný souhlas s podrobnější oznámení.
@@ -89,9 +97,9 @@ V mnoha případech bude možné k diagnostice problému rychle z název žádos
 
 Existují některé další příčiny. Například míra selhání závislostí v tomto příkladu je stejný jako frekvence výjimek (89.3 %). To naznačuje, že výjimka nastane přímo z chyb závislostí – díky tomu získáte jasno, kde začít hledat ve vašem kódu.
 
-Dále prozkoumat odkazy v každé části přejdete přímo do [stránka hledání](app-insights-diagnostic-search.md) vyfiltrovaný tak, aby příslušné požadavky, výjimky, závislosti nebo trasování. Nebo můžete otevřít [webu Azure portal](https://portal.azure.com), přejděte do prostředku Application Insights pro vaši aplikaci a otevře se okno selhání.
+Dále prozkoumat odkazy v každé části přejdete přímo do [stránka hledání](../azure-monitor/app/diagnostic-search.md) vyfiltrovaný tak, aby příslušné požadavky, výjimky, závislosti nebo trasování. Nebo můžete otevřít [webu Azure portal](https://portal.azure.com), přejděte do prostředku Application Insights pro vaši aplikaci a otevře se okno selhání.
 
-V tomto příkladu kliknutím na odkaz 'Zobrazit podrobnosti o neúspěšných závislostí' Otevře se okno hledání Application Insights. Zobrazí příkaz SQL, který obsahuje příklad hlavní příčina: hodnoty Null byly k dispozici na povinná a neprošel ověřením při ukládání operace.
+V tomto příkladu kliknutím na odkaz 'Zobrazit podrobnosti o neúspěšných závislostí' Otevře se okno hledání Application Insights. Zobrazí příkaz SQL, který obsahuje příklad z hlavních příčin: Hodnoty Null byly k dispozici na povinná a neprošel ověřením při ukládání operace.
 
 ![Diagnostické vyhledávání](./media/app-insights-proactive-failure-diagnostics/051.png)
 
@@ -105,7 +113,7 @@ Klikněte na tlačítko **inteligentního zjišťování** zobrazíte nejnověj�
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
 Inteligentní detekce anomálie selhání doplňuje dalších podobných ale různé prvky služby Application Insights.
 
-* [Upozornění na metriku](app-insights-alerts.md) vámi nastavené a můžete monitorovat širokou řadu metrik, jako jsou vytížení procesoru, požadavků, doby načítání stránek a tak dále. Můžete využít k by vás varovala, například pokud budete muset přidat další prostředky. Oproti tomu inteligentní detekci anomálií selhání pokrývá malé řadu důležité metriky (aktuálně jenom neúspěšné frekvence požadavků), navržená tak, aby byli informováni vždy, můžete v téměř reálném čase způsobem, jakmile se vaše webová aplikace neprošla požadavku zvyšuje rychlost výrazně ve srovnání s webovou aplikaci normální chování.
+* [Upozornění na metriku](../azure-monitor/app/alerts.md) vámi nastavené a můžete monitorovat širokou řadu metrik, jako jsou vytížení procesoru, požadavků, doby načítání stránek a tak dále. Můžete využít k by vás varovala, například pokud budete muset přidat další prostředky. Oproti tomu inteligentní detekci anomálií selhání pokrývá malé řadu důležité metriky (aktuálně jenom neúspěšné frekvence požadavků), navržená tak, aby byli informováni vždy, můžete v téměř reálném čase způsobem, jakmile se vaše webová aplikace neprošla požadavku zvyšuje rychlost výrazně ve srovnání s webovou aplikaci normální chování.
 
     Inteligentní zjišťování automaticky přizpůsobí prahové hodnoty v odpovědi na obvyklé podmínky.
 
@@ -123,7 +131,7 @@ Inteligentní detekce anomálie selhání doplňuje dalších podobných ale rů
 
 *Ano guys podíváte na moje data?*
 
-* Ne. Tato služba je plně automatická. Pouze dostanete oznámení. Vaše data jsou [privátní](app-insights-data-retention-privacy.md).
+* Ne. Tato služba je plně automatická. Pouze dostanete oznámení. Vaše data jsou [privátní](../azure-monitor/app/data-retention-privacy.md).
 
 *Budu muset předplatit Tato výstraha?*
 
@@ -145,10 +153,10 @@ Inteligentní detekce anomálie selhání doplňuje dalších podobných ale rů
 Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikace:
 
 * [Průzkumník metrik](app-insights-metrics-explorer.md)
-* [Průzkumník služby Search](app-insights-diagnostic-search.md)
+* [Průzkumník služby Search](../azure-monitor/app/diagnostic-search.md)
 * [Analýza – výkonný dotazovací jazyk](../azure-monitor/log-query/get-started-portal.md)
 
 Inteligentní detekce je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 
-* [Ručně konfigurované metriky výstrahy](app-insights-alerts.md)
-* [Testy dostupnosti webu](app-insights-monitor-web-app-availability.md)
+* [Ručně konfigurované metriky výstrahy](../azure-monitor/app/alerts.md)
+* [Testy dostupnosti webu](../azure-monitor/app/monitor-web-app-availability.md)

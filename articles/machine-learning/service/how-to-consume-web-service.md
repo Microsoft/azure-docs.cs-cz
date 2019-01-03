@@ -1,7 +1,7 @@
 ---
 title: Vytvoření klienta pro nasazenou webovou službu využití
 titleSuffix: Azure Machine Learning service
-description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webové služby, který zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API pomocí programovacím jazyce podle vašeho výběru.
+description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webová služba zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API s využitím programovacím jazyce podle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,31 +11,31 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: fc1f472cec1b1da26456924885d7905ab2458e14
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: efa24fcb624c7613ce16028d7ba06af4d4d2153c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251126"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753383"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
 Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu, zjistěte, jak vytvořit klientů pro webovou službu pomocí C#, Go, Java nebo Python.
 
-Webová služba se vytvoří při nasazení image do Azure Container Instance, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytváření imagí z registrované modely a soubory vyhodnocení. Identifikátor URI použitý pro přístup k webové službě se dá načíst pomocí [SDK služby Azure Machine Learning](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
+Můžete vytvořit webovou službu, při nasazení image do Azure Container Instances, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytvoření Image z registrované modely a soubory vyhodnocení. Získat identifikátor URI použitý pro přístup k webové službě s použitím [SDK služby Azure Machine Learning](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
 
-Obecný pracovní postup při vytváření klienta, který používá webové služby ML je:
+Obecný pracovní postup pro vytvoření klienta, který se používá webovou službu machine learning je:
 
-1. Použití sady SDK k získání informací o připojení
-1. Určit typ používá model dat požadavku
-1. Vytvoření aplikace, která volá webové služby
+1. Použití sady SDK k získání informací o připojení.
+1. Určete typ dat požadavku využívané modelem.
+1. Vytvoření aplikace, která volá webové služby.
 
 ## <a name="connection-information"></a>Informace o připojení
 
 > [!NOTE]
-> Sada SDK Azure Machine Learning slouží k získání informací o webové služby. Toto je Python SDK. Když se používá k načtení informací o webových službách, můžou používat jakýkoli jazyk se vytvořit klienta pro službu.
+> Pomocí sady SDK Azure Machine Learning můžete získat informace o webových službách. Toto je Python SDK. K vytvoření klienta pro službu můžete používat jakýkoli jazyk.
 
-Informace o připojení webové služby můžete načíst pomocí sady SDK služby Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třída poskytuje informace potřebné k vytvoření klienta. Následující `Webservice` vlastnosti, které jsou užitečné při vytváření klientské aplikace:
+[Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třída poskytuje informace, které potřebujete k vytvoření klienta. Následující `Webservice` vlastnosti jsou užitečné při vytváření klientské aplikace:
 
 * `auth_enabled` – Pokud je povoleno ověřování, `True`; v opačném případě `False`.
 * `scoring_uri` Adresa – rozhraní REST API.
@@ -53,14 +53,14 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     print(service.scoring_uri)
     ```
 
-* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, dají se filtrovat v, najdete v článku [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenční dokumentaci.
+* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, co je filtrovat na, najdete v článku [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenční dokumentaci.
 
     ```python
     services = Webservice.list(ws)
     print(services[0].scoring_uri)
     ```
 
-* Pokud znáte název v nasazované službě, můžete vytvořit novou instanci třídy `Webservice` a zadejte název pracovního prostoru a služby jako parametry. Nový objekt obsahuje informace o nasazené služby.
+* Pokud znáte název v nasazované službě, můžete vytvořit novou instanci třídy `Webservice`a zadejte název pracovního prostoru a služby jako parametry. Nový objekt obsahuje informace o nasazené služby.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -69,12 +69,12 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
 
 ### <a name="authentication-key"></a>Ověřovací klíč
 
-Ověřovací klíče se vytvoří automaticky při nasazení je povolené ověřování.
+Když povolíte ověřování pro nasazení, automaticky se vytvoří ověřovací klíče.
 
-* Ověřování je __ve výchozím nastavení povolené__ při nasazování do __Azure Kubernetes Service__.
-* Ověřování je __ve výchozím nastavení zakázané__ při nasazování do __Azure container Instances__.
+* Ve výchozím nastavení je povoleno ověřování při nasazování do služby Azure Kubernetes Service.
+* Ve výchozím nastavení je zakázáno ověřování při nasazování do služby Azure Container Instances.
 
-Pokud chcete nastavit ověřování, použijte `auth_enabled` parametr, když se vytváří nebo aktualizuje nasazení.
+Pokud chcete nastavit ověřování, použijte `auth_enabled` parametr při vytváření nebo aktualizaci nasazení.
 
 Pokud je ověřování zapnuté, můžete použít `get_keys` metody k získání primární a sekundární ověřovací klíč:
 
@@ -155,9 +155,9 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> Věci v `azureml.contrib` obor názvů se často mění, kdy pracujeme na vylepšení služby. Proto nic v tomto oboru názvů by měl považují za ve verzi preview a nejsou plně podporovány společností Microsoft.
+> `azureml.contrib` Oboru názvů změní často, protože pracujeme na vylepšení služby. V důsledku toho cokoli, co je v tomto oboru názvů by měl být považovány za verzi preview a nejsou plně podporovány společností Microsoft.
 >
-> Pokud je potřeba otestovat na místním vývojovém prostředí, součásti můžete nainstalovat v oboru názvů contrib pomocí následujícího příkazu:
+> Pokud je potřeba otestovat na místním vývojovém prostředí, můžete nainstalovat komponenty `contrib` oboru názvů pomocí následujícího příkazu:
 > 
 > ```shell
 > pip install azureml-contrib-services

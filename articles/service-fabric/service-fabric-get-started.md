@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 968c9f2455269cf41a701de685e4f47255b46847
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386416"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792845"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -50,6 +50,9 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 ## <a name="install-the-sdk-and-tools"></a>Instalace sady SDK a nástrojů
 Instalačního programu webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud se zobrazí chyby za běhu pomocí instalace webové platformy, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Zpráva k vydání verze můžete najít v oznámeních na různé verze na [blog týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
 
+> [!NOTE]
+> Místní upgrady clusteru Service Fabric vývoj nejsou podporované.
+
 ### <a name="to-use-visual-studio-2017"></a>Použití sady Visual Studio 2017
 Nástroje Service Fabric Tools jsou součástí sady funkcí Vývoj pro Azure v sadě Visual Studio 2017. Povolte tuto úlohu jako součást instalace sady Visual Studio.
 Kromě toho budete muset pomocí Instalace webové platformy nainstalovat sadu Microsoft Azure Service Fabric SDK a modul runtime.
@@ -66,8 +69,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
 
 Aktuální verze jsou:
-* Service Fabric SDK a nástroje 3.3.617
-* Modul runtime Service Fabric 6.4.617
+* Service Fabric SDK a nástroje 3.3.622
+* Modul runtime Service Fabric 6.4.622
 * Service Fabric Tools pro Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obsahuje Service Fabric Tools for Visual Studio 2.4.11024.1 
 

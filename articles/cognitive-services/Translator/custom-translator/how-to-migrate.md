@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 6572a9b72554691441cb258a87a5db4ba7845087
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a02be1ba29ad43b90c99a5d1e275b96b3b4023d6
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077116"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718720"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrace na Translator vlastní pracovní prostor centra a projekty
 
@@ -85,9 +85,9 @@ K migraci pracovního prostoru:
 
 4.  Na další stránce vyberte jednu z těchto dvou možností:
 
-    a.  Pouze nasazení školení: Výběrem této možnosti bude migrovat pouze nasazené systémy a související dokumenty.
+    a.  Pouze nasazené školení: Výběrem této možnosti bude migrovat pouze nasazené systémy a související dokumenty.
 
-    b.  Všechny úspěšné školení: Tato volba provede migraci úspěšné školení a související dokumenty.
+    b.  Všechny úspěšné školení: Výběrem této možnosti bude migrace úspěšná školení a související dokumenty.
 
     c.  Zadejte vlastní Translator cíl ID pracovního prostoru.
 
@@ -111,7 +111,7 @@ Chcete-li zobrazit historii migrace, postupujte podle těchto kroků:
 
 Migrace historie stránce se zobrazí následující informace jako souhrn pro každou migraci, o kterou žádáte.
 
-1.  Migrované podle: Jméno a e-mailu uživatele odeslání této žádosti o migraci
+1.  Při migraci: Jméno a e-mailu uživatele odeslání této žádosti o migraci
 
 2.  Migrovat na: Datum a časové razítko migrace
 
@@ -130,7 +130,7 @@ Pokud chcete podrobnější sestavu migrace o projekty, školení a dokumenty, m
 * Jsou povolené jenom po migraci na projekt.  Pokud je nutné opakovat migraci na projekt, kontaktujte nás prosím.
 * V současné době vlastní Translator podporuje 36 jazyků převod z a do angličtiny a usilovně pracujeme na přidání dalších jazyků.  Centrum nevyžaduje základní modely a proto podporuje několik jazyků tisíců.  Dvojici nepodporovaný jazyk, můžete migrovat, ale My pouze provést migraci dokumenty a projektu definice.  Společnost Microsoft nebude moci natrénovat nový model.  Kromě toho tyto dokumenty a projektů se zobrazí jako neaktivní indikaci, že nelze použít v tuto chvíli. Pokud je přidána podpora pro tyto projekty a/nebo dokumenty, budou aktivní a trainable.
 * Vlastní Translator v současné době nepodporuje jeden jazyk trénovací data.  Podobně jako páry nepodporovaný jazyk můžete migrovat jeden jazyk dokumenty, ale zobrazí jako neaktivní, dokud jeden jazyk data se podporuje.  
-* Vlastní Translator vyžaduje 10 tisíc paralelní věty k trénování.  Na menší sadu dat může trénování Microsoft Hub.  Školicí migrována, který nesplňuje tento požadavek, bude Trénink.
+* Vlastní Translator vyžaduje 10 tisíc paralelní věty k trénování.  Na menší sadu dat může trénování Microsoft Hub. Školicí migrována, který nesplňuje tento požadavek, nebude Trénink.
 
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6ce51dc9bbcdc7b46593a4800c4fce07a42f3171
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9cb52aea56e9c1183af9ca76201ab65c62a58f22
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345957"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972167"
 ---
 # <a name="offer-settings-tab"></a>Karta nastavení nabídky
 
@@ -42,9 +42,6 @@ Tento identifikátor se vztahuje k vašemu účtu. Pokud jste se přihlásili po
 *Název*
 
 Tento řetězec představuje, co se zobrazí jako název nabídky na AppSource nebo Azure Marketplace. *Název* pole je omezen na 50 znaků.  Kontrolor možná muset upravit svým názvem umožňující připojení název nabídky s dobou trvání a typ nabídky.
-
->[!Note]
->Důležité: Zadejte pouze název aktuální služby. Nezahrnují doba trvání a typ služby.
 
 Následující příklad pomocí Edgewater Fullscope ukazuje, jak je sestavena název nabídky. Název nabídky se zobrazí jako:
 

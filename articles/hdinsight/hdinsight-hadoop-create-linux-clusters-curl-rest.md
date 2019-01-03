@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: b6ec48085d5dd2ea31543e208e8d32b954cb0bca
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872834"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789207"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Vytvořte clustery systému Apache Hadoop pomocí rozhraní Azure REST API
 
@@ -24,10 +24,10 @@ Zjistěte, jak vytvořit cluster HDInsight pomocí šablony Azure Resource Manag
 
 Rozhraní Azure REST API umožňuje provádět operace správy služeb hostovaných na platformě Azure, včetně vytvoření nové prostředky, například clustery HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!NOTE]
+> [!NOTE]  
 > Kroky v tomto dokumentu pomocí [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) nástroj ke komunikaci s rozhraním REST API Azure.
 
 ## <a name="create-a-template"></a>Vytvoření šablony
@@ -211,7 +211,7 @@ Následující dokument JSON je spojení šablonu a parametry souborů z [ https
 
 V tomto příkladu se používá v krocích v tomto dokumentu. V příkladu nahraďte *hodnoty* v **parametry** část s hodnotami pro váš cluster.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Šablona používá výchozí počet pracovních uzlů (4) pro HDInsight cluster. Pokud máte v plánu na více než 32 uzlů pracovního procesu, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti ram.
 >
 > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -222,7 +222,7 @@ Postupujte podle kroků popsaných v [Začínáme s Azure CLI](https://docs.micr
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-> [!NOTE]
+> [!NOTE]  
 > Tyto kroky jsou zkrácenou verzi *vytvořit instanční objekt s heslem* část [pomocí Azure CLI k vytvoření instančního objektu pro přístup k prostředkům](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dokumentu. Postup vytvoření instančního objektu, který se používá k ověření rozhraní Azure REST API.
 
 1. Z příkazového řádku použijte následující příkaz seznam vašich předplatných Azure.
@@ -241,7 +241,7 @@ Postupujte podle kroků popsaných v [Začínáme s Azure CLI](https://docs.micr
 
     Nahraďte hodnoty `--display-name`, `--homepage`, a `--identifier-uris` vlastními hodnotami. Zadejte heslo pro novou položku služby Active Directory.
 
-   > [!NOTE]
+   > [!NOTE]  
    > `--home-page` a `--identifier-uris` hodnoty nemusíte odkazují na vlastní webové stránky hostované na Internetu. Musí být jedinečné identifikátory URI.
 
    Hodnota vrácená z tohoto příkazu je __ID aplikace__ pro novou aplikaci. Uloží tuto hodnotu.
@@ -323,14 +323,14 @@ curl -X "PUT" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 -d "{set your body string to the template and parameters}"
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud šablona se uloží do souboru, můžete použít následující příkaz místo `-d "{ template and parameters}"`:
 >
 > `--data-binary "@/path/to/file.json"`
 
 Pokud tento požadavek je úspěšné, dostanete odpověď 200 řady a text odpovědi obsahuje dokument JSON obsahující informace o operaci nasazení.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nasazení se odeslal, ale nebyl dokončen. Může trvat několik minut, obvykle přibližně 15, pro se nasazení dokončí.
 
 ## <a name="check-the-status-of-a-deployment"></a>Zkontrolujte stav nasazení
@@ -347,7 +347,7 @@ Tento příkaz vrátí dokument JSON obsahující informace o operaci nasazení.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -357,7 +357,7 @@ Teď, když úspěšně vytvoříte HDInsight cluster, použijte následující 
 
 * [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
-* [Použití Apache Hadoop MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
 

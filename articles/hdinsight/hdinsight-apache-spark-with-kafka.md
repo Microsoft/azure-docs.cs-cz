@@ -10,24 +10,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0687ec94af60d3683d3f129eff2bad8fb97d786
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5f4b7994ad5061c64021f3625f42ac028cbee859
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165792"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653403"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Příklad (DStream) s Apache Kafka v HDInsight streamování Apache Sparku
 
 Další informace o použití [Apache Spark](https://spark.apache.org/) pro streamování dat do nebo z celkového počtu [Apache Kafka](https://kafka.apache.org/) v HDInsight pomocí [diskretizovanými streamy](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html). Tento příklad používá [Poznámkový blok Jupyter](https://jupyter.org/) , který běží na clusteru Spark.
 
-> [!NOTE]
+> [!NOTE]  
 > Pomocí kroků v tomto dokumentu se vytvoří skupina prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
 >
 > Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit, abyste se vyhnuli nadbytečným poplatkům.
 
-> [!IMPORTANT]
-> Tento příklad používá diskretizovanými streamy, která je starší technologie streamování Sparku. Příklad použití novější Spark streaming funkce, najdete v článku [strukturovaného streamování Sparku se systémem Kafka](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentu.
+> [!IMPORTANT]  
+> Tento příklad používá diskretizovanými streamy, která je starší technologie streamování Sparku. Příklad použití novější Spark streaming funkce, najdete v článku [strukturovaného streamování Sparku s využitím Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md) dokumentu.
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
@@ -35,7 +35,7 @@ Apache Kafka ve službě HDInsight neposkytuje přístup ke zprostředkovatelům
 
 ![Diagram clusterů Spark a Kafka ve virtuální síti Azure](./media/hdinsight-apache-spark-with-kafka/spark-kafka-vnet.png)
 
-> [!NOTE]
+> [!NOTE]  
 > I když Kafka samotného je omezený na komunikaci v rámci virtuální sítě, další služby v clusteru, jako jsou SSH a Ambari je možný přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ručně, je jednodušší použít šablonu Azure Resource Manageru. V následujícím návodu pro nasazení virtuální sítě Azure, Kafka a clustery se svým předplatným Azure Spark.
@@ -46,7 +46,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
     
     Šablona Azure Resource Manageru se nachází na adrese **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Pokud chcete zajistit dostupnost Kafka v HDInsightu, musí cluster obsahovat aspoň tři pracovní uzly. Tato šablona vytvoří cluster Kafka se třemi pracovními uzly.
 
     Tato šablona vytvoří cluster HDInsight 3.6 Kafka a Spark.
@@ -77,7 +77,7 @@ Po vytvoření prostředků se zobrazí stránce souhrnu.
 
 ![Souhrn pro virtuální síť a clustery skupiny prostředků](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Všimněte si, že jsou názvy clusterů HDInsight **spark BASENAME** a **kafka BASENAME**, kde BASENAME je název, který jste zadali v šabloně. Tyto názvy používat v dalších krocích při připojování ke clusteru.
 
 ## <a name="use-the-notebooks"></a>Použití poznámkových bloků

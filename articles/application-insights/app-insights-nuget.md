@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000780"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972069"
 ---
 # <a name="application-insights-nuget-packages"></a>Balíčky Insights NuGet aplikací
 
@@ -70,17 +70,17 @@ Níže je uvedený aktuální seznam stabilní verzi balíčků NuGet pro Applic
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Umožňuje shromažďovat data modulu runtime pro x64 aplikací | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Umožňuje shromažďovat data modulu runtime pro x86 aplikací. | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Tyto balíčky, které tvoří součást základní funkce monitorování runtime v [monitorování stavu](app-insights-monitor-performance-live-website-now.md). Není potřeba přímo stahovat tyto balíčky, použijte instalační program monitorování stavu. Pokud chcete se dozvědět více o tom, jak tyto balíčky pracovat pod pokličkou [blogový příspěvek](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) z jednoho z našich vývojářů je dobrý začátek.
+Tyto balíčky, které tvoří součást základní funkce monitorování runtime v [monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md). Není potřeba přímo stahovat tyto balíčky, použijte instalační program monitorování stavu. Pokud chcete se dozvědět více o tom, jak tyto balíčky pracovat pod pokličkou [blogový příspěvek](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) z jednoho z našich vývojářů je dobrý začátek.
 
 ## <a name="additional-packages"></a>Další balíčky
 
 | Název balíčku | Stabilní verze | Popis | Ke stažení |
 |-------------------------------|-----------------------|------------|----|
-| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Toto rozšíření umožňuje monitorování Application Insights do služby Azure App Service. Sada SDK verze 2.6.1. Tyto pokyny: Přidat nastavení aplikace "APPINSIGHTS_INSTRUMENTATIONKEY" s svůj Instrumentační klíč a restartování webové aplikace se projeví.| [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
+| Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | Toto rozšíření umožňuje monitorování Application Insights do služby Azure App Service. Sada SDK verze 2.6.1. Pokyny: Přidat nastavení aplikace "APPINSIGHTS_INSTRUMENTATIONKEY" s svůj Instrumentační klíč a restartujte webové aplikace se projeví.| [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft.ApplicationInsights.Injector | 2.6.7 | Tento balíček obsahuje soubory potřebné pro vkládání bez použití kódu Application Insights | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |
 
 ## <a name="next-steps"></a>Další postup
 
-- Monitorování [ASP.NET Core](app-insights-asp-net-core.md).
+- Monitorování [ASP.NET Core](../azure-monitor/app/asp-net-core.md).
 - Profil ASP.NET Core [webové aplikace Azure s Linuxem](app-insights-profiler-aspnetcore-linux.md).
 - Ladění technologie ASP.NET [snímky](app-insights-snapshot-debugger.md).

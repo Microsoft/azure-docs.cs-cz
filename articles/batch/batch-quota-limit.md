@@ -1,9 +1,9 @@
 ---
-title: Kvóty a omezení služby pro službu Azure Batch | Dokumentace Microsoftu
+title: Služby, kvóty a omezení – Azure Batch | Dokumentace Microsoftu
 description: Další informace o výchozí služby Azure Batch, kvóty, limity a omezení, a jak si vyžádat kvóta zvýší
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/18/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263593"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753195"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -65,9 +65,9 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 | [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu | 4 x počet jader na uzel |
 | [Aplikace](batch-application-packages.md) jeden účet Batch | 20 |
 | Balíčky aplikací na jednu aplikaci | 40 |
-| Úloha maximální doba života | 7 dní<sup>1</sup> |
+| Úloha maximální doba života | 180 dnů<sup>1</sup> |
 
-<sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po jeho dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
+<sup>1</sup> maximální doba života úkolu, od jeho přidání do úlohy po dokončení je 180 dnů. Dokončené úkoly se zachovávají po dobu 7 dní; data pro úkoly, které se nedokončí v rámci maximální doby života není přístupný.
 
 ## <a name="view-batch-quotas"></a>Zobrazit kvóty služby Batch
 
@@ -99,14 +99,14 @@ Postupujte podle těchto kroků žádost o kvótu zvýšit pro váš účet Batc
    
     d. **Plán podpory** > **kvóty podpora – zahrnuto**
    
-    Klikněte na **Další**.
+    Klikněte na tlačítko **Další**.
 1. V **problém**:
    
     a. Vyberte **závažnost** podle vaší [dopad na chod firmy][support_sev].
    
     b. V **podrobnosti**, zadejte každá kvóta, kterou chcete změnit název účtu Batch a nový limit.
    
-    Klikněte na **Další**.
+    Klikněte na tlačítko **Další**.
 1. V **kontaktní informace**:
    
     a. Vyberte **upřednostňovaný způsob kontaktování**.

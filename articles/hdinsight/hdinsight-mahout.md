@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 06181eaf4a44a00ddeeedcd9c40edeae9157abd9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: de88fbc2960be452df0c9067dca3715d9f6febb0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438544"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744033"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-apache-hadoop-in-hdinsight-powershell"></a>Generování filmových doporučení pomocí Apache Mahout s Apache Hadoop v HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Další informace o použití [Apache Mahout](http://mahout.apache.org) knihovna pro machine learning pomocí Azure HDInsight ke generování filmových doporučení. V příkladu v tomto dokumentu používá prostředí Azure PowerShell ke spouštění úloh Mahout.
+Další informace o použití [Apache Mahout](https://mahout.apache.org) knihovna pro machine learning pomocí Azure HDInsight ke generování filmových doporučení. V příkladu v tomto dokumentu používá prostředí Azure PowerShell ke spouštění úloh Mahout.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -212,10 +212,10 @@ Teď, když jste se naučili, jak používat Apache Mahout, popisující další
 * [Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
-[build]: http://mahout.apache.org/developers/buildingmahout.html
+[build]: https://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs
-[movielens]: http://grouplens.org/datasets/movielens/
-[100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
+[movielens]: https://grouplens.org/datasets/movielens/
+[100k]: https://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
 [ml]: https://en.wikipedia.org/wiki/Machine_learning

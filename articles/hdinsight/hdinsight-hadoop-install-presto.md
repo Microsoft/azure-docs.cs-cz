@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 01/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4285c633062386657cbea478f327c9a1b088f16a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 785223f7da1f59288f4fca6e7a3955a6b3af41c0
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383812"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974983"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight Hadoop
 
@@ -31,9 +31,7 @@ HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache 
 > [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované a Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 > 
-> Vlastní komponenty, jako je například Presto, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
-> 
-> 
+> Vlastní komponenty, jako je například Presto, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. To může vést řeší problém nebo s výzvou k zapojení dostupné kanály pro open source technologie, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="install-presto-using-script-action"></a>Nainstalovat Presto pomocí akce skriptu
@@ -44,7 +42,7 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
 
     * Musí být clusteru Hadoop s HDInsight verze 3.6.
 
-    * Jako úložiště dat musí používat Azure Storage. Pomocí Presto v clusteru, který používá Azure Data Lake Store jako možnost úložiště ještě není možné.
+    * Jako úložiště dat musí používat Azure Storage. Pomocí Presto v clusteru, který používá Azure Data Lake Storage jako možnost úložiště ještě není možné.
 
     ![Vytvoření clusteru HDInsight pomocí vlastních možností](./media/hdinsight-hadoop-install-presto/hdinsight-install-custom.png)
 
@@ -123,17 +121,23 @@ K instalaci Airpal na hraničním uzlu, postupujte následovně:
 
 5. Klikněte na **Koupit**.
 
-6. Až změny se použijí ke konfiguraci clusteru, dostanete Airpal webové rozhraní, pomocí následujících kroků.
+6. Až změny se použijí ke konfiguraci clusteru, dostanete Airpal webové rozhraní pomocí následujících kroků [webu Azure portal](https://portal.azure.com):
 
-    1. V dialogovém okně clusteru klikněte na **aplikací**.
+    1. V nabídce vlevo vyberte **všechny služby**.
+
+    1. V části **ANALYTICS**vyberte **clustery HDInsight**.
+
+    1. Vyberte ze seznamu, který se otevře zobrazení výchozí svůj cluster.
+
+    1. Výchozí zobrazení v části **nastavení**vyberte **aplikací**.
 
         ![HDInsight spuštění Airpal Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 
-    2. Z **nainstalované aplikace** oblast, klikněte na tlačítko **portál** proti airpal.
+    1. Z **nainstalované aplikace** stránky, místní položka pro **airpal**a vyberte **portál**.
 
         ![HDInsight spuštění Airpal Presto clusteru](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal-1.png)
 
-    3. Po zobrazení výzvy zadejte přihlašovací údaje správce, které jste zadali při vytváření clusteru HDInsight Hadoop.
+    1. Po zobrazení výzvy zadejte přihlašovací údaje správce, které jste zadali při vytváření clusteru HDInsight Hadoop.
 
 ## <a name="customize-a-presto-installation-on-hdinsight-cluster"></a>Přizpůsobení Presto instalace v clusteru HDInsight
 

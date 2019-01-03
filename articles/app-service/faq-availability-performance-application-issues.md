@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 3a0b92e2c2a588fa8ef7edcddaa8c692780814f0
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388774"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721559"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Nejčastějších dotazech týkajících se výkonu aplikace pro Web Apps v Azure
 
@@ -163,7 +163,7 @@ Další informace najdete v tématu [konfigurují webové aplikace ve službě A
 
 Nástroj Azure Load Balancer má výchozí nastavení časového limitu nečinnosti čtyř minut. Obvykle se jedná časový limit odezvy pro webovou žádost. Pokud vaše webová aplikace vyžaduje zpracování na pozadí, doporučujeme použít Azure WebJobs. Webové aplikace Azure může volat WebJobs a upozorněni, až po dokončení zpracování na pozadí. Můžete vybrat z víc metody pro používání WebJobs, včetně front a aktivačních událostí.
 
-WebJobs je určená pro zpracování na pozadí. Můžete to co nejvíce zpracování na pozadí do webové úlohy. Další informace o Webjobech najdete v tématu [spouštění úloh na pozadí pomocí WebJobs](web-sites-create-web-jobs.md).
+WebJobs je určená pro zpracování na pozadí. Můžete to co nejvíce zpracování na pozadí do webové úlohy. Další informace o Webjobech najdete v tématu [spouštění úloh na pozadí pomocí WebJobs](webjobs-create.md).
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>Aplikace ASP.NET Core, které jsou hostované ve službě App Service, někdy přestane reagovat. Jak opravit tento problém?
 

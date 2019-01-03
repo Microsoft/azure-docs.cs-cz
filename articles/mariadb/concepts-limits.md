@@ -3,17 +3,15 @@ title: Omezení ve službě Azure Database pro MariaDB
 description: Tento článek popisuje omezení ve službě Azure Database pro MariaDB, jako je třeba počet připojení a možnosti úložiště modul.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4fb774341b19034d3905341a99be2114a0d1e18b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835705"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970280"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení ve službě Azure Database pro MariaDB
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby.
@@ -36,7 +34,7 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 |Paměťově optimalizované| 16| 5000|
 
 Při připojení překročí limit, může se zobrazit následující chyba:
-> Chyba 1040 (08004): Příliš mnoho připojení
+> CHYBA 1040 (08004): Příliš mnoho připojení
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
@@ -46,14 +44,14 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 
 ### <a name="unsupported"></a>Nepodporovaný
 - [MyISAM](https://mariadb.com/kb/en/library/myisam-storage-engine/)
-- [SMĚROVAČE BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/l)
+- [SMĚROVAČE BLACKHOLE](https://mariadb.com/kb/en/library/blackhole/)
 - [ARCHIV](https://mariadb.com/kb/en/library/archive/)
 
 ## <a name="privilege-support"></a>Podpora oprávnění
 
 ### <a name="unsupported"></a>Nepodporovaný
-- DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze.
-- Oprávnění SUPERUŽIVATELE: podobně [SUPER oprávnění](https://mariadb.com/kb/en/library/grant/#global-privileges) je také omezen.
+- DBA role: Mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze.
+- SUPER oprávnění: Podobně [SUPER oprávnění](https://mariadb.com/kb/en/library/grant/#global-privileges) je také omezen.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 

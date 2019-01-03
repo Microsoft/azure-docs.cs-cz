@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 22af5b4b757fed83e5c9b23426283d2fb4c4867f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fb72de7e9a61c874d4449a5b9c0422c787a7bdc0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410529"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728444"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -1867,12 +1867,12 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Devices/provisioningServices/certificates/verify/Action | Ověřte, prostředek certifikátu |
 > | Akce | Microsoft.Devices/provisioningServices/certificates/Write | Vytvořit nebo aktualizovat certifikát |
 > | Akce | Microsoft.Devices/provisioningServices/Delete | Odstranit prostředek IotDps |
-> | Akce | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Získá nastavení diagnostiky pro tento prostředek. |
+> | Akce | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Získá nastavení diagnostiky prostředku. Poznámka: budete potřebovat `Microsoft.Insights/diagnosticSettings/read` i  |
 > | Akce | Microsoft.Devices/provisioningServices/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.Devices/provisioningServices/keys/listkeys/Action | Získání klíčů IotDps pro název klíče |
 > | Akce | Microsoft.Devices/provisioningServices/listkeys/Action | Získat všechny IotDps klíče |
-> | Akce | Microsoft.Devices/provisioningServices/logDefinitions/read | Načte definice protokolů k dispozici pro službu zřizování |
-> | Akce | Microsoft.Devices/provisioningServices/metricDefinitions/read | Získá dostupné metriky pro službu zřizování |
+> | Akce | Microsoft.Devices/provisioningServices/logDefinitions/read | Načte definice protokolů k dispozici pro službu zřizování. Poznámka: budete potřebovat `Microsoft.Insights/logDefinitions/read` i |
+> | Akce | Microsoft.Devices/provisioningServices/metricDefinitions/read | Získá dostupné metriky pro službu zřizování. Poznámka: budete potřebovat `Microsoft.Insights/metricDefinitions/read` i |
 > | Akce | Microsoft.Devices/provisioningServices/operationresults/Read | Získat výsledek operace distribučních bodů |
 > | Akce | Microsoft.Devices/provisioningServices/Read | Získat prostředek IotDps |
 > | Akce | Microsoft.Devices/provisioningServices/skus/Read | Získat platný IotDps SKU |

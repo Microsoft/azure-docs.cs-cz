@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 50e9c0667761e43c63b03fbaf5f8ce93eb49e749
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 878ff5901df80398afff7f429c41f102da3edba4
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100085"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793588"
 ---
-# <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules"></a>Pochopení požadavků a nástroje pro vývoj modulů IoT Edge
+# <a name="develop-your-own-iot-edge-modules"></a>Vyvíjet vlastní moduly IoT Edge
 
-Tento článek vysvětluje, jaké funkce jsou k dispozici při psaní aplikace, které běží jako modul IoT Edge a tom, jak využít.
+Moduly Azure IoT Edge můžete připojení s ostatními službami Azure a přispívat do kanálu dat větší cloudu. Tento článek popisuje, jak vám umožní vytvářet moduly ke komunikaci se modul runtime IoT Edge a IoT Hub a proto rest cloudu Azure. 
 
 ## <a name="iot-edge-runtime-environment"></a>Prostředí modulu runtime IoT Edge
 Modul runtime IoT Edge poskytuje infrastrukturu integrovat funkce více modulů IoT Edge a k jejich nasazení do zařízení IoT Edge. Na vysoké úrovni se dá zabalit jako modul IoT Edge žádný program. Však pokud chcete využívat všech výhod IoT Edge komunikační a funkce správy, můžete program spuštěný v modulu připojit k místní centra IoT Edge, integrované v modulu runtime IoT Edge.
@@ -37,17 +37,14 @@ V současné době modulu nemůže přijímat zprávy typu cloud zařízení ani
 
 Při psaní modulu, můžete použít [sady SDK Azure IoT Device](../iot-hub/iot-hub-devguide-sdks.md) pro připojení k centru IoT Edge a použití výše uvedené funkce stejně jako při používání služby IoT Hub s aplikací zařízení, jediným rozdílem je, že z vaší aplikace back-end, je nutné odkazovat na modul identity místo na identitě zařízení.
 
-V tématu [vývoj a nasazení modul IoT Edge na simulovaném zařízení](tutorial-csharp-module.md) příklad modul aplikace, která odesílá zprávy typu zařízení cloud a používá dvojčete modulu.
-
 ### <a name="device-to-cloud-messages"></a>Zprávy typu zařízení-cloud
-Chcete-li povolit komplexní zpracování zpráv typu zařízení cloud, Centrum IoT Edge poskytuje deklarativní směrování zpráv mezi moduly a mezi moduly a IoT Hub. Deklarativní směrování povoluje modulů k zachycení a zpracování zpráv odesílaných ostatní moduly a jejich šíření kanálech složité. Tento článek [složení modulu](module-composition.md) vysvětluje, jak sestavit modulů do složitých kanálů pomocí tras.
+Umožňuje komplexní zpracování zpráv typu zařízení cloud, Centrum IoT Edge poskytuje deklarativní směrování zpráv mezi moduly a mezi moduly a IoT Hub. Deklarativní směrování povoluje modulů k zachycení a zpracování zpráv odesílaných ostatní moduly a jejich šíření kanálech složité. Další informace najdete v tématu [nasadit moduly a vytvářet ve službě IoT Edge](module-composition.md).
 
 Modul IoT Edge, na rozdíl od normální aplikace zařízení služby IoT Hub, může přijímat zprávy typu zařízení cloud, které se připojit přes proxy server pomocí její místní centra IoT Edge k jejich zpracování.
 
-Centrum IoT Edge šíří zprávy, které mají modul podle deklarativní směrování podle [složení modulu](module-composition.md) článku. Při vývoji modul IoT Edge, mohou přijímat tyto zprávy nastavením obslužné rutiny zpráv.
+Centrum IoT Edge šíří zprávy, které mají modul podle deklarativní směrování podle [manifest nasazení](module-composition.md). Při vývoji modul IoT Edge, mohou přijímat tyto zprávy nastavením obslužné rutiny zpráv.
 
-Aby bylo možné zjednodušit proces vytváření tras, IoT Edge přidá pojem modul *vstupní* a *výstup* koncových bodů. Modul může přijímat všechny zprávy typu zařízení cloud směrovat bez zadání jakékoli vstup a odesílat zprávy typu zařízení cloud bez zadání žádný výstup.
-Pomocí explicitní vstupy a výstupy, ale zjednodušuje pravidla směrování pochopit. Další informace o pravidla směrování a vstupní a výstupní koncové body pro moduly, naleznete v tématu [složení modulu](module-composition.md).
+Zjednodušení vytváření tras, IoT Edge přidá pojem modul *vstupní* a *výstup* koncových bodů. Modul může přijímat všechny zprávy typu zařízení cloud směrovat bez zadání jakékoli vstup a odesílat zprávy typu zařízení cloud bez zadání žádný výstup. Pomocí explicitní vstupy a výstupy, ale zjednodušuje pravidla směrování pochopit. 
 
 Zprávy typu zařízení cloud zpracovat Centrum Edge se nakonec razítkem s následujícími vlastnostmi systému:
 
@@ -60,12 +57,11 @@ Zprávy typu zařízení cloud zpracovat Centrum Edge se nakonec razítkem s ná
 
 ### <a name="connecting-to-iot-edge-hub-from-a-module"></a>Připojení k centru IoT Edge z modulu
 Připojení k místní Centrum IoT Edge z modulu zahrnuje dva kroky: 
-1. Použijte připojovací řetězec poskytuje modul runtime IoT Edge při spuštění modulu.
+1. Vytvoření ModuleClient instance ve vaší aplikaci.
 2. Zajistěte, aby že vaše aplikace přijímá certifikát předložený Centrum IoT Edge na tomto zařízení.
 
-Modul runtime IoT Edge v proměnné prostředí se vloží řetězec připojení používaný `EdgeHubConnectionString`. Díky tomu dostupné všem programům, které chce, aby se jeho použití.
+Vytvoření instance ModuleClient připojit modul IoT Edge hub spuštěného v příslušném zařízení, podobně jako instance DeviceClient jak připojit zařízení IoT ke službě IoT Hub. Další informace o třídě ModuleClient a jeho metody komunikace najdete v referenci rozhraní API pro váš preferovaný jazyk sady SDK: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C a Python](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable), nebo [Node.js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-Analogicky, se vloží certifikát, který chcete použít k ověření připojení k centru IoT Edge modulem runtime IoT Edge v souboru, jehož cesta je k dispozici v proměnné prostředí `EdgeModuleCACertificateFile`.
 
 ## <a name="next-steps"></a>Další postup
 

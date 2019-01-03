@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086841"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742741"
 ---
 # <a name="streaming-locators"></a>Lokátory streamování
 
-Vašim klientům poskytnout adresu URL, kterou můžete použít k přehrání kódované video nebo zvukové soubory, je potřeba vytvořit [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) a vytvoření adresy URL pro streamování. Další informace najdete v tématu [Stream souboru](stream-files-dotnet-quickstart.md).
+Je potřeba zadat kódovaný klienty pomocí adresy URL, můžete použít k přehrávání video nebo zvukové soubory, je potřeba vytvořit [Lokátor streamování](https://docs.microsoft.com/rest/api/media/streaminglocators) a vytvoření adresy URL pro streamování. Další informace najdete v tématu [Stream souboru](stream-files-dotnet-quickstart.md).
 
 ## <a name="streaminglocator-definition"></a>Definice StreamingLocator
 
@@ -29,16 +29,16 @@ Následující tabulka uvádí vlastnosti StreamingLocator a umožňuje jejich d
 |Název|Popis|
 |---|---|
 |id |Plně kvalifikované ID prostředku pro prostředek.|
-|jméno   |Název prostředku.|
+|jméno|Název prostředku.|
 |properties.alternativeMediaId|ID alternativních médií tento Lokátor streamování.|
-|properties.assetName   |Název assetu|
-|properties.contentKeys |Klíčů ContentKeys, používá tento Lokátor streamování.|
-|Properties.Created |Čas vytvoření Lokátor streamování.|
+|properties.assetName|Název assetu|
+|properties.contentKeys|Klíčů ContentKeys, používá tento Lokátor streamování.|
+|Properties.Created|Čas vytvoření Lokátor streamování.|
 |properties.defaultContentKeyPolicyName|Název výchozí ContentKeyPolicy používá tento Lokátor streamování.|
-|properties.endTime |Čas ukončení Lokátor streamování.|
+|properties.endTime|Čas ukončení Lokátor streamování.|
 |properties.startTime|Čas zahájení Lokátor streamování.|
 |properties.streamingLocatorId|StreamingLocatorId Lokátor streamování.|
-|properties.streamingPolicyName |Název zásady streamování používá tento Lokátor streamování. Zadejte název streamování zásady, které jste vytvořili nebo použijte jednu z předdefinovaných zásad streamování. Jsou předdefinované datové proudy zásady k dispozici: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_ MultiDrmStreaming.|
+|properties.streamingPolicyName |Název zásady streamování používá tento Lokátor streamování. Zadejte název streamování zásady, které jste vytvořili nebo použijte jednu z předdefinovaných zásad streamování. Předdefinované datové proudy zásady k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming.|
 |type|Typ prostředku.|
 
 Kompletní definici, naleznete v tématu [lokátory streamování](https://docs.microsoft.com/rest/api/media/streaminglocators).

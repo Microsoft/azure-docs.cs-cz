@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2a1cd79a99e16460c96d28ebeb0a2bd68975361
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722373"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794239"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -27,15 +27,15 @@ Konfigurování pravidelné zálohování spolehlivé stavové služby Reliable 
 
 1. **Vytvoření zásady zálohování**: V tomto kroku se vytvoří jeden nebo více zásad zálohování v závislosti na požadavcích.
 
-2. **Povolení zálohování**: V tomto kroku přidružte zásady zálohování, které jsou vytvořené v **kroku 1** do požadované entity _aplikace_, _služby_, nebo  _Oddíl_.
+2. **Povolení zálohování**: V tomto kroku přidružte zásady zálohování, které jsou vytvořené v **kroku 1** do požadované entity _aplikace_, _služby_, nebo _oddílu_.
 
 ## <a name="create-backup-policy"></a>Vytvoření zásady zálohování
 
 Zásady zálohování se skládá z následujících konfigurací:
 
-* **Automatické obnovení ztráty dat**: Určuje, jestli se má spustit obnovení v případě, že oddíl dojde před událostí ztráty automaticky pomocí nejnovější dostupné zálohy.
+* **Automatické obnovení ztráty dat**: Určuje, zda se aktivovat obnovení automaticky pomocí nejnovější dostupné zálohy v případě, že oddíl dojde před událostí ztráty.
 
-* **Maximální počet přírůstkové zálohování**: definuje maximální počet přírůstkové zálohy, jež mají být provedeny mezi dvěma úplné zálohy. Maximální počet přírůstkové zálohy zadejte horní limit. Úplné zálohy mohou být přijata před zadaným číslem přírůstkových záloh jsou dokončeny v jednom z následujících podmínek
+* **Maximální počet přírůstkové zálohování**: Definuje maximální počet přírůstkové zálohy, jež mají být provedeny mezi dvěma úplné zálohy. Maximální počet přírůstkové zálohy zadejte horní limit. Úplné zálohy mohou být přijata před zadaným číslem přírůstkových záloh jsou dokončeny v jednom z následujících podmínek
 
     1. Replika se nikdy neobsadila úplnou zálohu. vzhledem k tomu se stal primárním.
 
@@ -43,7 +43,7 @@ Zásady zálohování se skládá z následujících konfigurací:
 
     3. Repliky předán MaxAccumulatedBackupLogSizeInMB limit.
 
-* **Plán zálohování**: chvíli a frekvenci, ve kterém se má provést pravidelného zálohování. Jeden můžete naplánovat zálohování se opakovat v zadaném intervalu nebo v pevném časovém denně nebo týdně.
+* **Plán zálohování**: Chvíli a frekvenci, ve kterém se má provést pravidelného zálohování. Jeden můžete naplánovat zálohování se opakovat v zadaném intervalu nebo v pevném časovém denně nebo týdně.
 
     1. **Plán zálohování na základě frekvence**: Tento typ plán by měl použít, pokud je nutné provést zálohování dat v pravidelných intervalech. Požadovaný časový interval mezi dvěma po sobě jdoucích zálohy je definována použít formát ISO8601. Plán frekvence zálohování podporuje interval rozlišení až minutu.
         ```json
@@ -88,7 +88,7 @@ Zásady zálohování se skládá z následujících konfigurací:
             ```
 
 * **Úložiště zálohování**: Určuje umístění pro nahrání zálohy. Úložiště může být buď úložiště objektů blob v Azure nebo pro sdílení souborů.
-    1. **Úložiště objektů blob v Azure**: Tento typ úložiště by měl vybrat v případě potřeby je ukládání generované záloh v Azure. Obě _samostatné_ a _založené na Azure_ clustery můžete použít tento typ úložiště. Popis pro tento typ úložiště vyžaduje připojovací řetězec a název kontejneru, ve kterém budete muset nahrát zálohy. Pokud kontejneru se zadaným názvem není k dispozici, se vytvoří při nahrávání zálohy.
+    1. **Úložiště objektů blob v Azure**: Tento typ úložiště musí být vybrána, když potřeba, je vygenerována úložiště záloh v Azure. Obě _samostatné_ a _založené na Azure_ clustery můžete použít tento typ úložiště. Popis pro tento typ úložiště vyžaduje připojovací řetězec a název kontejneru, ve kterém budete muset nahrát zálohy. Pokud kontejneru se zadaným názvem není k dispozici, se vytvoří při nahrávání zálohy.
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -128,7 +128,7 @@ Zásady zálohování se skládá z následujících konfigurací:
 >
 
 * **Zásady uchovávání informací**: Určuje zásady pro uchovávání záloh v nakonfigurovaného úložiště. Je podporován pouze základní zásady uchovávání informací.
-    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání umožňují zajistit optimální úložiště využití Odebírání záložních souborů, které jsou požadovány žádné další. `RetentionDuration` lze nastavit časové období, pro kterou jsou požadovány pro zachování v úložišti záloh. `MinimumNumberOfBackups` je volitelný parametr, který je možné zadat pro Ujistěte se, že zadaný počet zálohy se vždy zachovají bez ohledu na `RetentionDuration`. Následující příklad znázorňuje konfiguraci pro uchovávání záloh pro _10_ dnů a neumožňuje počet zálohy přejít níže _20_.
+    1. **Zásady uchovávání informací základní**: Tyto zásady uchování umožňuje zajistit optimální úložiště využití Odebírání záložních souborů, které jsou požadovány žádné další. `RetentionDuration` lze nastavit časové období, pro kterou jsou požadovány pro zachování v úložišti záloh. `MinimumNumberOfBackups` je volitelný parametr, který je možné zadat pro Ujistěte se, že zadaný počet zálohy se vždy zachovají bez ohledu na `RetentionDuration`. Následující příklad znázorňuje konfiguraci pro uchovávání záloh pro _10_ dnů a neumožňuje počet zálohy přejít níže _20_.
 
         ```json
         {
@@ -137,6 +137,9 @@ Zásady zálohování se skládá z následujících konfigurací:
             "MinimumNumberOfBackups": 20
         }
         ```
+
+> [!IMPORTANT]
+> Kvůli problému v modulu runtime Ujistěte se, že doba uchování v zásadách uchovávání dat je nakonfigurovaný, aby byl méně než 24 dní, jinak by vést ve službě obnovení zálohy přejít do převzetí služeb při selhání kvora ztráty příspěvek repliky.
 
 ## <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad zálohování pro splnění požadavků pro zálohování dat, zásady zálohování by měly být správně přidružené buď _aplikace_, nebo _služby_, nebo _oddílu_.
@@ -215,6 +218,11 @@ Po pozastavení se vaše potřeby zálohování periodických dat. můžete obno
 
 * Pokud bylo použito pro pozastavení _oddílu_, pak by měl obnovit, pomocí [Obnovit oddíl zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) rozhraní API.
 
+### <a name="difference-between-suspend-and-disable-backups"></a>Rozdíl mezi pozastavit a zakázat zálohování
+Zakázat zálohování by měl při zálohování už nejsou vyžadované pro konkrétní aplikace, služby nebo oddíl. Jeden infact může vyvolat zakažte požadavek na zálohování společně s parametrem čisté zálohy na mít hodnotu true, což znamená, že všechny existující zálohy budou také odstraněny. Ale pozastavení se má použít ve scénářích, kde jeden chce vypnout záloh dočasně jako při zaplnění místního disku nebo nahrávání zálohování selhává kvůli problému známé síti atd. 
+
+Při zakázání lze vyvolat pouze na úrovni která byla starší povolené pro zálohování explicilty ale pozastavení můžete použít na libovolné úrovni, která je aktuálně povolena pro zálohování buď přímo nebo prostřednictvím dědičnosti nebo hierarchii. Například pokud je zálohování povolené na úrovni aplikace, jeden vyvolat zakázat pouze na úrovni aplikace ale pozastavit může být vyvolána v aplikaci, jakékoli služby nebo oddíl pro tuto aplikaci. 
+
 ## <a name="auto-restore-on-data-loss"></a>Automatické obnovení ztráty dat
 Oddíl služby může dojít ke ztrátě dat z důvodu neočekávané chyby. Například disku pro dvě ze tří replik pro oddíl (včetně primární replice) získá poškozený nebo dojde k vymazání.
 
@@ -237,11 +245,11 @@ Tato rozhraní API také podporujte stránkování výsledků, když _MaxResults
 
 Tady je stručné informace o podporovaných variant.
 
-- [Získání seznamu zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané aplikaci Service Fabric.
+- [Získání seznamu zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): Vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané aplikaci Service Fabric.
 
-- [Získání seznamu služby Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané služby Service Fabric.
+- [Získání služby zálohování seznamu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): Vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané služby Service Fabric.
  
-- [Získat seznam oddílů zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): vrátí seznam záloh, které jsou k dispozici pro zadaný oddíl.
+- [Získání seznamu zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): Vrátí seznam záloh, které jsou k dispozici pro zadaný oddíl.
 
 ## <a name="next-steps"></a>Další postup
 - [Reference k rozhraní API REST obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

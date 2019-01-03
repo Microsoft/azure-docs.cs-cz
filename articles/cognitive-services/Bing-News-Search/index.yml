@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c6b8df95149824f78d9809d14b4b9ebf67728fcb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0b934e7ac5b297b5c7349a9a9985f6c50d62d19f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255393"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53791944"
 documentType: LandingData
 title: Dokumentace k rozhraní API Bingu pro vyhledávání zpráv
 titleSuffix: Azure Cognitive Services
@@ -61,6 +61,14 @@ sections:
     text: 'Naučte se vyvíjet aplikace s využitím rozhraní API Bingu pro vyhledávání zpráv:'
   - type: paragraph
     text: <a href="tutorial-bing-news-search-single-page-app">Jednostránková webová aplikace</a> &#124; <a href="tutorial-bing-news-search-single-page-app-source">zdrojový kód</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Projděte si ukázky pro rozhraní API Bingu pro vyhledávání zpráv:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="sdk.md">Ukázky kódu</a>
 - title: Referenční informace
   items:
   - type: list
@@ -70,4 +78,8 @@ sections:
     - title: Rozhraní API
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">Rozhraní API Bingu pro vyhledávání zpráv v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">Rozhraní API Bingu pro vyhledávání zpráv v5</a></p>
     - title: Sady SDK
-      html: <p><a href="sdk.md">Sada SDK pro Vyhledávání Bingu</a></p>
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Rozhraní příkazového řádku
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

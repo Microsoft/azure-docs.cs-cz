@@ -7,12 +7,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: f49f56d57de6cdcb7c5e9b557ed897d17a6bf7fb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c93b53a78891eaf46e5455bd13198f7b9bd90903
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079173"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808004"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití služby Azure Cosmos DB
 Tento článek poskytuje přehled o několik běžných případů použití pro službu Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí služby Cosmos DB.   
@@ -27,7 +27,7 @@ Po přečtení tohoto článku, budete moci odpovědět na následující otázk
 ## <a name="introduction"></a>Úvod
 [Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba od Microsoftu. Služba je navržena k umožnění zákazníkům Elasticky (a nezávisle na sobě) škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí. Azure Cosmos DB je první globálně distribuovaná databázová služba na trhu Dnes nabízí komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující propustnosti, latence, dostupnosti a konzistence. 
 
-Azure Cosmos DB je globální distribuovaná a vícemodelová databáze, která se používá v široké škály aplikací a případy použití. Je to Dobrá volba pro všechny [bez serveru](https://azure.com/serverless) aplikaci, která potřebuje nízkou pořadí milisekund dobou odezvy a je potřeba rychle a globálně škálovat. Podporuje více datových modelů (klíč hodnota, dokumentů, grafů a sloupcových) a přístup k mnoha rozhraní API pro data, včetně [rozhraní MongoDB API](mongodb-introduction.md), [rozhraní SQL API](documentdb-introduction.md), [rozhraní Gremlin API](graph-introduction.md)a [ Rozhraní API tabulky](table-introduction.md) nativně a postupně přibývají. 
+Azure Cosmos DB je globální distribuovaná a vícemodelová databáze, která se používá v široké škály aplikací a případy použití. Je to Dobrá volba pro všechny [bez serveru](https://azure.com/serverless) aplikaci, která potřebuje nízkou pořadí milisekund dobou odezvy a je potřeba rychle a globálně škálovat. Podporuje více datových modelů (klíč hodnota, dokumentů, grafů a sloupcových) a přístup k mnoha rozhraní API pro data, včetně [rozhraní API služby Azure Cosmos DB pro MongoDB](mongodb-introduction.md), [rozhraní SQL API](documentdb-introduction.md), [rozhraní Gremlin API](graph-introduction.md), a [rozhraní Table API](table-introduction.md) nativně a postupně přibývají. 
 
 Tady jsou některé atributy služby Azure Cosmos DB, kterým jsou vhodné pro vysoce výkonných aplikací s globální dále.
 
@@ -69,7 +69,7 @@ Kromě toho data uložená ve službě Azure Cosmos DB je možné integrovat s H
 ## <a name="gaming"></a>Hraní her
 Databázová vrstva je zásadní součástí herní aplikace. Moderní hry provádění grafické zpracování na klientech mobilních/konzoly, ale závisí na cloudu a zprostředkovávat přizpůsobené a přizpůsobený obsah, jako jsou statistiky ve hře, integraci sociálních médií a vysoce skóre žebříčky. Hry často vyžadují latenci na úrovni jednotlivých milisekund pro čtení a zápis k poskytování zapojení ve hře prostředí. Herní databáze musí být rychlé a být schopen zpracovat uvedení v požadavků v průběhu nové spuštění her a aktualizace funkcí.
 
-Azure Cosmos DB používá hry jako [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) podle [Next Games](https://www.nextgames.com/), a [Halo 5: strážce](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB poskytuje následující výhody pro vývojáře her:
+Azure Cosmos DB používá hry jako [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) podle [Next Games](https://www.nextgames.com/), a [Halo 5: Strážce](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB poskytuje následující výhody pro vývojáře her:
 
 * Azure Cosmos DB umožňuje výkonu škálovat nahoru nebo dolů Elasticky. To umožňuje hry pro zpracování aktualizací profilu a statistiky z desítek na miliony současně hráčům prostřednictvím jediného volání rozhraní API.
 * Azure Cosmos DB podporuje milisekund čtení a zápisu zabránit tomu, aby všechny zjevně demonstruje výskyt pomalé během hry.
@@ -115,7 +115,7 @@ Nebo, pokud chcete další informace o zákaznících pomocí služby Cosmos DB,
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha využívá Azure Cosmos DB k propojení zákazníky a firmy v Indii.
 * [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). NewOrbit trvá letu pomocí služby Azure Cosmos DB.
 * [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio přechází od AWS ke službě Azure Cosmos DB k využívat sociální data ve velkém měřítku.
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Hra the Walking Dead: No Man's Land hru soars # 1 podporovány službou Azure Cosmos DB.
+* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). The Walking Dead: No Man's Land her soars # 1 podporovány službou Azure Cosmos DB.
 * [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Jak Halo 5 implementuje hraní na sociálních sítích využívající službu Azure Cosmos DB.
 * [Galerie Cortana Analytics](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Galerii Cortana Analytics – web komunity škálovatelné postavená na službě Azure Cosmos DB.
 * [Rychlé](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Úvodní integrátor poskytuje globální přehled o nadnárodní podniky během několika minut s využitím flexibilních cloudových technologií.

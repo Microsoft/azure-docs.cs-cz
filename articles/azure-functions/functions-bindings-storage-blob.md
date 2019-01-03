@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: efccea36dd94120934b1a9729f583e0596316bc7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2a222e66b896886d724572982626fd0bc2c277a8
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338562"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809960"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Vazby Azure Blob storage pro službu Azure Functions
 
@@ -446,7 +446,7 @@ Aktivační událost objektů blob používá fronty interně, takže se řídí
 
 [Plán consumption](functions-scale.md#how-the-consumption-plan-works) omezuje aplikace function app na jeden virtuální počítač (VM) až 1,5 GB paměti. Paměť se používá tak, že každá instance souběžně prováděným funkce a samotný modul runtime služby Functions. Pokud se objekt blob aktivuje funkci načte celý objekt blob do paměti, maximální velikost paměti používané, že fungují jenom pro objekty BLOB je 24 * velikost maximální objektu blob. Aplikace function app s tři funkce aktivované protokolem objektů blob a výchozí nastavení by mít třeba maximální jednotlivé virtuální počítače činí 3 * 24 = 72 funkce volání.
 
-Funkce jazyka JavaScript načtěte celý objekt blob do paměti a funkcí jazyka C# provést, pokud svážete `string`, `Byte[]`, nebo POCO.
+Funkce jazyka JavaScript a Java načíst celý objekt blob do paměti, a C# funkce provést, pokud svážete `string`, `Byte[]`, nebo POCO.
 
 ## <a name="trigger---polling"></a>Aktivovat - cyklického dotazování
 
@@ -462,7 +462,7 @@ Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#input---c-example)
 * [C# skript (.csx)](#input---c-script-example)
-* [Java](#input---java-example)
+* [Java](#input---java-examples)
 * [JavaScript](#input---javascript-example)
 * [Python](#input---python-example)
 
@@ -630,22 +630,61 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-example"></a>(Vstup) – příklad v jazyce Java
+### <a name="input---java-examples"></a>Vstup - příkladů v jazyce Java
 
-V následujícím příkladu je funkce Java, která používá aktivační událost fronty a vazbu vstupnímu objektu blob. Queue zpráva obsahuje název objektu blob a protokoly funkce velikost objektu blob.
+Tato část obsahuje následující příklady:
+
+* [Trigger HTTP, vyhledejte název objektu blob z řetězce dotazu](#http-trigger-look-up-blob-name-from-query-string-java)
+* [Aktivační událost fronty, příjem z fronty zpráv název objektu blob](#queue-trigger-receive-blob-name-from-queue-message-java)
+
+#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>Trigger HTTP, vyhledejte název objektu blob z řetězce dotazu (Java)
+
+ Následující příklad ukazuje funkci Java, která se používá ```HttpTrigger``` anotace pro příjem parametr, který obsahuje název souboru v kontejneru úložiště objektů blob. ```BlobInput``` Pak načte soubor a předává jeho obsah fungovat jako poznámky ```byte[]```.
 
 ```java
-@FunctionName("getBlobSize")
-@StorageAccount("AzureWebJobsStorage")
-public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-items") String filename,
-                    @BlobInput(name = "file", dataType = "binary", path = "samples-workitems/{queueTrigger") byte[] content,
-       final ExecutionContext context) {
+  @FunctionName("getBlobSizeHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage blobSize(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    final ExecutionContext context) {
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Aktivační událost fronty, příjem název objektu blob z fronty zpráv (Java)
+
+ Následující příklad ukazuje funkci Java, která se používá ```QueueTrigger``` anotace pro příjem zprávy, který obsahuje název souboru v kontejneru úložiště objektů blob. ```BlobInput``` Pak načte soubor a předává jeho obsah fungovat jako poznámky ```byte[]```.
+
+```java
+  @FunctionName("getBlobSize")
+  @StorageAccount("Storage_Account_Connection_String")
+  public void blobSize(
+    @QueueTrigger(
+      name = "filename", 
+      queueName = "myqueue-items-sample") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{queueTrigger}") 
+    byte[] content,
+    final ExecutionContext context) {
       context.getLogger().info("The size of \"" + filename + "\" is: " + content.length + " bytes");
- }
- ```
+  }
+```
 
-  V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobInput` poznámku o parametrech, jehož hodnota by pocházejí z objektu blob.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí `Optional<T>`.
-
+V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobInput` poznámku o parametrech, jehož hodnota by pocházejí z objektu blob.  Tato poznámka je možné s nativní typy v jazyce Java, objektů Pojo nebo s povolenou hodnotou Null hodnoty pomocí `Optional<T>`.
 
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
@@ -728,7 +767,7 @@ Podívejte se na příklad specifické pro jazyk:
 
 * [C#](#output---c-example)
 * [C# skript (.csx)](#output---c-script-example)
-* [Java](#output---java-example)
+* [Java](#output---java-examples)
 * [JavaScript](#output---javascript-example)
 * [Python](#output---python-example)
 
@@ -915,23 +954,72 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-example"></a>Výstup – příklad v jazyce Java
+### <a name="output---java-examples"></a>Výstup – příkladů v jazyce Java
 
-Následující příklad ukazuje blob vstupní a výstupní vazby ve funkci jazyka Java. Funkce vytvoří kopii tohoto objektu blob text. Funkce aktivované zpráv fronty, který obsahuje název objektu blob kopírování. Nový objekt blob má název {originalblobname}-kopie
+Tato část obsahuje následující příklady:
+
+* [Trigger HTTP pomocí OutputBinding](#http-trigger-using-outputbinding-java)
+* [Aktivační událost fronty pomocí návratovou hodnotu funkce](#queue-trigger-using-function-return-value-java)
+
+#### <a name="http-trigger-using-outputbinding-java"></a>Trigger HTTP pomocí OutputBinding (Java)
+
+ Následující příklad ukazuje funkci Java, která se používá ```HttpTrigger``` anotace pro příjem parametr, který obsahuje název souboru v kontejneru úložiště objektů blob. ```BlobInput``` Pak načte soubor a předává jeho obsah fungovat jako poznámky ```byte[]```. ```BlobOutput``` Poznámky se váže k ```OutputBinding outputItem```, který pak používá funkci zapsat obsah vstupního objektu blob do kontejneru úložiště.
 
 ```java
-@FunctionName("copyTextBlob")
-@StorageAccount("AzureWebJobsStorage")
-@BlobOutput(name = "target", path = "samples-workitems/{queueTrigger}-Copy")
-public String blobCopy(
-    @QueueTrigger(name = "filename", queueName = "myqueue-items") String filename,
-    @BlobInput(name = "source", path = "samples-workitems/{queueTrigger}") String content ) {
+  @FunctionName("copyBlobHttp")
+  @StorageAccount("Storage_Account_Connection_String")
+  public HttpResponseMessage copyBlobHttp(
+    @HttpTrigger(name = "req", 
+      methods = {HttpMethod.GET}, 
+      authLevel = AuthorizationLevel.ANONYMOUS) 
+    HttpRequestMessage<Optional<String>> request,
+    @BlobInput(
+      name = "file", 
+      dataType = "binary", 
+      path = "samples-workitems/{Query.file}") 
+    byte[] content,
+    @BlobOutput(
+      name = "target", 
+      path = "myblob/{Query.file}-CopyViaHttp")
+    OutputBinding<String> outputItem,
+    final ExecutionContext context) {
+      // Save blob to outputItem
+      outputItem.setValue(new String(content, StandardCharsets.UTF_8));
+
+      // build HTTP response with size of requested blob
+      return request.createResponseBuilder(HttpStatus.OK)
+        .body("The size of \"" + request.getQueryParameters().get("file") + "\" is: " + content.length + " bytes")
+        .build();
+  }
+```
+
+#### <a name="queue-trigger-using-function-return-value-java"></a>Aktivační událost fronty pomocí návratovou hodnotu funkce (Java)
+
+ Následující příklad ukazuje funkci Java, která se používá ```QueueTrigger``` anotace pro příjem zprávy, který obsahuje název souboru v kontejneru úložiště objektů blob. ```BlobInput``` Pak načte soubor a předává jeho obsah fungovat jako poznámky ```byte[]```. ```BlobOutput``` Anotace váže na návratovou hodnotu funkce, které se potom využijí modul runtime zapisovat obsah vstupního objektu blob do kontejneru úložiště.
+
+```java
+  @FunctionName("copyBlobQueueTrigger")
+  @StorageAccount("Storage_Account_Connection_String")
+  @BlobOutput(
+    name = "target", 
+    path = "myblob/{queueTrigger}-Copy")
+  public String copyBlobQueue(
+    @QueueTrigger(
+      name = "filename", 
+      dataType = "string",
+      queueName = "myqueue-items") 
+    String filename,
+    @BlobInput(
+      name = "file", 
+      path = "samples-workitems/{queueTrigger}") 
+    String content,
+    final ExecutionContext context) {
+      context.getLogger().info("The content of \"" + filename + "\" is: " + content);
       return content;
- }
- ```
+  }
+```
 
- V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobOutput` Poznámka k parametrům funkce, jehož hodnota bude zapsána do objektu v úložišti objektů blob.  Typ parametru by měl být `OutputBinding<T>`, kde T je libovolný Java nativní objekt POJO.
-
+ V [Java funkce knihovny prostředí runtime](/java/api/overview/azure/functions/runtime), použijte `@BlobOutput` Poznámka k parametrům funkce, jehož hodnota bude zapsána do objektu v úložišti objektů blob.  Typ parametru by měl být `OutputBinding<T>`, kde T je jakýkoli nativní typ Java nebo objekt POJO.
 
 ## <a name="output---attributes"></a>Výstup – atributy
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: abd64b7d2fa7930f5b6177c7ac037840da34dc18
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 6188b141ec1a514d999f290366cd9ffbafc1d96c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333577"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753128"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
@@ -53,17 +53,19 @@ Pro zabezpečení signály, proces shromažďování začíná můžete vyjádř
 
 **Sestavy aktivit**    
 
-| Sestava                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Audit adresáře        | 7 dní        | 30 dní             | 30 dní             |
-| Přihlašovací aktivita       | neuvedeno           | 30 dní             | 30 dní             |
-| Použití Azure MFA        | 30 dní       | 30 dní             | 30 dní             |
+| Sestava                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--                    | :--           | :--            | :--                 | :--                 |
+| Audit adresáře        | 7 dní        |  7 dní        | 30 dní             | 30 dní             |
+| Přihlašovací aktivita       | neuvedeno           |  neuvedeno           | 30 dní             | 30 dní             |
+| Použití Azure MFA        | 30 dní       |  30 dní       | 30 dní             | 30 dní             |
+
+Můžete zachovat data aktivit auditu a přihlaste se po dobu delší než výchozí dobu uchování uvedených výše přesměrováním do účtu služby Azure storage pomocí Azure monitoru. Další informace najdete v tématu [archiv služby Azure AD se zaznamená do účtu služby Azure storage](quickstart-azure-monitor-route-logs-to-storage-account.md).
 
 **Signály zabezpečení**
 
-| Sestava         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
-| :--            | :--           | :--                 | :--                 |
-| Ohrožení uživatelé  | 7 dní        | 30 dní             | 90 dnů             |
-| Riziková přihlášení | 7 dní        | 30 dní             | 90 dnů             |
+| Sestava         | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
+| :--            | :--           | :--            | :--                 | :--                 |
+| Ohrožení uživatelé  | 7 dní        | 7 dní         | 30 dní             | 90 dnů             |
+| Riziková přihlášení | 7 dní        | 7 dní         |  30 dní            | 90 dnů             |
 
 ---

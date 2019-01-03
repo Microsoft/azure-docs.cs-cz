@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: a6170d51e1a8756020b4f2caa733c388b2ce4060
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2542364db3a895c060c752beeb0cfabf75834f7d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013812"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970266"
 ---
-# <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
+# <a name="install-and-run-luis-docker-containers"></a>Nainstalujte a spusťte LUIS kontejnery dockeru
  
 Language Understanding (LUIS) kontejneru načte trénovaného nebo publikované model Language Understanding, jsou označovány také jako [aplikace LUIS](https://www.luis.ai), do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z kontejneru API Koncové body. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět na model Azure Language Understanding zvyšte přesnost předpovědi aplikace.
 
@@ -32,19 +32,19 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Chcete-li spustit kontejner LUIS, musíte mít následující: 
 
-|Vyžadováno|Účel|
+|Požaduje se|Účel|
 |--|--|
-|Modul docker| K dokončení této verze preview, je potřeba na nainstalovaný modul Docker [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
+|Modul docker| Je nutné modul Docker nainstalovaný na [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
-|Language Understanding (LUIS) prostředků a přidružené aplikace |Chcete-li použít kontejner, musíte mít:<br><br>* A [ _Language Understanding_ prostředků Azure](luis-how-to-azure-subscription.md), spolu s klíčem přidruženého koncového bodu a koncový bod identifikátoru URI (použito jako fakturace koncový bod).<br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace.<br>* Klíč pro vytváření obsahu a stáhněte balíček aplikace, pokud je to z rozhraní API.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Toto ID se používá pro výběr aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _Language Understanding_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}** : Fakturační hodnota koncového bodu není k dispozici na stránce s přehledem Language Understanding webu Azure portal. Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
+|Language Understanding (LUIS) prostředků a přidružené aplikace |Chcete-li použít kontejner, musíte mít:<br><br>* A [ _Language Understanding_ prostředků Azure](luis-how-to-azure-subscription.md), spolu s klíčem přidruženého koncového bodu a koncový bod identifikátoru URI (použito jako fakturace koncový bod).<br>* A trénovaného nebo publikované aplikace lze zabalit jako připojené vstup do kontejneru s jeho přidružené ID aplikace.<br>* Klíč pro vytváření obsahu a stáhněte balíček aplikace, pokud je to z rozhraní API.<br><br>Tyto požadavky se používají k předání argumentů příkazového řádku následující proměnné:<br><br>**{AUTHORING_KEY}** : Tento klíč se používá k získání zabalené aplikace ze služby LUIS v cloudu a nahrajte protokoly dotazů zpátky do cloudu. Formát je `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Tento Identifikátor slouží k výběru aplikace. Formát je `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}** : Tento klíč se používá ke spuštění kontejneru. Klíč koncového bodu můžete najít na dvou místech. První je na webu Azure portal v rámci _Language Understanding_ klíče seznamu zdrojů. Klíč koncového bodu je také k dispozici na portálu služby LUIS nad klíči a koncový bod stránku nastavení. Nepoužívejte klávesu starter.<br><br>**{BILLING_ENDPOINT}** : Fakturační hodnota koncového bodu je k dispozici na stránce s přehledem Language Understanding webu Azure portal. Příklad: `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Vytváření klíč a klíče koncového bodu](luis-boundaries.md#key-limits) mají různé účely. Nepoužívejte je Zaměnitelně. |
 
 ### <a name="the-host-computer"></a>Hostitelském počítači
 
 **Hostitele** je počítač, který spustí kontejner dockeru. Může být počítač připojený k vlastních prostorách nebo v dockeru, který hostuje službu v Azure včetně:
 
-* [Azure Kubernetes Service](/azure/aks/)
-* [Azure Container Instances](/azure/container-instances/)
-* [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](/azure/azure-stack/). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy).
+* [Azure Kubernetes Service](../../aks/index.yml)
+* [Azure Container Instances](../../container-instances/index.yml)
+* [Kubernetes](https://kubernetes.io/) clusteru nasadí do [Azure Stack](../../azure-stack/index.yml). Další informace najdete v tématu [nasazení Kubernetes pro Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
@@ -53,7 +53,7 @@ Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
 |Nastavení| Minimální | Doporučené |
 |-----------|---------|-------------|
 |Jádra<BR>`--cpus`|1 jádro<BR>alespoň 2.6 gigahertz (GHz) nebo rychlejší|1 jádro|
-|Paměť<BR>`--memory`|2 GB|4 GB|
+|Memory (Paměť)<BR>`--memory`|2 GB|4 GB|
 |Transakce za sekundu<BR>(TPS)|20 TPS|40 TPS|
 
 `--cpus` a `--memory` nastavení jsou použita jako součást `docker run` příkazu.
@@ -111,15 +111,15 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 |--|--|--|--|
 |Školení|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
-|Provozní|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**Důležité:** přejmenovat, změnit nebo dekomprimovat soubory balíčku LUIS.
+>**Důležité:** Přejmenovat, změnit nebo dekomprimovat soubory balíčku LUIS.
 
 ### <a name="packaging-prerequisites"></a>Požadavky na balení
 
 Než připravíte balíček aplikace LUIS, musíte mít následující:
 
-|Požadavky na balení|Detaily|
+|Požadavky na balení|Podrobnosti|
 |--|--|
 |Azure _Language Understanding_ instance prostředku|Podporované oblasti patří<br><br>USA – západ (```westus```)<br>Západní Evropa (```westeurope```)<br>Austrálie – východ (```australiaeast```)|
 |Trénované nebo publikované aplikace LUIS|Bez [nepodporované závislosti](#unsupported-dependencies). |
@@ -271,9 +271,9 @@ Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 |--|--|--|
 |`q`|řetězec|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
-|`verbose`|boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
-|`staging`|boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
-|`log`|boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endoint-utt.md). Výchozí hodnota je true.|
+|`verbose`|Boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
+|`staging`|Boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
+|`log`|Boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endoint-utt.md). Výchozí hodnota je true.|
 
 ### <a name="query-published-app"></a>Dotaz publikované aplikace
 
@@ -356,7 +356,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 Aplikace LUIS můžete použít, pokud ho **neobsahuje** některý z následujících podmínek:
 
-Konfigurace nepodporované aplikací.|Detaily|
+Konfigurace nepodporované aplikací.|Podrobnosti|
 |--|--|
 |Nepodporovaná kontejneru jazykových verzí| Němčina (de-DE)<br>Holandština (nl-NL)<br>Japonština (ja-JP)<br>|
 |Nepodporovaná domén|Předem připravených domén, včetně předem připravených domény záměry a entity|
@@ -366,7 +366,7 @@ Konfigurace nepodporované aplikací.|Detaily|
 |Analýza mínění|Vnější závislosti nejsou podporovány v kontejneru.|
 |Pro kontrolu pravopisu Bingu|Vnější závislosti nejsou podporovány v kontejneru.|
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů Language Understanding (LUIS). Souhrn:
 
