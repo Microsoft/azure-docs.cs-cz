@@ -1,20 +1,17 @@
 ---
 title: Migrace s minimem výpadků ke službě Azure Database for MySQL
 description: Tento článek popisuje, jak provést migraci minimálními prostoji databáze MySQL do služby Azure Database for MySQL pomocí Azure Database Migration Service.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 267212d8f832b96bf66145b97c3464471e28593d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 49e2662f215d845d416e46246b03e4408fae118b
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014187"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543457"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migrace s minimem výpadků ke službě Azure Database for MySQL
 Můžete provést migraci MySQL do služby Azure Database for MySQL s minimálními prostoji pomocí nově zavedená **Průběžná synchronizace schopností** pro [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Tato funkce omezuje množství prostoje, které se účtují podle aplikace.

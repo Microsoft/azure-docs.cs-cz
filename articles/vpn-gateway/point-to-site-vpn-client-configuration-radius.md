@@ -1,5 +1,5 @@
 ---
-title: 'Vytvoření a instalace konfiguračních souborů klienta VPN pro připojení P2S RADIUS: prostředí PowerShell: Azure | Dokumentace Microsoftu'
+title: 'Vytvoření a instalace konfiguračních souborů klienta VPN pro připojení P2S RADIUS: PowerShell: Azure | Dokumentace Microsoftu'
 description: Vytvoření klienta Windows, Mac OS X a Linux VPN konfigurační soubory pro připojení, která používají ověřování pomocí protokolu RADIUS.
 services: vpn-gateway
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "51251998"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování P2S pomocí protokolu RADIUS
@@ -62,7 +62,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
  
 Spuštěním příkazu vrátí odkaz. Zkopírujte a vložte odkaz do webového prohlížeče a stáhněte **VpnClientConfiguration.zip**. Rozbalte soubor zobrazíte následující složky: 
  
-* **WindowsAmd64** a **WindowsX86**: tyto složky obsahují Windows 64-bit a 32bitový instalační balíčky, v uvedeném pořadí. 
+* **WindowsAmd64** a **WindowsX86**: Tyto složky obsahují balíčky Instalační služby systému Windows 64-bit a 32-bit. 
 * **Obecný**: Tato složka obsahuje obecné informace, které použijete k vytvoření vlastní konfigurace klienta VPN. Nepotřebujete tuto složku pro konfiguraci ověřování uživatelského jména a hesla.
 * **Mac**: Pokud jste nakonfigurovali IKEv2, při vytváření brány virtuální sítě, zobrazí se složku s názvem **Mac** , která obsahuje **mobileconfig** souboru. Tento soubor použijete ke konfiguraci klienti se systémem Mac.
 
@@ -193,7 +193,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 
 Spuštěním příkazu vrátí odkaz. Zkopírujte a vložte odkaz do webového prohlížeče a stáhněte VpnClientConfiguration.zip. Rozbalte soubor zobrazíte následující složky:
 
-* **WindowsAmd64** a **WindowsX86**: tyto složky obsahují Windows 64-bit a 32bitový instalační balíčky, v uvedeném pořadí. 
+* **WindowsAmd64** a **WindowsX86**: Tyto složky obsahují balíčky Instalační služby systému Windows 64-bit a 32-bit. 
 * **GenericDevice**: Tato složka obsahuje obecné informace, které se používá k vytvoření vlastní konfigurace klienta VPN.
 
 Pokud jste nevytvořili klienta konfigurační soubory, můžete je načíst s použitím `Get-AzureRmVpnClientConfiguration` rutiny. Ale pokud provedete změny konfigurace P2S VPN, jako je protokol typu sítě VPN nebo typ ověřování konfigurace se neaktualizuje automaticky. Je třeba spustit `New-AzureRmVpnClientConfiguration` rutiny vytvořte nový soubor ke stažení konfigurace.
@@ -266,9 +266,9 @@ Použít jiný typ ověřování (například ověřování jednorázovým HESLE
  
 3. **GenenericDevice** složka obsahuje soubor XML s názvem **VpnSettings**. Tento soubor obsahuje všechny požadované informace:
 
-   * **VpnServer**: plně kvalifikovaný název domény služby Azure VPN gateway. Toto je adresa, která se klient připojuje k.
-   * **VpnType**: tunelu typ, který použijete k připojení.
-   * **Trasy**: trasy, které je potřeba nakonfigurovat ve svém profilu tak, aby se odesílají pouze provoz, který je vázaný virtuální síť Azure prostřednictvím tunelového připojení P2S.
+   * **VpnServer**: Plně kvalifikovaný název domény služby Azure VPN gateway. Toto je adresa, která se klient připojuje k.
+   * **VpnType**: Typ tunelového propojení, který použijete k připojení.
+   * **Trasy**: Trasy, které je třeba nakonfigurovat ve svém profilu tak, aby se odesílají pouze provoz, který je vázaný virtuální síť Azure prostřednictvím tunelového připojení P2S.
    
    **GenenericDevice** složka obsahuje také soubor .cer s názvem **VpnServerRoot**. Tento soubor obsahuje kořenový certifikát, který je potřeba ověřit Azure VPN gateway během instalace připojení P2S. Nainstalujte certifikát na všech zařízeních, které se připojují k virtuální síti Azure.
 

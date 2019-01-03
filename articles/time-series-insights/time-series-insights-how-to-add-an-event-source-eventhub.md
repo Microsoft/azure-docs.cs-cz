@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights přidat Centrum událostí – přidat Event Hubs zdroje událostí do služby Azure Time Series Insights | Dokumentace Microsoftu
+title: Přidání zdroje událostí služby Event Hubs do služby Azure Time Series Insights | Dokumentace Microsoftu
 description: Tento článek popisuje postup přidání zdroje událostí, který je připojený k Azure Event Hubs do prostředí Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e7a6a089681ac9f7c0de5244feb3aea67052f25
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d4a80358535429f53b582abe8560757028159070
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274203"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557780"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Přidání zdroje událostí centra událostí do prostředí Time Series Insights
 

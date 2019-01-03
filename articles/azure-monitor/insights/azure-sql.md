@@ -7,22 +7,22 @@ ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
+ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/26/2018
-ms.author: v-daljep
-ms.openlocfilehash: bf2cbdb57276fccd31af61f2df1b76eeba816e66
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 12/17/2018
+ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341622"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546709"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
 ![Azure SQL Analytics symbol](./media/azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databáze, elastické fondy a spravovaných instancí Azure SQL ve velkém měřítku a napříč několika předplatnými prostřednictvím podokně ze skla. Díky monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
+Azure SQL Analytics je pokročilé cloudové řešení pro monitorování výkonu databáze, elastické fondy a spravovaných instancí Azure SQL ve velkém měřítku a napříč několika předplatnými prostřednictvím podokně ze skla. Díky monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
 Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Prezentovat data o všech Azure SQL databáze, elastické fondy a databáze spravované instance v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
 

@@ -1,20 +1,18 @@
 ---
 title: Přehled koncových bodů služby Azure Database for MySQL Server VNet | Dokumentace Microsoftu
 description: Popisuje, jak fungují koncové body služby virtuální sítě pro váš server Azure Database for MySQL.
-services: mysql
 author: mbolz
 ms.author: mbolz
 manager: jhubbard
-editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 1c159e5c86f713f1f7dbce5cd96cd2ce5d3c22fb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437965"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53535270"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Použití koncové body služeb virtuální sítě a pravidel pro službu Azure Database for MySQL
 

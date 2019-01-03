@@ -207,9 +207,9 @@ Pomocí následující tabulky Identifikujte adresu URL pro každé umístění:
 
 | **location** | **Adresa URL** |
 | --- | --- |
-| Střed USA – sever |ncus-jobruntimedata-prod-su1.azure-automation.net |
+| Středoseverní USA |ncus-jobruntimedata-prod-su1.azure-automation.net |
 | Západní Evropa |we-jobruntimedata-prod-su1.azure-automation.net |
-| Střed USA – jih |scus-jobruntimedata-prod-su1.azure-automation.net |
+| Středojižní USA |scus-jobruntimedata-prod-su1.azure-automation.net |
 | Východní USA 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | Střední Kanada |cc-jobruntimedata-prod-su1.azure-automation.net |
 | Severní Evropa |ne-jobruntimedata-prod-su1.azure-automation.net |
@@ -222,9 +222,9 @@ Pomocí následující tabulky Identifikujte adresu URL pro každé umístění:
 
 | **location** | **Adresa URL** |
 | --- | --- |
-| Střed USA – sever |ncus-agentservice-prod-1.azure-automation.net |
+| Středoseverní USA |ncus-agentservice-prod-1.azure-automation.net |
 | Západní Evropa |we-agentservice-prod-1.azure-automation.net |
-| Střed USA – jih |scus-agentservice-prod-1.azure-automation.net |
+| Středojižní USA |scus-agentservice-prod-1.azure-automation.net |
 | Východní USA 2 |eus2-agentservice-prod-1.azure-automation.net |
 | Střední Kanada |cc-agentservice-prod-1.azure-automation.net |
 | Severní Evropa |ne-agentservice-prod-1.azure-automation.net |

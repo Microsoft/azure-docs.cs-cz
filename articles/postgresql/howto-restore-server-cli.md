@@ -1,21 +1,18 @@
 ---
-title: Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL | Dokumentace Microsoftu
+title: Zálohování a obnovení serveru ve službě Azure Database for PostgreSQL
 description: Informace o zálohování a obnovení serveru ve službě Azure Database for PostgreSQL pomocí rozhraní příkazového řádku Azure.
-services: postgresql
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: e73fe4929d889da768328be22a3e23603dab5be6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 93bece582975f5149ea8ab5cb85d4d508613d066
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970749"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536351"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí Azure CLI
 
@@ -71,9 +68,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 ```
 
 `az postgres server restore` Příkaz vyžaduje následující parametry:
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, které se nachází na zdrojovém serveru.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, které se nachází na zdrojovém serveru.  |
 | jméno | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Vyberte bod v čase, chcete-li obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Například můžete použít vlastní místní časové pásmo, jako například `2018-03-13T05:59:00-08:00`. Můžete také použít formát UTC Zulu například `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Název nebo ID zdrojového serveru, ze kterého se má provést obnovení. |
@@ -110,13 +107,13 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 ```
 
 `az postgres server georestore` Příkaz requies následující parametry:
-| Nastavení | Navrhovaná hodnota | Popis  |
+| Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Název skupiny prostředků na nový server bude patřit do.|
 |jméno | mydemoserver georestored | Název nového serveru. |
 |source-server | mydemoserver | Název existujícího serveru, jehož geograficky redundantní zálohy se používají. |
 |location | eastus | Umístění nového serveru. |
-|Název skladové položky| GP_Gen4_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen4_8 mapuje pro obecné účely Gen 4 server s 8 jádry VCORE.|
+|sku-name| GP_Gen4_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen4_8 mapuje pro obecné účely Gen 4 server s 8 jádry VCORE.|
 
 
 >[!Important]

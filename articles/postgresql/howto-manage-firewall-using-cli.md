@@ -1,21 +1,18 @@
 ---
 title: Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
 description: Tento článek popisuje, jak vytvořit a spravovat Azure Database for postgresql – pravidla brány firewall pomocí příkazového řádku Azure CLI.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
-ms.devlang: azure-cli
-ms.topic: article
+ms.devlang: azurecli
+ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: 041f1c426f8f181255e315978878d146a14bc88b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 214c6c4dc3b2dd83e6bf3dfa3355ad6f6aa2eb18
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410251"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539139"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Vytvoření a správě Azure Database for postgresql – pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňují správcům spravovat přístup ke službě Azure Database for PostgreSQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro PostgreSQL pravidla brány firewall, naleznete v tématu [– Azure Database for PostgreSQL Server pravidla brány firewall](concepts-firewall-rules.md)

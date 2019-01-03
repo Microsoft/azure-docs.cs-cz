@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 491f60b55843957bf9ec904f7310ef67219ba3c5
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438638"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53578848"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly systému Linux agenta v Update Management
 
 Může být mnoho důvodů, proč počítač nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z webu Azure portal a počítače mimo Azure v [offline scénáři](#troubleshoot-offline).
+
+V následujícím seznamu jsou tři připravenosti stavy, které počítač může být v:
+
+* **Připraveno** – aktualizace agenta nasazení a byla posledního kontaktu s méně než hodinou.
+* **Odpojení** – nasazení aktualizace agenta a byl naposledy zobrazeno více než 1 hodinou.
+* **Není nakonfigurováno** – aktualizace agenta nebyl nalezen nebo nebyl dokončen registrace.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
@@ -45,7 +51,7 @@ Kontrola operačního systému, ověří, pokud funkce Hybrid Runbook Worker s n
 
 |Operační systém  |Poznámky  |
 |---------|---------|
-|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, která CentOS nemá úprav.         |
+|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, které CentOS nemá úprav.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Ubuntu 14.04 LTS, 16.04 LTS a 18.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |

@@ -1,18 +1,17 @@
 ---
 title: Query Store ve službě Azure Database for PostgreSQL
 description: Tento článek popisuje funkci Query Store ve službě Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 5b760c9148e26421c0df1ffe936365aae4971543
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379157"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546908"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sledování výkonu s Query Store
 
@@ -114,30 +113,30 @@ Toto zobrazení vrátí všechna data v dotazu Store. Existuje jeden řádek pro
 |runtime_stats_entry_id |bigint | | ID z tabulky runtime_stats_entries|
 |USER_ID    |identifikátor objektu    |pg_authid.OID  |Identifikátor objektu uživatele, který je proveden příkaz|
 |%{db_id/  |identifikátor objektu    |pg_database.OID    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
-|query_id   |bigint  || Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
-|query_sql_text |Varchar(10000)  || Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
+|query_id   |bigint  || Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
+|query_sql_text |Varchar(10000)  || Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
 |hodnotou plan_id    |bigint |   |ID plánu ještě odpovídající tento dotaz není k dispozici|
 |start_time |časové razítko  ||  Dotazy jsou agregované podle časovým intervalům - časový rozsah interval je 15 minut, ve výchozím nastavení. Toto je počáteční čas odpovídající časovém intervalu pro tuto položku.|
 |end_time   |časové razítko  ||  Koncový čas odpovídající časovém intervalu pro tuto položku.|
-|volání  |bigint  || Počet, kolikrát dotaz proveden|
-|TOTAL_TIME |dvojitou přesností   ||  Celkový počet dotazů doby spuštění, v milisekundách|
+|volání  |bigint  || Počet, kolikrát dotaz proveden|
+|TOTAL_TIME |dvojitou přesností   ||  Celkový počet dotazů doby spuštění, v milisekundách|
 |min_time   |dvojitou přesností   ||  Doba spuštění minimální dotazu v milisekundách|
 |max_time   |dvojitou přesností   ||  Doba provádění maximální dotazu v milisekundách|
 |mean_time  |dvojitou přesností   ||  Střední čas spuštění dotazu, v milisekundách|
 |stddev_time|   dvojitou přesností    ||  Směrodatná odchylka doby provádění dotazu, v milisekundách |
-|řádky   |bigint ||  Celkový počet řádků načíst vliv na jeden nebo příkaz|
-|shared_blks_hit|   bigint  ||  Celkový počet přístupů k mezipaměti bloku sdíleného příkazem|
+|řádky   |bigint ||  Celkový počet řádků načíst vliv na jeden nebo příkaz|
+|shared_blks_hit|   bigint  ||  Celkový počet přístupů k mezipaměti bloku sdíleného příkazem|
 |shared_blks_read|  bigint  ||  Celkový počet sdílených bloků čtení příkazem|
-|shared_blks_dirtied|   bigint   || Celkový počet změněných příkazem sdílené bloků |
-|shared_blks_written|   bigint  ||  Celkový počet sdílených bloků, které jsou napsané pomocí příkazu|
+|shared_blks_dirtied|   bigint   || Celkový počet změněných příkazem sdílené bloků |
+|shared_blks_written|   bigint  ||  Celkový počet sdílených bloků, které jsou napsané pomocí příkazu|
 |local_blks_hit|    bigint ||   Celkový počet přístupů k mezipaměti místním blokovým příkazem|
-|local_blks_read|   bigint   || Celkový počet místních bloků čtení příkazem|
-|local_blks_dirtied|    bigint  ||  Celkový počet změněných příkaz místní bloků|
-|local_blks_written|    bigint  ||  Celkový počet zapsaných příkaz místní bloků|
-|temp_blks_read |bigint  || Celkový počet dočasné bloky čtení příkazem|
-|temp_blks_written| bigint   || Celkový počet zapsaných pomocí příkazu temp bloků|
-|blk_read_time  |dvojitou přesností    || Celkový čas strávený příkaz bloky čtení v milisekundách (Pokud track_io_timing je povoleno, jinak hodnotu)|
-|blk_write_time |dvojitou přesností    || Celkový čas strávený příkaz psaní bloků v milisekundách (Pokud track_io_timing je povoleno, jinak hodnotu)|
+|local_blks_read|   bigint   || Celkový počet místních bloků čtení příkazem|
+|local_blks_dirtied|    bigint  ||  Celkový počet změněných příkaz místní bloků|
+|local_blks_written|    bigint  ||  Celkový počet zapsaných příkaz místní bloků|
+|temp_blks_read |bigint  || Celkový počet dočasné bloky čtení příkazem|
+|temp_blks_written| bigint   || Celkový počet zapsaných pomocí příkazu temp bloků|
+|blk_read_time  |dvojitou přesností    || Celkový čas strávený příkaz bloky čtení v milisekundách (Pokud track_io_timing je povoleno, jinak hodnotu)|
+|blk_write_time |dvojitou přesností    || Celkový čas strávený příkaz psaní bloků v milisekundách (Pokud track_io_timing je povoleno, jinak hodnotu)|
     
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 Toto zobrazení vrátí data text dotazu Query Store. Existuje jeden řádek pro každý jedinečných požadovaný dotaz.
@@ -145,7 +144,7 @@ Toto zobrazení vrátí data text dotazu Query Store. Existuje jeden řádek pro
 |**Název**|  **Typ**|   **Popis**|
 |---|---|---|
 |query_text_id  |bigint     |ID pro tabulku query_texts|
-|query_sql_text |Varchar(10000)     |Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
+|query_sql_text |Varchar(10000)     |Text reprezentativní příkazu. Různé dotazy s stejné struktury jsou Clusterované společně; Tento text je text pro první dotazů v clusteru.|
 
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje jeden řádek pro každý jedinečných databázi s ID, ID uživatele, ID dotazu a události.
@@ -154,8 +153,8 @@ Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje 
 |---|---|---|---|
 |USER_ID    |identifikátor objektu    |pg_authid.OID  |Identifikátor objektu uživatele, který je proveden příkaz|
 |%{db_id/  |identifikátor objektu    |pg_database.OID    |Identifikátor objektu databáze, ve kterém byl spuštěn příkaz|
-|query_id   |bigint     ||Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
-|event_type |text       ||Typ události, pro které čeká na back-endu|
+|query_id   |bigint     ||Interní hodnota hash, vypočítá ze strom analýzy – příkaz|
+|event_type |text       ||Typ události, pro které čeká na back-endu|
 |událost  |text       ||Název události čekání, pokud aktuálně čekají na back-endu|
 |volání  |Integer        ||Počet stejnou událost zachycena|
 
@@ -163,11 +162,11 @@ Toto zobrazení, že se vrátí čekání dat události v Query Store. Existuje 
 ### <a name="functions"></a>Functions
 Vrací hodnotu void Query_store.qs_reset()
 
-`qs_reset` zahodí všechny statistiky zatím shromážděné Query Store. Tato funkce může provádět jenom role správce serveru.
+`qs_reset` zahodí všechny statistiky zatím shromážděné Query Store. Tato funkce může provádět jenom role správce serveru.
 
 Vrací hodnotu void Query_store.staging_data_reset()
 
-`staging_data_reset` zahodí všechny statistiky Query Store (tedy data v paměti, která byla vyprázdněna nebyl dosud k databázi) shromážděné v paměti. Tato funkce může provádět jenom role správce serveru.
+`staging_data_reset` zahodí všechny statistiky Query Store (tedy data v paměti, která byla vyprázdněna nebyl dosud k databázi) shromážděné v paměti. Tato funkce může provádět jenom role správce serveru.
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 - Pokud je na serveru PostgreSQL default_transaction_read_only parametr, Query Store nelze zachytit data.

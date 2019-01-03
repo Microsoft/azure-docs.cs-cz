@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights ve verzi Preview – Diagnostika a řešení potíží | Dokumentace Microsoftu
+title: Diagnostika a řešení potíží Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Pochopit, jak Diagnostika a řešení Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e35439c80dea8ac47033464eeb57f7e9859fdcf5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275291"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556828"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostika a řešení potíží
 

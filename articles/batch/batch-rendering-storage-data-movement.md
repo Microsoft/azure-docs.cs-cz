@@ -1,17 +1,17 @@
 ---
-title: Azure Batch úložiště a data přesunu pro vykreslování
+title: Přesun úložiště a data pro vykreslování – Azure Batch
 description: Přesun možnosti úložiště a dat pro úlohy vykreslování
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: d5b006fd744e463c73ee0a32388f254017e96354
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034725"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546092"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Přesun možnosti úložiště a data pro vykreslení asset a výstupní soubory
 

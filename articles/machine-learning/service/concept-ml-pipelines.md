@@ -1,5 +1,5 @@
 ---
-title: 'Mezi kanály: optimalizovat ML pro rychlost, přenositelnost a opakovaně používat'
+title: 'Kanály: optimalizace pracovních postupů machine learning'
 titleSuffix: Azure Machine Learning service
 description: V tomto článku najdete informace o machine learningu kanály, které můžete sestavit s využitím Azure Machine Learning SDK for Python a výhody použití kanály. Kanály Machine Learning (ML) používají datoví vědci k vytváření, optimalizaci a správě svých pracovních postupů strojového učení.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e2874c4a40a2347fd47e93c99fdec7ff5e81aec1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e8532e9821501c7b10fbb47c531228e439a8b289
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308195"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556869"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Sestavit machine learning kanály ve službě Azure Machine Learning
 

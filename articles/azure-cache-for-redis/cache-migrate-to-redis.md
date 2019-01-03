@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 05/30/2017
 ms.author: wesmc
-ms.openlocfilehash: c3c1aa9abc6a7ba97bf7c95aa1c670c7239df3ab
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 5a1febb80b5d3aaf0e5da2620f1b0a35d5d1144b
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019539"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556794"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrace ze služby Managed Cache Service do mezipaměti Azure pro Redis
 Migrace vaší aplikace, které používají službu Azure Managed Cache Service k mezipaměti Azure pro Redis můžete docílit, když s minimálními změnami pro vaši aplikaci, v závislosti na službu Managed Cache Service funkcí používaných v rámci ukládání do mezipaměti aplikace. Rozhraní API jsou přesně stejné jsou podobné a velkou část vaší existující kód, který používá službu Managed Cache Service pro přístup k mezipaměti lze opětovně použít s minimálními změnami. Tento článek ukazuje, jak provést nezbytné konfigurace a aplikace se změní na migrovat aplikace Managed Cache Service pro účely mezipaměti Azure Redis a ukazuje, jak některé funkce mezipaměti Azure Redis umožňuje implementovat funkci Služba Managed Cache Service mezipaměti.
@@ -47,7 +47,7 @@ Azure Managed Cache Service a mezipaměť Azure Redis jsou podobné, ale někter
 
 | Spravované funkce služby Cache Service | Podpora spravované služby Cache Service | Mezipaměť Azure Redis podpory |
 | --- | --- | --- |
-| Pojmenované mezipaměti |Výchozí mezipaměti je nakonfigurovaný, a v mezipaměti Standard a Premium nabídky až devět dalších s názvem mezipaměti dá se v případě potřeby. |Pro Rediss Azure Cache mají Konfigurovatelný počet databází (výchozí je 16), které lze použít k implementaci podobné funkce jako pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
+| Pojmenované mezipaměti |Výchozí mezipaměti je nakonfigurovaný, a v mezipaměti Standard a Premium nabídky až devět dalších s názvem mezipaměti dá se v případě potřeby. |Azure mezipaměť Redis má Konfigurovatelný počet databází (výchozí je 16), které lze použít k implementaci podobné funkce jako pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
 | Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v mezipaměti nabídky Standard a Premium. Pokud jsou ztraceny z důvodu chyby položky, záložní kopie položky v mezipaměti jsou stále dostupné. Zápisy do sekundární mezipaměť probíhají synchronně. |Vysoká dostupnost je k dispozici Standard a Premium nabídky mezipaměti, které mají konfiguraci dva uzly primární/replika (každý horizontální oddíl mezipaměti Premium má primární/replika dvojici). Asynchronně provádí zápisy do repliky. Další informace najdete v tématu [mezipaměti Azure Redis ceny](https://azure.microsoft.com/pricing/details/cache/). |
 | Oznámení |Umožňuje klientům přijímat asynchronní oznámení, když různé operace s mezipamětí, ke kterým dochází na pojmenovanou mezipaměť. |Klientské aplikace můžou použít Redis pub/sub nebo [oznámení Keyspace](cache-configure.md#keyspace-notifications-advanced-settings) dosáhnout podobné funkce pro oznámení. |
 | Místní mezipaměť |Místně ukládá kopie objektů uložených v mezipaměti na straně klienta pro velmi rychlý přístup. |Klientské aplikace, třeba k implementaci této funkce s použitím slovníku nebo podobné datové struktury. |
@@ -130,7 +130,7 @@ Přidejte následující příkaz do horní části souboru, ve které chcete z�
 using StackExchange.Redis
 ```
 
-Pokud se tento obor názvů se nevyřeší, ujistěte se, že jste přidali balíček StackExchange.Redis NuGet, jak je popsáno v [rychlý start: použití mezipaměti Azure Redis s .NET aplikací](cache-dotnet-how-to-use-azure-redis-cache.md).
+Pokud se tento obor názvů se nevyřeší, ujistěte se, že jste přidali balíček StackExchange.Redis NuGet, jak je popsáno v [rychlý start: Použití mezipaměti Azure pro Redis s .NET aplikace](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Všimněte si, že klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.

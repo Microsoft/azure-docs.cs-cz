@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Vytvoření app - C# pro zpracování obrázků'
+title: 'Kurz: Sestavení aplikace zpracování obrazu –C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Prozkoumejte základní aplikaci Windows, který používá rozhraní API pro počítačové zpracování obrazu ve službě Microsoft Cognitive Services. Provedení OCR, vytváření miniatur a pracovat s vizuální funkce v bitové kopii.
+description: Prozkoumejte základní aplikaci Windows, který používá rozhraní API pro počítačové zpracování obrazu ve službě Microsoft Cognitive Services. Provádějte optické rozpoznávání znaků (OCR), vytvářejte miniatury a pracujte s vizuálními funkcemi obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
@@ -10,16 +10,17 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: d1fa468874cdc51bad3421f700a69f3ffb268635
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 8640d89c5fb9e38fc6c982e21147361ad690964a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342649"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584441"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Kurz: Vytvoření app - C pro zpracování obrázků&#35;
+# <a name="tutorial-build-an-image-processing-app---c35"></a>Kurz: Sestavte image zpracování aplikace - C&#35;
 
-Prozkoumejte základní aplikace Windows, která používá pro počítačové zpracování obrazu k provedení optické rozpoznávání znaků (OCR), vytváření miniatur výtisky oříznout smart plus detekovat, kategorií, značky a popisují funkce visual, včetně tváří, v obraze. Následující příklad umožňuje odeslat adresu URL obrázku nebo s místně uloženým souborem. V tomto příkladu opensourcových lze použít jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní API pro počítačové zpracování obrazu a Windows Presentation Foundation (WPF), součástí rozhraní .NET Framework.
+Prozkoumejte základní aplikace Windows, která používá pro počítačové zpracování obrazu k provedení optické rozpoznávání znaků (OCR), vytváření miniatur výtisky oříznout smart plus detekovat, kategorií, značky a popisují funkce visual, včetně tváří, v obraze. Následující příklad umožňuje odeslat adresu URL obrázku nebo místně uložený soubor. V tomto příkladu opensourcových lze použít jako šablonu pro vytvoření vlastní aplikace pro Windows pomocí rozhraní API pro počítačové zpracování obrazu a Windows Presentation Foundation (WPF), součástí rozhraní .NET Framework.
 
 > [!div class="checklist"]
 > * Získání ukázkové aplikace z Githubu
@@ -32,7 +33,7 @@ Prozkoumejte základní aplikace Windows, která používá pro počítačové z
 Prozkoumáte ukázkovou aplikaci, ujistěte se, že splnění následujících požadavků:
 
 * Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
-* Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného přejděte do tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Musíte mít klíč předplatného pro počítačové zpracování obrazu. Abyste získali klíč předplatného, přejděte k tématu [Jak získat klíče předplatného](../Vision-API-How-to-Topics/HowToSubscribe.md).
 
 ## <a name="get-the-sample-app"></a>Získání ukázkové aplikace
 
@@ -98,10 +99,10 @@ Můžete spustit ukázkovou aplikaci, pokud chcete zobrazit, jak komunikuje se s
    |Získat miniaturu | Používá [získat miniaturu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) operaci pro vygenerování miniaturu pro místní nebo vzdálené image. |
 
    > [!IMPORTANT]
-   > Společnost Microsoft obdrží Image nahrajete a může je použít ke zkvalitnění rozhraní API pro počítačové zpracování obrazu a související služby. Odešlete image, potvrzujete, že jste postupovali podle našich [Developer chování](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
+   > Společnost Microsoft obdrží Image nahrajete a může je použít ke zkvalitnění rozhraní API pro počítačové zpracování obrazu a související služby. Odesláním obrázku potvrzujete, že jste dodržovali naše [pravidla chování vývojářů](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
 
    Na následujícím snímku obrazovky ukazuje na stránku pro scénář analyzovat bitové kopie k dispozici po analýze Ukázkový obrázek.
-   ![Analýza stránce scénář Image](../Images/Analyze_Image_Example.PNG)
+   ![Snímek obrazovky stránky analyzovat image](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>Prozkoumat ukázkové aplikace
 

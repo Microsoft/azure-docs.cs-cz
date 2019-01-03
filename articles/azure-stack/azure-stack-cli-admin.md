@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: e9309f8cb46b31ded46b705308465ac6f6c89204
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c2827a4badd61aeb8de556795834dee39769e85e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585182"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554499"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku
 
@@ -38,7 +38,7 @@ Následující části popisují, jak získat tyto hodnoty.
 Kořenový certifikát certifikační Autority Azure Stack najdete na vývojové sadě a virtuálnímu počítači tenanta, na kterém běží ve vývojovém prostředí sady. Export kořenového certifikátu služby Azure Stack ve formátu PEM, přihlaste se k development kit nebo tomuto virtuálnímu počítači a spusťte následující skript:
 
 ```powershell
-$label = "AzureStackSelfSignedRootCert"
+$label = "<Your Azure Stack CA root certificate name>"
 Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)

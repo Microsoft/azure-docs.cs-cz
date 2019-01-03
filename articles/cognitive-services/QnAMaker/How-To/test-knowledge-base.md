@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 5b0dfe1753686015c88bdc1214273354dd00c958
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2ad8d4fa04801996364755d1e0270a6509912679
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086300"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581942"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testování znalostní báze interaktivně v nástroje QnA Maker
 

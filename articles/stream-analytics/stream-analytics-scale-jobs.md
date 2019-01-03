@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: f7567d0c3bfdfc7bd44b918c9f2feda7499386e8
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4307da2e74846507cafb9f767a6ccae855e42a2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984075"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554669"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálovat úlohy Azure Stream Analytics pro zvýšení prostupnosti
 Tento článek ukazuje, jak ladit dotazu Stream Analytics pro zvýšení propustnosti pro úlohy Stream Analytics. Následující příručky můžete použít ke škálování úlohy zpracování větší zátěže a využijte výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, větší množství paměti).
@@ -34,7 +34,7 @@ Pokud napříč oddíly vstupu je ze své podstaty plně paralelizovat dotaz, m�
 4.  Po určení omezení 6 SU úlohy, které je dosáhnout, je lze potom údaje extrapolovat lineárně kapacitu zpracování u úlohy přidávat další služby SUs, za předpokladu, že nemáte žádné nerovnoměrnou distribucí dat., které provádí některé oddíl "horkými".
 
 > [!NOTE]
-> Zvolte správný počet jednotek streamování: protože Stream Analytics vytvoří uzel zpracování pro přidání jednotlivých 6 SU, je nejlepší počet uzlů dělitel počtu vstupních oddílů, aby oddíly můžete rovnoměrně rozdělené mezi uzly.
+> Zvolte správný počet jednotek streamování: Protože Stream Analytics vytvoří uzel zpracování každé 6 su přidali, doporučujeme provést z počtu uzlů dělitel počtu oddílů vstupní, tak oddíly můžete rovnoměrně rozdělené mezi uzly.
 > Například máte měří vaše 6 SU úloh lze dosáhnout 4 MB/s a spočítat vstupního oddílu a rychlost zpracování je 4. Je možné spustit úlohu s 12 SU k dosažení zpracovaných přibližně 8 MB/s nebo 24 SU k dosažení 16 MB/s. Potom se můžete rozhodnout, kdy se má zvýšit číslo SU pro úlohu na jakou hodnotu jako funkce vstupní frekvence.
 
 
@@ -48,15 +48,16 @@ Pokud váš dotaz není jednoduše paralelně zpracovatelné, provedením násle
 
 Dotaz:
 
-    WITH Step1 AS (
-    SELECT COUNT(*) AS Count, TollBoothId, PartitionId
-    FROM Input1 Partition By PartitionId
-    GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
-    )
-    SELECT SUM(Count) AS Count, TollBoothId
-    FROM Step1
-    GROUP BY TumblingWindow(minute, 3), TollBoothId
-
+ ```SQL
+ WITH Step1 AS (
+ SELECT COUNT(*) AS Count, TollBoothId, PartitionId
+ FROM Input1 Partition By PartitionId
+ GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+ )
+ SELECT SUM(Count) AS Count, TollBoothId
+ FROM Step1
+ GROUP BY TumblingWindow(minute, 3), TollBoothId
+ ```
 Ve výše uvedený dotaz jsou počítání automobilů na stánku linka na oddíl a přidání ze všech oddílů počet společně.
 
 Jakmile oddíly pro každý oddíl v kroku přidělit až 6 SU, každý oddíl s 6 SU je maximum, takže každý oddíl může být umístěn v jeho vlastní zpracování uzlu.

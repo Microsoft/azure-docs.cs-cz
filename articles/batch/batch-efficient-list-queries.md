@@ -3,7 +3,7 @@ title: Návrh efektivní seznamové dotazy – Azure Batch | Dokumentace Microso
 description: Zvýšení výkonu pomocí filtrování dotazů při žádosti o prostředky služby Batch, jako jsou fondy, úlohy, úkoly a výpočetních uzlů.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 06/26/2018
-ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6bc31e8541797930583e41fb6efbb6473cd4b894
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 12/07/2018
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004451"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537897"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy do seznamu prostředků služby Batch
 
@@ -106,9 +106,9 @@ Vyberte řetězec omezuje hodnoty vlastností, které pro každou položku jsou 
 ## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v Batch .NET
 V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] třída se používá pro poskytnutí filtr, vyberte a rozbalte řetězce do seznamu operace. ODataDetailLevel třída má tři vlastnosti veřejného řetězce, které lze zadaný v konstruktoru, nebo nastavit přímo na objekt. Pak předáte ODataDetailLevel objektu jako parametr do různých seznam operací, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: omezit počet položek, které jsou vráceny.
+* [ODATADetailLevel][odata].[ FilterClause][odata_filter]: Omezte počet položek, které jsou vráceny.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Zadejte každou položku jsou vráceny hodnot vlastností.
-* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: načtení dat pro všechny položky v jediné rozhraní API volat bez samostatné volání pro každou položku.
+* [ODATADetailLevel][odata].[ ExpandClause][odata_expand]: Načíst data pro všechny položky v jednom volání rozhraní API namísto samostatné volání pro každou položku.
 
 Následující fragment kódu používá rozhraní Batch .NET API pro efektivní dotazy pro statistiku konkrétní sadu fondů služby Batch. V tomto scénáři má uživatel Batch testovacích i produkčních fondy. Test fondu identifikátorů mají předponu "test" a produkční fondu identifikátorů mají předponu "produkční". V tomto fragmentu kódu *myBatchClient* je správně inicializována instancí [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) třídy.
 
@@ -147,8 +147,8 @@ List<CloudPool> testPools =
 Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jejich protějšky rozhraní REST API, v názvu i v případě. Následující tabulka obsahuje mapování mezi protějšky .NET a rozhraní REST API.
 
 ### <a name="mappings-for-filter-strings"></a>Mapování pro řetězce filtru
-* **Seznam metod rozhraní .NET**: každá z metod rozhraní .NET API v tomto sloupci přijímá [ODATADetailLevel] [ odata] objektu jako parametr.
-* **Požadavků na seznam REST**: stránka každý rozhraní REST API propojené v tomto sloupci obsahuje tabulku, která určuje vlastnosti a operace, které jsou povoleny v *filtr* řetězce. Použijete tyto názvy vlastností a operací při vytváření [ODATADetailLevel.FilterClause] [ odata_filter] řetězec.
+* **Seznam metod rozhraní .NET**: Každá z metod rozhraní .NET API v tomto sloupci přijímá [ODATADetailLevel] [ odata] objektu jako parametr.
+* **Požadavků na seznam REST**: Každá stránka rozhraní REST API propojené v tomto sloupci obsahuje tabulku, která určuje vlastnosti a operace, které jsou povoleny v *filtr* řetězce. Použijete tyto názvy vlastností a operací při vytváření [ODATADetailLevel.FilterClause] [ odata_filter] řetězec.
 
 | Seznam metod rozhraní .NET | Požadavků na seznam REST |
 | --- | --- |
@@ -164,8 +164,8 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 | [PoolOperations.ListPools][net_list_pools] |[Seznam fondů v účtu služby][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Mapování pro výběr řetězce
-* **Batch .NET typy**: typy rozhraní API .NET služby Batch.
-* **Rozhraní REST API služby entity**: jednu nebo více tabulek, které uvádějí názvy vlastností rozhraní REST API pro typ nastavení obsahuje každá stránka v tomto sloupci. Tyto názvy vlastností se používají při konstrukci *vyberte* řetězce. Tyto stejné názvy vlastností použijete při vytváření [ODATADetailLevel.SelectClause] [ odata_select] řetězec.
+* **Batch .NET typy**: Typy rozhraní .NET API služby batch.
+* **Rozhraní REST API služby entity**: Každá stránka v tomto sloupci obsahuje jednu nebo více tabulek, které uvádějí názvy vlastností rozhraní REST API pro typ. Tyto názvy vlastností se používají při konstrukci *vyberte* řetězce. Tyto stejné názvy vlastností použijete při vytváření [ODATADetailLevel.SelectClause] [ odata_select] řetězec.
 
 | Typy rozhraní .NET služby batch | Rozhraní REST API služby entity |
 | --- | --- |
@@ -246,9 +246,9 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [Maximalizujte využití prostředků výpočetní služby Azure Batch s souběžné úlohy uzlu](batch-parallel-node-tasks.md) jiného článku souvisí s výkonu aplikace Batch. Některé typy úloh může přinést spuštění paralelní úlohy na větší – menší – počet výpočetních uzlů, ale. Podívejte se [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku o v takové situaci.
 
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
 [github_samples]: https://github.com/Azure/azure-batch-samples

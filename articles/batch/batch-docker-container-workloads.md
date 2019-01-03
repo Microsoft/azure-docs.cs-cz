@@ -1,5 +1,5 @@
 ---
-title: Úlohy kontejneru v Azure Batch | Dokumentace Microsoftu
+title: Úlohy kontejneru – Azure Batch | Dokumentace Microsoftu
 description: Zjistěte, jak ke spouštění aplikací z imagí kontejnerů v Azure Batch.
 services: batch
 author: dlepow
@@ -10,12 +10,13 @@ ms.topic: article
 ms.workload: na
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1d915482a3a8b1f6416b50ab52de997a9d33294f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.custom: seodec18
+ms.openlocfilehash: 4d4dc5d01959406e71859fcbde6de1e36b5871aa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262427"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540992"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spouštění aplikací typu kontejner v Azure Batch
 
@@ -29,16 +30,16 @@ Pomocí kontejnerů poskytuje snadný způsob, jak spouštět úlohy Batch bez n
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Verze sady SDK**: The sad SDK služby Batch podporu imagí kontejnerů v době následující verze:
+* **Verze sady SDK**: Sady SDK služby Batch podporují imagí kontejnerů v době následující verze:
     * Rozhraní batch REST API verze 2017-09-01.6.0
     * Batch .NET SDK verze 8.0.0
     * Batch Python SDK verze 4.0
     * Batch Java SDK verze 3.0
     * Batch SDK pro Node.js verze 3.0
 
-* **Účty**: ve vašem předplatném Azure, budete muset vytvořit účet Batch a volitelně účtu služby Azure Storage.
+* **Účty**: Ve vašem předplatném Azure budete muset vytvořit účet Batch a volitelně účtu služby Azure Storage.
 
-* **Podporované image virtuálního počítače**: kontejnery jsou podporovány pouze v fondy vytvořené s konfigurací virtuálního počítače z imagí najdete v části "podporované Image virtuálních počítačů." Pokud zadáte vlastní image, naleznete v tématu požadavky v oblasti a důležité informace v následující části [použít spravovanou vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md). 
+* **Podporované image virtuálního počítače**: Kontejnery jsou podporovány pouze v fondy vytvořené s konfigurací virtuálního počítače z imagí najdete v části "podporované Image virtuálních počítačů." Pokud zadáte vlastní image, naleznete v tématu požadavky v oblasti a důležité informace v následující části [použít spravovanou vlastní image k vytvoření fondu virtuálních počítačů](batch-custom-images.md). 
 
 ### <a name="limitations"></a>Omezení
 

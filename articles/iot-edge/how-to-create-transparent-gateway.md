@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094351"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556216"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -41,7 +41,7 @@ Následující kroky vás provedou procesem vytváření certifikátů a jejich 
 ## <a name="prerequisites"></a>Požadavky
 
 Zařízení Azure IoT Edge jako bránu nakonfigurovat. Vývojovém počítači nebo virtuální počítač můžete použít jako zařízení IoT Edge s kroky pro následující operační systémy:
-* [Windows](./how-to-install-iot-edge-windows-with-windows.md)
+* [Windows](./how-to-install-iot-edge-windows.md)
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
@@ -60,9 +60,9 @@ Nainstalujte OpenSSL pro Windows na počítači, který používáte, čímž vy
    >[!NOTE]
    >Pokud už máte nainstalovaný na zařízení s Windows OpenSSL, můžete tento krok přeskočte, ale ujistěte se, že tento openssl.exe je k dispozici ve vaší proměnné prostředí PATH.
 
-* **Jednodušší:** stáhněte a nainstalujte všechny [binárních souborů třetí strany OpenSSL](https://wiki.openssl.org/index.php/Binaries), například z [tento projekt na SourceForge](https://sourceforge.net/projects/openssl/). Přidejte úplná cesta k openssl.exe do proměnné prostředí PATH. 
+* **Jednodušší:** Stáhněte a nainstalujte všechny [binárních souborů třetí strany OpenSSL](https://wiki.openssl.org/index.php/Binaries), například z [tento projekt na SourceForge](https://sourceforge.net/projects/openssl/). Přidejte úplná cesta k openssl.exe do proměnné prostředí PATH. 
    
-* **Doporučeno:** stáhnout zdrojový kód OpenSSL a sestavit binární soubory na svém počítači sami nebo prostřednictvím [vcpkg](https://github.com/Microsoft/vcpkg). Níže uvedené pokyny používají vcpkg stáhnout zdrojový kód, kompilace a nainstalujte OpenSSL na svůj počítač s Windows pomocí jednoduchých kroků.
+* **Doporučené:** Stáhněte si zdrojový kód OpenSSL a sestavit binární soubory na svém počítači sami nebo prostřednictvím [vcpkg](https://github.com/Microsoft/vcpkg). Níže uvedené pokyny používají vcpkg stáhnout zdrojový kód, kompilace a nainstalujte OpenSSL na svůj počítač s Windows pomocí jednoduchých kroků.
 
    1. Přejděte do adresáře, kam chcete nainstalovat vcpkg. Budeme odkazovat na tento adresář jako  *\<VCPKGDIR >*. Postupujte podle pokynů ke stažení a instalaci [vcpkg](https://github.com/Microsoft/vcpkg).
    

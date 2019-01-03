@@ -3,17 +3,15 @@ title: Připojení aplikace ke službě Azure Database pro MariaDB
 description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení k Azure Database pro MariaDB, včetně technologie ADO.NET (C#), JDBC, Node.js, rozhraní ODBC, PHP, Python nebo Ruby.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 706bf395df98bd78fa36273a4948a11d4b59067d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70cd25ff63101fa2a477cde2502d5d286b289366
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967927"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536570"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací ke službě Azure Database pro MariaDB
 Toto téma uvádí typy řetězce připojení, které jsou podporovány službou Azure Database pro MariaDB, spolu s příklady a šablony. V připojovacím řetězci může mít různé parametry a nastavení.
@@ -64,7 +62,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o řetězci připojení z webu Azure portal
-V [webu Azure portal](https://portal.azure.com), přejděte k Azure Database pro MariaDB server a pak klikněte na tlačítko **připojovací řetězce** zobrazíte seznam řetězců pro vaši instanci: ![Connection řetězce podokně ve službě Azure portál](./media/howto-connection-strings/connection-strings-on-portal.png)
+V [webu Azure portal](https://portal.azure.com), přejděte k Azure Database pro MariaDB server a pak klikněte na tlačítko **připojovací řetězce** zobrazíte seznam řetězců pro vaši instanci: ![V podokně připojovací řetězce na webu Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Řetězec obsahuje podrobnosti, jako jsou ovladače, server a další databáze parametry připojení. Upravte tyto příklady použití vlastní parametry, jako je například název databáze, heslo a tak dále. Potom můžete tento řetězec pro připojení k serveru z vašeho kódu a aplikací.
 

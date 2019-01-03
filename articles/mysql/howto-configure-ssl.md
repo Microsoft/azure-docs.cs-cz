@@ -1,27 +1,24 @@
 ---
 title: Konfigurace připojení SSL pro zabezpečené připojení k Azure Database for MySQL
 description: Pokyny, jak správně nakonfigurovat – Azure Database for MySQL a přidružených aplikací, aby správně používaly připojení SSL
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 5787d49623862654a7ef906e8f75ac822b25c0e3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 075f20027153eb9adf5c0daedea7cf5c0b515ee4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803218"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537031"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
 Azure Database for MySQL podporuje připojení vašeho serveru Azure Database for MySQL pro klientské aplikace pomocí vrstvy SSL (Secure Sockets). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
 
-## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: Získání certifikátu SSL
+## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: Získat certifikát SSL
 Stáhněte si certifikát nutný pro komunikaci pomocí protokolu SSL na váš server Azure Database for MySQL z [ https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem ](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místním disku (v tomto kurzu používá c:\ssl třeba).
-**Aplikace Microsoft Internet Explorer a Microsoft Edge:** po dokončení stahování, přejmenovat na BaltimoreCyberTrustRoot.crt.pem certifikát.
+**Microsoft Internet Explorer nebo Microsoft Edge:** Po dokončení stahování certifikát přejmenujte BaltimoreCyberTrustRoot.crt.pem.
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: Vytvoření vazby SSL
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>Připojení k serveru pomocí aplikace MySQL Workbench přes protokol SSL
@@ -34,7 +31,7 @@ Dalším způsobem, jak vytvořit vazbu certifikátu SSL je použití rozhraní 
 mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
-## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3: Vynucení připojení SSL v Azure 
+## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Krok 3:  Vynucení připojení SSL v Azure 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 Pomocí webu Azure portal, navštivte vašeho serveru Azure Database for MySQL a potom klikněte na **zabezpečení připojení**. Povolit nebo zakázat pomocí přepínacího tlačítka **vynucování SSL připojení** nastavení a potom klikněte na **Uložit**. Společnost Microsoft doporučuje vždy povolit **vynucování SSL připojení** nastavení pro zvýšení zabezpečení.
 ![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
@@ -45,12 +42,12 @@ Můžete povolit nebo zakázat **vynucení ssl** parametr pomocí hodnot povolen
 az mysql server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
-## <a name="step-4-verify-the-ssl-connection"></a>Krok 4: Ověření připojení protokolem SSL
+## <a name="step-4-verify-the-ssl-connection"></a>Krok 4: Ověřte připojení protokolem SSL
 Spustit mysql **stav** příkazu ověřte, zda jste se připojili k MySQL serveru pomocí SSL:
 ```dos
 mysql> status
 ```
-Ověřte připojení zašifrují kontrolou výstupu by se zobrazit: **SSL: šifer používaných je AES256 SHA** 
+Potvrďte, že připojení je zašifrován kontrolou výstupu by se zobrazit:  **PROTOKOL SSL: Šifrování používá je AES256 SHA** 
 
 ## <a name="sample-code"></a>Ukázka kódu
 Pokud chcete navázat zabezpečené připojení ke službě Azure Database for MySQL přes SSL z vaší aplikace, podívejte se na následující ukázky kódu:

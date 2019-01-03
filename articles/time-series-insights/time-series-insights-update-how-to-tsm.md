@@ -1,5 +1,5 @@
 ---
-title: Modelování dat Azure Time Series Insights – modelování dat v Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+title: Modelování dat v Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Vysvětlení modelování dat v Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: e68bc01d2c0781333454fa753992d0136fac0c06
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1686b52c9dacf5c78335f76bd19b41c4c7d15cee
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269086"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555400"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Modelování dat v Azure čas Series Insights ve verzi Preview
 

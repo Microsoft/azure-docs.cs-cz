@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4e30b143a11e35fc83103abfa03e3fb7f29cf9dc
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270123"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546857"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Oznámení o plánované údržbě pro škálovací sady virtuálních počítačů
 
@@ -32,7 +32,7 @@ Azure provádí pravidelné aktualizace zvýšit spolehlivost, výkon a zabezpe�
 
 Plánované údržby, které vyžaduje restartování počítače je naplánováno ve vlnách. Každé vlně má jiný rozsah (oblasti):
 
-- Vlnu začíná oznámení pro zákazníky. Ve výchozím nastavení odešle se oznámení na předplatné vlastník a spoluvlastníci. Můžete přidat příjemce a možnosti zasílání zpráv, jako je e-mail, SMS a webhooky pro oznámení pomocí služby Azure [upozornění protokolu aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).  
+- Vlnu začíná oznámení pro zákazníky. Ve výchozím nastavení odešle se oznámení na předplatné vlastník a spoluvlastníci. Můžete přidat příjemce a možnosti zasílání zpráv, jako je e-mail, SMS a webhooky pro oznámení pomocí služby Azure [upozornění protokolu aktivit](../azure-monitor/platform/activity-logs-overview.md).  
 - S oznámením *samoobslužné služby okno* je k dispozici. Během tohoto časového období zjistíte, které vaše virtuální počítače jsou uvedeny ve zprávě the wave. Podle svých potřeb plánování můžete aktivně začít s údržbou.
 - Po okno samoobslužných služeb *plánované časové období údržby* začíná. Azure někdy během intervalu plánuje a může požadovaná údržba se vztahuje k vašemu virtuálnímu počítači. 
 
@@ -95,7 +95,7 @@ Když je naplánováno vlny plánované údržby, můžete zobrazit seznam šká
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Oznámení a výstrahy na portálu
 
-Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Příjemci a kanály pro tuto komunikaci můžete přidat tak, že vytvoříte upozornění protokolu aktivit. Další informace najdete v tématu [monitorovat aktivitu předplatného se protokol aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure komunikuje plánu kvůli plánované údržbě e-mailem do skupiny vlastník a spoluvlastníci předplatného. Příjemci a kanály pro tuto komunikaci můžete přidat tak, že vytvoříte upozornění protokolu aktivit. Další informace najdete v tématu [monitorovat aktivitu předplatného se protokol aktivit Azure](../azure-monitor/platform/activity-logs-overview.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **monitorování**. 

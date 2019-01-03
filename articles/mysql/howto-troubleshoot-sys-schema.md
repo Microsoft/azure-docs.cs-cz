@@ -1,20 +1,17 @@
 ---
 title: Postup použití sys_schema pro optimalizaci výkonu a údržby databáze ve službě Azure Database for MySQL
 description: Tento článek popisuje, jak pomocí sys_schema můžete najít problémy s výkonem a udržovat databáze ve službě Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/01/2018
-ms.openlocfilehash: 1e10e3b1b5f4518732408f254eb5767acb8485c6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 993c77056c09c1dc21d5317ddbfe8e937341718d
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446903"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542845"
 ---
 # <a name="how-to-use-sysschema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Jak používat sys_schema pro výkon ladění a údržby databáze ve službě Azure Database for MySQL
 
@@ -24,15 +21,15 @@ MySQL performance_schema, první dostupná v MySQL 5.5, poskytuje instrumentace 
 
 Existují 52 zobrazení v sys_schema a každé zobrazení má jednu z následující předpony:
 
-- V/v nebo Host_summary: vstupně-výstupní operace související s latencí.
+- Host_summary nebo vstupně-výstupní operace: Vstupně-výstupní operace související s latencí.
 - InnoDB: Stav InnoDB vyrovnávací paměti a zámky.
 - Paměť: Využití paměti hostitele a uživatelé.
-- : Schéma související informace o schématu, Jako je například automatické zvyšování čísla indexů, atd.
-- Příkaz: Informace o příkazech SQL; může být příkaz, který je v skenování celé tabulky nebo dlouhé době zpracování dotazu.
+- Schéma: Schéma související informace, například automatické zvyšování čísla indexů, atd.
+- příkaz: Informace o příkazech SQL; může být příkaz, který je v skenování celé tabulky nebo dlouhé době zpracování dotazu.
 - Uživatel: Prostředky spotřebované a seskupených podle uživatele. Příklady souborů vstupně-výstupních operací, připojení a paměti.
-- Čekání: Počkejte, než událostí seskupených podle hostitele nebo uživatele.
+- Počkej: Počkejte, než událostí seskupených podle hostitele nebo uživatele.
 
-Nyní Pojďme se podívat na některé běžné vzory používání sys_schema. Než začneme, vzory používání budete seskupit do dvou kategorií: **optimalizace výkonu** a **databáze údržby**.
+Nyní Pojďme se podívat na některé běžné vzory používání sys_schema. Než začneme budete seskupíme vzory používání do dvou kategorií: **Optimalizace výkonu** a **databáze údržby**.
 
 ## <a name="performance-tuning"></a>Ladění výkonu
 
@@ -48,7 +45,7 @@ Protože – Azure Database for MySQL škáluje vstupně-výstupní operace s oh
 
 ### <a name="sysschematableswithfulltablescans"></a>*sys.schema_tables_with_full_table_scans*
 
-Bez ohledu na pečlivé plánování, může způsobit mnoho dotazů stále prohledávání celé tabulky. Další informace o typech indexů a optimalizaci jejich, najdete v tomto článku: [řešení potíží s výkonem dotazů](./howto-troubleshoot-query-performance.md). Prohledávání celé tabulky jsou náročná a snížit výkon vaší databáze. Je nejrychlejší způsob, jak najít tabulky s skenování celé tabulky dotaz *sys.schema_tables_with_full_table_scans* zobrazení.
+Bez ohledu na pečlivé plánování, může způsobit mnoho dotazů stále prohledávání celé tabulky. Další informace o typech indexů a optimalizaci jejich najdete v tomto článku: [Řešení potíží s výkonem dotazů](./howto-troubleshoot-query-performance.md). Prohledávání celé tabulky jsou náročná a snížit výkon vaší databáze. Je nejrychlejší způsob, jak najít tabulky s skenování celé tabulky dotaz *sys.schema_tables_with_full_table_scans* zobrazení.
 
 ![prohledávání celé tabulky](./media/howto-troubleshoot-sys-schema/full-table-scans.png)
 

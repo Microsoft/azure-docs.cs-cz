@@ -1,19 +1,20 @@
 ---
-title: Zřízení fondu Azure Batch ve službě virtual network | Dokumentace Microsoftu
+title: Zřízení fondu ve virtuální síti – Azure Batch | Dokumentace Microsoftu
 description: Postup vytvoření fondu služby Batch ve virtuální síti Azure tak, aby výpočetních uzlů můžete zabezpečeně komunikovat s jiným virtuálním počítačům v síti, například souborový server.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: danlep
-ms.openlocfilehash: ef37d482e86e4ae05d3f14c78404dc395792b236
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.author: lahugh
+ms.custom: seodec18
+ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091948"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543901"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu služby Azure Batch ve virtuální síti
 
@@ -37,7 +38,7 @@ Fond služby Azure Batch má nastavení, které povolí výpočetních uzlů kom
 
 ## <a name="create-a-pool-with-a-vnet-in-the-portal"></a>Vytvoření fondu pomocí virtuální sítě na portálu
 
-Po vytvoření virtuální sítě a přiřazené podsítě, můžete vytvořit fond služby Batch pomocí této virtuální síti. Postupujte podle těchto kroků můžete vytvořit fond z portálu Azure portal: 
+Po vytvoření virtuální sítě a přiřazené podsítě, můžete vytvořit fond služby Batch pomocí této virtuální síti. Postupujte podle těchto kroků můžete vytvořit fond z portálu Azure portal: 
 
 1. Na webu Azure Portal přejděte ke svému účtu Batch. Tento účet musí být ve stejném předplatném a oblasti jako skupinu prostředků obsahující virtuální síť, kterou chcete použít. 
 2. V **nastavení** na levé straně vyberte okno **fondy** položky nabídky.

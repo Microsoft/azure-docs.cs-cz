@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dddb42f53d4bb59113df937799bd4de10d31491c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5102f2b43819c279d0087754b29a616812e5a5f2
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338775"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53556556"
 ---
-# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Postupy: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace
+# <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Průvodce: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C jako krok Orchestrace
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -33,7 +33,7 @@ IEF odesílá data jako deklarace identity a přijímá data zpět v deklaracíc
 
 Přijaté deklarací identity můžete použít později změnit tok spouštění.
 
-Můžete také navrhnout zásahu jako profil ověření. Další informace najdete v tématu [názorný postup: integrace rozhraní REST API deklarací výměny na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md).
+Můžete také navrhnout zásahu jako profil ověření. Další informace najdete v tématu [názorný postup: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele](active-directory-b2c-rest-api-validation-custom.md).
 
 Tento scénář je, že když uživatel provede úpravy profilu, chceme:
 
@@ -45,7 +45,7 @@ Tento scénář je, že když uživatel provede úpravy profilu, chceme:
 
 - Klient služby Azure AD B2C nakonfigurovaný tak, aby dokončit místní účet přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 - Koncový bod rozhraní REST API pro interakci s. Tento návod používá aplikace webhooku jednoduchou funkci Azure jako příklad.
-- *Doporučené*: dokončení [rozhraní REST API deklarací návod exchange jako krok ověření](active-directory-b2c-rest-api-validation-custom.md).
+- *Doporučené*: Dokončení [rozhraní REST API deklarací návod exchange jako krok ověření](active-directory-b2c-rest-api-validation-custom.md).
 
 ## <a name="step-1-prepare-the-rest-api-function"></a>Krok 1: Příprava – funkce rozhraní REST API
 
@@ -79,7 +79,7 @@ return request.CreateResponse<ResponseContent>(
 
 Aplikaci Azure function app umožňuje snadno získat adresu URL funkce, která obsahuje identifikátor konkrétní funkce. V takovém případě je adresa URL: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Můžete ho použít pro testování.
 
-## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Krok 2: Konfigurace jako technický profil v souboru TrustFrameworExtensions.xml výměna deklarací identit RESTful API
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Krok 2: Výměna deklarací identit RESTful API nakonfigurovat jako technický profil v souboru TrustFrameworExtensions.xml
 
 Technický profil je úplná konfigurace exchange požadované službou RESTful. Otevřete soubor TrustFrameworkExtensions.xml a přidejte následující fragment kódu XML uvnitř `<ClaimsProvider>` elementu.
 
@@ -97,6 +97,7 @@ Technický profil je úplná konfigurace exchange požadované službou RESTful.
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==</Item>
                 <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
                 <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="email" />
@@ -114,7 +115,7 @@ Technický profil je úplná konfigurace exchange požadované službou RESTful.
 
 `<OutputClaims>` Element definuje deklarace, které IEF bude očekávat od služby REST. Bez ohledu na počet deklarace identity získané IEF bude používat jenom ty, které jsou identifikovány tady. V tomto příkladu se deklarace identity přijata jako `city` budou zmapována do IEF deklarace identity volá `city`.
 
-## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 3: Přidejte novou deklaraci `city` schématu souboru TrustFrameworkExtensions.xml
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Krok 3: Přidá novou deklaraci `city` schématu souboru TrustFrameworkExtensions.xml
 
 Deklarace identity `city` není ještě definovány kdekoli v našich schématu. Ano, přidejte definici uvnitř elementu `<BuildingBlocks>`. Můžete najít tento prvek na začátku souboru TrustFrameworkExtensions.xml.
 
@@ -211,7 +212,7 @@ Poslední XML pro cestu uživatele by měl vypadat nějak takto:
 </UserJourney>
 ```
 
-## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 5: Přidání deklarace identity `city` k předávající straně zásad souborů, takže deklarace identity se odešlou do vaší aplikace
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Krok 5: Přidat deklaraci identity `city` k předávající straně zásad souborů, takže deklarace identity se odešlou do vaší aplikace
 
 Upravte soubor ProfileEdit.xml předávající stranu a upravovat `<TechnicalProfile Id="PolicyProfile">` prvek přidejte následující: `<OutputClaim ClaimTypeReferenceId="city" />`.
 

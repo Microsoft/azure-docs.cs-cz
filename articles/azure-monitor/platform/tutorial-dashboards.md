@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 417f542bcf1711b2ac8e986663353e29a3705fb3
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c6bcc5a7948e87a8b887bd0ebd3abc8fc3d3a517
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388787"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545310"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostické protokoly Azure
 
-[Diagnostické protokoly Azure monitoru](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) jsou protokoly generované službami Azure, které popisují operace z těchto služeb prostředků. Všechny diagnostické protokoly, které jsou k dispozici prostřednictvím služby Azure Monitor sdílejí společné schéma nejvyšší úrovně, s flexibilitou pro každou službu a vygenerovat jedinečné vlastnosti pro vlastní události.
+[Diagnostické protokoly Azure monitoru](../../azure-monitor/platform/diagnostic-logs-overview.md) jsou protokoly generované službami Azure, které popisují operace z těchto služeb prostředků. Všechny diagnostické protokoly, které jsou k dispozici prostřednictvím služby Azure Monitor sdílejí společné schéma nejvyšší úrovně, s flexibilitou pro každou službu a vygenerovat jedinečné vlastnosti pro vlastní události.
 
 Kombinace typu prostředku (k dispozici v `resourceId` vlastnost) a `category` jednoznačné identifikaci schéma. Tento článek popisuje nejvyšší úrovni schématu pro diagnostické protokoly a odkazy na schémat pro každou službu.
 
@@ -205,7 +205,7 @@ Schéma protokolů diagnostiky prostředků se liší podle kategorie prostředk
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o diagnostických protokolů](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Stream protokolů diagnostiky prostředků k **Event Hubs**](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Další informace o diagnostických protokolů](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Stream protokolů diagnostiky prostředků k **Event Hubs**](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 85bbd59cb921e5f20feb7b1cf1073fd7b695864f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7f50d6f6417764a20125f85398dd9cbf93f3a4a1
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393566"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542106"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 
 Dva typy protokolů můžete zobrazit pro Azure Service Bus:
-* **[Protokoly aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všech novinkách, ke které dochází v rámci úlohy. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+* **[Protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md)**. Tyto protokoly obsahují informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md)**. Můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší informace o všech novinkách, ke které dochází v rámci úlohy. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="turn-on-diagnostic-logs"></a>Zapnout diagnostické protokoly
 
@@ -52,7 +52,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
 Nové nastavení se projeví během 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cílové na **diagnostické protokoly** okno.
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostické protokoly schématu
 

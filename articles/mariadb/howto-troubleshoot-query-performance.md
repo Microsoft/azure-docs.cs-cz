@@ -1,20 +1,17 @@
 ---
 title: Řešení potíží s výkonem dotazů ve službě Azure Database pro MariaDB
 description: Tento článek popisuje postup řešení potíží s výkonem dotazů ve službě Azure Database pro MariaDB pomocí VYSVĚTLIT.
-services: mariadb
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 6bbaffeccbca77f1cab3058152f8c001f721332e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51347671"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53541077"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Jak používat VYSVĚTLIT profil výkonu dotazů ve službě Azure Database pro MariaDB
 **VYSVĚTLUJÍ** je užitečný nástroj pro optimalizaci dotazů. VYSVĚTLUJE, že příkaz je možné získat informace o tom, jak jsou spouštěny příkazy SQL. Následující výstup je příkladem spuštění příkazu VYSVĚTLIT.

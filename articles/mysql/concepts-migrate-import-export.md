@@ -1,25 +1,22 @@
 ---
 title: Import a export ve službě Azure Database for MySQL
 description: Tento článek popisuje běžné způsoby, jak importovat a exportovat databáze ve službě Azure Database for MySQL, pomocí nástrojů, jako jsou aplikace MySQL Workbench.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2018
-ms.openlocfilehash: ee291f24a1ad77f84e7cdb8cf4c687af7dfa3f17
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986215"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545514"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL s použitím import a export
 Tento článek vysvětluje dvě běžné přístupy k importu a exportu dat na serveru Azure Database for MySQL pomocí aplikace MySQL Workbench. 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Pro jednotlivé kroky v této příručce s postupy, musíte:
 - Azure Database for MySQL serveru pomocí následujících [vytvoření Azure Database for MySQL pomocí webu Azure portal](quickstart-create-mysql-server-database-using-azure-portal.md).
 - Aplikace MySQL Workbench [stáhli](https://dev.mysql.com/downloads/workbench/), nebo jiný nástroj MySQL pro import a export.
@@ -86,7 +83,7 @@ Následující příklad exportuje do souboru CSV v tabulce:
 Následující příklad importuje ze souboru CSV:
 1. Klikněte pravým tlačítkem na tabulku databáze, kterou chcete importovat. 
 2. Vyhledejte a vyberte soubor sdíleného svazku clusteru naimportují, a potom klikněte na **Další**. 
-3. Vyberte cílové tabulky (nový nebo existující) a zaškrtněte nebo zrušte zaškrtnutí **Truncate table před importem** zaškrtávací políčko. Klikněte na **Další**.
+3. Vyberte cílové tabulky (nový nebo existující) a zaškrtněte nebo zrušte zaškrtnutí **Truncate table před importem** zaškrtávací políčko. Klikněte na tlačítko **Další**.
 4. Vyberte možnost kódování a sloupce, které chcete importovat a potom klikněte na tlačítko **Další**. 
 5. Na **importovat data** klikněte na **Další**. Průvodce importuje data odpovídajícím způsobem.
 

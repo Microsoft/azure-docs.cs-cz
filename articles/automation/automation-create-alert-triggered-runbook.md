@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a099fe371198da7d3cda3146bbd9668c4d49285
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d35d2bfdf379d5bf02ebb4b2fd71fb85519c741a
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343645"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53581638"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Pomocí upozornění můžete aktivovat runbooku Azure Automation
 
@@ -33,7 +33,7 @@ Pokud upozornění volá runbook, je vlastní volání požadavek HTTP POST webh
 |---------|---------|---------|
 |[Klasických upozornění na metriku](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Když jakékoliv úrovni platformy metriky splní určitou podmínku, pošle se oznámení. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90** za posledních 5 minut.| [Schéma tříd metriky upozornění datové části](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
 |[Upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Odešle oznámení, když žádné nové události v protokolu aktivit Azure odpovídá konkrétní podmínky. Například, když `Delete VM` probíhá operace **myProductionResourceGroup** nebo při vytvoření nové události služby Azure Service Health s **aktivní** stav se zobrazí.| [Schéma datové části upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[Téměř v reálném čase upozornění metriky](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Rychlejší než upozornění na metriku odešle oznámení, když jeden nebo více metriky na úrovni platformy splní zadané podmínky. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90**a hodnota pro **sítě v** je větší než **500 MB** dobu posledních 5 minut.| [Téměř v reálném čase upozornění metriky datové části schématu](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Téměř v reálném čase upozornění metriky](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |Rychlejší než upozornění na metriku odešle oznámení, když jeden nebo více metriky na úrovni platformy splní zadané podmínky. Například, když hodnota **využití procesoru %** na virtuálním počítači je větší než **90**a hodnota pro **sítě v** je větší než **500 MB** dobu posledních 5 minut.| [Téměř v reálném čase upozornění metriky datové části schématu](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Vzhledem k tomu, že data, která je poskytována každý typ výstrahy se liší, je jinak zpracovává každý typ výstrahy. V další části se dozvíte, jak vytvořit sadu runbook pro zpracování různých typech výstrah.
 

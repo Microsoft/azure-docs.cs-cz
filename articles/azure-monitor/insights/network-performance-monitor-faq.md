@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166604"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53543984"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -70,6 +70,9 @@ Skript nakonfiguruje pouze Windows Firewall místně. Pokud máte síťová brá
 
 ### <a name="how-many-agents-should-i-use"></a>Kolik agentů mám použít?
 Měli byste použít alespoň jednoho agenta pro každou podsíť, která chcete monitorovat.
+
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, lze použít nebo se zobrazuje chyba "... jste dosáhli svého limitu konfigurací"?
+NPM omezuje počet IP adres na 5000 IP adresy za jednotlivé pracovní prostory. Pokud uzel nemá adresy IPv4 a IPv6, to bude počítat jako 2 IP adresy pro tento uzel. Tento limit 5000 IP adresy by proto rozhodnout horní limit počtu agentů. Aktivní agenty můžete odstranit z karty uzly v NPM >> Konfigurovat. NPM také udržuje historii všechny IP adresy, které byly někdy přiřadí virtuálnímu počítači hostujícím agenta i ty také počítají jako samostatné IP adresy přispívat do tohoto horního limitu 5000 IP adresy. K uvolnit IP adresy pro váš pracovní prostor, můžete stránku uzly odstranit IP adresy, které nejsou používány.
 
 ## <a name="monitoring"></a>Monitorování
 

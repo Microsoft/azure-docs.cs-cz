@@ -3,21 +3,19 @@ title: Cenové úrovně pro službu Azure Database pro MariaDB
 description: Tento článek popisuje cenové úrovně pro službu Azure Database pro MariaDB.
 author: jan-eng
 ms.author: janeng
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 561244efd653294694cc16a1115962473e9a7cec
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249022"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544579"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database pro MariaDB cenové úrovně
 
-Azure Database pro MariaDB server můžete vytvořit v jednom ze tří různých cenové úrovně: Basic, General Purpose a Memory Optimized. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jeden nebo více databází.
+Vytvoření Azure Database pro MariaDB server v jednom ze tří různých cenových úrovní: Basic, pro obecné účely a paměťově optimalizovaná. Cenové úrovně se liší podle množství výpočetních prostředků ve virtuálních jader, které je možné zřídit paměti na vCore a technologie úložiště používají k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MariaDB. Server může mít jeden nebo více databází.
 
 |    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
@@ -42,7 +40,7 @@ Po vytvoření serveru, počet virtuálních jader a cenovou úroveň (s výjimk
 
 Výpočetní prostředky jsou k dispozici jako virtuální jádra, která představuje logický procesor základního hardwaru. Generace 5 logické procesory jsou založené na Intel E5-2673 v4 (Broadwell) 2.3 GHz procesorech.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřizujete je objem úložné kapacity k dispozici ke službě Azure Database pro MariaDB server. Úložiště se používá pro soubory databáze, dočasných souborů, protokoly transakcí a MariaDB server protokoly. Celkový objem úložiště, který zřídíte také definuje vstupně-výstupní kapacity k dispozici pro váš server.
 
@@ -60,9 +58,9 @@ Můžete monitorovat spotřebu vstupně-výstupních operací na webu Azure Port
 
 ### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
-Server je označen jen pro čtení, když velikost volného místa nedosáhne menší než 5 GB nebo 5 % zřízeného úložiště, podle toho, co je menší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení dosáhne volný úložný prostor na méně než 250 MB.  
+Server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 5 GB nebo 5 % zřízeného úložiště, podle toho, která hodnota je nižší. Například, pokud jste zřídili 100 GB úložiště a skutečné využití prochází přes 95 GB, na serveru je označen jen pro čtení. Případně pokud jste zřídili 5 GB úložiště, server se označí jako jen pro čtení, když velikost volného úložiště klesne pod 250 MB.  
 
-Když se služba pokusí o nastavení serveru jen pro čtení, jsou blokovány všechny nové požadavky na zápis transakce a existující aktivní transakce budou i nadále spouštět. Navrácení služeb po potvrzení, když serveru je nastavena na jen pro čtení, všechny následné zápisu operace a transakce. Čtení dotazy budou nadále fungovat bez přerušení. Po zvýšíte zřízeného úložiště, server bude možné znovu přijmout transakce zápisu.
+Zatímco se služba pokouší nastavit server jen pro čtení, všechny požadavky transakcí zápisu se zablokují a stávající aktivní transakce se budou provádět dál. Když je server nastavený jen pro čtení, všechny další operace zápisu a potvrzení transakcí selžou. Dotazy na čtení budou fungovat dál bez přerušení. Jakmile navýšíte velikost zřízeného úložiště, bude server připravený znovu přijímat transakce zápisu.
 
 Doporučujeme nastavit upozornění pro upozornění, úložiště serveru se blíží prahové hodnoty, tomu se můžete vyhnout, převedení do stavu jen pro čtení. 
 

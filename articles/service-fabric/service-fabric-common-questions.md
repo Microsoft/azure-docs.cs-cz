@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0a78405dc6293a7debd599e0e44754dc59d8af7e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 54ce1d9ab6216f1d757d7076cb95362d55ea9d9c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164633"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537616"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy k Service Fabric
 
@@ -64,9 +64,16 @@ Jako chybějící úrovně 4 načíst vyrovnávání podporu existují jiné pro
 
 ### <a name="what-is-the-minimum-size-of-a-service-fabric-cluster-why-cant-it-be-smaller"></a>Jaká je minimální velikost clusteru Service Fabric? Proč nemůže být menší?
 
-Minimální podporovaná velikost pro cluster Service Fabric běžící úlohy v produkčním prostředí je pět uzlů. Pro scénáře vývoje/testování podporujeme clustery tři uzly.
+Minimální podporovaná velikost pro cluster Service Fabric běžící úlohy v produkčním prostředí je pět uzlů. Pro scénáře, vývoj podporujeme jeden uzel (optimalizovaný pro rychlé vývojové prostředí v sadě Visual Studio) a clustery s pěti uzly.
 
-Tyto minimálních neexistuje, protože cluster Service Fabric spustí sadu stavové systémových služeb, včetně názvů služby a Správce převzetí služeb při selhání. Tyto služby, které je sledovat, jaké služby jsou nasazené do clusteru a kde se aktuálně hostuje, závisí na silné konzistence. Silná konzistence, pak závisí na možnost získat *kvora* pro jakékoli dané aktualizaci na stav těchto služeb, kde kvorum představuje striktní většinou repliky (N/2 + 1) pro danou službu.
+Požadujeme, aby cluster pro produkční prostředí má minimálně 5 uzlů z následujících tří důvodů:
+1. I v případě, že jsou spuštěny služby žádný uživatel, spustí cluster Service Fabric sadu stavové systémových služeb, včetně názvů služby a služby Správce převzetí služeb při selhání. Tyto systémové služby jsou nezbytné pro cluster tak, aby zůstat funkční.
+2. Vždy klademe jedna replika služby podle počtu uzlů, tedy horní limit pro počet replik, které služby (ve skutečnosti na oddíl) může mít velikost clusteru.
+3. Protože upgrade clusteru přinese dolů nejméně jeden uzel, chceme mít rezervu nejméně jeden uzel, proto se Chceme mít alespoň dva uzly clusteru pro produkční prostředí *kromě* úplné minimum. Minimální je velikost kvora systémová služba, jak je popsáno níže.  
+
+Chceme, aby clusteru k dispozici i v případě selhání dvou uzlů. Pro cluster Service Fabric k dispozici musí být k dispozici systémových služeb. Stavový systém služby, jako jsou služba pojmenování a služby Správce převzetí služeb při selhání, sledování, které služby jsou nasazené do clusteru a kde se aktuálně hostuje, závisí na silnou konzistenci. Silná konzistence, pak závisí na možnost získat *kvora* pro jakékoli dané aktualizaci na stav těchto služeb, kde kvorum představuje striktní většinou repliky (N/2 + 1) pro danou službu. Proto pokud chcete být odolný proti ztrátě souběžných dvou uzlů (tedy souběžných ztráty dvě repliky služby system), jsme musí mít parametr ClusterSize - QuorumSize > = 2, která vynutí minimální velikosti na pět. Pokud chcete zobrazit, vzít v úvahu cluster má N uzly a jsou repliky N systému služby – jednu na každý uzel. Velikost kvora pro službu system je (N/2 + 1). Výše uvedené nerovnost vypadá jako N - (N/2 + 1) > = 2. Existují dva případy, které byste měli zvážit: i po N a N je liché. Pokud se N je sudé, Dejme tomu, že N = 2\*m kde m > = 1, nerovnost vypadá 2\*m - (2\*m/2 + 1) > = 2 nebo m > = 3. Minimum pro N 6 a dosáhnout při m = 3. Na druhé straně Pokud N je liché, Řekněme, že N = 2\*m + 1, pokud m > = 1, nerovnost vypadá 2\*m + 1 - ((2\*m + 1) / 2 + 1) > = 2, nebo 2\*m + 1 - (m + 1) > = 2 nebo m > = 2. Minimum pro N 5 a který je dosaženo při m = 2. Proto se mezi všechny hodnoty N, které splňují nerovnost parametr ClusterSize - QuorumSize > = 2, minimální hodnota je 5.
+
+Poznámka: výše uvedené argumentu, kterou budeme mít předpokládá, že každý uzel má replika systémová služba, proto velikost kvora je vypočítán na základě počtu uzlů v clusteru. Ale změnou *TargetReplicaSetSize* bychom mohli kvora velikost menší než (N / 2 + 1) která může přidělit dojem, že jsme může mít menší než 5 uzlů clusteru a ještě další 2 navíc uzlů překračuje velikost kvora. Například ve 4 uzly clusteru, pokud jsme nastavili TargetReplicaSetSize 3, kvora velikost podle TargetReplicaSetSize je (3/2 + 1) nebo 2, proto budeme mít CluserSize - QuorumSize = 4-2 > = 2. Však nelze zaručit, že systémová služba bude účtovat s nebo vyšší než kvora jsme ztrátě nějaká dvojice uzlů najednou, může to být, že dva uzly přijdeme byly hostování dvě repliky, tak služba system začnou ztráty kvora (pouze jednu repliku s vlevo) ND nebude k dispozici.
 
 Tedy Podívejme se na některé konfigurace možné clusteru:
 
@@ -74,9 +81,13 @@ Tedy Podívejme se na některé konfigurace možné clusteru:
 
 **Dva uzly**: kvora pro služby nasazené ve dvou uzlů (N = 2) je 2 (2/2 + 1 = 2). Když dojde ke ztrátě jen jednu repliku, není možné vytvořit kvorum. Protože provedení upgradu služby vyžaduje dočasně zastavovat tu repliku, to není užitečné konfigurace.
 
-**Tři uzly**: se třemi uzly (N = 3), požadavek na vytvoření kvora je stále dva uzly (3/2 + 1 = 2). To znamená, že může dojít ke ztrátě jednotlivých uzlů a přitom zachovává kvora.
+**Tři uzly**: se třemi uzly (N = 3), požadavek na vytvoření kvora je stále dva uzly (3/2 + 1 = 2). To znamená, že můžete ztratit jednotlivých uzlů a stále zůstalo zachované kvorum, ale selhání dvou uzlů, se bude řídit systémové služby do ztráty kvora a způsobí, že clusteru přestanou být dostupné.
 
-Konfigurace clusteru třemi uzly je podporována pro vývoj a testování protože můžete bezpečně provádět upgrady a překonat selhání jednotlivých uzlů, za předpokladu, že nedojde současně. Pro produkční úlohy musíte být odolné vůči takové selhání, tak, aby byly požadovaných pěti uzlů.
+**Čtyři uzly**: se čtyřmi uzly (N = 4), požadavek na vytvoření kvora se třemi uzly (4/2 + 1 = 3). To znamená, že můžete ztratit jednotlivých uzlů a stále zůstalo zachované kvorum, ale selhání dvou uzlů, se bude řídit systémové služby do ztráty kvora a způsobí, že clusteru přestanou být dostupné.
+
+**Pět uzlů**: s pěti uzly (N = 5), požadavek na vytvoření kvora je stále tři uzly (5/2 + 1 = 3). To znamená, že můžete ztratit dva uzly ve stejnou dobu a přitom zachovává kvora pro systémové služby.
+
+Pro produkční úlohy musíte být odolné vůči selhání alespoň dva uzly (například jeden z důvodu upgradu clusteru, jeden z nějakého jiného důvodu), tak, aby byly požadovaných pěti uzlů.
 
 ### <a name="can-i-turn-off-my-cluster-at-nightweekends-to-save-costs"></a>Můžu v noci nebo o víkendech vám ušetří náklady vypnout clusteru?
 

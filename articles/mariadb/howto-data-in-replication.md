@@ -3,17 +3,15 @@ title: Konfigurace replikace dat k replikaci dat do služby Azure Database pro M
 description: Tento článek popisuje, jak nastavit dat replikace pro službu Azure Database pro MariaDB.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 3897c402e45962836880ccebbeb252d189188d3c
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212756"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548897"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Jak nakonfigurovat – Azure Database pro MariaDB Data replikace
 
@@ -155,7 +153,7 @@ Následující kroky připravte a nakonfigurujte MariaDB serveru místní, v vir
    - master_password: heslo nadřazeného serveru
    - master_log_file: název souboru binárního protokolu spuštění `show master status`
    - master_log_pos: pozice binární protokol spuštění `show master status`
-   - master_ssl_ca: certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
+   - master_ssl_ca: Certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
        - Je doporučeno předat tento parametr jako proměnnou. Podívejte se na následující příklady pro další informace.
 
    **Příklady**

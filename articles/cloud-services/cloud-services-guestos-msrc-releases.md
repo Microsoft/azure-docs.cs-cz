@@ -11,22 +11,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/15/2018
+ms.date: 12/14/2018
 ms.author: raiye
-ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 94cf90dbc41533b8f5d41a0bdb18e5cdcb7be474
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854267"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541026"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
 
-## <a name="november-2018-guest-os"></a>Hostovaný operační systém. listopadu 2018
+## <a name="december-2018-guest-os"></a>Prosince 2018 hostovaného operačního systému
 
 >[!NOTE]
->Hostovaný operační systém. listopadu je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. listopadu. Tento seznam se může změnit.
+>Prosinec hostovaného operačního systému je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému dne. Tento seznam se může změnit.
+
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 18. až 12. | [4471321] | Zabezpečení systému Windows 10 | 5.26 | 11. prosince 2018 |
+| Rel 18. až 12. | [4471328] | Zabezpečení Windows   | 2.81 | 11. prosince 2018 |
+| Rel 18. až 12. | [4471326] | Zabezpečení Windows   | 3.68 | 11. prosince 2018 |
+| Rel 18. až 12. | [4471322] | Zabezpečení Windows   | 4.61 | 11. prosince 2018 |
+| Rel 18. až 12. | [4470600] | Zabezpečení .net 3.x  | 2.81 | 11. prosince 2018 |
+| Rel 18. až 12. | [4470601] | Zabezpečení .net 3.x  | 3.68 | 11. prosince 2018|
+| Rel 18. až 12. | [4470602] | Zabezpečení .net 3.x  | 4.61 | 11. prosince 2018 |
+| Rel 18. až 12. | [4470493] | Zabezpečení .net 4.x  | 2.81 | 11. prosince 2018 |
+| Rel 18. až 12. | [4470492] | Zabezpečení .net 4.x  | 3.68 | 11. prosince 2018 |
+| Rel 18. až 12. | [4470491] | Zabezpečení .net 4.x  | 4.61| 11. prosince 2018 |
+| Rel 18. až 12. | [4471331] | Animace Flash  | 3.68, 4.61, 5.26 | 5. prosince 2018  |
+| Rel 18. až 12. | [4470199] | Internet Explorer  | 2.81, 3.68, 4.61 | 11. prosince 2018 |
+| neuvedeno | [4468323] | Aktualizace časového pásma    | 2.81, 3.68, 4.61 | 13. prosince 2018 |
+| neuvedeno | [4467107] | Souhrn listopadu Non-zabezpečení   | 2.81 | 13. listopadu 2018 |
+| neuvedeno | [4467701] | Souhrn listopadu Non-zabezpečení     | 3.68 | 13. listopadu 2018 |
+| neuvedeno | [4467697] | Souhrn listopadu Non-zabezpečení     | 4.61 | 13. listopadu 2018 |
+
+[4471321]: http://support.microsoft.com/kb/4471321
+[4471328]: http://support.microsoft.com/kb/4471328
+[4471326]: http://support.microsoft.com/kb/4471326
+[4471322]: http://support.microsoft.com/kb/4471322
+[4470600]: http://support.microsoft.com/kb/4470600
+[4470601]: http://support.microsoft.com/kb/4470601
+[4470602]: http://support.microsoft.com/kb/4470602
+[4470493]: http://support.microsoft.com/kb/4470493
+[4470492]: http://support.microsoft.com/kb/4470492
+[4470491]: http://support.microsoft.com/kb/4470491
+[4471331]: http://support.microsoft.com/kb/4471331
+[4470199]: http://support.microsoft.com/kb/4470199
+[4468323]: http://support.microsoft.com/kb/4468323
+[4467107]: http://support.microsoft.com/kb/4467107
+[4467701]: http://support.microsoft.com/kb/4467701
+[4467697]: http://support.microsoft.com/kb/4467697
+
+## <a name="november-2018-guest-os"></a>Hostovaný operační systém. listopadu 2018
 
 | Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
 | --- | --- | --- | --- | --- |
@@ -427,7 +465,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |  [3212646] |Leden 2017 měsíční kvality souhrn zabezpečení pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.60 |14. března 2017 |
 | neuvedeno |  [3205409] |Prosinec 2016 měsíční kvality souhrn zabezpečení pro systém Windows Server 2012 |3.47 |14. března 2017 |
 | neuvedeno |  [3205401] |Prosinec 2016 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.40 |14. března 2017 |
-| neuvedeno |  [3211320] |Údržba stack – aktualizace pro Windows 10 verze 1607 a Windows serveru 2016: 24. ledna 2017 |5.5 |14. března 2017 |
+| neuvedeno |  [3211320] |Servisní aktualizace zásobníku pro Windows 10 verze 1607 a Windows serveru 2016: 24. ledna 2017 |5.5 |14. března 2017 |
 
 ## <a name="january-2017-guest-os"></a>Hostovaný operační systém. ledna 2017
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
@@ -468,12 +506,12 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3192321] |Turecko končí dodržování letního času |5.3, 4.38, 3.45, 2.57 |8. listopadu 2016 |
 | neuvedeno |[3185330] |Říjen 2016 měsíční kvality souhrn zabezpečení pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.57 |8. listopadu 2016 |
 | neuvedeno |[3192403] |Říjen 2016 ve verzi Preview měsíční kumulativní kvality pro Windows 7 SP1 a Windows Server 2008 R2 SP1 |2.57 |8. listopadu 2016 |
-| neuvedeno |[3177467] |Údržba stack – aktualizace pro Windows 7 SP1 a Windows Server 2008 R2 SP1: 20. září 2016 |2.57 |8. listopadu 2016 |
+| neuvedeno |[3177467] |Servisní aktualizace zásobníku pro Windows 7 SP1 a Windows Server 2008 R2 SP1: 20. září 2016 |2.57 |8. listopadu 2016 |
 | neuvedeno |[3185332] |Říjen 2016 měsíční kvality souhrn zabezpečení pro Windows Server 2012 |3.45 |8. listopadu 2016 |
 | neuvedeno |[3192406] |Říjen 2016 ve verzi Preview měsíční kumulativní kvality pro systém Windows Server 2012 |3.45 |8. listopadu 2016 |
 | neuvedeno |[3185331] |Říjen 2016 měsíční kvality souhrn zabezpečení pro Windows 8.1 a Windows Server 2012 R2 |4.38 |8. listopadu 2016 |
 | neuvedeno |[3192404] |Říjen 2016 ve verzi Preview měsíční kumulativní kvality pro Windows 8.1 a Windows Server 2012 R2 |4.38 |8. listopadu 2016 |
-| neuvedeno |[3199986] |Údržba stack – aktualizace pro Windows 10 verze 1607: 27. října 2016 |5.3 |8. listopadu 2016 |
+| neuvedeno |[3199986] |Servisní aktualizace zásobníku pro Windows 10 verze 1607: 27. října 2016 |5.3 |8. listopadu 2016 |
 | neuvedeno |[3197954] |Kumulativní aktualizace pro Windows 10 verze 1607 a Windows serveru 2016: 27. října 2016 |5.3 |8. listopadu 2016 |
 
 ## <a name="october-2016-guest-os"></a>Říjen 2016 hostovaného operačního systému
@@ -581,7 +619,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[3133977] |Nástroj BitLocker nelze zašifrovat jednotky z důvodu chyby služby v procesu svchost.exe ve Windows 7 nebo Windows Server 2008 R2  |2.51 |10. května 2016 |
 | neuvedeno |[3133681] |Virtuální počítače neodpovídejte na provoz v nástroji SCVMM ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
 | neuvedeno |[3123245] |Aktualizace zlepšuje identifikace vyčerpání portů ve Windows serveru 2012 R2  |4.32 |10. května 2016 |
-| neuvedeno |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: aktualizace pro zákazu RC4  |4.32, 3.39, 2.51 |10. května 2016 |
+| neuvedeno |[Zakázat RC4] | Informační zpravodaj zabezpečení společnosti Microsoft: Aktualizace pro zákazu RC4  |4.32, 3.39, 2.51 |10. května 2016 |
 
 ## <a name="april-2016-guest-os"></a>Hostovaný operační systém. dubna 2016
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
@@ -630,7 +668,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS16-005 |[3124584] |Aktualizace zabezpečení pro ovladače režimu jádra Windows pro řešení vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
 | MS16-007 |[3124901] |Aktualizace zabezpečení pro Microsoft Windows pro řešení vzdálené spuštění kódu |4.28, 3.35, 2.47 |12. ledna 2016 |
 | MS16-008 |[3124605] |Aktualizace zabezpečení pro jádra k vyřešení zvýšení úrovně oprávnění |4.28, 3.35, 2.47 |12. ledna 2016 |
-| Microsoft Security Advisory revize |[2755801] |Aktualizace pro ohrožení zabezpečení ve službě Adobe Flash Player v aplikaci Internet Explorer (balíček KB: TBD)-Advisory zástupného symbolu |4.28, 3.35 |12. ledna 2016 |
+| Microsoft Security Advisory revize |[2755801] |Aktualizace pro ohrožení zabezpečení ve službě Adobe Flash Player v aplikaci Internet Explorer (balíček KB: TBD) - Advisory zástupného symbolu |4.28, 3.35 |12. ledna 2016 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3109853] |Aktualizace pro zlepšení spolupráce TLS |4.28, 3.35 |12. ledna 2016 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[3123479] |Vyřazení algoritmu hash SHA-1 pro Microsoft Root Certificate Program |4.28, 3.35, 2.47 |12. ledna 2016 |
 | Informační zpravodaj zabezpečení společnosti Microsoft |[2736233] |Aktualizace pro službu Bits ActiveX Kill |4.28, 3.35, 2.47 |12. ledna 2016 |
@@ -778,7 +816,7 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | MS15-014 |[3004361] |Chyba zabezpečení v protokolu SMB umožňuje obcházení funkce zabezpečení |4.17, 3.24, 2.36 |neuvedeno |
 | MS15-015 |[3031432] |Ohrožení zabezpečení v Microsoft Windows by mohlo znamenat zvýšení úrovně oprávnění |4.17, 3.24, 2.36 |neuvedeno |
 | MS15-016 |[3029944] |Ohrožení zabezpečení v součásti grafické Microsoft může umožnit vyzrazení informací |4.17, 3.24, 2.36 |neuvedeno |
-| neuvedeno |[3004375] |Aktualizace pro zlepšení Windows příkazového řádku auditování<p/>**Poznámka:**: to je nainstalovaná, ale klíče registru, aby je vypnutý. |4.17, 3.24, 2.36 |neuvedeno |
+| neuvedeno |[3004375] |Aktualizace pro zlepšení Windows příkazového řádku auditování<p/>**Poznámka:** To je nainstalovaná, ale klíče registru, aby je vypnutý. |4.17, 3.24, 2.36 |neuvedeno |
 
 ## <a name="january-2015-guest-os"></a>Leden 2015 hostovaného operačního systému
 | ID bulletinu | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |

@@ -1,5 +1,5 @@
 ---
-title: Metriky, výstrahy a diagnostické protokoly pro službu Azure Batch | Dokumentace Microsoftu
+title: Metriky, výstrahy a diagnostické protokoly – Azure Batch | Dokumentace Microsoftu
 description: Zaznamenávat a analyzovat události diagnostických protokolů pro účet prostředky služby Azure Batch, jako jsou fondy a úlohy.
 services: batch
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 8efa8088bca3eb6221c49ec5f14334342149795d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.custom: seodec18
+ms.openlocfilehash: cd3e671a00f7f8b0a13ed95bfd43795a24244a66
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438434"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537099"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
  
-Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-collection.md#metrics) a [diagnostické protokoly](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
+Tento článek vysvětluje, jak monitorovat pomocí funkce účtu Batch [Azure Monitor](../azure-monitor/overview.md). Azure Monitor provádí sběr [metriky](../azure-monitor/platform/data-collection.md#metrics) a [diagnostické protokoly](../azure-monitor/platform/diagnostic-logs-overview.md) pro prostředky v účtu Batch. Shromažďování a používání těchto dat různými způsoby, jak monitorovat účtu Batch a diagnostikovat problémy s. Můžete taky nakonfigurovat [upozornění na metriku](../azure-monitor/platform/alerts-overview.md) tak můžete dostávat upozornění na metriku dosáhne zadanou hodnotu. 
 
 ## <a name="batch-metrics"></a>Metriky služby batch
 
@@ -109,7 +109,7 @@ Ostatní volitelné cíle pro diagnostické protokoly:
 
     ![Diagnostika služby batch](media/batch-diagnostics/diagnostics-portal.png)
 
-Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-logs-stream-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs).
+Další možnosti Povolit shromažďování protokolů zahrnují: pomocí Azure monitoru na portálu můžete nakonfigurovat nastavení diagnostiky, použijte [šablony Resource Manageru](../azure-monitor/platform/diagnostic-logs-stream-template.md), nebo pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure. Zobrazit [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md#how-to-enable-collection-of-diagnostic-logs).
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>Protokoly diagnostiky přístup ve službě storage

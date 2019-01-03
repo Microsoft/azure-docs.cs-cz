@@ -10,45 +10,44 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 58472d535be41fdd3e1139756f867f683509d9a3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 77a1756aba0d8473051cdf335f33ed9ca5a8fb24
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161731"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558324"
 ---
-# <a name="call-your-custom-search"></a>Volání vlastního vyhledávání
+# <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Volání vaší instance vlastního vyhledávání Bingu z portálu
 
-Před vytvořením první volání do rozhraní API pro vlastní vyhledávání zobrazíte výsledky hledání pro vaši instanci, potřebujete získat klíč předplatného služeb Cognitive Services. Chcete-li získat klíč pro vlastní rozhraní API pro vyhledávání, naleznete v tématu [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+Po dokončení konfigurace prostředí pro vlastní vyhledávání, takže ji můžete otestovat z v rámci vlastní vyhledávání Bingu [portál](https://customsearch.ai). 
+
+![snímek obrazovky portálu pro vlastní vyhledávání Bingu](media/portal-search-screen.png)
+## <a name="create-a-search-query"></a>Vytvoření vyhledávací dotaz 
+
+Po přihlášení do vlastní vyhledávání Bingu [portál](https://customsearch.ai), vyberte instanci hledání a klikněte na tlačítko **produkční** kartu. V části **koncové body**, vyberte koncový bod rozhraní API (například webové rozhraní API). Předplatné Určuje, jaké koncové body jsou uvedeny.
+
+Chcete-li vytvořit vyhledávací dotaz, zadejte hodnoty parametrů pro koncový bod služby. Všimněte si, že parametry, zobrazí na portálu může měnit v závislosti na koncový bod, kterou zvolíte. Zobrazit[referenční dokumentace rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) Další informace. 
+
+Některé důležité parametry jsou následující:
 
 
-## <a name="try-it-out"></a>Vyzkoušet
+|Parametr  |Popis  |
+|---------|---------|
+|Dotaz     | Hledaný termín, který chcete vyhledat. K dispozici jenom pro Web, Image, Video a pro automatické návrhy koncových bodů |
+|ID vlastní konfigurace | ID konfigurace vybrané instance vlastního vyhledávání. Toto pole je jen pro čtení. |
+|Trh     | Na trhu, která způsobí, že budou pocházet z. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.        |
+|Klíč předplatného | Klíč předplatného pro testování. Můžete vybrat klíče z rozevíracího seznamu nebo zadat ručně.          |
 
-Po dokončení konfigurace prostředí pro vlastní vyhledávání, můžete otestovat konfiguraci z portálu pro vlastní vyhledávání. 
+Kliknutím na **další parametry** odhalí následující parametry:  
 
-1. Přihlaste se do [vlastní vyhledávání](https://customsearch.ai).
-2. Klikněte na instanci vlastního vyhledávání ze svého seznamu instancí.
-3. Klikněte na tlačítko **produkční** kartu. 
-4. V části **koncové body** kartu, vyberte koncový bod (například webové rozhraní API). Předplatné Určuje, jaké koncové body jsou (naleznete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) možnosti předplatného). 
-5. Zadejte hodnoty parametrů. 
-
-    Toto jsou možné můžete nastavit parametry (skutečný seznam závisí na vybraný koncový bod). Další informace o těchto parametrech naleznete v tématu [rozhraní API pro vlastní vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) odkaz.
-
-    - **Dotaz**: hledaný termín, který chcete vyhledat. Dostupné jenom pro Web, Image, Video a pro automatické návrhy koncových bodů.
-    - **Vlastní ID konfigurace**: ID konfigurace vybrané instance vlastního vyhledávání. Toto pole je jen pro čtení.
-    - **Na trhu**: na trhu, odkud pochází výsledky. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.
-    - **Klíč předplatného**: klíč předplatného pro testování. Může z rozevíracího seznamu vyberte klíč, nebo ji zadat ručně.  
-      
-    Kliknutím na **další parametry** odhalí následující parametry:  
-      
-    - **Bezpečné vyhledávání**: Filtr slouží k filtrování webových stránek pro obsah pro dospělé. K dispozici pouze pro koncové body Web, Image, Video a hostované uživatelského rozhraní.
-    - **Jazyk uživatelského rozhraní**: jazyk používaný pro uživatelské rozhraní řetězce. Pokud povolíte obrázky a videa v uživatelském rozhraní hostovaná, například **Image** a **Video** karet použít zadaný jazyk.
-    - **Počet**: počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.
-    - **Posun**: počet výsledků hledání pro přeskočení před vrácením výsledky. K dispozici pouze pro koncové body Web, Image a videa.
-
-6. Po zadání všechny nezbytné možnosti, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. 
-
-Pokud vyberete hostované uživatelského rozhraní koncového bodu, můžete otestovat vyhledávání v dolním podokně.
+|Parametr  |Popis  |
+|---------|---------|
+|Bezpečné vyhledávání     | Filtr, který se používá k filtrování webových stránek pro obsah pro dospělé. Dostupné jenom pro koncové body Web, Image, Video a hostované uživatelského rozhraní.        |
+|Jazyk uživatelského rozhraní    | Jazyk používaný pro uživatelské rozhraní řetězce. Pokud povolíte obrázky a videa v uživatelském rozhraní hostovaná, například **Image** a **Video** karet použít zadaný jazyk.        |
+|Počet     | Počet výsledků hledání vrátit v odpovědi. K dispozici pouze pro koncové body Web, Image a videa.         |
+|Posun    | Počet výsledků hledání pro přeskočení před vrácením výsledky. K dispozici pouze pro koncové body Web, Image a videa.        |
+    
+Po zadání všechny nezbytné možnosti, klikněte na tlačítko **volání** zobrazíte odpověď JSON v pravém podokně. Pokud vyberete hostované uživatelského rozhraní koncového bodu, můžete otestovat vyhledávání v dolním podokně.
 
 ## <a name="next-steps"></a>Další postup
 

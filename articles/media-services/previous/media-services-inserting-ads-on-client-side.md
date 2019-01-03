@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 ms.openlocfilehash: de084b2139bcc3ddef09b4438f8774df177b6f3c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
+ms.lasthandoff: 12/21/2018
 ms.locfileid: "53315934"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Vkládání reklam na straně klienta

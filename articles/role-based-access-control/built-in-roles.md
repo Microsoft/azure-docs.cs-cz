@@ -15,12 +15,12 @@ ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d6696d9bdd69b085b9c9ac0804da68cd91612f35
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386957"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558919"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -98,7 +98,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel sítě](#network-contributor) | Umožňuje správu sítí, ale ne přístup k nim. |
 | [Nové Přispěvatel účtů Relic APM](#new-relic-apm-account-contributor) | Umožňuje správu účtů a aplikací New Relic Application Performance Management, ale ne přístup k nim. |
 | [Čtenář a přístup k datům](#reader-and-data-access) | Umožňuje zobrazit všechno, ale neumožní odstraňovat ani vytvářet účet úložiště nebo obsažený prostředek. To vám také umožní přístup pro čtení a zápis ke všem datům obsaženým v účtu úložiště prostřednictvím přístupu ke klíčům účtu úložiště. |
-| [Mezipaměť Azure pro přispěvatele Redis](#redis-cache-contributor) | Umožňuje spravovat Azure Cache Rediss, ale ne přístup k nim. |
+| [Mezipaměť Azure pro přispěvatele Redis](#redis-cache-contributor) | Umožňuje spravovat Azure mezipaměti Redis, ale ne přístup k nim. |
 | [Přispěvatel zásad prostředků (Preview)](#resource-policy-contributor-preview) | (Preview) Obnovení uživatelé z EA s oprávněními vytvářet a upravovat zásady prostředků, vytvářet lístky podpory a číst prostředky a hierarchii |
 | [Přispěvatel kolekcí úloh scheduleru](#scheduler-job-collections-contributor) | Umožňuje správu kolekcí úloh Scheduleru, ale ne přístup k nim. |
 | [Přispěvatel služby Search](#search-service-contributor) | Umožňuje správu služeb Search, ale ne přístup k nim. |
@@ -1289,11 +1289,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat Azure Cache Rediss, ale ne přístup k nim. |
+> | **Popis** | Umožňuje spravovat Azure mezipaměti Redis, ale ne přístup k nim. |
 > | **ID** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení role |
-> | Microsoft.Cache/redis/* | Vytváření a Správa mezipaměti Azure pro Rediss |
+> | Microsoft.Cache/redis/* | Vytvoření a Správa mezipaměti Azure Redis |
 > | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |

@@ -4,17 +4,16 @@ description: Tento článek popisuje, jak nastavit průběžnou integraci a proc
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: 567e2f850e2c51a6103dc24b91d139042d58acb3
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2f3cc3b386dec0010b179455372fb49bcec55ffc
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986820"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558392"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Průběžnou integraci a vývoj s použitím Stream Analytics tools
 Tento článek popisuje, jak můžete nastavit průběžnou integraci a nasazování procesu pomocí nástroje Azure Stream Analytics pro Visual Studio.
@@ -27,7 +26,7 @@ Balíček NuGet lze použít pouze 2.3.0000.0 nebo vyšší než verze nástroj�
 
 Další informace najdete v tématu [nástroje Stream Analytics pro Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
-## <a name="msbuild"></a>Nástroj MSBuild
+## <a name="msbuild"></a>MSBuild
 Podobně jako standardní prostředí Visual Studio MSBuild k sestavení projektu máte dvě možnosti. Klikněte pravým tlačítkem na projekt a klikněte na tlačítko **sestavení**. Můžete také použít **MSBuild** v balíčku NuGet z příkazového řádku.
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
@@ -80,11 +79,11 @@ localrun -Project [ProjectFullPath]
 
 *Arm* příkaz má úloha šablony a soubory parametrů šablony úloh generovány pomocí sestavení jako vstup. Potom kombinuje je do souboru JSON definice úlohy, který je možné pomocí rozhraní API prostředí PowerShell pro Stream Analytics.
 
-```
+```powershell
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
 ```
 Příklad:
-```
+```powershell
 ./tools/SA.exe arm -JobTemplate "ProjectA.JobTemplate.json" -JobParameterFile "ProjectA.JobTemplate.parameters.json" -OutputFile "JobDefinition.json" 
 ```
 

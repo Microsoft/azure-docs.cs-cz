@@ -9,12 +9,12 @@ ms.date: 12/12/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: 7103557d19b367be0b9f0aa6f4a4642800c14558
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2f9800deedb2e8d55362920fed2493a42290e764
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314824"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555842"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy služby prostředků infrastruktury sítě
 
@@ -79,7 +79,7 @@ Chcete-li odstranit skupinu prostředků, použijte `az group delete <nameOfReso
 
 ## <a name="supported-container-os-images"></a>Image kontejnerů podporovaný operační systém
 
-Pokud vyvíjíte na počítači s Windows Fall Creators Update (verze 1709), můžete použít pouze Windows verze 1709 imagí dockeru pro docker.
+Pokud vyvíjíte na počítači s Windows Fall Creators Update (verze 1709), můžete použít pouze Image dockeru s aplikací Windows verze 1709.
 
 Pokud vyvíjíte ve Windows 10. dubna 2018 update (verze 1803) počítače, můžete použít Windows verze 1709 nebo imagí dockeru verze 1803 Windows.
 
@@ -101,7 +101,7 @@ Za určitých okolností může selhat komunikace Service-to-service. To je Zkou
 - Pokud název služby samostatně nefunguje, zkuste plně kvalifikovaný název: ServiceName.ApplicationName.
 - V souboru Docker pro vaši službu, přidejte `EXPOSE <port>` tam, kde je port jsou vystavení služby v. Příklad:
 
-```
+```DockerFile
 EXPOSE 80
 ```
 

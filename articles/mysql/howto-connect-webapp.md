@@ -1,25 +1,22 @@
 ---
 title: Připojit existující služby Azure App Service do služby Azure Database for MySQL
 description: Pokyny, jak správně připojit existující aplikaci služby Azure do služby Azure Database for MySQL
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 4aecc4941f2181216ea537c0019152ce822ac4b0
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eb2fee7c76bcf29aee2dcd70d7975d7631bb23f6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408927"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548948"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Připojit existující aplikaci služby Azure do služby Azure Database pro MySQL server
 Toto téma vysvětluje, jak připojit stávající Azure App Service pro váš server Azure Database for MySQL.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření serveru Azure Database for MySQL. Podrobnosti najdete v [postupy vytvoření Azure Database for MySQL serveru z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [vytvoření – Azure Database for MySQL pomocí rozhraní příkazového řádku](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Aktuálně jsou dostupné dvě řešení pro povolení přístupu ze služby Azure App Service ke službě Azure Database for MySQL. Obě řešení zahrnují nastavení pravidla brány firewall na úrovni serveru.

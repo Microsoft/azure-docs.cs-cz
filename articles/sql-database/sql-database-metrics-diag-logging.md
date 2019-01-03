@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 245372b39f4b730128c593ddd04225bd82875393
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 138368c8e79d68a9a9c5a711b99d8926da7dc68d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387093"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53601555"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky
 
@@ -32,7 +32,7 @@ Azure SQL Database, elastické fondy, Managed Instance a databáze v Managed Ins
 Další informace o kategoriích metrik a protokolů, podporuje různé služby Azure najdete v tématu:
 
 * [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Přehled protokoly diagnostiky Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Tento článek obsahuje pokyny, které vám umožní povolit telemetrická data diagnostiky pro databáze, elastické fondy a Managed Instance. Také může pomoct vás seznámí s postupy ke konfiguraci Azure SQL Analytics jako nástroj pro sledování pro zobrazování diagnostické telemetrie databáze.
 
@@ -691,7 +691,7 @@ Další informace o [formát protokolu Intelligent Insights](sql-database-intell
 Zjistěte, jak povolit protokolování a pochopit, metriky a protokolování kategorie podporuje různé služby Azure, najdete v tématech:
 
 * [Přehled metrik v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
-* [Přehled protokoly diagnostiky Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
+* [Přehled protokoly diagnostiky Azure](../azure-monitor/platform/diagnostic-logs-overview.md)
 
 Další informace o službě Event Hubs, přečtěte si:
 

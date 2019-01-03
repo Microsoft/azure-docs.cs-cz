@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: c6d5954ed3547666236130753dfd53d10475df43
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 09696c606fdf57f5ac55fc50eb06c2c5eea55dfe
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308984"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555247"
 ---
 # <a name="view-service-fabric-health-reports"></a>Zobrazení sestav health Service Fabric
 Azure Service Fabric představuje [modelu stavu](service-fabric-health-introduction.md) u entity stavu, na které systémové součásti a watchdogs můžete sestavu místní podmínky, které jsou monitorovat. [Health store](service-fabric-health-introduction.md#health-store) agreguje všechna data stavu k určení, zda jsou v dobrém stavu entity.
@@ -46,7 +46,7 @@ Abychom si předvedli tyto možnosti, můžeme použít místní cluster s pěti
 Service Fabric Explorer nabízí vizuální zobrazení clusteru. Na následujícím obrázku vidíte, který:
 
 * Aplikace **fabric: / WordCount** je red (v chybě), protože má událost chyby hlášených **MyWatchdog** pro vlastnost **dostupnosti**.
-* Jeden z jejích služeb **fabric: / WordCount/WordCountService** žlutý (v upozornění). Služba je nakonfigurována s sedm repliky a cluster s pěti uzly, tak dva repicas nemůže být umístěn. I když tady není zobrazený, je oddíl služby žlutý kvůli sestavy systému z `System.FM` chci říct, že `Partition is below target replica or instance count`. Žlutý oddílu aktivuje žlutý služby.
+* Jeden z jejích služeb **fabric: / WordCount/WordCountService** žlutý (v upozornění). Služba je nakonfigurována s sedm repliky a cluster s pěti uzly, takže nemůže být umístěn dvě repliky. I když tady není zobrazený, je oddíl služby žlutý kvůli sestavy systému z `System.FM` chci říct, že `Partition is below target replica or instance count`. Žlutý oddílu aktivuje žlutý služby.
 * Cluster je red kvůli red aplikace.
 
 Vyhodnocení využívá výchozí zásady z manifestu clusteru a manifest aplikace. Striktní zásady, které jsou a nejsou tolerovat jakékoli neúspěchy.
@@ -464,7 +464,7 @@ Získat stav služby prostřednictvím rozhraní API, vytvořit `FabricClient` a
 
 Následující příklad získá stav služby pomocí zadaného názvu služby (URI):
 
-```charp
+```csharp
 ServiceHealth serviceHealth = await fabricClient.HealthManager.GetServiceHealthAsync(serviceName);
 ```
 
@@ -1030,27 +1030,27 @@ Pokud obecné dotazy Neznámý stav pro entitu, je možné, že stav úložišt�
 
 Dotazy, které obsahují **stavu HealthState** pro entity jsou:
 
-* Seznam uzlů: vrátí seznam uzlů v clusteru (stránkování).
-  * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * Powershellu: Get-ServiceFabricNode
-* Seznam aplikací: vrátí seznam aplikací v clusteru (stránkování).
-  * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * Powershellu: Get-ServiceFabricApplication
-* Seznam služeb: vrátí seznam služeb v aplikaci (stránkování).
-  * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * Powershellu: Get-ServiceFabricService
-* Seznam oddílů: vrátí seznam oddílů služby (stránkování).
-  * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * Powershellu: Get-ServiceFabricPartition
-* Seznam replik: vrátí seznam replik v oddílu (stránkování).
-  * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * Powershellu: Get-ServiceFabricReplica
-* Nasadit seznam aplikací: vrátí seznam nasazených aplikací na uzlu.
-  * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * Powershellu: Get-ServiceFabricDeployedApplication
-* Nasadit seznam balíčků služby: vrátí seznam balíčků služby v nasazené aplikaci.
-  * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * Powershellu: Get-ServiceFabricDeployedApplication
+* Seznam uzlů: Vrátí seznam uzlů v clusteru (stránkování).
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
+  * PowerShell: Get-ServiceFabricNode
+* Seznam aplikací: Vrátí seznam aplikací v clusteru (stránkování).
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
+  * PowerShell: Get-ServiceFabricApplication
+* Seznam služeb: Vrátí seznam služeb v aplikaci (stránkování).
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
+  * PowerShell: Get-ServiceFabricService
+* Seznam oddílů: Vrátí seznam oddílů služby (stránkování).
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
+  * PowerShell: Get-ServiceFabricPartition
+* Seznam replik: Vrátí seznam replik v oddílu (stránkování).
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
+  * PowerShell: Get-ServiceFabricReplica
+* Seznam nasazených aplikací: Vrátí seznam nasazených aplikací na uzlu.
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
+  * PowerShell: Get-ServiceFabricDeployedApplication
+* Seznam balíčků nasazené služby: Vrátí seznam balíčků služeb v nasazené aplikaci.
+  * ROZHRANÍ API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
+  * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > Některé dotazy vrátit stránkových výsledků. Návrat tyto dotazy je odvozen ze seznamu [PagedList<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1). Pokud výsledky nebudou vyhovovat zprávu, vrátí se pouze na stránce a ContinuationToken, který sleduje kde výčet zastavena. I nadále volání stejný dotaz a předejte token pro pokračování z předchozího dotazu zobrazíte další výsledky.

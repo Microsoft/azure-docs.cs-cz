@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: douglasl
-ms.openlocfilehash: 60c715e97f6b1d2046fb4050ae41b27146c0610a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 950336db215bbca76f20c15527397212c6fe5ffd
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623765"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554924"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Průběžná integrace a doručování (CI/CD) v Azure Data Factory
 
@@ -733,12 +733,12 @@ Tady je ukázkový skript zastavit aktivačních událostí před nasazením a p
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder="$(env:System.DefaultWorkingDirectory)/Dev/",
-    [parameter(Mandatory = $false)] [String] $armTemplate="$rootFolder\arm_template.json",
-    [parameter(Mandatory = $false)] [String] $ResourceGroupName="sampleuser-datafactory",
-    [parameter(Mandatory = $false)] [String] $DataFactoryName="sampleuserdemo2",
-    [parameter(Mandatory = $false)] [Bool] $predeployment=$true
-
+    [parameter(Mandatory = $false)] [String] $rootFolder,
+    [parameter(Mandatory = $false)] [String] $armTemplate,
+    [parameter(Mandatory = $false)] [String] $ResourceGroupName,
+    [parameter(Mandatory = $false)] [String] $DataFactoryName,
+    [parameter(Mandatory = $false)] [Bool] $predeployment=$true,
+    [parameter(Mandatory = $false)] [Bool] $deleteDeployment=$false
 )
 
 $templateJson = Get-Content $armTemplate | ConvertFrom-Json
@@ -762,7 +762,6 @@ if ($predeployment -eq $true) {
     }
 }
 else {
-
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
@@ -789,7 +788,7 @@ else {
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
 
-    #delte resources
+    #Delete resources
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
@@ -820,7 +819,25 @@ else {
         Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
-    #Start Active triggers - After cleanup efforts (moved code on 10/18/2018)
+    if ($deleteDeployment -eq $true) {
+        Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
+        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
+        $deploymentName = $deploymentsToConsider[0].DeploymentName
+
+       Write-Host "Deployment to be deleted: " $deploymentName
+        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
+
+        $deploymentsToDelete | ForEach-Object { 
+            Write-host "Deleting inner deployment: " $_.properties.targetResource.id
+            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+        }
+        Write-Host "Deleting deployment: " $deploymentName
+        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+    }
+
+    #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
@@ -958,3 +975,17 @@ Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku pou�
     }
 }
 ```
+
+## <a name="linked-resource-manager-templates"></a>Propojené šablony Resource Manageru
+
+Pokud jste nastavili průběžnou integraci a nasazování (CI/CD) pro datové továrny, a podívat se, jak narůstá svým objektem pro vytváření, narazíte na omezení šablony Resource Manageru, jako je maximální počet prostředků nebo maximální velikost datové části v prostředku Šablona správce. Pro scénáře, jako jsou ty, spolu s kompletní šablonou Resource Manageru pro objekt pro vytváření, generování služby Data Factory také nyní generuje šablon propojené Resource Manageru. V důsledku toho máte datové části celý objekt pro vytváření rozdělit do několika souborů tak, aby při spuštění do uvedené limity.
+
+Pokud máte nakonfigurovaný Git, propojené šablony jsou generovány a uložen spolu s plnou šablon Resource Manageru v `adf_publish` větve pod novou složku s názvem `linkedTemplates`.
+
+![Propojená složka vedoucí šablony Resource Manageru](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+
+Propojené Resource Manageru šablony mají obvykle hlavní šablonu a sadu šablon podřízené propojený na hlavní server. Je volána nadřazené šabloně `ArmTemplate_master.json`, a podřízené šablony jsou pojmenovány se vzorem `ArmTemplate_0.json`, `ArmTemplate_1.json`, a tak dále. Chcete-li přejít z úplnou šablonu Resource Manageru pro použití propojených šablon, aktualizujte úlohy CI/CD přejděte na `ArmTemplate_master.json` místo odkazující na `ArmTemplateForFactory.json` (to znamená úplný šablony Resource Manageru). Resource Manageru také vyžaduje, abyste propojenými šablonami nahrát do účtu úložiště, tak, aby k nim může přistupovat v Azure během nasazení. Další informace najdete v tématu [nasazení propojených šablon ARM pomocí VSTS](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+
+Nezapomeňte přidat skripty služby Data Factory v kanálu CI/CD před a po nasazení úloh.
+
+Pokud nemáte nakonfigurované Git, jsou přístupné přes propojenými šablonami **šablony ARM exportovat** gest.

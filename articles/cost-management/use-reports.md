@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 12/17/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: fa322a0521b3b2c408bfe6d50411c62068b77229
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: db24cb1e1b303fbd3f0981390940732685c98baf
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075863"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558800"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Sestavy jsou k dispozici na portálu Cloudyn
 
@@ -29,7 +29,7 @@ Existují tři typy Cloudyn sestav:
 
 - Útoky over-pass-the sestav. Například sestava Cost Over Time. Útoky over-pass-the sestav zobrazit časové řadě dat. v intervalu vybraného předdefinovaného řešení a zobrazit týdenní řešení po dobu posledních dvou měsíců. Přiblížit k různým datovým bodům, můžete použít seskupování a filtrování.
   - Útoky over-pass-the sestav můžete zobrazit trendy a odhalte provozní špičky nebo anomálie.
-- Sestavy analýzy. Například sestav analýzy nákladů. Tyto sestavy zobrazit agregovaná data po dobu, definovat a Povolit seskupování a filtrování podle data.
+- Sestavy analýzy. Například sestavu analýzy nákladů. Tyto sestavy zobrazit agregovaná data po dobu, definovat a Povolit seskupování a filtrování podle data.
   - Analýza sestavy můžete zobrazit provozní špičky a určení příčiny anomálií a chcete-li zobrazit podrobné konec seznamu vaše data.
 - Tabulkové sestavy. Můžete zobrazit všechny sestavu jako tabulku, ale některé sestavy jsou zobrazeny pouze jako tabulku. Tyto sestavy poskytují podrobné seznamy položek.
   - Doporučení jsou tabulkové sestavy – neexistují žádné vizualizace pro doporučení. Však můžete vizualizovat výsledky doporučení. Například úspory v čase.
@@ -63,7 +63,7 @@ Mnoho sestavách Cloudyn zobrazit rozpočtu informace po jedné ruční vytvoře
 
 ## <a name="reports-and-reporting-features"></a>Sestavy a funkce generování sestav
 
-Clouydn patří následující sestavy a funkce generování sestav.
+Cloudyn zahrnuje následující sestavy a funkce generování sestav.
 
 ### <a name="cost-navigator-report"></a>Sestava nákladů Navigátor
 
@@ -208,7 +208,7 @@ Vlastní poplatky se zobrazí v sestavách nákladů. Například otevřete sest
 
 Cost Allocation 360 použijete k vytvoření vlastní nákladový model přidělování nákladů přiřadit využité cloudové prostředky. Mnoho sestav zobrazovat informace z vlastní nákladový model, které jste vytvořili pomocí vlastní nákladový model. A některé sestavy pouze zobrazit informace, až vytvoříte vlastní model nákladů s přidělováním nákladů.
 
-Další informace o vytváření vlastních nákladový model, najdete v části [kurz: Správa nákladů pomocí Cloudyn](tutorial-manage-costs.md).
+Další informace o vytváření vlastních nákladový model, najdete v části [kurzu: Správa nákladů pomocí Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>Cost vs. Sestava rozpočtu v čase
 
@@ -448,7 +448,7 @@ Chcete-li zobrazit podrobnosti o doporučení pro konkrétní instanci, kliknět
 
 Klikněte na graf tak, aby k podrobnostem a otevřete instanci procesoru nad čas sestavu pro zobrazení rozpisu instancí.
 
-- Použití **zobrazit/skrýt pole** přidat nebo odebrat pole: časové razítko, Prům. CPU, procesoru Min, Max procesoru.
+- Použití **zobrazit/skrýt pole** přidat nebo odebrat pole: Max. Min časové razítko, Prům. CPU, využití procesoru, procesoru.
 - Použití **rozsah** zadejte datum nebo rozsah dat a přejít k podrobnostem konkrétní ID instance.
 - Použití **rozšířené filtry** zobrazit všechny nebo konkrétní ID Instance
 - Klikněte na tlačítko **přiblížit** a otevřete tak sestavu využití procesoru

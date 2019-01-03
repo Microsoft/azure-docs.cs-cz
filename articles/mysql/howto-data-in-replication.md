@@ -1,20 +1,17 @@
 ---
 title: Konfigurace replikace dat k replikaci dat do služby Azure Database for MySQL.
 description: Tento článek popisuje, jak nastavit dat replikace pro službu Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497922"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53539615"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure Database
 
@@ -156,7 +153,7 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    - master_password: heslo nadřazeného serveru
    - master_log_file: název souboru binárního protokolu spuštění `show master status`
    - master_log_pos: pozice binární protokol spuštění `show master status`
-   - master_ssl_ca: certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
+   - master_ssl_ca: Certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
        - Je doporučeno předat tento parametr jako proměnnou. Podívejte se na následující příklady pro další informace.
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 48f178b7a94e8989f8a0154bea6195834b1ec35f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d199275d6c17dff72c020bd3a9807f50af8af1e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438672"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544035"
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
 V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
@@ -25,7 +25,7 @@ V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource 
 
 Metoda pro povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku.
 
-* **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings).
+* **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings).
 * **COMPUTE** používají prostředky (WAD/LAD min.) [WAD/LAD konfigurační soubor je popsáno v tomto článku](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
 V tomto článku zjistíte, jak nakonfigurovat diagnostiku pomocí některé z metod.
@@ -266,6 +266,6 @@ Povolit diagnostiku na výpočetní prostředek, třeba clusteru virtuálního p
 Celý proces, včetně ukázek, je popsaná [v tomto dokumentu](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o diagnostických protokolech Azure](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-* [Stream diagnostické protokoly Azure do služby Event Hubs](../../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Další informace o diagnostických protokolech Azure](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Stream diagnostické protokoly Azure do služby Event Hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 

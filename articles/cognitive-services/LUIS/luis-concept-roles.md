@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105560"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53547741"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -45,6 +45,16 @@ Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny d
 
 
 [!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+
+## <a name="example-role-for-entities"></a>Příklad role pro entity
+
+Role je právě kontextově zjištěná umístění entity v rámci utterance. Je největší efektivity dosáhnete, když utterance má více než jeden tohoto typu entity. K rozlišení mezi je nejjednodušší příklad pro jakýkoli typ entity do a z umístění. Umístění může být reprezentován na mnoho entit různých typů. 
+
+Případy použití příklad přenáší zaměstnanec z jednoho oddělení na jiný kde každé oddělení je položka v seznamu. Příklad: 
+
+`Move [PersonName] from [Department:from] to [Department:to]`. 
+
+Vrácené predikce vrátí se obě oddělení entity v odpovědi JSON a každý bude obsahovat název role. 
 
 ## <a name="roles-with-prebuilt-entities"></a>Role s předem vytvořenými entitami
 

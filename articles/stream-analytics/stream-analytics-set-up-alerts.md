@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak nastavit monitorování a výstrah pro
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/26/2017
-ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 727747d84d0db32c73fc1a200bcea7e5c149d24b
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47090962"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554907"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
 Můžete nastavit výstrahy aktivovat upozornění, když metrika dosáhne podmínku, která zadáte. Může například nastavit upozornění pro podmínku vypadat asi takto:
@@ -30,7 +30,7 @@ Pravidla lze nastavit na metrik na portálu, nebo se dají konfigurovat [program
 
 3. V **metrika** okna, klikněte na tlačítko **přidat upozornění** příkazu.
 
-      ![Nastavení Azure portal](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+      ![Azure portal nastavení výstrah Stream Analytics](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
 
 4. Zadejte název a popis.
 

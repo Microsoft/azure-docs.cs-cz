@@ -20,8 +20,8 @@ ms.locfileid: "52440061"
 | Západní USA             | 3                       |
 | Západní USA 2           | 2                       |
 | USA – střed          | 3                       |
-| Střed USA – sever    | 3                       |
-| Střed USA – jih    | 3                       |
+| Středoseverní USA    | 3                       |
+| Středojižní USA    | 3                       |
 | Západní střed USA     | 2                       |
 | Kanada – střed      | 3                      |
 | Kanada – východ         | 2                       |

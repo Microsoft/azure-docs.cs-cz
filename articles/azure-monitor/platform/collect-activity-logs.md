@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 1556c228aa2e00cf18f16cc26eefab4691f6de23
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 20246cfa5904c3c89ab9a14d11f2e61883b27344
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184937"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53540232"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
 
 ![Symbol protokolů aktivit Azure](./media/collect-activity-logs/activity-log-analytics.png)
 
-Řešení Activity Log Analytics vám pomáhají analyzovat a Hledat [protokolu aktivit Azure](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) napříč všemi předplatnými Azure. Protokol aktivit Azure je protokol, který nabízí přehled o operace prováděné s prostředky v rámci vašich předplatných. Protokol aktivit se dřív označovalo jako *protokoly auditu* nebo *operační protokoly* vzhledem k tomu, že sestavy událostí pro vaše předplatná.
+Řešení Activity Log Analytics vám pomáhají analyzovat a Hledat [protokolu aktivit Azure](../../azure-monitor/platform/activity-logs-overview.md) napříč všemi předplatnými Azure. Protokol aktivit Azure je protokol, který nabízí přehled o operace prováděné s prostředky v rámci vašich předplatných. Protokol aktivit se dřív označovalo jako *protokoly auditu* nebo *operační protokoly* vzhledem k tomu, že sestavy událostí pro vaše předplatná.
 
 Použití protokolu aktivit, můžete určit *co*, *kdo*, a *při* veškerých operací (PUT, POST, DELETE) provedených pro prostředky ve vašem předplatném zápisu. Můžete také zjištění stavu operace a další relevantní vlastnosti. Protokol aktivit neobsahuje operace čtení (GET) ani operace pro prostředky, které používají model nasazení Classic.
 

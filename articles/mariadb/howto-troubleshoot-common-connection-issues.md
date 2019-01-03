@@ -2,20 +2,17 @@
 title: Řešení problémů s připojením ke službě Azure Database pro MariaDB | Dokumentace Microsoftu
 description: Zjistěte, jak řešit potíže s připojením ke službě Azure Database pro MariaDB.
 keywords: připojení mariadb, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
-services: mariadb
 author: jan-eng
 ms.author: janeng
-manager: kfile
-editor: jasonwhowell
 ms.service: mariadb
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 0100fa6d9691c864de9ac4aaea04b647e1705872
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c7e1ff10f9698bf57ce86a7e9686ef13e5248db7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565135"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53545905"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Řešení problémů s připojením ke službě Azure Database pro MariaDB
 
@@ -49,9 +46,9 @@ Při provádění údržby systému dojde k chybě hardwaru nebo softwaru či zm
 
 Pokud aplikace trvale nepodaří připojit ke službě Azure Database pro MariaDB, obvykle znamená problém s jedním z následujících akcí:
 
-* Konfigurace brány firewall: The – Azure Database pro MariaDB serveru nebo na straně klienta brána firewall neblokuje připojení.
-* Změnu konfigurace na straně klienta sítě: byla přidána nová IP adresa nebo proxy server.
-* Chyba uživatele: například může být chybně se zadala některá připojení parametry, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
+* Konfigurace brány firewall: Azure Database pro MariaDB serveru nebo na straně klienta brána firewall blokuje připojení.
+* Změna konfigurace na straně klienta: Byla přidána nová IP adresa nebo proxy server.
+* Chyba uživatele: Například může být chybně se zadala některá připojení parametry, jako je například název serveru v připojovacím řetězci nebo chybějící *@servername* příponu do pole uživatelské jméno.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kroky při řešení problémů trvalého připojení
 

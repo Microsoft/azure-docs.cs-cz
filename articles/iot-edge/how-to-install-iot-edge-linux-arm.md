@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/10/2018
 ms.author: kgremban
-ms.openlocfilehash: ccd38dd7570dc451a1a5b87163bfdd7aea51dad5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dbe9f18f5a38284e2b263d636656c88b1743d7ea
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567430"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53555638"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Instalace modulu runtime Azure IoT Edge v Linuxu (ARM32v7/armhf)
 
@@ -175,6 +175,39 @@ Na zařízeních prostředků omezené, důrazně doporučujeme, abyste nastavil
 
 Pokud vaše síť, která má proxy server, postupujte podle kroků v [nakonfigurujte zařízení IoT Edge pro komunikaci přes proxy server](how-to-configure-proxy-support.md).
 
+## <a name="uninstall-iot-edge"></a>Odinstalujte IoT Edge
+
+Pokud chcete odebrat ze zařízení s Linuxem instalaci IoT Edge, použijte následující příkazy z příkazového řádku. 
+
+Odeberte modul runtime IoT Edge. 
+
+```bash
+sudo apt-get remove --purge iotedge
+```
+
+Při odebrání modul runtime IoT Edge kontejneru, který je vytvořen, se zastaví, ale stále existují ve vašem zařízení. Zobrazte všechny kontejnery zobrazíte, které zůstanou. 
+
+```bash
+sudo docker ps -a
+```
+
+Odstranění kontejnerů ze zařízení, včetně dvou kontejnerů modulu runtime. 
+
+```bash
+sudo docker rm -f <container name>
+```
+
+Nakonec odeberte modul runtime kontejneru na vašem zařízení. 
+
+```bash 
+sudo apt-get remove --purge moby-cli
+sudo apt-get remove --purge moby-engine
+```
+
 ## <a name="next-steps"></a>Další postup
 
+Teď, když máte zařízení IoT Edge zřízené s modulem runtime nainstalovaný, je možné [nasadit moduly IoT Edge](how-to-deploy-modules-portal.md).
+
 Pokud máte problémy s modulu runtime Edge instalaci správně, podívejte se na [řešení potíží s](troubleshoot.md#stability-issues-on-resource-constrained-devices) stránky.
+
+Aktualizace stávající instalace na nejnovější verzi služby IoT Edge, najdete v článku [aktualizovat démon zabezpečení IoT Edge a modulu runtime](how-to-update-iot-edge.md).

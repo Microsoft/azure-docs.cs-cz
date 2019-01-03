@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 5d0cb6ca751c844846288e8fe26f6ae542e89831
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 90eacdb120603fdb68c0f6c3de3457964ec5fd75
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339488"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579358"
 ---
-# <a name="detecting-color-schemes"></a>Rozpoznávání barevných schémat
+# <a name="detect-color-schemes-in-images"></a>Zjištění barevná schémata v obrázcích
 
-Počítačové zpracování obrazu extrahuje barvy z obrázku. Barvy se analyzují pak ve třech různých kontextech: popředí dominantní barva, barvu pozadí dominantní a dominantní barvy pro bitovou kopii jako celek. Jsou seskupené do 12 dominantních doplňkových barev. Tyto barvy zvýraznění jsou černá, modrá, brown, šedá, zelená, orange, růžová, nachová, červená, šedozelená, prázdné a žlutou barvou. Počítačové zpracování obrazu analyzuje extrahovat z obrázků se vraťte barvu motivu, který představuje nejvíce živý barvu na obrázku se divákům prostřednictvím kombinace dominantní barvy a sytost barev. V závislosti na barvy v obrázku mohou být vráceny jednoduché černobílý nebo barvy zvýraznění v šestnáctkové kódy. Počítačové zpracování obrazu také vrátí logickou hodnotu, která určuje, jestli obrázek je černá a bílá.
+Počítačové zpracování obrazu extrahuje barvy z obrázku. Barvy se analyzují pak ve třech různých kontextech: popředí dominantní barva, barvu pozadí dominantní a dominantní barvy pro bitovou kopii jako celek. Jsou seskupené do 12 dominantních doplňkových barev. Jsou to tyto doplňkové barvy: černá, modrá, hnědá, šedá, zelená, oranžová, růžová, fialová, červená, šedozelená, bílá a žlutá. Počítačové zpracování obrazu analyzuje extrahovat z obrázků se vraťte barvu motivu, který představuje nejvíce živý barvu na obrázku se divákům prostřednictvím kombinace dominantní barvy a sytost barev. Podle toho, jaké barvy jsou na obrázku, může být vrácena jednoduše černá a bílá nebo hexadecimální kódy doplňkových barev. Počítačové zpracování obrazu také vrátí logickou hodnotu, která určuje, jestli obrázek je černá a bílá.
 
 ## <a name="color-scheme-detection-examples"></a>Barevné schéma detekce příklady
 
 Následující příklad ukazuje odpověď JSON pro počítačové zpracování obrazu vrácený při zjišťování na barevném schématu na obrázku. V tomto případě na obrázku není černá a bílá bitové kopie, ale jsou černá dominantní barvy popředí a pozadí a dominantní barvy pro bitovou kopii jako celek je černobílý.
 
-![Venkovní Horská oblast](./Images/mountain_vista.png)
+![Na horách](./Images/mountain_vista.png)
 
 ```json
 {
@@ -51,18 +52,18 @@ Následující tabulka popisuje dominantní popředí, pozadí a barvy image pro
 
 | Image | Dominantní barvy |
 |-------|-----------------|
-|![Analýza květinu pro zpracování obrazu](./Images/flower.png)| Popředí: černá<br/>Na pozadí: prázdné<br/>Barvy: Black, White, zelená|
-![Pro zpracování obrazu analyzovat trénování stanice](./Images/train_station.png) | Popředí: černá<br/>Na pozadí: černá<br/>Barvy: černá |
+|![Bílé květinu zeleným pozadím](./Images/flower.png)| Popředí: Black<br/>Na pozadí: White<br/>Barvy: Zelená černou, bílou|
+![Trénování s prostřednictvím stanice](./Images/train_station.png) | Popředí: Black<br/>Na pozadí: Black<br/>Barvy: Black |
 
 ### <a name="accent-color-examples"></a>Příklady Barva motivu
 
  Následující tabulka popisuje barvu zvýraznění jako hodnotu šestnáctková barva HTML pro každou obrázku vrácená rozhraním pro počítačové zpracování obrazu.
 
-| Image | Barva motivu |
+| Image | Doplňková barva |
 |-------|--------------|
-|![Venkovní Horská oblast](./Images/mountain_vista.png) | #BB6D10 |
-|![Analýza květinu pro zpracování obrazu](./Images/flower.png) | #C6A205 |
-|![Pro zpracování obrazu analyzovat trénování stanice](./Images/train_station.png) | #474A84 |
+|![Osoba na rock Horská oblast, abyste se při západu slunce](./Images/mountain_vista.png) | #BB6D10 |
+|![Bílé květinu zeleným pozadím](./Images/flower.png) | #C6A205 |
+|![Trénování s prostřednictvím stanice](./Images/train_station.png) | #474A84 |
 
 ### <a name="black--white-detection-examples"></a>Černá a bílá detekce příklady
 
@@ -70,8 +71,8 @@ Následující tabulka uvádí, zda je každý obrázek příkladu černé & bí
 
 | Image | Černá a bílá? |
 |-------|----------------|
-|![Pro zpracování obrazu analýza sestavení](./Images/bw_buildings.png) | true (pravda) |
-|![Pro zpracování obrazu analyzovat House Yard](./Images/house_yard.png) | false (nepravda) |
+|![Černá a bílá obrázek budovy v Manhattan](./Images/bw_buildings.png) | true (pravda) |
+|![Modré house a front-yard](./Images/house_yard.png) | false (nepravda) |
 
 ## <a name="next-steps"></a>Další postup
 

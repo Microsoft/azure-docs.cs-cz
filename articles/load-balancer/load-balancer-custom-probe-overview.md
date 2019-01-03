@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: f9ada3518c4354b112e9e288da89ee9659629b1c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 51d781f331bcbc08642dc32c21baa150e9e5eee6
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435119"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538681"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -201,7 +201,7 @@ Pokud není povoleno [Zdrojová IP adresa](#probesource) testu v zásady brány 
 
 Pro sondy stavu služby Vyrovnávání zatížení k označení navyšte kapacitu instance můžete **musí** povolit tuto IP adresu v Azure [skupiny zabezpečení sítě](../virtual-network/security-overview.md) a zásady brány firewall na místní.  Ve výchozím nastavení, zahrnuje každá skupina zabezpečení sítě [značka služby](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer tak, aby povolovala přenosy sonda stavu.
 
-Pokud chcete otestovat selhání sondy stavu nebo označte dolů jednotlivé instance, můžete použít [skupiny zabezpečení sítě](../virtual-network/security-overview.md) na explicitní blokovat sondu stavu (cílový port nebo [Zdrojová IP adresa](#probesource)) a proveďte simulaci selhání testu.
+Pokud chcete otestovat selhání sondy stavu nebo označte dolů jednotlivé instance, můžete použít [skupiny zabezpečení sítě](../virtual-network/security-overview.md) explicitně zablokovat sondu stavu (cílový port nebo [Zdrojová IP adresa](#probesource)) a proveďte simulaci selhání testu.
 
 Neprovádějte konfiguraci virtuální sítě s Microsoftem vlastní rozsah IP adres, který obsahuje adresy 168.63.129.16.  Tato konfigurace bude v konfliktu s IP adresou sondy stavu a může způsobit, že váš scénář selhání.
 

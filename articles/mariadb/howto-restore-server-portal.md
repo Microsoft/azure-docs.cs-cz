@@ -3,17 +3,15 @@ title: Postup při obnovení serveru ve službě Azure Database pro MariaDB
 description: Tento článek popisuje, jak obnovit server ve službě Azure Database pro MariaDB pomocí webu Azure portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 899f0bfa3075c92ac31e2b4f5fab9093a1dc6806
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999033"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53548749"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Zálohování a obnovení serveru ve službě Azure Database pro MariaDB pomocí webu Azure portal
 
@@ -66,10 +64,10 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 3. Vyplňte formulář obnovit požadované údaje:
 
    ![Azure Database pro MariaDB – informace o obnovení ](./media/howto-restore-server-portal/3-restore.png)
-  - **Bod obnovení**: vyberte v daném okamžiku chcete provést obnovení.
+  - **Bod obnovení**: Vyberte v daném okamžiku, kterou chcete obnovit.
   - **Cílový server**: Zadejte název pro nový server.
-  - **Umístění**: nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.
-  - **Cenová úroveň**: nemůžete změnit tyto parametry při provádění obnovení bodu v čase. Je stejná jako u zdrojového serveru. 
+  - **Umístění**: Nejde vyberte oblast. Ve výchozím nastavení je stejná jako u zdrojového serveru.
+  - **Cenová úroveň**: Při obnovení bodu v čase nelze změnit tyto parametry. Je stejná jako u zdrojového serveru. 
 
 4. Klikněte na tlačítko **OK** k obnovení serveru k obnovení v daném okamžiku. 
 
@@ -81,7 +79,7 @@ Následující kroky obnoví ukázkový server k určitému bodu v čase:
 ## <a name="geo-restore"></a>Geografické obnovení
 Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytvořit nový server ze zálohy existujícího serveru. Tento nový server lze vytvořit v libovolné oblasti Azure Database pro MariaDB je k dispozici.  
 
-1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu. Typ **– Azure Database pro MariaDB** do vyhledávacího pole vyhledejte službu.
+1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu. Zadáním **Azure Database for MariaDB** do vyhledávacího pole službu vyhledejte.
 
    ![Možnost "Azure Database pro MariaDB"](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 

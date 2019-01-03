@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 833b655246035fa3eb9a820316a95b73eed5b2bd
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 07d233ba50f4253b4ea3097748b9c58142e08a91
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388803"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53549424"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
@@ -36,7 +36,7 @@ Tady jsou některé možnosti publikování kódu webové aplikace:
 *   Nasazení pomocí sady Visual Studio. Pokud máte řešení sady Visual Studio, klikněte pravým tlačítkem na projekt webové aplikace a pak vyberte **publikovat**.
 *   Nasazení pomocí klienta FTP. Na portálu Azure stáhnete profil publikování pro webovou aplikaci, kterou chcete nasadit váš kód. Nakonec odešlete soubory \site\wwwroot pomocí stejných přihlašovacích údajů Publikovat profil FTP.
 
-Další informace najdete v tématu [nasazení aplikace do služby App Service](app-service-deploy-local-git.md).
+Další informace najdete v tématu [nasazení aplikace do služby App Service](deploy-local-git.md).
 
 ## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Při pokusu nasadit ze sady Visual Studio se zobrazit chybová zpráva. Jak to můžu vyřešit?
 
@@ -51,7 +51,7 @@ Tento kurz [vytvoření vaší první webové aplikace ASP.NET v Azure během p�
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Jaké jsou různé druhy přihlašovací údaje pro nasazení?
 
-App Service podporuje dva typy přihlašovacích údajů pro místní nasazení přes Git a FTP/S nasazení. Další informace o tom, jak nakonfigurovat přihlašovací údaje pro nasazení najdete v tématu [nakonfigurovat přihlašovací údaje nasazení pro službu App Service](app-service-deployment-credentials.md).
+App Service podporuje dva typy přihlašovacích údajů pro místní nasazení přes Git a FTP/S nasazení. Další informace o tom, jak nakonfigurovat přihlašovací údaje pro nasazení najdete v tématu [nakonfigurovat přihlašovací údaje nasazení pro službu App Service](deploy-configure-credentials.md).
 
 ## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Co je soubor nebo adresář strukturu Moje webová aplikace App Service?
 
@@ -63,7 +63,7 @@ Pokud se zobrazí tato zpráva, je pravděpodobné, že používáte do disková
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak nastavit průběžné nasazování pro svou webovou aplikaci služby App Service?
 
-Můžete nastavit průběžné nasazování z několika zdrojů, včetně Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox a další úložiště Git. Tyto možnosti jsou dostupné na portálu. [Průběžné nasazování do služby App Service](app-service-continuous-deployment.md) je užitečný kurz, který vysvětluje, jak nastavit průběžné nasazování.
+Můžete nastavit průběžné nasazování z několika zdrojů, včetně Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox a další úložiště Git. Tyto možnosti jsou dostupné na portálu. [Průběžné nasazování do služby App Service](deploy-continuous-deployment.md) je užitečný kurz, který vysvětluje, jak nastavit průběžné nasazování.
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Jak se řešení potíží s průběžným nasazováním z Githubu nebo Bitbucketu?
 
@@ -100,4 +100,4 @@ Nasazení průběžné kódu pro obě tyto možnosti závisí na stávajících 
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Jak použít FTP a FTPS nasadit aplikaci do služby App Service?
 
-Informace o nasazení webové aplikace do služby App Service pomocí FTP a FTPS, naleznete v tématu [nasazení aplikace do služby App Service pomocí FTP/S](app-service-deploy-ftp.md).
+Informace o nasazení webové aplikace do služby App Service pomocí FTP a FTPS, naleznete v tématu [nasazení aplikace do služby App Service pomocí FTP/S](deploy-ftp.md).

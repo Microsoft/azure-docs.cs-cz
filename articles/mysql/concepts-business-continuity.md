@@ -1,20 +1,17 @@
 ---
 title: Přehled kontinuity se službou Azure Database for MySQL
 description: Přehled kontinuity se službou Azure Database for MySQL.
-services: mysql
 author: ajlam
 ms.author: andrela
-manager: kfile
-editor: jasonwhowell
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714339"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53554533"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Přehled kontinuity se službou Azure Database for MySQL
 
@@ -49,7 +46,7 @@ Jednou z možností je počkat serveru do režimu online při výpadku datového
 Další možností je používat Azure Database for MySQL geografické obnovení funkce, která obnoví server pomocí geograficky redundantní zálohy. Tyto zálohy jsou dostupné i v případě, že je oblast, kterou váš server je hostovaný v offline. Můžete obnovit ze zálohy do jiné oblasti a přenést váš server zpět do online režimu.
 
 > [!IMPORTANT]
-> Geografické obnovení je možné, pouze pokud jste zřídili serveru pomocí geograficky redundantního úložiště záloh. Pokud chcete přepnout z místně redundantní na geograficky redundantní zálohy existujícího serveru, musíte provést výpis pomocí pg_dump existující server a obnovit na nově vytvořený server nakonfigurován s geograficky redundantní zálohy.
+> Geografické obnovení je možné, pouze pokud jste zřídili serveru pomocí geograficky redundantního úložiště záloh. Pokud chcete přepnout z místně redundantní na geograficky redundantní zálohy existujícího serveru, musíte provést výpis pomocí mysqldump existující server a obnovit na nově vytvořený server nakonfigurován s geograficky redundantní zálohy.
 
 ## <a name="next-steps"></a>Další postup
 

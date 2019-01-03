@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: c9ff4332a10247787e3b11c5508d0d94a1f1c8ba
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 53aa40c047b2b5201cd74c0409d56e97d2880eb0
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410461"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602847"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Export rozhraní API hostovaných v Azure do PowerApps a Microsoft Flow
 
 [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) je služba pro sestavování a využívání vlastních obchodních aplikací, které připojují k vašim datům a fungují napříč platformami. [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) usnadňuje automatizaci pracovních postupů a obchodních procesů mezi vašimi oblíbenými aplikacemi a službami. PowerApps a Microsoft Flow součástí širokou škálu integrovaných konektorů pro zdroje dat, jako je Office 365, Dynamics 365, Salesforce a další. V některých případech se pro připojení ke zdrojům dat a rozhraní API vytvořené ve své organizaci také vhodné tvůrci aplikací a toků.
 
-Podobně vývojáře, které chcete je zveřejnit své rozhraní API šířeji v rámci organizace můžete zpřístupnit svoje rozhraní API na tvůrce aplikací a toků. V tomto tématu se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [služby Azure App Service](../app-service/app-service-web-overview.md). Exportovaná rozhraní API se stane *vlastního konektoru*, který se používá v PowerApps a Microsoft Flow, stejně jako integrovaného konektoru.
+Podobně vývojáře, které chcete je zveřejnit své rozhraní API šířeji v rámci organizace můžete zpřístupnit svoje rozhraní API na tvůrce aplikací a toků. V tomto tématu se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [služby Azure App Service](../app-service/overview.md). Exportovaná rozhraní API se stane *vlastního konektoru*, který se používá v PowerApps a Microsoft Flow, stejně jako integrovaného konektoru.
 
 ## <a name="create-and-export-an-api-definition"></a>Vytvoření a export definice rozhraní API
 Před exportem rozhraní API, musíte popsat rozhraní API pomocí definice OpenAPI (dříve označované jako [Swagger](https://swagger.io/) souboru). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API. PowerApps a Microsoft Flow můžete vytvořit vlastní konektory pro všechny definice OpenAPI 2.0. Azure Functions a Azure App Service mají integrovanou podporu pro vytváření, hostování a správu definice OpenAPI. Další informace najdete v tématu [hostovat rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).

@@ -1,7 +1,7 @@
 ---
-title: Označování imagí - pro počítačové zpracování obrazu
+title: Použití značek obsahu do Image - pro počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Koncepty související s označení obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
+description: Další koncepty související s imagí označení funkce rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: caf4d8a4ee3ccee181d233716e0a645150a201c3
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960903"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582928"
 ---
-# <a name="tagging-images"></a>Označování obrázků značkami
+# <a name="applying-content-tags-to-images"></a>Nastavení obsahu klíčových slov do bitové kopie
 
 Počítačové zpracování obrazu vrací značky na základě tisíce rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
 
@@ -27,7 +28,7 @@ Po nahrání obrázku nebo zadáte adresu URL obrázku, výstupní algoritmy pro
 
 Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při označování vizuální funkce v na obrázku.
 
-![Dvůr s domem](./Images/house_yard.png).
+![Modré house a front-yard](./Images/house_yard.png).
 
 ```json
 {

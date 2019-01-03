@@ -1,20 +1,18 @@
 ---
 title: Přehled – Azure Database for MySQL relační databázová služba
 description: Přehled Azure Database for MySQL relační databázová služba.
-services: mysql
 ms.service: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
 ms.custom: mvc
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 4d0d78b978f6454170b52a95f538f143b9f24505
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9385ccf61f8cb8de0b3a459ac00c05b32d2630e4
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684793"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53536878"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database for MySQL?
 Azure Database for MySQL je služba relačních databází v cloudu Microsoftu založená na [MySQL Community Edition](https://www.mysql.com/products/community/) databázový stroj, verze 5.6 a 5.7. Azure Database for MySQL nabízí:
@@ -38,7 +36,7 @@ Tento článek je úvodem do databáze Azure pro MySQL základních konceptů a 
 - [Ukázky v Azure CLI pro službu Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
-Služba Azure Database for MySQL nabízí několik úrovní služby: Basic, General Purpose a Memory Optimized. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-service-tiers.md) podrobnosti.
+Služba Azure Database for MySQL nabízí několik úrovní služby: Basic, pro obecné účely a paměťově optimalizovaná. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-service-tiers.md) podrobnosti.
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete využít integrované funkce monitorování výkonu a upozorňování v kombinaci s hodnocením výkonu na základě virtuálních jader. Pomocí těchto nástrojů můžete rychle posoudit dopad vertikálního navýšení nebo snížení kapacity virtuálních jader v závislosti na stávajících nebo předpokládaných požadavcích. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).
@@ -65,4 +63,4 @@ Můžete také využít tyto komunikační kanály:
 Teď, když jste přečtěte si úvod ke službě Azure Database for MySQL a znáte odpověď na otázku "Co je Azure databáze pro MySQL?", jste připraveni:
 - Na stránce s cenami najdete porovnání nákladů a kalkulačky. [Ceny](https://azure.microsoft.com/pricing/details/mysql/)
 - Začněte vytvářet první server. [Vytvoření serveru Azure Database for MySQL pomocí webu Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Vytvořte svoji první aplikaci pomocí preferovaného jazyka: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md)  |  [PHP](./connect-php.md) | [.NET (C#)](./connect-csharp.md) | [přejít](./connect-go.md)
+- Vytvořte svoji první aplikaci pomocí preferovaného jazyka: [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [PHP](./connect-php.md)  |  [.NET (C#)](./connect-csharp.md) | [přejít](./connect-go.md)

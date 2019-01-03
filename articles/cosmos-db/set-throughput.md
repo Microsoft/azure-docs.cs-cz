@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 54b2ada0f269bca681305efc2e1eb7c2f9776ab7
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075348"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53542998"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Zřizování propustnosti na kontejnery Azure Cosmos a databází
 
@@ -47,7 +47,7 @@ Je doporučeno nakonfigurovat propustnost v databázi, pokud chcete sdílet prop
 
 * Zřízená propustnost databázi pro sdílení obsahu mezi sadu kontejnerů je užitečné, když provádíte migraci databáze NoSQL (třeba MongoDB, Cassandra) hostovaná v clusteru virtuálních počítačů nebo z místních fyzických serverů do služby Azure Cosmos DB. Zřízená propustnost nakonfigurovaný ve vaší databázi Azure Cosmos jako logický ekvivalent (ale více nákladově efektivní a flexibilních) na tento výpočetní kapacitu vašeho clusteru MongoDB nebo Cassandra si můžete představit.  
 
-V libovolném časovém okamžiku čas propustnost přidělené kontejneru v databázi je distribuován na všechny logické oddíly tohoto kontejneru. Když máte zřízenou propustnost v databázi pro sdílení obsahu kontejnery, nelze selektivně použít propustnost pro konkrétní kontejner nebo logického oddílu. Pokud úlohy na logický oddíl spotřebovává více než propustnost, která je přidělena konkrétní logický oddíl, bude vaše operace míra limited. Pokud dojde k omezení rychlosti, můžete zvýšit propustnost pro celý kontejner nebo zkuste operaci zopakovat. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
+Všechny kontejnery, které vytvoří v databázi se zřízenou propustností musí být vytvořená s klíčem oddílu. V libovolném časovém okamžiku čas propustnost přidělené kontejneru v databázi je distribuován na všechny logické oddíly tohoto kontejneru. Když máte zřízenou propustnost v databázi pro sdílení obsahu kontejnery, nelze selektivně použít propustnost pro konkrétní kontejner nebo logického oddílu. Pokud úlohy na logický oddíl spotřebovává více než propustnost, která je přidělena konkrétní logický oddíl, bude vaše operace míra limited. Pokud dojde k omezení rychlosti, můžete zvýšit propustnost pro celý kontejner nebo zkuste operaci zopakovat. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
 
 Více logické oddíly sdílení propustnosti zřízené databáze je možné hostovat na jeden prostředek oddílu. Během jednoho logického oddílu kontejneru vždy s rozsahem v rámci oddílu prostředků, "L" logické oddíly napříč "C" kontejnery zřízené propustnosti databáze pro sdílení obsahu můžete mapovat a hostované na fyzické oddíly "R". Následující obrázek ukazuje, jak oddíl prostředků můžete hostovat jeden nebo více logické oddíly, které patří do různých kontejnerů v databázi:
 

@@ -1,19 +1,17 @@
 ---
 title: Rozšířená ochrana před internetovými útoky – Azure Database for MySQL | Dokumentace Microsoftu
 description: Ochrana před internetovými útoky detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení databáze.
-services: mysql
 author: bolzmj
-manager: kfile
-ms.service: mysql
-ms.topic: article
-ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: dfb4d104d3dfdb3e6ae7466fa3776dd5e7155aa7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 09/20/2018
+ms.openlocfilehash: 12497f6a5173e2e4ea9c919fb6500c34f85749fa
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047287"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53534736"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection pro Azure Database for MySQL
 
@@ -22,7 +20,7 @@ Služba Advanced Threat Protection pro Azure Database for MySQL detekuje neobvyk
 Rozšířená ochrana před internetovými útoky je součástí nabídky Rozšířené zabezpečení dat, která je jednotný balíček pro pokročilé možnosti zabezpečení. Rozšířená ochrana před internetovými útoky jde přistupovat a spravovat přes [webu Azure portal](https://portal.azure.com) a je aktuálně ve verzi preview.
 
 > [!NOTE]
-> Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a následující Azure government: US Gov Texas, USA Arizona, USA (gov) (gov) – Iowa, USA, (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo Severní Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
+> Funkce Advanced Threat Protection je **není** dostupná v oblastech suverénních cloudů a Azure government pro následující: (Gov) – Iowa, USA, Arizona, USA (gov) US Gov Texas, USA (gov) – Virginia, US DoD – východ, US DoD – střed, Německo – střed, Německo – sever, Čína – východ, Čína – východ 2. Navštivte prosím [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) pro obecnou dostupnost.
 >
 
 ## <a name="set-up-threat-detection"></a>Nastavení detekce hrozeb

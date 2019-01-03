@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 3e6064b4c202c36e4b63d6e06edfbf3149f6665f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c8bcbe011dc4ff9841a06b914a90ae7f9a14ee74
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139853"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598495"
 ---
-# <a name="add-intents"></a>Přidání záměrů 
+# <a name="add-intents-to-determine-user-intention-of-utterances"></a>Přidání záměrů k určení uživatelů záměr projevů
 
 Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejný účel. 
 

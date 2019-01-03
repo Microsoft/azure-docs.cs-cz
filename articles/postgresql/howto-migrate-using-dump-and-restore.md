@@ -1,20 +1,17 @@
 ---
 title: Jak výpisu a obnovení ve službě Azure Database for PostgreSQL
 description: Popisuje, jak extrahovat databázi PostgreSQL do souboru výpisu a obnovení ze souboru vytvořené pg_dump ve službě Azure Database for PostgreSQL.
-services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
-editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966904"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53538580"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.

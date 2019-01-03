@@ -3,17 +3,15 @@ title: Vytvoření a Správa pravidel brány firewall MariaDB ve službě Azure 
 description: Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a43c47a1ac143014a7b36f64d72d20bf73c05c92
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 75fc79b582803150f2111efb848d113d52928263
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950280"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53544664"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Vytváření a správa Azure Database pro MariaDB pravidla brány firewall pomocí webu Azure portal
 Pravidla brány firewall na úrovni serveru umožňují správcům přístup k Azure Database pro MariaDB serveru ze zadaná IP adresa nebo rozsah IP adres. 

@@ -15,16 +15,16 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f8c3c770cb7e30bda16b4857d5b337923d2417d2
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967891"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53541553"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
-Někdy potřebujete informace o změnách přístupu na základě role (RBAC) ovládacího prvku, například pro auditování a odstraňování potíží. Kdykoli někdo provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny budou protokolovat [protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Můžete zobrazit protokoly aktivit zobrazíte všechny RBAC změny za posledních 90 dnů.
+Někdy potřebujete informace o změnách přístupu na základě role (RBAC) ovládacího prvku, například pro auditování a odstraňování potíží. Kdykoli někdo provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny budou protokolovat [protokolu aktivit Azure](../azure-monitor/platform/activity-logs-overview.md). Můžete zobrazit protokoly aktivit zobrazíte všechny RBAC změny za posledních 90 dnů.
 
 ## <a name="operations-that-are-logged"></a>Operace, které se protokolují
 

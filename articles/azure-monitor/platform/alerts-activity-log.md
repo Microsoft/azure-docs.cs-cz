@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 5657cfb40e9017918f5842c573895872940b307a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273696"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53579324"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a správa pomocí Azure monitoru upozornění protokolu aktivit  
 
@@ -96,7 +96,7 @@ Použijte následující postup:
     Můžete povolit, zakázat, úprava nebo odstranění pravidla. [Další informace](#view-and-manage-activity-log-alert-rules-in-azure-portal) o správu pravidel protokolu aktivit.
 
 
-Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit, prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure portal](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko; potom postupujte podle kroků 4 a vyšší jak je uvedeno v kurzu výše.
+Alternativně je jednoduchý přirovnání pro vysvětlení podmínky, na kterých se dají vytvořit pravidla upozornění na protokol aktivit, prozkoumat nebo filtrovat události prostřednictvím [protokolu aktivit na webu Azure portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). Ve službě Azure Monitor – protokol aktivit, jeden můžete filtrovat nebo najít potřebné události a pak vytvořte výstrahu pomocí **přidat upozornění protokolu aktivit** tlačítko; potom postupujte podle kroků 4 a vyšší jak je uvedeno v kurzu výše.
     
  ![ Přidat upozornění protokolu aktivit](media/alerts-activity-log/add-activity-log.png)
     
@@ -223,4 +223,4 @@ az group deployment create --resource-group myRG --template-file sampleActivityL
 - [Schéma Webhooku pro protokoly aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 - [Přehled protokolů aktivit](../../azure-monitor/platform/activity-log-alerts.md) 
 - Další informace o [skupiny akcí](../../azure-monitor/platform/action-groups.md).  
-- Další informace o [služby oznámení o stavu](../../monitoring-and-diagnostics/monitoring-service-notifications.md).
+- Další informace o [služby oznámení o stavu](../../azure-monitor/platform/service-notifications.md).

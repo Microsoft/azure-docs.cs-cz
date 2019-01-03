@@ -1,53 +1,50 @@
 ---
-title: Vytvoření a správě Azure databáze pro server databáze MySQL pomocí portálu Azure
-description: Tento článek popisuje, jak můžete rychle vytvořit novou databázi MySQL server Azure a spravovat server pomocí portálu Azure.
-services: mysql
+title: Vytvoření a správa Azure Database for MySQL pomocí webu Azure portal
+description: Tento článek popisuje, jak můžete rychle vytvořit nový server Azure Database for MySQL a spravovat server pomocí webu Azure Portal.
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 065eb708a1d80b0eac618bd9039a859db6ef1340
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265580"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537320"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správě Azure databáze pro server databáze MySQL pomocí portálu Azure
-Toto téma popisuje, jak můžete rychle vytvořit novou databázi MySQL serveru Azure. Zahrnuje také informace o tom, jak spravovat server pomocí portálu Azure. Správa serveru zahrnuje zobrazení Podrobnosti o serveru a databází, resetuje se heslo, škálování prostředky a odstranění serveru.
+# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Vytvoření a správa Azure Database for MySQL pomocí webu Azure portal
+Toto téma popisuje, jak můžete rychle vytvořit nový server Azure Database for MySQL. Obsahuje také informace o tom, jak spravovat server s využitím webu Azure portal. Správa serveru obsahuje zobrazení Podrobnosti o serveru a databáze, resetuje se heslo, škálování prostředků a odstraněním serveru.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
-Postupujte podle těchto kroků k vytvoření Azure databáze MySQL serveru s názvem "mydemoserver."
+Následující postup použijte k vytvoření serveru Azure Database for MySQL s názvem "mydemoserver."
 
-1. Klikněte **vytvořit prostředek** tlačítko umístěné v levém horním rohu portálu Azure.
+1. Klikněte na tlačítko **vytvořit prostředek** tlačítko umístěné v levém horním rohu webu Azure portal.
 
-2. Na nové stránce vyberte **databáze**a pak na stránce databáze, vyberte **Azure Database pro databázi MySQL**.
+2. Na nové stránce vyberte **databází**a pak na stránce databáze, vyberte **– Azure Database for MySQL**.
 
-    > Azure databáze pro server databáze MySQL byla vytvořena s definovanou sadu [výpočetního prostředí a úložiště](./concepts-pricing-tiers.md) prostředky. Vytvoření databáze v rámci skupiny prostředků Azure a v databázi aplikace Azure pro server databáze MySQL.
+    > Azure Database for MySQL serveru se vytvoří s definovanou sadou [výpočetní výkon a úložiště](./concepts-pricing-tiers.md) prostředky. Vytvoření databáze v rámci skupiny prostředků Azure a ve službě Azure Database for MySQL server.
 
    ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
 
-3. Vyplňte Azure databáze MySQL formuláře pomocí následující informace:
+3. Azure Database for MySQL – formulář vyplňte pomocí následujících informací:
 
     | **Pole formuláře** | **Popis pole** |
     |----------------|-----------------------|
     | *Název serveru* | mydemoserver (název serveru je globálně jedinečný) |
     | *Předplatné* | mysubscription (vyberte z rozevírací nabídky) |
-    | *Skupina prostředků* | myresourcegroup (vytvořit novou skupinu prostředků nebo použijte existující) |
-    | *Výběr zdroje* | Prázdné (vytvořit prázdný MySQL serveru) |
+    | *Skupina prostředků* | myresourcegroup (vytvořit novou skupinu prostředků nebo použijte již existující) |
+    | *Výběr zdroje* | Prázdné (Vytvoření prázdné serveru MySQL) |
     | *Přihlašovací jméno správce serveru* | myadmin (název účtu správce instalace) |
     | *Heslo* | Nastavit heslo účtu správce |
     | *Potvrdit heslo* | potvrďte heslo účtu správce |
-    | *Umístění* | Asie a Tichomoří – jihovýchod (vyberte mezi Severní Evropa a západní USA) |
-    | *Verze* | 5.7 (zvolte Azure databáze MySQL server verze) |
+    | *Umístění* | Jihovýchodní Asie (vyberte mezi Severní Evropa a západní USA) |
+    | *Verze* | 5.7 (zvolte databázi Azure pro verzi serveru MySQL) |
 
-4. Klikněte na tlačítko **cenová úroveň** k určení úrovně služby a výkonu pro nový server. Vyberte **obecné účely** kartě. *Gen 4*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**.
+4. Klikněte na tlačítko **cenová úroveň** k určení úrovně vrstvy a výkon služby pro nový server. Vyberte **Obecné** kartu. *Gen 4*, *2 virtuální jádra*, *5 GB* a *7 dní* jsou výchozí hodnoty pro **Výpočetní generaci**, **Virtuální jádra**, **Úložiště** a **Období uchování zálohy**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte v **Možnosti redundance zálohy** možnost **Geograficky redundantní**.
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -55,62 +52,62 @@ Postupujte podle těchto kroků k vytvoření Azure databáze MySQL serveru s n�
 
     > Vyberte **připnout na řídicí panel** možnost, povolíte snadné sledování vašich nasazení.
 
-## <a name="update-an-azure-database-for-mysql-server"></a>Aktualizovat databázi služby Azure pro server databáze MySQL
-Poté, co byla vytvořena na nový server, uživatel má několik možností pro konfiguraci stávajícího serveru, včetně resetování hesla správce a škálování nahoru nebo dolů serveru změnou vCore nebo úložiště.
+## <a name="update-an-azure-database-for-mysql-server"></a>Aktualizace serveru Azure Database for MySQL
+Po zřízení nového serveru se uživatel má několik možností, jak ke konfiguraci existující server, včetně resetování hesla správce a škálování směrem nahoru nebo dolů na serveru tak, že změníte vCore a úložiště.
 
 ### <a name="change-the-administrator-user-password"></a>Změna hesla správce uživatele
-1. Ze serveru **přehled**, klikněte na tlačítko **resetovat heslo** zobrazíte heslo resetovat okno.
+1. Ze serveru **přehled**, klikněte na tlačítko **resetovat heslo** zobrazíte okno pro resetování hesla.
 
    ![overview](./media/howto-create-manage-server-portal/overview.png)
 
-2. Zadejte nové heslo a potvrzení hesla do okna, jak je znázorněno:
+2. Zadejte nové heslo a potvrzení hesla v okně, jak je znázorněno:
 
-   ![Resetování hesla](./media/howto-create-manage-server-portal/reset-password.png)
+   ![resetování hesla](./media/howto-create-manage-server-portal/reset-password.png)
 
-3. Klikněte na tlačítko **OK** uložit nové heslo.
+3. Klikněte na tlačítko **OK** nové heslo uložte.
 
-### <a name="scale-vcores-updown"></a>Škálování vCores číselník
+### <a name="scale-vcores-updown"></a>Virtuální jádra pro škálování směrem nahoru nebo dolů
 
-1. Klikněte na **cenová úroveň**, který je umístěn v části **nastavení**.
+1. Klikněte na **cenová úroveň**, který je umístěn v rámci **nastavení**.
 
-2. Změna **vCore** nastavení přesunutím jezdec na požadovanou hodnotu.
+2. Změnit **vCore** nastavení přesunete posuvník na požadovanou hodnotu.
 
-    ![škálování výpočetní](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![škálujte kapacitu výpočetních prostředků](./media/howto-create-manage-server-portal/scale-compute.png)
 
 3. Kliknutím na **OK** uložte změny.
 
-### <a name="scale-storage-up"></a>Úložiště škálování nahoru
+### <a name="scale-storage-up"></a>Úložiště o velikosti až
 
-1. Klikněte na **cenová úroveň**, který je umístěn v části **nastavení**.
+1. Klikněte na **cenová úroveň**, který je umístěn v rámci **nastavení**.
 
-2. Změna **úložiště** nastavení přesunutím jezdec na požadovanou hodnotu.
+2. Změnit **úložiště** nastavení přesunete posuvník na požadovanou hodnotu.
 
     ![škálování úložiště](./media/howto-create-manage-server-portal/scale-storage.png)
 
 3. Kliknutím na **OK** uložte změny.
 
-## <a name="delete-an-azure-database-for-mysql-server"></a>Odstraňte databázi Azure pro server databáze MySQL
+## <a name="delete-an-azure-database-for-mysql-server"></a>Odstranění serveru Azure Database for MySQL
 
-1. Ze serveru **přehled**, klikněte **odstranit** tlačítko otevřete výzvu k potvrzení odstranění.
+1. Ze serveru **přehled**, klikněte na tlačítko **odstranit** tlačítko Otevřít výzvu k potvrzení odstranění.
 
-    ![odstraňovat](./media/howto-create-manage-server-portal/delete.png)
+    ![delete](./media/howto-create-manage-server-portal/delete.png)
 
-2. Zadejte název serveru do vstupního pole pro potvrzení double.
+2. Zadejte název serveru, do vstupního pole pro potvrzení double.
 
     ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
 
-3. Klikněte **odstranit** tlačítko potvrďte odstranění serveru. Počkejte "úspěšně odstranil MySQL server" pop, až se zobrazí na panelu oznámení.
+3. Klikněte na tlačítko **odstranit** potvrďte odstranění serveru. "Byl úspěšně odstraněn server MySQL" pop čekat až se zobrazí v oznamovacím pruhu.
 
-## <a name="list-the-azure-database-for-mysql-databases"></a>Seznam databáze Azure pro databází MySQL
-Ze serveru **přehled**, posuňte se dolů, dokud neuvidíte databázi dlaždici v dolní části. V tabulce jsou uvedeny všechny databáze na serveru.
+## <a name="list-the-azure-database-for-mysql-databases"></a>Seznam Azure Database for MySQL – databáze
+Ze serveru **přehled**, posuňte se dolů, dokud se nezobrazí databáze v dolní části dlaždice. Všechny databáze na serveru jsou uvedené v tabulce.
 
-   ![Zobrazit databáze](./media/howto-create-manage-server-portal/show-databases.png)
+   ![zobrazení databáze](./media/howto-create-manage-server-portal/show-databases.png)
 
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Zobrazit podrobnosti databáze Azure pro server databáze MySQL
-Klikněte na **vlastnosti**, který je umístěn v části **nastavení** k zobrazení podrobných informací o serveru.
+## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Zobrazit podrobnosti o serveru Azure Database for MySQL
+Klikněte na **vlastnosti**, který je umístěn v rámci **nastavení** Chcete-li zobrazit podrobné informace o serveru.
 
 ![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Rychlý úvod: Vytvoření databáze Azure pro server databáze MySQL pomocí portálu Azure](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Rychlý start: Vytvoření Azure Database for MySQL pomocí webu Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md)

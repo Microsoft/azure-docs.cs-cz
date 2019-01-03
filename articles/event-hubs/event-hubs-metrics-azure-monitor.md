@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 27a9f2619801346660dfedbda3eefe57b41ad6ac
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094317"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53537916"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
 
@@ -32,7 +32,7 @@ Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování nap�
 
 Azure Monitor poskytuje několik způsobů přístupu metriky. Můžete buď metriky přístup prostřednictvím [webu Azure portal](https://portal.azure.com), nebo pomocí rozhraní API služby Azure Monitor (REST a .NET) a řešení pro analýzu, jako je například Operations Management Suite a Služba Event Hubs. Další informace najdete v tématu [monitorování dat shromážděných službou Azure Monitor](../azure-monitor/platform/data-collection.md).
 
-Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) ve službě Azure Monitor.
+Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) ve službě Azure Monitor.
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup metrik na portálu
 
@@ -63,34 +63,34 @@ Spočítá počet dat a správu požadavků operace.
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-| Příchozí žádosti (preview) | Počet požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-| Úspěšné požadavky (preview)   | Počet úspěšných požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-| Chyby serveru (preview) | Počet požadavků není zpracována z důvodu chyby ve službě Azure Event Hubs v zadaném období. <br/><br/>Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName |
-|Chyby uživatele (preview)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Chyby překročení kvóty (preview)|Počet žádostí překročil dostupnou kvótu. Zobrazit [v tomto článku](event-hubs-quotas.md) Další informace o kvótách služby Event Hubs.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+| Příchozí žádosti (preview) | Počet požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName |
+| Úspěšné požadavky (preview)   | Počet úspěšných požadavků provedených na službu Azure Event Hubs v zadaném období. <br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName |
+| Chyby serveru (preview) | Počet požadavků není zpracována z důvodu chyby ve službě Azure Event Hubs v zadaném období. <br/><br/>Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName |
+|Chyby uživatele (preview)|Počet požadavků není zpracována z důvodu chyby uživatele v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Chyby překročení kvóty (preview)|Počet žádostí překročil dostupnou kvótu. Zobrazit [v tomto článku](event-hubs-quotas.md) Další informace o kvótách služby Event Hubs.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="throughput-metrics"></a>Metriky propustnosti
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Omezené požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití jednotek propustnosti.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Příchozí zprávy (preview)|Počet zpráv odeslaných do služby Event Hubs v zadaném období nebo události.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Odchozí zprávy (preview)|Počet zpráv nebo událostí načte ze služby Event Hubs v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Příchozí bajty (preview)|Počet bajtů odeslaných do služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Odchozí bajty (preview)|Počet bajtů načtených ze služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Příchozí zprávy (preview)|Počet zpráv odeslaných do služby Event Hubs v zadaném období nebo události.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Odchozí zprávy (preview)|Počet zpráv nebo událostí načte ze služby Event Hubs v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Příchozí bajty (preview)|Počet bajtů odeslaných do služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Odchozí bajty (preview)|Počet bajtů načtených ze služby Azure Event Hubs v zadaném období.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="connection-metrics"></a>Metrik připojení
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|ActiveConnections (preview)|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Připojení otevřeno (preview)|Počet otevřených připojení.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Připojení uzavřeno (preview)|Počet uzavřených připojení.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|ActiveConnections (preview)|Počet aktivních připojení na obor názvů i na entity.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Připojení otevřeno (preview)|Počet otevřených připojení.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Připojení uzavřeno (preview)|Počet uzavřených připojení.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>Metriky Event Hubs Capture
 
@@ -98,9 +98,9 @@ Metriky Event Hubs Capture můžete sledovat, když povolíte funkci Capture pro
 
 | Název metriky | Popis |
 | ------------------- | ----------------- |
-|Zachytit Backlog (Preview)|Počet bajtů, které ještě mají být zaznamenány do zvoleného cíle.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Zachycené zprávy (Preview)|Počet zpráv nebo událostí, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotky: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Zachycené bajty (Preview)|Počet bajtů, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotka: bajty <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Zachytit Backlog (Preview)|Počet bajtů, které ještě mají být zaznamenány do zvoleného cíle.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Zachycené zprávy (Preview)|Počet zpráv nebo událostí, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotka: Počet <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
+|Zachycené bajty (Preview)|Počet bajtů, které jsou zachyceny do zvoleného cíle v zadaném období.<br/><br/> Jednotka: B <br/> Typ agregace: Celkem <br/> Dimenze: EntityName|
 
 ## <a name="metrics-dimensions"></a>Dimenze metriky
 

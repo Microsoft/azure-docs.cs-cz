@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 92f6bc358fe8cc5ab8f7242d94edc3004eaab4b9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: c1f4690d2ce10fe83d613b37ef2514effd2cef63
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163374"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598817"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Na váš počítač nainstalovat Poznámkový blok Jupyter a připojte se k Apache Spark v HDInsight
 
@@ -22,9 +22,9 @@ V tomto článku se dozvíte, jak instalace Poznámkový blok Jupyter s vlastní
 
 Při instalaci do počítače Jupyter a Spark magic jsou tři klíčové kroky.
 
-* Instalace aplikace Jupyter notebook
-* Instalace jádra PySpark a Spark s kouzlem Spark
-* Konfigurace magic Spark pro přístup ke clusteru Spark v HDInsight
+* Instalace aplikace Jupyter notebook.
+* Instalace jádra PySpark a Spark s kouzlem Spark.
+* Nakonfigurujte magic Spark pro přístup ke clusteru Spark v HDInsight.
 
 Další informace o jádrech vlastní a k dispozici pro poznámkové bloky Jupyter s clusterem HDInsight Spark magic, naleznete v tématu [jádra dostupná pro poznámkové bloky Jupyter s Apache Spark Linux clusterů v HDInsight](apache-spark-jupyter-notebook-kernels.md).
 
@@ -43,7 +43,7 @@ Před instalací poznámkové bloky Jupyter, je nutné nainstalovat Python. Pyth
 
         conda install jupyter
 
-    Další informace o instalaci Jupyter, naleznete v tématu [instalace Jupyteru pomocí Anaconda](http://jupyter.readthedocs.io/en/latest/install.html).
+    Další informace o instalaci Jupyter, naleznete v tématu [instalace Jupyteru pomocí Anaconda](https://jupyter.readthedocs.io/en/latest/install.html).
 
 ## <a name="install-the-kernels-and-spark-magic"></a>Instalace jádra a Spark magic
 
@@ -100,7 +100,7 @@ V této části nakonfigurujete Kouzlo Spark, který jste dříve nainstalovali 
             "livy_server_heartbeat_timeout_seconds": 60,
             "heartbeat_retry_seconds": 1
 
-    >[!TIP]
+    >[!TIP]  
     >Ujistěte se, že nedošlo k úniku relací jsou odesílány prezenční signály. Když počítač přejde do režimu spánku nebo je vypnutý, nejsou zasílány prezenčního signálu, což vede k relaci se vyčistí. Pro clustery verzi 3.4, pokud chcete toto chování zakázat, můžete nastavit konfiguraci Livy `livy.server.interactive.heartbeat.timeout` k `0` z uživatelského rozhraní Ambari. Pro clustery v3.5 Pokud nenastavíte výše, verze 3.5 Konfigurace relace se neodstraní.
 
 1. Začněte Jupyter. Použijte následující příkaz z příkazového řádku.
@@ -120,7 +120,7 @@ V této části nakonfigurujete Kouzlo Spark, který jste dříve nainstalovali 
 
     Pokud můžete úspěšně načíst výstup, je otestovat připojení ke clusteru HDInsight.
 
-    >[!TIP]
+    >[!TIP]  
     >Pokud chcete aktualizovat konfiguraci poznámkového bloku pro připojení do jiného clusteru, aktualizujte config.json s novou sadu hodnot, jak je znázorněno v kroku 3 výše.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Proč instalace Jupyteru do počítače?
@@ -132,7 +132,7 @@ Může existovat několik důvodů, proč můžete chtít nainstalovat do počí
 * Můžete pracovat s poznámkovými bloky místně i bez clusteru. Potřebujete jenom cluster k testování vašich poznámkových bloků, nechcete spravovat ručně vašich poznámkových bloků nebo vývojové prostředí.
 * Může být jednodušší konfigurovat místní vývojové prostředí, než je konfigurace instalace Jupyter v clusteru.  Můžete využít výhod veškerý software, který jste si nainstalovali místně bez konfigurace jeden nebo více vzdálených clusterů.
 
-> [!WARNING]
+> [!WARNING]  
 > S Jupyterem nainstalované na místním počítači poběží více uživatelů stejného poznámkového bloku na stejném clusteru Spark ve stejnou dobu. V takovém případě se vytvoří víc relací Livy. Pokud narazíte na problém a chcete ladit, který bude, že složité úlohy sledování relace Livy patří který uživatel.
 >
 >

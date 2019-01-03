@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6b6dd80f649b0c92aacdb5711e88d7710db5f51b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 50d071c420eec106f5ab28530aa7b2ff9a55fe4a
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424438"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558750"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Ukázky kódu Azure Active Directory (koncový bod v2.0)
 
@@ -62,8 +62,8 @@ Následující ukázky ukazují webové aplikace, které se přihlásit uživate
 
  Platforma | Pouze přihlášení uživatele | Přihlásí uživatele a volání Microsoft Graphu
  -------- | ------------------- | ---------------------------------
-![Jádro ASP.NET](media/sample-v2-code/logo_NETcore.png)<p/>ASP.NET Core 2.1 | [aspnetcore webapp openidconnect v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Stejný ukázkový v [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) větve
-![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET | [Rychlý start technologie ASP.NET](https://GitHub.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) <p/> [DotNet webapp openidconnect v2](https://GitHub.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-admin-s omezením pomocí specifikátoru obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) <p/>[MSGraph. školení aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
+![Jádro ASP.NET](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [aspnetcore webapp openidconnect v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Stejný ukázkový v [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) větve
+![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Rychlý start technologie ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [DotNet webapp openidconnect v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [DotNet-admin-s omezením pomocí specifikátoru obory v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[MSGraph. školení aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [Rychlý úvod k Node.js](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
 ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [MSGraph. školení rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)
 
@@ -73,12 +73,12 @@ Následující ukázky ukazují veřejné klientské aplikace (desktop a mobiln�
 
 Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu | Volání webového rozhraní API ASP.NET Core 2.0
 ------------------ | -------- |  ----------| ---------- | -------------------------
-Plochy (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | Interaktivní | [DotNet desktopu msgraph v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet – nativní aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+Plochy (WPF)      | ![.NET / C#](media/sample-v2-code/logo_NET.png) | Interaktivní | [DotNet desktopu msgraph v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [DotNet – nativní aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NET.png) | Integrované ověřování systému Windows |[DotNet – iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 Plocha (konzola)   | ![.NET / C# (Desktop)](media/sample-v2-code/logo_NETcore.png) | Uživatelské jméno/heslo |[verze 2 dotnetcore nahoru](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 Mobilní zařízení (UPW)   | ![.NET / C# (UPW)](media/sample-v2-code/logo_windows.png) | Interaktivní |[DotNet nativní UPW v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
-Mobilní zařízení (Android, iOS, UPW)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktivní |[xamarin – nativní v2](https://Github.com/azure-samples/active-directory-xamarin-native-v2) |
-Mobilní zařízení (iOS)       | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Interaktivní |[IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) <p/> [IOS native nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
+Mobilní zařízení (Android, iOS, UPW)   | ![.NET / C# (Xamarin)](media/sample-v2-code/logo_xamarin.png) | Interaktivní |[xamarin – nativní v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) |
+Mobilní zařízení (iOS)       | ![iOS / Objective C nebo swiftu.](media/sample-v2-code/logo_iOS.png) | Interaktivní |[IOS swift nativní v2](https://github.com/azure-samples/active-directory-ios-swift-native-v2) </p> [IOS native nxoauth2 v2](https://github.com/azure-samples/active-directory-ios-native-nxoauth2-v2) |
 Mobilní zařízení (Android)   | ![Android / Javu](media/sample-v2-code/logo_Android.png) | Interaktivní |  [Android native-v2](https://github.com/azure-samples/active-directory-android-native-v2 ) |
 
 ## <a name="daemon-applications"></a>Démon procesu aplikace
@@ -87,8 +87,8 @@ Následující ukázky ukazují aplikaci, která má přístup k rozhraní Micro
 
 Klientská aplikace | Platforma | Tok/udělení | Volání Microsoft Graphu
 ------------------ | -------- | ---------- | --------------------
-Konzola | ![.NET Core](media/sample-v2-code/logo_NETcore.png)<p/> ASP.NET  | Přihlašovací údaje klienta | [dotnetcore – démon v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
-Webová aplikace | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)<p/> ASP.NET  | Přihlašovací údaje klienta | [DotNet – démon v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
+Konzola | ![.NET Core](media/sample-v2-code/logo_NETcore.png)</p> ASP.NET  | Přihlašovací údaje klienta | [dotnetcore – démon v2](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2)
+Webová aplikace | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET  | Přihlašovací údaje klienta | [DotNet – démon v2](https://github.com/azure-samples/active-directory-dotnet-daemon-v2)
 
 ## <a name="headless-applications"></a>Bezobslužného aplikací
 
@@ -104,7 +104,7 @@ Následující příklad ukazuje způsob ochrany webového rozhraní API s konco
 
 Platforma | Ukázka
  -------- | -------------------
-![.NET / C#](media/sample-v2-code/logo_NET.png) | WebAPI (služba) z [dotnet-native-aspnetcore-v2](https://GitHub.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+![.NET / C#](media/sample-v2-code/logo_NET.png) | WebAPI (služba) z [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
 
 ## <a name="other-microsoft-graph-samples"></a>Další ukázky Microsoft Graphu
 
