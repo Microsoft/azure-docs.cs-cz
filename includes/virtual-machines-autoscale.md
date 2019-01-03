@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ad161e3e19a1e546f30a17b38737fa88bc0953a
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53399830"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53594158"
 ---
 Můžete snadno [automatické škálování](../articles/azure-monitor/platform/autoscale-best-practices.md) vaše [virtuální počítače (VM)](../articles/virtual-machines/windows/overview.md) při použití [škálovací sady virtuálních počítačů](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) a [funkce automatického škálování Azure Monitorování](../articles/azure-monitor/platform/autoscale-overview.md). Vaše virtuální počítače musí být členy škálovací sadu automaticky škálovat. Tento článek obsahuje informace, které umožňuje lépe pochopit, jak škálování virtuálních počítačů vertikálně a horizontálně pomocí metody Automatické a ruční.
 
@@ -29,7 +29,7 @@ Používání runbooků v [Azure Automation](../articles/automation/automation-i
 
 Automatické škálování obsahuje správný počet virtuálních počítačů pro zpracování zátěže ve své aplikaci. Umožňuje přidat virtuální počítače, které zpracovat nárůst zatížení a ušetřit tak, že odeberete virtuální počítače, které jsou sedí nečinnosti. Můžete zadat minimální a maximální počet virtuálních počítačů pro spuštění na základě na sadu pravidel. S minimální díky že vaše aplikace vždycky běží i bez zatížení. S maximální hodnotou omezuje vaše možné celkové hodinové náklady.
 
-Můžete povolit automatické škálování, při vytváření škálovací sady s použitím [prostředí Azure PowerShell](../articles/monitoring-and-diagnostics/insights-powershell-samples.md#create-and-manage-autoscale-settings) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Můžete také povolit ho po vytvoření škálovací sady. Vytvoření škálovací sady, rozšíření nainstalovat a nakonfigurovat automatické škálování pomocí [šablony Azure Resource Manageru](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). Na webu Azure Portal povolit automatické škálování Azure monitor nebo povolit automatické škálování na základě nastavení škálovací sady.
+Můžete povolit automatické škálování, při vytváření škálovací sady s použitím [prostředí Azure PowerShell](../articles/azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings) nebo [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/monitor/autoscale-settings). Můžete také povolit ho po vytvoření škálovací sady. Vytvoření škálovací sady, rozšíření nainstalovat a nakonfigurovat automatické škálování pomocí [šablony Azure Resource Manageru](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md). Na webu Azure Portal povolit automatické škálování Azure monitor nebo povolit automatické škálování na základě nastavení škálovací sady.
 
 ![Povolit automatické škálování](./media/virtual-machines-autoscale/virtual-machines-autoscale-enable.png)
  

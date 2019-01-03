@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6cedc269e279a9154e63bae241f02e766e06ec96
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 027f8ad854cfc4c412a56a293de3b02a425d6858
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383897"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713824"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Nainstalovat Apache Giraph v clusterech HDInsight Hadoop a použití Giraphu ke zpracování rozsáhlých grafů
 
 Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akce skriptu HDInsight umožňuje přizpůsobit cluster spuštěním skriptu bash. Skripty slouží k přizpůsobení clusterů, během a po vytvoření clusteru.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Co je Giraph
 
-[Apache Giraph](http://giraph.apache.org/) je možné provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight. Grafy modelovat vztahy mezi objekty. Například připojení mezi směrovači ve velké síti, jako je Internet nebo vztahy mezi uživateli v sociálních sítích. Zpracování grafů umožňuje argumentovat o vztahy mezi objekty v grafu, jako například:
+[Apache Giraph](https://giraph.apache.org/) je možné provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight. Grafy modelovat vztahy mezi objekty. Například připojení mezi směrovači ve velké síti, jako je Internet nebo vztahy mezi uživateli v sociálních sítích. Zpracování grafů umožňuje argumentovat o vztahy mezi objekty v grafu, jako například:
 
 * Určení potenciální přátel podle aktuální relace.
 
@@ -36,7 +36,7 @@ Zjistěte, jak clusteru služby HDInsight nainstalovat Apache Giraph. Funkci akc
 > [!WARNING]  
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporované – Microsoft Support pomáhá izolovat a vyřešit problémy týkající se těchto součástí.
 >
-> Vlastní komponenty, jako je například Giraph, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Microsoft Support pravděpodobně možné do vyřešení problému. V opačném případě musí konzultovat opensourcové komunity, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Giraph, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Microsoft Support pravděpodobně možné do vyřešení problému. V opačném případě musí konzultovat opensourcové komunity, ve kterých se nachází rozsáhlé znalosti pro tuto technologii. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
 
 ## <a name="what-the-script-does"></a>Co dělá skriptu
@@ -55,7 +55,7 @@ Ukázkový skript do clusteru služby HDInsight nainstalovat Giraph je k dispozi
 
 Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytváření clusteru pomocí webu Azure portal.
 
-> [!NOTE]
+> [!NOTE]  
 > Akce skriptu můžete použít některou z následujících metod:
 > * Azure PowerShell
 > * Azure Classic CLI
@@ -86,7 +86,7 @@ Tato část obsahuje informace o tom, jak pomocí vzorového skriptu při vytvá
 
 ## <a name="usegiraph"></a>Použití Giraph v HDInsight
 
-Po vytvoření clusteru použijte následující kroky ke spuštění příkladu SimpleShortestPathsComputation součástí Giraph. Tento příklad používá na úrovni basic [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) implementace pro nalezení nejkratší cesty mezi objekty v grafu.
+Po vytvoření clusteru použijte následující kroky ke spuštění příkladu SimpleShortestPathsComputation součástí Giraph. Tento příklad používá na úrovni basic [Pregel](https://people.apache.org/~edwardyoon/documents/pregel.pdf) implementace pro nalezení nejkratší cesty mezi objekty v grafu.
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
 
@@ -146,7 +146,7 @@ Po vytvoření clusteru použijte následující kroky ke spuštění příkladu
    | `-op` |Umístění výstupu. |
    | `-w 2` |Počet pracovních procesů, které chcete použít. V tomto příkladu 2. |
 
-    Další informace o těchto a dalších parametrů použitých s ukázkami Giraph, najdete v článku [Giraph quickstart](http://giraph.apache.org/quick_start.html).
+    Další informace o těchto a dalších parametrů použitých s ukázkami Giraph, najdete v článku [Giraph quickstart](https://giraph.apache.org/quick_start.html).
 
 6. Po dokončení úlohy se mají výsledky ukládat do **/example/out/shotestpaths** adresáře. Názvů výstupních souborů začínat **část-m -** a končit číslo označující první, druhý, soubor atd. Následujícím příkazem zobrazíte výstup:
 

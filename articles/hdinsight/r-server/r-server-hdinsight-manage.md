@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497547"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53584390"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
@@ -22,9 +22,9 @@ V tomto článku se dozvíte, jak spravovat existující cluster v Azure HDInsig
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby ML v HDInsight**: pokyny najdete v tématu [začít pracovat se službami ML na HDInsight](r-server-get-started.md).
+* **Cluster služby ML v HDInsight**: Pokyny najdete v tématu [začít pracovat se službami ML na HDInsight](r-server-get-started.md).
 
-* **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient Secure Shell (SSH)**: Klient SSH slouží ke vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo na clusteru. Další informace najdete v tématu [použití SSH se službou HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 
 ## <a name="enable-multiple-concurrent-users"></a>Povolení několika souběžných uživatelů
@@ -50,7 +50,7 @@ Protože RStudio běží na hraničním uzlu clusteru, existuje několik kroků:
 2. Přidání dalších uživatelů Linuxu na hraničním uzlu
 3. Použití komunitní verze RStudia s vytvořeným uživatelem
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Přihlášení k hraničnímu uzlu pomocí vytvořeného uživatele SSH
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Přihlaste se k hraničnímu uzlu pomocí vytvořeného uživatele SSH
 
 Postupujte podle pokynů na adrese [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služby ML na HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
@@ -80,7 +80,7 @@ Všimněte si také, že nově přidaní uživatelé nemají v systému Linux ko
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Vzdálené připojení ke službám Microsoft ML
 
-Můžete nastavit přístup k výpočetním kontextu Spark v HDInsight ze vzdálené instance ML klienta spuštěná na ploše. Uděláte to tak, je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetním kontextu na ploše: Příklad:
+Můžete nastavit přístup k výpočetním kontextu Spark v HDInsight ze vzdálené instance ML klienta spuštěná na ploše. Uděláte to tak, je nutné zadat možnosti (hdfsShareDir, shareDir, sshUsername, sshHostname, sshSwitches a sshProfileScript) při definování RxSpark výpočetním kontextu na vašem počítači: Příklad:
 
     myNameNode <- "default"
     myPort <- 0
@@ -299,10 +299,8 @@ Pokud chcete k instalaci dalších balíčků R na hraničním uzlu, můžete po
 
 Balíčky R nainstalovat na pracovní uzly clusteru, musíte použít akci skriptu. Akce skriptů jsou skripty Bash, které se používají k provádění změn konfigurace clusteru HDInsight nebo k instalaci dalšího softwaru, jako jsou například další balíčky R. 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Instalace dalších balíčků R pomocí akcí skriptů je možná jedině po vytvoření clusteru. Nepoužívejte tento postup během vytváření clusteru, protože skript se spoléhá na zcela konfiguraci služby ML.
->
->
 
 1. Postupujte podle kroků uvedených v [přizpůsobení clusterů pomocí akce skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -312,11 +310,11 @@ Balíčky R nainstalovat na pracovní uzly clusteru, musíte použít akci skrip
 
    * Pro **název**, zadejte název akce skriptu.
 
-    * Pro **URI skriptu Bash**, zadejte `http://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který se nainstaluje na pracovní uzel další balíčky r.
+    * Pro **URI skriptu Bash**, zadejte `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`. Toto je skript, který se nainstaluje na pracovní uzel další balíčky r.
 
    * Vyberte zaškrtávací pole pouze pro **pracovního procesu**.
 
-   * **Parametry:** Balíčky R určené k instalaci. Například `bitops stringr arules`.
+   * **Parametry**: Balíčky R k instalaci. Například `bitops stringr arules`.
 
    * Zaškrtněte políčko pro **zachovat tuto akci se skripty**.  
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ce88dcaedf32f293fc121cda2a088388c99badee
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857818"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603823"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Přehled služby Azure Cloud Services
-Azure Cloud Services je příkladem [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [služby Azure App Service](../app-service/app-service-web-overview.md), tato technologie je navržen pro podporu aplikací, které jsou škálovatelné, spolehlivé a mají levný provoz. Stejným způsobem, App Service je proto hostována na virtuálních počítačích (VM), je příliš Azure Cloud Services. Máte však větší kontrolu nad virtuálními počítači. Svůj vlastní software můžete nainstalovat na virtuálních počítačích, které používají Azure Cloud Services a které můžete přistupovat vzdáleně.
+Azure Cloud Services je příkladem [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Stejně jako [služby Azure App Service](../app-service/overview.md), tato technologie je navržen pro podporu aplikací, které jsou škálovatelné, spolehlivé a mají levný provoz. Stejným způsobem, App Service je proto hostována na virtuálních počítačích (VM), je příliš Azure Cloud Services. Máte však větší kontrolu nad virtuálními počítači. Svůj vlastní software můžete nainstalovat na virtuálních počítačích, které používají Azure Cloud Services a které můžete přistupovat vzdáleně.
 
 ![Azure Cloud Services diagramu](./media/cloud-services-choose-me/diagram.png)
 
@@ -29,9 +29,9 @@ Další ovládací prvek také znamená méně snadnost použití. Pokud potřeb
 
 Existují dva typy rolí Azure Cloud Services. Jediným rozdílem mezi těmito dvěma je, jak je vaše role hostovaných na virtuálních počítačích:
 
-* **Webová role**: automaticky nasadí a je hostitelem vaší aplikace prostřednictvím služby IIS.
+* **Webová role**: Automaticky nasadí a je hostitelem vaší aplikace prostřednictvím služby IIS.
 
-* **Role pracovního procesu**: nepoužívají služby IIS, a spouští vaše samostatné aplikace.
+* **Role pracovního procesu**: Nepoužívají služby IIS a spouští vaše samostatné aplikace.
 
 Jednoduchá aplikace může například použít právě jednu webovou roli, obsluhující Web. Složitější aplikaci může používat webové role ke zpracování příchozích požadavků od uživatelů a pak předejte tyto žádosti do role pracovního procesu pro zpracování. (Tato komunikace může použít [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) nebo [Azure Queue storage](../storage/common/storage-introduction.md).)
 

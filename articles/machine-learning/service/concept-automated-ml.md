@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nacharya1
 ms.author: nilesha
-ms.date: 12/04/2018
+ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7e55304fb02078c71b91b2904475a4bee4bcc018
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9e3297b2493ea12f9da50556e4fc9e72d625fd25
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436955"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583445"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -65,9 +65,10 @@ Použít tento [ukázkový poznámkový blok](https://github.com/Azure/MachineLe
 ## <a name="next-steps"></a>Další postup
 
 Podívejte se na příklady a další informace o vytváření modelů pomocí automatizované Machine Learning:
++ [Ukázky: Použití poznámkových bloků Jupyter a prozkoumejte službu Azure Machine Learning](samples-notebooks.md#automated-ml-setup)
 
 + [Kurz: Automaticky vyškolíme model klasifikace pomocí automatizované Azure Machine Learning](tutorial-auto-train-models.md)
 
-+ [Konfigurace nastavení pro automatické školení](how-to-configure-auto-train.md)
++ [Použít automatické školení na vzdálený prostředek](how-to-auto-train-remote.md)
 
-+ [Použít automatické školení na vzdálený prostředek](how-to-auto-train-remote.md) 
++ [Konfigurace nastavení pro automatické školení](how-to-configure-auto-train.md)

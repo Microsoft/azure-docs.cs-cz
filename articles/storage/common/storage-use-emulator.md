@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 22c7adc5db044568b4aa49dbbb0e36d2c919f6a6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052539"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629621"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -88,21 +88,24 @@ Po instalaci a spustit emulátor úložiště, můžete otestovat kód proti ho.
 Další informace o připojovacích řetězcích najdete v tématu [připojovacích řetězců Azure Storage konfigurace](../storage-configure-connection-string.md).
 
 ### <a name="authorize-with-a-shared-access-signature"></a>Autorizaci pomocí sdíleného přístupového podpisu
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Některé knihovny klienta úložiště Azure, jako je například knihovna pro Xamarin, podporují pouze ověřování pomocí token sdíleného přístupového podpisu (SAS). Můžete vytvořit token SAS pomocí některého nástroje, například [Průzkumníka služby Storage](http://storageexplorer.com/) nebo jinou aplikaci, která podporuje ověřování pomocí sdíleného klíče.
 
 SAS token můžete vygenerovat také pomocí Azure Powershellu. Následující příklad generuje token SAS s úplnými oprávněními pro kontejner objektů blob:
 
-1. Instalace Azure Powershellu, pokud jste tak dosud neučinili (pomocí nejnovější verze prostředí Azure PowerShell se doporučuje rutiny). Pokyny k instalaci, naleznete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Instalace Azure Powershellu, pokud jste tak dosud neučinili (pomocí nejnovější verze prostředí Azure PowerShell se doporučuje rutiny). Pokyny k instalaci, naleznete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-Az-ps).
 2. Otevřete prostředí Azure PowerShell a spuštěním následujících příkazů nahraďte `CONTAINER_NAME` s názvem podle svého výběru:
 
 ```powershell
-$context = New-AzureStorageContext -Local
+$context = New-AzStorageContext -Local
 
-New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
+New-AzStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
 $now = Get-Date
 
-New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
+New-AzStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryTime $now.AddDays(1.0) -Context $context -FullUri
 ```
 
 Výsledný sdíleného přístupového podpisu URI pro nový kontejner by měl vypadat přibližně:
@@ -169,8 +172,8 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help
 | **Start** |Spuštění emulátoru úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Spusťte emulátor v aktuálním procesu místo vytvoření nového procesu. |
 | **Stop** |Zastaví emulátoru úložiště. |`AzureStorageEmulator.exe stop` | |
 | **Stav** |Vypíše stav emulátoru úložiště. |`AzureStorageEmulator.exe status` | |
-| **Vymazat** |Vymaže data ve všech služeb, které jsou zadané na příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*objekt BLOB*: vymaže data v objektech blob. <br/>*fronty*: vymaže data ve frontě. <br/>*Tabulka*: vymaže data v tabulce. <br/>*všechny*: vymaže veškerá data ve všech služeb. |
-| **Inicializace** |Provádí jednorázová inicializace nastavení emulátoru. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Určuje server, který je hostitelem instance serveru SQL. <br/>*instanceName – sqlinstance*: Určuje název instance SQL pro použití výchozí instance serveru. <br/>*-forcecreate*: Vynutí vytvoření databáze SQL, i v případě, že již existuje. <br/>*-skipcreate*: přeskočí vytvoření databáze SQL. To má přednost před - forcecreate.<br/>*-reserveports*: pokouší rezervovat porty HTTP přidruženého ke službám.<br/>*-unreserveports*: pokusy o odebrání rezervace pro porty HTTP přidruženého ke službám. To má přednost před - reserveports.<br/>*-inprocess*: provádí inicializace v aktuálním procesu místo vytváření podřízeného procesu nový proces. Aktuální proces musí být spuštěn se zvýšenými oprávněními, pokud Změna portu rezervace. |
+| **Vymazat** |Vymaže data ve všech služeb, které jsou zadané na příkazovém řádku. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*objekt BLOB*: Data v objektech blob vymaže. <br/>*fronty*: Vymaže data ve frontě. <br/>*Tabulka*: Vymaže dat tabulky. <br/>*Všechny*: Vymaže všechna data ve všech služeb. |
+| **Inicializace** |Provádí jednorázová inicializace nastavení emulátoru. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Určuje server, který je hostitelem instance serveru SQL. <br/>*instanceName – sqlinstance*: Určuje název instance SQL pro použití výchozí instance serveru. <br/>*-forcecreate*: Vynutí vytvoření databáze SQL, i v případě, že již existuje. <br/>*-skipcreate*: Přeskočí vytvoření databáze SQL. To má přednost před - forcecreate.<br/>*-reserveports*: Pokusy o rezervaci portů HTTP přidruženého ke službám.<br/>*-unreserveports*: Pokus o odebrání rezervace pro porty HTTP přidruženého ke službám. To má přednost před - reserveports.<br/>*-inprocess*: Provede inicializaci v aktuálním procesu místo vytváření podřízeného procesu nový proces. Aktuální proces musí být spuštěn se zvýšenými oprávněními, pokud Změna portu rezervace. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Rozdíly mezi Azure Storage a emulátoru úložiště
 Emulátor úložiště je emulovaných prostředí spuštěné v místní instanci SQL, existují rozdíly ve funkcích mezi emulátorem a účtu služby Azure storage v cloudu:

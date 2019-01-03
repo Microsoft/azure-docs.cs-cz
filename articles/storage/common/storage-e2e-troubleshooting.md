@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: cf183b0a78ff3f7e442ea8052f37fc2df58aac54
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262314"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634503"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Začátku do konce řešení problémů pomocí metrik Azure Storage a protokolování, AzCopy a analyzátoru zpráv
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -94,6 +94,8 @@ Ke konfiguraci účtu pomocí protokolování a metriky pro úložiště [webu A
 
 **Via PowerShell**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 1. Použití [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) rutiny pro přidání účtu uživatele Azure do okna prostředí PowerShell:
@@ -114,13 +116,13 @@ Začínáme s prostředím PowerShell for Azure, najdete v článku [instalace a
 4. Povolení protokolování úložiště pro službu Blob service:
    
     ```powershell
-    Set-AzureStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations Read,Write,Delete -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 5. Zapnutí metrik úložiště pro službu Blob service, nezapomeňte nastavit **- MetricsType** k `Minute`:
    
     ```powershell
-    Set-AzureStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
+    Set-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Minute -MetricsLevel ServiceAndApi -PassThru -RetentionDays 7 -Version 1.0
     ```
 
 ### <a name="configure-net-client-side-logging"></a>Konfigurace protokolování na straně klienta .NET
@@ -198,11 +200,11 @@ Message Analyzer zahrnuje prostředky pro službu Azure Storage, který vám pom
 2. Spuštění nástroje Message Analyzer.
 3. Z **nástroje** nabídce vyberte možnost **správce inventáře**. V **správce inventáře** dialogového okna, vyberte **stáhne**, potom vyfiltrujte **služby Azure Storage**. Úložiště prostředků Azure, uvidíte, jak je znázorněno na obrázku níže.
 4. Klikněte na tlačítko **synchronizace všechny položky zobrazí** instalace prostředků úložiště Azure. K dispozici prostředky patří:
-   * **Pravidla služby Azure Storage barva:** pravidel barvy úložiště Azure umožňují definovat zvláštní filtry, které používají barvu, text a písmo styly zvýrazněte zprávy, které obsahují konkrétní informace o trasování.
-   * **Azure Storage grafy:** grafy služby Azure Storage jsou předdefinované grafů, které grafu data protokolu serveru. Všimněte si, že určený grafy služby Azure Storage v tuto chvíli může pouze načtení protokolu serveru do mřížky analýzy.
-   * **Azure Storage analyzátory:** analyzátory služby Azure Storage analyzovat klienta služby Azure Storage, server a protokoly HTTP mohla zobrazit v mřížce analýzy.
-   * **Azure Storage filtry:** filtry služby Azure Storage jsou předdefinované kritéria, které můžete použít k dotazování dat v mřížce analýzy.
-   * **Azure Storage zobrazení rozložení:** rozložení zobrazení služby Azure Storage jsou předdefinované rozložení a seskupení v mřížce analýzy.
+   * **Azure Storage pravidel barvy:** Pravidla barvy ve službě Azure Storage vám umožňují definovat zvláštní filtry, které používají barvu, text a styly písem zvýrazněte zprávy, které obsahují konkrétní informace o trasování.
+   * **Azure Storage grafy:** Azure Storage grafy jsou předdefinované grafů, které grafu data protokolu serveru. Všimněte si, že určený grafy služby Azure Storage v tuto chvíli může pouze načtení protokolu serveru do mřížky analýzy.
+   * **Analyzátory úložiště Azure:** Azure Storage analyzátory analyzovat klienta služby Azure Storage, server a protokoly HTTP mohla zobrazit v mřížce analýzy.
+   * **Azure Storage filtry:** Azure Storage filtry jsou předdefinované kritéria, které můžete použít k dotazování dat v mřížce analýzy.
+   * **Rozložení zobrazení služby Azure Storage:** Rozložení zobrazení služby Azure Storage jsou předdefinované rozložení a seskupení v mřížce analýzy.
 5. Po instalaci prostředky, restartujte Message Analyzer.
 
 ![Správce inventáře analyzátoru zpráv](./media/storage-e2e-troubleshooting/mma-start-page-1.png)

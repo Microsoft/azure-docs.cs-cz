@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8ba94cd94003ee51a621923d3b1dbf2a402c5cfb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 238d84c32a145c00648ce3923efaa86a8fa3d08e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082321"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971712"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Zjistit a použít ukázkové poznámkové bloky
 
@@ -37,11 +37,11 @@ Jakmile identifikujete Poznámkový blok, který chcete prozkoumat, tady je něk
 - [Galerie zajímavé poznámkových bloků](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter projektu na Githubu)
 - [nbviewer.jupyter.org](https://nbviewer.jupyter.org)
 - Fyzika instrukce z [fyzika oddělení ve britských College London](https://notebooks.azure.com/cvanbreu/libraries)
-- [Azure Machine Learning úvodní ukázky služby](https://notebooks.azure.com/azureml/projects/0f41b597b1ea)
+- [Azure Machine Learning úvodní ukázky služby](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
 ## <a name="next-steps"></a>Další postup  
 
-- [Postupy: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
-- [Postupy: práce s datovými soubory](work-with-project-data-files.md)
-- [Postupy: přístup k datovým prostředkům](access-data-resources-jupyter-notebooks.md)
-- [Postupy: použití aplikace Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Jak: Konfigurace a správa projektů](configure-manage-azure-notebooks-projects.md)
+- [Jak: Práce s datovými soubory](work-with-project-data-files.md)
+- [Jak: Přístup k prostředkům data](access-data-resources-jupyter-notebooks.md)
+- [Jak: Použití Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

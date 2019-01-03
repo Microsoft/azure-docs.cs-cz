@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 89d1859b521fff8ca8d3e8c7342bcb5a4b8d59fe
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3ee1cfaa9e5eb08b2fe6ee7d210dcb84a8c39d78
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012976"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715320"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalace a využít Apache Giraph u clusterů HDInsight se systémem Windows
 
 Zjistěte, jak přizpůsobit Windows založené na clusteru HDInsight s Apache Giraph pomocí akce skriptu a použití Giraph k zpracování rozsáhlých grafů. Informace o použití Giraphu ke clusteru se systémem Linux najdete v tématu [instalace Apache Giraph u clusterů systému HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu fungovat jenom s clustery HDInsight se systémem Windows. HDInsight je dostupná jenom ve Windows pro verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o tom, jak nainstalovat Giraph v clusteru HDInsight se systémem Linux najdete v tématu [instalace Apache Giraph u clusterů systému HDInsight Hadoop (Linux)](hdinsight-hadoop-giraph-install-linux.md).
 
 
@@ -34,7 +34,7 @@ Giraph můžete nainstalovat na libovolný typ clusteru Azure HDInsight (Hadoop,
 * [Vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-giraph"></a>Co je Giraph?
-<a href="http://giraph.apache.org/" target="_blank">Apache Giraph</a> je možné provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight. Grafy modelovat vztahy mezi objekty, jako je například připojení mezi směrovači ve velké síti, jako je Internet nebo vztahy mezi uživateli v sociálních sítích (někdy označované jako sociální graf). Zpracování grafů umožňuje argumentovat o vztahy mezi objekty v grafu, jako například:
+<a href="https://giraph.apache.org/" target="_blank">Apache Giraph</a> je možné provádět zpracování s použitím Hadoopu grafů a jde použít s Azure HDInsight. Grafy modelovat vztahy mezi objekty, jako je například připojení mezi směrovači ve velké síti, jako je Internet nebo vztahy mezi uživateli v sociálních sítích (někdy označované jako sociální graf). Zpracování grafů umožňuje argumentovat o vztahy mezi objekty v grafu, jako například:
 
 * Určení potenciální přátel podle aktuální relace.
 * Identifikace nejkratší mezi dvěma počítači v síti.
@@ -61,7 +61,7 @@ Giraph můžete nainstalovat na libovolný typ clusteru Azure HDInsight (Hadoop,
     Můžete přidat více než jednu akci se skripty pro instalaci více součástí clusteru. Po přidání skripty, klikněte na značku zaškrtnutí zahájíte vytváření clusteru.
 
 ## <a name="use-giraph"></a>Použití Giraph
-K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputation <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> implementace pro nalezení nejkratší cesty mezi objekty v grafu. Pomocí následujících kroků k nahrání ukázkových dat a ukázkový soubor jar, spustit úlohu s využitím příkladu SimpleShortestPathsComputation a pak zobrazte výsledky.
+K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputation <a href = "https://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> implementace pro nalezení nejkratší cesty mezi objekty v grafu. Pomocí následujících kroků k nahrání ukázkových dat a ukázkový soubor jar, spustit úlohu s využitím příkladu SimpleShortestPathsComputation a pak zobrazte výsledky.
 
 1. Nahrajte ukázkový datový soubor do úložiště objektů Blob v Azure. Na místní pracovní stanici, vytvořte nový soubor s názvem **tiny_graph.txt**. Měl by obsahovat následující řádky:
 
@@ -80,7 +80,7 @@ K předvedení na úrovni basic použijeme příklad SimpleShortestPathsComputat
     ![tiny_graph.txt vykreslen jako kroužky s různou vzdálenost mezi řádky](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
 2. Spustíte příklad SimpleShortestPathsComputation. Pomocí následujících rutin prostředí Azure PowerShell ke spuštění příkladu s použitím souboru tiny_graph.txt jako vstup.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
     > Podle postupu v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) si nainstalujte nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -164,8 +164,8 @@ Zobrazit [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoo
 * [Vytvořte clustery systému Apache Hadoop v HDInsight](hdinsight-provision-clusters.md): Obecné informace o vytváření clusterů HDInsight.
 * [Přizpůsobení clusteru HDInsight pomocí skriptových akcí][hdinsight-cluster-customize]: Obecné informace o přizpůsobení clusterů HDInsight pomocí skriptových akcí.
 * [Vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions.md).
-* [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]: akce skriptu vzorku o instalaci Spark.
-* [Instalace Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install.md): akce skriptu vzorku o instalaci Solr.
+* [Nainstalovat a používat Apache Spark v clusterech HDInsight][hdinsight-install-spark]: Ukázkový skript akce o instalaci Spark.
+* [Instalace Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install.md): Ukázkový skript akce o instalaci Solr.
 
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/

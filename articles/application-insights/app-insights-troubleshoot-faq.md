@@ -10,40 +10,40 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/12/2017
+ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 815388db673673a3802f8e5e515b7e16cb180a29
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1c0167fd7f6ef8a66968e70df26d1e7a6ed845b1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323350"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975249"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
 ## <a name="configuration-problems"></a>Problémy s konfigurací
 *Mám potíže při nastavení Moje:*
 
-* [Aplikace .NET](app-insights-asp-net-troubleshoot-no-data.md)
-* [Monitorování již spuštěné aplikace](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
+* [Aplikace .NET](../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [Monitorování již spuštěné aplikace](../azure-monitor/app/monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Diagnostika Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Webová aplikace Java](app-insights-java-troubleshoot.md)
+* [Webová aplikace Java](../azure-monitor/app/java-troubleshoot.md)
 
 *Můžu získat žádná data ze svého serveru*
 
-* [Nastavení výjimek brány firewall](app-insights-ip-addresses.md)
-* [Nastavení serveru technologie ASP.NET](app-insights-monitor-performance-live-website-now.md)
-* [Nastavení serveru Java](app-insights-java-agent.md)
+* [Nastavení výjimek brány firewall](../azure-monitor/app/ip-addresses.md)
+* [Nastavení serveru technologie ASP.NET](../azure-monitor/app/monitor-performance-live-website-now.md)
+* [Nastavení serveru Java](../azure-monitor/app/java-agent.md)
 
 ## <a name="can-i-use-application-insights-with-"></a>Je možné použít s Application Insights...?
 
-* [Webové aplikace na serveru služby IIS – místní nebo ve virtuálním počítači](app-insights-asp-net.md)
-* [Webové aplikace v Javě](app-insights-java-get-started.md)
+* [Webové aplikace na serveru služby IIS – místní nebo ve virtuálním počítači](../azure-monitor/app/asp-net.md)
+* [Webové aplikace v Javě](../azure-monitor/app/java-get-started.md)
 * [Aplikace v Node.js](app-insights-nodejs.md)
-* [Web apps v Azure](app-insights-azure-web-apps.md)
-* [Cloudové služby v Azure](app-insights-cloudservices.md)
-* [Servery aplikace spuštěné v Dockeru](app-insights-docker.md)
-* [Webové jednostránkové aplikace](app-insights-javascript.md)
+* [Web apps v Azure](../azure-monitor/app/azure-web-apps.md)
+* [Cloudové služby v Azure](../azure-monitor/app/cloudservices.md)
+* [Servery aplikace spuštěné v Dockeru](../azure-monitor/app/docker.md)
+* [Webové jednostránkové aplikace](../azure-monitor/app/javascript.md)
 * [Sharepoint](app-insights-sharepoint.md)
 * [Aplikace pro klasickou plochu Windows](app-insights-windows-desktop.md)
 * [Jiné platformy](app-insights-platforms.md)
@@ -60,7 +60,7 @@ Plán Enterprise účtují poplatky za každý den, každý uzel webového serve
 
 ## <a name="how-much-is-it-costing"></a>Kolik to je cenu?
 
-* Otevřít **využití a odhadované náklady na stránce** stránky v prostředku Application Insights. Je graf z posledního použití. Limit objemu dat, můžete nastavit, pokud chcete.
+* Otevřít **využití a odhadované náklady na stránce** v prostředku Application Insights. Je graf z posledního použití. Limit objemu dat, můžete nastavit, pokud chcete.
 * Otevřít [fakturace Azure okno](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) zobrazíte vaší faktury přes všechny prostředky.
 
 ## <a name="q14"></a>Co Application Insights v projektu změnit?
@@ -95,34 +95,33 @@ V Průzkumníku řešení klikněte pravým tlačítkem na `ApplicationInsights.
 
 Desktopové aplikace, které vám pomohou při konfiguraci Application Insights ve službě web apps můžete ve webovém serveru služby IIS. Sobě telemetrii neshromažďuje: můžete ho zastavit při nejsou konfiguraci aplikace. 
 
-[Další informace](app-insights-monitor-performance-live-website-now.md#questions).
+[Další informace](../azure-monitor/app/monitor-performance-live-website-now.md#questions).
 
 ## <a name="what-telemetry-is-collected-by-application-insights"></a>Jaké telemetrická data se shromažďují pomocí Application Insights?
 
 Ze serveru webové aplikace:
 
 * Požadavky HTTP
-* [Závislosti](app-insights-asp-net-dependencies.md). Volání: Databáze SQL. HTTP volání externích služeb; Azure Cosmos DB, table, úložiště objektů blob a fronty. 
-* [Výjimky](app-insights-asp-net-exceptions.md) a trasování zásobníku.
-* [Čítače výkonu](app-insights-performance-counters.md) – Pokud používáte [monitorování stavu](app-insights-monitor-performance-live-website-now.md), [monitorování Azure](app-insights-azure-web-apps.md) nebo [Application Insights shromážděná zapisovače](app-insights-java-collectd.md).
-* [Vlastní události a metriky](app-insights-api-custom-events-metrics.md) , že kód.
-* [Protokoly trasování](app-insights-asp-net-trace-logs.md) při konfiguraci příslušnou kolekcí.
+* [Závislosti](../azure-monitor/app/asp-net-dependencies.md). Volání: Databáze SQL. HTTP volání externích služeb; Azure Cosmos DB, table, úložiště objektů blob a fronty. 
+* [Výjimky](../azure-monitor/app/asp-net-exceptions.md) a trasování zásobníku.
+* [Čítače výkonu](app-insights-performance-counters.md) – Pokud používáte [monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md), [monitorování Azure](../azure-monitor/app/azure-web-apps.md), nebo [Application Insights shromážděná zapisovače](../azure-monitor/app/java-collectd.md).
+* [Vlastní události a metriky](../azure-monitor/app/api-custom-events-metrics.md) , že kód.
+* [Protokoly trasování](../azure-monitor/app/asp-net-trace-logs.md) při konfiguraci příslušnou kolekcí.
 
-Z [klientské webové stránky](app-insights-javascript.md):
+Z [klientské webové stránky](../azure-monitor/app/javascript.md):
 
 * [Počty zobrazení stránek](app-insights-usage-overview.md)
-* [Volání AJAX](app-insights-asp-net-dependencies.md) žádosti ze spuštěného skriptu.
+* [Volání AJAX](../azure-monitor/app/asp-net-dependencies.md) žádosti ze spuštěného skriptu.
 * Data načtení zobrazení stránky
 * Počty uživatelů a relací
-* [ID ověřeného uživatele](app-insights-api-custom-events-metrics.md#authenticated-users)
+* [ID ověřeného uživatele](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users)
 
 Z jiných zdrojů, pokud je konfigurace:
 
 * [Diagnostika Azure](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Kontejnery dockeru](app-insights-docker.md)
-* [Import tabulky do analýzy](app-insights-analytics-import.md)
-* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
-* [Logstash](app-insights-analytics-import.md)
+* [Importovat do analýzy](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Logstash](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Můžete filtrovat nebo upravit nějaké telemetrie?
 
@@ -131,7 +130,7 @@ Ano, na serveru můžete psát:
 * Procesor telemetrická data filtrovat nebo přidání vlastnosti do telemetrická data vybrané položky před jejich odesláním z vaší aplikace.
 * Inicializátor telemetrie pro přidání vlastnosti pro všechny položky telemetrie.
 
-Další informace pro [ASP.NET](app-insights-api-filtering-sampling.md) nebo [Java](app-insights-java-filter-telemetry.md).
+Další informace pro [ASP.NET](../azure-monitor/app/api-filtering-sampling.md) nebo [Java](../azure-monitor/app/java-filter-telemetry.md).
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Jak se počítají města, země a další geografické umístění dat?
 
@@ -148,9 +147,9 @@ Je možné [pomocí Power BI](app-insights-export-power-bi.md) zobrazíte teleme
 ## <a name="data"></a>Jak dlouho se data uchovávají v portálu? Je bezpečný?
 Podívejte se na [uchovávání dat a ochrany osobních údajů][data].
 
-## <a name="might-personally-identifiable-information-pii-be-sent-in-the-telemetry"></a>Mohou identifikovatelné osobní údaje (PII) být odeslány telemetrická data?
+## <a name="could-personal-data-be-sent-in-the-telemetry"></a>Může v telemetrii posílat osobní údaje?
 
-Je to možné, pokud váš kód odesílá tyto údaje. To může dojít, pokud proměnné v trasování zásobníku zahrnovat identifikovatelné osobní údaje. Váš vývojový tým by měl provést vyhodnocení rizik zajistit správné zpracování identifikovatelné osobní údaje. [Další informace o uchovávání dat a ochrany osobních údajů](app-insights-data-retention-privacy.md).
+Je to možné, pokud váš kód odesílá tyto údaje. To může také dojít, pokud proměnné v trasování zásobníku obsahují osobní údaje. Váš vývojový tým by měl provést vyhodnocení rizik zajistit správné zpracování osobních údajů. [Další informace o uchovávání dat a ochrany osobních údajů](../azure-monitor/app/data-retention-privacy.md).
 
 **Všechny** oktety webovou adresu klienta jsou vždy nastaveny na 0, poté, co jsou vyhledány atributů geografického umístění.
 
@@ -174,31 +173,31 @@ Automaticky jsme není protokolování dat o příspěvek, ale můžete použít
 Použijte jeden prostředek pro všechny součásti nebo role v jedné organizační systému. Použití samostatné prostředky pro vývoj, testování a verze a pro nezávislé aplikace.
 
 * [Viz diskuze v tomto poli](app-insights-separate-resources.md)
-* [Příklad – cloudové služby pomocí rolí pracovního procesu a web](app-insights-cloudservices.md)
+* [Příklad – cloudové služby pomocí rolí pracovního procesu a web](../azure-monitor/app/cloudservices.md)
 
 ## <a name="how-do-i-dynamically-change-the-instrumentation-key"></a>Jak můžu dynamicky měnit Instrumentační klíč?
 
 * [Tato diskuse](app-insights-separate-resources.md)
-* [Příklad – cloudové služby pomocí rolí pracovního procesu a web](app-insights-cloudservices.md)
+* [Příklad – cloudové služby pomocí rolí pracovního procesu a web](../azure-monitor/app/cloudservices.md)
 
 ## <a name="what-are-the-user-and-session-counts"></a>Co jsou uživatelů a relací se počítá?
 
 * JavaScript SDK nastaví soubor cookie uživatele na webového klienta, k identifikaci vracející uživatelů a souboru cookie relace k seskupování aktivit.
 * Pokud neexistuje žádný skript na straně klienta, můžete si [nastavení souborů cookie na serveru](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Pokud jeden uživatelů používá váš web v různých prohlížečích nebo pomocí procházení v private nebo incognito nebo různých počítačů a potom se bude počítat více než jednou.
-* Chcete-li identifikuje přihlášeného uživatele na počítače a prohlížeče, přidejte volání do [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
+* Chcete-li identifikuje přihlášeného uživatele na počítače a prohlížeče, přidejte volání do [setAuthenticatedUserContext()](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users).
 
 ## <a name="q17"></a> Můžu povolili všechno, co ve službě Application Insights?
 | Co byste měli vidět | Jak se dá stáhnout | Proč chcete |
 | --- | --- | --- |
-| Grafy dostupnosti |[Webové testy](app-insights-monitor-web-app-availability.md) |Informace, že se že vaše webová aplikace je v provozu |
-| Výkon serveru aplikace –: doby odezvy,... |[Přidejte Application Insights do projektu](app-insights-asp-net.md) nebo [nainstalujte monitorování stavu AI na serveru](app-insights-monitor-performance-live-website-now.md) (nebo napsat vlastní kód pro [sledovat závislosti](app-insights-api-custom-events-metrics.md#trackdependency)) |Zjišťování problémů s výkonem |
-| Telemetrie závislostí |[Nainstalujte na server monitorování stavu AI](app-insights-monitor-performance-live-website-now.md) |Diagnostikovat problémy s databází nebo dalších externích součástí |
-| Získat trasování zásobníku z výjimek |[Vložit volání TrackException ve vašem kódu](app-insights-asp-net-exceptions.md) (ale některé automaticky označené) |Detekujte a Diagnostikujte výjimky |
-| Hledání trasování protokolu |[Přidat adaptér protokolování](app-insights-asp-net-trace-logs.md) |Diagnostikujte výjimky, problémů s výkonem |
-| Základní informace o použití klienta: zobrazení stránky, relací... |[Inicializátor JavaScript na webových stránkách](app-insights-javascript.md) |Analýza využití |
-| Vlastní metriky klienta |[Sledování volání na webových stránkách](app-insights-api-custom-events-metrics.md) |Vylepšit uživatelské prostředí |
-| Vlastní metrik serveru |[Sledovací volání na serveru](app-insights-api-custom-events-metrics.md) |Business intelligence |
+| Grafy dostupnosti |[Webové testy](../azure-monitor/app/monitor-web-app-availability.md) |Informace, že se že vaše webová aplikace je v provozu |
+| Výkon serveru aplikace –: doby odezvy,... |[Přidejte Application Insights do projektu](../azure-monitor/app/asp-net.md) nebo [nainstalujte monitorování stavu AI na serveru](../azure-monitor/app/monitor-performance-live-website-now.md) (nebo napsat vlastní kód pro [sledovat závislosti](../azure-monitor/app/api-custom-events-metrics.md#trackdependency)) |Zjišťování problémů s výkonem |
+| Telemetrie závislostí |[Nainstalujte na server monitorování stavu AI](../azure-monitor/app/monitor-performance-live-website-now.md) |Diagnostikovat problémy s databází nebo dalších externích součástí |
+| Získat trasování zásobníku z výjimek |[Vložit volání TrackException ve vašem kódu](../azure-monitor/app/asp-net-exceptions.md) (ale některé automaticky označené) |Detekujte a Diagnostikujte výjimky |
+| Hledání trasování protokolu |[Přidat adaptér protokolování](../azure-monitor/app/asp-net-trace-logs.md) |Diagnostikujte výjimky, problémů s výkonem |
+| Základní informace o použití klienta: zobrazení stránky, relací... |[Inicializátor JavaScript na webových stránkách](../azure-monitor/app/javascript.md) |Analýza využití |
+| Vlastní metriky klienta |[Sledování volání na webových stránkách](../azure-monitor/app/api-custom-events-metrics.md) |Vylepšit uživatelské prostředí |
+| Vlastní metrik serveru |[Sledovací volání na serveru](../azure-monitor/app/api-custom-events-metrics.md) |Business intelligence |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Počty v hledání metriky a grafy nerovnost
 
@@ -227,7 +226,7 @@ Nelze nastavit Průzkumník metrik sestavy nebo nastavit průběžný export.
 
 ### <a name="querying-the-telemetry"></a>Dotazování na telemetrická data
 
-Použití [rozhraní REST API](https://dev.applicationinsights.io/) spuštění [Analytics](app-insights-analytics.md) dotazy.
+Použití [rozhraní REST API](https://dev.applicationinsights.io/) spuštění [Analytics](../azure-monitor/app/analytics.md) dotazy.
 
 ## <a name="how-can-i-set-an-alert-on-an-event"></a>Jak můžu nastavit výstrahu pro událost?
 
@@ -242,7 +241,7 @@ To nezávisí na kde se hostuje váš prostředek Application Insights. Právě 
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Mohla odesílat telemetrii na portál Application Insights?
 
-Doporučujeme použít naše sady SDK a použít [rozhraní API sady SDK](app-insights-api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app-insights-platforms.md). Tyto sady SDK pro zpracování, ukládání do vyrovnávací paměti, komprese, omezení šířky pásma, opakované pokusy a tak dále. Ale [ingestování schématu](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) a [protokol koncového bodu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) byly veřejné.
+Doporučujeme použít naše sady SDK a použít [rozhraní API sady SDK](../azure-monitor/app/api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app-insights-platforms.md). Tyto sady SDK pro zpracování, ukládání do vyrovnávací paměti, komprese, omezení šířky pásma, opakované pokusy a tak dále. Ale [ingestování schématu](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) a [protokol koncového bodu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) byly veřejné.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Můžete monitorovat webový server intranetu?
 
@@ -254,7 +253,7 @@ Povolit webový server k odesílání telemetrie na naše koncové body https://
 
 ### <a name="proxy"></a>Proxy server
 
-Směrování provozu ze serveru do brány ve vašem intranetu, tak overwritting tato nastavení v souboru ApplicationInsights.config v příkladu. Pokud tyto vlastnosti "Koncového bodu" se nenachází v konfiguraci, tyto třídy pomocí výchozí hodnoty uvedené v následujícím příkladu.
+Směrování provozu ze serveru brány na vašem intranetu, přepsáním nastavení v souboru ApplicationInsights.config v příkladu. Pokud tyto vlastnosti "Koncového bodu" se nenachází v konfiguraci, tyto třídy pomocí výchozí hodnoty uvedené v následujícím příkladu.
 
 #### <a name="example-applicationinsightsconfig"></a>Příklad souboru ApplicationInsights.config:
 ```xml
@@ -283,22 +282,23 @@ http://<your.gateway.endpoint>/v2/track
 http://<your.gateway.endpoint>/api/profiles/{0}/apiId
 ```
 
-
-
-
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Můžete spustit testy dostupnosti webu na intranetový server?
 
-Naše [webové testy](app-insights-monitor-web-app-availability.md) spouštět míst, které jsou distribuovány na celém světě. Existují dvě řešení:
+Naše [webové testy](../azure-monitor/app/monitor-web-app-availability.md) spouštět míst, které jsou distribuovány na celém světě. Existují dvě řešení:
 
-* Dvířka knihovny s branou firewall – povolit požadavky na server z [dlouhé a změnit seznam webových testovacích agentů](app-insights-ip-addresses.md).
+* Dvířka knihovny s branou firewall – povolit požadavky na server z [dlouhé a změnit seznam webových testovacích agentů](../azure-monitor/app/ip-addresses.md).
 * Psaní vlastního kódu k odesílání pravidelných požadavků na server z uvnitř intranetu. Můžete spustit webových testů Visual Studia pro tento účel. Tester výsledky odeslat do Application Insights pomocí rozhraní API TrackAvailability().
+
+## <a name="how-long-does-it-take-for-telemetry-to-be-collected"></a>Jak dlouho trvá telemetrie, které se mají shromažďovat?
+
+Většina dat Application Insights má latence méně než 5 minut. Některá data může trvat déle; obvykle větší soubory protokolu. Další informace najdete v tématu [Application Insights SLA](https://azure.microsoft.com/support/legal/sla/application-insights/v1_2/).
 
 ## <a name="more-answers"></a>Další odpovědi
 * [Fórum pro Application Insights](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
 
 <!--Link references-->
 
-[data]: app-insights-data-retention-privacy.md
+[data]: ../azure-monitor/app/data-retention-privacy.md
 [platforms]: app-insights-platforms.md
 [start]: app-insights-overview.md
 [windows]: app-insights-windows-get-started.md

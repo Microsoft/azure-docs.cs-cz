@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a37e67f299262a7e0b353564c24c789859dcec7c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307470"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605003"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight pomocí služby Azure Virtual Network
 
@@ -49,7 +49,7 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
 
     Další informace najdete v tématu [připojit k Apache Kafka se službou klienta VPN](#vpnclient) oddílu.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
     >
     > * Každý klient musí připojit pomocí softwarového klienta sítě VPN.
@@ -61,7 +61,7 @@ Další informace o používání HDInsight ve virtuální síti najdete v téma
 
 K vytvoření clusteru Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v [HDInsight připojit k místní síti](./../connect-on-premises-network.md) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Při vytváření clusteru HDInsight, vyberte __Kafka__ typ clusteru.
 
 Tyto kroky vytvoří následující konfiguraci:
@@ -71,7 +71,7 @@ Tyto kroky vytvoří následující konfiguraci:
 * Účet služby Azure Storage (používané HDInsight)
 * Kafka v HDInsightu
 
-Pokud chcete ověřit, Kafka klient může připojit ke clusteru v místním, postupujte podle kroků v [příklad: Pythonového klienta](#python-client) části.
+Pokud chcete ověřit, Kafka klient může připojit ke clusteru v místním, postupujte podle kroků v [příkladu: Pythonového klienta](#python-client) oddílu.
 
 ## <a id="vpnclient"></a> Připojení k Apache Kafka pomocí klienta VPN
 
@@ -186,7 +186,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
         -VpnClientRootCertificates $p2sRootCert
     ```
 
-    > [!WARNING]
+    > [!WARNING]  
     > Může trvat několik minut na dokončení tohoto procesu.
 
 5. Použijte následující kód k vytvoření účtu Azure Storage a objektů blob v kontejneru:
@@ -232,7 +232,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
         -SubnetName $defaultSubnet.Id
     ```
 
-  > [!WARNING]
+  > [!WARNING]  
   > Tento proces trvá přibližně 15 minut.
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro reklamní účely IP
@@ -317,7 +317,7 @@ K ověření připojení k systému Kafka, použijte následující postup k vyt
 
     Uložte vrácené informace pro použití v dalších krocích.
 
-2. Pomocí následujícího postupu nainstalujte [kafka python](http://kafka-python.readthedocs.io/) klienta:
+2. Pomocí následujícího postupu nainstalujte [kafka python](https://kafka-python.readthedocs.io/) klienta:
 
         pip install kafka-python
 

@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 933fcbfc21c69d02f1093e0ea2519d76f4130b29
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161289"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53598886"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
 
-Na rozdíl od hostoval statický web, jsou dynamické weby, které závisí na kódu na straně serveru nejlépe hostované pomocí [Azure Web Apps](/azure/app-service/app-service-web-overview).
+Na rozdíl od hostoval statický web, jsou dynamické weby, které závisí na kódu na straně serveru nejlépe hostované pomocí [služby Azure App Service](/azure/app-service/overview).
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 Při povolení statického webu hostování na vašem účtu úložiště, vyberte název výchozího souboru a volitelně můžete zadat cestu k vlastní stránka 404. Protože tato funkce zapnutá, kontejner s názvem *$web* se vytvoří, pokud ještě neexistuje. 
@@ -161,6 +161,6 @@ Ano, je velká a malá písmena stejně jako koncový bod služby blob webový k
 * [Přístup k objektům blob s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md)
 * [Konfigurace vlastního názvu domény pro koncový bod služby blob nebo web](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure Web Apps](/azure/app-service/app-service-web-overview)
+* [Azure App Service](/azure/app-service/overview)
 * [Vytvořte svoji první aplikaci bez serveru web](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Kurz: Hostování domény v Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

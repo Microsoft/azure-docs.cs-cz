@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963590"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600297"
 ---
-# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: slovník terminologie cloudu na platformě Azure
+# <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: Slovník terminologie cloudu na platformě Azure
 
 Glosář Microsoft Azure je krátký slovník terminologie cloud pro platformu Azure. Viz také:
 
@@ -37,7 +37,7 @@ Zobrazit [registraci předplatného Azure pomocí účtu Office 365](billing/bil
 Jiný název pro [aplikace služby App Service](#app-service-app).
 
 ## <a name="app-service-app"></a>Aplikace služby App Service
-Výpočetní prostředky, které [služby Azure App Service](app-service/app-service-web-overview.md) poskytuje k hostování webu či webové aplikace, webové rozhraní API, nebo [back-endu mobilní aplikace](app-service-mobile/app-service-mobile-value-prop.md). Aplikace služby App Service se také označují jako *App Services*, *webové aplikace*, *API apps*, a *mobilní aplikace*.
+Výpočetní prostředky, které [služby Azure App Service](app-service/overview.md) poskytuje k hostování webu či webové aplikace, webové rozhraní API, nebo [back-endu mobilní aplikace](app-service-mobile/app-service-mobile-value-prop.md). Aplikace služby App Service se také označují jako *App Services*, *webové aplikace*, *API apps*, a *mobilní aplikace*.
 
 ## <a name="availability-set"></a>Skupina dostupnosti
 Kolekce virtuálních počítačů, které se spravují dohromady pro zajištění redundance aplikace a spolehlivost. Použití skupiny dostupnosti zajišťuje, že během události plánované i neplánované údržby je k dispozici alespoň jeden virtuální počítač.  
@@ -70,7 +70,7 @@ Zobrazit [aktivní geografické replikace pro Azure SQL Database](sql-database/s
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
 ## <a name="image"></a>image
-Soubor, který obsahuje operační systém a konfigurace aplikace, které lze vytvořit libovolný počet virtuálních počítačů. V Azure existují dva typy obrázků: virtuální počítač image a image operačního systému. Image virtuálního počítače obsahuje operační systém a všechny disky připojené k virtuálnímu počítači, když se vytvoří bitovou kopii. Image operačního systému obsahuje pouze zobecněný operační systém s diskovou konfigurací, žádná data.  
+Soubor, který obsahuje operační systém a konfigurace aplikace, které lze vytvořit libovolný počet virtuálních počítačů. V Azure existují dva typy obrázků: Image virtuálního počítače a image operačního systému. Image virtuálního počítače obsahuje operační systém a všechny disky připojené k virtuálnímu počítači, když se vytvoří bitovou kopii. Image operačního systému obsahuje pouze zobecněný operační systém s diskovou konfigurací, žádná data.  
 Zobrazit [vyhledání a výběr imagí virtuálních počítačů Windows v Azure pomocí Powershellu nebo rozhraní příkazového řádku](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="limits"></a>omezení
@@ -102,7 +102,7 @@ Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-grou
 Kontejner ve službě Správce prostředků, který obsahuje související prostředky pro aplikaci. Skupina prostředků může zahrnovat všechny prostředky pro aplikaci nebo jenom prostředky, které jsou logicky seskupeny dohromady. To, jakým způsobem se prostředky přidělí do skupin prostředků, můžete rozhodnout na základě toho, co je pro vaši organizaci nejvhodnější.  
 Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-group-overview.md)
 
-## <a name="arm-template"></a>Šablony Resource Manageru
+## <a name="arm-template"></a>Šablona Resource Manageru
 Soubor JSON, který deklarativně definuje jeden nebo více prostředků Azure a, který definuje závislosti mezi nasazenými prostředky. Šablony lze použít k nasazení prostředků konzistentně a opakovaně.  
 Zobrazit [šablon pro vytváření Azure Resource Manageru](resource-group-authoring-templates.md)
 
@@ -112,7 +112,7 @@ Zobrazit [přehled Azure Resource Manageru](azure-resource-manager/resource-grou
 
 ## <a name="role"></a>role
 Prostředky pro řízení přístupu, který je možné přiřadit uživatelům, skupinám a službám. Role budou moct provádět akce, jako je vytvářet, spravovat a přečtěte si o prostředky Azure.  
-Zobrazit [RBAC: vestavěné role](role-based-access-control/built-in-roles.md)
+Zobrazit [RBAC: Předdefinované role](role-based-access-control/built-in-roles.md)
 
 ## <a name="sla"></a>Smlouva o úrovni služeb (SLA)
 Smlouva, která popisuje závazky společnosti Microsoft týkající se dostupnosti a konektivity. Jednotlivé služby Azure má konkrétní smlouvy SLA.  
@@ -129,7 +129,7 @@ Zobrazit [účty Azure storage](storage/common/storage-create-storage-account.md
 Na základě smlouvy se společností Microsoft, který umožňuje získat služeb Azure. Ceník předplatného a jejími podmínkami se řídí nabídky vybrána pro předplatné.
 Zobrazit [Microsoft Online Subscription Agreement](https://azure.microsoft.com/support/legal/subscription-agreement/) a [předplatné Azure propojeno se službou Azure Active Directory](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-## <a name="tag"></a>Značka
+## <a name="tag"></a>značka
 Indexování termín, který umožňuje kategorizovat prostředky podle požadavků na správu nebo fakturaci. Když máte komplexní kolekci prostředků, můžete použít značky ve způsobu, jakým je nejvhodnější tyto assety vizualizovat. Můžete například označit prostředky, které mají v rámci organizace podobnou roli nebo které patří do stejného oddělení.  
 Zobrazit [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md)
 

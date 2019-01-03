@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3500a29c1cdd8b1997f67a3cf1918090dc4ca812
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e52a7cbb5c81f779ac4d12d2f3e5fd1e4ae62852
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383591"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714011"
 ---
 # <a name="install-and-use-apache-solr-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Apache Solr na clusterech HDInsight Hadoop
 
@@ -28,12 +28,12 @@ Zjistěte, jak nainstalovat Apache Solr Azure HDInsight pomocí skriptových akc
 
 ## <a name="whatis"></a>Co je Solr
 
-[Apache Solr](http://lucene.apache.org/solr/features.html) je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
+[Apache Solr](https://lucene.apache.org/solr/features.html) je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
 
 > [!WARNING]   
 > Součásti, které jsou součástí clusteru HDInsight jsou plně podporovány společností Microsoft.
 >
-> Vlastní komponenty, jako je například Solr, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpora společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zapojit opensourcové komunity žádostí o pomoc. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ http://stackoverflow.com ](http://stackoverflow.com). Také projektů Apache mít projektovým webům na [ http://apache.org ](http://apache.org), například: [Hadoop](http://hadoop.apache.org/).
+> Vlastní komponenty, jako je například Solr, přijímat obchodně přiměřenou podporu můžete-li dále řešit tento problém. Podpora společnosti Microsoft nemusí být schopni vyřešit problémy s vlastními komponentami. Budete muset zapojit opensourcové komunity žádostí o pomoc. Existuje například mnoho komunitním webům, které lze použít jako: [Fórum na webu MSDN pro HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [ https://stackoverflow.com ](https://stackoverflow.com). Také projektů Apache mít projektovým webům na [ https://apache.org ](https://apache.org), například: [Hadoop](https://hadoop.apache.org/).
 
 ## <a name="what-the-script-does"></a>Co dělá skriptu
 
@@ -68,7 +68,7 @@ Pokud chcete vytvořit cluster, který se má nainstalovat Solr, použijte postu
 ## <a name="usesolr"></a>Použití Solr v HDInsight
 
 > [!IMPORTANT]  
-> Kroky v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [webu Apache Solr](http://lucene.apache.org/solr/).
+> Kroky v této části ukazují základní funkce Solr. Další informace o použití Solr, najdete v článku [webu Apache Solr](https://lucene.apache.org/solr/).
 
 ### <a name="index-data"></a>Indexování dat
 

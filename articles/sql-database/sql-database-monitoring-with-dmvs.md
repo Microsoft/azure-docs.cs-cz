@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: juliemsft
+ms.author: jrasnick
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88e0ad847d8d779bd769ed73d4f0393ddfb65588
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52876309"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604425"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorování výkonu Azure SQL Database pomocí zobrazení dynamické správy
 
@@ -131,8 +131,8 @@ ORDER BY end_time DESC;
 
 Pokud byl dosažen limit vstupně-výstupních operací, máte dvě možnosti:
 
-- Možnost 1: Upgrade výpočetního prostředí nebo úroveň služby
-- Možnost 2: Identifikace a vyladění dotazů využívání většina vstupně-výstupních operací.
+- Možnost 1: Upgrade velikosti výpočetního nebo úroveň služby
+- Možnost 2: Identifikujte a vyladění dotazů využívání většina vstupně-výstupních operací.
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Zobrazit související vyrovnávací paměti vstupně-výstupních operací pomocí Query Store
 
@@ -574,7 +574,7 @@ Další příklad ukazuje různé způsoby, které můžete použít **sys.resou
     ORDER BY start_time DESC;
     ```
 
-2. Můžete vyhodnotit, jak dobře vaše úloha vyhovuje výpočetního prostředí, budete muset přejít na každý aspekt metriky prostředků: procesor, čtení, zápisu, počet pracovních procesů a počet relací. Tady je upravená dotazování pomocí **sys.resource_stats** hlášení průměrné a maximální hodnoty tyto metriky prostředků:
+2. Můžete vyhodnotit, jak dobře vaše úloha vyhovuje výpočetního prostředí, budete muset přejít na každý aspekt metriky prostředků: Využití procesoru, čtení, zápisu, počet pracovních procesů a počet relací. Tady je upravená dotazování pomocí **sys.resource_stats** hlášení průměrné a maximální hodnoty tyto metriky prostředků:
 
     ```sql
     SELECT

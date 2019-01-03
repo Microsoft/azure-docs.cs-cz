@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054400"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606023"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip Tickets ukázkové SaaS aplikace
 
@@ -57,7 +57,7 @@ Nastavení tyto hodnoty tady jednoduše umožňuje nebudou muset aktualizovat ty
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Spuštění skriptů stisknutím klávesy F5
 
-Řada skriptů používá *$PSScriptRoot* k procházení složek, a *$PSScriptRoot* je vyhodnocen pouze při spuštění skriptů stisknutím klávesy **F5**.  Zvýraznění a spuštění výběru (**F8**) může vést k chybám, takže stiskněte **F5** při spouštění skriptů.
+Řada skriptů používá *$PSScriptRoot* k procházení složek, a *$PSScriptRoot* je vyhodnocen pouze při spuštění skriptů stisknutím klávesy **F5**.  Zvýraznění a spuštění výběru (**F8**) může vést k chybám, takže stiskněte **F5** při spouštění skriptů.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>Procházení skriptů k vyzkoušení implementace
 
@@ -94,10 +94,10 @@ Aby se zajistilo úspěšné ukázkové připojení, mají všechny servery [pra
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. Přihlašovací údaje pro ukázku jsou: Přihlašovací jméno = *developer*, Heslo = *P@ssword1*
+3. Přihlašovací údaje pro ukázku jsou: Přihlašovací jméno = *developer*, heslo = *P@ssword1*
 
     Následující obrázek ukazuje přihlášení pro *databáze na tenanta* vzor. 
-    ![Připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ![připojení](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 

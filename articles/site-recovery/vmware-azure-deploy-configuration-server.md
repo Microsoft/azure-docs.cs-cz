@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 58d45036cac6ad985b7b1ffb2736a500fdcb5ce2
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251024"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794350"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -97,7 +97,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ### <a name="configure-settings"></a>Konfigurace nastavení
 
-1. V průvodci správou konfiguračního serveru vyberte **Nastavit připojení** a pak vyberte síťový adaptér, přes který bude procesový server přijímat provoz replikace z virtuálních počítačů. Potom vyberte **Uložit**. Toto nastavení nelze změnit po dokončení konfigurace.
+1. V průvodci správou konfiguračního serveru vyberte **Nastavit připojení** a pak vyberte síťový adaptér, přes který bude procesový server přijímat provoz replikace z virtuálních počítačů. Potom vyberte **Uložit**. Toto nastavení nelze změnit po dokončení konfigurace. Důrazně doporučujeme neměnit IP adresu konfiguračního serveru. Ujistěte se, že IP adresa přiřazená ke konfiguračnímu serveru je STATICKÁ IP adresa a ne IP DHCP.
 2. V **trezor Recovery Services vyberte**, přihlaste se k Microsoft Azure, vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
 
     > [!NOTE]
@@ -150,7 +150,11 @@ Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa
     V **trezor služby Recovery Services**, **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**. Na serverech, vyberte **stáhnout registrační klíč** ke stažení souboru s přihlašovacími údaji.
 8. Můžete naklonovat stávající konfigurační Server a použít ho pro orchestraci replikace?
 
-    **Ne**, použití klonovaný součásti serveru Configuration není podporováno. 
+    **Ne**, použití klonovaný součásti serveru Configuration není podporováno.
+
+9. Můžete změnit IP adresa konfiguračního serveru?
+
+    **Ne**, se důrazně doporučuje ne změnit IP adresu konfiguračního serveru. Zkontrolujte všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

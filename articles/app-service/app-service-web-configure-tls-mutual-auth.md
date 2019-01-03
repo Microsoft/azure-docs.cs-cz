@@ -1,6 +1,6 @@
 ---
 title: Konfigurace vzájemného ověřování TLS – Azure App Service
-description: Zjistěte, jak nakonfigurovat webovou aplikaci pomocí ověření klientského certifikátu na protokol TLS.
+description: Zjistěte, jak nakonfigurovat aplikace pro použití ověřování pomocí certifikátu klienta v TLS.
 services: app-service
 documentationcenter: ''
 author: naziml
@@ -15,40 +15,38 @@ ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: f08e8f60f0e23cce9546e45dcf7b249d38224736
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d441329bc3f279e95b2ee302db53d78f786c3470
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252877"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650393"
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
+# <a name="how-to-configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurace vzájemného ověřování TLS pro službu Azure App Service
 ## <a name="overview"></a>Přehled
-Tím, že různé typy ověřování, můžete omezit přístup k webové aplikaci Azure. Provedete to jedním ze způsobů je k ověření pomocí klientského certifikátu, pokud je požadavek přes protokol TLS/SSL. Tento mechanismus je volána vzájemného ověřování TLS nebo klientský certifikát, ověřování a tento článek podrobně popisuje způsob nastavení webové aplikace pro použití ověřování pomocí certifikátu klienta.
+Tím, že různé typy ověřování, můžete omezit přístup k aplikaci Azure App Service. Provedete to jedním ze způsobů je k ověření pomocí klientského certifikátu, pokud je požadavek přes protokol TLS/SSL. Tento mechanismus je volána vzájemného ověřování TLS nebo klientský certifikát, ověřování a tento článek podrobně popisuje postup nastavení aplikace pro použití ověřování pomocí certifikátu klienta.
 
 > **Poznámka:** Pokud přístup k serveru prostřednictvím protokolu HTTP a nikoli HTTPS, neobdržíte žádné klientské certifikáty. Proto pokud vaše aplikace vyžaduje certifikáty klienta by nemělo umožňovat požadavků do vaší aplikace prostřednictvím protokolu HTTP.
 > 
 > 
 
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurace webové aplikace pro ověření klientského certifikátu
-Nastavit vaši webovou aplikaci tak, aby vyžadovala certifikáty klienta, budete muset přidat nastavení lokality povoleném certifikátu klienta pro vaši webovou aplikaci a nastavte ho na hodnotu true. Toto nastavení je také možné nakonfigurovat na webu Azure Portal v části okno certifikáty SSL.
+## <a name="configure-app-service-for-client-certificate-authentication"></a>Konfigurace služby App Service pro ověření klientského certifikátu
+Nastavit aplikaci tak, aby vyžadovala certifikáty klienta, budete muset přidat nastavení lokality povoleném certifikátu klienta pro vaši aplikaci a nastavte ho na hodnotu true. Toto nastavení je také možné nakonfigurovat na webu Azure Portal v části okno certifikáty SSL.
 
 Můžete použít [ARMClient nástroj](https://github.com/projectkudu/ARMClient) k tomu, aby si poradit při volání REST API. Po přihlášení pomocí nástroje, budete muset vydejte následující příkaz:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-všechno, co v nahrazení {} spolu s informacemi o vaší webové aplikace a vytvoření souboru se říká enableclientcert.json následujícím kódem JSON obsahu:
+všechno, co v nahrazení {} spolu s informacemi o vaši aplikaci a vytvořit soubor s názvem obsahu enableclientcert.json následujícím kódem JSON:
 
     {
-        "location": "My Web App Location",
+        "location": "My App Location",
         "properties": {
             "clientCertEnabled": true
         }
     }
 
-Ujistěte se, že chcete změnit hodnotu "umístění" na všude, kde se nachází příklad, střed USA – sever a západ USA atd vaší webové aplikace.
+Ujistěte se, že chcete změnit hodnotu "umístění" na všude, kde se vaše aplikace je pro příklad, střed USA – sever a západ USA atd.
 
 Můžete také použít https://resources.azure.com k převrácení `clientCertEnabled` vlastnost `true`.
 
@@ -56,11 +54,11 @@ Můžete také použít https://resources.azure.com k převrácení `clientCertE
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Přístup k certifikátu klienta z vaší webové aplikace
+## <a name="accessing-the-client-certificate-from-app-service"></a>Přístup k certifikátu klienta, ze služby App Service
 Pokud používáte ASP.NET a konfigurace aplikace pro použití ověřování pomocí certifikátu klienta, certifikát bude k dispozici prostřednictvím **HttpRequest.ClientCertificate** vlastnost. U jiných zásobníky aplikací bude klientský certifikát k dispozici v aplikaci prostřednictvím hodnotou kódovanou jako base64 v hlavičce žádosti "X ClientCert směrování žádostí na aplikace". Aplikace můžete vytvořit certifikát z této hodnoty a použít jej pro účely ověřování a autorizace ve vaší aplikaci.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Zvláštní upozornění pro ověření certifikátu
-Klientský certifikát, který je odeslán do aplikace neprochází jakéhokoli ověřování podle platformy Azure Web Apps. Ověřit tento certifikát zodpovídá za webové aplikace. Tady je ukázkový kód ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověřování.
+Klientský certifikát, který je odeslán do aplikace neprochází jakéhokoli ověřování podle platformy Azure App Service. Ověřit tento certifikát zodpovídá aplikace. Tady je ukázkový kód ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověřování.
 
     using System;
     using System.Collections.Specialized;

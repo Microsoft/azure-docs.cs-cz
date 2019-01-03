@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 4ba1e325ec978114016682aaee35be35a20ec028
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 5d2f803414db3bd118f57d317cfc32c8f22fcd5a
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499123"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653251"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Instalace publikované aplikace – Dataiku DDS
 
@@ -28,13 +28,13 @@ DSS můžete použít k implementaci kompletního analytická řešení, počín
 
 DSS můžete nainstalovat na HDInsight pomocí [Apache Hadoop](https://hadoop.apache.org/) nebo [Apache Spark](https://spark.apache.org/) clustery. DSS můžete nainstalovat na existující spuštěné clustery nebo při vytváření nových clusterů. Pro načtení dat pomocí úložiště objektů Blob v Azure jako konektor podporuje také DSS.
 
-DSS můžete použít k sestavení projektů, které pak můžete vygenerovat [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) nebo úlohy Spark. Tyto úlohy jsou spouštěny jako pravidelné úlohy MapReduce nebo Spark v HDInsight, takže při škálování clusteru na vyžádání.
+DSS můžete použít k sestavení projektů, které pak můžete vygenerovat [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) nebo úlohy Spark. Tyto úlohy jsou spouštěny jako pravidelné úlohy MapReduce nebo Spark v HDInsight, takže při škálování clusteru na vyžádání.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K instalaci této aplikace na nový cluster HDInsight nebo stávajícího clusteru, musíte mít následující konfiguraci:
 
-* Cluster úrovně: Standard, Premium
+* Úrovně clusteru: Standard, Premium
 * Typy clusteru: Hadoop, Spark
 * Verze clusteru: 3.4, 3.5
 
@@ -114,7 +114,7 @@ Podrobné kurzy, najdete v článku [další Dataiku DSS](https://www.dataiku.co
 
 * [Dokumentace ke službě Dataiku DSS](https://doc.dataiku.com/dss/latest/).
 * [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
-* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
-* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
+* [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do Azure Marketplace.
+* [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Zjistěte, jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): Další informace o použití akce skriptu k instalaci dalších aplikací.
 * [Použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md): Další informace o použití prázdných hraničních uzlů pro přístup ke clusterům HDInsight a pro účely testování a hostování aplikací HDInsight.

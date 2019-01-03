@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1cef5f8f77a11dad605d9758296c9632f5d30ab8
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409016"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718477"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webovou aplikaci hostování pro oficiální úlohy Spojené království
 
@@ -102,17 +102,17 @@ Data jsou přenosu z mimo a mezi komponentami Azure je chráněný pomocí [Tran
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Azure Web Apps poskytuje plně spravovaná webová hostitelské prostředí pro webové aplikace vyvinuté v jazyce Java, PHP, Node.js, Python, HTML a C# bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) nebo libovolného úložiště gitu.
+Azure App Service nabízí plně spravovaná webová hostitelské prostředí pro webové aplikace vyvinuté v jazyce Java, PHP, Node.js, Python, HTML a C# bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) nebo libovolného úložiště gitu.
 
 App Service je [ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/) a můžou k ověření uživatelů pomocí [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) nebo přihlášení prostřednictvím sociální sítě ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter), a [ověřování Microsoft](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft).
 
-Basic, Standard a plány Premium jsou určené pro produkční úlohy a běží na vyhrazených instancích virtuálních počítačů. Každá instance může podporovat více aplikací a domén. Aplikace služby také podporu [omezení podle IP adresy](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpečit provoz na důvěryhodné IP adresy, pokud je to nutné a také [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) pro zabezpečené připojení k jiným službám PaaS například [trezor klíčů](https://azure.microsoft.com/services/key-vault/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Je-li zvýšit zabezpečení vyžadováním náš plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k vaší místní síti nebo dodatečný výkon a škálování.
+Basic, Standard a plány Premium jsou určené pro produkční úlohy a běží na vyhrazených instancích virtuálních počítačů. Každá instance může podporovat více aplikací a domén. Aplikace služby také podporu [omezení podle IP adresy](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) zabezpečit provoz na důvěryhodné IP adresy, pokud je to nutné a také [spravovaných identit pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) pro zabezpečené připojení k jiným službám PaaS například [trezor klíčů](https://azure.microsoft.com/services/key-vault/) a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Je-li zvýšit zabezpečení vyžadováním náš plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k vaší místní síti nebo dodatečný výkon a škálování.
 
 Tato šablona nasadí následující funkce služby App Service:
 
-- [Standardní](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) úroveň plánu služby App Service
-- Více webové aplikace [sloty nasazení](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): Vývoj, ve verzi Preview, dotazů a odpovědí, UAT a samozřejmě produkčního prostředí (výchozí slot).
-- [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) pro připojení k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to může také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
+- [Standardní](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) úroveň plánu služby App Service
+- Více služby App Service [sloty nasazení](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Vývoj, ve verzi Preview, dotazů a odpovědí, UAT a samozřejmě produkčního prostředí (výchozí slot).
+- [Spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/app-service/overview-managed-identity) pro připojení k [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) (to může také použít k poskytnutí přístupu k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 
 - Integrace s [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) ke sledování výkonu
 - [Diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - Metrika [výstrahy](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -163,7 +163,7 @@ Podrobné informace o zabezpečení služby Azure Storage najdete v [Průvodci z
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>Služba Azure Key Vault v tomto podrobném plánu
 
-- Obsahuje přístupový klíč úložiště s přístupem pro čtení udělit [se identita spravované](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) webové aplikace přístupné zákazníka
+- Obsahuje přístupový klíč úložiště s přístupem pro čtení udělit [se identita spravované](https://docs.microsoft.com/azure/app-service/overview-managed-identity) webové aplikace přístupné zákazníka
 - Obsahuje heslo správce databáze serveru SQL (v samostatných trezoru)
 - Protokolování diagnostiky
 

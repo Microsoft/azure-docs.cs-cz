@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 034f182cc282f50eb3a4a1de05331f42957f49fe
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9f3d84b1f2e179d265c811faf2d35bd55bc1410f
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339803"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606977"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -54,7 +54,7 @@ Podle pokynů zjistit, jak vytvořit projekt sady WebJobs SDK verze 2.x. Nejnov�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a vyzkoušejte si [aplikace ve službě Azure App Service](app-service-web-overview.md). K dokončení kroků v tomto článku:
+Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a vyzkoušejte si [aplikace ve službě Azure App Service](overview.md). K dokončení kroků v tomto článku:
 
 * [Instalace sady Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/) s **vývoj pro Azure** pracovního vytížení. Pokud už máte sadu Visual Studio, ale nemají úlohy, přidejte úlohu tak, že vyberete **nástroje > Získejte nástroje a funkce**.
 * [Vytvoření aplikace služby App Service](app-service-web-get-started-dotnet-framework.md). Pokud ještě nemáte, můžete nasadit úlohy WebJob k, můžete použít, který místo vytvoření nového.
@@ -184,7 +184,7 @@ Emulátor úložiště Azure, na kterém běží místně nemá všechny funkce,
 
 1. Otevřít **Průzkumníka serveru** ve Visual Studiu a přihlášení do Azure. Klikněte pravým tlačítkem myši **Azure** uzlu a pak vyberte **připojit k předplatnému Microsoft Azure**.
 
-   ![Přihlášení k Azure](./media/webjobs-sdk-get-started/sign-in.png)
+   ![Přihlásit se k Azure](./media/webjobs-sdk-get-started/sign-in.png)
 
 1. V části **Azure** uzel v **Průzkumníka serveru**, klikněte pravým tlačítkem na **úložiště**a pak vyberte **účet úložiště vytvořit**.
 

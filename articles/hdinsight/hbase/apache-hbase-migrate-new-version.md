@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499303"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650099"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBase na novou verzi.
 
@@ -26,16 +26,16 @@ Clustery založené na úlohách, například [Apache Spark](https://spark.apach
 4. Umožňuje importovat přechodné data.
 5. Spuštění úlohy a pokračovat ve zpracování na novém clusteru.
 
-Upgrade [Apache HBase](http://hbase.apache.org/) clusteru jsou potřeba další kroky, jak je popsáno v tomto článku.
+Upgrade [Apache HBase](https://hbase.apache.org/) clusteru jsou potřeba další kroky, jak je popsáno v tomto článku.
 
-> [!NOTE]
+> [!NOTE]  
 > Prostoje při upgradu by měl být minimální v řádu minut. Tento výpadek je způsobeno kroky k vyprázdnění všech dat v paměti, pak čas ke konfiguraci a znovu spusťte služby v novém clusteru. Vaše výsledky se budou lišit v závislosti na počtu uzlů, velikost dat a jiné proměnné.
 
 ## <a name="review-apache-hbase-compatibility"></a>Kontrola kompatibility Apache HBase
 
-Před upgradem Apache HBase, ujistěte se, že jsou kompatibilní verze HBase na zdrojových a cílových clusterech. Další informace najdete v tématu [Hadoop s HDInsight dostupné komponenty a verze](../hdinsight-component-versioning.md).
+Před upgradem Apache HBase, ujistěte se, že jsou kompatibilní verze HBase na zdrojových a cílových clusterech. Další informace najdete v tématu [komponenty a verze k dispozici s HDInsight Apache Hadoopu](../hdinsight-component-versioning.md).
 
-> [!NOTE]
+> [!NOTE]  
 > Důrazně doporučujeme, abyste si přečetli matici kompatibility verzí v [HBase knihy](https://hbase.apache.org/book.html#upgrading).
 
 Tady je příklad verze kompatibility matici, kde Y označuje kompatibilitu a N označuje potenciální nekompatibility:
@@ -54,7 +54,7 @@ Tady je příklad verze kompatibility matici, kde Y označuje kompatibilitu a N 
 | Kompatibilita závislostí | Ne | Ano | Ano |
 | Provozní kompatibility | Ne | Ne | Ano |
 
-> [!NOTE]
+> [!NOTE]  
 > Jakékoli zásadní nekompatibility by měl popsané v zpráva k vydání verze HBase.
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgrade se stejnou hlavní verzi Apache HBase
@@ -203,7 +203,7 @@ Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.
 9. Je určeno Ambari, restartujte všechny požadované služby.
 10. Bod aplikace do nového clusteru.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Statické DNS pro vaši aplikaci se změní při upgradu. Místo pevného kódování této služby DNS, můžete nakonfigurovat záznam CNAME v nastavení DNS pro název domény, které odkazuje na název clusteru. Další možností je použít konfigurační soubor pro vaši aplikaci, kterou můžete aktualizovat bez opětovného nasazení.
 
 11. Začněte tak příjem dat, pokud chcete zobrazit, pokud všechno funguje podle očekávání.
@@ -211,7 +211,7 @@ Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o [Apache HBase](http://hbase.apache.org/) a inovace clusterů HDInsight, naleznete v následujících článcích:
+Další informace o [Apache HBase](https://hbase.apache.org/) a inovace clusterů HDInsight, naleznete v následujících článcích:
 
 * [Upgrade clusteru HDInsight na novější verzi](../hdinsight-upgrade-cluster.md)
 * [Monitorování a správa Azure HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)

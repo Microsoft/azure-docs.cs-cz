@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 777b0e6e98c0d8d726b69f0fc169f2d2752b4b6d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: dd6a9ee00ba6244e5a0d04f654e6b57db8896ea6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865008"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603943"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -56,7 +56,7 @@ Elastický dotaz umožňuje snadný přístup k celé kolekce databází prostř
 
 Zákazník scénáře pro elastický dotaz jsou charakteristické následující topologie:
 
-* **Vertikální dělení - mezidatabázové dotazy** (topologie 1): data je rozdělené do vertikálních oddílů mezi několika databázemi, v datové vrstvě. Různé sady tabulek se obvykle nacházejí na různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky inventáře jsou na jednu databázi, zatímco všechny tabulky související s monitorování účtů na druhém databáze. Běžné případy použití s touto topologií vyžadovat jeden pro dotazování napříč nebo ke kompilaci sestavy mezi tabulkami v několika databázích.
+* **Vertikální dělení - mezidatabázové dotazy** (topologie 1): Data je rozdělené do vertikálních oddílů mezi několika databázemi, v datové vrstvě. Různé sady tabulek se obvykle nacházejí na různých databázích. To znamená, že schéma se liší v různých databázích. Například všechny tabulky inventáře jsou na jednu databázi, zatímco všechny tabulky související s monitorování účtů na druhém databáze. Běžné případy použití s touto topologií vyžadovat jeden pro dotazování napříč nebo ke kompilaci sestavy mezi tabulkami v několika databázích.
 * **Horizontální dělení – horizontální dělení** (topologie 2): Data jsou rozdělená vodorovně a distribuuje řádky mezi škálovaném datové vrstvy. S tímto přístupem schéma je shodné pro všechny zúčastněné databáze. Tento přístup se také nazývá "horizontálního dělení". Provést horizontálního dělení a spravované pomocí (1) elastických databází nástroje, knihovny, nebo (2) self horizontální dělení. Elastický dotaz slouží k dotazování nebo kompilací sestav napříč velkým počtem horizontálních oddílů.
 
 > [!NOTE]
@@ -73,13 +73,13 @@ Elastický dotaz můžete použít tak, aby data nachází ve službě SQL datab
 > Musí mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE. K odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.
 >
 
-**Referenční data**: topologie se používá pro správu dat na odkaz. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty ukládají na vyhrazený databázový. Použitím elastického dotazu, můžete teď vzdálený přístup k tabulkám, T1 a T2 z jiných databází, jak je znázorněno na obrázku. Použití topologie 1, pokud jsou malé nebo vzdálené dotazy do tabulky odkaz na referenční tabulky mají selektivní predikáty.
+**Referenční data**: Topologie se používá pro správu dat na odkaz. Na následujícím obrázku jsou dvě tabulky (T1 a T2) s referenčními daty ukládají na vyhrazený databázový. Použitím elastického dotazu, můžete teď vzdálený přístup k tabulkám, T1 a T2 z jiných databází, jak je znázorněno na obrázku. Použití topologie 1, pokud jsou malé nebo vzdálené dotazy do tabulky odkaz na referenční tabulky mají selektivní predikáty.
 
 **Obrázek 2** vertikální dělení – použitím elastického dotazu query referenčních dat
 
 ![Vertikální dělení – použitím elastického dotazu query referenčních dat][3]
 
-**Dotazování napříč databázemi**: elastické dotazy povolit případy použití, které vyžadují dotazování napříč několika databázemi SQL. Obrázek 3 znázorňuje čtyři různé databáze: CRM, inventáře, HR a produkty. Dotazy v jedné z databází potřebovat přístup k jedné nebo všech jiných databází. Použitím elastického dotazu, můžete nakonfigurovat databázi pro tento případ spuštěním několika jednoduchých příkazů DDL každého ze čtyř databází. Po tomto jednorázovou konfiguraci je stejně jednoduché jako odkazující na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI přístup k vzdálené tabulky. Tento přístup se doporučuje, když vzdálené dotazy nevrátí velké výsledky.
+**Dotazování napříč databázemi**: Elastické dotazy umožňují případy použití, které vyžadují dotazování napříč několika databázemi SQL. Obrázek 3 znázorňuje čtyři různé databáze: CRM, inventáře, HR a produkty. Dotazy v jedné z databází potřebovat přístup k jedné nebo všech jiných databází. Použitím elastického dotazu, můžete nakonfigurovat databázi pro tento případ spuštěním několika jednoduchých příkazů DDL každého ze čtyř databází. Po tomto jednorázovou konfiguraci je stejně jednoduché jako odkazující na místní tabulku z vašich dotazů T-SQL nebo z nástrojů BI přístup k vzdálené tabulky. Tento přístup se doporučuje, když vzdálené dotazy nevrátí velké výsledky.
 
 **Obrázek 3** vertikální dělení – použitím elastického dotazu query napříč různými databázemi
 

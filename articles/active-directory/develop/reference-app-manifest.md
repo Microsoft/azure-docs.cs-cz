@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
+ms.date: 12/18/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 372bff911c0925e05297872da66279e727149010
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: a971806b453d34aa8459cb30090024bfca96d342
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086773"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631180"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Manifest aplikace Azure Active Directory
 
@@ -40,7 +40,7 @@ Konfigurace manifestu aplikace:
 1. Přihlaste se [webu Azure portal](https://portal.azure.com).
 1. Vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací** nebo **registrace aplikací (Preview)**.
 1. Vyberte aplikaci, kterou chcete konfigurovat.
-1. Z aplikace **přehled** stránky, vyberte **Manifest** oddílu. Otevře se editor manifestu založeného na webu umožňuje upravit manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** upravit manifest místně, a potom pomocí **nahrát** znovu do vaší aplikace.
+1. Na stránce **Přehled** aplikace vyberte část **Manifest**. Otevře se editor manifestu založeného na webu umožňuje upravit manifest v rámci portálu. Volitelně můžete vybrat **Stáhnout** upravit manifest místně, a potom pomocí **nahrát** znovu do vaší aplikace.
 
 ## <a name="manifest-reference"></a>Odkaz na manifest
 
@@ -56,11 +56,11 @@ Konfigurace manifestu aplikace:
 | `allowPublicClient` | Boolean | Určuje typ použití náhradní lokality aplikace. Azure AD odvodí typ aplikace z replyUrlsWithType ve výchozím nastavení. Určitých scénářů, kde Azure AD nelze určit typ klientské aplikace (například [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) toku, kde se stane požadavku HTTP bez adresy URL přesměrování). V těchto případech se služby Azure AD interpretovat typ aplikace na základě hodnoty této vlastnosti. Pokud tato hodnota nastavena na hodnotu true, typ použití náhradní lokality aplikace je nastaven jako veřejné klienta, jako je nainstalované aplikace běžící na mobilních zařízeních. Výchozí hodnota je false, což znamená, že je typ použití náhradní lokality aplikace důvěrnému klientovi, například webové aplikace. | `false` |
 | `appId` | Identifikátor řetězce | Určuje jedinečný identifikátor pro aplikaci, kterou přiřadí k aplikaci Azure AD. | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
 | `appRoles` | Typ pole | Určuje kolekci rolí, které může aplikace deklarovat. Tyto role můžete přiřadit na uživatele, skupiny nebo instanční objekty. Další příklady a informace o najdete v tématu [přidání rolí aplikace ve vaší aplikaci a přijímat je v tokenu](howto-add-app-roles-in-azure-ad-apps.md) | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
-| `groupMembershipClaims` | řetězec | Bitová maska, která se konfiguruje `groups` deklarací identity vystavených v uživatele nebo přístupový token OAuth 2.0, který aplikace očekává. Hodnoty bitové masky jsou následující:<br>0: žádné<br>1: skupiny zabezpečení a role Azure AD<br>2: vyhrazené<br>4: vyhrazené<br>Nastavení bitové masky na 7 získá všechny skupiny zabezpečení, distribučních skupin a rolí adresáře Azure AD, které je přihlášený uživatel členem. | `1` |
+| `groupMembershipClaims` | řetězec | Konfiguruje `groups` deklarací identity vystavených v uživatele nebo přístupový token OAuth 2.0, který aplikace očekává. K nastavení tohoto atributu, použijte jednu z následujících hodnot platného řetězce:<br/><br/>- `"None"`<br/>- `"SecurityGroup"` (pro skupiny zabezpečení a role Azure AD)<br/>- `"All"` (tím získá všechny skupiny zabezpečení, distribučních skupin a rolí adresáře Azure AD, které je přihlášený uživatel členem. | `"SecurityGroup"` |
 | `optionalClaims` | řetězec | Nepovinné deklarace identity v tokenu vrácené služby tokenů zabezpečení pro tuto konkrétní aplikaci.<br>V tuto chvíli nelze použít aplikace, které podporují osobní účty a Azure AD (registrace prostřednictvím portálu pro registraci aplikace) nepovinných deklarací identity. Aplikace registrované u právě Azure AD pomocí koncového bodu v2.0 však můžete získat nepovinných deklarací identity, které, o který žádali v manifestu. Další informace najdete v tématu [nepovinných deklarací identity](active-directory-optional-claims.md). | `null` |
 | `id` | Identifikátor řetězce | Jedinečný identifikátor pro aplikaci v adresáři. Toto ID není identifikátor sloužící k identifikaci aplikace v jakékoli protokol transakce. Používá se pro odkazování na objekt v dotazy na adresář. | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
-| `identifierUris` | Pole řetězců | URI(s) definovaný uživatelem, které jednoznačně identifikují webové aplikace v rámci jejich tenanta Azure AD, nebo v rámci ověřené vlastní doméně, je-li aplikace více tenantů. | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
-| `informationalUrls` | řetězec | Určuje odkazy na aplikace podmínkami služby a o ochraně osobních údajů. Podmínky služby a o ochraně osobních údajů se zobrazí uživatelům prostřednictvím prostředí pro vyjádření souhlasu uživatele. Další informace najdete v tématu [postupy: Přidání podmínkami služby a o ochraně osobních údajů pro aplikace Azure AD registrované](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
+| `identifierUris` | Pole řetězců | URI(s) definovaný uživatelem, které jednoznačně identifikují webové aplikace v rámci jejich tenanta Azure AD, nebo v rámci ověřené vlastní doméně, je-li aplikace více tenantů. | <code>[<br>&nbsp;&nbsp;"https://MyRegisteredApp"<br>]</code> |
+| `informationalUrls` | řetězec | Určuje odkazy na aplikace podmínkami služby a o ochraně osobních údajů. Podmínky služby a o ochraně osobních údajů se zobrazí uživatelům prostřednictvím prostředí pro vyjádření souhlasu uživatele. Další informace najdete v tématu [jak: Přidání podmínky služby a o ochraně osobních údajů pro aplikace Azure AD registrované](howto-add-terms-of-service-privacy-statement.md). | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
 | `keyCredentials` | Typ pole | Obsahuje odkazy na aplikace přiřazena přihlašovací údaje, založené na řetězci sdílené tajné klíče a certifikáty X.509. Tyto přihlašovací údaje se používají při vyžadování přístupové tokeny (Pokud aplikace funguje jako klient místo toho, jako prostředek). | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
 | `knownClientApplications` | Typ pole | Použít pro vytváření prostředků souhlasu, pokud máte řešení, které obsahuje dvě části: klientská aplikace a aplikace s vlastní webové rozhraní API. Pokud zadáte identifikátor appID klientské aplikace do této hodnoty, uživatel bude mít pouze jednou souhlas pro klientskou aplikaci. Azure AD vědět, že vyjadřuje se souhlas klienta znamená, že implicitně vyjádření souhlasu s webovým rozhraním API a bude automaticky poskytovat instančních objektů pro klienty a webového rozhraní API ve stejnou dobu. Klient a aplikace webového rozhraní API musí být zaregistrovaný ve stejném tenantovi. | `[GUID]` |
 | `logoUrl` | řetězec | Načíst pouze hodnotu, která odkazuje na adresu URL CDN loga, který byl nahrán na portálu. | `https://MyRegisteredAppLogo` |

@@ -14,14 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: 268e679bb052bce4c972c940333147edc5c7d721
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242581"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632870"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Zpracování multimediálních souborů pomocí Azure Media Hyperlapse
+
+> [!NOTE]
+> Tuto funkci verze preview služby Azure Media Services brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29. března 2019 je vyřazený a už nebudou dostupné.
+
 Azure Media Hyperlapse je média procesoru (sady Management Pack), který vytvoří smooth vypršelo čas videa z první, kdo nebo akce fotoaparátu obsahu.  Na stejné úrovni založené na cloudu k [založené na telefonu Hyperlapse Mobile a Hyperlapse Pro klasické pracovní plochy Microsoft Research](https://aka.ms/hyperlapse), Microsoft Hyperlapse pro Azure Media Services využívá velkém měřítku zpracování médií Azure Media Services Platforma horizontálně škálovat a paralelní zpracování hromadně Hyperlapse zpracování.
 
 > [!IMPORTANT]

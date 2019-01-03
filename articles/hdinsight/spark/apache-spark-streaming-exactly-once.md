@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580996"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651771"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Apache Sparku s přesně-událostí zpracování
 
@@ -29,11 +29,11 @@ Tento článek ukazuje, jak nakonfigurovat Spark Streaming k dosažení přesně
 
 Nejprve, zvažte, jak všechny body selhání systému restartuje se vyskytl problém, a jak se můžete vyhnout ztrátě dat. Aplikace Spark Streaming má:
 
-* Vstupní zdroj
-* Jeden nebo více procesů příjemce, které o přijetí změn dat ze vstupního zdroje
-* Úlohy, které zpracovávají data
-* Výstupní jímky
-* Ovladač proces, který spravuje dlouho běžící úlohy
+* Vstupní zdroj.
+* Jeden nebo více procesů příjemce, které o přijetí změn dat ze vstupního zdroje.
+* Úlohy, které zpracovávají data.
+* Výstupní jímky.
+* Ovladač proces, který spravuje dlouho běžící úlohy.
 
 Přesně – Jakmile sémantiku vyžaduje, aby se neztratí kdykoli a zpracování této zprávy je restartování, bez ohledu na to, kde dojde k selhání.
 
@@ -41,7 +41,7 @@ Přesně – Jakmile sémantiku vyžaduje, aby se neztratí kdykoli a zpracován
 
 Aplikace Spark Streaming je čtení události ze zdroje musí být *opakovatelná*. To znamená, že v případech, ve kterém zpráva se načetla, ale pak systém selhal předtím, než může být zachována nebo zpracovat zprávu, zdroj musí poskytnout stejnou zprávu znovu.
 
-V Azure, jak Azure Event Hubs a [Apache Kafka](https://kafka.apache.org/) na HDInsight poskytují opakovatelná zdroje. Další příklad opakovatelná zdroje je odolné proti chybám souborový systém jako [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), objekty BLOB služby Azure Storage nebo Azure Data Lake Store, ve kterém všechna data se ukládají navždy a v libovolném okamžiku můžete znovu načtěte data v celém rozsahu.
+V Azure, jak Azure Event Hubs a [Apache Kafka](https://kafka.apache.org/) na HDInsight poskytují opakovatelná zdroje. Další příklad opakovatelná zdroje je odolné proti chybám souborový systém jako [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), objekty BLOB služby Azure Storage nebo Azure Data Lake Storage, ve kterém všechna data se ukládají navždy a v libovolném okamžiku můžete znovu načtěte data v celém rozsahu.
 
 ### <a name="reliable-receivers"></a>Spolehlivé příjemců
 
@@ -49,7 +49,7 @@ Ve Spark Streaming, zdrojů, jako jsou Event Hubs a Kafka *spolehlivé příjemc
 
 ### <a name="use-the-write-ahead-log"></a>Použití protokolu dávky zápisu
 
-Spark Streaming podporuje použití dávky zápisu protokolu, kde každé přijaté události, je nejprve zapisovat do adresáře kontrolního bodu pro Spark ve službě storage odolné proti chybám a pak uloženy v odolné Distributed Dataset (RDD). V Azure je odolné úložiště HDFS se opírá o Azure Storage nebo Azure Data Lake Store. V aplikaci Spark Streaming dávky zápisu protokolu se povoluje pro všechny příjemce nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace `true`. Dávky zápisu protokolu poskytuje odolnost proti chybám pro selhání ovladače a prováděcí moduly.
+Spark Streaming podporuje použití dávky zápisu protokolu, kde každé přijaté události, je nejprve zapisovat do adresáře kontrolního bodu pro Spark ve službě storage odolné proti chybám a pak uloženy v odolné Distributed Dataset (RDD). V Azure je odolné úložiště HDFS se opírá o Azure Storage nebo Azure Data Lake Storage. V aplikaci Spark Streaming dávky zápisu protokolu se povoluje pro všechny příjemce nastavením `spark.streaming.receiver.writeAheadLog.enable` nastavení konfigurace `true`. Dávky zápisu protokolu poskytuje odolnost proti chybám pro selhání ovladače a prováděcí moduly.
 
 Pro pracovní procesy spuštěné úkoly s daty události je každý RDD podle definice replikovat i distribuované napříč několika pracovních procesů. Pokud se úkol nezdaří, protože pracovní proces spuštění by došlo k chybě, úloha se restartuje u dalšího pracovního procesu, která má repliku dat událostí, takže události nedojde ke ztrátě.
 
@@ -66,7 +66,7 @@ Kontrolní body jsou povolené v Spark Streaming ve dvou krocích.
     ssc.checkpoint("/path/to/checkpoints")
     ```
 
-    V HDInsight tyto kontrolní body uložit do výchozího úložiště připojené k vašemu clusteru služby Azure Storage nebo Azure Data Lake Store.
+    V HDInsight uložit do výchozího úložiště připojené k vašemu clusteru služby Azure Storage nebo Azure Data Lake Storage tyto kontrolní body.
 
 2. Dále určete kontrolního bodu interval (v sekundách) na DStream. V každém intervalu se ukládají data o stavu odvozené ze vstupních událostí do úložiště. Trvalý stav dat může snížit výpočetní potřeby při opětovném sestavování stav ze zdroje události.
 
@@ -85,7 +85,7 @@ Implementací logiku, která zkontroluje existenci příchozí výsledek v úlo�
 
 Můžete například použít uloženou proceduru s Azure SQL Database, která se vloží do tabulky událostí. Tuto uloženou proceduru nejprve vyhledal události na základě klíčových polí a jenom v případě, že není žádná odpovídající událost nalezen záznam vloženy do tabulky.
 
-Dalším příkladem je pomocí systému souborů oddílů, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake store. V tomto případě logiky jímky nemusí kontrolovat přítomnost souboru. Pokud existuje soubor, který na událost, jednoduše přepíše se stejnými daty. V opačném případě se vytvoří nový soubor v umístění počítaný.
+Dalším příkladem je pomocí systému souborů oddílů, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. V tomto případě logiky jímky nemusí kontrolovat přítomnost souboru. Pokud existuje soubor, který na událost, jednoduše přepíše se stejnými daty. V opačném případě se vytvoří nový soubor v umístění počítaný.
 
 ## <a name="next-steps"></a>Další postup
 

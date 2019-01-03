@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285046"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754029"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -46,10 +46,10 @@ Orchestrace aplikaci patch se skládá z následujících tyto dílčí součás
 - **Služba Koordinátor**: Tato stavová služba je zodpovědná za:
     - Koordinace úloh Windows Update v celém clusteru.
     - Ukládání výsledek dokončené operace s Windows Update.
-- **Služba agenta uzlu**: tuto bezstavovou službu běží na všech uzlech clusteru Service Fabric. Služba je zodpovědná za:
+- **Služba agenta uzlu**: Tuto bezstavovou službu běží na všech uzlech clusteru Service Fabric. Služba je zodpovědná za:
     - Probíhá spuštění NTService agenta uzlu.
     - Monitorování NTService agenta uzlu.
-- **Uzel agenta NTService**: Tento Windows NT service běží na vyšší úrovni oprávnění (systém). Naproti tomu službu agenta uzlu a služba Koordinátor běží na nižší úrovni oprávnění (síťová služba). Služba je odpovědný za provedení těchto úloh aktualizace Windows na všech uzlech clusteru:
+- **Uzel agenta NTService**: Tato služba systému Windows NT se spouští na vyšší úrovni oprávnění (systém). Naproti tomu službu agenta uzlu a služba Koordinátor běží na nižší úrovni oprávnění (síťová služba). Služba je odpovědný za provedení těchto úloh aktualizace Windows na všech uzlech clusteru:
     - Zakázat automatické aktualizace Windows na uzlu.
     - Stažení a instalaci aktualizací Windows podle zásad uživatel zadal.
     - Restartování počítače po instalaci aktualizace Windows.
@@ -153,15 +153,15 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 |TaskApprovalPolicy   |Výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásadu, která má být použit službou koordinátora k instalaci aktualizací Windows napříč uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace Windows je nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace Windows je nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří do logických sítí pro aktualizace Windows.)<br> Odkazovat na [nejčastější dotazy k](#frequently-asked-questions) část o tom, jak rozhodnout, který je nejlépe hodí zásady pro váš cluster.
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava Orchestrace aplikace přihlásí MB, který mohl být trvalý místně na uzlech.
 | WUQuery               | řetězec<br>(Výchozí: "IsInstalled = 0")                | Použijte dotaz pro získání aktualizace Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: True)                 | Tento příznak umožňuje instalaci aktualizací operačního systému Windows.            |
-| WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90).                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
-| WURescheduleCount     | Int <br> (Výchozí: 5).                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |
-| WURescheduleTimeInMinutes | Int <br>(Výchozí: 30). | Interval, ve kterém přeplánuje služby Windows update v případě, že chyba přetrvává. |
+| InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: Hodnota TRUE)                 | Tento příznak umožňuje instalaci aktualizací operačního systému Windows.            |
+| WUOperationTimeOutInMinutes | Int <br>(Výchozí: 90)                   | Určuje časový limit pro všechny operace aktualizace Windows (hledání nebo stáhnout nebo nainstalovat). Pokud se operace nedokončí v rámci zadaného časového limitu, je přerušeno.       |
+| WURescheduleCount     | Int <br> (Výchozí: 5)                  | Maximální počet pokusů, které služba přeplánuje Windows update v případě, že docházet k chybě operace.          |
+| WURescheduleTimeInMinutes | Int <br>(Výchozí: 30) | Interval, ve kterém přeplánuje služby Windows update v případě, že chyba přetrvává. |
 | WUFrequency           | Řetězec s hodnotami oddělenými čárkou (výchozí: "Každý týden, Středa 7:00:00")     | Frekvence pro instalaci aktualizace Windows. Formát a možné hodnoty jsou: <br>– Měsíční, DD, hh, například každý měsíc, 5, 12: 22:32. <br> – Každý týden, den, hh: mm:, například týdně, úterý, 12:22:32.  <br> -Denní, hh: mm:, třeba každý den, 12:22:32.  <br> -Žádný označuje, že by se neměly provést aktualizace Windows.  <br><br> Všimněte si, že čas ve standardu UTC.|
 | AcceptWindowsUpdateEula | Logická hodnota <br>(Výchozí: true) | Tím, že nastavíte tento příznak, tato aplikace přijme licenční smlouva koncového uživatele pro Windows Update jménem vlastníka počítače.              |
 
 > [!TIP]
-> Pokud chcete aktualizaci Windows okamžitě, nastavte `WUFrequency` relativní vůči času nasazení aplikace. Předpokládejme například, že máte cluster s pěti uzly testu a plánujete nasazení aplikace v přibližně 17:00:00 UTC. Pokud budete předpokládat, že upgrade aplikace nebo nasazení trvá 30 minut na maximum, nastavte WUFrequency jako "Každý den, 17:30:00."
+> Pokud chcete aktualizaci Windows okamžitě, nastavte `WUFrequency` relativní vůči času nasazení aplikace. Předpokládejme například, že máte cluster s pěti uzly testu a plánujete nasazení aplikace v přibližně 17:00:00 UTC. Pokud budete předpokládat, že upgrade aplikace nebo nasazení trvá 30 minut na maximum, nastavte WUFrequency jako "Každý den, 17:30:00"
 
 ## <a name="deploy-the-app"></a>Nasazení aplikace
 
@@ -227,7 +227,7 @@ Pole JSON jsou popsané níže.
 
 Pole | Hodnoty | Podrobnosti
 -- | -- | --
-Výsledek | 0 – úspěšné<br> 1 - bylo úspěšně dokončeno s chybami<br> 2 – se nezdařilo<br> 3 - bylo přerušeno<br> 4 - bylo přerušeno s časovým limitem | Určuje výsledek operace (obvykle zahrnující instalace jedné nebo více aktualizací).
+OperationResult | 0 – úspěšné<br> 1 - bylo úspěšně dokončeno s chybami<br> 2 – se nezdařilo<br> 3 - bylo přerušeno<br> 4 - bylo přerušeno s časovým limitem | Určuje výsledek operace (obvykle zahrnující instalace jedné nebo více aktualizací).
 Kód výsledku | Stejný jako výsledek | Toto pole indikuje výsledek operace instalace pro individuální aktualizaci.
 Typ operace | 1 – instalace<br> 0 - hledání a stahování.| Instalace je jediným typem operace OperationType, který by být standardně zobrazena ve výsledcích.
 WindowsUpdateQuery | Výchozí hodnota je "IsInstalled = 0" |Windows aktualizujte dotaz, který byl použit k vyhledání aktualizací. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
@@ -316,7 +316,7 @@ Pokud váš cluster může tolerovat možnost, při použití dílčích oprav c
 
 Otázka: **Kolik času udělá proveďte opravu uzel?**
 
-A. Opravy chyb uzlu může trvat minuty (třeba: [aktualizací definic Windows Defenderu](https://www.microsoft.com/wdsi/definitions)) hodin (například: [Windows kumulativní aktualizace](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Čas potřebný k opravě uzel závisí hlavně na 
+A. Opravy chyb uzlu může trvat minuty (třeba: [Aktualizací definic Windows Defenderu](https://www.microsoft.com/wdsi/definitions)) hodin (například: [Windows kumulativní aktualizace](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)). Čas potřebný k opravě uzel závisí hlavně na 
  - Velikost aktualizace
  - Počet aktualizací, které se mají použít v interval oprav
  - Čas potřebný k instalaci aktualizací, restartovat uzel (v případě potřeby) a dokončete postup instalace po restartování.
@@ -327,7 +327,7 @@ Otázka: **Jak dlouho trvá oprava celý cluster?**
 A. Čas potřebný k opravě celý cluster, závisí na následujících faktorech:
 
 - Čas potřebný k opravě uzlu.
-- Zásady služby Koordinátor. – Výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v době, kterou by pomalejší než `UpgradeDomainWise`. Příklad: Pokud uzel trvá přibližně za 1 hodinu, který se má opravit, mohla o opravu 20 uzel (uzly stejného typu) cluster s 5 upgradovacích domén, každá obsahuje 4 uzly.
+- Zásady služby Koordinátor. – Výchozí zásady `NodeWise`, výsledkem opravy jenom jeden uzel v době, kterou by pomalejší než `UpgradeDomainWise`. Příklad: Pokud uzel trvá přibližně za 1 hodinu, který se má opravit, mohla o opravu 20 uzel (uzly stejného typu) clusteru s 5 upgradovacích domén, každá obsahuje 4 uzly.
     - Mělo by to trvat přibližně 20 hodin na opravu celý cluster, pokud je zásada `NodeWise`
     - Pokud je zásada mělo stačit přibližně 5 hodin `UpgradeDomainWise`
 - Zatížení clusteru – každé použití dílčích oprav operace vyžaduje přemístění do jiných uzlů clusteru k dispozici úloha zákazníka. Probíhá oprava uzlu by měly být v [zakázání](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) stavu během této doby. Pokud cluster běží téměř zátěž ve špičce, zakázání by trvat delší dobu. Proto může pomalý za těchto podmínek přízvukový zobrazí celkový proces opravy.

@@ -10,22 +10,23 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 52b6265722d5cfbf8baf54e1785ace627aa0892f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.custom: seodec18
+ms.openlocfilehash: 07d3f5d365fa5c552ccb61c97532a9931b7e282e
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341663"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53583676"
 ---
-# <a name="extracting-text-with-ocr"></a>Extrahování textu pomocí technologie OCR
+# <a name="extracting-text-with-optical-character-recognition"></a>Extrahování textu s optické rozpoznávání znaků
 
-Optické rozpoznávání znaků (OCR) technologie pro počítačové zpracování obrazu detekuje textový obsah v obrázku a extrahuje zjištěný text do datového proudu Strojově čitelný znaků. Výsledek můžete použít k prohledávání a řadě dalších účelů, jako jsou zdravotnickými záznamy, zabezpečení a bankovnictví. Jazyk se detekuje automaticky. OCR šetří čas a zvyšuje pohodlí uživatelů tím, že jim pořídit fotografie textu místo zdlouhavého přepisování pořídili text.
+Optické rozpoznávání znaků (OCR) technologie pro počítačové zpracování obrazu detekuje textový obsah v obrázku a extrahuje zjištěný text do datového proudu Strojově čitelný znaků. Výsledek můžete použít k vyhledávání nebo k různým jiným účelům, třeba jako lékařské záznamy, pro zabezpečení nebo bankovnictví. Jazyk se rozpoznává automaticky. Technologie OCR šetří čas a zvyšuje pohodlí uživatelů, protože umožňuje text místo přepisování vyfotografovat.
 
-OCR podporuje 25 jazycích. Tyto jazyky jsou: arabština, zjednodušené čínštiny, tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinka) Slovenština, španělština, švédština a turečtina.
+OCR podporuje 25 jazyků. Tyto jazyky jsou: Arabské, čínština (zjednodušená), Čínské tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinky), slovenština, španělština, Švédština a turečtina.
 
-V případě potřeby řeší OCR otočení rozpoznaný text ve stupních okolo osy vodorovný obrázek. OCR obsahuje souřadnice rámec jednotlivých slov, jak je znázorněno na následujícím obrázku.
+V případě potřeby technologie OCR opraví otočení rozpoznaného textu ve stupních kolem vodorovné osy obrázku. OCR obsahuje souřadnice rámec jednotlivých slov, jak je znázorněno na následujícím obrázku.
 
-![Přehled technologie OCR](./Images/vision-overview-ocr.png)
+![Diagram znázorňující střídajících obrázek a text probíhá čtení a vymezeny](./Images/vision-overview-ocr.png)
 
 ## <a name="ocr-requirements"></a>Požadavky technologie OCR
 
@@ -39,15 +40,15 @@ Vstupního obrázku můžete otočit o žádné nadbytečné 90 stupňů plus ma
 
 ## <a name="improving-ocr-accuracy"></a>Zlepšení přesnosti optického rozpoznávání znaků
 
-Rozpoznávání textu přesnost závisí na kvalitu obrazu. Nesprávné čtení může být způsobeno v následujících případech:
+Přesnost rozpoznaného textu závisí na kvalitě obrázku. Nepřesnosti při čtení mohou způsobovat následující situace:
 
-* Použitím bitové kopie.
-* Rukou psaný nebo kurzívových text.
-* Styly umělecký písem.
-* Malá velikost textu.
-* Komplexní pozadí, stíny nebo oslnění přes text nebo Perspektiva narušení.
-* Příliš velký nebo chybějící velká písmena na začátku slova
-* Dolní index, horní index nebo přeškrtnutý text.
+* rozostřené obrázky;
+* rukopis nebo text psaný kurzívou;
+* umělecké styly písma;
+* malé písmo;
+* složité pozadí, stíny nebo odlesky vržené na text nebo narušená perspektiva;
+* příliš velká nebo chybějící velká písmena na začátku slov;
+* dolní index, horní index nebo přeškrtnutý text.
 
 ### <a name="ocr-limitations"></a>OCR omezení
 

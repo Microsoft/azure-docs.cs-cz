@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 75c021f7b2c2584580f2d9dbf30cbcdf11d3fdc5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7bf1a3af7705858432b9ff8caf5064b0794568df
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875361"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602456"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Dotaz přes cloudové databáze s různými schématy (preview)
 ![Dotazování přes tabulky v různých databázích][1]
@@ -117,8 +117,8 @@ Následující příklad ukazuje, jak načíst seznam externích tabulek z aktu�
 ### <a name="remarks"></a>Poznámky
 Elastický dotaz rozšiřuje existující externí tabulky syntaxe pro definování externích tabulek, které používají externí zdroje dat typu relační databázový systém. Definici externí tabulky pro vertikální dělení zahrnuje následující aspekty: 
 
-* **Schéma**: externí tabulky DDL definuje schéma, které můžete použít své dotazy. Zadané v definici externí tabulky schéma musí odpovídat schématu tabulky v vzdálenou databázi, kde je uložena skutečná data. 
-* **Vzdálený databázový odkaz**: DDL odkazuje na externí zdroj dat externí tabulky. Externí zdroj dat Určuje název logického serveru a název databáze vzdálené databáze, kde je uložen na skutečná data tabulky. 
+* **Schéma**: Externí tabulka DDL definuje schéma, které můžete použít své dotazy. Zadané v definici externí tabulky schéma musí odpovídat schématu tabulky v vzdálenou databázi, kde je uložena skutečná data. 
+* **Vzdálený databázový odkaz**: Externí tabulka DDL odkazuje na externí zdroj dat. Externí zdroj dat Určuje název logického serveru a název databáze vzdálené databáze, kde je uložen na skutečná data tabulky. 
 
 Pomocí externího zdroje dat, jak je uvedeno v předchozí části, se syntaxí pro vytvoření externí tabulky, které vypadá takto: 
 
@@ -130,7 +130,7 @@ Následující příkaz DDL zahodí existující definici externí tabulky z mí
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Oprávnění pro příkaz CREATE/DROP externí tabulky**: pro externí tabulky DDL, který je také nutný k odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.  
+**Oprávnění pro příkaz CREATE/DROP externí tabulky**: Pro externí tabulky DDL, který je také nutný k odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.  
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
 Uživatelé s přístupem k externí tabulky automaticky získáte přístup k podkladové vzdálených tabulek v části přihlašovací údaje zadané v definici zdroje externí data. Pokud se chcete vyhnout nechtěné zvýšení oprávnění prostřednictvím přihlašovací údaje z externí zdroj dat měli pečlivě spravujete přístup k externí tabulky. Pravidelné SQL oprávnění lze udělit nebo ODVOLAT přístup k externí tabulky, stejně, jako by šlo o běžnou tabulku.  
@@ -156,10 +156,10 @@ Následující dotaz spojí trojcestných dvě místní tabulky objednávky a ř
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uložené procedury pro vzdálené spuštění T-SQL: aktualizace sp\_execute_remote
 Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup ke vzdálené databázi. Volání uložené procedury [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) a je možné ke spouštění uložené procedury vzdálený nebo kód T-SQL na vzdálené databáze. Ji používá následující parametry: 
 
-* Název zdroje dat (nvarchar): název externí zdroj dat typu relační databázový systém. 
-* Dotaz (nvarchar): dotaz T-SQL k provedení na vzdálené databáze. 
-* Deklarace parametru (nvarchar) – volitelné: řetězec s definice typu dat pro parametry použité v parametru dotazu (např. sp_executesql). 
-* Seznam hodnot parametru - volitelné: čárkami oddělený seznam hodnot parametrů (jako je sp_executesql).
+* Název zdroje dat (nvarchar): Název externího zdroje dat typu relační databázový systém. 
+* Dotaz (nvarchar): Dotaz T-SQL k provedení na vzdálené databáze. 
+* Deklarace parametru (nvarchar) – volitelné: Řetězec s daty definic typů pro parametry použité v parametru dotazu (např. sp_executesql). 
+* Seznam hodnot parametru - volitelné: Čárkou oddělený seznam hodnot parametrů (jako je sp_executesql).
 
 Sp\_provést\_vzdálené externí zdroj dat součástí Parametry vyvolání používá ke spouštění daný příkaz T-SQL na vzdálené databáze. Přihlašovací údaje z externí zdroj dat používá pro připojení ke vzdálené databázi.  
 

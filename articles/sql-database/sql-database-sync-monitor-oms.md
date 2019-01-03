@@ -12,18 +12,21 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b7d6b59ab03985c19ffa08a0a8266d449892046f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872933"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717819"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorování synchronizace dat SQL s využitím Log Analytics 
 
 Synchronizace dat SQL v protokolu aktivit a detekovat chyby a upozornění, dříve museli jste ruční kontrola synchronizace dat SQL na webu Azure Portal nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku můžete nakonfigurovat vlastní řešení, která zvyšuje synchronizace dat možností monitorování. Toto řešení, aby vyhovovala vašemu scénáři můžete přizpůsobit.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny synchronizace 
 
@@ -181,9 +184,9 @@ Konfigurace zobrazení Log Analytics, proveďte následující akce:
 
 Ve většině případů toto řešení je zdarma.
 
-**Azure Automation:** mohou být náklady pomocí účtu Azure Automation, v závislosti na využití. Prvních 500 minut úlohy spuštění za měsíc je zdarma. Ve většině případů toto řešení by měl používat méně než 500 minut za měsíc. Chcete-li nemuseli platit případné poplatky, naplánujte runbook, aby se spouštěla v intervalu nejméně dvě hodiny. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
+**Azure Automation:** Můžou existovat náklady pomocí účtu Azure Automation, v závislosti na využití. Prvních 500 minut úlohy spuštění za měsíc je zdarma. Ve většině případů toto řešení by měl používat méně než 500 minut za měsíc. Chcete-li nemuseli platit případné poplatky, naplánujte runbook, aby se spouštěla v intervalu nejméně dvě hodiny. Další informace najdete v tématu [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
-**Log Analytics:** mohou být náklady spojené s Log Analytics v závislosti na využití. Bezplatná úroveň zahrnuje 500 MB přijatých dat za den. Ve většině případů toto řešení má ingestování menší než 500 MB za den. Ke snížení využití, použijte jen selhání filtrování zahrnuty v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, aby nedošlo k ohrožení analytics zastaví, když je dosaženo omezení. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Log Analytics:** Můžou existovat náklady spojené s Log Analytics v závislosti na využití. Bezplatná úroveň zahrnuje 500 MB přijatých dat za den. Ve většině případů toto řešení má ingestování menší než 500 MB za den. Ke snížení využití, použijte jen selhání filtrování zahrnuty v sadě runbook. Pokud používáte více než 500 MB za den, upgradujte na placenou úroveň, aby nedošlo k ohrožení analytics zastaví, když je dosaženo omezení. Další informace najdete v tématu [přehledu cen Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Ukázky kódů
 
@@ -198,7 +201,7 @@ Další informace o Synchronizaci dat SQL:
 
 -   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)

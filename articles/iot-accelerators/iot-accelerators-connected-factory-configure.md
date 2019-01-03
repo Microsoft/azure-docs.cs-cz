@@ -1,5 +1,5 @@
 ---
-title: Konfigurace topologie pro propojenou továrnu | Dokumentace Microsoftu
+title: Konfigurace topologie připojené továrny – Azure | Dokumentace Microsoftu
 description: Postup konfigurace topologie akcelerátor řešení připojená továrna.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746975"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602269"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátor řešení připojená továrna
 
@@ -85,7 +85,7 @@ Následující fragment kódu ukazuje osnovu třídy `ContosoTopologyDescription
 }
 ```
 
-Společné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, a `<station_configuration>` jsou:
+Společné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<production_line_configuration>`, a `<station_configuration>` jsou:
 
 * **Název** (zadejte řetězec)
 
@@ -282,7 +282,7 @@ Hodnoty celkové efektivity zařízení nebo klíčového ukazatele výkonu pro 
 * Hodnoty uzlu OPC UA mají být zahrnuty do výpočtu.
 * Jak na obrázku je vypočítán z hodnot telemetrická data.
 
-Propojená továrna používá vzorce celkové efektivity zařízení, jak publikuje http://www.oeefoundation.org.
+Propojená továrna používá vzorce celkové efektivity zařízení, jak publikuje https://www.oeefoundation.org.
 
 Objekty uzlu OPC UA na stanicích povolit označování pro použití ve výpočtu celkové efektivity zařízení nebo klíčového ukazatele výkonu. **Relevance** vlastnost určuje, pro které obrázek celkové efektivity zařízení nebo klíčového ukazatele výkonu je třeba použít hodnotu uzlu OPC UA. **Operační kód** vlastnost definuje, jak je hodnota součástí výpočtu.
 

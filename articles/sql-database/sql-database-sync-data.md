@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a287f985ce015ac6b886f4e5c2b86d6b3793e7d5
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101824"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721831"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
 Synchronizace dat SQL je služba založená na Azure SQL Database, která umožňuje synchronizovat data, která jste vybrali obousměrně napříč několika databázemi SQL a instance systému SQL Server.
+
+> [!IMPORTANT]
+> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
 ## <a name="architecture-of-sql-data-sync"></a>Architektura synchronizace dat SQL
 
@@ -51,11 +54,11 @@ Skupina synchronizace má následující vlastnosti:
 
 Synchronizace dat je užitečné v případech, kdy data musí být pořád aktuální napříč několika databázemi Azure SQL nebo databáze systému SQL Server. Tady jsou hlavní svědectví pro synchronizaci dat:
 
--   **Synchronizace dat hybridní:** se synchronizací dat, abyste mohli data synchronizovat mezi vaším místním databázím a Azure SQL Database umožňuje hybridní aplikace. Tato funkce může odvolat zákazníkům, kteří jsou zvažujete Přesun do cloudu a chcete poskládali z jejich aplikace v Azure.
+-   **Hybridní synchronizace dat:** Pomocí synchronizace dat můžete zachovat data synchronizovat mezi vaším místním databázím a Azure SQL Database umožňuje hybridní aplikace. Tato funkce může odvolat zákazníkům, kteří jsou zvažujete Přesun do cloudu a chcete poskládali z jejich aplikace v Azure.
 
--   **Distribuované aplikace:** v mnoha případech je užitečné oddělit různé úlohy napříč různými databázemi. Například pokud máte velké provozní databáze, ale budete potřebovat ke spuštění úlohy vytváření sestav, nebo analýzy těchto dat, je užitečné mít druhý databáze pro tento další úlohy. Tento přístup minimalizuje dopad na výkon na vaše produkční úlohy. Synchronizace dat můžete ponechat tyto dvě databáze synchronizované.
+-   **Distribuované aplikace:** V mnoha případech je užitečné oddělit různé úlohy napříč různými databázemi. Například pokud máte velké provozní databáze, ale budete potřebovat ke spuštění úlohy vytváření sestav, nebo analýzy těchto dat, je užitečné mít druhý databáze pro tento další úlohy. Tento přístup minimalizuje dopad na výkon na vaše produkční úlohy. Synchronizace dat můžete ponechat tyto dvě databáze synchronizované.
 
--   **Globálně distribuované aplikace:** řada podniků zahrnují několik oblastí a dokonce i v několika zemích. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
+-   **Globálně distribuované aplikace:** Řada podniků zahrnují několik oblastí a dokonce i v několika zemích. Kvůli minimalizaci latence sítě, je nejvhodnější pro vaše data v oblasti blízko vás. Pomocí synchronizace dat se snadnou vejdou databází v oblastech po celém světě synchronizované.
 
 Synchronizace dat není preferovaným řešením v následujících scénářích:
 
@@ -69,11 +72,11 @@ Synchronizace dat není preferovaným řešením v následujících scénáříc
 
 ## <a name="how-does-data-sync-work"></a>Jak funguje synchronizace dat? 
 
--   **Sledování změn dat:** synchronizace dat sleduje změny pomocí vložení, aktualizace a odstranění aktivační události. Změny se zaznamenávají v postranní tabulky v databázi uživatelů. Všimněte si, že BULK INSERT se neaktivuje aktivačních událostí ve výchozím nastavení. Pokud není zadán požadováno, spustit žádné aktivační události insert. Přidáte možnost požadováno tak synchronizaci dat můžete sledovat tyto operace vložení. 
+-   **Sledování změn dat:** Synchronizace dat sleduje změny pomocí vložení, aktualizace a odstranění aktivační události. Změny se zaznamenávají v postranní tabulky v databázi uživatelů. Všimněte si, že BULK INSERT se neaktivuje aktivačních událostí ve výchozím nastavení. Pokud není zadán požadováno, spustit žádné aktivační události insert. Přidáte možnost požadováno tak synchronizaci dat můžete sledovat tyto operace vložení. 
 
--   **Synchronizace dat:** synchronizace dat je určen v hvězdicové modelu. Centrum synchronizuje s každý člen jednotlivě. Změny z centra se stáhnou do člena a pak se nahrají změny od člena k rozbočovači.
+-   **Synchronizace dat:** Synchronizace dat je navržená v hvězdicové modelu. Centrum synchronizuje s každý člen jednotlivě. Změny z centra se stáhnou do člena a pak se nahrají změny od člena k rozbočovači.
 
--   **Řešení konfliktů:** poskytuje dvě možnosti pro řešení konfliktů synchronizace dat *centra wins* nebo *člen wins*.
+-   **Řešení konfliktů:** Poskytuje dvě možnosti pro řešení konfliktů synchronizace dat *centra wins* nebo *člen wins*.
     -   Pokud vyberete *centra wins*, změny v centru vždy přepsat změny provedené v členu.
     -   Pokud vyberete *člen wins*, změny v změn přepsání člena v centru. Pokud existuje více než jednoho člena, konečná hodnota závisí na člen, který synchronizuje poprvé.
 

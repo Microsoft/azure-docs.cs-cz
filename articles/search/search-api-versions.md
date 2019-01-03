@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 0cf5cac341cb36029c09ee2da5477323fac79cf5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c07a0c8f5440033455c69fe40806adf9b548c16f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311639"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631146"
 ---
 # <a name="api-versions-in-azure-search"></a>Verze rozhraní API ve službě Azure Search
 Služba Azure Search zavádění aktualizací funkcí pravidelně. Někdy, ale ne vždy tyto aktualizace vyžadují novou verzi rozhraní API pro zachování zpětné kompatibility. Publikování nové verze umožňuje řídit, kdy a jak integrovat aktualizace služby vyhledávání v kódu.
 
 Zpravidla publikuje týmu Azure Search nové verze pouze v případě potřeby, protože to může zahrnovat některé úsilí k upgradu vašeho kódu na použití nové verze rozhraní API. Nová verze je nutný jenom v případě, že došlo ke změně některých aspektů rozhraní API tak, aby přeruší zpětné kompatibility. Tyto změny může dojít z důvodu opravy stávajících funkcí nebo z důvodu nových funkcí, které se mění stávající svrchní oblasti rozhraní API.
 
-Stejné pravidlo platí i pro aktualizace sady SDK. Následuje SDK služby Azure Search [sémantické správy verzí](http://semver.org/) pravidla, která znamená, že jeho verze má tři části: hlavní verze, podverze a sestavení číslo (například 1.1.0). Pouze pro změny poškozující zpětné kompatibility vydání nové hlavní verze sady SDK. Non nejnovější aktualizace funkcí se zvýší podverze a opravy chyb pouze zvýší verzi sestavení.
+Stejné pravidlo platí i pro aktualizace sady SDK. Následuje SDK služby Azure Search [sémantické správy verzí](https://semver.org/) pravidla, která znamená, že jeho verze má tři části: hlavní verze, podverze a sestavení číslo (například 1.1.0). Pouze pro změny poškozující zpětné kompatibility vydání nové hlavní verze sady SDK. Non nejnovější aktualizace funkcí se zvýší podverze a opravy chyb pouze zvýší verzi sestavení.
 
 > [!NOTE]
 > Instance služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Můžete nadále používat verzi, pokud již není nejnovější, ale doporučujeme migrovat kód Refaktorovat pro použití na nejnovější verzi. Při použití rozhraní REST API, je nutné zadat verzi rozhraní API v každé žádosti prostřednictvím parametru verze api-version. Při použití sady .NET SDK, určuje verzi sady SDK, které používáte odpovídající verzi rozhraní REST API. Pokud používáte starší sada SDK, můžete nadále spouštět tento kód beze změny i v případě, že služba se upgraduje na novější verzi rozhraní API podporují.

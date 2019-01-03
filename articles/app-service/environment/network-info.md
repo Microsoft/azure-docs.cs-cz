@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d9a0ab84e133863092f68cc949c2b7933bc5da31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: 3939d8dce641d066a2470612068df7102b317a70
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271007"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630457"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -151,7 +151,7 @@ Tyto IP adresy jsou snadno viditelné v ASEv2 na webu Azure Portal v uživatelsk
 
 ### <a name="app-assigned-ip-addresses"></a>Aplikace přiřazená IP adresy ###
 
-S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. Nemůžete udělat s ILB ASE. Další informace o tom, jak nakonfigurovat aplikaci tak, aby mít svou vlastní IP adresu najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL k Azure web apps](../app-service-web-tutorial-custom-ssl.md).
+S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. Nemůžete udělat s ILB ASE. Další informace o tom, jak nakonfigurovat aplikaci tak, aby mít svou vlastní IP adresu najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL do služby Azure App Service](../app-service-web-tutorial-custom-ssl.md).
 
 Pokud aplikace má vlastní SSL založené na protokolu IP adresu, službu ASE rezervuje dva porty pro mapování na tuto IP adresu. Jeden port je pro provoz protokolu HTTP a je jiný port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní služby ASE v části IP adresy. Provoz musí být schopen kontaktovat tyto porty z virtuální IP adresy nebo aplikace nejsou dostupné. Tento požadavek je důležité si pamatovat, když konfigurujete skupiny zabezpečení sítě (Nsg).
 

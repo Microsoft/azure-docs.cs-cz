@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 3f31fa8d26b0fb5f247a0b4c8c65abd50c5bc1e4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 5602e68e546c59e3ee43442fdf0cdf33b9cf6a29
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865297"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975028"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fyzický server architektury pro zotavení po havárii Azure
 
@@ -63,13 +63,13 @@ Po nastavení replikace a spuštění postupu zotavení po havárii (testovací 
 - Po aktivaci počáteční převzetí služeb při selhání, potvrdíte ho začít používat úlohu z virtuálního počítače Azure.
 - Až bude vaše místní lokalita opět dostupná, můžete službu navrátit.
 - Budete muset nastavit infrastrukturu navrácení služeb po obnovení, včetně:
-    - **Dočasný procesní server v Azure**: selhání obnovení z Azure, můžete nastavit virtuální počítač Azure tak, aby fungoval jako procesový server, pro zpracování replikace z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
-    - **Připojení k síti VPN**: K navrácení služeb po obnovení, potřebujete připojení VPN (nebo Azure ExpressRoute) ze sítě Azure k místní lokalitě.
-    - **Samostatný hlavní cílový server**: ve výchozím nastavení, hlavní cílový server, který se nainstaloval s konfiguračním serverem, na VMware v místním prostředí virtuálních počítačů, zpracovává navrácení služeb po obnovení. Ale pokud potřebujete selhání zpět velký objem provozu, by měl nastavíte samostatný místní hlavní cílový server pro tento účel.
-    - **Zásady navrácení služeb po obnovení:** Pro zpětnou replikaci do vaší místní lokality budete potřebovat zásady navrácení služeb. To se automaticky vytvořil při vytvoření zásad replikace z místního do Azure.
-    - **Infrastruktura VMware**: budete potřebovat infrastrukturu VMware pro navrácení služeb po obnovení. Nelze navrátit služby po obnovení v případě fyzického serveru.
+    - **Dočasný procesní server v Azure**: K selhání obnovení z Azure, nastavíte virtuální počítač Azure jako procesový server, pro zpracování replikace z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
+    - **Připojení k síti VPN**: K navrácení služeb po obnovení, potřebujete připojení k síti VPN (nebo Azure ExpressRoute) ze sítě Azure k místní lokalitě.
+    - **Samostatný hlavní cílový server**: Hlavní cílový server, který se nainstaloval s konfiguračním serverem, na VMware v místním prostředí virtuálních počítačů, ve výchozím nastavení, zpracovává navrácení služeb po obnovení. Ale pokud potřebujete selhání zpět velký objem provozu, by měl nastavíte samostatný místní hlavní cílový server pro tento účel.
+    - **Zásady navrácení služeb po obnovení**: Ke zpětné replikaci do místní lokality, budete potřebovat zásady navrácení služeb po obnovení. To se automaticky vytvořil při vytvoření zásad replikace z místního do Azure.
+    - **Infrastruktura VMware**: Pro navrácení služeb po obnovení budete potřebovat infrastrukturu VMware. Nelze navrátit služby po obnovení v případě fyzického serveru.
 - Po součásti jsou na místě, dojde k navrácení služeb po obnovení ve třech fázích:
-    - Fáze 1: Znovunastavení ochrany virtuálních počítačů Azure tak, aby se replikace z Azure zpět do místních virtuálních počítačů VMware.
+    - Fáze 1: Znovunastavení ochrany virtuálních počítačů Azure, tak, aby se replikace z Azure zpět do místních virtuálních počítačů VMware.
     - Fáze 2: Spuštění převzetí služeb při selhání do místní lokality.
     - Fáze 3: Po úloh se nepodařilo vrátit, můžete znovu povolit replikaci.
 

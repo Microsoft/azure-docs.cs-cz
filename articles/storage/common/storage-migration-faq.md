@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: 85f93e15cfce1d44567c48c6c6f4b38c42dfb296
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416388"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632310"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace úložiště Azure
 
@@ -56,8 +56,8 @@ Neexistuje žádná možnost zálohovat přímo celý účet úložiště. Ale m
 
     - `/Source`: Zadejte identifikátor URI pro zdrojového účtu úložiště (až do kontejneru).  
     - `/Dest`: Zadejte identifikátor URI pro cílový účet úložiště (až do kontejneru).  
-    - `/SourceKey`: Obsahuje primární klíč zdrojového účtu úložiště. Tento klíč můžete zkopírovat z portálu Azure portal výběrem účtu úložiště.  
-    - `/DestKey`: Obsahuje primární klíč pro cílový účet úložiště. Tento klíč můžete z portálu zkopírujte výběrem účtu úložiště.
+    - `/SourceKey`: Zadejte primární klíč zdrojového účtu úložiště. Tento klíč můžete zkopírovat z portálu Azure portal výběrem účtu úložiště.  
+    - `/DestKey`: Zadejte primární klíč pro cílový účet úložiště. Tento klíč můžete z portálu zkopírujte výběrem účtu úložiště.
 
 Po spuštění tohoto příkazu se přesouvají souborů kontejneru na cílový účet úložiště.
 
@@ -118,6 +118,8 @@ Další informace najdete v tématu [přenos dat pomocí AzCopy ve Windows](stor
 
 **Jak můžu přesunout spravovaných disků do jiného účtu úložiště?**
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Postupujte následovně:
 
 1.  Zastavte virtuální počítač, který je spravovaný disk připojen k.
@@ -125,15 +127,15 @@ Postupujte následovně:
 2.  Zkopírování spravovaného disku virtuální pevný disk z jedné oblasti do jiného spuštěním následujícího skriptu Azure Powershellu:
 
     ```
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionId <ID>
+    Select-AzSubscription -SubscriptionId <ID>
 
-    $sas = Grant-AzureRmDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
+    $sas = Grant-AzDiskAccess -ResourceGroupName <RG name> -DiskName <Disk name> -DurationInSecond 3600 -Access Read
 
-    $destContext = New-AzureStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
+    $destContext = New-AzStorageContext –StorageAccountName contosostorageav1 -StorageAccountKey <your account key>
 
-    Start-AzureStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
+    Start-AzStorageBlobCopy -AbsoluteUri $sas.AccessSAS -DestContainer 'vhds' -DestContext $destContext -DestBlob 'MyDestinationBlobName.vhd'
     ```
 
 3.  Vytvoření spravovaného disku s použitím souboru virtuálního pevného disku v jiné oblasti, do které jste zkopírovali virtuální pevný disk. Chcete-li to provést, spusťte následující skript Azure Powershellu:  
@@ -151,9 +153,9 @@ Postupujte následovně:
 
     $storageType = 'StandardLRS'
 
-    $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
+    $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $vhdUri -StorageAccountId $storageId -DiskSizeGB 128
 
-    $osDisk = New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+    $osDisk = New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
     ``` 
 
 Další informace o tom, jak nasadit virtuální počítač ze spravovaného disku najdete v tématu [CreateVmFromManagedOsDisk.ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
@@ -164,7 +166,7 @@ Pomocí AzCopy můžete stáhnout data. Další informace najdete v tématu [př
 
 **Změna tohoto sekundárního umístění k oblasti Evropa pro účet úložiště**
 
-Při vytváření účtu úložiště vyberte primární oblast pro účet. Výběr sekundární oblasti vychází z primární oblasti a nejde změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](storage-redundancy.md).
+Při vytváření účtu úložiště vyberte primární oblast pro účet. Výběr sekundární oblasti vychází z primární oblasti a nejde změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): Replikace mezi zónami pro službu Azure Storage](storage-redundancy.md).
 
 **Kde získám další informace o Azure Storage Service Encryption (SSE)?**  
   
@@ -234,7 +236,7 @@ Pokud máte virtuální počítače, je nutné provést další kroky předtím,
 
 **Jak přesouvat klasický účet úložiště do účtu úložiště Azure Resource Manageru?**
 
-Můžete použít **Move-AzureStorageAccount** rutiny. Tato rutina má několik kroků (ověření, Příprava, potvrzení). Přesunutí můžete ověřit, před jeho provedením.
+Můžete použít **přesunout AzStorageAccount** rutiny. Tato rutina má několik kroků (ověření, Příprava, potvrzení). Přesunutí můžete ověřit, před jeho provedením.
 
 Pokud máte virtuální počítače, je nutné provést další kroky předtím, než zahájíte migraci dat účtu úložiště. Další informace najdete v tématu [migrace prostředků IaaS z modelu nasazení classic do Azure Resource Manageru pomocí prostředí Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 
@@ -274,11 +276,11 @@ Chcete-li poskytnout ostatním přístup k prostředkům úložiště:
 
 -   Pokud používáte geografické redundantní úložiště jen pro čtení, můžou k datům ze sekundární oblasti v každém okamžiku. Použijte jednu z následujících metod:  
       
-    - **AzCopy**: připojit **– sekundární** k názvu účtu úložiště v adrese URL pro přístup k sekundární koncový bod. Příklad:  
+    - **AzCopy**: Připojit **– sekundární** k názvu účtu úložiště v adrese URL pro přístup k sekundární koncový bod. Příklad:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS token**: použijte SAS token pro přístup k datům z koncového bodu. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-dotnet-shared-access-signature-part-1.md).
+    - **SAS token**: Použijte SAS token pro přístup k datům z koncového bodu. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-dotnet-shared-access-signature-part-1.md).
 
 **Použití vlastní domény HTTPS pomocí účtu úložiště Například jak zajistím, aby "https://mystorageaccountname.blob.core.windows.net/images/image.gif"se zobrazí jako"https://www.contoso.com/images/image.gif"?**
 
@@ -295,6 +297,6 @@ Pokud chcete pouze ke stahování dat bez nutnosti použití Průzkumníka služ
 
  Můžete provést pomocí naší [Blob skript migrace](../scripts/storage-common-transfer-between-storage-accounts.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

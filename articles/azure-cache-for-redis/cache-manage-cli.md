@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 54aa6f12afd83d4fb180b718ed420f62a8663ff6
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 9b9ad2f4fd3b0ccf928dcec58b7c55778bcbdc95
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019316"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53558698"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak vytvořit a spravovat Azure mezipaměti Redis pomocí Azure classic CLI
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Následující vlastnosti se používají při vytváření a aktualizaci mezipa
 | skupina prostředků |-g,--& gt; resource-group |Název skupiny prostředků. |
 | location |-l,--umístění |Umístění pro vytvoření mezipaměti. |
 | velikost |-z, --size |Velikost mezipaměti pro Azure redis Cache. Platné hodnoty: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| Skladová položka |-x, --sku |Redis SKU. By měla být jedna z: [Basic, Standard, Premium] |
+| SKU |-x, --sku |Redis SKU. By měla být jedna z: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--enable bez--port ssl |Vlastnost EnableNonSslPort ukládání do mezipaměti Azure pro Redis. Přidejte tento příznak, pokud chcete povolit Port bez SSL ke svojí mezipaměti |
 | Konfigurace mezipaměti redis |-c, - redis konfigurace |Konfigurace mezipaměti redis. Zadejte řetězec ve formátu JSON konfigurace klíčů a hodnot v tomto poli. Formát: "{" ":""," ":" "}" |
 | Konfigurace mezipaměti redis |-f,--redis. konfigurační soubor |Konfigurace mezipaměti redis. Zadejte cestu k souboru, který obsahuje konfigurační klíče a hodnoty tady. Formát pro vstupní soubor: {"": "","": ""} |
@@ -74,7 +74,7 @@ Pokud chcete zobrazit všechny mezipaměti Azure Redis příkazy a jejich parame
     help:    Delete an existing Azure Cache for Redis
     help:      rediscache delete [--name <name> --resource-group <resource-group> ]
     help:
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:      rediscache list [options]
     help:
     help:    Show properties of an existing Azure Cache for Redis
@@ -150,15 +150,15 @@ Další informace o tomto příkazu Spustit `azure rediscache delete -h` příka
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-azure-cache-for-rediss-within-your-subscription-or-resource-group"></a>Seznam všech mezipaměti Azure pro Rediss v rámci předplatného nebo skupiny prostředků
-Chcete-li vypsat všechny mezipaměti Azure pro Rediss v rámci předplatného nebo skupiny prostředků, použijte následující příkaz:
+## <a name="list-all-azure-cache-for-redis-within-your-subscription-or-resource-group"></a>Vypsat všechny mezipaměti Azure pro Redis v rámci předplatného nebo skupiny prostředků
+Chcete-li vypsat všechny mezipaměti Azure pro Redis v rámci předplatného nebo skupiny prostředků, použijte následující příkaz:
 
     azure rediscache list [options]
 
 Další informace o tomto příkazu Spustit `azure rediscache list -h` příkazu.
 
     C:\>azure rediscache list -h
-    help:    List all Azure Cache for Rediss within your Subscription or Resource Group
+    help:    List all Azure Cache for Redis within your Subscription or Resource Group
     help:
     help:    Usage: rediscache list [options]
     help:

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964828"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599822"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 Použití služby dělení a slučování, musíte správně nakonfigurovat zabezpečení. Tato služba je součástí funkce elastické škálování služby Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz Service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -43,7 +43,7 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
     Pokud je nainstalovaná, přejděte na:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Získat ze sady WDK [Windows 8.1: stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Získat ze sady WDK [Windows 8.1: Stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Konfigurace certifikátu SSL
 Certifikát SSL se vyžaduje k zašifrování komunikace a ověřování serveru. Zvolte nejvíce hodí následující tři scénáře a spusťte všechny jeho kroky:
@@ -398,16 +398,16 @@ Postupujte následovně:
 ## <a name="export-certificate"></a>Export certifikátu
 V **Průvodce exportem certifikátu**:
 
-1. Klikněte na **Další**.
+1. Klikněte na tlačítko **Další**.
 2. Vyberte **Ano**, pak **exportovat soukromý klíč**.
-3. Klikněte na **Další**.
+3. Klikněte na tlačítko **Další**.
 4. Vyberte požadovaný výstupní formát souboru.
 5. Zkontrolujte požadované možnosti.
 6. Zkontrolujte **heslo**.
 7. Zadejte silné heslo a potvrďte ho.
-8. Klikněte na **Další**.
+8. Klikněte na tlačítko **Další**.
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát uložit (použijte. Příponu PFX).
-10. Klikněte na **Další**.
+10. Klikněte na tlačítko **Další**.
 11. Klikněte na **Dokončit**.
 12. Klikněte na **OK**.
 
@@ -418,7 +418,7 @@ V Průvodci importem certifikátu:
    
    * Vyberte **aktuálního uživatele** Pokud pouze procesů spuštěných v rámci aktuální uživatel bude mít přístup k službě
    * Vyberte **místního počítače** Pokud jiné procesy v tomto počítači bude mít přístup k službě
-2. Klikněte na **Další**.
+2. Klikněte na tlačítko **Další**.
 3. Pokud import ze souboru, zkontrolujte cestu k souboru.
 4. Pokud importujete. Soubor PFX:
    1. Zadejte heslo ochranou privátního klíče

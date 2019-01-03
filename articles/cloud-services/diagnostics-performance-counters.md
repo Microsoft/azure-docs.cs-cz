@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: b288c6a64572287c460e82cd8746a8504d264933
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: bae1e7de3c24ff6fbf943ef93ad449d784feb0c8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322939"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788692"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudové služby Azure
 
@@ -84,7 +84,7 @@ Tyto jednotlivé čítače, které cesty mohou být přidány do diagnostics fra
 
 ### <a name="application-insights"></a>Application Insights
 
-Azure Application Insights pro služby Cloud Services umožňuje že určit jaké čítače výkonu, které chcete shromažďovat. Poté co [přidat Application Insights do projektu](../application-insights/app-insights-cloudservices.md#sdk), konfigurační soubor s názvem **soubor ApplicationInsights.config** se přidá do projektu sady Visual Studio. Tento konfigurační soubor definuje, jaký typ informace o Application Insights shromažďuje a odesílá do Azure.
+Azure Application Insights pro služby Cloud Services umožňuje že určit jaké čítače výkonu, které chcete shromažďovat. Poté co [přidat Application Insights do projektu](../azure-monitor/app/cloudservices.md#sdk), konfigurační soubor s názvem **soubor ApplicationInsights.config** se přidá do projektu sady Visual Studio. Tento konfigurační soubor definuje, jaký typ informace o Application Insights shromažďuje a odesílá do Azure.
 
 Otevřít **soubor ApplicationInsights.config** souborů a vyhledejte **ApplicationInsights** > **telemetrymodules následující** elementu. Každý `<Add>` podřízený element definuje typ telemetrických dat chcete shromažďovat, společně s jeho konfigurace. Typ modulu telemetrická data čítače výkonu je `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector`. Pokud tento prvek je již definován, nepřidávejte jej znovu. Každý čítač výkonu ke shromažďování je definován v uzlu s názvem `<Counters>`. Tady je příklad, který shromažďuje čítače výkonu disku:
 
@@ -116,7 +116,7 @@ Application Insights automaticky shromažďuje následující čítače výkonu:
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-Další informace najdete v tématu [čítače výkonu systému ve službě Application Insights](../application-insights/app-insights-performance-counters.md) a [Application Insights pro Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters).
+Další informace najdete v tématu [čítače výkonu systému ve službě Application Insights](../application-insights/app-insights-performance-counters.md) a [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
@@ -294,7 +294,7 @@ Jak je uvedeno výše, které chcete shromáždit čítače výkonu jsou definov
 
 ## <a name="more-information"></a>Další informace
 
-- [Application Insights pro Azure Cloud Services](../application-insights/app-insights-cloudservices.md#performance-counters)
+- [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Čítače výkonu systému ve službě Application Insights](../application-insights/app-insights-performance-counters.md)
 - [Zadání cesty čítače](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure Diagnostics Schema - čítače výkonu](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

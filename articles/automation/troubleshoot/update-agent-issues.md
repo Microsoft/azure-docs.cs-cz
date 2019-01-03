@@ -9,16 +9,22 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 4540de7acd89614152c7331b17ba752f4032bf1a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434762"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53582554"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly agenta Windows v Update Management
 
 Může být mnoho důvodů, proč počítač nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z webu Azure portal a počítače mimo Azure v [offline scénáři](#troubleshoot-offline).
+
+V následujícím seznamu jsou tři připravenosti stavy, které počítač může být v:
+
+* **Připraveno** – aktualizace agenta nasazení a byla posledního kontaktu s méně než hodinou.
+* **Odpojení** – nasazení aktualizace agenta a byl naposledy zobrazeno více než 1 hodinou.
+* **Není nakonfigurováno** – aktualizace agenta nebyl nalezen nebo nebyl dokončen registrace.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 

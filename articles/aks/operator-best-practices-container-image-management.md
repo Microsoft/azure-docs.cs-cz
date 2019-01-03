@@ -7,16 +7,14 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 20d3d3d755a35927550064ddfdf3b983348f93d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109637"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605547"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro správu image kontejnerů a zabezpečení ve službě Azure Kubernetes Service (AKS)
-
-Vývoj a spouštění aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení kontejnerů je důležitým aspektem. Kontejnery, které zahrnují aktuální základní Image nebo doba spuštění aplikace představovat bezpečnostní riziko a možný útok. Chcete-li minimalizovat těchto rizik, by měla integrace nástroje, které vyhledat a opravit problémy v kontejnerech.
 
 Vývoj a spouštění aplikací ve službě Azure Kubernetes Service (AKS), je zabezpečení kontejnerů a imagí kontejneru je důležitým aspektem. Kontejnery, které zahrnují aktuální základní Image nebo modulů runtime bez opravy zabezpečení aplikace představovat bezpečnostní riziko a možný útok. Chcete-li minimalizovat těchto rizik, by měla integrace nástroje, které vyhledat a opravit problémy v kontejnerech v okamžiku sestavení, jakož i prostředí runtime. Dříve v procesu, který zachycuje ohrožení zabezpečení nebo aktuální základní image bezpečnější clusteru. V tomto článku *kontejnery* znamená, že oba Image kontejneru uložena v registru kontejnerů a spuštěné kontejnery.
 

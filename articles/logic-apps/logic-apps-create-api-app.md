@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233510"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53600710"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních rozhraní API můžete volat z Azure Logic Apps
 
@@ -25,11 +25,11 @@ I když Azure Logic Apps nabízí [více než 100 integrovaných konektorů](../
 * Pomozte zákazníkům vaši službu používat ke správě úloh edice professional nebo osobní.
 * Rozšiřte dosah, vyhledatelnost a použití pro vaši službu.
 
-V podstatě konektory jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](http://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. Vzhledem k tomu, že konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js, pro tvorbu konektorů. Můžete také hostování svých rozhraní API na [služby Azure App Service](../app-service/app-service-web-overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje jeden ze způsobů, jak nejlepší, nejjednodušší a největší škálovatelné pro hostování rozhraní API. 
+V podstatě konektory jsou webové rozhraní API, která použití služby REST pro připojitelné rozhraní [formát metadat Swagger](http://swagger.io/specification/) dokumentaci a formát JSON jako jejich formát dat systému exchange. Vzhledem k tomu, že konektory jsou rozhraní REST API, které komunikují prostřednictvím koncových bodů HTTP, můžete použít libovolný jazyk, jako je .NET, Java nebo Node.js, pro tvorbu konektorů. Můžete také hostování svých rozhraní API na [služby Azure App Service](../app-service/overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje jeden ze způsobů, jak nejlepší, nejjednodušší a největší škálovatelné pro hostování rozhraní API. 
 
 Pro vlastní rozhraní API pro práci s logic apps, můžete zadat vaše rozhraní API [ *akce* ](./logic-apps-overview.md#logic-app-concepts) , které provádějí konkrétní úlohy v pracovních postupů aplikace logiky. Vaše rozhraní API se mohou chovat i jako [ *aktivační událost* ](./logic-apps-overview.md#logic-app-concepts) , který spouští pracovní postup aplikace logiky, když nová data nebo událost splňují zadanou podmínku. Toto téma popisuje běžné vzory, které můžete použít pro vytváření akcí a triggerů v rozhraní API založené na chování, které chcete, aby vaše rozhraní API pro poskytnutí.
 
-Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/app-service-web-overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje vysoce škálovatelnou a jednoduché rozhraní API hostování.
+Rozhraní API můžete hostovat na [služby Azure App Service](../app-service/overview.md), platform-as-a-service (PaaS) nabídka, která poskytuje vysoce škálovatelnou a jednoduché rozhraní API hostování.
 
 > [!TIP] 
 > I když můžete nasadit svoje rozhraní API jako webové aplikace, zvažte nasazení vašich rozhraní API jako aplikace rozhraní API, které může usnadnit práci při vytváření, hostování a používání rozhraní API v cloudu i v místním prostředí. Nemusíte měnit žádný kód v rozhraní API – stačí nasazení kódu do aplikace API. Například informace o vývoji aplikací API vytvořených pomocí těchto jazycích: 
@@ -134,9 +134,9 @@ Po dokončení úlohy se vaše rozhraní API používá adresu URL a upozornit m
 
 Pro tento model nastavit dva koncové body na vašem řadiči: `subscribe` a `unsubscribe`
 
-*  `subscribe` koncový bod: když spuštění dosáhne akce vaše rozhraní API v pracovním postupu, modul Logic Apps volání `subscribe` koncového bodu. Tento krok způsobí, že aplikace logiky k vytvoření adresy URL zpětného volání, která ukládá vaše rozhraní API a potom počkejte zpětného volání z rozhraní API po dokončení práce. Vaše rozhraní API potom zavolá zpět pomocí HTTP POST na adresu URL a předává všechny vráceného obsahu a záhlaví jako vstup do aplikace logiky.
+*  `subscribe` Koncový bod: Když spuštění dosáhne akce vaše rozhraní API v pracovním postupu, modul Logic Apps volání `subscribe` koncového bodu. Tento krok způsobí, že aplikace logiky k vytvoření adresy URL zpětného volání, která ukládá vaše rozhraní API a potom počkejte zpětného volání z rozhraní API po dokončení práce. Vaše rozhraní API potom zavolá zpět pomocí HTTP POST na adresu URL a předává všechny vráceného obsahu a záhlaví jako vstup do aplikace logiky.
 
-* `unsubscribe` koncový bod: Pokud se zruší běh aplikace logiky, modul Logic Apps volání `unsubscribe` koncového bodu. Vaše rozhraní API můžete zrušit registraci adresu URL zpětného volání a zastavte všechny procesy, podle potřeby.
+* `unsubscribe` Koncový bod: Pokud se zruší běh aplikace logiky, modul Logic Apps volání `unsubscribe` koncového bodu. Vaše rozhraní API můžete zrušit registraci adresu URL zpětného volání a zastavte všechny procesy, podle potřeby.
 
 ![Vzor akce Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -196,9 +196,9 @@ Například aby pravidelně kontrolovaly vaši službu pro nové soubory, může
 Aktivační událost webhooku je *triggeru nabízeného* , které vyčká a čeká na nová data nebo události na váš koncový bod služby. Pokud nová data nebo událost splňuje zadanou podmínku, aktivuje se a vytvoří instanci aplikace logiky, který pak tato data jako vstup zpracovává.
 Triggerů Webhooků fungují podobně jako [akce webhooku](#webhook-actions) dříve popsané v tomto tématu a jsou nastavené s `subscribe` a `unsubscribe` koncových bodů. 
 
-* `subscribe` koncový bod: Pokud chcete přidat a uložit trigger webhooku v aplikaci logiky, modul Logic Apps volání `subscribe` koncového bodu. Tento krok způsobí, že aplikace logiky a vytvoří adresu URL zpětného volání, které uloží vaše rozhraní API. Když je nová data nebo událost, která splňuje zadanou podmínku, volání rozhraní API zpět s HTTP POST na adresu URL. Datová část obsahu a záhlaví předat jako vstup do aplikace logiky.
+* `subscribe` Koncový bod: Pokud chcete přidat a uložit trigger webhooku v aplikaci logiky, modul Logic Apps volání `subscribe` koncového bodu. Tento krok způsobí, že aplikace logiky a vytvoří adresu URL zpětného volání, které uloží vaše rozhraní API. Když je nová data nebo událost, která splňuje zadanou podmínku, volání rozhraní API zpět s HTTP POST na adresu URL. Datová část obsahu a záhlaví předat jako vstup do aplikace logiky.
 
-* `unsubscribe` koncový bod: Pokud se odstraní trigger webhooku nebo celý logiky aplikace, modul Logic Apps volání `unsubscribe` koncového bodu. Vaše rozhraní API můžete zrušit registraci adresu URL zpětného volání a zastavte všechny procesy, podle potřeby.
+* `unsubscribe` Koncový bod: Pokud trigger webhooku nebo celý logic app se odstraní, modul Logic Apps volání `unsubscribe` koncového bodu. Vaše rozhraní API můžete zrušit registraci adresu URL zpětného volání a zastavte všechny procesy, podle potřeby.
 
 ![Vzor aktivační událost Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

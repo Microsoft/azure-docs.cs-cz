@@ -1,44 +1,40 @@
 ---
-title: Rozšíření virtuálních počítačů Linux snímku pro Azure Backup | Microsoft Docs
-description: Proveďte zálohování s konzistentními aplikací virtuálního počítače z Azure Backup pomocí rozšíření snímek virtuálního počítače
+title: Rozšíření Linux snímku virtuálního počítače pro službu Azure Backup | Dokumentace Microsoftu
+description: Přijmout žádosti konzistentní zálohování virtuálního počítače z Azure Backup pomocí rozšíření snímku virtuálního počítače
 services: backup, virtual-machines-linux
 documentationcenter: ''
 author: trinadhk
 manager: jeconnoc
-editor: ''
-ms.assetid: 57759670-0baa-44db-ae14-8cdc00d3a906
 ms.service: backup, virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 3/26/2018
+ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: bed5716b6d4ea6d81214a95d0f2360f359048893
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1bcf326bde3ac5c97734393ee162b1f98d1553ce
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942687"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634197"
 ---
-# <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření virtuálních počítačů Linux snímku pro zálohování Azure
+# <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozšíření Linux snímku virtuálního počítače pro službu Azure Backup
 
-## <a name="overview"></a>Přehled
 
-Zálohování Azure poskytuje podporu pro zálohování úloh z místního do cloudu a zálohování cloudové prostředky do trezoru služeb zotavení. Azure Backup používá rozšíření snímek virtuálního počítače pro aplikaci konzistentní zálohování virtuálního počítače Azure bez nutnosti vypnutí virtuálního počítače. Rozšíření virtuálních počítačů Linux snímku je publikována a společnost Microsoft podporuje jako součást služby zálohování Azure. Azure Backup nainstaluje jako součást první naplánované zálohování spouštěná post povolení zálohování rozšíření. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření snímku virtuálního počítače.
+
+Azure Backup podporuje pro zálohování úloh z místního cloudu a zálohování cloudových prostředků na trezor služby Recovery Services. Azure Backup používá rozšíření snímku virtuálního počítače se žádosti konzistentní zálohování virtuálního počítače Azure bez nutnosti vypnutí virtuálního počítače. Rozšíření virtuálního počítače Linux snímku publikace a podporuje Microsoft jako součást služby Azure Backup. Azure Backup nainstaluje rozšíření jako součást první naplánované zálohování aktivované příspěvek povolení zálohování. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření snímek virtuálního počítače.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
-Seznam podporovaných operačních systémů, naleznete v [operační systémy podporované nástrojem Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup)
+Seznam podporovaných operačních systémech najdete [operační systémy podporované službou Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření snímku virtuálního počítače vyžaduje, aby cílový virtuální počítač je připojený k Internetu, když jsme proveďte zálohu virtuálního počítače.
+Snímek virtuálního počítače rozšíření vyžaduje, aby cílový virtuální počítač je připojený k Internetu, když jsme vytvořit zálohu virtuálního počítače.
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následujícím kódu JSON znázorňuje schéma pro rozšíření snímek virtuálního počítače. Rozšíření vyžaduje ID úkolu – to identifikuje zálohování úlohu, která spustí snímku na virtuálním počítači, identifikátor uri objektu blob stavu - umístění, kam je zapisován stav operace snímku, naplánovaný čas zahájení snímku, protokoly blob uri – kde protokoly odpovídající snímku úloh jsou určeny, objstr reprezentace disky virtuálních počítačů a metadata.  Protože tato nastavení by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač. Upozorňujeme, že tato nastavení se doporučuje možné předat z služby zálohování Azure jenom jako součást úlohy zálohování.
+Následující kód JSON ukazuje schéma pro rozšíření snímku virtuálního počítače. Rozšíření vyžaduje ID úlohy - Určuje záložní úlohu, která aktivuje snímků na virtuálním počítači, identifikátor uri objektu blob stavu - níž je zapsána stav operace vytvoření snímku, plánovaný čas zahájení snímku, protokoly objektů blob uri – kde snímku odpovídající protokoly úloh jsou určeny, objstr reprezentace disky virtuálních počítačů a metadata.  Protože tato nastavení mají být považována za citlivá data, by měl být uložený v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaný a dešifrovat jenom na cílovém virtuálním počítači. Všimněte si, že tato nastavení se doporučuje předat ze služby Azure Backup pouze jako součást úlohy zálohování.
 
 ```json
 {
@@ -68,13 +64,13 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření snímek virtu�
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota nebo příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
-| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | řetězec |
+| apiVersion | 2015-06-15 | date |
+| taskId | e07354cf 041e-4370-929f-25a319ce8933_1 | řetězec |
 | commandStartTimeUTCTicks | 6.36458E + 17 | řetězec |
-| Národní prostředí | en-us | řetězec |
-| objectStr | Kódování sas uri pole-"blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/virtuální pevné disky\/vmubuntu1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017. 11 09T14 % 3A23 % 3A28Z & oužít = 2017. 11 09T17 % 3A38 % 3A28Z & sp = rw "," https:\/\/sopattna8461.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmubuntu1404ltsc. 20160629 122418.vhd? sv = 2014-02-14 & sr = b & sig = 5S0A6YDWvVwqPAkzWXVy % 2BS % 2FqMwzFMbamT5upwx05v8Q % 3D & st = 2017. 11 09T14 % 3A23 % 3A28Z & oužít = 2017. 11 09T17 % 3A38 % 3A28Z & sp = rw "," https:\/ \/ sopattna8461.BLOB.Core.Windows.NET\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc. 20160629 122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4 % 3D & st = 2017. 11 09T14 % 3A23 % 3A28Z & oužít = 2017. 11 09T17 % 3A38 % 3A28Z & sp = rw "," https:\/\/sopattna5365.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmubuntu1404ltsc. 20160701 163922.vhd? sv = 2014-02-14 & sr = b & sig = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 2BC % 2BNIAork % 3D & st = 2017. 11 09T14 % 3A23 % 3A28Z & oužít = 2017. 11 09T17 % 3A38 % 3A28Z & sp = rw "," https:\/ \/ sopattna5365.BLOB.Core.Windows.NET\/virtuální pevné disky\/vmubuntu1404ltsc. 20170705 124311.vhd? sv = 2014-02-14 & sr = b & sig = ZUM9d28Mvvm % 2FfrhJ71TFZh0Ni90m38bBs3zMl % 2FQ9rs0 % 3D & st = 2017. 11 09T14 % 3A23 % 3A28Z & oužít = 2017. 11 09T17 % 3A38 % 3A28Z & sp = rw "] | řetězec |
+| národní prostředí | En-us | řetězec |
+| objectStr | Kódování sas uri pole-"blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/virtuální pevné disky\/vmubuntu1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/\/sopattna8461.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmubuntu1404ltsc. 20160629 122418.vhd? sv = 2014-02-14 & sr = b & sig = 5S0A6YDWvVwqPAkzWXVy % 2BS 2FqMwzFMbamT5upwx05v8Q % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/ \/ sopattna8461.BLOB.Core.Windows.NET\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc. 20160629 122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4 % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/\/sopattna5365.blob.core.windows.net\/virtuálníchpevnýchdisků\/vmubuntu1404ltsc. 20160701 163922.vhd? sv = 2014-02-14 & sr = b & sig = oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 2BC 2BNIAork % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "," protokol https:\/ \/ sopattna5365.BLOB.Core.Windows.NET\/virtuální pevné disky\/vmubuntu1404ltsc. 20170705 124311.vhd? sv = 2014-02-14 & sr = b & sig = ZUM9d28Mvvm % 2FfrhJ71TFZh0Ni90m38bBs3zMl 2FQ9rs0 % 3D & st = 2017-11-09T14 % 3A23 % 3A28Z & se = 2017-11-09T17 % 3A38 % 3A28Z & sp = rw "] | řetězec |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | řetězec |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | řetězec |
 
@@ -82,12 +78,12 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření snímek virtu�
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Doporučený způsob přidání rozšíření snímek virtuálního počítače na virtuální počítač je však povolením zálohování na virtuálním počítači. Toho lze dosáhnout pomocí šablony Resource Manageru.  Vzorové šablony Resource Manageru, umožňující zálohování na virtuálním počítači najdete na [Azure rychlý Start Galerie](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Rozšíření virtuálního počítače Azure je možné nasadit s využitím šablon Azure Resource Manageru. Doporučený způsob, jak přidat rozšíření snímku virtuálního počítače na virtuální počítač je však tím, že zálohování na virtuálním počítači. Toho lze dosáhnout pomocí šablony Resource Manageru.  Ukázka šablony Resource Manageru se povolí zálohování na virtuálním počítači můžete najít na [Galerie Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
 
 
-## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
+## <a name="azure-cli-deployment"></a>Nasazení v Azure CLI
 
-Rozhraní příkazového řádku Azure slouží k povolení zálohování na virtuálním počítači. Povolit zálohování POST, nainstaluje první naplánované úlohy zálohování rozšíření snímek virtuálního počítače na virtuálním počítači.
+Azure CLI slouží k povolení zálohování na virtuálním počítači. Příspěvek povolit zálohování, první naplánovaná úloha zálohování nainstaluje rozšíření snímku virtuálního počítače na virtuálním počítači.
 
 ```azurecli
 az backup protection enable-for-vm \
@@ -101,22 +97,22 @@ az backup protection enable-for-vm \
 
 ### <a name="troubleshoot"></a>Řešení potíží
 
-Z portálu Azure a pomocí rozhraní příkazového řádku Azure je možné načíst data o stavu nasazení rozšíření. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí rozhraní příkazového řádku Azure.
+Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Výstupu spuštění rozšíření je zaznamenána do následujícího souboru:
+Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 
 ```
 /var/log/waagent.log
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Kódy chyb a jejich významů
+### <a name="error-codes-and-their-meanings"></a>Kódy chyb a jejich význam
 
-Informace o odstraňování potíží naleznete na [zálohování virtuálního počítače Azure Průvodce odstraňováním potíží s](../../backup/backup-azure-vms-troubleshoot.md).
+Informace o odstraňování potíží najdete v [Průvodce odstraňováním potíží se zálohováním virtuálního počítače Azure](../../backup/backup-azure-vms-troubleshoot.md).
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).

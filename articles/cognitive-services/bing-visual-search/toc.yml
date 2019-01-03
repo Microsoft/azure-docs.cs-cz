@@ -5,46 +5,42 @@ items:
   items:
   - name: Co je rozhraní API pro vizuální vyhledávání Bingu?
     href: overview.md
-- name: Rychlá zprovoznění pro REST API
+- name: Šablony Rychlý start
   items:
-  - name: První dotaz v C##
-    href: quickstarts/csharp.md
-  - name: První dotaz v Javě
-    href: quickstarts/java.md
-  - name: První dotaz pro Node.js
-    href: quickstarts/nodejs.md
-  - name: První dotaz v Pythonu
-    href: quickstarts/python.md
-  expanded: true
-- name: Sada SDK
-  items:
-  - name: Přehled ukázek SDK
-    href: sdk.md
-  - name: SDK v C#
-    href: visual-search-sdk-c-sharp.md
-  - name: SDK v Node
-    href: visual-search-sdk-node.md
-  - name: SDK v Pythonu
-    href: visual-search-sdk-python.md
-  expanded: true
+  - name: REST API
+    items:
+    - name: Pomocí C#
+      href: quickstarts/csharp.md
+    - name: Pomocí Javy
+      href: quickstarts/java.md
+    - name: Pomocí Node.js
+      href: quickstarts/nodejs.md
+    - name: Pomocí Pythonu
+      href: quickstarts/python.md
+    expanded: true
+  - name: Sada SDK
+    items:
+    - name: Pomocí C#
+      href: visual-search-sdk-c-sharp.md
+    - name: Pomocí Node.js
+      href: visual-search-sdk-node.md
+    - name: Pomocí Pythonu
+      href: visual-search-sdk-python.md
+    expanded: true
 - name: Kurzy
   items:
-  - name: Webová aplikace pro nahrávání obrázků
+  - name: Nahrání obrázku
     href: tutorial-visual-search-image-upload.md
-  - name: Jednostránková webová aplikace
-    href: tutorial-bing-visual-search-single-page-app.md
-  - name: Jednostránková webová aplikace (zdrojový kód)
-    href: tutorial-bing-visual-search-single-page-app-source.md
-  - name: Oblast oříznutí obrázku sady Bing Visual Search SDK a výsledky
+  - name: Oříznutí a prohledání oblasti obrázku
     href: tutorial-visual-search-crop-area-results.md
-  - name: ImageInsightsToken sady Bing Visual Search SDK a výsledky
-    href: tutorial-visual-search-insights-token.md
 - name: Ukázky
   items:
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search
 - name: Koncepty
   items:
+  - name: Odesílání dotazů
+    href: concepts/sending-queries.md
   - name: Výchozí přehledy obrázků
     href: default-insights-tag.md
   - name: Využití přehledů Bingu
@@ -59,11 +55,22 @@ items:
     href: use-and-display-requirements.md
   - name: Změna velikosti a oříznutí miniatur
     href: resize-and-crop-thumbnails.md
+  - name: Hledání obrázků s využitím přehledových tokenů obrázků
+    href: tutorial-visual-search-insights-token.md
+  - name: Vytvoření jednostránkové webové aplikace
+    href: tutorial-bing-visual-search-single-page-app.md
 - name: Referenční informace
   items:
   - name: REST v7 API
     href: https://aka.ms/bingvisualsearchreferencedoc
-  expanded: true
+  - name: Sady SDK
+    items:
+    - name: .NET
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-dotnet
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/visualsearch?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python
 - name: Zdroje a prostředky
   items:
   - name: Podpora jazyků a oblastí
@@ -76,9 +83,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/bing-search
   - name: User Voice
     href: https://cognitive.uservoice.com/forums/555907-bing-search
-ms.openlocfilehash: f33e0fe7c13a7686c244d10297fd23e7ca59d452
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6291b480d8c1ba44f6c0306c090cdee3df1fec95
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432422"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789173"

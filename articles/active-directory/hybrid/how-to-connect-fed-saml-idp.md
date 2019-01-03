@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Použití zprostředkovatele Identity SAML 2.0 pro jednotné přihlašování na | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Použít zprostředkovatele Identity SAML 2.0 pro jednotné přihlašování na | Dokumentace Microsoftu'
 description: Tento dokument popisuje na vyhovující Idp SAML 2.0 pro jednotné přihlašování.
 services: active-directory
 author: billmath
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e3bd48cf56650e266f5002a179d20177b3127f25
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8f8503f560985e1170105199212734dd704d81c1
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426397"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743523"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použití zprostředkovatele 2.0 Identity (IdP) SAML pro jednotné přihlašování na
 
@@ -167,7 +167,7 @@ Je nutné povolit komunikaci mezi zprostředkovatele identity SAML 2.0 a Azure A
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Instalace prostředí Windows PowerShell pro přihlášení pomocí zprostředkovatele identity SAML 2.0
 Po nakonfigurování zprostředkovatele identity SAML 2.0 pro použití s přihlašováním k Azure AD, dalším krokem je ke stažení a instalaci Azure Active Directory modulu pro Windows PowerShell. Po instalaci budete používat tyto rutiny ke konfiguraci domény Azure AD jako federovaných domén.
 
-Sada Azure Active Directory modulu pro Windows PowerShell je ke stažení pro správu dat organizace ve službě Azure AD. Tento modul nainstaluje sadu rutin Windows powershellu; Spusťte tyto rutiny k nastavení přístupu jednotné přihlašování do služby Azure AD a v důsledku ke všem cloudovým službám jste se nepřihlásili k odběru. Pokyny o tom, jak stáhnout a nainstalovat nejnovější verzi rutin najdete v tématu [https://technet.microsoft.com/library/jj151815.aspx](httpss://technet.microsoft.com/library/jj151815.aspx)
+Sada Azure Active Directory modulu pro Windows PowerShell je ke stažení pro správu dat organizace ve službě Azure AD. Tento modul nainstaluje sadu rutin Windows powershellu; Spusťte tyto rutiny k nastavení přístupu jednotné přihlašování do služby Azure AD a v důsledku ke všem cloudovým službám jste se nepřihlásili k odběru. Pokyny o tom, jak stáhnout a nainstalovat nejnovější verzi rutin najdete v tématu [https://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Nastavení vztahu důvěryhodnosti mezi SAML zprostředkovatele identity a Azure AD
 Před konfigurací federace pro doménu služby Azure AD, musí mít v konfiguraci vlastní domény. Nelze vytvořit federaci výchozí doménu, kterou zajišťuje Microsoft. Výchozí doménu od Microsoftu končí řetězcem "onmicrosoft.com".
@@ -183,14 +183,14 @@ Následující postup vás provede převod existující standardní domény na f
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Konfigurace domény v adresáři Azure AD pro federaci
 
 
-1. Připojení k adresáři Azure AD jako správce tenanta: Connect-MsolService.
+1. Připojte se do adresáře služby Azure AD jako správce tenanta: Connect-MsolService.
 2.  Nakonfigurujte požadované domény Office 365 do federace pomocí SAML 2.0: `$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  Můžete získat řetězec pro kódování base64 podpisového certifikátu ze souboru metadat zprostředkovatele identity. Příkladem tohoto umístění neposkytl se ale může mírně lišit v závislosti na vaší implementace.
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="https://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-Další informace o "Set-MsolDomainAuthentication" v tématu: [ https://technet.microsoft.com/library/dn194112.aspx ](httpss://technet.microsoft.com/library/dn194112.aspx).
+Další informace o "Set-MsolDomainAuthentication" v tématu: [ https://technet.microsoft.com/library/dn194112.aspx ](https://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
 >Je nutné spustit pomocí "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" pouze v případě, že nastavíte ECP rozšíření pro zprostředkovatele identity. Exchange Online, s výjimkou Outlook Web Application (OWA), klienty na základě příspěvek aktivní koncový bod. Pokud váš protokol SAML 2.0 STS implementuje active koncový bod podobná společnosti Shibboleth ECP provádění aktivní koncový bod je možné, že pro tyto bohatých klientů k interakci se službou Exchange Online.
@@ -207,7 +207,7 @@ Prostředí Windows PowerShell můžete použít také k automatizaci přidání
 Tento postup ukazuje, jak přidat do služby Azure AD jednoho uživatele.
 
 
-1. Připojení k adresáři Azure AD jako správce tenanta: Connect-MsolService.
+1. Připojte se do adresáře služby Azure AD jako správce tenanta: Connect-MsolService.
 2.  Vytvořte nový instanční objekt uživatele: ` New-MsolUser
         -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
@@ -218,7 +218,7 @@ Tento postup ukazuje, jak přidat do služby Azure AD jednoho uživatele.
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-Další informace o rezervaci "New-MsolUser" [https://technet.microsoft.com/library/dn194096.aspx](httpss://technet.microsoft.com/library/dn194096.aspx)
+Další informace o rezervaci "New-MsolUser" [https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
 >[!NOTE]
 >Hodnota "UserPrinciplName" musí odpovídat hodnotě, kterou odešlete "IDPEmail" ve vaší deklarace identity SAML 2.0 a hodnota "ImmutableID" musí odpovídat hodnotě poslaná vaše kontrolní výraz "NameID".
@@ -254,13 +254,13 @@ Microsoft poskytuje nástroje, který můžete použít k otestování vašeho z
 2.  Začněte kliknutím na tlačítko nainstalovat stahování a instalace nástroje.
 3.  Vyberte "Nejde nastavit federace s Office 365, Azure nebo jiné služby, které používají Azure Active Directory".
 4.  Jakmile nástroj se stáhne a spuštěná, zobrazí se okno diagnostiku připojení. Nástroj vás postupně testování připojení federace.
-5.  Analyzátor připojení se otevře svého zprostředkovatele identity SAML 2.0 pro vás přihlásit, zadejte přihlašovací údaje pro testování hlavní název uživatele: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
+5.  Analyzátor připojení se otevře svého zprostředkovatele identity SAML 2.0 pro vás přihlásit, zadejte přihlašovací údaje, které testujete hlavní název uživatele: ![SAML](./media/how-to-connect-fed-saml-idp/saml1.png)
 6.  Federace test přihlášení okna měli byste zadat název účtu a heslo pro tenanta Azure AD, který je konfigurován pro federované pomocí zprostředkovatele identity SAML 2.0. Nástroj se pokusí přihlásit pomocí těchto přihlašovacích údajů a poskytneme vám podrobné výsledky testů, které provádí během pokusu o přihlášení jako výstup.
 ![SAML](./media/how-to-connect-fed-saml-idp/saml2.png)
 7. Toto okno zobrazuje neúspěšných výsledků testů. Kliknutím na podrobné výsledky se zobrazí informace o výsledky pro každý test, který se provedla kontrola. Můžete také uložit výsledky na disk, aby bylo možné sdílet.
  
 >[!NOTE]
->Analyzátor připojení také testy Active federace pomocí WS*-ECP/PAOS a na základě protokolů. Pokud nepoužíváte, toto můžete ignorovat následující chybu: testování toku aktivní přihlášení pomocí zprostředkovatele identity aktivní federaci koncového bodu.
+>Analyzátor připojení také testy Active federace pomocí WS*-ECP/PAOS a na základě protokolů. Pokud nepoužíváte toto že můžete ignorovat následující chybu: Testování toku aktivní přihlášení pomocí zprostředkovatele identity aktivní federaci koncového bodu.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Ručně ověřte, že tento jednotného přihlašování se nastavila správně
 Ruční ověření poskytuje další kroky, které můžete provést k zajištění, že poskytovatele identity SAML 2.0 je funguje správně v mnoha scénářích.
@@ -268,7 +268,7 @@ Pokud chcete ověřit, že tento jednotného přihlašování má správně nast
 
 
 1. Na počítači připojeném k doméně přihlášení ke cloudové službě pomocí stejné přihlašovací jméno, který používáte pro své podnikové přihlašovací údaje.
-2.  Klikněte do pole heslo. Pokud se jednotné přihlašování je nastavený heslo, bude pole označeno šedou barvou a zobrazí se následující zpráva: "teď jsou nutné k přihlášení na &lt;vaší společnosti&gt;."
+2.  Klikněte do pole heslo. Pokud jednotného přihlašování je nastaven, pole pro heslo bude označeno šedou barvou a zobrazí se následující zpráva: "Teď jsou nutné k přihlášení na &lt;vaší společnosti&gt;."
 3.  Klikněte na tlačítko přihlášení na &lt;vaší společnosti&gt; odkaz. Pokud budete moct přihlásit, pak jednotné přihlašování je nastavený.
 
 ## <a name="next-steps"></a>Další kroky

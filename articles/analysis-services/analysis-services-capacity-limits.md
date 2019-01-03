@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4c2cebe2225e475ccd40460e7b10a6ba3ed428d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: beb0c1f9d6b54c029af48684fd81b38699dd2720
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723975"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630644"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Omezení prostředků a objektu služby analýzy
 
@@ -23,7 +23,7 @@ Tento článek popisuje zdroje a model objektu omezení.
 
 ### <a name="developer-tier"></a>Úroveň Developer
 
-Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování repliky dotazu na více instancí pro tuto úroveň *není k dispozici*. Tato úroveň nenabízí smlouvu SLA.
+Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování dotazů repliky není k dispozici pro tuto vrstvu. Tato úroveň nenabízí smlouvu SLA.
 
 |Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -32,7 +32,7 @@ Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení.
 
 ### <a name="basic-tier"></a>Úroveň Basic
 
-Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Škálování repliky dotazu na více instancí pro tuto úroveň *není k dispozici*. Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
+Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Horizontální navýšení kapacity replik dotazů *není k dispozici* pro tuto vrstvu. Perspektivy, více oddílů a DirectQuery tabulkový model funkce nejsou podporovány na této úrovni.  
 
 |Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
@@ -56,18 +56,18 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 
 ## <a name="object-limits"></a>Omezení objektu
 
-Jedná se o teoretické omezení. Výkon se snížila na nižší čísla.
+Tato omezení jsou teoretické. Výkon se snížila na nižší čísla.
 
 |Objekt|Maximální velikosti/čísla|  
 |------------|----------------------------|  
 |Databáze v instanci|16,000|  
 |Souhrnný počet tabulky a sloupce v databázi|16,000|  
-|Řádky v tabulce|Unlimited<br /><br /> **Upozornění:** s omezením, že žádné jeden sloupec v tabulce můžete mít více než 1,999,999,997 jedinečné hodnoty.|  
+|Řádky v tabulce|Unlimited<br /><br /> **Upozornění:** S omezením, že žádné jeden sloupec v tabulce můžete mít více než 1,999,999,997 jedinečné hodnoty.|  
 |Hierarchie v tabulce|15,999|  
 |Úrovně v hierarchii|15,999|  
 |Relace|8 000|  
 |Sloupce klíčů všechny tabulky|15,999|  
-|Opatření tabulek|2 ^ 31-1 = 2 147 483 647|  
+|Míry v tabulkách|2 ^ 31-1 = 2 147 483 647|  
 |Buňky vrácených dotazem|2 ^ 31-1 = 2 147 483 647|  
 |Velikost záznamu zdroj dotazu|64 KB|  
 |Délka názvů objektů|512 znaků|  

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f8fb036eaca35e41d89b0a9610ebcd68e65f40f9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632539"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630254"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hivu jako nástroj extrakce, transformace a načítání (ETL)
 
-Je obvykle potřeba čištění a transformace příchozích dat před jejich načtením do cíle vhodný pro účely analýzy. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíl dat.  Apache Hive s HDInsight může číst v nestrukturovaných dat, zpracování dat podle potřeby a pak načíst data do relačního datového skladu pro podporu systémů rozhodnutí. V takovém případě jsou data extrahovaná ze zdroje a uložená v škálovatelné úložiště, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Store. Data se potom transformuje použití posloupnosti dotazů Hive a nakonec zpracováním v rámci Hive v rámci přípravy pro hromadné načítání do cílového úložiště dat.
+Je obvykle potřeba čištění a transformace příchozích dat před jejich načtením do cíle vhodný pro účely analýzy. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíl dat.  Apache Hive s HDInsight může číst v nestrukturovaných dat, zpracování dat podle potřeby a pak načíst data do relačního datového skladu pro podporu systémů rozhodnutí. V takovém případě jsou data extrahovaná ze zdroje a uložená v škálovatelné úložiště, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Storage. Data se potom transformuje použití posloupnosti dotazů Hive a nakonec zpracováním v rámci Hive v rámci přípravy pro hromadné načítání do cílového úložiště dat.
 
 ## <a name="use-case-and-model-overview"></a>Přehled případu a modelů
 
@@ -30,7 +30,7 @@ Hadoop se obvykle používá v ETL procesy, které importovat buď obrovské mno
 
 Typické postupy použití Hive k provedení ETL jsou následující:
 
-1. Načtení dat do Azure Data Lake Store nebo Azure Blob Storage.
+1. Načtení dat do služby Azure Data Lake Storage nebo Azure Blob Storage.
 2. Vytvoření databáze metadat Store (využívající Azure SQL Database) pro použití Hive v ukládání vašich schémata.
 3. Vytvoření clusteru HDInsight a připojte úložiště.
 4. Definice schématu pro použití při čtení dat v úložišti dat:
@@ -51,7 +51,7 @@ Typické postupy použití Hive k provedení ETL jsou následující:
 
 5. Transformace dat a jejich načtení do cíle.  Použití Hivu během transformace a načítání několika způsoby:
 
-    * Dotazování a příprava dat pomocí Hivu a uložte ho jako sdíleného svazku clusteru v Azure Data Lake Store nebo Azure blob storage.  Pak pomocí nástroje jako je integrace služby SSIS (SQL Server) k získání těchto sdílených svazků clusteru a načtení dat do cílové relační databáze jako je SQL Server.
+    * Dotazování a příprava dat pomocí Hivu a uložte ho jako sdíleného svazku clusteru v Azure Data Lake Storage nebo Azure blob storage.  Pak pomocí nástroje jako je integrace služby SSIS (SQL Server) k získání těchto sdílených svazků clusteru a načtení dat do cílové relační databáze jako je SQL Server.
     * Dotaz na data přímo z aplikace Excel nebo C# pomocí ovladače Hive ODBC.
     * Použití [Apache Sqoop](apache-hadoop-use-sqoop-mac-linux.md) číst připravené plochých souborů CSV a načíst je do cílové relační databáze.
 

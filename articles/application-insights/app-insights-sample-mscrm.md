@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f3746fc340b382c58f7a9501cb0828a6b6befe8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002142"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976031"
 ---
-# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Názorný postup: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
+# <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Průvodce: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
 
 > [!NOTE]
@@ -38,7 +38,7 @@ Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do v
     ![Klikněte na +, služby pro vývojáře, Application Insights.](./media/app-insights-sample-mscrm/01.png)
 
     Vyberte jako typ aplikace ASP.NET.
-3. Postupujte podle pokynů a [získat skript jazyka JavaScript SDK pro vaši aplikaci](app-insights-javascript.md#set-up-application-insights-for-your-web-page), zkopírujte fragment kódu jazyka JavaScript a ujistěte se, že Instrumentační klíč nahraďte správné hodnoty pro váš prostředek Application Insights.
+3. Postupujte podle pokynů a [získat skript jazyka JavaScript SDK pro vaši aplikaci](../azure-monitor/app/javascript.md#set-up-application-insights-for-your-web-page), zkopírujte fragment kódu jazyka JavaScript a ujistěte se, že Instrumentační klíč nahraďte správné hodnoty pro váš prostředek Application Insights.
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Vytvoření webovém prostředku jazyka JavaScript v aplikaci Microsoft Dynamics CRM
 1. Otevřete instanci CRM Online a přihlášení s oprávněními správce.
@@ -134,5 +134,5 @@ Můžete provést i hlubší analýzu, pokud jste [export dat do Microsoft Power
 
 ## <a name="learn-more"></a>Další informace
 * [Co je Application Insights?](app-insights-overview.md)
-* [Application Insights pro webové stránky](app-insights-javascript.md)
+* [Application Insights pro webové stránky](../azure-monitor/app/javascript.md)
 * [Další ukázky a návody](app-insights-overview.md)

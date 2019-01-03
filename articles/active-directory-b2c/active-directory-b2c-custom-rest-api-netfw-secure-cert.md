@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7bf7add75f60bf64f64119979e5eee81be0f6e7b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344961"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722562"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečení služby RESTful pomocí klientských certifikátů
 
@@ -41,7 +41,7 @@ Tento článek podrobně popisuje postup:
 K nastavení **služby Azure App Service** tak, aby vyžadovala certifikáty klientů, nastavte webové aplikaci `clientCertEnabled` lokality nastavení *true*. K provedení této změny na webu Azure Portal, otevřete stránce vaší webové aplikace. V levém navigačním panelu v části **nastavení** vyberte **nastavení SSL**. V **klientské certifikáty** části, zapněte **příchozí klientský certifikát** možnost.
 
 >[!NOTE]
->Ujistěte se, že váš plán služby App Service je standardní nebo vyšší. Další informace najdete v tématu [podrobný přehled plánů služby Azure App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
+>Ujistěte se, že váš plán služby App Service je standardní nebo vyšší. Další informace najdete v tématu [podrobný přehled plánů služby Azure App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans).
 
 >[!NOTE]
 >Další informace o nastavení **povoleném certifikátu klienta** vlastnost, naleznete v tématu [vzájemného ověřování TLS konfigurace pro službu web apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
@@ -70,7 +70,7 @@ Po nastavení `clientCertEnabled` k *true*, komunikace pomocí rozhraní RESTful
 
 8. Zobrazení klíče, které jsou k dispozici ve vašem tenantovi a potvrďte, že jste vytvořili `B2C_1A_B2cRestClientCertificate` klíč, vyberte **klíče zásad**.
 
-## <a name="step-3-change-the-technical-profile"></a>Krok 3: Změna technický profil
+## <a name="step-3-change-the-technical-profile"></a>Krok 3: Změnit technický profil
 Pro podporu ověřování pomocí certifikátu klienta ve vlastních zásadách, změňte technický profil následujícím způsobem:
 
 1. V pracovním adresáři, otevřete *TrustFrameworkExtensions.xml* soubor rozšíření zásad.
@@ -97,7 +97,7 @@ Pro podporu ověřování pomocí certifikátu klienta ve vlastních zásadách,
 
     ![Nastavena ClientCertificate ověřování XML elementů](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-tech-profile.png)
 
-## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: Nahrání zásad do vašeho tenanta
+## <a name="step-4-upload-the-policy-to-your-tenant"></a>Krok 4: Odeslání zásady do vašeho tenanta
 
 1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
 
@@ -111,7 +111,7 @@ Pro podporu ověřování pomocí certifikátu klienta ve vlastních zásadách,
 
 6. Nahrát *TrustFrameworkExtensions.xml* souboru a poté se ujistěte, že projde úspěšně ověřovacím.
 
-## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Testování spustit pomocí vlastních zásad
+## <a name="step-5-test-the-custom-policy-by-using-run-now"></a>Krok 5: Testování vlastní zásady pomocí možnosti spustit hned
 1. Otevřít **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
 
     >[!NOTE]
@@ -151,8 +151,8 @@ Pro podporu ověřování pomocí certifikátu klienta ve vlastních zásadách,
    >[!NOTE]
    >Pokud se zobrazí chybová zpráva *název není platný, zadejte prosím platný název*, znamená to, že Azure AD B2C úspěšně volat služby RESTful, zatímco zobrazí klientský certifikát. Dalším krokem je ověření certifikátu.
 
-## <a name="step-6-add-certificate-validation"></a>Krok 6: Přidání ověření certifikátu
-Klientský certifikát, který Azure AD B2C pošle do vaší služby RESTful nejdou dělit ověřování podle platformy Azure Web Apps, s výjimkou a zkontrolujte, zda existuje certifikát. Ověřování certifikátu zodpovídá za webové aplikace. 
+## <a name="step-6-add-certificate-validation"></a>Krok 6: Přidání ověřování certifikátu
+Klientský certifikát, který Azure AD B2C pošle do vaší služby RESTful nejdou dělit ověřování podle platformy Azure App Service, s výjimkou a zkontrolujte, zda existuje certifikát. Ověřování certifikátu zodpovídá za webové aplikace. 
 
 V této části přidejte ukázkový kód ASP.NET, která ověřuje vlastnosti certifikátu pro účely ověřování.
 
@@ -286,7 +286,7 @@ Po přidání fragmentu kódu, vaše `Identity` řadič by měl vypadat jako v n
 
 ![Přidejte kód pro ověření certifikátu](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-code.png)
 
-## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>Krok 7: Publikování projektu do Azure a testování
+## <a name="step-7-publish-your-project-to-azure-and-test-it"></a>Krok 7: Publikování projektu do Azure a otestovat
 1. V **Průzkumníka řešení**, klikněte pravým tlačítkem myši **Contoso.AADB2C.API** projektu a pak vyberte **publikovat**.
 
 2. Opakujte "Krok 6" a znovu otestujte vaše vlastní zásada vypadat pomocí ověřování certifikátu. Zkuste spustit zásady a ujistěte se, že vše funguje po přidání ověření.

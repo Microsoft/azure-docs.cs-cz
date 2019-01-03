@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: fad023b7593b0e13b05d081a11333f5e92c8ecef
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262597"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602167"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -29,7 +29,7 @@ Microsoft teď nabízí způsob, jak partnerů lépe sledovat využití Azure pr
 
 Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prostředky Azure, které zřizujete jménem zákazníka. Můžete formulář přidružení prostřednictvím Azure Marketplace, rychlý start úložiště, privátní úložiště GitHub a zapojení zákazníků od vyhrazeného pracovníka. Pokud chcete povolit sledování, jsou k dispozici dva přístupy:
 
-- Šablony Azure Resource Manageru: šablony Resource Manageru nebo šablony řešení k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablonu Resource Manageru pro definování infrastrukturu a konfiguraci jejich řešení Azure. Šablony Resource Manageru umožňuje vám a vašim zákazníkům k nasazení svého řešení v průběhu životního cyklu. Máte jistotu, že se prostředky nasadí konzistentně. 
+- Šablony Azure Resource Manageru: Šablony Resource Manageru nebo šablony řešení k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablonu Resource Manageru pro definování infrastrukturu a konfiguraci jejich řešení Azure. Šablony Resource Manageru umožňuje vám a vašim zákazníkům k nasazení svého řešení v průběhu životního cyklu. Máte jistotu, že se prostředky nasadí konzistentně. 
 - Rozhraní API Azure Resource Manageru: Partneři mohou volat rozhraní API Resource Manageru přímo k nasazení šablony Resource Manageru nebo ke generování volání rozhraní API přímo zřídit služby Azure. 
 
 Využití attribution zákazníka se vyžaduje u všech [šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) publikovaných na webu Azure Marketplace. 
@@ -270,15 +270,11 @@ Společnost Microsoft poskytuje partnerům, kteří mají zobrazení zákaznick�
 
 **Identifikátor GUID, můžete přidat do šablony?**
 
-Sledování prostředků je určený pro připojení partnerské řešení pro využití Azure zákazníka. Využití dat se váže k identitě partnera Microsoft Partner Network (MPN ID). Vytváření sestav je k dispozici pro partnery v CPP.
+Sledování prostředků je určený pro připojení partnerské řešení pro využití Azure zákazníka. Využití dat se váže k identitě partnera Microsoft Partner Network (MPN ID). 
 
 **Po přidání identifikátoru GUID, můžete ho změnit?**
  
 Ano, partner zákazníka nebo implementace může přizpůsobit šablonu a můžete změnit nebo odebrat identifikátor GUID. Doporučujeme vám, že partneři proaktivně popis role prostředků a identifikátor GUID pro jejich zákazníky a partnery, abyste zabránili odstranění nebo úpravy sledování identifikátor GUID. Změna GUID ovlivní pouze nové, ne stávající nasazení a prostředky.
-
-**Při vytváření sestav bude k dispozici?**
-
-Beta verze generování sestav by měla brzy dostupné. Vytváření sestav, bude se integrovat do CPP.
 
 **Můžete sledovat nasazených z úložiště jiných společností než Microsoft, např. GitHub šablon?**
 

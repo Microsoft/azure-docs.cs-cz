@@ -1,7 +1,7 @@
 ---
-title: Co je konverzace student? -Microsoft kognitivní služby | Microsoft Docs
+title: Co je Conversation Learner? – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Další informace o student konverzace a jak to funguje.
+description: Další informace o konverzaci Learner a jak to funguje.
 services: cognitive-services
 author: v-jaswel
 manager: nolachar
@@ -10,38 +10,38 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9cbf0e60382ef17d68aab47cf5f24ea9b8434f13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343234"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790771"
 ---
-# <a name="what-is-conversation-learner"></a>Co je konverzace student?
+# <a name="what-is-conversation-learner"></a>Co je Conversation Learner?
 
-Konverzace student umožňuje vytvářet a naučit konverzačního rozhraní, které se učí z příkladu interakce. 
+Konverzace Learner umožňuje vytvářet a naučit konverzační rozhraní, které se učí z příkladu interakce. 
 
-Na rozdíl od tradičních přístupy zvažuje konverzace student začátku do konce kontextu dialogu za účelem zlepšení odpovědí a poskytovat více poutavé koncových uživatelů. Pokrývání uzlů širokou škálu orientované na úlohy případy použití, konverzace student platí počítač zkušenosti na pozadí, aby robotů a inteligentní agenty méně pravděpodobné, že frustrovat uživatele, způsobit další zákazník služby náklady a intuitivnější pro interakci s.
+Na rozdíl od tradiční přístupy konverzace Learner bere v úvahu kontext začátku do konce dialogu za účelem zlepšení odezvy a zajištění více poutavé prostředí uživatele. Pokrývání uzlů širokou škálu orientovaných případy použití, konverzace Learner platí strojového učení na pozadí, aby roboty a inteligentní agentů méně pravděpodobné, že frustrovat uživatele, vynakládá dalších zákaznických služeb a více podporují více intuitivní interakce.
 
-Abyste mohli začít, zadá vývojář Typickým případem dialogová okna, které chtějí napodobují. Jako další dialogová okna jsou vloženy, model se průběžně aktualizuje a vývojáře, můžete zjistit, jak dobře generalizací modelu. Jakmile model funguje dobře, lze nasadit robota koncovým uživatelům. Konverzace student zaprotokoluje konverzace s uživateli a vývojář zkontrolovat. Pokud se nanese chyb, vývojáře můžete provést opravu na místě a je model retrained a dostupné k použití okamžitě.
+Vývojáři, začněte zadáním typický dialogová okna, které chtějí napodobují. Model se učí se zadal další dialogová okna. Jakmile Model funguje dobře, robota může nasadit koncovým uživatelům. Konverzace Learner protokoly konverzace s uživateli a vývojáři můžou Seznamte se s nimi. Pokud jsou nanese chyby, vývojář může opravu na místě, a je model retrained a dostupné k použití okamžitě.
 
-Tento přístup snižuje ruční kódování dialogu řízení logiky a umožňuje vlastníkům obchodních nebo domény odborníky přispívat k konverzačního rozhraní bez předchozího strojového učení znalostní báze. Jestli je nasazená jako součást robota, inteligentní zařízení nebo inteligentní agent, student konverzace můžete rychle iterovat nové dovednosti, chování nebo možnosti a rychle zlepšení jejich kvality. 
+Tento přístup snižuje ruční kódování logiky ovládacího prvku dialogu a umožňuje vlastníkům obchodních nebo odborníky na domény přispívat k konverzační rozhraní bez předchozího strojového učení znalostní báze. Zda je nasazen jako součást robota, inteligentní zařízení nebo inteligentní agenta, konverzace Learner můžete rychle iterovat nové dovednosti, chování nebo činnost a rychle zlepšit jejich kvalitu. 
 
-Konverzace student umožňuje vývojářům zvýšit rychlost na trh a jednotky úspěšné dialogy napříč více konverzačního kanály prostřednictvím Microsoft robota Framework, nebo samostatně pomocí vlastní infrastrukturu.
+Konverzace Learner umožňuje vývojářům zvýšit rychlost uvedení na trh a jednotky úspěšné dialogy napříč několika kanály konverzační prostřednictvím Microsoft Bot Framework, nebo samostatně pomocí vlastní infrastruktury.
 
-Souhrn a označuje:
+Shrnutí a vybraná vystoupení:
 
-- Konverzace student je AI první způsob vytváření robotů orientované na úlohy.
+- Konverzace Learner je to první AI způsob vytváření robotů orientovaných na úlohy.
 
-- Používá opakující neuronové síť začátku do konce (LSTM) který zjišťuje přímo z několika zapnout příklady konverzace. 
+- Využívá začátku do konce opakujícím neuronové sítě (LSTM) a učí přímo z více zapnout příklady konverzace. 
 
-- Umožňuje návrhářů, vývojáři, podnikoví uživatelé a pracovníci center volání tvorbu a udržování robotů. 
+- Umožňuje návrháři, vývojáře, podnikoví uživatelé a pracovníky centra volání sestavovat a spravovat roboty. 
 
-- Poskytuje možnost express obchodní pravidla a běžné smysl v kódu.
+- Poskytuje možnost express obchodní pravidla a zdravý rozum v kódu.
 
-- Během výuky relací za modelu neuronové sítě slouží ke stanovení skóre další sadu očekávané akcí v konverzaci. Vývojář robota můžete pak vybrat správnou akci a cvičení sítě zajistit správné odpovědi.
+- Během výuky relací, modelu neuronové sítě slouží ke stanovení skóre pro další sadu očekávané akce v konverzaci. Vývojáři robotů můžete vybrat správnou akci a trénování sítě, zajistit správné odpovědi.
  
-- Po dokončení školení vývojář pomocí protokolu dialogů z interakce uživatele k provedení oprav k odpovědím robota a přeučování modelu. 
+- Po dokončení školení vývojáři pomocí protokolu dialogů z interakce uživatele k provedení opravy odpovědi robotů a přeučování modelu. 
 
-- Můžete volat rozhraní API specifické pro doménu a třetích stran k dokončení úlohy.
+- Můžete volat rozhraní API specifického pro doménu a třetích stran k dokončení úloh.
 

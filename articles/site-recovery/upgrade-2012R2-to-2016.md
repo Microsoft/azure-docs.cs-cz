@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: 351213749dcec2b4c16728c04230c75a12179118
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
+ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410953"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53557852"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Aktualizace hostitelů Windows Server 2012 R2, SCVMM 2012 R2 nakonfigurovaný službou Azure Site Recovery na Windows serveru 2016 a SCVMM 2016
 
@@ -49,7 +49,7 @@ Před upgradem, pamatujte na Tyhle věci:-
     - Poznamenejte si ID VMM 2012 R2 primární a obnovení serverů VMM. VMM ID nenašlo se z registru "HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup".
     - Zajistěte, aby vám nový SCVMMs, které přidáte do clusteru stejné názvy jako byl před. 
 
-- Pokud jsou replikaci mezi dvěma z vás už vaší lokality spravované tímto SCVMMs na obou stranách, ujistěte se, že vaše na straně obnovení nejprve upgradujete před upgradem na primární straně.
+- Pokud replikaci mezi dvěma vašimi lokalitami spravuje SCVMMs na obou stranách Ujistěte se, že vaše na straně obnovení nejprve upgradujete před upgradem na primární straně.
 > [!WARNING]
 > Při upgradu SCVMM 2012 R2, v části Správa distribuovaných klíčů, vyberte na **ukládání šifrovacích klíčů ve službě Active Directory**. Pečlivě zvolte nastavení pro účet služby a správu distribuovaných klíčů. Na základě vašeho výběru, šifrovaná data, jako jsou hesla v šablonách nemusí být k dispozici po upgradu a potenciálně může mít vliv na replikaci pomocí Azure Site Recovery
 
@@ -109,5 +109,5 @@ Před provedením upgradu hostitelů Windows Server 2012 R2, musíte upgradovat 
 4.  Přejděte na web Azure portal a ověřte stav replikované virtuální počítače v rámci trezor služby Recovery Services. 
 
 ## <a name="next-steps"></a>Další postup
-Jakmile se provádí upgrade z hostitelů, můžete provádět [testovací převzetí služeb při selhání](tutorial-dr-drill-azure.md) otestovat stav recovey stav replikace a po havárii.
+Jakmile se provádí upgrade z hostitelů, můžete provádět [testovací převzetí služeb při selhání](tutorial-dr-drill-azure.md) otestovat stav replikace a po havárii stavu obnovení.
 

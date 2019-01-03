@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 5a8760bc67125f857998f23ca33733a62a0d8fb5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: db412d3fd0af84d528ad0c83d86cc5d055359914
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315719"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632683"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v Azure App Service Windows
 
-V tomto článku se naučíte osvědčené postupy a kroky pro řešení potíží [aplikací node](app-service-web-get-started-nodejs.md) běžící na Azure Web Apps (s [modulu iisnode](https://github.com/azure/iisnode)).
+V tomto článku se naučíte osvědčené postupy a kroky pro řešení potíží [aplikací node](app-service-web-get-started-nodejs.md) běžící na Azure App Service (s [modulu iisnode](https://github.com/azure/iisnode)).
 
 > [!WARNING]
 > Buďte opatrní při použití kroků pro řešení potíží na svoje produkční lokality. Doporučení je k řešení potíží s vaší aplikací o neprodukční nastavení například přípravného slotu a pokud je problém vyřešen, Prohodit vaše přípravný slot s produkční slot.
@@ -44,18 +44,18 @@ Toto nastavení určuje cestu k node.exe. Tuto hodnotu tak, aby odkazoval na va�
 
 ### <a name="maxconcurrentrequestsperprocess"></a>maxConcurrentRequestsPerProcess
 
-Toto nastavení určuje maximální počet souběžných požadavků odesílaných modulu iisnode pro každý node.exe. Ve službě Azure Web Apps výchozí hodnota je nekonečno. Když není hostované ve službě Azure Web Apps, výchozí hodnota je 1024. Můžete nakonfigurovat hodnotu v závislosti na tom, kolik požadavků, že vaše aplikace obdrží a jak rychle bude vaše aplikace zpracuje každý požadavek.
+Toto nastavení určuje maximální počet souběžných požadavků odesílaných modulu iisnode pro každý node.exe. Ve službě Azure App Service výchozí hodnota je nekonečno. Můžete nakonfigurovat hodnotu v závislosti na tom, kolik požadavků, že vaše aplikace obdrží a jak rychle bude vaše aplikace zpracuje každý požadavek.
 
 ### <a name="maxnamedpipeconnectionretry"></a>maxNamedPipeConnectionRetry
 
-Toto nastavení určuje maximální počet pokusů o opakování modulu iisnode vytváření připojení v pojmenovaném kanálu k odesílání požadavků na node.exe. Toto nastavení v kombinaci s namedPipeConnectionRetryDelay Určuje celkový časový limit každého požadavku v rámci modulu iisnode. Výchozí hodnota je 200 ve službě Azure Web Apps. Celkový časový limit v sekundách = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1 000
+Toto nastavení určuje maximální počet pokusů o opakování modulu iisnode vytváření připojení v pojmenovaném kanálu k odesílání požadavků na node.exe. Toto nastavení v kombinaci s namedPipeConnectionRetryDelay Určuje celkový časový limit každého požadavku v rámci modulu iisnode. Výchozí hodnota je 200 ve službě Azure App Service. Celkový časový limit v sekundách = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1 000
 
 ### <a name="namedpipeconnectionretrydelay"></a>namedPipeConnectionRetryDelay
 
 Toto nastavení určuje dobu (v ms) modulu iisnode čekat mezi opakováními odešlete žádost pro node.exe přes pojmenovaný kanál. Výchozí hodnota je 250 ms.
 Celkový časový limit v sekundách = (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1 000
 
-Ve výchozím nastavení, celkový časový limit v modulu iisnode ve službě Azure Web Apps je 200 \* 250 ms = 50 sekund.
+Celkový časový limit v modulu iisnode ve službě Azure App Service je ve výchozím nastavení, 200 \* 250 ms = 50 sekund.
 
 ### <a name="logdirectory"></a>logDirectory
 
@@ -128,7 +128,7 @@ Toto nastavení řídí funkce ladění. Modul Iisnode je integrovaný nástroj 
 
 Mnoho aplikací byste měli provést odchozí připojení jako součást svých běžném provozu. Například když požadavek pochází, vaše aplikace node byste měli kontaktovat rozhraní REST API jinde a získáte nějaké informace pro zpracování žádosti. Chcete použít agenta zachovat naživu při volání http nebo https. Můžete použít modul agentkeepalive jako keep alive agenta při provádění těchto odchozích volání.
 
-Modul agentkeepalive zajistí, že sockets jsou opakovaně použít na vaší webové aplikace Azure VM. Vytvoření nové soket na každý odchozí požadavek režie přidá do vaší aplikace. Aplikaci opětovné použití soketů pro odchozí požadavky zajistí, že vaše aplikace nepřekračuje maxSockets, který se přiděluje na jednotlivá virtuální počítač. Doporučení ve službě Azure Web Apps je nastavit hodnotu maxSockets agentKeepAlive se celkový počet (4 instance node.exe \* 40 maxSockets/instance) 160 sockets na virtuální počítač.
+Modul agentkeepalive zajistí, že sockets jsou opakovaně použít na vaší webové aplikace Azure VM. Vytvoření nové soket na každý odchozí požadavek režie přidá do vaší aplikace. Aplikaci opětovné použití soketů pro odchozí požadavky zajistí, že vaše aplikace nepřekračuje maxSockets, který se přiděluje na jednotlivá virtuální počítač. Doporučení ve službě Azure App Service je nastavit hodnotu maxSockets agentKeepAlive se celkový počet (4 instance node.exe \* 40 maxSockets/instance) 160 sockets na virtuální počítač.
 
 Příklad [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) konfigurace:
 
@@ -147,10 +147,10 @@ var keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Moje aplikace v Ruby spotřebovává příliš mnoho procesoru
 
-Může se zobrazit doporučení od Azure Web Apps na portálu o vysoké využití procesoru. Monitorování můžete nastavit také sledovat u určitých [metriky](web-sites-monitor.md). Když zkontrolujete využití procesoru [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), zkontrolujte maximální hodnoty pro procesor, Nenechte si ujít maximální hodnoty.
+Může se zobrazit doporučení ze služby Azure App Service na portálu o vysoké využití procesoru. Monitorování můžete nastavit také sledovat u určitých [metriky](web-sites-monitor.md). Když zkontrolujete využití procesoru [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), zkontrolujte maximální hodnoty pro procesor, Nenechte si ujít maximální hodnoty.
 Pokud si myslíte, že vaše aplikace spotřebovává příliš mnoho CPU a nelze vysvětlit, proč, můžete provádět profilaci vaši aplikaci uzlu zjistit.
 
-#### <a name="profiling-your-node-application-on-azure-web-apps-with-v8-profiler"></a>Profilace aplikace node ve službě Azure Web Apps s V8 Profiler
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilace aplikace node ve službě Azure App Service s V8 Profiler
 
 Řekněme například, že budete mít aplikaci hello world, kterou chcete Profilovat následujícím způsobem:
 
@@ -220,7 +220,7 @@ Uvidíte, že 95 % doby spotřebovával WriteConsoleLog funkcí. Výstup také z
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Moje aplikace v Ruby spotřebovává příliš mnoho paměti
 
-Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí na portálu o vysoké spotřeby paměti oznámení z Azure Web Apps. Můžete nastavit monitorování pro určité sledovat [metriky](web-sites-monitor.md). Při kontrole využití paměti na [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), nezapomeňte se podívat maximální hodnoty paměti, Nenechte si ujít maximální hodnoty.
+Pokud vaše aplikace spotřebovává příliš mnoho paměti, zobrazí upozornění ze služby Azure App Service na portálu o vysoké spotřeby paměti. Můžete nastavit monitorování pro určité sledovat [metriky](web-sites-monitor.md). Při kontrole využití paměti na [řídicí panel portálu Azure](../application-insights/app-insights-web-monitor-performance.md), nezapomeňte se podívat maximální hodnoty paměti, Nenechte si ujít maximální hodnoty.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Detekce nevrácení paměti a halda Diff pro node.js
 
@@ -249,12 +249,12 @@ Vaše aplikace vyvolává nezachycených výjimek – kontrola `d:\\home\\LogFil
 
 ### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>Moje aplikace v Ruby trvá příliš mnoho času spuštění (studený Start)
 
-Obvyklou příčinou dlouhé doby spuštění aplikace je velký počet souborů v uzlu\_moduly. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení protože jsou vaše soubory uložené ve sdílené síťové složky ve službě Azure Web Apps, načítání mnoho souborů může trvat dobu.
+Obvyklou příčinou dlouhé doby spuštění aplikace je velký počet souborů v uzlu\_moduly. Aplikace se pokusí načíst většinu těchto souborů při spuštění. Ve výchozím nastavení protože jsou vaše soubory uložené ve sdílené síťové složky ve službě Azure App Service, načítání mnoho souborů může trvat dobu.
 Některá řešení pro tento proces urychlit jsou:
 
 1. Ujistěte se, že máte strukturu plochých závislost a nemá žádné duplicitní závislosti pomocí npm3 pro instalaci modulů.
 2. Zkuste opožděné načtení uzlu\_moduly a nenačetla všechny moduly při spuštění aplikace. Opožděné načtení moduly volání require('module') měli vzít v úvahu modulu v rámci funkce před prvním spuštěním modulu kódu skutečně potřebujete.
-3. Azure Web Apps nabízí funkci s názvem místní mezipaměti. Tato funkce zkopíruje obsah ze sdílené síťové složce na místní disk na virtuálním počítači. Protože soubory jsou místní, čas načtení uzlu\_moduly je mnohem rychlejší.
+3. Azure App Service nabízí funkci s názvem místní mezipaměti. Tato funkce zkopíruje obsah ze sdílené síťové složce na místní disk na virtuálním počítači. Protože soubory jsou místní, čas načtení uzlu\_moduly je mnohem rychlejší.
 
 ## <a name="iisnode-http-status-and-substatus"></a>Stav modulu IISNODE protokolu http a substatus
 
@@ -274,7 +274,7 @@ Povolit FREB pro aplikace, abyste viděli kód chyby win32 (Nezapomeňte povolit
 | 503 |1002 |Zkontrolujte kód chyby win32: skutečný z důvodu – žádost nebyla odeslána ke node.exe. |
 | 503 |1003 |Pojmenovaný kanál je příliš zaneprázdněn – ověřte, zda node.exe nespotřeboval nadměrnému využití procesoru |
 
-NODE.exe má nastavení nazývá `NODE_PENDING_PIPE_INSTANCES`. Ve výchozím nastavení když není nasazený ve službě Azure Web Apps, tato hodnota je 4. To znamená, že node.exe přijmout jenom čtyři požadavky po jednom v pojmenovaném kanálu. Ve službě Azure Web Apps tato hodnota nastavena na 5 000. Tato hodnota by měla být dostatečné pro většinu aplikací node běžící na Azure Web Apps. Z důvodu vysoké hodnoty pro byste neměli vidět 503.1003 ve službě Azure Web Apps `NODE_PENDING_PIPE_INSTANCES`
+NODE.exe má nastavení nazývá `NODE_PENDING_PIPE_INSTANCES`. Ve službě Azure App Service tato hodnota nastavena na 5 000. To znamená, že node.exe může přijmout 5000 požadavků současně v pojmenovaném kanálu. Tato hodnota by měla být dostatečné pro většinu aplikací node běžící na Azure App Service. Z důvodu vysoké hodnoty pro byste neměli vidět 503.1003 ve službě Azure App Service `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Další zdroje informací
 

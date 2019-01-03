@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: 174fbd8f3e4c652c25a78911185ef8a98a80bb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260034"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726557"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení aplikace v Azure ze snímku
-V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/app-service-web-overview.md) ze snímku. Aplikaci můžete obnovit do předchozího stavu, na základě jedné z vaší aplikace snímky. Není potřeba povolit snímky zálohování, platformu automaticky uloží snímek pro účely obnovení dat. všechny aplikace.
+V tomto článku se dozvíte, jak obnovit aplikaci v [služby Azure App Service](../app-service/overview.md) ze snímku. Aplikaci můžete obnovit do předchozího stavu, na základě jedné z vaší aplikace snímky. Není potřeba povolit snímky zálohování, platformu automaticky uloží snímek pro účely obnovení dat. všechny aplikace.
 
-Snímky jsou přírůstkové stínové kopie a nabízejí několik výhod oproti standardní [zálohy](web-sites-backup.md):
+Snímky jsou přírůstkové stínové kopie a nabízejí několik výhod oproti standardní [zálohy](manage-backup.md):
 - Žádné chyby kopírování souboru z důvodu uzamčení.
 - Žádné omezení velikosti úložiště.
 - Není nutná žádná konfigurace.

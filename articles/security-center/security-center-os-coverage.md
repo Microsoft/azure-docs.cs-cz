@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 12/18/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4108355415d1230f98db36a4f83497de2fa848f7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcc72e0e3b9caef9ab01d9f754671cb0365a358
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185575"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608830"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Platformy a funkcí podporovaných službou Azure Security Center
 
@@ -30,7 +30,7 @@ Monitorování stavu zabezpečení a doporučení jsou k dispozici pro virtuáln
 >
 >
 
-## <a name="supported-platforms"></a>Podporované platformy 
+## <a name="platforms-that-support-the-data-collection-agent"></a>Platformy, které podporují agent pro shromažďování dat. 
 
 Tato část uvádí platformy, na kterých agent Azure Security Center můžete spustit a odkud mohla shromažďovat data.
 
@@ -43,6 +43,10 @@ Následující operační systémy Windows se podporují:
 * Windows Server 2012 R2
 * Windows Server 2016
 
+> [!NOTE]
+> Integrace s ochrany ATP v programu Windows Defender podporuje pouze systém Windows Server 2012 R2 a Windows serveru 2016.
+>
+>
 
 ### <a name="supported-platforms-for-linux-computers-and-vms"></a>Podporované platformy pro virtuální počítače a počítače s Linuxem
 Jsou podporovány následující operační systémy Linux:
@@ -55,11 +59,6 @@ Jsou podporovány následující operační systémy Linux:
 * Oracle Linux verze 5, 6 a 7.
 * Linux Amazon 2012.09 2017.
 * OpenSSL 1.1.0 je podporována pouze na platformách x86_64, 64 bitů.
-
-> [!NOTE]
-> Pro vypracování analýzy chování virtuálního počítače zatím nejsou k dispozici pro operační systémy a Linux.
->
->
 
 ## <a name="vms-and-cloud-services"></a>Virtuální počítače a cloudové služby
 Podporují se také virtuální počítače, na kterých běží v cloudové službě. Jsou monitorovány pouze cloud services webové a pracovní role, které běží v slot na produkční. Další informace o službách cloud services, najdete v článku [přehled o Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).

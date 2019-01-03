@@ -8,17 +8,19 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 1aa1bd085a312e379dc996a860c7f97b2e0dfe73
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1333c8cdb4493530e1e4803192b382720dbfa5ee
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918872"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634401"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Správa registrovaných serverů pomocí služby Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
 V následujícím článku ukazuje, jak se zaregistrovat a spravovat server se služba synchronizace úložiště. Zobrazit [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md) informace o tom, jak nasadit Azure File Sync end-to-end.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrace nebo zrušení registrace serveru se služba synchronizace úložiště
 Registrace serveru pomocí služby Azure File Sync vytváří vztah důvěryhodnosti mezi Windows serverem a Azure. Tento vztah, můžete pak použije k vytvoření *koncové body serveru* na serveru, které představují určitých složek, které by se měla synchronizovat s sdílené složky Azure (označované také jako *koncový bod v cloudu*). 
@@ -33,10 +35,10 @@ Registrace serveru se služba synchronizace úložiště, musíte nejprve připr
     
     ![Uživatelské rozhraní správce serveru se konfigurace rozšířeného zabezpečení Internet Exploreru zvýrazněnou](media/storage-sync-files-server-registration/server-manager-ie-config.png)
 
-* Ujistěte se, že je nainstalován modul AzureRM Powershellu na vašem serveru. Pokud je server členem clusteru převzetí služeb při selhání, každý uzel v clusteru, bude vyžadovat modulu AzureRM. Další informace o instalaci modulu AzureRM najdete na [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+* Ujistěte se, že je modul Azure PowerShell nainstalovali na server. Pokud je server členem clusteru převzetí služeb při selhání, každý uzel v clusteru, bude vyžadovat Az modulu. Další podrobnosti o tom, jak nainstalovat modul Az můžete najít na [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
     > [!Note]  
-    > Doporučujeme používat nejnovější verzi modulu AzureRM Powershellu zaregistrovat nebo zrušit registraci serveru. Pokud balíček AzureRM byly dříve nainstalovány na tomto serveru (a verze prostředí PowerShell na tomto serveru je 5.* nebo vyšší), můžete použít `Update-Module` rutina pro aktualizaci tohoto balíčku. 
+    > Doporučujeme používat nejnovější verze modulu Az PowerShell zaregistrovat nebo zrušit registraci serveru. Pokud balíček Az byly dříve nainstalovány na tomto serveru (a verze prostředí PowerShell na tomto serveru je 5.* nebo vyšší), můžete použít `Update-Module` rutina pro aktualizaci tohoto balíčku. 
 * Pokud používáte síť proxy server ve vašem prostředí, konfigurace nastavení proxy serveru na serveru pro agenta synchronizace, aby se začala používat.
     1. Určit proxy IP adresu a číslo portu
     2. Upravte tyto dva soubory:
@@ -61,7 +63,7 @@ Registrace serveru se služba synchronizace úložiště, musíte nejprve připr
 ### <a name="register-a-server-with-storage-sync-service"></a>Registrace serveru pomocí služby synchronizace úložiště
 Předtím, než server může sloužit jako *koncový bod serveru* do Azure File Sync *skupinu synchronizace*, musí zaregistrovat *služba synchronizace úložiště*. Server lze registrovat pouze v jediné službě synchronizace úložiště po jednom.
 
-#### <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Azure File Sync
+#### <a name="install-the-azure-file-sync-agent"></a>Instalace agenta Synchronizace souborů Azure
 1. [Stažení agenta Azure File Sync](https://go.microsoft.com/fwlink/?linkid=858257).
 2. Spusťte instalační program agenta Azure File Sync.
     
@@ -101,8 +103,8 @@ Můžete také provést registraci serveru přes PowerShell. Toto je jediným po
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
-Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
-Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
+Login-AzStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
+Register-AzStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
 ```
 
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Zrušení registrace serveru se služba synchronizace úložiště
@@ -135,15 +137,15 @@ To můžete provést také pomocí jednoduchý skript prostředí PowerShell:
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 
-$accountInfo = Connect-AzureRmAccount
-Login-AzureRmStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
+$accountInfo = Connect-AzAccount
+Login-AzStorageSync -SubscriptionId $accountInfo.Context.Subscription.Id -TenantId $accountInfo.Context.Tenant.Id -ResourceGroupName "<your-resource-group>"
 
 $StorageSyncService = "<your-storage-sync-service>"
 
-Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
+Get-AzStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEach-Object { 
     $SyncGroup = $_; 
-    Get-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
-        Remove-AzureRmStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
+    Get-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name | Where-Object { $_.DisplayName -eq $env:ComputerName } | ForEach-Object { 
+        Remove-AzStorageSyncServerEndpoint -StorageSyncServiceName $StorageSyncService -SyncGroupName $SyncGroup.Name -ServerEndpointName $_.Name 
     } 
 }
 ```

@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 99a4dd25539db754a893ddda7480c64e5a13a5bd
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353335"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631511"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurace funkce App Service Web Apps pomocí služby Application Gateway
+# <a name="configure-app-service-with-application-gateway"></a>Konfigurace služby App Service pomocí služby Application Gateway
 
-Služba Application Gateway umožňuje mít webovou aplikaci Azure nebo jinou víceklientskou službu jako členy fondu back-end. V tomto článku zjistíte, jak nakonfigurovat webovou aplikaci Azure pomocí služby Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
+Služba Application gateway umožňuje mít aplikaci služby App Service nebo jinou víceklientskou službu jako členem fondu back-end. V tomto článku zjistíte, jak nakonfigurovat aplikaci služby App Service pomocí služby Application Gateway. V prvním příkladu se dozvíte, jak nakonfigurovat stávající službu Application Gateway pro použití webové aplikace jako člena fondu back-end. V druhém příkladu se dozvíte, jak vytvořit novou službu Application Gateway s webovou aplikací jako členem fondu back-end.
 
 ## <a name="configure-a-web-app-behind-an-existing-application-gateway"></a>Konfigurace webové aplikace za stávající službou Application Gateway
 
@@ -163,4 +163,4 @@ Jedním ze způsobů, můžete omezit přístup k webovým aplikacím je použit
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak nakonfigurovat přesměrování, v tématu [Konfigurace přesměrování ve službě Application Gateway pomocí PowerShellu](redirect-overview.md).
+Další informace o konfiguraci přesměrování návštěvou: [Konfigurace přesměrování ve službě Application Gateway pomocí Powershellu](redirect-overview.md).

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 35493d9a7f47bda3344dbc8b0ea415d4492c5741
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5431372abb9a1157b322a8af4a07ba5fa15d8e8e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340044"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720455"
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service pomocí Traffic Manageru
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-Tento článek obsahuje obecné pokyny k používání vlastního názvu domény pomocí [služby App Service](app-service-web-overview.md) aplikaci, která je integrovaná s [Traffic Manageru](../traffic-manager/traffic-manager-overview.md) pro vyrovnávání zatížení.
+Tento článek obsahuje obecné pokyny k používání vlastního názvu domény pomocí [služby App Service](overview.md) aplikaci, která je integrovaná s [Traffic Manageru](../traffic-manager/traffic-manager-overview.md) pro vyrovnávání zatížení.
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -47,7 +47,7 @@ Tento článek obsahuje obecné pokyny k používání vlastního názvu domény
 
 ## <a name="add-a-dns-record-for-your-custom-domain"></a>Přidejte záznam DNS pro vaši vlastní doménu
 > [!NOTE]
-> Pokud jste si koupili domény prostřednictvím Azure App Service Web Apps pak přeskočit následující kroky a odkazovat na poslední krok [koupit domény pro Web Apps](custom-dns-web-site-buydomains-web-app.md) článku.
+> Pokud jste si koupili domény prostřednictvím Azure App Service Web Apps pak přeskočit následující kroky a odkazovat na poslední krok [koupit domény pro Web Apps](manage-custom-dns-buy-domain.md) článku.
 > 
 > 
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 9370cdfc75995f36101804d2a9f7dc9cf275243c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: aa2a059dd470e671aa3483f2259bcf91796c070d
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186306"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631664"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -44,6 +44,10 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historie verzí rozhraní REST API
 Informace o historii verzí rozhraní API REST služby Media Services, najdete v článku [Referenční informace k Azure Media Services REST API].
+
+## <a name="december-2018"></a>Prosinec 2018
+
+[Media Hyperlapse Preview](media-services-hyperlapse-content.md) funkce služby Azure Media Services brzo skončí. Od 19. prosince 2018, Media Services se už provést změny nebo vylepšení Media Hyperlapse. 29. března 2019 je vyřazený a už nebudou dostupné.
 
 ## <a name="october-2018"></a>Říjen 2018
 

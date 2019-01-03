@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012568"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650503"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
-Další informace o použití [Apache Livy](https://livy.incubator.apache.org/), [Apache Spark](https://spark.apache.org/) rozhraní REST API, které se používá k odeslání vzdálené úlohy do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Další informace o použití [Apache Livy](https://livy.incubator.apache.org/), [Apache Spark](https://spark.apache.org/) rozhraní REST API, které se používá k odeslání vzdálené úlohy do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ https://livy.incubator.apache.org/ ](https://livy.incubator.apache.org/).
 
 Livy můžete použít ke spuštění interaktivních Spark prostředí nebo odesílání úloh služby batch běžet ve Sparku. Tento článek pojednává o pomocí Livy odesílat úlohy služby batch. Fragmenty kódu v tomto článku používáme nástroj cURL k volání rozhraní REST API ke koncovému bodu Livy Spark.
 
@@ -182,7 +182,7 @@ Tady jsou některé problémy, které se můžete setkat při používání Livy
 
 ## <a name="next-step"></a>Další krok
 
-* [Dokumentace k rozhraní REST API Apache Livy](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Dokumentace k rozhraní REST API Apache Livy](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 

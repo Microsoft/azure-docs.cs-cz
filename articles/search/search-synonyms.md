@@ -1,5 +1,5 @@
 ---
-Title: Synonyms for query expansion over a search index  - Azure Search
+title: Synonyma pro rozšíření dotazu nad vyhledávací index – Azure Search
 description: Vytvořte mapu synonym k rozšíření rozsahu vyhledávání v indexu Azure Search. Obor je rozšířena zahrnout ekvivalentní termíny, které zadáte v seznamu.
 author: brjohnstmsft
 services: search
@@ -10,12 +10,12 @@ ms.date: 04/20/2018
 manager: jlembicz
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: ce9eb8ed099a232128ba924da1466917df542fbb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cea95756f115e9efd6dc184fc85a0485ab49d1b9
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315654"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634656"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyma ve službě Azure Search
 

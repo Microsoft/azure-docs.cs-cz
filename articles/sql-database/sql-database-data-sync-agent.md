@@ -12,16 +12,19 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 11/12/2018
-ms.openlocfilehash: bb80b512176e8fe260eb4572ea9fa801a6ffc80a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: b5916b781c636752ada6898cfa0c03bc02891501
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685136"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715014"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Agent synchronizace dat pro synchronizaci dat Azure SQL
 
 Synchronizace dat s místní databází SQL serveru z hlediska instalace a konfigurace agenta synchronizace dat pro synchronizaci dat SQL Azure. Další informace o synchronizaci dat SQL najdete v tématu [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
 ## <a name="download-and-install"></a>Stažení a instalace
 
@@ -136,7 +139,7 @@ Tyto scénáře mohou způsobit potíže:
 
 ### <a name="agent-start"></a> Klientský agent aktualizace softwaru nelze spustit (Chyba 1069)
 
-Zjistíte, zda není spuštěn agent na počítači, který je hostitelem systému SQL Server. Při pokusu o ruční spuštění agenta, se zobrazí dialogové okno, které se zobrazí zpráva "chyby 1069: Služba se nespustila kvůli selhání přihlášení."
+Zjistíte, zda není spuštěn agent na počítači, který je hostitelem systému SQL Server. Při pokusu o ruční spuštění agenta, se zobrazí dialogové okno, které se zobrazí zpráva "chyby 1069: Službu se nepodařilo spustit z důvodu selhání přihlášení."
 
 ![Dialogové okno chyby 1069 synchronizace dat](media/sql-database-troubleshoot-data-sync/sync-error-1069.png)
 
@@ -318,7 +321,7 @@ Další informace o synchronizaci dat SQL najdete v následujících článcích
 
 -   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)

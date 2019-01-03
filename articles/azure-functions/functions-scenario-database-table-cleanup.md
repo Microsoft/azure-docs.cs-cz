@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: e59c0b6994a64972b1458c0f295f24d0a615d871
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740106"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608575"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Pomocí služby Azure Functions pro připojení ke službě Azure SQL Database
 
@@ -70,7 +70,7 @@ Budete muset přidat balíček NuGet, který obsahuje knihovnu SqlClient. Tuto k
 
 1. Na kartě **Procházet** vyhledejte a po nalezení vyberte ```System.Data.SqlClient```.
 
-1. Na stránce **System.Data.SqlClient** klikněte na **Nainstalovat**.
+1. V **System.Data.SqlClient** stránky, vyberte verzi `4.5.1` a potom klikněte na tlačítko **nainstalovat**.
 
 1. Po dokončení instalace zkontrolujte změny a potom kliknutím na **OK** zavřete okno **Náhled**.
 

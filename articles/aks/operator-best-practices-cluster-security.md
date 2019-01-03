@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 5acabc8381422b9202b041cf849af3b35809a3c0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109651"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53717207"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení clusteru a inovace ve službě Azure Kubernetes Service (AKS)
 
@@ -54,7 +54,7 @@ Pro podrobnější řízení kontejneru akcí, můžete použít také integrova
 
 ### <a name="app-armor"></a>Armor aplikace
 
-K omezení akcí, které mohou provádět kontejnerů, můžete použít [AppAmour] [ k8s-apparmor] modulu zabezpečení jádra systému Linux. AppArmor je k dispozici jako součást základní uzlů AKS operačního systému a je ve výchozím nastavení povolené. Vytváření AppArmor profily, které omezují akce, jako čtení, zápis nebo spustit nebo systémové funkce, jako je například připojení systémy souborů. Výchozí profily AppArmor omezit přístup k různým `/proc` a `/sys` umístění a poskytují způsob logicky izolovat kontejnery ze základní uzel. AppArmor funguje pro každou aplikaci, která běží na systému Linux, ne jenom podů Kubernetes.
+K omezení akcí, které mohou provádět kontejnerů, můžete použít [AppArmor] [ k8s-apparmor] modulu zabezpečení jádra systému Linux. AppArmor je k dispozici jako součást základní uzlů AKS operačního systému a je ve výchozím nastavení povolené. Vytváření AppArmor profily, které omezují akce, jako čtení, zápis nebo spustit nebo systémové funkce, jako je například připojení systémy souborů. Výchozí profily AppArmor omezit přístup k různým `/proc` a `/sys` umístění a poskytují způsob logicky izolovat kontejnery ze základní uzel. AppArmor funguje pro každou aplikaci, která běží na systému Linux, ne jenom podů Kubernetes.
 
 ![Profily AppArmor nepoužívá v clusteru AKS k omezení akcí kontejneru](media/operator-best-practices-container-security/apparmor.png)
 

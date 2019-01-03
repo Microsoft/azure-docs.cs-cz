@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 584d1d8ce3285f9f5fb986c9779d3c403ce13d1b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314155"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631888"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorování služby Azure Search na webu Azure portal
 
@@ -70,7 +70,7 @@ Můžete exportovat protokoly operací pro vaši službu a nezpracovaných dat p
 
 
 ### <a name="enabling-monitoring"></a>Povolení sledování
-Otevřete svou službu Azure Search v [webu Azure portal](http://portal.azure.com) pod možnost povolit monitorování.
+Otevřete svou službu Azure Search v [webu Azure portal](https://portal.azure.com) pod možnost povolit monitorování.
 
 Vyberte data, která chcete exportovat: Protokoly, metriky nebo obojí. Můžete zkopírovat do účtu úložiště, odesílat do centra událostí nebo exportovat je do Log Analytics.
 

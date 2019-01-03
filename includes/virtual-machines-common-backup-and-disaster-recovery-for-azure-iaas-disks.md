@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c7c9938b6a0b3d2e6050940154a8dc3f114341e
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39486060"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53638819"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Zálohování a zotavení po havárii pro disky Azure IaaS
 
@@ -63,7 +63,7 @@ Pomáhá chránit vaše úlohy IaaS z výpadky, by měl plánování za účelem
 
 Vaše důležité informace o zotavení po Havárii mohou zahrnovat následující aspekty:
 
-- Vysoká dostupnost: schopnost aplikace bude moct být spuštěná v dobrém stavu, bez významnějších výpadků. Podle *stavu v pořádku*, tento stav znamená, že aplikace reaguje, a uživatelé můžou připojit k aplikaci a pracovat s ním. Některé důležité podnikové aplikace a databáze může být požádán o mít vždycky k dispozici, i v případě, že nedochází k chybám na platformě. Pro tyto úlohy může být nutné plánovat redundance pro aplikace, jakož i data.
+- Vysoká dostupnost: Možnost aplikace bude moct být spuštěná v dobrém stavu, bez významnějších výpadků. Podle *stavu v pořádku*, tento stav znamená, že aplikace reaguje, a uživatelé můžou připojit k aplikaci a pracovat s ním. Některé důležité podnikové aplikace a databáze může být požádán o mít vždycky k dispozici, i v případě, že nedochází k chybám na platformě. Pro tyto úlohy může být nutné plánovat redundance pro aplikace, jakož i data.
 
 - Odolnost dat: V některých případech je hlavní pozornost zajistit, že data se zachovají, pokud dojde k havárii. Proto může být nutné zálohu vašich dat v jiné lokalitě. U takových úloh se nemusí potřebovat plnou redundanci pro aplikace, ale pouze pravidelného zálohování disky.
 
@@ -71,7 +71,7 @@ Vaše důležité informace o zotavení po Havárii mohou zahrnovat následujíc
 
 Podívejme se na několik typické příklady scénářů aplikace úlohy a důležité informace pro plánování zotavení po havárii.
 
-### <a name="scenario-1-major-database-solutions"></a>Scénář 1: Řešení hlavní databáze
+### <a name="scenario-1-major-database-solutions"></a>Scénář 1: Řešení pro hlavní databázi
 
 Vezměte v úvahu databázový server produkčního prostředí, jako je SQL Server nebo Oracle, který může podporovat vysokou dostupnost. Důležité provozní aplikace a uživatelé závisí na této databázi. Plán zotavení po havárii pro tento systém může být nutné podporovat následující požadavky:
 
@@ -82,7 +82,7 @@ Plán zotavení po havárii může vyžadovat zachování repliky databáze v ji
 
 Databáze NoSQL, například MongoDB, také podporují [repliky](https://docs.mongodb.com/manual/replication/) za účelem zajištění redundance. Slouží k zajištění vysoké dostupnosti replik.
 
-### <a name="scenario-2-a-cluster-of-redundant-vms"></a>Scénář 2: Cluster redundantní virtuální počítače
+### <a name="scenario-2-a-cluster-of-redundant-vms"></a>Scénář 2: Cluster redundantní virtuálních počítačů
 
 Vezměte v úvahu úloh zpracovává cluster virtuálních počítačů, které poskytují redundance a vyrovnávání zatížení. Jedním z příkladů je nasazený v oblasti clusteru Cassandra. Tento typ architektury již poskytuje vysoký stupeň redundance v dané oblasti. Chránit úlohy v případě selhání místní úrovni, byste však měli zvážit rozšíření clusteru ve dvou oblastech nebo provádění pravidelného zálohování do jiné oblasti.
 
@@ -152,7 +152,7 @@ Pomocí následujících kroků k povolení zálohování vašich virtuálních 
 
 1.  Nakonfigurujte zásady zálohování a vyberte virtuální počítač ze stejné uživatelské rozhraní.
 
-1.  Ujistěte se, že Backup Agent je nainstalovaný na virtuálním počítači. Pokud váš virtuální počítač pomocí image Galerie Azure Backup Agent již nainstalován. Jinak (tj. Pokud používáte vlastní image), postupujte podle pokynů k [nainstalovat agenta virtuálního počítače na virtuální počítač](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
+1.  Ujistěte se, že Backup Agent je nainstalovaný na virtuálním počítači. Pokud váš virtuální počítač pomocí image Galerie Azure Backup Agent již nainstalován. Jinak (tj. Pokud používáte vlastní image), postupujte podle pokynů k [nainstalovat agenta virtuálního počítače na virtuální počítač](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 
 1.  Ujistěte se, že virtuální počítač umožňuje připojení k síti pro službu backup na funkci. Postupujte podle pokynů pro [připojení k síti](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
@@ -172,7 +172,7 @@ Další informace najdete v pokynech k [obnovení virtuálních počítačů pom
 
 Můžete použít také prostředí PowerShell pro [obnovení virtuálního počítače](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) nebo [vytváření nového virtuálního počítače z obnovit disky](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 
-## <a name="alternative-solution-consistent-snapshots"></a>Alternativní řešení: snímky konzistentní vzhledem k aplikacím
+## <a name="alternative-solution-consistent-snapshots"></a>Alternativní řešení: Snímky konzistentní vzhledem k aplikacím
 
 Pokud nemůžete použít Azure Backup, můžete implementovat vlastní mechanismus zálohování pomocí snímků. Vytváření snímků konzistentní vzhledem k aplikacím pro všechny disky používané systémem virtuálního počítače a pak replikuje tyto snímky do jiné oblasti je složitá. Z tohoto důvodu se považuje za Azure pomocí služby Backup jako vhodnější než vytvářet vlastní řešení. 
 

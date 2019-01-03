@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311666"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53602065"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s využitím Apache Kafka v HDInsight
 
@@ -22,7 +22,7 @@ Další informace o použití Azure Kubernetes Service (AKS) pomocí [Apache Kaf
 
 [Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Azure Kubernetes Service spravuje vaše hostované prostředí Kubernetes a umožňuje rychlé a snadné nasazování kontejnerizovaných aplikací. Pomocí služby Azure Virtual Network, propojíte tyto dvě služby.
 
-> [!NOTE]
+> [!NOTE]  
 > Účelem tohoto dokumentu je na kroky potřebné k povolení služby Azure Kubernetes Service ke komunikaci s využitím Kafka v HDInsight. V příkladu, samotného je jenom základní klientskou Kafka prokázat, že konfigurace funguje.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -49,7 +49,7 @@ Následující diagram znázorňuje topologii sítě, v tomto dokumentu:
 
 ![HDInsight v jedné virtuální sítě, AKS v jiném a sítí připojenou pomocí partnerského vztahu](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Mezi partnerské sítě, takže používat IP adresy není povolen překlad názvů. Ve výchozím nastavení je nakonfigurovaná Kafka v HDInsight k vrácení názvů hostitelů, místo IP adresy, pokud se klienti připojují. Upravit kroky v tomto dokumentu Kafka použít IP adresu místo toho inzerování.
 
 ## <a name="create-an-azure-kubernetes-service-aks"></a>Vytvoření Azure Kubernetes Service (AKS)
@@ -59,7 +59,7 @@ Pokud již nemáte AKS cluster, použijte jednu z následujících dokumentech s
 * [Nasaďte cluster Azure Kubernetes Service (AKS) – portál](../../aks/kubernetes-walkthrough-portal.md)
 * [Nasaďte cluster Azure Kubernetes Service (AKS) – rozhraní příkazového řádku](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]
+> [!NOTE]  
 > AKS vytvoří virtuální síť během instalace. Tato síť je v partnerském vztahu vytvořeném pro HDInsight v další části.
 
 ## <a name="configure-virtual-network-peering"></a>Nakonfigurujte partnerský vztah virtuální sítě
@@ -72,7 +72,7 @@ Pokud již nemáte AKS cluster, použijte jednu z následujících dokumentech s
 
 4. Chcete-li vytvořit virtuální síť pro HDInsight, vyberte __+ vytvořit prostředek__, __sítě__a potom __virtuální síť__.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Při zadávání hodnot pro nové virtuální sítě, je nutné použít adresní prostor, který se nepřekrývá identifikátoru použitému síť clusteru AKS.
 
     Použijte stejný __umístění__ pro virtuální sítě, který jste použili pro AKS cluster.
@@ -82,22 +82,22 @@ Pokud již nemáte AKS cluster, použijte jednu z následujících dokumentech s
 5. Pokud chcete nakonfigurovat partnerský vztah mezi HDInsight sítě a sítě clusteru AKS, vyberte virtuální síť a pak vyberte __partnerské vztahy__. Vyberte __+ přidat__ a k naplnění formuláře použijte následující hodnoty:
 
     * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
-    * __Virtuální sítě__: Toto pole použít k výběru virtuální sítě v případě **clusteru AKS**.
+    * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě **clusteru AKS**.
 
     Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
 
 6. Pokud chcete nakonfigurovat partnerský vztah mezi sítě clusteru AKS a síť HDInsight, vyberte __virtuální sítě clusteru AKS__a pak vyberte __partnerské vztahy__. Vyberte __+ přidat__ a k naplnění formuláře použijte následující hodnoty:
 
     * __Název__: Zadejte jedinečný název pro tuto konfiguraci partnerského vztahu.
-    * __Virtuální sítě__: Toto pole použít k výběru virtuální sítě v případě __clusteru HDInsight__.
+    * __Virtuální síť__: Toto pole použít k výběru virtuální sítě v případě __clusteru HDInsight__.
 
     Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Instalace Apache Kafka v HDInsight
 
-Při vytváření Kafka v clusteru HDInsight, musíte připojit virtuální síť vytvořili dříve pro HDInsight. Další informace týkající se vytvoření clusteru Kafka, najdete v článku [vytvoření clusteru Kafka](apache-kafka-get-started.md) dokumentu.
+Při vytváření Kafka v clusteru HDInsight, musíte připojit virtuální síť vytvořili dříve pro HDInsight. Další informace týkající se vytvoření clusteru Kafka, najdete v článku [vytvořit cluster Apache Kafka](apache-kafka-get-started.md) dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Při vytváření clusteru, je nutné použít __upřesňující nastavení__ připojení k virtuální síti, kterou jste vytvořili pro HDInsight.
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Nakonfigurovat inzerování IP Apache Kafka
@@ -158,8 +158,8 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
 
 3. Upravit `index.js` soubor a změňte následující řádky:
 
-    * `var topic = 'mytopic'`: Nahradit `mytopic` s názvem tématu Kafka používaný touto aplikací.
-    * `var brokerHost = '176.16.0.13:9092`: Nahradit `176.16.0.13` s interní IP adresa z jednoho z hostitelů zprostředkovatele pro váš cluster.
+    * `var topic = 'mytopic'`: Nahraďte `mytopic` s názvem tématu Kafka používaný touto aplikací.
+    * `var brokerHost = '176.16.0.13:9092`: Nahraďte `176.16.0.13` s interní IP adresa z jednoho z hostitelů zprostředkovatele pro váš cluster.
 
         Interní IP adresa zprostředkovatele hostitele (workernodes) v clusteru, najdete v tématu [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentu. Vyberte IP adresu jedné z položek, kde začíná název domény `wn`.
 
@@ -169,7 +169,7 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
     docker build -t kafka-aks-test .
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Balíčky požadované aplikace se změnami do úložiště, takže není potřeba použít `npm` nástroj k instalaci.
 
 5. Přihlaste se k vaší Azure Container Registry (ACR) a název loginServer zjistíte následujícím způsobem:
@@ -179,7 +179,7 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud neznáte název Azure Container Registry nebo nejste obeznámeni s pomocí Azure CLI pro práci s Azure Kubernetes Service, najdete v článku [kurzech AKS](../../aks/tutorial-kubernetes-prepare-app.md).
 
 6. Označit místní `kafka-aks-test` image názvem loginServer záznamu ACR. Přidejte také `:v1` za účelem k označení verze image:
@@ -217,7 +217,7 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
 
 12. Zadejte text do pole a pak vyberte __odeslat__ tlačítko. Data se odesílají do systému Kafka. Příjemce Kafka v aplikaci přečte zprávu a přidá jej do __zprávy z Kafka__ oddílu.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Může se zobrazit několik kopií zprávu. Tento problém obvykle se stane, když aktualizujete prohlížeč po připojení nebo otevírat víc připojení prohlížeče do aplikace.
 
 ## <a name="next-steps"></a>Další postup

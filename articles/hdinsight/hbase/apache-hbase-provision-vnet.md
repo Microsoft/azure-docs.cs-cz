@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: cf037000a047b02f3874c3bccc9678f2ea18ecec
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011194"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653794"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Vytváření clusterů Apache HBase v HDInsight ve virtuální síti Azure
 Zjistěte, jak vytvářet clustery Azure HDInsight Apache HBase v [Azure Virtual Network][1].
@@ -34,14 +34,14 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Vytvoření clusteru Apache HBase do virtuální sítě
 V této části vytvoříte cluster Apache HBase se systémem Linux s závislého účtu Azure Storage ve virtuální síti Azure pomocí [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-template-deploy.md). Další metody vytváření clusterů a Principy nastavení, najdete v tématu [clusterů HDInsight vytvořit](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o vytváření clusterů Apache Hadoop v HDInsight pomocí šablony najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight pomocí šablon Azure Resource Manageru](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-> [!NOTE]
+> [!NOTE]  
 > Některé vlastnosti jsou pevně zakódovaný do šablony. Příklad:
 >
-> * **Umístění**: USA – východ 2
+> * **Umístění**: Východní USA 2
 > * **Verze clusteru**: 3.6
 > * **Počet uzlů pracovního procesu clusteru**: 2
 > * **Výchozí účet úložiště**: jedinečný řetězec
-> * **Název virtuální sítě**: &lt;název clusteru >-vnet
+> * **Název virtuální sítě**: &lt;Název clusteru >-vnet
 > * **Adresní prostor virtuální sítě**: 10.0.0.0/16
 > * **Název podsítě**: subnet1
 > * **Rozsah adres podsítě**: 10.0.0.0/24
@@ -56,11 +56,11 @@ V této části vytvoříte cluster Apache HBase se systémem Linux s závisléh
 2. Z **vlastní nasazení** okně zadejte následující vlastnosti:
 
    * **Předplatné**: Vyberte předplatné Azure použité k vytvoření clusteru HDInsight a závislý účet úložiště, virtuální síť Azure.
-   * **Skupina prostředků**: vyberte **vytvořit nový**a zadejte nový název skupiny prostředků.
-   * **Umístění:** Vyberte umístění pro skupinu prostředků.
+   * **Skupina prostředků**: Vyberte **vytvořit nový**a zadejte nový název skupiny prostředků.
+   * **Umístění**: Vyberte umístění skupiny prostředků.
    * **Název clusteru**: Zadejte název pro vytvoření clusteru Hadoop.
-   * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.
-   * **Uživatelské jméno a heslo SSH**: výchozí uživatelské jméno **sshuser**.  Můžete ho změnit.
+   * **Přihlašovací jméno a heslo clusteru**: Výchozí přihlašovací jméno je **admin** (správce).
+   * **Uživatelské jméno SSH a heslo**: Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Můžete ho změnit.
    * **Souhlasím s podmínkami a ujednáními uvedenými nahoře**: (Vybrat)
 3. Klikněte na **Koupit**. Vytvoření clusteru trvá přibližně 20 minut. Jakmile je cluster vytvořen, můžete kliknout na portálu a otevře se okno clusteru.
 
@@ -71,13 +71,11 @@ Pokud chcete začít pracovat s nového clusteru HBase pomocí postupů v [začn
 ## <a name="connect-to-the-apache-hbase-cluster-using-apache-hbase-java-rpc-apis"></a>Připojte se ke clusteru Apache HBase pomocí rozhraní API Apache HBase Java RPC
 1. Vytvoření infrastruktury jako služby (IaaS) virtuální počítač do stejné virtuální síti Azure a ve stejné podsíti. Pokyny k vytvoření nového virtuálního počítače IaaS, naleznete v tématu [vytvořte virtuálním počítači s Windows serverem](../../virtual-machines/windows/quick-create-portal.md). Podle kroků v tomto dokumentu, musíte použít následující hodnoty pro konfiguraci sítě:
 
-   * **Virtuální síť**: &lt;název clusteru >-vnet
+   * **Virtuální síť**: &lt;Název clusteru >-vnet
    * **Podsíť**: subnet1
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Nahraďte &lt;název clusteru > s názvem, který jste použili při vytváření clusteru HDInsight v předchozích krocích.
-   >
-   >
 
    Pomocí těchto hodnot, virtuální počítač je umístěn ve stejné virtuální síť a podsíť jako HDInsight cluster. Tato konfigurace umožňuje, aby mohla komunikovat přímo mezi sebou. Existuje způsob, jak vytvořit HDInsight cluster s prázdných hraničních uzlů. Na hraničním uzlu lze použít ke správě clusteru.  Další informace najdete v tématu [použití prázdných hraničních uzlů v HDInsight](../hdinsight-apps-use-edge-node.md).
 
@@ -232,10 +230,8 @@ Pokud chcete použít tyto informace v aplikaci Java, provedením kroků v [pomo
         <value>zookeeper0.<dns suffix>,zookeeper1.<dns suffix>,zookeeper2.<dns suffix></value>
     </property>
 
-> [!NOTE]
+> [!NOTE]  
 > Další informace o překlad názvů v Azure virtuální sítě, včetně použití vlastního serveru DNS, najdete v části [rozlišení DNS (Name)](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
->
->
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit cluster Apache HBase. Další informace naleznete v tématu:

@@ -2,25 +2,21 @@
 title: Práce s existující místní proxy servery a službou Azure AD | Dokumentace Microsoftu
 description: Popisuje, jak pracovat s existující místní proxy servery.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6409b9313aa9b036e24ea50435659b3653ac01e0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404949"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720097"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce s existující místní proxy servery
 
@@ -73,7 +69,7 @@ V důsledku s pouze odchozí provoz, není potřeba konfigurovat příchozí př
 >[!NOTE]
 >Proxy aplikací nepodporuje ověřování na jiné servery proxy. Účty služeb konektoru/updater sítě by měl moct připojit k proxy serveru, aniž by se samy pro ověřování.
 
-### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Krok 1: Konfigurace konektor a související služby a absolvovat odchozího proxy serveru
+### <a name="step-1-configure-the-connector-and-related-services-to-go-through-the-outbound-proxy"></a>Krok 1: Nakonfigurujte konektor a související služby a absolvovat odchozího proxy serveru
 
 Pokud WPAD je povoleno v prostředí a správně nakonfigurována, konektor automaticky zjistí odchozí proxy server a pokusíte se ji použít. Můžete však explicitně nakonfigurovat konektoru a absolvovat odchozího proxy serveru.
 
@@ -107,15 +103,16 @@ Existují čtyři aspekty ke zvážení v odchozího proxy serveru:
 * Kontrola protokolu SSL
 
 #### <a name="proxy-outbound-rules"></a>Odchozí pravidla proxy
-Povolit přístup k následující koncové body pro přístup k službě konektoru:
+Povolit přístup k následujícím adresám URL:
 
-* *.msappproxy.net
-* *.servicebus.windows.net
+| zprostředkovatele identity | Jak se používá |
+| --- | --- |
+| \*. msappproxy.net<br>\*. servicebus.windows.net | Komunikace mezi konektoru a cloudovou službou Proxy aplikací |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Tyto adresy URL Azure používá k ověření certifikátů |
+| login.windows.net<br>login.microsoftonline.com | Konektor používá tyto adresy URL během procesu registrace. |
 
-Pro první registraci povolte přístup k následující koncové body:
+Pokud vaše brána firewall nebo proxy server umožňuje přidávání na seznam povolených DNS, můžete seznam povolených připojení k \*. msappproxy.net a \*. servicebus.windows.net. Pokud ne, je potřeba povolit přístup k [rozsahy IP adres Azure DataCenter](https://www.microsoft.com/download/details.aspx?id=41653). Rozsahy IP adres se aktualizují každý týden.
 
-* login.windows.net
-* login.microsoftonline.com
 
 Pokud nemůžete povolit připojení pomocí plně kvalifikovaného názvu domény a je nutné místo toho zadat rozsahy IP adres, použijte tyto možnosti:
 

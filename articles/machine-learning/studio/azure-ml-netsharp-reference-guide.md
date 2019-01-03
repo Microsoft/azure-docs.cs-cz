@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: fb6efad1f1c06349adb877516f5323d8b9ee45e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ec33ac469d33a07d00f379beef2db9f4405e4679
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272231"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631121"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
@@ -388,7 +388,7 @@ Příklad ukazuje některé základní příkazy následujícím způsobem:
 
 + První řádek definuje vstupní vrstvy (s názvem `Data`). Při použití `auto` – klíčové slovo, neuronové sítě automaticky obsahuje všechny funkce sloupce vstupní příklady. 
 + Druhý řádek vytvoří skryté vrstvě. Název `H` přiřazen skryté vrstvě, který má 200 uzly. Tato vrstva je plně připojení k vrstvě vstupu.
-+ Definuje ve třetím řádku výstupu vrstvy (s názvem `O`), který obsahuje 10 výstupních uzlů. Pokud neuronové sítě se používá pro klasifikaci, je jeden uzel výstupu na třídě. Klíčové slovo **sigmoid** označuje, že výstup funkce použity na vrstvě výstup.
++ Definuje ve třetím řádku výstupu vrstvy (s názvem `Out`), který obsahuje 10 výstupních uzlů. Pokud neuronové sítě se používá pro klasifikaci, je jeden uzel výstupu na třídě. Klíčové slovo **sigmoid** označuje, že výstup funkce použity na vrstvě výstup.
 
 ### <a name="define-multiple-hidden-layers-computer-vision-example"></a>Definování více skrytými vrstvami: příklad počítače pro zpracování obrazu
 

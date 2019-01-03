@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 351734ea394b8820e87799a6d9a87979dd9c3807
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497126"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53604527"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -35,7 +35,7 @@ RTVS vylepšuje pracovního postupu R tím, že nabízí nástroje, jako [intera
 
 4. Nainstalujte [ML Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na svém počítači. ML Server poskytuje [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark` funkce.
 
-5. Nainstalujte [PuTTY](http://www.putty.org/) poskytnout výpočetního kontextu pro spuštění `RevoScaleR` funkcí z místního klienta do clusteru HDInsight.
+5. Nainstalujte [PuTTY](https://www.putty.org/) poskytnout výpočetního kontextu pro spuštění `RevoScaleR` funkcí z místního klienta do clusteru HDInsight.
 
 6. Máte možnost použít nastavení pro datové vědy pro prostředí sady Visual Studio, který poskytuje nové rozložení pro váš pracovní prostor pro nástroje R.
     1. Chcete-li uložit aktuální nastavení sady Visual Studio, použijte **nástroje > Nastavení importu a exportu** příkaz a pak vyberte **exportovat vybrané nastavení prostředí** a zadejte název souboru. Obnovení těchto nastavení, použijte stejný příkaz a vyberte **importovat vybrané nastavení prostředí**.
@@ -44,7 +44,7 @@ RTVS vylepšuje pracovního postupu R tím, že nabízí nástroje, jako [intera
 
         ![Nastavení pro datové vědy...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pomocí přístupu v kroku 1, můžete také uložit a obnovit rozložení mezi odborníky přes data individuální namísto opakování **nastavení pro datové vědy** příkazu.
 
 ## <a name="execute-local-r-methods"></a>Spusťte místní metody R

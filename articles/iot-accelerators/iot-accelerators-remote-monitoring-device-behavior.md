@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 70f9ccbbe737bad4d6f88365e804d4421c418d28
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: edd5da35d33aa7e79fc3e972f3ea1cfe2ef40973
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164003"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631409"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
 
@@ -21,6 +21,9 @@ Tento článek [pochopení schématu modelu zařízení](iot-accelerators-remote
 
 - **Stav** soubory jazyka JavaScript, která spustí v pravidelných intervalech aktualizovat vnitřní stav zařízení.
 - **Metoda** soubory jazyka JavaScript, která se spouští při řešení volá metodu na zařízení.
+
+> [!NOTE]
+> Chování modelu zařízení jsou určeny pouze pro Simulovaná zařízení, které jsou hostované ve službě simulaci zařízení. Pokud chcete vytvořit jedno fyzické zařízení, přečtěte si téma [připojení zařízení k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V tomto článku získáte informace o těchto tématech:
 

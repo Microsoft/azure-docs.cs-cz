@@ -1,7 +1,7 @@
 ---
 title: Data o využití – Cloud Shell
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Další informace o získání informací o využití ve službě Azure Cloud Shell pro LUIS.
+description: Další informace o získání koncového bodu přístupů počet informace o využití ve službě Azure Cloud Shell pro LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,21 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: d4f1a76fe587a34448cf218dbfef10f6b0e2ea46
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 703332ece0208856bfbedb852b4b1e985d157dc9
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133467"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605939"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Data o využití pro službu LUIS ze služby Azure Cloud Shell
+
+Další informace o získání koncového bodu přístupů počet informace o využití ve službě Azure Cloud Shell pro LUIS.
+
 Na webu Azure portal umožňuje pomocí rutin prostředí PowerShell pro práci s prostředky služby LUIS. 
 
 Tyto rutiny umožňují [vytvořit](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatného služby LUIS, získáte informace o předplatném, včetně [využití](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), a [odebrat](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatné. 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Účet úložiště cloud shell a ověřování
+
 Chcete-li použít prostředí PowerShell na webu Azure Portal [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musíte mít účet úložiště Azure. Pokud nemáte k dispozici [účtu úložiště](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), budou vyzváni k jeho vytvoření. Účet úložiště umožňuje uložit skripty prostředí PowerShell ve službě cloud shell.  
 
 Budete potřebovat k ověření ve službě cloud shell pro přístup ke všem prostředkům Azure. 
@@ -31,6 +35,7 @@ Budete potřebovat k ověření ve službě cloud shell pro přístup ke všem p
 Jakmile máte účet úložiště a ověření, můžete spustit rutiny prostředí PowerShell.
 
 ## <a name="open-cloud-shell"></a>Otevření služby Cloud Shell
+
 Při použití portálu Azure cloud shell, jste vždy na nejnovější verzi prostředí PowerShell. 
 
 Použití **spustit Cloud Shell** tlačítko otevřete Cloud Shell nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). Vyberte jako prostředí Power Shell. Pokud nemáte účet Azure Storage, je potřeba ho vytvořit. 

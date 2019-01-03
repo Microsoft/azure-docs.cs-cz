@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 84a8a0687a1da0eaf7842a9bf6115c1d0f5d3fd1
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338137"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718091"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace v App Service Environment v1
 
@@ -51,7 +51,7 @@ Tento kurz předpokládá, že jste vytvořili službu App Service Environment. 
     *Skupiny prostředků* vám umožní spravovat související prostředky Azure jako celku a jsou užitečné při navazování *řízení přístupu na základě rolí* pravidla (RBAC) pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ResourceGroups]. 
 4. Vyberte nebo vytvořte plán služby App Service.
    
-    *Plány služby App Service* jsou spravované sady webových aplikací.  Obvykle při výběru ceny účtované ceny se použije k plánu služby App Service, nikoli pro jednotlivé aplikace. Ve službě ASE platíte za výpočetní instance přidělené služby ASE místo mít uvedené s vaší ASP.  Vertikální navýšení kapacity počtu instancí webové aplikace, které můžete vertikálně navýšit kapacitu instance vaší služby App Service a plán ovlivní všechny webové aplikace v tomto plánu.  Některé funkce, jako je například sloty webu nebo integrace virtuální sítě také mít omezení množství v rámci plánu.  Další informace najdete v tématu [přehled plánů služby Azure App Service](../azure-web-sites-web-hosting-plans-in-depth-overview.md)
+    *Plány služby App Service* jsou spravované sady webových aplikací.  Obvykle při výběru ceny účtované ceny se použije k plánu služby App Service, nikoli pro jednotlivé aplikace. Ve službě ASE platíte za výpočetní instance přidělené služby ASE místo mít uvedené s vaší ASP.  Vertikální navýšení kapacity počtu instancí webové aplikace, které můžete vertikálně navýšit kapacitu instance vaší služby App Service a plán ovlivní všechny webové aplikace v tomto plánu.  Některé funkce, jako je například sloty webu nebo integrace virtuální sítě také mít omezení množství v rámci plánu.  Další informace najdete v tématu [přehled plánů služby Azure App Service](../overview-hosting-plans.md)
    
     Plány služby App Service můžete identifikovat ve vaší službě ASE pohledem na umístění, které je uvedeno v části název plánu.  
    
@@ -108,7 +108,7 @@ Po vytvoření webové aplikace a plán služby App Service je vhodné ji vertik
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
+[Appserviceplans]: ../overview-hosting-plans.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md

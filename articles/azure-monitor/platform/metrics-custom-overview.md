@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 2b3e8877713fde088be2147bbfa8969e351a3f06
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
+ms.openlocfilehash: aacfc98a9132a59c90a8f67d5a3877b75fa59dfe
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326028"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53605581"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky ve službě Azure Monitor
 
@@ -25,7 +25,7 @@ Vlastní metriky můžete odeslaná do Azure monitoru pomocí několika metod:
 - Instrumentovat aplikaci pomocí Azure Application Insights SDK a odesílání vlastních telemetrických dat do Azure monitoru. 
 - Nainstalovat rozšíření Windows Azure Diagnostics (WAD) na vaši [virtuálního počítače Azure](collect-custom-metrics-guestos-resource-manager-vm.md), [škálovací sadu virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md), [klasický virtuální počítač](collect-custom-metrics-guestos-vm-classic.md), nebo [classic Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) a odeslat do Azure monitoru čítače výkonu. 
 - Nainstalujte [InfluxData Telegraf agenta](collect-custom-metrics-linux-telegraf.md) na počítači Azure s Linuxem a metriky odeslat pomocí Azure monitoru výstupu modulu plug-in.
-- Odeslat vlastní metriky [přímo k REST API služby Azure Monitor](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
+- Odeslat vlastní metriky [přímo k REST API služby Azure Monitor](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
 Při odesílání vlastních metrik Azure monitoru, každý datový bod, nebo hodnotu hlášenou musí obsahovat následující informace.
 
@@ -54,7 +54,7 @@ Tato vlastnost zaznamená jaké oblasti Azure, které jste generování metriky 
 >
 >
 
-### <a name="timestamp"></a>Timestamp
+### <a name="timestamp"></a>Časové razítko
 Každý datový bod, který je odeslán do Azure monitoru musí být označen s časovým razítkem. Toto časové razítko zaznamená datum a čas, kdy je hodnota metriky měří nebo shromažďovat. Azure Monitor přijímá data metriky s časovými razítky až na hodnotu 20 minut v minulosti a v budoucnu 5 minut.
 
 ### <a name="namespace"></a>Obor názvů
@@ -170,7 +170,7 @@ Ve verzi public preview je k dispozici pouze v podmnožině oblastí s Azure mo�
 |Oblast Azure|Předpona místní koncový bod|
 |---|---|
 |USA – východ|https://eastus.monitoring.azure.com/|
-|Střed USA – jih|https://southcentralus.monitoring.azure.com/|
+|Středojižní USA|https://southcentralus.monitoring.azure.com/|
 |Západní střed USA|https://westcentralus.monitoring.azure.com/|
 |Západní USA 2|https://westus2.monitoring.azure.com/|
 |Jihovýchodní Asie|https://southeastasia.monitoring.azure.com/|
@@ -193,6 +193,6 @@ Použijte vlastní metriky z různých služeb:
  - [Škálovací sada virtuálních počítačů](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Virtuální počítače Azure (klasické)](collect-custom-metrics-guestos-vm-classic.md)
  - [Použití Telegraf agenta virtuálního počítače s Linuxem](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../monitoring-and-diagnostics/metrics-store-custom-rest-api.md)
+ - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
  - [Klasické cloudové služby](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  

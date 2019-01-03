@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff030b9bb9158f3bac0e52a596a2054989301afd
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101166"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719594"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Sestavení aplikace LUIS programově pomocí Node.js
 
@@ -26,7 +26,7 @@ LUIS poskytuje programový rozhraní API, která provádí všechno, co, který 
 
 * Přihlaste se k [LUIS](luis-reference-regions.md) webu a hledání vaší [vytváření klíč](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření.
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* Tento kurz pracuje s sdíleného svazku clusteru pro soubory protokolů hypotetické společnosti uživatelských požadavků. Stáhněte si ho [tady](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/IoT.csv).
+* Tento kurz pracuje s sdíleného svazku clusteru pro soubory protokolů hypotetické společnosti uživatelských požadavků. Stáhněte si ho [tady](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Nainstalujte nejnovější Node.js pomocí NPM. Stáhněte si ji z [tady](https://nodejs.org/en/download/).
 * **[Doporučuje]**  Visual Studio Code pro technologii IntelliSense a ladění, si ji stáhnout z [tady](https://code.visualstudio.com/) zdarma.
 
@@ -40,7 +40,7 @@ Otevřete soubor `IoT.csv`. Obsahuje protokol dotazy uživatelů hypotetické do
 Uvidíte, že **RequestType** sloupce může být záměrů a **žádosti** sloupci se zobrazuje příkladu utterance. Ostatní pole může být entity, když se vyskytují v utterance. Protože záměrů, entit a příklad projevy, máte požadavky na jednoduchý, ukázkovou aplikaci.
 
 ## <a name="steps-to-generate-a-luis-app-from-non-luis-data"></a>Kroky pro vygenerování aplikace LUIS z dat bez LUIS
-Generovat nové aplikace LUIS ze zdrojového souboru, nejprve analyzovat data ze souboru CSV a tato data převést do formátu, který nahrajete do služby LUIS pomocí rozhraní API pro vytváření. Z analyzovaná data shromáždit informace o jaké záměry a entity jsou existuje. Pak můžete provádět volání rozhraní API k vytvoření aplikace a přidat záměry a entity, které byly získány z analyzovaných datech. Po vytvoření aplikace LUIS můžete přidat projevy příklad z analyzovaných datech. Zobrazí se tento tok v poslední části následujícího kódu. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/index.js) tento kód a uložte ho do `index.js`.
+Generovat nové aplikace LUIS ze zdrojového souboru, nejprve analyzovat data ze souboru CSV a tato data převést do formátu, který nahrajete do služby LUIS pomocí rozhraní API pro vytváření. Z analyzovaná data shromáždit informace o jaké záměry a entity jsou existuje. Pak můžete provádět volání rozhraní API k vytvoření aplikace a přidat záměry a entity, které byly získány z analyzovaných datech. Po vytvoření aplikace LUIS můžete přidat projevy příklad z analyzovaných datech. Zobrazí se tento tok v poslední části následujícího kódu. Kopírování nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) tento kód a uložte ho do `index.js`.
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
@@ -70,33 +70,33 @@ Například zadání "Vypnul světla" mapuje na tento dokument JSON:
         }
 ```
 
-V tomto příkladu `intentName` pochází z uživatelského požadavku v rámci **požadavek** záhlaví sloupce v souboru CSV a `entityName` pochází z ostatních sloupců s informací o klíči. Například, pokud je záznam pro **operace** nebo **zařízení**a že v aktuálního požadavku dojde také k řetězec a pak mohou být označeny jako entity. Následující kód ukazuje, tento proces analýzy. Můžete zkopírovat nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_parse.js) jej a uložit ho. tím `_parse.js`.
+V tomto příkladu `intentName` pochází z uživatelského požadavku v rámci **požadavek** záhlaví sloupce v souboru CSV a `entityName` pochází z ostatních sloupců s informací o klíči. Například, pokud je záznam pro **operace** nebo **zařízení**a že v aktuálního požadavku dojde také k řetězec a pak mohou být označeny jako entity. Následující kód ukazuje, tento proces analýzy. Můžete zkopírovat nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) jej a uložit ho. tím `_parse.js`.
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>Vytvoření aplikace LUIS
-Jakmile se data má být do formátu JSON, můžete ho přidáte do aplikace LUIS. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_create.js) a uložte ho do `_create.js`.
+Jakmile se data má být do formátu JSON, můžete ho přidáte do aplikace LUIS. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) a uložte ho do `_create.js`.
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Přidání záměrů
-Jakmile budete mít aplikaci, budete muset záměry na ni. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_intents.js) a uložte ho do `_intents.js`.
+Jakmile budete mít aplikaci, budete muset záměry na ni. Následující kód vytvoří aplikaci služby LUIS. Kopírování nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) a uložte ho do `_intents.js`.
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Přidání entit
-Následující kód přidá entity do aplikace LUIS. Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_entities.js) a uložte ho do `_entities.js`.
+Následující kód přidá entity do aplikace LUIS. Kopírování nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) a uložte ho do `_entities.js`.
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
    
 
 
 ## <a name="add-utterances"></a>Přidání projevů
-Po entity a záměry byly definovány v aplikaci LUIS, můžete přidat projevy. Následující kód používá [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) rozhraní API, které vám umožní přidat až 100 projevy najednou.  Kopírování nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/build-app-programmatically-csv/_upload.js) a uložte ho do `_upload.js`.
+Po entity a záměry byly definovány v aplikaci LUIS, můžete přidat projevy. Následující kód používá [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) rozhraní API, které vám umožní přidat až 100 projevy najednou.  Kopírování nebo [Stáhnout](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) a uložte ho do `_upload.js`.
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
