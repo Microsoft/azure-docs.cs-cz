@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření jazykového modelu s využitím služby Speech'
+title: 'Kurz: Jak vytvořit jazykový model s Speech Service'
 titlesuffix: Azure Cognitive Services
 description: Zjistěte, jak vytvořit jazykový model s využitím služby Speech. Přidat do svojí aplikace hlasové interakce pomocí tohoto vlastního jazykového modelu ve spojení s existující modely řeči stavu nejmodernější od Microsoftu.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 0eb946babaa3a01ca933a1290122755978fa017b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e65fa21eefcc103f553f8e1bc47792ac372c59e3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093447"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975436"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Kurz: Vytvoření vlastního jazykového modelu
 
@@ -100,9 +100,7 @@ Před provedením jakékoli akce je nutné vybrat odpovídající národní pros
 
 Na stránce Vytvořit jazykový model zadejte **Název** a **Popis**, které vám pomůžou sledovat důležité informace o tomto modelu, například použitou sadu dat. Pak v rozevírací nabídce vyberte **Základní jazykový model**. Tento model je výchozím bodem pro vaše přizpůsobení.
 
-Můžete si vybrat ze dvou základních jazykových modelů. Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách.
-
-Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. Veřejně dostupný je i nový model s názvem Universal (Univerzální). Univerzální model má za cíl poradit si se všemi scénáři a nakonec nahradit model pro vyhledávání a diktování i konverzační model.
+Můžete si vybrat ze dvou základních jazykových modelů. Model pro vyhledávání a diktování je vhodný pro řeč určenou přímo pro aplikaci, jako jsou příkazy, vyhledávací dotazy nebo diktování. Konverzační model je vhodný pro rozpoznávání hovorové řeči. Tento typ řeči je obvykle určený pro jinou osobu a vyskytuje se v call centrech nebo na schůzkách. Veřejně dostupný je i nový model s názvem Universal (Univerzální). Univerzální model má za cíl poradit si se všemi scénáři a nakonec nahradit model pro vyhledávání a diktování i konverzační model.
 
 Stejně jako v příkladu níže, až zadáte základní jazykový model, vyberte z rozevírací nabídky **Jazyková data** sadu jazykových dat, kterou chcete použít k přizpůsobení.
 

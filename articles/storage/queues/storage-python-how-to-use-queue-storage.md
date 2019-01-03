@@ -4,18 +4,17 @@ description: Zjistěte, jak používat službu Azure Queue z Pythonu vytvářet 
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 12/14/2018
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 827d3ceac267c78be9740adba6c890460ca3f2e9
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0edb90ca7324d47beaa5133d423928e615ff33a9
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162983"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742809"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Používání úložiště Queue z Pythonu
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -31,7 +30,7 @@ Tento průvodce vám ukáže, jak provádět běžné scénáře pomocí služby
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Stáhněte a nainstalujte sadu SDK služby Azure Storage pro Python
 
-Azure Storage SDK pro Python vyžaduje Python 2.7, 3.3, 3.4, 3.5 a 3.6 a je k dispozici ve 4 různých balíčcích: `azure-storage-blob`, `azure-storage-file`, `azure-storage-table` a `azure-storage-queue`. V tomto kurzu budeme používat `azure-storage-queue` balíčku.
+[Azure Storage SDK pro Python](https://github.com/azure/azure-storage-python) vyžaduje Python 2.7, 3.3, 3.4, 3.5 a 3.6.
  
 ### <a name="install-via-pypi"></a>Instalace přes PyPi
 
@@ -41,15 +40,19 @@ Pokud chcete nainstalovat prostřednictvím indexu balíčků Pythonu (PyPI), za
 pip install azure-storage-queue
 ```
 
-
 > [!NOTE]
-> Pokud provádíte upgrade z Azure Storage SDK pro Python verze 0.36 nebo starší, budete nejdřív muset, odinstalujte ji pomocí `pip uninstall azure-storage` jako už vydáváme Storage SDK pro Python v jediném balíčku.
-> 
-> 
+> Pokud provádíte upgrade z Azure Storage SDK pro Python verze 0.36 nebo starší, odinstalujte starší pomocí sady SDK `pip uninstall azure-storage` před instalací nejnovější balíček.
 
-Metody alternativní instalace, najdete [Azure Storage SDK pro Python na Githubu](https://github.com/Azure/azure-storage-python/).
+Instalace alternativní způsoby najdete v tématu [Azure Storage SDK pro Python](https://github.com/Azure/azure-storage-python/).
+
+## <a name="view-the-sample-application"></a>Zobrazit ukázkové aplikace
+
+Zobrazit a spustit ukázkovou aplikaci, která ukazuje, jak pomocí front Azure pomocí Pythonu najdete v tématu [služby Azure Storage: Začínáme s frontami Azure v Pythonu](https://github.com/Azure-Samples/storage-queue-python-getting-started). 
+
+Spustit ukázkovou aplikaci, ujistěte se, že máte nainstalovanou i `azure-storage-queue` a `azure-storage-common` balíčky.
 
 ## <a name="how-to-create-a-queue"></a>Jak: Vytvoření fronty
+
 **QueueService** objekt vám umožňuje spolupracovat s frontami. Následující kód vytvoří **QueueService** objektu. Přidejte následující v horní části všechny soubory Pythonu, ve kterém chcete programovému přístupu ke službě Azure Storage:
 
 ```python
@@ -129,8 +132,6 @@ Teď, když jste se naučili základy používání služby Queue storage, použ
 
 * [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
 * [REST API služby Azure Storage](https://msdn.microsoft.com/library/azure/dd179355)
-* [Blog týmu Azure Storage]
-* [Microsoft Azure Storage SDK pro Python]
 
-[Blog týmu Azure Storage]: http://blogs.msdn.com/b/windowsazurestorage/
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK pro Python]: https://github.com/Azure/azure-storage-python

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3536fb21d50dd54ec71615eba25c2d60fc727f34
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583291"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53787899"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 
@@ -34,7 +34,7 @@ Server historie Sparku je ve webovém uživatelském rozhraní pro dokončené a
 
 **Chcete-li otevřít rozhraní Web Server historie Sparku**
 
-1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Server historie Sparku**
 
     ![Server historie sparku](./media/apache-spark-resource-manager/launch-history-server.png "Server historie Sparku")
@@ -54,15 +54,13 @@ Server historie Sparku webové uživatelské rozhraní vypadá takto:
 ## <a name="open-the-yarn-ui"></a>Otevřete uživatelské rozhraní Yarn
 Rozhraní YARN můžete použít k monitorování aplikací, které jsou aktuálně spuštěné v clusteru Spark.
 
-1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **YARN**.
 
     ![Spuštění uživatelského rozhraní YARN](./media/apache-spark-resource-manager/launch-yarn-ui.png)
 
-   > [!TIP]
+   > [!TIP]  
    > Alternativně můžete také spustit z uživatelského rozhraní Ambari Uživatelském rozhraní YARN. Chcete-li spustit uživatelské rozhraní Ambari, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **řídicí panel clusteru HDInsight**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na aktivní Resource Manageru a pak klikněte na **uživatelského rozhraní správce prostředků**.
-   >
-   >
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Optimalizace clusterů pro aplikací Spark
 Jsou tři klíče parametry, které lze použít pro konfigurace Spark v závislosti na požadavcích aplikace `spark.executor.instances`, `spark.executor.cores`, a `spark.executor.memory`. Vykonavatele je proces spuštěn z aplikace Spark. Běží na pracovní uzel a zodpovídá provádět úkoly pro aplikaci. Výchozí číslo prováděcí moduly a velikostí prováděcí modul pro každý cluster se počítá na základě počtu pracovních uzlů a velikost uzlu pracovního procesu. Tyto informace jsou uloženy v `spark-defaults.conf` o hlavních uzlech clusteru.
@@ -158,8 +156,8 @@ Spuštění uživatelského rozhraní Yarn, jak je znázorněno na začátku toh
 
 ### <a name="for-data-analysts"></a>Pro datové analytiky
 
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: Použití Sparku v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 * [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insight analýza dat telemetrie používat Apache Spark v HDInsight](apache-spark-analyze-application-insight-logs.md)
 * [Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark](apache-spark-deep-learning-caffe.md)
@@ -167,7 +165,7 @@ Spuštění uživatelského rozhraní Yarn, jak je znázorněno na začátku toh
 ### <a name="for-apache-spark-developers"></a>Pro vývojáře v Apache Spark
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
 * [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)

@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: raynew
-ms.openlocfilehash: 0cfbb258364ed684ff38b2be9f998d8ff0656251
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a7f09341c1362850409a940810a4e2dd20aa7f74
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864532"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745036"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Správa výstrah pro virtuální počítače Azure
+
 Výstrahy jsou odpovědí ze služby, že má prahová hodnota události dosažená nebo překračovat. Znalost, při může být důležité nízkých nákladech obchodní problémy start. Výstrahy většinou nedochází podle plánu, a to je užitečné vědět, co nejdříve po výstrahy zobrazují tehdy. Například pokud se nezdaří úlohy zálohování nebo obnovení zobrazení výstrahy do pěti minut od selhání. V řídicím panelu trezoru na dlaždici výstrahy zálohování zobrazuje úrovni upozornění a kritické události. V nastavení výstrah zálohování můžete zobrazit všechny události. Ale co můžete dělat, když výstraha nastane, pokud pracujete na samostatný problém? Pokud si nejste jisti, když se stane, výstrahy, může to být dílčí potíže nebo ho by mohly ohrozit data. Pokud chcete mít jistotu, že správných lidí si vědomi výstrahy – když k ní dojde, nakonfigurujte službu pro odeslání oznámení o výstrahách e-mailem. Podrobnosti o nastavení e-mailových oznámení najdete v tématu [konfigurace oznámení](backup-azure-monitor-vms.md#configure-notifications).
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>Jak najdu informace o výstrahách
+
 Chcete-li zobrazit informace o události, která vyvolala upozornění, je nutné otevřít část pojednávající o výstrahách zálohování. Existují dva způsoby, jak otevřete část pojednávající o výstrahách zálohování: buď z výstrahy zálohování dlaždici na řídicím panelu trezoru, nebo z část výstrahy a události.
 
 Otevřete okno zálohování výstrahy z dlaždice výstrahy zálohování:
@@ -43,6 +45,7 @@ Otevře se okno výstrahy zálohování v části Výstrahy a události:
     Přizpůsobit atributy zobrazí v seznamu, přečtěte si článek [zobrazit další událost atributy](backup-azure-monitor-vms.md#view-additional-event-attributes)
 
 ## <a name="configure-notifications"></a>Konfigurace oznámení
+
  Můžete nakonfigurovat službu pro odeslání e-mailová oznámení pro výstrahy, ke kterým došlo za poslední hodinu, nebo pokud dojde k určité typy událostí.
 
 Nastavení e-mailová oznámení pro výstrahy
@@ -62,14 +65,16 @@ Nastavení e-mailová oznámení pro výstrahy
 5. V **závažnost** dialogového okna, vyberte jednu nebo více úrovní, které chcete aktivovat e-mailové oznámení.
 6. Klikněte na **Uložit**.
 
-   ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Jaké typy výstrah jsou k dispozici pro zálohování virtuálních počítačů Azure IaaS?
+### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Jaké typy výstrah jsou k dispozici pro zálohování virtuálních počítačů Azure IaaS
+
    | Úroveň výstrahy | Zasílání upozornění |
    | --- | --- |
    | Kritická | selhání zálohování, obnovení selhalo. |
    | Upozornění | pro zálohování úloh bylo úspěšně dokončeno s upozorněními. (Příklad: některé zapisovače lokality nemohlo vytvřit snímek) |
    | Informační | v současné době nejsou k dispozici pro zálohování virtuálních počítačů Azure bez informační výstrahy |
 
-### <a name="are-there-situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>Dochází k situacím, že se e-mail neodešle, i když jsou oznámení nakonfigurovaná?
+### <a name="situations-where-email-isnt-sent-even-if-notifications-are-configured"></a>E-mail neodešle, i v případě, že jsou oznámení nakonfigurovaná situacích
+
 Existují situace, ve kterém se neodešle výstrahu, i když byla správně nakonfigurovaná oznámení. V následujících situacích, e-mailu nedocházelo k jejich odesílání do vyhnutí se zbytečnému vytváření výstrah:
 
 * Pokud jsou oznámení nakonfigurovaná na hodinový přehled a výstraha se vyvolá a vyřeší během hodiny.
@@ -79,9 +84,13 @@ Existují situace, ve kterém se neodešle výstrahu, i když byla správně nak
 
 ## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>Dostávat oznámení o úspěšném provedení zálohy pomocí protokolů aktivit
 
+> [!NOTE]
+> Jsme přesunuli na nový model čerpání protokoly aktivit z Azure Backup na trezory služby Recovery Services. Bohužel to má vliv generování protokolů aktivit v suverénních Cloudech Azure. Pokud uživatelé suverénní Cloud Azure vytvořili/nakonfigurované všechny výstrahy na základě protokolů aktivit prostřednictvím služby Azure Monitor, jak je uvedeno tady, nebude spuštěna. V takovém případě by doporučujeme takové uživatelům používat nastavení diagnostiky a pracovního prostoru LA nebo [reporting řešení Power BI](backup-azure-configure-reports.md) zobrazíte příslušné informace. Ve všech veřejných oblastech Azure, pokud uživatel je shromažďování protokolů aktivit služby obnovení do pracovního prostoru analýzy protokolů jak už bylo zmíněno [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity), neobjevila by se také tyto protokoly.
+
 Pokud chcete, abyste dostávali oznámení po zálohování jsou úspěšné, můžete upozornění založená na [protokoly aktivit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) trezoru.
 
 ### <a name="login-into-azure-portal"></a>Přihlaste se k webu Azure portal
+
 Přihlaste se k webu Azure portal a přejít k příslušné trezor služeb zotavení Azure a klikněte na část "Protokol aktivit" ve vlastnostech.
 
 ### <a name="identify-appropriate-log"></a>Identifikujte příslušný protokol
@@ -98,9 +107,7 @@ Pak klikněte na tlačítko "Přidat upozornění protokolu aktivit" Generovat v
 
 Klepnutím na tlačítko "Přidat upozornění protokolu aktivit" se zobrazí na obrazovce vidíte níže
 
-![Upozornění protokolu aktivit](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
-    
-Předplatné a skupina prostředků se používají k ukládání upozornění. Kritéria budou předem vyplněné. Zajistěte, aby že všechny hodnoty jsou relevantní pro váš požadavek.
+![Upozornění protokolu aktivit](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png) předplatného a skupiny prostředků se používají k ukládání upozornění. Kritéria budou předem vyplněné. Zajistěte, aby že všechny hodnoty jsou relevantní pro váš požadavek.
 
 Pro úspěšné zálohy na úrovni označen jako "Informační" a stav jako "ÚSPĚCH".
 
@@ -112,18 +119,19 @@ Pomocí skupiny"akce" definujete akce, při generování výstrahy. Kliknutím n
 
 ![Skupina akcí protokolu aktivit](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-
 Po kliknutí na OK, vygeneruje se upozornění protokolu aktivit a následné aktivity protokoly pro úspěšné zálohování se aktivuje akci podle skupiny akcí.
 
 ### <a name="limitations-on-alerts"></a>Omezení týkající se výstrah
+
 Výstrahy založené na událostech se vztahují následující omezení:
 
 1. Výstrahy se zobrazí u všech virtuálních počítačů v trezoru služby Recovery Services. Nelze nastavit upozornění pro celou dílčí sadu virtuálních počítačů v trezoru služby Recovery Services.
 2. Výstrahy se odesílají z "alerts-noreply@mail.windowsazure.com". Momentálně nelze upravit odesílatelem e-mailu.
 
 ## <a name="next-steps"></a>Další postup
+
 Informace o opětovné vytvoření virtuálního počítače z bodu obnovení, projděte si [obnovení virtuálních počítačů Azure](backup-azure-arm-restore-vms.md).
 
-Pokud potřebujete informace o ochraně virtuálních počítačů, přečtěte si [stručně a přehledně: zálohování virtuálních počítačů do trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md). 
+Pokud potřebujete informace o ochraně virtuálních počítačů, přečtěte si [stručně a přehledně: Zálohování virtuálních počítačů do trezoru služby Recovery Services](backup-azure-vms-first-look-arm.md).
 
 Další informace o úlohách správy pro zálohy virtuálních počítačů v následujícím článku [záloh virtuálních počítačů Azure spravovat](backup-azure-manage-vms.md).

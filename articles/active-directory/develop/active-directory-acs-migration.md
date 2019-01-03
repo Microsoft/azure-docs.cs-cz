@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: e68099609e5a4a27dfae7956fa43634d38311a22
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 01781725e3224e2cab49a5e7cc7dcc33030ce9fb
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015768"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971548"
 ---
-# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postupy: Migrace z Azure Access Control Service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Postup: Migrace ze služby Azure Access Control Service
 
 Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
 
@@ -113,9 +113,9 @@ Všechny součásti řízení přístupu k listopadu 2017, jsou plně podporovan
 
 Tady je plán pro ukončení podpory pro řízení přístupu na komponenty:
 
-- **. Listopadu 2017**: prostředí správce Azure AD na portálu Azure classic [byl vyřazen z provozu](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici na adrese URL nového, vyhrazené Správa oboru názvů pro řízení přístupu: `https://manage.windowsazure.com?restoreClassic=true`. Zobrazit vaše stávající obory názvů, povolovat a zakazovat obory názvů a odstraňovat obory názvů, pokud budete chtít použijte tuto adresu URl.
-- **2. dubnem 2018**: na portálu Azure classic portal byl zcela vyřazen z provozu, což znamená, Správa oboru názvů řízení přístupu už nejsou k dispozici prostřednictvím libovolnou adresu URL. V tuto chvíli nelze zakázat nebo povolit, odstranit nebo výčet obory názvů řízení přístupu. Ale na portálu pro správu řízení přístupu budou plně funkční a v `https://\<namespace\>.accesscontrol.windows.net`. Fungovat normálně dál všech ostatních součástí řízení přístupu.
-- **7. listopadu 2018**: řízení přístupu na všechny komponenty jsou trvale vypnout. To zahrnuje na portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a stroj pravidel transformace token. V tomto okamžiku všechny požadavky odeslané na řízení přístupu (umístěný ve \<obor názvů\>. accesscontrol.windows.net) selžou. Měli jste migrovali všechny existující aplikace a služby na jiné technologie dobře před tímto časem.
+- **. Listopadu 2017**:  Prostředí správce Azure AD na portálu Azure classic [byl vyřazen z provozu](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/). V tomto okamžiku je k dispozici na adrese URL nového, vyhrazené Správa oboru názvů pro řízení přístupu: `https://manage.windowsazure.com?restoreClassic=true`. Zobrazit vaše stávající obory názvů, povolovat a zakazovat obory názvů a odstraňovat obory názvů, pokud budete chtít použijte tuto adresu URl.
+- **2. dubnem 2018**: Na portálu Azure classic je zcela vyřazený, což znamená, že správa oboru názvů řízení přístupu už nejsou k dispozici prostřednictvím libovolnou adresu URL. V tuto chvíli nelze zakázat nebo povolit, odstranit nebo výčet obory názvů řízení přístupu. Ale na portálu pro správu řízení přístupu budou plně funkční a v `https://\<namespace\>.accesscontrol.windows.net`. Fungovat normálně dál všech ostatních součástí řízení přístupu.
+- **7. listopadu 2018**: Všechny součásti řízení přístupu jsou trvale vypnout. To zahrnuje na portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a stroj pravidel transformace token. V tomto okamžiku všechny požadavky odeslané na řízení přístupu (umístěný ve \<obor názvů\>. accesscontrol.windows.net) selžou. Měli jste migrovali všechny existující aplikace a služby na jiné technologie dobře před tímto časem.
 
 > [!NOTE]
 > Zásadu zakazuje obory názvů, které nebyly požadovaný token pro určitou dobu. Od počáteční. září 2018 tuto dobu je aktuálně na 14 dnů nečinnosti, ale to bude zkrátila na 7 dnů nečinnosti v následujících týdnech. Pokud máte obory názvů řízení přístupu, které jsou aktuálně zakázány, můžete si [stáhněte a nainstalujte prostředí PowerShell služby ACS](#download-and-install-acs-powershell) znovu povolit namespace (s).
@@ -151,7 +151,7 @@ SharePoint 2013, 2016, a Sharepointu Online zákazníci využili dlouho ACS pro 
 
 | Funkce | Doprovodné materiály |
 | ------- | -------- |
-| Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS se použil jako formátuje zprostředkovatele, který vytvořil token služby SharePoint s aktualizací s využitím Azure AD. Teď můžete [připojit přímo k Azure AD pomocí služby Azure AD App Gallery SharePoint na místní aplikace SharePoint](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
+| Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS byl použit jako zprostředkovatel, který vytvořil SharePoint kompatibilní s formáty tokenu Azure AD. Teď můžete [připojit přímo k Azure AD pomocí služby Azure AD App Gallery SharePoint na místní aplikace SharePoint](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Aplikace ověřování a ověřování na serveru v SharePoint v místním prostředí](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. | 
 | [Vztah důvěryhodnosti s nízkou autorizace Sharepointových doplňků (Zprostředkovatel hostovaný a hostované služby SharePoint)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |
 | [Vyhledávání hybridní cloudové služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |
@@ -162,7 +162,7 @@ Pro webové aplikace, které používají řízení přístupu k ověřování u
 
 - Těsnou integraci s Windows Identity Foundation (WIF).
 - Federace se službou Google, Facebooku, Yahoo, Azure Active Directory a AD FS účty a účty Microsoft.
-- Podpora pro následující protokoly pro ověřování: koncept 13 OAuth 2.0, WS-Trust a Web Services Federation (WS-Federation).
+- Podpora pro následující protokoly pro ověřování: Koncept 13 OAuth 2.0, WS-Trust a Web Services Federation (WS-Federation).
 - Podpora pro token formátech: JSON Web Token (JWT), SAML 1.1, SAML 2.0 a Simple Web Token (SWT).
 - Prostředí pro zjišťování domovské sféry, integrované do technologie WIF, který umožňuje uživatelům vybrat si typ účtu, které používají pro přihlášení. Toto prostředí je hostovaný webovou aplikací a je plně přizpůsobitelná.
 - Token transformace, která umožňuje bohaté možnosti přizpůsobení deklarací přijatých webové aplikace z řízení přístupu, včetně:
@@ -307,7 +307,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
     - Jednoduchá hesla, který je vytvořen pro identitu služby
     - Znaménkem SWT pomocí symetrického klíče nebo X509 certifikátu
     - Tokenu SAML vydaném pomocí důvěryhodného zprostředkovatele identity (obvykle, instance služby AD FS)
-- Podpora pro token formátech: token JWT, SAML 1.1, SAML 2.0 nebo SWT.
+- Podpora pro token formátech: Token JWT, SAML 1.1, SAML 2.0 a SWT.
 - Pravidla transformace jednoduché tokenu.
 
 Identita služby Access Control se obvykle používají k implementaci serveru pro ověřování. 

@@ -1,20 +1,17 @@
 ---
 title: Připojení aplikace ke službě Azure Database for MySQL
 description: Tento dokument obsahuje seznam aktuálně podporovaných připojovacích řetězců pro aplikace pro připojení s využitím Azure Database for MySQL, včetně technologie ADO.NET (C#), JDBC, Node.js, rozhraní ODBC, PHP, Python nebo Ruby.
-services: mysql
 author: ajlam
 ms.author: andrela
-editor: jasonwhowell
-manager: kfile
 ms.service: mysql
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 06bd91adb0a86198f7709d0989624657ce00dfa9
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 721950160974ef21f88791e64a41cfe0dd2b23ba
+ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054412"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "53546755"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikací k Azure Database for MySQL
 Toto téma uvádí typy řetězce připojení, které jsou podporovány službou Azure Database for MySQL, spolu s příklady a šablony. V připojovacím řetězci může mít různé parametry a nastavení.
@@ -65,7 +62,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o řetězci připojení z webu Azure portal
-V [webu Azure portal](https://portal.azure.com), přejděte na váš server Azure Database for MySQL a pak klikněte na tlačítko **připojovací řetězce** zobrazíte seznam řetězců pro vaši instanci: ![Connection řetězce podokně ve službě Azure portál](./media/howto-connection-strings/connection-strings-on-portal.png)
+V [webu Azure portal](https://portal.azure.com), přejděte na váš server Azure Database for MySQL a pak klikněte na tlačítko **připojovací řetězce** zobrazíte seznam řetězců pro vaši instanci: ![V podokně připojovací řetězce na webu Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Řetězec obsahuje podrobnosti, jako jsou ovladače, server a další databáze parametry připojení. Upravte tyto příklady použití vlastní parametry, jako je například název databáze, heslo a tak dále. Potom můžete tento řetězec pro připojení k serveru z vašeho kódu a aplikací.
 

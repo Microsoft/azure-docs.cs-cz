@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: a522d436328a3aeb1ed365baa2ec1e3b9d3387ed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 4b6eb0aa7011226fda667370f3e854081b795ae6
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385019"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744866"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Práce v ekosystému Apache Hadoop v HDInsight z počítače s Windows
 
@@ -26,9 +26,9 @@ Prostředí Azure PowerShell je skriptovací prostředí, které můžete použ�
 
 Příklady úloh, které můžete provést v prostředí PowerShell:
 
-* [Vytvářet clustery pomocí Powershellu](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [Spouštějte dotazy Apache Hive pomocí Powershellu](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Správa clusterů pomocí Powershellu](hdinsight-administer-use-powershell.md)
+* [Vytvářet clustery pomocí prostředí PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+* [Dotazy Apache Hive pomocí Powershellu spusťte](hadoop/apache-hadoop-use-hive-powershell.md).
+* [Správa clusterů pomocí prostředí PowerShell](hdinsight-administer-use-powershell.md).
 
 Postupujte podle kroků a [instalace a konfigurace Azure Powershellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) získat nejnovější verzi. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny pro Azure Resource Manager, najdete v článku [migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
@@ -54,11 +54,11 @@ Příklady úloh, které vám pomůžou s Visual Studio a nástrojů Data Lake p
 Visual Studio pomocí sady .NET SDK můžete použít ke správě clusterů a vyvíjet aplikace pro velké objemy dat. Jiná Integrovaná vývojová prostředí můžete použít pro následující úlohy, ale příklady jsou uvedeny v sadě Visual Studio.
 
 Příklady úloh, které vám pomůžou s využitím .NET SDK v sadě Visual Studio:
-* [Vytváření clusterů a práci v HDInsight z aplikace rozhraní .NET Framework](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
-* [Spouštějte dotazy Apache Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)
-* [Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoopu](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Vytváření clusterů a práci v HDInsight z aplikace rozhraní .NET Framework](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* [Spouštějte dotazy Apache Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+* [Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoopu](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 
-> TIP   
+> [!TIP]
 > Pokud používáte řešení .NET s clustery HDInsight se systémem Windows, je vhodná doba k plánování migrace na linuxových clusterech. Další informace najdete v tématu [řešení migrace .NET pro Windows na základě HDInsight založených na Linuxu HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 
 ## <a name="intellij-idea-and-eclipse-ide-for-spark-clusters"></a>Intellij IDEA a Eclipse IDE pro clustery Spark
@@ -85,7 +85,7 @@ Pokud narazíte na situace, kdy je nutné použít nástroj nebo technologii, kt
 
 * **Prostředí bash (beta verze) ve Windows 10** poskytuje Linux podsystému ve Windows. Bash můžete přímo spouštět nástroje Linux bez nutnosti udržovat vyhrazené instalace systému Linux. [Nainstalujte a spusťte Bash beta ve Windows 10](https://msdn.microsoft.com/commandline/wsl/install_guide)
 * **Docker pro Windows** poskytuje přístup k mnoha nástrojů založených na Linuxu a můžete spustit přímo z Windows. Například můžete použít Docker a spusťte Beeline klienta pro Hive přímo z Windows. Můžete také použít Docker ke spuštění místní aplikace Jupyter notebook a vzdálené připojení ke Sparku v HDInsight. [Začínáme s Docker pro Windows](https://docs.docker.com/docker-for-windows/)
-* **[MobaXTerm](http://mobaxterm.mobatek.net/)**  umožňuje graficky procházení systému souborů clusteru přes připojení SSH.
+* **[MobaXTerm](https://mobaxterm.mobatek.net/)**  umožňuje graficky procházení systému souborů clusteru přes připojení SSH.
 
 ## <a name="next-steps"></a>Další postup
 Pokud teprve začínáte pracovat se v clusterech se systémem Linux, přečtěte si články postupujte podle:

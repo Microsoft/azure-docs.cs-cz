@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 12/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 973b5d3f40968790dc6153ae91d1638cb83202ee
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 77225c4d659755ec6de1a14bf67bd0a62659fb6a
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384373"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753859"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy událostí filtrování pro předplatná Event gridu
 
@@ -141,6 +141,7 @@ Rozšířené filtrování má následující omezení:
 * 512 znaků na jednu řetězcovou hodnotu
 * Pět hodnoty **v** a **není v** operátory
 * Klíč může mít pouze jednu úroveň vnoření (např. data.key1)
+* Schémata vlastních událostí, dají se filtrovat pouze na pole nejvyšší úrovně
 
 Stejný klíč můžete použít ve více než jeden filtr.
 

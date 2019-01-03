@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 12/202018
 ms.author: jingwang
-ms.openlocfilehash: 1f3e9be3a0048c4bf2e87ac23cbdc76b1aaa649f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 61ac0eeeb177ffccbe10d4ab049d3541ac6aeb60
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166402"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810419"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopírování dat z koncového bodu HTTP pomocí Azure Data Factory
 
@@ -28,6 +28,12 @@ ms.locfileid: "49166402"
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z koncového bodu HTTP. Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
+Rozdíly mezi tento konektor HTTP [REST konektor](connector-rest.md) a [webový tabulky konektor](connector-web-table.md) jsou:
+
+- **Konektor REST** konkrétně podpora kopírování dat z rozhraní RESTful API; 
+- **Konektor HTTP** je obecný k načtení dat z jakékoli koncového bodu HTTP, třeba ke stažení souboru. Než konektor REST bude k dispozici, může dojít k používání konektoru HTTP ke zkopírování dat z rozhraní RESTful API, které je podporované, ale méně funkční porovnání konektor REST.
+- **Webový konektor tabulky** výpisy tabulky obsah webové stránce HTML.
+
 ## <a name="supported-capabilities"></a>Podporované funkce
 
 Kopírování dat z HTTP kódu do jakékoli podporovaného úložiště dat jímky. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -35,10 +41,8 @@ Kopírování dat z HTTP kódu do jakékoli podporovaného úložiště dat jím
 Můžete použít tento konektor HTTP pro:
 
 - Načtení dat z koncového bodu HTTP/S s využitím HTTP **získat** nebo **příspěvek** metody.
-- Načtení dat pomocí jedné z následujících ověření: **anonymní**, **základní**, **Digest**, **Windows**, nebo  **ClientCertificate**.
+- Načtení dat pomocí jedné z následujících ověření: **Anonymní**, **základní**, **Digest**, **Windows**, nebo **ClientCertificate**.
 - Zkopírovat odpověď HTTP jako-je a analyzovat pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
-
-Rozdíl mezi tento konektor a [webový tabulky konektor](connector-web-table.md) je, že tabulka konektor webových extrahuje obsah tabulky z webové stránce HTML.
 
 > [!TIP]
 > K testování požadavku HTTP pro načtení dat, než nakonfigurujete konektor HTTP ve službě Data Factory, přečtěte si o specifikace rozhraní API pro záhlaví a text požadavky. Nástroje, jako je Postman nebo ve webovém prohlížeči můžete použít k ověření.
@@ -111,7 +115,7 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a pak vyberte **všechny úkoly** > **spravovat soukromé klíče**.
 3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým běží hostitelská služba Integration Runtime (DIAHostService) s přístupem pro čtení k certifikátu.
 
-**Příklad 1: Použití certThumbprint**
+**Příklad 1: Pomocí certThumbprint**
 
 ```json
 {
@@ -131,7 +135,7 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 }
 ```
 
-**Příklad 2: Použití embeddedCertData**
+**Příklad 2: Pomocí embeddedCertData**
 
 ```json
 {
@@ -170,13 +174,13 @@ Chcete-li kopírovat data z protokolu HTTP, nastavte **typ** vlastnosti datové 
 | requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** (výchozí) a **příspěvek**. | Ne |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| Formát | Pokud chcete načíst data z koncového bodu HTTP jako-je bez analýzy a zkopírujte data do úložiště založené na souborech, přeskočte **formátu** části v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. V části **formátu**, nastavte **typ** vlastnost na jednu z těchto hodnot. Další informace najdete v tématu [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
+| formát | Pokud chcete načíst data z koncového bodu HTTP jako-je bez analýzy a zkopírujte data do úložiště založené na souborech, přeskočte **formátu** části v definici vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů souboru: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. V části **formátu**, nastavte **typ** vlastnost na jednu z těchto hodnot. Další informace najdete v tématu [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [textový formát](supported-file-formats-and-compression-codecs.md#text-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [formát Orc](supported-file-formats-and-compression-codecs.md#orc-format), a [formát Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Podporované úrovně:  **Optimální** a **nejrychlejší**. |Ne |
 
 > [!NOTE]
 > Podporovaná velikost datové části požadavku HTTP je přibližně 500 KB. Velikost datové části, které chcete předat do vašeho koncového bodu webové je větší než 500 KB, vezměte v úvahu dávkování datové části menších částech.
 
-**Příklad 1: Použití metody Get (výchozí)**
+**Příklad 1: Pomocí metody Get (výchozí)**
 
 ```json
 {
@@ -195,7 +199,7 @@ Chcete-li kopírovat data z protokolu HTTP, nastavte **typ** vlastnosti datové 
 }
 ```
 
-**Příklad 2: Použití metody Post**
+**Příklad 2: Pomocí metody Post**
 
 ```json
 {

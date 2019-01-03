@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: 1b6a77e78d3385c9dfd4e43e0e4242c870eb8c57
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d7df1c65b8588b97a6beb0a4c2428b3c6430c3b2
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012551"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53635693"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop v HDInsight a databází SQL
 
@@ -23,10 +23,10 @@ ms.locfileid: "53012551"
 
 Další informace o použití Apache Sqoop k importu a exportu mezi cluster Apache Hadoop v Azure HDInsight a databází Azure SQL Database nebo Microsoft SQL Server. Kroky v tomto dokumentu pomocí `sqoop` přímo z hlavního uzlu clusteru Hadoop. Použití SSH pro připojení k hlavnímu uzlu a spusťte příkazy v tomto dokumentu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu fungovat jenom s clustery HDInsight, které používají systém Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-> [!WARNING]
+> [!WARNING]  
 > Kroky v tomto dokumentu předpokládají, že jste již vytvořili databázi SQL Azure s názvem `sqooptest`.
 >
 > Tento dokument obsahuje příkazy jazyka T-SQL, které slouží k vytvoření a dotazování na tabulku v databázi SQL. Existuje mnoho klientů, které můžete použít tyto příkazy s využitím SQL Database. Doporučujeme následující klienty:
@@ -37,7 +37,7 @@ Další informace o použití Apache Sqoop k importu a exportu mezi cluster Apac
 
 ## <a name="create-the-table-in-sql-database"></a>Vytvoření tabulky ve službě SQL Database
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud používáte HDInsight cluster a databází SQL v [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md), přeskočte kroky v této části. Databáze a tabulky byly vytvořeny jako součást kroky [vytvoření clusteru a SQL database](hdinsight-use-sqoop.md) dokumentu.
 
 Použít pro připojení k SQL client `sqooptest` databáze ve službě SQL Database. Potom použijte následující příkaz T-SQL vytvořte tabulku s názvem `mobiledata`:
@@ -104,8 +104,8 @@ GO
 
     Pole v datech jsou oddělené tabulátorem a řádky jsou ukončeny znak nového řádku.
 
-    > [!IMPORTANT]
-    > `wasb:///` Cesta pracuje s clustery, které používají jako výchozí úložiště clusteru služby Azure Storage. Pro clustery, které používají Azure Data Lake Store, použijte `adl:///` místo.
+    > [!IMPORTANT]  
+    > `wasb:///` Cesta pracuje s clustery, které používají jako výchozí úložiště clusteru služby Azure Storage. Pro clustery, které používají Azure Data Lake Storage, použijte `adl:///` místo.
 
 2. Po dokončení importu použijte následující příkaz, který seznam dat v novém adresáři:
 
@@ -160,9 +160,9 @@ Můžete také použít Sqoop k importu a exportu dat z SQL serveru. Rozdíly me
 
 Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v tématu:
 
-* [Použití Oozie s HDInsight](../hdinsight-use-oozie.md): použití Sqoopu akce v pracovním postupu Oozie.
-* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): použití Hive k analýze letu zpoždění dat a potom použít Sqoop k exportování dat do Azure SQL database.
-* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najít další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
+* [Použití Apache Oozie s HDInsight](../hdinsight-use-oozie.md): Pomocí Sqoop akce v pracovním postupu Oozie.
+* [Analýza zpoždění letů pomocí HDInsight](../hdinsight-analyze-flight-delay-data.md): Analýza zpoždění letů pomocí Apache Hive a potom použít Sqoop k exportování dat do Azure SQL database.
+* [Nahrání dat do HDInsight](../hdinsight-upload-data.md): Najdete další metody pro nahrávání dat do HDInsight nebo Azure Blob storage.
 
 [hdinsight-versions]:  ../hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

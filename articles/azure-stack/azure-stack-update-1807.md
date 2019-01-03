@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: ce74d12e4ea91d8c230218081461bc375e250ce4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f87f93ebc739d75c796859c7091d4cf62a820a0
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260580"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714980"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Tento článek popisuje obsah balíčku 1807 aktualizace. Tato aktualizace zahrnuje vylepšení, oprav a známé problémy pro tuto verzi sady Azure Stack a kde se stáhnout aktualizaci. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -158,13 +158,12 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Instalace služby Azure Stack [aktualizovat 1805](azure-stack-update-1805.md) před instalací aktualizace Azure Stack 1807.  Došlo k dispozici žádná aktualizace 1806.  
-
-- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1805](azure-stack-update-1805.md#post-update-steps).  
+- Instalace služby Azure Stack [aktualizovat 1805](azure-stack-update-1805.md) před instalací aktualizace Azure Stack 1807. Došlo k dispozici žádná aktualizace 1806.  
+ 
   > [!TIP]  
   > Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
@@ -244,16 +243,16 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 
    Upozornění #1:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
 
   Upozornění #2:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
 
   Obě výstrahy můžete bezpečně ignorovat a bude automaticky zavřít v čase.  
 
@@ -261,10 +260,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 2812138 | IS --> 
 - Může se zobrazit upozornění pro **úložiště** komponenta, která mají následující podrobnosti:
 
-   - Název: Chyba interní komunikace se službou Storage  
-   - ZÁVAŽNOST: kritické  
-   - KOMPONENTA: úložiště  
-   - Popis: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
+   - JMÉNO: Chyba interní komunikace se službou Storage  
+   - ZÁVAŽNOST: Kritická  
+   - KOMPONENTY: Storage  
+   - POPIS: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
 
     Upozornění můžete ignorovat, ale budete muset ručně zavřete výstrahu.
 
@@ -278,10 +277,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Při použití rutiny Powershellu **Start AzsScaleUnitNode** nebo **Stop-AzsScaleunitNode** ke správě jednotek škálování, první pokus o spuštění nebo zastavení jednotka škálování může selhat. Pokud se rutina nezdaří při prvním spuštění, spusťte rutinu znovu. Druhé spuštění by měl úspěšně dokončit operaci. 
 
 <!-- 2494144 - IS, ASDK --> 
-- Když vyberete velikost virtuálního počítače pro nasazení virtuálního počítače, některé velikosti virtuálních počítačů řady F-Series se nezobrazí jako součást modulu pro výběr velikost při vytváření virtuálního počítače. Tyto velikosti virtuálních počítačů se nezobrazí v selektoru: *F8s_v2*, *F16s_v2*, *F32s_v2*, a *F64s_v2*.  
+- Když vyberete velikost virtuálního počítače pro nasazení virtuálního počítače, některé velikosti virtuálních počítačů řady F-Series se nezobrazí jako součást modulu pro výběr velikost při vytváření virtuálního počítače. Tyto velikosti virtuálních počítačů se nezobrazí v oblasti pro výběr: *F8s_v2*, *F16s_v2*, *F32s_v2*, a *F64s_v2*.  
   Jako alternativní řešení použijte jednu z následujících metod nasazení virtuálního počítače. V každé metodě je třeba zadat velikost virtuálního počítače, které chcete použít.
 
-  - **Šablona Azure Resource Manageru:** při použití šablony, nastavte *vmSize* v šabloně na velikost virtuálního počítače, který chcete použít. Například následující položka se používá k nasazení virtuálního počítače, který používá *F32s_v2* velikost:  
+  - **Šablona Azure Resource Manageru:** Při použití šablony, nastavte *vmSize* v šabloně na velikost virtuálního počítače, který chcete použít. Například následující položka se používá k nasazení virtuálního počítače, který používá *F32s_v2* velikost:  
 
     ```
         "properties": {
@@ -289,9 +288,9 @@ Toto jsou známé problémy této verze sestavení po instalaci.
                 "vmSize": "Standard_F32s_v2"
         },
     ```  
-  - **Azure CLI:** můžete použít [az vm vytvořit](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) příkaz a zadejte velikost virtuálního počítače jako parametr, podobně jako `--size "Standard_F32s_v2"`.
+  - **Azure CLI:** Můžete použít [az vm vytvořit](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) příkaz a zadejte velikost virtuálního počítače jako parametr, podobně jako `--size "Standard_F32s_v2"`.
 
-  - **Prostředí PowerShell:** pomocí prostředí PowerShell můžete použít [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) s parametrem, který určuje velikost virtuálního počítače, podobně jako `-VMSize "Standard_F32s_v2"`.
+  - **Prostředí PowerShell:** V prostředí PowerShell můžete použít [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) s parametrem, který určuje velikost virtuálního počítače, podobně jako `-VMSize "Standard_F32s_v2"`.
 
 
 <!-- TBD - IS ASDK --> 

@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080261"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975505"
 ---
-# <a name="configure-containers"></a>Konfigurace kontejnerů
+# <a name="configure-language-understanding-docker-containers"></a>Konfigurace kontejnery dockeru Language Understanding 
 
 Běhové prostředí kontejneru Language Understanding (LUIS) je nakonfigurovaný nástrojem `docker run` argumenty příkazu. Služba LUIS má několik požadovaná nastavení, společně s pár volitelná nastavení. Několik [příklady](#example-docker-run-commands) příkazu jsou k dispozici. Nastavení pro konkrétní kontejner se vstup [nastavení připojování](#mount-settings) a nastavení fakturace. 
 
@@ -32,11 +32,11 @@ Tento kontejner má následující nastavení:
 |--|--|--|
 |Ano|[ApiKey](#apikey-setting)|Lze sledovat fakturační údaje.|
 |Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru.|
-|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure.|
+|Ano|[Fakturace](#billing-setting)|Určuje identifikátor URI prostředku služby koncového bodu v Azure.|
 |Ano|[Smlouva EULA](#eula-setting)| Označuje, že jste přijali licenční pro kontejner.|
 |Ne|[Fluentd](#fluentd-settings)|Zápis protokolu a volitelně data metriky Fluentd server.|
 |Ne|[Protokolování](#logging-settings)|Poskytuje podporu pro váš kontejner protokolování ASP.NET Core. |
-|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z [hostitelský počítač](luis-container-howto.md#the-host-computer) do kontejneru a z kontejneru zpět na hostitelském počítači.|
+|Ano|[Připojí](#mount-settings)|Čtení a zápis dat z hostitelského počítače do kontejneru a z kontejneru však zpět na hostitelském počítači.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), A [ `Eula` ](#eula-setting) nastavení se používají společně a pro všechny tři je; v opačném případě je nutné zadat platné hodnoty kontejner se nespustí. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](luis-container-howto.md#billing).
@@ -45,32 +45,25 @@ Tento kontejner má následující nastavení:
 
 `ApiKey` Nastavení určuje klíč prostředku Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro ApiKey a hodnota musí být platný klíč pro _Language Understanding_ prostředek určený pro [ `Billing` ](#billing-setting) nastavení konfigurace.
 
-Toto nastavení můžete najít na dvou místech:
+Toto nastavení najdete v následujících umístěních:
 
 * Azure portal: **Language Understanding** správy prostředků v části **klíče**
-* Služba LUIS portál: **klíče a koncových bodů nastavení** stránky. 
+* Služba LUIS portálu: **Nastavení koncového bodu a klíče** stránky. 
 
 Nepoužívejte starter klíč nebo klíč pro vytváření obsahu. 
 
 ## <a name="applicationinsights-setting"></a>Nastavení ApplicationInsights
 
-`ApplicationInsights` Nastavení slouží k přidání [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru. Služba Application Insights nabízí podrobné monitorování vašeho kontejneru. Umožňuje snadné monitorování vašeho kontejneru dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vašem kontejneru.
-
-V následující tabulce jsou popsaná nastavení konfigurace podporované v rámci `ApplicationInsights` oddílu.
-
-|Požaduje se| Název | Typ dat | Popis |
-|--|------|-----------|-------------|
-|Ne| `InstrumentationKey` | Řetězec | Instrumentační klíč Application Insights instance, do jaké telemetrická data pro kontejner se odesílají. Další informace najdete v tématu [Application Insights pro ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
-
+[!INCLUDE [Container shared configuration ApplicationInsights settings](../../../includes/cognitive-services-containers-configuration-shared-settings-application-insights.md)]
 
 ## <a name="billing-setting"></a>Nastavení fakturace
 
 `Billing` Nastavení, určuje identifikátor URI koncového bodu z _Language Understanding_ prostředků v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být platný identifikátor URI koncového bodu pro _Language Understanding_ prostředků v Azure.
 
-Toto nastavení můžete najít na dvou místech:
+Toto nastavení najdete v následujících umístěních:
 
 * Azure portal: **Language Understanding** přehled s popiskem `Endpoint`
-* Služba LUIS portál: **klíče a koncových bodů nastavení** stránce jako součást identifikátor URI koncového bodu.
+* Služba LUIS portálu: **Nastavení koncového bodu a klíče** stránce jako součást identifikátor URI koncového bodu.
 
 |Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
@@ -78,51 +71,17 @@ Toto nastavení můžete najít na dvou místech:
 
 ## <a name="eula-setting"></a>Smlouva EULA nastavení
 
-`Eula` Nastavení znamená, že jste přijali licenční pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být nastavena na `accept`.
-
-|Požaduje se| Název | Typ dat | Popis |
-|--|------|-----------|-------------|
-|Ano| `Eula` | Řetězec | Přijetí licence<br><br>Příklad:<br>`Eula=accept` |
-
-Kontejnery služby cognitive Services se licencují pod [vaší smlouvě](https://go.microsoft.com/fwlink/?linkid=2018657) řídící používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, souhlasíte s tím, že je vaší smlouvě upravující používání Azure [Microsoft Online Subscription Agreement](https://go.microsoft.com/fwlink/?linkid=2018755), která zahrnuje [podmínky Online služeb ](https://go.microsoft.com/fwlink/?linkid=2018760). Pro verze Preview, souhlasíte také s [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://go.microsoft.com/fwlink/?linkid=2018815). Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
+[!INCLUDE [Container shared configuration eula settings](../../../includes/cognitive-services-containers-configuration-shared-settings-eula.md)]
 
 ## <a name="fluentd-settings"></a>Nastavení Fluentd
 
-Fluentd je open source kolekce pro jednotné přihlašování. `Fluentd` Nastavení spravovat připojení kontejneru [Fluentd](https://www.fluentd.org) serveru. Kontejner LUIS zahrnuje poskytovatele Fluentd protokolování, který umožňuje zapisovat protokoly kontejneru a volitelně data metriky Fluentd server.
 
-V následující tabulce jsou popsaná nastavení konfigurace podporované v rámci `Fluentd` oddílu.
-
-| Název | Typ dat | Popis |
-|------|-----------|-------------|
-| `Host` | Řetězec | IP adresa nebo název hostitele DNS Fluentd serveru. |
-| `Port` | Integer | Port serveru Fluentd.<br/> Výchozí hodnota je 24224. |
-| `HeartbeatMs` | Integer | Interval prezenčního signálu v milisekundách. Pokud žádný provoz událostí byl odeslán před vypršením platnosti tento interval, na Fluentd server přijde prezenční signál. Výchozí hodnota je 60000 milisekund (1 minuta). |
-| `SendBufferSize` | Integer | Vyrovnávací paměť sítě v bajtů přidělených pro operace odeslání. Výchozí hodnota je 32768 bajtů (32 kilobajtů). |
-| `TlsConnectionEstablishmentTimeoutMs` | Integer | Časový limit v milisekundách pro navázání připojení SSL/TLS s Fluentd serveru. Výchozí hodnota je 10000 milisekund (10 sekund).<br/> Pokud `UseTLS` je nastavena na hodnotu false, tato hodnota se ignoruje. |
-| `UseTLS` | Logická hodnota | Označuje, zda kontejner musí používat protokol SSL/TLS pro komunikaci se serverem Fluentd. Výchozí hodnota je false. |
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
 ## <a name="logging-settings"></a>Nastavení protokolování
+ 
+[!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
-`Logging` Nastavení spravovat podporu protokolování ASP.NET Core pro váš kontejner. Pro váš kontejner, který používáte pro aplikace ASP.NET Core můžete použít stejný konfigurační nastavení a hodnoty. 
-
-Podporuje následující zprostředkovatele protokolování LUIS kontejneru:
-
-|Poskytovatel|Účel|
-|--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|ASP.NET Core `Console` zprostředkovatele. Všechna nastavení konfigurace ASP.NET Core a výchozí hodnoty pro tohoto zprostředkovatele protokolování jsou podporovány.|
-|[Ladění](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|ASP.NET Core `Debug` zprostředkovatele. Všechna nastavení konfigurace ASP.NET Core a výchozí hodnoty pro tohoto zprostředkovatele protokolování jsou podporovány.|
-|[Disk](#disk-logging)|JSON zprostředkovatele. Tento zprostředkovatel protokolování zapíše data protokolu připojení výstupu.|
-
-### <a name="disk-logging"></a>Disk protokolování
-  
-`Disk` Protokolování zprostředkovatel podporuje následující nastavení:  
-
-| Název | Typ dat | Popis |
-|------|-----------|-------------|
-| `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
-| `MaxFileSize` | Integer | Maximální velikost v megabajtech (MB), soubor protokolu. Když velikost aktuálního souboru protokolu splňuje nebo překročí tuto hodnotu, nový soubor protokolu je spuštěn poskytovatel protokolování. Pokud není zadána hodnota -1, velikost souboru protokolu je omezen pouze maximální velikost souboru, pokud existuje, pro výstupní připojení. Výchozí hodnota je 1. |
-
-Další informace o konfiguraci protokolování podpora ASP.NET Core najdete v tématu [konfigurační soubor nastavení](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
 
 ## <a name="mount-settings"></a>Nastavení připojování
 
@@ -141,39 +100,16 @@ Následující tabulka popisuje nastavení podporováno.
 
 ## <a name="hierarchical-settings"></a>Hierarchické nastavení
 
-Nastavení pro kontejner LUIS jsou hierarchické a všechny kontejnery na [hostitelský počítač](luis-container-howto.md#the-host-computer) pomocí sdílených hierarchie.
+[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
 
-Můžete použít jednu z následujících nastavení:
-
-* [Proměnné prostředí](#environment-variable-settings)
-* [Argumenty příkazového řádku](#command-line-argument-settings)
-
-Hodnoty proměnných prostředí přepsat hodnoty argumentů příkazového řádku, které pak přepsat výchozí hodnoty pro image kontejneru. Pokud chcete zadat jiné hodnoty v proměnné prostředí a argument příkazového řádku pro stejné nastavení konfigurace, hodnota v proměnné prostředí používá vytvořenou instanci kontejneru.
-
-|Priorita|Nastavení umístění|
-|--|--|
-|1|Proměnná prostředí| 
-|2|Příkazový řádek|
-|3|Výchozí hodnota image kontejneru|
-
-### <a name="environment-variable-settings"></a>Nastavení proměnné prostředí
-
-Výhody použití proměnné prostředí jsou:
-
-* Je možné nakonfigurovat několik nastavení.
-* Více kontejnerů můžete použít stejné nastavení.
-
-### <a name="command-line-argument-settings"></a>Nastavení argument příkazového řádku
-
-Výhodou použití argumentů příkazového řádku je, že každý kontejner může použít jiná nastavení.
 
 ## <a name="example-docker-run-commands"></a>Spusťte příkazy dockeru příklad
 
 Následující příklady ukazují, jak napsat a použít pomocí nastavení konfigurace `docker run` příkazy.  Po spuštění kontejneru nadále běžel dokud [Zastavit](luis-container-howto.md#stop-the-container) ho.
 
 
-* **Znak pro pokračování řádku**: příkazy dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
-* **Pořadí argumentů**: Neměňte pořadí argumentů, pokud máte velmi zkušenosti s kontejnery dockeru.
+* **Znak pro pokračování řádku**: Příkazy dockeru v následujících částech použijte zpětné lomítko `\`, jako znak pro pokračování řádku. Nahraďte nebo odstraňte tuto podle požadavků vašeho hostitelského operačního systému. 
+* **Pořadí argumentů**: Pořadí argumentů nezmění, pokud máte velmi zkušenosti s kontejnery dockeru.
 
 Nahradit {_argument_name_} s vlastními hodnotami:
 

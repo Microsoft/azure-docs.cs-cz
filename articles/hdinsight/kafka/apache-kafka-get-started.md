@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 02461f5002c048fcabcde21cd2e9881b94dd3be3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602830"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976762"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření Apache Kafka v clusteru HDInsight
 
@@ -49,7 +49,13 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 
 K vytvoření clusteru Apache Kafka ve službě HDInsight použijte následující postup:
 
-1. Na webu [Azure Portal](https://portal.azure.com), vyberte **+ Vytvořit prostředek**, **Data a analýzy** a poté vyberte **HDInsight**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+
+1. V nabídce vlevo vyberte **+ vytvořit prostředek**.
+
+1. V části **Azure marketplace**vyberte **Analytics**.
+
+1. V části **doporučené**vyberte **HDInsight**.
    
     ![Vytvoření clusteru HDInsight](./media/apache-kafka-get-started/create-hdinsight.png)
 

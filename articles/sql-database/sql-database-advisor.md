@@ -9,22 +9,22 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: e5480e5e071d541d12e96ddd549e496c7f974f81
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f55d3eb67bb9c494a3d055e39d970c9a440dfc67
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271041"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53603427"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
 
 Azure SQL Database se učí a adaptuje spolu s vaší aplikace. Poskytuje přizpůsobená doporučení, které vám umožní maximalizovat výkon vašich databází SQL. SQL Database průběžně vyhodnocuje a analyzuje historie využití vašich databází SQL. Doporučení, které jsou k dispozici jsou založeny na vzorce jedinečné databázové úlohy a Pomozte nám vylepšit výkon.
 
 > [!TIP]
-> [Automatické ladění](sql-database-automatic-tuning.md) je doporučená metoda pro optimalizaci výkonu. [Intelligent Insights](sql-database-intelligent-insights.md) je doporučená metoda pro sledování výkonu. 
+> [Automatické ladění](sql-database-automatic-tuning.md) je doporučená metoda automaticky vyladit některé z nejběžnějších problémů s výkonem databáze. [Informace o výkonu dotazování](sql-database-query-performance.md) je doporučená metoda pro potřeby monitorování základní výkonem Azure SQL Database. [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) je doporučená metoda pro rozšířené monitorování výkonu databáze ve velkém měřítku, s integrovanými inteligentními funkcemi pro řešení potíží s výkonem automatizované.
 >
 
 ## <a name="create-index-recommendations"></a>Vytvoření doporučení indexu

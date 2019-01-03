@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 12/12/2018
-ms.openlocfilehash: 748f4e56b4b7fa52928f8f6507960ec35b5fe6e5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314393"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789903"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -135,9 +135,8 @@ Další články pro řešení problémů WMI nelze nalézt v následujících �
 
 ## <a name="unsupported-operating-systems"></a>Nepodporovaný operační systémy
 
-Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility.
-
-Další informace o operačních systémech, které jsou podporovány službou Azure Site Recovery, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
+Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility. Vyhněte se použití privátní opravy.
+Chcete-li zobrazit seznam operační systémy a verze jádra, které Azure Site Recovery podporuje, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Spouštěcí a systémové oddíly nebo svazky nejsou stejném disku (ID chyby: 95309)
 
@@ -146,6 +145,10 @@ Před 9.20 verze, spouštěcí a systémové oddíly nebo svazky na různých di
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Systémový oddíl na více discích (ID chyby: 95313)
 
 Dříve než ve verzi 9.20 kořenovém oddílu nebo svazku rozdělený na několik disků se má nepodporovanou konfiguraci. Z [9.20 verze](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), tato konfigurace je podporovaná. Tato podpora používali nejnovější verzi.
+
+## <a name="grub-uuid-failure-errorid-95320"></a>Selhání kontrole UUID (ID chyby: 95320)
+
+Pokud GRUB zdrojového počítače používá místo UUID název zařízení, instalace agenta mobility se nezdaří. Kontaktujte správce systému provést změny do souboru GRUB.
 
 ## <a name="lvm-support-from-920-version"></a>Podpora LVM z 9.20 verze
 

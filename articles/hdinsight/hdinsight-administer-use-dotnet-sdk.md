@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 26aeb5641533125dcd909ae96d28c8274677cf30
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8d7b18dfd88a1a136e8b6e11f9f712e9212d6dd5
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013437"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788799"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí sady .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -135,10 +135,8 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 ## <a name="scale-clusters"></a>Škálování clusterů
 Funkce škálování clusteru umožňuje změnit počet uzlů pracovního procesu se používá cluster, který běží v Azure HDInsight bez nutnosti nového vytváření clusteru.
 
-> [!NOTE]
-> Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.  Zobrazit [výpisu a zobrazení clusterů](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
-> 
-> 
+> [!NOTE]  
+> Pouze clustery HDInsight verze 3.1.3 nebo vyšší nejsou podporovány. Pokud si nejste jistí verze vašeho clusteru, můžete zkontrolovat na stránce Vlastnosti.  Zobrazit [výpisu a zobrazení clusterů](hdinsight-administer-use-portal-linux.md#showClusters).
 
 Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
@@ -165,7 +163,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
   * Webové uživatelské rozhraní Storm
   * Nástroje rozhraní příkazového řádku (CLI)
     
-    Najdete [dokumentaci Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
+    Najdete [dokumentaci Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) další podrobnosti.
     
     Webové uživatelské rozhraní Storm je k dispozici v clusteru HDInsight:
     
@@ -220,10 +218,8 @@ var httpParams = new HttpSettingsParameters
 _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Pomocí udělení nebo odvolání přístupu, resetuje clusteru uživatelské jméno a heslo.
-> 
-> 
 
 To můžete udělat také pomocí portálu. Zobrazit [Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal].
 
@@ -242,9 +238,9 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Odesílání úloh
-**Odesílat úlohy Apache Hadoop MapReduce**
+**Odesílat úlohy MapReduce**
 
-Zobrazit [ukázky spouštění Hadoop MapReduce Apache v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobrazit [ukázky spustit MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
 **Odesílat úlohy Apache Hive** 
 

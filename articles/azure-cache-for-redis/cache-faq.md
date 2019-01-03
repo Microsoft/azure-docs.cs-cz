@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 311a576381927536386f5852336c3713fca5c3bf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: aee91f6d9b8d16db7f14bbc2372d7c465377ce28
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260748"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971524"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Přečtěte si odpovědi na běžné dotazy, vzory a osvědčené postupy pro Azure Cache pro Redis.
@@ -83,7 +83,7 @@ Nejčastější dotazy v této části se věnují běžné monitorování a dot
 * [Kterou z variant mezipaměti Azure je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Co je Azure mezipaměti Redis?
-Pro Redis Azure Cache je založená na oblíbené open source [mezipaměti Azure Redis](http://redis.io). Poskytuje přístup k zabezpečené vyhrazené mezipaměti Azure pro Redis spravované microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
+Pro Redis Azure Cache je založená na oblíbené open source softwaru [Redis](https://redis.io/). Poskytuje přístup k zabezpečené vyhrazené mezipaměti Azure pro Redis spravované microsoftem a přístupná z libovolné aplikace v Azure. Podrobnější přehled najdete [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Jak mám začít s Azure Cache pro Redis?
 Existuje několik způsobů, jimiž můžete začít s Azure Cache pro Redis.
@@ -174,7 +174,7 @@ Ano, mezipaměti Redis Azure je dostupná v cloudu Azure Government Azure China 
 Další informace o informace týkající se použití mezipaměti Azure pro Redis s jinými cloudy najdete v následujících tématech.
 
 - [Azure Government databáze – Azure mezipaměti Redis](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Cloud Azure China - Azure mezipaměti Redis](https://www.azure.cn/documentation/services/azure-cache-for-redis/)
+- [Cloud Azure China - Azure mezipaměti Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 Informace o používání Azure Cache pro Redis pomocí Powershellu v cloudu Azure Government Azure China Cloud a Microsoft Azure Germany najdete v tématu [jak se připojit k jiné cloudy - mezipaměti Azure redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).

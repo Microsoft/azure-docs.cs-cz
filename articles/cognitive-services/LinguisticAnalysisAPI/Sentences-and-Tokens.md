@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 96c2bd1c11554481e441662a6051620f4b2e2993
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237870"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972358"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Rozdělení a Tokenizace vět
 
 > [!IMPORTANT]
-> Pro jazykovou analýzu ve verzi preview byla vyřazena z provozu, 9. srpna 2018. Doporučujeme používat [moduly analýzy textu Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) pro zpracování textu a analýzy.
+> Dne 9. srpna 2018 došlo k vyřazení jazykové analýzy ve verzi Preview z provozu. Ke zpracování a analýze textu doporučujeme používat [moduly analýzy textu služby Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 ## <a name="background-and-motivation"></a>Na pozadí a motivace
 
@@ -75,4 +75,4 @@ Tato Tokenizace umožňuje slovo *neměli* a frázi *ne* více konzistentním zp
 ## <a name="specification"></a>Specifikace
 
 Je důležité, aby konzistentní rozhodnutí o co zahrnuje věty a token.
-Spoléháme na specifikaci od [diskutují Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (některé další podrobnosti najdete na adrese ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).
+Spoléháme na specifikaci od [diskutují Treebank](https://catalog.ldc.upenn.edu/LDC99T42) (některé další podrobnosti najdete na adrese ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

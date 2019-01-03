@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 98ceaddab192a146aa61223d883c78dc7c6af730
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998608"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970368"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -130,7 +130,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Grafy metrik serveru](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Pokud se chcete o monitorování Javy dozvědět víc, podívejte se na [další dokumentaci k Javě pro App Insights](./app-insights-java-get-started.md).
+Pokud se chcete o monitorování Javy dozvědět víc, podívejte se na [další dokumentaci k Javě pro App Insights](./../azure-monitor/app/java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

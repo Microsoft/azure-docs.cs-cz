@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: f82ac972e54dac6df5a913a8059417b701e2f7e0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c9b1f3570ae3f9b945c87c2ce316c3f72e32b4ad
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191576"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792046"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Vytvoření clusterů HDInsight pomocí rozhraní příkazového řádku Azure Classic
 
@@ -70,7 +70,7 @@ Následující kroky je třeba provést z příkazového řádku, jako je PowerS
 
     * Nahraďte `storagename` s jedinečným názvem účtu úložiště.
 
-        > [!NOTE]
+        > [!NOTE]  
         > Další informace o parametrech použité v tomto příkazu použít `azure storage account create -h` Chcete-li zobrazit nápovědu pro tento příkaz.
 
 5. Načtení klíče pro přístup k účtu úložiště.
@@ -90,7 +90,7 @@ Následující kroky je třeba provést z příkazového řádku, jako je PowerS
 
     * Nahraďte `Hadoop` s typem clusteru, který chcete vytvořit. Například `Hadoop`, `HBase`, `Kafka`, `Spark`, nebo `Storm`.
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > HDInsight clustery se dělí na různé typy, které odpovídají úlohy nebo technologie, která clusteru je vyladěný pro. Neexistuje žádná podporovaná metoda pro vytvoření clusteru, který kombinuje více typů, jako je Storm a HBase na jednom clusteru.
 
     * Nahraďte `location` pomocí stejné umístění, které jsou používané v předchozích krocích.
@@ -105,7 +105,7 @@ Následující kroky je třeba provést z příkazového řádku, jako je PowerS
 
     * Nahraďte `sshuser` a `sshuserpassword` pomocí uživatelského jména a hesla, které chcete použít při přístupu ke clusteru pomocí SSH
 
-      > [!IMPORTANT]
+      > [!IMPORTANT]  
       > Tento příklad vytvoří cluster se dvěma uzly pracovního procesu. Po vytvoření clusteru můžete také změnit počet uzlů pracovního procesu pomocí provádí operace škálování. Pokud máte v úmyslu používat více než 32 uzlů pracovního procesu, musíte vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM. Velikost hlavního uzlu můžete nastavit pomocí `--headNodeSize` parametru během vytváření clusteru.
       >
       > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
@@ -114,7 +114,7 @@ Následující kroky je třeba provést z příkazového řádku, jako je PowerS
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-administer-use-portal-linux.md#create-clusters).
+Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
@@ -124,7 +124,7 @@ Teď, když úspěšně vytvoříte clusteru služby HDInsight pomocí rozhraní
 
 * [Použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
 * [Použití Apache Pig s HDInsight](hadoop/hdinsight-use-pig.md)
-* [Použití Apache Hadoop MapReduce s HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Použití MapReduce se službou HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Clustery Apache HBase
 

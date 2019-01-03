@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 515aeac3531a45080824df126ad674353f70cdb8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279533"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53736778"
 ---
 | Prostředek | Free | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
-| [Webové, mobilní telefon nebo API apps](https://azure.microsoft.com/services/app-service/) za [plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)<sup>1</sup> |10 |100 |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup>|
-| [Plán služby App Service](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) |1 na oblast |10 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků|
+| [Webové, mobilní telefon nebo API apps](https://azure.microsoft.com/services/app-service/) za [plán služby App Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup> |Neomezený počet<sup>2</sup>|
+| [Plán služby App Service](../articles/app-service/overview-hosting-plans.md) |1 na oblast |10 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků |100 skupinu prostředků|
 | Výpočetní instance typu |Shared |Shared |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup> |Vyhrazené<sup>3</sup></p> |Vyhrazené<sup>3</sup>|
 | [Horizontální navýšení kapacity](../articles/app-service/web-sites-scale.md) (maximální počet instancí) |sdílené 1 |sdílené 1 |3 vyhrazené<sup>3</sup> |10 vyhrazené<sup>3</sup> |20 vyhrazených<sup>3</sup>|100 vyhrazených<sup>4</sup>|
 | Úložiště<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |ABY SE 250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
@@ -24,18 +24,18 @@ ms.locfileid: "52279533"
 | Šířka pásma |165 MB |Neomezený počet, [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený počet, [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený počet, [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený počet, [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |Neomezený počet, [sazby za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/) použít |
 | Architektura aplikace |32 bitů |32 bitů |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |
 | Webové sokety každou instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
-| Souběžné [připojení ladicího programu](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) na aplikaci. |1 |1 |1 |5 |5 |5 |
+| Souběžné [připojení ladicího programu](../articles/app-service/troubleshoot-dotnet-visual-studio.md) na aplikaci. |1 |1 |1 |5 |5 |5 |
 | Certifikáty App Service na jedno předplatné<sup>10</sup>| Nepodporuje se | Nepodporuje se |10 |10 |10 |10 |
 | Vlastní domény na aplikaci</a> |0 (pouze subdoména azurewebsites.net)|500 |500 |500 |500 |500 |
 | Vlastní domény [podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Neomezené možnosti připojení SNI SSL |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté | Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté|
 | Integrovaný nástroj Load Balancer | |X |X |X |X |X<sup>9</sup> |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
-| [Naplánované zálohování](../articles/app-service/web-sites-backup.md) | | | | Plánované zálohování každé 2 hodiny, maximum z 12 zálohy za den (ruční a plánovaná) | Naplánované zálohování každou hodinu mít délku maximálně 50 zálohy za den (ruční a plánovaná) | Naplánované zálohování každou hodinu mít délku maximálně 50 zálohy za den (ruční a plánovaná) |
+| [Naplánované zálohování](../articles/app-service/manage-backup.md) | | | | Plánované zálohování každé 2 hodiny, maximum z 12 zálohy za den (ruční a plánovaná) | Naplánované zálohování každou hodinu mít délku maximálně 50 zálohy za den (ruční a plánovaná) | Naplánované zálohování každou hodinu mít délku maximálně 50 zálohy za den (ruční a plánovaná) |
 | [Automatické škálování](../articles/app-service/web-sites-scale.md) | | | |X |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |X |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) podpory | |X |X |X |X |X |
 | [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
-| [Pracovní sloty](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
+| [Pracovní sloty](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
 | SLA | |  |99,9 % |99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup> aplikací a kvót úložiště jsou za plán služby App Service, pokud není uvedeno jinak.  

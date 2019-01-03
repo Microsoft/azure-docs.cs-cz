@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 501fe1d2da89b6968f5a3619fc8e02b01b1abd7a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f0d0442a8640a75b21e95e3ae024fd7994602b51
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263955"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807937"
 ---
 # <a name="optimizing-throughput-cost-in-azure-cosmos-db"></a>Optimalizace propustnosti nákladů ve službě Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Jak je znázorněno v následující tabulce, v závislosti na výběru rozhran�
 |Rozhraní API|Pro **sdílené** propustnost a konfigurace |Pro **vyhrazené** propustnost a konfigurace |
 |----|----|----|
 |SQL API|Databáze|Kontejner|
-|Rozhraní MongoDB API|Databáze|Kolekce|
+|Rozhraní API služby Azure Cosmos DB pro MongoDB|Databáze|Kolekce|
 |Rozhraní Cassandra API|Prostor klíčů|Table|
 |Rozhraní Gremlin API|Databázový účet|Graph|
 |Rozhraní Table API|Databázový účet|Table|

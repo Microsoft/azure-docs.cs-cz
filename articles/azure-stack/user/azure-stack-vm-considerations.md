@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 9d6bb8d4327b428bb47d1d44422d816e7b20ed87
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847520"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651499"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů ve službě Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "52847520"
 
 Virtuální počítače Azure Stack poskytují na vyžádání, škálovatelných výpočetních prostředků. Před nasazením virtuálních počítačů (VM), musíte znát rozdíly mezi funkce virtuálních počítačů dostupných v Azure stacku a Microsoft Azure. Tento článek popisuje tyto rozdíly a identifikuje klíčové faktory týkající se plánování nasazení virtuálních počítačů. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Tahák: rozdíly virtuálního počítače
+## <a name="cheat-sheet-virtual-machine-differences"></a>Tahák: Virtuální počítač rozdíly
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
@@ -39,6 +39,7 @@ Virtuální počítače Azure Stack poskytují na vyžádání, škálovatelnýc
 | Úložiště virtuálního počítače | Podporuje [spravované disky.](../../virtual-machines/windows/managed-disks-overview.md) | Spravované disky jsou podporovány ve službě Azure Stack s verzí 1808 a novější. |
 | Výkon disků virtuálních počítačů | Závisí na typ a velikost disku. | Závisí na velikosti virtuálního počítače z virtuálního počítače, které disky jsou připojené k odkazování [velikostí virtuálních počítačů, které jsou podporované ve službě Azure Stack](azure-stack-vm-sizes.md) článku.
 | Verze rozhraní API | Azure má vždy nejnovější verze rozhraní API pro všechny součásti virtuálního počítače. | Azure Stack podporuje konkrétních služeb Azure a konkrétní verze rozhraní API pro tyto služby. Chcete-li zobrazit seznam podporovaných verzí rozhraní API, přečtěte si [verze rozhraní API](#api-versions) části tohoto článku. |
+| Služby Azure Instance Metadata | Služba Azure Instance Metadata poskytuje informace o spuštěných instancí virtuálních počítačů, které lze použít ke správě nebo konfiguraci virtuálních počítačů.  | Služba Instance metadata se nepodporuje v Azure stacku. |
 |Skupinách dostupnosti virtuálních počítačů|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén<br>Spravované podporu pro disky|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén (až na 20)<br>Žádná podpora spravovaného disku|
 |Škálovací sady virtuálních počítačů|Nepodporuje automatické škálování|Automatické škálování není podporován.<br>Přidáte další instance škálovací sady s použitím webu portal, šablon Resource Manageru nebo prostředí PowerShell.
 

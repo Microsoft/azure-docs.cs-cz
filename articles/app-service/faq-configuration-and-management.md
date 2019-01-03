@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 266c9df095e9153533dbd89b4cd557d12ddcdc66
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4cd6b375385326889226f6d4284815dfa0f47c49
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408880"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971303"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správa nejčastější dotazy ke službě Web Apps v Azure
 
@@ -39,7 +39,7 @@ Odpovědi na běžné dotazy týkající se použití vlastního názvu domény 
 
 ## <a name="how-do-i-purchase-a-new-custom-domain-for-my-web-app"></a>Jak koupit novou vlastní doménu pro svou webovou aplikaci?
 
-Zjistěte, jak zakoupit a nastavení vlastní domény pro webovou aplikaci služby App Service, najdete v článku [koupě a konfigurace vlastního názvu domény ve službě App Service](custom-dns-web-site-buydomains-web-app.md).
+Zjistěte, jak zakoupit a nastavení vlastní domény pro webovou aplikaci služby App Service, najdete v článku [koupě a konfigurace vlastního názvu domény ve službě App Service](manage-custom-dns-buy-domain.md).
 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Jak nahrát a nakonfigurovat existujícího certifikátu SSL pro svou webovou aplikaci?
@@ -72,9 +72,11 @@ Chcete-li nastavit časové pásmo serveru pro vaši webovou aplikaci:
     * Hodnota = *časové pásmo má*
 3. Vyberte **Uložit**.
 
+Najdete v článku **časové pásmo** sloupec v [výchozí časových pásem](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) článku platných hodnot.
+
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Proč moje průběžné WebJobs někdy nezdaří?
 
-Ve výchozím nastavení webové aplikace jsou uvolněna, pokud jsou nastavte dobu nečinnosti. To umožňuje ušetřit prostředky systému. V plánech Basic a Standard můžete zapnout **Always On** nastavení Udržovat webové aplikace načíst celou dobu. Pokud vaše webová aplikace spouští průběžné WebJobs, měli byste zapnout **Always On**, nebo webové úlohy nemusí fungovat spolehlivě. Další informace najdete v tématu [vytvořit nepřetržitě běžící webová úloha](web-sites-create-web-jobs.md#CreateContinuous).
+Ve výchozím nastavení webové aplikace jsou uvolněna, pokud jsou nastavte dobu nečinnosti. To umožňuje ušetřit prostředky systému. V plánech Basic a Standard můžete zapnout **Always On** nastavení Udržovat webové aplikace načíst celou dobu. Pokud vaše webová aplikace spouští průběžné WebJobs, měli byste zapnout **Always On**, nebo webové úlohy nemusí fungovat spolehlivě. Další informace najdete v tématu [vytvořit nepřetržitě běžící webová úloha](webjobs-create.md#CreateContinuous).
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Jak získat odchozí IP adresa pro svou webovou aplikaci?
 
@@ -124,7 +126,7 @@ Další informace najdete v tématu [Microsoft Azure App Service web aplikace do
 
 V plánech Standard a Premium služby App Service když nasadíte webovou aplikaci do služby App Service můžete nasadit do samostatného nasazení slotu místo na produkční slot výchozí. Sloty nasazení jsou živé webové aplikace, které mají své vlastní názvy hostitelů. Mezi dvěma sloty nasazení, včetně produkčního slotu, je možné Prohodit prvky obsah a konfiguraci webové aplikace.
 
-Další informace o používání slotů nasazení najdete v tématu [nastavit testovací prostředí ve službě App Service](web-sites-staged-publishing.md).
+Další informace o používání slotů nasazení najdete v tématu [nastavit testovací prostředí ve službě App Service](deploy-staging-slots.md).
 
 ## <a name="how-do-i-access-and-review-webjob-logs"></a>Jak získat přístup a zkontrolovat protokoly?
 
@@ -248,7 +250,7 @@ Můžete vytvořit naplánovanou webovou úlohu pomocí výrazů Cron:
     {month} {day of the week}" }
     ```
 
-Další informace o plánované webové úlohy, naleznete v tématu [vytvořit naplánovanou webovou úlohu pomocí výrazů Cron](web-sites-create-web-jobs.md#CreateScheduledCRON).
+Další informace o plánované webové úlohy, naleznete v tématu [vytvořit naplánovanou webovou úlohu pomocí výrazů Cron](webjobs-create.md#CreateScheduledCRON).
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Jak provedu ho pro moji aplikaci služby App Service?
 

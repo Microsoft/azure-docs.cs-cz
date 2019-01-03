@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 6d063eb0ae2a468bc8aa73d18b88135f1f119bec
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a5b82cb5f2ea90876001fe2db0f62d8b1df64f0c
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53345966"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580242"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
-Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novějších upozornění metrik](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md) ve službě Azure Monitor. Šablony Resource Manageru umožňují programově nastavit výstrahy konzistentní vzhledem k aplikacím a reprodukovatelné způsobem napříč prostředími. Jsou aktuálně k dispozici na novějších upozornění metrik [tuto sadu typů prostředků](../../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novějších upozornění metrik](../../azure-monitor/platform/alerts-metric-near-real-time.md) ve službě Azure Monitor. Šablony Resource Manageru umožňují programově nastavit výstrahy konzistentní vzhledem k aplikacím a reprodukovatelné způsobem napříč prostředími. Jsou aktuálně k dispozici na novějších upozornění metrik [tuto sadu typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
 > Šablony Resource Manageru pro upozornění na metriku zadat nebude fungovat pro typ prostředku: Microsoft.OperationalInsights/workspaces; Díky podpoře metriky z Log Analytics je ve verzi preview. Můžou uživatelé chtěli použít funkci ve verzi preview se šablonou resource kontaktovat [zpětnou vazbu upozornění Azure](mailto:azurealertsfeedback@microsoft.com)

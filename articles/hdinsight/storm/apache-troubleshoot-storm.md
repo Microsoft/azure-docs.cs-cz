@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8b0f1cfe56923cbd8a5b1c517cfdc3b174088715
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5634d812b3fbd4e904516767b008f63104b3d7b7
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086135"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632734"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 
@@ -54,7 +54,7 @@ Lib – složka obsahuje soubory .jar, které obsahují implementaci pro operace
 
 Spustit [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) skript z uzlu ZooKeeper, abyste exportovat a importovat data. Aktualizujte skript na správnou verzi Hortonworks Data Platform (HDP). (Kterých pracujeme na tom, aby tyto skripty Obecné v HDInsight. Obecný skripty můžete spustit z libovolného uzlu v clusteru bez úprav uživatele.)
 
-Příkaz export zapíše metadata do cesty Apache Hadoop Distributed File System (HDFS) (v úložišti Azure Blob Storage nebo Azure Data Lake Store) do umístění, které jste nastavili.
+Příkaz export zapíše metadata do cesty Apache Hadoop Distributed File System (HDFS) (v Azure Blob Storage nebo Azure Data Lake Storage) do umístění, které jste nastavili.
 
 ### <a name="examples"></a>Příklady
 
@@ -87,7 +87,7 @@ Binární soubory stormu pro aktuální zásobník HDP jsou /usr/hdp/current/sto
  
 Může existovat více binárních souborů pro konkrétní verze HDP v /usr/hdp (například /usr/hdp/2.5.0.1233/storm). Složka /usr/hdp/current/storm-client je symlinked na nejnovější verzi, která běží na clusteru.
 
-Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) a [Storm](http://storm.apache.org/).
+Další informace najdete v tématu [připojení ke clusteru HDInsight pomocí SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) a [Apache Storm](https://storm.apache.org/).
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Jak zjistím topologie nasazení clusteru Storm?
 Nejprve Identifikujte všechny součásti, které se instalují s HDInsight Storm. Storm cluster se skládá z čtyři kategorie uzlu:

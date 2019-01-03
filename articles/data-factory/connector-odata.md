@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: 349d3a6eacf22a0ce3f842dd30df19964cdf7f23
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d9e6678cb931b61b89a668a35cc7ce4fa79563e3
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337321"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809569"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopírování dat ze zdroje OData pomocí služby Azure Data Factory
 
@@ -35,7 +35,7 @@ Kopírovat data ze zdroje OData k jakékoli podporovaného úložiště dat jím
 Konkrétně tento konektor OData podporuje:
 
 - OData verze 3.0 a 4.0.
-- Kopírování dat pomocí jedné z následujících ověření: **Anonymní**, **základní**, **Windows**, **instanční objekt služby AAD**, a **se identita spravované služby**.
+- Kopírování dat pomocí jedné z následujících ověření: **Anonymní**, **základní**, **Windows**, **instanční objekt služby AAD**, a **spravovaných identit pro prostředky Azure**.
 
 ## <a name="get-started"></a>Začínáme
 
@@ -114,7 +114,7 @@ Pro služby OData propojené se podporují následující vlastnosti:
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "Windows",
             "userName": "<domain>\\<user>",
             "password": {
@@ -138,7 +138,7 @@ Pro služby OData propojené se podporují následující vlastnosti:
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "AadServicePrincipal",
             "servicePrincipalId": "<service principal id>",
             "aadServicePrincipalCredentialType": "ServicePrincipalKey",
@@ -147,7 +147,7 @@ Pro služby OData propojené se podporují následující vlastnosti:
                 "value": "<service principal key>"
             },
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
-            "aadResourceId": "<AAD resource>"
+            "aadResourceId": "<AAD resource URL>"
         }
     },
     "connectVia": {
@@ -165,7 +165,7 @@ Pro služby OData propojené se podporují následující vlastnosti:
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "<endpoint of on-premises OData source>",
+            "url": "<endpoint of OData source>",
             "authenticationType": "AadServicePrincipal",
             "servicePrincipalId": "<service principal id>",
             "aadServicePrincipalCredentialType": "ServicePrincipalCert",
@@ -234,7 +234,7 @@ Chcete-li kopírovat data z prostředí OData, nastavte **zdroj** typ v aktivit�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být nastavena vlastnost zdroje aktivity kopírování **RelationalSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:**: Konektor OData kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka:** Konektor OData kopíruje data z adresy URL pro kombinované: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Další informace najdete v tématu [OData pro adresy URL komponenty](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
 
 **Příklad**
 

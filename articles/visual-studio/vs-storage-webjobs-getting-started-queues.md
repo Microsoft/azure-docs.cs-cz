@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 899792be583f3b2e2a16e42472fcdf87bf751893
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635488"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722902"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Začínáme s Azure Queue storage a Visual Studio připojené služby (webové úlohy projektů)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -182,7 +182,7 @@ public static void GracefulShutdownDemo(
 }
 ```
 
-**Poznámka:** řídicí panel nemusí správně zobrazovat stav a výstupu funkcí, které byla ukončena.
+**Poznámka:** Řídicí panel nemusí správně zobrazovat stav a výstupu funkcí, které byla ukončena.
 
 Další informace najdete v tématu [řádné vypnutí WebJobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
@@ -477,7 +477,7 @@ static void Main(string[] args)
 }
 ```
 
-**Poznámka:** fronty, tabulky a názvy objektů blob jsou vyřešeny pokaždé, když je volána funkce, ale názvy kontejneru objektů blob jsou vyřešeny pouze při spuštění aplikace. Nelze změnit název kontejneru objektů blob, zatímco úloha běží.
+**Poznámka:** Fronty, tabulky a názvy objektů blob jsou vyřešeny pokaždé, když je volána funkce, ale názvy kontejneru objektů blob jsou vyřešeny pouze při spuštění aplikace. Nelze změnit název kontejneru objektů blob, zatímco úloha běží.
 
 ## <a name="how-to-trigger-a-function-manually"></a>Jak aktivovat funkci ručně
 Chcete-li aktivovat funkce ručně, použijte **volání** nebo **CallAsync** metodu **JobHost** objektu a **NoAutomaticTrigger** atribut na funkci, jak je znázorněno v následujícím příkladu.
@@ -514,7 +514,7 @@ Výstup z konzoly metody, které volají ve funkci nebo v **Main()** metoda se z
 
 Výstup na konzole, nelze ho propojit s volání konkrétní metody, protože konzole je s jedním vláknem, ale mnoho funkcí úloha může běžet ve stejnou dobu. To je důvod, proč sada SDK poskytuje každé volání funkce s objekt zapisovače svůj vlastní jedinečný protokolu.
 
-Zapsat [protokoly trasování aplikací](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), použijte **Console.Out** (vytvářejí protokoly, které jsou označeny jako informace o) a **Console.Error** (vytvářejí protokoly, které jsou označeny jako chyba). Další možností je použít [trasování nebo TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), které poskytuje podrobné, upozornění, a kritická úrovních kromě informací a chyba. Protokoly trasování aplikace se zobrazí v souborech protokolů webové aplikace, tabulky Azure, nebo za objekty BLOB Azure v závislosti na tom, jak nakonfigurovat svou webovou aplikaci Azure. Platí pro všechny výstup na konzole, protokoly posledních 100 aplikací také se zobrazí na stránce řídicího panelu pro webové úlohy, ne stránku pro volání funkce.
+Zapsat [protokoly trasování aplikací](../app-service/troubleshoot-dotnet-visual-studio.md#logsoverview), použijte **Console.Out** (vytvářejí protokoly, které jsou označeny jako informace o) a **Console.Error** (vytvářejí protokoly, které jsou označeny jako chyba). Další možností je použít [trasování nebo TraceSource](https://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), které poskytuje podrobné, upozornění, a kritická úrovních kromě informací a chyba. Protokoly trasování aplikace se zobrazí v souborech protokolů webové aplikace, tabulky Azure, nebo za objekty BLOB Azure v závislosti na tom, jak nakonfigurovat svou webovou aplikaci Azure. Platí pro všechny výstup na konzole, protokoly posledních 100 aplikací také se zobrazí na stránce řídicího panelu pro webové úlohy, ne stránku pro volání funkce.
 
 Výstup konzoly se zobrazí na řídicím panelu pouze v případě, že je aplikace spuštěna ve webové úloze Azure, není-li program spuštěn místně nebo v nějaké jiné prostředí.
 
@@ -550,7 +550,7 @@ V probíhající WebJob, protokoly aplikací zobrazí v/data/úlohy/průběžné
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-V Azure blob protokolů vzhledu aplikace následujícím způsobem: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world! 2014 -09-contosoadsnew 26T21:01:13, chyby, 491e54, 635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+V Azure blob protokolů vzhledu aplikace následujícím způsobem: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21 : 01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
 A v tabulce Azure **Console.Out** a **Console.Error** protokoly vypadat nějak takto:
 

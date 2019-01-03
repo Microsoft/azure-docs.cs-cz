@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 65c89e337d62ccb7ce58a1ea4e7414527bf9af19
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342086"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632614"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
@@ -176,22 +176,7 @@ Přizpůsobení hlasu je k dispozici pro nás Angličtina (en US), Španělsko �
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z následující tabulky jazyka řeči. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). Jsou k dispozici pro podmnožinu těchto jazyků [syntézu řeči](language-support.md#text-languages).
-
-### <a name="speech-languages"></a>Jazyků pro řeč
-
-| Rozpoznávání řeči, jazyka   | Kód jazyka |
-|:----------- |-|
-| Arabština (moderní Standard)      | `ar` |
-| Čínština (Mandarínština)      | `zh` |
-| Angličtina      | `en` |
-| Francouzština      | `fr` |
-| Němčina      | `de` |
-| italština      | `it` |
-| Japonština      | `jp` |
-| Portugalština (Brazílie)     | `pt` |
-| ruština      | `ru` |
-| Španělština      |  `es` |
+**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech to Text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). Jsou k dispozici pro podmnožinu těchto jazyků [syntézu řeči](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Text jazyky
 

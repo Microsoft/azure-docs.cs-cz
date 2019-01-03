@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 52f0a298b1a9e9f3f209f51c1bc0362b8ddf2c4e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1c56be7a7d9b03d115516b05c10c0b87c6956c47
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075675"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727662"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Deset věcí, které vám pomůžou na Windows virtuální počítač pro datové vědy
 
@@ -102,36 +102,41 @@ Pokud jste zprovoznění vašeho modelu ve službě Azure Machine Learning, je p
 ### <a name="build-and-operationalize-python-models"></a>Sestavení a Python zprovoznění modelů
 Tady je fragment kódu s vyvinutý v Pythonu Poznámkový blok Jupyter, který sestaví jednoduchý model s použitím knihovny SciKit poučení.
 
-    #IRIS classification
-    from sklearn import datasets
-    from sklearn import svm
-    clf = svm.SVC()
-    iris = datasets.load_iris()
-    X, y = iris.data, iris.target
-    clf.fit(X, y)
+```python
+#IRIS classification
+from sklearn import datasets
+from sklearn import svm
+clf = svm.SVC()
+iris = datasets.load_iris()
+X, y = iris.data, iris.target
+clf.fit(X, y)
+```
 
 Metoda používá k nasazení modelů pythonu do Azure Machine Learning zabalí předpovědi modelu na funkci a upraví s atributy poskytovaných knihovnou předinstalované python Azure Machine Learning, které označují vaše Azure Machine Learning ID pracovního prostoru, klíč rozhraní API a vstupní a vrácené parametry.  
 
-    from azureml import services
-    @services.publish(workspaceid, auth_token)
-    @services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-    @services.returns(int) #0, or 1, or 2
-    def predictIris(sep_l, sep_w, pet_l, pet_w):
-     inputArray = [sep_l, sep_w, pet_l, pet_w]
-    return clf.predict(inputArray)
+```python
+from azureml import services
+@services.publish(workspaceid, auth_token)
+@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
+@services.returns(int) #0, or 1, or 2
+def predictIris(sep_l, sep_w, pet_l, pet_w):
+    inputArray = [sep_l, sep_w, pet_l, pet_w]
+return clf.predict(inputArray)
+```
 
 Klienta můžete provést volání webové služby. Existují obálky pohodlí, které vytvořit požadavky rozhraní REST API. Tady je ukázkový kód pro používání této webové služby.
 
-    # Consume through web service URL and keys
-    from azureml import services
-    @services.service(url, api_key)
-    @services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-    @services.returns(float)
-    def IrisPredictor(sep_l, sep_w, pet_l, pet_w):
-    pass
+```python
+# Consume through web service URL and keys
+from azureml import services
+@services.service(url, api_key)
+@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
+@services.returns(float)
+def IrisPredictor(sep_l, sep_w, pet_l, pet_w):
+pass
 
-    IrisPredictor(3,2,3,4)
-
+IrisPredictor(3,2,3,4)
+```
 
 > [!NOTE]
 > Knihovny Azure Machine Learning je podporován pouze v případě Pythonu 2.7 aktuálně.   
@@ -153,44 +158,50 @@ Tady je postup a kódu fragmenty kódu, které slouží k nastavení, vytvářet
 
 Struktura souboru Settings.JSON:
 
-    {"workspace":{
-    "id"                  : "ENTER YOUR AZUREML WORKSPACE ID",
-    "authorization_token" : "ENTER YOUR AZUREML AUTH TOKEN"
-    }}
-
+```json
+{"workspace":{
+"id"                  : "ENTER YOUR AZUREML WORKSPACE ID",
+"authorization_token" : "ENTER YOUR AZUREML AUTH TOKEN"
+}}
+```
 
 #### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>Sestavení modelu v jazyce R a publikovat ve službě Azure Machine Learning
-    library(AzureML)
-    ws <- workspace(config="~/.azureml/settings.json")
 
-    if(!require("lme4")) install.packages("lme4")
-    library(lme4)
-    set.seed(1)
-    train <- sleepstudy[sample(nrow(sleepstudy), 120),]
-    m <- lm(Reaction ~ Days + Subject, data = train)
+```r
+library(AzureML)
+ws <- workspace(config="~/.azureml/settings.json")
 
-    # Define a prediction function to publish based on the model:
-    sleepyPredict <- function(newdata){
-          predict(m, newdata=newdata)
-    }
+if(!require("lme4")) install.packages("lme4")
+library(lme4)
+set.seed(1)
+train <- sleepstudy[sample(nrow(sleepstudy), 120),]
+m <- lm(Reaction ~ Days + Subject, data = train)
 
-    ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
+# Define a prediction function to publish based on the model:
+sleepyPredict <- function(newdata){
+        predict(m, newdata=newdata)
+}
+
+ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
+```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Používání modelu nasazené ve službě Azure Machine Learning
 Chcete-li využívají model z klientské aplikace, používáme k vyhledání publikované webové službě s použitím názvu knihovny Azure Machine Learning `services` volání rozhraní API k určení koncového bodu. Pak ho prostě zavoláte `consume` fungovat a předejte mu datový rámec pro předpovídat.
 Následující kód slouží k používání modelu publikovat jako webové služby Azure Machine Learning.
 
-    library(AzureML)
-    library(lme4)
-    ws <- workspace(config="~/.azureml/settings.json")
+```r
+library(AzureML)
+library(lme4)
+ws <- workspace(config="~/.azureml/settings.json")
 
-    s <-  services(ws, name = "sleepy lm")
-    s <- tail(s, 1) # use the last published function, in case of duplicate function names
+s <-  services(ws, name = "sleepy lm")
+s <- tail(s, 1) # use the last published function, in case of duplicate function names
 
-    ep <- endpoints(ws, s)
+ep <- endpoints(ws, s)
 
-    # OK, try this out, and compare with raw data
-    ans = consume(ep, sleepstudy)$ans
+# OK, try this out, and compare with raw data
+ans = consume(ep, sleepstudy)$ans
+```
 
 Další informace o knihovně Azure Machine Learning R najdete [tady](https://cran.r-project.org/web/packages/AzureML/AzureML.pdf).
 
@@ -210,33 +221,35 @@ Odborníci přes data můžou sdílet velké datové sady, kód nebo jiných pro
 
 Prostředí Azure Powershell můžete použít k vytvoření sdílené složky Azure File Service. Tady je skript, který chcete spustit v prostředí Azure PowerShell k vytvoření služby sdílené složky Azure.
 
-    # Authenticate to Azure.
-    Connect-AzureRmAccount
-    # Select your subscription
-    Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
-    # Create a new resource group.
-    New-AzureRmResourceGroup -Name <dsvmdatarg>
-    # Create a new storage account. You can reuse existing storage account if you wish.
-    New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
-    # Set your current working storage account
-    Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
+```powershell
+# Authenticate to Azure.
+Connect-AzureRmAccount
+# Select your subscription
+Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+# Create a new resource group.
+New-AzureRmResourceGroup -Name <dsvmdatarg>
+# Create a new storage account. You can reuse existing storage account if you wish.
+New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
+# Set your current working storage account
+Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
-    # Create a Azure File Service Share
-    $s = New-AzureStorageShare <<teamsharename>>
-    # Create a directory under the FIle share. You can give it any name
-    New-AzureStorageDirectory -Share $s -Path <directory name>
-    # List the share to confirm that everything worked
-    Get-AzureStorageFile -Share $s
-
+# Create a Azure File Service Share
+$s = New-AzureStorageShare <<teamsharename>>
+# Create a directory under the FIle share. You can give it any name
+New-AzureStorageDirectory -Share $s -Path <directory name>
+# List the share to confirm that everything worked
+Get-AzureStorageFile -Share $s
+```
 
 Teď, když jste vytvořili sdílenou složku Azure, můžete je připojit do libovolného virtuálního počítače v Azure. Důrazně doporučujeme, aby virtuální počítač je ve stejném datovém centru Azure jako účet úložiště, aby se zabránilo latenci a data poplatky za přenos. Tady jsou příkazy jednotku můžete připojit na datové VĚDY, které můžete spustit v prostředí Azure Powershell.
 
-    # Get storage key of the storage account that has the Azure file share from Azure portal. Store it securely on the VM to avoid prompted in next command.
-    cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<storage key>
+```powershell
+# Get storage key of the storage account that has the Azure file share from Azure portal. Store it securely on the VM to avoid prompted in next command.
+cmdkey /add:<<mydatadisk>>.file.core.windows.net /user:<<mydatadisk>> /pass:<storage key>
 
-    # Mount the Azure file share as Z: drive on the VM. You can chose another drive letter if you wish
-    net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
-
+# Mount the Azure file share as Z: drive on the VM. You can chose another drive letter if you wish
+net use z:  \\<mydatadisk>.file.core.windows.net\<<teamsharename>>
+```
 
 Teď můžete přistupovat tato jednotka, stejně jako u jakékoli jednotky na virtuálním počítači.
 
@@ -251,7 +264,7 @@ Pokud chcete stáhnout kód z úložiště GitHub, můžete použít ```git clon
 
 V sadě Visual Studio můžete provádět stejné operace klonování. Na následujícím snímku obrazovky ukazuje, jak získat přístup ke Gitu a Githubu nástroje v sadě Visual Studio.
 
-![Snímek obrazovky sady Visual Studio s pomocí Githubu připojení zobrazí](./media/vm-do-ten-things/VSGit.PNG)
+![Snímek obrazovky sady Visual Studio s připojením Githubu zobrazí](./media/vm-do-ten-things/VSGit.PNG)
 
 Můžete najít další informace o používání Git pracovat s úložišti GitHub z několika zdrojů, které jsou k dispozici na webu github.com. [Tahák](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) je užitečný odkaz.
 
@@ -282,14 +295,14 @@ Nahraďte **C:\myfolder** na cestu, kde je soubor uložen, **mystorageaccount** 
 
 Spuštěním příkazu AzCopy v Powershellu nebo z příkazového řádku. Tady je použití příkazu AzCopy:
 
-    # Copy *.sql from local machine to a Azure Blob
-    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
+```powershell
+# Copy *.sql from local machine to a Azure Blob
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:"c:\Aaqs\Data Science Scripts" /Dest:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /DestKey:[ENTER STORAGE KEY] /S /Pattern:*.sql
 
-    # Copy back all files from Azure Blob container to Local machine
+# Copy back all files from Azure Blob container to Local machine
 
-    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Dest:"c:\Aaqs\Data Science Scripts\temp" /Source:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /SourceKey:[ENTER STORAGE KEY] /S
-
-
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Dest:"c:\Aaqs\Data Science Scripts\temp" /Source:https://[ENTER STORAGE ACCOUNT].blob.core.windows.net/[ENTER CONTAINER] /SourceKey:[ENTER STORAGE KEY] /S
+```
 
 Po spuštění příkazu AzCopy pro kopírování do objektu blob Azure, zobrazí se že váš soubor se zobrazí v Průzkumníku služby Azure Storage za chvíli.
 
@@ -302,7 +315,7 @@ Můžete také nahrát data z místního souboru ve virtuálním počítači pom
 * Jak nahrát data do kontejneru, vyberte cílový kontejner a klikněte na tlačítko **nahrát** tlačítko.![ Snímek obrazovky s tlačítkem pro uložení v Průzkumníku služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
 * Klikněte na **...**  napravo od **soubory** , vyberte jeden nebo více souborů ze systému souborů a klikněte na **nahrát** zahajte nahrávání souborů.![ Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Čtení dat z objektů Blob v Azure: modul čtečky Machine Learning**
+**Čtení dat z objektů Blob v Azure: Modul čtečky Machine Learning**
 
 V Azure Machine Learning Studio, můžete použít **modulu Import dat** přečíst data z objektu blob služby.
 
@@ -314,43 +327,47 @@ Můžete použít **BlobService** knihovny číst data přímo z objektu blob v 
 
 Nejprve importujte požadované balíčky:
 
-    import pandas as pd
-    from pandas import Series, DataFrame
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from time import time
-    import pyodbc
-    import os
-    from azure.storage.blob import BlobService
-    import tables
-    import time
-    import zipfile
-    import random
+```python
+import pandas as pd
+from pandas import Series, DataFrame
+import numpy as np
+import matplotlib.pyplot as plt
+from time import time
+import pyodbc
+import os
+from azure.storage.blob import BlobService
+import tables
+import time
+import zipfile
+import random
+```
 
 Potom zapojte přihlašovacích údajů k účtu Azure Blob a čtení dat z objektu Blob:
 
-    CONTAINERNAME = 'xxx'
-    STORAGEACCOUNTNAME = 'xxxx'
-    STORAGEACCOUNTKEY = 'xxxxxxxxxxxxxxxx'
-    BLOBNAME = 'nyctaxidataset/nyctaxitrip/trip_data_1.csv'
-    localfilename = 'trip_data_1.csv'
-    LOCALDIRECTORY = os.getcwd()
-    LOCALFILE =  os.path.join(LOCALDIRECTORY, localfilename)
+```python
+CONTAINERNAME = 'xxx'
+STORAGEACCOUNTNAME = 'xxxx'
+STORAGEACCOUNTKEY = 'xxxxxxxxxxxxxxxx'
+BLOBNAME = 'nyctaxidataset/nyctaxitrip/trip_data_1.csv'
+localfilename = 'trip_data_1.csv'
+LOCALDIRECTORY = os.getcwd()
+LOCALFILE =  os.path.join(LOCALDIRECTORY, localfilename)
 
-    #download from blob
-    t1 = time.time()
-    blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILE)
-    t2 = time.time()
-    print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
+#download from blob
+t1 = time.time()
+blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILE)
+t2 = time.time()
+print(("It takes %s seconds to download "+BLOBNAME) % (t2 - t1))
 
-    #unzipping downloaded files if needed
-    #with zipfile.ZipFile(ZIPPEDLOCALFILE, "r") as z:
-    #    z.extractall(LOCALDIRECTORY)
+#unzipping downloaded files if needed
+#with zipfile.ZipFile(ZIPPEDLOCALFILE, "r") as z:
+#    z.extractall(LOCALDIRECTORY)
 
-    df1 = pd.read_csv(LOCALFILE, header=0)
-    df1.columns = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime','passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude']
-    print 'the size of the data is: %d rows and  %d columns' % df1.shape
+df1 = pd.read_csv(LOCALFILE, header=0)
+df1.columns = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime','passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude']
+print 'the size of the data is: %d rows and  %d columns' % df1.shape
+```
 
 Data je určen pro čtení jako datový rámec:
 
@@ -369,7 +386,7 @@ Azure Data Lake Storage je vysoce škálovatelné úložiště pro úlohy analý
 
 ![Snímek obrazovky s Data Lake Tools v sadě Visual Studio](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**Přesun dat z virtuálního počítače do Data Lake: Průzkumník služby Azure Data Lake**
+**Přesun dat z virtuálního počítače do Data Lake: Azure Data Lake Explorer**
 
 Můžete použít **Průzkumníka služby Azure Data Lake** k odeslání dat z místních souborů ve vašem virtuálním počítači do úložiště Data Lake.
 
@@ -389,45 +406,45 @@ V sadě Visual Studio můžete číst data z úložiště objektů blob, provád
 
 V sadě Visual Studio můžete použít následující dotazy U-SQL:
 
-    @a =
-        EXTRACT medallion string,
-                hack_license string,
-                vendor_id string,
-                rate_code string,
-                store_and_fwd_flag string,
-                pickup_datetime string,
-                dropoff_datetime string,
-                passenger_count int,
-                trip_time_in_secs double,
-                trip_distance double,
-                pickup_longitude string,
-                pickup_latitude string,
-                dropoff_longitude string,
-                dropoff_latitude string
+```usql
+@a =
+    EXTRACT medallion string,
+            hack_license string,
+            vendor_id string,
+            rate_code string,
+            store_and_fwd_flag string,
+            pickup_datetime string,
+            dropoff_datetime string,
+            passenger_count int,
+            trip_time_in_secs double,
+            trip_distance double,
+            pickup_longitude string,
+            pickup_latitude string,
+            dropoff_longitude string,
+            dropoff_latitude string
 
-        FROM "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Input Data File Name>"
-        USING Extractors.Csv();
+    FROM "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Input Data File Name>"
+    USING Extractors.Csv();
 
-    @b =
-        SELECT vendor_id,
-        COUNT(medallion) AS cnt_medallion,
-        SUM(passenger_count) AS cnt_passenger,
-        AVG(trip_distance) AS avg_trip_dist,
-        MIN(trip_distance) AS min_trip_dist,
-        MAX(trip_distance) AS max_trip_dist,
-        AVG(trip_time_in_secs) AS avg_trip_time
-        FROM @a
-        GROUP BY vendor_id;
+@b =
+    SELECT vendor_id,
+    COUNT(medallion) AS cnt_medallion,
+    SUM(passenger_count) AS cnt_passenger,
+    AVG(trip_distance) AS avg_trip_dist,
+    MIN(trip_distance) AS min_trip_dist,
+    MAX(trip_distance) AS max_trip_dist,
+    AVG(trip_time_in_secs) AS avg_trip_time
+    FROM @a
+    GROUP BY vendor_id;
 
-    OUTPUT @b   
-    TO "swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
-    USING Outputters.Csv();
+OUTPUT @b   
+TO "swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
+USING Outputters.Csv();
 
-    OUTPUT @b   
-    TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
-    USING Outputters.Csv();
-
-
+OUTPUT @b   
+TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
+USING Outputters.Csv();
+```
 
 Po váš dotaz se odešle na server, zobrazí se diagram znázorňující stav vaší úlohy.
 
@@ -474,94 +491,95 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v clo
 
 * Nahrání dat pomocí IPython Notebook. Nejprve importujte požadované balíčky, zapojte přihlašovací údaje, vytvoření databáze v účtu úložiště a načtení dat do clusterů Hdinsight.
 
-        #Import required Packages
-        import pyodbc
-        import time as time
-        import json
-        import os
-        import urllib
-        import urllib2
-        import warnings
-        import re
-        import pandas as pd
-        import matplotlib.pyplot as plt
-        from azure.storage.blob import BlobService
-        warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
+```python
+#Import required Packages
+import pyodbc
+import time as time
+import json
+import os
+import urllib
+import urllib2
+import warnings
+import re
+import pandas as pd
+import matplotlib.pyplot as plt
+from azure.storage.blob import BlobService
+warnings.filterwarnings("ignore", category=UserWarning, module='urllib2')
 
 
-        #Create the connection to Hive using ODBC
-        SERVER_NAME='xxx.azurehdinsight.net'
-        DATABASE_NAME='nyctaxidb'
-        USERID='xxx'
-        PASSWORD='xxxx'
-        DB_DRIVER='Microsoft Hive ODBC Driver'
-        driver = 'DRIVER={' + DB_DRIVER + '}'
-        server = 'Host=' + SERVER_NAME + ';Port=443'
-        database = 'Schema=' + DATABASE_NAME
-        hiveserv = 'HiveServerType=2'
-        auth = 'AuthMech=6'
-        uid = 'UID=' + USERID
-        pwd = 'PWD=' + PASSWORD
-        CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
-        connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
-        cursor=connection.cursor()
+#Create the connection to Hive using ODBC
+SERVER_NAME='xxx.azurehdinsight.net'
+DATABASE_NAME='nyctaxidb'
+USERID='xxx'
+PASSWORD='xxxx'
+DB_DRIVER='Microsoft Hive ODBC Driver'
+driver = 'DRIVER={' + DB_DRIVER + '}'
+server = 'Host=' + SERVER_NAME + ';Port=443'
+database = 'Schema=' + DATABASE_NAME
+hiveserv = 'HiveServerType=2'
+auth = 'AuthMech=6'
+uid = 'UID=' + USERID
+pwd = 'PWD=' + PASSWORD
+CONNECTION_STRING = ';'.join([driver,server,database,hiveserv,auth,uid,pwd])
+connection = pyodbc.connect(CONNECTION_STRING, autocommit=True)
+cursor=connection.cursor()
 
 
-        #Create Hive database and tables
-        queryString = "create database if not exists nyctaxidb;"
-        cursor.execute(queryString)
+#Create Hive database and tables
+queryString = "create database if not exists nyctaxidb;"
+cursor.execute(queryString)
 
-        queryString = """
-                        create external table if not exists nyctaxidb.trip
-                        (
-                            medallion string,
-                            hack_license string,
-                            vendor_id string,
-                            rate_code string,
-                            store_and_fwd_flag string,
-                            pickup_datetime string,
-                            dropoff_datetime string,
-                            passenger_count int,
-                            trip_time_in_secs double,
-                            trip_distance double,
-                            pickup_longitude double,
-                            pickup_latitude double,
-                            dropoff_longitude double,
-                            dropoff_latitude double)  
-                        PARTITIONED BY (month int)
-                        ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                        STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
-                    """
-        cursor.execute(queryString)
+queryString = """
+                create external table if not exists nyctaxidb.trip
+                (
+                    medallion string,
+                    hack_license string,
+                    vendor_id string,
+                    rate_code string,
+                    store_and_fwd_flag string,
+                    pickup_datetime string,
+                    dropoff_datetime string,
+                    passenger_count int,
+                    trip_time_in_secs double,
+                    trip_distance double,
+                    pickup_longitude double,
+                    pickup_latitude double,
+                    dropoff_longitude double,
+                    dropoff_latitude double)  
+                PARTITIONED BY (month int)
+                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
+                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
+            """
+cursor.execute(queryString)
 
-        queryString = """
-                        create external table if not exists nyctaxidb.fare
-                        (
-                            medallion string,
-                            hack_license string,
-                            vendor_id string,
-                            pickup_datetime string,
-                            payment_type string,
-                            fare_amount double,
-                            surcharge double,
-                            mta_tax double,
-                            tip_amount double,
-                            tolls_amount double,
-                            total_amount double)
-                        PARTITIONED BY (month int)
-                        ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
-                        STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
-                    """
-        cursor.execute(queryString)
+queryString = """
+                create external table if not exists nyctaxidb.fare
+                (
+                    medallion string,
+                    hack_license string,
+                    vendor_id string,
+                    pickup_datetime string,
+                    payment_type string,
+                    fare_amount double,
+                    surcharge double,
+                    mta_tax double,
+                    tip_amount double,
+                    tolls_amount double,
+                    total_amount double)
+                PARTITIONED BY (month int)
+                ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\\n'
+                STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+            """
+cursor.execute(queryString)
 
 
-        #Upload data from blob storage to HDI cluster
-        for i in range(1,13):
-            queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
-            cursor.execute(queryString)
-            queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
-            cursor.execute(queryString)
-
+#Upload data from blob storage to HDI cluster
+for i in range(1,13):
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxitripraw2/trip_data_%d.csv' INTO TABLE nyctaxidb2.trip PARTITION (month=%d);"%(i,i)
+    cursor.execute(queryString)
+    queryString = "LOAD DATA INPATH 'wasb:///nyctaxifareraw2/trip_fare_%d.csv' INTO TABLE nyctaxidb2.fare PARTITION (month=%d);"%(i,i)  
+    cursor.execute(queryString)
+```
 
 * Alternativně můžete použít tento [návod](../team-data-science-process/hive-walkthrough.md) odesílat data taxislužby NYC do clusteru Hdinsight. Hlavní postup je následující:
   
@@ -571,218 +589,228 @@ Azure HDInsight je spravovaná služba Apache Hadoop, Spark, HBase a Storm v clo
 
 Po načtení dat do clusteru HDI můžete zkontrolovat, vaše data v Průzkumníku služby Azure Storage. A budete mít databázi nyctaxidb vytvořené v clusteru Hdinsight.
 
-**Zkoumání dat: dotazů Hive v Pythonu**
+**Zkoumání dat: Dotazy Hive v Pythonu**
 
 Vzhledem k tomu, že data jsou v clusteru Hadoop, můžete se připojit k databázi clustery Hadoop a dotazování pomocí Hive ke zkoumání a konstruování pyodbc balíčku. Zobrazí se existující tabulky, které jsme vytvořili v kroku požadavků.
 
-    queryString = """
-        show tables in nyctaxidb2;
-        """
-    pd.read_sql(queryString,connection)
-
+```python
+queryString = """
+    show tables in nyctaxidb2;
+    """
+pd.read_sql(queryString,connection)
+```
 
 ![Zobrazení existujících tabulek](./media/vm-do-ten-things/Python_View_Existing_Tables_Hive_v3.PNG)
 
 Podívejme se na počet záznamů, které každý měsíc a frekvence šikmý nebo není v tabulce o jízdách:
 
-    queryString = """
-        select month, count(*) from nyctaxidb.trip group by month;
-        """
-    results = pd.read_sql(queryString,connection)
+```python
+queryString = """
+    select month, count(*) from nyctaxidb.trip group by month;
+    """
+results = pd.read_sql(queryString,connection)
 
-    %matplotlib inline
+%matplotlib inline
 
-    results.columns = ['month', 'trip_count']
-    df = results.copy()
-    df.index = df['month']
-    df['trip_count'].plot(kind='bar')
-
+results.columns = ['month', 'trip_count']
+df = results.copy()
+df.index = df['month']
+df['trip_count'].plot(kind='bar')
+```
 
 ![Diagram počet záznamů v každém měsíci](./media/vm-do-ten-things/Exploration_Number_Records_by_Month_v3.PNG)
 
-    queryString = """
-        SELECT tipped, COUNT(*) AS tip_freq
-        FROM
-        (
-            SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-            FROM nyctaxidb.fare
-        )tc
-        GROUP BY tipped;
-        """
-    results = pd.read_sql(queryString,connection)
+```python
+queryString = """
+    SELECT tipped, COUNT(*) AS tip_freq
+    FROM
+    (
+        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
+        FROM nyctaxidb.fare
+    )tc
+    GROUP BY tipped;
+    """
+results = pd.read_sql(queryString,connection)
 
-    results.columns = ['tipped', 'trip_count']
-    df = results.copy()
-    df.index = df['tipped']
-    df['trip_count'].plot(kind='bar')
-
+results.columns = ['tipped', 'trip_count']
+df = results.copy()
+df.index = df['tipped']
+df['trip_count'].plot(kind='bar')
+```
 
 ![Diagram frekvencí tip](./media/vm-do-ten-things/Exploration_Frequency_tip_or_not_v3.PNG)
 
 Můžete také compute vzdálenost mezi výstupní umístění a dropoff umístění a pak porovnejte s vzdálenost o jízdách.
 
-    queryString = """
-                    select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-                        3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-                        *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-                        *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-                        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-                        +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
-                        pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
-                        from nyctaxidb.trip
-                        where month=1
-                            and pickup_longitude between -90 and -30
-                            and pickup_latitude between 30 and 90
-                            and dropoff_longitude between -90 and -30
-                            and dropoff_latitude between 30 and 90;
-                """
-    results = pd.read_sql(queryString,connection)
-    results.head(5)
-
+```python
+queryString = """
+                select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
+                    3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+                    *radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
+                    *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
+                    /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
+                    +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*
+                    pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance
+                    from nyctaxidb.trip
+                    where month=1
+                        and pickup_longitude between -90 and -30
+                        and pickup_latitude between 30 and 90
+                        and dropoff_longitude between -90 and -30
+                        and dropoff_latitude between 30 and 90;
+            """
+results = pd.read_sql(queryString,connection)
+results.head(5)
+```
 
 ![Horní řádky v tabulce sbírat míčky a dropoff](./media/vm-do-ten-things/Exploration_compute_pickup_dropoff_distance_v2.PNG)
 
-    results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
-                       'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
-    df = results.loc[results['trip_distance']<=100] #remove outliers
-    df = df.loc[df['direct_distance']<=100] #remove outliers
-    plt.scatter(df['direct_distance'], df['trip_distance'])
-
+```python
+results.columns = ['pickup_longitude', 'pickup_latitude', 'dropoff_longitude',
+                    'dropoff_latitude', 'trip_distance', 'trip_time_in_secs', 'direct_distance']
+df = results.loc[results['trip_distance']<=100] #remove outliers
+df = df.loc[df['direct_distance']<=100] #remove outliers
+plt.scatter(df['direct_distance'], df['trip_distance'])
+```
 
 ![Diagram vyzvednutí/dropoff vzdálenost, o jízdách vzdálenosti](./media/vm-do-ten-things/Exploration_direct_distance_trip_distance_v2.PNG)
 
 Nyní Pojďme Příprava předvýpočtem zredukovaných (1 %) sady dat pro modelování. Tato data můžete použít v modulu reader Machine Learning.
 
-        queryString = """
-        create  table if not exists nyctaxi_downsampled_dataset_testNEW (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        pickup_hour string,
-        pickup_week string,
-        weekday string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double,
-        direct_distance double,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double,
-        tipped string,
-        tip_class string
-        )
-        row format delimited fields terminated by ','
-        lines terminated by '\\n'
-        stored as textfile;
-        """
-        cursor.execute(queryString)
+```python
+queryString = """
+create  table if not exists nyctaxi_downsampled_dataset_testNEW (
+medallion string,
+hack_license string,
+vendor_id string,
+rate_code string,
+store_and_fwd_flag string,
+pickup_datetime string,
+dropoff_datetime string,
+pickup_hour string,
+pickup_week string,
+weekday string,
+passenger_count int,
+trip_time_in_secs double,
+trip_distance double,
+pickup_longitude double,
+pickup_latitude double,
+dropoff_longitude double,
+dropoff_latitude double,
+direct_distance double,
+payment_type string,
+fare_amount double,
+surcharge double,
+mta_tax double,
+tip_amount double,
+tolls_amount double,
+total_amount double,
+tipped string,
+tip_class string
+)
+row format delimited fields terminated by ','
+lines terminated by '\\n'
+stored as textfile;
+"""
+cursor.execute(queryString)
+```
 
-        --- now insert contents of the join into the preceding internal table
+Nyní vložte obsah spojení do interní tabulce
 
-        queryString = """
-        insert overwrite table nyctaxi_downsampled_dataset_testNEW
-        select
-        t.medallion,
-        t.hack_license,
-        t.vendor_id,
-        t.rate_code,
-        t.store_and_fwd_flag,
-        t.pickup_datetime,
-        t.dropoff_datetime,
-        hour(t.pickup_datetime) as pickup_hour,
-        weekofyear(t.pickup_datetime) as pickup_week,
-        from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-        t.passenger_count,
-        t.trip_time_in_secs,
-        t.trip_distance,
-        t.pickup_longitude,
-        t.pickup_latitude,
-        t.dropoff_longitude,
-        t.dropoff_latitude,
-        t.direct_distance,
-        f.payment_type,
-        f.fare_amount,
-        f.surcharge,
-        f.mta_tax,
-        f.tip_amount,
-        f.tolls_amount,
-        f.total_amount,
-        if(tip_amount>0,1,0) as tipped,
-        if(tip_amount=0,0,
-        if(tip_amount>0 and tip_amount<=5,1,
-        if(tip_amount>5 and tip_amount<=10,2,
-        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
-        from
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        pickup_datetime,
-        dropoff_datetime,
-        passenger_count,
-        trip_time_in_secs,
-        trip_distance,
-        pickup_longitude,
-        pickup_latitude,
-        dropoff_longitude,
-        dropoff_latitude,
-        3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
-        *cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
-        +cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
-        rand() as sample_key
+```python
+queryString = """
+insert overwrite table nyctaxi_downsampled_dataset_testNEW
+select
+t.medallion,
+t.hack_license,
+t.vendor_id,
+t.rate_code,
+t.store_and_fwd_flag,
+t.pickup_datetime,
+t.dropoff_datetime,
+hour(t.pickup_datetime) as pickup_hour,
+weekofyear(t.pickup_datetime) as pickup_week,
+from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
+t.passenger_count,
+t.trip_time_in_secs,
+t.trip_distance,
+t.pickup_longitude,
+t.pickup_latitude,
+t.dropoff_longitude,
+t.dropoff_latitude,
+t.direct_distance,
+f.payment_type,
+f.fare_amount,
+f.surcharge,
+f.mta_tax,
+f.tip_amount,
+f.tolls_amount,
+f.total_amount,
+if(tip_amount>0,1,0) as tipped,
+if(tip_amount=0,0,
+if(tip_amount>0 and tip_amount<=5,1,
+if(tip_amount>5 and tip_amount<=10,2,
+if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+from
+(
+select
+medallion,
+hack_license,
+vendor_id,
+rate_code,
+store_and_fwd_flag,
+pickup_datetime,
+dropoff_datetime,
+passenger_count,
+trip_time_in_secs,
+trip_distance,
+pickup_longitude,
+pickup_latitude,
+dropoff_longitude,
+dropoff_latitude,
+3959*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+radians(180)/180/2),2)-cos(pickup_latitude*radians(180)/180)
+*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2)))
+/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*radians(180)/180/2),2)
++cos(pickup_latitude*radians(180)/180)*cos(dropoff_latitude*radians(180)/180)*pow(sin((dropoff_longitude-pickup_longitude)*radians(180)/180/2),2))) as direct_distance,
+rand() as sample_key
 
-        from trip
-        where pickup_latitude between 30 and 90
-            and pickup_longitude between -90 and -30
-            and dropoff_latitude between 30 and 90
-            and dropoff_longitude between -90 and -30
-        )t
-        join
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        pickup_datetime,
-        payment_type,
-        fare_amount,
-        surcharge,
-        mta_tax,
-        tip_amount,
-        tolls_amount,
-        total_amount
-        from fare
-        )f
-        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-        where t.sample_key<=0.01
-        """
-        cursor.execute(queryString)
+from trip
+where pickup_latitude between 30 and 90
+    and pickup_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+)t
+join
+(
+select
+medallion,
+hack_license,
+vendor_id,
+pickup_datetime,
+payment_type,
+fare_amount,
+surcharge,
+mta_tax,
+tip_amount,
+tolls_amount,
+total_amount
+from fare
+)f
+on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+where t.sample_key<=0.01
+"""
+cursor.execute(queryString)
+```
 
 Po chvíli uvidíte, že data byla načtena clustery Hadoop:
 
-    queryString = """
-        select * from nyctaxi_downsampled_dataset limit 10;
-        """
-    cursor.execute(queryString)
-    pd.read_sql(queryString,connection)
-
+```python
+queryString = """
+    select * from nyctaxi_downsampled_dataset limit 10;
+    """
+cursor.execute(queryString)
+pd.read_sql(queryString,connection)
+```
 
 ![Horní řádky z tabulky dat](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
@@ -828,17 +856,17 @@ Můžete vizualizovat soubor sopka JSON z předchozího příkladu Cosmos DB v P
 
 Místo předchozích krocích, můžou vložte následující kód, že skripty out kroky používají v rozšířeném editoru v Power BI, který umožňuje psát transformace dat v dotazovacím jazyce.
 
-    let
-        Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
-        #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-        #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}, {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}),
-        #"Expanded Location" = Table.ExpandRecordColumn(#"Expanded Column1", "Location", {"coordinates"}, {"coordinates"}),
-        #"Added Custom" = Table.AddColumn(#"Expanded Location", "LatLong", each Text.From([coordinates]{1})&","&Text.From([coordinates]{0})),
-        #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Elevation", type number}})
-    in
-        #"Changed Type"
-
-
+```pqfl
+let
+    Source = Json.Document(Web.Contents("https://cahandson.blob.core.windows.net/samples/volcano.json")),
+    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}, {"Volcano Name", "Country", "Region", "Location", "Elevation", "Type", "Status", "Last Known Eruption", "id"}),
+    #"Expanded Location" = Table.ExpandRecordColumn(#"Expanded Column1", "Location", {"coordinates"}, {"coordinates"}),
+    #"Added Custom" = Table.AddColumn(#"Expanded Location", "LatLong", each Text.From([coordinates]{1})&","&Text.From([coordinates]{0})),
+    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Elevation", type number}})
+in
+    #"Changed Type"
+```
 
 Teď máte data v datovém modelu Power BI. Power BI desktopu by měl vypadat takto:
 

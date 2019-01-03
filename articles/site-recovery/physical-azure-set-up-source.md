@@ -2,17 +2,18 @@
 title: Nastavení konfigurace serveru pro zotavení po havárii fyzických serverů do Azure pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nastavit místní konfigurační server pro zotavení po havárii místních fyzických serverů do Azure.
 services: site-recovery
-author: rayne-wiselman
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: raynew
-ms.openlocfilehash: 04d080d9acd74bea128c0e101165031119900dd1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: ramamill
+ms.openlocfilehash: 2e5b90f36a6dc5c88db3f6f449c911d22de680b1
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848404"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976796"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfigurace serveru pro zotavení po havárii fyzických serverů do Azure
 
@@ -35,7 +36,7 @@ V následující tabulce jsou uvedeny minimální hardware, software a požadavk
 ## <a name="choose-your-protection-goals"></a>Volba cílů ochrany
 
 1. Na webu Azure Portal, přejděte **služby Recovery Services** trezory Recovery Services okna a vyberte svůj trezor.
-2. V **prostředků** nabídky trezoru, klikněte na tlačítko **Začínáme** > **Site Recovery** > **krok 1: Příprava infrastruktury**   >  **Cíl ochrany**.
+2. V **prostředků** nabídky trezoru, klikněte na tlačítko **Začínáme** > **Site Recovery** > **krok 1: Příprava infrastruktury** > **cíl ochrany**.
 
     ![Zvolte cíle.](./media/physical-azure-set-up-source/choose-goals.png)
 3. V **cíl ochrany**vyberte **do Azure** a **nevirtualizované/jiné**a potom klikněte na tlačítko **OK**.

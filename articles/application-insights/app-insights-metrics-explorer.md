@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8a8b1e29a6504c725e244efa1ae8c37a9a0d8420
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0d673ee9d316f14f95f6924929ad319eae13efcc
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726266"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973311"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik ve službě Application Insights
 Metriky na [Application Insights] [ start] měřené hodnoty a počty událostí, které se odesílají v telemetrii z vaší aplikace. Pomáhají zjišťovat problémy s výkonem a sledovat trendy ve využití vaší aplikace. Existuje širokou škálu standardních metrik a můžete také vytvořit své vlastní metriky a události.
@@ -140,7 +140,7 @@ Můžete také filtrovat podle **zdroj syntetického provozu**.
 ### <a name="to-add-properties-to-the-filter-list"></a>Přidání vlastnosti do seznamu filtrů
 Chcete filtrovat telemetrii v kategorii vlastní? Například možná rozdělit uživatele do různých kategorií a chcete rozdělit data podle těchto kategorií.
 
-[Vytvořit vlastní vlastnost](app-insights-api-custom-events-metrics.md#properties). Nastavit [inicializátor Telemetrie](app-insights-api-custom-events-metrics.md#defaults) jeho joinkind veškerá telemetrie – včetně standardní telemetrická data zaslaná z různých modulů SDK.
+[Vytvořit vlastní vlastnost](../azure-monitor/app/api-custom-events-metrics.md#properties). Nastavit [inicializátor Telemetrie](../azure-monitor/app/api-custom-events-metrics.md#defaults) jeho joinkind veškerá telemetrie – včetně standardní telemetrická data zaslaná z různých modulů SDK.
 
 ## <a name="edit-the-chart-type"></a>Upravit typ grafu
 Všimněte si, že můžete přepínat mezi tabulky a grafy:
@@ -176,13 +176,13 @@ Pokud chcete dostat e-mailu z neobvyklé hodnoty jakékoliv metriky, přidáte u
 
 
 ## <a name="continuous-export"></a>Souvislý export
-Pokud chcete data průběžně exportovat, abyste ji může zpracovat externě, zvažte použití [průběžný export](app-insights-export-telemetry.md).
+Pokud chcete data průběžně exportovat, abyste ji může zpracovat externě, zvažte použití [průběžný export](../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
 Pokud chcete ještě podrobnější zobrazení vašich dat, můžete si [export do Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
 ## <a name="analytics"></a>Analýzy
-[Analytics](app-insights-analytics.md) větší variabilitu způsob, jak analyzovat telemetrická data pomocí výkonný dotazovací jazyk. Pokud chcete kombinovat nebo vypočítat výsledky z metrik nebo provádění zblízka se podíváte na poslední výkonu vaší aplikace, použijte ji. 
+[Analytics](../azure-monitor/app/analytics.md) větší variabilitu způsob, jak analyzovat telemetrická data pomocí výkonný dotazovací jazyk. Pokud chcete kombinovat nebo vypočítat výsledky z metrik nebo provádění zblízka se podíváte na poslední výkonu vaší aplikace, použijte ji. 
 
 Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalentní analytický dotaz.
 
@@ -193,7 +193,7 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 
     Pokud chcete nastavit filtry, jiné na různých grafů, vytvořte je v jiné listy, uložte jako samostatné Oblíbené položky. Pokud chcete, můžete ho připnout na řídicí panel, tak, aby si ji můžete zobrazit vedle sebe navzájem.
 * Pokud seskupíte podle vlastnosti, která není definována na metriku grafu, pak nebude nic v grafu. Vymažte "Seskupit podle", nebo zvolte jinou seskupení vlastnost.
-* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](app-insights-monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-overview.md). Není k dispozici pro Azure websites.
+* Údaje o výkonu (procesor, frekvence v/v a tak dále) je k dispozici pro Java webových služeb, aplikací klasické pracovní plochy Windows [IIS webové aplikace a služby, pokud budete instalovat monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md), a [Azure Cloud Services](app-insights-overview.md). Není k dispozici pro Azure websites.
 
 ## <a name="video"></a>Video
 
@@ -201,10 +201,10 @@ Z grafu metrik můžete kliknout na ikonu Analytics získat přímo na ekvivalen
 
 ## <a name="next-steps"></a>Další postup
 * [Sledování využití pomocí Application Insights](app-insights-usage-overview.md)
-* [Pomocí vyhledávání diagnostiky](app-insights-diagnostic-search.md)
+* [Pomocí vyhledávání diagnostiky](../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 
-[alerts]: app-insights-alerts.md
+[alerts]: ../azure-monitor/app/alerts.md
 [start]: app-insights-overview.md
-[track]: app-insights-api-custom-events-metrics.md
+[track]: ../azure-monitor/app/api-custom-events-metrics.md

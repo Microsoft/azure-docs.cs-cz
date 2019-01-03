@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: HT
+ms.openlocfilehash: 0119e05ce5cb8d1c2e27936dc44896b7acef9312
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497792"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725962"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -27,10 +27,10 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 
 * Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) služby, které nejsou k dispozici veřejně přes internet. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo [Apache HBase](https://hbase.apache.org/) rozhraní Java API.
 
-> [!WARNING]
+> [!WARNING]  
 > Informace v tomto dokumentu jsou nutné znalosti toho sítě TCP/IP. Pokud nejste obeznámeni s prací v síti TCP/IP, by měla spolupracovat s někým, kdo je před provedením změny do produkčních sítích.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Pokud hledáte pokyny krok za krokem k připojování HDInsight k místní síti pomocí služby Azure Virtual Network, najdete v článku [HDInsight připojit k místní síti](connect-on-premises-network.md) dokumentu.
 
 ## <a name="planning"></a>Plánování
@@ -53,7 +53,7 @@ Následují otázky, které je nutné odpovědět při plánování instalace HD
 
 Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existující virtuální sítě Azure.
 
-> [!NOTE]
+> [!NOTE]  
 > Nelze přidat existující cluster HDInsight do virtuální sítě.
 
 1. Používáte pro virtuální síť modelu classic nebo model nasazení Resource Manager?
@@ -88,7 +88,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
 
         Další informace najdete v tématu [řešení potíží se skupinami zabezpečení sítě](../virtual-network/diagnose-network-traffic-filter-problem.md) dokumentu.
 
-        > [!IMPORTANT]
+        > [!IMPORTANT]  
         > Pravidla skupiny zabezpečení sítě se použijí v pořadí podle priority pravidla. Použít první pravidlo, které se shoduje se vzorem provozu a žádné jiné se použijí pro tento přenos. Pravidla pořadí od nejvíce omezující na omezenou. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
     * Trasy definované uživatelem
@@ -112,7 +112,7 @@ Pomocí kroků v této části zjistíte, jak přidat nové HDInsight do existuj
     * [Vytvoření HDInsight pomocí rozhraní příkazového řádku Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Vytvoření HDInsight pomocí šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Přidání HDInsight k virtuální síti je volitelná konfigurace krok. Je nutné vybrat virtuální síť, při konfiguraci clusteru.
 
 ## <a id="multinet"></a>Připojení víc sítí
@@ -132,7 +132,7 @@ Azure nabízí řešení názvů pro služby Azure, které jsou nainstalovány v
 
 Nemá na výchozí název řešení __není__ povolit HDInsight k překladu názvů prostředky v sítích, které jsou připojené k virtuální síti. Například je společné pro připojení místní sítě k virtuální síti. Se pouze výchozí název řešení HDInsight nemají přístup k prostředkům v místní síti podle názvu. Opak platí to i naopak prostředků ve vaší místní síti nemají přístup k prostředkům ve virtuální síti podle názvu.
 
-> [!WARNING]
+> [!WARNING]  
 > Musíte vytvořit vlastní server DNS a konfigurace virtuální sítě pro použití před vytvořením clusteru HDInsight.
 
 Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích připojené k doméně, je třeba provést následující akce:
@@ -141,7 +141,7 @@ Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích p
 
 2. Konfigurace virtuální sítě na používání vlastního serveru DNS.
 
-3. Najdete že přiřazené přípona DNS pro vaši virtuální síť Azure. Tato hodnota je podobný `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o hledání přípon DNS, najdete v článku [příklad: vlastní DNS](#example-dns) oddílu.
+3. Najdete že přiřazené přípona DNS pro vaši virtuální síť Azure. Tato hodnota je podobný `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net`. Informace o hledání přípon DNS, najdete v článku [příkladu: Vlastní DNS](#example-dns) oddílu.
 
 4. Konfigurace předávání mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
 
@@ -153,7 +153,7 @@ Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích p
 
             * Předávání všech ostatních požadavků na místní server DNS. DNS v místním zpracovává všechny ostatní požadavky na rozlišení názvů, dokonce i požadavky na internetové prostředky, jako je například Microsoft.com.
 
-        * __DNS v místním__: předávat požadavky pro příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se potom předá do Azure rekurzivní překladače.
+        * __On-premises DNS__: Směrovala požadavky pro příponu DNS virtuální sítě na vlastní server DNS. Vlastní server DNS se potom předá do Azure rekurzivní překladače.
 
         Žádosti o konfiguraci této trasy pro plně kvalifikované názvy domény, které obsahují přípony DNS virtuální sítě na vlastní server DNS. Na místním serveru DNS jsou zpracovány všechny ostatní požadavky (i pro veřejné internetové adresy).
 
@@ -167,7 +167,7 @@ Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích p
 
         DNS server pro každou síť směruje požadavky do jiné, na základě přípony DNS. Ostatní požadavky jsou vyřešeny použitím překladač Azure rekurzivní.
 
-    Příklad každou konfiguraci, najdete v článku [příklad: vlastní DNS](#example-dns) oddílu.
+    Příklad každou konfiguraci, najdete v článku [příkladu: Vlastní DNS](#example-dns) oddílu.
 
 Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
@@ -201,7 +201,7 @@ Pro připojení k Apache Ambari a další webové stránky prostřednictvím vir
 
     V seznamu uzlů vrátil vyhledat hlavní uzly plně kvalifikovaný název domény a používat plně kvalifikované názvy pro připojení k Ambari a další webové služby. Například použít `http://<headnode-fqdn>:8080` pro přístup k Ambari.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Některé služby hostované na hlavní uzly jsou aktivní na jednom uzlu jenom po jednom. Pokud pokusu o přístup k službě na jeden hlavní uzel a vrátí chybu 404, přejděte k hlavnímu uzlu.
 
 2. Zjistíte uzlu a port, který je k dispozici na služby, najdete v článku [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
@@ -212,7 +212,7 @@ Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících
 
 * **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
-    > [!WARNING]
+    > [!WARNING]  
     > HDInsight nepodporuje omezení odchozího provozu. Má povolený veškerý odchozí provoz.
 
 * **Trasy definované uživatelem** (UDR) definovat provozní tok mezi prostředky v síti. Další informace najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md) dokumentu.
@@ -234,7 +234,7 @@ Pokud máte v úmyslu používat **skupiny zabezpečení sítě** nebo **trasy d
 3. Vytvoření nebo úprava skupiny zabezpečení sítě nebo trasy definované uživatelem pro podsíť, která budete chtít nainstalovat do HDInsight.
 
     * __Skupiny zabezpečení sítě__: Povolit __příchozí__ přenosy na portu __443__ z IP adresy. Tím se zajistí, že správa služby Hdinsight můžete oslovit clusteru od mimo virtuální síť.
-    * __Trasy definované uživatelem__: Pokud máte v plánu použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firwall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
+    * __Trasy definované uživatelem__: Pokud budete chtít použít trasy definované uživatelem, vytvořte trasu pro každou IP adresu a nastavte __typem dalšího segmentu směrování__ k __Internet__. By mělo také umožnit veškerého odchozího provozu z virtuální sítě s bez omezení. Například může směrovat veškerý ostatní provoz Azure brány firwall nebo síťové virtuální zařízení (hostované v Azure) pro účely monitorování ale odchozí provoz by neměl být zablokovaný.
 
 Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem najdete v následující dokumentaci:
 
@@ -248,7 +248,7 @@ Vynucené tunelování znamená konfigurace směrování definované uživatelem
 
 ## <a id="hdinsight-ip"></a> Požadované IP adresy
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Stav a správu služeb Azure musí být schopný komunikovat s HDInsight. Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, umožňují provoz z IP adresy pro tyto služby k dosažení HDInsight.
 >
 > Pokud je velmi riskantní používat skupiny zabezpečení sítě nebo uživatelem definované trasy k řízení provozu, můžete ignorovat tento oddíl.
@@ -266,7 +266,7 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
 
 2. Pokud váš cluster HDInsight je v jednom z následujících oblastí, musíte povolit přenosy z IP adresy uvedené pro oblast:
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Pokud není uveden oblast Azure, které používáte, pak použijte pouze čtyři IP adresy z kroku 1.
 
     | Země | Oblast | Povolené IP adresy | Povolený port | Směr |
@@ -295,7 +295,7 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | &nbsp; | Velká Británie – jih | 51.140.47.39</br>51.140.52.16 | 443 | Příchozí |
     | Spojené státy | USA – střed | 13.67.223.215</br>40.86.83.253 | 443 | Příchozí |
     | &nbsp; | USA – východ | 13.82.225.233</br>40.71.175.99 | 443 | Příchozí |
-    | &nbsp; | Střed USA – sever | 157.56.8.38</br>157.55.213.99 | 443 | Příchozí |
+    | &nbsp; | Středoseverní USA | 157.56.8.38</br>157.55.213.99 | 443 | Příchozí |
     | &nbsp; | Západní střed USA | 52.161.23.15</br>52.161.10.167 | 443 | Příchozí |
     | &nbsp; | Západní USA | 13.64.254.98</br>23.101.196.19 | 443 | Příchozí |
     | &nbsp; | Západní USA 2 | 52.175.211.210</br>52.175.222.222 | 443 | Příchozí |
@@ -330,14 +330,14 @@ Následující šablony Resource Manageru se vytvoří virtuální síť, která
 
 * [Nasazení zabezpečené virtuální síti Azure a cluster HDInsight Hadoop](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Pomocí následujícího skriptu prostředí PowerShell k vytvoření virtuální sítě, která omezuje příchozí provoz a umožní provoz z IP adres pro oblast Severní Evropa.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
 
 ```powershell
@@ -435,7 +435,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 $vnet | Set-AzureRmVirtualNetwork
 ```
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tento příklad ukazuje, jak přidat pravidla, která povolí příchozí provoz na požadované IP adresy. Neobsahuje pravidlo, které omezují příchozí přístup z jiných zdrojů.
 >
 > Následující příklad ukazuje, jak povolit přístup přes SSH z Internetu:
@@ -458,7 +458,7 @@ Následujícím postupem vytvoření virtuální sítě, které omezují přích
 
 2. Použijte následující postup k přidání pravidel do nové skupiny zabezpečení sítě, které umožní příchozí komunikaci na portu 443 ze stavu a Správa služby Azure HDInsight. Nahraďte **RESOURCEGROUPNAME** s názvem skupiny prostředků, která obsahuje virtuální síť Azure.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Změna IP adresy používané v tomto příkladu tak, aby odpovídaly oblast Azure, které používáte. Tyto informace můžete najít [HDInsight pomocí skupin zabezpečení sítě a trasy definované uživatelem](#hdinsight-ip) oddílu.
 
     ```azurecli
@@ -490,7 +490,7 @@ Následujícím postupem vytvoření virtuální sítě, které omezují přích
 
     Po dokončení tohoto příkazu můžete nainstalovat HDInsight do virtuální sítě.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tyto kroky otevřít pouze přístup k službě stavu a správa HDInsight v cloudu Azure. Je blokován jiným přístup ke clusteru HDInsight z mimo virtuální síť. Pokud chcete povolit přístup mimo virtuální síť, musíte přidat další pravidla skupiny zabezpečení sítě.
 >
 > Následující příklad ukazuje, jak povolit přístup přes SSH z Internetu:
@@ -580,7 +580,7 @@ Na vlastní server DNS ve virtuální síti:
 
 4. Přidáte podmíněné předávání do místního serveru DNS. Konfigurace pro podmíněné předávání na odesílání žádostí pro příponu DNS z kroku 1 na vlastní server DNS.
 
-    > [!NOTE]
+    > [!NOTE]  
     > V dokumentaci softwaru pro konkrétní o tom, jak přidat pro podmíněné předávání DNS.
 
 Po dokončení těchto kroků se můžete připojit k prostředkům v obou sítích pomocí plně kvalifikované názvy domény (FQDN). HDInsight teď můžete nainstalovat do virtuální sítě.

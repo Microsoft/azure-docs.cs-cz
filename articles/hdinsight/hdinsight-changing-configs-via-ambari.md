@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498670"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53722919"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Použití Apache Ambari optimalizovat konfigurace clusterů HDInsight
 
-HDInsight poskytuje [Apache Hadoop](https://hadoop.apache.org/) clustery pro rozsáhlé zpracování dat aplikace. Správa, monitorování a optimalizace tyto komplexní clustery s několika uzly může být náročné. [Apache Ambari](http://ambari.apache.org/) je webové rozhraní pro správu a monitorování clusterů HDInsight s Linuxem.  V případě clusterů Windows používat [rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight poskytuje [Apache Hadoop](https://hadoop.apache.org/) clustery pro rozsáhlé zpracování dat aplikace. Správa, monitorování a optimalizace tyto komplexní clustery s několika uzly může být náročné. [Apache Ambari](https://ambari.apache.org/) je webové rozhraní pro správu a monitorování clusterů HDInsight s Linuxem.  V případě clusterů Windows používat [rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
 Úvod do pomocí webového uživatelského rozhraní Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
@@ -83,7 +83,7 @@ Hive obsahuje dva motory spuštění: [Apache Hadoop MapReduce](https://hadoop.a
 Hadoop se pokusí rozdělit (*mapy*) jednoho souboru do více souborů a proces výsledné soubory paralelně. Počet mapovačů závisí na počtu rozdělení. Následující dvě konfigurační parametry jednotky počet rozdělení pro prováděcí modul Tez:
 
 * `tez.grouping.min-size`: Nižší omezení velikosti seskupené rozdělení s výchozí hodnotou 16 MB (16,777,216 bajtů).
-* `tez.grouping.max-size`: Horní omezení velikosti seskupené rozdělení s výchozí hodnotou 1 GB (1 073 741 824 bajtů).
+* `tez.grouping.max-size`: Horní limit velikosti seskupené rozdělení, s výchozí hodnotou 1 GB (1 073 741 824 bajtů).
 
 Jako výkonu říci snížit oba tyto parametry, chcete-li zlepšit latenci, zvýšit pro větší propustnost.
 
@@ -189,7 +189,7 @@ Jako obecné pravidlo je důležité mít metodu komprese umožňujícím rozdě
 
     ![Komprese exec Hive zprostředkující](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pokud chcete komprimovat zprostředkující soubory, zvolte kompresní kodek s nižší náklady, procesoru, i v případě, že kodek nemá vysokou kompresi výstup.
 
 1. Chcete-li nastavit zprostředkující kompresní kodek, přidat vlastní vlastnost `mapred.map.output.compression.codec` k `hive-site.xml` nebo `mapred-site.xml` souboru.
@@ -210,7 +210,7 @@ Jako obecné pravidlo je důležité mít metodu komprese umožňujícím rozdě
 
     To se komprimovat pomocný soubor pomocí Tenhle komprese. Po přidání vlastnosti se zobrazí v podokně vlastní hive-site.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tento postup upravuje `$HADOOP_HOME/conf/hive-site.xml` souboru.
 
 ### <a name="compress-final-output"></a>Komprese závěrečný výstup
@@ -299,7 +299,7 @@ Další doporučení pro optimalizaci prováděcí modul Hive:
 
     ![Upřesňující vlastnosti pig](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
  
-> [!NOTE]
+> [!NOTE]  
 > Jakékoli nastavení na úrovni relace přepisují hodnoty vlastností v `pig.properties` souboru.
 
 ### <a name="tune-execution-engine"></a>Ladění prováděcího modulu
@@ -333,9 +333,9 @@ Pig zkopíruje soubory JAR vyžadované uživatelem definovanými funkcemi distr
 
 Následující nastavení paměti může pomoct optimalizovat výkon skriptů Pig.
 
-* `pig.cachedbag.memusage`: Velikost přidělené paměti na kontejner. Kontejner je kolekce řazených kolekcí členů. Řazená kolekce členů je uspořádaný sadu polí a část dat je pole. Pokud jsou data v kontejner nad rámec přidělená paměť, je přesahovat na disk. Výchozí hodnota je 0.2, který představuje 20 procent dostupné paměti. Tuto paměť je sdílen mezi všechny kontejnery objektů a dat v aplikaci.
+* `pig.cachedbag.memusage`: Množství paměti přidělené pro kontejner. Kontejner je kolekce řazených kolekcí členů. Řazená kolekce členů je uspořádaný sadu polí a část dat je pole. Pokud jsou data v kontejner nad rámec přidělená paměť, je přesahovat na disk. Výchozí hodnota je 0.2, který představuje 20 procent dostupné paměti. Tuto paměť je sdílen mezi všechny kontejnery objektů a dat v aplikaci.
 
-* `pig.spill.size.threshold`: Jsou přesahovat kontejnery objektů a dat větší než tato prahová hodnota velikosti přelití (v bajtech) na disk. Výchozí hodnota je 5 MB.
+* `pig.spill.size.threshold`: Kontejnery objektů a dat větší než tato prahová hodnota velikosti přelití (v bajtech) jsou přesahovat na disk. Výchozí hodnota je 5 MB.
 
 
 ### <a name="compress-temporary-files"></a>Komprimaci dočasných souborů
@@ -408,7 +408,7 @@ Optimalizovat pro náhodné čtení, můžete snížit paměťového úložišt�
 
 ![HBase počet načtených řádků](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Nenastavujte hodnotu tak, že doba mezi volání další metody na skeneru je delší než časový limit skeneru. Skener trvání časového limitu je definován `hbase.regionserver.lease.period` vlastnost.
 
 

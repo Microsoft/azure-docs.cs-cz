@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 0fdf768008161fbb72e48dae937a4172222dbb63
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239742"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53654083"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Použití služby Azure Storage pro zálohování SQL serveru a obnovení
 ## <a name="overview"></a>Přehled
@@ -32,13 +32,13 @@ Toto téma vysvětluje, proč zvolit použití služby Azure storage pro záloho
 ## <a name="benefits-of-using-the-azure-blob-service-for-sql-server-backups"></a>Výhody používání služby Azure Blob Service pro zálohování SQL serveru
 Existuje několik problémy, se kterými se setkáváte při zálohování serveru SQL Server. Patří mezi ně správy úložiště, riziko selhání úložiště, přístup k Vzdálené úložiště a na konfiguraci hardwaru. Mnohé z těchto problémů se tak vyřeší, použijte službu úložiště objektů Blob v Azure pro zálohování systému SQL Server. Vezměte v úvahu následující výhody:
 
-* **Díky jednoduchosti použití**: ukládání záloh v objektech BLOB Azure může být pohodlnou, flexibilní a snadný přístup k vzdálené možnosti. Vytvoření vzdálené úložiště pro zálohování SQL serveru může být stejně snadné jako změna použít existující skripty a úlohy **zálohování na adresu URL** syntaxe. Vzdálené úložiště by měly být většinou dostatečně daleko od umístění databáze produkční zabránit jednoho po havárii, které mohou ovlivnit mimo pracoviště a produkční umístění se databáze. Kliknutím na [objekty BLOB Azure geografickou replikaci](../../../storage/common/storage-redundancy.md), budete mít další vrstvu ochrany v případě havárie, které by mohly ovlivnit celou oblast.
-* **Zálohování archivu**: služba The Azure Blob Storage nabízí lepší alternativou k možnosti pásky často používaný k archivaci zálohy. Páskové úložiště může vyžadovat fyzické transportation vzdálené zařízení a opatření k ochraně média. Ukládání záloh ve službě Azure Blob Storage nabízí pro rychlé, vysoce dostupné, a možnost archivace trvale.
-* **Spravovat hardware**: neexistuje žádné nároky na správu hardwaru se službami Azure. Služby Azure spravovat hardware a geografická replikace zajistit redundanci a ochranu proti selhání hardwaru.
-* **Neomezené úložiště**: tím, že umožňuje přímé zálohování na objektech BLOB Azure, máte přístup k prakticky neomezené úložiště. Alternativně zálohování disk pro virtuální počítač Azure má omezení na základě velikosti počítačů. Platí omezení na počet disků, které lze připojit k virtuálnímu počítači Azure pro zálohy. Toto omezení je 16 disků pro velmi velká instance a méně pro menší instance.
-* **Zálohování dostupnosti**: zálohy uložené v objektech BLOB Azure jsou k dispozici odkudkoli a kdykoli a snadno přístupný pro obnovení do SQL Server v místním nebo jiný SQL Server běžící ve virtuálním počítači Azure, bez nutnosti databáze připojení a odpojení nebo stahování a připojení virtuálního pevného disku.
-* **Náklady na**: platíte jenom za služby, který se používá. Můžou být nákladově efektivní jako archiv mimo pracoviště a záložní možnost. Najdete v článku [cenovou kalkulačku Azure](https://go.microsoft.com/fwlink/?LinkId=277060 "cenovou kalkulačku funkcí")a [ceny za Azure článku](https://go.microsoft.com/fwlink/?LinkId=277059 "ceny článku") Další informace.
-* **Snímky úložiště**: když používáte SQL Server 2016 databázové soubory jsou uloženy v objektu blob Azure, můžete použít [zálohy snímků souborů](https://msdn.microsoft.com/library/mt169363.aspx) provádět téměř okamžité zálohování a mimořádně rychlé obnovení.
+* **Díky jednoduchosti použití**: Ukládání záloh v objektech BLOB Azure může být pohodlnou, flexibilní a snadný přístup k vzdálené možnosti. Vytvoření vzdálené úložiště pro zálohování SQL serveru může být stejně snadné jako změna použít existující skripty a úlohy **zálohování na adresu URL** syntaxe. Vzdálené úložiště by měly být většinou dostatečně daleko od umístění databáze produkční zabránit jednoho po havárii, které mohou ovlivnit mimo pracoviště a produkční umístění se databáze. Kliknutím na [objekty BLOB Azure geografickou replikaci](../../../storage/common/storage-redundancy.md), budete mít další vrstvu ochrany v případě havárie, které by mohly ovlivnit celou oblast.
+* **Zálohování archivu**: Ve službě Azure Blob Storage nabízí lepší alternativou k možnosti pásky často používaný k archivaci zálohy. Páskové úložiště může vyžadovat fyzické transportation vzdálené zařízení a opatření k ochraně média. Ukládání záloh ve službě Azure Blob Storage nabízí pro rychlé, vysoce dostupné, a možnost archivace trvale.
+* **Spravovat hardware**: Neexistuje žádné nároky na správu hardwaru se službami Azure. Služby Azure spravovat hardware a geografická replikace zajistit redundanci a ochranu proti selhání hardwaru.
+* **Neomezené úložiště**: Tím, že umožňuje přímé zálohování na objektech BLOB Azure, máte přístup k prakticky neomezené úložiště. Alternativně zálohování disk pro virtuální počítač Azure má omezení na základě velikosti počítačů. Platí omezení na počet disků, které lze připojit k virtuálnímu počítači Azure pro zálohy. Toto omezení je 16 disků pro velmi velká instance a méně pro menší instance.
+* **Zálohování dostupnosti**: Zálohy uložené v objektech BLOB Azure jsou k dispozici odkudkoli a kdykoli a snadno přístupný pro obnovení do SQL Server v místním nebo jiný Server SQL spuštěný ve virtuálním počítači Azure, bez nutnosti databáze připojení a odpojení nebo stahování a znovu připojit virtuální pevný disk.
+* **Náklady na**: Platíte jenom za služby, který se používá. Můžou být nákladově efektivní jako archiv mimo pracoviště a záložní možnost. Najdete v článku [cenovou kalkulačku Azure](https://go.microsoft.com/fwlink/?LinkId=277060 "cenovou kalkulačku funkcí")a [ceny za Azure článku](https://go.microsoft.com/fwlink/?LinkId=277059 "ceny článku") Další informace.
+* **Snímky úložiště**: Když používáte SQL Server 2016 databázové soubory jsou uloženy v objektu blob Azure, můžete použít [zálohy snímků souborů](https://msdn.microsoft.com/library/mt169363.aspx) provádět téměř okamžité zálohování a mimořádně rychlé obnovení.
 
 Další podrobnosti najdete v tématu [SQL zálohování a obnovení serveru pomocí služby Azure Blob Storage](https://go.microsoft.com/fwlink/?LinkId=271617).
 
@@ -62,7 +62,7 @@ Následující součásti systému SQL Server se používají při zálohování
 | **Přihlašovací údaje** |Informace, které je potřeba připojit a provést ověření do služby Azure Blob storage se ukládá jako přihlašovací údaje.  V pořadí pro SQL Server zapisovat zálohy do objektů Blob v Azure nebo obnovení z něj musí se vytvořit přihlašovací údaje SQL serveru. Další informace najdete v tématu [přihlašovací údaje SQL serveru](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]
-> Pokud budete chtít zkopírovat a uložit záložní soubor do služby Azure Blob storage, musíte použít typu Objekt blob stránky jako vaše možnost úložiště plánujete použít tento soubor pro operace obnovení. OBNOVENÍ z typu Objekt blob bloku se nezdaří s chybou.
+> SQL Server 2016 má byla aktualizována o podporu objekty BLOB bloku. Podrobnosti najdete na [kurzu: Použití služby Microsoft Azure Blob storage s databází SQL serveru 2016](https://msdn.microsoft.com/library/dn466438.aspx) další podrobnosti.
 > 
 > 
 
@@ -70,8 +70,8 @@ Následující součásti systému SQL Server se používají při zálohování
 1. Pokud ho ještě nemáte, vytvořte účet Azure. Pokud hodnotíte Azure, vezměte v úvahu [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 2. Potom přejděte prostřednictvím jednoho z následujících kurzů, které vás provede procesem vytvoření účtu úložiště a provedení obnovení.
    
-   * **SQL Server 2014**: [kurz: SQL Server 2014 zálohování a obnovení do služby Microsoft Azure Blob Storage Service](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
-   * **SQL Server 2016**: [kurz: použití služby Microsoft Azure Blob storage s databází SQL serveru 2016](https://msdn.microsoft.com/library/dn466438.aspx)
+   * **SQL Server 2014**: [Kurz: SQL Server 2014 zálohování a obnovení do služby Microsoft Azure Blob Storage Service](https://msdn.microsoft.com/library/jj720558\(v=sql.120\).aspx).
+   * **SQL Server 2016**: [Kurz: Použití služby Microsoft Azure Blob storage s databází SQL serveru 2016](https://msdn.microsoft.com/library/dn466438.aspx)
 3. Přečtěte si další dokumentaci od [SQL zálohování a obnovení serveru pomocí služby Microsoft Azure Blob Storage](https://msdn.microsoft.com/library/jj919148.aspx).
 
 Pokud máte jakékoli problémy, přečtěte si téma [zálohování SQL serveru na adresu URL osvědčené postupy a řešení potíží](https://msdn.microsoft.com/library/jj919149.aspx).

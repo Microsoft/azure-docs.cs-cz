@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: a8b0884486f86f66ae02c7e7a82fecee43d5ffed
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386890"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974841"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinovat ScaleR a SparkR v HDInsight
 
@@ -21,7 +21,7 @@ Tento dokument popisuje, jak k předpovědi zpoždění letů doručení pomocí
 
 I když oba balíčky se spouští na Apache Hadoop Spark prováděcího modulu, jsou blokovány z dat v paměti pro sdílení obsahu jednotlivých potřebují vlastní příslušné relace Spark. Dokud tento problém je vyřešen v nadcházející verzi součástí ML Server, alternativním řešením je udržovat překrývat relace Spark a vyměňovat data prostřednictvím zprostředkující soubory. Zde uvedených pokynů ukazují, že tyto požadavky jsou jednoduché dosáhnout.
 
-V tomto příkladu byl zpočátku sdílí v Přednáška na setkání Strata 2016 Mario Inchiosa a Roni Burd. Tato Přednáška na můžete najít [sestavování škálovatelná platforma pro datovou vědu s jazykem R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
+V tomto příkladu byl zpočátku sdílí v Přednáška na setkání Strata 2016 Mario Inchiosa a Roni Burd. Tato Přednáška na můžete najít [sestavování škálovatelná platforma pro datovou vědu s jazykem R](https://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
 Kód byl původně zapsán pro ML Server běžící na Sparku v clusteru služby HDInsight v Azure. Ale koncept kombinování použití SparkR a ScaleR v jednom skriptu je taky platná v kontextu v místních prostředích.
 
@@ -29,9 +29,9 @@ Kroky v tomto dokumentu předpokládají, že pokročilou úroveň znalosti jazy
 
 ## <a name="the-airline-and-weather-datasets"></a>Letecké dopravy a meteorologická datové sady
 
-Zapisovači letových údajů je k dispozici [archivy státní správy USA](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako soubor zip z [AirOnTimeCSV.zip](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
+Zapisovači letových údajů je k dispozici [archivy státní správy USA](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Je také k dispozici jako soubor zip z [AirOnTimeCSV.zip](https://packages.revolutionanalytics.com/datasets/AirOnTime87to12/AirOnTimeCSV.zip).
 
-Data o počasí si můžete stáhnout jako soubory zip v nezpracované podobě podle měsíců a fáze z [národním úřadem pro oceán a atmosféru správy úložiště](http://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu stáhněte data pro květen 2007 – prosince 2012. Použít hodinové datové soubory a `YYYYMMMstation.txt` souboru v rámci všech zips. 
+Data o počasí si můžete stáhnout jako soubory zip v nezpracované podobě podle měsíců a fáze z [národním úřadem pro oceán a atmosféru správy úložiště](https://www.ncdc.noaa.gov/orders/qclcd/). V tomto příkladu stáhněte data pro květen 2007 – prosince 2012. Použít hodinové datové soubory a `YYYYMMMstation.txt` souboru v rámci všech zips. 
 
 ## <a name="setting-up-the-spark-environment"></a>Nastavení prostředí Spark
 
@@ -41,7 +41,7 @@ K nastavení prostředí Spark pomocí následujícího kódu:
 workDir        <- '~'  
 myNameNode     <- 'default' 
 myPort         <- 0
-inputDataDir   <- 'wasb://hdfs@myAzureAcccount.blob.core.windows.net'
+inputDataDir   <- 'wasb://hdfs@myAzureAccount.blob.core.windows.net'
 hdfsFS         <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
 # create a persistent Spark session to reduce startup times 
@@ -535,7 +535,7 @@ V tomto článku jsme ukázali, jak je možné kombinovat použití SparkR pro m
 
 ## <a name="next-steps-and-more-information"></a>Další informace a další kroky
 
-- Další informace o použití ML Server na Apache Sparku, najdete v článku [Průvodce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Další informace o použití ML Server na Apache Sparku, najdete v článku [úvodních pokynů](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
 - Obecné informace o ML Server, najdete v článku [Začínáme s jazykem R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) článku.
 
@@ -543,6 +543,6 @@ V tomto článku jsme ukázali, jak je možné kombinovat použití SparkR pro m
 
 Další informace o použití SparkR najdete v tématu:
 
-- [Apache SparkR dokumentu](https://spark.apache.org/docs/2.1.0/sparkr.html)
+- [Apache SparkR dokumentu](https://spark.apache.org/docs/2.1.0/sparkr.html).
 
-- [Přehled SparkR](https://docs.databricks.com/spark/latest/sparkr/overview.html) z Databricks
+- [Přehled SparkR](https://docs.databricks.com/spark/latest/sparkr/overview.html) z Databricks.

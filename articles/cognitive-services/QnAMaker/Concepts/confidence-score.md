@@ -6,17 +6,17 @@ services: cognitive-services
 author: tulasim88
 manager: pchoudh
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 8fe4ecfe241422c03a2de8d0634ef1e1395aa050
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9f5aedfc28c8aa0835c865cc2041f66abef39d5f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081315"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724687"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Skóre spolehlivosti znalostní báze QnA Maker
 Když uživatelský dotaz je hledána znalostní báze, vrátí QnA Maker příslušné odpovědi, spolu s skóre spolehlivosti. Toto skóre označuje jistotu, že odpověď je doprava odpovídá dotazu daného uživatele. 
@@ -38,7 +38,7 @@ Následující tabulka uvádí typické přidruženou skóre spolehlivosti.
 
 |Hodnota skóre|Význam skóre|Příklad dotazu|
 |--|--|--|
-|90 – 100|A téměř přesnou shodu uživatele dotazu a dotaz KB|"Provedené změny se neaktualizují v znalostní báze po publikování"|
+|90 – 100|A téměř přesnou shodu uživatele dotazu a dotaz KB|"Provedené změny se neaktualizují v článku KB po publikování"|
 |> 70|Vysokou spolehlivostí – obvykle dobrou odpověď, která úplně odpovědi na dotaz uživatele|"Jsem publikoval znalostní BÁZE, ale není prováděna"|
 |50 - 70|Střední jistotou – obvykle velmi dobrou odpověď, která by měla obsahovat odpovědi hlavním záměrem uživatelský dotaz|"Měli uložit Moje aktualizace před můžu publikovat znalostní BÁZE?"|
 |30 – 50|S nízkou spolehlivostí – obvykle související odpovědí, který odpovídá částečně záměru uživatele|"Co uložit a trénování dělá?"|
@@ -58,7 +58,7 @@ Pokud zvolíte, že vaše mezní hodnota, mějte na paměti rovnováhu mezi pře
 > Novější verze nástroje QnA Maker vylepšení bodovací logiku zahrnout a může mít vliv na vaše mezní hodnota. Kdykoli můžete aktualizovat službu, ujistěte se, že pro testování a upravit prahovou hodnotu v případě potřeby. Služba QnA verzi, můžete zjistit [tady](https://www.qnamaker.ai/UserSettings)a zjistit, jak získat nejnovější aktualizace [tady](../How-To/troubleshooting-runtime.md).
 
 ## <a name="improve-confidence-scores"></a>Zvýšení skóre spolehlivosti
-Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď.
+Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď. Můžete také použít [word rozšiřuje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) synonyma přidáte klíčová slova v znalostní BÁZÍ.
 
 
 ## <a name="similar-confidence-scores"></a>Podobně jako skóre spolehlivosti

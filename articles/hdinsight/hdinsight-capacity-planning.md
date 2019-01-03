@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193854"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716136"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -38,17 +38,17 @@ HDInsight je k dispozici v mnoha oblastech Azure. Nejbližší oblast, najdete v
 
 ### <a name="location-of-default-storage"></a>Umístění výchozí úložiště
 
-Výchozím úložištěm, účtu služby Azure Storage nebo Azure Data Lake Store, musí být ve stejném umístění jako cluster. Azure Storage je dostupné ve všech umístěních. V některých oblastech je k dispozici data Lake Store Gen1 – viz aktuální dostupnosti Data Lake Store v rámci *úložiště* v [Azure produkty k dispozici podle oblasti](https://azure.microsoft.com/regions/services/).
+Výchozím úložištěm, účtu služby Azure Storage nebo Azure Data Lake Storage, musí být ve stejném umístění jako cluster. Azure Storage je dostupné ve všech umístěních. V některých oblastech je k dispozici data Lake Storage Gen1 – viz aktuální Data Lake Storage dostupnost v rámci *úložiště* v [Azure produkty k dispozici podle oblasti](https://azure.microsoft.com/regions/services/).
 
 ### <a name="location-of-existing-data"></a>Umístění existujících dat
 
-Pokud už máte účet úložiště nebo Data Lake Store obsahující vaše data a chcete používat toto úložiště jako výchozím úložištěm vašeho clusteru, musíte nasadit clusteru na stejném místě.
+Pokud už máte účet úložiště nebo Data Lake Storage, který obsahuje vaše data a chcete používat toto úložiště jako výchozím úložištěm vašeho clusteru, musíte nasadit clusteru na stejném místě.
 
 ### <a name="storage-size"></a>Velikost úložiště
 
-Po nasazení clusteru služby HDInsight můžete připojit další účty Azure Storage nebo přístup k jiné Data Lake Store. Všechny vaše účty úložiště se musí nacházet ve stejném umístění jako cluster. Data Lake Store může být v jiném umístění, i když to může způsobit určitou latenci čtení a zápis dat.
+Po nasazení clusteru služby HDInsight můžete připojit další účty Azure Storage nebo přístup k jiné úložiště Data Lake. Všechny vaše účty úložiště se musí nacházet ve stejném umístění jako cluster. Data Lake Storage může být v jiném umístění, i když to může způsobit určitou latenci čtení a zápis dat.
 
-Azure Storage má některé [limity kapacity](../azure-subscription-service-limits.md#storage-limits), zatímco je Data Lake Store Gen1 prakticky neomezené.
+Azure Storage má některé [limity kapacity](../azure-subscription-service-limits.md#storage-limits), zatímco Gen1 úložiště Data Lake je prakticky neomezené.
 
 Cluster můžete přistupovat kombinaci různých účtů úložiště. Typické příklady zahrnují:
 
@@ -75,7 +75,7 @@ Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, vel
 
 * PAMĚŤ RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
 
-* Síť: Pro většinu typů clusteru je dat zpracovaných branami clusteru není na místním disku, ale v služby externí úložiště, jako je Data Lake Store nebo Azure Storage. Vezměte v úvahu šířka pásma sítě a propustnosti mezi uzlu virtuálního počítače a služby úložiště. Šířku pásma sítě dostupnou pro virtuální počítač se obvykle zvyšuje s větší velikosti. Podrobnosti najdete v tématu [velikosti virtuálních počítačů přehled](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Síť: Pro většinu typů clusteru je dat zpracovaných branami clusteru není na místním disku, ale v služby externí úložiště, jako je Data Lake Storage nebo Azure Storage. Vezměte v úvahu šířka pásma sítě a propustnosti mezi uzlu virtuálního počítače a služby úložiště. Šířku pásma sítě dostupnou pro virtuální počítač se obvykle zvyšuje s větší velikosti. Podrobnosti najdete v tématu [velikosti virtuálních počítačů přehled](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Zvolte možnost škálování clusteru
 
@@ -89,7 +89,7 @@ Můžete horizontálně navýšit požadavkům zatížení ve špičce, pak šk�
 
 Bude vám účtována životnosti clusteru. Pokud jsou pouze konkrétní časy, že potřebujete clusteru nahoru a spuštěná, můžete si [vytváření clusterů na vyžádání pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Můžete také vytvořit Powershellové skripty, které zřízení a odstranění clusteru a poté naplánujte tyto skripty pomocí [Azure Automation](https://azure.microsoft.com/services/automation/).
 
-> [!NOTE]
+> [!NOTE]  
 > Při odstranění clusteru se odstraní také jeho výchozí metastore Hive. Pokud chcete zachovat metastoru pro další opakované vytváření clusteru, použijte externím úložištěm metadat jako je Azure Database nebo [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
@@ -120,7 +120,7 @@ Po určení cílovou velikost virtuálního počítače clusteru, škálování 
 1. Klikněte na tlačítko **Další: Zkontrolovat a vytvořit**.
 1. Na **revize + vytvořit** klikněte na tlačítko **vytvořit**.
 
-> [!Note]
+> [!NOTE]  
 > Pokud je potřeba zvýšit kvótu jader HDInsight do privátní oblasti [odeslat žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
 
 Je možné [obraťte se na podporu požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).

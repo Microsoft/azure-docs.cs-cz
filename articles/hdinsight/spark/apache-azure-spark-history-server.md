@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497277"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792777"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použít rozšířený Server historie Sparku Apache pro ladění a Diagnostika aplikací Apache Spark
 
@@ -26,7 +26,7 @@ Server historie Apache Spark je ve webovém uživatelském rozhraní pro dokonč
 
 ### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Z webu Azure portal otevřete Apache Server historie Sparku webového uživatelského rozhraní
 
-1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#showClusters).
 2. Z **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Server historie Sparku**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru Spark. 
 
     ![Server historie sparku](./media/apache-azure-spark-history-server/launch-history-server.png "Server historie Sparku")
@@ -107,10 +107,10 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 + Přehrání úlohy po kliknutí **přehrávání** tlačítko a kdykoli ukončit kliknutím na tlačítko Zastavit. Zobrazení úloh barvou, chcete-li zobrazit různé stavy při přehrávání:
 
     + Zelená pro úspěšné: Úloha byla úspěšně dokončena.
-    + Oranžové pro opakované: instance úlohy, které selhaly, ale nemají vliv na konečný výsledek úlohy. Tyto úlohy měl duplicitní nebo instance opakování, které mohou být úspěšně dokončeny později.
+    + Pokus o oranžově pro: Instance úlohy, které selhaly, ale nemají vliv na konečný výsledek úlohy. Tyto úlohy měl duplicitní nebo instance opakování, které mohou být úspěšně dokončeny později.
     + Modrá pro spuštění: Úloha je spuštěna.
     + Bílé čekání nebo přeskočené: Úloha čeká na spuštění nebo fázi byl přeskočen.
-    + Červené se nezdařilo: úloha se nezdařila.
+    + Nepovedlo se červenou barvu pro: Úloha se nezdařila.
 
     ![ukázka barvy grafu, spuštění](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -119,7 +119,7 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 
     ![ukázka barvy Graph, se nezdařilo](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
-    > [!NOTE]
+    > [!NOTE]  
     > Je povolené přehrávání pro každou úlohu. Nedokončená úloha přehrávání nepodporuje.
 
 
@@ -132,8 +132,8 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
     ![Popis grafu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Na kartě Graf úlohy, budou mít fáze popisek a malé ikony se zobrazí, pokud mají úlohy, které splňují následující podmínky:
-    + Nerovnoměrná distribuce dat: velikost čtení dat > průměr dat číst velikost všech úkolů v této fázi * 2 a data načtená velikost > 10 MB
-    + Nerovnoměrné rozdělení času: doba provádění > Průměrná doba provádění všech úloh v této fázi * 2 a doba provádění > 2 minut
+    + Nerovnoměrná distribuce dat: velikost čtení dat > průměr dat číst velikost všech úkolů v této fázi * 2 a data načtená velikost > 10 MB.
+    + Nerovnoměrné rozdělení času: doba provádění > Průměrná doba provádění všech úloh v této fázi * 2 a doba provádění > 2 minut.
 
     ![zkosení ikonou grafu](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -147,10 +147,10 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
     + Počet řádků: součet vstupní záznamy výstupní záznamy, náhodné čtení záznamů a náhodné zápis záznamů.
     + Průběh.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Ve výchozím nastavení uzlu grafu úlohy se zobrazí informace z posledního pokusu každou z fází (s výjimkou doba provedení fáze), ale během přehrávání grafu se zobrazí uzel informace každého pokusu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Pro velikost dat pro čtení a zápisu používáme 1 MB = 1 000 KB = 1 000 * 1 000 bajtů.
 
 + Kliknutím na odeslat zpětnou vazbu s problémy **nám poskytnout zpětnou vazbu**.
@@ -168,7 +168,7 @@ Vyberte ID úlohy klikněte **diagnostiku** v nabídce Nástroje k dosažení zo
 ### <a name="data-skew"></a>Nerovnoměrná distribuce dat
 Klikněte na tlačítko **Nerovnoměrná distribuce dat** kartě odpovídající výrazně nerovnoměrnou distribucí úlohy jsou zobrazeny v závislosti na zadaných parametrů. 
 
-+ **Zadejte parametry** – parametry, které se používají ke zjištění Nerovnoměrná distribuce dat se zobrazí v první části. Je předdefinovaných pravidel: přečtených dat úkolu je vyšší než 3 x průměrná úkolů data načtená a číst data úloh je víc než 10MB. Pokud chcete definovat vlastní pravidla pro úlohy s výrazně nerovnoměrnou distribucí, můžete použít parametry, **zkosený fázi**, a **zkosení Char** oddílu se aktualizují odpovídajícím způsobem.
++ **Zadejte parametry** – parametry, které se používají ke zjištění Nerovnoměrná distribuce dat se zobrazí v první části. Je předdefinovaných pravidel: Přečtených dat úkolu je větší než 3krát přečtených dat. průměrné úloh a úkolů data načtená je více než 10MB. Pokud chcete definovat vlastní pravidla pro úlohy s výrazně nerovnoměrnou distribucí, můžete použít parametry, **zkosený fázi**, a **zkosení Char** oddílu se aktualizují odpovídajícím způsobem.
 
 + **Zešikmená fázi** – druhá část ukazuje fází, které mít posunutá kritériím výše uvedené úlohy. Pokud existuje více než jeden úkol výrazně nerovnoměrnou distribucí ve fázi, fáze zešikmení tabulky zobrazí pouze nejvíce výrazně nerovnoměrnou distribucí úlohy (například největší data pro data zkosení).
 

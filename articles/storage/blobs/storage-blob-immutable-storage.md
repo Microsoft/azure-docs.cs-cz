@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: d3d83e240fec692d5aa655923637910006c7a62f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261466"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634265"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store důležitých podnikových dat ve službě Azure Blob storage
 
@@ -25,23 +25,23 @@ Neměnné úložiště pomáhá finanční instituce a souvisejících oborech �
 
 Mezi typické případy použití patří:
 
-- **Dodržování legislativních předpisů**: neměnné úložiště pro úložiště objektů Blob v Azure pomáhá 17a-4(f) adresu Sekundu organizace, 1.31(d) CFTC, FINRA a nařízení.
+- **Dodržování legislativních předpisů**: Neměnné úložiště pro úložiště objektů Blob v Azure pomáhá organizacím adresu Sekundu 17a-4(f), CFTC 1.31(d), FINRA a nařízení.
 
-- **Zabezpečení dokumentu uchování**: Blob storage se zajistí, že data nelze změnit ani odstranit, každý uživatel, včetně uživatelů s oprávněním správce účtu.
+- **Zabezpečení dokumentu uchování**: Úložiště objektů blob se zajistí, že data nelze změnit ani odstranit, každý uživatel, včetně uživatelů s oprávněním správce účtu.
 
-- **Blokování z právních důvodů**: neměnné úložiště pro úložiště objektů Blob v Azure umožňuje ukládání citlivých informací, které je zásadní pro sporu nebo vyšetřování trestného ve stavu odolného proti požadovanou dobu.
+- **Blokování z právních důvodů**: Neměnné úložiště pro úložiště objektů Blob v Azure umožňuje ukládání citlivých informací, které je zásadní pro sporu nebo vyšetřování trestného ve stavu odolného proti požadovanou dobu.
 
 Neměnné úložiště umožňuje:
 
-- **Podpora zásad uchovávání informací podle času**: uživatelé nastavení zásad pro ukládání dat pro zadaný interval.
+- **Podpora zásad uchovávání informací podle času**: Uživatelé nastavení zásad pro ukládání dat pro zadaný interval.
 
-- **Podpora zásad blokování z právních důvodů**: Pokud není známý interval uchovávání informací, uživatelé mohou nastavit právních immutably ukládat data, dokud se vymazat blokování z právních důvodů.  Když je nastavené blokování z právních důvodů, objekty blob je možné vytvářet a číst, ale ne upravovat nebo odstraňovat. Ke každému blokování z právních důvodů se přiřadí uživatelem definovaná alfanumerická značka, která slouží jako řetězec identifikátor (například ID případu).
+- **Podpora zásad blokování z právních důvodů**: Pokud není známý interval uchovávání informací, uživatelé můžou nastavit právních immutably ukládat data, dokud se vymazat blokování z právních důvodů.  Když je nastavené blokování z právních důvodů, objekty blob je možné vytvářet a číst, ale ne upravovat nebo odstraňovat. Ke každému blokování z právních důvodů se přiřadí uživatelem definovaná alfanumerická značka, která slouží jako řetězec identifikátor (například ID případu).
 
 - **Podpora pro všechny úrovně objektu blob**: ČERV zásady platí bez ohledu na úroveň úložiště objektů Blob v Azure a použít na všech úrovních: horká, studená a archivní úrovně. Uživatelé můžou přecházet data na úroveň optimalizovaných náklady pro své úlohy při zachování dat neměnnosti.
 
-- **Konfigurace na úrovni kontejneru**: uživatelé můžou konfigurovat zásady uchovávání informací podle času a blokování z právních důvodů značek na úrovni kontejneru. S použitím jednoduché nastavení na úrovni kontejneru, uživatelé mohou vytvářet a zamknout zásady uchovávání informací podle času, rozšíření intervaly uchovávání informací, nastavení a zrušte právních a provádění dalších akcí. Tyto zásady platí pro všechny objekty BLOB v kontejneru, stávající i nové.
+- **Konfigurace na úrovni kontejneru**: Uživatelé můžou konfigurovat zásady uchovávání informací podle času a blokování z právních důvodů značek na úrovni kontejneru. S použitím jednoduché nastavení na úrovni kontejneru, uživatelé mohou vytvářet a zamknout zásady uchovávání informací podle času, rozšíření intervaly uchovávání informací, nastavení a zrušte právních a provádění dalších akcí. Tyto zásady platí pro všechny objekty BLOB v kontejneru, stávající i nové.
 
-- **Podpora protokolování auditu**: každý kontejner obsahuje protokolu auditu. Zobrazuje až o pěti uchovávání informací podle času příkazy pro zásady uzamčené uchovávání informací podle času s délkou maximálně tři protokoly pro rozšíření interval uchovávání informací. Protokol pro uchovávání informací podle času, obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. Pro právních důvodů protokol obsahuje ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se uchovávají po dobu jeho existence kontejneru, v souladu s pokyny k dodržování legislativních 17a-4(f) Sekundu. [Protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zobrazuje aktivity roviny komplexnější protokolu všechny ovládacího prvku. Zodpovídá za uživatele k ukládání těchto protokolů trvale, jak může být nezbytný pro zákonné nebo jiné účely.
+- **Podpora protokolování auditu**: Každý kontejner obsahuje protokolu auditu. Zobrazuje až o pěti uchovávání informací podle času příkazy pro zásady uzamčené uchovávání informací podle času s délkou maximálně tři protokoly pro rozšíření interval uchovávání informací. Protokol pro uchovávání informací podle času, obsahuje ID uživatele, typ příkazu, časová razítka a interval uchovávání informací. Pro právních důvodů protokol obsahuje ID uživatele, typ příkazu, časová razítka a značky blokování z právních důvodů. Tento protokol se uchovávají po dobu jeho existence kontejneru, v souladu s pokyny k dodržování legislativních 17a-4(f) Sekundu. [Protokolu aktivit Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) zobrazuje aktivity roviny komplexnější protokolu všechny ovládacího prvku. Zodpovídá za uživatele k ukládání těchto protokolů trvale, jak může být nezbytný pro zákonné nebo jiné účely.
 
 Neměnné úložiště je povolené ve všech veřejných oblastech Azure.
 
@@ -95,7 +95,7 @@ Neexistuje žádné další poplatky za použití této funkce. Stejným způsob
 
 ## <a name="getting-started"></a>Začínáme
 
-Nejnovější verze [webu Azure portal](http://portal.azure.com) a [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a také ve verzi preview [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) podporují neměnné úložiště pro úložiště objektů Blob v Azure.
+Nejnovější verze [webu Azure portal](http://portal.azure.com) a [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a také ve verzi preview [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) podporují neměnné úložiště pro úložiště objektů Blob v Azure.
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -137,13 +137,12 @@ Tato funkce je součástí skupiny následující příkaz: `az storage containe
 
 ### <a name="powershell"></a>PowerShell
 
-[Prostředí PowerShell verze 4.4.0-preview](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May20180) podporuje neměnné úložiště.
-Chcete-li tuto funkci povolit, postupujte takto:
+Modul Az.Storage ve verzi preview podporuje neměnné úložiště.  Chcete-li tuto funkci povolit, postupujte takto:
 
 1. Ujistěte se, že máte nejnovější verzi modulu PowerShellGet nainstalovaný: `Install-Module PowerShellGet –Repository PSGallery –Force`.
 2. Odebrání jakékoli předchozí instalace Azure Powershellu.
-3. Instalace AzureRM: `Install-Module AzureRM –Repository PSGallery –AllowClobber`. Azure je podobně nainstalovat z tohoto úložiště.
-4. Nainstalujte rutiny roviny správy úložiště ve verzi preview: `Install-Module -Name AzureRM.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`.
+3. Instalace Azure Powershellu: `Install-Module Az –Repository PSGallery –AllowClobber`.
+4. Instalace modulu Azure Powershellu pro úložiště ve verzi preview: `Install-Module Az.Storage -AllowPrerelease -Repository PSGallery -AllowClobber`
 
 [Powershellu ukázkový kód](#sample-powershell-code) části dále v tomto článku znázorňuje používání funkcí.
 
@@ -202,6 +201,8 @@ Neměnné úložiště je aktuálně dostupná jenom v oblastech Azure. Pokud v�
 
 ## <a name="sample-powershell-code"></a>Ukázkový kód Powershellu
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Následující ukázkový skript Powershellu se pro referenci. Tento skript vytvoří nový účet úložiště a kontejner. To potom se dozvíte, jak nastavit a zrušte právních důvodů, vytvořit a zamknout zásady uchovávání informací podle času (označované také jako zásady neměnnosti) a rozšiřte interval uchovávání informací.
 
 Nastavení a testování účet služby Azure Storage:
@@ -214,122 +215,122 @@ $container2 = "<Enter another container name>”
 $location = "<Enter the storage account location>"
 
 # Log in to the Azure Resource Manager account
-Login-AzureRMAccount
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Storage"
+Login-AzAccount
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Storage"
 
 # Create your Azure resource group
-New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
+New-AzResourceGroup -Name $ResourceGroup -Location $location
 
 # Create your Azure storage account
-New-AzureRmStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
+New-AzStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
     $StorageAccount -SkuName Standard_LRS -Location $location -Kind StorageV2
 
 # Create a new container
-New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+New-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container
 
 # Create Container 2 with a storage account object
-$accountObject = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroup `
+$accountObject = Get-AzStorageAccount -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount
-New-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
+New-AzStorageContainer -StorageAccount $accountObject -Name $container2
 
 # Get a container
-Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container
 
 # Get a container with an account object
-$containerObject = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container
+$containerObject = Get-AzStorageContainer -StorageAccount $accountObject -Name $container
 
 # List containers
-Get-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount
 
 # Remove a container (add -Force to dismiss the prompt)
-Remove-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `
+Remove-AzStorageContainer -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container2
 
 # Remove a container with an account object
-Remove-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
+Remove-AzStorageContainer -StorageAccount $accountObject -Name $container2
 
 # Remove a container with a container object
-$containerObject2 = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
-Remove-AzureRmStorageContainer -InputObject $containerObject2
+$containerObject2 = Get-AzStorageContainer -StorageAccount $accountObject -Name $container2
+Remove-AzStorageContainer -InputObject $containerObject2
 ```
 
 Nastavit a zrušit právních důvodů:
 
 ```powershell
 # Set a legal hold
-Add-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+Add-AzStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container -Tag <tag1>,<tag2>,...
 
 # with an account object
-Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
+Add-AzStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
 
 # with a container object
-Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
+Add-AzStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
 
 # Clear a legal hold
-Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
+Remove-AzStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -Name $container -Tag <tag2>
 
 # with an account object
-Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
+Remove-AzStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
 
 # with a container object
-Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>
+Remove-AzStorageContainerLegalHold -Container $containerObject -Tag <tag4>
 ```
 
 Vytvořit nebo aktualizovat zásady neměnnosti:
 ```powershell
 # with an account name or container name
-Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+Set-AzStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
 
 # with an account object
-Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Set-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
 
 # with a container object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Set-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 7
 
 # with an immutability policy object
-Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
+Set-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
 ```
 
 Získat zásady neměnnosti:
 ```powershell
 # Get an immutability policy
-Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
+Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container
 
 # with an account object
-Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Get-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container
 
 # with a container object
-Get-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject
+Get-AzStorageContainerImmutabilityPolicy -Container $containerObject
 ```
 
 Zamknout zásady neměnnosti (Přidat - Force zavřete výzvu):
 ```powershell
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
+$policy = Lock-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
 
 # with an account name or container name
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
 # with an account object
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -Etag $policy.Etag
 
 # with a container object
-$policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Lock-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -Etag $policy.Etag -force
 ```
 
@@ -337,45 +338,45 @@ Rozšiřte zásady neměnnosti:
 ```powershell
 
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
+$policy = Set-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 
 # with an account name or container name
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Set-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
 
 # with an account object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
+$policy = Set-AzStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
     $policy.Etag -ExtendPolicy
 
 # with a container object
-$policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
+$policy = Set-AzStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
 ```
 
 Odstranit zásady neměnnosti (Přidat - Force zavřete výzvu):
 ```powershell
 # with an immutability policy object
-$policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+$policy = Get-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
-Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
+Remove-AzStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 # with an account name or container name
-Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
+Remove-AzStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
 # with an account object
-Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
+Remove-AzStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -Etag $policy.Etag
 
 # with a container object
-Remove-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject `
+Remove-AzStorageContainerImmutabilityPolicy -Container $containerObject `
     -Etag $policy.Etag
 
 ```

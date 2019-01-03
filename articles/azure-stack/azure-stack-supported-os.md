@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 056c44de4f89b04149c275b1508c7ea8f397d6e6
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405593"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810775"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované ve službě Azure Stack
 
@@ -71,11 +71,11 @@ Linuxové distribuce, které jsou uvedené jako dostupné na webu Marketplace za
 | Ubuntu 16.04-LTS | 64 bitů | Canonical | Ano |
 | Ubuntu 18.04-LTS | 64 bitů | Canonical | Ano |
 
-Informace o podpoře Red Hat Enterprise Linux, najdete [Red Hat a Azure Stackem: Nejčastější dotazy](https://access.redhat.com/articles/3413531).
+Informace o podpoře Red Hat Enterprise Linux, najdete v části [Red Hat a Azure Stack: Nejčastější dotazy](https://access.redhat.com/articles/3413531).
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure Marketplace zásobníku najdete v následujících článcích:
 
-[Stažení položek z Marketplace](azure-stack-download-azure-marketplace-item.md)  
-[Vytvoření a publikování položky Marketplace](azure-stack-create-and-publish-marketplace-item.md)
+- [Stažení položek z Marketplace](azure-stack-download-azure-marketplace-item.md)  
+- [Vytvoření a publikování položky Marketplace](azure-stack-create-and-publish-marketplace-item.md)

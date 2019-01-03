@@ -9,14 +9,14 @@ items:
     items:
     - name: Nejnovější aktualizace
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: aktualizace 1811
+      href: azure-stack-update-1811.md
     - name: aktualizace 1809
       href: azure-stack-update-1809.md
     - name: aktualizace. 1808
       href: azure-stack-update-1808.md
     - name: aktualizace 1807
       href: azure-stack-update-1807.md
-    - name: aktualizace 1805
-      href: azure-stack-update-1805.md
 - name: Šablony Rychlý start
   items:
   - name: Vyzkoušejte Azure Stack
@@ -209,6 +209,8 @@ items:
         href: Azure-stack-create-service-principals.md
       - name: Povolení víceklientské architektury
         href: azure-stack-enable-multitenancy.md
+    - name: Data šifrování neaktivních dat
+      href: azure-stack-security-bitlocker.md
     - name: Otočit tajných kódů
       href: azure-stack-rotate-secrets.md
     - name: Aktualizace antivirových
@@ -399,9 +401,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: b9b30b66508244a9d56c70b957a7b28bb023afb8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3d24dc847d6ca1e842cd86ff9192d43f9006d53d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190403"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723259"

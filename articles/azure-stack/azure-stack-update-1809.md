@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 12/22/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f3994c2be50939a837256224030e5284cc6f385b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088047"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754046"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Tento článek popisuje obsah balíčku 1809 aktualizace. Balíček aktualizace zahrnuje vylepšení, oprav a známé problémy pro tuto verzi sady Azure Stack. Tento článek také obsahuje odkaz, takže si můžete stáhnout aktualizace. Známé problémy jsou rozděleny do problémy přímo souvisí s proces aktualizace a problémy se sestavením (po instalaci).
 
@@ -60,10 +60,10 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 - Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
-   - Byl opraven problém, v které připojování datových disků SSD na premium velikost spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) se nezdařilo s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: operaci nelze provést, protože požadovaná Typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*. 
+   - Byl opraven problém, v které připojování datových disků SSD na premium velikost spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) se nezdařilo s chybou:  *Nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: Požadovaná operace nejde provést, protože typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*. 
    
-   - Vytvoření spravovaného disku virtuálního počítače s použitím **createOption**: **připojit** selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Se nezdařilo". Další informace: "vnitřní spuštění došlo k chybě."*
-   Kód chyby: InternalExecutionError ErrorMessage: došlo k chybě vnitřního spuštění.
+   - Vytvoření spravovaného disku virtuálního počítače s použitím **createOption**: **Připojit** selže s následující chybou: *Dlouho běžící operace se nezdařila se stavem "Se nezdařilo". Další informace: "vnitřní spuštění došlo k chybě."*
+   Kód chyby: InternalExecutionError chybová zpráva: Při provádění došlo k vnitřní chybě.
    
    Tento problém byl vyřešen.
 
@@ -221,16 +221,16 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
 
    Upozornění #1:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
 
   Upozornění #2:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
+   - JMÉNO:  Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: Upozornění
+   - KOMPONENTY: Stav kontroleru
+   - POPIS: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
 
   Obě výstrahy můžete bezpečně ignorovat a bude automaticky zavřít v čase.  
 
@@ -238,10 +238,10 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 2812138 | IS --> 
 - Může se zobrazit upozornění pro **úložiště** komponenta, která má následující údaje:
 
-   - Název: Chyba interní komunikace se službou Storage  
-   - ZÁVAŽNOST: kritické  
-   - KOMPONENTA: úložiště  
-   - Popis: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
+   - JMÉNO: Chyba interní komunikace se službou Storage  
+   - ZÁVAŽNOST: Kritická  
+   - KOMPONENTY: Storage  
+   - POPIS: Chyba interní komunikace se službou úložiště došlo k chybě při odesílání požadavků na tyto uzly.  
 
     Upozornění můžete ignorovat, ale budete muset ručně zavřete výstrahu.
 
@@ -257,12 +257,12 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - Při vytváření nového virtuálního počítače (VM) pomocí portálu Azure Stack, a vyberte velikost virtuálního počítače, zobrazí se sloupec USD za měsíc s **není k dispozici** zprávy. Tento sloupec by se neměl zobrazit; zobrazení virtuální počítač cenové sloupec není podporován ve službě Azure Stack.
 
 <!-- 2869209 – IS, ASDK --> 
-- Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 
+- Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *Dlouho běžící operace se nezdařila se stavem "Failed"*. 
 
 <!--  2795678 – IS, ASDK --> 
 - Při použití portálu k vytvoření virtuálních počítačů (VM) o velikosti virtuálních počítačů úrovně premium (DS, Ds_v2, služby FS, FSv2) virtuální počítač se vytvoří v účtu úložiště úrovně standard. Vytvoření účtu úložiště úrovně standard neovlivňuje funkčně vstupně-výstupních operací, nebo fakturace. 
 
-   Můžete bezpečně ignorovat upozornění, že: *jste se rozhodli použít standardní disk o velikosti, která podporuje prémiové disky. To může mít vliv na výkon operačního systému a nedoporučuje se používat. Zvažte raději použití storage úrovně premium (SSD).*
+   Můžete bezpečně ignorovat upozornění, že: *Rozhodli jste se použít standardní disk o velikosti, která podporuje prémiové disky. To může mít vliv na výkon operačního systému a nedoporučuje se používat. Zvažte raději použití storage úrovně premium (SSD).*
 
 <!-- 2967447 - IS, ASDK --> 
 - Prostředí pro vytváření virtuálního počítače škálovací sady (VMSS) poskytuje založené na CentOS 7.2 jako možnost pro nasazení. Vzhledem k tomu, že obrázek není k dispozici ve službě Azure Stack, vyberte jiný operační systém pro vaše nasazení nebo pomocí šablony Azure Resource Manageru zadáním jiné image CentOS, který byl stažen před jejich nasazením na Marketplace operátorem.  
@@ -287,12 +287,15 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    - Vytvořené před aktualizací. 1808 kvót kvóta Managed Disks se zobrazí hodnoty 0 na portálu správce, i když je přiděleno 2048 GiB. Můžete zvýšit nebo snížit hodnotu podle skutečných potřeb a nově nastavené hodnoty kvóty na přepíše výchozí hodnotu 2048 GiB.
    - Při aktualizaci hodnoty kvóty na hodnotu 0, je ekvivalentní výchozí hodnotu 2 048 GB. Jako alternativní řešení nastavte hodnoty kvóty na 1.
 
-<!-- TBD - IS ASDK --> Po použití 1809 aktualizace, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+<!-- TBD - IS ASDK --> 
+- Po použití 1809 aktualizace, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
 
    - Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
       1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
       2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
    2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
+
+- Virtuální počítač Ubuntu 18.04 vytvořené pomocí SSH autorizace povolená neumožňuje použití klíčů SSH pro přihlášení. Jako alternativní řešení použijte přístup k virtuálním počítačům pro rozšíření Linuxu pro implementaci klíče SSH po zřízení, nebo použít ověřování pomocí hesla.
 
 ### <a name="networking"></a>Sítě  
 

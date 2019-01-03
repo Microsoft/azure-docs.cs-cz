@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 205c67377e4bff66c02e3ee508c0f6f4e2823608
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: HT
+ms.openlocfilehash: ae36adc78d8c87d85c64fd61cb3a50dfcae60b85
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30196642"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995672"
 ---
 Platíte za dvě věci: náklady na výpočetní kapacitu pro bránu virtuální sítě a výchozí přenos dat z brány virtuální sítě. Informace o cenách najdete na stránce [Ceny](https://azure.microsoft.com/pricing/details/vpn-gateway).
 
-**Náklady na výpočetní výkon brány virtuální sítě**<br>Každá brána virtuální sítě má náklady na hodinový výpočetní výkon. Cena je založená na SKU brány, kterou určíte při vytváření brány virtuální sítě. Náklady jsou pro samotnou bránu vedle přenosu dat, který bránou prochází.
+**Náklady na výpočetní výkon brány virtuální sítě**<br>Každá brána virtuální sítě má náklady na hodinový výpočetní výkon. Cena je založená na SKU brány, kterou určíte při vytváření brány virtuální sítě. Náklady jsou pro samotnou bránu vedle přenosu dat, který bránou prochází. Náklady na aktivní aktivní instalace je stejný jako aktivní pasivní.
 
 **Náklady na přenos dat**<br>Náklady na přenos dat se počítají na základě výchozího přenosu ze zdrojové brány virtuální sítě.
 

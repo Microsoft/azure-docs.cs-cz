@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 12/18/2018
 ms.author: tulasim88
-ms.openlocfilehash: 97fb59a9a483753c6c2b5a4ae027bb358f7050e1
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 004f09eb77d1bc32e44e1940186e8a631c45846d
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166587"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608473"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Pomocí metadat a rozhraní API GenerateAnswer
 
-Nástroj QnA Maker umožňuje přidat metadata ve formě dvojice klíč/hodnota do sad otázek a odpovědí. Tyto informace slouží k filtrování výsledků na dotazy uživatelů a k ukládání dalších informací, lze použít v následných konverzace. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
+Nástroj QnA Maker umožňuje přidat metadata ve formě dvojice klíče a hodnoty do sad otázek a odpovědí. Tyto informace slouží k filtrování výsledků na dotazy uživatelů a k ukládání dalších informací, lze použít v následných konverzace. Další informace najdete v tématu [znalostní báze](../Concepts/knowledge-base.md).
 
 ## <a name="qna-entity"></a>Nástroj QnA Entity
 
@@ -113,11 +113,11 @@ Volání GenerateAnswer pomocí požadavku HTTP POST. Ukázkový kód, který uk
 
 ## <a name="metadata-example"></a>Příklad metadat
 
-Vezměte v úvahu následující nejčastější dotazy týkající se data pro restaurace v Hyderabad. Kliknutím na ikonu ozubeného kola přidáte metadata do znalostní báze.
+Vezměte v úvahu následující nejčastější dotazy týkající se data. Kliknutím na ikonu metadata přidáte metadata do znalostní báze.
 
 ![Přidání metadat](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
-### <a name="filter-results-with-strictfilters"></a>Filtrování výsledků s strictFilters
+### <a name="filter-results-with-strictfilters-for-metadata-tags"></a>Filtrování výsledků s strictFilters pro značky metadat
 
 Zvažte otázku uživatele "Když se tento hotelu zavřít?" kde je implicitní záměr pro restaurace "Paradise."
 

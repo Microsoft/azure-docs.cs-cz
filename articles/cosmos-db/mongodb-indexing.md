@@ -1,24 +1,24 @@
 ---
-title: Indexování ve službě Azure Cosmos DB MongoDB API
-description: Tento článek představuje přehled možností indexování v rozhraní MongoDB API služby Azure Cosmos DB.
+title: Indexování v rozhraní API služby Azure Cosmos DB pro MongoDB
+description: Obsahuje přehled možností indexování s rozhraním API služby Azure Cosmos DB pro MongoDB.
 services: cosmos-db
-author: orestis-ms
+author: rimman
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: orkostak
-ms.openlocfilehash: bdb2ceb45950b99b1a5a351c6301599a791ef8cc
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/26/2018
+ms.author: rimman
+ms.openlocfilehash: 4c6ba4b12625433f0b0218dc88decf2d7cb7ad77
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875293"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53792278"
 ---
-# <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indexování ve službě Azure Cosmos DB: MongoDB API
+# <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexování s využitím Azure Cosmos DB přes rozhraní API pro MongoDB
 
-Rozhraní MongoDB API služby Azure Cosmos DB využívá možnosti automatické správy indexů ve službě Azure Cosmos DB. Díky tomu mají uživatelé přístup k výchozím zásadám indexování ve službě Azure Cosmos DB. Proto pokud uživatel nedefinoval žádné indexy nebo se žádné indexy nezrušily, ve výchozím nastavení se budou při vložení do kolekce automaticky indexovat všechna pole. Pro většinu scénářů doporučujeme použít výchozí zásady indexování nastavené v účtu.
+Rozhraní API služby Azure Cosmos DB pro MongoDB využívá možnosti automatické správy indexů ve službě Cosmos DB. Díky tomu uživatelé mají přístup k výchozím zásadám indexování ve Cosmos DB. Ano Pokud uživatel nebyly definovány žádné indexy nebo žádné indexy, pak všechna pole automaticky zindexují ve výchozím nastavení při vložení do kolekce. Pro většinu scénářů doporučujeme použít výchozí zásady indexování nastavené v účtu.
 
 ## <a name="dropping-the-default-indexes"></a>Rušení výchozích indexů
 
@@ -97,5 +97,5 @@ Předchozí příkaz způsobí odstranění všech dokumentů v kolekci ```db.co
 V současné době je vytváření jedinečných indexů možné pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se pokouší vytvořit jedinečné indexy po importu dat. Pokud chcete tento problém obejít, doporučujeme vytvořit odpovídající kolekce a jedinečné indexy ručně, a nepovolovat nástroj pro migraci (v případě ```mongorestore``` se tohoto chování dosahuje použitím příznaku --noIndexRestore na příkazovém řádku).
 
 ## <a name="next-steps"></a>Další postup
-* [Jak služba Azure Cosmos DB indexuje data?](../cosmos-db/index-policy.md)
-* [Automatické vypršení platnosti dat v kolekcích Azure Cosmos DB s využitím hodnoty TTL (Time to Live)](../cosmos-db/time-to-live.md)
+* [Indexování ve službě Azure Cosmos DB](../cosmos-db/index-policy.md)
+* [Vypršení platnosti dat v Azure Cosmos DB automaticky s časem TTL](../cosmos-db/time-to-live.md)

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 43acf5f59667f45e67156b33e31d28160ba47c13
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408804"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743166"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Poznámky k verzi archivované pro Azure HDInsight
 
@@ -52,10 +52,9 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
   
 
 
-
 ## <a name="04062017---general-availability-of-hdinsight-36"></a>04/06/2017 - obecnou dostupnost služby HDInsight 3.6
 
-* Tato verze přidává Azure HDInsight verze 3.6, která je založena na HDP 2.6. Zpráva k vydání verze HDP 2.6 jsou k dispozici [tady](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) najdete další informace o verzích HDInsight [tady](hdinsight-component-versioning.md). HDInsight 3.6 je k dispozici pro následující úlohy:
+* Tato verze přidává Azure HDInsight verze 3.6, která je založena na HDP 2.6. Zpráva k vydání verze HDP 2.6 jsou k dispozici [tady](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) najdete další informace o verzích HDInsight [tady](hdinsight-component-versioning.md). HDInsight 3.6 je k dispozici pro následující úlohy:
 
     * Hadoop v2.7.3
     * HBase v1.1.2
@@ -63,7 +62,7 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
     * Spark v2.1.0
     * V2.1.0 interaktivní Hive
 
-* **Podpora pro zobrazení Hive 2.0**. To by měl vylepšit uživatelské prostředí pro interaktivní Hive. Další informace najdete v tématu [Hortonworks dokumentaci](http://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html).
+* **Podpora pro zobrazení Hive 2.0**. To by měl vylepšit uživatelské prostředí pro interaktivní Hive. Další informace najdete v tématu [Hortonworks dokumentaci](https://docs.hortonworks.com/HDPDocuments/Ambari-2.5.0.3/bk_ambari-views/content/ch_using_hive_view.html).
 
 * **Vylepšení výkonu pomocí Hive LLAP**. Další informace najdete v tématu [Hortonworks dokumentaci](https://hortonworks.com/blog/top-5-performance-boosters-with-apache-hive-llap/).
 
@@ -87,11 +86,11 @@ Následující části jsou nejdůležitější funkce obsahuje. Podrobné pozn�
 
 
 ## <a name="02282017---release-of-spark-21-on-hdinsight-36-preview"></a>02/28/2017 – verze 2.1 Spark v HDInsight 3.6 (Preview)
-* [Spark 2.1](http://spark.apache.org/releases/spark-release-2-1-0.html) zlepšuje mnoho stability a použitelnosti problémy s předchozími verzemi. Nové funkce přináší také na všechny úlohy Spark, jako je Spark Core, SQL, ML nebo streamování.
+* [Spark 2.1](https://spark.apache.org/releases/spark-release-2-1-0.html) zlepšuje mnoho stability a použitelnosti problémy s předchozími verzemi. Nové funkce přináší také na všechny úlohy Spark, jako je Spark Core, SQL, ML nebo streamování.
 * Strukturované streamování získá lepší škálovatelnost s podporou vodoznaky času události a Kafka 0.10 konektoru.
-* Dělení Spark SQL je teď provádí pomocí nový mechanismus škálovatelné zpracování oddílu. Další podrobnosti najdete [tady](http://spark.apache.org/releases/spark-release-2-1-0.html) o tom, jak upgradovat.
+* Dělení Spark SQL je teď provádí pomocí nový mechanismus škálovatelné zpracování oddílu. Další podrobnosti najdete [tady](https://spark.apache.org/releases/spark-release-2-1-0.html) o tom, jak upgradovat.
 * Spark 2.1 v Azure HDInsight 3.6 náhled aktuálně nepodporuje nástroje BI připojení pomocí ovladače ODBC.
-* Přístup k Azure Data Lake Store z clusterů Spark 2.1 se nepodporuje v této verzi Preview.
+* Přístup k úložišti Azure Data Lake z clusterů Spark 2.1 se nepodporuje v této verzi Preview.
 
 
 ## <a name="11182016---release-of-spark-201-on-hdinsight-35"></a>11/18/2016 – vydání 2.0.1 Spark v HDInsight 3.5
@@ -110,9 +109,4 @@ Spark 2.0.1 je nyní k dispozici v clusterech Spark (HDInsight verze 3.5).
 * Je teď jednodušší a R Server v zřizování clusteru HDInsight.
 * R Server v HDInsight je teď dostupná jako regulární HDInsight "R Server" typ clusteru a už není nainstalovaná jako samostatná aplikace HDInsight. Hraniční uzel a binární soubory R serveru jsou nyní zřízené jako součást nasazení clusteru R serveru. To zvyšuje rychlost a spolehlivost zřizování. Cenový model pro R Server se podle nich aktualizuje.
 * Cena typ clusteru R serveru nyní podle cenové úrovně Standard plus cena příplatek za R serveru. Tato změna nemá vliv na platné ceny R serveru. změní pouze jak uvedené poplatky na faktuře. Všechny existující clustery s R servery i nadále fungovat a šablon Resource Manageru i nadále fungovat až do vyřazení. **Doporučujeme ale aktualizovat skriptované nasazení použít novou šablonu Resource Manageru.**
-
-
-
-
-
 

@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 1de3743d6ec37d263e16b168d32d2b56b0a28295
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310534"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631936"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analyzátory pro zpracování ve službě Azure Search textu
 
@@ -76,7 +76,7 @@ Pokud se hledání nezdaří vrátit očekávané výsledky, je nejpravděpodobn
 
 ### <a name="compare-english-analyzers"></a>Porovnání anglické analyzátory
 
-[Ukázka analyzátoru hledání](http://alice.unearth.ai/) je třetí strany ukázkovou aplikaci ukazující srovnání vedle sebe standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Index je pevná; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken, získáte tak představu o způsob, jak každý analyzátor zpracuje do jednoho řetězce. 
+[Ukázka analyzátoru hledání](https://alice.unearth.ai/) je třetí strany ukázkovou aplikaci ukazující srovnání vedle sebe standardní analyzátor Lucene, analyzátor Lucene pro angličtinu a procesor anglické přirozeného jazyka od Microsoftu. Index je pevná; obsahuje text z oblíbených scénáře. Pro každý vstupní hledání zadáte, výsledky z každé analyzátoru jsou zobrazeny v sousední podoken, získáte tak představu o způsob, jak každý analyzátor zpracuje do jednoho řetězce. 
 
 ## <a name="examples"></a>Příklady
 
@@ -244,13 +244,13 @@ Pole obsahující řetězce v různých jazycích můžete použít analyzátor 
 
 + Projděte si naše komplexní vysvětlení [jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md). V tomto článku se používají příklady který vysvětluje chování, která se může zdát counter-intuitive na povrchu.
 
-+ Zkuste syntaxi dalšího dotazu [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) vzorový oddíl nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníku služby Search na portálu.
++ Zkuste syntaxi dalšího dotazu [vyhledávání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) vzorový oddíl nebo z [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) v Průzkumníku služby Search na portálu.
 
 + Zjistěte, jak použít [specifické pro jazyk lexikální analyzátory](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
 + [Konfigurace vlastní analyzátory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) pro minimální zpracování nebo speciální zpracování pro jednotlivá pole.
 
-+ [Porovnat standardní a angličtině analyzátory](http://alice.unearth.ai/) v sousední podokna na tomto webu ukázku. 
++ [Porovnat standardní a angličtině analyzátory](https://alice.unearth.ai/) v sousední podokna na tomto webu ukázku. 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

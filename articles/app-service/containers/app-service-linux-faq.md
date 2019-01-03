@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 7fe9fd68e03fc36f5aac5d6c27c07896715af906
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261156"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53719078"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service v Linuxu – nejčastější dotazy
 
@@ -194,5 +194,5 @@ Odešlete svůj nápad na [fóru pro zpětnou vazbu Web Apps](https://aka.ms/web
 ## <a name="next-steps"></a>Další postup
 
 - [Co je Azure App Service v Linuxu?](app-service-linux-intro.md)
-- [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Průběžné nasazování pomocí služby Web App for Containers](./app-service-linux-ci-cd.md)

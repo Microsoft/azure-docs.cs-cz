@@ -5,33 +5,91 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 4faadc27648b0d944e61a4d390313a35b4ba8bfa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6c8f4fa1fdfdb18d57f001308a6b2105acf9a08d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837728"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788850"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
-V tomto článku vám pomůžou s řešením problémů při nasazování a správa [Azure Site Recovery](site-recovery-overview.md) konfiguračního serveru. Konfigurační server se používá při nastavování zotavení po havárii pro místní virtuální počítače VMware a fyzických serverů do Azure pomocí Site Recovery. 
-
-## <a name="installation-failures"></a>Selhání instalace
-
-| **Chybová zpráva** | **Doporučená akce** |
-|--------------------------|------------------------|
-|CHYBA Načtení účtů selhalo. Chyba: System.IO.IOException: Během instalace a registrace konfiguračního serveru nelze načíst data z přenosového připojení.| Ujistěte se, že je v počítači povolený protokol TLS 1.0. |
+V tomto článku vám pomůžou s řešením problémů při nasazování a správa [Azure Site Recovery](site-recovery-overview.md) konfiguračního serveru. Konfigurační server funguje jako server pro správu a slouží k nastavení zotavení po havárii pro místní virtuální počítače VMware a fyzických serverů do Azure pomocí Site Recovery. Následující sekce popisuje nejběžnější selhání viděli při přidání nového serveru konfigurace a správa konfiguračního serveru.
 
 ## <a name="registration-failures"></a>Selhání registrace
 
-Selhání registrace lze ladit pomocí l < br/ogs ve složce %ProgramData%\ASRLogs.
+Zdrojový počítač zaregistruje se konfigurační server během instalace agenta mobility. Všechny chyby během tohoto kroku můžete ladit podle níže uvedených pokynů:
 
-Selhání registrace lze ladit kontrolou protokolů ve složce **%ProgramData%\ASRLogs**.
+1. Přejděte k souboru C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log. ProgramData může být skrytá složka. Pokud není možné najít, zkuste zrušit skrýt složky. Chyby může být způsobeno několika problémy.
+2. Hledání řetězce "Platný nenašla žádná IP adresa". Pokud se řetězec najde,
+    - Ověřte, jestli je stejný jako zdrojový počítač id požadovaného hostitele.
+    - Zdrojový počítač by měl mít přiřazenou na fyzickou síťovou kartu pro registraci agenta s CS úspěšné alespoň jednu IP adresu.
+    - Na zdrojovém počítači spusťte příkaz `> ipconfig /all` (pro operační systém Windows) a `# ifconfig -a` (pro operační systém Linux) Chcete-li získat všechny IP adresy zdrojového počítače.
+    - Mějte prosím na paměti, že registrace agenta vyžaduje platnou adresu IP v4 přiřazené fyzický síťový adaptér.
+3. Pokud řetězec uvedený výše není nalezen, hledání řetězce "Důvod" = > "NULL". Pokud se najde,
+    - Pokud zdrojový počítač používá prázdný hostitele, pokud se chcete zaregistrovat u konfiguračního serveru, dojde k této chybě.
+    - Po vyřešení problémů, postupujte podle pokynů uvedených [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) pokus o registraci ručně.
+4. Pokud není nalezen řetězec uvedený výše, přejděte na zdrojovém počítači a v protokolu C:\ProgramData\ASRSetupLogs\UploadedLogs\* ASRUnifiedAgentInstaller.log ProgramData může být skrytá složka. Pokud není možné najít, zkuste zrušit skrýt složky. Chyby může být způsobeno několika problémy. Vyhledejte řetězec "odeslání požadavku: (7) - nepodařilo připojit k serveru". Pokud se najde,
+    - Vyřešte problémy sítě mezi zdrojového počítače a konfigurace serveru. Ověřte, že konfigurační server je dostupný ze zdrojového počítače pomocí sítě nástroje, jako je ping, traceroute, webový prohlížeč atd., ujistěte se, že tento zdrojový počítač je schopný připojit přes port 443 konfiguračního serveru.
+    - Zkontrolujte, jestli nejsou žádná pravidla brány firewall na zdrojovém počítači blokují připojení mezi zdrojového počítače a konfigurace serveru. Pracovat vašich správců síťové odblokujete problémy s připojením.
+    - Zkontrolujte složky uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučené z antivirového softwaru.
+    - Po vyřešení problémů se sítí, zkuste registraci tak, že následující pokyny uvedené [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+5. Pokud není nalezena ve stejném protokolu vyhledejte řetězec "požadavku: (60) - peer certifikát nelze ověřit pomocí dané certifikáty certifikační Autority. ". Pokud se najde, 
+    - Tato chyba mohla být, protože vypršela platnost certifikátu serveru konfigurace zdrojového počítače nepodporuje protokol TLS 1.0 a nad SSL protokoly nebo je brána firewall, která blokuje komunikaci prostřednictvím protokolu SSL mezi zdrojového počítače a konfigurace serveru.
+    - Pokud chcete vyřešit, připojení k IP adresa konfiguračního serveru pomocí webového prohlížeče na zdrojovém počítači pomocí identifikátoru URI https://<CSIPADDRESS>: 443 /. Ujistěte se, že se že tento zdrojový počítač je schopný připojit přes port 443 konfiguračního serveru.
+    - Zkontrolujte, jestli jsou na zdrojovém počítači, třeba přidání nebo odebrání pro zdrojový počítač komunikovat s CS žádná pravidla brány firewall. Vzhledem k tomu může dojít k softwaru mnoha jinou bránu firewall, není možné seznam konfigurací vyžaduje, spojte se prosím s správci sítě zákazníka.
+    - Zkontrolujte složky uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučené z antivirového softwaru.  
+    - Po vyřešení problémů, zkuste registraci tak, že následující pokyny uvedené [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
+6. V systému Linux Pokud hodnota platformu z /etc/drscout.conf < INSTALLATION_DIR > je poškozený, pak registrace se nezdaří. Pokud chcete zjistit, přejděte na /var/log/ua_install.log protokolu. Zjistíte řetězec "Přerušení konfigurace jako VM_PLATFORM hodnota je null nebo je není VmWare/Azure." Platformu je třeba nastavit na "VmWare" nebo "Azure". Protože je poškozen soubor drscout.conf, doporučuje se [odinstalovat](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agentem mobility a znovu nainstalujte. Pokud se odinstalace nezdaří, postupujte podle následujících kroků:
+    - Otevřete soubor Installation_Directory/uninstall.sh a Odkomentujte volání funkce *StartServices*
+    - Otevřete soubor Installation_Directory/Vx/bin/uninstall a nastavte komentář volání funkce `stop_services`
+    - Otevřete soubor Installation_Directory/Fx/odinstalovat a Odkomentujte kompletní oddílu, který se pokouší zastavit službu Fx.
+    - Nyní pokusí [odinstalovat](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agenta mobility. Po úspěšném odinstalace restartování systému a pokuste se znovu nainstalovat agenta.
 
-| **Chybová zpráva** | **Doporučená akce** |
-|--------------------------|------------------------|
-|**09:20:06**: InnerException.Type: SrsRestApiClientLib.AcsException,InnerException.<br>Zpráva: ACS50008: Token SAML je neplatný.<br>ID trasování: 1921ea5b-4723-4be7-8087-a75d3f9e1072<br>ID korelace: 62fea7e6-2197-4be4-a2c0-71ceb7aa2d97><br>Časové razítko: **2016-12-12 14:50:08Z<br>** | Ujistěte se, že se čas na vašich systémových hodinách neliší od místního času o více než 15 minut. Znovu spusťte instalační program a dokončete registraci.|
-|**09:35:27**: Výjimka DRRegistrationException při pokusu o získání všech trezorů zotavení po havárii pro vybraný certifikát: Vyvolána výjimka Exception.Type:Microsoft.DisasterRecovery.Registration.DRRegistrationException, Exception.Message: ACS50008: Token SAML je neplatný.<br>ID trasování: e5ad1af1-2d39-4970-8eef-096e325c9950<br>ID korelace: abe9deb8-3e64-464d-8375-36db9816427a<br>Časové razítko: **2016-05-19 01:35:39Z**<br> | Ujistěte se, že se čas na vašich systémových hodinách neliší od místního času o více než 15 minut. Znovu spusťte instalační program a dokončete registraci.|
-|06:28:45: Nepodařilo se vytvořit certifikát.<br>06:28:45: Instalace nemůže pokračovat. Nelze vytvořit certifikát vyžadovaný k ověření v Site Recovery. Znovu spusťte instalaci. | Ujistěte se, že spouštíte instalaci jako místní správce. |
+## <a name="installation-failure---failed-to-load-accounts"></a>Instalace se nezdařila – nepovedlo se načíst účty
+
+K této chybě dochází, když služba nelze číst data z přenosového připojení během instalace agenta mobility a registrace konfiguračního serveru. Pokud chcete vyřešit, zajistěte, aby protokol TLS 1.0 je povolit na zdrojovém počítači.
+
+## <a name="change-ip-address-of-configuration-server"></a>Změňte IP adresu konfiguračního serveru
+
+Důrazně doporučujeme neměnit IP adresu konfiguračního serveru. Zkontrolujte všechny IP adresy přiřazené ke konfiguračnímu serveru jsou statické IP adresy a ne IP adresy DHCP.
+
+## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML token je neplatný.
+
+Lze vyvarovat této chyby, ujistěte se, že čas na systémových hodin není více než 15 minut od místního času. Znovu spusťte instalační program a dokončete registraci.
+
+## <a name="failed-to-create-certificate"></a>Nepovedlo se vytvořit certifikát
+
+Nelze vytvořit certifikát vyžadovaný k ověření v Site Recovery. Spusťte instalační program znovu, až se ujistíte, že instalační program spouštíte jako místní správce.
+
+## <a name="register-source-machine-with-configuration-server"></a>Zdrojový počítač zaregistrovat u konfiguračního serveru
+
+### <a name="if-source-machine-has-windows-os"></a>Pokud má zdrojový počítač operačního systému Windows
+
+Spusťte následující příkaz na zdrojový počítač
+
+```
+  cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
+  UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+  ```
+**Nastavení** | **Podrobnosti**
+--- | ---
+Využití | / Csendpoint UnifiedAgentConfigurator.exe  <CSIP> /passphrasefilepath <PassphraseFilePath>
+Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
+/ CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
+/PassphraseFilePath |  Povinné. Umístění přístupové heslo. Použijte libovolný platný název UNC nebo místní cesta k souboru.
+
+### <a name="if-source-machine-has-linux-os"></a>Pokud má zdrojový počítač, operační systém Linux
+
+Spusťte následující příkaz na zdrojový počítač
+
+```
+  /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <CSIP> -P /var/passphrase.txt
+  ```
+**Nastavení** | **Podrobnosti**
+--- | ---
+Využití | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i <CSIP> - P <PassphraseFilePath>
+-i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte libovolná platná IP adresa.
+-P |  Povinné. Úplnou cestu souboru, ve kterém se heslo uloží. Všechny platné složky

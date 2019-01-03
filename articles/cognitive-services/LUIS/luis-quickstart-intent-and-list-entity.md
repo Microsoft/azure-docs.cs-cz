@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: d416cb176de6f6f79d5b7964462488216421a7a2
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753570"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971405"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Kurz: Získat data přesně odpovídající text z utterance
 
@@ -173,7 +173,7 @@ Primární, _kanonické_, název pro každou položku je název oddělení. Mezi
 
 ## <a name="related-information"></a>Související informace
 
-* [Seznam entit](luis-concept-entity-types.md#exact-match) koncepční informace
+* [Seznam entit](luis-concept-entity-types.md#list-entity) koncepční informace
 * [Trénování](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování v portálu služby LUIS](luis-interactive-test.md)

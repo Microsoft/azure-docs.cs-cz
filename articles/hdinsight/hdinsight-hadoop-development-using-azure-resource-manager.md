@@ -9,25 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7722076c3b0031da8580dd88efdc0b575fd5a3be
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 33bb3186493b2ea2a0d676f250282574b27f7988
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875565"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53718489"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrace do nástroje pro vývoj založených na Azure Resource Manageru pro clustery HDInsight
 
 HDInsight je ukončení podpory nástrojů založených na Azure Service Manager ASM pro HDInsight. Pokud používáte prostředí Azure PowerShell, rozhraní příkazového řádku Azure Classic nebo sady HDInsight .NET SDK pro práci s clustery HDInsight, se doporučuje používat Azure Resource Manageru verze prostředí PowerShell, rozhraní příkazového řádku a sady .NET SDK do budoucna. Tento článek obsahuje odkazy na tom, jak migrovat na nový přístup využívající Resource Manager. Bez ohledu na to příslušné, tento dokument zdůrazňuje rozdíly mezi ASM a Resource Manageru přístupy k HDInsight.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Podpora pro ASM na základě prostředí PowerShell, rozhraní příkazového řádku, a sady .NET SDK se ukončit na **1. ledna 2017**.
-> 
-> 
 
 ## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Migrace klasického rozhraní příkazového řádku Azure do Azure Resource Manageru
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Rozhraní příkazového řádku Azure neposkytuje podporu pro práci s clustery HDInsight. Stále můžete rozhraní příkazového řádku Azure Classic s HDInsight, ale rozhraní příkazového řádku Azure Classic je zastaralý.
 
 Tady jsou základní příkazy pro práci s HDInsight pomocí rozhraní příkazového řádku Azure CLassic:
@@ -51,11 +49,11 @@ Nové příkazy, které jsou k dispozici pomocí Azure Resource Manageru jsou:
 ### <a name="deprecated-commands"></a>Zastaralé příkazy
 Pokud používáte `azure hdinsight job` příkazy odesílat úlohy do clusteru HDInsight, tyto příkazy nejsou k dispozici prostřednictvím příkazy Resource Manageru. Pokud budete potřebovat programově odesílat úlohy do HDInsight pomocí skriptů, abyste používali místo toho rozhraní REST API, které poskytuje HDInsight. Další informace o odesílání úloh pomocí rozhraní REST API najdete v následujících dokumentech.
 
-* [Spouštět úlohy Apache Hadoop MapReduce s Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [Spuštění úloh MapReduce s Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
 * [Spuštění dotazy Apache Hive s Apache Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-hive-curl.md)
 * [Spuštění úlohy Apache Pig s Apache Hadoop v HDInsight pomocí cURL](hadoop/apache-hadoop-use-pig-curl.md)
 
-Další informace o dalších způsobech interaktivní spuštění Apache Hadoop MapReduce, Apache Hivu a Apache Pig, naleznete v tématu [použití Apache Hadoop MapReduce s Hadoop v HDInsight](hadoop/hdinsight-use-mapreduce.md), [použití Apache Hivu se službou Apache Hadoop v HDInsight](hadoop/hdinsight-use-hive.md), a [Apache Hadoop v HDInsight pomocí Apache Pig](hadoop/hdinsight-use-pig.md).
+Další informace o dalších způsobech interaktivní spuštění Apache Hadoop MapReduce, Apache Hivu a Apache Pig, naleznete v tématu [použití MapReduce se systémem Hadoop v HDInsight](hadoop/hdinsight-use-mapreduce.md), [použití Apache Hivu se službou Apache Hadoop v HDInsight](hadoop/hdinsight-use-hive.md), a [Apache Hadoop v HDInsight pomocí Apache Pig](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**
@@ -73,10 +71,8 @@ Další informace o dalších způsobech interaktivní spuštění Apache Hadoop
 * Původního příkazu (ASM)- `azure hdinsight cluster list`
 * Nový příkaz: `azure hdinsight cluster list`
 
-> [!NOTE]
+> [!NOTE]  
 > Pro příkaz seznam určující skupinu prostředků pomocí `-g` vrátí pouze clustery v zadané skupině prostředků.
-> 
-> 
 
 **Zobrazit informace o clusteru**
 
@@ -135,17 +131,17 @@ Toto jsou nové rutiny, které jsou dostupné jenom v režimu Resource Manageru.
 
 **Skript rutin týkajících se akce:**
 
-* **Get-AzureRmHDInsightPersistedScriptAction**: získá akcí trvalého skriptu pro cluster a seznamů v chronologickém pořadí nebo získá podrobnosti zadané trvalá akce skriptu. 
-* **Get-AzureRmHDInsightScriptActionHistory**: získá historii akcí skriptu clusteru a zobrazí ho v chronologickém pořadí reverzní nebo získá podrobnosti o dříve provedený skriptových akcí. 
-* **Odebrat AzureRmHDInsightPersistedScriptAction**: Odebere z clusteru služby HDInsight trvalá akce skriptu.
+* **Get-AzureRmHDInsightPersistedScriptAction**: Získá akcí trvalého skriptu pro cluster a seznamů v chronologickém pořadí nebo získá podrobnosti zadané trvalá akce skriptu. 
+* **Get-AzureRmHDInsightScriptActionHistory**: Získá historii akcí skriptu clusteru a zobrazí ho v chronologickém pořadí reverzní nebo získá podrobnosti o dříve provedený skriptových akcí. 
+* **Odebrat AzureRmHDInsightPersistedScriptAction**: Trvalá akce se skripty akce odebere z clusteru služby HDInsight.
 * **Set-AzureRmHDInsightPersistedScriptAction**: Nastaví dříve provedený skript akce bude akcí trvalého skriptu.
-* **Odeslat AzureRmHDInsightScriptAction**: odešle novou akci skriptu do clusteru Azure HDInsight. 
+* **Odeslat AzureRmHDInsightScriptAction**: Odešle novou akci skriptu do clusteru Azure HDInsight. 
 
 Další informace o použití, naleznete v tématu [HDInsight založených na Linuxu přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
 **Cluster souvisejícím s identitou rutiny:**
 
-* **Přidat AzureRmHDInsightClusterIdentity**: identitu clusteru přidá objekt konfigurace clusteru tak, aby clusteru HDInsight můžete přístup k Azure Data Lake Store. Zobrazit [vytvoření clusteru HDInsight s Data Lake Store pomocí Azure Powershellu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Přidat AzureRmHDInsightClusterIdentity**: Identitu clusteru přidá do objekt konfigurace clusteru v clusteru HDInsight můžete přístup k Azure Data Lake Storage. Zobrazit [vytvoření clusteru HDInsight s Data Lake Storage pomocí Azure Powershellu](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Příklady
 **Vytvoření clusteru**

@@ -126,8 +126,8 @@ Služba Azure Import/Export podporuje kopírování dat do a ze všech účtů �
 |Východní USA 2    | Východní Asie        |  Indie – západ        | US DoD – střed        |
 |Západní USA 2     | Jihovýchodní Asie        | Kanada – střed        | Čína – východ         |
 |USA – střed     | Austrálie – východ        | Kanada – východ        | Čína – sever        |
-|Střed USA – sever     |  Austrálie – jihovýchod       | Brazílie – jih        | Velká Británie – jih        |
-|Střed USA – jih     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
+|Středoseverní USA     |  Austrálie – jihovýchod       | Brazílie – jih        | Velká Británie – jih        |
+|Středojižní USA     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
 |Západní střed USA     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
 
 

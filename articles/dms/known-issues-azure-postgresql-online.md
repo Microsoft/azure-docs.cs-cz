@@ -4,19 +4,19 @@ description: Přečtěte si o známých problémech a migrace omezení online mi
 services: database-migration
 author: HJToland3
 ms.author: scphang
-manager: ''
-ms.reviewer: ''
-ms.service: database-migration
+manager: craigg
+ms.reviewer: douglasl
+ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282872"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724130"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy a migrace omezení online migrace do Azure DB for PostgreSQL
 
@@ -78,20 +78,20 @@ Známé problémy a omezení související s online migraci z PostgreSQL do slu�
 
 - **Omezení**: Pokud je ve zdrojové databázi PostgreSQL datový typ VÝČTU, migrace selže během průběžné synchronizace.
 
-    **Alternativní řešení**: datový typ změnit VÝČTU znak různé ve službě Azure Database for PostgreSQL.
+    **Alternativní řešení**: Změňte datový typ VÝČTU znak různé ve službě Azure Database for PostgreSQL.
 
 - **Omezení**: Pokud neexistuje žádný primární klíč v tabulkách, průběžné synchronizace se nezdaří.
 
-    **Alternativní řešení**: dočasně nastavit primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
 
 ## <a name="lob-limitations"></a>Omezení LOB
 Sloupce velkého objektu (LOB) jsou sloupce, které můžou růst velké. Pro PostgreSQL typů dat LOB příklady XML, JSON, OBRÁZKŮ, textu, atd.
 
-- **Omezení**: Pokud LOB datové typy se používají jako primární klíče, migrace selže.
+- **Omezení**: Pokud obchodní datové typy se používají jako primární klíče, migrace selže.
 
-    **Alternativní řešení**: nahradit primární klíč s jinými typy nebo sloupce, které nejsou LOB.
+    **Alternativní řešení**: Nahraďte další datové typy nebo sloupce, které nejsou LOB primární klíč.
 
-- **Omezení**: Pokud sloupec velkého objektu (LOB) je větší než 32 KB, může data zkrácen na cíl. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
+- **Omezení**: Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, mohou být v cílovém zkráceny data. Délka sloupce LOB pomocí tohoto dotazu, můžete zkontrolovat:
 
     ```
     SELECT max(length(cast(body as text))) as body FROM customer_mail
@@ -101,7 +101,7 @@ Sloupce velkého objektu (LOB) jsou sloupce, které můžou růst velké. Pro Po
 
 - **Omezení**: Pokud existuje obchodní sloupců v tabulce a není nastaven primární klíč pro tabulku, nemusí být data migrována pro tuto tabulku.
 
-    **Alternativní řešení**: dočasně nastavit primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
+    **Alternativní řešení**: Dočasně nastavte primární klíč pro tabulku pro migraci, aby bylo možné pokračovat. Po dokončení migrace dat, můžete odebrat primární klíč.
 
 ## <a name="postgresql10-workaround"></a>Alternativní řešení PostgreSQL10
 PostgreSQL 10.x změní různé názvy složek pg_xlog a proto způsobí migrace neběží podle očekávání. Pokud migrujete z PostgreSQL 10.x k Azure Database for PostgreSQL 10.3, spusťte následující skript ve zdrojové databázi PostgreSQL vytvoříte funkci obálku kolem pg_xlog funkce.

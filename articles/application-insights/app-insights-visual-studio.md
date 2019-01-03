@@ -15,17 +15,17 @@ ms.date: 07/07/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2d035883534430e76d251b22dfc95d34e4eb03cd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8b0277d1e82e655edd9308f8b8afa7d6dcec434e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723563"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53754828"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v sadě Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](app-insights-overview.md).
 
-Pokud jste webovou aplikaci v ASP.NET vytvořili pomocí sady Visual Studio 2017 nebo novější, sada Application Insights SDK už v ní je. V opačném případě, pokud jste to ještě neudělali, [přidejte Application Insights do své aplikace](app-insights-asp-net.md).
+Pokud jste webovou aplikaci v ASP.NET vytvořili pomocí sady Visual Studio 2017 nebo novější, sada Application Insights SDK už v ní je. V opačném případě, pokud jste to ještě neudělali, [přidejte Application Insights do své aplikace](../azure-monitor/app/asp-net.md).
 
 Pokud chcete monitorovat aplikaci za provozu v produkčním prostředí, telemetrii Application Insights normálně zobrazíte na webu [Azure Portal](https://portal.azure.com), kde můžete nastavit upozornění a použít výkonné monitorovací nástroje. Pro účely ladění ale můžete vyhledávat a analyzovat telemetrii také v sadě Visual Studio. Visual Studio můžete použít k analýze telemetrie jak z produkčního tak z ladění se spustí na vývojovém počítači. V druhém případě můžete spuštěné ladění analyzovat, i když jste ještě nenakonfigurovali sadu SDK k odesílání telemetrie na web Azure Portal. 
 
@@ -60,7 +60,7 @@ Můžete také otevřít související položky a pomocí nich diagnostikovat ne
 ![V části Podrobnosti o požadavku přejděte dolů k souvisejícím položkám](./media/app-insights-visual-studio/41.png)
 
 ## <a name="view-exceptions-and-failed-requests"></a>Zobrazit výjimky a neúspěšné požadavky
-Sestavy výjimek se zobrazí v okně Hledání. (V některých starších typech aplikací v ASP.NET je potřeba [nastavit monitorování výjimek](app-insights-asp-net-exceptions.md), abyste viděli výjimky, které rozhraní zpracovává.)
+Sestavy výjimek se zobrazí v okně Hledání. (V některých starších typech aplikací v ASP.NET je potřeba [nastavit monitorování výjimek](../azure-monitor/app/asp-net-exceptions.md), abyste viděli výjimky, které rozhraní zpracovává.)
 
 Klikněte na výjimku a získejte trasování zásobníku. Pokud je kód aplikace otevřen v sadě Visual Studio, můžete kliknutím z trasování zásobníku přejít na příslušný řádek kódu.
 
@@ -72,7 +72,7 @@ V řádku Code Lens nad jednotlivými obslužnými metodami uvidíte počet pož
 ![Trasování zásobníku výjimky](./media/app-insights-visual-studio/21.png)
 
 > [!NOTE] 
-> Code Lens zobrazí data Application Insights, pouze pokud jste [nakonfigurovali aplikaci k odesílání telemetrie na portál Application Insights](app-insights-asp-net.md).
+> Code Lens zobrazí data Application Insights, pouze pokud jste [nakonfigurovali aplikaci k odesílání telemetrie na portál Application Insights](../azure-monitor/app/asp-net.md).
 >
 
 [Další informace o Application Insights v Code Lens](app-insights-visual-studio-codelens.md)
@@ -93,7 +93,7 @@ Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií 
 
 Toto je žádoucí, pokud jste již publikovali předchozí verzi aplikace. Nechcete, aby se telemetrie z vaší relace ladění promíchala s telemetrií na portálu služby Application Insights z publikované aplikace.
 
-Je také užitečné, pokud máte některou [vlastní telemetrii](app-insights-api-custom-events-metrics.md), kterou chcete ladit před odesláním telemetrie na portál.
+Je také užitečné, pokud máte některou [vlastní telemetrii](../azure-monitor/app/api-custom-events-metrics.md), kterou chcete ladit před odesláním telemetrie na portál.
 
 * *Napřed jsem službu Application Insights plně nakonfiguroval/a tak, aby posílala telemetrické údaje na portál. Ale teď chci telemetrické údaje zobrazovat jen v sadě Visual Studio.*
   
@@ -104,6 +104,6 @@ Je také užitečné, pokud máte některou [vlastní telemetrii](app-insights-a
 ## <a name="next-steps"></a>Další postup
 |  |  |
 | --- | --- |
-| **[Přidání dalších dat](app-insights-asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
-| **[Práce s portálem Application Insights](app-insights-dashboards.md)**<br/>Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a exportovaný telemetrická data. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
+| **[Přidání dalších dat](../azure-monitor/app/asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/app-insights-visual-studio/64.png) |
+| **[Práce s portálem Application Insights](../azure-monitor/app/app-insights-dashboards.md)**<br/>Zobrazit řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a exportovaný telemetrická data. |![Visual Studio](./media/app-insights-visual-studio/62.png) |
 

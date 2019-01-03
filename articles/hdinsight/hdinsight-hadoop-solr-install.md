@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f382aab5a00030b922fb890e82110454e7f3839
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c0f4af863162d004b6a557f8c7a04e31ee66d9b7
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384492"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713552"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalace a použití Apache Solr na clusterech HDInsight se systémem Windows
 
@@ -38,7 +38,7 @@ Ukázkový skript použít v tomto tématu vytvoří cluster na základě Window
 * [Vývoj skriptových akcí skriptů pro HDInsight](hdinsight-hadoop-script-actions.md).
 
 ## <a name="what-is-solr"></a>Co je Solr?
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
+<a href="https://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> je platforma pro podnikové vyhledávání, která umožňuje výkonné fulltextové vyhledávání na datech. Hadoop umožňuje ukládání a správu obrovských objemů dat, Apache Solr poskytuje funkce vyhledávání rychle načíst data.
 
 ## <a name="install-solr-using-portal"></a>Nainstalovat Solr pomocí portálu
 1. Začněte s vytvářením clusteru s použitím **vytvořit vlastní** možnosti, jak je popsáno v [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-provision-clusters.md).
@@ -156,7 +156,7 @@ Je nutné začít s indexování Solr pomocí některé datové soubory. Solr pa
           </response>
       ```
       
-   2. Ve vzdálené relaci, přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořeny pomocí ukázkového skriptu, měl by to být `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. V tomto umístění, měli byste vidět složky snímků s názvem podobný **snímku.\*časové razítko**\*.
+   2. Ve vzdálené relaci, přejděte na {SOLR_HOME}\{kolekce} \data. Pro cluster vytvořeny pomocí ukázkového skriptu, měl by to být `C:\apps\dist\solr-4.7.2\example\solr\collection1\data`. V tomto umístění, měli byste vidět složky snímků s názvem podobný **snímku.* časové razítko ***.
    
    3. Složka snímku zkomprimovat a nahrát ho do úložiště objektů Blob v Azure. Z příkazového řádku Hadoopu přejděte do umístění složky snímků pomocí následujícího příkazu:
 

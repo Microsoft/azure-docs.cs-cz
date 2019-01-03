@@ -5,19 +5,19 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/20/2018
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: daa3a140e749700665427a011292f48ac8f163d2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8932f8aa1dd950693378e9fc58c79838fad6166b
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53388779"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53741755"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
-Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje vykreslení grafy, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor. 
+Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje vykreslení grafy, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor.
 
 ## <a name="metrics-in-azure"></a>Metriky v Azure
 
@@ -28,11 +28,11 @@ Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, kter
 1. Otevřete na webu Azure portal
 2. Přejděte k novému **monitorování** kartu a potom vyberte **metriky**.
 
-   ![Obrázek metriky](./media/metrics-charts/0001.png)
+   ![Obrázek metriky](./media/metrics-charts/00001.png)
 
 3. **Metriky selektor** bude automaticky otevřít za vás. Zvolte prostředek ze seznamu zobrazíte jeho související metriky. V seznamu jsou uvedeny pouze prostředky s metrikami.
 
-   ![Obrázek metriky](./media/metrics-charts/0002.png)
+   ![Obrázek metriky](./media/metrics-charts/00002.png)
 
    > [!NOTE]
    >Pokud máte více než jedno předplatné Azure, -> si Průzkumníka metrik z prostředků ve všech předplatných, které jsou vybrány v nastavení portálu filtr podle seznamu předplatných. Ho změnit, klikněte na ikonu ozubeného kola nastavení portálu na obrazovku a vyberte předplatné, které chcete použít.
@@ -41,15 +41,15 @@ Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, kter
 
    Každé služby Azure Storage má například metriky pro subservices "BLOB", "Files", "Fronty" a "Tabulky", které jsou všechny části účtu úložiště. Metrika "počet zpráv fronty" je však přirozeně použitelné, což "Fronty", ne všechny ostatní subservices účtu úložiště.
 
-   ![Obrázek metriky](./media/metrics-charts/0003.png)
+   ![Obrázek metriky](./media/metrics-charts/00003.png)
 
 5. Vyberte metriku ze seznamu. Pokud znáte částečný název metriky, které chcete, můžete začít zadávat v filtrovaný seznam dostupných metrik:
 
-   ![Obrázek metriky](./media/metrics-charts/0004.png)
+   ![Obrázek metriky](./media/metrics-charts/00004.png)
 
 6. Po výběru metriku, bude vykreslení grafu s výchozí agregace pro vybranou metriku. V tomto okamžiku můžete jen kliknout na klávesou **metriky selektor** ho zavřít. Graf můžete také v případě potřeby přepnout na jinou agregaci. Pro některé metriky přepínání agregace umožňuje zvolit hodnotu, která chcete zobrazit v grafu. Například můžete přepínat mezi průměrné, minimální a maximální hodnoty. 
 
-7. Kliknutím na ikonu Přidat metriku ![Ikona metrik](./media/metrics-charts/icon001.png) a s opakováním kroků 3 až 6 můžete přidat další metriky na stejném grafu.
+7. Po kliknutí na **přidat metriku** a opakováním kroků 3 až 6, můžete přidat další metriky na stejném grafu.
 
    > [!NOTE]
    > Obvykle nechcete mít metriky s různými jednotkami měření (například "MS" a "kilobajtů") nebo se výrazně liší škálovací na jednom grafu. Místo toho zvažte použití více grafů. Klikněte na tlačítko přidat graf vytvořit několik grafů v Průzkumníku metrik.
@@ -60,19 +60,19 @@ Nastavte filtry pro grafy, které ukazují metriky s dimenzemi. Pokud metrika "P
 
 ### <a name="to-add-a-filter"></a>Přidání filtru
 
-1. Klikněte na ikonu Přidat filtr ![ikona filtru](./media/metrics-charts/icon002.png) nad grafem
+1. Vyberte **přidat filtr** nad grafem
 
 2. Vybrat dimenzi, která (vlastnost), které chcete filtrovat
 
-   ![metriky image](./media/metrics-charts/0006.png)
+   ![metriky image](./media/metrics-charts/00006.png)
 
 3. Výběr hodnot dimenzí, které chcete zahrnout při vykreslení grafu (Tento příklad ukazuje, odfiltrováním transakce úspěšné úložiště):
 
-   ![metriky image](./media/metrics-charts/0007.png)
+   ![metriky image](./media/metrics-charts/00007.png)
 
 4. Po výběru hodnot filtru, klikněte na tlačítko mimo selektor filtru, abyste jej zavřeli. Graf nyní zobrazuje, kolik transakcí úložiště, které selhaly:
 
-   ![metriky image](./media/metrics-charts/0008.png)
+   ![metriky image](./media/metrics-charts/00008.png)
 
 5. Kroky 1 až 4 aplikovat více filtrů stejného grafy můžete opakovat.
 
@@ -82,23 +82,37 @@ Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky por
 
 ### <a name="to-segment-a-chart"></a>Segmentu grafu
 
-1. Klikněte na ikonu Přidat seskupení  ![metriky image](./media/metrics-charts/icon003.png) nad grafem.
+1. Klikněte na **použít rozdělení** nad grafem.
  
    > [!NOTE]
-   > Na jednoho grafu můžete mít více filtrů, ale pouze jedno seskupení.
+   > Může mít několik filtrů ale hodnotu rozdělení/segmentace pouze jeden na jednoho grafu.
 
-2. Vyberte dimenze, na kterém chcete graf segmentovat: 
+2. Vyberte dimenze, na kterém chcete graf segmentovat:
 
-   ![metriky image](./media/metrics-charts/0010.png)
+   ![metriky image](./media/metrics-charts/00010.png)
 
    Graf nyní zobrazuje nyní více řádků, jeden pro každý segment dimenze:
 
-   ![metriky image](./media/metrics-charts/0012.png)
+   ![metriky image](./media/metrics-charts/00012.png)
 
 3. Klikněte na tlačítko klávesou **seskupení selektor** ho zavřít.
 
    > [!NOTE]
-   > Skrýt segmenty, které jsou relevantní pro váš scénář a usnadňují grafy pomocí filtrování a seskupování na stejné dimenzi.
+   > Skrýt segmenty, které jsou relevantní pro váš scénář a usnadňují grafy pomocí filtrování a rozdělení na stejné dimenzi.
+
+### <a name="new-alert-rule"></a>Nové pravidlo upozornění
+
+Můžete také použít kritéria, která jste nastavili vizualizovat metriky, jako základ pro logiku metriky na základě pravidel upozornění. 
+
+Vyberete-li **oznámení nové pravidlo**
+
+![Tlačítko Nová pravidla upozornění zvýrazněný červenou barvou](./media/metrics-charts/015.png)
+
+Budete přesměrováni do podokna vytváření pravidla upozornění se základní metriky dimenzemi z grafu předem vyplněné, aby bylo snazší generovat vlastní pravidla upozornění.
+
+![Vytvořit pravidlo upozornění](./media/metrics-charts/016.png)
+
+Rezervovat to [článku](alerts-metric.md) Další informace o nastavení upozornění na metriku.
 
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Zámek hranice osa y grafu
 
@@ -110,20 +124,20 @@ Dalším příkladem je kolísání dostupné paměti, kde hodnota technicky nik
 
 Pokud chcete nastavit rozsah osy y, použijte "..." Graf nabídku a vyberte **upravit graf** pro přístup k rozšířené nastavení grafu. Upravte hodnoty v oddílu rozsah osy y, nebo použijte **automaticky** tlačítko Obnovit výchozí hodnoty.
 
-![metriky image](./media/metrics-charts/0014-manually-set-granularity.png)
+![metriky image](./media/metrics-charts/00014-manually-set-granularity.png)
 
 > [!WARNING]
 > Uzamčení hranice osy y pro grafy, které sledují různé počty nebo sečte po určitou dobu (a tedy počet používaných, sum, minimální nebo maximální agregace) obvykle vyžaduje zadání pevné časové intervaly, spíše než spoléhání na automatické výchozí hodnoty. To je nezbytné, protože změny hodnot u grafů, když uživatel změně velikosti okna prohlížeče nebo bude z jedné obrazovky řešení je automaticky upravit časové intervaly. Výsledná změnit čas členitosti účinky vzhled grafu, zrušení platnosti aktuálního výběru rozsah osy y.
 
 ## <a name="pin-charts-to-dashboards"></a>Grafy připnout na řídicí panely
 
-Po dokončení konfigurace grafy, můžete přidat řídicí panely, takže lze znovu zobrazit, pravděpodobně v kontextu jiných monitorování telemetrických dat, nebo sdílet se svým týmem. 
+Po dokončení konfigurace grafy, můžete přidat řídicí panely, takže lze znovu zobrazit, pravděpodobně v kontextu jiných monitorování telemetrických dat, nebo sdílet se svým týmem.
 
 Pokud chcete připnout nakonfigurované graf na řídicí panel:
 
 Po dokončení konfigurace diagramu, klikněte na **grafu akce** nabídky v pravém horním rohu grafu top a klikněte na **připnout na řídicí panel**.
 
-![metriky image](./media/metrics-charts/0013.png)
+![metriky image](./media/metrics-charts/00013.png)
 
 ## <a name="next-steps"></a>Další postup
 

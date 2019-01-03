@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: e13afe26d06f5b5b2dcf7eddf00f9ee481312b2c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 95079813cf3ade41d17393168116e4767ca26e99
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024252"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742775"
 ---
 # <a name="transforms-and-jobs"></a>Transformace a úlohy
  
-Azure Media Services v3 zavádí nový prostředek bez vizuálního vzhledu pracovního postupu pro nebudou tím správným, který chcete použít pro kódování a/nebo analyzovat vaše videa, volá [transformuje](https://docs.microsoft.com/rest/api/media/transforms). **Transformuje** slouží ke konfiguraci běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. 
+Použití [transformuje](https://docs.microsoft.com/rest/api/media/transforms) konfigurace běžné úlohy kódování nebo analyzovat videa. Každý **transformace** popisuje nebudou tím správným nebo pracovního postupu úloh zpracování videa nebo zvukových souborů. 
 
-A **úlohy** je skutečnou žádost do služby Azure Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. **Úlohy** Určuje informace, jako jsou umístění vstupním videu a umístění pro výstup. Můžete zadat umístění vaše vstupní video použití: adresy URL HTTPs, adresy URL SAS, nebo [Media Services prostředky](https://docs.microsoft.com/rest/api/media/assets).  
+A [úlohy](https://docs.microsoft.com/rest/api/media/jobs) je skutečnou žádost do služby Azure Media Services použít **transformace** do daného vstupního videa nebo zvukový obsah. **Úlohy** Určuje informace, jako jsou umístění vstupním videu a umístění pro výstup. Můžete zadat umístění váš vstup videa pomocí: Adresy URL HTTPS, adresy URL SAS, nebo [prostředky služby Media Services](https://docs.microsoft.com/rest/api/media/assets).  
 
 ## <a name="typical-workflow"></a>Typický pracovní postup
 

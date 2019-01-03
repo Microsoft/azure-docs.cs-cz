@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dcedf27f6105dcc1ea6e43feb32d254b491842c7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955125"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974433"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Azure Backup obsahuje několik předdefinovaných úspor, které ukládají náklady na síť a úložiště během počáteční úplné zálohování dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžadují větší šířku pásma sítě, ve srovnání s následné zálohy, které přenášejí pouze rozdíly/přírůstková. Procesem offline předvyplnění Azure Backup můžete používat disky k odesílání dat offline zálohování do Azure.
@@ -75,11 +75,11 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
 
   Popis vstupy vypadá takto:
 
-    * **Pracovní umístění**: umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
-    * **Účet úložiště Azure Resource Manageru**: název typ účtu úložiště Resource Manageru v jakéhokoli předplatného Azure.
-    * **Kontejner Azure Storage**: název cílový objekt blob storage v účtu úložiště Azure, kterého se naimportuje data záloh, před zkopírováním do trezoru služby Recovery Services.
+    * **Pracovní umístění**: Umístění dočasného úložiště, ke kterému je zapsán kopie prvotní zálohy. Pracovní umístění může být ve sdílené síťové složce nebo v místním počítači. Pokud počítač kopírování a zdrojový počítač se liší, doporučujeme, že zadáte úplná síťová cesta pracovního umístění.
+    * **Účet úložiště Azure Resource Manageru**: Název Typ účtu úložiště Resource Manageru v jakéhokoli předplatného Azure.
+    * **Kontejner Azure Storage**: Název cílové objektů blob úložiště v účtu úložiště Azure, kterého se naimportuje data záloh, před zkopírováním do trezoru služby Recovery Services.
     * **ID předplatného Azure**: ID předplatného Azure, ve kterém se vytvoří účet služby Azure Storage.
-    * **Název úlohy Azure Import**: jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure. 
+    * **Název úlohy importu do Azure**: Jedinečný název, který Import úložiště Azure service a Azure Backup a sledovat přenosu dat odesílaných na discích do Azure. 
   
   Zadejte vstupy na obrazovce a klikněte na **Další**. Uložit zadaných *pracovní umístění* a *název úlohy importu Azure*, jak tyto informace jsou nezbytné k přípravě disky.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1f0ff7bef5c1d30eb6920eaab3767de1dea6b94a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438859"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976966"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 
@@ -35,7 +35,7 @@ Nové aktualizace a funkce spadají do následujících kategorií:
 
     a.  [**Nové funkce v Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
-    b.  [**Nové funkce ve verzi 1.0 Apache Kafka**](https://www.apache.org/dist/kafka/1.0.0/RELEASE_NOTES.html)
+    b.  [**Nové funkce ve verzi 1.0 Apache Kafka**](https://kafka.apache.org/downloads#1.0.0)
 
 2.  ***Aktualizovat R serveru 9.1 na Machine Learning Services 9.3*** – v této verzi jsme se zobrazovaly datovým vědcům a inženýrům to nejlepší z oblasti open source vylepšeno díky vylepšením inovace a snadno se operacionalizace, všechny dostupné v jejich Upřednostňovaný jazyk s rychlostí Apache Spark. Tato verze rozšiřují možnosti nabízené v R serveru pomocí přidání podpory pro Python, což vede k změnu názvu clusteru R server pro služby ML. 
 
@@ -1300,9 +1300,9 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 |**Apache komponenty**|**Apache JIRA**|**Souhrn**|**Podrobnosti**|
 |--|--|--|--|
-|**Spark 2.3** |**–** |**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |-Je dokument "Vyřazení" a "Změnit chování" vodítko, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Pro část SQL je jiného průvodce podrobné "Migration" (z 2.2 k 2.3) http://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
+|**Spark 2.3** |**–** |**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |-Je dokument "Vyřazení" a "Změnit chování" vodítko, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />-Pro část SQL je jiného průvodce podrobné "Migration" (z 2.2 k 2.3) https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
 |Spark |[**HIVE 12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Úloha Sparku dokončí úspěšně, ale je chyba úplné kvóty disku HDFS |**Scénář:** Spuštění **vložit přepsat** Pokud kvótu nastavená na uživatele, který spouští příkaz složky Koš.<br /><br />**Předchozí chování:** Úloha úspěšně dokončí, i v případě, že ji nebude možné přesunout data do koše. Výsledek může obsahovat chybně některá data v tabulce dříve k dispozici.<br /><br />**Nové chování:** Při přesunu do složky Koš selže, se trvale odstraní soubory.|
-|**Kafka 1.0**|**–**|**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |http://kafka.apache.org/10/documentation.html#upgrade_100_notable|
+|**Kafka 1.0**|**–**|**Zpráva k vydání verze změny, jak je uvedeno v Apache Spark** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive / Ranger** | |Požadované pro vložení PŘEPSAT zásady další ranger hive |**Scénář:** Požadované pro další ranger hive zásady **vložit PŘEPSAT**<br /><br />**Předchozí chování:** Hive **vložit PŘEPSAT** úspěšné dotazy jako obvykle.<br /><br />**Nové chování:** Hive **vložit PŘEPSAT** dotazy se neočekávaně nedaří po upgradu na HDP 2.6.x s chybou:<br /><br />Chyba při kompilaci – příkaz: NEZDAŘILO SE: HiveAccessControlException oprávnění bylo odepřeno: jdoe uživatel nemá oprávnění k zápisu na /tmp/\*(stav = 42000 kód = 40000)<br /><br />Od verze HDP-2.6.0 Hive **vložit PŘEPSAT** dotazy vyžadují identifikátor URI Ranger zásadu pro povolení operací zápisu, i v případě, že má uživatel oprávnění k zápisu poskytuje prostřednictvím zásad HDFS.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:**<br /><br />1. Vytvořte novou zásadu v úložišti Hive.<br />2. V rozevíracím seznamu, kde se zobrazí databáze vyberte identifikátor URI.<br />3. Aktualizovat cestu (Příklad: / tmp / *)<br />4. Přidat uživatele a skupiny a uložte.<br />5. Vložit dotaz znovu.|
 |**HDFS**|**–** |HDFS by měly podporovat pro více identifikátorů URI služby správy KLÍČŮ |**Předchozí chování:** dfs.encryption.key.provider.uri vlastnost byl použit ke konfiguraci cesty poskytovatele služby správy KLÍČŮ.<br /><br />**Nové chování:** dfs.encryption.key.provider.uri je nyní zastaralé a místo toho použití hadoop.security.key.provider.path ke konfiguraci cesty poskytovatele služby správy KLÍČŮ.|
 |**Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zákazu zasílání zpráv scheduleru |**Součást vliv na:** Zeppelin Server<br /><br />**Předchozí chování:** V předchozích verzích aplikace Zeppelinu nenabízí možnost zákazu zasílání zpráv plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení budou uživatelům už nezobrazovaly Plánovač, jako je zakázané ve výchozím nastavení.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:** Pokud chcete povolit scheduleru, je potřeba přidat azeppelin.notebook.cron.enable s hodnotou true zeppelin vlastního webu v nastavení Zeppelin z Ambari.|
@@ -1409,6 +1409,10 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
             Val = \_.escape(val);//Line ne: 460
             
             Po odebrání řádek výše, vám umožní Ranger uživatelského rozhraní k vytváření zásad pomocí zásad stavu, který může obsahovat speciální znaky a zásad bude úspěšné stejné zásady pro vyhodnocení.
+
+**Integraci HDInsight s ADLS generace 2: Problém adresářů a oprávnění uživatele s clustery ESP**
+    1.  Na hlavní uzel 1 získávání nevytvoří domovské adresáře pro uživatele. Alternativním řešením je vytvořit ručně a změnit vlastnictví pro příslušného uživatele (UPN).
+    2.  Oprávnění na /hdp není aktuálně nastavená na 751. Tato hodnota musí být nastaveno.  chmod 751 /hdp b.  chmod – R 755/hdp/aplikace
 
 ## <a name="deprecation"></a>Vyřazení
 

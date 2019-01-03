@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 84c82da933b17679e8c69c08b0c9cc7372951cfd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802049"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53630967"
 ---
-# <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s využitím Azure na místní bránu dat
-Místní brána dat funguje jako most poskytující zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
+# <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s místní bránou dat
+Místní brána dat zajišťuje zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
 
 Získání první nastavení brány je složené ze čtyř částí procesu:
 
@@ -96,62 +96,65 @@ Aktuálně neexistuje žádné jedno místo, kde můžou správci tenantů sprav
 **Q**: Potřebuji bránu pro zdroje dat v cloudu, jako je Azure SQL Database? <br/>
 **A**: Ne. Brána je nezbytná pro připojení k místním zdrojům dat pouze.
 
-**Q**: Brána musí být nainstalovaný na stejném počítači jako zdroj dat? <br/>
+**Q**: Má brána nainstalovat ve stejném počítači jako zdroj dat? <br/>
 **A**: Ne. Brána musí pouze připojení k serveru, obvykle ve stejné síti.
 
 <a name="why-azure-work-school-account"></a>
 
-**Q**: Proč je nutné použít pracovní nebo školní účet pro přihlášení? <br/>
-**A**: můžete použít pouze organizace pracovní nebo školní účet při instalaci na místní bránu dat. A že účet musí být ve stejném tenantovi, jako je předplatné můžete prostředku brány v konfiguraci. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
+**Q**: Proč je potřeba použít pracovní nebo školní účet pro přihlášení? <br/>
+**A**: Při instalaci na místní bránu dat, můžete použít pouze organizace pracovní nebo školní účet. A že účet musí být ve stejném tenantovi, jako je předplatné můžete prostředku brány v konfiguraci. Váš účet přihlášení je uložený v tenantovi, který je spravovaný službou Azure Active Directory (Azure AD). Obvykle váš účet Azure AD hlavní název uživatele (UPN) odpovídá e-mailovou adresu.
 
-**Q**: kde jsou uloženy Moje přihlašovací údaje? <br/>
-**A**: přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
+**Q**: Kde jsou uloženy Moje přihlašovací údaje? <br/>
+**A**: Přihlašovací údaje, které zadáte pro zdroj dat jsou zašifrované a uložené v cloudové službě brány. Přihlašovací údaje se dešifrují na místní data brány.
 
-**Q**: existují nějaké požadavky na šířku pásma sítě? <br/>
-**A**: je doporučeno má dobrou propustnost připojení k síti. Každé prostředí je jiné a množství dat odesílaných ovlivní výsledky. Pomocí ExpressRoute může pomoct zajistit úroveň propustnosti mezi místními a datovými centry Azure.
+**Q**: Existují nějaké požadavky na šířku pásma sítě? <br/>
+**A**: Doporučuje se, že má dobrou propustnost připojení k síti. Každé prostředí je jiné a množství dat odesílaných ovlivní výsledky. Pomocí ExpressRoute může pomoct zajistit úroveň propustnosti mezi místními a datovými centry Azure.
 Vyhodnocení této propustnosti můžete použít aplikaci Azure Speed Test nástroj třetí strany.
 
 **Q**: Jaká je latence pro spouštění dotazů na zdroj dat z brány? Co je nejvhodnější architektura? <br/>
-**A**: Pokud chcete snížit latenci sítě, nainstalujte bránu co nejblíže zdroji dat co nejvíce. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Vezměte v úvahu datových centrech moc. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, virtuálního počítače Azure by měl být v oblasti západní USA příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
+**A**: Pokud chcete snížit latenci sítě, instalace brány jako nejblíž ke zdroji dat co nejvíc. Pokud bránu můžete nainstalovat na skutečný zdroj dat, toto blízkosti minimalizuje uvedenou latenci. Vezměte v úvahu datových centrech moc. Například pokud vaše služba používá datové centrum západ USA a SQL Server je hostovaný na Virtuálním počítači Azure, virtuálního počítače Azure by měl být v oblasti západní USA příliš. Tato blízkosti minimalizuje latenci a vyhnete poplatky za výchozí přenos dat na virtuálním počítači Azure.
 
-**Q**: jak se výsledky odesílají zpět do cloudu? <br/>
-**A**: výsledky se posílají přes Azure Service Bus.
+**Q**: Jak se výsledky odesílají zpět do cloudu? <br/>
+**A**: Výsledky se posílají přes Azure Service Bus.
 
-**Q**: existují nějaká příchozí připojení k bráně z cloudu? <br/>
+**Q**: Existují nějaká příchozí připojení k bráně z cloudu? <br/>
 **A**: Ne. Brána používá odchozí připojení ke službě Azure Service Bus.
 
 **Q**: Co když blokuji odchozí připojení? Co je potřeba otevřít? <br/>
 **A**: Podívejte se, portů a hostitelů, které brána používá.
 
-**Q**: co je aktuální služby Windows volat?<br/>
-**A**: V služeb se brána nazývá služby On-premises data gateway.
+**Q**: Co se nazývá skutečná služba Windows?<br/>
+**A**: Služby se brána nazývá služby On-premises data gateway.
 
-**Q**: Služba Windows brány můžete spustit pomocí účtu služby Azure Active Directory? <br/>
+**Q**: Může služba Windows brány běžet s účtem Azure Active Directory? <br/>
 **A**: Ne. Služba Windows musí mít platný účet Windows. Ve výchozím nastavení je služba spuštěna s SID služby NT SERVICE\PBIEgwService.
 
-**Q**: jak na to převzetí bránu? <br/>
+**Q**: Jak můžu převzetí bránu? <br/>
 **A**: K převzetí brány (spuštěním instalační program nebo změnit v Ovládacích panelech > programy), musíte být vlastníkem prostředku brány v Azure a mají obnovovací klíč. Vlastníci prostředků brány se dají konfigurovat řízení přístupu.
 
 ### <a name="high-availability"></a>Vysoká dostupnost a zotavení po havárii
 
-**Q**: jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
-**A**: obnovovací klíč můžete použít k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
+**Q**: Jak jsme zajistit vysokou dostupnost?  
+**A**: Bránu můžete nainstalovat na jiném počítači k vytvoření clusteru. Další informace najdete v tématu [clustery s vysokou dostupností pro místní bránu dat](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters) v Power BI Gateway dokumentace.
 
-**Q**: co je výhodou obnovovacího klíče? <br/>
-**A**: obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
+**Q**: Jaké možnosti jsou dostupné pro zotavení po havárii? <br/>
+**A**: Obnovovací klíč slouží k obnovení nebo přesunutí brány. Při instalaci brány zadejte obnovovací klíč.
+
+**Q**: Co je výhodou obnovovacího klíče? <br/>
+**A**: Obnovovací klíč poskytuje způsob, jak migrovat nebo obnovit nastavení brány po havárii.
 
 ## <a name="troubleshooting"> </a>Řešení potíží
 
-**Q**: Proč nevidím moje brány v seznam instancí brány při pokusu o vytvoření prostředku brány v Azure? <br/>
-**A**: existují dva možné důvody. Nejprve je že již vytvořen prostředek brány v aktuální nebo některé jiné předplatné. Chcete-li odstranit tuto možnost, vytvořit výčet prostředků typu **On-premises Data Gateway** z portálu. Je nutné vybrat všechna předplatná, při vytváření výčtu všechny prostředky. Po vytvoření prostředku brány se nezobrazí v seznamu instance brány v prostředí portálu vytvořit prostředek brány. Druhá možnost je jiný než uživatel přihlášený k portálu Azure portal Azure AD identity uživatele, který instalaci brány. Pokud chcete vyřešit, přihlaste se k portálu přes stejný účet jako uživatel, který instalaci brány.
+**Q**: Proč nevidím moje brány v seznam instancí brány, při pokusu o vytvoření prostředku brány v Azure? <br/>
+**A**: Existují dva možné důvody. Nejprve je že již vytvořen prostředek brány v aktuální nebo některé jiné předplatné. Chcete-li odstranit tuto možnost, vytvořit výčet prostředků typu **On-premises Data Gateway** z portálu. Je nutné vybrat všechna předplatná, při vytváření výčtu všechny prostředky. Po vytvoření prostředku brány se nezobrazí v seznamu instance brány v prostředí portálu vytvořit prostředek brány. Druhá možnost je jiný než uživatel přihlášený k portálu Azure portal Azure AD identity uživatele, který instalaci brány. Pokud chcete vyřešit, přihlaste se k portálu přes stejný účet jako uživatel, který instalaci brány.
 
 **Q**: Jak můžu zjistit, jaké dotazy se posílají do zdroje dat v místním? <br/>
-**A**: můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
+**A**: Můžete povolit trasování dotazů, které obsahuje dotazy, které se odesílají. Nezapomeňte změnit dotaz trasování zpět na původní hodnotu po dokončení odstraňování potíží. Trasování dotazů zapnuté vytvoří větší protokoly.
 
 Můžete se také podívat na nástroje, které váš zdroj dat používá pro trasování dotazů. Například můžete použít Extended Events nebo SQL Profiler pro SQL Server a služby Analysis Services.
 
-**Q**: kde se nacházejí protokoly brány? <br/>
-**A**: viz protokoly dále v tomto článku.
+**Q**: Kde se nacházejí protokoly brány? <br/>
+**A**: Dále v tomto článku naleznete v protokolech.
 
 ### <a name="update"></a>Aktualizovat na nejnovější verzi
 
@@ -184,7 +187,7 @@ Telemetrie je možné pro monitorování a řešení potíží. Ve výchozím na
 
 **Zapnout telemetrii**
 
-1.  Kontrola klienta On-premises data gateway adresáře na počítači. Obvykle je **%systemdrive%\Program Files\On-premises data gateway**. Nebo můžete otevřít konzolu služby a zkontrolujte cestu ke spustitelnému souboru: vlastnost On-premises data gateway Service.
+1.  Kontrola klienta On-premises data gateway adresáře na počítači. Obvykle je **%systemdrive%\Program Files\On-premises data gateway**. Nebo můžete otevřít konzolu služby a zkontrolujte cestu ke spustitelnému souboru: Vlastnosti služby On-premises data gateway.
 2.  V souboru Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config z adresáře klienta. Nastavení SendTelemetry změňte na hodnotu true.
         
     ```
@@ -193,7 +196,7 @@ Telemetrie je možné pro monitorování a řešení potíží. Ve výchozím na
         </setting>
     ```
 
-3.  Uložte změny a restartujte službu Windows: On-premises data gateway služby.
+3.  Uložte změny a restartujte službu Windows: Místní služba brány data.
 
 
 

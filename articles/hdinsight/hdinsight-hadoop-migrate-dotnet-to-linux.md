@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3681f87780f1ef2a6b42e33bcd6fc2d761994d5c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 3a9a026af67cd5528dfc00148bcbbcef82b8b189
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384190"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714657"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrace řešení .NET pro Windows na základě HDInsight založených na Linuxu HDInsight
 
@@ -24,7 +24,7 @@ Použití clusterů HDInsight se systémem Linux [Mono (https://mono-project.com
 
 Mono verze 4.2.1 je součástí HDInsight verze 3.6. Další informace o verzi Mono součástí HDInsight najdete v tématu [verzí komponenty HDInsight](hdinsight-component-versioning.md). Instalace konkrétní verze architektury mono, najdete v článku [instalace nebo aktualizace Mono](hdinsight-hadoop-install-mono.md) dokumentu.
 
-Další informace o kompatibilitě mezi Mono a .NET najdete v článku [Mono compatibility (http://www.mono-project.com/docs/about-mono/compatibility/) ](http://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
+Další informace o kompatibilitě mezi Mono a .NET najdete v článku [Mono compatibility (https://www.mono-project.com/docs/about-mono/compatibility/) ](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentu.
 
 > [!IMPORTANT]  
 > Je kompatibilní s Mono rozhraní SCP.NET. Další informace o použití SCP.NET architektuře Mono, naleznete v tématu [vývoj topologií C# pro Apache Storm v HDInsight pomocí Visual Studio](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -52,7 +52,7 @@ Další informace o kompatibilitě mezi Mono a .NET najdete v článku [Mono com
 
 ## <a name="manual-portability-analysis"></a>Ruční přenositelnost analýzy
 
-Proveďte ruční auditu podle informací uvedených v kódu [přenositelnost aplikací (http://www.mono-project.com/docs/getting-started/application-portability/) ](http://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
+Proveďte ruční auditu podle informací uvedených v kódu [přenositelnost aplikací (https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) dokumentu.
 
 ## <a name="modify-and-build"></a>Upravit a sestavení
 

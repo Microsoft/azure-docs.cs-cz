@@ -56,6 +56,12 @@ items:
   items:
   - name: Řešení potíží s protokolem SSH
     href: troubleshoot-ssh-connection.md
+  - name: Řešení potíží s chybami systému souborů
+    href: https://support.microsoft.com/help/3213321
+  - name: Řešení potíží při spuštění souvisejících s jádrem
+    href: https://support.microsoft.com/help/4091524
+  - name: Řešení potíží s chybami fstab
+    href: https://support.microsoft.com/help/3206699
   - name: Podrobné řešení potíží s protokolem SSH
     href: detailed-troubleshoot-ssh-connection.md
 - name: Běžné chybové zprávy
@@ -105,6 +111,8 @@ items:
   href: unexpected-reboots-attached-vhds.md
 - name: Problémy s aktivací Windows
   href: troubleshoot-activation-problems.md
+- name: Problém s aktivací vynuceného tunelování
+  href: custom-routes-enable-kms-activation.md
 - name: Potíže s přístupem k aplikacím
   href: troubleshoot-app-connection.md
 - name: Nová nasazení virtuálních počítačů
@@ -162,9 +170,9 @@ items:
   href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: af1f284108a326b3ce099ee49cb15a8f51cc61af
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b745b9e42c700ea446d934df7d2e3201b555f075
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434848"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976320"

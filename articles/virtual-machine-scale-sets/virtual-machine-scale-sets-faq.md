@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cd84704c7926bfa9ace0d801b2532d2c77296075
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139363"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53810504"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -167,48 +167,16 @@ Kód podporuje Windows a Linux.
 Další informace najdete v tématu [vytvořit nebo aktualizovat škálovací sadu virtuálních počítačů nastavte](https://msdn.microsoft.com/library/mt589035.aspx).
 
 
-### <a name="example-of-self-signed-certificate"></a>Příklad certifikátu podepsaného svým držitelem
+### <a name="example-of-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Příklad certifikáty podepsané svým držitelem, které jsou zřízené pro clustery Azure Service Fabric.
+Nejnovější použijte například následující příkaz rozhraní příkazového řádku azure v rámci prostředí azure přečtěte si modul Service Fabric CLI ukázková dokumentace, která se vytisknou do stdout:
 
-1.  Vytvořte certifikát podepsaný svým držitelem v trezoru klíčů.
+```bash
+az sf cluster create -h
+```
 
-    Použijte následující příkazy Powershellu:
+Přečtěte si prosím dokumentaci keyvaults pro nejnovější operace certifikátu API podporované v Azure.
 
-    ```powershell
-    Import-Module "C:\Users\mikhegn\Downloads\Service-Fabric-master\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
-
-    Connect-AzureRmAccount
-
-    Invoke-AddCertToKeyVault -SubscriptionId <Your SubID> -ResourceGroupName KeyVault -Location westus -VaultName MikhegnVault -CertificateName VMSSCert -Password VmssCert -CreateSelfSignedCertificate -DnsName vmss.mikhegn.azure.com -OutputPath c:\users\mikhegn\desktop\
-    ```
-
-    Tento příkaz umožňuje vstup pro šablonu Azure Resource Manageru.
-
-    Příklad toho, jak vytvořit certifikát podepsaný svým držitelem v trezoru klíčů, naleznete v tématu [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
-
-2.  Změna šablony Resource Manageru.
-
-    Přidejte tuto vlastnost na **virtualMachineProfile**, v rámci virtuálního počítače škálovací sady prostředků:
-
-    ```json 
-    "osProfile": {
-        "computerNamePrefix": "[variables('namingInfix')]",
-        "adminUsername": "[parameters('adminUsername')]",
-        "adminPassword": "[parameters('adminPassword')]",
-        "secrets": [
-            {
-                "sourceVault": {
-                    "id": "[resourceId('KeyVault', 'Microsoft.KeyVault/vaults', 'MikhegnVault')]"
-                },
-                "vaultCertificates": [
-                    {
-                        "certificateUrl": "https://mikhegnvault.vault.azure.net:443/secrets/VMSSCert/20709ca8faee4abb84bc6f4611b088a4",
-                        "certificateStore": "My"
-                    }
-                ]
-            }
-        ]
-    }
-    ```
+Nelze použít pro distribuované vztah důvěryhodnosti certifikační autorita k dispozici certifikáty podepsané svým držitelem a nemělo používat pro všechny určené pro produkční řešení enterprise pro hostitele; clusteru Service Fabric Další informace o zabezpečení služby Service Fabric najdete v tématu [osvědčené postupy Azure Service Fabric zabezpečení](https://docs.microsoft.com/en-us/azure/security/azure-service-fabric-security-best-practices) a [scénáře zabezpečení clusteru Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
   
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Můžete zadat pár klíčů SSH pro ověřování SSH pomocí virtuálního počítače škálovací sady s Linuxem ze šablony Resource Manageru?  
@@ -277,7 +245,7 @@ Příklad najdete v tématu [šablonu pro rychlý start Githubu 101-vm-sshkey](h
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Při spuštění `Update-AzureRmVmss` po přidání více než jeden certifikát ze stejné služby key vault, zobrazí následující zpráva:
  
->Update-AzureRmVmss: List secret obsahuje opakované instance /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, což se nepovoluje.
+>Update-AzureRmVmss: Tajný kód seznam obsahuje opakované instance /subscriptions/ < my-subscription-id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev, což se nepovoluje.
  
 To může nastat, pokud se pokusíte do stejného trezoru namísto použití nového certifikátu trezoru pro existující zdrojový trezor je znovu přidat. `Add-AzureRmVmssSecret` Příkaz nebude fungovat správně při přidávání dalších tajných kódů.
  
@@ -510,7 +478,7 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name "IaaSAntimalware" -
 Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet $VMSS 
 ```
 
-### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Musím spustit vlastní skript, který je hostován v účtu privátního úložiště. Spuštění skriptu se úspěšně, pokud úložiště je veřejné, ale při pokusu použít sdílený přístupový podpis (SAS), se nezdaří. Zobrazí se zpráva: "Chybí povinné parametry pro platný podpis sdíleného přístupu". Odkaz + SAS funguje z místní v prohlížeči.
+### <a name="i-need-to-execute-a-custom-script-thats-hosted-in-a-private-storage-account-the-script-runs-successfully-when-the-storage-is-public-but-when-i-try-to-use-a-shared-access-signature-sas-it-fails-this-message-is-displayed-missing-mandatory-parameters-for-valid-shared-access-signature-linksas-works-fine-from-my-local-browser"></a>Musím spustit vlastní skript, který je hostován v účtu privátního úložiště. Spuštění skriptu se úspěšně, pokud úložiště je veřejné, ale při pokusu použít sdílený přístupový podpis (SAS), se nezdaří. Zobrazí se tato zpráva: "Chybí povinné parametry pro platný sdílený přístupový podpis". Odkaz + SAS funguje z místní v prohlížeči.
 
 K provedení vlastní skript, který je hostován v účtu privátního úložiště, nastavte chráněná nastavení pro klíč účtu úložiště a názvem. Další informace najdete v tématu [vlastní skript rozšíření pro Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
 
@@ -559,7 +527,7 @@ Ano. Skupina zabezpečení sítě můžete použít přímo na škálovací sadu
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>Jak to provést prohození virtuálních IP adres pro škálovací sady virtuálních počítačů ve stejném předplatném a stejné oblasti?
 
-Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Zobrazit [prohození virtuálních IP adres: nasazení modrá zelená v Azure Resource Manageru](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) třeba. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
+Pokud máte dvě škálovací sady virtuálních počítačů s Azure Load Balancer front endů a jsou ve stejném předplatném a oblasti, můžete zrušit přidělení veřejné IP adresy z každé z nich a přiřadit k druhému. Zobrazit [prohození virtuálních IP adres: Nasazení modrá zelená v Azure Resource Manageru](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/) třeba. To neznamená zpoždění úroveň ale prostředky jsou přidělené v síti jejich přidělení. Rychlejší možností je použít Azure Application Gateway pomocí dvou fondů back-endu a pravidel směrování. Alternativně může hostovat vaši aplikaci s [služby Azure App service](https://azure.microsoft.com/services/app-service/) poskytující podporu pro rychlé přepínání slotů pracovního a produkčního prostředí.
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>Jak určit rozsah privátních IP adres pro statického přidělování privátní IP adresu?
 
@@ -573,7 +541,7 @@ Pokud chcete nasadit škálovací sadu virtuálních počítačů nastavení pro
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Jak přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů?
 
-Chcete-li přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů, přečtěte si téma [Azure Resource Manageru: Get virtual machine scale sets s privátní IP adresy](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Chcete-li přidat IP adresu z prvního virtuálního počítače ve škálovací sady do výstupu šablony virtuálních počítačů, přečtěte si téma [Azure Resource Manageru: Získat virtual machine scale sets s privátní IP adresy](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Můžete používat škálovací sady s Akcelerovanými síťovými službami?
 

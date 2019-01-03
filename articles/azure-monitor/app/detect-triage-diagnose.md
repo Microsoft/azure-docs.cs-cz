@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2f1a6016f7555cdf1955487da22fc9171c55a480
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5cc5e0e9bf1d05bde273d1c26c03165a38e02122
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811819"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976643"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -47,7 +47,7 @@ Zaměřme se na část cyklu se zpětnou vazbou:
 ![Zjišťování – určení priorit podle dostupnosti zdrojů – diagnostika](./media/detect-triage-diagnose/01-pipe1.png)
 
 ## <a name="detect-poor-availability"></a>Zjišťování špatné dostupnosti
-Marcela Markova je vedoucí vývojář v týmu OBS a vede monitorování online výkonu. Nastaví několik [testů dostupnosti](../../application-insights/app-insights-monitor-web-app-availability.md):
+Marcela Markova je vedoucí vývojář v týmu OBS a vede monitorování online výkonu. Nastaví několik [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md):
 
 * Test jediné adresy URL hlavní vstupní stránky aplikace http://fabrikambank.com/onlinebanking/. Marcela nastaví kritéria na kód HTTP 200 a text „Welcome!“. Pokud tento test selže, existuje nějaký závažný problém se sítí nebo servery, případně se může jednat o problém s nasazením. (Nebo někdo na stránce změnil zprávu Welcome!, aniž by ji o tom informoval.)
 * Hlubší test s více kroky, který se přihlásí, získá výpis aktuálního účtu a na každé stránce zkontroluje několik klíčových podrobností. Tento test ověřuje fungování odkazu na databázi účtů. Marcela používá fiktivní ID zákazníka – několik se jich udržuje pro účely testování.
@@ -228,8 +228,8 @@ Toto byla ukázka jednoho týmu, který pomocí Application Insights nejen řeš
 V závislosti na vlastnostech vaší aplikace můžete začít několika způsoby. Vyberte si, co vám nejvíce vyhovuje:
 
 * [Webová aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
-* [Webová aplikace Java](../../application-insights/app-insights-java-get-started.md)
+* [Webová aplikace Java](../../azure-monitor/app/java-get-started.md)
 * [Webová aplikace Node.js](../../application-insights/app-insights-nodejs.md)
-* Již nasazené aplikace hostované ve [službě IIS](../../application-insights/app-insights-monitor-web-app-availability.md), na platformě [J2EE](../../application-insights/app-insights-java-live.md) nebo v [Azure](../../application-insights/app-insights-overview.md).
-* [Webové stránky](../../application-insights/app-insights-javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
-* [Testy dostupnosti](../../application-insights/app-insights-monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.
+* Již nasazené aplikace hostované ve [službě IIS](../../azure-monitor/app/monitor-web-app-availability.md), na platformě [J2EE](../../azure-monitor/app/java-live.md) nebo v [Azure](../../application-insights/app-insights-overview.md).
+* [Webové stránky](../../azure-monitor/app/javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
+* [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.

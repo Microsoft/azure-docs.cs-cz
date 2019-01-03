@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: aecfecda08a6008b931738802bb89054f9d3963c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3b3f1268866c936ae4674188f8e3297702167415
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274106"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53599429"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -59,7 +59,7 @@ Následující tabulka porovnává ERT a RPO pro každou vrstvu služby pro tři
 | --- | --- | --- | --- |--- |--- |
 | Obnovení k určitému bodu v čase ze zálohy |Libovolný bod obnovení do 7 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení do 35 dní |Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|Libovolný bod obnovení v rámci nakonfigurované doby (až po 35 dnů)|
 | Geografické obnovení z geograficky replikovaných záloh |ERT < 12 h<br> RPO < 1 h |ERT < 12 h<br>RPO < 1 h |ERT < 12 h<br>RPO < 1 h |ERT < 12 h<br>RPO < 1 h|ERT < 12 h<br>RPO < 1 h|
-| Automatické převzetí služeb při selhání skupiny |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s|RTO = 1 hodina<br>RPO < 5 s|
+| Skupiny automatického převzetí služeb při selhání |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s |RTO = 1 hodina<br>RPO < 5 s|RTO = 1 hodina<br>RPO < 5 s|
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze do existujícího serveru
 

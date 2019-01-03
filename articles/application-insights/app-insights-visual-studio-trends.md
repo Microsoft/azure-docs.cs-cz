@@ -15,12 +15,12 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: d84f37e8350778b3b1fbc9d618df451e1d3ca9f8
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcd46ac62ed59229cbeb3c55fa08b9b4fd82a69c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723482"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752856"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analýza trendů v sadě Visual Studio
 Nástroj Trendy Application Insights vizualizuje průběžné změny důležitých telemetrických událostí ve vaší webové aplikaci. Díky tomu můžete rychle identifikovat problémy a anomálie. Nástroj Trendy vám dodá podrobnější diagnostické informace, abyste mohli zlepšit výkon aplikace, sledovat příčiny výjimek a získat přehledy z vlastních událostí.
@@ -107,6 +107,6 @@ Nástroj Trendy může zvýraznit bubliny událostí, které jsou ve srovnání 
 |  |  |
 | --- | --- |
 | **[Práce s Application Insights v sadě Visual Studio](app-insights-visual-studio.md)**<br/>Hledejte telemetrii, zobrazujte data v CodeLens a konfigurujte Application Insights. Vše v sadě Visual Studio. |![Klikněte pravým tlačítkem myši na projekt a vyberte Application Insights, Vyhledávání](./media/app-insights-visual-studio-trends/34.png) |
-| **[Přidání dalších dat](app-insights-asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
-| **[Práce s portálem Application Insights](app-insights-dashboards.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
+| **[Přidání dalších dat](../azure-monitor/app/asp-net-more.md)**<br/>Sledování využití, dostupnosti, závislostí, výjimek. Integrujte trasování z rozhraní protokolování. Zapisuje vlastní telemetrii. |![Visual Studio](./media/app-insights-visual-studio-trends/64.png) |
+| **[Práce s portálem Application Insights](../azure-monitor/app/app-insights-dashboards.md)**<br/>Řídicí panely, výkonné nástroje pro diagnostiku a analýzy, výstrahy, aktivní mapa závislostí vaší aplikace a export telemetrie. |![Visual Studio](./media/app-insights-visual-studio-trends/62.png) |
 

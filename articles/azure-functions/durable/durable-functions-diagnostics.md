@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b297be16110e24342b224f7f89c2a3c0c44229a9
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 5a09bd8db89f85c785d3d701a3b7180e4616e52c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341402"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713227"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika v Durable Functions (Azure Functions)
 
@@ -25,7 +25,7 @@ Existuje několik možností pro diagnostiku problémů s [Durable Functions](du
 
 [Application Insights](../../application-insights/app-insights-overview.md) je doporučeným způsobem, jak Diagnostika a monitorování ve službě Azure Functions. Totéž platí i pro Durable Functions. Přehled o tom, jak využívat Application Insights ve vaší aplikaci function app, naleznete v tématu [monitorování Azure Functions](../functions-monitoring.md).
 
-Trvalé rozšíření funkce Azure také vysílá *sledování událostí* , které umožňují sledování spuštění začátku do konce Orchestrace. Ty najdete Power pivotu a dotazované pomocí [Application Insights Analytics](../../application-insights/app-insights-analytics.md) nástroj na webu Azure Portal.
+Trvalé rozšíření funkce Azure také vysílá *sledování událostí* , které umožňují sledování spuštění začátku do konce Orchestrace. Ty najdete Power pivotu a dotazované pomocí [Application Insights Analytics](../../azure-monitor/app/analytics.md) nástroj na webu Azure Portal.
 
 ### <a name="tracking-data"></a>Sledování dat
 

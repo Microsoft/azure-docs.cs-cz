@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 35813573be9b069cc920f5ede813503ab1b99b4a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0db6cc02be385ab82d41ecef214c5b158892c415
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227210"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628130"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -34,7 +34,9 @@ Tento článek obsahuje odkazy na několik dalších článků Powershellu pro �
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-V tomto cvičení vyžaduje modul Azure PowerShell verze 4.4 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+V tomto cvičení vyžaduje modul Azure PowerShell Az verze 0.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). 
 
 Pro toto cvičení, můžete zadat příkazy do regulární okno prostředí PowerShell, nebo můžete použít [Windows Powershellu integrovaném skriptovacím prostředí (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) a zadáním příkazů do editoru a pak test jeden nebo více příkazů v době jako Projděte si příklady. Můžete zvýraznit řádky, které chcete spustit a klikněte na tlačítko spustit vybrané jenom spuštění těchto příkazů.
 
@@ -42,18 +44,18 @@ Další informace o účtech úložiště najdete v tématu [seznámení se slu�
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Seznam účtů úložiště v rámci předplatného
 
-Spustit [Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) rutina pro načtení seznamu účtů úložiště v rámci aktuálního předplatného. 
+Spustit [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) rutina pro načtení seznamu účtů úložiště v rámci aktuálního předplatného. 
 
 ```powershell
-Get-AzureRMStorageAccount | Select StorageAccountName, Location
+Get-AzStorageAccount | Select StorageAccountName, Location
 ```
 
 ## <a name="get-a-reference-to-a-storage-account"></a>Získejte odkaz na účet úložiště
@@ -62,13 +64,13 @@ Dále je třeba odkaz na účet úložiště. Můžete vytvořit nový účet ú
 
 ### <a name="use-an-existing-storage-account"></a>Použít existující účet úložiště 
 
-Pokud chcete načíst existující účet úložiště, budete potřebovat název skupiny prostředků a název účtu úložiště. Nastavte proměnné pro tyto dvě pole a pak použít [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) rutiny. 
+Pokud chcete načíst existující účet úložiště, budete potřebovat název skupiny prostředků a název účtu úložiště. Nastavte proměnné pro tyto dvě pole a pak použít [Get-AzStorageAccount](/powershell/module/az.storage/Get-azStorageAccount) rutiny. 
 
 ```powershell
 $resourceGroup = "myexistingresourcegroup"
 $storageAccountName = "myexistingstorageaccount"
 
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName 
 ```
 
@@ -76,23 +78,23 @@ Nyní máte $storageAccount, která odkazuje na existující účet úložiště
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
-Tento skript ukazuje, jak vytvořit účet úložiště pro obecné účely pomocí [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount). Po vytvoření účtu načíst jeho kontext, který lze použít v následné příkazy místo určení ověřování se každé volání.
+Tento skript ukazuje, jak vytvořit účet úložiště pro obecné účely pomocí [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount). Po vytvoření účtu načíst jeho kontext, který lze použít v následné příkazy místo určení ověřování se každé volání.
 
 ```powershell
 # Get list of locations and select one.
-Get-AzureRmLocation | select Location 
+Get-AzLocation | select Location 
 $location = "eastus"
 
 # Create a new resource group.
 $resourceGroup = "teststoragerg"
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
+New-AzResourceGroup -Name $resourceGroup -Location $location 
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
 $skuName = "Standard_LRS"
     
 # Create the storage account.
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
   -SkuName $skuName
@@ -103,11 +105,11 @@ $ctx = $storageAccount.Context
 
 Skript používá následující rutiny prostředí PowerShell: 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) – načte seznam platných umístění. V příkladu `eastus` pro umístění.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) – načte seznam platných umístění. V příkladu `eastus` pro umístění.
 
-*   [Nový-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) – vytvoří novou skupinu prostředků. Skupina prostředků je logický kontejner, do které se nasazují a spravují prostředky Azure. Náš nazývá `teststoragerg`. 
+*   [Nové AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) – vytvoří novou skupinu prostředků. Skupina prostředků je logický kontejner, do které se nasazují a spravují prostředky Azure. Náš nazývá `teststoragerg`. 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) – vytvoří účet úložiště. V příkladu `testpshstorage`.
+*   [Nové AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) – vytvoří účet úložiště. V příkladu `testpshstorage`.
 
 Název skladové položky určuje typ replikace účtu úložiště, jako je například LRS (místně redundantní úložiště). Další informace o replikaci najdete v tématu [replikace Azure Storage](storage-redundancy.md).
 
@@ -123,7 +125,7 @@ Teď, když máte odkaz na nový účet úložiště nebo existující účet ú
 
 ### <a name="storage-account-properties"></a>Vlastnosti účtu úložiště
 
-Chcete-li změnit nastavení pro účet úložiště, použijte [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount). Při umístění účtu úložiště nebo skupinu prostředků, ve kterém se nachází nelze změnit, můžete změnit mnoho dalších vlastností. Následuje seznam některé vlastnosti, které můžete změnit pomocí prostředí PowerShell.
+Chcete-li změnit nastavení pro účet úložiště, použijte [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount). Při umístění účtu úložiště nebo skupinu prostředků, ve kterém se nachází nelze změnit, můžete změnit mnoho dalších vlastností. Následuje seznam některé vlastnosti, které můžete změnit pomocí prostředí PowerShell.
 
 * **Vlastní doménu** přiřazená k účtu úložiště.
 
@@ -137,19 +139,19 @@ Chcete-li změnit nastavení pro účet úložiště, použijte [Set-AzureRmStor
 
 ### <a name="manage-the-access-keys"></a>Správa přístupových klíčů
 
-Účet služby Azure Storage se dodává s dva klíče účtu. Pokud chcete načíst klíče, použijte [Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey). Tento příklad načte první klíč. Chcete-li načíst druhé, použijte `Value[1]` místo `Value[0]`.
+Účet služby Azure Storage se dodává s dva klíče účtu. Pokud chcete načíst klíče, použijte [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Tento příklad načte první klíč. Chcete-li načíst druhé, použijte `Value[1]` místo `Value[0]`.
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzureRmStorageAccountKey `
+    (Get-AzStorageAccountKey `
     -ResourceGroupName $resourceGroup `
     -Name $storageAccountName).Value[0]
 ```
 
-Chcete-li znovu vygenerovat klíč, použijte [New-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/New-AzureRmStorageAccountKey). 
+Chcete-li znovu vygenerovat klíč, použijte [New-AzStorageAccountKey](/powershell/module/az.Storage/New-azStorageAccountKey). 
 
 ```powershell
-New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
+New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -KeyName key1 
 ```
@@ -159,15 +161,15 @@ Chcete-li obnovit jiné klíč, použijte `key2` jako název klíče místo `key
 Znovu generovat jeden ze svých klíčů a potom ho znovu a podívejte se na novou hodnotu načíst.
 
 > [!NOTE] 
-> Měli byste provést pečlivé plánování před obnovuje se klíč pro účet úložiště produkčního prostředí. Znova se generuje jeden nebo oba klíče skončí platnost přístupu pro každou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v tématu [přístupové klíče](storage-account-manage.md#access-keys).
+> Měli byste provést pečlivé plánování před obnovuje se klíč pro účet úložiště produkčního prostředí. Znova se generuje jeden nebo oba klíče skončí platnost přístupu pro každou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v části [Přístupové klíče](storage-account-manage.md#access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Odstranění účtu úložiště 
 
-Chcete-li odstranit účet úložiště, použijte [Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount).
+Chcete-li odstranit účet úložiště, použijte [odebrat AzStorageAccount](/powershell/module/az.storage/Remove-azStorageAccount).
 
 ```powershell
-Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
+Remove-AzStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
 > [!IMPORTANT]
@@ -179,9 +181,9 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 Všechny účty úložiště jsou standardně přístupné pro všechny sítě, který má přístup k Internetu. Ale můžete nakonfigurovat pravidla síti povolit jenom aplikace z konkrétní virtuálních sítí pro přístup k účtu úložiště. Další informace najdete v tématu [virtuálních sítí a bran firewall nakonfigurovat Storage Azure](storage-network-security.md). 
 
 Tento článek ukazuje, jak spravovat tato nastavení pomocí následujících rutin Powershellu:
-* [Add-AzureRmStorageAccountNetworkRule](/powershell/module/AzureRM.Storage/Add-AzureRmStorageAccountNetworkRule)
-* [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
-* [Remove-AzureRmStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.storage/remove-azurermstorageaccountnetworkrule?view=azurermps-6.8.1)
+* [Přidat AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
+* [Aktualizace AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Odebrat AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>Použití storage analytics  
 
@@ -231,7 +233,7 @@ Informace o tom, jak přistupovat k tyto cloudy a jejich úložiště pomocí Po
 Pokud jste vytvořili novou skupinu prostředků a účet úložiště pro toto cvičení, můžete odebrat yous všechny prostředky, které jste vytvořili odstraněním skupiny prostředků. Tím se odstraní také všechny prostředky, které skupina obsahuje. V takovém případě odebere účet úložiště, který jste vytvořili a samotnou skupinu prostředků.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 ## <a name="next-steps"></a>Další postup
 
@@ -248,6 +250,6 @@ Tento článek popisuje běžné operace pomocí rutiny roviny správy ke správ
 
 Tento článek také poskytuje odkazy na několik dalších článků, jako je například Správa datových objektů, jak povolit analytika úložiště a jak získat přístup k Azure nezávislé cloudů, například China Cloud, německého cloudu a cloudu pro státní správu. Tady jsou některé další související články a zdroje pro referenci:
 
-* [Rutiny Powershellu rovina řízení pro Azure Storage](/powershell/module/AzureRM.Storage/)
+* [Rutiny Powershellu rovina řízení pro Azure Storage](/powershell/module/az.storage/)
 * [Rutiny Powershellu roviny dat pro Azure Storage](/powershell/module/azure.storage/)
 * [Referenční informace k Windows Powershellu](https://msdn.microsoft.com/library/ms714469.aspx)

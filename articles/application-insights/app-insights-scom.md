@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: d7c3134c36707fcfa079968d19d93b73d7a5f5cc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5e9ba42e33fb763256cd31c255ea42593146dfb7
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724073"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969314"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Sledování výkonu aplikací pomocí Application Insights pro SCOM
-Pokud ke správě serverů používáte System Center Operations Manager (SCOM), můžete monitorovat výkon a diagnostikovat problémy s výkonem pomocí [Azure Application Insights](app-insights-asp-net.md). Application Insights monitoruje webové aplikace příchozí požadavky, odchozí REST a volání, výjimkami a trasami protokolu SQL. Poskytuje řídicí panely s grafy metrik a inteligentní výstrah, jakož i výkonné diagnostické vyhledávání a analytických dotazů nad tuto telemetrii. 
+Pokud ke správě serverů používáte System Center Operations Manager (SCOM), můžete monitorovat výkon a diagnostikovat problémy s výkonem pomocí [Azure Application Insights](../azure-monitor/app/asp-net.md). Application Insights monitoruje webové aplikace příchozí požadavky, odchozí REST a volání, výjimkami a trasami protokolu SQL. Poskytuje řídicí panely s grafy metrik a inteligentní výstrah, jakož i výkonné diagnostické vyhledávání a analytických dotazů nad tuto telemetrii. 
 
 Můžete přepnout na monitorování pomocí Application Insights s použitím sada SCOM management pack.
 
@@ -35,7 +35,7 @@ Předpokládáme:
 * Verze rozhraní framework aplikace je rozhraní .NET 4.5 nebo novější.
 * Máte přístup k předplatnému v [Microsoft Azure](https://azure.com) a přihlásit [webu Azure portal](https://portal.azure.com). Vaše organizace může mít předplatné a do něj může přidat svůj účet Microsoft.
 
-(Může vytvořit vývojovému týmu [Application Insights SDK](app-insights-asp-net.md) do webové aplikace. Tento čas sestavení instrumentace je poskytuje větší flexibilitu při psaní vlastní telemetrii. Nicméně, nezáleží: provedením kroků popsaných v tomto poli s nebo bez SDK integrovanou.)
+(Může vytvořit vývojovému týmu [Application Insights SDK](../azure-monitor/app/asp-net.md) do webové aplikace. Tento čas sestavení instrumentace je poskytuje větší flexibilitu při psaní vlastní telemetrii. Nicméně, nezáleží: provedením kroků popsaných v tomto poli s nebo bez SDK integrovanou.)
 
 ## <a name="one-time-install-application-insights-management-pack"></a>(Jednou) Nainstalujte sadu management pack služby Application Insights
 Na počítači, kde je spuštěn nástroj Operations Manager:
@@ -92,13 +92,13 @@ Můžete ověřit, která instance aplikace bylo zjištěno:
 ![V monitorování, otevřete službu Application Insights](./media/app-insights-scom/100.png)
 
 ## <a name="view-telemetry-in-application-insights"></a>Zobrazení telemetrie v Application Insights
-V [webu Azure portal](https://portal.azure.com), přejděte k prostředku pro vaši aplikaci. Můžete [zobrazili grafy znázorňující telemetrie](app-insights-dashboards.md) z vaší aplikace. (Pokud ho ještě zobrazeny na hlavní stránce ještě, klikněte na Live Metrics Stream.)
+V [webu Azure portal](https://portal.azure.com), přejděte k prostředku pro vaši aplikaci. Můžete [zobrazili grafy znázorňující telemetrie](../azure-monitor/app/app-insights-dashboards.md) z vaší aplikace. (Pokud ho ještě zobrazeny na hlavní stránce ještě, klikněte na Live Metrics Stream.)
 
 ## <a name="next-steps"></a>Další postup
-* [Nastavit řídicí panel](app-insights-dashboards.md) spojit nejdůležitější grafy monitorování tato a další aplikace.
+* [Nastavit řídicí panel](../azure-monitor/app/app-insights-dashboards.md) spojit nejdůležitější grafy monitorování tato a další aplikace.
 * [Další informace o metrikách](app-insights-metrics-explorer.md)
-* [Nastavení výstrah](app-insights-alerts.md)
-* [Diagnostika problémů s výkonem](app-insights-detect-triage-diagnose.md)
-* [Výkonné analytické dotazy](app-insights-analytics.md)
-* [Testy dostupnosti webu](app-insights-monitor-web-app-availability.md)
+* [Nastavení výstrah](../azure-monitor/app/alerts.md)
+* [Diagnostika problémů s výkonem](../azure-monitor/app/detect-triage-diagnose.md)
+* [Výkonné analytické dotazy](../azure-monitor/app/analytics.md)
+* [Testy dostupnosti webu](../azure-monitor/app/monitor-web-app-availability.md)
 

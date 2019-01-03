@@ -1,5 +1,5 @@
 ---
-title: Úrovně konzistence a rozhraní API služby Azure Cosmos DB
+title: Úrovně konzistence a rozhraní API služby Cosmos DB
 description: Principy úrovní konzistence napříč rozhraní API ve službě Azure Cosmos DB.
 keywords: konzistence, služby azure cosmos db, azure, modely, mongodb, cassandra, graf, tabulky, Microsoft azure
 services: cosmos-db
@@ -8,14 +8,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 277a064d93e2ebcea82f3909b3fd16328a775105
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2fde29111ae1a95aec0cfef93762d3ae4f0e0dd0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832492"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53809382"
 ---
-# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Azure Cosmos DB
+# <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Úrovně konzistence a rozhraní API služby Cosmos DB
 
 Pět modelů konzistence nabízených službou Azure Cosmos DB nativně podporuje SQL API služby Azure Cosmos DB. Při použití služby Azure Cosmos DB, rozhraní SQL API je výchozí hodnota. 
 
@@ -50,5 +50,5 @@ V následující tabulce jsou uvedeny "načíst obavy" mapování mezi MongoDB 3
 Další informace o úrovních konzistence a kompatibilitu API služby Azure Cosmos DB pomocí rozhraní API pro open source. Viz následující články:
 
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
-* [Funkce MongoDB podporovaných rozhraním MongoDB API Azure Cosmos DB](mongodb-feature-support.md)
+* [Funkce MongoDB podporovaných rozhraním API Azure Cosmos DB pro MongoDB](mongodb-feature-support.md)
 * [Apache Cassandra funkcí podporovaných službou Azure Cosmos DB Cassandra API](cassandra-support.md)

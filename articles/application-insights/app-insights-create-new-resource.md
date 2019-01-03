@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3e642e5954a8c1154ca5b07f06f9450e4e9ee39a
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996257"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807920"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytváří se nový prostředek je proto součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete udělat automaticky integrovaným vývojovým prostředím. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkčním prostředí sestavení vaší aplikace.
@@ -69,15 +69,15 @@ Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** po pár s
 Můžete napsat [skript prostředí PowerShell](app-insights-powershell.md) automaticky vytvořit prostředek.
 
 ## <a name="next-steps"></a>Další postup
-* [Vytvoření řídicího panelu](app-insights-dashboards.md)
-* [Diagnostické vyhledávání](app-insights-diagnostic-search.md)
+* [Vytvoření řídicího panelu](../azure-monitor/app/app-insights-dashboards.md)
+* [Diagnostické vyhledávání](../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](app-insights-metrics-explorer.md)
-* [Psaní analytických dotazů](app-insights-analytics.md)
+* [Psaní analytických dotazů](../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
-[api]: app-insights-api-custom-events-metrics.md
-[diagnostic]: app-insights-diagnostic-search.md
+[api]: ../azure-monitor/app/api-custom-events-metrics.md
+[diagnostic]: ../azure-monitor/app/diagnostic-search.md
 [metrics]: app-insights-metrics-explorer.md
 [start]: app-insights-overview.md
 

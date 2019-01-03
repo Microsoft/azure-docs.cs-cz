@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 2ae11afe1ecbe500a4851aab6d56e612fbe79ee6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b7cde3a8990a51e95a8ce9ad85bca524d5669e0c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975127"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721117"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Použití Azure Data Lake Storage Gen2 s Apache Hadoop v Azure HDInsight
 
@@ -23,13 +23,13 @@ Azure Data Lake Storage (ADLS) Gen2 přebírá základní funkce z Azure Data La
 
 - Hadoop kompatibilní přístup: Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako byste to udělali s souboru systému HDFS (Hadoop Distributed). Je k dispozici ve všech prostředích Apache Hadoop, včetně Azure HDInsight a Azure Databricks pro přístup k datům uloženým v Data Lake Storage Gen2 ABFS ovladač.
 
-- Nadmnožina POSIX oprávnění: model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení lze nakonfigurovat prostřednictvím správce nástroje nebo architektury, jako je Apache Hivu a Apache Sparku.
+- Nadmnožina POSIX oprávnění: Model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení lze nakonfigurovat prostřednictvím správce nástroje nebo architektury, jako je Apache Hivu a Apache Sparku.
 
-- Nákladově efektivní: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Funkce, jako je životní cyklus úložiště objektů Blob v Azure pomůže snížit náklady na úpravou fakturační sazby podle dat prochází přes životního cyklu.
+- Cenová přístupnost: Data Lake Storage Gen2 nabízí kapacitu úložiště s nízkými náklady a transakce. Funkce, jako je životní cyklus úložiště objektů Blob v Azure pomůže snížit náklady na úpravou fakturační sazby podle dat prochází přes životního cyklu.
 
-- Funguje s Blob storage nástroje, platformy a aplikace: Data Lake Storage Gen2 nadále využívat širokou škálu nástroje, platformy a aplikace, které existují ještě dnes pro úložiště objektů Blob.
+- Funguje s Blob storage nástroje, platformy a aplikace: Data Lake Storage Gen2 se nadále využívat širokou škálu nástroje, platformy a aplikace, které existují ještě dnes pro úložiště objektů Blob.
 
-- Optimalizované ovladač: The ABFS ovladač je speciálně pro analýzy velkých objemů dat optimalizovaná. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
+- Optimalizované ovladače: Ovladač ABFS je speciálně pro analýzy velkých objemů dat optimalizovaná. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
 
 ## <a name="whats-new-about-azure-data-lake-storage-gen-2"></a>Co je nového v Azure Data Lake Storage Gen 2
 
@@ -45,7 +45,7 @@ Apache Hadoop aplikace nativně očekávají, že ke čtení a zápisu dat z úl
 
 Ovladač systému souborů Hadoop by dříve, převést všechny operace systému souborů na volání REST API služby Azure Storage na straně klienta a pak vyvoláte rozhraní REST API. Tento na straně klienta převod, ale výsledkem více rozhraní REST API je volání pro jeden vykonání operace systému souborů jako soubor přejmenovat. ABFS přesunul některé logiky systému souborů Hadoop ze strany klienta na straně serveru a rozhraní API Gen2 ADLS teď běží paralelně s rozhraním API pro objekt Blob. Tato migrace zlepší výkon, protože nyní mohou být provedeny běžných operací systému souborů Hadoop pomocí jednoho volání rozhraní REST API.
 
-Další informace najdete v tématu [ovladačů systém souborů Azure Blob (ABFS): vyhrazené ovladač Azure Storage pro Hadoop](../storage/data-lake-storage/abfs-driver.md).
+Další informace najdete v tématu [ovladačů systém souborů Azure Blob (ABFS): Vyhrazené ovladač Azure Storage pro Apache Hadoop](../storage/data-lake-storage/abfs-driver.md).
 
 ### <a name="adls-gen-2-uri-scheme"></a>Schéma identifikátoru URI ADLS Gen 2
 
@@ -68,7 +68,7 @@ abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapr
 abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
-> [!Note]
+> [!NOTE]  
 > Název souboru je `hadoop-examples.jar` v clusterech HDInsight verze 2.1 a 1.6. Při práci se soubory mimo HDInsight Většina nástrojů ABFS formátování a místo toho očekávají základní formát cesty, jako například nebyla rozpoznána `example/jars/hadoop-mapreduce-examples.jar`.
 
 Další informace najdete v tématu [použít identifikátor URI služby Azure Data Lake Storage Gen2](../storage/data-lake-storage/introduction-abfs-uri.md).

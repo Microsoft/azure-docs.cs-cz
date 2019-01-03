@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 11/28/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 84924900403a4aa2a65143c65a0b26f2c95a1e5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 00c4d750d0617d36ab476719ce31c8038065511c
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962643"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807206"
 ---
 # <a name="azure-stack-registration"></a>Registrace Azure Stack
 Instalaci sady Azure Stack Development Kit (ASDK) můžete zaregistrovat pomocí Azure pro stažení položek z marketplace z Azure a jak nastavit obchodní data hlášení zpět společnosti Microsoft. Chcete-li podporovat všechny funkce služby Azure Stack, včetně syndikace marketplace je nutná registrace. Registrace se doporučuje, protože umožňuje testovat důležité funkce služby Azure Stack, jako jsou syndikace marketplace a generování sestav o využívání. Po dokončení registrace Azure Stack, využití se oznamuje službě Azure commerce. Zobrazí se v rámci předplatného, které jste použili k registraci. Však uživatelé ASDK neúčtují se za jakékoliv využití, které vykazují.
@@ -69,7 +69,7 @@ Postupujte podle těchto kroků k registraci ASDK ve službě Azure.
     -RegistrationName $RegistrationName `
     -UsageReportingEnabled:$true
     ```
-3. Po dokončení skriptu by se zobrazit tato zpráva: **prostředí je teď zaregistrované a aktivovat pomocí zadaných parametrů.**
+3. Po dokončení skriptu, byste měli vidět tuto zprávu: **Prostředí je teď zaregistrované a aktivovat pomocí zadaných parametrů.**
 
     ![Prostředí je teď zaregistrovaný.](media/asdk-register/1.PNG)
 
@@ -201,21 +201,21 @@ Alternativně můžete použít **Get-Content** rutiny pro odkazování na soubo
 Po dokončení aktivace, zobrazí se zpráva podobná této **prostředí dokončí proces registrace a aktivace.**
 
 ## <a name="verify-the-registration-was-successful"></a>Ověřte, že registrace byla úspěšná
-Následujícím postupem ověřte, že ASDK registrace v Azure **v připojených prostředích** bylo úspěšné.
+
+Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack registrace byla úspěšná. Tato dlaždice není k dispozici na výchozí řídicí panel portálu správce.
 
 1. Přihlaste se k [portál pro správu služby Azure Stack](https://adminportal.local.azurestack.external).
 
-2. Klikněte na tlačítko **Marketplace správu** > **z Azure**.
+2. Z řídicího panelu, vyberte **Správa oblastí**.
 
-    ![](media/asdk-register/2.PNG)
+    [ ![Dlaždice oblasti správy](media/asdk-register/admin1sm.png "dlaždice oblasti správy") ](media/asdk-register/admin1.png#lightbox)
 
-3. Pokud se zobrazí seznam položek, které jsou k dispozici v Azure, s aktivací bylo úspěšné.
-
-    ![](media/asdk-register/3.PNG)
+3. Vyberte **vlastnosti**. Toto okno zobrazuje stav a podrobnosti o vašem prostředí. Stav může být **registrované** nebo **Neregistrovaný**. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci služby Azure Stack, spolu s registrace skupiny prostředků a názvem.
 
 ## <a name="move-a-registration-resource"></a>Přesunutí prostředku registrace
 Přesunutí prostředku registrace mezi skupinami prostředků ve stejném předplatném **je** podporována. Další informace o přesunutí prostředků do nové skupiny prostředků, najdete v části [přesunutí prostředků do nové skupiny prostředků nebo předplatného](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 
 ## <a name="next-steps"></a>Další postup
-[Přidání položky marketplace služby Azure Stack](../azure-stack-marketplace.md)
+
+- [Přidání položky marketplace služby Azure Stack](../azure-stack-marketplace.md)

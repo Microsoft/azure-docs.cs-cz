@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 9d1acabd07e7c01445c55a57be9b0c9a36140aa5
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b8ff1ae2f4c07dc59bd1ffb631378817493b96b0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163765"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53995038"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
@@ -117,7 +117,7 @@ Azure poskytuje různé typy účtů úložiště a úrovně výkonu.
 
 **Typ účtu** | **Podrobnosti** | **Použití**
 --- | --- | ---
-**Obecné účely v2 Standard** | Podporuje objekty BLOB (bloku, stránky, připojení), soubory, disky, fronty a tabulky.<br/><br/> Podporuje vrstvami přístupu Hot, Cool a Archive. ZRS se podporuje. | Používá se pro většinu scénářů a většinu typů data. Účty úložiště úrovně Standard může být HHD nebo založené na jednotkách SSD.
+**Obecné účely v2 Standard** | Podporuje objekty BLOB (bloku, stránky, připojení), soubory, disky, fronty a tabulky.<br/><br/> Podporuje vrstvami přístupu Hot, Cool a Archive. ZRS se podporuje. | Používá se pro většinu scénářů a většinu typů data. Účty úložiště úrovně Standard může být pevný disk nebo založené na jednotkách SSD.
 **Obecné účely v2 Premium** | Podporuje data objektů Blob storage (objekty BLOB stránky). Podporuje vrstvami přístupu Hot, Cool a Archive. ZRS se podporuje.<br/><br/> Uložené na SSD. | Microsoft doporučuje používat pro všechny virtuální počítače.
 **Účty pro obecné účely v1** | Nepodporuje přístup vrstvení. Nepodporuje ZRS | Použijte, pokud aplikace potřebují modelu nasazení Azure classic.
 **Objekt blob** | Specializovaný účet úložiště pro ukládání nestrukturovaných objektů. Poskytuje objekty BLOB bloku a doplňovacích objektů BLOB pouze (žádný soubor, fronty, tabulky nebo Disk úložiště služby). Poskytuje stejnou odolnost, dostupnost, škálovatelnost a výkon jako obecné účely v2. | v těchto účtech nejde ukládat objekty BLOB stránky a proto Nejde uložit soubory virtuálního pevného disku. Můžete nastavit na horkou nebo studenou úroveň přístupu.
@@ -248,7 +248,7 @@ V Azure platíte za co použijete, když se spotřebovávají prostředky a nen�
 **Víc se uč:**
 - Získejte přehled o [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) a [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-overview).
 - [Získat](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations) nákladů doporučení Advisoru.
-- [Další informace jak [optimalizovat náklady od doporučení](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), a [vám nenaúčtovaly neočekávané poplatky](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started).
+- [Další informace jak [optimalizovat náklady od doporučení](https://docs.microsoft.com/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json), a [vám nenaúčtovaly neočekávané poplatky](https://docs.microsoft.com/azure/billing/billing-getting-started).
 - [Další informace o](https://github.com/Azure/azure-quickstart-templates/tree/master/azure-resource-optimization-toolkit/) Toolkit (ARO) optimalizace prostředků Azure
 
 ## <a name="best-practice-implement-resource-group-budgets"></a>Osvědčený postup: Implementace rozpočty skupiny prostředků

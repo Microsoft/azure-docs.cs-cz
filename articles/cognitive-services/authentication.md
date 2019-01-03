@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: 327bc964f8dedeee03220e7cd7db1ef7c1e00de6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 11259b99ea9d2486c8c0afde21398710ccc6ccd8
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435765"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726286"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověření požadavků ve službě Azure Cognitive Services
 
@@ -34,7 +34,7 @@ Pojďme ověřovací hlavičky, které jsou k dispozici pro použití se službo
 
 | Hlavička | Popis |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Tuto hlavičku používají k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč víc služeb předplatného. Pokud používáte víc služeb předplatného klíč, oblast pro vaše předplatné musí být uvedena jako `Ocp-Apim-Subscription-Region` záhlaví. |
+| OCP-Apim-Subscription-Key | Tuto hlavičku používají k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč víc služeb předplatného. |
 | OCP-Apim předplatné – oblasti | Tato hlavička se pouze při použití klíče víc služeb předplatného se vyžaduje [Translator Text API](./Translator/reference/v3-0-reference.md). Tuto hlavičku používají k určení oblasti předplatného. |
 | Autorizace | Tuto hlavičku používají, pokud používáte ověřovací token. V následujících oddílech jsou podrobně popsané kroky nutné k provedení výměny tokenu. Zadaná hodnota následující formát: `Bearer <TOKEN>`. |
 

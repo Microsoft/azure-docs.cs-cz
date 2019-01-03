@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3b7b06b7ab9076b992e6e3349763d633f9b255ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338154"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789752"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
 Rozšíření Azure Diagnostics je agent v Azure, která umožňuje shromažďování diagnostických dat v nasazené aplikaci. Rozšíření diagnostiky můžete z mnoha různých zdrojů. V tuto chvíli nepodporuje jsou cloudové služby Azure (klasické) webové a pracovní role, Virtual Machines, Virtual Machine Scale sets a Service Fabric. Další služby Azure mají různé diagnostiky metody. Zobrazit [Přehled monitorování v Azure](../../azure-monitor/overview.md).
@@ -42,7 +42,7 @@ Rozšíření Azure Diagnostics můžete shromažďovat následující typy dat:
 ## <a name="data-storage"></a>Úložiště dat
 Rozšíření ukládá data do [účtu služby Azure Storage](diagnostics-extension-to-storage.md) , který zadáte.
 
-Můžete také odeslat ho do [Application Insights](../../application-insights/app-insights-cloudservices.md). Další možností je na datový proud stream [centra událostí](../../event-hubs/event-hubs-about.md), která pak můžete odeslat do služby pro monitorování mimo Azure.
+Můžete také odeslat ho do [Application Insights](../../azure-monitor/app/cloudservices.md). Další možností je na datový proud stream [centra událostí](../../event-hubs/event-hubs-about.md), která pak můžete odeslat do služby pro monitorování mimo Azure.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 Máte také možnost odeslání dat do služby Azure Monitor. V současné době tuto jímku platí pouze pro čítače výkonu. Umožňuje vám odesílat čítače výkonu shromážděné na vašem virtuálním počítači, VMSS, nebo cloudové služby Azure monitor jako vlastní metriky. Jímka Azure monitoru podporuje:
@@ -66,7 +66,7 @@ Zvolte službu, které se pokoušíte shromažďování diagnostických údajů 
 
 Pokročilejší témata naleznete v tématu
 
-* [Pro cloudové služby pomocí diagnostiky Azure pomocí Application Insights](../../application-insights/app-insights-cloudservices.md)
+* [Pro cloudové služby pomocí diagnostiky Azure pomocí Application Insights](../../azure-monitor/app/cloudservices.md)
 * [Trasování toku aplikace Cloud Services s využitím Azure Diagnostics](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 * [Nastavení diagnostiky na Cloud Services pomocí Powershellu](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

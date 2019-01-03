@@ -1,19 +1,20 @@
 ---
 title: Jak nakonfigurovat monitorování v Azure digitální dvojče | Dokumentace Microsoftu
-description: Jak nakonfigurovat monitorování v Azure digitální dvojče
+description: Jak nakonfigurovat monitorování v Azure digitální dvojče.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/26/2018
 ms.author: adgera
-ms.openlocfilehash: 1c8f1931a29ae9769f7d8ad57a184e3240105a1a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.custom: seodec18
+ms.openlocfilehash: 2749a5c6c4e6003c51523d83c46b48d3b55b3d45
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945809"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807580"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Jak nakonfigurovat monitorování v Azure digitální dvojče
 
@@ -23,7 +24,7 @@ Tento článek shrnuje protokolování a monitorování možnosti a zkombinujte 
 
 ## <a name="review-activity-logs"></a>Zkontrolujte protokoly aktivit
 
-Azure [protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) poskytují rychlé přehledy o vašich Historie událostí a operace úroveň předplatného pro každou instanci služby Azure.
+Azure [protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md) poskytují rychlé přehledy o vašich Historie událostí a operace úroveň předplatného pro každou instanci služby Azure.
 
 Událostí na úrovni předplatného patří:
 
@@ -54,7 +55,7 @@ Pro pokročilé protokolování aktivit:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Povolení diagnostických protokolů zákazníka
 
-Azure [nastavení diagnostiky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) lze nastavit pro každou instanci Azure k doplnění protokolování aktivit. Když protokoly aktivit se týkají událostí na úrovni předplatného, protokolování diagnostiky poskytuje přehled o provozní historie tyto prostředky.
+Azure [nastavení diagnostiky](../azure-monitor/platform/diagnostic-logs-overview.md) lze nastavit pro každou instanci Azure k doplnění protokolování aktivit. Když protokoly aktivit se týkají událostí na úrovni předplatného, protokolování diagnostiky poskytuje přehled o provozní historie tyto prostředky.
 
 Příklady protokolování diagnostiky:
 
@@ -74,7 +75,7 @@ Povolení diagnostických protokolů pro instanci:
 
     ![Dvě nastavení diagnostiky][5]
 
-    Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide) a sdílené s [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal). Obě možnosti se dají vybrat.
+    Diagnostické protokoly jsou často ukládají pomocí [Azure File Storage](../storage/files/storage-files-deployment-guide.md) a sdílené s [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md). Obě možnosti se dají vybrat.
 
 >[!TIP]
 >Použití **diagnostické protokoly** postřehy operací s prostředky.
@@ -91,7 +92,7 @@ Příklady použití:
 * Zobrazení protokolů pro několik uživatelsky definovaných funkcí
 * Zobrazení protokolů pro dvě nebo více služeb v určitém časovém limitu
 
-Dotazování na celý protokol je poskytována prostřednictvím [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Výkonné funkce, které tato nastavení:
+Dotazování na celý protokol je poskytována prostřednictvím [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md). Výkonné funkce, které tato nastavení:
 
 1. Vyhledejte **Log Analytics** na webu Azure Portal.
 1. Uvidí vaši dostupný **Log Analytics** instancí. Vyberte jednu a vyberte **protokoly** dotazu:
@@ -106,7 +107,7 @@ Jakmile vaše **Log Analytics** zřídí instance, můžete použít zadávat ef
 
    ![Správa protokolů][8]
 
-Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Může dojít ke zpoždění 5 minut při odesílání událostí do **Log Analytics** poprvé.
@@ -120,15 +121,15 @@ Azure Log Analytics také poskytuje výkonné chyb a oznámení výstrah služeb
 
 ## <a name="other-options"></a>Další možnosti
 
-Azure digitální dvojče také podporuje specifické pro aplikaci protokolování a auditování zabezpečení. Důkladný přehled k vaší instanci Azure digitální dvojče k dispozici všechny možnosti protokolování Azure, najdete v článku [Azure protokolu auditu](https://docs.microsoft.com/azure/security/azure-log-audit) článku.
+Azure digitální dvojče také podporuje specifické pro aplikaci protokolování a auditování zabezpečení. Důkladný přehled k vaší instanci Azure digitální dvojče k dispozici všechny možnosti protokolování Azure, najdete v článku [Azure protokolu auditu](../security/azure-log-audit.md) článku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure [protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs).
+- Další informace o Azure [protokoly aktivit](../azure-monitor/platform/activity-logs-overview.md).
 
-Ponořte se hlouběji do nastavení diagnostiky služby Azure ve čtení [přehled diagnostických protokolů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Ponořte se hlouběji do nastavení diagnostiky služby Azure ve čtení [přehled diagnostických protokolů](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Další informace o [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal).
+- Další informace o [Azure Log Analytics](../azure-monitor/log-query/get-started-portal.md).
 
 <!-- Images -->
 [1]: media/how-to-configure-monitoring/activity-log.png

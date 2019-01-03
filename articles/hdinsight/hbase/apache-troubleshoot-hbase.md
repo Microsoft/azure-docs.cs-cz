@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: b39c01e76ba3ec21f0cd2d16b86da5664e1d5002
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014663"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651601"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
 
@@ -288,7 +288,7 @@ Po spuštění těchto příkazů HMaster měli spustit okamžitě.
 
 ### <a name="detailed-description"></a>Podrobný popis
 
-Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta* tabulka není online. Spuštění `hbck` hlásit, který "hbase: metadata tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Problémem může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokoly HMaster se může zobrazit zpráva: "v hbase není uvedená žádná adresa serveru: metadata pro oblasti hbase: zálohování \<název oblasti\>".  
+Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta* tabulka není online. Spuštění `hbck` hlásit, který "hbase: metadata tabulky replicaId 0 nebyl nalezen v libovolné oblasti." Problémem může být, že HMaster nebylo možné inicializovat po restartování HBase. V protokolech HMaster může se zobrazit zpráva: "V hbase není uvedená žádná adresa serveru: metadata pro oblasti hbase: zálohování \<název oblasti\>".  
 
 ### <a name="resolution-steps"></a>Postup řešení
 
@@ -314,12 +314,12 @@ Může zobrazit zpráva v clusteru s Linuxem, která označuje, že *hbase: meta
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Nelze zpracovat na tabulku HBase](http://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
+[Nelze zpracovat na tabulku HBase](https://stackoverflow.com/questions/4794092/unable-to-access-hbase-table)
 
 
 ### <a name="error"></a>Chyba
 
-HMaster vyprší časový limit se podobně jako závažnou výjimku "java.io.IOException: 300000ms vypršel časový limit čekání na obor názvů tabulka, která má být přiřazena."
+HMaster vyprší časový limit se podobně jako závažnou výjimku "java.io.IOException: Vypršel časový limit 300000ms čekání na obor názvů tabulky má být přiřazena."
 
 ### <a name="detailed-description"></a>Podrobný popis
 
@@ -344,7 +344,7 @@ Jedná se o známý problém službou HMaster. Úlohy po spuštění obecné clu
 
 ### <a name="issue"></a>Problém
 
-Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: jak čas restartování clusteru Apache HBase můžete zlepšit vyčištění tabulek](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: Jak vylepšit čas restartování clusteru Apache HBase ve vyčištění tabulek](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
 Pokud spustíte operace restartování na servery oblasti HBase v uživatelském rozhraní Apache Ambari, můžete okamžitě zjistit, že servery oblasti byl vypnut, ale není to hned restartovat. 
 

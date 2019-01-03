@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 12/23/2018
+ms.date: 01/02/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: bb52cdd440d15410b101f31444c6838db927c4f4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8971bba1e25a8e87ed57463dcc9b013fea56a0ff
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792437"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976830"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -58,8 +58,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 **Zeměpisné oblasti** | **Umístění úložiště**
 --- | ---
-Sjednotí stavy | Střed USA – západ nebo USA – východ
 Azure Government | USA (Gov) – Virginia
+Evropa | Severní Evropa a západní Evropa
+Sjednotí stavy | USA – východ nebo USA (střed) – západ
 
 ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
 

@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 07274269e9902a336181c89ee5c02edd52b6ab01
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849492"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723922"
 ---
-# <a name="overview-of-multi-tenant-support-for-vmware-fisaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení fisaster VMware do Azure s využitím CSP
+# <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Přehled podpory více tenantů pro zotavení po havárii VMware do Azure s využitím CSP
 
 [Azure Site Recovery](site-recovery-overview.md) podporuje prostředí více tenantů pro předplatná tenanta. Také podporuje více tenantů pro předplatné tenanta, které jsou vytvořeny a spravovány prostřednictvím programu Microsoft Cloud Solution Provider (CSP).
 
@@ -24,11 +24,11 @@ Tento článek poskytuje přehled o implementaci a správu více tenantů replik
 
 Existují tři hlavní modely víceklientské:
 
-* **Sdílené hostování poskytovatele služeb (HSP)**: partnera vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
+* **Sdílené služby poskytovatele hostingu (HSP)**: Partner vlastní fyzické infrastruktury, a používá sdílené prostředky (vCenter, datová centra, fyzického úložiště a tak dále) pro hostování více klientské virtuální počítače ve stejné infrastruktuře. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit zotavení po havárii jako řešení samoobslužné služby.
 
-* **Vyhrazené poskytovatele služby hostingu**: partnera vlastní fyzické infrastruktury, ale používá vyhrazené prostředky (více vCenters fyzických úložišť a tak dále) pro hostování virtuálních počítačů každého tenanta do samostatného infrastruktury. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit jako řešení samoobslužné služby.
+* **Vyhrazené poskytovatele služby hostingu**: Partner vlastní fyzické infrastruktury, ale používá vyhrazené prostředky (více vCenters fyzických úložišť a tak dále) pro hostování virtuálních počítačů každého tenanta do samostatného infrastruktury. Partner nabízí správu zotavení po havárii jako spravovanou službu nebo tenanta může vlastnit jako řešení samoobslužné služby.
 
-* **Spravovat poskytovatele služeb (MSP)**: zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
+* **Spravovat poskytovatele služeb (MSP)**: Zákazník je vlastníkem fyzické infrastruktury, který hostuje virtuální počítače a partnera poskytuje funkce pro kontrolu zotavení po havárii a správu.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Sdílené hostování poskytovatele služeb (HSP)
 
@@ -58,7 +58,7 @@ Každý konfiguračního serveru ve scénáři s více tenanty používá dva ú
 
 - **účet pro přístup k serveru vCenter**: Tento účet se používá ke zjišťování klientské virtuální počítače. Má přiřazena oprávnění k přístupu vCenter. Pokud chcete vyhnout nevracení přístup, doporučujeme, že partneři zadejte tyto přihlašovací údaje, sami v nástroji pro konfiguraci.
 
-- **Účet pro přístup k virtuální počítač**: Tento účet se používá k instalaci agenta služby Mobility na virtuální počítače, klienta pomocí automatické nabízené oznámení. Obvykle je účet domény, který tenanta může poskytnout s partnerem nebo účet, který partner může spravovat přímo. Pokud klient nechce sdílet podrobnosti přímo s partnerem, mohou zadat přihlašovací údaje prostřednictvím časovým omezením přístupu ke konfiguračnímu serveru. Nebo partnera, podporu, si můžou nainstalovat agenta služby Mobility ručně.
+- **Účet pro přístup k virtuální počítač**: Tento účet slouží k instalaci agenta služby Mobility na virtuální počítače, klienta pomocí automatické nabízené oznámení. Obvykle je účet domény, který tenanta může poskytnout s partnerem nebo účet, který partner může spravovat přímo. Pokud klient nechce sdílet podrobnosti přímo s partnerem, mohou zadat přihlašovací údaje prostřednictvím časovým omezením přístupu ke konfiguračnímu serveru. Nebo partnera, podporu, si můžou nainstalovat agenta služby Mobility ručně.
 
 ## <a name="vcenter-account-requirements"></a>požadavky na účet vCenter
 
@@ -75,11 +75,11 @@ Nakonfigurujte konfiguračního serveru pomocí účtu, který má zvláštní r
 1. Vytvoření nové role naklonováním předdefinovaného *jen pro čtení* role a pak poskytněte vhodný název (například Azure_Site_Recovery, jak je znázorněno v tomto příkladu).
 2. K této roli přiřadíte následující oprávnění:
 
-    * **Úložiště dat**: přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, soubory aktualizace virtuálního počítače
-    * **Síť**: přiřazení sítě
-    * **Prostředek**: přiřazení virtuálního počítače do fondu zdrojů, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač
-    * **Úlohy**: vytvořit úlohu, aktualizovat úlohu
-    * **Virtuálního počítače – konfigurace**: všechny
+    * **Úložiště dat**: Přidělit prostor, procházet úložiště dat, operace se soubory nízké úrovně, odebrat soubor, soubory aktualizace virtuálního počítače
+    * **Síť**: Přiřazení sítě
+    * **Prostředek**: Přiřazení virtuálního počítače do fondu zdrojů, migrovat vypnutý virtuální počítač, migrovat zapnutý virtuální počítač
+    * **Úlohy**: Vytvořit úlohu, aktualizovat úlohu
+    * **Virtuálního počítače – konfigurace**: Vše
     - **Virtuální počítač – interakce** > zodpovědět otázky, připojení zařízení, konfigurovat disk CD, konfigurovat disketu, vypnout, zapnout, instalace nástrojů VMware
     - **Virtuální počítač – inventář** > Vytvoření z existujících, vytvořit, zaregistrovat, zrušit registraci
     - **Virtuální počítač – zřizování** > Povolit stažení virtuálního počítače, povolit nahrávání souborů virtuálního počítače

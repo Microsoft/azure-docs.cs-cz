@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: c453998eea2a747b2cb608482f0ef9c1ee197ee0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b07e21131d9560a49d99644525835ac5ee3bac9e
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185427"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606779"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrace dat SIM v řešení vzdáleného monitorování
 
 Zařízení IoT často připojit ke cloudu pomocí SIM karty, která umožňuje jim odeslat datové proudy z libovolného místa. Řešení vzdáleného monitorování Azure IoT umožňuje integraci dat IoT spravovat připojení tak, aby operátory můžete také sledovat stav zařízení prostřednictvím údaje poskytnuté IoT SIM.
 
-Vzdálené monitorování poskytuje mimo okamžité integrace s připojením Telefónica IoT, umožňuje, že zákazníci, kteří používají jeho připojení platformy IoT synchronizace jejich zařízení všechny připojení dat k jejich řešení. Toto řešení je možné rozšířit na podporu jiných poskytovatelů připojení IoT přes GitHub [úložiště](http://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
+Vzdálené monitorování poskytuje mimo okamžité integrace s připojením Telefónica IoT, umožňuje, že zákazníci, kteří používají jeho připojení platformy IoT synchronizace jejich zařízení všechny připojení dat k jejich řešení. Toto řešení je možné rozšířit na podporu jiných poskytovatelů připojení IoT přes GitHub [úložiště](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 
 V tomto kurzu se naučíte:
 

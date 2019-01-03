@@ -90,9 +90,9 @@ Název oblasti, v poli umístění prostředku v podrobnosti o využití se liš
 |    japanwest             |    Japonsko – západ                               |
 |    KoreaCentral          |    Korea – střed                            |
 |    KoreaSouth            |    Korea – jih                              |
-|    northcentralus        |    Střed USA – sever                      |
+|    northcentralus        |    Středoseverní USA                      |
 |    northeurope           |    Severní Evropa                          |
-|    southcentralus        |    Střed USA – jih                      |
+|    southcentralus        |    Středojižní USA                      |
 |    southeastasia         |    Jihovýchodní Asie                        |
 |    SouthIndia            |    Indie – jih                              |
 |    UKNorth               |    USA – sever                              |

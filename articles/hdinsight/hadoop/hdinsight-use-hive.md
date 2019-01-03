@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 73c68e6946b3715bfa67561141e6c18e32e20c18
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011755"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633959"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -25,13 +25,13 @@ Struktura projektu do značné míry nestrukturovaných dat vám umožní Hive. 
 
 HDInsight obsahuje několik typů clusteru, která je vyladěná pro konkrétní úlohy. Následující typy clusteru se nejčastěji používají pro dotazy Hive:
 
-* __Interactive Query__: cluster A Hadoop, který poskytuje [s nízkou latencí analytické zpracování (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkce, které zkrátit dobu odezvy pro interaktivní dotazy. Další informace najdete v tématu [Začínáme s interaktivními dotazy v HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
+* __Interactive Query__: Cluster Hadoop, která poskytuje [s nízkou latencí analytické zpracování (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkce, které zkrátit dobu odezvy pro interaktivní dotazy. Další informace najdete v tématu [Začínáme s interaktivními dotazy v HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentu.
 
-* __Hadoop__: cluster A Hadoop, který je vyladěný pro zpracování úloh služby batch. Další informace najdete v tématu [Začínáme s Hadoopem v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
+* __Hadoop__: Cluster Hadoop, která je vyladěná pro zpracování úloh služby batch. Další informace najdete v tématu [Začínáme s Apache Hadoop v HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentu.
 
-* __Spark__: Apache Spark má integrované funkce pro práci s Hive. Další informace najdete v tématu [Začínáme se Spark v HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
+* __Spark__: Apache Spark má integrované funkce pro práci s Hive. Další informace najdete v tématu [Začínáme s Apache Spark v HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
 
-* __HBase__: HiveQL je možné zadat dotaz na data uložená v HBase. Další informace najdete v tématu [Začínáme s HBase v HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
+* __HBase__: HiveQL slouží k dotazování dat uložených v Apache HBase. Další informace najdete v tématu [Začínáme s Apache HBase v HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
 
 ## <a name="how-to-use-hive"></a>Použití Hivu
 
@@ -78,7 +78,7 @@ Další informace o formátech podporovaných Hive najdete v článku [ruční j
 
 Existují dva typy tabulek, které můžete vytvořit pomocí Hive:
 
-* __Interní__: Data uložená v datovém skladu Hive. Datový sklad se nachází na `/hive/warehouse/` na výchozí úložiště pro cluster.
+* __Interní__: Data se ukládají v datovém skladu Hive. Datový sklad se nachází na `/hive/warehouse/` na výchozí úložiště pro cluster.
 
     Použijte interní tabulky při vztahovat jeden z následujících podmínek:
 
@@ -100,15 +100,15 @@ Další informace najdete v tématu [Hive interní a externí tabulky ÚVOD] [ c
 
 Hive se také dají rozšířit prostřednictvím **uživatelem definované funkce (UDF)**. Uživatelem definovanou FUNKCI umožňuje implementovat logiku, která se snadno modelována nebo funkce v HiveQL. Příklad použití funkce UDF pomocí Hive najdete v následujících dokumentech:
 
-* [Uživatelem definované funkce jazyka Java pomocí Hivu](../hadoop/apache-hadoop-hive-java-udf.md)
+* [Uživatelem definované funkce jazyka Java pomocí Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [Použití uživatelem definované funkce Pythonu s Hivem](../hadoop/python-udf-hdinsight.md)
+* [Použití uživatelem definované funkce Pythonu s Apache Hive](../hadoop/python-udf-hdinsight.md)
 
-* [Použití jazyka C# uživatelem definované funkce s Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Použití C# uživatelem definovanou funkci s Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [Jak přidat vlastní uživatelem definované funkce Hive HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Jak přidat vlastní Apache Hive uživatelem definované funkce HDInsight](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [Příklad Hive uživatelem definované funkce pro převod formátů data a času na časové razítko Hive](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [Příklad Apache Hive uživatelem definované funkce pro převod formátů data a času na časové razítko Hive](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
 ## <a id="data"></a>Ukázková data
 
@@ -138,24 +138,24 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Příkazy HiveQL v předchozím příkladu, proveďte následující akce:
 
-* `set hive.execution.engine=tez;`: Nastavuje prováděcí modul Tez používat. Pomocí Tez můžete poskytnout zvýšení výkonu dotazů. Další informace o Tez najdete v článku [použití rozhraní Apache Tez pro zlepšení výkonu](#usetez) oddílu.
+* `set hive.execution.engine=tez;`: Nastavuje prováděcí modul použití Apache Tez. Pomocí Tez můžete poskytnout zvýšení výkonu dotazů. Další informace o Tez najdete v článku [použití rozhraní Apache Tez pro zlepšení výkonu](#usetez) oddílu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Tento příkaz je jenom nutné při použití clusteru HDInsight se systémem Windows. Tez je výchozí prováděcí modul pro HDInsight se systémem Linux.
 
 * `DROP TABLE`: Pokud tabulka již existuje, odstraňte ho.
 
-* `CREATE EXTERNAL TABLE`: Vytvoří nový **externí** tabulky v Hivu. Externí tabulky pouze uložte definici tabulky Hive. Data zůstane v původním umístění a v původním formátu.
+* `CREATE EXTERNAL TABLE`: Vytvoří novou **externí** tabulky v Hivu. Externí tabulky pouze uložte definici tabulky Hive. Data zůstane v původním umístění a v původním formátu.
 
-* `ROW FORMAT`: Přikáže Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+* `ROW FORMAT`: Říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
 
 * `STORED AS TEXTFILE LOCATION`: Říká Hive, ve kterém jsou data uložená ( `example/data` adresáře) a, která je uložená jako text. Data mohou být v jednom souboru nebo rozdělené mezi více souborů v adresáři.
 
-* `SELECT`: Počet všech řádků vybere ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+* `SELECT`: Vybere počet všech řádků ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
 
 * `INPUT__FILE__NAME LIKE '%.log'` -Hive se pokusí použít schéma pro všechny soubory v adresáři. V takovém případě adresář obsahuje soubory, které neodpovídají schématu. Chcete-li zabránit uvolňování paměti ve výsledcích, tento příkaz sděluje Hive, že jsme by měl vrátit pouze data ze souborů s koncovkou. log.
 
-> [!NOTE]
+> [!NOTE]  
 > Pokud očekáváte, že podkladová data aktualizovat externího zdroje je třeba použít externí tabulky. Například automatizovaných datových odesílat operaci MapReduce nebo procesu.
 >
 > Vyřazení externí tabulky neodpovídá **není** odstranit data, jenom odstraní definici tabulky.
@@ -186,7 +186,7 @@ Tyto příkazy provádět následující akce:
 
 * `INSERT OVERWRITE ... SELECT`: Vybere řádky z **log4jLogs** tabulku, která obsahuje **[Chyba]** a pak vloží data do **nepřenesl** tabulky.
 
-> [!NOTE]
+> [!NOTE]  
 > Na rozdíl od externích tabulek vyřadit interní tabulku se odstraní také podkladová data.
 
 ## <a name="improve-hive-query-performance"></a>Zlepšení výkonu dotazů Hive
@@ -195,20 +195,20 @@ Tyto příkazy provádět následující akce:
 
 [Apache Tez](https://tez.apache.org) je architektura, která umožňuje aplikace náročné na data, jako je například Hive mnohem efektivněji spouštět škálovaně. Tez je povoleno standardně pro clustery HDInsight založené na Linuxu.
 
-> [!NOTE]
+> [!NOTE]  
 > Tez je aktuálně vypnuto ve výchozím nastavení pro clustery HDInsight se systémem Windows a musí být povolené. Abyste mohli využívat Tez, musí být nastavena následující hodnotu pro dotaz Hive:
 >
 > `set hive.execution.engine=tez;`
 >
 > Tez je výchozí modul pro clustery HDInsight založené na Linuxu.
 
-[Na dokumentech návrhu Tez Hive](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
+[Apache Hive na dokumentech návrhu Tez](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) obsahuje podrobné informace o možnosti implementace a ladění konfigurace.
 
 Pro ladění úlohy proběhla za použití Tez, HDInsight poskytuje následující webovým uživatelským rozhraním, které umožňují zobrazit podrobnosti o úlohách Tez:
 
-* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
+* [Použití zobrazení Apache Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
-* [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+* [Použití uživatelského rozhraní Apache Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
 
 ### <a name="low-latency-analytical-processing-llap"></a>Analytické zpracování s nízkou latencí (LLAP)
 
@@ -236,14 +236,14 @@ Další informace najdete v tématu [Azure Feature Pack] [ ssispack] dokumentaci
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
-Apache Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Další informace o použití Oozie s Hive najdete v článku [Oozie použijte k definování a spuštění pracovního postupu](../hdinsight-use-oozie-linux-mac.md) dokumentu.
+Apache Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Další informace o použití Oozie s Hive najdete v článku [Apache Oozie použijte k definování a spuštění pracovního postupu](../hdinsight-use-oozie-linux-mac.md) dokumentu.
 
 ## <a id="nextsteps"></a>Další kroky
 
 Teď, když jste se naučili, co je Hive a jeho použití se systémem Hadoop v HDInsight, pomocí následujících odkazů a prozkoumejte další možnosti, jak pracovat s Azure HDInsight.
 
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Použití Pigu se službou HDInsight][hdinsight-use-pig]
+* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 * [Použijte úlohy MapReduce s HDInsight][hdinsight-use-mapreduce]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/

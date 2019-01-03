@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4d86bcf99d5b4cf2b04980e72a2bd0a422233dc3
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: db801acbed649c4baa039858ce1d097237c8e227
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622870"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971371"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
 
@@ -227,11 +227,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Autorizace|Aktualizace zásad|
 |Autorizace|Aktualizace atributu uživatele|
 |Autorizace|Nahrání šifrovaného klíče CPIM|
-|Autorizace|Autorizace uživatelů: Rozhraní API je zakázané pro sadu funkcí tenanta|
-|Autorizace|Autorizace uživatelů: Uživatel má udělený přístup jako správce tenanta|
-|Autorizace|Autorizace uživatelů: Uživatel má udělená přístupová práva ověřeného uživatele|
+|Autorizace|Autorizace uživatele: Rozhraní API je zakázané pro tenanta|
+|Autorizace|Autorizace uživatele: Uživatel má udělený přístup jako "správce Tenanta.|
+|Autorizace|Autorizace uživatele: Uživatel má udělená přístupová práva 'Ověřené uživatele'|
 |Autorizace|Ověření povolení funkce B2C|
-|Autorizace|Ověření povolení funkce|
+|Autorizace|Ověřte, jestli je povolené funkce|
 |Autorizace|Vytvoření programu|
 |Autorizace|Odstranění programu|
 |Autorizace|Připojení k řízení aplikací|
@@ -255,7 +255,7 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání objektu tenantDomains|
 |Klíč|Získá typ tenanta|
 |Klíč|Ověření povolení funkce B2C|
-|Klíč|Ověření povolení funkce|
+|Klíč|Ověřte, jestli je povolené funkce|
 |Klíč|Přidání partnera ke společnosti|
 |Klíč|Přidání neověřené domény|
 |Klíč|Přidání ověřené domény|
@@ -515,10 +515,10 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa skupin|Kontrola žádosti o schválení žádosti|
 |Správa skupin|Aktualizace kontroly přístupu|
 |Správa skupin|Aktualizace nastavení e-mailového oznámení o kontrole přístupu|
-|Správa skupin|Aktualizace nastavení počtu opakování kontroly přístupu|
-|Správa skupin|Aktualizace nastavení doby trvání opakování kontroly přístupu ve dnech|
-|Správa uživatelů|Aktualizace nastavení koncového typu opakování kontroly přístupu|
-|Správa uživatelů|Aktualizace nastavení typu opakování kontroly přístupu|
+|Správa skupin|Nastavení aktualizace počtu opakování kontrol přístupu|
+|Správa skupin|Nastavení aktualizace doby trvání opakování kontrol přístupu ve dnech|
+|Správa uživatelů|Nastavení aktualizace typu konce opakování kontrol přístupu|
+|Správa uživatelů|Nastavení aktualizace typu opakování kontrol přístupu|
 
 
 

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: carlrab
+ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: f445e7544891d85ab37f1f6e80e1855580b3b570
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6bf0310ae69d45858241a21c5207f557034126d5
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272758"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608208"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Vyhledání a použití doporučení k výkonu
 
@@ -161,7 +161,7 @@ Monitorujte svá doporučení a pokračuje v používání jejich vylepšit výk
 * Zobrazit [doporučení k výkonu](sql-database-advisor.md) přehled doporučení ohledně výkonu pro Azure SQL Database.
 * Zobrazit [informace o výkonu dotazů](sql-database-query-performance.md) Další informace o zobrazení dopad na výkon vaše hlavní dotazy.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 * [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 * [VYTVOŘENÍ INDEXU](https://msdn.microsoft.com/library/ms188783.aspx)
 * [Řízení přístupu na základě rolí](../role-based-access-control/overview.md)

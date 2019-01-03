@@ -9,21 +9,24 @@ ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
-ms.reviewer: ''
+ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: fa5ce7264fd003e0a49d6408acae070577879cdd
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: a7289ba5ab1f4e94adc099978591d69cac6ff786
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686615"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53721593"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
 Tento článek popisuje osvědčené postupy pro synchronizaci dat SQL Azure.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md).
+
+> [!IMPORTANT]
+> Azure SQL Data synchronizace provádí vložení změn **není** v tuto chvíli podporován Azure SQL Database Managed Instance.
 
 ## <a name="security-and-reliability"></a> Zabezpečení a spolehlivost
 
@@ -196,7 +199,7 @@ V některých případech zrušení registrace databáze s Klientský agent mů�
 1. Skupina synchronizace A byl vytvořen pomocí instance SQL Database a k místní databázi SQL serveru, který je přidružený k místní agent je 1.
 2. Místní agent 2 (Tento agent není přidružené žádné skupiny synchronizace) je zaregistrován stejné místní databáze.
 3. Zrušení registrace v místní databázi z místní agent 2 odebere sledování a synchronizovat metadata tabulky pro skupiny A pro místní databáze.
-4. Synchronizace skupiny nezdaří, s touto chybou: "aktuální operaci nelze dokončit, protože databáze není zřízený pro synchronizaci, nebo nemáte oprávnění k tabulkám, konfigurace synchronizace."
+4. Operace A skupiny synchronizace selhat s touto chybou: "Aktuální operaci nelze dokončit, protože databáze není zřízený pro synchronizaci, nebo nemáte oprávnění k tabulkám, konfigurace synchronizace."
 
 #### <a name="solution"></a>Řešení
 
@@ -221,7 +224,7 @@ Další informace o synchronizaci dat SQL najdete v tématu:
 
 -   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - Na portálu – [kurzu: Nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
     - S využitím PowerShellu
         -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)

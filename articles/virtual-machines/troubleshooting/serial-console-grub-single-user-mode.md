@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 43f9d7d39cfcdd7b670aca6184533def0b6966f5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
+ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211379"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "53580140"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné.
@@ -28,10 +28,10 @@ Režim jednoho uživatele je minimální prostředí s minimálním funkce. Mů�
 
 Je také užitečné v situacích, kde váš virtuální počítač může se dá nakonfigurovat jenom tak, aby přijímal klíče SSH pro přihlášení režimu jednoho uživatele. V takovém případě může být možné použít k vytvoření účtu pomocí ověřování hesla režimu jednoho uživatele.
 
-Do režimu jednoho uživatele, je potřeba zadat GRUB, když váš virtuální počítač spouští a změny konfigurace spouštění v GRUB. To lze provést pomocí konzoly sériového portu virtuálního počítače. 
+Do režimu jednoho uživatele, je potřeba zadat GRUB, když váš virtuální počítač spouští a změny konfigurace spouštění v GRUB. To lze provést pomocí konzoly sériového portu virtuálního počítače.
 
 ## <a name="general-grub-access"></a>Obecné GRUB přístup
-Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund a povolit vstup z klávesnice pro zrušení časový limit. 
+Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund a povolit vstup z klávesnice pro zrušení časový limit.
 
 Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do režimu jednoho uživatele přístup. V závislosti na vaší distribuce může být Ujistěte se, že je povoleno GRUB nějakou práci navíc instalační program. Distribuce specifické informace jsou k dispozici níže a v [tento odkaz](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
@@ -63,11 +63,11 @@ Režim jednoho uživatele v RHEL vyžaduje kořenového uživatele na povoleno, 
 
 1. Přihlaste se k systému Red Hat pomocí protokolu SSH
 1. Přepnout do kořenového adresáře
-1. Povolit heslo uživatele root 
+1. Povolit heslo uživatele root
     * `passwd root` (nastavte silné kořenové heslo)
 1. Ujistěte se, že uživatel root mohou přihlašovat pouze prostřednictvím ttyS0
     * `edit /etc/ssh/sshd_config` a ujistěte se, že PermitRootLogIn je nastavena na no
-    * `edit /etc/securetty file` Povolit přihlášení prostřednictvím ttyS0 jenom 
+    * `edit /etc/securetty file` Povolit přihlášení prostřednictvím ttyS0 jenom
 
 Teď Pokud systému se spustí do režimu jednoho uživatele můžete přihlásit pomocí hesla kořenového.
 
@@ -83,7 +83,7 @@ Pokud jste nastavili GRUB a kořenový přístup pomocí výše uvedených pokyn
 1. Přidejte na konec řádku následující: `systemd.unit=rescue.target`
     * Tím se spustí do režimu jednoho uživatele. Pokud chcete použít nouzový režim, přidejte `systemd.unit=emergency.target` na konci řádku namísto `systemd.unit=rescue.target`
 1. Stisknutím kláves Ctrl + X ukončit a restartovat počítač s použité nastavení
-1. Zobrazí se výzva k zadání hesla správce bylo možné do režimu jednoho uživatele – jedná se o stejné heslo, které jste vytvořili ve výše uvedených pokynů    
+1. Zobrazí se výzva k zadání hesla správce bylo možné do režimu jednoho uživatele – jedná se o stejné heslo, které jste vytvořili ve výše uvedených pokynů
 
     ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
@@ -104,11 +104,11 @@ Pokud není projít výše uvedené kroky a povolit uživatel root, můžete st�
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Poznámka: Systémem pomocí výše uvedených pokynů vyřadí můžete do nouzový prostředí, tak můžete také provádět úlohy, jako jsou úpravy `fstab`. Obecně přijímané návrh je však k resetování kořenového hesla, který budete používat do režimu jednoho uživatele. 
+> Poznámka: Spuštění pomocí výše uvedených pokynů vyřadí můžete do nouzový prostředí, tak můžete také provádět úlohy, jako jsou úpravy `fstab`. Obecně přijímané návrh je však k resetování kořenového hesla, který budete používat do režimu jednoho uživatele.
 
 
 ## <a name="access-for-centos"></a>Přístup pro CentOS
-Mnohem jako je Red Hat Enterprise Linux, vyžaduje režimu jednoho uživatele v CentOS GRUB a uživatel root, aby byla povolená. 
+Mnohem jako je Red Hat Enterprise Linux, vyžaduje režimu jednoho uživatele v CentOS GRUB a uživatel root, aby byla povolená.
 
 ### <a name="grub-access-in-centos"></a>GRUB přístup v CentOS
 CentOS součástí GRUB povolené úprav. Pokud chcete zadat GRUB, restartu virtuálního počítače s `sudo reboot` a stisknutím libovolné klávesy. Zobrazí se obrazovka GRUB zobrazí.
@@ -116,8 +116,8 @@ CentOS součástí GRUB povolené úprav. Pokud chcete zadat GRUB, restartu virt
 ### <a name="single-user-mode-in-centos"></a>Režimu jednoho uživatele v CentOS
 Postupujte podle pokynů pro RHEL výše pro povolení režimu jednoho uživatele v CentOS.
 
-## <a name="access-for-ubuntu"></a>Přístup k Ubuntu 
-Image Ubuntu nevyžadují kořenové heslo. Pokud systém spustí do režimu jednoho uživatele, můžete bez další přihlašovací údaje. 
+## <a name="access-for-ubuntu"></a>Přístup k Ubuntu
+Image Ubuntu nevyžadují kořenové heslo. Pokud systém spustí do režimu jednoho uživatele, můžete bez další přihlašovací údaje.
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB přístup v Ubuntu
 Pro přístup k GRUB, stiskněte a podržte "Esc", a spouští virtuální počítač.
@@ -137,8 +137,17 @@ Ubuntu vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže n
 1. Přidat `single` po `ro`, zajistit, že je mezera před a po ní `single`
 1. Stisknutím kláves Ctrl + X restartujte s těmito nastaveními a do režimu jednoho uživatele
 
+### <a name="using-grub-to-invoke-bash-in-ubuntu"></a>Pomocí GRUB k vyvolání bash v Ubuntu
+Mohou nastat situace (jako je například zapomenuté kořenové heslo), kde nelze získat přístup k režimu jednoho uživatele ve virtuálním počítači se systémem Ubuntu po vyzkoušení výše uvedených pokynů. Můžete také říct jádru spuštění /bin/bash jako init, spíše než init systému, který získáte prostředí bash a povolit pro správu systému. Pomocí následujících pokynů:
+
+1. Z GRUB stiskněte "e", chcete-li upravit vaše spouštěcí položku (položky Ubuntu)
+1. Vyhledejte řádek, který začíná `linux`, zkuste najít `ro`
+1. Nahraďte `ro` s `rw init=/bin/bash`
+    - To bude připojení vašeho systému souborů pro čtení i zápis a použít /bin/bash jako proces init
+1. Stiskněte kombinaci kláves Ctrl + X restartování s těmito nastaveními
+
 ## <a name="access-for-coreos"></a>Přístup pro CoreOS
-Režim jednoho uživatele v CoreOS vyžaduje GRUB, aby byla povolená. 
+Režim jednoho uživatele v CoreOS vyžaduje GRUB, aby byla povolená.
 
 ### <a name="grub-access-in-coreos"></a>GRUB přístup v CoreOS
 Pro přístup k GRUB, stisknutím libovolné klávesy, když váš virtuální počítač spouští.
@@ -151,13 +160,13 @@ CoreOS vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže n
 1. Stisknutím kláves Ctrl + X restartujte s těmito nastaveními a do režimu jednoho uživatele
 
 ## <a name="access-for-suse-sles"></a>Přístup pro SUSE SLES
-Novější imagí z rozhraní SLES 12 SP3 + povolit přístup prostřednictvím konzoly sériového portu v případě, že systém se spustí v nouzovém režimu. 
+Novější imagí z rozhraní SLES 12 SP3 + povolit přístup prostřednictvím konzoly sériového portu v případě, že systém se spustí v nouzovém režimu.
 
 ### <a name="grub-access-in-suse-sles"></a>GRUB přístup v SUSE SLES
 GRUB přístup v SLES vyžaduje spouštěcí zavaděč konfigurace přes YaST. Chcete-li to provést, postupujte podle těchto pokynů:
 
-1. SSH do SLES virtuální počítač a spusťte `sudo yast bootloader`. Použití `tab` klíč, `enter` klíč a klávesy se šipkami Procházet v nabídce. 
-1. Přejděte do `Kernel Parameters`a zkontrolujte `Use serial console`. 
+1. SSH do SLES virtuální počítač a spusťte `sudo yast bootloader`. Použití `tab` klíč, `enter` klíč a klávesy se šipkami Procházet v nabídce.
+1. Přejděte do `Kernel Parameters`a zkontrolujte `Use serial console`.
 1. Přidat `serial --unit=0 --speed=9600 --parity=no` do konzoly argumentů.
 
 1. Stiskněte klávesu F10 nastavení uložte a zavřete
@@ -176,7 +185,7 @@ Můžete se automaticky vloží do nouzový shell Pokud SLES nemůže normálně
 > Všimněte si, že se vloží do nouzový prostředí s _jen pro čtení_ systému souborů. Pokud chcete provádět žádné úpravy všech souborů, musíte pro opětovné připojení systému souborů pomocí oprávnění pro čtení i zápis. Chcete-li to provést, zadejte `mount -o remount,rw /` do prostředí
 
 ## <a name="access-for-oracle-linux"></a>Přístup pro Oracle Linux
-Podobně jako je Red Hat Enterprise Linux, režimu jednoho uživatele v Oracle Linuxu vyžaduje GRUB a uživatel root, aby byla povolená. 
+Podobně jako je Red Hat Enterprise Linux, režimu jednoho uživatele v Oracle Linuxu vyžaduje GRUB a uživatel root, aby byla povolená.
 
 ### <a name="grub-access-in-oracle-linux"></a>GRUB přístup v Oracle Linuxu
 Oracle Linux se dodává s GRUB povolené úprav. Pokud chcete zadat GRUB, restartu virtuálního počítače s `sudo reboot` a stisknutím klávesy "Esc". Zobrazí se obrazovka GRUB zobrazí.

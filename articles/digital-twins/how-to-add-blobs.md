@@ -1,19 +1,20 @@
 ---
-title: Přidat objekty BLOB na objekty v digitální dvojče Azure | Dokumentace Microsoftu
-description: Pochopení způsobu, jak přidat objekty BLOB na objekty v digitální dvojče Azure
+title: Přidání objektů blob pro objekty v digitální dvojče Azure | Dokumentace Microsoftu
+description: Zjistěte, jak přidat objekty BLOB na objekty v digitální dvojče Azure.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/28/2018
 ms.author: adgera
-ms.openlocfilehash: 8a68ba35ddf7caacbf2339d87c5aeef80f470ba4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.custom: seodec18
+ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725620"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974505"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidat objekty BLOB na objekty v digitální dvojče Azure
 
@@ -21,10 +22,7 @@ Objekty BLOB jsou nestrukturovaných reprezentace běžných typů souborů, jak
 
 Azure podporuje digitální dvojče objekty BLOB se připojuje k zařízení, mezery a uživatelů. Objekty BLOB mohou představovat profilový obrázek pro uživatele, zařízení fotografie, video, mapy nebo protokolu.
 
-> [!NOTE]
-> Tento článek předpokládá:
-> * Zda je vaše instance správně nakonfigurován pro příjem požadavků rozhraní API pro správu.
-> * Jestli jste správně ověřený pomocí klienta REST podle vašeho výběru.
+[!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
 ## <a name="uploading-blobs-an-overview"></a>Nahrání objektů blob: Přehled
 
@@ -93,9 +91,9 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Hodnota parametru | Nahradit hodnotou |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
-| *USER_DEFINED_BOUNDARY* | Název obsahu hranic s více částmi. |
+| USER_DEFINED_BOUNDARY | Název obsahu hranic s více částmi. |
 
 Následující kód je implementace .NET stejné odeslání objektu blob horizontálních oddílů pomocí třídy [MultipartFormDataContent](https://docs.microsoft.com/dotnet/api/system.net.http.multipartformdatacontent):
 
@@ -116,7 +114,7 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 ## <a name="api-endpoints"></a>Koncové body rozhraní API
 
-V následujících částech si můžete prostřednictvím koncových bodů jader a jejich funkce.
+Následující části popisují koncových bodů core týkajících se objektu blob rozhraní API a jejich funkce.
 
 ### <a name="devices"></a>Zařízení
 
@@ -144,7 +142,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 > [!TIP]
 > V předchozí tabulce použijte ke zpracování dat úspěšně vrácený požadavek.
 
-### <a name="spaces"></a>Mezery
+### <a name="spaces"></a>Spaces
 
 Objekty BLOB můžete také připojit na mezery. Na následujícím obrázku jsou uvedeny všechny místo koncových bodů rozhraní API zodpovědná za zpracování objektů BLOB. Obsahuje také seznam všechny parametry cesty k předání do těchto koncových bodů.
 
@@ -194,7 +192,7 @@ Vrácený JSON (**UserBlob** objekty) odpovídají následující modely JSON:
 
 ## <a name="common-errors"></a>Běžné chyby
 
-Běžnou chybou není včetně správné hlavičky informace:
+Běžnou chybou je tak, aby nezahrnovala informace správné hlavičky:
 
 ```JSON
 {

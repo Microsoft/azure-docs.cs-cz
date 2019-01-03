@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c6a995c20beefb3a939aa1421eed537137037922
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139737"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994959"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Osvědčené postupy pro nastavení sítě pro úlohy migrovat do Azure
 
@@ -53,7 +53,7 @@ Při vytváření virtuální sítě jako součást vaší migrace, je potřeba 
 - [Další informace o](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) omezení sítě.
 
 
-## <a name="best-practice-implement-a-hub-spoke-network-topology"></a>Osvědčený postup: implementace síťové topologie centra s paprsky
+## <a name="best-practice-implement-a-hub-spoke-network-topology"></a>Osvědčený postup: Implementace síťové topologie centra s paprsky
 
 Síťové topologie centra s paprsky izoluje úlohy při sdílení služeb, jako je identity a zabezpečení.
 - Centrum je virtuální síť Azure, který funguje jako ústřední bod připojení.
@@ -76,7 +76,7 @@ Zvažte použití těchto zdrojů:
 - [Další informace o](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) partnerský vztah virtuální sítě.
 
 
-## <a name="best-practice-design-subnets"></a>Osvědčený postup: Při navrhování podsítí
+## <a name="best-practice-design-subnets"></a>Osvědčený postup: Návrh podsítě
 
 K zajištění izolace v síti VNet, segmentovat do jedné nebo několika podsítí a přidělení části adresního prostoru virtuální sítě ke každé podsíti.
 - Můžete vytvořit více podsítí v rámci každé virtuální síti.
@@ -101,7 +101,7 @@ DEV-DB-EUS2 | 10.245.24.0/23 | 507 | Virtuální počítače databáze
 - [Zjistěte, jak](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure) fiktivní společnosti (Contoso) přípravy na migraci jejich síťové infrastruktury.
 
 
-## <a name="best-practice-set-up-a-dns-server"></a>Osvědčený postup: nastavení serveru DNS
+## <a name="best-practice-set-up-a-dns-server"></a>Osvědčený postup: Nastavení serveru DNS
 
 Azure přidá DNS server ve výchozím nastavení při nasazení virtuální sítě. To umožňuje rychle vytvořit virtuální sítě a nasazení prostředků. Tento server DNS však pouze poskytuje služby pro prostředky v této virtuální síti. Pokud chcete propojení více virtuálních sítí nebo připojení k místnímu serveru z virtuální sítě, je nutné další název možnosti řešení. Například můžete potřebovat služby Active Directory k překladu názvů DNS mezi virtuálními sítěmi. K tomuto účelu nasazení vlastní vlastní server DNS v Azure.
 
@@ -118,10 +118,10 @@ Azure přidá DNS server ve výchozím nastavení při nasazení virtuální sí
 
 **Víc se uč:**
 - [Další informace o](https://docs.microsoft.com/azure/migrate/contoso-migration-infrastructure) překlad názvů při použití vlastního serveru DNS.
-- [Další informace o](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS pravidla a omezení pojmenování.
+- [Další informace o](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-subscriptions) DNS pravidla a omezení pojmenování.
 
 
-## <a name="best-practice-set-up-availability-zones"></a>Osvědčený postup: nastavení zóny dostupnosti
+## <a name="best-practice-set-up-availability-zones"></a>Osvědčený postup: Nastavení zón dostupnosti
 
 Zóny dostupnosti zvýšit vysokou dostupnost pro ochranu aplikací a dat z datacenter selhání.
 
@@ -134,8 +134,8 @@ Zóny dostupnosti zvýšit vysokou dostupnost pro ochranu aplikací a dat z data
     ![Zóna dostupnosti](./media/migrate-best-practices-networking/availability-zone.png) *zóně dostupnosti*
 
 - Můžete naplánovat a sestavit vysokou dostupností do architektury migrace společné umístění výpočetní prostředky, úložiště, sítě a zdroje dat v rámci zóny a replikace v jiné zóně. Služby Azure, které podporují zóny dostupnosti se dělí do dvou kategorií:
-    - Oblastmi služby: přiřadit prostředek s konkrétní zónu. Pro příklad virtuálních počítačů spravované disky, IP adresy).
-    - Zónově redundantní služby: prostředku se automaticky replikuje napříč zónami. Například zónově redundantní úložiště, Azure SQL Database.
+    - Oblastmi služby: Přidružte prostředek s konkrétní zóně. Pro příklad virtuálních počítačů spravované disky, IP adresy).
+    - Zónově redundantní služby: Prostředek se automaticky replikuje napříč zónami. Například zónově redundantní úložiště, Azure SQL Database.
 - Můžete nasadit standardní Azure zatížení vyrovnávaném pomocí úloh přístupem k Internetu nebo aplikačních vrstvách pro zónové odolné proti chybám.
 
     ![Nástroj pro vyrovnávání zatížení](./media/migrate-best-practices-networking/load-balancer.png) *nástroje pro vyrovnávání zatížení*
@@ -149,14 +149,14 @@ Zóny dostupnosti zvýšit vysokou dostupnost pro ochranu aplikací a dat z data
 
 Pro úspěšnou migraci je velmi důležité pro připojení k Azure v místním podnikovým sítím. Tím se vytvoří připojení vždy na označuje jako síť hybridního cloudu, kde jsou k dispozici služby Azure cloud pro podnikové uživatele. Existují dvě možnosti pro vytvoření tohoto typu sítě:
 
-- **Síť Site-to-site VPN:** navázat připojení site-to-site mezi kompatibilní místní zařízení VPN a službou Azure VPN gateway, který je nasazený ve virtuální síti. Žádné oprávnění místních prostředků můžete přístup k virtuálním sítím. Komunikace Site-to-site se odesílá prostřednictvím šifrovaného tunelu přes internet. 
-- **Azure ExpressRoute:** navázat připojení k Azure ExpressRoute mezi místní sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé a provoz se nebude přenášejí prostřednictvím Internetu.
+- **Síť Site-to-site VPN:** Vytvoření připojení site-to-site mezi kompatibilní místní zařízení VPN a službou Azure VPN gateway, který je nasazený ve virtuální síti. Žádné oprávnění místních prostředků můžete přístup k virtuálním sítím. Komunikace Site-to-site se odesílá prostřednictvím šifrovaného tunelu přes internet. 
+- **Azure ExpressRoute:** Můžete navázat připojení k Azure ExpressRoute mezi místní sítí a Azure prostřednictvím partnera ExpressRoute. Toto připojení je soukromé a provoz se nebude přenášejí prostřednictvím Internetu.
 
 **Víc se uč:**
 
 - [Další informace](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vpn) o možnostech sítě hybridního cloudu.
 
-## <a name="best-practice-implement-a-highly-available-site-to-site-vpn"></a>Osvědčený postup: implementace s vysokou dostupností site-to-site VPN
+## <a name="best-practice-implement-a-highly-available-site-to-site-vpn"></a>Osvědčený postup: Implementace sítě site-to-site VPN s vysokou dostupností
 
 K implementaci site-to-site VPN, nastavení brány sítě VPN v Azure.
 - Brána VPN je konkrétní typ brány virtuální sítě, který slouží k posílání šifrovaného provozu mezi virtuální sítí VNet Azure a místním umístěním přes veřejný Internet.
@@ -205,7 +205,7 @@ Při vytváření brány VPN gateway v Azure, musíte použít speciální pods�
 **Víc se uč:**
 - [Tento nástroj použijte](https://gallery.technet.microsoft.com/scriptcenter/Address-prefix-calculator-a94b6eed) určit váš adresní prostor IP adres.
 
-## <a name="best-practice-implement-azure-virtual-wan-for-branch-offices"></a>Osvědčený postup: implementace Azure virtuální sítě WAN pro firemní pobočky
+## <a name="best-practice-implement-azure-virtual-wan-for-branch-offices"></a>Osvědčený postup: Implementace Azure virtuální sítě WAN pro firemní pobočky
 
 Pro více připojení k síti VPN Azure virtuální síť WAN je síťové služby, která poskytuje optimalizované a automatizované větve do větve připojením prostřednictvím Azure.
 - Virtuální síť WAN umožňuje připojit a nakonfigurovat zařízení v pobočkách tak, aby komunikovaly přes Azure. To můžete udělat ručně, nebo pomocí upřednostňované poskytovatele zařízení prostřednictvím virtuální sítě WAN partnera.
@@ -215,7 +215,7 @@ Pro více připojení k síti VPN Azure virtuální síť WAN je síťové služ
 **Další informace:**
 [Další informace o](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-about) Azure virtuální sítě WAN.
 
-### <a name="best-practice-implement-expressroute-for-mission-critical-connections"></a>Osvědčený postup: implementace ExpressRoute pro zásadně důležité připojení
+### <a name="best-practice-implement-expressroute-for-mission-critical-connections"></a>Osvědčený postup: Implementace pro zásadně důležité připojení ExpressRoute
 
 Službu Azure ExpressRoute umožňuje rozšířit vaše místní infrastrukturu do cloudu Microsoftu tak, že vytvoříte privátní připojení mezi virtuální datové centrum Azure a místní sítí.
 - Připojení ExpressRoute může být v síti any-to-any (IP VPN), síť Ethernet typu point-to-point nebo prostřednictvím poskytovatele připojení. Jejich nenavazují přes veřejný internet.
@@ -230,7 +230,7 @@ Nasazení připojení ExpressRoute obvykle zahrnuje zapojení poskytovatele slu�
 - [Získejte přehled](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) služby ExpressRoute.
 - [Další informace o](https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about) přímo ExpressRoute.
 
-### <a name="best-practice-optimize-expressroute-routing-with-bgp-communities"></a>Osvědčený postup: optimalizace směrování ExpressRoute s komunit protokolu BGP
+### <a name="best-practice-optimize-expressroute-routing-with-bgp-communities"></a>Osvědčený postup: Optimalizace směrování ExpressRoute s komunit protokolu BGP
 
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho neoptimální směrování se může stát a provozu mohou použít delší cestu pro přístup k síti a Microsoftem. Delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon a uživatelské prostředí aplikací.
 
@@ -280,7 +280,7 @@ Mezi společnostmi Microsoft a můžete je sdílet odpovědnost za zabezpečení
 - [Získejte přehled](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices) osvědčených postupů pro zabezpečení sítě.
 - [Zjistěte, jak](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#security) návrh pro zajištění zabezpečených sítí.
 
-## <a name="best-practice-implement-an-azure-perimeter-network"></a>Osvědčený postup: provedení Azure hraniční síti
+## <a name="best-practice-implement-an-azure-perimeter-network"></a>Osvědčený postup: Implementace Azure hraniční síti
 
 I když společnost Microsoft se investuje silně při ochraně cloudové infrastruktury, je nutné také chránit vaše cloudové služby a skupiny prostředků. S více vrstvami přístup k zabezpečení poskytuje nejlepší ochranu. Vložení do hraniční sítě v místě je důležitou součástí strategie je, že ochranu.
 
@@ -301,7 +301,7 @@ Následující obrázek znázorňuje příklad hraniční síti jedinou podsít�
 - [Další informace o](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid) nasazení hraniční sítě mezi Azure a místním datacentrem.
 
 
-## <a name="best-practice-filter-vnet-traffic-with-nsgs"></a>Osvědčený postup: provoz VNet filtrování pomocí skupin zabezpečení sítě
+## <a name="best-practice-filter-vnet-traffic-with-nsgs"></a>Osvědčený postup: Filtrování provozu virtuální sítě s použitím skupin zabezpečení sítě
 
 Skupiny zabezpečení sítě (NSG) obsahují více pravidla zabezpečení příchozích a odchozích, které umožňují filtrovat provoz směřující do a z prostředků. Filtrování může být ve zdrojové a cílové IP adresy, portu a protokolu. 
 - Skupiny zabezpečení sítě obsahují pravidla zabezpečení, které povolit nebo odepřít příchozí síťové přenosy do (nebo odchozí síťový provoz ze) několik typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
@@ -312,7 +312,7 @@ Skupiny zabezpečení sítě (NSG) obsahují více pravidla zabezpečení příc
 - Existující připojení nepřerušily při odebrání pravidla zabezpečení, který povolen tok. Přenosové toky jsou přerušen, připojení se zastaví a žádný provoz se přenášejí v obou směrech po dobu aspoň pár minut.
 - Při vytváření skupin zabezpečení sítě, vytvořte jako málo nejdříve ale tolik, které jsou nezbytné.
 
-### <a name="best-practice-secure-northsouth-and-eastwest-traffic"></a>Osvědčený postup: zabezpečení provozu north/south a východ/západ
+### <a name="best-practice-secure-northsouth-and-eastwest-traffic"></a>Osvědčený postup: Zabezpečené north/south a provoz typu east/west
 
 Při zabezpečení virtuální sítě, je důležité vzít v úvahu vektory útoku.
 - Použití pouze skupiny Nsg podsítě se prostředí zjednoduší, ale pouze zabezpečuje provoz do podsítě. To se označuje jako north/south provoz.
@@ -336,11 +336,11 @@ Značky služeb vyžadují ruční práce z pravidla přiřazení do skupin slu�
 
 **Víc se uč:**
 
-- [Přečtěte si informace o](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview) skupin zabezpečení sítě.
+- [Přečtěte si informace o](https://docs.microsoft.com/azure/virtual-network/security-overview) skupin zabezpečení sítě.
 - [Kontrola](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) značky služeb dostupné pro skupiny zabezpečení sítě.
 
 
-## <a name="best-practice-use-application-security-groups"></a>Osvědčený postup: použití skupin zabezpečení aplikací
+## <a name="best-practice-use-application-security-groups"></a>Osvědčený postup: Použití skupin zabezpečení aplikací
 
 Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace.
 
@@ -365,9 +365,9 @@ NIC4 | AsgDb
 
     **Název pravidla** | **Účel** | **Podrobnosti**
     --- | --- | ---   
-    Allow-HTTP-Inbound-Internet | Povolte přenosy z Internetu k webovým serverům. Příchozí provoz z Internetu byl odepřen podle pravidla zabezpečení DenyAllInbound výchozí, takže je potřeba žádná další pravidla pro skupiny zabezpečení aplikací AsgLogic nebo AsgDb. | Priorita: 100<br/><br/> Zdroj: internet<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgWeb<br/><br/> Cílový port: 80<br/><br/> Protocol: TCP<br/><br/> Přístup: Povolit.
-    Deny-Database-All | AllowVNetInBound výchozího pravidla zabezpečení umožňuje veškerou komunikaci mezi prostředky ve stejné virtuální síti, je potřeba toto pravidlo pro odepření provozu ze všech prostředků. | Priorita: 120<br/><br/> Zdroj: *<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgDb<br/><br/> Cílový port: 1433<br/><br/> Protokol: všechny<br/><br/> Přístup: odepřít.
-    Allow-Database-BusinessLogic | Povolte přenosy z příslušné skupiny zabezpečení aplikace AsgLogic AsgDb skupiny zabezpečení aplikace. Priorita pro toto pravidlo je vyšší než pravidlo odepřít-Database-All a bude zpracována před pravidlo, tak je povolený provoz ze skupiny zabezpečení aplikace AsgLogic a veškerý ostatní provoz je blokován. | Priorita: 110<br/><br/> Zdroj: AsgLogic<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgDb<br/><br/> Cílový port: 1433<br/><br/> Protocol: TCP<br/><br/> Přístup: Povolit.
+    Allow-HTTP-Inbound-Internet | Povolte přenosy z Internetu k webovým serverům. Příchozí provoz z Internetu byl odepřen podle pravidla zabezpečení DenyAllInbound výchozí, takže je potřeba žádná další pravidla pro skupiny zabezpečení aplikací AsgLogic nebo AsgDb. | Priorita: 100<br/><br/> Zdroj: internet<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgWeb<br/><br/> Cílový port: 80<br/><br/> Protokol: TCP<br/><br/> Přístup: Povolte.
+    Deny-Database-All | AllowVNetInBound výchozího pravidla zabezpečení umožňuje veškerou komunikaci mezi prostředky ve stejné virtuální síti, je potřeba toto pravidlo pro odepření provozu ze všech prostředků. | Priorita: 120<br/><br/> Zdroj: *<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgDb<br/><br/> Cílový port: 1433<br/><br/> Protokol: Vše<br/><br/> Přístup: Odepřete.
+    Allow-Database-BusinessLogic | Povolte přenosy z příslušné skupiny zabezpečení aplikace AsgLogic AsgDb skupiny zabezpečení aplikace. Priorita pro toto pravidlo je vyšší než pravidlo odepřít-Database-All a bude zpracována před pravidlo, tak je povolený provoz ze skupiny zabezpečení aplikace AsgLogic a veškerý ostatní provoz je blokován. | Priorita: 110<br/><br/> Zdroj: AsgLogic<br/><br/> Zdrojový port: *<br/><br/> Cíl: AsgDb<br/><br/> Cílový port: 1433<br/><br/> Protokol: TCP<br/><br/> Přístup: Povolte.
 
 - Pravidla určující skupinu zabezpečení aplikace jako zdroj nebo cíl se použijí pouze na síťová rozhraní, která jsou členy příslušné skupiny zabezpečení aplikace. Pokud síťové rozhraní není členem žádné skupiny zabezpečení aplikace, pravidlo se pro něj nepoužije, ani když je k podsíti přiřazená skupina zabezpečení sítě.
 
@@ -376,7 +376,7 @@ NIC4 | AsgDb
 - [Další informace o](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups) skupiny zabezpečení aplikací.
 
 
-### <a name="best-practice-secure-access-to-paas-using-vnet-service-endpoints"></a>Osvědčený postup: zabezpečení přístupu k PaaS pomocí koncových bodů služby virtuální sítě
+### <a name="best-practice-secure-access-to-paas-using-vnet-service-endpoints"></a>Osvědčený postup: Zabezpečený přístup k PaaS pomocí koncových bodů služby virtuální sítě
 
 Koncové body služby virtuální sítě rozšiřují privátní adresní prostor virtuální sítě a identitu do služeb Azure přes přímé připojení.
 
@@ -392,7 +392,7 @@ Koncové body služby virtuální sítě rozšiřují privátní adresní prosto
 - [Další informace o](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) koncové body služby virtuální sítě.
 
 
-## <a name="best-practice-control-public-ip-addresses"></a>Osvědčený postup: řízení veřejné IP adresy
+## <a name="best-practice-control-public-ip-addresses"></a>Osvědčený postup: Ovládací prvek veřejné IP adresy
 
 Veřejné IP adresy v Azure lze přidružit virtuálních počítačů, nástroje pro vyrovnávání zatížení, brány application Gateway a bránami VPN.
 
@@ -414,7 +414,7 @@ Veřejné IP adresy v Azure lze přidružit virtuálních počítačů, nástroj
 
 Azure má funkce zabezpečení platformy, které se snadno používá a poskytují bohaté protiopatření pro běžné síťovým útokům. Patří mezi ně Brána Firewall služby Azure, brány Firewall webových aplikací a Network Watcher.
 
-## <a name="best-practice-deploy-azure-firewall"></a>Osvědčený postup: Nasazení Azure bránu Firewall
+## <a name="best-practice-deploy-azure-firewall"></a>Osvědčený postup: Nasazení brány Firewall na Azure
 
 Brány Firewall na Azure je služba zabezpečení spravované sítě založené na cloudu, které chrání prostředky virtuální sítě. Jedná se o plně stavové brány firewall na-jako službu s integrovanou vysokou dostupnost a škálovatelnost cloudu neomezený.
 
@@ -435,7 +435,7 @@ Brány Firewall na Azure je služba zabezpečení spravované sítě založené 
 - [Další informace o](https://docs.microsoft.com/azure/firewall/fqdn-tags) značky plně kvalifikovaný název domény.
 
 
-## <a name="best-practice-deploy-azure-web-application-firewall-waf"></a>Osvědčený postup: nasazení Firewall Azure webových aplikací (WAF)
+## <a name="best-practice-deploy-azure-web-application-firewall-waf"></a>Osvědčený postup: Nasazování firewallu webových aplikací (WAF)
 
 Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Zneužití patří útoky prostřednictvím injektáže SQL a útoky skriptování napříč weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací pomáhá dělat mnohem jednodušší správu zabezpečení a pomáhá správcům aplikace pomáhalo chránit před hrozbami neoprávněného vniknutí. Firewall webových aplikací může reagovat na ohrožení zabezpečení, rychlejší, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
 
@@ -452,7 +452,7 @@ Azure firewall webových aplikací (WAF) je funkce služby Azure application gat
 - [Kontrola](https://docs.microsoft.com/azure/application-gateway/application-gateway-waf-configuration) WAF omezení a vyloučení.
 
 
-## <a name="best-practice-implement-azure-network-watcher"></a>Osvědčený postup: implementace Azure Network Watcher
+## <a name="best-practice-implement-azure-network-watcher"></a>Osvědčený postup: Implementace Azure Network Watcher
 
 Azure Network Watcher nabízí nástroje pro monitorování prostředků a komunikace ve virtuální síti Azure. Můžete například monitorovat komunikace mezi virtuálním Počítačem a koncový bod jako jiný virtuální počítač nebo plně kvalifikovaný název domény, zobrazení zdroje a vztahy prostředků ve virtuální síti, nebo diagnostikovat problémy se sítí provoz.
 
@@ -480,7 +480,7 @@ Pro složitější topologií sítě můžete použít produkty zabezpečení od
 - Síťové virtuální zařízení je k dispozici mnoho dodavatelů v [Azure Marketplace](https://azuremarketplace.microsoft.com/). 
  
 
-## <a name="best-practice-implement-firewalls-and-nvas-in-hub-networks"></a>Osvědčený postup: implementace brány firewall a síťová virtuální zařízení v Centru sítí
+## <a name="best-practice-implement-firewalls-and-nvas-in-hub-networks"></a>Osvědčený postup: Implementace brány firewall a síťová virtuální zařízení v Centru sítí
 
 V centru je hraniční síti (s přístupem k Internetu) obvykle spravované přes bránu Firewall Azure, farmy brány firewall nebo brány firewall webových aplikací (Waf). Vezměte v úvahu následující porovnání.
 

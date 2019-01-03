@@ -10,14 +10,14 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345352"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53753070"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní REST API
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Rozpoznávání řeči Bingu rozhraní REST API
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -66,7 +66,7 @@ V následující tabulce jsou uvedeny některé příklady identifikátorů URI 
 | Režim rozpoznávání  | Jazyk | Výstupní formát | Identifikátor URI služby |
 |---|---|---|---|
 | `interactive` | pt-BR | Výchozí | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | cs-CZ | Podrobný |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `conversation` | en-US | Podrobný |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | fr-FR | Jednoduchý | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
@@ -76,7 +76,7 @@ V následující tabulce jsou uvedeny některé příklady identifikátorů URI 
 
 Následující pole musí být nastaveny v hlavičce žádosti:
 
-- `Ocp-Apim-Subscription-Key`: Při každém volání služby, je nutné předat klíč předplatného. v `Ocp-Apim-Subscription-Key` záhlaví. Speech Service podporuje také povolení předávání tokenů místo klíče předplatného. Další informace najdete v tématu [ověřování](../How-to/how-to-authentication.md).
+- `Ocp-Apim-Subscription-Key`: Při každém volání služby, je nutné předat klíč předplatného. v `Ocp-Apim-Subscription-Key` záhlaví. Speech Service podporuje také povolení předávání tokenů místo klíče předplatného. Další informace najdete v tématu [Ověřování](../How-to/how-to-authentication.md).
 - `Content-type`: `Content-type` Pole popisuje formátu a kodek zvukový datový proud. V současné době pouze soubor WAV a PCM Mono 16000 kódování je podporováno. Hodnota Content-type pro tento formát je `audio/wav; codec=audio/pcm; samplerate=16000`.
 
 Pole `Transfer-Encoding` je nepovinné. Pokud nastavíte toto pole na `chunked`, můžete jej zvuku do malých bloků. Další informace najdete v tématu [přenos rozdělený do bloků dat](../How-to/how-to-chunked-transfer.md).
@@ -100,7 +100,7 @@ Následující příklad ukazuje, jak odeslat žádost o rozpoznávání řeči 
 > [!NOTE]
 > Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 
@@ -135,7 +135,7 @@ V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dost
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 HttpWebRequest request = null;
@@ -184,7 +184,7 @@ Speech Service po zpracování požadavku, vrátí výsledky v odpovědi ve form
 
 Následující fragment kódu ukazuje příklad, jak si můžete přečíst odpověď z datového proudu.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```Powershell
 # show the response in JSON format
@@ -199,7 +199,7 @@ V tomto příkladu vrátí curl přímo zprávy s odpovědí v řetězci. Pokud 
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 /*

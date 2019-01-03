@@ -4,17 +4,16 @@ description: Použijte agenta Microsoft Azure Backup k zálohování Windows sou
 services: backup
 author: rayne-wiselman
 manager: carmonm
-keywords: Trezor záloh; zálohování Windows serveru. zálohování systému windows.
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 4e138311b58d56f3a188347d43ed12287d43e1bd
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52874001"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788391"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Zálohování klienta nebo Windows Serveru do Azure s využitím modelu nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat Windows Server (nebo klienta Windows) souborů a složek do Azure pomocí Azure Backup pomocí modelu nasazení Resource Manager.
@@ -183,6 +182,8 @@ Pokud váš počítač nebo proxy server má omezený přístup k Internetu, uji
 Zásada zálohování je, naplánovat, kdy jsou pořizovány body obnovení a dobu, kterou se uchovají body obnovení. Vytvoření zásady zálohování souborů a složek pomocí agenta Microsoft Azure Backup.
 
 ### <a name="to-create-a-backup-schedule"></a>Vytvoření plánu zálohování
+
+Nastavte plán zálohování na počítači, který chcete zálohovat. Všimněte si, že času nastavenému pro zálohování se mohou lišit od času místní vzhledem k tomu Azure Backup nepřijímá letní čas (DST) do účtu. 
 1. Otevřete agenta Microsoft Azure Backup. Najdete ho vyhledáním **Microsoft Azure Backup** ve svém počítači.
 
     ![Spuštění agenta Azure Backup](./media/backup-configure-vault/snap-in-search.png)

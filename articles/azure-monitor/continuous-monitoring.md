@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fa5c3d65daa86a678ec278bc49759e1de7da7f0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 82187a99fc8009096127cca624698e1329e5d13b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386532"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975522"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Nepřetržité monitorování prostřednictvím služby Azure Monitor
 
@@ -33,7 +33,7 @@ Získalo observability napříč celým prostředím je potřeba povolit monitor
 
 - [Projekty Azure DevOps](../devops-project/overview.md) umožňují zjednodušené prostředí s váš stávající kód a úložiště Git, nebo vyberte jednu z ukázkových aplikací k vytvoření kanálu kontinuální integrace (CI) a průběžné doručování (CD) do Azure.
 - [Nepřetržité monitorování v kanálu pro vydávání verzí DevOps](../application-insights/app-insights-vsts-continuous-monitoring.md) vám umožní brány nebo vrácení změn na základě monitorování dat nasazení.
-- [Monitorování stavu](../application-insights/app-insights-monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
+- [Monitorování stavu](../azure-monitor/app/monitor-performance-live-website-now.md) umožňuje instrumentovat živou aplikaci .NET ve Windows pomocí Azure Application Insights, aniž byste museli upravovat nebo znovu nasazovat kód.
 - Pokud máte přístup ke kódu pro vaši aplikaci, povolte úplné monitorování s využitím [Application Insights](../application-insights/app-insights-overview.md) nainstalováním sady Azure monitorování Application Insights SDK pro [.NET](../application-insights/quick-monitor-portal.md), [Java ](../application-insights/app-insights-java-quick-start.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), nebo [jiných programovacích jazycích](../application-insights/app-insights-platforms.md). To umožňuje zadat vlastní události, metriky nebo zobrazení stránek, které jsou relevantní pro vaši aplikaci a vaší firmy.
 
 
@@ -56,7 +56,7 @@ Aplikace jsou pouze stejně spolehlivá jako svoje základní infrastruktury. M�
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Kombinovat prostředky ve skupinách prostředků Azure
 Typická aplikace v Azure ještě dnes obsahuje několik prostředků, jako jsou virtuální počítače a služby App Services nebo mikroslužby hostované na cloudové služby, AKS clusterů nebo Service Fabric. Tyto aplikace se často využívají závislosti, jako jsou Event Hubs, Storage, SQL a Service Bus.
 
-- Kombinovat inAzure prostředky skupiny prostředků se získat kompletní přehled napříč vašimi prostředky, které společně tvoří různé aplikace. [Azure Monitor pro skupiny prostředků](../monitoring-and-diagnostics/resource-group-insights.md) poskytuje jednoduchý způsob, jak udržovat přehled o stavu a výkonu vaší aplikace celou předprodukčních a umožňuje procházení k podrobnostem příslušné komponenty pro všechny zkoušky nebo ladění.
+- Kombinovat inAzure prostředky skupiny prostředků se získat kompletní přehled napříč vašimi prostředky, které společně tvoří různé aplikace. [Azure Monitor pro skupiny prostředků](../azure-monitor/insights/resource-group-insights.md) poskytuje jednoduchý způsob, jak udržovat přehled o stavu a výkonu vaší aplikace celou předprodukčních a umožňuje procházení k podrobnostem příslušné komponenty pro všechny zkoušky nebo ladění.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Zajištění kvality pomocí nepřetržité nasazování
 Průběžná integrace / průběžné nasazování umožňuje automaticky integraci a nasazování změn kódu do vaší aplikace na základě výsledků automatizovaných testů. Zjednodušuje proces nasazení a zajišťuje kvality jakékoli změny před jejich přesun do produkčního prostředí.
@@ -74,7 +74,7 @@ Důležité aspekty monitorování je proaktivnímu upozorňování na správci 
 - Definování akcí pro oznámení používat nejúčinnějším způsobem oznámení vašim správcům. K dispozici [akcí pro oznámení](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) jsou SMS, e-mailů, nabízená oznámení nebo hlasových hovorů.
 - Použití rozšířené akce, které [připojení k nástroji ITSM](platform/itsmc-overview.md) nebo jiným systémům pro správu výstrah prostřednictvím [webhooky](platform/activity-log-alerts-webhook.md).
 - Napravit situacích identifikovat ve výstrahách taky [runbooků Azure Automation](../automation/automation-webhooks.md) nebo [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , který můžete spustit z výstrahy pomocí webhooků. 
-- Použití [automatické škálování](../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md) dynamicky zvýšit a snížit vaše výpočetní prostředky na základě shromážděných metrik.
+- Použití [automatické škálování](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) dynamicky zvýšit a snížit vaše výpočetní prostředky na základě shromážděných metrik.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Příprava řídicí panely a sešity
 Zajištění, že vývoje a provozu přístup pro stejnou telemetrii a nástroje umožňující zobrazit vzory napříč celým prostředím a minimalizovat průměrný čas potřebný k detekci (MTTD) a průměrný čas potřebný k obnovení (MTTR).

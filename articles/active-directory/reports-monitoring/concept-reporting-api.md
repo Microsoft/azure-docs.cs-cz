@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 860d602ecba257ed9015d1e080e5dcb1aa5ab872
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9c85ee23f433e7b14278d8cc0ca3bff3e1ab4b94
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624620"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752567"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Začínáme s Azure Active Directory API pro vytváření sestav
 
@@ -48,6 +48,11 @@ Podrobné pokyny najdete v tématu [požadavky pro přístup k API pro vytváře
 
 Koncový bod rozhraní Microsoft Graph API k protokolům auditu je `https://graph.microsoft.com/beta/auditLogs/directoryAudits` a koncový bod rozhraní Microsoft Graph API pro přihlášení je `https://graph.microsoft.com/beta/auditLogs/signIns`. Další informace najdete v tématu [referenční informace k rozhraní API auditu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) a [přihlášení reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn).
 
+Kromě toho můžete použít [události rizika Identity Protection API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k Microsoft Graphu pomocí detekce zabezpečení. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
+
+> [!NOTE]
+>  **Https:\/\/graph.windows.net\/\<název tenanta\>\/sestavy\/**  koncový bod je zastaralý. Pomocí nové koncové body rozhraní API k programovému přístupu ke sestavy aktivit a zabezpečení popsané výše.
+  
 ## <a name="apis-with-graph-explorer"></a>Rozhraní API pomocí Graph Exploreru
 
 Můžete použít [MSGraph explorer](https://developer.microsoft.com/graph/graph-explorer) ověřte vaše přihlášení a auditování dat rozhraní API. Ujistěte se, že pro přihlášení ke svému účtu pomocí tlačítek přihlášení v uživatelském rozhraní Graph Explorer a nastavte **AuditLog.Read.All** a **Directory.Read.All** oprávnění pro vašeho tenanta, jak je znázorněno.   

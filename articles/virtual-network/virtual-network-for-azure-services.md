@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 5b21ec36215dfde964b845a1ee28c02b562e1dd7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4e136d4a0a60838af7d2b1a111982b0c16b06dd2
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340670"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975147"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
 Integrace služeb Azure ke službě Azure virtual network umožňuje soukromý přístup ke službě z virtuálních počítačů nebo výpočetních prostředků ve virtuální síti.
-Integrace služeb Azure ve vaší virtuální síti s následujícími možnostmi: Nasazení přímo vyhrazenou instancí služby do virtuální sítě. Služby lze poté soukromě přistupovat v rámci virtuální sítě a z místní sítě.
-Tím, že rozšíří do služby prostřednictvím koncových bodů služby virtuální sítě. Koncové body služby umožňují prostředkům jednotlivé služby být svázat s virtuální sítí.
+Integrace služeb Azure ve vaší virtuální síti s následujícími možnostmi:
+- Nasazení vyhrazených instancích služby do virtuální sítě. Služby lze poté soukromě přistupovat v rámci virtuální sítě a z místní sítě.
+- Rozšíření virtuální sítě do služby prostřednictvím koncových bodů služby. Koncové body služby umožňují prostředkům jednotlivé služby být svázat s virtuální sítí.
 
 Integrovat několik služeb Azure ke službě virtual network, může kombinovat nejméně jeden z výše uvedených vzory. Například můžete nasadit HDInsight do vaší virtuální sítě a zabezpečení účtu úložiště do podsítě HDInsight prostřednictvím koncových bodů služby.
  

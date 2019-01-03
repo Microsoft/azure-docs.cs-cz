@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z MongoDB pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak ke zkopírování dat z databáze Mongo k úložištím dat. podporované podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat z MongoDB pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z Mongo DB do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,40 +11,37 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e11c62f338a9e6ce74ce2e04a933b0458df784d0
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054054"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807903"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1](v1/data-factory-on-premises-mongodb-connector.md)
-> * [Aktuální verze](connector-mongodb.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze MongoDB. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z databáze MongoDB. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+>[!IMPORTANT]
+>ADF této nové verze konektoru MongoDB, která poskytuje lepší podporu nativní MongoDB. Pokud používáte předchozí konektoru MongoDB ve vašem řešení, který je podporovaný jako-je z důvodu zpětné kompatibility najdete v tématu [konektoru MongoDB (starší verze)](connector-mongodb-legacy.md) článku.
 
-Do úložiště dat žádné podporované podřízený může kopírovat data z databáze MongoDB. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Konkrétně tento konektor MongoDB podporuje:
+Kopírování dat z databáze MongoDB do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-- MongoDB **verze 2.4, 2.6, 3.0, 3.2, 3.4 a 3.6**.
-- Kopírování dat pomocí **základní** nebo **anonymní** ověřování.
+Konkrétně tento konektor MongoDB podporuje **verze až 3.4**.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke zkopírování dat z databáze MongoDB, která není veřejně přístupný, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku se dozvíte podrobnosti. Modul Runtime integrace poskytuje integrované ovladače MongoDB, proto nemusíte ručně nainstalovat všechny ovladače při kopírování dat z MongoDB.
+Ke zkopírování dat z databáze MongoDB, která není veřejně přístupná, budete muset nastavit modul Integration Runtime. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) článku se dozvíte podrobnosti.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru MongoDB.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektoru MongoDB.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
@@ -52,17 +49,10 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |Vlastnost typu musí být nastavena na: **MongoDb** |Ano |
-| server |IP adresa nebo název hostitele serveru MongoDB. |Ano |
-| port |Port TCP, který používá MongoDB server naslouchat pro připojení klientů. |Ne (výchozí hodnota je 27017) |
-| databaseName |Název databáze MongoDB, kterou chcete získat přístup. |Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **základní**, a **anonymní**. |Ano |
-| uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
-| heslo |Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
-| authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Ne. Pro základní ověřování výchozí hodnota je používat účet správce a do databáze určené pomocí vlastnost databaseName. |
-| enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí protokolu SSL. Výchozí hodnota je false.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se má povolit certifikáty podepsané svým držitelem ze serveru. Výchozí hodnota je false.  | Ne |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| type |Vlastnost type musí být nastavená na: **MongoDbV2** |Ano |
+| připojovací řetězec |Například zadejte připojovací řetězec MongoDB `mongodb://[username:password@]host[:port][/[database][?options]]`. Odkazovat na [ruční MongoDB v připojovacím řetězci](https://docs.mongodb.com/manual/reference/connection-string/) další podrobnosti. <br/><br />Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| databáze | Název databáze, které chcete získat přístup. | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
 
@@ -70,16 +60,13 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 {
     "name": "MongoDBLinkedService",
     "properties": {
-        "type": "MongoDb",
+        "type": "MongoDbV2",
         "typeProperties": {
-            "server": "<server name>",
-            "databaseName": "<database name>",
-            "authenticationType": "Basic",
-            "username": "<username>",
-            "password": {
+            "connectionString": {
                 "type": "SecureString",
-                "value": "<password>"
-            }
+                "value": "mongodb://[username:password@]host[:port][/[database][?options]]"
+            },
+            "database": "myDatabase"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -91,14 +78,12 @@ Pro MongoDB propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje datovou sadu MongoDB.
-
-Ke zkopírování dat z MongoDB, nastavte vlastnost typu datové sady, která **MongoDbCollection**. Podporovány jsou následující vlastnosti:
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Následující vlastnosti jsou podporovány pro datovou sadu MongoDB:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **MongoDbCollection** | Ano |
-| Název_kolekce |Název kolekce v databázi MongoDB. |Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **MongoDbV2Collection** | Ano |
+| collectionName |Název kolekce v databázi MongoDB. |Ano |
 
 **Příklad:**
 
@@ -106,7 +91,7 @@ Ke zkopírování dat z MongoDB, nastavte vlastnost typu datové sady, která **
 {
      "name":  "MongoDbDataset",
     "properties": {
-        "type": "MongoDbCollection",
+        "type": "MongoDbV2Collection",
         "linkedServiceName": {
             "referenceName": "<MongoDB linked service name>",
             "type": "LinkedServiceReference"
@@ -120,16 +105,24 @@ Ke zkopírování dat z MongoDB, nastavte vlastnost typu datové sady, která **
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které jsou podporovány zdrojem MongoDB.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem MongoDB.
 
 ### <a name="mongodb-as-source"></a>MongoDB jako zdroj
 
-Ke zkopírování dat z MongoDB, nastavte typ zdroje v aktivitě kopírování do **MongoDbSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **MongoDbSource** | Ano |
-| query |Použijte vlastní dotaz SQL 92 číst data. Příklad: vybrat * z MyTable. |Ne (když je určena "Název_kolekce" v datové sadě) |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **MongoDbV2Source** | Ano |
+| Filtr | Určuje filtr výběru pomocí operátorů pro dotazování. Který vrátí všechny dokumenty v kolekci, tento parametr vynecháte nebo předat prázdný dokument ({}). | Ne |
+| cursorMethods.project | Určuje pole, která vrátí v dokumentech pro projekci. Tento parametr vynechte, pokud se pokud chcete vrátit všechna pole v odpovídajících dokumentů. | Ne |
+| cursorMethods.sort | Určuje pořadí, ve které dotaz vrátí odpovídajících dokumentů. Odkazovat na [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Ne |
+| cursorMethods.limit | Určuje maximální počet dokumentů, který server vrátí. Odkazovat na [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Ne | 
+| cursorMethods.skip | Určuje počet dokumentů, chcete-li přeskočit a od které začíná MongoDB pro vracení výsledků. Odkazovat na [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Ne |
+| batchSize | Určuje počet dokumenty, které se vrátí v každé dávce odpovědi z MongoDB instance. Ve většině případů Změna velikosti dávky nebude mít vliv na uživatele nebo aplikace. Cosmos DB omezení jednotlivých dávek nemůže být delší než 40MB velikosti, který je součtem batchSize počet dokumentů velikost, takže zmenšete tuto hodnotu, pokud probíhá velké velikosti vašeho dokumentu. | Ne<br/>(výchozí hodnota je **100**) |
+
+>[!TIP]
+>ADF podporují využití návratových hodnot BSON dokumentu v **přísném režimu**. Zajistěte, aby že vašemu dotazu filtru je ve striktním režimu místo režimu prostředí. Další popis lze nalézt v [MongoDB ruční](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
 **Příklad:**
 
@@ -152,8 +145,14 @@ Ke zkopírování dat z MongoDB, nastavte typ zdroje v aktivitě kopírování d
         ],
         "typeProperties": {
             "source": {
-                "type": "MongoDbSource",
-                "query": "SELECT * FROM MyTable"
+                "type": "MongoDbV2Source",
+                "filter": "{datetimeData: {$gte: ISODate(\"2018-12-11T00:00:00.000Z\"),$lt: ISODate(\"2018-12-12T00:00:00.000Z\")}, _id: ObjectId(\"5acd7c3d0000000000000000\") }",
+                "cursorMethods": {
+                    "project": "{ _id : 1, name : 1, age: 1, datetimeData: 1 }",
+                    "sort": "{ age : 1 }",
+                    "skip": 3,
+                    "limit": 3
+                }
             },
             "sink": {
                 "type": "<sink type>"
@@ -163,83 +162,13 @@ Ke zkopírování dat z MongoDB, nastavte typ zdroje v aktivitě kopírování d
 ]
 ```
 
-> [!TIP]
-> Při zadejte příkaz jazyka SQL, věnujte pozornost formátu data a času. Příklad: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` nebo pomocí parametru `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+## <a name="export-json-documents-as-is"></a>Export dokumentů JSON jako-je
 
-## <a name="schema-by-data-factory"></a>Schéma službou Data Factory
+Tento konektor MongoDB můžete použít pro export dokumentů JSON jako-pochází z kolekce MongoDB do různých úložišť na základě souboru nebo ke službě Azure Cosmos DB. K dosažení těchto kopírování dogmaticky na schématu, přeskočte "struktura" (také nazývané *schématu*) části datovou sadu a mapování schématu v aktivitě kopírování.
 
-Služba Azure Data Factory odvodí, že schéma z kolekce MongoDB pomocí **nejnovější 100 dokumenty** v kolekci. Pokud tyto dokumenty 100 neobsahují úplné schéma, může být některé sloupce ignorován při kopírování.
+## <a name="schema-mapping"></a>mapování schématu
 
-## <a name="data-type-mapping-for-mongodb"></a>Datový typ mapování pro MongoDB
-
-Při kopírování dat z MongoDB, se používají následující mapování MongoDB datových typů k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
-
-| MongoDB datový typ | Typ průběžných dat objektu pro vytváření dat |
-|:--- |:--- |
-| Binární hodnota |Byte] |
-| Logická hodnota |Logická hodnota |
-| Datum |DateTime |
-| NumberDouble |Double |
-| NumberInt |Int32 |
-| NumberLong |Int64 |
-| ObjectID |Řetězec |
-| Řetězec |Řetězec |
-| UUID |Guid |
-| Objekt |Renormalized do vyrovnání sloupce s "_" jako vnořené oddělovače |
-
-> [!NOTE]
-> Další informace o podpoře pro polí pomocí virtuální tabulky, najdete v tématu [podporu pro komplexní typy pomocí virtuální tabulky](#support-for-complex-types-using-virtual-tables) části.
->
-> V současné době nejsou podporovány následující typy dat MongoDB: DBPointer, JavaScript, Max za minutu klíče, regulární výraz, Symbol, časové razítko, Undefined.
-
-## <a name="support-for-complex-types-using-virtual-tables"></a>Podpora pro komplexní typy pomocí virtuální tabulky
-
-Azure Data Factory používá integrované ovladače ODBC pro připojení k a kopírování dat z databáze MongoDB. Pro komplexní typy jako pole nebo objekty s různé typy mezi dokumenty ovladač znovu sjednotí data na odpovídající virtuální tabulky. Konkrétně Pokud tabulka obsahuje tyto sloupce, ovladač generuje následující virtuální tabulky:
-
-* A **základní tabulka**, která obsahuje stejná data jako skutečné tabulky s výjimkou komplexní typ sloupce. Základní tabulka používá stejný název jako skutečné tabulky, která reprezentuje.
-* A **virtuální tabulku** pro každý sloupec komplexní typ, který rozbalí vnořená data. Virtuální tabulky jsou pojmenované pomocí názvu skutečné tabulky, oddělovač "_" a název pole nebo objekt.
-
-Virtuální tabulky odkazovat na data v tabulce skutečné povolení ovladače pro přístup k datům nenormalizované. Dotazování a připojení virtuální tabulky, můžete přístup k obsahu polí MongoDB.
-
-### <a name="example"></a>Příklad:
-
-Například je zde ExampleTable MongoDB tabulku, která má jeden sloupec s pole objektů v každé buňce – faktury a jeden sloupec s pole Skalární typy – hodnocení.
-
-| _id | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
-| --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", položka: "Toaster byl", cena: "456", slevu: "0,2"}, {invoice_id: "124", položka: "sušárny", ceny: slevách "1235": "0,2"}] |Stříbrný |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", položka: "ledničky", cena: "12543", slevu: "0,0"}] |Zlatá |[1,2] |
-
-Ovladač by vygeneroval více virtuální tabulky k reprezentaci této jednu tabulku. První virtuální tabulky je základní tabulka s názvem "ExampleTable" v příkladu. Základní tabulka obsahuje všechna data z původní tabulky, ale data z pole byla vynechána a je v tabulkách virtuální rozbalena.
-
-| _id | Jméno zákazníka | Úroveň služby |
-| --- | --- | --- |
-| 1111 |ABC |Stříbrný |
-| 2222 |XYZ |Zlatá |
-
-Virtuální tabulky, které představují původní pole v příkladu v následujících tabulkách. Tyto tabulky obsahují následující:
-
-* Odkaz zpět na původní sloupec primárního klíče odpovídající řádek původní pole (přes sloupec _id)
-* Označení pozice dat v rámci původní pole
-* Rozšířená data pro každý prvek v rámci pole
-
-**Tabulka "ExampleTable_Invoices":**
-
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Položka | price | Sleva |
-| --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster byl |456 |0.2 |
-| 1111 |1 |124 |sušárny |1235 |0.2 |
-| 2222 |0 |135 |ledničky |12543 |0.0 |
-
-**Tabulka "ExampleTable_Ratings":**
-
-| _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
-| --- | --- | --- |
-| 1111 |0 |5 |
-| 1111 |1 |6 |
-| 2222 |0 |1 |
-| 2222 |1 |2 |
-
+Kopírování dat z MongoDB do tabulky jímky, najdete v tématu [mapování schématu](copy-activity-schema-and-type-mapping.md#schema-mapping).
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: d4d730fe6c72b55a01f7c5f1f95cbd94ff145fba
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: f8045153482cdd8b9a13c0a6f2ebdb26627d44e4
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873746"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53811405"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -30,7 +30,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
 ## <a name="networking"></a>Sítě
 <a id="direct-connection"></a>
 
-1. **Zásady připojení: použití režimu přímé připojení**
+1. **Zásady připojení: Použití režimu přímé připojení**
 
     Jak se klient připojí ke službě Azure Cosmos DB má důležité vliv na výkon, hlavně z hlediska pozorované latence na straně klienta. K dispozici dva klíče konfigurační nastavení pro konfiguraci klienta zásady připojení – připojení *režimu* a [připojení *protokol*](#connection-protocol).  Jsou k dispozici dva režimy:
 
@@ -45,7 +45,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     * TCP
     * HTTPS
 
-    Když používáte režim brány, Azure Cosmos DB používá port 443 a MongoDB API používá 10250, 10255 a 10256 porty. Mapy 10250 port pro výchozí instanci databáze Mongodb bez geografickou replikaci a mapování portů 10255/10256 k instanci Mongodb pomocí funkce geografické replikace. Při použití protokolu TCP v přímém režimu, kromě portů brány, je potřeba zajistit port v rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud tyto porty nejsou otevřené a při pokusu o použití protokolu TCP, zobrazí se chyba 503 Služba není dostupná. Následující tabulka uvádí dostupné režimy připojení různých rozhraní API a porty uživatele služby pro každé rozhraní API:
+    Když používáte režim brány, Cosmos DB používá port 443 a porty 10250, 10255 a 10256 při používání rozhraní API služby Azure Cosmos DB pro MongoDB. Mapy 10250 port pro výchozí instanci databáze MongoDB bez geografickou replikaci a mapování portů 10255/10256 k instanci MongoDB pomocí funkce geografické replikace. Při použití protokolu TCP v přímém režimu, kromě portů brány, je potřeba zajistit port v rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud tyto porty nejsou otevřené a při pokusu o použití protokolu TCP, zobrazí se chyba 503 Služba není dostupná. Následující tabulka uvádí dostupné režimy připojení různých rozhraní API a porty uživatele služby pro každé rozhraní API:
 
     |Režim připojení  |Podporovaný protokol  |Podporovaných sad SDK  |Služba API/port  |
     |---------|---------|---------|---------|

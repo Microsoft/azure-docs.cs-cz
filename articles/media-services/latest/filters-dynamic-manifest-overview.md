@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/20/2018
 ms.author: juliako
-ms.openlocfilehash: 05c089c0e92672b3602bd9c7bfb3263c56db76ef
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633295"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728036"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
 
@@ -46,8 +46,8 @@ V následující tabulce jsou uvedeny příklady adresy URL s filtry:
 
 |Protocol (Protokol)|Příklad:|
 |---|---|
-|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=myAccountFilter)`|
-|HLS VERZE 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=myAccountFilter)`|
+|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|HLS VERZE 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Technologie Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -129,7 +129,7 @@ Pomocí této vlastnosti se **Asset filtry**. Nedoporučuje se nastavit vlastnos
 |**startTimestamp**|Vztahuje se na videa na vyžádání a živé streamy. Hodnota reprezentuje absolutní počáteční bod datového proudu. Získá hodnotu zaokrouhlí na nejbližší další GOP Start.<br/><br/>Použití **startTimestamp** a **endTimestamp** k oříznutí seznamu testů (manifest). Například startTimestamp = 40000000 a endTimestamp = 100000000 vygeneruje seznam testů, který obsahuje média mezi StartTimestamp a EndTimestamp. Pokud fragment přechází na hranici, bude celý fragment součástí manifestu.|
 |**Časová osa**|Vztahuje se na videa na vyžádání a živé streamy. Časové měřítko používat časová razítka a doby trvání výše uvedené. Výchozí časové osy je 10000000. Dá se alternativní časový rámec. Výchozí hodnota je 10000000 HNS (stovek nanosekund).|
 
-### <a name="tracks"></a>Stop
+### <a name="tracks"></a>stop
 
 Můžete zadat seznam podmínek vlastností sledování filtru (FilterTrackPropertyConditions) podle, na kterém sleduje váš datový proud (Live nebo Video na vyžádání) by měly být zahrnuty do dynamicky generovaný manifest. Filtry jsou kombinovat pomocí logické **a** a **nebo** operace.
 
@@ -206,7 +206,7 @@ Díky dynamický Manifest, můžete vytvořit profily zařízení jako jsou mobi
 
 ![Interpretace filtrování příklad][renditions2]
 
-V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: protokol Smooth, HLS a MPEG DASH.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
+V následujícím příkladu byl použit pro kodér má kódovat mezzanine asset do sedmi interpretace video soubory MP4 rychlostmi ISO (z 180p 1080p). Zakódovanému assetu můžete dynamicky zabalené do některé z následujících protokolů streamování: HLS, MPEG DASH a Smooth.  V horní části diagramu se zobrazí HLS manifestu pro prostředek s žádné filtry (obsahuje všechny sedm interpretace).  Vlevo dole se zobrazí v manifestu HLS, do které byl použit filtr s názvem "ott". Filtr "ott" Určuje odebrání všech přenosových rychlostí nižší než 1 MB/s, což způsobilo v dolní části dvě úrovně kvality se odstraní v odpovědi. V pravém dolním rohu se zobrazí v manifestu HLS, do které byl použit filtr s názvem "mobilní". "Mobilní" filtr určuje odebrání interpretací, kde je větší než 720p, což způsobilo ve dvou rozlišení 1080p interpretace se odstraní.
 
 ![Interpretace filtrování][renditions1]
 
@@ -216,7 +216,7 @@ Vaše prostředky mohou zahrnovat více zvuku jazyků, jako je angličtina, špa
 ![Sleduje jazyka filtrování][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Oříznutí začátek prostředek
-Ve většině živě streamovaných událostí operátoři spustit některé testy před skutečné události. Například může zahrnovat břidlicová takto před začátkem události: "Programu Zbývá: okamžik". Pokud program je archivace, testování a slatu data jsou také archivovat a zahrnuty v prezentaci. Tyto informace však by neměly být uváděny klientům. S dynamický Manifest můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
+Ve většině živě streamovaných událostí operátoři spustit některé testy před skutečné události. Například může patří mezi ně břidlicová takto před začátkem události: "Programu Zbývá: okamžik". Pokud program je archivace, testování a slatu data jsou také archivovat a zahrnuty v prezentaci. Tyto informace však by neměly být uváděny klientům. S dynamický Manifest můžete vytvořit filtr času spuštění a odebrat nežádoucí data z manifestu.
 
 ![Oříznutí start][trim_filter]
 

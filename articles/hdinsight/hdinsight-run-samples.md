@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b00982cbc30b2345d9eacea376e3c5164ce1b078
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408676"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53745053"
 ---
-# <a name="run-apache-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Spuštění ukázek Apache Hadoop MapReduce v HDInsight se systémem Windows
+# <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Spuštění ukázek MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
 Které vám pomohou začít spuštěné úlohy MapReduce na clusterech Apache Hadoop pomocí Azure HDInsight poskytuje řadu ukázek. Tyto ukázky jsou k dispozici na všech HDInsight spravované clustery, které vytvoříte. Spuštění ukázek vám seznámit se s použitím rutin prostředí Azure PowerShell můžete spouštět úlohy na clusterech Hadoop.
@@ -167,7 +167,7 @@ Skript uvedený pro tuto ukázku odešle soubor jar úlohy Hadoopu a nastavit a�
     ```
 
 ## <a name="hdinsight-sample-10gb-graysort"></a>Graysort 10 GB
-Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](http://sortbenchmark.org/) lokality.
+Tato ukázka používá mírné 10 GB dat, aby mohla být poměrně rychle spustit. Používá MapReduce aplikace vyvinuté tak, že Owen O'Malley a Arun Murthy získané roční kritérium řazení terabajt pro obecné účely ("daytona") v roce 2009 s mírou 0.578 TB za minutu (100 TB za 173 minut). Další informace o tomto a dalších řazení srovnávací testy, najdete v článku [Sortbenchmark](https://sortbenchmark.org/) lokality.
 
 Tato ukázka používá tři páry programů MapReduce:
 
@@ -383,7 +383,7 @@ Odhadu hodnoty pí kódu Java, který obsahuje mapovací a redukční funkce je 
 * "License"); you may not use this file except in compliance
 * with the License. You may obtain a copy of the License at
 *
-* http://www.apache.org/licenses/LICENSE-2.0
+* https://www.apache.org/licenses/LICENSE-2.0
 *
 * Unless required by applicable law or agreed to in writing, software
 * distributed under the License is distributed on an "AS IS" BASIS,
@@ -722,7 +722,7 @@ Pro kontrolu v této části se zobrazí kód pro program TeraSort MapReduce.
     * "License"); you may not use this file except in compliance
     * with the License.  You may obtain a copy of the License at
     *
-    *     http://www.apache.org/licenses/LICENSE-2.0
+    *     https://www.apache.org/licenses/LICENSE-2.0
     *
     * Unless required by applicable law or agreed to in writing, software
     * distributed under the License is distributed on an "AS IS" BASIS,

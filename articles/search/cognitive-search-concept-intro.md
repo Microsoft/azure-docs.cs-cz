@@ -1,5 +1,5 @@
 ---
-title: Kognitivní vyhledávání pro extrakci dat, zpracování přirozeného jazyka AI – Azure Search
+title: Kognitivní vyhledávání, extrakce dat, zpracování přirozeného jazyka AI – Azure Search
 description: Extrakce obsahu, přirozeného jazyka (NLP) zpracování a vytvořte prohledávatelného obsahu ve službě Azure Search indexování s využitím kognitivních dovedností a algoritmy AI pro zpracování obrázků.
 manager: cgronlun
 author: HeidiSteen
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 62d2e7af40d6abf6f316789051dfe78f73208eb3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315600"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633789"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co je "kognitivního vyhledávání" ve službě Azure Search?
 
@@ -94,7 +94,7 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 **Krok 1: Vytvořte službu vyhledávání v oblasti poskytuje rozhraní API** 
 
 + Západní střed USA
-+ Střed USA – jih
++ Středojižní USA
 + USA – východ
 + Východní USA 2
 + Západní USA 2

@@ -1,25 +1,71 @@
 ---
 title: Výchozí přenos dat a koncové body v digitální dvojče Azure | Dokumentace Microsoftu
-description: Pokyny k vytvoření koncových bodů s Dvojčaty digitální Azure
+description: Pokyny k vytvoření koncových bodů s Dvojčaty digitální Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 12/31/2018
 ms.author: alinast
-ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636301"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994810"
 ---
 # <a name="egress-and-endpoints"></a>Koncové body a výchozí přenos dat
 
-Azure digitální dvojče podporuje koncept **koncové body**. Každý koncový bod reprezentuje zprostředkovatele zpráv nebo událostí v rámci předplatného Azure uživatele. Události a zprávy může být zaslána tématech týkajících se služby Azure Event Hubs, Azure Event Grid a Azure Service Bus.
+Azure digitální dvojče *koncové body* představují zprostředkovatele zpráv nebo událostí v rámci předplatného Azure uživatele. Události a zprávy může být zaslána tématech týkajících se služby Azure Event Hubs, Azure Event Grid a Azure Service Bus.
 
-Události se posílají do koncových bodů podle předdefinovaného směrování požadavků. Uživatel může určit, který koncový bod by měl přijímat některý z následujících událostí: 
+Události jsou směrovány do koncových bodů podle předdefinovaného směrování požadavků. Uživatelé určení *typy událostí* se může zobrazit každý koncový bod.
+
+Další informace o událostech, směrování a typy událostí, najdete v tématu [směrování události a zprávy v Azure digitální dvojče](./concepts-events-routing.md).
+
+## <a name="events"></a>Události
+
+Události jsou odesílány IoT objektů (například zařízení a senzorů) pro zpracování službou Azure zprostředkovatele zprávu a události. Události jsou definovány následující [referenční dokumentace schématu událostí služby Azure Event Grid](../event-grid/event-schema.md).
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "subject": "ExtendedPropertyKey",
+  "data": {
+    "SpacesToNotify": [
+      "3a16d146-ca39-49ee-b803-17a18a12ba36"
+    ],
+    "Id": "00000000-0000-0000-0000-000000000000",
+      "Type": "ExtendedPropertyKey",
+    "AccessType": "Create"
+  },
+  "eventType": "TopologyOperation",
+  "eventTime": "2018-04-17T17:41:54.9400177Z",
+  "dataVersion": "1",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
+}
+```
+
+| Atribut | Typ | Popis |
+| --- | --- | --- |
+| id | řetězec | Jedinečný identifikátor pro událost. |
+| předmět | řetězec | Vydavatel definované cesta předmět události. |
+| data | objekt | Data události specifické pro poskytovatele prostředků. |
+| Typ události | řetězec | Jeden z typů registrované události pro tento zdroj událostí. |
+| čas události | řetězec | Vygenerování události podle času UTC poskytovatele. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
+| verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | řetězec | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
+
+Další informace o schématu událostí služby Event Grid:
+
+- Zkontrolujte [referenční dokumentace schématu událostí služby Azure Event Grid](../event-grid/event-schema.md).
+- Přečtěte si [Azure EventGrid Node.js SDK EventGridEvent odkaz](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+
+## <a name="event-types"></a>Typy událostí
+
+Typy událostí klasifikovat povaze události a jsou nastaveny **eventType** pole. V následujícím seznamu jsou uvedeny typy událostí k dispozici:
 
 - TopologyOperation
 - UdfCustom
@@ -27,15 +73,11 @@ Události se posílají do koncových bodů podle předdefinovaného směrován�
 - SpaceChange
 - DeviceMessage
 
-Základní znalosti o směrování události a typy událostí, najdete v tématu [směrování události a zprávy](concepts-events-routing.md).
-
-## <a name="event-types-description"></a>Popis typů událostí
-
-Formát událostí pro všechny typy událostí jsou popsány v následujících částech.
+Formát událostí pro každý typ události jsou podrobně popsány v následujících podsekcí.
 
 ### <a name="topologyoperation"></a>TopologyOperation
 
-**TopologyOperation** se vztahuje na změn grafu. **Subjektu** vlastnost určuje typ objektu vliv. Tato událost může aktivovat následující typy objektů: 
+**TopologyOperation** se vztahuje na změn grafu. **Subjektu** vlastnost určuje typ objektu vliv. Tato událost může aktivovat následující typy objektů:
 
 - Zařízení
 - DeviceBlobMetadata
@@ -86,7 +128,7 @@ Formát událostí pro všechny typy událostí jsou popsány v následujících
 
 ### <a name="udfcustom"></a>UdfCustom
 
-**UdfCustom** události odeslané uživatelem definované funkce (UDF). 
+**UdfCustom** události odeslané uživatelem definované funkce (UDF).
   
 > [!IMPORTANT]  
 > Tato událost musí být explicitně odeslána z UDF, samotného.
@@ -195,10 +237,19 @@ S použitím **DeviceMessage**, můžete zadat **EventHub** připojení, ke kter
 
 ## <a name="configure-endpoints"></a>Konfigurace koncových bodů
 
-Koncový bod správy se provede prostřednictvím koncových bodů rozhraní API. Následující příklady ukazují, jak nakonfigurovat různé podporovaných koncových bodů. Věnujte zvláštní pozornost pole typů událostí, protože definují směrování pro koncový bod:
+Koncový bod správy se provede prostřednictvím koncových bodů rozhraní API.
+
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
+Následující příklady ukazují, jak nakonfigurovat podporovaných koncových bodů.
+
+>[!IMPORTANT]
+> Věnujte pozornost pozor **eventTypes** atribut. Definuje která událost typy jsou zpracovány bodem a tím určit směrování.
+
+Požadavek HTTP POST ověřený proti
 
 ```plaintext
-POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
+YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
 - Trasy, která má typy událostí služby Service Bus **SensorChange**, **SpaceChange**, a **TopologyOperation**:

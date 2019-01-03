@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: feb2e2f9f36ab20c0b96fab9432df41faf4f9569
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3131afb31fd08903bb349f86634d2b9e6449c59e
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407928"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752652"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
 
@@ -42,7 +42,7 @@ Aktuální výchozí čítače, které se shromažďují pro webové aplikace .N
          - ASP.NET Applications\\Requests In Application Queue
          - Processor(_Total)\\% Processor Time
 
-Pokud chcete zobrazit všechny nejužitečnější grafy na jednom místě, vytvořit [řídicí panel](app-insights-dashboards.md) a připínat je na to.
+Pokud chcete zobrazit všechny nejužitečnější grafy na jednom místě, vytvořit [řídicí panel](../azure-monitor/app/app-insights-dashboards.md) a připínat je na to.
 
 ## <a name="add-counters"></a>Přidání čítačů
 
@@ -99,7 +99,7 @@ Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v Analytics
-Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](app-insights-analytics.md).
+Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](../azure-monitor/app/analytics.md).
 
 **Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci zobrazí se vám jenom čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
 
@@ -120,15 +120,15 @@ Další telemetrická data, jako jsou **čítače výkonu** má také sloupec `c
 
 * *Frekvence výjimek* je čítač výkonu systému. CLR vrátí počet všech zpracovaných a nezpracovaných výjimek, které jsou vyvolány a vydělí celkový počet v intervalu vzorkování délku intervalu. Sadu SDK Application Insights shromažďuje tento výsledek a odešle ji na portál.
 
-* *Výjimky* je počet sestav TrackException přijatých na portálu v intervalu vzorkování grafu. Zahrnuje pouze zpracované výjimky, ve kterém jste napsali TrackException volání v kódu a nezahrnuje všechny [neošetřené výjimky](app-insights-asp-net-exceptions.md). 
+* *Výjimky* je počet sestav TrackException přijatých na portálu v intervalu vzorkování grafu. Zahrnuje pouze zpracované výjimky, ve kterém jste napsali TrackException volání v kódu a nezahrnuje všechny [neošetřené výjimky](../azure-monitor/app/asp-net-exceptions.md). 
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Čítače výkonu aplikace ASP.Net Core
 Čítače výkonu jsou podporovány pouze v případě, že aplikace cílí na úplné rozhraní .NET Framework. Neexistuje žádná možnost získat čítače výkonu pro.Net Core aplikací.
 
 ## <a name="alerts"></a>Výstrahy
-Stejně jako jiné metriky můžete [nastavit výstrahu](app-insights-alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevřete podokno oznámení a klikněte na tlačítko Přidat oznámení.
+Stejně jako jiné metriky můžete [nastavit výstrahu](../azure-monitor/app/alerts.md) upozornit, pokud čítač výkonu přejde mimo omezení zadáte. Otevřete podokno oznámení a klikněte na tlačítko Přidat oznámení.
 
 ## <a name="next"></a>Další kroky
-* [Sledování závislostí](app-insights-asp-net-dependencies.md)
-* [Sledování výjimek](app-insights-asp-net-exceptions.md)
+* [Sledování závislostí](../azure-monitor/app/asp-net-dependencies.md)
+* [Sledování výjimek](../azure-monitor/app/asp-net-exceptions.md)
 

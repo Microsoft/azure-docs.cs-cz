@@ -13,26 +13,26 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7da0717273892893bec03c164b9b297f28e5218d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a0284675417ae31c2e16651a312f4c11c4e238ff
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995542"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53969348"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástrojů analýzy chování uživatelů ve službě Application Insights
-Máte otázky týkající [nástrojů analýzy chování uživatelů ve službě Application Insights](app-insights-usage-overview.md): [uživatelé, relace, události](app-insights-usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](app-insights-usage-flows.md), [Uchování](app-insights-usage-retention.md), nebo kohorty? Tady jsou odpovědi.
+Máte otázky týkající [nástrojů analýzy chování uživatelů ve službě Application Insights](app-insights-usage-overview.md): [Uživatelé, relace, události](app-insights-usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](app-insights-usage-flows.md), [uchování](app-insights-usage-retention.md), nebo kohorty? Tady jsou odpovědi.
 
 ## <a name="counting-users"></a>Počítání uživatelů
 **Nástroje analýzy chování uživatelů ukazují, že aplikace má jeden uživatel nebo relace, ale vím, že aplikace má mnoho uživatelů a relací. Jak můžete opravit tyto nesprávné počty?**
 
-Mají všechny telemetrických událostí ve službě Application Insights [ID anonymního uživatele](application-insights-data-model-context.md) a [ID relace](application-insights-data-model-context.md) jako dvě z jejich standardní vlastnosti. Ve výchozím nastavení všechny nástrojů pro analýzu využití počet uživatelů a relací v závislosti na tyto identifikátory. Pokud tyto standardní vlastnosti nejsou připravují se jedinečné identifikátory pro každého uživatele a relace z vaší aplikace, zobrazí se vám nesprávnému počtu uživatelů a relací v nástrojích pro analýzu využití.
+Mají všechny telemetrických událostí ve službě Application Insights [ID anonymního uživatele](../azure-monitor/app/data-model-context.md) a [ID relace](../azure-monitor/app/data-model-context.md) jako dvě z jejich standardní vlastnosti. Ve výchozím nastavení všechny nástrojů pro analýzu využití počet uživatelů a relací v závislosti na tyto identifikátory. Pokud tyto standardní vlastnosti nejsou připravují se jedinečné identifikátory pro každého uživatele a relace z vaší aplikace, zobrazí se vám nesprávnému počtu uživatelů a relací v nástrojích pro analýzu využití.
 
-Pokud monitorujete webové aplikace, nejjednodušším řešením je přidat [Application Insights JavaScript SDK](app-insights-javascript.md) do vaší aplikace a ujistěte se, že se načíst fragment skriptu na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje anonymní uživatel a ID relace a potom naplní telemetrické události mají tyto identifikátory jsou odeslané z vaší aplikace.
+Pokud monitorujete webové aplikace, nejjednodušším řešením je přidat [Application Insights JavaScript SDK](../azure-monitor/app/javascript.md) do vaší aplikace a ujistěte se, že se načíst fragment skriptu na každé stránce, kterou chcete monitorovat. Sada JavaScript SDK automaticky generuje anonymní uživatel a ID relace a potom naplní telemetrické události mají tyto identifikátory jsou odeslané z vaší aplikace.
 
 Pokud monitorujete webové služby (bez uživatelského rozhraní), [vytvořit inicializátor telemetrie, který naplní vlastnosti anonymního uživatelského ID a relace ID](app-insights-usage-send-user-context.md) podle svojí služby správy jedinečných uživatelů a relací.
 
-Pokud vaše aplikace odesílá [ověřit ID uživatelů](app-insights-api-custom-events-metrics.md#authenticated-users), můžete počítat ověřeného uživatele na základě ID v nástroji pro uživatele. V rozevíracím seznamu "Show" zvolte možnost "Authenticated users".
+Pokud vaše aplikace odesílá [ověřit ID uživatelů](../azure-monitor/app/api-custom-events-metrics.md#authenticated-users), můžete počítat ověřeného uživatele na základě ID v nástroji pro uživatele. V rozevíracím seznamu "Show" zvolte možnost "Authenticated users".
 
 Nástroje analýzy chování uživatelů v současnosti nepodporujeme počítání uživatelů nebo relace na základě vlastností než ID anonymního uživatele, ID ověřeného uživatele nebo ID relace.
 

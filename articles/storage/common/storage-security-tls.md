@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 86331f60e1be7d55c39e5d59f85b0f090a322587
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 613bf104f023b092016e6881dbc285e667453f92
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573854"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53628438"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Povolení zabezpečeného TLS pro klienta Azure Storage
 
@@ -48,10 +48,11 @@ Následující příklad ukazuje, jak v klientovi .NET protokol TLS 1.2.
 
 ## <a name="enable-tls-12-in-powershell-client"></a>Protokol TLS 1.2 v klientovi prostředí PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)] 
+
 Následující příklad ukazuje, jak protokol TLS 1.2 v klientovi prostředí PowerShell.
 
 ```powershell
-
 # Enable TLS 1.2 before connecting to Azure Storage
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
@@ -60,11 +61,10 @@ $storageAccountName = "{YourStorageAccountNme}"
 $prefix = "foo"
 
 # Connect to Azure Storage
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccountName
 $ctx = $storageAccount.Context
-$listOfContainers = Get-AzureStorageContainer -Context $ctx -Prefix $prefix
+$listOfContainers = Get-AzStorageContainer -Context $ctx -Prefix $prefix
 $listOfContainers
-
 ```
 
 ## <a name="verify-tls-12-connection"></a>Ověření připojení protokolu TLS 1.2

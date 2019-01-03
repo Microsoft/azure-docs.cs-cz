@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: d4957efa151a0f992d098b2d6355b03f336e3738
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 12/20/2018
+ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438587"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53728121"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL
 
 *Pravidla virtuální sítě* jsou jeden funkce zabezpečení brány firewall, která určuje, zda Azure [SQL Database](sql-database-technical-overview.md) nebo [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) server přijímá komunikaci, kterou jsou odesílány z konkrétní podsítí ve virtuálních sítích. Tento článek vysvětluje, proč funkce pravidlo virtuální sítě je někdy nejlepší možnost pro umožnění bezpečné komunikace s Azure SQL Database a SQL Data Warehouse.
 
-> [!NOTE]
-> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> [!IMPORTANT]
+> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek provádí *není* platí pro **Azure SQL Database Managed Instance**.
 
 K vytvoření pravidla virtuální sítě, nejprve musí být [koncový bod služby virtuální sítě] [ vm-virtual-network-service-endpoints-overview-649d] pravidla pro odkazování.
 
@@ -64,9 +64,8 @@ Možnosti IP můžete zachránit získáním *statické* IP adresu vašeho virtu
 
 Ale statické IP přístup může být obtížné spravovat a je nákladná provádět ve velkém měřítku. Pravidla virtuální sítě je snazší, vytvořit a spravovat.
 
-### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. Nelze ještě SQL Database v podsíti
-
-Pokud váš server Azure SQL Database byl uzel v podsíti ve virtuální síti, všechny uzly v rámci virtuální sítě může komunikovat s databází SQL. V takovém případě může vaše virtuální počítače komunikovat s SQL Database bez nutnosti jakékoli pravidla virtuální sítě nebo IP.
+> [!NOTE]
+> SQL Database ještě nemůžete mít v podsíti. Pokud váš server Azure SQL Database byl uzel v podsíti ve virtuální síti, všechny uzly v rámci virtuální sítě může komunikovat s databází SQL. V takovém případě může vaše virtuální počítače komunikovat s SQL Database bez nutnosti jakékoli pravidla virtuální sítě nebo IP.
 
 Ale v září 2017 služby Azure SQL Database ještě není mezi službami, které je možné přiřadit k podsíti.
 

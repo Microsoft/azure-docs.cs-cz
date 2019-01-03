@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: douglaslMS
+ms.author: douglasl
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: f3da1a8cef5abc8fd30a0dc7760005ad5fff5446
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: fa76762fc9a2eb178e2edce2de254894bde1934c
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335365"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53651414"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 

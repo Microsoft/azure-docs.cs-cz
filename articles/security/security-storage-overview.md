@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 63967face89c12f6769d397bd5be78c23bc9f851
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259135"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973124"
 ---
 # <a name="azure-storage-security-overview"></a>Přehled zabezpečení služby Azure Storage
 
@@ -67,11 +67,11 @@ Další informace:
 Další informace o šifrování na straně klienta:
 
 * [Šifrování na straně klienta pro službu Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Zabezpečení cloudu určuje řadu: šifrování přenášených dat](https://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Řada – ovládací prvky zabezpečení cloudu: Šifrování přenášených dat](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
 
-Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Tři funkce Azure poskytují šifrování dat, která jsou v klidovém stavu:
+Pro mnoho společností [šifrování dat v klidovém stavu](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Tři funkce Azure poskytují šifrování dat, která jsou v klidovém stavu:
 
 * [Šifrování služby Storage](../storage/common/storage-security-guide.md#encryption-at-rest) umožňuje vyžádat, že služba úložiště automaticky šifrování dat při zápisu do služby Azure Storage.
 * [Šifrování na straně klienta](../storage/common/storage-security-guide.md#client-side-encryption) také poskytuje funkci šifrování v klidovém stavu.

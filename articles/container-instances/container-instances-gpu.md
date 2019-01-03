@@ -8,16 +8,16 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: d02ae48bab6a17cbf5568996b30ccb39ccb81c59
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994015"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53755015"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
 
-Pro spouštění určité úlohy náročné na výpočetní prostředky v Azure Container Instances, nasazení skupin kontejnerů s *GPU prostředky*. Instance kontejnerů mají přístup k jedné nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako je například CUDA a obsáhlý learning aplikací.
+Pro spouštění určité úlohy náročné na výpočetní prostředky v Azure Container Instances, nasazení vaše [skupiny kontejnerů](container-instances-container-groups.md) s *GPU prostředky*. Instance kontejnerů ve skupině mají přístup k jedné nebo více GPU NVIDIA Tesla při spouštění úloh kontejneru, jako je například CUDA a obsáhlý learning aplikací.
 
 Jak je znázorněno v tomto článku, když nasadíte skupinu kontejnerů s využitím můžete přidat prostředky GPU [soubor YAML](container-instances-multi-container-yaml.md) nebo [šablony Resource Manageru](container-instances-multi-container-group.md).
 
@@ -40,7 +40,7 @@ Ve verzi preview platí následující omezení při použití GPU zdrojů v sku
 
 Podpora bude postupně přibudou další oblasti.
 
-**Podporované typy operačních systémů**: pouze Linux
+**Podporované typy operačních systémů**: Pouze pro Linux
 
 **Další omezení**: GPU prostředky nelze použít při nasazování do skupiny kontejnerů [virtuální sítě](container-instances-vnet.md).
 
@@ -53,7 +53,7 @@ Chcete-li použít grafickými procesory v instanci kontejneru, zadejte *GPU pro
 * **Počet** – počet GPU: **1**, **2**, nebo **4**.
 * **Skladová položka** -GPU SKU: **K80**, **P100**, nebo **V100**. Každý SKU mapuje na GPU NVIDIA Tesla v jednom rodiny virtuálních počítačů s podporou grafického procesoru Azure následující:
 
-  | Skladová jednotka (SKU) | Řady virtuálních počítačů |
+  | Skladová jednotka (SKU) | Rodina virtuálního počítače |
   | --- | --- |
   | K80 | [SÍŤOVÝ ADAPTÉR.](../virtual-machines/linux/sizes-gpu.md#nc-series) |
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
@@ -87,7 +87,7 @@ Při nasazování prostředků GPU, nastavte prostředky procesoru a paměti vho
 
 ## <a name="yaml-example"></a>Příklad YAML
 
-Zkopírujte následující kód YAML do nového souboru s názvem *gpu nasazení aci.yaml*, pak soubor uložte. Tato YAML vytvoří skupinu kontejnerů *gpucontainergroup* zadání instanci kontejneru s grafickým Procesorem K80. Instance spuštění ukázkové CUDA vektoru přidání aplikace. Požadavky prostředků jsou dostatečné ke spouštění úloh.
+Jedním ze způsobů přidání prostředků GPU je nasadit skupinu kontejnerů s využitím [soubor YAML](container-instances-multi-container-yaml.md). Zkopírujte následující kód YAML do nového souboru s názvem *gpu nasazení aci.yaml*, pak soubor uložte. Tato YAML vytvoří skupinu kontejnerů *gpucontainergroup* zadání instanci kontejneru s grafickým Procesorem K80. Instance spuštění ukázkové CUDA vektoru přidání aplikace. Požadavky prostředků jsou dostatečné ke spouštění úloh.
 
 ```YAML
 additional_properties: {}
@@ -134,7 +134,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Příklad šablony Resource Manageru
 
-Začněte vytvořením souboru s názvem `gpudeploy.json`, pak zkopírujte do něj následující kód JSON. Tento příklad nasadí instanci kontejneru s V100 grafického procesoru, na kterém běží [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) trénovací úlohu proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/). Požadavky prostředků jsou dostatečné ke spouštění úloh.
+Dalším způsobem, jak nasadit skupinu kontejnerů s prostředky GPU je pomocí [šablony Resource Manageru](container-instances-multi-container-group.md). Začněte vytvořením souboru s názvem `gpudeploy.json`, pak zkopírujte do něj následující kód JSON. Tento příklad nasadí instanci kontejneru s V100 grafického procesoru, na kterém běží [TensorFlow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) trénovací úlohu proti [datovou sadu mnist ručně](http://yann.lecun.com/exdb/mnist/). Požadavky prostředků jsou dostatečné ke spouštění úloh.
 
 ```JSON
 {

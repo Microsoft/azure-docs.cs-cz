@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6c1b9fabe89d254524006a21e3a422221791022d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625262"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53652145"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory rizikových událostí
 
@@ -31,7 +31,9 @@ Existují dvě místa, kde můžete zkontrolovat rizikové události oznámené:
  - **Generování sestav v Azure AD** – rizikové události jsou součástí zabezpečení Azure AD sestavy. Další informace najdete v tématu [zabezpečení Sestava ohrožených uživatelů](concept-user-at-risk.md) a [sestavy rizikových přihlášení zabezpečení](concept-risky-sign-ins.md).
 
  - **Azure AD Identity Protection** – rizikové události jsou taky součástí vytváření sestav funkce [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
-    
+
+Kromě toho můžete použít [události rizika Identity Protection API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) získat programový přístup k Microsoft Graphu pomocí detekce zabezpečení. Další informace najdete v tématu [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](../identity-protection/graph-get-started.md). 
+
 V současné době Azure Active Directory zjistí šest typy rizikových událostí:
 
 - [Uživatelé s uniklými přihlašovacími údaji](#leaked-credentials) 
@@ -125,11 +127,11 @@ Závažnost riziková událost představuje sílu signálu jako prediktorem iden
 
 Například: 
 
-* **Vysoká**: události rizika vysokou závažností a vysokou spolehlivostí. Tyto události jsou silné indikátory, které byly k ohrožení identity uživatele a všechny uživatelské účty vliv by měl okamžitě opravit.
+* **Vysoká**: Riziková událost vysokou závažností a vysokou spolehlivostí. Tyto události jsou silné indikátory, které byly k ohrožení identity uživatele a všechny uživatelské účty vliv by měl okamžitě opravit.
 
-* **Střední**: vysokou závažností, ale nižší důvěru riziková událost nebo naopak. Tyto události jsou potenciálně nebezpečné a všechny uživatelské účty vliv měli opravit.
+* **Střední**: Vysoká závažnost, ale nižší důvěru riziková událost nebo naopak. Tyto události jsou potenciálně nebezpečné a všechny uživatelské účty vliv měli opravit.
 
-* **Nízká**: s nízkou spolehlivostí a s nízkou závažností riziková událost. Tato událost nevyžadují okamžitý zásah, ale v kombinaci s další rizikové události mohou poskytnout silné indikace, že dojde k ohrožení identity.
+* **Nízká**: S nízkou spolehlivostí a s nízkou závažností riziková událost. Tato událost nevyžadují okamžitý zásah, ale v kombinaci s další rizikové události mohou poskytnout silné indikace, že dojde k ohrožení identity.
 
 ![Úroveň rizika](./media/concept-risk-events/01.png)
 

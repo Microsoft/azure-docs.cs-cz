@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 73dc4b14214c10966dca1a6cd7ebd41af019f640
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406551"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994577"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -120,7 +120,7 @@ Výměna směrování bude přes protokol EBGP. Relace EBGP se vytvoří mezi sm
 ## <a name="autonomous-system-numbers"></a>Čísla autonomního systému
 Microsoft pro veřejný partnerský vztah Azure, soukromý partnerský vztah Azure a partnerský vztah Microsoftu používá číslo AS 12076. Pro interní použití jsme vyhradili čísla ASN od 65515 do 65520. Jsou podporována 16bitová a 32bitová čísla AS.
 
-Nejsou žádné požadavky týkající se symetrie přenosu dat. Cesty vpřed a zpět můžou procházet různými dvojicemi směrovačů. Můžou být inzerovány identické trasy z obou stran přes víc dvojic okruhů, které vám patří. Metriky tras nemusejí být identické.
+Nejsou žádné požadavky týkající se symetrie přenosu dat. Cesty vpřed a zpět můžou procházet různými dvojicemi směrovačů. Identické trasy musí být inzerovány z obou stran přes víc dvojic okruhů, které vám patří. Metriky tras nemusejí být identické.
 
 ## <a name="route-aggregation-and-prefix-limits"></a>Agregace tras a omezení předpon
 Podporujeme až 4000 předpon, které jsou nám inzerované prostřednictvím soukromého partnerského vztahu Azure. To omezení může být zvýšeno až 10 000 předpon, pokud je povolen doplněk ExpressRoute Premium. Přijímáme až 200 předpon na každou relaci BGP pro veřejný partnerský vztah Azure a partnerský vztah Microsoftu. 
@@ -135,7 +135,7 @@ Výchozí trasy jsou povolené jenom na relacích soukromého partnerského vzta
 
  Chcete-li povolit připojení k dalším službám Azure a službám infrastruktury, je třeba zajistit, že platí jedna z následujících položek:
 
-* Veřejný partnerský vztah Azure má povolené přesměrování provozu na veřejné koncové body.
+* Veřejný partnerský vztah Azure je povolené přesměrování provozu na veřejné koncové body.
 * Používáte uživatelsky definované směrování umožňující připojení k internetu pro každou podsíť, která připojení k internetu vyžaduje.
 
 > [!NOTE]
@@ -162,9 +162,9 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Západní USA | 12076:51006 |
 | Západní USA 2 | 12076:51026 |
 | Západní střed USA | 12076:51027 |
-| Střed USA – sever | 12076:51007 |
-| Střed USA – jih | 12076:51008 |
-| Střed USA | 12076:51009 |
+| Středoseverní USA | 12076:51007 |
+| Středojižní USA | 12076:51008 |
+| Střední USA | 12076:51009 |
 | Kanada – střed | 12076:51020 |
 | Kanada – východ | 12076:51021 |
 | **Jižní Amerika** | |
@@ -215,7 +215,7 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 | Azure globální služby * | 12076:5050 |
 | Jiné online služby Office 365 | 12076:5100 |
 
-***Globální služby Azure zahrnuje Azure DevOps**\**
+***Globální služby Azure zahrnuje Azure DevOps**
 
 
 > [!NOTE]

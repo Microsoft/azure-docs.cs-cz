@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: 59ca7a98bfa275502e847a8d2c34ec79141603da
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d57b6edcff5222bb411a74cc86afbbd7819f9d3
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433810"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970827"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
@@ -31,7 +31,7 @@ Další informace o rozhraní Hive JDBC, naleznete v tématu [HiveJDBCInterface]
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight 3.3 vyřazení](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [SQuirreL SQL](https://squirrel-sql.sourceforge.net/). SQuirreL je JDBC klientské aplikace.
+* [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL je JDBC klientské aplikace.
 
 * [Java Developer Kit (JDK) verze 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) nebo vyšší.
 

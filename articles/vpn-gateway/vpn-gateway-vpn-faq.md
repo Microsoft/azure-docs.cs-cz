@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 01/02/2019
 ms.author: yushwang
-ms.openlocfilehash: a232ac111974444848aec82f3c7ab6236f82ac03
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a6390203ecc4ae672f968b19d83eafc8a552ec3a
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037089"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994829"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN
 
@@ -29,6 +29,10 @@ Ano.
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>Je možné připojovat se k více serverům z jedné virtuální sítě?
 
 K více serverům se lze připojovat prostřednictvím prostředí Windows PowerShell a rozhraní API REST Azure. Přečtěte si oddíl [Možnosti připojování k více serverům a připojení VNet-to-VNet](#V2VMulti) v nejčastějších dotazech.
+
+### <a name="is-there-an-additional-cost-for-setting-up-a-vpn-gateway-as-active-active"></a>Je k dispozici další náklady pro nastavení brány sítě VPN jako aktivní aktivní?
+
+Ne. 
 
 ### <a name="what-are-my-cross-premises-connection-options"></a>Jaké jsou možnosti připojení mezi různými místy?
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4b78675de2902736b90afa1df9ad66e2df2b0f77
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 8c63b97f9d4423bf57909da7716675915a5271ef
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386226"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994044"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Zjistěte, jak volat kognitivních hledání rozhraní API (Preview)
 
@@ -59,7 +59,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto kurzu. To usnadní čištění prostředků, až kurz dokončíte.
 
-1. Pro umístění, zvolte jednu z [podporované oblasti](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions) pro Kognitivního vyhledávání.
+1. Pro umístění, zvolte jednu z [podporované oblasti](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob#supported-regions) pro Kognitivního vyhledávání.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 

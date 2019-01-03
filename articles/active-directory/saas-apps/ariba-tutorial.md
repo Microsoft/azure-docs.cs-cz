@@ -1,231 +1,194 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou Ariba | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s Ariba | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Ariba.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/02/2017
+ms.topic: tutorial
+ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: d0bf000bc4f921a1f594aab9e0d54edb30f88963
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 81c66e73698f210c9ef364a8b328642f78e3012b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440486"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973974"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Kurz: Integrace Azure Active Directory se službou Ariba
+# <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Kurz: Integrace Azure Active Directory s Ariba
 
 V tomto kurzu se dozvíte, jak integrovat Ariba s Azure Active Directory (Azure AD).
-
 Ariba integraci se službou Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k Ariba
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Ariba (Single Sign-On) s jejich účty Azure AD
-- Můžete spravovat své účty na jediném místě – na webu Azure portal
+* Můžete řídit ve službě Azure AD, který má přístup k Ariba.
+* Můžete povolit uživatelům být automaticky přihlášeni k Ariba (Single Sign-On) s jejich účty Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Ariba, potřebujete následující položky:
 
-- S předplatným služby Azure AD
-- Ariba jednotného přihlašování povolená předplatného
-
-> [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
-
-Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
-
-- Nepoužívejte produkčním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verze [zde](https://azure.microsoft.com/pricing/free-trial/)
+* Ariba jednotného přihlašování povolená předplatného
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Ariba z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
+
+* Podporuje Ariba **SP** jednotné přihlašování zahájené pomocí
 
 ## <a name="adding-ariba-from-the-gallery"></a>Přidání Ariba z Galerie
+
 Konfigurace integrace Ariba do služby Azure AD, budete muset přidat Ariba z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Ariba z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
-    ![Aplikace][3]
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-1. Do vyhledávacího pole zadejte **Ariba**.
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/tutorial_ariba_search.png)
+4. Do vyhledávacího pole zadejte **Ariba**vyberte **Ariba** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-1. Na panelu výsledků vyberte **Ariba**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+     ![Ariba v seznamu výsledků](common/search-new-app.png)
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/tutorial_ariba_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ariba podle testovacího uživatele nazývá "Britta Simon."
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Ariba je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Ariba potřeba navázat.
-
-V Ariba, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
+V této části, konfigurace a testování služby Azure AD jednotné přihlašování s Ariba podle testu uživateli **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Ariba.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Ariba, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváří se testovací uživatelské jméno Ariba](#creating-an-ariba-test-user)**  – Pokud chcete mít protějšek Britta Simon Ariba, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace Ariba Single Sign-On](#configure-ariba-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele Ariba](#create-ariba-test-user)**  – Pokud chcete mít protějšek Britta Simon Ariba, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Ariba.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Ariba, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s Ariba, proveďte následující kroky:
 
-1. Na webu Azure Portal na **Ariba** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **Ariba** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Konfigurace jednotného přihlašování][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Konfigurace jednotného přihlašování](./media/ariba-tutorial/tutorial_ariba_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-1. Na **Ariba domény a adresy URL** části, proveďte následující kroky:
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
-    ![Konfigurace jednotného přihlašování](./media/ariba-tutorial/tutorial_ariba_url.png)
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.sourcing.ariba.com` nebo `https://<subdomain>.supplier.ariba.com`
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `http://<subdomain>.procurement-2.ariba.com`
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Tady doporučujeme používat jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na tým podpory Ariba klienta na **1-866-218-2155** k získání těchto hodnot. 
- 
+    ![Ariba domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
+    | |
+    |--|
+    | `https://<subdomain>.sourcing.ariba.com` |
+    | `https://<subdomain>.supplier.ariba.com` |
 
-    ![Konfigurace jednotného přihlašování](./media/ariba-tutorial/tutorial_ariba_certificate.png) 
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `http://<subdomain>.procurement-2.ariba.com`
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Tady doporučujeme používat jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na tým podpory Ariba klienta na **1-866-218-2155** k získání těchto hodnot... Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
 
-    ![Konfigurace jednotného přihlašování](./media/ariba-tutorial/tutorial_general_400.png)
+5. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
 
-1. Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, volání na tým podpory Ariba **1-866-218-2155** a budete vám dál pomůžou o tom, jak je zadat na stažený **certifikát (Base64)** souboru.  
- 
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+### <a name="configure-ariba-single-sign-on"></a>Konfigurace Ariba jednotné přihlašování
+
+Pokud chcete získat jednotné přihlašování nakonfigurované pro vaši aplikaci, volání na tým podpory Ariba **1-866-218-2155** a budete vám dál pomůžou o tom, jak je zadat na stažený **certifikát (Base64**) soubor.
+
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD 
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvoření uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
-1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/create_aaduser_02.png) 
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/create_aaduser_03.png) 
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/ariba-tutorial/create_aaduser_04.png) 
+    a. V **název** zadat **BrittaSimon**.
+  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    a. V **název** textové pole, typ **BrittaSimon**.
-
-    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
-
-    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="creating-an-ariba-test-user"></a>Vytvoření Ariba testovacího uživatele
 
-Cílem této části je vytvořte uživatele Britta Simon v Ariba. Spolupracovat s týmem podpory Ariba na **1-866-218-2155** přidejte uživatele, Ariba systému. 
-
- >[!NOTE]
- >Pokud je potřeba ručně vytvořit uživatele, budete muset požádat tým podpory Ariba na **1-866-218-2155**.
- >  
-
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k Ariba použití Azure jednotného přihlašování.
 
-![Přiřadit uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **Ariba**.
 
-**Přiřadit Ariba Britta Simon, proveďte následující kroky:**
+    ![Okno aplikace organizace](common/enterprise-applications.png)
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikace zadejte a vyberte **Ariba**.
 
-    ![Přiřadit uživatele][201] 
+    ![Odkaz Ariba v seznamu aplikací](common/all-applications.png)
 
-1. V seznamu aplikací vyberte **Ariba**.
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
 
-    ![Konfigurace jednotného přihlašování](./media/ariba-tutorial/tutorial_ariba_app.png) 
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
 
-    ![Přiřadit uživatele][202] 
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Přiřadit uživatele][203]
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+### <a name="create-ariba-test-user"></a>Vytvoření Ariba testovacího uživatele
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
-Cílem této části je testování konfigurace jednotného přihlašování k Azure AD pomocí přístupového panelu.
+V této části vytvoříte uživatele v Ariba jako Britta Simon. Spolupracovat s týmem podpory Ariba na **1-866-218-2155** přidejte uživatele, Ariba platformě. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
-Po kliknutí na dlaždici Ariba na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Ariba. 
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+Po kliknutí na dlaždici Ariba na přístupovém panelu, můžete by měl být automaticky přihlášeni k Ariba, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
+## <a name="additional-resources"></a>Další prostředky
 
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/ariba-tutorial/tutorial_general_01.png
-[2]: ./media/ariba-tutorial/tutorial_general_02.png
-[3]: ./media/ariba-tutorial/tutorial_general_03.png
-[4]: ./media/ariba-tutorial/tutorial_general_04.png
-
-[100]: ./media/ariba-tutorial/tutorial_general_100.png
-
-[200]: ./media/ariba-tutorial/tutorial_general_200.png
-[201]: ./media/ariba-tutorial/tutorial_general_201.png
-[202]: ./media/ariba-tutorial/tutorial_general_202.png
-[203]: ./media/ariba-tutorial/tutorial_general_203.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) pomocí služby Data Factory | Dokumentace Microsoftu
-description: Zjistěte, jak kopírovat data z podporované zdrojové úložiště dat do nebo ze služby Azure Cosmos DB do jímky podporované úložišť pomocí služby Data Factory.
+description: Zjistěte, jak kopírovat data z podporované zdrojové úložiště dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) do jímky podporované úložišť pomocí služby Data Factory.
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 16c02f1f47f556f550519feec78e7dd26b302e18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d927842dfc15c089225531c9718145ab20e329dc
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103791"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808855"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB (rozhraní SQL API) pomocí služby Azure Data Factory
 
@@ -28,20 +28,20 @@ ms.locfileid: "53103791"
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro kopírování dat z a do služby Azure Cosmos DB (rozhraní SQL API). Tento článek vychází [aktivita kopírování ve službě Azure Data Factory](copy-activity-overview.md), který nabízí obecný přehled o aktivitě kopírování.
 
+>[!NOTE]
+>Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB. Rozhraní MongoDB API najdete v tématu [konektoru MongoDB API služby Cosmos DB](connector-azure-cosmos-db-mongodb-api.md). Jiné typy rozhraní API nejsou nyní podporovány.
+
 ## <a name="supported-capabilities"></a>Podporované funkce
 
-Můžete kopírovat data ze služby Azure Cosmos DB do jakékoli podporovaného úložiště dat jímky nebo kopírování dat ze všech podporovaných zdrojů úložišť dat do služby Azure Cosmos DB. Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Můžete kopírovat data ze služby Azure Cosmos DB (rozhraní SQL API) pro všechny podporovaného úložiště dat jímky nebo kopírování dat ze všech podporovaných zdrojů úložišť dat do služby Azure Cosmos DB (rozhraní SQL API). Seznam dat ukládá podporovanou aktivitou kopírování jako zdroje a jímky, najdete v části [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Můžete použít konektor služby Azure Cosmos DB na:
+Můžete použít konektor služby Azure Cosmos DB (rozhraní SQL API) pro:
 
 - Kopírování dat z a do služby Azure Cosmos DB [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
 - Zapsat do služby Azure Cosmos DB jako **vložit** nebo **upsert**.
 - Import a export dokumentů JSON jako-je, nebo zkopírovat data z nebo do tabulkové datové sady. Mezi příklady patří SQL database a soubor CSV. Zkopírujte dokumenty s kódováním – je do nebo z formátu JSON souborů nebo z jiné kolekce Azure Cosmos DB najdete v článku [Import nebo export dokumentů JSON](#importexport-json-documents).
 
 Integruje do služby Data Factory [knihovny prováděcí modul služby Azure Cosmos DB hromadné](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) poskytovat nejlepší výkon při zápisu do služby Azure Cosmos DB.
-
->[!NOTE]
->Tento konektor podporuje pouze kopírování dat do a z rozhraní SQL API služby Cosmos DB.
 
 > [!TIP]
 > [Migrace dat videa](https://youtu.be/5-SRNiC_qOU) vás provede kroky pro kopírování dat z Azure Blob storage do služby Azure Cosmos DB. Video také popisuje rozhodnutí optimalizace výkonu pro příjem dat do služby Azure Cosmos DB obecně.
@@ -50,23 +50,23 @@ Integruje do služby Data Factory [knihovny prováděcí modul služby Azure Cos
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro službu Azure Cosmos DB.
+Následující části obsahují podrobnosti o vlastnostech, které lze použít k definování entit služby Data Factory, které jsou specifické pro službu Azure Cosmos DB (rozhraní SQL API).
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro služby Azure Cosmos DB, která je propojená se podporují následující vlastnosti:
+Pro službu propojenou službu Azure Cosmos DB (rozhraní SQL API) jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** musí být vlastnost nastavena na **CosmosDb**. | Ano |
-| připojovací řetězec |Zadejte informace potřebné k připojení k databázi Azure Cosmos DB.<br /><br />**Poznámka:**: musíte zadat informace o databázi v připojovacím řetězci, jak je znázorněno v následující příklady. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| připojovací řetězec |Zadejte informace potřebné k připojení k databázi Azure Cosmos DB.<br /><br />**Poznámka:** Je nutné zadat informace o databázi v připojovacím řetězci, jak je znázorněno v následující příklady. Označte toto pole jako **SecureString** typ bezpečně uložit ve službě Data Factory. Můžete také [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) používat pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace v Azure nebo místního prostředí integration runtime. Pokud není tato vlastnost určena, použije se výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad**
 
 ```json
 {
-    "name": "CosmosDbLinkedService",
+    "name": "CosmosDbSQLAPILinkedService",
     "properties": {
         "type": "CosmosDb",
         "typeProperties": {
@@ -85,11 +85,11 @@ Pro služby Azure Cosmos DB, která je propojená se podporují následující v
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Tato část obsahuje seznam vlastností, které datová sada služby Azure Cosmos DB podporuje. 
+Tato část obsahuje seznam vlastností, které podporuje datové sady Azure Cosmos DB (rozhraní SQL API). 
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, naleznete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). 
 
-Chcete-li kopírovat data z nebo do služby Azure Cosmos DB, nastavte **typ** vlastnosti datové sady na **DocumentDbCollection**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z nebo do služby Azure Cosmos DB (rozhraní SQL API), nastavte **typ** vlastnosti datové sady na **DocumentDbCollection**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -100,7 +100,7 @@ Chcete-li kopírovat data z nebo do služby Azure Cosmos DB, nastavte **typ** vl
 
 ```json
 {
-    "name": "CosmosDbDataset",
+    "name": "CosmosDbSQLAPIDataset",
     "properties": {
         "type": "DocumentDbCollection",
         "linkedServiceName":{
@@ -127,13 +127,13 @@ Pro úložiště dat bez schématu jako je Azure Cosmos DB aktivita kopírován�
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Tato část obsahuje seznam vlastností, které podporují službu Azure Cosmos DB zdroje a jímky.
+Tato část obsahuje seznam vlastností, které podporují službu Azure Cosmos DB (rozhraní SQL API) zdroje a jímky.
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v tématu [kanály](concepts-pipelines-activities.md).
 
-### <a name="azure-cosmos-db-as-source"></a>Azure Cosmos DB jako zdroje
+### <a name="azure-cosmos-db-sql-api-as-source"></a>Azure Cosmos DB (rozhraní SQL API) jako zdroj
 
-Chcete-li kopírovat data ze služby Azure Cosmos DB, nastavte **zdroj** typ v aktivitě kopírování do **DocumentDbCollectionSource**. 
+Chcete-li kopírovat data ze služby Azure Cosmos DB (rozhraní SQL API), nastavte **zdroj** typ v aktivitě kopírování do **DocumentDbCollectionSource**. 
 
 Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
@@ -148,11 +148,11 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ```json
 "activities":[
     {
-        "name": "CopyFromCosmosDB",
+        "name": "CopyFromCosmosDBSQLAPI",
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Document DB input dataset name>",
+                "referenceName": "<Cosmos DB SQL API input dataset name>",
                 "type": "DatasetReference"
             }
         ],
@@ -175,17 +175,17 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ]
 ```
 
-### <a name="azure-cosmos-db-as-sink"></a>Azure Cosmos DB jako jímka
+### <a name="azure-cosmos-db-sql-api-as-sink"></a>Azure Cosmos DB (rozhraní SQL API) jako jímka
 
-Chcete-li kopírovat data do služby Azure Cosmos DB, nastavte **jímky** typ v aktivitě kopírování do **DocumentDbCollectionSink**. 
+Chcete-li kopírovat data do služby Azure Cosmos DB (rozhraní SQL API), nastavte **jímky** typ v aktivitě kopírování do **DocumentDbCollectionSink**. 
 
 Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | **Typ** vlastnost jímky aktivity kopírování musí být nastavena na **DocumentDbCollectionSink**. |Ano |
-| WriteBehavior |Popisuje, jak zapsat data do služby Azure Cosmos DB. Povolené hodnoty: **vložit** a **upsert**.<br/><br/>Chování **upsert** nahrazuje dokumentu, pokud dokument se stejným ID už existuje; v opačném případě vložit dokument.<br /><br />**Poznámka:**: Data Factory automaticky vygeneruje ID dokumentu, pokud ID není zadán, buď v původním dokumentu nebo mapování sloupců. To znamená, že musíte zajistit, aby, pro **upsert** fungovat podle očekávání, váš dokument nemá identifikátor. |Ne<br />(výchozí hodnota je **vložit**) |
-| WriteBatchSize | Datová továrna používá [knihovny prováděcí modul služby Azure Cosmos DB hromadné](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) zapsat data do služby Azure Cosmos DB. **WriteBatchSize** vlastnost určuje velikost dokumenty, které zajišťuje do knihovny. Můžete zkusit zvýšit hodnotu **writeBatchSize** ke zlepšení výkonu a snížení hodnoty, pokud váš dokument je velká velikost – viz následující tipy. |Ne<br />(výchozí hodnota je **10 000**) |
+| WriteBehavior |Popisuje, jak zapsat data do služby Azure Cosmos DB. Povolené hodnoty: **vložit** a **upsert**.<br/><br/>Chování **upsert** nahrazuje dokumentu, pokud dokument se stejným ID už existuje; v opačném případě vložit dokument.<br /><br />**Poznámka:** Data Factory automaticky vygeneruje ID dokumentu, pokud ID není zadán, buď v původním dokumentu nebo mapování sloupců. To znamená, že musíte zajistit, aby, pro **upsert** fungovat podle očekávání, váš dokument nemá identifikátor. |Ne<br />(výchozí hodnota je **vložit**) |
+| WriteBatchSize | Datová továrna používá [knihovny prováděcí modul služby Azure Cosmos DB hromadné](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) zapsat data do služby Azure Cosmos DB. **WriteBatchSize** vlastnost určuje velikost dokumenty, které poskytují ADF do knihovny. Můžete zkusit zvýšit hodnotu **writeBatchSize** ke zlepšení výkonu a snížení hodnoty, pokud váš dokument je velká velikost – viz následující tipy. |Ne<br />(výchozí hodnota je **10 000**) |
 | nestingSeparator |Speciálního znaku v **zdroj** název sloupce, který označuje, že je potřeba vnořených dokumentů. <br/><br/>Například `Name.First` ve vstupní sadě struktura generuje následující strukturu JSON v Azure Cosmos DB dokumentů, kdy **nestedSeparator** je **.** (tečka): `"Name": {"First": "[value maps to this column from source]"}`  |Ne<br />(výchozí hodnota je **.** (tečka)) |
 
 >[!TIP]
@@ -196,7 +196,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 ```json
 "activities":[
     {
-        "name": "CopyToCosmosDB",
+        "name": "CopyToCosmosDBSQLAPI",
         "type": "Copy",
         "inputs": [
             {
@@ -225,7 +225,7 @@ Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** 
 
 ## <a name="import-or-export-json-documents"></a>Import a export dokumentů JSON
 
-Tento konektor služby Azure Cosmos DB můžete snadno:
+Tento konektor služby Azure Cosmos DB (rozhraní SQL API) můžete snadno:
 
 * Importujte dokumenty JSON z různých zdrojů do služby Azure Cosmos DB, včetně z úložiště objektů Blob v Azure, Azure Data Lake Store a další souborové úložiště, které podporuje Azure Data Factory.
 * Exportujte dokumentů JSON z kolekce Azure Cosmos DB do různých úložišť založená na souborech.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2018
+ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964113"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720811"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -71,19 +71,19 @@ Správce tenanta Azure Active Directory nemá přímý přístup k předplatným
 
    ![Azure AD – vlastnosti – snímek obrazovky](./media/security-center-management-groups/aad-properties.png)
 
-3. V části **globální správce může spravovat předplatná Azure a skupiny pro správu**, nastavte přepínač na **Ano**.
+3. V části **Access management pro prostředky Azure**, nastavte přepínač na **Ano**.
 
    ![Globální správce může spravovat předplatná Azure a skupiny pro správu – snímek obrazovky](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
-   - Pokud nastavíte přepínač na **Ano**, váš účet globálního správce (aktuálně přihlášeného uživatele) je přidán do role správce přístupu uživatelů v Azure RBAC v kořenovém oboru (`/`), která uděluje přístup k zobrazení a sestavu na Všechna předplatná Azure přidružené k tenantovi Azure AD.
+   - Když nastavíte přepínač na Ano, máte přiřazenou roli správce uživatelských přístupů v Azure RBAC v kořenovém oboru (/). To vám uděluje oprávnění k přiřazení rolí ve všech předplatných Azure a skupiny pro správu přidružené k tento adresář Azure AD. Tento přepínač je pouze dostupné pro uživatele, kteří mají přiřazenou roli globálního správce ve službě Azure AD.
 
-   - Pokud nastavíte přepínač na **ne**, váš účet globálního správce (aktuálně přihlášeného uživatele) je odebrán z role správce přístupu uživatelů v Azure RBAC. Nelze zobrazit všechna předplatná Azure, které jsou spojené s tenantem Azure AD a můžete zobrazit a spravovat pouze předplatná Azure ke kterým vám byl udělen přístup.
+  - Když nastavíte přepínač na Ne, role správce přístupu uživatelů v Azure RBAC je odebraný z vašeho účtu uživatele. Už můžete přiřadit role ve všech předplatných Azure a skupiny pro správu, které jsou přidružené k tomuto adresáři Azure AD. Můžete zobrazit a spravovat pouze předplatná Azure a skupiny pro správu ke kterým vám byl udělen přístup.
 
 4. Klikněte na tlačítko **Uložit** uložte nastavení.
 
     - Toto nastavení není globální vlastnost a platí jenom pro aktuálně přihlášeného uživatele.
 
-5. Provádění úkolů, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
+5. Provádění úloh, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
 
 
 ### <a name="assign-rbac-roles-to-users"></a>Přiřazení role RBAC uživatelům

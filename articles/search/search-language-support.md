@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 3f88965e0d48a9ed3e9a91b4df42a79b83d2a79b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313322"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631545"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Vytvoření indexu pro dokumenty v několika jazycích ve službě Azure Search
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ Níže jsou snímky obrazovky z oken webu Azure Portal pro Azure Search, které 
 ![][2]
 *Vyberte jednu z podporovaných analyzátory pro každé pole*
 
-Ve výchozím nastavení, všechna prohledatelná pole použít [analyzátor Lucene standardní](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) což je jazykově nezávislé. Chcete-li zobrazit úplný seznam podporovaných analyzátory, naleznete v tématu [jazykovou podporu ve službě Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Ve výchozím nastavení, všechna prohledatelná pole použít [analyzátor Lucene standardní](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) což je jazykově nezávislé. Chcete-li zobrazit úplný seznam podporovaných analyzátory, naleznete v tématu [jazykovou podporu ve službě Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
 Po výběru analyzátoru jazyka pro pole, se použije spolu s každou žádostí indexování a vyhledávání pro toto pole. Při dotazu je vydaný pro více polí pomocí různých analyzátorů, dotaz se zpracuje nezávisle na sobě správné analyzátory pro každé pole.
 
@@ -81,7 +81,7 @@ Někdy není známý jazyk agenta zadání dotazu, v takovém případě dotazu 
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
 
-Pokud jste vývojář .NET, mějte na paměti, že můžete nakonfigurovat pomocí jazykové analyzátory [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). Nejnovější vydaná verze zahrnuje podporu pro jazykové analyzátory Microsoft také.
+Pokud jste vývojář .NET, mějte na paměti, že můžete nakonfigurovat pomocí jazykové analyzátory [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search). Nejnovější vydaná verze zahrnuje podporu pro jazykové analyzátory Microsoft také.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

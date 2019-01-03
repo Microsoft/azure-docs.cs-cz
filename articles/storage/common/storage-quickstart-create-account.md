@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 8c347c9ab15b68325a9a7ebc645a3146f4b7a180
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754573"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994710"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -199,14 +199,14 @@ Remove-AzResourceGroup -Name $resourceGroup
 Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, včetně nového účtu úložiště, použijte příkaz [az group delete](/cli/azure/group#az_group_delete).
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name storage-quickstart-resource-group
 ```
 
 ---
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste vytvořili účet úložiště úrovně Standard pro obecné účely. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
+V tomto rychlém startu jste vytvořili účet úložiště úrovně standard pro obecné účely v2. Pokud chcete zjistit, jak v účtu úložiště nahrávat a stahovat objekty blob, pokračujte k rychlému startu pro úložiště objektů blob.
 
 # <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -221,6 +221,6 @@ V tomto rychlém startu jste vytvořili účet úložiště úrovně Standard pr
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Práce s úložištěm objektů blob pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
+> [Práce s objekty BLOB pomocí Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

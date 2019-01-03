@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0b1187083c14fc7c536f6a32f3a41957f53f299b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679711"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713175"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyka a oblasti pro rozhraní Translator Text API
 
@@ -28,10 +28,10 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 > [!NOTE]
 > V2 se přestala nabízet 30. dubna 2018 a bude ukončena 30. dubna 2019.
 
-* Statistické pouze: bez neuronových sítí systému je k dispozici pro tento jazyk.
-* Neuronových sítí k dispozici: neuronových sítí systému je k dispozici. Použijte parametr `category=generalnn` pro přístup k systému neuronových sítí.
-* Neurální výchozí: neuronových sítí je výchozí překladový systém. Použijte parametr `category=smt` pro přístup k statistické lokality pro použití v centru Microsoft Translator.
-* Pouze neuronových sítí: jenom pro Neurální překladové je k dispozici.
+* Jenom statistické: Žádné neuronových sítí systému je k dispozici pro tento jazyk.
+* Neuronových sítí k dispozici: Neurální systém k dispozici. Použijte parametr `category=generalnn` pro přístup k systému neuronových sítí.
+* Neurální výchozí nastavení: Neurální je výchozí překladový systém. Použijte parametr `category=smt` pro přístup k statistické lokality pro použití v centru Microsoft Translator.
+* Neurální pouze: Je k dispozici pouze Neurální překlady.
 
 **V3 Translator API** V3 Translator API je ve výchozím nastavení neuronových sítí a statistické systémy jsou k dispozici, pouze pokud neexistuje žádný systém neuronových sítí. Vlastní Translator jde použít jenom s jazyky neuronových sítí. 
 
@@ -39,13 +39,12 @@ Translator Text API podporuje následující jazyky pro překlad textu do textu.
 |:-----|:-----:|:-----|:-----|
 |Afrikánština| `af`    |Jenom statistické|  Neuronových sítí|
 |arabština|    `ar`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Arabština, Levantine| `apc`   |Neuronových sítí k dispozici|  Neuronových sítí|
 |Bengálština|    `bn`    |Neuronových sítí k dispozici|  Neuronových sítí|
-|Bosenština (latinka)|   `bs`    |Jenom statistické|  Statistické|
+|Bosenština (latinka)|   `bs`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Bulharština| `bg`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Kantonština (tradiční)|   `yue`   |Jenom statistické|  Statistické|
 |Katalánština|   `ca`    |Jenom statistické|  Statistické|
-|Zjednodušená čínština|    `zh-Hans`   |Výchozí neuronových sítí |Neuronových sítí|
+|čínština (zjednodušená)|    `zh-Hans`   |Výchozí neuronových sítí |Neuronových sítí|
 |Tradiční čínština|   `zh-Hant`   |Výchozí neuronových sítí |Neuronových sítí|
 |Chorvatština|  `hr`    |Neuronových sítí k dispozici|  Neuronových sítí|
 |Čeština| `cs`    |Neuronových sítí k dispozici|  Neuronových sítí|
@@ -109,26 +108,26 @@ Metoda Transliterate podporuje následující jazyky. V "do a z" "<> –" označ
 
 | Jazyk    | Kód jazyka | Skript | Do/z | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| arabština | ar | arabština | <--> | Latinská |
-|Bengálština  | Bn | bengálština | <--> | Latinská |
-| Čínština (zjednodušená) | zh-Hans | Zjednodušená čínština | <--> | Latinská |
-| Čínština (zjednodušená) | zh-Hans | Zjednodušená čínština | <--> | Tradiční čínština |
-| Čínština (tradiční) | zh-Hant | Tradiční čínština | <--> | Latinská |
-| Čínština (tradiční) | zh-Hant | Tradiční čínština | <--> | Zjednodušená čínština |
-| Gudžarátština | gu  | Gudžarátština | --> | Latinská |
-| Hebrejština | mu | Hebrejština | <--> | Latinská |
-| Hindština | Ahoj | Devanágarí | <--> | Latinská |
-| Japonština | ja | Japonština | <--> | Latinská |
-| Kannadština | KN | Kannadština | --> | Latinská |
-| Malajálamština | ml | Malajálamština | --> | Latinská |
-| Maráthština | MR | Devanágarí | --> | Latinská |
-| urijština | nebo | urijština | <--> | Latinská |
-| Paňdžábština | pa | Gurmukhi | <--> | Latinská  |
-| Srbština (cyrilice) | rozhraní SR-Cyrl | Cyrilice  | --> | Latinská |
-| Srbština (latinka) | rozhraní SR-Latn | Latinská | --> | Cyrilice |
-| Tamilština | ta | Tamilština | --> | Latinská |
-| Telugština | te | Telugština | --> | Latinská |
-| Thajština | . | Thajština | <--> | Latinská |
+| arabština | `ar` | Arabština `Arab` | <--> | Latinská `Latn` |
+|Bengálština  | `bn` | Bengálština `Beng` | <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Latinská `Latn` |
+| Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Latinská `Latn` |
+| Čínština (tradiční) | `zh-Hant` | Tradiční čínština `Hant`| <--> | Zjednodušená čínština `Hans` |
+| Gudžarátština | `gu`  | Gudžarátština `Gujr` | --> | Latinská `Latn` |
+| Hebrejština | `he` | Hebrejština `Hebr` | <--> | Latinská `Latn` |
+| Hindština | `hi` | Devanágarí `Deva` | <--> | Latinská `Latn` |
+| Japonština | `ja` | Japonština `Jpan` | <--> | Latinská `Latn` |
+| Kannadština | `kn` | Kannadština `Knda` | --> | Latinská `Latn` |
+| Malajálamština | `ml` | Malajalámština `Mlym` | --> | Latinská `Latn` |
+| Maráthština | `mr` | Devanágarí `Deva` | --> | Latinská `Latn` |
+| urijština | `or` | Urijština `Orya` | <--> | Latinská `Latn` |
+| Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | Latinská `Latn`  |
+| Srbština (cyrilice) | `sr-Cyrl` | Cyrilice `Cyrl`  | --> | Latinská `Latn` |
+| Srbština (latinka) | `sr-Latn` | Latinská `Latn` | --> | Cyrilice `Cyrl`|
+| Tamilština | `ta` | Tamilština `Taml` | --> | Latinská `Latn` |
+| Telugština | `te` | Telugština `Telu` | --> | Latinská `Latn` |
+| Thajština | `th` | Thajština `Thai` | <--> | Latinská `Latn` |
 
 ## <a name="dictionary"></a>Slovník
 
@@ -142,7 +141,7 @@ Slovník podporuje tyto jazyky do nebo z anglické využitím metod Lookup a Exa
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
 | Katalánština      | `ca`          |
-| Zjednodušená čínština      | `zh-Hans`          |
+| čínština (zjednodušená)      | `zh-Hans`          |
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
@@ -187,9 +186,9 @@ Slovník podporuje tyto jazyky do nebo z anglické využitím metod Lookup a Exa
 | Vietnamština      | `vi`          |
 | Velština      | `cy`          |
 
-## <a name="languages-detected-by-the-detect-method"></a>Jazyky detekoval rozpoznat – metoda
+## <a name="detect"></a>Zjišťování
 
-Tyto jazyky lze zjistit pomocí metody detekce. Zjišťování může zjišťovat jazyky, které Microsoft Translator: nelze převést.
+Metoda rozpoznat podporuje následující jazyky. Zjištění může identifikovat, jazyků, které Microsoft Translator: nelze převést.
 
 | Jazyk    |
 |:----------- |
@@ -261,11 +260,55 @@ Tyto jazyky lze zjistit pomocí metody detekce. Zjišťování může zjišťova
 | Velština |
 | Jidiš |
 
-## <a name="access-the-list-programmatically"></a>Programový přístup k seznamu
+## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programový přístup k seznamu jazyků rozhraní Translator Text API
 
-Seznam podporovaných jazyků prostřednictvím kódu programu pomocí operace jazyků rozhraní Text API verze 3.0 můžete přistupovat. Zobrazí se seznam funkcí, kód jazyka, stejně jako název jazyka v angličtině nebo libovolného podporovaného jazyka. Tento seznam se aktualizuje automaticky pomocí služby Microsoft Translator, jakmile budou k dispozici. nové jazyky.
+Můžete načíst seznam podporovaných jazyků pro rozhraní Translator Text API v3.0 pomocí metody jazyky. Zobrazí se seznam funkcí, kód jazyka, stejně jako název jazyka v angličtině nebo libovolného podporovaného jazyka. Tento seznam se aktualizuje automaticky pomocí služby Microsoft Translator, jako jsou k dispozici. nové jazyky.
 
 [Zobrazit jazyky operace referenční dokumentaci](reference/v3-0-languages.md)
+
+## <a name="customization"></a>Přizpůsobení
+
+Tyto jazyky jsou dostupné k použití vlastního nastavení [vlastní Translator](http://aka.ms/CustomTranslator).
+
+| Jazyk    | Kód jazyka |
+|:----------- |:-------------:|
+| arabština       | `ar`          |
+| Bengálština      | `bn`          |
+| Bosenština (latinka)      | `bs`          |
+| Bulharština      | `bg`          |
+| čínština (zjednodušená)      | `zh-Hans`          |
+| Chorvatština      | `hr`          |
+| Čeština      | `cs`          |
+| dánština      | `da`          |
+| Holandština      | `nl`          |
+| Angličtina    | `en`     |
+| Estonština      | `et`          |
+| Finština      | `fi`          |
+| Francouzština      | `fr`          |
+| Němčina      | `de`          |
+| Řečtina      | `el`          |
+| Hebrejština      | `he`          |
+| Hindština      | `hi`          |
+| Maďarština      | `hu`          |
+| italština      | `it`          |
+| Japonština      | `ja`          |
+| Korejština      | `ko`          |
+| Lotyština      | `lv`          |
+| Litevština      | `lt`          |
+| norština      | `nb`          |
+| polština      | `pl`          |
+| Portugalština      | `pt`          |
+| Rumunština      | `ro`          |
+| ruština      | `ru`          |
+| Srbština (latinka)      | `sr-Latn`          |
+| Slovenština     | `sk`          |
+| Slovinština      | `sl`          |
+| Španělština      | `es`          |
+| švédština      | `sv`          |
+| Thajština      | `th`          |
+| turečtina      | `tr`          |
+| Ukrajinština      | `uk`          |
+| Vietnamština      | `vi`          |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translatoru
 

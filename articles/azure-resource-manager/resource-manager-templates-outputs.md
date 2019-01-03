@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 12/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 85aab429fd59afd36cd026e6d8aef2b7e6f6e122
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140451"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725804"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Část Outputs následujícím v šablonách Azure Resource Manageru
 V části výstupů zadáte hodnoty, které se vracejí z nasazení. Například může vrátit identifikátor URI pro přístup k nasazených prostředků.
@@ -81,25 +81,8 @@ Následující příklad ukazuje strukturu definici výstupu:
 | type |Ano |Typ výstupní hodnoty. Výstupní hodnoty podporují stejné typy jako vstupní parametry šablony. |
 | hodnota |Ano |Výraz jazyka šablony, která je vyhodnocena a vrátila jako výstupní hodnota. |
 
-## <a name="recommendations"></a>Doporučení
-
-Pokud použijete šablonu k vytvoření veřejné IP adresy, zahrnout výstupy oddílu, který vrátí podrobnosti o IP adresu a plně kvalifikovaný název domény (FQDN). Výstupní hodnoty můžete snadno získat podrobnosti o veřejné IP adresy a plně kvalifikované názvy domény po nasazení.
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="example-templates"></a>Příklad šablony
-
 
 |Šablona  |Popis  |
 |---------|---------|
@@ -111,5 +94,4 @@ Pokud použijete šablonu k vytvoření veřejné IP adresy, zahrnout výstupy o
 ## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
-* Kombinovat více šablon během nasazení, najdete v článku [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
-* Budete muset použít prostředky, které existují v rámci jiné skupiny prostředků. Tento postup je běžný při práci s účty úložiště nebo virtuální sítě, které jsou sdíleny napříč více skupin prostředků. Další informace najdete v tématu [funkce resourceId](resource-group-template-functions-resource.md#resourceid).
+* Doporučení o vytváření šablon naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).

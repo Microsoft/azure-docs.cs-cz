@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: eeb548d6bd955aedf322a63c861fd23bb37c1167
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632646"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53634622"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce se v Apache Hadoop v HDInsight
 
@@ -28,15 +28,15 @@ Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. Následujíc
 
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
->
+
 
 ## <a id="whatis"></a>Co je MapReduce
 
 Apache Hadoop MapReduce je software platformě pro psaní úlohy, které zpracovávají velké objemy dat. Vstupní data je rozdělený do bloků nezávislé. Každý blok se zpracovávají paralelně napříč uzly v clusteru. Úlohu MapReduce se skládá ze dvou funkcí:
 
-* **Mapovač**: zpracovává vstupní data, analyzuje je (obvykle pomocí filtrování a řazení) a generuje řazených kolekcí členů (páry klíč hodnota)
+* **Mapovač**: Zpracovává vstupní data, analyzuje je (obvykle pomocí filtrování a řazení) a generuje řazených kolekcí členů (páry klíč hodnota)
 
-* **Redukční funkci**: využívá řazených kolekcí členů, protože ho vygeneroval Mapovač a provádí operaci summary, která vytvoří menší, kombinované výsledek z Mapovač dat
+* **Redukční funkci**: Využívá řazených kolekcí členů, protože ho vygeneroval Mapovač a provádí operaci summary, která vytvoří menší, kombinované výsledek z Mapovač dat
 
 Jako příklad úlohy MapReduce počet slova je znázorněn v následujícím diagramu:
 
@@ -57,7 +57,7 @@ Streamování Hadoop komunikuje s mapovací a redukční funkci pomocí standard
 
     [key]/t[value]
 
-Další informace najdete v tématu [streamování Hadoop](http://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Další informace najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
 
 Příklady použití streamování s HDInsight Hadoop naleznete v následujících dokumentech:
 
@@ -163,7 +163,7 @@ HDInsight můžete spouštět úlohy HiveQL pomocí různých metod. Použijte n
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |Odeslání úlohy vzdáleně pomocí **REST** |Linux nebo Windows |Linux, Unix, Mac OS X a Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |Odeslání úlohy vzdáleně pomocí **prostředí Windows PowerShell** |Linux nebo Windows |Windows |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a id="nextsteps"></a>Další kroky
@@ -174,9 +174,9 @@ Další informace o práci s daty v HDInsight, najdete v následujících dokume
 
 * [Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu](apache-hadoop-streaming-python.md)
 
-* [Použití Hivu se službou HDInsight][hdinsight-use-hive]
+* [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
 
-* [Použití Pigu se službou HDInsight][hdinsight-use-pig]
+* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 
 
 [hdinsight-upload-data]: hdinsight-upload-data.md

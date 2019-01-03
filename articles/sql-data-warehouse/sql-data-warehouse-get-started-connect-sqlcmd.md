@@ -1,6 +1,6 @@
 ---
 title: Připojení ke službě Azure SQL Data Warehouse pomocí sqlcmd | Dokumentace Microsoftu
-description: Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit a dotazovat službu Azure SQL Data Warehouse.
+description: Pomocí nástroje příkazového řádku sqlcmd k připojení a dotazování Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
 manager: craigg
@@ -10,12 +10,12 @@ ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2534d668132db4c66b5e54c33849b76a8f93c348
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247709"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976405"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Připojení k SQL Data Warehouse pomocí sqlcmd
 > [!div class="op_single_selector"]
@@ -32,14 +32,14 @@ Pomocí nástroje příkazového řádku [sqlcmd][sqlcmd] se můžete připojit 
 ## <a name="1-connect"></a>1. Připojení
 Chcete-li začít s nástrojem [sqlcmd][sqlcmd], otevřete příkazový řádek a zadejte příkaz **sqlcmd** následovaný připojovacím řetězcem pro vaši databázi SQL Data Warehouse. Připojovací řetězec bude muset mít následující parametry:
 
-* **Server (-S):** Server v následující podobě: `<`název serveru`>`.database.windows.net
-* **Database (-d):** Název databáze
-* **Enable Quoted Identifiers (-I):** Aby bylo možné se připojit k instanci služby SQL Data Warehouse, musí být povolené identifikátory v uvozovkách.
+* **Server (-S):** Server ve formě `<`název serveru`>`. database.windows.net
+* **Databáze (-d):** Název databáze.
+* **Enable Quoted identifikátory (-I):** Identifikátory v uvozovkách musí být povoleno se připojit k instanci SQL Data Warehouse.
 
 Chcete-li používat ověřování systému SQL Server, je třeba přidat parametry uživatelského jména a hesla:
 
-* **User (-U):** Uživatel serveru v následující podobě: `<`Uživatel`>`
-* **Password (-P):** Heslo přidružené k uživateli
+* **Uživatel (-U):** Uživatel serveru v následující podobě `<`uživatele`>`
+* **Heslo (-P):** Heslo přidružené k uživateli.
 
 Připojovací řetězec může například vypadat následovně:
 

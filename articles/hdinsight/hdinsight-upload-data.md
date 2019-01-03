@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0adc8ad651989d198fecabf00d38fbdeb7cf3cd1
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: a54c47c0f67052f2ce486a97e009293a118919d4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407090"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994108"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Nahrání dat pro úlohy Apache Hadoop v HDInsight
 
@@ -171,12 +171,10 @@ nebo
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
-Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v tématu [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
+Seznam dalších příkazech Hadoop, které pracují se soubory naleznete v tématu [https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](https://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]  
 > Na clusterech Apache HBase zablokuje výchozí velikost použitou při zápisu dat je 256 KB. I když to funguje správně při použití rozhraní API HBase nebo rozhraní REST API, používat `hadoop` nebo `hdfs dfs` příkazy k zápisu dat větší než ~ 12 GB za následek chyby. Další informace najdete v tématu [výjimce úložiště pro zápis u objektu blob](#storageexception) části v tomto článku.
->
->
 
 ### <a name="graphical-clients"></a>Grafické klientů
 Existuje také několik aplikací, které poskytuje grafické rozhraní pro práci s Azure Storage. V následující tabulce je seznam některé z těchto aplikací:
@@ -184,17 +182,17 @@ Existuje také několik aplikací, které poskytuje grafické rozhraní pro prá
 | Klient | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio Tools pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure Storage Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |
-| [Cloudové úložiště Studio 2](http://www.cerebrata.com/Products/CloudStorageStudio/) | | |✔ |
+| [Azure Storage Explorer](https://storageexplorer.com/) |✔ |✔ |✔ |
+| [Cloudové úložiště Studio 2](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Průzkumník služby Azure](http://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
+| [Průzkumník služby Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 #### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio Tools pro HDInsight
 Další informace najdete v tématu [procházejte propojené prostředky](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources).
 
 #### <a id="storageexplorer"></a>Průzkumník služby Azure Storage
-*Průzkumník služby Azure Storage* je užitečným nástrojem pro kontrolu a změnu dat v objektech BLOB. Je bezplatný open source nástroj, který si můžete stáhnout z [ http://storageexplorer.com/ ](http://storageexplorer.com/). Zdrojový kód je k dispozici také tento odkaz.
+*Průzkumník služby Azure Storage* je užitečným nástrojem pro kontrolu a změnu dat v objektech BLOB. Je bezplatný open source nástroj, který si můžete stáhnout z [ https://storageexplorer.com/ ](https://storageexplorer.com/). Zdrojový kód je k dispozici také tento odkaz.
 
 Před použitím nástroje, musíte znát vaše služby Azure storage účtu název a klíč účtu. Pokyny o tom, jak tyto informace najdete v tématu "jak: Zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště"část [vytvořit, spravovat nebo odstranit účet úložiště][azure-create-storage-account].
 
@@ -315,7 +313,7 @@ Teď, když chápete, jak načíst data do HDInsight, přečtěte si, jak prová
 
 [sqldatabase-create-configure]: ../sql-database-create-configure.md
 
-[apache-sqoop-guide]: http://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
+[apache-sqoop-guide]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
 

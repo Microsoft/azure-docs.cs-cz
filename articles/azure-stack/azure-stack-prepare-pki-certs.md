@@ -1,5 +1,5 @@
 ---
-title: Příprava nasazení Azure Stack integrované systémy certifikátů infrastruktury veřejných klíčů Azure Stack | Dokumentace Microsoftu
+title: Příprava nasazení Azure Stack integrované systémy nebo skrytou otočení certifikáty infrastruktury veřejných klíčů Azure Stack | Dokumentace Microsoftu
 description: Popisuje postup přípravy certifikátů infrastruktury veřejných KLÍČŮ Azure Stack pro integrované systémy Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972023"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631477"
 ---
-# <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava nasazení certifikátů Azure Stack PKI
+# <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Přidejte certifikáty Azure Stack PKI pro použití v nasazení nebo otočení
 Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
 
 
 ## <a name="prepare-certificates-for-deployment"></a>Přidejte certifikáty pro nasazení
-Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure Stack infrastruktury veřejných KLÍČŮ: 
+Pomocí těchto kroků můžete připravit a ověřit certifikáty infrastruktury veřejných KLÍČŮ Azure Stack, které se použijí k nasazení nového prostředí Azure Stack nebo pro výměnu tajné kódy ve stávajícím prostředí Azure Stack: 
 
 ### <a name="import-the-certificate"></a>Importovat certifikát
 

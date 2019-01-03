@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 4f1372f8b15670472146efc1c4f3a341f4a97c71
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255597"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713960"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Přidání služby LUIS výsledky do Application Insights a Azure functions
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!Tip]
 > Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Veškerý kód v tomto kurzu je k dispozici na [úložiště GitHub LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) a každý řádek spojený s tímto kurzem je zakomentovaný s `//APPINSIGHT:`. 
+Veškerý kód v tomto kurzu je k dispozici na [úložiště GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-web-app-bot-application-insights/nodejs) a každý řádek spojený s tímto kurzem je zakomentovaný s `//APPINSIGHT:`. 
 
 ## <a name="web-app-bot-with-luis"></a>Web app bot služba luis
 Tento kurz předpokládá, že budete mít kód vypadá podobně jako následující nebo, že jste dokončili [další kurz](luis-nodejs-tutorial-build-bot-framework-sample.md): 
@@ -51,11 +51,11 @@ K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[App
 
 1. Na webu Azure Portal, ve službě web app bot vyberte **sestavení** pod **Bot správu** oddílu. 
 
-    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/build.png)
+    ![Na webu Azure Portal, ve službě web app bot vyberte v části "Správa Bot" "Sestavení". ](./media/luis-tutorial-appinsights/build.png)
 
 2. S App Service editoru se otevře na nové kartě prohlížeče. V horním panelu vyberte název aplikace a pak vyberte **otevřete konzoly Kudu**. 
 
-    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![V horním panelu vyberte název aplikace a pak vyberte "Otevřete konzoly Kudu". ](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. V konzole zadejte následující příkaz k instalaci služby Application Insights a podtržítka balíčky:
 
@@ -63,7 +63,7 @@ K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[App
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
-    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/npm-install.png)
+    ![Nainstalujte Application Insights a podtržítka balíčky pomocí npm příkazů](./media/luis-tutorial-appinsights/npm-install.png)
 
     Vyčkat, než instalace balíčků:
 
@@ -112,9 +112,7 @@ Otevřete službu Application Insights zobrazíte položky LUIS.
 
 1. Na portálu vyberte **všechny prostředky** pak filtrovat podle názvu webové aplikace robota. Klikněte na prostředek s typem **Application Insights**. Ikona pro službu Application Insights je žárovky. 
 
-    ![Vyhledávání pro službu app insights](./media/luis-tutorial-appinsights/search-for-app-insights.png)
-
-
+    ! [[Vyhledávání pro službu app insights na webu Azure Portal](./media/luis-tutorial-appinsights/search-for-app-insights.png)
 
 2. Pokud prostředek se otevře, klikněte na **hledání** ikonu na lupu v pravém panelu. Nový panel zobrazuje správné. V závislosti na tom, kolik dat telemetrie nenajde, panelu může chvíli trvat, chcete-li zobrazit. Vyhledejte `LUIS-results` a stiskněte klávesu enter na klávesnici. V seznamu je zúžit jen LUIS výsledky dotazu přidat v tomto kurzu.
 

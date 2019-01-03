@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 0a3570e8907369d5cefc1197eef60d682659d0ed
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3d1821ccc3f3bc16bffd8a19d3014b5ea4876768
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261819"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715601"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
 Tento článek shrnuje osvědčené postupy při používání [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -39,7 +39,7 @@ Pokud si všimnete aplikace využívá více paměti, než se očekávalo jako i
 ## <a name="CPUresources"></a>Když aplikace spotřebovávat více procesorů, než se čekalo
 Pokud si všimnete aplikace využívá více procesorů, než se očekávalo nebo prostředí pro opakované využití procesoru špičky indikován při monitorování nebo služba doporučení, zvažte vertikální navýšení kapacity nebo horizontální navýšení kapacity plánu služby App Service. Pokud vaše aplikace je stavový, vertikální navýšení kapacity je jedinou možností, a pokud je vaše aplikace bezstavové, škálování na více instancí přináší větší flexibilitu a vyšší riziko škálování. 
 
-Další informace o vs "stavové" "" bezstavové můžete sledovat toto video: [Plánování škálovatelné začátku do konce vícevrstvou aplikaci v Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnosti škálování a automatické škálování služby App Service najdete v tématu [škálování webové aplikace ve službě Azure App Service](web-sites-scale.md).  
+Další informace o vs "stavové" "" bezstavové můžete sledovat toto video: [Plánování škálovatelné začátku do konce vícevrstvou aplikaci v Azure App Service](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Další informace o možnosti škálování a automatické škálování služby App Service najdete v tématu [škálování webové aplikace ve službě Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Když je vyčerpání prostředků soketu
 Častým důvodem, proč spotřebovává odchozí připojení TCP je použití klientské knihovny, které nejsou implementovány pro opětovné použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně jako je například udržování připojení HTTP. Projděte si dokumentaci pro každou z knihoven odkazuje aplikace v plánu App Service jsou nakonfigurované nebo přístupné z kódu pro efektivní opakované použití odchozí připojení. Také pomocí pokynů knihovny dokumentace pro správné vytvoření a vydání nebo čištění, aby předešla úniku připojení. Během vyšetřování klientské knihovny jsou v průběhu, může být zmírnit dopad horizontální navýšení kapacity na několik instancí.
@@ -68,7 +68,7 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 ## <a name="appbackup"></a>Při zálohování vaší aplikace spustí služeb při selhání
 Dva nejběžnější důvody, proč jsou selhání zálohování aplikace: neplatného nastavení úložiště a konfigurace databáze je neplatná. Tyto chyby se obvykle stát, pokud se změny prostředky úložiště nebo databáze nebo změny, jak získat přístup k těmto prostředkům (například přihlašovací údaje aktualizované vybrané v nastavení zálohování databáze). Zálohování obvykle spouštět podle plánu a vyžadují přístup k úložištím (k výstupu zálohované soubory) a databáze (pro kopírování a čtení obsahu, které mají být zahrnuty do zálohování). Výsledek služeb při selhání pro přístup k některé z těchto prostředků by selhání konzistentní zálohování. 
 
-Když dochází k chybám zálohování, projděte si nejnovější výsledky, abyste pochopili, jaký typ selhání se děje. Pro selhání přístupu k úložišti zkontrolovat a aktualizovat nastavení úložiště používá v konfiguraci zálohování. Pro selhání přístupu k databázi zkontrolovat a aktualizovat vaše řetězce připojení jako součást nastavení aplikace; přejděte k aktualizovat konfiguraci zálohování tak, aby správně zahrnují požadované databáze. Další informace o zálohování aplikace najdete v tématu [zálohování webové aplikace ve službě Azure App Service](web-sites-backup.md).
+Když dochází k chybám zálohování, projděte si nejnovější výsledky, abyste pochopili, jaký typ selhání se děje. Pro selhání přístupu k úložišti zkontrolovat a aktualizovat nastavení úložiště používá v konfiguraci zálohování. Pro selhání přístupu k databázi zkontrolovat a aktualizovat vaše řetězce připojení jako součást nastavení aplikace; přejděte k aktualizovat konfiguraci zálohování tak, aby správně zahrnují požadované databáze. Další informace o zálohování aplikace najdete v tématu [zálohování webové aplikace ve službě Azure App Service](manage-backup.md).
 
 ## <a name="nodejs"></a>Když jsou nasazená nové aplikace Node.js do služby Azure App Service
 Výchozí konfiguraci služby Azure App Service pro aplikace v Node.js se má nejlépe vyhovovat potřebám nejčastěji používané aplikace. Pokud se konfigurace pro aplikace v Node.js, budou těžit z přizpůsobené optimalizace pro zlepšení výkonu nebo optimalizovat využití prostředků pro prostředky procesoru/paměti/sítě naleznete v tématu [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace v Node.js v aplikaci Azure Služba](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení modulu iisnode možná muset nakonfigurovat pro vaši aplikaci Node.js, popisuje různé scénáře nebo problémy, že vaše aplikace se potýkáte a ukazuje, jak řešení těchto problémů.

@@ -9,20 +9,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b03cffe35337ee5720944dc4cfe88c17c3b5b748
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163823"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653811"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
-Zjistěte, jak nastavit [Apache HBase](http://hbase.apache.org/) replikace v rámci virtuální sítě nebo mezi dvěma virtuálními sítěmi v Azure.
+Zjistěte, jak nastavit [Apache HBase](https://hbase.apache.org/) replikace v rámci virtuální sítě nebo mezi dvěma virtuálními sítěmi v Azure.
 
 Replikace clusteru používá metodologie zdroj nabízené oznámení. HBase cluster může být zdroj nebo cíl, nebo může najednou splnit obě role. Je asynchronní replikace. Cílem replikace je konečné konzistence. Když zdroj obdrží úpravy do rodiny sloupců po povolení replikace, úpravy se šíří do všech cílových clusterech. Pokud data se replikují z jednoho clusteru do druhého, zdrojový cluster a všechny clustery, které jste už využili data jsou sledovány, aby se zabránilo replikační cykly.
 
-V tomto kurzu nastavíte zdroj cíl replikace. Jiných topologiích clusteru najdete v článku [referenční příručka Apache HBase](http://hbase.apache.org/book.html#_cluster_replication).
+V tomto kurzu nastavíte zdroj cíl replikace. Jiných topologiích clusteru najdete v článku [referenční příručka Apache HBase](https://hbase.apache.org/book.html#_cluster_replication).
 
 Tady jsou případy využití HBase replikace pro jednu virtuální síť:
 
@@ -121,7 +121,7 @@ K instalaci vazby, použijte následující postup:
 
     Nahraďte `sshuser` pomocí uživatelského účtu SSH, jste zadali při vytváření virtuálního počítače DNS.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Existuje řada různých způsobů, jak získat `ssh` nástroj. V systému Linux, Unix a macOS se poskytuje jako součást operačního systému. Pokud používáte Windows, zvažte jednu z následujících možností:
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
@@ -162,7 +162,7 @@ K instalaci vazby, použijte následující postup:
     };
     ```
     
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Nahraďte hodnoty v `goodclients` část dvě virtuální sítě s rozsahem IP adres. Tento oddíl definuje adresy, které přijímá požadavky od tento server DNS.
 
     K úpravě tohoto souboru použijte následující příkaz:
@@ -197,7 +197,7 @@ K instalaci vazby, použijte následující postup:
     };
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Je třeba nahradit `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` s příponou DNS ve virtuální síti. A předávání IP adresa je privátní IP adresu serveru DNS ve virtuální síti.
 
     K úpravě tohoto souboru použijte následující příkaz:
@@ -221,7 +221,7 @@ K instalaci vazby, použijte následující postup:
     nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Nahraďte `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` s plně kvalifikovaný název domény (FQDN) DNS virtuálního počítače v druhé síti.
     >
     > Nahraďte `10.2.0.4` s __interní IP adresa__ vašeho vlastního serveru DNS ve virtuální síti.
@@ -258,7 +258,7 @@ sudo service bind9 status
 
 ## <a name="create-apache-hbase-clusters"></a>Vytvoření clusterů Apache HBase
 
-Vytvoření [Apache HBase](http://hbase.apache.org/) clusteru v každém ze dvou virtuálních sítí s následující konfigurací:
+Vytvoření [Apache HBase](https://hbase.apache.org/) clusteru v každém ze dvou virtuálních sítí s následující konfigurací:
 
 - **Název skupiny prostředků**: použijte stejný název skupiny prostředků, při vytváření virtuální sítě.
 - **Typ clusteru**: HBase
@@ -295,8 +295,7 @@ Následující kroky popisují, jak volat skript akce skriptu z webu Azure porta
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    >[!note]
-    >
+    > [!NOTE]
     > Použijte název hostitele místo plně kvalifikovaný název domény pro zdrojový i cílový název DNS clusteru.
 
 6. Vyberte **Vytvořit**. Skript může trvat nějakou dobu, zvláště když používáte **- copydata** argument.

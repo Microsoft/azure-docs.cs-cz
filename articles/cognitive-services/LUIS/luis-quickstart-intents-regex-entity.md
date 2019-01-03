@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: ebd1d9380747a85b7134fa7f6b232bcee8d29f05
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 58fa0c36f8c3f630ae7f349bd0f54a497a38f19d
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752822"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976779"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Kurz: Získejte správně formátovaná data z utterance
 V tomto kurzu, vytvořte aplikaci extrahovat data konzistentním formátováním z utterance pomocí **regulárního výrazu** entity.
@@ -170,7 +170,7 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
 ## <a name="related-information"></a>Související informace
 
-* [Regulární výraz](luis-concept-entity-types.md#regex) koncepty entity
+* [Regulární výraz](luis-concept-entity-types.md#regular-expression-entity) koncepty entity
 * [Trénování](luis-how-to-train.md)
 * [Jak publikovat](luis-how-to-publish-app.md)
 * [Testování v portálu služby LUIS](luis-interactive-test.md)

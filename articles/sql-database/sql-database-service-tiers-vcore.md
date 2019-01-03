@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 11/27/2018
-ms.openlocfilehash: 4aaaf2e7a918ab91aebd1e1f1f6d166d6cadf19a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: de77dfc40306f014a10e1ab11f2581392d3c160b
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437058"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993739"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore úrovně služeb, zvýhodněné hybridní využití Azure a migrace
 
@@ -33,9 +33,9 @@ modelu virt. jader také umožňuje používat [zvýhodněné hybridní využit�
 
 ## <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
-Modelu virt. jader nabízí dvě úrovně služeb pro obecné účely a pro důležité obchodní informace. Úrovně služby jsou rozlišené pomocí rozsah velikostí výpočetních, vysoká dostupnost, izolaci chyb, typy úložiště a vstupně-výstupních operací. Zákazník musí zvlášť nakonfigurovat požadované období úložiště a uchovávání dat pro zálohování. Je nutné nakonfigurovat samostatně požadované období úložiště a uchovávání dat pro zálohování. Na webu Azure Portal, přejděte na Server (ne databáze) > Spravovat zálohy > Konfigurace zásad > v době obnovení konfiguraci bodu > 7 – 35 dní.
+Modelu virt. jader nabízí tři úrovně služeb pro obecné účely, hyperškálovatelný systém a důležité obchodní informace. Úrovně služby jsou rozlišené pomocí rozsah velikostí výpočetních, vysoká dostupnost, izolaci chyb, typy a velikosti úložiště a vstupně-výstupních operací. Je nutné nakonfigurovat samostatně požadované období úložiště a uchovávání dat pro zálohování. Na webu Azure Portal, přejděte na Server (ne databáze) > Spravovat zálohy > Konfigurace zásad > v době obnovení konfiguraci bodu > 7 – 35 dní.
 
-Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstvami:
+Následující tabulka vám pomůže pochopit rozdíly mezi třech úrovních:
 
 ||**Obecné účely**|**Pro důležité obchodní informace**|**Velkokapacitní (preview)**|
 |---|---|---|---|
@@ -63,7 +63,7 @@ Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi 
 
 ## <a name="azure-hybrid-benefit"></a>Zvýhodněné hybridní využití Azure
 
-V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
+V nákupní model založený na virtuálních jádrech mohou vyměňovat své současné licence pro zlevněné sazby pro SQL Database pomocí [zvýhodněné hybridní využití Azure pro SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure umožňuje využít vaše licence v místním SQL serveru a Šetřete na Azure SQL Database až 30 % používáte místní licence SQL serveru se Software Assurance.
 
 ![Ceny](./media/sql-database-service-tiers/pricing.png)
 

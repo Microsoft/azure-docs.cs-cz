@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 452700593d7145e828155c3bd999ad90e2437ba9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 83c293fe93cd67aca5ef5a3ed766545d2b6d4938
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098997"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970164"
 ---
 # <a name="language-and-region-support-for-luis"></a>Podpora jazyka a oblasti pro LUIS
 
@@ -44,6 +44,7 @@ Služba LUIS rozumí projevy v následujících jazycích:
 | Portugalština (Brazílie) |`pt-BR` |-| ✔ |✔ |Ne všechny dílčí jazykových verzí|
 | Španělština (Španělsko) |`es-ES` |-| ✔ |✔|✔|
 | Španělština (Mexiko)|`es-MX` |-|  -   |✔|✔|
+| turečtina | `tr-TR` |-|-|-|Pouze mínění|
 
 
 Podpora jazyků se liší u [předem připravených entit](luis-reference-prebuilt-entities.md) a [předem připravených domén](luis-reference-prebuilt-domains.md).

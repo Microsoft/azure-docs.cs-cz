@@ -7,46 +7,46 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 12/24/2018
 ms.author: juliako
-ms.openlocfilehash: ae8634fbfdaa250cbabda6189c6c2eeef8e5e4f1
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 58124ab5938c7bee9f83a8c37ab5c5618b4b7d54
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292215"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53789819"
 ---
 # <a name="what-is-video-indexer"></a>Co je Video Indexer?
 
 Azure Video Indexer je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Search, Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí modelů Video Indexeru popsaných níže:
  
-- **Automatické rozpoznávání jazyka**: Automaticky identifikuje převládající mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
-- **Přepis zvuku**: Převede řeč na text v 10 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, arabština, ruština a brazilská portugalština.
-- **Tvorba titulků**: Vytvoří titulky ve třech formátech: VTT, TTML, SRT.
-- **Dvoukanálové zpracování**: Pomocí automatické detekce oddělí přepis a sloučí vše do jediné časové osy.
-- **Snížení šumu**: Vyčistí telefonní zvuk nebo záznamy s velkým šumem (pomocí filtrů Skypu).
-- **Přizpůsobení přepisu (CRIS)**: Trénuje a spouští rozšířené vlastní modely převodu řeči na text k vytváření přepisů specifických pro dané odvětví.
-- **Výčet mluvčích**: Mapuje a poznává, který mluvčí řekl která slova a kdy.
-- **Statistiky mluvčích**: Poskytuje statistiky o poměru řeči jednotlivých mluvčích.
-- **Vizuální rozpoznávání znaků (OCR)**: Extrahuje text, který je vizuálně zobrazený ve videu.
-- **Extrakce klíčových snímků**: Zjistí stabilní klíčové snímky ve videu.
-- **Analýza citového zabarvení**: Identifikuje kladná, záporná a neutrální zabarvení řeči a vizuálního textu.
-- **Zmírnění vizuálního obsahu**: Detekuje vizuální obsah jen pro dospělé nebo nevhodný obsah.
-- **Extrakce klíčových slov**: Extrahuje klíčová slova z řeči a vizuálního textu.
-- **Identifikace popisků**: Identifikuje vizuální objekty a zobrazené akce.
-- **Extrakce značek**: Extrahuje značky z řeči a vizuálního textu.
-- **Detekce tváří**: Detekuje a seskupí tváře, které jsou ve videu zobrazené.
-- **Extrakce miniatur tváří („nejlepší tvář“)**: Automaticky identifikuje nejvhodnější zachycenou tvář v každé skupině tváří (podle kvality, velikosti a čelní polohy) a extrahuje ji jako obrázek.
-- **Identifikace celebrit:** Video Indexer automaticky identifikuje přes 1 milion celebrit, třeba světové vůdce, herce a herečky, sportovce, vědce nebo vůdčí osobnosti ze světa obchodu a technologií z celého světa. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
-- **Identifikace tváře na základě účtu:** Video Indexer trénuje model pro konkrétní účet. Potom na základě modelu vytrénovaného speciálně pro videa v příslušném účtu dokáže rozpoznat tváře ve videu.
-- **Zmírnění textového obsahu**: Detekuje explicitní text v přepisu zvuku.
-- **Detekce záběrů**: Zjistí, kdy se ve videu změnila scéna.
-- **Detekce černých snímků**: Identifikuje černé snímky ve videu.
-- **Zvukové efekty**: Identifikuje zvukové efekty, jako je tleskání, řeč a ticho.
-- **Dedukce témat**: Dedukuje hlavní témata z přepisů. Zahrnuje taxonomii [IPTC](https://iptc.org/standards/media-topics/) 1. úrovně.
-- **Rozpoznávání emocí**: Identifikuje emoce podle náznaků v řeči a zvuku. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
-- **Artefakty**: Extrahuje bohatou sadu artefaktů s „další úrovní podrobností“ pro každý z modelů.
-- **Překlad**: Vytvoří překlady přepisu zvuku do 54 různých jazyků.
+- **Automatické rozpoznávání jazyka**: Automaticky identifikuje dominantní mluvený jazyk. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, zjednodušená čínština, japonština, ruština a brazilská portugalština. Pokud jazyk nejde rozpoznat, přejde se zpátky k angličtině.
+- **Přepisování zvukového záznamu**: Převede řeči na text v 12 jazycích a umožňuje rozšíření. Mezi podporované jazyky patří angličtina, španělština, francouzština, němčina, italština, čínština (zjednodušená), japonština, arabština, ruština, portugalština (Brazílie), hindština a korejštině.
+- **Skryté titulky**: Vytvoří titulků v tří formátů: VTT TTML, SRT APLIKACE.
+- **Dvě kanálu zpracování**: Automaticky detekuje, oddělte přepisu a sloučí do jediné časové osy.
+- **Noise snížení**:  Vymaže nahoru nahrávky zvuku nebo hlučného telefonního subsystému (na základě Skype filtrů).
+- **Přizpůsobení přepisu (CRIS která)**: Trénovat a spustí rozšířenou vlastní převod řeči na text modely a vytvořte záznamy o studiu specifických pro dané odvětví.
+- **Výčet mluvčího**:  Mapuje a rozumí, které mluvčího paprsků která slova a kdy.
+- **Statistiky mluvčího**: Poskytuje statistiky pro přednášející řeči poměry.
+- **Vizuální text rozpoznávání znaků (OCR)**: Extrahuje text, který se zobrazí vizuální ve videu.
+- **Extrakce klíčových snímků**: Stabilní klíčové snímky rozpozná ve videu.
+- **Analýza subjektivního hodnocení**: Identifikuje kladná, záporná a neutrální zabarvení řeči a vizuální text.
+- **Vizuální moderování obsahu**: Zjistí pro dospělé nebo pikantního vizuály.
+- **Extrakce klíčových slov**: Extrahuje klíčových slov z řeči a vizuální text.
+- **Popisky identifikace**: Určuje vizuální objekty a zobrazené akce.
+- **Opatří extrakce**: Extrahuje značky z pro zpracování řeči a vizuální text.
+- **Rozpoznávání tváře**: Zjistí a skupiny tváří povolí, nebude ve videu.
+- **Miniatura extrakce pro tváří ("nejlepší pro rozpoznávání tváře")**: Automaticky identifikuje nejvhodnější zachycené tváří v každé skupině tváří (podle kvality, velikost a umístění čelní) a rozbalte ho jako prostředek obrázku.
+- **Identifikace celebrit**: Video Indexer automaticky identifikuje přes 1 millión celebrit – například vedoucí pracovníci world, actors a actresses, sportovců z celého světa, výzkumní pracovníci, obchodní a technické vedoucí po celém světě. Data o těchto celebritách najdete taky na různých známých webech, třeba IMDB nebo v encyklopedii Wikipedia.
+- **Identifikace tváře založené na účtu**: Video Indexer trénovat modelu pro zadaný účet. Potom na základě modelu vytrénovaného speciálně pro videa v příslušném účtu dokáže rozpoznat tváře ve videu.
+- **Textové moderování obsahu**: Detekuje explicitní text v přepisu zvuku.
+- **Snímek detekce**: Určuje, když se změní scény ve videu.
+- **Černé rámců**: Identifikuje černého rámce uvedené ve videu.
+- **Zvukové efekty**: Identifikuje zvukové efekty, jako je ruční přípitky, zpracování řeči a nečinnosti.
+- **Odvození tématu**: Díky odvození hlavní témata z záznamy o studiu. Zahrnuje taxonomii [IPTC](https://iptc.org/standards/media-topics/) 1. úrovně.
+- **Rozpoznávání emocí z výrazu**: Identifikuje emoce podle pomůcky pro zpracování řeči a zvuku. Rozpozná tyto emoce: radost, smutek, hněv nebo strach.
+- **Artefakty**: Extrahuje bohatou sadu "Další úroveň podrobností" artefakty pro každou modelů.
+- **Překlad**: Vytvoří překlady přepisu zvuku na 54 různých jazycích.
 
 Jakmile Video Indexer dokončí zpracování a analýzu, můžete přehledné informace o videích revidovat, kurátorovat, prohledávat a publikovat.
 

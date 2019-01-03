@@ -13,12 +13,12 @@ ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 6a7f62d4018e5a8bd39cbf2bb2b1418137d93638
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 16795ce1fd53b9634dbc2ff7513d1c39752b8848
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720146"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974586"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Uživatelé, relace a události analýzy ve službě Application Insights
 
@@ -34,11 +34,11 @@ Pokud ještě se data v uživatelé, relace nebo události oknech na portálu sl
 
 Tři z použití oken použijte stejný nástroj k nařezání a rozčlenění telemetrii z vaší webové aplikace ze tří perspektivy. Pomocí filtrování a rozdělení dat, můžete získat informace o relativní využití různé stránky a funkce.
 
-* **Nástroj Uživatelé**: kolik lidí používá vaše aplikace a jeho funkcí.  Uživatelé se počítají pomocí anonymní ID uložené v souborech cookie prohlížeče. Jedna osoba pomocí různých prohlížečích nebo počítače se budou počítat jako více než jeden uživatel.
-* **Nástroj relace**: kolik relací aktivity uživatelů obsahovat některé stránky a funkce vaší aplikace. Relace se počítá za půl hodiny nečinnosti uživatele, nebo za 24 hodin nepřetržitého užívání.
-* **Nástroj události**: jak často se používají některé stránky a funkce vaší aplikace. Zobrazení stránky se počítá načtení stránku z vaší aplikace v prohlížeči předpokladu, že máte [instrumentována ho](app-insights-javascript.md). 
+* **Nástroj Uživatelé**: Kolik uživatelů používá vaši aplikaci a její funkce.  Uživatelé se počítají pomocí anonymní ID uložené v souborech cookie prohlížeče. Jedna osoba pomocí různých prohlížečích nebo počítače se budou počítat jako více než jeden uživatel.
+* **Nástroj relace**: Kolik relací aktivity uživatelů obsahovat některé stránky a funkce vaší aplikace. Relace se počítá za půl hodiny nečinnosti uživatele, nebo za 24 hodin nepřetržitého užívání.
+* **Nástroj události**: Jak často se používají některé stránky a funkce vaší aplikace. Zobrazení stránky se počítá načtení stránku z vaší aplikace v prohlížeči předpokladu, že máte [instrumentována ho](../azure-monitor/app/javascript.md). 
 
-    Vlastní událost představuje jeden výskyt něco děje ve vaše aplikace, často zásahu uživatele, jako je kliknutí na tlačítko nebo dokončení některých úkolů. Vložení kódu v aplikaci tak, aby [generování událostí na vlastní](app-insights-api-custom-events-metrics.md#trackevent).
+    Vlastní událost představuje jeden výskyt něco děje ve vaše aplikace, často zásahu uživatele, jako je kliknutí na tlačítko nebo dokončení některých úkolů. Vložení kódu v aplikaci tak, aby [generování událostí na vlastní](../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 ## <a name="querying-for-certain-users"></a>Dotazování pro určité uživatele
 
@@ -46,10 +46,10 @@ Prozkoumejte různé skupiny uživatelů úpravou dotazu v horní části nástr
 
 * Zobrazit: Zvolte kohorta uživatelů k analýze.
 * Kdo používá: Zvolte vlastní události a zobrazení stránek.
-* Během: Vyberte časový rozsah.
+* Během: Zvolte časový rozsah.
 * Podle: Zvolte, jak kontejneru dat, určitou dobu nebo jiné vlastnosti, jako je například prohlížeč nebo město.
 * Rozděleno podle: Vyberte vlastnost podle kterého na dělené tunelové propojení nebo segment data. 
-* Přidat filtry: Omezte dotaz určitých uživatelů, relací a události na základě jejich vlastností, jako je například prohlížeč nebo město. 
+* Přidáte filtry: Omezte dotaz určitých uživatelů, relací a události na základě jejich vlastností, jako je například prohlížeč nebo město. 
  
 ## <a name="saving-and-sharing-reports"></a>Ukládání a sdílení sestav 
 Uživatelé sestavy, privátní právě pro vás v části Moje sestavy nebo sdílené můžete uložit s ostatními s přístupem k tomuto prostředku Application Insights v části sdílených sestav.

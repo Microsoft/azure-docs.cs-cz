@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 62827054a14930cd49f7d80d6c305e60060c0fe6
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2d6f7e2fd332e1687db1564befeb6f531045c5dd
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271381"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993055"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Seznam frázi je součástí aplikace LUIS
 
@@ -29,6 +29,10 @@ Fráze seznam obsahuje skupinu hodnot (slova nebo fráze), která patří do ste
 
 Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slov.
 
+## <a name="phrase-lists-help-all-models"></a>Seznamy frázi pomohou všechny modely
+
+Fráze seznamy nejsou připojeny na specifické cílem nebo entity, ale jsou přidány jako podpořit do všech modelů. Jeho účelem je zlepšit záměru klasifikace zjišťování a entity.
+
 ## <a name="how-to-use-phrase-lists"></a>Použití seznamů fráze
 V aplikaci lidských zdrojů [kurz jednoduchou entitu](luis-quickstart-primary-and-secondary-data.md), tato aplikace používá **úlohy** frázi seznam typů úloh, jako je například programátora, roofer a bylo. Pokud popisek jednu z těchto hodnot jako entita se naučili počítač LUIS naučí rozeznat ostatní. 
 
@@ -40,6 +44,7 @@ Fráze seznamu může být zaměnitelné nebo zaměnitelné. *Zaměnitelné* je 
 |Non zaměnitelné|Slovník aplikace, specifické pro vaši aplikaci více, než obecně jiné slov v daném jazyce.|
 
 Fráze obsahuje nejen pomoc se sadou entity zjišťování, ale také záměru klasifikace tam, kde není zaměnitelné smysl, jako je přidání ze slovníku slova, která nejsou známy v anglickém jazyce.
+
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

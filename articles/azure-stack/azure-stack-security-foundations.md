@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901477"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727085"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Stav zabezpečení infrastruktury služby Azure Stack
 
-*Platí pro: integrované systémy Azure Stack*
+*Platí pro: Integrované systémy Azure Stack*
 
 Důležité informace o zabezpečení a dodržování předpisů patří mezi hlavní ovladačů pro použití hybridních cloudů. Azure Stack je navržena pro tyto scénáře. Tento článek vysvětluje ovládacích prvků zabezpečení v místě pro službu Azure Stack.
 
@@ -40,7 +40,7 @@ Spuštění z předpokladu, že systém již došlo k nedodržení, zaměřte se
 Protože Azure Stack se dodává jako integrovaný systém, je definován stav zabezpečení infrastruktury Azure stacku společností Microsoft. Stejně jako v Azure, klienti jsou zodpovědné za definování stav zabezpečení svých úloh tenanta. Tento dokument obsahuje základní znalosti o stavu zabezpečení infrastruktury Azure stacku.
 
 ## <a name="data-at-rest-encryption"></a>Data šifrování neaktivních dat
-Všechny služby Azure Stack infrastruktury a klientského data se šifrují v klidu pomocí Bitlockeru. Toto šifrování se chrání před fyzické ztráty či odcizení komponent úložiště služby Azure Stack. 
+Všechny služby Azure Stack infrastruktury a klientského data se šifrují v klidu pomocí Bitlockeru. Toto šifrování se chrání před fyzické ztráty či odcizení komponent úložiště služby Azure Stack. Další informace najdete v tématu [data šifrování neaktivních dat ve službě Azure Stack](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Data v šifrování přenosu
 Součásti infrastruktury Azure stacku komunikaci pomocí kanálů, které jsou šifrované pomocí protokolu TLS 1.2. Certifikáty šifrování samoobslužných spravuje infrastrukturu. 
@@ -75,7 +75,7 @@ Správy ve službě Azure Stack je řízen pomocí tří vstupních bodů, každ
 2. Azure Resource Manageru zpřístupňuje všechny operace správy portálu správce prostřednictvím rozhraní REST API, Powershellu a rozhraní příkazového řádku Azure. 
 3. Pro konkrétní operace nízké úrovně, například data center integrace nebo podporují scénáře, Azure Stack zpřístupňuje koncový bod Powershellu volá [privilegovaných koncový bod](azure-stack-privileged-endpoint.md). Tento koncový bod vystavuje pouze přidat na seznam povolených sadu rutin a výrazně se Audituje.
 
-## <a name="network-controls"></a>Ovládací prvky pro síť
+## <a name="network-controls"></a>Ovládací prvky sítě
 Infrastruktura Azure stacku se dodává s víc vrstvami sítě seznamu řízení přístupu (ACL). Seznamy ACL zabránit neoprávněnému přístupu k součástem infrastruktury a omezit infrastruktury komunikaci jenom cesty, které jsou vyžadovány pro její fungování. 
 
 Seznamy ACL sítě se vynucují ve třech vrstvách:

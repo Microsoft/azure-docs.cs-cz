@@ -9,21 +9,21 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 12/22/2018
 ms.author: juliako
-ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d74ce913a2189dd1062b30f9def919cbbabe7b64
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085491"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53742520"
 ---
 # <a name="streaming-policies"></a>Zásady streamování
 
-V Azure Media Services v3 streamování zásady umožňují definovat protokolů streamování a možnosti šifrování pro vaše StreamingLocators. Můžete zadat název streamování zásady, které jste vytvořili, nebo použijte jednu z předdefinovaných zásad streamování. Jsou předdefinované datové proudy zásady, které se aktuálně k dispozici: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_ MultiDrmStreaming ".
+V Azure Media Services v3 streamování zásady umožňují definovat protokolů streamování a možnosti šifrování pro vaše StreamingLocators. Můžete zadat název streamování zásady, které jste vytvořili, nebo použijte jednu z předdefinovaných zásad streamování. Předdefinované datové proudy zásady, které se aktuálně k dispozici jsou: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" a "Predefined_MultiDrmStreaming".
 
 > [!IMPORTANT]
-> Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.
+> Při použití vlastního [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), by měly omezenou sadu zásad návrhu pro svůj účet Media Service a znovu je použít pro vaše lokátory streamování pokaždé, když jsou potřeba stejné možnosti šifrování a protokoly. Kvóta pro počet položek streamování zásady, které má váš účet Media Service. By neměl být vytváření nových zásad streamování pro každý Lokátor streamování.
 
 ## <a name="streamingpolicy-definition"></a>Definice StreamingPolicy
 

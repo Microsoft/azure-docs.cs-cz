@@ -10,18 +10,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3b49959d167dbb735ebb9be9c75e91ef257c6a70
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 9aff828dcb9dfea6d5f35ad92bb09ba7cd802fea
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383829"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53711852"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava Apache Hive se chyba – nedostatek paměti v Azure HDInsight
 
 Další informace o opravách Apache Hive se chyba – nedostatek paměti (OOM) při zpracování velkých tabulek tím, že nakonfigurujete nastavení paměti Hive.
 
-## <a name="run-hive-query-against-large-tables"></a>Spuštění dotazu Hive proti velké tabulky
+## <a name="run-apache-hive-query-against-large-tables"></a>Spusťte dotaz Apache Hive velké tabulky
 
 Zákazník spuštění dotazu Hive:
 

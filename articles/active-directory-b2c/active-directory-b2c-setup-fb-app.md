@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b1fbf77bfb771bd94ed9acdecb3c54e4c6894687
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 183afaeb40b90de078a44f4677dd0218b8d86ba8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182106"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53968976"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu sítě Facebook pomocí Azure Active Directory B2C
 
@@ -38,11 +38,11 @@ Použít účet Facebook jako zprostředkovatele identity v Azure Active Directo
 13. Vyberte **produkty**a pak vyberte **nastavení** pod **přihlášení k Facebooku**.
 14. Vyberte **nastavení** pod **přihlášení k Facebooku**.
 15. V **identifikátory URI pro přesměrování OAuth platný**, zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Klikněte na tlačítko **uložit změny** v dolní části stránky.
-16. K zajištění dostupnosti sítě Facebook aplikace Azure AD B2C, vyberte **revizi aplikace**, nastavte **zkontrolujte Moje aplikace veřejného?** k **Ano**a potom klikněte na tlačítko **potvrzení** .
+16. K zajištění dostupnosti sítě Facebook aplikace Azure AD B2C, klepněte na volič stavu v horní části stránky a znovu je zapnout **na** zveřejnit aplikaci, a potom klikněte na **potvrdit**.  V tomto okamžiku by měl stav změnit z **vývoj** k **Live**.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurace účtu sítě Facebook jako zprostředkovatele identity
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant. 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.

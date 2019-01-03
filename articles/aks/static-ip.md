@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 5ac64f61d1c7879c578a1b6994a6918a7aa28a2e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f1507bc2aebcd29feea7480761cd1b4949439583
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017044"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994483"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
@@ -20,11 +20,13 @@ Ve výchozím nastavení veřejná IP adresa přidělená k prostředku nástroj
 
 V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a přiřaďte ho do služby Kubernetes.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Tento článek předpokládá, že máte existující cluster AKS. Pokud potřebujete AKS cluster, najdete v tomto rychlém startu AKS [pomocí Azure CLI] [ aks-quickstart-cli] nebo [pomocí webu Azure portal][aks-quickstart-portal].
 
 Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
+
+Momentálně se podporuje jenom základní SKU IP se nepodporuje. Práce se na podporu standardní IP adresy.
 
 ## <a name="create-a-static-ip-address"></a>Vytvoření statické IP adresy
 

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: ea509d3804053f060ad551b6eff945b70cec8796
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c9a2d569641ab0f8f6aa1d7234da1d3cbb0ab147
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261054"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744985"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Ukázky služby Azure Cache for Redis
 Toto téma obsahuje seznam mezipaměti Azure Redis ukázek, pokrývající scénářů, jako je připojení k mezipaměti, čtení a zápis dat do a z mezipaměti a pomocí ukládání do mezipaměti Azure technologie ASP.NET pro poskytovatele Redis. Některé z ukázek jsou ke stažení projekty a některé poskytují podrobné pokyny a zahrnovat fragmenty kódu, ale není odkaz na projekt ke stažení.
@@ -40,7 +40,7 @@ Tato ukázka předvádí, jak:
 * Implementace označování pomocí sad Redis
 * Práce s clusterem Redis
 
-Další informace najdete v tématu [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) najdete v dokumentaci na Githubu a další scénáře využití [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests) testování částí.
+Další informace najdete v tématu [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) najdete v dokumentaci na Githubu a další scénáře využití [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) testování částí.
 
 [Použití mezipaměti Azure pro Redis s Pythonem](cache-python-get-started.md) ukazuje, jak začít pracovat s mezipamětí Azure pro Redis pomocí Pythonu a [redis-py](https://github.com/andymccurdy/redis-py) klienta.
 

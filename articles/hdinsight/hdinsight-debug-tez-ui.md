@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 65e0fed29909ad5714b35659a7dd453e095a3eeb
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012806"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713709"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Použití uživatelského rozhraní Apache Tez k ladění úloh Tez na HDInsight se systémem Windows
 [Apache TEZ](https://tez.apache.org/) uživatelského rozhraní lze použít k ladění [Apache Hive](https://hive.apache.org/) úlohy, které používají jako prováděcí modul Tez. Uživatelského rozhraní Tez vizualizuje úlohy graf připojené položky, můžete přejít k podrobnostem jednotlivých položek a získání statistik a informace o protokolování.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, používající Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Požadavky
 * Cluster HDInsight se systémem Windows. Pokyny k vytvoření nového clusteru, najdete v článku [začněte používat HDInsight se systémem Windows](hdinsight-hadoop-tutorial-get-started-windows.md).
 
-  > [!IMPORTANT]
+  > [!IMPORTANT]  
   > Rozhraní Apache Tez je dostupná pouze na clustery HDInsight se systémem Windows, které jsou vytvořené po 8. února 2016.
-  >
-  >
+
 * Klient vzdálené plochy se systémem Windows.
 
 ## <a name="understanding-apache-tez"></a>Principy Apache Tez
@@ -65,10 +64,8 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
         en-GB   Nairobi Area    Kenya
 
 ## <a name="use-the-tez-ui"></a>Použití uživatelského rozhraní Tez
-> [!NOTE]
+> [!NOTE]  
 > Uživatelského rozhraní Tez je dostupné z desktopu hlavní uzly clusteru, pouze je nutné použít vzdálené plochy pro připojení k hlavním uzlům.
->
->
 
 1. Z [webu Azure portal](https://portal.azure.com), vyberte svůj cluster HDInsight. V horní části okna HDInsight, vyberte **vzdálené plochy** ikonu. Tento odkaz zobrazí okně vzdálené plochy
 
@@ -77,10 +74,9 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
 
     ![Ikona připojení ke vzdálené ploše](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
-   > [!NOTE]
+   > [!NOTE]  
    > Pokud jste ještě nepovolili připojení ke vzdálené ploše, zadejte uživatelské jméno, heslo a datum vypršení platnosti a pak vyberte **povolit** povolit vzdálenou plochu. Jakmile bylo povoleno, použijte pro připojení v předchozích krocích.
-   >
-   >
+
 3. Po připojení se na vzdálené plochy spusťte aplikaci Internet Explorer, vyberte ikonu ozubeného kolečka v pravém horním rohu prohlížeče a pak vyberte **nastavení kompatibilního zobrazení**.
 4. V dolní části **nastavení kompatibilního zobrazení**, zrušte zaškrtnutí políčka pro **zobrazení intranetových serverů v kompatibilní zobrazení** a **seznamy kompatibility použít Microsoft**, a potom vyberte **Zavřít**.
 5. V Internet Exploreru přejděte na http://headnodehost:8188/tezui/#/. Zobrazí se uživatelského rozhraní Tez
@@ -101,10 +97,8 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
    * **Všechny úlohy** zobrazí seznam úloh pro všechny vrcholy v tomto orientovaném acyklickém grafu.
    * **Všechny TaskAttempts** zobrazí informace o pokusy o spuštění úlohy pro tomto orientovaném acyklickém grafu.
 
-     > [!NOTE]
+     > [!NOTE]  
      > Pokud posunete zobrazení sloupců pro vrcholy, úkoly a TaskAttempts, Všimněte si, že jsou odkazů pro zobrazení **čítače** a **zobrazení nebo stažení protokolů** pro každý řádek.
-     >
-     >
 
      Pokud došlo k chybě s úlohou, zobrazovat podrobnosti DAG stav nebyl úspěšný, spolu s odkazy na informace o neúspěšné úloze. Diagnostické informace se zobrazí pod podrobnosti DAG.
 8. Vyberte **grafické zobrazení**. Zobrazí se grafická reprezentace tomto orientovaném acyklickém grafu. Každý vrchol, v zobrazení pro zobrazení informací o něm můžete umístit ukazatel myši.
@@ -115,20 +109,17 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
     ![Podrobnosti vrcholu](./media/hdinsight-debug-tez-ui/vertexdetails.png)
 10. Všimněte si, že máte nyní odkazy v horní části stránky, které se vztahují k vrcholů a úkoly.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Můžete také dostanete na této stránce tak, že přejdete zpět **DAG podrobnosti**, kde vyberou **podrobnosti vrcholu**a pak vyberete **mapování 1** vrcholu.
-    >
-    >
 
     * **Vrchol čítače** zobrazí informace o čítači pro tento vrchol.
     * **Úlohy** zobrazuje úlohy pro tento vrchol.
     * **Úloha pokusy** zobrazí informace o pokusy o spuštění úlohy pro tento vrchol.
     * **Zdroje a jímky** zobrazí zdroje a jímky pro tento vrchol.
 
-      > [!NOTE]
+      > [!NOTE]  
       > Jako s předchozí nabídky můžete procházet zobrazení sloupců pro úlohy, pokusy o spuštění úkolu a zdrojů a Sinks__ zobrazíte odkazy na další informace pro každou položku.
-      >
-      >
+
 11. Vyberte **úlohy**a potom vyberte položku s názvem **00_000000**. Tento odkaz zobrazí **podrobnosti úlohy** pro tuto úlohu. Na této obrazovce můžete zobrazit **úloh čítače** a **pokusy o spuštění úkolu**.
 
     ![Detail úlohy](./media/hdinsight-debug-tez-ui/taskdetails.png)

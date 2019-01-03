@@ -7,27 +7,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 57832b59d8b43f5aa157b278e67c50b25084c86c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8b86f79cb5af34105a666613152acc0acfb08f56
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962831"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808923"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Připojení ke službě Azure Cosmos DB Qlik Sense a vizualizace dat
 
 Qlik Sense je nástroj pro vizualizaci dat, která kombinuje data z různých zdrojů do jednoho zobrazení. Qlik Sense indexuje všech možných relací ve vašich datech, takže můžete získat okamžitý přehled k datům. S použitím Qlik Sense můžete vizualizovat data služby Azure Cosmos DB. Tento článek popisuje kroky potřebné pro připojení služby Azure Cosmos DB k Qlik Sense a vizualizace dat služby. 
 
 > [!NOTE]
-> Připojení ke službě Azure Cosmos DB Qlik Sense aktuálně podporuje pouze účty SQL API služby Azure Cosmos DB a rozhraním API MongoDB.
+> Připojení ke službě Azure Cosmos DB Qlik Sense aktuálně podporuje pro rozhraní API pro MongoDB účty pouze rozhraní SQL API a služby Azure Cosmos DB.
 
 Můžete připojit Qlik Sense ke službě Azure Cosmos DB pomocí:
 
 * SQL API služby cosmos DB pomocí konektoru rozhraní ODBC.
 
-* MongoDB API služby cosmos DB pomocí konektoru Qlik Sense MongoDB (aktuálně ve verzi preview).
+* Rozhraní API služby Azure Cosmos DB pro MongoDB pomocí konektoru Qlik Sense MongoDB (aktuálně ve verzi preview).
 
-* Rozhraní MongoDB API služby cosmos DB a rozhraní SQL API pomocí rozhraní REST API konektoru v Qlik Sense.
+* Rozhraní API služby Azure Cosmos DB pro MongoDB a rozhraní SQL API pomocí rozhraní REST API konektoru v Qlik Sense.
 
 * Cosmos DB rozhraní Mongodb API s využitím konektoru gRPC Qlik jádra.
 Tento článek popisuje podrobnosti o připojení k SQL API služby Cosmos DB pomocí konektoru rozhraní ODBC.

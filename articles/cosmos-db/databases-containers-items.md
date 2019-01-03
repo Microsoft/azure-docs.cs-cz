@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 39de7453c9d3b0335748cd37e4b1eef91b64b207
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6757f887376e1b399d6af18f114e203991c16a67
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409537"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53807682"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
 
@@ -24,7 +24,7 @@ Po vytvoření [účtu služby Azure Cosmos DB](account-overview.md) v rámci va
 
 Jeden nebo více databází Azure Cosmos můžete vytvořit v rámci vašeho účtu. Databáze je obdobou do oboru názvů, je to jednotka správy pro skupinu kontejnerů Azure Cosmos. Následující tabulka ukazuje, jak databáze Azure Cosmos je namapována na různé entity specifické pro rozhraní API:
 
-| **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
 |Databáze Azure Cosmos | Databáze | Prostor klíčů | Databáze | Databáze | Není k dispozici |
 
@@ -35,7 +35,7 @@ Jeden nebo více databází Azure Cosmos můžete vytvořit v rámci vašeho ú�
 
 Můžete pracovat s databází Azure Cosmos pomocí následující rozhraní API Azure Cosmos:
 
-| **Operace** | **Azure CLI**|**ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Operace** | **Azure CLI**|**ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- |
 |Vytvořit výčet všech databází| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
 |Databáze pro čtení| Ano | Ano | Ano (databáze je namapován prostor klíčů) | Ano | Není k dispozici | Není k dispozici |
@@ -67,7 +67,7 @@ Zadejte jedinečný klíč, který na váš kontejner Azure Cosmos. Vytvořením
 
 Kontejner služby Azure Cosmos je specializovaný do entity specifické pro rozhraní API následujícím způsobem:
 
-| **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Entita Azure Cosmos** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
 |Kontejner Azure Cosmos | Kolekce | Table | Kolekce | Graph | Table |
 
@@ -75,7 +75,7 @@ Kontejner služby Azure Cosmos je specializovaný do entity specifické pro rozh
 
 Kontejner služby Azure Cosmos je sada vlastností definovaná systémem. V závislosti na výběru rozhraní API některé z nich nesmí být zveřejněné přímo. Následující tabulka obsahuje seznam vlastností podporovaných definovaná systémem:
 
-| **Vlastnost definovaná systémem** | **Systém generované nebo nastavit uživatele** | **Účel** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Vlastnost definovaná systémem** | **Systém generované nebo nastavit uživatele** | **Účel** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__rid | Vygenerované systémem | Jedinečný identifikátor kontejneru | Ano | Ne | Ne | Ne | Ne |
 |__etag | Vygenerované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
@@ -91,7 +91,7 @@ Kontejner služby Azure Cosmos je sada vlastností definovaná systémem. V záv
 
 Kontejner služby Azure Cosmos podporuje následující operace pomocí kteréhokoli z rozhraní API služby Azure Cosmos.
 
-| **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Zobrazení výčtu kontejnery v databázi | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
 | Přečtěte si kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
@@ -103,7 +103,7 @@ Kontejner služby Azure Cosmos podporuje následující operace pomocí kterého
 
 V závislosti na výběru rozhraní API položka Azure Cosmos může představovat dokumentu v kolekci řádek v tabulce nebo uzlů nebo hran v grafu. V následující tabulce jsou uvedeny mapování mezi entitami specifické pro rozhraní API do Azure Cosmos položky:
 
-| **Cosmos entity** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Cosmos entity** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- |
 |Azure Cosmos položky | Dokument | Řádek | Dokument | Uzlů nebo hran | Položka |
 
@@ -111,7 +111,7 @@ V závislosti na výběru rozhraní API položka Azure Cosmos může představov
 
 Každá položka Azure Cosmos má následující vlastnosti definovaná systémem. V závislosti na výběru rozhraní API některé z nich nesmí být zveřejněné přímo.
 
-|**Vlastnost definovaná systémem** | **Systém generované nebo nastavit uživatele**| **Účel** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+|**Vlastnost definovaná systémem** | **Systém generované nebo nastavit uživatele**| **Účel** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |__id | Vygenerované systémem | Jedinečný identifikátor položky | Ano | Ne | Ne | Ne | Ne |
 |__etag | Vygenerované systémem | Značka entity používá pro optimistického řízení souběžnosti | Ano | Ne | Ne | Ne | Ne |
@@ -124,7 +124,7 @@ Každá položka Azure Cosmos má následující vlastnosti definovaná systéme
 
 Azure Cosmos položka podporuje následující operace, které je možné provádět pomocí některé z rozhraní API služby Azure Cosmos.
 
-| **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
+| **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní API služby Azure Cosmos DB pro MongoDB** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Vložit, nahradí, odstranit, Upsert, přečtěte si | Ne | Ano | Ano | Ano | Ano | Ano |
 

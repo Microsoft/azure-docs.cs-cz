@@ -9,26 +9,26 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf290343634f9f9f836a87ab15f13cc1dac6f86f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141947"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53994976"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
-Azure Stream Analytics (ASA) v prostředí IoT Edge umožňuje vývojářům nasadit téměř v reálném čase inteligentní funkce analýzy blíže zařízením IoT tak, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Azure Stream Analytics je určená pro nízkou latenci, odolnost a efektivní využití šířky pásma a dodržování předpisů. Podniky nyní můžete nasadit logiky ovládacího prvku blízko průmyslové operací a doplňují analýzy velkých objemů dat v cloudu.  
+Azure Stream Analytics (ASA) v prostředí IoT Edge umožňuje vývojářům nasadit téměř v reálném čase inteligentní funkce analýzy blíže zařízením IoT tak, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Služba Azure Stream Analytics je určená k zajištění nízké latence, odolnosti, efektivního využití šířky pásma a dodržování předpisů. Podniky nyní můžete nasadit logiky ovládacího prvku blízko průmyslové operací a doplňují analýzy velkých objemů dat v cloudu.  
 
 Azure Stream Analytics na hraničních zařízeních IoT běží v rámci [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) rozhraní framework. Po vytvoření úlohy v Azure Stream Analytics můžete nasadit a spravovat ho pomocí služby IoT Hub.
 
 ## <a name="scenarios"></a>Scénáře
 ![Vysokoúrovňový diagram IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Příkaz s nízkou latencí a ovládací prvek**: například výrobní bezpečnostních systémů musí odpovědět na provozních dat s mimořádně nízkou latencí. S Azure Stream Analytics na hraničních zařízeních IoT můžete analyzovat senzor, data v téměř reálném čase a vydávat příkazy při detekci anomálií zastavit na počítači nebo aktivovat upozornění.
-*   **Omezené připojení ke cloudu**: středisko důležité systémy, jako je například vzdáleného hornictví zařízení, připojených plavidel nebo poskytuje procházení, potřebujete k analýze a reagovat na data, i když je přerušované připojení ke cloudu. S Azure Stream Analytics streamování logiky běží nezávisle na připojení k síti a můžete zvolit, jaké můžete odesílat do cloudu pro další zpracování nebo úložiště.
-* **Omezená šířka pásma**: objem dat vytvářených jet moduly nebo auta připojená k síti může být tak velká, že data musí být filtrovaný nebo předem zpracovaných před odesláním do cloudu. Azure Stream Analytics můžete filtrovat nebo agregaci dat, kterou je potřeba odeslat do cloudu.
-* **Dodržování předpisů**: dodržování legislativních předpisů mohou vyžadovat nějaká data místně anonymizované nebo agregovaná před odesláním do cloudu.
+* **Příkaz s nízkou latencí a ovládací prvek**: Například výrobní bezpečnostních systémů musí odpovědět na provozních dat s mimořádně nízkou latencí. S Azure Stream Analytics na hraničních zařízeních IoT můžete analyzovat senzor, data v téměř reálném čase a vydávat příkazy při detekci anomálií zastavit na počítači nebo aktivovat upozornění.
+*   **Omezené připojení ke cloudu**: Středisko důležité systémy, jako je například vzdáleného hornictví zařízení, připojených plavidel nebo poskytuje procházení, potřebujete k analýze a reagovat na data, i když je přerušované připojení ke cloudu. S Azure Stream Analytics streamování logiky běží nezávisle na připojení k síti a můžete zvolit, jaké můžete odesílat do cloudu pro další zpracování nebo úložiště.
+* **Omezená šířka pásma**: Objem dat vytvářených jet moduly nebo auta připojená k síti může být tak velká, že data musí být filtrovaný nebo předem zpracovaných před odesláním do cloudu. Azure Stream Analytics můžete filtrovat nebo agregaci dat, kterou je potřeba odeslat do cloudu.
+* **Dodržování předpisů**: Některá data místně anonymizované nebo agregovaná před odesláním do cloudu může vyžadovat dodržování legislativních předpisů.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Hraniční úlohy ve službě Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Co je "hraniční" úlohy?
@@ -144,7 +144,7 @@ Tento příklad definuje následující trasy:
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuální omezení pro úlohy IoT Edge ve srovnání s cloudové úlohy
 Cílem je, aby parity mezi úlohy IoT Edge a cloudu. Většina funkcí jazyka SQL dotazu již jsou podporovány.
 Ale tyto funkce zatím nepodporuje hraniční úlohy:
-* Uživatelem definované funkce (UDF) v jazyce JavaScript. Jsou k dispozici v systému souborů UDF [ C# pro úlohy IoT Edge](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview).
+* Uživatelem definované funkce (UDF) v jazyce JavaScript. Jsou k dispozici v systému souborů UDF [ C# pro úlohy IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (preview).
 * Uživatelem definované agregace (UDA).
 * Funkce Azure ML
 * Použití více než 14 agregací v jediném kroku.
@@ -167,7 +167,7 @@ Ke spuštění Azure Stream Analytics na hraničních zařízeních IoT, je tře
 
 Azure Stream Analytics a Azure IoT Edge, použijte **Docker** kontejnery a poskytovat přenosné řešení, na kterém běží ve více hostitelských operačních systémech (Windows, Linux).
 
-Azure Stream Analytics na hraničních zařízeních IoT je k dispozici jako Image Windows a Linuxem, spuštěné na x86 – x 64 nebo architektury Azure Resource Manageru. 
+Azure Stream Analytics na hraničních zařízeních IoT je k dispozici jako Image Windows a Linuxem, spuštěné na x86 – x 64 nebo ARM (Advanced RISC počítače) architektury. 
 
 
 ### <a name="input-and-output"></a>Vstup a výstup

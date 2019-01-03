@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: f96082aaa174886c085ba67ee0f3e870e53136e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 917cf6ddf23fb9240aa6f2cef8add14c66d0cb06
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600756"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973161"
 ---
 # <a name="build-a-net-core-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Sestavení aplikace konzoly .NET Core pro správu dat v účtu rozhraní SQL API služby Azure Cosmos DB (sada SDK verze 3 ve verzi Preview)
 
@@ -188,7 +188,7 @@ Blahopřejeme! Právě jste úspěšně propojili s účtem služby Azure Cosmos
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
 
-Databázi lze vytvořit buď pomocí [ **CreateDatabaseIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) nebo [ **CreateDatabaseAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkce `Databases` třídy. Databáze je logický kontejner položek rozdělených napříč kontejnery.
+Databázi lze vytvořit buď pomocí [ **CreateDatabaseIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) nebo [ **CreateDatabaseAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkce **CosmosDatabases** třídy. Databáze je logický kontejner položek rozdělených napříč kontejnery.
 
 1. Zkopírujte a vložte **CreateDatabase** metodu vaše **GetStartedDemoAsync** metody. **CreateDatabase** vytvoří novou databázi s id `FamilyDatabase` Pokud již neexistuje, pomocí zadané z id `databaseId` pole.
 
@@ -304,7 +304,7 @@ Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.
 > [!WARNING]
 > Volání metody **CreateContainerIfNotExistsAsync** vytvoří nový kontejner, kterou se hradí. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-Kontejner můžete vytvořit buď pomocí [ **CreateContainerIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) nebo [ **CreateContainerAsync** ](https://aka.ms/CosmosDotnetAPIDocs) pracovat **Kontejnery** třídy. Kontejner se skládá z položek (což je v případě rozhraní SQL API je dokumentů JSON) a přidružené logiky Javascriptové aplikace na straně serveru, třeba uložených procedur, uživatelsky definované funkce a aktivační události.
+Kontejner můžete vytvořit buď pomocí [ **CreateContainerIfNotExistsAsync** ](https://aka.ms/CosmosDotnetAPIDocs) nebo [ **CreateContainerAsync** ](https://aka.ms/CosmosDotnetAPIDocs) pracovat **CosmosContainers** třídy. Kontejner se skládá z položek (což je v případě rozhraní SQL API je dokumentů JSON) a přidružené logiky Javascriptové aplikace na straně serveru, třeba uložených procedur, uživatelsky definované funkce a aktivační události.
 
 1. Zkopírujte a vložte **CreateContainer** metodu vaše **CreateDatabase** metody. **CreateContainer** vytvoří nový kontejner s id `FamilyContainer` Pokud již neexistuje, pomocí zadané z id `containerId` pole.
 
@@ -341,7 +341,7 @@ Blahopřejeme! Úspěšně jste vytvořili kontejner Azure Cosmos DB.
 
 ## <a id="CreateDoc"></a>Krok 6: Přidání položek do kontejneru
 
-Položky můžete vytvořit pomocí [ **CreateItemAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkce **položky** třídy. Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
+Položky můžete vytvořit pomocí [ **CreateItemAsync** ](https://aka.ms/CosmosDotnetAPIDocs) funkce **CosmosItems** třídy. Při používání rozhraní SQL API jsou položky dokumenty, které představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit položku do kontejneru Azure Cosmos DB.
 
 Nejprve musíme vytvořit třídu **Family**, která bude v této ukázce představovat objekty uložené ve službě Azure Cosmos DB. Kromě toho vytvoříme i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Povšimněte si, že dokumenty musí mít vlastnost **Id** serializovanou jako **id** ve formátu JSON.
 

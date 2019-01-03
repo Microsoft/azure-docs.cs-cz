@@ -30,16 +30,8 @@ items:
   items:
   - name: Migrace z v2 v3
     href: migrate-from-v2-to-v3.md
-  - name: Analýza obsahu
-    href: analyzing-video-audio-files-concept.md
-  - name: Kódování obsahu
-    href: encoding-concept.md
-    items:
-    - name: Standardní formáty Media Encoderu
-      href: media-encoder-standard-formats.md
-    - name: Adaptivní žebříček přenosových rychlostí Autogen
-      href: autogen-bitrate-ladder.md
-  - name: Prověřování entit
+  - name: Entity
+    href: entities-overview.md
     items:
     - name: Filtry účtů a prostředků
       href: filters-dynamic-manifest-overview.md
@@ -47,6 +39,8 @@ items:
       href: assets-concept.md
     - name: Zásady symetrických klíčů
       href: content-key-policy-concept.md
+    - name: Události LiveEvent a výstupy LiveOutput
+      href: live-events-outputs-concept.md
     - name: Koncové body streamování
       href: streaming-endpoint-concept.md
     - name: Lokátory streamování
@@ -55,8 +49,13 @@ items:
       href: streaming-policy-concept.md
     - name: Transformace a úlohy
       href: transforms-jobs-concept.md
-  - name: Prověřování účtů úložiště
-    href: storage-account-concept.md
+  - name: Kódování obsahu
+    href: encoding-concept.md
+    items:
+    - name: Standardní formáty Media Encoderu
+      href: media-encoder-standard-formats.md
+    - name: Adaptivní žebříček přenosových rychlostí Autogen
+      href: autogen-bitrate-ladder.md
   - name: Zpracování událostí služby Event Grid
     href: reacting-to-media-services-events.md
   - name: Ochrana obsahu
@@ -65,6 +64,8 @@ items:
       href: content-protection-overview.md
     - name: Systém s více variantami DRM s řízením přístupu
       href: design-multi-drm-system-with-access-control.md
+  - name: Analýza obsahu
+    href: analyzing-video-audio-files-concept.md
   - name: Streamování živých událostí
     href: live-streaming-overview.md
     items:
@@ -78,6 +79,8 @@ items:
       href: live-event-states-billing.md
     - name: Latence
       href: live-event-latency.md
+  - name: Účty úložiště
+    href: storage-account-concept.md
 - name: Návody
   items:
   - name: Vytvoření účtu – rozhraní příkazového řádku
@@ -182,9 +185,9 @@ items:
     href: limits-quotas-constraints.md
   - name: Nejčastější dotazy
     href: frequently-asked-questions.md
-ms.openlocfilehash: aafc49b10a012bab6c3dc3d455480deca44fde32
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 660052b4e82f6e005c096b5ac1edd7a80c2d5339
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631987"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53744968"

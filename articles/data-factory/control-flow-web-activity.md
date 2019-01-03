@@ -1,6 +1,6 @@
 ---
-title: Webové aktivity v Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak webové aktivity, jeden z aktivity toku řízení podporovaných službou Data Factory, můžete vyvolat koncový bod REST z kanálu.
+title: Webové aktivity ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak můžete pomocí webová aktivita, jeden z aktivity toku řízení podporovaných službou Data Factory, který má být vyvolán koncového bodu REST z kanálu.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 12/19/2018
 ms.author: shlo
-ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: adfb30b73bbc9929bbfe3b07bd830d3f278bcc27
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058908"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723684"
 ---
-# <a name="web-activity-in-azure-data-factory"></a>Aktivity webového v Azure Data Factory
+# <a name="web-activity-in-azure-data-factory"></a>Aktivita webu ve službě Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
 
 ## <a name="syntax"></a>Syntaxe
@@ -60,44 +60,44 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 ```
 
-## <a name="type-properties"></a>Vlastnosti typu
+## <a name="type-properties"></a>Typ vlastnosti
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název webové aktivity | Řetězec | Ano
-type | Musí být nastavena na **WebActivity**. | Řetězec | Ano
-method | Metoda REST API pro koncový bod cíl. | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
-url | Koncový bod cíl a cesty | Řetězec (nebo výraz s hodnotou resultType řetězec). Aktivity bude časový limit na 1 minutu, zobrazí se chyba, pokud neobdrží odpověď z koncového bodu. | Ano
-hlavičky | Hlavičky, které se odesílají na požadavek. Chcete-li například nastavit jazyk a typ na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ano, je požadovaná hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
-hlavní část | Představuje datovou část, která je odeslána koncovému bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězec). <br/><br/>Najdete v části schéma datová část požadavku v [schématu datová část požadavku](#request-payload-schema) části. | Vyžaduje se pro metody POST nebo PUT.
-Ověřování | Metodu ověřování pro volání koncový bod. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) části. Pokud ověření není vyžadováno, vyloučíte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ne
-Datové sady | Seznam datových sad předaná koncovému bodu. | Pole odkazuje na datovou sadu. Může být prázdné pole. | Ano
-linkedServices | Seznam propojené služby předaná koncovému bodu. | Pole Propojená služba odkazuje. Může být prázdné pole. | Ano
+jméno | Název aktivity webu | Řetězec | Ano
+type | Musí být nastaveno na **WebActivity**. | Řetězec | Ano
+method | Metoda REST API pro cílový koncový bod. | řetězec. <br/><br/>Podporované typy: "GET", "POST", "UMÍSTĚNÍ" | Ano
+url | Cílový koncový bod a cesty | Řetězec (nebo výraz s hodnotu resultType řetězec). Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu. | Ano
+Záhlaví | Hlavičky, které se odesílají na požadavek. Například nastavení jazyka a typu na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ano, vyžaduje se hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
+hlavní část | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotu resultType řetězec). <br/><br/>Zobrazit schéma datové části požadavku v [schématu datové části požadavku](#request-payload-schema) oddílu. | Vyžaduje se pro metody POST a PUT.
+Ověřování | Metodu ověřování pro volání koncového bodu. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) oddílu. Pokud se nevyžaduje ověřování, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotu resultType řetězec) | Ne
+datové sady | Seznam datových sad předaná koncovému bodu. | Pole odkazů na datovou sadu. Může být prázdné pole. | Ano
+linkedServices | Seznam propojených služeb předaná koncovému bodu. | Pole odkazů na propojenou službu. Může být prázdné pole. | Ano
 
 > [!NOTE]
-> Koncové body REST, která volá webové aktivity musí vracet odpověď typu JSON. Aktivity bude časový limit na 1 minutu, zobrazí se chyba, pokud neobdrží odpověď z koncového bodu.
+> Koncové body REST, které vyvolá aktivitu webu musí vracet odpověď typu JSON. Aktivita vyprší časový limit na 1 minutu s chybou, pokud neobdrží odpověď z koncového bodu.
 
 V následující tabulce jsou uvedeny požadavky pro obsah JSON:
 
-| Typ hodnoty | Tělo požadavku | Text odpovědi |
+| Typ hodnoty | Text požadavku | Text odpovědi |
 |---|---|---|
-|Objekt JSON | Podporováno | Podporováno |
+|JSON – objekt | Podporováno | Podporováno |
 |Pole JSON | Podporováno <br/>(V současné době pole JSON nefungují v důsledku chyby. Oprava probíhá.) | Nepodporovaný |
 | Hodnota JSON | Podporováno | Nepodporovaný |
-| JSON bez typu | Nepodporovaný | Nepodporovaný |
+| Typ non-JSON | Nepodporovaný | Nepodporovaný |
 ||||
 
 ## <a name="authentication"></a>Authentication
 
 ### <a name="none"></a>Žádný
-Pokud ověření není potřeba, nezahrnujte vlastnosti "ověřování".
+Pokud se nevyžaduje ověřování, nezahrnujte vlastnosti "ověřování".
 
 ### <a name="basic"></a>Basic
 Zadejte uživatelské jméno a heslo pro použití se základním ověřováním. 
 
 ```json
 "authentication":{  
-   "type":"Basic,
+   "type":"Basic",
    "username":"****",
    "password":"****"
 }
@@ -113,8 +113,20 @@ Zadejte obsah souboru PFX a heslo s kódováním base64.
    "password":"****"
 }
 ```
-## <a name="request-payload-schema"></a>Schéma datová část požadavku
-Pokud použijete metodu POST nebo PUT, vlastnosti body představuje datovou část, která je odeslána koncovému bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datové části: 
+
+### <a name="managed-identity"></a>Spravovaná identita
+
+Zadejte identifikátor uri prostředku, pro kterou přístupový token bude vyžádána pomocí spravované identity služby data factory. Chcete-li volat rozhraní API pro správu prostředků Azure, použijte `https://management.azure.com/`.
+
+```json
+"authentication": {
+    "type": "MSI",
+    "resource": "https://management.azure.com/"
+}
+```
+
+## <a name="request-payload-schema"></a>Schéma datové části požadavku
+Pokud použijete metodu POST a PUT, vlastnost text představuje datová část odeslaná do koncového bodu. Propojené služby a datové sady můžete předat jako součást datové části. Tady je schéma pro datové části: 
 
 ```json
 {
@@ -137,7 +149,7 @@ Pokud použijete metodu POST nebo PUT, vlastnosti body představuje datovou čá
 ```
 
 ## <a name="example"></a>Příklad:
-V tomto příkladu webové aktivitu v kanálu zavolá koncový bod REST. Projde propojená služba Azure SQL a datové sadě služby Azure SQL ke koncovému bodu. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru Azure SQL a vrátí název instance systému SQL server. 
+V tomto příkladu volá webová aktivita v kanálu koncový bod REST. Předá propojené služby Azure SQL a datová sada služby Azure SQL do koncového bodu. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru Azure SQL a vrátí název instance systému SQL server. 
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 
@@ -191,7 +203,7 @@ V tomto příkladu webové aktivitu v kanálu zavolá koncový bod REST. Projde 
 
 ```
 
-### <a name="pipeline-parameter-values"></a>Hodnoty parametru kanálu
+### <a name="pipeline-parameter-values"></a>Hodnoty parametrů kanálu
 
 ```json
 {
@@ -201,7 +213,7 @@ V tomto příkladu webové aktivitu v kanálu zavolá koncový bod REST. Projde 
 
 ```
 
-### <a name="web-service-endpoint-code"></a>Kódu koncový bod webové služby
+### <a name="web-service-endpoint-code"></a>Koncový bod kódu webové služby
 
 ```csharp
 
@@ -231,7 +243,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>Další postup
-Najdete v části Další aktivity toku řízení podporovaných službou Data Factory: 
+Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Pro každou aktivitu](control-flow-for-each-activity.md)

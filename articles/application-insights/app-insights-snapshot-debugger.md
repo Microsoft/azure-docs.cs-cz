@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a9e7cfdf9b63e511c3b59e840999024e849122aa
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136711"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808889"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 
-Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](app-insights-asp-net-exceptions.md) na portálu Application Insights.
+Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
 
 Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat více výkonné možnosti ladění se zdrojovým kódem, otevřete snímky pomocí sady Visual Studio 2017 Enterprise. V sadě Visual Studio, můžete také [nastavit snímkovací body interaktivně pořizovat snímky](https://aka.ms/snappoint) bez čekání na výjimku.
 
@@ -43,11 +43,11 @@ Podporují se následující prostředí:
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET
 
-1. [Povolit Application Insights ve webové aplikaci](app-insights-asp-net.md), pokud jste to ještě neudělali.
+1. [Povolit Application Insights ve webové aplikaci](../azure-monitor/app/asp-net.md), pokud jste to ještě neudělali.
 
 2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
-3. Zkontrolujte výchozí možnosti, které balíček přidány do [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
+3. Zkontrolujte výchozí možnosti, které balíček přidány do [soubor ApplicationInsights.config](../azure-monitor/app/configuration-with-applicationinsights-config.md):
 
     ```xml
     <TelemetryProcessors>
@@ -81,12 +81,12 @@ Podporují se následující prostředí:
     </TelemetryProcessors>
     ```
 
-4. Snímky se shromažďují pouze na výjimky, které se hlásí do Application Insights. V některých případech (například starší verze platformy .NET), možná budete muset [Konfigurovat shromažďování výjimek](app-insights-asp-net-exceptions.md#exceptions) pro zobrazení výjimek pomocí snímků na portálu.
+4. Snímky se shromažďují pouze na výjimky, které se hlásí do Application Insights. V některých případech (například starší verze platformy .NET), možná budete muset [Konfigurovat shromažďování výjimek](../azure-monitor/app/asp-net-exceptions.md#exceptions) pro zobrazení výjimek pomocí snímků na portálu.
 
 
 ### <a name="configure-snapshot-collection-for-aspnet-core-20-applications"></a>Konfigurace shromažďování snímků pro aplikace ASP.NET Core 2.0
 
-1. [Povolit Application Insights ve webové aplikaci ASP.NET Core](app-insights-asp-net-core.md), pokud jste to ještě neudělali.
+1. [Povolit Application Insights ve webové aplikaci ASP.NET Core](../azure-monitor/app/asp-net-core.md), pokud jste to ještě neudělali.
 
     > [!NOTE]
     > Být jisti, že vaše aplikace odkazuje na verzi 2.1.1 nebo novější, Microsoft.ApplicationInsights.AspNetCore balíčku.
@@ -212,7 +212,7 @@ Přiřaďte vlastníky těchto předplatných `Application Insights Snapshot Deb
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Ladění snímků na portálu Application Insights
 
-Pokud je k dispozici pro danou výjimku nebo ID problému, snímku **otevřít snímek ladění** tlačítko se zobrazí na [výjimka](app-insights-asp-net-exceptions.md) na portálu Application Insights.
+Pokud je k dispozici pro danou výjimku nebo ID problému, snímku **otevřít snímek ladění** tlačítko se zobrazí na [výjimka](../azure-monitor/app/asp-net-exceptions.md) na portálu Application Insights.
 
 ![Tlačítko Otevřít snímek ladění výjimek](./media/app-insights-snapshot-debugger/snapshot-on-exception.png)
 
@@ -235,8 +235,8 @@ Stažený snímek zahrnuje všechny soubory symbolů, které se nacházejí na w
 
 ## <a name="how-snapshots-work"></a>Jak fungují snímky
 
-Snapshot Collector je implementovaný jako [procesoru Telemetrie Application Insights](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po spuštění aplikace procesoru snímku kolektor Telemetrie se přidá do kanálu telemetrie vaší aplikace.
-Pokaždé, když vaše aplikace volání [TrackException](app-insights-asp-net-exceptions.md#exceptions), ID problému z typu výjimky a hází metoda vypočítá Snapshot Collector.
+Snapshot Collector je implementovaný jako [procesoru Telemetrie Application Insights](../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Po spuštění aplikace procesoru snímku kolektor Telemetrie se přidá do kanálu telemetrie vaší aplikace.
+Pokaždé, když vaše aplikace volání [TrackException](../azure-monitor/app/asp-net-exceptions.md#exceptions), ID problému z typu výjimky a hází metoda vypočítá Snapshot Collector.
 Pokaždé, když vaše aplikace volá TrackException, hodnota čítače se zvýší pro odpovídající ID problému. Dosáhne-li čítač `ThresholdForSnapshotting` hodnotu, ID problému se přidá do kolekce plánu.
 
 Snapshot Collector také sleduje výjimky, jako jsou vyvolány prostřednictvím přihlášení k odběru [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) událostí. Když se aktivuje tuto událost, ID problému výjimky je počítaný porovná s ID problému v plánu shromažďování dat
@@ -472,10 +472,10 @@ Pokud stále nevidíte výjimka s tímto ID snímku, nebyl telemetrie výjimek h
 
 ### <a name="edit-network-proxy-or-firewall-rules"></a>Upravit pravidla proxy nebo brány firewall sítě
 
-Pokud vaše aplikace připojuje k Internetu přes proxy server nebo brána firewall, budete muset upravit pravidla, aby vaše aplikace mohla komunikovat se službou Snapshot Debugger. Tady je [seznam IP adres a portů používaných Snapshot Debugger](app-insights-ip-addresses.md#snapshot-debugger).
+Pokud vaše aplikace připojuje k Internetu přes proxy server nebo brána firewall, budete muset upravit pravidla, aby vaše aplikace mohla komunikovat se službou Snapshot Debugger. Tady je [seznam IP adres a portů používaných Snapshot Debugger](../azure-monitor/app/ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>Další postup
 
 * [Nastavit snímkovací body ve vašem kódu](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) získat snímky bez čekání na výjimku.
-* [Diagnostika výjimek ve vašich webových aplikacích](app-insights-asp-net-exceptions.md) vysvětluje, jak zviditelnit více výjimek Application Insights.
+* [Diagnostika výjimek ve vašich webových aplikacích](../azure-monitor/app/asp-net-exceptions.md) vysvětluje, jak zviditelnit více výjimek Application Insights.
 * [Inteligentní zjišťování](app-insights-proactive-diagnostics.md) automaticky zjišťuje anomálie výkonu.

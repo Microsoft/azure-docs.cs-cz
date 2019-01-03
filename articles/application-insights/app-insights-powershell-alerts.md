@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: dda4e26de74dbd5579f2dd45ea47f42c904f028f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 74776a658c7a0002df40b1b3ccb572e9b9262540
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271721"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972921"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
-Můžete automatizovat konfiguraci [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
+Můžete automatizovat konfiguraci [výstrahy](../azure-monitor/app/alerts.md) v [Application Insights](app-insights-overview.md).
 
 Kromě toho můžete [nastavit webhooky automatizovat reakce na výstrahy](../azure-monitor/platform/alerts-webhooks.md).
 
@@ -81,7 +81,7 @@ Identifikátor GUID je ID předplatného (ne klíč instrumentace aplikace).
      -Location "East US" -RuleType Metric
 
 ## <a name="example-2"></a>Příklad 2
-Mám aplikaci, ve které používám [metody TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) hlášení metriku s názvem "salesPerHour." Posílejte že e-mailu kolegové Pokud "salesPerHour" klesne pod 100, byla po dobu 24 hodin.
+Mám aplikaci, ve které používám [metody TrackMetric()](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) hlášení metriku s názvem "salesPerHour." Posílejte že e-mailu kolegové Pokud "salesPerHour" klesne pod 100, byla po dobu 24 hodin.
 
     Add-AzureRmMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -94,7 +94,7 @@ Mám aplikaci, ve které používám [metody TrackMetric()](app-insights-api-cus
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](app-insights-api-custom-events-metrics.md#properties) jiného sledování volání, jako je například TrackEvent nebo trackPageView.
+Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledování volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
 | Název metriky | Název obrazovky | Popis |
@@ -120,16 +120,16 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](a
 | `request.rate` |Frekvence žádostí |Počet všech žádostí na aplikaci za sekundu. |
 | `requestFailed.count` |Neúspěšné požadavky |Žádosti o počet protokolu HTTP, z kterých vzniklo kódem odpovědi > = 400 |
 | `view.count` |Zobrazení stránek |Počet žádostí uživatele klienta pro webovou stránku. Syntetický provoz je odfiltrována. |
-| {váš vlastní název metriky} |{Váš název metriky} |Metriky hodnotu hlášenou [TrackMetric](app-insights-api-custom-events-metrics.md#trackmetric) nebo [měření parametr sledování volání](app-insights-api-custom-events-metrics.md#properties). |
+| {váš vlastní název metriky} |{Váš název metriky} |Metriky hodnotu hlášenou [TrackMetric](../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nebo [měření parametr sledování volání](../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
 Metriky odesílá telemetrická data různých modulů:
 
 | Metriky skupiny | Modul kolekcí |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazit |[JavaScript prohlížeče](app-insights-javascript.md) |
-| PerformanceCounter |[Výkon](app-insights-configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[Závislost](app-insights-configuration-with-applicationinsights-config.md) |
-| žádost<br/>requestFailed |[Žádost serveru](app-insights-configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazit |[JavaScript prohlížeče](../azure-monitor/app/javascript.md) |
+| PerformanceCounter |[Výkon](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[Závislost](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| žádost<br/>requestFailed |[Žádost serveru](../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooky
 Je možné [automatizovat reakce na výstrahy](../azure-monitor/platform/alerts-webhooks.md). Azure bude volat webovou adresu podle vašeho výběru, pokud je vyvolána výstraha.

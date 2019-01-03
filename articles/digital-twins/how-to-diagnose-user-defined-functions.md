@@ -1,23 +1,27 @@
 ---
 title: Jak ladit UDF v digitální dvojče Azure | Dokumentace Microsoftu
-description: Pokyny o tom, jak ladit UDF v digitální dvojče Azure
+description: Pokyny o tom, jak ladit UDF v digitální dvojče Azure.
 author: stefanmsft
 manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 12/27/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 9476db888a4bfae2d43ae4eec340972d4c2eb714
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.custom: seodec18
+ms.openlocfilehash: e373e7c3ca83a0200cd1b6b945c5e4cb43b77a51
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413009"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974858"
 ---
-# <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak ladit problémy s uživatelsky definovaných funkcí v Azure digitální dvojče
+# <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Jak ladit uživatelsky definovaných funkcí v Azure digitální dvojče
 
-Tento článek shrnuje, jak diagnostikovat uživatelem definované funkce. Potom obsahuje některé z nejběžnějších scénářů při práci s nimi.
+Tento článek shrnuje, jak diagnostikovat uživatelem definované funkce. Potom obsahuje některé z nejběžnějších scénářů, které se mohou vyskytnout při práci s nimi.
+
+>[!TIP]
+> Čtení [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md) Další informace o nastavení nástroje pro ladění v Azure digitální dvojče pomocí protokolů aktivit, diagnostické protokoly a Azure Monitor.
 
 ## <a name="debug-issues"></a>Ladění problémů
 
@@ -28,9 +32,14 @@ Vědět, jak diagnostikovat problémy, které vznikají v rámci vaší instanci
 Protokoly a metriky pro vaši instanci Azure digitální dvojče jsou přístupné prostřednictvím služby Azure Monitor. Následující dokumentace předpokládá, že jste vytvořili [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) pracovní prostor prostřednictvím [webu Azure Portal](../azure-monitor/learn/quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../azure-monitor/learn/quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
-> Může dojít ke zpoždění 5 minut při odesílání událostí do **Log Analytics** poprvé.
+> Při odesílání událostí do služby Azure Log Analytics pro první, může dojít ke zpoždění 5 minut.
 
-Přečtěte si článek ["Shromažďovat a zpracovávat data protokolu z vašich prostředků Azure"](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) k povolení diagnostických nastavení pro vaši instanci digitální dvojče Azure na portálu, rozhraní příkazového řádku Azure nebo Powershellu. Ujistěte se, že chcete-li vybrat všechny kategorie protokolů, metrik a pracovního prostoru Azure Log Analytics.
+Ke konfiguraci, monitorování a protokolování pro prostředky Azure digitální dvojče, přečtěte si [jak nakonfigurovat monitorování a protokolování](./how-to-configure-monitoring.md).
+
+Přečtěte si článek [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../azure-monitor/platform/diagnostic-logs-overview.md) komplexní přehled nastavení diagnostického protokolu pro vaši instanci digitální dvojče Azure prostřednictvím webu Azure Portal, Azure CLI nebo Powershellu.
+
+>[!IMPORTANT]
+> Ujistěte se, že chcete-li vybrat všechny kategorie protokolů, metrik a pracovního prostoru Azure Log Analytics.
 
 ### <a name="trace-sensor-telemetry"></a>Telemetrická data ze senzorů trasování
 
@@ -56,11 +65,11 @@ AzureDiagnostics
 | where Category == 'UserDefinedFunction'
 ```
 
-Další informace o operacích výkonný dotazovací najdete v tématu [Začínáme s dotazy](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries).
+Další informace o operacích výkonný dotazovací najdete [Začínáme s dotazy](../azure-monitor/log-query/get-started-queries.md).
 
 ## <a name="identify-common-issues"></a>Identifikace běžných problémů
 
-Jak Diagnostika a identifikace běžných problémů jsou důležité při řešení potíží s vašeho řešení. Několik běžných problémů při vývoji uživatelsky definovaných funkcí jsou shrnuté níž.
+Jak Diagnostika a identifikace běžných problémů jsou důležité při řešení potíží s vašeho řešení. Několik problémů, které se běžně vyskytují při vývoji uživatelsky definovaných funkcí jsou shrnuté níž.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -74,11 +83,11 @@ Zkontrolujte, jestli přiřazení role existuje uživatelem definované funkce p
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parametr | Nahradit hodnotou |
+| Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
-| *YOUR_USER_DEFINED_FUNCTION_ID* | ID uživatelem definované funkce, který se má načíst přiřazení role|
+| YOUR_USER_DEFINED_FUNCTION_ID | ID uživatelem definované funkce, který se má načíst přiřazení role|
 
-Pokud se žádná přiřazení role se načítají, postupujte podle tohoto článku na [vytvoření přiřazení role uživatelem definované funkce](./how-to-user-defined-functions.md).
+Přečtěte si [vytvoření přiřazení role uživatelem definované funkce](./how-to-user-defined-functions.md), pokud neexistuje žádná přiřazení role.
 
 ### <a name="check-if-the-matcher-will-work-for-a-sensors-telemetry"></a>Zaškrtněte, pokud bude fungovat předávaný snímačů telemetrie
 
@@ -159,7 +168,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Tento scénář nastane, protože používá identifikátor odkazuje na senzoru zadaný typ objektu topologie je "Místo".
+Tento scénář nastane, protože používá identifikátor odkazuje na senzoru při zadaný typ objektu topologie je `Space`.
 
 **Správné** příkladu:
 
@@ -200,4 +209,4 @@ Pokud povolíte nastavení diagnostiky, můžete se setkat tyto běžné výjimk
 
 ## <a name="next-steps"></a>Další postup
 
-Zjistěte, jak povolit [sledování a protokolů](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) v digitální dvojče Azure.
+Zjistěte, jak povolit [sledování a protokolů](../azure-monitor/platform/activity-logs-overview.md) v digitální dvojče Azure.

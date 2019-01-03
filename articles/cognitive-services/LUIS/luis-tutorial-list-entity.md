@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: be2c7aea356f6d7b73438499b7e4d680ed4bad7c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 4cac20cb44c2400e44ff2ca0939b1537f0b20734
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259235"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727178"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
 Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 > [!Tip]
 > Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
-Veškerý kód v tomto kurzu je k dispozici na [úložiště GitHub LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-list-entity). 
+Veškerý kód v tomto kurzu je k dispozici na [úložiště GitHub Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity). 
 
 ## <a name="use-homeautomation-app"></a>Používání HomeAutomation aplikace
 Umožňuje aplikaci HomeAutomation například zahřívání a vychladnutí ovládací prvky řízení zařízení, například světla, systémy pro zábavu a prostředí. Tyto systémy obsahovat několik jiné názvy, které mohou obsahovat názvy, přezdívky, zkratky a slangem výrobce. 

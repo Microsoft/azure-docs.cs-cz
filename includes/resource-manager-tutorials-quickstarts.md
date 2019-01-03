@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 12/05/2018
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 46618b76f43247199e85c2023a5391c5566f3394
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978738"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53729335"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
 
@@ -39,6 +39,7 @@ V následujících rychlých startech a kurzech se naučíte vyvíjet šablony R
     |------|-----|
     |[Využití referenčních informací k šablonám](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|Při vývoji šablon můžete využít referenční dokumentaci k šablonám. V tomto kurzu zjistíte schéma účtu úložiště a pomocí těchto informací vytvoříte šifrovaný účet úložiště.|
     |[Vytvoření víc instancí](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Můžete vytvořit více instancí prostředků Azure. V tomto kurzu vytvoříte více instancí účtu úložiště.|
+    |[Přesunutí prostředků](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|Přesuňte prostředky z jedné skupiny prostředků do jiné skupiny prostředků. V tomto kurzu spusťte existující šablony a vytvořit dvě skupiny prostředků a jeden účet úložiště a pak spusťte Azure powershellu pro přesun do jiné skupiny prostředků účtu úložiště.|
     |[Nastavení pořadí nasazování prostředků](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|Můžete definovat závislosti prostředků. V tomto kurzu vytvoříte virtuální síť, virtuální počítač a závislé prostředky Azure. Zjistíte, jak se definují závislosti.|
     |[Použití podmínek](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|Na základě hodnot určitých parametrů můžete nasazovat prostředky. V tomto kurzu definujete šablonu, která v závislosti na hodnotě parametru vytvoří nový účet úložiště nebo použije existující účet úložiště.|
     |[Integrace trezoru klíčů](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|Tajné klíče a hesla můžete načítat ze služby Azure Key Vault. V tomto kurzu vytvoříte virtuální počítač.  Heslo správce virtuálního počítače se načte ze služby Key Vault.|

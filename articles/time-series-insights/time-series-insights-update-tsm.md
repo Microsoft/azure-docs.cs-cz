@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights – časové řady modelu | Dokumentace Microsoftu
+title: Model Time Series ve službě Azure Time Series Insights ve verzi Preview | Dokumentace Microsoftu
 description: Principy Azure Time Series Insights časové řady modelu.
 author: ashannon7
 ms.author: anshan
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2ead7a9a71c0afe72736bef8796107cae42009f1
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278181"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716578"
 ---
 # <a name="time-series-model"></a>Model služby Time Series
 
@@ -136,7 +136,7 @@ Zvažte následující příklad, kdy má hierarchii H1 *vytváření*, *floor*,
  H1 = [“building”, “floor”, “room”]
 ```
 
-V závislosti na tom *instance pole*, hierarchie atributy a hodnoty se zobrazí, jak je znázorněno v následující tabulce: 
+V závislosti na tom *instance pole*, hierarchie atributy a hodnoty se zobrazí, jak je znázorněno v následující tabulce:
 
 | ID časové řady | Pole instance |
 | --- | --- |
@@ -144,9 +144,9 @@ V závislosti na tom *instance pole*, hierarchie atributy a hodnoty se zobrazí,
 | S ID 2 | "sestavení" = "1000", "místo" = "55" |
 | ID3 | "floor" = "10" |
 | U ID 4 | "sestavení" = "1000", "floor" = "10"  |
-| ID5 | |
+| ID5 | "Sestavení", "floor" nebo "místo" je Nenastaveno |
 
-V předchozím příkladu ID1 zobrazuje jako součást hierarchie H1 v uživatelské rozhraní a prostředí a ostatní jsou zařazeny do *bez nadřazených položek instance* vzhledem k tomu, že jsou není v souladu s hierarchii zadaná data.
+V předchozím příkladu ID1 a u ID 4 zobrazuje jako součást hierarchie H1 v Průzkumníku služby Azure Time Series Insights a zbývající jsou zařazeny do *bez nadřazených položek instance* vzhledem k tomu, že jsou není v souladu s hierarchii zadaná data.
 
 ## <a name="time-series-model-instances"></a>Instance řady modelu času
 

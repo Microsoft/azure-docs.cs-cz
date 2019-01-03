@@ -11,39 +11,39 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b61c66dbb152914fcacb9020deab0cc4b76a6bc0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9e22299a508810cabaa9361d764fd2a8e1ecdee8
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139414"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975980"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědeckého zkoumání dat pomocí Sparku v Azure HDInsight
 
-Tato sada témat ukazuje způsob použití Spark v HDInsight dokončete běžných úloh datových věd, jako je příjem dat, vytváření funkcí, modelování a vyhodnocení modelu. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury. Témata také ukazují, jak k uložení těchto modelů ve službě Azure blob storage (WASB) a jak stanovení skóre a vyhodnotit prediktivní výkonu. Pokročilejší témata se týkají, jak může být modelů trénovaných pomocí křížového ověření a hyperparametrické sweeping. Toto přehledové téma také odkazuje na témata, která popisují, jak vytvořit cluster Spark, které potřebujete k dokončení kroků v návody k dispozici. 
+Tato sada témat ukazuje způsob použití Spark v HDInsight dokončete běžných úloh datových věd, jako je příjem dat, vytváření funkcí, modelování a vyhodnocení modelu. Data používaná je ukázka 2013 NYC taxislužby cesty a tarif datové sady. Historické modely budou vytvářeny zahrnují logistické a lineární regrese, náhodných doménové struktury a přechodu Posílený stromové struktury. Témata také ukazují, jak k uložení těchto modelů ve službě Azure blob storage (WASB) a jak stanovení skóre a vyhodnotit prediktivní výkonu. Pokročilejší témata se týkají, jak může být modelů trénovaných pomocí křížového ověření a hyperparametrické sweeping. Toto přehledové téma také odkazuje na témata, která popisují, jak vytvořit cluster Spark, které potřebujete k dokončení kroků v návody k dispozici.
 
 ## <a name="spark-and-mllib"></a>Spark a MLlib
-[Spark](http://spark.apache.org/) zpracovává rozšiřovatelnou platformu pro open source paralelním zpracováním, která podporuje v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. [MLlib](http://spark.apache.org/mllib/) je Spark škálovatelná knihovna pro machine learning, která přináší vylepšením funkce do této distribuované prostředí pro modelování. 
+[Spark](http://spark.apache.org/) zpracovává rozšiřovatelnou platformu pro open source paralelním zpracováním, která podporuje v paměti pro zvýšení výkonu velkých objemů dat analytických aplikací. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. [MLlib](http://spark.apache.org/mllib/) je Spark škálovatelná knihovna pro machine learning, která přináší vylepšením funkce do této distribuované prostředí pro modelování.
 
 ## <a name="hdinsight-spark"></a>HDInsight Spark
-[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je hostované nabídku Azure z open-source Spark. Zahrnuje taky podporu **poznámkové bloky Jupyter PySpark** v clusteru Spark, který může spouštět interaktivní dotazy Spark SQL pro transformaci, filtrování a vizualizace dat uložených v Azure BLOB (WASB). PySpark je rozhraní Python API pro Spark. Fragmenty kódu, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat zde spustit v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech obsahovat kód, který ukazuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu. 
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) je hostované nabídku Azure z open-source Spark. Zahrnuje taky podporu **poznámkové bloky Jupyter PySpark** v clusteru Spark, který může spouštět interaktivní dotazy Spark SQL pro transformaci, filtrování a vizualizace dat uložených v Azure BLOB (WASB). PySpark je rozhraní Python API pro Spark. Fragmenty kódu, které poskytují řešení a zobrazit příslušné grafy k vizualizaci dat zde spustit v poznámkových blocích Jupyter nainstalované v clusterech Spark. Kroky modelování v těchto tématech obsahovat kód, který ukazuje, jak pro trénování, vyhodnocení, uložit a používat každý typ modelu.
 
-## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instalační program: Clustery Spark a Jupyter notebooks
+## <a name="setup-spark-clusters-and-jupyter-notebooks"></a>Instalační program: Clustery Spark a poznámkové bloky Jupyter
 Postup instalace a kódu jsou k dispozici v tomto názorném postupu pro používání HDInsight Spark 1.6. Ale poznámkové bloky Jupyter jsou k dispozici pro clustery HDInsight Spark 1.6 i Spark 2.0. Popis poznámkových bloků a odkazy na nich jsou součástí [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) pro úložiště GitHub, které je obsahují. Kromě toho kód tady v propojených poznámkových bloků je obecný a by mělo fungovat jakéhokoli jiného clusteru Spark. Pokud nepoužíváte HDInsight Spark, může být mírně lišit od co je znázorněna zde kroky instalace a správy clusteru. Pro usnadnění práce tady jsou odkazy na poznámkové bloky Jupyter pro Spark 1.6 (ke spuštění v jádra pySpark aplikace Jupyter Notebook server) a Spark 2.0 (ke spuštění v pySpark3 jádra aplikace Jupyter Notebook serveru):
 
 ### <a name="spark-16-notebooks"></a>Poznámkové bloky Spark 1.6
 Tyto poznámkové bloky jsou ke spuštění v jádra pySpark server poznámkového bloku Jupyter.
 
-- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): poskytuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování se několik různých algoritmů.
-- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
-- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): ukazuje, jak na zprovoznění modelu uložené pomocí Pythonu v clusterech HDInsight.
+- [pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Poskytuje informace o tom, jak provádět zkoumání dat, modelování a vyhodnocování se několik různých algoritmů.
+- [pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Obsahuje témata v poznámkovém bloku #1 a vývoje modelů pomocí hyperparametrů a křížového ověření.
+- [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb): Ukazuje, jak na zprovoznění modelu uložené pomocí Pythonu v clusterech HDInsight.
 
 ### <a name="spark-20-notebooks"></a>Poznámkové bloky Spark 2.0
 Tyto poznámkové bloky se mají spustit v jádru pySpark3 server poznámkového bloku Jupyter.
 
-- [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování, a hodnocení ve Spark 2.0 clusterů pomocí cesty taxíkem NYC a tarif popsané na sady dat [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Naleznete v poznámkách za tímto seznamem, které porovnávají tyto poznámkové bloky. 
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí cesty taxíkem NYC a tarif datové sady je popsáno [zde ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí dobře známých odeslání letecká společnost v čase datové sady z 2011 a 2012. Integrovali jsme letecká společnost datovou sadu s daty o počasí letiště (například rychlost větru, teplota, výška atd.) před modelování, takže tyto funkce počasí mohou být součástí modelu.
+- [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Tento soubor obsahuje informace o tom, jak provádět zkoumání dat, modelování, a hodnocení ve Spark 2.0 clusterů pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Tento poznámkový blok může být dobrým výchozím bodem rychle prozkoumat kód, který jsme připravili pro Spark 2.0. Poznámkový blok podrobnější analyzuje data taxislužby NYC, najdete v části Další poznámkového bloku v tomto seznamu. Naleznete v poznámkách za tímto seznamem, které porovnávají tyto poznámkové bloky.
+- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí cesty taxíkem NYC a tarif datové sady je popsáno [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Tento soubor ukazuje, jak provádět tahání dat (Spark SQL a datový rámec operace), průzkum, modelování a vyhodnocování pomocí dobře známých letecká společnost na čas odeslání datové sady z 2011 a 2012. Integrovali jsme letecká společnost datovou sadu s daty o počasí letiště (například rychlost větru, teplota, výška atd.) před modelování, takže tyto funkce počasí mohou být součástí modelu.
 
 <!-- -->
 
@@ -52,27 +52,28 @@ Tyto poznámkové bloky se mají spustit v jádru pySpark3 server poznámkového
 
 >- Data o včasných odeslání letecká společnost: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
->- Data o počasí letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
-> 
-> 
+>- Data o počasí letiště: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+>
+>
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje spoustu aspektů zkoumání dat, vizualizace a ML, model školení v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [ Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná výchozí bod pro rychlé zkoumání kódu uvádíme pro Spark 2.0. 
+Poznámkové bloky Spark 2.0 na NYC taxislužby města a letecká společnost letu zpoždění-sady dat může trvat 10 minut nebo déle ke spuštění (v závislosti na velikosti vašeho clusteru Hdinsight). První poznámkového bloku v seznamu nahoře ukazuje mnoho aspektů zkoumání, vizualizaci a trénování modelů ML v poznámkovém bloku, která přebírá méně času na spuštění pomocí předvýpočtem zredukovaných NYC datové sady, ve kterém byly soubory taxislužby města a tarif předem připojené k doméně: [Spark2.0-pySpark3-Machine-Learning-data-Science-Spark-Advanced-data-Exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Tento poznámkový blok trvá mnohem kratší dobu dokončení (2 až 3 minut) a může být vhodná počáteční bod rychle prozkoumat kód, který jsme připravili pro Spark 2.0.
 
 <!-- -->
 
 Pokyny k operacionalizaci modelu Spark 2.0 a spotřeby modelu pro vyhodnocení, najdete v článku [Spark 1.6 dokumentu o spotřebě](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) příklad sbalování kroky potřebné. Použít na Spark 2.0, nahraďte soubor kódu Python s [tento soubor](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py).
 
 ### <a name="prerequisites"></a>Požadavky
-Následující postupy se vztahují na Spark 1.6. Pro verzi Spark 2.0 pomocí poznámkových bloků popsaných a propojit s dříve. 
 
-1. budete musíte mít předplatné Azure. Pokud není ještě nemáte, přečtěte si téma [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+Následující postupy se vztahují na Spark 1.6. Pro verzi Spark 2.0 pomocí poznámkových bloků popsaných a propojit s dříve.
 
-2. budete potřebovat cluster Spark 1.6 k dokončení tohoto návodu. Pokud chcete jeden vytvořit, postupujte podle pokynů v [Začínáme: vytvoření Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Typ clusteru a verze určen **vybrat typ clusteru** nabídky. 
+1. Mít předplatné Azure. Pokud není ještě nemáte, přečtěte si téma [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+
+2. Budete potřebovat cluster Spark 1.6 k dokončení tohoto návodu. Pokud chcete jeden vytvořit, postupujte podle pokynů v [Začínáme: vytvoření Apache Spark v Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Typ clusteru a verze určen **vybrat typ clusteru** nabídky.
 
 ![Konfigurace clusteru](./media/spark-overview/spark-cluster-on-portal.png)
 
@@ -80,14 +81,14 @@ Následující postupy se vztahují na Spark 1.6. Pro verzi Spark 2.0 pomocí po
 
 > [!NOTE]
 > Téma, které ukazuje, jak pomocí Scala namísto Pythonu k provedení úloh pro proces vědy data začátku do konce, najdete v článku [vědecké zkoumání dat pomocí Sparku v Azure pomocí Scala](scala-walkthrough.md).
-> 
-> 
+>
+>
 
 <!-- -->
 
 > [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
-> 
-> 
+>
+>
 
 ## <a name="the-nyc-2013-taxi-data"></a>Data taxislužby NYC 2013
 Data o jízdách taxislužby NYC je přibližně 20 GB komprimované hodnot oddělených čárkami (CSV) souborů (nekomprimovaný ~ 48 GB), zahrnující 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách zahrnuje výběr nahoru a dropoff umístění a čas, číslo řidičského anonymizované hack (ovladače) a číslo Medailon (jedinečné id taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:
@@ -152,12 +153,12 @@ Můžete také přejít na ***https://CLUSTERNAME.azurehdinsight.net/jupyter*** 
 
 Vyberte PySpark zobrazíte adresář, který obsahuje několik příkladů předem zabalené poznámkových bloků, které používají rozhraní API PySpark. Poznámkové bloky, které obsahují ukázky kódu pro tuto sadu Spark tématu najdete na adrese [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark)
 
-Můžete nahrát poznámkových bloků přímo z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) server poznámkového bloku Jupyter na svém clusteru Spark. Na domovské stránce vašeho Jupyter, klikněte na tlačítko **nahrát** tlačítko v pravé části obrazovky. Otevře se Průzkumník souborů. Tady můžete vložte adresu URL Githubu (nezpracovaný obsah) Poznámkový blok a klikněte na tlačítko **otevřít**. 
+Můžete nahrát poznámkových bloků přímo z [Githubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) server poznámkového bloku Jupyter na svém clusteru Spark. Na domovské stránce vašeho Jupyter, klikněte na tlačítko **nahrát** tlačítko v pravé části obrazovky. Otevře se Průzkumník souborů. Tady můžete vložte adresu URL Githubu (nezpracovaný obsah) Poznámkový blok a klikněte na tlačítko **otevřít**.
 
 Název souboru se zobrazí v seznamu souboru Jupyter s **nahrát** tlačítko znovu. Kliknutím na tuto **nahrát** tlačítko. Jste teď importovali poznámkového bloku. Opakujte tyto kroky pro nahrání poznámkových bloků v tomto názorném postupu.
 
 > [!TIP]
-> Můžete kliknout pravým tlačítkem na odkazy v prohlížeči a vyberte **Kopírovat odkaz** k získání adresy URL githubu nezpracované obsahu. Vložte tuto adresu URL do Jupyter nahrání souboru explorer dialogového okna.
+> Můžete kliknout pravým tlačítkem na odkazy v prohlížeči a vyberte **Kopírovat odkaz** k získání adresy URL Githubu nezpracované obsahu. Vložte tuto adresu URL do Jupyter nahrání souboru explorer dialogového okna.
 > 
 > 
 
@@ -170,17 +171,17 @@ Nyní můžete:
 
 > [!TIP]
 > Jádra PySpark automaticky vizualizuje výstup příkazů jazyka SQL (HiveQL). Budete mít možnost vybrat si mezi několika různé typy vizualizací (tabulky, výsečové, řádek, oblasti nebo panelu) s použitím **typ** tlačítka nabídky v poznámkovém bloku:
-> 
-> 
+>
+>
 
 ![Křivka roc s více TŘÍDAMI logistické regrese pro obecný přístup](./media/spark-overview/pyspark-jupyter-autovisualization.png)
 
 ## <a name="whats-next"></a>Co dále?
-Teď, když se nastavují s clusterem HDInsight Spark a nahrání poznámkových bloků Jupyter, jste připraveni projít témata, která odpovídají tři poznámkových bloků PySpark. Zobrazí se postup zkoumání dat a jak vytvářet a využívat modely. Poznámkový blok pro zkoumání a modelování pokročilými datovými ukazuje, jak zahrnout křížového ověřování, hyperparametrické cílit na konkrétní a vyhodnocení modelů. 
+Teď, když se nastavují s clusterem HDInsight Spark a nahrání poznámkových bloků Jupyter, jste připraveni projít témata, která odpovídají tři poznámkových bloků PySpark. Zobrazí se postup zkoumání dat a jak vytvářet a využívat modely. Poznámkový blok pro zkoumání a modelování pokročilými datovými ukazuje, jak zahrnout křížového ověřování, hyperparametrické cílit na konkrétní a vyhodnocení modelů.
 
-**Zkoumání a modelování se Sparkem:** prozkoumat datovou sadu a vytvořit, stanovení skóre a vyhodnotit modely strojového učení z práce prostřednictvím [vytvořit binární klasifikačních a regresních modelů pro data s knihovna Spark MLlib Sada nástrojů](spark-data-exploration-modeling.md) tématu.
+**Zkoumání a modelování dat pomocí Sparku:** Prozkoumejte datovou sadu a vytvořit, stanovení skóre a vyhodnotit modely strojového učení z práce prostřednictvím [vytvoření binární klasifikačních a regresních modelů pro data se sadou nástrojů knihovna Spark MLlib](spark-data-exploration-modeling.md) tématu.
 
-**Model spotřeby:** další postupy skóre klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
+**Využití modelu:** Informace o ke stanovení skóre klasifikačních a regresních modelů vytvořených v tomto tématu najdete v tématu [skóre a vyhodnocení modelů strojového učení předdefinovaných Spark](spark-model-consumption.md).
 
-**Křížové ověření a hyperparameter sweeping**: naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete školení pomocí křížového ověření a hyperparametrické sweeping
+**Křížové ověření a hyperparameter sweeping**: Naleznete v tématu [rozšířené zkoumání a modelování se Sparkem](spark-advanced-data-exploration-modeling.md) na to, jak modely můžete pomocí křížového ověření a hyperparametrické sweeping školení
 

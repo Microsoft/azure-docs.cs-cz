@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 39d0813eab49f526842eec171e3355326bd13c44
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295559"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53727798"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků do šablon Azure Resource Manageru
 Pro daný prostředek může být další prostředky, které musí existovat předtím, než se prostředek nasazuje. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Můžete definovat tuto relaci označením jeden prostředek jako závislé na jiný prostředek. Definování závislostí s **dependsOn** element, nebo pomocí **odkaz** funkce. 
@@ -145,16 +145,7 @@ Tento element nebo dependsOn element můžete použít k určení závislostí, 
 
 Další informace najdete v tématu [odkazu funkci](resource-group-template-functions-resource.md#reference).
 
-## <a name="recommendations-for-setting-dependencies"></a>Doporučení pro nastavení závislostí
-
-Při rozhodování o tom, jaké závislosti na nastavení, použijte následující pokyny:
-
-* Nastavte jako několik závislostí nejvíce.
-* Nastavte jako závisí na jeho nadřazený prostředek podřízený prostředek.
-* Použití **odkaz** fungovat a předejte mu název prostředku implicitní závislosti mezi prostředky, které je potřeba sdílet vlastnost nastavit. Nepřidávejte explicitní závislosti (**dependsOn**) Pokud jste již definován implicitní závislostí. Tento přístup snižuje riziko toho, že zbytečné závislosti. 
-* Pokud prostředek nelze nastavit závislost **vytvořili** bez funkce z jiného prostředku. Nenastavujte závislost, pokud prostředky pracovat pouze po nasazení.
-* Umožněte závislosti cascade bez nastavení je explicitně. Například vašeho virtuálního počítače závisí na rozhraní virtuální sítě a virtuální síťové rozhraní závisí na virtuální sítě a veřejné IP adresy. Proto tento virtuální počítač je nasazený všechny tři prostředky, ale není explicitně nastavit virtuální počítač jako závislé na všechny tři zdroje. Tento postup vysvětluje pak pořadí závislostí a usnadňuje později změnit šablonu.
-* Pokud hodnotu nelze určit před nasazením, zkuste nasazení prostředků bez závislosti. Například hodnota konfigurace musí název jiného prostředku, nemusí potřebovat závislost. Tyto pokyny vždycky nefunguje, protože některé prostředky ověřte existenci jiný prostředek. Pokud obdržíte chybu, přidejte závislosti. 
+## <a name="circular-dependencies"></a>Cyklické závislosti
 
 Během ověřování šablony Resource Manageru určí cyklické závislosti. Pokud obdržíte chybu s informacemi o tom, že existuje cyklická závislost, vyhodnoťte šablony nejsou potřeba žádné závislosti a je možné odebrat. Pokud odebrání závislostí nefunguje, můžete předejít cyklické závislosti přesunutím některých operací nasazení do podřízené prostředky, které jsou nasazeny za prostředky, které mají cyklickou závislost. Předpokládejme například, že nasazujete dva virtuální počítače, ale musíte zadat vlastnosti na každé z nich odkazovat na druhý. Můžete je nasadit v následujícím pořadí:
 
@@ -168,6 +159,7 @@ Informace o vyhodnocení pořadí nasazení a řešení chyb závislostí, nalez
 ## <a name="next-steps"></a>Další postup
 
 * Absolvovat kurz, naleznete v tématu [kurz: vytváření šablon Azure Resource Manageru s závislé prostředky](./resource-manager-tutorial-create-templates-with-dependent-resources.md).
+* Doporučení pro nastavení závislostí, naleznete v tématu [osvědčené postupy pro šablony Azure Resource Manageru](template-best-practices.md).
 * Další informace o řešení potíží s závislostí při nasazení najdete v tématu [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 * Další informace o vytváření šablon Azure Resource Manageru, najdete v článku [vytváření šablon](resource-group-authoring-templates.md). 
 * Seznam dostupných funkcí v šabloně najdete v tématu [šablony funkce](resource-group-template-functions.md).

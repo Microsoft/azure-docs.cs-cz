@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 90eac2fda46dc5fbfff791e1fc0afb9858aa27a4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 19a5dee53bee20438098d1aaeb773ebf08f252d4
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408030"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993446"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -29,7 +29,7 @@ Obsah, který následuje je rozdělený do dvou různých oddílů určená k c�
 - [C#v sadě Visual Studio s použitím xUnit](#c-in-visual-studio)
 - [JavaScript v nástroji VS Code s Jest](#javascript-in-vs-code)
 
-Úložišti ukázek je k dispozici na [Githubu](https://github.com/Azure-Samples/azure-functions-tests).
+Ukázkové úložiště je k dispozici na [Githubu](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#v sadě Visual Studio
 Následující příklad popisuje, jak vytvořit C# aplikace v sadě Visual Studio funkce a spustit testy pomocí služby [xUnit](https://xunit.github.io).
@@ -43,8 +43,9 @@ K nastavení prostředí, vytvořte funkci a testování aplikací. Následujíc
 1. [Vytvořit novou aplikaci funkcí](./functions-create-first-azure-function.md) a pojmenujte ho *funkce*
 2. [Vytvoření funkce protokolu HTTP v šabloně](./functions-create-first-azure-function.md) a pojmenujte ho *HttpTrigger*.
 3. [Vytvoření funkce časovačem ze šablony](./functions-create-scheduled-function.md) a pojmenujte ho *TimerTrigger*.
-4. [Vytvoření aplikace testů xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) a pojmenujte ho *Functions.Test*.
-5. [Odkaz *funkce* aplikace](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikace.
+4. [Vytvoření aplikace testů xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) v sadě Visual Studio kliknutím **soubor > Nový > Projekt > Visual C# > .NET Core > Projekt testů xUnit** a pojmenujte ho *Functions.Test*. 
+5. Přidat odkazy z testovací aplikaci pomocí balíčku Nuget [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/) a [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+6. [Odkaz *funkce* aplikace](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikace.
 
 ### <a name="create-test-classes"></a>Vytvoření tříd testu
 
@@ -203,7 +204,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -212,7 +213,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
+            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -220,7 +221,7 @@ namespace Functions.Tests
         public void Timer_should_log_message()
         {
             var logger = (ListLogger)TestFactory.CreateLogger(LoggerTypes.List);
-            TimerFunction.Run(null, logger);
+            TimerTrigger.Run(null, logger);
             var msg = logger.Logs[0];
             Assert.Contains("C# Timer trigger function executed at", msg);
         }

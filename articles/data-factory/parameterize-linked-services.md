@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 12/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 99efd29165f381b9038758c3384774a65da91501
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 874d2e7b5925bf299c3749948206401e00553736
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649410"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53650443"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametrizovat propojené služby v Azure Data Factory
 
@@ -34,7 +34,7 @@ Pro zavedení sedm po minutách a ukázku této funkce z následujícího videa:
 
 ## <a name="supported-data-stores"></a>Úložiště dat podporovaných
 
-V tuto chvíli Parametrizace propojené služby je podporována v Uživatelském rozhraní Data Factory na webu Azure Portal pro následující typy úložišť dat. Pro všechny ostatní úložišť dat, můžete parametrizovat propojenou službu tak, že vyberete **kód** ikonu na kartu kanálu a pomocí editoru JSON.
+V tuto chvíli Parametrizace propojené služby je podporována v Uživatelském rozhraní Data Factory na webu Azure Portal pro následující typy úložišť dat. Pro všechny ostatní úložišť dat, můžete parametrizovat propojenou službu tak, že vyberete **kód** na ikonu **připojení** kartu a pomocí editoru JSON.
 - Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server

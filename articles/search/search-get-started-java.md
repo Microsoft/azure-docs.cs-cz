@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: d74c9c30932bd2db9059738c8dfbc21e4b1b046a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d16f20e3c2dfa3d670006e44f0072a3871d41c3f
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316957"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53629897"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Pro vytvoření a testování tohoto příkladu jsme použili následující sof
 * [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Informace o datech
-Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
+Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](https://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
 
 Program **SearchServlet.java** v této aplikaci sestaví a načte index pomocí konstruktoru [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx), přičemž načte filtrovanou sadu dat USGS z veřejné databáze Azure SQL Database. Předdefinované přihlašovací údaje a informace o připojení k online zdroji dat jsou uvedené v kódu programu. Z hlediska přístupu k datům není potřeba žádná další konfigurace.
 
@@ -87,7 +87,7 @@ Všechny následné úpravy souborů a spouštěné příkazy se budou provádě
 ## <a name="configure-the-service-url-and-api-key"></a>Konfigurace adresy URL služby a klíče api-key
 1. V **Prohlížeči projektu**, dvakrát klikněte na soubor **config.properties**, abyste upravili nastavení konfigurace obsahující název serveru a klíč api-key.
 2. Podívejte se na postup uvedený dříve v tomto článku, kde jste našli adresu URL služby a klíč api-key v [webu Azure Portal](https://portal.azure.com), abyste získali hodnoty, které nyní zadáte do souboru **config.properties**.
-3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Další, název služby (první komponenta adresy URL http://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
+3. V souboru **config.properties** nahraďte položku „Api Key“ klíčem api-key pro vaši službu. Další, název služby (první komponenta adresy URL https://servicename.search.windows.net) nahradí "service name" ve stejném souboru.
    
     ![][5]
 

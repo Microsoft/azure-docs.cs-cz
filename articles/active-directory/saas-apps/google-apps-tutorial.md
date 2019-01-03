@@ -1,38 +1,37 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory se službou G Suite | Dokumentace Microsoftu'
+title: 'Kurz: Integrace Azure Active Directory s G Suite | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a G Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
-ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/30/2018
+ms.topic: tutorial
+ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bcea7848c7331ecd326f0ccb6ab9f543ce972205
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4f7546efca0bd69fd71418116142acacb927604
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834685"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53970895"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory se službou G Suite
+# <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory s G Suite
 
 V tomto kurzu se dozvíte, jak integrovat G Suite se službou Azure Active Directory (Azure AD).
-
 Integrace G Suite s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup ke G Suite.
-- Uživatele, aby automaticky získat přihlášeného ke G Suite (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
-- Můžete spravovat své účty na jediném místě – na webu Azure portal.
+* Můžete řídit ve službě Azure AD, který má přístup ke G Suite.
+* Uživatelům se automaticky přihlášeni ke G Suite (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD.
+* Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,29 +51,29 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-1. **Otázka: Tato integrační podpora integraci Google Cloud Platform jednotného přihlašování s Azure AD?**
+1. **DOTAZ: Podporuje tato integrační integraci Google Cloud Platform jednotného přihlašování s Azure AD?**
 
-    Odpověď: Ano. Google Cloud Platform a Google Apps sdílejí stejnou platformu ověřování. To provedete integraci GCP, budete muset nakonfigurovat jednotné přihlašování s Google Apps.
+    ODPOVĚĎ: Ano. Google Cloud Platform a Google Apps sdílejí stejnou platformu ověřování. To provedete integraci GCP, budete muset nakonfigurovat jednotné přihlašování s Google Apps.
 
-2. **Otázka: jsou Chromebooks a dalších zařízeních Chrome kompatibilní s Azure AD jednotné přihlašování?**
+2. **DOTAZ: Jsou Chromebooks a dalších zařízeních Chrome, kompatibilní s Azure AD jednotné přihlašování?**
   
-    Odpověď: Ano, uživatelé se můžou k přihlašování do jejich zařízení Chromebook pomocí svých přihlašovacích údajů Azure AD. Najdete v tomto [článek podpory G Suite](https://support.google.com/chrome/a/answer/6060880) informace o tom, proč uživatelům může zobrazit výzva k zadání přihlašovacích údajů dvakrát.
+    ODPOVĚĎ: Ano, uživatelé se můžou k přihlašování do jejich zařízení Chromebook pomocí svých přihlašovacích údajů Azure AD. Najdete v tomto [článek podpory G Suite](https://support.google.com/chrome/a/answer/6060880) informace o tom, proč uživatelům může zobrazit výzva k zadání přihlašovacích údajů dvakrát.
 
-3. **Otázka: Pokud povolit jednotné přihlašování, uživatelé budou moci přihlásit libovolný produkt Google, jako je Google Classroom, GMail, disk Google, YouTube a tak dále pomocí svých přihlašovacích údajů Azure AD?**
+3. **DOTAZ: Je-li povolit jednotné přihlašování, uživatelé budou moci pomocí svých přihlašovacích údajů Azure AD k přihlašování do jakékoli produktu Google, jako je Google Classroom, GMail, disk Google, YouTube a tak dále?**
 
-    Odpověď: Ano, v závislosti na [které G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) budete chtít povolit nebo zakázat pro vaši organizaci.
+    ODPOVĚĎ: Ano, v závislosti na [které G Suite](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) budete chtít povolit nebo zakázat pro vaši organizaci.
 
-4. **Dotaz: lze povolit jednotné přihlašování pro pouze podmnožinu uživatelů G Suite?**
+4. **DOTAZ: Můžete povolit jednotné přihlašování pro pouze podmnožinu uživatelů G Suite?**
 
-    Odpověď: Ne, zapnutí jednotného přihlašování okamžitě vyžaduje všichni uživatelé G Suite k ověření pomocí svých přihlašovacích údajů Azure AD. Protože G Suite nepodporuje existenci více zprostředkovatelů identity, zprostředkovatel identity pro vaše prostředí G Suite může být Azure AD nebo Google – ale ne obojí současně.
+    ODPOVĚĎ: Ne, zapnutí jednotného přihlašování okamžitě vyžaduje všichni uživatelé G Suite k ověření pomocí svých přihlašovacích údajů Azure AD. Protože G Suite nepodporuje existenci více zprostředkovatelů identity, zprostředkovatel identity pro vaše prostředí G Suite může být Azure AD nebo Google – ale ne obojí současně.
 
-5. **Otázka: Pokud je uživatel přihlášený prostřednictvím Windows, jsou že automaticky ověřování ke G Suite bez získání zobrazí výzva k zadání hesla?**
+5. **DOTAZ: Pokud je uživatel přihlášený prostřednictvím Windows, jsou že automaticky ověřování ke G Suite bez získání zobrazí výzva k zadání hesla?**
 
-    Odpověď: existují dvě možnosti pro povolení tohoto scénáře. Nejprve, můžou uživatelé můžou přihlašovat do zařízení s Windows 10 přes [Azure Active Directory Join](../device-management-introduction.md). Alternativně můžou uživatelé můžou přihlašovat do zařízení Windows, které jsou připojené k místní Active Directory byl povolen pro jednotné přihlašování do služby Azure AD prostřednictvím [Active Directory Federation Services (AD FS)](../hybrid/plan-connect-user-signin.md) nasazení. Obě možnosti vyžadují, abyste proveďte kroky v následujícím kurzu a povolit jednotné přihlašování mezi Azure AD a G Suite.
+    ODPOVĚĎ: Existují dvě možnosti pro povolení tohoto scénáře. Nejprve, můžou uživatelé můžou přihlašovat do zařízení s Windows 10 přes [Azure Active Directory Join](../device-management-introduction.md). Alternativně můžou uživatelé můžou přihlašovat do zařízení Windows, které jsou připojené k místní Active Directory byl povolen pro jednotné přihlašování do služby Azure AD prostřednictvím [Active Directory Federation Services (AD FS)](../hybrid/plan-connect-user-signin.md) nasazení. Obě možnosti vyžadují, abyste proveďte kroky v následujícím kurzu a povolit jednotné přihlašování mezi Azure AD a G Suite.
 
-6. **Chyba: Neplatný E-mail**
+6. **DOTAZ: Co mám dělat, když se zobrazí chybová zpráva "neplatné e-mailu"?**
 
-    Pro toto nastavení je atribut e-mailové uživatelé moct přihlásit. Tento atribut nelze nastavit ručně.
+    ODPOVĚĎ: Pro toto nastavení je atribut e-mailové uživatelé moct přihlásit. Tento atribut nelze nastavit ručně.
 
     Atribut e-mailu se vyplní automaticky pro každý uživatel s platnou licenci systému Exchange. Pokud uživatel není povolený e-mail, bude tato chyba přijmout, protože aplikace je potřeba získat tento atribut přístup.
 
@@ -84,10 +83,10 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu konfigurace a testování v testovacím prostředí Azure AD jednotného přihlašování.
 
-1. Přidání G Suite z Galerie
-2. Konfigurace a testování Azure AD jednotného přihlašování
+* G Suite podporuje **SP** jednotné přihlašování zahájené pomocí
+* G Suite podporuje  **[automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)**
 
 ## <a name="adding-g-suite-from-the-gallery"></a>Přidání G Suite z Galerie
 
@@ -95,112 +94,126 @@ Konfigurace integrace G Suite do Azure AD, budete muset přidat G Suite v galeri
 
 **Chcete-li přidat G Suite z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
-    ![Tlačítko Azure Active Directory][1]
+    ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace** možnost.
 
-    ![V okně podnikové aplikace][2]
+    ![V okně podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
-    ![Tlačítko nové aplikace][3]
+    ![Tlačítko nové aplikace](common/add-new-app.png)
 
 4. Do vyhledávacího pole zadejte **G Suite**vyberte **G Suite** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![G Suite v seznamu výsledků](./media/google-apps-tutorial/tutorial_gsuite_addfromgallery.png)
+     ![G Suite v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí G Suite podle testovacího uživatele nazývá "Britta Simon".
-
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v G Suite je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v G Suite.
+V této části, konfigurace a testování služby Azure AD jednotné přihlašování s G Suite podle testu uživateli **Britta Simon**.
+Pro jednotné přihlašování pro práci je potřeba navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské v G Suite.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s G Suite, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele G Suite](#creating-a-g-suite-test-user)**  – Pokud chcete mít protějšek Britta Simon v G Suite, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Konfigurace G Suite Single Sign-On](#configure-g-suite-single-sign-on)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Vytvořit testovacího uživatele G Suite](#create-g-suite-test-user)**  – Pokud chcete mít protějšek Britta Simon v G Suite, který je propojený s Azure AD reprezentace uživatele.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci G Suite.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure portal.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následující kroky:**
+Ke konfiguraci Azure AD jednotné přihlašování s G Suite, proveďte následující kroky:
 
-1. Na webu Azure Portal na **G Suite** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
+1. V [webu Azure portal](https://portal.azure.com/)na **G Suite** integrace stránce aplikace vyberte **jednotného přihlašování**.
 
-    ![Nakonfigurovat jednotné přihlašování – odkaz][4]
+    ![Nakonfigurovat jednotné přihlašování – odkaz](common/select-sso.png)
 
-2. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, vyberte **SAML/WS-Fed** chcete povolit jednotné přihlašování.
 
-    ![Konfigurace jednotného přihlašování](common/tutorial_general_301.png)
+    ![Jednotné přihlašování režim výběru](common/select-saml-option.png)
 
 3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
 
-    ![Konfigurace jednotného přihlašování](common/editconfigure.png)
+    ![Upravit konfiguraci základní SAML](common/edit-urls.png)
 
 4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
-    ![G Suite domény a adresy URL jednotného přihlašování – informace](./media/google-apps-tutorial/tutorial_gsuite_url.png)
+    ![G Suite domény a adresy URL jednotného přihlašování – informace](common/sp-identifier.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
+    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:
     | |
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory G Suite klienta](https://www.google.com/contact/) k získání těchto hodnot.
 
-5. G Suite aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele** dialogového okna.
+5. G Suite aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad pro tuto. Výchozí hodnota **jedinečný identifikátor uživatele** je **user.userprincipalname** ale G Suite očekává, že to namapovat s e-mailovou adresu uživatele. K tomu můžete použít **user.mail** atribut ze seznamu nebo použijte hodnotu odpovídajícího atributu na základě vaší konfigurace organizace.
 
-    ![image](./media/google-apps-tutorial/i3-attribute.png)
+    ![image](common/edit-attribute.png)
 
-6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
+6. V **deklarace identity uživatelů** části na **atributy uživatele** dialogovém okně Upravit deklarace identity pomocí **ikonu pro úpravu** nebo přidání deklarace identity pomocí **přidat novou deklaraci**ke konfiguraci atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
-    a. Klikněte na tlačítko **upravit** tlačítko Otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+    | Název | Zdrojový atribut |
+    | ---------------| --------------- |
+    | Jedinečný identifikátor uživatele | User.Mail |
 
-    ![image](./media/google-apps-tutorial/i2-attribute.png)
+    a. Klikněte na tlačítko **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
 
-    ![image](./media/google-apps-tutorial/i4-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    b. Z **zdrojový atribut** seznamu selelct hodnotu atributu.
+    ![image](common/new-attribute-details.png)
 
-    c. Klikněte na **Uložit**.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-5. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    c. Nechte **Namespace** prázdné.
 
-    ![Odkaz ke stažení certifikátu](./media/google-apps-tutorial/tutorial_gsuite_certificate.png) 
+    d. Vyberte zdroj jako **atribut**.
 
-6. Na **nastavení G Suite** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
+    e. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+
+    f. Klikněte na tlačítko **Ok**
+
+    g. Klikněte na **Uložit**.
+
+7. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** z se zadanými možnostmi podle vašich požadavků a uložit je ve vašem počítači.
+
+    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+
+8. Na **nastavení G Suite** tématu, zkopírujte příslušné adresy URL podle vašich požadavků.
+
+    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor Azure AD
+    b. Identifikátor služby Azure Ad
 
     c. Adresa URL – odhlášení
 
-    ![Konfigurace G Suite](common/configuresection.png)
+### <a name="configure-g-suite-single-sign-on"></a>Konfigurace G Suite jednotného přihlašování
 
-9. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](https://admin.google.com/) pomocí účtu správce.
+1. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](http://admin.google.com/) pomocí účtu správce.
 
-10. Klikněte na tlačítko **zabezpečení**. Pokud nevidíte odkaz, mohou být skryty pod **další ovládací prvky** nabídce v dolní části obrazovky.
+2. Klikněte na tlačítko **zabezpečení**. Pokud nevidíte odkaz, mohou být skryty pod **další ovládací prvky** nabídce v dolní části obrazovky.
 
     ![Klikněte na Zabezpečení.][10]
 
-11. Na **zabezpečení** klikněte na **nastavit jednotné přihlašování (SSO).**
+3. Na **zabezpečení** klikněte na **nastavit jednotné přihlašování (SSO).**
 
     ![Klikněte na možnost jednotného přihlašování.][11]
 
-12. Proveďte následující změny konfigurace:
+4. Proveďte následující změny konfigurace:
 
     ![Konfigurace jednotného přihlašování][12]
 
@@ -218,32 +231,58 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     g. Klikněte na tlačítko **uložit změny**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
 1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-    ![Vytvoření uživatele Azure AD][100]
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](common/users.png)
 
 2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_01.png) 
+    ![Tlačítko Nový uživatel](common/new-user.png)
 
 3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_02.png)
+    ![Dialogové okno uživatele](common/user-properties.png)
 
-    a. V **název** zadejte **BrittaSimon**.
+    a. V **název** zadat **BrittaSimon**.
   
-    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    b. V **uživatelské jméno** typ pole **brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
+    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    d. Vyberte **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
-### <a name="creating-a-g-suite-test-user"></a>Vytvoření zkušebního uživatele G Suite
+### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu ke G Suite.
+
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**a pak vyberte **G Suite**.
+
+    ![Okno aplikace organizace](common/enterprise-applications.png)
+
+2. V seznamu aplikace zadejte a vyberte **G Suite**.
+
+    ![Odkaz G Suite v seznamu aplikací](common/all-applications.png)
+
+3. V nabídce na levé straně vyberte **uživatelů a skupin**.
+
+    ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+
+4. Klikněte na tlačítko **přidat uživatele** tlačítko a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+
+    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+6. Pokud očekáváte libovolnou hodnotu role v kontrolní výraz SAML a potom v **vybrat roli** dialogové okno vybrat vhodnou roli pro uživatele ze seznamu, klikněte **vyberte** tlačítko v dolní části obrazovky.
+
+7. V **přidat přiřazení** dialogové okno kliknutím **přiřadit** tlačítko.
+
+### <a name="create-g-suite-test-user"></a>Vytvořit testovacího uživatele G Suite
 
 Cílem této části je vytvořte uživatele Britta Simon v G Suite softwaru. G Suite podporuje automatické zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná akce vám v této části. Pokud uživatel ještě neexistuje v G Suite softwaru, je vytvořen nový při pokusu o přístup k softwaru G Suite.
 
@@ -253,54 +292,21 @@ Cílem této části je vytvořte uživatele Britta Simon v G Suite softwaru. G 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, obraťte se [tým podpory Google](https://www.google.com/contact/).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
-
-V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu ke G Suite.
-
-1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
-
-    ![Přiřadit uživatele][201]
-
-2. V seznamu aplikací vyberte **G Suite**.
-
-    ![Konfigurace jednotného přihlašování](./media/google-apps-tutorial/tutorial_gsuite_app.png)
-
-3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
-
-    ![Přiřadit uživatele][202]
-
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
-
-    ![Přiřadit uživatele][203]
-
-5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-
-6. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
-
-### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici G Suite na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci G Suite.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknutí na dlaždici G Suite na přístupovém panelu, vám by měl být automaticky přihlášeni ke G Suite, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další prostředky
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+- [ Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial_general_01.png
-[2]: common/tutorial_general_02.png
-[3]: common/tutorial_general_03.png
-[4]: common/tutorial_general_04.png
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Konfigurace zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 
-[100]: common/tutorial_general_100.png
-
-[201]: common/tutorial_general_201.png
-[202]: common/tutorial_general_202.png
-[203]: common/tutorial_general_203.png
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
-ms.openlocfilehash: 3b1f2374618a0fdb446c4d0bf59fa14a828639ea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 55cb1eee1c0319f9b1037476da208de377e0c47b
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185609"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53971167"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -68,7 +68,7 @@ Load Balancer poskytuje pro aplikace TCP a UDP následující základní funkce:
 
 * **Přesměrování portů**
 
-    S Load Balancerem můžete vytvořit příchozí pravidlo překladu adres (NAT) pro přesměrování portů u přenosů z určitého portu konkrétní front-endové IP adresy na určitý port konkrétní back-endové instance v rámci virtuální sítě. To se také provádí s využitím stejné distribuce na základě hodnoty hash jako vyrovnávání zatížení. Mezi běžné scénáře pro tuto funkci patří relace protokolu RDP (Remote Desktop Protocol) nebo SSH (Secure Shell) k jednotlivým instancím virtuálních počítačů v rámci virtuální sítě Azure. Na různé porty stejné front-endové IP adresy můžete mapovat více interních koncových bodů. Front-endové IP adresy můžete využít ke vzdálené správě virtuálních počítačů přes internet bez nutnosti dalšího systému jump box.
+    S Load Balancerem můžete vytvořit příchozí pravidlo překladu adres (NAT) pro přesměrování portů u přenosů z určitého portu konkrétní front-endové IP adresy na určitý port konkrétní back-endové instance v rámci virtuální sítě. To se také provádí s využitím stejné distribuce na základě hodnoty hash jako vyrovnávání zatížení. Mezi běžné scénáře pro tuto funkci patří relace protokolu RDP (Remote Desktop Protocol) nebo SSH (Secure Shell) k jednotlivým instancím virtuálních počítačů v rámci virtuální sítě Azure. Na různé porty stejné front-endové IP adresy můžete mapovat více interních koncových bodů. IP adresy front-endu můžete použít ke vzdálené správě virtuálních počítačů prostřednictvím Internetu bez nutnosti další jump box.
 
 * **Nezávislost na aplikaci a transparentnost**
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ace025f096b756259d25ca2adb347dd23a12a910
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 280d56951053870d5dc1bb8fba52cc089e842757
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409518"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743851"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Apache Ambari, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním
 
@@ -47,7 +47,7 @@ Přizpůsobení clusteru pomocí akce skriptu, žádné služby ani nástroje, k
 
 * Webový prohlížeč, který může být nakonfigurován pro použití SOCKS5 proxy.
 
-    > [!WARNING]
+    > [!WARNING]  
     > Podpora proxy SOCKS integrovaný do Windows Internet nastavení nepodporuje SOCKS5 a nefunguje s kroky v tomto dokumentu. Následující prohlížeče závisí na nastavení proxy serveru Windows a aktuálně nefungují s kroky v tomto dokumentu:
     >
     > * Microsoft Edge
@@ -78,7 +78,7 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
 
 ## <a name="useputty"></a>Vytvořit tunel pomocí PuTTY
 
-[PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro Windows. Pokud nejste obeznámeni s PuTTY, přečtěte si článek [PuTTY dokumentaci](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Použijte následující postup k vytvoření tunelu SSH pomocí PuTTY:
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) je grafický klient SSH pro Windows. Pokud nejste obeznámeni s PuTTY, přečtěte si článek [PuTTY dokumentaci](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Použijte následující postup k vytvoření tunelu SSH pomocí PuTTY:
 
 ### <a name="create-or-load-a-session"></a>Vytvořit nebo načíst relaci
 
@@ -120,7 +120,7 @@ Po dokončení příkazu se směruje provoz odeslaný na portu 9876 místního p
    > [!NOTE]  
    > Výběr **vzdálený DNS** řeší požadavky systému DNS (Domain Name) pomocí clusteru HDInsight. Toto nastavení řeší DNS pomocí hlavního uzlu clusteru.
 
-2. Zkontrolujte, jestli funguje tunelu návštěvou webu [ http://www.whatismyip.com/ ](http://www.whatismyip.com/). Vrácená IP adresa by měl být použitý v datacentru Microsoft Azure.
+2. Zkontrolujte, jestli funguje tunelu návštěvou webu [ https://www.whatismyip.com/ ](https://www.whatismyip.com/). Vrácená IP adresa by měl být použitý v datacentru Microsoft Azure.
 
 ## <a name="verify-with-ambari-web-ui"></a>Ujistěte se u webové uživatelské rozhraní Ambari
 

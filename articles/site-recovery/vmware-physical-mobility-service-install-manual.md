@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: d0180a32f2a4258cb728869e2cb9f2abd57cc545
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 06430bf476c2e9f3af2102272fb54d201a3f1066
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845956"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53790805"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>Ruční instalace služby Mobility na virtuální počítače VMware a fyzické servery
 
@@ -91,7 +91,7 @@ Využití | UnifiedAgent.exe/role < MS|MT – > /InstallLocation  <Install Locat
 Instalační protokoly | V části % ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 / Role | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
 /InstallLocation| Volitelný parametr. Určuje umístění instalace služby Mobility (libovolné složky).
-/ Platform | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro Mware virtuálních počítačů a fyzických serverů. **Azure** pro virtuální počítače Azure. 
+/ Platform | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure. 
 / Silent| Volitelné. Určuje, jestli ke spuštění instalačního programu v bezobslužném režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
@@ -129,7 +129,7 @@ Protokoly konfigurace agenta | V části % ProgramData%\ASRSetupLogs\ASRUnifiedA
 Využití | . / install -d <Install Location> - r < MS|MT – > - v, VmWare - q
 -r | Instalace povinných parametrů. Určuje, zda by měla nainstalovat služba Mobility (MS) nebo hlavní cíl (MT).
 -d | Volitelný parametr. Určuje umístění instalace služby Mobility: /usr/local/ASR.
--v | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro Mware virtuálních počítačů a fyzických serverů. **Azure** pro virtuální počítače Azure. 
+-v | Povinné. Určuje platformu, na kterém je nainstalovaná služba Mobility. **VMware** pro virtuální počítače VMware a fyzických serverů. **Azure** pro virtuální počítače Azure. 
 -q | Volitelné. Určuje, jestli ke spuštění instalačního programu v bezobslužném režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: e78f0d2012cf4f6152e69fff1bab04f827c0eef7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310884"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53606890"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytvoření témata
 
@@ -55,7 +55,7 @@ Pokud chcete povolit automatické tématu Vytvoření v existujícím clusteru p
 
     ![Obrázek výběru restartování](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Můžete také nastavit hodnoty Ambari pomocí rozhraní Ambari REST API. To je obvykle obtížnější, protože je nutné provést několik volání REST, chcete-li načíst aktuální konfiguraci, upravit ho, atd. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru

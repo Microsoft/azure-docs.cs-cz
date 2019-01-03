@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2e24a138220f350e56b30406f65bb869dd523bad
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015870"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53632887"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Apache Hive v HDInsight
 [Apache Hive](https://hive.apache.org/) poskytuje způsob spuštění [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) úlohy prostřednictvím skriptovacím jazyce podobném SQL volat *[HiveQL] [ hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování a analýze velkých objemů dat.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
 Jeden z největších výhod Azure HDInsight je oddělení dat úložiště a výpočetního výkonu. HDInsight využívá úložiště dat Azure Blob storage. Typické úlohy sestává ze tří částí:
@@ -43,8 +43,8 @@ Hlavní část tohoto kurzu se dozvíte, jak pomocí jeden skript prostředí Wi
 
 V dodatky najdete pokyny pro nahrávání zpoždění letů, vytváření a nahrávání řetězec dotazu Hive a příprava úlohy Sqoop Azure SQL database.
 
-> [!NOTE]
-> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
+> [!NOTE]  
+> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
 ### <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto kurzu musíte mít tyto položky:
@@ -52,7 +52,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * **Pracovní stanice s prostředím Azure PowerShell**.
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Podpora prostředí Azure PowerShell pro správu prostředků služby HDInsight pomocí Azure Service Manageru je **zastaralá** a k 1. lednu 2017 jsme ji odebrali. Kroky v tomto dokumentu používají nové rutiny služby HDInsight, které pracují s Azure Resource Managerem.
     >
     > Podle postupu v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) si nainstalujte nejnovější verzi prostředí Azure PowerShell. Pokud máte skripty, které je potřeba upravit tak, aby používaly nové rutiny, které pracují s nástrojem Azure Resource Manager, najdete další informace v tématu [Migrace na vývojové nástroje založené na Azure Resource Manageru pro clustery služby HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
@@ -242,7 +242,7 @@ Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/displ
 * **Použijte stejný účet Azure Storage, který se použije jako výchozí systém souborů v clusteru HDInsight.** Vzhledem k tomu, že HDInsight cluster bude mít přístupový klíč účtu úložiště, není nutné provádět žádné další změny.
 * **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu najdete v [clusteru HDInsight vytvořit a spouštět úlohy Apache Hive a Sqoop](#runjob) propojit účet úložiště jako další účet úložiště. Pokyny najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
 
-> [!NOTE]
+> [!NOTE]  
 > Cesta objektu Blob úložiště pro datový soubor je zakódovaný v souboru skript HiveQL. Je třeba jej aktualizovat odpovídajícím způsobem.
 
 **Chcete-li stáhnout zapisovači letových údajů**
@@ -351,7 +351,7 @@ Pokud budete chtít použít jinou metodu pro nahrávání souborů, ujistěte s
 
 Cesta kurzy/flightdelay/data jsou virtuální složka, kterou jste vytvořili, když se nahraje soubory. Ověřte, že jsou 12 soubory, jeden pro každý měsíc.
 
-> [!NOTE]
+> [!NOTE]  
 > Je nutné aktualizovat dotaz Hive pro čtení z nové umístění.
 >
 > Buď je nutné nakonfigurovat oprávnění ke kontejneru přístupu veřejný, nebo vytvořit vazbu na účet úložiště na clusteru HDInsight. Řetězec dotazu Hive v opačném případě nebude mít přístup k datové soubory.
@@ -615,7 +615,7 @@ Skript HiveQL provede následující:
     #region - Constants and variables
 
     # IP address REST service used for retrieving external IP address and creating firewall rules
-    [String]$ipAddressRestService = "http://bot.whatismyipaddress.com"
+    [String]$ipAddressRestService = "https://bot.whatismyipaddress.com"
     [String]$fireWallRuleName = "FlightDelay"
 
     # SQL database variables
@@ -699,12 +699,12 @@ Skript HiveQL provede následující:
     Write-host "`nEnd of the PowerShell script" -ForegroundColor Green
     ```
 
-   > [!NOTE]
-   > Tento skript využívá službu representational stavu transfer (REST), http://bot.whatismyipaddress.com, načíst externí IP adresu. IP adresa se používá pro vytvoření pravidla brány firewall pro SQL database server.
+   > [!NOTE]  
+   > Tento skript využívá službu representational stavu transfer (REST), https://bot.whatismyipaddress.com, načíst externí IP adresu. IP adresa se používá pro vytvoření pravidla brány firewall pro SQL database server.
 
     Tady jsou některé proměnné použít ve skriptu:
 
-   * **$ipAddressRestService** – výchozí hodnota je http://bot.whatismyipaddress.com. Je veřejná IP adresa služby REST pro získání externí IP adresu. Pokud chcete, můžete použít jiné služby. Externí IP adresu získat pomocí služby se použije k vytvoření pravidla brány firewall pro server Azure SQL database, tak, že máte přístup k databázi z pracovní stanice (pomocí skriptu prostředí Windows PowerShell).
+   * **$ipAddressRestService** – výchozí hodnota je https://bot.whatismyipaddress.com. Je veřejná IP adresa služby REST pro získání externí IP adresu. Pokud chcete, můžete použít jiné služby. Externí IP adresu získat pomocí služby se použije k vytvoření pravidla brány firewall pro server Azure SQL database, tak, že máte přístup k databázi z pracovní stanice (pomocí skriptu prostředí Windows PowerShell).
    * **$fireWallRuleName** – jde o název pravidla brány firewall pro server Azure SQL database. Výchozí název je <u>FlightDelay</u>. Pokud chcete, můžete ho změnit.
    * **$sqlDatabaseMaxSizeGB** – tato hodnota se používá pouze při vytváření nového serveru Azure SQL database. Výchozí hodnota je 10GB. 10GB je dostačující pro účely tohoto kurzu.
    * **$sqlDatabaseName** – tato hodnota se používá pouze v případě, že vytváříte novou službu Azure SQL database. Výchozí hodnota je HDISqoop. Pokud přejmenujete, je nutné aktualizovat skript Windows Powershellu Sqoop odpovídajícím způsobem.
@@ -725,7 +725,7 @@ Nyní víte, jak nahrát soubor do úložiště objektů Blob v Azure, jak napln
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[rita-website]: http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
+[rita-website]: https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -739,9 +739,9 @@ Nyní víte, jak nahrát soubor do úložiště objektů Blob v Azure, jak napln
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
-[hadoop-shell-commands]: http://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
+[hadoop-shell-commands]: https://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
 
-[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
+[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
 
 [image-hdi-flightdelays-avgdelays-dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png

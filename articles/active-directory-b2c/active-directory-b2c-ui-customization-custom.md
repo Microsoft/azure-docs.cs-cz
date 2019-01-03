@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b0e24da86d253139a85e792bf3c59d777cf5db6a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: cc96da060a7a91e0e3118c436a93bdafca3b0372
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833937"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633006"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -50,9 +50,6 @@ Vytvoření obsahu s názvem vašeho produktu značky HTML v názvu.
    </body>
    </html>
    ```
-
-   >[!NOTE]
-   >Z bezpečnostních důvodů použití jazyka JavaScript a aktuálně je blokováno pro přizpůsobení.
 
 2. Vložte zkopírovaný fragment kódu v textovém editoru a uložte soubor jako *přizpůsobit ui.html*.
 
@@ -124,7 +121,7 @@ Konfigurace přizpůsobení uživatelského rozhraní, je zkopírovat **ContentD
 3. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Hledat **BuildingBlocks** elementu. Pokud element neexistuje, přidejte ji.
 4. Vložte celý obsah **ContentDefinitions** element, který jste zkopírovali jako podřízený objekt **BuildingBlocks** elementu. 
 5. Hledat **ContentDefinition** element, který obsahuje `Id="api.signuporsignin"` ve formátu XML, který jste zkopírovali.
-6. Změňte hodnotu vlastnosti **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například "https://mystore1.azurewebsites.net/b2c/customize-ui.html.
+6. Změňte hodnotu vlastnosti **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například, https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html.
     
     Vlastní zásady by měl vypadat nějak takto:
 

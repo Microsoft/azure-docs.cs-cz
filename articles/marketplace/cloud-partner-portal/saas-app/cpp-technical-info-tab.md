@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e247cedb732bb1290631ada4c6d423f1b3ed0dbd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196750"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788545"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta technické informace o SaaS aplikace
 
@@ -54,7 +54,7 @@ Následující tabulka popisuje povinná pole pro prodej prostřednictvím spole
 |     Začínáme se službou pokyny              |   Pokyny ke sdílení se zákazníky k usnadnění připojení k aplikaci SaaS. Jsou povolené základní značky HTML, například: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;atd.                |
 |    Cílová adresa URL stránky  |   Adresu URL vašeho webu, který bude směrovat vaši zákazníci objevil na po získání z webu Azure portal. Tato adresa URL bude také koncového bodu, který bude přijímat připojení rozhraní API pro usnadnění obchodování s Microsoftem.                |
 |  Připojení Webhooku    |  Pro všechny asynchronní události, které je potřeba poslat jménem zákazníka Microsoftu (Příklad: Předplatné Azure náramků RFID neplatný), potřebujeme, abyste nám webhooku připojení. Pokud ještě nemáte systému webhooku v místě, je nejjednodušší konfiguraci, aby aplikace logiky koncový bod HTTP, který bude naslouchat žádné události odeslání do něj a potom je odpovídajícím způsobem zpracovat. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">volání triggeru, nebo vnořené pracovní postupy s koncovými body HTTP ve službě logic apps</a>                |
-|  Azure AD Tenanta, ID a ID aplikace      |   Uvnitř webu Azure portal, vyžadujeme, vytvoření aplikace Active Directory tak, že abychom mohli ověřit připojení mezi dvěma naše služby je za ověřené komunikaci. U těchto polí, vytvořit aplikaci AD a vložte odpovídající Id Tenanta a Id aplikace.               |
+|  Azure AD Tenanta, ID a ID aplikace      |   Uvnitř webu Azure portal, vyžadujeme, vytvoření aplikace Active Directory tak, že abychom mohli ověřit připojení mezi dvěma naše služby je za ověřené komunikaci. U těchto polí, vytvořit aplikaci AD a vložte odpovídající Id Tenanta a Id aplikace. Všimněte si, že je přidružená k yoaur publisherID id aplikace. Ujistěte se proto, že stejné ID aplikace jako všechny nabídky.             |
 
 
 Nakonec Pokud vyberete **prodávat prostřednictvím Microsoft**, existuje další nová nabídka kartu s názvem **plány**. 
@@ -77,4 +77,4 @@ Další informace o volání akce možnosti najdete v článku vybrat možnost p
 ## <a name="next-steps"></a>Další postup
 
 - [Kartu plans (volitelné)](./cpp-plans-tab.md)
-- [Karta kanál](./cpp-channel-info-tab.md)
+- [Karta informací o kanálech](./cpp-channel-info-tab.md)

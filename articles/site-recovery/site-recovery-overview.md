@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5942f27313cf8bb6a9ed8bf0a5cc4fb556693065
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2cd9e89c92b2bed75c52654d779f4f7d8c17596e
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832220"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53975317"
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
 
@@ -23,8 +23,8 @@ Jako organizace musíte implementovat strategii BCRD (obchodní kontinuita a zot
 
 Služba Azure Recovery Services přispívá ke strategii BCDR:
 
-- **Služba Site Recovery:** Site Recovery pomáhá zajistit kontinuitu podnikových procesů tím, že zajišťuje provoz obchodních aplikací a úloh během výpadků. Site Recovery replikuje úlohy spuštěné na fyzických a virtuálních počítačích z primární lokality do sekundárního umístění. Když dojde k výpadku v primární lokalitě, převezme služby při selhání sekundární lokalita a přistupujete k aplikacím z ní. Po opětovném zprovoznění můžete navrátit služby do primární lokality.  
-- **Služba Backup:** Služba [Azure Backup](https://docs.microsoft.com/azure/backup/) zajišťuje zabezpečení a obnovitelnost vašich dat tím, že je zálohuje do Azure.
+- **Služba Site Recovery**: Site Recovery pomáhá zajistit kontinuitu udržováním obchodních aplikací a úloh během výpadků. Site Recovery replikuje úlohy spuštěné na fyzických a virtuálních počítačích z primární lokality do sekundárního umístění. Když dojde k výpadku v primární lokalitě, převezme služby při selhání sekundární lokalita a přistupujete k aplikacím z ní. Po opětovném zprovoznění můžete navrátit služby do primární lokality.  
+- **Služba Backup**: [Azure Backup](https://docs.microsoft.com/azure/backup/) zajišťuje vašich dat zabezpečení a obnovitelnost a zálohování do Azure.
 
 Site Recovery může spravovat replikaci pro:
 

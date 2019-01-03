@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: bc37b3b60a5ad7f4e2b4794e4fcb74c1a5004b75
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33f8547721f499ed7b9a81088681fc2ade2d030c
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336879"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53723531"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
@@ -95,7 +95,7 @@ union Update, workspace("contoso-workspace").Update
 ## <a name="how-log-analytics-data-is-organized"></a>Uspořádání dat Log Analytics
 Když vytvoříte dotaz, spustíte tak, že určíte, které tabulky obsahují data, která hledáte. Různé druhy dat jsou rozdělené do vyhrazené tabulek v každé [pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).  Dokumentaci k různým zdrojům dat obsahuje název datového typu, který vytvoří a popis každého z její vlastnosti.  Mnoho dotazů budete potřebovat jenom data z jedné tabulky, ale ostatní může používat širokou škálu možností zahrnout data z více tabulek.
 
-Zatímco [Application Insights](../../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Přístup k těmto datům pomocí stejné dotazovací jazyk, ale musí používat [konzoly Application Insights](../../application-insights/app-insights-analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
+Zatímco [Application Insights](../../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Přístup k těmto datům pomocí stejné dotazovací jazyk, ale musí používat [konzoly Application Insights](../../azure-monitor/app/analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
 
 
 ![Tabulky](media/log-query-overview/queries-tables.png)

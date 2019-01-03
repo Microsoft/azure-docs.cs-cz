@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 2418de5c20c34ae82ad36a914955fb338afd2822
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3fb703d49b97b7e8fa4136f8cd49fed20ee12a9
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877180"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720710"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 Transakcí elastické databáze pro službu Azure SQL Database (databáze SQL) umožňují provozovat transakcí, které jsou rozmístěny v několika databází v SQL DB. U transakcí elastické databáze pro SQL DB jsou k dispozici pro aplikace .NET pomocí rozhraní ADO .NET a integrace s známé programování pomocí prostředí [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) třídy. Získat knihovny, naleznete v tématu [rozhraní .NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
@@ -92,7 +92,7 @@ Transakcí elastické databáze SQL Database také podporují koordinace distrib
 
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Instalace rozhraní .NET pro Azure Cloud Services
-Azure poskytuje několik nabídek k hostování aplikací .NET. Porovnání různých nabídky je k dispozici v [srovnání Azure App Service, Cloud Services a Virtual Machines](../app-service/choose-web-site-cloud-service-vm.md). Pokud hostovaný operační systém nabídky je menší než .NET 4.6.1 vyžaduje pro elastické transakce, budete muset upgradovat hostovaný operační systém na 4.6.1. 
+Azure poskytuje několik nabídek k hostování aplikací .NET. Porovnání různých nabídky je k dispozici v [srovnání Azure App Service, Cloud Services a Virtual Machines](../app-service/overview-compare.md). Pokud hostovaný operační systém nabídky je menší než .NET 4.6.1 vyžaduje pro elastické transakce, budete muset upgradovat hostovaný operační systém na 4.6.1. 
 
 Pro službu Azure App Services se momentálně nepodporuje upgrade na hostovaném operačním systému. Pro virtuální počítače Azure, jednoduše se přihlaste k virtuálnímu počítači a spusťte instalační program pro nejnovější rozhraní .NET framework. Pro Azure Cloud Services je potřeba se jednat o instalaci na novější verzi rozhraní .NET do úlohy po spuštění vašeho nasazení. Koncepty a kroky jsou popsané v [instalaci .NET v roli cloudové služby](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
@@ -122,18 +122,18 @@ Transakcí elastické databáze jsou podporovány v rámci různých logických 
 
 Správa relací mezi komunikaci mezi serverem pro transakcí elastické databáze pomocí následujících rutin Powershellu:
 
-* **Nové AzureRmSqlServerCommunicationLink**: tuto rutinu použijte k vytvoření nové relace komunikace mezi dvěma logické servery ve službě Azure SQL DB. Relace je symetrický, což znamená, že oba servery můžete zahájit transakce s jiným serverem.
-* **Get-AzureRmSqlServerCommunicationLink**: tuto rutinu použijte k načtení existujících relací komunikace a jejich vlastnosti.
-* **Odebrat AzureRmSqlServerCommunicationLink**: tuto rutinu použijte k odebrání existujícího vztahu komunikace. 
+* **Nové AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k vytvoření nové relace komunikace mezi dvěma logické servery ve službě Azure SQL DB. Relace je symetrický, což znamená, že oba servery můžete zahájit transakce s jiným serverem.
+* **Get-AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k načtení existujících relací komunikace a jejich vlastnosti.
+* **Odebrat AzureRmSqlServerCommunicationLink**: Tuto rutinu použijte k odebrání existujícího vztahu komunikace. 
 
 ## <a name="monitoring-transaction-status"></a>Monitorování stavu transakce
-Monitorování stavu a průběhu zpracování transakcí probíhající elastické databáze pomocí zobrazení dynamické správy (DMV) v databázi SQL. Všechna zobrazení dynamické správy související s transakce jsou relevantní pro distribuované transakce v databázi SQL. Můžete najít odpovídající seznam zobrazení dynamické správy zde: [transakce zobrazení související dynamické správy a funkce (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
+Monitorování stavu a průběhu zpracování transakcí probíhající elastické databáze pomocí zobrazení dynamické správy (DMV) v databázi SQL. Všechna zobrazení dynamické správy související s transakce jsou relevantní pro distribuované transakce v databázi SQL. Můžete najít odpovídající seznam zobrazení dynamické správy zde: [Transakce související s funkcí (Transact-SQL) a zobrazení dynamické správy](https://msdn.microsoft.com/library/ms178621.aspx).
 
 Tato zobrazení dynamické správy jsou obzvláště užitečná:
 
-* **Sys.DM\_tran\_aktivní\_transakce**: uvádí aktuálně aktivních transakcí a jejich stav. Sloupec UOW (jednotka práce) můžete určit různé podřízené transakcí, které patří do stejné distribuované transakce. Všechny transakce v rámci jedné distribuované transakce mají stejnou hodnotu parametru UOW. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms174302.aspx) Další informace.
-* **Sys.DM\_tran\_databáze\_transakce**: poskytuje další informace o transakcích, jako je například umístění transakce v protokolu. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms186957.aspx) Další informace.
-* **Sys.DM\_tran\_zámky**: poskytuje informace o zámky, které jsou aktuálně probíhající transakce. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms190345.aspx) Další informace.
+* **Sys.DM\_tran\_aktivní\_transakce**: Obsahuje seznam aktuálně aktivních transakcí a jejich stav. Sloupec UOW (jednotka práce) můžete určit různé podřízené transakcí, které patří do stejné distribuované transakce. Všechny transakce v rámci jedné distribuované transakce mají stejnou hodnotu parametru UOW. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms174302.aspx) Další informace.
+* **Sys.DM\_tran\_databáze\_transakce**: Poskytuje další informace o transakcích, jako je například umístění transakce v protokolu. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms186957.aspx) Další informace.
+* **Sys.DM\_tran\_zámky**: Poskytuje informace o zámky, které jsou aktuálně probíhající transakce. Zobrazit [dokumentace k zobrazení dynamické správy](https://msdn.microsoft.com/library/ms190345.aspx) Další informace.
 
 ## <a name="limitations"></a>Omezení
 Transakcí elastické databáze SQL DB aktuálně platí následující omezení:

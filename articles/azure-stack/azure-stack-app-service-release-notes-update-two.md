@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 9f320f508fd45b6ad70b1357e873663796825621
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078793"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714487"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service v Azure stacku zpráva k vydání verze update 2
 
@@ -66,7 +66,7 @@ Azure App Service v Azure stacku Update 2 zahrnuje následující vylepšení a 
   - Aktualizace.Net Core součásti bylo v souladu s Azure App Service ve veřejném cloudu.
   - Aktualizované Kudu
 
-- Nasazení automatické prohození slotů povolena – funkce [konfiguraci automatického prohození](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing#configure-auto-swap)
+- Nasazení automatické prohození slotů povolena – funkce [konfiguraci automatického prohození](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
 
 - Testování v produkčním funkce povoleny – [Úvod do testování v produkčním prostředí](https://azure.microsoft.com/resources/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)
 
@@ -83,12 +83,12 @@ Azure App Service v Azure stacku Update 2 zahrnuje následující vylepšení a 
 - Pracovní procesy se nám kontaktovat souborového serveru při nasazení služby App Service v existující virtuální sítě a souborový server je k dispozici v privátní síti.
 
 Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborový server. Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
- * Zdroj: žádné
+ * Zdroj: Všechny
  * Zdrojový rozsah portů: *
  * Cíl: IP adresy
- * Rozsah cílových IP adres: rozsah IP adres pro souborový server
+ * Rozsah cílových IP adres: Rozsah IP adres pro souborový server
  * Rozsah cílových portů: 445
- * Protocol: TCP
+ * Protokol: TCP
  * Akce: Povolit
  * Priorita: 700
  * Název: Outbound_Allow_SMB445

@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: reference
-ms.date: 06/25/2018
+ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6c648a9cb6b8d8dbfb60f1a5a6ebc386c57460b0
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4aec7ff560b0695175a18c9c7e429a8ab733345
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887242"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53633704"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Správa služby Azure Analysis Services pomocí Powershellu
 
 Tento článek popisuje rutiny prostředí PowerShell použít k serveru Azure Analysis Services a úlohy správy databází. 
 
-Úlohy správy serveru jako je například vytvoření nebo odstranění serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutiny Azure Resource Manageru (prostředků) a rutiny služby Analysis Services (server). Další úlohy správy databází, jako je například přidávání nebo odebírání členů rolí, zpracování nebo rozdělení do oddílů pomocí rutiny zahrnuté v modulu SqlServer jako SQL Server Analysis Services.
+Úlohy správy serveru jako je vytvoření nebo odstranění serveru, pozastavení nebo obnovení operací serveru nebo změna úrovně služby (vrstvy) pomocí rutiny Azure Resource Manageru (prostředků) a rutiny služby Analysis Services (server). Další úlohy správy databází, jako jsou přidávání nebo odebírání členů rolí, zpracování nebo dělení používají rutiny v modulu SqlServer jako SQL Server Analysis Services.
 
 ## <a name="permissions"></a>Oprávnění
 Většina úkolů prostředí PowerShell vyžaduje, že máte oprávnění správce na serveru Analysis Services, které spravujete. Naplánované úlohy prostředí PowerShell jsou Bezobslužná operace. Princip účtu nebo službě spuštěný Plánovač musí mít oprávnění správce na serveru Analysis Services. 
@@ -50,11 +50,11 @@ Modul – [Azure.AnalysisServices](https://www.powershellgallery.com/packages/Az
 |[Add-AzureAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-azureanalysisservicesaccount)|Přidá účet ověřený použitého pro požadavky rutiny serveru Azure Analysis Services.| 
 |[Export AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog)|Exportuje protokol z instance serveru Analysis Services v tuto chvíli přihlášeného prostředí jako zadaný v příkazu Add-AzureAnalysisServicesAccount|  
 |[Restart-AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Restartování instance serveru Analysis Services v aktuálně přihlášený prostředí. zadané v příkazu Add-AzureAnalysisServicesAccount.|  
-|[Synchronizace AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Zadaná databáze na zadané instanci serveru Analysis Services pro všechny instance horizontálním navýšením kapacity dotazu v aktuálně přihlášeného prostředí jako zadaný v příkazu Add-AzureAnalysisServicesAccount synchronizuje|  
+|[Synchronizace AzureAnalysisServicesInstance](/powershell/module/azurerm.analysisservices/restart-azureanalysisservicesinstance)|Zadaná databáze na zadané instanci serveru Analysis Services pro všechny instance horizontální navýšení kapacity dotazu v aktuálně přihlášeného prostředí jako zadaný v příkazu Add-AzureAnalysisServicesAccount synchronizuje|  
 
 ## <a name="database-operations"></a>Databázové operace
 
-Operace databáze Azure Analysis Services používají stejné [modulu SqlServer](https://www.powershellgallery.com/packages/SqlServer) jako SQL Server Analysis Services. Ne všechny rutiny jsou však podporovány pro Azure Analysis Services. Další informace najdete tady [prostředí PowerShell pro SQL Server](https://docs.microsoft.com/sql/powershell/sql-server-powershell).
+Operace databáze Azure Analysis Services používají stejné [modulu SqlServer](https://www.powershellgallery.com/packages/SqlServer) jako SQL Server Analysis Services. Ne všechny rutiny jsou však podporovány pro Azure Analysis Services. Další informace najdete v tématu [prostředí PowerShell pro SQL Server](https://docs.microsoft.com/sql/powershell/sql-server-powershell).
 
 V modulu SqlServer poskytuje rutiny pro správu databáze specifické pro úlohy, jakož i pro obecné účely rutinu Invoke-ASCmd, který přijímá dotazu tabulkový Model skriptování jazyk TMSL () nebo skript. Pro Azure Analysis Services se podporují následující rutiny v modulu SqlServer.
 

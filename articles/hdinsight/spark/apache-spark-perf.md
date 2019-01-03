@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a6ab4d751be74b66d9e75a37f88bc8d441f9b003
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499145"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653726"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Optimalizace Apache Sparkových úloh
+# <a name="optimize-apache-spark-jobs"></a>Optimalizace úloh Apache Spark
 
 Zjistěte, jak optimalizovat [Apache Spark](https://spark.apache.org/) konfigurace clusteru pro konkrétní úlohu.  Nejběžnější výzvou je přetížení paměti z důvodu nesprávné konfigurace (zejména nesprávné velikosti prováděcí moduly), dlouhotrvající operace a úlohy, jejichž výsledkem Kartézském operace. Můžete urychlit úlohy s odpovídající ukládání do mezipaměti a tím, že pro [Nerovnoměrná distribuce dat](#optimize-joins-and-shuffles). Pro zajištění nejlepšího výkonu monitorování a zkontrolujte dlouhotrvající a využívání prostředků se prováděné úlohy Spark.
 
@@ -27,41 +27,41 @@ Následující části popisují běžné úlohy optimalizace Spark a doporučen
 Spark využívá 1.x Rdd k abstraktní data a poté Spark 2.x zavedené datových rámců a datové sady. Vezměte v úvahu následující relativní věci:
 
 * **Datových rámců**
-    * Nejlepší volbou ve většině případů
-    * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující
-    * Generování kódu celé fáze
-    * Přímý přístup do paměti
-    * Nízká režie uvolňování paměti (GC)
-    * Není co vývojářsky přívětivé jako datové sady, protože neexistují žádné kontroly za kompilace nebo programování objektu domény
+    * Ve většině případů je nejlepší volbou.
+    * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující.
+    * Generování kódu celé fázi.
+    * Přímý přístup do paměti.
+    * Nízká režie uvolňování paměti (GC).
+    * Není co vývojářsky přívětivé jako datové sady, protože neexistují žádné kontroly za kompilace nebo programování objektu domény.
 * **Datové sady**
-    * Dobré, ve kterých je přijatelná dopad na výkon komplexní kanály ETL
-    * Nevhodní v agregacích, kde může být významný dopad na výkon
-    * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující
-    * Vývojářsky přívětivé tím, že poskytuje kontroly programování a kompilaci objektu domény
-    * Přidává režijní náklady na serializaci nebo deserializaci
-    * Vysoké režijní náklady na uvolňování paměti
-    * Přeruší generování kódu celé fáze
+    * Dobré ve složitých kanály ETL, kterých je přijatelná dopad na výkon.
+    * Nevhodní v agregacích, kde může být významný dopad na výkon.
+    * Poskytuje optimalizaci dotazu prostřednictvím zprostředkující.
+    * Vývojářsky přívětivé tím, že poskytuje kontroly programování a kompilaci objektu domény.
+    * Přidává režijní náklady na serializaci nebo deserializaci.
+    * Vysoké režijní náklady na uvolňování paměti.
+    * Ukončí generování kódu celé fázi.
 * **Rdd**
-    * Ve Spark 2.x, není potřeba použít Rdd, pokud budete muset vytvořit nové vlastní RDD
-    * Bez optimalizace dotazů prostřednictvím zprostředkující
-    * Generování kódu celé fáze
-    * Vysoké režijní náklady na uvolňování paměti
-    * Musíte použít Spark 1.x starší verze rozhraní API
+    * Ve Spark 2.x, není potřeba použít Rdd, pokud budete muset vytvořit nové vlastní RDD.
+    * Bez optimalizace dotazů prostřednictvím zprostředkující.
+    * Generování kódu celé fázi.
+    * Vysoké režijní náklady na uvolňování paměti.
+    * Musíte použít Spark 1.x starší verze rozhraní API.
 
 ## <a name="use-optimal-data-format"></a>Použijte formát optimální dat
 
-Sparku jednodušší, podporuje řadu formátů, například csv, json, xml, parquet, orc a avro. Spark je možné rozšířit podporu mnoha více formátech s externím zdrojům dat – Další informace najdete v tématu [Spark balíčky](https://spark-packages.org).
+Sparku jednodušší, podporuje řadu formátů, například csv, json, xml, parquet, orc a avro. Spark je možné rozšířit podporu mnoha více formátech s externím zdrojům dat – Další informace najdete v tématu [Apache Spark balíčky](https://spark-packages.org).
 
 Nejlepší formát pro výkon je parquet s *Tenhle komprese*, což je výchozí hodnotou v Spark 2.x. Ukládá data ve sloupcovém formátu parquet a je vysoce optimalizovaných ve Sparku.
 
 ## <a name="select-default-storage"></a>Vyberte výchozí úložiště
 
-Když vytvoříte nový cluster Spark, máte možnost vybrat si Azure Blob Storage nebo Azure Data Lake Store jako výchozím úložištěm vašeho clusteru. Obě možnosti získáte výhody dlouhodobé úložiště pro přechodný clustery, tak vaše data nejsou se automaticky odstraní při odstranění clusteru. Můžete znovu vytvořit cluster přechodné a stále přístup k vašim datům.
+Když vytvoříte nový cluster Spark, máte možnost vybrat si jako výchozím úložištěm clusteru v Azure Blob Storage nebo Azure Data Lake Storage. Obě možnosti získáte výhody dlouhodobé úložiště pro přechodný clustery, tak vaše data nejsou se automaticky odstraní při odstranění clusteru. Můžete znovu vytvořit cluster přechodné a stále přístup k vašim datům.
 
 | Typ Store | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:**//url/ | **Standard** | Ano | Přechodné clusteru |
-| Azure Data Lake Store | **adl:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
+| Azure Data Lake Storage | **adl:**//url/ | **Rychlejší** | Ano | Přechodné clusteru |
 | Místní HDFS | **hdfs:**//url/ | **Nejrychlejší** | Ne | Interaktivní 24 hodin denně 7 clusteru |
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
@@ -73,7 +73,7 @@ Spark poskytuje vlastní nativní ukládání do mezipaměti mechanismy, které 
     * Funguje není s dělení, který může změnit v budoucích verzích Spark.
 
 * Storage úrovně ukládání do mezipaměti (doporučeno)
-    * Je možné implementovat pomocí [Alluxio](http://www.alluxio.org/).
+    * Je možné implementovat pomocí [Alluxio](https://www.alluxio.org/).
     * Používá se v paměti a ukládání do mezipaměti SSD.
 
 * Místní HDFS (doporučeno)
@@ -119,9 +119,9 @@ Kontejnery se podobá dělení dat, ale každý interval může obsahovat sadu h
 
 Zde jsou některé pokročilé funkce kontejnery:
 
-* Podle kontejnery meta-informace o optimalizaci dotazu
-* Optimalizované agregace
-* Optimalizované spojení
+* Podle kontejnery meta-informace o optimalizaci dotazu.
+* Optimalizované agregace.
+* Optimalizované spojení.
 
 Můžete použít dělení a kontejnery ve stejnou dobu.
 
@@ -176,7 +176,7 @@ Při rozhodování o konfiguraci prováděcího modulu, vezměte v úvahu jazyce
     2. Snižte počet otevřená připojení mezi moduly provádění (N2) v clusterech větší (> 100 moduly provádění).
     3. Zvětšete velikost haldy pro přizpůsobení pro úlohy náročné na paměť.
     4. Volitelné: Snižte zatížení paměti za prováděcího modulu.
-    5. Volitelné: Zvýšit využití a souběžnosti oversubscribing procesoru.
+    5. Volitelné: Oversubscribing procesoru zvýšit využití a souběžnosti.
 
 Jako obecné těchhle při výběru velikosti prováděcí modul:
     
@@ -202,7 +202,7 @@ Monitorujte výkon dotazů pro odlehlé hodnoty nebo jiné problémy s výkonem,
 Sledování vašich spuštěných úloh pravidelně pro problémy s výkonem. Pokud potřebujete další informace o některých problémech, zvažte jednu z následujících nástroje pro profilaci výkonu:
 
 * [Nástroj PAL Intel](https://github.com/intel-hadoop/PAT) monitoruje využití procesoru, úložiště a využití šířky pásma sítě.
-* [Řídicí středisko Oracle Java 8](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profily kód Sparku a prováděcí modul.
+* [Řídicí středisko Oracle Java 8](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profily kód Sparku a prováděcí modul.
 
 Klíčem k výkonu dotazů Spark 2.x je wolframu modul, který závisí na generování kódu celé fázi. V některých případech může být zakázaná generování kódu celé fázi. Například, pokud není měnitelný typ (`string`) ve výrazu agregace `SortAggregate` se zobrazí místo `HashAggregate`. Například pro lepší výkon, zkuste následující a potom znovu povolit generování kódu:
 

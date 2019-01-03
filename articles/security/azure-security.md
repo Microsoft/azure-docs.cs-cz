@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2dd6ebb9e2f35eccae3b267402a4ef9b0e1b2dbe
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a00f3d2ea4e191bb7860b88d39ff0ccaa338e0ff
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567158"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714232"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do zabezpečení Azure
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ Tento dokument popisuje přístup Microsoftu k zabezpečení v rámci cloudové 
 ## <a name="summary-azure-security-capabilities"></a>Možnosti souhrnu zabezpečení Azure
 Následující tabulka poskytuje stručný popis funkcí zabezpečení, které jsou implementované Microsoftu pro zabezpečení infrastruktury Azure, zákaznická data a zabezpečených aplikací.
 ### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Zabezpečení funkce implementována pro zabezpečení platformy Azure:
-Funkce uvedené následující jsou funkce, které můžete zkontrolovat na poskytuje záruku, že je na platformě Azure spravovaná bezpečným způsobem. Neposkytlo se odkazy pro další procházení podrobností podle jak Microsoft řeší otázky důvěryhodnosti zákazníka v čtyři oblasti: zabezpečení platformy, ochrany osobních údajů a ovládací prvky, dodržování předpisů a transparentnosti.
+Funkce uvedené následující jsou funkce, které můžete zkontrolovat na poskytuje záruku, že je na platformě Azure spravovaná bezpečným způsobem. Odkazy byly zadány pro další procházení podrobností podle jak Microsoft řeší otázky důvěryhodnosti zákazníka v čtyři oblasti: Zabezpečení platformy, ochrany osobních údajů a ovládací prvky, dodržování předpisů a transparentnost.
 
 
 | [Zabezpečená platforma](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Ochrana osobních údajů a ovládací prvky](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparentnost](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
@@ -69,7 +69,7 @@ Funkce uvedené následující jsou funkce, které můžete zkontrolovat na posk
 ### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Funkce zabezpečení, které nabízí Azure k zabezpečení dat a aplikací
 V závislosti na modelu cloudové služby je proměnná odpovědnost za kdo zodpovídá za správu zabezpečení aplikace nebo služby. Možnosti nejsou k dispozici na platformě Azure, abychom vám v souladu s těmito úkoly prostřednictvím integrované funkce a prostřednictvím partnerských řešení, které je možné nasadit do předplatného Azure.
 
-Integrované funkce jsou uspořádány do funkčních oblastí šest (6): operace, aplikací, úložiště, sítě, výpočetní prostředky a Identity. Další podrobnosti o funkcích a možnostem v platformě Azure v těchto oblastech šest (6), jsou poskytované prostřednictvím souhrnné informace.
+Integrované funkce jsou uspořádány do šest (6) funkčních oblastí: Operace, aplikací, úložiště, sítě, výpočetní prostředky a Identity. Další podrobnosti o funkcích a možnostem v platformě Azure v těchto oblastech šest (6), jsou poskytované prostřednictvím souhrnné informace.
 
 ## <a name="operations"></a>Operace
 Tato část obsahuje další informace o klíčových funkcí v oddělení zabezpečení a souhrnné informace o těchto funkcích.
@@ -110,7 +110,7 @@ Kromě toho Azure Security Center pomáhá s operací zabezpečení tím, že po
 V části poskytuje další informace o klíčových funkcí v aplikaci zabezpečení a souhrnné informace o těchto funkcích.
 
 ### <a name="web-application-vulnerability-scanning"></a>Webové kontroly ohrožení zabezpečení aplikace
-Jeden z nejjednodušších způsobů, jak začít pracovat s testováním ohrožení zabezpečení na vašich [aplikace služby App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) , je použít [integrace s Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ve vaší aplikaci jedním kliknutím ohrožení zabezpečení. Můžete zobrazit výsledky testů ve zprávě o snadno pochopit a zjistěte, jak opravit každý ohrožení zabezpečení s využitím podrobných pokynů.
+Jeden z nejjednodušších způsobů, jak začít pracovat s testováním ohrožení zabezpečení na vašich [aplikace služby App Service](https://docs.microsoft.com/azure/app-service/overview) , je použít [integrace s Tinfoil Security](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) k provedení kontroly ve vaší aplikaci jedním kliknutím ohrožení zabezpečení. Můžete zobrazit výsledky testů ve zprávě o snadno pochopit a zjistěte, jak opravit každý ohrožení zabezpečení s využitím podrobných pokynů.
 
 ### <a name="penetration-testing"></a>Testování průniku
 Pokud budete chtít provádět testování průniku nebo chcete použít jiný skener suite nebo poskytovatele, je třeba dodržet [proces schválení testování průniku s Azure](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) a získat předchozí schválení k provedení požadovaného průniku testy.
@@ -119,13 +119,13 @@ Pokud budete chtít provádět testování průniku nebo chcete použít jiný s
 Firewall webových aplikací (WAF) ve [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) pomáhá chránit webové aplikace z common webovými útoky, jako jsou Injektáž SQL, útoky skriptování napříč weby a napadení relace. Obsahuje předem nakonfigurovanou ochranu před hrozbami identifikován [Open Web Application zabezpečení projektu (OWASP) jako top 10 nejběžnějších ohrožení zabezpečení](https://msdn.microsoft.com/library/).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
-[App Service ověřování / autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) je funkce, která poskytuje způsob, jak vaše aplikace k přihlášení uživatelů, takže není nutné měnit kód back-endové aplikace. Poskytuje snadný způsob, jak chránit vaše aplikace a pracovat s daty jednotlivých uživatelů.
+[App Service ověřování / autorizace](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) je funkce, která poskytuje způsob, jak vaše aplikace k přihlášení uživatelů, takže není nutné měnit kód back-endové aplikace. Poskytuje snadný způsob, jak chránit vaše aplikace a pracovat s daty jednotlivých uživatelů.
 
 ### <a name="layered-security-architecture"></a>Vrstvené architektury zabezpečení
 Protože [App Service Environment](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) poskytuje izolovaném prostředí, nasadí do [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview), umožňuje vývojářům vytvářet vrstvené architektury zabezpečení poskytují různé úrovně přístup k síti pro jednotlivé vrstvy aplikace. Běžné tím pádem si je skrýt rozhraní API back EndY z obecné přístup k Internetu a povolit pouze rozhraní API, které jsou volány aplikací nadřazený web apps. [Skupiny zabezpečení sítě (Nsg)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) je možné omezit veřejný přístup k aplikacím API v Azure Virtual Network podsítěmi, které obsahují služby App Service Environment.
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Diagnostika webového serveru a application diagnostics
-Aplikace služby App Service web apps poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělena do [webového serveru diagnostiky](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) a [konzole application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Webový server zahrnuje dva hlavní záloh v diagnostice a řešení potíží s weby a aplikace.
+Aplikace služby App Service web apps poskytují diagnostické funkce pro protokolování informací z webového serveru a webové aplikace. Tyto jsou logicky rozdělena do [webového serveru diagnostiky](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) a [konzole application diagnostics](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx). Webový server zahrnuje dva hlavní záloh v diagnostice a řešení potíží s weby a aplikace.
 
 První novou funkcí je informace o fondy aplikací, pracovních procesů, weby, domény aplikace a spuštěné požadavky vyvolané programem stavu v reálném čase. Druhé nové výhody jsou podrobné trasování událostí, které sledují žádost v celém procesu dokončení požadavků a odpovědí.
 
@@ -141,7 +141,7 @@ Můžete povolit nebo zakázat následující typy protokolů:
 -   Webový Server protokolování – informace o transakce HTTP pomocí rozšířeném formátu protokolu W3C souboru. To je užitečné při určování celkové lokality metriky, jako je počet požadavků zpracovaných nebo kolik žádostí se z konkrétní IP adresu.
 
 #### <a name="application-diagnostics"></a>Diagnostika aplikace
-[Konzole Application diagnostics](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log) umožňuje zaznamenat informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) třídy k protokolování informací do protokolu diagnostiky aplikace. V konzoli Application Diagnostics existují dva hlavní typy událostí, ta, která souvisí s výkonem aplikací a související se selháním a chybami aplikací. Je možné rozdělit selháním a chybami dalšího problémy s připojením, zabezpečením a selháním. Selhání problémy se většinou vztahují k problému s kódem aplikace.
+[Konzole Application diagnostics](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs) umožňuje zaznamenat informace vytvořené webové aplikace. Můžete použít aplikace ASP.NET [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) třídy k protokolování informací do protokolu diagnostiky aplikace. V konzoli Application Diagnostics existují dva hlavní typy událostí, ta, která souvisí s výkonem aplikací a související se selháním a chybami aplikací. Je možné rozdělit selháním a chybami dalšího problémy s připojením, zabezpečením a selháním. Selhání problémy se většinou vztahují k problému s kódem aplikace.
 
 V konzoli Application Diagnostics lze zobrazit události seskupené následujícími způsoby:
 
@@ -149,7 +149,7 @@ V konzoli Application Diagnostics lze zobrazit události seskupené následujíc
 -   Chyby aplikace (zobrazí výjimka události)
 -   Výkon (zobrazí se události související s výkonem)
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 V části poskytuje další informace o klíčových funkcí v Azure storage zabezpečení a souhrnné informace o těchto funkcích.
 
 ### <a name="role-based-access-control-rbac"></a>Řízení přístupu na základě role (RBAC)
@@ -289,9 +289,9 @@ Můžete spravovat seznam serverů DNS používaných virtuální sítě na port
 [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx), nebo DNS, je zodpovědný za převod (nebo řešení) názvu webu nebo služby k její IP adrese. [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) je hostitelská služba určená pro domény DNS a zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure. DNS podporuje aspekty dostupnosti chaloupka zabezpečení "CIA".
 ### <a name="log-analytics-nsgs"></a>Log Analytics skupin zabezpečení sítě
 Můžete povolit následující kategorie diagnostických protokolů pro skupiny zabezpečení sítě:
--   Událost: Obsahuje položky, pro které skupina NSG pravidla se použijí u virtuálních počítačů a instancí rolí na základě adresy MAC. Stav pro tato pravidla shromažďovaných každých 60 sekund.
+-   událost: Obsahuje položky, pro které skupina NSG pravidla se použijí u virtuálních počítačů a instancí rolí na základě adresy MAC. Stav pro tato pravidla shromažďovaných každých 60 sekund.
 
--   Čítač pravidla: obsahuje položky pro kolikrát se každé pravidlo NSG se použije pro odepření nebo povolení provozu.
+-   Čítač pravidla: Obsahuje položky pro kolikrát se každé pravidlo NSG se použije pro odepření nebo povolení provozu.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Security Center pomáhá zabránit, detekci a reakce na hrozby a poskytuje zvýšenou viditelnost a kontrolu nad zabezpečením vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, které jinak nevšimli a spolupracuje s řadou řešení zabezpečení. Sítě System center doporučení týkající se brány firewall, skupiny zabezpečení sítě, konfiguraci pravidla pro příchozí provoz a další.

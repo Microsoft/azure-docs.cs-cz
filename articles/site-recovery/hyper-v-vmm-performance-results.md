@@ -1,18 +1,18 @@
 ---
 title: Výsledky testu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek obsahuje informace o testování výkonu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: raynew
-ms.openlocfilehash: d4540a00ed08f4c5a54108192868b4555eba3fa9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/27/2018
+ms.author: sutalasi
+ms.openlocfilehash: 62137f64f0f138ea1c2dfbdf97bde791227617db
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850920"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793032"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testu pro replikaci Hyper-V do sekundární lokality
 
@@ -111,7 +111,7 @@ Ve výsledcích zobrazí jasně, že s minimální režie pro velký cluster šk
 | Servery Hyper-V v clusteru: <br />ESTLAB HOST11<br />ESTLAB HOST12<br />ESTLAB HOST13<br />ESTLAB HOST14<br />ESTLAB-HOST25 |128ESTLAB HOST25 má 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2,20 GHz |4 |Můžu x 4 GB/s |Windows Server Datacenter 2012 R2 (x64) + roli Hyper-V |
 | VMM Server |2 | | |2 |1 Gb/s |Windows Server databáze 2012 R2 (x 64) a VMM 2012 R2 |
 
-### <a name="secondary-site"></a>Sekundární lokality
+### <a name="secondary-site"></a>Sekundární lokalita
 
 * Sekundární lokalita bude mít cluster převzetí služeb při selhání uzlu současně všech šest.
 * Sítě SAN iSCSI poskytuje úložiště pro uzel clusteru. Model – Hitachi HUS130.

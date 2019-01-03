@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: rayne
-ms.openlocfilehash: 50ef6ff452713ec8a8023c5d5e3d58a4b91ea323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/27/2018
+ms.author: raynew
+ms.openlocfilehash: c93f80ba93e84c93ddf58b46b4bbcf98c53478d8
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849798"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53794222"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adres pro připojení po převzetí služeb při selhání do sekundární místní lokality
 
@@ -23,7 +23,7 @@ Po převzetí služeb při selhání virtuálních počítačů Hyper-V v cloude
 
 Po převzetí služeb při selhání existuje několik způsobů, jak zpracovat přidělování IP adres pro virtuální počítače repliky: 
 
-- **Zachovat stejné IP adresy po převzetí služeb při selhání**: V tomto scénáři se replikovaný virtuální počítač má stejné IP adresy jako primárního virtuálního počítače. To zjednodušuje sítě související s problémy po převzetí služeb při selhání, ale vyžaduje úkony infrastruktury.
+- **Zachovat stejné IP adresy po převzetí služeb při selhání**: V tomto scénáři má replikovaný virtuální počítač stejnou IP adresu jako primární virtuální počítač. To zjednodušuje sítě související s problémy po převzetí služeb při selhání, ale vyžaduje úkony infrastruktury.
 - **Použít jinou IP adresu po převzetí služeb při selhání**: V tomto scénáři virtuální počítač dostane novou IP adresu po převzetí služeb při selhání. 
  
 

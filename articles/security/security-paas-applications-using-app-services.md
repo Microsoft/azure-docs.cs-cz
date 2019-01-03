@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 99f706a3b24991e7f5a3473d40a568971b71a979
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: bece63c36bf0027524dea051e78d290c407ca349
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451982"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716085"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení PaaS webových a mobilních aplikací pomocí služby Azure App Service
 
-V tomto článku se podíváme na kolekci [služby Azure App Service](../app-service/app-service-web-overview.md) osvědčené postupy zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS. Tyto osvědčené postupy jsou odvozeny z našich zkušenostech s Azure a prostředí zákazníků, jako sami.
+V tomto článku se podíváme na kolekci [služby Azure App Service](../app-service/overview.md) osvědčené postupy zabezpečení pro zabezpečení vašich webových a mobilních aplikací PaaS. Tyto osvědčené postupy jsou odvozeny z našich zkušenostech s Azure a prostředí zákazníků, jako sami.
 
 Azure App Service je nabídka platform-as-a-service (PaaS), která umožňuje vytvářet webové a mobilní aplikace pro jakoukoliv platformu nebo zařízení a připojení k datům bez ohledu na, v cloudu nebo místně. App Service zahrnuje webové a mobilní funkce, které byly dříve nabízeli samostatně jako weby Azure a Azure Mobile Services. Obsahuje také nové možnosti pro automatizaci obchodních procesů a hostování cloudových rozhraní API. Jako jediná integrovaná služba App Service přináší bohatou sadu možností pro webové, mobilní a integrační scénáře.
 
 ## <a name="authenticate-through-azure-active-directory-ad"></a>Ověřování pomocí služby Azure Active Directory (AD)
-Služba App Service poskytuje službu OAuth 2.0 pro zprostředkovatele identity. OAuth 2.0, zaměřuje na jednoduchost klienta pro vývojáře poskytují konkrétní povolení tocích pro webové aplikace, aplikací klasické pracovní plochy a mobilní telefony. Azure AD používá OAuth 2.0 k umožnění autorizace přístupu k mobilních a webových aplikací. Další informace najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/app-service-authentication-overview.md).
+Služba App Service poskytuje službu OAuth 2.0 pro zprostředkovatele identity. OAuth 2.0, zaměřuje na jednoduchost klienta pro vývojáře poskytují konkrétní povolení tocích pro webové aplikace, aplikací klasické pracovní plochy a mobilní telefony. Azure AD používá OAuth 2.0 k umožnění autorizace přístupu k mobilních a webových aplikací. Další informace najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/overview-authentication-authorization.md).
 
 ## <a name="restrict-access-based-on-role"></a>Omezení přístupu na základě role 
 Omezení přístupu je nezbytné pro organizace, které chcete vynutit zásady zabezpečení pro přístup k datům. Řízení přístupu na základě role (RBAC) můžete přiřadit oprávnění pro uživatele, skupiny nebo aplikace v určitém rozsahu, jako je například potřeba znát a principů zabezpečení nejnižších oprávnění. Další informace o uživatelům udělíte přístup k aplikacím, najdete v článku [co je řízení přístupu na základě rolí](../role-based-access-control/overview.md).

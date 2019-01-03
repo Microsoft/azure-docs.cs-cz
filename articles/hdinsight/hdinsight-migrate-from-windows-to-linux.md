@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: bcaf59e1d9b36dfbb17f1e0b8089cd88e626e2b9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
+ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437125"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53743642"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migrace z clusteru HDInsight se systémem Windows do clusteru se systémem Linux
 
@@ -119,7 +119,7 @@ Tato část obsahuje informace o rozdílech při vytváření clusteru.
 
 ### <a name="ssh-user"></a>SSH uživatele
 
-Použití clusterů HDInsight se systémem Linux **Secure Shell (SSH)** protokol moct poskytovat vzdálený přístup k uzlům clusteru. Na rozdíl od clusterů se systémem Vzdálená plocha pro Windows většina klientů SSH se neposkytuje grafické uživatelské prostředí. Místo toho klienty SSH zadejte příkazový řádek, který umožňuje spouštění příkazů v clusteru. Někteří klienti (například [MobaXterm](http://mobaxterm.mobatek.net/)) zadejte Prohlížeč systému souborů grafické kromě vzdáleného příkazového řádku.
+Použití clusterů HDInsight se systémem Linux **Secure Shell (SSH)** protokol moct poskytovat vzdálený přístup k uzlům clusteru. Na rozdíl od clusterů se systémem Vzdálená plocha pro Windows většina klientů SSH se neposkytuje grafické uživatelské prostředí. Místo toho klienty SSH zadejte příkazový řádek, který umožňuje spouštění příkazů v clusteru. Někteří klienti (například [MobaXterm](https://mobaxterm.mobatek.net/)) zadejte Prohlížeč systému souborů grafické kromě vzdáleného příkazového řádku.
 
 Při vytváření clusteru, je nutné zadat uživatele SSH a buď **heslo** nebo **certifikátu veřejného klíče** pro ověřování.
 
@@ -199,7 +199,7 @@ Následující diagram obsahuje pokyny k migraci vašich úloh Hive.
 | `set hive.execution.engine=tez;` povolení Tez |Apache Tez je výchozí prováděcí modul pro clustery založené na Linuxu, takže příkaz set je už je nepotřebujete. |
 | Uživatelem definované funkce jazyka C# | Informace o ověřování komponenty jazyka C# s Linuxovým systémem HDInsight najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md) |
 | CMD soubory nebo skripty na serveru vyvolat jako součást úlohy Hive |použití skriptů prostředí Bash |
-| `hive` příkaz pro vzdálené plochy |Použití [Beeline](hadoop/apache-hadoop-use-hive-beeline.md) nebo [Apache Hive z relace SSH](hdinsight-hadoop-use-hive-ssh.md) |
+| `hive` příkaz pro vzdálené plochy |Použití [Apache Hive Beeline](hadoop/apache-hadoop-use-hive-beeline.md) nebo [Apache Hive z relace SSH](hdinsight-hadoop-use-hive-ssh.md) |
 
 ### <a name="pig"></a>Pig
 
@@ -220,7 +220,7 @@ Následující diagram obsahuje pokyny k migraci vašich úloh Hive.
 > [!IMPORTANT]  
 > Pokud používáte externí metaúložiště Oozie, byste měli zálohovat metastore před použitím s Linuxovým systémem HDInsight. HDInsight se systémem Linux je k dispozici s novějšími verzemi Oozie, který může mít nekompatibility s metaúložiště vytvořené ve starších verzích.
 
-Oozie pracovních postupů prostředí akce povolit. Akce prostředí pomocí výchozí prostředí pro operační systém můžete spouštět příkazy příkazového řádku. Pokud máte pracovní postupy s Oozie, které závisí na prostředí Windows, je třeba přepsat pracovní postupy závisí na prostředí v Linuxu (Bash). Další informace o používání prostředí akce s Oozie najdete v tématu [rozšíření akce prostředí Oozie](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
+Oozie pracovních postupů prostředí akce povolit. Akce prostředí pomocí výchozí prostředí pro operační systém můžete spouštět příkazy příkazového řádku. Pokud máte pracovní postupy s Oozie, které závisí na prostředí Windows, je třeba přepsat pracovní postupy závisí na prostředí v Linuxu (Bash). Další informace o používání prostředí akce s Oozie najdete v tématu [rozšíření akce prostředí Oozie](https://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html).
 
 Pokud máte pracovní postup, který používá aplikace v jazyce C#, ověření těchto aplikací v prostředí Linux. Další informace najdete v tématu [řešení migrace .NET k Linuxovým systémem HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md).
 

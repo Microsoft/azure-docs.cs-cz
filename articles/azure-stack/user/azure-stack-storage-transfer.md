@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/10/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 45bf9bbffdbba22336da08c81df069ce0267686f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092656"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53724449"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 
@@ -48,7 +48,7 @@ Vaše požadavky určují, které tyto nástroje vám nejvíce vyhovuje:
 
     Ovladač virtuálním souborovém systému pro Azure Blob Storage, což vám umožní přistupovat k existující data objektů blob bloku v účtu úložiště v systému Linux. 
 
-Vzhledem k rozdílům služby storage mezi Azure a Azure Stack může být některé specifické požadavky pro jednotlivé nástroje popsané v následujících částech. Porovnání mezi službou úložiště služby Azure Stack a Azure storage najdete v tématu [úložiště služby Azure Stack: rozdíly a aspekty](azure-stack-acs-differences.md).
+Vzhledem k rozdílům služby storage mezi Azure a Azure Stack může být některé specifické požadavky pro jednotlivé nástroje popsané v následujících částech. Porovnání mezi službou úložiště služby Azure Stack a Azure storage najdete v tématu [úložiště služby Azure Stack: Rozdíly a aspekty](azure-stack-acs-differences.md).
 
 ## <a name="azcopy"></a>AzCopy
 
@@ -59,13 +59,14 @@ AzCopy je nástroj příkazového řádku určený ke kopírování dat do a z M
 Existují dvě verze nástroje azcopy: AzCopy ve Windows a AzCopy v Linuxu.
 
  - **AzCopy ve Windows**
-    - Stáhněte si podporovanou verzi nástroje AzCopy pro Azure Stack. Můžete nainstalovat a používat AzCopy ve službě Azure Stack stejným způsobem jako Azure. Další informace najdete v tématu [AzCopy ve Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
-        - Pro 1802 update nebo novější verze [stáhnout AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
-        - U předchozích verzí [stáhnout AzCopy 5.0.0](https://aka.ms/azcopyforazurestack20170417).
+    - Stáhněte si podporovanou verzi nástroje AzCopy pro Azure Stack. Můžete nainstalovat a používat AzCopy ve službě Azure Stack stejným způsobem jako Azure. Další informace najdete v tématu [AzCopy ve Windows](../../storage/common/storage-use-azcopy.md).
+        - Pro 1811 update nebo novější verze [stáhnout AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109).
+        - Pro předchozí verze (aktualizace 1802 k 1809) [stáhnout AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
  - **AzCopy v Linuxu**
 
-    - AzCopy v Linuxu podporuje aktualizace Azure Stack 1802 nebo novější verze. Můžete nainstalovat a používat AzCopy ve službě Azure Stack stejným způsobem jako Azure. Další informace najdete v tématu [AzCopy v Linuxu](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+    - Můžete nainstalovat a používat AzCopy ve službě Azure Stack stejným způsobem jako Azure. Další informace najdete v tématu [AzCopy v Linuxu](../../storage/common/storage-use-azcopy-linux.md).
+    - Předchozí verze (aktualizace 1802 k 1809), najdete v článku [kroky instalace AzCopy 7.1 a starších verzích](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions).
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>Příklady příkazů AzCopy pro přenos dat
 
@@ -75,36 +76,36 @@ Následující příklady jsou některé typické scénáře pro kopírování d
 
 **Windows**
 
-````AzCopy
+```shell
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount.blob.local.azurestack.external/mycontainer \
     --destination /mnt/myfiles \
     --source-key <key> \
     --recursive
-````
+```
 
 ### <a name="upload-single-file-to-virtual-directory"></a>Nahrání jednoho souboru do virtuálního adresáře
 
 **Windows**
 
-```AzCopy
+```shell
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source /mnt/myfiles/abc.txt \
     --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
     --dest-key <key>
-````
+```
 
 ### <a name="move-data-between-azure-and-azure-stack-storage"></a>Přesun dat mezi Azure a Azure Stackem úložiště
 
@@ -112,13 +113,13 @@ Asynchronní datový přenos mezi Azure storage a Azure Stack se nepodporuje. Je
 
 **Windows**
 
-````AzCopy
+```shell
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-````
+```
 
 **Linux**
 
-````AzCopy
+```bash
 azcopy \
     --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
     --destination https://myaccount2.blob.core.windows.net/myContainer/ \
@@ -126,7 +127,7 @@ azcopy \
     --dest-key <key2> \
     --include "abc.txt" \
     --sync-copy
-````
+```
 
 ### <a name="azcopy-known-issues"></a>Azcopy známé problémy
 
@@ -217,28 +218,27 @@ New-Item -Path $DestinationFolder -ItemType Directory -Force
 $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 
 # end
-````
+```
 
 ### <a name="powershell-known-issues"></a>PowerShell – známé problémy
 
 Aktuální kompatibilní modul verzi Azure Powershellu pro Azure Stack je 1.2.11 pro operace uživatelů. To se liší od nejnovější verzi Azure Powershellu. Operace služby úložiště má vliv na tento rozdíl:
 
-* Návratová hodnota formátu `Get-AzureRmStorageAccountKey` ve verzi 1.2.11 má dvě vlastnosti: `Key1` a `Key2`, ale aktuální verze Azure vrátí pole obsahující všechny klíče účtu.
+Návratová hodnota formátu `Get-AzureRmStorageAccountKey` ve verzi 1.2.11 má dvě vlastnosti: `Key1` a `Key2`, ale aktuální verze Azure vrátí pole obsahující všechny klíče účtu.
 
-   ```
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.4, and later versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Value[0]
+```powershell
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.4, and later versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Value[0]
 
-   # This command gets a specific key for a storage account, 
-   # and works for Azure PowerShell version 1.3.2, and previous versions.
-   (Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
-   -AccountName "MyStorageAccount").Key1
+# This command gets a specific key for a storage account, 
+# and works for Azure PowerShell version 1.3.2, and previous versions.
+(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" `
+-AccountName "MyStorageAccount").Key1
+```
 
-   ```
-
-   Další informace najdete v tématu [Get-AzureRmStorageAccountKey](https://docs.microsoft.com/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0).
+Další informace najdete v tématu [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey).
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -265,7 +265,7 @@ Před spuštěním tohoto skriptu, ujistěte se, že můžete úspěšně připo
 4. Označí skript jako spustitelný soubor, v případě potřeby: `chmod +x my_storage_sample.sh`
 5. Spusťte skript. Například v prostředí Bash: `./my_storage_sample.sh`
 
-```bash
+```azurecli
 #!/bin/bash
 # A simple Azure Stack storage example script
 
@@ -296,7 +296,7 @@ echo "Downloading the file..."
 az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --account-name $AZURESTACK_STORAGE_ACCOUNT_NAME --name $AZURESTACK_STORAGE_BLOB_NAME --file $DESTINATION_FILE --output table
 
 echo "Done"
-````
+```
 
 ## <a name="microsoft-azure-storage-explorer"></a>Průzkumník služby Microsoft Azure storage
 
@@ -317,20 +317,20 @@ Ve službě Azure Stack development Kit by měl být blobEndpoint `myaccount.blo
 
 Uvědomte si, že accountKey a sasToken lze pouze nakonfigurovaný jeden po druhém. Když je klíč účtu úložiště, konfigurační soubor přihlašovacích údajů je v následujícím formátu: 
 
-```text  
-    accountName myaccount 
-    accountKey myaccesskey== 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```
+accountName myaccount 
+accountKey myaccesskey== 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 Když je zadaný token sdíleného přístupového, konfigurační soubor přihlašovacích údajů je v následujícím formátu:
 
-```text  
-    accountName myaccount 
-    sasToken ?mysastoken 
-    containerName mycontainer 
-    blobEndpoint myaccount.blob.local.azurestack.external
+```  
+accountName myaccount 
+sasToken ?mysastoken 
+containerName mycontainer 
+blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
 ## <a name="next-steps"></a>Další postup

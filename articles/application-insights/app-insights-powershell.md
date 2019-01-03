@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5f6ce470399540f6d8cf00d404d658cb3da345ad
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993760"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974504"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
-Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](app-insights-monitor-web-app-availability.md), nastavit [výstrahy](app-insights-alerts.md), nastavte [cenové schéma](app-insights-pricing.md)a vytvořit další prostředky Azure .
+Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](../azure-monitor/app/monitor-web-app-availability.md), nastavit [výstrahy](../azure-monitor/app/alerts.md), nastavte [cenové schéma](app-insights-pricing.md)a vytvořit další prostředky Azure .
 
 Klíčem k vytvoření těchto prostředků je šablony JSON pro [Azure Resource Manageru](../azure-resource-manager/powershell-azure-resource-manager.md). Řečeno v kostce, postup je: stáhnout definice JSON z existujících prostředků; parametrizovat určité hodnoty jako jsou názvy; a spusťte šablonu pokaždé, když chcete vytvořit nový prostředek. Několik prostředků můžete zabalit dohromady, k jejich vytvoření všechno v jednom přejděte – například monitorování aplikace s testy dostupnosti, upozornění a úložiště pro průběžný export. Existují některé odlišnosti k některým parameterizations, které vám objasníme tady.
 

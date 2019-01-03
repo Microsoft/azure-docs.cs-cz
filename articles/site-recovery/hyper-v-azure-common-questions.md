@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 3e71c4e31c6d57cb54a654e0e1c28dcb0fa82cda
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8ba188db87ffc0d428c7349c902cf60bec65d30f
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875327"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788476"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
@@ -55,7 +55,7 @@ Ano, jak šifrování během přenosu a [šifrování v Azure](https://docs.micr
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Co je možné? s technologií Hyper-V do Azure replikace
 
-- **Zotavení po havárii**: můžete nastavit úplné havárii. V tomto scénáři replikaci místních virtuálních počítačů Hyper-V do Azure storage:
+- **Zotavení po havárii**: Můžete nastavit úplné havárii. V tomto scénáři replikaci místních virtuálních počítačů Hyper-V do Azure storage:
     - Replikace virtuálních počítačů do Azure. Pokud není k dispozici v místní infrastruktuře, můžete převzetí služeb při selhání do Azure.
     - Při převzetí služeb při selhání, se vytvoří virtuální počítače Azure pomocí replikovaná data. Přístupná aplikace a úlohy na virtuálních počítačích Azure.
     - Pokud vaše místní datové centrum opět dostupná, můžete převzít obnovení z Azure do místní lokality.
@@ -197,8 +197,8 @@ Po znovu spuštěn a je v místní infrastruktuře, můžete službu navrátit. 
 
 1. Zahájíte plánované převzetí služeb z Azure do místní lokality pomocí několika různých možností:
 
-    - Minimalizovat prostoje: Pokud použijete tuto možnost Site Recovery synchronizuje data před převzetí služeb při selhání. Kontroluje bloky změněná data a stáhne do místní lokality při udržuje virtuálním počítači Azure spuštěný, minimalizace výpadků. Když ručně zadáte, že by se měl dokončit převzetí služeb při selhání, vypnutí virtuálního počítače Azure, se zkopírují všechny finální rozdílové změny a spustí převzetí služeb při selhání.
-    - Úplné stažení: pomocí této možnosti se data synchronizují během převzetí služeb při selhání. Tato možnost umožňuje stáhnout celý disk. Je rychlejší, protože se počítají žádné kontrolní součty, ale není k dispozici další prostoje. Tuto možnost použijte, pokud běží repliky virtuálních počítačů Azure nějakou dobu, nebo pokud místní virtuální počítač byl odstraněn.
+    - Minimalizujte prostoje: Pokud použijete tuto možnost Site Recovery synchronizuje data před převzetí služeb při selhání. Kontroluje bloky změněná data a stáhne do místní lokality při udržuje virtuálním počítači Azure spuštěný, minimalizace výpadků. Když ručně zadáte, že by se měl dokončit převzetí služeb při selhání, vypnutí virtuálního počítače Azure, se zkopírují všechny finální rozdílové změny a spustí převzetí služeb při selhání.
+    - Úplné stažení: Pomocí této možnosti se data synchronizují během převzetí služeb při selhání. Tato možnost umožňuje stáhnout celý disk. Je rychlejší, protože se počítají žádné kontrolní součty, ale není k dispozici další prostoje. Tuto možnost použijte, pokud běží repliky virtuálních počítačů Azure nějakou dobu, nebo pokud místní virtuální počítač byl odstraněn.
 
 2. Můžete vybrat selhání zpět do stejného virtuálního počítače nebo do alternativní virtuálního počítače. Můžete určit, že by měl Site Recovery vytvořte virtuální počítač, pokud ještě neexistuje.
 3. Po dokončení počáteční synchronizace, je vybrat k dokončení převzetí služeb. Po dokončení, přihlaste se na místní virtuální počítač, zkontrolujte, že všechno funguje podle očekávání. Na webu Azure Portal uvidíte, že virtuální počítače Azure byly zastaveny.

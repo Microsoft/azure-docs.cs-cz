@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4ef312ebd6c329028a556778c24c5e0e41706056
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310993"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53974705"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -121,7 +121,7 @@ Obchodní služby s využitím certifikace toto auditování se provádí, jako 
 
 Pokud odstraníte všechna data, Microsoft Azure odstraní data, včetně žádné uložené v mezipaměti nebo záložní kopie. Pro příslušné služby, které do 90 dnů po uplynutí doby uchování dojde k odstranění. (V oboru služby jsou definovány v části podmínky pro zpracování dat naše [podmínky Online služeb](https://aka.ms/Online-Services-Terms).)
 
-Pokud na disku používané pro úložiště odkážete selhání hardwaru, se zabezpečeně [vymaže nebo zničení](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) dříve, než je Microsoft vrátí výrobce pro nahrazení nebo opravit. Data na jednotce se přepíší zajistit, že data nelze obnovit všechny prostředky.
+Pokud na disku používané pro úložiště odkážete selhání hardwaru, se zabezpečeně [vymaže nebo zničení](https://microsoft.com/trustcenter/privacy/you-own-your-data) dříve, než je Microsoft vrátí výrobce pro nahrazení nebo opravit. Data na jednotce se přepíší zajistit, že data nelze obnovit všechny prostředky.
 
 ## <a name="compute-isolation"></a>COMPUTE úrovně izolace
 Microsoft Azure nabízí různé cloudové výpočetní služby, které zahrnují široké škály výpočetních instancí a služby, které je možné škálovat směrem nahoru a dolů automaticky podle potřeb vaší aplikace nebo enterprise. Tyto výpočetní instance a service nabízejí izolaci na více úrovních, zabezpečení dat, aniž byste museli obětovat flexibilitu při konfiguraci této poptávky zákazníků.
@@ -238,7 +238,7 @@ Azure nabízí následující typy šifrování pro ochranu dat:
 -   [Šifrování na straně klienta](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)pro šifrování dat před přenosu do služby storage a k dešifrování dat po převedení mimo úložiště.
 
 #### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
-Pro mnoho společností [šifrování dat v klidovém stavu](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) je povinný krok směrem k suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Existují tři funkce Azure, které poskytují šifrování dat, která jsou "neaktivní":
+Pro mnoho společností [šifrování dat v klidovém stavu](https://docs.microsoft.com/azure/security/azure-isolation) je povinný krok směrem k suverenita dat o ochraně osobních údajů, dodržování předpisů a data. Existují tři funkce Azure, které poskytují šifrování dat, která jsou "neaktivní":
 
 -   [Šifrování služby Storage](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) umožňuje požadovat, že služba úložiště automaticky šifrování dat při zápisu do služby Azure Storage.
 

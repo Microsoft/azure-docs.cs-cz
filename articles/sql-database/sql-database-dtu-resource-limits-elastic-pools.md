@@ -3,7 +3,7 @@ title: Prostředek založený na DTU databáze SQL Azure omezuje elastických fo
 description: Tato stránka popisuje některé běžné prostředek založený na DTU limity pro elastické fondy Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-poolss
+ms.subservice: elastic-pools
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: a31a2bc3fa1edc0f4424dde4b5c8934e26669fc0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e3b46620d15f8c08d0da69aef3d8c0920e5ad4ec
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873440"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653047"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí nákupní model založený na DTU 
 
@@ -28,7 +28,7 @@ Založený na DTU nákupní model omezení prostředků pro izolované databáze
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a výpočty velikostí
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: Velikosti úložiště a výpočty velikostí
 
 Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky dostupné na jednotlivých úrovních služby a vypočítat velikost. Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikost úložiště [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraní REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
@@ -111,7 +111,7 @@ Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky d
 ||||||||
 
 > [!IMPORTANT]
-> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: západní USA – střed, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, Německo – severovýchod, USGov Iowa, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech kromě následujících: Střed USA – Západ, Čína – východ, USDoDCentral, Německo – střed, USDoDEast, USA (gov) – jihozápad, Německo – severovýchod, USGov Iowa, Čína – sever. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve fondu obdrží stejné množství prostředků ke zpracování dotazů. Služba SQL Database poskytuje spravedlivé sdílení prostředků mezi databázemi tím, že zajišťuje rovnoměrné rozdělení výpočetního času. Pokud je minimální počet DTU na databázi nastaven na nenulovou hodnotu, pro každou databázi bude garantováno spravedlivé sdílení prostředků elastického fondu je společně s libovolným množstvím prostředků.
 

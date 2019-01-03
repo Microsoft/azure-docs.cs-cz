@@ -11,18 +11,18 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 5d4c564ac797f40d7f6e9b169a6c864d3ef8147b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f95dec8a539a92a0397421fbde411f646eeca3ca
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165159"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53720080"
 ---
-# <a name="find-endpoint-region-with-c"></a>Najít oblast koncový bod pomocí jazyka C# 
+# <a name="programmatically-find-endpoint-region-with-c"></a>Hledat oblasti koncového bodu prostřednictvím kódu programu pomocíC# 
 Pokud máte LUIS ID aplikace a služby LUIS ID předplatného, můžete najít jaké oblasti se má použít pro koncový bod dotazy.
 
 > [!NOTE] 
-> Kompletní C# řešení je k dispozici [ **LUIS-Samples** úložiště GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/csharp/).
+> Kompletní C# řešení je k dispozici [ **Azure-Samples** úložiště GitHub](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/find-region/csharp/).
 
 ## <a name="luis-endpoint-query-strategy"></a>Strategie dotazu koncový bod služby LUIS
 Každý dotaz LUIS koncového bodu vyžaduje:

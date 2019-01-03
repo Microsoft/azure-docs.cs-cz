@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ac0a3500956cc81e264c8743d44aa06f018b1a45
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 991748c33eae607e97b3916a913b111af7b3b75a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258895"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714470"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace úrovně PremiumV2 pro službu Azure App Service
 
@@ -29,7 +29,7 @@ Nové **PremiumV2** cenová úroveň poskytuje rychlejší procesory, SSD úlož
 
 ## <a name="prerequisites"></a>Požadavky
 
-Vertikálně navýšit kapacitu, webové aplikace do **PremiumV2**, budete muset mít třeba webovou aplikaci ve službě Azure App Service, na kterém běží v cenové úrovni, která je nižší než **PremiumV2**, a webové aplikace musí být spuštěna v, který podporuje nasazení služby App Service PremiumV2.
+Vertikálně navýšit kapacitu aplikace, která **PremiumV2**, musíte mít aplikaci služby Azure App Service, na kterém běží v cenové úrovni, která je nižší než **PremiumV2**, a musí být aplikace spuštěná v nasazení služby App Service, která podporuje PremiumV2.
 
 <a name="availability"></a>
 
@@ -47,7 +47,7 @@ az appservice list-locations --sku P1V2
 
 ## <a name="create-an-app-in-premiumv2-tier"></a>Vytvoření aplikace ve úrovně PremiumV2
 
-Cenová úroveň aplikace služby App Service je definována v [plán služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) , která běží na. Můžete vytvořit plán služby App Service, samostatně nebo jako součást vytváření webové aplikace.
+Cenová úroveň aplikace služby App Service je definována v [plán služby App Service](overview-hosting-plans.md) , která běží na. Můžete vytvořit plán služby App Service, samostatně nebo jako součást vytváření aplikací.
 
 Při konfiguraci plánu služby App Service v <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>vyberte **cenová úroveň**. 
 
@@ -88,7 +88,7 @@ Některé nabízené plány služby App Service nejde vertikálně navýšit kap
 
 Pokud vaše aplikace běží v nasazení služby App Service kde **PremiumV2** není k dispozici, nebo pokud vaše aplikace běží v oblasti, které aktuálně nepodporuje **PremiumV2**, budete muset znovu nasadit vaši aplikaci Výhodou **PremiumV2**.  Máte dvě možnosti:
 
-- Vytvoření **nové** prostředku skupiny a pak vytvořte **nové** plán webové aplikace a služby app service v **nové** skupinu prostředků, výběr požadovanou oblast Azure při vytváření proces.  Můžete **musí** vyberte **PremiumV2** plán v době vytvoření nového plánu služby app service.  Tím se zajistí kombinací skupinu prostředků, plán služby App Service, a oblasti Azure bude mít za následek plán služby App Service, která se vytvářejí v nasazení služby App Service, která podporuje **PremiumV2**.  Znovu nasaďte kód vaší aplikace do nově vytvořené aplikace a plán služby app service. V případě potřeby plán služby App Service můžete následně vertikálně snížit kapacitu z **PremiumV2** uložit náklady a bude ji moct úspěšně zpět vertikální navýšení kapacity v budoucnu znovu pomocí **PremiumV2**.
+- Vytvoření **nové** prostředku skupiny a pak vytvořte **nové** plán aplikace a služby App Service v **nové** skupinu prostředků, zvolíte požadovanou oblast Azure během procesu vytváření.  Můžete **musí** vyberte **PremiumV2** plán v době vytvoření nového plánu služby app service.  Tím se zajistí kombinací skupinu prostředků, plán služby App Service, a oblasti Azure bude mít za následek plán služby App Service, která se vytvářejí v nasazení služby App Service, která podporuje **PremiumV2**.  Znovu nasaďte kód vaší aplikace do nově vytvořené aplikace a plán služby app service. V případě potřeby plán služby App Service můžete následně vertikálně snížit kapacitu z **PremiumV2** uložit náklady a bude ji moct úspěšně zpět vertikální navýšení kapacity v budoucnu znovu pomocí **PremiumV2**.
 - Pokud vaše aplikace už běží v existujícím **Premium** vrstvy, pak můžete naklonovat vaší aplikace pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení nový plán služby app service, která používá **PremiumV2**.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)

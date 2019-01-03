@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b2399e47c9071bac159f407deac9755606763a67
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c22c97efed7c70b554acd449ed15c6641e377b6a
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326032"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53788493"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Posílat diagnostická data cloudové služby, virtuální počítač nebo Service Fabric do Application Insights
 Cloud services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric všechny použití rozšíření diagnostiky Azure shromažďovat data.  Diagnostika Azure odesílá data do tabulky Azure Storage.  Můžete však také všechny kanálu nebo podmnožinu dat do jiných umístění pomocí rozšíření Azure Diagnostics 1.5 nebo novější.
@@ -62,7 +62,7 @@ Příklad konfigurace jímka pro službu Application Insights:
 
 - **ApplicationInsights** prvek určuje Instrumentační klíč tohoto prostředku Application insights, kde je odeslána dat diagnostiky Azure.
     - Pokud nemáte existující prostředek Application Insights, přečtěte si téma [vytvořit nový prostředek Application Insights](../../application-insights/app-insights-create-new-resource.md) Další informace o vytvoření prostředku a získání Instrumentační klíč.
-    - Pokud vyvíjíte Cloudovou službu s Azure SDK 2.8 nebo novější, tento klíč instrumentace se vyplní automaticky. Hodnota je založena na **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení konfigurace služby, při vytváření balíčku projektu cloudové služby. Zobrazit [pomocí Application Insights s cloudovými službami](../../application-insights/app-insights-cloudservices.md).
+    - Pokud vyvíjíte Cloudovou službu s Azure SDK 2.8 nebo novější, tento klíč instrumentace se vyplní automaticky. Hodnota je založena na **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení konfigurace služby, při vytváření balíčku projektu cloudové služby. Zobrazit [pomocí Application Insights s cloudovými službami](../../azure-monitor/app/cloudservices.md).
 
 - **Kanály** element obsahuje jeden nebo více **kanál** elementy.
     - *Název* atribut jednoznačně odkazuje na tomto kanálu.

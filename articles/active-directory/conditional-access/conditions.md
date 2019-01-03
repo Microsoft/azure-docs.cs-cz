@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 90b9a1104dd387c857e4955cabfb121773aedcca
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 5f3857480bfe6c4d5c4efe759b11761123fa4441
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410058"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53973056"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky podmíněného přístupu Azure Active Directory? 
 
@@ -74,7 +74,7 @@ Vyberte:
 
 - **Všechny cloudové aplikace** do směrného plánu zásad platí pro celou organizaci. Tento výběr použijte pro zásady, které vyžadují vícefaktorové ověřování při zjištění rizika přihlašování všech cloudových aplikací. Použít zásady **všechny cloudové aplikace** platí pro přístup ke všem webům a službám. Toto nastavení se neomezuje na cloudové aplikace, které se zobrazují na **vyberte aplikace** seznamu. 
 
-- **Vyberte spps** ke konkrétním službám cíl ve vašich zásadách. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
+- **Vyberte aplikace** ke konkrétním službám cíl ve vašich zásadách. Třeba, můžete vyžadovat, aby uživatelé měli [vyhovující zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam#app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online) pro přístup k Sharepointu Online. Tyto zásady platí také pro jiné služby při přístupu k obsahu na Sharepointu. Příkladem je Microsoft Teams. 
 
 Na základě zásady můžete vyloučit konkrétní aplikace. Tyto aplikace jsou však stále můžou zásady aplikované na služby, ke kterým mají přístup. 
 

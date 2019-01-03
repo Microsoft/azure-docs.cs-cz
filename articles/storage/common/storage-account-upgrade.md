@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 10dc25740eca43c7cbd39b8ec783084e048d2af2
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
+ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637597"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53631427"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgradovat na účet úložiště pro obecné účely verze 2
 
@@ -34,12 +34,14 @@ Upgrade na účet úložiště pro obecné účely verze 2 z pro obecné účely
 
 ## <a name="upgrade-with-powershell"></a>Upgrade pomocí PowerShellu
 
-Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Powershellu, nejprve aktualizujte PowerShell, které chcete používat nejnovější verzi **AzureRm.Storage** modulu. Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Pokud chcete upgradovat účet pro obecné účely v1 na účet pro obecné účely verze 2 pomocí Powershellu, nejprve aktualizujte PowerShell, které chcete používat nejnovější verzi **Az.Storage** modulu. Informace o instalaci PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
 
 Pak zavolejte následující příkaz pro upgrade účet, kde nahradíte název vaší skupiny prostředků a účet úložiště:
 
 ```powershell
-Set-AzureRmStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
 
 ## <a name="upgrade-with-azure-cli"></a>Upgrade pomocí Azure CLI
@@ -56,7 +58,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 Účty pro obecné účely v2 podporují všechny služby Azure storage a datové objekty, ale jsou k dispozici pouze pro objekty BLOB bloku v úložišti objektů Blob úrovně přístupu. Při upgradu na účet úložiště pro obecné účely v2, můžete určit úroveň přístupu pro data objektů blob. 
 
-Vrstva přístupu umožňují zvolit cenově nejvýhodnější úložiště založené na vaše postupy očekávané využití. Objekty BLOB bloku mohou být uloženy ve vrstvě Hot, Cool nebo Archive. Další informace o úrovních přístupu najdete v části [Azure Blob storage: horká, studená a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
+Vrstva přístupu umožňují zvolit cenově nejvýhodnější úložiště založené na vaše postupy očekávané využití. Objekty BLOB bloku mohou být uloženy ve vrstvě Hot, Cool nebo Archive. Další informace o úrovních přístupu najdete v části [úložiště objektů Blob v Azure: Horké, studené a archivní úroveň úložiště](../blobs/storage-blob-storage-tiers.md).
 
 Ve výchozím nastavení v horká vrstva přístupu je vytvořen nový účet úložiště a účet úložiště pro obecné účely v1 je upgradovat na horká vrstva přístupu. Pokud zkoumáte jaké úroveň přístupu pro vaše data po upgradu, zvažte možnost váš scénář. Existují dva běžné uživatelské scénáře pro migraci na účet pro obecné účely verze 2:
 
@@ -69,17 +71,17 @@ V obou případech je hlavní prioritou odhad nákladů na ukládání, přístu
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
-* **Cena za uložení**: Vedle uloženého množství dat se cena za uložení odvíjí také od úrovně úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
+* **Náklady na úložiště**: Kromě objemu uložených dat náklady na ukládání dat se liší podle úrovně úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
 
-* **Cena za přístup k datům:** Pokud je úroveň chladnější, cena za přístup k datům se zvyšuje. Přístup k datům ve studené úrovni úložiště a v úrovni úložiště Archive je zpoplatněný podle sazby za GB přečtených dat.
+* **Cena za přístup**: Přístup k datům za úroveň chladnější. Přístup k datům ve studené úrovni úložiště a v úrovni úložiště Archive je zpoplatněný podle sazby za GB přečtených dat.
 
-* **Cena za transakce:** Pro všechny úrovně se účtuje poplatek za transakce, který se pro chladnější úrovně zvyšuje.
+* **Cena za transakce**: Se účtuje poplatek za transakce pro všechny úrovně, které zvýší úroveň chladnější.
 
-* **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
+* **Cena za přenosy dat geografické replikace**: Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
 
-* **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
+* **Cena za přenosy odchozích dat**: Přenosy odchozích dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné využití šířky pásma na základě sazby za gigabajt konzistentní s účty úložiště pro obecné účely.
 
-* **Změna vrstvy úložiště:** Změna vrstvy úložiště účtu ze studené na horkou je zpoplatněna částkou, jejíž výše odpovídá přečtení všech dat v aktuálním účtu úložiště. Naproti tomu změna vrstvy úložiště účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
+* **Změna vrstvy úložiště**: Změna vrstvy úložiště účtu ze studené na horkou je zpoplatněna částkou, která odpovídá přečtení všech dat v aktuálním účtu úložiště. Naproti tomu změna vrstvy úložiště účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
 
 > [!NOTE]
 > Další informace o cenovém modelu pro účty úložišť najdete na stránce [Ceny za Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Další informace o poplatcích za odchozí přenosy dat najdete na stránce [Podrobné informace o cenách přenosů dat](https://azure.microsoft.com/pricing/details/data-transfers/).

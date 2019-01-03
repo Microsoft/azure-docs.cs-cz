@@ -7,19 +7,16 @@ ms.service: application-gateway
 ms.workload: infrastructure-services
 ms.date: 11/6/2018
 ms.author: victorh
-ms.openlocfilehash: f89841c7712737d2d55601c6525e975274b4a103
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: bed406f90c8da62919337c1fa9f30221b0ba8d90
+ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036713"
+ms.lasthandoff: 12/22/2018
+ms.locfileid: "53752720"
 ---
-# <a name="web-application-firewall-request-size-limits-and-exclusion-lists-public-preview"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a vyloučení uvádí (Public Preview)
+# <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti pro požadavek webové aplikace brány firewall a seznamy vyloučení
 
 Firewall webových aplikací (WAF) Azure Application Gateway chrání webové aplikace. Tento článek popisuje WAF žádost o velikosti omezení a vyloučení jsou uvedeny konfigurace.
-
-> [!IMPORTANT]
-> Konfigurace omezení velikosti požadavek WAF a seznamy vyloučení je aktuálně ve verzi public preview. V této verzi preview je k dispozici bez smlouvy o úrovni služeb a nedoporučuje se používat pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="waf-request-size-limits"></a>Omezení velikosti žádostí o WAF
 
@@ -52,9 +49,9 @@ Můžete zadat hlavičku přesné požadavek textu, soubor cookie či shodu atri
 
 Tady jsou operátory porovnání podporovaných kritéria:
 
-- **Se rovná**: Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr záhlaví s názvem **bearerToken**, operátoru rovná pomocí modulu pro výběr nastavit jako **bearerToken**.
+- **Se rovná**:  Tento operátor se používá pro přesnou shodu. Jako příklad pro výběr záhlaví s názvem **bearerToken**, operátoru rovná pomocí modulu pro výběr nastavit jako **bearerToken**.
 - **Začíná**: Tento operátor odpovídá všechna pole, která začínají hodnotou zadaný selektor.
-- **Končí**: Tento operátor odpovídá všechna pole žádosti, které končí hodnotu zadaný selektor.
+- **Končí**:  Tento operátor odpovídá všechna pole žádosti, které končí hodnotu zadaný selektor.
 - **Obsahuje**: Tento operátor odpovídá všechna pole žádosti, které obsahují hodnotu zadaný selektor.
 
 Ve všech případech vyhledávání nejsou rozlišována velká a malá písmena a regulárního výrazu nejsou povoleny jako selektorů.

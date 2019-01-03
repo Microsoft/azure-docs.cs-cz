@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
+ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317275"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "53608541"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
@@ -30,7 +30,7 @@ Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HD
 
 3. Konfigurace clusteru Kafka pro použití služby Log Analytics. Další informace najdete v tématu [použití Log Analytics k monitorování HDInsight](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentu.
 
-    > [!NOTE]
+    > [!NOTE]  
     > Můžete také nakonfigurovat cluster používat Log Analytics s využitím `Enable-AzureRmHDInsightOperationsManagementSuite` rutiny. Tato rutina vyžaduje následující informace:
     >
     > * Název clusteru HDInsight.
@@ -38,7 +38,7 @@ Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HD
     > * Primární klíč pro připojení k Log Analytics. Chcete-li najít primární klíč, otevřete pracovní prostor na webu Azure Portal, vyberte __upřesňující nastavení__ v levé nabídce. Upřesňující nastavení, vyberte __připojené zdroje__>__servery s Linuxem__.
 
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Může trvat přibližně 20 minut, než se data jsou k dispozici pro Log Analytics.
 
 ## <a name="query-logs"></a>Protokoly dotazů
@@ -57,7 +57,7 @@ Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HD
 
     * Odchozí bajty za sekundu: `metrics_kafka_CL | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)`
 
-    > [!IMPORTANT]
+    > [!IMPORTANT]  
     > Nahraďte hodnoty dotazu clusteru konkrétní informace. Například `ClusterName_s` musí být nastavena na název vašeho clusteru. `HostName_s` musí být nastavena na název domény pracovního uzlu v clusteru.
 
     Můžete také zadat `*` k vyhledání všech typů přihlášení. Tyto protokoly jsou aktuálně k dispozici pro dotazy:
