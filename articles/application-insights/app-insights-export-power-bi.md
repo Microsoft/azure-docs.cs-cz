@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
+ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993363"
+ms.lasthandoff: 12/28/2018
+ms.locfileid: "53808380"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -25,7 +25,7 @@ ms.locfileid: "52993363"
 Export dat Application Insights do Power BI třemi způsoby:
 
 * [**Export analytických dotazů**](#export-analytics-queries). Toto je upřednostňovaná metoda. Zapisovat všechny dotazu má a exportovat je do Power BI. Tento dotaz můžete umístit na řídicím panelu, spolu s ostatními daty.
-* [**Průběžný export a Azure Stream Analytics**](app-insights-export-stream-analytics.md). Tato metoda je užitečná, pokud chcete ukládat data na dlouhou dobu. Pokud nemáte požadavek na uchování Rozšířená data, použijte metodu dotazu analytics exportu. Průběžný export a Stream Analytics zahrnuje další práce pro nastavení a režijní náklady na další úložiště.
+* [**Průběžný export a Azure Stream Analytics**](../azure-monitor/app/export-stream-analytics.md). Tato metoda je užitečná, pokud chcete ukládat data na dlouhou dobu. Pokud nemáte požadavek na uchování Rozšířená data, použijte metodu dotazu analytics exportu. Průběžný export a Stream Analytics zahrnuje další práce pro nastavení a režijní náklady na další úložiště.
 * [**Power BI adaptér**](#power-pi-adapter). Předdefinovaná sada grafy, ale můžete přidat vlastní dotazy z jiných zdrojů.
 
 > [!NOTE]
@@ -119,7 +119,7 @@ Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, 
  ```
 
 ## <a name="about-sampling"></a>Informace o vzorkování
-Pokud vaše aplikace odešle velké množství dat, můžete použít funkce adaptivního vzorkování, který odesílá pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování v sadě SDK nebo na základě ingestování. [Další informace o vzorkování](app-insights-sampling.md).
+V závislosti na množství dat odeslaných vaší aplikací můžete chtít použít funkce adaptivního vzorkování, který odesílá pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování v sadě SDK nebo na základě ingestování. [Další informace o vzorkování](app-insights-sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Adaptér Power BI (zastaralé)
 Tato metoda vytvoří kompletní řídicí panel telemetrických dat za vás. Počáteční datová sada je předdefinovaná, ale můžete přidat další data k němu.

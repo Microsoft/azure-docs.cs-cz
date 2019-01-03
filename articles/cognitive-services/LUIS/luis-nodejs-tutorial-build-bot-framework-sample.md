@@ -1,7 +1,7 @@
 ---
 title: Bot - Node.js – v3
 titleSuffix: Azure Cognitive Services
-description: Vytvořte robota, integrovaná aplikace LUIS pomocí rozhraní Bot Framework.
+description: Vytvořte robota, integrovaná aplikace LUIS s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: e73f22a2da9e8b8b3bd70f4a0231ea7932fc7a86
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b64db46da99e0db3d573dac3830c77a0be4f4d0d
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436938"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726163"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v Node.js s použitím rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
@@ -38,11 +38,11 @@ Robot jsou reaguje na záměry od HomeAutomation domény, které jsou v aplikaci
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit nový prostředek** v okně s nabídkou a vyberte **zobrazit všechny**.
 
-    ![Vytvořit nový prostředek](./media/luis-tutorial-node-bot/bot-service-creation.png)
+    ![Zobrazte všechny prostředky na webu Azure Portal](./media/luis-tutorial-node-bot/bot-service-creation.png)
 
 2. Do vyhledávacího pole vyhledejte **Web App Bot**. 
 
-    ![Vytvořit nový prostředek](./media/luis-tutorial-node-bot/bot-service-selection.png)
+    ![Vyberte web app bot zahájíte proces vytváření prostředků](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
 3. V **Bot Service** okno, zadejte požadované informace a vyberte **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
     * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
@@ -258,54 +258,10 @@ Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https
 > [dočištění řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
 
 
-[intentDialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html
-
-[intentDialog_matches]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.intentdialog.html#matches 
-
-[NotesSample]: https://github.com/Microsoft/BotFramework-Samples/tree/master/docs-samples/Node/basics-naturalLanguage
-
 [triggerAction]: https://docs.botframework.com/en-us/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html#triggeraction
-
-[confirmPrompt]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#confirmprompt
-
-[waterfall]: bot-builder-nodejs-dialog-manage-conversation-flow.md#manage-conversation-flow-with-a-waterfall
-
-[session_userData]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.session.html#userdata
-
-[EntityRecognizer_findEntity]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.entityrecognizer.html#findentity
 
 [matches]: https://docs.botframework.com/en-us/node/builder/chat-reference/interfaces/_botbuilder_d_.itriggeractionoptions.html#matches
 
-[LUISAzureDocs]: https://docs.microsoft.com/azure/cognitive-services/LUIS/Home
 
-[Dialog]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.dialog.html
-
-[IntentRecognizerSetOptions]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.iintentrecognizersetoptions.html
-
-[LuisRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.luisrecognizer
-
-[LUISConcepts]: https://docs.botframework.com/node/builder/guides/understanding-natural-language/
-
-[DisambiguationSample]: https://github.com/Microsoft/BotBuilder/tree/master/Node/examples/feature-onDisambiguateRoute
-
-[IDisambiguateRouteHandler]: https://docs.botframework.com/node/builder/chat-reference/interfaces/_botbuilder_d_.idisambiguateroutehandler.html
-
-[RegExpRecognizer]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.regexprecognizer.html
-
-[AlarmBot]: https://github.com/Microsoft/BotBuilder/blob/master/Node/examples/basics-naturalLanguage/app.js
-
-[LUISBotSample]: https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/intelligence-LUIS
-
-[UniversalBot]: https://docs.botframework.com/node/builder/chat-reference/classes/_botbuilder_d_.universalbot.html
-
-
-<!-- Old Links -->
-[GitHub-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
-[GitHub-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[GitHub-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
-[NodeJs]: https://nodejs.org/
-[BFPortal]: https://dev.botframework.com/
-[RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
-[BotFramework]: https://docs.microsoft.com/bot-framework/
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

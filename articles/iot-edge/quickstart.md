@@ -4,17 +4,17 @@ description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Ed
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/17/2018
+ms.date: 12/31/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96c261619a0e6930ea299b5e2a50050dca5471f8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 2295ed6d3d1b22d70f95d0c9ac4542b59c7ddc09
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554771"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53972086"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý start: Nasazení prvního modulu IoT Edge z portálu Azure portal pro zařízení s Windows – preview
 
@@ -192,13 +192,16 @@ iotedge list
 
    ![Zobrazení tří modulů na zařízení](./media/quickstart/iotedge-list-2.png)
 
-Prohlédněte si zprávy, které posílá modul tempSensor do cloudu.
+Zobrazte zprávy z modulu senzoru teploty odesílané do cloudu.
 
 ```powershell
-iotedge logs tempSensor -f
+iotedge logs SimulatedTemperatureSensor -f
 ```
 
-  ![Zobrazení dat z modulu](./media/quickstart/iotedge-logs.png)
+   >[!TIP]
+   >Při odkazu na modul názvy jsou malá a velká písmena příkazy IoT Edge.
+
+   ![Zobrazení dat z modulu](./media/quickstart/iotedge-logs.png)
 
 Můžete rovněž sledovat zprávy dorazí ve službě IoT hub pomocí [rozšíření Azure IoT Hub Toolkit pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (dříve rozšíření Azure IoT Toolkit). 
 
@@ -230,15 +233,18 @@ Odeberte modul runtime IoT Edge. Pokud plánujete přeinstalaci IoT Edge, vynech
 Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.
 
    ```powershell
-   docker ps -a
+   docker -H npipe:////./pipe/iotedge_moby_engine ps -a
    ```
 
-Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. Změňte název kontejneru tempSensor, pokud jste ho pojmenovali nějak jinak.
+   >[!TIP]
+   >**-H** příznak (hostitel) v příkazy dockeru odkazovat na modul moby, která byla nainstalována společně s runtime IoT Edge. Pokud používáte docker a moby ve stejném počítači, příznak hostitele můžete zadat které modul, který používáte pro daný příkaz. Pokud chcete použít moby, můžete nastavit **DOCKER_HOST** proměnnou prostředí tak, aby odkazoval na npipe:///./pipe/iotedge_moby_engine.
+
+Odstraňte kontejnery, které na vašem zařízení vytvořil modul runtime IoT Edge. 
 
    ```powershell
-   docker rm -f tempSensor
-   docker rm -f edgeHub
-   docker rm -f edgeAgent
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f SimulatedTemperatureSensor
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeHub
+   docker -H npipe:////./pipe/iotedge_moby_engine rm -f edgeAgent
    ```
    
 ## <a name="next-steps"></a>Další postup
