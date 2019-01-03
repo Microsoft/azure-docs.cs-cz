@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
+ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582209"
+ms.lasthandoff: 12/20/2018
+ms.locfileid: "53653624"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Sparku
 
 [Apache Spark](https://spark.apache.org/) strukturované streamování umožňuje implementovat škálovatelné, vysoce propustné odolné aplikace pro zpracování datových proudů. Strukturované streamování je založena na stroji Spark SQL a dále to vylepšuje konstrukce ze snímků dat Spark SQL a datové sady, takže můžete psát streamování dotazy stejným způsobem, který můžete by psát dotazy služby batch.  
 
-Strukturované streamování aplikace poběží na clusterech HDInsight Spark a připojit se k streamovaná data z [Apache Kafka](https://kafka.apache.org/), TCP soketu (pro účely ladění), Azure Storage nebo Azure Data Lake Store. Druhé dvě možnosti, které jsou závislé na externí úložiště, umožňují sledovat soubory přidané do úložiště a zpracování jejich obsah, jako kdyby byly zpracovány pomocí proudu. 
+Strukturované streamování aplikace poběží na clusterech HDInsight Spark a připojit se k streamovaná data z [Apache Kafka](https://kafka.apache.org/), TCP soketu (pro účely ladění), Azure Storage nebo Azure Data Lake Storage. Druhé dvě možnosti, které jsou závislé na externí úložiště, umožňují sledovat soubory přidané do úložiště a zpracování jejich obsah, jako kdyby byly zpracovány pomocí proudu. 
 
-Strukturované streamování vytvoří dlouho běžící dotaz, během které použijete pro vstupní data, jako je například výběr, projekce, agregace, oken a propojení datových proudů datový rámec s odkazem na datových rámců operace. V dalším kroku vypíše výsledky do služby file storage (objekty BLOB Azure Storage nebo Data Lake Store) nebo na jakékoli úložiště dat pomocí vlastního kódu (jako je SQL Database nebo Power BI). Strukturované streamování také poskytuje výstup do konzoly pro ladění místně a do tabulky v paměti, abyste si mohli zobrazit data generovaná pro ladění v HDInsight. 
+Strukturované streamování vytvoří dlouho běžící dotaz, během které použijete pro vstupní data, jako je například výběr, projekce, agregace, oken a propojení datových proudů datový rámec s odkazem na datových rámců operace. V dalším kroku vypíše výsledky do služby file storage (objekty BLOB Azure Storage nebo Data Lake Storage) nebo na jakékoli úložiště dat pomocí vlastního kódu (jako je SQL Database nebo Power BI). Strukturované streamování také poskytuje výstup do konzoly pro ladění místně a do tabulky v paměti, abyste si mohli zobrazit data generovaná pro ladění v HDInsight. 
 
 ![Stream zpracování ve službě HDInsight a strukturovaného streamování Sparku ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
-> [!NOTE]
+> [!NOTE]  
 > Strukturované streamování Sparku nahrazuje Spark Streaming (diskretizovanými streamy). Od této chvíle, strukturované streamování obdrží vylepšení a údržbu, zatímco diskretizovanými streamy bude v pouze v režimu údržby. Strukturované streamování není aktuálně jako plně funkční jako diskretizovanými streamy pro zdroje a jímky, podporuje úprav, takže vyhodnotit požadavky na odpovídající Spark zvolit možnost zpracování datového proudu. 
 
 ## <a name="streams-as-tables"></a>Datové proudy jako tabulky
@@ -53,7 +53,7 @@ Při použití režimu připojení, dotaz by být použití projekce (vyberte sl
 
 Vezměte v úvahu stejný scénář, tentokrát pomocí úplný režim. V úplný režim celé výstupní tabulce aktualizována při každé aktivaci tak tabulka obsahuje data pouhým nejnovější spuštění aktivační události, ale z všechna spuštění. Úplný režim můžete použít ke zkopírování dat beze změny ze vstupní tabulky do tabulky výsledků. Při každém aktivovaných spuštění nových řádků výsledek zobrazí spolu s předchozím řádků. Tabulka výsledků výstupu skončí ukládání všechna data, shromáždit, protože dotaz začala a bude nakonec mít nedostatek paměti. Úplný režim je určena pro použití s agregačních dotazů, které shrnují příchozí data nějakým způsobem, a tak dále všechny aktivační události v tabulce výsledků se aktualizuje nový souhrn. 
 
-Předpokládejme zatím existují data již zpracováno za pět sekund, a je čas ke zpracování dat pro šestého sekundu. Vstupní tabulka obsahuje události pro času 00:01 a času 00:03. Cílem tohoto příkladu dotazu je poskytnout průměrná teplota zařízení každých pět sekund. Provedení tohoto dotazu použije agregaci, která přebírá všechny hodnoty, které spadají do každé okno 5 sekund, předběhli aktuální fázi teplota a vytváří řádek pro průměrná teplota v tomto intervalu. Na konci první okno 5 sekund, existují dvě řazené kolekce členů: (00:01, 1, 95) a (00:03, 1, 98). Ano pro okno 00:00-00:05 agregaci vytvoří řazenou kolekci členů s průměrnou teplotou 96.5 stupňů. V dalším okně 5 sekund je pouze jeden datový bod v čase 00:06, takže výsledný průměrná teplota je 98 stupňů. V času 00:10, pomocí úplný režim výsledky tabulka obsahuje řádky pro obě windows 00:00-00:05 a 00-00:05:10 vzhledem k tomu, že dotaz vypíše všechny agregované řádky, ne jenom nové značky. Proto tabulka výsledků se stále rozrůstá při přidání nových oknech.    
+Předpokládejme zatím existují data již zpracováno za pět sekund, a je čas ke zpracování dat pro šestého sekundu. Vstupní tabulka obsahuje události pro času 00:01 a času 00:03. Cílem tohoto příkladu dotazu je poskytnout průměrná teplota zařízení každých pět sekund. Provedení tohoto dotazu použije agregaci, která přebírá všechny hodnoty, které spadají do každé okno 5 sekund, předběhli aktuální fázi teplota a vytváří řádek pro průměrná teplota v tomto intervalu. Na konci první okno 5 sekund existují dvě řazené kolekce členů: (00:01, 1, 95) a (00:03, 1, 98). Ano pro okno 00:00-00:05 agregaci vytvoří řazenou kolekci členů s průměrnou teplotou 96.5 stupňů. V dalším okně 5 sekund je pouze jeden datový bod v čase 00:06, takže výsledný průměrná teplota je 98 stupňů. V času 00:10, pomocí úplný režim výsledky tabulka obsahuje řádky pro obě windows 00:00-00:05 a 00-00:05:10 vzhledem k tomu, že dotaz vypíše všechny agregované řádky, ne jenom nové značky. Proto tabulka výsledků se stále rozrůstá při přidání nových oknech.    
 
 ![Strukturované streamování úplný režim](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
@@ -124,11 +124,11 @@ Tento dotaz vrací výsledky podobné následujícím:
 |{u'start': u "2016-07-26T07:00:00.000Z", u'end'...  |95 |   96.980971 | 99 |
 |{u'start': u "2016-07-26T08:00:00.000Z", u'end'...  |95 |   96.965997 | 99 |  
 
-Podrobnosti o rozhraní API Spark strukturovaný Stream, spolu s daty o vstupní zdroje, operace a výstupní jímky ji podporuje, najdete v článku [Apache Spark strukturované streamování Průvodce programováním pro službu](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+Podrobnosti o rozhraní API Spark strukturovaný Stream, spolu s daty o vstupní zdroje, operace a výstupní jímky ji podporuje, najdete v článku [Apache Spark strukturované streamování Průvodce programováním pro službu](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Vytváření kontrolních bodů a zápis dávky protokolů
 
-K zajištění odolnosti proti chybám a odolnost proti chybám, strukturované streamování spoléhá na *vytváření kontrolních bodů* zajistit tohoto datového proudu zpracování mohlo bez přerušení pokračovat, i při selhání uzlů. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště Azure Storage nebo Data Lake Store. Tyto kontrolní body ukládat informace o průběhu o streamování dotazu. Kromě toho používá strukturované streamování *zápisu dopředné protokolování* (WAL). WAL zaznamená přijatých dat, která byla přijata, ale dosud nejsou zpracovány v dotazu. Pokud dojde k chybě a zpracování je restartováno ze WAL, nejsou žádné události přijata ze zdroje ztraceny.
+K zajištění odolnosti proti chybám a odolnost proti chybám, strukturované streamování spoléhá na *vytváření kontrolních bodů* zajistit tohoto datového proudu zpracování mohlo bez přerušení pokračovat, i při selhání uzlů. Spark v HDInsight, vytvoří kontrolní body do trvalého úložiště Azure Storage nebo Data Lake Storage. Tyto kontrolní body ukládat informace o průběhu o streamování dotazu. Kromě toho používá strukturované streamování *zápisu dopředné protokolování* (WAL). WAL zaznamená přijatých dat, která byla přijata, ale dosud nejsou zpracovány v dotazu. Pokud dojde k chybě a zpracování je restartováno ze WAL, nejsou žádné události přijata ze zdroje ztraceny.
 
 ## <a name="deploying-spark-streaming-applications"></a>Nasazení aplikací Spark Streaming
 
@@ -141,5 +141,5 @@ Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření clusteru Apache Spark v HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Apache Spark strukturované streamování Průvodce programováním](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Apache Spark strukturované streamování Průvodce programováním](https://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
 * [Spouštět úlohy Apache Sparku s využitím Apache LIVY](apache-spark-livy-rest-interface.md)

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: de501b79107aafa61c489db607c37d086a5f4ed4
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 87bdfcc827155e5dd0a02ffb1640bf7e9cd4e479
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408013"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53715779"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Ověřování a autorizace ve službě Azure App Service pro mobilní aplikace
 
@@ -26,7 +26,7 @@ Tento článek popisuje, jak ověřování a autorizace funguje při vývoji nat
 
 Tento článek se zaměřuje na vývoj mobilních aplikací. Abyste mohli rychle začít s App Service ověřování a autorizace pro mobilní aplikace, najdete v jednom z následujících kurzů [přidání ověřování do aplikace pro iOS] [ iOS] (nebo [Android], [Windows], [Xamarin.iOS], [Xamarin.Android], [Xamarin.Forms], nebo [Cordova]). 
 
-Informace o ověřování a autorizace fungování ve službě App Service najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/app-service-authentication-overview.md).
+Informace o ověřování a autorizace fungování ve službě App Service najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/overview-authentication-authorization.md).
 
 ## <a name="authentication-with-provider-sdk"></a>Ověřování pomocí poskytovatele sady SDK
 
@@ -44,7 +44,7 @@ Pokud používáte poskytovatele sady SDK, uživatel může přihlásit k prost�
 
 Po získání zprostředkovatele tokenu se musí odeslat do služby App Service pro ověření. Jakmile App Service ověří token, App Service vytvoří nový token služby App Service, který je vrácen do klienta. Mobile Apps Klientská sada SDK obsahuje pomocné metody pro správu tohoto serveru exchange a automaticky token připojení pro všechny požadavky na back-endu aplikace. Vývojáři také zachovat odkaz na token zprostředkovatele.
 
-Další informace o toku ověřování najdete v tématu [tok ověřování služby App Service](../app-service/app-service-authentication-overview.md#authentication-flow). 
+Další informace o toku ověřování najdete v tématu [tok ověřování služby App Service](../app-service/overview-authentication-authorization.md#authentication-flow). 
 
 ## <a name="authentication-without-provider-sdk"></a>Ověřování bez poskytovatele sady SDK
 
@@ -52,10 +52,10 @@ Pokud nechcete nastavit poskytovatele sady SDK, můžete povolit funkci Mobile A
 
 Kód pro spuštění tohoto toku je součástí kurzu ověřování pro každou platformu. Na konci tok Klientská sada SDK obsahuje token služby App Service a token, který je automaticky připojen k všechny požadavky na back-endové aplikace.
 
-Další informace o toku ověřování najdete v tématu [tok ověřování služby App Service](../app-service/app-service-authentication-overview.md#authentication-flow). 
+Další informace o toku ověřování najdete v tématu [tok ověřování služby App Service](../app-service/overview-authentication-authorization.md#authentication-flow). 
 ## <a name="more-resources"></a>Další zdroje informací
 
-Následující kurzy vám ukážou, jak přidat ověřování do vašich mobilních klientů pomocí [směrované na server tok](../app-service/app-service-authentication-overview.md#authentication-flow):
+Následující kurzy vám ukážou, jak přidat ověřování do vašich mobilních klientů pomocí [směrované na server tok](../app-service/overview-authentication-authorization.md#authentication-flow):
 
 * [Přidání ověřování do aplikace pro iOS][iOS]
 * [Přidání ověřování do aplikace pro Android][android]
@@ -65,21 +65,21 @@ Následující kurzy vám ukážou, jak přidat ověřování do vašich mobiln�
 * [Přidání ověřování do aplikace Xamarin.Forms][Xamarin.Forms]
 * [Přidání ověřování do aplikace Cordova][Cordova]
 
-Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/app-service-authentication-overview.md#authentication-flow) pro Azure Active Directory:
+Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/overview-authentication-authorization.md#authentication-flow) pro Azure Active Directory:
 
 * [Jak používat Active Directory Authentication Library pro iOS][ADAL-iOS]
 * [Použití služby Active Directory Authentication Library pro Android][ADAL-Android]
 * [Použití knihovny ověřování služby Active Directory pro Windows a Xamarin][ADAL-dotnet]
 
-Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/app-service-authentication-overview.md#authentication-flow) pro Facebooku:
+Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/overview-authentication-authorization.md#authentication-flow) pro Facebooku:
 
 * [Použití sady SDK Facebooku pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#facebook-sdk)
 
-Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/app-service-authentication-overview.md#authentication-flow) pro Twitter:
+Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/overview-authentication-authorization.md#authentication-flow) pro Twitter:
 
 * [Použití Twitteru prostředků infrastruktury pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#twitter-fabric)
 
-Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/app-service-authentication-overview.md#authentication-flow) pro Google:
+Použijte následující prostředky, pokud chcete použít [přesměruje klienta tok](../app-service/overview-authentication-authorization.md#authentication-flow) pro Google:
 
 * [Jak používat Google přihlášení sady SDK pro iOS](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 

@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 3932ad18ceedb36a4a8c1f9fc78eb8aef27a8a4f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
+ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51301012"
+ms.lasthandoff: 12/27/2018
+ms.locfileid: "53793984"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -63,7 +63,7 @@ Pokud používáte Visual Studio, můžete získat rozšíření nainstalování
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurace ověřování / autorizace
 
-Vazby uvedených v tomto článku vyžadují identitou, který se má použít. To umožňuje Microsoft Graphu vynutit oprávnění a auditovat jejich interakce. Identita může být uživatele, kteří používají vaše aplikace nebo vlastní aplikace. Pokud chcete nakonfigurovat tuto identitu, nastavení [ověřování pomocí služby App Service / autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) službou Azure Active Directory. Je také potřeba žádná oprávnění, které vyžadují vaše funkce.
+Vazby uvedených v tomto článku vyžadují identitou, který se má použít. To umožňuje Microsoft Graphu vynutit oprávnění a auditovat jejich interakce. Identita může být uživatele, kteří používají vaše aplikace nebo vlastní aplikace. Pokud chcete nakonfigurovat tuto identitu, nastavení [ověřování pomocí služby App Service / autorizace](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) službou Azure Active Directory. Je také potřeba žádná oprávnění, které vyžadují vaše funkce.
 
 > [!Note] 
 > Rozšíření Microsoft Graphu podporuje jenom ověřování Azure AD. Uživatelé budou muset přihlásit pomocí pracovního nebo školního účtu.
@@ -226,7 +226,8 @@ Vazba samotné nevyžaduje žádná oprávnění Azure AD, ale v závislosti na 
 
 Token se vždy zobrazí kód jako řetězec.
 
-
+> [!Note]
+> Při vývoji místně s jedním z `userFromId`, `userFromToken` nebo `userFromRequest` možností, může být požadovaný token [získali ručně](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) a zadané v poli `X-MS-TOKEN-AAD-ID-TOKEN` hlavičku požadavku z volání klientské aplikace.
 
 
 <a name="excel-input"></a>

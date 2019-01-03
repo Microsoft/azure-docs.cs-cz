@@ -1,6 +1,6 @@
 ---
-title: Konfigurace webových aplikací – Azure App Service
-description: Jak nakonfigurovat webovou aplikaci ve službě Azure App Services
+title: Konfigurace aplikace – služba Azure App Service
+description: Jak nakonfigurovat aplikaci ve službě Azure App Service
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -15,22 +15,20 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4286aa9cbaf07743c1d420fb1f5caace91bab7ee
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269426"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53716459"
 ---
-# <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
+# <a name="configure-apps-in-azure-app-service"></a>Konfigurace aplikací ve službě Azure App Service
 
-Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [Azure Portal].
-
-[!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci, mobilní back-end nebo aplikace pomocí rozhraní API [Azure Portal].
 
 ## <a name="application-settings"></a>Nastavení aplikace
-1. V [Azure Portal], otevře se okno pro webovou aplikaci.
-3. Klikněte na možnost **Nastavení aplikace**.
+1. V [Azure Portal], otevře se okno pro aplikaci.
+2. Klikněte na možnost **Nastavení aplikace**.
 
 ![Nastavení aplikace][configure01]
 
@@ -47,14 +45,14 @@ Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [Azure Porta
 Povolení Java pro vaši aplikaci z technických důvodů, zakáže možnosti .NET, PHP a Pythonu.
 
 <a name="platform"></a>
-**Platforma**. Vybere, jestli vaše webová aplikace běží v 32bitové nebo 64bitové prostředí. 64bitové prostředí vyžaduje úroveň Basic nebo Standard. Free a úroveň Shared vždy spustit v 32bitovém prostředí.
+**Platforma**. Vybere, jestli vaše aplikace běží v 32bitové nebo 64bitové prostředí. 64bitové prostředí vyžaduje úroveň Basic nebo Standard. Free a úroveň Shared vždy spustit v 32bitovém prostředí.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Webové sokety**. Nastavte **ON** povolit protokol WebSocket; například, pokud vaše webová aplikace používá [funkce SignalR technologie ASP.NET] nebo [socket.io](https://socket.io/).
+**Webové sokety**. Nastavte **ON** povolit protokol WebSocket; například, pokud vaše aplikace používá [funkce SignalR technologie ASP.NET] nebo [socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
-**Always On**. Ve výchozím nastavení webové aplikace jsou uvolněna, pokud jsou některé dobu nečinnosti. To umožňuje ušetřit prostředky systému. V režimu Basic nebo Standard, můžete povolit **Always On** do aplikace načtena celou dobu. Pokud nepřetržitých WebJobs běží vaše aplikace nebo spuštění WebJobs aktivované pomocí výrazů CRON, měli byste povolit **Always On**, nebo webové úlohy nebude fungovat spolehlivě.
+**Always On**. Ve výchozím nastavení aplikace jsou uvolněna, pokud jsou některé dobu nečinnosti. To umožňuje ušetřit prostředky systému. V režimu Basic nebo Standard, můžete povolit **Always On** do aplikace načtena celou dobu. Pokud nepřetržitých WebJobs běží vaše aplikace nebo spuštění WebJobs aktivované pomocí výrazů CRON, měli byste povolit **Always On**, nebo webové úlohy nebude fungovat spolehlivě.
 
 **Spravovaná verze kanálu**. Nastaví IIS [režim kanálů]. Pokud máte starší verzi aplikace, která vyžaduje starší verzi služby IIS, ponechte tuto sadu integrovaný režim (výchozí).
 
@@ -65,13 +63,13 @@ Povolení Java pro vaši aplikaci z technických důvodů, zakáže možnosti .N
 
 **Spřažení směrování žádostí na aplikace**. V aplikaci, která je ji škálovat do několika instancí virtuálních počítačů, směrování žádostí na aplikace spřažení souborů cookie zaručit, že klient je směrovat do stejné instance po dobu trvání relace. Pokud chcete zlepšit výkon bezstavových aplikací, nastavte tuto možnost na **vypnout**.   
 
-**Automatické prohození**. Pokud povolíte automatické prohození slotu nasazení, App Service automaticky prohození webové aplikace do produkčního prostředí, při nahrání aktualizace do tohoto slotu. Další informace najdete v tématu [nasazení do přípravných slotů pro web apps ve službě Azure App Service](web-sites-staged-publishing.md).
+**Automatické prohození**. Pokud povolíte automatické prohození slotu nasazení služby App Service automaticky přepnutí aplikace do produkčního prostředí, když vložíte aktualizace do tohoto slotu. Další informace najdete v tématu [nasazení do přípravných slotů pro aplikace ve službě Azure App Service](deploy-staging-slots.md).
 
 ### <a name="debugging"></a>Ladění
-**Vzdálené ladění**. Umožňuje vzdálené ladění. Pokud povolená, můžete použít vzdálený ladicí program v sadě Visual Studio pro připojení přímo do vaší webové aplikace. Vzdálené ladění zůstane povolena po dobu 48 hodin. 
+**Vzdálené ladění**. Umožňuje vzdálené ladění. Pokud povolená, můžete použít vzdálený ladicí program v sadě Visual Studio pro připojení přímo do vaší aplikace. Vzdálené ladění zůstane povolena po dobu 48 hodin. 
 
 ### <a name="app-settings"></a>Nastavení aplikací
-Tato část obsahuje dvojice název/hodnota, které webové aplikace se načtou při spuštění nahoru. 
+Tato část obsahuje dvojice název/hodnota, které vaše aplikace se načtou při spuštění nahoru. 
 
 * Pro aplikace .NET, tato nastavení jsou vloženy do vaší konfigurace .NET `AppSettings` za běhu, přepíše stávající nastavení. 
 * Pro službu App Service v Linuxu a Web App for Containers, je-li mít člověk vnořené struktury klíče json v názvu jako `ApplicationInsights:InstrumentationKey` budete muset mít `ApplicationInsights__InstrumentationKey` jako název klíče. Všimněte si, že všechny tak `:` by měl být nahrazen `__` (tj. dvojitým podtržítkem).
@@ -102,7 +100,7 @@ Připojovací řetězce lze vyřešit pomocí služby Key Vault [služby Key Vau
 ### <a name="default-documents"></a>Výchozí dokumenty
 Výchozí dokument je webová stránka, která se zobrazí na adrese URL kořenového webu.  V seznamu první odpovídající soubor se používá. 
 
-Webové aplikace může používat moduly, směrování na základě adresy URL, spíše než obsluhuje statický obsah, v takovém případě že je jako takové žádná výchozí dokument.    
+Aplikace může používat moduly, směrování na základě adresy URL, spíše než obsluhuje statický obsah, v takovém případě že je jako takové žádná výchozí dokument.    
 
 ### <a name="handler-mappings"></a>Mapování obslužných rutin
 Pomocí této oblasti můžete přidat vlastní skript procesory zpracovávat požadavky pro konkrétní přípony souborů. 
@@ -117,7 +115,7 @@ Pokud chcete nakonfigurovat virtuální aplikace a adresáře, zadejte každý v
 ## <a name="enabling-diagnostic-logs"></a>Povolení diagnostických protokolů
 Povolení diagnostických protokolů:
 
-1. V okně pro vaši webovou aplikaci, klikněte na tlačítko **všechna nastavení**.
+1. V okně pro vaši aplikaci, klikněte na tlačítko **všechna nastavení**.
 2. Klikněte na **Diagnostické protokoly**. 
 
 Možnosti pro zápis diagnostické protokoly z webové aplikace, která podporuje protokolování: 
@@ -134,31 +132,31 @@ Možnosti pro zápis diagnostické protokoly z webové aplikace, která podporuj
 
 Chcete-li zobrazit soubory protokolů, musíte vytvořit přihlašovací údaje protokolu FTP, následujícím způsobem:
 
-1. V okně pro vaši webovou aplikaci, klikněte na tlačítko **všechna nastavení**.
+1. V okně pro vaši aplikaci, klikněte na tlačítko **všechna nastavení**.
 2. Klikněte na tlačítko **přihlašovací údaje pro nasazení**.
 3. Zadejte uživatelské jméno a heslo.
 4. Klikněte na **Uložit**.
 
 ![Nastavení přihlašovacích údajů nasazení][configure03]
 
-Úplné uživatelské jméno FTP je "app\username" kde *aplikace* je název vaší webové aplikace. Uživatelské jméno je uvedena v okně webové aplikace v části **Essentials**.
+Úplné uživatelské jméno FTP je "app\username" kde *aplikace* je název vaší aplikace. Uživatelské jméno je v okně aplikace uvedené v části **Essentials**.
 
 ![Přihlašovací údaje pro nasazení FTP][configure02]
 
 ## <a name="other-configuration-tasks"></a>Další konfigurační úlohy
 ### <a name="ssl"></a>SSL
-V režimu Basic nebo Standard můžete nahrát certifikáty SSL pro vlastní doménu. Další informace najdete v tématu [povolení HTTPS pro webovou aplikaci](app-service-web-tutorial-custom-ssl.md). 
+V režimu Basic nebo Standard můžete nahrát certifikáty SSL pro vlastní doménu. Další informace najdete v tématu [povolit HTTPS pro aplikaci](app-service-web-tutorial-custom-ssl.md). 
 
 Chcete-li zobrazit odeslané certifikáty, klikněte na tlačítko **všechna nastavení** > **vlastní domény a SSL**.
 
 ### <a name="domain-names"></a>Názvy domén
-Přidání vlastních názvů domén pro vaši webovou aplikaci. Další informace najdete v tématu [konfigurace vlastního názvu domény pro webovou aplikaci ve službě Azure App Service](app-service-web-tutorial-custom-domain.md).
+Přidání vlastních názvů domén pro vaši aplikaci. Další informace najdete v tématu [konfigurace vlastního názvu domény pro aplikace ve službě Azure App Service](app-service-web-tutorial-custom-domain.md).
 
 Chcete-li zobrazit názvy domén, klikněte na tlačítko **všechna nastavení** > **vlastní domény a SSL**.
 
 ### <a name="deployments"></a>Nasazení
-* Nastavení průběžného nasazování. Zobrazit [pomocí Git, jak nasadit webové aplikace ve službě Azure App Service](app-service-deploy-local-git.md).
-* Sloty nasazení. Zobrazit [nasazení do přípravných prostředí pro Web Apps ve službě Azure App Service].
+* Nastavení průběžného nasazování. Zobrazit [pomocí Git pro nasazování aplikací ve službě Azure App Service](deploy-local-git.md).
+* Sloty nasazení. Zobrazit [nasazení do přípravných prostředí pro službu Azure App Service].
 
 Chcete-li zobrazit nasazovacích slotů, klikněte na tlačítko **všechna nastavení** > **sloty nasazení**.
 
@@ -167,29 +165,23 @@ V režimu Basic nebo Standard můžete otestovat dostupnost protokolu HTTP nebo 
 
 Další informace najdete v tématu [Jak: Stav koncového bodu monitorování webu].
 
-> [!NOTE]
-> Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service], kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
-> 
-> 
-
 ## <a name="next-steps"></a>Další postup
 * [Konfigurace vlastní domény ve službě Azure App Service]
 * [Povolení HTTPS pro aplikaci ve službě Azure App Service]
-* [Škálování webové aplikace ve službě Azure App Service]
-* [Základy monitorování pro webové aplikace ve službě Azure App Service]
+* [Škálování aplikace ve službě Azure App Service]
+* [Monitorování základy ve službě Azure App Service]
 
 <!-- URL List -->
 
 [Funkce SignalR technologie ASP.NET]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurace vlastní domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[Nasazení do přípravných prostředí pro Web Apps ve službě Azure App Service]: ./web-sites-staged-publishing.md
+[Nasazení do přípravných prostředí pro službu Azure App Service]: ./deploy-staging-slots.md
 [Povolení HTTPS pro aplikaci ve službě Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
 [Jak: Stav koncového bodu monitorování webu]: https://go.microsoft.com/fwLink/?LinkID=279906
-[Základy monitorování pro webové aplikace ve službě Azure App Service]: ./web-sites-monitor.md
+[Monitorování základy ve službě Azure App Service]: ./web-sites-monitor.md
 [režim kanálů]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Škálování webové aplikace ve službě Azure App Service]: ./web-sites-scale.md
-[Vyzkoušet službu App Service]: https://azure.microsoft.com/try/app-service/
+[Škálování aplikace ve službě Azure App Service]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

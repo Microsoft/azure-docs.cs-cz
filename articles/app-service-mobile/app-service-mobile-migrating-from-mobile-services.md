@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 7fdbbee27f83a4583390158e456270324967b28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 17fbaa7efcdd9e0de675defb3958a61f29bbc3fe
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961599"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53714317"
 ---
 # <a name="article-top"></a>Migrace existující mobilní služby Azure do služby Azure App Service
 S [Obecná dostupnost služby Azure App Service], weby, Azure Mobile Services můžete snadno migrovat místní využívat všechny funkce služby Azure App Service.  Tento dokument popisuje, co očekávat při migraci webu z Azure Mobile Services do služby Azure App Service.
@@ -310,7 +310,7 @@ Protokolování diagnostiky se běžně zakázané ve službě Azure App Service
 2. Vyberte **všechny prostředky** nebo **App Services** pak klikněte na název svojí přenesené mobilní služby.
 3. Ve výchozím nastavení otevře se okno nastavení.
 4. Vyberte **diagnostické protokoly** nabídce funkcí.
-5. Klikněte na tlačítko **ON** pro tyto protokoly: **protokolování aplikace (systém souborů)**, **podrobné chybové zprávy**, a **chybných požadavků**
+5. Klikněte na tlačítko **ON** pro tyto protokoly: **Protokolování aplikace (systém souborů)**, **podrobné chybové zprávy**, a **chybných požadavků**
 6. Klikněte na tlačítko **systému souborů** pro protokolování webového serveru
 7. Klikněte na **Uložit**.
 
@@ -376,25 +376,25 @@ Teď, když vaše aplikace je migrovat do služby App Service, existují ještě
 [Ceny služeb App Service]: https://azure.microsoft.com/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [Automatické škálování]: ../app-service/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-web-overview.md
+[Azure App Service]: ../app-service/overview.md
 [portál Azure Classic]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/regions/
 [Plány v Azure Scheduleru]: ../scheduler/scheduler-plans-billing.md
-[průběžné nasazování]: ../app-service/app-service-continuous-deployment.md
+[průběžné nasazování]: ../app-service/deploy-continuous-deployment.md
 [Převést smíšené obory názvů]: https://azure.microsoft.com/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: https://curl.haxx.se/
 [Vlastní názvy domén]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: https://www.telerik.com/fiddler
 [Obecná dostupnost služby Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Protokolování]: ../app-service/web-sites-enable-diagnostic-log.md
+[Protokolování]: ../app-service/troubleshoot-diagnostic-logs.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services versus App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Sledování výkonu]: ../app-service/web-sites-monitor.md
 [Postman]: https://www.getpostman.com/
-[přípravné sloty]: ../app-service/web-sites-staged-publishing.md
+[přípravné sloty]: ../app-service/deploy-staging-slots.md
 [VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [Ukázky XDT transformace]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [Functions]: ../azure-functions/functions-overview.md

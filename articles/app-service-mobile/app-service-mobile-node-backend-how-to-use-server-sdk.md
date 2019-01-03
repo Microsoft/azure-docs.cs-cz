@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: e435baf4a5e3382e3e77195e5315299e3963ff5c
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409254"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725027"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
 
@@ -153,14 +153,14 @@ Když vytvoříte back-end Node.js Mobile Apps s použitím portálu společnost
 Následující postup používá úložiště Git pro stažení projektu kódu tohoto rychlého startu:
 
 1. Nainstalujte Git, pokud jste tak již neučinili. Kroky potřebné k instalaci Gitu se liší mezi operačními systémy. Distribuce specifické pro operační systém a instalační pokyny najdete v tématu [instalace Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
-1. Zobrazit [Příprava vašeho úložiště](../app-service/app-service-deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro váš back-end serveru. Poznamenejte si uživatelské jméno pro nasazení a heslo.
-1. V podokně pro back-endu Mobile Apps, poznamenejte si, **adresa URL klonu Git** nastavení.
-1. Spustit `git clone` příkaz s použitím adresy URL pro klon Git. Zadejte svoje heslo, pokud jsou povinné, jako v následujícím příkladu:
+2. Zobrazit [Příprava vašeho úložiště](../app-service/deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro váš back-end serveru. Poznamenejte si uživatelské jméno pro nasazení a heslo.
+3. V podokně pro back-endu Mobile Apps, poznamenejte si, **adresa URL klonu Git** nastavení.
+4. Spustit `git clone` příkaz s použitím adresy URL pro klon Git. Zadejte svoje heslo, pokud jsou povinné, jako v následujícím příkladu:
 
         $ git clone https://username@todolist.scm.azurewebsites.net:443/todolist.git
 
-1. Přejděte do místního adresáře (`/todolist` v předchozím příkladu) a Všimněte si, že byly staženy soubory projektu. Vyhledejte soubor todoitem.json v `/tables` adresáře. Tento soubor definuje oprávnění v tabulce. Také najdete soubor todoitem.js ve stejném adresáři. Definuje skripty operace CRUD pro tabulku.
-1. Když provedete změny do souborů projektu, spusťte následující příkazy pro přidání, potvrzení a potom odešlete změny do lokality:
+5. Přejděte do místního adresáře (`/todolist` v předchozím příkladu) a Všimněte si, že byly staženy soubory projektu. Vyhledejte soubor todoitem.json v `/tables` adresáře. Tento soubor definuje oprávnění v tabulce. Také najdete soubor todoitem.js ve stejném adresáři. Definuje skripty operace CRUD pro tabulku.
+6. Když provedete změny do souborů projektu, spusťte následující příkazy pro přidání, potvrzení a potom odešlete změny do lokality:
 
         $ git commit -m "updated the table script"
         $ git push origin master
@@ -942,7 +942,7 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 
 1. V podokně pro Mobile Apps back-endu, vyberte **všechna nastavení** > buď **jednoduché tabulky** nebo **jednoduchá rozhraní API**. Vyberte tabulku nebo rozhraní API a pak vyberte **upravit skript**. Otevře se soubor skriptu v App Service Editor.
 
-   ![App Service Editor](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
+   ![Editor služby App Service](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-visual-studio-editor.png)
 1. Proveďte požadované změny do souboru kódu v editoru online. Změny se uloží automaticky během psaní.
 
 <!-- Images -->
@@ -968,10 +968,10 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 [Konfigurace ověřování Google]: ../app-service/configure-authentication-provider-google.md
 [Konfigurace ověřování společnosti Microsoft]: ../app-service/configure-authentication-provider-microsoft.md
 [Konfigurace ověřování Twitteru]: ../app-service/configure-authentication-provider-twitter.md
-[Průvodce nasazením služby Azure App Service]: ../app-service/app-service-deploy-local-git.md
+[Průvodce nasazením služby Azure App Service]: ../app-service/deploy-local-git.md
 [Monitorování služby Azure App Service]: ../app-service/web-sites-monitor.md
-[Povolit diagnostické protokolování ve službě Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md
-[Řešení potíží s Azure App Service v sadě Visual Studio]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
+[Povolit diagnostické protokolování ve službě Azure App Service]: ../app-service/troubleshoot-diagnostic-logs.md
+[Řešení potíží s Azure App Service v sadě Visual Studio]: ../app-service/troubleshoot-dotnet-visual-studio.md
 [Zadejte verzi uzlu]: ../nodejs-specify-node-version-azure-apps.md
 [použijte moduly Node]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/

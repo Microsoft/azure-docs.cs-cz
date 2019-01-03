@@ -1,5 +1,5 @@
 ---
-title: 'Vzor návrhu služby Azure Cosmos DB: aplikace sociálních médií'
+title: 'Vzor návrhu Azure Cosmos DB: Aplikace sociálních médií'
 description: Další informace o vzoru návrhu pro sociální sítě s využitím flexibilní úložiště služby Azure Cosmos DB a dalšími službami Azure.
 keywords: aplikace sociálních médií
 services: cosmos-db
@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: maquaran
-ms.openlocfilehash: 669cfdc59fc0b2f509db704afa4867d8f55d86f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 494566cc7d49d502fd0bd864e70b338b8d6e0788
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083967"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53726778"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Sociální funkce s Azure Cosmos DB
 
 Žijete ve vysoce propojených společnosti znamená, že v určitém okamžiku v životě stanou součástí **sociálních sítí**. Sociální sítě používáte zachovat ve spojení s přáteli, kolegům, řada, nebo někdy také sdílet s lidmi s společné zájmy vaše nadšení.
 
-Jako technici a vývojáři pravděpodobně vás zajímá, jak tyto sítě úložiště a vzájemné propojení, vaše data. Nebo vás může mít i byl úkol vytvářet nebo upravovat architekturu, když nové sociálních sítí pro konkrétní volné místo na trhu. Kdy vzniká významné Otázka: jak jsou tato data uložena?
+Jako technici a vývojáři pravděpodobně vás zajímá, jak tyto sítě úložiště a vzájemné propojení, vaše data. Nebo vás může mít i byl úkol vytvářet nebo upravovat architekturu, když nové sociálních sítí pro konkrétní volné místo na trhu. Kdy nastane významné otázky: Jak se tato data ukládají?
 
 Předpokládejme, že vytváříte nové a shiny sociální síti kde vaši uživatelé můžete publikovat články s související média, jako jsou obrázky, videa nebo dokonce music. Uživatelé mohou přidávat komentáře na příspěvky a poskytují body pro hodnocení. Bude kanál, které příspěvky, které budou uživatelé vidí a pracovat na cílové stránce hlavní webové stránky. Tato metoda není zvukové komplexní na první, ale z důvodu zjednodušení, Pojďme zastavit existuje. (Můžete delve do vlastní uživatelské kanály ovlivněny relace, ale přesahuje cílem tohoto článku.)
 
@@ -100,7 +100,7 @@ Vytváření kanálů stačí vytváření dokumentů, které může obsahovat s
 
 Můžete mít "posledního" datový proud s příspěvky seřazené podle data vytvoření. Nebo můžete mít "Nejaktivnější" datový proud takových příspěvků s další lajků za posledních 24 hodin. Dokonce je možné implementovat vlastní datový proud pro každého uživatele na základě logiky jako sledujících a zájmy. Stále je seznam příspěvků. Je na vás o tom, jak vytvářet tyto seznamy, ale zůstává nerušený výkonu čtení. Jakmile získáte jednu z těchto seznamů, vydáte pomocí jediného dotazu pomocí služby Cosmos DB [v operátoru](how-to-sql-query.md#WhereClause) k získání stránek příspěvků v čase.
 
-Informační kanály datové proudy může být postavená pomocí [Azure App Services](https://azure.microsoft.com/services/app-service/) procesy na pozadí: [Webjobs](../app-service/web-sites-create-web-jobs.md). Po vytvoření příspěvek zpracování na pozadí můžete aktivovat pomocí [služby Azure Storage](https://azure.microsoft.com/services/storage/) [fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) a aktivovat pomocí Webjobs [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), implementující Publikovat šíření uvnitř streamů v závislosti na vlastní logiku.
+Informační kanály datové proudy může být postavená pomocí [Azure App Services](https://azure.microsoft.com/services/app-service/) procesy na pozadí: [Webjobs](../app-service/webjobs-create.md). Po vytvoření příspěvek zpracování na pozadí můžete aktivovat pomocí [služby Azure Storage](https://azure.microsoft.com/services/storage/) [fronty](../storage/queues/storage-dotnet-how-to-use-queues.md) a aktivovat pomocí Webjobs [Azure Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki), implementující Publikovat šíření uvnitř streamů v závislosti na vlastní logiku.
 
 Body a lajky přes příspěvek mohou být zpracovány odložené způsobem pomocí Tento stejný postup k vytvoření konzistentní prostředí.
 
@@ -206,15 +206,15 @@ Další informace o službě Azure Search, můžete navštívit [Hitchhiker od p
 
 ## <a name="the-underlying-knowledge"></a>Základní znalosti
 
-Po uložení všech tento obsah, který zvyšuje nebo každým dnem roste, může pro vás přemýšlení: Co mohu využít tento proud informací z mých uživatelů?
+Po uložení všech tento obsah, který zvyšuje nebo každým dnem roste, může pro vás přemýšlení: Co mohu udělat pomocí tohoto streamu informací mých uživatelů?
 
-Odpověď je jednoduchý: je začít pracovat a Učte se z něj.
+Odpověď je jednoduchý: Začít pracovat a Učte se z něj.
 
 Ale co je další? Zahrnují několik příkladů snadno [analýzu subjektivního hodnocení](https://en.wikipedia.org/wiki/Sentiment_analysis), obsah doporučení na základě zálib uživatelů, nebo dokonce automatizované content moderatoru, který zajišťuje, že obsah publikovaný sociálních sítí je bezpečný pro rodinu.
 
 Teď, když mám tady připojeny, vám dovolí přemýšlet pravděpodobně potřebujete některé titul pH.d. v matematické vědy extrahovat tyto vzory a informace z jednoduchého databáze a soubory, ale by byl nesprávný.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)patří [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná Cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduché rozhraní pro přetahování myší, kód vlastní algoritmy v [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), nebo použít některé z již integrované a připravené k použití rozhraní API, jako: [rozhraní Text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator, nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)patří [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná Cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduché rozhraní pro přetahování myší, kód vlastní algoritmy v [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)), nebo použít některé z již integrované a připravené k použití rozhraní API, jako: [Rozhraní text Analytics](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [Content Moderator, nebo [doporučení](https://gallery.azure.ai/Solution/Recommendations-Solution).
 
 Chcete-li dosáhnout některého z těchto scénářů Machine Learning, můžete použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) k ingestování informace z různých zdrojů. Můžete také použít [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) pro zpracování informací a generovat výstup, který může být zpracována Azure Machine Learning.
 

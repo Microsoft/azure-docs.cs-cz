@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 48b2d42348996f5f135d88cdf6345bca8daf8335
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3239cbc957d2a79c7a5411604759f86f0268bd70
+ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409441"
+ms.lasthandoff: 01/02/2019
+ms.locfileid: "53976303"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -68,7 +68,7 @@ Následující kroky pomocí Homebrew v systému macOS nainstalujte základní n
 
     ```bash
     brew tap azure/functions
-    brew install azure-functions-core-tools 
+    brew install azure-functions-core-tools
     ```
 
 #### <a name="linux"></a> Linux (Ubuntu nebo Debian) pomocí APT
@@ -195,12 +195,12 @@ Hodnoty nastavení aplikace funkcí můžete číst také ve vašem kódu jako p
 + [Předkompilované C#](functions-dotnet-class-library.md#environment-variables)
 + [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
 + [F#skript (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables) 
++ [Java](functions-reference-java.md#environment-variables)
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro **AzureWebJobsStorage** a se nepoužívá emulátor, se zobrazí následující chybová zpráva:  
+Pokud se žádný platný připojovací řetězec úložiště jsou nastavené pro **AzureWebJobsStorage** a se nepoužívá emulátor, se zobrazí následující chybová zpráva:
 
-> Chybí hodnota pro AzureWebJobsStorage v local.settings.json. To je potřeba pro všechny aktivační události než HTTP. Můžete spustit "func azure functionapp načtení app-settings <functionAppName>" nebo zadat připojovací řetězec v local.settings.json.
+> Chybí hodnota pro AzureWebJobsStorage v local.settings.json. To je potřeba pro všechny aktivační události než HTTP. Můžete spustit "func azure functionapp načtení app-settings \<functionAppName\>" nebo zadat připojovací řetězec v local.settings.json.
 
 ### <a name="get-your-storage-connection-strings"></a>Získejte připojovací řetězce úložiště
 
@@ -210,7 +210,7 @@ I když se používá pro vývoj pro emulátor úložiště, můžete otestovat 
 
   ![Zkopírujte připojovací řetězec z portálu Azure portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Použití [Průzkumníka služby Azure Storage](https://storageexplorer.com/) se připojit ke svému účtu Azure. V **Explorer**, rozšířit vaše předplatné, vyberte svůj účet úložiště a zkopírování primárního nebo sekundárního připojovacího řetězce. 
++ Použití [Průzkumníka služby Azure Storage](https://storageexplorer.com/) se připojit ke svému účtu Azure. V **Explorer**, rozšířit vaše předplatné, vyberte svůj účet úložiště a zkopírování primárního nebo sekundárního připojovacího řetězce.
 
   ![Zkopírujte připojovací řetězec z Průzkumníka služby Storage](./media/functions-run-local/storage-explorer.png)
 
@@ -298,16 +298,15 @@ func host start
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--build`** | Sestavte aktuální projekt před provozováním. Verze 2.x a C# pouze projekty. |
+| **`--no-build`** | Provést aktuální projekt před provozováním žádná sestavení. Dotnet pouze pro projekty. Výchozí je nastavena na hodnotu false. Verze 2.x pouze. |
 | **`--cert`** | Cesta k souboru .pfx, který obsahuje privátní klíč. Použít pouze s `--useHttps`. Verze 2.x pouze. |
+| **`--cors-credentials`** | Povolit ověřený požadavky mezi zdroji (tj. soubory cookie a hlavičky ověřování) verze 2.x pouze. |
 | **`--cors`** | Čárkou oddělený seznam zdrojů CORS, bez mezer. |
-| **`--debug`** | Spustí hostitele s portu ladění otevřete tak, aby se můžete připojit k **func.exe** procesu z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) nebo [Visual Studio 2017](functions-dotnet-class-library.md). Platné hodnoty jsou `VSCode` a `VS`.  |
 | **`--language-worker`** | Argumentů pro konfiguraci jazyka pracovního procesu. Verze 2.x pouze. |
 | **`--nodeDebugPort -n`** | Port pro ladicí program uzel používat. Výchozí: Hodnota z launch.json nebo 5858. Verzi 1.x pouze. |
 | **`--password`** | Heslo nebo soubor, který obsahuje heslo pro soubor .pfx. Použít pouze s `--cert`. Verze 2.x pouze. |
 | **`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Pozastavit další vstupní před ukončením procesu. Používá pouze v případě, že spuštění nástroje Core z integrovaného vývojového prostředí (IDE).|
-| **`--script-root --prefix`** | Slouží k zadání cesty do kořenového adresáře aplikace function app, který se má spustit nebo nasadit. Používá se pro kompilované projekty, které Generovat soubory projektu do podsložky. Například při vytváření knihovny tříd jazyka C# projekt, host.json, local.settings.json a function.json soubory jsou generovány *kořenové* , jako je podsložka s cestou `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. To je kořenový adresář aplikace function app, při spuštění v Azure. |
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v řádu sekund. Výchozí: 20 sekund.|
 | **`--useHttps`** | Vytvoření vazby k `https://localhost:{port}` spíše než na `http://localhost:{port}`. Ve výchozím nastavení tato volba vytvoří důvěryhodný certifikát ve vašem počítači.|
 
@@ -324,13 +323,13 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Při místním spuštění ověřování se vynucují s ohledem koncové body HTTP. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v tématu [článku vazby HTTP](functions-bindings-http-webhook.md#authorization-keys). 
+>Při místním spuštění ověřování se vynucují s ohledem koncové body HTTP. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v tématu [článku vazby HTTP](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Testovací předání dat pro funkci
 
 K testování vašich funkcí místně, můžete [spuštění funkce hostitele](#start) a volají koncové body na místním serveru pomocí žádosti protokolu HTTP. Koncový bod, co zavoláte, závisí na typu funkce.
 
->[!NOTE]  
+>[!NOTE]
 > Příklady v tomto tématu použijte nástroj cURL k odeslání požadavků HTTP z terminálu nebo příkazového řádku. Nástroje podle vašeho výběru můžete použít k odesílání požadavků HTTP na místním serveru. Je nástroj cURL k dispozici ve výchozím nastavení v systémech založených na Linuxu. Na Windows, musíte nejdřív stáhnout a nainstalovat [nástroj cURL](https://curl.haxx.se/).
 
 Další obecné informace o testování funkcí najdete v tématu [strategie pro testování kódu ve službě Azure Functions](functions-test-a-function.md).
@@ -341,9 +340,9 @@ Volání této funkce aktivované pomocí koncového bodu HTTP a webhookové mí
 
     http://localhost:{port}/api/{function_name}
 
-Nezapomeňte použít stejný název serveru a port, který naslouchá funkce hostitele. Se zobrazí ve výstupu generovány při spuštění funkce hostitele. Můžete volat tuto adresu URL pomocí libovolné metody HTTP nepodporuje aktivační události. 
+Nezapomeňte použít stejný název serveru a port, který naslouchá funkce hostitele. Se zobrazí ve výstupu generovány při spuštění funkce hostitele. Můžete volat tuto adresu URL pomocí libovolné metody HTTP nepodporuje aktivační události.
 
-Následující cURL příkaz aktivační události `MyHttpTrigger` funkce rychlého startu z požadavku GET s _název_ parametr předaný řetězec dotazu. 
+Následující cURL příkaz aktivační události `MyHttpTrigger` funkce rychlého startu z požadavku GET s _název_ parametr předaný řetězec dotazu.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -355,11 +354,11 @@ V následujícím příkladu je stejnou funkci volat z požadavku POST předáv�
 curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azure Rocks"}'
 ```
 
-Můžete vytvořit žádosti o získání z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL, Fiddler, Postman nebo podobný nástroj testování protokolu HTTP.  
+Můžete vytvořit žádosti o získání z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL, Fiddler, Postman nebo podobný nástroj testování protokolu HTTP.
 
 #### <a name="non-http-triggered-functions"></a>Funkce aktivované pomocí jiným protokolem než HTTP
 
-Pro všechny typy funkcí jiné než triggerů HTTP a webhooky můžete otestovat funkce místně pomocí volání koncového bodu správy. Volání tohoto koncového bodu pomocí požadavku HTTP POST na místním serveru aktivuje funkci. Testovací data můžete volitelně předat ke spuštění v textu požadavku POST. Tato funkce je podobný **Test** karta na portálu Azure portal.  
+Pro všechny typy funkcí jiné než triggerů HTTP a webhooky můžete otestovat funkce místně pomocí volání koncového bodu správy. Volání tohoto koncového bodu pomocí požadavku HTTP POST na místním serveru aktivuje funkci. Testovací data můžete volitelně předat ke spuštění v textu požadavku POST. Tato funkce je podobný **Test** karta na portálu Azure portal.
 
 Můžete volat následující koncový bod správce k aktivaci funkce jiným protokolem než HTTP:
 
@@ -381,10 +380,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 #### <a name="using-the-func-run-command-in-version-1x"></a>Použití `func run` příkaz ve verzi 1.x
 
->[!IMPORTANT]  
+>[!IMPORTANT]
 > `func run` Příkaz není podporovaný ve verzi 2.x nástroje. Další informace naleznete v tématu [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
 
-Funkci lze vyvolat přímo pomocí `func run <FunctionName>` a poskytují vstupní data pro tuto funkci. Tento příkaz je podobný spouštění funkcí s použitím **Test** karta na portálu Azure portal. 
+Funkci lze vyvolat přímo pomocí `func run <FunctionName>` a poskytují vstupní data pro tuto funkci. Tento příkaz je podobný spouštění funkcí s použitím **Test** karta na portálu Azure portal.
 
 `func run` podporuje následující možnosti:
 
@@ -410,9 +409,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 Základní nástroje podporuje dva typy nasazení, nasazení soubory projektu funkce přímo do aplikace function app a nasazením vlastního kontejneru Linuxu, který je podporován pouze ve verzi 2.x. Musíte mít již [vytvoří aplikaci funkcí ve vašem předplatném Azure](functions-cli-samples.md#create).
 
-Ve verzi 2.x, musíte mít [zaregistrovaný rozšíření](#register-extensions) ve vašem projektu před publikováním. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit. 
+Ve verzi 2.x, musíte mít [zaregistrovaný rozšíření](#register-extensions) ve vašem projektu před publikováním. Projekty, které vyžadují kompilace by měly být sestaveny tak, aby binární soubory je možné nasadit.
 
-### <a name="project-file-deployment"></a>Nasazení souboru projektu  
+### <a name="project-file-deployment"></a>Nasazení souboru projektu
 
 Nejběžnější metoda nasazení zahrnuje použití základní nástroje pro balení projektu aplikace funkcí, binární soubory a závislosti a nasadit balíček do vaší aplikace function app. Volitelně můžete [spustit přímo z balíčku pro nasazení vašich funkcí](run-functions-from-deployment-package.md).
 
@@ -424,10 +423,10 @@ func azure functionapp publish <FunctionAppName>
 
 Tento příkaz publikuje do existující aplikaci function app v Azure. Dojde k chybě při `<FunctionAppName>` neexistuje ve vašem předplatném. Zjistěte, jak vytvořit aplikaci function app z příkazového řádku nebo v okně terminálu pomocí Azure CLI, najdete v článku [vytvoření aplikace funkcí pro provádění bez serveru](./scripts/functions-cli-create-serverless.md).
 
-`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].  
+`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory lokálně, `publish` příkaz neodstranila z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].
 
->[!IMPORTANT]  
-> Když vytvoříte aplikaci function app na webu Azure Portal, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, postupujte podle pokynů v [spustit ve verzi 1.x](functions-versions.md#creating-1x-apps).  
+>[!IMPORTANT]
+> Když vytvoříte aplikaci function app na webu Azure Portal, používá verzi 2.x modul runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použijte verzi 1.x modulu runtime, postupujte podle pokynů v [spustit ve verzi 1.x](functions-versions.md#creating-1x-apps).
 > Nelze změnit verzi modulu runtime aplikace function App, který má existující funkce.
 
 Následující projekt publikovat možnosti platí pro verze, 1.x a 2.x:
@@ -460,7 +459,7 @@ Funkce vám umožní nasadit projekt funkcí do vlastního kontejneru Linuxu. Da
 func deploy
 ```
 
-Jsou k dispozici následující možnosti nasazení vlastního kontejneru: 
+Jsou k dispozici následující možnosti nasazení vlastního kontejneru:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |

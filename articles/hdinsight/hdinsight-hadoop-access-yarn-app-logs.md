@@ -9,26 +9,25 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: da105be19f7d546e530298f87974fe7f3f78989f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7326cf6a1153d5dc1f7e5f910a376a21b05db606
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012211"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53725436"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Přístup k Apache Hadoop YARN protokolům aplikací na HDInsight se systémem Windows
 Tento dokument popisuje, jak získat přístup k protokolům pro [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) aplikace, které dokončení na Apache Hadoop založené na Windows cluster v Azure HDInsight
 
-> [!IMPORTANT]
-> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v linuxu Apache Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
->
+> [!IMPORTANT]  
+> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v linuxu Apache Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
 
 ### <a name="prerequisites"></a>Požadavky
 * Cluster HDInsight se systémem Windows.  Zobrazit [systémem Windows vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> poskytuje obecné informace o hotových aplikacích, informace o aplikaci stejně jako specifické pro architekturu prostřednictvím dvou různých rozhraní. Zejména:
+<a href="https://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> poskytuje obecné informace o hotových aplikacích, informace o aplikaci stejně jako specifické pro architekturu prostřednictvím dvou různých rozhraní. Zejména:
 
 * Ukládání a načítání informací o obecná aplikace na clusterech HDInsight bylo povolené verze 3.1.1.374 nebo vyšší.
 * Součást informace specifické pro architekturu aplikace serveru časová osa není aktuálně k dispozici v clusterech HDInsight.
@@ -75,7 +74,7 @@ Uživatelské rozhraní správce prostředků YARN běží na hlavního uzlu clu
 3. V horní nabídce klikněte na tlačítko **řídicí panel**. Zobrazí se stránka otevře na nové prohlížeče kartu **konzoly pro dotazy HDInsight**.
 4. Z **konzoly pro dotazy HDInsight**, klikněte na tlačítko **uživatelského rozhraní Yarn**.
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
 [log-aggregation]:https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
 [T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
 [binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

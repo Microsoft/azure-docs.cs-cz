@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7497255dcad55cea86e0c640e2f1423d7d763a7f
+ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999893"
+ms.lasthandoff: 12/21/2018
+ms.locfileid: "53713622"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
@@ -126,7 +126,7 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 
 | | |
 |-|-|
-| ![Funkce ověřování aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Použijete-li funkce triggeru HTTP, můžete vyžadovat volání nejdřív ověřit. App Service podporuje ověřování Azure Active Directory a přihlaste se pomocí poskytovatelé služeb sociálních sítí, jako je Facebook, Microsoft a Twitter. Podrobnosti o konfiguraci zprostředkovatele konkrétní ověřování najdete v tématu [Přehled ověřování služby Azure App Service](../app-service/app-service-authentication-overview.md). |
+| ![Funkce ověřování aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Použijete-li funkce triggeru HTTP, můžete vyžadovat volání nejdřív ověřit. App Service podporuje ověřování Azure Active Directory a přihlaste se pomocí poskytovatelé služeb sociálních sítí, jako je Facebook, Microsoft a Twitter. Podrobnosti o konfiguraci zprostředkovatele konkrétní ověřování najdete v tématu [Přehled ověřování služby Azure App Service](../app-service/overview-authentication-authorization.md). |
 
 ![Konfigurace ověřování aplikace function App](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
