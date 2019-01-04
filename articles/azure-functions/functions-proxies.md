@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 7c1d3adec6fd718df12abde1b56a89e662de284e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538986"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017102"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
@@ -47,13 +47,13 @@ Pomocí proxy služby Azure Functions můžete upravit požadavků a odpovědí 
 
 Ve výchozím nastavení je požadavek back-end inicializován jako kopii původního požadavku. Kromě nastavení adresa URL back-end, můžete provádět změny metody HTTP, hlaviček a parametrů řetězce dotazu. Změněné hodnoty může odkazovat na [nastavení aplikace] a [parametry z původního požadavku klienta].
 
-Požadavky na back-end můžete upravit na portálu expading *přepsání žádosti* na stránce Podrobnosti o proxy serveru. 
+Požadavky na back-end lze upravit na portálu tak, že rozbalíte *přepsání žádosti* na stránce Podrobnosti o proxy serveru. 
 
 ### <a name="modify-response"></a>Upravit odpověď
 
 Ve výchozím nastavení odpověď klienta inicializován jako kopii odpovědi back-end. Stavový kód odpovědi, frázi důvodu, záhlaví a text můžete provádět změny. Změněné hodnoty může odkazovat na [nastavení aplikace], [parametry z původního požadavku klienta], a [parametry z odpovědi back-end].
 
-Požadavky na back-end můžete upravit na portálu expading *přepsání odpovědi* na stránce Podrobnosti o proxy serveru. 
+Požadavky na back-end lze upravit na portálu tak, že rozbalíte *přepsání odpovědi* na stránce Podrobnosti o proxy serveru. 
 
 ## <a name="using-variables"></a>Použití proměnných
 
@@ -176,12 +176,13 @@ Chování proxy můžete ovlivnit pomocí několika nastavení aplikace. Všechn
 
 ### <a name="reservedChars"></a> Vyhrazené znaky (formátování řetězce)
 
-Číst všechny řetězce bez interpretaci, s výjimkou složených závorek a lomítka proxy servery
+Proxy servery číst všechny řetězce z JSON soubor, pomocí \ jako escape symbol. Proxy servery také interpretaci složených závorek. Zobrazit úplnou sadu následující příklady.
 
 |Znak|Řídicí znak|Příklad:|
 |-|-|-|
 |{nebo}|{{nebo}}|`{{ example }}` --> `{ example }`
-|/|///| `example.com///text.html` --> `example.com/text.html`
+| \ | \\\\ | `example.com\\text.html` --> `example.com\text.html`
+|"|\\\"| `\"example\"` --> `"example"`
 
 ### <a name="requestOverrides"></a>Definování requestOverrides objektu
 

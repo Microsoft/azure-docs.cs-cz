@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969477"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021114"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -155,8 +154,8 @@ Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
 
 ### <a name="terminology"></a>Terminologie
 
-- **Sdílené reakcí na Incidenty**: původní v místním prostředí IR, na kterém běží na fyzickou infrastrukturu.  
-- **Propojené prostředí IR**: The reakcí na Incidenty, která odkazuje na jiné sdílené IR. Toto je logický IR a využívá infrastrukturu jinou místní prostředí IR (sdílené).
+- **Sdílené reakcí na Incidenty**: Původní místní prostředí IR, na kterém běží na fyzickou infrastrukturu.  
+- **Propojené prostředí IR**: Prostředí IR, který odkazuje na jiné sdílené IR. Toto je logický IR a využívá infrastrukturu jinou místní prostředí IR (sdílené).
 
 ### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Postup vysoké úrovně pro vytvoření propojené prostředí IR v místním prostředí
 
@@ -257,8 +256,8 @@ Místní prostředí integration runtime používá proxy server pro připojení
 
 Existují tři možnosti konfigurace:
 
-- **Nepoužívat proxy server**: místní prostředí integration runtime připojit ke cloudovým službám explicitně nepoužívá žádné proxy.
-- **Použít systémový proxy server**: místní prostředí integration runtime používá proxy server, který je nastavení nakonfigurované v diahost.exe.config a diawp.exe.config. Pokud žádný proxy server je nakonfigurován diahost.exe.config a diawp.exe.config, místní prostředí integration runtime připojí ke cloudové službě přímo bez proxy serveru.
+- **Nepoužívat proxy server**: Místní prostředí integration runtime explicitně nepoužívá všechny proxy pro připojení ke cloudovým službám.
+- **Použít systémový proxy server**: Místní prostředí integration runtime používá nastavení serveru proxy, který je nakonfigurovaný v diahost.exe.config a diawp.exe.config. Pokud žádný proxy server je nakonfigurován diahost.exe.config a diawp.exe.config, místní prostředí integration runtime připojí ke cloudové službě přímo bez proxy serveru.
 - **Použít vlastní proxy server**: Konfigurace nastavení pro místní prostředí integration runtime, namísto použití konfigurace v diahost.exe.config a diawp.exe.config proxy HTTP. **Adresa** a **Port** jsou povinné. **Uživatelské jméno** a **heslo** jsou volitelné na základě nastavení ověřování váš proxy server. Všechna nastavení jsou šifrované pomocí rozhraní Windows DPAPI na místní prostředí integration runtime a ukládají místně na počítači.
 
 Hostitelská služba modulu integration runtime se restartuje automaticky po uložení aktualizované nastavení proxy serveru.
@@ -318,7 +317,7 @@ Musíte také zajistit, že Microsoft Azure je v seznamu povolených IP adres va
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Je to možné příznaky u problémů souvisejících se server brány firewall a proxy
 Pokud narazíte na chyby podobné následující dotazy, je pravděpodobně v důsledku nesprávné konfigurace brány firewall nebo proxy serveru, který blokuje místní prostředí integration runtime v připojení ke službě Data Factory ke svému ověření. Ujistěte se, že jsou správně nakonfigurované brány firewall a proxy server, naleznete v předchozí části.
 
-* Při pokusu o registraci místního prostředí integration runtime se zobrazí následující chybová zpráva: "se nepodařilo registrovat tento uzel Integration Runtime. Zkontrolujte, jestli je platný ověřovací klíč a služba pro integraci na tomto počítači je spuštěna služba hostitele."
+* Při pokusu o registraci místního prostředí integration runtime se zobrazí následující chyba: "Nepovedlo se registrovat tento uzel Integration Runtime. Zkontrolujte, jestli je platný ověřovací klíč a služba pro integraci na tomto počítači je spuštěna služba hostitele."
 * Když otevřete Správce konfigurace modulu Integration Runtime se zobrazí stav **odpojeno** nebo **připojení**. Když zobrazujete protokoly událostí Windows, v části **Prohlížeč událostí** > **protokoly aplikací a služeb** > **prostředí Microsoft Integration Runtime**, Zobrazí se chybové zprávy, jako je tato:
 
     ```
@@ -345,4 +344,4 @@ Pokud zvolíte ne pro otevření portu 8060 na počítači s modulem runtime int
 
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující kurz pro podrobné pokyny: [kurz: kopírování místních dat do cloudu](tutorial-hybrid-copy-powershell.md).
+Projděte si následující kurz pro podrobné pokyny: [Kurz: Kopírování místních dat do cloudu](tutorial-hybrid-copy-powershell.md).

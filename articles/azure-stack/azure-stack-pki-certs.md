@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a6f18222e5683d2d9663b699a8f6bab399d4f45b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299856"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024939"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -62,7 +62,7 @@ V tabulce v této části jsou popsány certifikáty infrastruktury veřejných 
 
 Jsou vyžadovány certifikáty s příslušnými názvy DNS pro každý koncový bod veřejné infrastruktury Azure stacku. Název DNS každý koncový bod je vyjádřená ve formátu:  *&lt;předpony >.&lt; oblast >. &lt;plně kvalifikovaný název domény >*. 
 
-Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externích domén, které jste zvolili pro váš systém Azure Stack. Jako příklad, pokud byl název oblasti *Redmond* a názvem externí domény *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*. *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu koncový bod zabezpečené pomocí certifikátu. Kromě toho  *&lt;předpony >* hodnoty infrastruktury externí koncové body, závisí na služby Azure Stack, který používá určitého koncového bodu. 
+Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a názvy externích domén, které jste zvolili pro váš systém Azure Stack. Jako příklad, pokud byl název oblasti *Redmond* a názvem externí domény *contoso.com*, názvy DNS by mít formát *&lt;předpony >. redmond.contoso.com*.  *&lt;Předpony >* hodnoty jsou předem definovanou společností Microsoft k popisu koncový bod zabezpečené pomocí certifikátu. Kromě toho  *&lt;předpony >* hodnoty infrastruktury externí koncové body, závisí na služby Azure Stack, který používá určitého koncového bodu. 
 
 > [!note]  
 > Pro produkční prostředí doporučujeme jednotlivé certifikáty jsou generovány pro každý koncový bod a zkopírován do příslušné adresáře. Pro vývojové prostředí certifikáty lze zadat jako jeden zástupný certifikát pokrývající všechny obory názvů v subjektu a alternativní název předmětu (SAN) polí zkopírována do všech adresářů. Jeden certifikát, které pokrývají všechny koncové body a služby je nezabezpečené stav, proto jenom pro vývojové prostředí. Nezapomeňte, že obě možnosti vyžadují, abyste pomocí certifikátů se zástupnými znaky pro koncové body, jako **acs** a kde se vyžadují služby Key Vault. 

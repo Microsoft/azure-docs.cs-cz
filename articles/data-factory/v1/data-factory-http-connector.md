@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167467"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017255"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Přesun dat z zdroje HTTP pomocí Azure Data Factory
 
@@ -36,7 +35,7 @@ Data Factory aktuálně podporuje pouze přesouvá data z HTTP zdroje do další
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Podporované scénáře a typy ověřování
 
-Můžete použít tento konektor HTTP pro načtení dat z *cloudové a místní koncový bod HTTP/S* pomocí HTTP **získat** nebo **příspěvek** metody. Jsou podporovány následující typy ověřování: **anonymní**, **základní**, **Digest**, **Windows**, a  **ClientCertificate**. Všimněte si rozdílu mezi tento konektor a [webový tabulky konektor](data-factory-web-table-connector.md). Webový konektor tabulky extrahuje obsah tabulky z webové stránce HTML.
+Můžete použít tento konektor HTTP pro načtení dat z *cloudové a místní koncový bod HTTP/S* pomocí HTTP **získat** nebo **příspěvek** metody. Jsou podporovány následující typy ověřování: **Anonymní**, **základní**, **Digest**, **Windows**, a **ClientCertificate**. Všimněte si rozdílu mezi tento konektor a [webový tabulky konektor](data-factory-web-table-connector.md). Webový konektor tabulky extrahuje obsah tabulky z webové stránce HTML.
 
 Při kopírování dat z koncového bodu HTTP místní, musíte nainstalovat bránu správy dat v místním prostředí nebo ve Virtuálním počítači Azure. Další informace o bráně pro správu dat a podrobné pokyny o tom, jak nastavit bránu najdete v tématu [přesun dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md).
 
@@ -44,7 +43,7 @@ Při kopírování dat z koncového bodu HTTP místní, musíte nainstalovat br�
 
 Vytvoříte kanál s aktivitou kopírování pro přesun dat z zdroje HTTP pomocí různých nástrojů nebo rozhraní API:
 
-- Pomocí Průvodce kopírování dat je nejjednodušší způsob, jak vytvořit kanál. Rychlý postup vytvoření kanálu pomocí Průvodce kopírování dat, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
+- Pomocí Průvodce kopírování dat je nejjednodušší způsob, jak vytvořit kanál. Rychlý postup vytvoření kanálu pomocí Průvodce kopírování dat, najdete v části [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
 - Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **Azure Resource Manageru Šablona**, **rozhraní .NET API**, nebo **rozhraní REST API**. Podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování, najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON – ukázky této kopírování dat z HTTP zdroje do služby Azure Blob storage, najdete v části [JSON příklady](#json-examples).
 
@@ -108,7 +107,7 @@ Pokud používáte **certThumbprint** pro ověřování a certifikát, který je
 3. Klikněte pravým tlačítkem na certifikát z osobního úložiště a pak vyberte **všechny úkoly** >**spravovat soukromé klíče**.
 3. Na **zabezpečení** kartu, přidejte uživatelský účet, pod kterým běží služba hostitele brány pro správu dat s přístupem pro čtení k certifikátu.  
 
-**Příklad: Použití klientského certifikátu**
+**Příklad: Pomocí klientského certifikátu**
 
 Tato propojená služba propojuje svou datovou továrnu místní webový server HTTP. Používá klientský certifikát, který je nainstalován na počítači, který má brána správy dat nainstalovaná.
 
@@ -130,7 +129,7 @@ Tato propojená služba propojuje svou datovou továrnu místní webový server 
 }
 ```
 
-**Příklad: Použití klientský certifikát v souboru**
+**Příklad: Pomocí klientského certifikátu do souboru**
 
 Tato propojená služba propojuje svou datovou továrnu místní webový server HTTP. Používá soubor certifikátu klienta na počítači, který má brána správy dat nainstalovaná.
 
@@ -166,10 +165,10 @@ Některé části souboru JSON datové sady, jako je například struktura, dost
 | requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** a **příspěvek**. | Ne <br />(výchozí hodnota je **získat**) |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| Formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, a **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Pokud chcete *načtení dat z koncového bodu HTTP jako-je* bez je analýza kódu, přejděte **formátu** nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát Orc](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format). |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
-**Příklad: Použití metody GET (výchozí)**
+**Příklad: Pomocí metody GET (výchozí)**
 
 ```json
 {
@@ -190,7 +189,7 @@ Některé části souboru JSON datové sady, jako je například struktura, dost
 }
 ```
 
-**Příklad: Použití metody POST**
+**Příklad: Pomocí metody POST**
 
 ```json
 {
@@ -224,7 +223,7 @@ V současné době když zdroj v aktivitě kopírování je **HttpSource** zadej
 
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00:01:40**) |
+| httpRequestTimeout | Časový limit ( **TimeSpan** hodnotu) pro požadavek HTTP získat odpověď. Časový limit je získat odpověď, nevypršel časový limit pro čtení dat odpovědi. | Ne<br />(výchozí hodnota: **00: 01:40**) |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 

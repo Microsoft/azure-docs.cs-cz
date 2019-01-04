@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: a6e9df1b5be0565e859c866b6ceb8ef44e6b271a
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 8afe994f2441e736d660a306746508e9c6d13691
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812002"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001834"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Pomocí Stream Analytics zpracovávat data exportovaná z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovat ze služby Application Insights](export-telemetry.md). Stream Analytics můžete vyžádat data z různých zdrojů. Můžete transformovat a filtrovat data a pak směrovat na různé jímky.
@@ -64,7 +64,7 @@ Průběžný export vždy výstupů dat do účtu služby Azure Storage, musíte
 
     ![Vyberte typy událostí](./media/export-stream-analytics/080.png)
 
-1. Umožnit shromažďování některá dat. Opřete se a umožnit lidem nějakou dobu používat vaši aplikaci. Telemetrická data budou přicházet a zobrazí statistické grafy v [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md) a jednotlivé události v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). 
+1. Umožnit shromažďování některá dat. Opřete se a umožnit lidem nějakou dobu používat vaši aplikaci. Telemetrická data budou přicházet a zobrazí statistické grafy v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a jednotlivé události v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). 
    
     A také se exportovat data do úložiště. 
 2. Kontrola exportovaná data. V sadě Visual Studio, zvolte **zobrazení / Cloud Explorer**a otevřete Azure / Storage. (Pokud nemáte k dispozici tato možnost nabídky, je potřeba nainstalovat sadu Azure SDK: Otevřete dialogové okno Nový projekt a otevřete vizuál C# / cloudu / získat Microsoft Azure SDK pro .NET.)

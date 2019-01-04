@@ -9,17 +9,16 @@ ms.assetid: 5474d9a1-e278-429f-bc31-db34551d3881
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d291d7ecd5ee9b8bf5645296ef345ac436f1d047
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495907"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019075"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – Zákaznické případové studie
 Data Factory je služba správy založené na cloudu informací, která automatizuje pohyb a transformaci dat. Zákazníci v mnoha oborech pomocí služby Data Factory a dalšími službami Azure a sestavit kanály jejich analýzy řešení jejich obchodních problémů.  Přímo od našich zákazníků, zjistěte, jak a proč používají Data Factory.
@@ -33,7 +32,7 @@ Data Factory je služba správy založené na cloudu informací, která automati
 ## <a name="ziosk"></a>Ziosk
 [Jaké hru, která má být přejde s tím, že burger? Ziosk možná už znáte.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
-## <a name="alaska-airlines"></a>Společnost Alaska Airlines
+## <a name="alaska-airlines"></a>Alaska Airlines
 [Letecká společnost používá tablety, cloudové služby, které nabízejí větší mírou zapojení vydávaných za pochodu Zábava](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
 ## <a name="tacoma-public-schools"></a>Tacoma veřejného školy

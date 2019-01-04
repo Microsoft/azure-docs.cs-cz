@@ -9,16 +9,15 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249583"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024089"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -50,7 +49,7 @@ Data Factory poskytuje svobodu modelovat jakýkoli styl toku, který je potřebn
 - Toky rozdílů:
     - Použití parametrů a definovat vaše horní mez pro rozdílové kopírování při přesouvání tabulek dimenzí nebo referenčních tabulek z relačního úložiště, ať už místní nebo v cloudu, k načtení dat do jezera. 
 
-Další informace najdete v tématu [kurz: řízení toků](tutorial-control-flow.md).
+Další informace najdete v tématu [kurzu: Řízení toků](tutorial-control-flow.md).
 
 ### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Transformujte svá data ve velkém měřítku s bezplatnou kanály kódu
 Nové prostředí využívající prohlížeč nástroje obsahuje bez použití kódu kanálu pro vytváření a nasazování moderních, interaktivních webových prostředí s.
@@ -60,7 +59,7 @@ Pro vývojáře vizuálních dat a datoví architekti je ADF webové uživatelsk
 ### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Bohaté různé sady SDK platformy pro pokročilé uživatele
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, ADF V2 poskytuje bohatou sadu SDK, které můžete využít k vytváření, správy, monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí
 1.  Python SDK
-2.  Rozhraní příkazového řádku Powershellu
+2.  Rozhraní příkazového řádku PowerShellu
 3.  C# SDK uživatelům také můžete využít zdokumentovaných rozhraní REST API pro rozhraní s ADF V2
 
 ### <a name="iterative-development-and-debugging-using-visual-tools"></a>Iterativní vývoj a ladění pomocí visual tools
@@ -92,9 +91,9 @@ Od původní verze Public Preview v 2017 Data Factory přináší následující
 ## <a name="what-is-integration-runtime"></a>Co je IR?
 Prostředí IR je výpočetní infrastruktura, která se službou Azure Data Factory používá k zajištění následujících funkcí integrace dat v různých síťových prostředích:
 
-- **Přesun dat**: v případě přesunu dat prostředí IR přesouvá data mezi zdrojovým a cílovým úložištěm dat, a poskytuje podporu integrovaných konektorů, převodu formátu, mapování sloupců a výkonného a škálovatelného přenosu dat.
-- **Odeslání aktivity**: v případě transformace IR nativní spouštění balíčků služby SSIS.
-- **Spouštění balíčků služby SSIS**: nativně spouští balíčky SSIS v prostředí spravované výpočetní prostředky Azure. Prostředí IR podporuje také volání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
+- **Přesun dat**: V případě přesunu dat prostředí IR přesouvá data mezi zdrojovým a cílovým úložištěm dat a přitom poskytuje podporu integrovaných konektorů, převodu formátů, mapování sloupců a výkonného a škálovatelného přenosu dat.
+- **Odeslání aktivity**: V případě transformace umožňuje prostředí IR nativní spouštění balíčků SSIS.
+- **Spouštění balíčků služby SSIS**: Nativně spustí balíčků služby SSIS v prostředí spravované výpočetní prostředky Azure. Prostředí IR podporuje také volání a monitorování aktivit transformace spuštěných v různých výpočetních službách, jako je Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server a další.
 
 Pro přesun a transformaci dat podle potřeby můžete nasadit jednu nebo více instancí modulu integration runtime. Prostředí Integration runtime můžete spustit ve veřejné síti Azure nebo v privátní síti (místní, virtuální sítě Azure nebo Amazon Web Services virtuálním privátním cloudu [VPC]). 
 
