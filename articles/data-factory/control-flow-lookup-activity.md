@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: bc695bf8398a39460eff9bbe4f791ba92b0fa7e0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426787"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019302"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání ve službě Azure Data Factory
 
@@ -106,7 +105,7 @@ V tomto příkladu aktivita kopírování kopíruje data z tabulky SQL ve vaší
 Tento příklad ukazuje vyhledání pouze na prvním řádku. Vyhledávání pro všechny řádky a zřetězení výsledky s aktivitu ForEach, najdete v ukázkách ve [hromadné kopírování několika tabulek pomocí Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Kanál
-Tento kanál obsahuje dvě aktivity: vyhledávání a kopírování. 
+Tento kanál obsahuje dvě aktivity: Vyhledávání a kopírování. 
 
 - Aktivita vyhledávání je nakonfigurován na použití **LookupDataset**, který odkazuje na umístění v úložišti objektů Blob v Azure. Aktivita vyhledávání načte název tabulky SQL ze souboru JSON v tomto umístění. 
 - Aktivita kopírování používá výstup aktivity vyhledávání, což je název tabulky SQL. **TableName** vlastnost **SourceDataset** je nakonfigurován na použití výstupu z aktivity vyhledávání. Zkopírujte aktivita kopíruje data z tabulky SQL do umístění v úložišti objektů Blob v Azure. Umístění je určená **SinkDataset** vlastnost. 

@@ -9,17 +9,16 @@ ms.assetid: 01d15078-58dc-455c-9d9d-98fbdf4ea51e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ee0cd90b8d1b901f9e8a506674b3f04167b48899
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968779"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022015"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +42,7 @@ Data Factory v současné době podporuje pouze přesouvá data z Amazon Redshif
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování pro přesun dat z zdroje Amazon Redshift pomocí různých nástrojů a rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním služby Azure Data Factory. Rychlý postup k vytvoření kanálu pomocí Průvodce kopírováním, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
+Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním služby Azure Data Factory. Rychlý postup k vytvoření kanálu pomocí Průvodce kopírováním, najdete v části [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
 Kanál můžete vytvořit také pomocí webu Azure portal, sady Visual Studio, prostředí Azure PowerShell nebo jiných nástrojů. Šablony Azure Resource Manageru, rozhraní API pro .NET nebo REST API můžete také použít k vytvoření kanálu. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
@@ -53,7 +52,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 2. Vytvoření datové sady, které představují vstupní a výstupní data pro operaci kopírování. 
 3. Vytvoření kanálu s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
 
-Při použití Průvodce kopírováním definice JSON pro tyto entity služby Data Factory se automaticky vytvoří. Při použití rozhraní API (s výjimkou rozhraní .NET API) nebo nástroje pro definování entit služby Data Factory ve formátu JSON. [Příklad JSON: kopírování dat do úložiště objektů Blob v Azure z Amazon Redshift](#json-example-copy-data-from-amazon-redshift-to-azure-blob) ukazuje definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat Amazon Redshift.
+Při použití Průvodce kopírováním definice JSON pro tyto entity služby Data Factory se automaticky vytvoří. Při použití rozhraní API (s výjimkou rozhraní .NET API) nebo nástroje pro definování entit služby Data Factory ve formátu JSON. [Příklad JSON: Kopírování dat do úložiště objektů Blob v Azure z Amazon Redshift](#json-example-copy-data-from-amazon-redshift-to-azure-blob) ukazuje definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat Amazon Redshift.
 
 Následující části popisují vlastnosti JSON, které se používají k definování entit služby Data Factory pro Amazon Redshift.
 
@@ -139,7 +138,7 @@ Pro tento případ použití ukázkové aktivity kopírování nejprve uvolní d
 }
 ```
 
-## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Příklad JSON: kopírování dat do úložiště objektů Blob v Azure z Amazon Redshift
+## <a name="json-example-copy-data-from-amazon-redshift-to-azure-blob-storage"></a>Příklad JSON: Kopírování dat do úložiště objektů Blob v Azure z Amazon Redshift
 Tato ukázka předvádí, jak kopírovat data ze služby Amazon Redshift database do Azure Blob Storage. Data se dají zkopírovat přímo k libovolnému [jímky podporované](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování.  
 
 Ukázka obsahuje následující entit datové továrny:
@@ -334,7 +333,7 @@ Aktivitu kopírování, která převádí data z Amazon Redshift typu na typ .NE
 | SMALLINT |Int16 |
 | CELÉ ČÍSLO |Datový typ Int32 |
 | BIGINT |Int64 |
-| DECIMAL |Decimal |
+| DECIMAL |Desítkově |
 | REAL |Jednoduchá |
 | DVOJITOU PŘESNOSTÍ |Double |
 | DATOVÝ TYP BOOLEAN |Řetězec |

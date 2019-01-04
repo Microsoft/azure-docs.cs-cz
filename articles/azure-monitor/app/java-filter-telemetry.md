@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 81bfd5e0354fefea4690e6871dd5e846f41dc6d8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980667"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015518"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrických dat ve vaší webové aplikace v Javě
 
@@ -31,7 +31,7 @@ Out-of-the-box filtry zahrnují:
 
 > [!NOTE]
 > Filtry zkosení metriky vaší aplikace. Například můžete rozhodnout, že pokud chcete diagnostikovat pomalé odezvy, můžete nastavit filtr zahodíte krátké doby odezvy. Musíte však být vědomi, Průměrná doba odezvy hlášené službou Application Insights se pak budou pomalejší než skutečná rychlost a počet požadavků bude menší, než je skutečný počet.
-> Pokud je to žádný problém, použijte [vzorkování](../../application-insights/app-insights-sampling.md) místo.
+> Pokud je to žádný problém, použijte [vzorkování](../../azure-monitor/app/sampling.md) místo.
 
 ## <a name="setting-filters"></a>Nastavení filtrů
 
@@ -262,4 +262,4 @@ V ApplicationInsights.xml:
 
 ## <a name="next-steps"></a>Další postup
 
-* [Vzorkování](../../application-insights/app-insights-sampling.md) – zvažte jako alternativu, která není zkosení metriky vzorkování.
+* [Vzorkování](../../azure-monitor/app/sampling.md) – zvažte jako alternativu, která není zkosení metriky vzorkování.

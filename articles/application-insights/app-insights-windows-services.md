@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: b760780912642dac664f68c1f2b9d8d4ebf8cbde
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c23ff8a22284416a9c87750e4ca0448e0690de0e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809892"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017510"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ruční konfigurace služby Application Insights pro aplikace .NET
 
@@ -138,7 +138,7 @@ Podívejte se na [tuto položku Řešení potíží](../azure-monitor/app/asp-ne
 
 > [!NOTE]
 > Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které se vztahují ke stejnému požadavku, však budou vybrány nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. 
-> [Další informace o vzorkování](app-insights-sampling.md).
+> [Další informace o vzorkování](../azure-monitor/app/sampling.md).
 > 
 > 
 

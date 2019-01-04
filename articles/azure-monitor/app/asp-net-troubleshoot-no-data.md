@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e1b06328f02ebad77f98acc480c146793f124c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2695f4e2dcd2441b0a8845bd194d4e393e1d7ca
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970454"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020468"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
 *Ve službě Application Insights zobrazuje jenom zlomek události, které se generují Moje aplikace.*
 
-* Pokud se vám zobrazují konzistentně stejný zlomek, je pravděpodobně z důvodu adaptivní [vzorkování](../../application-insights/app-insights-sampling.md). Pokud to pokud chcete potvrdit, otevřete vyhledávání (v okně Přehled) a podívejte se na instanci žádost nebo jiná událost. V dolní části Vlastnosti klikněte na tlačítko "..." pro získání podrobností o celou vlastnost. Pokud žádost o Count > 1 a pak vzorkování je v provozu. 
-* V opačném případě je možné, že narazíte [limitu přenosové rychlosti dat](../../application-insights/app-insights-pricing.md#limits-summary) pro cenový tarif. Tato omezení se vztahují na minutu.
+* Pokud se vám zobrazují konzistentně stejný zlomek, je pravděpodobně z důvodu adaptivní [vzorkování](../../azure-monitor/app/sampling.md). Pokud to pokud chcete potvrdit, otevřete vyhledávání (v okně Přehled) a podívejte se na instanci žádost nebo jiná událost. V dolní části Vlastnosti klikněte na tlačítko "..." pro získání podrobností o celou vlastnost. Pokud žádost o Count > 1 a pak vzorkování je v provozu. 
+* V opačném případě je možné, že narazíte [limitu přenosové rychlosti dat](../../azure-monitor/app/pricing.md#limits-summary) pro cenový tarif. Tato omezení se vztahují na minutu.
 
 ## <a name="no-data-from-my-server"></a>Žádná data ze svého serveru
 *Mám nainstalovanou aplikaci na webovém serveru a nyní nevidím žádnou telemetrii z něj. OK pracoval na mém počítači vývoje.*
@@ -51,7 +51,7 @@ Pravděpodobné příčiny:
 
 * Komunikace s portálem Application Insights se nezdařil. nebo
 * Je něco v nepořádku s vaším účtem Azure;
-* Stačí [přístup pro čtení pro předplatné nebo skupinu, ve kterém snažil vytvořit nový prostředek](../../application-insights/app-insights-resources-roles-access-control.md).
+* Stačí [přístup pro čtení pro předplatné nebo skupinu, ve kterém snažil vytvořit nový prostředek](../../azure-monitor/app/resources-roles-access-control.md).
 
 Oprava:
 
@@ -95,7 +95,7 @@ Microsoft přihlášení, která jste naposledy použili na váš výchozí proh
 * Můžete mít více než jeden účet Microsoft – možná pracovní a osobní účet Microsoft? Přihlášení, které jste naposledy použili ve webovém prohlížeči výchozí bylo pro jiný účet než ten, který má přístup k [přidat službu Application Insights do projektu](../../azure-monitor/app/asp-net.md). 
   
   * Oprava: Klikněte na název v horní pravé části okna prohlížeče a odhlásit se. Pak se přihlaste pomocí účtu, který má přístup. Potom v levém navigačním panelu klikněte na tlačítko Application Insights a vyberte svou aplikaci.
-* Někdo jiný přidat Application Insights do projektu a jejich zapomněli získáte [přístup ke skupině prostředků](../../application-insights/app-insights-resources-roles-access-control.md) ve které byla vytvořena. 
+* Někdo jiný přidat Application Insights do projektu a jejich zapomněli získáte [přístup ke skupině prostředků](../../azure-monitor/app/resources-roles-access-control.md) ve které byla vytvořena. 
   
   * Oprava: Pokud používají účet organizace, že je přidejte do týmu; nebo se vám může udělit individuálního přístupu ke skupině prostředků.
 
@@ -167,7 +167,7 @@ Zobrazit [telemetrických závislostí](../../azure-monitor/app/asp-net-dependen
 * Jste nedosáhli kvóta měsíčního počtu datových bodů? Otevřete nastavení/kvóta a ceny a zjistěte. Pokud ano, můžete upgradovat svůj plán nebo platit za dodatečnou kapacitu. Zobrazit [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nevidím všechna data, který bych čekal
-Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, [adaptivního vzorkování](../../application-insights/app-insights-sampling.md) funkce může pracovat a odesílat pouze procento vaší telemetrie. 
+Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, [adaptivního vzorkování](../../azure-monitor/app/sampling.md) funkce může pracovat a odesílat pouze procento vaší telemetrie. 
 
 Lze je vypnout, ale to se nedoporučuje. Vzorkování je navržený tak, aby souvisejícími telemetrickými daty správně přenosu, k diagnostickým účelům. 
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9af2dd3a17eb150d44bf69cda86e480a083a3164
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6731b19984c0b2e0a663e93b2a6ef00c530a4d48
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971201"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014637"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 
@@ -116,7 +116,7 @@ Tady je pár tipů pro vyhledání a Diagnostika problémů s výkonem:
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>Najít a opravit kritická místa výkonu pomocí možnosti pro zkoumání výkonu
 
-Možnosti pro zkoumání výkonu můžete použít ke kontrole pomalé provádění operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalých operací a použít [Profiler](app-insights-profiler.md) do kořenového adresáře způsobit pomalých operací na kód. Pomocí rozdělení novou dobu trvání pro vybranou operaci zobrazit, že můžete rychle na první pohled vyhodnotit jak chybný výsledné prostředí funguje pro vaše zákazníky. Můžete zobrazit, kolik vaše interakce uživatele to mělo dopad na jednotlivých pomalých operací. V následujícím příkladu jsme jste se rozhodli podrobněji podíváme na prostředí pro operaci GET Customers/Details. V distribuci doby trvání vidíme, že existují tři špičky. Úplně vlevo zásobníku je přibližně 400 ms a představuje interaktivní prostředí. Střední zásobníku je kolem 1.2 s a představuje průměrné prostředí. Nakonec v 3.6 s máme jiný malé zásobníku, který představuje 99. percentilu prostředí, které by mohly způsobit, že naše zákazníky, ponechte nespokojen(a). Prostředí je desetkrát pomalejší než skvělé prostředí pro stejnou operaci. 
+Možnosti pro zkoumání výkonu můžete použít ke kontrole pomalé provádění operací ve vaší webové aplikaci. Můžete rychle vybrat konkrétní pomalých operací a použít [Profiler](../azure-monitor/app/profiler.md) do kořenového adresáře způsobit pomalých operací na kód. Pomocí rozdělení novou dobu trvání pro vybranou operaci zobrazit, že můžete rychle na první pohled vyhodnotit jak chybný výsledné prostředí funguje pro vaše zákazníky. Můžete zobrazit, kolik vaše interakce uživatele to mělo dopad na jednotlivých pomalých operací. V následujícím příkladu jsme jste se rozhodli podrobněji podíváme na prostředí pro operaci GET Customers/Details. V distribuci doby trvání vidíme, že existují tři špičky. Úplně vlevo zásobníku je přibližně 400 ms a představuje interaktivní prostředí. Střední zásobníku je kolem 1.2 s a představuje průměrné prostředí. Nakonec v 3.6 s máme jiný malé zásobníku, který představuje 99. percentilu prostředí, které by mohly způsobit, že naše zákazníky, ponechte nespokojen(a). Prostředí je desetkrát pomalejší než skvělé prostředí pro stejnou operaci. 
 
 ![GET Customers/Details tři doba trvání špičky](./media/app-insights-web-monitor-performance/PerformanceTriageViewZoomedDistribution.png)
 
@@ -159,8 +159,8 @@ Možnosti pro zkoumání výkonu ukazuje sadu ukázek, které jste se rozhodli s
 [redfield]: ../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 [usage]: app-insights-web-track-usage.md
-[livestream]: app-insights-live-stream.md
-[snapshot]: app-insights-snapshot-debugger.md
+[livestream]: ../azure-monitor/app/live-stream.md
+[snapshot]: ../azure-monitor/app/snapshot-debugger.md
 
 
 

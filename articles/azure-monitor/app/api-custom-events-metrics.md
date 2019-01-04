@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0a31f5450ad5847951393e18e8af648060eb2e1f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2fa7c4c7dc3af28dcc49371a086c2e7555278b99
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971354"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015215"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
@@ -51,7 +51,7 @@ Pokud nemáte odkaz na sadu SDK Application Insights ještě:
 
   * [Projekt ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Projekt v Javě](../../azure-monitor/app/java-get-started.md)
-  * [Projekt Node.js](../../application-insights/app-insights-nodejs.md)
+  * [Projekt Node.js](../../azure-monitor/app/nodejs.md)
   * [V každé webové stránky JavaScript](../../azure-monitor/app/javascript.md) 
 * Do kódu zařízení nebo webového serveru přidejte:
 
@@ -113,7 +113,7 @@ V projektech, Node.js, můžete použít `new applicationInsights.TelemetryClien
 
 ## <a name="trackevent"></a>TrackEvent
 
-Ve službě Application Insights *vlastní událost* je datový bod, který si můžete zobrazit v [Průzkumníka metrik](../../application-insights/app-insights-metrics-explorer.md) jako agregovaného počtu a v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé události. (Nesouvisí se MVC nebo jiné rozhraní framework "události.")
+Ve službě Application Insights *vlastní událost* je datový bod, který si můžete zobrazit v [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) jako agregovaného počtu a v [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md) jako jednotlivé události. (Nesouvisí se MVC nebo jiné rozhraní framework "události.")
 
 Vložit `TrackEvent` volání v kódu mají spočítat různé události. Jak často uživatelé vybrat určitou funkci, jak často se dosažení určitého cíle nebo možná jak často využívají konkrétních typů chyb.
 
@@ -153,7 +153,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 Je k dispozici v telemetrii `customEvents` tabulku v [Application Insights Analytics](analytics.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci.
 
-Pokud [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání funkce trackEvent(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, používejte proto použít kód například `customEvents | summarize sum(itemCount)`.
+Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání funkce trackEvent(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, používejte proto použít kód například `customEvents | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 
@@ -440,7 +440,7 @@ Zobrazit [sledování vlastních operací pomocí Application Insights .NET SDK]
 
 V [Application Insights Analytics](analytics.md), požadavků zobrazit až za `requests` tabulky.
 
-Pokud [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazí hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackRequest(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet požadavků a průměrná doba trvání segmentované podle názvů žádostí, použijte kód jako například:
+Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazí hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackRequest(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet požadavků a průměrná doba trvání segmentované podle názvů žádostí, použijte kód jako například:
 
 ```kusto
 requests
@@ -451,7 +451,7 @@ requests
 
 Výjimky posílat do Application Insights:
 
-* K [spočítat](../../application-insights/app-insights-metrics-explorer.md), jako údaje o četnosti problém.
+* K [spočítat](../../azure-monitor/app/metrics-explorer.md), jako údaje o četnosti problém.
 * K [prozkoumání jednotlivých výskytů](../../azure-monitor/app/diagnostic-search.md).
 
 Sestavy obsahují trasování zásobníku.
@@ -522,7 +522,7 @@ Sady SDK pro mnoho výjimek catch automaticky, proto není vždy nutné explicit
 
 V [Application Insights Analytics](analytics.md), výjimky v uveden `exceptions` tabulky.
 
-Pokud [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu, `itemCount` vlastnosti zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání metody trackexception() procesu vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet výjimek segmentované podle typu výjimky, použijte kód jako například:
+Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, `itemCount` vlastnosti zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání metody trackexception() procesu vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet výjimek segmentované podle typu výjimky, použijte kód jako například:
 
 ```kusto
 exceptions
@@ -603,7 +603,7 @@ V [hledání](../../azure-monitor/app/diagnostic-search.md), potom můžete snad
 
 V [Application Insights Analytics](analytics.md), volání TrackTrace zobrazí `traces` tabulky.
 
-Pokud [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání `trackTrace()`, proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet trasování volání, používejte proto kód, jako `traces | summarize sum(itemCount)`.
+Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání `trackTrace()`, proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet trasování volání, používejte proto kód, jako `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -678,7 +678,7 @@ Chcete-li vypnout standardní modul sledování závislostí v jazyce C#, upravt
 
 V [Application Insights Analytics](analytics.md), trackDependency volá zobrazit `dependencies` tabulky.
 
-Pokud [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackDependency(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet závislostí segmentované komponenta cílového, použijte kód jako například:
+Pokud [vzorkování](../../azure-monitor/app/sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání trackDependency(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet závislostí segmentované komponenta cílového, použijte kód jako například:
 
 ```kusto
 dependencies
@@ -764,7 +764,7 @@ Pokud vaše aplikace ve skupině uživatelů do účtů, můžete také předat 
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-V [Průzkumníka metrik](../../application-insights/app-insights-metrics-explorer.md), můžete vytvořit graf, který počítá **uživatelů, ověření**, a **uživatelské účty**.
+V [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md), můžete vytvořit graf, který počítá **uživatelů, ověření**, a **uživatelské účty**.
 
 Můžete také [hledání](../../azure-monitor/app/diagnostic-search.md) pro datové body klienta pomocí konkrétního uživatelského jména a účty.
 
@@ -897,7 +897,7 @@ requests
 Všimněte si, že:
 
 * Při extrahování hodnoty z customDimensions nebo customMeasurements JSON má dynamického typu, a proto musíte vysílat `tostring` nebo `todouble`.
-* Vzít v úvahu možnost [vzorkování](../../application-insights/app-insights-sampling.md), měli byste použít `sum(itemCount)`, nikoli `count()`.
+* Vzít v úvahu možnost [vzorkování](../../azure-monitor/app/sampling.md), měli byste použít `sum(itemCount)`, nikoli `count()`.
 
 ## <a name="timed"></a> Události časování
 
@@ -1141,7 +1141,7 @@ Pokud nastavíte některou z těchto hodnot sami, zvažte odebrání relevantní
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-Chcete-li zabránit v dosažení omezení četnosti data, použijte [vzorkování](../../application-insights/app-insights-sampling.md).
+Chcete-li zabránit v dosažení omezení četnosti data, použijte [vzorkování](../../azure-monitor/app/sampling.md).
 
 Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchovávání dat a ochrany osobních údajů](../../azure-monitor/app/data-retention-privacy.md).
 

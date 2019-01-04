@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d96b4a99b2ea66cdeff43f06c1789dd133c2c31a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: db3142837c5bb2c5758e47ddf017da284b2e0f0e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723002"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017731"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurovat Application Insights Profiler
 
@@ -61,7 +61,7 @@ Zobrazí se že nový test se do fronty zařadí nejprve, za nímž následuje v
 
 ![v průběhu je spuštěn zátěžový test][load-test-in-progress]
 
-### <a name="step-2-start-profiler-on-demand"></a>Krok 2: Spuštění profilování na vyžádání
+### <a name="step-2-start-profiler-on-demand"></a>Krok 2: Spustit profilování na vyžádání
 
 Jakmile je spuštěn zátěžový test, můžeme začít profiler k zaznamenání trasování ve webové aplikaci, zatímco přijímá zatížení.
 Přejděte do podokna Profiler konfigurace:
@@ -86,8 +86,8 @@ Může existovat dva důvody, proč se zobrazí tato chyba:
 Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profiler:
 
 1. Přejděte do nastavení aplikace služby App a zaškrtněte, pokud následující nastavení mají hodnotu:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: nahraďte správné Instrumentační klíč Application Insights.
-    * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Nahraďte správné Instrumentační klíč pro službu Application Insights.
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Pokud některé z těchto nastavení nejsou nastavená, přejděte do podokna povolení Application Insights se nainstalovat nejnovější rozšíření lokality.
 
 1. Přejděte do podokna Application Insights na portálu služby App Services.
@@ -103,8 +103,8 @@ Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profil
     ![Změnit a uložit app insights][change-and-save-appinsights]
 
 1. Přejděte zpět na **nastavení aplikace** jsou nastaveny kartu pro App Service a zkontrolujte následující položky nastavení aplikace:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: nahraďte správné Instrumentační klíč pro službu application insights.
-    * **APPINSIGHTS_PORTALINFO**: TECHNOLOGIE ASP.NET
+    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Nahraďte správné Instrumentační klíč pro službu application insights.
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![nastavení aplikace pro profiler][app-settings-for-profiler]
@@ -116,15 +116,15 @@ Postupujte podle těchto kroků zkontrolujte a nainstalujte nejnovější Profil
 ## <a name="next-steps"></a>Další kroky
 [Povolit Profiler a zobrazení trasování](app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
-[profiler-on-demand]: ./media/app-insights-profiler/Profiler-on-demand.png
-[configure-profiler-entry]: ./media/app-insights-profiler/configure-profiler-entry.png
-[create-performance-test]: ./media/app-insights-profiler/new-performance-test.png
-[configure-performance-test]: ./media/app-insights-profiler/configure-performance-test.png
-[load-test-queued]: ./media/app-insights-profiler/load-test-queued.png
-[load-test-in-progress]: ./media/app-insights-profiler/load-test-inprogress.png
-[enable-app-insights]: ./media/app-insights-profiler/enable-app-insights-blade-01.png
-[update-site-extension]: ./media/app-insights-profiler/update-site-extension-01.png
-[change-and-save-appinsights]: ./media/app-insights-profiler/change-and-save-appinsights-01.png
-[app-settings-for-profiler]: ./media/app-insights-profiler/appsettings-for-profiler-01.png
-[check-for-extension-update]: ./media/app-insights-profiler/check-extension-update-01.png
-[profiler-timeout]: ./media/app-insights-profiler/profiler-timeout.png
+[profiler-on-demand]: ./media/app-insights-profiler-settings/Profiler-on-demand.png
+[configure-profiler-entry]: ./media/app-insights-profiler-settings/configure-profiler-entry.png
+[create-performance-test]: ./media/app-insights-profiler-settings/new-performance-test.png
+[configure-performance-test]: ./media/app-insights-profiler-settings/configure-performance-test.png
+[load-test-queued]: ./media/app-insights-profiler-settings/load-test-queued.png
+[load-test-in-progress]: ./media/app-insights-profiler-settings/load-test-inprogress.png
+[enable-app-insights]: ./media/app-insights-profiler-settings/enable-app-insights-blade-01.png
+[update-site-extension]: ./media/app-insights-profiler-settings/update-site-extension-01.png
+[change-and-save-appinsights]: ./media/app-insights-profiler-settings/change-and-save-appinsights-01.png
+[app-settings-for-profiler]: ./media/app-insights-profiler-settings/appsettings-for-profiler-01.png
+[check-for-extension-update]: ./media/app-insights-profiler-settings/check-extension-update-01.png
+[profiler-timeout]: ./media/app-insights-profiler-settings/profiler-timeout.png

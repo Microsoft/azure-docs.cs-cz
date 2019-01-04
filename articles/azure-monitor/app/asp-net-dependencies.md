@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7cde9fa0849729ba9db9b604dd0ad26cf362a484
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: de260560f141691fc1a7c0dd3bfad262d2d79598
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969858"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025568"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: Sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](../../application-insights/app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
@@ -121,7 +121,7 @@ Zdá velké mezery po volání první závislostí, takže by měl podíváme na
 
 ### <a name="profile-your-live-site"></a>Profil živého webu
 
-Představu kde čas prochází? [Application Insights profiler](../../application-insights/app-insights-profiler.md) trasy HTTP zavolá na váš živý web a ukazuje, které funkce ve vašem kódu trvalo nejdelší dobu.
+Představu kde čas prochází? [Application Insights profiler](../../azure-monitor/app/profiler.md) trasy HTTP zavolá na váš živý web a ukazuje, které funkce ve vašem kódu trvalo nejdelší dobu.
 
 ## <a name="failed-requests"></a>Neúspěšné požadavky
 Neúspěšné požadavky může být také přidružen neúspěšných volání závislostí. Opět jsme proklikat ke sledování problému.

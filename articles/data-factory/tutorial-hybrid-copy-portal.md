@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: f4edd1632203e2f8723fa7880683727f8fb69c4d
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: af764557a6bd3d3f60a3aa628834d5929e073a82
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614017"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021981"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu pomocí uživatelského rozhraní služby Azure Data Factory vytvoříte kanál datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
@@ -195,7 +194,7 @@ Název datové továrny musí být *globálně jedinečný*. Pokud se u pole s n
 
     ![Název prostředí Integration Runtime](./media/tutorial-hybrid-copy-portal/integration-runtime-name.png)
 
-1. V části **Možnost 1: Expresní instalace** vyberte **Kliknutím sem spustíte expresní instalaci pro tento počítač**. 
+1. V části **možnost 1: Expresní instalace**vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. 
 
     ![Odkaz na expresní instalaci](./media/tutorial-hybrid-copy-portal/click-express-setup.png)
 

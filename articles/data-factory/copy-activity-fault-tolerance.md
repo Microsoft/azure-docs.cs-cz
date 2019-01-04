@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f207cdb3af3f7e328cd5843053240bbbe15980e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f1a40c09c2d08eddedd3b6b51d2a138ec403f6bc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418339"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014909"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Odolnost proti chybám aktivity kopírování ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,15 +34,15 @@ Aktivitu kopírování, která podporuje tři scénáře pro zjištění, přesk
 
 - **Nekompatibilita mezi typem zdroje dat a nativní typ jímky**. 
 
-    Příklad: kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, která obsahuje tři sloupce typu INT. Řádků souboru CSV, které obsahují číselná data, jako je například 123,456,789 úspěšně zkopírovány do úložiště jímky. Ale řádky, které obsahují nečíselné hodnoty, jako je například 123,456, abc, jsou rozpoznány jako nekompatibilní a jsou vynechány.
+    Příklad: Kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, která obsahuje tři sloupce typu INT. Řádků souboru CSV, které obsahují číselná data, jako je například 123,456,789 úspěšně zkopírovány do úložiště jímky. Ale řádky, které obsahují nečíselné hodnoty, jako je například 123,456, abc, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
 - **Neshoda v počtu sloupců mezi zdroj a jímku**.
 
-    Příklad: kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, který obsahuje šest sloupců. Řádků souboru CSV, které obsahují šest sloupců se úspěšně zkopírují do úložiště jímky. Řádků souboru CSV, které obsahují více nebo méně než šest sloupců, jsou rozpoznány jako nekompatibilní a jsou vynechány.
+    Příklad: Kopírování dat ze souboru CSV ve službě Blob storage do SQL database pomocí definice schématu, který obsahuje šest sloupců. Řádků souboru CSV, které obsahují šest sloupců se úspěšně zkopírují do úložiště jímky. Řádků souboru CSV, které obsahují více nebo méně než šest sloupců, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
 - **Primární klíče porušení, při zápisu do SQL serveru nebo Azure SQL Database nebo Azure Cosmos DB**.
 
-    Příklad: kopírování dat z SQL serveru do služby SQL database. Primární klíč je definován ve službě SQL database jímky, ale na zdrojovém serveru SQL není definován žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování kopíruje pouze první řádek dat zdroje do jímky. Následné zdrojové řádky, které obsahují duplicitní hodnoty primárního klíče, jsou rozpoznány jako nekompatibilní a jsou vynechány.
+    Příklad: Kopírování dat z SQL serveru do služby SQL database. Primární klíč je definován ve službě SQL database jímky, ale na zdrojovém serveru SQL není definován žádný takový primární klíč. Duplicitní řádky, které existují ve zdroji nelze zkopírovat do jímky. Aktivita kopírování kopíruje pouze první řádek dat zdroje do jímky. Následné zdrojové řádky, které obsahují duplicitní hodnoty primárního klíče, jsou rozpoznány jako nekompatibilní a jsou vynechány.
 
 >[!NOTE]
 >- Pro načítání dat do SQL Data Warehouse pomocí PolyBase, nakonfigurovat PolyBase pro nativní odolnost proti chybám nastavení tak, že určíte zásady na odmítnout prostřednictvím "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" v aktivitě kopírování. Stále můžete povolit přesměrování PolyBase nekompatibilních řádků do objektu Blob nebo ADLS normálním způsobem, jak je znázorněno níže.

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: be08740024e87179a48f3dfd6f8406fa6a2bbca6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 11de58a64f956bd7dd1cc9c4ca8498de8c0b9d05
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963517"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023953"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -189,7 +188,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFIncCopyChangeTrackingTestFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
@@ -198,7 +197,7 @@ V datové továrně vytvoříte propojené služby, abyste svá úložiště da
 ### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 
-1. Vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem. (Pokud tato složka ještě neexistuje, vytvořte ji.) Než soubor uložíte, položky `<accountName>` a `<accountKey>` nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
+1. Vytvořte soubor JSON s názvem **AzureStorageLinkedService.json** v **C:\ADFTutorials\IncCopyChangeTrackingTutorial** složka s následujícím obsahem: (Pokud složka vytvořte ještě neexistuje.). Než soubor uložíte, položky `<accountName>` a `<accountKey>` nahraďte názvem svého účtu úložiště Azure a jeho klíčem.
 
     ```json
     {
@@ -215,7 +214,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
     }
     ```
 2. V **Azure PowerShellu** přepněte do složky **C:\ADFTutorials\IncCopyChgTrackingTutorial**.
-3. Spuštěním rutiny **Set-AzureRmDataFactoryV2LinkedService** vytvořte propojenou službu **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactoryName**. 
+3. Spustit **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureStorageLinkedService**. V následujícím příkladu předáte hodnoty pro parametry **ResourceGroupName** a **DataFactoryName**. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -233,7 +232,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet služby Azure Storage.
 ### <a name="create-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
 
-1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** ve složce **C:\ADFTutorials\IncCopyChangeTrackingTutorial** s následujícím obsahem: Místo hodnot **&lt;server&gt; &lt;database name&gt;, &lt;user id&gt; a &lt;password&gt;** použijte název vašeho serveru SQL Azure, název vaší databáze, ID uživatele a heslo a potom soubor uložte. 
+1. Vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.json** v **C:\ADFTutorials\IncCopyChangeTrackingTutorial** složka s následujícím obsahem: Než soubor uložíte, položky server, název databáze **, &lt;id_uživatele&gt; a &lt;heslo&gt;** nahraďte názvem vašeho serveru Azure SQL, názvem databáze, ID uživatele a heslem. 
 
     ```json
     {
@@ -249,7 +248,7 @@ V tomto kroku propojíte databázi SQL Azure s datovou továrnou.
         }
     }
     ```
-2. Spuštěním rutiny **Set-AzureRmDataFactoryV2LinkedService** v **Azure PowerShellu** vytvořte propojenou službu **AzureSQLDatabaseLinkedService**. 
+2. V **prostředí Azure PowerShell**, spusťte **Set-AzureRmDataFactoryV2LinkedService** rutina pro vytvoření propojené služby: **AzureSQLDatabaseLinkedService**. 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -288,7 +287,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci zdrojových dat.
     }   
     ```
 
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu SourceDataset.
+2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: SourceDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -330,7 +329,7 @@ V tomto kroku vytvoříte datovou sadu pro reprezentaci dat, která se kopíruj�
     ```
 
     Jako součást požadavků ve službě Azure Blob Storage vytvoříte kontejner adftutorial. Pokud tento kontejner neexistuje, vytvořte ho nebo použijte název existujícího kontejneru. V tomto kurzu se název výstupního souboru generuje dynamicky pomocí výrazu @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu SinkDataset.
+2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: SinkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -368,7 +367,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.
     ```
 
     Jako součást požadavků vytvoříte tabulku table_store_ChangeTracking_version.
-2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu WatermarkDataset.
+2.  Spuštěním rutiny Set-AzureRmDataFactoryV2Dataset vytvořte datovou sadu: WatermarkDataset
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -387,7 +386,7 @@ V tomto kroku vytvoříte datovou sadu pro uložení verze sledování změn.
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Vytvoření kanálu pro úplné kopírování
 V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje všechna data ze zdrojového úložiště dat (Azure SQL Database) do cílového úložiště dat (Azure Blob Storage).
 
-1. Ve stejné složce vytvořte soubor JSON s názvem FullCopyPipeline.json a s následujícím obsahem: 
+1. Vytvořte soubor JSON: FullCopyPipeline.json ve stejné složce s následujícím obsahem: 
 
     ```json
     {
@@ -417,7 +416,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
         }
     }
     ```
-2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál FullCopyPipeline.
+2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
     
    ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
@@ -434,7 +433,7 @@ V tomto kroku vytvoříte kanál s aktivitou kopírování, která zkopíruje v�
    ```
  
 ### <a name="run-the-full-copy-pipeline"></a>Spuštění kanálu úplného kopírování
-Kanál **FullCopyPipeline** spusťte pomocí rutiny **Invoke-AzureRmDataFactoryV2Pipeline**. 
+Spuštění kanálu: **FullCopyPipeline** pomocí **Invoke-AzureRmDataFactoryV2Pipeline** rutiny. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName        
@@ -495,7 +494,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Vytvoření kanálu pro rozdílové kopírování
 V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho budete spouštět. **Aktivity vyhledávání** získají starou a novou hodnoty SYS_CHANGE_VERSION z Azure SQL Database a předají je aktivitě kopírování. **Aktivita kopírování** zkopíruje vložená/aktualizovaná/odstraněná data mezi dvěma hodnotami SYS_CHANGE_VERSION z Azure SQL Database do Azure Blob Storage. **Aktivita uložených procedur** aktualizuje hodnotu SYS_CHANGE_VERSION pro další spuštění kanálu.
 
-1. Ve stejné složce vytvořte soubor JSON s názvem IncrementalCopyPipeline.json a s následujícím obsahem: 
+1. Vytvořte soubor JSON: S názvem IncrementalCopyPipeline.json ve stejné složce s následujícím obsahem: 
 
     ```json
     {
@@ -606,7 +605,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
     }
     
     ```
-2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál FullCopyPipeline.
+2. Spuštěním rutiny Set-AzureRmDataFactoryV2Pipeline vytvořte kanál: FullCopyPipeline.
     
    ```powershell
     Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -623,7 +622,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
    ```
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Spuštění kanálu přírůstkového kopírování
-Kanál **IncrementalCopyPipeline** spusťte pomocí rutiny **Invoke-AzureRmDataFactoryV2Pipeline**. 
+Spuštění kanálu: **IncrementalCopyPipeline** pomocí **Invoke-AzureRmDataFactoryV2Pipeline** rutiny. 
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup $resourceGroupName -dataFactoryName $dataFactoryName     
@@ -650,7 +649,7 @@ Tento soubor by měl obsahovat jenom rozdílová data z databáze SQL Azure. Zá
 1,update,10,2,U
 6,new,50,1,I
 ```
-První tři sloupce představují změněná data z data_source_table. Poslední dva sloupce jsou metadata ze systémové tabulky sledování změn. Čtvrtý sloupec je SYS_CHANGE_VERSION pro každý změněný řádek. Pátý řádek představuje operaci: U = aktualizace, I = vložení.  Podrobné informace o sledování změn najdete v tématu [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
+První tři sloupce představují změněná data z data_source_table. Poslední dva sloupce jsou metadata ze systémové tabulky sledování změn. Čtvrtý sloupec je SYS_CHANGE_VERSION pro každý změněný řádek. Pátý řádek představuje operaci:  U = aktualizace, I = vložení.  Podrobné informace o sledování změn najdete v tématu [CHANGETABLE](/sql/relational-databases/system-functions/changetable-transact-sql). 
 
 ```
 ==================================================================

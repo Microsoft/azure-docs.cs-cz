@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 4f124be9ef2247ab91d1e968b4533297ee8dba02
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6efccdb3034bb25e60904c858f346ff9a5695fc0
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437244"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019720"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, který spouští kanál na aktivační událost pro přeskakující okno
 Tento článek popisuje kroky k vytvoření, spuštění a monitorování přeskakující okno. Obecné informace o aktivačních událostech a podporovaných typů najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -79,7 +78,7 @@ Následující tabulka obsahuje přehled hlavních elementů JSON, které jsou s
 | Element JSON | Popis | Typ | Povolené hodnoty | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger." | Řetězec | "TumblingWindowTrigger" | Ano |
-| **runtimeState** | Aktuální stav čas spuštění aktivační události.<br/>**Poznámka:**: Tento element má \<jen pro čtení >. | Řetězec | "Spustit", "zastavena," "Zakázáno" | Ano |
+| **runtimeState** | Aktuální stav čas spuštění aktivační události.<br/>**Poznámka:** Tento element má \<jen pro čtení >. | Řetězec | "Spustit", "zastavena," "Zakázáno" | Ano |
 | **frequency** | Řetězec, který představuje jednotku frekvence (minuty nebo hodiny), ve kterém se aktivační událost opakuje. Pokud **startTime** hodnot data jsou podrobnější než **frekvence** hodnota, **startTime** data jsou považovány za, kdy se zpracovávají hranice okna. Například pokud **frekvence** hodnota je po hodinách a **startTime** hodnotu 2017-09 – 01T10:10:10Z, je první okno (2017-09 – 01T10:10:10Z 2017-09 – 01T11:10:10Z). | Řetězec | "minute", "hour"  | Ano |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Například pokud **interval** 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, což může být v minulosti. První interval aktivační událost (**startTime**, **startTime** + **interval**). | DateTime | Hodnota data a času. | Ano |

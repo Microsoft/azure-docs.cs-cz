@@ -9,16 +9,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: f6b7764bf994079f7f3ef9e6243720da0d2f4a28
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868221"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016626"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který spouští kanál podle časového plánu
 Tento článek obsahuje informace o aktivační události plánovače a kroky k vytvoření, spuštění a monitorování aktivační události plánovače. Jiné druhy aktivačních událostí, naleznete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
@@ -67,7 +66,7 @@ Můžete vytvořit **aktivační událost plánovače** naplánovat pravidelné 
     ![Monitorování spuštění aktivační události](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování aktivační události plánovače. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
+Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování aktivační události plánovače. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: Vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
 
 1. Vytvořte soubor JSON s názvem **MyTrigger.json** ve složce C:\ADFv2QuickStartPSH\ s následujícím obsahem:
 
@@ -143,7 +142,7 @@ Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spu
 
 
 ## <a name="net-sdk"></a>.NET SDK
-Tato část ukazuje, jak používat sadu .NET SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
+Tato část ukazuje, jak používat sadu .NET SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
 
 Pro vytvoření a spuštění aktivační události plánovače, která se spouští každých 15 minut, přidejte následující kód do hlavní metody:
 
@@ -223,7 +222,7 @@ K monitorování aktivační událost spouští a spuštění kanálu na webu Az
 
 
 ## <a name="python-sdk"></a>Python SDK
-Tato část ukazuje, jak pomocí sady Python SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí sady Python SDK](quickstart-create-data-factory-python.md). Pak přidejte následující blok kódu po bloku kódu "monitorování spuštění kanálu" ve skriptu Pythonu. Tento kód vytvoří aktivační událost plánovače, která se spouští každých 15 minut mezi zadaným počátečním a koncovým časem. Aktualizace **start_time** proměnné na aktuální čas UTC a **end_time** proměnnou na jednu hodinu, posledních do aktuálního času UTC.
+Tato část ukazuje, jak pomocí sady Python SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: Vytvoření datové továrny pomocí sady Python SDK](quickstart-create-data-factory-python.md). Pak přidejte následující blok kódu po bloku kódu "monitorování spuštění kanálu" ve skriptu Pythonu. Tento kód vytvoří aktivační událost plánovače, která se spouští každých 15 minut mezi zadaným počátečním a koncovým časem. Aktualizace **start_time** proměnné na aktuální čas UTC a **end_time** proměnnou na jednu hodinu, posledních do aktuálního času UTC.
 
 ```python
     # Create a trigger
@@ -246,7 +245,7 @@ K monitorování aktivační událost spouští a spuštění kanálu na webu Az
 Šablony Azure Resource Manageru můžete použít k vytvoření aktivační události. Podrobné pokyny najdete v tématu [vytvoření datové továrny Azure pomocí šablony Resource Manageru](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Počáteční čas triggeru předat kanálu
-Azure Data Factory verze 1 podporuje čtení nebo zápis dělených dat pomocí systémové proměnné: **SliceStart**, **SliceEnd**, **WindowStart**a **WindowEnd**. V aktuální verzi služby Azure Data Factory můžete dosáhnout toto chování při použití parametru kanálu. Čas spuštění a naplánovaném čase aktivační události jsou nastaveny jako hodnota pro parametr kanálu. V následujícím příkladu je naplánováno pro aktivační událost předané jako hodnotu kanálu **scheduledRunTime** parametr:
+Azure Data Factory verze 1 podporuje čtení nebo zápis dělených dat pomocí systémové proměnné: **Vlastnosti SliceStart**, **SliceEnd**, **WindowStart**, a **WindowEnd**. V aktuální verzi služby Azure Data Factory můžete dosáhnout toto chování při použití parametru kanálu. Čas spuštění a naplánovaném čase aktivační události jsou nastaveny jako hodnota pro parametr kanálu. V následujícím příkladu je naplánováno pro aktivační událost předané jako hodnotu kanálu **scheduledRunTime** parametr:
 
 ```json
 "parameters": {

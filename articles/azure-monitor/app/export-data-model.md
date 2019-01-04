@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: a3cab6af86a18e23199437c91b6d07102e783cd1
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c906f313ae367fcc660d1ce1df0b3d667c7f04a3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971269"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016100"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export datového modelu
 V této tabulce jsou uvedeny vlastnosti objektu telemetrická data odesílaná z [Application Insights](../../application-insights/app-insights-overview.md) sady SDK k portálu.
 Zobrazí se vám tyto vlastnosti v datovým výstupem z [průběžný Export](export-telemetry.md).
-Jsou také uvedeny v filtry vlastností v [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md) a [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md).
+Jsou také uvedeny v filtry vlastností v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) a [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md).
 
 Odkazuje na mějte na paměti:
 
@@ -158,7 +158,7 @@ Vlastní události generované modulem [TrackEvent()](../../azure-monitor/app/ap
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| počet událostí [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
+| počet událostí [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | Název události [0] |řetězec |Název události.  Maximální délka 250. |
 | Adresa url pro události [0] |řetězec | |
 | události [0] urlData.base |řetězec | |
@@ -170,7 +170,7 @@ Sestavy [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
 | sestavení basicException [0] |řetězec | |
-| počet basicException [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
+| počet basicException [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | exceptionGroup basicException [0] |řetězec | |
 | exceptionType basicException [0] |řetězec | |
 | failedUserCodeMethod basicException [0] |řetězec | |
@@ -211,7 +211,7 @@ Odeslaný TrackDependency. Pro sestavu výkonu a využití [volání závislost�
 | asynchronní remoteDependency [0] |Boolean | |
 | baseName remoteDependency [0] |řetězec | |
 | commandName remoteDependency [0] |řetězec |Například "home/index" |
-| počet remoteDependency [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
+| počet remoteDependency [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | dependencyTypeName remoteDependency [0] |řetězec |HTTP, SQL... |
 | durationMetric.value remoteDependency [0] |číslo |Čas z volání do konce odpovědi závislostí |
 | id remoteDependency [0] |řetězec | |
@@ -229,7 +229,7 @@ Odeslaný [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#tr
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| Počet požadavků [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad: 4 =&gt; 25 %. |
+| Počet požadavků [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad: 4 =&gt; 25 %. |
 | žádost o [0] durationMetric.value |číslo |Doba od žádosti přicházející do odpovědi. 1e7 == 1s |
 | id požadavku [0] |řetězec |ID operace |
 | Název žádosti [0] |řetězec |Základ adresy url + GET/POST.  Maximální délka 250 |
@@ -264,7 +264,7 @@ Odeslaný trackPageView() nebo [stopTrackPage](../../azure-monitor/app/api-custo
 
 | Cesta | Typ | Poznámky |
 | --- | --- | --- |
-| Počet zobrazení [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
+| Počet zobrazení [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | zobrazení [0] durationMetric.value |integer |Volitelně můžete nastavit v trackPageView() nebo startTrackPage() – hodnota stopTrackPage(). Není stejný jako clientPerformance hodnoty. |
 | Název zobrazení [0] |řetězec |Název stránky  Maximální délka 250 |
 | Adresa url zobrazení [0] |řetězec | |
@@ -279,7 +279,7 @@ Sestavy [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availab
 | --- | --- | --- |
 | availabilityMetric.name dostupnost [0] |řetězec |dostupnosti |
 | availabilityMetric.value dostupnost [0] |číslo |1.0 nebo 0,0 |
-| počet dostupnost [0] |integer |100 / ([vzorkování](../../application-insights/app-insights-sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
+| počet dostupnost [0] |integer |100 / ([vzorkování](../../azure-monitor/app/sampling.md) rychlost). Příklad 4 =&gt; 25 %. |
 | dataSizeMetric.name dostupnost [0] |řetězec | |
 | dataSizeMetric.value dostupnost [0] |integer | |
 | durationMetric.name dostupnost [0] |řetězec | |
@@ -341,7 +341,7 @@ Aktuálně – i když to může změnit v budoucnu – všechny hodnoty nahlás
 
 V tabulkách výše jsme zapomněli zřídka používaná pole count, min, max, stdDev a sampledValue.
 
-Namísto předem agregovat metriky, můžete použít [vzorkování](../../application-insights/app-insights-sampling.md) potřebujete snížit objem telemetrických dat.
+Namísto předem agregovat metriky, můžete použít [vzorkování](../../azure-monitor/app/sampling.md) potřebujete snížit objem telemetrických dat.
 
 ### <a name="durations"></a>Doba trvání
 Pokud není uvedeno jinak, jinak jsou reprezentovány doby trvání v desetiny úrovni mikrosekund tak, aby 10000000.0 znamená, že jedna sekunda.

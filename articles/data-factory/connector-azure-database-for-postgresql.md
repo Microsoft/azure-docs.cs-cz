@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 0f9d0bb8b1a10182702e3d7dceb2812838326c2b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c105c64b65d50b9d6bf6477e47d08f415b3a9a31
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081043"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018717"
 ---
 # <a name="copy-data-from-azure-database-for-postgresql-using-azure-data-factory"></a>Kopírování dat ze služby Azure Database for PostgreSQL pomocí Azure Data Factory 
 
@@ -78,7 +77,7 @@ Ke kopírování dat ze služby Azure Database for PostgreSQL, nastavte vlastnos
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **AzurePostgreSqlTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **AzurePostgreSqlTable** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -107,7 +106,7 @@ Ke kopírování dat ze služby Azure Database for PostgreSQL, nastavte typ zdro
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **AzurePostgreSqlSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AzurePostgreSqlSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 790aab75b311b116e6ca03af016e181c11019e27
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 25b8b66e67450cb96cd988efd6dd5ffd03377fde
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726642"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016541"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení problémů s výkonem pomalých aplikace ve službě Azure App Service
 V tomto článku vám pomůžou s řešením problémů s výkonem pomalých aplikací v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -114,7 +114,7 @@ Můžete povolit Application Insights Profiler spustit zachytávání trasován�
 
 Application Insights Profiler poskytuje statistické údaje na dobu odezvy jednotlivých webových volání a trasování, která určuje, který řádek kódu způsobil pomalé odezvy. Aplikace služby App Service je někdy pomalý, protože některé kód není zapsán výkonným způsobem. Mezi příklady patří sekvenční kód, který je možné spustit v paralelní a nežádoucí databáze zámků. Odebrání těchto problémová místa v kódu zvyšuje výkon vaší aplikace, ale jsou obtížné rozpoznat bez nastavování propracované trasování a protokolování. Trasování shromážděných službou Application Insights Profiler pomáhá identifikaci řádků kódu, který může zpomalit aplikaci a pro aplikace služby App Service pro tento problém vyřešili.
 
- Další informace najdete v tématu [profilování živých aplikací ve službě Azure App Service s využitím Application Insights](../application-insights/app-insights-profiler.md).
+ Další informace najdete v tématu [profilování živých aplikací ve službě Azure App Service s využitím Application Insights](../azure-monitor/app/profiler.md).
 
 ##### <a name="use-remote-profiling"></a>Použití vzdálené profilování
 V Azure App Service web apps, API apps, mobilních back-endů a webových úloh můžete vzdáleně Profilovat. Tuto možnost zvolte, pokud máte přístup k prostředku aplikace a víte, jak pro reprodukci problému nebo pokud znáte přesnou časový interval se stane tyto problémy s výkonem.

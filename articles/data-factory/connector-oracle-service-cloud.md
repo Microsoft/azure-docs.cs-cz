@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: b97b8e145e2a770a00c77eefc9ce6d323fd6222e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3cf59db2e6f8fcffd9eefc38fcd22c25ba646456
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101826"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018632"
 ---
 # <a name="copy-data-from-oracle-service-cloud-using-azure-data-factory-preview"></a>Kopírování dat z Oraclu služby v cloudu pomocí Azure Data Factory (Preview)
 
@@ -84,7 +83,7 @@ Ke zkopírování dat z cloudové služby Oracle, nastavte vlastnost typ datové
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **OracleServiceCloudObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **OracleServiceCloudObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -114,7 +113,7 @@ Ke zkopírování dat z cloudové služby Oracle, nastavte typ zdroje v aktivit�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **OracleServiceCloudSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **OracleServiceCloudSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 61b331c330da5e2083a7a029e3f3137e6d4a1aab
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8a2e8b3cb841c18d337a610284bfb31862b0c63f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077830"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015861"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopírování dat ze systému Jira pomocí Azure Data Factory (Preview)
 
@@ -82,7 +81,7 @@ Ke kopírování dat ze systému Jira, nastavte vlastnost typ datové sady na **
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **JiraObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **JiraObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -111,7 +110,7 @@ Ke kopírování dat ze systému Jira, nastavte typ zdroje v aktivitě kopírov�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **JiraSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **JiraSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

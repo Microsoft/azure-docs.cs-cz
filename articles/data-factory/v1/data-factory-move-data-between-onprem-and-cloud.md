@@ -9,17 +9,16 @@ ms.assetid: 7bf6d8fd-04b5-499d-bd19-eff217aa4a9c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1bf915bf702cdf9492cce1f32886c0049fbf9867
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242836"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015827"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat
 > [!NOTE]
@@ -63,13 +62,13 @@ V tomto kroku použijete Azure portal k vytvoření instance služby Azure Data 
     ![Přidat k úvodnímu panelu](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **název objektu pro vytváření dat "ADFTutorialOnPremDF" není k dispozici**, změňte název datové továrny (například yournameADFTutorialOnPremDF) a zkuste to znovu. Tento název používejte místo ADFTutorialOnPremDF při provádění zbývající kroky v tomto kurzu.
+   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **Název objektu pro vytváření dat "ADFTutorialOnPremDF" není k dispozici**, změňte název datové továrny (například yournameADFTutorialOnPremDF) a zkuste to znovu. Tento název používejte místo ADFTutorialOnPremDF při provádění zbývající kroky v tomto kurzu.
    >
    > Název datové továrny se může zaregistrovat jako **DNS** název v budoucnu takže pak bude veřejně viditelný.
    >
    >
 4. Vyberte **předplatné Azure**, ve kterém chcete objekt pro vytváření dat vytvořit.
-5. Vyberte existující **skupinu prostředků** nebo vytvořte novou. Pro tento kurz, vytvořte skupinu prostředků s názvem: **ADFTutorialResourceGroup**.
+5. Vyberte existující **skupinu prostředků** nebo vytvořte novou. Pro tento kurz vytvořte skupinu prostředků s názvem: **ADFTutorialResourceGroup**.
 6. Klikněte na tlačítko **vytvořit** na **nová datová továrna** stránky.
 
    > [!IMPORTANT]
@@ -281,7 +280,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
    * **folderPath** je nastavena na **adftutorial/outfromonpremdf** kde outfromonpremdf je složka v kontejneru adftutorial. Vytvořte **adftutorial** kontejner, pokud ještě neexistuje.
    * Vlastnost **availability** je nastavená na **hourly** (**frequency** je nastavená na **hour** a **interval** je nastavená na **1**).  Služba Data Factory každou hodinu vygeneruje řez výstupních dat **emp** tabulky ve službě Azure SQL Database.
 
-   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: Data.<Guid>. TXT (Příklad:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Pokud nezadáte **fileName** pro **výstupní tabulky**, generované soubory v **folderPath** jsou pojmenovány v následujícím formátu: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt.).
 
    Chcete-li nastavit **folderPath** a **fileName** dynamicky podle **SliceStart** čas, použijte vlastnost partitionedBy. V následujícím příkladu folderPath používá rok, měsíc a den z vlastnosti SliceStart (čas zahájení zpracování řezu) a fileName používá hodinu z vlastnosti SliceStart. Pokud například začne být řez vytvářen v době 2014-10-20T08:00:00, vlastnost folderName je nastavená na wikidatagateway/wikisampledataout/2014/10/20 a vlastnost fileName je nastavená na 08.csv.
 
@@ -363,7 +362,7 @@ V tomto kroku vytvoříte **kanálu** s jedním **aktivity kopírování** , kte
    * V **typeProperties** části **SqlSource** je zadán jako **typ zdroje** a ** BlobSink ** je zadán jako **jímky typu**.
    * Příkaz jazyka SQL `select * from emp` je určená pro **sqlReaderQuery** vlastnost **SqlSource**.
 
-   Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
+   Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
 
    Pokud nezadáte hodnotu vlastnosti **end**, vypočítá se jako „**start + 48 hodin**“. Chcete-li kanál spouštět bez omezení, zadejte vlastnosti **end** hodnotu **9/9/9999**.
 

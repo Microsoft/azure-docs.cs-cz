@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe9c33f5a872c60ad30faf7cc5074004f5d6fc50
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 58ccfefa0a0d76334734c67688ef50230881e945
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973789"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018796"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrická data z vývoj, testování a produkce
 
@@ -78,15 +78,15 @@ V [portal.azure.com](https://portal.azure.com), přidejte prostředek Applicatio
 
 ![Klikněte na tlačítko Nový, Application Insights](./media/app-insights-separate-resources/01-new.png)
 
-* **Typ aplikace** ovlivňuje, co se zobrazí na kartě s přehledem a k dispozici ve vlastnosti [Průzkumník metrik](app-insights-metrics-explorer.md). Pokud se váš typ aplikace, zvolte jeden z typů webových pro webové stránky.
-* **Skupina prostředků** je usnadnění pro vlastnosti, jako je Správa [řízení přístupu](app-insights-resources-roles-access-control.md). Můžete použít samostatné skupiny prostředků pro vývoj, testování a produkce.
+* **Typ aplikace** ovlivňuje, co se zobrazí na kartě s přehledem a k dispozici ve vlastnosti [Průzkumník metrik](../azure-monitor/app/metrics-explorer.md). Pokud se váš typ aplikace, zvolte jeden z typů webových pro webové stránky.
+* **Skupina prostředků** je usnadnění pro vlastnosti, jako je Správa [řízení přístupu](../azure-monitor/app/resources-roles-access-control.md). Můžete použít samostatné skupiny prostředků pro vývoj, testování a produkce.
 * **Předplatné** je váš účet platby v Azure.
 * **Umístění** je, kde jsme zachovejte si svá data. Aktuálně nejde změnit. 
 * **Přidat na řídicí panel** umístí rychlý přístup k dlaždici pro váš prostředek Azure domovskou stránku. 
 
 Vytvoření prostředku trvá několik sekund. Po dokončení se zobrazí upozornění.
 
-(Můžete napsat [skript prostředí PowerShell](app-insights-powershell-script-create-resource.md) automaticky vytvořit prostředek.)
+(Můžete napsat [skript prostředí PowerShell](../azure-monitor/app/powershell-script-create-resource.md) automaticky vytvořit prostředek.)
 
 ### <a name="getting-the-instrumentation-key"></a>Získávání Instrumentační klíč
 Instrumentační klíč identifikuje prostředek, který jste vytvořili. 
@@ -98,7 +98,7 @@ Budete potřebovat Instrumentační klíče všech prostředků, do kterého va�
 ## <a name="filter-on-build-number"></a>Filtrovat podle čísla sestavení
 Při publikování nové verze aplikace, budete chtít mít oddělení telemetrická data z různých sestavení.
 
-Vlastnost verze aplikace můžete nastavit tak, aby můžete filtrovat [hledání](../azure-monitor/app/diagnostic-search.md) a [Průzkumník metrik](app-insights-metrics-explorer.md) výsledky.
+Vlastnost verze aplikace můžete nastavit tak, aby můžete filtrovat [hledání](../azure-monitor/app/diagnostic-search.md) a [Průzkumník metrik](../azure-monitor/app/metrics-explorer.md) výsledky.
 
 ![Filtrování u vlastnosti](./media/app-insights-separate-resources/050-filter.png)
 
@@ -148,7 +148,7 @@ Pokud chcete sledovat verzi aplikace, ujistěte se, že proces Microsoft Build E
     </PropertyGroup>
 ```
 
-Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](app-insights-metrics-explorer.md) filtrovat podle verze.
+Pokud obsahuje informace o sestavení, webový modul Application Insights automaticky přidá položku **Verze aplikace** jako vlastnost pro každý předmět telemetrie. Díky tomu můžete při provádění [diagnostických hledání](../azure-monitor/app/diagnostic-search.md) nebo při [zkoumání metrik](../azure-monitor/app/metrics-explorer.md) filtrovat podle verze.
 
 Všimněte si však, že číslo verze sestavení je generováno pouze pomocí procesu Microsoft Build Engine, ne sestavením vývojáře v sadě Visual Studio.
 

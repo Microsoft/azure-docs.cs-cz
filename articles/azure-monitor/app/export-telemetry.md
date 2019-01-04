@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c93b23e3b06afe754ea1ca2472806d26c70f4c92
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c6323a4b8243791cc7a9f847c7d08e5bd5946e96
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973260"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025262"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chceme zajistit telemetrických dat po dobu delší než doba uchování standard? Nebo zpracovat nějakým způsobem specializované? Průběžný Export je ideální pro to. Události, které se zobrazí na portálu Application Insights je možné exportovat do úložiště v Microsoft Azure ve formátu JSON. Tam si můžete stáhnout data a zápis, cokoli, co kód potřebují ke zpracování.  
@@ -71,14 +71,14 @@ Export zastavit trvale, odstraňte ho. Tím nedojde k odstranění dat z úloži
 ## <a name="analyze"></a> Jaké události získáte?
 Exportovaná data se nezpracovaná telemetrická data, které z vašich aplikací, s tím rozdílem, že přidáme data o poloze, které můžeme vypočítat z IP adresy klienta.
 
-Data, která má byla zahozena [vzorkování](../../application-insights/app-insights-sampling.md) není součástí exportovaná data.
+Data, která má byla zahozena [vzorkování](../../azure-monitor/app/sampling.md) není součástí exportovaná data.
 
 Počítané ani jiné metriky nejsou zahrnuty. Například můžeme není exportovat průměrné využití procesoru, ale můžeme exportovat nezpracovaná telemetrická data, ze kterého je průměr vypočítaný.
 
 Data také obsahuje výsledky libovolného [testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md) , který jste nastavili.
 
 > [!NOTE]
-> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat, může funkce vzorkování pracovat a odesílat pouze zlomek generované telemetrická data. [Přečtěte si další informace o vzorkování.](../../application-insights/app-insights-sampling.md)
+> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat, může funkce vzorkování pracovat a odesílat pouze zlomek generované telemetrická data. [Přečtěte si další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,4 +194,4 @@ Na velkých měřítek, vezměte v úvahu [HDInsight](https://azure.microsoft.co
 <!--Link references-->
 
 [exportasa]: ../../azure-monitor/app/code-sample-export-sql-stream-analytics.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md

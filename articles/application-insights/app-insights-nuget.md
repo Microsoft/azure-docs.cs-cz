@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d8d48a41f9100abc3bc8ba306c766d9511f80026
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: adf055983ad4247101401b907024328607a19bfe
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972069"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017136"
 ---
 # <a name="application-insights-nuget-packages"></a>Balíčky Insights NuGet aplikací
 
@@ -82,5 +82,5 @@ Tyto balíčky, které tvoří součást základní funkce monitorování runtim
 ## <a name="next-steps"></a>Další postup
 
 - Monitorování [ASP.NET Core](../azure-monitor/app/asp-net-core.md).
-- Profil ASP.NET Core [webové aplikace Azure s Linuxem](app-insights-profiler-aspnetcore-linux.md).
-- Ladění technologie ASP.NET [snímky](app-insights-snapshot-debugger.md).
+- Profil ASP.NET Core [webové aplikace Azure s Linuxem](../azure-monitor/app/profiler-aspnetcore-linux.md).
+- Ladění technologie ASP.NET [snímky](../azure-monitor/app/snapshot-debugger.md).

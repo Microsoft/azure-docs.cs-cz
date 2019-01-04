@@ -9,17 +9,16 @@ ms.assetid: 67543a20-b7d5-4d19-8b5e-af4c1fd7bc75
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299856"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014677"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -139,7 +138,7 @@ Vytvoření kanálu s aktivitou kopírování několika způsoby:
 Průvodce kopírováním služby Data Factory vám pomůže vytvořit kanál s aktivitou kopírování. Tento kanál umožňuje kopírovat data z podporovaných zdrojů do cílů *aniž byste museli napsat JSON* definice propojené služby, datové sady a kanály. Zobrazit [Průvodce kopírováním služby Data Factory](data-factory-copy-wizard.md) podrobné informace o průvodci.  
 
 ### <a name="by-using-json-scripts"></a>Pomocí skriptů JSON
-Editor služby Data Factory webu Azure portal, sady Visual Studio nebo prostředí Azure PowerShell slouží k vytvoření definici JSON kanálu (pomocí aktivity kopírování). Pak můžete nasadit ho k vytvoření kanálu ve službě Data Factory. Zobrazit [kurz: Použití aktivitu kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
+Editor služby Data Factory webu Azure portal, sady Visual Studio nebo prostředí Azure PowerShell slouží k vytvoření definici JSON kanálu (pomocí aktivity kopírování). Pak můžete nasadit ho k vytvoření kanálu ve službě Data Factory. Zobrazit [kurzu: Použití aktivity kopírování v kanálu Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kurz s podrobnými pokyny.    
 
 Vlastnosti JSON (například název, popis, vstupní a výstupní tabulky a zásady) jsou k dispozici pro všechny typy aktivit. Vlastnosti, které jsou k dispozici v `typeProperties` části aktivity se liší s jednotlivými typu aktivity.
 

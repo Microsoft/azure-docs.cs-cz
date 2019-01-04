@@ -10,16 +10,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/02/2017
+ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 5a224d7a78e35776b36b162228f6ba4c72677069
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 29e76338b8d19ce70dedea971d26a49544e9f152
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636199"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018139"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání kontextu uživatele ID Umožněte využití ve službě Azure Application Insights
 
@@ -34,10 +34,11 @@ Application Insights umožňuje monitorovat a sledovat uživatele přes sadu ná
 
 Aby bylo možné sledovat, co uživatel provede v čase, Application Insights musí ID pro každého uživatele nebo relace. Zahrňte následující ID každé vlastní událost nebo zobrazení stránky.
 
-- Uživatelé, trychtýře, uchovávání a kohorty: zahrnují ID uživatele.
+- Uživatelé, trychtýře, uchovávání a kohorty: Zahrnují ID uživatele.
 - Relace: Zahrnují ID relace.
 
-Pokud vaše aplikace je integrováno [JavaScript SDK](https://docs.microsoft.com/azure/application-insights/app-insights-javascript#set-up-application-insights-for-your-web-page), se automaticky sleduje ID uživatele.
+> [!NOTE]
+> Toto je pokročilá článek sbalování ruční kroky pro sledování činnosti uživatelů pomocí Application Insights. U mnoha webových aplikací **tyto kroky nemusí být požadovaný**, jako výchozí server-side sady SDK ve spojení s [a prohlížeči klientů JavaScript SDK](app-insights-website-monitoring.md), jsou často dostatečné pro automatické sledování aktivity uživatelů. Pokud jste nenakonfigurovali [monitorování na straně klienta](app-insights-website-monitoring.md) kromě sady SDK na straně serveru, učiňte tak nyní a otestovat, pokud uživatel chování analytické nástroje fungují podle očekávání.
 
 ## <a name="choosing-user-ids"></a>Výběr ID uživatele
 
@@ -51,7 +52,7 @@ ID by měl být identifikátor Guid nebo jiným řetězcem dostatečně složit�
 
 Obsahuje-li ID osobní identifikační údaje o uživateli, není odpovídající hodnotu k odeslání do Application Insights jako ID uživatele. Můžete odeslat toto ID jako [ověřit ID uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavek na ID uživatele pro scénáře použití.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET apps: nastavení uživatelský kontext ITelemetryInitializer
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET apps: Nastavení ITelemetryInitializer uživatelský kontext
 
 Vytvořte inicializátoru telemetrie, jak je popsáno podrobněji [tady](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie žádostí a nastavte Context.User.Id a Context.Session.Id.
 

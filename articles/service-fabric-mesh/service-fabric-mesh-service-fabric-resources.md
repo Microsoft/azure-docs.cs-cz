@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3eeabd4c3bf099d7a0c7007bdf0c8c7e85f3381e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 702e1ef9c8593c2106be256e6fd7de602bf41aa7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889663"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019992"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Úvod do modelu prostředků služby Service Fabric
 
@@ -84,7 +84,7 @@ Kód aplikace zůstane přenosné i mimo službu prostředků infrastruktury sí
 
 ## <a name="packaging-and-deployment"></a>Balení a nasazení
 
-Service Fabric mřížky aplikací založených na modelu prostředků, který jsou zabalené jako kontejnery Dockeru.  Kontejnery umožňují vysokou úroveň izolace sítě pro Service Fabric je sdílené víceklientských prostředí.  Tyto aplikace jsou popsány pomocí formátu JSON nebo YAML formátu (které je pak převedeno do formátu JSON). Při nasazování aplikace sítě k Azure Service Fabric sítě, je ve formátu JSON používá k popisu splňovali šablony Azure Resource Manageru. Prostředky se mapují k prostředkům Azure.  Při nasazování sítě aplikace do clusteru Service Fabric (samostatné nebo hostovaný v Azure), ve formátu JSON používá k popisu aplikace je ve formátu podobném šablony Azure Resource Manageru.  Po nasazení aplikace sítě je možné spravovat prostřednictvím HTTP rozhraní nebo rozhraní příkazového řádku Azure. 
+Service Fabric mřížky aplikací založených na modelu prostředků, který jsou zabalené jako kontejnery Dockeru.  Kontejnery umožňují vysokou úroveň izolace sítě pro Service Fabric je sdílené víceklientských prostředí.  Tyto aplikace jsou popsány pomocí formátu JSON nebo YAML formátu (které je pak převedeno do formátu JSON). Při nasazování aplikace sítě k Azure Service Fabric sítě, je ve formátu JSON používá k popisu aplikace šablony Azure Resource Manageru. Prostředky se mapují k prostředkům Azure.  Při nasazování sítě aplikace do clusteru Service Fabric (samostatné nebo hostovaný v Azure), ve formátu JSON používá k popisu aplikace je ve formátu podobném šablony Azure Resource Manageru.  Po nasazení aplikace sítě je možné spravovat prostřednictvím HTTP rozhraní nebo rozhraní příkazového řádku Azure. 
 
 
 ## <a name="next-steps"></a>Další postup 

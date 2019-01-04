@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: b528507d0f12cda72855db19aa28c7b06a4e26c1
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 776b1eb71b4f15c3376644de92205a4eeb77e4b2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345202"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020519"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopírování dat do a z SQL serveru pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +53,7 @@ Pro propojenou službu SQL serveru jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **systému SQL Server** | Ano |
+| type | Vlastnost type musí být nastavená na: **Systému SQL Server** | Ano |
 | připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k databázi SQL serveru pomocí ověřování SQL nebo ověřování Windows. Přečtěte si v následujícím příkladu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
@@ -118,7 +117,7 @@ Pro kopírování dat z/do databáze serveru SQL Server, nastavte vlastnost typ 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **SqlServerTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **SqlServerTable** | Ano |
 | tableName |Název tabulky nebo zobrazení v instanci databáze SQL serveru, který propojená služba odkazuje na. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad:**
@@ -150,7 +149,7 @@ Pro kopírování dat z SQL serveru, nastavte typ zdroje v aktivitě kopírován
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SqlSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SqlSource** | Ano |
 | sqlReaderQuery |Použijte vlastní dotaz SQL číst data. Příklad: `select * from MyTable`. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou: páry název/hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
@@ -253,7 +252,7 @@ Ke zkopírování dat do SQL serveru, nastavte typ jímky v aktivitě kopírová
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Nastavte vlastnost typ jímky aktivity kopírování: **SqlSink** | Ano |
+| type | Vlastnost typ jímky aktivity kopírování musí být nastavena: **SqlSink** | Ano |
 | WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí: 10000) |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápis dat do systému SQL Server. To se ji volat pouze jednou za kopírování spustit. Tato vlastnost slouží k vyčištění předem načtená data. |Ne |
@@ -534,7 +533,7 @@ Při kopírování dat z/do systému SQL Server, se používají následující 
 3. Ve stejném okně, dvakrát klikněte na panel **TCP/IP** spustit **vlastností protokolu TCP/IP** okna.
 4. Přepněte **IP adresy** kartu. Posuňte se dolů viz **IPAll** oddílu. Poznamenejte si ** TCP Port ** (výchozí hodnota je **1433**).
 5. Vytvoření **pravidla pro bránu Windows Firewall** na počítači za účelem povolený příchozí provoz přes tento port.  
-6. **Ověření připojení**: pro připojení k SQL serveru pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z různých počítačů. Například: `"<machine>.<domain>.corp.<company>.com,1433"`.
+6. **Ověření připojení**: Pro připojení k SQL serveru pomocí plně kvalifikovaného názvu, použijte SQL Server Management Studio z různých počítačů. Například: `"<machine>.<domain>.corp.<company>.com,1433"`.
 
 
 ## <a name="next-steps"></a>Další postup

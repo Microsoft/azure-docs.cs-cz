@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 28e21180fde50d19154830694cd4959795ae9d5c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 264f48ed416ca146ce8f34c2634b77e68e8f077d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789377"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022627"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profilování živých cloudových služeb Azure s využitím Application Insights
 
 Můžete také nasadit Application Insights profiler za tyto služby:
-* [Azure App Service](app-insights-profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Aplikace Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 

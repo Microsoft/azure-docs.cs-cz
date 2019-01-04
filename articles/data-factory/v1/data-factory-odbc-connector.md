@@ -9,17 +9,16 @@ ms.assetid: ad70a598-c031-4339-a883-c6125403cb76
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 765a10a336b908d399f46b2248aab3903c594d24
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 20a769736efb1232e9605e322bfda6136687cec4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628541"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023579"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Přesunout úložiště dat z rozhraní ODBC dat pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,9 +46,9 @@ Kromě Brána pro správu dat musíte také nainstalovat ovladač ODBC pro úlo�
 ## <a name="getting-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště dat rozhraní ODBC pomocí různých nástrojů a rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru **, **Rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
 
@@ -57,7 +56,7 @@ Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kr
 2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
 3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
 
-Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat rozhraní ODBC naleznete v tématu [příklad JSON: kopírování dat z rozhraní ODBC data ukládat do Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) části tohoto článku. 
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat rozhraní ODBC naleznete v tématu [příklad JSON: Kopírování dat z úložiště dat rozhraní ODBC do objektů Blob v Azure](#json-example-copy-data-from-odbc-data-store-to-azure-blob) části tohoto článku. 
 
 Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní do úložiště dat rozhraní ODBC:
 
@@ -69,7 +68,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost type musí být nastavená na: **OnPremisesOdbc** |Ano |
 | připojovací řetězec |– Přístup k pověření část připojovací řetězec a případně zašifrované přihlašovací údaje. Příklady v následujících částech. <br/><br/>Můžete zadat připojovací řetězec se vzorem jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo použít systém DSN (název zdroje dat) nastavíte na počítači brány s `"DSN=<name of the DSN>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem). |Ano |
 | pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty jsou: anonymní a Basic. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty: Anonymní a Basic. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k úložišti dat rozhraní ODBC. |Ano |
@@ -153,7 +152,7 @@ V aktivitě kopírování, pokud je zdroj typu **RelationalSource** (která zahr
 | query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ano |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Příklad JSON: kopírování dat z rozhraní ODBC data ukládat do objektů Blob v Azure
+## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>Příklad JSON: Kopírování dat z úložiště dat rozhraní ODBC do objektů Blob v Azure
 V tomto příkladu obsahuje definice JSON, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data ze zdroje ODBC ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
 Ukázka obsahuje následující entit datové továrny:
@@ -355,33 +354,6 @@ Další informace o mapování sloupců v datové sadě zdroje do sloupců v dat
 
 ## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení z relačních zdrojů
 Při kopírování dat z relačních dat ukládá, mějte opakovatelnosti aby se zabránilo neúmyslnému výsledků. Ve službě Azure Data Factory můžete znovu spustit řezu ručně. Zásady opakování pro datovou sadu můžete také nakonfigurovat tak, aby určitý řez se znovu spustí, když dojde k chybě. V obou případech se znovu spustí určitý řez, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát spustit určitý řez. Zobrazit [Repeatable z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
-
-## <a name="ge-historian-store"></a>GE Historian úložiště
-Vytvoření služby propojené ODBC můžete propojit [GE Proficy Historian (nyní GE Historian)](http://www.geautomation.com/products/proficy-historian) úložiště dat do služby Azure data factory, jak je znázorněno v následujícím příkladu:
-
-```json
-{
-    "name": "HistorianLinkedService",
-    "properties":
-    {
-        "type": "OnPremisesOdbc",
-        "typeProperties":
-        {
-            "connectionString": "DSN=<name of the GE Historian store>;",
-            "gatewayName": "<gateway name>",
-            "authenticationType": "Basic",
-            "userName": "<user name>",
-            "password": "<password>"
-        }
-    }
-}
-```
-
-Instalace brány pro správu dat na místním počítači a registraci gateway pomocí portálu. Bránu nainstalovat na místní počítač používá pro připojení k úložišti dat GE Historian ovladače ODBC pro GE Historian. Proto se ovladač nainstalujte, pokud ještě není nainstalovaná na počítači brány. Zobrazit [povolení připojení](#enabling-connectivity) podrobné informace.
-
-Než použijete GE Historian úložiště v řešení Data Factory, ověřte, zda mohou brány připojit k úložišti dat podle pokynů v další části.
-
-Přečtěte si článek od začátku podrobný přehled použití dat rozhraní ODBC jsou uloženy jako zdrojové úložiště dat v operaci kopírování.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Řešení problémů s připojením
 Chcete-li řešit potíže s připojením, použijte **diagnostiky** kartě **Data Management Gateway Configuration Manager**.

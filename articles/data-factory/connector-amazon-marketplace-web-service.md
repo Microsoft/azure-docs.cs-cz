@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c58b956a0fc1899b12050daf0fbf61514ca24407
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 45208b5c6538ea523a7b87d6dbdeb99e792783ff
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095133"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021046"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopírování dat z webová služba Amazon Marketplace pomocí Azure Data Factory (Preview)
 
@@ -89,7 +88,7 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost t
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **AmazonMWSObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **AmazonMWSObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -119,7 +118,7 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte typ zdroje 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **AmazonMWSSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AmazonMWSSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

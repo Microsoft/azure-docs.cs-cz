@@ -1,13 +1,10 @@
 ---
-title: Vytvoření, změna nebo odstranění Azure předpony veřejné IP adresy | Dokumentace Microsoftu
+title: Vytvoření, změna nebo odstranění Azure předpony veřejné IP adresy
+titlesuffix: Azure Virtual Network
 description: Zjistěte, jak vytvořit, změnit nebo odstranit předponu veřejné IP adresy.
 services: virtual-network
 documentationcenter: na
 author: anavinahar
-manager: narayan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427569"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015283"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
 Další informace o veřejných předpona IP adresy a jak vytvořit, změnit a toku nějaký tok odstranit. Předponu veřejné IP adresy je souvislý rozsah adres na základě počtu veřejných IP adres, které zadáte. Adresy jsou přiřazené k vašemu předplatnému. Při vytváření prostředku veřejné IP adresy můžete přiřadit statickou veřejnou IP adresu z předpony a přidružit k virtuálním počítačům, načtení nástroje pro vyrovnávání nebo další materiály, které umožňují připojení k Internetu. Pokud nejste obeznámeni s předpony veřejných IP adres, přečtěte si téma [přehled předpony veřejných IP adres](public-ip-address-prefix.md)
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 > [!IMPORTANT]
-> Předpony veřejných IP je ve verzi public preview v oblasti omezená. Je možné [zjistěte, co to znamená, že bude ve verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Předpony veřejných IP je v tuto chvíli k dispozici: střed USA – Západ, USA – Západ, USA – západ 2, střed USA, Severní Evropa, západní Evropa a jihovýchodní Asie. Aktualizovaný seznam oblastí, navštivte prosím [aktualizace Azure](https://azure.microsoft.com/updates/?product=virtual-network).
+> Předpony veřejných IP je ve verzi public preview v oblasti omezená. Je možné [zjistěte, co to znamená, že bude ve verzi preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Předpony veřejných IP je v tuto chvíli k dispozici: Střed USA – Západ, USA – Západ, USA – západ 2, střed USA, Severní Evropa, západní Evropa a jihovýchodní Asie. Aktualizovaný seznam oblastí, navštivte prosím [aktualizace Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 
 Před dokončením kroků v jakékoli části tohoto článku, proveďte následující úkoly:
 
@@ -84,8 +81,8 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
 1. Do pole, které obsahuje text *vyhledat prostředky* v horní části stránky na webu Azure portal, zadejte *předpona veřejné ip adresy*. Když **předpony veřejných IP adres** nezobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte název veřejné předpona IP adresy, které chcete zobrazit, změnit nastavení, nebo odstranit ze seznamu.
 3. Proveďte jeden z následujících možností podle toho, jestli chcete zobrazit, odstranit nebo změnit předpona veřejné IP adresy.
-    - **Zobrazení**: **přehled** část ukazuje nastavení pro veřejné předponu adresy IP, například předpona klíče.
-    - **Odstranit**: Chcete-li odstranit předpona veřejné IP adresy, vyberte **odstranit** v **přehled** části. Pokud adresy v rozsahu předpony jsou přidružené k veřejné IP adresy prostředků, musíte nejprve odstranit prostředky veřejné adresy IP adresy. Zobrazit [odstranit veřejnou IP adresu](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+    - **Zobrazení**: **Přehled** část ukazuje nastavení pro veřejné předponu adresy IP, například předpona klíče.
+    - **Odstranit**: Chcete-li odstranit předpona veřejné IP adresy, vyberte **odstranit** v **přehled** oddílu. Pokud adresy v rozsahu předpony jsou přidružené k veřejné IP adresy prostředků, musíte nejprve odstranit prostředky veřejné adresy IP adresy. Zobrazit [odstranit veřejnou IP adresu](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
 **Příkazy**
 

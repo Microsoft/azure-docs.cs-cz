@@ -12,18 +12,18 @@ ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 58354bf95b11e497f05fdf08ba4740b3f55c6d6e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096566"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022780"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
-V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatele, jeho [členství v rolích](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) a vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host.
+V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typ uživatele, jejich [členství v rolích](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)a jejich vlastnictví jednotlivé objekty. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host.
 
 ## <a name="member-and-guest-users"></a>Členové a uživatelé typu host
-Sada udělených výchozích oprávnění závisí na tom, jestli je uživatel nativním členem tenanta (člen) nebo jestli je hostem pro spolupráci B2B (uživatel typu host). Další informace o spolupráci B2B a uživatelích typu host najdete v tématu [Co je spolupráce Azure AD s B2B?](../b2b/what-is-b2b.md). 
+Sada udělených výchozích oprávnění závisí na tom, jestli je uživatel nativním členem tenanta (člen) nebo jestli je hostem pro spolupráci B2B (uživatel typu host). Další informace o spolupráci B2B najdete v tématu [co je spolupráce B2B ve službě Azure AD?](../b2b/what-is-b2b.md) Další informace o uživatele typu Host. 
 * Členové můžou registrovat aplikace, spravovat vlastní profilovou fotku a číslo mobilního telefonu, změnit vlastní heslo a zvát hosty B2B. Kromě toho můžou uživatelé číst všechny informace v adresáři (s několika výjimkami). 
 * Uživatelé Azure AD B2B typu host mají omezená oprávnění k adresáři. Uživatelé typu host například nemůžou procházet informace z tenanta nad rámec informací o vlastním profilu. Uživatel typu host však může načíst informace o jiném uživateli tím, že zadá hlavní název uživatele (UPN) nebo identifikátor objectID. Host nemůže zobrazit žádné informace o ostatních objektech v tenantovi, jako jsou skupiny a aplikace.
 

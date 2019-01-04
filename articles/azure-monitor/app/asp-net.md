@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 036daad8898d12874c86b22429627cbebfcfce37
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 14dd5eef90ff4e6b3281f5a1337b9b59796277e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974722"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018751"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -102,14 +102,14 @@ Po kliknutí na kteroukoli dlaždici nebo graf se zobrazí podrobnější údaje
 [Další informace o používání Application Insights na portálu Azure Portal](../../azure-monitor/app/app-insights-dashboards.md).
 
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikování aplikace
-Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../application-insights/app-insights-metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
+Publikování aplikace na serveru služby IIS nebo do Azure. Sledujte [Živé vysílání metrik](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) a ověřte, zda vše běží hladce.
 
 Telemetrie vzniká na portálu Application Insights, kde můžete monitorovat metriky, vyhledávat telemetrii a nastavovat [řídicí panely](../../azure-monitor/app/app-insights-dashboards.md). Můžete také použít výkonný [dotazovací jazyk Log Analytics](https://aka.ms/LogAnalyticsLanguage) k analýze využití a výkonu nebo k hledání konkrétních událostí.
 
 Můžete také dále analyzovat telemetrii v sadě [Visual Studio](../../application-insights/app-insights-visual-studio.md) pomocí nástrojů jako vyhledávání diagnostiky a [Trendy](../../application-insights/app-insights-visual-studio-trends.md).
 
 > [!NOTE]
-> Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](../../application-insights/app-insights-pricing.md#limits-summary), zapne se automatické [vzorkování](../../application-insights/app-insights-sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
+> Pokud vaše aplikace odesílá dostatek telemetrie k dosažení [limitů omezení](../../azure-monitor/app/pricing.md#limits-summary), zapne se automatické [vzorkování](../../azure-monitor/app/sampling.md). Vzorkování snižuje množství telemetrie odesílané z vaší aplikace při zachování korelovaných dat k diagnostickým účelům.
 >
 >
 
@@ -159,4 +159,4 @@ K dispozici jsou i alternativní témata, na která se v případě zájmu můž
 
 ### <a name="automation"></a>Automation
 
-* [Automatizace vytvoření prostředku Application Insights](../../application-insights/app-insights-powershell.md)
+* [Automatizace vytvoření prostředku Application Insights](../../azure-monitor/app/powershell.md)

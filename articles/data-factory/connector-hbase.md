@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f5fb62a04f1829726796b674a8e6e72951e6bb35
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9c574d5e5cecaa4618bbd44fae8a2200930ab2e3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083372"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019448"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBase pomocí Azure Data Factory 
 
@@ -46,7 +45,7 @@ HBase propojené služby jsou podporovány následující vlastnosti:
 | hostitel | IP adresu nebo název hostitele serveru HBase. (tj.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Ano |
 | port | Port TCP, která HBase instance používá k naslouchání pro připojení klientů. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
 | httpPath | Částečné adresa URL odpovídající serveru HBase, třeba `/hbaserest0` při použití HDInsights clusteru. | Ne |
-| authenticationType. | Mechanismus ověřování, který se má použít pro připojení k serveru HBase. <br/>Povolené hodnoty jsou: **anonymní**, **základní** | Ano |
+| authenticationType. | Mechanismus ověřování, který se má použít pro připojení k serveru HBase. <br/>Povolené hodnoty jsou: **Anonymní**, **základní** | Ano |
 | uživatelské jméno | Uživatelské jméno pro připojení k instanci HBase.  | Ne |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | enableSsl | Určuje, zda jsou šifrované připojení k serveru pomocí SSL. Výchozí hodnota je false.  | Ne |
@@ -123,7 +122,7 @@ Ke zkopírování dat z HBase, nastavte vlastnost typ datové sady na **HBaseObj
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **HBaseObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **HBaseObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -152,7 +151,7 @@ Ke zkopírování dat z HBase, nastavte typ zdroje v aktivitě kopírování do 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **HBaseSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **HBaseSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

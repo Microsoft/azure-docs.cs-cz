@@ -1,6 +1,6 @@
 ---
-title: Vyvolat uloženou proceduru z kopie aktivita služby Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak vyvolat uloženou proceduru v Azure SQL Database nebo SQL Server z aktivity kopírování Azure Data Factory.
+title: Vyvolání uložené procedury z aktivity kopírování objekt pro vytváření dat Azure | Dokumentace Microsoftu
+description: Zjistěte, jak vyvolat uloženou proceduru v Azure SQL Database nebo SQL serveru z Azure Data Factory aktivity kopírování.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,29 +9,28 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e75573513f107977e1d5fe62fbae89cb4439e0e9
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 35e9347039a7b9939ab4d2719f9738429dec168c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048947"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016062"
 ---
-# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolat uloženou proceduru z aktivity kopírování v Azure Data Factory
+# <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolání uložené procedury z aktivity kopírování ve službě Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity uložené procedury v datové továrně](../transform-data-using-stored-procedure.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [transformovat data pomocí aktivity uložených procedur ve službě Data Factory](../transform-data-using-stored-procedure.md).
 
 
-Při kopírování dat do [systému SQL Server](data-factory-sqlserver-connector.md) nebo [Azure SQL Database](data-factory-azure-sql-connector.md), můžete nakonfigurovat **SqlSink** v aktivitě kopírování vyvolat uloženou proceduru. Můžete chtít použít uložené procedury provést žádné další zpracování (slučování sloupců, vyhledávání hodnot, vložení do více tabulek, atd.) je vyžadována před vkládání dat v cílové tabulky. Tato funkce využívá [zavolat parametry](https://msdn.microsoft.com/library/bb675163.aspx). 
+Při kopírování dat do [systému SQL Server](data-factory-sqlserver-connector.md) nebo [Azure SQL Database](data-factory-azure-sql-connector.md), můžete nakonfigurovat **SqlSink** v aktivitě kopírování, která se má vyvolat uloženou proceduru. Můžete chtít použít uloženou proceduru provádět žádné další zpracování (sloučení sloupců vyhledávání hodnot, vložení do několika tabulek, atd.) vyžaduje před vložením dat v cílové tabulce. Tato funkce využívá [Table-Valued parametry](https://msdn.microsoft.com/library/bb675163.aspx). 
 
-Následující příklad ukazuje, jak vyvolat uloženou proceduru v databázi systému SQL Server z objektu pro vytváření dat kanál (aktivita kopírování):  
+Následující příklad ukazuje, jak vyvolat uloženou proceduru v databázi SQL serveru z kanálu Data Factory (aktivita kopírování):  
 
-## <a name="output-dataset-json"></a>Výstupní datovou sadu JSON
-V výstupní datovou sadu JSON, nastavte **typ** k: **SqlServerTable**. Nastavte ji na **AzureSqlTable** pro použití s Azure SQL database. Hodnota **tableName** vlastnost musí shodovat s názvem první parametr uložené procedury.  
+## <a name="output-dataset-json"></a>Výstupní datové sady JSON
+Ve vstupní sadě JSON, nastavte **typ** na: **SqlServerTable**. Nastavte ho na **AzureSqlTable** pro použití s Azure SQL database. Hodnota pro **tableName** vlastnost musí odpovídat názvu první parametr uložené procedury.  
 
 ```json
 {
@@ -50,8 +49,8 @@ V výstupní datovou sadu JSON, nastavte **typ** k: **SqlServerTable**. Nastavte
 }
 ```
 
-## <a name="sqlsink-section-in-copy-activity-json"></a>Část SqlSink v aktivitě kopírování JSON
-Definování **SqlSink** část v aktivitě kopírování JSON následujícím způsobem. Vyvolat uloženou proceduru při vložení dat do podřízený nebo cílové databázi, zadejte hodnoty pro obě **SqlWriterStoredProcedureName** a **SqlWriterTableType** vlastnosti. Popis těchto vlastností najdete v tématu [SqlSink část v systému SQL Server konektoru článku](data-factory-sqlserver-connector.md#sqlsink).
+## <a name="sqlsink-section-in-copy-activity-json"></a>Část SqlSink v kódu JSON aktivity kopírování
+Definovat **SqlSink** části v kódu JSON aktivity kopírování následujícím způsobem. Vyvolat uloženou proceduru při vkládání dat do jímky/cílové databáze, zadejte hodnoty pro oba **SqlWriterStoredProcedureName** a **SqlWriterTableType** vlastnosti. Popisy těchto vlastností naleznete v tématu [v systému SQL Server konektoru části SqlSink](data-factory-sqlserver-connector.md#sqlsink).
 
 ```json
 "sink":
@@ -70,7 +69,7 @@ Definování **SqlSink** část v aktivitě kopírování JSON následujícím z
 ```
 
 ## <a name="stored-procedure-definition"></a>Definice uložené procedury 
-V databázi, zadejte uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Uložená procedura zpracovává vstupní data ze zdrojového úložiště dat a vloží data do tabulky v cílové databázi. Název prvního parametru uložené procedury musí odpovídat tableName definované v sadě dat JSON (Marketing).
+V databázi, definovat uložená procedura se stejným názvem jako **SqlWriterStoredProcedureName**. Uložená procedura zpracovává vstupní data ze zdrojového úložiště dat a vloží data do tabulky v cílové databázi. Název první parametr uložené procedury musí odpovídat tableName definované v sadě dat JSON (Marketing).
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -82,8 +81,8 @@ BEGIN
 END
 ```
 
-## <a name="table-type-definition"></a>Typ definice tabulky
-V databázi, zadejte typ tabulky se stejným názvem jako **SqlWriterTableType**. Schéma typu tabulky musí odpovídat schématu vstupní datové sady.
+## <a name="table-type-definition"></a>Definice typu tabulky
+V databázi, definujte typ tabulky se stejným názvem jako **SqlWriterTableType**. Schéma typu tabulky musí odpovídat schématu vstupní datové sady.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -93,7 +92,7 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 ## <a name="next-steps"></a>Další postup
-Zkontrolujte konektor následující články, dokončení příklady JSON: 
+Kontrola konektoru následující články, které kompletní příklady JSON: 
 
 - [Azure SQL Database](data-factory-azure-sql-connector.md)
 - [SQL Server](data-factory-sqlserver-connector.md)

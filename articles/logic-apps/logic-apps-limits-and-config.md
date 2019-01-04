@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c7eaecf74f56035c39267407e6a965c57897b1ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853825"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015436"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -88,7 +88,7 @@ Tady jsou limity pro běh aplikace logiky jeden:
 | Souběžnosti triggeru | 50 | Výchozí limit je 20. Tato omezení popisuje maximální počet instancí aplikace logiky, spuštěné ve stejnou dobu nebo paralelně. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [souběžnosti aktivační události změnit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) nebo [aktivovat instance postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
 | Maximální čekací spuštění | 100 | Výchozí limit je 10. Tato omezení popisuje maximální počet instancí aplikace logiky, které mohou čekat na spustit, když vaše aplikace logiky je již spuštěn maximální počet souběžných instancí. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 0 a 100 (včetně), [omezit spuštění čekajících změn](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
 | Položky foreach | 100 000 | Tato omezení popisuje maximální počet položek pole, které může zpracovat smyčka "for each". <p><p>K filtrování větších polí, můžete použít [akce dotazu](../connectors/connectors-native-query.md). | 
-| Foreach iterací | 50 | Výchozí limit je 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Foreach souběžnosti | 50 | Výchozí limit je 20. Popisuje tento limit maximálního počtu "pro každý" iterací, které lze spustit ve stejnou dobu nebo paralelní smyčky. <p><p>Chcete-li změnit výchozí omezení na hodnotu mezi 1 až 50 znaků (včetně), [změnit "for each" souběžnosti](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) nebo [spuštění "for each" smyčky postupně](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
 | Položky SplitOn | 100 000 | | 
 | Do iterací | 5 000 | | 
 |||| 
@@ -101,11 +101,11 @@ Tady jsou limity pro běh aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Akcí: Spuštění za 5 minut | 300,000 | Výchozí limit je 100 000. Chcete-li změnit výchozí omezení, [spuštění aplikace logiky v režimu "Vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), což je ve verzi preview. Nebo můžete distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby. | 
-| Akce: Souběžná volání odchozí | ~2,500 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Koncový bod modulu runtime: příchozí souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Koncový bod modulu runtime: Číst volání za 5 minut  | 60,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
+| Akce: Spuštění za 5 minut | 300,000 | Výchozí limit je 100 000. Chcete-li změnit výchozí omezení, [spuštění aplikace logiky v režimu "Vysoká propustnost"](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode), což je ve verzi preview. Nebo můžete distribuovat zatížení napříč více než jedné aplikace logiky podle potřeby. | 
+| Akce: Odchozí souběžných volání | ~2,500 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: Příchozí souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: Čtení volání za 5 minut  | 60,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
+| Koncový bod modulu runtime: Vyvolání volání za 5 minut | 45,000 | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
 | Obsahu propustnost za 5 minut | 600 MB | Rozdělit zatížení mezi více než jednu aplikaci podle potřeby. | 
 |||| 
 
@@ -238,10 +238,10 @@ Tady je omezený počet artefaktů pro každý účet integrace. Další informa
 | ---- | ----- | ----- | 
 | Schéma | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [identifikátor URI objektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Mapu (soubor XSLT) | 2 MB | | 
-| Koncový bod modulu runtime: Číst volání za 5 minut | 60,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: sledování volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
-| Koncový bod modulu runtime: blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
+| Koncový bod modulu runtime: Čtení volání za 5 minut | 60,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: Vyvolání volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: Sledovací volání za 5 minut | 45,000 | Distribuuje úlohy mezi víc než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: Blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

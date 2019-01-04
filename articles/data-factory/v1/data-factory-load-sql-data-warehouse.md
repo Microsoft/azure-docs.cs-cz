@@ -9,17 +9,16 @@ ms.assetid: a6c133c0-ced2-463c-86f0-a07b00c9e37f
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5fb4034d49982d600fe5b0de17d0b198e3ee653e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054672"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020145"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure SQL Data Warehouse pomocí služby Data Factory v oblasti 15 minut
 > [!NOTE]
@@ -30,7 +29,7 @@ ms.locfileid: "42054672"
 
 Začínáme s Azure SQL Data Warehouse je teď snadnější než kdy dřív pomocí **Azure Data Factory**.  Azure Data Factory je služba pro integraci dat plně spravované cloudové, který slouží k naplnění SQL Data Warehouse s daty ze stávajícího systému a ukládání je drahocenný čas při vyhodnocení SQL Data Warehouse a vytváření analýz řešení. Tady jsou klíčové výhody načítání dat do Azure SQL Data Warehouse pomocí Azure Data Factory:
 
-* **Snadné nastavení**: krok 5 intuitivní průvodce se žádné skripty povinné.
+* **Snadné nastavení**: Krok 5 intuitivní průvodce se žádné skripty povinné.
 * **Podpora store velké množství dat**: integrovanou podporu pro bohatou sadu místní a cloudové datové úložiště.
 * **Zabezpečení a dodržování**: data se přenáší prostřednictvím protokolu HTTPS nebo ExpressRoute a přítomnost globální služba zajišťuje vaše data nikdy neopustí zeměpisných hranic
 * **Bezkonkurenční výkon pomocí PolyBase** – je nejúčinnější způsob pro přesun dat do Azure SQL Data Warehouse pomocí Polybase. Pracovní funkce objektů blob můžete dosáhnout vysoké rychlosti ze všech typů úložišť dat kromě úložiště objektů Blob v Azure, které ve výchozím nastavení podporuje Polybase.
@@ -42,7 +41,7 @@ Tento článek obsahuje podrobné pokyny pro přesouvání dat do Azure SQL Data
 > [!NOTE]
 >  Obecné informace o možnostech služby Data Factory v přesunu dat do a z Azure SQL Data Warehouse najdete v tématu [přesun dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory](data-factory-azure-sql-data-warehouse-connector.md) článku.
 >
-> Můžete také vytvořit pomocí webu Azure portal, Visual Studio, PowerShell, kanály atd. Zobrazit [kurz: kopírování dat z objektů Blob v Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) rychlý návod s podrobnými pokyny pro používání aktivita kopírování ve službě Azure Data Factory.  
+> Můžete také vytvořit pomocí webu Azure portal, Visual Studio, PowerShell, kanály atd. Zobrazit [kurzu: Kopírování dat z objektů Blob v Azure do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) rychlý návod s podrobnými pokyny pro používání aktivita kopírování ve službě Azure Data Factory.  
 >
 >
 
@@ -118,7 +117,7 @@ Požadované kroky dokončit jsme se nyní připraveno ke konfiguraci aktivitou 
 3. V **nová datová továrna** podokna:
 
    1. Zadejte **LoadIntoSQLDWDataFactory** pro **název**.
-       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **název objektu pro vytváření dat "LoadIntoSQLDWDataFactory" není k dispozici**, změňte název datové továrny (například yournameLoadIntoSQLDWDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
+       Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **Název objektu pro vytváření dat "LoadIntoSQLDWDataFactory" není k dispozici**, změňte název datové továrny (například yournameLoadIntoSQLDWDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.  
    2. Vyberte své **předplatné** Azure.
    3. Pro skupinu prostředků proveďte jeden z následujících kroků:
       1. Vyberte možnost **Použít existující** a vyberte existující skupinu prostředků.
@@ -148,7 +147,7 @@ Na stránce **Vlastnosti**:
     ![Průvodce kopírováním – stránka Vlastnosti](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
 ## <a name="step-2-configure-source"></a>Krok 2: Konfigurace zdroje
-Tato část popisuje postup konfigurace zdroje: objektů Blob v Azure obsahující TPC 1 TB-H položky řádku soubory.
+Tato část popisuje postup konfigurace zdroje: Azure Blob obsahující 1 TB TPC-H položky řádku soubory.
 
 1. Vyberte **Azure Blob Storage** data ukládat a klikněte na tlačítko **Další**.
 
@@ -166,7 +165,7 @@ Tato část popisuje postup konfigurace zdroje: objektů Blob v Azure obsahujíc
 
     ![Průvodce kopírováním – nastavení formátu souboru](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
-## <a name="step-3-configure-destination"></a>Krok 3: Konfigurace cíl
+## <a name="step-3-configure-destination"></a>Krok 3: Nakonfigurujte cíl
 Tato část ukazuje, jak na cílovém serveru nakonfigurovat: `lineitem` tabulky v databázi Azure SQL Data Warehouse.
 
 1. Zvolte **Azure SQL Data Warehouse** jako cílové úložiště a klikněte na tlačítko **Další**.
@@ -189,7 +188,7 @@ Tato část ukazuje, jak na cílovém serveru nakonfigurovat: `lineitem` tabulky
 
 ![Kopírování Průvodce – stránka mapování schématu](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 
-## <a name="step-5-deploy-and-monitor-load-results"></a>Krok 5: Nasazení a monitorování zatížení výsledky
+## <a name="step-5-deploy-and-monitor-load-results"></a>Krok 5: Nasadit a monitorovat výsledky zatížení
 1. Klikněte na tlačítko **Dokončit** tlačítko k nasazení.
 
     ![Průvodce kopírováním – stránka souhrnu](media/data-factory-load-sql-data-warehouse/summary-page.png)

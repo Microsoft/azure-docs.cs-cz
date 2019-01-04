@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 90c36e728a8ec91606f93c080258eeca9c3825e6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423724"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020774"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach ve službě Azure Data Factory
 Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
@@ -86,7 +85,7 @@ Pokud **isSequential** je nastavena na hodnotu false, aktivita iteruje paraleln�
 Aktivita ForEach, zadejte pole a provést iteraci pro vlastnost **položky**. " Použití `@item()` k iteraci přes jeden výčet v aktivitě ForEach. Například pokud **položky** je pole: [1, 2, 3], `@item()` vrátí 1 v první iteraci, ve druhém iterace 2 a 3 v třetí iterace.
 
 ## <a name="iterating-over-a-single-activity"></a>Iterace s použitím jedné aktivity
-**Scénář:** Kopírovat ze stejného zdrojového souboru do objektů Blob v Azure na několika cílových souborů v Azure Blob.
+**Scénář:** Zkopírujte ze stejného zdrojového souboru v objektu Blob Azure do více cílových souborů v Azure Blob.
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 
@@ -237,7 +236,7 @@ Je možné k iteraci přes několik aktivit (například: kopírování a webov�
 
 ```
 ### <a name="example"></a>Příklad:
-**Scénář:** Iterate přes InnerPipeline v rámci aktivity ForEach s aktivita spuštění kanálu. Vnitřní kanál kopíruje s definice schémat s parametry.
+**Scénář:** Iterujte přes InnerPipeline v rámci aktivity ForEach s aktivita spuštění kanálu. Vnitřní kanál kopíruje s definice schémat s parametry.
 
 #### <a name="master-pipeline-definition"></a>Hlavní kanálu
 

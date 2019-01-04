@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 604093dcec048b0991bbc9beac3ef998cc47e351
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6bb1709d10a406d88378189cd68b9a36abed2c8d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974505"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017562"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Přidat objekty BLOB na objekty v digitální dvojče Azure
 
@@ -28,23 +28,7 @@ Azure podporuje digitální dvojče objekty BLOB se připojuje k zařízení, me
 
 S více částmi. požadavky můžete použít k nahrání objektů blob pro konkrétní koncové body a jejich příslušné funkce.
 
-> [!IMPORTANT]
-> Požadavky na vícedílné zprávy standardu vyžadují tři údaje:
-> * A **Content-Type** hlavičky:
->   * `application/json; charset=utf-8`
->   * `multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`
-> * A **Content-Disposition**: `form-data; name="metadata"`
-> * Obsah souboru k odeslání
->
-> **Content-Type** a **Content-Disposition** informace se můžou lišit v závislosti na scénáři použití.
-
-S více částmi. požadavky na rozhraní API Správce Dvojčat digitální Azure mají dvě části:
-
-* Objekt BLOB metadat – například přidružený typ MIME, jak je znázorněno **Content-Type** a **Content-Disposition** informace
-
-* Obsah objektu BLOB (nestrukturovaný obsah souboru)  
-
-Ani jeden ze dvou částí, je třeba **oprava** požadavky. Jsou potřeba pro **příspěvek** nebo operace vytvoření.
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ### <a name="blob-metadata"></a>Metadata objektu blob
 
@@ -158,7 +142,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | ID požadované objektů blob |
 
-Vytváření **oprava** požadavek na stejný koncový bod můžete aktualizovat popis metadat a vytvořit novou verzi objektu blob. Požadavek HTTP je proveden prostřednictvím **oprava** metoda spolu s všechny nezbytné metadata a data vícedílného formuláře.
+Vytváření **oprava** požadavek na stejný koncový bod můžete aktualizovat popis metadat a vytvořit novou verzi objektu blob. Požadavek HTTP je proveden prostřednictvím **oprava** metoda spolu s všechny nezbytné metadat a dat vícedílného formuláře.
 
 Úspěšné operace vrátit **SpaceBlob** objekt, který odpovídá následujícím schématu. Můžete ho využívat vrácená data.
 

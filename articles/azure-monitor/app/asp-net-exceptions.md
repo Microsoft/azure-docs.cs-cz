@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 76ce5f0c44dd1985fbf47d493b4566634f4894d0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6f534858194719a0d3059808073ae057f150b599
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976677"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021012"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights
 Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Insights](../../application-insights/app-insights-overview.md). Neúspěšné požadavky můžete korelovat s výjimky a dalších událostí na klienta a serveru, tak, že můžete rychle Diagnostikujte příčiny.
@@ -90,7 +90,7 @@ Chcete-li zobrazit tyto události, otevřete [hledání](../../azure-monitor/app
 ![Procházet na podrobnosti](./media/asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které jsou součástí stejné operace bude zaškrtnuto nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](../../application-insights/app-insights-sampling.md)
+> Pokud vaše aplikace generuje mnoho telemetrických dat, sníží modul adaptivního vzorkování automaticky objem dat odesílaných na portál tím, že budou odesílány pouze reprezentativní vzorky událostí. Události, které jsou součástí stejné operace bude zaškrtnuto nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. [Další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -489,4 +489,4 @@ Tím se liší od počtu "Výjimek", počítá pomocí portálu služby Applicat
 ## <a name="next-steps"></a>Další postup
 * [Monitorování REST, SQL a další volání závislostí](../../azure-monitor/app/asp-net-dependencies.md)
 * [Sledujte dobu načítání stránek, výjimek prohlížeče a volání jazyka AJAX](../../azure-monitor/app/javascript.md)
-* [Monitorování čítačů výkonu](../../application-insights/app-insights-performance-counters.md)
+* [Monitorování čítačů výkonu](../../azure-monitor/app/performance-counters.md)

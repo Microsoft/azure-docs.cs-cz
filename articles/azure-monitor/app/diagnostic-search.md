@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b7f49571aa78a262a464f9626b7b98a85f8187f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c2a7b5a1f90ddc6ccfdbc568113a5c265dd9ac84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973328"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022950"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](../../application-insights/app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
@@ -129,7 +129,7 @@ Tady jsou hledaných výrazů, které můžete použít:
 ## <a name="sampling"></a>Vzorkování
 Pokud vaše aplikace generuje mnoho telemetrie (a vy používáte 2.0.0-beta3 verze sady SDK technologie ASP.NET nebo novější), modul adaptivního vzorkování automaticky sníží objem, který je odesílán na portál odesláním pouze reprezentativní vzorky událostí. Události, které se vztahují ke stejnému požadavku jsou však vybrané nebo nevybrány jako skupina, takže mohou procházet mezi souvisejícími událostmi. 
 
-[Další informace o vzorkování](../../application-insights/app-insights-sampling.md).
+[Další informace o vzorkování](../../azure-monitor/app/sampling.md).
 
 ## <a name="create-work-item"></a>Vytvořit pracovní položku
 Můžete vytvořit chybu v Githubu nebo Azure DevOps s podrobnostmi o z libovolné položky telemetrie. 
@@ -153,7 +153,7 @@ Kromě out-of-the-box telemetrická data odesílaná sadu SDK Application Insigh
 ## <a name="questions"></a>FUNKCE Q &AMP; A
 ### <a name="limits"></a>Jaká data se uchovávají?
 
-Zobrazit [souhrn omezení](../../application-insights/app-insights-pricing.md#limits-summary).
+Zobrazit [souhrn omezení](../../azure-monitor/app/pricing.md#limits-summary).
 
 ### <a name="how-can-i-see-post-data-in-my-server-requests"></a>Jak lze zobrazit data příspěvek v Moje žádosti serveru?
 Automaticky jsme není protokolů následných dat ale můžete použít [TrackTrace nebo protokol volání](../../azure-monitor/app/asp-net-trace-logs.md). Vložte příspěvek data v parametru zprávy. Nelze filtrovat zprávy stejným způsobem, který můžete filtrovat podle vlastností, ale maximální velikost je delší.

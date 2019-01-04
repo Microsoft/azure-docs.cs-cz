@@ -155,7 +155,7 @@ items:
       - name: Pracovní prostory
         href: platform/manage-access.md
       - name: Aplikace
-        href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
+        href: app/resources-roles-access-control.md
       - name: IP adresy
         href: app/ip-addresses.md
     - name: Monitorování aplikací
@@ -273,7 +273,7 @@ items:
           - name: Přehled
             href: ../application-insights/app-insights-profiler-overview.md?toc=/azure/azure-monitor/toc.json
           - name: Povolení profileru pro App Service
-            href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler.md
           - name: Povolení profileru pro cloudovou službu
             href: ../application-insights/app-insights-profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json
           - name: Povolení profileru pro aplikaci Service Fabric
@@ -304,7 +304,7 @@ items:
           href: app/asp-net-core.md
           items:
           - name: Profiler pro linuxové aplikační služby
-            href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json
+            href: app/profiler-aspnetcore-linux.md
         - name: Konzola
           href: app/console.md
         - name: Řídicí panel aplikací
@@ -324,7 +324,7 @@ items:
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
         - name: Ladicí program snímků
-          href: ../application-insights/app-insights-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+          href: app/snapshot-debugger.md
       - name: Aplikace v Javě
         items:
         - name: Webové aplikace
@@ -366,22 +366,22 @@ items:
         - name: Weby SharePoint
           href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
         - name: Dynamics CRM
-          href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
+          href: app/sample-mscrm.md
       - name: Inteligentní zjišťování
         href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
         items:
         - name: Anomálie selhání
-          href: ../application-insights/app-insights-proactive-failure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-failure-diagnostics.md
         - name: Anomálie výkonu
-          href: ../application-insights/app-insights-proactive-performance-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-performance-diagnostics.md
         - name: Snížení výkonnosti trasování
-          href: ../application-insights/app-insights-proactive-trace-severity.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-trace-severity.md
         - name: Objem výjimek
-          href: ../application-insights/app-insights-proactive-exception-volume.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-exception-volume.md
         - name: Nevrácená paměť
-          href: ../application-insights/app-insights-proactive-potential-memory-leak.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-potential-memory-leak.md
         - name: Využití prostředků
-          href: ../application-insights/app-insights-proactive-low-utilization-cloud-resources.md?toc=/azure/azure-monitor/toc.json
+          href: app/proactive-low-utilization-cloud-resources.md
         - name: Zjišťování zabezpečení
           href: app/proactive-application-security-detection-pack.md
         - name: Azure Cloud Services
@@ -433,7 +433,7 @@ items:
       - name: Configuration Manager
         href: platform/collect-sccm.md
       - name: Sledování výkonu aplikací s využitím SCOM
-        href: ../application-insights/app-insights-scom.md?toc=/azure/azure-monitor/toc.json
+        href: app/scom.md
     - name: Směrování dat
       items:
       - name: Archivace protokolu aktivit
@@ -478,7 +478,7 @@ items:
         - name: Mapa aplikace
           href: app/app-map.md
         - name: Diagnostika transakcí
-          href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: app/transaction-diagnostics.md
         - name: Data HockeyApp
           href: app/hockeyapp-bridge-app.md
       - name: Visual Studio
@@ -880,7 +880,7 @@ items:
       - name: Filtrování a předběžné zpracování telemetrie
         href: app/api-filtering-sampling.md
       - name: Vzorkování
-        href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
+        href: app/sampling.md
     - name: Řešení monitorování
       items:
       - name: Návrh a sestavení
@@ -989,9 +989,9 @@ items:
     - name: Aktualizace služeb Log Analytics
       href: https://azure.microsoft.com/updates/?product=log-analytics
     - name: Poznámky k verzi sady SDK
-      href: ../application-insights/app-insights-release-notes.md
+      href: app/release-notes.md
     - name: Poznámky k verzi pro Developer Analytics Tools
-      href: ../application-insights/app-insights-release-notes-vsix.md
+      href: app/release-notes-vsix.md
   - name: Analýzy ve Windows
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
   - name: Regionální dostupnost
@@ -1004,9 +1004,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 89f30238656021e02fe36fe3e0fede0bc0988cae
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0cfca3a41157065f2e64c0da8062ebd011375f70
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002123"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016106"

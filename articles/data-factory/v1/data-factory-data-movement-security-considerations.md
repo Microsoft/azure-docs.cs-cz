@@ -8,17 +8,16 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3c4bd08d2ba3aa4aeceb38a0ae498786f681d800
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960681"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015742"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – informace o zabezpečení pro přesun dat
 
@@ -99,7 +98,7 @@ Přihlašovací údaje pro vaše místní úložiště dat se ukládají místn�
 #### <a name="javascript-cryptography-library-based-encryption"></a>Šifrování na základě knihovny kryptografie jazyka JavaScript
 Můžete šifrovat přihlašovací údaje úložiště dat pomocí [knihovny JavaScript kryptografie](https://www.microsoft.com/download/details.aspx?id=52439) z [Průvodce kopírováním](data-factory-copy-wizard.md). Když vyberete tuto možnost, Průvodce kopírováním načte veřejný klíč brány a použije k zašifrování dat úložiště pověření. Přihlašovací údaje jsou dešifrovat počítači brány a je chráněn Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).
 
-**Podporované prohlížeče:** aplikaci Internet Explorer 8, 9, aplikace Internet Explorer 10, 11, Microsoft Edge a poslední Firefox, Chrome, Opera, prohlížeče Safari. 
+**Podporované prohlížeče:** Aplikaci Internet Explorer 8, 9, aplikace Internet Explorer 10, 11, Microsoft Edge a poslední Firefox, Chrome, Opera, prohlížeče Safari. 
 
 #### <a name="click-once-credentials-manager-app"></a>Klikněte na tlačítko-jednou aplikace Správce přihlašovacích údajů
 Můžete spustit kliknutím na-až na základě přihlašovacích údajů správce aplikace z Azure portal nebo kopírování Průvodce při vytváření kanálů. Tuto aplikaci se zajistí, že přihlašovací údaje se nepřenesou ve formátu prostého textu při přenosu. Ve výchozím nastavení, používá port **8050** na počítači s bránou pro zabezpečenou komunikaci. V případě potřeby můžete tento port změnit.  
@@ -181,14 +180,14 @@ Následující cloudovými úložišti dat vyžadují vytváření seznamu povol
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka:** může bránu sdílet mezi různé datové továrny?
-**Odpověď:** této funkce zatím nepodporujeme. Aktivně pracujeme na něj.
+**Otázka:** Může bránu sdílet mezi různé datové továrny?
+**Odpověď:** Tato funkce zatím nepodporujeme. Aktivně pracujeme na něj.
 
-**Otázka:** jaké jsou požadavky na porty pro funkci brány?
-**Odpověď:** brána umožňuje připojení založené na protokolu HTTP do otevřeného Internetu. **Odchozí porty 443 a 80** musí být otevřen pro bránu pro toto připojení. Otevřít **příchozí Port 8050** pouze na úrovni počítače (ne na podnikové brány firewall na úrovni) pro aplikaci správce přihlašovacích údajů. Pokud se používá Azure SQL Database nebo Azure SQL Data Warehouse jako zdroj / cíl, budete muset otevřít **1433** i port. Další informace najdete v tématu [brány Firewall, konfigurace a vytváření seznamu povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) oddílu. 
+**Otázka:** Jaké jsou požadavky na porty pro funkci brány?
+**Odpověď:** Brána umožňuje připojení založené na protokolu HTTP do otevřeného Internetu. **Odchozí porty 443 a 80** musí být otevřen pro bránu pro toto připojení. Otevřít **příchozí Port 8050** pouze na úrovni počítače (ne na podnikové brány firewall na úrovni) pro aplikaci správce přihlašovacích údajů. Pokud se používá Azure SQL Database nebo Azure SQL Data Warehouse jako zdroj / cíl, budete muset otevřít **1433** i port. Další informace najdete v tématu [brány Firewall, konfigurace a vytváření seznamu povolených IP adres](#firewall-configurations-and-whitelisting-ip-address-of gateway) oddílu. 
 
-**Otázka:** jaké jsou požadavky na certifikát pro bránu?
-**Odpověď:** aktuální brána vyžaduje certifikát, který používá aplikace Správce pověření pro zabezpečené přihlašovací údaje úložiště dat nastavení. Tento certifikát se certifikát podepsaný svým držitelem vytvořený a nakonfigurovaný nastavením brány. Můžete použít vlastní protokol TLS / SSL certifikátu místo toho. Další informace najdete v tématu [klikněte na tlačítko-jednou přihlašovacích údajů správce aplikace](#click-once-credentials-manager-app) oddílu. 
+**Otázka:** Jaké jsou požadavky na certifikát pro bránu?
+**Odpověď:** Aktuální brána vyžaduje certifikát, který používá aplikace Správce pověření pro zabezpečené přihlašovací údaje úložiště dat nastavení. Tento certifikát se certifikát podepsaný svým držitelem vytvořený a nakonfigurovaný nastavením brány. Můžete použít vlastní protokol TLS / SSL certifikátu místo toho. Další informace najdete v tématu [klikněte na tlačítko-jednou přihlašovacích údajů správce aplikace](#click-once-credentials-manager-app) oddílu. 
 
 ## <a name="next-steps"></a>Další postup
 Informace o výkonu aktivity kopírování najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](data-factory-copy-activity-performance.md).

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 27686cf036f69a9a4597c499e9b8b7d66d77e1e9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054430"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019669"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Proveďte pokročilé transformacích JSON pomocí Liquid šablon v Azure Logic Apps
 
@@ -34,7 +34,7 @@ Tedy před provedením Liquid transformace ve vaší aplikaci logiky, nejprve de
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Vytvořit šablonu Liquid nebo mapu účtu integrace
 
 1. V tomto příkladu vytvořte Ukázková šablona Liquid popsané v tomto kroku.
-Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se že tyto filtry začínat velká písmena. Další informace o [kapaliny filtruje](https://shopify.github.io/liquid/basics/introduction/#filters). 
+Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se že tyto filtry začínat velká písmena. Další informace o [kapaliny filtruje](https://shopify.github.io/liquid/basics/introduction/#filters), kteří používají [DotLiquid](https://dotliquidmarkup.org/) a C# zásady vytváření názvů.
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -80,7 +80,7 @@ Pokud chcete použít v šabloně Liquid všechny filtry, ujistěte se, že se �
 
 2. V návrháři aplikace logiky, přidejte [triggeru požadavku](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) do aplikace logiky.
 
-3. Pod triggerem zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "kapaliny" a vyberte tuto akci: **transformace JSON na JSON - kapaliny**
+3. Pod triggerem zvolte **nový krok**. Do vyhledávacího pole zadejte jako filtr "kapaliny" a vyberte tuto akci: **Převést JSON na JSON - kapaliny**
 
    ![Vyhledejte a vyberte akci Liquid.](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -117,7 +117,7 @@ Kapaliny není omezena pouze na pouze transformacích JSON. Tady jsou další do
    ``` json
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
-   Tady je ukázkový vstup a výstup:
+   Tady je ukázka vstupy a výstupy:
   
    ![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
@@ -130,7 +130,7 @@ Kapaliny není omezena pouze na pouze transformacích JSON. Tady jsou další do
         {{item}}
     {% endJSONArrayFor -%}]
    ```
-   Tady je ukázkový vstup a výstup:
+   Tady je ukázka vstupy a výstupy:
 
    ![Ukázkový výstup XML na JSON](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
 
@@ -142,7 +142,7 @@ Kapaliny není omezena pouze na pouze transformacích JSON. Tady jsou další do
    {{content.firstName | Append: ' ' | Append: content.lastName}}
    ```
 
-   Tady je ukázkový vstup a výstup:
+   Tady je ukázka vstupy a výstupy:
 
    ![Ukázkový výstup XML na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: cee04bd3901db7136a877643979832ed8a70cbd8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 287f399d9c30da75972503abf71f9937f99c8842
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076137"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022083"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopírování dat z Concur pomocí Azure Data Factory (Preview)
 
@@ -83,7 +82,7 @@ Ke zkopírování dat z Concur, nastavte vlastnost typ datové sady na **ConcurO
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **ConcurObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **ConcurObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 
@@ -113,7 +112,7 @@ Ke zkopírování dat z Concur, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **ConcurSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **ConcurSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Opportunities where Id = xxx "`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

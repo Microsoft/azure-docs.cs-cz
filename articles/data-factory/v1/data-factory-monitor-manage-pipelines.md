@@ -9,17 +9,16 @@ ms.assetid: 9b0fdc59-5bbe-44d1-9ebc-8be14d44def9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618865"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015488"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů Azure Data Factory pomocí webu Azure portal a Powershellu
 > [!div class="op_single_selector"]
@@ -116,7 +115,7 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Probíhá zpracování.</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
+<td rowspan="2">Probíhá</td><td>Ověřování platnosti</td><td>Probíhá ověřování.</td>
 </tr>
 <td>-</td>
 <td>Řez se zpracovává.</td>
@@ -136,7 +135,7 @@ Kolekce obsahuje nějaké řezy datové sady ve službě data factory může mí
 <td>Připraveno</td><td>-</td><td>Řez je připraven ke spotřebování.</td>
 </tr>
 <tr>
-<td>Přeskočené</td><td>Žádný</td><td>Řez se právě zpracovává.</td>
+<td>Přeskočeno</td><td>Žádný</td><td>Řez se právě zpracovává.</td>
 </tr>
 <tr>
 <td>Žádný</td><td>-</td><td>Řez používá se jiný stav, ale bylo resetováno.</td>
@@ -162,7 +161,7 @@ Po nasazení služby data factory a kanály mají platný aktivního období, da
 
 ![Diagram stavu](./media/data-factory-monitor-manage-pipelines/state-diagram.png)
 
-Tok přechod stavu datovou sadu ve službě data factory je následující: čekání -> průběh/v – probíhá (ověřování) -> Připraveno nebo Failed.
+Tok přechod stavu datovou sadu ve službě data factory je následující: Čekání -> průběh/v – probíhá (ověřování) -> připravená nebo se nezdařilo.
 
 Řez se spustí v **čekání** stavu čekání na předběžné podmínky splněny, než se provede. Potom spuštěním aktivity spuštění a řez přejde do **probíhá** stavu. Provádění aktivity může úspěch nebo neúspěch. Řez je označen jako **připravené** nebo **neúspěšné**podle výsledků spuštění.
 

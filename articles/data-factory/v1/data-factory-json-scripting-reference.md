@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c5909c1f511d3a7816ebafc3ea8b326edb7f14e3
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c61612bad181eb600f449fea7eb22ca2abc17a12
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629493"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020451"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON Scripting Reference
 > [!NOTE]
@@ -48,7 +47,7 @@ Následující tabulka popisuje vlastnosti v rámci kanálu definici JSON:
 
 | Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-| jméno | Název kanálu. Zadejte název, který představuje akci, aktivity nebo kanálu je nakonfigurovaný<br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno | Název kanálu. Zadejte název, který představuje akci, aktivity nebo kanálu je nakonfigurovaný<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita nebo kanál slouží | Ne |
 | activities | Obsahuje seznam aktivit. | Ano |
 | start |Počáteční datum a čas pro kanál. Musí být v [formátu ISO](http://en.wikipedia.org/wiki/ISO_8601). Příklad: 2014-10-14T16:32:41. <br/><br/>Je možné zadat místního času, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00**-05:00`, což je odhad AM 6<br/><br/>Počáteční a koncové vlastnosti definujte aktivní období kanálu. Výstupní řezy se tvoří pouze s v tomto aktivní období. |Ne<br/><br/>Pokud zadáte hodnotu pro vlastnost end, musíte zadat hodnotu pro vlastnost start.<br/><br/>Počáteční a koncový čas může být oba prázdné k vytvoření kanálu. Je nutné zadat obě hodnoty se nastavit aktivní období kanálu ke spuštění. Pokud nezadáte počáteční a koncový čas při vytváření kanálu, můžete nastavit pomocí rutiny Set-AzureRmDataFactoryPipelineActivePeriod později. |
@@ -86,7 +85,7 @@ Následující tabulka popisuje vlastnosti v rámci aktivity definici JSON:
 
 | Značka | Popis | Požaduje se |
 | --- | --- | --- |
-| jméno |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
+| jméno |Název aktivity. Zadejte název, který představuje akci, který je nakonfigurovaný na aktivitu<br/><ul><li>Maximální počet znaků: 260</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Ano |
 | description |Text popisující, k čemu aktivita slouží. |Ne |
 | type |Určuje typ aktivity. Zobrazit [ÚLOŽIŠŤ dat](#data-stores) a [aktivity TRANSFORMACE dat](#data-transformation-activities) oddíly pro různé typy aktivit. |Ano |
 | vstupy |Vstupní tabulky použité aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ne pro HDInsightStreaming a SqlServerStoredProcedure aktivity <br/> <br/> Ano, pro všechny ostatní |
@@ -106,7 +105,7 @@ Zásady ovlivňují chování za běhu aktivity, konkrétně v případě, že z
 | retry |Integer<br/><br/>Maximální hodnota je 10 |0 |Počet opakování, než se zpracování dat pro řez je označen jako selhání. Spuštění aktivit pro datový řez je opakovat maximálně určený počet opakování. Opakování se provádí co nejdříve po selhání. |
 | timeout |Časový interval |00:00:00 |Časový limit aktivity. Příklad: 00:10:00 (implikuje časový limit 10 minut)<br/><br/>Pokud hodnotu nezadáte, nebo je 0, je neomezený časový limit.<br/><br/>Pokud doba zpracování dat na určitý řez překročí hodnota časového limitu, bude zrušen a se systém pokusí o opakování zpracování. Počet opakovaných pokusů závisí na vlastnosti opakování. Pokud dojde k vypršení časového limitu, je stav nastaven na vypršel časový limit. |
 | zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu.<br/><br/>Spuštění aktivit pro datový řez se spustí po zpoždění je za očekávanou dobu spuštění.<br/><br/>Příklad: 00:10:00 (implikuje prodlevě o délce 10 minut) |
-| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet opakování po delší době pokusů, než se řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěné ve longRetryInterval. Proto pokud je třeba zadat dobu mezi opakovanými pokusy, použijte opakování po delší době. Pokud je určen jak opakování, longRetry, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud budeme mít následující nastavení v zásadách aktivit:<br/>Zkuste: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez ke spuštění (stav Čeká) a pokaždé, když se nezdaří spuštění aktivity. Zpočátku bude pokusy o 3 po sobě jdoucích provedení. Po každý pokus o stav řezu bude opakovat. Po první 3 pokusy přes stav řezu bude LongRetry.<br/><br/>Po hodině (to znamená, longRetryInteval hodnota) bude další sadu 3 pokusy po sobě jdoucích spuštění. Potom by se stav řezu a byste se pokusit žádné další pokusy. Proto celkové 6 byly provedeny pokusy.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu bude připravená a nedochází k pokusům o žádné další pokusy.<br/><br/>opakování po delší době může použít v situacích, kdy závislá data přibývají Nedeterministický časy nebo celkové prostředí je v nestabilním stavu za zpracování dat dojde k. V takových případech to uděláte, opakované pokusy sebou nemusí pomáhá a tím po uplynutí čas výsledky v požadované výstupu.<br/><br/>Word upozornění: není nastavený pro opakování po delší době nebo longRetryInterval vysoké hodnoty. Obvykle vyšší hodnoty znamenají další systémové problémy. |
+| opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet opakování po delší době pokusů, než se řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěné ve longRetryInterval. Proto pokud je třeba zadat dobu mezi opakovanými pokusy, použijte opakování po delší době. Pokud je určen jak opakování, longRetry, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud budeme mít následující nastavení v zásadách aktivit:<br/>Zkuste to znovu: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez ke spuštění (stav Čeká) a pokaždé, když se nezdaří spuštění aktivity. Zpočátku bude pokusy o 3 po sobě jdoucích provedení. Po každý pokus o stav řezu bude opakovat. Po první 3 pokusy přes stav řezu bude LongRetry.<br/><br/>Po hodině (to znamená, longRetryInteval hodnota) bude další sadu 3 pokusy po sobě jdoucích spuštění. Potom by se stav řezu a byste se pokusit žádné další pokusy. Proto celkové 6 byly provedeny pokusy.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu bude připravená a nedochází k pokusům o žádné další pokusy.<br/><br/>opakování po delší době může použít v situacích, kdy závislá data přibývají Nedeterministický časy nebo celkové prostředí je v nestabilním stavu za zpracování dat dojde k. V takových případech to uděláte, opakované pokusy sebou nemusí pomáhá a tím po uplynutí čas výsledky v požadované výstupu.<br/><br/>Word upozornění: není nastavený pro opakování po delší době nebo longRetryInterval vysoké hodnoty. Obvykle vyšší hodnoty znamenají další systémové problémy. |
 | longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování po delší době |
 
 ### <a name="typeproperties-section"></a>části typeProperties
@@ -168,7 +167,7 @@ Je třeba počítat s následujícím:
 
 Zobrazit [ÚLOŽIŠŤ dat](#data-stores) části v tomto článku pro ukázky JSON, které ukazují, jak pomocí dat ukládat jako zdroje a jímky.    
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurz: kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Kopírování dat z Blob Storage do SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ### <a name="sample-transformation-pipeline"></a>Ukázkový kanál transformace
 V následujícím ukázkovém kanálu je v části **activities** jedna aktivita typu **HDInsightHive**. V této ukázce [aktivita HDInsight Hive](data-factory-hive-activity.md) transformuje data ze služby Azure Blob Storage tak, že v clusteru Azure HDInsight Hadoop spustí soubor skriptu Hive. 
@@ -226,7 +225,7 @@ Je třeba počítat s následujícím:
 
 Zobrazit [aktivity TRANSFORMACE dat](#data-transformation-activities) části v tomto článku pro ukázky JSON, které definují transformace aktivity v kanálu.
 
-Kompletní postup vytváření tohoto kanálu najdete v části [kurz: vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
+Kompletní postup vytváření tohoto kanálu najdete v části [kurzu: Vytvoření prvního kanálu pro zpracování dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="linked-service"></a>Propojená služba
 Základní struktura pro definici propojené služby je následujícím způsobem:
@@ -300,9 +299,9 @@ Každý sloupec v **struktura** oddíl obsahuje následující vlastnosti:
 | jméno |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
 | Jazyková verze |.NET na základě jazykové verze se použije, když typ je zadán a je typ formátu .NET `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
-| Formát |Formátovací řetězec se používá, když typ je zadána a je typ formátu .NET `Datetime` nebo `Datetimeoffset`. |Ne |
+| formát |Formátovací řetězec se používá, když typ je zadána a je typ formátu .NET `Datetime` nebo `Datetimeoffset`. |Ne |
 
-V následujícím příkladu datová sada obsahuje tři sloupce `slicetimestamp`, `projectname`, a `pageviews` a jsou typu: řetězec, řetězec a desetinných v uvedeném pořadí.
+V následujícím příkladu datová sada obsahuje tři sloupce `slicetimestamp`, `projectname`, a `pageviews` a jsou typu: Řetězec, řetězec a desetinných v uvedeném pořadí.
 
 ```json
 structure:  
@@ -317,11 +316,11 @@ Následující tabulka popisuje vlastnosti, které můžete použít v **dostupn
 
 | Vlastnost | Popis | Požaduje se | Výchozí |
 | --- | --- | --- | --- |
-| frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: minuta, hodina, dne, týdne, měsíce |Ano |Není k dispozici |
-| interval |Určuje multiplikátor pro četnost<br/><br/>"Interval četnosti x" Určuje, jak často se řez.<br/><br/>Pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b>: Pokud chcete zadat frekvenci jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |Není k dispozici |
+| frequency |Určuje časovou jednotku pro produkční prostředí řez datové sady.<br/><br/><b>Podporované frekvence</b>: Minuta, hodina, den, týden, měsíc |Ano |Není k dispozici |
+| interval |Určuje multiplikátor pro četnost<br/><br/>"Interval četnosti x" Určuje, jak často se řez.<br/><br/>Pokud potřebujete datové sady na průřezem podle počtu hodin, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b> Pokud chcete zadat frekvenci jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |Není k dispozici |
 | Styl |Určuje, zda by měl být řez na začátek/konec intervalu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na měsíc, řez na poslední den v měsíci. Pokud je nastaven styl StartOfInterval, řez v první den v měsíci.<br/><br/>Pokud je nastaven styl EndOfInterval Frequency je nastavená na den, řez za poslední hodinu dne.<br/><br/>Je-li Frequency je nastavená na Hour a je nastaven styl EndOfInterval, řez je vytvořen na konec hodiny. Například pro určitý řez pro dobu 13: 00 – 2 hodin řez ve 14. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/><b>Poznámka:</b>: Pokud AnchorDateTime má částí data, která jsou podrobnější než je četnost pak podrobnější částí se ignorují. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hour a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>pak bude <b>minuty a sekundy</b> části AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
-| Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/><b>Poznámka:</b>: Pokud nejsou zadány anchorDateTime a posun, výsledek je kombinované posun. |Ne |Není k dispozici |
+| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datové sady. <br/><br/><b>Poznámka:</b> Pokud je AnchorDateTime částí data, která jsou podrobnější než je četnost podrobnější částí ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hour a interval je: (1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b> pak bude <b>minuty a sekundy</b> části AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
+| Posun |Interval TimeSpan, podle kterého se posune začátku a konce všechny řezy datové sady. <br/><br/><b>Poznámka:</b> Pokud nejsou zadány anchorDateTime a posun, výsledkem je kombinované shift. |Ne |Není k dispozici |
 
 Následující části Dostupnost určuje, zda výstupní datové sady vyprodukované každou hodinu (nebo) vstupní datová sada je k dispozici po hodinách:
 
@@ -407,7 +406,7 @@ Kliknutím na odkaz úložiště, které vás zajímají zobrazíte schémat JSO
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="linked-service"></a>Propojená služba
-Existují dva typy propojené služby: propojenou službu Azure Storage a propojená služba Azure Storage SAS.
+Existují dva typy propojené služby: Propojená služba Azure Storage a Azure Storage SAS propojené služby.
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:  
@@ -461,8 +460,8 @@ K definování datové sady objektů Blob v Azure, nastavte **typ** datové sady
 | folderPath |Cesta k kontejner a složku v úložišti objektů blob. Příklad: myblobcontainer\myblobfolder\ |Ano |
 | fileName |Název objektu blob. Název souboru je volitelný a malá a velká písmena.<br/><br/>Pokud zadáte filename, aktivity (včetně kopie) funguje na konkrétní objekt Blob.<br/><br/>Pokud není zadán název souboru, zahrnuje kopírování všech objektů BLOB v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy vlastnost je volitelná. Slouží k určení dynamické folderPath a název souboru pro data časových řad. Například může být parametrizován folderPath pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 #### <a name="example"></a>Příklad:
 
@@ -644,8 +643,8 @@ Chcete-li definovat datová sada služby Azure Data Lake Store, nastavte **typ**
 | folderPath |Uložit cestu pro kontejner a složku ve službě Azure Data Lake. |Ano |
 | fileName |Název souboru ve službě Azure Data Lake store. Název souboru je volitelný a malá a velká písmena. <br/><br/>Pokud zadáte filename, aktivity (včetně kopie) pracuje v konkrétní soubor.<br/><br/>Pokud není zadán název souboru, kopie zahrne všechny soubory v folderPath pro vstupní datovou sadu.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy vlastnost je volitelná. Slouží k určení dynamické folderPath a název souboru pro data časových řad. Například může být parametrizován folderPath pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 #### <a name="example"></a>Příklad:
 ```json
@@ -785,7 +784,7 @@ Další informace najdete v tématu [konektor Azure Data Lake Store](data-factor
 ### <a name="linked-service"></a>Propojená služba
 K definování služby Azure Cosmos DB propojenou službu, nastavte **typ** propojené služby pro **DocumentDb**a zadejte následující vlastnosti v **typeProperties** části:  
 
-| **Vlastnost** | **Popis** | **Vyžaduje** |
+| **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k databázi Azure Cosmos DB. |Ano |
 
@@ -807,7 +806,7 @@ Další informace najdete v tématu [konektor služby Azure Cosmos DB](data-fact
 ### <a name="dataset"></a>Datová sada
 Chcete-li definovat datová sada služby Azure Cosmos DB, nastavte **typ** datové sady na **DocumentDbCollection**a zadejte následující vlastnosti v **typeProperties** části: 
 
-| **Vlastnost** | **Popis** | **Vyžaduje** |
+| **Vlastnost** | **Popis** | **Požadováno** |
 | --- | --- | --- |
 | collectionName |Název kolekce Azure Cosmos DB. |Ano |
 
@@ -836,7 +835,7 @@ Další informace najdete v tématu [konektor služby Azure Cosmos DB](data-fact
 Pokud se kopírování dat ze služby Azure Cosmos DB, nastavte **typ zdroje** aktivity kopírování na **DocumentDbCollectionSource**a zadejte následující vlastnosti v **zdroj**části:
 
 
-| **Vlastnost** | **Popis** | **Povolené hodnoty** | **Vyžaduje** |
+| **Vlastnost** | **Popis** | **Povolené hodnoty** | **Požadováno** |
 | --- | --- | --- | --- |
 | query |Zadejte dotaz, který bude číst data. |Řetězce podporovány službou Azure Cosmos DB dotazu. <br/><br/>Příklad: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Ne <br/><br/>Pokud není zadán, příkaz SQL, která se spustí: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |Speciální znakem k označení, že je vnořená dokumentu |Libovolný znak. <br/><br/>Azure Cosmos DB je úložiště NoSQL pro dokumenty JSON, ve kterém jsou povolené vnořené struktury. Azure Data Factory umožňuje uživateli k označení hierarchie prostřednictvím nestingSeparator, což je "." v předchozích příkladech. Oddělovačem, aktivita kopírování bude generovat objekt "Name" s tři podřízené prvky nejprve, střední a příjmení podle "Name.First", "Name.Middle" a "Name.Last" v definici tabulky. |Ne |
@@ -882,10 +881,10 @@ Pokud se kopírování dat ze služby Azure Cosmos DB, nastavte **typ zdroje** a
 ### <a name="azure-cosmos-db-collection-sink-in-copy-activity"></a>Azure Cosmos DB kolekce jímky v aktivitě kopírování
 Pokud se kopírování dat do služby Azure Cosmos DB, nastavte **jímky typu** aktivity kopírování na **DocumentDbCollectionSink**a zadejte následující vlastnosti v **jímky** oddílu :
 
-| **Vlastnost** | **Popis** | **Povolené hodnoty** | **Vyžaduje** |
+| **Vlastnost** | **Popis** | **Povolené hodnoty** | **Požadováno** |
 | --- | --- | --- | --- |
 | nestingSeparator |Je potřeba speciálního znaku v název zdrojového sloupce označíte daný vnořený dokument. <br/><br/>Například výše: `Name.First` ve výstupu tabulky vytvoří následující strukturu JSON v dokumentu databáze Cosmos DB:<br/><br/>"Name": {<br/>    "First": "John"<br/>}, |Znak, který se používá k oddělení úrovní vnoření.<br/><br/>Výchozí hodnota je `.` (tečka). |Znak, který se používá k oddělení úrovní vnoření. <br/><br/>Výchozí hodnota je `.` (tečka). |
-| WriteBatchSize |Počet paralelních žádostí do služby Azure Cosmos DB k vytváření dokumentů.<br/><br/>Při kopírování dat ze služby Azure Cosmos DB pomocí této vlastnosti můžete optimalizovat výkon. Lepšího výkonu můžete očekávat, když zvýšíte writeBatchSize, protože se odesílají další paralelní požadavky na službu Azure Cosmos DB. Ale budete muset vyhnout omezení, která může vyvolat chybovou zprávu: "Žádosti je velká míra".<br/><br/>Omezení je určeno pomocí několika faktory, včetně velikosti dokumentů, počet podmínek v dokumentech, indexování zásad cílovou kolekci, atd. Pro operace kopírování, vám pomůže lépe kolekce (například S3) mají největší propustnost, které jsou k dispozici (požadavek 2 500 jednotek za sekundu). |Integer |Ne (výchozí: 5) |
+| WriteBatchSize |Počet paralelních žádostí do služby Azure Cosmos DB k vytváření dokumentů.<br/><br/>Při kopírování dat ze služby Azure Cosmos DB pomocí této vlastnosti můžete optimalizovat výkon. Lepšího výkonu můžete očekávat, když zvýšíte writeBatchSize, protože se odesílají další paralelní požadavky na službu Azure Cosmos DB. Ale budete muset vyhnout omezení, která může vyvolat chybovou zprávu: "Rychlost požadavků je velká".<br/><br/>Omezení je určeno pomocí několika faktory, včetně velikosti dokumentů, počet podmínek v dokumentech, indexování zásad cílovou kolekci, atd. Pro operace kopírování, vám pomůže lépe kolekce (například S3) mají největší propustnost, které jsou k dispozici (požadavek 2 500 jednotek za sekundu). |Integer |Ne (výchozí: 5) |
 | writeBatchTimeout |Čekací doba dokončení před vypršením časového limitu operace. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 #### <a name="example"></a>Příklad:
@@ -1392,7 +1391,7 @@ Další informace najdete v tématu [konektor Azure Search](data-factory-azure-s
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
 ### <a name="linked-service"></a>Propojená služba
-Existují dva typy propojené služby: propojenou službu Azure Storage a propojená služba Azure Storage SAS.
+Existují dva typy propojené služby: Propojená služba Azure Storage a Azure Storage SAS propojené služby.
 
 #### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
 K propojení účtu Azure storage do služby data factory pomocí **klíč účtu**, vytvořte propojenou službu Azure Storage. K definování služby Azure Storage propojenou službu, nastavte **typ** propojené služby pro **AzureStorage**. Potom můžete zadat následující vlastnosti v **typeProperties** části:  
@@ -1708,7 +1707,7 @@ K definování IBM DB2 propojenou službu, nastavte **typ** propojené služby p
 | server |Název serveru DB2. |Ano |
 | databáze |Název databáze DB2. |Ano |
 | schéma |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi DB2. Možné hodnoty jsou: Anonymous, Basic a Windows. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi DB2. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
@@ -2115,7 +2114,7 @@ K definování PostgreSQL propojenou službu, nastavte **typ** propojené služb
 | server |Název serveru PostgreSQL. |Ano |
 | databáze |Název databáze PostgreSQL. |Ano |
 | schéma |Název schématu databáze. Název schématu je velká a malá písmena. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty jsou: Anonymous, Basic a Windows. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi PostgreSQL. |Ano |
@@ -2235,7 +2234,7 @@ server | Název serveru, na kterém se nachází instance SAP BW. | řetězec | 
 systemNumber | Číslo systému systému SAP BW. | Dvěma číslicemi desetinné číslo reprezentované jako řetězec. | Ano
 ID klienta | ID klienta v systému SAP W klienta. | Tři číslice desetinné číslo reprezentované jako řetězec. | Ano
 uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro uživatele. | řetězec | Ano
+heslo | Heslo pro tohoto uživatele. | řetězec | Ano
 Název brány | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP BW. | řetězec | Ano
 encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
 
@@ -2344,7 +2343,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | řetězec | Ano
 authenticationType. | Typ ověřování. | řetězec. "Základní" nebo "Windows" | Ano 
 uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP | řetězec | Ano
-heslo | Heslo pro uživatele. | řetězec | Ano
+heslo | Heslo pro tohoto uživatele. | řetězec | Ano
 Název brány | Název brány, který služba Data Factory měla použít pro připojení k místní instanci SAP HANA. | řetězec | Ano
 encryptedCredential | Řetězec, který šifrované přihlašovací údaje. | řetězec | Ne
 
@@ -2673,7 +2672,7 @@ K definování Sybase propojenou službu, nastavte **typ** propojené služby pr
 | server |Název serveru Sybase. |Ano |
 | databáze |Název databáze Sybase. |Ano |
 | schéma |Název schématu databáze. |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi Sybase. Možné hodnoty jsou: Anonymous, Basic a Windows. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi Sybase. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Sybase. |Ano |
@@ -2791,7 +2790,7 @@ K definování Teradata propojenou službu, nastavte **typ** propojené služby 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | server |Název serveru Teradata. |Ano |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty jsou: Anonymous, Basic a Windows. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi Teradata. Možné hodnoty: Anonymní, základní a Windows. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno, pokud se používá ověřování Basic nebo Windows. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k místní databázi Teradata. |Ano |
@@ -3035,7 +3034,7 @@ K definování MongoDB propojenou službu, nastavte **typ** propojené služby p
 | port |Port TCP, který MongoDB server používá k naslouchání pro připojení klientů. |Volitelné, výchozí hodnota: 27017 |
 | authenticationType. |Basic nebo Anonymous. |Ano |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
-| heslo |Heslo pro uživatele. |Ano (Pokud se používá základní ověřování). |
+| heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
 | databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
 | Název brány |Název brány, který přistupuje k úložišti. |Ano |
@@ -3179,9 +3178,9 @@ Chcete-li definovat datová sada služby Amazon S3, nastavte **typ** datové sad
 | bucketName |Název sektoru S3. |Řetězec |Ano |
 | key |Klíč objektu S3. |Řetězec |Ne |
 | Předpona |Předpona klíče objektu S3. Objekty, jejichž klíče začínat touto předponou vybráno. Platí pouze v případě, klíč je prázdný. |Řetězec |Ne |
-| verze |Verze objektu S3, pokud je povolená Správa verzí S3. |Řetězec |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne | |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne | |
+| version |Verze objektu S3, pokud je povolená Správa verzí S3. |Řetězec |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne | |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne | |
 
 
 > [!NOTE]
@@ -3347,7 +3346,7 @@ Systém souborů v místním můžete propojit s Azure data factory s **s místn
 }
 ```
 
-#### <a name="example-using-encryptedcredential"></a>Příklad: Použití encryptedcredential
+#### <a name="example-using-encryptedcredential"></a>Příklad: Pomocí encryptedcredential
 
 ```json
 {
@@ -3371,11 +3370,11 @@ K definování datové sady systému souborů, nastavte **typ** datové sady na 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | folderPath |Určuje dílčí cestou ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
-| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Ne |
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt` (Příklad: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt) |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "fileFilter": "* .log"<br/>Příklad 2: "fileFilter": 2016 - 1-?. TXT"<br/><br/>Všimněte si, že fileFilter se dá použít pro vstupní datovou sadu sdílení souborů. |Ne |
 | partitionedBy |PartitionedBy můžete použít k určení dynamické folderPath/fileName pro data časových řad. Příkladem je folderPath s parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**; a jsou podporované úrovně: **Optimal** a **nejrychlejší**. Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**; a jsou podporované úrovně: **Optimální** a **nejrychlejší**. Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze současně použít.
@@ -3494,7 +3493,7 @@ Pokud data kopírujete do systému souborů, nastavte **jímky typu** aktivity k
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |**PreserveHierarchy:** zachová hierarchií souborů v cílové složce. To znamená relativní cestu ke zdrojové složce zdrojový soubor je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/>**FlattenHierarchy:** všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název nebo objekt blob název souboru, název sloučený soubor je zadaný název. V opačném případě je název automaticky generovaného souboru. |Ne |
+| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo systému souborů. |**PreserveHierarchy:** Zachová hierarchií souborů v cílové složce. To znamená relativní cestu ke zdrojové složce zdrojový soubor je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadán název nebo objekt blob název souboru, název sloučený soubor je zadaný název. V opačném případě je název automaticky generovaného souboru. |Ne |
 Auto-
 
 #### <a name="example"></a>Příklad:
@@ -3559,7 +3558,7 @@ K definování FTP propojenou službu, nastavte **typ** propojené služby pro *
 | enableSsl |Určete, jestli chcete pomocí funkce FTP přes kanál SSL/TLS. |Ne |true (pravda) |
 | enableServerCertificateValidation |Určuje, zda povolit ověření certifikátu serveru SSL při použití FTP přes kanál SSL/TLS. |Ne |true (pravda) |
 
-#### <a name="example-using-anonymous-authentication"></a>Příklad: Použití anonymní ověřování
+#### <a name="example-using-anonymous-authentication"></a>Příklad: Anonymní ověřování
 
 ```json
 {
@@ -3591,7 +3590,7 @@ K definování FTP propojenou službu, nastavte **typ** propojené služby pro *
 }
 ```
 
-#### <a name="example-using-port-enablessl-enableservercertificatevalidation"></a>Příklad: Použití portu, enableSsl, enableServerCertificateValidation
+#### <a name="example-using-port-enablessl-enableservercertificatevalidation"></a>Příklad: Použití portů, enableSsl, enableServerCertificateValidation
 
 ```json
 {
@@ -3611,7 +3610,7 @@ K definování FTP propojenou službu, nastavte **typ** propojené služby pro *
 }
 ```
 
-#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>Příklad: Použití encryptedCredential pro ověřování a brány
+#### <a name="example-using-encryptedcredential-for-authentication-and-gateway"></a>Příklad: Pomocí encryptedCredential pro ověřování a brány
 
 ```json
 {
@@ -3639,9 +3638,9 @@ Chcete-li definovat datová sada služby FTP, nastavte **typ** datové sady na *
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**; a jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
-| useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: True. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**; a jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: Hodnota TRUE. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze použít současně.
@@ -3735,7 +3734,7 @@ K definování HDFS propojenou službu, nastavte **typ** propojené služby pro 
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k HDFS. |Ano |
 | encryptedCredential |[Nové AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) výstup přihlašovacích údajů pro přístup. |Ne |
 
-#### <a name="example-using-anonymous-authentication"></a>Příklad: Použití anonymní ověřování
+#### <a name="example-using-anonymous-authentication"></a>Příklad: Anonymní ověřování
 
 ```json
 {
@@ -3752,7 +3751,7 @@ K definování HDFS propojenou službu, nastavte **typ** propojené služby pro 
 }
 ```
 
-#### <a name="example-using-windows-authentication"></a>Příklad: Použití ověřování Windows
+#### <a name="example-using-windows-authentication"></a>Příklad: Ověřování Windows
 
 ```json
 {
@@ -3780,8 +3779,8 @@ K definování datové sady HDFS, nastavte **typ** datové sady na **sdílení s
 | folderPath |Cesta ke složce. Příklad: `myfolder`<br/><br/>Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Příklad: folder\subfolder, určete složku\\\\podsložky a d:\samplefolder, zadejte d:\\\\ukázková_složka.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Příklad: folderPath s parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze použít současně.
@@ -3865,7 +3864,7 @@ K definování protokolu SFTP propojenou službu, nastavte **typ** propojené sl
 | --- | --- | --- | --- |
 | hostitel | Název nebo IP adresa serveru SFTP. |Ano |
 | port |Port, na kterém naslouchá SFTP server. Výchozí hodnota je: 21 |Ne |
-| authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **základní**, **SshPublicKey**. <br><br> Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
+| authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **Základní**, **SshPublicKey**. <br><br> Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
 | skipHostKeyValidation | Určete, jestli chcete přeskočit ověřování klíče hostitele. | Ne. Výchozí hodnota: NEPRAVDA |
 | Mělo | Zadejte hlas klíče hostitele. | Ano, pokud `skipHostKeyValidation` je nastavena na hodnotu false.  |
 | Název brány |Název brány správy dat pro připojení místnímu serveru SFTP. | Ano, pokud se kopírování dat z místní server SFTP. |
@@ -3899,7 +3898,7 @@ Chcete-li použít základní ověřování, nastavte `authenticationType` jako 
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>Příklad: **základní ověřování s šifrovaném přihlašovacím údaji**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>Příklad: **Základní ověřování s šifrovaném přihlašovacím údaji**
 
 ```json
 {
@@ -3981,9 +3980,9 @@ K definování datové sady SFTP, nastavte **typ** datové sady na **sdílení s
 | fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, ** ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
-| useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: True. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: Hodnota TRUE. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze použít současně.
@@ -4071,7 +4070,7 @@ K definování HTTP propojenou službu, nastavte **typ** propojené služby pro 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | url | Základní adresa URL webového serveru | Ano |
-| authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou: **anonymní**, **základní**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Naleznete v oddílech dál v této tabulce na další vlastnosti a ukázky JSON pro typy ověřování v uvedeném pořadí. | Ano |
+| authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou: **Anonymní**, **základní**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Naleznete v oddílech dál v této tabulce na další vlastnosti a ukázky JSON pro typy ověřování v uvedeném pořadí. | Ano |
 | enableServerCertificateValidation | Určuje, zda povolit ověření certifikátu serveru SSL, pokud zdrojem je protokol HTTPS webového serveru | Ne, výchozí hodnota je true |
 | Název brány | Název brány správy dat pro připojení ke zdroji v místním HTTP. | Ano, pokud se kopírování dat z místních zdroje HTTP. |
 | encryptedCredential | Šifrované přihlašovací údaje pro přístup ke koncovému bodu HTTP. Automaticky generované při konfiguraci ověřovací údaje v Průvodci kopírovat nebo dialogové okno automaticky otevírané okno ClickOnce. | Ne. Platí pouze při kopírování dat z místní server HTTP. |
@@ -4099,7 +4098,7 @@ Nastavte `authenticationType` jako `Basic`, `Digest`, nebo `Windows`a zadejte n�
 }
 ```
 
-#### <a name="example-using-clientcertificate-authentication"></a>Příklad: Použití ověřování ClientCertificate
+#### <a name="example-using-clientcertificate-authentication"></a>Příklad: Pomocí ověřování ClientCertificate
 
 Chcete-li použít základní ověřování, nastavte `authenticationType` jako `ClientCertificate`a zadejte následující požadované vlastnosti kromě konektor HTTP obecných zavedené výše:
 
@@ -4162,8 +4161,8 @@ Chcete-li definovat datová sada HTTP, nastavte **typ** datové sady na **Http**
 | requestMethod | Metoda protokolu HTTP. Povolené hodnoty jsou **získat** nebo **příspěvek**. | Ne. Výchozí hodnota je `GET`. |
 | additionalHeaders | Další hlavičky požadavků HTTP. | Ne |
 | Includesearchresults: true | Obsah žádosti protokolu HTTP. | Ne |
-| Formát | Pokud chcete jednoduše **načtení dat z koncového bodu HTTP jako-je** bez parsování ho, přeskočte tento formát nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, ** OrcFormat**, **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| formát | Pokud chcete jednoduše **načtení dat z koncového bodu HTTP jako-je** bez parsování ho, přeskočte tento formát nastavení. <br><br> Pokud chcete analyzovat obsah odpovědi HTTP při kopírování, jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 #### <a name="example-using-the-get-default-method"></a>Příklad: použití metody GET (výchozí)
 
@@ -4440,7 +4439,7 @@ K definování ODBC propojenou službu, nastavte **typ** propojené služby pro 
 | --- | --- | --- |
 | připojovací řetězec |– Přístup k pověření část připojovací řetězec a případně zašifrované přihlašovací údaje. Příklady v následujících částech. |Ano |
 | pověření |Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve vlastnosti specifické pro ovladač formátu. Příklad: "Uid =<user ID>; PWD =<password>; RefreshToken =<secret refresh token>; ". |Ne |
-| authenticationType. |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty jsou: anonymní a Basic. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k úložišti dat rozhraní ODBC. Možné hodnoty: Anonymní a Basic. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
 | Název brány |Název brány, který služba Data Factory měla použít pro připojení k úložišti dat rozhraní ODBC. |Ano |
@@ -4479,7 +4478,7 @@ Můžete šifrovat přihlašovací údaje pomocí [New-AzureRMDataFactoryEncrypt
 }
 ```
 
-#### <a name="example-using-anonymous-authentication"></a>Příklad: Použití anonymní ověřování
+#### <a name="example-using-anonymous-authentication"></a>Příklad: Anonymní ověřování
 
 ```json
 {
@@ -4838,10 +4837,10 @@ Následující tabulka obsahuje popis vlastností použitých v definici JSON pr
 | type |Vlastnost type by měla být nastavená na **HDInsightOnDemand**. |Ano |
 | clusterSize |Počet pracovních procesů a datových uzlů do clusteru. Vytvoření clusteru HDInsight s 2 hlavní uzly spolu s počtem uzlů pracovního procesu, kterou zadáte pro tuto vlastnost. Uzly mají velikost Standard_D3, který má 4 jádra, 4 pracovní uzel clusteru trvá 24 jader (4\*4 = 16 jader pro pracovní uzly a navíc 2\*4 = 8 jader pro hlavní uzly). Zobrazit [založených na Linuxu vytvoření Hadoop clusterů v HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md) podrobnosti na úrovni Standard_D3. |Ano |
 | TimeToLive |Povolené prodlevy pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane aktivní cluster HDInsight na vyžádání po dokončení aktivity spustit, pokud v clusteru nejsou žádné aktivní úlohy.<br/><br/>Například pokud spuštění aktivit trvá 6 minut a timetolive nastavena na 5 minut, clusteru zůstává aktivní po 5 minutách od 6 minut výpočetního aktivity spustit. Pokud se spuštění další aktivity provádí s oknem 6 minut, je zpracován programovacím modelem stejného clusteru.<br/><br/>Vytváření clusteru HDInsight na vyžádání je náročná operace (akce může trvat), takže použití tohoto nastavení jako potřebné ke zlepšení výkonu služby data factory pomocí opakovaného použití clusteru služby HDInsight na vyžádání.<br/><br/>Pokud hodnota timetolive nastavíte na 0, cluster odstraní jako aktivita spustit zpracované. Na druhé straně Pokud nastavíte vysokou hodnotu, clusteru může zůstat nečinná, zbytečně výsledkem vysoké náklady. Proto je důležité, že nastavíte příslušnou hodnotu na základě vašich potřeb.<br/><br/>Více kanálů můžou sdílet stejnou instanci clusteru HDInsight na vyžádání, pokud je odpovídajícím způsobem nastavit hodnoty vlastnosti timetolive |Ano |
-| verze |Verze clusteru HDInsight. Podrobnosti najdete v tématu [podporované verze HDInsight ve službě Azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Ne |
+| version |Verze clusteru HDInsight. Podrobnosti najdete v tématu [podporované verze HDInsight ve službě Azure Data Factory](data-factory-compute-linked-services.md#supported-hdinsight-versions-in-azure-data-factory). |Ne |
 | linkedServiceName |Propojená služba clusteru na vyžádání používané pro ukládání a zpracování dat v Azure Storage. <p>V současné době nelze vytvořit cluster HDInsight na vyžádání, která používá Azure Data Lake Store jako úložiště. Pokud chcete uložit výsledných dat z HDInsight zpracování do Azure Data Lake Store, použijte aktivitu kopírování ke zkopírování dat z Azure Blob Storage do Azure Data Lake Store.</p>  | Ano |
 | additionalLinkedServiceNames |Určuje další účty úložiště pro HDInsight propojenou službu tak, aby služba Data Factory můžete zaregistrovat vaším jménem. |Ne |
-| osType |Typ operačního systému. Povolené hodnoty jsou: (výchozí) Windows a Linux |Ne |
+| osType |Typ operačního systému. Povolené hodnoty jsou: Windows (výchozí) a Linux |Ne |
 | hcatalogLinkedServiceName |Název serveru Azure SQL propojenou službu, které odkazují na databázi HCatalog. Cluster HDInsight na vyžádání se vytvoří s využitím Azure SQL database jako metastore. |Ne |
 
 ### <a name="json-example"></a>Příklad JSON
@@ -4931,14 +4930,14 @@ Následující tabulka obsahuje popis vlastností použitých v definici Azure J
 ```
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
-Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Learning dávkového vyhodnocování koncového bodu pomocí služby data factory. Aktivity transformace dat dvě, které můžou běžet na této propojené službě: [aktivita provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity), [aktivita prostředku aktualizace Machine Learning](#machine-learning-update-resource-activity). 
+Vytvoření služby Azure Machine Learning propojený zaregistrovat Machine Learning dávkového vyhodnocování koncového bodu pomocí služby data factory. Aktivity transformace dat dvě, které lze spustit na tuto propojenou službu: [Aktivita provedení dávky služby Machine Learning](#machine-learning-batch-execution-activity), [aktivita aktualizace prostředku služby Machine Learning](#machine-learning-update-resource-activity). 
 
 ### <a name="linked-service"></a>Propojená služba
 Následující tabulka obsahuje popis vlastností použitých v definici Azure JSON ze služby Azure Machine Learning propojený.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Typ |Vlastnost type by měla být nastavená na: **AzureML**. |Ano |
+| Typ |Vlastnost type by měla být nastavená na: **Azure ml**. |Ano |
 | mlEndpoint |Adresu URL dávkového bodování. |Ano |
 | ApiKey |Rozhraní API publikované pracovního prostoru modelu. |Ano |
 
@@ -5352,7 +5351,7 @@ Zadejte následující vlastnosti v definici JSON aktivity Spark. Vlastnost typu
 | argumenty | Seznam argumentů příkazového řádku pro program Sparku. | Ne | 
 | proxyUser | Uživatelský účet zosobnění spuštění programu Sparku | Ne | 
 | sparkConfig | Vlastnosti konfigurace Spark. | Ne | 
-| getDebugInfo | Určuje, kdy soubory protokolu Spark se zkopírují do služby Azure storage používá HDInsight cluster (nebo) je uvedli v sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádný. | Ne | 
+| getDebugInfo | Určuje, kdy soubory protokolu Spark se zkopírují do služby Azure storage používá HDInsight cluster (nebo) je uvedli v sparkJobLinkedService. Povolené hodnoty: NONE, vždy, nebo selhání. Výchozí hodnota: Žádné. | Ne | 
 | sparkJobLinkedService | Azure Storage propojenou službu, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud žádnou hodnotu pro tuto vlastnost nezadáte, použije se úložiště spojené s clusterem HDInsight. | Ne |
 
 ### <a name="json-example"></a>Příklad JSON
@@ -5447,7 +5446,7 @@ V tomto příkladu má datovou sadu aktivita **MLSqlInput** jako vstup a **MLSql
 }
 ```
 
-V tomto příkladu JSON v nasazované službě Azure Machine Learning Web používá čtečky a zapisovače modulu pro čtení a zápis dat z/do Azure SQL Database. Tato webová služba poskytuje následující čtyři parametry: název serveru, název databáze, název serveru uživatelského účtu a heslo uživatelského účtu serveru databáze.
+V tomto příkladu JSON v nasazované službě Azure Machine Learning Web používá čtečky a zapisovače modulu pro čtení a zápis dat z/do Azure SQL Database. Tato webová služba poskytuje následující čtyři parametry:  Název databázového serveru, název databáze, název serveru uživatelského účtu a heslo uživatelského účtu serveru.
 
 > [!NOTE]
 > Pouze vstupů a výstupů aktivity AzureMLBatchExecution lze předat jako parametry webové služby. Například ve výše uvedeném fragmentu JSON MLSqlInput je vstupní hodnota pro AzureMLBatchExecution aktivity, které je předáno jako vstup do webové služby prostřednictvím parametru webServiceInput.

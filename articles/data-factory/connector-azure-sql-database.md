@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: jingwang
-ms.openlocfilehash: cd137462235431f0a0c1562e15a32951fe2a41c5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: fcf5b5d0064292c11abeb361b0c046b5a3388457
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346696"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025687"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure SQL Database s použitím služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -63,8 +62,8 @@ Pro služby Azure SQL Database, která je propojená se podporují tyto vlastnos
 Různými typy ověřování najdete v následujících částech na požadavky a ukázky JSON v uvedeném pořadí:
 
 - [Ověřování SQL](#sql-authentication)
-- [Azure ověřování tokenu aplikací AD: instanční objekt služby](#service-principal-authentication)
-- [Azure AD aplikace ověřování pomocí tokenu: spravovaných identit pro prostředky Azure](#managed-identity)
+- [Azure AD ověřování tokenu aplikací: Instanční objekt služby](#service-principal-authentication)
+- [Azure AD ověřování tokenu aplikací: Spravované identity pro prostředky Azure](#managed-identity)
 
 >[!TIP]
 >Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
@@ -503,7 +502,7 @@ Při kopírování dat do Azure SQL Database, můžete také nakonfigurovat a vy
 
 Uloženou proceduru můžete použít, když integrovaná funkce kopírování mechanismy neslouží účel. Se obvykle používá při upsert, insert a update nebo další zpracování je třeba provést před posledním vložení zdrojová data do cílové tabulky. Některé příklady vysokého jsou sloučení sloupců, vyhledat další hodnoty a vložení do více než jednou tabulkou.
 
-Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve službě Azure SQL Database pomocí uložené procedury. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ProfileID**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
+Následující příklad ukazuje, jak provést funkcí upsert do tabulky ve službě Azure SQL Database pomocí uložené procedury. Předpokládejme, který vstupní data a jímku **marketingové** tabulka jednotlivých obsahovat tři sloupce: **ID profilu**, **stavu**, a **kategorie**. Proveďte upsert na základě **ProfileID** sloupce a použijte je jenom pro konkrétní kategorie.
 
 #### <a name="output-dataset"></a>Výstupní datová sada
 

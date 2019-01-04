@@ -10,17 +10,16 @@ ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736406"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015810"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání programů Spark ze služby Azure Data Factory kanálů
 
@@ -46,7 +45,7 @@ Aktivita Spark je jedním z [aktivity transformace dat](data-factory-data-transf
 > - Aktivita Spark nepodporuje clustery HDInsight Spark, používající Azure Data Lake Store jako primární úložiště.
 > - Aktivity Spark se podporuje jenom současní (vlastní) clustery HDInsight Spark. HDInsight propojené služby na vyžádání nepodporuje.
 
-## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Návod: Vytvoření kanálu s aktivitou Sparku
+## <a name="walkthrough-create-a-pipeline-with-a-spark-activity"></a>Průvodce: Vytvoření kanálu s aktivitou Sparku
 Tady jsou obvyklé kroky k vytvoření kanálu datové továrny pomocí aktivity Sparku: 
 
 * Vytvoření datové továrny
@@ -74,7 +73,7 @@ Pokud chcete vytvořit datovou továrnu, postupujte následovně:
 1. Na **nová datová továrna** okně v části **název**, zadejte **SparkDF**.
 
    > [!IMPORTANT]
-   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat SparkDF není k dispozici", změňte název datové továrny. Například použijte yournameSparkDFdate a znovu vytvořte datovou továrnu. Další informace o pravidlech pojmenování najdete v tématu [Data Factory: Pravidla pojmenování](data-factory-naming-rules.md).
+   > Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chyba "název objektu pro vytváření dat SparkDF není k dispozici", změňte název datové továrny. Například použijte yournameSparkDFdate a znovu vytvořte datovou továrnu. Další informace o pravidlech pojmenování najdete v tématu [služby Data Factory: Pravidla pojmenování](data-factory-naming-rules.md).
 
 1. V části **Předplatné** vyberte předplatné Azure, ve kterém chcete datovou továrnu vytvořit.
 
@@ -338,7 +337,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON.
 | Název třídy | Hlavní třída Java/Spark vaší aplikace. | Ne |
 | argumenty | Seznam argumentů příkazového řádku pro program Sparku. | Ne |
 | proxyUser | Uživatelský účet zosobnění spuštění programu Sparku. | Ne |
-| sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark uvedené v [konfigurace Spark: vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
+| sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark uvedené v [Spark konfigurace: Vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
 | getDebugInfo | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště používá HDInsight cluster (nebo) je uvedli v sparkJobLinkedService. Povolené hodnoty jsou None, vždy nebo selhání. Výchozí hodnota je None. | Ne |
 | sparkJobLinkedService | Úložiště propojenou službu, která obsahuje Spark soubor úlohy, závislosti a protokoly. Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružené ke clusteru HDInsight. | Ne |
 

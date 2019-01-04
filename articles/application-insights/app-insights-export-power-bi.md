@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bb36111da04ad44f5c13ef3dce2b1684784094e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b4d87ab62503bee1ff54ba9713f7c49d09a2e547
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808380"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015062"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -119,7 +119,7 @@ Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, 
  ```
 
 ## <a name="about-sampling"></a>Informace o vzorkování
-V závislosti na množství dat odeslaných vaší aplikací můžete chtít použít funkce adaptivního vzorkování, který odesílá pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování v sadě SDK nebo na základě ingestování. [Další informace o vzorkování](app-insights-sampling.md).
+V závislosti na množství dat odeslaných vaší aplikací můžete chtít použít funkce adaptivního vzorkování, který odesílá pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování v sadě SDK nebo na základě ingestování. [Další informace o vzorkování](../azure-monitor/app/sampling.md).
 
 ## <a name="power-bi-adapter-deprecated"></a>Adaptér Power BI (zastaralé)
 Tato metoda vytvoří kompletní řídicí panel telemetrických dat za vás. Počáteční datová sada je předdefinovaná, ale můžete přidat další data k němu.

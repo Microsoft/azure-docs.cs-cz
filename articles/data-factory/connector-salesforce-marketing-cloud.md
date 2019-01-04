@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a9916a412341d0b345bfc7a0e0f28d8e0add1846
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6b45284f8fe4bd7fb45e89eeecf13ae7b9b2969b
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081451"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016677"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu marketingových Salesforce pomocí Azure Data Factory (Preview)
 
@@ -82,7 +81,7 @@ Pro kopírování dat z cloudu marketingových Salesforce, nastavte vlastnost ty
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **SalesforceMarketingCloudObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **SalesforceMarketingCloudObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -111,7 +110,7 @@ Pro kopírování dat z cloudu marketingových Salesforce, nastavte typ zdroje v
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SalesforceMarketingCloudSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SalesforceMarketingCloudSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

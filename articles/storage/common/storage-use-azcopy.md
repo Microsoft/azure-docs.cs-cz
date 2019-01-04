@@ -5,15 +5,15 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 01/03/2019
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c0672ddb3e6791fae3b9b8c04e9ff98827c9e22f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256727"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019296"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Přenos dat pomocí AzCopy ve Windows
 AzCopy je nástroj příkazového řádku určený pro kopírování dat do a z Microsoft Azure Blob, File a Table storage, pomocí jednoduchých příkazů, které jsou navržené pro zajištění optimálního výkonu. Data můžete kopírovat mezi systémem souborů a účtem úložiště nebo mezi účty úložiště.  
@@ -458,7 +458,7 @@ Všimněte si, že AzCopy podporuje pouze import pro formát JSON, není sdílen
 
 ### <a name="import-entities-into-a-table-from-blob-storage"></a>Importovat entity do tabulky z úložiště objektů Blob
 
-Předpokládejme, kontejner objektů Blob obsahuje následující: soubor A JSON Azure Table Storage a jeho související soubor manifestu.
+Předpokládejme, že kontejner objektů Blob obsahuje následující: Soubor JSON Azure Table Storage a jeho související soubor manifestu.
 
     myaccount_mytable_20140103T112020.manifest
     myaccount_mytable_20140103T112020_0_0_0AF395F1DC42E952.json
@@ -642,13 +642,13 @@ Parametry pro AzCopy jsou popsané níže. Můžete také zadat jeden z následu
 
 Určuje zdroj data, ze kterého chcete kopírovat. Zdrojem může být systémový adresář souboru, kontejner objektů blob, objektu blob virtuálního adresáře, sdílenou složku úložiště, adresář souboru úložiště nebo tabulku Azure.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="destdestination"></a>/ Dest: "cíl"
 
 Určuje cíl pro kopírování. Cílem může být systémový adresář souboru, kontejner objektů blob, objektu blob virtuálního adresáře, sdílenou složku úložiště, adresář souboru úložiště nebo tabulku Azure.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="patternfile-pattern"></a>/ Vzorku: "vzor souborů"
 
@@ -664,13 +664,13 @@ AzCopy používá velká a malá písmena porovnávání, když / Source je kont
 
 Soubor výchozím způsobem používaným-li zadána žádná vzor souborů je *.* pro umístění v systému souborů nebo prázdnou předponu pro umístění služby Azure Storage. Zadávání více vzory souborů se nepodporuje.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="destkeystorage-key"></a>/ DestKey: "klíč úložiště"
 
 Určuje klíč účtu úložiště pro cílový prostředek.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="destsassas-token"></a>/ DestSAS: "sas token"
 
@@ -680,13 +680,13 @@ Pokud cílového prostředku je kontejner objektů blob, sdílené složky nebo 
 
 Pokud zdroj a cíl jsou oba objekty BLOB, pak cílový objekt blob se musí nacházet v rámci stejného účtu úložiště jako zdrojový objekt blob.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="sourcekeystorage-key"></a>/ SourceKey: "klíč úložiště"
 
 Určuje klíč účtu úložiště pro zdrojový prostředek.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="sourcesassas-token"></a>/ SourceSAS: "sas token"
 
@@ -696,29 +696,29 @@ Pokud zdroj prostředků je kontejner objektů blob a je k dispozici klíč ani 
 
 Pokud je zdroj sdílené složky nebo tabulky, musí být zadaná klíč nebo SAS.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="s"></a>/S
 
 Určuje režim rekurzivní pro operace kopírování. V režimu rekurzivní AzCopy zkopíruje všechny objekty BLOB nebo soubory, které odpovídají zadaného souboru modelu, včetně těch v podsložkách.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="blobtypeblock--page--append"></a>/ BlobType: "blok" | "page" | "připojení"
 
 Určuje, zda cílový objekt blob je objekty blob bloku, objekty blob stránky nebo doplňovací objekt blob. Tato možnost se vztahuje pouze v případě, že jsou nahrání objektu blob. V opačném případě je vygenerována chyba. Pokud je cílový objekt blob a není tato možnost zadána, ve výchozím nastavení, AzCopy vytvoří objekt blob bloku.
 
-**Platí pro:** objekty BLOB
+**Vztahuje se:** Objekty blob
 
 ### <a name="checkmd5"></a>/ CheckMD5
 
-Vypočítá hodnotu hash MD5 pro stažená data a ověřuje, že hodnota hash MD5 uložená v objektu blob nebo vlastnost Content-MD5 souboru odpovídá vypočtený hash. Kontrola MD5 je vypnuto ve výchozím nastavení, proto musíte určit tuto možnost, při stahování dat provést kontrolu MD5.
+Vypočítá hodnotu hash MD5 pro stažená data a ověřuje, že hodnota hash MD5 uložená v objektu blob nebo vlastnost Content-MD5 souboru odpovídá vypočtený hash. Pokud hodnoty neshodují, AzCopy se nepodaří stáhnout data. Kontrola MD5 je vypnuto ve výchozím nastavení, proto musíte určit tuto možnost, při stahování dat provést kontrolu MD5.
 
-Všimněte si, že Azure Storage nezaručuje, že je aktuální hodnota hash MD5 uložených objektů blob nebo souboru. Zodpovídá za klienta aktualizovat MD5 pokaždé, když je upraven objekt blob nebo souboru.
+Všimněte si, že Azure Storage nezaručuje, že je aktuální hodnota hash MD5 uložených objektů blob nebo souboru. Zodpovídá za klienta aktualizovat MD5 pokaždé, když je upraven objekt blob nebo souboru. V případě imagí disků (spravované nebo nespravované disky) virtuální počítače Azure neaktualizují hodnotu MD5 jako změnit obsah disku, proto /CheckMD5 vyvolá chybu při stahování imagí disků.
 
-AzCopy vždy nastaví vlastnost Content-MD5 pro soubor objektů blob v Azure nebo po nahrání do služby.  
+AzCopy v8 vždy nastaví vlastnost Content-MD5 pro objektů blob v Azure nebo soubor po nahrání do služby.  
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="snapshot"></a>/ Snímku
 
@@ -728,7 +728,7 @@ Snímky převedené objektů blob jsou přejmenovány v tomto formátu: .extensi
 
 Ve výchozím nastavení nejsou zkopírovány snímky.
 
-**Platí pro:** objekty BLOB
+**Vztahuje se:** Objekty blob
 
 ### <a name="vverbose-log-file"></a>/ V: [podrobné log-file]
 
@@ -736,7 +736,7 @@ Zobrazí podrobné stavové zprávy do souboru protokolu.
 
 Ve výchozím nastavení, je podrobného souboru protokolu s názvem AzCopyVerbose.log v `%LocalAppData%\Microsoft\Azure\AzCopy`. Pokud chcete zadat existující umístění souboru pro tuto možnost, podrobného protokolování se připojí k tomuto souboru.  
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="zjournal-file-folder"></a>/ Z: [deníku souboru folder]
 
@@ -754,7 +754,7 @@ Odstraní se tento soubor deníku po úspěšném dokončení operace.
 
 Všimněte si, že pokračování operace, soubor deníku vytvořena pomocí předchozí verze nástroje AzCopy není podporována.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="parameter-file"></a>/@:"Parameter-File"
 
@@ -766,13 +766,13 @@ Soubory odpovědí může obsahovat komentáře řádků, které začínají sym
 
 Můžete zadat více souborů odezvy. Mějte však na paměti, že AzCopy nepodporuje vnořené soubory odpovědí.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="y"></a>/Y
 
 Potlačí všechny výzvy k potvrzení AzCopy. Tato možnost také umožňuje použití pouze pro zápis tokeny SAS pro scénáře nahrávání dat, když nejsou zadané /XO a /XN.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="l"></a>/ L
 
@@ -784,30 +784,30 @@ Chování této možnosti je také určeno umístění zdroje dat a přítomnost
 
 AzCopy vyžaduje seznam a oprávnění ke čtení z tohoto umístění zdroje při použití této možnosti.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="mt"></a>/MT
 
 Nastaví čas poslední změny stažený soubor být stejný jako zdrojový objekt blob nebo souboru.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="xn"></a>/XN
 
 Vyloučí novější zdrojového prostředku. Prostředek není zkopírován, pokud čas poslední změny zdroje je stejná nebo novější než cíl.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="xo"></a>/XO
 Vyloučí prostředek starší zdroje. Prostředek není zkopírován, pokud čas poslední změny zdroje je stejná nebo starší než cíl.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="a"></a>/A
 
 Nahraje pouze soubory, které se mají nastavit atribut pro archivaci.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="iarashcnetoi"></a>/ IA: [RASHCNETOI]
 
@@ -826,7 +826,7 @@ Dostupné atributy patří:
 * O = Offline soubory
 * Můžu = bez indexovat soubory
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="xarashcnetoi"></a>/ XA: [RASHCNETOI]
 
@@ -845,7 +845,7 @@ Dostupné atributy patří:
 * O = Offline soubory
 * Můžu = bez indexovat soubory
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="delimiterdelimiter"></a>/ Oddělovač: oddělovač."
 
@@ -855,7 +855,7 @@ Ve výchozím nastavení, využívá nástroj AzCopy / jako oddělovací znak. A
 
 Tato možnost platí pouze pro stažení objektů BLOB.
 
-**Platí pro:** objekty BLOB
+**Vztahuje se:** Objekty blob
 
 ### <a name="ncnumber-of-concurrent-operations"></a>/ Síťovým Adaptérem: "číslo sady souběžných operace"
 
@@ -865,19 +865,19 @@ AzCopy ve výchozím nastavení spustí počet souběžných operací, pokud chc
 
 Horní mez pro souběžné operace je 512.
 
-**Platí pro:** objekty BLOB, soubory, tabulky
+**Vztahuje se:** Objekty BLOB, soubory, tabulky
 
 ### <a name="sourcetypeblob--table"></a>/ SourceType: "Blob" | "Table"
 
 Určuje, že `source` prostředku je k dispozici v místním vývojovém prostředí, spouštění v emulátoru úložiště objektu blob.
 
-**Platí pro:** objekty BLOB, tabulky
+**Vztahuje se:** Objekty BLOB, tabulek
 
 ### <a name="desttypeblob--table"></a>/ DestType: "Blob" | "Table"
 
 Určuje, že `destination` prostředku je k dispozici v místním vývojovém prostředí, spouštění v emulátoru úložiště objektu blob.
 
-**Platí pro:** objekty BLOB, tabulky
+**Vztahuje se:** Objekty BLOB, tabulek
 
 ### <a name="pkrskey1key2key3"></a>/ PKRS: "key1 #key2 klíč3 #..."
 
@@ -893,7 +893,7 @@ Každá operace exportuje jednu ze tří rozsahů klíče oddílů, jak je znáz
 
   [bb, klíč oddílu poslední]
 
-**Platí pro:** tabulky
+**Vztahuje se:** Tabulky
 
 ### <a name="splitsizefile-size"></a>/ SplitSize: "velikost souboru"
 
@@ -903,7 +903,7 @@ Pokud není tato možnost zadána, AzCopy exportuje data tabulky do jednoho soub
 
 Pokud tabulka data se exportují do objektu blob a velikost exportovaný soubor dosáhne 200 GB limitu pro velikost objektu blob, pak AzCopy rozdělí exportovaný soubor, i v případě, že tato možnost není zadána.
 
-**Platí pro:** tabulky
+**Vztahuje se:** Tabulky
 
 ### <a name="entityoperationinsertorskip--insertormerge--insertorreplace"></a>/ EntityOperation: "InsertOrSkip" | "InsertOrMerge" | "InsertOrReplace"
 
@@ -913,7 +913,7 @@ Určuje chování importu dat tabulky.
 * InsertOrMerge - sloučí existující entity nebo vloží nové entity, pokud neexistuje v tabulce.
 * InsertOrReplace - nahradí existující entity nebo vloží nové entity, pokud neexistuje v tabulce.
 
-**Platí pro:** tabulky
+**Vztahuje se:** Tabulky
 
 ### <a name="manifestmanifest-file"></a>/ Manifest: "souboru manifestu"
 
@@ -923,7 +923,7 @@ Tento parametr je nepovinný během exportu, AzCopy generuje soubor manifestu s 
 
 Tato možnost je vyžadována během operace importu pro vyhledávání dat souborů.
 
-**Platí pro:** tabulky
+**Vztahuje se:** Tabulky
 
 ### <a name="synccopy"></a>/ SyncCopy
 
@@ -933,7 +933,7 @@ AzCopy ve výchozím nastavení používá asynchronní kopírování na straně
 
 Tuto možnost můžete použít při kopírování souborů do úložiště objektů Blob, File storage, nebo z úložiště objektů Blob do služby File storage a naopak.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="setcontenttypecontent-type"></a>/ SetContentType: "content-type"
 
@@ -943,7 +943,7 @@ AzCopy ve výchozím nastavení nastaví typ obsahu pro objekt blob nebo soubor 
 
 Pokud zadáte tuto možnost bez hodnoty, AzCopy se nastaví, každý objekt blob nebo typ obsahu souboru podle jeho přípony souboru.
 
-**Platí pro:** objekty BLOB, soubory
+**Vztahuje se:** Objekty BLOB, soubory
 
 ### <a name="payloadformatjson--csv"></a>/ PayloadFormat: "JSON" | "SDÍLENÉHO SVAZKU CLUSTERU"
 
@@ -951,7 +951,7 @@ Určuje formát souboru exportovaná data tabulky.
 
 Pokud není tato možnost zadána, exportuje AzCopy ve výchozím nastavení tabulka datový soubor ve formátu JSON.
 
-**Platí pro:** tabulky
+**Vztahuje se:** Tabulky
 
 ## <a name="known-issues-and-best-practices"></a>Známé problémy a osvědčené postupy
 
@@ -981,7 +981,7 @@ Pro vlastnost "AzureStorageUseV1MD5":
 * True – výchozí hodnota, AzCopy používá implementace .NET MD5.
 * False – AzCopy používá algoritmus MD5 kompatibilní se standardem FIPS.
 
-Ve výchozím nastavení systému Windows jsou zakázány algoritmy odpovídající standardu FIPS. Nastavení této zásady můžete změnit na svém počítači. V okně Spustit (Windows + R) zadejte secpol.msc otevřete **místní zásady zabezpečení** okna. V **nastavení zabezpečení** okno, přejděte na **nastavení zabezpečení** > **místní zásady** > **možnosti zabezpečení**. Vyhledejte **kryptografický modul systému: použití algoritmy odpovídající standardu FIPS pro šifrování, algoritmus hash a podepisování** zásad. Dvakrát klikněte na zásadu, kterou chcete zobrazit hodnoty zobrazené v **nastavení zabezpečení** sloupce.
+Ve výchozím nastavení systému Windows jsou zakázány algoritmy odpovídající standardu FIPS. Nastavení této zásady můžete změnit na svém počítači. V okně Spustit (Windows + R) zadejte secpol.msc otevřete **místní zásady zabezpečení** okna. V **nastavení zabezpečení** okno, přejděte na **nastavení zabezpečení** > **místní zásady** > **možnosti zabezpečení**. Vyhledejte **kryptografický modul systému: Pro šifrování, algoritmus hash a podepisování používat algoritmy odpovídající standardu FIPS** zásad. Dvakrát klikněte na zásadu, kterou chcete zobrazit hodnoty zobrazené v **nastavení zabezpečení** sloupce.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -998,9 +998,9 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 ### <a name="azure-storage-blog-posts"></a>Azure Storage blogových příspěvků:
 * [Úvod do služby Azure Storage dat přesun knihovny ve verzi Preview](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
 * [AzCopy: Představujeme synchronní kopie a vlastní typ obsahu](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a 4.0 nástroje AzCopy vydání ve verzi preview s podporou tabulka a soubor](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Oznámení obecné dostupnosti AzCopy 3.0 a preview verze AzCopy 4.0 s podporou Table a File](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
 * [AzCopy: Optimalizovaná pro scénáře, ve velkém měřítku kopírování](https://go.microsoft.com/fwlink/?LinkId=507682)
 * [AzCopy: Podpora pro geograficky redundantní úložiště jen pro čtení](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
 * [AzCopy: Přenos dat pomocí restartovatelnou službu režimu a tokenu SAS](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [AzCopy: Objekt Blob kopírování mezi účtu pomocí](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Použití objektů Blob v účtu různé kopie](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Nahrávání a stahování souborů pro objekty BLOB Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

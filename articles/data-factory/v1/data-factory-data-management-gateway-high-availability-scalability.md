@@ -9,17 +9,16 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054019"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016763"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána správy dat – vysoká dostupnost a škálovatelnost (Preview)
 > [!NOTE]
@@ -171,7 +170,7 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
 - Certifikátů CNG pomocí klíče nejsou podporovány.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>Nejčastější dotazy: Kdy by povolit šifrování?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>NEJČASTĚJŠÍ DOTAZY: Pokud by povolit šifrování?
 Povolení šifrování můžete přidat určité náklady na infrastrukturu (vlastnící veřejného certifikátu), proto můžete přeskočit povolení šifrování v následující případy:
 - Když se prostředí integration runtime běží v důvěryhodné síti, nebo v síti pomocí transparentního šifrování, jako jsou IP/s. Protože je tento komunikační kanál mezi pouze omezený ve vaší důvěryhodné síti, možná nebudete potřebovat další šifrování.
 - Když se prostředí integration runtime neběží v produkčním prostředí. To může pomoct snížit náklady na certifikát TLS/SSL.

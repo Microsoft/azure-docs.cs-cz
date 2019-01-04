@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b6e9557503933dfc5271868692cf8546c785bc03
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076096"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021845"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks Online pomocí Azure Data Factory (Preview)
 
@@ -93,7 +92,7 @@ Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady n
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **QuickBooksObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **QuickBooksObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 **Příklad**
 
@@ -121,7 +120,7 @@ Ke zkopírování dat z QuickBooks Online, nastavte typ zdroje v aktivitě kopí
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **QuickBooksSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

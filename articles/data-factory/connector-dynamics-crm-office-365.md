@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: d58e72c4487a3ab6d7b562fd328098d98761da5e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f40be655481481946929c4d79210cb360797f174
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620332"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017153"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -76,7 +75,7 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 >[!NOTE]
 >Konektor Dynamics pro volitelné "název organizace" vlastnost použít k identifikaci vaší instance Dynamics 365 s/CRM Online. Zatímco pořád funguje, můžete se doporučujeme, abyste místo toho zadejte novou vlastnost "serviceuri:" získat lepší výkon pro instanci zjišťování.
 
-**Příklad: Dynamics online s použitím ověřování Office365**
+**Příklad: Dynamics online používat ověřování Office365**
 
 ```json
 {
@@ -278,7 +277,7 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | type | Nastavte vlastnost typ jímky aktivity kopírování **DynamicsSink**. | Ano |
 | WriteBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
 | WriteBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
-| ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: ponechat data v cílové objektů beze změny, pokud tak učiníte, operace upsert nebo aktualizovat. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: aktualizace dat v cílového objektu na hodnotu NULL, pokud tak učiníte, operace upsert nebo aktualizovat. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
+| ignoreNullValues | Určuje, jestli se mají ignorovat během operace zápisu hodnot null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Data ponechte beze změny po provedení operace upsert/aktualizace cílového objektu. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert/aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 >[!NOTE]
 >Výchozí hodnota jímka "**writeBatchSize**"a aktivita kopírování"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" Dynamics jímka jsou obě 10. Proto se 100 záznamů odesílají na Dynamics současně.
@@ -333,14 +332,14 @@ Nakonfigurujte odpovídající typ dat Data Factory ve struktuře datové sady z
 | AttributeTypeCode.Boolean | Logická hodnota | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ | | 
 | AttributeType.DateTime | Datum a čas | ✓ | ✓ |
-| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Decimal | Desítkově | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
 | AttributeType.EntityName | Řetězec | ✓ | ✓ |
 | AttributeType.Integer | Datový typ Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (s jedním cílem přidružené) |
 | AttributeType.ManagedProperty | Logická hodnota | ✓ | |
 | AttributeType.Memo | Řetězec | ✓ | ✓ |
-| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.Money | Desítkově | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Datový typ Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |

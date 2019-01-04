@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9abd567f629cf405a5e7414a23f43ea2fc613b72
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: dcc54b0f67b9bf08df602c3eb9a4bcb0ea699ee7
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088068"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023426"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopírování dat z PayPal pomocí Azure Data Factory (Preview)
 
@@ -80,7 +79,7 @@ Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalO
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **PayPalObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **PayPalObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -109,7 +108,7 @@ Ke zkopírování dat z PayPal, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **PayPalSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **PayPalSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Payment_Experience"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

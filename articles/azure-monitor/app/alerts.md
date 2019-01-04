@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0f16f61e99e059c8cf21ec4ffa85eef0a04702bc
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 63045ce1ac06bfb87595675395a411978a17f95a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972988"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017051"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení upozornění ve službě Application Insights
 [Azure Application Insights] [ start] může vás upozornit na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
@@ -41,7 +41,7 @@ Otevře se okno pravidla upozornění a potom použijte tlačítko Přidat.
 * Nastavení prostředku před dalšími vlastnostmi. **Zvolte prostředek "(součásti)"** Pokud budete chtít nastavit upozornění na metriky výkonu a využití.
 * Název, který poskytnete k upozornění musí být jedinečný v rámci skupiny prostředků (ne jenom vaše aplikace).
 * Věnujte jednotky, ve kterých budete vyzváni k zadání prahovou hodnotu.
-* Pokud zaškrtnete políčko "E-mailu vlastníky...", oznámení odesílají e-mailem do každého, kdo má přístup k této skupině prostředků. Chcete-li rozbalit tuto skupinu lidí, přidejte je do [skupiny prostředků nebo předplatného](../../application-insights/app-insights-resources-roles-access-control.md) (ne prostředků).
+* Pokud zaškrtnete políčko "E-mailu vlastníky...", oznámení odesílají e-mailem do každého, kdo má přístup k této skupině prostředků. Chcete-li rozbalit tuto skupinu lidí, přidejte je do [skupiny prostředků nebo předplatného](../../azure-monitor/app/resources-roles-access-control.md) (ne prostředků).
 * Pokud zadáte "Další e-mailů", oznámení se odešlou do těchto jednotlivců nebo skupin (Určuje, jestli je zaškrtnuté políčko "e-mailová vlastníky..."). 
 * Nastavte [webhooku adresu](../../azure-monitor/platform/alerts-webhooks.md) Pokud nastavíte webovou aplikaci, která bude reagovat na výstrahy. Je volána při aktivaci upozornění a po jeho vyřešení. (Všimněte si, že v současné době parametry dotazu neprocházejí jako vlastnosti webhooku.)
 * Můžete zakázat nebo povolit upozornění: zobrazení tlačítek v horní části okna.
@@ -51,7 +51,7 @@ Otevře se okno pravidla upozornění a potom použijte tlačítko Přidat.
 * Používáte účet organizace? Výstrahy můžete nastavit, pokud jste vlastníkem nebo přispěvatelem přístup k tomuto prostředku aplikace. Podívejte se v okně řízení přístupu. [Další informace o řízení přístupu][roles].
 
 > [!NOTE]
-> V okně výstrahy uvidíte, že již sadu výstrah: [Proaktivní Diagnostika](../../application-insights/app-insights-proactive-failure-diagnostics.md). Automatické výstrahy monitoruje jednu konkrétní metriky, požadavek chybovost. Pokud budete chtít zakázat proaktivní výstrahu, není nutné nastavit vlastní oznámení na míru selhání požadavku. 
+> V okně výstrahy uvidíte, že již sadu výstrah: [Proaktivní Diagnostika](../../azure-monitor/app/proactive-failure-diagnostics.md). Automatické výstrahy monitoruje jednu konkrétní metriky, požadavek chybovost. Pokud budete chtít zakázat proaktivní výstrahu, není nutné nastavit vlastní oznámení na míru selhání požadavku. 
 > 
 > 
 
@@ -89,10 +89,10 @@ Oblíbené výstrahy obsahují:
 * **Doba odezvy serveru** pro webové aplikace na straně serveru. A také nastavení výstrah, sledovat tuto metriku, pokud chcete zobrazit, pokud se mění nepřiměřeně s vysokou požadavků: změna může znamenat, že vaše aplikace běží nemá dostatek prostředků. 
 * **Serverové výjimky** – Pokud chcete zobrazit, budete muset provést některé [další nastavení](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../application-insights/app-insights-proactive-failure-diagnostics.md) automaticky sledovat rychlost, jakou aplikace reaguje na požadavky s kódy selhání. 
+Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../azure-monitor/app/proactive-failure-diagnostics.md) automaticky sledovat rychlost, jakou aplikace reaguje na požadavky s kódy selhání. 
 
 ## <a name="automation"></a>Automation
-* [Použití Powershellu k automatizaci nastavení výstrahy](../../application-insights/app-insights-powershell-alerts.md)
+* [Použití Powershellu k automatizaci nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
 * [Automatizace reagování na výstrahy pomocí webhooků](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="video"></a>Video
@@ -101,14 +101,14 @@ Nezapomeňte, že [proaktivní míra Diagnostika chyb](../../application-insight
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Testy dostupnosti webu](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Automatizace nastavení výstrahy](../../application-insights/app-insights-powershell-alerts.md)
+* [Automatizace nastavení výstrahy](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktivní Diagnostika](../../application-insights/app-insights-proactive-diagnostics.md) 
 
 <!--Link references-->
 
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [client]: ../../azure-monitor/app/javascript.md
-[platforms]: ../../application-insights/app-insights-platforms.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[platforms]: ../../azure-monitor/app/platforms.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [start]: ../../application-insights/app-insights-overview.md
 

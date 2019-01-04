@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: 600bec9e4cfe356dcd28d489707d20ab47f5b013
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 62ee1c880987d0f9ad358f1a0d31af4a73263725
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753638"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017969"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -28,7 +28,7 @@ Funkce má také [integrované monitorování, která nepoužívá Application I
 
 ## <a name="application-insights-pricing-and-limits"></a>Ceny Application Insights a omezení
 
-Můžete vyzkoušet Application Insights integrace s aplikací Function App zdarma. Ale je denní limit objemu dat může zpracovat zdarma a může být dosažení tohoto limitu během testování. Azure poskytuje portál a e-mailové oznámení, pokud blíží se denního limitu.  Ale pokud byste tyto výstrahy a dosáhl limitu, nové protokoly se nezobrazí v dotazech Application Insights. Proto nezapomínejte limitu, aby se zabránilo zbytečným čas řešení problémů. Další informace najdete v tématu [Správa cen a objemů dat ve službě Application Insights](../application-insights/app-insights-pricing.md).
+Můžete vyzkoušet Application Insights integrace s aplikací Function App zdarma. Ale je denní limit objemu dat může zpracovat zdarma a může být dosažení tohoto limitu během testování. Azure poskytuje portál a e-mailové oznámení, pokud blíží se denního limitu.  Ale pokud byste tyto výstrahy a dosáhl limitu, nové protokoly se nezobrazí v dotazech Application Insights. Proto nezapomínejte limitu, aby se zabránilo zbytečným čas řešení problémů. Další informace najdete v tématu [Správa cen a objemů dat ve službě Application Insights](../azure-monitor/app/pricing.md).
 
 ## <a name="enable-app-insights-integration"></a>Povolení integrace App Insights
 
@@ -85,7 +85,7 @@ Po nastavení integrace služby Application Insights jak je znázorněno v před
 
 1. Vyberte **aktualizovat** pravidelně, dokud se zobrazí seznam obsahující záznamy volání funkcí.
 
-   Může trvat až 5 minut pro seznam zobrazit kvůli způsobu, jakým telemetrická data dávek klienta pro přenos do serveru. (Neplatí pro toto zpoždění [Live Metrics Stream](../application-insights/app-insights-live-stream.md). Tuto službu se připojí k hostiteli funkce načtení stránky, takže protokoly streamovaných přímo na stránku.)
+   Může trvat až 5 minut pro seznam zobrazit kvůli způsobu, jakým telemetrická data dávek klienta pro přenos do serveru. (Neplatí pro toto zpoždění [Live Metrics Stream](../azure-monitor/app/live-stream.md). Tuto službu se připojí k hostiteli funkce načtení stránky, takže protokoly streamovaných přímo na stránku.)
 
    ![Vyvolání seznamu](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
@@ -115,15 +115,15 @@ Otevřít Application Insights z aplikace function app na webu Azure Portal, vyb
 
 Informace o tom, jak pomocí Application Insights, najdete v článku [dokumentace k Application Insights](https://docs.microsoft.com/azure/application-insights/). Tato část ukazuje několik příkladů toho, jak zobrazit data ve službě Application Insights. Pokud jste již obeznámeni s Application Insights, můžete přejít přímo na [části o konfiguraci a přizpůsobení telemetrická data](#configure-categories-and-log-levels).
 
-V [Průzkumníka metrik](../application-insights/app-insights-metrics-explorer.md), můžete vytvořit grafy a výstrah na základě metrik, jako je počet volání funkce, doba spuštění a míra úspěšnosti.
+V [Průzkumníka metrik](../azure-monitor/app/metrics-explorer.md), můžete vytvořit grafy a výstrah na základě metrik, jako je počet volání funkce, doba spuštění a míra úspěšnosti.
 
 ![Průzkumník metrik](media/functions-monitoring/metrics-explorer.png)
 
 Na [selhání](../azure-monitor/app/asp-net-exceptions.md) kartu, můžete vytvořit grafy a výstrah na základě selhání funkce a server výjimky. **Název operace** je název funkce. Selhání v závislosti se nezobrazují, Pokud implementujete [vlastní telemetrii](#custom-telemetry-in-c-functions) pro závislosti.
 
-![Selhání](media/functions-monitoring/failures.png)
+![Počet selhání](media/functions-monitoring/failures.png)
 
-Na [výkonu](../application-insights/app-insights-performance-counters.md) kartu, můžete analyzovat problémy s výkonem.
+Na [výkonu](../azure-monitor/app/performance-counters.md) kartu, můžete analyzovat problémy s výkonem.
 
 ![Výkon](media/functions-monitoring/performance.png)
 
@@ -131,7 +131,7 @@ Na [výkonu](../application-insights/app-insights-performance-counters.md) kartu
 
 ![Servery](media/functions-monitoring/servers.png)
 
-[Live Metrics Stream](../application-insights/app-insights-live-stream.md) karta zobrazuje data metrik, jakmile je vytvořena v reálném čase.
+[Live Metrics Stream](../azure-monitor/app/live-stream.md) karta zobrazuje data metrik, jakmile je vytvořena v reálném čase.
 
 ![Živý datový proud](media/functions-monitoring/live-stream.png)
 
@@ -329,7 +329,7 @@ Jak je uvedeno v předchozí části, modul runtime agreguje data o provádění
 
 ## <a name="configure-sampling"></a>Konfigurace odběru vzorků
 
-Application Insights má [vzorkování](../application-insights/app-insights-sampling.md) funkce, která můžete chránit z vytváření příliš mnoho telemetrických dat v některých případech z zátěž ve špičce. Po Míra příchozích telemetrických dat překročí zadanou prahovou hodnotu, Application Insights začne náhodně některé položky, příchozí ignorovat. Výchozí nastavení pro maximální počet položek za sekundu, které je 5. Můžete nakonfigurovat vzorkování v [host.json](functions-host-json.md).  Tady je příklad:
+Application Insights má [vzorkování](../azure-monitor/app/sampling.md) funkce, která můžete chránit z vytváření příliš mnoho telemetrických dat v některých případech z zátěž ve špičce. Po Míra příchozích telemetrických dat překročí zadanou prahovou hodnotu, Application Insights začne náhodně některé položky, příchozí ignorovat. Výchozí nastavení pro maximální počet položek za sekundu, které je 5. Můžete nakonfigurovat vzorkování v [host.json](functions-host-json.md).  Tady je příklad:
 
 ### <a name="version-2x"></a>Verze 2.x 
 
@@ -360,7 +360,7 @@ Application Insights má [vzorkování](../application-insights/app-insights-sam
 ```
 
 > [!NOTE]
-> [Vzorkování](../application-insights/app-insights-sampling.md) je ve výchozím nastavení povolené. Pokud vypadá to, že chybí data, může stačí upravit nastavení vzorkování podle vaší konkrétní scénáře monitorování.
+> [Vzorkování](../azure-monitor/app/sampling.md) je ve výchozím nastavení povolené. Pokud vypadá to, že chybí data, může stačí upravit nastavení vzorkování podle vaší konkrétní scénáře monitorování.
 
 ## <a name="write-logs-in-c-functions"></a>Zapisují protokoly do funkcí jazyka C#
 

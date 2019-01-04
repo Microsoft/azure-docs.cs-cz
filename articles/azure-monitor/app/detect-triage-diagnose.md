@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5cc5e0e9bf1d05bde273d1c26c03165a38e02122
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ea2e0513ef2674fdbe6d28f77c4f709848a0d2eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976643"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016371"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -78,7 +78,7 @@ Tady se nezdá, že by něco naznačovalo omezení prostředků, takže možná 
 ## <a name="set-alerts-to-meet-goals"></a>Nastavení upozornění pro splnění cílů
 Marcela by nicméně stále chtěla dohlížet na dobu odezvy. Pokud dojde k příliš velkému navýšení, chce se o tom okamžitě dozvědět.
 
-Proto nastaví [upozornění](../../application-insights/app-insights-metrics-explorer.md) na vyšší dobu odezvy, než je obvyklá prahová hodnota. Díky tomu se může spolehnout, že pokud bude doba odezvy vysoká, dozví se o tom.
+Proto nastaví [upozornění](../../azure-monitor/app/metrics-explorer.md) na vyšší dobu odezvy, než je obvyklá prahová hodnota. Díky tomu se může spolehnout, že pokud bude doba odezvy vysoká, dozví se o tom.
 
 ![Okno přidání upozornění](./media/detect-triage-diagnose/07-alerts.png)
 
@@ -184,7 +184,7 @@ Diagnostika není to samé jako ladění. Než začnete s trasováním kódem, m
 
 Některé problémy s pomalými závislostmi jsou problémy geografické polohy. Banka Fabrikam používá virtuální počítače Azure a zjistilo se, že nedopatřením umístila webový server a server účtů do jiných zemí. Migrací jednoho z nich došlo k výraznému zlepšení.
 
-**Co jsme udělali?** Pokud se nezdá, že by problém byl v závislosti, a pokud závislost neexistovala vždy, problém je pravděpodobně způsobený nedávnou změnou. Historická perspektiva, kterou poskytují grafy metrik a událostí, usnadňuje korelaci jakýchkoli náhlých změn s nasazeními. Tím se může zúžit oblast hledání problému. Pokud chcete identifikovat, které řádky v kódu aplikace zpomalily výkon, povolte Application Insights Profiler. Další informace najdete v tématu [Profilace živých webových aplikací Azure pomocí Application Insights](./../../application-insights/app-insights-profiler.md). Po povolení profileru se zobrazí trasování podobné následujícímu. V tomto příkladu si snadno můžete všimnout, že problém způsobila metoda *GetStorageTableData*.  
+**Co jsme udělali?** Pokud se nezdá, že by problém byl v závislosti, a pokud závislost neexistovala vždy, problém je pravděpodobně způsobený nedávnou změnou. Historická perspektiva, kterou poskytují grafy metrik a událostí, usnadňuje korelaci jakýchkoli náhlých změn s nasazeními. Tím se může zúžit oblast hledání problému. Pokud chcete identifikovat, které řádky v kódu aplikace zpomalily výkon, povolte Application Insights Profiler. Další informace najdete v tématu [Profilace živých webových aplikací Azure pomocí Application Insights](./../../azure-monitor/app/profiler.md). Po povolení profileru se zobrazí trasování podobné následujícímu. V tomto příkladu si snadno můžete všimnout, že problém způsobila metoda *GetStorageTableData*.  
 
 ![Trasování nástroje Application Insights Profiler](./media/detect-triage-diagnose/AppInsightsProfiler.png)
 
@@ -229,7 +229,7 @@ V závislosti na vlastnostech vaší aplikace můžete začít několika způsob
 
 * [Webová aplikace ASP.NET](../../azure-monitor/app/asp-net.md)
 * [Webová aplikace Java](../../azure-monitor/app/java-get-started.md)
-* [Webová aplikace Node.js](../../application-insights/app-insights-nodejs.md)
+* [Webová aplikace Node.js](../../azure-monitor/app/nodejs.md)
 * Již nasazené aplikace hostované ve [službě IIS](../../azure-monitor/app/monitor-web-app-availability.md), na platformě [J2EE](../../azure-monitor/app/java-live.md) nebo v [Azure](../../application-insights/app-insights-overview.md).
 * [Webové stránky](../../azure-monitor/app/javascript.md) – Samostatná webová stránka nebo obyčejná webová stránka – tuto možnost můžete použít samotnou nebo společně s jakoukoli z možností serveru.
 * [Testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) pro účely testování aplikace z veřejného internetu.

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/03/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dacc28c1cfe2ee896597aeaf92a22c7f6e13c306
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726608"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018377"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -26,7 +26,7 @@ Provedením kroků v tomto článku se nastavit si rozhraní příkazového řá
 
 ## <a name="install-cli"></a>Instalace rozhraní příkazového řádku
 
-Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure Stack vyžaduje verzi 2.0 nebo novější z rozhraní příkazového řádku Azure. Který můžete nainstalovat pomocí kroků popsaných v [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, jestli byla instalace úspěšná, otevřete okno příkazového řádku nebo terminálu a spusťte následující příkaz:
+Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure Stack vyžaduje verzi 2.0 nebo novější z rozhraní příkazového řádku Azure. Tuto verzi můžete nainstalovat pomocí kroků popsaných v [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, zda byla instalace úspěšná, otevřete okno příkazového řádku nebo terminálu a spusťte následující příkaz:
 
 ```azurecli
 az --version
@@ -40,11 +40,11 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a dalších záv
 
 1. Najdete umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Budete muset mít [pip](https://pip.pypa.io) a [osobní](https://pypi.org/project/certifi/) nainstalovaným modulem. Můžete použít následující příkaz Pythonu na příkazovém řádku bash:
 
-  ```bash  
+    ```bash  
     python -c "import certifi; print(certifi.where())"
-  ```
+    ```
 
-  Poznamenejte si umístění certifikátu. Například, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Konkrétní cestu bude záviset na váš operační systém a verzi Pythonu, který jste nainstalovali.
+    Poznamenejte si umístění certifikátu; například `~/lib/python3.5/site-packages/certifi/cacert.pem`. Konkrétní cesty závisí na operačním systému a verzi Pythonu, který jste nainstalovali.
 
 ### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>Nastavit cestu pro vývojový počítač s v cloudu
 
@@ -56,13 +56,11 @@ sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 
 ### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>Nastavit cestu pro vývojový počítač s mimo cloudu
 
-Pokud používáte rozhraní příkazového řádku z počítače **mimo** prostředí Azure Stack:  
+Pokud používáte rozhraní příkazového řádku z počítače mimo prostředí Azure Stack:  
 
-1. Musíte nastavit [připojení VPN ke službě Azure Stack](azure-stack-connect-azure-stack.md).
-
+1. Nastavit [připojení VPN ke službě Azure Stack](azure-stack-connect-azure-stack.md).
 1. Zkopírujte certifikát PEM, který jste získali z operátory Azure stacku a poznamenejte si umístění souboru (PATH_TO_PEM_FILE).
-
-1. Spusťte následující příkazy, v závislosti koncové v operačním systému stanici vývoje.
+1. Spusťte příkazy v následujících částech, v závislosti na operačním systému na pracovní stanici vývoje.
 
 #### <a name="linux"></a>Linux
 
@@ -84,7 +82,7 @@ $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Down
 $root = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
 $root.Import($pemFile)
 
-Write-Host "Extracting needed information from the cert file"
+Write-Host "Extracting required information from the cert file"
 $md5Hash    = (Get-FileHash -Path $pemFile -Algorithm MD5).Hash.ToLower()
 $sha1Hash   = (Get-FileHash -Path $pemFile -Algorithm SHA1).Hash.ToLower()
 $sha256Hash = (Get-FileHash -Path $pemFile -Algorithm SHA256).Hash.ToLower()
@@ -104,21 +102,20 @@ $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n"
 Write-Host "Adding the certificate content to Python Cert store"
 Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
+Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
 ```
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>Získejte koncový bod virtuálního počítače aliasy
 
-Předtím, než se uživatelé mohou vytvářet virtuální počítače pomocí rozhraní příkazového řádku, musí kontaktovat operátory Azure stacku a získat identifikátor URI aliasy koncového bodu virtuálního počítače. Například Azure používá následující identifikátor URI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json. Správce cloudu by měl nastavit podobně jako koncový bod pro službu Azure Stack s obrázky, které jsou dostupné v Tržišti Azure Stack. Uživatelé musí předat identifikátor URI koncového bodu na `endpoint-vm-image-alias-doc` parametr `az cloud register` příkaz, jak je znázorněno v následující části. 
-   
-
+Před vytvořením virtuálních počítačů pomocí rozhraní příkazového řádku, musíte kontaktovat operátory Azure stacku a získat identifikátor URI aliasy koncového bodu virtuálního počítače. Například Azure používá následující identifikátor URI: `https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json`. Správce cloudu by měl nastavit podobně jako koncový bod pro službu Azure Stack s obrázky, které jsou dostupné v Tržišti Azure Stack. Je nutné předat identifikátor URI koncového bodu z `endpoint-vm-image-alias-doc` parametr `az cloud register` příkaz, jak je znázorněno v následující části. 
+  
 ## <a name="connect-to-azure-stack"></a>Připojení ke službě Azure Stack
 
 Následující kroky použijte pro připojení ke službě Azure Stack:
 
 1. Zaregistrovat vaším prostředím Azure Stack spuštěním `az cloud register` příkazu.
    
-   a. K registraci *pro správu cloudu* prostředí, použijte:
+    a. K registraci *pro správu cloudu* prostředí, použijte:
 
       ```azurecli
       az cloud register \ 
@@ -128,7 +125,7 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         --suffix-keyvault-dns ".adminvault.local.azurestack.external" \ 
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
-   b. K registraci *uživatele* prostředí, použijte:
+    b. K registraci *uživatele* prostředí, použijte:
 
       ```azurecli
       az cloud register \ 
@@ -166,14 +163,14 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
       ```
 1. Pomocí následujících příkazů nastavte aktivní prostředí.
    
-   a. Pro *pro správu cloudu* prostředí, použijte:
+    a. Pro *pro správu cloudu* prostředí, použijte:
 
       ```azurecli
       az cloud set \
         -n AzureStackAdmin
       ```
 
-   b. Pro *uživatele* prostředí, použijte:
+    b. Pro *uživatele* prostředí, použijte:
 
       ```azurecli
       az cloud set \
@@ -182,18 +179,18 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 1. Aktualizujte konfiguraci vašeho prostředí použít profil pro konkrétní verze rozhraní API Azure Stack. Pokud chcete aktualizovat konfiguraci, spusťte následující příkaz:
 
-   ```azurecli
-   az cloud update \
-     --profile 2018-03-01-hybrid
+    ```azurecli
+    az cloud update \
+      --profile 2018-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >Pokud používáte verzi služby Azure Stack před sestavením. 1808, budete muset použít profilu verze rozhraní API **2017-03-09-profile** místo profilu verze rozhraní API **2018-03-01hybridní**.
+    >Pokud používáte verzi služby Azure Stack před sestavením. 1808, je nutné použít profilu verze rozhraní API **2017-03-09-profile** místo profilu verze rozhraní API **2018-03-01hybridní**.
 
-1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
+1. Přihlaste se k prostředí Azure Stack pomocí `az login` příkazu. Můžete se přihlásit k prostředí Azure Stack jako uživatel, nebo jako [instanční objekt služby](../../active-directory/develop/app-objects-and-service-principals.md). 
 
     * Prostředí Azure AD
-      * Přihlaste se jako *uživatele*: Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz % $n nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování.
+      * Přihlaste se jako *uživatele*: Můžete zadat uživatelské jméno a heslo přímo v rámci `az login` příkaz nebo ověřování pomocí prohlížeče. Je nutné provést ten, pokud má váš účet zapnuté vícefaktorové ověřování:
 
       ```azurecli
       az login \
@@ -202,7 +199,7 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
       ```
 
       > [!NOTE]
-      > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login command` bez zadání `-u` parametru. Spuštěním příkazu poskytuje adresu URL a kód, který je nutné použít k ověření.
+      > Pokud váš uživatelský účet má povolené ověřování službou Multi-Factor Authentication, můžete použít `az login command` bez zadání `-u` parametru. Spuštění tohoto příkazu obsahuje adresu URL a kód, který je nutné použít k ověření.
    
       * Přihlaste se jako *instanční objekt služby*: Před přihlášením, [vytvoření instančního objektu služby na webu Azure portal](azure-stack-create-service-principals.md) nebo rozhraní příkazového řádku a přiřaďte ho roli. Teď se přihlaste pomocí následujícího příkazu:
 
@@ -230,9 +227,9 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
         
           1. Připravte soubor .pem, který má být použit pro přihlášením instančního objektu.
 
-            * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu objektu služby jako pfx s privátním klíčem (umístěný ve `cert:\CurrentUser\My;` název certifikátu má stejný název jako objekt zabezpečení).
+            * Na klientském počítači, kde byl vytvořen objekt zabezpečení a export certifikátu instančního objektu služby, jako pfx pomocí soukromého klíče umístěné na `cert:\CurrentUser\My`; certifikátu název má stejný název jako objekt zabezpečení.
         
-            * Převeďte soubor pfx na pem (použití OpenSSL nástroje).
+            * Převeďte soubor pfx na pem (použijte nástroj OpenSSL).
 
           2.  Přihlaste se k rozhraní příkazového řádku:
             ```azurecli  
@@ -245,7 +242,7 @@ Následující kroky použijte pro připojení ke službě Azure Stack:
 
 ## <a name="test-the-connectivity"></a>Otestovat připojení
 
-Teď, když máme všechno, co instalační program, umožňuje vytvářet prostředky v rámci služby Azure Stack pomocí rozhraní příkazového řádku. Můžete například vytvořit skupinu prostředků pro aplikaci a přidejte virtuální počítač. Chcete-li vytvořit skupinu prostředků s názvem "MyResourceGroup", použijte následující příkaz:
+Všechna nastavení pomocí CLI vytvářet prostředky v rámci služby Azure Stack. Můžete například vytvořit skupinu prostředků pro aplikaci a přidejte virtuální počítač. Chcete-li vytvořit skupinu prostředků s názvem "MyResourceGroup", použijte následující příkaz:
 
 ```azurecli
 az group create \
@@ -257,16 +254,15 @@ Pokud skupina prostředků je úspěšně vytvořen, předchozí příkaz vypí�
 ![Vytvoření výstupní skupiny prostředků](media/azure-stack-connect-cli/image1.png)
 
 ## <a name="known-issues"></a>Známé problémy
-Existují některé známé problémy, které je třeba vědět, když používáte rozhraní příkazového řádku ve službě Azure Stack:
 
- - Tj interaktivní režim rozhraní příkazového řádku `az interactive` příkaz není dosud podporován ve službě Azure Stack.
+Existují známé problémy při použití rozhraní příkazového řádku ve službě Azure Stack:
+
+ - Interaktivní režim rozhraní příkazového řádku; například `az interactive` příkazu, ve službě Azure Stack se ještě nepodporuje.
  - Chcete-li získat seznam dostupných ve službě Azure Stack imagím virtuálních počítačů, použijte `az vm image list --all` příkaz místo `az vm image list` příkaz. Zadání `--all` možnost zajišťuje, že odpověď vrátí pouze obrázky, které jsou dostupné v prostředí Azure Stack.
  - Aliasy image virtuálního počítače, které jsou k dispozici v Azure nemusí být k dispozici ke službě Azure Stack. Při použití imagí virtuálních počítačů, musíte použít parametr celý název URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) místo aliasu image. Tento název URN musí odpovídat specifikaci bitové kopie odvozena z `az vm images list` příkazu.
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení šablon pomocí Azure CLI](azure-stack-deploy-template-command-line.md)
-
-[Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku (operátor)](../azure-stack-cli-admin.md)
-
-[Správa uživatelských oprávnění](azure-stack-manage-permissions.md)
+- [Nasazení šablon pomocí Azure CLI](azure-stack-deploy-template-command-line.md)
+- [Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku (operátor)](../azure-stack-cli-admin.md)
+- [Správa uživatelských oprávnění](azure-stack-manage-permissions.md) 

@@ -1,5 +1,5 @@
 ---
-title: 'Skript prostředí PowerShell: přírůstkové načtení dat pomocí služby Azure Data Factory | Dokumentace Microsoftu'
+title: 'Skript prostředí PowerShell: Přírůstkové načtení dat pomocí služby Azure Data Factory | Dokumentace Microsoftu'
 description: Tento skript prostředí PowerShell ukazuje, jak pomocí Azure Data Factory pro přírůstkové kopírování dat ze služby Azure SQL Database do úložiště objektů Blob v Azure...
 services: data-factory
 author: linda33wj
@@ -8,16 +8,15 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 62f0deeccdd05f4ea9098aab42145be58bf3b328
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a9866061396d3cd7548f7caa2ef0c7b32c1a1980
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124894"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015725"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skript prostředí PowerShell – přírůstkové načtení dat pomocí služby Azure Data Factory
 Tento ukázkový skript Powershellu načte jenom nových nebo aktualizovaných záznamů ze zdrojového úložiště dat do úložiště dat jímky po počáteční úplné kopírování dat ze zdroje do jímky.  

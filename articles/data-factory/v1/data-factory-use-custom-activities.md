@@ -9,17 +9,16 @@ ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: b7a2f9350633be5ec0cb8d5a7c6e7cc5048f956a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b2d9bdd8a7faee81794beef7cf6a764aeea666ae
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275995"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020111"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,7 +80,7 @@ Tady jsou dva hlavní kroky, které můžete provádět v rámci tohoto návodu:
 2. Vytvoření služby Azure data factory s kanálem, který používá vlastní aktivity.
 
 ### <a name="create-a-custom-activity"></a>Vytvořit vlastní aktivitu
-Pokud chcete vytvořit vlastní aktivitu .NET, vytvořte **knihovny tříd .NET** projektu s třídou, která implementuje **IDotNetActivity** rozhraní. Toto rozhraní obsahuje pouze jednu metodu: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) a je jeho podpis:
+Pokud chcete vytvořit vlastní aktivitu .NET, vytvořte **knihovny tříd .NET** projektu s třídou, která implementuje **IDotNetActivity** rozhraní. Toto rozhraní obsahuje pouze jednu metodu: [Spustit](https://msdn.microsoft.com/library/azure/mt603945.aspx) a je jeho podpis:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -426,7 +425,7 @@ Tady jsou kroky, které provedete v této části:
    3. V okně **Analýza dat** klikněte na **Objekt pro vytváření dat**.
    
     ![Nová nabídka služby Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. V **nová datová továrna** okně zadejte **CustomActivityFactory** pro název. Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název datové továrny (například **yournameCustomActivityFactory**) a zkuste to znovu.
+2. V **nová datová továrna** okně zadejte **CustomActivityFactory** pro název. Název objektu pro vytváření dat Azure musí být globálně jedinečný. Pokud se zobrazí chybová zpráva: **Název objektu pro vytváření dat "CustomActivityFactory" není k dispozici**, změňte název datové továrny (například **yournameCustomActivityFactory**) a zkuste to znovu.
 
     ![Okno Nový objekt pro vytváření dat Azure](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
 3. Klikněte na tlačítko **název skupiny prostředků**a vyberte existující skupinu prostředků nebo vytvořte skupinu prostředků.
@@ -437,7 +436,7 @@ Tady jsou kroky, které provedete v této části:
     
     ![Okno Objekt pro vytváření dat](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojené služby
+### <a name="step-2-create-linked-services"></a>Krok 2: Vytvoření propojených služeb
 Propojené služby propojují úložiště dat nebo výpočetní služby s objektem pro vytváření dat Azure. V tomto kroku propojíte svůj účet úložiště Azure a účet Azure Batch pro vytváření dat.
 
 #### <a name="create-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
@@ -482,7 +481,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
 
     
 
-### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datové sady
+### <a name="step-3-create-datasets"></a>Krok 3: Vytvoření datových sad
 V tomto kroku vytvoříte datové sady, které představují vstupní a výstupní data.
 
 #### <a name="create-input-dataset"></a>Vytvoření vstupní datové sady
@@ -554,7 +553,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
     Výstupní objekt blob nebo soubor se generuje pro každý vstupní řez. Zde je, jak je výstupní soubor s názvem pro každý řez. Všechny výstupní soubory jsou generovány v jedné složce výstupu: **adftutorial\customactivityoutput**.
 
-   | Řez | Čas spuštění | Výstupní soubor |
+   | Řez | Počáteční čas | Výstupní soubor |
    |:--- |:--- |:--- |
    | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
@@ -562,7 +561,7 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    Mějte na paměti, že všechny soubory ve vstupní složce jsou součástí řez s časem spuštění uvedeno výše. Při zpracování této řez, vlastní aktivita prohledává každý soubor a vytváří čáry ve výstupním souboru s počtem výskytů hledaný termín (dále jen "společnost Microsoft"). Pokud se inputfolder tři soubory, jsou ve výstupní soubor pro jednotlivé hodinový řezy tři řádky: 2016-11-16-00.txt 2016-11-16:01:00:00.txt atd.
+    Mějte na paměti, že všechny soubory ve vstupní složce jsou součástí řez s časem spuštění uvedeno výše. Při zpracování této řez, vlastní aktivita prohledává každý soubor a vytváří čáry ve výstupním souboru s počtem výskytů hledaný termín (dále jen "společnost Microsoft"). Pokud se inputfolder tři soubory, jsou do výstupního souboru pro jednotlivé hodinový řezy tři řádky: 2016-11-16-00.txt 2016-11-16:01:00:00.txt atd.
 3. K nasazení **OutputDataset**, klikněte na tlačítko **nasadit** na panelu příkazů.
 
 ### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Vytvoření a spuštění kanálu, který používá vlastní aktivity
@@ -687,7 +686,7 @@ Následující diagram znázorňuje vztah mezi úlohami Azure Data Factory a Bat
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ``` 
-2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu zadanému pro **EntryPoint** vlastností v kódu JSON kanálu. V tomto návodu je název třídy: MyDotNetActivity a vstupní bod v kódu JSON: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Pokud se zobrazí následující chyba, zkontrolujte, že název třídy v souboru CS odpovídá názvu zadanému pro **EntryPoint** vlastností v kódu JSON kanálu. V tomto návodu je název třídy: Je MyDotNetActivity a vstupní bod v kódu JSON: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
@@ -729,7 +728,7 @@ Následující diagram znázorňuje vztah mezi úlohami Azure Data Factory a Bat
 Pokud aktualizujete kód pro vlastní aktivitu, sestavit a nahrajte soubor zip, který obsahuje nové binární soubory do úložiště objektů blob.
 
 ## <a name="appdomain-isolation"></a>Izolace domény aplikace
-Naleznete v tématu [různé ukázky AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , který ukazuje, jak vytvořit vlastní aktivitu, která není omezen na verze sestavení používají Spouštěč služby Data Factory (Příklad: ve verzi 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, atd.).
+V tématu [různé ukázky AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , který ukazuje, jak vytvořit vlastní aktivitu, která není omezen na verze sestavení používají Spouštěč služby Data Factory (Příklad: Ve verzi 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, atd.).
 
 ## <a name="access-extended-properties"></a>Přístup k rozšířené vlastnosti
 Je možné deklarovat rozšířené vlastnosti v aktivitě JSON, jak je znázorněno v následujícím příkladu:
@@ -748,7 +747,7 @@ Je možné deklarovat rozšířené vlastnosti v aktivitě JSON, jak je znázorn
 ```
 
 
-V tomto příkladu jsou dva rozšířené vlastnosti: **SliceStart** a **DataFactoryName**. Hodnota vlastnosti SliceStart vychází z vlastnosti SliceStart systémové proměnné. Zobrazit [systémové proměnné](data-factory-functions-variables.md) seznam podporovaných systémových proměnných. Hodnota DataFactoryName je pevně zakódované CustomActivityFactory.
+V tomto příkladu jsou dva rozšířené vlastnosti: **Vlastnosti SliceStart** a **DataFactoryName**. Hodnota vlastnosti SliceStart vychází z vlastnosti SliceStart systémové proměnné. Zobrazit [systémové proměnné](data-factory-functions-variables.md) seznam podporovaných systémových proměnných. Hodnota DataFactoryName je pevně zakódované CustomActivityFactory.
 
 Pro přístup k těmto rozšířené vlastnosti v **Execute** metodou, použít kód podobně jako následující kód:
 
@@ -769,7 +768,7 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
 Můžete také vytvořit fond služby Azure Batch s **automatického škálování** funkce. Můžete například vytvořit fond služby azure batch s 0 vyhrazených virtuálních počítačích a se vzorec automatického škálování na základě počtu úkolů čekajících na vyřízení. 
 
-Ukázkové vzorce zde dosáhne následující chování: při počátečním vytvoření fondu začíná 1 virtuální počítač. Metrika $PendingTasks definuje počet úloh ve spuštění + aktivní (ve frontě) stavu.  Vzorec najde průměrný počet čekající úlohy za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nedostane mimo 25 virtuálních počítačů. Tak jako jsou odeslány nové úkoly, fondu automaticky rozšíří a jako dokončení úkolů, budou virtuální počítače zdarma jednu po druhé a automatickým Škálováním zmenšuje těchto virtuálních počítačů. startingNumberOfVMs a maxNumberofVMs lze upravit podle vašich potřeb.
+Ukázkové vzorce zde dosáhne následující chování: Při počátečním vytvoření fondu začíná 1 virtuální počítač. Metrika $PendingTasks definuje počet úloh ve spuštění + aktivní (ve frontě) stavu.  Vzorec najde průměrný počet čekající úlohy za posledních 180 sekund a nastaví TargetDedicated odpovídajícím způsobem. Zajišťuje, že TargetDedicated nikdy nedostane mimo 25 virtuálních počítačů. Tak jako jsou odeslány nové úkoly, fondu automaticky rozšíří a jako dokončení úkolů, budou virtuální počítače zdarma jednu po druhé a automatickým Škálováním zmenšuje těchto virtuálních počítačů. startingNumberOfVMs a maxNumberofVMs lze upravit podle vašich potřeb.
 
 Vzorec automatického škálování:
 

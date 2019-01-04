@@ -1,14 +1,12 @@
 ---
-title: Filtrování síťového provozu – kurz – Azure Portal | Microsoft Docs
+title: Filtrování síťového provozu – kurz – Azure Portal
+titlesuffix: Azure Virtual Network
 description: V tomto kurzu se dozvíte, jak na webu Azure Portal použít skupinu zabezpečení sítě k filtrování síťového provozu do podsítě.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
 ms.topic: tutorial
@@ -16,13 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: jdial
-ms.custom: ''
-ms.openlocfilehash: 68fdb158a7d4c723bffb54f33203120afb72a8ef
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385393"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019023"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Kurz: Filtrování síťového provozu se skupinou zabezpečení sítě pomocí webu Azure Portal
 
@@ -38,7 +35,7 @@ K dokončení tohoto kurzu můžete použít [Azure CLI](tutorial-filter-network
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 

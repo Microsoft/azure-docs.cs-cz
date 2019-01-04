@@ -9,17 +9,16 @@ ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2498fbef8d13fe9c61fd474dbbb678aa0b133e8a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3fec0952f4b164327942d5dee108f89b17613042
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728408"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015535"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopírování dat do a z Data Lake Storage Gen1 pomocí služby Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,9 +52,9 @@ Doporučujeme používat ověřování instančních objektů, zejména pro plá
 ## <a name="get-started"></a>Začínáme
 Vytvoření kanálu s aktivitou kopírování, která přesunuje data ze Azure Data Lake Store s použitím různých nástrojů a rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál ke zkopírování dat je použít **Průvodce kopírováním**. Kurz týkající se vytvoření kanálu pomocí Průvodce kopírováním, najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
+Nejjednodušší způsob, jak vytvořit kanál ke zkopírování dat je použít **Průvodce kopírováním**. Kurz týkající se vytvoření kanálu pomocí Průvodce kopírováním, najdete v tématu [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **Rozhraní .NET API**, a **rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky:
 
@@ -150,7 +149,7 @@ Alternativně můžete ověření přihlašovacích údajů uživatele ke kopír
 #### <a name="token-expiration"></a>Vypršení platnosti tokenu
 Autorizační kód, který vygenerujete pomocí **Authorize** tlačítko vyprší po určitou dobu. Tato zpráva znamená, že vypršela platnost ověřovacího tokenu:
 
-Chyba operace přihlašovacích údajů: invalid_grant - AADSTS70002: Chyba při ověřování přihlašovacích údajů. AADSTS70008: Udělení přístupu zadaná vyprší nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: časové razítko fac30a0c-6be6-4e02-8d69-a776d2ffefd7: 2015-12-15 21-09-31Z.
+Chyba operace přihlašovacích údajů: invalid_grant - AADSTS70002: Chyba ověřování přihlašovacích údajů. AADSTS70008: Udělení přístupu zadaná vyprší nebo odvolat. ID trasování: ID korelace d18629e8-af88-43c5-88e3-d8419eb1fca1: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 časové razítko: 2015-12-15 21-09-31Z.
 
 Následující tabulka uvádí čas vypršení platnosti různé typy uživatelských účtů:
 
@@ -192,13 +191,13 @@ Podrobnosti o třídách služby Data Factory používá v kódu, najdete v čl�
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-**Příznak:** při kopírování dat **do** Azure Data Lake Store, pokud vaše aktivita kopírování selže s následující chybou:
+**Příznaky:** Při kopírování dat **do** Azure Data Lake Store, pokud vaše aktivita kopírování selže s následující chybou:
 
   ```
   Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
   ```
 
-**Hlavní příčina:** existují 2 možné důvody:
+**Hlavní příčina:** Existují 2 možné důvody:
 
 1. `resourceGroupName` A/nebo `subscriptionId` zadané v Azure Data Lake Store propojené služby není správné.
 2. Uživatel nebo instanční objekt služby nemá potřebná oprávnění.
@@ -241,9 +240,9 @@ K určení datové sady reprezentující vstupní data v Data Lake Store, může
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | **folderPath** |Cesta k kontejner a složku v Data Lake Store. |Ano |
-| **fileName** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a malá a velká písmena. <br/><br/>Pokud zadáte **fileName**, aktivity (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní sadě.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v jímky aktivity, je název generovaného souboru ve formátu Data. _Identifikátor GUID_.txt ". Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
+| **fileName** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a malá a velká písmena. <br/><br/>Pokud zadáte **fileName**, aktivity (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní sadě.<br/><br/>Když **fileName** pro výstupní datovou sadu není zadána a **preserveHierarchy** není zadán v jímky aktivity, je název generovaného souboru ve formátu Data. _Identifikátor GUID_.txt ". Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
 | **partitionedBy** |**PartitionedBy** vlastnost je volitelná. Slouží k určení dynamické cestu a název souboru pro data časových řad. Například **folderPath** může být parametrizován pro každou hodinu data. Podrobnosti a příklady najdete v tématu [vlastnost partitionedBy](#using-partitionedby-property). |Ne |
-| **Formát** | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a  **ParquetFormat**. Nastavte **typ** vlastnosti v části **formátu** na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly v [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` části v definicích oba vstupní a výstupní datové sady. |Ne |
+| **Formát** | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnosti v části **formátu** na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly v [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` části v definicích oba vstupní a výstupní datové sady. |Ne |
 | **Komprese** | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 ### <a name="the-partitionedby-property"></a>Vlastnost partitionedBy
@@ -291,7 +290,7 @@ K dispozici ve vlastnosti **typeProperties** části aktivity se liší s jednot
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **copyBehavior** |Určuje chování kopírování. |<b>PreserveHierarchy</b>: zachová hierarchií souborů v cílové složce. Relativní cesta zdrojového souboru do zdrojové složky je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/><b>FlattenHierarchy</b>: všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generované názvy.<br/><br/><b>MergeFiles</b>: sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud není zadán název souboru nebo objekt blob, je název souboru sloučeného se zadaným názvem. Název souboru, jinak se automaticky generuje. |Ne |
+| **copyBehavior** |Určuje chování kopírování. |<b>PreserveHierarchy</b>: Zachová hierarchií souborů v cílové složce. Relativní cesta zdrojového souboru do zdrojové složky je stejný jako relativní cesta cílový soubor do cílové složky.<br/><br/><b>FlattenHierarchy</b>: Všechny soubory ze zdrojové složky vytvořené v první úroveň cílové složky. Cílové soubory se vytvoří s automaticky generované názvy.<br/><br/><b>MergeFiles</b>: Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud není zadán název souboru nebo objekt blob, je název souboru sloučeného se zadaným názvem. Název souboru, jinak se automaticky generuje. |Ne |
 
 ### <a name="recursive-and-copybehavior-examples"></a>rekurzivní a copyBehavior příklady
 Tato část popisuje výsledné chování pro různé kombinace hodnot rekurzivní a copyBehavior operace kopírování.
