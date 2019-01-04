@@ -119,7 +119,7 @@ items:
       href: how-to-customize-language-model.md
     - name: Přizpůsobení výslovnosti
       href: how-to-customize-pronunciation.md
-    - name: Vytvoření vlastního koncového bodu rozpoznávání řeči
+    - name: Vytvoření vlastního koncového bodu pro převod řeči na text
       href: how-to-create-custom-endpoint.md
     - name: Přizpůsobení hlasových písem (hlas značky robota)
       href: how-to-customize-voice-font.md
@@ -226,9 +226,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: Ochrana osobních údajů a soubory cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 16459f36ce6c65199fb609310ceac0a8863a6324
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ef61c01dcfd37d384dd098dc739840d52b9d1e5d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715031"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021182"

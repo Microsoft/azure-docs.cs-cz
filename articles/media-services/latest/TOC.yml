@@ -28,8 +28,14 @@ items:
     href: cli-samples.md
 - name: Koncepty
   items:
-  - name: Migrace z v2 v3
-    href: migrate-from-v2-to-v3.md
+  - name: Účty
+    items:
+    - name: Migrace z v2 v3
+      href: migrate-from-v2-to-v3.md
+    - name: Kvóty a omezení
+      href: limits-quotas-constraints.md
+    - name: Účty úložiště
+      href: storage-account-concept.md
   - name: Entity
     href: entities-overview.md
     items:
@@ -79,15 +85,21 @@ items:
       href: live-event-states-billing.md
     - name: Latence
       href: live-event-latency.md
-  - name: Účty úložiště
-    href: storage-account-concept.md
+  - name: Přehrávač médií Azure
+    href: use-azure-media-player.md
 - name: Návody
   items:
-  - name: Vytvoření účtu – rozhraní příkazového řádku
-    href: create-account-cli-how-to.md
-  - name: Přístup k rozhraním API – rozhraní příkazového řádku
-    href: access-api-cli-how-to.md
-  - name: Odeslat
+  - name: Začínáme
+    items:
+    - name: Vytvoření účtu – rozhraní příkazového řádku
+      href: create-account-cli-how-to.md
+    - name: Přístup k rozhraním API – rozhraní příkazového řádku
+      href: access-api-cli-how-to.md
+    - name: Škálování rezervovaných jednotek médií – CLI
+      href: media-reserved-units-cli-how-to.md
+  - name: Konfigurace nástroje Postman
+    href: media-rest-apis-with-postman.md
+  - name: Nahrání obsahu
     items:
     - name: Z HTTP(s) – .NET
       href: job-input-from-http-how-to.md
@@ -95,6 +107,22 @@ items:
       href: job-input-from-local-file-how-to.md
     - name: Z místního souboru – REST
       href: upload-files-rest-how-to.md
+  - name: Kódování obsahu
+    items:
+    - name: Přizpůsobení přednastavení transformace – .NET
+      href: customize-encoder-presets-how-to.md
+  - name: Použití služby Event Grid
+    items:
+    - name: Monitorování událostí – portál
+      href: monitor-events-portal-how-to.md
+    - name: Monitorování událostí – rozhraní příkazového řádku
+      href: job-state-events-cli-how-to.md
+  - name: Ochrana obsahu
+    items:
+    - name: S využitím AES-128 – .NET
+      href: protect-with-aes128.md
+    - name: S využitím DRM – .NET
+      href: protect-with-drm.md
   - name: Vytváření filtrů
     items:
     - name: S využitím .NET
@@ -103,26 +131,6 @@ items:
       href: filters-dynamic-manifest-rest-howto.md
     - name: S využitím rozhraní příkazového řádku
       href: filters-dynamic-manifest-cli-howto.md
-  - name: Kódování
-    items:
-    - name: Přizpůsobení přednastavení transformace – .NET Core
-      href: customize-encoder-presets-how-to.md
-  - name: Použití služby Event Grid
-    items:
-    - name: Monitorování událostí – portál
-      href: monitor-events-portal-how-to.md
-    - name: Monitorování událostí – rozhraní příkazového řádku
-      href: job-state-events-cli-how-to.md
-  - name: Ochrana
-    items:
-    - name: S využitím AES-128 – .NET
-      href: protect-with-aes128.md
-    - name: S využitím DRM – .NET
-      href: protect-with-drm.md
-  - name: Konfigurace nástroje Postman
-    href: media-rest-apis-with-postman.md
-  - name: Škálování rezervovaných jednotek médií – CLI
-    href: media-reserved-units-cli-how-to.md
 - name: Referenční informace
   items:
   - name: Specifikace OpenAPI (Swagger)
@@ -181,13 +189,11 @@ items:
       href: https://aka.ms/ams-v3-ruby-sdk
   - name: Poznámky k verzi
     href: release-notes.md
-  - name: Kvóty a omezení
-    href: limits-quotas-constraints.md
   - name: Nejčastější dotazy
     href: frequently-asked-questions.md
-ms.openlocfilehash: 660052b4e82f6e005c096b5ac1edd7a80c2d5339
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 9acf8f3ce9f5886d5f61087a58d863047bd0b605
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744968"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014518"
