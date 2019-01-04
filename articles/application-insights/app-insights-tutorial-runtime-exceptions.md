@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 820f43a8caa5e0d6d9960985fd1d46271071b0fb
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 2b9542f9f67b3d26609f35cf8b8705b11b3a4b72
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742826"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023514"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -66,7 +66,7 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
 
     ![Ukázky neúspěšných požadavků](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Podrobnosti o neúspěšném požadavku se zobrazí v Ganttově grafu, který ukazuje, že v této transakci došlo ke dvěma chybám závislostí, které také přispěly k více než 50 % celkové doby trvání transakce. V tomto prostředí se zobrazuje veškerá telemetrie ze všech komponent distribuované aplikace, které souvisejí s tímto ID operace. [Další informace o novém prostředí](app-insights-transaction-diagnostics.md). Výběrem libovolné položky můžete na pravé straně zobrazit její podrobnosti. 
+6. Podrobnosti o neúspěšném požadavku se zobrazí v Ganttově grafu, který ukazuje, že v této transakci došlo ke dvěma chybám závislostí, které také přispěly k více než 50 % celkové doby trvání transakce. V tomto prostředí se zobrazuje veškerá telemetrie ze všech komponent distribuované aplikace, které souvisejí s tímto ID operace. [Další informace o novém prostředí](../azure-monitor/app/transaction-diagnostics.md). Výběrem libovolné položky můžete na pravé straně zobrazit její podrobnosti. 
 
     ![Podrobnosti neúspěšné žádosti](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
 

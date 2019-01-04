@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bc98fc2465c280c41a77823de239a5572c5d27e4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409573"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015079"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -168,7 +167,7 @@ Pro kopírování dat z a do Salesforce, nastavte vlastnost typ datové sady na 
 ```
 
 >[!NOTE]
->Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí datovou sadu typu "RelationalTable" sleduje práci a uvidíte můžete přepnout na nový typ "SalesforceObject".
+>Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí datovou sadu typu "RelationalTable", ho pořád funguje při naleznete v tématu můžete přepnout na nový typ "SalesforceObject".
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -227,7 +226,7 @@ Pro kopírování dat ze služby Salesforce, nastavte typ zdroje v aktivitě kop
 ```
 
 >[!NOTE]
->Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí kopie typu "RelationalSource" zdroj sleduje práci a najdete v článku můžete přepnout na nový typ "SalesforceSource".
+>Z důvodu zpětné kompatibility: Při kopírování dat ze služby Salesforce, pokud používáte předchozí kopie typu "RelationalSource" zdroj sleduje práci, a najdete v článku můžete přepnout na nový typ "SalesforceSource".
 
 ### <a name="salesforce-as-a-sink-type"></a>Salesforce jako typ jímky
 
@@ -239,7 +238,7 @@ Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kop
 | WriteBehavior | Chování zápisu pro operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je vložení) |
 | externalIdFieldName | Název pole externího ID operace upsert. Zadané pole musí být definován jako "Pole externího Id" v objektu Salesforce. V odpovídající vstupní data nemůže mít hodnotu NULL. | Ano pro "Upsert" |
 | WriteBatchSize | Počet řádků dat zapsaných do Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
-| ignoreNullValues | Určuje, jestli se má ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: ponechat data v cílové objektů beze změny, pokud tak učiníte, operace upsert nebo aktualizace. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: aktualizace dat v cílového objektu na hodnotu NULL, pokud tak učiníte, operace upsert nebo aktualizace. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
+| ignoreNullValues | Určuje, jestli se má ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE**: Ponechte data v cílovém objektu beze změny po provedení operace upsert nebo aktualizace. Definovaná výchozí hodnota vložte, když provedete operaci vložení.<br/>- **False**: Pokud tak učiníte, operace upsert nebo aktualizace, aktualizace dat v cílového objektu na hodnotu NULL. Vložení hodnoty NULL, když provedete operaci vložení. | Ne (výchozí hodnota je false) |
 
 **Příklad: Salesforce jímky v aktivitě kopírování**
 
@@ -314,15 +313,15 @@ Při kopírování dat ze služby Salesforce se používají následující mapo
 |:--- |:--- |
 | Automatické číslo |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
-| Měna |Decimal |
+| Měna |Desítkově |
 | Datum |DateTime |
-| Datum/čas |DateTime |
+| Datum a čas |DateTime |
 | Email |Řetězec |
 | ID |Řetězec |
 | Relaci vyhledávání |Řetězec |
 | Vyberte rozevírací seznam |Řetězec |
-| Číslo |Decimal |
-| Procento |Decimal |
+| Číslo |Desítkově |
+| Procento |Desítkově |
 | Telefon |Řetězec |
 | Rozevírací seznam |Řetězec |
 | Text |Řetězec |

@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 0907739bc0e67228f9f7f12594df7b9067e32578
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 84f0c000f54852bbab60a53ecb686656ac86b3de
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984974"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002650"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
-Streamování (su) jednotky představuje výpočetní prostředky, které jsou přiděleny k provedení úlohy. Čím vyšší číslo ze služby SUs, jsou přiděleny další prostředky procesoru a paměti pro vaši úlohu. Tato kapacita vám umožní soustředit na logiku dotazu a přehledů nutnosti spravovat hardware pro spuštění vašeho Stream Analytics úlohy včas.
+Streamování (su) jednotky představuje výpočetní prostředky, které jsou přiděleny k provedení úlohy. Čím vyšší je počet SU, tím více prostředků CPU a paměti se úloze přidělí. Tato kapacita vám umožní soustředit na logiku dotazu a přehledů nutnosti spravovat hardware pro spuštění vašeho Stream Analytics úlohy včas.
 
-Pokud chcete dosáhnout zpracování datových proudů s nízkou latencí, provádět úlohy Azure Stream Analytics veškeré zpracování v paměti. Při spuštění nedostatek paměti, úloha streamování se nezdaří. V důsledku toho pro produkční úlohy, je důležité monitorovat využití prostředků úlohy streamování a ujistěte se, že není dostatek prostředků přidělených zachovat úloh spuštěných 24 hodin denně 7.
+Aby se dosáhlo nízké latence zpracování streamů, provádějí úlohy Stream Analytics veškeré zpracování v paměti. Při spuštění nedostatek paměti, úloha streamování se nezdaří. V důsledku toho pro produkční úlohy, je důležité monitorovat využití prostředků úlohy streamování a ujistěte se, že není dostatek prostředků přidělených zachovat úloh spuštěných 24 hodin denně 7.
 
-Metriky využití SU %, která od 0 % do 100 %, popisuje využití paměti vaší úlohy. Pro úlohy streamování s minimálními nároky na místo tato metrika je obvykle mezi 10 až 20 %. Pokud dochází % využití SU a získat vstupní události v backlogu, úloha pravděpodobně vyžaduje další výpočetní prostředky, které je potřeba zvýšit počet SUs. Doporučujeme zachovat metrika SU nižší než 80 % pro občasné špičky. Společnost Microsoft doporučuje nastavení upozornění na metriku 80 % využití SU zabránit vyčerpání prostředků. Další informace najdete v tématu [kurz: nastavení výstrah pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md).
+Metriky využití SU %, která od 0 % do 100 %, popisuje využití paměti vaší úlohy. Pro úlohy streamování s minimálními nároky na místo tato metrika je obvykle mezi 10 až 20 %. Pokud dochází % využití SU a získat vstupní události v backlogu, úloha pravděpodobně vyžaduje další výpočetní prostředky, které je potřeba zvýšit počet SUs. Doporučujeme zachovat metrika SU nižší než 80 % pro občasné špičky. Společnost Microsoft doporučuje nastavení upozornění na metriku 80 % využití SU zabránit vyčerpání prostředků. Další informace najdete v tématu [kurzu: Nastavení upozornění pro úlohy Azure Stream Analytics](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurace Stream Analytics Streaming jednotek (su)
 1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
@@ -48,7 +48,7 @@ Volba počet požadovaných SUs pro konkrétní úlohy závisí na konfiguraci o
 
 Obecně platí, osvědčeným postupem je začít s 6 SUs pro dotazy, které nepoužívají **PARTITION BY**. Pak zjistěte sladkost místě pomocí omyl a metody, ve kterém můžete upravit počet SUs po předání reprezentativního objemu dat a zkontrolovat metriku % využití SU. Maximální počet jednotek streamování, které je možné úlohu Stream Analytics, závisí na počtu kroků v dotazu definovaném pro úlohy a počtu oddílů v každém kroku. Další informace o omezeních [tady](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Další informace o výběru správné číslo su, najdete na této stránce: [úloh škálování Azure Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
+Další informace o výběru správné číslo su najdete na této stránce: [Škálování služby Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 
 > [!Note]
 > Určení počtu jednotek su jsou požadovány pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a na dotazu definovaném pro příslušnou úlohu. Můžete vybrat až do vaší kvóty služby SUs pro úlohu. Každé předplatné Azure má ve výchozím nastavení se kvóta až 200 SUs pro všechny úlohy analýzy v určité oblasti. Pro vaše předplatné nad tuto kvótu zvýšit su, obraťte se na [Microsoft Support](https://support.microsoft.com). Platné hodnoty pro služby SUs na úlohu jsou 1, 3, 6 a až v přírůstcích po 6.
@@ -57,13 +57,15 @@ Další informace o výběru správné číslo su, najdete na této stránce: [�
 
 Základní sada operátorů stavová služba Stream Analytics k dispozici jsou prvky dočasných dotazů (orientované na čas). Stream Analytics spravuje stav tyto operace interně jménem uživatele tím, že spravuje spotřebu paměti, vytváření kontrolních bodů pro zajištění odolnosti a obnovení stavu během upgradu služby. I když Stream Analytics plně řídí stavy, existují některé z doporučených osvědčených postupů, které uživatelé měli zvážit.
 
+Mějte na paměti, že úloha s logikou složitého dotazu může mít vysokou % využití SU i v případě, že není přijímání průběžně vstupních událostí. K tomu může dojít po náhlá Špička v vstupní a výstupní události. Úloha může nadále zachovat stav v paměti, pokud je složitý dotaz.
+
 ## <a name="stateful-query-logicin-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
 Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Je maximální velikost okna pro tyto elementy dotazu je sedm dní. 
 
 Koncept dočasné okno se zobrazí v několika elementy dotazu Stream Analytics:
-1. Agregace v okně: skupiny podle z Přeskakujícího, kdy se skok provádí a klouzavé systému windows
+1. Agregace v okně: SKUPINY podle z Přeskakujícího, kdy se skok provádí a klouzavé systému windows
 
-2. Dočasná spojení: připojení pomocí funkce DATEDIFF
+2. Dočasná spojení: PŘIPOJENÍ pomocí funkce DATEDIFF
 
 3. Dočasné analytických funkcí: ISFIRST, LAST a PRODLEVA s dobou trvání LIMIT
 

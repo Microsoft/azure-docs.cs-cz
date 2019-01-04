@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 688aab6c6e67b259931e4e2331e2d632e87f1db9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c058cfa3bc9fa976726731cedeb80eb76a1f0810
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651465"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999267"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI 
 
@@ -103,7 +103,7 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
         Diagram vypadá takto:
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
 
         Vizualizace ve výchozím nastavení zobrazí pro **ActualTemp** a **TargetTemp** součet hodnot. Když kliknete na šipku dolů vedle položek **ActualTemp** and **TragetTemp** v podokně Vizualizace, zobrazí se vybraná možnost **Součet**.
 
@@ -113,7 +113,7 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
 
         Vaše vizualizace dat by měla vypadat podobně jako na následujícím snímku obrazovky. Přesunutím kurzoru nad vizualizaci zobrazte popisky s relevantními daty.
 
-        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph-sum.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
+        ![Vytvoření vizualizací dat Sparku pomocí Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-area-graph.png "Vytvoření vizualizací dat Sparku pomocí Apache Spark BI")
 
 7. Klikněte na **Soubor**, pak na **Uložit** a zadejte název souboru `BuildingTemperature.pbix`. 
 

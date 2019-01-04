@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: eaba4572d9b7a83d27c98cf83eeef8fbd699c467
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 5800bbc71158da42bc0baf21a4219be3ce54b22b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811955"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000514"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: Datový model Application Insights
 
@@ -49,4 +49,4 @@ Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `W
 
 - Zobrazit [datový model](data-model.md) pro typy a datový model Application Insights.
 - Zjistěte, jak [Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights](../../azure-monitor/app/asp-net-exceptions.md).
-- Podívejte se na [platformy](../../application-insights/app-insights-platforms.md) podporované službou Application Insights.
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.

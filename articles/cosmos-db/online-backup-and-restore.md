@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 39c4a6108f4a5133e2c77904dcd67bf235801956
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0d6a370884e6648aaf131892759ee45b29ed3693
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265130"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001647"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Zálohování online a na vyžádání dat obnovení ve službě Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Pomocí služby Azure Cosmos DB jsou pouze data, ale také zálohy dat vysoce re
 Zálohy jsou prováděny bez vlivu na výkon nebo dostupnost vaší aplikace. Azure Cosmos DB provede zálohování dat na pozadí bez použití jakékoli další zřízená propustnost (ru) nebo které mají vliv výkon a dostupnost vaší databáze.
 
 Azure Cosmos DB ukládá automatické zálohování ve službě Azure Blob Storage, že jsou skutečná data uložená místně v rámci služby Azure Cosmos DB. Pro zajištění nízké latence, snímek zálohy je uložen v úložišti objektů Blob v Azure ve stejné oblasti jako aktuální oblasti pro zápis (nebo jeden z oblasti zápisu, pokud máte více hlavních konfiguraci) účet databáze Cosmos DB. Což zvyšuje odolnost vůči regionálního jednotlivých snímků zálohování dat v úložišti objektů Blob v Azure znovu replikovat do jiné oblasti pomocí geograficky redundantního úložiště (GRS). Oblast, do které se replikují zálohování je na základě zdrojové oblasti a pár oblastí přidružené zdrojové oblasti. Další informace najdete v tématu [seznam dvojic geograficky redundantní oblastí Azure](../best-practices-availability-paired-regions.md) článku. Tuto zálohu nelze přistupovat přímo. Azure Cosmos DB bude používat tato záloha pouze v případě, že zahájila obnovení zálohy.
-Následující obrázek ukazuje, jak je kontejner služby Azure Cosmos se všechny tři oddíly primární prostředek v oblasti západní USA zazálohovaný ve vzdálené účtu Azure Blob Storage v oblasti západní USA a pak replikují do USA – východ:
+Následující obrázek ukazuje, jak je kontejner služby Azure Cosmos se všechny tři primární fyzické oddíly v oblasti západní USA zazálohovaný ve vzdálené účtu Azure Blob Storage v oblasti západní USA a pak replikují do USA – východ:
 
 ![Pravidelné úplné zálohy všechny entity Cosmos DB v geograficky Redundantního úložiště Azure Storage](./media/online-backup-and-restore/automatic-backup.png)
 

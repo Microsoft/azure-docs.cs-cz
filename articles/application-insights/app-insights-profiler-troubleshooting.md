@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7b7aad2cb8aa9b4faeada795f20c818995f62fb6
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fc30dc928afbee0de2cd0d11a147c08b9f47cef1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720435"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024616"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -94,7 +94,7 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 
 V současné době můžete povolit Profiler na maximálně čtyři Azure webové aplikace a sloty nasazení, které jsou spuštěny v rámci stejného plánu služby. Pokud máte více webových aplikací než spuštěným v jeden plán služby app service, může se zobrazit Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException vyvolány profileru. Profiler běží odděleně pro každou webovou aplikaci a pokusí se spustit relaci trasování událostí pro Windows pro každou aplikaci. Existuje ale omezený počet relací ETW, které mohou být v jednom okamžiku aktivní. Pokud Profiler webové úlohy je příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace k plánu jiné služby.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Chyba nasazení: adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Chyba nasazení: Adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.
 
 Pokud nasazujete webovou aplikaci do prostředku webové aplikace s Profiler povolené, může se zobrazit následující zpráva:
 
@@ -128,12 +128,12 @@ D:\ProgramData\ApplicationInsightsProfiler\config.json
 ```
 Zkontrolujte, že Instrumentační klíč do příkazového řádku profileru, je správná. 
 
-Třetí pomocí cesty nacházejí v souboru config.json výše, zkontrolujte soubor protokolu profileru. Zobrazí informace o ladění uvedením nastavení, která používá profiler a stavové a chybové zprávy z profileru. Pokud profiler je spuštěné, přestože aplikace přijímá požadavky, zobrazí se vám tato zpráva: zjistí aktivita z Instrumentační klíč. Při nahrání trasování, zobrazí se vám tato zpráva: bylo zahájeno nahrávání trasování. 
+Třetí pomocí cesty nacházejí v souboru config.json výše, zkontrolujte soubor protokolu profileru. Zobrazí informace o ladění uvedením nastavení, která používá profiler a stavové a chybové zprávy z profileru. Pokud profiler je spuštěné, přestože aplikace přijímá požadavky, zobrazí se vám tato zpráva: Detekována aktivita z Instrumentační klíč. Při nahrání trasování, zobrazí se vám tato zpráva: Bylo zahájeno nahrávání trasování. 
 
 
-[profiler-search-telemetry]:./media/app-insights-profiler/Profiler-Search-Telemetry.png
-[Profiler webové úlohy]:./media/app-insights-profiler/Profiler-webjob.png
-[Profiler-webová úloha log]:./media/app-insights-profiler/Profiler-webjob-log.png
+[profiler-search-telemetry]:./media/app-insights-profiler-troubleshooting/Profiler-Search-Telemetry.png
+[Profiler webové úlohy]:./media/app-insights-profiler-troubleshooting/Profiler-webjob.png
+[Profiler-webová úloha log]:./media/app-insights-profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Key Vault | Microsoft Docs
+title: Přehled služby Azure Key Vault – Azure Key Vault | Dokumentace Microsoftu
 description: Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných klíčů.
 services: key-vault
 author: barclayn
@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/17/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 7945ff5d67f8229802666ac4a12209c2d26607f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 80a740e13f5c3a13b7533d75e386a9afa2855085
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608405"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002242"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
-Azure Key Vault pomáhá řešit následující problémy
+Služba Azure Key Vault vám pomůže vyřešit následující problémy:
+
 - **Správa tajných klíčů** – Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
 - **Správa klíčů** – Azure Key Vault se dá použít taky jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
 - **Správa certifikátů** – Azure Key Vault je taky služba, která umožňuje snadné zřizování, správu a nasazování veřejných a privátních certifikátů SSL/TLS (Secure Sockets Layer/Transport Layer Security) pro použití s Azure a interními připojenými prostředky. 
@@ -33,9 +34,9 @@ Azure Key Vault pomáhá řešit následující problémy
 
 ### <a name="centralize-application-secrets"></a>Centralizace tajných klíčů aplikací
 
-Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Key Vault výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Tím se eliminuje potřeba zahrnout tyto informace do kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace ho můžete bezpečně uložit ve službě Key Vault.
+Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Key Vault výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Není potřeba ukládat informace o zabezpečení v aplikacích eliminuje potřeba zahrnout tyto informace kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace, můžete ho uložit bezpečně ve službě Key Vault.
 
-Vaše aplikace můžou v případě potřeby bezpečně přistupovat k těmto informacím pomocí identifikátorů URI, které jim po uložení klíče nebo tajného klíče aplikace ve službě Azure Key Vault umožňují načíst konkrétní verzi tajného klíče. Toto se děje bez nutnosti psát vlastní kód pro zajištění ochrany tajných informací.
+Vaše aplikace může zabezpečený přístup k informacím, stačí pomocí identifikátorů URI. Tyto identifikátory URI povolit aplikace, které chcete načíst konkrétní verzi tajného kódu. Není nutné psát vlastní kód pro zajištění ochrany tajných informací uložených v Key Vault.
 
 ### <a name="securely-store-secrets-and-keys"></a>Bezpečné ukládání tajných klíčů a klíčů
 
@@ -51,7 +52,7 @@ Služba Azure Key Vault je navržená tak, aby Microsoft vaše data neviděl ani
 
 ### <a name="monitor-access-and-use"></a>Monitorování přístupu a využití
 
-Po vytvoření několika trezorů klíčů budete chtít monitorovat, jak a kdy se k vašim klíčům a tajným klíčům přistupuje. Můžete to provést povolením protokolování služby Key Vault. Ve službě Azure Key Vault můžete nakonfigurovat následující:
+Po vytvoření několika trezorů klíčů budete chtít monitorovat, jak a kdy se k vašim klíčům a tajným klíčům přistupuje. Aktivitu můžete sledovat povolením protokolování pro vaše trezory. Ve službě Azure Key Vault můžete nakonfigurovat následující:
 
 - Archivace do účtu úložiště
 - Streamování do centra událostí
@@ -61,11 +62,11 @@ Máte kontrolu nad svými protokoly, které můžete zabezpečit prostřednictv�
 
 ### <a name="simplified-administration-of-application-secrets"></a>Zjednodušená správa tajných klíčů aplikací
 
-Pokud ukládáte cenná data, musíte provést několik kroků. Informace o zabezpečení musí být zabezpečené, odpovídat životnímu cyklu a musí být vysoce dostupné. Azure Key Vault spoustu toho zjednodušuje tím, že:
+Pokud ukládáte cenná data, musíte provést několik kroků. Informace o zabezpečení musí být zabezpečená, musí podstoupit životní cyklus, musí být vysoce dostupný. Služba Azure Key Vault zjednodušuje celý proces od splnění těchto požadavků:
 
 - Odstraňuje potřebu interní znalosti modulů hardwarového zabezpečení.
 - Rychle vertikálně navyšuje kapacitu s ohledem na špičky využití ve vaší organizaci.
-- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. To zajišťuje vysokou dostupnost a eliminuje potřebu jakékoli akce od správce k aktivaci převzetí služeb při selhání.
+- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. Replikace dat zajišťuje vysokou dostupnost a eliminuje potřebu jakékoli akce od správce k aktivaci převzetí služeb při selhání.
 - Poskytuje standardní možnosti správy Azure prostřednictvím portálu, Azure CLI nebo PowerShellu.
 - Automatizuje určité úlohy prováděné s certifikáty, které jste zakoupili od veřejných certifikačních autorit, třeba jejich registraci a obnovení.
 
@@ -73,7 +74,12 @@ Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů apli
 
 ### <a name="integrate-with-other-azure-services"></a>Integrace s ostatními službami Azure
 
-Jako zabezpečené úložiště v Azure Key Vault používá k zjednodušení scénářů, jako je [Azure Disk Encryption](../security/azure-security-disk-encryption.md), [s funkcí always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkce v systému SQL server a Azure SQL Database, [aplikace Azure Služba]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a Log Analytics.
+Jako zabezpečené úložiště v Azure Key Vault používá k zjednodušení scénářů, jako jsou:
+-  [Azure Disk Encryption](../security/azure-security-disk-encryption.md)
+-  [s funkcí always encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) funkce v systému SQL server a Azure SQL Database
+- [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site). 
+
+Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a Log Analytics.
 
 ## <a name="next-steps"></a>Další postup
 

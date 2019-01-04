@@ -1,20 +1,20 @@
 ---
 title: Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče | Dokumentace Microsoftu
-description: Pokyny o tom, jak vytvořit přiřazení role, uživatelem definované funkce a procesy pro hledání shody s Dvojčaty digitální Azure.
+description: Jak vytvořit uživatelem definované funkce, procesy pro hledání shody a přiřazení rolí v digitální dvojče Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 01/02/2019
 ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 91c0b5700fbc648f1fcd1355a438694cecc07a04
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 06c6d2935358650eb9f7ef1cda55d5292e203daf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993397"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019924"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Vytvoření uživatelem definovaných funkcí v Azure digitální dvojče
 
@@ -73,19 +73,13 @@ S text JSON:
 
 ## <a name="create-a-user-defined-function"></a>Vytvoření uživatelem definované funkce
 
-Po vytvoření procesy pro hledání shody nahrávání fragment funkce následujícími způsoby ověření HTTP **příspěvek** žádosti:
+Po vytvoření procesy pro hledání shody nahrajte funkce fragment kódu s požadavkem HTTP POST s více částmi. následující ověření:
+
+[!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
-
-> [!IMPORTANT]
-> - Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-> - Zadaný text je vícedílné zprávy standardu:
->   - První část obsahuje požadovaná metadata UDF.
->   - Druhá část obsahuje logiku výpočetní jazyka JavaScript.
-> - V **USER_DEFINED_BOUNDARY** části, nahraďte **spaceId** (`YOUR_SPACE_IDENTIFIER`) a **procesy pro hledání shody**(`YOUR_MATCHER_IDENTIFIER`) hodnoty.
-> - Poznámka: jako zadána UDF JavaScriptu `Content-Type: text/javascript`.
 
 Pomocí následujícího textu JSON:
 
@@ -116,6 +110,15 @@ function process(telemetry, executionContext) {
 | USER_DEFINED_BOUNDARY | Název obsahu hranic s více částmi. |
 | YOUR_SPACE_IDENTIFIER | Identifikátor místa  |
 | YOUR_MATCHER_IDENTIFIER | ID předávaný kterou chcete použít |
+
+1. Ověřte, že hlavičky zahrnují: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Ověřte, zda je textu vícedílné zprávy standardu:
+
+   - První část obsahuje metadata požadované uživatelem definované funkce.
+   - Druhá část obsahuje logiku výpočetní jazyka JavaScript.
+
+1. V **USER_DEFINED_BOUNDARY** části, nahraďte **spaceId** (`YOUR_SPACE_IDENTIFIER`) a **procesy pro hledání shody** (`YOUR_MATCHER_IDENTIFIER`) hodnoty.
+1. Ověřte, že je jako zadaný uživatelem definované funkce jazyka JavaScript `Content-Type: text/javascript`.
 
 ### <a name="example-functions"></a>Příklad funkce
 
@@ -192,14 +195,14 @@ Složitější ukázku kódu uživatelem definované funkce, najdete v článku 
 
 Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v rámci. Pokud pro uživatelem definované funkce neexistuje žádná přiřazení role, nemá potřebná oprávnění k interakci s rozhraním API pro správu nebo nebude mít přístup k provádění akcí v grafu objektů. Akce, které může provádět uživatelem definované funkce jsou zadány a prostřednictvím řízení přístupu na základě rolí v rámci Azure digitální dvojče Management API. Uživatelem definované funkce může omezit v oboru, například tak, že zadáte určité role nebo určité cesty řízení přístupu. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-role-based-access-control.md) dokumentaci.
 
-1. [Dotazování do rozhraní API systému](./security-create-manage-role-assignments.md#all) u všech rolí k získání ID role, kterou chcete přiřadit k vaší UDF. Udělat tak, že ověřeného požadavku HTTP GET na:
+1. [Dotazování do rozhraní API systému](./security-create-manage-role-assignments.md#all) u všech rolí k získání ID role, kterou chcete přiřadit do uživatelem definované funkce. Udělat tak, že ověřeného požadavku HTTP GET na:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    Zachovat ID požadované role. Se předá jako atribut textu JSON **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) níže.
 
-1. **ID objektu** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude UDF ID, které jste vytvořili dříve.
+1. **ID objektu** (`YOUR_USER_DEFINED_FUNCTION_ID`) bude uživatelem definovanou funkci ID, které jste vytvořili dříve.
 1. Vrátí hodnotu **cesta** (`YOUR_ACCESS_CONTROL_PATH`) dotazováním prostory vaší s `fullpath`.
 1. Zkopírujte vráceného `spacePaths` hodnotu. Který budete používat níže. Proveďte ověřené požadavek HTTP GET na:
 
@@ -211,7 +214,7 @@ Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v 
     | --- | --- |
     | YOUR_SPACE_NAME | Název pole, které chcete použít |
 
-1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role UDF tím, že ověřeného požadavku HTTP POST do:
+1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role uživatelem definovanou funkci tak, že ověřeného požadavku HTTP POST do:
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments
@@ -230,12 +233,12 @@ Vytvořte přiřazení role pro uživatelem definované funkce ke spuštění v 
     | Hodnota | Nahradit hodnotou |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Identifikátor pro požadovanou roli |
-    | YOUR_USER_DEFINED_FUNCTION_ID | ID pro UDF, kterou chcete použít |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ID určení typu UDF |
+    | YOUR_USER_DEFINED_FUNCTION_ID | ID pro uživatelem definované funkce, kterou chcete použít |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ID určení typu uživatelem definované funkce |
     | YOUR_ACCESS_CONTROL_PATH | Cesta správy přístupu |
 
 >[!TIP]
-> Přečtěte si článek [jak vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md) Další informace o operacích UDF související rozhraní API pro správu a koncových bodů.
+> Přečtěte si článek [jak vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md) Další informace o operacích rozhraní API pro správu uživatelem definované funkce a koncových bodů.
 
 ## <a name="send-telemetry-to-be-processed"></a>Odesílání telemetrických dat ke zpracování
 

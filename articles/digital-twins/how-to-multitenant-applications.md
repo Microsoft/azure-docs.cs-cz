@@ -1,60 +1,76 @@
 ---
 title: Povolení víceklientské aplikace s Azure digitální dvojče | Dokumentace Microsoftu
-description: Pochopení způsobu, jak zaregistrovat digitální dvojče Azure vašich zákazníků tenantů Azure Active Directory
+description: Postup konfigurace víceklientské aplikace Azure Active Directory pro digitální dvojče Azure.
 author: mavoge
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 01/03/2019
 ms.author: mavoge
-ms.openlocfilehash: a2d9ece119003c341f49ee03d735d5636b179a32
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 443a697a576aa26fe352d8ad47d9e61214c3fcf3
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259883"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024106"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Povolení víceklientské aplikace s Azure digitální dvojče
 
-Vývojáři, kteří používají Azure digitální dvojče obvykle mají být sestaveny víceklientské aplikace. A *víceklientské aplikaci* je zřízená jednu instanci, která podporuje více zákazníků. Každý zákazník má své vlastní nezávislý datový a oprávnění.
+Řešení pro vývojáře, kteří vytvářejí na digitální dvojče Azure může se stát, že chcete podporovat víc zákazníků s jednou službou nebo řešení. Ve skutečnosti *víceklientské* aplikace jsou mezi nejběžnější konfigurace digitální dvojče Azure.
 
-Tento dokument podrobně popisuje, jak vytvořit digitální dvojče Azure víceklientskou aplikaci, která podporuje několik tenantů Azure Active Directory (Azure AD) a zákazníky.
+Tento dokument popisuje, jak nakonfigurovat aplikaci digitální dvojče Azure pro podporu více tenantů Azure Active Directory a zákazníky.
 
-## <a name="scenario-summary"></a>Zpráva scénáře
+## <a name="multitenancy"></a>Víceklientské architektury
 
-V tomto scénáři zvažte pro vývojáře D a C: zákazníka
+A *multitenant* prostředků je zřízená jednu instanci, která podporuje více zákazníků. Každý zákazník má své vlastní nezávislý datový a oprávnění. Prostředí pro každého zákazníka je izolovaná od druhé strany, aby jejich "Zobrazit" aplikace se liší.
 
-- Pro vývojáře D má předplatné Azure s tenantem Azure AD.
-- Pro vývojáře D nasadí instanci digitální dvojče Azure do svého předplatného Azure.
-- Uživatelé v rámci tenanta Azure AD pro vývojáře D můžete získat tokeny pro službu Azure digitální dvojče, protože Azure AD vytvořit instanční objekt v tenantovi Azure AD pro vývojáře D služby.
-- Pro vývojáře D nyní vytvoří mobilní aplikace, která se integruje přímo s rozhraním API správy Dvojčat digitální Azure.
-- Pro vývojáře D dovoluje zákazníka C mobilních aplikací.
-- Zákazník C musí autorizaci k používání Management API digitální Dvojčat Azure v rámci aplikace D pro vývojáře.
+Další informace o víceklientskou architekturu, [víceklientské aplikace v Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications).
 
-  > [!IMPORTANT]
-  > - Když se zákazník C přihlásí do aplikace D pro vývojáře, aplikace nemůže získat tokeny uživatele C zákazníka ke komunikaci s rozhraní API pro správu.
-  > - Azure AD vyvolá chybu, což znamená, že digitální dvojče Azure nebyl rozpoznán v adresáři C zákazníka.
+## <a name="problem-scenario"></a>Scénář
 
-## <a name="solution"></a>Řešení
+V tomto scénáři, zvažte vývojář sestavování řešení s Azure digitální dvojče (**DEVELOPER**) a zákazníky, kteří toto řešení využívá (**zákazníka**):
 
-K vyřešení předchozího scénáře, jsou následující akce potřebné k vytvoření instančního objektu služby v rámci tenanta Azure AD zákazníka C digitální dvojče Azure:
+- **Pro vývojáře** má předplatné Azure s tenantem Azure Active Directory.
+- **Pro vývojáře** nasadí instanci digitální dvojče Azure do svého předplatného Azure. Azure Active Directory automaticky vytvoří služba instanční objekt v **DEVELOPER**na tenanta Azure Active Directory.
+- Uživatelé v rámci **DEVELOPER**v tenantovi Azure Active Directory, můžete [získání tokenů OAuth 2.0](./security-authenticating-apis.md) od služby digitální dvojče Azure.
+- **Pro vývojáře** nyní vytvoří mobilní aplikace, která se integruje přímo s Azure digitální dvojče Management API.
+- **Pro vývojáře** umožňuje **zákazníka** použití mobilních aplikací.
+- **Zákazník** musí být autorizovaný k použití Azure digitální dvojče rozhraní API pro správu v rámci **DEVELOPER**vaší aplikace.
 
-- Pokud zákazník C ještě nemá předplatné Azure s tenantem Azure AD:
+Problém:
 
-  - Musíte získat správce tenanta Azure AD zákazníka jazyka C [předplatné Azure s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
-  - Správce tenanta Azure AD zákazníka jazyka C je pak nutné [propojte svého tenanta pomocí nového předplatného](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+- Při **zákazníka** přihlásí k **pro vývojáře**vaší aplikace, aplikace nemůže získat tokeny pro **zákazníka**od uživatele bude možné ověřit pomocí rozhraní API Správce Dvojčat digitální Azure.
+- Výjimka se vystaví v Azure Active Directory označující, že digitální dvojče Azure nebyl rozpoznán v rámci **zákazníka**na adresář.
 
-- Na [webu Azure portal](https://portal.azure.com), zákazník C správce tenanta Azure AD má následující kroky:
+## <a name="problem-solution"></a>Řešení potíží
+
+V předchozím scénáři problém vyřešíte takto budete potřebovat pro vytvoření digitální dvojče Azure instanční objekt v rámci **zákazníka**na tenanta Azure Active Directory:
+
+- Pokud **zákazníka** ještě nemá předplatné Azure s tenantem Azure Active Directory:
+
+  - **Zákazník**společnosti musíte získat správce tenanta Azure Active Directory [předplatné Azure s průběžnými platbami](https://azure.microsoft.com/offers/ms-azr-0003p/).
+  - **Zákazník**uživatele správce tenanta Azure Active Directory pak musí [propojte svého tenanta pomocí nového předplatného](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity).
+
+- Na [webu Azure portal](https://portal.azure.com), **zákazníka**od správce tenanta Azure Active Directory je potřeba provést následující kroky:
 
   1. Otevřít **předplatná**.
-  1. Vyberte předplatné, který má tenanta Azure AD, který se má použít v aplikaci pro vývojáře D.
+  1. Vyberte předplatné, který má klienta Azure Active Directory pro použití v **DEVELOPER**vaší aplikace.
+
+     ![Předplatná Azure Active Directory][1]
+
   1. Vyberte **poskytovatelů prostředků**.
   1. Vyhledejte **Microsoft.IoTSpaces**.
   1. Vyberte **Zaregistrovat**.
+
+     ![Poskytovatelé prostředků Azure Active Directory][2]
   
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak pomocí Azure digitální dvojče uživatelsky definovaných funkcí, [Azure digitální dvojče UDF](how-to-user-defined-functions.md).
+- Další informace o tom, jak pomocí Azure digitální dvojče uživatelsky definovaných funkcí, [vytvoření uživatelem definovaných funkcích Azure digitální dvojče](./how-to-user-defined-functions.md).
 
-Další informace o použití řízení přístupu na základě rolí pro dalšího zabezpečení aplikace pomocí přiřazení rolí, přečtěte si téma [řízení přístupu Azure na základě rolí digitální dvojče](security-create-manage-role-assignments.md).
+- Další informace o použití řízení přístupu na základě rolí pro dalšího zabezpečení aplikace pomocí přiřazení rolí, přečtěte si téma [vytvoření a správa řízení přístupu na základě rolí Azure digitální dvojče](./security-create-manage-role-assignments.md).
+
+<!-- Images -->
+[1]: media/multitenant/ad-subscriptions.png
+[2]: media/multitenant/ad-resource-providers.png

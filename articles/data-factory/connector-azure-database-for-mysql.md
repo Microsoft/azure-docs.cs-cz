@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Azure databáze pro databázi MySQL pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak zkopírovat data z databáze Azure pro databázi MySQL do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat ze služby Azure Database for MySQL pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data ze služby Azure Database for MySQL do úložišť dat podporovaných jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,49 +9,48 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: e254c9b18d86debad7ba914a0a4d41369795bc58
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cbf8a70dae566dcc22b5c5caa84d0781dc2467f9
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050010"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022168"
 ---
-# <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat z Azure databáze pro databázi MySQL pomocí Azure Data Factory
+# <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat ze služby Azure Database for MySQL pomocí Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Azure databáze pro databázi MySQL. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat ze služby Azure Database for MySQL ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Můžete zkopírovat data z databáze Azure pro databázi MySQL do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Můžete kopírování dat ze služby Azure Database for MySQL k jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Azure Data Factory poskytuje integrované ovladače pro umožnění připojení, proto nemusíte ručně nainstalovat všechny ovladače, používání tohoto konektoru.
+Poskytuje integrované ovladače chcete umožnit připojení k Azure Data Factory, proto není nutné ručně nainstalovat všechny ovladače používání tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory k databázi Azure pro konektor MySQL.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní ke službě Azure Database pro konektor MySQL.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro databázi Azure pro službu MySQL propojené jsou podporovány následující vlastnosti:
+Pro službu Azure Database pro MySQL propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **AzureMySql** | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k databázi Azure pro instanci databáze MySQL. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| type | Vlastnost type musí být nastavená na: **AzureMySql** | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k Azure Database for MySQL – instance. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
-Typické připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
+Připojovací řetězec je `Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
 
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
-| SSLMode | Tato možnost určuje, jestli ovladač používá šifrování SSL a ověření při připojování k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
-| useSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát Certifikační autority z úložiště důvěryhodnosti systému, nebo z určeného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povoleno nebo zakázáno (0) **(výchozí)** | Ne |
+| SSLMode | Tato možnost určuje, jestli ovladač používá šifrování pomocí protokolu SSL a ověřování při připojení k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
+| useSystemTrustStore | Tato možnost určuje, jestli se má používat certifikát certifikační Autority z úložiště důvěryhodných systému, nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povolený / zakázaný (0) **(výchozí)** | Ne |
 
 **Příklad:**
 
@@ -76,13 +75,13 @@ Typické připojovací řetězec je `Server=<server>.mysql.database.azure.com;Po
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Azure databáze MySQL datové sady.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastnosti podporované službou Azure Database pro sadu dat MySQL.
 
-Ke zkopírování dat z Azure databáze pro databázi MySQL, nastavte vlastnost typu datové sady, která **AzureMySqlTable**. Podporovány jsou následující vlastnosti:
+Ke kopírování dat ze služby Azure Database for MySQL, nastavte vlastnost typ datové sady na **AzureMySqlTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **AzureMySqlTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **AzureMySqlTable** | Ano |
 | tableName | Název tabulky v databázi MySQL. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -105,16 +104,16 @@ Ke zkopírování dat z Azure databáze pro databázi MySQL, nastavte vlastnost 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Azure databáze pro zdroj MySQL.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných – Azure Database for MySQL zdroje.
 
-### <a name="azure-database-for-mysql-as-source"></a>Azure databáze pro databázi MySQL jako zdroj
+### <a name="azure-database-for-mysql-as-source"></a>Azure Database for MySQL jako zdroj
 
-Ke zkopírování dat z Azure databáze pro databázi MySQL, nastavte typ zdroje v aktivitě kopírování do **AzureMySqlSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Ke kopírování dat ze služby Azure Database for MySQL, nastavte typ zdroje v aktivitě kopírování do **AzureMySqlSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **AzureMySqlSource** | Ano |
-| query | Čtení dat pomocí vlastního dotazu SQL. Například: `"SELECT * FROM MyTable"`. | Ne (když je určena "tableName" v datové sadě) |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AzureMySqlSource** | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 
@@ -148,11 +147,11 @@ Ke zkopírování dat z Azure databáze pro databázi MySQL, nastavte typ zdroje
 ]
 ```
 
-## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Mapování datového typu pro databázi Azure pro databázi MySQL
+## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Mapování datového typu pro službu Azure Database for MySQL
 
-Při kopírování dat z Azure databáze pro databázi MySQL, se používají následující mapování z databáze MySQL datové typy k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Při kopírování dat ze služby Azure Database for MySQL, se používají následující mapování z datových typů MySQL do služby Azure Data Factory dočasné datových typů. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| Azure databáze MySQL datový typ | Typ průběžných dat objektu pro vytváření dat |
+| Azure Database for MySQL – datový typ | Data factory dočasné datový typ |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -197,4 +196,4 @@ Při kopírování dat z Azure databáze pro databázi MySQL, se používají n�
 
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

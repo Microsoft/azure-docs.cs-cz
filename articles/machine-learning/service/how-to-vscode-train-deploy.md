@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0910cce92c410a68dce6e2c44d29e72e594cd153
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e7df9086fa5ffc6273a6cb063bdee3cfdfa73e34
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271704"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013311"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Použití Visual Studio Code pro trénování a nasazovat modely machine learningu
 
@@ -43,7 +43,7 @@ Toto rozšíření podporuje několik cílových výpočetních prostředí růz
 
 **Chcete-li vytvořit cílové výpočetní prostředí:**
 
-1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Azure: Machine Learning postranního panelu se zobrazí.
+1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
 
 2. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. Animovaný obrázek název předplatného je bezplatná zkušební verze a pracovní prostor je "TeamWorkspace". 
 
@@ -51,27 +51,25 @@ Toto rozšíření podporuje několik cílových výpočetních prostředí růz
 
 4. Zvolte typ cílové výpočetní ze seznamu. 
 
-5. Všechny upřesňující vlastnosti zadejte v konfiguračním souboru JSON, které se otevře na nové záložce. Zadejte jedinečný název pro cílové výpočetní prostředí v tomto souboru.
+5. V paletu příkazů vyberte velikost virtuálního počítače.
 
-6. Po dokončení konfigurace vaší cílové výpočetní prostředí, klikněte na tlačítko **odeslat** v vpravo dole.
+6. V paletu příkazů zadejte název cílového výpočetního prostředí v poli. 
 
-Tady je příklad pro Azure Machine Learning Compute (AMLCompute): [![Vytvořte výpočetní AML ve VS Code](./media/vscode-tools-for-ai/CreateAMLCompute.gif)](./media/vscode-tools-for-ai/CreateAMLCompute.gif#lightbox)
+7. Všechny upřesňující vlastnosti zadejte v konfiguračním souboru JSON, které se otevře na nové záložce. Můžete zadat vlastnosti, jako je počet maximální uzlů...
 
-### <a name="use-remote-computes-for-experiments-in-vs-code"></a>Použití vzdálené výpočetní prostředí pro experimentů v nástroji VS Code
+8. Po dokončení konfigurace vaší cílové výpočetní prostředí, klikněte na tlačítko **odeslat** v pravém dolním rohu obrazovky.
 
-Použití cílové výpočetní prostředí vzdálené při cvičení, budete muset vytvořit konfigurační soubor spuštění. Tento soubor informuje Azure Machine Learning nejen kde spustit experiment, ale také jak připravit prostředí.
+Tady je příklad pro vytvoření Azure Machine Learning Compute (AMLCompute): [![Vytvořte výpočetní AML ve VS Code](./media/vscode-tools-for-ai/CreateARemoteCompute.gif)](./media/vscode-tools-for-ai/CreateARemoteCompute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>Soubor "Konfigurace spuštění.
 
-Rozšíření VS Code automaticky vytvoří konfigurace spuštění pro vaše **místní** a **docker** prostředí v místním počítači.
+Rozšíření VS Code automaticky vytvoří cílové místní výpočetní prostředí a konfigurace pro spuštění vašeho **místní** a **docker** prostředí v místním počítači. Konfigurace spuštění souborů najdete v části cílové výpočetní přidružené prostředí. 
 
-To je fragment z výchozí spuštění konfiguračního souboru.
-
-Pokud chcete instalovat všechny knihovny a závislosti sami, nastavte `userManagedDependencies: True` a poté spuštění experimentu místní použije vaše výchozí prostředí Pythonu podle rozšíření VS Code Python.
+To je fragment z výchozí místní spuštění konfiguračního souboru. Ve výchozím nastavení `userManagedDependencies: True` tak musíte nainstalovat všechny knihovny a závislosti sami a poté spuštění experimentu místní použije vaše výchozí prostředí Pythonu podle rozšíření VS Code Python.
 
 ```yaml
-# user_managed_dependencies=True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
-    userManagedDependencies: False
+# user_managed_dependencies = True indicates that the environment will be user managed. False indicates that AzureML will manage the user environment.
+    userManagedDependencies: True
 # The python interpreter path
     interpreterPath: python
 # Path to the conda dependencies file to use for this run. If a project
@@ -83,6 +81,30 @@ Pokud chcete instalovat všechny knihovny a závislosti sami, nastavte `userMana
 # Set True to perform this run inside a Docker container.
     enabled: false
 ```
+
+## <a name="train-and-tune-models"></a>Trénování a optimalizaci modelů
+
+Pomocí služby Azure Machine Learning pro VS Code (Preview) rychle iterovat kódu, procházení a ladění a použít řešení řízení zdrojového kódu podle výběru. 
+
+**Spuštění experimentu místně pomocí služby Azure Machine Learning:**
+
+1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
+
+1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. 
+
+1. Pod uzlem pracovního prostoru, rozbalte **Compute** uzel a klikněte pravým tlačítkem na **spustit Config** výpočetního výkonu, kterou chcete použít. 
+
+1. Vyberte **spuštění experimentu**.
+
+1. Vyberte skript, který chcete spustit z Průzkumníka souborů. 
+
+1. Klikněte na tlačítko **zobrazení spuštění experimentu** zobrazíte na portálu Azure Machine Learning integrované monitorování vašeho spuštění a zobrazte trénované modely.
+
+Tady je příklad experimentu místně spuštěná: [![Místně spuštěná experimentu](./media/vscode-tools-for-ai/RunExperimentLocally.gif)](./media/vscode-tools-for-ai/RunExperimentLocally.gif#lightbox)
+
+### <a name="use-remote-computes-for-experiments-in-vs-code"></a>Použití vzdálené výpočetní prostředí pro experimentů v nástroji VS Code
+
+Použití cílové výpočetní prostředí vzdálené při cvičení, budete muset vytvořit konfigurační soubor spuštění. Tento soubor informuje Azure Machine Learning nejen kde spustit experiment, ale také jak připravit prostředí.
 
 #### <a name="the-conda-dependencies-file"></a>Souboru závislostí systému conda
 
@@ -101,6 +123,7 @@ dependencies:
   # Currently Azure ML only supports 3.5.2 and later.
 
 - python=3.6.2
+- tensorflow
 
 - pip:
     # Required packages for AzureML execution, history, and data preparation.
@@ -111,21 +134,24 @@ dependencies:
 
 ```
 
-## <a name="train-and-tune-models"></a>Trénování a optimalizaci modelů
+**Ke spuštění experimentu s Azure Machine Learning na vzdálené cílové výpočetní prostředí:**
 
-Pomocí služby Azure Machine Learning pro VS Code (Preview) rychle iterovat kódu, procházení a ladění a použít řešení řízení zdrojového kódu podle výběru. 
-
-**Spuštění experimentu s Azure Machine Learning:**
-
-1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Azure: Machine Learning postranního panelu se zobrazí.
+1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
 
 1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning. 
 
-1. Pod uzlem pracovního prostoru, rozbalte **Compute** uzlu a kliknutím pravým tlačítkem **konfigurace spuštění** výpočetního výkonu, kterou chcete použít. 
+1. Klikněte pravým tlačítkem na váš skript python v okně editoru a vyberte **AML: Spustit jako Experiment v Azure**. 
 
-1. Vyberte **spuštění experimentu**.
+1. V paletu příkazů vyberte cílové výpočetní prostředí. 
+
+1. Paleta příkazů zadejte název konfigurace spuštění v poli. 
+
+1. Upravte soubor conda_dependencies.yml určit závislosti modulu runtime experiment a pak klikněte na **odeslat** v pravém dolním rohu obrazovky. 
 
 1. Klikněte na tlačítko **zobrazení spuštění experimentu** zobrazíte na portálu Azure Machine Learning integrované monitorování vašeho spuštění a zobrazte trénované modely.
+
+Tady je příklad pro spuštění experimentu v cílové vzdálené výpočetní prostředí: [![Spuštění experimentu na vzdálené cílové](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif)](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif#lightbox)
+
 
 ## <a name="deploy-and-manage-models"></a>Nasazení a správě modelů
 Služba Azure Machine Learning umožňuje nasazení a správě vašich modelů strojového učení v cloudu i na hraničních zařízeních. 
@@ -137,18 +163,21 @@ Registrované modely můžete sledovat a nasadit.
 
 **Postup pro registraci modelu:**
 
-1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Azure: Machine Learning postranního panelu se zobrazí.
+1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
 
 1. Ve stromovém zobrazení rozbalte vašeho předplatného Azure a pracovních prostorů služby Azure Machine Learning.
 
 1. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **modely** a zvolte **zaregistrujte Model**.
 
+1. Do palety příkazů zadejte název pole do modelu. 
+
 1. Ze seznamu, vyberte, zda chcete nahrát **souboru modelu** (pro jeden modely) **modelu složky** (pro modely s více soubory, jako je Tensorflow). 
 
 1. Vyberte složky nebo souboru.
 
-1. Po dokončení konfigurace vlastností váš model, klikněte na tlačítko **odeslat** v vpravo dole. 
+1. Po dokončení konfigurace vlastností váš model, klikněte na tlačítko **odeslat** v pravém dolním rohu obrazovky. 
 
+Tady je příklad pro registraci modelu k AML: [![Registrace modelu AML](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
 
 
 ### <a name="deploy-your-service-from-vs-code"></a>Nasazení služby z VS Code
@@ -163,7 +192,7 @@ Další informace o [nasazení pomocí Azure Machine Learning](how-to-deploy-and
 
 **Nasazení webové služby:**
 
-1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Azure: Machine Learning postranního panelu se zobrazí.
+1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
 
 1. Ve stromovém zobrazení rozbalte vaše předplatné Azure a váš pracovní prostor služby Azure Machine Learning.
 
@@ -173,15 +202,17 @@ Další informace o [nasazení pomocí Azure Machine Learning](how-to-deploy-and
 
 1. V paletu příkazů zvolte cílové výpočetní prostředí, do které chcete nasadit ze seznamu. 
 
-1. Do pole zadejte název pro tuto službu. 
+1. V paletu příkazů zadejte název pro tuto službu v poli.  
 
 1. V paletu příkazů stisknutím klávesy Enter na klávesnici a procházet a vybrat soubor skriptu.
 
 1. Paleta příkazů stisknutím klávesy Enter na klávesnici a procházet a vybrat souboru závislostí systému conda.
 
-1. Po dokončení konfigurace vlastností vaší služby, klikněte na tlačítko **odeslat** v pravém dolním. V tomto souboru vlastnosti služby můžete zadat místní soubor Docker nebo schema.json soubor, který chcete použít.
+1. Po dokončení konfigurace vlastností vaší služby, klikněte na tlačítko **odeslat** v pravém dolním rohu obrazovky pro nasazení. V tomto souboru vlastnosti služby můžete zadat místní soubor Docker nebo schema.json soubor, který chcete použít.
 
 Webová služba je momentálně nasazené.
+
+Tady je příklad pro nasazení webové služby: [![Nasazení webové služby](./media/vscode-tools-for-ai/CreatingAnImage.gif)](./media/vscode-tools-for-ai/CreatingAnImage.gif#lightbox)
 
 ## <a name="next-steps"></a>Další postup
 

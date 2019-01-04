@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 6920e1878a8d31072480a6b604e404bb9913f634
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 85541d649a0b2720e3d33b98cea7883b3725f609
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811933"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025143"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie datového modelu
 
@@ -55,5 +55,5 @@ K hlášení datový model nebo schématu problémy i návrhy můžete využít 
 
 - [Psát vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md)
 - Zjistěte, jak [rozšířit a filtrování telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
-- Použití [vzorkování](../../application-insights/app-insights-sampling.md) Chcete-li minimalizovat množství telemetrie na základě dat modelu.
-- Podívejte se na [platformy](../../application-insights/app-insights-platforms.md) podporované službou Application Insights.
+- Použití [vzorkování](../../azure-monitor/app/sampling.md) Chcete-li minimalizovat množství telemetrie na základě dat modelu.
+- Podívejte se na [platformy](../../azure-monitor/app/platforms.md) podporované službou Application Insights.

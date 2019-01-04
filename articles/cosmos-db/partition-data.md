@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: andrl
-ms.openlocfilehash: 5dd1926496351f5bbfe8e5b3e4d1e0b68e82d272
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 38f587fc24478beff3ab236207de3ed8a892c915
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283389"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998944"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Vytváření oddílů a horizontální škálování ve službě Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Při přidání nových položek do kontejneru, nebo je vyšší propustnosti z�
 
 ## <a name="physical-partitions"></a>Fyzické oddíly
 
-Díky distribuci dat a propustnost velkým počtem logické oddíly se škálovat kontejneru Cosmos. Interně, jeden nebo více logické oddíly se mapují na **oddíl prostředků** , který se skládá ze sady replik se označuje také jako sady replik. Každé sady replik je hostitelem instance databázového stroje Cosmos. Sady replik díky tomu budou data uložená v rámci oddílu prostředků odolné, vysoce dostupné a konzistentní vzhledem k aplikacím. Oddíl prostředků podporuje pevné, maximální velikost úložiště a RU. Každou repliku, která obsahuje oddíl prostředků dědí kvóty úložiště. A všechny repliky oddílů prostředků podporují souhrnně propustnost přidělené do oddílu prostředků. Následující obrázek znázorňuje, jak logické oddíly se mapují na fyzické oddíly, které jsou globálně distribuované:
+Díky distribuci dat a propustnost velkým počtem logické oddíly se škálovat kontejneru Cosmos. Interně, jeden nebo více logické oddíly se mapují na **fyzický oddíl** , který se skládá ze sady replik se označuje také jako sady replik. Každé sady replik je hostitelem instance databázového stroje Cosmos. Sady replik díky tomu budou data uložená v rámci oddílu fyzického odolné, vysoce dostupné a konzistentní vzhledem k aplikacím. Fyzický oddíl podporuje pevné, maximální velikost úložiště a RU. Každá replika zahrnující fyzický oddíl dědí kvóty úložiště. A všechny repliky fyzický oddíl souhrnně podporují propustnost přidělené na fyzický oddíl. Následující obrázek znázorňuje, jak logické oddíly se mapují na fyzické oddíly, které jsou globálně distribuované:
 
 ![Dělení služby Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 

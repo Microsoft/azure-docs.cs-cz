@@ -7,12 +7,12 @@ author: kanshiG
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.openlocfilehash: 8461797e0c3b8d92466c37c5564df895e494ce74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: afc3b9dbb1965ea28995d67f8f5e174721d73197
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957585"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999437"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění s využitím metrik ve službě Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Může způsobit, že nerovnoměrné propustnost distribuce *horké* oddíly, co
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>Určit úložiště rozdělení na oddíly
 
-S dobrým Kardinalita oddílů je zásadní pro jakékoli škálovatelné aplikace. Pokud chcete zjistit propustnost distribuci libovolné dělený kontejner porušena oddíly, přejděte do okna metrik [webu Azure portal](https://portal.azure.com). Na kartě propustnost rozpis úložiště se zobrazí v maximální počet spotřebovaných RU/s každým grafem fyzický oddíl. Následující obrázek znázorňuje nízký distribuci dat jak je znázorněno výrazně nerovnoměrnou distribucí oddílem úplně vlevo.
+S dobrým Kardinalita oddílů je zásadní pro jakékoli škálovatelné aplikace. Určit úložiště distribuci libovolné dělený kontejner porušena oddíly, přejděte do okna metrik [webu Azure portal](https://portal.azure.com). Na kartě úložiště se zobrazí rozpis úložiště v Data + úložiště spotřebovávané graf klíče oddílů horní Index. Nízký výskyt úložiště dat, jak je znázorněno výrazně nerovnoměrnou distribucí oddílem úplně vlevo je znázorněný na následujícím obrázku.
 
 ![Příklad distribuce nízký dat](media/use-metrics/metrics-07.png)
 

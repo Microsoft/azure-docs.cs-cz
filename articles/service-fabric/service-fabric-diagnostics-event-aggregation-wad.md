@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232490"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002395"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Agregace událostí a kolekce pomocí Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Teď, když máte agregaci událostí ve službě Azure Storage [nastavení Log 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Nasazení rozšíření diagnostiky prostřednictvím Azure Resource Manageru
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Vytvoření clusteru s diagnostickým rozšířením
-K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci diagnostiky JSON do úplné šablony Resource Manageru, před vytvořením clusteru. Poskytujeme Ukázka šablony Resource Manageru cluster pět virtuálních počítačů s konfiguraci diagnostiky, které jsou přidány jako součást naší ukázkové šablony Resource Manageru. Zobrazí se na této pozici ve Galerii ukázek Azure: [cluster s pěti uzly s ukázkou šablony Resource Manageru diagnostiky](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+K vytvoření clusteru pomocí Resource Manageru, musíte přidat konfiguraci diagnostiky JSON do úplné šablony Resource Manageru. Poskytujeme Ukázka šablony Resource Manageru cluster pět virtuálních počítačů s konfiguraci diagnostiky, které jsou přidány jako součást naší ukázkové šablony Resource Manageru. Zobrazí se na této pozici ve Galerii ukázek Azure: [Cluster s pěti uzly s ukázkou šablony Resource Manageru diagnostiky](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Pokud chcete zobrazit nastavení diagnostiky v šabloně Resource Manageru, otevřete soubor azuredeploy.json a vyhledejte **IaaSDiagnostics**. Pokud chcete vytvořit cluster pomocí této šablony, vyberte **nasadit do Azure** tlačítko, které jsou k dispozici na na předchozí odkaz.
 
@@ -196,24 +196,24 @@ Od tabulky vyplněn rozšíření roste až do dosažení této kvóty, můžete
 ## <a name="log-collection-configurations"></a>Konfigurace shromažďování protokolů
 Protokoly z další kanály jsou také k dispozici pro kolekci, tady jsou některé z nejběžnějších konfiguracích, které provedete v šabloně pro clustery spuštěné v Azure.
 
-* Provozní kanál - Base: Povolená ve výchozím nastavení, vysoké úrovně operací provedených metodou Service Fabric a clusteru, včetně událostí pro uzel naráželi, nové aplikace nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v tématu [provozní události kanálu](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
+* Provozní kanál - Base: Povolené ve výchozím nastavení vysoké úrovně operací provedených metodou Service Fabric a clusteru, včetně událostí pro uzel vzniká, nové aplikace se nasazuje nebo upgradu vrácení zpět, atd. Seznam událostí, najdete v tématu [provozní události kanálu](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational).
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Provozní kanál – podrobné: Jedná se o sestav o stavu a vyrovnávání zátěže rozhodnutí plus všechno, co v základní provozní kanál. Tyto události jsou generovány v systému nebo kódu s použitím stavu nebo načíst rozhraní API pro generování sestav, jako [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Chcete-li zobrazit tyto události v prohlížeči diagnostických událostí v sadě Visual Studio přidejte "Microsoft-ServiceFabric:4:0x4000000000000008" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Provozní kanál – podrobné: To zahrnuje sestav o stavu a vyrovnávání zátěže rozhodnutí plus všechno, co v základní provozní kanál. Tyto události jsou generovány v systému nebo kódu s použitím stavu nebo načíst rozhraní API pro generování sestav, jako [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) nebo [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx). Chcete-li zobrazit tyto události v prohlížeči diagnostických událostí v sadě Visual Studio přidejte "Microsoft-ServiceFabric:4:0x4000000000000008" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Data a zasílání zpráv v kanálu - Base: kritické protokolů a událostí vygenerovaných při zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům, kromě do protokolů podrobné provozní kanál. Tyto události jsou zpracování chyb a další důležité problémy v ReverseProxy požadavku, jakož i zpracovaných požadavků. **Toto je naše doporučení pro komplexní protokolování**. Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000010" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Data a kanál pro zasílání zpráv – základ: Kritické protokolů a událostí vygenerovaných při zasílání zpráv (aktuálně pouze ReverseProxy) a cesta k datům, kromě do protokolů podrobné provozní kanál. Tyto události jsou zpracování chyb a další důležité problémy v ReverseProxy požadavku, jakož i zpracovaných požadavků. **Toto je naše doporučení pro komplexní protokolování**. Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000010" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
   ```
 
-* Data a kanálů zasílání zpráv – podrobné: podrobné kanál, který obsahuje všechny protokoly, které jsou méně náročné z dat a zasílání zpráv v clusteru a podrobné provozní kanál. Podrobné řešení potíží se všechny události reverzního proxy serveru, najdete [Průvodce Diagnostika reverzního proxy serveru](service-fabric-reverse-proxy-diagnostics.md).  Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000020" do seznamu zprostředkovatelů trasování událostí pro Windows.
+* Kanál pro zasílání zpráv – podrobné & dat: Podrobné kanál, který obsahuje všechny protokoly, které jsou méně náročné z dat a zasílání zpráv v clusteru a podrobné provozní kanál. Podrobné řešení potíží se všechny události reverzního proxy serveru, najdete [Průvodce Diagnostika reverzního proxy serveru](service-fabric-reverse-proxy-diagnostics.md).  Chcete-li tyto události zobrazit v prohlížeči diagnostických událostí v sadě Visual Studio, přidejte "Microsoft-ServiceFabric:4:0x4000000000000020" do seznamu zprostředkovatelů trasování událostí pro Windows.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387944"

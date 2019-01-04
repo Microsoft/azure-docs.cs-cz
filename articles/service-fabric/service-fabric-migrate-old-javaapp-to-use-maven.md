@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 5f03f4fe1422f1665d857269c98a50827ed75d55
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958353"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999165"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
@@ -220,7 +220,7 @@ task copyDeps <<{
     }
 }
 ```
-Obecně platí, že k získání celkové představy o tom, jak bude vypadat skript sestavení pro bezstavovou službu Service Fabric v Javě, můžete využít libovolnou ukázku z našich úvodních příkladů. Tady je [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) pro ukázku EchoServer.
+Obecně platí, že k získání celkové představy o tom, jak bude vypadat skript sestavení pro bezstavovou službu Service Fabric v Javě, můžete využít libovolnou ukázku z našich úvodních příkladů. Tady je [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle) pro ukázku EchoServer.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrace Service Fabric Actor Service
 

@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 686b602828856e75300152c41bfe4c35cd6a8219
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970157"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024361"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -96,7 +95,7 @@ Ke zkopírování dat z Amazon Redshift, nastavte vlastnost typ datové sady na 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **RelationalTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **RelationalTable** | Ano |
 | tableName | Název tabulky v Amazon Redshift. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -126,7 +125,7 @@ Ke zkopírování dat z Amazon Redshift, nastavte typ zdroje v aktivitě kopíro
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **AmazonRedshiftSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **AmazonRedshiftSource** | Ano |
 | query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne (když je "tableName" v datové sadě zadán) |
 | redshiftunloadsettings, taková služba | Při použití uvolnění Amazon Redshift vlastnosti skupiny. | Ne |
 | s3LinkedServiceName | Pokud zadáte název propojené služby typu "AmazonS3" odkazuje na Amazon S3 k-be používané jako dočasné úložiště. | Ano, pokud používáte uvolnění z paměti |
@@ -214,7 +213,7 @@ Při kopírování dat z Amazon Redshift, se používají následující mapová
 | DATOVÝ TYP BOOLEAN |Řetězec |
 | CHAR |Řetězec |
 | DATE (Datum) |DateTime |
-| DECIMAL |Decimal |
+| DECIMAL |Desítkově |
 | DVOJITOU PŘESNOSTÍ |Double |
 | CELÉ ČÍSLO |Datový typ Int32 |
 | REAL |Jednoduchá |

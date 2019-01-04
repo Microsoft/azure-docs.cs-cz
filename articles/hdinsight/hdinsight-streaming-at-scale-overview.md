@@ -8,18 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 77a3685f59c7b15473deda1894f6fd6934fafc1f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993401"
+ms.locfileid: "54002191"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Streamování ve velkém měřítku ve službě HDInsight
 
 Řešení pro velké objemy dat v reálném čase reagovat na data, která jsou v pohybu. Tato data jsou obvykle nejcennější v době jeho přijetí. Příchozí datový proud bude větší, než může být zpracována v daném okamžiku, budete muset omezení ukončí prostředky. Alternativně clusteru služby HDInsight můžete vertikálně navýšit kapacitu pro splnění vašich řešení streamování přidáním uzlů na vyžádání.
 
+
 V případě streamování aplikace jsou jeden nebo více zdrojů dat generování události (někdy v milionech za sekundu), které je potřeba ingestovat rychle bez jejich odstranění jakékoli užitečné informace. Příchozí události jsou zpracovány *ukládání do vyrovnávací paměti datového proudu*, označované také jako *řazení událostí do front*, službou, jako [Apache Kafka](kafka/apache-kafka-introduction.md) nebo [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Jakmile shromáždíte události, pak můžete analyzovat data s využitím systému analýzy v reálném čase v rámci *zpracování datových proudů* vrstvy, jako například [Apache Storm](storm/apache-storm-overview.md) nebo [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Zpracovaná data mohou být uloženy v systémech dlouhodobého úložiště, jako je třeba [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)a zobrazí v reálném čase na řídicím panelu business intelligence, jako například [Power BI](https://powerbi.microsoft.com), Tableau nebo vlastní web stránka.
+
 
 ![Vzory streamování HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 

@@ -6,15 +6,15 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: caa078aa522e20a0e09d0b4d97461358c1698fc7
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744225"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023080"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure Files problémy ve Windows
 
@@ -261,6 +261,15 @@ Chcete-li vyřešit tento problém, nastavení **DirectoryCacheEntrySizeMax** ho
  
 Můžete například ji nastavit na 0x100000 a zjistit, zda budou lepší výkon.
 
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Chyba AadDsTenantNotFound při povolení ověřování Azure Active Directory pro Azure Files "Nepodařilo se najít aktivní klienti s Id aad-tenant-id tenanta"
+
+### <a name="cause"></a>Příčina
+
+Chyba AadDsTenantNotFound se stane při pokusu o [povolit ověřování Azure Active Directory (AAD) pro Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště kde [Service(AAD DS) domény AAD](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) není vytvořena v AAD tenanta přidruženého předplatného.  
+
+### <a name="solution"></a>Řešení
+
+Povolení služby AAD DS v tenantovi AAD, který se nasazuje se do účtu úložiště předplatného. Je potřeba oprávnění správce tenanta AAD, chcete-li vytvořit spravovanou doménu. Pokud si nejste správce tenanta Azure AD, obraťte se na správce a postupujte podle podrobných pokynů k [povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktujte podporu.
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychlé vyřešení problému.

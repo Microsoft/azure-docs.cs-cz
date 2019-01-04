@@ -1,5 +1,6 @@
 ---
-title: Azure Virtual Network – nejčastější dotazy | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure Virtual Network
+titlesuffix: Azure Virtual Network
 description: Odpovědi na nejčastější dotazy o Microsoft Azure virtual Network.
 services: virtual-network
 documentationcenter: na
@@ -11,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 686985c705b4026ccc26238fc5919296c98d5cb7
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277518"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021029"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure, nejčastější dotazy (FAQ)
 

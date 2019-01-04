@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5aa617edf13aee9c5899a59c46aeb729f202719f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 471277433f0fc9a54a28baa158f1e20f1efb613f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744203"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000510"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
 
@@ -78,7 +78,8 @@ Filtry definované v klidu, obsahovat objekt JSON "Properties" obálky.
 
 Následující [účtu ams az-filtr](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) příkaz vytvoří filtr účet s filtrem sledování výběry, které byly [definovali dříve](#define-a-filter). 
 
-Následující příkaz povolí možnost `--tracks` , který přijme soubor. Pokud používáte Azure CLI místně, zadejte cestu celý soubor:
+Tento příkaz umožňuje předat volitelně `--tracks` parametr, který obsahuje JSON představující možnosti sledování.  Použijte @{file} načíst ze souboru JSON. Pokud používáte Azure CLI místně, zadejte cestu celý soubor:
+
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json

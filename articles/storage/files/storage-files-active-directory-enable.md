@@ -5,14 +5,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/02/2019
 ms.author: tamram
-ms.openlocfilehash: 03344cf989e1381f97b108e82b8d63e9c4653404
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fd635682d1b5dc7c3ab784208ac485872d5c7099
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809794"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998995"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Povolit ověřování Azure Active Directory přes protokol SMB pro soubory Azure (preview)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -61,9 +61,6 @@ Před povolením služby Azure AD prostřednictvím protokolu SMB pro soubory Az
 4.  **Vyberte nebo vytvořte sdílenou složku Azure.**
 
     Vyberte nový nebo existující sdílenou složku, která má přidružené k stejnému předplatnému jako vašeho tenanta Azure AD. Informace o vytváření nové sdílené složky najdete v tématu [vytvoření sdílené složky ve službě soubory Azure](storage-how-to-create-file-share.md). 
-
-    Tenant Azure AD se musí nasadit do oblasti, podporovaná ve verzi Preview služby Azure AD prostřednictvím protokolu SMB. Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: USA – Západ, USA – západ 2, střední část jihu USA, USA – východ, USA – východ 2, střed USA, USA (střed) – sever, Austrálie – východ, západní Evropa, Severní Evropa.
-
     Pro zajištění optimálního výkonu společnost Microsoft doporučuje, vaše sdílená složka je ve stejné oblasti jako virtuální počítač, ze kterého plánujete přístup do sdílené složky.
 
 5.  **Ověřte připojení k Azure Files připojení sdílených složek Azure pomocí klíče účtu úložiště.**

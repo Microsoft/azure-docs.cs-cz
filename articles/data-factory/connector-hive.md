@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9402be4045b9b3113623cfe3e441c944f62296cc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5088d1d4f5b80e4de3dca1d8d41ee48feea12a46
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079378"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019737"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopírování dat z Hive pomocí Azure Data Factory 
 
@@ -46,8 +45,8 @@ Pro Hive propojené služby jsou podporovány následující vlastnosti:
 | hostitel | IP adresa nebo název hostitele serveru Hive, oddělených pomocí ';' u více hostitelů (pouze v případě serviceDiscoveryMode povolit).  | Ano |
 | port | Port TCP, který používá Hive server k naslouchání pro připojení klientů. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ano |
 | serverType | Typ serveru Hive. <br/>Povolené hodnoty jsou: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Ne |
-| thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **binární**, **SASL**, **HTTP** | Ne |
-| authenticationType. | Metoda ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **anonymní**, **uživatelské jméno**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
+| thriftTransportProtocol | Protokol přenos, který se má použít ve vrstvě Thrift. <br/>Povolené hodnoty jsou: **Binární**, **SASL**, **HTTP** | Ne |
+| authenticationType. | Metoda ověřování pro přístup k serveru Hive. <br/>Povolené hodnoty jsou: **Anonymní**, **uživatelské jméno**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ano |
 | serviceDiscoveryMode | Hodnota TRUE označuje pomocí služby ZooKeeper false není.  | Ne |
 | zooKeeperNameSpace | Obor názvů na pod které Hive Server 2 jsou přidány uzly ZooKeeper.  | Ne |
 | useNativeQuery | Určuje, jestli používá nativní dotazy HiveQL ovladače, nebo převede na ekvivalentní formulář v nástrojích pro HiveQL.  | Ne |
@@ -90,7 +89,7 @@ Ke zkopírování dat z Hive, nastavte vlastnost typ datové sady na **HiveObjec
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **HiveObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **HiveObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -119,7 +118,7 @@ Ke zkopírování dat z Hive, nastavte typ zdroje v aktivitě kopírování do *
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **HiveSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **HiveSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

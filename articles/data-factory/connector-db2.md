@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4bf4c5c8339c8c56d91737fa1ff62f55b9c38696
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054636"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019618"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z databáze DB2 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +64,7 @@ Pro DB2 propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost type musí být nastavená na: **Db2** | Ano |
 | server |Název serveru DB2. Můžete zadat číslo portu za název serveru oddělené dvojtečkou třeba `server:port`. |Ano |
 | databáze |Název databáze DB2. |Ano |
-| authenticationType. |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **základní**. |Ano |
+| authenticationType. |Typ ověřování používaný pro připojení k databázi DB2.<br/>Povolená hodnota je: **Základní**. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi DB2. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
@@ -103,7 +102,7 @@ Ke zkopírování dat z databáze DB2, nastavte vlastnost typ datové sady na **
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **RelationalTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **RelationalTable** | Ano |
 | tableName | Název tabulky v databázi DB2. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -133,7 +132,7 @@ Ke zkopírování dat z databáze DB2, nastavte typ zdroje v aktivitě kopírov�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **RelationalSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
@@ -182,8 +181,8 @@ Při kopírování dat z databáze DB2, se používají následující mapován�
 | Datum |Datum a čas |
 | DB2DynArray |Řetězec |
 | DbClob |Řetězec |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
+| Desítkově |Desítkově |
+| DecimalFloat |Desítkově |
 | Double |Double |
 | Float |Double |
 | Obrázek |Řetězec |
@@ -191,7 +190,7 @@ Při kopírování dat z databáze DB2, se používají následující mapován�
 | LongVarBinary |Byte] |
 | LongVarChar |Řetězec |
 | LongVarGraphic |Řetězec |
-| Čísla |Decimal |
+| Čísla |Desítkově |
 | Real |Jednoduchá |
 | SmallInt |Int16 |
 | Čas |Časový interval |

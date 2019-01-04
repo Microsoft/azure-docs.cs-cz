@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 12219e2df875d317aece73cabebdfb55115f7b41
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343549"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021080"
 ---
 # <a name="border-connectivity"></a>Připojení k ohraničení 
 Plánování integrace sítě je důležitá povinná součást pro úspěšné nasazení Azure Stack integrované systémy, provoz a správu. Plánování připojení ohraničení začíná výběru, jestli se mají použít s dynamickým směrováním pomocí protokolu border gateway protocol (BGP). To vyžaduje přiřazení 16bitové číslo autonomního systému protokolu BGP (veřejné nebo soukromé) nebo pomocí statické směrování, kde výchozí statické trasy je přiřazená zařízení ohraničení.
@@ -29,9 +29,9 @@ Plánování integrace sítě je důležitá povinná součást pro úspěšné 
 > Horní části přepínače (TOR rack) vyžadují odchozí připojení vrstvy 3 s IP adresami Point-to-Point (/ 30 sítě) nakonfigurované na fyzických rozhraní. Není možné použít odchozí připojení vrstvy 2 pomocí přepínače TOR podporují operace služby Azure Stack. 
 
 ## <a name="bgp-routing"></a>Směrování protokolu BGP
-Pomocí o dynamický směrovací protokol, jako je protokol BGP zaručuje, že váš systém je vždy vědom změn v síti a usnadňuje správu. 
+Pomocí o dynamický směrovací protokol, jako je protokol BGP zaručuje, že váš systém je vždy vědom změn v síti a usnadňuje správu. Pro rozšířené zabezpečení heslo může být nastaven na protokol BGP partnerský vztah mezi TOR a ohraničení. 
 
-Jak je znázorněno v následujícím diagramu, reklamní privátní IP adresy místo v přepínači TOR je omezen pomocí seznam předpon. Seznam předpon definuje privátní podsítě IP a jeho použití jako mapu trasy pro připojení mezi TOR a ohraničení.
+Jak je znázorněno v následujícím diagramu, reklamní privátní IP adresy místo v přepínači TOR je blokováno pomocí seznam předpon. Seznam předpon zakazuje oznámení o inzerovaném programu privátní sítě a použije se jako mapu trasy pro připojení mezi TOR a ohraničení.
 
 Nástroje pro vyrovnávání zatížení softwaru (SLB), spuštěné v Azure stacku řešení partnerský vztah TOR zařízení, takže ho můžete dynamicky inzerovat virtuální IP adresy.
 

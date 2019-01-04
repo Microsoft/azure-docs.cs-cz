@@ -1,5 +1,5 @@
 ---
-title: Kurz použití služby Azure Key Vault z webové aplikace | Microsoft Docs
+title: Použití Azure Key Vault z webové aplikace kurz – Azure Key Vault | Dokumentace Microsoftu
 description: Tento kurz vám pomůže naučit se používat službu Azure Key Vault z webové aplikace.
 services: key-vault
 author: barclayn
@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: 85eb7762437bff8d9f6f6a360fc9cc1ea2e6e145
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bccbcbcf78de18504c5cb0235e29930d90ede8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718210"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999301"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Kurz: Použití Azure Key Vault z webové aplikace
 
@@ -71,8 +71,6 @@ Do souboru web.config je potřeba následujícím způsobem přidat tři nastave
     <add key="SecretUri" value="secreturi" />
     <!-- If you aren't hosting your app as an Azure Web App, then you should use the actual ClientId, Client Secret, and Secret URI values -->
 ```
-
-
 
 ## <a id="gettoken"></a>Přidání metody pro získání přístupového tokenu
 
@@ -188,7 +186,7 @@ Po spuštění těchto příkazů se aplikace zobrazí v Azure AD. Při vyhledá
 
 Teď do webové aplikace přidáme kód pro přístup k certifikátu a jeho použití k ověřování. 
 
-Nejprve přidáme kód pro přístup k certifikátu. Všimněte si, že StoreLocation má hodnotu CurrentUser, a ne LocalMachine. Také si všimněte, že pro metodu Find zadáváme hodnotu false, protože používáme testovací certifikát.
+Nejprve přidáme kód pro přístup k certifikátu. Umístění úložiště je CurrentUser místo LocalMachine. Také si všimněte, že pro metodu Find zadáváme hodnotu false, protože používáme testovací certifikát.
 
 ```cs
 //Add this using statement

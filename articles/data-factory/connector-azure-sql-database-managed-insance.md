@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706717"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025075"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -50,7 +49,7 @@ Pro Azure SQL Database Managed Instance propojené služby jsou podporovány ná
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **systému SQL Server** | Ano |
+| type | Vlastnost type musí být nastavená na: **Systému SQL Server** | Ano |
 | připojovací řetězec |Zadejte připojovací řetězec informace potřebné pro připojení k Managed Instance pomocí ověřování SQL nebo ověřování Windows. Přečtěte si v následujícím příkladu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | uživatelské jméno |Pokud používáte ověřování Windows, zadejte uživatelské jméno. Příklad: **domainname\\uživatelské jméno**. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ne |
@@ -59,7 +58,7 @@ Pro Azure SQL Database Managed Instance propojené služby jsou podporovány ná
 >[!TIP]
 >Pokud spuštění chybě s kódem chyby jako "UserErrorFailedToConnectToSqlServer" a zpráva jako "limit relace pro databázi je XXX a bylo ho dosaženo.", přidejte `Pooling=false` připojovací řetězec a zkuste to znovu.
 
-**Příklad 1: Použití ověřování SQL**
+**Příklad 1: Pomocí ověřování SQL**
 
 ```json
 {
@@ -80,7 +79,7 @@ Pro Azure SQL Database Managed Instance propojené služby jsou podporovány ná
 }
 ```
 
-**Příklad 2: Použití ověřování Windows**
+**Příklad 2: Ověřování Windows**
 
 ```json
 {
@@ -114,7 +113,7 @@ Pro kopírování dat z/do Azure SQL Database Managed Instance, nastavte vlastno
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **SqlServerTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **SqlServerTable** | Ano |
 | tableName |Název tabulky nebo zobrazení v instanci databáze na propojenou službu. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad**
@@ -146,7 +145,7 @@ Ke zkopírování dat z Azure SQL Database Managed Instance, nastavte typ zdroje
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SqlSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SqlSource** | Ano |
 | sqlReaderQuery |Použijte vlastní dotaz SQL číst data. Příklad: `select * from MyTable`. |Ne |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. Příkaz SELECT v uložené proceduře musí být poslední příkaz jazyka SQL. |Ne |
 | storedProcedureParameters |Parametry pro uloženou proceduru.<br/>Povolené hodnoty jsou: páry název/hodnota. Názvy a použití malých a velkých parametry musí odpovídat názvům a použití malých a velkých parametrů uložené procedury. |Ne |
@@ -156,7 +155,7 @@ Ke zkopírování dat z Azure SQL Database Managed Instance, nastavte typ zdroje
 - Pokud **sqlReaderQuery** je určená pro SqlSource, spustí aktivita kopírování tohoto dotazu na zdroji Managed Instance se mají získat data. Alternativně můžete zadat uložené procedury tak, že zadáte **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura parametry).
 - Pokud nezadáte vlastnost "sqlReaderQuery" nebo "sqlReaderStoredProcedureName", sloupce definované v oddílu "struktura" datové sady JSON se používají k vytvoření dotazu (`select column1, column2 from mytable`) ke spuštění Managed Instance. Pokud není definice datové sady "struktura", jsou vybrány všechny sloupce z tabulky.
 
-**Příklad: Použití jazyka SQL**
+**Příklad: Pomocí jazyka SQL**
 
 ```json
 "activities":[
@@ -188,7 +187,7 @@ Ke zkopírování dat z Azure SQL Database Managed Instance, nastavte typ zdroje
 ]
 ```
 
-**Příklad: Použití uložené procedury**
+**Příklad: Pomocí uložené procedury**
 
 ```json
 "activities":[
@@ -249,7 +248,7 @@ Ke zkopírování dat do Azure SQL Database Managed Instance, nastavte typ jímk
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Nastavte vlastnost typ jímky aktivity kopírování: **SqlSink** | Ano |
+| type | Vlastnost typ jímky aktivity kopírování musí být nastavena: **SqlSink** | Ano |
 | WriteBatchSize |Vloží data do tabulky SQL writeBatchSize dosáhne velikosti vyrovnávací paměti.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí: 10000) |
 | writeBatchTimeout |Čekací doba pro dávkové operace insert dokončit před vypršením časového limitu.<br/>Povolené hodnoty jsou: časový interval. Příklad: "00: 30:00" (30 minut). |Ne |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování ke spuštění před zápisu dat do Managed Instance. To se ji volat pouze jednou za kopírování spustit. Tato vlastnost slouží k vyčištění předem načtená data. |Ne |

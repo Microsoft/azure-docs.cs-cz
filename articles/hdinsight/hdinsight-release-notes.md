@@ -2,19 +2,19 @@
 title: Zpráva k vydání verze pro Azure HDInsight
 description: Nejnovější zpráva k vydání verze pro Azure HDInsight. Získejte tipy pro vývoj a podrobnosti pro Hadoop, Spark, R Server, Hive a další.
 services: hdinsight
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 07/01/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0555fa7de7ed85cf6d26f85b93f0010b2ab6fa53
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 01/02/2019
+ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976966"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000069"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 
@@ -1308,6 +1308,16 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 |**Zeppelin**|[**ZEPPELIN 3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Možnost zákazu zasílání zpráv scheduleru |**Součást vliv na:** Zeppelin Server<br /><br />**Předchozí chování:** V předchozích verzích aplikace Zeppelinu nenabízí možnost zákazu zasílání zpráv plánovače.<br /><br />**Nové chování:** Ve výchozím nastavení budou uživatelům už nezobrazovaly Plánovač, jako je zakázané ve výchozím nastavení.<br /><br />**Alternativní řešení/Očekávanímu zákaznické akce:** Pokud chcete povolit scheduleru, je potřeba přidat azeppelin.notebook.cron.enable s hodnotou true zeppelin vlastního webu v nastavení Zeppelin z Ambari.|
 
 ## <a name="known-issues"></a>Známé problémy
+
+-   **Integraci HDInsight s 2. generace ADLS** na clusterech HDInsight ESP adresáře uživatelů a oprávnění pomocí Azure Data Lake Storage generace 2 jsou dva problémy:
+   
+   1. Na hlavní uzel 1 získávání nevytvoří domovské adresáře pro uživatele. Alternativním řešením je vytvořit ručně adresáře a změnit vlastnictví pro příslušného uživatele (UPN).
+   
+   2. Oprávnění pro adresář /hdp není aktuálně nastavená na 751. Tato hodnota musí být nastaveno na 
+      ```bash
+      chmod 751 /hdp 
+      chmod –R 755 /hdp/apps
+      ```
 
 -   **Spark 2.3**
 

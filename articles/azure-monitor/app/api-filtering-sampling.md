@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f733a321470321b5b0f8bce48b4ac7978027fab7
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 193e024b4691b76b08bcbe15ace35ccafd45c394
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973464"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023443"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filtrování a předběžné zpracování telemetrie v Application Insights SDK
 
 
 Můžete napsat a nakonfigurovat moduly plug-in pro Application Insights SDK pro přizpůsobení fungování telemetrická data zachycená a zpracovat před odesláním do služby Application Insights.
 
-* [Vzorkování](../../application-insights/app-insights-sampling.md) snižuje objem telemetrických dat bez ovlivnění vašich statistik. Uchová společně souvisejících datových bodů tak, aby můžete procházet mezi nimi při diagnostikování problému. Na portálu jsou celkového počtu vynásobené jako kompenzaci za vzorkování.
+* [Vzorkování](../../azure-monitor/app/sampling.md) snižuje objem telemetrických dat bez ovlivnění vašich statistik. Uchová společně souvisejících datových bodů tak, aby můžete procházet mezi nimi při diagnostikování problému. Na portálu jsou celkového počtu vynásobené jako kompenzaci za vzorkování.
 * Filtrování Telemetrie procesorů [pro technologii ASP.NET](#filtering) nebo [Java](../../azure-monitor/app/java-filter-telemetry.md) umožňuje vybrat nebo změnit telemetrie v sadě SDK, před odesláním do serveru. Například může snížit objem telemetrických dat vyloučením požadavky od robotů. Ale filtrování je jednodušší přístup k snižování zatížení než vzorkování. Umožňuje větší kontrolu nad co se přenášejí, ale budete muset mějte na paměti, že má vliv statistik – například pokud odfiltrovat všechny úspěšné požadavky.
 * [Inicializátory telemetrie přidat vlastnosti](#add-properties) na všechny telemetrická data odesílaná z vaší aplikace, včetně telemetrie z standardní moduly. Například můžete přidat počítané hodnoty. nebo čísla verzí, podle kterého chcete filtrovat data na portálu.
 * [Rozhraní API sady SDK](../../azure-monitor/app/api-custom-events-metrics.md) se používá k odesílání vlastních událostí a metrik.
@@ -43,7 +43,7 @@ Filtrovat telemetrii, zápisu telemetrických dat procesoru a zaregistrujte ho p
 > [!WARNING]
 > Filtrování telemetrická data odesílaná ze sady SDK pomocí procesorů můžete zkosení statistické údaje, které se zobrazí na portálu a je obtížné sledovat související položky.
 >
-> Místo toho zvažte použití [vzorkování](../../application-insights/app-insights-sampling.md).
+> Místo toho zvažte použití [vzorkování](../../azure-monitor/app/sampling.md).
 >
 >
 
@@ -371,5 +371,5 @@ Jaký je rozdíl mezi procesory telemetrická data a telemetrii inicializátory?
 
 ## <a name="next"></a>Další kroky
 * [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md)
-* [Vzorkování](../../application-insights/app-insights-sampling.md)
+* [Vzorkování](../../azure-monitor/app/sampling.md)
 * [Řešení potíží](../../application-insights/app-insights-troubleshoot-faq.md)

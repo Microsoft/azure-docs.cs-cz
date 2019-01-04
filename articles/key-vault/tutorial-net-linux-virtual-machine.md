@@ -1,5 +1,5 @@
 ---
-title: Kurz – použití Azure Key Vault s Linuxových virtuálních počítačů Azure v rozhraní .NET | Dokumentace Microsoftu
+title: Kurz – jak používat Azure Key Vault pomocí Azure virtuálního počítače s Linuxem v rozhraní .NET – Azure Key Vault | Dokumentace Microsoftu
 description: 'Kurz: Konfigurace aplikace ASP.NET Core pro čtení tajného klíče z trezoru klíčů'
 services: key-vault
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: key-vault
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 12/21/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 28c695462f6989efd2e69ab6b0e23df38a8205ff
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 68a788205917e87469b432de435e296dcabc350c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600535"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001681"
 ---
 # <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-net"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v .NET
 
 Azure Key Vault pomáhá chránit tajné klíče, jako jsou klíče rozhraní API nebo databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
-V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci ke čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. V následujících částech získáte informace o těchto tématech:
+V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci pro čtení informací z Azure Key Vault pomocí spravované identity pro prostředky Azure. V následujících částech získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
@@ -34,7 +34,7 @@ V tomto kurzu postupujte podle potřeby postup, jak získat konzolovou aplikaci 
 > * Přidělení požadovaných oprávnění pro konzolovou aplikaci pro čtení dat ze služby key vault.
 > * Načíst tajné kódy z trezoru klíčů
 
-Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
+Než půjdeme dál, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
 
 ## <a name="prerequisites"></a>Požadavky
 * Všechny platformy:
@@ -45,6 +45,7 @@ Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.m
 Tento kurz využívá identita spravované služby
 
 ## <a name="what-is-managed-service-identity-and-how-does-it-work"></a>Co je Identita spravované služby a jak funguje?
+
 Než budeme pokračovat, seznámíme se s MSI. Azure Key Vault umožňuje bezpečné ukládání přihlašovacích údajů, aby nemusely být v kódu. Abyste je však mohli načíst, musíte se ověřit ve službě Azure Key Vault. K ověření ve službě Key Vault potřebujete přihlašovací údaje. Jedná se o klasický problém. Prostřednictvím spojení Azure a Azure AD poskytuje MSI spouštěcí identitu, která výrazně usnadňuje začátek práce.
 
 Funguje to takto. Když povolíte MSI pro službu Azure, jako je Virtual Machines, App Service nebo Functions, Azure vytvoří [instanční objekt](key-vault-whatis.md#basic-concepts) pro instanci služby v Azure Active Directory a vloží do instance služby přihlašovací údaje k instančnímu objektu. 
@@ -54,9 +55,9 @@ Funguje to takto. Když povolíte MSI pro službu Azure, jako je Virtual Machine
 Potom váš kód zavolá místní službu Metadata Service, která je dostupná v prostředku Azure, a získá přístupový token.
 Váš kód použije přístupový token, který získá z místního koncového bodu MSI_ENDPOINT, k ověření ve službě Azure Key Vault. 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
+Přihlaste se k Azure pomocí rozhraní příkazového řádku Azure, zadejte:
 
 ```azurecli
 az login
@@ -132,13 +133,14 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 Poznamenejte si vlastní adresu `publicIpAddress` ve výstupu z vašeho virtuálního počítače. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
 
 ## <a name="assign-identity-to-virtual-machine"></a>Přiřazení identit k virtuálnímu počítači
+
 V tomto kroku vytváříme systému identity přiřazené k virtuálnímu počítači spuštěním následujícího příkazu
 
 ```
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Mějte prosím na paměti systemAssignedIdentity vidíte níže. Výstup výše uvedený příkaz by měl 
+Všimněte si systemAssignedIdentity vidíte níže. Výstup výše uvedený příkaz by měl 
 
 ```
 {
@@ -148,21 +150,23 @@ Mějte prosím na paměti systemAssignedIdentity vidíte níže. Výstup výše 
 ```
 
 ## <a name="give-vm-identity-permission-to-key-vault"></a>Udělení oprávnění identita virtuálního počítače do služby Key Vault
+
 Teď můžeme poskytnout výše vytvořili oprávnění identit do služby Key Vault spuštěním následujícího příkazu
 
 ```
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="login-to-the-virtual-machine"></a>Přihlášení k virtuálnímu počítači
+## <a name="sign-in-to-the-virtual-machine"></a>Přihlaste se k virtuálnímu počítači
 
-Nyní přihlášení k virtuálnímu počítači pomocí terminálu
+Teď se přihlaste k virtuálnímu počítači pomocí terminálu
 
 ```
 ssh azureuser@<PublicIpAddress>
 ```
 
 ## <a name="install-dot-net-core-on-linux"></a>Instalace Dot Net core v Linuxu
+
 ### <a name="register-the-microsoft-product-key-as-trusted-run-the-following-two-commands"></a>Registrace Microsoft Product key jako důvěryhodné. Spusťte následující dva příkazy
 
 ```
@@ -171,6 +175,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 ```
 
 ### <a name="set-up-desired-version-host-package-feed-based-on-operating-system"></a>Nastavení balíčku hostitele požadovanou verzi informačního kanálu na základě operačního systému
+
 ```
 # Ubuntu 17.10
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-artful-prod artful main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -200,7 +205,7 @@ dotnet --version
 
 ## <a name="create-and-run-sample-dot-net-app"></a>Vytvoření a spuštění ukázkové aplikace .NET tečka
 
-Spuštěním následujících příkazů, které byste měli vidět "Hello World" Tisk do konzoly
+Spuštěním následujících příkazů, měli byste vidět "Hello World" Tisk do konzoly
 
 ```
 dotnet new console -o helloworldapp
@@ -209,6 +214,7 @@ dotnet run
 ```
 
 ## <a name="edit-console-app"></a>Upravit aplikaci konzoly
+
 Otevřete soubor Program.cs a přidejte tyto balíčky
 ```
 using System;
@@ -218,8 +224,10 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
-Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 krocích. 
-1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, který inturn načte token ze služby Azure Active Directory
+
+Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Je dvoustupňový proces.
+
+1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, která pak načte token ze služby Azure Active Directory
 2. Předat token do služby Key Vault a načtou se vaše tajný klíč 
 
 ```
@@ -268,7 +276,6 @@ Změňte soubor třídy tak, aby obsahovala níže uvedeného kódu. Jde o 2 kro
 ```
 
 Výše uvedený kód ukazuje, jak provádět operace se službou Azure Key Vault v Azure virtuálního počítače s Linuxem. 
-
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866062"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024786"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -35,7 +35,7 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
 
 ## <a name="set-up-open-networking-mode"></a>Nastavit režim otevření sítě
 
-1. Nastavení šablony Azure Resource Manageru. V **nastavení fabricSettings** povolte službu DNS a IP zprostředkovatele: 
+1. Nastavení šablony Azure Resource Manageru. V **nastavení fabricSettings** oddílu prostředku clusteru povolit služby DNS a IP zprostředkovatele: 
 
     ```json
     "fabricSettings": [
@@ -77,8 +77,10 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                 }
             ],
     ```
+    
+2. Nastavení profilu sítě část prostředku Škálovací sady virtuálních počítačů. To umožňuje více IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu. Jak je znázorněno níže, aby bylo možné mít pět IP adres, které jsou přístupné z nástroje pro vyrovnávání zatížení Azure, zaregistrujte pět IP adres ve fondu adres back-endu nástroje pro vyrovnávání zatížení Azure.  Budete také muset přidejte proměnné do horní části šablony v sekci proměnných.
 
-2. Nastavení části profilu sítě umožňuje víc IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu. Jak je znázorněno níže, aby bylo možné mít pět IP adres, které jsou přístupné z nástroje pro vyrovnávání zatížení Azure, zaregistrujte pět IP adres ve fondu adres back-endu nástroje pro vyrovnávání zatížení Azure.
+    Přidejte tuto část do proměnné:
 
     ```json
     "variables": {
@@ -97,6 +99,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
         "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
         "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]"
     }
+    ```
+    
+    Přidejte tuto část do prostředku Škálovací sady virtuálních počítačů:
+
+    ```json   
     "networkProfile": {
                 "networkInterfaceConfigurations": [
                   {

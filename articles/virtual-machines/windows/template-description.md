@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987692"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023834"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuální počítače v šabloně Azure Resource Manageru
 
@@ -436,7 +436,7 @@ Existuje mnoho rozšíření, které můžete nainstalovat na virtuální počí
 }
 ```
 
-Skript start.ps1 lze provádět mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu nejsou inicializovány; můžete použít vlastní skript k jejich inicializaci. Pokud máte více úloh po spuštění udělat, můžete použít soubor start.ps1 volat jiné skripty prostředí PowerShell ve službě Azure storage. V příkladu Powershellu, ale můžete použít libovolný metoda, která je k dispozici v operačním systému, kterou používáte.
+Skript start.ps1 lze provádět mnoho úloh konfigurace. Například datové disky, které jsou přidány do virtuálních počítačů v příkladu nejsou inicializovány; můžete použít vlastní skript k jejich inicializaci. Pokud máte více úloh po spuštění udělat, můžete použít soubor start.ps1 volat jiné skripty prostředí PowerShell ve službě Azure storage. V příkladu Powershellu, ale můžete použít libovolný metoda, která je k dispozici v operačním systému, který používáte.
 
 Můžete zobrazit stav nainstalovaná rozšíření z rozšíření nastavení na portálu:
 
@@ -448,7 +448,7 @@ Můžete také získat informace o rozšíření pomocí **Get-AzureRmVMExtensio
 
 Při nasazení šablony Azure sleduje nasazený jako skupinu a automaticky přiřadí název této skupiny nasazené prostředky. Název nasazení je stejný jako název šablony.
 
-Pokud jste zvědaví o stavu prostředků v nasazení, můžete použít okno skupiny prostředků na webu Azure Portal:
+Pokud vás to zajímá o stavu prostředků v nasazení, zobrazte si skupinu prostředků na webu Azure Portal:
 
 ![Získejte informace o nasazení](./media/template-description/virtual-machines-deployment-info.png)
     
@@ -459,3 +459,4 @@ To není problém používat stejnou šablonu k vytváření prostředků nebo a
 - Vytvořit vlastní šablonu pomocí [šablon pro vytváření Azure Resource Manageru](../../resource-group-authoring-templates.md).
 - Nasadit šablonu, kterou jste vytvořili pomocí [vytvořit virtuální počítač s Windows pomocí šablony Resource Manageru](ps-template.md).
 - Zjistěte, jak spravovat virtuální počítače, které jste vytvořili kontrolou [vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Syntaxi JSON a vlastnosti typů prostředků v šablonách najdete v tématu [referenčními informacemi k šablonám Azure Resource Manageru](/azure/templates/).

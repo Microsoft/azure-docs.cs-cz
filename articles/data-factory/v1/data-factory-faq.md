@@ -9,17 +9,16 @@ ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 414a6042d064a1dece7025dc277533d40ef2aa64
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781909"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024038"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory – nejčastější dotazy
 > [!NOTE]
@@ -55,7 +54,7 @@ Můžete vytvořit/vytvářet datové továrny pomocí jedné z následujících
 * **Prostředí Azure PowerShell** naleznete v tématu [vytvořit a monitorovat datové továrny Azure pomocí Azure Powershellu](data-factory-build-your-first-pipeline-using-powershell.md) kurzu/návod pro vytvoření datové továrny pomocí prostředí PowerShell. Zobrazit [Reference k rutinám Data Factory] [ adf-powershell-reference] obsahu v knihovně MSDN úplnou dokumentaci o rutinách služby Data Factory.
 * **Knihovna tříd rozhraní .NET** můžete programově vytvářet datové továrny pomocí Data Factory .NET SDK. Zobrazit [vytvářet, monitorovat a spravovat datové továrny pomocí sady .NET SDK](data-factory-create-data-factories-programmatically.md) návod k vytvoření datové továrny pomocí sady .NET SDK. Zobrazit [Reference knihovny tříd pro objekt pro vytváření dat] [ msdn-class-library-reference] úplnou dokumentaci o Data Factory .NET SDK.
 * **Rozhraní REST API** rozhraní REST API, který je zveřejněn prostřednictvím služby Azure Data Factory můžete použít také k vytváření a nasazování datové továrny. Zobrazit [referencích rozhraní API REST služby Data Factory] [ msdn-rest-api-reference] úplnou dokumentaci o rozhraní REST API služby Data Factory.
-* **Šablona Azure Resource Manageru** naleznete v tématu [kurz: sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md) fo podrobnosti.
+* **Šablona Azure Resource Manageru** naleznete v tématu [kurzu: Sestavit svou první datovou továrnu Azure pomocí šablony Azure Resource Manageru](data-factory-build-your-first-pipeline-using-arm.md) fo podrobnosti.
 
 ### <a name="can-i-rename-a-data-factory"></a>Můžete přejmenovat objekt pro vytváření dat?
 Ne. Stejně jako ostatní prostředky Azure nelze změnit název datové továrny Azure.
@@ -72,7 +71,7 @@ Následující tabulka obsahuje seznam podporovaných objektu pro vytváření d
 | --- | --- |
 | [Cluster HDInsight na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) nebo [vlastní cluster HDInsight](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [streamování Hadoop](data-factory-hadoop-streaming-activity.md) |
 | [Služba Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivity Machine Learning: Dávkové spouštění a Aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Aktivity Machine Learning: Dávkové spouštění a aktualizace prostředku](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[U-SQL Data Lake Analytics](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [systému SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Uložená procedura](data-factory-stored-proc-activity.md) |
 

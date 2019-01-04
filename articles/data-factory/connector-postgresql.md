@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 1c321d96efc7af387fb30b6ed608eb871cb7de5f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43e7425890d8799272aa782ceef3d3b89fd6ce78
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230491"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025483"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -117,7 +116,7 @@ Ke zkopírování dat z PostgreSQL, nastavte vlastnost typ datové sady na **Rel
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **RelationalTable** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **RelationalTable** | Ano |
 | tableName | Název tabulky v databázi PostgreSQL. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -147,7 +146,7 @@ Ke zkopírování dat z PostgreSQL, nastavte typ zdroje v aktivitě kopírován�
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **RelationalSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Ne (když je "tableName" v datové sadě zadán) |
 
 > [!NOTE]

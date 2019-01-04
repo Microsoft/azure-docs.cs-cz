@@ -1,5 +1,5 @@
 ---
-title: Správa služby Azure Key Vault pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
+title: Správa služby Azure Key Vault pomocí rozhraní příkazového řádku – Azure Key Vault | Dokumentace Microsoftu
 description: V tomto článku použijte k automatizaci běžných úkolů ve službě Key Vault pomocí rozhraní příkazového řádku Azure
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 01/02/2019
 ms.author: barclayn
-ms.openlocfilehash: f3b91e73cbfe9972969f5a061768a2c2bbfa7d1b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 632620bf8140ba855198a9354fbd7e50604e18c3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256442"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000304"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Správa služby Key Vault pomocí rozhraní příkazového řádku Azure 
 
@@ -133,7 +133,7 @@ az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGro
 
 Výstup tohoto příkazu zobrazuje vlastnosti trezoru klíčů, kterou jste vytvořili. Dvě nejdůležitější vlastnosti jsou:
 
-* **název**: V tomto příkladu je název ContosoKeyVault. Budete používat tento název pro další příkazy Key Vault.
+* **Název**: V tomto příkladu je název ContosoKeyVault. Budete používat tento název pro další příkazy Key Vault.
 * **vaultUri**: V tomto příkladu je identifikátor URI https://contosokeyvault.vault.azure.net. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 Váš účet Azure je nyní oprávněn provádět nad tímto trezorem klíčů všechny operace. Ještě není oprávněn nikdo jiný.
@@ -228,18 +228,18 @@ az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 Použití [az keyvault update](/cli/azure/keyvault#az-keyvault-update) povolit pokročilé zásady pro trezor klíčů. 
 
- Povolení služby Key Vault pro nasazení: umožňuje virtuálních počítačů k načítání certifikátů uložených jako tajné kódy z trezoru.
+ Povolení služby Key Vault pro nasazení: Umožňuje virtuálních počítačů k načítání certifikátů uložených jako tajné kódy z trezoru.
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-deployment 'true'
  ``` 
 
-Povolení služby Key Vault pro šifrování disků: požaduje se při použití trezoru pro Azure Disk encryption.
+Povolení služby Key Vault pro šifrování disku: Požaduje se při použití trezoru pro Azure Disk encryption.
 
  ```azurecli
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-disk-encryption 'true'
  ```  
 
-Povolení služby Key Vault pro šablonu nasazení: Resource Manager umožňuje načíst tajné kódy z trezoru.
+Povolení služby Key Vault pro šablonu nasazení: Umožňuje Resource Manageru k načítání tajných kódů z trezoru.
  ```azurecli 
  az keyvault update --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --enabled-for-template-deployment 'true'
  ```

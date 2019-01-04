@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z/do cloudu SAP pro zákazníka pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak zkopírovat data z cloudu SAP pro zákazníka k úložištím dat. podporované podřízený (nebo) z podporované zdrojové úložiště dat do cloudu SAP pro zákazníka pomocí služby Data Factory.
+title: Kopírování dat z/do cloudu SAP pro zákazníka pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data z cloudu SAP pro zákazníka do úložišť dat jímky podporované (nebo) z podporované zdrojové úložiště dat do cloudu SAP pro zákazníka pomocí služby Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,47 +9,46 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: df45613105c8fb005fc8ba0c796ef768e293c57e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 360cf92686682e65cf5348ee717bbb80cdc85cb4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052428"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016167"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z cloudu SAP pro zákazníka (C4C) pomocí Azure Data Factory
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z cloudu SAP pro zákazníka (C4C) pomocí služby Azure Data Factory
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z/do cloudu SAP pro zákazníka (C4C). Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat z/do cloudu SAP pro zákazníka (C4C) ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Můžete zkopírovat data z cloudu SAP pro zákazníka do úložiště dat žádné podporované podřízený nebo zkopírování dat z jakékoli úložiště podporované zdroje dat do cloudu SAP pro zákazníka. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Můžete kopírovat data z SAP cloudem pro zákazníka jakékoli podporovaného úložiště dat jímky nebo kopírování dat ze všech podporovaných zdrojů úložišť dat SAP cloudem pro zákazníka. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor umožňuje Azure Data Factory ke zkopírování dat z/do cloudu SAP pro zákazníka, včetně SAP cloudu pro prodej, SAP cloudové služby a SAP Cloud pro sociální zapojení řešení.
+Konkrétně tento konektor umožňuje Azure Data Factory pro kopírování dat z/do cloudu SAP pro zákazníka, včetně SAP cloudem pro prodej, Cloud SAP pro službu a SAP cloudem pro sociální zapojení řešení.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení entit služby Data Factory konkrétní SAP cloudu pro konektor zákazníka.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní SAP cloud pro konektor zákazníka.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro SAP Cloud pro zákazníka propojené služby jsou podporovány následující vlastnosti:
+Pro SAP cloudem pro zákaznické propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **SapCloudForCustomer**. | Ano |
+| type | Vlastnost type musí být nastavená na: **SapCloudForCustomer**. | Ano |
 | url | Adresa URL služby SAP C4C OData. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k SAP C4C. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Pokud není zadaný, použije výchozí Runtime integrace Azure. | Ne Ano pro sink zdroje |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 >[!IMPORTANT]
->Ke zkopírování dat do cloudu SAP pro zákazníka, explicitně [vytvoření služby Azure IR](create-azure-integration-runtime.md#create-azure-ir) s umístěním téměř SAP cloudu pro zákazníka a přidružení v propojené službě jako v následujícím příkladu:
+>Pro kopírování dat do cloudu SAP pro zákazníka, explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístění blízko vaší SAP cloudem pro zákazníky a jeho přidružení v propojené službě jako v následujícím příkladu:
 
 **Příklad:**
 
@@ -76,13 +75,13 @@ Pro SAP Cloud pro zákazníka propojené služby jsou podporovány následujíc�
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datové sady](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností nepodporuje SAP cloudu pro datovou sadu zákazníka.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporována SAP cloudem pro datovou sadu zákazníků.
 
-Ke zkopírování dat z cloudu SAP pro zákazníka, nastavte vlastnost typu datové sady, která **SapCloudForCustomerResource**. Podporovány jsou následující vlastnosti:
+Ke zkopírování dat z cloudu SAP pro zákazníka, nastavte vlastnost typ datové sady na **SapCloudForCustomerResource**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **SapCloudForCustomerResource** |Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **SapCloudForCustomerResource** |Ano |
 | path | Zadejte cestu SAP C4C OData entity. |Ano |
 
 **Příklad:**
@@ -105,7 +104,7 @@ Ke zkopírování dat z cloudu SAP pro zákazníka, nastavte vlastnost typu dato
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje SAP cloudové zdroje zákazníka.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností pro zákazníka zdroj podporována SAP cloudem.
 
 ### <a name="sap-c4c-as-source"></a>SAP C4C jako zdroj
 
@@ -113,10 +112,10 @@ Ke zkopírování dat z cloudu SAP pro zákazníka, nastavte typ zdroje v aktivi
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **SapCloudForCustomerSource**  | Ano |
-| query | Zadejte vlastního dotazu OData číst data. | Ne |
+| type | Vlastnost type musí být nastavená na: **SapCloudForCustomerSource**  | Ano |
+| query | Zadejte vlastní dotaz OData číst data. | Ne |
 
-Ukázkový dotaz k získání dat pro určitý den: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Ukázkový dotaz pro získání dat pro určitý den: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
 **Příklad:**
 
@@ -150,15 +149,15 @@ Ukázkový dotaz k získání dat pro určitý den: `"query": "$filter=CreatedOn
 ]
 ```
 
-### <a name="sap-c4c-as-sink"></a>SAP C4C jako jímku
+### <a name="sap-c4c-as-sink"></a>SAP C4C jako jímka
 
-Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktivitě kopírování do **SapCloudForCustomerSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **podřízený** části:
+Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktivitě kopírování do **SapCloudForCustomerSink**. Následující vlastnosti jsou podporovány v aktivitě kopírování **jímky** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **SapCloudForCustomerSink**  | Ano |
-| writeBehavior | Chování zápisu operace. Může být "Vložit", "Update". | Ne. Výchozí "Insert". |
-| writeBatchSize | Velikost dávky zápisu operace. Velikost dávky získat nejlepší výkon se může lišit pro jinou tabulku nebo server. | Ne. Výchozí hodnota je 10. |
+| type | Vlastnost type musí být nastavená na: **SapCloudForCustomerSink**  | Ano |
+| WriteBehavior | Chování zápisu operace. Může být "Vložit", "Úpravy". | Ne. Výchozí "Vložit". |
+| WriteBatchSize | Velikost dávky zápisu operace. Velikost dávky získat nejlepší výkon se může lišit pro jiné tabulky nebo serveru. | Ne. Výchozí hodnota 10. |
 
 **Příklad:**
 
@@ -199,28 +198,28 @@ Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktiv
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Mapování datového typu pro SAP Cloud zákazníka.
+## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Mapování datového typu pro SAP Cloud pro odběratele
 
-Při kopírování dat z cloudu SAP pro zákazníka, následující mapování se používají z cloudu SAP pro typy dat zákazníka k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Při kopírování dat z cloudu SAP pro zákazníka, následující mapování umožňují ze SAP Cloud pro typy dat zákazníků Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| SAP C4C OData datový typ | Typ průběžných dat objektu pro vytváření dat |
+| SAP C4C OData datový typ | Data factory dočasné datový typ |
 |:--- |:--- |
-| Edm.Binary | Byte] |
+| Edm.Binary | Byte] |
 | Edm.Boolean | BOOL |
-| Edm.Byte | Byte] |
+| Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
+| Edm.Decimal | Desítkově |
 | Edm.Double | Double |
 | Edm.Single | Jednoduchá |
-| Edm.Guid | Guid |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
-| Edm.Int32 | Int32 |
+| Edm.Int32 | Datový typ Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Řetězec |
 | Edm.Time | Časový interval |
-| Edm.DateTimeOffset | Datový typ DateTimeOffset |
+| Edm.DateTimeOffset | DateTimeOffset |
 
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

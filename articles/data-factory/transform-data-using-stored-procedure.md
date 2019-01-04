@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 54d0ce39ea511958824acb753bcf7102d33a6c90
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 9a724f8e319e652b85941810a6312c35a5036120
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444024"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025721"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložená procedura SQL serveru ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,7 +26,7 @@ ms.locfileid: "52444024"
 Použití aktivity transformace dat ve službě Data Factory [kanálu](concepts-pipelines-activities.md) k transformaci a zpracování nezpracovaných dat do předpovědi a přehledy. Aktivita uložená procedura je jedním z aktivity transformace, které služba Data Factory podporuje. Tento článek vychází [transformovat data](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace ve službě Data Factory.
 
 > [!NOTE]
-> Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](introduction.md) a udělat kurz: [kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
+> Pokud do služby Azure Data Factory začínáte, přečtěte si [Úvod do služby Azure Data Factory](introduction.md) a udělat kurz: [Kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku. 
 
 Aktivity uložené procedury můžete použít k vyvolání uložené procedury v jedné z následujících úložiště dat ve vaší organizaci nebo na virtuálním počítači Azure (VM): 
 
@@ -36,9 +35,9 @@ Aktivity uložené procedury můžete použít k vyvolání uložené procedury 
 - Databáze SQL serveru.  Pokud používáte systém SQL Server, nainstalovat místní prostředí integration runtime ve stejném počítači, který je hostitelem databáze nebo na samostatném počítači, který má přístup k databázi. Místní prostředí integration runtime je součást, která se připojí data zdroje v místním prostředí nebo na virtuálním počítači Azure s cloudovými službami zabezpečení a správě způsobem. Zobrazit [modulu runtime integrace v místním prostředí](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
 
 > [!IMPORTANT]
-> Při kopírování dat do Azure SQL Database nebo SQL Server, můžete nakonfigurovat **SqlSink** v aktivitě kopírování, která se má vyvolat uloženou proceduru s použitím **sqlWriterStoredProcedureName** vlastnost. Podrobné informace o vlastnosti, viz následující články konektor: [Azure SQL Database](connector-azure-sql-database.md), [systému SQL Server](connector-sql-server.md). Volání uložené procedury při kopírování dat do služby Azure SQL Data Warehouse s využitím aktivity kopírování se nepodporuje. Ale můžete použít aktivitu uložené procedury k vyvolání uložené procedury v SQL Data Warehouse. 
+> Při kopírování dat do Azure SQL Database nebo SQL Server, můžete nakonfigurovat **SqlSink** v aktivitě kopírování, která se má vyvolat uloženou proceduru s použitím **sqlWriterStoredProcedureName** vlastnost. Podrobné informace o vlastnosti viz následující články konektoru: [Azure SQL Database](connector-azure-sql-database.md), [systému SQL Server](connector-sql-server.md). Volání uložené procedury při kopírování dat do služby Azure SQL Data Warehouse s využitím aktivity kopírování se nepodporuje. Ale můžete použít aktivitu uložené procedury k vyvolání uložené procedury v SQL Data Warehouse. 
 >
-> Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure SQL Data Warehouse, můžete nakonfigurovat **SqlSource** v aktivitě kopírování, která se má vyvolat uloženou proceduru pro čtení dat ze zdrojové databáze s použitím  **sqlReaderStoredProcedureName** vlastnost. Další informace naleznete v následujících článcích konektor: [Azure SQL Database](connector-azure-sql-database.md), [systému SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
+> Při kopírování dat z Azure SQL Database nebo SQL Server nebo Azure SQL Data Warehouse, můžete nakonfigurovat **SqlSource** v aktivitě kopírování, která se má vyvolat uloženou proceduru pro čtení dat ze zdrojové databáze s použitím  **sqlReaderStoredProcedureName** vlastnost. Další informace naleznete v následujících článcích konektoru: [Azure SQL Database](connector-azure-sql-database.md), [systému SQL Server](connector-sql-server.md), [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)          
 
  
 

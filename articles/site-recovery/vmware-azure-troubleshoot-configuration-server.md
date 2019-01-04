@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: ramamill
-ms.openlocfilehash: 6c8f4fa1fdfdb18d57f001308a6b2105acf9a08d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f5c8241907459a06f0a6206ae6865cdf3fe9ab89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788850"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998961"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 
@@ -33,13 +33,13 @@ Zdrojový počítač zaregistruje se konfigurační server během instalace agen
     - Po vyřešení problémů, postupujte podle pokynů uvedených [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) pokus o registraci ručně.
 4. Pokud není nalezen řetězec uvedený výše, přejděte na zdrojovém počítači a v protokolu C:\ProgramData\ASRSetupLogs\UploadedLogs\* ASRUnifiedAgentInstaller.log ProgramData může být skrytá složka. Pokud není možné najít, zkuste zrušit skrýt složky. Chyby může být způsobeno několika problémy. Vyhledejte řetězec "odeslání požadavku: (7) - nepodařilo připojit k serveru". Pokud se najde,
     - Vyřešte problémy sítě mezi zdrojového počítače a konfigurace serveru. Ověřte, že konfigurační server je dostupný ze zdrojového počítače pomocí sítě nástroje, jako je ping, traceroute, webový prohlížeč atd., ujistěte se, že tento zdrojový počítač je schopný připojit přes port 443 konfiguračního serveru.
-    - Zkontrolujte, jestli nejsou žádná pravidla brány firewall na zdrojovém počítači blokují připojení mezi zdrojového počítače a konfigurace serveru. Pracovat vašich správců síťové odblokujete problémy s připojením.
+    - Zkontrolujte, jestli nejsou žádná pravidla brány firewall na zdrojovém počítači blokují připojení mezi zdrojového počítače a konfigurace serveru. Práce se správce sítě pro odblokování problémy s připojením.
     - Zkontrolujte složky uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučené z antivirového softwaru.
     - Po vyřešení problémů se sítí, zkuste registraci tak, že následující pokyny uvedené [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 5. Pokud není nalezena ve stejném protokolu vyhledejte řetězec "požadavku: (60) - peer certifikát nelze ověřit pomocí dané certifikáty certifikační Autority. ". Pokud se najde, 
     - Tato chyba mohla být, protože vypršela platnost certifikátu serveru konfigurace zdrojového počítače nepodporuje protokol TLS 1.0 a nad SSL protokoly nebo je brána firewall, která blokuje komunikaci prostřednictvím protokolu SSL mezi zdrojového počítače a konfigurace serveru.
     - Pokud chcete vyřešit, připojení k IP adresa konfiguračního serveru pomocí webového prohlížeče na zdrojovém počítači pomocí identifikátoru URI https://<CSIPADDRESS>: 443 /. Ujistěte se, že se že tento zdrojový počítač je schopný připojit přes port 443 konfiguračního serveru.
-    - Zkontrolujte, jestli jsou na zdrojovém počítači, třeba přidání nebo odebrání pro zdrojový počítač komunikovat s CS žádná pravidla brány firewall. Vzhledem k tomu může dojít k softwaru mnoha jinou bránu firewall, není možné seznam konfigurací vyžaduje, spojte se prosím s správci sítě zákazníka.
+    - Zkontrolujte, jestli nejsou žádná pravidla brány firewall na zdrojovém počítači blokují připojení mezi zdrojového počítače a konfigurace serveru. Práce se správce sítě pro odblokování problémy s připojením.
     - Zkontrolujte složky uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) jsou vyloučené z antivirového softwaru.  
     - Po vyřešení problémů, zkuste registraci tak, že následující pokyny uvedené [tady](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 6. V systému Linux Pokud hodnota platformu z /etc/drscout.conf < INSTALLATION_DIR > je poškozený, pak registrace se nezdaří. Pokud chcete zjistit, přejděte na /var/log/ua_install.log protokolu. Zjistíte řetězec "Přerušení konfigurace jako VM_PLATFORM hodnota je null nebo je není VmWare/Azure." Platformu je třeba nastavit na "VmWare" nebo "Azure". Protože je poškozen soubor drscout.conf, doporučuje se [odinstalovat](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) agentem mobility a znovu nainstalujte. Pokud se odinstalace nezdaří, postupujte podle následujících kroků:

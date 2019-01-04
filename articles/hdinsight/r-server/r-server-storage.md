@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2c5a584bd5c235eb143c8e1911006aa6e142ff0d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605632"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001511"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
 Služby ML na HDInsight využívat širokou škálu řešení úložišť se zachovat data, kód nebo objekty, které obsahují výsledky analýzy. Mezi ně patří následující možnosti:
 
 - [Objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/)
-- [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)
+- [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)
 - [Azure File storage](https://azure.microsoft.com/services/storage/files/)
 
 Máte také možnost přístupu k více účtům úložiště Azure nebo kontejnery s vaším clusterem HDInsight. Azure File storage je možnost úložiště dat vhodné pro použití na hraničním uzlu, umožňující připojení sdílené složky Azure Storage, například systém souborů Linux. Ale sdílených složek Azure můžete připojit a používat libovolný systém, který je podporovaný operační systém, jako je například Windows nebo Linux. 

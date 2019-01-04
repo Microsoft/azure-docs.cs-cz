@@ -9,17 +9,16 @@ ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 988c264ef6052b4b41de493944ac8d39a197a083
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698753"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022304"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -51,7 +50,7 @@ Brána správy dat poskytuje následující možnosti:
 ### <a name="command-flow-and-data-flow"></a>Příkaz toku a toku dat
 Pokud použijete aktivitu kopírování ke kopírování dat mezi místním prostředím a cloudem, aktivita používá bránu k přenosu dat z místního zdroje dat do cloudu a naopak.
 
-Tady je souhrn kroků pro kopírování pomocí brány dat a toku dat vysoké úrovně pro: ![toku dat pomocí brány](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+Tady je podrobný datový tok pro a seznam kroků pro kopírování pomocí brány dat: ![Tok dat pomocí brány](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
 
 1. Data pro vývojáře pro službu Azure Data Factory pomocí vytvoří bránu [webu Azure portal](https://portal.azure.com) nebo [rutinu Powershellu](https://docs.microsoft.com/powershell/module/azurerm.datafactories/).
 2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte brány. Jako součást nastavení propojené služby vývojáři dat používá aplikace nastavení přihlašovacích údajů k určení typů ověřování a přihlašovací údaje.  Dialogové okno Nastavení přihlašovacích údajů aplikace komunikuje s úložišti dat k testování připojení a přihlašovací údaje uložte do brány.
@@ -182,8 +181,8 @@ Brána používá proxy server pro připojení ke cloudové službě. Klikněte 
 
 Existují tři možnosti konfigurace:
 
-* **Nepoužívat proxy server**: bránu pro připojení ke cloudovým službám explicitně nepoužívá žádné proxy.
-* **Použít systémový proxy server**: Brána používá nastavení, který je nakonfigurovaný na diahost.exe.config a diawp.exe.config proxy serveru.  Pokud žádný proxy server je nakonfigurován diahost.exe.config a diawp.exe.config, brána se připojí ke cloudové službě přímo bez proxy serveru.
+* **Nepoužívat proxy server**: Brána explicitně nepoužívá všechny proxy pro připojení ke cloudovým službám.
+* **Použít systémový proxy server**: Brána používá nastavení serveru proxy, který je nakonfigurovaný v diahost.exe.config a diawp.exe.config.  Pokud žádný proxy server je nakonfigurován diahost.exe.config a diawp.exe.config, brána se připojí ke cloudové službě přímo bez proxy serveru.
 * **Použít vlastní proxy server**: Konfigurace nastavení pro bránu, místo použití konfigurací v diahost.exe.config a diawp.exe.config proxy HTTP.  Vyžaduje se adresa a Port.  Uživatelské jméno a heslo jsou volitelné na základě nastavení ověřování váš proxy server.  Všechna nastavení jsou šifrované pomocí certifikát přihlašovacích údajů brány a ukládají místně na hostitelském počítači brány.
 
 Brána správy dat hostitelská služba modulu restartuje automaticky po uložení aktualizované nastavení proxy serveru.
@@ -236,7 +235,7 @@ Kromě těchto bodů musíte také ověřte, že Microsoft Azure je v seznamu po
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Je to možné příznaky u problémů souvisejících se server brány firewall a proxy
 Pokud narazíte na chyby podobné následující dotazy, je pravděpodobně v důsledku nesprávné konfigurace brány firewall nebo proxy server, který blokuje brána bránily v připojení ke službě Data Factory ke svému ověření. Přečtěte si předchozí část, aby vaše brány firewall a proxy serveru jsou správně nakonfigurované.
 
-1. Při pokusu o registraci gateway zobrazí následující chybová zpráva: "se nepodařilo zaregistrovat klíč brány. Než se pokusíte znovu zaregistrujte klíč bránu, zkontrolujte, jestli je brána pro správu dat v připojeném stavu a je spuštěna služba hostitele brány správy dat."
+1. Při pokusu o registraci gateway zobrazí následující chybová zpráva: "Nepovedlo se zaregistrovat klíč brány. Než se pokusíte znovu zaregistrujte klíč bránu, zkontrolujte, jestli je brána pro správu dat v připojeném stavu a je spuštěna služba hostitele brány správy dat."
 2. Při otevření nástroje Configuration Manager můžete zobrazit stav jako "Odpojeno" nebo "Připojení". Při prohlížení protokolů událostí Windows, v části "Prohlížeč událostí" > "Aplikace a služby protokoly" > "Brána správy dat", se zobrazí chybové zprávy, jako je například chybová zpráva: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 

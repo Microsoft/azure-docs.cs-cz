@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z SAP HANA pomocí Azure Data Factory | Microsoft Docs
-description: Postup kopírování dat z SAP HANA do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
+title: Kopírování dat ze SAP HANA pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak kopírovat data ze SAP HANA na úložiště dat jímky podporované s využitím aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,49 +9,48 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ded69225319e447ad210aed267741b2803889ac
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: cdd83c3ff9d34a5e8b7f2c164136ab82f498ffb5
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048079"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022967"
 ---
-# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
+# <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat ze SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-sap-hana-connector.md)
 > * [Aktuální verze](connector-sap-hana.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze SAP HANA. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek ukazuje, jak použít aktivitu kopírování ke kopírování dat z databáze SAP HANA ve službě Azure Data Factory. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Do úložiště dat žádné podporované podřízený může kopírovat data z databáze SAP HANA. Seznam úložišť dat jako zdroje nebo jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z databáze SAP HANA do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor SAP HANA podporuje:
 
 - Kopírování dat z libovolné verze databáze SAP HANA.
-- Kopírování dat z **HANA informace modely** (například analýzy a výpočet zobrazení) a **řádek nebo sloupce tabulky** pomocí dotazů SQL.
+- Kopírování dat z **informační modely HANA** (například zobrazením analýzy a výpočtů) a **řádku/sloupce tabulky** pomocí příkazů jazyka SQL.
 - Kopírování dat pomocí **základní** nebo **Windows** ověřování.
 
 > [!NOTE]
-> Ke zkopírování dat **do** SAP HANA data uložit, použijte obecné konektor ODBC. V tématu [SAP HANA podřízený](connector-odbc.md#sap-hana-sink) s podrobnostmi. Všimněte si, které jsou propojené služby pro SAP HANA connector a konektor ODBC s jiným typem proto nelze znovu použít.
+> Pro kopírování dat **do** ukládat data systému SAP HANA, použít obecný konektor ODBC. Zobrazit [SAP HANA jímky](connector-odbc.md#sap-hana-sink) s podrobnostmi. Všimněte si, které jsou propojené služby pro konektor SAP HANA a konektor ODBC s jiným typem proto nelze znovu použít.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor SAP HANA, budete muset:
+Pokud chcete použít tento konektor SAP HANA, budete muset:
 
-- Nastavte Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
-- Nainstalujte ovladač SAP HANA ODBC na počítači integrace modulu Runtime. Ovladač SAP HANA ODBC z si můžete stáhnout [SAP služby Stažení softwaru](https://support.sap.com/swdc). Vyhledávání pomocí klíčového slova **SAP HANA klienta pro systém Windows**.
+- Nastavte modul Integration Runtime. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
+- Nainstalujte ovladač SAP HANA ODBC na počítači prostředí Integration Runtime. Ovladače SAP HANA ODBC si můžete stáhnout [SAP Software Download Center](https://support.sap.com/swdc). Hledání pomocí klíčového slova **SAP HANA klienta pro Windows**.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru SAP HANA.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor SAP HANA.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
@@ -59,12 +58,12 @@ Pro SAP HANA propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **SapHana** | Ano |
+| type | Vlastnost type musí být nastavená na: **SapHana** | Ano |
 | server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | Ano |
-| authenticationType. | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **základní**, a **Windows** | Ano |
+| authenticationType. | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **Základní**, a **Windows** | Ano |
 | uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
 
@@ -92,9 +91,9 @@ Pro SAP HANA propojené služby jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje datovou sadu SAP HANA.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje datové sady SAP HANA.
 
-Ke zkopírování dat z SAP HANA, nastavte vlastnost typu datové sady, která **RelationalTable**. Když nejsou k dispozici žádné vlastnosti specifické pro typ podporované pro SAP HANA datové sady zadejte RelationalTable.
+Pro kopírování dat ze SAP HANA, nastavte vlastnost typ datové sady na **RelationalTable**. Přestože nejsou žádné vlastnosti specifické pro typ. podporované pro SAP HANA datové sady typu RelationalTable.
 
 **Příklad:**
 
@@ -114,16 +113,16 @@ Ke zkopírování dat z SAP HANA, nastavte vlastnost typu datové sady, která *
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které jsou podporovány zdrojem SAP HANA.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem SAP HANA.
 
 ### <a name="sap-hana-as-source"></a>SAP HANA jako zdroj
 
-Ke zkopírování dat z SAP HANA, nastavte typ zdroje v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
+Pro kopírování dat ze SAP HANA, nastavte typ zdroje v aktivitě kopírování do **RelationalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **RelationalSource** | Ano |
-| query | Určuje příkaz jazyka SQL pro čtení dat z instance SAP HANA. | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
+| query | Určuje dotaz SQL na čtení dat z instance SAP HANA. | Ano |
 
 **Příklad:**
 
@@ -159,21 +158,21 @@ Ke zkopírování dat z SAP HANA, nastavte typ zdroje v aktivitě kopírování 
 
 ## <a name="data-type-mapping-for-sap-hana"></a>Mapování datového typu pro SAP HANA
 
-Při kopírování dat z SAP HANA, se používají následující mapování SAP HANA datových typů k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Kopírování dat ze SAP HANA, se používají následující mapování z typů dat SAP HANA na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| Datový typ SAP HANA | Typ průběžných dat objektu pro vytváření dat |
+| Typ dat SAP HANA | Data factory dočasné datový typ |
 |:--- |:--- |
 | ALPHANUM | Řetězec |
 | BIGINT | Int64 |
 | OBJEKT BLOB | Byte] |
-| LOGICKÁ HODNOTA | Bajt |
+| DATOVÝ TYP BOOLEAN | Bajt |
 | DATOVÝ TYP CLOB | Byte] |
 | DATE (Datum) | DateTime |
-| DECIMAL | Decimal |
+| DECIMAL | Desítkově |
 | DOUBLE | Jednoduchá |
-| INT | Int32 |
+| INT | Datový typ Int32 |
 | NVARCHAR | Řetězec |
-| SKUTEČNÉ | Jednoduchá |
+| REAL | Jednoduchá |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
 | ČAS | Časový interval |
@@ -183,13 +182,13 @@ Při kopírování dat z SAP HANA, se používají následující mapování SAP
 
 ## <a name="known-limitations"></a>Známá omezení
 
-Při kopírování dat z SAP HANA existuje několik známá omezení:
+Při kopírování dat ze SAP HANA platí několik známá omezení:
 
-- NVARCHAR řetězce byl zkrácen na maximální délce 4000 znaků Unicode
-- SMALLDECIMAL není podporován.
-- VARBINARY není podporován.
-- Platná data jsou mezi 1899/12/30 a 9999/12/31
+- U řetězce NVARCHAR je zkrácen na maximální délce 4000 znaků Unicode
+- Se smalldecimal
+- Nepodporuje se VARBINARY
+- Platná data jsou mezi 1899, 12/30 a 9999/12/31
 
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).

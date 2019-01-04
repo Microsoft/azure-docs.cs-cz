@@ -1,6 +1,6 @@
 ---
-title: Prostřednictvím kódu programu Sledování služby Azure data factory | Microsoft Docs
-description: Naučte se monitorovat kanál v objekt pro vytváření dat pomocí různých software development Kit (SDK).
+title: Programově monitorovat objekt pro vytváření dat Azure | Dokumentace Microsoftu
+description: Zjistěte, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK).
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,30 +9,29 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 343af57cc8f3e63965dc1fe1827b2945009ea8bf
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e004dc6b7d78849705f8d3fa3545efe7318d3911
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045778"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022797"
 ---
-# <a name="programmatically-monitor-an-azure-data-factory"></a>Prostřednictvím kódu programu Sledování služby Azure data factory
-Tento článek popisuje, jak monitorovat kanál v objekt pro vytváření dat pomocí různých software development Kit (SDK). 
+# <a name="programmatically-monitor-an-azure-data-factory"></a>Programové monitorování služby Azure data factory
+Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí různých software development Kit (SDK). 
 
-## <a name="data-range"></a>Oblast dat
+## <a name="data-range"></a>Rozsah dat
 
-Objekt pro vytváření dat ukládá jenom kanálu spouští dat 45 dní. Když dotazujete prostřednictvím kódu programu pro data o spuštění kanálu pro vytváření dat – například pomocí příkazu prostředí PowerShell `Get-AzureRmDataFactoryV2PipelineRun` -nejsou žádné maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Ale pokud dotaz na data v minulém roce, například dotaz nevrátí chybu, ale vrátí jenom kanálu spuštění data z posledních 45 dní.
+Objekt pro vytváření dat se uchovávají pouze spuštění kanálu dat pro 45 dní. Při dotazování prostřednictvím kódu programu pro data o spuštění kanálu služby Data Factory – například pomocí příkazu Powershellu `Get-AzureRmDataFactoryV2PipelineRun` -nejsou žádné maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Ale pokud dotaz na data v minulém roce, třeba dotaz nevrací chybu, ale pouze vrátí kanál spuštění data z uplynulých 45 dní.
 
-Pokud chcete zachovat kanálu spouští dat déle než 45 dní, nastavit vlastní protokolování diagnostiky s [Azure monitorování](monitor-using-azure-monitor.md).
+Pokud chcete zachovat spuštění kanálu dat pro více než 45 dnů, nastavte si vlastní protokolování diagnostiky s [Azure Monitor](monitor-using-azure-monitor.md).
 
 ## <a name="net"></a>.NET
-Kompletní a podrobný postup vytváření a monitorování kanálu pomocí sady .NET SDK, naleznete v části [vytvořte objekt pro vytváření dat a kanál pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md).
+Kompletní postup vytváření a monitorování kanálu pomocí sady .NET SDK najdete v části [vytvoření datové továrny a kanálu pomocí rozhraní .NET](quickstart-create-data-factory-dot-net.md).
 
-1. Přidejte následující kód do nepřetržitě zkontrolovat stav spustit, dokud nedokončí kopírování dat kanálu.
+1. Přidejte následující kód, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud se kopírování dat nedokončí.
 
     ```csharp
     // Monitor the pipeline run
@@ -49,7 +48,7 @@ Kompletní a podrobný postup vytváření a monitorování kanálu pomocí sady
     }
     ```
 
-2. Přidejte následující kód načte kopie aktivity spustit podrobnosti, například velikost dat číst nebo zapisovat.
+2. Přidejte následující kód do této načte aktivita kopírování nezobrazí údaje, například velikost načtených/zapsaných.
 
     ```csharp
     // Check the copy activity run details
@@ -65,12 +64,12 @@ Kompletní a podrobný postup vytváření a monitorování kanálu pomocí sady
     Console.ReadKey();
     ```
 
-Úplnou dokumentaci k rozhraní .NET SDK najdete v části [referenční Data Factory .NET SDK](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
+Úplnou dokumentaci k sadě .NET SDK najdete v části [referenční Data Factory .NET SDK](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
 
 ## <a name="python"></a>Python
-Kompletní a podrobný postup vytváření a monitorování kanálu pomocí sady SDK pro Python, najdete v části [vytvořte objekt pro vytváření dat a kanál pomocí Pythonu](quickstart-create-data-factory-python.md).
+Kompletní postup vytváření a monitorování kanálu pomocí sady Python SDK najdete v části [vytvoření datové továrny a kanálu pomocí Pythonu](quickstart-create-data-factory-python.md).
 
-K monitorování kanálu spuštění, přidejte následující kód:
+Pokud chcete monitorovat spuštění kanálu, přidejte následující kód:
 
 ```python
 #Monitor the pipeline run
@@ -81,10 +80,10 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Kompletní dokumentaci na Python SDK najdete v tématu [referenční Data Factory Python SDK](/python/api/overview/azure/datafactory?view=azure-python).
+Úplnou dokumentaci k sadě Python SDK najdete v části [referenční informace k Data Factory Python SDK](/python/api/overview/azure/datafactory?view=azure-python).
 
 ## <a name="rest-api"></a>REST API
-Kompletní a podrobný postup vytváření a monitorování kanálu pomocí rozhraní REST API, najdete v části [vytvořte objekt pro vytváření dat a kanál pomocí rozhraní REST API](quickstart-create-data-factory-rest-api.md).
+Kompletní postup vytváření a monitorování kanálu pomocí rozhraní REST API najdete v části [vytvoření datové továrny a kanálu pomocí rozhraní REST API](quickstart-create-data-factory-rest-api.md).
  
 1. Spusťte následující skript, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
@@ -111,10 +110,10 @@ Kompletní a podrobný postup vytváření a monitorování kanálu pomocí rozh
     $response | ConvertTo-Json
     ```
 
-Úplnou dokumentaci k REST API, najdete v části [REST API služby Data Factory odkaz](/rest/api/datafactory/).
+Úplnou dokumentaci k rozhraní REST API najdete v části [odkaz na rozhraní REST API služby Data Factory](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
-Kompletní a podrobný postup vytváření a monitorování kanálu pomocí prostředí PowerShell, najdete v části [vytvořte objekt pro vytváření dat a kanál pomocí prostředí PowerShell](quickstart-create-data-factory-powershell.md).
+Kompletní postup vytváření a monitorování kanálu pomocí Powershellu najdete v části [vytvoření datové továrny a kanálu pomocí Powershellu](quickstart-create-data-factory-powershell.md).
 
 1. Spusťte následující skript, který bude nepřetržitě kontrolovat stav spuštění kanálu, dokud nedokončí kopírování dat.
 
@@ -148,8 +147,8 @@ Kompletní a podrobný postup vytváření a monitorování kanálu pomocí pros
     $result.Error -join "`r`n"
     ```
 
-Kompletní dokumentaci o rutinách prostředí PowerShell najdete v tématu [odkazu na rutiny Powershellu objekt pro vytváření dat](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1).
+Úplnou dokumentaci o rutinách prostředí PowerShell najdete v části [Reference k rutinám Powershellu objekt pro vytváření dat](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1).
 
 ## <a name="next-steps"></a>Další postup
-V tématu [monitorování kanálů pomocí Azure monitorování](monitor-using-azure-monitor.md) článku Další informace o použití Azure monitorování pro monitorování kanálů služby Data Factory. 
+Zobrazit [monitorování kanálů pomocí Azure monitoru](monitor-using-azure-monitor.md) článku se dozvíte o použití Azure Monitor k monitorování kanálů Data Factory. 
 

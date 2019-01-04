@@ -13,12 +13,12 @@ ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 47d04f6e73d95a7cb1ba63c437b97468041af57f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0450feb82e539ebd73c3013e066104b29916238d
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189859"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018768"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
@@ -36,7 +36,7 @@ Je nutné mít jednu z těchto licencí použití skupinové licence:
 - Placené nebo zkušební edice Office 365 Enterprise E3 nebo Office 365 a3 a vyšší
 
 ### <a name="required-number-of-licenses"></a>Požadovaný počet licencí
-Pro všechny skupiny přiřadit licenci musí také mít licenci pro každého člena jedinečný. Když nemáte k dispozici k přiřazení každého člena skupiny licencí, musí mít alespoň dostatek licencí, které mají zahrnout všichni členové. Pro příkladu Pokud máte 1 000 jedinečných členů, kteří jsou součástí skupin licencí ve vašem tenantovi, musíte mít aspoň 1 000 licencí pro splnění licenční smlouvu.
+Pro všechny skupiny přiřadit licenci musí také mít licenci pro každého člena jedinečný. Když nemáte k dispozici k přiřazení každého člena skupiny licencí, musí mít alespoň dostatek licencí, které mají zahrnout všichni členové. Například pokud máte 1 000 jedinečných členů, kteří jsou součástí skupin licencí ve vašem tenantovi, musíte mít aspoň 1 000 licencí pro splnění licenční smlouvu.
 
 ## <a name="features"></a>Funkce
 

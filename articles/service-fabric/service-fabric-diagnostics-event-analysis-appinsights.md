@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: f51d132d3cdc2d8aed65919df5fa225711508c60
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 25e8d0aafc8593c9c759dd8ac1d7d1d495c9e026
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753091"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001766"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Události analýzy a vizualizace s využitím Application Insights
 
@@ -120,7 +120,7 @@ Pokud vyvíjíte v rozhraní .NET a budou pravděpodobně používat některé z
 
 Po nakonfigurování služby Application Insights jako výstup pro události a protokoly byste začít informace zobrazí v prostředku Application Insights za pár minut. Přejděte do prostředku Application Insights, který se dostanete na řídicí panel prostředku Application Insights. Klikněte na tlačítko **hledání** na hlavním panelu služby Application Insights a zobrazte nejnovější trasování, které se přijaly a bude moct filtrovat projde.
 
-*Průzkumník metrik* je užitečným nástrojem pro vytváření vlastních řídicích panelů na základě metrik, které mohou být vytváření sestav aplikací, služeb a clusteru. Zobrazit [zkoumání metriky v Application Insights](../application-insights/app-insights-metrics-explorer.md) nastavit několik grafů pro sami na základě dat shromažďujete.
+*Průzkumník metrik* je užitečným nástrojem pro vytváření vlastních řídicích panelů na základě metrik, které mohou být vytváření sestav aplikací, služeb a clusteru. Zobrazit [zkoumání metriky v Application Insights](../azure-monitor/app/metrics-explorer.md) nastavit několik grafů pro sami na základě dat shromažďujete.
 
 Kliknutím na **Analytics** se dostanete na portál Application Insights Analytics, kde můžete zadávat dotazy událostmi a sledováním s větší rozsah a volitelnost. Další informace najdete v [Analytics ve službě Application Insights](../azure-monitor/app/analytics.md).
 

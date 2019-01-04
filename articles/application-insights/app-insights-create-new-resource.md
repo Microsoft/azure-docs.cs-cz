@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3e642e5954a8c1154ca5b07f06f9450e4e9ee39a
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 68155b69c1122d645eca5fe121d32bd9353db2da
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807920"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002718"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytváří se nový prostředek je proto součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete udělat automaticky integrovaným vývojovým prostředím. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkčním prostředí sestavení vaší aplikace.
@@ -66,18 +66,18 @@ Klikněte na tlačítko hledání dlaždici zobrazíte [diagnostické vyhledáv�
 Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** po pár sekundách.
 
 ## <a name="creating-a-resource-automatically"></a>Vytvoření prostředku automaticky
-Můžete napsat [skript prostředí PowerShell](app-insights-powershell.md) automaticky vytvořit prostředek.
+Můžete napsat [skript prostředí PowerShell](../azure-monitor/app/powershell.md) automaticky vytvořit prostředek.
 
 ## <a name="next-steps"></a>Další postup
 * [Vytvoření řídicího panelu](../azure-monitor/app/app-insights-dashboards.md)
 * [Diagnostické vyhledávání](../azure-monitor/app/diagnostic-search.md)
-* [Zkoumání metrik](app-insights-metrics-explorer.md)
+* [Zkoumání metrik](../azure-monitor/app/metrics-explorer.md)
 * [Psaní analytických dotazů](../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
 [api]: ../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../azure-monitor/app/diagnostic-search.md
-[metrics]: app-insights-metrics-explorer.md
+[metrics]: ../azure-monitor/app/metrics-explorer.md
 [start]: app-insights-overview.md
 

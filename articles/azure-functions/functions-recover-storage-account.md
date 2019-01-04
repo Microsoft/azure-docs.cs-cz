@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 115a78993929b900b835450ea52d590e00ff7461
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604969"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000015"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Řešení potíží s "modul runtime služby functions nedostupný"
 
@@ -37,6 +37,7 @@ Projdeme čtyři nejběžnější případy chyb, jak identifikovat a jak řeši
 1. Odstranit nastavení aplikace účtu úložiště
 1. Neplatná pověření účtu úložiště
 1. Účet úložiště je nedostupný
+1. Denní kvóty spuštění úplné
 
 ## <a name="storage-account-deleted"></a>Odstranit účet úložiště
 
@@ -79,6 +80,13 @@ Aplikace Function App musí mít pro přístup k účtu úložiště. Běžné p
 * Aplikace Function App nasadit do služby App Service Environment bez správné síťové pravidel pro povolení provozu do a z účtu úložiště
 * Brána firewall účet úložiště je povolena a není nakonfigurována pro povolení provozu do a z funkce. [Další informace o účtu brány firewall na konfiguraci úložiště tady](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+## <a name="daily-execution-quota-full"></a>Denní kvóty spuštění úplné
+
+Pokud máte denní kvóty spuštění nakonfigurovat aplikaci Function App se dočasně zakázané a řadu řízení portálu nebude k dispozici. 
+
+* Pokud chcete ověřit, otevřete kontrola funkce platformy > Nastavení aplikace Function App na portálu. Tato zpráva se zobrazí, pokud jste překročili kvótu
+    * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
+* Odebrat kvótu a restartujte aplikaci k vyřešení daného problému.
 
 ## <a name="next-steps"></a>Další kroky
 

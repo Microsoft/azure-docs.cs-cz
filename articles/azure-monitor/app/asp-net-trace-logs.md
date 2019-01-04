@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e5e1a415ce5c5bd14a8afef41e506259555d79f6
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b5cc0004edf105d8875ff83240b659e210b18e41
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970249"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019941"
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET ve službě Application Insights
 Pokud chcete použít NLog, log4Net nebo System.Diagnostics.Trace pro diagnostické trasování v aplikaci ASP.NET, může mít vaše protokoly odeslané do [Azure Application Insights][start], kde můžete prozkoumat a hledat je. Protokoly se sloučí s další telemetrická data přicházející z vaší aplikace tak, aby identifikovat trasování přidružené k obsluze jednotlivých požadavků uživatele a korelovat je s dalšími události a sestavy výjimek.
@@ -160,7 +160,7 @@ Je to možné, například:
 * Konfiguraci této stránky uložit jako oblíbenou položku
 
 > [!NOTE]
-> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, může funkce adaptivního vzorkování pracovat a odesílat pouze procento vaší telemetrie. [Přečtěte si další informace o vzorkování.](../../application-insights/app-insights-sampling.md)
+> **Vzorkování.** Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, může funkce adaptivního vzorkování pracovat a odesílat pouze procento vaší telemetrie. [Přečtěte si další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 >
 >
 
@@ -194,7 +194,7 @@ Někdy může trvat nějakou dobu všechny události a žádosti o získání pr
 Několik faktorů, které ovlivňují objem data se uchovávají. Zobrazit [omezení](../../azure-monitor/app/api-custom-events-metrics.md#limits) část stránky zákazníka události metriky pro další informace. 
 
 ### <a name="im-not-seeing-some-of-the-log-entries-that-i-expect"></a>Mi nezobrazují některé položky protokolu, které můžu očekávat
-Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, může funkce adaptivního vzorkování pracovat a odesílat pouze procento vaší telemetrie. [Přečtěte si další informace o vzorkování.](../../application-insights/app-insights-sampling.md)
+Pokud vaše aplikace odešle velké množství dat a používáte Application Insights SDK pro verze technologie ASP.NET 2.0.0-beta3 nebo novější, může funkce adaptivního vzorkování pracovat a odesílat pouze procento vaší telemetrie. [Přečtěte si další informace o vzorkování.](../../azure-monitor/app/sampling.md)
 
 ## <a name="add"></a>Další kroky
 * [Nastavení dostupnosti a rychlosti odezvy testy][availability]

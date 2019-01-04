@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: cbe4d3931a5e7b279218a1f56a3842efbc238780
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053560"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016490"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformovat data spuštěním skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,7 +129,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | priorita            | Určuje, které z uložených ve frontě úloh by měl být vybrané ke spuštění první. Čím nižší je číslo, tím vyšší je priorita. | Ne       |
 | parameters          | Parametry se mají předat do skriptu U-SQL.    | Ne       |
 | runtimeVersion      | Verze modulu runtime U-SQL stroje používat. | Ne       |
-| Vlastnost CompilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot: **Semantic:** provádět jenom sémantické kontroly a kontrol správnosti nezbytné **úplné:** provést úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd., **SingleBox:** provést úplná kompilace s TargetType nastavení SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. | Ne |
+| Vlastnost CompilationMode     | <p>Režim kompilace U-SQL. Musí být jedna z těchto hodnot: **Sémantické:** Pouze provádění sémantického kontroly a kontrol správnosti nezbytné **úplné:** Provést úplná kompilace, jako je kontrola syntaxe, optimalizace, generování kódu, atd., **SingleBox:** Proveďte úplná kompilace s TargetType nastavení SingleBox. Pokud nezadáte hodnotu pro tuto vlastnost, server určuje režim kompilace optimální. | Ne |
 
 Data Factory odešle viz [definice skriptu SearchLogProcessing.txt](#sample-u-sql-script) pro definici skriptu. 
 

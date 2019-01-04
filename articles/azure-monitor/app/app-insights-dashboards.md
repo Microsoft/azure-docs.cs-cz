@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: c0f68304a73f8489668fafb98c51bd1e78b7588f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 653a636ca2d71c573ffde2e9e70a06cf3fcc95fb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972647"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021879"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigace a řídicí panely na portálu Application Insights
 Až budete mít [nastavení Application Insights v projektu](../../application-insights/app-insights-overview.md), telemetrická data o výkonu a využití vaší aplikace se zobrazí v projektu prostředek Application Insights [webu Azure portal](https://portal.azure.com).
@@ -96,7 +96,7 @@ Když jsme vytvořili řídicí panel, můžete ho sdílet s ostatními uživate
 
 ![V záhlaví řídicího panelu klikněte na sdílenou složku](./media/app-insights-dashboards/41.png)
 
-Další informace o [role a řízení přístupu](../../application-insights/app-insights-resources-roles-access-control.md).
+Další informace o [role a řízení přístupu](../../azure-monitor/app/resources-roles-access-control.md).
 
 ## <a name="create-dashboards-programmatically"></a>Vytváření řídicích panelů prostřednictvím kódu programu
 Můžete automatizovat pomocí vytvoření řídicího panelu [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) a jednoduchý editor JSON.
@@ -109,7 +109,7 @@ Okno přehledu je brána na další informace o vaší aplikaci.
 ### <a name="overview-blade-buttons"></a>Tlačítka okna přehledu
 ![Přehled okna horním navigačním panelu](./media/app-insights-dashboards/app-overview-top-nav.png)
 
-* [**Průzkumník metrik** ](../../application-insights/app-insights-metrics-explorer.md) -vytvářet vlastní grafy výkonu a využití.
+* [**Průzkumník metrik** ](../../azure-monitor/app/metrics-explorer.md) -vytvářet vlastní grafy výkonu a využití.
 * [**Hledání** ](../../azure-monitor/app/diagnostic-search.md) – prozkoumat konkrétní instance události, například požadavky, výjimky, nebo trasování protokolů.
 * [**Analytics** ](../../azure-monitor/app/analytics.md) -zadávat efektivní dotazy na telemetrie.
 * **Časový rozsah** – upravit rozsah zobrazí všechny grafy v okně.
@@ -123,14 +123,14 @@ Okno přehledu je brána na další informace o vaší aplikaci.
 
 * **Přehled** -vrátit na kartě s přehledem aplikace.
 * **Protokol aktivit** – výstrahy a události pro správu Azure.
-* [**Řízení přístupu** ](../../application-insights/app-insights-resources-roles-access-control.md) – poskytnutí přístupu pro členy týmu a ostatní uživatele.
+* [**Řízení přístupu** ](../../azure-monitor/app/resources-roles-access-control.md) – poskytnutí přístupu pro členy týmu a ostatní uživatele.
 * [**Značky** ](../../azure-resource-manager/resource-group-using-tags.md) – používání značek k skupiny vaší aplikace s jinými uživateli.
 
 PROZKOUMAT
 
 * [**Mapa aplikace** ](app-map.md) – aktivní mapa zobrazující komponent vaší aplikace, odvozený z informací o závislostech.
 * [**Inteligentní zjišťování** ](../../application-insights/app-insights-proactive-diagnostics.md) – zkontrolujte nedávné výstrahy výkonu.
-* [**Live Stream** ](../../application-insights/app-insights-live-stream.md) – A nelze upravovat nastavení téměř okamžité metriky, užitečné při nasazování nového sestavení nebo ladění.
+* [**Live Stream** ](../../azure-monitor/app/live-stream.md) – A nelze upravovat nastavení téměř okamžité metriky, užitečné při nasazování nového sestavení nebo ladění.
 * [**Dostupnost / webové testy** ](../../azure-monitor/app/monitor-web-app-availability.md) -odesílání pravidelných požadavků pro vaše webové aplikace po celém world.*
 * [**Výkon, selhání** ](../../application-insights/app-insights-web-monitor-performance.md) – výjimky, chybovost a doby odezvy pro požadavky vaší aplikace a požadavky z vaší aplikace do [závislosti](../../azure-monitor/app/asp-net-dependencies.md).
 * [**Výkon** ](../../application-insights/app-insights-web-monitor-performance.md) – doba odezvy, závislosti, doby odezvy.
@@ -145,14 +145,14 @@ KONFIGUROVAT
 * [Výstrahy](../../azure-monitor/app/alerts.md) – konfigurace metriky upozornění.
 * [Průběžný export](../../azure-monitor/app/export-telemetry.md) -nakonfigurovat export telemetrických dat do služby Azure storage.
 * [Testování výkonu](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) -nastavit syntetické zatížení na vašem webu.
-* [Kvóta a ceny](../../application-insights/app-insights-pricing.md) a [vzorkování příjmu](../../application-insights/app-insights-sampling.md).
+* [Kvóta a ceny](../../azure-monitor/app/pricing.md) a [vzorkování příjmu](../../azure-monitor/app/sampling.md).
 * **Přístup přes rozhraní API** – vytvořit [poznámky k verzi](annotations.md) a pro rozhraní API služby Data Access.
 * [**Pracovní položky** ](../../azure-monitor/app/diagnostic-search.md#create-work-item) – připojit se k práci, systém sledování, takže můžete vytvořit chyby při kontrole telemetrická data.
 
 NASTAVENÍ
 
 * [**Zamkne** ](../../azure-resource-manager/resource-group-lock-resources.md) -uzamčení prostředků Azure
-* [**Automatizační skript** ](../../application-insights/app-insights-powershell.md) -export definice prostředků Azure, tak, aby vám ho použít jako šablonu k vytvoření nových prostředků.
+* [**Automatizační skript** ](../../azure-monitor/app/powershell.md) -export definice prostředků Azure, tak, aby vám ho použít jako šablonu k vytvoření nových prostředků.
 
 
 ## <a name="video"></a>Video
@@ -163,6 +163,6 @@ NASTAVENÍ
 
 |  |  |
 | --- | --- |
-| [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md)<br/>Filtrujte a segmentujte metriky |![Příklad prohledávání](./media/app-insights-dashboards/64.png) |
+| [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md)<br/>Filtrujte a segmentujte metriky |![Příklad prohledávání](./media/app-insights-dashboards/64.png) |
 | [Diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md)<br/>Najít a zkoumat události, související události a vytvářet chyby |![Příklad prohledávání](./media/app-insights-dashboards/61.png) |
 | [Analýzy](../../azure-monitor/app/analytics.md)<br/>Výkonný dotazovací jazyk |![Příklad prohledávání](./media/app-insights-dashboards/63.png) |

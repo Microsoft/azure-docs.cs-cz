@@ -1,5 +1,5 @@
 ---
-title: Přidání podpory služby Key Vault do projektu ASP.NET pomocí sady Visual Studio | Dokumentace Microsoftu
+title: Přidání podpory služby Key Vault do projektu ASP.NET pomocí sady Visual Studio – služby Azure Key Vault | Dokumentace Microsoftu
 description: Pomocí tohoto kurzu vám pomůžou získat informace tom, jak přidat podporu služby Key Vault k webové aplikaci ASP.NET nebo ASP.NET Core.
 services: key-vault
 author: ghogen
@@ -9,14 +9,14 @@ ms.technology: vs-azure
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
-ms.date: 04/15/2018
+ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: 9f2adfcbf2d6ca5de79cc787029f5139138b0e52
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a6de5385046918c48b3f606477727ca4623a784c
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230433"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998621"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 

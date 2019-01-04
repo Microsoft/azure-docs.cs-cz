@@ -1,5 +1,5 @@
 ---
-title: Informace o klíčích, tajných kódů a certifikátů Azure Key Vault
+title: Informace o klíčích, tajných kódů a certifikátů – Azure Key Vault Azure Key Vault
 description: Přehled Azure Key Vault REST rozhraní a pro vývojáře podrobnosti pro klíče, tajné kódy a certifikáty.
 services: key-vault
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 6d158f14afa305dd547392722abb5f81380de31f
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 464574716971388f3785879ba40ad3e8a624fc7f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384781"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002616"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 
@@ -36,7 +36,7 @@ Další obecné informace o službě Key Vault najdete v tématu [co je Azure Ke
 
 Následující části nabízí obecné informace napříč implementace služby Key Vault.
 
-###  <a name="supporting-standards"></a>Podpora standardů
+### <a name="supporting-standards"></a>Podpora standardů
 
 Zápis JSON (JavaScript Object) a specifikace jazyka JavaScript objekt podepisování a šifrování (blog JOSE) jsou důležité informace.  
 
@@ -60,7 +60,7 @@ Odkazovat na blog JOSE specifikace pro příslušné datové typy klíčů, šif
 -   **Identita** – identit z Azure Active Directory (AAD).  
 -   **IntDate** – Desítková hodnota JSON představující počet sekund od 1970-01-01T0:0:0Z UTC až do zadaného data a času UTC. Viz zejména RFC3339 podrobnosti týkající se date/times obecně a standardem UTC.  
 
-###  <a name="objects-identifiers-and-versioning"></a>Objekty, identifikátory a správy verzí
+### <a name="objects-identifiers-and-versioning"></a>Objekty, identifikátory a správy verzí
 
 Objekty uložené ve službě Key Vault se systémovou správou verzí pokaždé, když je vytvořena nová instance objektu. Každá verze je přiřazen jedinečný identifikátor a adresu URL. Při prvním vytvoření objektu má daný identifikátor jedinečný verze a označena jako aktuální verze objektu. Vytvoření nové instance se stejným názvem objektu poskytuje nový objekt verze jedinečný identifikátor, by ji k aktuální verzi.  
 
@@ -85,7 +85,7 @@ Kde:
 
 ## <a name="key-vault-keys"></a>Klíče služby Key Vault
 
-###  <a name="keys-and-key-types"></a>Klíče a typy klíčů
+### <a name="keys-and-key-types"></a>Klíče a typy klíčů
 
 Kryptografické klíče ve službě Key Vault jsou reprezentovány ve formě objektů webového klíče JSON [JWK]. Základní specifikace JWK/DŽWA jsou také rozšířeny Pokud chcete povolit typy klíčů jedinečné pro implementaci služby Key Vault. Import klíče pomocí modulu hardwarového zabezpečení specifické pro výrobce balení, například umožňuje zabezpečený přenos sady klíčů, které se dá použít jenom v modulů HSM služby Key Vault.  
 
@@ -206,10 +206,10 @@ Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key 
 Tato oprávnění lze udělit, na za uživatele / service základem v položky řízení přístupu klíče v trezoru. Tato oprávnění úzce zrcadlí přípustné na klíče objektu operace:  
 
 - Oprávnění pro operace správy klíčů
-  - *získat*: Přečtěte si části veřejný klíč a jeho atributy
-  - *seznam*: Seznam klíčů nebo verze klíč uložený ve službě key vault
+  - *Získat*: Přečtěte si části veřejný klíč a jeho atributy
+  - *Seznam*: Seznam klíčů nebo verze klíč uložený ve službě key vault
   - *Aktualizace*: Aktualizovat atributy pro klíč
-  - *vytvoření*: Vytvářet nové klíče
+  - *Vytvoření*: Vytvářet nové klíče
   - *Import*: Import klíče do trezoru klíčů
   - *Odstranit*: Odstranit objekt klíče
   - *Obnovit*: Obnovení odstraněné klíče
@@ -265,8 +265,8 @@ Další informace o typech dat najdete v části [datové typy](#data-types).
 Tato oprávnění můžete použít, na základě na objekt v položky řízení přístupu tajné klíče v trezoru a úzce zrcadlení přípustné tajného kódu objektu operace:  
 
 - Oprávnění pro operace správy tajných kódů
-  - *získat*: Čtení tajného klíče  
-  - *seznam*: Seznam tajných kódů nebo verzí tajného klíče do služby Key Vault  
+  - *Získat*: Čtení tajného klíče  
+  - *Seznam*: Seznam tajných kódů nebo verzí tajného klíče do služby Key Vault  
   - *Nastavte*: Vytvoření tajného klíče  
   - *Odstranit*: Odstranění tajného klíče  
   - *Obnovit*: Obnovení odstraněné tajného kódu
@@ -422,10 +422,10 @@ Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oz
  Na základě na objekt v položky řízení přístupu tajné klíče v trezoru klíčů a úzce zrcadlení přípustné tajného kódu objektu operace lze použít následující oprávnění:  
 
 - Oprávnění pro operace správy certifikátů
-  - *získat*: Získání aktuální verze certifikátu nebo jakoukoli verzi nástroje certifikát 
-  - *seznam*: Zobrazí aktuální certifikáty nebo verze certifikátu  
+  - *Získat*: Získání aktuální verze certifikátu nebo jakoukoli verzi nástroje certifikát 
+  - *Seznam*: Zobrazí aktuální certifikáty nebo verze certifikátu  
   - *Aktualizace*: Aktualizace certifikátu
-  - *vytvoření*: Vytvořit certifikát služby Key Vault
+  - *Vytvoření*: Vytvořit certifikát služby Key Vault
   - *Import*: Naimportujte certifikát materiálu certifikátem Key Vaultu
   - *Odstranit*: Odstranit certifikát, jeho zásady a všechny jeho verze  
   - *Obnovit*: Obnovení odstraněné certifikátu
@@ -459,8 +459,8 @@ Další informace najdete v tématu [klíčů k účtu úložiště Azure Key Va
 Tato oprávnění lze použít při autorizaci uživatele nebo instančního objektu aplikace k provádění operací na spravovaný účet úložiště:  
 
 - Oprávnění pro spravovaný účet úložiště a definice SaS operace
-  - *získat*: Získá informace o účtu úložiště 
-  - *seznam*: Seznam účtů úložiště spravované službou Key Vault
+  - *Získat*: Získá informace o účtu úložiště 
+  - *Seznam*: Seznam účtů úložiště spravované službou Key Vault
   - *Aktualizace*: Aktualizace účtu úložiště
   - *Odstranit*: Odstranění účtu úložiště  
   - *Obnovit*: Obnovení odstraněného účtu

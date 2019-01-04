@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c953d4635ce43ee05fe7c507076c5bd11e9d8c81
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53089697"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000559"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytvoření šablony Azure Resource Manageru pro nasazení aplikací logiky
 
@@ -27,11 +27,11 @@ Další informace o šablonách Resource Manageru najdete v tématu [Tvorba šab
 
 Aplikace logiky má tři základní součásti:
 
-* **Prostředek aplikace logiky**: obsahuje informace o věci, jako je ceny plánu, umístění a definice pracovního postupu.
-* **Definice pracovního postupu**: popisuje kroky pracovního postupu aplikace logiky a jak modul Logic Apps by se měl spustit pracovní postup.
+* **Prostředek aplikace logiky**: Obsahuje informace o věci, jako je ceny plánu, umístění a definice pracovního postupu.
+* **Definice pracovního postupu**: Popisuje kroky pracovního postupu aplikace logiky a jak modul Logic Apps by se měl spustit pracovní postup.
 Tato definice můžete zobrazit v aplikaci logiky **zobrazení kódu** okna.
 V prostředku aplikace logiky, najdete tuto definici v `definition` vlastnost.
-* **Připojení**: odkazuje na samostatné prostředky, které bezpečně ukládají metadata o všechna připojení konektoru, jako je například připojovací řetězec a přístupového tokenu.
+* **Připojení**: Odkazuje na samostatné prostředky, které bezpečně ukládají metadata o všechna připojení konektoru, jako je například připojovací řetězec a přístupového tokenu.
 V prostředku aplikace logiky, aplikace logiky, odkazuje na tyto prostředky v `parameters` oddílu.
 
 Všechny tyto části existující aplikace logiky můžete zobrazit pomocí některého nástroje, například [Azure Resource Exploreru](http://resources.azure.com).
@@ -187,7 +187,7 @@ Na Githubu v části je ukázkový skript [LogicAppConnectionAuth](https://githu
 <a name="team-services"></a>
 ## <a name="azure-devops-azure-pipelines"></a>Kanály Azure DevOps Azure
 
-Je běžným scénářem, nasazení a správě prostředí pomocí některého nástroje, například kanály Azure v Azure DevOps, šablony nasazení aplikace logiky. Zahrnuje Azure DevOps [nasazení skupiny prostředků Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizaci k nasazení a pak můžete vygenerovat kanál pro vydávání verzí.
+Je běžným scénářem, nasazení a správě prostředí pomocí některého nástroje, například kanály Azure v Azure DevOps, šablony nasazení aplikace logiky. Zahrnuje Azure DevOps [nasazení skupiny prostředků Azure](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizaci k nasazení a pak můžete vygenerovat kanál pro vydávání verzí.
 
 1. V kanálech Azure vyberte **prázdný** tak, že vytvoříte kanál prázdný.
 

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a0cfd65aa2444956336e5363d20acab61a404c68
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8d1e44eae7e87a450ac5f36e621d559fca92ca74
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309174"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016150"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
-**DOTAZ: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako není k dispozici pro hybridních zařízení připojených k Azure AD?**
+**DOTAZ: Nedávno jsem registraci zařízení. Proč nelze zobrazit zařízení v části Moje informace o uživateli na webu Azure Portal? Nebo proč je vlastník zařízení označeno jako není k dispozici pro hybridních zařízení připojených k Azure AD? ** 
  **A:** Zařízení s Windows 10, která jsou připojená k hybridní Azure AD nezobrazí v zařízení uživatele.
 Budete muset použít zobrazení všech zařízení na webu Azure portal. Můžete také použít PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
 
@@ -107,14 +107,14 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 
 ---
 
-**DOTAZ: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD?**
+**DOTAZ: Můžete svým uživatelům přihlásit k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD? ** 
  **A:** Ano. Windows uložil do mezipaměti přihlašovací možnost povolit, dříve přihlášení uživatelé pro přístup k ploše rychle i bez připojení k síti. Pokud zařízení se odstraní nebo je zakázaný ve službě Azure AD, není znám do zařízení Windows. Takže dříve přihlášení uživatelé můžou dál přístup k ploše s přihlášení uložené v mezipaměti. Ale jak zařízení se odstraní nebo zakázán, uživatelé nemají přístup k prostředkům nechrání podmíněným přístupem na základě zařízení. 
 
 Uživatelé, kteří se ještě nepřihlásili nelze přístupu k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
 
 ---
 
-**DOTAZ: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD?**
+**DOTAZ: Můžete zakázané nebo odstraněných uživatelů přihlásit k zařízení připojených k Azure AD? ** 
  **A:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, není okamžitě známé zařízení Windows. Takže dříve přihlášení uživatelé mají přístup k ploše s přihlášení uložené v mezipaměti. Jakmile je zařízení přehled o stavu uživatele (obvykle v méně než 4 hodinami), Windows zablokuje uživatelům přístup k ploše. Jako uživatel se odstraní nebo je zakázaný ve službě Azure AD, se jejich tokeny odvolá, nemají přístup k žádným prostředkům. 
 
 Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze přístup k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
@@ -127,7 +127,7 @@ Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze
 
 ---
 
-**DOTAZ: Jak se připojit k vzdálené službě Azure AD na zařízení?**
+**DOTAZ: Jak se připojit k vzdálené službě Azure AD na zařízení? ** 
  **A:** Najdete v článku https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc podrobnosti.
 
 ---
@@ -180,6 +180,9 @@ Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze
 
 - [Řešení potíží s Automatická registrace domény počítačů připojená k Azure AD pro klienty Windows nižší úrovně](troubleshoot-hybrid-join-windows-legacy.md)
  
+**DOTAZ: Proč vidím duplicitní Azure AD registrované záznam pro moje Windows 10 hybridní službě Azure AD připojené zařízení v seznamu zařízení služby Azure AD?**
+
+**ODPOVĚĎ:** Když uživatelé přidat svůj účet do aplikace na zařízení připojené k doméně, může být vyzve k "Přidat účet do Windows?". Kliknutím na "Ano" na příkazovém řádku by mohlo dojít k zařízení zaregistrovat u služby Azure AD a typ důvěryhodnosti označen jako registrováno v Azure AD. Jakmile povolíte připojení k hybridní službě Azure AD ve vaší organizaci, získají zařízení připojená k hybridní Azure AD. V důsledku toho budou existovat dva stavy zařízení zobrazovat pro stejné zařízení. Připojení k hybridní službě Azure AD, ale má přednost před stavu registrováno v Azure AD. Takže zařízení se budou považovat za hybridní připojení k Azure AD pro všechny ověřovací a vyhodnocení podmíněného přístupu. Ano můžete bezpečně odstranit záznam zařízení registrováno v Azure AD z portálu Azure AD. Přečtěte si prosím [v této části](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know) v hybridním Azure AD připojit článek pochopit, jak se vyhnout nebo čištění tohoto duální stavu na počítači s Windows 10. 
 
 ---
 

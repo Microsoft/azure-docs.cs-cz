@@ -1,19 +1,19 @@
 ---
 title: Zpracování dat a uživatelem definovaných funkcí s Dvojčaty digitální Azure | Dokumentace Microsoftu
-description: Přehled zpracování dat, procesy pro hledání shody a uživatelem definovaných funkcí s Dvojčaty digitální Azure
+description: Přehled zpracování dat, procesy pro hledání shody a uživatelem definovaných funkcí s Dvojčaty digitální Azure.
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 2703778cd2eab582a9e7311aaf2024f100261889
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 915c57033209ff982946163c408cf8557515e2f5
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624518"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999196"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Zpracování dat a uživatelsky definované funkce
 
@@ -21,29 +21,31 @@ Azure digitální dvojče nabízí pokročilé kapacita výpočetních operací.
 
 ## <a name="data-processing-flow"></a>Zpracování dat toku
 
-Po zařízení odesílají telemetrická data do Azure digitální dvojče, vývojáři dokáže zpracovat data ve čtyřech fázích: ověření odpovídat, výpočetní výkon a odeslání.
+Po zařízení odesílají telemetrická data do Azure digitální dvojče, vývojáři dokáže zpracovat data ve čtyřech fázích: *ověření*, *odpovídat*, *compute*, a *odeslání* .
 
 ![Azure tok digitální dvojče zpracování dat][1]
 
-1. Fáze ověřit transformuje příchozí zpráva telemetrie pro běžně používané [objekt pro přenos dat](https://en.wikipedia.org/wiki/Data_transfer_object) formátu. Tato fáze také provede ověření zařízení a senzorů.
-1. Fáze shoda najde odpovídající uživatelem definované funkce (UDF) ke spuštění. Předdefinované procesy pro hledání shody najít UDF na základě zařízení, senzorů a místo informace z příchozích telemetrické zprávy.
-1. Výpočetní fáze spuštění UDF se shodou v předchozí fáze. Tyto funkce může číst a aktualizovat počítané hodnoty na prostorový graf uzly a může vysílat vlastní oznámení.
+1. Fáze ověřit transformuje příchozí zpráva telemetrie pro běžně používané [objekt pro přenos dat](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátu. Tato fáze také provede ověření zařízení a senzorů.
+1. Fáze shoda najde odpovídající uživatelem definované funkce ke spuštění. Předdefinované procesy pro hledání shody najít uživatelem definované funkce na základě zařízení, senzorů a místo informace z příchozích telemetrické zprávy.
+1. Výpočetní fáze spuštění uživatelem definované funkce, shoda v předchozí fáze. Tyto funkce může číst a aktualizovat počítané hodnoty na prostorový graf uzly a může vysílat vlastní oznámení.
 1. Fáze odeslání směruje vlastní oznámení pro koncové body definované v grafu fáze výpočetní prostředky.
 
 ## <a name="data-processing-objects"></a>Zpracování dat objektů
 
-Zpracování dat v Azure digitální dvojče spočívá v definování tři objekty: procesy pro hledání shody, uživatelem definované funkce a přiřazení rolí.
+Zpracování dat v Azure digitální dvojče spočívá v definování tři objekty: *procesy pro hledání shody*, *uživatelem definované funkce*, a *přiřazení rolí*.
 
 ![Azure digitální dvojče zpracování dat objektů][2]
+
+<div id="matcher"></div>
 
 ### <a name="matchers"></a>Procesy pro hledání shody
 
 Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké akce proběhla podle příchozích telemetrických dat ze senzorů. Podmínky k určení shody může obsahovat vlastnosti od senzor senzoru nadřazené zařízení a místa nadřazené senzoru. Podmínky jsou vyjádřeny jako porovnání proti [cestu JSON](http://jsonpath.com/) jak je uvedeno v tomto příkladu:
 
-- Všechny senzory datový typ **teploty**
+- Všechny senzory datový typ **teploty** reprezentovaný řídicí hodnotu řetězce `\"Temperature\"`
 - S `01` v jejich portu
-- Který patří do zařízení s rozšířenou vlastnost klíče **výrobce** nastaven na hodnotu `"GoodCorp"`
-- Které patří prostory typu `"Venue"`
+- Který patří do zařízení s rozšířenou vlastnost klíče **výrobce** nastavena na hodnotu řetězce uvozený uvozovacím znakem `\"GoodCorp\"`
+- Které patří prostory typ určený v řetězci uvozený uvozovacím znakem `\"Venue\"`
 - Které jsou potomky nadřazené **SpaceId** `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
@@ -90,28 +92,30 @@ Procesy pro hledání shody definují sadu podmínek, které vyhodnotit, jaké a
 
 ### <a name="user-defined-functions"></a>Uživatelem definované funkce
 
-Uživatelem definované funkce je vlastní funkce, který běží v izolovaném prostředí v Azure digitální dvojče. UDF mají přístup k nezpracované senzor telemetrické zprávy jako byla přijata. UDF také mají přístup ke službě prostorový graf a dispečerem. Po registraci systému souborů UDF v grafu musí být vytvořený předávaný (podrobně popsané výše) určete, kdy ke spuštění UDF. Když Azure digitální dvojče obdrží nová telemetrická data z daného senzor, odpovídající UDF můžete vypočítat klouzavý průměr poslední několik odečty snímačů, třeba.
+Uživatelem definované funkce je provést v izolovaném prostředí Azure digitální dvojče vlastní funkci. Uživatelem definované funkce mají přístup k nezpracované senzor telemetrické zprávy získá přijetí. Uživatelem definované funkce také mají přístup ke službě prostorový graf a dispečerem. Po registraci v grafu, předávaný uživatelem definované funkce (podrobné [nad](#matcher)) musí být vytvořený zadat při provádění funkce. Například když Azure digitální dvojče obdrží nová telemetrická data z daného senzor, odpovídající uživatelem definovanou funkci můžete vypočítat klouzavý průměr v posledních několika údajů snímačů přes.
 
-Uživatelem definovanými funkcemi je možné psát v jazyce JavaScript. Vývojáři mohou spouštět vlastní fragmenty kódu proti senzor telemetrické zprávy. Pomocné metody interakci s grafem v prostředí pro spuštění uživatelem definované. S uživatelem definovanou FUNKCI mohou vývojáři:
+Uživatelem definované funkce může být napsán v jazyce JavaScript. Pomocné metody interakci s grafem v prostředí pro spuštění uživatelem definované. Vývojáři mohou spouštět vlastní fragmenty kódu proti senzor telemetrické zprávy. Příklady obsahují:
 
 - Nastavte senzor čtení přímo na objekt ze senzorů v grafu.
 - Proveďte akci podle údajů různých snímačů přes v rámci místo v grafu.
 - Vytvořte oznámení při splnění určitých podmínek příchozí senzoru čtení.
 - Připojte grafu metadat do senzoru čtení před odesláním oznámení.
 
-Další informace najdete v tématu [použití uživatelem definovaných funkcí](how-to-user-defined-functions.md).
+Další informace najdete v tématu [použití uživatelem definovaných funkcí](./how-to-user-defined-functions.md).
 
 ### <a name="role-assignment"></a>Přiřazení role
 
-Akce UDF jsou v souladu s Azure digitální dvojče řízení přístupu na základě rolí k zabezpečení dat v rámci služby. Přiřazení rolí Ujistěte se, že daný UDF má správná oprávnění k interakci s prostorový graf. Například uživatelem definovanou FUNKCI se může pokusit vytvářet, číst, aktualizovat nebo odstranit data grafu v rámci dané místo. Úroveň přístupu UDF proběhne při UDF vyzve k zadání dat grafu nebo před pokusy akci. Další informace najdete v tématu [řízení přístupu na základě rolí](security-create-manage-role-assignments.md).
+Uživatelem definované funkce akce jsou v souladu s Azure digitální dvojče [řízení přístupu na základě rolí](./security-role-based-access-control.md) k zabezpečení dat v rámci služby. Přiřazení rolí definovat, které uživatelem definované funkce mít správná oprávnění k interakci s prostorový graf a jeho entit. Uživatelem definované funkce může mít například schopnost a oprávnění k *vytvořit*, *čtení*, *aktualizace*, nebo *odstranit* dat grafu v rámci dané místo. Uživatelem definované funkce úroveň přístupu je zaškrtnuté políčko při uživatelem definovanou funkci vyzve k zadání dat grafu nebo před pokusy akci. Další informace najdete v tématu [řízení přístupu na základě rolí](./security-create-manage-role-assignments.md).
 
-Je možné, předávaný ke spuštění UDF, který nemá žádná přiřazení role. V takovém případě UDF nemůže načíst žádná data z grafu.
+Je možné, předávaný k aktivaci uživatelem definovanou funkci, která nemá žádná přiřazení role. V takovém případě uživatelem definovanou funkci nemůže načíst žádná data z grafu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak směrování událostí a telemetrie zprávy k jiným službám Azure, [trasy události a zprávy](concepts-events-routing.md).
+- Další informace o tom, jak směrování událostí a telemetrie zprávy k jiným službám Azure, [trasy události a zprávy](./concepts-events-routing.md).
 
-* Další informace o tom, jak vytvořit procesy pro hledání shody, uživatelem definované funkce a přiřazení rolí, [Průvodce používáním uživatelem definované funkce](how-to-user-defined-functions.md).
+- Další informace o tom, jak vytvořit procesy pro hledání shody, uživatelem definované funkce a přiřazení rolí, [Průvodce používáním uživatelem definované funkce](./how-to-user-defined-functions.md).
+
+- Zkontrolujte [uživatelem definovanou funkci klientské knihovny referenční dokumentaci](./reference-user-defined-functions-client-library.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-data-processing-flow.png

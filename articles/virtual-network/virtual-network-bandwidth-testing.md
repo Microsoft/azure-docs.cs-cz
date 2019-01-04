@@ -1,12 +1,10 @@
 ---
-title: Testování propustnosti sítě virtuálních počítačů Azure | Dokumentace Microsoftu
+title: Testování propustnosti sítě virtuálních počítačů Azure
+titlesuffix: Azure Virtual Network
 description: Zjistěte, jak otestovat propustnost sítě virtuálních počítačů Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
-manager: Gerald DeGrace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: fa0adef58ae1eda8604cefc9c3d7e3a4c32d63d0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b02f5011b9482481ca3fbe439061c160b3c73a1e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793535"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54016609"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Šířka pásma nebo propustnosti testování (NTTTCP)
 

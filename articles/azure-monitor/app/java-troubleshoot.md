@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: a3af54b01de1966240484c7266e7906490d7db4e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1b2e1300c200619f5d1177e9761ad948c62c1239
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980682"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013804"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
@@ -48,7 +48,7 @@ Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde js
 * Sledujete správné prostředku Application Insights? Porovná prosím Instrumentační klíč vaší aplikace na prostředek, kde očekáváte telemetrická data. Měly by být stejné.
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>Nevidím všechna data, který bych čekal
-* Otevřete využití a odhadované náklady na stránku a zkontrolujte, jestli [vzorkování](../../application-insights/app-insights-sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Služba Application Insights můžete nastavit tak, aby přijímal pouze zlomek telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci kvóta měsíčního počtu telemetrická data.
+* Otevřete využití a odhadované náklady na stránku a zkontrolujte, jestli [vzorkování](../../azure-monitor/app/sampling.md) je v provozu. (přenos 100 % znamená, že vzorkování není v provozu.) Služba Application Insights můžete nastavit tak, aby přijímal pouze zlomek telemetrická data přenášená z vaší aplikace. To pomáhá při synchronizaci v rámci kvóta měsíčního počtu telemetrická data.
 * Máte zapnuté vzorkování SDK? Pokud ano, dat by definuje sazby stanovené pro všechny platné typy.
 * Používáte starší verzi sady Java SDK? Počínaje verzí 2.0.1, zavedli jsme odolnost proti chybám mechanismem pro zpracování sítě a selhání back-endu, jakož i trvalost dat na místních jednotkách.
 * Jsou získávání omezena z důvodu nadměrného telemetrie? Pokud zapnete informace o protokolování, zobrazí se protokol zpráv "Aplikace se omezí". Naše současný limit je 32 kB telemetrie položek za sekundu.
@@ -165,7 +165,7 @@ Application Insights využívá `org.apache.http`. To je přemístěn do Applica
 [data]: ../../azure-monitor/app/data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../application-insights/app-insights-platforms.md
+[platforms]: ../../azure-monitor/app/platforms.md
 [track]: ../../azure-monitor/app/api-custom-events-metrics.md
 [usage]: javascript.md
 

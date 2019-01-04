@@ -10,19 +10,18 @@ ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3dc27b35f35f3aaa649b03777ff13d385561673
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732222"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020706"
 ---
-# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
+# <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Sestavení prvního objektu pro vytváření dat s využitím webu Azure portal
 > [!div class="op_single_selector"]
 > * [Přehled a požadavky](data-factory-build-your-first-pipeline.md)
 > * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
@@ -33,14 +32,14 @@ ms.locfileid: "45732222"
 
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [Rychlý start: Vytvoření datové továrny pomocí Data Factory](../quickstart-create-data-factory-dot-net.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [rychlý start: Vytvoření datové továrny pomocí služby Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 V tomto článku se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com/) vytvořit první datovou továrnu. Pokud chcete kurz absolvovat s použitím jiných nástrojů nebo sad SDK, vyberte některou z možností z rozevíracího seznamu. 
 
 Kanál v tomto kurzu obsahuje jednu aktivitu: aktivitu Azure HDInsight Hive. Tato aktivita spouští v clusteru Azure HDInsight skript Hive, který transformuje vstupní data a generuje výstupní data. Spuštění kanálu je naplánované jednou za měsíc mezi zadaným počátečním a koncovým časem. 
 
 > [!NOTE]
-> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Kurz předvádějící způsoby kopírování dat pomocí služby Data Factory najdete v tématu [Kurz: Kopírování dat z úložiště objektů blob v Azure do služby Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+> Datový kanál v tomto kurzu transformuje vstupní data, aby vytvořil výstupní data. Kurz předvádějící způsoby kopírování dat pomocí služby Data Factory najdete v tématu [kurzu: Kopírování dat z Azure Blob storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
 > Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace najdete v tématu [Plánování a spouštění ve službě Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
@@ -65,7 +64,7 @@ Pokud chcete vytvořit datovou továrnu, postupujte následovně:
    ![Okno Nový objekt pro vytváření dat](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
    > [!IMPORTANT]
-   > Název datové továrny musí být globálně jedinečný. Pokud se zobrazí chyba Název datové továrny GetStartedDF není k dispozici, změňte název datové továrny. Použijte například váš_název_GetStartedDF a vytvořte datovou továrnu znovu. Další informace o pravidlech pojmenování najdete v tématu [Data Factory: Pravidla pojmenování](data-factory-naming-rules.md).
+   > Název datové továrny musí být globálně jedinečný. Pokud se zobrazí chyba Název datové továrny GetStartedDF není k dispozici, změňte název datové továrny. Použijte například váš_název_GetStartedDF a vytvořte datovou továrnu znovu. Další informace o pravidlech pojmenování najdete v tématu [služby Data Factory: Pravidla pojmenování](data-factory-naming-rules.md).
    >
    > Název datové továrny se může v budoucnu zaregistrovat jako název DNS a tak se stát veřejně viditelným.
    >
@@ -327,7 +326,7 @@ V tomto kroku vytvoříte svůj první kanál s aktivitou HDInsight Hive. Vstupn
 
     Vlastnosti kanálu **start** a **end** určují období aktivity kanálu.
 
-    V kódu JSON aktivity určujete, že má skript Hive běžet ve výpočetní službě určené vlastností **linkedServiceName**: **HDInsightOnDemandLinkedService**.
+    V kódu JSON aktivity, určíte, že má skript Hive běžet ve výpočetní určené **linkedServiceName**: **HDInsightOnDemandLinkedService**.
 
    > [!NOTE]
    > Další informace o vlastnostech JSON použitých v příkladu najdete v části JSON kanálu v tématu [Kanály a aktivity ve službě Data Factory](data-factory-create-pipelines.md).
@@ -433,10 +432,10 @@ V tomto kurzu jste vytvořili datovou továrnu, která zpracovává data pomocí
 * Vytvoření dvou datových sad, které popisují vstupní a výstupní data aktivity HDInsight Hive v kanálu.
 * Vytvoření kanálu s aktivitou HDInsight Hive.
 
-## <a name="next-steps"></a>Další kroky
-V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru HDInsight na vyžádání spouští skript Hive. Pokud chcete zjistit, jak pomocí aktivity kopírování kopírovat data z úložiště objektů blob do databáze SQL, přečtěte si [Kurz: Kopírování dat úložiště objektů blob do služby SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+## <a name="next-steps"></a>Další postup
+V tomto článku jste vytvořili kanál s aktivitou transformace (aktivita HDInsight), která v clusteru HDInsight na vyžádání spouští skript Hive. Jak používat aktivitu kopírování ke kopírování dat z úložiště objektů blob do služby SQL database najdete v tématu [kurzu: Kopírování dat z úložiště objektů Blob do služby SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 | Téma | Popis |
 |:--- |:--- |
 | [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení kompletních pracovních postupů založených na datech. |

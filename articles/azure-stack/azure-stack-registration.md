@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/28/2018
+ms.date: 01/02/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: b036f0b1c38222b6bb3ebee1a3fab0d1613260f7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811014"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002480"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -309,6 +309,11 @@ Můžete použít **Správa oblastí** dlaždici a ověřte, že Azure Stack reg
     [ ![Dlaždice oblasti správy](media/azure-stack-registration/admin1sm.png "dlaždice oblasti správy") ](media/azure-stack-registration/admin1.png#lightbox)
 
 3. Vyberte **vlastnosti**. Toto okno zobrazuje stav a podrobnosti o vašem prostředí. Stav může být **registrované** nebo **Neregistrovaný**. Pokud je zaregistrován, také ukazuje, ID předplatného Azure, který jste použili k registraci služby Azure Stack, spolu s registrace skupiny prostředků a názvem.
+
+Alternativně můžete ověřit, jestli registrace byla úspěšná pomocí funkce pro správu webu Marketplace. Pokud se zobrazí seznam položek z marketplace v okně správy webu Marketplace, vaše registrace byla úspěšná. Ale v odpojených prostředích, nebudete moci zobrazit položky marketplace v Marketplace správu. Ale můžete pomocí offline nástroje pro ověření registrace.
+
+> [!NOTE]
+> Po dokončení registrace se už zobrazí aktivní upozornění pro registraci není. V odpojených scénářů zobrazí se zprávy v Marketplace správu s výzvou k registraci a aktivaci služby Azure Stack, i v případě, že jste úspěšně zaregistrovali.
 
 ## <a name="renew-or-change-registration"></a>Prodloužení nebo změnit registrace
 

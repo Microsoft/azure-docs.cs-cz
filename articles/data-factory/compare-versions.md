@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638236"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014892"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 
@@ -68,7 +67,7 @@ Kanály se můžou aktivovat na vyžádání (na základě události, tj. odesl�
 [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md) umožňuje kanálu služby Data Factory volat jiný kanál.
 
 ### <a name="delta-flows"></a>Toky rozdílů
-Nejdůležitějším případem použití ve vzorech ETL je „rozdílové načtení“, kdy se načítají jen data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete tady: [Tutorial: Incremental copy](tutorial-incremental-copy-powershell.md) (Kurz: Vytváření přírůstkových kopií).
+Nejdůležitějším případem použití ve vzorech ETL je „rozdílové načtení“, kdy se načítají jen data, která se změnila od poslední iterace kanálu. Nové možnosti v aktuální verzi, jako jsou [aktivita vyhledávání](control-flow-lookup-activity.md), flexibilní plánování a tok řízení, přirozeným způsobem podporují tento případ použití. Kurz s podrobnými pokyny najdete v tématu [kurzu: Přírůstkové kopírování](tutorial-incremental-copy-powershell.md).
 
 ### <a name="other-control-flow-activities"></a>Další aktivity toku řízení
 V dalším textu najdete popis několika dalších aktivit toku řízení podporovaných v aktuální verzi služby Data Factory. 
@@ -117,13 +116,13 @@ Další informace najdete v článku, který se věnuje [rozdílu mezi vlastní 
 ## <a name="sdks"></a>Sady SDK
  Aktuální verze služby Data Factory poskytuje širší nabídku sad SDK, které je možné využít k vytváření, správě a monitorování kanálů.
 
-- **.NET SDK**: Sada .NET SDK je v aktuální verzi aktualizovaná.
+- **SADY .NET SDK**: Sada .NET SDK je aktualizovaná v aktuální verzi.
 
-- **PowerShell**: Rutiny PowerShellu jsou v aktuální verzi aktualizované. Rutiny v aktuální verzi mají v názvu **DataFactoryV2**, například Get-AzureRmDataFactoryV2. 
+- **Prostředí PowerShell**: Rutiny Powershellu jsou aktualizované v aktuální verzi. Rutiny pro aktuální verzi mají **DataFactoryV2** název, například: Get-AzureRmDataFactoryV2. 
 
-- **Python SDK**: Tato sada SDK je v aktuální verzi nová.
+- **Python SDK**: Tato sada SDK je nového v aktuální verzi.
 
-- **REST API**: Rozhraní REST API je v aktuální verzi aktualizované. 
+- **ROZHRANÍ REST API**: Rozhraní REST API se aktualizuje v aktuální verzi. 
 
 Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klienty verze 1. 
 
@@ -146,5 +145,5 @@ K vytváření a správě prostředků aktuální verze služby Data Factory je 
 V aktuální verzi můžete k monitorování datových továren použít také [Azure Monitor](monitor-using-azure-monitor.md). Nové rutiny PowerShellu podporují monitorování prostředí [Integration Runtime](monitor-integration-runtime.md). Verze 1 i 2 podporují vizuální monitorování prostřednictvím monitorovací aplikace, kterou můžete spustit z webu Azure Portal.
 
 
-## <a name="next-steps"></a>Další kroky
-Návod na vytvoření datové továrny najdete v podrobných pokynech v následujících úvodních příručkách: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 
+## <a name="next-steps"></a>Další postup
+Další informace o vytvoření datové továrny pomocí podrobných pokynů v následujících úvodních příručkách: [Prostředí PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [rozhraní REST API](quickstart-create-data-factory-rest-api.md). 

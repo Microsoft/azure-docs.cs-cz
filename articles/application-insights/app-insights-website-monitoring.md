@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 856ffe050fce204d52d6666025a7284788bb0893
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420349"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022235"
 ---
 # <a name="start-monitoring-your-website"></a>Zahájení monitorování webu
 
@@ -117,7 +117,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Graf analýzy uživatelských požadavků za časové období](./media/app-insights-website-monitoring/analytics-query.png)
 
-3. Vraťte se na stránku **Přehled**. Klikněte na **Prohlížeč** pod nadpisem **Prozkoumat** a pak vyberte **Výkon**. Tady najdete metriky související s výkonem vašeho webu. Najdete tu také odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Kliknutím na **Ukázky** můžete přejít k podrobnostem o jednotlivých transakcích. Tady můžete získat přístup k prostředí s [podrobnostmi o celé transakci](app-insights-transaction-diagnostics.md).
+3. Vraťte se na stránku **Přehled**. Klikněte na **Prohlížeč** pod nadpisem **Prozkoumat** a pak vyberte **Výkon**. Tady najdete metriky související s výkonem vašeho webu. Najdete tu také odpovídající zobrazení pro analýzu selhání a výjimek na vašem webu. Kliknutím na **Ukázky** můžete přejít k podrobnostem o jednotlivých transakcích. Tady můžete získat přístup k prostředí s [podrobnostmi o celé transakci](../azure-monitor/app/transaction-diagnostics.md).
 
    ![Graf metrik serveru](./media/app-insights-website-monitoring/browser-performance.png)
 
@@ -138,7 +138,7 @@ Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevy�
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vyhledání a diagnostika potíží s výkonem](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

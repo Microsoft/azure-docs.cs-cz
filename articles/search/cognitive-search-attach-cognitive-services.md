@@ -1,8 +1,8 @@
 ---
-title: Připojení služeb Cognitive Services k vaše dovednosti – Azure Search
-description: Pokyny pro předplatné služeb Cognitive Services All-in-One se připojuje k kognitivních dovedností
+title: Přidružte prostředek služeb Cognitive Services k dovedností v Azure Search
+description: Pokyny pro předplatné služeb Cognitive Services All-in-One se připojuje k kognitivních dovedností v Azure Search
 manager: cgronlun
-author: HeidiSteen
+author: LuisCabrer
 services: search
 ms.service: search
 ms.devlang: NA
@@ -10,59 +10,65 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 7f604d1b94e51db11e6d6992b7f070d64ae869dd
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 52efa685bba330879365f56e547881d62a52a185
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317232"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000151"
 ---
-# <a name="associate-cognitive-services-resource-with-a-skillset"></a>Přidružit dovedností prostředku služeb Cognitive Services 
+# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Přidružte prostředek služeb Cognitive Services k dovedností v Azure Search 
+
+Kognitivní vyhledávání extrahuje a vylepšuje data tak, aby s možností vyhledávání ve službě Azure Search. Označujeme je jako kroky extrakce a rozšiřování *kognitivní dovednosti*. Sada dovedností, které jsou volány během indexování obsahu, které jsou definovány v *dovednosti*. Můžete použít dovedností [předdefinované dovednosti](cognitive-search-predefined-skills.md) nebo vlastních dovedností. Další informace najdete v tématu [příklad: vytvoření vlastních dovedností](cognitive-search-create-custom-skill-example.md).
+
+V tomto článku se dozvíte, jak přidružit [Azure Cognitive Services ](https://azure.microsoft.com/services/cognitive-services/) prostředek s kognitivní dovednosti.
+
+Prostředku služeb Cognitive Services, který vyberete, bude power integrované kognitivní dovednosti. Tento prostředek se taky použije pro účely fakturace. Jakékoli obohacení, které můžete provést pomocí integrované kognitivní dovednosti budou účtovat na vrub prostředku služeb Cognitive Services, kterou jste vybrali. Se bude účtovat za stejnou sazbu, jako by měli provést stejnou úlohu pomocí prostředku služeb Cognitive Services. Zobrazit [ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
 > [!NOTE]
-> Od 21. prosince 2018 se budou moct přidružit dovednosti Azure Search prostředku služeb Cognitive Services. To vám umožní spouštění poplatků za využití jeho dovedností. K tomuto datu také začneme pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů se bude dál nabízet bez dalších poplatků.
+> Od 21. prosince 2018 přidružíte k prostředku služeb Cognitive Services k dovednosti Azure Search. To umožňuje poplatky za využití jeho dovedností. K tomuto datu také začali účtovat pro extrakci image jako součást fáze hádání dokumentu. Extrakce textu z dokumentů dál nabízet bez dalších poplatků.
 >
-> Provádění předdefinované dovednosti budou účtovat stávající [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/) . Ceny za extrakce Image se bude účtovat ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
-
-
-Kognitivní vyhledávání extrahuje a vylepšuje data tak, aby s možností vyhledávání ve službě Azure Search. Označujeme je jako kroky extrakce a rozšiřování *kognitivní dovednosti*. Sada dovedností, které jsou volány během indexování obsahu, které jsou definovány v *dovednosti*. Můžete použít dovedností [předdefinované dovednosti](cognitive-search-predefined-skills.md) nebo vlastních dovedností (naleznete v tématu [příklad: vytvoření vlastních dovedností](cognitive-search-create-custom-skill-example.md) Další informace).
-
-V tomto článku se dozvíte, jak přidružit [služeb Cognitive Services ](https://azure.microsoft.com/services/cognitive-services/) prostředek pro kognitivní dovednosti.
-
-Prostředku služeb Cognitive Services, kterou vyberete, bude power integrované kognitivní dovednosti. Tento prostředek se taky použije pro účely fakturace. Jakékoli obohacení, které můžete provádět pomocí integrované kognitivní dovednosti budou účtovat na vrub prostředku služeb Cognitive Services, které vyberete. Se bude účtovat za stejnou sazbu, jako by měli provést stejnou úlohu pomocí prostředku služeb Cognitive Services. Zobrazit [ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/).
+> Provádění předdefinované dovednosti, se účtuje [přejít ceny služeb Cognitive Services, platit jako můžete](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny extrakce bitové kopie se účtuje za ceny verze preview a je popsaný na [stránce s cenami Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="limits-when-no-cognitive-services-resource-is-selected"></a>Omezení, pokud není vybraný žádný prostředek služeb Cognitive Services
-Od 1. února 2019, pokud nechcete přiřazovat předplatné služeb Cognitive Services k vaše dovednosti se jen bude možné rozšířit malý počet dokumentů pro bezplatné (20 dokumenty za den). 
+Od 1. února 2019, pokud nemáte předplatné služeb Cognitive Services přidružit vaše dovednosti se bude moct rozšířit pouze malý počet dokumentů pro bezplatné (20 dokumenty za den). 
 
-## <a name="associating-a-cognitive-services-resource-with-a-new-skillset"></a>Přidružení nové dovednosti prostředku služeb Cognitive Services
+## <a name="associate-a-cognitive-services-resource-with-a-new-skillset"></a>Přidružit nové dovednosti prostředku služeb Cognitive Services
 
-1. Jako součást *importovat data* prostředí po připojení ke zdroji dat přejdete *kognitivního vyhledávání přidat* volitelný krok. 
+1. Jako součást [importovat data](search-import-data-portal.md) průvodce, jakmile se připojíte ke zdroji dat, přejděte **kognitivního vyhledávání přidat** volitelný krok. Toto je druhý krok v průvodci.
 
-1. Rozbalte *připojení služeb Cognitive Services* oddílu. Zobrazí se všechny prostředky služby Cognitive Services, které máte ve stejné oblasti jako vaše vyhledávací služba. 
-![Rozbalit připojení služby Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach1.png "rozšířit připojení služeb Cognitive Services")
+1. Rozbalte **připojení služeb Cognitive Services** oddílu. Tento krok ukazuje všechny služby Cognitive Services prostředky, které máte ve stejné oblasti jako služba Azure Search.
 
-1. Vyberte existující prostředek služeb Cognitive Services, nebo *vytvořit nový prostředek služeb Cognitive Services*. Pokud vyberete *Free (omezená obohacení) prostředků*, pouze moct rozšířit malý počet dokumentů pro bezplatné (20 dokumenty za den). Pokud jste klikli na *vytvořit nový prostředek služeb Cognitive Services*, na nové kartě se otevře, který vám umožní vytvoření prostředku služeb Cognitive Services. 
+   ![Rozbalit oddíl připojení služeb Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach1.png "rozšířit připojení služeb Cognitive Services")
 
-1. Pokud jste vytvořili nový prostředek, klikněte na tlačítko *aktualizovat* aktualizovat seznam prostředků služeb Cognitive Services a vyberte prostředek. 
-![Vybraný prostředek služby Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach2.png "vybraný prostředek služby Cognitive Services")
+1. Vyberte existující prostředek služeb Cognitive Services, nebo vyberte **vytvořit nový prostředek služeb Cognitive Services**. Pokud vyberete **Free (omezená obohacení)**, budete moci rozšířit pouze malý počet dokumentů pro bezplatné (20 dokumenty za den). Pokud vyberete **vytvořit nový prostředek služeb Cognitive Services**, otevře se nová karta, kde si můžete vytvořit prostředek. 
 
-1. Jakmile to uděláte, můžete rozšířit *přidat obohacení* části vyberte konkrétní kognitivní dovednosti, které chcete spouštět vaše data a pokračovat se zbytkem pracovního toku.
+1. Pokud jste vytvořili nový prostředek, vyberte **aktualizovat** aktualizovat seznam prostředků služeb Cognitive Services a pak vyberte prostředek. 
 
-## <a name="associating-a-cognitive-services-resource-with-an-existing-skillset"></a>Přidružení stávající dovednosti prostředku služeb Cognitive Services
+   ![Vybraný prostředek služeb Cognitive Services](./media/cognitive-search-attach-cognitive-services/attach2.png "vybraný prostředek kognitivní služby")
 
-1. Na stránce s přehledem služby, vyberte *dovednosti* kartu. ![Karta dovednosti](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "kartu dovednosti")
+1. Rozbalte **přidat obohacení** části vyberte konkrétní kognitivní dovednosti, které chcete spustit nad vašimi daty a pokračujte zbytku toku.
 
-1. *Klikněte na tlačítko* na dovednosti, které chcete upravit. Otevře se okno, které vám umožní upravit dovedností.
+## <a name="associate-a-cognitive-services-resource-with-an-existing-skillset"></a>Přidružit stávající dovednosti prostředku služeb Cognitive Services
 
-1. Vyberte existující prostředek služeb Cognitive Services, nebo *vytvořit nový prostředek služeb Cognitive Services*. Pokud vyberete *Free (omezená obohacení) prostředků*, pouze moct rozšířit malý počet dokumentů pro bezplatné (20 dokumenty za den). Pokud jste klikli na *vytvořit nový prostředek služeb Cognitive Services*, na nové kartě se otevře, který vám umožní vytvoření prostředku služeb Cognitive Services. <n/> 
-<img src="./media/cognitive-search-attach-cognitive-services/attach-existing2.png" width="350">
+1. Na **Přehled služby** stránky, vyberte **dovednosti** kartu.
 
-1. Pokud jste vytvořili nový prostředek, klikněte na tlačítko *aktualizovat* aktualizovat seznam prostředků služeb Cognitive Services a vyberte prostředek.
-1. Klikněte na tlačítko *OK* pro potvrzení změn
+   ![Karta dovednosti](./media/cognitive-search-attach-cognitive-services/attach-existing1.png "kartu dovednosti")
 
-## <a name="associating-a-cognitive-services-resource-programmatically"></a>Přiřazení prostředku služeb Cognitive Services prostřednictvím kódu programu
+1. Vyberte dovedností, které chcete upravit. Tento krok otevře okno, kde můžete upravit dovedností.
 
-Při definování zkušenostech prostřednictvím kódu programu, přidejte `cognitiveServices` oddílu. V části by měl obsahovat klíč prostředku služeb Cognitive Services, který chcete přidružit k dovednosti, stejně jako @odata.type, který by měl být nastaven na "#Microsoft.Azure.Search.CognitiveServicesByKey". Tento model je znázorněno v následujícím příkladu.
+1. Vyberte existující prostředek služeb Cognitive Services, nebo vyberte **vytvořit nový prostředek služeb Cognitive Services**. Pokud vyberete **Free (omezená obohacení)**, budete moci rozšířit pouze malý počet dokumentů pro bezplatné (20 dokumenty za den). Pokud vyberete **vytvořit nový prostředek služeb Cognitive Services**, otevře se nová karta, kde si můžete vytvořit prostředek.
+
+   <n/> 
+   <img src="./media/cognitive-search-attach-cognitive-services/attach-existing2.png" width="350">
+
+1. Pokud jste vytvořili nový prostředek, vyberte **aktualizovat** aktualizovat seznam prostředků služeb Cognitive Services a pak vyberte prostředek.
+
+1. Vyberte **OK** a potvrďte provedené změny.
+
+## <a name="associate-a-cognitive-services-resource-programmatically"></a>Přidružte prostředek služeb Cognitive Services prostřednictvím kódu programu
+
+Když definujete zkušenostech prostřednictvím kódu programu, přidejte `cognitiveServices` oddílu. V části zahrňte klíč prostředku služeb Cognitive Services, který chcete přidružit k zkušenostech. Také zahrnovat `@odata.type`a nastavte ho na `#Microsoft.Azure.Search.CognitiveServicesByKey`. Následující příklad ukazuje tento model.
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -91,37 +97,35 @@ Content-Type: application/json
       }
     ],
     "cognitiveServices": {
-        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey"
+        "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
         "description": "mycogsvcs",
         "key": "your key goes here"
     }
 }
 ```
-## <a name="example-estimating-the-cost-of-document-cracking-and-enrichment"></a>Příklad: Provádí se odhad nákladů hádání dokumentu a obohacení
-Můžete chtít odhadnout, kolik to stojí rozšiřovat daného typu dokumentu. Na konci cvičení je pouze příklad, ale může být pro vás užitečné.
+## <a name="example-estimate-the-cost-of-document-cracking-and-enrichment"></a>Příklad: Odhad nákladů na dokument hádání a obohacení
+Můžete chtít odhadnout, kolik to stojí rozšiřovat typ dokumentu. Následující cvičení je pouze příklad, ale může být pro vás užitečné.
 
-Představte si, že máme 1000 PDF a odhadneme, že v průměru každou z těchto dokumentů mají 6 stránky každý. Řekněme, že každý z nich má jednu image pro každou stránku pro účely tohoto cvičení. Také Představte si, že v průměru jsou přibližně 3 000 znaků na jednu stránku. 
+Představte si, že máte 1 000 souborů PDF. Odhadnete, že v průměru každou z těchto dokumentů má 6 stránky. Jednotlivé stránky je 1 image. Existují v průměru přibližně 3 000 znaků na jednu stránku. 
 
-Nyní předpokládejme, že má být v rámci kanálu obohacování proveďte následující kroky:
+Nyní se předpokládá, že chcete provést následující kroky v rámci kanálu rozšíření:
 1. Jako součást hádání dokumentu extrahujte obsah a obrázky z dokumentu.
-1. Jako součást rozšíření extrahovat OCR stránek, sloučí text pro všechny stránky a extrahujte jednotlivých organizací všech imagí ve Spojeném textu.
+1. Jako součást rozšíření použijte optické rozpoznávání znaků (OCR) pro každý z extrahovaných stránky, sloučí text pro všechny stránky a extrahujte jednotlivých organizací všech imagí ve Spojeném textu.
 
-Pojďme odhadnout, kolik by byly náklady na příjem těchto dokumentů, krok za krokem.
+Pojďme odhadnout, kolik by byly náklady na příjem těchto 1 000 dokumentů krok za krokem:
 
-1000 dokumentů:
+1. Pro dokument hádání by extrahovat kombinovaným počtem ze 6 000 obrázků. Za předpokladu, že 1 USD každý 1 000 obrázků extrahování, které by byly náklady můžete 6.00 $.
 
-1. Zdokumentujte hádání, jsme by extrahovat kombinovaným počtem ze 6 000 obrázků. Za předpokladu, že 1 USD každý 1 000 obrázků extrahování, které by byly náklady nám 6.00 $.
+2. Extrahovat text by z každé z těchto 6 000 obrázků. OCR kognitivních dovedností v angličtině, používá nejlepší algoritmus (DescribeText). Za předpokladu, že náklady na 2,50 $ za 1 000 obrázků má být analyzován, zaplatíte 15,00 USD pro tento krok.
 
-2. Jsme by extrahovat text z každé z těchto 6 000 obrázků. OCR kognitivních dovedností v angličtině, používá nejlepší algoritmus (DescribeText). Za předpokladu, že náklady na 2,50 $ za 1 000 obrázků má být analyzován, nám domácnosti platíte 15,00 USD za tento krok.
+3. Extrakce entity museli jste celkem 3 textových záznamů na stránku. (Každý záznam je 1 000 znaků.) Tři textových záznamů na stránku * 6 000 stránek = 18 000 textových záznamů. Za předpokladu, že 2.00 $ za 1 000 textových záznamů, tento krok by byly náklady 36.00 $.
 
-3. Extrakce entity měli jsme celkem 3 textových záznamů na jedné stránce (každý záznam je 1 000 znaků). záznamy/stránka 3 text * 6 000 stránek = 18 000 textových záznamů. Za předpokladu, že 2.00 $ / 1000 textových záznamů, tento krok by byly náklady nám 36.00 $.
-
-Vložení všechno dohromady, abychom by platili $57,00 ingestovat 1 000 dokumentů pdf z této povaha pomocí dovedností, které je popsáno.  V tomto cvičení jsme předpokládá, že nejdražší cena za transakce, to může mít nižší z důvodu přechod ceny. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services).
+Vložení všechno dohromady, zaplatíte $57,00 ingestovat 1 000 dokumentů PDF z této povaha s popsané dovednosti. V tomto cvičení předpokládá jsme nejdražší cena za transakce. To mohlo být nižší z důvodu přechod ceny. Zobrazit [ceny služeb Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services).
 
 
 
 ## <a name="next-steps"></a>Další postup
-+ [Azure Search ceník](https://azure.microsoft.com/pricing/details/search/)
++ [Stránce s cenami Azure Search](https://azure.microsoft.com/pricing/details/search/)
 + [Definování dovedností](cognitive-search-defining-skillset.md)
 + [Vytvoření dovedností (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Způsob mapování polí bohatších možností](cognitive-search-output-field-mapping.md)

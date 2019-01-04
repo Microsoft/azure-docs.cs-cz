@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: ec6fbcc7de9a5fe15231373a23f7c8491ac8c122
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9ab256526ccba3fa84d4979ba536f6b681a7df89
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975963"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001664"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) je možné pomocí služby [Application Insights][start] monitorovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -39,7 +39,7 @@ Nejrychlejším a nejjednodušším způsobem, jak monitorovat cloudovou službu
 
 Tato možnost používá vaši aplikaci za běhu a poskytuje vám veškerá telemetrická data, která potřebujete k monitorování požadavků, výjimek a závislostí v rámci webové role a také čítačů výkonu z rolí pracovních procesů. Veškerá diagnostická trasování vygenerovaná aplikací se také odesílají do Application Insights.
 
-Pokud to je všechno, co potřebujete, jste hotovi! Dalšími kroky jsou [zobrazení metrik z aplikace](../../application-insights/app-insights-metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](../../azure-monitor/app/analytics.md) a případně i nastavení [řídicího panelu](../../azure-monitor/app/app-insights-dashboards.md). Může být vhodné vytvořit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidat do webových stránek kód](../../azure-monitor/app/javascript.md) pro monitorování výkonu v prohlížeči.
+Pokud to je všechno, co potřebujete, jste hotovi! Dalšími kroky jsou [zobrazení metrik z aplikace](../../azure-monitor/app/metrics-explorer.md), [zadávání dotazů na data pomocí Analytics](../../azure-monitor/app/analytics.md) a případně i nastavení [řídicího panelu](../../azure-monitor/app/app-insights-dashboards.md). Může být vhodné vytvořit [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) a [přidat do webových stránek kód](../../azure-monitor/app/javascript.md) pro monitorování výkonu v prohlížeči.
 
 Můžete ovšem využívat i další možnosti:
 
@@ -75,7 +75,7 @@ Chcete-li této situaci předejít, vytvořte samostatné prostředky pro každo
 Pokud chcete odesílat telemetrická data do příslušných prostředků, můžete nastavit sadu SDK Application Insights tak, aby v závislosti na konfiguraci sestavení použila jiný instrumentační klíč. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Vytvoření prostředku Application Insights pro každou roli
-Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli (a možná samostatnou sadu pro každé sestavení konfigurace), je nejjednodušší vytvořit je všechny na portálu Application Insights. (Pokud vytváříte mnoho prostředků, můžete [proces automatizovat](../../application-insights/app-insights-powershell.md).)
+Pokud jste se rozhodli vytvořit samostatný prostředek pro každou roli (a možná samostatnou sadu pro každé sestavení konfigurace), je nejjednodušší vytvořit je všechny na portálu Application Insights. (Pokud vytváříte mnoho prostředků, můžete [proces automatizovat](../../azure-monitor/app/powershell.md).)
 
 1. Na webu [Azure Portal][portal] vytvořte nový prostředek Application Insights. Jako typ aplikace vyberte aplikaci ASP.NET. 
 
@@ -129,7 +129,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
     (V souboru .config se zobrazí zprávy s výzvou, abyste tam umístili instrumentační klíč. Pro cloudové aplikace je však lepší provést nastavení ze ``.cscfg file``. Zajistí se tím správná identifikace role v portálu.)
 
 #### <a name="run-and-publish-the-app"></a>Spuštění a publikování aplikace
-Spusťte aplikaci a přihlaste se k Azure. Otevřete prostředky Application Insights, které jste vytvořili. V části [Vyhledávání](../../azure-monitor/app/diagnostic-search.md) se zobrazí jednotlivé datové body a v části [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md) se zobrazí agregovaná data. 
+Spusťte aplikaci a přihlaste se k Azure. Otevřete prostředky Application Insights, které jste vytvořili. V části [Vyhledávání](../../azure-monitor/app/diagnostic-search.md) se zobrazí jednotlivé datové body a v části [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) se zobrazí agregovaná data. 
 
 Přidejte další telemetrická data (viz části níže) a pak aplikaci publikujte, abyste mohli přijímat zpětnou vazbu ohledně diagnostiky a využití v živém provozu. 
 
@@ -146,7 +146,7 @@ Kde najít informace [diagnostiky Azure](https://docs.microsoft.com/azure/monito
 * Protokoly událostí systému Windows se zobrazují jako trasování a vlastní události.
 * Protokoly aplikací, protokoly trasování událostí pro Windows a veškeré protokoly infrastruktury diagnostiky se zobrazují jako trasování.
 
-Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumníka metrik](../../application-insights/app-insights-metrics-explorer.md) a přidejte nový graf:
+Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) a přidejte nový graf:
 
 ![Diagnostická data Azure](./media/cloudservices/23-wad.png)
 
@@ -231,8 +231,8 @@ Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud S
 
 ## <a name="next-steps"></a>Další postup
 * [Konfigurace odesílání diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [Automatizace vytváření prostředků Application Insights](../../application-insights/app-insights-powershell.md)
-* [Automatizace diagnostiky Azure](../../application-insights/app-insights-powershell-azure-diagnostics.md)
+* [Automatizace vytváření prostředků Application Insights](../../azure-monitor/app/powershell.md)
+* [Automatizace diagnostiky Azure](../../azure-monitor/app/powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md

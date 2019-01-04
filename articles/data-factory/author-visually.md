@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/7/2018
 ms.author: shlo
-ms.openlocfilehash: 7a0d72ac67b329cb6d25be955205a2bbcef38e81
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: afaa5ae622f962dcffec52dbdbea8a754ba260ab
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281689"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025381"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
@@ -61,7 +60,7 @@ V podokně se zobrazí následující kód úložišť Azure nastavení úloži�
 
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Azure úložišť Git |
+| **Typ úložiště** | Typ úložiště kódu úložiště Azure.<br/>**Poznámka:** GitHub se momentálně nepodporuje. | Azure úložišť Git |
 | **Azure Active Directory** | Název tenanta Azure AD. | <your tenant name> |
 | **Organizace úložiště Azure** | Název organizace vašich úložišť Azure. Můžete vyhledat název organizace vašich úložišť Azure na `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure úložišť](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your organization name> |
 | **ProjectName** | Název projektu úložiště Azure. Můžete vyhledat název projektu úložiště Azure na `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
@@ -170,7 +169,7 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. 
 
 ![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
 
-Nastavení  **úložiště** otevře se podokno konfigurace:
+ **Nastavení úložiště** otevře se podokno konfigurace:
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image2.png)
 
@@ -202,7 +201,7 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. 
 
 ![Stránka Začínáme objekt pro vytváření dat](media/author-visually/github-integration-image1.png)
 
-Nastavení  **úložiště** otevře se podokno konfigurace:
+ **Nastavení úložiště** otevře se podokno konfigurace:
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image3.png)
 

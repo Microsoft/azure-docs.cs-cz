@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 7a4c0d62fd1ea675c6569840c26ed1fb8e388850
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f31d995ba4390eb5a893c3ebde49ee4e96e8023
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631477"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021131"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Přidejte certifikáty Azure Stack PKI pro použití v nasazení nebo otočení
 Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
@@ -73,7 +73,14 @@ Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifi
 
 1. Vyberte **Ano, exportovat soukromý klíč**a potom klikněte na tlačítko **Další**.
 
-1. V části formát souboru pro Export vyberte **exportovat všechny rozšířené vlastnosti** a potom klikněte na tlačítko **Další**.
+1. V části formát souboru pro Export:
+    
+    - Vyberte **zahrnout všechny certifikáty v certifikátu, pokud je to možné**.  
+    - Vyberte **exportovat všechny rozšířené vlastnosti**.  
+    - Vyberte **povolit ochranu osobních údajů certifikát**.  
+    - Klikněte na **Další**.  
+    
+    ![Průvodce exportem certifikátu se vybrané možnosti](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
 1. Vyberte **heslo** a zadejte heslo pro certifikáty. Toto heslo si zapamatujte, protože se používá jako parametr nasazení. Vyberte **Další**.
 
@@ -82,4 +89,5 @@ Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifi
 1. Vyberte **Finish** (Dokončit).
 
 ## <a name="next-steps"></a>Další postup
+
 [Ověření certifikátů infrastruktury veřejných KLÍČŮ](azure-stack-validate-pki-certs.md)

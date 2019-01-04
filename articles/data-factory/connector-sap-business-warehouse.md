@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 52bbf93d73af281f3959e056a4d5b959e7286cb5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a0abcd70b4aeb2369604bafa924136122206e0a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590326"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022276"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z řešení SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +65,7 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 | systemNumber | Číslo systému systému SAP BW.<br/>Povolené hodnoty: dvě číslice desetinné číslo reprezentované jako řetězec. | Ano |
 | ID klienta | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: tři číslice desetinné číslo reprezentované jako řetězec. | Ano |
 | uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Modul Integration Runtime je povinný, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
 **Příklad:**
@@ -126,7 +125,7 @@ Ke zkopírování dat z SAP BW, nastavte typ zdroje v aktivitě kopírování do
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **RelationalSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **RelationalSource** | Ano |
 | query | Určuje dotaz MDX číst data z instance SAP BW. | Ano |
 
 **Příklad:**
@@ -170,9 +169,9 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | ACCP | Int |
 | CHAR | Řetězec |
 | CLNT | Řetězec |
-| AKTUÁLNÍ | Decimal |
+| AKTUÁLNÍ | Desítkově |
 | CUKY | Řetězec |
-| DEC | Decimal |
+| DEC | Desítkově |
 | FLTP | Double |
 | INT1 | Bajt |
 | INT2 | Int16 |
@@ -181,7 +180,7 @@ Kopírování dat ze SAP BW, se používají následující mapování z datový
 | LCHR | Řetězec |
 | LRAW | Byte] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | Desítkově |
 | NEZPRACOVANÉ | Byte] |
 | RAWSTRING | Byte] |
 | ŘETĚZEC | Řetězec |

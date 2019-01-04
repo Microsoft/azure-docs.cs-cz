@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: b8c7abacbf99bfbf68b7dd76a01011c8220bf9f2
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 21f6331276155ec926b47a5db8310486835cb3ae
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608456"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001273"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -105,13 +105,19 @@ Při migraci databáze z úrovně služeb na základě DTU se výchozí PITR uch
 Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure Portal, Powershellu nebo rozhraní REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
 
 > [!NOTE]
-> Rozhraní API tez ovlivní pouze PITR dobu uchování. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Další informace o tom, jak změnit období uchování zleva doprava, najdete v části [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+> Tato rozhraní API bude mít vliv pouze na dobu uchování PITR. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Další informace o tom, jak změnit období uchování zleva doprava, najdete v části [dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 ### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Změnit PITR období uchování zálohy pomocí webu Azure portal
 
-Chcete-li změnit PITR období uchovávání záloh pomocí webu Azure portal, přejděte do databáze jehož doba uchování, kterou chcete změnit a pak klikněte na tlačítko **přehled**.
+Můžete změnit období uchování zálohy PITR pomocí webu Azure portal, přejděte na objekt serveru jehož doba uchování chcete změnit na portálu a pak vyberte příslušnou možnost základě, na který objekt serveru, kterou upravujete. 
 
-![Portál pro změnu PITR Azure](./media/sql-database-automated-backup/configure-backup-retention.png)
+#### <a name="change-pitr-for-a-logical-server"></a>Změna PITR pro logický server
+
+![Portál pro změnu PITR Azure](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
+
+#### <a name="change-pitr-for-a-managed-instance"></a>Změna PITR pro spravovanou instanci
+
+![Portál pro změnu PITR Azure](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změnit PITR období uchování zálohy pomocí Powershellu
 

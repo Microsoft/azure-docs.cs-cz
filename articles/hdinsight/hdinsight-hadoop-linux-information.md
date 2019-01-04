@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: e78f456a7c69e308257b450a7572f6317dfa6eec
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715439"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001919"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -106,7 +106,7 @@ Při použití HDInsight, se ukládají datové soubory způsobem škálovateln�
 * Usnadnění přístupu z externích služeb, jako je například webů, nástrojů pro nahrávání a stahování souborů, různých sadách SDK pro jazyk a webové prohlížeče.
 * Velký soubor kapacita a velké škálovatelné úložiště.
 
-Další informace najdete v tématu [vysvětlení objektů blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/).
+Další informace najdete v tématu [vysvětlení objektů blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
 Při použití služby Azure Storage nebo Data Lake Storage, nemusíte dělat nic zvláštního z HDInsight pro přístup k datům. Například následující příkaz zobrazí seznam souborů v `/example/data` složku bez ohledu na to, zda je uložená v Azure Storage nebo Azure Data Lake Storage:
 
@@ -177,7 +177,7 @@ Existují různé způsoby, jak získat přístup k datům z mimo HDInsight clus
 Pokud používáte __služby Azure Storage__, naleznete v tématu Možnosti, můžete přistupovat k datům prostřednictvím následujících odkazů:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Příkazy rozhraní příkazového řádku pro práci s Azure. Po instalaci, použijte `az storage` příkaz nápovědu k používání úložiště, nebo `az storage blob` pro konkrétní objekt blob příkazy.
-* [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): Skript pythonu pro práci s objekty BLOB ve službě Azure Storage.
+* [blobxfer.PY](https://github.com/Azure/blobxfer): Skript pythonu pro práci s objekty BLOB ve službě Azure Storage.
 * Různých sadách SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)

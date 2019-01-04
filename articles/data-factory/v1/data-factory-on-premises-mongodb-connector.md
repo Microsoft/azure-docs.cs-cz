@@ -1,5 +1,5 @@
 ---
-title: Přesun dat z MongoDB pomocí služby Data Factory | Microsoft Docs
+title: Přesun dat z MongoDB pomocí služby Data Factory | Dokumentace Microsoftu
 description: Další informace o tom, jak přesunout data z databáze MongoDB pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,17 +9,16 @@ ms.assetid: 10ca7d9a-7715-4446-bf59-2d2876584550
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7c6751a0432d66aee0ff3056b212dc1b348e333f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 4059d8d2f6020a23e3593bb906c2e3fc64a4779e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045822"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025585"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,93 +26,93 @@ ms.locfileid: "37045822"
 > * [Verze 2 (aktuální verze)](../connector-mongodb.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [MongoDB konektor v V2](../connector-mongodb.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [konektoru MongoDB ve V2](../connector-mongodb.md).
 
 
-Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z místní databázi MongoDB. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.
+Tento článek vysvětluje, jak pomocí aktivity kopírování ve službě Azure Data Factory k přesunu dat z místní databáze MongoDB. Je nástavbou [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování.
 
-Do úložiště dat žádné podporované podřízený může kopírovat data z místního úložiště dat MongoDB. Seznam úložišť dat jako jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat z jiného úložiště dat MongoDB k jiným úložištím dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat MongoDB. 
+Kopírování dat z do místního úložiště dat MongoDB do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako jímky, najdete v článku [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Data factory aktuálně podporuje pouze přesouvá data z úložiště dat MongoDB do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat MongoDB. 
 
 ## <a name="prerequisites"></a>Požadavky
-Pro službu Azure Data Factory být schopni připojit k vaší databázi MongoDB místní musíte nainstalovat následující součásti:
+Pro službu Azure Data Factory bude moct připojit k vaší místní databáze MongoDB je třeba nainstalovat následující komponenty:
 
-- Podporované verze MongoDB jsou: 2.4, 2.6, 3.0, 3.2, 3.4 a 3.6.
-- Brána pro správu dat na stejném počítači, který je hostitelem databáze nebo na samostatném počítači, aby se zabránilo neslučitelných pro prostředky s databází. Brána pro správu dat je software, který se připojuje místní zdroje dat do cloudové služby v zabezpečený a spravovaný. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) podrobnosti o Brána pro správu dat najdete v článku. V tématu [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny o nastavení brány datovém kanálu pro přesun dat najdete v článku.
+- Jsou podporované verze MongoDB:  2.4, 2.6, 3.0, 3.2, 3.4 a 3.6.
+- Brána správy dat ve stejném počítači, který je hostitelem databáze nebo na samostatném počítači, aby soutěží o prostředky s databází. Brána správy dat je software, který se připojuje ke cloudovým službám místních zdrojů dat zabezpečení a správě způsobem. Zobrazit [brána správy dat](data-factory-data-management-gateway.md) , kde najdete podrobnosti o brána správy dat. Zobrazit [přesun dat z místních do cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny o nastavení brány datového kanálu pro přesun dat.
 
-    Při instalaci brány se automaticky nainstaluje ovladač Microsoft MongoDB ODBC používaný pro připojení k MongoDB.
+    Když bránu instalujete, automaticky nainstaluje ovladač Microsoft MongoDB ODBC použité pro připojení k MongoDB.
 
     > [!NOTE]
-    > Musíte použít bránu pro připojení k MongoDB, i když je hostován v virtuální počítače Azure IaaS. Pokud se pokoušíte připojit k instanci MongoDB hostované v cloudu, můžete také nainstalovat instanci brány ve virtuálním počítači IaaS.
+    > Musíte použít bránu pro připojení k MongoDB, i když je hostované ve virtuálních počítačích Azure IaaS. Pokud se pokoušíte připojit k instanci MongoDB hostované v cloudu, můžete také nainstalovat instanci brány ve virtuálním počítači IaaS.
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště místní MongoDB data pomocí různých nástrojů nebo rozhraní API.
+Vytvoření kanálu s aktivitou kopírování, který přesouvá data z úložiště dat místní MongoDB pomocí různých nástrojů a rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
-Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
+Ať už používáte, nástrojů nebo rozhraní API, proveďte následující kroky k vytvoření kanálu pro přesouvání dat ze zdrojového úložiště dat do úložiště dat jímky: 
 
-1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do data factory.
-2. Vytvoření **datové sady** představují vstupní a výstupní data pro kopírování. 
-3. Vytvoření **kanálu** s aktivitou kopírování, která přebírá datovou sadu jako vstup a datovou sadu jako výstup. 
+1. Vytvoření **propojené služby** propojení vstupní a výstupní data ukládá do služby data factory.
+2. Vytvoření **datových sad** k představují vstupní a výstupní data pro operaci kopírování. 
+3. Vytvoření **kanálu** s aktivitou kopírování, která přijímá jako vstupní datovou sadu a datovou sadu jako výstup. 
 
-Když použijete průvodce, jsou automaticky vytvoří definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál). Při použití nástroje nebo rozhraní API (s výjimkou .NET API), definujete tyto entity služby Data Factory pomocí formátu JSON.  Příklad s definicemi JSON entit služby Data Factory, které se používají ke zkopírování dat z úložiště dat místní MongoDB, naleznete v tématu [JSON příklad: kopírování dat z MongoDB do objektu Blob Azure](#json-example-copy-data-from-mongodb-to-azure-blob) tohoto článku. 
+Při použití Průvodce definice JSON pro tyto entity služby Data Factory (propojené služby, datové sady a kanál) se automaticky vytvoří za vás. Při použití nástroje a rozhraní API (s výjimkou rozhraní .NET API), můžete definovat tyto entity služby Data Factory ve formátu JSON.  Tady je příklad s definice JSON entit služby Data Factory, které se používají ke kopírování dat z úložiště dat místní MongoDB, naleznete v tématu [příklad JSON: Kopírování dat z MongoDB do objektů Blob v Azure](#json-example-copy-data-from-mongodb-to-azure-blob) části tohoto článku. 
 
-Následující části obsahují podrobnosti o vlastnostech formátu JSON, které slouží k určení entit služby Data Factory konkrétní zdroj MongoDB:
+Následující části obsahují podrobnosti o vlastnostech JSON, které se používají k definování entit služby Data Factory konkrétní ke zdroji MongoDB:
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
-Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro **OnPremisesMongoDB** propojené služby.
+Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro **OnPremisesMongoDB** propojenou službu.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| type |Vlastnost typu musí být nastavena na: **OnPremisesMongoDb** |Ano |
+| type |Vlastnost type musí být nastavená na: **OnPremisesMongoDb** |Ano |
 | server |IP adresa nebo název hostitele serveru MongoDB. |Ano |
-| port |Port TCP, který používá MongoDB server naslouchat pro připojení klientů. |Volitelné, výchozí hodnota: 27017 |
-| authenticationType. |Základní, nebo anonymní. |Ano |
+| port |Port TCP, který MongoDB server používá k naslouchání pro připojení klientů. |Volitelné, výchozí hodnota: 27017 |
+| authenticationType. |Basic nebo Anonymous. |Ano |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
-| heslo |Heslo pro uživatele. |Ano (Pokud se používá základní ověřování). |
-| authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Volitelný parametr (Pokud se používá základní ověřování). Výchozí: používá účet správce a do databáze určené pomocí vlastnost databaseName. |
-| databaseName |Název databáze MongoDB, kterou chcete získat přístup. |Ano |
-| gatewayName |Název brány, který přistupuje k úložišti. |Ano |
-| encryptedCredential |Přihlašovací údaje zašifrovaná pomocí brány. |Nepovinné |
+| heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
+| authSource |Název databáze MongoDB, kterou chcete použít ke kontrole přihlašovacích údajů pro ověřování. |Nepovinné (Pokud se používá základní ověřování). Výchozí: používá účet správce a databáze určená vlastnost databaseName. |
+| databaseName |Název databáze MongoDB, které chcete získat přístup. |Ano |
+| Název brány |Název brány, který přistupuje k úložišti. |Ano |
+| encryptedCredential |Přihlašovací údaje zašifrované pomocí brány. |Nepovinné |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny datové sady typy (Azure SQL, Azure blob, tabulky Azure, atd.).
 
-**Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace o umístění dat v úložišti dat. Rámci typeProperties část datové sady typ **MongoDbCollection** má následující vlastnosti:
+**TypeProperties** oddílu se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti. TypeProperties části datové sady typu **MongoDbCollection** má následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| Název_kolekce |Název kolekce v databázi MongoDB. |Ano |
+| collectionName |Název kolekce v databázi MongoDB. |Ano |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
 
-Vlastnosti, které jsou k dispozici v **rámci typeProperties** části aktivity na druhé straně lišit každý typ aktivity. Pro aktivitu kopírování budou lišit v závislosti na typech zdrojů a jímky.
+K dispozici ve vlastnosti **typeProperties** části aktivity se liší na druhé straně s jednotlivými typu aktivity. Pro aktivitu kopírování se liší v závislosti na typy zdroje a jímky.
 
-Pokud je zdroj typu **MongoDbSource** následující vlastnosti jsou k dispozici v rámci typeProperties části:
+Pokud je zdroj typu **MongoDbSource** v části typeProperties jsou k dispozici následující vlastnosti:
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| query |Čtení dat pomocí vlastního dotazu. |Řetězec dotazu SQL 92. Příklad: vybrat * z MyTable. |Ne (Pokud **Název_kolekce** z **datovou sadu** je zadána) |
+| query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL 92. Příklad: vybrat * z MyTable. |Ne (Pokud **collectionName** z **datovou sadu** určena) |
 
 
 
-## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>Příklad JSON: kopírování dat z MongoDB do objektu Blob Azure
-Tento příklad obsahuje ukázkové JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak zkopírovat data z místní MongoDB do Azure Blob Storage. Však lze zkopírovat data do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-example-copy-data-from-mongodb-to-azure-blob"></a>Příklad JSON: Kopírování dat z MongoDB do objektů Blob v Azure
+V tomto příkladu obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Ukazuje, jak kopírovat data z MongoDB s místními ke službě Azure Blob Storage. Ale data je možné zkopírovat do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
-Ukázka má následující entity objektu pro vytváření dat:
+Ukázka obsahuje následující entit datové továrny:
 
 1. Propojené služby typu [OnPremisesMongoDb](#linked-service-properties).
-2. Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Vstup [datovou sadu](data-factory-create-datasets.md) typu [MongoDbCollection](#dataset-properties).
+2. Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [MongoDbCollection](#dataset-properties).
 4. Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [MongoDbSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka zkopíruje data z výsledku dotazu v databázi MongoDB do objektu blob každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázce kopíruje data z výsledků dotazu v databázi MongoDB do objektu blob každou hodinu. Vlastnostech JSON použitých v tyto ukázky jsou popsány v části podle ukázky.
 
-Jako první krok, nastavit Brána pro správu dat podle pokynů v [Brána pro správu dat](data-factory-data-management-gateway.md) článku.
+Jako první krok instalace brány správy dat podle pokynů [brána správy dat](data-factory-data-management-gateway.md) článku.
 
 **MongoDB propojené služby:**
 
@@ -152,7 +151,7 @@ Jako první krok, nastavit Brána pro správu dat podle pokynů v [Brána pro sp
 }
 ```
 
-**Vstupní datové sady MongoDB:** nastavení "externí": "PRAVDA" informuje služba Data Factory, v tabulce je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+**MongoDB vstupní datové sady:** Nastavení "externí": "PRAVDA" informuje služby Data Factory, že v tabulce je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
 
 ```json
 {
@@ -172,9 +171,9 @@ Jako první krok, nastavit Brána pro správu dat podle pokynů v [Brána pro sp
 }
 ```
 
-**Azure Blob výstupní datovou sadu:**
+**Výstupní datová sada Azure Blob:**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas částí čas spuštění.
+Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob se dynamicky vyhodnocuje na základě doby spuštění řez, který se právě zpracovává. Cesta ke složce používá rok, měsíc, den a části hodin čas spuštění.
 
 ```json
 {
@@ -232,9 +231,9 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 }
 ```
 
-**Aktivita kopírování v kanálu s MongoDB zdrojový a podřízený objekt Blob:**
+**Aktivita kopírování v kanálu s MongoDB zdroje a jímky objektu Blob:**
 
-Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro používání výše vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **MongoDbSource** a **podřízený** je typ nastaven na **BlobSink**. Zadané pro dotaz SQL **dotazu** vlastnost vybere data za poslední hodinu pro kopírování.
+Kanálu obsahujícího aktivitu kopírování, který je nakonfigurovaný pomocí výše uvedených vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **MongoDbSource** a **jímky** je typ nastaven na **BlobSink**. Zadaná pro dotaz SQL **dotazu** vlastnost vybere data za poslední hodinu pro kopírování.
 
 ```json
 {
@@ -284,15 +283,15 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurována pro použív�
 
 
 ## <a name="schema-by-data-factory"></a>Schéma službou Data Factory
-Služba Azure Data Factory odvodí schématu z kolekce MongoDB pomocí nejnovější 100 dokumenty v kolekci. Pokud tyto dokumenty 100 neobsahují úplné schéma, může být některé sloupce ignorován při kopírování.
+Služba Azure Data Factory odvodí schéma z kolekce MongoDB pomocí nejnovějších 100 dokumentů v kolekci. Pokud tyto dokumenty 100 neobsahují úplného schématu, mohou být některé sloupce ignorovány během operace kopírování.
 
 ## <a name="type-mapping-for-mongodb"></a>Mapování typu pro MongoDB
-Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup krok 2:
+Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku, aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typy s přístupem následující krok 2:
 
-1. Převést na typ .NET typy nativní zdrojů
-2. Převést na typ jímky nativní typ formátu .NET
+1. Převést na typ formátu .NET typy nativních zdrojů
+2. Převést z typu .NET native jímky typu
 
-Při přesunu dat na MongoDB se používají následující mapování z typů MongoDB na typy .NET.
+Při přesouvání dat až po MongoDB se používají následující mapování z typů MongoDB na typy .NET.
 
 | Typ MongoDB | Typ rozhraní .NET framework |
 | --- | --- |
@@ -300,74 +299,74 @@ Při přesunu dat na MongoDB se používají následující mapování z typů M
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
 | NumberDouble |Double |
-| NumberInt |Int32 |
+| NumberInt |Datový typ Int32 |
 | NumberLong |Int64 |
 | ObjectID |Řetězec |
 | Řetězec |Řetězec |
-| UUID |Guid |
-| Objekt |Renormalized do vyrovnání sloupce s "_" jako vnořené oddělovače |
+| IDENTIFIKÁTOR UUID |Guid |
+| Objekt |Renormalized do sloučit sloupce s "_" jako vnořené oddělovač |
 
 > [!NOTE]
-> Další informace o podpoře pro polí pomocí virtuální tabulky, najdete v tématu [podporu pro komplexní typy pomocí virtuální tabulky](#support-for-complex-types-using-virtual-tables) části níže.
+> Další informace o podpoře pro pole pomocí virtuální tabulky, najdete v tématu [podporu pro komplexní typy s použitím virtuální tabulky](#support-for-complex-types-using-virtual-tables) níže v části.
 
-V současné době nejsou podporovány následující typy dat MongoDB: DBPointer, JavaScript, Max za minutu klíče, regulární výraz, Symbol, časové razítko, Undefined
+V současné době nejsou podporovány následující typy dat MongoDB: Klíč DBPointer, JavaScript, Max nebo Min regulárního výrazu, symbolů, časové razítko, Nedefinováno
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>Podpora pro komplexní typy pomocí virtuální tabulky
-Azure Data Factory používá integrované ovladače ODBC pro připojení k a kopírování dat z databáze MongoDB. Pro komplexní typy jako pole nebo objekty s různé typy mezi dokumenty ovladač znovu sjednotí data na odpovídající virtuální tabulky. Konkrétně Pokud tabulka obsahuje tyto sloupce, ovladač generuje následující virtuální tabulky:
+Azure Data Factory využívá integrované ovladače ODBC pro připojení k a kopírování dat z databáze MongoDB. U komplexních typů jako je například pole nebo objekty s různými typy mezi dokumenty ovladač znovu sjednotí data na odpovídající virtuální tabulky. Konkrétně Pokud tabulka obsahuje tyto sloupce, ovladač generuje následující virtuální tabulky:
 
-* A **základní tabulka**, která obsahuje stejná data jako skutečné tabulky s výjimkou komplexní typ sloupce. Základní tabulka používá stejný název jako skutečné tabulky, která reprezentuje.
-* A **virtuální tabulku** pro každý sloupec komplexní typ, který rozbalí vnořená data. Virtuální tabulky jsou pojmenované pomocí názvu skutečné tabulky, oddělovač "_" a název pole nebo objekt.
+* A **základní tabulka**, která obsahuje stejná data jako skutečné tabulky s výjimkou sloupců komplexního typu. Základní tabulka používá stejný název jako skutečné tabulky, který představuje.
+* A **virtuální tabulky** pro každý sloupec komplexní typ, který rozbalí vnořené data. Virtuální tabulky jsou pojmenovány pomocí názvu tabulky skutečných, oddělovač "_" a název pole nebo objekt.
 
-Virtuální tabulky odkazovat na data v tabulce skutečné povolení ovladače pro přístup k datům nenormalizované. Viz část o příklad níže podrobnosti. Dotazování a připojení virtuální tabulky, můžete přístup k obsahu polí MongoDB.
+Virtuální tabulky odkazují na data v tabulce skutečné, povolení ovladače pro přístup k Nenormalizovaná data. Příklad v části Podrobnosti uvedené níže. Obsah pole MongoDB můžou používat tak dotazování a připojení k virtuální tabulky.
 
-Můžete použít [Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitivně zobrazit seznam tabulek v databázi MongoDB, včetně virtuální tabulky a zobrazte náhled dat, uvnitř. Můžete také vytvořit dotaz v Průvodci kopírováním a ověření zobrazíte výsledek.
+Můžete použít [Průvodce kopírováním](data-factory-data-movement-activities.md#create-a-pipeline-with-copy-activity) intuitivně zobrazit seznam tabulek v databázi MongoDB, včetně virtuální tabulky a zobrazte náhled dat uvnitř. Můžete také vytvořit dotaz v Průvodci kopírováním a ověření k zobrazení výsledku.
 
 ### <a name="example"></a>Příklad:
-Například "ExampleTable" pod je MongoDB tabulku, která obsahuje jeden sloupec s pole objektů v každé buňce – faktury a jeden sloupec s pole Skalární typy – hodnocení.
+Například "ExampleTable" níže je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
-| _id | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
+| ID _ovládacího | Jméno zákazníka | Faktury | Úroveň služby | Hodnocení |
 | --- | --- | --- | --- | --- |
-| 1111 |ABC |[{invoice_id: "123", položka: "Toaster byl", cena: "456", slevu: "0,2"}, {invoice_id: "124", položka: "sušárny", ceny: slevách "1235": "0,2"}] |Stříbrný |[5,6] |
-| 2222 |XYZ |[{invoice_id: "135", položka: "ledničky", cena: "12543", slevu: "0,0"}] |Zlatá |[1,2] |
+| 1111 |ABC |[{invoice_id: "123", položka: "toaster"; price: "456", slevy: "0.2"}, {invoice_id: "124", položka: "sušárně"; price: slevy "1235": "0.2"}] |Stříbrný |[5,6] |
+| 2222 |XYZ |[{invoice_id: položky "135": "ledničky"; price: "12543", slevy: "0,0"}] |Zlatá |[1,2] |
 
-Ovladač by vygeneroval více virtuální tabulky k reprezentaci této jednu tabulku. První virtuální tabulky je základní tabulka s názvem "ExampleTable", viz následující obrázek. Základní tabulka obsahuje všechna data z původní tabulky, ale data z pole byla vynechána a je v tabulkách virtuální rozbalena.
+Ovladač vygeneruje více virtuální tabulky k reprezentaci této jediné tabulce. První virtuální tabulky je základní tabulku s názvem "ExampleTable" je uvedeno níže. Základní tabulka obsahuje všechna data v původní tabulce, ale data z pole byl vynechán a rozbalen virtuální tabulky.
 
-| _id | Jméno zákazníka | Úroveň služby |
+| ID _ovládacího | Jméno zákazníka | Úroveň služby |
 | --- | --- | --- |
 | 1111 |ABC |Stříbrný |
 | 2222 |XYZ |Zlatá |
 
-Virtuální tabulky, které představují původní pole v příkladu v následujících tabulkách. Tyto tabulky obsahují následující:
+Následující tabulky popisují virtuální tabulky, které představují původní pole v příkladu. Tyto tabulky obsahují následující:
 
-* Odkaz zpět na původní sloupec primárního klíče odpovídající řádek původní pole (přes sloupec _id)
-* Označení pozice dat v rámci původní pole
-* Rozšířená data pro každý prvek v rámci pole
+* Představuje odkaz zpět na původní sloupec primárního klíče odpovídající řádek původní pole (přes sloupec ID _ovládacího)
+* Údaj o umístění dat v rámci původní pole
+* Rozšířená data pro každý prvek v poli
 
 Tabulka "ExampleTable_Invoices":
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | Položka | price | Sleva |
+| ID _ovládacího | ExampleTable_Invoices_dim1_idx | invoice_id | Položka | price | Sleva |
 | --- | --- | --- | --- | --- | --- |
-| 1111 |0 |123 |Toaster byl |456 |0.2 |
-| 1111 |1 |124 |sušárny |1235 |0.2 |
+| 1111 |0 |123 |Toaster |456 |0.2 |
+| 1111 |1 |124 |sušárně |1235 |0.2 |
 | 2222 |0 |135 |ledničky |12543 |0.0 |
 
 Tabulka "ExampleTable_Ratings":
 
-| _id | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
+| ID _ovládacího | ExampleTable_Ratings_dim1_idx | ExampleTable_Ratings |
 | --- | --- | --- |
 | 1111 |0 |5 |
 | 1111 |1 |6 |
 | 2222 |0 |1 |
 | 2222 |1 |2 |
 
-## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
-Další informace o mapování sloupců v datové sadě zdrojového sloupce v datové sadě podřízený najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Mapování zdroje do jímky sloupce
+Další informace o mapování sloupců v datové sadě zdroje do sloupců v datové sadě jímky, najdete v článku [mapování sloupců v datové sadě ve službě Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Opakovatelných číst z relační zdrojů
-Při kopírování dat z relačních dat ukládá, uvědomte si, aby se zabránilo neúmyslnému výstupy opakovatelnosti. V Azure Data Factory může řez znovu ručně. Zásady opakovaných pokusů pro datovou sadu můžete také nakonfigurovat tak, aby řez se znovu spustí, když dojde k chybě. Řez se znovu spustí, buď způsobem, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát řez je spustit. V tématu [Repeatable číst z relačními zdroji](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Opakovatelné čtení z relačních zdrojů
+Při kopírování dat z relačních dat ukládá, mějte opakovatelnosti aby se zabránilo neúmyslnému výsledků. Ve službě Azure Data Factory můžete znovu spustit řezu ručně. Zásady opakování pro datovou sadu můžete také nakonfigurovat tak, aby určitý řez se znovu spustí, když dojde k chybě. V obou případech se znovu spustí určitý řez, musíte zajistit, že stejná data je pro čtení bez ohledu na to kolikrát spustit určitý řez. Zobrazit [Repeatable z relačních zdrojů](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+## <a name="performance-and-tuning"></a>Výkon a optimalizace
+Zobrazit [výkonem aktivity kopírování & Průvodci optimalizací](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů této ovlivnit výkon přesouvání dat (aktivita kopírování) ve službě Azure Data Factory a různé způsoby, jak optimalizovat.
 
 ## <a name="next-steps"></a>Další kroky
-V tématu [přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) článek podrobné pokyny pro vytváření dat kanál, který přesouvá data z místního úložiště dat k úložišti dat Azure.
+Zobrazit [přesun dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny k vytvoření datového kanálu, který přesouvá data z úložiště dat v místním úložišti dat Azure.

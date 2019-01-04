@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9c3f9018965908ae065cedb63149190080d7f07
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 1a160cd6d81ab7cb760a85ee7cbdbedf55c17167
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970232"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53998229"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -156,7 +156,7 @@ Když je vyvolána výstraha, Application Insights automaticky vytvořit pracovn
 ## <a name="but-what-about"></a>Ale co...?
 * [Ochrana osobních údajů a úložiště](../azure-monitor/app/data-retention-privacy.md) – vaše telemetrická data se ukládají na Azure zabezpečení serverů.
 * Výkon – dopad je velmi nízký. Telemetrie v dávce.
-* [Ceny](app-insights-pricing.md) – můžete začít zdarma, a to platí i když jste v malé množství.
+* [Ceny](../azure-monitor/app/pricing.md) – můžete začít zdarma, a to platí i když jste v malé množství.
 
 
 ## <a name="video"></a>Video
@@ -167,6 +167,6 @@ Když je vyvolána výstraha, Application Insights automaticky vytvořit pracovn
 Začínáme s Application Insights je snadné. Jsou hlavní možnosti:
 
 * Instrumentace webové aplikace už běží. To vám veškerá telemetrická data integrovaných výkonu. Je k dispozici pro [Java](../azure-monitor/app/java-live.md) a [servery služby IIS](../azure-monitor/app/monitor-performance-live-website-now.md)a také pro [služby Azure App Service](app-insights-overview.md).
-* Instrumentujte projektu během vývoje. Můžete to provést [ASP.NET](../azure-monitor/app/asp-net.md) nebo [Java](../azure-monitor/app/java-get-started.md) aplikace, stejně jako [Node.js](app-insights-nodejs.md) a celou řadu [jiné typy](app-insights-platforms.md). 
+* Instrumentujte projektu během vývoje. Můžete to provést [ASP.NET](../azure-monitor/app/asp-net.md) nebo [Java](../azure-monitor/app/java-get-started.md) aplikace, stejně jako [Node.js](../azure-monitor/app/nodejs.md) a celou řadu [jiné typy](../azure-monitor/app/platforms.md). 
 * Nástroj [libovolná webová stránka](../azure-monitor/app/javascript.md) přidáním krátkého kódu.
 

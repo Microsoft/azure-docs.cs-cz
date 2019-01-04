@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0b68819ba032d7655433aadd30fe2852941096ce
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091039"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000542"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
@@ -42,11 +42,12 @@ Při práci s Stream Analytics můžete využít dělení v výstupy:
 -   Tabulka Azure
 -   Úložiště objektů BLOB (můžete nastavit klíč oddílu explicitně)
 -   Cosmos DB (je potřeba explicitně nastavit klíč oddílu)
--   Centra událostí (třeba explicitně nastavit klíč oddílu)
+-   Event Hubs (je potřeba explicitně nastavit klíč oddílu)
 -   IoT Hub (je potřeba explicitně nastavit klíč oddílu)
 -   Service Bus
+- SQL a SQL Data Warehouse pomocí volitelné dělení: Další informace o naleznete [výstup na stránku služby Azure SQL Database](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf).
 
-Power BI, SQL a datového skladu SQL výstupy nepodporují dělení. Ale můžete i nadále dělit vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
+Power BI nepodporuje vytváření oddílů. Ale můžete i nadále dělit vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
 
 Další informace o oddílech najdete v následujících článcích:
 
@@ -91,7 +92,7 @@ Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstu
 ### <a name="query-with-a-grouping-key"></a>Dotazování s klíčem seskupení
 
 * Vstup: Centrum událostí s 8 oddíly
-* Výstup: Úložiště objektů Blob
+* Výstup: Blob Storage
 
 Dotaz:
 

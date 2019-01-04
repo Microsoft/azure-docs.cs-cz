@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fbb92fd1186881a359f77a9c6b68816763dd8f9b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ddd3b7a859e48e3212d8d51d627eea2e69c7c1ff
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628928"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024701"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Databázové transakce a optimistického řízení souběžnosti
 
@@ -53,9 +53,9 @@ Optimistického řízení souběžnosti umožňuje zabránit ztrátou určitých
 
 Souběžná aktualizace položky podléhají OCC vrstvou komunikace protokolu služby Azure Cosmos DB. Databáze Azure Cosmos se zajistí, že klientské verze položky, která jsou aktualizace (nebo odstranění) je stejná jako verze položky v kontejneru Azure Cosmos. Zaručí se tak, že zápisů jsou chráněny před přepsáním omylem podle zápisy ostatních a naopak. V prostředí s více uživateli optimistického řízení souběžnosti ovládacím prvku chrání proti náhodnému odstranění nebo aktualizaci chybná verze položky. V důsledku toho jsou položky chráněné proti nechvalně známý "ztracené aktualizace" nebo "ztráty delete" problémy.
 
-Systém definované měla každá položka uložená v kontejneru Azure Cosmos `__etag` vlastnost. Hodnota `__etag` automaticky vygeneruje a aktualizovat server pokaždé, když je položka aktualizována. `__etag` je možné pomocí hlavičky žádosti if-match zadaná klientem umožňující server se rozhodnout, zda lze položky aktualizovat podmíněně. Hodnota hlavičky if-match odpovídá hodnotě `__etag` na serveru, se pak aktualizuje položku. Pokud už je aktuální hodnota hlavičky žádosti if-match, server zamítne operaci s "HTTP 412 selhání předběžné podmínky" zprávy s odpovědí. Klient pak může znovu načíst položky k získání aktuální verze položky na serveru nebo přepsání verze položky na serveru s vlastním `__etag` hodnotu pro položku. Kromě toho `__etag` je možné určit, jestli je potřeba znovu načíst prostředku s hlavičku if-none-match. 
+Systém definované měla každá položka uložená v kontejneru Azure Cosmos `_etag` vlastnost. Hodnota `_etag` automaticky vygeneruje a aktualizovat server pokaždé, když je položka aktualizována. `_etag` je možné pomocí hlavičky žádosti if-match zadaná klientem umožňující server se rozhodnout, zda lze položky aktualizovat podmíněně. Hodnota hlavičky if-match odpovídá hodnotě `_etag` na serveru, se pak aktualizuje položku. Pokud už je aktuální hodnota hlavičky žádosti if-match, server zamítne operaci s "HTTP 412 selhání předběžné podmínky" zprávy s odpovědí. Klient pak může znovu načíst položky k získání aktuální verze položky na serveru nebo přepsání verze položky na serveru s vlastním `_etag` hodnotu pro položku. Kromě toho `_etag` je možné určit, jestli je potřeba znovu načíst prostředku s hlavičku if-none-match. 
 
-Položky __etag hodnota změní pokaždé, když je položka aktualizována. Pro operace nahrazení položky musí být if-match explicitně vyjádřena jako součást možnosti žádosti. Příklad najdete v tématu ukázkový kód v [Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `__etag` hodnoty jsou implicitně kontroluje všechny položky písemné přistupovala uloženou proceduru. Pokud se zjistí jakéhokoli konfliktu uloženou proceduru se navrátit transakci a vyvolá výjimku. Pomocí této metody se používají atomicky all nebo žádný zápisy v rámci uložené procedury. Toto je signál, který se aplikace znovu použít aktualizace a zkuste to znovu původní požadavek klienta.
+Položky _etag hodnota změní pokaždé, když je položka aktualizována. Pro operace nahrazení položky musí být if-match explicitně vyjádřena jako součást možnosti žádosti. Příklad najdete v tématu ukázkový kód v [Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag` hodnoty jsou implicitně kontroluje všechny položky písemné přistupovala uloženou proceduru. Pokud se zjistí jakéhokoli konfliktu uloženou proceduru se navrátit transakci a vyvolá výjimku. Pomocí této metody se používají atomicky all nebo žádný zápisy v rámci uložené procedury. Toto je signál, který se aplikace znovu použít aktualizace a zkuste to znovu původní požadavek klienta.
 
 ## <a name="next-steps"></a>Další postup
 

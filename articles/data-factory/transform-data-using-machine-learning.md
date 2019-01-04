@@ -1,6 +1,6 @@
 ---
-title: Vytvoření kanálů prediktivní dat pomocí Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak vytvořit prediktivní kanál pomocí Azure Machine Learning - aktivita provedení dávky v Azure Data Factory.
+title: Vytvořit prediktivní datové kanály pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit prediktivní kanál pomocí Azure Machine Learning – aktivita provedení dávky služby ve službě Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -8,41 +8,40 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 87a71cff07d18dde25fa5c58b3718e7a57e3ce8d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 494aa435f2b3e682ae330baa61d4778f3d91d789
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046009"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025738"
 ---
-# <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory
+# <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Aktuální verze](transform-data-using-machine-learning.md)
 
-[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) umožňuje vytvářet, testovat a nasazovat řešení prediktivní analýzy. Z vysoké úrovně hlediska se provádí v tři kroky:
+[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) umožňuje vytvářet, testovat a nasazovat řešení prediktivní analýzy. Z vyšší úrovně pohledu se provádí ve třech krocích:
 
-1. **Vytvoření experimentu školení**. Tento krok se provádí pomocí nástroje Azure ML Studio. ML studio se spolupráce vizuální vývojové prostředí, které používáte a natrénuje a otestuje model prediktivní analýzy pomocí Cvičná data.
-2. **Převést na prediktivní experiment**. Jakmile model byl vyzkoušen s existujícími daty a budete chtít použít skóre pro nová data, připravte a zjednodušit experimentu pro vyhodnocování.
-3. **Nasadit jako webovou službu**. Vyhodnocování experimentu můžete publikovat jako Azure webové služby. Můžete posílat data do modelu přes tento koncový bod webové služby a přijímat výsledek předpovědi z modelu.  
+1. **Vytvořit výukový experiment**. Tento krok můžete provést pomocí Azure ML Studio. ML studio je spolupráce na vývoji visual prostředí, který používáte pro trénování a testování modelu prediktivní analýzy pomocí trénovací data.
+2. **Převeďte jej na prediktivní experiment**. Jakmile vyškolila modelu s existujícími daty a budete chtít použít ke stanovení skóre pro nová data, Příprava a zefektivnit experimentu pro vyhodnocení.
+3. **Ho nasadit jako webovou službu**. Hodnoticí experimentu můžete publikovat jako webová služba Azure. Může odesílat data do modelu přes tento koncový bod webové služby a zobrazí výsledky předpovědí z modelu.  
 
-### <a name="data-factory-and-machine-learning-together"></a>Objekt pro vytváření dat a strojové učení společně
-Azure Data Factory můžete snadno vytvořit kanály, které používají publikované [Azure Machine Learning] [azure machine learning] webové služby pro prediktivní analýzy. Pomocí **aktivita provedení dávky** v kanál služby Azure Data Factory můžete vyvolat webové služby Azure ML provádět předpovědi na datech v dávce. 
+### <a name="data-factory-and-machine-learning-together"></a>Objekt pro vytváření dat a strojové učení najednou
+Azure Data Factory umožňuje snadno vytvářet kanály, které používají publikované [Azure Machine Learning] [azure-machine-learning] webové služby pro prediktivní analýzy. Použití **aktivita provedení dávky služby** v kanálu Azure Data Factory, můžete vyvolat webové služby Azure ML k vytvoření predikcí data ve službě batch. 
 
-V průběhu času prediktivní modely v Azure ML vyhodnocování experimentů muset být retrained pomocí nové vstupní datové sady. Model Azure ML z objektu pro vytváření dat kanál můžete přeučování provedením následujících kroků:
+V průběhu času prediktivních modelů v Azure ML hodnocení experimentů musí být retrained pomocí nové vstupní datové sady. Model Azure ML z kanálu Data Factory mohou uchovávat provedením následujících kroků:
 
-1. Publikujte výukový experiment (ne prediktivní experiment) jako webovou službu. Tento krok v Azure ML Studio můžete udělat, jako jste to udělali vystavit prediktivní experiment jako webovou službu v předchozím scénáři.
-2. Použijte aktivita provedení dávky Azure ML k vyvolání webové služby pro výukový experiment. V podstatě můžete aktivita provedení dávky Azure ML k vyvolání webové služby školení a vyhodnocování webové služby.
+1. Publikujte jako webovou službu výukového experimentu (ne prediktivní experiment). Tento krok v nástroji Azure ML Studio udělat, jako jste to udělali vystavit prediktivní experiment jako webové služby v předchozím scénáři.
+2. Aktivita provedení dávky služby ML Azure použijte k vyvolání webové služby pro výukového experimentu. V podstatě můžete aktivita provedení dávky služby Azure ML k vyvolání webové služby školení a webová služba pro vyhodnocení.
 
-Po dokončení práce s retraining, aktualizovat vyhodnocování webové služby (prediktivní experiment zveřejněné jako webovou službu) s nově trénovaného modelu pomocí **aktivita prostředku aktualizace Azure ML**. V tématu [aktualizace modelů pomocí aktivita prostředku aktualizace](update-machine-learning-models.md) článku.
+Jakmile budete hotovi s přetrénování aktualizovat hodnoticí webové služby (prediktivní experiment jako webové služby) s nově trénovaného modelu s použitím **aktivita prostředku aktualizace Azure ML**. Zobrazit [aktualizace modelů pomocí aktivity aktualizace prostředku](update-machine-learning-models.md) , kde najdete podrobnosti.
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning propojené služby
+## <a name="azure-machine-learning-linked-service"></a>Služba Azure Machine Learning propojený
 
-Vytvoříte **Azure Machine Learning** propojená služba propojení webové služby Azure Machine Learning s objektem pro vytváření dat Azure. Propojené služby se používá pomocí Azure Machine Learning dávky spuštění aktivity a [aktivita prostředku aktualizace](update-machine-learning-models.md). 
+Vytvoření **Azure Machine Learning** propojenou službu, která propojí webové služby Azure Machine Learning do služby Azure data factory. Propojená služba používá aktivita provedení dávky služby do aplikace Azure Machine Learning a [aktivita prostředku aktualizace](update-machine-learning-models.md). 
 
 
 ```JSON
@@ -67,15 +66,15 @@ Vytvoříte **Azure Machine Learning** propojená služba propojení webové slu
 }
 ```
 
-V tématu [výpočetní propojené služby](compute-linked-services.md) článku popisy o vlastnostech v definici JSON. 
+Zobrazit [propojené služby Compute](compute-linked-services.md) najdete popisy vlastností v definici JSON. 
 
-Azure Machine Learning podporuje Classic webové služby a nové webové služby pro prediktivní experiment. Můžete zvolit ten správný používat z datové továrny. Chcete-li získat informace potřebné pro vytvoření propojené služby Azure Machine Learning, přejděte na https://services.azureml.net, kde jsou uvedeny všechny (Nový) webové služby a Classic webové služby. Klikněte na webovou službu chcete přistupovat a klikněte na **spotřebě** stránky. Kopírování **primární klíč** pro **apiKey** vlastnost, a **dávkových žádostí** pro **mlEndpoint** vlastnost. 
+Azure Machine Learning podporuje klasické webové služby a nové webové služby pro prediktivní experiment. Můžete zvolit ten správný ze služby Data Factory. Pokud chcete získat informace potřebné k vytvoření propojené služby Azure Machine Learning, přejděte na https://services.azureml.net, kde jsou uvedeny všechny (Nový) webové služby a klasické webové služby. Klikněte na webové služby, které chcete získat přístup a klikněte na tlačítko **využívání** stránky. Kopírování **primární klíč** pro **apiKey** vlastnost, a **dávkových žádostí** pro **mlEndpoint** vlastnost. 
 
-![Webové služby Azure Machine Learning](./media/transform-data-using-machine-learning/web-services.png)
+![Azure Machine Learning Web Services](./media/transform-data-using-machine-learning/web-services.png)
 
-## <a name="azure-machine-learning-batch-execution-activity"></a>Aktivita služby Azure Machine Learning Batch Execution
+## <a name="azure-machine-learning-batch-execution-activity"></a>Aktivita provedení dávky služby Machine Learning Azure
 
-Následující fragment kódu JSON definuje Azure Machine Learning dávkového spuštění aktivity. Definici aktivity obsahuje odkaz na službu Azure Machine Learning propojené, kterou jste vytvořili dříve. 
+Následující fragment kódu JSON definuje aktivita provedení dávky služby Machine Learning Azure. Definice aktivity obsahuje odkaz na službu Azure Machine Learning propojený, kterou jste vytvořili dříve. 
 
 ```JSON
 {
@@ -132,19 +131,19 @@ Následující fragment kódu JSON definuje Azure Machine Learning dávkového s
 | Vlastnost          | Popis                              | Požaduje se |
 | :---------------- | :--------------------------------------- | :------- |
 | jméno              | Název aktivity v kanálu     | Ano      |
-| description       | Popisuje, jakým způsobem aktivita naloží text.  | Ne       |
-| type              | Aktivity Data Lake Analytics U-SQL, je typ aktivity **AzureMLBatchExecution**. | Ano      |
-| linkedServiceName | Propojené služby Azure Machine Learning propojená služba. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku. | Ano      |
-| webServiceInputs  | Hodnota páry klíčů, mapování názvů Azure Machine Learning webové služby vstupy. Klíč se musí shodovat vstupní parametry definované v publikované Azure Machine Learning webovou službu. Hodnota je propojené služby úložiště Azure a FilePath vlastnosti dvojici zadání vstupní umístění objektu Blob. | Ne       |
-| webServiceOutputs | Hodnota páry klíčů, mapování názvů Azure Machine Learning webové služby výstupy. Klíč se musí shodovat výstupní parametry definované v publikované Azure Machine Learning webovou službu. Hodnota je propojené služby úložiště Azure a FilePath vlastnosti pár zadání výstup objektu Blob umístění. | Ne       |
-| globalParameters  | Páry klíčů, hodnota má být předán služba provedení dávky Azure ML koncový bod. Klíče musí shodovat s názvy definované v publikované webové služby Azure ML parametry webové služby. Hodnoty jsou předávány ve vlastnosti GlobalParameters požadavek provedení dávky Azure ML | Ne       |
+| description       | Text popisující, jakým způsobem aktivita naloží.  | Ne       |
+| type              | Aktivita Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
+| linkedServiceName | Propojené služby Azure Machine Learning propojenou službu. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku. | Ano      |
+| webServiceInputs  | Klíč, hodnota dvojice mapování názvů Azure Machine Learning Web Service vstupy. Klíč musí odpovídat vstupní parametry definované v webové služby pro publikované Azure Machine Learning. Hodnota je propojené služby Azure Storage a FilePath vlastnosti páru určují vstupní umístění objektu Blob. | Ne       |
+| webServiceOutputs | Klíč, hodnota dvojice mapování názvů Azure Machine Learning Web Service výstupy. Klíč musí odpovídat výstupní parametry definované v webové služby pro publikované Azure Machine Learning. Hodnota je propojené služby Azure Storage a FilePath dvojici vlastností zadání výstup Blob umístění. | Ne       |
+| globalParameters  | Páry klíčů, hodnota má být předán koncový bod služba Batch Execution Azure ML. Klíče musí shodovat s názvy parametrů webové služby definované v publikované webové služby Azure ML. Hodnoty se předávají ve vlastnosti GlobalParameters žádost o spuštění dávky Azure ML | Ne       |
 
-### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénář 1: Experimenty pomocí webové služby vstupy/výstupy odkazující na data v Azure Blob Storage
+### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénář 1: Experimentů využívajících webové služby vstupů nebo výstupů, které odkazují na data ve službě Azure Blob Storage
 
-V tomto scénáři Azure Machine Learning webovou službu díky předpovědi pomocí dat ze souboru v Azure blob storage a ukládá výsledky předpovědi ve službě blob storage. Následující kód JSON určuje objekt pro vytváření dat kanál s AzureMLBatchExecution aktivitu. Vstupní a výstupní data ve službě Azure Blog Storage se odkazuje pomocí pár LinkedName a cesta k souboru. V ukázce se liší propojené služby vstupy a výstupy, můžete použít jiné propojené služby pro každou z vaší vstupy/výstupy pro vytváření dat mohli vyzvednutí správné soubory a odeslat do služby Azure ML Web Service. 
+V tomto scénáři službu Azure Machine Learning Web vytváří předpovědi pomocí dat ze souboru ve službě Azure blob storage a uchovává výsledky předpovědí ve službě blob storage. Následující kód JSON definuje kanál služby Data Factory s aktivitou AzureMLBatchExecution. Vstupní a výstupní data ve službě Azure Blog Storage se odkazuje pomocí dvojice LinkedName a cesta k souboru. V ukázce se liší propojené služby vstupy a výstupy, budete moci vybrat správné soubory a odeslat do služby Azure ML Web Service můžete použít jiné propojené služby pro každou z vašich vstupů nebo výstupů pro službu Data Factory. 
 
 > [!IMPORTANT]
-> V Azure ML experiment, vstup webové služby a výstup porty a globální parametry mají výchozí názvy ("input1", "input2"), které můžete přizpůsobit. Názvy, které můžete použít pro webServiceInputs, webServiceOutputs a globalParameters nastavení musí přesně shodovat názvy v experimenty. Datová část požadavku ukázka můžete zobrazit na stránce pomůže spuštění dávky pro koncový bod služby Azure ML ověření očekávané mapování.
+> V Azure ML experiment, vstup webové služby a výstupní porty a globální parametry mají výchozí názvy ("vstup1", "vstup2"), které můžete přizpůsobit. Názvy, které používáte pro webServiceInputs webServiceOutputs a globalParameters nastavení musí přesně odpovídat názvům v experimenty. Na stránce nápovědy spouštění dávek pro koncový bod služby Azure ML k ověření očekávané mapování můžete zobrazit ukázkovou datovou část požadavku.
 >
 > 
 
@@ -193,17 +192,17 @@ V tomto scénáři Azure Machine Learning webovou službu díky předpovědi pom
     }
 }
 ```
-### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář 2: Experimenty, používání modulů Reader/Writer odkazovat na data v různých úložných
-Další z typických možností při vytváření experimenty Azure ML je použití modulů importovat Data a výstupní Data. Import dat modul se používá k načtení dat do experimentu a výstupní Data modulu je k uložení dat z experimentů. Podrobnosti o importovat Data a výstupní Data modulech najdete v tématu [importovat Data](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [výstupní Data](https://msdn.microsoft.com/library/azure/dn905984.aspx) témata v knihovně MSDN.     
+### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář 2: Používání modulů čtení/zápis odkazovat na data v různých úložných experimentů
+Další z typických možností při vytváření experimenty Azure ML je použití modulů importovat Data a výstupní Data. Modul pro Import dat se používá k načtení dat do experimentu a výstupní Data modulu je k uložení dat z experimentů. Podrobnosti o moduly Import dat a výstupních dat najdete v tématu [Import dat](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [výstupní Data](https://msdn.microsoft.com/library/azure/dn905984.aspx) témata v knihovně MSDN.     
 
-Při použití modulů importovat Data a výstupní Data, je vhodné použít parametr webové služby pro každou vlastnost tyto moduly. Tyto parametry webové umožňují konfiguraci hodnot, které za běhu. Můžete například vytvořit experimentu s modul importovat Data, která používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby, které chcete povolit příjemcům webové služby, zadejte jiný Server SQL Azure, názvem `YYY.database.windows.net`. Parametr webové služby můžete povolit tuto hodnotu nakonfigurovat.
+Pokud používáte moduly Import dat a výstupní Data, je vhodné použít parametr webové služby pro každou vlastnost tyto moduly. Tyto parametry webové umožňují nakonfigurovat hodnoty za běhu. Můžete například vytvořit experimentu pomocí modulu Import dat, která používá službu Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby, chcete povolit uživatelům webové služby, zadejte jiný Server SQL Azure volá `YYY.database.windows.net`. Parametr webové služby můžete povolit tuto hodnotu a nakonfigurovat.
 
 > [!NOTE]
-> Webové služby vstup a výstup se liší od parametry webové služby. V prvního scénáře jste viděli, jak vstup a výstup lze zadat pro Azure ML webové služby. V tomto scénáři můžete předat parametry webové služby, které odpovídají vlastnosti modulů importu dat a výstupní Data.
+> Webové služby vstup a výstup se liší od parametrů webové služby. V první scénář jste viděli, jak vstup a výstup se dá nastavit pro služby Azure ML Web service. V tomto scénáři předat parametry webové služby, které odpovídají vlastnosti moduly Import dat a výstupní Data.
 >
 > 
 
-Podívejme se na scénář použití parametry webové služby. Máte nasazené webové službě Azure Machine Learning, která používá modul čtečky číst data z jednoho zdroje dat podporované rozhraním Azure Machine Learning (například: Azure SQL Database). Po provedení dávkového spuštění výsledky jsou zapsány pomocí zapisovače modulu (Azure SQL Database).  Žádné webové služby vstupy a výstupy jsou definovány v experimenty. V takovém případě doporučujeme nakonfigurovat parametry relevantní webové služby pro moduly čtení a zápis. Tato konfigurace umožňuje čtečky nebo zapisovač moduly nakonfigurovat při použití AzureMLBatchExecution aktivity. Zadejte parametry webové služby v **globalParameters** část v kódu JSON aktivity následujícím způsobem.
+Podívejme se na scénář použití parametrů webové služby. Máte nasazené webové služby Azure Machine Learning, který používá modul čtečky číst data z jednoho zdroje dat podporované službou Azure Machine Learning (například: Azure SQL Database). Po provedení příkazu batch se provádí, výsledky jsou zapsány pomocí zapisovače modulu (Azure SQL Database).  Žádné webové služby vstupy a výstupy jsou definovány v experimenty. V takovém případě doporučujeme nakonfigurovat parametry příslušné webové služby pro moduly čtečky a zapisovače. Tato konfigurace umožňuje čtení/zápis moduly, které nakonfigurují při použití AzureMLBatchExecution aktivity. Zadejte parametry webové služby v **globalParameters** části v kódu JSON aktivity následujícím způsobem.
 
 ```JSON
 "typeProperties": {
@@ -218,21 +217,21 @@ Podívejme se na scénář použití parametry webové služby. Máte nasazené 
 
 
 > [!NOTE]
-> Parametry webové služby je malá a velká písmena, takže shodné názvy, které zadáte v aktivitě JSON těm, které jsou vystavené webovou službu.
+> Parametry webové služby jsou malá a velká písmena, zajistěte proto, že názvy, které zadáte v aktivitě JSON odpovídají těm, které jsou vystavené webové služby.
 >
 
-Po dokončení práce s retraining, aktualizovat vyhodnocování webové služby (prediktivní experiment zveřejněné jako webovou službu) s nově trénovaného modelu pomocí **aktivita prostředku aktualizace Azure ML**. V tématu [aktualizace modelů pomocí aktivita prostředku aktualizace](update-machine-learning-models.md) článku.
+Jakmile budete hotovi s přetrénování aktualizovat hodnoticí webové služby (prediktivní experiment jako webové služby) s nově trénovaného modelu s použitím **aktivita prostředku aktualizace Azure ML**. Zobrazit [aktualizace modelů pomocí aktivity aktualizace prostředku](update-machine-learning-models.md) , kde najdete podrobnosti.
 
 
 
 ## <a name="next-steps"></a>Další postup
-Najdete v následujících článcích, které vysvětlují, jak k transformaci dat jinými způsoby: 
+Viz následující články, které vysvětlují, jak transformovat data dalšími způsoby: 
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita Hive](transform-data-using-hadoop-hive.md)
-* [Pig aktivity](transform-data-using-hadoop-pig.md)
-* [Činnost MapReduce](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop streamované aktivitě](transform-data-using-hadoop-streaming.md)
-* [Spark aktivity](transform-data-using-spark.md)
+* [Aktivita hivu](transform-data-using-hadoop-hive.md)
+* [Aktivita pig](transform-data-using-hadoop-pig.md)
+* [Aktivita MapReduce](transform-data-using-hadoop-map-reduce.md)
+* [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
+* [Aktivita Spark](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita uložené procedury](transform-data-using-stored-procedure.md)
+* [Aktivita uložená procedura](transform-data-using-stored-procedure.md)

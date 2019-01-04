@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 669d5995b66322a2a6ad346643444d5a46c4b6f8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b870383634412c5b095738e2a7f79b9cf4dcf78a
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744407"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54018207"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -36,7 +36,7 @@ K provedení kroků v tomto kurzu je potřeba:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../azure-monitor/app/asp-net.md).
-- [Povolit Application Insights Profiler](app-insights-profiler.md#installation) pro vaši aplikaci.
+- [Povolit Application Insights Profiler](../azure-monitor/app/profiler.md#installation) pro vaši aplikaci.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -61,7 +61,7 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 
     ![Distribuce doby trvání](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](app-insights-transaction-diagnostics.md)
+5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](../azure-monitor/app/transaction-diagnostics.md)
 
     ![Podrobnosti o operaci](media/app-insights-tutorial-performance/operation-details.png)
     

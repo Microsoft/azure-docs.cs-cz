@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: a47d0130cd06a936da456ec6d78bde99907072f2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a271359f09ca63e1a0c3a143994739ee7db8aab
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526296"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014178"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformovat data spuštěním Jar aktivit v Azure Databricks
 
-Jar aktivit Azure Databricks v [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění Sparku Jar v clusteru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Jar aktivit Azure Databricks v [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění Sparku Jar v clusteru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
@@ -62,7 +61,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 |jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
 |type|Pro aktivitu Jar Databricks je typ aktivity DatabricksSparkJar.|Ano|
-|linkedServiceName|Název propojené služby Databricks, ve kterém se spouští aktivity soubor Jar. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
+|linkedServiceName|Název propojené služby Databricks, ve kterém se spouští aktivity soubor Jar. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
 |mainClassName|Úplný název třídy obsahující metodu main má být proveden. Tato třída musí být součástí JAR ve formě knihovny.|Ano|
 |parameters|Parametry, které se předají do metody main.  Toto je pole řetězců.|Ne|
 |Knihovny|Seznam knihovny, které chcete nainstalovat na clusteru, který provede úlohu. Pole může být < řetězec, objekt >|Ano (alespoň jeden obsahující metodu mainClassName)|

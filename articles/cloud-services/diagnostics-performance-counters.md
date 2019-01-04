@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/18
 ms.author: jeconnoc
-ms.openlocfilehash: bae1e7de3c24ff6fbf943ef93ad449d784feb0c8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d332a792f693b099ce925e9b5705f09e52507522
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788692"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000236"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Shromažďování čítačů výkonu pro cloudové služby Azure
 
@@ -116,7 +116,7 @@ Application Insights automaticky shromažďuje následující čítače výkonu:
 * \Process(??APP_WIN32_PROC??)\IO Data Bytes/sec
 * \Processor(_Total)\% Processor Time
 
-Další informace najdete v tématu [čítače výkonu systému ve službě Application Insights](../application-insights/app-insights-performance-counters.md) a [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
+Další informace najdete v tématu [čítače výkonu systému ve službě Application Insights](../azure-monitor/app/performance-counters.md) a [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters).
 
 ### <a name="azure-diagnostics"></a>Diagnostika Azure
 
@@ -295,6 +295,6 @@ Jak je uvedeno výše, které chcete shromáždit čítače výkonu jsou definov
 ## <a name="more-information"></a>Další informace
 
 - [Application Insights pro Azure Cloud Services](../azure-monitor/app/cloudservices.md#performance-counters)
-- [Čítače výkonu systému ve službě Application Insights](../application-insights/app-insights-performance-counters.md)
+- [Čítače výkonu systému ve službě Application Insights](../azure-monitor/app/performance-counters.md)
 - [Zadání cesty čítače](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Azure Diagnostics Schema - čítače výkonu](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)

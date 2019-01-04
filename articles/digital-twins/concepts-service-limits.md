@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 86ae75118dd1311ea2ae92fb718fe4c58b8e5673
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7d9686b9bcc6cb89fabf4fdaa79bf5b8c6c45ddc
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961751"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020621"
 ---
 # <a name="public-preview-service-limits"></a>Omezení služby ve verzi Public Preview
 
@@ -35,21 +35,25 @@ Každé předplatné Azure ve verzi public preview, můžete vytvořit nebo spus
 
 Každá instance Azure digitální dvojče zase může mít:
 
-- Jeden **IoTHub** prostředků.
-- Jeden **EventHub** koncový bod pro typ události **DeviceMessage**.
+- Přesně jeden **IoTHub** prostředků.
+- Přesně jeden **EventHub** koncový bod pro typ události **DeviceMessage**.
 - Až tři **EventHub**, **služby Service Bus**, nebo **EventGrid** koncové body typu události **SensorChange**, **SpaceChange** , **TopologyOperation**, nebo **UdfCustom**.
 
-## <a name="management-api-limits"></a>Omezení rozhraní API pro správu
+> [!NOTE]
+> Některé parametry, které jsou obvykle definovány při vytváření výše entit Azure IoT nejsou nutné ve verzi public preview.
+> - Najdete [Swagger referenční dokumentaci](./how-to-use-swagger.md) pro nejnovější specifikace rozhraní API.
 
-Žádost o omezení přenosové rychlosti pro vaše rozhraní API pro správu jsou:
+## <a name="azure-digital-twins-management-api-limits"></a>Omezení pro rozhraní API pro správu digitálních Dvojčat v Azure
 
-- 100 požadavků za sekundu na rozhraní API pro správu.
-- Až 1 000 objektů vrácených dotazem jednotné rozhraní API pro správu. 
+Omezení přenosové rychlosti žádost pro vaši digitální dvojče API pro správu Azure jsou:
+
+- 100 požadavků za sekundu na digitální dvojče správy rozhraní API Azure.
+- Až 1 000 objektů vrácených podle jednoho dotazu Azure digitální dvojče rozhraní API pro správu.
 
 > [!IMPORTANT]
 > Pokud překročíte limit 1 000 objektů, dojde k chybě a musí Zjednodušte dotaz.
 
-## <a name="udf-rate-limits"></a>Omezení přenosové rychlosti UDF
+## <a name="user-defined-functions-rate-limits"></a>Uživatelem definované funkce omezení přenosové rychlosti
 
 Následující omezení nastavte celkový počet všech volání uživatelem definované funkce k vaší instanci Azure digitální dvojče:
 
@@ -59,7 +63,7 @@ Následující omezení nastavte celkový počet všech volání uživatelem def
 > [!NOTE]
 > Následující akce může způsobit omezení přenosové rychlosti další dočasně použít:
 > - Úpravy metadat objektu topologie
-> - Aktualizace provedené definice UDF
+> - Aktualizace provedené k definici uživatelsky definované funkce
 > - Zařízení, které odesílají telemetrii poprvé
 
 ## <a name="device-telemetry-limits"></a>Limity telemetrie zařízení

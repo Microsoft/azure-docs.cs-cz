@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: ab101802aa881d4f4c6377299164c4408c673e7c
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4510c66dc0a64f65de9f9ee57563b847e20e25de
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980686"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000474"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights pro webové aplikace v Javě, které jsou již live
 
@@ -128,7 +128,7 @@ A při zobrazení vlastností požadavku uvidíte telemetrické události souvis
 
 ![](./media/java-live/7-instance.png)
 
-[Další informace o metrikách.](../../application-insights/app-insights-metrics-explorer.md)
+[Další informace o metrikách.](../../azure-monitor/app/metrics-explorer.md)
 
 ## <a name="next-steps"></a>Další postup
 * [Přidání telemetrie na webové stránky](javascript.md) pro monitorování zobrazení stránek a metrik uživatele.

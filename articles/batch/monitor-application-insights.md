@@ -11,18 +11,18 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 2188451e987aad7e4edfaa2097a828ab9714d706
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 4a77f73f4d87f7def7c8a841c7a59aed04b9bee2
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793770"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54020043"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí nástroje Application Insights
 
 [Application Insights](../application-insights/app-insights-overview.md) poskytuje elegantní a účinný způsob pro vývojáře k monitorování a ladění aplikace nasazené do služeb Azure. Pomocí Application Insights do monitorování čítače výkonu a výjimek, jakož i nástrojem váš kód vlastní metriky a trasování. Integrace Application Insights s vaší aplikací Azure Batch umožňuje získat podrobný přehled o chování a prozkoumat problémy v téměř reálném čase.
 
-Tento článek popisuje postup přidání a konfigurace knihovny služby Application Insights do vašeho řešení Azure Batch .NET a nástroje, kód vaší aplikace. Také ukazuje, jak můžete monitorovat své aplikace prostřednictvím portálu Azure portal a vytvářet vlastní řídicí panely. Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../application-insights/app-insights-platforms.md).
+Tento článek popisuje postup přidání a konfigurace knihovny služby Application Insights do vašeho řešení Azure Batch .NET a nástroje, kód vaší aplikace. Také ukazuje, jak můžete monitorovat své aplikace prostřednictvím portálu Azure portal a vytvářet vlastní řídicí panely. Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../azure-monitor/app/platforms.md).
 
 Ukázky C# řešení s kódem pro tento článek je k dispozici na [Githubu](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights). V tomto příkladu přidá kód instrumentace Application Insights [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) příklad. Pokud nejste obeznámeni s ukázkou, zkuste sestavováním a spouštěním TopNWords nejprve. To vám pomůže porozumět základní pracovní postup služby Batch zpracování sadu vstupní objekty BLOB paralelně na několika výpočetních uzlech. 
 
@@ -338,12 +338,12 @@ pool.StartTask = new StartTask()
 
 ## <a name="throttle-and-sample-data"></a>Omezení a ukázková data 
 
-Z důvodu ve velkém měřítku povaha služby Azure Batch aplikace běžící v produkčním prostředí můžete chtít omezit objem dat shromážděných službou Application Insights a spravujte náklady. Zobrazit [vzorkování ve službě Application Insights](../application-insights/app-insights-sampling.md) pro některé mechanismy pro můžete toho dosáhnout.
+Z důvodu ve velkém měřítku povaha služby Azure Batch aplikace běžící v produkčním prostředí můžete chtít omezit objem dat shromážděných službou Application Insights a spravujte náklady. Zobrazit [vzorkování ve službě Application Insights](../azure-monitor/app/sampling.md) pro některé mechanismy pro můžete toho dosáhnout.
 
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [Application Insights](../application-insights/app-insights-overview.md).
 
-* Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../application-insights/app-insights-platforms.md).
+* Application Insights podpory v jiných jazycích, podívejte se na [jazyky, platformy a integrace dokumentaci](../azure-monitor/app/platforms.md).
 
 

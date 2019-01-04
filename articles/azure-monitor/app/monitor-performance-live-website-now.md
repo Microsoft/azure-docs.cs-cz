@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: a993e35282c0c49ae4e3f2ff9f2314f12d779438
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8de7ed00114a11b4c765bfa9f9ae42529ef53f7f
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53980683"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024021"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentace webových aplikací za běhu pomocí nástrojů Application Insights
 
@@ -38,7 +38,7 @@ Tady je rekapitulace toho, co každý způsob přináší:
 | Požadavky a výjimky |Ano |Ano |
 | [Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md) | |Ano |
 | [Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md) |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| [Čítače výkonu systému](../../application-insights/app-insights-performance-counters.md) |Ano |Ano |
+| [Čítače výkonu systému](../../azure-monitor/app/performance-counters.md) |Ano |Ano |
 | [Rozhraní API pro vlastní telemetrii][api] |Ano |Ne |
 | [Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md) |Ano |Ne |
 | [Zobrazení stránky a uživatelská data](../../azure-monitor/app/javascript.md) |Ano |Ne |
@@ -256,7 +256,7 @@ Pro aplikace již instrumentované v době kompilace:
 
 Zobrazení telemetrických dat:
 
-* [Zkoumání metrik](../../application-insights/app-insights-metrics-explorer.md) pro monitorování výkonu a využití
+* [Zkoumání metrik](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
 * [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
 * [Vytváření řídicích panelů](../../azure-monitor/app/app-insights-dashboards.md)
@@ -275,5 +275,5 @@ Přidání další telemetrie:
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
 [qna]: ../../application-insights/app-insights-troubleshoot-faq.md
-[roles]: ../../application-insights/app-insights-resources-roles-access-control.md
+[roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

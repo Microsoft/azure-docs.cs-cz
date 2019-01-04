@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 63e35a32cb4a031ea9848486c4ecda7058707914
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9f96b4cbe95d918a94ea0d02f9b8fdd8f663eeec
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599889"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001460"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Vytvoření bezserverového rozhraní API pomocí služby Azure Functions
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak služba Azure Functions umožňuje vytvářet vys
 
 Výsledná funkce se bude používat ve zbývajících částech tohoto kurzu.
 
-### <a name="sign-in-to-azure"></a>Přihlášení k Azure
+### <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Otevřete web Azure Portal. To uděláte tak, že se k webu [https://portal.azure.com](https://portal.azure.com) přihlásíte pod svým účtem Azure.
 
@@ -104,7 +104,7 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
     | Pole | Ukázková hodnota | Popis |
     |---|---|---|
     | Název | HelloProxy | Popisný název sloužící jen ke správě |
-    | Šablona trasy | /api/hello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
+    | Šablona trasy | / api/remotehello | Určuje, jaká trasa se používá k vyvolání tohoto proxy. |
     | Adresa URL back-endu | https://%HELLO_HOST%/api/hello | Určuje koncový bod, na který má být žádost přes proxy směrována. |
     
 1. Všimněte si, že proxy neposkytují předponu základní cesty `/api`; musí být součástí šablony trasy.
@@ -112,9 +112,9 @@ Zopakováním postupu v článku o [vytvoření aplikace funkcí](https://docs.m
 1. Klikněte na možnost **Vytvořit**.
 1. Nový proxy vyzkoušíte tak, že zkopírujete adresu URL proxy a otestujete ji v prohlížeči nebo oblíbeném klientovi HTTP.
     1. Pro anonymní funkci použijte tento kód:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
     1. Pro funkci s autorizací použijte tento kód:
-        1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
+        1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"`
 
 ## <a name="create-a-mock-api"></a>Vytvoření napodobeniny rozhraní API
 
@@ -132,7 +132,7 @@ Pokud jste zatím dodržovali náš postup, měl by soubor proxies.json vypadat 
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         }
@@ -148,7 +148,7 @@ V dalším kroku přidáte napodobeninu rozhraní API. Nahraďte soubor proxies.
     "proxies": {
         "HelloProxy": {
             "matchCondition": {
-                "route": "/api/hello"
+                "route": "/api/remotehello"
             },
             "backendUri": "https://%HELLO_HOST%/api/hello"
         },

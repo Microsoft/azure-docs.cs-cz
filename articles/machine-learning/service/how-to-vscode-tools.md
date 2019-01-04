@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 898fd7d0416d1e1b27a25cabf524e72a7de44fde
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269582"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013141"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Začínáme s Azure Machine Learning pro Visual Studio Code
 
@@ -80,7 +80,8 @@ Před zahájením školení a nasazení modelů strojového učení pomocí VS C
 
 1. Klepněte na ikonu na panelu aplikace Visual Studio Code aktivit Azure. Zobrazí se na bočním panelu Azure Machine Learning.
 
-   [![boční panel](./media/vscode-tools-for-ai/CreateNewWorkspace.gif)](./media/vscode-tools-for-ai/CreateNewWorkspace.gif#lightbox)
+   [![Instalace](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+
 
 1. Klikněte pravým tlačítkem na vaše předplatné Azure a vyberte **vytvořit pracovní prostor**. Zobrazí se seznam. Animovaný obrázek název předplatného je bezplatná zkušební verze a pracovní prostor je "TeamWorkspace". 
 
@@ -96,11 +97,11 @@ Před zahájením školení a nasazení modelů strojového učení pomocí VS C
  
 1. Stiskněte enter a se vytvoří nový experiment. Zobrazí se ve stromu níže název pracovního prostoru.
 
-1. Klikněte pravým tlačítkem na název experimentu a zvolte **připojit složky Experiment**. Tato složka by měla obsahovat vaše místní skriptů Pythonu. Složka se pak propojí s experiment v cloudu. 
+1. Můžete kliknout pravým tlačítkem na Experiment v pracovním prostoru a vyberte "Nastavit jako aktivní Experiment". **"Aktivní"** experimentu je experiment teď a vaše otevřít složku v nástroji VS Code se propojí s tohoto experimentu v cloudu. Tato složka by měla obsahovat vaše místní skriptů Pythonu.
 
-   Teď každá experimentu běží s experimentu tak, aby všechny klíčové metriky se uloží v historii experimentů a modelů, které tréninku získat automaticky nahráli do Azure Machine Learning a ukládají s protokoly a metriky experimentu.
+   Teď každá experimentu běží s experimentu, tak, aby všechny klíčové metriky se uloží v historii experimentů a modelů, které tréninku získat automaticky nahráli do Azure Machine Learning a ukládají s protokoly a metriky experimentu.
 
-   [![Připojit do složky ve VS Code](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif)](./media/vscode-tools-for-ai/CreateNewExperimentandFolder.gif#lightbox)
+   [![Připojit do složky ve VS Code](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
 
 ### <a name="use-keyboard-shortcuts"></a>Používání klávesových zkratek
 

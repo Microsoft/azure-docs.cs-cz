@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: f744e379521fe62f4b3fbbad0cc524ccb3e1b18d
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429384"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54021862"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření aktivační události, která běží v reakci na událost kanálu
 
@@ -68,7 +67,7 @@ Například v předchozím snímku obrazovky. aktivační událost konfigurován
 
 Následující tabulka obsahuje přehled elementů schématu souvisejících s triggery založené na události:
 
-| **JSON Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Vyžaduje** |
+| **JSON Element** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadováno** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
 | **Obor** | Azure Resource Manageru ID prostředku účtu úložiště. | Řetězec | ID Azure Resource Manageru | Ano |
 | **Události** | Typ události, které způsobují tento aby trigger provedl akci. | Pole    | Microsoft.Storage.BlobCreated Microsoft.Storage.BlobDeleted | Ano, libovolnou kombinací těchto hodnot. |

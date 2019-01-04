@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: fb3826a2c93ee19e1bb84028a6621d637ce27077
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 161158157e3af92b1ac4fe81a664d95aa6816490
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810709"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001562"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s Apache Spark v HDInsight
 
@@ -35,7 +35,7 @@ Další informace o použití [Apache Spark](https://spark.apache.org/) v HDInsi
 
 Na následujících odkazech byly použity při vývoji a testování v tomto dokumentu:
 
-* Data telemetrie Application Insights se vygeneroval pomocí [webové aplikace Node.js konfigurován pro použití služby Application Insights](../../application-insights/app-insights-nodejs.md).
+* Data telemetrie Application Insights se vygeneroval pomocí [webové aplikace Node.js konfigurován pro použití služby Application Insights](../../azure-monitor/app/nodejs.md).
 
 * K analýze dat byla použita založených na Linuxu Spark ve verzi clusteru HDInsight 3.5.
 

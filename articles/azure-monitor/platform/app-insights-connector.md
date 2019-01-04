@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 684fa85749bc131b21ef12070055841ff7d3d169
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e6d750d62ccd31a85cbf47e13c12be078bcb2c4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726213"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54023120"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
@@ -142,7 +142,7 @@ Pro otáčení, klikněte na symbol tří teček (**...** ), který se zobrazí 
 
 ### <a name="sample-corrected-data"></a>Opravit ukázková data
 
-Application Insights poskytuje *[vzorkování opravy](../../application-insights/app-insights-sampling.md)* ke snížení provozu telemetrie. Když povolíte vzorkování na své aplikaci Application Insights, získat menší počet položek uložených ve službě Application Insights a Log Analytics. Zatímco se zachovají konzistenci dat. v **Application Insights Connector** stránky a perspektivy, by měl ručně opravit jen Vzorkovaná data pro své vlastní dotazy.
+Application Insights poskytuje *[vzorkování opravy](../../azure-monitor/app/sampling.md)* ke snížení provozu telemetrie. Když povolíte vzorkování na své aplikaci Application Insights, získat menší počet položek uložených ve službě Application Insights a Log Analytics. Zatímco se zachovají konzistenci dat. v **Application Insights Connector** stránky a perspektivy, by měl ručně opravit jen Vzorkovaná data pro své vlastní dotazy.
 
 Tady je příklad opravy vzorkování vyhledávacího dotazu protokolu:
 

@@ -9,21 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 9aab9df353ea5691b4132741e9b4a97b0afd9d17
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 93f8a5e806bd10824a78dd62351fd3d9be0cf32c
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262144"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54025823"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 V tomto kurzu vytvoříte kanál služby Data Factory, který prezentuje některé funkce řízení toku. Tento kanál provádí jednoduché kopírování z kontejneru ve službě Azure Blob Storage do jiného kontejneru ve stejném účtu úložiště. Pokud aktivita kopírování proběhne úspěšně, chcete podrobnosti o úspěšném kopírování (jako je například množství zapsaných dat) poslat v e-mailu informujícím o úspěchu. Pokud aktivita kopírování selže, chcete podrobnosti o neúspěšném kopírování (jako je například chybová zpráva) poslat v e-mailu informujícím o selhání. V rámci tohoto kurzu se dozvíte, jak předávat parametry.
 
-Základní schéma tohoto scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
+Přehled scénáře: ![Přehled](media/tutorial-control-flow/overview.png)
 
 V tomto kurzu provedete následující kroky:
 
@@ -95,7 +94,7 @@ Pomocí sady Visual Studio 2015/2017 vytvořte konzolovou aplikaci C# .NET.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Do **třídy Program** přidejte tyto statické proměnné. Zástupné znaky nahraďte vlastními hodnotami. Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:** [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+2. Do **třídy Program** přidejte tyto statické proměnné. Zástupné znaky nahraďte vlastními hodnotami. Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **služby Data Factory**: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
     ```csharp
         // Set variables
@@ -204,7 +203,7 @@ Do metody **Main** přidejte následující kód, který vytvoří **datovou sad
 
 Definujete datovou sadu, která představuje zdroj dat ve službě Azure Blob. Tato datová sada Blob odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku, a popisuje:
 
-- Umístění objektu blob, ze kterého se má kopírovat: **FolderPath** a **FileName**.
+- Umístění objektu blob ke kopírování ze: **FolderPath** a **FileName**;
 - Všimněte si použití parametrů pro FolderPath. sourceBlobContainer je název parametru a výraz se nahradí hodnotami předanými při spuštění kanálu. Syntaxe pro definování parametrů je `@pipeline().parameters.<parameterName>`
 
 V souboru Program.cs vytvořte funkci SourceBlobDatasetDefinition:
@@ -258,13 +257,13 @@ client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDataset
 client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
 ```
 
-## <a name="create-a-c-class-emailrequest"></a>Vytvoření třídy EmailRequest v C#
+## <a name="create-a-c-class-emailrequest"></a>Vytvoření C# třídy: EmailRequest
 V projektu C# vytvořte třídu s názvem **EmailRequest**. Definuje, které vlastnosti kanál posílá v těle požadavku při odesílání e-mailu. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
 
 - **Message**: Text e-mailu. V případě úspěšného kopírování tato vlastnost obsahuje podrobnosti o spuštění (počet zapsaných dat). V případě neúspěšného kopírování tato vlastnost obsahuje podrobnosti o chybě.
 - **DataFactoryName**: Název datové továrny.
 - **PipelineName**: Název kanálu.
-- **Receiver**: Parametr, který se předává. Tato vlastnost určuje příjemce e-mailu.
+- **Příjemce**: Parametr, který se předává. Tato vlastnost určuje příjemce e-mailu.
 
 ```csharp
     class EmailRequest
@@ -734,7 +733,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]

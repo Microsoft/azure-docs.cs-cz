@@ -8,16 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: e3aefc23cd0f4d8043232214591155aa893f4522
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 09b5f387b0c7f765ea0835dcef79932203d68338
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390132"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54014348"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat ve službě Azure Data Factory
 > [!div class="op_single_selector"]
@@ -62,7 +61,7 @@ V průběhu času prediktivních modelů ve službě Machine Learning, experimen
 Zobrazit [aktivit Machine learningu pomocí](transform-data-using-machine-learning.md) podrobné informace o těchto aktivit Machine learningu. 
 
 ## <a name="stored-procedure-activity"></a>Aktivita uložené procedury
-Aktivita uložená procedura SQL serveru v kanálech Data Factory můžete použít k vyvolání uložené procedury v jedné z následujících úložišť dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure. Zobrazit [aktivity uložené procedury](transform-data-using-stored-procedure.md) , kde najdete podrobnosti.  
+Aktivita uložená procedura SQL serveru v kanálech Data Factory můžete vyvolat uloženou proceduru v jednom z následujících úložiště dat: Azure SQL Database, Azure SQL Data Warehouse, databáze SQL serveru ve vašem podniku nebo Virtuálním počítači Azure. Zobrazit [aktivity uložené procedury](transform-data-using-stored-procedure.md) , kde najdete podrobnosti.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita Data Lake Analytics U-SQL
 Aktivita data Lake Analytics U-SQL spouští skript U-SQL v clusteru služby Azure Data Lake Analytics. Zobrazit [aktivita Data Analytics U-SQL](transform-data-using-data-lake-analytics.md) , kde najdete podrobnosti. 
@@ -87,10 +86,10 @@ Můžete vytvořit vlastní aktivitu pro spouštění skriptů jazyka R na svém
 ## <a name="compute-environments"></a>Výpočetní prostředí
 Vytvoření propojené služby pro výpočetní prostředí a pak použít propojené služby pro definování aktivit transformace. Existují dva typy výpočetních prostředí podporovaných službou Data Factory. 
 
-- **Na vyžádání**: V tomto případě plně spravované výpočetní prostředí pomocí služby Data Factory. Je automaticky vytvořen ve službě Data Factory předtím, než je úlohy odeslané do dat procesu a odebrat, pokud je úloha dokončena. Můžete konfigurovat a řídit granulární nastavení výpočetní prostředky na vyžádání prostředí pro provádění úloh, správu clusteru a spuštění akce. 
-- **Přineste si vlastní**: V tomto případě mohou registrovat své vlastní výpočetní prostředí (například cluster HDInsight) jako propojenou službu ve službě Data Factory. Výpočetní prostředí spravujete sami a služba Data Factory používá je ke spuštění aktivity. 
+- **Na vyžádání**:  V takovém případě se službou Data Factory plně spravované výpočetní prostředí. Je automaticky vytvořen ve službě Data Factory předtím, než je úlohy odeslané do dat procesu a odebrat, pokud je úloha dokončena. Můžete konfigurovat a řídit granulární nastavení výpočetní prostředky na vyžádání prostředí pro provádění úloh, správu clusteru a spuštění akce. 
+- **Funkce přineste si vlastní**: V takovém případě mohou registrovat své vlastní výpočetní prostředí (například cluster HDInsight) jako propojenou službu ve službě Data Factory. Výpočetní prostředí spravujete sami a služba Data Factory používá je ke spuštění aktivity. 
 
 Zobrazit [propojené výpočetní služby](compute-linked-services.md) článku se dozvíte o výpočetních služeb podporovaných službou Data Factory. 
 
 ## <a name="next-steps"></a>Další postup
-Projděte si následující kurz pro příklad použití aktivit transformace: [kurz: transformace dat pomocí Sparku](tutorial-transform-data-spark-powershell.md)
+Najdete v kurzu následující příklad pomocí aktivit transformace: [Kurz: transformace dat pomocí Sparku](tutorial-transform-data-spark-powershell.md)

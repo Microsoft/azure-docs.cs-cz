@@ -1,6 +1,6 @@
 ---
-title: Přesun dat ze serveru pomocí protokolu SFTP pomocí Azure Data Factory | Microsoft Docs
-description: Další informace o tom, jak přesunout data z místní nebo serveru pomocí protokolu SFTP cloudu pomocí Azure Data Factory.
+title: Přesouvání dat ze serveru SFTP pomocí služby Azure Data Factory | Dokumentace Microsoftu
+description: Další informace o tom, jak přesunout data z místní nebo server SFTP cloudu pomocí Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -8,66 +8,65 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c22d2cba23e8bae965fa7c5746c9fff69ad3fa9e
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2aa272c126e06b758dc3903a8ec71b7043491057
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054411"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54017646"
 ---
-# <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Přesunutí dat ze serveru pomocí protokolu SFTP pomocí Azure Data Factory
+# <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Přesun dat z server SFTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-sftp-connector.md)
 > * [Verze 2 (aktuální verze)](../connector-sftp.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [SFTPconnector v V2](../connector-sftp.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [SFTPconnector ve V2](../connector-sftp.md).
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat ze serveru pomocí protokolu SFTP lokální/Cloudová do úložiště dat podporovaných jímky. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který uvádí obecný přehled přesun dat s aktivitou kopírování a seznam úložiště dat, které jsou podporované jako zdroje nebo jímky.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory pro přesun dat z místní/Cloudová server SFTP do úložiště dat jímky podporované. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který nabízí obecný přehled o přesun dat pomocí aktivity kopírování a seznam úložišť dat podporovaných jako zdroje a jímky.
 
-Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat ze serveru pomocí protokolu SFTP k jiným úložištím dat, ale ne pro přesun dat z jiných úložišť dat k serveru pomocí protokolu SFTP. Podporuje místní a cloudové servery pomocí protokolu SFTP.
+Data factory aktuálně podporuje pouze přesouvá data z SFTP server do jiných úložišť dat, ale ne pro přesun dat z jiných úložišť dat na SFTP server. Podporuje i s místními a cloudovými servery SFTP.
 
 > [!NOTE]
-> Aktivita kopírování nedojde k odstranění zdrojového souboru po byl úspěšně zkopírován do cílové. Pokud potřebujete odstranit zdrojový soubor po úspěšné kopie, vytvořte vlastní aktivity odstranit soubor a použijte aktivitu v kanálu. 
+> Aktivita kopírování nedojde k odstranění zdrojového souboru, co se úspěšně zkopíruje do cíle. Pokud je potřeba odstranit zdrojový soubor po úspěšném kopírování, vytvoření vlastní aktivity a stejný soubor odstranit také pomocí aktivity v kanálu. 
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Podporované scénáře a typy ověřování
-Tento konektor SFTP můžete použít ke zkopírování dat z **i v cloudu pomocí protokolu SFTP servery a servery pomocí protokolu SFTP místní**. **Základní** a **parametru SshPublicKey** typy ověřování jsou podporovány při připojování k serveru pomocí protokolu SFTP.
+Můžete použít ke zkopírování dat z tohoto konektoru SFTP **i cloudové servery SFTP a SFTP v místním**. **Základní** a **SshPublicKey** typy ověřování jsou podporovány při připojování k serveru SFTP.
 
-Při kopírování dat z místního serveru pomocí protokolu SFTP, je nutné nainstalovat brána pro správu dat v prostředí nebo Azure místní počítač. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) podrobnosti na bráně. V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) článku podrobné pokyny k nastavení brány a jeho použití.
+Kopírování dat ze na místním serveru SFTP, třeba instalace brány pro správu dat v prostředí/Azure v místním virtuálním počítači. Zobrazit [brána správy dat](data-factory-data-management-gateway.md) podrobné informace o bráně. V tématu [přesouvání dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny k nastavením brány a jeho použití.
 
 ## <a name="getting-started"></a>Začínáme
-Vytvoření kanálu s aktivitou kopírování, který přesouvá data z protokolu SFTP zdroje pomocí různých nástrojů nebo rozhraní API.
+Vytvoření kanálu s aktivitou kopírování, který přesouvá data z SFTP zdroje pomocí různých nástrojů a rozhraní API.
 
-- Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
+- Nejjednodušší způsob, jak vytvořit kanál, je použít **Průvodce kopírováním**. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírováním data.
 
-- Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. JSON ukázky ke zkopírování dat z protokolu SFTP serveru do Azure Blob Storage, najdete v části [JSON příklad: kopírování dat ze serveru pomocí protokolu SFTP do objektu blob Azure](#json-example-copy-data-from-sftp-server-to-azure-blob) tohoto článku.
+- Tyto nástroje můžete také použít k vytvoření kanálu: **Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **rozhraní .NET API**a  **Rozhraní REST API**. Zobrazit [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. Ukázky JSON pro kopírování dat ze serveru SFTP do Azure Blob Storage najdete v tématu [příklad JSON: Kopírování dat ze serveru SFTP do objektů blob v Azure](#json-example-copy-data-from-sftp-server-to-azure-blob) části tohoto článku.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu FTP.
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- | --- |
-| type | Vlastnost typu musí být nastavená na `Sftp`. |Ano |
-| hostitel | Název nebo IP adresa serveru pomocí protokolu SFTP. |Ano |
-| port |Port, na kterém naslouchá server pomocí protokolu SFTP. Výchozí hodnota je: 21 |Ne |
-| authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **základní**, **parametru SshPublicKey**. <br><br> Odkazovat na [základní ověřování pomocí](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) částech na další vlastnosti a ukázky JSON v uvedeném pořadí. |Ano |
-| skipHostKeyValidation | Určete, zda chcete přeskočit ověření klíče hostitele. | Ne. Výchozí hodnota: false |
-| hostKeyFingerprint | Zadejte prstu klíče hostitele. | Ano, pokud `skipHostKeyValidation` nastaven na hodnotu false.  |
-| gatewayName |Název brány pro správu dat pro připojení k serveru pomocí protokolu SFTP místně. | Ano, pokud kopírování dat z místního serveru pomocí protokolu SFTP. |
-| encryptedCredential | Šifrovaný přihlašovací údaje pro přístup k serveru pomocí protokolu SFTP. Automaticky generovaný když zadáte v Průvodci kopírovat nebo dialogové okno místní ClickOnce základní ověřování (uživatelské jméno a heslo) nebo ověřování parametru SshPublicKey (uživatelské jméno + cesta privátního klíče nebo obsah). | Ne. Platí jenom v případě, že kopírování dat z místního serveru pomocí protokolu SFTP. |
+| type | Vlastnost type musí být nastavená na `Sftp`. |Ano |
+| hostitel | Název nebo IP adresa serveru SFTP. |Ano |
+| port |Port, na kterém naslouchá SFTP server. Výchozí hodnota je: 21 |Ne |
+| authenticationType. |Zadejte typ ověřování. Povolené hodnoty: **Základní**, **SshPublicKey**. <br><br> Odkazovat na [použití základního ověřování](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) oddíly na více vlastností a ukázky JSON v uvedeném pořadí. |Ano |
+| skipHostKeyValidation | Určete, jestli chcete přeskočit ověřování klíče hostitele. | Ne. Výchozí hodnota: NEPRAVDA |
+| Mělo | Zadejte hlas klíče hostitele. | Ano, pokud `skipHostKeyValidation` je nastavena na hodnotu false.  |
+| Název brány |Název brány správy dat pro připojení místnímu serveru SFTP. | Ano, pokud se kopírování dat z místní server SFTP. |
+| encryptedCredential | Šifrované přihlašovací údaje pro přístup k serveru SFTP. Automaticky generované při zadání základní ověřování (uživatelské jméno a heslo) nebo SshPublicKey ověřování (uživatelské jméno + privátní cesta ke klíči nebo obsah) v Průvodci kopírovat nebo dialogové okno automaticky otevírané okno ClickOnce. | Ne. Platí pouze při kopírování dat z místní server SFTP. |
 
 ### <a name="using-basic-authentication"></a>Použití základního ověřování
 
-Chcete-li základní ověřování použijte, nastavte `authenticationType` jako `Basic`a zadejte následující vlastnosti kromě konektor SFTP obecné ty, které jsou zavedené v poslední části:
+Chcete-li použít základní ověřování, nastavte `authenticationType` jako `Basic`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- | --- |
-| uživatelské jméno | Uživatel, který má přístup k serveru pomocí protokolu SFTP. |Ano |
+| uživatelské jméno | Uživatel, který má přístup k serveru SFTP. |Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). | Ano |
 
 #### <a name="example-basic-authentication"></a>Příklad: Základní ověřování
@@ -111,21 +110,21 @@ Chcete-li základní ověřování použijte, nastavte `authenticationType` jako
 }
 ```
 
-### <a name="using-ssh-public-key-authentication"></a>Pomocí ověření veřejného klíče SSH
+### <a name="using-ssh-public-key-authentication"></a>Použití ověřování pomocí veřejného klíče SSH
 
-Chcete-li použít ověření veřejného klíče SSH, nastavte `authenticationType` jako `SshPublicKey`a zadejte následující vlastnosti kromě konektor SFTP obecné ty, které jsou zavedené v poslední části:
+Chcete-li použít ověřování pomocí veřejného klíče SSH, nastavte `authenticationType` jako `SshPublicKey`a zadejte následující požadované vlastnosti kromě konektoru SFTP obecných představíme v poslední části:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- | --- |
-| uživatelské jméno |Uživatel, který má přístup k serveru pomocí protokolu SFTP |Ano |
-| privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte buď `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí jenom v případě, že kopírování dat z místního serveru pomocí protokolu SFTP. |
-| privateKeyContent | Serializovaná řetězec privátní klíče obsahu. Průvodce kopírováním můžete číst soubor privátního klíče a automaticky extrahování privátní klíče obsahu. Pokud používáte jakékoli jiné nástroje nebo SDK, použijte vlastnost privateKeyPath. | Zadejte buď `privateKeyPath` nebo `privateKeyContent`. |
-| přístupové heslo | Zadejte průchodu fráze nebo hesla k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. | Ano, pokud heslo je chráněný soubor privátního klíče. |
+| uživatelské jméno |Uživatel, který má přístup k serveru SFTP |Ano |
+| privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče můžete přístup k této brány. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. <br><br> Platí pouze při kopírování dat z místní server SFTP. |
+| privateKeyContent | Serializovaný řetězec soukromého klíče obsahu. Průvodce kopírováním může číst soubor privátního klíče a automaticky extrahovat obsah privátního klíče. Pokud používáte žádné další nástroj nebo sadu SDK, použijte vlastnost privateKeyPath. | Zadejte, jestli `privateKeyPath` nebo `privateKeyContent`. |
+| přístupové heslo | Zadejte pass frázi/heslo k dešifrování privátního klíče, pokud soubor klíče je chráněn heslo. | Ano, pokud se soubor privátního klíče je chráněn heslo. |
 
 > [!NOTE]
-> Pomocí protokolu SFTP konektor podporuje klíč RSA/DSA OpenSSH. Ujistěte se, že obsah souboru klíče začíná "---BEGIN [RSA/DSA] PRIVÁTNÍ klíč,". Pokud soubor privátního klíče je soubor ve formátu ppk, použijte prosím Putty nástroj pro převod z .ppk OpenSSH formátu.
+> Konektor SFTP podporuje RSA/DSA OpenSSH key. Ujistěte se, že obsah souboru klíče začíná řetězcem "---začátek [RSA/DSA] PRIVÁTNÍ klíč---". Pokud soubor privátního klíče je ppk formátový soubor, použijte prosím Putty nástroj pro převod z .ppk s formátem OpenSSH.
 
-#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>Příklad: Parametru SshPublicKey ověřování pomocí privátního klíče filePath
+#### <a name="example-sshpublickey-authentication-using-private-key-filepath"></a>Příklad: SshPublicKey ověřování pomocí privátního klíče filePath
 
 ```json
 {
@@ -146,7 +145,7 @@ Chcete-li použít ověření veřejného klíče SSH, nastavte `authenticationT
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Příklad: Parametru SshPublicKey ověřování pomocí privátního klíče obsahu
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>Příklad: SshPublicKey ověřování pomocí privátního klíče obsahu
 
 ```json
 {
@@ -167,27 +166,27 @@ Chcete-li použít ověření veřejného klíče SSH, nastavte `authenticationT
 ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datové sady.
 
-**Rámci typeProperties** části se liší pro jednotlivé typy datovou sadu. Poskytuje informace, které jsou specifické pro daný typ datové sady. Rámci typeProperties část datové sady typu **sdílení souborů** datová sada má následující vlastnosti:
+**TypeProperties** oddílu se liší pro každý typ datové sady. Poskytuje informace, které jsou specifické pro daný typ datové sady. V části datové sady typu typeProperties **sdílení souborů** datovou sadu má následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| folderPath |Sub – cesta ke složce. Použít řídicí znak ' \ ' pro speciální znaky v řetězci. V tématu [ukázka propojené definice služby a datovou sadu](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Tato vlastnost se můžete kombinovat **partitionBy** tak, aby měl složky cesty založené na řez počáteční nebo koncové hodnoty data a času. |Ano |
-| fileName |Zadejte název souboru do **folderPath** Pokud chcete, aby v tabulce odkazovat na konkrétní soubor ve složce. Pokud nezadáte žádnou hodnotu pro tuto vlastnost, tabulka odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů, název vygenerovaný soubor bude v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
-| fileFilter |Zadejte filtr pro umožňuje vybrat podmnožinu souborů v folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter se vztahuje vstupní datové sady sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
-| partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časové řady. Například folderPath parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formát](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. |Ne |
-| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
-| useBinaryTransfer |Určit, jestli použít režim binární přenosu. Platí pro binárního režimu a false ASCII. Výchozí hodnota: True. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
+| folderPath |Podřízená cesta ke složce. Použijte řídicí znak "\" pro zvláštní znaky v řetězci. Zobrazit [ukázka propojené služby a datové sady definice](#sample-linked-service-and-dataset-definitions) příklady.<br/><br/>Můžete zkombinovat tato vlastnost se **partitionBy** mít složku cesty založené na řez počátečním/koncovém data a časy. |Ano |
+| fileName |Zadejte název souboru **folderPath** Pokud má tabulka, která má odkazovat na konkrétní soubor ve složce. Pokud je nezadávejte žádnou hodnotu pro tuto vlastnost, v tabulce odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro výstupní datovou sadu, název generovaného souboru by měl být v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
+| fileFilter |Určete filtr, který slouží k výběru podmnožinu souborů v cestě folderPath, nikoli všech souborů.<br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklady 1: `"fileFilter": "*.log"`<br/>Příklad 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter platí pro vstupní datovou sadu sdílení souborů. Tato vlastnost není podporována s HDFS. |Ne |
+| partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časových řad. Například folderPath s parametry pro každou hodinu data. |Ne |
+| formát | Jsou podporovány následující typy formátů: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnosti v části formát na jednu z těchto hodnot. Další informace najdete v tématu [textový formát](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formát](data-factory-supported-file-and-compression-formats.md#orc-format), a [formát Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **kopírovat soubory jako-je** mezi souborové úložištěm (binární kopie) a přeskočit část o formátu v definicích oba vstupní a výstupní datové sady. |Ne |
+| Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimální** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| useBinaryTransfer |Určete, jestli použít režim binární přenos. Hodnota true pro binárním režimu a false ASCII. Výchozí hodnota: Hodnota TRUE. Tuto vlastnost lze použít pouze v případě typu přidružené propojené služby typu: Server_ftp. |Ne |
 
 > [!NOTE]
 > Název souboru a fileFilter nelze použít současně.
 
 ### <a name="using-partionedby-property"></a>Pomocí vlastnosti partionedBy
-Jak je uvedeno v předchozí části, můžete zadat dynamické folderPath, název souboru pro data časové řady s partitionedBy. Můžete tak učinit pomocí makra pro vytváření dat a systémové proměnné SliceStart, SliceEnd, který označuje logické časové období pro daný datový řez.
+Jak je uvedeno v předchozí části, můžete zadat dynamické folderPath, název souboru pro data časových řad s partitionedBy. Lze provést pomocí makra objektu pro vytváření dat a systémové proměnné SliceStart, SliceEnd, které označují logické časové období pro daný datový řez.
 
-Další informace o datové sady času řady, plánování a řezy najdete v tématu [vytváření datových sad](data-factory-create-datasets.md), [plánování a provádění](data-factory-scheduling-and-execution.md), a [vytváření kanálů](data-factory-create-pipelines.md) články.
+Další informace o čase řady datových sad, plánování a řezů, naleznete v tématu [vytváření datových sad](data-factory-create-datasets.md), [plánování a provádění](data-factory-scheduling-and-execution.md), a [vytváření kanálů](data-factory-create-pipelines.md) článků.
 
 #### <a name="sample-1"></a>Příklad 1:
 
@@ -198,7 +197,7 @@ Další informace o datové sady času řady, plánování a řezy najdete v té
     { "name": "Slice", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyyMMddHH" } },
 ],
 ```
-V tomto příkladu {řez} se nahradí hodnotu objektu pro vytváření dat systému proměnné SliceStart ve formátu (YYYYMMDDHH) zadán. Vlastnosti SliceStart odkazuje na spuštění řezu. FolderPath se liší pro každý řez. Příklad: wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.
+V tomto příkladu {řez} se nahradí hodnotu proměnné objektu pro vytváření dat systému SliceStart ve formátu (YYYYMMDDHH) zadaná. Vlastnosti SliceStart odkazuje na počáteční čas řezu. V cestě folderPath se liší pro každý řez. Příklad: wikidatagateway/wikisampledataout/2014100103 nebo wikidatagateway/wikisampledataout/2014100104.
 
 #### <a name="sample-2"></a>Příklad 2:
 
@@ -213,42 +212,42 @@ V tomto příkladu {řez} se nahradí hodnotu objektu pro vytváření dat syst�
     { "name": "Hour", "value": { "type": "DateTime", "date": "SliceStart", "format": "hh" } }
 ],
 ```
-V tomto příkladu jsou extrahován rok, měsíc, den a čas SliceStart do samostatné proměnné, které jsou používány folderPath a název vlastnosti.
+V tomto příkladu rok, měsíc, den a čas z vlastnosti SliceStart extrahován do samostatných proměnné, které jsou používány vlastnosti folderPath a název souboru.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
-Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, například název, popis, vstupní a výstupní tabulky a zásad jsou dostupné pro všechny typy aktivit.
+Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [vytváření kanálů](data-factory-create-pipelines.md) článku. Vlastnosti, jako je název, popis, vstupní a výstupní tabulky a zásady jsou k dispozici pro všechny typy aktivit.
 
-Vzhledem k tomu, vlastnosti dostupné v rámci typeProperties části aktivity se liší podle každý typ aktivity. Pro aktivitu kopírování vlastnosti typu lišit v závislosti na typech zdrojů a jímky.
+Vzhledem k tomu, k dispozici vlastnosti v části typeProperties aktivity se liší s jednotlivými typu aktivity. Pro aktivitu kopírování typ vlastnosti lišit v závislosti na typy zdroje a jímky.
 
 [!INCLUDE [data-factory-file-system-source](../../../includes/data-factory-file-system-source.md)]
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
-V tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek na podrobnosti.
+Zobrazit [formáty souborů a komprese ve službě Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek věnovaný tomu podrobnosti.
 
-## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>Příklad JSON: Kopírování dat ze serveru pomocí protokolu SFTP do objektů blob v Azure
-Následující příklad uvádí ukázka JSON definice, které můžete použít k vytvoření kanálu pomocí [portál Azure](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Se ukazují, jak zkopírovat data ze zdroje SFTP do Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** ze všech zdrojů do jakéhokoli z jímky uvádí [sem](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v Azure Data Factory.
+## <a name="json-example-copy-data-from-sftp-server-to-azure-blob"></a>Příklad JSON: Kopírování dat ze serveru SFTP do objektů blob v Azure
+Následující příklad obsahuje ukázky JSON definice, které můžete použít k vytvoření kanálu pomocí [webu Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) nebo [sady Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) nebo [prostředí Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Zobrazí se kopírování dat ze zdroje SFTP do Azure Blob Storage. Nicméně je možné zkopírovat data **přímo** z libovolného zdroje do libovolné jímky uvedeno [tady](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivit kopírování ve službě Azure Data Factory.
 
 > [!IMPORTANT]
-> Tato ukázka obsahuje fragmenty kódu JSON. Podrobné pokyny pro vytvoření objektu pro vytváření dat neobsahuje. V tématu [přesouvání dat mezi místní umístění a cloudem](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny najdete v článku.
+> Tato ukázka poskytuje fragmenty kódu JSON. Neobsahuje podrobné pokyny pro vytvoření datové továrny. Zobrazit [přesun dat mezi místními umístěními a cloudu](data-factory-move-data-between-onprem-and-cloud.md) najdete podrobné pokyny.
 
-Ukázka má následující entity objektu pro vytváření dat:
+Ukázka obsahuje následující entit datové továrny:
 
 * Propojené služby typu [sftp](#linked-service-properties).
-* Propojené služby typu [azurestorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Vstup [datovou sadu](data-factory-create-datasets.md) typu [sdílení souborů](#dataset-properties).
+* Propojené služby typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Vstupní hodnota [datovou sadu](data-factory-create-datasets.md) typu [sdílení souborů](#dataset-properties).
 * Výstup [datovou sadu](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * A [kanálu](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [FileSystemSource](#copy-activity-properties) a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Ukázka kopíruje data ze serveru pomocí protokolu SFTP do objektu blob Azure každou hodinu. Vlastnostech JSON použitých ve tyto ukázky jsou popsané v části následující ukázky.
+Ukázce kopíruje data ze serveru SFTP do objektu blob Azure každou hodinu. Vlastnostech JSON použitých v tyto ukázky jsou popsány v části podle ukázky.
 
 **SFTP propojené služby**
 
-Tento příklad používá základní ověřování s uživatelské jméno a heslo v prostém textu. Můžete také použít jednu z následujících způsobů:
+Tento příklad používá základní ověřování pomocí uživatelského jména a hesla v prostém textu. Můžete také použít jednu z následujících způsobů:
 
-* Základní ověřování s zašifrované přihlašovací údaje
+* Základní ověřování se zašifrovanými přihlašovacími údaji
 * Ověření veřejného klíče SSH
 
-V tématu [FTP propojená služba](#linked-service-properties) části pro různé typy ověřování můžete použít.
+Zobrazit [FTP propojená služba](#linked-service-properties) oddílu pro různé typy ověřování můžete použít.
 
 ```JSON
 
@@ -282,11 +281,11 @@ V tématu [FTP propojená služba](#linked-service-properties) části pro různ
   }
 }
 ```
-**Vstupní datové sady pomocí protokolu SFTP**
+**Vstupní datová sada SFTP**
 
-Tato datová sada odkazuje na složku SFTP `mysharedfolder` a soubor `test.csv`. Kanál zkopíruje soubor do cílového umístění.
+Tato datová sada odkazuje na složku SFTP `mysharedfolder` a soubor `test.csv`. Kanál kopíruje soubor do cílového umístění.
 
-Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je externí k objektu pro vytváření dat a není vyprodukované aktivitu v datové továrně.
+Nastavení "externí": "PRAVDA" informuje služby Data Factory, že datová sada je externí do služby data factory a není vytvořen aktivitou ve službě data factory.
 
 ```JSON
 {
@@ -309,7 +308,7 @@ Nastavení "externí": "PRAVDA" informuje služba Data Factory, datová sada je 
 
 **Výstupní datová sada Azure Blob**
 
-Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, interval: 1). Cesta ke složce pro tento objekt blob je vyhodnocován dynamicky podle času zahájení řezu, které jsou zpracovávány. Cesta ke složce používá rok, měsíc, den a čas částí čas spuštění.
+Data se zapisují do nového objektu blob každou hodinu (frekvence: hodina, interval: 1). Cesta ke složce pro objekt blob se dynamicky vyhodnocuje na základě doby spuštění řez, který se právě zpracovává. Cesta ke složce používá rok, měsíc, den a části hodin čas spuštění.
 
 ```JSON
 {
@@ -369,7 +368,7 @@ Data se zapisují do nového objektu blob každou hodinu (frekvence: hodiny, int
 
 **Kanál s aktivitou kopírování**
 
-Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití vstupní a výstupní datové sady a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **FileSystemSource** a **podřízený** je typ nastaven na **BlobSink**.
+Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na použití vstupních a výstupních datových sad a je naplánováno spuštění každou hodinu. V definici JSON kanálu **zdroj** je typ nastaven na **FileSystemSource** a **jímky** je typ nastaven na **BlobSink**.
 
 ```JSON
 {
@@ -409,10 +408,10 @@ Kanál obsahuje aktivitu kopírování, který je nakonfigurovaný na použití 
 }
 ```
 
-## <a name="performance-and-tuning"></a>Výkon a ladění
-V tématu [výkonu kopie aktivity & ladění průvodce](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů, že dopad výkon přesun dat (aktivita kopírování) v Azure Data Factory a různé způsoby, jak optimalizovat ho.
+## <a name="performance-and-tuning"></a>Výkon a optimalizace
+Zobrazit [výkonem aktivity kopírování & Průvodci optimalizací](data-factory-copy-activity-performance.md) Další informace o klíčových faktorů této ovlivnit výkon přesouvání dat (aktivita kopírování) ve službě Azure Data Factory a různé způsoby, jak optimalizovat.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-* [Kopie aktivity kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny pro vytvoření kanálu s aktivitou kopírování.
+* [Kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny pro vytvoření kanálu s aktivitou kopírování.

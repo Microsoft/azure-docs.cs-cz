@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: d306629e552686e180a3927108fca276bcad2aa5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e91f6ecb4ff510b1ba93b56d0bfb0bda0a156cf1
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971695"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54019822"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
@@ -46,7 +46,7 @@ Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDepe
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček NuGet.
 
 ### <a name="performance-collector"></a>Výkon kolektoru
-[Shromažďuje čítače výkonu systému](../../application-insights/app-insights-performance-counters.md) , jako například procesoru, paměti a sítě z instalace služby IIS. Můžete zadat které čítače, které chcete shromažďovat, včetně čítačů výkonu, které jste vytvořili sami.
+[Shromažďuje čítače výkonu systému](../../azure-monitor/app/performance-counters.md) , jako například procesoru, paměti a sítě z instalace služby IIS. Můžete zadat které čítače, které chcete shromažďovat, včetně čítačů výkonu, které jste vytvořili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
@@ -125,7 +125,7 @@ Standardní inicializátory vše je nastaveno buď pomocí webové nebo WindowsS
 * `OperationNameTelemetryInitializer` aktualizace `Name` vlastnost `RequestTelemetry` a `Name` vlastnost `Operation` kontextu všech položkách telemetrie podle metody HTTP, jakož i názvy kontroler ASP.NET MVC a akce vyvolat a zpracovat požadavek.
 * `OperationIdTelemetryInitializer` nebo `OperationCorrelationTelemetryInitializer` aktualizace `Operation.Id` kontextu vlastnosti všech položkách telemetrie sledovat při zpracovávání žádosti pomocí automaticky generovaného `RequestTelemetry.Id`.
 * `SessionTelemetryInitializer` aktualizace `Id` vlastnost `Session` kontext pro všechny položky telemetrie s hodnotou extrahují z `ai_session` vygenerovaný kód instrumentace ApplicationInsights JavaScript spuštěný v prohlížeči uživatele soubor cookie.
-* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizace `User`, `Session`, a `Operation` kontexty vlastnosti všech položkách telemetrie sledovat při zpracovávání konkrétní žádosti ze syntetického zdroje, jako například testování dostupnosti nebo hledání modulu bot. Ve výchozím nastavení [Průzkumníka metrik](../../application-insights/app-insights-metrics-explorer.md) nezobrazuje syntetické telemetrie.
+* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizace `User`, `Session`, a `Operation` kontexty vlastnosti všech položkách telemetrie sledovat při zpracovávání konkrétní žádosti ze syntetického zdroje, jako například testování dostupnosti nebo hledání modulu bot. Ve výchozím nastavení [Průzkumníka metrik](../../azure-monitor/app/metrics-explorer.md) nezobrazuje syntetické telemetrie.
 
     `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
 * `UserTelemetryInitializer` aktualizace `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie se extrahují z hodnoty `ai_user` vygenerovaný kód instrumentace Application Insights JavaScript spuštěný v uživatele soubor cookie prohlížeč.
@@ -154,7 +154,7 @@ Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle
 
 Parametr obsahuje cíl, který algoritmus se snaží dosáhnout. Každou instanci sady SDK funguje nezávisle na sobě, takže pokud je server clusteru několik počítačů, skutečný objem telemetrických dat bude vynásobené odpovídajícím způsobem.
 
-[Další informace o vzorkování](../../application-insights/app-insights-sampling.md).
+[Další informace o vzorkování](../../azure-monitor/app/sampling.md).
 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Procesor-frekvence vzorkování telemetrie (od 2.0.0-beta1)
 K dispozici je také standardní [vzorkování procesoru telemetrie](../../azure-monitor/app/api-filtering-sampling.md) (z 2.0.1):
@@ -233,7 +233,7 @@ Určuje maximální velikost v Megabajtech, která je vymezena do trvalého úlo
 
 #### <a name="local-forwarder"></a>Místní předávání
 
-[Místní server pro předávání](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Když pomocí Application Insights Java SDK s velkou provázaností místní předávání poskytuje plnou podporu pro [Live Metrics](../../application-insights/app-insights-live-stream.md) a adaptivní vzorkování.
+[Místní server pro předávání](https://docs.microsoft.com/azure/application-insights/opencensus-local-forwarder) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. Když pomocí Application Insights Java SDK s velkou provázaností místní předávání poskytuje plnou podporu pro [Live Metrics](../../azure-monitor/app/live-stream.md) a adaptivní vzorkování.
 
 ```xml
 <Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">

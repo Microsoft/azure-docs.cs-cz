@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0113fc3112fa0fa911d6609684357d01cd9adf30
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970624"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015708"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +43,7 @@ Pokud vás zajímá dodržování předpisů Azure a jak zabezpečuje svou vlast
 V tomto článku jsme projděte si informace o zabezpečení v následujících scénářích Přesun do dvou datových: 
 
 - **Scénář cloudu**: V tomto scénáři jsou veřejně přístupné prostřednictvím Internetu zdroj a cíl. Mezi ně patří služby spravované cloudové úložiště jako je Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, služeb SaaS, jako je Salesforce a webové protokoly, jako je například FTP a OData. Úplný seznam podporovaných zdrojů dat v [podporovaných úložišť dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Hybridní scénář**: V tomto scénáři zdroj nebo cíl je za bránou firewall nebo uvnitř podnikové sítě v místním prostředí. Nebo úložiště dat je v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
+- **Hybridní scénář**: V tomto scénáři je váš zdroj nebo cíl za bránou firewall nebo uvnitř podnikové sítě v místním prostředí. Nebo úložiště dat je v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupná. Databázové servery hostované ve virtuálních počítačích také spadají pod tento scénář.
 
 ## <a name="cloud-scenarios"></a>Cloudové scénáře
 

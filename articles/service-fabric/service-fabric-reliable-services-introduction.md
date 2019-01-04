@@ -1,6 +1,6 @@
 ---
-title: Přehled modelu programování Service Fabric spolehlivé Service | Microsoft Docs
-description: Další informace o programovací model spolehlivá služba Service Fabric a začněte psát vlastní služby.
+title: Přehled programovacího modelu Service Fabric Reliable Service | Dokumentace Microsoftu
+description: Další informace o programovacího modelu Service Fabric Reliable Service a začněte psát vlastní služby.
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
@@ -14,103 +14,103 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 474cc78a4ceb872742ca7eb10837eeb89dcc1bdb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213176"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999029"
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
-Azure Service Fabric zjednodušuje zápis a správu bezstavové a stavové spolehlivé služby. Toto téma obsahuje:
+Azure Service Fabric zjednodušuje vytváření a správu bezstavových a stavových Reliable Services. Toto téma obsahuje:
 
-* Spolehlivé služby programovací model pro bezstavové a stavové služby.
-* Volby, které je nutné provést při zápisu spolehlivě.
-* Některé scénáře a příklady použití spolehlivé služby a jak jsou napsány.
+* Programovací model Reliable Services pro bezstavové a stavové služby.
+* Volby, které je nutné provést při zápisu spolehlivé služby.
+* Některé scénáře a příklady použití modelu Reliable Services a jak jsou zapsány.
 
-Spolehlivé služby je programovací modely k dispozici v Service Fabric. Druhá je programovací model objektu Actor spolehlivé, která poskytuje virtuální programovací model objektu Actor model spolehlivé služby. Další informace o programovacího modelu Reliable Actors najdete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
+Reliable Services je jedním z programovacích modelů dostupných na platformě Service Fabric. Druhá je programovací model Reliable Actors, která poskytuje virtuální programovací model objektu Actor nad rámec modelu Reliable Services. Další informace o tomto programovacím modelu Reliable Actors, naleznete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-Service Fabric spravuje životnost služeb od zřízení a nasazení prostřednictvím aktualizace a odstranění, prostřednictvím [Správa aplikací Service Fabric](service-fabric-deploy-remove-applications.md).
+Service Fabric spravuje životnost služeb – od zřizování a nasazení díky upgradu a odstranění, prostřednictvím [správy aplikací Service Fabric](service-fabric-deploy-remove-applications.md).
 
-## <a name="what-are-reliable-services"></a>Jaké jsou spolehlivé služby?
-Spolehlivé služby poskytuje jednoduché, výkonné a nejvyšší úrovně programovací model můžete express, co je důležité k vaší aplikaci. Spolehlivé služby programovací model získáte:
+## <a name="what-are-reliable-services"></a>Co jsou Reliable Services?
+Reliable Services poskytuje jednoduché, výkonné a nejvyšší úrovně programovací model, který pomáhá lépe vyjádřit, co je důležité pro vaši aplikaci. Programovacího modelu Reliable Services získáte:
 
-* Přístup k zbytek Service Fabric programovací rozhraní API. Na rozdíl od služby Service Fabric modelován jako [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md), spolehlivé služby získat zbytek rozhraní API služby prostředků infrastruktury používat přímo. To umožňuje službám:
+* Přístup ke zbytku programovacího rozhraní API pro Service Fabric. Na rozdíl od služeb Service Fabric nemodelují jako [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md), získat přímo pomocí rest API služby Service Fabric Reliable Services. To umožňuje službám:
   * dotaz na systém
-  * Sestava stavu o entitách v clusteru
-  * přijímání oznámení o změnách konfigurace a kódu
+  * Stav sestavy o entitách v clusteru
+  * přijímat oznámení o změnách konfigurace a kódu
   * Najít a komunikovat s jinými službami
-  * (volitelně) použít [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md)
-  * .. a bude mít přístup k řadu dalších funkcí z první třídy programovací model v několika programovací jazyky.
-* Jednoduchý model pro spuštění vlastního kódu, který vypadá jako programovací modely, které se používají k. Váš kód má jasně definované vstupní bod a jednoduše spravované životního cyklu.
-* Modulární komunikační model. Používají přenos podle vaší volby, jako je například HTTP s [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md), Websocket, vlastní protokoly TCP, nebo cokoliv jiného. Spolehlivé služby poskytují některé skvělé možnosti se na pole můžete použít, nebo můžete zadat vlastní.
-* Spolehlivé služby programovací model pro stavové služby, umožňuje konzistentní a spolehlivě ukládat vašemu stavu právo uvnitř vaší služby pomocí [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md). Spolehlivé kolekce jsou jednoduchou sadou třídy vysoce dostupné a spolehlivého kolekce, které budou pro každý, kdo má používá kolekce C#. Tradičně služby pro správu spolehlivé stavu potřeba externími systémy. S spolehlivé kolekce se dají ukládat vašemu stavu vedle výpočetní stejnou vysokou dostupnost a spolehlivost, které jste si zvykli z úložiště s vysokou dostupností externí. Tento model taky zlepšuje latence, protože jsou společné umísťování výpočty a stavu, ve kterém musí fungovat.
+  * (volitelně) použít [Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
+  * .. .a pak se jim poskytne přístup k mnoha dalších funkcí z první třídy programovacím modelu v různých programovacích jazyků.
+* Jednoduchý model pro spouštění vlastního kódu, který vypadá jako programovací modely, které jste zvyklí. Váš kód je dobře definovaný vstupní bod a snadno spravovatelné životního cyklu.
+* Modulární komunikační model. Použít transport podle vašeho výběru, jako je například HTTP s [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md), protokoly Websocket, vlastní protokoly TCP, nebo cokoli jiného. Reliable Services poskytují některé skvělé možnosti out-of-the-box můžete použít, nebo můžete zadat vlastní.
+* Programovací model Reliable Services pro stavové služby, umožňuje konzistentně a spolehlivě ukládat svůj stav přímo v službě s použitím [Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Spolehlivé kolekce jsou jednoduché sady vysoce dostupných a spolehlivých tříd kolekcí, které budou znát všichni, kdo použil C# kolekce. Tradičně služby k tomu externími systémy pro správu spolehlivé stavu. S Reliable Collections se dají ukládat svůj stav vedle výpočetní stejnou vysokou dostupnost a spolehlivost, kterou jste si zvykli z externích úložišť s vysokou dostupností. Tento model také zlepšuje latenci, protože jsou společně umístěných výpočetních a stavu, ve kterém musí fungovat.
 
-Podívejte se na toto video Microsoft Virtual Academy přehled spolehlivé služby: <center>
+Podívejte se na toto video Microsoft Virtual Academy přehledné informace o modelu Reliable services: <center>
 <a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
 <img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
 </a>
 </center>
 
-## <a name="what-makes-reliable-services-different"></a>Díky spolehlivé služby různých?
-Spolehlivé služby v Service Fabric se liší od služby, které může jste napsali před. Service Fabric nabízí spolehlivost, dostupnost, konzistence a škálovatelnost.
+## <a name="what-makes-reliable-services-different"></a>Co vlastně rozdíl Reliable Services?
+Reliable Services v Service Fabric se liší od služby, který může mít napsali před. Service Fabric nabízí spolehlivosti, dostupnosti, konzistence a škálovatelnost.
 
-* **Spolehlivost** – vaše služba zůstane nahoru i v nespolehlivé prostředích, kde vaše počítače selhat nebo stiskněte tlačítko problémů se sítí nebo v případech, kdy dojde k chybám a havárií služby sami, nebo selhání. Pro stavové služby je zachovaná vašemu stavu i v případě sítě nebo jiné chyby.
-* **Dostupnost** – vaše služba je dostupná a dobře reagovaly. Service Fabric spravuje vaše požadovaný počet spuštěná kopie.
-* **Škálovatelnost** – služby, které jsou odpojené od konkrétní hardware, a můžou růst nebo zmenšení podle potřeby prostřednictvím přidání nebo odebrání hardwaru nebo jiným prostředkům. Služby jsou snadno rozdělena na oddíly (zejména v případě stateful) k zajištění, že můžete škálovat službu a řešit částečné selhání. Služby lze vytvořit a odstranit dynamicky prostřednictvím kódu, povolení více instancí k spuštěné podle potřeby můžete v reakci na požadavky zákazníků. Nakonec Service Fabric podporuje services lightweight. Service Fabric umožňuje tisíce služby, které se má zřídit v jednom procesu, nikoli vyžadují nebo vyhradit celý instancí operačního systému nebo procesy do jediné instance služby.
-* **Konzistence** -jakékoli informace uložené v rámci této služby můžete být musí být konzistentní. To platí i napříč více spolehlivé kolekcí v rámci služby. Změny mezi kolekcemi v rámci služby mohou být provedeny transakčně atomic způsobem.
+* **Spolehlivost** – vaše služba zůstane až i v nespolehlivé prostředích, kde své počítače selže nebo stiskněte tlačítko problémy se sítí nebo v případech, kdy vlastních služeb dojde k chybám a chyb nebo selhání. Pro stavové služby je stav svého zachovány i v případě výskytu sítě nebo jiné chyby.
+* **Dostupnost** – je vaše služba dostupná a rychlost reakce. Service Fabric spravuje vaše požadovaný počet běžících kopie.
+* **Škálovatelnost** – služby jsou oddělené od konkrétní hardware, a může zvětšovat nebo zmenšovat se podle potřeby prostřednictvím přidání nebo odebrání hardwaru nebo jiným prostředkům. Služby jsou snadno rozdělit na oddíly (zejména v případě stavové) k zajištění, že můžete škálovat služby a zpracování částečného selhání. Služby lze vytvořit a odstranit dynamicky prostřednictvím kódu, povolení další instance, aby nahodíme podle potřeby, Řekněme, že v reakci na požadavky zákazníků. A konečně Service Fabric podporuje služby jako jednoduchý. Service Fabric umožňuje tisíce služeb, které se mají zřídit v rámci jednoho procesu, spíše než vyžadující nebo přidělíte celou instancí operačního systému nebo procesy na jednu instanci služby.
+* **Konzistence** – jakékoli informace uložené v této službě mohou být zaručena konzistence. To platí dokonce i v několika spolehlivé kolekce v rámci služby. Transakčně atomické způsobem můžete provádět změny mezi kolekcemi v rámci služby.
 
 ## <a name="service-lifecycle"></a>Životní cyklus služby
-Jestli stateful nebo bezstavové služby se poskytují spolehlivé služby jednoduché životního cyklu, které vám umožní rychle zařaďte kódu a začít pracovat.  Existují jen jednu nebo dvě metody, které potřebujete k implementaci pro zprovoznění služby.
+Jestli je vaše služba stavových nebo bezstavových, Reliable Services poskytují jednoduchý životního cyklu, které vám umožní rychle zařadit váš kód a začít pracovat.  Existují jenom jednu nebo dvě metody, které potřebujete k implementaci pro zprovoznění služby.
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** -tato metoda je, kde služba definuje stack(s) komunikaci, která chce používat. Komunikace zásobníku, jako například [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md), je co definuje naslouchání koncového bodu nebo koncové body pro službu (jak klienti moci připojit službu). Také definuje způsob, jakým zprávy, které se zobrazují komunikovat s ostatními kódu služby.
-* **RunAsync** -tato metoda je, kde vaše služba spustí své obchodní logiky a kde by nové úlohy na pozadí, které měly být spuštěny po dobu jeho existence služby. Token zrušení, který je k dispozici je signál pro Pokud by se měla zastavit svou práci. Například pokud služba potřebuje načítat zprávy z fronty spolehlivé a jejich zpracování, toto je, kde se stane svou práci.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – tato metoda je, kde služba definuje stack(s) komunikace, která chce použít. Zásobník komunikace, jako například [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md), co definuje koncový bod naslouchací nebo koncové body služby (jak klienti zpřístupnění služby). Definuje také interakci zprávy, které se zobrazují se zbytkem kódu služby.
+* **RunAsync** – tato metoda je, kde běží vaše služba jeho obchodní logiku, a kde by aktivovat úlohy na pozadí, kterými by měly běžet po dobu životnosti služby. Token zrušení, který je k dispozici je signál pro kdy by se měla zastavit, které pracují. Například pokud služba potřebuje zpráv z fronty spolehlivé a jejich zpracování, to je, kde se stane, které pracují.
 
-Pokud studujete spolehlivé služby poprvé, přečtěte si na! Pokud hledáte podrobný návod životního cyklu spolehlivé služby, můžete zamiřte na [v tomto článku](service-fabric-reliable-services-lifecycle.md).
+Pokud jste získat informace o modelu reliable services poprvé, přečtěte si o! Pokud hledáte podrobný návod k životní cyklus reliable services, můžete přejít na [v tomto článku](service-fabric-reliable-services-lifecycle.md).
 
 ## <a name="example-services"></a>Příklad služby
-Znalost Tento programovací model, podívejme rychlý přehled dva různé služby, pokud chcete zobrazit, jak tyto součásti zapadají.
+Znalost Tento programovací model, Pojďme rychlý pohled na dvě různé služby, pokud chcete zobrazit, jak přizpůsobit tyto kusy dohromady.
 
-### <a name="stateless-reliable-services"></a>Bezstavové spolehlivé služby
-Bezstavové služby je jeden, kdy není žádný stav uchovávaných v rámci služby v rámci volání. Žádný stav, který je k dispozici je zcela na jedno použití a nevyžaduje synchronizace replikace, trvalost nebo vysokou dostupnost.
+### <a name="stateless-reliable-services"></a>Bezstavové modelu Reliable Services
+Jednoho, kde je Bezstavová služba neexistuje žádný stav uchovávaných v rámci služby v rámci volání. Jakýkoli stav, který je k dispozici je úplně uvolnitelné a nevyžaduje, aby synchronizace, replikace, trvalého nebo vysokou dostupnost.
 
-Představte si třeba kalkulačky, která má nedostatek paměti a přijímá všechny podmínky a provést najednou.
+Představte si třeba kalkulačku, která nemá žádné paměti a přijímá všechny podmínky a operace mají provést najednou.
 
-V takovém případě `RunAsync()` (C#) nebo `runAsync()` (Java) služby nesmí být prázdné, protože neexistuje žádná úloha zpracování na pozadí kterou služba potřebuje. Když je vytvořen službu kalkulačky, vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md)), otevře se koncový bod naslouchání na některé portu. Tento koncový bod naslouchání zachytí různé výpočetní metody (Příklad: "Přidat (n1, n2)"), definovat Kalkulačka na veřejné rozhraní API.
+V takovém případě `RunAsync()` (C#) nebo `runAsync()` (Java) služby nemůže být prázdný, protože neexistuje žádná úloha – zpracování na pozadí, které služba potřebuje pro výkon. Když se vytvoří službu kalkulačky, vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webového rozhraní API](service-fabric-reliable-services-communication-webapi.md)), který otevře koncový bod naslouchající na některé portu. Tento koncový bod naslouchací zavěšení na různé výpočetní metody (Příklad: "Přidat (n1, n2)"), které definují rozhraní kalkulačky veřejné rozhraní API.
 
-Při volání z klienta odpovídající metoda je volána a službu kalkulačky provádí operace na dostupných dat a vrátí výsledek. Jakýkoli stav nejsou uložena.
+Když je volána z klienta, je vyvolána vhodná metoda a službu kalkulačky provádí operace na dostupných dat a vrátí výsledek. Jakýkoli stav nejsou uložena.
 
-Neukládejte žádný vnitřní stav je tento příklad kalkulačky snadné. Ale většina služeb nejsou skutečně bezstavové. Místo toho využívajícím jejich stavu na některá další úložiště. (Například webové aplikace, které jsou závislé na zachování stavu relace v úložišti zálohování nebo mezipaměti není bezstavové.)
+Tato Kalkulačka příklad neukládejte žádné vnitřní stav zjednodušuje. Ale většina služeb nejsou skutečně bezstavové. Místo toho využívajícím svůj stav na některé další úložiště. (Například jakékoli webové aplikaci, která závisí na uchování stavu relace v záložním úložišti nebo v mezipaměti není bezstavové.)
 
-Běžným příkladem jak bezstavové služby se používají v Service Fabric je jako front-end, zpřístupní veřejné rozhraní API pro webovou aplikaci. Front-endová služba potom komunikuje se stavové služby k dokončení požadavku uživatele. V takovém případě jsou směrované volání od klientů známé port, jako třeba 80, kde bezstavové služby naslouchá. Tato služba bezstavové přijme hovor a určuje, jestli je volání z důvěryhodné strany a ji obsluhovat je určené pro.  Bezstavové služby poté předává volání správné oddílu stavové služby a čeká na odpověď. Když bezstavové služby obdrží odpověď, reaguje na původní klienta. Příkladem takové služby je v naše ukázky [C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) / [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/Actors/VisualObjectActor/VisualObjectWebService). Toto je pouze jedním z příkladů tohoto vzoru v ukázkách, existují i další v jiných ukázky také.
+Běžným příkladem způsobu použití bezstavové služby v Service Fabric je jako front-end, který poskytuje veřejná rozhraní API pro webovou aplikaci. Front-endová služba potom přednášky na stavové služby k dokončení požadavku uživatele. V tomto případě jsou volání od klientů směrované na známé port, třeba 80, kde Bezstavová služba naslouchá. Přijímá volání této bezstavové službě a určuje, zda je volání od důvěryhodné strany a kterou službu je určený pro.  Bezstavová služba potom předává volání správného oddílu stavové služby a čeká na odpověď. Pokud bezstavové služby obdrží odpověď, odpovídá původní klienta. Příkladem takové služby je v naše vzorcích [ C# ](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)  /  [Java](https://github.com/Azure-Samples/service-fabric-java-getting-started). Toto je pouze jedním z příkladů tohoto modelu v ukázkách, existují i další v jiných vzorcích také.
 
-### <a name="stateful-reliable-services"></a>Stavová spolehlivé služby
-Stavové služby je ten, který musí mít některé část stavu zachovány konzistentní a v pořadí pro službu funkce. Zvažte službu, která neustále vypočítá kumulativní průměr některá z hodnot na základě aktualizací, které obdrží. Chcete-li to provést, musí mít aktuální sadu příchozích požadavků, které potřebuje pro proces a aktuální průměr. Jakoukoli službu, která načte, procesy a ukládá informace v externím obchodu (například Azure blob nebo table úložišti dnes) je stavový. V úložišti externí stavu právě udržuje její stav.
+### <a name="stateful-reliable-services"></a>Stavovém modelu Reliable Services
+Stavové služby je ten, který musí mít některých částí pracovního stavu udržovat konzistentní a k dispozici v pořadí pro službu na funkci. Vezměte v úvahu služba, která neustále vypočítá souhrnný průměr některá z hodnot na základě aktualizací, které obdrží. Chcete-li to provést, musí mít aktuální sadu příchozích požadavků, které potřebuje k procesu a aktuální průměr. Jakoukoliv službu, která načte, zpracovává a ukládá informace v externím úložišti (například Azure objektů blob nebo tabulek úložiště dnes) je stavový. Zachová jenom stavu v úložišti stavů externí.
 
-Většina služeb dnes uložit jejich stavu externě, vzhledem k tomu, že externí úložiště je pro tento stav co nabízí spolehlivost, dostupnost, škálovatelnost a konzistence. V Service Fabric nejsou potřeba služby k uložení jejich stavu externě. Service Fabric má na starosti tyto požadavky pro kódu služby a stav služby.
+Většina služeb ještě dnes jejich stav ukládat externě, protože externí úložiště je co zajišťující spolehlivost, dostupnost, škálovatelnost a konzistence tento stav. V Service Fabric není nutné služby jejich stav ukládat externě. Service Fabric se postará o tyto požadavky pro kód služby a stav služby.
 
-Řekněme, že chceme zápisu služba, která zpracovává bitové kopie. K tomuto účelu službu přebírá bitovou kopii a řadu převody k plnění této bitové kopie. Tato služba vrátí naslouchací proces komunikace (umožňuje Předpokládejme, že je WebAPI), jako například zpřístupňuje rozhraní API `ConvertImage(Image i, IList<Conversion> conversions)`. Pokud obdrží požadavek, služba uloží jej do `IReliableQueue`a vrátí některé id do klienta, takže ho můžete sledovat žádosti.
+Řekněme, že chceme napsat služba, která zpracovává obrázky. K tomuto účelu služba přijímá bitovou kopii a řadu převody provést u této image. Tato služba vrátí naslouchací proces komunikace (Řekněme Předpokládejme, že je WebAPI) který zpřístupňuje rozhraní API jako `ConvertImage(Image i, IList<Conversion> conversions)`. Když přijme požadavek, služba ukládá ho `IReliableQueue`a vrátí některé id do klienta, takže ji můžete sledovat žádosti.
 
-V rámci této služby `RunAsync()` může být složitější. Služba obsahuje smyčku v jeho `RunAsync()` , vrátí požadavky mimo `IReliableQueue` a provádí převody požadovaný. Získat výsledky uložené v `IReliableDictionary` tak, že když klient zpátky mohou získat jejich převedený bitové kopie. Ujistěte se, že i když se něco nezdaří bitovou kopii není ztraceny, tato spolehlivá služba by pro vyžádání obsahu z fronty, proveďte převody a uložit výsledek vše v rámci jedné transakce. V takovém případě je zpráva odebrána z fronty a výsledky jsou uloženy ve slovníku výsledek jenom v případě, že převody jsou dokončeny. Alternativně může služba bitovou kopii z fronty pro vyžádání obsahu a okamžitě ji uložit do vzdáleného úložiště. Tím se snižuje množství stavu, ve kterém je služba pro správu, ale zvyšuje složitost od služby má zachovat metadata potřebná ke správě vzdáleného úložiště. S buď přístup Pokud se něco nepovedlo uprostřed zůstane požadavek ve frontě čekajících na zpracování.
+V této službě `RunAsync()` by mohl být postup mnohem složitější. Služba obsahuje smyčku v jeho `RunAsync()` , který si vyžádá žádosti z `IReliableQueue` a provádí převody požadavku. Získat výsledky uloženy v `IReliableDictionary` tak, aby když se klient připojí zpět můžou získat jejich převedený bitové kopie. Ujistěte se, že i když něco selže bitovou kopii není ztraceny, toto spolehlivé služby by o přijetí změn z fronty, provádět převody a uloží výsledek v rámci jedné transakce. V takovém případě se odebere zprávu z fronty a výsledky jsou uloženy ve slovníku výsledek, pouze po dokončení převody. Služba může také, vyžádejte si image z fronty a okamžitě ho uložit do vzdáleného úložiště. To snižuje množství stavu, ve kterém má službu pro správu, ale zvyšuje složitost od služby má zajistit potřebné metadat, která chcete spravovat vzdálené úložiště. Díky kterýkoliv přístup Pokud něco selže uprostřed zůstávají požadavek ve frontě čekajících na zpracování.
 
-Poznámka o této službě je, že vypadá podobně jako normální služby rozhraní .NET! Jediným rozdílem je, že data struktury používá (`IReliableQueue` a `IReliableDictionary`) jsou poskytovány Service Fabric a jsou vysoce spolehlivé, k dispozici a konzistentní.
+Poznámka o této službě je, že snaha běžné služby .NET! Jediným rozdílem je, že datových strukturách používá (`IReliableQueue` a `IReliableDictionary`) jsou k dispozici v Service Fabric a jsou vysoce spolehlivé, dostupné a konzistentní vzhledem k aplikacím.
 
-## <a name="when-to-use-reliable-services-apis"></a>Kdy použít rozhraní API spolehlivé služby
-Pokud některé z následujících charakterizovat služby potřebám vaší aplikace, měli byste zvážit spolehlivé rozhraní API služby:
+## <a name="when-to-use-reliable-services-apis"></a>Kdy použít rozhraní API služby Reliable Services
+Pokud kterýkoli z následujících charakterizují služby potřeby vaší aplikace, měli byste zvážit Reliable Services rozhraní API:
 
-* Má vaše služba kód (a volitelně stavu) vysoce dostupné a spolehlivé
-* Je nutné transakční záruky přes víc jednotek služby stavu (například objednávek a položek řádku pořadí).
-* Stav aplikace můžete přirozeně modelován jako slovník spolehlivé a fronty.
-* Kód aplikace nebo stavu musí být vysoce dostupný s nízkou latencí čtení a zápisy.
-* Aplikace musí pro řízení souběžnosti nebo členitost zpracovaných operací na jeden nebo více kolekcí spolehlivé.
-* Chcete spravovat informace, nebo řídit schéma rozdělení oddílů pro vaši službu.
-* Váš kód potřebuje podprocesy běhového prostředí.
-* Aplikace musí dynamicky vytvořit nebo odstranit spolehlivé slovník nebo fronty nebo celý služby za běhu.
-* Budete muset prostřednictvím kódu programu řízení zadaný Service Fabric zálohování a obnovení funkce pro služby stavu.
-* Aplikace musí udržovat historii změn pro jeho jednotky stavu.
-* Chcete vyvíjet nebo využívat zprostředkovatelé třetí strany vyvinuté, vlastní stavu.
+* Má vaše služba kód (a volitelně stavu) pro vysoce dostupné a spolehlivé
+* Potřebujete transakční záruky napříč více jednotek stavu (například objednávek a položky řádku pořadí).
+* Stav vaší aplikace můžete přirozeně nemodelují jako spolehlivé slovníky a fronty.
+* Kód aplikace nebo stav musí být s vysokou dostupností s nízkou latencí operací čtení a zápisu.
+* Vaše aplikace potřebuje k řízení souběžnosti nebo členitost počet zrušených zpracovaných operací v jedné nebo více spolehlivých kolekcí.
+* Chcete spravovat informace nebo ovládací prvek schéma rozdělení oddílů pro vaši službu.
+* Váš kód potřebuje volných vláken běhového prostředí.
+* Vaše aplikace potřebuje dynamicky vytvořit nebo odstranit spolehlivé slovníky nebo fronty nebo celou služby za běhu.
+* Budete potřebovat programově řídit poskytované Service Fabric zálohování a obnovení funkce pro vaši službu stavu.
+* Vaše aplikace potřebuje udržovat historii změn pro jeho jednotky stavu.
+* Chcete pro vývoj nebo využívat poskytovatele třetí strany vyvinutých, vlastní stavu.
 
 ## <a name="next-steps"></a>Další postup
-* [Spolehlivé služby rychlý start](service-fabric-reliable-services-quick-start.md)
+* [Rychlý start Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md)
-* [Programovacího modelu Reliable Actors](service-fabric-reliable-actors-introduction.md)
+* [Programovací model Reliable Actors](service-fabric-reliable-actors-introduction.md)

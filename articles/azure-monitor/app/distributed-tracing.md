@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8ab6782a63c019bea11d047af8588c4489d8b580
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e68e236c54083862bbe1524ec2f7fc3ee6c52ef2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811991"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002208"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
 
@@ -51,7 +51,7 @@ S správné Application Insights SDK nainstalovanou a nakonfigurovanou informace
 
 Kromě sady Application Insights SDK Application Insights podporuje také distribuované trasování prostřednictvím [OpenCensus](https://opencensus.io/). OpenCensus je opensourcový, nezávislá na dodavateli jednotné distribuce knihoven kvůli shromažďování metrik a distribuované trasování pro služby. Umožňuje také opensourcová komunita, která umožňuje distribuované trasování pomocí oblíbených technologií, jako jsou Redis Memcached nebo MongoDB. [Microsoft spolupracuje na OpenCensus s několika dalšími partnery monitorování a cloudu](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Pro přidání možností distribuované trasování do aplikace s OpenCensus, nejprve [nainstalujte a nakonfigurujte předávání místní Application Insights](./../../application-insights/opencensus-local-forwarder.md). Tady nakonfigurujte OpenCensus směrovat data distribuované trasování prostřednictvím místního serveru pro předávání. Obě [Python](./../../application-insights/opencensus-python.md) a [Přejít](./../../application-insights/opencensus-go.md) jsou podporovány.
+Pro přidání možností distribuované trasování do aplikace s OpenCensus, nejprve [nainstalujte a nakonfigurujte předávání místní Application Insights](./../../azure-monitor/app/opencensus-local-forwarder.md). Tady nakonfigurujte OpenCensus směrovat data distribuované trasování prostřednictvím místního serveru pro předávání. Obě [Python](./../../azure-monitor/app/opencensus-python.md) a [Přejít](./../../azure-monitor/app/opencensus-go.md) jsou podporovány.
 
 Web OpenCensus udržuje referenční dokumentace rozhraní API pro [Python](https://opencensus.io/api/python/trace/usage.html) a [Přejít](https://godoc.org/go.opencensus.io), stejně jako různé jiné pokyny pro používání OpenCensus. 
 

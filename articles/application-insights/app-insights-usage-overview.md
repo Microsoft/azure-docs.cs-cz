@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 48432b4a415c0c544c4a64444c89cf818fa00e1f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e0e5d25d92b6b90ae95d639d6deef55730f9060f
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972424"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999250"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -28,7 +28,7 @@ Které funkce vašich webových nebo mobilních aplikací jsou nejoblíbenějš�
 
 Dosažení co nejlepších výsledků je získat nainstalováním služby Application Insights v kódu serveru vaší aplikace a na webových stránkách. Klientské a serverové komponenty vaší aplikace odesílat telemetrii zpět na webu Azure portal pro analýzu.
 
-1. **Kód serveru:** Nainstalujte příslušný modul pro vaše [ASP.NET](../azure-monitor/app/asp-net.md), [Azure](app-insights-overview.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](app-insights-nodejs.md), nebo [jiných](app-insights-platforms.md) aplikace.
+1. **Kód serveru:** Nainstalujte příslušný modul pro vaše [ASP.NET](../azure-monitor/app/asp-net.md), [Azure](app-insights-overview.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](../azure-monitor/app/nodejs.md), nebo [jiných](../azure-monitor/app/platforms.md) aplikace.
 
     * *Nechcete, aby instalace serveru kód? Právě [vytvoří prostředek služby Azure Application Insights](app-insights-create-new-resource.md).*
 

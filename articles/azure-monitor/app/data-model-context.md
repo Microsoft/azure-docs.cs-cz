@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: fc2b5a5badcf38f7bc94a876f9f0a21af4f558b7
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 7c1f47c9b88bd68b326b3c8923ba5b81d425c3e4
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811925"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54015470"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrická data: Datový model Application Insights
 
@@ -84,7 +84,7 @@ Maximální délka: 64
 
 Id anonymního uživatele. Představuje koncový uživatel aplikace. Při odesílání telemetrických dat ze služby je kontext uživatele o uživateli, který inicioval operaci služby.
 
-[Vzorkování](../../application-insights/app-insights-sampling.md) je jeden z postupů, chcete-li minimalizovat množství shromážděných telemetrie. Algoritmus vzorkování, pokusí se buď ukázka snížení nebo navýšení kapacity korelační telemetrická data. Id anonymního uživatele se používá pro generování skóre vzorkování. Id anonymního uživatele by tak měly být dostatečně náhodnou hodnotu. 
+[Vzorkování](../../azure-monitor/app/sampling.md) je jeden z postupů, chcete-li minimalizovat množství shromážděných telemetrie. Algoritmus vzorkování, pokusí se buď ukázka snížení nebo navýšení kapacity korelační telemetrická data. Id anonymního uživatele se používá pro generování skóre vzorkování. Id anonymního uživatele by tak měly být dostatečně náhodnou hodnotu. 
 
 Uložení uživatelské jméno pomocí id anonymního uživatele je nesprávné použití pole. Pomocí id uživatele ověřený.
 

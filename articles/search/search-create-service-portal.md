@@ -6,19 +6,23 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2055ad9baff0c6acc05c9287ca1b8fb08731f8bc
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315974"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54002633"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Vytvoření služby Azure Search na portálu
 
-Zjistěte, jak vytvořit nebo zřídit službu Azure Search na portálu. 
+Azure Search je samostatný prostředek, který se používá pro přidání vyhledávací funkce do vlastní aplikace. Přestože Azure Search se snadno integruje s mnoha dalšími službami Azure, můžete také použít samostatně, aplikace hostované na serverech v síti nebo s softwaru, která běží na jiných cloudových platformách. 
+
+V tomto článku se dozvíte, jak a vytvoří prostředek Azure Search v [webu Azure portal](https://portal.azure.com/). 
+
+![Prostředek Azure Search na portálu](media/search-create-service-portal/azure-search-resource-label.png)
 
 Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manageru. V tématu [Správa služby Azure Search pomocí prostředí PowerShell](search-manage-powershell.md) najdete další informace, které vám pomůžou začít.
 
@@ -31,13 +35,15 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 ## <a name="find-azure-search"></a>Vyhledání služby Azure Search
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na symbol plus (+ Vytvořit prostředek) v levém horním rohu.
-3. Vyberte **Web** > **Azure Search**.
+3. Pomocí panelu hledání vyhledejte "Azure Search" nebo přejít k prostředku pomocí **webové** > **Azure Search**.
 
 ![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>Zadání názvu služby a koncového bodu adresy URL
 
-Název služby je součástí koncového bodu adresy URL, na který jsou prováděna volání rozhraní API: `https://your-service-name.search.windows.net`. Zadejte název služby do pole **URL**. 
+Název služby je součástí koncového bodu adresy URL, na který jsou prováděna volání rozhraní API: `https://your-service-name.search.windows.net`. Zadejte název služby do pole **URL**.
+
+Například, pokud chcete, aby koncový bod se `https://my-app-name-01.search.windows.net`, zadali byste `my-app-name-01`.
 
 Požadavky na název služby:
    * Musí být jedinečný v rámci oboru názvů search.windows.net.
@@ -51,6 +57,8 @@ Pokud máte více než jedno předplatné, vyberte to, jehož součástí jsou t
 
 ## <a name="select-a-resource-group"></a>Výběr skupiny prostředků
 Skupina prostředků je kolekce společně používaných služeb a prostředků Azure. Pokud například používáte Azure Search k indexování databáze SQL, pak by obě služby měly být součástí stejné skupiny prostředků.
+
+Pokud prostředky nejsou sloučením do jedné skupiny, nebo existující skupiny prostředků jsou vyplněny hodnotou prostředky používané v řešení nesouvisející, vytvořte novou skupinu prostředků pro váš prostředek Azure Search.
 
 > [!TIP]
 > Odstraněním skupiny prostředků se odstraní také služby v této skupině. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu. 
@@ -109,7 +117,7 @@ I když většina zákazníků používá jenom jednu službu, redundance služb
 Druhá služba není potřebná pro zajištění vysoké dostupnosti. Vysoká dostupnost pro dotazy se dosáhne, když použijete 2 nebo více replik v rámci stejné služby. Aktualizace replik jsou sekvenční, což znamená, že alespoň jedna replika je funkční při nasazení aktualizace služby. Další informace o době provozu najdete v tématu [Smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 ## <a name="next-steps"></a>Další postup
-Po zřízení služby Azure Search jste připraveni [definovat index](search-what-is-an-index.md), abyste mohli nahrát a prohledávat svá data. 
+Po zřízení služby Azure Search, můžete pokračovat v portálu k vytvoření prvního indexu služby.
 
 > [!div class="nextstepaction"]
-> [Použití služby Azure Search v rozhraní .NET](search-howto-dotnet-sdk.md)
+> [Kurz: Import dat, index a spouštění dotazů na portálu](search-get-started-portal.md)

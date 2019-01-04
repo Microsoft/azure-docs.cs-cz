@@ -9,16 +9,15 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 80389be735d337f72426f0745fee5717b96fa78a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 68ac03a8aba4042a842b5e740d67ab4198236275
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100867"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54013158"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverec pomocí Azure Data Factory (Preview)
 
@@ -45,7 +44,7 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavená na: **čtverec** | Ano |
+| type | Vlastnost type musí být nastavená na: **Čtverec** | Ano |
 | hostitel | Adresa URL instance čtvereček. (to znamená mystore.mysquare.com)  | Ano |
 | ID klienta | ID klienta přidružené k aplikaci čtvereček.  | Ano |
 | ClientSecret | Tajný kód klienta přidružené k aplikaci čtvereček. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -82,7 +81,7 @@ Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **Squar
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ datové sady, musí být nastavena na: **SquareObject** | Ano |
+| type | Vlastnost type datové sady, musí být nastavená na: **SquareObject** | Ano |
 | tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -111,7 +110,7 @@ Ke zkopírování dat z čtverec, nastavte typ zdroje v aktivitě kopírování 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SquareSource** | Ano |
+| type | Vlastnost type zdroje aktivity kopírování musí být nastavená na: **SquareSource** | Ano |
 | query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Business"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**

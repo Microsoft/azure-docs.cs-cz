@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 2e7b7d9b0a194b13de9bdf759f4f3be645ed7c2e
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442165"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001698"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Jednodušší vytváření a Správa aplikací Service Fabric pomocí sady Visual Studio
 Můžete spravovat vaše aplikace Azure Service Fabric a služby pomocí sady Visual Studio. Jakmile [nastavení vývojového prostředí](service-fabric-get-started.md), Visual Studio můžete vytvářet aplikace Service Fabric, přidat služby nebo balíček, registrace a nasazení aplikací v místním vývojovém clusteru.
@@ -47,7 +47,7 @@ Visual Studio poskytuje vlastnost s názvem **režim ladění aplikace**, který
 
 #### <a name="application-debug-modes"></a>Režim ladění aplikace
 
-1. **Aktualizovat aplikaci** tento režim vám umožní rychle změnit a ladění vašeho kódu a podporuje úpravy statické webové soubory během ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režimu uzlu 1]. Toto je výchozí režim ladění aplikace. (/ service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode).
+1. **Aktualizovat aplikaci** tento režim vám umožní rychle změnit a ladění vašeho kódu a podporuje úpravy statické webové soubory během ladění. Tento režim funguje jenom v případě místního vývojového clusteru je v [režimu 1 uzel](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Toto je výchozí režim ladění aplikace.
 2. **Odebrání aplikace** způsobí, že aplikace má být odebrán při ukončení relace ladění.
 3. **Automatický Upgrade** aplikace i nadále běžel při ukončení relace ladění. Příští relaci ladění bude považovat za nasazení upgradu. Proces upgradu zachová všechna data, která jste zadali v předchozí ladicí relaci.
 4. **Zachovat aplikaci** aplikace i nadále běží v clusteru při ukončení relace ladění. Na začátku příští relaci ladění, se odeberou aplikace.

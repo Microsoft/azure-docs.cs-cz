@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 69427336cbc616affdbf11a55c9f410aeec596fc
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 946d0895ff25509a0e35695fe27c783b3c50784b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975164"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999573"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -168,7 +168,7 @@ telemetryClient.getContext().getCloud().setRole("My Component Name");
 
 - [Psát vlastní telemetrii](../../azure-monitor/app/api-custom-events-metrics.md)
 - [Další informace o](../../azure-monitor/app/app-map.md#set-cloudrolename) nastavení cloud_RoleName jiných sad SDK.
-- Připojit všechny součásti micro služby Application insights. Podívejte se na [podporované platformy](../../application-insights/app-insights-platforms.md).
+- Připojit všechny součásti micro služby Application insights. Podívejte se na [podporované platformy](../../azure-monitor/app/platforms.md).
 - Zobrazit [datový model](../../azure-monitor/app/data-model.md) pro typy a datový model Application Insights.
 - Zjistěte, jak [rozšířit a filtrování telemetrie](../../azure-monitor/app/api-filtering-sampling.md).
 - [Referenční informace k konfigurace Application Insights](configuration-with-applicationinsights-config.md)

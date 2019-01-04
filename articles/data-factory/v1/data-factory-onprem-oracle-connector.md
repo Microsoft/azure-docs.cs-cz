@@ -9,17 +9,16 @@ ms.assetid: 3c20aa95-a8a1-4aae-9180-a6a16d64a109
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1ccf66da14bbbd4993f29da2e40d996cb564864e
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167116"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54024905"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopírování dat do nebo z Oracle místní pomocí služby Azure Data Factory
 
@@ -56,7 +55,7 @@ Brána je požadovaná i v případě, že Oracle je hostovaná v Azure infrastr
 
 Tento konektor Oracle podporuje dvě verze ovladače:
 
-- **Ovladač Microsoft pro Oracle (doporučeno)**: od brány správy dat verze 2.7, ovladač Microsoft pro Oracle je automaticky nainstalován se sadou brány. Není nutné pro instalaci nebo aktualizaci ovladače k navázání připojení k systému Oracle. Může také docházet lepší výkon kopírování s použitím tohoto ovladače. Jsou podporovány tyto verze databáze Oracle:
+- **Ovladač Microsoft pro Oracle (doporučeno)**: Počínaje brána správy dat verze 2.7, ovladač Microsoft pro Oracle se automaticky nainstaluje s bránou. Není nutné pro instalaci nebo aktualizaci ovladače k navázání připojení k systému Oracle. Může také docházet lepší výkon kopírování s použitím tohoto ovladače. Jsou podporovány tyto verze databáze Oracle:
     - R1 Oracle 12c (12.1)
     - Oracle 11g R1, R2 (11.1, 11.2)
     - Oracle 10g R1, R2 (10,1, 10.2)
@@ -70,7 +69,7 @@ Tento konektor Oracle podporuje dvě verze ovladače:
     > Ovladač Microsoft pro Oracle v současné době podporuje pouze kopírování dat od Oraclu. Ovladač nepodporuje zápis do databáze Oracle. Funkci test připojení pro bránu správy dat. **diagnostiky** kartu nepodporuje tento ovladač. Alternativně můžete použít Průvodce kopírováním pro ověření připojení.
     >
 
-- **Poskytovatel dat Oracle pro .NET**: poskytovatel dat Oracle můžete použít ke zkopírování dat z nebo do databáze Oracle. Tato součást je součástí [Oracle Data Access součásti pro Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Nainstalujte příslušné verze (32bitová nebo 64bitová verze) na počítači, kde je nainstalovaná brána. [Poskytovatel dat Oracle, .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mají přístup k databázi Oracle Database 10 g vydaná verze 2 a novější verze.
+- **Poskytovatel dat Oracle pro .NET**: Poskytovatel dat Oracle můžete použít ke zkopírování dat z nebo do databáze Oracle. Tato součást je součástí [Oracle Data Access součásti pro Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Nainstalujte příslušné verze (32bitová nebo 64bitová verze) na počítači, kde je nainstalovaná brána. [Poskytovatel dat Oracle, .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) mají přístup k databázi Oracle Database 10 g vydaná verze 2 a novější verze.
 
     Pokud vyberete **XCopy instalace**, proveďte následující kroky jsou popsané v souboru readme.htm. Doporučujeme vybrat instalační program, který má uživatelské rozhraní (ne XCopy instalační program).
 
@@ -82,7 +81,7 @@ Pokud použijete Průvodce kopírováním pro vytvoření kanálu pro kopírová
 
 Můžete vytvořit kanál, který obsahuje aktivitu kopírování. Kanál přesouvání dat do nebo z místní databáze Oracle pomocí různých nástrojů nebo rozhraní API.
 
-Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním. Zobrazit [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírování dat.
+Nejjednodušší způsob, jak vytvořit kanál, je použití Průvodce kopírováním. Zobrazit [kurzu: Vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) rychlý návod k vytvoření kanálu pomocí Průvodce kopírování dat.
 
 Jeden z následujících nástrojů můžete také použít k vytvoření kanálu: **webu Azure portal**, **sady Visual Studio**, **prostředí Azure PowerShell**, **Azure Resource Manageru Šablona**, **rozhraní .NET API**, nebo **rozhraní REST API**. Najdete v článku [kurz aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) pro podrobné pokyny k vytvoření kanálu obsahujícího aktivitu kopírování.
 
@@ -108,10 +107,10 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro Oracl
 | připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze Oracle **connectionString** vlastnost. | Ano |
 | Název brány | Název brány, který se používá pro připojení k místnímu serveru Oracle. |Ano |
 
-**Příklad: Použití ovladače Microsoft**
+**Příklad: Pomocí ovladače Microsoft**
 
 > [!TIP]
-> Pokud se zobrazí chyba, která říká "ORA-01025: UPI parametr je mimo rozsah" a systém Oracle je verze 8i, přidejte `WireProtocolMode=1` připojovací řetězec a zkuste to znovu:
+> Pokud se zobrazí chyba, která říká "ORA-01025: UPI parametr je mimo rozsah"a systém Oracle je verze 8i, přidejte `WireProtocolMode=1` připojovací řetězec a zkuste to znovu:
 
 ```json
 {
@@ -127,7 +126,7 @@ Následující tabulka popisuje elementy JSON, které jsou specifické pro Oracl
 }
 ```
 
-**Příklad: Použití ovladače ODP**
+**Příklad: Pomocí ODP ovladače**
 
 Další informace o povolených formátech, naleznete v tématu [poskytovatel dat Oracle pro .NET ODP](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/).
 
@@ -575,7 +574,7 @@ Kanálu obsahujícího aktivitu kopírování, který je nakonfigurován na pou�
 * Zkopírujte tuto položku do souboru machine.config v následující složce rozhraní .NET 4.0: < disk systému\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Změňte verzi na 4.xxx.x.x.
 * Nainstalovat < cesta nainstalované ODP.NET\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll v globální mezipaměti sestavení (GAC) spuštěním **gacutil /i [cesta zprostředkovatele]**.
 
-### <a name="problem-2-datetime-formatting"></a>Problém č. 2: Formátu data a času
+### <a name="problem-2-datetime-formatting"></a>Problém č. 2: Formátování data a času
 
 **Chybová zpráva**
 

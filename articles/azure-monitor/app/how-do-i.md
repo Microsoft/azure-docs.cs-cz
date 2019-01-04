@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 188c6148e169da62dec342e1695bf20ca57e3256
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c8ff6abe72a55be24b35b254a4bfc2a446b13c0b
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974875"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999677"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mailu při...
@@ -54,7 +54,7 @@ Protože výstrahy mají dva stavy, budete muset odeslat nízkou hodnotu, pokud 
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Vytvoření grafu v [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md) zobrazíte vaše upozornění:
+Vytvoření grafu v [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md) zobrazíte vaše upozornění:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -77,7 +77,7 @@ Některé body ke zvážení:
 [Použití Powershellu k vytvoření nové výstrahy](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Použití Powershellu ke správě služby Application Insights
-* [Vytvářet nové prostředky](../../application-insights/app-insights-powershell-script-create-resource.md)
+* [Vytvářet nové prostředky](../../azure-monitor/app/powershell-script-create-resource.md)
 * [Vytvořit nové výstrahy](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatné telemetrická data z různých verzí
@@ -91,7 +91,7 @@ Některé body ke zvážení:
 
 ## <a name="visualize-data"></a>Vizualizace dat
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Řídicí panel s metrikami z více aplikací
-* V [Průzkumník metrik](../../application-insights/app-insights-metrics-explorer.md), přizpůsobení grafu a uložit jako oblíbenou položku. Připnete na řídicí panel Azure.
+* V [Průzkumník metrik](../../azure-monitor/app/metrics-explorer.md), přizpůsobení grafu a uložit jako oblíbenou položku. Připnete na řídicí panel Azure.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Řídicí panel s daty z jiných zdrojů a Application Insights
 * [Export telemetrie do Power BI](../../application-insights/app-insights-export-power-bi.md).
@@ -132,7 +132,7 @@ Pokud chcete seznam uživatelů s daty, jako jsou například jaké stránky, po
 * Na webových stránkách omezte počet volání Ajax hlášených pro každé zobrazení stránky. V tomto fragmentu kódu skriptu po `instrumentationKey:...` , vložte: `,maxAjaxCallsPerView:3` (nebo vhodný číslo).
 * Pokud používáte [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), compute agregace dávky hodnoty metrik před odesláním výsledek. Přetížení metody TrackMetric(), která poskytuje pro, který není k dispozici.
 
-Další informace o [ceny a kvóty](../../application-insights/app-insights-pricing.md).
+Další informace o [ceny a kvóty](../../azure-monitor/app/pricing.md).
 
 ## <a name="disable-telemetry"></a>Zakázat telemetrii
 K **dynamicky zastavení a spuštění** shromažďování a předávání telemetrických dat ze serveru:
@@ -159,5 +159,5 @@ Mezi metriky, které můžete zobrazit v Průzkumníku metrik představují sadu
 * **Server systému UNIX** - [nainstalujte collectd](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Chcete-li zobrazit další čítače výkonu
-* Nejprve je potřeba [přidejte nový graf](../../application-insights/app-insights-metrics-explorer.md) a podívejte se, pokud čítač je v základní sadě, kterou nabízíme.
-* V opačném případě [přidat čítače do sady modul čítače výkonu shromážděné](../../application-insights/app-insights-performance-counters.md).
+* Nejprve je potřeba [přidejte nový graf](../../azure-monitor/app/metrics-explorer.md) a podívejte se, pokud čítač je v základní sadě, kterou nabízíme.
+* V opačném případě [přidat čítače do sady modul čítače výkonu shromážděné](../../azure-monitor/app/performance-counters.md).

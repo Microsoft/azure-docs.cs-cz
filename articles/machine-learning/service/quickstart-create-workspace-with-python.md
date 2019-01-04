@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95d7fc06d1ea7db3eddd0ac228263f3b6a07a719
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: da84d6361d80db8aea797827ed3d7bc612e2eda3
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810249"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53999046"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme s Azure Machine Learning pomocí sady Python SDK
 
@@ -134,7 +134,7 @@ pip install azureml-sdk[databricks]
 
    Při spouštění kódu vám může zobrazit výzva k přihlášení ke svému účtu Azure. Jakmile se přihlásíte, ověřovací token se uloží do místní mezipaměti.
 
-1. Pokud chcete viewe podrobnosti o pracovním prostoru, jako je například přidruženého úložiště, container registry a trezor klíčů, zadejte následující kód:
+1. Chcete-li zobrazit pracovní prostor podrobnosti, jako je například přidruženého úložiště, container registry a služby key vault, zadejte následující kód:
 
     [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=getDetails)]
 
@@ -197,7 +197,7 @@ Použití kódu kurzy Machine Learning, potřebujete pár dalších balíčků v
     pip install azureml-sdk[automl]
     ```
 
-Po instalaci těchto balíčků, pokračujte kurzy trénovat a nasazovat modell. 
+Po instalaci těchto balíčků, pokračujte v kurzech pro trénování a nasadit model. 
 
 > [!div class="nextstepaction"]
 > [Kurz: Trénování modelu klasifikace obrázků](tutorial-train-models-with-aml.md)

@@ -9,20 +9,19 @@ ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 5f21f33678b8cf09d9dbd8966d42b1a5ebac9ffb
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 8ab6dad36bf47430a925d21ca2464286e7e70002
+ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224648"
+ms.lasthandoff: 01/04/2019
+ms.locfileid: "54022066"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Transformovat data spuštěním poznámkového bloku Databricks
 
-Aktivity poznámkového bloku Azure Databricks ve [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění poznámkového bloku Databricks v pracovním prostoru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivity poznámkového bloku Azure Databricks ve [kanálu služby Data Factory](concepts-pipelines-activities.md) spuštění poznámkového bloku Databricks v pracovním prostoru Azure Databricks. Tento článek vychází [aktivity transformace dat](transform-data.md) článek, který nabízí obecný přehled o transformaci dat a aktivity podporované transformace. Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 ## <a name="databricks-notebook-activity-definition"></a>Definice aktivity poznámkového bloku Databricks
 
@@ -63,7 +62,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 |jméno|Název aktivity v kanálu.|Ano|
 |description|Text popisující, jakým způsobem aktivita naloží.|Ne|
 |type|Pro aktivitu poznámkového bloku Databricks je typ aktivity DatabricksNotebook.|Ano|
-|linkedServiceName|Název propojené služby Databricks, na kterém běží poznámkového bloku Databricks. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
+|linkedServiceName|Název propojené služby Databricks, na kterém běží poznámkového bloku Databricks. Další informace o tuto propojenou službu, najdete v článku [propojené služby Compute](compute-linked-services.md) článku.|Ano|
 |notebookPath|Absolutní cesta ke spuštění v pracovním prostoru Databricks Poznámkový blok. Tato cesta musí začínat lomítkem.|Ano|
 |baseParameters|Pole párů klíč-hodnota. Základní parametry můžete použít pro každé spuštění aktivity. Pokud poznámkový blok má parametr, který není zadán, použije se výchozí hodnota z poznámkového bloku. Další informace o parametrech v [poznámkových bloků Databricks](https://docs.databricks.com/api/latest/jobs.html#jobsparampair).|Ne|
 |Knihovny|Seznam knihovny, které chcete nainstalovat na clusteru, který provede úlohu. Pole může být \<řetězec, objekt >.|Ne|

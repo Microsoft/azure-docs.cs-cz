@@ -4,14 +4,14 @@ description: Ukazuje, jaké typy prostředků Azure podporují značky. Poskytuj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 12/21/2018
+ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: ef365cdf0a5df168c438abd0428e41200b07756c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 50ea7a2446b5560bd208b2da128fa877068ce452
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753774"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54000287"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [označování](resource-group-using-tags.md).
@@ -24,15 +24,20 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="ad-hybrid-health-service"></a>Hybridní AD Health Service
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| services | Ne | 
-| addsservices | Ne | 
-| konfigurace | Ne | 
-| agenti | Ne | 
+| addsservices | Ne |
 | aadsupportcases | Ne | 
-| sestavy | Ne | 
-| servicehealthmetrics | Ne | 
-| Protokoly | Ne | 
+| agenti | Ne | 
 | anonymousapiusers | Ne | 
+| konfigurace | Ne | 
+| Protokoly | Ne | 
+| sestavy | Ne | 
+| services | Ne | 
+| servicehealthmetrics | Ne | 
+
+## <a name="aks"></a>AKS
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| managedClusters | Ano | 
 
 ## <a name="analysis-services"></a>Analysis Services
 | Typ prostředku | Podporuje značky |
@@ -43,11 +48,11 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | apiManagementAccounts | Ne | 
-| apiManagementAccounts/connectionProviders | Ne | 
-| apiManagementAccounts/připojení | Ne | 
-| apiManagementAccounts/connectionAcls | Ne | 
-| apiManagementAccounts/connectionProviderAcls | Ne | 
 | apiManagementAccounts/rozhraní API | Ne | 
+| apiManagementAccounts/connectionAcls | Ne | 
+| apiManagementAccounts/connectionProviders | Ne | 
+| apiManagementAccounts/connectionProviderAcls | Ne | 
+| apiManagementAccounts/připojení | Ne | 
 
 ## <a name="api-management"></a>API Management
 | Typ prostředku | Podporuje značky |
@@ -58,11 +63,48 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | AutomationAccounts | Ano | 
-| automationAccounts/sady runbook | Ano | 
 | automationAccounts/konfigurace | Ano | 
-| automationAccounts/webhooků | Ne | 
-| automationAccounts/softwareUpdateConfigurations | Ne | 
 | automationAccounts/úloh | Ne | 
+| automationAccounts/sady runbook | Ano | 
+| automationAccounts/softwareUpdateConfigurations | Ne | 
+| automationAccounts/webhooků | Ne | 
+
+## <a name="azure-database-for-mariadb"></a>Azure Database for MariaDB
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| serverů | Ano | 
+| servery pro/konfigurace | Ne |
+| servery pro/databáze | Ne |
+| servery pro/firewallRules | Ne |
+| servery pro/recoverableServers | Ne | 
+| servery pro/securityAlertPolicies | Ne |
+| servery pro/virtualNetworkRules | Ne | 
+
+## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| serverů | Ano | 
+| servery pro/konfigurace | Ne |
+| servery pro/databáze | Ne |
+| servery pro/firewallRules | Ne |
+| servery pro/recoverableServers | Ne | 
+| servery pro/securityAlertPolicies | Ne |
+| servery pro/virtualNetworkRules | Ne | 
+
+## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| serverů | Ano | 
+| servery pro/poradci | Ne | 
+| servery pro/konfigurace | Ne |
+| servery pro/databáze | Ne |
+| servery pro/firewallRules | Ne |
+| servery pro/queryTexts | Ne | 
+| servery pro/recoverableServers | Ne | 
+| servery pro/securityAlertPolicies | Ne |
+| servery pro/topQueryStatistics | Ne | 
+| servery pro/virtualNetworkRules | Ne | 
+| servery pro/waitStatistics | Ne | 
 
 ## <a name="batch"></a>Batch
 | Typ prostředku | Podporuje značky |
@@ -87,12 +129,12 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="cdn"></a>CDN
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
+| edgenodes | Ne | 
 | Profily | Ano | 
 | profily a koncových bodů | Ano | 
-| profily/koncové body/zdroje | Ne | 
 | profily/koncové body/customdomains | Ne | 
+| profily/koncové body/zdroje | Ne | 
 | validateProbe | Ne | 
-| edgenodes | Ne | 
 
 ## <a name="classic-compute"></a>Klasické výpočetní prostředky
 | Typ prostředku | Podporuje značky |
@@ -114,8 +156,8 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | virtualNetworks | Ne | 
-| virtualNetworks/virtualNetworkPeerings | Ne | 
 | virtualNetworks/remoteVirtualNetworkPeeringProxies | Ne | 
+| virtualNetworks/virtualNetworkPeerings | Ne | 
 
 ## <a name="classic-storage"></a>Klasického úložiště.
 | Typ prostředku | Podporuje značky |
@@ -127,23 +169,23 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | availabilitySets | Ano | 
-| virtuálních počítačů | Ano | 
-| virtuálních počítačů/rozšíření | Ano | 
-| virtualMachineScaleSets | Ano | 
-| virtualMachineScaleSets/rozšíření | Ne | 
-| virtualMachineScaleSets/virtuálních počítačů | Ne | 
-| virtualMachineScaleSets/síťová | Ne | 
-| virtualMachineScaleSets/virtuálních počítačů/síťová | Ne | 
-| virtualMachineScaleSets/publicIPAddresses | Ne | 
+| Disky | Ano | 
+| images | Ano | 
 | restorePointCollections | Ano | 
 | restorePointCollections/restorePoints | Ne | 
-| virtuálních počítačů/diagnosticSettings | Ne | 
-| virtuálních počítačů/metricDefinitions | Ne | 
 | sharedVMImages | Ano | 
 | sharedVMImages/verze | Ano | 
-| Disky | Ano | 
 | snímky | Ano | 
-| images | Ano | 
+| virtuálních počítačů | Ano | 
+| virtuálních počítačů/diagnosticSettings | Ne | 
+| virtuálních počítačů/rozšíření | Ano | 
+| virtuálních počítačů/metricDefinitions | Ne | 
+| virtualMachineScaleSets | Ano | 
+| virtualMachineScaleSets/rozšíření | Ne | 
+| virtualMachineScaleSets/síťová | Ne | 
+| virtualMachineScaleSets/publicIPAddresses | Ne | 
+| virtualMachineScaleSets/virtuálních počítačů | Ne | 
+| virtualMachineScaleSets/virtuálních počítačů/síťová | Ne | 
 
 ## <a name="container"></a>Kontejner
 | Typ prostředku | Podporuje značky |
@@ -155,6 +197,14 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | containerGroups | Ano | 
 | serviceAssociationLinks | Ne | 
+
+## <a name="container-registry"></a>Container Registry
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| Registry | Ano | 
+| Registry/replikace | Ano |
+| Registry nebo úloh | Ano |
+| Registry a webhooky | Ano |
 
 ## <a name="container-service"></a>Container Service
 | Typ prostředku | Podporuje značky |
@@ -177,6 +227,11 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | Konektory | Ano | 
 
+## <a name="data-box"></a>Data Box
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| úlohy | Ano | 
+
 ## <a name="data-box-edge"></a>Data Box Edge
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
@@ -196,11 +251,11 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | dataFactories | Ano | 
-| objekty pro vytváření | Ano | 
-| objekty pro vytváření/integrationRuntimes | Ne | 
 | dataFactories/diagnosticSettings | Ne | 
 | dataFactories/metricDefinitions | Ne | 
 | dataFactorySchema | Ne | 
+| objekty pro vytváření | Ano | 
+| objekty pro vytváření/integrationRuntimes | Ne | 
 
 ## <a name="devices"></a>Zařízení
 | Typ prostředku | Podporuje značky |
@@ -218,9 +273,24 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | Praktická cvičení | Ano | 
-| Plány | Ano | 
-| testovací prostředí a virtuálních počítačů | Ano | 
+| praktická cvičení/artifactsources | Ano |
+| praktická cvičení a náklady | Ano |
+| praktická cvičení/customimages | Ano |
+| praktická cvičení a vzorců | Ano |
+| praktická cvičení/notificationchannels | Ano |
+| praktická cvičení/policysets/zásady | Ano |
+| praktická cvičení a plány | Ano |
 | praktická cvičení/serviceRunners | Ano | 
+| praktická cvičení/uživatelé | Ano |
+| praktická cvičení nebo uživatele/disky | Ano |
+| praktická cvičení nebo uživatele/prostředími | Ano |
+| praktická cvičení/uživatele/tajných klíčů | Ano |
+| praktická cvičení/uživatele/servicefabrics | Ano |
+| praktická cvičení/uživatele/servicefabrics/plány | Ano |
+| testovací prostředí a virtuálních počítačů | Ano | 
+| testovací prostředí a virtuálních počítačů a plány | Ano |
+| praktická cvičení/virtualnetworks | Ano |
+| Plány | Ano | 
 
 ## <a name="dynamics-lcs"></a>Dynamics LCS
 | Typ prostředku | Podporuje značky |
@@ -232,18 +302,23 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="event-grid"></a>Event Grid
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| eventSubscriptions | Ne | 
-| témata | Ano | 
 | domény | Ano | 
 | domény a témat | Ne | 
-| topicTypes | Ne | 
+| eventSubscriptions | Ne | 
 | extensionTopics | Ne | 
+| témata | Ano | 
+| topicTypes | Ne | 
 
 ## <a name="event-hub"></a>Centrum událostí
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Obory názvů | Ano | 
 | Clustery | Ano | 
+| Obory názvů | Ano | 
+| obory názvů a autorizačních pravidel | Ne |
+| obory názvů/disasterRecoveryConfigs | Ne |
+| obory názvů/eventhubs | Ne |
+| obory názvů/eventhubs/autorizačních pravidel | Ne |
+| obory názvů/eventhubs/consumergroups | Ne |
 
 ## <a name="hana-on-azure"></a>Hana v Azure
 | Typ prostředku | Podporuje značky |
@@ -265,28 +340,31 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | actionGroups | Ano |
-| Součásti | Ano | 
-| součásti či dotazu | Ne | 
-| součásti/metriky | Ne | 
-| součásti/události | Ne | 
-| webové testy | Ano | 
-| dotazy | Ne | 
-| scheduledqueryrules | Ano | 
-| součásti/pricingPlans | Ne | 
-| migrateToNewPricingModel | Ne | 
-| rollbackToLegacyPricingModel | Ne | 
+| Upozorněníprotokoluaktivit | Ano |
+| alertrules | Ano |
 | automatedExportSettings | Ne | 
-| Sešity | Ano | 
-| myWorkbooks | Ne | 
+| Součásti | Ano | 
+| součásti/události | Ne | 
+| součásti/metriky | Ne | 
+| součásti/pricingPlans | Ne | 
+| součásti či dotazu | Ne | 
 | Protokoly | Ne | 
+| metricAlerts | Ano |
+| migrateToNewPricingModel | Ne | 
+| myWorkbooks | Ne | 
+| dotazy | Ne | 
+| rollbackToLegacyPricingModel | Ne | 
+| scheduledqueryrules | Ano | 
+| webové testy | Ano | 
+| Sešity | Ano | 
 
 ## <a name="key-vault"></a>Key Vault
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| trezory služby | Ano | 
-| Trezory/tajných klíčů | Ne | 
-| trezory/accessPolicies | Ne | 
 | deletedVaults | Ne | 
+| trezory služby | Ano | 
+| trezory/accessPolicies | Ne | 
+| Trezory/tajných klíčů | Ne | 
 
 ## <a name="log-analytics"></a>Log Analytics
 | Typ prostředku | Podporuje značky |
@@ -296,8 +374,8 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="logic"></a>Logika
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| Pracovní postupy | Ano | 
 | integrationAccounts | Ano | 
+| Pracovní postupy | Ano | 
 
 ## <a name="machine-learning-services"></a>Machine Learning Services
 | Typ prostředku | Podporuje značky |
@@ -310,13 +388,6 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | Identity | Ne | 
 | userAssignedIdentities | Ano | 
-
-## <a name="mariadb"></a>MariaDB
-| Typ prostředku | Podporuje značky |
-| ------------- | ----------- |
-| serverů | Ano | 
-| servery pro/recoverableServers | Ne | 
-| servery pro/virtualNetworkRules | Ne | 
 
 ## <a name="marketplace-apps"></a>Aplikace z Marketplace
 | Typ prostředku | Podporuje značky |
@@ -333,64 +404,57 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | mediaservices | Ano | 
+| mediaservices/accountFilters | Ne | 
 | mediaservices/prostředky | Ne | 
+| mediaservices/prostředky/assetFilters | Ne | 
 | mediaservices/contentKeyPolicies | Ne | 
-| mediaservices/streamingLocators | Ne | 
-| mediaservices/streamingPolicies | Ne | 
 | mediaservices/eventGridFilters | Ne | 
-| mediaservices nebo transformací | Ne | 
-| mediaservices/transformace/úloh | Ne | 
-| mediaservices/koncové body streamování | Ano | 
+| mediaservices/liveEventOperations | Ne | 
 | mediaservices/liveEvents | Ano | 
 | mediaservices/liveEvents/liveOutputs | Ne | 
-| mediaservices/streamingEndpointOperations | Ne | 
-| mediaservices/liveEventOperations | Ne | 
 | mediaservices/liveOutputOperations | Ne | 
-| mediaservices/prostředky/assetFilters | Ne | 
-| mediaservices/accountFilters | Ne | 
-
-## <a name="mysql"></a>MySQL
-| Typ prostředku | Podporuje značky |
-| ------------- | ----------- |
-| serverů | Ano | 
-| servery pro/recoverableServers | Ne | 
-| servery pro/virtualNetworkRules | Ne | 
+| mediaservices/koncové body streamování | Ano | 
+| mediaservices/streamingEndpointOperations | Ne | 
+| mediaservices/streamingLocators | Ne | 
+| mediaservices/streamingPolicies | Ne | 
+| mediaservices nebo transformací | Ne | 
+| mediaservices/transformace/úloh | Ne | 
 
 ## <a name="network"></a>Síť
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| virtualNetworks | Ano | 
-| publicIPAddresses | Ano | 
-| Síťová | Ano | 
+| applicationGateways | Ano | 
+| Jenom | Ano | 
+| azureFirewalls | Ano | 
+| připojení | Ano | 
+| ddosProtectionPlans | Ano | 
+| expressRouteCircuits | Ano | 
+| frontdoors | Ano | 
+| frontdoorWebApplicationFirewallPolicies | Ano | 
 | interfaceEndpoints | Ano | 
 | Load Balancerech | Ano | 
-| networkSecurityGroups | Ano | 
-| Jenom | Ano | 
-| serviceEndpointPolicies | Ano | 
+| localNetworkGateways | Ano | 
 | networkIntentPolicies | Ano | 
-| routeTables | Ano | 
-| publicIPPrefixes | Ano | 
+| Síťová | Ano | 
+| networkProfiles | Ano | 
+| networkSecurityGroups | Ano | 
 | networkWatchers | Ano | 
 | networkWatchers/connectionMonitors | Ano | 
 | networkWatchers/přehledů | Ano | 
 | networkWatchers/pingMeshes | Ano | 
-| virtualNetworkGateways | Ano | 
-| localNetworkGateways | Ano | 
-| připojení | Ano | 
-| applicationGateways | Ano | 
-| expressRouteCircuits | Ano | 
-| routeFilters | Ano | 
-| virtualWans | Ano | 
-| vpnSites | Ano | 
-| virtualHubs | Ano | 
-| vpnGateways | Ano | 
-| azureFirewalls | Ano | 
-| virtualNetworkTaps | Ano | 
 | privateLinkServices | Ano | 
-| ddosProtectionPlans | Ano | 
-| networkProfiles | Ano | 
-| frontdoors | Ano | 
-| frontdoorWebApplicationFirewallPolicies | Ano | 
+| publicIPAddresses | Ano | 
+| publicIPPrefixes | Ano | 
+| routeFilters | Ano | 
+| routeTables | Ano | 
+| serviceEndpointPolicies | Ano | 
+| virtualHubs | Ano | 
+| virtualNetworks | Ano | 
+| virtualNetworkGateways | Ano | 
+| virtualNetworkTaps | Ano | 
+| virtualWans | Ano | 
+| vpnGateways | Ano | 
+| vpnSites | Ano | 
 | webApplicationFirewallPolicies | Ano | 
 
 ## <a name="notification-hubs"></a>Notification Hubs
@@ -398,6 +462,20 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | Obory názvů | Ano | 
 | obory názvů a notificationHubs | Ano | 
+
+## <a name="operational-insights"></a>Operational Insights
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| pracovní prostory | Ano |
+| pracovní prostory/zdroje dat | Ano |
+| pracovní prostory/linkedServices | Ano |
+| pracovní prostory/savedSearches | Ne |
+| pracovní prostory/storageInsightConfigs | Ano |
+
+## <a name="operations-management"></a>Správa operací
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| Řešení | Ne |
 
 ## <a name="portal"></a>Portál
 | Typ prostředku | Podporuje značky |
@@ -409,17 +487,6 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | rootResources | Ano | 
 
-## <a name="postgresql"></a>PostgreSQL
-| Typ prostředku | Podporuje značky |
-| ------------- | ----------- |
-| serverů | Ano | 
-| servery pro/recoverableServers | Ne | 
-| servery pro/virtualNetworkRules | Ne | 
-| servery pro/topQueryStatistics | Ne | 
-| servery pro/queryTexts | Ne | 
-| servery pro/waitStatistics | Ne | 
-| servery pro/poradci | Ne | 
-
 ## <a name="power-bi"></a>Power BI
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
@@ -428,8 +495,8 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="recovery-services"></a>Recovery Services
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| trezory služby | Ano | 
 | backupProtectedItems | Ne | 
+| trezory služby | Ano | 
 
 ## <a name="relay"></a>Relay
 | Typ prostředku | Podporuje značky |
@@ -451,8 +518,8 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="search"></a>Search
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| searchServices | Ano | 
 | resourceHealthMetadata | Ne | 
+| searchServices | Ano | 
 
 ## <a name="security"></a>Zabezpečení
 | Typ prostředku | Podporuje značky |
@@ -495,6 +562,64 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | applicationDefinitions | Ano | 
 | jitRequests | Ano | 
 
+## <a name="sql"></a>SQL
+| Typ prostředku | Podporuje značky |
+| ------------- | ----------- |
+| umístění/instanceFailoverGroups | Ne |
+| managedInstances | Ano |
+| managedInstances/databáze | Ano |
+| managedInstances/databází/backupShortTermRetentionPolicies | Ne |
+| managedInstances/databází/schémata/tabulek/sloupce/sensitivityLabels | Ne |
+| managedInstances/databází/vulnerabilityAssessments | Ne |
+| managedInstances/databází/vulnerabilityAssessments/pravidel/směrné plány | Ne |
+| managedInstances/encryptionProtector | Ne |
+| managedInstances/klíče | Ne |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Ne |
+| managedInstances/vulnerabilityAssessments | Ne |
+| serverů | Ano |
+| servery pro/správci | Ne |
+| servery pro/poradci | Ne |
+| servery pro/auditingSettings | Ne |
+| servery pro/backupLongTermRetentionVaults | Ne |
+| servery pro/communicationLinks | Ne |
+| servery pro/connectionPolicies | Ne |
+| servery pro/databáze | Ano |
+| servery pro/databáze nebo poradci | Ne |
+| servery pro/databází/auditingSettings | Ne |
+| servery pro/databází/backupLongTermRetentionPolicies | Ne |
+| servery pro/databází/backupShortTermRetentionPolicies | Ne |
+| servery pro/databází/connectionPolicies | Ne |
+| servery pro/databází/dataMaskingPolicies | Ne |
+| servery pro/databází/dataMaskingPolicies/pravidla | Ne |
+| servery pro/databází/extendedAuditingSettings | Ne |
+| servery pro/databází/rozšíření | Ne |
+| servery pro/databází/geoBackupPolicies | Ne |
+| servery pro/databází/schémata/tabulek/sloupce/sensitivityLabels | Ne |
+| servery pro/databází/securityAlertPolicies | Ne |
+| servery pro/databází/syncGroups | Ne |
+| servery pro/databází/syncGroups/syncMembers | Ne |
+| servery pro/databází/transparentDataEncryption | Ne |
+| servery pro/databází/vulnerabilityAssessments | Ne |
+| servery pro/databází/vulnerabilityAssessments/pravidel/směrné plány | Ne |
+| servery pro/disasterRecoveryConfiguration | Ne |
+| servery pro/dnsAliases | Ne |
+| servery pro/elasticPools | Ano |
+| servery pro/encryptionProtector | Ne |
+| servery pro/extendedAuditingSettings | Ne |
+| servery pro/failoverGroups | Ano |
+| servery pro/firewallRules | Ne |
+| servery pro/jobAgents | Ano |
+| servery pro/jobAgents/přihlašovacích údajů | Ne |
+| servery pro/jobAgents/úloh | Ne |
+| servery pro/jobAgents/úlohy/spuštění | Ne |
+| servery pro/jobAgents/úlohy/kroky | Ne |
+| servery pro/jobAgents/targetGroups | Ne |
+| servery pro/klíče | Ne |
+| servery pro/securityAlertPolicies | Ne |
+| servery pro/syncAgents | Ne |
+| servery pro/virtualNetworkRules | Ne |
+| servery pro/vulnerabilityAssessments | Ne |
+
 ## <a name="sql-virtual-machine"></a>Virtuálnímu počítači SQL
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
@@ -505,20 +630,20 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | ------------- | ----------- |
 | storageAccounts | Ano | 
 | storageAccounts/blobServices | Ne | 
-| storageAccounts/tableServices | Ne | 
-| storageAccounts/queueServices | Ne | 
 | storageAccounts/fileServices | Ne | 
+| storageAccounts/queueServices | Ne | 
 | storageAccounts/services | Ne | 
 | storageAccounts/services/metricDefinitions | Ne | 
+| storageAccounts/tableServices | Ne | 
 
 ## <a name="storage-sync"></a>Synchronizace úložiště
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | storageSyncServices | Ano | 
+| storageSyncServices/registeredServers | Ne | 
 | storageSyncServices/syncGroups | Ne | 
 | storageSyncServices/syncGroups/cloudEndpoints | Ne | 
 | storageSyncServices/syncGroups/serverEndpoints | Ne | 
-| storageSyncServices/registeredServers | Ne | 
 | storageSyncServices/pracovních postupů | Ne | 
 
 ## <a name="storsimple"></a>Storsimple
@@ -548,53 +673,50 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | account | Ano | 
-| účet nebo projektu | Ano | 
 | účet a rozšíření | Ano | 
-| account | Ano | 
 | účet nebo projektu | Ano | 
-| účet a rozšíření | Ano | 
 
 ## <a name="web"></a>Web
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| servery a instancí | Ne | 
-| servery/sloty/instance | Ne | 
-| servery/instance/rozšíření | Ne | 
-| servery/sloty/instance/rozšíření | Ne | 
-| publishingUsers | Ne | 
-| Ověření | Ne | 
-| sourceControls | Ne | 
-| servery/hostNameBindings | Ne | 
-| servery/domainOwnershipIdentifiers | Ne | 
-| servery/sloty/hostNameBindings | Ne | 
+| apiManagementAccounts | Ne | 
+| apiManagementAccounts/apiAcls | Ne | 
+| apiManagementAccounts/rozhraní API | Ne | 
+| apiManagementAccounts/API/apiAcls | Ne | 
+| apiManagementAccounts/API/connectionAcls | Ne | 
+| apiManagementAccounts/API/připojení | Ne | 
+| apiManagementAccounts/API/připojení/connectionAcls | Ne | 
+| apiManagementAccounts/API/localizedDefinitions | Ne | 
+| apiManagementAccounts/connectionAcls | Ne | 
+| apiManagementAccounts/připojení | Ne | 
+| billingMeters | Ne | 
 | certifikáty | Ano | 
+| connectionGateways | Ano | 
+| připojení | Ano | 
+| customApis | Ano | 
+| deletedSites | Ne | 
+| functions | Ne | 
+| hostingEnvironments | Ano | 
+| hostingEnvironments/metriky | Ne | 
+| hostingEnvironments/multiRolePools | Ne | 
+| hostingEnvironments/workerPools | Ne | 
+| publishingUsers | Ne | 
 | serverových farem | Ano | 
 | serverových farem/pracovních procesů | Ne | 
 | Weby | Ano | 
-| servery a sloty | Ano | 
+| servery/domainOwnershipIdentifiers | Ne | 
+| servery/hostNameBindings | Ne | 
+| servery a instancí | Ne | 
+| servery/instance/rozšíření | Ne | 
 | servery/metriky | Ne | 
-| servery/sloty/metriky | Ne | 
 | servery/premieraddons | Ano | 
-| hostingEnvironments | Ano | 
-| hostingEnvironments/multiRolePools | Ne | 
-| hostingEnvironments/workerPools | Ne | 
-| hostingEnvironments/metriky | Ne | 
-| functions | Ne | 
-| deletedSites | Ne | 
-| apiManagementAccounts | Ne | 
-| apiManagementAccounts/připojení | Ne | 
-| apiManagementAccounts/connectionAcls | Ne | 
-| apiManagementAccounts/API/připojení/connectionAcls | Ne | 
-| apiManagementAccounts/API/connectionAcls | Ne | 
-| apiManagementAccounts/apiAcls | Ne | 
-| apiManagementAccounts/API/apiAcls | Ne | 
-| apiManagementAccounts/rozhraní API | Ne | 
-| apiManagementAccounts/API/localizedDefinitions | Ne | 
-| apiManagementAccounts/API/připojení | Ne | 
-| připojení | Ano | 
-| customApis | Ano | 
-| connectionGateways | Ano | 
-| billingMeters | Ne | 
+| servery a sloty | Ano | 
+| servery/sloty/hostNameBindings | Ne | 
+| servery/sloty/instance | Ne | 
+| servery/sloty/instance/rozšíření | Ne | 
+| servery/sloty/metriky | Ne | 
+| sourceControls | Ne | 
+| Ověření | Ne | 
 | verifyHostingEnvironmentVnet | Ne | 
 
 ## <a name="xrm"></a>XRM

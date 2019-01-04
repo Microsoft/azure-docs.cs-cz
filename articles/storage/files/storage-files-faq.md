@@ -4,15 +4,15 @@ description: Najděte odpovědi na nejčastější dotazy o službě soubory Azu
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 10/04/2018
+ms.date: 01/02/2019
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
+ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972078"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "54001528"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -182,7 +182,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 * <a id="ad-support-regions"></a>
 **Je ve verzi preview služby Azure AD prostřednictvím protokolu SMB pro soubory Azure k dispozici ve všech oblastech Azure?**
 
-    Verzi preview je k dispozici ve všech veřejných oblastech s výjimkou: Severní Evropa.
+    Verzi preview je k dispozici ve všech veřejných oblastech.
 
 * <a id="ad-support-on-premises"></a>
 **Ověřování pomocí Azure AD z místní počítače podporuje ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure (Preview)?**
@@ -262,7 +262,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
 ## <a name="share-snapshots"></a>Snímky sdílené složky
 
-### <a name="share-snapshots-general"></a>Sdílet snímky: Obecné
+### <a name="share-snapshots-general"></a>Snímky sdílené složky: Obecné
 * <a id="what-are-snaphots"></a>
 **Co jsou snímky sdílené složky?**  
     Snímky sdílené složky Azure můžete vytvořit verzi této sdílené složky jen pro čtení. Soubory Azure můžete použít také ke zkopírování starší verzi sady obsahu zpět do stejné sdílené složce, do jiného umístění v Azure nebo místně pro víc úpravy. Další informace o snímků sdílené složky, najdete v článku [sdílet snímek přehled](storage-snapshots-files.md).
